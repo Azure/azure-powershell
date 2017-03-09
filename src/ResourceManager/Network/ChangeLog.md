@@ -17,7 +17,9 @@
     * Overview of change #1
         - Additional information about change #1
 -->
-## Current Release 
+## Current Release
+
+## Version 3.6.0
 * Added support for connection draining to Application Gateways
     - Added Get-AzureRmApplicationGatewayConnectionDraining 
     - Added New-AzureRmApplicationGatewayConnectionDraining
@@ -26,6 +28,12 @@
     - Updated Add-AzureRmApplicationGatewayBackendHttpSettings: Added optional parameter -ConnectionDraining
     - Updated New-AzureRmApplicationGatewayBackendHttpSettings: Added optional parameter -ConnectionDraining
     - Updated Set-AzureRmApplicationGatewayBackendHttpSettings: Added optional parameter -ConnectionDraining
+
+* Remapped unused 'Name' parameter in ExpressRoute cmdlets to 'ExpressRouteCircuitName'
+    - Get-AzureRmExpressRouteCircuitARPTable
+    - Get-AzureRmExpressRouteCircuitRouteTable
+    - Get-AzureRmExpressRouteCircuitRouteTableSummary
+    - Get-AzureRmExpressRouteCircuitStats
 
 ## Version 3.5.0
 * Added support for network Watcher APIs
@@ -83,4 +91,3 @@
 * Get-AzureRmEffectiveNetworkSecurityGroup
     - Add warning if there is no response from GetEffectiveNSG
 * Add Source property to EffectiveRoute 
-
