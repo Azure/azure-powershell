@@ -9,7 +9,7 @@
 @{
 
 # Version number of this module.
-ModuleVersion = '1.2.8'
+ModuleVersion = '1.2.9'
 
 # ID used to uniquely identify this module
 GUID = '65f1e943-5e22-4b21-8350-82c798c958d2'
@@ -45,7 +45,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = 'None'
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName="AzureRM.Profile"; RequiredVersion="1.0.4.2"},
+RequiredModules = @(@{ModuleName="AzureRM.Profile"; RequiredVersion="1.0.4.3"},
   @{ModuleName="AzureRM.AzureStackAdmin"; RequiredVersion="0.10.6"},
   @{ModuleName="AzureRM.AzureStackStorage"; RequiredVersion="0.10.6"})
 
