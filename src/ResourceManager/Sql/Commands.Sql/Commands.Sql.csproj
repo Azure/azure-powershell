@@ -62,11 +62,9 @@
     <None Include="MSSharedLibKey.snk" />
     <None Include="MSSharedLibKey.snk" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Common\AzureEndpointsCommunicator.cs" />
     <Compile Include="Common\AzureSqlCmdletBase.cs" />
     <Compile Include="Common\AzureSqlDatabaseCmdletBase.cs" />
     <Compile Include="Common\Constants.cs" />
-    <Compile Include="Common\SecurityConstants.cs" />
     <Compile Include="Database\Cmdlet\AzureSqlDatabaseActivityCmdletBase.cs" />
     <Compile Include="Database\Cmdlet\AzureSqlDatabaseCmdletBase.cs" />
     <Compile Include="Database\Cmdlet\GetAzureSqlDatabase.cs" />
@@ -235,7 +233,7 @@
       <Aliases>MicrosoftAzureCommandsResources</Aliases>
     </ProjectReference>
   </ItemGroup>
-    <ItemGroup>
+  <ItemGroup>
     <Content Include="Microsoft.Azure.Commands.Sql.dll-Help.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

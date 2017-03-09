@@ -1,5 +1,4 @@
-﻿#if false
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Sql.Database.Cmdlet;
+//using Microsoft.Azure.Commands.Sql.Database.Cmdlet;
 using Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Cmdlet;
 using Microsoft.Azure.Commands.Sql.Test.Utilities;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
@@ -55,18 +54,5 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ServerName", isMandatory: true, valueFromPipelineByName: true);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ExcludeElasticPools", isMandatory: false, valueFromPipelineByName: true);
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetAzureSqlDatabaseExpandedAttributes()
-        {
-            Type type = typeof(GetAzureSqlDatabaseExpanded);
-            UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: false);
-            UnitTestHelper.CheckConfirmImpact(type, System.Management.Automation.ConfirmImpact.None);
-
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "ServerName", isMandatory: true, valueFromPipelineByName: true);
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "DatabaseName", isMandatory: false, valueFromPipelineByName: true);
-        }
     }
 }
-#endif

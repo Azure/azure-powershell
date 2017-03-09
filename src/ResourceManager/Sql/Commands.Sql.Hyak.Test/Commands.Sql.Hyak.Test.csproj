@@ -284,10 +284,8 @@
     <Compile Include="UnitTests\AzureSqlDatabaseImportExportTests.cs" />
     <Compile Include="UnitTests\AzureSqlCmdletBaseAttributeTests.cs" />
     <Compile Include="UnitTests\AzureSqlDatabaseActivationAttributeTest.cs" />
-    <Compile Include="UnitTests\AzureSqlDatabaseAttributeTests.cs" />
     <Compile Include="UnitTests\AzureSqlDatabaseServerServiceObjectiveAttributeTests.cs" />
     <Compile Include="UnitTests\AzureSqlDatabaseServerFirewallRuleAttributeTests.cs" />
-    <Compile Include="UnitTests\AzureSqlDatabaseServerAttributeTests.cs" />
     <Compile Include="UnitTests\AzureSqlDatabaseIndexRecommendationAttributeTests.cs" />
     <Compile Include="UnitTests\AzureSqlCapabilityAttributeTests.cs" />
     <Compile Include="UnitTests\AzureSqlServerUpgradeAttributeTests.cs" />
