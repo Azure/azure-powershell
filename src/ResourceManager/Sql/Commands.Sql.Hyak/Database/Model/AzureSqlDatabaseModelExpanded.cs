@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// <summary>
         /// Service tier advisor for this database
         /// </summary>
-        public Management.Sql.Models.ServiceTierAdvisor ServiceTierAdvisor { get; set; }
+        public Management.Sql.Models.ServiceTierAdvisorProperties ServiceTierAdvisor { get; set; }
 
         /// <summary>
         /// Construct AzureSqlDatabaseModelExpanded from Management.Sql.Models.Database object
@@ -33,10 +33,10 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// <param name="database">Database object</param>
         public AzureSqlDatabaseModelExpanded(string resourceGroup, string serverName, Management.Sql.Models.Database database) : base(resourceGroup, serverName, database)
         {
-            if (database.ServiceTierAdvisors != null
-                && database.ServiceTierAdvisors.Count > 0)
+            if (database.Properties.ServiceTierAdvisors != null
+                && database.Properties.ServiceTierAdvisors.Count > 0)
             {
-                ServiceTierAdvisor = database.ServiceTierAdvisors[0];
+                ServiceTierAdvisor = database.Properties.ServiceTierAdvisors[0].Properties;
             }
         }
     }

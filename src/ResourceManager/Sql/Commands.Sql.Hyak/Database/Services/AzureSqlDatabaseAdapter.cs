@@ -130,17 +130,20 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <returns>The upserted Azure Sql Database</returns>
         internal AzureSqlDatabaseModel UpsertDatabase(string resourceGroup, string serverName, AzureSqlDatabaseModel model)
         {
-            var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, model.DatabaseName, Util.GenerateTracingId(), new Management.Sql.Models.Database()
+            var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, model.DatabaseName, Util.GenerateTracingId(), new DatabaseCreateOrUpdateParameters()
             {
                 Location = model.Location,
                 Tags = model.Tags,
-                Collation = model.CollationName,
-                Edition = model.Edition == DatabaseEdition.None ? null : model.Edition.ToString(),
-                MaxSizeBytes = model.MaxSizeBytes.ToString(),
-                RequestedServiceObjectiveId = model.RequestedServiceObjectiveId,
-                ElasticPoolName = model.ElasticPoolName,
-                RequestedServiceObjectiveName = model.RequestedServiceObjectiveName,
-                ReadScale = model.ReadScale,
+                Properties = new DatabaseCreateOrUpdateProperties()
+                {
+                    Collation = model.CollationName,
+                    Edition = model.Edition == DatabaseEdition.None ? null : model.Edition.ToString(),
+                    MaxSizeBytes = model.MaxSizeBytes,
+                    RequestedServiceObjectiveId = model.RequestedServiceObjectiveId,
+                    ElasticPoolName = model.ElasticPoolName,
+                    RequestedServiceObjectiveName = model.RequestedServiceObjectiveName,
+                    ReadScale = model.ReadScale.ToString(),
+                }
             });
 
             return CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);
@@ -203,28 +206,28 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                    {
                        return new AzureSqlDatabaseActivityModel()
                        {
-                           DatabaseName = r.DatabaseName,
-                           EndTime = r.EndTime,
-                           ErrorCode = r.ErrorCode,
-                           ErrorMessage = r.ErrorMessage,
-                           ErrorSeverity = r.ErrorSeverity,
-                           Operation = r.Operation,
-                           OperationId = Guid.Parse(r.OperationId),
-                           PercentComplete = r.PercentComplete,
-                           ServerName = r.ServerName,
-                           StartTime = r.StartTime,
-                           State = r.State,
+                           DatabaseName = r.Properties.DatabaseName,
+                           EndTime = r.Properties.EndTime,
+                           ErrorCode = r.Properties.ErrorCode,
+                           ErrorMessage = r.Properties.ErrorMessage,
+                           ErrorSeverity = r.Properties.ErrorSeverity,
+                           Operation = r.Properties.Operation,
+                           OperationId = r.Properties.OperationId,
+                           PercentComplete = r.Properties.PercentComplete,
+                           ServerName = r.Properties.ServerName,
+                           StartTime = r.Properties.StartTime,
+                           State = r.Properties.State,
                            Properties = new AzureSqlDatabaseActivityModel.DatabaseState()
                            {
                                Current = new Dictionary<string, string>()
                                {
-                                    {"CurrentElasticPoolName", r.CurrentElasticPoolName},
-                                    {"CurrentServiceObjectiveName", r.CurrentServiceObjective},
+                                    {"CurrentElasticPoolName", r.Properties.CurrentElasticPoolName},
+                                    {"CurrentServiceObjectiveName", r.Properties.CurrentServiceObjectiveName},
                                },
                                Requested = new Dictionary<string, string>()
                                {
-                                    {"RequestedElasticPoolName", r.RequestedElasticPoolName},
-                                    {"RequestedServiceObjectiveName", r.RequestedServiceObjective},
+                                    {"RequestedElasticPoolName", r.Properties.RequestedElasticPoolName},
+                                    {"RequestedServiceObjectiveName", r.Properties.RequestedServiceObjectiveName},
                                }
                            }
                        };
@@ -240,7 +243,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             }
             else
             {
-                throw new NotSupportedException(string.Format(CultureInfo.InvariantCulture, Properties.Resources.StandaloneDatabaseActivityNotSupported));
+                throw new NotSupportedException(string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.StandaloneDatabaseActivityNotSupported));
             }
         }
     }

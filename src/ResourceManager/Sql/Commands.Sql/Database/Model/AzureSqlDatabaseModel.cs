@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// <summary>
         /// Gets or sets the read scale option of the database (Disabled/Enabled).
         /// </summary>
-        public DatabaseReadScale? ReadScale { get; set; }
+        public Management.Sql.Models.ReadScale? ReadScale { get; set; }
 
         /// <summary>
         /// Construct AzureSqlDatabaseModel
@@ -145,37 +145,33 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         {
             Guid id = Guid.Empty;
             DatabaseEdition edition = DatabaseEdition.None;
-            DatabaseReadScale readScale = DatabaseReadScale.Enabled;
 
             ResourceGroupName = resourceGroup;
             ServerName = serverName;
-            CollationName = database.Properties.Collation;
-            CreationDate = database.Properties.CreationDate;
-            CurrentServiceObjectiveName = database.Properties.ServiceObjective;
-            MaxSizeBytes = database.Properties.MaxSizeBytes;
+            CollationName = database.Collation;
+            CreationDate = database.CreationDate.Value;
+            CurrentServiceObjectiveName = database.ServiceLevelObjective;
+            MaxSizeBytes = long.Parse(database.MaxSizeBytes);
             DatabaseName = database.Name;
-            Status = database.Properties.Status;
+            Status = database.Status;
             Tags = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(database.Tags), false);
-            ElasticPoolName = database.Properties.ElasticPoolName;
+            ElasticPoolName = database.ElasticPoolName;
             Location = database.Location;
             ResourceId = database.Id;
-            CreateMode = database.Properties.CreateMode;
-            EarliestRestoreDate = database.Properties.EarliestRestoreDate;
+            CreateMode = database.CreateMode;
+            EarliestRestoreDate = database.EarliestRestoreDate;
 
-            Guid.TryParse(database.Properties.CurrentServiceObjectiveId, out id);
-            CurrentServiceObjectiveId = id;
+            CurrentServiceObjectiveId = database.CurrentServiceObjectiveId.Value;
 
-            Guid.TryParse(database.Properties.DatabaseId, out id);
+            Guid.TryParse(database.DatabaseId, out id);
             DatabaseId = id;
 
-            Enum.TryParse<DatabaseEdition>(database.Properties.Edition, true, out edition);
+            Enum.TryParse<DatabaseEdition>(database.Edition, true, out edition);
             Edition = edition;
 
-            Guid.TryParse(database.Properties.RequestedServiceObjectiveId, out id);
-            RequestedServiceObjectiveId = id;
+            RequestedServiceObjectiveId = database.RequestedServiceObjectiveId.Value;
 
-            Enum.TryParse<DatabaseReadScale>(database.Properties.ReadScale, true, out readScale);
-            ReadScale = readScale;
+            ReadScale = database.ReadScale;
         }
     }
 }

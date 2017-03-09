@@ -85,16 +85,13 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         /// <returns>The updated server model</returns>
         public AzureSqlServerModel UpsertServer(AzureSqlServerModel model)
         {
-            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, Util.GenerateTracingId(), new ServerCreateOrUpdateParameters()
+            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, Util.GenerateTracingId(), new Management.Sql.Models.Server()
             {
                 Location = model.Location,
                 Tags = model.Tags,
-                Properties = new ServerCreateOrUpdateProperties()
-                {
-                    AdministratorLogin = model.SqlAdministratorLogin,
-                    AdministratorLoginPassword = model.SqlAdministratorPassword != null ? Decrypt(model.SqlAdministratorPassword) : null,
-                    Version = model.ServerVersion,
-                }
+                AdministratorLogin = model.SqlAdministratorLogin,
+                AdministratorLoginPassword = model.SqlAdministratorPassword != null ? Decrypt(model.SqlAdministratorPassword) : null,
+                Version = model.ServerVersion,
             });
 
             return CreateServerModelFromResponse(model.ResourceGroupName, resp);
@@ -122,8 +119,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
 
             server.ResourceGroupName = resourceGroupName;
             server.ServerName = resp.Name;
-            server.ServerVersion = resp.Properties.Version;
-            server.SqlAdministratorLogin = resp.Properties.AdministratorLogin;
+            server.ServerVersion = resp.Version;
+            server.SqlAdministratorLogin = resp.AdministratorLogin;
             server.Location = resp.Location;
             server.Tags = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(resp.Tags), false);
 

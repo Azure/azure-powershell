@@ -36,8 +36,6 @@ namespace Microsoft.Azure.Commands.Sql.Services
             );
         }
 
-#if false
-
         /// <summary>
         /// In cases where the user decided to use one of the shortcuts (ALL or NONE), this method sets the value of the EventType property to reflect the correct values.
         /// In addition the is a deprecated audit events validity check.
@@ -89,8 +87,6 @@ namespace Microsoft.Azure.Commands.Sql.Services
             }
             return eventTypes;
         }
-
-#endif
 
         /// <summary>
         /// Checks if email addresses are in a correct format

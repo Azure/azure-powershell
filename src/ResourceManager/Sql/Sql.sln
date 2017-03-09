@@ -6,13 +6,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ResourceManager.Common", "..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj", "{3819D8A7-C62C-4C47-8DDD-0332D9CE1252}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Sql", "Commands.Sql\Commands.Sql.csproj", "{69ED499E-6F3C-488F-86B8-B74CFDA4D47E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Sql.Hyak", "Commands.Sql.Hyak\Commands.Sql.Hyak.csproj", "{69ED499E-6F3C-488F-86B8-B74CFDA4D47E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Sql.AutoRest", "Commands.Sql.AutoRest\Commands.Sql.AutoRest.csproj", "{DB5EDF5B-C351-47EE-BF50-DD5EA343AFB5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Sql", "Commands.Sql\Commands.Sql.csproj", "{DB5EDF5B-C351-47EE-BF50-DD5EA343AFB5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Storage", "..\..\Common\Commands.Common.Storage\Commands.Common.Storage.csproj", "{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Sql.Test", "Commands.Sql.Test\Commands.Sql.Test.csproj", "{56ED8C97-53B9-4DF6-ACB5-7E6800105BF8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Sql.Hyak.Test", "Commands.Sql.Hyak.Test\Commands.Sql.Hyak.Test.csproj", "{56ED8C97-53B9-4DF6-ACB5-7E6800105BF8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Profile\Commands.Profile\Commands.Profile.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject

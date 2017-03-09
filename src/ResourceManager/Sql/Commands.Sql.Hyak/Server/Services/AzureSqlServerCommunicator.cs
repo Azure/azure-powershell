@@ -21,14 +21,13 @@ using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.WindowsAzure.Management.Storage;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
-namespace Microsoft.Azure.Commands.Sql.Database.Services
+namespace Microsoft.Azure.Commands.Sql.Server.Services
 {
     /// <summary>
     /// This class is responsible for all the REST communication with the audit REST endpoints
     /// </summary>
-    public class AzureSqlDatabaseCommunicator
+    public class AzureSqlServerCommunicator
     {
         /// <summary>
         /// The Sql client to be used by this end points communicator
@@ -46,16 +45,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         public AzureContext Context { get; set; }
 
         /// <summary>
-        /// Expand string used for getting additional database information
-        /// </summary>
-        public const string ExpandDatabase = "serviceTierAdvisors";
-
-        /// <summary>
         /// Creates a communicator for Azure Sql Databases
         /// </summary>
         /// <param name="profile"></param>
         /// <param name="subscription"></param>
-        public AzureSqlDatabaseCommunicator(AzureContext context)
+        public AzureSqlServerCommunicator(AzureContext context)
         {
             Context = context;
             if (context.Subscription != Subscription)
@@ -66,52 +60,35 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         }
 
         /// <summary>
-        /// Gets the Azure Sql Database
+        /// Gets the Azure Sql Database SErver
         /// </summary>
-        public Management.Sql.Models.Database Get(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        public Management.Sql.Models.Server Get(string resourceGroupName, string serverName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).Databases.Get(resourceGroupName, serverName, databaseName);
+            return GetCurrentSqlClient(clientRequestId).Servers.Get(resourceGroupName, serverName).Server;
         }
 
         /// <summary>
-        /// Gets the Azure Sql Database expanded additional details.
+        /// Lists Azure Sql Database Servers
         /// </summary>
-        public Management.Sql.Models.Database GetExpanded(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        public IList<Management.Sql.Models.Server> List(string resourceGroupName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).Databases.Get(resourceGroupName, serverName, databaseName, expand: ExpandDatabase);
+            return GetCurrentSqlClient(clientRequestId).Servers.List(resourceGroupName).Servers;
         }
 
         /// <summary>
-        /// Lists Azure Sql Databases
+        /// Creates or updates a Azure Sql Database SErver
         /// </summary>
-        public IList<Management.Sql.Models.Database> List(string resourceGroupName, string serverName, string clientRequestId)
+        public Management.Sql.Models.Server CreateOrUpdate(string resourceGroupName, string serverName, string clientRequestId, ServerCreateOrUpdateParameters parameters)
         {
-            return GetCurrentSqlClient(clientRequestId).Databases.ListByServer(resourceGroupName, serverName).ToList();
+            return GetCurrentSqlClient(clientRequestId).Servers.CreateOrUpdate(resourceGroupName, serverName, parameters).Server;
         }
 
         /// <summary>
-        /// Lists Azure Sql Databases expanded with additional details.
+        /// Deletes a Azure Sql Database SErver
         /// </summary>
-        public IList<Management.Sql.Models.Database> ListExpanded(string resourceGroupName, string serverName, string clientRequestId)
+        public void Remove(string resourceGroupName, string serverName, string clientRequestId)
         {
-            // TODO: missing from swagger
-            return GetCurrentSqlClient(clientRequestId).Databases.ListByServer(resourceGroupName, serverName/*, expand: ExpandDatabase*/).ToList();
-        }
-
-        /// <summary>
-        /// Creates or updates a database
-        /// </summary>
-        public Management.Sql.Models.Database CreateOrUpdate(string resourceGroupName, string serverName, string databaseName, string clientRequestId, Management.Sql.Models.Database parameters)
-        {
-            return GetCurrentSqlClient(clientRequestId).Databases.CreateOrUpdate(resourceGroupName, serverName, databaseName, parameters);
-        }
-
-        /// <summary>
-        /// Deletes a database
-        /// </summary>
-        public void Remove(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
-        {
-            GetCurrentSqlClient(clientRequestId).Databases.Delete(resourceGroupName, serverName, databaseName);
+            GetCurrentSqlClient(clientRequestId).Servers.Delete(resourceGroupName, serverName);
         }
 
         /// <summary>
@@ -121,9 +98,10 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
         private SqlManagementClient GetCurrentSqlClient(String clientRequestId)
         {
+            // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
-                SqlClient = AzureSession.ClientFactory.CreateArmClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+                SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
             SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
             SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);

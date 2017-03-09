@@ -10,7 +10,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Azure.Commands.Sql.Test</RootNamespace>
-    <AssemblyName>Microsoft.Azure.Commands.Sql.Test</AssemblyName>
+    <AssemblyName>Microsoft.Azure.Commands.Sql.Hyak.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -325,9 +325,9 @@
       <Project>{65c3a86a-716d-4e7d-ab67-1db00b3bf72d}</Project>
       <Name>Commands.Common.Storage</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.Sql\Commands.Sql.csproj">
+    <ProjectReference Include="..\Commands.Sql.Hyak\Commands.Sql.Hyak.csproj">
       <Project>{69ed499e-6f3c-488f-86b8-b74cfda4d47e}</Project>
-      <Name>Commands.Sql</Name>
+      <Name>Commands.Sql.Hyak</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
