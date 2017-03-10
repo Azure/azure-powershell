@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Creates a new integration account 
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmIntegrationAccount", SupportsShouldProcess = true), OutputType(typeof(object))]
+    [Cmdlet(VerbsCommon.New, "AzureRmIntegrationAccount", SupportsShouldProcess = true)]
+    [OutputType(typeof(IntegrationAccount))]
     public class NewAzureIntegrationAccountCommand : LogicAppBaseCmdlet
     {
 
@@ -65,7 +66,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                     Location = this.Location,
                     Sku = new IntegrationAccountSku
                     {
-                        Name = (IntegrationAccountSkuName) Enum.Parse(typeof (IntegrationAccountSkuName), this.Sku)
+                        Name = (IntegrationAccountSkuName) Enum.Parse(typeof(IntegrationAccountSkuName), this.Sku)
                     },
                     Properties = new JObject()
 

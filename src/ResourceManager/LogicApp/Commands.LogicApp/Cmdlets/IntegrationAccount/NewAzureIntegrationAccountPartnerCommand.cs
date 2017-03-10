@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Creates a new integration account partner.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmIntegrationAccountPartner", SupportsShouldProcess = true), OutputType(typeof(object))]
+    [Cmdlet(VerbsCommon.New, "AzureRmIntegrationAccountPartner", SupportsShouldProcess = true)]
+    [OutputType(typeof(IntegrationAccountPartner))]
     public class NewAzureIntegrationAccountPartnerCommand : LogicAppBaseCmdlet
     {
 
@@ -95,7 +96,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                     this.PartnerName,
                     new IntegrationAccountPartner
                     {
-                        PartnerType = (PartnerType) Enum.Parse(typeof (PartnerType), this.PartnerType),
+                        PartnerType = (PartnerType) Enum.Parse(typeof(PartnerType), this.PartnerType),
                         Content = new PartnerContent
                         {
                             B2b = new B2BPartnerContent

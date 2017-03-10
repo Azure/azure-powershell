@@ -23,7 +23,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
     /// </summary>
     public class IntegrationAccountAgreementTests : RMTestBase
     {
-
         /// <summary>
         /// Test New-AzureRmIntegrationAccountAgreement command to create a new X12 integration account agreement.
         /// </summary>
@@ -96,7 +95,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test Get-AzureRmIntegrationAccountAgreement command to get all the integration account agreement.
+        /// Test Get-AzureRmIntegrationAccountAgreement command to get all the integration account agreements.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
