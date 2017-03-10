@@ -562,4 +562,7 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
 {0}</value>
     <comment>{0} = substatuses string</comment>
   </data>
+  <data name="DiagnosticsExtensionMismatchStorageAccountName" xml:space="preserve">
+    <value>Storage account names provided in public and private configs do not match.</value>
+  </data>
 </root>

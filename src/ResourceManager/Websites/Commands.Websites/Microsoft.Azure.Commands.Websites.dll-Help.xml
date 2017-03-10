@@ -372,8 +372,16 @@
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>--------------------------  Example 1: Get an App Service plan  --------------------------</maml:title>
-<dev:code>PS C:\&gt;Get-AzureRmAppServicePlan -Name "MyServicePlan" -ResourceGroupName "Default-Web-WestUS"</dev:code>
-<dev:remarks><maml:para>This command gets the App Service plan named MyServicePlan in the resource group named Default-Web-WestUS.
+<dev:code>PS C:\&gt;Get-AzureRmAppServicePlan -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP"</dev:code>
+<dev:remarks><maml:para>This command gets the App Service plan named ContosoASP in the resource group named Default-Web-WestUS.
+</maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>--------------------------  Example 2: Get all App Service plans in a location  --------------------------</maml:title>
+<dev:code>PS C:\&gt;Get-AzureRmAppServicePlan -Location "West US"</dev:code>
+<dev:remarks><maml:para>This command gets all App Service plans located in the "West US" region.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -2513,8 +2521,8 @@
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>--------------------------  Example 1: Create an App Service plan  --------------------------</maml:title>
-<dev:code>PS C:\&gt;New-AzureRmAppServicePlan -ResourceGroupName "Default-Web-WestUS" -Name "MyServicePlan" -Location "West US" -Sku "Basic" -NumberofWorkers 2 -WorkerSize "Small"</dev:code>
-<dev:remarks><maml:para>This command creates an App Service plan named MyServicePlan in the geo location West US. The command specifies a Basic SKU and allocates two workers.
+<dev:code>PS C:\&gt;New-AzureRmAppServicePlan -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP" -Location "West US" -Tier "Basic" -NumberofWorkers 2 -WorkerSize "Small"</dev:code>
+<dev:remarks><maml:para>This command creates an App Service plan named ContosoASP in the resource group named Default-Web-WestUS in Geo location West US. The command specifies a Basic Tier and allocates two small workers.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
