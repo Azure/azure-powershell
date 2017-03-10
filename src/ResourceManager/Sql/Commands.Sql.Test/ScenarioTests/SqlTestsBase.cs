@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
         protected SqlManagementClient GetSqlClient(RestTestFramework.MockContext context)
         {
-            SqlManagementClient client = context.GetServiceClient<SqlManagementClient>();
+            SqlManagementClient client = context.GetServiceClient<SqlManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
             if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
                 //client.LongRunningOperationInitialTimeout = 0; // this property exists in Hyak-based client only

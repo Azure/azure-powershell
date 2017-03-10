@@ -100,9 +100,6 @@
     <Compile Include="Server\Services\AzureSqlServerAdapter.cs" />
     <Compile Include="Server\Services\AzureSqlServerCommunicator.cs" />
     <Compile Include="Services\Util.cs" />
-    <None Include="SqlStartup.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
