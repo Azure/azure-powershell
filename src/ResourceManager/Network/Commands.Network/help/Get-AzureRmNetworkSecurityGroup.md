@@ -12,15 +12,15 @@ Gets a network security group.
 
 ## SYNTAX
 
-### Expand
-```
-Get-AzureRmNetworkSecurityGroup -Name <String> -ResourceGroupName <String> -ExpandResource <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
-```
-
 ### NoExpand
 ```
 Get-AzureRmNetworkSecurityGroup [-Name <String>] [-ResourceGroupName <String>]
+ [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+```
+
+### Expand
+```
+Get-AzureRmNetworkSecurityGroup -Name <String> -ResourceGroupName <String> -ExpandResource <String>
  [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
@@ -31,60 +31,20 @@ The **Get-AzureRmNetworkSecurityGroup** cmdlet gets an Azure network security gr
 
 ### 1: Retrieve an existing network security group
 ```
-   Get-AzureRmNetworkSecurityGroup -Name  nsg1 -ResourceGroupName "rg1"
+Get-AzureRmNetworkSecurityGroup -Name  nsg1 -ResourceGroupName "rg1"
 ```
+
 This command returns contents of Azure network security group "nsg1" in resource group "rg1"
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the network security group that this cmdlet gets.
-
-```yaml
-Type: String
-Parameter Sets: Expand
-Aliases: ResourceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: NoExpand
-Aliases: ResourceName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specifies the name of the resource group that the network security group belongs to.
-
+### -ExpandResource
 ```yaml
 Type: String
 Parameter Sets: Expand
 Aliases: 
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: NoExpand
-Aliases: 
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -130,7 +90,48 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExpandResource
+### -Name
+Specifies the name of the network security group that this cmdlet gets.
+
+```yaml
+Type: String
+Parameter Sets: NoExpand
+Aliases: ResourceName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: Expand
+Aliases: ResourceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the name of the resource group that the network security group belongs to.
+
+```yaml
+Type: String
+Parameter Sets: NoExpand
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ```yaml
 Type: String
 Parameter Sets: Expand

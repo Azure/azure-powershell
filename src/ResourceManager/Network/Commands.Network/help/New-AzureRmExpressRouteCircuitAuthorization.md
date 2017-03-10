@@ -1,65 +1,104 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-ms.assetid: B6E55944-1B78-463F-9FC9-98097FEEC278
-online version:
+ms.assetid: E40CAF2F-ED57-4AC1-8B9A-E48042DD8F91
+online version: 
 schema: 2.0.0
 ---
 
-# New-AzureRmExpressRouteCircuitAuthorization
+# New-AzureRmExpressRouteCircuit
 
 ## SYNOPSIS
-
-Creates an ExpressRoute circuit authorization.
+Creates an Azure express route circuit.
 
 ## SYNTAX
 
 ```
-New-AzureRmExpressRouteCircuitAuthorization -Name <String> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+New-AzureRmExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SkuTier <String>] [-SkuFamily <String>] -ServiceProviderName <String> -PeeringLocation <String>
+ -BandwidthInMbps <Int32>
+ [-Peering <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPeering]>]
+ [-Authorization <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization]>]
+ [-AllowClassicOperations <Boolean>] [-Tag <Hashtable>] [-Force] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
-The **New-AzureRmExpressRouteCircuitAuthorization** cmdlet creates a circuit authorization that can
-be added to an ExpressRoute circuit. ExpressRoute circuits connect your on-premises network to the
-Microsoft cloud by using a connectivity provider instead of the public Internet. The owner of an
-ExpressRoute circuit can create as many as 10 authorizations for each circuit; these authorizations
-generate an authorization key that can be used by a virtual network owner to connect a network to
-the circuit. There can only one authorization per virtual network.
-
-After you create an ExpressRoute circuit you can use
-**Add-AzureRmExpressRouteCircuitAuthorization** to add an authorization to that circuit.
-Alternatively, you can use **New-AzureRmExpressRouteCircuitAuthorization** to create an
-authorization that can be added to a new circuit at the same time the circuit is created.
+The **New-AzureRmExpressRouteCircuit** cmdlet creates an Azure express route circuit.
 
 ## EXAMPLES
 
-### Example 1: Create a new circuit authorization
-
-```powershell
-$Authorization = New-AzureRmExpressRouteCircuitAuthorization -Name "ContosoCircuitAuthorization"
+### Example 1: Create a new ExpressRoute circuit
 ```
-
-This command creates a new circuit authorization named ContosoCircuitAuthorization and then stores
-that object in a variable named $Authorization. Saving the object to a variable is important:
-although **New-AzureRmExpressRouteCircuitAuthorization** can create a circuit authorization it
-cannot add that authorization to a circuit route. Instead, the variable $Authorization is used
-New-AzureRmExpressRouteCircuit when creating a brand-new ExpressRoute circuit.
-
-For more information, see the documentation for the New-AzureRmExpressRouteCircuit cmdlet.
+$parameters = @{
+    Name='ExpressRouteCircuit'
+    ResourceGroupName='ExpressRouteResourceGroup'
+    Location='West US'
+    SkuTier='Standard'
+    SkuFamily='MeteredData'
+    ServiceProviderName='Equinix'
+    PeeringLocation='Silicon Valley'
+    BandwidthInMbps=200
+}
+New-AzureRmExpressRouteCircuit @parameters
+```
 
 ## PARAMETERS
 
-### -Name
-
-Specifies a unique name for the new ExpressRoute circuit authorization.
+### -AllowClassicOperations
+The use of this parameter allows you to use the classic Azure PowerShell cmdlets to manage the
+circuit.
 
 ```yaml
-Type: String
+Type: Boolean
 Parameter Sets: (All)
-Aliases:
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Authorization
+A list of circuit authorizations.
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -BandwidthInMbps
+The bandwidth of the circuit. This must be a value that is supported by the service provider.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Force
+Forces the command to run without asking for user confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -67,7 +106,6 @@ Accept wildcard characters: False
 ```
 
 ### -InformationAction
-
 Specifies how this cmdlet responds to an information event.
 
 The acceptable values for this parameter are:
@@ -92,7 +130,6 @@ Accept wildcard characters: False
 ```
 
 ### -InformationVariable
-
 Specifies an information variable.
 
 ```yaml
@@ -107,31 +144,190 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### CommonParameters
+### -Location
+The location of the circuit.
 
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
--InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
--WarningAction, and -WarningVariable. For more information, see about_CommonParameters
-(http://go.microsoft.com/fwlink/?LinkID=113216).
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the ExpressRoute circuit being created.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: ResourceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Peering
+A list peer configurations.
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPeering]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PeeringLocation
+The name of the peering location supported by the service provider.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The resource group that will contain the circuit.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServiceProviderName
+The name of the circuit service provider. This must match a name listed by the
+Get-AzureRmExpressRouteServiceProvider cmdlet.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SkuFamily
+SKU family determines the billing type. Possible values for this parameter are: `MeteredData` or
+`UnlimitedData`. Note that you can change the billing type from MeteredData to UnlimitedData, but
+you can't change the type from UnlimitedData to MeteredData.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SkuTier
+The tier of service for the circuit. Possible values for this parameter are: `Standard` or `Premium`.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Tag
+A hastable of resource tags to be assigned to the circuit.
+
+```yaml
+Type: Hashtable
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-###
-This cmdlet does not accept pipelined input.
-
 ## OUTPUTS
-
-### This cmdlet creates instances of the
-**Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization** object.
 
 ## NOTES
 
 ## RELATED LINKS
 
-[Add-AzureRmExpressRouteCircuitAuthorization](./Add-AzureRmExpressRouteCircuitAuthorization.md)
+[Get-AzureRmExpressRouteCircuit](Get-AzureRmExpressRouteCircuit.md)
 
-[Get-AzureRmExpressRouteCircuitAuthorization](./Get-AzureRmExpressRouteCircuitAuthorization.md)
+[Move-AzureRmExpressRouteCircuit](Move-AzureRmExpressRouteCircuit.md)
 
-[Remove-AzureRmExpressRouteCircuitAuthorization](./Remove-AzureRmExpressRouteCircuitAuthorization.md)
+[Remove-AzureRmExpressRouteCircuit](Remove-AzureRmExpressRouteCircuit.md)
 
-
+[Set-AzureRmExpressRouteCircuit](Set-AzureRmExpressRouteCircuit.md)

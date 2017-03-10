@@ -28,7 +28,7 @@ The **New-AzureRmVirtualNetwork** cmdlet creates an Azure virtual network.
 
 ### 1:
 ```
- New-AzureRmResourceGroup -Name TestResourceGroup -Location centralus
+New-AzureRmResourceGroup -Name TestResourceGroup -Location centralus
     $frontendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name frontendSubnet 
     -AddressPrefix "10.0.1.0/24"
     $backendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name backendSubnet -AddressPrefix 
@@ -36,13 +36,15 @@ The **New-AzureRmVirtualNetwork** cmdlet creates an Azure virtual network.
     New-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup 
     -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet
 ```
+
 This example creates a virtual network with two subnets. First, a new resource group is 
     created in the centralus region. Then, the example creates in-memory representations of 
     two subnets. The New-AzureRmVirtualNetworkSubnetConfig cmdlet will not create any subnet 
     on the server side. There is one subnet called frontendSubnet and one subnet called 
     backendSubnet. The New-AzureRmVirtualNetwork cmdlet then creates a virtual network using 
     the CIDR 10.0.0.0/16 as the address prefix and two subnets.
-### 2:  Create a virtual network with DNS settings 
+
+### 2:  Create a virtual network with DNS settings
 ```
 New-AzureRmResourceGroup -Name TestResourceGroup -Location centralus
     $frontendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name frontendSubnet 
@@ -53,12 +55,14 @@ New-AzureRmResourceGroup -Name TestResourceGroup -Location centralus
     -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet 
     -DnsServer 10.0.1.5,10.0.1.6
 ```
+
 This example create a virtual network with two subnets and two DNS servers. The effect of 
     specifying the DNS servers on the virtual network is that the NICs/VMs that are deployed 
     into this virtual network inherit these DNS servers as defaults. These defaults can be 
     overwritten per NIC through a NIC-level setting. If no DNS servers are specified on a 
     VNET and no DNS servers on the NICs, then the default Azure DNS servers are used for DNS 
     resolution.
+
 ### 3: Create a virtual network with a subnet referencing a network security group
 ```
 New-AzureRmResourceGroup -Name TestResourceGroup -Location centralus
@@ -74,6 +78,7 @@ New-AzureRmResourceGroup -Name TestResourceGroup -Location centralus
     New-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup 
     -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet
 ```
+
  This example creates a virtual network with subnets that reference a network security 
     group. First, the example creates a resource group as a container for the resources that 
     will be created. Then, a network security group is created that allows inbound RDP 
@@ -83,51 +88,6 @@ New-AzureRmResourceGroup -Name TestResourceGroup -Location centralus
     New-AzureRmVirtualNetwork command then creates the virtual network.
 
 ## PARAMETERS
-
-### -Name
-Specifies the name of the virtual network that this cmdlet creates.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: ResourceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specifies the name of a resource group to contain the virtual network.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Location
-Specifies the region for the virtual network.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -AddressPrefix
 Specifies a range of IP addresses for a virtual network.
@@ -149,36 +109,6 @@ Specifies the DNS server for a subnet.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Subnet
-Specifies a list of subnets to associate with the virtual network.
-
-```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSSubnet]
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Tag
-Specifies a dictionary of tags to associate with the network interface.
-
-```yaml
-Type: Hashtable
 Parameter Sets: (All)
 Aliases: 
 
@@ -243,19 +173,78 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+### -Location
+Specifies the region for the virtual network.
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
-Aliases: wi
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the name of the virtual network that this cmdlet creates.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: ResourceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the name of a resource group to contain the virtual network.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Subnet
+Specifies a list of subnets to associate with the virtual network.
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSSubnet]
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
 Position: Named
-Default value: False
-Accept pipeline input: False
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Tag
+Specifies a dictionary of tags to associate with the network interface.
+
+```yaml
+Type: Hashtable
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -266,6 +255,22 @@ Prompts you for confirmation before running the cmdlet.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named
