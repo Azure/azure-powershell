@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 2.7.0
+* Bug fix - Auditing and Threat Detection cmdlets now return a meangfull error instead of null refernce error. 
+* Updating Transparent Data Encryption (TDE) with Bring Your Own Key (BYOK) support cmdlets for updated API.
+
 ## Version 2.6.0
 * Adding new cmdlets for support for Azure SQL feature Transparent Data Encryption (TDE) with Bring Your Own Key (BYOK) Support
 	- TDE with BYOK support is a new feature in Azure SQL, which allows users to encrypt their database with a key from Azure Key Vault. This feature is currently in private preview.

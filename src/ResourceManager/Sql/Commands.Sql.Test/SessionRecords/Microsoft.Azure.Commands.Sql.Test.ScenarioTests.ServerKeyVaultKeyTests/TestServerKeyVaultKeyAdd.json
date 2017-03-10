@@ -529,7 +529,7 @@
       "RequestUri": "/subscriptions/0aac1c90-2b22-41aa-a983-5b93c2afa171/resourceGroups/onesdk4934/providers/Microsoft.Sql/servers/onesdk8106/keys/akvtdekeyvault_key1_51c2fab9ff3c4a17aab4cd51b932b106?api-version=2015-05-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGFhYzFjOTAtMmIyMi00MWFhLWE5ODMtNWI5M2MyYWZhMTcxL3Jlc291cmNlR3JvdXBzL29uZXNkazQ5MzQvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9vbmVzZGs4MTA2L2tleXMvYWt2dGRla2V5dmF1bHRfa2V5MV81MWMyZmFiOWZmM2M0YTE3YWFiNGNkNTFiOTMyYjEwNj9hcGktdmVyc2lvbj0yMDE1LTA1LTAxLXByZXZpZXc=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"uri\": \"https://akvtdekeyvault.vault.azure.net/keys/key1/51c2fab9ff3c4a17aab4cd51b932b106\",\r\n    \"type\": \"AzureKeyVault\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"uri\": \"https://akvtdekeyvault.vault.azure.net/keys/key1/51c2fab9ff3c4a17aab4cd51b932b106\",\r\n    \"serverKeyType\": \"AzureKeyVault\"\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -670,7 +670,7 @@
           "f98a58f9-1a79-40ef-8756-920ff14ff5e2"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0aac1c90-2b22-41aa-a983-5b93c2afa171/resourceGroups/onesdk4934/providers/Microsoft.Sql/servers/onesdk8106/keys/akvtdekeyvault_key1_51c2fab9ff3c4a17aab4cd51b932b106\",\r\n  \"name\": \"akvtdekeyvault_key1_51c2fab9ff3c4a17aab4cd51b932b106\",\r\n  \"type\": \"Microsoft.Sql/servers/keys\",\r\n  \"location\": \"SouthEast Asia\",\r\n  \"kind\": \"azurekeyvault\",\r\n  \"properties\": {\r\n    \"type\": \"AzureKeyVault\",\r\n    \"uri\": \"https://akvtdekeyvault.vault.azure.net/keys/key1/51c2fab9ff3c4a17aab4cd51b932b106\",\r\n    \"thumbprint\": \"8FD889928BFF1BC8A1B457FEFAECDEAD9E6FCF3D\",\r\n    \"creationDate\": \"2017-01-24T23:38:53.887Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0aac1c90-2b22-41aa-a983-5b93c2afa171/resourceGroups/onesdk4934/providers/Microsoft.Sql/servers/onesdk8106/keys/akvtdekeyvault_key1_51c2fab9ff3c4a17aab4cd51b932b106\",\r\n  \"name\": \"akvtdekeyvault_key1_51c2fab9ff3c4a17aab4cd51b932b106\",\r\n  \"type\": \"Microsoft.Sql/servers/keys\",\r\n  \"location\": \"SouthEast Asia\",\r\n  \"kind\": \"azurekeyvault\",\r\n  \"properties\": {\r\n    \"serverKeyType\": \"AzureKeyVault\",\r\n    \"uri\": \"https://akvtdekeyvault.vault.azure.net/keys/key1/51c2fab9ff3c4a17aab4cd51b932b106\",\r\n    \"thumbprint\": \"8FD889928BFF1BC8A1B457FEFAECDEAD9E6FCF3D\",\r\n    \"creationDate\": \"2017-01-24T23:38:53.887Z\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "562"

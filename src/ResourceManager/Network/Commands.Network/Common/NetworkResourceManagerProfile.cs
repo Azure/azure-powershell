@@ -79,7 +79,9 @@ namespace Microsoft.Azure.Commands.Network
 
             // Bgp Service Community
             Mapper.CreateMap<CNM.PSBgpServiceCommunity, MNM.BgpServiceCommunity>();
+            Mapper.CreateMap<CNM.PSBgpCommunity, MNM.BGPCommunity>();
             Mapper.CreateMap<MNM.BgpServiceCommunity, CNM.PSBgpServiceCommunity>();
+            Mapper.CreateMap<MNM.BGPCommunity, CNM.PSBgpCommunity>();
 
             // Subnet
             // CNM to MNM
@@ -129,7 +131,7 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<CNM.PSNetworkInterface, MNM.NetworkInterface>();
             Mapper.CreateMap<CNM.PSNetworkInterfaceDnsSettings, MNM.NetworkInterfaceDnsSettings>();
             Mapper.CreateMap<CNM.PSNetworkInterfaceIPConfiguration, MNM.NetworkInterfaceIPConfiguration>();
-            
+
             // MNM to CNM
             Mapper.CreateMap<MNM.NetworkInterface, CNM.PSNetworkInterface>();
             Mapper.CreateMap<MNM.NetworkInterfaceDnsSettings, CNM.PSNetworkInterfaceDnsSettings>();
@@ -346,7 +348,7 @@ namespace Microsoft.Azure.Commands.Network
             // MNM to CNM
             Mapper.CreateMap<MNM.ExpressRouteServiceProvider, CNM.PSExpressRouteServiceProvider>();
             Mapper.CreateMap<MNM.ExpressRouteServiceProviderBandwidthsOffered, CNM.PSExpressRouteServiceProviderBandwidthsOffered>();
-            Mapper.CreateMap<MNM.ExpressRouteCircuitStats, CNM.PSExpressRouteCircuitStats>(); 
+            Mapper.CreateMap<MNM.ExpressRouteCircuitStats, CNM.PSExpressRouteCircuitStats>();
             Mapper.CreateMap<MNM.ExpressRouteCircuitArpTable, CNM.PSExpressRouteCircuitArpTable>();
             Mapper.CreateMap<MNM.ExpressRouteCircuitRoutesTable, CNM.PSExpressRouteCircuitRoutesTable>();
             Mapper.CreateMap<MNM.ExpressRouteCircuitRoutesTableSummary, CNM.PSExpressRouteCircuitRoutesTableSummary>();
@@ -382,7 +384,7 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<MNM.LocalNetworkGateway, CNM.PSLocalNetworkGateway>();
             Mapper.CreateMap<MNM.VirtualNetworkGatewayConnection, CNM.PSVirtualNetworkGatewayConnection>();
             Mapper.CreateMap<MNM.VirtualNetworkGatewayIPConfiguration, CNM.PSVirtualNetworkGatewayIpConfiguration>();
-            Mapper.CreateMap<MNM.TunnelConnectionHealth, CNM.PSTunnelConnectionHealth>(); 
+            Mapper.CreateMap<MNM.TunnelConnectionHealth, CNM.PSTunnelConnectionHealth>();
             Mapper.CreateMap<MNM.VirtualNetworkGatewaySku, CNM.PSVirtualNetworkGatewaySku>();
             Mapper.CreateMap<MNM.VpnClientConfiguration, CNM.PSVpnClientConfiguration>();
             Mapper.CreateMap<MNM.VpnClientParameters, CNM.PSVpnClientParameters>();
@@ -414,6 +416,7 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<CNM.PSApplicationGatewayBackendHealthHttpSettings, MNM.ApplicationGatewayBackendHealthHttpSettings>();
             Mapper.CreateMap<CNM.PSApplicationGatewayBackendHealthServer, MNM.ApplicationGatewayBackendHealthServer>();
             Mapper.CreateMap<CNM.PSApplicationGatewayWebApplicationFirewallConfiguration, MNM.ApplicationGatewayWebApplicationFirewallConfiguration>();
+            Mapper.CreateMap<CNM.PSApplicationGatewayConnectionDraining, MNM.ApplicationGatewayConnectionDraining>();
 
             // MNM to CNM
             Mapper.CreateMap<MNM.ApplicationGateway, CNM.PSApplicationGateway>();
@@ -438,6 +441,7 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<MNM.ApplicationGatewayBackendHealthHttpSettings, CNM.PSApplicationGatewayBackendHealthHttpSettings>();
             Mapper.CreateMap<MNM.ApplicationGatewayBackendHealthServer, CNM.PSApplicationGatewayBackendHealthServer>();
             Mapper.CreateMap<MNM.ApplicationGatewayWebApplicationFirewallConfiguration, CNM.PSApplicationGatewayWebApplicationFirewallConfiguration>();
+            Mapper.CreateMap<MNM.ApplicationGatewayConnectionDraining, CNM.PSApplicationGatewayConnectionDraining>();
         }
     }
 }

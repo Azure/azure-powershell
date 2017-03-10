@@ -12,12 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
-using System.Globalization;
-
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
     using System;
+    using System.Globalization;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using Microsoft.Azure.Management.Logic.Models;
@@ -26,8 +24,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Updates the integration account schema.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccountSchema", SupportsShouldProcess = true),
-     OutputType(typeof (object))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccountSchema", SupportsShouldProcess = true)]
+    [OutputType(typeof(IntegrationAccountSchema))]
     public class UpdateAzureIntegrationAccountSchemaCommand : LogicAppBaseCmdlet
     {
 
@@ -54,8 +52,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account name.",
             ValueFromPipelineByPropertyName = true)]
-        [Alias("ResourceName")]
         [ValidateNotNullOrEmpty]
+        [Alias("IntegrationAccountName", "ResourceName")]
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account schema name.",
@@ -124,7 +122,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (!string.IsNullOrEmpty(this.schemaType))
             {
-                integrationAccountSchema.SchemaType = (SchemaType) Enum.Parse(typeof (SchemaType), this.SchemaType);
+                integrationAccountSchema.SchemaType = (SchemaType) Enum.Parse(typeof(SchemaType), this.SchemaType);
             }
 
             if (!string.IsNullOrEmpty(this.ContentType))
