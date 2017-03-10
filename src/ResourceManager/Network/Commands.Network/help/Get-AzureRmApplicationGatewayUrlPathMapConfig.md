@@ -31,21 +31,6 @@ This command gets the URL path map configurations from the backend server locate
 
 ## PARAMETERS
 
-### -Name
-Specifies the URL path map name in which this cmdlet get the path map configuration.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ApplicationGateway
 Specifies the application gateway to which this cmdlet gets a URL path map configuration.
 
@@ -92,6 +77,21 @@ Specifies an information variable.
 Type: String
 Parameter Sets: (All)
 Aliases: iv
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the URL path map name in which this cmdlet get the path map configuration.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
 Position: Named

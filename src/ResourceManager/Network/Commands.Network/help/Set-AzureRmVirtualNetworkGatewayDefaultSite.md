@@ -45,24 +45,6 @@ The third command uses the **Set-AzureRmVirtualNetworkGatewayDefaultSite** cmdle
 
 ## PARAMETERS
 
-### -VirtualNetworkGateway
-Specifies an object reference to the virtual network gateway where the default site will be assigned.
-You can create an object reference to a virtual network gateway by using the **Get-AzureRmVirtualNetworkGateway** and specifying the name of the gateway.
-
-The variable $VirtualGateway can then be used as the parameter value for the *VirtualNetworkGateway* parameter:
-
-```yaml
-Type: PSVirtualNetworkGateway
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -GatewayDefaultSite
 Specifies an object reference to the local network gateway to be assigned as the default site for the specified virtual network.
 You can use the Get-AzureRmLocalNetworkGateway cmdlet to create an object reference to a local gateway.
@@ -115,6 +97,24 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VirtualNetworkGateway
+Specifies an object reference to the virtual network gateway where the default site will be assigned.
+You can create an object reference to a virtual network gateway by using the **Get-AzureRmVirtualNetworkGateway** and specifying the name of the gateway.
+
+The variable $VirtualGateway can then be used as the parameter value for the *VirtualNetworkGateway* parameter:
+
+```yaml
+Type: PSVirtualNetworkGateway
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

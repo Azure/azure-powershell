@@ -39,41 +39,12 @@ New-AzureRmResourceGroup -Name TestResourceGroup -Location centralus
     Add-AzureRmVirtualNetworkSubnetConfig -Name backendSubnet -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.2.0/24"
     $virtualNetwork | Set-AzureRmVirtualNetwork
 ```
+
   This example first creates a resource group as a container of the resources to be created. It then creates a subnet configuration and uses it to create a virtual network. The 
     Add-AzureRmVirtualNetworkSubnetConfig is then used to add a subnet to the in-memory representation of the virtual network. The Set-AzureRmVirtualNetwork command updates the existing virtual 
     network with the new subnet.
 
 ## PARAMETERS
-
-### -Name
-Specifies the name of the subnet configuration to add.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VirtualNetwork
-Specifies the **VirtualNetwork** object in which to add a subnet configuration.
-
-```yaml
-Type: PSVirtualNetwork
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -AddressPrefix
 Specifies a range of IP addresses for a subnet configuration.
@@ -87,35 +58,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NetworkSecurityGroup
-Specifies a **NetworkSecurityGroup** object.
-This cmdlet adds a virtual network subnet configuration to the object that this parameter specifies.
-
-```yaml
-Type: PSNetworkSecurityGroup
-Parameter Sets: SetByResource
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -RouteTable
-```yaml
-Type: PSRouteTable
-Parameter Sets: SetByResource
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -158,12 +100,56 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+Specifies the name of the subnet configuration to add.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkSecurityGroup
+Specifies a **NetworkSecurityGroup** object.
+This cmdlet adds a virtual network subnet configuration to the object that this parameter specifies.
+
+```yaml
+Type: PSNetworkSecurityGroup
+Parameter Sets: SetByResource
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -NetworkSecurityGroupId
 Specifies the ID of a network security group.
 
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RouteTable
+```yaml
+Type: PSRouteTable
+Parameter Sets: SetByResource
 Aliases: 
 
 Required: False
@@ -183,6 +169,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -VirtualNetwork
+Specifies the **VirtualNetwork** object in which to add a subnet configuration.
+
+```yaml
+Type: PSVirtualNetwork
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
