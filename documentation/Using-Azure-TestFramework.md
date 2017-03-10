@@ -48,7 +48,7 @@ This specifies whether test framework will `Record` test sessions or `Playback` 
 	* Password
 	* ServicePrincipal
 	* ServicePrincipalSecret
-	* Environment={Prod | DogFood | Next | Current}
+	* Environment={Prod | DogFood | Next | Current | Custom}
 	* RawToken
 	* RawGraphToken
 	* HttpRecorderMode={Record | Playback}
@@ -65,6 +65,14 @@ This specifies whether test framework will `Record` test sessions or `Playback` 
 #### 3.3. Environment Defaults
 
 Setting `Environment` in the connection string will result in the following default values:
+
+##### Environment = Custom
+When specified, test framework expect all Uri's that are provided in any of the predefined environment to be provided by the user as part of the connection string.
+
+What is also supported is as below (connections string example)
+>SubscriptionId=subId;Environment=Prod;AADAuthUri=customAuthUri;ResourceManagementUri=CustomR>esourceMgmtUri
+
+Which translates to, all Uri from pre-defined Prod environment will be used, but AADAuthUri and ResourceManagementUri will be overridden by the one provided in the connection string
 
 ##### Environment = Prod
 
