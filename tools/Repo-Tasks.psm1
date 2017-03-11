@@ -7,6 +7,8 @@ $userPsFileDir = [string]::Empty
 Function Init()
 {
     #Initialize Code
+	Import-Module $PSScriptRoot\Modules\TestFx-Tasks.psm1
+	Import-Module $PSScriptRoot\Modules\Build-Tasks.psm1
 }
 
 
@@ -40,4 +42,4 @@ else
 
 
 #Execute Init
-#Init
+Init

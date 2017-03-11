@@ -164,6 +164,7 @@ This cmdlet will only prompt you for Subscription and Tenant information, rest a
     [Environment]::GetEnvironmentVariable($envVariableName)
     Write-Host ""
     
+	Write-Host "You can manually set this env. variable as $env:TEST_CSM_ORGID_AUTHENTICATION=<connection string without double quotes>"
     Write-Host "If your needs demand you to set connection string differently, for all the supported Key/Value pairs in connection string"
     Write-Host "Please visit https://github.com/Azure/azure-powershell/blob/dev/documentation/Using-Azure-TestFramework.md" -ForegroundColor Yellow
 }
