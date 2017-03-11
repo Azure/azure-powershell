@@ -1084,3 +1084,6 @@ function Set-BootstrapRepo
 	param([string]$Repo)
 	$script:BootStrapRepo = $Repo
 }
+
+Export-ModuleMember -Function 'Set-BootstrapRepo' 
+Export-ModuleMember -Cmdlet 'Update-AzureRmProfile', 'Uninstall-AzureRmProfile', 'Install-AzureRmProfile', 'Use-AzureRmProfile', 'Get-AzureRmProfile', 'Get-AzureRmModule'
