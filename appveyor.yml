@@ -42,7 +42,10 @@ build_script:
           {
             continue
           }
-          robocopy $help "*.md" (Join-Path $global:output $folder | Join-Path -ChildPath (gi $psd1).BaseName | Join-Path -ChildPath ("v" + ($matches[0] -match $pattern)))
+          if($matches[0] -match $pattern)
+          {
+            robocopy $help "*.md" (Join-Path $global:output $folder | Join-Path -ChildPath (gi $psd1).BaseName | Join-Path -ChildPath ("v" + $matches[0]))
+          }
         }
       }
 test: off
