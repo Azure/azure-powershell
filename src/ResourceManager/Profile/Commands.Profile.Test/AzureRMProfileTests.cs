@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile;
 using Microsoft.Azure.Commands.Profile.Models;
+using Microsoft.Azure.Internal.Subscriptions.Models;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Subscriptions.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 TenantId = DefaultTenant.ToString()
             };
 
-            var getAsyncResponses = new Queue<Func<GetSubscriptionResult>>();
+            var getAsyncResponses = new Queue<Func<AzureOperationResponse<Subscription>>>();
             getAsyncResponses.Enqueue(() =>
             {
                 throw new CloudException("InvalidAuthenticationTokenTenant: The access token is from the wrong issuer");
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 TenantId = DefaultTenant.ToString()
             };
 
-            var getAsyncResponses = new Queue<Func<GetSubscriptionResult>>();
+            var getAsyncResponses = new Queue<Func<AzureOperationResponse<Subscription>>>();
             getAsyncResponses.Enqueue(() =>
             {
                 throw new CloudException("InvalidAuthenticationTokenTenant: The access token is from the wrong issuer");
@@ -218,26 +218,28 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 TenantId = DefaultTenant.ToString()
             };
 
-            var listAsyncResponses = new Queue<Func<SubscriptionListResult>>();
+            var listAsyncResponses = new Queue<Func<AzureOperationResponse<IPage<Subscription>>>>();
             listAsyncResponses.Enqueue(() =>
             {
-                var sub1 = new Subscription
+                var sub1 = new Subscription(
+                    id: DefaultSubscription.ToString(),
+                    subscriptionId: DefaultSubscription.ToString(),
+                    tenantId: null,
+                    displayName: DefaultSubscriptionName,
+                    state: SubscriptionState.Enabled,
+                    subscriptionPolicies: null,
+                    authorizationSource: null);
+                var sub2 = new Subscription(
+                    id: subscriptionInSecondTenant,
+                    subscriptionId: subscriptionInSecondTenant,
+                    tenantId: null,
+                    displayName: MockSubscriptionClientFactory.GetSubscriptionNameFromId(subscriptionInSecondTenant),
+                    state: SubscriptionState.Enabled,
+                    subscriptionPolicies: null,
+                    authorizationSource: null);
+                return new AzureOperationResponse<IPage<Subscription>>
                 {
-                    Id = DefaultSubscription.ToString(),
-                    SubscriptionId = DefaultSubscription.ToString(),
-                    DisplayName = DefaultSubscriptionName,
-                    State = "enabled"
-                };
-                var sub2 = new Subscription
-                {
-                    Id = subscriptionInSecondTenant,
-                    SubscriptionId = subscriptionInSecondTenant,
-                    DisplayName = MockSubscriptionClientFactory.GetSubscriptionNameFromId(subscriptionInSecondTenant),
-                    State = "enabled"
-                };
-                return new SubscriptionListResult
-                {
-                    Subscriptions = new List<Subscription> { sub1, sub2 }
+                    Body = new MockPage<Subscription>(new List<Subscription> { sub1, sub2 })
                 };
             });
             MockSubscriptionClientFactory.SetListAsyncResponses(listAsyncResponses);
@@ -396,7 +398,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             string randomSubscriptionId = Guid.NewGuid().ToString();
             var firstList = new List<string> { randomSubscriptionId };
             var secondList = firstList;
-            var client = SetupTestEnvironment(tenants, firstList, secondList);
+            var thirdList = secondList;
+            var client = SetupTestEnvironment(tenants, firstList, secondList, thirdList);
             var subResults = new List<AzureSubscription>(client.ListSubscriptions());
             Assert.Equal(1, subResults.Count);
             AzureSubscription subValue;
@@ -421,7 +424,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         {
             var tenants = new List<string> { DefaultTenant.ToString() };
             var subscriptions = new List<string>();
-            var client = SetupTestEnvironment(tenants, subscriptions, subscriptions);
+            var client = SetupTestEnvironment(tenants, subscriptions, subscriptions, subscriptions);
             Assert.Equal(0, client.ListSubscriptions().Count());
             AzureSubscription subValue;
             Assert.False(client.TryGetSubscriptionById(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
@@ -491,6 +494,39 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.True(commandRuntimeMock.OutputPipeline.Count == 7);
             Assert.Equal("Disabled", ((PSAzureSubscription)commandRuntimeMock.OutputPipeline[2]).State);
             Assert.Equal("LinkToNextPage", ((PSAzureSubscription)commandRuntimeMock.OutputPipeline[2]).SubscriptionName);
+        }
+
+        private class MockPage<T> : IPage<T>
+        {
+            public MockPage(IList<T> Items)
+            {
+                this.Items = Items;
+            }
+
+            /// <summary>
+            /// Gets the link to the next page.
+            /// </summary>
+            public string NextPageLink { get; private set; }
+
+            public IList<T> Items { get; set; }
+
+            /// <summary>
+            /// Returns an enumerator that iterates through the collection.
+            /// </summary>
+            /// <returns>A an enumerator that can be used to iterate through the collection.</returns>
+            public IEnumerator<T> GetEnumerator()
+            {
+                return (Items == null) ? Enumerable.Empty<T>().GetEnumerator() : Items.GetEnumerator();
+            }
+
+            /// <summary>
+            /// Returns an enumerator that iterates through the collection.
+            /// </summary>
+            /// <returns>A an enumerator that can be used to iterate through the collection.</returns>
+            System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+            {
+                return GetEnumerator();
+            }
         }
     }
 }
