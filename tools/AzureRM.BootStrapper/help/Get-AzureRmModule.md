@@ -23,10 +23,10 @@ Returns the versions of an AzureRM module that support a given profile.
 ```
 PS C:\> Get-AzureRmModule -Profile 2017-03-09-profile -Module AzureRM.Storage
 
-1.2.4
+1.0.4.3
 ```
 
-The version of the AzureRM.Storage module that supports profile 2017-03-09-profile is version 1.2.4.
+The version of the AzureRM.Storage module that supports profile 2017-03-09-profile is version 1.0.4.3.
 
 ## PARAMETERS
 

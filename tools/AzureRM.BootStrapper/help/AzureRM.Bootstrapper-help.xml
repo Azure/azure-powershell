@@ -76,8 +76,8 @@
 <command:examples><command:example><maml:title>Example 1</maml:title>
 <dev:code>PS C:\&gt; Get-AzureRmModule -Profile 2017-03-09-profile -Module AzureRM.Storage
 
-1.2.4</dev:code>
-<dev:remarks><maml:para>The version of the AzureRM.Storage module that supports profile 2017-03-09-profile is version 1.2.4.
+1.0.4.3</dev:code>
+<dev:remarks><maml:para>The version of the AzureRM.Storage module that supports profile 2017-03-09-profile is version 1.0.4.3.
 </maml:para>
 </dev:remarks>
 </command:example>
