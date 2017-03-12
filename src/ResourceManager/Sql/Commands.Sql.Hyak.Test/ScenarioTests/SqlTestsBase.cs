@@ -98,6 +98,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
                 helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
+                    "ScenarioTests\\AzureRM.Sql.Shim.ps1",
                     "ScenarioTests\\" + this.GetType().Name + ".ps1",
                     helper.RMProfileModule,
                     helper.RMResourceModule,
@@ -113,10 +114,10 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
         protected SqlManagementClient GetSqlClient(RestTestFramework.MockContext context)
         {
-            SqlManagementClient client = context.GetServiceClient<SqlManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+            SqlManagementClient client = TestBase.GetServiceClient<SqlManagementClient>(new CSMTestEnvironmentFactory());
             if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
-                //client.LongRunningOperationInitialTimeout = 0; // this property exists in Hyak-based client only
+                client.LongRunningOperationInitialTimeout = 0;
                 client.LongRunningOperationRetryTimeout = 0;
             }
             return client;

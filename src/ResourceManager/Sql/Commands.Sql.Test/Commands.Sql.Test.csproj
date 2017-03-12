@@ -219,9 +219,6 @@
     <None Include="ScenarioTests\RecommendedActionTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\AdvisorTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="ScenarioTests\DatabaseBackupStretchTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -265,7 +262,6 @@
     <Compile Include="ScenarioTests\ServerActiveDirectoryAdministratorTest.cs" />
     <Compile Include="ScenarioTests\ServerCommunicationLinkCrudTests.cs" />
     <Compile Include="ScenarioTests\ServiceTierAdvisorTests.cs" />
-    <Compile Include="ScenarioTests\AdvisorTests.cs" />
     <Compile Include="ScenarioTests\RecommendedElasticPoolTests.cs" />
     <Compile Include="ScenarioTests\ElasticPoolCrudTests.cs" />
     <Compile Include="ScenarioTests\FailoverGroupTests.cs" />
