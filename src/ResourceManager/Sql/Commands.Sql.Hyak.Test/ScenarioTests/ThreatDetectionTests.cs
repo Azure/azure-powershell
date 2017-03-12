@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
                 authorizationClient);
         }
 
-        public ThreatDetectionTests(ITestOutputHelper output)
+        public ThreatDetectionTests(ITestOutputHelper output) : base(output)
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class AdvisorTests : SqlTestsBase
     {
-        public AdvisorTests(ITestOutputHelper output) : base(output, isHyakCommand: true)
+        public AdvisorTests(ITestOutputHelper output) : base(output)
         {
         }
 

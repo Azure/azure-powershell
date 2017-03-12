@@ -22,7 +22,7 @@ function New-AzureRmSqlServer
     [PSCredential] [Parameter(Position=2, ValueFromPipelineByPropertyName=$true)] $SqlAdministratorCredentials)
   BEGIN { 
     Write-Debug "New-AzureRmSqlServer shim: BEGIN"
-	Write-Debug "$ResourceGroupName // $ServerName // $ServerVersion // $Location // $SqlAdministratorCredentials"
+    Write-Debug "$ResourceGroupName // $ServerName // $ServerVersion // $Location // $SqlAdministratorCredentials"
     $context = Get-Context
     $client = Get-SqlClient $context
   }
@@ -40,16 +40,46 @@ function New-AzureRmSqlServer
 
     $server = $client.Servers.CreateOrUpdateAsync($ResourceGroupName, $ServerName, $parameters, [System.Threading.CancellationToken]::None).Result
 
-	# Return cmdlet model type (as opposed to sdk model type)
-	$o = New-Object PSObject -Property @{
-	  'ResourceGroupName'=$ResourceGroupName;
-	  'ServerName'=$ServerName;
-	}
-	$o | Out-String | Write-Debug
-	$o
+    # Return cmdlet model type (as opposed to sdk model type)
+    $o = New-Object PSObject -Property @{
+      'ResourceGroupName'=$ResourceGroupName;
+      'ServerName'=$ServerName;
+    }
+    $o | Out-String | Write-Debug
+    $o
   }
   END {
     Write-Debug "New-AzureRmSqlServer shim: END"
+  }
+}
+
+function Get-AzureRmSqlServer
+{
+  [CmdletBinding()]
+  param(
+    [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] $ResourceGroupName,
+    [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)] $ServerName)
+  BEGIN { 
+    Write-Debug "Get-AzureRmSqlServer shim: BEGIN"
+    Write-Debug "$ResourceGroupName // $ServerName"
+    $context = Get-Context
+    $client = Get-SqlClient $context
+  }
+  PROCESS {
+    Write-Debug "Get-AzureRmSqlServer shim: PROCESS"
+
+    $server = $client.Servers.GetAsync($ResourceGroupName, $ServerName, [System.Threading.CancellationToken]::None).Result
+
+    # Return cmdlet model type (as opposed to sdk model type)
+    $o = New-Object PSObject -Property @{
+      'ResourceGroupName'=$ResourceGroupName;
+      'ServerName'=$ServerName;
+    }
+    $o | Out-String | Write-Debug
+    $o
+  }
+  END {
+    Write-Debug "Get-AzureRmSqlServer shim: END"
   }
 }
 
@@ -60,10 +90,12 @@ function New-AzureRmSqlDatabase
     [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] $ResourceGroupName,
     [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)] $ServerName,
     [string] [Parameter(Position=2, ValueFromPipelineByPropertyName=$true)] $DatabaseName,
-    [string] [Parameter(Position=2, ValueFromPipelineByPropertyName=$true)] $Edition = $null)
+    [string] [Parameter(Position=3, ValueFromPipelineByPropertyName=$true)] $Edition = $null,
+    [string] [Parameter(Position=4, ValueFromPipelineByPropertyName=$true)] $CollationName = $null,
+	[string] [Parameter(Position=5, ValueFromPipelineByPropertyName=$true)] $RequestedServiceObjectiveName = $null)
   BEGIN {
     Write-Debug "New-AzureRmSqlDatabase shim: BEGIN"
-	Write-Debug "$ResourceGroupName // $ServerName // $DatabaseName // $Edition"
+    Write-Debug "$ResourceGroupName // $ServerName // $DatabaseName // $Edition // $CollationName // $RequestedServiceObjectiveName"
     $context = Get-Context
     $client = Get-SqlClient $context
   }
@@ -74,6 +106,8 @@ function New-AzureRmSqlDatabase
 
     $properties = New-Object -TypeName "Microsoft.Azure.Management.Sql.Models.DatabaseCreateOrUpdateProperties"
     $properties.Edition = $Edition
+	$properties.CollationName = $CollationName
+	$properties.RequestedServiceObjectiveName = $RequestedServiceObjectiveName
 
     $parameters = New-Object -TypeName "Microsoft.Azure.Management.Sql.Models.DatabaseCreateOrUpdateParameters"
     $parameters.Properties = $properties
@@ -82,14 +116,14 @@ function New-AzureRmSqlDatabase
     $task = $client.Databases.CreateOrUpdateAsync($ResourceGroupName, $ServerName, $DatabaseName, $parameters, [System.Threading.CancellationToken]::None)
     $db = $task.Result
     
-	# Return cmdlet model type (as opposed to sdk model type)
-	$o = New-Object PSObject -Property @{
-	  'ResourceGroupName'=$ResourceGroupName;
-	  'ServerName'=$ServerName;
-	  'DatabaseName'=$DatabaseName
-	}
-	$o | Out-String | Write-Debug
-	$o
+    # Return cmdlet model type (as opposed to sdk model type)
+    $o = New-Object PSObject -Property @{
+      'ResourceGroupName'=$ResourceGroupName;
+      'ServerName'=$ServerName;
+      'DatabaseName'=$DatabaseName
+    }
+    $o | Out-String | Write-Debug
+    $o
   }
   END {
     Write-Debug "New-AzureRmSqlDatabase shim: END"

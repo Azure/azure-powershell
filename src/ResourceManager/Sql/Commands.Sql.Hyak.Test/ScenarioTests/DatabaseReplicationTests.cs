@@ -22,9 +22,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class DatabaseReplicationTests : SqlTestsBase
     {
-        public DatabaseReplicationTests(ITestOutputHelper output)
+        public DatabaseReplicationTests(ITestOutputHelper output) : base(output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
         [Fact]

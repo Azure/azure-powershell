@@ -44,20 +44,16 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
         public string UserDomain { get; private set; }
 
-        private bool _isHyakCommand;
-
         protected SqlTestsBase()
         {
             helper = new SqlEvnSetupHelper();
         }
 
-        protected SqlTestsBase(ITestOutputHelper output, bool isHyakCommand = false) : this()
+        protected SqlTestsBase(ITestOutputHelper output) : this()
         {
             var logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             helper.TracingInterceptor = logger;
-
-            _isHyakCommand = isHyakCommand;
         }
 
         protected virtual void SetupManagementClients(RestTestFramework.MockContext context)
@@ -92,10 +88,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
                 helper.SetupEnvironment();
 
-                string sqlCommandModule = _isHyakCommand
-                    ? @"AzureRM.Sql\Commands.Sql.Hyak\Microsoft.Azure.Commands.Sql.Hyak.dll"
-                    : @"AzureRM.Sql\Microsoft.Azure.Commands.Sql.dll";
-
                 helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + this.GetType().Name + ".ps1",
@@ -104,7 +96,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                     helper.RMStorageDataPlaneModule,
                     helper.GetRMModulePath(@"AzureRM.Insights.psd1"),
                     //helper.GetRMModulePath(@"AzureRM.Sql.psd1"),
-                    Path.Combine(helper.RMModuleDirectory, sqlCommandModule),
+                    Path.Combine(helper.RMModuleDirectory, @"AzureRM.Sql\Microsoft.Azure.Commands.Sql.dll"),
                     "AzureRM.Storage.ps1",
                     "AzureRM.Resources.ps1");
                 helper.RunPowerShellTest(scripts);

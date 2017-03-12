@@ -200,81 +200,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ScenarioTests\ReadScaleCrudTests.cs" />
-    <Compile Include="ScenarioTests\RecommendedActionTests.cs" />
-    <Compile Include="ScenarioTests\DatabaseBackupStretchTests.cs" />
-    <Compile Include="ScenarioTests\DatabaseCrudStretchTests.cs" />
-    <Compile Include="ScenarioTests\ThreatDetectionTests.cs" />
-    <Compile Include="ScenarioTests\DatabaseActivationTests.cs" />
-    <Compile Include="ScenarioTests\DatabaseBackupTests.cs" />
-    <Compile Include="ScenarioTests\DatabaseReplicationTests.cs" />
     <Compile Include="ScenarioTests\DatabaseCrudTests.cs" />
-    <Compile Include="ScenarioTests\DataMaskingTests.cs" />
-    <None Include="ScenarioTests\FailoverGroupTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\ReadScaleCrudTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\RecommendedActionTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\DatabaseBackupStretchTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\DatabaseCrudStretchTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\ThreatDetectionTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\DatabaseReplicationTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\LocationCapabilitiesTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\ServerActiveDirectoryAdministratorTest.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\ServerCommunicationLinkCrudTests.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\ServiceTierAdvisorTests.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\DatabaseActivationTests.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\DatabaseBackupTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\RecommendedElasticPoolTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="ScenarioTests\ElasticPoolCrudTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\ImportExportTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <Compile Include="ScenarioTests\LocationCapabilitiesTests.cs" />
-    <Compile Include="ScenarioTests\ServerActiveDirectoryAdministratorTest.cs" />
-    <Compile Include="ScenarioTests\ServerCommunicationLinkCrudTests.cs" />
-    <Compile Include="ScenarioTests\ServiceTierAdvisorTests.cs" />
-    <Compile Include="ScenarioTests\RecommendedElasticPoolTests.cs" />
     <Compile Include="ScenarioTests\ElasticPoolCrudTests.cs" />
-    <Compile Include="ScenarioTests\FailoverGroupTests.cs" />
-    <Compile Include="ScenarioTests\AuditingTests.cs" />
     <Compile Include="ScenarioTests\ServerCrudTests.cs" />
-    <Compile Include="ScenarioTests\ServerDisasterRecoveryConfigurationTests.cs" />
-    <Compile Include="ScenarioTests\ServerUpgradeTests.cs" />
     <Compile Include="ScenarioTests\SqlEvnSetupHelper.cs" />
     <Compile Include="ScenarioTests\SqlTestsBase.cs" />
-    <Compile Include="ScenarioTests\TransparentDataEncryptionCrudTests.cs" />
-    <Compile Include="ScenarioTests\ServerKeyVaultKeyTests.cs" />
-    <Compile Include="ScenarioTests\IndexRecommendationTests.cs" />
-    <Compile Include="ScenarioTests\ImportExportTests.cs" />
     <Compile Include="UnitTests\AzureSqlCmdletBaseAttributeTests.cs" />
     <Compile Include="UnitTests\AzureSqlDatabaseAttributeTests.cs" />
     <Compile Include="UnitTests\AzureSqlDatabaseServerAttributeTests.cs" />
@@ -331,28 +264,7 @@
     <None Include="ScenarioTests\ServerCrudTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\ServerDisasterRecoveryConfigurationTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\DataMaskingTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\AuditingTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="ScenarioTests\Common.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\IndexRecommendationTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\ServerUpgradeTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\TransparentDataEncryptionCrudTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\ServerKeyVaultKeyTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AdvisorTests\TestGetElasticPoolAdvisor.json">

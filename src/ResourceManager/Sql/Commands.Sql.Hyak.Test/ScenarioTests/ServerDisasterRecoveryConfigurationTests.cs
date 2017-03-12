@@ -22,6 +22,10 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class ServerDisasterRecoveryConfigurationTests : SqlTestsBase
     {
+        public ServerDisasterRecoveryConfigurationTests(ITestOutputHelper output) : base(output)
+        {
+        }
+
         [Fact(Skip = "TODO fix the test failure")]
         [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestServerDisasterRecoveryConfiguration()

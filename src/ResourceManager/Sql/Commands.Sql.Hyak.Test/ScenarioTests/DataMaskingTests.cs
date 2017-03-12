@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, storageV2Client, resourcesClient, authorizationClient);
         }
 
-        public DataMaskingTests(ITestOutputHelper output)
+        public DataMaskingTests(ITestOutputHelper output) : base(output)
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }

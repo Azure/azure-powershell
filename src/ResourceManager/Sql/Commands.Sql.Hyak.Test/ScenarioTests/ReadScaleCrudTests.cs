@@ -22,9 +22,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class ReadScaleCrudTests : SqlTestsBase
     {
-        public ReadScaleCrudTests(ITestOutputHelper output)
+        public ReadScaleCrudTests(ITestOutputHelper output) : base(output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
         [Fact]

@@ -210,7 +210,6 @@
     <Compile Include="ScenarioTests\DatabaseActivationTests.cs" />
     <Compile Include="ScenarioTests\DatabaseBackupTests.cs" />
     <Compile Include="ScenarioTests\DatabaseReplicationTests.cs" />
-    <Compile Include="ScenarioTests\DatabaseCrudTests.cs" />
     <Compile Include="ScenarioTests\DataMaskingTests.cs" />
     <None Include="ScenarioTests\AzureRM.Sql.Shim.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -260,9 +259,6 @@
     <None Include="ScenarioTests\RecommendedElasticPoolTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\ElasticPoolCrudTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="ScenarioTests\ImportExportTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -272,10 +268,8 @@
     <Compile Include="ScenarioTests\ServiceTierAdvisorTests.cs" />
     <Compile Include="ScenarioTests\AdvisorTests.cs" />
     <Compile Include="ScenarioTests\RecommendedElasticPoolTests.cs" />
-    <Compile Include="ScenarioTests\ElasticPoolCrudTests.cs" />
     <Compile Include="ScenarioTests\FailoverGroupTests.cs" />
     <Compile Include="ScenarioTests\AuditingTests.cs" />
-    <Compile Include="ScenarioTests\ServerCrudTests.cs" />
     <Compile Include="ScenarioTests\ServerDisasterRecoveryConfigurationTests.cs" />
     <Compile Include="ScenarioTests\ServerUpgradeTests.cs" />
     <Compile Include="ScenarioTests\SqlEvnSetupHelper.cs" />
@@ -341,12 +335,6 @@
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="ScenarioTests\DatabaseCrudTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\ServerCrudTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\ServerDisasterRecoveryConfigurationTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -772,7 +760,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Cmdlets\" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

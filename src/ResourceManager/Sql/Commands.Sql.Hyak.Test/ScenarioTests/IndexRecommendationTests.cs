@@ -22,9 +22,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class IndexRecommendationTests : SqlTestsBase
     {
-        public IndexRecommendationTests(ITestOutputHelper output)
+        public IndexRecommendationTests(ITestOutputHelper output) : base(output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
         [Fact]
