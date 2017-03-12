@@ -16,8 +16,10 @@ using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
@@ -114,13 +116,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
                 if (xunitLogger != null)
                 {
-                    xunitLogger.Information(string.Format(
-                        "PowerShell Error Record: {0}\nException:{1}\nDetails:{2}\nScript Stack Trace: {3}\n: Target: {4}\n",
-                        record,
-                        record.Exception,
-                        record.ErrorDetails,
-                        record.ScriptStackTrace,
-                        record.TargetObject));
+                    xunitLogger.Information(PowerShellUtilities.FormatErrorRecord(record));
                 }
             }
 
@@ -169,7 +165,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
 
             LogPowerShellStream<DebugRecord>(xunitLogger, powershell.Streams.Debug, "DEBUG");
-            LogPowerShellStream<ErrorRecord>(xunitLogger, powershell.Streams.Error, "ERROR");
+            LogPowerShellStream<string>(xunitLogger, powershell.Streams.Error.Select(PowerShellUtilities.FormatErrorRecord).ToList(), "ERROR");
             LogPowerShellStream<ProgressRecord>(xunitLogger, powershell.Streams.Progress, "PROGRESS");
             LogPowerShellStream<VerboseRecord>(xunitLogger, powershell.Streams.Verbose, "VERBOSE");
             LogPowerShellStream<WarningRecord>(xunitLogger, powershell.Streams.Warning, "WARNING");

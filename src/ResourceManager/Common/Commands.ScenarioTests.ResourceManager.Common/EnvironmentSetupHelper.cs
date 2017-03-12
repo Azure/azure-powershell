@@ -48,7 +48,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         private AzureAccount testAccount;
 
         private const string PackageDirectoryFromCommon = @"..\..\..\..\Package\Debug";
-        public string PackageDirectory = @"..\..\..\..\..\Package\Debug";
+        public readonly string PackageDirectory = @"..\..\..\..\..\Package\Debug";
+        public readonly string RMModuleDirectory = @"..\..\..\..\..\Package\Debug\ResourceManager\AzureResourceManager";
 
         protected List<string> modules;
 
@@ -369,7 +370,12 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                     if (powershell.Streams.Error.Count > 0)
                     {
                         throw new RuntimeException(
-                            "Test failed due to a non-empty error stream, check the error stream in the test log for more details.");
+                            string.Format(
+                                "Test failed due to a non-empty error stream. First error: {0}{1}",
+                                PowerShellUtilities.FormatErrorRecord(powershell.Streams.Error[0]),
+                                powershell.Streams.Error.Count > 0
+                                    ? "Check the error stream in the test log for additional errors."
+                                    : ""));
                     }
 
                     return output;

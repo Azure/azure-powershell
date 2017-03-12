@@ -31,7 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         private static void ChangeForTargetEnvironment(Func<IEnumerable<string>, IEnumerable<string>> job, EnvironmentVariableTarget target)
         {
-            string psModulePath = Environment.GetEnvironmentVariable(PSModulePathName, target) ?? string.Empty;
+            string psModulePath = Environment.GetEnvironmentVariable(PSModulePathName, target) ?? String.Empty;
             IEnumerable<string> paths = psModulePath.Split(';');
             paths = job(paths);
 
@@ -45,7 +45,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
             else
             {
-                psModulePath = string.Join(";", paths.Distinct(StringComparer.CurrentCultureIgnoreCase));
+                psModulePath = String.Join(";", paths.Distinct(StringComparer.CurrentCultureIgnoreCase));
                 Environment.SetEnvironmentVariable(PSModulePathName, psModulePath, target);
             }
         }
@@ -56,7 +56,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             PSObject outputObject = new PSObject();
 
-            if (!string.IsNullOrEmpty(typeName))
+            if (!String.IsNullOrEmpty(typeName))
             {
                 outputObject.TypeNames.Add(typeName);
             }
@@ -92,6 +92,17 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         public static IEnumerable<RuntimeDefinedParameter> GetUsedDynamicParameters(RuntimeDefinedParameterDictionary dynamicParameters, InvocationInfo MyInvocation)
         {
             return dynamicParameters.Values.Where(dp => MyInvocation.BoundParameters.Keys.Any(bp => bp.Equals(dp.Name)));
+        }
+
+        public static string FormatErrorRecord(ErrorRecord record)
+        {
+            return String.Format(
+                "PowerShell Error Record: {0}\nException:{1}\nDetails:{2}\nScript Stack Trace: {3}\n: Target: {4}\n",
+                record,
+                record.Exception,
+                record.ErrorDetails,
+                record.ScriptStackTrace,
+                record.TargetObject);
         }
     }
 }
