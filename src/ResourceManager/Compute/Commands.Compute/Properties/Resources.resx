@@ -156,6 +156,12 @@
   <data name="VirtualMachineStoppingConfirmation" xml:space="preserve">
     <value>This cmdlet will stop the specified virtual machine. Do you want to continue?</value>
   </data>
+  <data name="ResourceRemovalConfirmation" xml:space="preserve">
+    <value>This cmdlet will remove the specified resource.  Do you want to continue?</value>
+  </data>
+  <data name="ResourceStoppingConfirmation" xml:space="preserve">
+    <value>This cmdlet will stop the specified resource.  Do you want to continue?</value>
+  </data>
   <data name="AzureVMDscCannotFindConfigurationDataFile" xml:space="preserve">
     <value>Cannot find configuration data file: {0}</value>
   </data>
@@ -555,5 +561,8 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
     <value>Cannot find sql server configuration info in substatuses. Updating your Azure PowerShell SDK to the latest version may solve this problem. Substatuses string:
 {0}</value>
     <comment>{0} = substatuses string</comment>
+  </data>
+  <data name="DiagnosticsExtensionMismatchStorageAccountName" xml:space="preserve">
+    <value>Storage account names provided in public and private configs do not match.</value>
   </data>
 </root>

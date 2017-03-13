@@ -274,6 +274,9 @@
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.AutomationTests\TestAutomationSuspendAndResumeJob.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ChefExtensionTests\TestSetAzureVMChefExtensionDaemonTask.json">
+	<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.DiagnosticsExtensionTests\TestAzureServiceDiagnosticsExtensionBasic.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

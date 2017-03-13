@@ -12,9 +12,16 @@ Modifies the state of a VMSS instance.
 
 ## SYNTAX
 
+### InvokeByDynamicParameters (Default)
 ```
-Set-AzureRmVmssVM [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-InstanceId] <String> [-Reimage]
- [<CommonParameters>]
+Set-AzureRmVmssVM [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-VMScaleSetName] <String>
+ [-InstanceId] <String> [-Reimage] [<CommonParameters>]
+```
+
+### InvokeByDynamicParametersForFriendMethod
+```
+Set-AzureRmVmssVM [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-VMScaleSetName] <String>
+ [-InstanceId] <String> [-ReimageAll] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,11 +51,26 @@ Indicates that this cmdlet reimages the VMSS instance.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: InvokeByDynamicParameters
 Aliases: 
 
 Required: True
 Position: 5
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReimageAll
+Indicates that the cmdlet reimages all the disks in the VMSS instance.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: InvokeByDynamicParametersForFriendMethod
+Aliases: 
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -81,6 +103,36 @@ Required: True
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

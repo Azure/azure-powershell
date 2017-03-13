@@ -48,7 +48,7 @@ function Get-ProviderLocation($provider)
 				return "West US"  
 			} else 
 			{  
-				return $location.Locations[0]  
+				return $location.Locations[0]
 			}  
 		}
 		
@@ -56,6 +56,15 @@ function Get-ProviderLocation($provider)
 	}
 
 	return "WestUS"
+}
+
+<#
+.SYNOPSIS
+Gets the default test location name.
+#>
+function Get-LocationName()
+{
+	return 'brazilsouth'
 }
 
 <#
@@ -76,8 +85,9 @@ function TestSetup-CreateResourceGroup
 Creates named resource group to use in tests
 #>
 function TestSetup-CreateNamedResourceGroup([string]$resourceGroupName)
-{    
-    $resourceGroup = New-AzureRmResourceGroup -Name $resourceGroupName -location "brazilsouth" -Force
+{
+	$location = Get-LocationName
+    $resourceGroup = New-AzureRmResourceGroup -Name $resourceGroupName -location $location -Force
 	
 	return $resourceGroup
 }
@@ -94,7 +104,7 @@ function TestSetup-CreateAppServicePlan ([string]$resourceGroupName, [string]$Ap
 		if($AZURE_TEST_MODE.Value.ToLowerInvariant() -eq 'record')
 		{
 			$PropertiesObject = @{}
-			$Sku = @{Name='S1'; Tier='Standard'; Size='S1'; Family='S'; Capacity=1}		
+			$Sku = @{Name='S1'; Tier='Standard'; Size='S1'; Family='S'; Capacity=1}
 			$Plan = New-AzureRmResource -Name $AppServicePlan -Location "West US" -ResourceGroupName $resourceGroupName -ResourceType "Microsoft.Web/serverfarms" -ApiVersion 2015-08-01 -SkuObject $Sku -PropertyObject $PropertiesObject -Force	
 			return $Plan
 		}
@@ -109,7 +119,8 @@ Creates a new Integration account
 #>
 function TestSetup-CreateIntegrationAccount ([string]$resourceGroupName, [string]$integrationAccountName)
 {		
-	$integrationAccount = New-AzureRmIntegrationAccount -ResourceGroupName $resourceGroupName -Name $integrationAccountName -Location "brazilsouth" -Sku "Standard" 	
+	$location = Get-LocationName
+	$integrationAccount = New-AzureRmIntegrationAccount -ResourceGroupName $resourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"
 	return $integrationAccount
 }
 

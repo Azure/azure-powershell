@@ -28,7 +28,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Set", "AzureRmVmssOsProfile")]
+    [Cmdlet("Set", "AzureRmVmssOsProfile", SupportsShouldProcess = true)]
     [OutputType(typeof(VirtualMachineScaleSet))]
     public class SetAzureRmVmssOsProfileCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -112,6 +112,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public VaultSecretGroup[] Secret { get; set; }
 
         protected override void ProcessRecord()
+        {
+            if (ShouldProcess("VirtualMachineScaleSet", "Set"))
+            {
+                Run();
+            }
+        }
+
+        private void Run()
         {
             if (this.ComputerNamePrefix != null)
             {

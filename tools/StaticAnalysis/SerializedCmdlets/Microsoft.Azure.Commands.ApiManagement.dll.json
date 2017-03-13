@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
@@ -50,7 +50,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
@@ -75,6 +75,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -89,6 +91,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -97,7 +101,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "Nullable",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -105,6 +109,8 @@
             ]
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -121,6 +127,8 @@
             ]
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -129,7 +137,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "PsApiManagementVirtualNetwork",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Location": "System.String",
               "SubnetName": "System.String",
@@ -140,6 +148,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         }
       ],
@@ -154,7 +164,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "PsApiManagement",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
                     "Capacity": "System.Int32",
@@ -179,6 +189,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": true,
@@ -199,6 +211,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -213,7 +227,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "Nullable",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -221,6 +235,8 @@
                   ]
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -243,6 +259,8 @@
                   ]
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -257,7 +275,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "PsApiManagementVirtualNetwork",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Location": "System.String",
                     "SubnetName": "System.String",
@@ -268,6 +286,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -317,6 +337,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -331,6 +353,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         }
       ],
@@ -351,6 +375,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -371,6 +397,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -397,7 +425,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "PsApiManagementHostnameConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Hostname": "System.String",
               "HostnameCertificate": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate"
@@ -423,6 +451,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -437,6 +467,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         }
       ],
@@ -457,6 +489,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -477,6 +511,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -503,7 +539,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "PsApiManagementRegion",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Capacity": "System.Int32",
               "Location": "System.String",
@@ -532,6 +568,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -548,6 +586,8 @@
             ]
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -556,7 +596,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "PsApiManagementVirtualNetwork",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Location": "System.String",
               "SubnetName": "System.String",
@@ -567,6 +607,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         }
       ],
@@ -587,6 +629,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -609,6 +653,8 @@
                   ]
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -623,7 +669,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "PsApiManagementVirtualNetwork",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Location": "System.String",
                     "SubnetName": "System.String",
@@ -634,6 +680,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -660,7 +708,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "PsApiManagementVirtualNetwork",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Location": "System.String",
               "SubnetName": "System.String",
@@ -688,6 +736,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -702,6 +752,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         }
       ],
@@ -722,6 +774,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -742,6 +796,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -768,7 +824,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
@@ -804,7 +860,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
@@ -829,6 +885,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -843,6 +901,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         }
       ],
@@ -857,7 +917,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "PsApiManagement",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
                     "Capacity": "System.Int32",
@@ -882,6 +942,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": true,
@@ -902,6 +964,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -928,7 +992,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
@@ -964,7 +1028,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
@@ -989,6 +1053,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -1003,6 +1069,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -1017,6 +1085,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -1025,7 +1095,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "PsApiManagementHostnameConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Hostname": "System.String",
               "HostnameCertificate": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate"
@@ -1034,6 +1104,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -1042,7 +1114,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "PsApiManagementHostnameConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Hostname": "System.String",
               "HostnameCertificate": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate"
@@ -1051,6 +1123,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -1065,6 +1139,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         }
       ],
@@ -1079,7 +1155,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "PsApiManagement",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
                     "Capacity": "System.Int32",
@@ -1104,6 +1180,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": true,
@@ -1124,6 +1202,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -1149,6 +1229,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": true,
@@ -1169,6 +1251,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": true,
@@ -1183,7 +1267,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "PsApiManagementHostnameConfiguration",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Hostname": "System.String",
                     "HostnameCertificate": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate"
@@ -1192,6 +1276,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -1206,7 +1292,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "PsApiManagementHostnameConfiguration",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Hostname": "System.String",
                     "HostnameCertificate": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate"
@@ -1215,6 +1301,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -1235,6 +1323,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -1260,6 +1350,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -1286,7 +1378,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
@@ -1322,7 +1414,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
@@ -1347,6 +1439,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -1361,6 +1455,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -1375,6 +1471,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -1389,6 +1487,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -1397,12 +1497,14 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "PsApiManagementSku",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -1417,6 +1519,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -1425,7 +1529,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "PsApiManagementVirtualNetwork",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Location": "System.String",
               "SubnetName": "System.String",
@@ -1436,6 +1540,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -1444,12 +1550,14 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "PsApiManagementVpnType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -1458,7 +1566,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "IList",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -1466,6 +1574,8 @@
             ]
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -1480,6 +1590,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         }
       ],
@@ -1494,7 +1606,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "PsApiManagement",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
                     "Capacity": "System.Int32",
@@ -1519,6 +1631,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": true,
@@ -1539,6 +1653,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -1564,6 +1680,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": true,
@@ -1584,6 +1702,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": true,
@@ -1604,6 +1724,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": true,
@@ -1618,12 +1740,14 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "PsApiManagementSku",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": true,
@@ -1644,6 +1768,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": true,
@@ -1658,7 +1784,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "PsApiManagementVirtualNetwork",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Location": "System.String",
                     "SubnetName": "System.String",
@@ -1669,6 +1795,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -1683,12 +1811,14 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "PsApiManagementVpnType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -1703,7 +1833,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "IList",
-                  "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -1711,6 +1841,8 @@
                   ]
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -1731,6 +1863,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -1756,6 +1890,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -1782,7 +1918,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
@@ -1818,7 +1954,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
@@ -1843,6 +1979,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -1857,6 +1995,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -1865,12 +2005,14 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "PsApiManagementSku",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -1885,6 +2027,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -1893,7 +2037,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "PsApiManagementVirtualNetwork",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Location": "System.String",
               "SubnetName": "System.String",
@@ -1904,6 +2048,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         }
       ],
@@ -1918,7 +2064,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "PsApiManagement",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
                     "Capacity": "System.Int32",
@@ -1943,6 +2089,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": true,
@@ -1963,6 +2111,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -1977,12 +2127,14 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "PsApiManagementSku",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": true,
@@ -2003,6 +2155,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": true,
@@ -2017,7 +2171,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "PsApiManagementVirtualNetwork",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Location": "System.String",
                     "SubnetName": "System.String",
@@ -2028,6 +2182,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -2054,7 +2210,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "PsApiManagementHostnameCertificate",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Expiry": "System.DateTime",
               "Subject": "System.String",
@@ -2081,6 +2237,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -2095,6 +2253,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -2103,12 +2263,14 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "PsApiManagementHostnameType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -2123,6 +2285,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -2137,6 +2301,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -2151,6 +2317,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         }
       ],
@@ -2171,6 +2339,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -2191,6 +2361,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -2205,12 +2377,14 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "PsApiManagementHostnameType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -2231,6 +2405,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -2251,6 +2427,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -2271,6 +2449,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -2297,7 +2477,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
@@ -2339,6 +2519,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -2353,6 +2535,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -2361,7 +2545,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -2378,6 +2562,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -2392,6 +2578,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -2406,6 +2594,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -2420,6 +2610,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         }
       ],
@@ -2440,6 +2632,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -2460,6 +2654,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -2474,7 +2670,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -2491,6 +2687,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": true,
@@ -2511,6 +2709,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -2531,6 +2731,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -2551,6 +2753,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -2577,7 +2781,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -2602,6 +2806,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -2616,6 +2822,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         }
       ],
@@ -2636,6 +2844,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": true,
@@ -2661,6 +2871,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": true,
@@ -2681,6 +2893,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": true,
@@ -2707,7 +2921,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
@@ -2749,6 +2963,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -2763,6 +2979,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -2777,6 +2995,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -2791,6 +3011,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -2805,6 +3027,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -2813,7 +3037,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "Nullable",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -2825,6 +3049,8 @@
             "Standard",
             "Premium"
           ],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -2841,6 +3067,8 @@
             ]
           },
           "ValidateSet": [],
+          "ValidateRangeMin": 1,
+          "ValidateRangeMax": 10,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -2849,7 +3077,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "PsApiManagementVpnType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2859,6 +3087,8 @@
             "External",
             "Internal"
           ],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -2867,7 +3097,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "PsApiManagementVirtualNetwork",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Location": "System.String",
               "SubnetName": "System.String",
@@ -2878,6 +3108,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -2895,6 +3127,8 @@
             ]
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -2903,12 +3137,14 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "PsApiManagementRegion[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion[], Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion[], Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion",
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         }
       ],
@@ -2929,6 +3165,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -2949,6 +3187,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -2969,6 +3209,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -2989,6 +3231,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -3009,6 +3253,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -3023,7 +3269,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "Nullable",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -3035,6 +3281,8 @@
                   "Standard",
                   "Premium"
                 ],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -3057,6 +3305,8 @@
                   ]
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": 1,
+                "ValidateRangeMax": 10,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -3071,7 +3321,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "PsApiManagementVpnType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3081,6 +3331,8 @@
                   "External",
                   "Internal"
                 ],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -3095,7 +3347,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "PsApiManagementVirtualNetwork",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Location": "System.String",
                     "SubnetName": "System.String",
@@ -3106,6 +3358,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -3129,6 +3383,8 @@
                   ]
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -3143,12 +3399,14 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "PsApiManagementRegion[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion[], Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion[], Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion",
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -3198,6 +3456,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -3212,6 +3472,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -3226,6 +3488,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         }
       ],
@@ -3246,6 +3510,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -3266,6 +3532,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -3286,6 +3554,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -3312,7 +3582,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
@@ -3354,6 +3624,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -3368,6 +3640,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -3376,7 +3650,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
             "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
               "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -3393,6 +3667,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -3407,6 +3683,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -3421,6 +3699,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
         },
         {
@@ -3435,6 +3715,8 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         }
       ],
@@ -3455,6 +3737,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -3475,6 +3759,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -3489,7 +3775,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
                   "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
                     "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -3506,6 +3792,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": true,
@@ -3526,6 +3814,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -3546,6 +3836,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
@@ -3566,6 +3858,8 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -3695,7 +3989,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]": {
       "Namespace": "System.Collections.Generic",
       "Name": "IList",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -3705,7 +3999,7 @@
     "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
       "Name": "PsApiManagementRegion",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Capacity": "System.Int32",
         "Location": "System.String",
@@ -3719,7 +4013,7 @@
     "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
       "Name": "PsApiManagementSku",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3735,7 +4029,7 @@
     "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
       "Name": "PsApiManagementVirtualNetwork",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Location": "System.String",
         "SubnetName": "System.String",
@@ -3756,7 +4050,7 @@
     "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
       "Name": "PsApiManagementHostnameConfiguration",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Hostname": "System.String",
         "HostnameCertificate": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate"
@@ -3767,7 +4061,7 @@
     "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
       "Name": "PsApiManagementHostnameCertificate",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Expiry": "System.DateTime",
         "Subject": "System.String",
@@ -3798,7 +4092,7 @@
     "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
       "Name": "PsApiManagementVpnType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3806,7 +4100,7 @@
     "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext": {
       "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
       "Name": "AzureStorageContext",
-      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "BlobEndPoint": "System.String",
         "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
@@ -3880,7 +4174,7 @@
     "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
       "Name": "PsApiManagement",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
         "Capacity": "System.Int32",

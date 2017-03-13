@@ -17,14 +17,15 @@ Gets the properties of a virtual machine.
 Get-AzureRmVM [-Status] [<CommonParameters>]
 ```
 
-### GetVirtualMachineInResourceGroupParamSet
-```
-Get-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-Status] [<CommonParameters>]
-```
-
 ### ListVirtualMachineInResourceGroupParamSet
 ```
 Get-AzureRmVM [-ResourceGroupName] <String> [-Status] [<CommonParameters>]
+```
+
+### GetVirtualMachineInResourceGroupParamSet
+```
+Get-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-Status] [-DisplayHint <DisplayHintType>]
+ [<CommonParameters>]
 ```
 
 ### ListNextLinkVirtualMachinesParamSet
@@ -72,6 +73,25 @@ This command gets all the virtual machines in your subscription.
 
 ## PARAMETERS
 
+### -DisplayHint
+Determines how the virtual machine object is displayed.
+
+Valid values are:
+
+-- Compact: displays only top level properties
+
+-- Expand: displays all properties in all levels```yaml
+Type: DisplayHintType
+Parameter Sets: GetVirtualMachineInResourceGroupParamSet
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the virtual machine to get.
 
@@ -107,7 +127,7 @@ Specifies the name of a resource group.
 
 ```yaml
 Type: String
-Parameter Sets: GetVirtualMachineInResourceGroupParamSet, ListVirtualMachineInResourceGroupParamSet
+Parameter Sets: ListVirtualMachineInResourceGroupParamSet, GetVirtualMachineInResourceGroupParamSet
 Aliases: 
 
 Required: True
