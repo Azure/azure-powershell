@@ -72,6 +72,18 @@
     <Compile Include="Cmdlets\Server\Model\AzureSqlServerModel.cs" />
     <Compile Include="Cmdlets\Server\Services\AzureSqlServerAdapter.cs" />
     <Compile Include="Cmdlets\Server\Services\AzureSqlServerCommunicator.cs" />
+    <Compile Include="Cmdlets\Elastic Pools\Cmdlet\AzureSqlElasticPoolActivityCmdletBase.cs" />
+    <Compile Include="Cmdlets\Elastic Pools\Cmdlet\AzureSqlElasticPoolCmdletBase.cs" />
+    <Compile Include="Cmdlets\Elastic Pools\Cmdlet\GetAzureSqlElasticPool.cs" />
+    <Compile Include="Cmdlets\Elastic Pools\Cmdlet\GetAzureSqlElasticPoolActivity.cs" />
+    <Compile Include="Cmdlets\Elastic Pools\Cmdlet\GetAzureSqlElasticPoolDatabase.cs" />
+    <Compile Include="Cmdlets\Elastic Pools\Cmdlet\NewAzureSqlElasticPool.cs" />
+    <Compile Include="Cmdlets\Elastic Pools\Cmdlet\RemoveAzureSqlElasticPool.cs" />
+    <Compile Include="Cmdlets\Elastic Pools\Cmdlet\SetAzureSqlElasticPool.cs" />
+    <Compile Include="Cmdlets\Elastic Pools\Model\AzureSqlElasticPoolActivityModel.cs" />
+    <Compile Include="Cmdlets\Elastic Pools\Model\AzureSqlElasticPoolModel.cs" />
+    <Compile Include="Cmdlets\Elastic Pools\Services\AzureSqlElasticPoolAdapter.cs" />
+    <Compile Include="Cmdlets\Elastic Pools\Services\AzureSqlElasticPoolCommunicator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Hyak.Common">

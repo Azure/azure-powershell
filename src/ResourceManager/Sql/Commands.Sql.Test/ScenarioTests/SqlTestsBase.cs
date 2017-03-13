@@ -44,13 +44,10 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
         public string UserDomain { get; private set; }
 
-        protected SqlTestsBase()
+        protected SqlTestsBase(ITestOutputHelper output)
         {
             helper = new SqlEvnSetupHelper();
-        }
 
-        protected SqlTestsBase(ITestOutputHelper output) : this()
-        {
             var logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             helper.TracingInterceptor = logger;

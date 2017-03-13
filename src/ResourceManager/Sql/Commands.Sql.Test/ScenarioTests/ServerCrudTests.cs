@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class ServerCrudTests : SqlTestsBase
     {
-        public ServerCrudTests(ITestOutputHelper output)
-            : base(output)
+        public ServerCrudTests(ITestOutputHelper output) : base(output)
         {
         }
 
