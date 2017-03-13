@@ -40,6 +40,13 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             this.RunPowerShellTest("Test-SetAzureVMChefExtensionAdvancedOptions");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetAzureVMChefExtensionDaemonTask()
+        {
+            this.RunPowerShellTest("Test-SetAzureVMChefExtensionDaemonTask");
+        }
+
         protected void SetupManagementClients()
         {
             var rdfeTestFactory = new RDFETestEnvironmentFactory();

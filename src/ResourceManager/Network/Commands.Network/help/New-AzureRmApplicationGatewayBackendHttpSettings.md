@@ -14,7 +14,8 @@ Creates back-end HTTP settings for an application gateway.
 
 ```
 New-AzureRmApplicationGatewayBackendHttpSettings -Name <String> -Port <Int32> -Protocol <String>
- -CookieBasedAffinity <String> [-RequestTimeout <UInt32>] [-ProbeId <String>]
+ -CookieBasedAffinity <String> [-RequestTimeout <UInt32>]
+ [-ConnectionDraining <PSApplicationGatewayConnectionDraining>] [-ProbeId <String>]
  [-Probe <PSApplicationGatewayProbe>]
  [-AuthenticationCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate]>]
  [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
@@ -188,6 +189,19 @@ Specifies an information variable.
 Type: String
 Parameter Sets: (All)
 Aliases: iv
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectionDraining
+Connection draining of the backend http settings resource.```yaml
+Type: PSApplicationGatewayConnectionDraining
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
 Position: Named

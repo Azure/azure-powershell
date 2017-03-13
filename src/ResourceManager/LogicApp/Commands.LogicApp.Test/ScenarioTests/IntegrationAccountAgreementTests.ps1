@@ -22,20 +22,20 @@ function Test-CreateIntegrationAccountAgreementX12
 	$agreementX12Content = [IO.File]::ReadAllText($agreementX12FilePath)	
 
 	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
-	$integrationAccountName = getAssetname	
+	$integrationAccountName = getAssetname
 	
 	$integrationAccountX12AgreementName = getAssetname
 	$integrationAccountX12AgreementName1 = getAssetname
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 	
-	$hostPartnerName = getAssetname	
+	$hostPartnerName = getAssetname
 	$guestPartnerName = getAssetname
-	$hostBusinessIdentities = @{"AA" = "AA"; "BB" = "BB" }
-	$guestBusinessIdentities = @{"ZZ" = "ZZ"; "XX" = "XX" }
+	$hostBusinessIdentities = @(("AA","AA"), ("BB","BB"))
+	$guestBusinessIdentities = @(("ZZ","ZZ"), ("XX","XX"))
 	
-	$hostPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -PartnerName $hostPartnerName -BusinessIdentities $hostBusinessIdentities 
-	$guestPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -PartnerName $guestPartnerName -BusinessIdentities $guestBusinessIdentities
+	$hostPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -PartnerName $hostPartnerName -BusinessIdentities $hostBusinessIdentities
+	$guestPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -PartnerName $guestPartnerName -BusinessIdentities $guestBusinessIdentities
 	
 	$childItems = New-Object PSObject |
 	   Add-Member -PassThru NoteProperty Item1 'ChildItem' |
@@ -48,15 +48,15 @@ function Test-CreateIntegrationAccountAgreementX12
 	)
 	$metadata = $items | ConvertTo-JSON -Compress
 	
-	Assert-ThrowsContains {New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountX12AgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -AgreementContent $agreementX12Content -Metadata "test" } "Invalid metadata."
+	Assert-ThrowsContains {New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountX12AgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -GuestIdentityQualifierValue "ZZ" -HostIdentityQualifier "AA" -HostIdentityQualifierValue "AA" -AgreementContent $agreementX12Content -Metadata "test" } "Invalid metadata."
 
-	$integrationAccountAgreement0 =  New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountX12AgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -AgreementContent $agreementX12Content -Metadata $metadata
+	$integrationAccountAgreement0 =  New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountX12AgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -GuestIdentityQualifierValue "ZZ" -HostIdentityQualifierValue "AA" -AgreementContent $agreementX12Content -Metadata $metadata
 	Assert-AreEqual $integrationAccountX12AgreementName $integrationAccountAgreement0.Name
 
-	$integrationAccountAgreement1 =  New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountX12AgreementName1 -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -AgreementContentFilePath $agreementX12FilePath
+	$integrationAccountAgreement1 =  New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountX12AgreementName1 -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -GuestIdentityQualifierValue "ZZ" -HostIdentityQualifierValue "AA" -AgreementContentFilePath $agreementX12FilePath
 	Assert-AreEqual $integrationAccountX12AgreementName1 $integrationAccountAgreement1.Name
 
-	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -Force
+	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
 }
 
 <#
@@ -78,18 +78,18 @@ function Test-CreateIntegrationAccountAgreementAS2
 
 	$hostPartnerName = getAssetname	
 	$guestPartnerName = getAssetname
-	$hostBusinessIdentities = @{"AA" = "AA"; "BB" = "BB" }
-	$guestBusinessIdentities = @{"ZZ" = "ZZ"; "XX" = "XX" }
-	$hostPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -PartnerName $hostPartnerName -BusinessIdentities $hostBusinessIdentities
-	$guestPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -PartnerName $guestPartnerName -BusinessIdentities $guestBusinessIdentities
+	$hostBusinessIdentities = @(("AA","AA"), ("BB","BB"))
+	$guestBusinessIdentities = @(("ZZ","ZZ"), ("XX","XX"))
+	$hostPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -PartnerName $hostPartnerName -BusinessIdentities $hostBusinessIdentities
+	$guestPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -PartnerName $guestPartnerName -BusinessIdentities $guestBusinessIdentities
 
-	$integrationAccountAgreement3 =  New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAS2AgreementName -AgreementType "AS2" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -AgreementContent $agreementAS2Content
+	$integrationAccountAgreement3 =  New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountAS2AgreementName -AgreementType "AS2" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -GuestIdentityQualifierValue "ZZ" -HostIdentityQualifierValue "AA" -AgreementContent $agreementAS2Content
 	Assert-AreEqual $integrationAccountAS2AgreementName $integrationAccountAgreement3.Name
 
-	$integrationAccountAgreement4 =  New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAS2AgreementName1 -AgreementType "AS2" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -AgreementContentFilePath $agreementAS2FilePath
+	$integrationAccountAgreement4 =  New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountAS2AgreementName1 -AgreementType "AS2" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -GuestIdentityQualifierValue "ZZ" -HostIdentityQualifierValue "AA" -AgreementContentFilePath $agreementAS2FilePath
 	Assert-AreEqual $integrationAccountAS2AgreementName1 $integrationAccountAgreement4.Name
 
-	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -Force
+	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
 }
 
 <#
@@ -99,7 +99,7 @@ Test New-AzureRmIntegrationAccountAgreement command
 function Test-CreateIntegrationAccountAgreementEdifact
 {
 	$agreementEdifactFilePath = "$TestOutputRoot\Resources\IntegrationAccountEdifactAgreementContent.json"
-	$agreementEdifactContent = [IO.File]::ReadAllText($agreementEdifactFilePath)	
+	$agreementEdifactContent = [IO.File]::ReadAllText($agreementEdifactFilePath)
 	
 	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
 	$integrationAccountName = getAssetname	
@@ -109,20 +109,20 @@ function Test-CreateIntegrationAccountAgreementEdifact
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 
-	$hostPartnerName = getAssetname	
+	$hostPartnerName = getAssetname
 	$guestPartnerName = getAssetname
-	$hostBusinessIdentities = @{"AA" = "AA"; "BB" = "BB" }
-	$guestBusinessIdentities = @{"ZZ" = "ZZ"; "XX" = "XX" }
-	$hostPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -PartnerName $hostPartnerName -BusinessIdentities $hostBusinessIdentities
-	$guestPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -PartnerName $guestPartnerName -BusinessIdentities $guestBusinessIdentities
+	$hostBusinessIdentities = @(("AA","AA"), ("BB","BB"))
+	$guestBusinessIdentities = @(("ZZ","ZZ"), ("XX","XX"))
+	$hostPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -PartnerName $hostPartnerName -BusinessIdentities $hostBusinessIdentities
+	$guestPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -PartnerName $guestPartnerName -BusinessIdentities $guestBusinessIdentities
 
-	$integrationAccountAgreement5 =  New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountEdifactAgreementName -AgreementType "Edifact" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -AgreementContent $agreementEdifactContent
+	$integrationAccountAgreement5 =  New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountEdifactAgreementName -AgreementType "Edifact" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -GuestIdentityQualifierValue "ZZ" -HostIdentityQualifierValue "AA" -AgreementContent $agreementEdifactContent
 	Assert-AreEqual $integrationAccountEdifactAgreementName $integrationAccountAgreement5.Name
 
-	$integrationAccountAgreement6 =  New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountEdifactAgreementName1 -AgreementType "Edifact" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -AgreementContentFilePath $agreementEdifactFilePath
+	$integrationAccountAgreement6 =  New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountEdifactAgreementName1 -AgreementType "Edifact" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -GuestIdentityQualifierValue "ZZ" -HostIdentityQualifierValue "AA" -AgreementContentFilePath $agreementEdifactFilePath
 	Assert-AreEqual $integrationAccountEdifactAgreementName1 $integrationAccountAgreement6.Name
 
-	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -Force
+	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
 }
 
 
@@ -144,20 +144,20 @@ function Test-CreateIntegrationAccountAgreementWithFailure
 	
 	$hostPartnerName = getAssetname	
 	$guestPartnerName = getAssetname
-	$hostBusinessIdentities = @{"AA" = "AA"; "BB" = "BB" }
-	$guestBusinessIdentities = @{"ZZ" = "ZZ"; "XX" = "XX" }
-	$hostPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -PartnerName $hostPartnerName -BusinessIdentities $hostBusinessIdentities
-	$guestPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -PartnerName $guestPartnerName -BusinessIdentities $guestBusinessIdentities
+	$hostBusinessIdentities = @(("AA","AA"), ("BB","BB"))
+	$guestBusinessIdentities = @(("ZZ","ZZ"), ("XX","XX"))
+	$hostPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -PartnerName $hostPartnerName -BusinessIdentities $hostBusinessIdentities
+	$guestPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -PartnerName $guestPartnerName -BusinessIdentities $guestBusinessIdentities
 	
-	Assert-ThrowsContains {New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountX12AgreementName -AgreementType "X12" -GuestPartner "TestGuest" -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -AgreementContent $agreementX12Content} "The partner 'TestGuest' could not be found in integration account '$integrationAccountName'."
+	Assert-ThrowsContains {New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountX12AgreementName -AgreementType "X12" -GuestPartner "TestGuest" -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -GuestIdentityQualifierValue "ZZ" -HostIdentityQualifierValue "AA" -AgreementContent $agreementX12Content} "The partner 'TestGuest' could not be found in integration account '$integrationAccountName'."
 
-	Assert-ThrowsContains {New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountX12AgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner "TestHost" -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -AgreementContent $agreementX12Content} "The partner 'TestHost' could not be found in integration account '$integrationAccountName'."
+	Assert-ThrowsContains {New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountX12AgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner "TestHost" -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -GuestIdentityQualifierValue "ZZ" -HostIdentityQualifierValue "AA" -AgreementContent $agreementX12Content} "The partner 'TestHost' could not be found in integration account '$integrationAccountName'."
 
-	Assert-ThrowsContains {New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountX12AgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "BB" -HostIdentityQualifier "AA" -AgreementContent $agreementX12Content} "The qualifier 'BB' for partner '$guestPartnerName' is invalid."
+	Assert-ThrowsContains {New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountX12AgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "BB" -HostIdentityQualifier "AA" -GuestIdentityQualifierValue "BB" -HostIdentityQualifierValue "AA" -AgreementContent $agreementX12Content} "The qualifier 'BB' for partner '$guestPartnerName' is invalid."
 
-	Assert-ThrowsContains {New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountX12AgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "OO" -AgreementContent $agreementX12Content} "The qualifier 'OO' for partner '$hostPartnerName' is invalid."
+	Assert-ThrowsContains {New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountX12AgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "OO" -GuestIdentityQualifierValue "ZZ" -HostIdentityQualifierValue "OO" -AgreementContent $agreementX12Content} "The qualifier 'OO' for partner '$hostPartnerName' is invalid."
 
-	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -Force
+	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
 }
 
 <#
@@ -178,20 +178,20 @@ function Test-GetIntegrationAccountAgreement
 	
 	$hostPartnerName = getAssetname	
 	$guestPartnerName = getAssetname
-	$hostBusinessIdentities = @{"AA" = "AA"; "BB" = "BB" }
-	$guestBusinessIdentities = @{"ZZ" = "ZZ"; "XX" = "XX" }
-	$hostPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -PartnerName $hostPartnerName -BusinessIdentities $hostBusinessIdentities
-	$guestPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -PartnerName $guestPartnerName -BusinessIdentities $guestBusinessIdentities
+	$hostBusinessIdentities = @(("AA","AA"), ("BB","BB"))
+	$guestBusinessIdentities = @(("ZZ","ZZ"), ("XX","XX"))
+	$hostPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -PartnerName $hostPartnerName -BusinessIdentities $hostBusinessIdentities
+	$guestPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -PartnerName $guestPartnerName -BusinessIdentities $guestBusinessIdentities
 
-	$integrationAccountAgreement0 =  New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountX12AgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -AgreementContent $agreementX12Content
+	$integrationAccountAgreement0 =  New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountX12AgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -GuestIdentityQualifierValue "ZZ" -HostIdentityQualifierValue "AA" -AgreementContent $agreementX12Content
 
-	$result =  Get-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountX12AgreementName
+	$result =  Get-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountX12AgreementName
 	Assert-AreEqual $integrationAccountX12AgreementName $result.Name
 
-	$result1 =  Get-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName
+	$result1 =  Get-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName
 	Assert-True { $result1.Count -gt 0 }	
 
-	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -Force
+	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
 }
 
 <#
@@ -212,16 +212,16 @@ function Test-RemoveIntegrationAccountAgreement
 	
 	$hostPartnerName = getAssetname	
 	$guestPartnerName = getAssetname
-	$hostBusinessIdentities = @{"AA" = "AA"; "BB" = "BB" }
-	$guestBusinessIdentities = @{"ZZ" = "ZZ"; "XX" = "XX" }
-	$hostPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -PartnerName $hostPartnerName -BusinessIdentities $hostBusinessIdentities
-	$guestPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -PartnerName $guestPartnerName -BusinessIdentities $guestBusinessIdentities
+	$hostBusinessIdentities = @(("AA","AA"), ("BB","BB"))
+	$guestBusinessIdentities = @(("ZZ","ZZ"), ("XX","XX"))
+	$hostPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -PartnerName $hostPartnerName -BusinessIdentities $hostBusinessIdentities
+	$guestPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -PartnerName $guestPartnerName -BusinessIdentities $guestBusinessIdentities
 
-	$integrationAccountAgreement0 =  New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountX12AgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -AgreementContent $agreementX12Content
+	$integrationAccountAgreement0 =  New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountX12AgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -GuestIdentityQualifierValue "ZZ" -HostIdentityQualifierValue "AA" -AgreementContent $agreementX12Content
 
-	Remove-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountX12AgreementName -Force	
+	Remove-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountX12AgreementName -Force	
 
-	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -Force
+	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
 }
 
 <#
@@ -245,38 +245,45 @@ function Test-UpdateIntegrationAccountAgreement
 
 	$hostPartnerName = getAssetname	
 	$guestPartnerName = getAssetname
-	$hostBusinessIdentities = @{"AA" = "AA"; "BB" = "BB" }
-	$guestBusinessIdentities = @{"ZZ" = "ZZ"; "XX" = "XX" }
-	$hostPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -PartnerName $hostPartnerName -BusinessIdentities $hostBusinessIdentities
-	$guestPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -PartnerName $guestPartnerName -BusinessIdentities $guestBusinessIdentities
+	$hostBusinessIdentities = @(("AA","AA"), ("BB","BB"))
+	$guestBusinessIdentities = @(("ZZ","ZZ"), ("XX","XX"))
+	$hostPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -PartnerName $hostPartnerName -BusinessIdentities $hostBusinessIdentities
+	$guestPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -PartnerName $guestPartnerName -BusinessIdentities $guestBusinessIdentities
 
-	$integrationAccountAgreement =  New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -AgreementContent $agreementX12Content
+	$integrationAccountAgreement =  New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -GuestIdentityQualifierValue "ZZ" -HostIdentityQualifierValue "AA" -AgreementContent $agreementX12Content
 	Assert-AreEqual $integrationAccountAgreementName $integrationAccountAgreement.Name
 	Assert-AreEqual "X12" $integrationAccountAgreement.AgreementType
 
-	$updatedIntegrationAccountAgreement =  Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "AS2" -AgreementContent $agreementAS2Content -Force
+	Assert-ThrowsContains {Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -GuestIdentityQualifierValue "ZZ"  -Force} "Either 'Host' business Identity qualifier or qualifier value is not specified."
+	Assert-ThrowsContains {Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ"  -HostIdentityQualifierValue "AA" -GuestIdentityQualifierValue "ZZ"  -Force} "Either 'Host' business Identity qualifier or qualifier value is not specified."
+
+	Assert-ThrowsContains {Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -HostIdentityQualifierValue "AA" -Force} "Either 'Guest' business Identity qualifier or qualifier value is not specified."
+	Assert-ThrowsContains {Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifierValue "ZZ" -HostIdentityQualifier "AA" -HostIdentityQualifierValue "AA" -Force} "Either 'Guest' business Identity qualifier or qualifier value is not specified."
+
+
+	$updatedIntegrationAccountAgreement =  Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "AS2" -AgreementContent $agreementAS2Content -Force
 	Assert-AreEqual "AS2" $updatedIntegrationAccountAgreement.AgreementType
 
-	$updatedIntegrationAccountAgreement =  Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "AS2" -AgreementContentFilePath $agreementAS2FilePath -Force
+	$updatedIntegrationAccountAgreement =  Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "AS2" -AgreementContentFilePath $agreementAS2FilePath -Force
 	Assert-AreEqual "AS2" $updatedIntegrationAccountAgreement.AgreementType
 
-	$updatedIntegrationAccountAgreement =  Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -GuestIdentityQualifier "XX" -Force
+	$updatedIntegrationAccountAgreement =  Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountAgreementName -GuestIdentityQualifier "XX" -GuestIdentityQualifierValue "XX" -Force
 	Assert-AreEqual "XX" $updatedIntegrationAccountAgreement.GuestIdentity.Qualifier
 	Assert-AreEqual "XX" $updatedIntegrationAccountAgreement.GuestIdentity.Value
 
-	$updatedIntegrationAccountAgreement =  Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -HostIdentityQualifier "BB" -Force
+	$updatedIntegrationAccountAgreement =  Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountAgreementName -HostIdentityQualifier "BB" -HostIdentityQualifierValue "BB" -Force
 	Assert-AreEqual "BB" $updatedIntegrationAccountAgreement.HostIdentity.Qualifier
 	Assert-AreEqual "BB" $updatedIntegrationAccountAgreement.HostIdentity.Value
 
-	Assert-ThrowsContains {Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "X12" -GuestPartner "TestGuest" -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -Force} "The partner 'TestGuest' could not be found in integration account '$integrationAccountName'."
+	Assert-ThrowsContains {Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "X12" -GuestPartner "TestGuest" -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -GuestIdentityQualifierValue "ZZ" -HostIdentityQualifierValue "AA" -Force} "The partner 'TestGuest' could not be found in integration account '$integrationAccountName'."
 
-	Assert-ThrowsContains {Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner "TestHost" -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -Force} "The partner 'TestHost' could not be found in integration account '$integrationAccountName'."
+	Assert-ThrowsContains {Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner "TestHost" -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -GuestIdentityQualifierValue "ZZ" -HostIdentityQualifierValue "AA" -Force} "The partner 'TestHost' could not be found in integration account '$integrationAccountName'."
 
-	Assert-ThrowsContains {Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "BB" -HostIdentityQualifier "AA" -Force} "The qualifier 'BB' for partner '$guestPartnerName' is invalid."
+	Assert-ThrowsContains {Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "BB" -HostIdentityQualifier "AA" -GuestIdentityQualifierValue "BB" -HostIdentityQualifierValue "AA" -Force} "The qualifier 'BB' for partner '$guestPartnerName' is invalid."
 
-	Assert-ThrowsContains {Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "OO" -Force} "The qualifier 'OO' for partner '$hostPartnerName' is invalid."
+	Assert-ThrowsContains {Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "OO" -GuestIdentityQualifierValue "ZZ" -HostIdentityQualifierValue "OO" -Force} "The qualifier 'OO' for partner '$hostPartnerName' is invalid."
 
-	$updatedIntegrationAccountAgreement =  Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -GuestPartner $hostPartnerName -HostPartner $guestPartnerName -Force
+	$updatedIntegrationAccountAgreement =  Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountAgreementName -GuestPartner $hostPartnerName -HostPartner $guestPartnerName -Force
 	Assert-AreEqual $hostPartnerName $updatedIntegrationAccountAgreement.GuestPartner
 	Assert-AreEqual $guestPartnerName $updatedIntegrationAccountAgreement.HostPartner
 
@@ -292,12 +299,47 @@ function Test-UpdateIntegrationAccountAgreement
 
 	$metadata = $items | ConvertTo-JSON -Compress
 
-	Assert-ThrowsContains {Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -Metadata "test" -Force} "Invalid metadata."
+	Assert-ThrowsContains {Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountAgreementName -Metadata "test" -Force} "Invalid metadata."
 
-	$updatedIntegrationAccountAgreement =  Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -Metadata $metadata	-Force
+	$updatedIntegrationAccountAgreement =  Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountAgreementName -Metadata $metadata	-Force
 	
 	$result = $updatedIntegrationAccountAgreement.Metadata.ToString() | ConvertFrom-JSON 
 	Assert-AreEqualObjectProperties $items $result 
 	
-	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -Force
+	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
+}
+
+<#
+.SYNOPSIS
+Test Get-AzureRmIntegrationAccountAgreement command : paging test
+#>
+function Test-ListIntegrationAccountAgreement
+{
+	$agreementX12FilePath = "$TestOutputRoot\Resources\IntegrationAccountX12AgreementContent.json"
+	$agreementX12Content = [IO.File]::ReadAllText($agreementX12FilePath)
+
+	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$integrationAccountName = getAssetname
+
+	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
+
+	$hostPartnerName = getAssetname
+	$guestPartnerName = getAssetname
+	$hostBusinessIdentities = @(("AA","AA"), ("BB","BB"))
+	$guestBusinessIdentities = @(("ZZ","ZZ"), ("XX","XX"))
+	$hostPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -PartnerName $hostPartnerName -BusinessIdentities $hostBusinessIdentities
+	$guestPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -PartnerName $guestPartnerName -BusinessIdentities $guestBusinessIdentities
+
+	$val=0
+	while($val -ne 1)
+	{
+		$val++ ;
+		$integrationAccountX12AgreementName = getAssetname
+		New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountX12AgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -GuestIdentityQualifierValue "ZZ" -HostIdentityQualifierValue "AA" -AgreementContent $agreementX12Content
+	}
+
+	$result =  Get-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName
+	Assert-True { $result.Count -eq 1 }
+
+	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
 }
