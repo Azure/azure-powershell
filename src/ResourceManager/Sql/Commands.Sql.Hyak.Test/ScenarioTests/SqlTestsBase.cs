@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
                 helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\AzureRM.Sql.Shim.ps1",
+                    //"ScenarioTests\\AzureRM.Sql.Shim.ps1",
                     "ScenarioTests\\" + this.GetType().Name + ".ps1",
                     helper.RMProfileModule,
                     helper.RMResourceModule,
@@ -99,7 +99,8 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                     //helper.GetRMModulePath(@"AzureRM.Sql.psd1"),
                     Path.Combine(helper.RMModuleDirectory, @"AzureRM.Sql\Commands.Sql.Hyak\Microsoft.Azure.Commands.Sql.Hyak.dll"),
                     "AzureRM.Storage.ps1",
-                    "AzureRM.Resources.ps1");
+                    "AzureRM.Resources.ps1",
+                    this.GetType().Assembly.Location);
                 helper.RunPowerShellTest(scripts);
             }
         }

@@ -45,6 +45,35 @@
     <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Cmdlets\Common\AzureEndpointsCommunicator.cs" />
+    <Compile Include="Cmdlets\Common\AzureSqlCmdletBase.cs" />
+    <Compile Include="Cmdlets\Common\AzureSqlDatabaseCmdletBase.cs" />
+    <Compile Include="Cmdlets\Common\Constants.cs" />
+    <Compile Include="Cmdlets\Common\SecurityConstants.cs" />
+    <Compile Include="Cmdlets\Database\Cmdlet\AzureSqlDatabaseActivityCmdletBase.cs" />
+    <Compile Include="Cmdlets\Database\Cmdlet\AzureSqlDatabaseCmdletBase.cs" />
+    <Compile Include="Cmdlets\Database\Cmdlet\GetAzureSqlDatabase.cs" />
+    <Compile Include="Cmdlets\Database\Cmdlet\GetAzureSqlDatabaseActivity.cs" />
+    <Compile Include="Cmdlets\Database\Cmdlet\GetAzureSqlDatabaseExpanded.cs" />
+    <Compile Include="Cmdlets\Database\Cmdlet\NewAzureSqlDatabase.cs" />
+    <Compile Include="Cmdlets\Database\Cmdlet\RemoveAzureSqlDatabase.cs" />
+    <Compile Include="Cmdlets\Database\Cmdlet\SetAzureSqlDatabase.cs" />
+    <Compile Include="Cmdlets\Database\Model\AzureSqlDatabaseActivityModel.cs" />
+    <Compile Include="Cmdlets\Database\Model\AzureSqlDatabaseModel.cs" />
+    <Compile Include="Cmdlets\Database\Model\AzureSqlDatabaseModelExpanded.cs" />
+    <Compile Include="Cmdlets\Database\Model\DatabaseEdition.cs" />
+    <Compile Include="Cmdlets\Database\Services\AzureSqlDatabaseAdapter.cs" />
+    <Compile Include="Cmdlets\Database\Services\AzureSqlDatabaseCommunicator.cs" />
+    <Compile Include="Cmdlets\Server\Cmdlet\AzureSqlServerCmdletBase.cs" />
+    <Compile Include="Cmdlets\Server\Cmdlet\GetAzureSqlServer.cs" />
+    <Compile Include="Cmdlets\Server\Cmdlet\NewAzureSqlServer.cs" />
+    <Compile Include="Cmdlets\Server\Cmdlet\RemoveAzureSqlServer.cs" />
+    <Compile Include="Cmdlets\Server\Cmdlet\SetAzureSqlServer.cs" />
+    <Compile Include="Cmdlets\Server\Model\AzureSqlServerModel.cs" />
+    <Compile Include="Cmdlets\Server\Services\AzureSqlServerAdapter.cs" />
+    <Compile Include="Cmdlets\Server\Services\AzureSqlServerCommunicator.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="Hyak.Common">
       <HintPath>..\..\..\packages\Hyak.Common.1.0.3\lib\net45\Hyak.Common.dll</HintPath>
     </Reference>

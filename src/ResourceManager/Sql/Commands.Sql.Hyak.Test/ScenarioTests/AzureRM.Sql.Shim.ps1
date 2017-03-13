@@ -5,6 +5,8 @@
 # Based on D:\git\azure-powershell\src\ResourceManager\Common\Commands.ScenarioTests.ResourceManager.Common\AzureRM.Storage.ps1
 # SqlManagementClient reference: https://github.com/Azure/azure-sdk-for-net/tree/master/src/ResourceManagement/Sql/SqlManagement
 
+<#
+
 function Extract-Password([PSCredential] $c)
 {
   $nc = New-Object -TypeName System.Net.NetworkCredential -ArgumentList $nul, $c.Password
@@ -142,3 +144,4 @@ function Get-SqlClient
     return $client
 }
 
+#>
