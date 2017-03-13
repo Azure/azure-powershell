@@ -29,10 +29,10 @@ The **Get-AzureRmAppServicePlan** cmdlet gets an Azure App Service plan in the s
 
 ### Example 1: Get an App Service plan from a resource group
 ```
-PS C:\>Get-AzureRmAppServicePlan -ResourceGroupName "Default-Web-WestUS" -Name "ContosoAppServPlan"
+PS C:\>Get-AzureRmAppServicePlan -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP"
 ```
 
-This command gets the App Service plan named ContosoAppServPlan that belongs to the resource group named Default-Web-WestUS.
+This command gets the App Service plan named ContosoASP that belongs to the resource group named Default-Web-WestUS.
 
 ### Example 2: Get all App Service plans in a location
 ```
