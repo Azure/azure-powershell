@@ -69,7 +69,9 @@ CLRVersion = '4.0'
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'Set-BootstrapRepo'
+FunctionsToExport = 'Set-BootstrapRepo', 'Update-AzureRmProfile', 'Uninstall-AzureRmProfile', 
+               'Install-AzureRmProfile', 'Use-AzureRmProfile', 'Get-AzureRmProfile', 
+               'Get-AzureRmModule'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Update-AzureRmProfile', 'Uninstall-AzureRmProfile', 
