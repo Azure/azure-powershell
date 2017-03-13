@@ -86,7 +86,7 @@ _Add the alias '`<alias>`' back to the cmdlet '`<cmdlet>`'._
 
 _The cmdlet '`<cmdlet>`' no longer has output type '`<outputType>`'._
 
-When the output of a cmdlet changes types, that is a breaking change. Existing scripts that assign the output of a cmdlet to a variable and call one of its properties or pass it through to another cmdlet will no longer work.
+When the output of a cmdlet changes types, that is a breaking change. Existing scripts that assign the output of a cmdlet to a variable and call one of its properties or pass it through to another cmdlet will no longer work. If the new output type has all of the same properties as the previous output type, then this is not considered a breaking change.
 
 For example, if we have a cmdlet, `Get-SomeObject` that returns a `Foo` object
 
@@ -115,8 +115,6 @@ $foo.SomeProperty
 $foo.AnotherProperty
 ```
 
-The exception to this rule is when the output changes from type `A` to type `B`, and all of the properties of `A` can also be found in `B`. In this case, there are no changes to the external interface, so this is not considered a breaking change.
-
 ### Remediation
 
 _Make cmdlet '`<cmdlet>`' return type '`<outputType>`'._
@@ -125,11 +123,11 @@ _Make cmdlet '`<cmdlet>`' return type '`<outputType>`'._
 
 ### Description
 
-_The cmdlet '`<cmdlet>`' no longer implements SupportsShouldProcess._
+_The cmdlet '`<cmdlet>`' no longer implements ShouldProcess._
 
-When a cmdlet that previously implemented `SupportsShouldProcess` no longer does, that is a breaking change. Users will no longer be able to use the `WhatIf` and `Confirm` parameters with the cmdlet.
+When a cmdlet that previously implemented `ShouldProcess` no longer does, that is a breaking change. Users will no longer be able to use the `WhatIf` and `Confirm` parameters with the cmdlet.
 
-For example, if we had a cmdlet `Remove-SomeObject` that implemented `SupportsShouldProcess`, but no longer does, the following script will no longer work since the `WhatIf` and `Confirm` parameters are not defined in the cmdlet.
+For example, if we had a cmdlet `Remove-SomeObject` that implemented `ShouldProcess`, but no longer does, the following script will no longer work since the `WhatIf` and `Confirm` parameters are not defined in the cmdlet.
 
 ```powershell
 Remove-SomeObject -WhatIf
@@ -138,19 +136,19 @@ Remove-SomeObject -Confirm
 
 ### Remediation
 
-_Make sure the cmdlet '`<cmdlet>`' implements SupportsShouldProcess._
+_Make sure the cmdlet '`<cmdlet>`' implements ShouldProcess._
 
 ## 1040 - Removed SupportsPaging
 
 ### Description
 
-_The cmdlet '`<cmdlet>`' no longer implements SupportsPaging._
+_The cmdlet '`<cmdlet>`' no longer implements Paging._
 
-When a cmdlet that previously implemented `SupportsPaging` no longer does, that is a breaking change. Users will no longer be able to use the `First`, `Skip`, and `IncludeTotalCount` parameters with the cmdlet.
+When a cmdlet that previously implemented `Paging` no longer does, that is a breaking change. Users will no longer be able to use the `First`, `Skip`, and `IncludeTotalCount` parameters with the cmdlet.
 
 ### Remediation
 
-_Make sure the cmdlet '`<cmdlet>`' implements SupportsPaging._
+_Make sure the cmdlet '`<cmdlet>`' implements Paging._
 
 ## 1050 - Removed Parameter Set
 
@@ -209,13 +207,15 @@ Also, if the default parameter set is removed entirely from this cmdlet, this wi
 
 _Change the default parameter for cmdlet '`<cmdlet>`' back to '`<parameterSet>`'._
 
+_Note_: if the default parameter set name is changed, this breaking change can also be resolved by ensuring that the same set of parameters in the previous default parameter set are found in the new one. This also means the parameters' attributes (such as `Mandatory` and `Position`) must also remain the same for the set of parameters that were included.
+
 ## 1070 - Changed Output Element Type
 
 ### Description
 
 _The element type for the output has been changed from `'<oldElementType>'` to `'<newElementType>'`._
 
-When the type of the output is an array, and the element type of that array has been changed, that is a breaking change. 
+When the type of the output is an array, and the element type of that array has been changed, that is a breaking change. If the new output type has all of the properties found in the previous output type, then this is not considered a breaking change.
 
 For example, if we had a cmdlet `Get-SomeObject` that returned an array of `Foo` objects
 
