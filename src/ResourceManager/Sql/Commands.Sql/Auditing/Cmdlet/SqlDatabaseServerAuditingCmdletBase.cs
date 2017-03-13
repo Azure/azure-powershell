@@ -97,26 +97,18 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             if (AuditType == AuditType.Table)
             {
                 ServerAuditingPolicyModel model;
-                try
-                {
-                    ModelAdapter.GetServerAuditingPolicy(ResourceGroupName, ServerName, clientRequestId, out model);
-                    return model;
-                }
-                catch
-                {
-                    return null;
-                }
+                ModelAdapter.GetServerAuditingPolicy(ResourceGroupName, ServerName, clientRequestId, out model);
+                return model;
             }
-            ServerBlobAuditingPolicyModel blobModel;
-            try
+
+            if (AuditType == AuditType.Blob)
             {
+                ServerBlobAuditingPolicyModel blobModel;
                 ModelAdapter.GetServerAuditingPolicy(ResourceGroupName, ServerName, clientRequestId, out blobModel);
                 return blobModel;
             }
-            catch
-            {
-                return null;
-            }
+
+            return null;
         }
     }
 }

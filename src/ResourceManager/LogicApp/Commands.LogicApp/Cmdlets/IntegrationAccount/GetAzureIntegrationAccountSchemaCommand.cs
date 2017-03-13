@@ -16,11 +16,14 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
     using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
+    using Microsoft.Azure.Management.Logic.Models;
+    using Microsoft.Rest.Azure;
 
     /// <summary>
     /// Gets the integration account schema by name 
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmIntegrationAccountSchema"), OutputType(typeof (object))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmIntegrationAccountSchema")]
+    [OutputType(typeof(IntegrationAccountSchema), typeof(IPage<IntegrationAccountSchema>))]
     public class GetAzureIntegrationAccountSchemaCommand : LogicAppBaseCmdlet
     {
 
@@ -32,8 +35,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account name.")]
-        [Alias("ResourceName")]
         [ValidateNotNullOrEmpty]
+        [Alias("IntegrationAccountName", "ResourceName")]
         public string Name { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account schema name.")]

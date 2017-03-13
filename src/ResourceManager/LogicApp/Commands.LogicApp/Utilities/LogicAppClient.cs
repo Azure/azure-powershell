@@ -134,8 +134,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         {
             return this.LogicManagementClient.Workflows.GenerateUpgradedDefinition(
                 resourceGroupName,
-                workflowName,
-                targetSchemaVersion);
+                workflowName, 
+                new GenerateUpgradedDefinitionParameters(targetSchemaVersion)
+                );
         }
 
         /// <summary>

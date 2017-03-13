@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<helpItems xmlns="http://msh" schema="maml">
+
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<command:details><command:name>Get-AzureRmBillingInvoice</command:name>
+<command:verb>Get</command:verb>
+<command:noun>AzureRmBillingInvoice</command:noun>
+<maml:description><maml:para>Get billing invoices of the subscription.
+</maml:para>
+</maml:description>
+</command:details>
+<maml:description><maml:para>The Get-AzureRmBillingInvoice cmdlet gets billing invoices of the subscription.
+</maml:para>
+</maml:description>
+<command:syntax><command:syntaxItem><maml:name>Get-AzureRmBillingInvoice</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>GenerateDownloadUrl</maml:name>
+<maml:Description><maml:para>Generate the download url of the invoices.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>MaxCount</maml:name>
+<maml:Description><maml:para>Determines the maximum number of records to return.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+<command:syntaxItem><maml:name>Get-AzureRmBillingInvoice</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Latest</maml:name>
+<maml:Description><maml:para>Get the latest invoice.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+<command:syntaxItem><maml:name>Get-AzureRmBillingInvoice</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Name</maml:name>
+<maml:Description><maml:para>Name of a specific invoice to get or the most recent if not specified.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+</command:syntax>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>GenerateDownloadUrl</maml:name>
+<maml:Description><maml:para>Generate the download url of the invoices.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Latest</maml:name>
+<maml:Description><maml:para>Get the latest invoice.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>MaxCount</maml:name>
+<maml:Description><maml:para>Determines the maximum number of records to return.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Name</maml:name>
+<maml:Description><maml:para>Name of a specific invoice to get or the most recent if not specified.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:parameters>
+<command:inputTypes><command:inputType><dev:type><maml:name>None</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:inputType>
+</command:inputTypes>
+<command:returnValues><command:returnValue><dev:type><maml:name>System.Collections.Generic.List`1[[Microsoft.Azure.Management.Billing.Models.Invoice, Microsoft.Azure.Commands.Billing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]</maml:name>
+</dev:type>
+<maml:description><maml:para>Microsoft.Azure.Management.Billing.Models.Invoice
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
+<maml:alertSet><maml:alert><maml:para>
+</maml:para>
+</maml:alert>
+</maml:alertSet>
+<command:examples><command:example><maml:title>Example 1</maml:title>
+<dev:code>PS C:\&gt; Get-AzureRmBillingInvoice -Latest</dev:code>
+<dev:remarks><maml:para>Get the latest invoice of the subscription.
+</maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>Example 2</maml:title>
+<dev:code>PS C:\&gt; Get-AzureRmBillingInvoice -Name 2017-02-18-432543543</dev:code>
+<dev:remarks><maml:para>Get the invoice of the subscription with the specified name.
+</maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>Example 3</maml:title>
+<dev:code>PS C:\&gt; Get-AzureRmBillingInvoice</dev:code>
+<dev:remarks><maml:para>Get all available invoices of the subscription in reverse chronological order beginning with the most recent invoice without download Url.
+</maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>Example 4</maml:title>
+<dev:code>PS C:\&gt; Get-AzureRmBillingInvoice -GenerateDownloadUrl -MaxCount 10</dev:code>
+<dev:remarks><maml:para>Get most recent 10 invoices of the subscription and include the download Url in the result.
+</maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
+</dev:remarks>
+</command:example>
+</command:examples>
+<command:relatedLinks></command:relatedLinks>
+</command:command>
+</helpItems>
