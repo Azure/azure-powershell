@@ -468,6 +468,18 @@ function Test-VirtualNetworkGatewayBgpRouteApi
 		$bgpPeerStatus = Get-AzureRmVirtualNetworkGatewayBGPPeerStatus -ResourceGroupName $rgname -VirtualNetworkGatewayName $gwname
 		$bgpLearnedRoutes = Get-AzureRmVirtualNetworkGatewayLearnedRoute -ResourceGroupName $rgname -VirtualNetworkGatewayName $gwname
 		$bgpAdvertisedRoutes = Get-AzureRmVirtualNetworkGatewayAdvertisedRoute -ResourceGroupName $rgname -VirtualNetworkGatewayName $gwname -Peer $bgpPeerStatus[0].Neighbor
+
+		Assert-AreEqual True ($vnet.AddressSpace.AddressPrefixes -contains $bgpAdvertisedRoutes[0].Network)
+
+		$routeLearned = $false
+		ForEach ($route in $bgpLearnedRoutes) {
+			If ($route.Origin -eq "EBgp") {
+				$routeLearned = $true
+				Assert-AreEqual True ($vnet1.AddressSpace.AddressPrefixes -contains $route.Network)
+			}
+		}
+
+		Assert-AreEqual True $routeLearned
 	}
 	finally 
 	{
