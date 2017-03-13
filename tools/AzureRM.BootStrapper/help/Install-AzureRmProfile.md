@@ -21,10 +21,10 @@ Install all the latest modules associated with a particular AzureRM Profile on t
 
 ### Example 1
 ```
-PS C:\> Install-AzureRmProfile -Profile '2016-05'
+PS C:\> Install-AzureRmProfile -Profile '2017-03-09-profile'
 ```
 
-Install all the modules associated with profile '2016-05'
+Install all the modules associated with profile '2017-03-09-profile'
 
 ## PARAMETERS
 
@@ -35,7 +35,7 @@ The profile version to install.  You can get a list of available profile version
 Type: String
 Parameter Sets: (All)
 Aliases: 
-Accepted values: 2016-09, 2016-05, <others>
+Accepted values: 2017-03-09-profile, <others>
 
 Required: True
 Position: 0
