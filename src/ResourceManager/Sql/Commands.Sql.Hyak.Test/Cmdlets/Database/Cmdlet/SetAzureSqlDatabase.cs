@@ -13,13 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Commands.Sql.Database.Model;
+using Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Database.Model;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
+namespace Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Database.Cmdlet
 {
     /// <summary>
     /// Cmdlet to create a new Azure Sql Database

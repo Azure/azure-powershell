@@ -15,7 +15,7 @@
 using System.Collections.Generic;
 using System.Security;
 
-namespace Microsoft.Azure.Commands.Sql.Server.Model
+namespace Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Server.Model
 {
     /// <summary>
     /// Represents the core properties of an Azure Sql Server

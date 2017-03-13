@@ -14,7 +14,7 @@
 
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Sql.Common
+namespace Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Common
 {
     /// <summary>
     /// The base class for all Azure Sql database cmdlets

@@ -62,6 +62,7 @@
     <Compile Include="Cmdlets\Database\Model\AzureSqlDatabaseModel.cs" />
     <Compile Include="Cmdlets\Database\Model\AzureSqlDatabaseModelExpanded.cs" />
     <Compile Include="Cmdlets\Database\Model\DatabaseEdition.cs" />
+    <Compile Include="Cmdlets\Database\Model\DatabaseReadScale.cs" />
     <Compile Include="Cmdlets\Database\Services\AzureSqlDatabaseAdapter.cs" />
     <Compile Include="Cmdlets\Database\Services\AzureSqlDatabaseCommunicator.cs" />
     <Compile Include="Cmdlets\Server\Cmdlet\AzureSqlServerCmdletBase.cs" />
@@ -801,14 +802,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Cmdlets\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Cmdlets\README.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

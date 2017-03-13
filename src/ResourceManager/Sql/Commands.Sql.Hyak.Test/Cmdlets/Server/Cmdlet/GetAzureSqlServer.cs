@@ -13,13 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Sql.Server.Model;
+using Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Server.Model;
 using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
 using System.Reflection;
 
-namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
+namespace Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Server.Cmdlet
 {
     /// <summary>
     /// Defines the Get-AzureRmSqlServer cmdlet

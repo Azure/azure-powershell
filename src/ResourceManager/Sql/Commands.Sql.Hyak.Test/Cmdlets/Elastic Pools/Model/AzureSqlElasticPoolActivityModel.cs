@@ -14,7 +14,7 @@
 
 using System;
 
-namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
+namespace Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.ElasticPool.Model
 {
     /// <summary>
     /// Represents an Azure Sql Database

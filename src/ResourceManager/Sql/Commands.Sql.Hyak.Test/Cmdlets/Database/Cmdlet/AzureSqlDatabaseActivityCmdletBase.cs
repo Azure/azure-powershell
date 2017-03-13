@@ -13,14 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Commands.Sql.Database.Model;
-using Microsoft.Azure.Commands.Sql.Database.Services;
+using Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Common;
+using Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Database.Model;
+using Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Database.Services;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
+namespace Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Database.Cmdlet
 {
     public abstract class AzureSqlDatabaseActivityCmdletBase
         : AzureSqlCmdletBase<IEnumerable<AzureSqlDatabaseActivityModel>, AzureSqlDatabaseAdapter>

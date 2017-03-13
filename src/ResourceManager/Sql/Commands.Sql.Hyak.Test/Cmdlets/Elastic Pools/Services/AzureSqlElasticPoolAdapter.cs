@@ -13,10 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Sql.Database.Model;
-using Microsoft.Azure.Commands.Sql.Database.Services;
-using Microsoft.Azure.Commands.Sql.ElasticPool.Model;
-using Microsoft.Azure.Commands.Sql.Server.Adapter;
+using Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Database.Model;
+using Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Database.Services;
+using Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.ElasticPool.Model;
+using Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Server.Adapter;
 using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Management.Sql.Models;
 using System;
@@ -24,7 +24,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 
-namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
+namespace Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.ElasticPool.Services
 {
     /// <summary>
     /// Adapter for ElasticPool operations

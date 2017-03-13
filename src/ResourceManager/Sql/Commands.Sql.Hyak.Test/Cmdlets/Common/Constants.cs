@@ -1,4 +1,4 @@
-﻿namespace Microsoft.Azure.Commands.Sql.Common
+﻿namespace Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Common
 {
     public class Constants
     {

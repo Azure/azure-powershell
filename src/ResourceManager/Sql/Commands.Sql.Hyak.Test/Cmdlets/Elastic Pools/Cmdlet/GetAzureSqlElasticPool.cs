@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Sql.ElasticPool.Model;
+using Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.ElasticPool.Model;
 using System.Collections.Generic;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
+namespace Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.ElasticPool.Cmdlet
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlElasticPool",
         ConfirmImpact = ConfirmImpact.None)]

@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Sql.ElasticPool.Model;
+using Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.ElasticPool.Model;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
+namespace Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.ElasticPool.Cmdlet
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmSqlElasticPool",
         SupportsShouldProcess = true)]

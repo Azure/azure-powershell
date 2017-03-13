@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Sql.Common;
+using Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Common;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
@@ -22,7 +22,7 @@ using Microsoft.WindowsAzure.Management.Storage;
 using System;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
+namespace Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.ElasticPool.Services
 {
     /// <summary>
     /// This class is responsible for all the REST communication with the audit REST endpoints

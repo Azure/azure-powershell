@@ -13,14 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
-using Microsoft.Azure.Commands.Sql.Database.Model;
+using Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Database.Model;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags; 
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Collections;
 
-namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
+namespace Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Database.Cmdlet
 {
     /// <summary>
     /// Cmdlet to create a new Azure Sql Database
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 RequestedServiceObjectiveName = RequestedServiceObjectiveName,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
                 ElasticPoolName = ElasticPoolName,
-                ReadScale =ReadScale,
+                ReadScale = ReadScale,
             });
             return newEntity;
         }

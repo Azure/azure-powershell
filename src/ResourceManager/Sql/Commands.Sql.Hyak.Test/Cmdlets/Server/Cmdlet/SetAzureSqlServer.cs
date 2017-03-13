@@ -19,7 +19,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Security;
 
-namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
+namespace Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Server.Cmdlet
 {
     /// <summary>
     /// Defines the Get-AzureRmSqlServer cmdlet

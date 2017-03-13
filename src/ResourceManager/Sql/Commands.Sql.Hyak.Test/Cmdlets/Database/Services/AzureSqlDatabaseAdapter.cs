@@ -13,9 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Sql.Database.Model;
-using Microsoft.Azure.Commands.Sql.ElasticPool.Services;
-using Microsoft.Azure.Commands.Sql.Server.Adapter;
+using Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Database.Model;
+using Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.ElasticPool.Services;
+using Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Server.Adapter;
 using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Management.Sql.Models;
 using System;
@@ -23,7 +23,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 
-namespace Microsoft.Azure.Commands.Sql.Database.Services
+namespace Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Database.Services
 {
     /// <summary>
     /// Adapter for database operations

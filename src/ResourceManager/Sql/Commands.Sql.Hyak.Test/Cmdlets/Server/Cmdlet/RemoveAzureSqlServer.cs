@@ -16,7 +16,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
+namespace Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Server.Cmdlet
 {
     /// <summary>
     /// Defines the Get-AzureRmSqlDatabaseServer cmdlet

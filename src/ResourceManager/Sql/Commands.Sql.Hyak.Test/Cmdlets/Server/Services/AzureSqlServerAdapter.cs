@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Sql.Server.Model;
-using Microsoft.Azure.Commands.Sql.Server.Services;
+using Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Server.Model;
+using Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Server.Services;
 using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Management.Sql.Models;
 using System;
@@ -25,7 +25,7 @@ using System.Security;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 
-namespace Microsoft.Azure.Commands.Sql.Server.Adapter
+namespace Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Server.Adapter
 {
     /// <summary>
     /// Adapter for server operations

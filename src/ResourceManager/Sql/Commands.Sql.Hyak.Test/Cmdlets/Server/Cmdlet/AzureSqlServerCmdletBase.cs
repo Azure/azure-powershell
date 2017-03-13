@@ -13,12 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Commands.Sql.Server.Adapter;
-using Microsoft.Azure.Commands.Sql.Server.Model;
+using Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Common;
+using Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Server.Adapter;
+using Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Server.Model;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
+namespace Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Server.Cmdlet
 {
     public abstract class AzureSqlServerCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlServerModel>, AzureSqlServerAdapter>
     {

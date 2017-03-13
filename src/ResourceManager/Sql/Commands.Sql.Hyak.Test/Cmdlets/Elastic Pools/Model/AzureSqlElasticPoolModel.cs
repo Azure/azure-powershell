@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Sql.Database.Model;
+using Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Database.Model;
 using System;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
+namespace Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.ElasticPool.Model
 {
     /// <summary>
     /// Represents an Azure Sql Elastic Pool

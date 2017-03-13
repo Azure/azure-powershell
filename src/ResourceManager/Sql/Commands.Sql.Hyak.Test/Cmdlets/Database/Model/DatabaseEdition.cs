@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Sql.Database.Model
+namespace Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Database.Model
 {
     /// <summary>
     /// The database edition

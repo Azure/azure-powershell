@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Sql.Database.Model;
-using Microsoft.Azure.Commands.Sql.ElasticPool.Model;
+using Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Database.Model;
+using Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.ElasticPool.Model;
 using System.Collections.Generic;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
+namespace Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.ElasticPool.Cmdlet
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlElasticPoolDatabase", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.None)]

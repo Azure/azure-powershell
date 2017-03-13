@@ -17,13 +17,13 @@ using Microsoft.Azure.Commands.ScenarioTest.Mocks;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,11 +56,11 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         protected virtual void SetupManagementClients(RestTestFramework.MockContext context)
         {
             var sqlCSMClient = GetSqlClient(context);
-            var storageClient = GetStorageClient();
+            //var storageClient = GetStorageClient();
             //TODO, Remove the MockDeploymentFactory call when the test is re-recorded
-            var resourcesClient = MockDeploymentClientFactory.GetResourceClient(GetResourcesClient());
-            var authorizationClient = GetAuthorizationManagementClient();
-            helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, resourcesClient, authorizationClient);
+            //var resourcesClient = MockDeploymentClientFactory.GetResourceClient(GetResourcesClient());
+            //var authorizationClient = GetAuthorizationManagementClient();
+            helper.SetupSomeOfManagementClients(sqlCSMClient/*, storageClient, resourcesClient, authorizationClient*/);
         }
         
         protected void RunPowerShellTest(params string[] scripts)
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
         protected StorageManagementClient GetStorageClient()
         {
-            StorageManagementClient client = TestBase.GetServiceClient<StorageManagementClient>(new RDFETestEnvironmentFactory());
+            StorageManagementClient client = TestBase.GetServiceClient<StorageManagementClient>(new CSMTestEnvironmentFactory());
             if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
                 client.LongRunningOperationInitialTimeout = 0;

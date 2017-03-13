@@ -16,7 +16,7 @@ using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Sql.Common
+namespace Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Common
 {
     /// <summary>
     /// All the constants used by sql cmdlets

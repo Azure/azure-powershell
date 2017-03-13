@@ -27,7 +27,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.Sql.Common
+namespace Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Common
 {
     /// <summary>
     /// This class is responsible for all the REST communication with the management libraries

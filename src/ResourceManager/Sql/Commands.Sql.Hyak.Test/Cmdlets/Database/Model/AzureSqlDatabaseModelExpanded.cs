@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 
-namespace Microsoft.Azure.Commands.Sql.Database.Model
+namespace Microsoft.Azure.Commands.Sql.HyakCmdletsForScenarioTests.Database.Model
 {
     /// <summary>
     /// Represents an Azure Sql Database
