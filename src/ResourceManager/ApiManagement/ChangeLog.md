@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 3.5.0
 * Added new cmdlets to manage Backend entity
     - New-AzureRmApiManagementBackend
     - Get-AzureRmApiManagementBackend
