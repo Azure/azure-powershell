@@ -167,6 +167,13 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             HelpMessage = "Disable auto-upgrade of minor version")]
         public SwitchParameter DisableAutoUpgradeMinorVersion { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            Position = 15,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Skip backup creation for Linux VMs")]
+        public SwitchParameter SkipVmBackup { get; set; }
+
         private OperatingSystemTypes? currentOSType = null;
 
         private void ValidateInputParameters()
@@ -430,7 +437,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
                     currentOSType = virtualMachineResponse.StorageProfile.OsDisk.OsType;
 
-                    if (OperatingSystemTypes.Linux.Equals(currentOSType))
+                    if (OperatingSystemTypes.Linux.Equals(currentOSType) && !SkipVmBackup)
                     {
                         CreateVMBackupForLinx();
                     }

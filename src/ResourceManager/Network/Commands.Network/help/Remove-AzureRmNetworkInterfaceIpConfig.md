@@ -22,10 +22,18 @@ The **Remove-AzureRmNetworkInterfaceIpConfig** cmdlet removes a network interfac
 
 ## EXAMPLES
 
-### 1:
-```
+### 1: Delete an IP configuration from a network interface
 
 ```
+
+$nic = Get-AzureRmNetworkInterface -Name mynic -ResourceGroupName myrg
+
+Remove-AzureRmNetworkInterfaceIpConfig -Name IPConfig-1 -NetworkInterface $nic
+```
+
+The first command gets a network interface called mynic and stores it in the variable $nic. The second command
+    removes the IP configuration called IPConfig-1 associated with this network interface.
+
 
 ## PARAMETERS
 

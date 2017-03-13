@@ -49,6 +49,12 @@ function Test-DataLakeStoreTrustedIdProvider
 		# Test to make sure the account does exist
 		Assert-True {Test-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}
 
+		# Test to ensure/enable trusted id provider states
+		Assert-AreEqual "Disabled" $accountCreated.TrustedIdProviderState
+
+		$accountSet = Set-AzureRMDataLakeStoreAccount -Name $accountName -TrustedIdProviderState Enabled
+		Assert-AreEqual "Enabled" $accountSet.TrustedIdProviderState
+
 		$trustedIdName = getAssetName
 		$trustedIdEndpoint = "https://sts.windows.net/6b04908c-b91f-40ce-8024-7ee8a4fd6150"
 
@@ -124,6 +130,15 @@ function Test-DataLakeStoreFirewall
 
 		# Test to make sure the account does exist
 		Assert-True {Test-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+
+		# Enable the firewall state and azure IPs
+		Assert-AreEqual "Disabled" $accountCreated.FirewallState 
+		Assert-AreEqual "Disabled" $accountCreated.FirewallAllowAzureIps 
+
+		$accountSet = Set-AzureRMDataLakeStoreAccount -Name $accountName -FirewallState "Enabled" -AllowAzureIpState "Enabled"
+
+		Assert-AreEqual "Enabled" $accountSet.FirewallState 
+		Assert-AreEqual "Enabled" $accountSet.FirewallAllowAzureIps
 
 		$firewallRuleName = getAssetName
 		$startIp = "127.0.0.1"
@@ -565,8 +580,8 @@ function Test-DataLakeStoreFileSystemPermissions
 
 		Set-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/" -Acl $result
 		$result = Get-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path "/"
-		# it is +2 because the mask gets computed when the first user is added.
-		Assert-AreEqual $($currentCount+2) $result.Count
+		
+		Assert-AreEqual $($currentCount+1) $result.Count
  		$found = $false
  		for($i = 0; $i -lt $result.Count; $i++)
  		{
@@ -584,25 +599,24 @@ function Test-DataLakeStoreFileSystemPermissions
 		Set-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/" -Acl $result
 		$result = Get-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path "/"
 
-		# mask does not get removed when removing the user
-		Assert-AreEqual $($currentCount+1) $result.Count
+		Assert-AreEqual $($currentCount) $result.Count
 
 		# Set and get a specific permission with friendly sets
 		Set-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId -Permissions All
 		$result = Get-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path "/"
-		Assert-AreEqual $($currentCount+2) $result.Count
+		Assert-AreEqual $($currentCount+1) $result.Count
 		# remove a specific permission with friendly remove
 		Remove-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId
 		$result = Get-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path "/"
-		Assert-AreEqual $($currentCount+1) $result.Count
+		Assert-AreEqual $($currentCount) $result.Count
 		# set and get a specific permission with the ACE string
 		Set-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path "/" -Acl $([string]::Format("user:{0}:rwx", $aceUserId))
 		$result = Get-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path "/"
-		Assert-AreEqual $($currentCount+2) $result.Count
+		Assert-AreEqual $($currentCount+1) $result.Count
 		# remove a specific permission with the ACE string
 		Remove-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path "/" -Acl $([string]::Format("user:{0}:---", $aceUserId))
 		$result = Get-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path "/"
-		Assert-AreEqual $($currentCount+1) $result.Count
+		Assert-AreEqual $($currentCount) $result.Count
 
 		# Validate full ACL removal
 		Remove-AzureRMDataLakeStoreItemAcl -Account $accountName -Path "/" -Force -Default

@@ -64,7 +64,17 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         public void TestUpdateIntegrationAccountSchema()
         {
             WorkflowController.NewInstance.RunPowerShellTest("Test-UpdateIntegrationAccountSchema");
-        }               
+        }
+
+        /// <summary>
+        /// Test Get-AzureRmIntegrationAccountSchema command to get all the integration account schema.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestListIntegrationAccountSchema()
+        {
+            WorkflowController.NewInstance.RunPowerShellTest("Test-ListIntegrationAccountSchema");
+        }
     }
 }
 

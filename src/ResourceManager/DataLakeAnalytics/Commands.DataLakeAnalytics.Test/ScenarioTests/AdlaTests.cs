@@ -38,9 +38,19 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlaAccountTiers()
         {
-            AdlaTestsBase.NewInstance.RunPsTest(true,
+            AdlaTestsBase.NewInstance.RunPsTest(false,
                 string.Format(
                     "Test-DataLakeAnalyticsAccountTiers -location '{0}'",
+                    AdlaTestsBase.resourceGroupLocation));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAdlaFirewallRules()
+        {
+            AdlaTestsBase.NewInstance.RunPsTest(false,
+                string.Format(
+                    "Test-DataLakeAnalyticsFirewall -location '{0}'",
                     AdlaTestsBase.resourceGroupLocation));
         }
 

@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ApplicationServicePlanIdFormat" xml:space="preserve">
-    <value>/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Web/serverfarms/{2}</value>
-  </data>
   <data name="CancelLogicAppRunMessage" xml:space="preserve">
     <value>Cancelling the LogicApp run.</value>
   </data>
@@ -132,6 +129,9 @@
   <data name="FileDoesNotExist" xml:space="preserve">
     <value>File {0} does not exist.</value>
   </data>
+  <data name="InvalidBusinessIdentity" xml:space="preserve">
+    <value>Invalid business identity.</value>
+  </data>
   <data name="InvalidMetadata" xml:space="preserve">
     <value>Invalid metadata.</value>
   </data>
@@ -140,6 +140,9 @@
   </data>
   <data name="ParameterNeedsToBeSpecified" xml:space="preserve">
     <value>{0} needs to be specified.</value>
+  </data>
+  <data name="QualifierWithValueNotSpecified" xml:space="preserve">
+    <value>Either {0} business Identity qualifier or qualifier value is not specified.</value>
   </data>
   <data name="RemoveResourceMessage" xml:space="preserve">
     <value>Removing {0} {1}.</value>

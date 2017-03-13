@@ -79,6 +79,24 @@ namespace StaticAnalysis.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A validate range has been added for parameter &apos;{0}&apos; for cmdlet &apos;{1}&apos;..
+        /// </summary>
+        public static string AddedValidateRangeDescription {
+            get {
+                return ResourceManager.GetString("AddedValidateRangeDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove the validate range from parameter &apos;{0}&apos;..
+        /// </summary>
+        public static string AddedValidateRangeRemediation {
+            get {
+                return ResourceManager.GetString("AddedValidateRangeRemediation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A validate set has been added for parameter &apos;{0}&apos; for cmdlet &apos;{1}&apos;..
         /// </summary>
         public static string AddedValidateSetDescription {
@@ -133,7 +151,7 @@ namespace StaticAnalysis.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The generic type argument for property &apos;{0}&apos; has been changed from &apos;{1}&apos; to &apos;{2}&apos;..
+        ///   Looks up a localized string similar to The generic type argument for &apos;{0}&apos; has been changed from &apos;{1}&apos; to &apos;{2}&apos;..
         /// </summary>
         public static string ChangedGenericTypeArgumentDescription {
             get {
@@ -142,7 +160,7 @@ namespace StaticAnalysis.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Change the generic type argument for property &apos;{0}&apos; back to &apos;{1}&apos;..
+        ///   Looks up a localized string similar to Change the generic type argument for &apos;{0}&apos; back to &apos;{1}&apos;..
         /// </summary>
         public static string ChangedGenericTypeArgumentRemediation {
             get {
@@ -151,7 +169,7 @@ namespace StaticAnalysis.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The generic type for property &apos;{0}&apos; has been changed from &apos;{1}&apos; to &apos;{2}&apos;. .
+        ///   Looks up a localized string similar to The generic type for &apos;{0}&apos; has been changed from &apos;{1}&apos; to &apos;{2}&apos;. .
         /// </summary>
         public static string ChangedGenericTypeDescription {
             get {
@@ -160,7 +178,7 @@ namespace StaticAnalysis.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Change the generic type for property &apos;{0}&apos; back to &apos;{1}&apos;..
+        ///   Looks up a localized string similar to Change the generic type for &apos;{0}&apos; back to &apos;{1}&apos;..
         /// </summary>
         public static string ChangedGenericTypeRemediation {
             get {
@@ -331,7 +349,43 @@ namespace StaticAnalysis.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The number of arguments for generic type &apos;{0}&apos; for property &apos;{1}&apos; has been changed from &apos;{2}&apos; to &apos;{3}&apos;..
+        ///   Looks up a localized string similar to The maximum value of the validate range for parameter &apos;{0}&apos; has been reduced from &apos;{1}&apos; to &apos;{2}&apos;..
+        /// </summary>
+        public static string ChangedValidateRangeMaximumDescription {
+            get {
+                return ResourceManager.GetString("ChangedValidateRangeMaximumDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change the maximum value of the validate range for parameter &apos;{0}&apos; back to at least &apos;{1}&apos;..
+        /// </summary>
+        public static string ChangedValidateRangeMaximumRemediation {
+            get {
+                return ResourceManager.GetString("ChangedValidateRangeMaximumRemediation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The minimum value of the validate range for parameter &apos;{0}&apos; has been increased from &apos;{1}&apos; to &apos;{2}&apos;..
+        /// </summary>
+        public static string ChangedValidateRangeMinimumDescription {
+            get {
+                return ResourceManager.GetString("ChangedValidateRangeMinimumDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change the minimum value of the validate range for parameter &apos;{0}&apos; back to at most &apos;{1}&apos;..
+        /// </summary>
+        public static string ChangedValidateRangeMinimumRemediation {
+            get {
+                return ResourceManager.GetString("ChangedValidateRangeMinimumRemediation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The number of arguments for generic type &apos;{0}&apos; for &apos;{1}&apos; has been changed from &apos;{2}&apos; to &apos;{3}&apos;..
         /// </summary>
         public static string DifferentGenericTypeArgumentSizeDescription {
             get {

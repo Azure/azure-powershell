@@ -92,7 +92,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             string vmScaleSetName = (string)ParseParameter(invokeMethodInputParameters[1]);
             string instanceId = (string)ParseParameter(invokeMethodInputParameters[2]);
 
-            VirtualMachineScaleSetVMsClient.Reimage(resourceGroupName, vmScaleSetName, instanceId);
+            var result = VirtualMachineScaleSetVMsClient.Reimage(resourceGroupName, vmScaleSetName, instanceId);
+            WriteObject(result);
         }
     }
 
@@ -110,15 +111,25 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsCommon.Set, "AzureRmVmssVM", DefaultParameterSetName = "InvokeByDynamicParameters")]
+    [Cmdlet(VerbsCommon.Set, "AzureRmVmssVM", DefaultParameterSetName = "InvokeByDynamicParameters", SupportsShouldProcess = true)]
     public partial class SetAzureRmVmssVM : InvokeAzureComputeMethodCmdlet
     {
         public override string MethodName { get; set; }
 
         protected override void ProcessRecord()
         {
-            this.MethodName = "VirtualMachineScaleSetVMReimage";
-            base.ProcessRecord();
+            if (this.ParameterSetName == "InvokeByDynamicParameters")
+            {
+                this.MethodName = "VirtualMachineScaleSetVMReimage";
+            }
+            else
+            {
+                this.MethodName = "VirtualMachineScaleSetVMReimageAll";
+            }
+            if (ShouldProcess(this.dynamicParameters["ResourceGroupName"].Value.ToString(), VerbsCommon.Set))
+            {
+                base.ProcessRecord();
+            }
         }
 
         public override object GetDynamicParameters()
@@ -135,6 +146,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ValueFromPipelineByPropertyName = true,
                 ValueFromPipeline = false
             });
+            pResourceGroupName.Attributes.Add(new ParameterAttribute
+            {
+                ParameterSetName = "InvokeByDynamicParametersForFriendMethod",
+                Position = 1,
+                Mandatory = true,
+                ValueFromPipelineByPropertyName = true,
+                ValueFromPipeline = false
+            });
             pResourceGroupName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
 
@@ -144,6 +163,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             pVMScaleSetName.Attributes.Add(new ParameterAttribute
             {
                 ParameterSetName = "InvokeByDynamicParameters",
+                Position = 2,
+                Mandatory = true,
+                ValueFromPipelineByPropertyName = true,
+                ValueFromPipeline = false
+            });
+            pVMScaleSetName.Attributes.Add(new ParameterAttribute
+            {
+                ParameterSetName = "InvokeByDynamicParametersForFriendMethod",
                 Position = 2,
                 Mandatory = true,
                 ValueFromPipelineByPropertyName = true,
@@ -164,6 +191,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ValueFromPipelineByPropertyName = true,
                 ValueFromPipeline = false
             });
+            pInstanceId.Attributes.Add(new ParameterAttribute
+            {
+                ParameterSetName = "InvokeByDynamicParametersForFriendMethod",
+                Position = 3,
+                Mandatory = true,
+                ValueFromPipelineByPropertyName = true,
+                ValueFromPipeline = false
+            });
             pInstanceId.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("InstanceId", pInstanceId);
 
@@ -178,6 +213,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             });
             pReimage.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("Reimage", pReimage);
+
+            var pReimageAll = new RuntimeDefinedParameter();
+            pReimageAll.Name = "ReimageAll";
+            pReimageAll.ParameterType = typeof(SwitchParameter);
+            pReimageAll.Attributes.Add(new ParameterAttribute
+            {
+                ParameterSetName = "InvokeByDynamicParametersForFriendMethod",
+                Position = 4,
+                Mandatory = true
+            });
+            pReimageAll.Attributes.Add(new AllowNullAttribute());
+            dynamicParameters.Add("ReimageAll", pReimageAll);
 
             return dynamicParameters;
         }

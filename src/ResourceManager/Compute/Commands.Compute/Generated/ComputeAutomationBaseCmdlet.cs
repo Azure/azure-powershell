@@ -80,11 +80,43 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             return objects;
         }
 
-        public IContainerServiceOperations ContainerServiceClient
+        public IAvailabilitySetsOperations AvailabilitySetsClient
         {
             get
             {
-                return ComputeClient.ComputeManagementClient.ContainerService;
+                return ComputeClient.ComputeManagementClient.AvailabilitySets;
+            }
+        }
+
+        public IContainerServicesOperations ContainerServicesClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.ContainerServices;
+            }
+        }
+
+        public IDisksOperations DisksClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.Disks;
+            }
+        }
+
+        public IImagesOperations ImagesClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.Images;
+            }
+        }
+
+        public ISnapshotsOperations SnapshotsClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.Snapshots;
             }
         }
 
@@ -101,6 +133,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             get
             {
                 return ComputeClient.ComputeManagementClient.VirtualMachineScaleSetVMs;
+            }
+        }
+
+        public IVirtualMachinesOperations VirtualMachinesClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.VirtualMachines;
             }
         }
 
