@@ -24,11 +24,7 @@ This command enumerates BGP peers an Azure virtual network gateway is configured
 ### Example 1
 ```
 PS C:\> Get-AzureRmVirtualNetworkGatewayBgpPeerStatus -ResourceGroupName resourceGroup -VirtualNetworkGatewayName gatewayName
-```
 
-Retrieves BGP peers for the Azure virtual network gateway named gatewayName in resource group resourceGroup.
-
-```
 Asn               : 65515
 ConnectedDuration : 9.01:04:53.5768637
 LocalAddress      : 10.1.0.254
@@ -38,6 +34,9 @@ Neighbor          : 10.0.0.254
 RoutesReceived    : 1
 State             : Connected
 ```
+
+Retrieves BGP peers for the Azure virtual network gateway named gatewayName in resource group resourceGroup.
+
 This example output shows one connected BGP peer, with an IP of 10.0.0.254.
 
 ## PARAMETERS
