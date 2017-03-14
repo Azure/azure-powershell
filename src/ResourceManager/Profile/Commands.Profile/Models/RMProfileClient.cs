@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 string listNextLink = null;
                 do
                 {
-                    subscriptionList.AddRange(ListSubscriptions(tenantId, ref listNextLink));
+                    subscriptionList.AddRange(ListSubscriptionsForTenant(tenantId, ref listNextLink));
                 } while (listNextLink != null);
 
                 return subscriptionList;
@@ -388,30 +388,30 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             return ListAccountTenants(_profile.Context.Account, _profile.Context.Environment, null, ShowDialog.Never);
         }
 
-        public IEnumerable<AzureSubscription> ListSubscriptions(string tenant, ref string listNextLink)
-        {
-            return ListSubscriptionsForTenant(
-                _profile.Context.Account,
-                _profile.Context.Environment,
-                null,
-                ShowDialog.Never,
-                tenant,
-                ref listNextLink);
-        }
-
-        public IEnumerable<AzureSubscription> ListSubscriptions()
+        public IEnumerable<AzureSubscription> ListSubscriptions(string tenantIdOrDomain = "")
         {
             string listNextLink = null;
 
+            var tenants = new List<AzureTenant>();
+
+            if (string.IsNullOrWhiteSpace(tenantIdOrDomain))
+            {
+                tenants.AddRange(ListTenants());
+            }
+            else
+            {
+                tenants.Add(CreateTenant(tenantIdOrDomain));
+            }
+
             List<AzureSubscription> subscriptions = new List<AzureSubscription>();
-            foreach (var tenant in ListTenants())
+            foreach (var tenant in tenants)
             {
                 try
                 {
                     do
                     {
                         subscriptions.AddRange(
-                        ListSubscriptions(
+                        ListSubscriptionsForTenant(
                             (tenant.Id == Guid.Empty) ? tenant.Domain : tenant.Id.ToString(),
                             ref listNextLink));
                     } while (listNextLink != null);
@@ -657,13 +657,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         }
 
         private IEnumerable<AzureSubscription> ListSubscriptionsForTenant(
-            AzureAccount account,
-            AzureEnvironment environment,
-            SecureString password,
-            ShowDialog promptBehavior,
             string tenantId,
             ref string listNextLink)
         {
+            AzureAccount account = _profile.Context.Account;
+            AzureEnvironment environment = _profile.Context.Environment;
+            SecureString password = null;
+            ShowDialog promptBehavior = ShowDialog.Never;
+
             IAccessToken accessToken = null;
 
             try
