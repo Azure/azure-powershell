@@ -1,59 +1,95 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-ms.assetid: F0370845-13D9-4FB5-B30E-826A22EBC5E0
-online version: 
+ms.assetid: 3D80F94B-AF9D-40C2-BE7E-2F32E5E926D2
+online version:
 schema: 2.0.0
 ---
 
-# Get-AzureRmExpressRouteCircuitARPTable
+# Get-AzureRmExpressRouteCircuitAuthorization
 
 ## SYNOPSIS
-Gets the ARP table from an ExpressRoute circuit.
+
+Gets information about ExpressRoute circuit authorizations.
 
 ## SYNTAX
 
 ```
-Get-AzureRmExpressRouteCircuitARPTable [-Name <String>] -ResourceGroupName <String>
- -ExpressRouteCircuitName <String> [-PeeringType <String>] -DevicePath <DevicePathEnum>
+Get-AzureRmExpressRouteCircuitAuthorization [-Name <String>] -ExpressRouteCircuit <PSExpressRouteCircuit>
  [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmExpressRouteCircuitARPTable** cmdlet retrieves the ARP table from both interfaces
-of an ExpressRoute circuit. The ARP table provides a mapping of the IPv4 address to MAC address for
-a particular peering. You can use the ARP table to validate layer 2 configuration and connectivity.
+
+The **Get-AzureRmExpressRouteCircuitAuthorization** cmdlet gets information about the
+authorizations assigned to an ExpressRoute circuit. ExpressRoute circuits connect your on-premises
+network to the Microsoft cloud by using a connectivity provider instead of the public Internet. The
+owner of an ExpressRoute circuit can create as many as 10 authorizations for each circuit; these
+authorizations generate an authorization key that can be used by a virtual network owner to connect
+his or her network to the circuit (one authorization per virtual network). Authorization keys, as
+well as other information about the authorization, can be viewed at any time by running
+**Get-AzureRmExpressRouteCircuitAuthorization**.
 
 ## EXAMPLES
 
-### Example 1: Display the ARP table for an ExpressRoute peer
+### Example 1: Get all ExpressRoute authorizations
+
+```powershell
+$Circuit = Get-AzureRmExpressRouteCircuit -Name "ContosoCircuit" -ResourceGroupName "ContosoResourceGroup"
+Get-AzureRmExpressRouteCircuitAuthorization -Circuit $Circuit
 ```
-Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $CircuitName -PeeringType MicrosoftPeering -DevicePath Primary
+
+These commands return information about all the ExpressRoute authorizations associated with an
+ExpressRoute circuit. The first command uses the **Get-AzureRmExpressRouteCircuit** cmdlet to
+create an object reference a circuit named ContosoCircuit; that object reference is stored in the
+variable $Circuit. The second command then uses that object reference and the
+**Get-AzureRmExpressRouteCircuitAuthorization** cmdlet to return information about the
+authorizations associated with ContosoCircuit.
+
+### Example 2: Get all ExpressRoute authorizations using the Where-Object cmdlet
+
+```powershell
+$Circuit = Get-AzureRmExpressRouteCircuit -Name "ContosoCircuit" -ResourceGroupName "ContosoResourceGroup"
+ Get-AzureRmExpressRouteCircuitAuthorization -Circuit $Circuit | Where-Object {$_.AuthorizationUseStatus -eq "Available"}
 ```
+
+These commands represent a variation on the commands used in Example 1. In this case, however,
+information is returned only for those authorizations that are available for use (that is, for
+authorizations that have not been assigned to a virtual network). To do this, the circuit
+authorization information is returned in command 2 and is piped to the **Where-Object** cmdlet.
+**Where-Object** then picks out only those authorizations where the *AuthorizationUseStatus*
+property is set to Available. To list only those authorizations that are not available, use this
+syntax for the Where clause:
+
+`{$_.AuthorizationUseStatus -ne "Available"}`
 
 ## PARAMETERS
 
-### -DevicePath
-The acceptable values for this parameter are: `Primary` or `Secondary`
+### -Name
+
+Specifies the name of the ExpressRoute circuit authorization that this cmdlet gets.
+
+-Name "ContosoCircuitAuthorization"
 
 ```yaml
-Type: DevicePathEnum
+Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExpressRouteCircuitName
-The name of the ExpressRoute circuit being examined.
+### -ExpressRouteCircuit
+
+Specifies the ExpressRoute circuit authorization.
 
 ```yaml
-Type: String
+Type: PSExpressRouteCircuit
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -63,6 +99,7 @@ Accept wildcard characters: False
 ```
 
 ### -InformationAction
+
 Specifies how this cmdlet responds to an information event.
 
 The acceptable values for this parameter are:
@@ -87,6 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -InformationVariable
+
 Specifies an information variable.
 
 ```yaml
@@ -101,63 +139,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The resource name.```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: ResourceName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -PeeringType
-The acceptable values for this parameter are: `AzurePrivatePeering`, `AzurePublicPeering`, and
-`MicrosoftPeering`
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The name of the resource group containing the ExpressRoute circuit.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
+-InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
+-WarningAction, and -WarningVariable. For more information, see about_CommonParameters
+(http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
+### PSExpressRouteCircuit
+**Get-AzureRmExpressRouteCircuitAuthorization** accepts pipelined instances of the
+**Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit** object.
+
 ## OUTPUTS
+
+### PSExpressRouteCircuitAuthorization
+**Get-AzureRmExpressRouteCircuitAuthorization** returns instances of the
+**Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization** object.
 
 ## NOTES
 
 ## RELATED LINKS
 
-[Get-AzureRmExpressRouteCircuitRouteTable](Get-AzureRmExpressRouteCircuitRouteTable.md)
+[Add-AzureRmExpressRouteCircuitAuthorization](./Add-AzureRmExpressRouteCircuitAuthorization.md)
 
-[Get-AzureRmExpressRouteCircuitRouteTableSummary](Get-AzureRmExpressRouteCircuitRouteTableSummary.md)
+[Get-AzureRmExpressRouteCircuit](./Get-AzureRmExpressRouteCircuit.md)
 
-[Get-AzureRmExpressRouteCircuitStats](Get-AzureRmExpressRouteCircuitStats.md)
+[New-AzureRmExpressRouteCircuitAuthorization](./New-AzureRmExpressRouteCircuitAuthorization.md)
+
+[Remove-AzureRmExpressRouteCircuitAuthorization](./Remove-AzureRmExpressRouteCircuitAuthorization.md)
