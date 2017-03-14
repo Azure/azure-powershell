@@ -95,37 +95,8 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 try
                 {
-                    var tenantsList = new List<string>();
-
-                    if (string.IsNullOrWhiteSpace(tenant))
-                    {
-                        tenantsList.AddRange(_client.ListTenants()
-                            .Select(t => (t.Id == Guid.Empty) ? t.Domain : t.Id.ToString()));
-                    }
-                    else
-                    {
-                        tenantsList.Add(tenant);
-                    }
-
-                    foreach (var tenantId in tenantsList)
-                    {
-                        try
-                        {
-                            var subscriptions = _client.ListSubscriptions(tenantId);
-                            WriteObject(subscriptions.Select((s) => (PSAzureSubscription)s), enumerateCollection: true);
-                        }
-                        catch (AadAuthenticationException)
-                        {
-                            if (!string.IsNullOrWhiteSpace(tenant))
-                            {
-                                throw;
-                            }
-                            WriteWarning(string.Format(
-                                Microsoft.Azure.Commands.Profile.Properties.Resources.UnableToLogin,
-                                AzureRmProfileProvider.Instance.Profile.Context.Account,
-                                tenant));
-                        }
-                    }
+                    var subscriptions = _client.ListSubscriptions(tenant);
+                    WriteObject(subscriptions.Select((s) => (PSAzureSubscription)s), enumerateCollection: true);
                 }
                 catch (AadAuthenticationException exception)
                 {
