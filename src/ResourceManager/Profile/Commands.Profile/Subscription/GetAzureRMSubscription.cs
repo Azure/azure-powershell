@@ -111,12 +111,8 @@ namespace Microsoft.Azure.Commands.Profile
                     {
                         try
                         {
-                            string listNextLink = null;
-                            do
-                            {
-                                var subscriptions = _client.ListSubscriptions(tenantId, ref listNextLink);
-                                WriteObject(subscriptions.Select((s) => (PSAzureSubscription)s), enumerateCollection: true);
-                            } while (listNextLink != null);
+                            var subscriptions = _client.ListSubscriptions(tenantId);
+                            WriteObject(subscriptions.Select((s) => (PSAzureSubscription)s), enumerateCollection: true);
                         }
                         catch (AadAuthenticationException)
                         {
