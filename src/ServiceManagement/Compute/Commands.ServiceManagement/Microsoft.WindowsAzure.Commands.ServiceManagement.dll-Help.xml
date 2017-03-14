@@ -7066,126 +7066,6 @@ PS C:\&gt; Add-AzureVMImage -ImageName $IMGName -Label "Test1" -Description "Tes
 <command:relatedLinks></command:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<command:details><command:name>Get-AzureManagedCache</command:name>
-<command:verb>Get</command:verb>
-<command:noun>AzureManagedCache</command:noun>
-<maml:description><maml:para>
-</maml:para>
-</maml:description>
-</command:details>
-<maml:description><maml:para>
-</maml:para>
-</maml:description>
-<command:syntax><command:syntaxItem><maml:name>Get-AzureManagedCache</maml:name>
-</command:syntaxItem>
-</command:syntax>
-<command:parameters></command:parameters>
-<command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
-<maml:alertSet><maml:alert><maml:para>
-</maml:para>
-</maml:alert>
-</maml:alertSet>
-<command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
-</maml:para>
-</dev:remarks>
-</command:example>
-</command:examples>
-<command:relatedLinks></command:relatedLinks>
-</command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<command:details><command:name>Get-AzureManagedCacheAccessKey</command:name>
-<command:verb>Get</command:verb>
-<command:noun>AzureManagedCacheAccessKey</command:noun>
-<maml:description><maml:para>
-</maml:para>
-</maml:description>
-</command:details>
-<maml:description><maml:para>
-</maml:para>
-</maml:description>
-<command:syntax><command:syntaxItem><maml:name>Get-AzureManagedCacheAccessKey</maml:name>
-</command:syntaxItem>
-</command:syntax>
-<command:parameters></command:parameters>
-<command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
-<maml:alertSet><maml:alert><maml:para>
-</maml:para>
-</maml:alert>
-</maml:alertSet>
-<command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
-</maml:para>
-</dev:remarks>
-</command:example>
-</command:examples>
-<command:relatedLinks></command:relatedLinks>
-</command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<command:details><command:name>Get-AzureManagedCacheLocation</command:name>
-<command:verb>Get</command:verb>
-<command:noun>AzureManagedCacheLocation</command:noun>
-<maml:description><maml:para>
-</maml:para>
-</maml:description>
-</command:details>
-<maml:description><maml:para>
-</maml:para>
-</maml:description>
-<command:syntax><command:syntaxItem><maml:name>Get-AzureManagedCacheLocation</maml:name>
-</command:syntaxItem>
-</command:syntax>
-<command:parameters></command:parameters>
-<command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
-<maml:alertSet><maml:alert><maml:para>
-</maml:para>
-</maml:alert>
-</maml:alertSet>
-<command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
-</maml:para>
-</dev:remarks>
-</command:example>
-</command:examples>
-<command:relatedLinks></command:relatedLinks>
-</command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<command:details><command:name>Get-AzureManagedCacheNamedCache</command:name>
-<command:verb>Get</command:verb>
-<command:noun>AzureManagedCacheNamedCache</command:noun>
-<maml:description><maml:para>
-</maml:para>
-</maml:description>
-</command:details>
-<maml:description><maml:para>
-</maml:para>
-</maml:description>
-<command:syntax><command:syntaxItem><maml:name>Get-AzureManagedCacheNamedCache</maml:name>
-</command:syntaxItem>
-</command:syntax>
-<command:parameters></command:parameters>
-<command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
-<maml:alertSet><maml:alert><maml:para>
-</maml:para>
-</maml:alert>
-</maml:alertSet>
-<command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
-</maml:para>
-</dev:remarks>
-</command:example>
-</command:examples>
-<command:relatedLinks></command:relatedLinks>
-</command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <command:details><command:name>Get-AzureMediaServicesAccount</command:name>
 <command:verb>Get</command:verb>
 <command:noun>AzureMediaServicesAccount</command:noun>
@@ -19247,96 +19127,6 @@ PS C:\&gt; New-AzureVMConfig -Name "VirtualMachine17" -InstanceSize Small -Image
 <command:relatedLinks></command:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<command:details><command:name>New-AzureManagedCache</command:name>
-<command:verb>New</command:verb>
-<command:noun>AzureManagedCache</command:noun>
-<maml:description><maml:para>
-</maml:para>
-</maml:description>
-</command:details>
-<maml:description><maml:para>
-</maml:para>
-</maml:description>
-<command:syntax><command:syntaxItem><maml:name>New-AzureManagedCache</maml:name>
-</command:syntaxItem>
-</command:syntax>
-<command:parameters></command:parameters>
-<command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
-<maml:alertSet><maml:alert><maml:para>
-</maml:para>
-</maml:alert>
-</maml:alertSet>
-<command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
-</maml:para>
-</dev:remarks>
-</command:example>
-</command:examples>
-<command:relatedLinks></command:relatedLinks>
-</command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<command:details><command:name>New-AzureManagedCacheAccessKey</command:name>
-<command:verb>New</command:verb>
-<command:noun>AzureManagedCacheAccessKey</command:noun>
-<maml:description><maml:para>
-</maml:para>
-</maml:description>
-</command:details>
-<maml:description><maml:para>
-</maml:para>
-</maml:description>
-<command:syntax><command:syntaxItem><maml:name>New-AzureManagedCacheAccessKey</maml:name>
-</command:syntaxItem>
-</command:syntax>
-<command:parameters></command:parameters>
-<command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
-<maml:alertSet><maml:alert><maml:para>
-</maml:para>
-</maml:alert>
-</maml:alertSet>
-<command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
-</maml:para>
-</dev:remarks>
-</command:example>
-</command:examples>
-<command:relatedLinks></command:relatedLinks>
-</command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<command:details><command:name>New-AzureManagedCacheNamedCache</command:name>
-<command:verb>New</command:verb>
-<command:noun>AzureManagedCacheNamedCache</command:noun>
-<maml:description><maml:para>
-</maml:para>
-</maml:description>
-</command:details>
-<maml:description><maml:para>
-</maml:para>
-</maml:description>
-<command:syntax><command:syntaxItem><maml:name>New-AzureManagedCacheNamedCache</maml:name>
-</command:syntaxItem>
-</command:syntax>
-<command:parameters></command:parameters>
-<command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
-<maml:alertSet><maml:alert><maml:para>
-</maml:para>
-</maml:alert>
-</maml:alertSet>
-<command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
-</maml:para>
-</dev:remarks>
-</command:example>
-</command:examples>
-<command:relatedLinks></command:relatedLinks>
-</command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <command:details><command:name>New-AzureMediaServicesAccount</command:name>
 <command:verb>New</command:verb>
 <command:noun>AzureMediaServicesAccount</command:noun>
@@ -28983,66 +28773,6 @@ $backupConfig=New-AzureVMSqlServerAutoBackupConfig -Enable -ResourceGroupName cr
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Remove-AzureLocalNetworkGateway</maml:name>
-</command:syntaxItem>
-</command:syntax>
-<command:parameters></command:parameters>
-<command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
-<maml:alertSet><maml:alert><maml:para>
-</maml:para>
-</maml:alert>
-</maml:alertSet>
-<command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
-</maml:para>
-</dev:remarks>
-</command:example>
-</command:examples>
-<command:relatedLinks></command:relatedLinks>
-</command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<command:details><command:name>Remove-AzureManagedCache</command:name>
-<command:verb>Remove</command:verb>
-<command:noun>AzureManagedCache</command:noun>
-<maml:description><maml:para>
-</maml:para>
-</maml:description>
-</command:details>
-<maml:description><maml:para>
-</maml:para>
-</maml:description>
-<command:syntax><command:syntaxItem><maml:name>Remove-AzureManagedCache</maml:name>
-</command:syntaxItem>
-</command:syntax>
-<command:parameters></command:parameters>
-<command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
-<maml:alertSet><maml:alert><maml:para>
-</maml:para>
-</maml:alert>
-</maml:alertSet>
-<command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
-</maml:para>
-</dev:remarks>
-</command:example>
-</command:examples>
-<command:relatedLinks></command:relatedLinks>
-</command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<command:details><command:name>Remove-AzureManagedCacheNamedCache</command:name>
-<command:verb>Remove</command:verb>
-<command:noun>AzureManagedCacheNamedCache</command:noun>
-<maml:description><maml:para>
-</maml:para>
-</maml:description>
-</command:details>
-<maml:description><maml:para>
-</maml:para>
-</maml:description>
-<command:syntax><command:syntaxItem><maml:name>Remove-AzureManagedCacheNamedCache</maml:name>
 </command:syntaxItem>
 </command:syntax>
 <command:parameters></command:parameters>
@@ -39070,66 +38800,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService" -Name "VirtualMachine07" | 
 </command:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<command:details><command:name>Set-AzureManagedCache</command:name>
-<command:verb>Set</command:verb>
-<command:noun>AzureManagedCache</command:noun>
-<maml:description><maml:para>
-</maml:para>
-</maml:description>
-</command:details>
-<maml:description><maml:para>
-</maml:para>
-</maml:description>
-<command:syntax><command:syntaxItem><maml:name>Set-AzureManagedCache</maml:name>
-</command:syntaxItem>
-</command:syntax>
-<command:parameters></command:parameters>
-<command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
-<maml:alertSet><maml:alert><maml:para>
-</maml:para>
-</maml:alert>
-</maml:alertSet>
-<command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
-</maml:para>
-</dev:remarks>
-</command:example>
-</command:examples>
-<command:relatedLinks></command:relatedLinks>
-</command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<command:details><command:name>Set-AzureManagedCacheNamedCache</command:name>
-<command:verb>Set</command:verb>
-<command:noun>AzureManagedCacheNamedCache</command:noun>
-<maml:description><maml:para>
-</maml:para>
-</maml:description>
-</command:details>
-<maml:description><maml:para>
-</maml:para>
-</maml:description>
-<command:syntax><command:syntaxItem><maml:name>Set-AzureManagedCacheNamedCache</maml:name>
-</command:syntaxItem>
-</command:syntax>
-<command:parameters></command:parameters>
-<command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
-<maml:alertSet><maml:alert><maml:para>
-</maml:para>
-</maml:alert>
-</maml:alertSet>
-<command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
-</maml:para>
-</dev:remarks>
-</command:example>
-</command:examples>
-<command:relatedLinks></command:relatedLinks>
-</command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <command:details><command:name>Set-AzureNetworkInterfaceConfig</command:name>
 <command:verb>Set</command:verb>
 <command:noun>AzureNetworkInterfaceConfig</command:noun>
@@ -45423,10 +45093,12 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
 <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 <maml:name>Daemon</maml:name>
 <maml:description>
-<maml:para>Configures the chef-client service for unattended execution. The node platform should be Windows.
-Options: 'none' or 'service'.
-none - Currently prevents the chef-client service from being configured as a service.
-service - Configures the chef-client to run automatically in the background as a service.</maml:para>
+<maml:para>
+  Configures the chef-client service for unattended execution. The node platform should be Windows.
+  Allowed options: 'none','service' and 'task'.
+  none - Currently prevents the chef-client service from being configured as a service.
+  service - Configures the chef-client to run automatically in the background as a service.
+  task - Configures the chef-client to run automatically in the background as a secheduled task.</maml:para>
 </maml:description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type>
@@ -45756,10 +45428,12 @@ service - Configures the chef-client to run automatically in the background as a
 <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 <maml:name>Daemon</maml:name>
 <maml:description>
-<maml:para>Configures the chef-client service for unattended execution. The node platform should be Windows.
-Options: 'none' or 'service'.
-none - Currently prevents the chef-client service from being configured as a service.
-service - Configures the chef-client to run automatically in the background as a service.</maml:para>
+<maml:para>
+  Configures the chef-client service for unattended execution. The node platform should be Windows.
+  Allowed options: 'none','service' and 'task'.
+  none - Currently prevents the chef-client service from being configured as a service.
+  service - Configures the chef-client to run automatically in the background as a service.
+  task - Configures the chef-client to run automatically in the background as a secheduled task.</maml:para>
 </maml:description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 </command:parameter>

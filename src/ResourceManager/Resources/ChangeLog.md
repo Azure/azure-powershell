@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 3.7.0
+
 ## Version 3.6.0
 * Support policy parameters for New-AzureRmPolicyDefinition and New-AzureRmPolicyAssignment
     - Users can now use Parameter parameter with New-AzureRmPolicyDefinition. This accepts both JSON string and file path.

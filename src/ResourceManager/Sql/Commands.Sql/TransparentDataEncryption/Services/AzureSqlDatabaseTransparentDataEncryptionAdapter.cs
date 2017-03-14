@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
             {
                 Properties = new EncryptionProtectorCreateOrUpdateProperties()
                 {
-                    Type = model.Type.ToString(),
+                    ServerKeyType = model.Type.ToString(),
                     ServerKeyName = model.ServerKeyVaultKeyName
                 }
             });
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
             EncryptionProtector.ServerName = serverName;
             EncryptionProtector.ServerKeyVaultKeyName = resp.Properties.ServerKeyName;
             Model.EncryptionProtectorType type = Model.EncryptionProtectorType.ServiceManaged;
-            Enum.TryParse<Model.EncryptionProtectorType>(resp.Properties.Type, true, out type);
+            Enum.TryParse<Model.EncryptionProtectorType>(resp.Properties.ServerKeyType, true, out type);
             EncryptionProtector.Type = type;
 
             if (type == Model.EncryptionProtectorType.AzureKeyVault)

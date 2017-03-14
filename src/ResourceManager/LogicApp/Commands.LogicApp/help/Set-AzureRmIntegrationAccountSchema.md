@@ -72,7 +72,7 @@ Specifies the name of the integration account.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: ResourceName
+Aliases: IntegrationAccountName, ResourceName
 
 Required: True
 Position: Named

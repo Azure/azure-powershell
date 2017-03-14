@@ -12,21 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using Microsoft.Azure.Management.Logic;
-
 namespace Microsoft.Azure.Commands.LogicApp.Utilities
 {
+    using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Globalization;
     using System.IO;
     using System.Linq;
     using System.Management.Automation;
+    using Microsoft.Azure.Management.Logic;
     using Microsoft.Azure.Management.Logic.Models;
+    using Microsoft.Rest.Azure;
     using Newtonsoft.Json.Linq;
     using Newtonsoft.Json;
-    using Microsoft.Azure.Management.WebSites.Models;
 
     /// <summary>
     /// Helper class for the logic app commands 
@@ -269,6 +268,23 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
                 workflowParameters = parametersObject as Dictionary<string, WorkflowParameter>;
             }
             return workflowParameters;
+        }
+
+        /// <summary>
+        /// Works around an issue in the entity's swagger with error handling.
+        /// </summary>
+        /// <remarks>Retire this code once the swagger is updated.</remarks>
+        internal static IntegrationAccountSession GetOrThrow(this ISessionsOperations operations, string resourceGroupName, string integrationAccountName, string sessionName)
+        {
+            var ret = operations.Get(resourceGroupName: resourceGroupName, integrationAccountName: integrationAccountName, sessionName: sessionName);
+            var integrationAccountSession = ret as IntegrationAccountSession;
+            if (integrationAccountSession == null)
+            {
+                var error = ret as ErrorResponse;
+                throw new CloudException(message: error.Error.Message) { Body = new CloudError { Code = error.Error.Code, Message = error.Error.Message } };
+            }
+
+            return integrationAccountSession;
         }
     }
 }

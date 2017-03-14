@@ -15,6 +15,7 @@ using System.Management.Automation;
 using System.Linq;
 using System;
 using System.IO;
+using System.ComponentModel;
 using System.Text.RegularExpressions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
@@ -107,10 +108,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Configures the chef-client service for unattended execution. The node platform should be Windows." +
-                          "Options: 'none' or 'service'." +
+                          "Allowed options: 'none', 'service' and 'task'" +
                           "none - Currently prevents the chef-client service from being configured as a service." +
-                          "service - Configures the chef-client to run automatically in the background as a service.")]
-        [ValidateNotNullOrEmpty]
+                          "service - Configures the chef-client to run automatically in the background as a service." +
+                           "task - Configures the chef-client to run automatically in the background as a secheduled task.")]
+        [ValidateSet("none", "service", "task", IgnoreCase = true)]
         public string Daemon { get; set; }
 
         [Parameter(
@@ -129,12 +131,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             Mandatory = true,
             ParameterSetName = LinuxParameterSetName,
             HelpMessage = "Set extension for Linux.")]
+        [ValidateNotNullOrEmpty]
         public SwitchParameter Linux { get; set; }
 
         [Parameter(
             Mandatory = true,
             ParameterSetName = WindowsParameterSetName,
             HelpMessage = "Set extension for Windows.")]
+        [ValidateNotNullOrEmpty]
         public SwitchParameter Windows { get; set; }
 
         internal void ExecuteCommand()
@@ -303,12 +307,11 @@ validation_client_name 	'{1}'
 
             if (!IsDaemonEmpty)
             {
-                bool IsDaemonValueInvalid = Array.IndexOf(new String[2] {"none", "service"}, this.Daemon) == -1;
                 // Validation against the invalid use of Daemon option.
-                if (IsDaemonValueInvalid || this.Linux.IsPresent)
+                if (this.Linux.IsPresent)
                 {
                     throw new ArgumentException(
-                        "Invalid use of -Daemon option.");
+                        "Invalid use of -Daemon option. It can only be used for Windows");
                 }
             }
 

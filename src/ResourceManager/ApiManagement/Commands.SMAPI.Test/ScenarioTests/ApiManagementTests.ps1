@@ -1996,3 +1996,91 @@ Param($resourceGroupName, $serviceName)
 		Assert-Null $identityProvider
     }
 }
+
+<#
+.SYNOPSIS
+Tests CRUD operations of Backend.
+#>
+function Backend-CrudTest
+{
+Param($resourceGroupName, $serviceName)
+
+    $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
+
+    # create backend
+    $backendId = getAssetName
+    try
+    {        
+		$title = getAssetName
+		$urlEndpoint = 'https://contoso.com/awesomeapi'
+		$resourceId = getAssetName
+		$description = getAssetName
+		$skipCertificateChainValidation = $true
+
+		$credential = New-AzureRmApiManagementBackendCredential -AuthorizationHeaderScheme basic -AuthorizationHeaderParameter opensesame -Query @{"sv" = @('xx', 'bb'); "sr" = @('cc')} -Header @{"x-my-1" = @('val1', 'val2')}
+		$backend = New-AzureRmApiManagementBackend -Context $context -BackendId $backendId -Url $urlEndpoint -Protocol http -Title $title -SkipCertificateChainValidation $skipCertificateChainValidation -Credential $credential -Description $description
+			
+		Assert-AreEqual $backendId $backend.BackendId
+		Assert-AreEqual $description $backend.Description
+		Assert-AreEqual $urlEndpoint $backend.Url
+		Assert-AreEqual "http" $backend.Protocol
+		Assert-NotNull $backend.Credentials
+		Assert-NotNull $backend.Credentials.Authorization
+		Assert-NotNull $backend.Credentials.Query
+		Assert-NotNull $backend.Credentials.Header
+		Assert-AreEqual 2 $backend.Credentials.Query.Count
+		Assert-AreEqual 1 $backend.Credentials.Header.Count
+		Assert-NotNull $backend.Properties
+		Assert-AreEqual 1 $backend.Properties.Count
+
+		# update backend description
+		$newBackendDescription = getAssetName
+
+		$backend = $null
+		$backend = Set-AzureRmApiManagementBackend -Context $context -BackendId $backendId -Description $newBackendDescription -PassThru
+
+		Assert-AreEqual $backendId $backend.BackendId
+		Assert-AreEqual $newBackendDescription $backend.Description
+       
+		# get all backends
+		$backends = Get-AzureRmApiManagementBackend -Context $context
+		
+		Assert-NotNull $backends
+		Assert-AreEqual 1 $backends.Count
+		
+		# get a specific logger
+		$backend = $null
+		$backend = Get-AzureRmApiManagementBackend -Context $context -BackendId $backendId
+
+		Assert-AreEqual $backendId $backend.BackendId
+		Assert-AreEqual $newBackendDescription $backend.Description
+		Assert-AreEqual $urlEndpoint $backend.Url
+		Assert-AreEqual http $backend.Protocol
+		Assert-NotNull $backend.Credentials
+		Assert-NotNull $backend.Credentials.Authorization
+		Assert-NotNull $backend.Credentials.Query
+		Assert-NotNull $backend.Credentials.Header
+		Assert-AreEqual 2 $backend.Credentials.Query.Count
+		Assert-AreEqual 1 $backend.Credentials.Header.Count
+		Assert-NotNull $backend.Properties
+		Assert-AreEqual 1 $backend.Properties.Count             
+    }
+    finally
+    {
+        # remove created backend
+		$removed = Remove-AzureRmApiManagementBackend -Context $context -BackendId $backendId -PassThru
+		Assert-True {$removed}
+
+		$backend = $null
+		try
+		{
+		    # check it was removed
+		    $backend = Get-AzureRmApiManagementBackend -Context $context -BackendId $backendId
+		}
+		catch
+		{
+		}
+
+		Assert-Null $backend
+    }
+}
