@@ -12,16 +12,16 @@ Gets route tables.
 
 ## SYNTAX
 
-### Expand
-```
-Get-AzureRmRouteTable -Name <String> -ResourceGroupName <String> -ExpandResource <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
-```
-
 ### NoExpand
 ```
 Get-AzureRmRouteTable [-Name <String>] [-ResourceGroupName <String>] [-InformationAction <ActionPreference>]
  [-InformationVariable <String>] [<CommonParameters>]
+```
+
+### Expand
+```
+Get-AzureRmRouteTable -Name <String> -ResourceGroupName <String> -ExpandResource <String>
+ [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,54 +60,13 @@ This command gets the route table named RouteTable01 in the resource group named
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the route table that this cmdlet gets.
-
-```yaml
-Type: String
-Parameter Sets: Expand
-Aliases: ResourceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: NoExpand
-Aliases: ResourceName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specifies the name of the resource group that contains the route tables that this cmdlet gets.
-
+### -ExpandResource
 ```yaml
 Type: String
 Parameter Sets: Expand
 Aliases: 
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: NoExpand
-Aliases: 
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -153,7 +112,48 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExpandResource
+### -Name
+Specifies the name of the route table that this cmdlet gets.
+
+```yaml
+Type: String
+Parameter Sets: NoExpand
+Aliases: ResourceName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: Expand
+Aliases: ResourceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the name of the resource group that contains the route tables that this cmdlet gets.
+
+```yaml
+Type: String
+Parameter Sets: NoExpand
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ```yaml
 Type: String
 Parameter Sets: Expand

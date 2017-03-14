@@ -13,7 +13,7 @@ Creates a new Network Watcher resource.
 
 ```
 New-AzureRmNetworkWatcher -Name <String> -ResourceGroupName <String> -Location <String> [-Tag <Hashtable>]
- [-WhatIf] [-Confirm]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,7 +22,6 @@ The New-AzureRmNetworkWatcher cmdlet creates a new Network Watcher resource.
 ## EXAMPLES
 
 ### --------------------------  Example 1: Create a Network Watcher  --------------------------
-
 ```
 New-AzureRmResourceGroup -Name NetworkWatcherRG -Location westcentralus
 New-AzureRmNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup NetworkWatcherRG
@@ -130,6 +129,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
@@ -143,6 +145,7 @@ System.Collections.Hashtable
 Keywords: azure, azurerm, arm, resource, management, manager, network, networking, network watcher
 
 ## RELATED LINKS
+
 [Get-AzureRmNetworkWatcher]()
 [Remove-AzureRmNetworkWatcher]()
 
