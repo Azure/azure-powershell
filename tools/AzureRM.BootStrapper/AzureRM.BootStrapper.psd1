@@ -99,7 +99,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','AzureRM','AzureStack','Profile','Resource Manager'
+        Tags = 'Azure','AzureRM','AzureStack','Profile','ResourceManager'
 
         # A URL to the license for this module.
         # LicenseUri = ''
