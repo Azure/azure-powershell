@@ -21,10 +21,10 @@ Uninstall all modules associated with the given profile version.  Note that this
 
 ### Example 1
 ```
-PS C:\> Uninstall-AzureRmProfile '2016-09'
+PS C:\> Uninstall-AzureRmProfile '2017-03-09-profile'
 ```
 
-Uninstall all modules associated with the '2016-09' profile on the machine
+Uninstall all modules associated with the '2017-03-09-profile' profile on the machine
 
 ## PARAMETERS
 
@@ -65,7 +65,7 @@ The profile version to load in the current PowerShell session.
 Type: String
 Parameter Sets: (All)
 Aliases: 
-Accepted values: 2016-09, 2016-05, <others>
+Accepted values: 2016-09, 2017-03-09-profile, <others>
 
 Required: True
 Position: 0

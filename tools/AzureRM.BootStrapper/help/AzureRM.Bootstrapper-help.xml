@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<helpItems xmlns="http://msh" schema="maml">
+<?xml version="1.0" encoding="utf-8"?>
+<helpItems schema="maml">
 
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <command:details><command:name>Get-AzureRmModule</command:name>
@@ -17,14 +17,13 @@
 <maml:Description><maml:para>The profile version to check for the given module.
 </maml:para>
 </maml:Description>
-<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">2016-09</command:parameterValue>
-<command:parameterValue required="false" variableLength="false">2016-05</command:parameterValue>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">2017-03-09-profile</command:parameterValue>
 <command:parameterValue required="false" variableLength="false">&lt;others&gt;</command:parameterValue>
 </command:parameterValueGroup>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
+<dev:defaultValue></dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none"><maml:name>Module</maml:name>
 <maml:Description><maml:para>The AzureRM module to retreive the version for.
@@ -33,7 +32,7 @@
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
+<dev:defaultValue></dev:defaultValue>
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
@@ -44,7 +43,7 @@
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
+<dev:defaultValue></dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none"><maml:name>Profile</maml:name>
 <maml:Description><maml:para>The profile version to check for the given module.
@@ -53,7 +52,7 @@
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
+<dev:defaultValue></dev:defaultValue>
 </command:parameter>
 </command:parameters>
 <command:inputTypes><command:inputType><dev:type><maml:name>None</maml:name>
@@ -75,10 +74,10 @@
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; Get-AzureRmModule -Profile 2016-05 -Module AzureRM.Storage
+<dev:code>PS C:\&gt; Get-AzureRmModule -Profile 2017-03-09-profile -Module AzureRM.Storage
 
-1.2.4</dev:code>
-<dev:remarks><maml:para>The version of the AzureRM.Storage module that supports profile 2016-05 is version 1.2.4.
+1.0.4.3</dev:code>
+<dev:remarks><maml:para>The version of the AzureRM.Storage module that supports profile 2017-03-09-profile is version 1.0.4.3.
 </maml:para>
 </dev:remarks>
 </command:example>
@@ -180,14 +179,13 @@
 <maml:Description><maml:para>The profile version to install.  You can get a list of available profile versions using Get-AzureRmProfile -ListAvailable
 </maml:para>
 </maml:Description>
-<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">2016-09</command:parameterValue>
-<command:parameterValue required="false" variableLength="false">2016-05</command:parameterValue>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">2017-03-09-profile</command:parameterValue>
 <command:parameterValue required="false" variableLength="false">&lt;others&gt;</command:parameterValue>
 </command:parameterValueGroup>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
+<dev:defaultValue></dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Scope</maml:name>
 <maml:Description><maml:para>Specifies the installation scope of the modules. The acceptable values for this parameter are: AllUsers and CurrentUser. The AllUsers scope lets modules be installed in a location that is accessible to all users of the computer. The CurrentUser scope lets modules be installed in a location that is available only to the current user.
@@ -218,7 +216,7 @@
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
+<dev:defaultValue></dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Scope</maml:name>
 <maml:Description><maml:para>Specifies the installation scope of the modules. The acceptable values for this parameter are: AllUsers and CurrentUser. The AllUsers scope lets modules be installed in a location that is accessible to all users of the computer. The CurrentUser scope lets modules be installed in a location that is available only to the current user.
@@ -258,8 +256,8 @@
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; Install-AzureRmProfile -Profile '2016-05'</dev:code>
-<dev:remarks><maml:para>Install all the modules associated with profile '2016-05'
+<dev:code>PS C:\&gt; Install-AzureRmProfile -Profile '2017-03-09-profile'</dev:code>
+<dev:remarks><maml:para>Install all the modules associated with profile '2017-03-09-profile'
 </maml:para>
 </dev:remarks>
 </command:example>
@@ -283,13 +281,13 @@
 </maml:para>
 </maml:Description>
 <command:parameterValueGroup><command:parameterValue required="false" variableLength="false">2016-09</command:parameterValue>
-<command:parameterValue required="false" variableLength="false">2016-05</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">2017-03-09-profile</command:parameterValue>
 <command:parameterValue required="false" variableLength="false">&lt;others&gt;</command:parameterValue>
 </command:parameterValueGroup>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
+<dev:defaultValue></dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
 <maml:Description><maml:para>Request confrimation for any change made by the cmdlet
@@ -342,7 +340,7 @@
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
+<dev:defaultValue></dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
 <maml:Description><maml:para>Print the changes that would be made in executing the cmdlets, but do not make any changes.
@@ -373,8 +371,8 @@
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; Uninstall-AzureRmProfile '2016-09'</dev:code>
-<dev:remarks><maml:para>Uninstall all modules associated with the '2016-09' profile on the machine
+<dev:code>PS C:\&gt; Uninstall-AzureRmProfile '2017-03-09-profile'</dev:code>
+<dev:remarks><maml:para>Uninstall all modules associated with the '2017-03-09-profile' profile on the machine
 </maml:para>
 </dev:remarks>
 </command:example>
@@ -397,15 +395,14 @@
 <maml:Description><maml:para>The profile version to load in the current PowerShell session.
 </maml:para>
 </maml:Description>
-<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">2016-09</command:parameterValue>
-<command:parameterValue required="false" variableLength="false">2016-05</command:parameterValue>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">2017-03-09-profile</command:parameterValue>
 <command:parameterValue required="false" variableLength="false">Latest</command:parameterValue>
 <command:parameterValue required="false" variableLength="false">&lt;others&gt;</command:parameterValue>
 </command:parameterValueGroup>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
+<dev:defaultValue></dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none"><maml:name>Module</maml:name>
 <maml:Description><maml:para>The module name to be updated.
@@ -414,7 +411,7 @@
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
+<dev:defaultValue></dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
 <maml:Description><maml:para>Request confrimation for any change made by the cmdlet
@@ -496,7 +493,7 @@
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
+<dev:defaultValue></dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none"><maml:name>Module</maml:name>
 <maml:Description><maml:para>The module name to be updated.
@@ -505,7 +502,7 @@
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
+<dev:defaultValue></dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Scope</maml:name>
 <maml:Description><maml:para>Specifies the installation scope of the modules. The acceptable values for this parameter are: AllUsers and CurrentUser. The AllUsers scope lets modules be installed in a location that is accessible to all users of the computer. The CurrentUser scope lets modules be installed in a location that is available only to the current user.
@@ -545,8 +542,8 @@
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; Update-AzureRmProfile -Profile '2016-09'</dev:code>
-<dev:remarks><maml:para>Update the modules associated with profile '2016-09' to their latest versions and load in the current session.  This should be executed after opening a new PowerShell session.
+<dev:code>PS C:\&gt; Update-AzureRmProfile -Profile '2017-03-09-profile'</dev:code>
+<dev:remarks><maml:para>Update the modules associated with profile '2017-03-09-profile' to their latest versions and load in the current session.  This should be executed after opening a new PowerShell session.
 </maml:para>
 </dev:remarks>
 </command:example>
@@ -581,14 +578,14 @@
 <maml:Description><maml:para>The profile version to load in the current PowerShell session.
 </maml:para>
 </maml:Description>
-<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">2016-09</command:parameterValue>
-<command:parameterValue required="false" variableLength="false">2016-05</command:parameterValue>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">2017-03-09-profile</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">2017-03-09-profile</command:parameterValue>
 <command:parameterValue required="false" variableLength="false">&lt;others&gt;</command:parameterValue>
 </command:parameterValueGroup>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
+<dev:defaultValue></dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none"><maml:name>Module</maml:name>
 <maml:Description><maml:para>The module name to be used.
@@ -597,7 +594,7 @@
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
+<dev:defaultValue></dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
 <maml:Description><maml:para>Request confrimation for any change made by the cmdlet
@@ -662,7 +659,7 @@
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
+<dev:defaultValue></dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none"><maml:name>Module</maml:name>
 <maml:Description><maml:para>The module name to be used.
@@ -671,7 +668,7 @@
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
+<dev:defaultValue></dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Scope</maml:name>
 <maml:Description><maml:para>Specifies the installation scope of the modules. The acceptable values for this parameter are: AllUsers and CurrentUser. The AllUsers scope lets modules be installed in a location that is accessible to all users of the computer. The CurrentUser scope lets modules be installed in a location that is available only to the current user.
@@ -711,8 +708,8 @@
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; Use-AzureRmProfile -Profile '2016-09'</dev:code>
-<dev:remarks><maml:para>Load the modules associated with profile version '2016-09' in the current session.  This should be executed after opening a new PowerShell session.
+<dev:code>PS C:\&gt; Use-AzureRmProfile -Profile '2017-03-09-profile'</dev:code>
+<dev:remarks><maml:para>Load the modules associated with profile version '2017-03-09-profile' in the current session.  This should be executed after opening a new PowerShell session.
 </maml:para>
 </dev:remarks>
 </command:example>
