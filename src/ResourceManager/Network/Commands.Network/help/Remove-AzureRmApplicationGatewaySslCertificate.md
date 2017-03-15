@@ -34,21 +34,6 @@ The second command removes the SSL certificate named Cert02 from the application
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of an SSL certificate that this cmdlet removes.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ApplicationGateway
 Specifies the application gateway from which this cmdlet removes an SSL certificate.
 
@@ -97,6 +82,21 @@ Parameter Sets: (All)
 Aliases: iv
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the name of an SSL certificate that this cmdlet removes.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

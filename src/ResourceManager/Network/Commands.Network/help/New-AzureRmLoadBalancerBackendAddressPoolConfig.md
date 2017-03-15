@@ -31,21 +31,6 @@ This command creates a backend address pool configuration named BackendAddressPo
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the address pool configuration to create.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InformationAction
 Specifies how this cmdlet responds to an information event.
 
@@ -79,6 +64,21 @@ Parameter Sets: (All)
 Aliases: iv
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the name of the address pool configuration to create.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
