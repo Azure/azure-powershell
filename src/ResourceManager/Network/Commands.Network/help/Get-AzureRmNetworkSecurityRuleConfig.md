@@ -27,47 +27,18 @@ The **Get-AzureRmNetworkSecurityRuleConfig** cmdlet gets a network security rule
 Get-AzureRmNetworkSecurityGroup -Name  nsg1 -ResourceGroupName rg1 
     | Get-AzureRmNetworkSecurityRuleConfig -Name AllowInternetOutBound -DefaultRules
 ```
-This command retrieves the default rule named "AllowInternetOutBound" from Azure network security group named "nsg1" in resource group "rg1"
 
+This command retrieves the default rule named "AllowInternetOutBound" from Azure network security group named "nsg1" in resource group "rg1"
 
 ### 2: Retrieving a network security rule config using only the name
 ```
- Get-AzureRmNetworkSecurityGroup -Name  nsg1 -ResourceGroupName rg1 
+Get-AzureRmNetworkSecurityGroup -Name  nsg1 -ResourceGroupName rg1 
     | Get-AzureRmNetworkSecurityRuleConfig -Name "rdp-rule"
 ```
+
 This command retrieves user defined rule named "rdp-rule" from Azure network security group named "nsg1" in resource group "rg1"
 
 ## PARAMETERS
-
-### -Name
-Specifies the name of the network security rule configuration to get.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NetworkSecurityGroup
-Specifies a **NetworkSecurityGroup** object that contains the network security rule configuration to get.
-
-```yaml
-Type: PSNetworkSecurityGroup
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -DefaultRules
 Indicates whether this cmdlet gets a user-created rule configuration or a default rule configuration.
@@ -120,6 +91,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the name of the network security rule configuration to get.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkSecurityGroup
+Specifies a **NetworkSecurityGroup** object that contains the network security rule configuration to get.
+
+```yaml
+Type: PSNetworkSecurityGroup
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

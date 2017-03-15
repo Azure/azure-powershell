@@ -45,7 +45,7 @@ $nic.DnsSettings.DnsServers.Add("192.168.1.100")
 $nic | Set-AzureRmNetworkInterface
 ```
 
-The first command gets a network interface named NetworkInterface1 that exists within resource group ResourceGroup1. The second command adds DNS server 192.168.1.100 to this interface. The third command applies these changes to the network interface. To remove a DNS server, follow the commands listed above, but replace ```.Add``` with ```.Remove``` in the second command.
+The first command gets a network interface named NetworkInterface1 that exists within resource group ResourceGroup1. The second command adds DNS server 192.168.1.100 to this interface. The third command applies these changes to the network interface. To remove a DNS server, follow the commands listed above, but replace ".Add" with ".Remove" in the second command.
 
 ### Example 3: Enable IP forwading on a network interface
 ```
@@ -53,7 +53,7 @@ $nic = Get-AzureRmNetworkInterface -ResourceGroupName "ResourceGroup1" -Name "Ne
 $nic.EnableIPForwarding = 1
 $nic | Set-AzureRmNetworkInterface
 ```
-The first command gets an existing network interface called NetworkInterface1 and stores it in the ```$nic``` variable. The second command changes the IP forwarding value to true. Finally, the third command applies the changes to the network interface. To disable IP forwarding on a network interface, follow the sample example, but be sure to change the second command to ```$nic.EnableIPForwarding = 0```.
+The first command gets an existing network interface called NetworkInterface1 and stores it in the $nic variable. The second command changes the IP forwarding value to true. Finally, the third command applies the changes to the network interface. To disable IP forwarding on a network interface, follow the sample example, but be sure to change the second command to "$nic.EnableIPForwarding = 0".
 
 ### Example 4: Change the subnet of a network interface
 ```
@@ -63,13 +63,13 @@ $subnet2 = Get-AzureRmVirtualNetworkSubnetConfig -Name Subnet2 -VirtualNetwork $
 $nic.IpConfigurations[0].Subnet.Id = $subnet2.Id
 $nic | Set-AzureRmNetworkInterface
 ```
-The first command gets the network interface NetworkInterface1 and stores it in the ```$nic``` variable. The second command gets the virtual network associated with the subnet that the network interface is going to be associated with. The second command gets the subnet and stores it in the ```$subnet2``` variable. The third command associated the primary private IP address of the network interface with the new subnet. Finally the last command applied these changes on the network interface.
+The first command gets the network interface NetworkInterface1 and stores it in the $nic variable. The second command gets the virtual network associated with the subnet that the network interface is going to be associated with. The second command gets the subnet and stores it in the $subnet2 variable. The third command associated the primary private IP address of the network interface with the new subnet. Finally the last command applied these changes on the network interface.
 
 >[!NOTE] 
 >The IP configurations must be dynamic before you can change the subnet. If you have static IP configurations, change then to dynamic before proceeding. 
 
 >[!NOTE]
->If the network interface has multiple IP configurations, the forth command must be done for all these IP configurations before the final ```Set-AzureRmNetworkInterface``` command is executed. This can be done as in the forth command but by replacing ```0``` with the appropriate number. If a network interface has N IP configurations, then N-1 of these commands must exist.
+>If the network interface has multiple IP configurations, the forth command must be done for all these IP configurations before the final Set-AzureRmNetworkInterface command is executed. This can be done as in the forth command but by replacing "0" with the appropriate number. If a network interface has N IP configurations, then N-1 of these commands must exist.
 
 ### Example 5: Associate/Dissociate a Network Security Group to a network interface
 ```
@@ -78,7 +78,7 @@ $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName "ResourceGroup1" -Name
 $nic.NetworkSecurityGroup = $nsg
 $nic | Set-AzureRmNetworkInterface
 ```
-The first command gets an existing network interface called NetworkInterface1 and stores it in the ```$nic``` variable. The second command gets an existing network security group called MyNSG and stores it in the ```$nsg``` variable. The forth command assigns the ```$nsg``` to the ```$nic```. Finally, the fifth command applies the changes to the Network interface. To dissociate network security groups from a network interface, simple replace ```$nsg``` in the forth command with ```$null```.
+The first command gets an existing network interface called NetworkInterface1 and stores it in the $nic variable. The second command gets an existing network security group called MyNSG and stores it in the $nsg variable. The forth command assigns the $nsg to the $nic. Finally, the fifth command applies the changes to the Network interface. To dissociate network security groups from a network interface, simple replace $nsg in the forth command with $null.
 
 ## PARAMETERS
 
@@ -154,5 +154,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzureRmNetworkInterface](./New-AzureRmNetworkInterface.md)
 
 [Remove-AzureRmNetworkInterface](./Remove-AzureRmNetworkInterface.md)
-
-

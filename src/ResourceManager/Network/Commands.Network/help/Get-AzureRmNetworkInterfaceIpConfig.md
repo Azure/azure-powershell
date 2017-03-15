@@ -27,40 +27,12 @@ The **Get-AzureRmNetworkInterfaceIPConfig** cmdlet gets a network interface IP c
 $nic1 = Get-AzureRmNetworkInterface -Name mynic -ResourceGroupName $myrg
 Get-AzureRmNetworkInterfaceIpConfig -Name ipconfig1 -NetworkInterface $nic1
 ```
+
 The first command gets an existing network interface called mynic and stores it in the variable $nic1. The second
     command gets the IP configuration called ipconfig1 of this network interface.
     
+
 ## PARAMETERS
-
-### -Name
-Specifies the name of the network IP configuration that this cmdlet gets.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NetworkInterface
-Specifies a **NetworkInterface** object that contains the network IP configuration that this cmdlet gets.
-
-```yaml
-Type: PSNetworkInterface
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -InformationAction
 Specifies how this cmdlet responds to an information event.
@@ -98,6 +70,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the name of the network IP configuration that this cmdlet gets.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkInterface
+Specifies a **NetworkInterface** object that contains the network IP configuration that this cmdlet gets.
+
+```yaml
+Type: PSNetworkInterface
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
