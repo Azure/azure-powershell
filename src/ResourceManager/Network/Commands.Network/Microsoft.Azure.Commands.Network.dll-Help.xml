@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<helpItems xmlns="http://msh" schema="maml">
+<helpItems schema="maml">
 
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <command:details><command:name>Add-AzureRmApplicationGatewayAuthenticationCertificate</command:name>
@@ -3054,41 +3054,34 @@ PS C:\&gt; $AppGW = Add-AzureRmApplicationGatewaySslCertificate -ApplicationGate
 </command:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<command:details><command:name>Add-AzureRmApplicationGatewayUrlPathMapConfig</command:name>
+<command:details><command:name>Add-AzureRmExpressRouteCircuitAuthorization</command:name>
 <command:verb>Add</command:verb>
-<command:noun>AzureRmApplicationGatewayUrlPathMapConfig</command:noun>
-<maml:description><maml:para>Adds an array of URL path mappings to a backend server pool.
+<command:noun>AzureRmExpressRouteCircuitAuthorization</command:noun>
+<maml:description><maml:para>Adds an ExpressRoute circuit authorization.
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>The Add-AzureRmApplicationGatewayUrlPathMapConfig cmdlet adds an array of URL path mappings to a back end server pool.
+<maml:description><maml:para>The Add-AzureRmExpressRouteCircuitAuthorization cmdlet adds an authorization to an ExpressRoute circuit. ExpressRoute circuits connect your on-premises network to the Microsoft cloud by using a connectivity provider instead of the public Internet. The owner of an ExpressRoute circuit can create as many as 10 authorizations for each circuit; these authorizations generate an authorization key that can be used by a virtual network owner to connect his or her network to the circuit (one authorization per virtual network). Add-AzureRmExpressRouteCircuitAuthorization adds a new authorization to a circuit and, at the same time, generates the corresponding authorization key. These keys can be viewed at any time by running the Get-AzureRmExpressRouteCircuitAuthorization cmdlet and, as needed, can then be copied and forwarded to the appropriate network owner.
+</maml:para>
+<maml:para>Note that, after running Add-AzureRmExpressRouteCircuitAuthorization , you must call the Set-AzureRmExpressRouteCircuit cmdlet to activate the key. If you do not call Set-AzureRmExpressRouteCircuit the authorization will be added to the circuit but will not be enabled for use.
 </maml:para>
 </maml:description>
-<command:syntax><command:syntaxItem><maml:name>Add-AzureRmApplicationGatewayUrlPathMapConfig</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ApplicationGateway</maml:name>
-<maml:Description><maml:para>Specifies the application gateway to which this cmdlet adds a URL path map configuration.
+<command:syntax><command:syntaxItem><maml:name>Add-AzureRmExpressRouteCircuitAuthorization</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Name</maml:name>
+<maml:Description><maml:para>Specifies the name of the circuit authorization to be added.
 </maml:para>
 </maml:Description>
-<command:parameterValue required="true" variableLength="false">PSApplicationGateway</command:parameterValue>
-<dev:type><maml:name>PSApplicationGateway</maml:name>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>DefaultBackendAddressPool</maml:name>
-<maml:Description><maml:para>Specifies the default backend address pool to route in case none of the rules specified in the pathRules parameter match.
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ExpressRouteCircuit</maml:name>
+<maml:Description><maml:para>Specifies the ExpressRoute circuit that this cmdlet adds the authorization to.
 </maml:para>
 </maml:Description>
-<command:parameterValue required="true" variableLength="false">PSApplicationGatewayBackendAddressPool</command:parameterValue>
-<dev:type><maml:name>PSApplicationGatewayBackendAddressPool</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>DefaultBackendHttpSettings</maml:name>
-<maml:Description><maml:para>Specifies the default backend HTTP settings to use in case none of the rules specified in the pathRules parameter match.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">PSApplicationGatewayBackendHttpSettings</command:parameterValue>
-<dev:type><maml:name>PSApplicationGatewayBackendHttpSettings</maml:name>
+<command:parameterValue required="true" variableLength="false">PSExpressRouteCircuit</command:parameterValue>
+<dev:type><maml:name>PSExpressRouteCircuit</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -3121,128 +3114,13 @@ PS C:\&gt; $AppGW = Add-AzureRmApplicationGatewaySslCertificate -ApplicationGate
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Name</maml:name>
-<maml:Description><maml:para>Specifies the URL path map name that this cmdlet adds to the backend server pool.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PathRules</maml:name>
-<maml:Description><maml:para>Specifies a list of path rules. The path rules are order sensitive, they are applied in order they are specified.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule]</command:parameterValue>
-<dev:type><maml:name>System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule]</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-</command:syntaxItem>
-<command:syntaxItem><maml:name>Add-AzureRmApplicationGatewayUrlPathMapConfig</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ApplicationGateway</maml:name>
-<maml:Description><maml:para>Specifies the application gateway to which this cmdlet adds a URL path map configuration.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">PSApplicationGateway</command:parameterValue>
-<dev:type><maml:name>PSApplicationGateway</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>DefaultBackendAddressPoolId</maml:name>
-<maml:Description><maml:para>Specifies the default backend address pool ID.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>DefaultBackendHttpSettingsId</maml:name>
-<maml:Description><maml:para>Specifies the default backend HTTP settings ID.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="infa"><maml:name>InformationAction</maml:name>
-<maml:Description><maml:para>Specifies how this cmdlet responds to an information event.
-</maml:para>
-<maml:para>The acceptable values for this parameter are:
-</maml:para>
-<maml:para>- Continue
-</maml:para>
-<maml:para>- Ignore
-</maml:para>
-<maml:para>- Inquire
-</maml:para>
-<maml:para>- SilentlyContinue
-</maml:para>
-<maml:para>- Stop
-</maml:para>
-<maml:para>- Suspend
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-<dev:type><maml:name>ActionPreference</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="iv"><maml:name>InformationVariable</maml:name>
-<maml:Description><maml:para>Specifies an information variable.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Name</maml:name>
-<maml:Description><maml:para>Specifies the URL path map name that this cmdlet adds to the backend server pool.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PathRules</maml:name>
-<maml:Description><maml:para>Specifies a list of path rules. The path rules are order sensitive, they are applied in order they are specified.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule]</command:parameterValue>
-<dev:type><maml:name>System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule]</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ApplicationGateway</maml:name>
-<maml:Description><maml:para>Specifies the application gateway to which this cmdlet adds a URL path map configuration.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">PSApplicationGateway</command:parameterValue>
-<dev:type><maml:name>PSApplicationGateway</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>DefaultBackendAddressPool</maml:name>
-<maml:Description><maml:para>Specifies the default backend address pool to route in case none of the rules specified in the pathRules parameter match.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">PSApplicationGatewayBackendAddressPool</command:parameterValue>
-<dev:type><maml:name>PSApplicationGatewayBackendAddressPool</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>DefaultBackendAddressPoolId</maml:name>
-<maml:Description><maml:para>Specifies the default backend address pool ID.
+<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Name</maml:name>
+<maml:Description><maml:para>Specifies the name of the circuit authorization to be added.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -3250,21 +3128,12 @@ PS C:\&gt; $AppGW = Add-AzureRmApplicationGatewaySslCertificate -ApplicationGate
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>DefaultBackendHttpSettings</maml:name>
-<maml:Description><maml:para>Specifies the default backend HTTP settings to use in case none of the rules specified in the pathRules parameter match.
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ExpressRouteCircuit</maml:name>
+<maml:Description><maml:para>Specifies the ExpressRoute circuit that this cmdlet adds the authorization to.
 </maml:para>
 </maml:Description>
-<command:parameterValue required="true" variableLength="false">PSApplicationGatewayBackendHttpSettings</command:parameterValue>
-<dev:type><maml:name>PSApplicationGatewayBackendHttpSettings</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>DefaultBackendHttpSettingsId</maml:name>
-<maml:Description><maml:para>Specifies the default backend HTTP settings ID.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
+<command:parameterValue required="true" variableLength="false">PSExpressRouteCircuit</command:parameterValue>
+<dev:type><maml:name>PSExpressRouteCircuit</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -3300,50 +3169,51 @@ PS C:\&gt; $AppGW = Add-AzureRmApplicationGatewaySslCertificate -ApplicationGate
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Name</maml:name>
-<maml:Description><maml:para>Specifies the URL path map name that this cmdlet adds to the backend server pool.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PathRules</maml:name>
-<maml:Description><maml:para>Specifies a list of path rules. The path rules are order sensitive, they are applied in order they are specified.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule]</command:parameterValue>
-<dev:type><maml:name>System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule]</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 </command:parameters>
-<command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:inputTypes><command:inputType><dev:type><maml:name>PSExpressRouteCircuit</maml:name>
+</dev:type>
+<maml:description><maml:para>Add-AzureRmExpressRouteCircuitAuthorization accepts pipelined instances of the Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit object.
+</maml:para>
+</maml:description>
+</command:inputType>
+</command:inputTypes>
+<command:returnValues><command:returnValue><dev:type><maml:name>PSExpressRouteCircuit</maml:name>
+</dev:type>
+<maml:description><maml:para>Add-AzureRmExpressRouteCircuitAuthorization modifies instances of the Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit object.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
 </maml:alertSet>
-<command:examples><command:example><maml:title>1:</maml:title>
-<dev:code></dev:code>
-<dev:remarks><maml:para>
+<command:examples><command:example><maml:title>Example 1: Add an authorization to the specified ExpressRoute circuit</maml:title>
+<dev:code>$Circuit = Get-AzureRmExpressRouteCircuit -Name "ContosoCircuit" -ResourceGroupName "ContosoResourceGroup"
+Add-AzureRmExpressRouteCircuitAuthorization -Name "ContosoCircuitAuthorization" -Circuit $Circuit
+Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $Circuit</dev:code>
+<dev:remarks><maml:para>The commands in this example add a new authorization to an existing ExpressRoute circuit. The first command uses Get-AzureRmExpressRouteCircuit to create an object reference to a circuit named ContosoCircuit. That object reference is stored in a variable named $Circuit.
+</maml:para>
+<maml:para>In the second command, the Add-AzureRmExpressRouteCircuitAuthorization cmdlet is used to add a new authorization (ContosoCircuitAuthorization) to the ExpressRoute circuit. This command adds the authorization but does not activate that authorization. Activating an authorization requires the Set-AzureRmExpressRouteCircuit shown in the final command in the example.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
-<command:relatedLinks><maml:navigationLink><maml:linkText>Get-AzureRmApplicationGatewayUrlPathMapConfig</maml:linkText>
+<command:relatedLinks><maml:navigationLink><maml:linkText>Get-AzureRmExpressRouteCircuit</maml:linkText>
 <maml:uri></maml:uri>
 </maml:navigationLink>
-<maml:navigationLink><maml:linkText>New-AzureRmApplicationGatewayUrlPathMapConfig</maml:linkText>
+<maml:navigationLink><maml:linkText>Get-AzureRmExpressRouteCircuitAuthorization</maml:linkText>
 <maml:uri></maml:uri>
 </maml:navigationLink>
-<maml:navigationLink><maml:linkText>Remove-AzureRmApplicationGatewayUrlPathMapConfig</maml:linkText>
+<maml:navigationLink><maml:linkText>New-AzureRmExpressRouteCircuitAuthorization</maml:linkText>
 <maml:uri></maml:uri>
 </maml:navigationLink>
-<maml:navigationLink><maml:linkText>Set-AzureRmApplicationGatewayUrlPathMapConfig</maml:linkText>
+<maml:navigationLink><maml:linkText>Remove-AzureRmExpressRouteCircuitAuthorization</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Set-AzureRmExpressRouteCircuit</maml:linkText>
 <maml:uri></maml:uri>
 </maml:navigationLink>
 </command:relatedLinks>
@@ -11638,32 +11508,34 @@ PS C:\&gt; $FirewallConfig = Get-AzureRmApplicationGatewayWebApplicationFirewall
 </command:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<command:details><command:name>Get-AzureRmExpressRouteCircuitARPTable</command:name>
+<command:details><command:name>Get-AzureRmExpressRouteCircuitAuthorization</command:name>
 <command:verb>Get</command:verb>
-<command:noun>AzureRmExpressRouteCircuitARPTable</command:noun>
-<maml:description><maml:para>Gets the ARP table from an ExpressRoute circuit.
+<command:noun>AzureRmExpressRouteCircuitAuthorization</command:noun>
+<maml:description><maml:para>Gets information about ExpressRoute circuit authorizations.
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>The Get-AzureRmExpressRouteCircuitARPTable cmdlet retrieves the ARP table from both interfaces of an ExpressRoute circuit. The ARP table provides a mapping of the IPv4 address to MAC address for a particular peering. You can use the ARP table to validate layer 2 configuration and connectivity.
+<maml:description><maml:para>The Get-AzureRmExpressRouteCircuitAuthorization cmdlet gets information about the authorizations assigned to an ExpressRoute circuit. ExpressRoute circuits connect your on-premises network to the Microsoft cloud by using a connectivity provider instead of the public Internet. The owner of an ExpressRoute circuit can create as many as 10 authorizations for each circuit; these authorizations generate an authorization key that can be used by a virtual network owner to connect his or her network to the circuit (one authorization per virtual network). Authorization keys, as well as other information about the authorization, can be viewed at any time by running Get-AzureRmExpressRouteCircuitAuthorization .
 </maml:para>
 </maml:description>
-<command:syntax><command:syntaxItem><maml:name>Get-AzureRmExpressRouteCircuitARPTable</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>DevicePath</maml:name>
-<maml:Description><maml:para>The acceptable values for this parameter are: `Primary` or `Secondary`
+<command:syntax><command:syntaxItem><maml:name>Get-AzureRmExpressRouteCircuitAuthorization</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Name</maml:name>
+<maml:Description><maml:para>Specifies the name of the ExpressRoute circuit authorization that this cmdlet gets.
 </maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">DevicePathEnum</command:parameterValue>
-<dev:type><maml:name>DevicePathEnum</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ExpressRouteCircuitName</maml:name>
-<maml:Description><maml:para>The name of the ExpressRoute circuit being examined.
+<maml:para>-Name "ContosoCircuitAuthorization"
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ExpressRouteCircuit</maml:name>
+<maml:Description><maml:para>Specifies the ExpressRoute circuit authorization.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">PSExpressRouteCircuit</command:parameterValue>
+<dev:type><maml:name>PSExpressRouteCircuit</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -11692,33 +11564,6 @@ PS C:\&gt; $FirewallConfig = Get-AzureRmApplicationGatewayWebApplicationFirewall
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="iv"><maml:name>InformationVariable</maml:name>
 <maml:Description><maml:para>Specifies an information variable.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
-<maml:Description><maml:para>The resource name.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PeeringType</maml:name>
-<maml:Description><maml:para>The acceptable values for this parameter are: `AzurePrivatePeering`, `AzurePublicPeering`, and `MicrosoftPeering`
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ResourceGroupName</maml:name>
-<maml:Description><maml:para>The name of the resource group containing the ExpressRoute circuit.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -11728,21 +11573,23 @@ PS C:\&gt; $FirewallConfig = Get-AzureRmApplicationGatewayWebApplicationFirewall
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>DevicePath</maml:name>
-<maml:Description><maml:para>The acceptable values for this parameter are: `Primary` or `Secondary`
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Name</maml:name>
+<maml:Description><maml:para>Specifies the name of the ExpressRoute circuit authorization that this cmdlet gets.
 </maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">DevicePathEnum</command:parameterValue>
-<dev:type><maml:name>DevicePathEnum</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ExpressRouteCircuitName</maml:name>
-<maml:Description><maml:para>The name of the ExpressRoute circuit being examined.
+<maml:para>-Name "ContosoCircuitAuthorization"
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ExpressRouteCircuit</maml:name>
+<maml:Description><maml:para>Specifies the ExpressRoute circuit authorization.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">PSExpressRouteCircuit</command:parameterValue>
+<dev:type><maml:name>PSExpressRouteCircuit</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -11778,56 +11625,56 @@ PS C:\&gt; $FirewallConfig = Get-AzureRmApplicationGatewayWebApplicationFirewall
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
-<maml:Description><maml:para>The resource name.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PeeringType</maml:name>
-<maml:Description><maml:para>The acceptable values for this parameter are: `AzurePrivatePeering`, `AzurePublicPeering`, and `MicrosoftPeering`
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ResourceGroupName</maml:name>
-<maml:Description><maml:para>The name of the resource group containing the ExpressRoute circuit.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 </command:parameters>
-<command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:inputTypes><command:inputType><dev:type><maml:name>PSExpressRouteCircuit</maml:name>
+</dev:type>
+<maml:description><maml:para>Get-AzureRmExpressRouteCircuitAuthorization accepts pipelined instances of the Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit object.
+</maml:para>
+</maml:description>
+</command:inputType>
+</command:inputTypes>
+<command:returnValues><command:returnValue><dev:type><maml:name>PSExpressRouteCircuitAuthorization</maml:name>
+</dev:type>
+<maml:description><maml:para>Get-AzureRmExpressRouteCircuitAuthorization returns instances of the Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization object.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
 </maml:alertSet>
-<command:examples><command:example><maml:title>Example 1: Display the ARP table for an ExpressRoute peer</maml:title>
-<dev:code>Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $CircuitName -PeeringType MicrosoftPeering -DevicePath Primary</dev:code>
-<dev:remarks><maml:para>
+<command:examples><command:example><maml:title>Example 1: Get all ExpressRoute authorizations</maml:title>
+<dev:code>$Circuit = Get-AzureRmExpressRouteCircuit -Name "ContosoCircuit" -ResourceGroupName "ContosoResourceGroup"
+Get-AzureRmExpressRouteCircuitAuthorization -Circuit $Circuit</dev:code>
+<dev:remarks><maml:para>These commands return information about all the ExpressRoute authorizations associated with an ExpressRoute circuit. The first command uses the Get-AzureRmExpressRouteCircuit cmdlet to create an object reference a circuit named ContosoCircuit; that object reference is stored in the variable $Circuit. The second command then uses that object reference and the Get-AzureRmExpressRouteCircuitAuthorization cmdlet to return information about the authorizations associated with ContosoCircuit.
+</maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>Example 2: Get all ExpressRoute authorizations using the Where-Object cmdlet</maml:title>
+<dev:code>$Circuit = Get-AzureRmExpressRouteCircuit -Name "ContosoCircuit" -ResourceGroupName "ContosoResourceGroup"
+ Get-AzureRmExpressRouteCircuitAuthorization -Circuit $Circuit | Where-Object {$_.AuthorizationUseStatus -eq "Available"}</dev:code>
+<dev:remarks><maml:para>These commands represent a variation on the commands used in Example 1. In this case, however, information is returned only for those authorizations that are available for use (that is, for authorizations that have not been assigned to a virtual network). To do this, the circuit authorization information is returned in command 2 and is piped to the Where-Object cmdlet. Where-Object then picks out only those authorizations where the AuthorizationUseStatus property is set to Available. To list only those authorizations that are not available, use this syntax for the Where clause:
+</maml:para>
+<maml:para>`{$_.AuthorizationUseStatus -ne "Available"}`
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
-<command:relatedLinks><maml:navigationLink><maml:linkText>Get-AzureRmExpressRouteCircuitRouteTable</maml:linkText>
+<command:relatedLinks><maml:navigationLink><maml:linkText>Add-AzureRmExpressRouteCircuitAuthorization</maml:linkText>
 <maml:uri></maml:uri>
 </maml:navigationLink>
-<maml:navigationLink><maml:linkText>Get-AzureRmExpressRouteCircuitRouteTableSummary</maml:linkText>
+<maml:navigationLink><maml:linkText>Get-AzureRmExpressRouteCircuit</maml:linkText>
 <maml:uri></maml:uri>
 </maml:navigationLink>
-<maml:navigationLink><maml:linkText>Get-AzureRmExpressRouteCircuitStats</maml:linkText>
+<maml:navigationLink><maml:linkText>New-AzureRmExpressRouteCircuitAuthorization</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Remove-AzureRmExpressRouteCircuitAuthorization</maml:linkText>
 <maml:uri></maml:uri>
 </maml:navigationLink>
 </command:relatedLinks>
@@ -17269,16 +17116,16 @@ Subnets           : []</dev:code>
 <command:details><command:name>Get-AzureRmVirtualNetworkGatewayAdvertisedRoute</command:name>
 <command:verb>Get</command:verb>
 <command:noun>AzureRmVirtualNetworkGatewayAdvertisedRoute</command:noun>
-<maml:description><maml:para>{{Fill in the Synopsis}}
+<maml:description><maml:para>Lists routes being advertised by an Azure virtual network gateway
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>{{Fill in the Description}}
+<maml:description><maml:para>Given the IP of a BGP peer, enumerates routes being advertised to that peer by the specified Azure virtual network gateway.
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Get-AzureRmVirtualNetworkGatewayAdvertisedRoute</maml:name>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Peer</maml:name>
-<maml:Description><maml:para>BGP peer's IP address
+<maml:Description><maml:para>BGP peer's IP address. This should be an IP within the address space accessible from within the Azure virtual network the gateway is deployed in.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -17307,7 +17154,7 @@ Subnets           : []</dev:code>
 </command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Peer</maml:name>
-<maml:Description><maml:para>BGP peer's IP address
+<maml:Description><maml:para>BGP peer's IP address. This should be an IP within the address space accessible from within the Azure virtual network the gateway is deployed in.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -17348,13 +17195,22 @@ Subnets           : []</dev:code>
 </maml:description>
 </command:returnValue>
 </command:returnValues>
-<maml:alertSet><maml:alert><maml:para>
+<maml:alertSet><maml:alert><maml:para>This command is only applicable to Azure virtual network gateways with BGP enabled connections.
 </maml:para>
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; Get-AzureRmVirtualNetworkGatewayAdvertisedRoute -VirtualNetworkGatewayName gatewayName -ResourceGroupName resourceGroupName -Peer 10.0.0.254</dev:code>
+<dev:remarks><maml:para>For the Azure gateway named gatewayName in resource group resourceGroupName, retrives a list of routes being advertised to the BGP peer with IP 10.0.0.254
+</maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>Example 2</maml:title>
+<dev:code>PS C:\&gt; $bgpPeerStatus = Get-AzureRmVirtualNetworkGatewayBGPPeerStatus -VirtualNetworkGatewayName gatewayName -ResourceGroupName resourceGroupName
+PS C:\&gt; Get-AzureRmVirtualNetworkGatewayAdvertisedRoute -VirtualNetworkGatewayName gatewayName -ResourceGroupName resourceGroupName -Peer $bgpPeerStatus[0].Neighbor</dev:code>
+<dev:remarks><maml:para>For the Azure gateway named gatewayName in resource group resourceGroupName, retrieves routes being advertised to the first BGP peer on the gateway's list of BGP peers.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -17367,11 +17223,11 @@ Subnets           : []</dev:code>
 <command:details><command:name>Get-AzureRmVirtualNetworkGatewayBGPPeerStatus</command:name>
 <command:verb>Get</command:verb>
 <command:noun>AzureRmVirtualNetworkGatewayBGPPeerStatus</command:noun>
-<maml:description><maml:para>{{Fill in the Synopsis}}
+<maml:description><maml:para>Lists an Azure virtual network gateway's BGP peers
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>{{Fill in the Description}}
+<maml:description><maml:para>This command enumerates BGP peers an Azure virtual network gateway is configured to peer with. The status of each peer is also given.
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Get-AzureRmVirtualNetworkGatewayBGPPeerStatus</maml:name>
@@ -17451,8 +17307,19 @@ Subnets           : []</dev:code>
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; Get-AzureRmVirtualNetworkGatewayBgpPeerStatus -ResourceGroupName resourceGroup -VirtualNetworkGatewayName gatewayName
+
+Asn               : 65515
+ConnectedDuration : 9.01:04:53.5768637
+LocalAddress      : 10.1.0.254
+MessagesReceived  : 14893
+MessagesSent      : 14900
+Neighbor          : 10.0.0.254
+RoutesReceived    : 1
+State             : Connected</dev:code>
+<dev:remarks><maml:para>Retrieves BGP peers for the Azure virtual network gateway named gatewayName in resource group resourceGroup.
+</maml:para>
+<maml:para>This example output shows one connected BGP peer, with an IP of 10.0.0.254.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -17729,11 +17596,11 @@ Subnets           : []</dev:code>
 <command:details><command:name>Get-AzureRmVirtualNetworkGatewayLearnedRoute</command:name>
 <command:verb>Get</command:verb>
 <command:noun>AzureRmVirtualNetworkGatewayLearnedRoute</command:noun>
-<maml:description><maml:para>{{Fill in the Synopsis}}
+<maml:description><maml:para>Lists routes learned by an Azure virtual network gateway
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>{{Fill in the Description}}
+<maml:description><maml:para>Enumerates routes learned by an Azure virtual network gateway from various sources. This includes routes learned over BGP, as well as static routes.
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Get-AzureRmVirtualNetworkGatewayLearnedRoute</maml:name>
@@ -17795,8 +17662,34 @@ Subnets           : []</dev:code>
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; Get-AzureRmVirtualNetworkGatewayLearnedRoute -ResourceGroupName resourceGroup -VirtualNetworkGatewayname gatewayName
+
+AsPath       :
+LocalAddress : 10.1.0.254
+Network      : 10.1.0.0/16
+NextHop      :
+Origin       : Network
+SourcePeer   : 10.1.0.254
+Weight       : 32768
+
+AsPath       :
+LocalAddress : 10.1.0.254
+Network      : 10.0.0.254/32
+NextHop      :
+Origin       : Network
+SourcePeer   : 10.1.0.254
+Weight       : 32768
+
+AsPath       : 65515
+LocalAddress : 10.1.0.254
+Network      : 10.0.0.0/16
+NextHop      : 10.0.0.254
+Origin       : EBgp
+SourcePeer   : 10.0.0.254
+Weight       : 32768</dev:code>
+<dev:remarks><maml:para>For the Azure virtual network gateway named gatewayname in resource group resourceGroup, retrieves routes the Azure gateway knows. 
+</maml:para>
+<maml:para>The Azure virtual network gateway in this case has two static routes (10.1.0.0/16 and 10.0.0.254/32), as well as one route learned over BGP (10.0.0.0/16).
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -23549,51 +23442,27 @@ New-AzureRmExpressRouteCircuit @parameters</dev:code>
 </command:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<command:details><command:name>New-AzureRmExpressRouteCircuit</command:name>
+<command:details><command:name>New-AzureRmExpressRouteCircuitAuthorization</command:name>
 <command:verb>New</command:verb>
-<command:noun>AzureRmExpressRouteCircuit</command:noun>
-<maml:description><maml:para>Creates an Azure express route circuit.
+<command:noun>AzureRmExpressRouteCircuitAuthorization</command:noun>
+<maml:description><maml:para>Creates an ExpressRoute circuit authorization.
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>The New-AzureRmExpressRouteCircuit cmdlet creates an Azure express route circuit.
+<maml:description><maml:para>The New-AzureRmExpressRouteCircuitAuthorization cmdlet creates a circuit authorization that can be added to an ExpressRoute circuit. ExpressRoute circuits connect your on-premises network to the Microsoft cloud by using a connectivity provider instead of the public Internet. The owner of an ExpressRoute circuit can create as many as 10 authorizations for each circuit; these authorizations generate an authorization key that can be used by a virtual network owner to connect a network to the circuit. There can only one authorization per virtual network.
+</maml:para>
+<maml:para>After you create an ExpressRoute circuit you can use Add-AzureRmExpressRouteCircuitAuthorization to add an authorization to that circuit. Alternatively, you can use New-AzureRmExpressRouteCircuitAuthorization to create an authorization that can be added to a new circuit at the same time the circuit is created.
 </maml:para>
 </maml:description>
-<command:syntax><command:syntaxItem><maml:name>New-AzureRmExpressRouteCircuit</maml:name>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>AllowClassicOperations</maml:name>
-<maml:Description><maml:para>The use of this parameter allows you to use the classic Azure PowerShell cmdlets to manage the circuit.
+<command:syntax><command:syntaxItem><maml:name>New-AzureRmExpressRouteCircuitAuthorization</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Name</maml:name>
+<maml:Description><maml:para>Specifies a unique name for the new ExpressRoute circuit authorization.
 </maml:para>
 </maml:Description>
-<command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
-<dev:type><maml:name>Boolean</maml:name>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Authorization</maml:name>
-<maml:Description><maml:para>A list of circuit authorizations.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization]</command:parameterValue>
-<dev:type><maml:name>System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization]</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>BandwidthInMbps</maml:name>
-<maml:Description><maml:para>The bandwidth of the circuit. This must be a value that is supported by the service provider.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
-<dev:type><maml:name>Int32</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
-<maml:Description><maml:para>Forces the command to run without asking for user confirmation.
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="infa"><maml:name>InformationAction</maml:name>
 <maml:Description><maml:para>Specifies how this cmdlet responds to an information event.
@@ -23626,141 +23495,17 @@ New-AzureRmExpressRouteCircuit @parameters</dev:code>
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Location</maml:name>
-<maml:Description><maml:para>The location of the circuit.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
-<maml:Description><maml:para>The name of the ExpressRoute circuit being created.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Peering</maml:name>
-<maml:Description><maml:para>A list peer configurations.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPeering]</command:parameterValue>
-<dev:type><maml:name>System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPeering]</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>PeeringLocation</maml:name>
-<maml:Description><maml:para>The name of the peering location supported by the service provider.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ResourceGroupName</maml:name>
-<maml:Description><maml:para>The resource group that will contain the circuit.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ServiceProviderName</maml:name>
-<maml:Description><maml:para>The name of the circuit service provider. This must match a name listed by the Get-AzureRmExpressRouteServiceProvider cmdlet.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SkuFamily</maml:name>
-<maml:Description><maml:para>SKU family determines the billing type. Possible values for this parameter are: `MeteredData` or `UnlimitedData`. Note that you can change the billing type from MeteredData to UnlimitedData, but you can't change the type from UnlimitedData to MeteredData.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SkuTier</maml:name>
-<maml:Description><maml:para>The tier of service for the circuit. Possible values for this parameter are: `Standard` or `Premium`.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Tag</maml:name>
-<maml:Description><maml:para>A hastable of resource tags to be assigned to the circuit.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
-<dev:type><maml:name>Hashtable</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>AllowClassicOperations</maml:name>
-<maml:Description><maml:para>The use of this parameter allows you to use the classic Azure PowerShell cmdlets to manage the circuit.
+<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Name</maml:name>
+<maml:Description><maml:para>Specifies a unique name for the new ExpressRoute circuit authorization.
 </maml:para>
 </maml:Description>
-<command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
-<dev:type><maml:name>Boolean</maml:name>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Authorization</maml:name>
-<maml:Description><maml:para>A list of circuit authorizations.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization]</command:parameterValue>
-<dev:type><maml:name>System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization]</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>BandwidthInMbps</maml:name>
-<maml:Description><maml:para>The bandwidth of the circuit. This must be a value that is supported by the service provider.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
-<dev:type><maml:name>Int32</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
-<maml:Description><maml:para>Forces the command to run without asking for user confirmation.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="infa"><maml:name>InformationAction</maml:name>
 <maml:Description><maml:para>Specifies how this cmdlet responds to an information event.
@@ -23794,141 +23539,43 @@ New-AzureRmExpressRouteCircuit @parameters</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Location</maml:name>
-<maml:Description><maml:para>The location of the circuit.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
-<maml:Description><maml:para>The name of the ExpressRoute circuit being created.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Peering</maml:name>
-<maml:Description><maml:para>A list peer configurations.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPeering]</command:parameterValue>
-<dev:type><maml:name>System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPeering]</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>PeeringLocation</maml:name>
-<maml:Description><maml:para>The name of the peering location supported by the service provider.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ResourceGroupName</maml:name>
-<maml:Description><maml:para>The resource group that will contain the circuit.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ServiceProviderName</maml:name>
-<maml:Description><maml:para>The name of the circuit service provider. This must match a name listed by the Get-AzureRmExpressRouteServiceProvider cmdlet.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SkuFamily</maml:name>
-<maml:Description><maml:para>SKU family determines the billing type. Possible values for this parameter are: `MeteredData` or `UnlimitedData`. Note that you can change the billing type from MeteredData to UnlimitedData, but you can't change the type from UnlimitedData to MeteredData.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SkuTier</maml:name>
-<maml:Description><maml:para>The tier of service for the circuit. Possible values for this parameter are: `Standard` or `Premium`.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Tag</maml:name>
-<maml:Description><maml:para>A hastable of resource tags to be assigned to the circuit.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
-<dev:type><maml:name>Hashtable</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
 </command:parameters>
-<command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:inputTypes><command:inputType><dev:type><maml:name>None</maml:name>
+</dev:type>
+<maml:description><maml:para>This cmdlet does not accept pipelined input.
+</maml:para>
+</maml:description>
+</command:inputType>
+</command:inputTypes>
+<command:returnValues><command:returnValue><dev:type><maml:name>PSExpressRouteCircuitAuthorization</maml:name>
+</dev:type>
+<maml:description><maml:para>This cmdlet creates instances of the Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization object.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
 </maml:alertSet>
-<command:examples><command:example><maml:title>Example 1: Create a new ExpressRoute circuit</maml:title>
-<dev:code>$parameters = @{
-    Name='ExpressRouteCircuit'
-    ResourceGroupName='ExpressRouteResourceGroup'
-    Location='West US'
-    SkuTier='Standard'
-    SkuFamily='MeteredData'
-    ServiceProviderName='Equinix'
-    PeeringLocation='Silicon Valley'
-    BandwidthInMbps=200
-}
-New-AzureRmExpressRouteCircuit @parameters</dev:code>
-<dev:remarks><maml:para>
+<command:examples><command:example><maml:title>Example 1: Create a new circuit authorization</maml:title>
+<dev:code>$Authorization = New-AzureRmExpressRouteCircuitAuthorization -Name "ContosoCircuitAuthorization"</dev:code>
+<dev:remarks><maml:para>This command creates a new circuit authorization named ContosoCircuitAuthorization and then stores that object in a variable named $Authorization. Saving the object to a variable is important: although New-AzureRmExpressRouteCircuitAuthorization can create a circuit authorization it cannot add that authorization to a circuit route. Instead, the variable $Authorization is used New-AzureRmExpressRouteCircuit when creating a brand-new ExpressRoute circuit.
+</maml:para>
+<maml:para>For more information, see the documentation for the New-AzureRmExpressRouteCircuit cmdlet.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
-<command:relatedLinks><maml:navigationLink><maml:linkText>Get-AzureRmExpressRouteCircuit</maml:linkText>
+<command:relatedLinks><maml:navigationLink><maml:linkText>Add-AzureRmExpressRouteCircuitAuthorization</maml:linkText>
 <maml:uri></maml:uri>
 </maml:navigationLink>
-<maml:navigationLink><maml:linkText>Move-AzureRmExpressRouteCircuit</maml:linkText>
+<maml:navigationLink><maml:linkText>Get-AzureRmExpressRouteCircuitAuthorization</maml:linkText>
 <maml:uri></maml:uri>
 </maml:navigationLink>
-<maml:navigationLink><maml:linkText>Remove-AzureRmExpressRouteCircuit</maml:linkText>
-<maml:uri></maml:uri>
-</maml:navigationLink>
-<maml:navigationLink><maml:linkText>Set-AzureRmExpressRouteCircuit</maml:linkText>
+<maml:navigationLink><maml:linkText>Remove-AzureRmExpressRouteCircuitAuthorization</maml:linkText>
 <maml:uri></maml:uri>
 </maml:navigationLink>
 </command:relatedLinks>
@@ -35720,24 +35367,34 @@ PS C:\&gt; $AppGW = Remove-AzureRmApplicationGatewaySslPolicy -ApplicationGatewa
 </command:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<command:details><command:name>Remove-AzureRmExpressRouteCircuit</command:name>
+<command:details><command:name>Remove-AzureRmExpressRouteCircuitAuthorization</command:name>
 <command:verb>Remove</command:verb>
-<command:noun>AzureRmExpressRouteCircuit</command:noun>
-<maml:description><maml:para>Removes an ExpressRoute circuit.
+<command:noun>AzureRmExpressRouteCircuitAuthorization</command:noun>
+<maml:description><maml:para>Removes an existing ExpressRoute configuration authorization.
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>The Remove-AzureRmExpressRouteCircuit cmdlet removes an ExpressRoute circuit.
+<maml:description><maml:para>The Remove-AzureRmExpressRouteCircuitAuthorization cmdlet removes an authorization assigned to an ExpressRoute circuit. ExpressRoute circuits connect your on-premises network to Azure by using a connectivity provider instead of the public Internet. The owner of an ExpressRoute circuit can create as many as 10 authorizations for each circuit; these authorizations generate an authorization key that can be used by a virtual network owner to connect his or her network to the circuit. There can only be one authorization per virtual network. At any time, however, the circuit owner can use Remove-AzureRmExpressRouteCircuitAuthorization to remove the authorization assigned to a virtual network. When that happens the corresponding virtual network is no longer able to use the ExpressRoute circuit to connect to Azure.
 </maml:para>
 </maml:description>
-<command:syntax><command:syntaxItem><maml:name>Remove-AzureRmExpressRouteCircuit</maml:name>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
-<maml:Description><maml:para>Forces the command to run without asking for user confirmation.
+<command:syntax><command:syntaxItem><maml:name>Remove-AzureRmExpressRouteCircuitAuthorization</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Name</maml:name>
+<maml:Description><maml:para>Specifies the name of the circuit authorization that this cmdlet removes.
 </maml:para>
 </maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ExpressRouteCircuit</maml:name>
+<maml:Description><maml:para>Specifies the ExpressRouteCircuit object that this cmdlet removes.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">PSExpressRouteCircuit</command:parameterValue>
+<dev:type><maml:name>PSExpressRouteCircuit</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="infa"><maml:name>InformationAction</maml:name>
 <maml:Description><maml:para>Specifies how this cmdlet responds to an information event.
@@ -35770,59 +35427,26 @@ PS C:\&gt; $AppGW = Remove-AzureRmApplicationGatewaySslPolicy -ApplicationGatewa
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
-<maml:Description><maml:para>The name of the ExpressRoute circuit to be removed.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PassThru</maml:name>
-<maml:Description><maml:para>Returns an object representing the item with which you are working. By default, this cmdlet does not generate any output.
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ResourceGroupName</maml:name>
-<maml:Description><maml:para>Specifies the name of the resource group that this ExpressRoute circuit belongs to.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
-<maml:Description><maml:para>Forces the command to run without asking for user confirmation.
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Name</maml:name>
+<maml:Description><maml:para>Specifies the name of the circuit authorization that this cmdlet removes.
 </maml:para>
 </maml:Description>
-<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-<dev:type><maml:name>SwitchParameter</maml:name>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ExpressRouteCircuit</maml:name>
+<maml:Description><maml:para>Specifies the ExpressRouteCircuit object that this cmdlet removes.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">PSExpressRouteCircuit</command:parameterValue>
+<dev:type><maml:name>PSExpressRouteCircuit</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="infa"><maml:name>InformationAction</maml:name>
 <maml:Description><maml:para>Specifies how this cmdlet responds to an information event.
@@ -35856,82 +35480,50 @@ PS C:\&gt; $AppGW = Remove-AzureRmApplicationGatewaySslPolicy -ApplicationGatewa
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
-<maml:Description><maml:para>The name of the ExpressRoute circuit to be removed.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PassThru</maml:name>
-<maml:Description><maml:para>Returns an object representing the item with which you are working. By default, this cmdlet does not generate any output.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ResourceGroupName</maml:name>
-<maml:Description><maml:para>Specifies the name of the resource group that this ExpressRoute circuit belongs to.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
 </command:parameters>
-<command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:inputTypes><command:inputType><dev:type><maml:name>PSExpressRouteCircuit</maml:name>
+</dev:type>
+<maml:description><maml:para>This cmdlet accepts pipelined instances of the Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit object.
+</maml:para>
+</maml:description>
+</command:inputType>
+</command:inputTypes>
+<command:returnValues><command:returnValue><dev:type><maml:name>PSExpressRouteCircuit</maml:name>
+</dev:type>
+<maml:description><maml:para>This cmdlet modifies existing instances of the Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit object.
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
 </maml:alertSet>
-<command:examples><command:example><maml:title>Example 1: Delete an ExpressRoute circuit</maml:title>
-<dev:code>Remove-AzureRmExpressRouteCircuit -Name�$CircuitName�-ResourceGroupName�$rg</dev:code>
-<dev:remarks><maml:para>
+<command:examples><command:example><maml:title>Example 1: Remove a circuit authorization from an ExpressRoute circuit</maml:title>
+<dev:code>$Circuit = Get-AzureRmExpressRouteCircuit -Name "ContosoCircuit" -ResourceGroupName "ContosoResourceGroup"
+Remove-AzureRmExpressRouteCircuitAuthorization -Name "ContosoCircuitAuthorization" -Circuit $Circuit
+Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $Circuit</dev:code>
+<dev:remarks><maml:para>This example removes a circuit authorization from an ExpressRoute circuit. The first command uses the Get-AzureRmExpressRouteCircuit cmdlet to create an object reference to an ExpressRoute circuit named ContosoCircuit and stores the result in the variable named $Circuit.
 </maml:para>
-<maml:para></maml:para>
-<maml:para></maml:para>
-</dev:remarks>
-</command:example>
-<command:example><maml:title>Example 2: Delete an ExpressRoute circuit using the pipeline</maml:title>
-<dev:code>Get-AzureRmExpressRouteCircuit�-Name�$CircuitName�-ResourceGroupName�$rg | Remove-AzureRmExpressRouteCircuit</dev:code>
-<dev:remarks><maml:para>
+<maml:para>The second command marks the circuit authorization ContosoCircuitAuthorization for removal.
+</maml:para>
+<maml:para>The third command uses the Set-AzureRmExpressRouteCircuit cmdlet to confirm the removal of the ExpressRoute circuit stored in the $Circuit variable.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
-<command:relatedLinks><maml:navigationLink><maml:linkText>Get-AzureRmExpressRouteCircuit</maml:linkText>
+<command:relatedLinks><maml:navigationLink><maml:linkText>Add-AzureRmExpressRouteCircuitAuthorization</maml:linkText>
 <maml:uri></maml:uri>
 </maml:navigationLink>
-<maml:navigationLink><maml:linkText>Move-AzureRmExpressRouteCircuit</maml:linkText>
+<maml:navigationLink><maml:linkText>Get-AzureRmExpressRouteCircuit</maml:linkText>
 <maml:uri></maml:uri>
 </maml:navigationLink>
-<maml:navigationLink><maml:linkText>New-AzureRmExpressRouteCircuit</maml:linkText>
+<maml:navigationLink><maml:linkText>Get-AzureRmExpressRouteCircuitAuthorization</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>New-AzureRmExpressRouteCircuitAuthorization</maml:linkText>
 <maml:uri></maml:uri>
 </maml:navigationLink>
 <maml:navigationLink><maml:linkText>Set-AzureRmExpressRouteCircuit</maml:linkText>
@@ -53825,904 +53417,5 @@ Test-AzureRmNetworkWatcherIPFlow -NetworkWatcher $networkWatcher -TargetVirtualM
 <maml:uri></maml:uri>
 </maml:navigationLink>
 </command:relatedLinks>
-</command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-	<command:details>
-		<command:name>Get-AzureRmRouteFilterRuleConfig</command:name>
-		<maml:description>
-			<maml:para>Gets route filter rules from a route filter.</maml:para>
-		</maml:description>
-		<maml:copyright>
-			<maml:para />
-		</maml:copyright>
-		<command:verb>Get</command:verb>
-		<command:noun>AzureRmRouteFilterRuleConfig</command:noun>
-		<dev:version />
-	</command:details>
-	<maml:description>
-		<maml:para>The Get-AzureRmRouteFilterRuleConfig cmdlet gets route filter rules from an Azure route filter. You can specify a route filter rule by name.</maml:para>
-	</maml:description>
-	<command:syntax>
-		<command:syntaxItem>
-			<maml:name>Get-AzureRmRouteFilterRuleConfig</maml:name>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Name</maml:name>
-				<maml:description>
-					<maml:para>Specifies the name of the route filter rule that this cmdlet gets.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-				<maml:name>RouteFilter</maml:name>
-				<maml:description>
-					<maml:para>Specifies the route filter from which this cmdlet gets route filter rules.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">PSRouteFilter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-	</command:syntax>
-	<command:parameters>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Name</maml:name>
-			<maml:description>
-				<maml:para>Specifies the name of the route filter rule that this cmdlet gets.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-			<maml:name>RouteFilter</maml:name>
-			<maml:description>
-				<maml:para>Specifies the route filter from which this cmdlet gets route filter rules.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">PSRouteFilter</command:parameterValue>
-			<dev:type>
-				<maml:name>PSRouteFilter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			<dev:type>
-				<maml:name>ActionPreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Profile</maml:name>
-			<maml:description>
-				<maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
-			<dev:type>
-				<maml:name>azureprofile</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-	</command:parameters>
-	<command:inputTypes>
-		<command:inputType>
-			<dev:type>
-				<maml:name></maml:name>
-				<maml:uri></maml:uri>
-				<maml:description/>
-			</dev:type>
-			<maml:description>
-				<maml:para>
-</maml:para>
-			</maml:description>
-		</command:inputType>
-	</command:inputTypes>
-	<command:returnValues>
-		<command:returnValue>
-			<dev:type>
-				<maml:name></maml:name>
-				<maml:uri></maml:uri>
-				<maml:description/>
-			</dev:type>
-			<maml:description>
-				<maml:para>
-</maml:para>
-			</maml:description>
-		</command:returnValue>
-	</command:returnValues>
-	<command:terminatingErrors></command:terminatingErrors>
-	<command:nonTerminatingErrors></command:nonTerminatingErrors>
-	<maml:alertSet>
-		<maml:title></maml:title>
-		<maml:alert>
-			<maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
-		</maml:alert>
-	</maml:alertSet>
-	<command:examples>
-	</command:examples>
-	<maml:relatedLinks>
-		<maml:navigationLink>
-			<maml:linkText>Add-AzureRmRouteFilterRuleConfig</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
-		<maml:navigationLink>
-			<maml:linkText>Get-AzureRmRouteFilter</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
-		<maml:navigationLink>
-			<maml:linkText>New-AzureRmRouteFilterRuleConfig</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
-		<maml:navigationLink>
-			<maml:linkText>Remove-AzureRmRouteFilterRuleConfig</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
-		<maml:navigationLink>
-			<maml:linkText>Set-AzureRmRouteFilterRuleConfig</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
-	</maml:relatedLinks>
-</command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<!--Generated by PS Cmdlet Help Editor-->
-	<command:details>
-		<command:name>New-AzureRmRouteFilterRuleConfig</command:name>
-		<maml:description>
-			<maml:para>Creates a route filter rule for a route filter.</maml:para>
-		</maml:description>
-		<maml:copyright>
-			<maml:para />
-		</maml:copyright>
-		<command:verb>New</command:verb>
-		<command:noun>AzureRmRouteFilterRuleConfig</command:noun>
-		<dev:version />
-	</command:details>
-	<maml:description>
-		<maml:para>The New-AzureRmRouteFilterRuleConfig cmdlet creates a route filter rule for an Azure route filter.</maml:para>
-	</maml:description>
-	<command:syntax>
-		<command:syntaxItem>
-			<maml:name>New-AzureRmRouteFilterRuleConfig</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Name</maml:name>
-				<maml:description>
-					<maml:para>Specifies a name for the route filter rule.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Access</maml:name>
-				<maml:description>
-					<maml:para>Specify the access of route filter rule.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>RouteFilterRuleType</maml:name>
-				<maml:description>
-					<maml:para>RouteFilterRuleType</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>BgpCommunities</maml:name>
-				<maml:description>
-					<maml:para>BgpCommunities.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-	</command:syntax>
-	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Name</maml:name>
-			<maml:description>
-				<maml:para>Specifies a name for the route filter rule.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Access</maml:name>
-			<maml:description>
-				<maml:para>Access.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>RouteFilterRuleType</maml:name>
-			<maml:description>
-				<maml:para>RouteFilterRuleType </maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Communities</maml:name>
-			<maml:description>
-				<maml:para>Communities.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			<dev:type>
-				<maml:name>ActionPreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Profile</maml:name>
-			<maml:description>
-				<maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
-			<dev:type>
-				<maml:name>azureprofile</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-	</command:parameters>
-	<command:inputTypes>
-		<command:inputType>
-			<dev:type>
-				<maml:name></maml:name>
-				<maml:uri></maml:uri>
-				<maml:description/>
-			</dev:type>
-			<maml:description>
-				<maml:para>
-</maml:para>
-			</maml:description>
-		</command:inputType>
-	</command:inputTypes>
-	<command:returnValues>
-		<command:returnValue>
-			<dev:type>
-				<maml:name></maml:name>
-				<maml:uri></maml:uri>
-				<maml:description/>
-			</dev:type>
-			<maml:description>
-				<maml:para>
-</maml:para>
-			</maml:description>
-		</command:returnValue>
-	</command:returnValues>
-	<command:terminatingErrors></command:terminatingErrors>
-	<command:nonTerminatingErrors></command:nonTerminatingErrors>
-	<maml:alertSet>
-		<maml:title></maml:title>
-		<maml:alert>
-			<maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
-		</maml:alert>
-	</maml:alertSet>
-	<command:examples>
-	</command:examples>
-	<maml:relatedLinks>
-		<maml:navigationLink>
-			<maml:linkText>Add-AzureRmRouteFilterRuleConfig</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
-		<maml:navigationLink>
-			<maml:linkText>Get-AzureRmRouteFilterRuleConfig</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
-		<maml:navigationLink>
-			<maml:linkText>Remove-AzureRmRouteFilterRuleConfig</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
-		<maml:navigationLink>
-			<maml:linkText>Set-AzureRmRouteFilterRuleConfig</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
-	</maml:relatedLinks>
-</command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<!--Generated by PS Cmdlet Help Editor-->
-	<command:details>
-		<command:name>New-AzureRmRouteFilter</command:name>
-		<maml:description>
-			<maml:para>Creates a route filter.</maml:para>
-		</maml:description>
-		<maml:copyright>
-			<maml:para />
-		</maml:copyright>
-		<command:verb>New</command:verb>
-		<command:noun>AzureRmRouteFilter</command:noun>
-		<dev:version />
-	</command:details>
-	<maml:description>
-		<maml:para>The New-AzureRmRouteFilter cmdlet creates an Azure route filter.</maml:para>
-	</maml:description>
-	<command:syntax>
-		<command:syntaxItem>
-			<maml:name>New-AzureRmRouteFilter</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Name</maml:name>
-				<maml:description>
-					<maml:para>Specifies a name for the route filter.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>ResourceGroupName</maml:name>
-				<maml:description>
-					<maml:para>Specifies the name of the resource group in which this cmdlet creates a route filter.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Location</maml:name>
-				<maml:description>
-					<maml:para>Specifies the Azure region in which this cmdlet creates a route filter.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Rule</maml:name>
-				<maml:description>
-					<maml:para>Specifies an array of Route filter rule objects to associate with the route filter.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="true">List`1[PSRouteFilterRule]</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Tag</maml:name>
-				<maml:description>
-					<maml:para>Specifies a dictionary of tags to associate with the route filter.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Indicates that this cmdlet creates a route filter even if a route filter that has the same name already exists.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>WhatIf</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Confirm</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-	</command:syntax>
-	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Name</maml:name>
-			<maml:description>
-				<maml:para>Specifies a name for the route filter.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>ResourceGroupName</maml:name>
-			<maml:description>
-				<maml:para>Specifies the name of the resource group in which this cmdlet creates a route filter.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Location</maml:name>
-			<maml:description>
-				<maml:para>Specifies the Azure region in which this cmdlet creates a route filter.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Rule</maml:name>
-			<maml:description>
-				<maml:para>Specifies an array of Route filter rule objects to associate with the route filter.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="true">List`1[PSRouteFilterRule]</command:parameterValue>
-			<dev:type>
-				<maml:name>List`1[PSRouteFilterRule]</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Tag</maml:name>
-			<maml:description>
-				<maml:para>Specifies a dictionary of tags to associate with the route filter.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
-			<dev:type>
-				<maml:name>Hashtable</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>Indicates that this cmdlet creates a route filter even if a route filter that has the same name already exists.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			<dev:type>
-				<maml:name>ActionPreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>WhatIf</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Confirm</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Profile</maml:name>
-			<maml:description>
-				<maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
-			<dev:type>
-				<maml:name>azureprofile</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-	</command:parameters>
-	<command:inputTypes>
-		<command:inputType>
-			<dev:type>
-				<maml:name></maml:name>
-				<maml:uri></maml:uri>
-				<maml:description/>
-			</dev:type>
-			<maml:description>
-				<maml:para>
-</maml:para>
-			</maml:description>
-		</command:inputType>
-	</command:inputTypes>
-	<command:returnValues>
-		<command:returnValue>
-			<dev:type>
-				<maml:name></maml:name>
-				<maml:uri></maml:uri>
-				<maml:description/>
-			</dev:type>
-			<maml:description>
-				<maml:para>
-</maml:para>
-			</maml:description>
-		</command:returnValue>
-	</command:returnValues>
-	<command:terminatingErrors></command:terminatingErrors>
-	<command:nonTerminatingErrors></command:nonTerminatingErrors>
-	<maml:alertSet>
-		<maml:title></maml:title>
-		<maml:alert>
-			<maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
-		</maml:alert>
-	</maml:alertSet>
-	<command:examples>		
-	</command:examples>
-	<maml:relatedLinks>
-		<maml:navigationLink>
-			<maml:linkText>Get-AzureRmRouteFilter</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
-		<maml:navigationLink>
-			<maml:linkText>New-AzureRmRouteFilterRuleConfig</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
-		<maml:navigationLink>
-			<maml:linkText>Remove-AzureRmRouteFilter</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
-		<maml:navigationLink>
-			<maml:linkText>Set-AzureRmRouteFilter</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
-	</maml:relatedLinks>
-</command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<!--Generated by PS Cmdlet Help Editor-->
-	<command:details>
-		<command:name>Get-AzureRmRouteFilter</command:name>
-		<maml:description>
-			<maml:para>Gets route filters.</maml:para>
-		</maml:description>
-		<maml:copyright>
-			<maml:para />
-		</maml:copyright>
-		<command:verb>Get</command:verb>
-		<command:noun>AzureRmRouteFilter</command:noun>
-		<dev:version />
-	</command:details>
-	<maml:description>
-		<maml:para>The Get-AzureRmRouteFilter cmdlet gets Azure route filters. You can retrieve a single route filter, or retrieve all the route filters in a resource group or in your subscription.</maml:para>
-	</maml:description>
-	<command:syntax>
-		<command:syntaxItem>
-			<maml:name>Get-AzureRmRouteFilter</maml:name>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Name</maml:name>
-				<maml:description>
-					<maml:para>Specifies the name of the route filter that this cmdlet gets.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>ResourceGroupName</maml:name>
-				<maml:description>
-					<maml:para>Specifies the name of the resource group that contains the route filters that this cmdlet gets.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>Get-AzureRmRouteFilter</maml:name>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Name</maml:name>
-				<maml:description>
-					<maml:para>Specifies the name of the route filter that this cmdlet gets.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>ResourceGroupName</maml:name>
-				<maml:description>
-					<maml:para>Specifies the name of the resource group that contains the route filters that this cmdlet gets.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>ExpandResource</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-	</command:syntax>
-	<command:parameters>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Name</maml:name>
-			<maml:description>
-				<maml:para>Specifies the name of the route filter that this cmdlet gets.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>ResourceGroupName</maml:name>
-			<maml:description>
-				<maml:para>Specifies the name of the resource group that contains the route filters that this cmdlet gets.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			<dev:type>
-				<maml:name>ActionPreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>ExpandResource</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Profile</maml:name>
-			<maml:description>
-				<maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
-			<dev:type>
-				<maml:name>azureprofile</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-	</command:parameters>
-	<command:inputTypes>
-		<command:inputType>
-			<dev:type>
-				<maml:name></maml:name>
-				<maml:uri></maml:uri>
-				<maml:description/>
-			</dev:type>
-			<maml:description>
-				<maml:para>
-</maml:para>
-			</maml:description>
-		</command:inputType>
-	</command:inputTypes>
-	<command:returnValues>
-		<command:returnValue>
-			<dev:type>
-				<maml:name></maml:name>
-				<maml:uri></maml:uri>
-				<maml:description/>
-			</dev:type>
-			<maml:description>
-				<maml:para>
-</maml:para>
-			</maml:description>
-		</command:returnValue>
-	</command:returnValues>
-	<command:terminatingErrors></command:terminatingErrors>
-	<command:nonTerminatingErrors></command:nonTerminatingErrors>
-	<maml:alertSet>
-		<maml:title></maml:title>
-		<maml:alert>
-			<maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
-		</maml:alert>
-	</maml:alertSet>
-	<command:examples>
-		<command:example>
-			<maml:title>--------------------------  Example 1: Get a route filter  --------------------------</maml:title>
-			<maml:introduction>
-				<maml:paragraph>PS C:\&gt;</maml:paragraph>
-			</maml:introduction>
-			<dev:code>PS C:\&gt;Get-AzureRmRouteFilter -ResourceGroupName &quot;ResourceGroup11&quot; -Name &quot;routefilter01&quot;
-Name              : routefilter01
-ResourceGroupName : ResourceGroup11
-Location          : eastus
-Id                : /subscriptions/xxxx-xxxx-xxxx-xxxx/resourceGroups/ResourceGroup11/providers/Microsoft.Networ
-                    k/routeTables/routefilter01
-Etag              : W/&quot;db5f4e12-3f34-465b-92dd-0ab3bf6fc274&quot;
-ProvisioningState : Succeeded
-Tags              :
-Rules            : []
-Peerings           : []</dev:code>
-			<dev:remarks>
-				<maml:para>This command gets the route table named routetable01 in the resource group named ResourceGroup11.</maml:para>
-				<maml:para />
-				<maml:para />
-				<maml:para></maml:para>
-			</dev:remarks>
-			<command:commandLines>
-				<command:commandLine>
-					<command:commandText>
-						<maml:para />
-					</command:commandText>
-				</command:commandLine>
-			</command:commandLines>
-		</command:example>
-	</command:examples>
-	<maml:relatedLinks>
-		<maml:navigationLink>
-			<maml:linkText>New-AzureRmRouteFilter</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
-		<maml:navigationLink>
-			<maml:linkText>Remove-AzureRmRouteFilter</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
-		<maml:navigationLink>
-			<maml:linkText>Set-AzureRmRouteFilter</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
-	</maml:relatedLinks>
 </command:command>
 </helpItems>

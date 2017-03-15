@@ -1,53 +1,86 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-ms.assetid: 9D9D079C-5557-40DC-8CFB-1DCD446D9109
-online version: 
+ms.assetid: 9994E2B2-20A1-4E95-9A9F-379B8B63F7F5
+online version:
 schema: 2.0.0
 ---
 
-# Add-AzureRmApplicationGatewayUrlPathMapConfig
+# Add-AzureRmExpressRouteCircuitAuthorization
 
 ## SYNOPSIS
-Adds an array of URL path mappings to a backend server pool.
+
+Adds an ExpressRoute circuit authorization.
 
 ## SYNTAX
 
-### SetByResourceId
 ```
-Add-AzureRmApplicationGatewayUrlPathMapConfig -ApplicationGateway <PSApplicationGateway> -Name <String>
- -PathRules <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule]>
- [-DefaultBackendAddressPoolId <String>] [-DefaultBackendHttpSettingsId <String>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
-```
-
-### SetByResource
-```
-Add-AzureRmApplicationGatewayUrlPathMapConfig -ApplicationGateway <PSApplicationGateway> -Name <String>
- -PathRules <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule]>
- [-DefaultBackendAddressPool <PSApplicationGatewayBackendAddressPool>]
- [-DefaultBackendHttpSettings <PSApplicationGatewayBackendHttpSettings>]
+Add-AzureRmExpressRouteCircuitAuthorization -Name <String> -ExpressRouteCircuit <PSExpressRouteCircuit>
  [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmApplicationGatewayUrlPathMapConfig** cmdlet adds an array of URL path mappings to a back end server pool.
+
+The **Add-AzureRmExpressRouteCircuitAuthorization** cmdlet adds an authorization to an ExpressRoute
+circuit. ExpressRoute circuits connect your on-premises network to the Microsoft cloud by using a
+connectivity provider instead of the public Internet. The owner of an ExpressRoute circuit can
+create as many as 10 authorizations for each circuit; these authorizations generate an
+authorization key that can be used by a virtual network owner to connect his or her network to the
+circuit (one authorization per virtual network). **Add-AzureRmExpressRouteCircuitAuthorization**
+adds a new authorization to a circuit and, at the same time, generates the corresponding
+authorization key. These keys can be viewed at any time by running the
+Get-AzureRmExpressRouteCircuitAuthorization cmdlet and, as needed, can then be copied and forwarded
+to the appropriate network owner.
+
+Note that, after running **Add-AzureRmExpressRouteCircuitAuthorization**, you must call the
+Set-AzureRmExpressRouteCircuit cmdlet to activate the key. If you do not call
+**Set-AzureRmExpressRouteCircuit** the authorization will be added to the circuit but will not be
+enabled for use.
 
 ## EXAMPLES
 
-### 1:
+### Example 1: Add an authorization to the specified ExpressRoute circuit
+
+```powershell
+$Circuit = Get-AzureRmExpressRouteCircuit -Name "ContosoCircuit" -ResourceGroupName "ContosoResourceGroup"
+Add-AzureRmExpressRouteCircuitAuthorization -Name "ContosoCircuitAuthorization" -Circuit $Circuit
+Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $Circuit
 ```
 
-```
+The commands in this example add a new authorization to an existing ExpressRoute circuit. The first
+command uses **Get-AzureRmExpressRouteCircuit** to create an object reference to a circuit named
+ContosoCircuit. That object reference is stored in a variable named $Circuit.
+
+In the second command, the **Add-AzureRmExpressRouteCircuitAuthorization** cmdlet is used to add a
+new authorization (ContosoCircuitAuthorization) to the ExpressRoute circuit. This command adds the
+authorization but does not activate that authorization. Activating an authorization requires the
+**Set-AzureRmExpressRouteCircuit** shown in the final command in the example.
 
 ## PARAMETERS
 
-### -ApplicationGateway
-Specifies the application gateway to which this cmdlet adds a URL path map configuration.
+### -Name
+
+Specifies the name of the circuit authorization to be added.
 
 ```yaml
-Type: PSApplicationGateway
+Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExpressRouteCircuit
+
+Specifies the ExpressRoute circuit that this cmdlet adds the authorization to.
+
+```yaml
+Type: PSExpressRouteCircuit
+Parameter Sets: (All)
+Aliases:
 
 Required: True
 Position: Named
@@ -56,67 +89,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -DefaultBackendAddressPool
-Specifies the default backend address pool to route in case none of the rules specified in the *pathRules* parameter match.
-
-```yaml
-Type: PSApplicationGatewayBackendAddressPool
-Parameter Sets: SetByResource
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultBackendAddressPoolId
-Specifies the default backend address pool ID.
-
-```yaml
-Type: String
-Parameter Sets: SetByResourceId
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultBackendHttpSettings
-Specifies the default backend HTTP settings to use in case none of the rules specified in the *pathRules* parameter match.
-
-```yaml
-Type: PSApplicationGatewayBackendHttpSettings
-Parameter Sets: SetByResource
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultBackendHttpSettingsId
-Specifies the default backend HTTP settings ID.
-
-```yaml
-Type: String
-Parameter Sets: SetByResourceId
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InformationAction
+
 Specifies how this cmdlet responds to an information event.
 
 The acceptable values for this parameter are:
@@ -141,6 +115,7 @@ Accept wildcard characters: False
 ```
 
 ### -InformationVariable
+
 Specifies an information variable.
 
 ```yaml
@@ -155,54 +130,35 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Specifies the URL path map name that this cmdlet adds to the backend server pool.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PathRules
-Specifies a list of path rules.
-The path rules are order sensitive, they are applied in order they are specified.
-
-```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule]
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
+-InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
+-WarningAction, and -WarningVariable. For more information, see about_CommonParameters
+(http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
+### PSExpressRouteCircuit
+**Add-AzureRmExpressRouteCircuitAuthorization** accepts pipelined instances of the
+**Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit** object.
+
 ## OUTPUTS
+
+### PSExpressRouteCircuit
+**Add-AzureRmExpressRouteCircuitAuthorization** modifies instances of the
+**Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit** object.
 
 ## NOTES
 
 ## RELATED LINKS
 
-[Get-AzureRmApplicationGatewayUrlPathMapConfig](./Get-AzureRmApplicationGatewayUrlPathMapConfig.md)
+[Get-AzureRmExpressRouteCircuit](./Get-AzureRmExpressRouteCircuit.md)
 
-[New-AzureRmApplicationGatewayUrlPathMapConfig](./New-AzureRmApplicationGatewayUrlPathMapConfig.md)
+[Get-AzureRmExpressRouteCircuitAuthorization](./Get-AzureRmExpressRouteCircuitAuthorization.md)
 
-[Remove-AzureRmApplicationGatewayUrlPathMapConfig](./Remove-AzureRmApplicationGatewayUrlPathMapConfig.md)
+[New-AzureRmExpressRouteCircuitAuthorization](./New-AzureRmExpressRouteCircuitAuthorization.md)
 
-[Set-AzureRmApplicationGatewayUrlPathMapConfig](./Set-AzureRmApplicationGatewayUrlPathMapConfig.md)
+[Remove-AzureRmExpressRouteCircuitAuthorization](./Remove-AzureRmExpressRouteCircuitAuthorization.md)
 
-
+[Set-AzureRmExpressRouteCircuit](./Set-AzureRmExpressRouteCircuit.md)
