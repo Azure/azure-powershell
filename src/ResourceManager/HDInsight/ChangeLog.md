@@ -16,8 +16,11 @@
     ## YYYY.MM.DD - Version X.Y.Z (Previous Release)
     * Overview of change #1
         - Additional information about change #1
--->
+
 ## Current Release
+* Added support for RServer cluster type
+    - Edgenode VM size can be specified for R Server cluster in New-AzureRmHDInsightCluster or New-AzureRmHDInsightClusterConfig
+    - RServer is now a configuration option in Add-AzureRmHDInsightConfigValues. It allows for RStudio flag to be set to indicate that R Studio installation should be done.
 
 ## Version 2.7.0
 
