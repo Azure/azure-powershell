@@ -23,11 +23,7 @@ Enumerates routes learned by an Azure virtual network gateway from various sourc
 ### Example 1
 ```
 PS C:\> Get-AzureRmVirtualNetworkGatewayLearnedRoute -ResourceGroupName resourceGroup -VirtualNetworkGatewayname gatewayName
-```
 
-For the Azure virtual network gateway named gatewayname in resource group resourceGroup, retrieves routes the Azure gateway knows. 
-
-```
 AsPath       :
 LocalAddress : 10.1.0.254
 Network      : 10.1.0.0/16
@@ -52,6 +48,9 @@ Origin       : EBgp
 SourcePeer   : 10.0.0.254
 Weight       : 32768
 ```
+
+For the Azure virtual network gateway named gatewayname in resource group resourceGroup, retrieves routes the Azure gateway knows. 
+
 The Azure virtual network gateway in this case has two static routes (10.1.0.0/16 and 10.0.0.254/32), as well as one route learned over BGP (10.0.0.0/16).
 
 ## PARAMETERS
