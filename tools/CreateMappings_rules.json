@@ -1,0 +1,93 @@
+[
+    { "regex": "Snapshot", "alias": "VM Snapshots" }, 
+    { "regex": "Image", "alias": "VM Images" }, 
+    { "regex": "Vmss", "alias": "VM Scale Sets" }, 
+    { "regex": "VM", "alias": "Virtual Machines" }, 
+
+    { "regex": "Disk", "alias": "Managed Disks" }, 
+
+    { "regex": "ApplicationGateway", "alias": "Networking" }, 
+    { "regex": "ExpressRoute", "alias": "Networking" }, 
+    { "regex": "LoadBalancer", "alias": "Networking" }, 
+    { "regex": "Vpn", "alias": "Networking" }, 
+    { "regex": "Route", "alias": "Networking" }, 
+    { "regex": "Dns", "alias": "Networking" }, 
+    { "regex": "Network", "alias": "Networking" }, 
+
+    { "regex": "AppService", "alias": "App Service" }, 
+    { "regex": "WebApp", "alias": "App Service" }, 
+
+    { "regex": "Storage", "alias": "Storage" }, 
+
+    { "regex": "ServiceBus", "alias": "Service Bus" }, 
+
+    { "regex": "ApiManagement", "alias": "API Management" }, 
+
+    { "regex": "Sql", "alias": "SQL" }, 
+
+    { "regex": "ContainerService", "alias": "Container Service" }, 
+    { "regex": "ACS", "alias": "Container Service" }, 
+
+    { "regex": "KeyVault", "alias": "Key Vault" }, 
+
+    { "regex": "Iot", "alias": "IoT" }, 
+
+    { "regex": "DataLake", "alias": "Data Lake" }, 
+
+    { "regex": "Batch", "alias": "Batch" }, 
+
+    { "regex": "AnalysisServices", "alias": "Analysis Services" }, 
+
+    { "regex": "Automation", "alias": "Automation" }, 
+
+    { "regex": "Backup", "alias": "Backup" }, 
+
+    { "regex": "Cdn", "alias": "CDN" }, 
+
+    { "regex": "CognitiveService", "alias": "Cognitive Services" }, 
+
+    { "regex": "AvailabilitySet", "alias": "Availability Sets" }, 
+
+    { "regex": "DataFactory", "alias": "Data Factory" }, 
+
+    { "regex": "EventHub", "alias": "Event Hub" }, 
+
+    { "regex": "HDInsight", "alias": "HD Insights" }, 
+
+    { "regex": "LogicApp", "alias": "Logic Apps" }, 
+
+    { "regex": "IntegrationAccount", "alias": "Integration Accounts" }, 
+
+    { "regex": "MediaService", "alias": "Media Services" }, 
+
+    { "regex": "NotificationHub", "alias": "Notification Hub" }, 
+
+    { "regex": "OperationalInsights", "alias": "Operational Insights" }, 
+
+    { "regex": "PowerBI", "alias": "Power BI" }, 
+
+    { "regex": "RedisCache", "alias": "Redis Cache" }, 
+
+    { "regex": "AD", "alias": "ActiveDirectory" }, 
+
+    { "regex": "Scheduler", "alias": "Scheduler" }, 
+
+    { "regex": "SiteRecovery", "alias": "Site Recovery" }, 
+
+    { "regex": "Recovery", "alias": "Recovery" }, 
+
+    { "regex": "ServerManagement", "alias": "Server Management" }, 
+
+    { "regex": "StreamAnalytics", "alias": "Stream Analytics" }, 
+
+    { "regex": "TrafficManager", "alias": "Traffic Manager" }, 
+
+    { "regex": "Ml", "alias": "Machine Learning" }, 
+
+    { "regex": "Billing", "alias": "Billing" }, 
+
+    { "regex": "Policy", "alias": "Policies" }, 
+    { "regex": "Resource", "alias": "Resources" }, 
+    { "regex": "Role", "alias": "Roles" }, 
+    { "regex": "Subscription", "alias": "Subscriptions" }
+]
