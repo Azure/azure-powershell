@@ -16,8 +16,8 @@ Adds a Hadoop configuration value customization and/or a Hive shared library cus
 Add-AzureRmHDInsightConfigValues [-Config] <AzureHDInsightConfig> [-Core <Hashtable>] [-HiveSite <Hashtable>]
  [-HiveEnv <Hashtable>] [-OozieSite <Hashtable>] [-OozieEnv <Hashtable>] [-WebHCat <Hashtable>]
  [-HBaseSite <Hashtable>] [-HBaseEnv <Hashtable>] [-Storm <Hashtable>] [-Yarn <Hashtable>]
- [-MapRed <Hashtable>] [-Tez <Hashtable>] [-Hdfs <Hashtable>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ [-MapRed <Hashtable>] [-Tez <Hashtable>] [-Hdfs <Hashtable>] [-RServer <Hashtable>]
+ [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -269,6 +269,19 @@ Accept wildcard characters: False
 Specifies the HDFS configurations of this HDInsight cluster.
 
 ```yaml
+Type: Hashtable
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RServer
+Specifies the RServer configurations. Valid only for RServer clusters.```yaml
 Type: Hashtable
 Parameter Sets: (All)
 Aliases: 
