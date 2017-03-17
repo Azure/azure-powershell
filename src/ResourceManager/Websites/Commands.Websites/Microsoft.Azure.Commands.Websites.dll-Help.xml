@@ -3887,8 +3887,8 @@
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>--------------------------  Example 1: Remove an App Service plan  --------------------------</maml:title>
-<dev:code>PS C:\&gt;Remove-AzureRmAppServicePlan -AppServicePlanName "MyAppServicePlan" -ResourceGroupName "Default-Web-WestUS"</dev:code>
-<dev:remarks><maml:para>This command removes the Azure App Service plan named MyAppServicePlan in the resource group named Default-Web-WestUS.
+<dev:code>PS C:\&gt;Remove-AzureRmAppServicePlan -ResourceGroupName "Default-Web-WestUS" -AppServicePlanName "ContosoASP"</dev:code>
+<dev:remarks><maml:para>This command removes the Azure App Service plan named ContosoASP that belongs to the resource group named Default-Web-WestUS.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
