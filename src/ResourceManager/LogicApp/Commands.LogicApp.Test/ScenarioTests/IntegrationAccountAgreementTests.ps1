@@ -167,16 +167,18 @@ Test Get-AzureRmIntegrationAccountAgreement command
 function Test-GetIntegrationAccountAgreement
 {
 	$agreementX12FilePath = "$TestOutputRoot\Resources\IntegrationAccountX12AgreementContent.json"
-	$agreementX12Content = [IO.File]::ReadAllText($agreementX12FilePath)	
+	$agreementX12Content = [IO.File]::ReadAllText($agreementX12FilePath)
+
+	Assert-ThrowsContains { Get-AzureRmIntegrationAccountAgreement -ResourceGroupName "Random83da135" -IntegrationAccountName "DoesNotMatter" -AgreementName "DoesNotMatter" } "Resource group 'Random83da135' could not be found."
 
 	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
-	$integrationAccountName = getAssetname	
+	$integrationAccountName = getAssetname
 	
-	$integrationAccountX12AgreementName = getAssetname	
+	$integrationAccountX12AgreementName = getAssetname
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 	
-	$hostPartnerName = getAssetname	
+	$hostPartnerName = getAssetname
 	$guestPartnerName = getAssetname
 	$hostBusinessIdentities = @(("AA","AA"), ("BB","BB"))
 	$guestBusinessIdentities = @(("ZZ","ZZ"), ("XX","XX"))
@@ -189,7 +191,7 @@ function Test-GetIntegrationAccountAgreement
 	Assert-AreEqual $integrationAccountX12AgreementName $result.Name
 
 	$result1 =  Get-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName
-	Assert-True { $result1.Count -gt 0 }	
+	Assert-True { $result1.Count -gt 0 }
 
 	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
 }
