@@ -125,6 +125,85 @@ function Test-VirtualNetworkGatewayConnectionWithBgpCRUD
      }
 }
 
+<#
+.SYNOPSIS
+Virtual network gateway connection tests with Ipsec Policies
+#>
+function Test-VirtualNetworkGatewayConnectionWithIpsecPoliciesCRUD
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $vnetName = Get-ResourceName
+    $localnetName = Get-ResourceName
+    $vnetConnectionName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $vnetGatewayConfigName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/connections"
+    $location = Get-ProviderLocation $resourceTypeParent
+    
+    try 
+     {
+      # Create the resource group
+      $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+    
+      # Create the Virtual Network
+      $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
+      $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+      $vnet = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+      $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+
+      # Create the publicip
+      $publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel    
+
+      # Create VirtualNetworkGateway
+      $vnetIpConfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
+
+	  # Also test overriding the gateway ASN
+      $actual = New-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -GatewaySku Standard -Asn 55000
+      $vnetGateway = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+      Assert-AreEqual $vnetGateway.BgpSettings.Asn $actual.BgpSettings.Asn	
+    
+      # Create LocalNetworkGateway    
+      $actual = New-AzureRmLocalNetworkGateway -ResourceGroupName $rgname -name $localnetName -location $location -AddressPrefix 192.168.0.0/16 -GatewayIpAddress 192.168.3.10 -Asn 1337 -BgpPeeringAddress "192.168.1.1" -PeerWeight 5
+      $localnetGateway = Get-AzureRmLocalNetworkGateway -ResourceGroupName $rgname -name $localnetName
+      Assert-AreEqual $localnetGateway.BgpSettings.Asn $actual.BgpSettings.Asn
+	  Assert-AreEqual $localnetGateway.BgpSettings.BgpPeeringAddress $actual.BgpSettings.BgpPeeringAddress
+      Assert-AreEqual $localnetGateway.BgpSettings.PeerWeight $actual.BgpSettings.PeerWeight
+
+	  # Create IpsecPolicies
+	  $ipsecPolicy = New-AzureRmIpsecPolicy -SALifeTimeSeconds 300 -SADataSizeKilobytes 1024 -IpsecEncryption "GCMAES256" -IpsecIntegrity "GCMAES256" -IkeEncryption "AES256" -IkeIntegrity "AES256" -DhGroup "DHGroup14" -PfsGroup "PFS2048"
+
+      # Create & Get VirtualNetworkGatewayConnection
+      $actual = New-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -EnableBgp false -UsePolicyBasedTrafficSelectors true -IpsecPolicies $ipsecPolicy
+      $connection = Get-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
+      
+	  # Verify IpsecPolicies
+	  Assert-AreEqual $connection.UsePolicyBasedTrafficSelectors $actual.UsePolicyBasedTrafficSelectors
+	  Assert-AreEqual $connection.IpsecPolicies.Count $actual.IpsecPolicies.Count
+	  Assert-AreEqual $connection.IpsecPolicies[0].SALifeTimeSeconds $actual.IpsecPolicies[0].SALifeTimeSeconds
+	  Assert-AreEqual $connection.IpsecPolicies[0].SADataSizeKilobytes $actual.IpsecPolicies[0].SADataSizeKilobytes
+	  Assert-AreEqual $connection.IpsecPolicies[0].IpsecEncryption $actual.IpsecPolicies[0].IpsecEncryption
+	  Assert-AreEqual $connection.IpsecPolicies[0].IpsecIntegrity $actual.IpsecPolicies[0].IpsecIntegrity
+	  Assert-AreEqual $connection.IpsecPolicies[0].IkeEncryption $actual.IpsecPolicies[0].IkeEncryption
+	  Assert-AreEqual $connection.IpsecPolicies[0].IkeIntegrity $actual.IpsecPolicies[0].IkeIntegrity
+	  Assert-AreEqual $connection.IpsecPolicies[0].DhGroup $actual.IpsecPolicies[0].DhGroup
+	  Assert-AreEqual $connection.IpsecPolicies[0].PfsGroup $actual.IpsecPolicies[0].PfsGroup
+    
+      # Delete VirtualNetworkGatewayConnection
+      $delete = Remove-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName -name $vnetConnectionName -PassThru -Force
+      Assert-AreEqual true $delete
+
+     }
+     finally
+     {
+      # Cleanup
+        Clean-ResourceGroup $rgname
+     }
+}
+
 function Test-VirtualNetworkGatewayConnectionCRUD
 {
     # Setup

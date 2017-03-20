@@ -312,6 +312,7 @@
     <Compile Include="Models\PSExpressRouteServiveProvider.cs" />
     <Compile Include="Models\PSExpressRouteServiceProviderBandwidthsOffered.cs" />
     <Compile Include="Models\PSExpressRouteServiceProvider.cs" />
+    <Compile Include="Models\PSIpsecPolicy.cs" />
     <Compile Include="Models\PSResourceNavigationLink.cs" />
     <Compile Include="Models\PSIPConfiguration.cs" />
     <Compile Include="Models\PSNetworkLongRunningOperation.cs" />
@@ -338,6 +339,7 @@
     <Compile Include="NetworkInterface\IpConfiguration\RemoveAzureNetworkInterfaceIpConfigCommand.cs" />
     <Compile Include="NetworkInterface\IpConfiguration\SetAzureNetworkInterfaceIpConfigCommand.cs" />
     <Compile Include="ProviderWideCmdlets\GetAzureExpressRouteServiceProviderCommand.cs" />
+    <Compile Include="VirtualNetworkGatewayConnection\NewAzureRmIpsecPolicyCommand.cs" />
     <Compile Include="VirtualNetwork\TestAzurePrivateIPAddressAvailabilityCmdlet.cs" />
     <Compile Include="PublicIpAddress\GetAzurePublicIpAddressCommand.cs" />
     <Compile Include="PublicIpAddress\NewAzurePublicIpAddressCommand.cs" />
