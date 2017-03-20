@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using System.Collections;
+using System.Collections.Generic;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -130,6 +131,18 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Whether to enable policy-based traffic selectors for a S2S connection")]
+        public string UsePolicyBasedTrafficSelectors { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "A list of IPSec policies.")]
+        public List<PSIpsecPolicy> IpsecPolicies { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -160,7 +173,7 @@ namespace Microsoft.Azure.Commands.Network
             vnetGatewayConnection.ConnectionType = this.ConnectionType;
             vnetGatewayConnection.RoutingWeight = this.RoutingWeight;
             vnetGatewayConnection.SharedKey = this.SharedKey;
-
+            
             if (!string.IsNullOrEmpty(this.EnableBgp))
             {
                 vnetGatewayConnection.EnableBgp = bool.Parse(this.EnableBgp);
@@ -188,6 +201,20 @@ namespace Microsoft.Azure.Commands.Network
             {
                 vnetGatewayConnection.Peer = new PSResourceId();
                 vnetGatewayConnection.Peer.Id = this.PeerId;
+            }
+
+            if (!string.IsNullOrEmpty(this.UsePolicyBasedTrafficSelectors))
+            {
+                vnetGatewayConnection.UsePolicyBasedTrafficSelectors = bool.Parse(this.UsePolicyBasedTrafficSelectors);
+            }
+            else
+            {
+                vnetGatewayConnection.UsePolicyBasedTrafficSelectors = false;
+            }
+
+            if (this.IpsecPolicies != null)
+            {
+                vnetGatewayConnection.IpsecPolicies = this.IpsecPolicies;
             }
 
             // Map to the sdk object
