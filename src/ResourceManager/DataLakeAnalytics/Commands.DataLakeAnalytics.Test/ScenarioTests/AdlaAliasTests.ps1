@@ -1,5 +1,95 @@
 ﻿<#
 .SYNOPSIS
+Tests DataLakeAnalytics Account firewall rule lifecycle (Create, Update, Get, List, Delete).
+#>
+function Test-DataLakeAnalyticsFirewall
+{
+    param
+	(
+		$resourceGroupName = (Get-ResourceGroupName),
+		$accountName = (Get-DataLakeAnalyticsAccountName),
+		$dataLakeAccountName = (Get-DataLakeStoreAccountName),
+		$location = "West US"
+	)
+	
+	try
+	{
+		# Creating Account
+		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+
+		# Test to make sure the account doesn't exist
+		Assert-False {Test-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+		# Test it without specifying a resource group
+		Assert-False {Test-AdlAnalyticsAccount -Name $accountName}
+
+		New-AdlStore -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
+
+		$accountCreated = New-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
+    
+		Assert-AreEqual $accountName $accountCreated.Name
+		Assert-AreEqual $location $accountCreated.Location
+		Assert-AreEqual "Microsoft.DataLakeAnalytics/accounts" $accountCreated.Type
+		Assert-True {$accountCreated.Id -like "*$resourceGroupName*"}
+
+		# In loop to check if account exists
+		for ($i = 0; $i -le 60; $i++)
+		{
+			[array]$accountGet = Get-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
+			if ($accountGet[0].ProvisioningState -like "Succeeded")
+			{
+				Assert-AreEqual $accountName $accountGet[0].Name
+				Assert-AreEqual $location $accountGet[0].Location
+				Assert-AreEqual "Microsoft.DataLakeAnalytics/accounts" $accountGet[0].Type
+				Assert-True {$accountGet[0].Id -like "*$resourceGroupName*"}
+				break
+			}
+
+			Write-Host "account not yet provisioned. current state: $($accountGet[0].ProvisioningState)"
+			[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
+			Assert-False {$i -eq 60} " Data Lake Analytics account is not in succeeded state even after 30 min."
+		}
+
+		# Test to make sure the account does exist
+		Assert-True {Test-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+
+		# Test to enable the firewall as well as allowing azure IPs
+		Assert-AreEqual "Disabled" $accountCreated.FirewallState 
+		Assert-AreEqual "Disabled" $accountCreated.FirewallAllowAzureIps 
+
+		$accountSet = Set-AdlAnalyticsAccount -Name $accountName -FirewallState "Enabled" -AllowAzureIpState "Enabled"
+
+		Assert-AreEqual "Enabled" $accountSet.FirewallState 
+		Assert-AreEqual "Enabled" $accountSet.FirewallAllowAzureIps
+
+		$firewallRuleName = getAssetName
+		$startIp = "127.0.0.1"
+		$endIp = "127.0.0.2"
+		# Add a firewall rule
+		Add-AdlAnalyticsFirewallRule -AccountName $accountName -Name $firewallRuleName -StartIpAddress $startIp -EndIpAddress $endIp
+
+		# Get the firewall rule
+		$result = Get-AdlAnalyticsFirewallRule -AccountName $accountName -Name $firewallRuleName
+		Assert-AreEqual $firewallRuleName $result.Name
+		Assert-AreEqual $startIp $result.StartIpAddress
+		Assert-AreEqual $endIp $result.EndIpAddress
+
+		# remove the firewall rule
+		Remove-AdlAnalyticsFirewallRule -AccountName $accountName -Name $firewallRuleName
+
+		# Make sure get throws.
+		Assert-Throws {Get-AdlAnalyticsFirewallRule -AccountName $accountName -Name $firewallRuleName}
+	}
+	finally
+	{
+		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
+		Invoke-HandledCmdlet -Command {Remove-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+	}
+}
+
+<#
+.SYNOPSIS
 Tests DataLakeAnalytics Account Lifecycle (Create, Update, Get, List, Delete).
 #>
 function Test-DataLakeAnalyticsAccount
@@ -38,7 +128,7 @@ function Test-DataLakeAnalyticsAccount
 		for ($i = 0; $i -le 60; $i++)
 		{
 			[array]$accountGet = Get-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
-			if ($accountGet[0].Properties.ProvisioningState -like "Succeeded")
+			if ($accountGet[0].ProvisioningState -like "Succeeded")
 			{
 				Assert-AreEqual $accountName $accountGet[0].Name
 				Assert-AreEqual $location $accountGet[0].Location
@@ -47,7 +137,7 @@ function Test-DataLakeAnalyticsAccount
 				break
 			}
 
-			Write-Host "account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)"
+			Write-Host "account not yet provisioned. current state: $($accountGet[0].ProvisioningState)"
 			[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(30000)
 			Assert-False {$i -eq 60} "dataLakeAnalytics account is not in succeeded state even after 30 min."
 		}
@@ -111,7 +201,7 @@ function Test-DataLakeAnalyticsAccount
 
 		# get the account and ensure that it contains two data lake stores
 		$testStoreAdd = Get-AdlAnalyticsAccount -Name $accountName
-		Assert-AreEqual 2 $testStoreAdd.Properties.DataLakeStoreAccounts.Count
+		Assert-AreEqual 2 $testStoreAdd.DataLakeStoreAccounts.Count
 
 		# get the specific data source added
 		$adlsAccountInfo = Get-AdlAnalyticsDataSource -Account $accountName -DataLakeStore $secondDataLakeAccountName
@@ -126,14 +216,14 @@ function Test-DataLakeAnalyticsAccount
 
 		# get the account and ensure that it contains one data lake store
 		$testStoreAdd = Get-AdlAnalyticsAccount -Name $accountName
-		Assert-AreEqual 1 $testStoreAdd.Properties.DataLakeStoreAccounts.Count
+		Assert-AreEqual 1 $testStoreAdd.DataLakeStoreAccounts.Count
 
 		# add a blob account to the analytics account
 		Add-AdlAnalyticsDataSource -Account $accountName -Blob $blobAccountName -AccessKey $blobAccountKey
 
 		# get the account and ensure that it contains one blob account
 		$testStoreAdd = Get-AdlAnalyticsAccount -Name $accountName
-		Assert-AreEqual 1 $testStoreAdd.Properties.StorageAccounts.Count
+		Assert-AreEqual 1 $testStoreAdd.StorageAccounts.Count
 
 		# get the specific data source added
 		$blobAccountInfo = Get-AdlAnalyticsDataSource -Account $accountName -Blob $blobAccountName
@@ -148,7 +238,7 @@ function Test-DataLakeAnalyticsAccount
 
 		# get the account and ensure that it contains no azure storage accounts
 		$testStoreAdd = Get-AdlAnalyticsAccount -Name $accountName
-		Assert-True {$testStoreAdd.Properties.StorageAccounts -eq $null -or $testStoreAdd.Properties.StorageAccounts.Count -eq 0} "Remove blob storage reported success but failed to remove the account."
+		Assert-True {$testStoreAdd.StorageAccounts -eq $null -or $testStoreAdd.StorageAccounts.Count -eq 0} "Remove blob storage reported success but failed to remove the account."
 
 		# Delete dataLakeAnalytics account
 		Assert-True {Remove-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
@@ -169,6 +259,60 @@ function Test-DataLakeAnalyticsAccount
 
 <#
 .SYNOPSIS
+Tests DataLakeAnalytics Account commitment tier (Create, Update, Get).
+#>
+function Test-DataLakeAnalyticsAccountTiers
+{
+    param
+	(
+		$resourceGroupName = (Get-ResourceGroupName),
+		$accountName = (Get-DataLakeAnalyticsAccountName),
+		$dataLakeAccountName = (Get-DataLakeStoreAccountName),
+		$location = "West US"
+	)
+
+    try
+	{
+		# Creating Account and initial setup
+		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+
+		# Test to make sure the account doesn't exist
+		Assert-False {Test-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+		# Test it without specifying a resource group
+		Assert-False {Test-AdlAnalyticsAccount -Name $accountName}
+
+		New-AdlStore -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
+
+		# Test 1: create account with no pricing tier and validate default
+		$accountCreated = New-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
+    
+		Assert-AreEqual "Consumption" $accountCreated.CurrentTier
+		Assert-AreEqual "Consumption" $accountCreated.NewTier
+
+		# Test 2: update this account to have a new pricing tier
+		$accountUpdated = Set-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Tier Commitment100AUHours
+
+		Assert-AreEqual "Consumption" $accountUpdated.CurrentTier
+		Assert-AreEqual "Commitment100AUHours" $accountUpdated.NewTier
+
+		# Test 3: Create a new account with a tier specified
+		$secondAccountName = (Get-DataLakeAnalyticsAccountName)
+		$accountCreated = New-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $secondAccountName -Location $location -DefaultDataLakeStore $dataLakeAccountName -Tier Commitment100AUHours
+		Assert-AreEqual "Commitment100AUHours" $accountCreated.CurrentTier
+		Assert-AreEqual "Commitment100AUHours" $accountCreated.NewTier
+	}
+	finally
+	{
+		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
+		Invoke-HandledCmdlet -Command {Remove-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $secondAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+	}
+}
+
+<#
+.SYNOPSIS
 Tests DataLakeAnalytics Job Lifecycle (Submit, Get, List, Cancel and Get Debug data).
 #>
 function Test-DataLakeAnalyticsJob
@@ -186,7 +330,7 @@ function Test-DataLakeAnalyticsJob
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 		New-AdlStore -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
 		$accountCreated = New-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
-		$nowTime = $accountCreated.Properties.CreationTime
+		$nowTime = $accountCreated.CreationTime
 		Assert-AreEqual $accountName $accountCreated.Name
 		Assert-AreEqual $location $accountCreated.Location
 		Assert-AreEqual "Microsoft.DataLakeAnalytics/accounts" $accountCreated.Type
@@ -196,7 +340,7 @@ function Test-DataLakeAnalyticsJob
 		for ($i = 0; $i -le 60; $i++)
 		{
 			[array]$accountGet = Get-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
-			if ($accountGet[0].Properties.ProvisioningState -like "Succeeded")
+			if ($accountGet[0].ProvisioningState -like "Succeeded")
 			{
 				Assert-AreEqual $accountName $accountGet[0].Name
 				Assert-AreEqual $location $accountGet[0].Location
@@ -205,7 +349,7 @@ function Test-DataLakeAnalyticsJob
 				break
 			}
 
-			Write-Host "account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)"
+			Write-Host "account not yet provisioned. current state: $($accountGet[0].ProvisioningState)"
 			[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(30000)
 			Assert-False {$i -eq 60} "dataLakeAnalytics accounts not in succeeded state even after 30 min."
 		}
@@ -288,7 +432,7 @@ function Test-NegativeDataLakeAnalyticsAccount
 		for ($i = 0; $i -le 60; $i++)
 		{
 			[array]$accountGet = Get-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
-			if ($accountGet[0].Properties.ProvisioningState -like "Succeeded")
+			if ($accountGet[0].ProvisioningState -like "Succeeded")
 			{
 				Assert-AreEqual $accountName $accountGet[0].Name
 				Assert-AreEqual $location $accountGet[0].Location
@@ -297,7 +441,7 @@ function Test-NegativeDataLakeAnalyticsAccount
 				break
 			}
 
-			Write-Host "account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)"
+			Write-Host "account not yet provisioned. current state: $($accountGet[0].ProvisioningState)"
 			[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(30000)
 			Assert-False {$i -eq 60} "dataLakeAnalytics accounts not in succeeded state even after 30 min."
 		}
@@ -351,7 +495,7 @@ function Test-NegativeDataLakeAnalyticsJob
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 		New-AdlStore -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
 		$accountCreated = New-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
-		$nowTime = $accountCreated.Properties.CreationTime
+		$nowTime = $accountCreated.CreationTime
 		Assert-AreEqual $accountName $accountCreated.Name
 		Assert-AreEqual $location $accountCreated.Location
 		Assert-AreEqual "Microsoft.DataLakeAnalytics/accounts" $accountCreated.Type
@@ -361,7 +505,7 @@ function Test-NegativeDataLakeAnalyticsJob
 		for ($i = 0; $i -le 60; $i++)
 		{
 			[array]$accountGet = Get-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
-			if ($accountGet[0].Properties.ProvisioningState -like "Succeeded")
+			if ($accountGet[0].ProvisioningState -like "Succeeded")
 			{
 				Assert-AreEqual $accountName $accountGet[0].Name
 				Assert-AreEqual $location $accountGet[0].Location
@@ -370,7 +514,7 @@ function Test-NegativeDataLakeAnalyticsJob
 				break
 			}
 
-			Write-Host "account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)"
+			Write-Host "account not yet provisioned. current state: $($accountGet[0].ProvisioningState)"
 			[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(30000)
 			Assert-False {$i -eq 60} "dataLakeAnalytics accounts not in succeeded state even after 30 min."
 		}
@@ -441,7 +585,7 @@ function Test-DataLakeAnalyticsCatalog
 		for ($i = 0; $i -le 60; $i++)
 		{
 			[array]$accountGet = Get-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
-			if ($accountGet[0].Properties.ProvisioningState -like "Succeeded")
+			if ($accountGet[0].ProvisioningState -like "Succeeded")
 			{
 				Assert-AreEqual $accountName $accountGet[0].Name
 				Assert-AreEqual $location $accountGet[0].Location
@@ -450,7 +594,7 @@ function Test-DataLakeAnalyticsCatalog
 				break
 			}
 
-			Write-Host "account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)"
+			Write-Host "account not yet provisioned. current state: $($accountGet[0].ProvisioningState)"
 			[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(30000)
 			Assert-False {$i -eq 60} "dataLakeAnalytics accounts not in succeeded state even after 30 min."
 		}
@@ -751,6 +895,45 @@ function Test-DataLakeAnalyticsCatalog
 		$result = Wait-AdlJob -AccountName $accountName -JobId $jobInfo.JobId
 		Assert-AreEqual "Succeeded" $result.Result
     
+		# Create the credential using the new create credential cmdlet
+		New-AdlCatalogCredential -AccountName $accountName -DatabaseName $databaseName -CredentialName $credentialName -Credential $secret -Uri "https://fakedb.contoso.com:443"
+
+		# retrieve the list of credentials and ensure the created credential is in it
+		$itemList = Get-AdlCatalogItem -AccountName $accountName -ItemType Credential -Path $databaseName
+
+		Assert-NotNull $itemList "The credential list is null"
+
+		Assert-True {$itemList.count -gt 0} "The credential list is empty"
+		$found = $false
+		foreach($item in $itemList)
+		{
+			if($item.Name -eq $credentialName)
+			{
+				$found = $true
+				break
+			}
+		}
+	
+		# retrieve the specific credential
+		$specificItem = Get-AdlCatalogItem -AccountName $accountName -ItemType Credential -Path "$databaseName.$credentialName"
+		Assert-NotNull $specificItem "Could not retrieve the credential by name"
+		Assert-AreEqual $credentialName $specificItem.Name
+
+		# Remove the credential
+		Remove-AdlCatalogCredential -AccountName $accountName -DatabaseName $databaseName -Name $credentialName
+		
+		# Verify that trying to get the credential fails
+		Assert-Throws {Get-AdlCatalogItem -AccountName $accountName -ItemType Credential -Path "$databaseName.$credentialName"}
+
+		# recreate the credential to drop with recursive parameters to ensure that it still works.
+		New-AdlCatalogCredential -AccountName $accountName -DatabaseName $databaseName -CredentialName $credentialName -Credential $secret -Uri "https://fakedb.contoso.com:443"
+
+		# Remove the credential with recurse
+		Remove-AdlCatalogCredential -AccountName $accountName -DatabaseName $databaseName -Name $credentialName -Recurse -Force
+		
+		# Verify that trying to get the credential fails
+		Assert-Throws {Get-AdlCatalogItem -AccountName $accountName -ItemType Credential -Path "$databaseName.$credentialName"}
+
 		# delete the secret
 		Remove-AdlCatalogSecret -AccountName $accountName -Name $secretName -DatabaseName $databaseName -Force
 

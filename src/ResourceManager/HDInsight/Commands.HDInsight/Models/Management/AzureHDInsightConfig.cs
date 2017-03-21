@@ -28,12 +28,17 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public Dictionary<string, string> AdditionalStorageAccounts { get; private set; }
 
         /// <summary>
+        /// Gets or sets the StorageType for the default Azure Storage Account.
+        /// </summary>
+        public StorageType DefaultStorageAccountType { get; set; }
+
+        /// <summary>
         /// Gets or sets the StorageName for the default Azure Storage Account.
         /// </summary>
         public string DefaultStorageAccountName { get; set; }
 
         /// <summary>
-        /// Gets or sets the StorageKey for the default Azure Storage Account.
+        /// Gets or sets the storage key for the default Azure Storage Account.
         /// </summary>
         public string DefaultStorageAccountKey { get; set; }
 
@@ -46,6 +51,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// Gets or sets the size of the Data Node.
         /// </summary>
         public string WorkerNodeSize { get; set; }
+
+        /// <summary>
+        /// Gets or sets the size of the Edge Node if supported by the cluster type.
+        /// </summary>
+        public string EdgeNodeSize { get; set; }
 
         /// <summary>
         /// Gets or sets the size of the Zookeeper Node.

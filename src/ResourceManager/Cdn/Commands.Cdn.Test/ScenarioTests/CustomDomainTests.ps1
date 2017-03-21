@@ -19,15 +19,15 @@ Gets and removes custom domain with running endpoint.
 function Test-CustomDomainGetRemoveWithRunningEndpoint
 {
     # Hard-coding host and endpoint names due to requirement for DNS CNAME
-    $endpointName = "sdktest-3d96e37e-79bd-440d-a84b-d71a8bb3bed6"
-    $hostName = "sdktest-aef2f35e-01ca-4230-add5-5075b1506915.azureedge-test.net"
+    $endpointName = "sdktest-c83c1e8f-343e-4ce8-873b-f6e5ddcdc53f"
+    $hostName = "sdktest-716d4572-627f-4dfe-8128-1df163647ae2.azureedge-test.net"
 
     $customDomainName = getAssetName
 
     $profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
-    $profileSku = "StandardVerizon"
+    $profileSku = "Standard_Verizon"
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
     $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku -Tags $tags
 
@@ -66,15 +66,15 @@ Gets and removes custom domain with stopped endpoint
 function Test-CustomDomainGetRemoveWithStoppedEndpoint
 {
     # Hard-coding host and endpoint names due to requirement for DNS CNAME
-    $endpointName = "sdktest-b0939e74-75ba-4558-afe6-edc5c19ea713" 
-    $hostName = "sdktest-d8163a47-2912-4b95-8453-1588ca2d014f.azureedge-test.net"  
+    $endpointName = "sdktest-cbc4e6fa-da15-4f37-9511-6b7df122c1de" 
+    $hostName = "sdktest-34a59412-9044-4166-b055-d777e111e810.azureedge-test.net"  
 
 	$customDomainName = getAssetName
 
     $profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
-    $profileSku = "StandardVerizon"
+    $profileSku = "Standard_Verizon"
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
     $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku -Tags $tags
 

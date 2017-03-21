@@ -35,25 +35,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         protected object CreateContainerServiceListDynamicParameters()
         {
             dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pResourceGroupName = new RuntimeDefinedParameter();
-            pResourceGroupName.Name = "ResourceGroupName";
-            pResourceGroupName.ParameterType = typeof(string);
-            pResourceGroupName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pResourceGroupName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
-
             var pArgumentList = new RuntimeDefinedParameter();
             pArgumentList.Name = "ArgumentList";
             pArgumentList.ParameterType = typeof(object[]);
             pArgumentList.Attributes.Add(new ParameterAttribute
             {
                 ParameterSetName = "InvokeByStaticParameters",
-                Position = 2,
+                Position = 1,
                 Mandatory = true
             });
             pArgumentList.Attributes.Add(new AllowNullAttribute());
@@ -64,10 +52,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         protected void ExecuteContainerServiceListMethod(object[] invokeMethodInputParameters)
         {
-            string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
 
-            var result = ContainerServiceClient.List(resourceGroupName);
-            WriteObject(result);
+            var result = ContainerServicesClient.List();
+            var resultList = result.ToList();
+            var nextPageLink = result.NextPageLink;
+            while (!string.IsNullOrEmpty(nextPageLink))
+            {
+                var pageResult = ContainerServicesClient.ListNext(nextPageLink);
+                foreach (var pageItem in pageResult)
+                {
+                    resultList.Add(pageItem);
+                }
+                nextPageLink = pageResult.NextPageLink;
+            }
+            WriteObject(resultList, true);
         }
     }
 
@@ -75,11 +73,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         protected PSArgument[] CreateContainerServiceListParameters()
         {
-            string resourceGroupName = string.Empty;
-
-            return ConvertFromObjectsToArguments(
-                 new string[] { "ResourceGroupName" },
-                 new object[] { resourceGroupName });
+            return ConvertFromObjectsToArguments(new string[0], new object[0]);
         }
     }
 }

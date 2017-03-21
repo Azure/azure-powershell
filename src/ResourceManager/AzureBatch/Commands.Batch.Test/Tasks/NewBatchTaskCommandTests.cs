@@ -78,6 +78,65 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewBatchTaskParametersGetPassedToRequestTest()
+        {
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+
+            cmdlet.Id = "testTask";
+            cmdlet.JobId = "testJob";
+            cmdlet.AffinityInformation = new PSAffinityInformation("affinityValue");
+            cmdlet.DisplayName = "display name";
+            cmdlet.Constraints = new PSTaskConstraints(TimeSpan.FromHours(1), TimeSpan.FromDays(2), 5);
+            cmdlet.CommandLine = "cmd /c echo hello";
+            cmdlet.EnvironmentSettings = new Dictionary<string, string>();
+            cmdlet.EnvironmentSettings.Add("env1", "value1");
+            cmdlet.MultiInstanceSettings = new PSMultiInstanceSettings(3)
+            {
+                CommonResourceFiles = new List<PSResourceFile>()
+                {
+                    new PSResourceFile("https://some.blob", "myFile.txt")
+                },
+                CoordinationCommandLine = "cmd /c echo coordinating"
+            };
+            cmdlet.ResourceFiles = new Dictionary<string, string>();
+            cmdlet.ResourceFiles.Add("anotherFile.txt", "https://another.blob");
+            cmdlet.RunElevated = true;
+
+            TaskAddParameter requestParameters = null;
+
+            // Store the request parameters
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                TaskAddParameter,
+                TaskAddOptions,
+                AzureOperationHeaderResponse<TaskAddHeaders>>(requestAction: (r) =>
+                {
+                    requestParameters = r.Parameters;
+                });
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            cmdlet.ExecuteCmdlet();
+
+            // Verify the request parameters match the cmdlet parameters
+            Assert.Equal(cmdlet.AffinityInformation.AffinityId, requestParameters.AffinityInfo.AffinityId);
+            Assert.Equal(cmdlet.DisplayName, requestParameters.DisplayName);
+            Assert.Equal(cmdlet.Constraints.RetentionTime, requestParameters.Constraints.RetentionTime);
+            Assert.Equal(cmdlet.Constraints.MaxTaskRetryCount, requestParameters.Constraints.MaxTaskRetryCount);
+            Assert.Equal(cmdlet.Constraints.MaxWallClockTime, requestParameters.Constraints.MaxWallClockTime);
+            Assert.Equal(cmdlet.CommandLine, requestParameters.CommandLine);
+            Assert.Equal(cmdlet.EnvironmentSettings.Count, requestParameters.EnvironmentSettings.Count);
+            Assert.Equal(cmdlet.EnvironmentSettings["env1"], requestParameters.EnvironmentSettings[0].Value);
+            Assert.Equal(cmdlet.MultiInstanceSettings.NumberOfInstances, requestParameters.MultiInstanceSettings.NumberOfInstances);
+            Assert.Equal(cmdlet.MultiInstanceSettings.CoordinationCommandLine, requestParameters.MultiInstanceSettings.CoordinationCommandLine);
+            Assert.Equal(cmdlet.MultiInstanceSettings.CommonResourceFiles.Count, requestParameters.MultiInstanceSettings.CommonResourceFiles.Count);
+            Assert.Equal(cmdlet.MultiInstanceSettings.CommonResourceFiles[0].BlobSource, requestParameters.MultiInstanceSettings.CommonResourceFiles[0].BlobSource);
+            Assert.Equal(cmdlet.MultiInstanceSettings.CommonResourceFiles[0].FilePath, requestParameters.MultiInstanceSettings.CommonResourceFiles[0].FilePath);
+            Assert.Equal(cmdlet.ResourceFiles.Count, requestParameters.ResourceFiles.Count);
+            Assert.Equal(cmdlet.ResourceFiles["anotherFile.txt"], requestParameters.ResourceFiles[0].BlobSource);
+            Assert.Equal(cmdlet.RunElevated, requestParameters.RunElevated);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ApplicationPackageReferencesAreSentOnATask()
         {
             // Setup cmdlet without the required parameters

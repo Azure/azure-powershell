@@ -25,6 +25,7 @@ using System.Linq;
 using LegacyTest = Microsoft.Azure.Test;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
+using Microsoft.Azure.Management.Storage;
 
 namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
 {
@@ -38,6 +39,8 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
         public InsightsManagementClient InsightsManagementClient { get; private set; }
 
         public RedisManagementClient RedisManagementClient { get; private set; }
+
+        public StorageManagementClient StorageClient { get; private set; }
 
         public RedisCacheController()
         {
@@ -57,10 +60,12 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
             RedisManagementClient = GetRedisManagementClient(context);
             InsightsManagementClient = GetInsightsManagementClient();
             ResourceManagementClient = GetResourceManagementClient();
-            helper.SetupManagementClients(ResourceManagementClient,
-                InsightsManagementClient,
-                RedisManagementClient
-                );
+            StorageClient = GetStorageManagementClient(context);
+            helper.SetupManagementClients(
+                RedisManagementClient,
+                StorageClient,
+                ResourceManagementClient,
+                InsightsManagementClient);
         }
 
         public void RunPowerShellTest(params string[] scripts)
@@ -82,13 +87,21 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
                     helper.RMResourceModule,
-                    helper.GetRMModulePath(@"AzureRM.RedisCache.psd1"));
+                    helper.RMStorageDataPlaneModule,
+                    "AzureRM.Storage.ps1",
+                    helper.GetRMModulePath(@"AzureRM.RedisCache.psd1"),
+                    "AzureRM.Resources.ps1");
 
                 if (scripts != null)
                 {
                     helper.RunPowerShellTest(scripts);
                 }
             }
+        }
+
+        private StorageManagementClient GetStorageManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private RedisManagementClient GetRedisManagementClient(MockContext context)

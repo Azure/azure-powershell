@@ -42,6 +42,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public ulong IngressBytesTransferred { get; set; }
 
+        public List<PSTunnelConnectionHealth> TunnelConnectionStatus { get; set; }
+
         public string ProvisioningState { get; set; }
 
         public bool UsePolicyBasedTrafficSelectors { get; set; }
@@ -57,19 +59,25 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string VirtualNetworkGateway2Text
         {
-            get { return JsonConvert.SerializeObject(VirtualNetworkGateway2.Id, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return VirtualNetworkGateway2 == null ? string.Empty : JsonConvert.SerializeObject(VirtualNetworkGateway2.Id, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string LocalNetworkGateway2Text
         {
-            get { return JsonConvert.SerializeObject(LocalNetworkGateway2.Id, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return LocalNetworkGateway2 == null ? string.Empty : JsonConvert.SerializeObject(LocalNetworkGateway2.Id, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string PeerText
         {
-            get { return JsonConvert.SerializeObject(Peer.Id, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return Peer == null ? string.Empty : JsonConvert.SerializeObject(Peer.Id, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string TunnelConnectionStatusText
+        {
+            get { return TunnelConnectionStatus == null ? string.Empty : JsonConvert.SerializeObject(TunnelConnectionStatus, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

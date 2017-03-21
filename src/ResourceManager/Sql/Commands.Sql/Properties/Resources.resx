@@ -174,6 +174,9 @@
   <data name="NoStorageAccountWhenConfiguringAuditingPolicy" xml:space="preserve">
     <value>Cannot set auditing policy without a storage account name.</value>
   </data>
+  <data name="NoStorageAccountWhenConfiguringThreatDetectionPolicy" xml:space="preserve">
+    <value>Cannot set threat detection policy without a storage account name.</value>
+  </data>
   <data name="PdoTitle" xml:space="preserve">
     <value>PHP Data Objects(PDO) Sample Code:</value>
   </data>
@@ -305,5 +308,29 @@
   </data>
   <data name="SetRecommendedActionStateWarning" xml:space="preserve">
     <value>Are you sure you want to update state of the recommended action '{0}' to '{1}'</value>
+  </data>
+  <data name="FailoverGroupNameExists" xml:space="preserve">
+    <value>Failover Group with name: '{0}' already exists in server '{1}'.</value>
+  </data>
+  <data name="RemoveAzureSqlDatabaseFailoverGroupDescription" xml:space="preserve">
+    <value>Permanently removing Azure Sql Database Failover Group '{0}' on server '{1}'.</value>
+  </data>
+  <data name="RemoveAzureSqlDatabaseFailoverGroupWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure Sql Database Failover Group '{0}' on server '{1}'?</value>
+  </data>
+    <data name="RemoveAzureSqlDatabaseFromAzureSqlDatabaseFailoverGroupDescription" xml:space="preserve">
+    <value>Permanently removing this Azure Sql Database from  Azure Sql Database Failover Group '{0}' on server '{1}'.</value>
+  </data>
+  <data name="RemoveAzureSqlDatabaseeFromAzureSqlDatabaseFailoverGroupWarning" xml:space="preserve">
+    <value>Are you sure you want to remove this Azure Sql Database from Azure Sql Database Failover Group '{0}' on server '{1}'?</value>
+  </data>
+  <data name="FailoverGroupAddDatabaseAlreadyExists" xml:space="preserve">
+    <value>Database to be added with id '{0}' already exists in Failover Group with name: '{1}'  in server '{2}'.</value>
+  </data>
+  <data name="FailoverGroupRemoveDatabaseNoArguments" xml:space="preserve">
+    <value>No arguments are provided to remove databases to Failover Group with name: '{0}'  in server '{1}'.</value>
+  </data>
+  <data name="FailoverGroupRemoveDatabaseNotExists" xml:space="preserve">
+    <value>Database to be removed with id {0} in Failover Group with name: '{1}'  in server '{2} does not exist'.</value>
   </data>
 </root>

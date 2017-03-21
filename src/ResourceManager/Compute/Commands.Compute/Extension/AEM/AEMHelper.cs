@@ -291,13 +291,21 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
 
         internal string GetCoreEndpoint(string storageAccountName)
         {
-            var storage = this.GetStorageAccountFromCache(storageAccountName);
-            var blobendpoint = storage.PrimaryEndpoints.Blob;
-
-            var blobMatch = Regex.Match(blobendpoint, ".*?\\.blob\\.(.*)");
-            if (blobMatch.Success)
+            try
             {
-                return blobMatch.Groups[1].Value;
+                var storage = this.GetStorageAccountFromCache(storageAccountName);
+                var blobendpoint = storage.PrimaryEndpoints.Blob;
+                var blobUri = new Uri(blobendpoint);
+
+                var blobMatch = Regex.Match(blobUri.Host, ".*?\\.blob\\.(.*)");
+                if (blobMatch.Success)
+                {
+                    return blobMatch.Groups[1].Value;
+                }
+            }
+            catch (Exception ex)
+            {
+                WriteWarning("Could not extract endpoint information from Azure Storage Account ({0}). Using default {1}", ex.Message, AEMExtensionConstants.AzureEndpoint);
             }
 
             WriteWarning("Could not extract endpoint information from Azure Storage Account. Using default {0}", AEMExtensionConstants.AzureEndpoint);

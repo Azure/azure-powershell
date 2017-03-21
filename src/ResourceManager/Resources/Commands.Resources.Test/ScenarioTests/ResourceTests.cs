@@ -121,6 +121,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFindAResourceByTag()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-FindAResource-ByTag");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourceWithExpandProperties()
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetResourceExpandProperties");

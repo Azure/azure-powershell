@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -53,6 +54,13 @@ namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
         public void TestProfileDeleteWithEndpoints()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileDeleteWithEndpoints");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProfileGetResourceUsage()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileGetResourceUsages");
         }
     }
 }

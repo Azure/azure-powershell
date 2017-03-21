@@ -59,28 +59,33 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
                 Mandatory = false,
-                Position = 2,
                 ValueFromPipelineByPropertyName = false,
-                HelpMessage = "If this parameter is provided, the commandlet will not enable Windows Azure Diagnostics for this virtual machine.")]
+                HelpMessage = "Deprecated - Windows Azure Diagnostics is now disabled by default")]
         public SwitchParameter DisableWAD { get; set; }
 
         [Parameter(
                 Mandatory = false,
-                Position = 3,
+                ValueFromPipelineByPropertyName = false,
+                HelpMessage = "If this parameter is provided, the commandlet will enable Windows Azure Diagnostics for this virtual machine.")]
+        public SwitchParameter EnableWAD { get; set; }
+
+        [Parameter(
+                Mandatory = false,
+                Position = 2,
                 ValueFromPipelineByPropertyName = false,
                 HelpMessage = "Name of the storage account that should be used to store analytics data.")]
         public string WADStorageAccountName { get; set; }
 
         [Parameter(
                 Mandatory = false,
-                Position = 4,
+                Position = 3,
                 ValueFromPipelineByPropertyName = false,
                 HelpMessage = "Operating System Type of the virtual machines. Possible values: Windows | Linux")]
         public string OSType { get; set; }
 
         [Parameter(
                 Mandatory = false,
-                Position = 5,
+                Position = 4,
                 ValueFromPipelineByPropertyName = false,
                 HelpMessage = "Disables the settings for table content")]
         public SwitchParameter SkipStorage { get; set; }
@@ -98,6 +103,11 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
+                if (this.DisableWAD)
+                {
+                    this._Helper.WriteWarning("The parameter DisableWAD is deprecated. Windows Azure Diagnostics is disabled by default.");
+                }
+
                 this._Helper.WriteVerbose("Retrieving VM...");
 
                 var selectedVM = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName);
@@ -169,45 +179,58 @@ namespace Microsoft.Azure.Commands.Compute
 
                 // Get Disks
                 var accounts = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
-                var accountName = this._Helper.GetStorageAccountFromUri(osdisk.Vhd.Uri);
-                var storageKey = this._Helper.GetAzureStorageKeyFromCache(accountName);
-                accounts.Add(accountName, storageKey);
-
-                this._Helper.WriteHost("[INFO] Adding configuration for OS disk");
-
-                var caching = osdisk.Caching;
-                sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.name", Value = this._Helper.GetDiskName(osdisk.Vhd.Uri) });
-                sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.caching", Value = caching });
-                sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.account", Value = accountName });
-                if (this._Helper.IsPremiumStorageAccount(accountName))
+                if (osdisk.ManagedDisk == null)
                 {
-                    WriteVerbose("OS Disk Storage Account is a premium account - adding SLAs for OS disk");
-                    var sla = this._Helper.GetDiskSLA(osdisk);
-                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.type", Value = AEMExtensionConstants.DISK_TYPE_PREMIUM });
-                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.sla.throughput", Value = sla.TP });
-                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.sla.iops", Value = sla.IOPS });
+                    var accountName = this._Helper.GetStorageAccountFromUri(osdisk.Vhd.Uri);
+                    var storageKey = this._Helper.GetAzureStorageKeyFromCache(accountName);
+                    accounts.Add(accountName, storageKey);
+
+                    this._Helper.WriteHost("[INFO] Adding configuration for OS disk");
+
+                    var caching = osdisk.Caching;
+                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.name", Value = this._Helper.GetDiskName(osdisk.Vhd.Uri) });
+                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.caching", Value = caching });
+                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.account", Value = accountName });
+                    if (this._Helper.IsPremiumStorageAccount(accountName))
+                    {
+                        WriteVerbose("OS Disk Storage Account is a premium account - adding SLAs for OS disk");
+                        var sla = this._Helper.GetDiskSLA(osdisk);
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.type", Value = AEMExtensionConstants.DISK_TYPE_PREMIUM });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.sla.throughput", Value = sla.TP });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.sla.iops", Value = sla.IOPS });
+                    }
+                    else
+                    {
+                        WriteVerbose("OS Disk Storage Account is a standard account");
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.type", Value = AEMExtensionConstants.DISK_TYPE_STANDARD });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.connminute", Value = (accountName + ".minute") });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.connhour", Value = (accountName + ".hour") });
+                    }
                 }
                 else
                 {
-                    WriteVerbose("OS Disk Storage Account is a standard account");
-                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.type", Value = AEMExtensionConstants.DISK_TYPE_STANDARD });
-                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.connminute", Value = (accountName + ".minute") });
-                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.connhour", Value = (accountName + ".hour") });
+                    this._Helper.WriteWarning("[WARN] Managed Disks are not yet supported. Extension will be installed but no disk metrics will be available.");
                 }
 
                 // Get Storage accounts from disks
                 var diskNumber = 1;
                 foreach (var disk in disks)
                 {
-                    accountName = this._Helper.GetStorageAccountFromUri(disk.Vhd.Uri);
+                    if (disk.ManagedDisk != null)
+                    {
+                        this._Helper.WriteWarning("[WARN] Managed Disks are not yet supported. Extension will be installed but no disk metrics will be available.");
+                        continue;
+                    }
+
+                    var accountName = this._Helper.GetStorageAccountFromUri(disk.Vhd.Uri);
                     if (!accounts.ContainsKey(accountName))
                     {
-                        storageKey = this._Helper.GetAzureStorageKeyFromCache(accountName);
+                        var storageKey = this._Helper.GetAzureStorageKeyFromCache(accountName);
                         accounts.Add(accountName, storageKey);
                     }
 
                     this._Helper.WriteHost("[INFO] Adding configuration for data disk {0}", disk.Name);
-                    caching = disk.Caching;
+                    var caching = disk.Caching;
                     sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.lun." + diskNumber, Value = disk.Lun });
                     sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.name." + diskNumber, Value = this._Helper.GetDiskName(disk.Vhd.Uri) });
                     sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.caching." + diskNumber, Value = caching });
@@ -278,7 +301,7 @@ namespace Microsoft.Azure.Commands.Compute
 
                 WriteVerbose("Chechking if WAD needs to be configured");
                 // Enable VM Diagnostics
-                if (!this.DisableWAD.IsPresent)
+                if (this.EnableWAD.IsPresent)
                 {
                     this._Helper.WriteHost("[INFO] Enabling IaaSDiagnostics for VM {0}", selectedVM.Name);
                     KeyValuePair wadstorage = null;
@@ -298,7 +321,7 @@ namespace Microsoft.Azure.Commands.Compute
 
                     if (wadstorage == null)
                     {
-                        this._Helper.WriteError("A Standard Storage Account is required.");
+                        this._Helper.WriteError("A standard storage account is required. Please use parameter WADStorageAccountName to specify a standard storage account you want to use for this VM.");
                         return;
                     }
 

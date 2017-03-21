@@ -237,51 +237,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             CreateTestPool(controller, context, MpiPoolId, targetDedicated);
         }
 
-
-        public static void EnableAutoScale(BatchController controller, BatchAccountContext context, string poolId)
-        {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
-
-            string formula = "$TargetDedicated=2";
-            EnableAutoScaleParameters parameters = new EnableAutoScaleParameters(context, poolId, null)
-            {
-                AutoScaleFormula = formula
-            };
-            client.EnableAutoScale(parameters);
-        }
-
-        public static void DisableAutoScale(BatchController controller, BatchAccountContext context, string poolId)
-        {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
-
-            PoolOperationParameters parameters = new PoolOperationParameters(context, poolId, null);
-            client.DisableAutoScale(parameters);
-        }
-
-        public static string WaitForOSVersionChange(BatchController controller, BatchAccountContext context, string poolId)
-        {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
-
-            ListPoolOptions options = new ListPoolOptions(context)
-            {
-                PoolId = poolId
-            };
-
-            DateTime timeout = DateTime.Now.AddMinutes(5);
-            PSCloudPool pool = client.ListPools(options).First();
-            while (pool.CloudServiceConfiguration.CurrentOSVersion != pool.CloudServiceConfiguration.TargetOSVersion)
-            {
-                if (DateTime.Now > timeout)
-                {
-                    throw new TimeoutException("Timed out waiting for active state pool");
-                }
-                Sleep(5000);
-                pool = client.ListPools(options).First();
-            }
-
-            return pool.CloudServiceConfiguration.TargetOSVersion;
-        }
-
         public static void ResizePool(BatchController controller, BatchAccountContext context, string poolId, int targetDedicated)
         {
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);

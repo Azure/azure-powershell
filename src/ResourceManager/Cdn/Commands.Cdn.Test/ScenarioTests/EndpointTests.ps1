@@ -21,7 +21,7 @@ function Test-EndpointCrudAndAction
     $profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
-    $profileSku = "StandardVerizon"
+    $profileSku = "Standard_Verizon"
     $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
 
     $endpointName = getAssetName
@@ -77,7 +77,7 @@ function Test-EndpointCrudAndActionWithPiping
     $profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
-    $profileSku = "StandardVerizon"
+    $profileSku = "Standard_Verizon"
     $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
 
     $endpointName = getAssetName
@@ -142,7 +142,7 @@ function Test-EndpointCrudAndActionWithAllProperties
     $profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
-    $profileSku = "StandardVerizon"
+    $profileSku = "Standard_Verizon"
     $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
 
     $endpointName = getAssetName
@@ -221,7 +221,7 @@ function Test-EndpointCrudAndActionWithAllPropertiesWithPiping
     $profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
-    $profileSku = "StandardVerizon"
+    $profileSku = "Standard_Verizon"
     $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
 
     $endpointName = getAssetName
@@ -306,7 +306,7 @@ function Test-EndpointCrudAndActionWithStoppedEndpoint
     $profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
-    $profileSku = "StandardVerizon"
+    $profileSku = "Standard_Verizon"
     $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
 
     $endpointName = getAssetName
@@ -366,7 +366,7 @@ function Test-EndpointPipeline
     $profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
-    $profileSku = "StandardVerizon"
+    $profileSku = "Standard_Verizon"
     $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
 
     $endpointName1 = getAssetName
@@ -387,6 +387,73 @@ function Test-EndpointPipeline
     $deletedEndpoints = Get-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName | Get-AzureRmCdnEndpoint
 
     Assert-True {$deletedEndpoints.Count -eq 0}
+
+    Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Endpoint geo filters exercise
+#>
+function Test-EndpointGeoFilters
+{
+    $profileName = getAssetName
+    $resourceGroup = TestSetup-CreateResourceGroup
+    $resourceLocation = "EastUS"
+    $profileSku = "Standard_Akamai"
+	$GeoFilter_1 = New-Object -TypeName Microsoft.Azure.Commands.Cdn.Models.Endpoint.PsGeoFilter -Prop(@{'RelativePath'="/mycar";'Action'="Block"})
+	$GeoFilter_1.CountryCodes = @("GA", "AT")
+
+    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
+
+    $endpointName1 = getAssetName
+    $originName = getAssetName
+    $originHostName = "www.microsoft.com"
+
+    $createdProfile | New-AzureRmCdnEndpoint -EndpointName $endpointName1 -OriginName $originName -OriginHostName $originHostName -GeoFilters @($GeoFilter_1)
+
+    $endpoint = Get-AzureRmCdnEndpoint -EndpointName $endpointName1 -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+
+    Assert-True {$endpoint.GeoFilters.Count -eq 1}
+	Assert-True {$endpoint.GeoFilters[0].Action -eq "Block"}
+	Assert-True {$endpoint.GeoFilters[0].CountryCodes.Count -eq 2}
+
+	$GeoFilter_2 = New-Object -TypeName Microsoft.Azure.Commands.Cdn.Models.Endpoint.PsGeoFilter -Prop(@{'RelativePath'="/mypicture";'Action'="Block"})
+	$GeoFilter_2.CountryCodes = @("GA", "AT")
+
+	$endpoint.GeoFilters.Add($GeoFilter_2)
+    
+	$updatedEndpoint = Set-AzureRmCdnEndpoint -CdnEndpoint $endpoint
+
+	Assert-True {$updatedEndpoint.GeoFilters.Count -eq 2}
+
+    Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Endpoint resource usage exercise
+#>
+function Test-EndpointResourceUsage
+{
+    $profileName = getAssetName
+    $resourceGroup = TestSetup-CreateResourceGroup
+    $resourceLocation = "EastUS"
+    $profileSku = "Standard_Akamai"
+
+    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
+
+    $endpointName1 = getAssetName
+    $originName = getAssetName
+    $originHostName = "www.microsoft.com"
+
+    $createdProfile | New-AzureRmCdnEndpoint -EndpointName $endpointName1 -OriginName $originName -OriginHostName $originHostName
+
+    $endpointResourceUsage = Get-AzureRmCdnEndpointResourceUsage -EndpointName $endpointName1 -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+
+    Assert-True {$endpointResourceUsage.Count -eq 2}
+    Assert-True {$endpointResourceUsage[0].CurrentValue -eq 0}
+    Assert-True {$endpointResourceUsage[1].CurrentValue -eq 0}
 
     Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }

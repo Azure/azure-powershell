@@ -14,11 +14,15 @@
 
 using Hyak.Common;
 using Microsoft.Azure.Commands.HDInsight.Commands;
+using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.HDInsight.Models.Job;
 using Microsoft.Azure.Management.HDInsight.Job.Models;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
 using System.IO;
 using System.Management.Automation;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -136,9 +140,18 @@ namespace Microsoft.Azure.Commands.HDInsight
             {
                 var DefaultStorageAccount = GetDefaultStorageAccount(resourceGroupName, clusterName);
 
-                DefaultContainer = DefaultStorageAccount.StorageContainerName;
-                DefaultStorageAccountName = DefaultStorageAccount.StorageAccountName;
-                DefaultStorageAccountKey = DefaultStorageAccount.StorageAccountKey;
+                var wasbAccount = DefaultStorageAccount as AzureHDInsightWASBDefaultStorageAccount;
+                if (wasbAccount != null)
+                {
+                    DefaultContainer = wasbAccount.StorageContainerName;
+                    DefaultStorageAccountName = wasbAccount.StorageAccountName;
+                    DefaultStorageAccountKey = wasbAccount.StorageAccountKey;
+                }
+                else
+                {
+                    throw new CloudException("Unsupported default storage account type");
+                }
+
             }
 
             return new AzureStorageAccess(DefaultStorageAccountName, DefaultStorageAccountKey, DefaultContainer);

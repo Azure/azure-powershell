@@ -42,12 +42,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The set of the audit action groups")]
         public AuditActionGroups[] AuditActionGroup { get; set; }
 
-        /// <summary>
-        ///  Defines the set of audit actions that would be used by the auditing settings
-        /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The set of the audit actions")]
-        public string[] AuditAction { get; set; }
-
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
@@ -128,7 +122,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 model.StorageAccountName = StorageAccountName;
                 ModelAdapter.ClearStorageDetailsCache();
             }
-            if (!string.IsNullOrEmpty(StorageKeyType)) // the user enter a key type - we use it (and running over the previously defined key type)
+            if (MyInvocation.BoundParameters.ContainsKey(SecurityConstants.StorageKeyType)) // the user enter a key type - we use it (and running over the previously defined key type)
             {
                 model.StorageKeyType = (StorageKeyType == SecurityConstants.Primary) ? StorageKeyKind.Primary : StorageKeyKind.Secondary;
             }
@@ -166,19 +160,20 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             {
                 model.RetentionInDays = RetentionInDays;
             }
+
             if (StorageAccountName != null)
             {
                 model.StorageAccountName = StorageAccountName;
             }
 
+            if (MyInvocation.BoundParameters.ContainsKey(SecurityConstants.StorageKeyType)) // the user enter a key type - we use it (and running over the previously defined key type)
+            {
+                model.StorageKeyType = (StorageKeyType == SecurityConstants.Primary) ? StorageKeyKind.Primary : StorageKeyKind.Secondary;
+            }
+
             if (AuditActionGroup != null && AuditActionGroup.Length != 0)
             {
                 model.AuditActionGroup = AuditActionGroup;
-            }
-
-            if (AuditAction != null && AuditAction.Length != 0)
-            {
-                model.AuditAction = AuditAction;
             }
         }
 

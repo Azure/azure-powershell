@@ -97,7 +97,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 instanceIds = inputArray2.ToList();
             }
 
-            VirtualMachineScaleSetsClient.UpdateInstances(resourceGroupName, vmScaleSetName, instanceIds);
+            var result = VirtualMachineScaleSetsClient.UpdateInstances(resourceGroupName, vmScaleSetName, instanceIds);
+            WriteObject(result);
         }
     }
 
@@ -115,7 +116,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet("Update", "AzureRmVmssInstance", DefaultParameterSetName = "InvokeByDynamicParameters", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsData.Update, "AzureRmVmssInstance", DefaultParameterSetName = "InvokeByDynamicParameters", SupportsShouldProcess = true)]
     public partial class UpdateAzureRmVmssInstance : InvokeAzureComputeMethodCmdlet
     {
         public override string MethodName { get; set; }

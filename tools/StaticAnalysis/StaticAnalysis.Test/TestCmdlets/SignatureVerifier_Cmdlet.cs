@@ -227,3 +227,166 @@ namespace StaticAnalysis.Test.CmdletTest.Signature.ShouldContinueVerbWithoutForc
     }
 }
 #endregion
+
+#region CmdletWithUnapprovedVerb
+namespace StaticAnalysis.Test.CmdletTest.Signature.CmdletWithApprovedVerb
+{
+    using System.Management.Automation;
+
+    /// <summary>
+    /// Verify if a cmdlet has an approved verb in its name.
+    /// </summary>
+    [Cmdlet(VerbsCommon.Get, "SampleCmdlet")]
+    public class CmdletWithApprovedVerb : Cmdlet
+    {
+        /// <summary>
+        /// Begin processing the cmdlet.
+        /// </summary>
+        protected override void BeginProcessing()
+        {
+            WriteObject("Get-SampleCmdlet BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
+namespace StaticAnalysis.Test.CmdletTest.Signature.CmdletWithUnapprovedVerb
+{
+    using System.Management.Automation;
+
+    /// <summary>
+    /// Verify if a cmdlet has an approved verb in its name.
+    /// </summary>
+    [Cmdlet("Prepare", "SampleCmdlet")]
+    public class CmdletWithUnapprovedVerb : Cmdlet
+    {
+        /// <summary>
+        /// Begin processing the cmdlet.
+        /// </summary>
+        protected override void BeginProcessing()
+        {
+            WriteObject("Prepare-SampleCmdlet BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+#endregion
+
+#region CmdletWithPluralNoun
+namespace StaticAnalysis.Test.CmdletTest.Signature.CmdletWithSingularNoun
+{
+    using System.Management.Automation;
+
+    /// <summary>
+    /// Verify if a cmdlet has a singular noun in its name.
+    /// </summary>
+    [Cmdlet(VerbsCommon.Get, "SampleKey")]
+    public class CmdletGetSampleKey : Cmdlet
+    {
+        /// <summary>
+        /// Begin processing the cmdlet.
+        /// </summary>
+        protected override void BeginProcessing()
+        {
+            WriteObject("Get-SampleKey BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
+namespace StaticAnalysis.Test.CmdletTest.Signature.CmdletWithPluralNoun
+{
+    using System.Management.Automation;
+
+    /// <summary>
+    /// Verify if a cmdlet has a plural noun in its name.
+    /// </summary>
+    [Cmdlet("Get", "SampleKeys")]
+    public class CmdletGetSampleKeys : Cmdlet
+    {
+        /// <summary>
+        /// Begin processing the cmdlet.
+        /// </summary>
+        protected override void BeginProcessing()
+        {
+            WriteObject("Get-SampleKeys BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+#endregion
+
+#region ParameterWithPluralNoun
+namespace StaticAnalysis.Test.CmdletTest.Signature.ParameterWithSingularNoun
+{
+    using System.Management.Automation;
+
+    /// <summary>
+    /// Verify if a parameter has a singular noun in its name.
+    /// </summary>
+    [Cmdlet(VerbsCommon.Get, "SampleFoo")]
+    public class CmdletGetSampleFoo : Cmdlet
+    {
+        [Parameter(Mandatory = false)]
+        public string Foo { get; set; }
+
+        /// <summary>
+        /// Begin processing the cmdlet.
+        /// </summary>
+        protected override void BeginProcessing()
+        {
+            WriteObject("Get-SampleFoo BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
+namespace StaticAnalysis.Test.CmdletTest.Signature.ParameterWithPluralNoun
+{
+    using System.Management.Automation;
+
+    /// <summary>
+    /// Verify if a parameter has a plural noun in its name.
+    /// </summary>
+    [Cmdlet("Get", "SampleBar")]
+    public class CmdletGetSampleBar : Cmdlet
+    {
+        [Parameter(Mandatory = false)]
+        public string Bars { get; set; }
+
+        /// <summary>
+        /// Begin processing the cmdlet.
+        /// </summary>
+        protected override void BeginProcessing()
+        {
+            WriteObject("Get-SampleBar BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
+namespace StaticAnalysis.Test.CmdletTest.Signature.CmdletAndParameterWithSingularNounInList
+{
+    using System.Management.Automation;
+
+    /// <summary>
+    /// Verify if a cmdlet and parameter have a singular noun in the list of
+    /// accepted nouns ending with "s".
+    /// </summary>
+    [Cmdlet("Get", "SampleAddress")]
+    public class CmdletGetSampleAddress : Cmdlet
+    {
+        [Parameter(Mandatory = false)]
+        public string Address { get; set; }
+
+        /// <summary>
+        /// Begin processing the cmdlet.
+        /// </summary>
+        protected override void BeginProcessing()
+        {
+            WriteObject("Get-SampleAddress BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+#endregion

@@ -79,7 +79,6 @@ $serviceCommands = @(
   {Get-AzureMediaServicesAccount},
   {Get-AzureSubscription -Current -ExtendedDetails},
   {Get-AzureAccount},
-  {Get-AzureManagedCache},
   {Get-AzureHDInsightCluster},
   {Get-AzureSBLocation},
   {Get-AzureSBNamespace},

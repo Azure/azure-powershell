@@ -95,15 +95,16 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
         {
             string skipToken = WebServicesClient.GetSkipTokenFromLink(nextLink);
             var cancellationTokenParam = cancellationToken ?? CancellationToken.None;
-            var paginatedResponse = await this.apiClient.WebServices.ListInResourceGroupAsync(
+            var paginatedResponse = await this.apiClient.WebServices.ListByResourceGroupWithHttpMessagesAsync(
                                                                         resourceGroupName,
                                                                         skipToken,
+                                                                        null,
                                                                         cancellationTokenParam).ConfigureAwait(false);
 
             return new ResponseWithContinuation<WebService[]>
             {
-                Value = paginatedResponse.Value.ToArray(),
-                NextLink = paginatedResponse.NextLink
+                Value = paginatedResponse.Body.ToArray(),
+                NextLink = paginatedResponse.Body.NextPageLink
             };
         }
 
@@ -116,14 +117,15 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
             var cancellationTokenParam = cancellationToken ?? CancellationToken.None;
 
             var paginatedResponse =
-                    await this.apiClient.WebServices.ListAsync(
+                    await this.apiClient.WebServices.ListWithHttpMessagesAsync(
                                                         skipToken,
+                                                        null,
                                                         cancellationTokenParam).ConfigureAwait(false);
 
             return new ResponseWithContinuation<WebService[]>
             {
-                Value = paginatedResponse.Value.ToArray(),
-                NextLink = paginatedResponse.NextLink
+                Value = paginatedResponse.Body.ToArray(),
+                NextLink = paginatedResponse.Body.NextPageLink
             };
         }
     }

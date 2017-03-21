@@ -49,7 +49,7 @@ function New-ServiceMarkdownHelp
         # Set the necessary variables for an RDFE service
         elseif ($ServiceManagement.IsPresent)
         {
-            throw "Currently platyPSHelp is unavailable for RDFE services. Please refer to the platyps-help.md documentation for more information."
+            throw "Currently platyPSHelp is unavailable for RDFE services. Please refer to documentation\platyPSHelp-documentation.md for more information."
             $PathToModule = Get-ServiceManagementDll -Service $Service -PathToAzure "$PathToRepo\src\Package\$BuildTarget\ServiceManagement\Azure"
             $PathToCommandsFolder = "$PathToRepo\src\ServiceManagement\$Service\Commands.$Service"
         }
@@ -186,7 +186,7 @@ function Update-ServiceMarkdownHelp
         # Set the necessary variables for an RDFE service
         elseif ($ServiceManagement.IsPresent)
         {
-            throw "Currently platyPSHelp is unavailable for RDFE services. Please refer to the platyps-help.md documentation for more information."
+            throw "Currently platyPSHelp is unavailable for RDFE services. Please refer to the platyPSHelp-documentation.md documentation for more information."
             $PathToModule = "$PathToRepo\src\Package\$BuildTarget\ServiceManagement\Azure\Azure.psd1"
             $PathToCommandsFolder = "$PathToRepo\src\ServiceManagement\$Service\Commands.$Service"
         }
@@ -304,7 +304,6 @@ function Get-ServiceManagementDll
                 "Automation"       = "Automation\Microsoft.Azure.Commands.Automation.dll";
                 "Compute"          = "Compute\Microsoft.WindowsAzure.Commands.ServiceManagement.dll";
                 "HDInsights"       = "HDInsight\Microsoft.WindowsAzure.Commands.HDInsight.dll";
-                "ManagedCache"     = "ManagedCache\Microsoft.Azure.Commands.ManagedCache.dll";
                 "Networking"       = "Networking\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.dll";
                 "Profile"          = "Services\Microsoft.WindowsAzure.Commands.Profile.dll";
                 "RecoveryServices" = "RecoveryServices\Microsoft.Azure.Commands.RecoveryServicesRdfe.dll";
@@ -491,7 +490,7 @@ function Validate-ServiceMarkdownHelp
                             $fileErrors += "-- No examples found"
                         }
                     }
-                    "*{*}*"
+                    "*@{Text=}*"
                     {
                         # This case occurs when there is no description provided for a parameter
                         $parameter = $content[$idx-1].Substring(5)

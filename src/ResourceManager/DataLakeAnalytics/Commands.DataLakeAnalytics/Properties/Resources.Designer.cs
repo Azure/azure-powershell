@@ -70,6 +70,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adding the Data Lake Analytics firewall rule: &apos;{0}&apos; ....
+        /// </summary>
+        internal static string AddDataLakeFirewallRule {
+            get {
+                return ResourceManager.GetString("AddDataLakeFirewallRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} jobs do not support the inclusion of additional information. This is currently only supported for SQL-IP jobs. The -Include parameter will be ignored for this job..
         /// </summary>
         internal static string AdditionalDataNotSupported {
@@ -115,11 +124,47 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid empty catalog path. A catalog path is required unless listing databases and must be in the following format with no empty internal elements: &lt;FirstPart&gt;.&lt;OptionalSecondPart&gt;.&lt;OptionalThirdPart&gt;.&lt;OptionalFourthPart&gt;. For example: Master.dbo.tableName.tableStatisticsName.
+        /// </summary>
+        internal static string EmptyCatalogPath {
+            get {
+                return ResourceManager.GetString("EmptyCatalogPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not find account: &apos;{0}&apos; in any resource group in the currently selected subscription: {1}. Please ensure this account exists and that the current user has access to it..
         /// </summary>
         internal static string FailedToDiscoverResourceGroup {
             get {
                 return ResourceManager.GetString("FailedToDiscoverResourceGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The firewall is currently disabled for account: {0}. Updates to firewall rules will not take affect until the firewall is enabled..
+        /// </summary>
+        internal static string FirewallDisabledWarning {
+            get {
+                return ResourceManager.GetString("FirewallDisabledWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified firewall rule &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string FirewallRuleNotFound {
+            get {
+                return ResourceManager.GetString("FirewallRuleNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The output type defined for this cmdlet is incorrect and will be updated to reflect what is actually returned (and defined in the help) in a future release..
+        /// </summary>
+        internal static string IncorrectOutputTypeWarning {
+            get {
+                return ResourceManager.GetString("IncorrectOutputTypeWarning", resourceCulture);
             }
         }
         
@@ -178,6 +223,24 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to More than {0} jobs exist in the account. Specify -Top with a larger value to retrieve more jobs. Note that large values of -Top will take time to retrieve all items..
+        /// </summary>
+        internal static string MoreJobsToGetWarning {
+            get {
+                return ResourceManager.GetString("MoreJobsToGetWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating Data Lake Analytics catalog credential &apos;{0}&apos; in database &apos;{1}&apos; ....
+        /// </summary>
+        internal static string NewDataLakeCatalogCredential {
+            get {
+                return ResourceManager.GetString("NewDataLakeCatalogCredential", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A port was not specified for host &apos;{0}&apos;. The default port will be used..
         /// </summary>
         internal static string NoPortSpecified {
@@ -214,6 +277,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing Data Lake Analytics catalog credential &apos;{0}&apos;  and ALL resources dependent on it....
+        /// </summary>
+        internal static string RemoveDataLakeAnalyticsCatalogCredentialCascade {
+            get {
+                return ResourceManager.GetString("RemoveDataLakeAnalyticsCatalogCredentialCascade", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing Data Lake Analytics catalog secret &apos;{0}&apos; ....
         /// </summary>
         internal static string RemoveDataLakeAnalyticsCatalogSecret {
@@ -237,6 +309,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         internal static string RemoveDataLakeAnalyticsDataLakeStore {
             get {
                 return ResourceManager.GetString("RemoveDataLakeAnalyticsDataLakeStore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing Data Lake Analytics firewall rule: &apos;{0}&apos; ....
+        /// </summary>
+        internal static string RemoveDataLakeAnalyticsFirewallRule {
+            get {
+                return ResourceManager.GetString("RemoveDataLakeAnalyticsFirewallRule", resourceCulture);
             }
         }
         
@@ -268,6 +349,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Data Lake Analytics catalog credential &apos;{0}&apos; and ALL resources dependent on it?.
+        /// </summary>
+        internal static string RemovingDataLakeAnalyticsCatalogCredentialCascade {
+            get {
+                return ResourceManager.GetString("RemovingDataLakeAnalyticsCatalogCredentialCascade", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove Data Lake Analytics catalog secret &apos;{0}&apos;?.
         /// </summary>
         internal static string RemovingDataLakeAnalyticsCatalogSecret {
@@ -295,11 +385,47 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Data Lake Analytics firewall rule: &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemovingDataLakeAnalyticsFirewallRule {
+            get {
+                return ResourceManager.GetString("RemovingDataLakeAnalyticsFirewallRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The script file at path &apos;{0}&apos; does not exist or the current user does not have permission to it. Please ensure the path exists and is accessible..
         /// </summary>
         internal static string ScriptFilePathDoesNotExist {
             get {
                 return ResourceManager.GetString("ScriptFilePathDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating Data Lake Analytics catalog credential &apos;{0}&apos; in database &apos;{1}&apos; ....
+        /// </summary>
+        internal static string SetDataLakeCatalogCredential {
+            get {
+                return ResourceManager.GetString("SetDataLakeCatalogCredential", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting the Data Lake Analytics firewall rule: &apos;{0}&apos; ....
+        /// </summary>
+        internal static string SetDataLakeFirewallRule {
+            get {
+                return ResourceManager.GetString("SetDataLakeFirewallRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to update Data Lake Analytics catalog credential &apos;{0}&apos; in database &apos;{1}&apos;?.
+        /// </summary>
+        internal static string SettingDataLakeCatalogCredential {
+            get {
+                return ResourceManager.GetString("SettingDataLakeCatalogCredential", resourceCulture);
             }
         }
         

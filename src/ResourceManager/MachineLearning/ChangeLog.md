@@ -18,3 +18,22 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.12.0
+
+## Version 0.11.4
+
+## Version 0.11.3
+
+## Version 0.11.2
+* Serialization and deserialization improvements for all cmdlets
+
+## Version 0.11.1
+* Add support for Azure Machine Learning Committment Plans
+    - Get-AzureRmMLCommitmentAssociation
+    - Get-AzureRmMLCommitmentPlan
+    - Get-AzureRmMLCommitmentPlanUsageHistory
+    - Move-AzureRmMLCommitmentAssociation
+    - New-AzureRmMLCommitmentPlan
+    - Remove-AzureRmMLCommitmentPlan
+    - Update-AzureRmMLCommitmentPlan

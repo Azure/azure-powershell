@@ -28,7 +28,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Remove", "AzureRmContainerServiceAgentPoolProfile")]
+    [Cmdlet("Remove", "AzureRmContainerServiceAgentPoolProfile", SupportsShouldProcess = true)]
     [OutputType(typeof(ContainerService))]
     public class RemoveAzureRmContainerServiceAgentPoolProfileCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -42,6 +42,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = true,
             Position = 1,
+            ParameterSetName = "NameParameterSet",
             ValueFromPipelineByPropertyName = true)]
         public string Name { get; set; }
 
@@ -55,7 +56,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
             var vAgentPoolProfiles = this.ContainerService.AgentPoolProfiles.First
                 (e =>
-                    (e.Name == this.Name)
+                    (this.Name != null && e.Name == this.Name)
                 );
 
             if (vAgentPoolProfiles != null)
