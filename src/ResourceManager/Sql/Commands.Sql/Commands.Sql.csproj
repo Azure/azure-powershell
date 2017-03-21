@@ -52,6 +52,20 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Advisor\Cmdlet\AdvisorAutoExecuteStatus.cs" />
+    <Compile Include="Database\Model\DatabaseReadScale.cs" />
+    <Compile Include="Failover Group\Cmdlet\AddAzureSqlDatabaseToFailoverGroup.cs" />
+    <Compile Include="Failover Group\Cmdlet\AzureSqlFailoverGroupCmdletBase.cs" />
+    <Compile Include="Failover Group\Cmdlet\GetAzureSqlFailoverGroup.cs" />
+    <Compile Include="Failover Group\Cmdlet\NewAzureSqlFailoverGroup.cs" />
+    <Compile Include="Failover Group\Cmdlet\RemoveAzureSqlDatabaseFromFailoverGroup.cs" />
+    <Compile Include="Failover Group\Cmdlet\RemoveAzureSqlFailoverGroup.cs" />
+    <Compile Include="Failover Group\Cmdlet\SetAzureSqlFailoverGroup.cs" />
+    <Compile Include="Failover Group\Cmdlet\Switch-AzureSqlDatabaseFailoverGroup.cs" />
+    <Compile Include="Failover Group\Model\AzureSqlFailoverGroupModel.cs" />
+	<Compile Include="Failover Group\Model\FailoverPolicy.cs" />
+    <Compile Include="Failover Group\Model\AllowReadOnlyFailoverToPrimary.cs" />
+    <Compile Include="Failover Group\Services\AzureSqlFailoverGroupAdapter.cs" />
+    <Compile Include="Failover Group\Services\AzureSqlFailoverGroupCommunicator.cs" />
     <Compile Include="RecommendedAction\Cmdlet\AzureSqlDatabaseRecommendedActionCmdletBase.cs" />
     <Compile Include="RecommendedAction\Cmdlet\AzureSqlElasticPoolRecommendedActionCmdletBase.cs" />
     <Compile Include="RecommendedAction\Cmdlet\AzureSqlServerRecommendedActionCmdletBase.cs" />
@@ -91,7 +105,6 @@
     <Compile Include="Advisor\Service\AzureSqlElasticPoolAdvisorCommunicator.cs" />
     <Compile Include="Advisor\Service\AzureSqlServerAdvisorCommunicator.cs" />
     <Compile Include="Advisor\Service\AzureSqlDatabaseAdvisorCommunicator.cs" />
-    <Compile Include="Auditing\Cmdlet\AuditType.cs" />
     <Compile Include="Auditing\Model\DatabaseBlobAuditingPolicyModel.cs" />
     <Compile Include="Auditing\Model\ServerBlobAuditingPolicyModel.cs" />
     <Compile Include="Auditing\Model\BaseBlobAuditingPolicyModel.cs" />
@@ -333,13 +346,24 @@
     <Compile Include="ThreatDetection\Services\ThreatDetectionEndpointsCommunicator.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\AzureSqlDatabaseTransparentDataEncryptionActivityCmdletBase.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\AzureSqlDatabaseTransparentDataEncryptionCmdletBase.cs" />
+    <Compile Include="TransparentDataEncryption\Cmdlet\AzureSqlServerTransparentDataEncryptionProtectorCmdletBase.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\GetAzureSqlDatabaseTransparentDataEncryption.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\GetAzureSqlDatabaseTransparentDataEncryptionActivity.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\SetAzureSqlDatabaseTransparentDataEncryption.cs" />
+    <Compile Include="TransparentDataEncryption\Cmdlet\GetAzureSqlServerTransparentDataEncryptionProtector.cs" />
+    <Compile Include="TransparentDataEncryption\Cmdlet\SetAzureSqlServerTransparentDataEncryptionProtector.cs" />
     <Compile Include="TransparentDataEncryption\Model\AzureSqlDatabaseTransparentDataEncryptionActivityModel.cs" />
     <Compile Include="TransparentDataEncryption\Model\AzureSqlDatabaseTransparentDataEncryptionModel.cs" />
+    <Compile Include="TransparentDataEncryption\Model\AzureSqlServerTransparentDataEncryptionProtectorModel.cs" />
     <Compile Include="TransparentDataEncryption\Services\AzureSqlDatabaseTransparentDataEncryptionAdapter.cs" />
     <Compile Include="TransparentDataEncryption\Services\AzureSqlDatabaseTransparentDataEncryptionCommunicator.cs" />
+    <Compile Include="ServerKeyVaultKey\Cmdlet\AddAzureSqlServerKeyVaultKey.cs" />
+    <Compile Include="ServerKeyVaultKey\Cmdlet\AzureSqlServerKeyVaultKeyCmdletBase.cs" />
+    <Compile Include="ServerKeyVaultKey\Cmdlet\GetAzureSqlServerKeyVaultKey.cs" />
+    <Compile Include="ServerKeyVaultKey\Cmdlet\RemoveAzureSqlServerKeyVaultKey.cs" />
+    <Compile Include="ServerKeyVaultKey\Model\AzureSqlServerKeyVaultKeyModel.cs" />
+    <Compile Include="ServerKeyVaultKey\Services\AzureSqlServerKeyVaultKeyAdapter.cs" />
+    <Compile Include="ServerKeyVaultKey\Services\AzureSqlServerKeyVaultKeyCommunicator.cs" />
     <None Include="SqlStartup.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -368,9 +392,8 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Sql, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.50.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Sql, Version=0.54.0.0">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.54.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
@@ -393,20 +416,20 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.6.4\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.1.741, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.1\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.3.860, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.28.1.741, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.1\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.28.3.860, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.2\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.5\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.8-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.9-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">

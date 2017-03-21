@@ -22,6 +22,8 @@ This repository contains a set of PowerShell cmdlets for developers and administ
   * App Service (Websites)
   * SQL Database
   * KeyVault
+  * Data Lake Store
+  * Data Lake Analytics
   * Operational Insights
   * Automation
   * Batch
@@ -36,7 +38,7 @@ This repository contains a set of PowerShell cmdlets for developers and administ
   * Scheduler
   * StorSimple
   * Redis Cache
- 
+
 * Windows Azure Pack
   * Web Site: CRUD web site, deployment, configure and get log, start/stop/restart/show web site
   * Service Bus: CRD namespace
@@ -46,7 +48,7 @@ This repository contains a set of PowerShell cmdlets for developers and administ
 * Windows Azure Stack
   * Azure Stack Administration
   * Storage Service Management
-  
+
 
 For detail descriptions and examples of the cmdlets, type
 * ```help azure``` to get all the cmdlets.
@@ -72,7 +74,7 @@ For detail descriptions and examples of the cmdlets, type
 You can also find the standalone installers for all the versions at [Downloads](https://github.com/Azure/azure-powershell/releases)
 
 ### PowerShell Gallery
-1. Install [Windows Management Framework 5 with PowerShellGet cmdlets](https://www.powershellgallery.com/GettingStarted?section=Get%20Started)
+1. Install [Windows Management Framework 5 with PowerShellGet cmdlets](https://msdn.microsoft.com/en-us/powershell/gallery/psgallery/psgallery_gettingstarted)
 2. In an elevated PowerShell session, run  ```Install-Module AzureRM```
 3. Run ```Install-AzureRm```
 4. To install RDFE cmdlets, run ```Install-Module Azure```
@@ -80,7 +82,7 @@ You can also find the standalone installers for all the versions at [Downloads](
 ### Source Code
 
 1. Download the source code from GitHub repo
-2. Follow the [Microsoft Azure PowerShell Developer Guide](https://github.com/Azure/azure-powershell/wiki/Microsoft-Azure-PowerShell-Developer-Guide)
+2. Follow the [Azure PowerShell Developer Guide](https://github.com/Azure/azure-powershell/wiki/Azure-Powershell-Developer-Guide)
 
 ### Supported PowerShell Versions
 
@@ -92,7 +94,7 @@ You can also find the standalone installers for all the versions at [Downloads](
 
 In general, follow these steps to start using Microsoft Azure PowerShell
 
-* Get yourself authenticated with Microsoft Azure. For details, please check out [this article](https://azure.microsoft.com/en-us/documentation/articles/install-configure-powershell/).
+* Get yourself authenticated with Microsoft Azure. For details, please check out [this article](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/).
   * Option 1: Login with your Microsoft account or Organizational account directly from PowerShell. Microsoft Azure Active Directory authentication is used in this case. No management certificate is needed.
       * Starting from 1.0.0, you can use ```Add-AzureRmAccount -Credential``` to avoid the browser pop up for Organizational account.
       * To use RDFE cmdlets, use ```Add-AzureAccount```

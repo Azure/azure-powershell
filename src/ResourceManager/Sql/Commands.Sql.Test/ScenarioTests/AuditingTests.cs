@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest.Mocks;
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -38,19 +37,19 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
+     
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAuditingUpdatePolicyWithClassicStorage()
+        {
+            RunPowerShellTest("Test-AuditingUpdatePolicyWithClassicStorage");
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingDatabaseUpdatePolicyWithStorage()
         {
             RunPowerShellTest("Test-AuditingDatabaseUpdatePolicyWithStorage");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAuditingDatabaseUpdatePolicyWithStorageV2()
-        {
-            RunPowerShellTest("Test-AuditingDatabaseUpdatePolicyWithStorageV2");
         }
 
         [Fact]
@@ -242,11 +241,25 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-ServerAuditingTypeMigration");
         }
 
-        [Fact (Skip = "Waiting backend validation")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingDatabaseUpdatePolicyWithSameNameStorageOnDifferentRegion()
         {
             RunPowerShellTest("Test-AuditingDatabaseUpdatePolicyWithSameNameStorageOnDifferentRegion");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetServerAndDatabaseAuditingInUkRegion()
+        {
+            RunPowerShellTest("Test-GetServerAndDatabaseAuditingInUkRegion");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestBlobAuditingWithAuditActionGroups()
+        {
+            RunPowerShellTest("Test-BlobAuditingWithAuditActionGroups");
         }
     }
 }

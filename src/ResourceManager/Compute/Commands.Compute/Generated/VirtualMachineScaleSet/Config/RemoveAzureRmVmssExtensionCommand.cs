@@ -28,7 +28,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Remove", "AzureRmVmssExtension")]
+    [Cmdlet("Remove", "AzureRmVmssExtension", SupportsShouldProcess = true)]
     [OutputType(typeof(VirtualMachineScaleSet))]
     public class RemoveAzureRmVmssExtensionCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -42,8 +42,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = true,
             Position = 1,
+            ParameterSetName = "NameParameterSet",
             ValueFromPipelineByPropertyName = true)]
         public string Name { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            Position = 1,
+            ParameterSetName = "IdParameterSet",
+            ValueFromPipelineByPropertyName = true)]
+        public string Id { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -69,7 +77,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
             var vExtensions = this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions.First
                 (e =>
-                    (e.Name == this.Name)
+                    (this.Name != null && e.Name == this.Name)
+                    || (this.Id != null && e.Id == this.Id)
                 );
 
             if (vExtensions != null)

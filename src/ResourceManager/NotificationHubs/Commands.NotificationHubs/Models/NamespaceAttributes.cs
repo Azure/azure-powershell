@@ -74,6 +74,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Models
                 }
                 Status = nsResource.Status;
                 SubscriptionId = nsResource.SubscriptionId;
+                SkuName = nsResource.Sku != null ? nsResource.Sku.Name : string.Empty;
             }
         }
 
@@ -159,5 +160,10 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Models
         /// namespace.
         /// </summary>
         public string SubscriptionId { get; set; }
+
+        /// <summary>
+        /// The Sku associated with the namespace
+        /// </summary>
+        public string SkuName { get; set; }
     }
 }

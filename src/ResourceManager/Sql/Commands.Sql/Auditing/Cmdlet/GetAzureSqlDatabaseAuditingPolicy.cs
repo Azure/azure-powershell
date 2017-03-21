@@ -31,24 +31,5 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         {
             return null;
         }
-
-        /// <summary>
-        /// Provides the model element that this cmdlet operates on
-        /// </summary>
-        /// <returns>A model object</returns>
-        protected override AuditingPolicyModel GetEntity()
-        {
-            AuditType = AuditType.Table;
-            var tablePolicy = base.GetEntity();
-            AuditType = AuditType.Blob;
-            var blobPolicy = base.GetEntity();
-            if (tablePolicy.AuditState == AuditStateType.Enabled && blobPolicy.AuditState == AuditStateType.Disabled)
-            {
-                AuditType = AuditType.Table;
-                return tablePolicy;
-            }
-            AuditType = AuditType.Blob;
-            return blobPolicy;
-        }
     }
 }

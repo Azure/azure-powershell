@@ -42,14 +42,13 @@ namespace Commands.NotificationHubs.Test
 
         protected void SetupManagementClients(MockContext context)
         {
-            var nhManagementClient = GetNotificationHubsManagementClient(context);
             var resourceManagementClient = GetResourceManagementClient();
             var gallaryClient = GetGalleryClient();
             var authorizationManagementClient = GetAuthorizationManagementClient();
-            var managementClient = GetManagementClient();
+            var nhManagementClient = GetNotificationHubsManagementClient(context);
 
             helper.SetupManagementClients(nhManagementClient, resourceManagementClient, gallaryClient,
-                                            authorizationManagementClient, managementClient);
+                                            authorizationManagementClient);
         }
 
         protected void RunPowerShellTest(params string[] scripts)

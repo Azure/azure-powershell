@@ -122,7 +122,7 @@
         -->
         <!-- Revert back to exclude [ char before 1.0.9 -->
         <string>Name=\{\d\}|\[</string>
-        <string>XTestEncrypted</string>       
+        <string>XTestEncrypted</string>
       </Filters>
     </ContentFilter>
   </ContentSearchFilters>
@@ -160,6 +160,9 @@
         <string>ResourceManager\\RecoveryServices\\Commands.RecoveryServices.Test\\SessionRecords\\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\\VaultCRUDTests.json</string>
         <string>ServiceManagement\\Common\\Commands.Common.Test\\Resources\\InvalidProfile.PublishSettings</string>
         <string>ServiceManagement\\Common\\Commands.ScenarioTest\\Resources\\RdfeTestDummy.publishsettings</string>
+        <string>ServiceManagement\\Common\\Commands.ScenarioTest\\Resources\\ChefExtension\\client.rb</string>
+        <string>ServiceManagement\\Common\\Commands.ScenarioTest\\Resources\\ChefExtension\\tstorgnztn-validator.pem</string>
+        <string>ServiceManagement\\Common\\Commands.ScenarioTest\\Resources\\ChefExtension\\encrypted_data_bag_secret</string>
         <string>ServiceManagement\\Common\\Commands.Common.Test\\Resources\\Azure.publishsettings</string>
         <string>ServiceManagement\\Common\\Commands.Common.Test\\Resources\\ValidProfile3.PublishSettings</string>
         <string>ServiceManagement\\Common\\Commands.Common.Test\\Resources\\ValidProfileChina.PublishSettings</string>
@@ -176,6 +179,8 @@
         <string>ServiceManagement\\Sql\\Commands.SqlDatabase.Test\\Resources\\PowershellTestSSLCert.pfx</string>
 		<string>ResourceManager\\Resources\\Commands.Resources.Test\\SessionRecords\\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ActiveDirectoryTests\\TestCreateDeleteAppPasswordCredentials.json</string>
 		<string>ResourceManager\\Resources\\Commands.Resources.Test\\SessionRecords\\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ActiveDirectoryTests\\TestCreateDeleteSpPasswordCredentials.json</string>
+        <string>ResourceManager\\Compute\\Commands.Compute.Test\\Templates\\client.rb</string>
+        <string>ResourceManager\\Compute\\Commands.Compute.Test\\Templates\\tstorgnztn-validator.pem</string>
 		<string>\\bin\\Debug\\</string>
 		<string>\\package[s]?\\</string>
       </Filters>

@@ -18,3 +18,17 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 2.7.0
+* Update help documentation for AppServicePlan cmdlets
+
+## Version 2.6.0
+
+## Version 2.5.0
+
+## Version 2.4.0
+* Add: PerSiteScaling option on cmdlets New-AzureRmAppservicePlan and Set-AzureRmAppServicePlan
+* Add: NumberOfWorkers option on cmdlets Set-AzureRmWebApp and Set-AzureRmWebAppSlot
+* Add: Help documentation using platyPS
+
+## Version 2.3.0

@@ -82,18 +82,50 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(containerServiceName))
             {
-                var result = ContainerServiceClient.Get(resourceGroupName, containerServiceName);
+                var result = ContainerServicesClient.Get(resourceGroupName, containerServiceName);
                 var psObject = new PSContainerService();
                 Mapper.Map<ContainerService, PSContainerService>(result, psObject);
                 WriteObject(psObject);
             }
             else if (!string.IsNullOrEmpty(resourceGroupName))
             {
-                var result = ContainerServiceClient.List(resourceGroupName);
+                var result = ContainerServicesClient.ListByResourceGroup(resourceGroupName);
+                var resultList = result.ToList();
+                var nextPageLink = result.NextPageLink;
+                while (!string.IsNullOrEmpty(nextPageLink))
+                {
+                    var pageResult = ContainerServicesClient.ListByResourceGroupNext(nextPageLink);
+                    foreach (var pageItem in pageResult)
+                    {
+                        resultList.Add(pageItem);
+                    }
+                    nextPageLink = pageResult.NextPageLink;
+                }
                 var psObject = new List<PSContainerServiceList>();
                 foreach (var r in result)
                 {
-                     psObject.Add(Mapper.Map<ContainerService, PSContainerServiceList>(r));
+                    psObject.Add(Mapper.Map<ContainerService, PSContainerServiceList>(r));
+                }
+                WriteObject(psObject);
+            }
+            else
+            {
+                var result = ContainerServicesClient.List();
+                var resultList = result.ToList();
+                var nextPageLink = result.NextPageLink;
+                while (!string.IsNullOrEmpty(nextPageLink))
+                {
+                    var pageResult = ContainerServicesClient.ListNext(nextPageLink);
+                    foreach (var pageItem in pageResult)
+                    {
+                        resultList.Add(pageItem);
+                    }
+                    nextPageLink = pageResult.NextPageLink;
+                }
+                var psObject = new List<PSContainerServiceList>();
+                foreach (var r in result)
+                {
+                    psObject.Add(Mapper.Map<ContainerService, PSContainerServiceList>(r));
                 }
                 WriteObject(psObject);
             }
@@ -114,7 +146,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet("Get", "AzureRmContainerService", DefaultParameterSetName = "InvokeByDynamicParameters")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmContainerService", DefaultParameterSetName = "InvokeByDynamicParameters")]
     public partial class GetAzureRmContainerService : InvokeAzureComputeMethodCmdlet
     {
         public override string MethodName { get; set; }

@@ -52,14 +52,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Cognitive Services Account Sku Name.")]
         [AllowNull]
-        [ValidateSet(
-            AccountSkuString.F0, 
-            AccountSkuString.S0, 
-            AccountSkuString.S1, 
-            AccountSkuString.S2, 
-            AccountSkuString.S3, 
-            AccountSkuString.S4, 
-            IgnoreCase = true)]
         public string SkuName { get; set; }
 
         [Parameter(
@@ -81,7 +73,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             Sku sku = null;
             if (!string.IsNullOrWhiteSpace(this.SkuName))
             {
-                sku = new Sku(ParseSkuName(this.SkuName));
+                sku = new Sku(this.SkuName);
             }
             
             Dictionary<string, string> tags = null;

@@ -18,3 +18,14 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.12.0
+
+## Version 0.11.4
+* Fixed issue to properly encode HTTP jobs' callback Uri in Scheduler PowerShell cmdlet
+
+## Version 0.11.3
+
+## Version 0.11.2
+
+## Version 0.11.1

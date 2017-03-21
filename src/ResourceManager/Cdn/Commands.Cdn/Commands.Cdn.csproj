@@ -62,24 +62,24 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.1.741, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.1\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.3.860, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.2\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.5\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.2\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.5\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.8-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.9-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Cdn">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Cdn.1.1.0\lib\portable-net45+win+wpa81\Microsoft.Azure.Management.Cdn.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Cdn.3.0.0-preview\lib\net45\Microsoft.Azure.Management.Cdn.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -94,8 +94,12 @@
     <Compile Include="CustomDomain\GetAzureRmCdnCustomDomain.cs" />
     <Compile Include="CustomDomain\NewAzureRmCdnCustomDomain.cs" />
     <Compile Include="CustomDomain\RemoveAzureRmCdnCustomDomain.cs" />
+    <Compile Include="EdgeNodes\PSCIDRIpAddress.cs" />
+    <Compile Include="EdgeNodes\PSEdgeNode.cs" />
+    <Compile Include="EdgeNodes\PSIpAddressGroup.cs" />
     <Compile Include="Endpoint\GetAzureRmCdnEndpointNameAvailability.cs" />
     <Compile Include="Endpoint\GetAzureRmCdnEndpoint.cs" />
+    <Compile Include="Endpoint\GetAzureRmCdnEndpointResourceUsage.cs" />
     <Compile Include="Endpoint\PublishAzureRmCdnEndpointContent.cs" />
     <Compile Include="Endpoint\NewAzureRmCdnEndpoint.cs" />
     <Compile Include="Endpoint\UnpublishAzureRmCdnEndpointContent.cs" />
@@ -111,6 +115,8 @@
     <Compile Include="Models\Endpoint\PSCustomDomainInvalidReason.cs" />
     <Compile Include="Models\Endpoint\PSDeepCreatedOrigin.cs" />
     <Compile Include="Models\Endpoint\PSEndpointResourceState.cs" />
+    <Compile Include="Models\Endpoint\PSGeoFilter.cs" />
+    <Compile Include="Models\Endpoint\PSGeoFilterAction.cs" />
     <Compile Include="Models\Endpoint\PSLoadInput.cs" />
     <Compile Include="Models\Endpoint\PSEndpoint.cs" />
     <Compile Include="Models\Endpoint\PSPurgeInput.cs" />
@@ -125,12 +131,14 @@
     <Compile Include="Models\PSResources.cs" />
     <Compile Include="Models\Profile\PSSku.cs" />
     <Compile Include="Models\Profile\PSSkuName.cs" />
+    <Compile Include="Models\PSResourceUsage.cs" />
     <Compile Include="Models\PSTrackedResources.cs" />
     <Compile Include="Models\Profile\PSSsoUri.cs" />
     <Compile Include="Origin\GetAzureRmCdnOrigin.cs" />
     <Compile Include="Origin\SetAzureRmCdnOrigin.cs" />
     <Compile Include="Profile\GetAzureRmCdnProfile.cs" />
     <Compile Include="Profile\GetAzureRmCdnProfileSsoUrl.cs" />
+    <Compile Include="Profile\GetAzureRmCdnProfileResourceUsage.cs" />
     <Compile Include="Profile\NewAzureRmCdnProfile.cs" />
     <Compile Include="Profile\RemoveAzureRmCdnProfile.cs" />
     <Compile Include="Profile\SetAzureRmCdnProfile.cs" />
@@ -140,6 +148,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Subscription\GetAzureRmCdnEdgeNodes.cs" />
+    <Compile Include="Subscription\GetAzureRmCdnSubscriptionResourceUsage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Microsoft.Azure.Commands.Cdn.dll-help.xml">

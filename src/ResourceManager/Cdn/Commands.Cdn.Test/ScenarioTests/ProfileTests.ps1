@@ -21,7 +21,7 @@ function Test-ProfileCrud
     $profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $profileLocation = "EastUS"
-    $profileSku = "StandardVerizon"
+    $profileSku = "Standard_Verizon"
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
     $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku -Tags $tags
 
@@ -69,7 +69,7 @@ function Test-ProfileDeleteWithEndpoints
     $endpointName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $profileLocation = "EastUS"
-    $profileSku = "StandardVerizon"
+    $profileSku = "Standard_Akamai"
     
     $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku 
 
@@ -92,7 +92,7 @@ function Test-ProfileDeleteAndSsoWithPiping
     $profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $profileLocation = "EastUS"
-    $profileSku = "StandardVerizon"
+    $profileSku = "Standard_Verizon"
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
     $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku -Tags $tags
 
@@ -119,7 +119,7 @@ function Test-ProfilePipeline
     $profileName2 = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $profileLocation = "EastUS"
-    $profileSku = "StandardVerizon"
+    $profileSku = "Standard_Verizon"
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
     $createdProfile1 = New-AzureRmCdnProfile -ProfileName $profileName1 -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku -Tags $tags
 
@@ -138,6 +138,28 @@ function Test-ProfilePipeline
     $deletedProfiles = Get-AzureRmCdnProfile | where {($_.Name -eq $profileName1) -or ($_.Name -eq $profileName2)}
 
     Assert-True { $deletedProfiles.Count -eq 0 }
+
+    Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Full Profile ge resource usage excercis
+#>
+function Test-ProfileGetResourceUsages
+{
+    $profileName = getAssetName
+    $endpointName = getAssetName
+    $resourceGroup = TestSetup-CreateResourceGroup
+    $profileLocation = "EastUS"
+    $profileSku = "Standard_Akamai"
+    
+    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku
+
+    $profileResourceUsage = Get-AzureRmCdnProfileResourceUsage -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+
+    Assert-True {$profileResourceUsage.Count -eq 1}
+    Assert-True {$profileResourceUsage[0].CurrentValue -eq 0}
 
     Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }

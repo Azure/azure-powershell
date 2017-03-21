@@ -90,20 +90,42 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             else if (!string.IsNullOrEmpty(resourceGroupName))
             {
                 var result = VirtualMachineScaleSetsClient.List(resourceGroupName);
+                var resultList = result.ToList();
+                var nextPageLink = result.NextPageLink;
+                while (!string.IsNullOrEmpty(nextPageLink))
+                {
+                    var pageResult = VirtualMachineScaleSetsClient.ListNext(nextPageLink);
+                    foreach (var pageItem in pageResult)
+                    {
+                        resultList.Add(pageItem);
+                    }
+                    nextPageLink = pageResult.NextPageLink;
+                }
                 var psObject = new List<PSVirtualMachineScaleSetList>();
                 foreach (var r in result)
                 {
-                     psObject.Add(Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSetList>(r));
+                    psObject.Add(Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSetList>(r));
                 }
                 WriteObject(psObject);
             }
             else
             {
                 var result = VirtualMachineScaleSetsClient.ListAll();
+                var resultList = result.ToList();
+                var nextPageLink = result.NextPageLink;
+                while (!string.IsNullOrEmpty(nextPageLink))
+                {
+                    var pageResult = VirtualMachineScaleSetsClient.ListAllNext(nextPageLink);
+                    foreach (var pageItem in pageResult)
+                    {
+                        resultList.Add(pageItem);
+                    }
+                    nextPageLink = pageResult.NextPageLink;
+                }
                 var psObject = new List<PSVirtualMachineScaleSetList>();
                 foreach (var r in result)
                 {
-                     psObject.Add(Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSetList>(r));
+                    psObject.Add(Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSetList>(r));
                 }
                 WriteObject(psObject);
             }
@@ -124,7 +146,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet("Get", "AzureRmVmss", DefaultParameterSetName = "InvokeByDynamicParameters")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmVmss", DefaultParameterSetName = "InvokeByDynamicParameters")]
     public partial class GetAzureRmVmss : InvokeAzureComputeMethodCmdlet
     {
         public override string MethodName { get; set; }
@@ -197,12 +219,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 ParameterSetName = "InvokeByDynamicParametersForFriendMethod",
                 Position = 3,
-                Mandatory = true
-            });
-            pInstanceView.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByStaticParametersForFriendMethod",
-                Position = 4,
                 Mandatory = true
             });
             pInstanceView.Attributes.Add(new AllowNullAttribute());

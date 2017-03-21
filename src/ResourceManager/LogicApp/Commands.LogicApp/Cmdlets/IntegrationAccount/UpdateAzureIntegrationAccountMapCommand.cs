@@ -24,7 +24,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Updates the integration account map.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccountMap", SupportsShouldProcess = true), OutputType(typeof (object))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccountMap", SupportsShouldProcess = true)]
+    [OutputType(typeof(IntegrationAccountMap))]
     public class UpdateAzureIntegrationAccountMapCommand : LogicAppBaseCmdlet
     {
 
@@ -51,8 +52,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account name.",
             ValueFromPipelineByPropertyName = true)]
-        [Alias("ResourceName")]
         [ValidateNotNullOrEmpty]
+        [Alias("IntegrationAccountName", "ResourceName")]
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account map name.",
@@ -126,7 +127,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (!string.IsNullOrEmpty(this.MapType))
             {
-                integrationAccountMap.MapType = (MapType) Enum.Parse(typeof (MapType), this.MapType);
+                integrationAccountMap.MapType = (MapType) Enum.Parse(typeof(MapType), this.MapType);
             }
 
             if (this.Metadata != null)

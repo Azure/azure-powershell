@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet("Remove", "AzureRmVmss", DefaultParameterSetName = "InvokeByDynamicParameters")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmVmss", DefaultParameterSetName = "InvokeByDynamicParameters", SupportsShouldProcess = true)]
     public partial class RemoveAzureRmVmss : InvokeAzureComputeMethodCmdlet
     {
         public override string MethodName { get; set; }
@@ -131,7 +131,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         protected override void ProcessRecord()
         {
             this.MethodName = "VirtualMachineScaleSetDeleteInstances";
-            base.ProcessRecord();
+            if (ShouldProcess(this.dynamicParameters["ResourceGroupName"].Value.ToString(), VerbsCommon.Remove)
+                && (this.dynamicParameters["Force"].IsSet ||
+                    this.ShouldContinue(Properties.Resources.ResourceRemovalConfirmation,
+                                        "Remove-AzureRmVmss operation")))
+            {
+                base.ProcessRecord();
+            }
         }
 
         public override object GetDynamicParameters()
@@ -179,6 +185,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             });
             pInstanceIds.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("InstanceId", pInstanceIds);
+
+            var pForce = new RuntimeDefinedParameter();
+            pForce.Name = "Force";
+            pForce.ParameterType = typeof(SwitchParameter);
+            pForce.Attributes.Add(new ParameterAttribute
+            {
+                ParameterSetName = "InvokeByDynamicParameters",
+                Position = 4,
+                Mandatory = false
+            });
+            pForce.Attributes.Add(new AllowNullAttribute());
+            dynamicParameters.Add("Force", pForce);
 
             return dynamicParameters;
         }

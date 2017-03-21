@@ -18,3 +18,13 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 2.7.0
+
+## Version 2.6.0
+
+## Version 2.5.0
+
+## Version 2.4.0
+
+## Version 2.3.0

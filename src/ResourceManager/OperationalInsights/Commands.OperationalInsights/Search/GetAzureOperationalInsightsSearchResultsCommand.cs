@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
     public class GetAzureOperationalInsightsSearchResultsCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
+            HelpMessage = "The name of the resource group that contains the workspace.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -33,8 +33,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         public string WorkspaceName { get; set; }
 
         [Parameter(Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The top search parameter.")]
-        [ValidateNotNullOrEmpty]
+            HelpMessage = "The maximum number of results to be returned, limited to 5000.")]
         public long Top { get; set; }
 
         [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true,
@@ -48,39 +47,39 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         public string PostHighlight { get; set; }
 
         [Parameter(Position = 5, Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The query search parameter.")]
+            HelpMessage = "The search query that will be executed.")]
         [ValidateNotNullOrEmpty]
         public string Query { get; set; }
 
         [Parameter(Position = 6, Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The start search parameter.")]
+            HelpMessage = "Start of the queried time range.")]
         [ValidateNotNullOrEmpty]
         public DateTime? Start { get; set; }
 
         [Parameter(Position = 7, Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The end search parameter.")]
+            HelpMessage = "End of the queried time range.")]
         [ValidateNotNullOrEmpty]
         public DateTime? End { get; set; }
 
         [Parameter(Position = 8, Mandatory = false, ValueFromPipelineByPropertyName = true,
-        HelpMessage = "If an id is given, the search results for that id are updated.")]
+        HelpMessage = "If an id is given, the search results for that id will be retrieved using the original query parameters.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
-
-
+        
         protected override void ProcessRecord()
         {
-            if (Id != null)
+            if (!string.IsNullOrEmpty(Id))
             {
                 WriteObject(OperationalInsightsClient.GetSearchResultsUpdate(ResourceGroupName, WorkspaceName, Id), true);
             }
-            else
+            else if (!string.IsNullOrEmpty(Query))
             {
                 PSHighlight highlight = new PSHighlight()
                 {
                     Pre = PreHighlight,
                     Post = PostHighlight
                 };
+
                 PSSearchGetSearchResultsParameters parameters = new PSSearchGetSearchResultsParameters()
                 {
                     Top = Top,
@@ -91,6 +90,10 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 };
 
                 WriteObject(OperationalInsightsClient.GetSearchResults(ResourceGroupName, WorkspaceName, parameters), true);
+            }
+            else
+            {
+                ThrowTerminatingError(new ErrorRecord(new ArgumentException("Either the Query or Id parameter must be provided"), "QueryOrIdRequired", ErrorCategory.InvalidArgument, null));
             }
         }
 
