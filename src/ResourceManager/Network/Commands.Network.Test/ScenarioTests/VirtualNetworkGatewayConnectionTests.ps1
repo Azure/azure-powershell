@@ -127,19 +127,27 @@ function Test-VirtualNetworkGatewayConnectionWithBgpCRUD
 
 <#
 .SYNOPSIS
-Virtual network gateway connection tests with Ipsec Policies
+Virtual network gateway connection test with Active-Active feature enabled virtual network gateway
 #>
-function Test-VirtualNetworkGatewayConnectionWithIpsecPoliciesCRUD
+function Test-VirtualNetworkGatewayConnectionWithActiveActiveGateway
 {
     # Setup
     $rgname = Get-ResourceGroupName
-    $rname = Get-ResourceName
-    $domainNameLabel = Get-ResourceName
-    $vnetName = Get-ResourceName
-    $localnetName = Get-ResourceName
-    $vnetConnectionName = Get-ResourceName
-    $publicIpName = Get-ResourceName
-    $vnetGatewayConfigName = Get-ResourceName
+    $rname1 = Get-ResourceName
+	$rname2 = Get-ResourceName
+    $domainNameLabel11 = Get-ResourceName
+	$domainNameLabel12 = Get-ResourceName
+	$domainNameLabel2 = Get-ResourceName
+    $vnetName1 = Get-ResourceName
+	$vnetName2 = Get-ResourceName
+    $vnetConnectionName1 = Get-ResourceName
+	$vnetConnectionName2 = Get-ResourceName
+    $publicIpName11 = Get-ResourceName
+	$publicIpName12 = Get-ResourceName
+	$publicIpName2 = Get-ResourceName
+    $vnetGatewayConfigName11 = Get-ResourceName
+	$vnetGatewayConfigName12 = Get-ResourceName
+	$vnetGatewayConfigName2 = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/connections"
     $location = Get-ProviderLocation $resourceTypeParent
@@ -149,53 +157,49 @@ function Test-VirtualNetworkGatewayConnectionWithIpsecPoliciesCRUD
       # Create the resource group
       $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
     
-      # Create the Virtual Network
-      $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
-      $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-      $vnet = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
-      $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+        # Create the Virtual Network1
+      $subnet1 = New-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
+      $vnet1 = New-AzureRmvirtualNetwork -Name $vnetName1 -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet1
+      $vnet1 = Get-AzureRmvirtualNetwork -Name $vnetName1 -ResourceGroupName $rgname
+      $subnet1 = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet1
+	  	            
+	  # Create Active-Active feature enabled virtualnetworkgateway1 & Get virtualnetworkgateway1
+      $publicip11 = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName11 -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel11  
+      $vnetIpConfig11 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName11 -PublicIpAddress $publicip11 -Subnet $subnet1
 
-      # Create the publicip
-      $publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel    
+      $publicip12 = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName12 -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel12
+      $vnetIpConfig12 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName12 -PublicIpAddress $publicip12 -Subnet $subnet1
 
-      # Create VirtualNetworkGateway
-      $vnetIpConfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
+      $actual = New-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname1 -Location $location -IpConfigurations $vnetIpConfig11,$vnetIpConfig12 -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku HighPerformance -EnableActiveActiveFeature
+      $vnetGateway1 = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname1
 
-	  # Also test overriding the gateway ASN
-      $actual = New-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -GatewaySku Standard -Asn 55000
-      $vnetGateway = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
-      Assert-AreEqual $vnetGateway.BgpSettings.Asn $actual.BgpSettings.Asn	
-    
-      # Create LocalNetworkGateway    
-      $actual = New-AzureRmLocalNetworkGateway -ResourceGroupName $rgname -name $localnetName -location $location -AddressPrefix 192.168.0.0/16 -GatewayIpAddress 192.168.3.10 -Asn 1337 -BgpPeeringAddress "192.168.1.1" -PeerWeight 5
-      $localnetGateway = Get-AzureRmLocalNetworkGateway -ResourceGroupName $rgname -name $localnetName
-      Assert-AreEqual $localnetGateway.BgpSettings.Asn $actual.BgpSettings.Asn
-	  Assert-AreEqual $localnetGateway.BgpSettings.BgpPeeringAddress $actual.BgpSettings.BgpPeeringAddress
-      Assert-AreEqual $localnetGateway.BgpSettings.PeerWeight $actual.BgpSettings.PeerWeight
+	  # Create the Virtual Network2
+      $subnet2 = New-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 192.168.200.0/26
+      $vnet2 = New-AzureRmvirtualNetwork -Name $vnetName2 -ResourceGroupName $rgname -Location $location -AddressPrefix 192.168.0.0/16 -Subnet $subnet2
+      $vnet2 = Get-AzureRmvirtualNetwork -Name $vnetName2 -ResourceGroupName $rgname
+      $subnet2 = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet2
 
-	  # Create IpsecPolicies
-	  $ipsecPolicy = New-AzureRmIpsecPolicy -SALifeTimeSeconds 300 -SADataSizeKilobytes 1024 -IpsecEncryption "GCMAES256" -IpsecIntegrity "GCMAES256" -IkeEncryption "AES256" -IkeIntegrity "AES256" -DhGroup "DHGroup14" -PfsGroup "PFS2048"
+      # Create the publicip2
+      $publicip2 = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName2 -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel2
 
-      # Create & Get VirtualNetworkGatewayConnection
-      $actual = New-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -EnableBgp false -UsePolicyBasedTrafficSelectors true -IpsecPolicies $ipsecPolicy
-      $connection = Get-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
+      # Create VirtualNetworkGateway2
+      $vnetIpConfig2 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName2 -PublicIpAddress $publicip2 -Subnet $subnet2
+
+      $actual = New-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname2 -location $location -IpConfigurations $vnetIpConfig2 -GatewayType Vpn -VpnType RouteBased -GatewaySku Standard
+      $vnetGateway2 = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname2
+
+      # Create & Get VirtualNetworkGatewayConnection1, VirtualNetworkGatewayConnection2
+      $actual1 = New-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName1 -location $location -VirtualNetworkGateway1 $vnetGateway1 -VirtualNetworkGateway2 $vnetGateway2 -ConnectionType Vnet2Vnet -RoutingWeight 3 -SharedKey abc
+	  $actual2 = New-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName2 -location $location -VirtualNetworkGateway1 $vnetGateway2 -VirtualNetworkGateway2 $vnetGateway1 -ConnectionType Vnet2Vnet -RoutingWeight 3 -SharedKey abc
+
+      $connection1 = Get-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName1      
+	  Assert-NotNull $connection1.TunnelConnectionStatus
       
-	  # Verify IpsecPolicies
-	  Assert-AreEqual $connection.UsePolicyBasedTrafficSelectors $actual.UsePolicyBasedTrafficSelectors
-	  Assert-AreEqual $connection.IpsecPolicies.Count $actual.IpsecPolicies.Count
-	  Assert-AreEqual $connection.IpsecPolicies[0].SALifeTimeSeconds $actual.IpsecPolicies[0].SALifeTimeSeconds
-	  Assert-AreEqual $connection.IpsecPolicies[0].SADataSizeKilobytes $actual.IpsecPolicies[0].SADataSizeKilobytes
-	  Assert-AreEqual $connection.IpsecPolicies[0].IpsecEncryption $actual.IpsecPolicies[0].IpsecEncryption
-	  Assert-AreEqual $connection.IpsecPolicies[0].IpsecIntegrity $actual.IpsecPolicies[0].IpsecIntegrity
-	  Assert-AreEqual $connection.IpsecPolicies[0].IkeEncryption $actual.IpsecPolicies[0].IkeEncryption
-	  Assert-AreEqual $connection.IpsecPolicies[0].IkeIntegrity $actual.IpsecPolicies[0].IkeIntegrity
-	  Assert-AreEqual $connection.IpsecPolicies[0].DhGroup $actual.IpsecPolicies[0].DhGroup
-	  Assert-AreEqual $connection.IpsecPolicies[0].PfsGroup $actual.IpsecPolicies[0].PfsGroup
-    
-      # Delete VirtualNetworkGatewayConnection
-      $delete = Remove-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName -name $vnetConnectionName -PassThru -Force
+      # Delete VirtualNetworkGatewayConnections
+      $delete = Remove-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName -name $vnetConnectionName1 -PassThru -Force
       Assert-AreEqual true $delete
-
+	  $delete = Remove-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName -name $vnetConnectionName2 -PassThru -Force
+      Assert-AreEqual true $delete
      }
      finally
      {
