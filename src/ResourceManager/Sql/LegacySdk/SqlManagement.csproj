@@ -6,8 +6,8 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <ProjectGuid>{04B53727-16E6-4EF0-9116-04C7F1C33842}</ProjectGuid>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.Azure.Management.Sql</RootNamespace>
-    <AssemblyName>Microsoft.Azure.Management.Sql</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Management.Sql.Legacy</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Management.Sql.Legacy</AssemblyName>
     <OutputType>Library</OutputType>
     <RestorePackages>true</RestorePackages>
     <NuGetPackageImportStamp>56948a52</NuGetPackageImportStamp>

@@ -375,6 +375,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LegacySdk\SqlManagement.csproj">
+      <Project>{04B53727-16E6-4EF0-9116-04C7F1C33842}</Project>
+      <Name>SqlManagement</Name>
+    </ProjectReference>
     <Reference Include="Hyak.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Hyak.Common.1.0.3\lib\net45\Hyak.Common.dll</HintPath>
@@ -391,10 +395,10 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Sql, Version=0.54.0.0">
+    <!--<Reference Include="Microsoft.Azure.Management.Sql, Version=0.54.0.0">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.54.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
       <Private>True</Private>
-    </Reference>
+    </Reference>-->
     <Reference Include="Microsoft.Azure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.2.4.0-preview\lib\net40\Microsoft.Azure.Management.Storage.dll</HintPath>
     </Reference>
