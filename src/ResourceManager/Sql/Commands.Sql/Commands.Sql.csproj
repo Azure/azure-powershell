@@ -33,7 +33,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
     <DelaySign>true</DelaySign>
     <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.Sql\</OutputPath>
     <DefineConstants>TRACE;SIGN</DefineConstants>
@@ -171,12 +171,11 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="MSSharedLibKey.snk" />
+    <None Include="..\MSSharedLibKey.snk" />
     <Content Include="Microsoft.Azure.Commands.Sql.Types.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <None Include="MSSharedLibKey.snk" />
     <Compile Include="Auditing\Cmdlet\GetAzureSqlDatabaseAuditingPolicy.cs" />
     <Compile Include="Auditing\Cmdlet\GetAzureSqlServerAuditingPolicy.cs" />
     <Compile Include="Auditing\Cmdlet\RemoveSqlDatabaseAuditing.cs" />
