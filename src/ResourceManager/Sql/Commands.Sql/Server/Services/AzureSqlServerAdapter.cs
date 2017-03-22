@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Server.Model;
 using Microsoft.Azure.Commands.Sql.Server.Services;
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -85,16 +84,13 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         /// <returns>The updated server model</returns>
         public AzureSqlServerModel UpsertServer(AzureSqlServerModel model)
         {
-            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, Util.GenerateTracingId(), new ServerCreateOrUpdateParameters()
+            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, Util.GenerateTracingId(), new Management.Sql.Models.Server()
             {
                 Location = model.Location,
                 Tags = model.Tags,
-                Properties = new ServerCreateOrUpdateProperties()
-                {
-                    AdministratorLogin = model.SqlAdministratorLogin,
-                    AdministratorLoginPassword = model.SqlAdministratorPassword != null ? Decrypt(model.SqlAdministratorPassword) : null,
-                    Version = model.ServerVersion,
-                }
+                AdministratorLogin = model.SqlAdministratorLogin,
+                AdministratorLoginPassword = model.SqlAdministratorPassword != null ? Decrypt(model.SqlAdministratorPassword) : null,
+                Version = model.ServerVersion,
             });
 
             return CreateServerModelFromResponse(model.ResourceGroupName, resp);
@@ -116,14 +112,14 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         /// <param name="resourceGroupName">The resource group the server is in</param>
         /// <param name="resp">The management client server response to convert</param>
         /// <returns>The converted server model</returns>
-        private static AzureSqlServerModel CreateServerModelFromResponse(string resourceGroupName, Management.Sql.LegacySdk.Models.Server resp)
+        private static AzureSqlServerModel CreateServerModelFromResponse(string resourceGroupName, Management.Sql.Models.Server resp)
         {
             AzureSqlServerModel server = new AzureSqlServerModel();
 
             server.ResourceGroupName = resourceGroupName;
             server.ServerName = resp.Name;
-            server.ServerVersion = resp.Properties.Version;
-            server.SqlAdministratorLogin = resp.Properties.AdministratorLogin;
+            server.ServerVersion = resp.Version;
+            server.SqlAdministratorLogin = resp.AdministratorLogin;
             server.Location = resp.Location;
             server.Tags = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(resp.Tags), false);
 

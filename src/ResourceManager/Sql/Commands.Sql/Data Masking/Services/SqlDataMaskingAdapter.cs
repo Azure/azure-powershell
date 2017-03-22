@@ -57,8 +57,8 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         private bool IsRightServerVersionForDataMasking(string resourceGroupName, string serverName, string clientId)
         {
             AzureSqlServerCommunicator dbCommunicator = new AzureSqlServerCommunicator(Context);
-            Management.Sql.LegacySdk.Models.Server server = dbCommunicator.Get(resourceGroupName, serverName, clientId);
-            return server.Properties.Version == "12.0";
+            Management.Sql.Models.Server server = dbCommunicator.Get(resourceGroupName, serverName, clientId);
+            return server.Version == "12.0";
         }
 
         /// <summary>
