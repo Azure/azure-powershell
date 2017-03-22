@@ -93,5 +93,16 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             return dynamicParameters.Values.Where(dp => MyInvocation.BoundParameters.Keys.Any(bp => bp.Equals(dp.Name)));
         }
+
+        public static string FormatErrorRecord(ErrorRecord record)
+        {
+            return String.Format(
+                "PowerShell Error Record: {0}\nException:{1}\nDetails:{2}\nScript Stack Trace: {3}\n: Target: {4}\n",
+                record,
+                record.Exception,
+                record.ErrorDetails,
+                record.ScriptStackTrace,
+                record.TargetObject);
+        }
     }
 }
