@@ -18,18 +18,14 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSApplicationGatewayWebApplicationFirewallConfiguration
+    public class PSApplicationGatewayAvailableWafRuleSetsResult
     {
-        public bool Enabled { get; set; }
-        public string FirewallMode { get; set; }
-        public string RuleSetType { get; set; }
-        public string RuleSetVersion { get; set; }
-        public List<PSApplicationGatewayFirewallDisabledRuleGroup> DisabledRuleGroups { get; set; }
+        public List<PSApplicationGatewayFirewallRuleSet> Value { get; set; }
 
         [JsonIgnore]
-        public string DisabledRuleGroupsText
+        public string ValueText
         {
-            get { return JsonConvert.SerializeObject(this.DisabledRuleGroups, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(this.Value, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

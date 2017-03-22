@@ -18,18 +18,9 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSApplicationGatewayWebApplicationFirewallConfiguration
+    public class PSApplicationGatewayFirewallDisabledRuleGroup
     {
-        public bool Enabled { get; set; }
-        public string FirewallMode { get; set; }
-        public string RuleSetType { get; set; }
-        public string RuleSetVersion { get; set; }
-        public List<PSApplicationGatewayFirewallDisabledRuleGroup> DisabledRuleGroups { get; set; }
-
-        [JsonIgnore]
-        public string DisabledRuleGroupsText
-        {
-            get { return JsonConvert.SerializeObject(this.DisabledRuleGroups, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
+        public string RuleGroupName { get; set; }
+        public List<int> Rules { get; set; }
     }
 }
