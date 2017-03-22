@@ -171,6 +171,32 @@ function Test-ListProfilesInSubscription
 
 <#
 .SYNOPSIS
+List profiles in resource group and pipe results to where-object. VSO#942574
+Also assert on the return type to prevent silent change
+#>
+function Test-ListProfilesWhereObject
+{
+	$resourceGroup = TestSetup-CreateResourceGroup
+
+	$profileName1 = getAssetName
+	$relativeName1 = getAssetName
+	$profileName2 = getAssetName
+	$relativeName2 = getAssetName
+		
+	$createdProfile = New-AzureRmTrafficManagerProfile -Name $profileName1 -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName1 -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
+	$createdProfile = New-AzureRmTrafficManagerProfile -Name $profileName2 -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName2 -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
+
+	$profiles = Get-AzureRmTrafficManagerProfile -ResourceGroupName $resourceGroup.ResourceGroupName
+	Assert-AreEqual System.Object[] $profiles.GetType()
+
+	$profile2 = $profiles | where-object {$_.Name -eq $profileName2}
+
+	Assert-AreEqual $profileName2 $profile2.Name
+	Assert-AreEqual $relativeName2 $profile2.RelativeDnsName
+}
+
+<#
+.SYNOPSIS
 Create a Profile that already exists
 #>
 function Test-ProfileNewAlreadyExists
