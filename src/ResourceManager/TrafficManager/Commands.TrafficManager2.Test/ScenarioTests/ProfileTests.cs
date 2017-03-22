@@ -76,6 +76,13 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestListProfilesWhereObject()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-ListProfilesWhereObject");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileNewAlreadyExists()
         {
             TestController.NewInstance.RunPowerShellTest("Test-ProfileNewAlreadyExists");
