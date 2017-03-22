@@ -26,14 +26,21 @@ namespace Microsoft.Azure.Commands.Network
              ValueFromPipeline = true,
              HelpMessage = "The application gateway")]
         public PSApplicationGateway ApplicationGateway { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ShouldProcess("AzureApplicationGatewayWebApplicationFirewallConfiguration", Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage))
             {
                 base.ExecuteCmdlet();
 
-                this.ApplicationGateway.WebApplicationFirewallConfiguration.Enabled = this.Enabled;
-                this.ApplicationGateway.WebApplicationFirewallConfiguration.FirewallMode = this.FirewallMode;
+                this.ApplicationGateway.WebApplicationFirewallConfiguration = new PSApplicationGatewayWebApplicationFirewallConfiguration()
+                {
+                    Enabled = this.Enabled,
+                    FirewallMode = this.FirewallMode,
+                    RuleSetType = this.RuleSetType,
+                    RuleSetVersion = this.RuleSetVersion,
+                    DisabledRuleGroups = this.DisabledRuleGroups
+                };
 
                 WriteObject(this.ApplicationGateway);
             }
