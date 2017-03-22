@@ -368,6 +368,7 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<CNM.PSConnectionSharedKey, MNM.ConnectionSharedKey>();
             Mapper.CreateMap<CNM.PSLocalNetworkGateway, MNM.LocalNetworkGateway>();
             Mapper.CreateMap<CNM.PSVirtualNetworkGatewayConnection, MNM.VirtualNetworkGatewayConnection>();
+            Mapper.CreateMap<CNM.PSIpsecPolicy, MNM.IpsecPolicy>();
             Mapper.CreateMap<CNM.PSVirtualNetworkGatewayIpConfiguration, MNM.VirtualNetworkGatewayIPConfiguration>();
             Mapper.CreateMap<CNM.PSTunnelConnectionHealth, MNM.TunnelConnectionHealth>();
             Mapper.CreateMap<CNM.PSVirtualNetworkGatewaySku, MNM.VirtualNetworkGatewaySku>();
@@ -385,6 +386,7 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<MNM.ConnectionSharedKey, CNM.PSConnectionSharedKey>();
             Mapper.CreateMap<MNM.LocalNetworkGateway, CNM.PSLocalNetworkGateway>();
             Mapper.CreateMap<MNM.VirtualNetworkGatewayConnection, CNM.PSVirtualNetworkGatewayConnection>();
+            Mapper.CreateMap<MNM.IpsecPolicy, CNM.PSIpsecPolicy>();
             Mapper.CreateMap<MNM.VirtualNetworkGatewayIPConfiguration, CNM.PSVirtualNetworkGatewayIpConfiguration>();
             Mapper.CreateMap<MNM.TunnelConnectionHealth, CNM.PSTunnelConnectionHealth>();
             Mapper.CreateMap<MNM.VirtualNetworkGatewaySku, CNM.PSVirtualNetworkGatewaySku>();

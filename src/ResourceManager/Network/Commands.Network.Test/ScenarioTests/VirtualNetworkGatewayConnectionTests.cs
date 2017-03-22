@@ -52,9 +52,9 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestVirtualNetworkGatewayConnectionwithIpsecPoliciesCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayConnectionWithIpsecPoliciesCRUD");
-	}
+	    }
 
-        [Fact]
+        [Fact(Skip = "Rerecord tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualNetworkGatewayConnectionWithActiveAcitveGateway()
         {
