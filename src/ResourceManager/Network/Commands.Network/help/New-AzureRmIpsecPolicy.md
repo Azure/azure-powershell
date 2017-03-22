@@ -1,0 +1,172 @@
+---
+external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+online version: 
+schema: 2.0.0
+---
+
+# New-AzureRmIpsecPolicy
+
+## SYNOPSIS
+{{Fill in the Synopsis}}
+
+## SYNTAX
+
+```
+New-AzureRmIpsecPolicy -SALifeTimeSeconds <Int32> -SADataSizeKilobytes <Int32> -IpsecEncryption <String>
+ -IpsecIntegrity <String> -IkeEncryption <String> -IkeIntegrity <String> -DhGroup <String> -PfsGroup <String>
+```
+
+## DESCRIPTION
+{{Fill in the Description}}
+
+## EXAMPLES
+
+### Example 1
+```
+PS C:\> {{ Add example code here }}
+```
+
+{{ Add example description here }}
+
+## PARAMETERS
+
+### -DhGroup
+The DH Groups used in IKE Phase 1 for initial SA
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: None, DHGroup1, DHGroup14, DHGroup2, DHGroup2048, DHGroup24, ECP256, ECP384
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IkeEncryption
+The IKE encryption algorithm (IKE Phase 2)
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: DES, DES3, AES128, AES192, AES256
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IkeIntegrity
+The IKE integrity algorithm (IKE Phase 2)
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: MD5, SHA1, SHA256, SHA384
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IpsecEncryption
+The IPSec encryption algorithm (IKE Phase 1)
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: None, DES, DES3, AES128, AES192, AES256, GCMAES128, GCMAES192, GCMAES256
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IpsecIntegrity
+The IPSec integrity algorithm (IKE Phase 1)
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: MD5, SHA1, SHA256, GCMAES128, GCMAES192, GCMAES256
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PfsGroup
+The DH Groups used in IKE Phase 2 for new child SA
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: None, PFS1, PFS2, PFS2048, PFS24, ECP256, ECP384
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SADataSizeKilobytes
+The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SALifeTimeSeconds
+The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+## INPUTS
+
+### None
+
+
+## OUTPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy
+
+
+## NOTES
+
+## RELATED LINKS
+
