@@ -22,7 +22,7 @@
 using System;
 using System.Linq;
 
-namespace Microsoft.Azure.Management.Sql.Models
+namespace Microsoft.Azure.Management.Sql.LegacySdk.Models
 {
     /// <summary>
     /// Defines the valid editions of Azure SQL Databases. See MSDN for more

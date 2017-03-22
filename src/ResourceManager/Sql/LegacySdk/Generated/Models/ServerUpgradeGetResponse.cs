@@ -23,7 +23,7 @@ using System;
 using System.Linq;
 using Microsoft.Azure;
 
-namespace Microsoft.Azure.Management.Sql.Models
+namespace Microsoft.Azure.Management.Sql.LegacySdk.Models
 {
     /// <summary>
     /// Represents the response to a Get request for Upgrade status of an Azure

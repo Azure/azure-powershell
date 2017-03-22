@@ -24,9 +24,9 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 
-namespace Microsoft.Azure.Management.Sql
+namespace Microsoft.Azure.Management.Sql.LegacySdk
 {
     /// <summary>
     /// Represents all the operations for operating on Azure SQL Server

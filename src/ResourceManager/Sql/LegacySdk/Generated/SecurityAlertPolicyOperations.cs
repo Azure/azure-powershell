@@ -30,11 +30,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using Hyak.Common;
 using Microsoft.Azure;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using Newtonsoft.Json.Linq;
 
-namespace Microsoft.Azure.Management.Sql
+namespace Microsoft.Azure.Management.Sql.LegacySdk
 {
     /// <summary>
     /// Represents all the operations to manage Azure SQL Database and Database
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Sql
         
         /// <summary>
         /// Gets a reference to the
-        /// Microsoft.Azure.Management.Sql.SqlManagementClient.
+        /// Microsoft.Azure.Management.Sql.LegacySdk.SqlManagementClient.
         /// </summary>
         public SqlManagementClient Client
         {

@@ -22,9 +22,9 @@
 using System;
 using System.Linq;
 using Microsoft.Azure;
-using Microsoft.Azure.Management.Sql;
+using Microsoft.Azure.Management.Sql.LegacySdk;
 
-namespace Microsoft.Azure.Management.Sql
+namespace Microsoft.Azure.Management.Sql.LegacySdk
 {
     /// <summary>
     /// The Windows Azure SQL Database management API provides a RESTful set of

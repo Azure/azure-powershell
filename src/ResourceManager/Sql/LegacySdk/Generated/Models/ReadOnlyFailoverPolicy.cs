@@ -22,7 +22,7 @@
 using System;
 using System.Linq;
 
-namespace Microsoft.Azure.Management.Sql.Models
+namespace Microsoft.Azure.Management.Sql.LegacySdk.Models
 {
     /// <summary>
     /// Defines the failover policy for ReadOnlyEndpoint of Azure SQL

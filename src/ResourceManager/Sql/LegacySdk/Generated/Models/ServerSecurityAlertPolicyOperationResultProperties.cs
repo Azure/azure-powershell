@@ -23,7 +23,7 @@ using System;
 using System.Linq;
 using Microsoft.Azure;
 
-namespace Microsoft.Azure.Management.Sql.Models
+namespace Microsoft.Azure.Management.Sql.LegacySdk.Models
 {
     /// <summary>
     /// Represents the properties of a create or update request for an Azure

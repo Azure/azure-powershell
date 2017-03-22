@@ -24,7 +24,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Hyak.Common;
 
-namespace Microsoft.Azure.Management.Sql.Models
+namespace Microsoft.Azure.Management.Sql.LegacySdk.Models
 {
     /// <summary>
     /// Represents the properties of an Azure SQL blob auditing policy.

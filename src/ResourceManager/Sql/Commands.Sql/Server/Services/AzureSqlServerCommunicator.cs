@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,8 +16,8 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using Microsoft.WindowsAzure.Management.Storage;
 using System;
 using System.Collections.Generic;
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
         /// <summary>
         /// Gets the Azure Sql Database SErver
         /// </summary>
-        public Management.Sql.Models.Server Get(string resourceGroupName, string serverName, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.Server Get(string resourceGroupName, string serverName, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).Servers.Get(resourceGroupName, serverName).Server;
         }
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
         /// <summary>
         /// Lists Azure Sql Database Servers
         /// </summary>
-        public IList<Management.Sql.Models.Server> List(string resourceGroupName, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.Server> List(string resourceGroupName, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).Servers.List(resourceGroupName).Servers;
         }
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
         /// <summary>
         /// Creates or updates a Azure Sql Database SErver
         /// </summary>
-        public Management.Sql.Models.Server CreateOrUpdate(string resourceGroupName, string serverName, string clientRequestId, ServerCreateOrUpdateParameters parameters)
+        public Management.Sql.LegacySdk.Models.Server CreateOrUpdate(string resourceGroupName, string serverName, string clientRequestId, ServerCreateOrUpdateParameters parameters)
         {
             return GetCurrentSqlClient(clientRequestId).Servers.CreateOrUpdate(resourceGroupName, serverName, parameters).Server;
         }

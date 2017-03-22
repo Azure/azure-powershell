@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Server.Model;
 using Microsoft.Azure.Commands.Sql.Server.Services;
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -111,12 +111,12 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         }
 
         /// <summary>
-        /// Convert a Management.Sql.Models.Server to AzureSqlDatabaseServerModel
+        /// Convert a Management.Sql.LegacySdk.Models.Server to AzureSqlDatabaseServerModel
         /// </summary>
         /// <param name="resourceGroupName">The resource group the server is in</param>
         /// <param name="resp">The management client server response to convert</param>
         /// <returns>The converted server model</returns>
-        private static AzureSqlServerModel CreateServerModelFromResponse(string resourceGroupName, Management.Sql.Models.Server resp)
+        private static AzureSqlServerModel CreateServerModelFromResponse(string resourceGroupName, Management.Sql.LegacySdk.Models.Server resp)
         {
             AzureSqlServerModel server = new AzureSqlServerModel();
 

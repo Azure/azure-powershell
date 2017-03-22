@@ -23,10 +23,10 @@ using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 
-namespace Microsoft.Azure.Management.Sql
+namespace Microsoft.Azure.Management.Sql.LegacySdk
 {
     /// <summary>
     /// The Windows Azure SQL Database management API provides a RESTful set of
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Sql
         /// </summary>
         /// <param name='operations'>
         /// Reference to the
-        /// Microsoft.Azure.Management.Sql.IJobAccountOperations.
+        /// Microsoft.Azure.Management.Sql.LegacySdk.IJobAccountOperations.
         /// </param>
         /// <param name='resourceGroupName'>
         /// Required. The name of the Resource Group to which the Azure SQL
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Management.Sql
         /// </summary>
         /// <param name='operations'>
         /// Reference to the
-        /// Microsoft.Azure.Management.Sql.IJobAccountOperations.
+        /// Microsoft.Azure.Management.Sql.LegacySdk.IJobAccountOperations.
         /// </param>
         /// <param name='resourceGroupName'>
         /// Required. The name of the Resource Group to which the Azure SQL
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Management.Sql
         /// </summary>
         /// <param name='operations'>
         /// Reference to the
-        /// Microsoft.Azure.Management.Sql.IJobAccountOperations.
+        /// Microsoft.Azure.Management.Sql.LegacySdk.IJobAccountOperations.
         /// </param>
         /// <param name='resourceGroupName'>
         /// Required. The name of the Resource Group to which the Azure SQL
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Management.Sql
         /// </summary>
         /// <param name='operations'>
         /// Reference to the
-        /// Microsoft.Azure.Management.Sql.IJobAccountOperations.
+        /// Microsoft.Azure.Management.Sql.LegacySdk.IJobAccountOperations.
         /// </param>
         /// <param name='resourceGroupName'>
         /// Required. The name of the Resource Group to which the Azure SQL
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Management.Sql
         /// </summary>
         /// <param name='operations'>
         /// Reference to the
-        /// Microsoft.Azure.Management.Sql.IJobAccountOperations.
+        /// Microsoft.Azure.Management.Sql.LegacySdk.IJobAccountOperations.
         /// </param>
         /// <param name='resourceGroupName'>
         /// Required. The name of the Resource Group to which the server
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Management.Sql
         /// </summary>
         /// <param name='operations'>
         /// Reference to the
-        /// Microsoft.Azure.Management.Sql.IJobAccountOperations.
+        /// Microsoft.Azure.Management.Sql.LegacySdk.IJobAccountOperations.
         /// </param>
         /// <param name='resourceGroupName'>
         /// Required. The name of the Resource Group to which the server
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Management.Sql
         /// </summary>
         /// <param name='operations'>
         /// Reference to the
-        /// Microsoft.Azure.Management.Sql.IJobAccountOperations.
+        /// Microsoft.Azure.Management.Sql.LegacySdk.IJobAccountOperations.
         /// </param>
         /// <param name='resourceGroupName'>
         /// Required. The name of the Resource Group to which the server
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Management.Sql
         /// </summary>
         /// <param name='operations'>
         /// Reference to the
-        /// Microsoft.Azure.Management.Sql.IJobAccountOperations.
+        /// Microsoft.Azure.Management.Sql.LegacySdk.IJobAccountOperations.
         /// </param>
         /// <param name='resourceGroupName'>
         /// Required. The name of the Resource Group to which the server
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Management.Sql
         /// </summary>
         /// <param name='operations'>
         /// Reference to the
-        /// Microsoft.Azure.Management.Sql.IJobAccountOperations.
+        /// Microsoft.Azure.Management.Sql.LegacySdk.IJobAccountOperations.
         /// </param>
         /// <param name='resourceGroupName'>
         /// Required. The name of the Resource Group to which the server
@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Management.Sql
         /// </summary>
         /// <param name='operations'>
         /// Reference to the
-        /// Microsoft.Azure.Management.Sql.IJobAccountOperations.
+        /// Microsoft.Azure.Management.Sql.LegacySdk.IJobAccountOperations.
         /// </param>
         /// <param name='resourceGroupName'>
         /// Required. The name of the Resource Group to which the server
@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Management.Sql
         /// </summary>
         /// <param name='operations'>
         /// Reference to the
-        /// Microsoft.Azure.Management.Sql.IJobAccountOperations.
+        /// Microsoft.Azure.Management.Sql.LegacySdk.IJobAccountOperations.
         /// </param>
         /// <param name='operationStatusLink'>
         /// Required. Location value returned by the Begin operation
@@ -379,7 +379,7 @@ namespace Microsoft.Azure.Management.Sql
         /// </summary>
         /// <param name='operations'>
         /// Reference to the
-        /// Microsoft.Azure.Management.Sql.IJobAccountOperations.
+        /// Microsoft.Azure.Management.Sql.LegacySdk.IJobAccountOperations.
         /// </param>
         /// <param name='operationStatusLink'>
         /// Required. Location value returned by the Begin operation
@@ -397,7 +397,7 @@ namespace Microsoft.Azure.Management.Sql
         /// </summary>
         /// <param name='operations'>
         /// Reference to the
-        /// Microsoft.Azure.Management.Sql.IJobAccountOperations.
+        /// Microsoft.Azure.Management.Sql.LegacySdk.IJobAccountOperations.
         /// </param>
         /// <param name='resourceGroupName'>
         /// Required. The name of the Resource Group to which the server
@@ -424,7 +424,7 @@ namespace Microsoft.Azure.Management.Sql
         /// </summary>
         /// <param name='operations'>
         /// Reference to the
-        /// Microsoft.Azure.Management.Sql.IJobAccountOperations.
+        /// Microsoft.Azure.Management.Sql.LegacySdk.IJobAccountOperations.
         /// </param>
         /// <param name='resourceGroupName'>
         /// Required. The name of the Resource Group to which the server
