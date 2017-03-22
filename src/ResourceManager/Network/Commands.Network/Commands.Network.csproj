@@ -204,6 +204,7 @@
     <Compile Include="ApplicationGateway\GatewayIPConfiguration\NewAzureApplicationGatewayIPConfigurationCommand.cs" />
     <Compile Include="ApplicationGateway\GatewayIPConfiguration\RemoveAzureApplicationGatewayIPConfigurationCommand.cs" />
     <Compile Include="ApplicationGateway\GatewayIPConfiguration\SetAzureApplicationGatewayIPConfigurationCommand.cs" />
+    <Compile Include="ApplicationGateway\GetAzureApplicationGatewayAvailableWafRuleSets.cs" />
     <Compile Include="ApplicationGateway\GetAzureApplicationGatewayBackendHealthCommand.cs" />
     <Compile Include="ApplicationGateway\GetAzureApplicationGatewayCommand.cs" />
     <Compile Include="ApplicationGateway\HttpListener\AddAzureApplicationGatewayHttpListenerCommand.cs" />
@@ -213,6 +214,8 @@
     <Compile Include="ApplicationGateway\HttpListener\RemoveAzureApplicationGatewayHttpListenerCommand.cs" />
     <Compile Include="ApplicationGateway\HttpListener\SetAzureApplicationGatewayHttpListenerCommand.cs" />
     <Compile Include="ApplicationGateway\NewAzureApplicationGatewayCommand.cs" />
+    <Compile Include="ApplicationGateway\FirewallDisabledRuleGroup\AzureApplicationGatewayFirewallDisabledRuleGroupBase.cs" />
+    <Compile Include="ApplicationGateway\FirewallDisabledRuleGroup\NewAzureApplicationGatewayFirewallDisabledRuleGroupCommand.cs" />
     <Compile Include="ApplicationGateway\PathRule\AzureApplicationGatewayPathRuleConfigBase.cs" />
     <Compile Include="ApplicationGateway\PathRule\NewAzureApplicationGatewayPathRuleConfigCommand.cs" />
     <Compile Include="ApplicationGateway\Probe\AddAzureApplicationGatewayProbeConfigCommand.cs" />
@@ -286,6 +289,11 @@
     <Compile Include="Models\PSApplicationGatewayBackendHealth.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendHealthHttpSettings.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendHealthPool.cs" />
+    <Compile Include="Models\PSApplicationGatewayAvailableWafRuleSetsResult.cs" />
+    <Compile Include="Models\PSApplicationGatewayFirewallRuleSet.cs" />
+    <Compile Include="Models\PSApplicationGatewayFirewallRuleGroup.cs" />
+    <Compile Include="Models\PSApplicationGatewayFirewallRule.cs" />
+    <Compile Include="Models\PSApplicationGatewayFirewallDisabledRuleGroup.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendHealthServer.cs" />
     <Compile Include="Models\PSApplicationGatewayConnectionDraining.cs" />
     <Compile Include="Models\PSBgpCommunity.cs" />
