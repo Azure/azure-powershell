@@ -28,12 +28,12 @@ The **Set-AzureRmAppServicePlan** cmdlet sets an Azure App Service plan.
 
 ## EXAMPLES
 
-### 1:
+### 1: Modify an App Service plan
 ```
-PS C:\>Set-AzureRmAppServicePlan -ResourceGroupName "Default-Web-WestUS" -Name "ContosoAppServPlan" -PerSiteScaling  $true
+PS C:\>Set-AzureRmAppServicePlan -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP" -PerSiteScaling $true
 ```
 
-This command sets the PerSiteScaling option to true on the App Service plan named ContosoAppServPlan 
+This command sets the PerSiteScaling option to true on the App Service plan named ContosoASP 
     that belongs to the resource group named Default-Web-WestUS.
 
 ## PARAMETERS

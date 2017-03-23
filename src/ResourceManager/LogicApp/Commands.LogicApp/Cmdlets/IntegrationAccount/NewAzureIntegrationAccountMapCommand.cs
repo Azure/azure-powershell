@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Creates a new integration account map.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmIntegrationAccountMap", SupportsShouldProcess = true), OutputType(typeof(object))]
+    [Cmdlet(VerbsCommon.New, "AzureRmIntegrationAccountMap", SupportsShouldProcess = true)]
+    [OutputType(typeof(IntegrationAccountMap))]
     public class NewAzureIntegrationAccountMapCommand : LogicAppBaseCmdlet
     {
 
@@ -115,7 +116,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 {
                     ContentType = this.ContentType,
                     Content = this.MapDefinition,
-                    MapType = (MapType) Enum.Parse(typeof (MapType), this.MapType),
+                    MapType = (MapType) Enum.Parse(typeof(MapType), this.MapType),
                     Metadata = this.Metadata
                 }), true);
         }
