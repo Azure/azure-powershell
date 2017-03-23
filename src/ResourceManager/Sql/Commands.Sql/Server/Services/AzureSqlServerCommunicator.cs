@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
         /// </summary>
         public Management.Sql.Models.Server Get(string resourceGroupName, string serverName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).Servers.GetByResourceGroup(resourceGroupName, serverName);
+            return GetCurrentSqlClient(clientRequestId).Servers.Get(resourceGroupName, serverName);
         }
 
         /// <summary>
