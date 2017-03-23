@@ -16,14 +16,20 @@ $results = @{};
 $warnings = @();
 
 # Find all cmdlet names by help file names in the repository.
-$cmdlets = Get-ChildItem $RootPath -Recurse | Where-Object { $_.FullName -match ".*\\help\\.*-.*.md" };
+$cmdlets = Get-ChildItem $RootPath -Recurse | Where-Object { $_.FullName -cmatch ".*\\help\\.*-.*.md" };
 
 $k = 0;
 $cmdlets | ForEach-Object {
-    $cmdlet = $_.BaseName;
+    $cmdletPath = $_;
+    $cmdlet = $cmdletPath.BaseName;
 
     # Try to match this cmdlet with at least one rule.
-    $matchedRules = @($rules | Where-Object { $cmdlet -match ".*$($_.Regex).*" });
+    $matchedRules = @($rules | Where-Object { $cmdlet -cmatch ".*$($_.Regex).*" });
+
+    # If cmdlet does not match, try the path.
+    if($matchedRules.Count -eq 0) {
+        $matchedRules += @($rules | Where-Object { $cmdletPath.FullName -cmatch ".*$($_.Regex).*" });
+    }
 
     # Take note of unmatched cmdlets and write to outputs.
     if($matchedRules.Count -eq 0) {

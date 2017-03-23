@@ -2,16 +2,16 @@
     { "regex": "Snapshot", "alias": "VM Snapshots" }, 
     { "regex": "Image", "alias": "VM Images" }, 
     { "regex": "Vmss", "alias": "VM Scale Sets" }, 
+    { "regex": "Vhd", "alias": "VM VHDs" }, 
+    { "regex": "Disk", "alias": "VM Disks" }, 
     { "regex": "VM", "alias": "Virtual Machines" }, 
 
-    { "regex": "Disk", "alias": "Managed Disks" }, 
-
-    { "regex": "ApplicationGateway", "alias": "Networking" }, 
-    { "regex": "ExpressRoute", "alias": "Networking" }, 
-    { "regex": "LoadBalancer", "alias": "Networking" }, 
-    { "regex": "Vpn", "alias": "Networking" }, 
-    { "regex": "Route", "alias": "Networking" }, 
-    { "regex": "Dns", "alias": "Networking" }, 
+    { "regex": "ApplicationGateway", "alias": "Application Gateway" }, 
+    { "regex": "ExpressRoute", "alias": "Express Route" }, 
+    { "regex": "LoadBalancer", "alias": "Load Balancer" }, 
+    { "regex": "Vpn", "alias": "VPN" }, 
+    { "regex": "Route", "alias": "Route" }, 
+    { "regex": "Dns", "alias": "DNS" }, 
     { "regex": "Network", "alias": "Networking" }, 
 
     { "regex": "AppService", "alias": "App Service" }, 
@@ -68,7 +68,7 @@
 
     { "regex": "RedisCache", "alias": "Redis Cache" }, 
 
-    { "regex": "AD", "alias": "ActiveDirectory" }, 
+    { "regex": "AD", "alias": "Active Directory" }, 
 
     { "regex": "Scheduler", "alias": "Scheduler" }, 
 
@@ -85,6 +85,8 @@
     { "regex": "Ml", "alias": "Machine Learning" }, 
 
     { "regex": "Billing", "alias": "Billing" }, 
+
+    { "regex": "Insights", "alias": "Insights" }, 
 
     { "regex": "Policy", "alias": "Policies" }, 
     { "regex": "Resource", "alias": "Resources" }, 
