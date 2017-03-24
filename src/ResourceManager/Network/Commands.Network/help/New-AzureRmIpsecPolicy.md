@@ -7,26 +7,24 @@ schema: 2.0.0
 # New-AzureRmIpsecPolicy
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates an IPSec policy.
 
 ## SYNTAX
 
 ```
 New-AzureRmIpsecPolicy -SALifeTimeSeconds <Int32> -SADataSizeKilobytes <Int32> -IpsecEncryption <String>
  -IpsecIntegrity <String> -IkeEncryption <String> -IkeIntegrity <String> -DhGroup <String> -PfsGroup <String>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The New-AzureRmIpsecPolicy cmdlet creates an IPSec policy proposal to be used in a virtual network gateway connection.
 
 ## EXAMPLES
 
-### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\>$ipsecPolicy = New-AzureRmIpsecPolicy -SALifeTimeSeconds 1000 -SADataSizeKilobytes 2000 -IpsecEncryption "GCMAES256" -IpsecIntegrity "GCMAES256" -IkeEncryption "AES256" -IkeIntegrity "SHA256" -DhGroup "DHGroup14" -PfsGroup "PFS2048"
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -156,15 +154,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### None
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy
-
 
 ## NOTES
 
