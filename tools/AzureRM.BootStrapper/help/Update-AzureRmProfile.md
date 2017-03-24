@@ -21,10 +21,10 @@ Update a profile to the latest versions in that profile and import updated modul
 
 ### Example 1
 ```
-PS C:\> Update-AzureRmProfile -Profile '2016-09'
+PS C:\> Update-AzureRmProfile -Profile '2017-03-09-profile'
 ```
 
-Update the modules associated with profile '2016-09' to their latest versions and load in the current session.  This should be executed after opening a new PowerShell session.
+Update the modules associated with profile '2017-03-09-profile' to their latest versions and load in the current session.  This should be executed after opening a new PowerShell session.
 
 ### Example 2
 ```
@@ -95,7 +95,7 @@ The profile version to load in the current PowerShell session.
 Type: String
 Parameter Sets: (All)
 Aliases: 
-Accepted values: 2016-09, 2016-05, Latest, <others>
+Accepted values: 2017-03-09-profile, Latest, <others>
 
 Required: True
 Position: 0
