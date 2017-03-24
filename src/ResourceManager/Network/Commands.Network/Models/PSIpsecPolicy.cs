@@ -16,13 +16,44 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSIpsecPolicy
     {
+        /// <summary>
+        /// Quick Mode / Phase 2 SA life time in seconds
+        /// </summary>
         public int SALifeTimeSeconds { get; set; }
-        public int SADataSizeKilobytes { get; set; }
+
+        /// <summary>
+        /// Quick Mode / Phase 2 SA payload size in kilobytes
+        /// </summary>
+        public int SADataSizeKilobytes { get; set; } 
+
+        /// <summary>
+        /// IKE phase 1 IPSec encryption algorithm
+        /// </summary>
         public string IpsecEncryption { get; set; }
+
+        /// <summary>
+        /// IKE phase 1 IPSec integrity algorithm
+        /// </summary>
         public string IpsecIntegrity { get; set; }
+
+        /// <summary>
+        /// IKE phase 2 IKE encryption algorithm
+        /// </summary>
         public string IkeEncryption { get; set; }
+
+        /// <summary>
+        /// IKE phase 2 IKE integrity algorithm
+        /// </summary>
         public string IkeIntegrity { get; set; }
+
+        /// <summary>
+        /// IKE phase 1 DH group for initial SA
+        /// </summary>
         public string DhGroup { get; set; }
+
+        /// <summary>
+        /// IKE phase 2 DH Group for new child SA
+        /// </summary>
         public string PfsGroup { get; set; }
     }
 }
