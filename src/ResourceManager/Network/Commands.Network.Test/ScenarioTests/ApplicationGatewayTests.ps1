@@ -12,6 +12,24 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+function Test-AvailableWafRuleSets
+{
+	$result = Get-AzureRmApplicationGatewayAvailableWafRuleSets
+
+	Assert-NotNull $result
+	Assert-NotNull $result.Value
+	Assert-True { $result.Value.Count -gt 0 }
+	Assert-NotNull $result.Value[0].Name
+	Assert-NotNull $result.Value[0].RuleSetType
+	Assert-NotNull $result.Value[0].RuleSetVersion
+	Assert-NotNull $result.Value[0].RuleGroups
+	Assert-True { $result.Value[0].RuleGroups.Count -gt 0 }
+	Assert-NotNull $result.Value[0].RuleGroups[0].RuleGroupName
+	Assert-NotNull $result.Value[0].RuleGroups[0].Rules
+	Assert-True { $result.Value[0].RuleGroups[0].Rules.Count -gt 0 }
+	Assert-NotNull $result.Value[0].RuleGroups[0].Rules[0].RuleId
+}
+
 <#
 .SYNOPSIS
 Application gateway tests
@@ -119,7 +137,9 @@ function Test-ApplicationGatewayCRUD
 
 		$sslPolicy = New-AzureRmApplicationGatewaySslPolicy -DisabledSslProtocols TLSv1_0, TLSv1_1
 
-		$firewallConfig = New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode Prevention
+		$disabledRuleGroup1 = New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName "crs_41_sql_injection_attacks" -Rules 981318,981320
+		$disabledRuleGroup2 = New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName "crs_35_bad_robots"
+		$firewallConfig = New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode Prevention -RuleSetType "OWASP" -RuleSetVersion "2.2.9" -DisabledRuleGroups $disabledRuleGroup1,$disabledRuleGroup2
 
 		# Create Application Gateway
 		$appgw = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probeHttps -BackendAddressPools $pool, $nicPool -BackendHttpSettingsCollection $poolSetting01,$poolSetting02 -FrontendIpConfigurations $fipconfig01, $fipconfig02  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01, $fp02 -HttpListeners $listener01, $listener02 -RequestRoutingRules $rule01, $rule02 -Sku $sku -SslPolicy $sslPolicy -AuthenticationCertificates $authcert01 -WebApplicationFirewallConfiguration $firewallConfig
@@ -130,6 +150,7 @@ function Test-ApplicationGatewayCRUD
 		Assert-AreEqual "Running" $getgw.OperationalState
 		Compare-ConnectionDraining $poolSetting01 $getgw.BackendHttpSettingsCollection[0]
 		Compare-ConnectionDraining $poolSetting02 $getgw.BackendHttpSettingsCollection[1]
+		Compare-WebApplicationFirewallConfiguration $firewallConfig $getgw.WebApplicationFirewallConfiguration
 
 		# Get Application Gateway backend health with expanded resource
 		$backendHealth = Get-AzureRmApplicationGatewayBackendHealth -Name $appgwName -ResourceGroupName $rgname -ExpandResource "backendhealth/applicationgatewayresource"
@@ -148,7 +169,7 @@ function Test-ApplicationGatewayCRUD
         $nic01 = $nic01 | Set-AzureRmNetworkInterface
         $nic02 = $nic02 | Set-AzureRmNetworkInterface
 
-		# Add probe, request timeout, multi-hosting, URL routing to an exisitng gateway
+		# Add probe, request timeout, multi-hosting, URL routing to an existing gateway
 		# Probe, request timeout, multi-site and URL routing are optional.
 		$probeName = Get-ResourceName
 		$frontendPort03Name = Get-ResourceName
@@ -190,9 +211,11 @@ function Test-ApplicationGatewayCRUD
 		Set-AzureRmApplicationGateway -ApplicationGateway $getgw
 
 		# Modify WAF config and verify that it can be retrieved
-		$getgw = Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $getgw -Enabled $true -FirewallMode Detection
-		Set-AzureRmApplicationGateway -ApplicationGateway $getgw
-		$firewallConfig2 = Get-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $getgw
+		$getgw = Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $getgw -Enabled $true -FirewallMode Detection -RuleSetType "OWASP" -RuleSetVersion "2.2.9"
+		$firewallConfig2 = Get-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $getgw		
+		$getgw = Set-AzureRmApplicationGateway -ApplicationGateway $getgw
+
+		Compare-WebApplicationFirewallConfiguration $firewallConfig $getgw.WebApplicationFirewallConfiguration
 
 		# Remove probe, request timeout, multi-site and URL routing from exiting gateway
 		# Probe, request timeout, multi-site, URL routing are optional
@@ -258,6 +281,69 @@ function Compare-ConnectionDraining($expected, $actual)
 	else 
 	{
 		Assert-Null $actualConnectionDraining
+	}
+}
+
+<#
+.SYNOPSIS
+Compare web application firewall configuration
+#>
+function Compare-WebApplicationFirewallConfiguration($expected, $actual) 
+{
+	if($expected) 
+	{
+		Assert-NotNull $actual
+		Assert-AreEqual $expected.Enabled $actual.Enabled
+		Assert-AreEqual $expected.FirewallMode $actual.FirewallMode
+		Assert-AreEqual $expected.RuleSetType $actual.RuleSetType
+		Assert-AreEqual $expected.RuleSetVersion $actual.RuleSetVersion
+
+		if($expected.DisabledRuleGroups) 
+		{
+			Assert-NotNull $acutal.DisabledRuleGroups
+			Assert.AreEqual $expected.DisabledRuleGroups.Count $actual.DisabledRuleGroups.Count
+			for($i = 0; $i -lt $expected.DisabledRuleGroups.Count; $i++) 
+			{
+				Compare-DisabledRuleGroup $expected.DisableRuleGroups[$i] $actual.DisabledRuleGroups[$i]
+			}
+		}
+		else
+		{
+			Assert-Null $actual.DisabledRuleGroups
+		}
+		
+	}
+	else
+	{
+		Assert-Null $actual
+	}
+}
+
+<#
+.SYNOPSIS
+Compare disabled rule groups
+#>
+function Compare-DisabledRuleGroup($expected, $actual) 
+{
+	if($expected) 
+	{
+		Assert-NotNull $actual
+		Assert-AreEqual $expected.RuleGroupName $actual.RuleGroupName
+
+		if($expected.Rules) 
+		{
+			Assert-NotNull $acutal.Rules
+			Assert.AreEqualArray $expected.Rules $actual.Rules
+		}
+		else
+		{
+			Assert-Null $actual.Rules
+		}
+		
+	}
+	else
+	{
+		Assert-Null $actual
 	}
 }
 

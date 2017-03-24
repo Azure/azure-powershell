@@ -17,7 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmApplicationGatewayWebApplicationFirewallConfiguration", SupportsShouldProcess = true),
+    [Cmdlet(VerbsCommon.Set, "AzureRmApplicationGatewayWebApplicationFirewallConfiguration"),
         OutputType(typeof(PSApplicationGateway))]
     public class SetAzureApplicationGatewayWebApplicationFirewallConfigurationCommand : AzureApplicationGatewayWebApplicationFirewallConfigurationBase
     {
@@ -29,21 +29,20 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess("AzureApplicationGatewayWebApplicationFirewallConfiguration", Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage))
+            base.ExecuteCmdlet();
+
+            if(this.ApplicationGateway.WebApplicationFirewallConfiguration == null)
             {
-                base.ExecuteCmdlet();
-
-                this.ApplicationGateway.WebApplicationFirewallConfiguration = new PSApplicationGatewayWebApplicationFirewallConfiguration()
-                {
-                    Enabled = this.Enabled,
-                    FirewallMode = this.FirewallMode,
-                    RuleSetType = this.RuleSetType,
-                    RuleSetVersion = this.RuleSetVersion,
-                    DisabledRuleGroups = this.DisabledRuleGroups
-                };
-
-                WriteObject(this.ApplicationGateway);
+                this.ApplicationGateway.WebApplicationFirewallConfiguration = new PSApplicationGatewayWebApplicationFirewallConfiguration();
             }
+
+            this.ApplicationGateway.WebApplicationFirewallConfiguration.Enabled = this.Enabled;
+            this.ApplicationGateway.WebApplicationFirewallConfiguration.FirewallMode = this.FirewallMode;
+            this.ApplicationGateway.WebApplicationFirewallConfiguration.RuleSetType = this.RuleSetType;
+            this.ApplicationGateway.WebApplicationFirewallConfiguration.RuleSetVersion = this.RuleSetVersion;
+            this.ApplicationGateway.WebApplicationFirewallConfiguration.DisabledRuleGroups = this.DisabledRuleGroups;
+
+            WriteObject(this.ApplicationGateway);
         }
     }
 }
