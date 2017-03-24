@@ -13,37 +13,18 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
-using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    public class AzureApplicationGatewayFirewallDisabledRuleGroupBase : NetworkBaseCmdlet
+    [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig"), 
+        OutputType(typeof(PSApplicationGatewayFirewallDisabledRuleGroup))]
+    public class NewAzureApplicationGatewayFirewallDisabledRuleGroupConfigCommand : AzureApplicationGatewayFirewallDisabledRuleGroupConfigBase
     {
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The name of the rule group that will be disabled.")]
-        [ValidateNotNullOrEmpty]
-        public string RuleGroupName { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The list of rules that will be disabled. If null, all rules of the rule group will be disabled.")]
-        public List<int> Rules { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-        }
-
-        protected PSApplicationGatewayFirewallDisabledRuleGroup NewObject()
-        {
-            return new PSApplicationGatewayFirewallDisabledRuleGroup()
-            {
-                RuleGroupName = this.RuleGroupName,
-                Rules = this.Rules
-            };
+            WriteObject(base.NewObject());
         }
     }
 }
