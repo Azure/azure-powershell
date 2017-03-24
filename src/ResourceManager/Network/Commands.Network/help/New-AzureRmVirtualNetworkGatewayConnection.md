@@ -17,7 +17,7 @@ New-AzureRmVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <St
  [-AuthorizationKey <String>] -VirtualNetworkGateway1 <PSVirtualNetworkGateway>
  [-VirtualNetworkGateway2 <PSVirtualNetworkGateway>] [-LocalNetworkGateway2 <PSLocalNetworkGateway>]
  -ConnectionType <String> [-RoutingWeight <Int32>] [-SharedKey <String>] [-Peer <PSPeering>]
- [-EnableBgp <String>] [-Tag <Hashtable>] [-Force] [-UsePolicyBasedTrafficSelectors <String>]
+ [-EnableBgp <String>] [-Tag <Hashtable>] [-Force] [-UsePolicyBasedTrafficSelectors]
  [-IpsecPolicies <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy]>]
  [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -29,7 +29,7 @@ New-AzureRmVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <St
  [-AuthorizationKey <String>] -VirtualNetworkGateway1 <PSVirtualNetworkGateway>
  [-VirtualNetworkGateway2 <PSVirtualNetworkGateway>] [-LocalNetworkGateway2 <PSLocalNetworkGateway>]
  -ConnectionType <String> [-RoutingWeight <Int32>] [-SharedKey <String>] [-PeerId <String>]
- [-EnableBgp <String>] [-Tag <Hashtable>] [-Force] [-UsePolicyBasedTrafficSelectors <String>]
+ [-EnableBgp <String>] [-Tag <Hashtable>] [-Force] [-UsePolicyBasedTrafficSelectors]
  [-IpsecPolicies <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy]>]
  [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -269,14 +269,14 @@ Accept wildcard characters: False
 
 ### -UsePolicyBasedTrafficSelectors
 Whether to enable policy-based traffic selectors for a S2S connection```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

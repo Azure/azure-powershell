@@ -171,7 +171,7 @@ function Test-VirtualNetworkGatewayConnectionWithIpsecPoliciesCRUD
 	  $ipsecPolicy = New-AzureRmIpsecPolicy -SALifeTimeSeconds 300 -SADataSizeKilobytes 1024 -IpsecEncryption "GCMAES256" -IpsecIntegrity "GCMAES256" -IkeEncryption "AES256" -IkeIntegrity "SHA256" -DhGroup "DHGroup14" -PfsGroup "PFS2048"
 
       # Create & Get VirtualNetworkGatewayConnection
-      $actual = New-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -EnableBgp false -UsePolicyBasedTrafficSelectors true -IpsecPolicies $ipsecPolicy
+      $actual = New-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -EnableBgp false -UsePolicyBasedTrafficSelectors -IpsecPolicies $ipsecPolicy
       $connection = Get-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
       
 	  # Verify IpsecPolicies

@@ -133,9 +133,8 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Whether to enable policy-based traffic selectors for a S2S connection")]
-        public string UsePolicyBasedTrafficSelectors { get; set; }
+            HelpMessage = "Use policy-based traffic selectors for a S2S connection")]
+        public SwitchParameter UsePolicyBasedTrafficSelectors { get; set; }
 
         [Parameter(
              Mandatory = false,
@@ -203,9 +202,9 @@ namespace Microsoft.Azure.Commands.Network
                 vnetGatewayConnection.Peer.Id = this.PeerId;
             }
 
-            if (!string.IsNullOrEmpty(this.UsePolicyBasedTrafficSelectors))
+            if (this.UsePolicyBasedTrafficSelectors.IsPresent)
             {
-                vnetGatewayConnection.UsePolicyBasedTrafficSelectors = bool.Parse(this.UsePolicyBasedTrafficSelectors);
+                vnetGatewayConnection.UsePolicyBasedTrafficSelectors = true;
             }
             else
             {
