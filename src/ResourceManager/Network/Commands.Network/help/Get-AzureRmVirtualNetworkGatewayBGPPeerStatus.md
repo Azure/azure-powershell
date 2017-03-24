@@ -13,7 +13,7 @@ Lists an Azure virtual network gateway's BGP peers
 
 ```
 Get-AzureRmVirtualNetworkGatewayBGPPeerStatus -VirtualNetworkGatewayName <String> -ResourceGroupName <String>
- [-Peer <String>]
+ [-Peer <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,15 +86,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSBGPPeerStatus[]
-
 
 ## NOTES
 

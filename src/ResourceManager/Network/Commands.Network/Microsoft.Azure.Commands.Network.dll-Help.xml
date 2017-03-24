@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<helpItems schema="maml">
+<helpItems xmlns="http://msh" schema="maml">
 
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <command:details><command:name>Add-AzureRmApplicationGatewayAuthenticationCertificate</command:name>
@@ -3067,6 +3067,47 @@ PS C:\&gt; $AppGW = Add-AzureRmApplicationGatewaySslCertificate -ApplicationGate
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Add-AzureRmExpressRouteCircuitAuthorization</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ExpressRouteCircuit</maml:name>
+<maml:Description><maml:para>Specifies the ExpressRoute circuit that this cmdlet adds the authorization to.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">PSExpressRouteCircuit</command:parameterValue>
+<dev:type><maml:name>PSExpressRouteCircuit</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="infa"><maml:name>InformationAction</maml:name>
+<maml:Description><maml:para>Specifies how this cmdlet responds to an information event.
+</maml:para>
+<maml:para>The acceptable values for this parameter are:
+</maml:para>
+<maml:para>- Continue
+</maml:para>
+<maml:para>- Ignore
+</maml:para>
+<maml:para>- Inquire
+</maml:para>
+<maml:para>- SilentlyContinue
+</maml:para>
+<maml:para>- Stop
+</maml:para>
+<maml:para>- Suspend
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+<dev:type><maml:name>ActionPreference</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="iv"><maml:name>InformationVariable</maml:name>
+<maml:Description><maml:para>Specifies an information variable.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of the circuit authorization to be added.
 </maml:para>
@@ -3076,59 +3117,9 @@ PS C:\&gt; $AppGW = Add-AzureRmApplicationGatewaySslCertificate -ApplicationGate
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ExpressRouteCircuit</maml:name>
-<maml:Description><maml:para>Specifies the ExpressRoute circuit that this cmdlet adds the authorization to.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">PSExpressRouteCircuit</command:parameterValue>
-<dev:type><maml:name>PSExpressRouteCircuit</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="infa"><maml:name>InformationAction</maml:name>
-<maml:Description><maml:para>Specifies how this cmdlet responds to an information event.
-</maml:para>
-<maml:para>The acceptable values for this parameter are:
-</maml:para>
-<maml:para>- Continue
-</maml:para>
-<maml:para>- Ignore
-</maml:para>
-<maml:para>- Inquire
-</maml:para>
-<maml:para>- SilentlyContinue
-</maml:para>
-<maml:para>- Stop
-</maml:para>
-<maml:para>- Suspend
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-<dev:type><maml:name>ActionPreference</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="iv"><maml:name>InformationVariable</maml:name>
-<maml:Description><maml:para>Specifies an information variable.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Name</maml:name>
-<maml:Description><maml:para>Specifies the name of the circuit authorization to be added.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ExpressRouteCircuit</maml:name>
+<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ExpressRouteCircuit</maml:name>
 <maml:Description><maml:para>Specifies the ExpressRoute circuit that this cmdlet adds the authorization to.
 </maml:para>
 </maml:Description>
@@ -3162,6 +3153,15 @@ PS C:\&gt; $AppGW = Add-AzureRmApplicationGatewaySslCertificate -ApplicationGate
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="iv"><maml:name>InformationVariable</maml:name>
 <maml:Description><maml:para>Specifies an information variable.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Name</maml:name>
+<maml:Description><maml:para>Specifies the name of the circuit authorization to be added.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -11333,7 +11333,7 @@ PS C:\&gt; $FirewallConfig = Get-AzureRmApplicationGatewayWebApplicationFirewall
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ExpressRouteCircuitName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Name, ResourceName"><maml:name>ExpressRouteCircuitName</maml:name>
 <maml:Description><maml:para>The name of the ExpressRoute circuit being examined.
 </maml:para>
 </maml:Description>
@@ -11367,15 +11367,6 @@ PS C:\&gt; $FirewallConfig = Get-AzureRmApplicationGatewayWebApplicationFirewall
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="iv"><maml:name>InformationVariable</maml:name>
 <maml:Description><maml:para>Specifies an information variable.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
-<maml:Description><maml:para>The resource name.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -11412,7 +11403,7 @@ PS C:\&gt; $FirewallConfig = Get-AzureRmApplicationGatewayWebApplicationFirewall
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ExpressRouteCircuitName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Name, ResourceName"><maml:name>ExpressRouteCircuitName</maml:name>
 <maml:Description><maml:para>The name of the ExpressRoute circuit being examined.
 </maml:para>
 </maml:Description>
@@ -11446,15 +11437,6 @@ PS C:\&gt; $FirewallConfig = Get-AzureRmApplicationGatewayWebApplicationFirewall
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="iv"><maml:name>InformationVariable</maml:name>
 <maml:Description><maml:para>Specifies an information variable.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
-<maml:Description><maml:para>The resource name.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -11519,6 +11501,47 @@ PS C:\&gt; $FirewallConfig = Get-AzureRmApplicationGatewayWebApplicationFirewall
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Get-AzureRmExpressRouteCircuitAuthorization</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ExpressRouteCircuit</maml:name>
+<maml:Description><maml:para>Specifies the ExpressRoute circuit authorization.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">PSExpressRouteCircuit</command:parameterValue>
+<dev:type><maml:name>PSExpressRouteCircuit</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="infa"><maml:name>InformationAction</maml:name>
+<maml:Description><maml:para>Specifies how this cmdlet responds to an information event.
+</maml:para>
+<maml:para>The acceptable values for this parameter are:
+</maml:para>
+<maml:para>- Continue
+</maml:para>
+<maml:para>- Ignore
+</maml:para>
+<maml:para>- Inquire
+</maml:para>
+<maml:para>- SilentlyContinue
+</maml:para>
+<maml:para>- Stop
+</maml:para>
+<maml:para>- Suspend
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+<dev:type><maml:name>ActionPreference</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="iv"><maml:name>InformationVariable</maml:name>
+<maml:Description><maml:para>Specifies an information variable.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of the ExpressRoute circuit authorization that this cmdlet gets.
 </maml:para>
@@ -11530,7 +11553,9 @@ PS C:\&gt; $FirewallConfig = Get-AzureRmApplicationGatewayWebApplicationFirewall
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ExpressRouteCircuit</maml:name>
+</command:syntaxItem>
+</command:syntax>
+<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ExpressRouteCircuit</maml:name>
 <maml:Description><maml:para>Specifies the ExpressRoute circuit authorization.
 </maml:para>
 </maml:Description>
@@ -11571,53 +11596,10 @@ PS C:\&gt; $FirewallConfig = Get-AzureRmApplicationGatewayWebApplicationFirewall
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-</command:syntaxItem>
-</command:syntax>
-<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Name</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of the ExpressRoute circuit authorization that this cmdlet gets.
 </maml:para>
 <maml:para>-Name "ContosoCircuitAuthorization"
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ExpressRouteCircuit</maml:name>
-<maml:Description><maml:para>Specifies the ExpressRoute circuit authorization.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">PSExpressRouteCircuit</command:parameterValue>
-<dev:type><maml:name>PSExpressRouteCircuit</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="infa"><maml:name>InformationAction</maml:name>
-<maml:Description><maml:para>Specifies how this cmdlet responds to an information event.
-</maml:para>
-<maml:para>The acceptable values for this parameter are:
-</maml:para>
-<maml:para>- Continue
-</maml:para>
-<maml:para>- Ignore
-</maml:para>
-<maml:para>- Inquire
-</maml:para>
-<maml:para>- SilentlyContinue
-</maml:para>
-<maml:para>- Stop
-</maml:para>
-<maml:para>- Suspend
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-<dev:type><maml:name>ActionPreference</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="iv"><maml:name>InformationVariable</maml:name>
-<maml:Description><maml:para>Specifies an information variable.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -11845,7 +11827,7 @@ Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Express
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ExpressRouteCircuitName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Name, ResourceName"><maml:name>ExpressRouteCircuitName</maml:name>
 <maml:Description><maml:para>The name of the ExpressRoute circuit being examined.
 </maml:para>
 </maml:Description>
@@ -11879,15 +11861,6 @@ Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Express
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="iv"><maml:name>InformationVariable</maml:name>
 <maml:Description><maml:para>Specifies an information variable.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
-<maml:Description><maml:para>The resource name.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -11924,7 +11897,7 @@ Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Express
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ExpressRouteCircuitName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Name, ResourceName"><maml:name>ExpressRouteCircuitName</maml:name>
 <maml:Description><maml:para>The name of the ExpressRoute circuit being examined.
 </maml:para>
 </maml:Description>
@@ -11958,15 +11931,6 @@ Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Express
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="iv"><maml:name>InformationVariable</maml:name>
 <maml:Description><maml:para>Specifies an information variable.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
-<maml:Description><maml:para>The resource name.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -12040,7 +12004,7 @@ Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Express
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ExpressRouteCircuitName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Name, ResourceName"><maml:name>ExpressRouteCircuitName</maml:name>
 <maml:Description><maml:para>The name of the ExpressRoute circuit being examined.
 </maml:para>
 </maml:Description>
@@ -12074,15 +12038,6 @@ Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Express
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="iv"><maml:name>InformationVariable</maml:name>
 <maml:Description><maml:para>Specifies an information variable.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
-<maml:Description><maml:para>The resource name.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -12119,7 +12074,7 @@ Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Express
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ExpressRouteCircuitName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Name, ResourceName"><maml:name>ExpressRouteCircuitName</maml:name>
 <maml:Description><maml:para>The name of the ExpressRoute circuit being examined.
 </maml:para>
 </maml:Description>
@@ -12153,15 +12108,6 @@ Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Express
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="iv"><maml:name>InformationVariable</maml:name>
 <maml:Description><maml:para>Specifies an information variable.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
-<maml:Description><maml:para>The resource name.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -12226,7 +12172,7 @@ Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Express
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Get-AzureRmExpressRouteCircuitStats</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ExpressRouteCircuitName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Name, ResourceName"><maml:name>ExpressRouteCircuitName</maml:name>
 <maml:Description><maml:para>The name of the ExpressRoute circuit being examined.
 </maml:para>
 </maml:Description>
@@ -12260,15 +12206,6 @@ Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Express
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="iv"><maml:name>InformationVariable</maml:name>
 <maml:Description><maml:para>Specifies an information variable.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
-<maml:Description><maml:para>The resource name.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -12296,7 +12233,7 @@ Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Express
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ExpressRouteCircuitName</maml:name>
+<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Name, ResourceName"><maml:name>ExpressRouteCircuitName</maml:name>
 <maml:Description><maml:para>The name of the ExpressRoute circuit being examined.
 </maml:para>
 </maml:Description>
@@ -12330,15 +12267,6 @@ Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Express
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="iv"><maml:name>InformationVariable</maml:name>
 <maml:Description><maml:para>Specifies an information variable.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ResourceName"><maml:name>Name</maml:name>
-<maml:Description><maml:para>The resource name.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -23455,6 +23383,38 @@ New-AzureRmExpressRouteCircuit @parameters</dev:code>
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>New-AzureRmExpressRouteCircuitAuthorization</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="infa"><maml:name>InformationAction</maml:name>
+<maml:Description><maml:para>Specifies how this cmdlet responds to an information event.
+</maml:para>
+<maml:para>The acceptable values for this parameter are:
+</maml:para>
+<maml:para>- Continue
+</maml:para>
+<maml:para>- Ignore
+</maml:para>
+<maml:para>- Inquire
+</maml:para>
+<maml:para>- SilentlyContinue
+</maml:para>
+<maml:para>- Stop
+</maml:para>
+<maml:para>- Suspend
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+<dev:type><maml:name>ActionPreference</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="iv"><maml:name>InformationVariable</maml:name>
+<maml:Description><maml:para>Specifies an information variable.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies a unique name for the new ExpressRoute circuit authorization.
 </maml:para>
@@ -23464,50 +23424,9 @@ New-AzureRmExpressRouteCircuit @parameters</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="infa"><maml:name>InformationAction</maml:name>
-<maml:Description><maml:para>Specifies how this cmdlet responds to an information event.
-</maml:para>
-<maml:para>The acceptable values for this parameter are:
-</maml:para>
-<maml:para>- Continue
-</maml:para>
-<maml:para>- Ignore
-</maml:para>
-<maml:para>- Inquire
-</maml:para>
-<maml:para>- SilentlyContinue
-</maml:para>
-<maml:para>- Stop
-</maml:para>
-<maml:para>- Suspend
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-<dev:type><maml:name>ActionPreference</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="iv"><maml:name>InformationVariable</maml:name>
-<maml:Description><maml:para>Specifies an information variable.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Name</maml:name>
-<maml:Description><maml:para>Specifies a unique name for the new ExpressRoute circuit authorization.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="infa"><maml:name>InformationAction</maml:name>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="infa"><maml:name>InformationAction</maml:name>
 <maml:Description><maml:para>Specifies how this cmdlet responds to an information event.
 </maml:para>
 <maml:para>The acceptable values for this parameter are:
@@ -23532,6 +23451,15 @@ New-AzureRmExpressRouteCircuit @parameters</dev:code>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="iv"><maml:name>InformationVariable</maml:name>
 <maml:Description><maml:para>Specifies an information variable.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Name</maml:name>
+<maml:Description><maml:para>Specifies a unique name for the new ExpressRoute circuit authorization.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -24119,6 +24047,239 @@ New-AzureRmExpressRouteCircuit @parameters</dev:code>
 <maml:uri></maml:uri>
 </maml:navigationLink>
 </command:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<command:details><command:name>New-AzureRmIpsecPolicy</command:name>
+<command:verb>New</command:verb>
+<command:noun>AzureRmIpsecPolicy</command:noun>
+<maml:description><maml:para>{{Fill in the Synopsis}}
+</maml:para>
+</maml:description>
+</command:details>
+<maml:description><maml:para>{{Fill in the Description}}
+</maml:para>
+</maml:description>
+<command:syntax><command:syntaxItem><maml:name>New-AzureRmIpsecPolicy</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>DhGroup</maml:name>
+<maml:Description><maml:para>The DH Groups used in IKE Phase 1 for initial SA
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">None</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DHGroup1</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DHGroup14</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DHGroup2</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DHGroup2048</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DHGroup24</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ECP256</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ECP384</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>IkeEncryption</maml:name>
+<maml:Description><maml:para>The IKE encryption algorithm (IKE Phase 2)
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">DES</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DES3</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">AES128</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">AES192</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">AES256</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>IkeIntegrity</maml:name>
+<maml:Description><maml:para>The IKE integrity algorithm (IKE Phase 2)
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">MD5</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">SHA1</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">SHA256</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">SHA384</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>IpsecEncryption</maml:name>
+<maml:Description><maml:para>The IPSec encryption algorithm (IKE Phase 1)
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">None</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DES</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DES3</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">AES128</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">AES192</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">AES256</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">GCMAES128</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">GCMAES192</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">GCMAES256</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>IpsecIntegrity</maml:name>
+<maml:Description><maml:para>The IPSec integrity algorithm (IKE Phase 1)
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">MD5</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">SHA1</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">SHA256</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">GCMAES128</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">GCMAES192</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">GCMAES256</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PfsGroup</maml:name>
+<maml:Description><maml:para>The DH Groups used in IKE Phase 2 for new child SA
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">None</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">PFS1</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">PFS2</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">PFS2048</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">PFS24</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ECP256</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ECP384</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SADataSizeKilobytes</maml:name>
+<maml:Description><maml:para>The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SALifeTimeSeconds</maml:name>
+<maml:Description><maml:para>The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+</command:syntax>
+<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>DhGroup</maml:name>
+<maml:Description><maml:para>The DH Groups used in IKE Phase 1 for initial SA
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>IkeEncryption</maml:name>
+<maml:Description><maml:para>The IKE encryption algorithm (IKE Phase 2)
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>IkeIntegrity</maml:name>
+<maml:Description><maml:para>The IKE integrity algorithm (IKE Phase 2)
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>IpsecEncryption</maml:name>
+<maml:Description><maml:para>The IPSec encryption algorithm (IKE Phase 1)
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>IpsecIntegrity</maml:name>
+<maml:Description><maml:para>The IPSec integrity algorithm (IKE Phase 1)
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PfsGroup</maml:name>
+<maml:Description><maml:para>The DH Groups used in IKE Phase 2 for new child SA
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SADataSizeKilobytes</maml:name>
+<maml:Description><maml:para>The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SALifeTimeSeconds</maml:name>
+<maml:Description><maml:para>The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:parameters>
+<command:inputTypes><command:inputType><dev:type><maml:name>None</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:inputType>
+</command:inputTypes>
+<command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
+<maml:alertSet><maml:alert><maml:para>
+</maml:para>
+</maml:alert>
+</maml:alertSet>
+<command:examples><command:example><maml:title>Example 1</maml:title>
+<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
+<dev:remarks><maml:para>{{ Add example description here }}
+</maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
+</dev:remarks>
+</command:example>
+</command:examples>
+<command:relatedLinks></command:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <command:details><command:name>New-AzureRmLoadBalancer</command:name>
@@ -30159,7 +30320,7 @@ NextHopIpAddress  :</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>@{Text=}
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -30167,7 +30328,7 @@ NextHopIpAddress  :</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>@{Text=}
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -30249,7 +30410,7 @@ NextHopIpAddress  :</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>@{Text=}
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -30258,7 +30419,7 @@ NextHopIpAddress  :</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>@{Text=}
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -31622,6 +31783,15 @@ Subnets           : []</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>IpsecPolicies</maml:name>
+<maml:Description><maml:para>A list of IPSec policies.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy]</command:parameterValue>
+<dev:type><maml:name>System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy]</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>LocalNetworkGateway2</maml:name>
 <maml:Description><maml:para>
 </maml:para>
@@ -31693,6 +31863,14 @@ Subnets           : []</dev:code>
 <dev:type><maml:name>Hashtable</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>UsePolicyBasedTrafficSelectors</maml:name>
+<maml:Description><maml:para>Whether to enable policy-based traffic selectors for a S2S connection
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>VirtualNetworkGateway1</maml:name>
 <maml:Description><maml:para>
@@ -31797,6 +31975,15 @@ Subnets           : []</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>IpsecPolicies</maml:name>
+<maml:Description><maml:para>A list of IPSec policies.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy]</command:parameterValue>
+<dev:type><maml:name>System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy]</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>LocalNetworkGateway2</maml:name>
 <maml:Description><maml:para>
 </maml:para>
@@ -31868,6 +32055,14 @@ Subnets           : []</dev:code>
 <dev:type><maml:name>Hashtable</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>UsePolicyBasedTrafficSelectors</maml:name>
+<maml:Description><maml:para>Whether to enable policy-based traffic selectors for a S2S connection
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>VirtualNetworkGateway1</maml:name>
 <maml:Description><maml:para>
@@ -31973,6 +32168,15 @@ Subnets           : []</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>IpsecPolicies</maml:name>
+<maml:Description><maml:para>A list of IPSec policies.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy]</command:parameterValue>
+<dev:type><maml:name>System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy]</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>LocalNetworkGateway2</maml:name>
 <maml:Description><maml:para>
 </maml:para>
@@ -32053,6 +32257,15 @@ Subnets           : []</dev:code>
 <dev:type><maml:name>Hashtable</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>UsePolicyBasedTrafficSelectors</maml:name>
+<maml:Description><maml:para>Whether to enable policy-based traffic selectors for a S2S connection
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>VirtualNetworkGateway1</maml:name>
 <maml:Description><maml:para>
@@ -35378,6 +35591,47 @@ PS C:\&gt; $AppGW = Remove-AzureRmApplicationGatewaySslPolicy -ApplicationGatewa
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Remove-AzureRmExpressRouteCircuitAuthorization</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ExpressRouteCircuit</maml:name>
+<maml:Description><maml:para>Specifies the ExpressRouteCircuit object that this cmdlet removes.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">PSExpressRouteCircuit</command:parameterValue>
+<dev:type><maml:name>PSExpressRouteCircuit</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="infa"><maml:name>InformationAction</maml:name>
+<maml:Description><maml:para>Specifies how this cmdlet responds to an information event.
+</maml:para>
+<maml:para>The acceptable values for this parameter are:
+</maml:para>
+<maml:para>- Continue
+</maml:para>
+<maml:para>- Ignore
+</maml:para>
+<maml:para>- Inquire
+</maml:para>
+<maml:para>- SilentlyContinue
+</maml:para>
+<maml:para>- Stop
+</maml:para>
+<maml:para>- Suspend
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+<dev:type><maml:name>ActionPreference</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="iv"><maml:name>InformationVariable</maml:name>
+<maml:Description><maml:para>Specifies an information variable.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Name</maml:name>
 <maml:Description><maml:para>Specifies the name of the circuit authorization that this cmdlet removes.
 </maml:para>
@@ -35387,59 +35641,9 @@ PS C:\&gt; $AppGW = Remove-AzureRmApplicationGatewaySslPolicy -ApplicationGatewa
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ExpressRouteCircuit</maml:name>
-<maml:Description><maml:para>Specifies the ExpressRouteCircuit object that this cmdlet removes.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">PSExpressRouteCircuit</command:parameterValue>
-<dev:type><maml:name>PSExpressRouteCircuit</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="infa"><maml:name>InformationAction</maml:name>
-<maml:Description><maml:para>Specifies how this cmdlet responds to an information event.
-</maml:para>
-<maml:para>The acceptable values for this parameter are:
-</maml:para>
-<maml:para>- Continue
-</maml:para>
-<maml:para>- Ignore
-</maml:para>
-<maml:para>- Inquire
-</maml:para>
-<maml:para>- SilentlyContinue
-</maml:para>
-<maml:para>- Stop
-</maml:para>
-<maml:para>- Suspend
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-<dev:type><maml:name>ActionPreference</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="iv"><maml:name>InformationVariable</maml:name>
-<maml:Description><maml:para>Specifies an information variable.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Name</maml:name>
-<maml:Description><maml:para>Specifies the name of the circuit authorization that this cmdlet removes.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ExpressRouteCircuit</maml:name>
+<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ExpressRouteCircuit</maml:name>
 <maml:Description><maml:para>Specifies the ExpressRouteCircuit object that this cmdlet removes.
 </maml:para>
 </maml:Description>
@@ -35473,6 +35677,15 @@ PS C:\&gt; $AppGW = Remove-AzureRmApplicationGatewaySslPolicy -ApplicationGatewa
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="iv"><maml:name>InformationVariable</maml:name>
 <maml:Description><maml:para>Specifies an information variable.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Name</maml:name>
+<maml:Description><maml:para>Specifies the name of the circuit authorization that this cmdlet removes.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
