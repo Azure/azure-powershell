@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmIpsecPolicy
 
 ## SYNOPSIS
-Creates an IPSec policy.
+Creates an IPSec Policy.
 
 ## SYNTAX
 
@@ -22,9 +22,13 @@ The New-AzureRmIpsecPolicy cmdlet creates an IPSec policy proposal to be used in
 
 ## EXAMPLES
 
+### Example 1
 ```
-PS C:\>$ipsecPolicy = New-AzureRmIpsecPolicy -SALifeTimeSeconds 1000 -SADataSizeKilobytes 2000 -IpsecEncryption "GCMAES256" -IpsecIntegrity "GCMAES256" -IkeEncryption "AES256" -IkeIntegrity "SHA256" -DhGroup "DHGroup14" -PfsGroup "PFS2048"
+PS C:\> $ipsecPolicy = New-AzureRmIpsecPolicy -SALifeTimeSeconds 1000 -SADataSizeKilobytes 2000 -IpsecEncryption "GCMAES256" -IpsecIntegrity "GCMAES256" -IkeEncryption "AES256" -IkeIntegrity "SHA256" -DhGroup "DHGroup14" -PfsGroup "PFS2048"
+PS C:\> New-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey $sharedKey -UsePolicyBasedTrafficSelectors -IpsecPolicies $ipsecPolicy
 ```
+
+Creating an IPSec policy to be used for a new virtual network gateway connection.
 
 ## PARAMETERS
 
