@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string ConnectionStatus { get; set; }
 
-        public ulong EgressBytesTransferred { get; set; }
+        public long EgressBytesTransferred { get; set; }
 
-        public ulong IngressBytesTransferred { get; set; }
+        public long IngressBytesTransferred { get; set; }
 
         public List<PSTunnelConnectionHealth> TunnelConnectionStatus { get; set; }
 
