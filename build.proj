@@ -182,14 +182,16 @@
       Targets="Build"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
       BuildInParallel="$(BuildInParallel)"
-      ContinueOnError="false" />
+      ContinueOnError="false" />   	
 	
     <CallTarget Targets="BuildSetupTest"/>
 	<CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />	
 	<CallTarget Targets="BuildSetup"/>
 	<CallTarget Targets="CodeSignInstaller"
                 Condition=" '$(CodeSign)' == 'true' and '$(Scope)' == 'all'" />
-	
+	<Exec Command="$(PowerShellCommand) -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\GenerateHelp.ps1 -ValidateMarkdownHelp &quot;"/>
+	<Exec Command="$(PowerShellCommand) -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\GenerateHelp.ps1 -GenerateMarkdownHelp &quot;"
+				Condition=" '$(CodeSign)' == 'true' " />
 	<Message Importance="high" Text="Running Static Analyser" />
     <CallTarget targets="DependencyAnalysis" />
   </Target>
