@@ -139,21 +139,6 @@
       <Link>AzureRM.MachineLearning.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="help\AzureRM.MachineLearning.md" />
-    <None Include="help\Export-AzureRmMlWebService.md" />
-    <None Include="help\Get-AzureRmMlCommitmentAssociation.md" />
-    <None Include="help\Get-AzureRmMlCommitmentPlan.md" />
-    <None Include="help\Get-AzureRmMlCommitmentPlanUsageHistory.md" />
-    <None Include="help\Get-AzureRmMlWebService.md" />
-    <None Include="help\Get-AzureRmMlWebServiceKeys.md" />
-    <None Include="help\Import-AzureRmMlWebService.md" />
-    <None Include="help\Move-AzureRmMlCommitmentAssociation.md" />
-    <None Include="help\New-AzureRmMlCommitmentPlan.md" />
-    <None Include="help\New-AzureRmMlWebService.md" />
-    <None Include="help\Remove-AzureRmMlCommitmentPlan.md" />
-    <None Include="help\Remove-AzureRmMlWebService.md" />
-    <None Include="help\Update-AzureRmMlCommitmentPlan.md" />
-    <None Include="help\Update-AzureRmMlWebService.md" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
@@ -165,11 +150,11 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Microsoft.Azure.Commands.MachineLearning.dll-help.xml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="AfterBuild">
+    <ItemGroup>
+      <MarkdownFiles Include="$(ProjectDir)help\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutDir)help\" ContinueOnError="false" />
+  </Target>
 </Project>
