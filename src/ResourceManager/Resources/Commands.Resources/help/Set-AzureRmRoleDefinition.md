@@ -18,14 +18,12 @@ Finally, save the role definition using this command.
 
 ### InputFileParameterSet
 ```
-Set-AzureRmRoleDefinition -InputFile <String> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>]
+Set-AzureRmRoleDefinition -InputFile <String> [<CommonParameters>]
 ```
 
 ### RoleDefinitionParameterSet
 ```
-Set-AzureRmRoleDefinition -Role <PSRoleDefinition> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>]
+Set-AzureRmRoleDefinition -Role <PSRoleDefinition> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,6 +52,8 @@ Following is a sample updated role definition json for Set-AzureRmRoleDefinition
 ### --------------------------  Update using PSRoleDefinitionObject  --------------------------
 @{paragraph=PS C:\\\>}
 
+
+
 ```
 PS C:\> $roleDef = Get-AzureRmRoleDefinition "Contoso On-Call"
           PS C:\> $roleDef.Actions.Add("Microsoft.ClassicCompute/virtualmachines/start/action")
@@ -65,6 +65,8 @@ PS C:\> $roleDef = Get-AzureRmRoleDefinition "Contoso On-Call"
 
 ### --------------------------  Create using JSON file  --------------------------
 @{paragraph=PS C:\\\>}
+
+
 
 ```
 PS C:\> Set-AzureRmRoleDefinition -InputFile C:\Temp\roleDefinition.json
@@ -89,45 +91,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Role
 Role definition object to be updated
 
@@ -142,6 +105,9 @@ Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

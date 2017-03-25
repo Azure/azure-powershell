@@ -14,7 +14,7 @@ Removes an ExpressRoute circuit peering configuration.
 
 ```
 Remove-AzureRmExpressRouteCircuitPeeringConfig [-Name <String>] -ExpressRouteCircuit <PSExpressRouteCircuit>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,9 +25,9 @@ peering configuration.
 
 ### Example 1: Remove a peering configuration from an ExpressRoute circuit
 ```
-$circuit =�Get-AzureRmExpressRouteCircuit�-Name�$CircuitName�-ResourceGroupName�$rg
-Remove-AzureRmExpressRouteCircuitPeeringConfig�-Name�'AzurePrivatePeering' -ExpressRouteCircuit $circuit
-Set-AzureRmExpressRouteCircuit�-ExpressRouteCircuit�$circuit
+$circuit =ï¿½Get-AzureRmExpressRouteCircuitï¿½-Nameï¿½$CircuitNameï¿½-ResourceGroupNameï¿½$rg
+Remove-AzureRmExpressRouteCircuitPeeringConfigï¿½-Nameï¿½'AzurePrivatePeering' -ExpressRouteCircuit $circuit
+Set-AzureRmExpressRouteCircuitï¿½-ExpressRouteCircuitï¿½$circuit
 ```
 
 ## PARAMETERS
@@ -44,45 +44,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

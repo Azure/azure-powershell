@@ -13,8 +13,7 @@ Gets an Azure ExpressRoute circuit from Azure.
 ## SYNTAX
 
 ```
-Get-AzureRmExpressRouteCircuit [-Name <String>] [-ResourceGroupName <String>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmExpressRouteCircuit [-Name <String>] [-ResourceGroupName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,49 +25,10 @@ operate on ExpressRoute circuits.
 
 ### Example 1: Get the ExpressRoute circuit to be deleted
 ```
-Get-AzureRmExpressRouteCircuit�-Name�$CircuitName�-ResourceGroupName�$rg | Remove-AzureRmExpressRouteCircuit
+Get-AzureRmExpressRouteCircuitï¿½-Nameï¿½$CircuitNameï¿½-ResourceGroupNameï¿½$rg | Remove-AzureRmExpressRouteCircuit
 ```
 
 ## PARAMETERS
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Name
 The name of the ExpressRoute circuit.
