@@ -14,9 +14,9 @@ Creates a Storage account.
 
 ```
 New-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <String>
- [-Location] <String> [[-Kind] <String>] [[-AccessTier] <String>] [[-CustomDomainName] <String>]
- [[-UseSubDomain] <Boolean>] [[-EnableEncryptionService] <EncryptionSupportServiceEnum>] [[-Tag] <Hashtable>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-Location] <String> [-Kind <String>] [-AccessTier <String>] [-CustomDomainName <String>]
+ [-UseSubDomain <Boolean>] [-EnableEncryptionService <EncryptionSupportServiceEnum>] [-Tag <Hashtable>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,8 +48,88 @@ This command creates a Storage account that enabled Storage Service encryption o
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the name of the resource group in which to add the Storage account.
+### -AccessTier
+Specifies the access tier of the Storage account that this cmdlet creates.
+The acceptable values for this parameter are: Hot and Cool.
+
+If you specify a value of BlobStorage for the *Kind* parameter, you must specify a value for the *AccessTier* parameter.
+
+If you specify a value of Storage for this *Kind* parameter, do not specify the *AccessTier* parameter.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Hot, Cool
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomDomainName
+Specifies the name of the custom domain of the Storage account.
+The default value is Storage.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableEncryptionService
+Indicates whether this cmdlet enables Storage Service encryption on the Storage Service.
+Azure Blob and Azure File Services are supported.
+
+```yaml
+Type: EncryptionSupportServiceEnum
+Parameter Sets: (All)
+Aliases: 
+Accepted values: None, Blob, File
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Kind
+Specifies the kind of Storage account that this cmdlet creates.
+The acceptable values for this parameter are:
+
+- Storage.
+General purpose storage account that supports storage of Blobs, Tables, Queues, Files and Disks.
+ 
+- BlobStorage.
+Blob storage account which supports storage of Blobs only.
+ 
+
+The default value is Storage.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Storage, BlobStorage
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Specifies the location of the Storage account to create.
 
 ```yaml
 Type: String
@@ -57,7 +137,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 0
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -73,6 +153,21 @@ Aliases: StorageAccountName, AccountName
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the name of the resource group in which to add the Storage account.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -97,118 +192,12 @@ Premium locally-redundant storage.
 Type: String
 Parameter Sets: (All)
 Aliases: StorageAccountType, AccountType, Type
+Accepted values: Standard_LRS, Standard_ZRS, Standard_GRS, Standard_RAGRS, Premium_LRS
 
 Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Kind
-Specifies the kind of Storage account that this cmdlet creates.
-The acceptable values for this parameter are:
-
-- Storage.
-General purpose storage account that supports storage of Blobs, Tables, Queues, Files and Disks.
- 
-- BlobStorage.
-Blob storage account which supports storage of Blobs only.
- 
-
-The default value is Storage.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AccessTier
-Specifies the access tier of the Storage account that this cmdlet creates.
-The acceptable values for this parameter are: Hot and Cool.
-
-If you specify a value of BlobStorage for the *Kind* parameter, you must specify a value for the *AccessTier* parameter.
-
-If you specify a value of Storage for this *Kind* parameter, do not specify the *AccessTier* parameter.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-Specifies the location of the Storage account to create.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 5
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -CustomDomainName
-Specifies the name of the custom domain of the Storage account.
-The default value is Storage.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 6
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UseSubDomain
-Indicates whether to enable indirect CName validation.
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 7
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableEncryptionService
-Indicates whether this cmdlet enables Storage Service encryption on the Storage Service.
-Azure Blob and Azure File Services are supported.
-
-```yaml
-Type: EncryptionSupportServiceEnum
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 8
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -223,43 +212,19 @@ Parameter Sets: (All)
 Aliases: Tags
 
 Required: False
-Position: 9
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
+### -UseSubDomain
+Indicates whether to enable indirect CName validation.
 
 ```yaml
-Type: String
+Type: Boolean
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
 
 Required: False
 Position: Named

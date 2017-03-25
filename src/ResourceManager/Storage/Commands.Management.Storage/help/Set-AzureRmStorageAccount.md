@@ -13,11 +13,10 @@ Modifies a Storage account.
 ## SYNTAX
 
 ```
-Set-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [[-SkuName] <String>]
- [[-AccessTier] <String>] [[-CustomDomainName] <String>] [[-UseSubDomain] <Boolean>]
- [[-EnableEncryptionService] <EncryptionSupportServiceEnum>]
- [[-DisableEncryptionService] <EncryptionSupportServiceEnum>] [[-Tag] <Hashtable>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
+Set-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-SkuName <String>]
+ [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>]
+ [-EnableEncryptionService <EncryptionSupportServiceEnum>]
+ [-DisableEncryptionService <EncryptionSupportServiceEnum>] [-Tag <Hashtable>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -48,7 +47,6 @@ PS C:\>Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountNa
 
 This command enables Storage Service encryption on Blob and File for a Storage account.
 
-
 ### Example 4: Set the access tier value
 ```
 PS C:\>Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -AccessTier Cool
@@ -58,18 +56,90 @@ The command sets the Access Tier value to be cool.
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the name of the resource group in which to modify the Storage account.
+### -AccessTier
+Specifies the access tier of the Storage account that this cmdlet modifies.
+The acceptable values for this parameter are: Hot and Cool.
+
+If you change the access tier, it may result in additional charges.
+For more information, see Azure Blob Storage: Hot and cool storage tiershttp://go.microsoft.com/fwlink/?LinkId=786482 (http://go.microsoft.com/fwlink/?LinkId=786482).
+If the kind of Storage account is Storage, do not specify this parameter.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Hot, Cool
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomDomainName
+Specifies the name of the custom domain.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableEncryptionService
+Indicates whether this cmdlet disables Storage Service encryption on the Storage Service.
+Azure Blob and Azure File Services are supported.
+
+```yaml
+Type: EncryptionSupportServiceEnum
+Parameter Sets: (All)
+Aliases: 
+Accepted values: None, Blob, File
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableEncryptionService
+Indicates whether this cmdlet enables Storage Service encryption on the Storage Service.
+Azure Blob and Azure File Services are supported.
+
+```yaml
+Type: EncryptionSupportServiceEnum
+Parameter Sets: (All)
+Aliases: 
+Accepted values: None, Blob, File
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+If you change the access tier, it may result in additional charges.
+For more information, see Azure Blob Storage: Hot and cool storage tiershttp://go.microsoft.com/fwlink/?LinkId=786482 (http://go.microsoft.com/fwlink/?LinkId=786482).
+If the kind of Storage account is Storage, do not specify this parameter.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -88,20 +158,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Force
-If you change the access tier, it may result in additional charges.
-For more information, see Azure Blob Storage: Hot and cool storage tiershttp://go.microsoft.com/fwlink/?LinkId=786482 (http://go.microsoft.com/fwlink/?LinkId=786482).
-If the kind of Storage account is Storage, do not specify this parameter.
+### -ResourceGroupName
+Specifies the name of the resource group in which to modify the Storage account.
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -127,93 +195,12 @@ You cannot change other account types to Standard_ZRS or Premium_LRS.
 Type: String
 Parameter Sets: (All)
 Aliases: StorageAccountType, AccountType, Type
+Accepted values: Standard_LRS, Standard_ZRS, Standard_GRS, Standard_RAGRS, Premium_LRS
 
 Required: False
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -AccessTier
-Specifies the access tier of the Storage account that this cmdlet modifies.
-The acceptable values for this parameter are: Hot and Cool.
-
-If you change the access tier, it may result in additional charges.
-For more information, see Azure Blob Storage: Hot and cool storage tiershttp://go.microsoft.com/fwlink/?LinkId=786482 (http://go.microsoft.com/fwlink/?LinkId=786482).
-If the kind of Storage account is Storage, do not specify this parameter.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CustomDomainName
-Specifies the name of the custom domain.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UseSubDomain
-Indicates whether to enable indirect CName validation.
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableEncryptionService
-Indicates whether this cmdlet enables Storage Service encryption on the Storage Service.
-Azure Blob and Azure File Services are supported.
-
-```yaml
-Type: EncryptionSupportServiceEnum
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 6
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisableEncryptionService
-Indicates whether this cmdlet disables Storage Service encryption on the Storage Service.
-Azure Blob and Azure File Services are supported.
-
-```yaml
-Type: EncryptionSupportServiceEnum
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 7
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -228,43 +215,19 @@ Parameter Sets: (All)
 Aliases: Tags
 
 Required: False
-Position: 8
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -UseSubDomain
+Indicates whether to enable indirect CName validation.
 
 ```yaml
-Type: ActionPreference
+Type: Boolean
 Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
+Aliases: 
 
 Required: False
 Position: Named

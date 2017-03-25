@@ -12,7 +12,7 @@ This topic displays help topics for the Azure SQL Database Cmdlets.
 
 ## AzureRM.Sql Cmdlets
 ### [Add-AzureRmSqlDatabaseToFailoverGroup](Add-AzureRmSqlDatabaseToFailoverGroup.md)
-{{Fill in the Synopsis}}
+Cmdlet that adds databases into the Azure SQL Failover Group
 
 ### [Add-AzureRmSqlServerKeyVaultKey](Add-AzureRmSqlServerKeyVaultKey.md)
 Adds a Key Vault key to a SQL server.
@@ -45,7 +45,7 @@ Gets the data masking rules from a database.
 Gets a database and its expanded property values.
 
 ### [Get-AzureRmSqlDatabaseFailoverGroup](Get-AzureRmSqlDatabaseFailoverGroup.md)
-{{Fill in the Synopsis}}
+Cmdlet to get the Azure SQL Failover Group Object
 
 ### [Get-AzureRmSqlDatabaseGeoBackup](Get-AzureRmSqlDatabaseGeoBackup.md)
 Gets a geo-redundant backup of a database.
@@ -165,7 +165,7 @@ Creates a data masking rule for a database.
 Exports an Azure SQL Database as a .bacpac file to a storage account.
 
 ### [New-AzureRmSqlDatabaseFailoverGroup](New-AzureRmSqlDatabaseFailoverGroup.md)
-{{Fill in the Synopsis}}
+This command is executed in the context of the primary server. It creates the new Azure SQL Failover Group on the server. 
 
 ### [New-AzureRmSqlDatabaseImport](New-AzureRmSqlDatabaseImport.md)
 Imports a .bacpac file and create a new database on the server.
@@ -198,10 +198,10 @@ Removes the auditing of a database.
 Removes a data masking rule from a database.
 
 ### [Remove-AzureRmSqlDatabaseFailoverGroup](Remove-AzureRmSqlDatabaseFailoverGroup.md)
-{{Fill in the Synopsis}}
+The Cmdlet that removes the Azure SQL Failover Group
 
-### [Remove-AzureRmSqlDatabaseFromFailoverGroup](Remove-AzureRmSqlDatabaseFromFailoverGroup.md)
-{{Fill in the Synopsis}}
+### [Remove-AzureRmSqlDatabaseFromFailoverGroup](Remove-AzureRmSqlDatabaseFailoverGroup.md)
+Cmdlet that removes databases from the Azure SQL Failover Group
 
 ### [Remove-AzureRmSqlDatabaseSecondary](Remove-AzureRmSqlDatabaseSecondary.md)
 Terminates data replication between a SQL Database and the specified secondary database.
@@ -261,7 +261,7 @@ Sets data masking for a database.
 Sets the properties of a data masking rule for a database.
 
 ### [Set-AzureRmSqlDatabaseFailoverGroup](Set-AzureRmSqlDatabaseFailoverGroup.md)
-{{Fill in the Synopsis}}
+The Cmdlet that sets properties of the Azure SQL Failover Group
 
 ### [Set-AzureRmSqlDatabaseGeoBackupPolicy](Set-AzureRmSqlDatabaseGeoBackupPolicy.md)
 Sets a database geo backup policy.
@@ -333,7 +333,7 @@ Stops the upgrade of a SQL Database server.
 Suspends a SQL Data Warehouse database.
 
 ### [Switch-AzureRmSqlDatabaseFailoverGroup](Switch-AzureRmSqlDatabaseFailoverGroup.md)
-{{Fill in the Synopsis}}
+The Cmdlet that issues failover operation on Azure SQL Failover Group
 
 ### [Use-AzureRmSqlServerAuditingPolicy](Use-AzureRmSqlServerAuditingPolicy.md)
 Specifies that a database uses the auditing policy of its host server.

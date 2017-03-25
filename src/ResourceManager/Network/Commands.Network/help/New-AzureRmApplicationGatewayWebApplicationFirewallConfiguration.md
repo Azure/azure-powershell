@@ -57,6 +57,7 @@ The acceptable values for this parameter are:
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Detection, Prevention
 
 Required: True
 Position: Named

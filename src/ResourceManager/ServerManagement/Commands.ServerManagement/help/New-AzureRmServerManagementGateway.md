@@ -14,8 +14,7 @@ Creates a Server Management gateway.
 
 ```
 New-AzureRmServerManagementGateway [-ResourceGroupName] <String> [-GatewayName] <String> [-Location] <String>
- [-AutoUpgrade] [-Tags <Hashtable>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ [-AutoUpgrade] [-Tags <Hashtable>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,16 +29,16 @@ The **New-AzureRmServerManagementGateway** cmdlet creates an Azure Server Manage
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the name of the resource group in which this cmdlet creates the gateway.
+### -AutoUpgrade
+Indicates that the gateway will auto upgrade itself when a new version is released.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -75,16 +74,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -AutoUpgrade
-Indicates that the gateway will auto upgrade itself when a new version is released.
+### -ResourceGroupName
+Specifies the name of the resource group in which this cmdlet creates the gateway.
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -103,45 +102,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

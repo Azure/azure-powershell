@@ -14,26 +14,22 @@ Gets one or more Server Management Gateways.
 
 ### NoParams (Default)
 ```
-Get-AzureRmServerManagementGateway [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+Get-AzureRmServerManagementGateway [<CommonParameters>]
 ```
 
 ### Many-ByResourceGroup
 ```
-Get-AzureRmServerManagementGateway [-ResourceGroupName] <String> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmServerManagementGateway [-ResourceGroupName] <String> [<CommonParameters>]
 ```
 
 ### Single-ByName
 ```
-Get-AzureRmServerManagementGateway [-ResourceGroupName] <String> [-GatewayName] <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmServerManagementGateway [-ResourceGroupName] <String> [-GatewayName] <String> [<CommonParameters>]
 ```
 
 ### Single-ByObject
 ```
-Get-AzureRmServerManagementGateway [-Gateway] <Gateway> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmServerManagementGateway [-Gateway] <Gateway> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,57 +71,22 @@ This command gets all instances of a Server Management Gateway named Gateway01 t
 
 ## PARAMETERS
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
+### -Gateway
+Specifies a gateway that this cmdlet gets.
 
-The acceptable values for this parameter are:
+The cmdlet uses the *ResourceGroupName* and *GatewayName* parameters through the specified Gateway to perform the action.
 
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+When this parameter is specified, this cmdlet will include detailed status for the gateway.
 
 ```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specifies the name of the resource group for which this cmdlet gets gateways.
-
-```yaml
-Type: String
-Parameter Sets: Many-ByResourceGroup, Single-ByName
+Type: Gateway
+Parameter Sets: Single-ByObject
 Aliases: 
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -146,22 +107,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Gateway
-Specifies a gateway that this cmdlet gets.
-
-The cmdlet uses the *ResourceGroupName* and *GatewayName* parameters through the specified Gateway to perform the action.
-
-When this parameter is specified, this cmdlet will include detailed status for the gateway.
+### -ResourceGroupName
+Specifies the name of the resource group for which this cmdlet gets gateways.
 
 ```yaml
-Type: Gateway
-Parameter Sets: Single-ByObject
+Type: String
+Parameter Sets: Many-ByResourceGroup, Single-ByName
 Aliases: 
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
