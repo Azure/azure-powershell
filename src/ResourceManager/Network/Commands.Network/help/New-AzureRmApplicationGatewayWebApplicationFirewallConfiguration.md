@@ -14,7 +14,9 @@ Creates a WAF configuration for an application gateway.
 
 ```
 New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enabled <Boolean> -FirewallMode <String>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -RuleSetType <String> -RuleSetVersion <String>
+ [-DisabledRuleGroups <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallDisabledRuleGroup]>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,10 +26,14 @@ The **New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration** cmdlet 
 
 ### Example 1: Create a web application firewall configuration for an application gateway
 ```
-PS C:\>$FirewallConfig = New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enabled $True -FirewallMode "Prevention"
-```
+PS C:\> $disabledRuleGroup1 = New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName "crs_41_sql_injection_attacks" -Rules 981318,981320
+PS C:\> $disabledRuleGroup2 = New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName "crs_35_bad_robots"
+PS C:\> $firewallConfig = New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode Prevention -RuleSetType "OWASP" -RuleSetVersion "2.2.9" -DisabledRuleGroups $disabledRuleGroup1,$disabledRuleGroup2
 
-This command creates a configuiration that prevents requests when matched by the WAF, and then stores it in the $FirewallConfig variable.
+```
+The first command creates a new disabled rule group configuration for a rule group named "crs_41_sql_injection_attacks" with rule 981318 and rule 981320 being disabled.
+The second command creates another disabled rule group configuration for a rule group named "crs_35_bad_robots". No rules are specifically passed and thus all rules of the rule group will disabled.
+The last command then creates a WAF configuration with firewalls disabled as configured in $disabledRuleGroup1 and #disabledRuleGroup2 which prevents requests when matched by the WAF. The new WAF configuration is stored in the $firewallConfig variable.
 
 ## PARAMETERS
 
@@ -65,33 +71,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
+### -DisabledRuleGroups
+The disabled rule groups.```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallDisabledRuleGroup]
 Parameter Sets: (All)
-Aliases: cf
+Aliases: 
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
+### -RuleSetType
+The type of the web application firewall rule set. Possible values are: 'OWASP'.```yaml
+Type: String
 Parameter Sets: (All)
-Aliases: wi
+Aliases: 
 
-Required: False
+Required: True
 Position: Named
-Default value: False
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RuleSetVersion
+The version of the rule set type.```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
