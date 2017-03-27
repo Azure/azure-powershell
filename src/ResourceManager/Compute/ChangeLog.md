@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+* Fix the bug of Get cmdlets, where the output did not include all of the results from next page links, if the result contains more than 120 items.
+
 ## Version 2.8.0
 * Updated Set-AzureRmVMAEMExtension and Test-AzureRmVMAEMExtension cmdlets to support managed disks
 
