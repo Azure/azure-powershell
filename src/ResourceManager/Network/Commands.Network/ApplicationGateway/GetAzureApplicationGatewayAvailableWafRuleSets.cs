@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.ExecuteCmdlet();
 
-            var availableWafRuleSets = this.ApplicationGatewayClient.GetAvailableWafRuleSets();
+            var availableWafRuleSets = this.ApplicationGatewayClient.ListAvailableWafRuleSets();
             var psAvailableWafRuleSets = Mapper.Map<PSApplicationGatewayAvailableWafRuleSetsResult>(availableWafRuleSets);
             WriteObject(psAvailableWafRuleSets);
         }
