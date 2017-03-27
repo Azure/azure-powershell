@@ -22,9 +22,9 @@ The **Get-AzureRmVirtualNetworkSubnetConfig** cmdlet gets one or more subnet con
 
 ## EXAMPLES
 
-### 1: Get a subnet in a virtual network 
+### 1: Get a subnet in a virtual network
 ```
- New-AzureRmResourceGroup -Name TestResourceGroup -Location centralus
+New-AzureRmResourceGroup -Name TestResourceGroup -Location centralus
     $frontendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name frontendSubnet 
     -AddressPrefix "10.0.1.0/24"
     $virtualNetwork = New-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName 
@@ -35,36 +35,6 @@ The **Get-AzureRmVirtualNetworkSubnetConfig** cmdlet gets one or more subnet con
 This example creates a resource group and a virtual network with a single subnet in that resource group. It then retrieves data about that subnet.
 
 ## PARAMETERS
-
-### -Name
-Specifies the name of the subnet configuration that this cmdlet gets.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VirtualNetwork
-Specifies the **VirtualNetwork** object that contains the subnet configuration that this cmdlet gets.
-
-```yaml
-Type: PSVirtualNetwork
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -InformationAction
 Specifies how this cmdlet responds to an information event.
@@ -102,6 +72,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the name of the subnet configuration that this cmdlet gets.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VirtualNetwork
+Specifies the **VirtualNetwork** object that contains the subnet configuration that this cmdlet gets.
+
+```yaml
+Type: PSVirtualNetwork
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

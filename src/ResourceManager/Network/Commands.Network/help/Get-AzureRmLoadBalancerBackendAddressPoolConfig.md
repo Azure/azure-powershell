@@ -34,36 +34,6 @@ The second command gets the associated backend address pool configuration named 
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the load balancer that contains the backend address pool to get.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LoadBalancer
-Specifies the load balancer that is associated with the backend address pool to get.
-
-```yaml
-Type: PSLoadBalancer
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -InformationAction
 Specifies how this cmdlet responds to an information event.
 
@@ -95,6 +65,36 @@ Specifies an information variable.
 Type: String
 Parameter Sets: (All)
 Aliases: iv
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LoadBalancer
+Specifies the load balancer that is associated with the backend address pool to get.
+
+```yaml
+Type: PSLoadBalancer
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the name of the load balancer that contains the backend address pool to get.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
 Position: Named

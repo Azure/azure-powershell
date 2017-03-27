@@ -167,16 +167,18 @@ Test Get-AzureRmIntegrationAccountAgreement command
 function Test-GetIntegrationAccountAgreement
 {
 	$agreementX12FilePath = "$TestOutputRoot\Resources\IntegrationAccountX12AgreementContent.json"
-	$agreementX12Content = [IO.File]::ReadAllText($agreementX12FilePath)	
+	$agreementX12Content = [IO.File]::ReadAllText($agreementX12FilePath)
+
+	Assert-ThrowsContains { Get-AzureRmIntegrationAccountAgreement -ResourceGroupName "Random83da135" -IntegrationAccountName "DoesNotMatter" -AgreementName "DoesNotMatter" } "Resource group 'Random83da135' could not be found."
 
 	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
-	$integrationAccountName = getAssetname	
+	$integrationAccountName = getAssetname
 	
-	$integrationAccountX12AgreementName = getAssetname	
+	$integrationAccountX12AgreementName = getAssetname
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 	
-	$hostPartnerName = getAssetname	
+	$hostPartnerName = getAssetname
 	$guestPartnerName = getAssetname
 	$hostBusinessIdentities = @(("AA","AA"), ("BB","BB"))
 	$guestBusinessIdentities = @(("ZZ","ZZ"), ("XX","XX"))
@@ -189,7 +191,7 @@ function Test-GetIntegrationAccountAgreement
 	Assert-AreEqual $integrationAccountX12AgreementName $result.Name
 
 	$result1 =  Get-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName
-	Assert-True { $result1.Count -gt 0 }	
+	Assert-True { $result1.Count -gt 0 }
 
 	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
 }
@@ -254,11 +256,11 @@ function Test-UpdateIntegrationAccountAgreement
 	Assert-AreEqual $integrationAccountAgreementName $integrationAccountAgreement.Name
 	Assert-AreEqual "X12" $integrationAccountAgreement.AgreementType
 
-	Assert-ThrowsContains {Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -GuestIdentityQualifierValue "ZZ"  -Force} "Either Host business Identity qualifier or qualifier value is not specified."
-	Assert-ThrowsContains {Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ"  -HostIdentityQualifierValue "AA" -GuestIdentityQualifierValue "ZZ"  -Force} "Either Host business Identity qualifier or qualifier value is not specified."
+	Assert-ThrowsContains {Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -GuestIdentityQualifierValue "ZZ"  -Force} "Either 'Host' business Identity qualifier or qualifier value is not specified."
+	Assert-ThrowsContains {Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ"  -HostIdentityQualifierValue "AA" -GuestIdentityQualifierValue "ZZ"  -Force} "Either 'Host' business Identity qualifier or qualifier value is not specified."
 
-	Assert-ThrowsContains {Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -HostIdentityQualifierValue "AA" -Force} "Either Guest business Identity qualifier or qualifier value is not specified."	
-	Assert-ThrowsContains {Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifierValue "ZZ" -HostIdentityQualifier "AA" -HostIdentityQualifierValue "AA" -Force} "Either Guest business Identity qualifier or qualifier value is not specified."
+	Assert-ThrowsContains {Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -HostIdentityQualifierValue "AA" -Force} "Either 'Guest' business Identity qualifier or qualifier value is not specified."
+	Assert-ThrowsContains {Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifierValue "ZZ" -HostIdentityQualifier "AA" -HostIdentityQualifierValue "AA" -Force} "Either 'Guest' business Identity qualifier or qualifier value is not specified."
 
 
 	$updatedIntegrationAccountAgreement =  Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "AS2" -AgreementContent $agreementAS2Content -Force
