@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSApplicationGatewayFirewallRuleGroup> RuleGroups { get; set; }
 
         [JsonIgnore]
-        public string IpConfigurationText
+        public string RuleGroupsText
         {
             get { return JsonConvert.SerializeObject(this.RuleGroups, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
