@@ -1216,7 +1216,7 @@ function Test-VaultUpgrade
 	$prereqCheckResult = Test-AzureRecoveryServicesVaultUpgrade –ResourceType $ResourceType  -VaultName $VaultName -Location $Location –TargetResourceGroupName $TargetResourceGroupName 
 	Assert-NotNull($prereqCheckResult)
 
-	$res = Invoke-AzureRecoveryServicesVaultUpgrade –ResourceType $ResourceType -VaultName $VaultName -Location $Location –TargetResourceGroupName $TargetResourceGroupName 
+	$res = Invoke-AzureRecoveryServicesVaultUpgrade –ResourceType $ResourceType -VaultName $VaultName -Location $Location –TargetResourceGroupName $TargetResourceGroupName -Force
 	Assert-NotNull($res) "Upgrade Succeeded."
 }
 

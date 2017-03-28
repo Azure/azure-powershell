@@ -79,6 +79,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Prerequisites check for vault upgrade failed..
+        /// </summary>
+        internal static string CheckPrereqFailed {
+            get {
+                return ResourceManager.GetString("CheckPrereqFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Successfully completed prerequisites check for vault upgrade..
         /// </summary>
         internal static string CheckPrereqSucceded {
@@ -410,6 +419,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Starting prerequisites check for vault upgrade....
+        /// </summary>
+        internal static string StartingPrerequisitesCheck {
+            get {
+                return ResourceManager.GetString("StartingPrerequisitesCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Operation Failed.
         ///{0}Message: {1}.
         /// </summary>
@@ -481,15 +499,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         internal static string TrackVaultUpgradeJobResult {
             get {
                 return ResourceManager.GetString("TrackVaultUpgradeJobResult", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to As part of upgrade, your billing model will be automatically converted to an instance based billing model..
-        /// </summary>
-        internal static string UpdatingEABillingModel {
-            get {
-                return ResourceManager.GetString("UpdatingEABillingModel", resourceCulture);
             }
         }
         

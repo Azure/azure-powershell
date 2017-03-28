@@ -263,6 +263,9 @@ this action. The '{0}' cmdlet will be deprecated at some point in the future.</v
   <data name="CheckPrereqSucceded" xml:space="preserve">
     <value>Successfully completed prerequisites check for vault upgrade.</value>
   </data>
+  <data name="CheckPrereqFailed" xml:space="preserve">
+    <value>Prerequisites check for vault upgrade failed.</value>
+  </data>
   <data name="VaultUpgradeSucceded" xml:space="preserve">
     <value>{0} '{1}' has been successfully upgraded to Recovery Services vault and is now accessible through the new Azure portal at http://portal.azure.com.</value>
   </data>
@@ -292,9 +295,6 @@ OperationStatus : {1}</value>
   <data name="VaultNotFoundInGeo" xml:space="preserve">
     <value>Couldn't find vault - {0} in region {1} under the current subscription context.</value>
   </data>
-  <data name="UpdatingEABillingModel" xml:space="preserve">
-    <value>As part of upgrade, your billing model will be automatically converted to an instance based billing model.</value>
-  </data>
   <data name="ConfirmVaultUpgradePrereqFailed" xml:space="preserve">
     <value>{0}
     {1}</value>
@@ -313,5 +313,8 @@ OperationStatus : {1}</value>
   </data>
   <data name="StartVaultUpgradeWhatIfMessage" xml:space="preserve">
     <value>Starting vault upgrade</value>
+  </data>
+  <data name="StartingPrerequisitesCheck" xml:space="preserve">
+    <value>Starting prerequisites check for vault upgrade...</value>
   </data>
 </root>
