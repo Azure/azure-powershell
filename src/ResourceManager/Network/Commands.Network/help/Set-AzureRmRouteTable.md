@@ -73,21 +73,6 @@ The command passes that table to the Add-AzureRmRouteConfig cmdlet by using the 
 
 ## PARAMETERS
 
-### -RouteTable
-Specifies a route table object that represents the goal state to which this cmdlet sets the route table.
-
-```yaml
-Type: PSRouteTable
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -InformationAction
 Specifies how this cmdlet responds to an information event.
 
@@ -124,6 +109,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RouteTable
+Specifies a route table object that represents the goal state to which this cmdlet sets the route table.
+
+```yaml
+Type: PSRouteTable
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

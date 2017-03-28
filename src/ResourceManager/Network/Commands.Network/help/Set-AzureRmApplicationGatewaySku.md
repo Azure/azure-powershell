@@ -49,47 +49,6 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Specifies the name of the application gateway.
-The acceptable values for this parameter are:
-
-- Standard_Small
-- Standard_Medium
-- Standard_Large
-- WAF_Medium
-- WAF_Large
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tier
-Specifies the tier of the application gateway.
-The acceptable values for this parameter are:
-
-- Standard
-- WAF
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Capacity
 Specifies the instance count of the application gateway.
 
@@ -138,6 +97,47 @@ Parameter Sets: (All)
 Aliases: iv
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the name of the application gateway.
+The acceptable values for this parameter are:
+
+- Standard_Small
+- Standard_Medium
+- Standard_Large
+- WAF_Medium
+- WAF_Large
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tier
+Specifies the tier of the application gateway.
+The acceptable values for this parameter are:
+
+- Standard
+- WAF
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -92,70 +92,6 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Specifies the name of the front-end IP configuration to add.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PrivateIPAddress
-Specifies the private IP address to add as a front-end IP for the application gateway.
-If specified, this IP is statically allocated from the subnet.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubnetId
-Specifies the subnet ID which this cmdlet adds as the front-end IP configuration.
-Passing subnet implies private IP.
-If the *PrivateIPAddresss* parameter is specified, it should belong to this subnet.
-Otherwise, one of the IP from this subnet is dynamically picked up as the front-end IP of the application gateway.
-
-```yaml
-Type: String
-Parameter Sets: SetByResourceId
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PublicIPAddressId
-Specifies the ID of the public IP address which this cmdlet adds as a front-end IP address for the application gateway.
-
-```yaml
-Type: String
-Parameter Sets: SetByResourceId
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InformationAction
 Specifies how this cmdlet responds to an information event.
 
@@ -195,6 +131,67 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+Specifies the name of the front-end IP configuration to add.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateIPAddress
+Specifies the private IP address to add as a front-end IP for the application gateway.
+If specified, this IP is statically allocated from the subnet.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicIPAddress
+Specifies the public IP address which this cmdlet adds as a front-end IP address for the application gateway.
+
+```yaml
+Type: PSPublicIpAddress
+Parameter Sets: SetByResource
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicIPAddressId
+Specifies the ID of the public IP address which this cmdlet adds as a front-end IP address for the application gateway.
+
+```yaml
+Type: String
+Parameter Sets: SetByResourceId
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Subnet
 Specifies the subnet which this cmdlet adds as front-end IP configuration.
 If you specify this parameter, it implies that the application gateway supports a private IP based-configuration.
@@ -213,12 +210,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicIPAddress
-Specifies the public IP address which this cmdlet adds as a front-end IP address for the application gateway.
+### -SubnetId
+Specifies the subnet ID which this cmdlet adds as the front-end IP configuration.
+Passing subnet implies private IP.
+If the *PrivateIPAddresss* parameter is specified, it should belong to this subnet.
+Otherwise, one of the IP from this subnet is dynamically picked up as the front-end IP of the application gateway.
 
 ```yaml
-Type: PSPublicIpAddress
-Parameter Sets: SetByResource
+Type: String
+Parameter Sets: SetByResourceId
 Aliases: 
 
 Required: False
