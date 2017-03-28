@@ -60,57 +60,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Specifies the name of request routing rule this cmdlet adds.
+### -BackendAddressPool
+Specifies an application gateway back-end address pool object.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RuleType
-Specifies the type of request routing rule.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BackendHttpSettingsId
-Specifies a backend HTTP settings ID for an application gateway.
-
-```yaml
-Type: String
-Parameter Sets: SetByResourceId
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpListenerId
-Specifies application gateway HTTP listener ID.
-
-```yaml
-Type: String
-Parameter Sets: SetByResourceId
+Type: PSApplicationGatewayBackendAddressPool
+Parameter Sets: SetByResource
 Aliases: 
 
 Required: False
@@ -135,8 +90,53 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -UrlPathMapId
-Specifies the URL path map ID for the routing rule.
+### -BackendHttpSettings
+Specifies a back-end HTTP settings object for an application gateway.
+
+```yaml
+Type: PSApplicationGatewayBackendHttpSettings
+Parameter Sets: SetByResource
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackendHttpSettingsId
+Specifies a backend HTTP settings ID for an application gateway.
+
+```yaml
+Type: String
+Parameter Sets: SetByResourceId
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpListener
+Specifies application gateway HTTP listener object.
+
+```yaml
+Type: PSApplicationGatewayHttpListener
+Parameter Sets: SetByResource
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpListenerId
+Specifies application gateway HTTP listener ID.
 
 ```yaml
 Type: String
@@ -189,45 +189,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BackendHttpSettings
-Specifies a back-end HTTP settings object for an application gateway.
+### -Name
+Specifies the name of request routing rule this cmdlet adds.
 
 ```yaml
-Type: PSApplicationGatewayBackendHttpSettings
-Parameter Sets: SetByResource
+Type: String
+Parameter Sets: (All)
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HttpListener
-Specifies application gateway HTTP listener object.
+### -RuleType
+Specifies the type of request routing rule.
 
 ```yaml
-Type: PSApplicationGatewayHttpListener
-Parameter Sets: SetByResource
+Type: String
+Parameter Sets: (All)
 Aliases: 
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BackendAddressPool
-Specifies an application gateway back-end address pool object.
-
-```yaml
-Type: PSApplicationGatewayBackendAddressPool
-Parameter Sets: SetByResource
-Aliases: 
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -238,6 +223,21 @@ Accept wildcard characters: False
 ```yaml
 Type: PSApplicationGatewayUrlPathMap
 Parameter Sets: SetByResource
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UrlPathMapId
+Specifies the URL path map ID for the routing rule.
+
+```yaml
+Type: String
+Parameter Sets: SetByResourceId
 Aliases: 
 
 Required: False

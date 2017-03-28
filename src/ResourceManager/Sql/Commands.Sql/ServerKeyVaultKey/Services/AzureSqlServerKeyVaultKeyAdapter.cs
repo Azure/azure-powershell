@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Services
             {
                 Properties = new ServerKeyCreateOrUpdateProperties()
                 {
-                    Type = ServerKeyType.AzureKeyVault,
+                    ServerKeyType = ServerKeyType.AzureKeyVault,
                     Uri = model.Uri
                 }
             });
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Services
             ServerKey.ServerName = serverName;
             ServerKey.ServerKeyName = resp.Name;
             AzureSqlServerKeyVaultKeyModel.ServerKeyType type = AzureSqlServerKeyVaultKeyModel.ServerKeyType.AzureKeyVault;
-            Enum.TryParse<AzureSqlServerKeyVaultKeyModel.ServerKeyType>(resp.Properties.Type, out type);
+            Enum.TryParse<AzureSqlServerKeyVaultKeyModel.ServerKeyType>(resp.Properties.ServerKeyType, out type);
             ServerKey.Type = type;
             ServerKey.Uri = resp.Properties.Uri;
             ServerKey.Thumbprint = resp.Properties.Thumbprint;
