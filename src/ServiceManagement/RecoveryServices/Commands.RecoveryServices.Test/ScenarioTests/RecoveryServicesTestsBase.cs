@@ -25,6 +25,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.RecoveryServices;
 using Microsoft.WindowsAzure.Management.SiteRecovery;
+using Microsoft.WindowsAzure.Management.RecoveryServicesVaultUpgrade;
 using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
@@ -37,21 +38,33 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
         private RDFETestEnvironmentFactory rdfeTestFactory;
         private EnvironmentSetupHelper helper;
         protected string vaultSettingsFilePath;
+        protected string vaultName;
+        protected string location;
+        protected string resourceType;
+        protected string resourceNamespace;
+        protected string targetRgName;
         private ASRVaultCreds asrVaultCreds = null;
 
         public SiteRecoveryManagementClient SiteRecoveryMgmtClient { get; private set; }
         public RecoveryServicesManagementClient RecoveryServicesMgmtClient { get; private set; }
+        public RecoveryServicesVaultUpgradeManagementClient VaultUpgradeMgmtClient { get; private set; }
 
         protected RecoveryServicesTestsBase()
         {
             if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable("VAULT_SETTINGS_FILE_PATH")))
             {
                 Environment.SetEnvironmentVariable(
-                    "VAULT_SETTINGS_FILE_PATH", 
+                    "VAULT_SETTINGS_FILE_PATH",
                     Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ScenarioTests\\vaultSettings.vaultcredentials"));
             }
 
             this.vaultSettingsFilePath = Environment.GetEnvironmentVariable("VAULT_SETTINGS_FILE_PATH");
+            this.vaultName = Environment.GetEnvironmentVariable("RESOURCE_NAME");
+            this.location = Environment.GetEnvironmentVariable("VAULT_LOCATION");
+            this.resourceType = Environment.GetEnvironmentVariable("RESOURCE_TYPE");
+            this.targetRgName = Environment.GetEnvironmentVariable("TARGET_RG");
+            this.resourceNamespace = Environment.GetEnvironmentVariable("RESOURCE_NAMESPACE");
+
             if (string.IsNullOrEmpty(vaultSettingsFilePath))
             {
                 throw new Exception("Please set VAULT_SETTINGS_FILE_PATH environment variable before running the tests");
@@ -95,8 +108,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
         {
             RecoveryServicesMgmtClient = GetRecoveryServicesManagementClient();
             SiteRecoveryMgmtClient = GetSiteRecoveryManagementClient();
+            VaultUpgradeMgmtClient = GetVaultUpgradeManagementClient();
 
-            helper.SetupManagementClients(RecoveryServicesMgmtClient, SiteRecoveryMgmtClient);
+            helper.SetupManagementClients(RecoveryServicesMgmtClient, SiteRecoveryMgmtClient, VaultUpgradeMgmtClient);
         }
 
         protected void RunPowerShellTest(params string[] scripts)
@@ -135,6 +149,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
             return new SiteRecoveryManagementClient(
                 asrVaultCreds.CloudServiceName,
                 asrVaultCreds.ResourceName,
+                RecoveryServicesMgmtClient.Credentials,
+                RecoveryServicesMgmtClient.BaseUri).WithHandler(HttpMockServer.CreateInstance());
+        }
+
+        private RecoveryServicesVaultUpgradeManagementClient GetVaultUpgradeManagementClient()
+        {
+            return new RecoveryServicesVaultUpgradeManagementClient(
+                asrVaultCreds.CloudServiceName,
+                resourceNamespace,
+                resourceType,
+                vaultName,
                 RecoveryServicesMgmtClient.Credentials,
                 RecoveryServicesMgmtClient.BaseUri).WithHandler(HttpMockServer.CreateInstance());
         }
