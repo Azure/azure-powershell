@@ -1,4 +1,6 @@
 [
+    { "regex": "ApiManagement", "alias": "API Management" }, 
+    
     { "regex": "Snapshot", "alias": "VM Snapshots" }, 
     { "regex": "Image", "alias": "VM Images" }, 
     { "regex": "Vmss", "alias": "VM Scale Sets" }, 
@@ -9,9 +11,11 @@
     { "regex": "ApplicationGateway", "alias": "Application Gateway" }, 
     { "regex": "ExpressRoute", "alias": "Express Route" }, 
     { "regex": "LoadBalancer", "alias": "Load Balancer" }, 
+    { "regex": "VirtualNetwork", "alias": "Virtual Network" }, 
     { "regex": "Vpn", "alias": "VPN" }, 
     { "regex": "Route", "alias": "Route" }, 
     { "regex": "Dns", "alias": "DNS" }, 
+    { "regex": "NetworkWatcher", "alias": "Network Watcher" }, 
     { "regex": "Network", "alias": "Networking" }, 
 
     { "regex": "AppService", "alias": "App Service" }, 
@@ -20,8 +24,6 @@
     { "regex": "Storage", "alias": "Storage" }, 
 
     { "regex": "ServiceBus", "alias": "Service Bus" }, 
-
-    { "regex": "ApiManagement", "alias": "API Management" }, 
 
     { "regex": "Sql", "alias": "SQL" }, 
 
