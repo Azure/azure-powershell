@@ -23,9 +23,7 @@ The **Remove-AzureRmNetworkInterfaceIpConfig** cmdlet removes a network interfac
 ## EXAMPLES
 
 ### 1: Delete an IP configuration from a network interface
-
 ```
-
 $nic = Get-AzureRmNetworkInterface -Name mynic -ResourceGroupName myrg
 
 Remove-AzureRmNetworkInterfaceIpConfig -Name IPConfig-1 -NetworkInterface $nic
@@ -34,39 +32,7 @@ Remove-AzureRmNetworkInterfaceIpConfig -Name IPConfig-1 -NetworkInterface $nic
 The first command gets a network interface called mynic and stores it in the variable $nic. The second command
     removes the IP configuration called IPConfig-1 associated with this network interface.
 
-
 ## PARAMETERS
-
-### -Name
-Specifies the name of the network interface IP configuration to remove.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NetworkInterface
-Specifies a **NetworkInterface** object.
-This object contains the network interface IP configuration to remove.
-
-```yaml
-Type: PSNetworkInterface
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -InformationAction
 Specifies how this cmdlet responds to an information event.
@@ -104,6 +70,37 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the name of the network interface IP configuration to remove.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkInterface
+Specifies a **NetworkInterface** object.
+This object contains the network interface IP configuration to remove.
+
+```yaml
+Type: PSNetworkInterface
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

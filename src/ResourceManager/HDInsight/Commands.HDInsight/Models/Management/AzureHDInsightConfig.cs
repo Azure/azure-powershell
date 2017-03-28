@@ -53,6 +53,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public string WorkerNodeSize { get; set; }
 
         /// <summary>
+        /// Gets or sets the size of the Edge Node if supported by the cluster type.
+        /// </summary>
+        public string EdgeNodeSize { get; set; }
+
+        /// <summary>
         /// Gets or sets the size of the Zookeeper Node.
         /// </summary>
         public string ZookeeperNodeSize { get; set; }
