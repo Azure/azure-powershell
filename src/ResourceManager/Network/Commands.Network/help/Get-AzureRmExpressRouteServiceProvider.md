@@ -1,14 +1,13 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 ms.assetid: 009F6E65-0268-4505-AEC1-FF379CB96804
-online version:
+online version: 
 schema: 2.0.0
 ---
 
 # Get-AzureRmExpressRouteServiceProvider
 
 ## SYNOPSIS
-
 Gets a list ExpressRoute service providers and their attributes.
 
 ## SYNTAX
@@ -19,16 +18,14 @@ Get-AzureRmExpressRouteServiceProvider [-InformationAction <ActionPreference>] [
 ```
 
 ## DESCRIPTION
-
 The **Get-AzureRmExpressRouteServiceProvider** cmdlet retrieves a list ExpressRoute service
 providers and their attributes. Attribute include location and bandwidth options.
 
 ## EXAMPLES
 
 ### Example 1: Get a list of service provider with locations in "Silicon Valley"
-
-```powershell
- Get-AzureRmExpressRouteServiceProvider |
+```
+Get-AzureRmExpressRouteServiceProvider |
    Where-Object PeeringLocations -Contains "Silicon Valley" |
    Select-Object Name
 ```
@@ -36,7 +33,6 @@ providers and their attributes. Attribute include location and bandwidth options
 ## PARAMETERS
 
 ### -InformationAction
-
 Specifies how this cmdlet responds to an information event.
 
 The acceptable values for this parameter are:
@@ -61,7 +57,6 @@ Accept wildcard characters: False
 ```
 
 ### -InformationVariable
-
 Specifies an information variable.
 
 ```yaml
@@ -77,11 +72,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
--InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
--WarningAction, and -WarningVariable. For more information, see about_CommonParameters
-(http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

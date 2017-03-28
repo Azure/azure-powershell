@@ -37,22 +37,6 @@ The third command passes the load balancer to **Set-AzureRmLoadBalancer**, which
 
 ## PARAMETERS
 
-### -LoadBalancer
-Specifies a load balancer.
-This cmdlet sets the goal state for the load balancer that this parameter specifies.
-
-```yaml
-Type: PSLoadBalancer
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -InformationAction
 Specifies how this cmdlet responds to an information event.
 
@@ -89,6 +73,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LoadBalancer
+Specifies a load balancer.
+This cmdlet sets the goal state for the load balancer that this parameter specifies.
+
+```yaml
+Type: PSLoadBalancer
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
