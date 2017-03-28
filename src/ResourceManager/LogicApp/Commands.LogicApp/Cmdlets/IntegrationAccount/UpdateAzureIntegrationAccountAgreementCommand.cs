@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Updates the integration account agreement.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccountAgreement", SupportsShouldProcess = true),
-     OutputType(typeof (object))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccountAgreement", SupportsShouldProcess = true)]
+    [OutputType(typeof(IntegrationAccountAgreement))]
     public class UpdateAzureIntegrationAccountAgreementCommand : LogicAppBaseCmdlet
     {
 
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             if (!string.IsNullOrEmpty(this.AgreementType))
             {
                 integrationAccountAgreement.AgreementType =
-                    (AgreementType) Enum.Parse(typeof (AgreementType), this.AgreementType);
+                    (AgreementType) Enum.Parse(typeof(AgreementType), this.AgreementType);
             }
 
             if (!string.IsNullOrEmpty(this.AgreementContentFilePath))

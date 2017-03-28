@@ -8,13 +8,13 @@ environment:
 build_script:
   - ps: |
       $ErrorActionPreference = "Stop"
-      $response = Invoke-WebRequest ("https://api.github.com/repos/" + $env:APPVEYOR_REPO_NAME + "/releases/tags/" + $env:APPVEYOR_REPO_TAG_NAME) -Timeout 10
+      $response = Invoke-WebRequest ("https://api.github.com/repos/" + $env:APPVEYOR_REPO_NAME + "/releases/latest") -Timeout 10
       if($response -ne $null -and $response.StatusCode -ne 200)
       {
         $host.SetShouldExit(1)
       }
 
-      $unzip_path = "C:\projects\azure-powershell-release"
+      $unzip_path = "C:\projects\release"
       $unzip_file = $unzip_path + "zip"
       Invoke-WebRequest ($response.Content | ConvertFrom-Json).zipball_url -OutFile $unzip_file
       7z x $unzip_file -o"$unzip_path"
@@ -38,22 +38,25 @@ build_script:
           {
             continue
           }
-          if((gc $psd1 | Out-String) -notmatch "ModuleVersion\s*=\s*$pattern")
+          if((gc $psd1 | Out-String) -notmatch "ModuleVersion\s*=\s*'$pattern'")
           {
             continue
           }
-          robocopy $help "*.md" (Join-Path $global:output $folder | Join-Path -ChildPath (gi $psd1).BaseName | Join-Path -ChildPath ("v" + ($matches[0] -match $pattern)))
+          if($matches[0] -match $pattern)
+          {
+            robocopy $help "*.md" (Join-Path $global:output $folder | Join-Path -ChildPath (gi $psd1).BaseName | Join-Path -ChildPath ("v" + $matches[0]))
+          }
         }
       }
 test: off
 shallow_clone: true
 on_success:
-  - git clone -q --branch=%target_branch% %content_repo% %TEMP%\Azure
-  - cd %TEMP%\Azure
-  - ps: ls $global:output -dir | % { copy $_.FullName (ls -dir | select -First 1) -Recurse -Force }
   - git config --global credential.helper store
   - ps: ac "$env:USERPROFILE\.git-credentials" "https://$($env:github_access_token):x-oauth-basic@github.com`n"
   - git config --global user.email %email%
   - git config --global user.name %name%
+  - git clone -q --branch=%target_branch% %content_repo% %TEMP%\Azure
+  - cd %TEMP%\Azure
+  - ps: ls $global:output -dir | % { copy $_.FullName (ls -dir | select -First 1) -Recurse -Force }
   - git add -A
   - git diff --quiet --exit-code --cached || git commit -m "Sync docs from source code repo to content repo." && git push origin %target_branch% && appveyor AddMessage "Content Updated"

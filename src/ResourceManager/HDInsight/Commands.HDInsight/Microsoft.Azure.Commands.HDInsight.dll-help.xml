@@ -664,6 +664,13 @@
           <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>RServer</maml:name>
+          <maml:description>
+            <maml:para>Specifies the RServer configurations. Valid only for RServer clusters.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>InformationAction</maml:name>
           <maml:description>
             <maml:para />
@@ -840,6 +847,18 @@
         <maml:name>Hdfs</maml:name>
         <maml:description>
 				<maml:para>Specifies the HDFS configurations of this HDInsight cluster.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+        <dev:type>
+          <maml:name>Hashtable</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>RServer</maml:name>
+        <maml:description>
+          <maml:para>Specifies the RServer configurations. Valid only for RServer clusters.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
         <dev:type>
@@ -4430,9 +4449,16 @@
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>EdgeNodeSize</maml:name>
+          <maml:description>
+					<maml:para>Specifies the size of the virtual machine for the edge node. Use Get-AzureRmVMSize for acceptable VM sizes, and see HDInsight&#39;s pricing page. This parameter is valid only for RServer clusters.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ClusterType</maml:name>
           <maml:description>
-					<maml:para>Specifies the type of cluster to create. Options are: Hadoop, HBase, Storm, Spark</maml:para>
+					<maml:para>Specifies the type of cluster to create. Options are: Hadoop, HBase, Storm, Spark, RServer</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -4691,10 +4717,17 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>EdgeNodeSize</maml:name>
+        <maml:description>
+          <maml:para>Specifies the size of the virtual machine for the edge node. Use Get-AzureRmVMSize for acceptable VM sizes, and see HDInsight&#39;s pricing page. This parameter is valid only for RServer clusters.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ClusterType</maml:name>
 				<maml:description>
-					<maml:para>Specifies the type of cluster to create. Options are: Hadoop, HBase, Storm, Spark</maml:para>
+					<maml:para>Specifies the type of cluster to create. Options are: Hadoop, HBase, Storm, Spark, RServer</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -5054,9 +5087,21 @@
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>EdgeNodeSize</maml:name>
+        <maml:description>
+          <maml:para>Specifies the size of the virtual machine for the edge node. Use Get-AzureRmVMSize for acceptable VM sizes, and see HDInsight&#39;s pricing page. This parameter is valid only for RServer clusters.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ClusterType</maml:name>
         <maml:description>
-				<maml:para>Specifies the type of cluster to create. Options are: Hadoop, HBase, Storm, Spark</maml:para>
+				<maml:para>Specifies the type of cluster to create. Options are: Hadoop, HBase, Storm, Spark, RServer</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -5509,9 +5554,16 @@
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>EdgeNodeSize</maml:name>
+          <maml:description>
+            <maml:para>Specifies the size of the virtual machine for the edge node. Use Get-AzureRmVMSize for acceptable VM sizes, and see HDInsight&#39;s pricing page. This parameter is valid only for RServer clusters.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ClusterType</maml:name>
           <maml:description>
-					<maml:para>Specifies the type of cluster to create. Options are: Hadoop, HBase, Storm, Spark</maml:para>
+					<maml:para>Specifies the type of cluster to create. Options are: Hadoop, HBase, Storm, Spark, RServer</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -5671,9 +5723,21 @@
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>EdgeNodeSize</maml:name>
+        <maml:description>
+          <maml:para>Specifies the size of the virtual machine for the edge node. Use Get-AzureRmVMSize for acceptable VM sizes, and see HDInsight&#39;s pricing page. This parameter is valid only for RServer clusters.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ClusterType</maml:name>
         <maml:description>
-				<maml:para>Specifies the type of cluster to create. Options are: Hadoop, HBase, Storm, Spark</maml:para>
+				<maml:para>Specifies the type of cluster to create. Options are: Hadoop, HBase, Storm, Spark, RServer</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>

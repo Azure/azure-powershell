@@ -9168,170 +9168,152 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
   </command:command>
   <!--New-AzureSiteRecoverySite-->
   <!-- v 1.3.0.36 -->
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
-    <command:details>
-      <command:name>
-        New-AzureSiteRecoveryVault
-      </command:name>
-      <maml:description>
-        <maml:para>Creates a new Azure Site Recovery Vault</maml:para>
-      </maml:description>
-      <maml:copyright>
-        <maml:para>
-        </maml:para>
-      </maml:copyright>
-      <command:verb>New</command:verb>
-      <command:noun>AzureSiteRecoveryVault</command:noun>
-      <dev:version>
-      </dev:version>
-    </command:details>
-    <maml:description>
-      <maml:para>Creates a new Azure Site Recovery Vault</maml:para>
-    </maml:description>
-    <!-- Cmdlet syntax section-->
-    <command:syntax>
-      <command:syntaxItem>
-        <maml:name>New-AzureSiteRecoveryVault</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Location</maml:name>
-          <maml:description>
-            <maml:para>Geo Location Name</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Name</maml:name>
-          <maml:description>
-            <maml:para>Vault Name for which the cred file to be generated</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-    </command:syntax>
-    <!-- Cmdlet parameter section  -->
-    <command:parameters>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>Location</maml:name>
+  <command:command
+        xmlns:maml="http://schemas.microsoft.com/maml/2004/10"
+        xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10"
+        xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10"
+        xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+        <command:details>
+            <command:name>New-AzureSiteRecoverySite</command:name>
+            <maml:description>
+                <maml:para>Creates an Azure Site Recovery site.</maml:para>
+            </maml:description>
+            <maml:copyright>
+                <maml:para />
+            </maml:copyright>
+            <command:verb>New</command:verb>
+            <command:noun>AzureSiteRecoverySite</command:noun>
+            <dev:version />
+        </command:details>
         <maml:description>
-          <maml:para>Geo Location Name</maml:para>
+            <maml:para>The New-AzureSiteRecoverySite cmdlet creates an Azure Site Recovery site.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        <dev:type>
-          <maml:name>string</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>Name</maml:name>
-        <maml:description>
-          <maml:para>Vault Name for which the cred file to be generated</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        <dev:type>
-          <maml:name>string</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-    </command:parameters>
-    <!-- Input - Output section-->
-    <command:inputTypes>
-      <command:inputType>
-        <dev:type>
-          <maml:name>
-          </maml:name>
-          <maml:uri />
-          <maml:description />
-        </dev:type>
-        <maml:description>
-          <maml:para>
-            <!-- description  -->
-          </maml:para>
-        </maml:description>
-      </command:inputType>
-    </command:inputTypes>
-    <command:returnValues>
-      <command:returnValue>
-        <dev:type>
-          <maml:name>
-          </maml:name>
-          <maml:uri />
-          <maml:description />
-        </dev:type>
-        <maml:description>
-          <maml:para>
-            <!-- description  -->
-          </maml:para>
-        </maml:description>
-      </command:returnValue>
-    </command:returnValues>
-    <!-- Error section-->
-    <command:terminatingErrors />
-    <command:nonTerminatingErrors />
-    <!-- Notes section  -->
-    <maml:alertSet>
-      <maml:title>
-      </maml:title>
-      <maml:alert>
-        <maml:para>
-        </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
-      </maml:alert>
-      <maml:alert>
-        <maml:para>
-        </maml:para>
-      </maml:alert>
-    </maml:alertSet>
-    <!-- Example section  -->
-    <command:examples>
-      <command:example>
-        <maml:title>
-          -------------------------- EXAMPLE 1 --------------------------
-        </maml:title>
-        <maml:introduction>
-          <maml:para>C:\PS&gt;</maml:para>
-        </maml:introduction>
-        <dev:code>
-          New-AzureSiteRecoveryVault -Name testVault -Location "West US"
+        <command:syntax>
+            <command:syntaxItem>
+                <maml:name>New-AzureSiteRecoverySite</maml:name>
+                <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+                    <maml:name>Profile</maml:name>
+                    <maml:description>
+                        <maml:para>Specifies an Azure profile. </maml:para>
+                    </maml:description>
+                    <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
+                </command:parameter>
+                <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+                    <maml:name>Vault</maml:name>
+                    <maml:description>
+                        <maml:para>Specifies a vault for which to create the site. To obtain an ASRVault object, use the Get-AzureSiteRecoveryVault cmdlet. </maml:para>
+                    </maml:description>
+                    <command:parameterValue required="false" variableLength="false">ASRVault</command:parameterValue>
+                </command:parameter>
+                <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+                    <maml:name>Name</maml:name>
+                    <maml:description>
+                        <maml:para>Specifies a name for the site to create.</maml:para>
+                    </maml:description>
+                    <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+                </command:parameter>
+            </command:syntaxItem>
+        </command:syntax>
+        <command:parameters>
+            <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+                <maml:name>Name</maml:name>
+                <maml:description>
+                    <maml:para>Specifies a name for the site to create.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+                <dev:type>
+                    <maml:name>String</maml:name>
+                    <maml:uri />
+                </dev:type>
+                <dev:defaultValue>none</dev:defaultValue>
+            </command:parameter>
+            <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+                <maml:name>Profile</maml:name>
+                <maml:description>
+                    <maml:para>Specifies an Azure profile. </maml:para>
+                </maml:description>
+                <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
+                <dev:type>
+                    <maml:name>Microsoft.Azure.Common.Authentication.Models.AzureProfile</maml:name>
+                    <maml:uri />
+                </dev:type>
+                <dev:defaultValue>none</dev:defaultValue>
+            </command:parameter>
+            <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+                <maml:name>Vault</maml:name>
+                <maml:description>
+                    <maml:para>Specifies a vault for which to create the site. To obtain an ASRVault object, use the Get-AzureSiteRecoveryVault cmdlet. </maml:para>
+                </maml:description>
+                <command:parameterValue required="false" variableLength="false">ASRVault</command:parameterValue>
+                <dev:type>
+                    <maml:name>ASRVault</maml:name>
+                    <maml:uri />
+                </dev:type>
+                <dev:defaultValue>none</dev:defaultValue>
+            </command:parameter>
+        </command:parameters>
+        <command:inputTypes>
+            <command:inputType>
+                <dev:type>
+                    <maml:name></maml:name>
+                    <maml:uri></maml:uri>
+                    <maml:description>
+                        <maml:para />
+                    </maml:description>
+                </dev:type>
+                <maml:description>
+                    <maml:para></maml:para>
+                </maml:description>
+            </command:inputType>
+        </command:inputTypes>
+        <command:returnValues>
+            <command:returnValue>
+                <dev:type>
+                    <maml:name></maml:name>
+                    <maml:uri></maml:uri>
+                    <maml:description>
+                        <maml:para />
+                    </maml:description>
+                </dev:type>
+                <maml:description>
+                    <maml:para></maml:para>
+                </maml:description>
+            </command:returnValue>
+        </command:returnValues>
+        <command:terminatingErrors />
+        <command:nonTerminatingErrors />
+        <command:examples>
+            <command:example>
+                <maml:title>Example 1: Create a site recovery site</maml:title>
+                <maml:introduction>
+                    <maml:para></maml:para>
+                </maml:introduction>
+                <dev:code>PS C:\&gt;New-AzureSiteRecoverySite -Name "RecoverySite07"
 
-          Response
-          --------
-          Vault has been created
-        </dev:code>
-        <dev:remarks>
-          <maml:para>Description</maml:para>
-          <maml:para>-----------</maml:para>
-          <maml:para>
-          </maml:para>
-          <maml:para>
-          </maml:para>
-          <maml:para>
-          </maml:para>
-          <maml:para>
-          </maml:para>
-          <maml:para>
-          </maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText>
-            </command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-    </command:examples>
-    <!-- Link section  -->
-    <maml:relatedLinks>
-      <maml:navigationLink>
-        <maml:linkText>
-        </maml:linkText>
-        <maml:uri />
-      </maml:navigationLink>
-    </maml:relatedLinks>
-  </command:command>
+</dev:code>
+                <dev:remarks>
+                    <maml:para>This command creates a site recovery site named RecoverySite07.</maml:para>
+                    <maml:para />
+                    <maml:para />
+                </dev:remarks>
+                <command:commandLines>
+                    <command:commandLine>
+                        <command:commandText />
+                    </command:commandLine>
+                </command:commandLines>
+            </command:example>
+        </command:examples>
+        <maml:relatedLinks>
+            <maml:navigationLink>
+                <maml:linkText>Get-AzureSiteRecoverySite</maml:linkText>
+                <maml:uri />
+            </maml:navigationLink>
+            <maml:navigationLink>
+                <maml:linkText>Get-AzureSiteRecoveryVault</maml:linkText>
+                <maml:uri />
+            </maml:navigationLink>
+        </maml:relatedLinks>
+    </command:command>
   <!--Get-AzureSiteRecoverySite-->
   <!-- v 1.3.0.36 -->
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">

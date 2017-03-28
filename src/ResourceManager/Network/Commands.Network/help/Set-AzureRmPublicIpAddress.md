@@ -32,6 +32,7 @@ PS C:\> Set-AzureRmPublicIpAddress -PublicIpAddress $publicIp
 
 PS C:\> $publicIp = Get-AzureRmPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
 ```
+
  First command gets the public IP address resource with name $publicIPName in the resource 
     group $rgName.
     Second command sets the allocation method of the public IP address object to "Static".
@@ -49,6 +50,7 @@ PS C:\> Set-AzureRmPublicIpAddress -PublicIpAddress $publicIp
 
 PS C:\> $publicIp = Get-AzureRmPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
 ```
+
 First command gets the public IP address resource with name $publicIPName in the resource 
     group $rgName.
     Second command sets the DomainNameLabel property to the required dns prefix.
@@ -56,21 +58,6 @@ First command gets the public IP address resource with name $publicIPName in the
     updated object. DomainNameLabel & Fqdn are modified as expected.
 
 ## PARAMETERS
-
-### -PublicIpAddress
-Specifies a **PublicIpAddress** object that represents the goal state to which the public IP address should be set.
-
-```yaml
-Type: PSPublicIpAddress
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -InformationAction
 Specifies how this cmdlet responds to an information event.
@@ -108,6 +95,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicIpAddress
+Specifies a **PublicIpAddress** object that represents the goal state to which the public IP address should be set.
+
+```yaml
+Type: PSPublicIpAddress
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
