@@ -116,7 +116,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
                 if (xunitLogger != null)
                 {
-                    xunitLogger.Information(PowerShellUtilities.FormatErrorRecord(record));
+                    xunitLogger.Information(FormatErrorRecord(record));
                 }
             }
 
@@ -165,10 +165,24 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
 
             LogPowerShellStream<DebugRecord>(xunitLogger, powershell.Streams.Debug, "DEBUG");
-            LogPowerShellStream<string>(xunitLogger, powershell.Streams.Error.Select(PowerShellUtilities.FormatErrorRecord).ToList(), "ERROR");
+            LogPowerShellStream<string>(xunitLogger, powershell.Streams.Error.Select(FormatErrorRecord).ToList(), "ERROR");
             LogPowerShellStream<ProgressRecord>(xunitLogger, powershell.Streams.Progress, "PROGRESS");
             LogPowerShellStream<VerboseRecord>(xunitLogger, powershell.Streams.Verbose, "VERBOSE");
             LogPowerShellStream<WarningRecord>(xunitLogger, powershell.Streams.Warning, "WARNING");
+        }
+
+        /// <summary>
+        /// Formats an <see cref="ErrorRecord"/> to a detailed string for logging.
+        /// </summary>
+        internal static string FormatErrorRecord(ErrorRecord record)
+        {
+            return String.Format(
+                "PowerShell Error Record: {0}\nException:{1}\nDetails:{2}\nScript Stack Trace: {3}\n: Target: {4}\n",
+                record,
+                record.Exception,
+                record.ErrorDetails,
+                record.ScriptStackTrace,
+                record.TargetObject);
         }
 
         /// <summary>

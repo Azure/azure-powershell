@@ -371,7 +371,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                         throw new RuntimeException(
                             string.Format(
                                 "Test failed due to a non-empty error stream. First error: {0}{1}",
-                                PowerShellUtilities.FormatErrorRecord(powershell.Streams.Error[0]),
+                                PowerShellExtensions.FormatErrorRecord(powershell.Streams.Error[0]),
                                 powershell.Streams.Error.Count > 0
                                     ? "Check the error stream in the test log for additional errors."
                                     : ""));
