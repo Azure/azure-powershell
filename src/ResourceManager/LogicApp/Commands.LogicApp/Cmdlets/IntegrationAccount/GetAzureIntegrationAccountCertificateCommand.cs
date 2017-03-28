@@ -16,11 +16,14 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
     using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
+    using Microsoft.Azure.Management.Logic.Models;
+    using Microsoft.Rest.Azure;
 
     /// <summary>
     /// Gets the integration account certificate by name.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmIntegrationAccountCertificate"), OutputType(typeof (object))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmIntegrationAccountCertificate")]
+    [OutputType(typeof(IntegrationAccountCertificate), typeof(IPage<IntegrationAccountCertificate>))]
     public class GetAzureIntegrationAccountCertificateCommand : LogicAppBaseCmdlet
     {
 
@@ -50,7 +53,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             base.ExecuteCmdlet();
             if (string.IsNullOrEmpty(this.CertificateName))
             {
-                this.WriteObject(IntegrationAccountClient.ListIntegrationAccountCertificates(this.ResourceGroupName,this.Name), true);
+                this.WriteObject(IntegrationAccountClient.ListIntegrationAccountCertificates(this.ResourceGroupName, this.Name), true);
             }
             else
             {
