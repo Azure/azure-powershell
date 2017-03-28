@@ -311,7 +311,6 @@ function Compare-WebApplicationFirewallConfiguration($expected, $actual)
 		{
 			Assert-Null $actual.DisabledRuleGroups
 		}
-		
 	}
 	else
 	{
@@ -339,7 +338,6 @@ function Compare-DisabledRuleGroup($expected, $actual)
 		{
 			Assert-Null $actual.Rules
 		}
-		
 	}
 	else
 	{
