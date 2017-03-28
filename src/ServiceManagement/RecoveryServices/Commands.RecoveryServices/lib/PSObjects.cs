@@ -241,6 +241,61 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Acceptable values of Replication Frequency in seconds (as per portal).
         /// </summary>
         public const string NineHundred = "900";
+
+        /// <summary>
+        /// Acceptable value of ResourceType passed during vault upgrade.
+        /// </summary>
+        public const string BackupVault = "BackupVault";
+        
+        /// <summary>
+        /// ASR namespace.
+        /// </summary>
+        public const string ASRNamespace = "WAHyperVRecoveryManager";
+
+        /// <summary>
+        /// Backup namespace.
+        /// </summary>
+        public const string BackupNamespace = "WABackup";
+
+        /// <summary>
+        /// Represents in progress state.
+        /// </summary>
+        public const string InProgress = "InProgress";
+
+        /// <summary>
+        /// Represents succeeded state.
+        /// </summary>
+        public const string Succeeded = "Succeeded";
+
+        /// <summary>
+        /// Represents completed state.
+        /// </summary>
+        public const string Completed = "Completed";
+
+        /// <summary>
+        /// Represents state "validation failed"
+        /// </summary>
+        public const string ValidationFailed = "ValidationFailed";
+
+        /// <summary>
+        /// Represents state "validation succeeded"
+        /// </summary>
+        public const string ValidationSucceeded = "ValidationSucceeded";
+
+        /// <summary>
+        /// Represents vaults string value.
+        /// </summary>
+        public const string Vaults = "Vaults";
+
+        /// <summary>
+        /// Represents Recovery service namespace value.
+        /// </summary>
+        public const string RecoveryServicesNamespace = "Microsoft.RecoveryServices";
+
+        /// <summary>
+        /// Represents the state where unsupported billing model is getting used.
+        /// </summary>
+        public const string UnsupportedBillingModel = "UnsupportedBillingModel";
     }
 
     /// <summary>
