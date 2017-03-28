@@ -49,43 +49,12 @@ Note that the rule configuration was set without enabling floating IP, which had
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of an inbound NAT rule configuration.
+### -BackendPort
+Specifies the backend port for traffic that is matched by this rule configuration.
 
 ```yaml
-Type: String
+Type: Int32
 Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LoadBalancer
-Specifies a load balancer.
-This cmdlet sets an inbound NAT rule configuration for the load balancer that this parameter specifies.
-
-```yaml
-Type: PSLoadBalancer
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -FrontendIpConfigurationId
-Specifies the ID for a front-end IP address configuration.
-
-```yaml
-Type: String
-Parameter Sets: SetByResourceId
 Aliases: 
 
 Required: False
@@ -95,13 +64,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Protocol
-Specifies the protocol that is matched by an inbound NAT rule configuration.
-The acceptable values for this parameter are: Tcp or Udp.
+### -EnableFloatingIP
+Indicates that this cmdlet enables a floating IP address for a rule configuration.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FrontendIpConfiguration
+Specifies a list of front-end IP addresses to associate with an inbound NAT rule configuration.
+
+```yaml
+Type: PSFrontendIPConfiguration
+Parameter Sets: SetByResource
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FrontendIpConfigurationId
+Specifies the ID for a front-end IP address configuration.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: SetByResourceId
 Aliases: 
 
 Required: False
@@ -126,41 +124,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BackendPort
-Specifies the backend port for traffic that is matched by this rule configuration.
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -IdleTimeoutInMinutes
 Specifies the length of time, in minutes, that the state of conversations is maintained in a load balancer.
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableFloatingIP
-Indicates that this cmdlet enables a floating IP address for a rule configuration.
-
-```yaml
-Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 
@@ -210,12 +178,44 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FrontendIpConfiguration
-Specifies a list of front-end IP addresses to associate with an inbound NAT rule configuration.
+### -LoadBalancer
+Specifies a load balancer.
+This cmdlet sets an inbound NAT rule configuration for the load balancer that this parameter specifies.
 
 ```yaml
-Type: PSFrontendIPConfiguration
-Parameter Sets: SetByResource
+Type: PSLoadBalancer
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the name of an inbound NAT rule configuration.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Protocol
+Specifies the protocol that is matched by an inbound NAT rule configuration.
+The acceptable values for this parameter are: Tcp or Udp.
+
+```yaml
+Type: String
+Parameter Sets: (All)
 Aliases: 
 
 Required: False

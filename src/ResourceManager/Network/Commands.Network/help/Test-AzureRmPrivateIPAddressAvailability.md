@@ -40,36 +40,6 @@ This command gets a virtual network and uses the pipeline operator to pass it to
 
 ## PARAMETERS
 
-### -VirtualNetwork
-Specifies a **PSVirtualNetwork** object.
-
-```yaml
-Type: PSVirtualNetwork
-Parameter Sets: TestByResource
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -IPAddress
-Specifies the IP address to test.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InformationAction
 Specifies how this cmdlet responds to an information event.
 
@@ -109,6 +79,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IPAddress
+Specifies the IP address to test.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specifies the name of the resource group for the virtual network.
 
@@ -121,6 +106,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VirtualNetwork
+Specifies a **PSVirtualNetwork** object.
+
+```yaml
+Type: PSVirtualNetwork
+Parameter Sets: TestByResource
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

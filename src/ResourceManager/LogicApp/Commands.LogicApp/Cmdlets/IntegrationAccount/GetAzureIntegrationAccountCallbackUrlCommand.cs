@@ -12,18 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using Microsoft.Azure.Management.Logic.Models;
-
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
+    using System;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
+    using Microsoft.Azure.Management.Logic.Models;
 
     /// <summary>
     /// Gets the integration account callback URL. 
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmIntegrationAccountCallbackUrl"), OutputType(typeof (object))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmIntegrationAccountCallbackUrl")]
+    [OutputType(typeof(CallbackUrl))]
     public class GetAzureIntegrationAccountCallbackUrlCommand : LogicAppBaseCmdlet
     {
 
@@ -54,13 +54,16 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             base.ExecuteCmdlet();
 
             this.WriteObject(
-                IntegrationAccountClient.GetIntegrationAccountCallbackUrl(this.ResourceGroupName, this.Name,
-                    (NotAfter != null)
+                sendToPipeline: IntegrationAccountClient.GetIntegrationAccountCallbackUrl(
+                    resourceGroupName: this.ResourceGroupName,
+                    integrationAccountName: this.Name,
+                    callbackUrl: (NotAfter != null)
                         ? new GetCallbackUrlParameters
                         {
                             NotAfter = NotAfter
                         }
-                        : new GetCallbackUrlParameters()), true);
+                        : new GetCallbackUrlParameters()),
+                enumerateCollection: true);
         }
     }
 }

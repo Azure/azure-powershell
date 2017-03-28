@@ -29,21 +29,6 @@ The **Remove-AzureRmApplicationGatewayUrlPathMapConfig** cmdlet removes URL path
 
 ## PARAMETERS
 
-### -Name
-Specifies the URL path map name that this cmdlet removes from the backend server.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ApplicationGateway
 Specifies the application gateway to which this cmdlet removes URL path map configuration.
 
@@ -92,6 +77,21 @@ Parameter Sets: (All)
 Aliases: iv
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the URL path map name that this cmdlet removes from the backend server.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -15,17 +15,18 @@
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
     using System;
+    using System.Globalization;
+    using System.Linq;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using Microsoft.Azure.Management.Logic.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using System.Globalization;
-    using System.Linq;
 
     /// <summary>
     /// Creates a new integration account agreement.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmIntegrationAccountAgreement", SupportsShouldProcess = true), OutputType(typeof(object))]
+    [Cmdlet(VerbsCommon.New, "AzureRmIntegrationAccountAgreement", SupportsShouldProcess = true)]
+    [OutputType(typeof(IntegrationAccountAgreement))]
     public class NewAzureIntegrationAccountAgreementCommand : LogicAppBaseCmdlet
     {
 
@@ -150,7 +151,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                     this.AgreementName,
                     new IntegrationAccountAgreement
                     {
-                        AgreementType = (AgreementType) Enum.Parse(typeof (AgreementType), this.AgreementType),
+                        AgreementType = (AgreementType) Enum.Parse(typeof(AgreementType), this.AgreementType),
                         HostIdentity = hostIdentity,
                         GuestIdentity = guestIdentity,
                         GuestPartner = this.GuestPartner,

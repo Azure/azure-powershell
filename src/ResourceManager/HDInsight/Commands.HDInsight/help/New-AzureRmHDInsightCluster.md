@@ -16,57 +16,63 @@ Creates an Azure HDInsight cluster in the specified resource group for the curre
 ```
 New-AzureRmHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-ClusterName] <String>
  [-ClusterSizeInNodes] <Int32> [-HttpCredential] <PSCredential> [[-DefaultStorageAccountName] <String>]
- [[-DefaultStorageAccountKey] <String>] [-Config <AzureHDInsightConfig>]
- [-OozieMetastore <AzureHDInsightMetastore>] [-HiveMetastore <AzureHDInsightMetastore>]
+ [[-DefaultStorageAccountKey] <String>] [-DefaultStorageAccountType <StorageType>]
+ [-Config <AzureHDInsightConfig>] [-OozieMetastore <AzureHDInsightMetastore>]
+ [-HiveMetastore <AzureHDInsightMetastore>]
  [-AdditionalStorageAccounts <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
  [-Configurations <System.Collections.Generic.Dictionary`2[System.String,System.Collections.Generic.Dictionary`2[System.String,System.String]]>]
  [-ScriptActions <System.Collections.Generic.Dictionary`2[Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType,System.Collections.Generic.List`1[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction]]>]
- [-DefaultStorageContainer <String>] [-Version <String>] [-HeadNodeSize <String>] [-WorkerNodeSize <String>]
- [-ZookeeperNodeSize <String>] [-ClusterType <String>]
+ [-DefaultStorageContainer <String>] [-DefaultStorageRootPath <String>] [-Version <String>]
+ [-HeadNodeSize <String>] [-WorkerNodeSize <String>] [-EdgeNodeSize <String>] [-ZookeeperNodeSize <String>]
+ [-ClusterType <String>]
  [-ComponentVersion <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
  [-VirtualNetworkId <String>] [-SubnetName <String>] [-OSType <OSType>] [-ClusterTier <Tier>]
  [-SshCredential <PSCredential>] [-SshPublicKey <String>] [-RdpCredential <PSCredential>]
  [-RdpAccessExpiry <DateTime>] [-ObjectId <Guid>] [-CertificatePassword <String>] [-AadTenantId <Guid>]
  [-SecurityProfile <AzureHDInsightSecurityProfile>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>]
+ [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ### CertificateFilePath
 ```
 New-AzureRmHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-ClusterName] <String>
  [-ClusterSizeInNodes] <Int32> [-HttpCredential] <PSCredential> [[-DefaultStorageAccountName] <String>]
- [[-DefaultStorageAccountKey] <String>] [-Config <AzureHDInsightConfig>]
- [-OozieMetastore <AzureHDInsightMetastore>] [-HiveMetastore <AzureHDInsightMetastore>]
+ [[-DefaultStorageAccountKey] <String>] [-DefaultStorageAccountType <StorageType>]
+ [-Config <AzureHDInsightConfig>] [-OozieMetastore <AzureHDInsightMetastore>]
+ [-HiveMetastore <AzureHDInsightMetastore>]
  [-AdditionalStorageAccounts <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
  [-Configurations <System.Collections.Generic.Dictionary`2[System.String,System.Collections.Generic.Dictionary`2[System.String,System.String]]>]
  [-ScriptActions <System.Collections.Generic.Dictionary`2[Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType,System.Collections.Generic.List`1[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction]]>]
- [-DefaultStorageContainer <String>] [-Version <String>] [-HeadNodeSize <String>] [-WorkerNodeSize <String>]
- [-ZookeeperNodeSize <String>] [-ClusterType <String>]
+ [-DefaultStorageContainer <String>] [-DefaultStorageRootPath <String>] [-Version <String>]
+ [-HeadNodeSize <String>] [-WorkerNodeSize <String>] [-EdgeNodeSize <String>] [-ZookeeperNodeSize <String>]
+ [-ClusterType <String>]
  [-ComponentVersion <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
  [-VirtualNetworkId <String>] [-SubnetName <String>] [-OSType <OSType>] [-ClusterTier <Tier>]
  [-SshCredential <PSCredential>] [-SshPublicKey <String>] [-RdpCredential <PSCredential>]
  [-RdpAccessExpiry <DateTime>] [-ObjectId <Guid>] [-CertificateFilePath <String>]
  [-CertificatePassword <String>] [-AadTenantId <Guid>] [-SecurityProfile <AzureHDInsightSecurityProfile>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>]
+ [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ### CertificateFileContents
 ```
 New-AzureRmHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-ClusterName] <String>
  [-ClusterSizeInNodes] <Int32> [-HttpCredential] <PSCredential> [[-DefaultStorageAccountName] <String>]
- [[-DefaultStorageAccountKey] <String>] [-Config <AzureHDInsightConfig>]
- [-OozieMetastore <AzureHDInsightMetastore>] [-HiveMetastore <AzureHDInsightMetastore>]
+ [[-DefaultStorageAccountKey] <String>] [-DefaultStorageAccountType <StorageType>]
+ [-Config <AzureHDInsightConfig>] [-OozieMetastore <AzureHDInsightMetastore>]
+ [-HiveMetastore <AzureHDInsightMetastore>]
  [-AdditionalStorageAccounts <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
  [-Configurations <System.Collections.Generic.Dictionary`2[System.String,System.Collections.Generic.Dictionary`2[System.String,System.String]]>]
  [-ScriptActions <System.Collections.Generic.Dictionary`2[Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType,System.Collections.Generic.List`1[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction]]>]
- [-DefaultStorageContainer <String>] [-Version <String>] [-HeadNodeSize <String>] [-WorkerNodeSize <String>]
- [-ZookeeperNodeSize <String>] [-ClusterType <String>]
+ [-DefaultStorageContainer <String>] [-DefaultStorageRootPath <String>] [-Version <String>]
+ [-HeadNodeSize <String>] [-WorkerNodeSize <String>] [-EdgeNodeSize <String>] [-ZookeeperNodeSize <String>]
+ [-ClusterType <String>]
  [-ComponentVersion <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
  [-VirtualNetworkId <String>] [-SubnetName <String>] [-OSType <OSType>] [-ClusterTier <Tier>]
  [-SshCredential <PSCredential>] [-SshPublicKey <String>] [-RdpCredential <PSCredential>]
  [-RdpAccessExpiry <DateTime>] [-ObjectId <Guid>] [-CertificateFileContents <Byte[]>]
  [-CertificatePassword <String>] [-AadTenantId <Guid>] [-SecurityProfile <AzureHDInsightSecurityProfile>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>]
+ [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,6 +82,8 @@ The New-AzureHDInsightCluster creates an Azure HDInsight cluster by using the sp
 
 ### --------------------------  Example 1: Create an Azure HDInsight cluster  --------------------------
 @{paragraph=PS C:\\\>}
+
+
 
 ```
 PS C:\&gt; # Primary storage account info
@@ -220,6 +228,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultStorageAccountType
+Specifies the type of the default storage account that the HDInsight cluster will use. Possible values are AzureStorage and AzureDataLakeStore. Defaults to AzureStorage if not specified.```yaml
+Type: StorageType
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: AzureStorage
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Config
 Specifies the cluster object to be used to create the cluster.
 This object can be created by using the New-AzureRmHDInsightClusterConfig cmdlet.
@@ -332,6 +353,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultStorageRootPath
+Specifies the path-prefix in the Data Lake Store Account that the HDInsight cluster will use as the default filesystem.```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Version
 Specifies the HDI version of the HDInsight cluster.
 
@@ -396,6 +430,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EdgeNodeSize
+Specifies the size of the virtual machine for the edge node. Use Get-AzureRmVMSize for acceptable VM sizes, and see HDInsight's pricing page. This parameter is valid only for RServer clusters.```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ClusterType
 Specifies the type of cluster to create.
 Options are: Hadoop, HBase, Storm, Spark
@@ -413,8 +460,6 @@ Accept wildcard characters: False
 ```
 
 ### -ComponentVersion
-
-
 ```yaml
 Type: System.Collections.Generic.Dictionary`2[System.String,System.String]
 Parameter Sets: (All)
@@ -685,6 +730,9 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

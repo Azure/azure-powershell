@@ -68,23 +68,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Specifies the name of the back-end server pool that this cmdlet adds.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BackendIPAddresses
-Specifies a list of back-end IP addresses which this cmdlet adds as a back-end server pool.
+### -BackendFqdns
+Specifies a list of backend FQDNs which this cmdlet adds as a back-end server pool.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
@@ -98,8 +83,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BackendFqdns
-Specifies a list of backend FQDNs which this cmdlet adds as a back-end server pool.
+### -BackendIPAddresses
+Specifies a list of back-end IP addresses which this cmdlet adds as a back-end server pool.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
@@ -152,18 +137,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+### -Name
+Specifies the name of the back-end server pool that this cmdlet adds.
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
-Aliases: wi
+Aliases: 
 
-Required: False
+Required: True
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -175,6 +159,22 @@ Prompts you for confirmation before running the cmdlet.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named
