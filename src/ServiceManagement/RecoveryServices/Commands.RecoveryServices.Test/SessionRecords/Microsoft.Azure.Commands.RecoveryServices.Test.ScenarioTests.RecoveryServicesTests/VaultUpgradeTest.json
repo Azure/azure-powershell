@@ -1,0 +1,556 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/7a8c4b2b-1343-4ead-903f-031163054294/cloudservices?api-version=2015-02-10",
+      "EncodedRequestUri": "LzdhOGM0YjJiLTEzNDMtNGVhZC05MDNmLTAzMTE2MzA1NDI5NC9jbG91ZHNlcnZpY2VzP2FwaS12ZXJzaW9uPTIwMTUtMDItMTA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/xml"
+        ],
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.RecoveryServices.RecoveryServicesManagementClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>RecoveryServices-DKIEGNVV3OAPUDVOTINGUOLCIJIDA743FNSWQAM4O4NEQUVZFBWA-West-US</Name>\r\n    <Label>4ad897b1-80d2-4d24-9339-31866589904d</Label>\r\n    <Description>9e8913fc-2d6d-499e-8008-eae2ff10edc1</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>HRMBvtd2ToDogfood</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>TestVault1</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>d8b7597f-a30b-4094-85a3-b5aa34c12e0f</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <IntrinsicSettings>\r\n          <ResourceUpgradeDetails>\r\n            <EndTimeUtc>2017-03-16T08:05:17.7543099Z</EndTimeUtc>\r\n            <LastUpdatedTimeUtc>2017-03-16T08:05:17.7543099Z</LastUpdatedTimeUtc>\r\n            <Message />\r\n            <OperationId>8ea38d08-ff70-43d4-8398-c348c4c187bd</OperationId>\r\n            <PreviousResourceId i:nil=\"true\" />\r\n            <StartTimeUtc>2017-03-16T08:03:50.9301757Z</StartTimeUtc>\r\n            <Status>Upgraded</Status>\r\n            <TriggerType>UserTriggered</TriggerType>\r\n            <UpgradedResourceId>/subscriptions/7a8c4b2b-1343-4ead-903f-031163054294/resourceGroups/TargetRg/providers/Microsoft.RecoveryServicesBVTD2/Vaults/TestVault1</UpgradedResourceId>\r\n          </ResourceUpgradeDetails>\r\n        </IntrinsicSettings>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>1986117038337275161</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>HRMBvtd2ToDogfood</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>TestVault2</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>440ddecb-1b8e-4cb0-9007-eb554462bc3f</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <IntrinsicSettings>\r\n          <ResourceUpgradeDetails>\r\n            <EndTimeUtc>2017-03-23T12:20:35.3247984Z</EndTimeUtc>\r\n            <LastUpdatedTimeUtc>2017-03-23T12:20:35.3247984Z</LastUpdatedTimeUtc>\r\n            <Message />\r\n            <OperationId>82853727-aea6-41c0-b599-56b2b19c133a</OperationId>\r\n            <PreviousResourceId i:nil=\"true\" />\r\n            <StartTimeUtc>2017-03-23T12:18:17.174831Z</StartTimeUtc>\r\n            <Status>Upgraded</Status>\r\n            <TriggerType>UserTriggered</TriggerType>\r\n            <UpgradedResourceId>/subscriptions/7a8c4b2b-1343-4ead-903f-031163054294/resourceGroups/TargetRg/providers/Microsoft.RecoveryServicesBVTD2/Vaults/TestVault2</UpgradedResourceId>\r\n          </ResourceUpgradeDetails>\r\n        </IntrinsicSettings>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>8126206119256348900</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>HRMBvtd2ToDogfood</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>vault1</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>99947891-5956-4e58-9342-bd56f3dacec4</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <IntrinsicSettings>\r\n          <ResourceUpgradeDetails>\r\n            <EndTimeUtc>2017-03-28T08:57:50.3278921Z</EndTimeUtc>\r\n            <LastUpdatedTimeUtc>2017-03-28T08:57:50.3278921Z</LastUpdatedTimeUtc>\r\n            <Message />\r\n            <OperationId>947f4b26-e0d9-4879-b191-5987f7759642-2017-03-28 08:56:33Z-P</OperationId>\r\n            <PreviousResourceId i:nil=\"true\" />\r\n            <StartTimeUtc>2017-03-28T08:56:36.2316604Z</StartTimeUtc>\r\n            <Status>Upgraded</Status>\r\n            <TriggerType>UserTriggered</TriggerType>\r\n            <UpgradedResourceId>/subscriptions/7a8c4b2b-1343-4ead-903f-031163054294/resourceGroups/abc/providers/Microsoft.RecoveryServicesBVTD2/Vaults/vault1</UpgradedResourceId>\r\n          </ResourceUpgradeDetails>\r\n        </IntrinsicSettings>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>3567051772425283113</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>HRMBvtd2ToDogfood</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>vault2</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>68407785-4db9-4ae8-a1e7-54fddbd2d6b9</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>1099642014426575738</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n</CloudServices>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "4989"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "uswest"
+        ],
+        "x-ms-request-id": [
+          "528aa4d7b29c703aadc9791bb5509a44"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 28 Mar 2017 10:02:50 GMT"
+        ],
+        "Server": [
+          "1.0.6194.1699",
+          "(rd_rdfe_dhf2.170323-1437)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/7a8c4b2b-1343-4ead-903f-031163054294/cloudservices?api-version=2015-02-10",
+      "EncodedRequestUri": "LzdhOGM0YjJiLTEzNDMtNGVhZC05MDNmLTAzMTE2MzA1NDI5NC9jbG91ZHNlcnZpY2VzP2FwaS12ZXJzaW9uPTIwMTUtMDItMTA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/xml"
+        ],
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.RecoveryServices.RecoveryServicesManagementClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>RecoveryServices-DKIEGNVV3OAPUDVOTINGUOLCIJIDA743FNSWQAM4O4NEQUVZFBWA-West-US</Name>\r\n    <Label>4ad897b1-80d2-4d24-9339-31866589904d</Label>\r\n    <Description>9e8913fc-2d6d-499e-8008-eae2ff10edc1</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>HRMBvtd2ToDogfood</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>TestVault1</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>d8b7597f-a30b-4094-85a3-b5aa34c12e0f</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <IntrinsicSettings>\r\n          <ResourceUpgradeDetails>\r\n            <EndTimeUtc>2017-03-16T08:05:17.7543099Z</EndTimeUtc>\r\n            <LastUpdatedTimeUtc>2017-03-16T08:05:17.7543099Z</LastUpdatedTimeUtc>\r\n            <Message />\r\n            <OperationId>8ea38d08-ff70-43d4-8398-c348c4c187bd</OperationId>\r\n            <PreviousResourceId i:nil=\"true\" />\r\n            <StartTimeUtc>2017-03-16T08:03:50.9301757Z</StartTimeUtc>\r\n            <Status>Upgraded</Status>\r\n            <TriggerType>UserTriggered</TriggerType>\r\n            <UpgradedResourceId>/subscriptions/7a8c4b2b-1343-4ead-903f-031163054294/resourceGroups/TargetRg/providers/Microsoft.RecoveryServicesBVTD2/Vaults/TestVault1</UpgradedResourceId>\r\n          </ResourceUpgradeDetails>\r\n        </IntrinsicSettings>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>1986117038337275161</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>HRMBvtd2ToDogfood</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>TestVault2</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>440ddecb-1b8e-4cb0-9007-eb554462bc3f</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <IntrinsicSettings>\r\n          <ResourceUpgradeDetails>\r\n            <EndTimeUtc>2017-03-23T12:20:35.3247984Z</EndTimeUtc>\r\n            <LastUpdatedTimeUtc>2017-03-23T12:20:35.3247984Z</LastUpdatedTimeUtc>\r\n            <Message />\r\n            <OperationId>82853727-aea6-41c0-b599-56b2b19c133a</OperationId>\r\n            <PreviousResourceId i:nil=\"true\" />\r\n            <StartTimeUtc>2017-03-23T12:18:17.174831Z</StartTimeUtc>\r\n            <Status>Upgraded</Status>\r\n            <TriggerType>UserTriggered</TriggerType>\r\n            <UpgradedResourceId>/subscriptions/7a8c4b2b-1343-4ead-903f-031163054294/resourceGroups/TargetRg/providers/Microsoft.RecoveryServicesBVTD2/Vaults/TestVault2</UpgradedResourceId>\r\n          </ResourceUpgradeDetails>\r\n        </IntrinsicSettings>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>8126206119256348900</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>HRMBvtd2ToDogfood</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>vault1</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>99947891-5956-4e58-9342-bd56f3dacec4</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <IntrinsicSettings>\r\n          <ResourceUpgradeDetails>\r\n            <EndTimeUtc>2017-03-28T08:57:50.3278921Z</EndTimeUtc>\r\n            <LastUpdatedTimeUtc>2017-03-28T08:57:50.3278921Z</LastUpdatedTimeUtc>\r\n            <Message />\r\n            <OperationId>947f4b26-e0d9-4879-b191-5987f7759642-2017-03-28 08:56:33Z-P</OperationId>\r\n            <PreviousResourceId i:nil=\"true\" />\r\n            <StartTimeUtc>2017-03-28T08:56:36.2316604Z</StartTimeUtc>\r\n            <Status>Upgraded</Status>\r\n            <TriggerType>UserTriggered</TriggerType>\r\n            <UpgradedResourceId>/subscriptions/7a8c4b2b-1343-4ead-903f-031163054294/resourceGroups/abc/providers/Microsoft.RecoveryServicesBVTD2/Vaults/vault1</UpgradedResourceId>\r\n          </ResourceUpgradeDetails>\r\n        </IntrinsicSettings>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>3567051772425283113</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>HRMBvtd2ToDogfood</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>vault2</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>68407785-4db9-4ae8-a1e7-54fddbd2d6b9</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>1099642014426575738</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n</CloudServices>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "4989"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "uswest"
+        ],
+        "x-ms-request-id": [
+          "cbce60817b1c7d63b7117154ebe69f72"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 28 Mar 2017 10:03:04 GMT"
+        ],
+        "Server": [
+          "1.0.6194.1699",
+          "(rd_rdfe_dhf2.170323-1437)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/7a8c4b2b-1343-4ead-903f-031163054294/cloudservices?api-version=2015-02-10",
+      "EncodedRequestUri": "LzdhOGM0YjJiLTEzNDMtNGVhZC05MDNmLTAzMTE2MzA1NDI5NC9jbG91ZHNlcnZpY2VzP2FwaS12ZXJzaW9uPTIwMTUtMDItMTA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/xml"
+        ],
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.RecoveryServices.RecoveryServicesManagementClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>RecoveryServices-DKIEGNVV3OAPUDVOTINGUOLCIJIDA743FNSWQAM4O4NEQUVZFBWA-West-US</Name>\r\n    <Label>4ad897b1-80d2-4d24-9339-31866589904d</Label>\r\n    <Description>9e8913fc-2d6d-499e-8008-eae2ff10edc1</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>HRMBvtd2ToDogfood</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>TestVault1</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>d8b7597f-a30b-4094-85a3-b5aa34c12e0f</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <IntrinsicSettings>\r\n          <ResourceUpgradeDetails>\r\n            <EndTimeUtc>2017-03-16T08:05:17.7543099Z</EndTimeUtc>\r\n            <LastUpdatedTimeUtc>2017-03-16T08:05:17.7543099Z</LastUpdatedTimeUtc>\r\n            <Message />\r\n            <OperationId>8ea38d08-ff70-43d4-8398-c348c4c187bd</OperationId>\r\n            <PreviousResourceId i:nil=\"true\" />\r\n            <StartTimeUtc>2017-03-16T08:03:50.9301757Z</StartTimeUtc>\r\n            <Status>Upgraded</Status>\r\n            <TriggerType>UserTriggered</TriggerType>\r\n            <UpgradedResourceId>/subscriptions/7a8c4b2b-1343-4ead-903f-031163054294/resourceGroups/TargetRg/providers/Microsoft.RecoveryServicesBVTD2/Vaults/TestVault1</UpgradedResourceId>\r\n          </ResourceUpgradeDetails>\r\n        </IntrinsicSettings>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>1986117038337275161</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>HRMBvtd2ToDogfood</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>TestVault2</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>440ddecb-1b8e-4cb0-9007-eb554462bc3f</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <IntrinsicSettings>\r\n          <ResourceUpgradeDetails>\r\n            <EndTimeUtc>2017-03-23T12:20:35.3247984Z</EndTimeUtc>\r\n            <LastUpdatedTimeUtc>2017-03-23T12:20:35.3247984Z</LastUpdatedTimeUtc>\r\n            <Message />\r\n            <OperationId>82853727-aea6-41c0-b599-56b2b19c133a</OperationId>\r\n            <PreviousResourceId i:nil=\"true\" />\r\n            <StartTimeUtc>2017-03-23T12:18:17.174831Z</StartTimeUtc>\r\n            <Status>Upgraded</Status>\r\n            <TriggerType>UserTriggered</TriggerType>\r\n            <UpgradedResourceId>/subscriptions/7a8c4b2b-1343-4ead-903f-031163054294/resourceGroups/TargetRg/providers/Microsoft.RecoveryServicesBVTD2/Vaults/TestVault2</UpgradedResourceId>\r\n          </ResourceUpgradeDetails>\r\n        </IntrinsicSettings>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>8126206119256348900</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>HRMBvtd2ToDogfood</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>vault1</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>99947891-5956-4e58-9342-bd56f3dacec4</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <IntrinsicSettings>\r\n          <ResourceUpgradeDetails>\r\n            <EndTimeUtc>2017-03-28T08:57:50.3278921Z</EndTimeUtc>\r\n            <LastUpdatedTimeUtc>2017-03-28T08:57:50.3278921Z</LastUpdatedTimeUtc>\r\n            <Message />\r\n            <OperationId>947f4b26-e0d9-4879-b191-5987f7759642-2017-03-28 08:56:33Z-P</OperationId>\r\n            <PreviousResourceId i:nil=\"true\" />\r\n            <StartTimeUtc>2017-03-28T08:56:36.2316604Z</StartTimeUtc>\r\n            <Status>Upgraded</Status>\r\n            <TriggerType>UserTriggered</TriggerType>\r\n            <UpgradedResourceId>/subscriptions/7a8c4b2b-1343-4ead-903f-031163054294/resourceGroups/abc/providers/Microsoft.RecoveryServicesBVTD2/Vaults/vault1</UpgradedResourceId>\r\n          </ResourceUpgradeDetails>\r\n        </IntrinsicSettings>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>3567051772425283113</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>HRMBvtd2ToDogfood</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>vault2</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>68407785-4db9-4ae8-a1e7-54fddbd2d6b9</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>1099642014426575738</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n</CloudServices>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "4989"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "uswest"
+        ],
+        "x-ms-request-id": [
+          "c9f30fd21f007472a8a300cc76b23e9c"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 28 Mar 2017 10:03:13 GMT"
+        ],
+        "Server": [
+          "1.0.6194.1699",
+          "(rd_rdfe_dhf2.170323-1437)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/7a8c4b2b-1343-4ead-903f-031163054294/cloudservices?api-version=2015-02-10",
+      "EncodedRequestUri": "LzdhOGM0YjJiLTEzNDMtNGVhZC05MDNmLTAzMTE2MzA1NDI5NC9jbG91ZHNlcnZpY2VzP2FwaS12ZXJzaW9uPTIwMTUtMDItMTA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/xml"
+        ],
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.RecoveryServices.RecoveryServicesManagementClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>RecoveryServices-DKIEGNVV3OAPUDVOTINGUOLCIJIDA743FNSWQAM4O4NEQUVZFBWA-West-US</Name>\r\n    <Label>4ad897b1-80d2-4d24-9339-31866589904d</Label>\r\n    <Description>9e8913fc-2d6d-499e-8008-eae2ff10edc1</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>HRMBvtd2ToDogfood</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>TestVault1</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>d8b7597f-a30b-4094-85a3-b5aa34c12e0f</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <IntrinsicSettings>\r\n          <ResourceUpgradeDetails>\r\n            <EndTimeUtc>2017-03-16T08:05:17.7543099Z</EndTimeUtc>\r\n            <LastUpdatedTimeUtc>2017-03-16T08:05:17.7543099Z</LastUpdatedTimeUtc>\r\n            <Message />\r\n            <OperationId>8ea38d08-ff70-43d4-8398-c348c4c187bd</OperationId>\r\n            <PreviousResourceId i:nil=\"true\" />\r\n            <StartTimeUtc>2017-03-16T08:03:50.9301757Z</StartTimeUtc>\r\n            <Status>Upgraded</Status>\r\n            <TriggerType>UserTriggered</TriggerType>\r\n            <UpgradedResourceId>/subscriptions/7a8c4b2b-1343-4ead-903f-031163054294/resourceGroups/TargetRg/providers/Microsoft.RecoveryServicesBVTD2/Vaults/TestVault1</UpgradedResourceId>\r\n          </ResourceUpgradeDetails>\r\n        </IntrinsicSettings>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>1986117038337275161</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>HRMBvtd2ToDogfood</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>TestVault2</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>440ddecb-1b8e-4cb0-9007-eb554462bc3f</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <IntrinsicSettings>\r\n          <ResourceUpgradeDetails>\r\n            <EndTimeUtc>2017-03-23T12:20:35.3247984Z</EndTimeUtc>\r\n            <LastUpdatedTimeUtc>2017-03-23T12:20:35.3247984Z</LastUpdatedTimeUtc>\r\n            <Message />\r\n            <OperationId>82853727-aea6-41c0-b599-56b2b19c133a</OperationId>\r\n            <PreviousResourceId i:nil=\"true\" />\r\n            <StartTimeUtc>2017-03-23T12:18:17.174831Z</StartTimeUtc>\r\n            <Status>Upgraded</Status>\r\n            <TriggerType>UserTriggered</TriggerType>\r\n            <UpgradedResourceId>/subscriptions/7a8c4b2b-1343-4ead-903f-031163054294/resourceGroups/TargetRg/providers/Microsoft.RecoveryServicesBVTD2/Vaults/TestVault2</UpgradedResourceId>\r\n          </ResourceUpgradeDetails>\r\n        </IntrinsicSettings>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>8126206119256348900</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>HRMBvtd2ToDogfood</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>vault1</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>99947891-5956-4e58-9342-bd56f3dacec4</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <IntrinsicSettings>\r\n          <ResourceUpgradeDetails>\r\n            <EndTimeUtc>2017-03-28T08:57:50.3278921Z</EndTimeUtc>\r\n            <LastUpdatedTimeUtc>2017-03-28T08:57:50.3278921Z</LastUpdatedTimeUtc>\r\n            <Message />\r\n            <OperationId>947f4b26-e0d9-4879-b191-5987f7759642-2017-03-28 08:56:33Z-P</OperationId>\r\n            <PreviousResourceId i:nil=\"true\" />\r\n            <StartTimeUtc>2017-03-28T08:56:36.2316604Z</StartTimeUtc>\r\n            <Status>Upgraded</Status>\r\n            <TriggerType>UserTriggered</TriggerType>\r\n            <UpgradedResourceId>/subscriptions/7a8c4b2b-1343-4ead-903f-031163054294/resourceGroups/abc/providers/Microsoft.RecoveryServicesBVTD2/Vaults/vault1</UpgradedResourceId>\r\n          </ResourceUpgradeDetails>\r\n        </IntrinsicSettings>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>3567051772425283113</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>HRMBvtd2ToDogfood</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>vault2</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>68407785-4db9-4ae8-a1e7-54fddbd2d6b9</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <IntrinsicSettings>\r\n          <ResourceUpgradeDetails>\r\n            <EndTimeUtc>9999-12-31T23:59:59.9999999</EndTimeUtc>\r\n            <LastUpdatedTimeUtc>2017-03-28T10:03:17.9915356Z</LastUpdatedTimeUtc>\r\n            <Message />\r\n            <OperationId>4cc27b8b-12cd-4334-a268-68c5dc5cbe9e-2017-03-28 10:03:15Z-P</OperationId>\r\n            <PreviousResourceId i:nil=\"true\" />\r\n            <StartTimeUtc>2017-03-28T10:03:17.9915356Z</StartTimeUtc>\r\n            <Status>InProgress</Status>\r\n            <TriggerType>UserTriggered</TriggerType>\r\n            <UpgradedResourceId>/subscriptions/7a8c4b2b-1343-4ead-903f-031163054294/resourceGroups/abc/providers/Microsoft.RecoveryServicesBVTD2/Vaults/vault2</UpgradedResourceId>\r\n          </ResourceUpgradeDetails>\r\n        </IntrinsicSettings>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>1099642014426575738</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n</CloudServices>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "5619"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "uswest"
+        ],
+        "x-ms-request-id": [
+          "7a87c0151c307c5d887f062576681f9e"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 28 Mar 2017 10:03:51 GMT"
+        ],
+        "Server": [
+          "1.0.6194.1699",
+          "(rd_rdfe_dhf2.170323-1437)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/7a8c4b2b-1343-4ead-903f-031163054294/cloudservices?api-version=2015-02-10",
+      "EncodedRequestUri": "LzdhOGM0YjJiLTEzNDMtNGVhZC05MDNmLTAzMTE2MzA1NDI5NC9jbG91ZHNlcnZpY2VzP2FwaS12ZXJzaW9uPTIwMTUtMDItMTA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/xml"
+        ],
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.RecoveryServices.RecoveryServicesManagementClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>RecoveryServices-DKIEGNVV3OAPUDVOTINGUOLCIJIDA743FNSWQAM4O4NEQUVZFBWA-West-US</Name>\r\n    <Label>4ad897b1-80d2-4d24-9339-31866589904d</Label>\r\n    <Description>9e8913fc-2d6d-499e-8008-eae2ff10edc1</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>HRMBvtd2ToDogfood</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>TestVault1</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>d8b7597f-a30b-4094-85a3-b5aa34c12e0f</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <IntrinsicSettings>\r\n          <ResourceUpgradeDetails>\r\n            <EndTimeUtc>2017-03-16T08:05:17.7543099Z</EndTimeUtc>\r\n            <LastUpdatedTimeUtc>2017-03-16T08:05:17.7543099Z</LastUpdatedTimeUtc>\r\n            <Message />\r\n            <OperationId>8ea38d08-ff70-43d4-8398-c348c4c187bd</OperationId>\r\n            <PreviousResourceId i:nil=\"true\" />\r\n            <StartTimeUtc>2017-03-16T08:03:50.9301757Z</StartTimeUtc>\r\n            <Status>Upgraded</Status>\r\n            <TriggerType>UserTriggered</TriggerType>\r\n            <UpgradedResourceId>/subscriptions/7a8c4b2b-1343-4ead-903f-031163054294/resourceGroups/TargetRg/providers/Microsoft.RecoveryServicesBVTD2/Vaults/TestVault1</UpgradedResourceId>\r\n          </ResourceUpgradeDetails>\r\n        </IntrinsicSettings>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>1986117038337275161</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>HRMBvtd2ToDogfood</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>TestVault2</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>440ddecb-1b8e-4cb0-9007-eb554462bc3f</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <IntrinsicSettings>\r\n          <ResourceUpgradeDetails>\r\n            <EndTimeUtc>2017-03-23T12:20:35.3247984Z</EndTimeUtc>\r\n            <LastUpdatedTimeUtc>2017-03-23T12:20:35.3247984Z</LastUpdatedTimeUtc>\r\n            <Message />\r\n            <OperationId>82853727-aea6-41c0-b599-56b2b19c133a</OperationId>\r\n            <PreviousResourceId i:nil=\"true\" />\r\n            <StartTimeUtc>2017-03-23T12:18:17.174831Z</StartTimeUtc>\r\n            <Status>Upgraded</Status>\r\n            <TriggerType>UserTriggered</TriggerType>\r\n            <UpgradedResourceId>/subscriptions/7a8c4b2b-1343-4ead-903f-031163054294/resourceGroups/TargetRg/providers/Microsoft.RecoveryServicesBVTD2/Vaults/TestVault2</UpgradedResourceId>\r\n          </ResourceUpgradeDetails>\r\n        </IntrinsicSettings>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>8126206119256348900</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>HRMBvtd2ToDogfood</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>vault1</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>99947891-5956-4e58-9342-bd56f3dacec4</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <IntrinsicSettings>\r\n          <ResourceUpgradeDetails>\r\n            <EndTimeUtc>2017-03-28T08:57:50.3278921Z</EndTimeUtc>\r\n            <LastUpdatedTimeUtc>2017-03-28T08:57:50.3278921Z</LastUpdatedTimeUtc>\r\n            <Message />\r\n            <OperationId>947f4b26-e0d9-4879-b191-5987f7759642-2017-03-28 08:56:33Z-P</OperationId>\r\n            <PreviousResourceId i:nil=\"true\" />\r\n            <StartTimeUtc>2017-03-28T08:56:36.2316604Z</StartTimeUtc>\r\n            <Status>Upgraded</Status>\r\n            <TriggerType>UserTriggered</TriggerType>\r\n            <UpgradedResourceId>/subscriptions/7a8c4b2b-1343-4ead-903f-031163054294/resourceGroups/abc/providers/Microsoft.RecoveryServicesBVTD2/Vaults/vault1</UpgradedResourceId>\r\n          </ResourceUpgradeDetails>\r\n        </IntrinsicSettings>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>3567051772425283113</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>HRMBvtd2ToDogfood</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>vault2</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>68407785-4db9-4ae8-a1e7-54fddbd2d6b9</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <IntrinsicSettings>\r\n          <ResourceUpgradeDetails>\r\n            <EndTimeUtc>9999-12-31T23:59:59.9999999</EndTimeUtc>\r\n            <LastUpdatedTimeUtc>2017-03-28T10:03:17.9915356Z</LastUpdatedTimeUtc>\r\n            <Message />\r\n            <OperationId>4cc27b8b-12cd-4334-a268-68c5dc5cbe9e-2017-03-28 10:03:15Z-P</OperationId>\r\n            <PreviousResourceId i:nil=\"true\" />\r\n            <StartTimeUtc>2017-03-28T10:03:17.9915356Z</StartTimeUtc>\r\n            <Status>InProgress</Status>\r\n            <TriggerType>UserTriggered</TriggerType>\r\n            <UpgradedResourceId>/subscriptions/7a8c4b2b-1343-4ead-903f-031163054294/resourceGroups/abc/providers/Microsoft.RecoveryServicesBVTD2/Vaults/vault2</UpgradedResourceId>\r\n          </ResourceUpgradeDetails>\r\n        </IntrinsicSettings>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>1099642014426575738</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n</CloudServices>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "5619"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "uswest"
+        ],
+        "x-ms-request-id": [
+          "f252785d70937091b69193d7985fe63d"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 28 Mar 2017 10:04:28 GMT"
+        ],
+        "Server": [
+          "1.0.6194.1699",
+          "(rd_rdfe_dhf2.170323-1437)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/7a8c4b2b-1343-4ead-903f-031163054294/cloudservices/RecoveryServices-DKIEGNVV3OAPUDVOTINGUOLCIJIDA743FNSWQAM4O4NEQUVZFBWA-West-US/resources/HRMBvtd2ToDogfood/~/HyperVRecoveryManagerVault/vault2/checkPrereqsForUpgrade",
+      "EncodedRequestUri": "LzdhOGM0YjJiLTEzNDMtNGVhZC05MDNmLTAzMTE2MzA1NDI5NC9jbG91ZHNlcnZpY2VzL1JlY292ZXJ5U2VydmljZXMtREtJRUdOVlYzT0FQVURWT1RJTkdVT0xDSUpJREE3NDNGTlNXUUFNNE80TkVRVVZaRkJXQS1XZXN0LVVTL3Jlc291cmNlcy9IUk1CdnRkMlRvRG9nZm9vZC9+L0h5cGVyVlJlY292ZXJ5TWFuYWdlclZhdWx0L3ZhdWx0Mi9jaGVja1ByZXJlcXNGb3JVcGdyYWRl",
+      "RequestMethod": "POST",
+      "RequestBody": "<ResourceUpgradeInput xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <NewResourcePath>/subscriptions/7a8c4b2b-1343-4ead-903f-031163054294/resourceGroups/abc/providers/Microsoft.RecoveryServicesBVTD2/Vaults/vault2</NewResourcePath>\r\n</ResourceUpgradeInput>",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/xml"
+        ],
+        "Content-Length": [
+          "262"
+        ],
+        "Accept": [
+          "application/xml"
+        ],
+        "Agent-Authentication": [
+          ""
+        ],
+        "x-ms-client-request-id": [
+          "2bf808dd-45ce-4048-9845-641a6b20b931-2017-03-28 10:02:52Z-P"
+        ],
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.RecoveryServicesVaultUpgrade.RecoveryServicesVaultUpgradeManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Error i:nil=\"true\" xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" />",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "123"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-servedbyregion": [
+          "uswest"
+        ],
+        "x-ms-client-request-id": [
+          "2bf808dd-45ce-4048-9845-641a6b20b931-2017-03-28 10:02:52Z-P"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=15724800; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "c0916dcdba7a77b3a92d14dd5edad723"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 28 Mar 2017 10:02:59 GMT"
+        ],
+        "Server": [
+          "1.0.6194.1699",
+          "(rd_rdfe_dhf2.170323-1437)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/7a8c4b2b-1343-4ead-903f-031163054294/cloudservices/RecoveryServices-DKIEGNVV3OAPUDVOTINGUOLCIJIDA743FNSWQAM4O4NEQUVZFBWA-West-US/resources/HRMBvtd2ToDogfood/~/HyperVRecoveryManagerVault/vault2/checkPrereqsForUpgrade",
+      "EncodedRequestUri": "LzdhOGM0YjJiLTEzNDMtNGVhZC05MDNmLTAzMTE2MzA1NDI5NC9jbG91ZHNlcnZpY2VzL1JlY292ZXJ5U2VydmljZXMtREtJRUdOVlYzT0FQVURWT1RJTkdVT0xDSUpJREE3NDNGTlNXUUFNNE80TkVRVVZaRkJXQS1XZXN0LVVTL3Jlc291cmNlcy9IUk1CdnRkMlRvRG9nZm9vZC9+L0h5cGVyVlJlY292ZXJ5TWFuYWdlclZhdWx0L3ZhdWx0Mi9jaGVja1ByZXJlcXNGb3JVcGdyYWRl",
+      "RequestMethod": "POST",
+      "RequestBody": "<ResourceUpgradeInput xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <NewResourcePath>/subscriptions/7a8c4b2b-1343-4ead-903f-031163054294/resourceGroups/abc/providers/Microsoft.RecoveryServicesBVTD2/Vaults/vault2</NewResourcePath>\r\n</ResourceUpgradeInput>",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/xml"
+        ],
+        "Content-Length": [
+          "262"
+        ],
+        "Accept": [
+          "application/xml"
+        ],
+        "Agent-Authentication": [
+          ""
+        ],
+        "x-ms-client-request-id": [
+          "6f441db9-9de3-4bc5-8131-0e7499bb6573-2017-03-28 10:03:06Z-P"
+        ],
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.RecoveryServicesVaultUpgrade.RecoveryServicesVaultUpgradeManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Error i:nil=\"true\" xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" />",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "123"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-servedbyregion": [
+          "uswest"
+        ],
+        "x-ms-client-request-id": [
+          "6f441db9-9de3-4bc5-8131-0e7499bb6573-2017-03-28 10:03:06Z-P"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=15724800; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "a410ed5e3a947161ba154d45146d13f5"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 28 Mar 2017 10:03:10 GMT"
+        ],
+        "Server": [
+          "1.0.6194.1699",
+          "(rd_rdfe_dhf2.170323-1437)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/7a8c4b2b-1343-4ead-903f-031163054294/cloudservices/RecoveryServices-DKIEGNVV3OAPUDVOTINGUOLCIJIDA743FNSWQAM4O4NEQUVZFBWA-West-US/resources/HRMBvtd2ToDogfood/~/HyperVRecoveryManagerVault/vault2/upgrade",
+      "EncodedRequestUri": "LzdhOGM0YjJiLTEzNDMtNGVhZC05MDNmLTAzMTE2MzA1NDI5NC9jbG91ZHNlcnZpY2VzL1JlY292ZXJ5U2VydmljZXMtREtJRUdOVlYzT0FQVURWT1RJTkdVT0xDSUpJREE3NDNGTlNXUUFNNE80TkVRVVZaRkJXQS1XZXN0LVVTL3Jlc291cmNlcy9IUk1CdnRkMlRvRG9nZm9vZC9+L0h5cGVyVlJlY292ZXJ5TWFuYWdlclZhdWx0L3ZhdWx0Mi91cGdyYWRl",
+      "RequestMethod": "POST",
+      "RequestBody": "<ResourceUpgradeInput xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <NewResourcePath>/subscriptions/7a8c4b2b-1343-4ead-903f-031163054294/resourceGroups/abc/providers/Microsoft.RecoveryServicesBVTD2/Vaults/vault2</NewResourcePath>\r\n</ResourceUpgradeInput>",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/xml"
+        ],
+        "Content-Length": [
+          "262"
+        ],
+        "Accept": [
+          "application/xml"
+        ],
+        "Agent-Authentication": [
+          ""
+        ],
+        "x-ms-client-request-id": [
+          "4cc27b8b-12cd-4334-a268-68c5dc5cbe9e-2017-03-28 10:03:15Z-P"
+        ],
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.RecoveryServicesVaultUpgrade.RecoveryServicesVaultUpgradeManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "<ResourceUpgradeDetails xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <EndTimeUtc>9999-12-31T23:59:59.9999999</EndTimeUtc>\r\n  <LastUpdatedTimeUtc>2017-03-28T10:03:17.9915356Z</LastUpdatedTimeUtc>\r\n  <Message></Message>\r\n  <OperationId>4cc27b8b-12cd-4334-a268-68c5dc5cbe9e-2017-03-28 10:03:15Z-P</OperationId>\r\n  <PreviousResourceId i:nil=\"true\" />\r\n  <StartTimeUtc>2017-03-28T10:03:17.9915356Z</StartTimeUtc>\r\n  <Status>InProgress</Status>\r\n  <TriggerType>UserTriggered</TriggerType>\r\n  <UpgradedResourceId>/subscriptions/7a8c4b2b-1343-4ead-903f-031163054294/resourceGroups/abc/providers/Microsoft.RecoveryServicesBVTD2/Vaults/vault2</UpgradedResourceId>\r\n</ResourceUpgradeDetails>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "702"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-servedbyregion": [
+          "uswest"
+        ],
+        "x-ms-client-request-id": [
+          "4cc27b8b-12cd-4334-a268-68c5dc5cbe9e-2017-03-28 10:03:15Z-P"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=15724800; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "4939992197297ca2a2c0ccb4d78d0974"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 28 Mar 2017 10:03:17 GMT"
+        ],
+        "Server": [
+          "1.0.6194.1699",
+          "(rd_rdfe_dhf2.170323-1437)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/7a8c4b2b-1343-4ead-903f-031163054294/cloudservices/RecoveryServices-DKIEGNVV3OAPUDVOTINGUOLCIJIDA743FNSWQAM4O4NEQUVZFBWA-West-US/resources/HRMBvtd2ToDogfood/~/HyperVRecoveryManagerVault/vault2/upgradeOperationResult",
+      "EncodedRequestUri": "LzdhOGM0YjJiLTEzNDMtNGVhZC05MDNmLTAzMTE2MzA1NDI5NC9jbG91ZHNlcnZpY2VzL1JlY292ZXJ5U2VydmljZXMtREtJRUdOVlYzT0FQVURWT1RJTkdVT0xDSUpJREE3NDNGTlNXUUFNNE80TkVRVVZaRkJXQS1XZXN0LVVTL3Jlc291cmNlcy9IUk1CdnRkMlRvRG9nZm9vZC9+L0h5cGVyVlJlY292ZXJ5TWFuYWdlclZhdWx0L3ZhdWx0Mi91cGdyYWRlT3BlcmF0aW9uUmVzdWx0",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/xml"
+        ],
+        "Agent-Authentication": [
+          ""
+        ],
+        "x-ms-client-request-id": [
+          "188c58ce-545e-4828-a67c-bcbfc71dece2-2017-03-28 10:03:53Z-P"
+        ],
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.RecoveryServicesVaultUpgrade.RecoveryServicesVaultUpgradeManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "<OperationInfo xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ErrorCode></ErrorCode>\r\n  <JobSteps i:nil=\"true\" />\r\n  <Jobs i:nil=\"true\" xmlns:d2p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\" />\r\n  <Message></Message>\r\n  <OperationResult>Invalid</OperationResult>\r\n  <OperationStatus>InProgress</OperationStatus>\r\n</OperationInfo>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "377"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-servedbyregion": [
+          "uswest"
+        ],
+        "x-ms-client-request-id": [
+          "188c58ce-545e-4828-a67c-bcbfc71dece2-2017-03-28 10:03:53Z-P"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=15724800; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "63ec6365e146760fa30f2cc13bb0f32c"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 28 Mar 2017 10:03:55 GMT"
+        ],
+        "Server": [
+          "1.0.6194.1699",
+          "(rd_rdfe_dhf2.170323-1437)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/7a8c4b2b-1343-4ead-903f-031163054294/cloudservices/RecoveryServices-DKIEGNVV3OAPUDVOTINGUOLCIJIDA743FNSWQAM4O4NEQUVZFBWA-West-US/resources/HRMBvtd2ToDogfood/~/HyperVRecoveryManagerVault/vault2/upgradeOperationResult",
+      "EncodedRequestUri": "LzdhOGM0YjJiLTEzNDMtNGVhZC05MDNmLTAzMTE2MzA1NDI5NC9jbG91ZHNlcnZpY2VzL1JlY292ZXJ5U2VydmljZXMtREtJRUdOVlYzT0FQVURWT1RJTkdVT0xDSUpJREE3NDNGTlNXUUFNNE80TkVRVVZaRkJXQS1XZXN0LVVTL3Jlc291cmNlcy9IUk1CdnRkMlRvRG9nZm9vZC9+L0h5cGVyVlJlY292ZXJ5TWFuYWdlclZhdWx0L3ZhdWx0Mi91cGdyYWRlT3BlcmF0aW9uUmVzdWx0",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/xml"
+        ],
+        "Agent-Authentication": [
+          ""
+        ],
+        "x-ms-client-request-id": [
+          "cef0ead0-0e60-4fce-be4d-a99b19211e88-2017-03-28 10:04:31Z-P"
+        ],
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.RecoveryServicesVaultUpgrade.RecoveryServicesVaultUpgradeManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "<OperationInfo xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ErrorCode></ErrorCode>\r\n  <JobSteps i:nil=\"true\" />\r\n  <Jobs i:nil=\"true\" xmlns:d2p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\" />\r\n  <Message></Message>\r\n  <OperationResult>Succeeded</OperationResult>\r\n  <OperationStatus>Completed</OperationStatus>\r\n</OperationInfo>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "378"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-servedbyregion": [
+          "uswest"
+        ],
+        "x-ms-client-request-id": [
+          "cef0ead0-0e60-4fce-be4d-a99b19211e88-2017-03-28 10:04:31Z-P"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=15724800; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "8e425affdc867fdd98081cad6c3f5404"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 28 Mar 2017 10:04:34 GMT"
+        ],
+        "Server": [
+          "1.0.6194.1699",
+          "(rd_rdfe_dhf2.170323-1437)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "7a8c4b2b-1343-4ead-903f-031163054294"
+  }
+}

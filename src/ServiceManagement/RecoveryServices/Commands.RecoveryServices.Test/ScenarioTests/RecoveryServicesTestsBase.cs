@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
         protected string resourceType;
         protected string resourceNamespace;
         protected string targetRgName;
+        protected string cloudServiceName;
         private ASRVaultCreds asrVaultCreds = null;
 
         public SiteRecoveryManagementClient SiteRecoveryMgmtClient { get; private set; }
@@ -59,11 +60,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
             }
 
             this.vaultSettingsFilePath = Environment.GetEnvironmentVariable("VAULT_SETTINGS_FILE_PATH");
-            this.vaultName = Environment.GetEnvironmentVariable("RESOURCE_NAME");
-            this.location = Environment.GetEnvironmentVariable("VAULT_LOCATION");
-            this.resourceType = Environment.GetEnvironmentVariable("RESOURCE_TYPE");
-            this.targetRgName = Environment.GetEnvironmentVariable("TARGET_RG");
-            this.resourceNamespace = Environment.GetEnvironmentVariable("RESOURCE_NAMESPACE");
+            this.vaultName = "vault2";
+            this.location = "West US";
+            this.resourceType = "HyperVRecoveryManagerVault";
+            this.targetRgName = "abc";
+            this.resourceNamespace = "HRMBvtd2ToDogfood";
+            this.cloudServiceName = "RecoveryServices-DKIEGNVV3OAPUDVOTINGUOLCIJIDA743FNSWQAM4O4NEQUVZFBWA-West-US";
 
             if (string.IsNullOrEmpty(vaultSettingsFilePath))
             {
@@ -156,7 +158,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
         private RecoveryServicesVaultUpgradeManagementClient GetVaultUpgradeManagementClient()
         {
             return new RecoveryServicesVaultUpgradeManagementClient(
-                asrVaultCreds.CloudServiceName,
+                cloudServiceName,
                 resourceNamespace,
                 resourceType,
                 vaultName,

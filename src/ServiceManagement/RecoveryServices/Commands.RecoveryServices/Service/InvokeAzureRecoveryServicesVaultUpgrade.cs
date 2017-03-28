@@ -60,6 +60,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Alias("TargetRG", "TargetRGName", "RG")]
         public string TargetResourceGroupName { get; set; }
 
+        /// <summary>
+        /// Gets or sets switch parameter. On passing, command does not ask for confirmation.
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public SwitchParameter Force { get; set; }
+
         #endregion Parameters
 
         /// <summary>
@@ -79,7 +85,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             try
             {
                 this.ConfirmAction(
-                    false,
+                    this.Force.IsPresent,
                     string.Format(message),
                     Properties.Resources.StartVaultUpgradeWhatIfMessage,
                     this.VaultName,
@@ -179,6 +185,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             CheckVaultUpgradePrerequisitesResponse response =
                 CheckVaultUpgradePrerequisitesResponse.Succeeded;
+
+            this.WriteResponse(Properties.Resources.StartingPrerequisitesCheck);
+
             try
             {
                 this.RecoveryServicesClient.TestVaultUpgradePrerequistes(
@@ -187,9 +196,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     this.ResourceType,
                     this.TargetResourceGroupName,
                     this.Profile.Context.Subscription.Id.ToString());
+
+                this.WriteObject(Properties.Resources.CheckPrereqSucceded);
             }
             catch (Exception exception)
             {
+                this.WriteResponse(Properties.Resources.CheckPrereqFailed);
                 ExceptionDetails details =
                     this.RecoveryServicesClient.HandleVaultUpgradeException(exception);
                 if (!string.IsNullOrEmpty(details.WarningDetails))

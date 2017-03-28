@@ -273,16 +273,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string Completed = "Completed";
 
         /// <summary>
-        /// Represents state "validation failed"
-        /// </summary>
-        public const string ValidationFailed = "ValidationFailed";
-
-        /// <summary>
-        /// Represents state "validation succeeded"
-        /// </summary>
-        public const string ValidationSucceeded = "ValidationSucceeded";
-
-        /// <summary>
         /// Represents vaults string value.
         /// </summary>
         public const string Vaults = "Vaults";
@@ -291,11 +281,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Represents Recovery service namespace value.
         /// </summary>
         public const string RecoveryServicesNamespace = "Microsoft.RecoveryServices";
-
-        /// <summary>
-        /// Represents the state where unsupported billing model is getting used.
-        /// </summary>
-        public const string UnsupportedBillingModel = "UnsupportedBillingModel";
     }
 
     /// <summary>
