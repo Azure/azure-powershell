@@ -80,54 +80,148 @@ namespace StaticAnalysis.HelpAnalyzer
             {
                 foreach (var directory in Directory.EnumerateDirectories(Path.GetFullPath(baseDirectory)))
                 {
-                    var commandAssemblies = Directory.EnumerateFiles(directory, "*.Commands.*.dll")
-                        .Where (f => IsAssemblyFile(f) && !File.Exists(f + "-Help.xml"));
-                    foreach (var orphanedAssembly in commandAssemblies)
+                    if (directory.Contains("ServiceManagement"))
                     {
-                        helpLogger.LogRecord(new HelpIssue()
-                        {
-                            Assembly = orphanedAssembly,
-                            Description = string.Format("{0} has no matching help file", orphanedAssembly),
-                            Severity = 0,
-                            Remediation = string.Format("Make sure a dll Help file for {0} exists and it is " +
-                                                        "being copied to the output directory.", orphanedAssembly),
-                            Target = orphanedAssembly,
-                            HelpFile = orphanedAssembly + "-Help.xml",
-                            ProblemId = MissingHelpFile
-                        });
+                        ServiceManagementAnalyze(directory, helpLogger, processedHelpFiles, savedDirectory);
                     }
-
-                    var helpFiles = Directory.EnumerateFiles(directory, "*.dll-Help.xml")
-                        .Where(f => !processedHelpFiles.Contains(Path.GetFileName(f), 
-                            StringComparer.OrdinalIgnoreCase)).ToList();
-                    if (helpFiles.Any())
+                    else
                     {
-                        Directory.SetCurrentDirectory(directory);
-                        foreach (var helpFile in helpFiles)
-                        {
-                           var cmdletFile = helpFile.Substring(0, helpFile.Length - "-Help.xml".Length);
-                            var helpFileName = Path.GetFileName(helpFile);
-                            var cmdletFileName = Path.GetFileName(cmdletFile);
-                            if (File.Exists(cmdletFile) )
-                            {
-                                processedHelpFiles.Add(helpFileName);
-                                helpLogger.Decorator.AddDecorator((h) =>
-                                {
-                                    h.HelpFile = helpFileName;
-                                    h.Assembly = cmdletFileName;
-                                }, "Cmdlet");
-                                var proxy = EnvironmentHelpers.CreateProxy<CmdletLoader>(directory, out _appDomain);
-                                var cmdlets = proxy.GetCmdlets(cmdletFile);
-                                var helpRecords = CmdletHelpParser.GetHelpTopics(helpFile, helpLogger);
-                                ValidateHelpRecords(cmdlets, helpRecords, helpLogger);
-                                helpLogger.Decorator.Remove("Cmdlet");
-                                AppDomain.Unload(_appDomain);
-                            }
-                        }
-
-                        Directory.SetCurrentDirectory(savedDirectory);
+                        ResourceManagerAnalyze(directory, helpLogger, processedHelpFiles, savedDirectory);
                     }
                 }
+            }
+        }
+
+        private void ServiceManagementAnalyze(
+            string directory,
+            ReportLogger<HelpIssue> helpLogger,
+            List<string> processedHelpFiles,
+            string savedDirectory)
+        {
+            var commandAssemblies = Directory.EnumerateFiles(directory, "*.Commands.*.dll")
+                        .Where(f => IsAssemblyFile(f) && !File.Exists(f + "-Help.xml"));
+            foreach (var orphanedAssembly in commandAssemblies)
+            {
+                helpLogger.LogRecord(new HelpIssue()
+                {
+                    Assembly = orphanedAssembly,
+                    Description = string.Format("{0} has no matching help file", orphanedAssembly),
+                    Severity = 0,
+                    Remediation = string.Format("Make sure a dll Help file for {0} exists and it is " +
+                                                "being copied to the output directory.", orphanedAssembly),
+                    Target = orphanedAssembly,
+                    HelpFile = orphanedAssembly + "-Help.xml",
+                    ProblemId = MissingHelpFile
+                });
+            }
+
+            var helpFiles = Directory.EnumerateFiles(directory, "*.dll-Help.xml")
+                .Where(f => !processedHelpFiles.Contains(Path.GetFileName(f),
+                    StringComparer.OrdinalIgnoreCase)).ToList();
+            if (helpFiles.Any())
+            {
+                Directory.SetCurrentDirectory(directory);
+                foreach (var helpFile in helpFiles)
+                {
+                    var cmdletFile = helpFile.Substring(0, helpFile.Length - "-Help.xml".Length);
+                    var helpFileName = Path.GetFileName(helpFile);
+                    var cmdletFileName = Path.GetFileName(cmdletFile);
+                    if (File.Exists(cmdletFile))
+                    {
+                        processedHelpFiles.Add(helpFileName);
+                        helpLogger.Decorator.AddDecorator((h) =>
+                        {
+                            h.HelpFile = helpFileName;
+                            h.Assembly = cmdletFileName;
+                        }, "Cmdlet");
+                        var proxy = EnvironmentHelpers.CreateProxy<CmdletLoader>(directory, out _appDomain);
+                        var cmdlets = proxy.GetCmdlets(cmdletFile);
+                        var helpRecords = CmdletHelpParser.GetHelpTopics(helpFile, helpLogger);
+                        ValidateHelpRecords(cmdlets, helpRecords, helpLogger);
+                        helpLogger.Decorator.Remove("Cmdlet");
+                        AppDomain.Unload(_appDomain);
+                    }
+                }
+
+                Directory.SetCurrentDirectory(savedDirectory);
+            }
+        }
+
+        private void ResourceManagerAnalyze(
+            string directory,
+            ReportLogger<HelpIssue> helpLogger,
+            List<string> processedHelpFiles,
+            string savedDirectory)
+        {
+            var helpFolder = Directory.EnumerateDirectories(directory, "help").FirstOrDefault();
+            var service = Path.GetFileName(directory);            
+            if (helpFolder == null)
+            {
+                helpLogger.LogRecord(new HelpIssue()
+                {
+                    Assembly = service,
+                    Description = string.Format("{0} has no matching help folder", service),
+                    Severity = 0,
+                    Remediation = string.Format("Make sure a help folder for {0} exists and it is " +
+                                                "being copied to the output directory.", service),
+                    Target = service,
+                    HelpFile = service + "/folder",
+                    ProblemId = MissingHelpFile
+                });
+            }
+
+            var helpFiles = Directory.EnumerateFiles(helpFolder, "*.md").Select(f => Path.GetFileNameWithoutExtension(f)).ToList();
+            if (helpFiles.Any())
+            {
+                Directory.SetCurrentDirectory(directory);
+                var manifestFiles = Directory.EnumerateFiles(directory, "*.psd1").ToList();
+                if (manifestFiles.Count > 1)
+                {
+                    manifestFiles = manifestFiles.Where(f => Path.GetFileName(f).IndexOf(service) >= 0).ToList();
+                }
+
+                if (manifestFiles.Count == 0)
+                {
+                    return;
+                }
+
+                var psd1 = manifestFiles.FirstOrDefault();
+                var parentDirectory = Directory.GetParent(psd1);
+                var psd1FileName = Path.GetFileName(psd1);
+
+                PowerShell powershell = PowerShell.Create();
+                powershell.AddScript("Import-LocalizedData -BaseDirectory " + parentDirectory +
+                                    " -FileName " + psd1FileName +
+                                    " -BindingVariable ModuleMetadata; $ModuleMetadata.NestedModules");
+                var cmdletResult = powershell.Invoke();
+                var cmdletFiles = cmdletResult.Select(c => c.ToString().Substring(2));
+                if (cmdletFiles.Any())
+                {
+                    List<CmdletHelpMetadata> allCmdlets = new List<CmdletHelpMetadata>();
+                    foreach (var cmdletFileName in cmdletFiles)
+                    {
+                        var cmdletFileFullPath = Path.Combine(directory, Path.GetFileName(cmdletFileName));
+                        if (File.Exists(cmdletFileFullPath))
+                        {
+                            helpLogger.Decorator.AddDecorator((h) =>
+                            {
+                                h.HelpFile = cmdletFileFullPath;
+                                h.Assembly = cmdletFileFullPath;
+                            }, "Cmdlet");
+                            processedHelpFiles.Add(cmdletFileName);
+                            var proxy =
+                                EnvironmentHelpers.CreateProxy<CmdletLoader>(directory, out _appDomain);
+                            var cmdlets = proxy.GetCmdlets(cmdletFileFullPath);
+                            allCmdlets.AddRange(cmdlets);
+                            helpLogger.Decorator.Remove("Cmdlet");
+                            AppDomain.Unload(_appDomain);
+                        }
+                    }
+
+                    ValidateHelpRecords(allCmdlets, helpFiles, helpLogger);
+                }
+
+                Directory.SetCurrentDirectory(savedDirectory);
             }
         }
 
