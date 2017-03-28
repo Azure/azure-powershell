@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8531411A-0137-4E27-9C5E-49E07C245048}"
 	ProjectSection(SolutionItems) = preProject
@@ -140,6 +140,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.LogicApp.Test", "ResourceManager\LogicApp\Commands.LogicApp.Test\Commands.LogicApp.Test.csproj", "{F1F11BB1-592B-45A3-844C-7F8A585AD107}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.LogicApp", "ResourceManager\LogicApp\Commands.LogicApp\Commands.LogicApp.csproj", "{FFE4E475-B32C-4F89-9D52-F7CEBF709C74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Authentication.Abstractions", "Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj", "{70527617-7598-4AEF-B5BD-DB9186B8184B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -407,6 +409,10 @@ Global
 		{FFE4E475-B32C-4F89-9D52-F7CEBF709C74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFE4E475-B32C-4F89-9D52-F7CEBF709C74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFE4E475-B32C-4F89-9D52-F7CEBF709C74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70527617-7598-4AEF-B5BD-DB9186B8184B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70527617-7598-4AEF-B5BD-DB9186B8184B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70527617-7598-4AEF-B5BD-DB9186B8184B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70527617-7598-4AEF-B5BD-DB9186B8184B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
