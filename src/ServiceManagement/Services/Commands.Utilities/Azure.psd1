@@ -465,7 +465,8 @@ CmdletsToExport = 'Get-AzureAutomationCertificate', 'Get-AzureAutomationConnecti
                'Remove-AzureTrafficManagerProfile', 
                'Set-AzureTrafficManagerProfile', 'Add-AzureTrafficManagerEndpoint', 
                'Set-AzureTrafficManagerEndpoint', 
-               'Remove-AzureTrafficManagerEndpoint'
+               'Remove-AzureTrafficManagerEndpoint','Test-AzureRecoveryServicesVaultUpgrade', 
+               'Invoke-AzureRecoveryServicesVaultUpgrade'
 
 # Variables to export from this module
 # VariablesToExport = @()
