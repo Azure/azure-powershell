@@ -472,6 +472,33 @@ Describe "Uninstall-ModuleHelper" {
                 Assert-MockCalled Uninstall-Module -Exactly 0
             }
         }
+
+        Context "Uninstall-Module threw error" {
+            # Arrange
+            $VersionObj = New-Object -TypeName System.Version -ArgumentList "1.0" 
+            $moduleObj = New-Object -TypeName PSObject 
+            $moduleObj | Add-Member NoteProperty Version($VersionObj)
+            $Script:mockCalled = 0
+            $mockTestPath = {
+                $Script:mockCalled++
+                if ($Script:mockCalled -eq 1)
+                {
+                    return $moduleObj
+                }
+                else {
+                    return $null
+                }
+            }   
+
+            Mock -CommandName Get-Module -MockWith $mockTestPath
+            Mock Uninstall-Module -Verifiable { throw "No match was found for the specified search criteria and module names" }
+            It "Should write error to error pipeline" {
+                Uninstall-ModuleHelper -Module 'Module1' -Version '1.0' -Profile 'Profile1' -RemovePreviousVersions -ErrorVariable ev -ea SilentlyContinue 
+                ($ev -match "unable to uninstall" -ne $null) | Should be $true
+                $Script:mockCalled | Should Be 1
+                Assert-VerifiableMocks
+            } 
+        }
     }
 }
 
