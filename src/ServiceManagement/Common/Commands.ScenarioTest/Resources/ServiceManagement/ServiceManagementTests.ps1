@@ -997,7 +997,7 @@ function Run-RedeployVirtualMachineTest
         $vm = Get-AzureVM -ServiceName $svcName -Name $vmName;
 
         # Test Redeploy
-        Restart-AzureVM -Redeploy -ServiceName $svcName -Name $vmName;
+        $vm | Restart-AzureVM -Redeploy;
 
         $vm = Get-AzureVM -ServiceName $svcName -Name $vmName;
     }
@@ -1006,4 +1006,62 @@ function Run-RedeployVirtualMachineTest
         # Cleanup
         Cleanup-CloudService $svcName;
     }
+}
+
+# Test Initiate Maintenance VM
+function Run-InitiateMaintenanceTest
+{
+	# Depending on the environment, the initiate maintenance operation may return 200
+	# or 400 with error message like "User initiated maintenance on the virtual machine was
+	# successfully completed". Both are expected reponse.
+    # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
+	$tempErrorActionPreference = $ErrorActionPreference;
+    $ErrorActionPreference='SilentlyContinue';
+	
+	# Setup
+	$location = "Central US EUAP";
+	$imgName = Get-DefaultImage $location;
+
+	$storageName = 'pstest' + (getAssetName);
+	New-AzureStorageAccount -StorageAccountName $storageName -Location $location;
+
+	# Associate the new storage account with the current subscription
+	Set-CurrentStorageAccountName $storageName;
+
+	$vmName = "psvm01";
+	$svcName = 'pstest' + (Get-CloudServiceName);
+	$userName = "pstestuser";
+	$password = $PLACEHOLDER;
+
+	# Test
+	New-AzureService -ServiceName $svcName -Location $location;
+
+	try
+	{
+		New-AzureQuickVM -Windows -ImageName $imgName -Name $vmName -ServiceName $svcName -AdminUsername $userName -Password $password;
+		Start-Sleep -s 300;
+
+		# Get VM
+		$vm = Get-AzureVM -ServiceName $svcName -Name $vmName;
+		Assert-NotNull $vm;
+		Assert-NotNull $vm.MaintenanceStatus;
+
+		# Test Initiate Maintenance
+		$result = Restart-AzureVM -InitiateMaintenance -ServiceName $svcName -Name $vmName;
+
+		$vm = Get-AzureVM -ServiceName $svcName -Name $vmName
+		Assert-NotNull $vm.MaintenanceStatus; 
+	}
+	catch
+	{
+        Assert-True {$result.Result.Contains("User initiated maintenance on the Virtual Machine was successfully completed.")};
+		$vm = Get-AzureVM -ServiceName $svcName -Name $vmName
+		Assert-NotNull $vm.MaintenanceStatus;
+	}
+	finally
+	{
+		# Cleanup
+		Cleanup-CloudService $srcName;
+		$ErrorActionPreference = $tempErrorActionPreference;
+	}
 }
