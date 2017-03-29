@@ -255,13 +255,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 CreateTenant(tenantId)));
         }
 
-        public List<AzureTenant> ListTenants(string tenant)
+        public List<AzureTenant> ListTenants(string tenant = "")
         {
-            return ListAccountTenants(_profile.Context.Account, _profile.Context.Environment, null, ShowDialog.Never)
-                .Where(t => tenant == null ||
-                            tenant.Equals(t.Id.ToString(), StringComparison.OrdinalIgnoreCase) ||
-                            tenant.Equals(t.Domain, StringComparison.OrdinalIgnoreCase))
-                .ToList();
+            List<AzureTenant> tenants = ListAccountTenants(_profile.Context.Account, _profile.Context.Environment, null, ShowDialog.Never);
+            if (!string.IsNullOrWhiteSpace(tenant))
+            {
+                tenants = tenants.Where(t => tenant == null ||
+                                             tenant.Equals(t.Id.ToString(), StringComparison.OrdinalIgnoreCase) ||
+                                             tenant.Equals(t.Domain, StringComparison.OrdinalIgnoreCase))
+                                 .ToList();
+            }
+
+            return tenants;
         }
 
         public bool TryGetSubscriptionById(string tenantId, string subscriptionId, out AzureSubscription subscription)
@@ -360,29 +365,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             return AcquireAccessToken(_profile.Context.Account, _profile.Context.Environment, tenantId, null, ShowDialog.Auto);
         }
 
-        /// <summary>
-        /// List all tenants for the account in the profile context
-        /// </summary>
-        /// <returns>The list of tenants for the default account.</returns>
-        public IEnumerable<AzureTenant> ListTenants()
-        {
-            return ListAccountTenants(_profile.Context.Account, _profile.Context.Environment, null, ShowDialog.Never);
-        }
-
         public IEnumerable<AzureSubscription> ListSubscriptions(string tenantIdOrDomain = "")
         {
-            var tenants = new List<AzureTenant>();
-            if (string.IsNullOrWhiteSpace(tenantIdOrDomain))
-            {
-                tenants.AddRange(ListTenants());
-            }
-            else
-            {
-                tenants.Add(CreateTenant(tenantIdOrDomain));
-            }
-            
-
             List<AzureSubscription> subscriptions = new List<AzureSubscription>();
+            var tenants = ListTenants(tenantIdOrDomain);
             foreach (var tenant in tenants)
             {
                 try
@@ -492,7 +478,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     }
                     else
                     {
-                        var subscriptions = (subscriptionClient.Subscriptions.List().ToList() ??
+                        var subscriptions = (subscriptionClient.ListAll().ToList() ??
                                                 new List<Subscription>())
                                             .Where(s => "enabled".Equals(s.State.ToString(), StringComparison.OrdinalIgnoreCase) ||
                                                         "warned".Equals(s.State.ToString(), StringComparison.OrdinalIgnoreCase));
@@ -653,7 +639,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             SubscriptionClient subscriptionClient = null;
             try
             {
-                List<AzureSubscription> subscriptionList = new List<AzureSubscription>();
                 subscriptionClient = AzureSession.ClientFactory.CreateCustomArmClient<SubscriptionClient>(
                         environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
                         new TokenCredentials(accessToken.AccessToken) as ServiceClientCredentials,
@@ -662,13 +647,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 AzureContext context = new AzureContext(_profile.Context.Subscription, account, environment, 
                                             CreateTenantFromString(tenantId, accessToken.TenantId));
 
-                IEnumerable<AzureSubscription> enumerable = subscriptionClient.ListAll().Select(s => s.ToAzureSubscription(context));
-                foreach (var subscription in enumerable)
-                {
-                    subscriptionList.Add(subscription);
-                }
-
-                return subscriptionList;
+                return subscriptionClient.ListAll().Select(s => s.ToAzureSubscription(context));
             }
             finally
             {
