@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+* Fix bug in Get-* cmdlets, to allow retrieving multiple pages of data (more than 120 items)
+
 ## Version 2.8.0
 * Updated Set-AzureRmVMAEMExtension and Test-AzureRmVMAEMExtension cmdlets to support managed disks
 
