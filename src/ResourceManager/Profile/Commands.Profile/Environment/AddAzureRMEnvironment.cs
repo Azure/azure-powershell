@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile
@@ -124,6 +125,9 @@ namespace Microsoft.Azure.Commands.Profile
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.ManagementPortalUrl] = ManagementPortalUrl;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix] = StorageEndpoint;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.ActiveDirectory] = ActiveDirectoryEndpoint;
+            newEnvironment.Endpoints[AzureEnvironment.Endpoint.ActiveDirectory] =
+                ActiveDirectoryEndpoint != null ? GeneralUtilities.EnsureTrailingSlash(ActiveDirectoryEndpoint)
+                                                : ActiveDirectoryEndpoint;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId] = ActiveDirectoryServiceEndpointResourceId;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.Gallery] = GalleryEndpoint;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.Graph] = GraphEndpoint;
