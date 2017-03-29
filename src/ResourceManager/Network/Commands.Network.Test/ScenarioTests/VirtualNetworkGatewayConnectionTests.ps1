@@ -127,7 +127,7 @@ function Test-VirtualNetworkGatewayConnectionWithBgpCRUD
 
 <#
 .SYNOPSIS
-Virtual network gateway connection tests with Ipsec Policies
+Virtual network gateway connection tests with Ipsec Policies and policy-based TS
 #>
 function Test-VirtualNetworkGatewayConnectionWithIpsecPoliciesCRUD
 {
@@ -167,14 +167,14 @@ function Test-VirtualNetworkGatewayConnectionWithIpsecPoliciesCRUD
       $actual = New-AzureRmLocalNetworkGateway -ResourceGroupName $rgname -name $localnetName -location $location -AddressPrefix 192.168.0.0/16 -GatewayIpAddress 192.168.3.10
       $localnetGateway = Get-AzureRmLocalNetworkGateway -ResourceGroupName $rgname -name $localnetName
 
-	  # Create IpsecPolicies
+	  # Create IpsecPolicy
 	  $ipsecPolicy = New-AzureRmIpsecPolicy -SALifeTimeSeconds 300 -SADataSizeKilobytes 1024 -IpsecEncryption "GCMAES256" -IpsecIntegrity "GCMAES256" -IkeEncryption "AES256" -IkeIntegrity "SHA256" -DhGroup "DHGroup14" -PfsGroup "PFS2048"
 
-      # Create & Get VirtualNetworkGatewayConnection
+      # Create & Get VirtualNetworkGatewayConnection w/ policy based TS
       $actual = New-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -EnableBgp false -UsePolicyBasedTrafficSelectors -IpsecPolicies $ipsecPolicy
       $connection = Get-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
       
-	  # Verify IpsecPolicies
+	  # Verify IpsecPolicies and policy-based TS
 	  Assert-AreEqual $connection.UsePolicyBasedTrafficSelectors $actual.UsePolicyBasedTrafficSelectors
 	  Assert-AreEqual $connection.IpsecPolicies.Count $actual.IpsecPolicies.Count
 	  Assert-AreEqual $connection.IpsecPolicies[0].SALifeTimeSeconds $actual.IpsecPolicies[0].SALifeTimeSeconds
