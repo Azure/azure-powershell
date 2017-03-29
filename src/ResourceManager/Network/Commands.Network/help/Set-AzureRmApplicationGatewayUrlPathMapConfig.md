@@ -56,31 +56,15 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Specifies the URL path map name in which this cmdlet sets configuration for.
+### -DefaultBackendAddressPool
+Specifies the default backend address pool to route in case none of the rules specified in the *pathRules* parameter match.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: PSApplicationGatewayBackendAddressPool
+Parameter Sets: SetByResource
 Aliases: 
 
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PathRules
-Specifies a list of path rules.
-Note that the path rules are order sensitive, they are applied in order they are specified.
-
-```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule]
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -93,6 +77,21 @@ Specifies the default backend address pool ID.
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultBackendHttpSettings
+Specifies the default backend HTTP settings to use in case none of the rules specified in the *pathRules* parameter match.
+
+```yaml
+Type: PSApplicationGatewayBackendHttpSettings
+Parameter Sets: SetByResource
 Aliases: 
 
 Required: False
@@ -156,30 +155,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultBackendAddressPool
-Specifies the default backend address pool to route in case none of the rules specified in the *pathRules* parameter match.
+### -Name
+Specifies the URL path map name in which this cmdlet sets configuration for.
 
 ```yaml
-Type: PSApplicationGatewayBackendAddressPool
-Parameter Sets: SetByResource
+Type: String
+Parameter Sets: (All)
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultBackendHttpSettings
-Specifies the default backend HTTP settings to use in case none of the rules specified in the *pathRules* parameter match.
+### -PathRules
+Specifies a list of path rules.
+Note that the path rules are order sensitive, they are applied in order they are specified.
 
 ```yaml
-Type: PSApplicationGatewayBackendHttpSettings
-Parameter Sets: SetByResource
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule]
+Parameter Sets: (All)
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

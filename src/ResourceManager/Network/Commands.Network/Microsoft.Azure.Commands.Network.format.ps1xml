@@ -1983,6 +1983,36 @@
         </ListEntries>
       </ListControl>
     </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSBgpCommunity</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSBgpCommunity</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>ServiceSupportedRegion</Label>
+                <PropertyName>ServiceSupportedRegion</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>CommunityName</Label>
+                <PropertyName>CommunityName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>CommunityValue</Label>
+                <PropertyName>CommunityValue</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>CommunityPrefixes</Label>
+                <PropertyName>CommunityPrefixesText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
 	<View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSBgpServiceCommunity</Name>
       <ViewSelectedBy>
@@ -2005,8 +2035,8 @@
                 <PropertyName>Type</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>Communities</Label>
-                <PropertyName>CommunityPrefixesText</PropertyName>
+                <Label>BgpCommunities</Label>
+                <PropertyName>BgpCommunitiesText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
