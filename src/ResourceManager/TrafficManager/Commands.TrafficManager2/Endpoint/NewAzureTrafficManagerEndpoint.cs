@@ -12,15 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.TrafficManager.Models;
-using Microsoft.Azure.Commands.TrafficManager.Utilities;
-using System.Management.Automation;
-using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Resources;
-
 namespace Microsoft.Azure.Commands.TrafficManager
 {
-    using Hyak.Common;
+    using System.Collections.Generic;
+    using System.Management.Automation;
     using System.Net;
+
+    using Hyak.Common;
+
+    using Microsoft.Azure.Commands.TrafficManager.Models;
+    using Microsoft.Azure.Commands.TrafficManager.Utilities;
+    using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Resources;   
 
     [Cmdlet(VerbsCommon.New, "AzureRmTrafficManagerEndpoint"), OutputType(typeof(TrafficManagerEndpoint))]
     public class NewAzureTrafficManagerEndpoint : TrafficManagerBaseCmdlet
@@ -71,6 +73,10 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateNotNullOrEmpty]
         public uint? MinChildEndpoints { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The list of regions mapped to this endpoint when using the ‘Geographic’ traffic routing method. Please consult Traffic Manager documentation for a full list of accepted values.")]
+        [ValidateCount(1, 350)]
+        public List<string> GeoMapping { get; set; }
+
         public override void ExecuteCmdlet()
         {
             // We are not supporting etags yet, NewAzureTrafficManagerEndpoint should not overwrite any existing endpoint.
@@ -97,7 +103,8 @@ namespace Microsoft.Azure.Commands.TrafficManager
                         this.Weight,
                         this.Priority,
                         this.EndpointLocation,
-                        this.MinChildEndpoints);
+                        this.MinChildEndpoints,
+                        this.GeoMapping);
 
                     this.WriteVerbose(ProjectResources.Success);
                     this.WriteObject(trafficManagerEndpoint);

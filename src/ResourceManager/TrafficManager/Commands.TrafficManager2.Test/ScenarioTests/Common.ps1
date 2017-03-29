@@ -73,13 +73,13 @@ function TestSetup-CreateResourceGroup
 
 <#
 .SYNOPSIS
-Creates a resource group to use in tests
+Creates a profile to use in tests
 #>
-function TestSetup-CreateProfile($profileName, $resourceGroupName)
+function TestSetup-CreateProfile($profileName, $resourceGroupName, $routingMethod = "Performance")
 {
 	$relativeName = getAssetName
 
-	$profile = New-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroupName -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
+	$profile = New-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroupName -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod $routingMethod -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
 
 	return $profile
 }
