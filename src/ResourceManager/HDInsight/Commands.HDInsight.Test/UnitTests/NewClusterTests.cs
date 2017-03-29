@@ -145,13 +145,23 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 clusterout =>
                     clusterout.ClusterState == "Running" &&
                     clusterout.ClusterType == ClusterType &&
-                    clusterout.ClusterVersion == "3.1" &&
+                    clusterout.ClusterVersion == HdiVersion &&
                     clusterout.CoresUsed == 24 &&
                     clusterout.Location == Location &&
                     clusterout.Name == ClusterName &&
                     clusterout.OperatingSystemType == OSType.Linux)),
                 Times.Once);
 
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanCreateNewHDInsightCluster_RServer_Linux()
+        {
+            ClusterType = "RServer";
+            HdiVersion = "3.5";
+
+            CreateNewHDInsightCluster(setEdgeNodeVmSize:true);
         }
 
         [Fact]
@@ -179,7 +189,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 clusterout =>
                     clusterout.ClusterState == "Running" &&
                     clusterout.ClusterType == ClusterType &&
-                    clusterout.ClusterVersion == "3.1" &&
+                    clusterout.ClusterVersion == HdiVersion &&
                     clusterout.CoresUsed == 24 &&
                     clusterout.Location == Location &&
                     clusterout.Name == ClusterName &&
@@ -195,7 +205,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 Times.Once);
         }
 
-        private void CreateNewHDInsightCluster(bool addSecurityProfileInresponse = false)
+        private void CreateNewHDInsightCluster(bool addSecurityProfileInresponse = false, bool setEdgeNodeVmSize = false)
         {
             cmdlet.ClusterName = ClusterName;
             cmdlet.ResourceGroupName = ResourceGroupName;
@@ -207,7 +217,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             cmdlet.ClusterType = ClusterType;
             cmdlet.SshCredential = _sshCred;
             cmdlet.OSType = OSType.Linux;
-            
+            if (setEdgeNodeVmSize)
+                cmdlet.EdgeNodeSize = "edgeNodeVmSizeSetTest";
+
             var cluster = new Cluster
             {
                 Id = "id",
@@ -215,7 +227,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 Location = Location,
                 Properties = new ClusterGetProperties
                 {
-                    ClusterVersion = "3.1",
+                    ClusterVersion = HdiVersion,
                     ClusterState = "Running",
                     ClusterDefinition = new ClusterDefinition
                     {
@@ -286,7 +298,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                         parameters.ClusterType == ClusterType &&
                         parameters.OSType == OSType.Linux &&
                         parameters.SshUserName == _sshCred.UserName &&
-                        parameters.SshPassword == _sshCred.Password.ConvertToString())))
+                        parameters.SshPassword == _sshCred.Password.ConvertToString() &&
+                        ((!setEdgeNodeVmSize && parameters.EdgeNodeSize == null) || (setEdgeNodeVmSize && parameters.EdgeNodeSize == "edgeNodeVmSizeSetTest")))))
                 .Returns(getresponse)
                 .Verifiable();
 
@@ -297,7 +310,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 clusterout =>
                     clusterout.ClusterState == "Running" &&
                     clusterout.ClusterType == ClusterType &&
-                    clusterout.ClusterVersion == "3.1" &&
+                    clusterout.ClusterVersion == HdiVersion &&
                     clusterout.CoresUsed == 24 &&
                     clusterout.Location == Location &&
                     clusterout.Name == ClusterName &&

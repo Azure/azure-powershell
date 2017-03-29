@@ -8,6 +8,7 @@ schema: 2.0.0
 # Get-AzureRmExpressRouteServiceProvider
 
 ## SYNOPSIS
+Gets a list ExpressRoute service providers and their attributes.
 
 ## SYNTAX
 
@@ -17,12 +18,16 @@ Get-AzureRmExpressRouteServiceProvider [-InformationAction <ActionPreference>] [
 ```
 
 ## DESCRIPTION
+The **Get-AzureRmExpressRouteServiceProvider** cmdlet retrieves a list ExpressRoute service
+providers and their attributes. Attribute include location and bandwidth options.
 
 ## EXAMPLES
 
-### 1:
+### Example 1: Get a list of service provider with locations in "Silicon Valley"
 ```
-PS C:\>
+Get-AzureRmExpressRouteServiceProvider |
+   Where-Object PeeringLocations -Contains "Silicon Valley" |
+   Select-Object Name
 ```
 
 ## PARAMETERS
@@ -77,3 +82,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+[Get-AzureRmExpressRouteCircuitARPTable](Get-AzureRmExpressRouteCircuitARPTable.md)
+
+[Get-AzureRmExpressRouteCircuitRouteTable](Get-AzureRmExpressRouteCircuitRouteTable.md)
+
+[Get-AzureRmExpressRouteCircuitRouteTableSummary](Get-AzureRmExpressRouteCircuitRouteTableSummary.md)
+
+[Get-AzureRmExpressRouteCircuitStats](Get-AzureRmExpressRouteCircuitStats.md)

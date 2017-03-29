@@ -674,7 +674,7 @@ function Test-MigrationAbortAzureDeployment
     Get-AzureVM -ServiceName $svcName -Name $vmName;
 
     $result = Move-AzureService -Validate -ServiceName $svcName -DeploymentName $svcName -CreateNewVirtualNetwork;
-    Assert-AreEqual "Succeeded" $result.Result;
+    Assert-True {$result.Result.Contains("Validation Passed.")}
     $vm = Get-AzureVM -ServiceName $svcName -Name $vmName;
 
     Move-AzureService -Prepare -ServiceName $svcName -DeploymentName $svcName -CreateNewVirtualNetwork;
@@ -712,7 +712,7 @@ function Test-MigrationValidateAzureDeployment
     Get-AzureVM -ServiceName $svcName -Name $vmName;
 
     $result = Move-AzureService -Validate -ServiceName $svcName -DeploymentName $svcName -CreateNewVirtualNetwork;
-    Assert-AreNotEqual "Succeeded" $result.Result;
+    Assert-True {$result.Result.Contains("Validation Failed.")}
     Assert-AreNotEqual 0 $result.ValidationMessages.Count;
 }
 
@@ -766,7 +766,7 @@ function Test-MigrationAbortAzureVNet
     Get-AzureVNetSite;
 
     $result = Move-AzureVirtualNetwork -Validate -VirtualNetworkName $vnetName;
-    Assert-AreEqual "Succeeded" $result.Result;
+    Assert-True {$result.Result.Contains("Validation Passed.")}
     Get-AzureVNetSite;
 
     Move-AzureVirtualNetwork -Prepare -VirtualNetworkName $vnetName;
@@ -813,7 +813,7 @@ function Test-MigrationAbortAzureStorageAccount
 
     # Test
     $result = Move-AzureStorageAccount -Validate -StorageAccountName $storageName;
-    Assert-AreEqual "Succeeded" $result.Result;
+    Assert-True {$result.Result.Contains("Validation Passed.")}
     Get-AzureStorageAccount -StorageAccountName $storageName;
 
     Move-AzureStorageAccount -Prepare -StorageAccountName $storageName;
@@ -997,7 +997,7 @@ function Run-RedeployVirtualMachineTest
         $vm = Get-AzureVM -ServiceName $svcName -Name $vmName;
 
         # Test Redeploy
-        Restart-AzureVM -Redeploy -ServiceName $svcName -Name $vmName;
+        $vm | Restart-AzureVM -Redeploy;
 
         $vm = Get-AzureVM -ServiceName $svcName -Name $vmName;
     }
