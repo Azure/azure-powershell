@@ -495,6 +495,15 @@
                         <Component Id="cmpE5BF230DD42771ABA47FB949DCA3130E" Guid="*">
                             <File Id="filF137285806982ABFEF5E1F0F2D79E1ED" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Billing\Microsoft.Rest.ClientRuntime.dll" />
                         </Component>
+                        <Component Id="cmp138FB8512C1ACA1E57CF3400673A8E08" Guid="*">
+                            <File Id="filCC74508508037EC7BD03683B5E1E105F" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Billing\Microsoft.Threading.Tasks.dll" />
+                        </Component>
+                        <Component Id="cmp1D6C1D06DFF26EFE9AD99FB28FEEE285" Guid="*">
+                            <File Id="fil106A195087987ACE993FE2F4FBB45AE1" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Billing\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
+                        </Component>
+                        <Component Id="cmp27D4857C0C9334BDA0CDEEBF3D24FF64" Guid="*">
+                            <File Id="filA8138F7AAEC56885C7B5A2348F61553A" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Billing\Microsoft.Threading.Tasks.Extensions.dll" />
+                        </Component>
                         <Component Id="cmp7D5530C950352B514F6347960FFBBDE4" Guid="*">
                             <File Id="fil5DFEDF1395CA7B538A1E453D561B845C" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Billing\Microsoft.WindowsAzure.Commands.Common.dll" />
                         </Component>
@@ -5657,6 +5666,9 @@
             <ComponentRef Id="cmpC529010BFB5E6E333B2F7B5EB68D0A4B" />
             <ComponentRef Id="cmp9B64957E2252DE5DC0DC857E970D4FF3" />
             <ComponentRef Id="cmpE5BF230DD42771ABA47FB949DCA3130E" />
+            <ComponentRef Id="cmp138FB8512C1ACA1E57CF3400673A8E08" />
+            <ComponentRef Id="cmp1D6C1D06DFF26EFE9AD99FB28FEEE285" />
+            <ComponentRef Id="cmp27D4857C0C9334BDA0CDEEBF3D24FF64" />
             <ComponentRef Id="cmp7D5530C950352B514F6347960FFBBDE4" />
             <ComponentRef Id="cmpEEBBAE0F1164B1694289290A8303F99E" />
             <ComponentRef Id="cmp90AE5671AE74468760453D2C7351F210" />
