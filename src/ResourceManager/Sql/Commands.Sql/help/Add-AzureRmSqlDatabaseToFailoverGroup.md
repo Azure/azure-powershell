@@ -13,8 +13,8 @@ Cmdlet that adds databases into the Azure SQL Failover Group
 
 ```
 Add-AzureRmSqlDatabaseToFailoverGroup -FailoverGroupName <String>
- -Databases <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel]>
- [-Tags <Hashtable>] -ServerName <String> -ResourceGroupName <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Database <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel]>
+ -ServerName <String> -ResourceGroupName <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +37,7 @@ PS C:\> Get-AzureRmSqlDatabase -ServerName testsvr -ResourceGroupName rg2 | Add-
 
 ## PARAMETERS
 
-### -Databases
+### -Database
 The Azure SQL Databases to be added to the secondary server.```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel]
 Parameter Sets: (All)
@@ -86,19 +86,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Tags
-The tags to associate with the Azure Sql Elastic Pool```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases: Tag
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

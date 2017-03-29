@@ -49,13 +49,6 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         public List<AzureSqlDatabaseModel> Database { get; set; }
 
         /// <summary>
-        /// Gets or sets the tags associated with the Azure SQL Database Failover Group
-        /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = "The tags to associate with the Azure SQL Database Failover Group")]
-        public Hashtable Tag { get; set; }
-
-        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()

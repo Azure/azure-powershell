@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 online version: 
 schema: 2.0.0
@@ -15,7 +15,7 @@ This command is executed in the context of the primary server. It creates the ne
 ```
 New-AzureRmSqlDatabaseFailoverGroup -FailoverGroupName <String> [-PartnerResourceGroupName <String>]
  -PartnerServerName <String> [-FailoverPolicy <FailoverPolicy>] [-GracePeriodWithDataLossHours <Int32>]
- [-AllowReadOnlyFailoverToPrimary <AllowReadOnlyFailoverToPrimary>] [-Tags <Hashtable>] -ServerName <String>
+ [-AllowReadOnlyFailoverToPrimary <AllowReadOnlyFailoverToPrimary>] -ServerName <String>
  -ResourceGroupName <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -135,19 +135,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Tags
-The tag to associate with the Azure Sql Failover Group```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases: Tag
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

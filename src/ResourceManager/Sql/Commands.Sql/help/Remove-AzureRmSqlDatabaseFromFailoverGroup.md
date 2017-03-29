@@ -13,7 +13,7 @@ The Cmdlet that drops databases from the Azure SQL Failover Group.
 
 ```
 Remove-AzureRmSqlDatabaseFromFailoverGroup -FailoverGroupName <String>
- -Databases <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel]>
+ -Database <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel]>
  [-Tags <Hashtable>] -ServerName <String> -ResourceGroupName <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -39,7 +39,7 @@ PS C:\> Get-AzureRmSqlDatabase -ServerName testsvr -ResourceGroupName myrg2 | Re
 
 ## PARAMETERS
 
-### -Databases
+### -Database
 The Azure SQL Databases to be added to the secondary server.```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel]
 Parameter Sets: (All)
@@ -88,19 +88,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Tags
-The tag to associate with the Azure Sql Elastic Pool```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases: Tag
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -34,22 +34,6 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         public string FailoverGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the partner resource group name for Azure SQL Database Failover Group
-        /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = "The partner resource group name for Azure SQL Database Failover Group.")]
-        [ValidateNotNullOrEmpty]
-        public string PartnerResourceGroupName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the partner server name for Azure SQL Database Failover Group
-        /// </summary>
-        [Parameter(Mandatory = true,
-            HelpMessage = "The partner server name for Azure SQL Database Failover Group.")]
-        [ValidateNotNullOrEmpty]
-        public string PartnerServerName { get; set; }
-
-        /// <summary>
         /// Defines whether it is ok to skip the requesting of rule removal confirmation
         /// </summary>
         [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
@@ -78,8 +62,6 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             {
                 ResourceGroupName = ResourceGroupName,
                 ServerName = ServerName,
-                PartnerResourceGroupName = MyInvocation.BoundParameters.ContainsKey("PartnerResourceGroupName") ? PartnerResourceGroupName : ResourceGroupName,
-                PartnerServerName = PartnerServerName,
             });
             return newEntity;
         }
