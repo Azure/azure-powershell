@@ -15,7 +15,7 @@ Returns whether the packet is allowed or denied to or from a particular destinat
 ```
 Test-AzureRmNetworkWatcherIPFlow -NetworkWatcher <PSNetworkWatcher> -TargetVirtualMachineId <String>
  -Direction <String> -Protocol <String> -RemoteIPAddress <String> -LocalIPAddress <String> -LocalPort <String>
- [-RemotePort <String>] [-TargetNetworkInterfaceId <String>]
+ [-RemotePort <String>] [-TargetNetworkInterfaceId <String>] [<CommonParameters>]
 ```
 
 ### SetByName
@@ -23,6 +23,7 @@ Test-AzureRmNetworkWatcherIPFlow -NetworkWatcher <PSNetworkWatcher> -TargetVirtu
 Test-AzureRmNetworkWatcherIPFlow -NetworkWatcherName <String> -ResourceGroupName <String>
  -TargetVirtualMachineId <String> -Direction <String> -Protocol <String> -RemoteIPAddress <String>
  -LocalIPAddress <String> -LocalPort <String> [-RemotePort <String>] [-TargetNetworkInterfaceId <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,7 +32,6 @@ The Test-AzureRmNetworkWatcherIPFlow cmdlet, for a specified VM resource and a p
 ## EXAMPLES
 
 ### --- Example 1: Run Test-AzureRmNetworkWatcherIPFlow ---
-
 ```
 $nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
 $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
@@ -179,7 +179,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -213,6 +213,9 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
@@ -226,6 +229,7 @@ System.String
 Keywords: azure, azurerm, arm, resource, management, manager, network, networking, network watcher, flow, ip 
 
 ## RELATED LINKS
+
 [New-AzureRmNetworkWatcher]()
 [Get-AzureRmNetworkWatcher]()
 [Remove-AzureRmNetworkWatcher]()

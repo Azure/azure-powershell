@@ -18,13 +18,15 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit <PSExpressRouteCircuit>
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmExpressRouteCircuit** cmdlet modifies an ExpressRoute circuit.
+The **Set-AzureRmExpressRouteCircuit** cmdlet saves the modified ExpressRoute circuit to Azure.
 
 ## EXAMPLES
 
-### 1:
+### Example 1: Change the ServiceKey of an ExpressRoute circuit
 ```
-
+$ckt = Get-AzureRmExpressRouteCircuit�-Name�$CircuitName�-ResourceGroupName�$rg
+$ckt.ServiceKey = '64ce99dd-ee70-4e74-b6b8-91c6307433a0'
+Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 ## PARAMETERS
@@ -101,5 +103,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzureRmExpressRouteCircuit](./New-AzureRmExpressRouteCircuit.md)
 
 [Remove-AzureRmExpressRouteCircuit](./Remove-AzureRmExpressRouteCircuit.md)
-
-

@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         public uint Ttl { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The traffic routing method of the profile.")]
-        [ValidateSet(Constants.Performance, Constants.Weighted, Constants.Priority, IgnoreCase = false)]
+        [ValidateSet(Constants.Performance, Constants.Weighted, Constants.Priority, Constants.Geographic, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
         public string TrafficRoutingMethod { get; set; }
 

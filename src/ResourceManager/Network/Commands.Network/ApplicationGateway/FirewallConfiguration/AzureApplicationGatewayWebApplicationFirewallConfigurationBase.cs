@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Parameter(
                Mandatory = true,
-               HelpMessage = "Whether web application firewall functionality is enabled")]
+               HelpMessage = "Whether web application firewall functionality is enabled or not.")]
         [ValidateNotNullOrEmpty]
         public bool Enabled { get; set; }
 
