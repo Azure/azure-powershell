@@ -372,7 +372,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         public IEnumerable<AzureSubscription> ListSubscriptions(string tenantIdOrDomain = "")
         {
             var tenants = new List<AzureTenant>();
-
             if (string.IsNullOrWhiteSpace(tenantIdOrDomain))
             {
                 tenants.AddRange(ListTenants());
