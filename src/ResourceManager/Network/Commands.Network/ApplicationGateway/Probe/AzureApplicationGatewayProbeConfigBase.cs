@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
            Mandatory = true,
-           HelpMessage = "Probe  retry count. Backend server is marked down after consecutive probe failure count reaches UnhealthyThreshold")]
+           HelpMessage = "Probe retry count. Backend server is marked down after consecutive probe failure count reaches UnhealthyThreshold")]
         [ValidateNotNullOrEmpty]
         public uint UnhealthyThreshold { get; set; }
 
