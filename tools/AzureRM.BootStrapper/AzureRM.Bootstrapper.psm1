@@ -939,11 +939,15 @@ function Use-AzureRmProfile
         }
       }
 
-      # Block user if they try to import a module to the session where a different version of the same module is already imported
-      if ($null -ne (Get-Module -Name $Module | Where-Object { $_.Version -ne $version} ))
+      # If a different profile's Azure Module was imported, block user
+      $importedModules = Get-Module "Azure*"
+      foreach ($importedModule in $importedModules) 
       {
-        Write-Error "A different version of module $module is already imported in this session. Start a new PowerShell session and retry the operation."
-        return
+        if (($null -ne $ProfileMap.$Profile.$($importedModule.Name)) -and ($ProfileMap.$Profile.$($importedModule.Name) -ne $importedModule.Version))
+        {
+          Write-Error "A different profile version of module $importedModule is imported in this session. Start a new PowerShell session and retry the operation." -Category  InvalidOperation 
+          return
+        }
       }
 
       if ($PSCmdlet.ShouldProcess($module, "Importing module for profile $profile in the current scope"))
