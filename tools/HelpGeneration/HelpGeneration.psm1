@@ -103,7 +103,7 @@ function Validate-MarkdownHelp
     {
         $HelpFolder = Get-Item $HelpFolderPath
 
-        $Exceptions = Import-Csv "$PSScriptRoot\Exceptions\ValidateHelpExceptions.csv" | where { $_.Module -eq "$($HelpFolder.Parent.Name)" }
+        $Exceptions = Import-Csv "$PSScriptRoot\..\..\src\Package\Exceptions\ValidateHelpExceptions.csv" | where { $_.Module -eq "$($HelpFolder.Parent.Name)" }
 
         [String[]]$errors = @()
 
@@ -251,7 +251,7 @@ function Validate-MarkdownHelp
         # If there were any errors recorded, print them out and throw
         if ($errors.Count -gt 0)
         {
-            $errors | foreach { Add-Content "$PSScriptRoot\HelpGeneration\Exceptions\NewValidateHelpExceptions.csv" $_ }
+            $errors | foreach { Add-Content "$PSScriptRoot\..\..\src\Package\ValidateHelpExceptions.csv" $_ }
         }
     }
 }
