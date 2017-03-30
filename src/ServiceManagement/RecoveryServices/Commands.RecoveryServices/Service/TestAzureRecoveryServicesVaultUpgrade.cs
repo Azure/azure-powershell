@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     this.HandleVaultUpgradeException(exception);
                 if (!string.IsNullOrEmpty(details.WarningDetails))
                 {
-                    this.WriteWarning(details.WarningDetails);
+                    this.WriteWarning(details.WarningDetails + Environment.NewLine);
                 }
 
                 if (!string.IsNullOrEmpty(details.ErrorDetails))
