@@ -881,7 +881,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 acl.AclStatus.Entries.Add(string.Format("user::{0}", octalToPermission(int.Parse(ownerOctal))));
                 acl.AclStatus.Entries.Add(string.Format("other::{0}", octalToPermission(int.Parse(otherOctal))));
 
-                if (!string.IsNullOrEmpty(acl.AclStatus.Entries.First(e => e.StartsWith("group::"))))
+                if (!string.IsNullOrEmpty(acl.AclStatus.Entries.FirstOrDefault(e => e.StartsWith("group::"))))
                 {
                     acl.AclStatus.Entries.Add(string.Format("mask::{0}", octalToPermission(int.Parse(groupOctal))));
                 }

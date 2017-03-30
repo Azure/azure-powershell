@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 }
                 else
                 {
-                    WriteObject(DataLakeStoreFileSystemClient.GetStreamRows(Path.TransformedPath, Account, Tail, encoding, reverse:true));
+                    WriteObject(DataLakeStoreFileSystemClient.GetStreamRows(Path.TransformedPath, Account, Tail, encoding, reverse:true), true);
                 }
             }
         }
