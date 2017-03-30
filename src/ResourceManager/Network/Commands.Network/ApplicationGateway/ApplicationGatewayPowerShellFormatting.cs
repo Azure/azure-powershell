@@ -108,25 +108,25 @@ namespace Microsoft.Azure.Commands.Network
             return output.ToString();
         }
 
-        private static string NormalizeStringLength(string value, int maxLength, char filling = ' ')
+        private static string NormalizeStringLength(string str, int targetLength, char filling = ' ')
         {
-            if (maxLength < 3) throw new ArgumentException("The size to normalize to must be at least 3.");
+            if (targetLength < 3) throw new ArgumentException("The length to normalize to must be at least 3.");
 
-            if(string.IsNullOrEmpty(value))
+            if(string.IsNullOrEmpty(str))
             {
-                return new string(filling, maxLength);
+                return new string(filling, targetLength);
             }
-            else if (value.Length < maxLength)
+            else if (str.Length < targetLength)
             {
-                return value + new string(filling, maxLength - value.Length);
+                return str + new string(filling, targetLength - str.Length);
             }
-            else if (value.Length > maxLength)
+            else if (str.Length > targetLength)
             {
-                return value.Substring(0, maxLength - 2) + "..";
+                return str.Substring(0, targetLength - 2) + "..";
             }
             else
             {
-                return value;
+                return str;
             }
         }
     }
