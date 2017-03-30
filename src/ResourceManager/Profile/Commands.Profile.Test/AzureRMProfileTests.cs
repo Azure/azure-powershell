@@ -350,9 +350,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var secondList = new List<string> { Guid.NewGuid().ToString() };
             var thirdList = new List<string> { DefaultSubscription.ToString(), secondsubscriptionInTheFirstTenant };
             var fourthList = new List<string> { DefaultSubscription.ToString(), secondsubscriptionInTheFirstTenant };
-            var client = SetupTestEnvironment(tenants, firstList, secondList, thirdList, fourthList);
+            var client = SetupTestEnvironment(tenants, firstList, secondList, 
+                                                       thirdList, fourthList, 
+                                                       thirdList, fourthList,
+                                                       thirdList, fourthList);
             var subResults = new List<AzureSubscription>(client.ListSubscriptions());
-            Assert.Equal(3, subResults.Count);
+            Assert.Equal(7, subResults.Count);
             var tenantResults = client.ListTenants();
             Assert.Equal(2, tenantResults.Count());
             tenantResults = client.ListTenants(DefaultTenant.ToString());
@@ -374,9 +377,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var firstList = new List<string> { DefaultSubscription.ToString() };
             var secondList = firstList;
             var thirdList = firstList;
-            var client = SetupTestEnvironment(tenants, firstList, secondList, thirdList);
+            var fourthList = firstList;
+            var client = SetupTestEnvironment(tenants, firstList, secondList, thirdList, fourthList, firstList, firstList);
             var subResults = new List<AzureSubscription>(client.ListSubscriptions());
-            Assert.Equal(1, subResults.Count);
+            Assert.Equal(2, subResults.Count);
             var tenantResults = client.ListTenants();
             Assert.Equal(1, tenantResults.Count());
             tenantResults = client.ListTenants(DefaultTenant.ToString());
@@ -398,10 +402,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             string randomSubscriptionId = Guid.NewGuid().ToString();
             var firstList = new List<string> { randomSubscriptionId };
             var secondList = firstList;
-            var thirdList = secondList;
-            var client = SetupTestEnvironment(tenants, firstList, secondList, thirdList);
+            var thirdList = firstList;
+            var fourthList = firstList;
+            var client = SetupTestEnvironment(tenants, firstList, secondList, 
+                                                       thirdList, fourthList, 
+                                                       thirdList, fourthList);
             var subResults = new List<AzureSubscription>(client.ListSubscriptions());
-            Assert.Equal(1, subResults.Count);
+            Assert.Equal(2, subResults.Count);
             AzureSubscription subValue;
             Assert.False(client.TryGetSubscriptionById(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
             Assert.False(client.TryGetSubscriptionByName("random-tenant", "random-subscription", out subValue));
@@ -424,7 +431,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         {
             var tenants = new List<string> { DefaultTenant.ToString() };
             var subscriptions = new List<string>();
-            var client = SetupTestEnvironment(tenants, subscriptions, subscriptions, subscriptions);
+            var client = SetupTestEnvironment(tenants, subscriptions, subscriptions, 
+                                                       subscriptions, subscriptions,
+                                                       subscriptions, subscriptions);
             Assert.Equal(0, client.ListSubscriptions().Count());
             AzureSubscription subValue;
             Assert.False(client.TryGetSubscriptionById(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
@@ -491,9 +500,109 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
+            var subscriptionName = MockSubscriptionClientFactory.GetSubscriptionNameFromId(secondList[0]);
+
             Assert.True(commandRuntimeMock.OutputPipeline.Count == 7);
             Assert.Equal("Disabled", ((PSAzureSubscription)commandRuntimeMock.OutputPipeline[2]).State);
-            Assert.Equal("LinkToNextPage", ((PSAzureSubscription)commandRuntimeMock.OutputPipeline[2]).SubscriptionName);
+            Assert.Equal(subscriptionName, ((PSAzureSubscription)commandRuntimeMock.OutputPipeline[2]).SubscriptionName);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetAzureRmSubscriptionByIdMultiplePages()
+        {
+            var tenants = new List<string> { Guid.NewGuid().ToString(), DefaultTenant.ToString() };
+            var firstTenantSubscriptions = new List<string> {  Guid.NewGuid().ToString(),
+                                                               Guid.NewGuid().ToString(),
+                                                               Guid.NewGuid().ToString(),
+                                                               Guid.NewGuid().ToString() };
+            var secondTenantSubscriptions = new List<string> { Guid.NewGuid().ToString(),
+                                                               Guid.NewGuid().ToString(),
+                                                               Guid.NewGuid().ToString(),
+                                                               Guid.NewGuid().ToString() };
+
+            var firstList = new List<string> { firstTenantSubscriptions[0], firstTenantSubscriptions[1] };
+            var secondList = new List<string> {firstTenantSubscriptions[2], firstTenantSubscriptions[3] };
+
+            var thirdList = new List<string> { secondTenantSubscriptions[0], secondTenantSubscriptions[1] };
+            var fourthList = new List<string> { secondTenantSubscriptions[2], secondTenantSubscriptions[3] };
+
+            var client = SetupTestEnvironment(tenants, firstList, secondList, thirdList, fourthList);
+
+            var dataStore = new MemoryDataStore();
+            AzureSession.DataStore = dataStore;
+            var commandRuntimeMock = new MockCommandRuntime();
+            AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
+            var profile = new AzureRMProfile();
+            profile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
+            profile.Context = Context;
+            var cmdlt = new GetAzureRMSubscriptionCommand();
+            // Setup
+            cmdlt.DefaultProfile = profile;
+            cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.SubscriptionId = secondTenantSubscriptions[2];
+
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+
+            Assert.True(commandRuntimeMock.OutputPipeline.Count == 1);
+
+            // Make sure we can get a subscription from the second page of the second tenant by subscription Id
+            var resultSubscription = (PSAzureSubscription)commandRuntimeMock.OutputPipeline[0];
+            Assert.Equal(secondTenantSubscriptions[2], resultSubscription.SubscriptionId);
+            Assert.Equal(tenants[1], resultSubscription.TenantId);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetAzureRmSubscriptionByNameMultiplePages()
+        {
+            var tenants = new List<string> { Guid.NewGuid().ToString(), DefaultTenant.ToString() };
+            var firstTenantSubscriptions = new List<string> {  Guid.NewGuid().ToString(),
+                                                               Guid.NewGuid().ToString(),
+                                                               Guid.NewGuid().ToString(),
+                                                               Guid.NewGuid().ToString() };
+            var secondTenantSubscriptions = new List<string> { Guid.NewGuid().ToString(),
+                                                               Guid.NewGuid().ToString(),
+                                                               Guid.NewGuid().ToString(),
+                                                               Guid.NewGuid().ToString() };
+
+            var firstList = new List<string> { firstTenantSubscriptions[0], firstTenantSubscriptions[1] };
+            var secondList = new List<string> { firstTenantSubscriptions[2], firstTenantSubscriptions[3] };
+
+            var thirdList = new List<string> { secondTenantSubscriptions[0], secondTenantSubscriptions[1] };
+            var fourthList = new List<string> { secondTenantSubscriptions[2], secondTenantSubscriptions[3] };
+
+            var client = SetupTestEnvironment(tenants, firstList, secondList, thirdList, fourthList);
+
+            var subscriptionName = MockSubscriptionClientFactory.GetSubscriptionNameFromId(secondTenantSubscriptions[2]);
+
+            var dataStore = new MemoryDataStore();
+            AzureSession.DataStore = dataStore;
+            var commandRuntimeMock = new MockCommandRuntime();
+            AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
+            var profile = new AzureRMProfile();
+            profile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
+            profile.Context = Context;
+            var cmdlt = new GetAzureRMSubscriptionCommand();
+            // Setup
+            cmdlt.DefaultProfile = profile;
+            cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.SubscriptionName = subscriptionName;
+
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+
+            Assert.True(commandRuntimeMock.OutputPipeline.Count == 1);
+
+            // Make sure we can get a subscription from the second page of the second tenant by subscription name
+            var resultSubscription = (PSAzureSubscription)commandRuntimeMock.OutputPipeline[0];
+            Assert.Equal(subscriptionName, resultSubscription.SubscriptionName);
+            Assert.Equal(tenants[1], resultSubscription.TenantId);
         }
 
         private class MockPage<T> : IPage<T>

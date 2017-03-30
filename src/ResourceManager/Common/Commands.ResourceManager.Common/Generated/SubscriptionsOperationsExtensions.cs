@@ -158,5 +158,18 @@ namespace Microsoft.Azure.Internal.Subscriptions
                 }
             }
 
+            /// <summary>
+            /// Gets all subscriptions for a tenant.
+            /// </summary>
+            /// <param name="client">
+            /// The ISubscriptionClient responsible for making the List and ListNext calls.
+            /// </param>
+            /// <returns>
+            /// PageEnumerable object containing all of the subscriptions for the given tenant used in the client.
+            /// </returns>
+            public static PageEnumerable ListAll(this ISubscriptionClient client)
+            {
+                return new PageEnumerable(client);
+            }
     }
 }
