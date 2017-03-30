@@ -49,7 +49,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         {
             var profile = new AzureRMProfile();
             profile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
-            SelectAzureRMProfileCommand cmdlt = new SelectAzureRMProfileCommand();
+#pragma warning disable CS0618 // Suppress obsolescence warning: cmdlet name is changing
+            ImportAzureRMContextCommand cmdlt = new ImportAzureRMContextCommand();
+#pragma warning restore CS0618 // Suppress obsolescence warning: cmdlet name is changing
             // Setup
             cmdlt.Profile = profile;
             cmdlt.CommandRuntime = commandRuntimeMock;
@@ -67,7 +69,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SelectAzureProfileNull()
         {
-            SelectAzureRMProfileCommand cmdlt = new SelectAzureRMProfileCommand();
+#pragma warning disable CS0618 // Suppress obsolescence warning: cmdlet name is changing
+            ImportAzureRMContextCommand cmdlt = new ImportAzureRMContextCommand();
+#pragma warning restore CS0618 // Suppress obsolescence warning: cmdlet name is changing
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
 
@@ -82,7 +86,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SelectAzureProfileBadPath()
         {
-            SelectAzureRMProfileCommand cmdlt = new SelectAzureRMProfileCommand();
+#pragma warning disable CS0618 // Suppress obsolescence warning: cmdlet name is changing
+            ImportAzureRMContextCommand cmdlt = new ImportAzureRMContextCommand();
+#pragma warning restore CS0618 // Suppress obsolescence warning: cmdlet name is changing
             cmdlt.Path = "z:\non-existent-path\non-existent-file.ext";
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
@@ -99,7 +105,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             var profile = new AzureRMProfile();
             profile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
             profile.Save("X:\\foo.json");
-            SelectAzureRMProfileCommand cmdlt = new SelectAzureRMProfileCommand();
+#pragma warning disable CS0618 // Suppress obsolescence warning: cmdlet name is changing
+            ImportAzureRMContextCommand cmdlt = new ImportAzureRMContextCommand();
+#pragma warning restore CS0618 // Suppress obsolescence warning: cmdlet name is changing
             // Setup
             cmdlt.Path = "X:\\foo.json";
             cmdlt.CommandRuntime = commandRuntimeMock;
@@ -119,7 +127,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         {
             var profile = new AzureRMProfile();
             profile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
-            SaveAzureRMProfileCommand cmdlt = new SaveAzureRMProfileCommand();
+#pragma warning disable CS0618 // Suppress obsolescence warning: cmdlet name is changing
+            SaveAzureRMContextCommand cmdlt = new SaveAzureRMContextCommand();
+#pragma warning restore CS0618 // Suppress obsolescence warning: cmdlet name is changing
             // Setup
             cmdlt.Profile = profile;
             cmdlt.Path = "X:\\foo.json";
@@ -140,7 +150,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SaveAzureProfileNull()
         {
-            SaveAzureRMProfileCommand cmdlt = new SaveAzureRMProfileCommand();
+#pragma warning disable CS0618 // Suppress obsolescence warning: cmdlet name is changing
+            SaveAzureRMContextCommand cmdlt = new SaveAzureRMContextCommand();
+#pragma warning restore CS0618 // Suppress obsolescence warning: cmdlet name is changing
             // Setup
             AzureRmProfileProvider.Instance.Profile = null;
             cmdlt.Path = "X:\\foo.json";
@@ -158,7 +170,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             profile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
             profile.Context = new AzureContext(new AzureSubscription(), new AzureAccount(), profile.Environments["foo"]);
             AzureRmProfileProvider.Instance.Profile = profile;
-            SaveAzureRMProfileCommand cmdlt = new SaveAzureRMProfileCommand();
+#pragma warning disable CS0618 // Suppress obsolescence warning: cmdlet name is changing
+            SaveAzureRMContextCommand cmdlt = new SaveAzureRMContextCommand();
+#pragma warning restore CS0618 // Suppress obsolescence warning: cmdlet name is changing
             // Setup
             cmdlt.Path = "X:\\foo.json";
             cmdlt.CommandRuntime = commandRuntimeMock;
