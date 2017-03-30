@@ -260,7 +260,7 @@ Please provide a storage account with the same location as that of the vault.</v
     <value>It is recommended that you use the Azure Site Recovery PowerShell cmdlets for Azure Resource Manager (https://msdn.microsoft.com/library/mt637930.aspx) to perform
 this action. The '{0}' cmdlet will be deprecated at some point in the future.</value>
   </data>
-  <data name="CheckPrereqSucceded" xml:space="preserve">
+  <data name="CheckPrereqSucceeded" xml:space="preserve">
     <value>Successfully completed prerequisites check for vault upgrade.</value>
   </data>
   <data name="CheckPrereqFailed" xml:space="preserve">

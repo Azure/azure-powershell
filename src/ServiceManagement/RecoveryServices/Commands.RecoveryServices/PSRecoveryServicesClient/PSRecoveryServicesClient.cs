@@ -274,14 +274,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             string resourceName,
             string resourceType)
         {
-            string resourceNamespace = Environment.GetEnvironmentVariable("RESOURCE_NAMESPACE");
-            if (string.IsNullOrEmpty(resourceNamespace))
-            {
-                resourceNamespace = 
-                    resourceType == Constants.ASRVaultType ?
-                        Constants.ASRNamespace :
-                        Constants.BackupNamespace;
-            }
+            string resourceNamespace = 
+                resourceType == Constants.ASRVaultType ?
+                    Constants.ASRNamespace :
+                    Constants.BackupNamespace;
 
             RecoveryServicesVaultUpgradeManagementClient VaultUpgradeClient =
                 AzureSession.ClientFactory.CreateCustomClient<RecoveryServicesVaultUpgradeManagementClient>(
