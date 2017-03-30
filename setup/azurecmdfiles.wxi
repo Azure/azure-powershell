@@ -492,14 +492,6 @@
                         <Component Id="cmpEEBBAE0F1164B1694289290A8303F99E" Guid="*">
                             <File Id="fil78699F2B8DB34A5FD9667DD2B95D3A1D" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Billing\Newtonsoft.Json.dll" />
                         </Component>
-                        <Directory Id="dir445ABFFE687BB6FCE8BAC2735AFDAF11" Name="help">
-                            <Component Id="cmp90AE5671AE74468760453D2C7351F210" Guid="*">
-                                <File Id="fil1742243294B6F04179E3C8C2CB436AD9" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Billing\help\AzureRM.Billing.md" />
-                            </Component>
-                            <Component Id="cmp11ED818FB4FB1CBC3D7FCC80E4BFBFED" Guid="*">
-                                <File Id="filC726237C6477AEEE2568FF18E7B689FD" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Billing\help\Get-AzureRmBillingInvoice.md" />
-                            </Component>
-                        </Directory>
                     </Directory>
                     <Directory Id="dir75F2C4F350248207C418DE5A1C651FB6" Name="AzureRM.Cdn">
                         <Component Id="cmpB7108FC1E0DA3A2DABE2F5A549025C62" Guid="*">
@@ -5509,8 +5501,6 @@
             <ComponentRef Id="cmp138FB8512C1ACA1E57CF3400673A8E08" />
             <ComponentRef Id="cmp7D5530C950352B514F6347960FFBBDE4" />
             <ComponentRef Id="cmpEEBBAE0F1164B1694289290A8303F99E" />
-            <ComponentRef Id="cmp90AE5671AE74468760453D2C7351F210" />
-            <ComponentRef Id="cmp11ED818FB4FB1CBC3D7FCC80E4BFBFED" />
             <ComponentRef Id="cmpB7108FC1E0DA3A2DABE2F5A549025C62" />
             <ComponentRef Id="cmp87DFE6BA28632B552074C8A05968ED49" />
             <ComponentRef Id="cmp5387447D3AEFB20D850B31BB0324D032" />

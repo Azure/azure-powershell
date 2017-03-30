@@ -82,17 +82,17 @@ namespace StaticAnalysis.HelpAnalyzer
                 {
                     if (directory.Contains("ServiceManagement"))
                     {
-                        ServiceManagementAnalyze(directory, helpLogger, processedHelpFiles, savedDirectory);
+                        AnalyzeMamlHelp(directory, helpLogger, processedHelpFiles, savedDirectory);
                     }
                     else
                     {
-                        ResourceManagerAnalyze(directory, helpLogger, processedHelpFiles, savedDirectory);
+                        AnalyzeMarkdownHelp(directory, helpLogger, processedHelpFiles, savedDirectory);
                     }
                 }
             }
         }
 
-        private void ServiceManagementAnalyze(
+        private void AnalyzeMamlHelp(
             string directory,
             ReportLogger<HelpIssue> helpLogger,
             List<string> processedHelpFiles,
@@ -147,7 +147,7 @@ namespace StaticAnalysis.HelpAnalyzer
             }
         }
 
-        private void ResourceManagerAnalyze(
+        private void AnalyzeMarkdownHelp(
             string directory,
             ReportLogger<HelpIssue> helpLogger,
             List<string> processedHelpFiles,
