@@ -79,7 +79,8 @@ function New-AzureRmResourceGroupDeployment
 {
   [CmdletBinding()]
   param(
-    [string] [alias("ResourceGroupName")] $Name,
+    [string] [alias("DeploymentName")] $Name,
+    [string] $ResourceGroupName,
     [string] $TemplateFile,
     [string] $serverName,
     [string] $databaseName,
@@ -87,6 +88,7 @@ function New-AzureRmResourceGroupDeployment
     [string] $version,
     [string] $EnvLocation,
     [string] $administratorLogin,
+    [string] $TemplateParameterFile,
     [switch] $Force)
   BEGIN {
     $context = Get-Context
