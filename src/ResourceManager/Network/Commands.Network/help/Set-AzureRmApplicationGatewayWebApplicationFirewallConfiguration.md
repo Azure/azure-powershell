@@ -14,7 +14,7 @@ Modifies the WAF configuration of an application gateway.
 
 ```
 Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway <PSApplicationGateway>
- -Enabled <Boolean> -FirewallMode <String> -RuleSetType <String> -RuleSetVersion <String>
+ -Enabled <Boolean> -FirewallMode <String> [-RuleSetType <String>] [-RuleSetVersion <String>]
  [-DisabledRuleGroups <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallDisabledRuleGroup]>]
  [<CommonParameters>]
 ```
@@ -87,7 +87,9 @@ Accept wildcard characters: False
 ```
 
 ### -DisabledRuleGroups
-The disabled rule groups.```yaml
+The disabled rule groups.
+
+```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallDisabledRuleGroup]
 Parameter Sets: (All)
 Aliases: 
@@ -100,27 +102,38 @@ Accept wildcard characters: False
 ```
 
 ### -RuleSetType
-The type of the web application firewall rule set. Possible values are: 'OWASP'.```yaml
+The type of the web application firewall rule set. 
+The acceptable values for this parameter are: 
+
+- OWASP
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: OWASP
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -RuleSetVersion
-The version of the rule set type.```yaml
+The version of the rule set type.
+The acceptable values for this parameter are: 
+
+- 3.0
+- 2.2.9
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: 3.0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

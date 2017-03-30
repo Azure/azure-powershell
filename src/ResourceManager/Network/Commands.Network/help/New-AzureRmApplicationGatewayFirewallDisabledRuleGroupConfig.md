@@ -13,7 +13,7 @@ Creates a new disabled rule group configuration.
 
 ```
 New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName <String>
- [-Rules <System.Collections.Generic.List`1[System.Int32]>]
+ [-Rules <System.Collections.Generic.List`1[System.Int32]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,6 @@ The **New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig** cmdlet crea
 ### Example 1
 ```
 PS C:\> $disabledRuleGroup1 = New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName "REQUEST-942-APPLICATION-ATTACK-SQLI" -Rules 942130,942140
-
 ```
 
 The command creates a new disabled rule group configuration for the rule group named "REQUEST-942-APPLICATION-ATTACK-SQLI" with rule 942130 and rule 942140 being disabled. The new disabled rule group configuration is saved in $disabledRuleGroup1.
@@ -62,15 +61,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### None
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallDisabledRuleGroup
-
 
 ## NOTES
 
