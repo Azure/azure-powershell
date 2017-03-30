@@ -13,16 +13,19 @@
 // ----------------------------------------------------------------------------------
 
 using AutoMapper;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Network;
-using System.Collections.Generic;
+using System.IO;
 using System.Management.Automation;
+using System.Reflection;
 
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGatewayAvailableWafRuleSets"), 
         OutputType(typeof(PSApplicationGatewayAvailableWafRuleSetsResult))]
-    public class GetAzureApplicationGatewayAvailableWafRuleSets : ApplicationGatewayBaseCmdlet
+    [Alias("List-AzureRmApplicationGatewayAvailableWafRuleSets")]
+    public class GetAzureApplicationGatewayAvailableWafRuleSets : ApplicationGatewayBaseCmdlet, IModuleAssemblyInitializer
     {
         public override void ExecuteCmdlet()
         {
@@ -31,6 +34,26 @@ namespace Microsoft.Azure.Commands.Network
             var availableWafRuleSets = this.ApplicationGatewayClient.ListAvailableWafRuleSets();
             var psAvailableWafRuleSets = Mapper.Map<PSApplicationGatewayAvailableWafRuleSetsResult>(availableWafRuleSets);
             WriteObject(psAvailableWafRuleSets);
+        }
+
+        /// <summary>
+        /// Setup necessary functionality when module gets imported.
+        /// </summary>
+        public void OnImport()
+        {
+            try
+            {
+                System.Management.Automation.PowerShell invoker = null;
+                invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
+                invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
+                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                    "AzureRmNetworkStartup.ps1")));
+                invoker.Invoke();
+            }
+            catch
+            {
+                // This will throw exception for tests, ignore.
+            }
         }
     }
 }

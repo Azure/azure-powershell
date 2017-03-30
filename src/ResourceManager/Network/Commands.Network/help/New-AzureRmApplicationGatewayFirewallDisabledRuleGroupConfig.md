@@ -23,11 +23,11 @@ The **New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig** cmdlet crea
 
 ### Example 1
 ```
-PS C:\> $disabledRuleGroup1 = New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName "crs_41_sql_injection_attacks" -Rules 981318,981320
+PS C:\> $disabledRuleGroup1 = New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName "REQUEST-942-APPLICATION-ATTACK-SQLI" -Rules 942130,942140
 
 ```
 
-The command creates a new disabled rule group configuration for the rule group named "crs_41_sql_injection_attacks" with rule 981318 and rule 981320 being disabled. The new disabled rule group configuration is saved in $disabledRuleGroup1.
+The command creates a new disabled rule group configuration for the rule group named "REQUEST-942-APPLICATION-ATTACK-SQLI" with rule 942130 and rule 942140 being disabled. The new disabled rule group configuration is saved in $disabledRuleGroup1.
 
 ## PARAMETERS
 

@@ -159,6 +159,7 @@
   <ItemGroup>
     <Compile Include="ApplicationGateway\ApplicationGatewayBaseCmdlet.cs" />
     <Compile Include="ApplicationGateway\ApplicationGatewayChildResourceHelper.cs" />
+    <Compile Include="ApplicationGateway\ApplicationGatewayPowerShellFormatting.cs" />
     <Compile Include="ApplicationGateway\AuthenticationCertificate\AddAzureApplicationGatewayAuthenticationCertificateCommand.cs" />
     <Compile Include="ApplicationGateway\AuthenticationCertificate\AzureApplicationGatewayAuthenticationCertificateBase.cs" />
     <Compile Include="ApplicationGateway\AuthenticationCertificate\GetAzureApplicationGatewayAuthenticationCertificateCommand.cs" />
@@ -609,6 +610,9 @@
   <ItemGroup>
     <None Include="..\AzureRM.Network.psd1">
       <Link>AzureRM.Network.psd1</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AzureRmNetworkStartup.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Microsoft.Azure.Commands.Network.dll-Help.psd1">

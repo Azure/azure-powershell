@@ -23,11 +23,5 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string RuleGroupName { get; set; }
         public string Description { get; set; }
         public List<PSApplicationGatewayFirewallRule> Rules { get; set; }
-
-        [JsonIgnore]
-        public string RulesText
-        {
-            get { return JsonConvert.SerializeObject(this.Rules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
     }
 }

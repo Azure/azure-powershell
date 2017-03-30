@@ -33,8 +33,8 @@ namespace Microsoft.Azure.Commands.Network
         public List<PSApplicationGatewayPathRule> PathRules { get; set; }
 
         [Parameter(
-        ParameterSetName = "SetByResourceId",
-        HelpMessage = "ID of the application gateway BackendAddressPool")]
+                ParameterSetName = "SetByResourceId",
+                HelpMessage = "ID of the application gateway BackendAddressPool")]
         [ValidateNotNullOrEmpty]
         public string DefaultBackendAddressPoolId { get; set; }
 

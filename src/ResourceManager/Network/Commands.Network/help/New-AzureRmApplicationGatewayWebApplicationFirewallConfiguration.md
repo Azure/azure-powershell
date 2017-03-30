@@ -26,14 +26,14 @@ The **New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration** cmdlet 
 
 ### Example 1: Create a web application firewall configuration for an application gateway
 ```
-PS C:\> $disabledRuleGroup1 = New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName "crs_41_sql_injection_attacks" -Rules 981318,981320
-PS C:\> $disabledRuleGroup2 = New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName "crs_35_bad_robots"
-PS C:\> $firewallConfig = New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode Prevention -RuleSetType "OWASP" -RuleSetVersion "2.2.9" -DisabledRuleGroups $disabledRuleGroup1,$disabledRuleGroup2
+PS C:\> $disabledRuleGroup1 = New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName "REQUEST-942-APPLICATION-ATTACK-SQLI" -Rules 942130,942140
+PS C:\> $disabledRuleGroup2 = New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName "REQUEST-921-PROTOCOL-ATTACK"
+PS C:\> $firewallConfig = New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode "Prevention" -RuleSetType "OWASP" -RuleSetVersion "3.0" -DisabledRuleGroups $disabledRuleGroup1,$disabledRuleGroup2
 
 ```
-The first command creates a new disabled rule group configuration for a rule group named "crs_41_sql_injection_attacks" with rule 981318 and rule 981320 being disabled.
-The second command creates another disabled rule group configuration for a rule group named "crs_35_bad_robots". No rules are specifically passed and thus all rules of the rule group will disabled.
-The last command then creates a WAF configuration with firewalls disabled as configured in $disabledRuleGroup1 and #disabledRuleGroup2 which prevents requests when matched by the WAF. The new WAF configuration is stored in the $firewallConfig variable.
+The first command creates a new disabled rule group configuration for the rule group named "REQUEST-942-APPLICATION-ATTACK-SQLI" with rule 942130 and rule 942140 being disabled.
+The second command creates another disabled rule group configuration for a rule group named "REQUEST-921-PROTOCOL-ATTACK". No rules are specifically passed and thus all rules of the rule group will be disabled.
+The last command then creates a WAF configuration with firewall rules disabled as configured in $disabledRuleGroup1 and $disabledRuleGroup2. The new WAF configuration is stored in the $firewallConfig variable.
 
 ## PARAMETERS
 
@@ -72,7 +72,9 @@ Accept wildcard characters: False
 ```
 
 ### -DisabledRuleGroups
-The disabled rule groups.```yaml
+The disabled rule groups.
+
+```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallDisabledRuleGroup]
 Parameter Sets: (All)
 Aliases: 
@@ -85,7 +87,9 @@ Accept wildcard characters: False
 ```
 
 ### -RuleSetType
-The type of the web application firewall rule set. Possible values are: 'OWASP'.```yaml
+The type of the web application firewall rule set. Possible values are: 'OWASP'.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -98,7 +102,9 @@ Accept wildcard characters: False
 ```
 
 ### -RuleSetVersion
-The version of the rule set type.```yaml
+The version of the rule set type.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
