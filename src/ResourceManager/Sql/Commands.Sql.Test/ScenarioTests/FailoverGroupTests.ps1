@@ -27,10 +27,10 @@ function Test-FailoverGroup($serverVersion = "12.0", $location = "North Europe")
 	
 	# Create with default values
 	$fgName = Get-"TestFailoverGroupCreateUpdate"
-	$fg = New-AzureRmSqlDatabaseFailoverGroup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -PartnerServerName $partnerServer.ServerName -FailoverGroupName $fgName -FailoverPolicy Automatic -GracePeriodWithDataLossHours 1 -AllowReadOnlyFailoverToPrimary Enabled
+	$fg = New-AzureRmSqlDatabaseFailoverGroup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -PartnerServerName $partnerServer.ServerName -FailoverGroupName $fgName -FailoverPolicy Automatic -GracePeriodWithDataLossHour 1 -AllowReadOnlyFailoverToPrimary Enabled
 	Assert-AreEqual $fg.FailoverGroupName $fgName
 	Assert-AreEqual $fg.FailoverPolicy Automatic
-	Assert-AreEqual $fg.GracePeriodWithDataLossHours 1
+	Assert-AreEqual $fg.GracePeriodWithDataLossHour 1
 	Assert-AreEqual $fg.AllowReadOnlyFailoverToPrimary Enabled
 
 	try
@@ -46,14 +46,14 @@ function Test-FailoverGroup($serverVersion = "12.0", $location = "North Europe")
 		$serverObject | Set-AzureRMSqlDatabaseFailoverGroup –ResourceGroupName $rg.ResourceGroupName –FailoverGroupName $fg.FailoverGroupName -FailoverPolicy Automatic
 		Assert-AreEqual $fg3.FailoverGroupName $fgName
 		Assert-AreEqual $fg3.FailoverPolicy Automatic
-	    Assert-AreEqual $fg.GracePeriodWithDataLossHours 1
+	    Assert-AreEqual $fg.GracePeriodWithDataLossHour 1
 
 
 		#Get Failover Group
 		$fg4 = $serverObject | Get-AzureRMSqlDatabaseFailoverGroup –ResourceGroupName $rg.ResourceGroupName –FailoverGroupName $fg.FailoverGroupName
 		Assert-AreEqual $fg4.FailoverGroupName $fgName
 		Assert-AreEqual $fg3.FailoverPolicy Automatic
-	    Assert-AreEqual $fg.GracePeriodWithDataLossHours 1
+	    Assert-AreEqual $fg.GracePeriodWithDataLossHour 1
 
 		#Get Failover Group
 		$fgs = $serverObject | Get-AzureRMSqlDatabaseFailoverGroup –ResourceGroupName $rg.ResourceGroupName

@@ -20,6 +20,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System;
 
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
 {
@@ -64,8 +65,10 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// <summary>
         /// Gets or sets the grace period with data loss for the Sql Azure Failover Group.
         /// </summary>
+        [Alias("GracePeriodWithDataLossHour")]
         [Parameter(Mandatory = false,
             HelpMessage = "The window of grace period that we tolerate with data loss during a failover operation for the failover group.")]
+        [Obsolete("This parameter is only for backwards compatibility; User should use 'GracePeriodWithDataLossHour' instead.")]
         [ValidateNotNullOrEmpty]
         public int GracePeriodWithDataLossHours { get; set; }
 
@@ -76,6 +79,14 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             HelpMessage = "The failover policy for read only endpoint of the failover group.")]
         [ValidateNotNullOrEmpty]
         public AllowReadOnlyFailoverToPrimary AllowReadOnlyFailoverToPrimary { get; set; }
+
+        /// <summary> 
+        /// Gets or sets the tags associated with the Azure SQL Database Failover Group 
+        /// </summary> 
+        [Parameter(Mandatory = false,
+            HelpMessage = "The tags to associate with the Azure SQL Database Failover Group")]
+        [Obsolete("This parameter is only for backwards compatibility; User should not need to pass in this parameter.")]
+        public Hashtable Tag { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -125,9 +136,12 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
                 PartnerResourceGroupName = MyInvocation.BoundParameters.ContainsKey("PartnerResourceGroupName") ? PartnerResourceGroupName : ResourceGroupName,
                 PartnerServerName = PartnerServerName,
                 ReadWriteFailoverPolicy = FailoverPolicy.ToString(),
+#pragma warning disable 0618
                 FailoverWithDataLossGracePeriodHours = GracePeriodWithDataLossHours,
                 ReadOnlyFailoverPolicy = AllowReadOnlyFailoverToPrimary.ToString()
+#pragma warning restore 0618
             });
+
             return newEntity;
         }
 
