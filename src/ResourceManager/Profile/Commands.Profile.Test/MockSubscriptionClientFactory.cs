@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                                                 id: sub,
                                                 subscriptionId: sub,
                                                 tenantId: null,
-                                                displayName: nextLink,
+                                                displayName: GetSubscriptionNameFromId(sub),
                                                 state: SubscriptionState.Disabled,
                                                 subscriptionPolicies: null,
                                                 authorizationSource: null))))

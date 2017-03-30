@@ -203,6 +203,8 @@
     <Compile Include="Generated\Models\ManagementLockOwner.cs" />
     <Compile Include="Generated\Models\Page.cs" />
     <Compile Include="Generated\Models\Page1.cs" />
+    <Compile Include="Generated\Models\PageEnumerable.cs" />
+    <Compile Include="Generated\Models\PageEnumerator.cs" />
     <Compile Include="Generated\Models\ParametersLink.cs" />
     <Compile Include="Generated\Models\Plan.cs" />
     <Compile Include="Generated\Models\PolicyAssignment.cs" />
