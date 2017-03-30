@@ -21,11 +21,5 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSApplicationGatewayAvailableWafRuleSetsResult
     {
         public List<PSApplicationGatewayFirewallRuleSet> Value { get; set; }
-
-        [JsonIgnore]
-        public string ValueText
-        {
-            get { return JsonConvert.SerializeObject(this.Value, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
     }
 }

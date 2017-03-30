@@ -211,11 +211,17 @@ function Test-ApplicationGatewayCRUD
 		Set-AzureRmApplicationGateway -ApplicationGateway $getgw
 
 		# Modify WAF config and verify that it can be retrieved
-		$getgw = Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $getgw -Enabled $true -FirewallMode Detection -RuleSetType "OWASP" -RuleSetVersion "2.2.9"
+		$getgw = Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $getgw -Enabled $true -FirewallMode Detection
 		$firewallConfig2 = Get-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $getgw		
+
+		# Verify that default values got set
+		Assert-Equal "OWASP"  $firewallConfig2.RuleSetType
+		Assert-Equal "3.0"  $firewallConfig2.RuleSetVersion
+		Assert-Equal $null  $firewallConfig2.DisabledRuleGroups
+
 		$getgw = Set-AzureRmApplicationGateway -ApplicationGateway $getgw
 
-		Compare-WebApplicationFirewallConfiguration $firewallConfig $getgw.WebApplicationFirewallConfiguration
+		Compare-WebApplicationFirewallConfiguration $firewallConfig2 $getgw.WebApplicationFirewallConfiguration
 
 		# Remove probe, request timeout, multi-site and URL routing from exiting gateway
 		# Probe, request timeout, multi-site, URL routing are optional
@@ -300,11 +306,11 @@ function Compare-WebApplicationFirewallConfiguration($expected, $actual)
 
 		if($expected.DisabledRuleGroups) 
 		{
-			Assert-NotNull $acutal.DisabledRuleGroups
-			Assert.AreEqual $expected.DisabledRuleGroups.Count $actual.DisabledRuleGroups.Count
+			Assert-NotNull $actual.DisabledRuleGroups
+			Assert-AreEqual $expected.DisabledRuleGroups.Count $actual.DisabledRuleGroups.Count
 			for($i = 0; $i -lt $expected.DisabledRuleGroups.Count; $i++) 
 			{
-				Compare-DisabledRuleGroup $expected.DisableRuleGroups[$i] $actual.DisabledRuleGroups[$i]
+				Compare-DisabledRuleGroup $expected.DisabledRuleGroups[$i] $actual.DisabledRuleGroups[$i]
 			}
 		}
 		else
@@ -331,8 +337,8 @@ function Compare-DisabledRuleGroup($expected, $actual)
 
 		if($expected.Rules) 
 		{
-			Assert-NotNull $acutal.Rules
-			Assert.AreEqualArray $expected.Rules $actual.Rules
+			Assert-NotNull $actual.Rules
+			Assert-AreEqualArray $expected.Rules $actual.Rules
 		}
 		else
 		{

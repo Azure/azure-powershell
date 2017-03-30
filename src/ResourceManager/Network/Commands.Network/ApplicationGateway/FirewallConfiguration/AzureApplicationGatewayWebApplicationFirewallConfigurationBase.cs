@@ -33,16 +33,17 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string FirewallMode { get; set; }
 
+
         [Parameter(
-               Mandatory = true,
-               HelpMessage = "The type of the web application firewall rule set. Possible values are: 'OWASP'.")]
-        [ValidateNotNullOrEmpty]
+               Mandatory = false,
+               HelpMessage = "The type of the web application firewall rule set.")]
+        [ValidateSet("OWASP")]
         public string RuleSetType { get; set; }
 
         [Parameter(
-               Mandatory = true,
+               Mandatory = false,
                HelpMessage = "The version of the rule set type.")]
-        [ValidateNotNullOrEmpty]
+        [ValidateSet("3.0", "2.2.9")]
         public string RuleSetVersion { get; set; }
 
         [Parameter(
@@ -54,6 +55,15 @@ namespace Microsoft.Azure.Commands.Network
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+            
+            if (!this.MyInvocation.BoundParameters.ContainsKey("RuleSetType"))
+            {
+                this.RuleSetType = "OWASP";
+            }
+            if (!this.MyInvocation.BoundParameters.ContainsKey("RuleSetVersion"))
+            {
+                this.RuleSetVersion = "3.0";
+            }
         }
     }
 }
