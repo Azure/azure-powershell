@@ -997,7 +997,7 @@ function Run-RedeployVirtualMachineTest
         $vm = Get-AzureVM -ServiceName $svcName -Name $vmName;
 
         # Test Redeploy
-        Restart-AzureVM -Redeploy -ServiceName $svcName -Name $vmName;
+        $vm | Restart-AzureVM -Redeploy;
 
         $vm = Get-AzureVM -ServiceName $svcName -Name $vmName;
     }

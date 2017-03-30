@@ -22,7 +22,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {
-    [Cmdlet(VerbsLifecycle.Restart, ProfileNouns.VirtualMachine, DefaultParameterSetName = "ByName"), OutputType(typeof(ManagementOperationContext))]
+    [Cmdlet(VerbsLifecycle.Restart, ProfileNouns.VirtualMachine, DefaultParameterSetName = "RestartByName"), OutputType(typeof(ManagementOperationContext))]
     public class RestartAzureVMCommand : IaaSDeploymentManagementCmdletBase
     {
         private const string RestartInputParameterSet = "RestartInput";
@@ -48,11 +48,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
         }
 
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             HelpMessage = "The Virtual Machine to restart.",
             ParameterSetName = RestartInputParameterSet)]
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             HelpMessage = "The Virtual Machine to redeploy.",
             ParameterSetName = RedployInputParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -78,6 +78,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 
         protected override void ExecuteCommand()
         {
+            WriteWarning("Breaking change notice: In upcoming release, VM parameter will be removed.");
+
             ServiceManagementProfile.Initialize();
             base.ExecuteCommand();
             if (CurrentDeploymentNewSM == null)
