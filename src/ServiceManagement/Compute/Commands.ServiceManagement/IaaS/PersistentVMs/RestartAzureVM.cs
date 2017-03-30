@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 
+using System;
 using System.Management.Automation;
 using Microsoft.Azure;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
@@ -63,10 +64,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
             HelpMessage = "The Virtual Machine to redeploy.",
             ParameterSetName = RedployInputParameterSet)]
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             HelpMessage = "The Virtual Machine to initiate maintenance.",
             ParameterSetName = InitiateMaintenanceInputParameterSet)]
         [ValidateNotNullOrEmpty]
+        [ObsoleteAttribute("This parameter will be removed in the upcoming release. Use VM name instead.")]
         [Alias("InputObject")]
         public PersistentVM VM
         {
@@ -102,8 +104,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 
         protected override void ExecuteCommand()
         {
-            WriteWarning("Breaking change notice: In upcoming release, VM parameter will be removed.");
-
             ServiceManagementProfile.Initialize();
             base.ExecuteCommand();
             if (CurrentDeploymentNewSM == null)

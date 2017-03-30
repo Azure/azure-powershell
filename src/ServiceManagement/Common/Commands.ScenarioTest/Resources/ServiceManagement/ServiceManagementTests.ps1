@@ -1011,12 +1011,12 @@ function Run-RedeployVirtualMachineTest
 # Test Initiate Maintenance VM
 function Run-InitiateMaintenanceTest
 {
-	# Depending on the environment, the initiate maintenance operation may return 200
-	# or 400 with error message like "User initiated maintenance on the virtual machine was
-	# successfully completed". Both are expected reponse.
+    # Depending on the environment, the initiate maintenance operation may return 200
+    # or 400 with error message like "User initiated maintenance on the virtual machine was
+    # successfully completed". Both are expected reponses.
     # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
 	$tempErrorActionPreference = $ErrorActionPreference;
-    $ErrorActionPreference='SilentlyContinue';
+    $ErrorActionPreference = 'SilentlyContinue';
 	
 	# Setup
 	$location = "Central US EUAP";
@@ -1039,7 +1039,7 @@ function Run-InitiateMaintenanceTest
 	try
 	{
 		New-AzureQuickVM -Windows -ImageName $imgName -Name $vmName -ServiceName $svcName -AdminUsername $userName -Password $password;
-		Start-Sleep -s 300;
+        #Start-Sleep -s 300; #Uncomment this line for record mode testing.
 
 		# Get VM
 		$vm = Get-AzureVM -ServiceName $svcName -Name $vmName;
@@ -1051,12 +1051,12 @@ function Run-InitiateMaintenanceTest
 
 		$vm = Get-AzureVM -ServiceName $svcName -Name $vmName
 		Assert-NotNull $vm.MaintenanceStatus; 
-	}
-	catch
-	{
-        Assert-True {$result.Result.Contains("User initiated maintenance on the Virtual Machine was successfully completed.")};
-		$vm = Get-AzureVM -ServiceName $svcName -Name $vmName
-		Assert-NotNull $vm.MaintenanceStatus;
+    }
+    catch
+    {
+	    Assert-True {$result.Result.Contains("User initiated maintenance on the Virtual Machine was successfully completed.")};
+        $vm = Get-AzureVM -ServiceName $svcName -Name $vmName
+        Assert-NotNull $vm.MaintenanceStatus;
 	}
 	finally
 	{
