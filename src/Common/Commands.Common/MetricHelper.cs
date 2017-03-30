@@ -207,6 +207,11 @@ namespace Microsoft.WindowsAzure.Commands.Common
         /// <returns></returns>
         public static string GenerateSha256HashString(string originInput)
         {
+            if (string.IsNullOrWhiteSpace(originInput))
+            {
+                throw new ArgumentNullException("originInput");
+            }
+
             using (var sha256 = new SHA256CryptoServiceProvider())
             {
                 var bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(originInput));
