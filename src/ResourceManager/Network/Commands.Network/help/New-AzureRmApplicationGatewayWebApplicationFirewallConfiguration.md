@@ -14,7 +14,7 @@ Creates a WAF configuration for an application gateway.
 
 ```
 New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enabled <Boolean> -FirewallMode <String>
- -RuleSetType <String> -RuleSetVersion <String>
+ [-RuleSetType <String>] [-RuleSetVersion <String>]
  [-DisabledRuleGroups <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallDisabledRuleGroup]>]
  [<CommonParameters>]
 ```
@@ -29,8 +29,8 @@ The **New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration** cmdlet 
 PS C:\> $disabledRuleGroup1 = New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName "REQUEST-942-APPLICATION-ATTACK-SQLI" -Rules 942130,942140
 PS C:\> $disabledRuleGroup2 = New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName "REQUEST-921-PROTOCOL-ATTACK"
 PS C:\> $firewallConfig = New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode "Prevention" -RuleSetType "OWASP" -RuleSetVersion "3.0" -DisabledRuleGroups $disabledRuleGroup1,$disabledRuleGroup2
-
 ```
+
 The first command creates a new disabled rule group configuration for the rule group named "REQUEST-942-APPLICATION-ATTACK-SQLI" with rule 942130 and rule 942140 being disabled.
 The second command creates another disabled rule group configuration for a rule group named "REQUEST-921-PROTOCOL-ATTACK". No rules are specifically passed and thus all rules of the rule group will be disabled.
 The last command then creates a WAF configuration with firewall rules disabled as configured in $disabledRuleGroup1 and $disabledRuleGroup2. The new WAF configuration is stored in the $firewallConfig variable.
@@ -87,31 +87,38 @@ Accept wildcard characters: False
 ```
 
 ### -RuleSetType
-The type of the web application firewall rule set. Possible values are: 'OWASP'.
+The type of the web application firewall rule set. 
+The acceptable values for this parameter are: 
+
+- OWASP
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: OWASP
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -RuleSetVersion
 The version of the rule set type.
+The acceptable values for this parameter are: 
+
+- 3.0
+- 2.2.9
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: 3.0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
