@@ -215,9 +215,9 @@ function Test-ApplicationGatewayCRUD
 		$firewallConfig2 = Get-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $getgw		
 
 		# Verify that default values got set
-		Assert-Equal "OWASP"  $firewallConfig2.RuleSetType
-		Assert-Equal "3.0"  $firewallConfig2.RuleSetVersion
-		Assert-Equal $null  $firewallConfig2.DisabledRuleGroups
+		Assert-AreEqual "OWASP"  $firewallConfig2.RuleSetType
+		Assert-AreEqual "3.0"  $firewallConfig2.RuleSetVersion
+		Assert-AreEqual $null  $firewallConfig2.DisabledRuleGroups
 
 		$getgw = Set-AzureRmApplicationGateway -ApplicationGateway $getgw
 
