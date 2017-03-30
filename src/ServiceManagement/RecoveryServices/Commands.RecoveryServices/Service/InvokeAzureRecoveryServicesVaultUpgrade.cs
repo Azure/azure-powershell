@@ -148,8 +148,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             if (response.OperationStatus == Constants.Completed)
             {
-                record.RecordType = ProgressRecordType.Completed;
-                this.WriteProgress(record);
                 this.WriteResponse(
                     string.Format(
                         Properties.Resources.TrackVaultUpgradeJobResult,
