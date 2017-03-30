@@ -178,6 +178,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to -Head and -Tail are mutually exclusive and must be a positive, non-zero number. Please specify either -Head or -Tail as a positive, non-zero number. Value of Head: {0}. Value of Tail: {1}.
+        /// </summary>
+        internal static string HeadAndTailTogetherError {
+            get {
+                return ResourceManager.GetString("HeadAndTailTogetherError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User supplied Key Vault information. For service managed encryption user supplied Key Vault information is ignored..
         /// </summary>
         internal static string IgnoredKeyVaultParams {

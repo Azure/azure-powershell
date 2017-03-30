@@ -124,12 +124,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             {
                 if(Head > 0 && Tail > 0)
                 {
-                    throw new InvalidOperationException(string.Format("-Head and -Tail are mutually exclusive and must be a positive, non-zero number. Please specify either -Head or -Tail as a positive, non-zero number. Value of Head: {0}. Value of Tail: {1}", Head, Tail));
+                    throw new InvalidOperationException(string.Format(Resources.HeadAndTailTogetherError, Head, Tail));
                 }
 
                 if (Head < 1 && Tail < 1)
                 {
-                    throw new InvalidOperationException(string.Format("-Head and -Tail are mutually exclusive and must be a positive, non-zero number. Please specify either -Head or -Tail as a positive, non-zero number. Value of Head: {0}. Value of Tail: {1}", Head, Tail));
+                    throw new InvalidOperationException(string.Format(Resources.HeadAndTailTogetherError, Head, Tail));
                 }
 
                 List<string> toReturn = new List<string>();
