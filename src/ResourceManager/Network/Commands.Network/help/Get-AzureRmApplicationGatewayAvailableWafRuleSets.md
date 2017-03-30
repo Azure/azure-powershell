@@ -18,6 +18,7 @@ Get-AzureRmApplicationGatewayAvailableWafRuleSets [<CommonParameters>]
 ## DESCRIPTION
 The **Get-AzureRmApplicationGatewayAvailableWafRuleSets** cmdlet gets all available web application firewall rule sets.
 
+
 ## EXAMPLES
 
 ### Example 1
@@ -41,6 +42,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAvailableWafRuleSetsResult
 
 ## NOTES
+
+**List-AzureRmApplicationGatewayAvailableWafRuleSets** is an alias for the **Get-AzureRmApplicationGatewayAvailableWafRuleSets** cmdlet.
 
 ## RELATED LINKS
 
