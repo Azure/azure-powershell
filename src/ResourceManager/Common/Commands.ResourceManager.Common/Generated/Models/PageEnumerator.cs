@@ -56,7 +56,6 @@ namespace Microsoft.Azure.Internal.Subscriptions.Models
 
         public bool MoveNext()
         {
-            retry:
             if (_currentEnumerator.MoveNext())
             {
                 return true;
@@ -70,7 +69,7 @@ namespace Microsoft.Azure.Internal.Subscriptions.Models
             IPage<Subscription> tempPage = _client.Subscriptions.ListNext(_nextPageLink);
             _currentEnumerator = tempPage.GetEnumerator();
             _nextPageLink = tempPage.NextPageLink;
-            goto retry;
+            return this.MoveNext();
         }
 
         public void Reset()
