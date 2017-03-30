@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 
@@ -22,6 +23,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// Used to validate vault upgrade prerequisites.
     /// </summary>
     [Cmdlet(VerbsDiagnostic.Test, "AzureRecoveryServicesVaultUpgrade")]
+    [OutputType(typeof(List<string>))]
     public class TestAzureRecoveryServicesVaultUpgrade : RecoveryServicesCmdletBase
     {
         #region Parameters
@@ -66,6 +68,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
+                this.WriteResponse(Properties.Resources.StartingPrerequisitesCheck);
                 this.RecoveryServicesClient.TestVaultUpgradePrerequistes(
                     this.VaultName,
                     this.Location,
@@ -73,13 +76,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     this.TargetResourceGroupName,
                     this.Profile.Context.Subscription.Id.ToString());
 
-                this.WriteResponse(Properties.Resources.CheckPrereqSucceded);
+                this.WriteObject(Properties.Resources.CheckPrereqSucceeded);
                 this.WriteObject(Environment.NewLine);
             }
             catch (Exception exception)
             {
                 ExceptionDetails details =
-                    this.RecoveryServicesClient.HandleVaultUpgradeException(exception);
+                    this.HandleVaultUpgradeException(exception);
                 if (!string.IsNullOrEmpty(details.WarningDetails))
                 {
                     this.WriteWarning(details.WarningDetails);
@@ -87,24 +90,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
                 if (!string.IsNullOrEmpty(details.ErrorDetails))
                 {
-                    throw new InvalidOperationException(
-                        Environment.NewLine +
+                    Exception ex = new InvalidOperationException(
                         string.Format(
                             Properties.Resources.ConfirmVaultUpgradePrereqFailed,
                             Properties.Resources.VaultUpgradeExceptionDetails,
                             details.ErrorDetails));
+                    this.ThrowTerminatingError(
+                        new ErrorRecord(
+                            ex,
+                            string.Empty,
+                            ErrorCategory.InvalidOperation,
+                            null));
                 }
             }
-        }
-
-        /// <summary>
-        /// Writes content to the screen.
-        /// </summary>
-        /// <param name="contents">Data to be printed on the screen.</param>
-        private void WriteResponse(string contents)
-        {
-            this.WriteObject(Environment.NewLine);
-            this.WriteObject(contents);
         }
     }
 }

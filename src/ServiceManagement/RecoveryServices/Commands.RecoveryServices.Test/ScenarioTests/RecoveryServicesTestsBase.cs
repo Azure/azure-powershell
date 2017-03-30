@@ -60,12 +60,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
             }
 
             this.vaultSettingsFilePath = Environment.GetEnvironmentVariable("VAULT_SETTINGS_FILE_PATH");
-            this.vaultName = "vault2";
-            this.location = "West US";
+            this.vaultName = "VaultUpgrade";
+            this.location = "South India";
             this.resourceType = "HyperVRecoveryManagerVault";
-            this.targetRgName = "abc";
-            this.resourceNamespace = "HRMBvtd2ToDogfood";
-            this.cloudServiceName = "RecoveryServices-DKIEGNVV3OAPUDVOTINGUOLCIJIDA743FNSWQAM4O4NEQUVZFBWA-West-US";
+            this.targetRgName = "test-rg";
+            this.resourceNamespace = "WAHyperVRecoveryManager";
+            this.cloudServiceName = "CS-South-India-RecoveryServices";
 
             if (string.IsNullOrEmpty(vaultSettingsFilePath))
             {

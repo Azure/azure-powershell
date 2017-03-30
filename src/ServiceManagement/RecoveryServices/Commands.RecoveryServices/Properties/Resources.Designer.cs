@@ -90,9 +90,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Successfully completed prerequisites check for vault upgrade..
         /// </summary>
-        internal static string CheckPrereqSucceded {
+        internal static string CheckPrereqSucceeded {
             get {
-                return ResourceManager.GetString("CheckPrereqSucceded", resourceCulture);
+                return ResourceManager.GetString("CheckPrereqSucceeded", resourceCulture);
             }
         }
         
