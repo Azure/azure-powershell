@@ -27,32 +27,6 @@ Get-AzureRmVirtualNetworkGateway [-Name <String>] -ResourceGroupName <String>
 
 ## PARAMETERS
 
-### -Name
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: ResourceName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -InformationAction
 Specifies how this cmdlet responds to an information event.
 
@@ -89,6 +63,32 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: ResourceName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

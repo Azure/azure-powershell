@@ -148,11 +148,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSExpressRouteCircuit
 **Get-AzureRmExpressRouteCircuitAuthorization** accepts pipelined instances of the
 **Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit** object.
 
 ## OUTPUTS
 
+### PSExpressRouteCircuitAuthorization
 **Get-AzureRmExpressRouteCircuitAuthorization** returns instances of the
 **Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization** object.
 

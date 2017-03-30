@@ -127,6 +127,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                     DefaultStorageAccountKey = _defaultStorageAccountKey,
                     WorkerNodeSize = parameters.WorkerNodeSize,
                     HeadNodeSize = parameters.HeadNodeSize,
+                    EdgeNodeSize = parameters.EdgeNodeSize,
                     ZookeeperNodeSize = parameters.ZookeeperNodeSize,
                     HiveMetastore = HiveMetastore,
                     OozieMetastore = OozieMetastore,
@@ -176,6 +177,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 }
                 parameters.WorkerNodeSize = value.WorkerNodeSize;
                 parameters.HeadNodeSize = value.HeadNodeSize;
+                parameters.EdgeNodeSize = value.EdgeNodeSize;
                 parameters.ZookeeperNodeSize = value.ZookeeperNodeSize;
                 HiveMetastore = value.HiveMetastore;
                 OozieMetastore = value.OozieMetastore;
@@ -252,6 +254,13 @@ namespace Microsoft.Azure.Commands.HDInsight
         {
             get { return parameters.WorkerNodeSize; }
             set { parameters.WorkerNodeSize = value; }
+        }
+
+        [Parameter(HelpMessage = "Gets or sets the size of the Edge Node if available for the cluster type.")]
+        public string EdgeNodeSize
+        {
+            get { return parameters.EdgeNodeSize; }
+            set { parameters.EdgeNodeSize = value; }
         }
 
         [Parameter(HelpMessage = "Gets or sets the size of the Zookeeper Node.")]

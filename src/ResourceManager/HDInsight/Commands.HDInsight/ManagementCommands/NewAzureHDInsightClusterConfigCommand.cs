@@ -81,6 +81,13 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { _config.WorkerNodeSize = value; }
         }
 
+        [Parameter(HelpMessage = "Gets or sets the size of the Edge Node if available for the cluster type.")]
+        public string EdgeNodeSize
+        {
+            get { return _config.EdgeNodeSize; }
+            set { _config.EdgeNodeSize = value; }
+        }
+
         [Parameter(HelpMessage = "Gets or sets the size of the Zookeeper Node.")]
         public string ZookeeperNodeSize
         {

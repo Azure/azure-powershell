@@ -30,21 +30,6 @@ The **Get-AzureRmApplicationGatewayAuthenticationCertificate** cmdlet gets an au
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the authentication certificate that this cmdlet gets.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ApplicationGateway
 Specifies the name of application gateway for which this cmdlet gets an authentication certificate.
 
@@ -91,6 +76,21 @@ Specifies an information variable.
 Type: String
 Parameter Sets: (All)
 Aliases: iv
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the name of the authentication certificate that this cmdlet gets.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
 Position: Named

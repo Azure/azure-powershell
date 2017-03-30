@@ -30,6 +30,8 @@ namespace Microsoft.Azure.Commands.HDInsight
     {
         private Dictionary<string, Hashtable> _configurations;
 
+        private const string RServerConfigurationKey = "RServer";
+
         #region Input Parameter Definitions
 
         [Parameter(Position = 0,
@@ -77,6 +79,9 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "Gets the Hdfs Site configurations of this HDInsight cluster.")]
         public Hashtable Hdfs { get; set; }
 
+        [Parameter(HelpMessage = "Gets the RServer configurations.")]
+        public Hashtable RServer { get; set; }
+
         #endregion
 
         public AddAzureHDInsightConfigValuesCommand()
@@ -94,6 +99,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             MapRed = new Hashtable();
             Tez = new Hashtable();
             Hdfs = new Hashtable();
+            RServer = new Hashtable();
         }
 
         public override void ExecuteCmdlet()
@@ -113,6 +119,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             AddConfigToConfigurations(MapRed, ConfigurationKey.MapRedSite);
             AddConfigToConfigurations(Tez, ConfigurationKey.TezSite);
             AddConfigToConfigurations(Hdfs, ConfigurationKey.HdfsSite);
+            AddConfigToConfigurations(RServer, RServerConfigurationKey);
 
             WriteObject(Config);
         }

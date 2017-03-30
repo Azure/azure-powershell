@@ -14,12 +14,13 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Test.UnitTests
 {
+    using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Cmdlets;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using ServiceManagemenet.Common.Models;
-    using System.Management.Automation;
     using Xunit;
     using Xunit.Abstractions;
+
     /// <summary>
     /// Unit test for the Create Logic app command.
     /// </summary>
@@ -45,7 +46,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.UnitTests
             };
 
             var exception = Assert.Throws<PSArgumentException>(() => cmdlet.ExecuteCmdlet());
-            Assert.Equal("File LogicAppDefinition.json does not exist.", exception.Message);
+            Assert.Equal("File 'LogicAppDefinition.json' does not exist.", exception.Message);
         }
 
         /// <summary>
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.UnitTests
                 ResourceGroupName = ResourceGroupName
             };
             var exception = Assert.Throws<PSArgumentException>(() => cmdlet.ExecuteCmdlet());
-            Assert.Equal("File LogicAppParameter.json does not exist.", exception.Message);
+            Assert.Equal("File 'LogicAppParameter.json' does not exist.", exception.Message);
         }
     }
 }
