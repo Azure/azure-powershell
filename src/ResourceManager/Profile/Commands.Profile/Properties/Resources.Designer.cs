@@ -223,6 +223,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Current context.
+        /// </summary>
+        internal static string ImportContextTarget {
+            get {
+                return ResourceManager.GetString("ImportContextTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The provided subscription ID &quot;{0}&quot; is not a valid Guid..
         /// </summary>
         internal static string InvalidSubscriptionId {
@@ -255,6 +264,24 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string NoValidTenant {
             get {
                 return ResourceManager.GetString("NoValidTenant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set the target account, tenant, and subscription of cmdlets executed in this session to the context stored in {0}.
+        /// </summary>
+        internal static string ProcessImportContextFromFile {
+            get {
+                return ResourceManager.GetString("ProcessImportContextFromFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set the target account, tenant, and subscription of cmdlets executed in this session to the provided context.
+        /// </summary>
+        internal static string ProcessImportContextFromObject {
+            get {
+                return ResourceManager.GetString("ProcessImportContextFromObject", resourceCulture);
             }
         }
         
