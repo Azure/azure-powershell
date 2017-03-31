@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <helpItems xmlns="http://msh" schema="maml">
 
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
@@ -190,6 +190,8 @@
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -415,6 +417,8 @@
 PS C:\&gt; $AppGw = Add-AzureRmApplicationGatewayBackendAddressPool -ApplicationGateway $AppGw -Name "Pool02" -BackendFqdns "contoso1.com", " contoso1.com"</dev:code>
 <dev:remarks><maml:para>The first command gets the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01, and stores it in the $AppGw variable.The second command adds the back-end address pool of the application gateway stored in $AppGw by using FQDNs.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Add a back-end address pool by using backend server IP addresses</maml:title>
@@ -422,6 +426,8 @@ PS C:\&gt; $AppGw = Add-AzureRmApplicationGatewayBackendAddressPool -Application
 PS C:\&gt; $AppGw = Add -AzureApplicationGatewayBackendAddressPool -ApplicationGateway $ AppGw -Name "Pool02" -BackendIPAddresses "10.10.10.10", "10.10.10.11"</dev:code>
 <dev:remarks><maml:para>The first command gets the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01, and stores it in the $AppGw variable.The second command adds the back-end address pool of the application gateway stored in $AppGw by using IP addresses.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3: Seta back-end address pool by using the ID of the backend server's IP address</maml:title>
@@ -431,6 +437,8 @@ PS C:\&gt; $AppGw = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -
 PS C:\&gt; $AppGw = Add-AzureRmApplicationGatewayBackendAddressPool -ApplicationGateway $ AppGw -Name "Pool02" -BackendIPConfigurationIds $nic01.Properties.IpConfigurations[0].Id, $nic02.Properties.IpConfiguration[0].Id</dev:code>
 <dev:remarks><maml:para>The first command gets a network interface object named Nic01 that belongs to the resource group named ResourceGroup01, and stores it in the $Nic01 variable.The second command gets a network interface object named Nic02 that belongs to the resource group named ResourceGroup02, and stores it in the $Nic02 variable.The third command gets the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01, and stores it in the $AppGw variable.The forth command uses the back-end IP configuration IDs from $Nic01 and $Nic02 to add the back-end address pool of the application gateway stored in $AppGw.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -735,6 +743,8 @@ PS C:\&gt; $AppGw = Add-AzureRmApplicationGatewayBackendAddressPool -Application
 PS C:\&gt; $AppGw = Add-AzureRmApplicationGatewayBackendHttpSettings -ApplicationGateway $AppGw -Name "Setting02" -Port 88 -Protocol "HTTP" -CookieBasedAffinity "Disabled"</dev:code>
 <dev:remarks><maml:para>The first command gets the application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01 and stores it in the $AppGw variable.The second command adds back-end HTTP settings to the application gateway, setting the port to 88 and the protocol to HTTP and names the settings Setting02.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1050,6 +1060,8 @@ PS C:\&gt; $AppGw = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -
 PS C:\&gt; $AppGw = Add-AzureRmApplicationGatewayFrontendIPConfig -ApplicationGateway $AppGw -Name "FrontEndIp01" -PublicIPAddress $PublicIp</dev:code>
 <dev:remarks><maml:para>The first command creates a public IP address object and stores it in the $PublicIp variable. The second command gets the application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01, and stores it in the $AppGw variable. The third command adds the front-end IP configuration named FrontEndIp01, for the gateway in $AppGw, using the address stored in $PublicIp.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Add a static private IP as the front-end IP address</maml:title>
@@ -1059,6 +1071,8 @@ PS C:\&gt; $AppGw = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -
 PS C:\&gt; $AppGw = Add-AzureRmApplicationGatewayFrontendIPConfig -ApplicationGateway $AppGw -Name "FrontendIP02" -Subnet $Subnet -PrivateIPAddress 10.0.1.1</dev:code>
 <dev:remarks><maml:para>The first command gets a virtual network named VNet01 that belongs to the resource group named ResourceGroup01, and stores it in the $VNet variable. The second command gets a subnet configuration named Subnet01 using $VNet from the first command and stores it in the $Subnet variable. The third command gets the application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01, and stores it in the $AppGw variable. The fourth command adds a front-end IP configuration named FrontendIP02 using $Subnet from the second command and the private IP address 10.0.1.1.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3: Add a dynamic private IP as the front-end IP address</maml:title>
@@ -1068,6 +1082,8 @@ PS C:\&gt; $AppGw = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -
 PS C:\&gt; $AppGw = Add-AzureRmApplicationGatewayFrontendIPConfig -ApplicationGateway $AppGw -Name "FrontendIP02" -Subnet $Subnet</dev:code>
 <dev:remarks><maml:para>The first command gets a virtual network named VNet01 that belongs to the resource group named ResourceGroup01, and stores it in the $VNet variable. The second command gets a subnet configuration named Subnet01 using $VNet from the first command and stores it in the $Subnet variable. The third command gets the application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01, and stores it in the $AppGw variable. The fourth command adds a front-end IP configuration named FrontendIP02 using $Subnet from the second command.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1241,6 +1257,8 @@ PS C:\&gt; $AppGw = Add-AzureRmApplicationGatewayFrontendIPConfig -ApplicationGa
 PS C:\&gt; $ AppGw = Add-AzureRmApplicationGatewayFrontendPort -ApplicationGateway $AppGw -Name "FrontEndPort01" -Port 80</dev:code>
 <dev:remarks><maml:para>The first command gets the application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01 and stores it in the $AppGw variable. The second command adds port 80 as a front-end port for the application gateway stored in $AppGw and names the port FrontEndPort01.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1637,6 +1655,8 @@ PS C:\&gt; $ AppGw = Add-AzureRmApplicationGatewayFrontendPort -ApplicationGatew
 PS C:\&gt; $Appgw = Add-AzureRmApplicationGatewayHttpListener -ApplicationGateway $AppGw -Name "listener01" -Protocol "Http" -FrontendIpConfiguration $FIP01 -FrontendPort $FP01</dev:code>
 <dev:remarks><maml:para>The first command gets the application gateway and stores it in the $AppGw variable.The second command adds the HTTP listener to the application gateway.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Add a HTTPS listener with SSL</maml:title>
@@ -1644,6 +1664,8 @@ PS C:\&gt; $Appgw = Add-AzureRmApplicationGatewayHttpListener -ApplicationGatewa
 PS C:\&gt; $AppGw = Add-AzureRmApplicationGatewayHttpListener -ApplicationGateway $AppGw -Name "Listener01" -Protocol "Https" -FrontendIpConfiguration $FIP01 -FrontendPort $FP01 -SslCertificate $SSLCert01</dev:code>
 <dev:remarks><maml:para>The first command gets the application gateway and stores it in the $AppGw variable. The second command adds the listener, which uses the HTTPS protocol, to the application gateway.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1889,6 +1911,8 @@ PS C:\&gt; $AppGw = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -
 PS C:\&gt; $AppGw = Add-AzureRmApplicationGatewayIPConfiguration -ApplicationGateway $AppGw -Name "Appgwsubnet01" -Subnet $Subnet</dev:code>
 <dev:remarks><maml:para>The first command creates a virtual network. The second command creates a subnet using the previously created virtual network. The third command gets the application gateway and stores it in the $AppGw variable. The fouth command adds the IP configuration to the application gateway stored in $AppGw.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -2139,6 +2163,8 @@ PS C:\&gt; $AppGw = Add-AzureRmApplicationGatewayIPConfiguration -ApplicationGat
 <dev:code>PS C:\&gt;$Probe = Add-AzureRmApplicationGatewayProbeConfig -ApplicationGateway Gateway -Name "Probe01" -Protocol Http -HostName "contoso.com" -Path "/path/custompath.htm" -Interval 30 -Timeout 120 -UnhealthyThreshold 8</dev:code>
 <dev:remarks><maml:para>This command adds a health probe named Probe01 for the application gateway named Gateway. The command also sets the unhealthy threshold to 8 retries and times out after 120 seconds.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -2520,6 +2546,8 @@ PS C:\&gt; $AppGw = Add-AzureRmApplicationGatewayIPConfiguration -ApplicationGat
 PS C:\&gt; $Appgw = Add-AzureApplicationGatewayRequestRoutingRule -ApplicationGateway $AppGw -Name "Rule01" -RuleType Basic -BackendHttpSettings $Setting -HttpListener $Listener -BackendAddressPool $Pool</dev:code>
 <dev:remarks><maml:para>The first command gets the application gateway and stores it in the $AppGw variable. The second command adds the request routing rule to the application gateway.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -2711,6 +2739,8 @@ PS C:\&gt; $Appgw = Add-AzureApplicationGatewayRequestRoutingRule -ApplicationGa
 PS C:\&gt; $AppGW = Add-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $AppGW -Name "Cert01" -CertificateFile "D:\cert01.pfx" -Password "Password01"</dev:code>
 <dev:remarks><maml:para>This command gets an application gateway named ApplicationGateway01 and then adds an SSL certificate named Cert01 to it.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -3004,6 +3034,8 @@ PS C:\&gt; $AppGW = Add-AzureRmApplicationGatewaySslCertificate -ApplicationGate
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -3164,6 +3196,8 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $Circuit</dev:code>
 </maml:para>
 <maml:para>In the second command, the Add-AzureRmExpressRouteCircuitAuthorization cmdlet is used to add a new authorization (ContosoCircuitAuthorization) to the ExpressRoute circuit. This command adds the authorization but does not activate that authorization. Activating an authorization requires the Set-AzureRmExpressRouteCircuit shown in the final command in the example.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -3730,6 +3764,8 @@ Add-AzureRmExpressRouteCircuitPeeringConfig @parameters
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit</dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -3872,6 +3908,8 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit</dev:code>
 <dev:code>PS C:\&gt;Get-AzureRmLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "myrg" | Add-AzureRmLoadBalancerBackendAddressPoolConfig -Name "BackendAddressPool02" | Set-AzureRmLoadBalancer</dev:code>
 <dev:remarks><maml:para>This command gets the load balancer named MyLoadBalancer, adds the backend address pool named BackendAddressPool02 to MyLoadBalancer, and then uses the Set-AzureRmLoadBalancer cmdlet to update MyLoadBalancer.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -4273,6 +4311,8 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit</dev:code>
 PS C:\&gt; Get-AzureRmLoadBalancer -Name "MyLB" -ResourceGroupName "NrpTest" | Add-AzureRmLoadBalancerFrontendIpConfig -Name "FrontendName" -Subnet $Subnet | Set-AzureRmLoadBalancer</dev:code>
 <dev:remarks><maml:para>The first command gets the Azure virtual network named MyVnet and passes the result using the pipeline to the Get-AzureRmVirtualNetworkSubnetConfig cmdlet to get the subnet named MySubnet. The command then stores the result in the variable named $Subnet. The second command gets the load balancer named MyLB and passes the result to the Add-AzureRmLoadBalancerFrontendIpConfig cmdlet that adds a front-end IP configuration to the load balancer with a dynamic private IP address from the subnet stored in the variable named $MySubnet.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2 Add a front-end IP configuration with a static IP address</maml:title>
@@ -4280,6 +4320,8 @@ PS C:\&gt; Get-AzureRmLoadBalancer -Name "MyLB" -ResourceGroupName "NrpTest" | A
 PS C:\&gt; Get-AzureRmLoadBalancer -Name "MyLB" -ResourceGroupName "NrpTest" | Add-AzureRmLoadBalancerFrontendIpConfig -Name "FrontendName" -Subnet $Subnet -PrivateIpAddress "10.0.1.6" | Set-AzureRmLoadBalancer</dev:code>
 <dev:remarks><maml:para>The first command gets the Azure virtual network named MyVnet and passes the result using the pipeline to the Get-AzureRmVirtualNetworkSubnetConfig cmdlet to get the subnet named MySubnet. The command then stores the result in the variable named $Subnet. The second command gets the load balancer named MyLB and passes the result to the Add-AzureRmLoadBalancerFrontendIpConfig cmdlet that adds a front-end IP configuration to the load balancer with a static private IP address from the subnet stored in the variable named $Subnet.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3 Add a front-end IP configuration with a public IP address</maml:title>
@@ -4287,6 +4329,8 @@ PS C:\&gt; Get-AzureRmLoadBalancer -Name "MyLB" -ResourceGroupName "NrpTest" | A
 PS C:\&gt; Get-AzureRmLoadBalancer -Name "MyLB" -ResourceGroupName "NrpTest" | Add-AzureRmLoadBalancerFrontendIpConfig -Name "FrontendName" -PublicIpAddress $PublicIp | Set-AzureRmLoadBalancer</dev:code>
 <dev:remarks><maml:para>The first command gets the Azure public IP address named MyPub and stores the result in the variable named $PublicIp. The second command gets the load balancer named MyLB and passes the result to the Add-AzureRmLoadBalancerFrontendIpConfig cmdlet that adds a front-end IP configuration to the load balancer with public IP address stored in the variable named $PublicIp.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -4631,6 +4675,8 @@ PS C:\&gt; Get-AzureRmLoadBalancer -Name "MyLB" -ResourceGroupName "NrpTest" | A
 <dev:code>PS C:\&gt;</dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -4985,6 +5031,8 @@ PS C:\&gt; $slb | Add-AzureRmLoadBalancerInboundNatRuleConfig -Name "NewNatRule"
 </maml:para>
 <maml:para>The second command uses the pipeline operator to pass the load balancer in $slb to Add-AzureRmLoadBalancerInboundNatRuleConfig , which adds an inbound NAT rule configuration to the load balancer.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -5223,6 +5271,8 @@ PS C:\&gt; $slb | Add-AzureRmLoadBalancerInboundNatRuleConfig -Name "NewNatRule"
 <dev:code>PS C:\&gt;Get-AzureRmLoadBalancer -Name "myLb" -ResourceGroupName "myRg" | Add-AzureRmLoadBalancerProbeConfig -Name "probeName" -RequestPath healthcheck2.aspx -Protocol http -Port 81 -IntervalInSeconds 16 -ProbeCount 3 | Set-AzureRmLoadBalancer</dev:code>
 <dev:remarks><maml:para>This command gets the load balancer named myLb, adds the specified probe configuration to it, and then uses the Set-AzureRmLoadBalancer cmdlet to update the load balancer.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -5691,6 +5741,8 @@ PS C:\&gt; $slb | Add-AzureRmLoadBalancerRuleConfig -Name "NewRule" -FrontendIPC
 </maml:para>
 <maml:para>The second command uses the pipeline operator to pass the load balancer in $slb to Add-AzureRmLoadBalancerRuleConfig , which adds the rule configuration named NewRule.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -6159,6 +6211,8 @@ PS C:\&gt; $slb | Add-AzureRmLoadBalancerRuleConfig -Name "NewRule" -FrontendIPC
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -6535,6 +6589,8 @@ Add-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Ac
     Set-AzureRmNetworkSecurityGroup</dev:code>
 <dev:remarks><maml:para>The first command retrieves an Azure network security group named "nsg1" from resource group "rg1". The second command dds a network security rule named "rdp-rule" that allows traffic from internet on port 3389 to the retrieved network security group object. Persists the modified Azure network security group.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -6738,6 +6794,8 @@ PS C:\&gt; Add-AzureRmRouteConfig -Name "Route13" -AddressPrefix 10.3.0.0/16 -Ne
 </maml:para>
 <maml:para>The second command adds a route named Route13 to the route table stored in $RouteTable. This route forwards packets to the local virtual network.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Add a route to a route table by using the pipeline</maml:title>
@@ -6784,6 +6842,8 @@ Routes            : [
 Subnets           : []</dev:code>
 <dev:remarks><maml:para>This command gets the route table named RouteTable01 by using Get-AzureRmRouteTable . The command passes that table to the current cmdlet by using the pipeline operator. The current cmdlet adds the route named Route02, and then passes the result to the Set-AzureRmRouteTable cmdlet, which updates the table to reflect your changes.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -7010,6 +7070,8 @@ Subnets           : []</dev:code>
 					  PS C:\&gt; Add-AzureRmRouteFilterRuleConfig -Name "rule13" -Access Allow -RouteFilterRuleType Community -RouteFilter $RouteFilter</dev:code>
 <dev:remarks><maml:para>The first command gets a route filter named routefilter01 by using the Get-AzureRmRouteFilter cmdlet. The command stores the filter in the $RouteFilter variable.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -7359,6 +7421,8 @@ Subnets           : []</dev:code>
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -7595,6 +7659,8 @@ PS C:\&gt; Add-AzureRmVirtualNetworkPeering -Name "LinkToVNet1" -VirtualNetwork 
 </maml:para>
 <maml:para>Note that vnet1 and vnet2 are assumed to already exist in this example. Also note that a link must be created from vnet1 to vnet2 and vice versa in order for peering to work.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -7892,6 +7958,8 @@ PS C:\&gt; Add-AzureRmVirtualNetworkPeering -Name "LinkToVNet1" -VirtualNetwork 
     $virtualNetwork | Set-AzureRmVirtualNetwork</dev:code>
 <dev:remarks><maml:para>This example first creates a resource group as a container of the resources to be created. It then creates a subnet configuration and uses it to create a virtual network. The      Add-AzureRmVirtualNetworkSubnetConfig is then used to add a subnet to the in-memory representation of the virtual network. The Set-AzureRmVirtualNetwork command updates the existing virtual      network with the new subnet.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -8086,6 +8154,8 @@ PS C:\&gt; Add-AzureRmVirtualNetworkPeering -Name "LinkToVNet1" -VirtualNetwork 
 <dev:code>PS C:\&gt;Add-AzureRmVpnClientRevokedCertificate -VirtualNetworkGatewayName "ContosoVirtualNetwork" -ResourceGroupName "ContosoResourceGroup" -VpnClientRevokedCertificateName "ContosoRevokedClientCertificate"-Thumbprint "E3A38EBA60CAA1C162785A2E1C44A15AD450199C3"</dev:code>
 <dev:remarks><maml:para>This command adds a new client-revocation certificate to the virtual network gateway named ContosoVirtualNetwork. In order to add the certificate, you must specify both the certificate name and the certificate thumbprint.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -8285,6 +8355,8 @@ PS C:\&gt; Add-AzureRmVpnClientRootCertificate -PublicCertData $CertificateText 
 </maml:para>
 <maml:para>The third command then uses the text stored in $CertificateText with the Add-AzureRmVpnClientRootCertificate cmdlet to add the root certificate to the gateway.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -8436,18 +8508,24 @@ PS C:\&gt; Add-AzureRmVpnClientRootCertificate -PublicCertData $CertificateText 
 <dev:code>PS C:\&gt;$AppGw = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"</dev:code>
 <dev:remarks><maml:para>This command gets the application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01 and stores it in the $AppGw variable.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Get a list of application gateways in a resource group</maml:title>
 <dev:code>PS C:\&gt;$AppGwList = Get-AzureRmApplicationGateway -ResourceGroupName "ResourceGroup01"</dev:code>
 <dev:remarks><maml:para>This command gets a list of all the application gateways in the resource group named ResourceGroup01 and stores it in the $AppGwList variable.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3: Get a list of application gateways in a subscription</maml:title>
 <dev:code>PS C:\&gt;$AppGwList = Get-AzureRmApplicationGateway</dev:code>
 <dev:remarks><maml:para>This command gets a list of all the application gateways in the subscription and stores it in the $AppGwList variable.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -8593,6 +8671,8 @@ PS C:\&gt; Add-AzureRmVpnClientRootCertificate -PublicCertData $CertificateText 
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -8647,6 +8727,8 @@ PS C:\&gt; Add-AzureRmVpnClientRootCertificate -PublicCertData $CertificateText 
 <dev:code>PS C:\&gt;$availableRuleSets = Get-AzureRmApplicationGatewayAvailableWafRuleSets</dev:code>
 <dev:remarks><maml:para>This commands returns all the available web application firewall rule sets.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -8790,6 +8872,8 @@ PS C:\&gt; Add-AzureRmVpnClientRootCertificate -PublicCertData $CertificateText 
 PS C:\&gt; $BackendPool = Get-AzureRmApplicationGatewayBackendAddressPool -Name "Pool01" -ApplicationGateway $AppGw</dev:code>
 <dev:remarks><maml:para>The first command gets the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01 and stores it in the $AppGw variable. The second command gets the back-end address pool associated with $AppGw named Pool01 and stores it in the $BackendPool variable.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Get a list of back-end server pool</maml:title>
@@ -8797,6 +8881,8 @@ PS C:\&gt; $BackendPool = Get-AzureRmApplicationGatewayBackendAddressPool -Name 
 PS C:\&gt; $BackendPools = Get-AzureRmApplicationGatewayBackendAddressPool -ApplicationGateway $AppGw</dev:code>
 <dev:remarks><maml:para>The first command gets the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01 and stores it in the $AppGw variable. The second command gets a list of the back-end address pools associated with $AppGw, and stores the list in the $BackendPools variable.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -8905,12 +8991,16 @@ PS C:\&gt; $BackendPools = Get-AzureRmApplicationGatewayBackendAddressPool -Appl
 <dev:code>PS C:\&gt;$BackendHealth = Get-AzureRmApplicationGatewayBackendHealth -Name ApplicationGateway01 -ResourceGroupName ResourceGroup01</dev:code>
 <dev:remarks><maml:para>This command gets the backend health of application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01 and stores it in the $BackendHealth variable.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>--------------------------  Example 1: Gets backend health with expanded resources.  --------------------------</maml:title>
 <dev:code>PS C:\&gt;$BackendHealth = Get-AzureRmApplicationGatewayBackendHealth -Name ApplicationGateway01 -ResourceGroupName ResourceGroup01 -ExpandResource "backendhealth/applicationgatewayresource"</dev:code>
 <dev:remarks><maml:para>This command gets the backend health (with expanded resources) of application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01 and stores it in the $BackendHealth variable.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -9057,6 +9147,8 @@ PS C:\&gt; $BackendPools = Get-AzureRmApplicationGatewayBackendAddressPool -Appl
 PS C:\&gt; $Settings  = Get-AzureRmApplicationGatewayBackendHttpSettings -Name "Settings01" -ApplicationGateway $AppGw</dev:code>
 <dev:remarks><maml:para>The first command gets the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01, and stores it in the $AppGw variable.The second command gets the HTTP settings named Settings01 for $AppGw and stores the settings in the $Settings variable.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Get a collection of back-end HTTP settings</maml:title>
@@ -9064,6 +9156,8 @@ PS C:\&gt; $Settings  = Get-AzureRmApplicationGatewayBackendHttpSettings -Name "
 PS C:\&gt; $SettingsList  = Get-AzureRmApplicationGatewayBackendHttpSettings -ApplicationGateway $AppGw</dev:code>
 <dev:remarks><maml:para>The first command gets the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01, and stores it in the $AppGw variable.The second command gets the collection of HTTP settings for $AppGw and stores the settings in the $SettingsList variable.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -9138,6 +9232,8 @@ PS C:\&gt; $Settings  = Get-AzureRmApplicationGatewayBackendHttpSettings -Name "
 PS C:\&gt; $ConnectionDraining = Get-AzureRmApplicationGatewayConnectionDraining -BackendHttpSettings $Settings</dev:code>
 <dev:remarks><maml:para>The first command gets the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01 and stores it in the $AppGw variable. The second command gets the back-end HTTP settings named Settings01 for $AppGw and stores the settings in the $Settings variable. The last command gets the connection draining configuration from the back-end HTTP settings $Settings and stores it in the $ConnectionDraining variable.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -9296,6 +9392,8 @@ PS C:\&gt; $ConnectionDraining = Get-AzureRmApplicationGatewayConnectionDraining
 PS C:\&gt; $FrontEndIP= Get-AzureRmApplicationGatewayFrontendIPConfig -Name "FrontEndIP01" -ApplicationGateway $AppGw</dev:code>
 <dev:remarks><maml:para>The first command gets an application gateway named ApplicationGateway01 from the resource group named ResourceGroup01, and stores it in the $AppGw variable.The second command gets the front-end IP configuration named FrontEndIP01 from $AppGw and stores it in the $FrontEndIP variable.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Get a list of front-end IP configurations</maml:title>
@@ -9303,6 +9401,8 @@ PS C:\&gt; $FrontEndIP= Get-AzureRmApplicationGatewayFrontendIPConfig -Name "Fro
 PS C:\&gt; $FrontEndIPs= Get-AzureRmApplicationGatewayFrontendIPConfig  -ApplicationGateway $AppGw</dev:code>
 <dev:remarks><maml:para>The first command gets an application gateway named ApplicationGateway01 from the resource group named ResourceGroup01, and stores it in the $AppGw variable.The second command gets a list of the front-end IP configurations from $AppGw and stores it in the $FrontEndIPs variable.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -9458,6 +9558,8 @@ PS C:\&gt; $FrontEndIPs= Get-AzureRmApplicationGatewayFrontendIPConfig  -Applica
 PS C:\&gt; $FrontEndPort = Get-AzureRmApplicationGatewayFrontendIPort -Name "FrontEndPort01" -ApplicationGateway $AppGw</dev:code>
 <dev:remarks><maml:para>The first command gets an application gateway named ApplicationGateway01 from the resource group named ResourceGroup01, and stores it in the $AppGw variable. The second command gets the front-end port named FrontEndPort01 from $AppGw and stores it in the $FrontEndPort variable.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Get a list of front-end ports</maml:title>
@@ -9465,6 +9567,8 @@ PS C:\&gt; $FrontEndPort = Get-AzureRmApplicationGatewayFrontendIPort -Name "Fro
 PS C:\&gt; $FrontEndPorts = Get-AzureRmApplicationGatewayFrontendIPort  -ApplicationGateway $AppGw</dev:code>
 <dev:remarks><maml:para>The first command gets an application gateway named ApplicationGateway01 from the resource group named ResourceGroup01, and stores it in the $AppGw variable. The second command gets a list of the front-end ports from $AppGw and stores it in the $FrontEndPorts variable.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -9620,6 +9724,8 @@ PS C:\&gt; $FrontEndPorts = Get-AzureRmApplicationGatewayFrontendIPort  -Applica
 PS C:\&gt; $Listener = Get-AzureRmApplicationGatewayHttpListener -Name "Listener01" -ApplicationGateway $Appgw</dev:code>
 <dev:remarks><maml:para>This command gets an HTTP listener named Listener01.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Get a list of HTTP listeners</maml:title>
@@ -9627,6 +9733,8 @@ PS C:\&gt; $Listener = Get-AzureRmApplicationGatewayHttpListener -Name "Listener
 PS C:\&gt; $Listeners = Get-AzureRmApplicationGatewayHttpListener -ApplicationGateway $Appgw</dev:code>
 <dev:remarks><maml:para>This command gets a list of HTTP listeners.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -9782,6 +9890,8 @@ PS C:\&gt; $Listeners = Get-AzureRmApplicationGatewayHttpListener -ApplicationGa
 PS C:\&gt; $GatewaySubnet = Get-AzureRmApplicationGatewayIPConfiguration -Name "GatewaySubnet01" -ApplicationGateway $AppGw</dev:code>
 <dev:remarks><maml:para>The first command gets an application gateway and stores it in the $AppGw variable.The second command gets an IP configuration named GateSubnet01 from the gateway stored in $AppGw.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Get a list of IP configurations</maml:title>
@@ -9789,6 +9899,8 @@ PS C:\&gt; $GatewaySubnet = Get-AzureRmApplicationGatewayIPConfiguration -Name "
 PS C:\&gt; $GatewaySubnets = Get-AzureRmApplicationGatewayIPConfiguration -ApplicationGateway $AppGw</dev:code>
 <dev:remarks><maml:para>The first command gets an application gateway and stores it in the $AppGw variable.The second command gets a list of all IP configurations.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -9931,6 +10043,8 @@ PS C:\&gt; $GatewaySubnets = Get-AzureRmApplicationGatewayIPConfiguration -Appli
 <dev:code>PS C:\&gt;Get-AzureRmApplicationGatewayProbeConfig -ApplicationGateway Gateway -Name "Probe02"</dev:code>
 <dev:remarks><maml:para>This command gets the health probe named Probe02 from the application gateway named Gateway.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -10089,6 +10203,8 @@ PS C:\&gt; $GatewaySubnets = Get-AzureRmApplicationGatewayIPConfiguration -Appli
 PS C:\&gt; $Rule = Get-AzureRmApplicationGatewayRequestRoutingRule -"Rule01" -ApplicationGateway $AppGW</dev:code>
 <dev:remarks><maml:para>The first command gets the Application Gateway named ApplicationGateway01 and stores the result in the variable named $AppGW. The second command gets the request routing rule named Rule01 from the Application Gateway stored in the variable named $AppGW.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Get a list of request routing rules</maml:title>
@@ -10096,6 +10212,8 @@ PS C:\&gt; $Rule = Get-AzureRmApplicationGatewayRequestRoutingRule -"Rule01" -Ap
 PS C:\&gt; $Rules = Get-AzureRmApplicationGatewayRequestRoutingRule -ApplicationGateway $AppGW</dev:code>
 <dev:remarks><maml:para>The first command gets the Application Gateway named ApplicationGateway01 and stores the result in the variable named $AppGW. The second command gets a list of request routing rules from the Application Gateway stored in the variable named $AppGW.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -10233,6 +10351,8 @@ PS C:\&gt; $Rules = Get-AzureRmApplicationGatewayRequestRoutingRule -Application
 PS C:\&gt; $SKU = Get-AzureRmApplicationGatewaySku -ApplicationGateway $AppGW</dev:code>
 <dev:remarks><maml:para>The first command gets the Application Gateway named ApplicationGateway01 and stores the result in the variable named $AppGW. The second command gets the SKU of an application gateway named ApplicationGateway01 and stores the result in the variable named $SKU.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -10382,6 +10502,8 @@ PS C:\&gt; $SKU = Get-AzureRmApplicationGatewaySku -ApplicationGateway $AppGW</d
 PS C:\&gt; $Cert = Get-AzureRmApplicationGatewaySslCertificate -Name "Cert01" -ApplicationGateway $AppGW</dev:code>
 <dev:remarks><maml:para>The first command gets the Application Gateway named ApplicationGateway01 and stores the result in the variable named $AppGW. The second command gets the SSL certificate named Cert01 from the application gateway stored in the variable named $AppGW. The command stores the certificate in the variable named $Cert.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Get a list of SSL certificates</maml:title>
@@ -10389,6 +10511,8 @@ PS C:\&gt; $Cert = Get-AzureRmApplicationGatewaySslCertificate -Name "Cert01" -A
 PS C:\&gt; $Certs = Get-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $AppGW</dev:code>
 <dev:remarks><maml:para>The first command gets the Application Gateway named ApplicationGateway01 and stores the result in the variable named $AppGW. This second command gets a list of SSL certificates from the application gateway stored in the variable named $AppGW. The command then stores the results in the variable named $Certs.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -10525,6 +10649,8 @@ PS C:\&gt; $Certs = Get-AzureRmApplicationGatewaySslCertificate -ApplicationGate
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -10661,6 +10787,8 @@ PS C:\&gt; $Certs = Get-AzureRmApplicationGatewaySslCertificate -ApplicationGate
 <dev:code>PS C:\&gt;Get-AzureRmApplicationGatewayUrlPathMapConfig -ApplicationGateway Gateway</dev:code>
 <dev:remarks><maml:para>This command gets the URL path map configurations from the backend server located on the application gateway named Gateway.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -10730,6 +10858,8 @@ PS C:\&gt; $FirewallConfig = Get-AzureRmApplicationGatewayWebApplicationFirewall
 </maml:para>
 <maml:para>The second command gets the firewall configuration of the application gateway in $AppGW, and then stores it in $FirewallConfig.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -10805,6 +10935,8 @@ PS C:\&gt; $FirewallConfig = Get-AzureRmApplicationGatewayWebApplicationFirewall
 <dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
 <dev:remarks><maml:para>{{ Add example description here }}
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -10935,6 +11067,8 @@ PS C:\&gt; $FirewallConfig = Get-AzureRmApplicationGatewayWebApplicationFirewall
 <dev:code>PS C:\&gt;Get-AzureRmEffectiveNetworkSecurityGroup -NetworkInterfaceName "MyNetworkInterface" -ResourceGroupName "myResourceGroup"</dev:code>
 <dev:remarks><maml:para>This command gets all of the effective network security rules associated with the network interface named MyNetworkInterface in the resource group named myResourceGroup.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -11068,6 +11202,8 @@ PS C:\&gt; $FirewallConfig = Get-AzureRmApplicationGatewayWebApplicationFirewall
 <dev:code>PS C:\&gt;Get-AzureRmEffectiveRouteTable -NetworkInterfaceName "MyNetworkInterface" -ResourceGroupName "MyResourceGroup"</dev:code>
 <dev:remarks><maml:para>This command gets the effective route table associated with network interface named MyNetworkInterface in the resource group named MyResourceGroup.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -11201,6 +11337,8 @@ PS C:\&gt; $FirewallConfig = Get-AzureRmApplicationGatewayWebApplicationFirewall
 <dev:code>Get-AzureRmExpressRouteCircuit�-Name�$CircuitName�-ResourceGroupName�$rg | Remove-AzureRmExpressRouteCircuit</dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -11397,6 +11535,8 @@ PS C:\&gt; $FirewallConfig = Get-AzureRmApplicationGatewayWebApplicationFirewall
 <dev:code>Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $CircuitName -PeeringType MicrosoftPeering -DevicePath Primary</dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -11553,6 +11693,8 @@ PS C:\&gt; $FirewallConfig = Get-AzureRmApplicationGatewayWebApplicationFirewall
 Get-AzureRmExpressRouteCircuitAuthorization -Circuit $Circuit</dev:code>
 <dev:remarks><maml:para>These commands return information about all the ExpressRoute authorizations associated with an ExpressRoute circuit. The first command uses the Get-AzureRmExpressRouteCircuit cmdlet to create an object reference a circuit named ContosoCircuit; that object reference is stored in the variable $Circuit. The second command then uses that object reference and the Get-AzureRmExpressRouteCircuitAuthorization cmdlet to return information about the authorizations associated with ContosoCircuit.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Get all ExpressRoute authorizations using the Where-Object cmdlet</maml:title>
@@ -11562,6 +11704,8 @@ Get-AzureRmExpressRouteCircuitAuthorization -Circuit $Circuit</dev:code>
 </maml:para>
 <maml:para>`{$_.AuthorizationUseStatus -ne "Available"}`
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -11705,6 +11849,8 @@ Get-AzureRmExpressRouteCircuitAuthorization -Circuit $Circuit</dev:code>
 Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt</dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -11901,6 +12047,8 @@ Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Express
 <dev:code>Get-AzureRmExpressRouteCircuitRouteTable -ResourceGroupName $RG -ExpressRouteCircuitName $CircuitName -DevicePath 'Primary'</dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -12094,6 +12242,8 @@ Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Express
 <dev:code>Get-AzureRmExpressRouteCircuitRouteTableSummary -ResourceGroupName $RG -ExpressRouteCircuitName $CircuitName -DevicePath 'Primary'</dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -12269,6 +12419,8 @@ Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Express
 <dev:code>Get-AzureRmExpressRouteCircuitStats -ResourceGroupName $RG -ExpressRouteCircuitName $CircuitName -PeeringType 'AzurePrivatePeering'</dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -12374,6 +12526,8 @@ Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Express
    Select-Object Name</dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -12586,6 +12740,8 @@ Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Express
 <dev:code>PS C:\&gt;Get-AzureRmLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"</dev:code>
 <dev:remarks><maml:para>This command gets the load balancer named MyLoadBalancer. A load balancer must exist before you can run this cmdlet.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -12728,6 +12884,8 @@ PS C:\&gt; Get-AzureRmLoadBalancerBackendAddressPoolConfig -Name "BackendAddress
 </maml:para>
 <maml:para>The second command gets the associated backend address pool configuration named BackendAddressPool02 for the load balancer in $loadbalancer.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -12873,6 +13031,8 @@ PS C:\&gt; Get-AzureRmLoadBalancerFrontendIpConfig -Name "MyFrontEnd" -LoadBalan
 </maml:para>
 <maml:para>The second command gets the front end IP configuration associated with that load balancer.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -13018,6 +13178,8 @@ PS C:\&gt; Get-AzureRmLoadBalancerFrontendIpConfig -Name "MyFrontEnd" -LoadBalan
 <dev:code>PS C:\&gt;</dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -13151,6 +13313,8 @@ PS C:\&gt; Get-AzureRmLoadBalancerInboundNatRuleConfig -Name "MyInboundNatRule1"
 </maml:para>
 <maml:para>The second command gets the associated NAT rule named MyInboundNatRule1 from the load balancer in $slb.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -13296,6 +13460,8 @@ PS C:\&gt; Get-AzureRmLoadBalancerProbeConfig -Name "MyProbe" -LoadBalancer $slb
 </maml:para>
 <maml:para>The second command gets the associated probe configuration named MyProbe from the load balancer in $slb.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -13444,6 +13610,8 @@ PS C:\&gt; Get-AzureRmLoadBalancerRuleConfig -Name "MyLBrulename" -LoadBalancer 
 </maml:para>
 <maml:para>The second command gets the associated rule configuration named MyLBrulename from the load balancer in $slb.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -13586,6 +13754,8 @@ PS C:\&gt; Get-AzureRmLoadBalancerRuleConfig -Name "MyLBrulename" -LoadBalancer 
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -13953,12 +14123,16 @@ PS C:\&gt; Get-AzureRmLoadBalancerRuleConfig -Name "MyLBrulename" -LoadBalancer 
 <dev:code>PS C:\&gt;Get-AzureRmNetworkInterface</dev:code>
 <dev:remarks><maml:para>This command gets all network interfaces for the current subscription.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Get all network interfaces with a specific provisioning state</maml:title>
 <dev:code>PS C:\&gt;Get-AzureRmNetworkInterface -ResourceGroupName "ResourceGroup1" | Where-Object {$_.ProvisioningState -eq 'Succeeded'}</dev:code>
 <dev:remarks><maml:para>This command gets all network interfaces in the resource group named ResourceGroup1 that has a provisioning state of succeeded.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -14100,6 +14274,8 @@ Get-AzureRmNetworkInterfaceIpConfig -Name ipconfig1 -NetworkInterface $nic1</dev
 <dev:remarks><maml:para>The first command gets an existing network interface called mynic and stores it in the variable $nic1. The second     command gets the IP configuration called ipconfig1 of this network interface.
 
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -14312,6 +14488,8 @@ Get-AzureRmNetworkInterfaceIpConfig -Name ipconfig1 -NetworkInterface $nic1</dev
 <dev:code>Get-AzureRmNetworkSecurityGroup -Name  nsg1 -ResourceGroupName "rg1"</dev:code>
 <dev:remarks><maml:para>This command returns contents of Azure network security group "nsg1" in resource group "rg1"
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -14469,6 +14647,8 @@ Get-AzureRmNetworkInterfaceIpConfig -Name ipconfig1 -NetworkInterface $nic1</dev
     | Get-AzureRmNetworkSecurityRuleConfig -Name AllowInternetOutBound -DefaultRules</dev:code>
 <dev:remarks><maml:para>This command retrieves the default rule named "AllowInternetOutBound" from Azure network security group named "nsg1" in resource group "rg1"
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>2: Retrieving a network security rule config using only the name</maml:title>
@@ -14476,6 +14656,8 @@ Get-AzureRmNetworkInterfaceIpConfig -Name ipconfig1 -NetworkInterface $nic1</dev
     | Get-AzureRmNetworkSecurityRuleConfig -Name "rdp-rule"</dev:code>
 <dev:remarks><maml:para>This command retrieves user defined rule named "rdp-rule" from Azure network security group named "nsg1" in resource group "rg1"
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -14584,6 +14766,8 @@ Tags              :
 ProvisioningState : Succeeded</dev:code>
 <dev:remarks><maml:para>Gets the Network Watcher named NetworkWatcher_westcentralus in the resource group NetworkWatcherRG.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -14758,6 +14942,8 @@ Properties       : {
                    }</dev:code>
 <dev:remarks><maml:para>In this example we get the flow logging status for a Network Security Group. The specified NSG has flow logging enabled, and no retention policy set.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -15018,6 +15204,8 @@ NextHopIpAddress NextHopType RouteTableId
                  Internet    System Route</dev:code>
 <dev:remarks><maml:para>Get's the Next Hop for outbound communication from the primary Network Interface on the specified Virtual Vachine to 204.79.197.200 (www.bing.com)
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -15190,6 +15378,8 @@ Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCa
 </maml:para>
 <maml:para>Note: The Azure Network Watcher extension must be installed on the target virtual machine to create packet captures.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -15354,6 +15544,8 @@ $VM = Get-AzurermVM -ResourceGroupName ContosoResourceGroup -Name VM0
 Get-AzureRmNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id</dev:code>
 <dev:remarks><maml:para>In the above example, we first get the regional Network Watcher, then a VM in the region.  Then we make a Security Group View call on the specified VM.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -15608,6 +15800,8 @@ TopologyResources : [
                     ]</dev:code>
 <dev:remarks><maml:para>In this example we run the Get-AzureRmNetworkWatcherTopology cmdlet on a resource group that contains a VM, Nic, NSG, and public IP.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -15778,6 +15972,8 @@ Start-AzureRmNetworkWatcherResourceTroubleshooting -NetworkWatcher $networkWatch
 Get-AzureRmNetworkWatcherTroubleshootingResult -NetworkWatcher $NW -TargetResourceId $target</dev:code>
 <dev:remarks><maml:para>The above sample starts troubleshooting on a virtual network gateway. The operation may take a few minutes to complete. After troubleshooting has started, a Get-AzureRmNetworkWatcherTroubleshootingResult call is made to the resource to retrieve the result of this call.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -16017,6 +16213,8 @@ Get-AzureRmNetworkWatcherTroubleshootingResult -NetworkWatcher $NW -TargetResour
 <dev:code>$publicIp = Get-AzureRmPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName $publicIp</dev:code>
 <dev:remarks><maml:para>This command gets a public IP address resource with name $publicIPName in the resource group $rgName.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -16163,6 +16361,8 @@ NextHopType       : VnetLocal
 NextHopIpAddress  :</dev:code>
 <dev:remarks><maml:para>This command gets the route table named RouteTable01 by using the Get-AzureRmRouteTable cmdlet. The command passes that table to the current cmdlet by using the pipeline operator. The current cmdlet gets the route named Route07 in the route table named RouteTable01.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -16294,6 +16494,8 @@ NextHopIpAddress  :</dev:code>
 <dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
 <dev:remarks><maml:para>{{ Add example description here }}
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -16372,6 +16574,8 @@ NextHopIpAddress  :</dev:code>
 <dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
 <dev:remarks><maml:para>{{ Add example description here }}
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -16593,6 +16797,8 @@ Routes            : [
 Subnets           : []</dev:code>
 <dev:remarks><maml:para>This command gets the route table named RouteTable01 in the resource group named ResourceGroup11.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -16802,6 +17008,8 @@ Subnets           : []</dev:code>
 <dev:code>Get-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup</dev:code>
 <dev:remarks><maml:para>This command gets the virtual network named MyVirtualNetwork in the resource group TestResourceGroup
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -16941,6 +17149,8 @@ Subnets           : []</dev:code>
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -17037,6 +17247,8 @@ Subnets           : []</dev:code>
 <dev:code>PS C:\&gt; Get-AzureRmVirtualNetworkGatewayAdvertisedRoute -VirtualNetworkGatewayName gatewayName -ResourceGroupName resourceGroupName -Peer 10.0.0.254</dev:code>
 <dev:remarks><maml:para>For the Azure gateway named gatewayName in resource group resourceGroupName, retrives a list of routes being advertised to the BGP peer with IP 10.0.0.254
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2</maml:title>
@@ -17044,6 +17256,8 @@ Subnets           : []</dev:code>
 PS C:\&gt; Get-AzureRmVirtualNetworkGatewayAdvertisedRoute -VirtualNetworkGatewayName gatewayName -ResourceGroupName resourceGroupName -Peer $bgpPeerStatus[0].Neighbor</dev:code>
 <dev:remarks><maml:para>For the Azure gateway named gatewayName in resource group resourceGroupName, retrieves routes being advertised to the first BGP peer on the gateway's list of BGP peers.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -17151,6 +17365,8 @@ State             : Connected</dev:code>
 </maml:para>
 <maml:para>This example output shows one connected BGP peer, with an IP of 10.0.0.254.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -17281,6 +17497,8 @@ State             : Connected</dev:code>
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -17411,6 +17629,8 @@ State             : Connected</dev:code>
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -17515,6 +17735,8 @@ Weight       : 32768</dev:code>
 </maml:para>
 <maml:para>The Azure virtual network gateway in this case has two static routes (10.1.0.0/16 and 10.0.0.254/32), as well as one route learned over BGP (10.0.0.0/16).
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -17663,6 +17885,8 @@ Weight       : 32768</dev:code>
 <dev:code>PS C:\&gt;Get-AzureRmVirtualNetworkPeering -Name "LinkToVNet2" -VirtualNetwork "MyVirtualNetwork" -ResourceGroupName "MyResourceGroup"</dev:code>
 <dev:remarks><maml:para>This command gets a previously created virtual network peering named LinkToVNet2 located in MyVirtualNetwork in the resource group named MyResourceGroup.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -17807,6 +18031,8 @@ Weight       : 32768</dev:code>
     Get-AzureRmVirtualNetworkSubnetConfig -Name frontendSubnet -VirtualNetwork $virtualNetwork</dev:code>
 <dev:remarks><maml:para>This example creates a resource group and a virtual network with a single subnet in that resource group. It then retrieves data about that subnet.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -17977,6 +18203,8 @@ Weight       : 32768</dev:code>
 <dev:code>PS C:\&gt;Get-AzureRmVpnClientPackage -ProcessorArchitecture -VirtualNetworkGatewayName "ContosoVirtualNetworkGateway" -ResourceGroupName "ContosoResourceGroup" -ProcessorArchitecture "Amd64"</dev:code>
 <dev:remarks><maml:para>This command gets information about the AMD64 VPN client packages stored on the virtual network gateway named ContosoVirtualNetworkGateway. To get information about the x86 client packages, set the value of the ProcessorArchitecture parameter to x86.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -18141,12 +18369,16 @@ Weight       : 32768</dev:code>
 <dev:code>PS C:\&gt;Get-AzureRmVpnClientRevokedCertificate -VirtualNetworkGatewayName "ContosoVirtualNetworkGateway" -ResourceGroupName "ContosoResourceGroup"</dev:code>
 <dev:remarks><maml:para>This command gets information about all the client-revocation certificates associated with the virtual network gateway named ContosoVirtualNetworkGateway.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Get information about specific client-revocation certificates</maml:title>
 <dev:code>PS C:\&gt;Get-AzureRmVpnClientRevokedCertificate -VirtualNetworkGatewayName "ContosoVirtualNetwork" -ResourceGroupName "ContosoResourceGroup" -VpnClientRevokedCertificateName "ContosoRevokedClientCertificate"</dev:code>
 <dev:remarks><maml:para>This command is a variation of the command shown in Example 1. In this case, however, the VpnClientRevokedCertificateName parameter is used to limit the returned data to a specific client-revoked certificate: the certificate with the name ContosoRevokedClientCertificate.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -18316,12 +18548,16 @@ Weight       : 32768</dev:code>
 <dev:code>PS C:\&gt;Get-AzureRmVpnClientRootCertificate -VirtualNetworkGatewayName "ContosoVirtualNetwork" -ResourceGroupName "ContosoResourceGroup"</dev:code>
 <dev:remarks><maml:para>This command gets information about all the root certificates assigned to a virtual network gateway named ContosoVirtualNetwork.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Get information about specific root certificates</maml:title>
 <dev:code>PS C:\&gt;Get-AzureRmVpnClientRootCertificate -VirtualNetworkGatewayName "ContosoVirtualNetwork" -ResourceGroupName "ContosoResourceGroup" -VpnClientRootCertificateName "ContosoRootClientCertificate"</dev:code>
 <dev:remarks><maml:para>This command is a variation of the command shown in Example 1. In this case, however, the VpnClientRootCertificateName parameter is included in order to limit the returned data to a specific root certificate: ContosoRootClientCertificate.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -18566,6 +18802,8 @@ Weight       : 32768</dev:code>
 <dev:code>Move-AzureRmExpressRouteCircuit -Name $CircuitName -ResourceGroupName $RG -Location $Location -ServiceKey $ServiceKey</dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -19100,6 +19338,8 @@ PS C:\&gt; $Gateway = New-AzureRmApplicationGateway -Name "AppGateway01" -Resour
 </maml:para>
 <maml:para>The following commands create the application gateway. The first command creates an IP configuration named GatewayIp01 for the subnet created previously. The second command creates a back-end server pool named Pool01 with a list of back-end IP addresses and stores the pool in the $Pool variable. The third command creates the settings for the back-end server pool and stores the settings in the $PoolSetting variable. The forth command creates a front-end port on port 80, names it FrontEndPort01, and stores the port in the $FrontEndPort variable. The fifth command creates a public IP address by using New-AzureRmPublicIpAddress. The sixth command creates a front-end IP configuration using $PublicIp, names it FrontEndPortConfig01, and stores it in the $FrontEndIpConfig variable. The seventh command creates a listener using the previously created $FrontEndIpConfig $FrontEndPort. The eighth command creates a rule for the listener. The ninth command sets the SKU. The tenth command creates the gateway using the objects set by the previous commands.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -19306,6 +19546,8 @@ PS C:\&gt; $Gateway = New-AzureRmApplicationGateway -Name "AppGateway01" -Resour
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -19512,12 +19754,16 @@ PS C:\&gt; $Gateway = New-AzureRmApplicationGateway -Name "AppGateway01" -Resour
 <dev:code>PS C:\&gt;$Pool = New-AzureRmApplicationGatewayBackendAddressPool -Name "Pool01" -BackendFqdns "contoso1.com", "contoso2.com"</dev:code>
 <dev:remarks><maml:para>This command creates a back-end address pool named Pool01 by using the FQDNs of back-end servers, and stores it in the $Pool variable.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Create a back-end address pool by using the IP address of a back-end server</maml:title>
 <dev:code>PS C:\&gt;$Pool = New-AzureRmApplicationGatewayBackendAddressPool -Name "Pool02" -BackendFqdns "10.10.10.10", "10.10.10.11"</dev:code>
 <dev:remarks><maml:para>This command creates a back-end address pool named Pool02 by using the IP addresses of back-end servers, and stores it in the $Pool variable.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -19798,6 +20044,8 @@ PS C:\&gt; $Gateway = New-AzureRmApplicationGateway -Name "AppGateway01" -Resour
 <dev:code>PS C:\&gt;$Setting = New-AzureRmApplicationGatewayBackendHttpSettings -Name "Setting01" -Port 80 -Protocol Http -CookieBasedAffinity Disabled</dev:code>
 <dev:remarks><maml:para>This command creates back-end HTTP settings named Setting01 on port 80, using the HTTP protocol, with cookie-based affinity disabled. The settings are stored in the $Setting variable.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -19888,6 +20136,8 @@ PS C:\&gt; $Gateway = New-AzureRmApplicationGateway -Name "AppGateway01" -Resour
 <dev:code>PS C:\&gt; $connectionDraining = New-AzureRmApplicationGatewayConnectionDraining -Enabled $True -DrainTimeoutInSec 42</dev:code>
 <dev:remarks><maml:para>The command creates a new connection draining configuration with Enabled set to True and DrainTimeoutInSec set to 42 seconds and stores it in $connectionDraining.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -19975,6 +20225,8 @@ PS C:\&gt; $Gateway = New-AzureRmApplicationGateway -Name "AppGateway01" -Resour
 <dev:code>PS C:\&gt; $disabledRuleGroup1 = New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName "REQUEST-942-APPLICATION-ATTACK-SQLI" -Rules 942130,942140</dev:code>
 <dev:remarks><maml:para>The command creates a new disabled rule group configuration for the rule group named "REQUEST-942-APPLICATION-ATTACK-SQLI" with rule 942130 and rule 942140 being disabled. The new disabled rule group configuration is saved in $disabledRuleGroup1.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -20252,6 +20504,8 @@ PS C:\&gt; $Gateway = New-AzureRmApplicationGateway -Name "AppGateway01" -Resour
 PS C:\&gt; $FrontEnd = New-AzureRmApplicationGatewayFrontendIPConfig -Name "FrontEndIP01" -PublicIPAddress $PublicIP</dev:code>
 <dev:remarks><maml:para>The first command creates a public IP resource object and stores it in the $PublicIP variable. The second command uses $PublicIP to create a new front-end IP configuration named FrontEndIP01 and stores it in the $FrontEnd variable.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Create a static private IP as the front-end IP address</maml:title>
@@ -20260,6 +20514,8 @@ PS C:\&gt; $Subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name "Subnet01" -Vir
 PS C:\&gt; $FrontEnd = New-AzureRmApplicationGatewayFrontendIPConfig -Name "FrontendIP02" -Subnet $Subnet -PrivateIPAddress 10.0.1.1</dev:code>
 <dev:remarks><maml:para>The first command gets a virtual network named VNet01 that belongs to the resource group named ResourceGroup01, and stores it in the $VNet variable. The second command gets a subnet configuration named Subnet01 using $VNet from the first command and stores it in the $Subnet variable. The third command creates a front-end IP configuration named FrontEndIP02 using $Subnet from the second command and the private IP address 10.0.1.1, and then stores it in the $FrontEnd variable.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3: Create a dynamic private IP as the front-end IP address</maml:title>
@@ -20268,6 +20524,8 @@ PS C:\&gt; $Subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name "Subnet01" -Vir
 PS C:\&gt; $FrontEnd = New-AzureRmApplicationGatewayFrontendIPConfig -Name "FrontendIP03" -Subnet $Subnet</dev:code>
 <dev:remarks><maml:para>The first command gets a virtual network named VNet01 that belongs to the resource group named ResourceGroup01, and stores it in the $VNet variable. The second command gets a subnet configuration named Subnet01 using $VNet from the first command and stores it in the $Subnet variable. The third command creates a front-end IP configuration named FrontEndIP03 using $Subnet from the second command, and stores it in the $FrontEnd variable.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -20422,6 +20680,8 @@ PS C:\&gt; $FrontEnd = New-AzureRmApplicationGatewayFrontendIPConfig -Name "Fron
 <dev:code>PS C:\&gt;$FrontEndPort = New-AzureRmApplicationGatewayFrontendPort -Name "FrontEndPort01" -Port 80</dev:code>
 <dev:remarks><maml:para>This command creates a front-end port named FrontEndPort01 on port 80 and stores the result in the variable named $FrontEndPort.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -20790,12 +21050,16 @@ PS C:\&gt; $FrontEnd = New-AzureRmApplicationGatewayFrontendIPConfig -Name "Fron
 <dev:code>PS C:\&gt;$Listener = New-AzureRmApplicationGatewayHttpListener -Name "Listener01" -Protocol "Http" -FrontendIpConfiguration $FIp01 -FrontendPort $FP01</dev:code>
 <dev:remarks><maml:para>This command creates an HTTP listener named Listener01 and stores the result in the variable named $Listener.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Create an HTTP listener with SSL</maml:title>
 <dev:code>PS C:\&gt;$Listener = New-AzureRmApplicationGatewayHttpListener -Name "Listener01" -Protocol "Https" -FrontendIpConfiguration $FIp01 -FrontendPort $FP01 -SslCertificate $SSLCert01</dev:code>
 <dev:remarks><maml:para>This command creates an HTTP listener that uses SSL offload and provides the SSL certificate in the $SSLCert01 variable. The command stores the result in the variable named $Listener.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -21017,6 +21281,8 @@ PS C:\ $GatewayIpConfig = New-AzureRmApplicationGatewayIPConfiguration -Name "Ap
 </maml:para>
 <maml:para>The third command creates the IP configuration using $Subnet.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -21355,6 +21621,8 @@ PS C:\&gt; Add-AzureRmApplicationGatewayUrlPathMapConfig -ApplicationGateway $Ga
 </maml:para>
 <maml:para>The fifth command uses Add-AzureRmApplicationGatewayUrlPathMapConfig to add the configuration settings and the new path rule contained within those settings to ContosoApplicationGateway.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -21602,6 +21870,8 @@ PS C:\&gt; Add-AzureRmApplicationGatewayUrlPathMapConfig -ApplicationGateway $Ga
 <dev:code>PS C:\&gt;New-AzureRmApplicationGatewayProbeConfig -Name "Probe03" -Protocol Http -HostName "contoso.com" -Path "/path/custompath.htm" -Interval 30 -Timeout 120 -UnhealthyThreshold 8</dev:code>
 <dev:remarks><maml:para>This command creates a health probe named Probe03, with HTTP protocol, a 30 second interval, timeout of 120 seconds, and an unhealthy threshold of 8 retries.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -21955,6 +22225,8 @@ PS C:\&gt; Add-AzureRmApplicationGatewayUrlPathMapConfig -ApplicationGateway $Ga
 <dev:code>PS C:\&gt;$Rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name "Rule01" -RuleType Basic -BackendHttpSettings $Setting -HttpListener $Listener -BackendAddressPool $Pool</dev:code>
 <dev:remarks><maml:para>This command creates a basic request routing rule named Rule01 and stores the result in the variable named $Rule.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -22159,6 +22431,8 @@ PS C:\&gt; Add-AzureRmApplicationGatewayUrlPathMapConfig -ApplicationGateway $Ga
 <dev:code>PS C:\&gt;$SKU = New-AzureRmApplicationGatewaySku -Name "Standard_Small" -Tier "Standard" -Capacity 2</dev:code>
 <dev:remarks><maml:para>This command creates a SKU named Standard_Small for an Azure application gateway and stores the result in the variable named $SKU.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -22325,6 +22599,8 @@ PS C:\&gt; Add-AzureRmApplicationGatewayUrlPathMapConfig -ApplicationGateway $Ga
 <dev:code>PS C:\&gt;$Cert = New-AzureRmApplicationGatewaySslCertificate -Name "Cert01" -CertificateFile "D:\cert01.pfx" -Password "Password01"</dev:code>
 <dev:remarks><maml:para>This command creates a SSL certificate named Cert01 for the default application gateway and stores the result in the variable named $Cert.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -22507,6 +22783,8 @@ PS C:\&gt; Add-AzureRmApplicationGatewayUrlPathMapConfig -ApplicationGateway $Ga
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -22767,6 +23045,8 @@ PS C:\&gt; Add-AzureRmApplicationGatewayUrlPathMapConfig -ApplicationGateway $Ga
 <dev:code>PS C:\&gt;New-AzureRmApplicationGatewayUrlPathMapConfig -Name $UrlPathMapName -PathRules $VideoPathRule, $ImagePathRule -DefaultBackendAddressPool $Pool -DefaultBackendHttpSettings $PoolSetting02</dev:code>
 <dev:remarks><maml:para>This command creates an array of URL path mappings to a backend server pool.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -22961,6 +23241,8 @@ PS C:\&gt; $disabledRuleGroup2 = New-AzureRmApplicationGatewayFirewallDisabledRu
 PS C:\&gt; $firewallConfig = New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode "Prevention" -RuleSetType "OWASP" -RuleSetVersion "3.0" -DisabledRuleGroups $disabledRuleGroup1,$disabledRuleGroup2</dev:code>
 <dev:remarks><maml:para>The first command creates a new disabled rule group configuration for the rule group named "REQUEST-942-APPLICATION-ATTACK-SQLI" with rule 942130 and rule 942140 being disabled. The second command creates another disabled rule group configuration for a rule group named "REQUEST-921-PROTOCOL-ATTACK". No rules are specifically passed and thus all rules of the rule group will be disabled. The last command then creates a WAF configuration with firewall rules disabled as configured in $disabledRuleGroup1 and $disabledRuleGroup2. The new WAF configuration is stored in the $firewallConfig variable.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -23338,6 +23620,8 @@ PS C:\&gt; $firewallConfig = New-AzureRmApplicationGatewayWebApplicationFirewall
 New-AzureRmExpressRouteCircuit @parameters</dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -23478,6 +23762,8 @@ New-AzureRmExpressRouteCircuit @parameters</dev:code>
 </maml:para>
 <maml:para>For more information, see the documentation for the New-AzureRmExpressRouteCircuit cmdlet.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -24013,6 +24299,8 @@ $parameters = @{
 New-AzureRmExpressRouteCircuit @parameters</dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -24364,6 +24652,8 @@ PS C:\&gt; Get-AzureRmLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "My
 </maml:para>
 <maml:para>Note that this example only shows how to create a load balancer. You must also configure it using the Add-AzureRmNetworkInterfaceIpConfig cmdlet to assign the NICs to different virtual machines.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -24488,6 +24778,8 @@ PS C:\&gt; Get-AzureRmLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "My
 <dev:code>PS C:\&gt;New-AzureRmLoadBalancerBackendAddressPoolConfig -Name "BackendAddressPool02"</dev:code>
 <dev:remarks><maml:para>This command creates a backend address pool configuration named BackendAddressPool02 for a load balancer.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -24840,6 +25132,8 @@ PS C:\&gt; New-AzureRmLoadBalancerFrontendIpConfig -Name "FrontendIpConfig01" -P
 </maml:para>
 <maml:para>The second command creates a front-end IP configuration named FrontendIpConfig01 using the public IP address in $publicip.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -25154,6 +25448,8 @@ PS C:\&gt; New-AzureRmLoadBalancerFrontendIpConfig -Name "FrontendIpConfig01" -P
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -25496,6 +25792,8 @@ PS C:\&gt; New-AzureRmLoadBalancerInboundNatRuleConfig -Name "MyInboundNatRule" 
 </maml:para>
 <maml:para>The third command creates an inbound NAT rule configuration named MyInboundNatRule using the front-end object in $frontend. The TCP protocol is specified and the front-end port is 3389, the same as the backend port in this case. The FrontendIpConfiguration , Procotol , FrontendPort , and BackendPort parameters are all required to create an inbound NAT rule configuration.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -25716,6 +26014,8 @@ PS C:\&gt; New-AzureRmLoadBalancerInboundNatRuleConfig -Name "MyInboundNatRule" 
 <dev:code>PS C:\&gt;New-AzureRmLoadBalancerProbeConfig -Name "MyProbe" -Protocol "http" -Port 80 -IntervalInSeconds 15 -ProbeCount 15</dev:code>
 <dev:remarks><maml:para>This command creates a probe configuration named MyProbe using the HTTP protocol. The new probe will connect to a load-balanced service on port 80.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -26178,6 +26478,8 @@ PS C:\&gt; New-AzureRmLoadBalancerRuleConfig -Name "MyLBrule" -FrontendIPConfigu
     -LoadDistribution SourceIP</dev:code>
 <dev:remarks><maml:para>The first three commands set up a public IP, a front end, and a probe for the rule configuration in the forth command. The forth command creates a new rule called MyLBrule with certain specifications.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -26497,6 +26799,8 @@ PS C:\&gt; New-AzureRmLoadBalancerRuleConfig -Name "MyLBrule" -FrontendIPConfigu
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -27492,6 +27796,8 @@ PS C:\&gt; New-AzureRmLoadBalancerRuleConfig -Name "MyLBrule" -FrontendIPConfigu
 <dev:code>PS C:\&gt;New-AzureRmNetworkInterface -Name "NetworkInterface1" -ResourceGroupName "ResourceGroup1" -Location "centralus" -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup1/providers/Microsoft.Network/virtualNetworks/VirtualNetwork1/subnets/Subnet1" -IpConfigurationName "IPConfiguration1" -DnsServer "8.8.8.8", "8.8.4.4"</dev:code>
 <dev:remarks><maml:para>This command creates a network interface named NetworkInterface001 with a dynamically assigned private IP address from Subnet1 in the virtual network named VirtualNetwork1. The command also assigns two DNS servers to the network interface. The IPConfiguration child resource will be created automatically using the name IPConfiguration1.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Create an Azure network interface using an IP configuration object</maml:title>
@@ -27503,6 +27809,8 @@ PS C:\&gt; New-AzureRmNetworkInterface -Name "NetworkInterface1" -ResourceGroupN
 </maml:para>
 <maml:para>The second command creates a network interface named NetworkInterface1 that uses the network interface IP configuration stored in the variable named $IPconfig.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -27952,6 +28260,8 @@ $IPConfig1 = New-AzureRmNetworkInterfaceIpConfig -Name "IPConfig-1" -Subnet $Sub
     -IpConfiguration $IpConfig1</dev:code>
 <dev:remarks><maml:para>The first two commands get a virtual network called myvnet and a subnet called mysubnet respectively that were     previously created. These are stored in $vnet and $Subnet respectively. The third command gets a previously     created public IP address called PIP1. The forth command creates a new IP configuration called "IPConfig-1" as the     primary IP configuration with a public IP address associated with it.     The last command then creates a network interface called mynic1 using this IP configuration.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>2: Create an IP configuration with a private IP address</maml:title>
@@ -27965,6 +28275,8 @@ $nic = New-AzureRmNetworkInterface -Name mynic1 -ResourceGroupName myrg -Locatio
     $IpConfig2</dev:code>
 <dev:remarks><maml:para>The first two commands get a virtual network called myvnet and a subnet called mysubnet respectively that were     previously created. These are stored in $vnet and $Subnet respectively.  The third command creates a new IP     configuration called "IPConfig-2" with a private IP address 10.0.0.5 associated with it.     The last command then creates a network interface called mynic1 using this IP configuration.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -28212,6 +28524,8 @@ $nic = New-AzureRmNetworkInterface -Name mynic1 -ResourceGroupName myrg -Locatio
 <dev:code>New-AzureRmNetworkSecurityGroup -Name "nsg1" -ResourceGroupName "rg1"  -Location  "westus"</dev:code>
 <dev:remarks><maml:para>This command ceates a new Azure network security group named "nsg1" in resource group "rg1" in location "westus".
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>2: Create a detailed network security group</maml:title>
@@ -28228,6 +28542,8 @@ $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName TestRG -Location westu
 <dev:remarks><maml:para>Step:1 Create a security rule allowing access from the Internet to port 3389. Step:2 Create a security rule allowing access from the Internet to port 80. Step:3 Add the rules created above to a new NSG named NSG-FrontEnd.
 
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -28593,6 +28909,8 @@ $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName TestRG -Location westu
     Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389</dev:code>
 <dev:remarks><maml:para>This command creates a security rule allowing access from the Internet to port 3389
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>2: Create a network security rule that allows HTTP</maml:title>
@@ -28601,6 +28919,8 @@ $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName TestRG -Location westu
     Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 80</dev:code>
 <dev:remarks><maml:para>This command creates a security rule allowing access from the Internet to port 80
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -28769,6 +29089,8 @@ Tags              :
 ProvisioningState : Succeeded</dev:code>
 <dev:remarks><maml:para>This example creates a new Network Watcher inside a newly created Resource Group. Note that only one Network Watcher can be created per region per subscription.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -29205,6 +29527,8 @@ New-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVi
 </maml:para>
 <maml:para>Note: The Azure Network Watcher extension must be installed on the target virtual machine to create packet captures.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -29382,6 +29706,8 @@ New-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVi
 </maml:para>
 <maml:para>Note: The Azure Network Watcher extension must be installed on the target virtual machine to create packet captures.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -29727,6 +30053,8 @@ New-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVi
 <dev:remarks><maml:para>This command creates a new public IP address resource.A DNS record is created for $dnsPrefix.$location.cloudapp.azure.com pointing to the public IP address of this resource. A public IP address is immediately allocated to this resource as the -AllocationMethod is specified as 'Static'. If it is specified as 'Dynamic', a public IP address gets allocated only when you start (or create) the associated resource (like a VM or load balancer).
 
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>2: Create a public IP address with a reverse FQDN</maml:title>
@@ -29735,6 +30063,8 @@ New-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVi
     $customFqdn</dev:code>
 <dev:remarks><maml:para>This command creates a new public IP address resource.     With the -ReverseFqdn parameter, Azure creates a DNS PTR record (reverse-lookup) for the      public IP address allocated to this resource, pointing to the $customFqdn specified in      the command. As a pre-requisite, the $customFqdn (say webapp.contoso.com) should have a      DNS CNAME record (forward-lookup) pointing to $dnsPrefix.$location.cloudapp.azure.com.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -29924,6 +30254,8 @@ NextHopIpAddress  :</dev:code>
 </maml:para>
 <maml:para>The second command displays the properties of the route.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -30143,6 +30475,8 @@ NextHopIpAddress  :</dev:code>
 <dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
 <dev:remarks><maml:para>{{ Add example description here }}
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -30344,6 +30678,8 @@ NextHopIpAddress  :</dev:code>
 <dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
 <dev:remarks><maml:para>{{ Add example description here }}
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -30615,6 +30951,8 @@ Subnets           : []</dev:code>
 </maml:para>
 <maml:para>The second command creates a route table named RouteTable01, and adds the route stored in $Route to the new table. The command specifies the resource group to which the table belongs and the location for the table.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -30904,6 +31242,8 @@ Subnets           : []</dev:code>
     -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet</dev:code>
 <dev:remarks><maml:para>This example creates a virtual network with two subnets. First, a new resource group is      created in the centralus region. Then, the example creates in-memory representations of      two subnets. The New-AzureRmVirtualNetworkSubnetConfig cmdlet will not create any subnet      on the server side. There is one subnet called frontendSubnet and one subnet called      backendSubnet. The New-AzureRmVirtualNetwork cmdlet then creates a virtual network using      the CIDR 10.0.0.0/16 as the address prefix and two subnets.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>2:  Create a virtual network with DNS settings</maml:title>
@@ -30917,6 +31257,8 @@ Subnets           : []</dev:code>
     -DnsServer 10.0.1.5,10.0.1.6</dev:code>
 <dev:remarks><maml:para>This example create a virtual network with two subnets and two DNS servers. The effect of      specifying the DNS servers on the virtual network is that the NICs/VMs that are deployed      into this virtual network inherit these DNS servers as defaults. These defaults can be      overwritten per NIC through a NIC-level setting. If no DNS servers are specified on a      VNET and no DNS servers on the NICs, then the default Azure DNS servers are used for DNS      resolution.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>3: Create a virtual network with a subnet referencing a network security group</maml:title>
@@ -30934,6 +31276,8 @@ Subnets           : []</dev:code>
     -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet</dev:code>
 <dev:remarks><maml:para>This example creates a virtual network with subnets that reference a network security      group. First, the example creates a resource group as a container for the resources that      will be created. Then, a network security group is created that allows inbound RDP      access, but otherwise enforces the default network security group rules. The      New-AzureRmVirtualNetworkSubnetConfig cmdlet then creates in-memory representations of      two subnets that both reference the network security group that was created. The      New-AzureRmVirtualNetwork command then creates the virtual network.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -31375,6 +31719,8 @@ Subnets           : []</dev:code>
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -31953,6 +32299,8 @@ Subnets           : []</dev:code>
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -32216,6 +32564,8 @@ Subnets           : []</dev:code>
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -32481,6 +32831,8 @@ Subnets           : []</dev:code>
     -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet</dev:code>
 <dev:remarks><maml:para>This example creates two new subnet configurations using the      New-AzureRmVirtualSubnetConfig cmdlet, and then uses them to create a virtual network.      The New-AzureRmVirtualSubnetConfig template only creates an in-memory representation of      the subnet. In this example, the frontendSubnet has CIDR 10.0.1.0/24 and references a      network security group that allows RDP access. The backendSubnet has CIDR 10.0.2.0/24 and      references the same network security group.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -32653,6 +33005,8 @@ Subnets           : []</dev:code>
 <dev:code>PS C:\&gt;$Certificate = New-AzureRmVpnClientRevokedCertificate -Name "ContosoClientRevokedCertificate" -Thumbprint "E3A38EBA60CAA1C162785A2E1C44A15AD450199C3"</dev:code>
 <dev:remarks><maml:para>This command creates a new client-revoked certificate and stores the certificate object in a variable named $Certificate. This variable can then be used by the New-AzureRmVirtualNetworkGateway cmdlet to add the certificate to a new virtual network gateway.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -32830,6 +33184,8 @@ PS C:\&gt; $Certificate = New-AzureRmVpnClientRootCertificate -PublicCertData $C
 </maml:para>
 <maml:para>The third command uses the New-AzureRmVpnClientRootCertificate cmdlet to create the certificate, storing the created object in a variable named $Certificate.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -33043,6 +33399,8 @@ PS C:\&gt; $Certificate = New-AzureRmVpnClientRootCertificate -PublicCertData $C
 <dev:code>PS C:\&gt;Remove-AzureRmApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"</dev:code>
 <dev:remarks><maml:para>This command removes the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -33216,6 +33574,8 @@ PS C:\&gt; $Certificate = New-AzureRmVpnClientRootCertificate -PublicCertData $C
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -33401,6 +33761,8 @@ PS C:\&gt; Remove-AzureRmApplicationGatewayBackendAddressPool -ApplicationGatewa
 </maml:para>
 <maml:para>The second command removes the back-end address pool named BackEndPool02 from the application gateway.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -33552,6 +33914,8 @@ PS C:\&gt; Remove-AzureRmApplicationGatewayBackendHttpSettings -ApplicationGatew
 </maml:para>
 <maml:para>The second command removes the back-end HTTP setting named BackEndSetting02 from the application gateway stored in $AppGw.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -33626,6 +33990,8 @@ PS C:\&gt; $Settings  = Get-AzureRmApplicationGatewayBackendHttpSettings -Name "
 PS C:\&gt; Remove-AzureRmApplicationGatewayConnectionDraining -BackendHttpSettings $Settings</dev:code>
 <dev:remarks><maml:para>The first command gets the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01 and stores it in the $AppGw variable. The second command gets the back-end HTTP settings named Settings01 for $AppGw and stores the settings in the $Settings variable. The last command removes the connection draining configuration of the back-end HTTP settings stored in $Settings.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -33780,6 +34146,8 @@ PS C:\&gt; Remove-AzureRmApplicationGatewayFrontendIPConfig -ApplicationGateway 
 </maml:para>
 <maml:para>The second command removes the front-end IP configuration named FrontEndIP02 from the application gateway stored in $AppGw.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -33931,6 +34299,8 @@ PS C:\&gt; Remove-AzureRmApplicationGatewayFrontendPort -ApplicationGateway $App
 </maml:para>
 <maml:para>The second command removes the port named FrontEndPort02 from the application gateway.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -34082,6 +34452,8 @@ PS C:\&gt; Remove-AzureRmApplicationGatewayHttpListener -ApplicationGateway $App
 </maml:para>
 <maml:para>The second command removes the HTTP listener named Listener02 from the application gateway stored in $AppGw.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -34233,6 +34605,8 @@ PS C:\&gt; Remove-AzureRmApplicationGatewayIPConfiguration -ApplicationGateway $
 </maml:para>
 <maml:para>The second command removes the IP configuration named Subnet02 from the application gateway stored in $AppGw.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -34375,6 +34749,8 @@ PS C:\&gt; Remove-AzureRmApplicationGatewayIPConfiguration -ApplicationGateway $
 <dev:code>PS C:\&gt;$Gateway = Remove-AzureRmApplicationGatewayProbeConfig -ApplicationGateway Gateway -Name "Probe04"</dev:code>
 <dev:remarks><maml:para>This command removes the health probe named Probe04 from the application gateway named Gateway.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -34529,6 +34905,8 @@ PS C:\&gt; Remove-AzureRmApplicationGatewayRequestRoutingRule -ApplicationGatewa
 </maml:para>
 <maml:para>The second command removes the request routing rule named Rule02 from the application gateway stored in $AppGw.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -34680,6 +35058,8 @@ PS C:\&gt; Remove-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $A
 </maml:para>
 <maml:para>The second command removes the SSL certificate named Cert02 from the application gateway stored in the $AppGW variable.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -34804,6 +35184,8 @@ PS C:\&gt; Remove-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $A
 PS C:\&gt; $AppGW = Remove-AzureRmApplicationGatewaySslPolicy -ApplicationGateway $AppGW</dev:code>
 <dev:remarks><maml:para>This command removes the SSL policy from the application gateway named ApplicationGateway01.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -34943,6 +35325,8 @@ PS C:\&gt; $AppGW = Remove-AzureRmApplicationGatewaySslPolicy -ApplicationGatewa
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -35153,12 +35537,16 @@ PS C:\&gt; $AppGW = Remove-AzureRmApplicationGatewaySslPolicy -ApplicationGatewa
 <dev:code>Remove-AzureRmExpressRouteCircuit -Name�$CircuitName�-ResourceGroupName�$rg</dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Delete an ExpressRoute circuit using the pipeline</maml:title>
 <dev:code>Get-AzureRmExpressRouteCircuit�-Name�$CircuitName�-ResourceGroupName�$rg | Remove-AzureRmExpressRouteCircuit</dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -35319,6 +35707,8 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $Circuit</dev:code>
 </maml:para>
 <maml:para>The third command uses the Set-AzureRmExpressRouteCircuit cmdlet to confirm the removal of the ExpressRoute circuit stored in the $Circuit variable.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -35466,6 +35856,8 @@ Remove-AzureRmExpressRouteCircuitPeeringConfig�-Name�'AzurePrivatePeering' -
 Set-AzureRmExpressRouteCircuit�-ExpressRouteCircuit�$circuit</dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -35676,6 +36068,8 @@ Set-AzureRmExpressRouteCircuit�-ExpressRouteCircuit�$circuit</dev:code>
 <dev:code>PS C:\&gt;Remove-AzureRmLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"</dev:code>
 <dev:remarks><maml:para>This command deletes a load balancer named MyLoadBalancer in the resource group named MyResourceGroup.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -35815,6 +36209,8 @@ Set-AzureRmExpressRouteCircuit�-ExpressRouteCircuit�$circuit</dev:code>
 <dev:code>PS C:\&gt;Get-AzureRmLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup" | Remove-AzureRmLoadBalancerBackendAddressPoolConfig -Name "BackendAddressPool02" | Set-AzureRmLoadBalancer</dev:code>
 <dev:remarks><maml:para>This command gets the load balancer named MyLoadBalancer and passes it to Remove-AzureRmLoadBalancerBackendAddressPoolConfig , which removes the BackendAddressPool02 configuration from MyLoadBalancer. Finally, the Set-AzureRmLoadBalancer cmdlet updates MyLoadBalancer. Note that a backend address pool configuration must exist before you can delete it.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -35960,6 +36356,8 @@ PS C:&gt; Remove-AzureRmLoadBalancerFrontendIpConfig -Name "frontendName" -LoadB
 </maml:para>
 <maml:para>The second command removes the associated frontend IP configuration from the load balancer in $loadbalancer.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -36105,6 +36503,8 @@ PS C:&gt; Remove-AzureRmLoadBalancerFrontendIpConfig -Name "frontendName" -LoadB
 <dev:code>PS C:\&gt;</dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -36237,6 +36637,8 @@ PS C:&gt; Remove-AzureRmLoadBalancerFrontendIpConfig -Name "frontendName" -LoadB
  Remove-AzureRmLoadBalancerInboundNatRuleConfig -Name "myinboundnatrule" -LoadBalancer $loadbalancer</dev:code>
 <dev:remarks><maml:para>The first command loads an already existing load balancer called "mylb" and stores it in the variable $load     balancer. The second command removes the inbound NAT rule associated with this load balancer.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -36382,6 +36784,8 @@ PS C:&gt; Remove-AzureRmLoadBalancerProbeConfig -Name "MyProbe" -LoadBalancer $l
 </maml:para>
 <maml:para>The second command deletes the configuration named MyProbe from the load balancer in $loadbalancer.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -36530,6 +36934,8 @@ PS C:&gt; Remove-AzureRmLoadBalancerRuleConfig -Name "MyLBruleName" -LoadBalance
 </maml:para>
 <maml:para>The second command removes the rule configuration named MyLBruleName from the load balancer in $loadbalancer.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -36743,6 +37149,8 @@ PS C:&gt; Remove-AzureRmLoadBalancerRuleConfig -Name "MyLBruleName" -LoadBalance
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -36950,12 +37358,16 @@ PS C:&gt; Remove-AzureRmLoadBalancerRuleConfig -Name "MyLBruleName" -LoadBalance
 <dev:code>PS C:\&gt;Remove-AzureRmNetworkInterface -Name "NetworkInterface1" -ResourceGroup "ResourceGroup1"</dev:code>
 <dev:remarks><maml:para>This command removes the network interface NetworkInterface1 in resource group ResourceGroup1. Because the Force parameter is not used, the user will be prompted to confirm this action.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Remove a network interface</maml:title>
 <dev:code>PS C:\&gt;Get-AzureRmNetworkInterface -ResourceGroupName "ResourceGroup1" | Remove-AzureRmNetworkInterface -Force</dev:code>
 <dev:remarks><maml:para>This command removes all network interfaces in resource group ResourceGroup1. Because the Force parameter is used, the user is not prompted for confirmation.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -37097,6 +37509,8 @@ PS C:&gt; Remove-AzureRmLoadBalancerRuleConfig -Name "MyLBruleName" -LoadBalance
 Remove-AzureRmNetworkInterfaceIpConfig -Name IPConfig-1 -NetworkInterface $nic</dev:code>
 <dev:remarks><maml:para>The first command gets a network interface called mynic and stores it in the variable $nic. The second command     removes the IP configuration called IPConfig-1 associated with this network interface.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -37307,6 +37721,8 @@ Remove-AzureRmNetworkInterfaceIpConfig -Name IPConfig-1 -NetworkInterface $nic</
 <dev:code>PS C:\&gt;Remove-AzureRmNetworkSecurityGroup -Name "NSG-FrontEnd" -ResourceGroupName "TestRG"</dev:code>
 <dev:remarks><maml:para>This command removes the security group named NSG-FrontEnd in the resource group named TestRG.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -37452,6 +37868,8 @@ PS C:\&gt; Remove-AzureRmNetworkSecurityRuleConfig -Name "rdp-rule" -NetworkSecu
 </maml:para>
 <maml:para>The third command removes the network security rule configuration named rdp-rule from the network security group in $nsg.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -37598,6 +38016,8 @@ New-AzureRmNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup Netw
 Remove-AzureRmNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup NetworkWatcherRG</dev:code>
 <dev:remarks><maml:para>This example creates a Network Watcher in a resource group and then immediately deletes it. Note that only one Network Watcher can be created per region per subscription. To suppress the prompt when deleting the virtual network, use the -Force flag.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -37834,6 +38254,8 @@ Remove-AzureRmNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup N
 <dev:code>Remove-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"</dev:code>
 <dev:remarks><maml:para>In this example we remove an existing packet capture session named "PacketCaptureTest".
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -38068,6 +38490,8 @@ Remove-AzureRmNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup N
 <dev:code>Remove-AzureRmPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName</dev:code>
 <dev:remarks><maml:para>This command removes the public IP address resource named $publicIpName in the resource group $rgName.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -38228,6 +38652,8 @@ Routes            : [
 Subnets           : []</dev:code>
 <dev:remarks><maml:para>This command gets the route table named RouteTable01 by using the Get-AzureRmRouteTable cmdlet. The command passes that table to the current cmdlet by using the pipeline operator. The current cmdlet remove the route named Route02, and the passes the result to the Set-AzureRmRouteTable cmdlet, which updates the table to reflect your changes. The table no longer contains the route named Route02.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -38386,6 +38812,8 @@ Subnets           : []</dev:code>
 <dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
 <dev:remarks><maml:para>{{ Add example description here }}
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -38515,6 +38943,8 @@ Subnets           : []</dev:code>
 <dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
 <dev:remarks><maml:para>{{ Add example description here }}
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -38716,6 +39146,8 @@ Are you sure you want to remove resource 'RouteTable01'
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y</dev:code>
 <dev:remarks><maml:para>This command removes the route table named RouteTable01 in the resource group named ResourceGroup11. The cmdlet prompts you for confirmation before it removes the table.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -38932,6 +39364,8 @@ New-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResource
 Remove-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup</dev:code>
 <dev:remarks><maml:para>This example creates a virtual network in a resource group and then immediately deletes it. To suppress the prompt when deleting the virtual network, use the -Force flag.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -39139,6 +39573,8 @@ Remove-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResou
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -39337,6 +39773,8 @@ Remove-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResou
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -39475,6 +39913,8 @@ PS C:\&gt; Remove-AzureRmVirtualNetworkGatewayDefaultSite -VirtualNetworknGatewa
 </maml:para>
 <maml:para>The second command then uses Remove-AzureRmVirtualNetworkGatewayDefaultSite to remove the default site assigned to that gateway.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -39645,6 +40085,8 @@ PS C:\&gt; Remove-AzureRmVirtualNetworkGatewayDefaultSite -VirtualNetworknGatewa
 <dev:code>PS C:\&gt;</dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -39861,6 +40303,8 @@ PS C:\&gt; Remove-AzureRmVirtualNetworkGatewayDefaultSite -VirtualNetworknGatewa
 <dev:code>PS C:\&gt;Remove-AzureRmVirtualNetworkPeering -Name "LinkToVNet2" -VirtualNetworkName "MyVirtualNetwork" -ResourceGroupName "MyResourceGroup"</dev:code>
 <dev:remarks><maml:para>This command removes the virtual network peering named LinkToVNet2 located in MyVirtualNetwork in the resource group named MyResourceGroup.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -40004,6 +40448,8 @@ Remove-AzureRmVirtualNetworkSubnetConfig -Name backendSubnet -VirtualNetwork
     $virtualNetwork | Set-AzureRmVirtualNetwork</dev:code>
 <dev:remarks><maml:para>This example creates a resource group and a virtual network with two subnets. It then      uses the Remove-AzureRmVirtualNetworkSubnetConfig command to remove the backend subnet      from the in-memory representation of the virtual network. Set-AzureRmVirtualNetwork is      then called to modify the virtual network on the server side.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -40198,6 +40644,8 @@ Remove-AzureRmVirtualNetworkSubnetConfig -Name backendSubnet -VirtualNetwork
 <dev:code>PS C:\&gt;Remove-AzureRmVpnClientRevokedCertificate -VirtualNetworkGatewayName "ContosoVirtualNetwork" -ResourceGroupName"ContosoResourceGroup" -VpnClientRevokedCertificateName "ContosoRevokedClientCertificate"-Thumbprint "E3A38EBA60CAA1C162785A2E1C44A15AD450199C3"</dev:code>
 <dev:remarks><maml:para>This command removes a client-revocation certificate from a virtual network gateway named ContosoVirtualNetwork. In order to remove a client-revocation certificate, you must specify both the certificate name and the certificate thumbprint.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -40399,6 +40847,8 @@ PS C:\&gt; Remove-AzureRmVpnClientRootCertificate -PublicCertData $CertificateTe
 </maml:para>
 <maml:para>The third command uses the information stored in the $CertificateText variable along with the Remove-AzureRmVpnClientRootCertificate cmdlet to remove the certificate from the gateway.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -40538,6 +40988,8 @@ PS C:\&gt; Remove-AzureRmVpnClientRootCertificate -PublicCertData $CertificateTe
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -40752,6 +41204,8 @@ PS C:\&gt; Remove-AzureRmVpnClientRootCertificate -PublicCertData $CertificateTe
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -40919,6 +41373,8 @@ PS C:\&gt; Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $Gateway -
 </maml:para>
 <maml:para>The second command then uses the Resize-AzureRmVirtualNetworkGateway cmdlet to set the GatewaySku property to Basic.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -41040,6 +41496,8 @@ PS C:\&gt; Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $Gateway -
 <dev:code>PS C:\&gt;$UpdatedAppGw = Set-AzureRmApplicationGateway -ApplicationGateway $AppGw</dev:code>
 <dev:remarks><maml:para>This command updates the application gateway with settings in the $AppGw variable and stores the updated gateway in the $UpdatedAppGw variable.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -41237,6 +41695,8 @@ PS C:\&gt; Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $Gateway -
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -41464,6 +41924,8 @@ PS C:\&gt; $AppGw = Set-AzureRmApplicationGatewayBackendAddressPool -Application
 </maml:para>
 <maml:para>The second command updates the back-end address pool of the application gateway in $AppGw by using FQDNs.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Setting a back-end address pool by using backend server IP addresses</maml:title>
@@ -41473,6 +41935,8 @@ PS C:\&gt; $AppGw = Set-AzureRmApplicationGatewayBackendAddressPool -Application
 </maml:para>
 <maml:para>The second command updates the back-end address pool of the application gateway in $AppGw by using IP addresses.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3: Setting a back-end address pool by using the ID of the backend server?s IP address</maml:title>
@@ -41488,6 +41952,8 @@ PS C:\&gt; $AppGw = Set-AzureRmApplicationGatewayBackendAddressPool -Application
 </maml:para>
 <maml:para>The forth command uses the back-end IP configuration IDs from $Nic01 and $Nic02 to update the back-end address pool of the application gateway in $AppGw.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -41789,6 +42255,8 @@ PS C:\&gt; $AppGw = Set-AzureRmApplicationGatewayBackendHttpSettings -Applicatio
 </maml:para>
 <maml:para>The second command updates the HTTP settings of the application gateway in the $AppGw variable to use port 88, the HTTP protocol and enables cookie-based affinity.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -41899,6 +42367,8 @@ PS C:\&gt; $Settings  = Get-AzureRmApplicationGatewayBackendHttpSettings -Name "
 PS C:\&gt; Set-AzureRmApplicationGatewayConnectionDraining -BackendHttpSettings $poolSetting02 -Enabled $False -DrainTimeoutInSec 3600</dev:code>
 <dev:remarks><maml:para>The first command gets the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01 and stores it in the $AppGw variable. The second command gets the back-end HTTP settings named Settings01 for $AppGw and stores the settings in the $Settings variable. The last command modifies the connection draining configuration of the back-end HTTP settings object stored in $Settings by setting Enabled to False and DrainTimeoutInSec to 3600.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -42223,6 +42693,8 @@ PS C:\&gt; $AppGw = Set-AzureRmApplicationGatewayFrontendIPConfig -ApplicationGa
 </maml:para>
 <maml:para>The third command updates the front-end IP configuration named FrontEndIp01, for the gateway in $AppGw, using the address stored in $PublicIp.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Set a static private IP as the front-end IP of an application gateway</maml:title>
@@ -42238,6 +42710,8 @@ PS C:\&gt; $AppGw = Set-AzureRmApplicationGatewayFrontendIPConfig -ApplicationGa
 </maml:para>
 <maml:para>The fourth command adds a front-end IP configuration named FrontendIP02 using $Subnet from the second command and the private IP address 10.0.1.1.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3: Set a dynamic private IP as the front-end IP of an application gateway</maml:title>
@@ -42253,6 +42727,8 @@ PS C:\&gt; $AppGw = Set-AzureRmApplicationGatewayFrontendIPConfig -ApplicationGa
 </maml:para>
 <maml:para>The fourth command adds a front-end IP configuration named FrontendIP02 using $Subnet from the second command.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -42419,6 +42895,8 @@ C:\&gt; $ AppGw = Set-AzureRmApplicationGatewayFrontendPort -ApplicationGateway 
 </maml:para>
 <maml:para>The second command modifies the gateway in $AppGw to use port 80 for the front-end port named FrontEndPort01.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -42829,6 +43307,8 @@ PS C:\&gt; $AppGw = Set-AzureRmApplicationGatewayHttpListener -ApplicationGatewa
 </maml:para>
 <maml:para>The second command sets the HTTP listener for the gateway to use the front-end configuration stored in $FIP01 with the HTTP protocol on port 80.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -43080,6 +43560,8 @@ PS C:\&gt; $AppGw = Set-AzureRmApplicationGatewayIPConfiguration -ApplicationGat
 </maml:para>
 <maml:para>The forth command sets the IP configuration of the application gateway stored in $AppGw to the subnet configuration stored in $Subnet.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -43333,6 +43815,8 @@ PS C:\&gt; $AppGw = Set-AzureRmApplicationGatewayIPConfiguration -ApplicationGat
 <dev:code>PS C:\&gt;Set-AzureRmApplicationGatewayProbeConfig -ApplicationGateway Gateway -Name "Probe05" -Protocol Http -HostName "contoso.com" -Path "/path/custompath.htm" -Interval 30 -Timeout 120 -UnhealthyThreshold 8</dev:code>
 <dev:remarks><maml:para>This command sets the configuration for a health probe named Probe05 for the application gateway named Gateway. The command also sets the unhealthy threshold to 8 retries and times out after 120 seconds.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -43713,6 +44197,8 @@ PS C:\&gt; $AppGw = Set-AzureRmApplicationGatewayRequestRoutingRule -Application
 </maml:para>
 <maml:para>The second command modifies the request routing rule for the application gateway to use back-end HTTP settings specified in the $Setting variable, an HTTP listener specified in the $Listener variable, and a back-end address pool specified in the $Pool variable.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -43934,6 +44420,8 @@ PS C:\&gt; $AppGw = Set-AzureRmApplicationGatewaySku -ApplicationGateway $AppGw 
 </maml:para>
 <maml:para>The second command updates the SKU of the application gateway.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -44119,6 +44607,8 @@ PS C:\&gt; $AppGw = Set-AzureRmApplicationGatewaySku -ApplicationGateway $AppGw 
 PS C:\&gt; $Cert = Set-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $AppGW -Name "Cert01" -CertificateFile "D:\cert01.pfx" -Password "Password01"</dev:code>
 <dev:remarks><maml:para>This command sets the goal state for an SSL certificate from the application gateway named ApplicationGateway01.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -44319,6 +44809,8 @@ PS C:\&gt; $Cert = Set-AzureRmApplicationGatewaySslCertificate -ApplicationGatew
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -44606,6 +45098,8 @@ PS C:\&gt; $Cert = Set-AzureRmApplicationGatewaySslCertificate -ApplicationGatew
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -44819,6 +45313,8 @@ PS C:\&gt; Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -App
 </maml:para>
 <maml:para>The second command enables the firewall configuration for the application gateway stored in $AppGw and sets the firewall mode to "Detection", RuleSetType to "OWASP" and the RuleSetVersion to "3.0".
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -44942,6 +45438,8 @@ $ckt.ServiceKey = '64ce99dd-ee70-4e74-b6b8-91c6307433a0'
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt</dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -45505,6 +46003,8 @@ Set-AzureRmExpressRouteCircuitPeeringConfig @parameters
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit</dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -45635,6 +46135,8 @@ PS C:\&gt; $slb | Set-AzureRmLoadBalancer</dev:code>
 </maml:para>
 <maml:para>The third command passes the load balancer to Set-AzureRmLoadBalancer , which updates the load balancer configuration and saves it.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -46038,6 +46540,8 @@ PS C:\&gt; $slb | Set-AzureRmLoadBalancerFrontendIpConfig -Name "NewFrontend" -S
 </maml:para>
 <maml:para>The fourth command passes the load balancer in $slb to Set-AzureRmLoadBalancerFrontendIpConfig , which saves and updates the front-end IP configuration.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -46382,6 +46886,8 @@ PS C:\&gt; $slb | Set-AzureRmLoadBalancerFrontendIpConfig -Name "NewFrontend" -S
 <dev:code>PS C:\&gt;</dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -46751,6 +47257,8 @@ PS C:\&gt; $slb | Set-AzureRmLoadBalancerInboundNatRuleConfig -Name "NewNatRule"
 </maml:para>
 <maml:para>The third command passes the load balancer to Set-AzureRmLoadBalancerInboundNatRuleConfig , which saves and updates the inbound NAT rule configuration. Note that the rule configuration was set without enabling floating IP, which had been enabled by the previous command.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -46992,6 +47500,8 @@ PS C:\&gt; $slb | Set-AzureRmLoadBalancerProbeConfig -Name "NewProbe" -Port 80 -
 </maml:para>
 <maml:para>The third command passes the load balancer to Set-AzureRmLoadBalancerProbeConfig , which sets the new configuration. Note that it is necessary to specify several of the same parameters that were specified in the previous command because they are required by the current cmdlet.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -47463,6 +47973,8 @@ PS C:\&gt; $slb | Set-AzureRmLoadBalancerRuleConfig -Name "NewRule" -FrontendIPC
 </maml:para>
 <maml:para>The third command passes the load balancer to Set-AzureRmLoadBalancerRuleConfig , which sets the new rule configuration. Note that the configuration does not enable a floating IP address, which had been enabled by the previous command.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -47662,6 +48174,8 @@ PS C:\&gt; $slb | Set-AzureRmLoadBalancerRuleConfig -Name "NewRule" -FrontendIPC
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -47787,6 +48301,8 @@ $Nic.Tag = @{Name = "Name"; Value = "Value"}
 Set-AzureRmNetworkInterface -NetworkInterface $Nic</dev:code>
 <dev:remarks><maml:para>This example configures a network interface. The first command gets a network interface named NetworkInterface1 in resource group ResourceGroup1. The second command sets the private IP address of the IP configuration. The third command sets the private IP allocation method to Static. The fourth command sets a tag on the network interface. The fifth command uses the information stored in the $Nic variable to set the network interface.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Change DNS settings on a network interface</maml:title>
@@ -47795,6 +48311,8 @@ $nic.DnsSettings.DnsServers.Add("192.168.1.100")
 $nic | Set-AzureRmNetworkInterface</dev:code>
 <dev:remarks><maml:para>The first command gets a network interface named NetworkInterface1 that exists within resource group ResourceGroup1. The second command adds DNS server 192.168.1.100 to this interface. The third command applies these changes to the network interface. To remove a DNS server, follow the commands listed above, but replace ".Add" with ".Remove" in the second command.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3: Enable IP forwading on a network interface</maml:title>
@@ -47803,6 +48321,8 @@ $nic.EnableIPForwarding = 1
 $nic | Set-AzureRmNetworkInterface</dev:code>
 <dev:remarks><maml:para>The first command gets an existing network interface called NetworkInterface1 and stores it in the $nic variable. The second command changes the IP forwarding value to true. Finally, the third command applies the changes to the network interface. To disable IP forwarding on a network interface, follow the sample example, but be sure to change the second command to "$nic.EnableIPForwarding = 0".
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 4: Change the subnet of a network interface</maml:title>
@@ -47817,6 +48337,8 @@ $nic | Set-AzureRmNetworkInterface</dev:code>
 </maml:para>
 <maml:para>&gt;[!NOTE] &gt;If the network interface has multiple IP configurations, the forth command must be done for all these IP configurations before the final Set-AzureRmNetworkInterface command is executed. This can be done as in the forth command but by replacing "0" with the appropriate number. If a network interface has N IP configurations, then N-1 of these commands must exist.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 5: Associate/Dissociate a Network Security Group to a network interface</maml:title>
@@ -47826,6 +48348,8 @@ $nic.NetworkSecurityGroup = $nsg
 $nic | Set-AzureRmNetworkInterface</dev:code>
 <dev:remarks><maml:para>The first command gets an existing network interface called NetworkInterface1 and stores it in the $nic variable. The second command gets an existing network security group called MyNSG and stores it in the $nsg variable. The forth command assigns the $nsg to the $nic. Finally, the fifth command applies the changes to the Network interface. To dissociate network security groups from a network interface, simple replace $nsg in the forth command with $null.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -48300,6 +48824,8 @@ $nic | Set-AzureRmNetworkInterface</dev:code>
 <dev:remarks><maml:para>The first two commands get a virtual network called myvnet and a subnet called mysubnet and store it in the     variables $vnet and $subnet respectively. The third command gets the network interface nic1 associated with the IP     configuration that needs to be updated. The third command sets the private IP address of the primary IP     configuration ipconfig1 to 10.0.0.11. Finally, the last command updates the network interface ensuring the changes     have been made successfully.
 
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -48424,6 +48950,8 @@ $nic | Set-AzureRmNetworkInterface</dev:code>
 <dev:code>PS C:\&gt;Get-AzureRmNetworkSecurityGroup -Name "Nsg1" -ResourceGroupName "Rg1" | Add-AzureRmNetworkSecurityRuleConfig -Name "Rdp-Rule" -Description "Allow RDP" -Access "Allow" -Protocol "Tcp" -Direction "Inbound" -Priority 100 -SourceAddressPrefix "Internet" -SourcePortRange "*" -DestinationAddressPrefix "*" -DestinationPortRange "3389" | Set-AzureRmNetworkSecurityGroup</dev:code>
 <dev:remarks><maml:para>This command gets the Azure network security group named Nsg1, and adds a network security rule named Rdp-Rule to allow Internet traffic on port 3389 to the retrieved network security group object using Add-AzureRmNetworkSecurityRuleConfig. The command persists the modified Azure network security group using Set-AzureRmNetworkSecurityGroup .
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -48807,6 +49335,8 @@ PS C:\&gt; Set-AzureRmNetworkSecurityRuleConfig -Name "rdp-rule" -NetworkSecurit
 </maml:para>
 <maml:para>The third command changes the access configuration of rdp-rule to Deny.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -48897,6 +49427,8 @@ PS C:\&gt; Set-AzureRmNetworkSecurityRuleConfig -Name "rdp-rule" -NetworkSecurit
 <dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
 <dev:remarks><maml:para>{{ Add example description here }}
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -49196,6 +49728,8 @@ Properties       : {
                    }</dev:code>
 <dev:remarks><maml:para>In this example we configure flow logging status for a Network Security Group. In the response, we see the specified NSG has flow logging enabled, and no retention policy set.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -49359,6 +49893,8 @@ PS C:\&gt; Set-AzureRmPublicIpAddress -PublicIpAddress $publicIp
 PS C:\&gt; $publicIp = Get-AzureRmPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName</dev:code>
 <dev:remarks><maml:para>First command gets the public IP address resource with name $publicIPName in the resource      group $rgName.     Second command sets the allocation method of the public IP address object to "Static".     Set-AzureRmPublicIPAddress command updates the public IP address resource with the      updated object, and modifies the allocation method to 'Static'. A public IP address gets      allocated immediately.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>2: Change DNS domain label of a public IP address</maml:title>
@@ -49371,6 +49907,8 @@ PS C:\&gt; Set-AzureRmPublicIpAddress -PublicIpAddress $publicIp
 PS C:\&gt; $publicIp = Get-AzureRmPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName</dev:code>
 <dev:remarks><maml:para>First command gets the public IP address resource with name $publicIPName in the resource      group $rgName.     Second command sets the DomainNameLabel property to the required dns prefix.     Set-AzureRmPublicIPAddress command updates the public IP address resource with the      updated object. DomainNameLabel &amp; Fqdn are modified as expected.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -49602,6 +50140,8 @@ Routes            : [
 Subnets           : []</dev:code>
 <dev:remarks><maml:para>This command gets the route table named RouteTable01 by using the Get-AzureRmRouteTable cmdlet. The command passes that table to the current cmdlet by using the pipeline operator. The current cmdlet modifies the route named Route02, and then passes the result to the Set-AzureRmRouteTable cmdlet, which updates the table to reflect your changes.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -49725,6 +50265,8 @@ Subnets           : []</dev:code>
 <dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
 <dev:remarks><maml:para>{{ Add example description here }}
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -49913,6 +50455,8 @@ Subnets           : []</dev:code>
 <dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
 <dev:remarks><maml:para>{{ Add example description here }}
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -50065,6 +50609,8 @@ Routes            : [
 Subnets           : []</dev:code>
 <dev:remarks><maml:para>This command gets the route table named RouteTable01 by using Get-AzureRmRouteTable cmdlet. The command passes that table to the Add-AzureRmRouteConfig cmdlet by using the pipeline operator. Add-AzureRmRouteConfig adds the route named Route07, and then passes the result to the current cmdlet, which updates the table to reflect your changes.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -50199,6 +50745,8 @@ Remove-AzureRmVirtualNetworkSubnetConfig -Name backendSubnet -VirtualNetwork $vi
 $virtualNetwork | Set-AzureRmVirtualNetwork</dev:code>
 <dev:remarks><maml:para>This example creates a virtual network with two subnets. Then it removes one subnet from      the in-memory representation of the virtual network. The Set-AzureRmVirtualNetwork cmdlet      is then used to write the modified virtual network state on the service side.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -50498,6 +51046,8 @@ PS C:\&gt; Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $Gateway -Asn
 </maml:para>
 <maml:para>The second command sets the goal state for the virtual network gateway stored in variable $Gateway. The command also sets the ASN to 1337.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -50676,6 +51226,8 @@ PS C:\&gt; Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $Gateway -Asn
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -50884,6 +51436,8 @@ PS C:\&gt; Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $Gateway -Asn
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -51044,6 +51598,8 @@ PS C:\&gt; Set-AzureRmVirtualNetworkGatewayDefaultSite -GatewayDefaultSite $Loca
 </maml:para>
 <maml:para>The third command uses the Set-AzureRmVirtualNetworkGatewayDefaultSite cmdlet to assign the default site to ContosoVirtualGateway.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -51200,6 +51756,8 @@ PS C:\&gt; Set-AzureRmVirtualNetworkGatewayVpnClientConfig -VirtualNetworkGatewa
 </maml:para>
 <maml:para>The second command in the example then uses the Set-AzureRmVirtualNetworkGatewayVpnClientConfig cmdlet to assign the address pool 10.0.0.0/16 to ContosoVirtualGateway.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -51329,6 +51887,8 @@ PS C:\&gt; Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering $LinkToVNet2<
 </maml:para>
 <maml:para>The final command updates the settings for the LinkToVNet2 virtual network peering to the value in $LinkToVNet2.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Change virtual network access of a virtual network peering</maml:title>
@@ -51343,6 +51903,8 @@ PS C:\&gt; Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering $LinkToVNet2<
 </maml:para>
 <maml:para>The final command updates the settings for the LinkToVNet2 virtual network peering to the value in $LinkToVNet2.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3: Change gateway transit property configuration of a virtual network peering</maml:title>
@@ -51357,6 +51919,8 @@ PS C:\&gt; Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering $LinkToVNet2<
 </maml:para>
 <maml:para>The final command updates the settings for the LinkToVNet2 virtual network peering to the value in $LinkToVNet2.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 4: Use remote gateways in virtual network peering</maml:title>
@@ -51375,6 +51939,8 @@ PS C:\&gt; Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering $LinkToVNet2<
 </maml:para>
 <maml:para>This property cannot be used if a gateway has already been configured.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -51674,6 +52240,8 @@ Set-AzureRmVirtualNetworkSubnetConfig -Name frontendSubnet -VirtualNetwork $virt
 $virtualNetwork | Set-AzureRmVirtualNetwork</dev:code>
 <dev:remarks><maml:para>This example creates a virtual network with one subnet. Then is calls      Set-AzureRmVirtualNetworkSubnetConfig to modify the AddressPrefix of the subnet. This      only impacts the in-memory representation of the virtual network.      Set-AzureRmVirtualNetwork is then called to modify the virtual network in Azure.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>2: Add a network security group to a subnet</maml:title>
@@ -51696,6 +52264,8 @@ Set-AzureRmVirtualNetworkSubnetConfig -Name frontendSubnet -VirtualNetwork $virt
 $virtualNetwork | Set-AzureRmVirtualNetwork</dev:code>
 <dev:remarks><maml:para>This example creates a resource group with one virtual network containing just one      subnet. It then creates a network security group with an allow rule for RDP traffic. The      Set-AzureRmVirtualNetworkSubnetConfig cmdlet is used to modify the in-memory      representation of the frontend subnet so that it points to the newly created network      security group. The Set-AzureRmVirtualNetwork cmdlet is then called to write the modified      state back to the service.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -51826,6 +52396,8 @@ $virtualNetwork | Set-AzureRmVirtualNetwork</dev:code>
 <dev:code>PS C:\&gt;$AppGw = Start-AzureRmApplicationGateway -ApplicationGateway $AppGw</dev:code>
 <dev:remarks><maml:para>This command starts the application gateway stored in the $AppGw variable.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -52015,6 +52587,8 @@ $storagePath = 'https://{storageAccountName}.blob.core.windows.net/troubleshoot'
 Start-AzureRmNetworkWatcherResourceTroubleshooting -NetworkWatcher $networkWatcher -TargetResourceId $target -StorageId $storageId -StoragePath $storagePath</dev:code>
 <dev:remarks><maml:para>The above sample starts troubleshooting on a virtual network gateway. The operation may take a few minutes to complete.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -52172,6 +52746,8 @@ Start-AzureRmNetworkWatcherResourceTroubleshooting -NetworkWatcher $networkWatch
 <dev:code>PS C:\&gt;Stop-AzureRmApplicationGateway -ApplicationGateway $AppGw</dev:code>
 <dev:remarks><maml:para>This command stops the application gateway stored in the $AppGw variable.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -52387,6 +52963,8 @@ Start-AzureRmNetworkWatcherResourceTroubleshooting -NetworkWatcher $networkWatch
 <dev:code>Stop-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"</dev:code>
 <dev:remarks><maml:para>In this example we stop a running packet capture session named "PacketCaptureTest". After the session is stopped, the packet capture file is uploaded to storage and/or saved locally on the VM depending on its configuration.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -52553,6 +53131,8 @@ Start-AzureRmNetworkWatcherResourceTroubleshooting -NetworkWatcher $networkWatch
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -52884,6 +53464,8 @@ $Nics = Get-AzureRmNetworkInterface | Where {$_.Id -eq $vm.NetworkInterfaceIDs.F
 Test-AzureRmNetworkWatcherIPFlow -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id -Direction Outbound -Protocol TCP -LocalIPAddress $nics[0].IpConfigurations[0].PrivateIpAddress -LocalPort 6895 -RemoteIPAddress 204.79.197.200 -RemotePort 80</dev:code>
 <dev:remarks><maml:para>Get's the Network Watcher in West Central US for this subscription, then gets the VM and it's associated Network Interfaces.  Then for the first Network Interface, runs Test-AzureRmNetworkWatcherIPFlow using the first IP from the first Network Interface for an outbound connection to an IP on the internet.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -53129,6 +53711,8 @@ Test-AzureRmNetworkWatcherIPFlow -NetworkWatcher $networkWatcher -TargetVirtualM
 <dev:code>PS C:\&gt;Get-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Test-AzureRmPrivateIPAddressAvailability -IPAddress "10.0.1.10"</dev:code>
 <dev:remarks><maml:para>This command gets a virtual network and uses the pipeline operator to pass it to Test-AzureRmPrivateIPAddressAvailability , which tests whether the specified private IP address is available.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
