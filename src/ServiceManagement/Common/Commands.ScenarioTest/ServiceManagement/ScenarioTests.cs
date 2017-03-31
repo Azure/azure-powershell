@@ -249,5 +249,14 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         {
             this.RunPowerShellTest("Run-RedeployVirtualMachineTest");
         }
+
+        [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void RunInitiateMaintenanceTest()
+        {
+            this.RunPowerShellTest("Run-InitiateMaintenanceTest");
+        }
     }
 }
