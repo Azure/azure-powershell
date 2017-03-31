@@ -11507,7 +11507,7 @@ ErrorMessage               :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>GracePeriodWithDataLossHour</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>GracePeriodWithDataLossHours</maml:name>
 <maml:Description><maml:para>The grace period for failover with data loss of the failover group.
 </maml:para>
 </maml:Description>
@@ -11606,7 +11606,7 @@ ErrorMessage               :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>GracePeriodWithDataLossHour</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>GracePeriodWithDataLossHours</maml:name>
 <maml:Description><maml:para>The grace period for failover with data loss of the failover group.
 </maml:para>
 </maml:Description>
@@ -20271,7 +20271,7 @@ RecommendedActions             : {}</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>GracePeriodWithDataLossHour</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>GracePeriodWithDataLossHours</maml:name>
 <maml:Description><maml:para>The grace period for failover with data loss of the failover group.
 </maml:para>
 </maml:Description>
@@ -20352,7 +20352,7 @@ RecommendedActions             : {}</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>GracePeriodWithDataLossHour</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>GracePeriodWithDataLossHours</maml:name>
 <maml:Description><maml:para>The grace period for failover with data loss of the failover group.
 </maml:para>
 </maml:Description>
