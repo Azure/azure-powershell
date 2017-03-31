@@ -22,6 +22,10 @@
 
 * Add Maintenance Status field to Get-AzureVM response.
 
+* Added new cmdlets to support Recovery Services vault upgrade
+    - Test-AzureRecoveryServicesVaultUpgrade
+    - Invoke-AzureRecoveryServicesVaultUpgrade
+
 ## Version 3.7.0
 * Update the output object of migration cmdlets (Move-AzureService, Move-AzureStorageAccount, Move-AzureVirtualNetwork, Move-AzureNetworkSecurityGroup, Move-AzureReservedIP, Move-AzureRouteTable):
     - ValidationMessages contain "Information" and "Warning" messages in addition to "Error" messages.
