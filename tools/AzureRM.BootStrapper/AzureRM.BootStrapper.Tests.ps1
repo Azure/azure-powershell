@@ -1095,6 +1095,20 @@ Describe "Use-AzureRmProfile" {
                 $useError.exception.message.contains("A different profile version of module") | Should Be $true
             }
         }
+
+        # User tries to execute Use-AzureRmProfile with different profiles & different modules
+        Context "A different profile's module was previously imported" {
+            Mock Get-AzureRmModule -Verifiable { "1.0" } 
+            $VersionObj = New-Object -TypeName System.Version -ArgumentList "2.0" 
+            $moduleObj = New-Object -TypeName PSObject 
+            $moduleObj | Add-Member NoteProperty -Name "Name" -Value "Module1"
+            $moduleObj | Add-Member NoteProperty Version($VersionObj)
+            Mock Get-Module -Verifiable { $moduleObj }
+            It "Should skip importing module" {
+                $result = Use-AzureRmProfile -Profile 'Profile1' -Module 'Module1' -ErrorVariable useError -ErrorAction SilentlyContinue
+                $useError.exception.message.contains("A different profile version of module") | Should Be $true
+            }
+        }
     }
 }
 
