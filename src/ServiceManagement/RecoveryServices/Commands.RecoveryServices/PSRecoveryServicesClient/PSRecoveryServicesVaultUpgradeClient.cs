@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 exceptionMessage.AppendLine("ErrorCode: " + detail.Code);
             }
 
-            exceptionMessage.AppendLine("Type: " + detail.Type);
+            exceptionMessage.AppendLine("Type: " + detail.Type).AppendLine(" ");
             if (!string.IsNullOrEmpty(detail.Message))
             {
                 exceptionMessage.Append("Message: ");
@@ -199,6 +199,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                         prefixColToken = "\t";
                     }
                 }
+
+                exceptionMessage.AppendLine(" ");
             }
 
             if (!string.IsNullOrEmpty(detail.Properties))

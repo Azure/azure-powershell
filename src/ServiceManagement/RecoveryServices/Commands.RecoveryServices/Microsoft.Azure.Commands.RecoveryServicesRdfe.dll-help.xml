@@ -9908,7 +9908,10 @@
         <dev:code>
           PS C:\> Test-AzureRecoveryServicesVaultUpgrade -ResourceType HyperVRecoveryManagerVault -VaultName ContosoVault -Location 'West US' -TargetResourceGroupName ContosoRG
 
+Response
+--------
 Successfully completed prerequisites check for vault upgrade.
+
 
         </dev:code>
         <dev:remarks>
@@ -9934,7 +9937,10 @@ Successfully completed prerequisites check for vault upgrade.
         <dev:code>
           PS C:\> Test-AzureRecoveryServicesVaultUpgrade -ResourceType BackupVault -VaultName ContosoVault -Location 'West US' -TargetResourceGroupName ContosoRG
 
+Response
+--------
 Successfully completed prerequisites check for vault upgrade.
+
 
         </dev:code>
         <dev:remarks>
@@ -10013,6 +10019,12 @@ Successfully completed prerequisites check for vault upgrade.
           </maml:description>
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para>Specify this to bypass the confirm action and take the default (Y).</maml:para>
+          </maml:description>
+        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <!-- Cmdlet parameter section  -->
@@ -10068,6 +10080,19 @@ Successfully completed prerequisites check for vault upgrade.
           <maml:uri/>
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Force</maml:name>
+        <maml:description>
+          <maml:para>Specify this to bypass the confirm action and take the default (Y).</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
     </command:parameters>
     <!-- Input - Output section-->
@@ -10129,19 +10154,11 @@ Successfully completed prerequisites check for vault upgrade.
         <dev:code>
           PS C:\> Invoke-AzureRecoveryServicesVaultUpgrade -ResourceType HyperVRecoveryManagerVault -VaultName ContosoVault -Location 'West US' -TargetResourceGroupName ContosoRG
 
-Starting prerequisites check for vault upgrade...
-Successfully completed prerequisites check for vault upgrade.
-          
-OperationId                                                 StartTimeUtc         LastUpdatedTimeUtc   Status
------------                                                 ------------         ------------------   ------
-8cc2edd8-00c1-4057-afc7-0d2c216b2188-2017-03-27 11:41:29Z-P 3/27/2017 5:11:32 PM 3/27/2017 5:11:32 PM InProgress
-
-Vault upgrade is in progress...
-
-OperationResult : Succeeded
-OperationStatus : Completed
-
-HyperVRecoveryManagerVault 'ContosoVault' has been successfully upgraded to Recovery Services vault and is now accessible through the new Azure portal at http://portal.azure.com.
+          OperationId     : cc627bbc-f9c6-47f7-a2ac-3c499e1aae83-2017-03-31 09:33:01Z-P
+          StartTimeUtc    : 3/31/2017 3:03:05 PM
+          OperationResult : Succeeded
+          OperationStatus : Completed
+          UpgradeStatus   : HyperVRecoveryManagerVault 'ContosoVault' has been successfully upgraded to Recovery Services vault and is now accessible through the new Azure portal at http://portal.azure.com.
 
         </dev:code>
         <dev:remarks>
@@ -10168,20 +10185,12 @@ HyperVRecoveryManagerVault 'ContosoVault' has been successfully upgraded to Reco
         </maml:introduction>
         <dev:code>
           PS C:\> Invoke-AzureRecoveryServicesVaultUpgrade -ResourceType BackupVault -VaultName ContosoVault -Location 'West US' -TargetResourceGroupName ContosoRG
-          
-Starting prerequisites check for vault upgrade...
-Successfully completed prerequisites check for vault upgrade.
 
-OperationId                                                 StartTimeUtc         LastUpdatedTimeUtc   Status
------------                                                 ------------         ------------------   ------
-9cc2edd8-00c2-4057-afc7-0d2c216b2188-2017-03-27 11:41:29Z-P 3/27/2017 5:14:32 PM 3/27/2017 5:14:32 PM InProgress
-
-Vault upgrade is in progress...
-
-OperationResult : Succeeded
-OperationStatus : Completed
-
-BackUpVault 'ContosoVault' has been successfully upgraded to Recovery Services vault and is now accessible through the new Azure portal at http://portal.azure.com.
+          OperationId     : bb627bbc-f9c6-47f7-a2ac-3c499e1aae83-2017-03-31 09:37:01Z-P
+          StartTimeUtc    : 3/31/2017 3:10:05 PM
+          OperationResult : Succeeded
+          OperationStatus : Completed
+          UpgradeStatus   : BackupVault 'ContosoVault' has been successfully upgraded to Recovery Services vault and is now accessible through the new Azure portal at http://portal.azure.com.
 
         </dev:code>
         <dev:remarks>
