@@ -951,8 +951,8 @@ Describe "Get-AzureRmProfile" {
             It "Should return available profiles" {
                 $Result = (Get-AzureRmProfile -ListAvailable)
                 $Result.Count | Should be 2
-                $Result.ProfileName -ne $null | Should Be $true
-                $Result.Module1 -ne $null | Should Be $true
+                $Result.ProfileName | Should Not Be $null
+                $Result.Module1 | Should Not Be $null
                 Assert-VerifiableMocks
             }
         }
@@ -961,8 +961,8 @@ Describe "Get-AzureRmProfile" {
             It "Should return available profiles" {
                 $Result = (Get-AzureRmProfile -ListAvailable -Update)
                 $Result.Count | Should be 2
-                $Result.ProfileName -ne $null | Should Be $true
-                $Result.Module1 -ne $null | Should Be $true
+                $Result.ProfileName | Should Not Be $null
+                $Result.Module1 | Should Not Be $null
                 Assert-VerifiableMocks
             }
         }
@@ -972,8 +972,8 @@ Describe "Get-AzureRmProfile" {
             Mock Get-ProfilesInstalled -Verifiable -ParameterFilter {[REF]$IncompleteProfiles} { @{'Profile1'= @{'Module1' = @('1.0') ;'Module2'= @('1.0')}} } 
             It "Returns installed Profile" {
                 $Result = (Get-AzureRmProfile)
-                $Result.ProfileName -ne $null | Should Be $true
-                $Result.Module1 -ne $null | Should Be $true
+                $Result.ProfileName | Should Not Be $null
+                $Result.Module1 | Should Not Be $null
                 Assert-VerifiableMocks
             }
         }
