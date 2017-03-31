@@ -361,7 +361,17 @@ function Uninstall-ModuleHelper
         {
           if ($_.Exception.Message -match "No match was found")
           {
-            Write-Error "Unable to uninstall module $module since it was not installed using AzureRm.Bootstrapper cmdlets. Try to uninstall manually." 
+            # Check for msi installation (Install folder: C:\ProgramFiles(x86)\Microsoft SDKs\Azure\PowerShell) Only in windows
+            if ((-not $Script:IsCoreEdition) -or ($IsWindows))
+            {
+              $sdkPath = (join-path ${env:ProgramFiles(x86)} -childpath "\Microsoft SDKs\Azure\PowerShell\")
+              if (($null -ne $moduleInstalled.Path) -and ($moduleInstalled.Path.Contains($sdkPath)))
+              {
+                Write-Error "Unable to uninstall module $module because it was installed in a different scope than expected. If you installed via an MSI, please uninstall the MSI before proceeding." -Category InvalidOperation
+                break 
+              }
+            }
+            Write-Error "Unable to uninstall module $module because it was installed in a different scope than expected. If you installed the module to a custom directory in your path, please remove the module manually, by using Uninstall-Module, or removing the module directory." -Category InvalidOperation
           }
           else {
             Write-Error $_.Exception.Message
