@@ -51,12 +51,12 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// <summary>
         /// Gets or sets the grace period with data loss for the Sql Azure Failover Group.
         /// </summary>
-        [Alias("GracePeriodWithDataLossHour")]
+        [Alias("GracePeriodWithDataLossHours")]
         [Parameter(Mandatory = false,
             HelpMessage = "The grace period for failover with data loss of the failover group. This property defines how big of the window we tolerate for data loss during failover operation")]
         [ValidateNotNullOrEmpty]
-        [Obsolete("This parameter is only for backwards compatibility; User should use 'GracePeriodWithDataLossHour' instead.")]
-        public int GracePeriodWithDataLossHours { get; set; }
+        [Obsolete("This parameter is only for backwards compatibility; User should use 'GracePeriodWithDataLossHours' instead.")]
+        public int GracePeriodWithDataLossHour { get; set; }
 
         /// <summary>
         /// Gets or sets the failover policy for read only endpoint of the Sql Azure Failover Group.
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
 
             newModel.ReadWriteFailoverPolicy = MyInvocation.BoundParameters.ContainsKey("FailoverPolicy") ? FailoverPolicy.ToString() : newModel.ReadWriteFailoverPolicy;
 #pragma warning disable 0618
-            newModel.FailoverWithDataLossGracePeriodHours = MyInvocation.BoundParameters.ContainsKey("GracePeriodWithDataLossHours") ? GracePeriodWithDataLossHours : newModel.FailoverWithDataLossGracePeriodHours;
+            newModel.FailoverWithDataLossGracePeriodHours = MyInvocation.BoundParameters.ContainsKey("GracePeriodWithDataLossHour") ? GracePeriodWithDataLossHour : newModel.FailoverWithDataLossGracePeriodHours;
             newModel.ReadOnlyFailoverPolicy = MyInvocation.BoundParameters.ContainsKey("AllowReadOnlyFailoverToPrimary") ? AllowReadOnlyFailoverToPrimary.ToString() : newModel.ReadOnlyFailoverPolicy;
             newEntity.Add(newModel);
 #pragma warning restore 0618

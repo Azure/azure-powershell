@@ -65,12 +65,12 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// <summary>
         /// Gets or sets the grace period with data loss for the Sql Azure Failover Group.
         /// </summary>
-        [Alias("GracePeriodWithDataLossHour")]
+        [Alias("GracePeriodWithDataLossHours")]
         [Parameter(Mandatory = false,
             HelpMessage = "The window of grace period that we tolerate with data loss during a failover operation for the failover group.")]
-        [Obsolete("This parameter is only for backwards compatibility; User should use 'GracePeriodWithDataLossHour' instead.")]
+        [Obsolete("This parameter is only for backwards compatibility; User should use 'GracePeriodWithDataLossHours' instead.")]
         [ValidateNotNullOrEmpty]
-        public int GracePeriodWithDataLossHours { get; set; }
+        public int GracePeriodWithDataLossHour { get; set; }
 
         /// <summary>
         /// Gets or sets the failover policy for read only endpoint of theSql Azure Failover Group.
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
                 PartnerServerName = PartnerServerName,
                 ReadWriteFailoverPolicy = FailoverPolicy.ToString(),
 #pragma warning disable 0618
-                FailoverWithDataLossGracePeriodHours = GracePeriodWithDataLossHours,
+                FailoverWithDataLossGracePeriodHours = GracePeriodWithDataLossHour,
                 ReadOnlyFailoverPolicy = AllowReadOnlyFailoverToPrimary.ToString()
 #pragma warning restore 0618
             });
