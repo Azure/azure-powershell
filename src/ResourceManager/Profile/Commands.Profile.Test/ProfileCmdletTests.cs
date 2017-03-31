@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             ImportAzureRMContextCommand cmdlt = new ImportAzureRMContextCommand();
 #pragma warning restore CS0618 // Suppress obsolescence warning: cmdlet name is changing
             // Setup
-            cmdlt.Profile = profile;
+            cmdlt.AzureContext = profile;
             cmdlt.CommandRuntime = commandRuntimeMock;
 
             // Act
@@ -67,23 +67,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void SelectAzureProfileNull()
-        {
-#pragma warning disable CS0618 // Suppress obsolescence warning: cmdlet name is changing
-            ImportAzureRMContextCommand cmdlt = new ImportAzureRMContextCommand();
-#pragma warning restore CS0618 // Suppress obsolescence warning: cmdlet name is changing
-            // Setup
-            cmdlt.CommandRuntime = commandRuntimeMock;
-
-            // Act
-            cmdlt.InvokeBeginProcessing();
-            Assert.Throws<ArgumentException>(() => cmdlt.ExecuteCmdlet());
-            cmdlt.InvokeEndProcessing();
-        }
-
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SelectAzureProfileBadPath()
         {
 #pragma warning disable CS0618 // Suppress obsolescence warning: cmdlet name is changing
@@ -92,6 +75,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlt.Path = "z:\non-existent-path\non-existent-file.ext";
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.MyInvocation.BoundParameters.Add("Path", cmdlt.Path);
 
             // Act
             cmdlt.InvokeBeginProcessing();
@@ -111,7 +95,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             // Setup
             cmdlt.Path = "X:\\foo.json";
             cmdlt.CommandRuntime = commandRuntimeMock;
-
+            cmdlt.MyInvocation.BoundParameters.Add("Path", cmdlt.Path);
             // Act
             cmdlt.InvokeBeginProcessing();
             cmdlt.ExecuteCmdlet();

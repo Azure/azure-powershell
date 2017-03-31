@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Profile
     /// <summary>
     /// Selects Microsoft Azure profile.
     /// </summary>
-    [Cmdlet(VerbsData.Import, "AzureRmContext"), OutputType(typeof(PSAzureProfile))]
+    [Cmdlet(VerbsData.Import, "AzureRmContext", SupportsShouldProcess = true), OutputType(typeof(PSAzureProfile))]
     [Alias("Select-AzureRmProfile")]
     [Obsolete("Select-AzureRmProfile will be renamed to Import-AzureRmContext in the next release.")]
     public class ImportAzureRMContextCommand : AzureRMCmdlet
@@ -34,9 +34,12 @@ namespace Microsoft.Azure.Commands.Profile
         internal const string ProfileFromDiskParameterSet = "ProfileFromDisk";
 
         [Parameter(ParameterSetName = InMemoryProfileParameterSet, Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true)]
-        public AzureRMProfile Profile { get; set; }
+        [ValidateNotNull]
+        [Alias("Profile")]
+        public AzureRMProfile AzureContext { get; set; }
 
         [Parameter(ParameterSetName = ProfileFromDiskParameterSet, Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 
         protected override void BeginProcessing()
@@ -46,40 +49,52 @@ namespace Microsoft.Azure.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(Path))
+            bool executionComplete = false;
+            if (MyInvocation.BoundParameters.ContainsKey("Path"))
             {
-                if(!Common.Authentication.AzureSession.DataStore.FileExists(Path))
+                ConfirmAction(string.Format(Resources.ProcessImportContextFromFile, Path), Resources.ImportContextTarget, () =>
                 {
-                    throw new PSArgumentException(string.Format(
-                        Microsoft.Azure.Commands.Profile.Properties.Resources.FileNotFound, 
-                        Path));
-                }
+                    if (!Common.Authentication.AzureSession.DataStore.FileExists(Path))
+                    {
+                        throw new PSArgumentException(string.Format(
+                            Microsoft.Azure.Commands.Profile.Properties.Resources.FileNotFound,
+                            Path));
+                    }
 
-                AzureRmProfileProvider.Instance.Profile = new AzureRMProfile(Path);
+                    AzureRmProfileProvider.Instance.Profile = new AzureRMProfile(Path);
+                    executionComplete = true;
+                });
             }
             else
             {
-                AzureRmProfileProvider.Instance.Profile = Profile;
+                ConfirmAction(Resources.ProcessImportContextFromObject, Resources.ImportContextTarget, () =>
+                {
+                    AzureRmProfileProvider.Instance.Profile = AzureContext;
+                    executionComplete = true;
+                });
             }
 
-            if (AzureRmProfileProvider.Instance.Profile == null)
+            if (executionComplete)
             {
-                throw new ArgumentException(Resources.AzureProfileMustNotBeNull);
-            }
+                if (AzureRmProfileProvider.Instance.Profile == null)
+                {
+                    WriteExceptionError( new ArgumentException(Resources.AzureProfileMustNotBeNull));
+                }
 
-            if (AzureRmProfileProvider.Instance.Profile.Context != null &&
-                AzureRmProfileProvider.Instance.Profile.Context.Subscription != null &&
-                AzureRmProfileProvider.Instance.Profile.Context.Subscription.State != null &&
-                !AzureRmProfileProvider.Instance.Profile.Context.Subscription.State.Equals(
-                "Enabled",
-                StringComparison.OrdinalIgnoreCase))
-            {
-                WriteWarning(string.Format(
-                               Microsoft.Azure.Commands.Profile.Properties.Resources.SelectedSubscriptionNotActive,
-                               AzureRmProfileProvider.Instance.Profile.Context.Subscription.State));
-            }
+                if (AzureRmProfileProvider.Instance.Profile.Context != null &&
+                    AzureRmProfileProvider.Instance.Profile.Context.Subscription != null &&
+                    AzureRmProfileProvider.Instance.Profile.Context.Subscription.State != null &&
+                    !AzureRmProfileProvider.Instance.Profile.Context.Subscription.State.Equals(
+                    "Enabled",
+                    StringComparison.OrdinalIgnoreCase))
+                {
+                    WriteWarning(string.Format(
+                                   Microsoft.Azure.Commands.Profile.Properties.Resources.SelectedSubscriptionNotActive,
+                                   AzureRmProfileProvider.Instance.Profile.Context.Subscription.State));
+                }
 
-            WriteObject((PSAzureProfile)AzureRmProfileProvider.Instance.Profile);
+                WriteObject((PSAzureProfile)AzureRmProfileProvider.Instance.Profile);
+            }
         }
     }
 }
