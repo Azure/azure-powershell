@@ -79,8 +79,12 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             List<AzureSqlFailoverGroupModel> newEntity = new List<AzureSqlFailoverGroupModel>();
             newEntity.Add(new AzureSqlFailoverGroupModel()
             {
+#pragma warning disable 0618
                 ResourceGroupName = ResourceGroupName,
                 ServerName = ServerName,
+                PartnerResourceGroupName = MyInvocation.BoundParameters.ContainsKey("PartnerResourceGroupName") ? PartnerResourceGroupName : ResourceGroupName,
+                PartnerServerName = PartnerServerName,
+#pragma warning restore 0618
             });
             return newEntity;
         }
