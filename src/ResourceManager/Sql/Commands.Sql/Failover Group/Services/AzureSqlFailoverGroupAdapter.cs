@@ -107,11 +107,11 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
             partnerServers.Add(partnerServer);
 
             ReadOnlyEndpoint readOnlyEndpoint = new ReadOnlyEndpoint();
-            readOnlyEndpoint.FailoverPolicy = model.ReadOnlyFailoverPolicy;
+            readOnlyEndpoint.FailoverPolicy = model.ReadOnlyFailoverPolicy == null ? AllowReadOnlyFailoverToPrimary.Disabled.ToString() : model.ReadOnlyFailoverPolicy;
             ReadWriteEndpoint readWriteEndpoint = new ReadWriteEndpoint();
-            readWriteEndpoint.FailoverPolicy = model.ReadWriteFailoverPolicy;
+            readWriteEndpoint.FailoverPolicy = model.ReadWriteFailoverPolicy == null ? FailoverPolicy.Manual.ToString() : model.ReadWriteFailoverPolicy;
 
-            if (model.FailoverWithDataLossGracePeriodHours.HasValue)
+            if (model.FailoverWithDataLossGracePeriodHours.HasValue && !string.Equals(model.ReadWriteFailoverPolicy, FailoverPolicy.Manual.ToString()))
             {
                 readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = model.FailoverWithDataLossGracePeriodHours * 60;
             }
@@ -145,20 +145,28 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         internal AzureSqlFailoverGroupModel PatchUpdateFailoverGroup(AzureSqlFailoverGroupModel model)
         {
             ReadOnlyEndpoint readOnlyEndpoint = new ReadOnlyEndpoint();
-            readOnlyEndpoint.FailoverPolicy = model.ReadOnlyFailoverPolicy;
+            readOnlyEndpoint.FailoverPolicy = model.ReadOnlyFailoverPolicy == null ? AllowReadOnlyFailoverToPrimary.Disabled.ToString() : model.ReadOnlyFailoverPolicy;
 
             ReadWriteEndpoint readWriteEndpoint = new ReadWriteEndpoint();
-            readWriteEndpoint.FailoverPolicy = model.ReadWriteFailoverPolicy;
+            readWriteEndpoint.FailoverPolicy = model.ReadWriteFailoverPolicy == null ? FailoverPolicy.Manual.ToString() : model.ReadWriteFailoverPolicy;
 
-            if (model.FailoverWithDataLossGracePeriodHours.HasValue)
+            if (!string.Equals(model.ReadWriteFailoverPolicy, FailoverPolicy.Manual.ToString()))
             {
-                readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = model.FailoverWithDataLossGracePeriodHours * 60;
+                if (!model.FailoverWithDataLossGracePeriodHours.HasValue)
+                {
+                    readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = 0;
+                }
+                else
+                {
+                    readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = model.FailoverWithDataLossGracePeriodHours * 60;
+                }
             }
             else
             {
                 readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = null;
             }
-            
+
+
             var resp = Communicator.PatchUpdate(model.ResourceGroupName, model.ServerName, model.FailoverGroupName, Util.GenerateTracingId(), new FailoverGroupPatchUpdateParameters()
             {
                 Location = model.Location,
