@@ -108,6 +108,11 @@ namespace Microsoft.Azure.Commands.KeyVault
                         displayName = servicePrincipal.AppDisplayName;
                         upnOrSpn = servicePrincipal.ServicePrincipalNames.FirstOrDefault();
                     }
+                    else if (obj.ObjectType.Equals("group", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        var group = adClient.Groups.GetByObjectId(objectId).ExecuteAsync().GetAwaiter().GetResult();
+                        displayName = group.DisplayName;
+                    }
                 }
             }
             catch
