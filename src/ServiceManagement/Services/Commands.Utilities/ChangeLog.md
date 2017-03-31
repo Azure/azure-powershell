@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add initiate maintenance PowerShell cmdlet.
+
+* Add Maintenance Status field to Get-AzureVM response.
 
 ## Version 3.7.0
 * Update the output object of migration cmdlets (Move-AzureService, Move-AzureStorageAccount, Move-AzureVirtualNetwork, Move-AzureNetworkSecurityGroup, Move-AzureReservedIP, Move-AzureRouteTable):

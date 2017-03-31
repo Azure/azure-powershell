@@ -119,7 +119,7 @@ function Test-ServerUpgradeNegative
         Assert-Throws { Start-AzureRmSqlServerUpgrade -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -ServerVersion 13.0}
         Assert-Throws { Start-AzureRmSqlServerUpgrade -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -ScheduleUpgradeAfterUtcDateTime ((Get-Date).ToUniversalTime())}
 
-        $recommendedDatabase = New-Object -TypeName Microsoft.Azure.Management.Sql.Models.RecommendedDatabaseProperties
+        $recommendedDatabase = New-Object -TypeName Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties
         $recommendedDatabase.Name = databaseName
         $recommendedDatabase.TargetEdition = "InvalidEdition"
         $recommendedDatabase.TargetServiceLevelObjective = "S0"
