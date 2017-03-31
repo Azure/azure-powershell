@@ -77,6 +77,7 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'New-AzureRmApplicationGatewayAuthenticationCertificate', 
                'Remove-AzureRmApplicationGatewayAuthenticationCertificate', 
                'Set-AzureRmApplicationGatewayAuthenticationCertificate', 
+               'Get-AzureRmApplicationGatewayAvailableWafRuleSets',
                'Add-AzureRmApplicationGatewayBackendAddressPool', 
                'Get-AzureRmApplicationGatewayBackendAddressPool', 
                'New-AzureRmApplicationGatewayBackendAddressPool', 
@@ -94,6 +95,7 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'Get-AzureRmApplicationGatewayWebApplicationFirewallConfiguration', 
                'New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration', 
                'Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration', 
+               'New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig',
                'Add-AzureRmApplicationGatewayFrontendIPConfig', 
                'Get-AzureRmApplicationGatewayFrontendIPConfig', 
                'New-AzureRmApplicationGatewayFrontendIPConfig', 
@@ -294,7 +296,7 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = @()
+AliasesToExport = 'List-AzureRmApplicationGatewayAvailableWafRuleSets'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
