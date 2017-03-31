@@ -1,4 +1,10 @@
-﻿## 2017.03.09 - Version 3.7.0
+﻿## 2017.03.31 - Version 3.8.0
+* RecoveryServices
+    * Added new cmdlets to support Recovery Services vault upgrade
+        - Test-AzureRecoveryServicesVaultUpgrade
+        - Invoke-AzureRecoveryServicesVaultUpgrade
+
+## 2017.03.09 - Version 3.7.0
 * ApiManagement
     * Added new cmdlets to manage Backend entity
         - New-AzureRmApiManagementBackend

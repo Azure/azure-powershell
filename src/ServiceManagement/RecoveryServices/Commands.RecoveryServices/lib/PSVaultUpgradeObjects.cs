@@ -41,6 +41,37 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     }
 
     /// <summary>
+    /// Represents vault upgrade operation's result.
+    /// </summary>
+    public enum VaultUpgradeOperationResult
+    {
+        /// <summary>
+        /// Represents default state.
+        /// </summary>
+        Unavailable,
+
+        /// <summary>
+        /// Represents succeeded state.
+        /// </summary>
+        Succeeded,
+
+        /// <summary>
+        /// Represents failed scenario.
+        /// </summary>
+        Failed,
+
+        /// <summary>
+        /// Represents timed out state.
+        /// </summary>
+        TimedOut,
+
+        /// <summary>
+        /// Represents in progress state.
+        /// </summary>
+        InProgress
+    }
+
+    /// <summary>
     /// Represents the error type.
     /// </summary>
     public enum ErrorType
@@ -57,28 +88,32 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     }
 
     /// <summary>
-    /// Azure Site Recovery vault upgrade details.
+    /// Recovery services vault upgrade response.
     /// </summary>
-    public class ASRVaultUpgradeDetails
+    public class ASRVaultUpgradeResponse
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRVaultUpgradeDetails" /> class.
+        /// Initializes a new instance of the <see cref="ASRVaultUpgradeResponse" /> class.
         /// </summary>
-        public ASRVaultUpgradeDetails()
+        public ASRVaultUpgradeResponse()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRVaultUpgradeDetails" /> class with required
+        /// Initializes a new instance of the <see cref="ASRVaultUpgradeResponse" /> class with required
         /// parameters.
         /// </summary>
         /// <param name="resourceUpgradeDetails">Resource upgrade details.</param>
-        public ASRVaultUpgradeDetails(ResourceUpgradeDetails resourceUpgradeDetails)
+        /// <param name="operationResult">Vault upgrade operation result.</param>
+        /// <param name="operationStatus">Vault upgrade operation status.</param>
+        /// <param name="message">Upgrade status.</param>
+        public ASRVaultUpgradeResponse(ResourceUpgradeDetails resourceUpgradeDetails, string operationResult, string operationStatus, string message)
         {
             this.OperationId = resourceUpgradeDetails.OperationId;
             this.StartTimeUtc = resourceUpgradeDetails.StartTimeUtc;
-            this.LastUpdatedTimeUtc = resourceUpgradeDetails.LastUpdatedTimeUtc;
-            this.Status = resourceUpgradeDetails.Status;
+            this.OperationResult = operationResult;
+            this.OperationStatus = operationStatus;
+            this.UpgradeStatus = message;
         }
 
         #region Properties
@@ -93,14 +128,49 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public DateTime StartTimeUtc { get; set; }
 
         /// <summary>
-        /// Gets or sets last updated time.
+        /// Gets or sets the operation result.
         /// </summary>
-        public DateTime LastUpdatedTimeUtc { get; set; }
+        public string OperationResult { get; set; }
 
         /// <summary>
-        /// Gets or sets the status.
+        /// Gets or sets the operation response.
         /// </summary>
-        public string Status { get; set; }
+        public string OperationStatus { get; set; }
+
+        /// <summary>
+        /// Gets or sets the upgrade status.
+        /// </summary>
+        public string UpgradeStatus { get; set; }
+        #endregion
+    }
+
+    /// <summary>
+    /// Test vault upgrade response.
+    /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related classes together.")]
+    public class ASRTestVaultUpgradeResponse
+    {
+        #region Constructor
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ASRTestVaultUpgradeResponse" /> class
+        /// </summary>
+        public ASRTestVaultUpgradeResponse()
+        {
+        }
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the operation's response.
+        /// </summary>
+        public string Response { get; set; }
+
         #endregion
     }
 

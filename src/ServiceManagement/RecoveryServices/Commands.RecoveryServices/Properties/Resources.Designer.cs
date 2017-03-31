@@ -79,15 +79,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Prerequisites check for vault upgrade failed..
-        /// </summary>
-        internal static string CheckPrereqFailed {
-            get {
-                return ResourceManager.GetString("CheckPrereqFailed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Successfully completed prerequisites check for vault upgrade..
         /// </summary>
         internal static string CheckPrereqSucceeded {
@@ -415,15 +406,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         internal static string ServerNotFound {
             get {
                 return ResourceManager.GetString("ServerNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Starting prerequisites check for vault upgrade....
-        /// </summary>
-        internal static string StartingPrerequisitesCheck {
-            get {
-                return ResourceManager.GetString("StartingPrerequisitesCheck", resourceCulture);
             }
         }
         

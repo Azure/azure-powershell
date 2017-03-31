@@ -176,12 +176,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                                     Properties.Resources.StartVaultUpgradeExceptionDetails,
                                     clientRequestIdMsg,
                                     error.Message.Value);
-                                this.ThrowTerminatingError(
-                                    new ErrorRecord(
-                                        new InvalidOperationException(msg),
-                                        string.Empty,
-                                        ErrorCategory.InvalidOperation,
-                                        null));
+                                this.WriteVaultUpgradeError(new InvalidOperationException(msg));
                             }
                             else
                             {
@@ -197,12 +192,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                                     exceptionMessage.AppendLine(Properties.Resources.VaultUpgradeExceptionDetails).AppendLine(" ");
                                     exceptionMessage.Append(this.recoveryServicesClient.ParseError(error));
                                     exceptionMessage.AppendLine(clientRequestIdMsg);
-                                    this.ThrowTerminatingError(
-                                        new ErrorRecord(
-                                            new InvalidOperationException(exceptionMessage.ToString()),
-                                            string.Empty,
-                                            ErrorCategory.InvalidOperation,
-                                            null));
+                                    this.WriteVaultUpgradeError(
+                                        new InvalidOperationException(exceptionMessage.ToString()));
                                 }
                             }
                         }
@@ -270,15 +261,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
         /// <summary>
-        /// Writes content to the screen.
+        /// Error to be written for vault upgrade operations.
         /// </summary>
-        /// <param name="contents">Data to be printed on the screen.</param>
-        public void WriteResponse(string contents)
+        /// <param name="ex">The Exception.</param>
+        public void WriteVaultUpgradeError(Exception ex)
         {
-            this.WriteObject(Environment.NewLine);
-            this.WriteObject(contents);
+            this.WriteError(
+                new ErrorRecord(
+                    ex,
+                    string.Empty,
+                    ErrorCategory.InvalidOperation,
+                    null));
         }
-
+        
         /// <summary>
         /// Handles interrupts.
         /// </summary>

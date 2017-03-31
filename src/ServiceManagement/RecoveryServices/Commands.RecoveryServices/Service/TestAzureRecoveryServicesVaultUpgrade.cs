@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Management.Automation;
+using System.Net;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// Used to validate vault upgrade prerequisites.
     /// </summary>
     [Cmdlet(VerbsDiagnostic.Test, "AzureRecoveryServicesVaultUpgrade")]
-    [OutputType(typeof(List<string>))]
+    [OutputType(typeof(ASRTestVaultUpgradeResponse))]
     public class TestAzureRecoveryServicesVaultUpgrade : RecoveryServicesCmdletBase
     {
         #region Parameters
@@ -68,39 +68,44 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
-                this.WriteResponse(Properties.Resources.StartingPrerequisitesCheck);
-                this.RecoveryServicesClient.TestVaultUpgradePrerequistes(
-                    this.VaultName,
-                    this.Location,
-                    this.ResourceType,
-                    this.TargetResourceGroupName,
-                    this.Profile.Context.Subscription.Id.ToString());
+                AzureOperationResponse response = 
+                    this.RecoveryServicesClient.TestVaultUpgradePrerequistes(
+                        this.VaultName,
+                        this.Location,
+                        this.ResourceType,
+                        this.TargetResourceGroupName,
+                        this.Profile.Context.Subscription.Id.ToString());
 
-                this.WriteObject(Properties.Resources.CheckPrereqSucceeded);
-                this.WriteObject(Environment.NewLine);
+                ASRTestVaultUpgradeResponse output = new ASRTestVaultUpgradeResponse()
+                {
+                    Response = response.StatusCode == HttpStatusCode.OK ?
+                        Properties.Resources.CheckPrereqSucceeded :
+                        response.StatusCode.ToString()
+                };
+
+                this.WriteObject(output, true);
             }
             catch (Exception exception)
             {
                 ExceptionDetails details =
                     this.HandleVaultUpgradeException(exception);
-                if (!string.IsNullOrEmpty(details.WarningDetails))
-                {
-                    this.WriteWarning(details.WarningDetails + Environment.NewLine);
-                }
 
-                if (!string.IsNullOrEmpty(details.ErrorDetails))
+                if (details != null)
                 {
-                    Exception ex = new InvalidOperationException(
-                        string.Format(
-                            Properties.Resources.ConfirmVaultUpgradePrereqFailed,
-                            Properties.Resources.VaultUpgradeExceptionDetails,
-                            details.ErrorDetails));
-                    this.ThrowTerminatingError(
-                        new ErrorRecord(
-                            ex,
-                            string.Empty,
-                            ErrorCategory.InvalidOperation,
-                            null));
+                    if (!string.IsNullOrEmpty(details.WarningDetails))
+                    {
+                        this.WriteWarning(details.WarningDetails + Environment.NewLine);
+                    }
+
+                    if (!string.IsNullOrEmpty(details.ErrorDetails))
+                    {
+                        Exception ex = new InvalidOperationException(
+                            string.Format(
+                                Properties.Resources.ConfirmVaultUpgradePrereqFailed,
+                                Properties.Resources.VaultUpgradeExceptionDetails,
+                                details.ErrorDetails));
+                        this.WriteVaultUpgradeError(ex);
+                    }
                 }
             }
         }

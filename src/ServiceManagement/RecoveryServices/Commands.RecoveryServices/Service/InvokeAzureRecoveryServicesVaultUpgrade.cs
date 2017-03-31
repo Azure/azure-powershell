@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// Used to initiate vault upgrade operation.
     /// </summary>
     [Cmdlet(VerbsLifecycle.Invoke, "AzureRecoveryServicesVaultUpgrade", SupportsShouldProcess = true)]
-    [OutputType(typeof(List<string>))]
+    [OutputType(typeof(ASRVaultUpgradeResponse))]
     public class InvokeAzureRecoveryServicesVaultUpgrade : RecoveryServicesCmdletBase
     {
         #region Parameters
@@ -77,7 +77,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             CheckVaultUpgradePrerequisitesResponse result =
                 this.ValidateVaultUpgradePrerequisites();
-
+            if (result == CheckVaultUpgradePrerequisitesResponse.Failed)
+            {
+                return;
+            }
+            
             bool actionConfirmed = false;
             ResourceUpgradeDetails response = null;
             string message = result == CheckVaultUpgradePrerequisitesResponse.Succeeded ?
@@ -86,27 +90,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             try
             {
-                this.ConfirmAction(
-                    this.Force.IsPresent,
-                    string.Format(message),
-                    Properties.Resources.StartVaultUpgradeWhatIfMessage,
-                    this.VaultName,
-                    () =>
-                        {
-                            response = this.RecoveryServicesClient.StartVaultUpgrade(
-                                this.VaultName,
-                                this.Location,
-                                this.ResourceType,
-                                this.TargetResourceGroupName,
-                                this.Profile.Context.Subscription.Id.ToString());
+                if (this.ShouldProcess(this.VaultName, Properties.Resources.StartVaultUpgradeWhatIfMessage) &&
+                    (this.Force.IsPresent || this.ShouldContinue(string.Format(message), string.Empty)))
+                {
+                    response = this.RecoveryServicesClient.StartVaultUpgrade(
+                        this.VaultName,
+                        this.Location,
+                        this.ResourceType,
+                        this.TargetResourceGroupName,
+                        this.Profile.Context.Subscription.Id.ToString());
 
-                            actionConfirmed = true;
-                        });
+                    actionConfirmed = true;
+                }
 
                 if (actionConfirmed)
                 {
-                    this.WriteObject(new ASRVaultUpgradeDetails(response));
-                    this.WaitForJobCompletion();
+                    this.WaitForJobCompletion(response);
                 }
             }
             catch (Exception exception)
@@ -118,7 +117,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Track resource upgrade operation.
         /// </summary>
-        private void WaitForJobCompletion()
+        /// <param name="details">StartVaultUpgrade response.</param> 
+        private void WaitForJobCompletion(ResourceUpgradeDetails details)
         {
             TrackResourceUpgradeResponse response = null;
             DateTime startTime = DateTime.Now;
@@ -146,35 +146,47 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 elapsedSeconds < taskTimeoutInSeconds &&
                 !this.StopProcessingFlag);
 
+            record.RecordType = ProgressRecordType.Completed;
+            this.WriteProgress(record);
+
+            string operationResult = string.Empty;
+            string operationStatus = string.Empty;
+            string message = string.Empty;
+
             if (response.OperationStatus == Constants.Completed)
             {
-                this.WriteResponse(
-                    string.Format(
-                        Properties.Resources.TrackVaultUpgradeJobResult,
-                        response.OperationResult,
-                        response.OperationStatus));
-
+                operationResult = response.OperationResult;
+                operationStatus = response.OperationStatus;
+                    
                 if (response.OperationResult == Constants.Succeeded)
                 {
-                    this.WriteResponse(
+                    message =
                         string.Format(
                             Properties.Resources.VaultUpgradeSucceded,
                             this.ResourceType,
-                            this.VaultName));
+                            this.VaultName);
                 }
                 else
                 {
-                    this.WriteResponse(Properties.Resources.VaultUpgradeNotSucceded);
+                    message =
+                        Properties.Resources.VaultUpgradeNotSucceded;
                 }
             }
             else if (this.StopProcessingFlag)
             {
-                this.WriteResponse(Properties.Resources.VaultUpgradeTerminated);
+                operationResult = VaultUpgradeOperationResult.Unavailable.ToString();
+                operationStatus = VaultUpgradeOperationResult.InProgress.ToString();
+                message = Properties.Resources.VaultUpgradeTerminated;
             }
             else
             {
-                this.WriteResponse(Properties.Resources.VaultUpgradeTimedOut);
+                operationResult = VaultUpgradeOperationResult.Failed.ToString();
+                operationStatus = VaultUpgradeOperationResult.TimedOut.ToString();
+                message = Properties.Resources.VaultUpgradeTimedOut;
             }
+
+            this.WriteObject(
+                new ASRVaultUpgradeResponse(details, operationResult, operationStatus, message));
         }
 
         /// <summary>
@@ -186,8 +198,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             CheckVaultUpgradePrerequisitesResponse response =
                 CheckVaultUpgradePrerequisitesResponse.Succeeded;
 
-            this.WriteResponse(Properties.Resources.StartingPrerequisitesCheck);
-
             try
             {
                 this.RecoveryServicesClient.TestVaultUpgradePrerequistes(
@@ -196,36 +206,36 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     this.ResourceType,
                     this.TargetResourceGroupName,
                     this.Profile.Context.Subscription.Id.ToString());
-
-                this.WriteObject(Properties.Resources.CheckPrereqSucceeded);
             }
             catch (Exception exception)
             {
-                this.WriteObject(Properties.Resources.CheckPrereqFailed);
                 ExceptionDetails details =
                     this.HandleVaultUpgradeException(exception);
-                if (!string.IsNullOrEmpty(details.WarningDetails))
+
+                if (details != null)
                 {
-                    this.WriteWarning(details.WarningDetails + Environment.NewLine);
-                }
+                    if (!string.IsNullOrEmpty(details.WarningDetails))
+                    {
+                        this.WriteWarning(details.WarningDetails + Environment.NewLine);
+                        response = CheckVaultUpgradePrerequisitesResponse.SucceededWithWarnings;
+                    }
 
-                if (!string.IsNullOrEmpty(details.ErrorDetails))
+                    if (!string.IsNullOrEmpty(details.ErrorDetails))
+                    {
+                        response = CheckVaultUpgradePrerequisitesResponse.Failed;
+                        Exception ex = new InvalidOperationException(
+                            string.Format(
+                                Properties.Resources.ConfirmVaultUpgradePrereqFailed,
+                                Properties.Resources.VaultUpgradeExceptionDetails,
+                                details.ErrorDetails));
+
+                        this.WriteVaultUpgradeError(ex);
+                    }
+                }
+                else
                 {
-                    Exception ex = new InvalidOperationException(
-                        string.Format(
-                            Properties.Resources.ConfirmVaultUpgradePrereqFailed,
-                            Properties.Resources.VaultUpgradeExceptionDetails,
-                            details.ErrorDetails));
-
-                    this.ThrowTerminatingError(
-                        new ErrorRecord(
-                            ex,
-                            string.Empty,
-                            ErrorCategory.InvalidOperation,
-                            null));
+                    response = CheckVaultUpgradePrerequisitesResponse.Failed;
                 }
-
-                response = CheckVaultUpgradePrerequisitesResponse.SucceededWithWarnings;
             }
 
             return response;
