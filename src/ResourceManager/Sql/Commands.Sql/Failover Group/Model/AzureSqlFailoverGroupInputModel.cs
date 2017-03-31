@@ -23,14 +23,6 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Model
         /// Gets or sets the read-write endpoint
         /// </summary>
 
-        public ReadWriteEndpoint FailoverGroupReadWriteEndpoint { get; set; }
-
-        /// <summary>
-        /// Gets or sets the read-only endpoint
-        /// </summary>
-        public ReadOnlyEndpoint FailoverGroupReadOnlyEndpoint { get; set; }
-
-
         /// <summary>
         /// Gets or sets the name of the partner resource group name
         /// </summary>
