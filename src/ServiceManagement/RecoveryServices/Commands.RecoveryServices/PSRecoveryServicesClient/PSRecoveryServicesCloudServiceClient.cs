@@ -84,6 +84,44 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
         /// <summary>
+        /// Return cloud service name associated with given vault in the given geo.
+        /// </summary>
+        /// <param name="vaultName">Vault name.</param>
+        /// <param name="geo">Vault geo.</param>
+        /// <param name="resourceType">Vault type.</param>
+        /// <returns>Cloud service name.</returns>
+        public string GetCloudServiceName(string vaultName, string geo, string resourceType)
+        {
+            string cloudServiceName = null;
+            IEnumerable<CloudService> cloudServiceList = this.GetCloudServices();
+
+            foreach (var cloudService in cloudServiceList)
+            {
+                foreach (var vault in cloudService.Resources)
+                {
+                    if (vault.Name.Equals(vaultName, StringComparison.InvariantCultureIgnoreCase) &&
+                        cloudService.GeoRegion.Equals(geo, StringComparison.InvariantCultureIgnoreCase) &&
+                        vault.Type.Equals(resourceType, StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        cloudServiceName = cloudService.Name;
+                        break;
+                    }
+                }
+            }
+
+            if (string.IsNullOrEmpty(cloudServiceName))
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.VaultNotFoundInGeo,
+                    vaultName,
+                    geo));
+            }
+
+            return cloudServiceName;
+        }
+
+        /// <summary>
         /// Checks whether a cloud service is present or not.
         /// </summary>
         /// <param name="cloudServiceName">name of the cloud service to be created</param>

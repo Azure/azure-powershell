@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,15 +23,15 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// <summary>
         /// Service tier advisor for this database
         /// </summary>
-        public Management.Sql.Models.ServiceTierAdvisorProperties ServiceTierAdvisor { get; set; }
+        public Management.Sql.LegacySdk.Models.ServiceTierAdvisorProperties ServiceTierAdvisor { get; set; }
 
         /// <summary>
-        /// Construct AzureSqlDatabaseModelExpanded from Management.Sql.Models.Database object
+        /// Construct AzureSqlDatabaseModelExpanded from Management.Sql.LegacySdk.Models.Database object
         /// </summary>
         /// <param name="resourceGroup">Resource group</param>
         /// <param name="serverName">Server name</param>
         /// <param name="database">Database object</param>
-        public AzureSqlDatabaseModelExpanded(string resourceGroup, string serverName, Management.Sql.Models.Database database) : base(resourceGroup, serverName, database)
+        public AzureSqlDatabaseModelExpanded(string resourceGroup, string serverName, Management.Sql.LegacySdk.Models.Database database) : base(resourceGroup, serverName, database)
         {
             if (database.Properties.ServiceTierAdvisors != null
                 && database.Properties.ServiceTierAdvisors.Count > 0)

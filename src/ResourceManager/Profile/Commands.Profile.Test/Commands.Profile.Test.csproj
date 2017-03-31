@@ -187,6 +187,7 @@
     <Compile Include="ProfileController.cs" />
     <Compile Include="RPRegistrationDelegatingHandlerTests.cs" />
     <Compile Include="SubscriptionCmdletTests.cs" />
+    <Compile Include="TelemetryTests.cs" />
     <Compile Include="TenantCmdletTests.cs" />
     <Compile Include="LoginCmdletTests.cs" />
     <Compile Include="ContextCmdletTests.cs" />
