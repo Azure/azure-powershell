@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.Sql.Auditing.Services;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Server.Services;
 using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
 using System.Linq;
 
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         {
             AzureSqlServerCommunicator dbCommunicator = new AzureSqlServerCommunicator(Context);
             Management.Sql.Models.Server server = dbCommunicator.Get(resourceGroupName, serverName, clientId);
-            return server.Properties.Version == "12.0";
+            return server.Version == "12.0";
         }
 
         /// <summary>
