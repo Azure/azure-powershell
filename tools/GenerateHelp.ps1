@@ -48,5 +48,3 @@ if ($GenerateMamlHelp)
 {
     $HelpFolders | foreach { Generate-MamlHelp $_ }
 }
-
-$HelpFolders | foreach { Remove-Item -Path $_ -Recurse -Force }
