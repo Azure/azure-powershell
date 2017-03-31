@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             return boolean != null && boolean.Value;
         }
 
-        public IEnumerable<string> GetStreamRows(string streamPath, string accountName, long numRows, Encoding encoding, bool reverse=false)
+        public IEnumerable<string> GetStreamRows(string streamPath, string accountName, int numRows, Encoding encoding, bool reverse=false)
         {
             // read data 4MB at a time
             // when reading backwards, this may change to ensure that we don't re-read data as we approach the beginning of the file.
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             }
 
             // while we haven't finished loading all the rows, keep grabbing content
-            long readRows = 0;
+            var readRows = 0;
             while (readRows < numRows)
             {
                 if (initialOffset < 0)
@@ -296,12 +296,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                     break;
                 }
             }
-            if (toReturn.Count() > numRows)
+            if (toReturn.LongCount() > numRows)
             {
                 // we could end up with, at most, ~4mb of extra data worth of rows.
                 // this ensures that we only return either the top or tail number of
                 // rows the caller wants.
-                return toReturn.GetRange((int)(reverse ? toReturn.Count() - numRows : 0), (int)numRows);
+                return toReturn.GetRange((int)(reverse ? toReturn.LongCount() - numRows : 0), numRows);
             }
             return toReturn;
         }

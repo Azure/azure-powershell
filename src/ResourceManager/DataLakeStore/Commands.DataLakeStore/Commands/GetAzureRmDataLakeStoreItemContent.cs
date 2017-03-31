@@ -61,11 +61,13 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             HelpMessage =
                 "The number of rows (new line delimited) from the beginning of the file to preview. If no new line is encountered in the first 4mb of data, only that data will be returned."
             )]
-        public long Head { get; set; }
+        [ValidateRange(1, int.MaxValue)]
+        public int Head { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, ParameterSetName = TailRowParameterSetName, Mandatory = false,
             HelpMessage = "The number of rows (new line delimited) from the end of the file to preview. If no new line is encountered in the first 4mb of data, only that data will be returned.")]
-        public long Tail { get; set; }
+        [ValidateRange(1, int.MaxValue)]
+        public int Tail { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, ParameterSetName = BaseParameterSetName, Mandatory = false,
             HelpMessage =
@@ -130,22 +132,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                     });
             }
             else if (this.ParameterSetName.Equals(HeadRowParameterSetName, StringComparison.OrdinalIgnoreCase))
-            {
-                if (Head < 1)
-                {
-                    throw new InvalidOperationException(string.Format(Resources.InvalidHeadValue, Head));
-                }
-
+            {                
                 var encoding = GetEncoding(Encoding);
                 WriteObject(DataLakeStoreFileSystemClient.GetStreamRows(Path.TransformedPath, Account, Head, encoding), true);
             }
             else
             {
-                if (Tail < 1)
-                {
-                    throw new InvalidOperationException(string.Format(Resources.InvalidTailValue, Tail));
-                }
-
                 var encoding = GetEncoding(Encoding);
                 WriteObject(DataLakeStoreFileSystemClient.GetStreamRows(Path.TransformedPath, Account, Tail, encoding, reverse: true), true);
             }

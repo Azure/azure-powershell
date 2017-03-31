@@ -180,9 +180,6 @@
   <data name="InvalidFilePath" xml:space="preserve">
     <value>Invalid file path: {0}. Files cannot end in '/' or '\\'. If creating a folder please use the -Folder flag</value>
   </data>
-  <data name="InvalidHeadValue" xml:space="preserve">
-    <value>-Head must be a positive, non-zero number. Please specify either -Head or -Tail as a positive, non-zero number. Value of Head: {0}.</value>
-  </data>
   <data name="InvalidMovePathTypeCombination" xml:space="preserve">
     <value>The source and destination path type must be the same. Both paths must be webhdfs compliant paths.</value>
   </data>
@@ -203,9 +200,6 @@
   </data>
   <data name="InvalidSourceDestinationPathTypeCombination" xml:space="preserve">
     <value>The source and destination path type cannot be the same. One must be webhdfs qualified and the other a local or network path.</value>
-  </data>
-  <data name="InvalidTailValue" xml:space="preserve">
-    <value>-Tail must be a positive, non-zero number. Please specify either -Head or -Tail as a positive, non-zero number. Value of Tail: {0}.</value>
   </data>
   <data name="LargeDownloadWarning" xml:space="preserve">
     <value>Download a very large amount of data</value>
