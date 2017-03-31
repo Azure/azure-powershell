@@ -146,7 +146,7 @@
 			ShadowCopy="false"
 			ParallelizeTestCollections="false"
 			ParallelizeAssemblies="true"
-			ExcludeTraits="RunType=LiveOnly"
+			ExcludeTraits="RunType=LiveOnly;AcceptanceType=CheckIn"
 			Html="$(TestOutputDirectory)\AzurePowershellAllTestResults.html"
 			MaxParallelThreads="10"
 			DiagnosticMessages="false"

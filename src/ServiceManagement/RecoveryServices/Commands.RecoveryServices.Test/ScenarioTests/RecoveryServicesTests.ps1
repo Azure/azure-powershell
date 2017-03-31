@@ -1208,6 +1208,20 @@ function Test-DisableProtection
 
 <#
 .SYNOPSIS
+Recovery Services Vault Upgrade Tests
+#>
+function Test-VaultUpgrade
+{
+	param([string] $ResourceType, [string] $VaultName, [string] $Location, [string] $TargetResourceGroupName)
+	$prereqCheckResult = Test-AzureRecoveryServicesVaultUpgrade –ResourceType $ResourceType  -VaultName $VaultName -Location $Location –TargetResourceGroupName $TargetResourceGroupName 
+	Assert-NotNull($prereqCheckResult)
+
+	$res = Invoke-AzureRecoveryServicesVaultUpgrade –ResourceType $ResourceType -VaultName $VaultName -Location $Location –TargetResourceGroupName $TargetResourceGroupName -Force
+	Assert-NotNull($res) "Upgrade Succeeded."
+}
+
+<#
+.SYNOPSIS
 Recovery Services Enable Protection Tests
 #>
 function WaitForCanFailover

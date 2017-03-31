@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Model;
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Servi
         /// <param name="serverName">The name of the Azure Sql Server</param>
         /// <param name="serverDisasterRecoveryConfiguration">The service response</param>
         /// <returns>The converted model</returns>
-        public static AzureSqlServerDisasterRecoveryConfigurationModel CreateServerDisasterRecoveryConfigurationModelFromResponse(string resourceGroup, string serverName, Management.Sql.Models.ServerDisasterRecoveryConfiguration serverDisasterRecoveryConfiguration)
+        public static AzureSqlServerDisasterRecoveryConfigurationModel CreateServerDisasterRecoveryConfigurationModelFromResponse(string resourceGroup, string serverName, Management.Sql.LegacySdk.Models.ServerDisasterRecoveryConfiguration serverDisasterRecoveryConfiguration)
         {
             return new AzureSqlServerDisasterRecoveryConfigurationModel(resourceGroup, serverName, serverDisasterRecoveryConfiguration);
         }
