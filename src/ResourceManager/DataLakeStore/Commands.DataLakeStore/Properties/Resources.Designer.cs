@@ -178,15 +178,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to -Head and -Tail are mutually exclusive and must be a positive, non-zero number. Please specify either -Head or -Tail as a positive, non-zero number. Value of Head: {0}. Value of Tail: {1}.
-        /// </summary>
-        internal static string HeadAndTailTogetherError {
-            get {
-                return ResourceManager.GetString("HeadAndTailTogetherError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to User supplied Key Vault information. For service managed encryption user supplied Key Vault information is ignored..
         /// </summary>
         internal static string IgnoredKeyVaultParams {
@@ -259,6 +250,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to -Head must be a positive, non-zero number. Please specify either -Head or -Tail as a positive, non-zero number. Value of Head: {0}..
+        /// </summary>
+        internal static string InvalidHeadValue {
+            get {
+                return ResourceManager.GetString("InvalidHeadValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The source and destination path type must be the same. Both paths must be webhdfs compliant paths..
         /// </summary>
         internal static string InvalidMovePathTypeCombination {
@@ -318,6 +318,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         internal static string InvalidSourceDestinationPathTypeCombination {
             get {
                 return ResourceManager.GetString("InvalidSourceDestinationPathTypeCombination", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to -Tail must be a positive, non-zero number. Please specify either -Head or -Tail as a positive, non-zero number. Value of Tail: {0}..
+        /// </summary>
+        internal static string InvalidTailValue {
+            get {
+                return ResourceManager.GetString("InvalidTailValue", resourceCulture);
             }
         }
         
