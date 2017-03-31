@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,14 +32,14 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Model
         }
 
         /// <summary>
-        /// Construct AzureSqlElasticPoolRecommendedActionModel from Management.Sql.Models.Advisor object
+        /// Construct AzureSqlElasticPoolRecommendedActionModel from Management.Sql.LegacySdk.Models.Advisor object
         /// </summary>
         /// <param name="resourceGroupName">Resource group</param>
         /// <param name="serverName">Server name</param>
         /// <param name="elasticPoolName">Elastic Pool name</param>
         /// <param name="advisorName">Advisor name</param>
         /// <param name="recommendedAction">Recommended Action object</param>
-        public AzureSqlElasticPoolRecommendedActionModel(string resourceGroupName, string serverName, string elasticPoolName, string advisorName, Management.Sql.Models.RecommendedAction recommendedAction)
+        public AzureSqlElasticPoolRecommendedActionModel(string resourceGroupName, string serverName, string elasticPoolName, string advisorName, Management.Sql.LegacySdk.Models.RecommendedAction recommendedAction)
         : base(resourceGroupName, serverName, advisorName, recommendedAction)
         {
             ElasticPoolName = elasticPoolName;

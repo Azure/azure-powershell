@@ -1,16 +1,16 @@
 {
   "Entries": [
     {
-      "RequestUri": "/a0d901ba-9956-4f7d-830c-2d7974c36666/services/hostedservices/*",
-      "EncodedRequestUri": "L2EwZDkwMWJhLTk5NTYtNGY3ZC04MzBjLTJkNzk3NGMzNjY2Ni9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy8lMkE=",
+      "RequestUri": "/ace9b607-25c7-4695-b94d-9bfc8fde73d9/services/hostedservices/*",
+      "EncodedRequestUri": "L2FjZTliNjA3LTI1YzctNDY5NS1iOTRkLTliZmM4ZmRlNzNkOS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy8lMkE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-06-01"
+          "2017-01-01"
         ],
         "User-Agent": [
-          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/14.0.0.0"
         ]
       },
       "ResponseBody": "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Code>BadRequest</Code>\r\n  <Message>The hosted service name is invalid.</Message>\r\n</Error>",
@@ -22,39 +22,40 @@
           "application/xml; charset=utf-8"
         ],
         "x-ms-servedbyregion": [
-          "ussouth3"
+          "ussouth2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "9fe36abeae3162089c3902f56c31352d"
+          "4c3ef8586266761686596ebce25d4d6f"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 21 Jan 2016 11:24:57 GMT"
+          "Tue, 28 Mar 2017 23:50:47 GMT"
         ],
         "Server": [
-          "1.0.6198.306",
-          "(rd_rdfe_stable.160114-1616)",
+          "1.0.6198.492",
+          "(rd_rdfe_stable.170314-1904)",
+          "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
         ]
       },
       "StatusCode": 400
     },
     {
-      "RequestUri": "/a0d901ba-9956-4f7d-830c-2d7974c36666/services/hostedservices/*/deploymentslots/Production",
-      "EncodedRequestUri": "L2EwZDkwMWJhLTk5NTYtNGY3ZC04MzBjLTJkNzk3NGMzNjY2Ni9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy8lMkEvZGVwbG95bWVudHNsb3RzL1Byb2R1Y3Rpb24=",
+      "RequestUri": "/ace9b607-25c7-4695-b94d-9bfc8fde73d9/services/hostedservices/*/deploymentslots/Production",
+      "EncodedRequestUri": "L2FjZTliNjA3LTI1YzctNDY5NS1iOTRkLTliZmM4ZmRlNzNkOS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy8lMkEvZGVwbG95bWVudHNsb3RzL1Byb2R1Y3Rpb24=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-06-01"
+          "2017-01-01"
         ],
         "User-Agent": [
-          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/14.0.0.0"
         ]
       },
       "ResponseBody": "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Code>BadRequest</Code>\r\n  <Message>The hosted service name is invalid.</Message>\r\n</Error>",
@@ -66,31 +67,32 @@
           "application/xml; charset=utf-8"
         ],
         "x-ms-servedbyregion": [
-          "ussouth3"
+          "ussouth2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "031f88f1b864625bbeb9af94134d1e92"
+          "ce8d30cde0d57beeb08c9e053107acb1"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 21 Jan 2016 11:24:58 GMT"
+          "Tue, 28 Mar 2017 23:50:47 GMT"
         ],
         "Server": [
-          "1.0.6198.306",
-          "(rd_rdfe_stable.160114-1616)",
+          "1.0.6198.492",
+          "(rd_rdfe_stable.170314-1904)",
+          "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
         ]
       },
       "StatusCode": 400
     },
     {
-      "RequestUri": "/a0d901ba-9956-4f7d-830c-2d7974c36666/affinitygroups/*",
-      "EncodedRequestUri": "L2EwZDkwMWJhLTk5NTYtNGY3ZC04MzBjLTJkNzk3NGMzNjY2Ni9hZmZpbml0eWdyb3Vwcy8lMkE=",
+      "RequestUri": "/ace9b607-25c7-4695-b94d-9bfc8fde73d9/affinitygroups/*",
+      "EncodedRequestUri": "L2FjZTliNjA3LTI1YzctNDY5NS1iOTRkLTliZmM4ZmRlNzNkOS9hZmZpbml0eWdyb3Vwcy8lMkE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -110,20 +112,21 @@
           "application/xml; charset=utf-8"
         ],
         "x-ms-servedbyregion": [
-          "ussouth3"
+          "ussouth2"
         ],
         "x-ms-request-id": [
-          "3a30bc8b9e5c64dd97fd240fc0508b85"
+          "7a1417fc7445798bb2f02353b2a43841"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 21 Jan 2016 11:24:59 GMT"
+          "Tue, 28 Mar 2017 23:50:49 GMT"
         ],
         "Server": [
-          "1.0.6198.306",
-          "(rd_rdfe_stable.160114-1616)",
+          "1.0.6198.492",
+          "(rd_rdfe_stable.170314-1904)",
+          "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
         ]
       },
@@ -132,6 +135,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "a0d901ba-9956-4f7d-830c-2d7974c36666"
+    "SubscriptionId": "ace9b607-25c7-4695-b94d-9bfc8fde73d9"
   }
 }

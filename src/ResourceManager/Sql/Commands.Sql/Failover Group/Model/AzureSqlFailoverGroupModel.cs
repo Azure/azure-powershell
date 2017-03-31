@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Model
@@ -92,13 +92,13 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Model
         }
 
         /// <summary>
-        /// Construct AzureSqlServerfailoverGroupModel from Management.Sql.Models.FailoverGroup object
+        /// Construct AzureSqlServerfailoverGroupModel from Management.Sql.LegacySdk.Models.FailoverGroup object
         /// </summary>
         /// <param name="resourceGroupName">Resource group</param>
         /// <param name="serverName">Server name</param>
         /// <param name="advisorName">Advisor name</param>
         /// <param name="failoverGroup">Recommended Action object</param>
-        public AzureSqlFailoverGroupModel(string resourceGroupName, string serverName, string failoverGroupName, Management.Sql.Models.FailoverGroup failoverGroup)
+        public AzureSqlFailoverGroupModel(string resourceGroupName, string serverName, string failoverGroupName, Management.Sql.LegacySdk.Models.FailoverGroup failoverGroup)
         {
             ResourceGroupName = resourceGroupName;
             ServerName = serverName;
