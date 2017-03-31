@@ -477,6 +477,7 @@ Describe "Uninstall-ModuleHelper" {
             # Arrange
             $VersionObj = New-Object -TypeName System.Version -ArgumentList "1.0" 
             $moduleObj = New-Object -TypeName PSObject 
+            $moduleObj | Add-Member NoteProperty -Name "Path" -Value "TestPath"
             $moduleObj | Add-Member NoteProperty Version($VersionObj)
             $Script:mockCalled = 0
             $mockTestPath = {
@@ -494,7 +495,63 @@ Describe "Uninstall-ModuleHelper" {
             Mock Uninstall-Module -Verifiable { throw "No match was found for the specified search criteria and module names" }
             It "Should write error to error pipeline" {
                 Uninstall-ModuleHelper -Module 'Module1' -Version '1.0' -Profile 'Profile1' -RemovePreviousVersions -ErrorVariable ev -ea SilentlyContinue 
-                ($ev -match "unable to uninstall" -ne $null) | Should be $true
+                ($ev -match "If you installed the module to a custom directory in your path" -ne $null) | Should be $true
+                $Script:mockCalled | Should Be 1
+                Assert-VerifiableMocks
+            }
+        }
+
+        Context "Uninstall-Module threw error: MSI Install" {
+            # Arrange
+            $VersionObj = New-Object -TypeName System.Version -ArgumentList "1.0" 
+            $moduleObj = New-Object -TypeName PSObject 
+            $moduleObj | Add-Member NoteProperty -Name "Path" -Value "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\PowerShell\"
+            $moduleObj | Add-Member NoteProperty Version($VersionObj)
+            $Script:mockCalled = 0
+            $mockTestPath = {
+                $Script:mockCalled++
+                if ($Script:mockCalled -eq 1)
+                {
+                    return $moduleObj
+                }
+                else {
+                    return $null
+                }
+            }   
+
+            Mock -CommandName Get-Module -MockWith $mockTestPath
+            Mock Uninstall-Module -Verifiable { throw "No match was found for the specified search criteria and module names" }
+            It "Should write error to error pipeline" {
+                Uninstall-ModuleHelper -Module 'Module1' -Version '1.0' -Profile 'Profile1' -RemovePreviousVersions -ErrorVariable ev -ea SilentlyContinue 
+                ($ev -match "If you installed via an MSI" -ne $null) | Should be $true
+                $Script:mockCalled | Should Be 1
+                Assert-VerifiableMocks
+            } 
+        }
+
+        Context "Uninstall-Module threw error: In Use" {
+            # Arrange
+            $VersionObj = New-Object -TypeName System.Version -ArgumentList "1.0" 
+            $moduleObj = New-Object -TypeName PSObject 
+            $moduleObj | Add-Member NoteProperty -Name "Path" -Value "TestPath"
+            $moduleObj | Add-Member NoteProperty Version($VersionObj)
+            $Script:mockCalled = 0
+            $mockTestPath = {
+                $Script:mockCalled++
+                if ($Script:mockCalled -eq 1)
+                {
+                    return $moduleObj
+                }
+                else {
+                    return $null
+                }
+            }   
+
+            Mock -CommandName Get-Module -MockWith $mockTestPath
+            Mock Uninstall-Module -Verifiable { throw "The module is currently in use" }
+            It "Should write error to error pipeline" {
+                Uninstall-ModuleHelper -Module 'Module1' -Version '1.0' -Profile 'Profile1' -RemovePreviousVersions -ErrorVariable ev -ea SilentlyContinue 
+                ($ev -match "The module is currently in use" -ne $null) | Should be $true
                 $Script:mockCalled | Should Be 1
                 Assert-VerifiableMocks
             } 
