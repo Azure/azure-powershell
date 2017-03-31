@@ -21,13 +21,13 @@ Get-AzureRmDataLakeStoreItemContent [-Account] <String> [-Path] <DataLakeStorePa
 
 ### Preview file rows from the head of the file
 ```
-Get-AzureRmDataLakeStoreItemContent [-Account] <String> [-Path] <DataLakeStorePathInstance> [-Head <Int64>]
+Get-AzureRmDataLakeStoreItemContent [-Account] <String> [-Path] <DataLakeStorePathInstance> [-Head <Int32>]
  [[-Encoding] <FileSystemCmdletProviderEncoding>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Preview file rows from the tail of the file
 ```
-Get-AzureRmDataLakeStoreItemContent [-Account] <String> [-Path] <DataLakeStorePathInstance> [-Tail <Int64>]
+Get-AzureRmDataLakeStoreItemContent [-Account] <String> [-Path] <DataLakeStorePathInstance> [-Tail <Int32>]
  [[-Encoding] <FileSystemCmdletProviderEncoding>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 
 ### -Head
 The number of rows (new line delimited) from the beginning of the file to preview. If no new line is encountered in the first 4mb of data, only that data will be returned.```yaml
-Type: Int64
+Type: Int32
 Parameter Sets: Preview file rows from the head of the file
 Aliases: 
 
@@ -170,7 +170,7 @@ Accept wildcard characters: False
 
 ### -Tail
 The number of rows (new line delimited) from the end of the file to preview. If no new line is encountered in the first 4mb of data, only that data will be returned.```yaml
-Type: Int64
+Type: Int32
 Parameter Sets: Preview file rows from the tail of the file
 Aliases: 
 
