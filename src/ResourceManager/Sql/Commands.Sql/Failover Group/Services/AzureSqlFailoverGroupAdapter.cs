@@ -107,9 +107,9 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
             partnerServers.Add(partnerServer);
 
             ReadOnlyEndpoint readOnlyEndpoint = new ReadOnlyEndpoint();
-            readOnlyEndpoint.FailoverPolicy = model.ReadOnlyFailoverPolicy == null ? AllowReadOnlyFailoverToPrimary.Disabled.ToString() : model.ReadOnlyFailoverPolicy;
+            readOnlyEndpoint.FailoverPolicy = model.ReadOnlyFailoverPolicy;
             ReadWriteEndpoint readWriteEndpoint = new ReadWriteEndpoint();
-            readWriteEndpoint.FailoverPolicy = model.ReadWriteFailoverPolicy == null ? FailoverPolicy.Manual.ToString() : model.ReadWriteFailoverPolicy;
+            readWriteEndpoint.FailoverPolicy = model.ReadWriteFailoverPolicy;
 
             if (model.FailoverWithDataLossGracePeriodHours.HasValue && !string.Equals(model.ReadWriteFailoverPolicy, FailoverPolicy.Manual.ToString()))
             {
@@ -145,21 +145,14 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         internal AzureSqlFailoverGroupModel PatchUpdateFailoverGroup(AzureSqlFailoverGroupModel model)
         {
             ReadOnlyEndpoint readOnlyEndpoint = new ReadOnlyEndpoint();
-            readOnlyEndpoint.FailoverPolicy = model.ReadOnlyFailoverPolicy == null ? AllowReadOnlyFailoverToPrimary.Disabled.ToString() : model.ReadOnlyFailoverPolicy;
+            readOnlyEndpoint.FailoverPolicy = model.ReadOnlyFailoverPolicy;
 
             ReadWriteEndpoint readWriteEndpoint = new ReadWriteEndpoint();
-            readWriteEndpoint.FailoverPolicy = model.ReadWriteFailoverPolicy == null ? FailoverPolicy.Manual.ToString() : model.ReadWriteFailoverPolicy;
+            readWriteEndpoint.FailoverPolicy = model.ReadWriteFailoverPolicy;
 
             if (!string.Equals(model.ReadWriteFailoverPolicy, FailoverPolicy.Manual.ToString()))
             {
-                if (!model.FailoverWithDataLossGracePeriodHours.HasValue)
-                {
-                    readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = 0;
-                }
-                else
-                {
-                    readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = model.FailoverWithDataLossGracePeriodHours * 60;
-                }
+                readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = model.FailoverWithDataLossGracePeriodHours * 60;
             }
             else
             {
