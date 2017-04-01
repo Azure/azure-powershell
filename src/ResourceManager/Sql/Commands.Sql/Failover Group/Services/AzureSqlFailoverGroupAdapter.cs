@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
             ReadWriteEndpoint readWriteEndpoint = new ReadWriteEndpoint();
             readWriteEndpoint.FailoverPolicy = model.ReadWriteFailoverPolicy;
 
-            if (model.FailoverWithDataLossGracePeriodHours.HasValue && !string.Equals(model.ReadWriteFailoverPolicy, FailoverPolicy.Manual.ToString()))
+            if (model.FailoverWithDataLossGracePeriodHours.HasValue)
             {
                 readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = model.FailoverWithDataLossGracePeriodHours * 60;
             }
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
             ReadWriteEndpoint readWriteEndpoint = new ReadWriteEndpoint();
             readWriteEndpoint.FailoverPolicy = model.ReadWriteFailoverPolicy;
 
-            if (!string.Equals(model.ReadWriteFailoverPolicy, FailoverPolicy.Manual.ToString()))
+            if (model.FailoverWithDataLossGracePeriodHours.HasValue)
             {
                 readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = model.FailoverWithDataLossGracePeriodHours * 60;
             }
@@ -158,8 +158,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
             {
                 readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = null;
             }
-
-
+            
             var resp = Communicator.PatchUpdate(model.ResourceGroupName, model.ServerName, model.FailoverGroupName, Util.GenerateTracingId(), new FailoverGroupPatchUpdateParameters()
             {
                 Location = model.Location,

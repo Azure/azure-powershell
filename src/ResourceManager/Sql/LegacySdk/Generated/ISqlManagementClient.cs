@@ -21,11 +21,8 @@
 
 using System;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.Azure;
 using Microsoft.Azure.Management.Sql.LegacySdk;
-using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 
 namespace Microsoft.Azure.Management.Sql.LegacySdk
 {
@@ -395,21 +392,5 @@ namespace Microsoft.Azure.Management.Sql.LegacySdk
         {
             get; 
         }
-        
-        /// <summary>
-        /// Gets the status of an Azure Sql Database Failover Group Force
-        /// Failover operation.
-        /// </summary>
-        /// <param name='operationStatusLink'>
-        /// Location value returned by the Begin operation
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// Cancellation token.
-        /// </param>
-        /// <returns>
-        /// Response for long running Azure Sql Database Failover Group
-        /// operation.
-        /// </returns>
-        Task<FailoverGroupForceFailoverResponse> GetFailoverGroupForceFailoverAllowDataLossOperationStatusAsync(string operationStatusLink, CancellationToken cancellationToken);
     }
 }

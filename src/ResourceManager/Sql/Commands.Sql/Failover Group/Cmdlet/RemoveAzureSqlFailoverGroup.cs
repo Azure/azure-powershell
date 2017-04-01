@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.Sql.FailoverGroup.Model;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
-using System;
 
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
 {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The partner resource group name for Azure SQL Database Failover Group.")]
         [ValidateNotNullOrEmpty]
-        [Obsolete("This parameter will be deprecated in the next release.")]
         public string PartnerResourceGroupName { get; set; }
 
         /// <summary>
@@ -49,7 +47,6 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         [Parameter(Mandatory = true,
             HelpMessage = "The partner server name for Azure SQL Database Failover Group.")]
         [ValidateNotNullOrEmpty]
-        [Obsolete("This parameter will be deprecated in the next release.")]
         public string PartnerServerName { get; set; }
 
         /// <summary>
@@ -79,12 +76,10 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             List<AzureSqlFailoverGroupModel> newEntity = new List<AzureSqlFailoverGroupModel>();
             newEntity.Add(new AzureSqlFailoverGroupModel()
             {
-#pragma warning disable 0618
                 ResourceGroupName = ResourceGroupName,
                 ServerName = ServerName,
                 PartnerResourceGroupName = MyInvocation.BoundParameters.ContainsKey("PartnerResourceGroupName") ? PartnerResourceGroupName : ResourceGroupName,
                 PartnerServerName = PartnerServerName,
-#pragma warning restore 0618
             });
             return newEntity;
         }

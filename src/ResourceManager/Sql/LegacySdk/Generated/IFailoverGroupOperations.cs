@@ -23,6 +23,7 @@ using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Azure;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 
 namespace Microsoft.Azure.Management.Sql.LegacySdk
@@ -62,78 +63,6 @@ namespace Microsoft.Azure.Management.Sql.LegacySdk
         /// operation.
         /// </returns>
         Task<FailoverGroupCreateOrUpdateResponse> BeginCreateOrUpdateAsync(string resourceGroupName, string serverName, string failoverGroupName, FailoverGroupCreateOrUpdateParameters parameters, CancellationToken cancellationToken);
-        
-        /// <summary>
-        /// Begins deleting an existing Azure SQL Database Failover Group .To
-        /// determine the status of the operation call
-        /// GetFailoverGroupDeleteOperationStatus.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the Resource Group to which the server belongs.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the Azure SQL Server to which the Azure SQL Database
-        /// Failover Group belongs
-        /// </param>
-        /// <param name='failoverGroupName'>
-        /// The name of the Azure SQL Database Failover Group.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// Cancellation token.
-        /// </param>
-        /// <returns>
-        /// Response for long running Azure SQL Database Failover Group delete
-        /// operations.
-        /// </returns>
-        Task<FailoverGroupDeleteResponse> BeginDeleteAsync(string resourceGroupName, string serverName, string failoverGroupName, CancellationToken cancellationToken);
-        
-        /// <summary>
-        /// Begins the failover operation without data loss for the Azure SQL
-        /// Database Failover Group with the given name.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the Resource Group to which the Azure SQL Database
-        /// Server belongs.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the Azure SQL Database Server on which the Azure SQL
-        /// Database Failover Group is hosted.
-        /// </param>
-        /// <param name='failoverGroupName'>
-        /// The name of the Azure SQL Database Failover Group to be failovered.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// Cancellation token.
-        /// </param>
-        /// <returns>
-        /// Response for long running Azure Sql Database Failover Group
-        /// operation.
-        /// </returns>
-        Task<FailoverGroupFailoverResponse> BeginFailoverAsync(string resourceGroupName, string serverName, string failoverGroupName, CancellationToken cancellationToken);
-        
-        /// <summary>
-        /// Begins the force failover operation without data loss for the Azure
-        /// SQL Database Failover Group with the given name.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the Resource Group to which the Azure SQL Database
-        /// Server belongs.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the Azure SQL Database Server on which the Azure SQL
-        /// Database Failover Group is hosted.
-        /// </param>
-        /// <param name='failoverGroupName'>
-        /// The name of the Azure SQL Database Failover Group to be failovered.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// Cancellation token.
-        /// </param>
-        /// <returns>
-        /// Response for long running Azure Sql Database Failover Group
-        /// operation.
-        /// </returns>
-        Task<FailoverGroupForceFailoverResponse> BeginForceFailoverAllowDataLossAsync(string resourceGroupName, string serverName, string failoverGroupName, CancellationToken cancellationToken);
         
         /// <summary>
         /// Begins adding databases to an existing Azure SQL Database Failover
@@ -210,10 +139,10 @@ namespace Microsoft.Azure.Management.Sql.LegacySdk
         /// Cancellation token.
         /// </param>
         /// <returns>
-        /// Response for long running Azure SQL Database Failover Group delete
-        /// operations.
+        /// A standard service response including an HTTP status code and
+        /// request ID.
         /// </returns>
-        Task<FailoverGroupDeleteResponse> DeleteAsync(string resourceGroupName, string serverName, string failoverGroupName, CancellationToken cancellationToken);
+        Task<AzureOperationResponse> DeleteAsync(string resourceGroupName, string serverName, string failoverGroupName, CancellationToken cancellationToken);
         
         /// <summary>
         /// Issue the failover operation without data loss for the Azure SQL
@@ -234,10 +163,10 @@ namespace Microsoft.Azure.Management.Sql.LegacySdk
         /// Cancellation token.
         /// </param>
         /// <returns>
-        /// Response for long running Azure Sql Database Failover Group
-        /// operation.
+        /// A standard service response including an HTTP status code and
+        /// request ID.
         /// </returns>
-        Task<FailoverGroupFailoverResponse> FailoverAsync(string resourceGroupName, string serverName, string failoverGroupName, CancellationToken cancellationToken);
+        Task<AzureOperationResponse> FailoverAsync(string resourceGroupName, string serverName, string failoverGroupName, CancellationToken cancellationToken);
         
         /// <summary>
         /// Issue the forced failover operation with data loss for the Azure
@@ -259,10 +188,10 @@ namespace Microsoft.Azure.Management.Sql.LegacySdk
         /// Cancellation token.
         /// </param>
         /// <returns>
-        /// Response for long running Azure Sql Database Failover Group
-        /// operation.
+        /// A standard service response including an HTTP status code and
+        /// request ID.
         /// </returns>
-        Task<FailoverGroupForceFailoverResponse> ForceFailoverAllowDataLossAsync(string resourceGroupName, string serverName, string failoverGroupName, CancellationToken cancellationToken);
+        Task<AzureOperationResponse> ForceFailoverAllowDataLossAsync(string resourceGroupName, string serverName, string failoverGroupName, CancellationToken cancellationToken);
         
         /// <summary>
         /// Returns information about an Azure SQL Database Failover Group.
@@ -285,38 +214,6 @@ namespace Microsoft.Azure.Management.Sql.LegacySdk
         /// Represents the response to a Get Azure Sql Failover Group request.
         /// </returns>
         Task<FailoverGroupGetResponse> GetAsync(string resourceGroupName, string serverName, string failoverGroupName, CancellationToken cancellationToken);
-        
-        /// <summary>
-        /// Gets the status of an Azure SQL Database Failover Group delete
-        /// operation.
-        /// </summary>
-        /// <param name='operationStatusLink'>
-        /// Location value returned by the Begin operation
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// Cancellation token.
-        /// </param>
-        /// <returns>
-        /// Response for long running Azure SQL Database Failover Group delete
-        /// operations.
-        /// </returns>
-        Task<FailoverGroupDeleteResponse> GetDeleteOperationStatusAsync(string operationStatusLink, CancellationToken cancellationToken);
-        
-        /// <summary>
-        /// Gets the status of an Azure Sql Database Failover Group Failover
-        /// operation.
-        /// </summary>
-        /// <param name='operationStatusLink'>
-        /// Location value returned by the Begin operation
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// Cancellation token.
-        /// </param>
-        /// <returns>
-        /// Response for long running Azure Sql Database Failover Group
-        /// operation.
-        /// </returns>
-        Task<FailoverGroupFailoverResponse> GetFailoverGroupFailoverOperationStatusAsync(string operationStatusLink, CancellationToken cancellationToken);
         
         /// <summary>
         /// Gets the status of an Azure Sql Database Failover Group create or
