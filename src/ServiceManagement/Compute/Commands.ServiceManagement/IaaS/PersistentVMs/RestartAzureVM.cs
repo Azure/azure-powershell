@@ -112,9 +112,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
             {
                 return;
             }
-
+#pragma warning disable 0618
             string roleName = (this.ParameterSetName.Contains("ByName")) ? this.Name : this.VM.RoleName;
-
+#pragma warning restore 0618
             if (this.Redeploy.IsPresent)
             { // Redeploy VM
                 ExecuteClientActionNewSM(
