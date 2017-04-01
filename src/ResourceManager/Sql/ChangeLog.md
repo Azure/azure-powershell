@@ -18,7 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
-
+* Bug fixes on Azure Failover Group Cmdlets
+	- Fix for operation polling
+	- Fix GracePeriodWithDataLossHour value when setting FailoverPolicy to Manual
+	- Adding obsolete warnings to upcoming parameter changes.
 ## Version 2.7.0
 * Bug fix - Auditing and Threat Detection cmdlets now return a meangfull error instead of null refernce error. 
 * Updating Transparent Data Encryption (TDE) with Bring Your Own Key (BYOK) support cmdlets for updated API.
