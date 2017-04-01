@@ -8,6 +8,7 @@ schema: 2.0.0
 # New-AzureRmVirtualNetworkGatewayConnection
 
 ## SYNOPSIS
+Creates a Virtual Network Gateway Connection
 
 ## SYNTAX
 
@@ -32,13 +33,28 @@ New-AzureRmVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <St
 ```
 
 ## DESCRIPTION
+The Virtual Network Gateway Connection is the object representing the IPsec tunnel (Site-to-Site or Vnet-to-Vnet) connected to your Virtual Network Gateway in Azure.
+
+The **New-AzureRmVirtualNetworkGatewayConnection** cmdlet creates the object of your connection based on Name, Resource Group Name, and Location of the connection as well as the objects of the two gateways this connection will be connecting. Also included are the Connection Type and Shared Key.
 
 ## EXAMPLES
 
-### 1:
+### 1: Create a Site-to-Site Virtual Network Gateway Connection
 ```
+New-AzureRmVirtualNetworkGatewayConnection -Name "localToVpn" -ResourceGroupName "myRG" -Location "West US" -VirtualNetworkGateway1 $gw -LocalNetworkGateway2 $local -ConnectionType IPsec -SharedKey "abc123"
+```
+Creates the object of the Virtual Network Gateway Connection with the name "localToVpn" within the resource group "myRG" in location "West US" belonging to the virtual network gateway in the variable "gw" and connecting to the local network gateway in the variable "local." The connection type is "IPsec" because this is a Site-to-Site connection, and the shared key should be more complex than "abc123" but should match what is definied in the local gateway.
 
+### 2: Create a Vnet-to-Vnet Virtual Network Gateway Connection
 ```
+New-AzureRmVirtualNetworkGatewayConnection -Name "connectionAB" -ResourceGroupName "myRG" -Location "West US" -VirtualNetworkGateway1 $gwA -VirtualNetworkGateway2 $gwB -ConnectionType Vnet2Vnet -SharedKey "abc123"
+
+New-AzureRmVirtualNetworkGatewayConnection -Name "connectionBA" -ResourceGroupName "myRG" -Location "West US" -VirtualNetworkGateway1 $gwB -VirtualNetworkGateway2 $gwA -ConnectionType Vnet2Vnet -SharedKey "abc123"
+```
+Creates the object of the Virtual Network Gateway Connection with the name "connectionAB" within the resource group "myRG" in location "West US" belonging to the virtual network gateway in the variable "gwA" and connecting to the virtual network gateway in the variable "gwB."
+The connection type is "Vnet2Vnet" because this is a Vnet-to-Vnet connection, and the shared key should be more complex than "abc123" but should match what is definied in the both connections.
+
+Since the Connection object belongs to the first Virtual Network Gateway (gwA, here), another Virutal Network Gateway Connection must be created beloning to the second Gateway (gwB, here) and attaching to the first Gateway (gwA). This is show in the second command, where the connection is named "connectionBA."
 
 ## PARAMETERS
 
