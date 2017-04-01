@@ -19,8 +19,8 @@
 -->
 ## Current Release
 * Bug fixes on Azure Failover Group Cmdlets
-	- Corporate Hydra fix for operation polling
-	- Fix nullifying GracePeriodWithDataLossHour when setting FailoverPolicy to Manual
+	- Fix for operation polling
+	- Fix GracePeriodWithDataLossHour value when setting FailoverPolicy to Manual
 	- Adding obsolete warnings to upcoming parameter changes.
 ## Version 2.7.0
 * Bug fix - Auditing and Threat Detection cmdlets now return a meangfull error instead of null refernce error. 
