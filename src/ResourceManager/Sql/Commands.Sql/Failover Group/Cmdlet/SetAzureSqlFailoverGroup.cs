@@ -19,6 +19,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System;
 
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
 {
@@ -53,6 +54,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The grace period for failover with data loss of the failover group. This property defines how big of the window we tolerate for data loss during failover operation")]
         [ValidateNotNullOrEmpty]
+        [Obsolete("This parameter will be deprecated in the next release.")]
         public int GracePeriodWithDataLossHour { get; set; }
 
         /// <summary>
@@ -68,6 +70,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The tag to associate with the Azure SQL Database Failover Group")]
+        [Obsolete("This parameter will be deprecated in the next release.")]
         public Hashtable Tag { get; set; }
 
         /// <summary>
@@ -88,6 +91,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// <returns>The model that was passed in</returns>
         protected override IEnumerable<AzureSqlFailoverGroupModel> ApplyUserInputToModel(IEnumerable<AzureSqlFailoverGroupModel> model)
         {
+#pragma warning disable 0618
             string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
             List<AzureSqlFailoverGroupModel> newEntity = new List<AzureSqlFailoverGroupModel>();
             AzureSqlFailoverGroupModel newModel = model.First();
@@ -98,6 +102,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             newEntity.Add(newModel);
 
             return newEntity;
+#pragma warning restore 0618
         }
 
         /// <summary>
