@@ -19,7 +19,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System;
 
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
 {
@@ -67,7 +66,6 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The window of grace period that we tolerate with data loss during a failover operation for the failover group.")]
         [ValidateNotNullOrEmpty]
-        [Obsolete("This parameter will be deprecated in the next release.")]
         public int GracePeriodWithDataLossHour { get; set; }
 
         /// <summary>
@@ -81,8 +79,6 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// <summary>
         /// Gets or sets the tag associated with the Azure SQL Database Failover Group
         /// </summary>
-        /// 
-        [Obsolete("This parameter will be deprecated in the next release.")]
         [Parameter(Mandatory = false,
             HelpMessage = "The tag to associate with the Azure SQL Database Failover Group")]
         public Hashtable Tag { get; set; }
@@ -127,7 +123,6 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             List<AzureSqlFailoverGroupModel> newEntity = new List<AzureSqlFailoverGroupModel>();
             newEntity.Add(new AzureSqlFailoverGroupModel()
             {
-#pragma warning disable 0618
                 ResourceGroupName = ResourceGroupName,
                 ServerName = ServerName,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
@@ -138,7 +133,6 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
                 ReadWriteFailoverPolicy = FailoverPolicy.ToString(),
                 FailoverWithDataLossGracePeriodHours = GracePeriodWithDataLossHour,
                 ReadOnlyFailoverPolicy = AllowReadOnlyFailoverToPrimary.ToString()
-#pragma warning restore 0618
             });
             return newEntity;
         }
