@@ -53,7 +53,6 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The tags to associate with the Azure SQL Database Failover Group")]
-        [Obsolete("This parameter will be deprecated in the next release.")]
         public Hashtable Tag { get; set; }
 
         /// <summary>
