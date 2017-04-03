@@ -1422,7 +1422,7 @@
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>DatabaseName</maml:name>
-<maml:Description><maml:para>Specifies the name of the database that holds the credential.
+<maml:Description><maml:para>Specifies the name of the database in the Data Lake Analytics acocunt that the credential will be stored in.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1494,7 +1494,7 @@
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>DatabaseName</maml:name>
-<maml:Description><maml:para>Specifies the name of the database that holds the credential.
+<maml:Description><maml:para>Specifies the name of the database in the Data Lake Analytics acocunt that the credential will be stored in.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1584,7 +1584,7 @@
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>DatabaseName</maml:name>
-<maml:Description><maml:para>Specifies the name of the database that holds the credential.
+<maml:Description><maml:para>Specifies the name of the database in the Data Lake Analytics acocunt that the credential will be stored in.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -2994,7 +2994,7 @@
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>DatabaseName</maml:name>
-<maml:Description><maml:para>Specifies the name of the database holding the secret.
+<maml:Description><maml:para>Specifies the name of the database in the Data Lake Analytics account holding the credential.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -3075,7 +3075,7 @@
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>DatabaseName</maml:name>
-<maml:Description><maml:para>Specifies the name of the database holding the secret.
+<maml:Description><maml:para>Specifies the name of the database in the Data Lake Analytics account holding the credential.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -3165,7 +3165,7 @@
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>DatabaseName</maml:name>
-<maml:Description><maml:para>Specifies the name of the database holding the secret.
+<maml:Description><maml:para>Specifies the name of the database in the Data Lake Analytics account holding the credential.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -3232,7 +3232,7 @@
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1: Modify a credential's password associated with an account</maml:title>
-<dev:code>PS C:\&gt; Set-AzureRmDataLakeAnalyticsCatalogSecret -AccountName "ContosoAdlAccount" `
+<dev:code>PS C:\&gt; Set-AzureRmDataLakeAnalyticsCatalogCredential -AccountName "ContosoAdlAccount" `
                   -DatabaseName "databaseName" `
                   -CredentialName "credName" `
                   -Credential (Get-Credential) `
