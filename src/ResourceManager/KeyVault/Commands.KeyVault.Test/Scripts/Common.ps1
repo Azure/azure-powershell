@@ -15,6 +15,7 @@
 $global:createdKeys = @()
 $global:createdSecrets = @()
 $global:createdCertificates = @()
+$global:createdManagedStorageAccounts = @()
 
 $invocationPath = Split-Path $MyInvocation.MyCommand.Definition;
 
@@ -71,6 +72,33 @@ Get test certificate name
 function Get-CertificateName([string]$suffix)
 {
     return 'pshtc-' + $global:testns + '-' + $suffix
+}
+
+<#
+.SYNOPSIS
+Get test key vault managed storage account name
+#>
+function Get-ManagedStorageAccountName([string]$suffix)
+{
+    return 'pshtmsa' + $global:testns + $suffix
+}
+
+<#
+.SYNOPSIS
+Get test key vault managed storage sas definition name
+#>
+function Get-ManagedStorageSasDefinitionName([string]$suffix)
+{
+    return 'pshtmsas' + $global:testns + $suffix
+}
+
+<#
+.SYNOPSIS
+Get Storage resource id for managed storage account tests.
+#>
+function Get-KeyVaultManagedStorageResourceId
+{
+    return $global:storageResourceId
 }
 
 <#
@@ -230,6 +258,20 @@ function Cleanup-OldSecrets
 	}
 }
 
+<#
+.SYNOPSIS
+Remove all old managed storage accounts starting with the given prefix.
+#>
+function Cleanup-OldManagedStorageAccounts
+{
+    Write-Host "Cleaning up old managed storage accounts..."
+
+    $keyVault = Get-KeyVault
+    $managedStorageAccountPattern = Get-ManagedStorageAccountName '*'
+    Get-AzureKeyVaultManagedStorageAccount $keyVault |
+        Where-Object {$_.AccountName -like $managedStorageAccountPattern} |
+        Remove-AzureKeyVaultManagedStorageAccount -Force -Confirm:$false
+}
 
 <#
 .SYNOPSIS
@@ -240,6 +282,17 @@ function Initialize-CertificateTest
     $keyVault = Get-KeyVault
     $certificatePattern = Get-CertificateName '*'
     Get-AzureKeyVaultCertificate $keyVault  | Where-Object {$_.Name -like $certificatePattern}  | Remove-AzureKeyVaultCertificate -Force
+}
+
+<#
+.SYNOPSIS
+Removes all managed storage accounts starting with the prefix
+#>
+function Initialize-ManagedStorageAccountTest
+{
+    $keyVault = Get-KeyVault
+    $managedStorageAccountPattern = Get-ManagedStorageAccountName '*'
+    Get-AzureKeyVaultManagedStorageAccount $keyVault  | Where-Object {$_.AccountName -like $managedStorageAccountPattern}  | Remove-AzureKeyVaultManagedStorageAccount -Force
 }
 
 <#
@@ -401,6 +454,30 @@ function Wait-ForDeletedSecret ([string] $vault, [string] $secretName)
 
 <#
 .SYNOPSIS
+Removes all managed storage accounts.
+#>
+function Cleanup-SingleManagedStorageAccountTest
+{
+    $global:createdManagedStorageAccounts | % {
+       if ($_ -ne $null)
+       {
+         try
+         {
+            $keyVault = Get-KeyVault
+            Write-Debug "Removing managed storage account with name $_ in vault $keyVault"
+            $catch = Remove-AzureKeyVaultManagedStorageAccount $keyVault $_ -Force -Confirm:$false
+         }
+         catch 
+         {
+         }
+      }
+    }
+
+    $global:createdManagedStorageAccounts.Clear()
+}
+
+<#
+.SYNOPSIS
 Run a key test, with cleanup.
 #>
 function Run-KeyTest ([ScriptBlock] $test, [string] $testName)
@@ -436,6 +513,18 @@ function Run-CertificateTest ([ScriptBlock] $test, [string] $testName)
    finally 
    {
      Cleanup-SingleCertificateTest *>> "$testName.debug_log"
+   }
+}
+
+function Run-ManagedStorageAccountTest ([ScriptBlock] $test, [string] $testName)
+{   
+   try 
+   {
+     Run-Test $test $testName *>> "$testName.debug_log"
+   }
+   finally 
+   {
+     Cleanup-SingleManagedStorageAccountTest *>> "$testName.debug_log"
    }
 }
 
