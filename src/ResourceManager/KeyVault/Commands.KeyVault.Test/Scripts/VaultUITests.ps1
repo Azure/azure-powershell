@@ -16,6 +16,26 @@ function CreateAKVCertificate(
     return $createdCert
 }
 
+function CreateAKVManagedStorageAccount(
+    [string] $keyVault,
+    [string] $managedStorageAccountName)
+{
+    $storageAccountResourceId = Get-KeyVaultManagedStorageResourceId
+    $createdManagedStorageAccount = Set-AzureKeyVaultManagedStorageAccount $keyVault $managedStorageAccountName $storageAccountResourceId 'key1' -DisableAutoRegenerateKey
+    return $createdManagedStorageAccount
+}
+
+function CreateAKVManagedStorageSasDefinition(
+    [string] $keyVault,
+    [string] $managedStorageAccountName,
+    [string] $managedStorageSasDefinitionName)
+{
+    $storageAccountResourceId = Get-KeyVaultManagedStorageResourceId
+    Set-AzureKeyVaultManagedStorageAccount $keyVault $managedStorageAccountName $storageAccountResourceId 'key1' -DisableAutoRegenerateKey
+    $createdManagedStorageSasDefinition = Set-AzureKeyVaultManagedStorageSasDefinition $keyVault $managedStorageAccountName $managedStorageSasDefinitionName -Parameter @{"sasType"="service";"serviceSasType"="blob";"signedResourceTypes"="b";"signedVersion"="2016-05-31";"signedProtocols"="https";"signedIp"="168.1.5.60-168.1.5.70";"validityPeriod"="P30D";"signedPermissions"="ra";"blobName"="blob1";"containerName"="container1";"rscd"="";"rscc"=""}
+    return $createdManagedStorageSasDefinition
+}
+
 <#
 .SYNOPSIS
 Tests remove a key with two confirmations
@@ -279,5 +299,181 @@ function Test_ConfirmThenCancelCertificateRemoval
     $global:ConfirmPreference=$cr
 
     $sec=Get-AzureKeyVaultCertificate -VaultName $keyVault -Name $certificateName
+    Assert-NotNull $sec
+}
+
+<#
+.SYNOPSIS
+Tests remove a managedStorageAccount with two confirmations
+#>
+function Test_RemoveManagedStorageAccountWithTwoConfirmations
+{
+    Write-Host -ForegroundColor Yellow "Type 'Yes' twice"
+    $keyVault = Get-KeyVault
+    $managedStorageAccountName = Get-ManagedStorageAccountName 'remW2'
+    $managedStorageAccount = CreateAKVManagedStorageAccount $keyVault $managedStorageAccountName
+    Assert-NotNull $managedStorageAccount
+    $global:createdManagedStorageAccounts += $managedStorageAccountName
+
+    $cr=$global:ConfirmPreference
+    $global:ConfirmPreference="High"
+    Remove-AzureKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName
+    $global:ConfirmPreference=$cr
+
+    Assert-Throws { Get-AzureKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName }
+}
+
+<#
+.SYNOPSIS
+Tests remove a managedStorageAccount with one confirmations
+#>
+function Test_RemoveManagedStorageAccountWithOneConfirmations
+{
+    Write-Host -ForegroundColor Yellow "Type 'Yes' once"
+    $keyVault = Get-KeyVault
+    $managedStorageAccountName = Get-ManagedStorageAccountName 'remW1'
+    $managedStorageAccount = CreateAKVManagedStorageAccount $keyVault $managedStorageAccountName
+    Assert-NotNull $managedStorageAccount
+    $global:createdManagedStorageAccounts += $managedStorageAccountName
+
+    $cr=$global:ConfirmPreference
+    $global:ConfirmPreference="High"
+    Remove-AzureKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName -Force
+    $global:ConfirmPreference=$cr
+
+    Assert-Throws { Get-AzureKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName }
+}
+
+<#
+.SYNOPSIS
+Tests cancel removing a managedStorageAccount with once
+#>
+function Test_CancelManagedStorageAccountRemovalOnce
+{
+    Write-Host -ForegroundColor Yellow "Type 'No' once"
+    $keyVault = Get-KeyVault
+    $managedStorageAccountName = Get-ManagedStorageAccountName 'remA1'
+    $managedStorageAccount = CreateAKVManagedStorageAccount $keyVault $managedStorageAccountName
+    Assert-NotNull $managedStorageAccount
+    $global:createdManagedStorageAccounts += $managedStorageAccountName
+
+    $cr=$global:ConfirmPreference
+    $global:ConfirmPreference="High"
+    Remove-AzureKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName
+    $global:ConfirmPreference=$cr
+
+    $sec=Get-AzureKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName
+    Assert-NotNull $sec
+}
+
+<#
+.SYNOPSIS
+Tests cancel removing a managedStorageAccount with two prompts
+#>
+function Test_ConfirmThenCancelManagedStorageAccountRemoval
+{
+    Write-Host -ForegroundColor Yellow "Type 'Yes' first. Then type 'No'"
+    $keyVault = Get-KeyVault
+    $managedStorageAccountName = Get-ManagedStorageAccountName 'remA2'
+    $managedStorageAccount = CreateAKVManagedStorageAccount $keyVault $managedStorageAccountName
+    Assert-NotNull $managedStorageAccount
+    $global:createdManagedStorageAccounts += $managedStorageAccountName
+
+    $cr=$global:ConfirmPreference
+    $global:ConfirmPreference="High"
+    Remove-AzureKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName
+    $global:ConfirmPreference=$cr
+
+    $sec=Get-AzureKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName
+    Assert-NotNull $sec
+}
+
+<#
+.SYNOPSIS
+Tests remove a managedStorageSasDefinition with two confirmations
+#>
+function Test_RemoveManagedStorageSasDefinitionWithTwoConfirmations
+{
+    Write-Host -ForegroundColor Yellow "Type 'Yes' twice"
+    $keyVault = Get-KeyVault
+    $managedStorageAccountName = Get-ManagedStorageSasDefinitionName 'remW2'
+    $managedStorageSasDefinitionName = Get-ManagedStorageSasDefinitionName 'remW2'
+    $managedStorageSasDefinition = CreateAKVManagedStorageSasDefinition $keyVault $managedStorageAccountName $managedStorageSasDefinitionName
+    Assert-NotNull $managedStorageSasDefinition
+    $global:createdManagedStorageSasDefinitions += $managedStorageSasDefinitionName
+
+    $cr=$global:ConfirmPreference
+    $global:ConfirmPreference="High"
+    Remove-AzureKeyVaultManagedStorageSasDefinition -VaultName $keyVault -AccountName $managedStorageAccountName -Name $managedStorageSasDefinitionName
+    $global:ConfirmPreference=$cr
+
+    Assert-Throws { Get-AzureKeyVaultManagedStorageSasDefinition -VaultName $keyVault -AccountName $managedStorageAccountName -Name $managedStorageSasDefinitionName }
+}
+
+<#
+.SYNOPSIS
+Tests remove a managedStorageSasDefinition with one confirmations
+#>
+function Test_RemoveManagedStorageSasDefinitionWithOneConfirmations
+{
+    Write-Host -ForegroundColor Yellow "Type 'Yes' once"
+    $keyVault = Get-KeyVault
+    $managedStorageAccountName = Get-ManagedStorageAccountName 'remW1'
+    $managedStorageSasDefinitionName = Get-ManagedStorageSasDefinitionName 'remW1'
+    $managedStorageSasDefinition = CreateAKVManagedStorageSasDefinition $keyVault $managedStorageAccountName $managedStorageSasDefinitionName
+    Assert-NotNull $managedStorageSasDefinition
+    $global:createdManagedStorageSasDefinitions += $managedStorageSasDefinitionName
+
+    $cr=$global:ConfirmPreference
+    $global:ConfirmPreference="High"
+    Remove-AzureKeyVaultManagedStorageSasDefinition -VaultName $keyVault -AccountName $managedStorageAccountName -Name $managedStorageSasDefinitionName -Force
+    $global:ConfirmPreference=$cr
+
+    Assert-Throws { Get-AzureKeyVaultManagedStorageSasDefinition -VaultName $keyVault -AccountName $managedStorageAccountName -Name $managedStorageSasDefinitionName }
+}
+
+<#
+.SYNOPSIS
+Tests cancel removing a managedStorageSasDefinition with once
+#>
+function Test_CancelManagedStorageSasDefinitionRemovalOnce
+{
+    Write-Host -ForegroundColor Yellow "Type 'No' once"
+    $keyVault = Get-KeyVault
+    $managedStorageAccountName = Get-ManagedStorageAccountName 'remA1'
+    $managedStorageSasDefinitionName = Get-ManagedStorageSasDefinitionName 'remA1'
+    $managedStorageSasDefinition = CreateAKVManagedStorageSasDefinition $keyVault $managedStorageAccountName $managedStorageSasDefinitionName
+    Assert-NotNull $managedStorageSasDefinition
+    $global:createdManagedStorageSasDefinitions += $managedStorageSasDefinitionName
+
+    $cr=$global:ConfirmPreference
+    $global:ConfirmPreference="High"
+    Remove-AzureKeyVaultManagedStorageSasDefinition -VaultName $keyVault -AccountName $managedStorageAccountName -Name $managedStorageSasDefinitionName
+    $global:ConfirmPreference=$cr
+
+    $sec=Get-AzureKeyVaultManagedStorageSasDefinition -VaultName $keyVault -AccountName $managedStorageAccountName -Name $managedStorageSasDefinitionName
+    Assert-NotNull $sec
+}
+
+<#
+.SYNOPSIS
+Tests cancel removing a managedStorageSasDefinition with two prompts
+#>
+function Test_ConfirmThenCancelManagedStorageSasDefinitionRemoval
+{
+    Write-Host -ForegroundColor Yellow "Type 'Yes' first. Then type 'No'"
+    $keyVault = Get-KeyVault
+    $managedStorageAccountName = Get-ManagedStorageAccountName 'remA2'
+    $managedStorageSasDefinitionName = Get-ManagedStorageSasDefinitionName 'remA2'
+    $managedStorageSasDefinition = CreateAKVManagedStorageSasDefinition $keyVault $managedStorageAccountName $managedStorageSasDefinitionName
+    Assert-NotNull $managedStorageSasDefinition
+    $global:createdManagedStorageSasDefinitions += $managedStorageSasDefinitionName
+
+    $cr=$global:ConfirmPreference
+    $global:ConfirmPreference="High"
+    Remove-AzureKeyVaultManagedStorageSasDefinition -VaultName $keyVault -AccountName $managedStorageAccountName -Name $managedStorageSasDefinitionName
+    $global:ConfirmPreference=$cr
+
+    $sec=Get-AzureKeyVaultManagedStorageSasDefinition -VaultName $keyVault -AccountName $managedStorageAccountName -Name $managedStorageSasDefinitionName
     Assert-NotNull $sec
 }
