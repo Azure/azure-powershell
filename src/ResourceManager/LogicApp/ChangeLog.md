@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Set-AzureRmIntegrationAccountSchema and Set-AzureRmIntegrationAccountMap cmdlets are fixed for the contentlink issue(Both content and contentlink were set resulting in update failure). 
 
 ## Version 2.7.0
 * New cmdlets for X12 Interchange Control Number disaster recovery:
