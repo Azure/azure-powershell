@@ -1984,17 +1984,17 @@ AzureKeyVaultServiceEndpointResourceId            :</dev:code>
 </command:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<command:details><command:name>Save-AzureRmProfile</command:name>
+<command:details><command:name>Save-AzureRmContext</command:name>
 <command:verb>Save</command:verb>
 <command:noun>AzureRmProfile</command:noun>
 <maml:description><maml:para>Saves the current authentication information for use in other PowerShell sessions.
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>The Save-AzureRmProfile cmdlet saves the current authentication information for use in other PowerShell sessions.
+<maml:description><maml:para>The Save-AzureRmContext cmdlet saves the current authentication information for use in other PowerShell sessions.
 </maml:para>
 </maml:description>
-<command:syntax><command:syntaxItem><maml:name>Save-AzureRmProfile</maml:name>
+<command:syntax><command:syntaxItem><maml:name>Save-AzureRmContext</maml:name>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="none"><maml:name>Profile</maml:name>
 <maml:Description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.
 </maml:para>
@@ -2099,7 +2099,7 @@ AzureKeyVaultServiceEndpointResourceId            :</dev:code>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1: Saving the current session's profile</maml:title>
 <dev:code>PS C:\&gt; Add-AzureRmAccount
-PS C:\&gt; Save-AzureRmProfile -Path C:\test.json</dev:code>
+PS C:\&gt; Save-AzureRmContext -Path C:\test.json</dev:code>
 <dev:remarks><maml:para>This example saves the current session's Azure profile to the JSON file provided.
 </maml:para>
 <maml:para></maml:para>
@@ -2107,7 +2107,7 @@ PS C:\&gt; Save-AzureRmProfile -Path C:\test.json</dev:code>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Saving a given profile</maml:title>
-<dev:code>PS C:\&gt; Save-AzureRmProfile -Profile (Add-AzureRmAccount) -Path C:\test.json</dev:code>
+<dev:code>PS C:\&gt; Save-AzureRmContext -Profile (Add-AzureRmAccount) -Path C:\test.json</dev:code>
 <dev:remarks><maml:para>This example saves the Azure profile that is passed through to the cmdlet to the JSON file provided.
 </maml:para>
 <maml:para></maml:para>
@@ -2115,25 +2115,25 @@ PS C:\&gt; Save-AzureRmProfile -Path C:\test.json</dev:code>
 </dev:remarks>
 </command:example>
 </command:examples>
-<command:relatedLinks><maml:navigationLink><maml:linkText>Select-AzureRMProfile</maml:linkText>
+<command:relatedLinks><maml:navigationLink><maml:linkText>Import-AzureRmContext</maml:linkText>
 <maml:uri></maml:uri>
 </maml:navigationLink>
 </command:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<command:details><command:name>Select-AzureRmProfile</command:name>
+<command:details><command:name>Import-AzureRmContext</command:name>
 <command:verb>Select</command:verb>
 <command:noun>AzureRmProfile</command:noun>
 <maml:description><maml:para>Loads Azure authentication information from a file.
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>The Select-AzureRmProfile cmdlet loads authentication information from a file to set the Azure environment and context. Cmdlets that you run in the current session use this information to authenticate requests to Azure Resource Manager.
+<maml:description><maml:para>The Import-AzureRmContext cmdlet loads authentication information from a file to set the Azure environment and context. Cmdlets that you run in the current session use this information to authenticate requests to Azure Resource Manager.
 </maml:para>
 </maml:description>
-<command:syntax><command:syntaxItem><maml:name>Select-AzureRmProfile</maml:name>
+<command:syntax><command:syntaxItem><maml:name>Import-AzureRmContext</maml:name>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>Path</maml:name>
-<maml:Description><maml:para>Specifies the path to profile information saved by using Save-AzureRMProfile.
+<maml:Description><maml:para>Specifies the path to profile information saved by using Save-AzureRmContext.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -2142,7 +2142,7 @@ PS C:\&gt; Save-AzureRmProfile -Path C:\test.json</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 </command:syntaxItem>
-<command:syntaxItem><maml:name>Select-AzureRmProfile</maml:name>
+<command:syntaxItem><maml:name>Import-AzureRmContext</maml:name>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>Profile</maml:name>
 <maml:Description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.
 </maml:para>
@@ -2155,7 +2155,7 @@ PS C:\&gt; Save-AzureRmProfile -Path C:\test.json</dev:code>
 </command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>Path</maml:name>
-<maml:Description><maml:para>Specifies the path to profile information saved by using Save-AzureRMProfile.
+<maml:Description><maml:para>Specifies the path to profile information saved by using Save-AzureRmContext.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -2186,7 +2186,7 @@ PS C:\&gt; Save-AzureRmProfile -Path C:\test.json</dev:code>
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1: Selecting a profile from a PSAzureProfile</maml:title>
-<dev:code>PS C:\&gt; Select-AzureRmProfile -Profile (Add-AzureRmAccount)
+<dev:code>PS C:\&gt; Import-AzureRmContext -Profile (Add-AzureRmAccount)
 
 Environment           : AzureCloud
 Account               : test@outlook.com
@@ -2201,7 +2201,7 @@ CurrentStorageAccount :</dev:code>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Selecting a profile from a JSON file</maml:title>
-<dev:code>PS C:\&gt; Select-AzureRmProfile -Path C:\test.json
+<dev:code>PS C:\&gt; Import-AzureRmContext -Path C:\test.json
 
 Environment           : AzureCloud
 Account               : test@outlook.com
@@ -2209,7 +2209,7 @@ TenantId              : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 SubscriptionId        : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
 SubscriptionName      : Test Subscription
 CurrentStorageAccount :</dev:code>
-<dev:remarks><maml:para>This example selects a profile from a JSON file that is passed through to the cmdlet. This JSON file can be created from Save-AzureRmProfile.
+<dev:remarks><maml:para>This example selects a profile from a JSON file that is passed through to the cmdlet. This JSON file can be created from Save-AzureRmContext.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>

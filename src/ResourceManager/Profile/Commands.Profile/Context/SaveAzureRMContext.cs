@@ -26,8 +26,10 @@ namespace Microsoft.Azure.Commands.Profile
     /// <summary>
     /// Saves Microsoft Azure profile.
     /// </summary>
-    [Cmdlet(VerbsData.Save, "AzureRmProfile", SupportsShouldProcess = true), OutputType(typeof(PSAzureProfile))]
-    public class SaveAzureRMProfileCommand : AzureRMCmdlet
+    [Cmdlet(VerbsData.Save, "AzureRmContext", SupportsShouldProcess = true), OutputType(typeof(PSAzureProfile))]
+    [Alias("Save-AzureRmProfile")]
+    [Obsolete("Save-AzureRmProfile will be renamed to Save-AzureRmContext in the next release.", false)]
+    public class SaveAzureRMContextCommand : AzureRMCmdlet
     {
         [Parameter(Mandatory = false, Position = 0, ValueFromPipeline = true)]
         public AzureRMProfile Profile { get; set; }
@@ -65,7 +67,7 @@ namespace Microsoft.Azure.Commands.Profile
                         throw new ArgumentException(Resources.AzureProfileMustNotBeNull);
                     }
 
-                    if (!AzureSession.DataStore.FileExists(Path) || Force ||
+                    if (!AzureSession.DataStore.FileExists(Path) || Force.IsPresent ||
                         ShouldContinue(string.Format(Resources.FileOverwriteMessage, Path), 
                         Resources.FileOverwriteCaption))
                     {
