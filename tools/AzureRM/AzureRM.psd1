@@ -149,48 +149,49 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '## 2017.03.09 - Version 3.7.0
-* ApiManagement
-    * Added new cmdlets to manage Backend entity
-        - New-AzureRmApiManagementBackend
-        - Get-AzureRmApiManagementBackend
-        - Set-AzureRmApiManagementBackend
-        - Remove-AzureRmApiManagementBackend
-    * Created supporting cmdlets to create in-memory objects required while Creating or Updating Backend entity
-        - New-AzureRmApiManagementBackendCredential
-        - New-AzureRmApiManagementBackendProxy
-* Billing
-    * New Cmdlet Get-AzureRmBillingInvoice
-        - cmdlet to retrieve azure billing invoices of the subscription.
+        ReleaseNotes = '## 2017.04.05 - Version 3.8.0
 * Compute
-    * Updated Set-AzureRmVMAEMExtension and Test-AzureRmVMAEMExtension cmdlets to support managed disks
+    * Fix bug in Get-* cmdlets, to allow retrieving multiple pages of data (more than 120 items)
+* DataLakeAnalytics
+    * Fix help for some commands to have the proper verbage and examples.
+* DataLakeStore
+    * Add support for head and tail to the `Get-AzureRMDataLakeStoreItemContent` cmdlet. This enables returning the top N or last N new line delimited rows to be displayed.
+* HDInsight
+    * Added support for RServer cluster type
+        - Edgenode VM size can be specified for RServer cluster in New-AzureRmHDInsightCluster or New-AzureRmHDInsightClusterConfig
+        - RServer is now a configuration option in Add-AzureRmHDInsightConfigValues. It allows for RStudio flag to be set to indicate that R Studio installation should be done.
 * LogicApp
-    * New cmdlets for X12 Interchange Control Number disaster recovery:
-        - Get-AzureRmIntegrationAccountGeneratedIcn
-        - Get-AzureRmIntegrationAccountReceivedIcn
-        - Remove-AzureRmIntegrationAccountReceivedIcn
-        - Set-AzureRmIntegrationAccountGeneratedIcn
-        - Set-AzureRmIntegrationAccountReceivedIcn
+    * Set-AzureRmIntegrationAccountSchema and Set-AzureRmIntegrationAccountMap cmdlets are fixed for the contentlink issue(Both content and contentlink were set resulting in update failure). 
 * Network
-    * Added support for connection draining to Application Gateways
-        - Added Get-AzureRmApplicationGatewayConnectionDraining 
-        - Added New-AzureRmApplicationGatewayConnectionDraining
-        - Added Remove-AzureRmApplicationGatewayConnectionDraining 
-        - Added Set-AzureRmApplicationGatewayConnectionDraining
-        - Updated Add-AzureRmApplicationGatewayBackendHttpSettings: Added optional parameter -ConnectionDraining
-        - Updated New-AzureRmApplicationGatewayBackendHttpSettings: Added optional parameter -ConnectionDraining
-        - Updated Set-AzureRmApplicationGatewayBackendHttpSettings: Added optional parameter -ConnectionDraining
-    
-    * Remapped unused ''Name'' parameter in ExpressRoute cmdlets to ''ExpressRouteCircuitName''
-        - Get-AzureRmExpressRouteCircuitARPTable
-        - Get-AzureRmExpressRouteCircuitRouteTable
-        - Get-AzureRmExpressRouteCircuitRouteTableSummary
-        - Get-AzureRmExpressRouteCircuitStats
+    * Added support for new web application firewall features to Application Gateways
+        - Added New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig
+        - Added Get-AzureRmApplicationGatewayAvailableWafRuleSets (Alias: List-AzureRmApplicationGatewayAvailableWafRuleSets)
+        - Updated New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration: Added parameter -RuleSetType -RuleSetVersion and -DisabledRuleGroups
+        - Updated Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration: Added parameter -RuleSetType -RuleSetVersion and -DisabledRuleGroups
+    * Added support for IPSec policies to Virtual Network Gateway Connections
+        - Added New-AzureRmIpsecPolicy
+        - Updated New-AzureRmVirtualNetworkGatewayConnection: Added parameter -IpsecPolicies and -UsePolicyBasedTrafficSelectors
+* Profile
+    * *Obsolete*: Save-AzureRmProfile is renamed to Save-AzureRmContext, there is an alias to the old cmdlet name, the alias will be removed in the next release.
+    * *Obsolete*: Select-AzureRmProfile is renamed to Import-AzureRmContext, there is an alias to the old cmdlet name, the alias will be removed in the next release.
+    * The PSAzureContext and PSAzureProfile output types of profile cmdlets will be changed in the next release.
+    * The Save-AzureRmContext cmdlet will have no OutputType in the next release.
+    * Fix bug in cmdlet common code to use FIPS-compliant algorithm for data hashes: https://github.com/Azure/azure-powershell/issues/3651 
 * Sql
-    * Bug fix - Auditing and Threat Detection cmdlets now return a meangfull error instead of null refernce error. 
-    * Updating Transparent Data Encryption (TDE) with Bring Your Own Key (BYOK) support cmdlets for updated API.
-* Websites
-    * Update help documentation for AppServicePlan cmdlets'
+    * Bug fixes on Azure Failover Group Cmdlets
+        - Fix for operation polling
+        - Fix GracePeriodWithDataLossHour value when setting FailoverPolicy to Manual
+* TrafficManager
+    * Support for the Geographic traffic routing method
+        - New value ''Geographic'' for the TrafficRoutingMethod parameter of New-AzureRmTrafficManagerProfile
+        - New parameter ''GeoMapping'' for the New-AzureRmTrafficManagerEndpoint and Add-AzureRmTrafficManagerEndpointConfig
+        - Fix piping for Get-AzureRmTrafficManagerProfile when it returns a collection of profiles
+* ServiceManagement
+    * Add initiate maintenance PowerShell cmdlet.
+    * Add Maintenance Status field to Get-AzureVM response.
+    * Added new cmdlets to support Recovery Services vault upgrade
+        - Test-AzureRecoveryServicesVaultUpgrade
+        - Invoke-AzureRecoveryServicesVaultUpgrade'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
