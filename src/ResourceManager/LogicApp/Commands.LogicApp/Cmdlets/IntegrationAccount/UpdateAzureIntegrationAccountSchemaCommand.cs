@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (!string.IsNullOrEmpty(this.schemaType))
             {
-                integrationAccountSchemaCopy.SchemaType = (SchemaType) Enum.Parse(typeof(SchemaType), this.SchemaType);
+                integrationAccountSchemaCopy.SchemaType = (SchemaType)Enum.Parse(typeof(SchemaType), this.SchemaType);
             }
 
             if (!string.IsNullOrEmpty(this.ContentType))

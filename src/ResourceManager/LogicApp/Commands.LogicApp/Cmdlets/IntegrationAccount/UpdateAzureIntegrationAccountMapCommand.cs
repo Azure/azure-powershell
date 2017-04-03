@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (!string.IsNullOrEmpty(this.MapType))
             {
-                integrationAccountMapCopy.MapType = (MapType) Enum.Parse(typeof(MapType), this.MapType);
+                integrationAccountMapCopy.MapType = (MapType)Enum.Parse(typeof(MapType), this.MapType);
             }
 
             if (this.Metadata != null)
