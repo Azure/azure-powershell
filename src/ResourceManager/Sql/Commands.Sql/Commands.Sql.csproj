@@ -33,7 +33,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
     <DelaySign>true</DelaySign>
     <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.Sql\</OutputPath>
     <DefineConstants>TRACE;SIGN</DefineConstants>
@@ -62,7 +62,7 @@
     <Compile Include="Failover Group\Cmdlet\SetAzureSqlFailoverGroup.cs" />
     <Compile Include="Failover Group\Cmdlet\Switch-AzureSqlDatabaseFailoverGroup.cs" />
     <Compile Include="Failover Group\Model\AzureSqlFailoverGroupModel.cs" />
-	<Compile Include="Failover Group\Model\FailoverPolicy.cs" />
+    <Compile Include="Failover Group\Model\FailoverPolicy.cs" />
     <Compile Include="Failover Group\Model\AllowReadOnlyFailoverToPrimary.cs" />
     <Compile Include="Failover Group\Services\AzureSqlFailoverGroupAdapter.cs" />
     <Compile Include="Failover Group\Services\AzureSqlFailoverGroupCommunicator.cs" />
@@ -171,12 +171,11 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="MSSharedLibKey.snk" />
+    <None Include="..\MSSharedLibKey.snk" />
     <Content Include="Microsoft.Azure.Commands.Sql.Types.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <None Include="MSSharedLibKey.snk" />
     <Compile Include="Auditing\Cmdlet\GetAzureSqlDatabaseAuditingPolicy.cs" />
     <Compile Include="Auditing\Cmdlet\GetAzureSqlServerAuditingPolicy.cs" />
     <Compile Include="Auditing\Cmdlet\RemoveSqlDatabaseAuditing.cs" />
@@ -376,6 +375,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LegacySdk\SqlManagement.csproj">
+      <Project>{04B53727-16E6-4EF0-9116-04C7F1C33842}</Project>
+      <Name>SqlManagement</Name>
+    </ProjectReference>
     <Reference Include="Hyak.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Hyak.Common.1.0.3\lib\net45\Hyak.Common.dll</HintPath>
@@ -392,8 +395,8 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Sql, Version=0.54.0.0">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.54.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Sql, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.2.0-preview\lib\net45\Microsoft.Azure.Management.Sql.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
@@ -426,6 +429,10 @@
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.5\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.5\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">

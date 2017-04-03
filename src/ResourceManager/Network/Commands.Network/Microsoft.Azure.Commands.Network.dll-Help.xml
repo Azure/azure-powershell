@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<helpItems schema="maml">
+<helpItems xmlns="http://msh" schema="maml">
 
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <command:details><command:name>Add-AzureRmApplicationGatewayAuthenticationCertificate</command:name>
@@ -8689,6 +8689,50 @@ PS C:\&gt; Add-AzureRmVpnClientRootCertificate -PublicCertData $CertificateText 
 <maml:uri></maml:uri>
 </maml:navigationLink>
 </command:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<command:details><command:name>Get-AzureRmApplicationGatewayAvailableWafRuleSets</command:name>
+<command:verb>Get</command:verb>
+<command:noun>AzureRmApplicationGatewayAvailableWafRuleSets</command:noun>
+<maml:description><maml:para>Gets all available web application firewall rule sets.
+</maml:para>
+</maml:description>
+</command:details>
+<maml:description><maml:para>The Get-AzureRmApplicationGatewayAvailableWafRuleSets cmdlet gets all available web application firewall rule sets.
+</maml:para>
+</maml:description>
+<command:syntax><command:syntaxItem><maml:name>Get-AzureRmApplicationGatewayAvailableWafRuleSets</maml:name>
+</command:syntaxItem>
+</command:syntax>
+<command:parameters></command:parameters>
+<command:inputTypes><command:inputType><dev:type><maml:name>None</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:inputType>
+</command:inputTypes>
+<command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAvailableWafRuleSetsResult</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
+<maml:alertSet><maml:alert><maml:para>List-AzureRmApplicationGatewayAvailableWafRuleSets is an alias for the Get-AzureRmApplicationGatewayAvailableWafRuleSets cmdlet.
+</maml:para>
+</maml:alert>
+</maml:alertSet>
+<command:examples><command:example><maml:title>Example 1</maml:title>
+<dev:code>PS C:\&gt;$availableRuleSets = Get-AzureRmApplicationGatewayAvailableWafRuleSets</dev:code>
+<dev:remarks><maml:para>This commands returns all the available web application firewall rule sets.
+</maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
+</dev:remarks>
+</command:example>
+</command:examples>
+<command:relatedLinks></command:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <command:details><command:name>Get-AzureRmApplicationGatewayBackendAddressPool</command:name>
@@ -20109,6 +20153,92 @@ PS C:\&gt; $Gateway = New-AzureRmApplicationGateway -Name "AppGateway01" -Resour
 </command:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<command:details><command:name>New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig</command:name>
+<command:verb>New</command:verb>
+<command:noun>AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig</command:noun>
+<maml:description><maml:para>Creates a new disabled rule group configuration.
+</maml:para>
+</maml:description>
+</command:details>
+<maml:description><maml:para>The New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig cmdlet creates a new disabled rule group configuration.
+</maml:para>
+</maml:description>
+<command:syntax><command:syntaxItem><maml:name>New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>RuleGroupName</maml:name>
+<maml:Description><maml:para>The name of the rule group that will be disabled.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Rules</maml:name>
+<maml:Description><maml:para>The list of rules that will be disabled. If null, all rules of the rule group will be disabled.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">System.Collections.Generic.List`1[System.Int32]</command:parameterValue>
+<dev:type><maml:name>System.Collections.Generic.List`1[System.Int32]</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+</command:syntax>
+<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>RuleGroupName</maml:name>
+<maml:Description><maml:para>The name of the rule group that will be disabled.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Rules</maml:name>
+<maml:Description><maml:para>The list of rules that will be disabled. If null, all rules of the rule group will be disabled.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">System.Collections.Generic.List`1[System.Int32]</command:parameterValue>
+<dev:type><maml:name>System.Collections.Generic.List`1[System.Int32]</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:parameters>
+<command:inputTypes><command:inputType><dev:type><maml:name>None</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:inputType>
+</command:inputTypes>
+<command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallDisabledRuleGroup</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
+<maml:alertSet><maml:alert><maml:para>
+</maml:para>
+</maml:alert>
+</maml:alertSet>
+<command:examples><command:example><maml:title>Example 1</maml:title>
+<dev:code>PS C:\&gt; $disabledRuleGroup1 = New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName "REQUEST-942-APPLICATION-ATTACK-SQLI" -Rules 942130,942140</dev:code>
+<dev:remarks><maml:para>The command creates a new disabled rule group configuration for the rule group named "REQUEST-942-APPLICATION-ATTACK-SQLI" with rule 942130 and rule 942140 being disabled. The new disabled rule group configuration is saved in $disabledRuleGroup1.
+</maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
+</dev:remarks>
+</command:example>
+</command:examples>
+<command:relatedLinks><maml:navigationLink><maml:linkText>New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+</command:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <command:details><command:name>New-AzureRmApplicationGatewayFrontendIPConfig</command:name>
 <command:verb>New</command:verb>
 <command:noun>AzureRmApplicationGatewayFrontendIPConfig</command:noun>
@@ -21606,7 +21736,7 @@ PS C:\&gt; Add-AzureRmApplicationGatewayUrlPathMapConfig -ApplicationGateway $Ga
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Protocol</maml:name>
-<maml:Description><maml:para>Specifies the protocol used to send probe. This cmdlet supports HTTP only.
+<maml:Description><maml:para>Specifies the protocol used to send probe.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -21703,7 +21833,7 @@ PS C:\&gt; Add-AzureRmApplicationGatewayUrlPathMapConfig -ApplicationGateway $Ga
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Protocol</maml:name>
-<maml:Description><maml:para>Specifies the protocol used to send probe. This cmdlet supports HTTP only.
+<maml:Description><maml:para>Specifies the protocol used to send probe.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -22984,6 +23114,39 @@ PS C:\&gt; Add-AzureRmApplicationGatewayUrlPathMapConfig -ApplicationGateway $Ga
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>DisabledRuleGroups</maml:name>
+<maml:Description><maml:para>The disabled rule groups.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallDisabledRuleGroup]</command:parameterValue>
+<dev:type><maml:name>System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallDisabledRuleGroup]</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>RuleSetType</maml:name>
+<maml:Description><maml:para>The type of the web application firewall rule set.  The acceptable values for this parameter are: 
+</maml:para>
+<maml:para>- OWASP
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>OWASP</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>RuleSetVersion</maml:name>
+<maml:Description><maml:para>The version of the rule set type. The acceptable values for this parameter are: 
+</maml:para>
+<maml:para>- 3.0
+</maml:para>
+<maml:para>- 2.2.9
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>3.0</dev:defaultValue>
+</command:parameter>
 </command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Enabled</maml:name>
@@ -23026,6 +23189,39 @@ PS C:\&gt; Add-AzureRmApplicationGatewayUrlPathMapConfig -ApplicationGateway $Ga
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>DisabledRuleGroups</maml:name>
+<maml:Description><maml:para>The disabled rule groups.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallDisabledRuleGroup]</command:parameterValue>
+<dev:type><maml:name>System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallDisabledRuleGroup]</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>RuleSetType</maml:name>
+<maml:Description><maml:para>The type of the web application firewall rule set.  The acceptable values for this parameter are: 
+</maml:para>
+<maml:para>- OWASP
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>OWASP</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>RuleSetVersion</maml:name>
+<maml:Description><maml:para>The version of the rule set type. The acceptable values for this parameter are: 
+</maml:para>
+<maml:para>- 3.0
+</maml:para>
+<maml:para>- 2.2.9
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>3.0</dev:defaultValue>
+</command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
 <command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayWebApplicationFirewallConfiguration</maml:name>
@@ -23040,8 +23236,10 @@ PS C:\&gt; Add-AzureRmApplicationGatewayUrlPathMapConfig -ApplicationGateway $Ga
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1: Create a web application firewall configuration for an application gateway</maml:title>
-<dev:code>PS C:\&gt;$FirewallConfig = New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enabled $True -FirewallMode "Prevention"</dev:code>
-<dev:remarks><maml:para>This command creates a configuiration that prevents requests when matched by the WAF, and then stores it in the $FirewallConfig variable.
+<dev:code>PS C:\&gt; $disabledRuleGroup1 = New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName "REQUEST-942-APPLICATION-ATTACK-SQLI" -Rules 942130,942140
+PS C:\&gt; $disabledRuleGroup2 = New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName "REQUEST-921-PROTOCOL-ATTACK"
+PS C:\&gt; $firewallConfig = New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode "Prevention" -RuleSetType "OWASP" -RuleSetVersion "3.0" -DisabledRuleGroups $disabledRuleGroup1,$disabledRuleGroup2</dev:code>
+<dev:remarks><maml:para>The first command creates a new disabled rule group configuration for the rule group named "REQUEST-942-APPLICATION-ATTACK-SQLI" with rule 942130 and rule 942140 being disabled. The second command creates another disabled rule group configuration for a rule group named "REQUEST-921-PROTOCOL-ATTACK". No rules are specifically passed and thus all rules of the rule group will be disabled. The last command then creates a WAF configuration with firewall rules disabled as configured in $disabledRuleGroup1 and $disabledRuleGroup2. The new WAF configuration is stored in the $firewallConfig variable.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -43474,7 +43672,7 @@ PS C:\&gt; $AppGw = Set-AzureRmApplicationGatewayIPConfiguration -ApplicationGat
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Protocol</maml:name>
-<maml:Description><maml:para>Specifies the protocol used to send probe. This cmdlet supports HTTP only.
+<maml:Description><maml:para>Specifies the protocol used to send probe.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -43580,7 +43778,7 @@ PS C:\&gt; $AppGw = Set-AzureRmApplicationGatewayIPConfiguration -ApplicationGat
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Protocol</maml:name>
-<maml:Description><maml:para>Specifies the protocol used to send probe. This cmdlet supports HTTP only.
+<maml:Description><maml:para>Specifies the protocol used to send probe.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -44978,6 +45176,39 @@ PS C:\&gt; $Cert = Set-AzureRmApplicationGatewaySslCertificate -ApplicationGatew
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>DisabledRuleGroups</maml:name>
+<maml:Description><maml:para>The disabled rule groups.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallDisabledRuleGroup]</command:parameterValue>
+<dev:type><maml:name>System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallDisabledRuleGroup]</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>RuleSetType</maml:name>
+<maml:Description><maml:para>The type of the web application firewall rule set.  The acceptable values for this parameter are: 
+</maml:para>
+<maml:para>- OWASP
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>OWASP</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>RuleSetVersion</maml:name>
+<maml:Description><maml:para>The version of the rule set type. The acceptable values for this parameter are: 
+</maml:para>
+<maml:para>- 3.0
+</maml:para>
+<maml:para>- 2.2.9
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>3.0</dev:defaultValue>
+</command:parameter>
 </command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>ApplicationGateway</maml:name>
@@ -45029,6 +45260,39 @@ PS C:\&gt; $Cert = Set-AzureRmApplicationGatewaySslCertificate -ApplicationGatew
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>DisabledRuleGroups</maml:name>
+<maml:Description><maml:para>The disabled rule groups.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallDisabledRuleGroup]</command:parameterValue>
+<dev:type><maml:name>System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallDisabledRuleGroup]</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>RuleSetType</maml:name>
+<maml:Description><maml:para>The type of the web application firewall rule set.  The acceptable values for this parameter are: 
+</maml:para>
+<maml:para>- OWASP
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>OWASP</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>RuleSetVersion</maml:name>
+<maml:Description><maml:para>The version of the rule set type. The acceptable values for this parameter are: 
+</maml:para>
+<maml:para>- 3.0
+</maml:para>
+<maml:para>- 2.2.9
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>3.0</dev:defaultValue>
+</command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
 <command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Commands.Network.Models.PSApplicationGateway</maml:name>
@@ -45043,11 +45307,11 @@ PS C:\&gt; $Cert = Set-AzureRmApplicationGatewaySslCertificate -ApplicationGatew
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1: Update the application gateway web application firewall configuration</maml:title>
-<dev:code>PS C:\&gt;$AppGw = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\&gt; Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $AppGw -Enabled $True -FirewallMode "Detection"</dev:code>
-<dev:remarks><maml:para>The first command gets the application gateway named ApplicationGateway01, and then stores it in the $AppGw variable.
+<dev:code>PS C:\&gt; $AppGw = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+PS C:\&gt; Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $AppGw -Enabled $True -FirewallMode "Detection" -RuleSetType "OWASP" -RuleSetVersion "3.0"</dev:code>
+<dev:remarks><maml:para>The first command gets the application gateway named ApplicationGateway01 and then stores it in the $AppGw variable.
 </maml:para>
-<maml:para>The second command enables the firewall configuration for the application gateway in $AppGw, and sets the firewall mode to Detection.
+<maml:para>The second command enables the firewall configuration for the application gateway stored in $AppGw and sets the firewall mode to "Detection", RuleSetType to "OWASP" and the RuleSetVersion to "3.0".
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
