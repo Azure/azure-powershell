@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 2.8.0
 * Bug fixes on Azure Failover Group Cmdlets
 	- Fix for operation polling
 	- Fix GracePeriodWithDataLossHour value when setting FailoverPolicy to Manual
