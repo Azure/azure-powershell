@@ -18,14 +18,15 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Model
     /// </summary>
     public enum AllowReadOnlyFailoverToPrimary
     {
-        /// <summary>
-        /// Failover Group read only failover policy is Enabled
-        /// </summary>
-        Enabled,
 
         /// <summary>
         /// Failover Group read only failover policy is manual
         /// </summary>
         Disabled,
+
+        /// <summary>
+        /// Failover Group read only failover policy is Enabled
+        /// </summary>
+        Enabled,
     }
 }

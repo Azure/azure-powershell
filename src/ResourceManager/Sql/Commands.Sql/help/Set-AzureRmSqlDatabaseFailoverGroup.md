@@ -14,7 +14,7 @@ The Cmdlet that sets properties of the Azure SQL Failover Group
 ```
 Set-AzureRmSqlDatabaseFailoverGroup -FailoverGroupName <String> [-FailoverPolicy <FailoverPolicy>]
  [-GracePeriodWithDataLossHours <Int32>] [-AllowReadOnlyFailoverToPrimary <AllowReadOnlyFailoverToPrimary>]
- [-Tags <Hashtable>] -ServerName <String> -ResourceGroupName <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ServerName <String> -ResourceGroupName <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -106,19 +106,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Tags
-The tag to associate with the Azure Sql Failover Group```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases: Tag
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

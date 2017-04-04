@@ -50,11 +50,12 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         [ValidateNotNullOrEmpty]
         public List<AzureSqlDatabaseModel> Database { get; set; }
 
-        /// <summary>
-        /// Gets or sets the tags associated with the Azure SQL Database Failover Group
-        /// </summary>
+        /// <summary> 
+        /// Gets or sets the tags associated with the Azure SQL Database Failover Group 
+        /// </summary> 
         [Parameter(Mandatory = false,
-            HelpMessage = "The tag to associate with the Azure SQL Database Failover Group")]
+            HelpMessage = "The tags to associate with the Azure SQL Database Failover Group")]
+        [Obsolete("This parameter is only for backwards compatibility; User should not need to pass in this parameter.")]
         public Hashtable Tag { get; set; }
 
         /// <summary>

@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -10,23 +10,27 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+// ----------------------------------------------------------------------------------
+using Microsoft.Azure.Management.Sql.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Model
 {
-    /// <summary>
-    /// The Failover Group failover policy option
-    /// </summary>
-    public enum FailoverPolicy
+    public class AzureSqlFailoverGroupInputModel : AzureSqlFailoverGroupModel
     {
 
         /// <summary>
-        /// Failover Group Failover policy is manual
+        /// Gets or sets the read-write endpoint
         /// </summary>
-        Manual,
 
         /// <summary>
-        /// Failover Group Failover policy is automatic
+        /// Gets or sets the name of the partner resource group name
         /// </summary>
-        Automatic,
+        public string PartnerResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the partner server name
+        /// </summary>
+        public string PartnerServerName { get; set; }
     }
 }

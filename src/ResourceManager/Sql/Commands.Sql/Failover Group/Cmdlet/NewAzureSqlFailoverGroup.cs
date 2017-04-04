@@ -15,10 +15,12 @@
 using Hyak.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.FailoverGroup.Model;
+using Microsoft.Azure.Management.Sql.Models;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System;
 
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
 {
@@ -63,8 +65,10 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// <summary>
         /// Gets or sets the grace period with data loss for the Sql Azure Failover Group.
         /// </summary>
+        [Alias("GracePeriodWithDataLossHours")]
         [Parameter(Mandatory = false,
             HelpMessage = "The window of grace period that we tolerate with data loss during a failover operation for the failover group.")]
+        [Obsolete("This parameter is only for backwards compatibility; User should use 'GracePeriodWithDataLossHours' instead.")]
         [ValidateNotNullOrEmpty]
         public int GracePeriodWithDataLossHour { get; set; }
 
@@ -76,11 +80,12 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         [ValidateNotNullOrEmpty]
         public AllowReadOnlyFailoverToPrimary AllowReadOnlyFailoverToPrimary { get; set; }
 
-        /// <summary>
-        /// Gets or sets the tag associated with the Azure SQL Database Failover Group
-        /// </summary>
+        /// <summary> 
+        /// Gets or sets the tags associated with the Azure SQL Database Failover Group 
+        /// </summary> 
         [Parameter(Mandatory = false,
-            HelpMessage = "The tag to associate with the Azure SQL Database Failover Group")]
+            HelpMessage = "The tags to associate with the Azure SQL Database Failover Group")]
+        [Obsolete("This parameter is only for backwards compatibility; User should not need to pass in this parameter.")]
         public Hashtable Tag { get; set; }
 
         /// <summary>
@@ -121,19 +126,22 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         {
             string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
             List<AzureSqlFailoverGroupModel> newEntity = new List<AzureSqlFailoverGroupModel>();
-            newEntity.Add(new AzureSqlFailoverGroupModel()
+
+            newEntity.Add(new AzureSqlFailoverGroupInputModel()
             {
                 ResourceGroupName = ResourceGroupName,
                 ServerName = ServerName,
-                Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
                 Location = location,
                 FailoverGroupName = FailoverGroupName,
                 PartnerResourceGroupName = MyInvocation.BoundParameters.ContainsKey("PartnerResourceGroupName") ? PartnerResourceGroupName : ResourceGroupName,
                 PartnerServerName = PartnerServerName,
                 ReadWriteFailoverPolicy = FailoverPolicy.ToString(),
+#pragma warning disable 0618
                 FailoverWithDataLossGracePeriodHours = GracePeriodWithDataLossHour,
                 ReadOnlyFailoverPolicy = AllowReadOnlyFailoverToPrimary.ToString()
+#pragma warning restore 0618
             });
+
             return newEntity;
         }
 
@@ -145,7 +153,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         protected override IEnumerable<AzureSqlFailoverGroupModel> PersistChanges(IEnumerable<AzureSqlFailoverGroupModel> entity)
         {
             return new List<AzureSqlFailoverGroupModel>() {
-                ModelAdapter.UpsertFailoverGroup(entity.First())
+                ModelAdapter.UpsertFailoverGroup(entity.First() as AzureSqlFailoverGroupInputModel)
             };
         }
     }

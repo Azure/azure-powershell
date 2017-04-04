@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Sql.FailoverGroup.Model;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
+using System;
 
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
 {
@@ -33,22 +34,23 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         [ValidateNotNullOrEmpty]
         public string FailoverGroupName { get; set; }
 
-        /// <summary>
-        /// Gets or sets the partner resource group name for Azure SQL Database Failover Group
-        /// </summary>
+        /// <summary> 
+        /// Gets or sets the partner resource group name for Azure SQL Database Failover Group 
+        /// </summary> 
         [Parameter(Mandatory = false,
             HelpMessage = "The partner resource group name for Azure SQL Database Failover Group.")]
         [ValidateNotNullOrEmpty]
+        [Obsolete("The parameter 'PartnerResourceGroupName' is only for backwards compatibility; User should not need to pass in this parameter anymore.")]
         public string PartnerResourceGroupName { get; set; }
 
-        /// <summary>
-        /// Gets or sets the partner server name for Azure SQL Database Failover Group
-        /// </summary>
-        [Parameter(Mandatory = true,
-            HelpMessage = "The partner server name for Azure SQL Database Failover Group.")]
+        /// <summary> 
+        /// Gets or sets the partner server name for Azure SQL Database Failover Group 
+        /// </summary> 
+        [Parameter(Mandatory = false,
+            HelpMessage = "The partner server name for Azure SQL Database Failover Group.")]  
         [ValidateNotNullOrEmpty]
+        [Obsolete("The parameter 'PartnerServerName' is only for backwards compatibility; User should not need to pass in this parameter anymore.")]
         public string PartnerServerName { get; set; }
-
         /// <summary>
         /// Defines whether it is ok to skip the requesting of rule removal confirmation
         /// </summary>
@@ -78,8 +80,6 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             {
                 ResourceGroupName = ResourceGroupName,
                 ServerName = ServerName,
-                PartnerResourceGroupName = MyInvocation.BoundParameters.ContainsKey("PartnerResourceGroupName") ? PartnerResourceGroupName : ResourceGroupName,
-                PartnerServerName = PartnerServerName,
             });
             return newEntity;
         }
