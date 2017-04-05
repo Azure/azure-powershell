@@ -73,8 +73,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Network, Version=9.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.9.1.0-preview\lib\net45\Microsoft.Azure.Management.Network.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Network, Version=10.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.10.0.0-preview\lib\net45\Microsoft.Azure.Management.Network.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Data.Edm">
@@ -159,6 +159,7 @@
   <ItemGroup>
     <Compile Include="ApplicationGateway\ApplicationGatewayBaseCmdlet.cs" />
     <Compile Include="ApplicationGateway\ApplicationGatewayChildResourceHelper.cs" />
+    <Compile Include="ApplicationGateway\ApplicationGatewayPowerShellFormatting.cs" />
     <Compile Include="ApplicationGateway\AuthenticationCertificate\AddAzureApplicationGatewayAuthenticationCertificateCommand.cs" />
     <Compile Include="ApplicationGateway\AuthenticationCertificate\AzureApplicationGatewayAuthenticationCertificateBase.cs" />
     <Compile Include="ApplicationGateway\AuthenticationCertificate\GetAzureApplicationGatewayAuthenticationCertificateCommand.cs" />
@@ -204,6 +205,7 @@
     <Compile Include="ApplicationGateway\GatewayIPConfiguration\NewAzureApplicationGatewayIPConfigurationCommand.cs" />
     <Compile Include="ApplicationGateway\GatewayIPConfiguration\RemoveAzureApplicationGatewayIPConfigurationCommand.cs" />
     <Compile Include="ApplicationGateway\GatewayIPConfiguration\SetAzureApplicationGatewayIPConfigurationCommand.cs" />
+    <Compile Include="ApplicationGateway\GetAzureApplicationGatewayAvailableWafRuleSets.cs" />
     <Compile Include="ApplicationGateway\GetAzureApplicationGatewayBackendHealthCommand.cs" />
     <Compile Include="ApplicationGateway\GetAzureApplicationGatewayCommand.cs" />
     <Compile Include="ApplicationGateway\HttpListener\AddAzureApplicationGatewayHttpListenerCommand.cs" />
@@ -213,6 +215,8 @@
     <Compile Include="ApplicationGateway\HttpListener\RemoveAzureApplicationGatewayHttpListenerCommand.cs" />
     <Compile Include="ApplicationGateway\HttpListener\SetAzureApplicationGatewayHttpListenerCommand.cs" />
     <Compile Include="ApplicationGateway\NewAzureApplicationGatewayCommand.cs" />
+    <Compile Include="ApplicationGateway\FirewallDisabledRuleGroup\AzureApplicationGatewayFirewallDisabledRuleGroupConfigBase.cs" />
+    <Compile Include="ApplicationGateway\FirewallDisabledRuleGroup\NewAzureApplicationGatewayFirewallDisabledRuleGroupConfigCommand.cs" />
     <Compile Include="ApplicationGateway\PathRule\AzureApplicationGatewayPathRuleConfigBase.cs" />
     <Compile Include="ApplicationGateway\PathRule\NewAzureApplicationGatewayPathRuleConfigCommand.cs" />
     <Compile Include="ApplicationGateway\Probe\AddAzureApplicationGatewayProbeConfigCommand.cs" />
@@ -286,12 +290,19 @@
     <Compile Include="Models\PSApplicationGatewayBackendHealth.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendHealthHttpSettings.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendHealthPool.cs" />
+    <Compile Include="Models\PSApplicationGatewayAvailableWafRuleSetsResult.cs" />
+    <Compile Include="Models\PSApplicationGatewayFirewallRuleSet.cs" />
+    <Compile Include="Models\PSApplicationGatewayFirewallRuleGroup.cs" />
+    <Compile Include="Models\PSApplicationGatewayFirewallRule.cs" />
+    <Compile Include="Models\PSApplicationGatewayFirewallDisabledRuleGroup.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendHealthServer.cs" />
     <Compile Include="Models\PSApplicationGatewayConnectionDraining.cs" />
     <Compile Include="Models\PSBgpCommunity.cs" />
+    <Compile Include="Models\PSBgpPeerStatus.cs" />
     <Compile Include="Models\PSBgpServiceCommunity.cs" />
     <Compile Include="Models\PSFlowLog.cs" />
     <Compile Include="Models\PSFlowLogProperties.cs" />
+    <Compile Include="Models\PSGatewayRoute.cs" />
     <Compile Include="Models\PSGetPacketCaptureResult.cs" />
     <Compile Include="Models\PSIPAddressAvailabilityResult.cs" />
     <Compile Include="Models\PSApplicationGatewayAuthenticationCertificate.cs" />
@@ -319,6 +330,7 @@
     <Compile Include="Models\PSExpressRouteServiveProvider.cs" />
     <Compile Include="Models\PSExpressRouteServiceProviderBandwidthsOffered.cs" />
     <Compile Include="Models\PSExpressRouteServiceProvider.cs" />
+    <Compile Include="Models\PSIpsecPolicy.cs" />
     <Compile Include="Models\PSIpFlowVerify.cs" />
     <Compile Include="Models\PSIPFlowVerifyResult.cs" />
     <Compile Include="Models\PSNetworkInterfaceAssociation.cs" />
@@ -390,6 +402,7 @@
     <Compile Include="NetworkWatcher\PacketCapture\StopAzureNetworkWatcherPacketCaptureCommand.cs" />
     <Compile Include="NetworkWatcher\RemoveAzureNetworkWatcherCommand.cs" />
     <Compile Include="ProviderWideCmdlets\GetAzureExpressRouteServiceProviderCommand.cs" />
+    <Compile Include="VirtualNetworkGatewayConnection\NewAzureRmIpsecPolicyCommand.cs" />
     <Compile Include="RouteFilter\GetAzureRouteFilterCommand.cs" />
     <Compile Include="RouteFilter\NewAzureRouteFilterCommand.cs" />
     <Compile Include="RouteFilter\RemoveAzureRouteFilterCommand.cs" />
@@ -401,6 +414,9 @@
     <Compile Include="RouteFilter\RouteFilterRule\RemoveAzureRouteFilterRuleConfigCommand.cs" />
     <Compile Include="RouteFilter\RouteFilterRule\SetAzureRouteFilterRuleConfigCommand.cs" />
     <Compile Include="RouteFilter\SetAzureRouteFilterCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\GetAzureVirtualNetworkGatewayAdvertisedRouteCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\GetAzureVirtualNetworkGatewayBgpPeerStatus.cs" />
+    <Compile Include="VirtualNetworkGateway\GetAzureVirtualNetworkGatewayLearnedRouteCommand.cs" />
     <Compile Include="VirtualNetwork\TestAzurePrivateIPAddressAvailabilityCmdlet.cs" />
     <Compile Include="PublicIpAddress\GetAzurePublicIpAddressCommand.cs" />
     <Compile Include="PublicIpAddress\NewAzurePublicIpAddressCommand.cs" />
@@ -596,6 +612,9 @@
   <ItemGroup>
     <None Include="..\AzureRM.Network.psd1">
       <Link>AzureRM.Network.psd1</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AzureRmNetworkStartup.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Microsoft.Azure.Commands.Network.dll-Help.psd1">

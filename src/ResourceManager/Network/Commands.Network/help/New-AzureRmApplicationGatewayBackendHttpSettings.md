@@ -37,46 +37,28 @@ The settings are stored in the $Setting variable.
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the back-end HTTP settings that this cmdlet creates.
+### -AuthenticationCertificates
+Specifies authentication certificates for the application gateway.
 
 ```yaml
-Type: String
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate]
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Port
-Specifies the port of the back-end server pool.
-
-```yaml
-Type: Int32
+### -ConnectionDraining
+Connection draining of the backend http settings resource.```yaml
+Type: PSApplicationGatewayConnectionDraining
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Protocol
-Specifies the protocol to use for communication between the application gateway and the back-end servers.
-The acceptable values for this parameter are: Http and Https.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -92,66 +74,6 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RequestTimeout
-Specifies a request time-out value.
-
-```yaml
-Type: UInt32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProbeId
-Specifies the ID of the probe to associate with the back-end server pool.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Probe
-Specifies a probe to associate with the back-end server pool.
-
-```yaml
-Type: PSApplicationGatewayProbe
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AuthenticationCertificates
-Specifies authentication certificates for the application gateway.
-
-```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate]
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -197,9 +119,87 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ConnectionDraining
-Connection draining of the backend http settings resource.```yaml
-Type: PSApplicationGatewayConnectionDraining
+### -Name
+Specifies the name of the back-end HTTP settings that this cmdlet creates.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Port
+Specifies the port of the back-end server pool.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Probe
+Specifies a probe to associate with the back-end server pool.
+
+```yaml
+Type: PSApplicationGatewayProbe
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProbeId
+Specifies the ID of the probe to associate with the back-end server pool.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Protocol
+Specifies the protocol to use for communication between the application gateway and the back-end servers.
+The acceptable values for this parameter are: Http and Https.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RequestTimeout
+Specifies a request time-out value.
+
+```yaml
+Type: UInt32
 Parameter Sets: (All)
 Aliases: 
 

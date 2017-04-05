@@ -21,7 +21,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
     using System.Management.Automation;
     using Microsoft.Azure.Management.Logic;
     using Microsoft.Azure.Management.Logic.Models;
-    using Microsoft.Rest.Azure;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -74,7 +73,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         {
             return IntegrationAccountClient.SessionContentToIntegrationAccountControlNumber(
                 sessionContent: this.LogicManagementClient.Sessions
-                    .GetOrThrow(
+                    .Get(
                         resourceGroupName: resourceGroupName,
                         integrationAccountName: integrationAccountName,
                         sessionName: IntegrationAccountClient.SessionNameForGeneratedIcn(integrationAccountAgreementName))
@@ -96,16 +95,16 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
             {
                 return IntegrationAccountClient.SessionContentToIntegrationAccountControlNumber(
                     sessionContent: this.LogicManagementClient.Sessions
-                        .GetOrThrow(
+                        .Get(
                             resourceGroupName: resourceGroupName,
                             integrationAccountName: integrationAccountName,
                             sessionName: IntegrationAccountClient.SessionNameForGeneratedIcn(integrationAccountAgreementName))
                          .Content,
                     integrationAccountAgreementName: integrationAccountAgreementName);
             }
-            catch (CloudException ex)
+            catch (ErrorResponseException ex)
             {
-                if (ex.Body.Code == "SessionNotFound")
+                if (ex.Body.Error.Code == "SessionNotFound")
                 {
                     return new IntegrationAccountControlNumber { ControlNumber = Properties.Resource.GeneratedControlNumberNotFound, ControlNumberChangedTime = DateTime.MinValue };
                 }

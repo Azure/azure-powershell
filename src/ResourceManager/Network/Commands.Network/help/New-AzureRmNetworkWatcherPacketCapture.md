@@ -18,7 +18,7 @@ New-AzureRmNetworkWatcherPacketCapture -NetworkWatcher <PSNetworkWatcher> -Packe
  [-LocalFilePath <String>] [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <Int32>]
  [-TimeLimitInSeconds <Int32>]
  [-Filter <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPacketCaptureFilter]>]
- [-WhatIf] [-Confirm]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByName
@@ -28,7 +28,7 @@ New-AzureRmNetworkWatcherPacketCapture -NetworkWatcherName <String> -ResourceGro
  [-StoragePath <String>] [-LocalFilePath <String>] [-BytesToCapturePerPacket <Int32>]
  [-TotalBytesPerSession <Int32>] [-TimeLimitInSeconds <Int32>]
  [-Filter <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPacketCaptureFilter]>]
- [-WhatIf] [-Confirm]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,7 +48,6 @@ $storageAccount = Get-AzureRmStorageAccount -ResourceGroupName contosoResourceGr
 $filter1 = New-AzureRmPacketCaptureFilterConfig -Protocol TCP -RemoteIPAddress "1.1.1.1-255.255.255" -LocalIPAddress "10.0.0.3" -LocalPort "1-65535" -RemotePort "20;80;443"
 $filter2 = New-AzureRmPacketCaptureFilterConfig -Protocol UDP 
 New-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVirtualMachineId $vm.Id -PacketCaptureName "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSeconds 60 -Filter $filter1, $filter2
-
 ```
 
 In this example we create a packet capture named "PacketCaptureTest" with multiple filters and a time limit. Once the session is complete, it will be saved to the specified storage account. 
@@ -158,7 +157,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -268,6 +267,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
@@ -281,6 +283,7 @@ System.String System.Nullable\`1\[\[System.Int32, mscorlib, Version=4.0.0.0, Cul
 Keywords: azure, azurerm, arm, resource, management, manager, network, networking, network watcher, packet, capture, traffic 
 
 ## RELATED LINKS
+
 [New-AzureRmPacketCaptureFilterConfig]()
 [Get-AzureRmNetworkWatcherPacketCapture]()
 [Remove-AzureRmNetworkWatcherPacketCapture]()

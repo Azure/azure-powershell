@@ -19,6 +19,12 @@
 -->
 ## Current Release
 
+## Version 2.8.0
+* Support for the Geographic traffic routing method
+    - New value 'Geographic' for the TrafficRoutingMethod parameter of New-AzureRmTrafficManagerProfile
+    - New parameter 'GeoMapping' for the New-AzureRmTrafficManagerEndpoint and Add-AzureRmTrafficManagerEndpointConfig
+    - Fix piping for Get-AzureRmTrafficManagerProfile when it returns a collection of profiles
+
 ## Version 2.7.0
 
 ## Version 2.6.0

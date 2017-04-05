@@ -15,13 +15,14 @@ Gets the next hop from a VM.
 ```
 Get-AzureRmNetworkWatcherNextHop -NetworkWatcher <PSNetworkWatcher> -TargetVirtualMachineId <String>
  -DestinationIPAddress <String> -SourceIPAddress <String> [-TargetNetworkInterfaceId <String>]
+ [<CommonParameters>]
 ```
 
 ### SetByName
 ```
 Get-AzureRmNetworkWatcherNextHop -NetworkWatcherName <String> -ResourceGroupName <String>
  -TargetVirtualMachineId <String> -DestinationIPAddress <String> -SourceIPAddress <String>
- [-TargetNetworkInterfaceId <String>]
+ [-TargetNetworkInterfaceId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,8 +31,7 @@ Next hop allows you to view the type of Azure resource, the associated IP addres
 
 ## EXAMPLES
 
-### -- Example 1: Get the Next Hop when communicating with an Internet IP -- 
-
+### -- Example 1: Get the Next Hop when communicating with an Internet IP --
 ```
 $nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
 $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
@@ -105,7 +105,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -154,6 +154,9 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
@@ -166,8 +169,8 @@ System.String
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, network, networking, network watcher, next, hop 
 
-
 ## RELATED LINKS
+
 [New-AzureRmNetworkWatcher]()
 [Get-AzureRmNetworkWatcher]()
 [Remove-AzureRmNetworkWatcher]()

@@ -368,6 +368,7 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<CNM.PSConnectionSharedKey, MNM.ConnectionSharedKey>();
             Mapper.CreateMap<CNM.PSLocalNetworkGateway, MNM.LocalNetworkGateway>();
             Mapper.CreateMap<CNM.PSVirtualNetworkGatewayConnection, MNM.VirtualNetworkGatewayConnection>();
+            Mapper.CreateMap<CNM.PSIpsecPolicy, MNM.IpsecPolicy>();
             Mapper.CreateMap<CNM.PSVirtualNetworkGatewayIpConfiguration, MNM.VirtualNetworkGatewayIPConfiguration>();
             Mapper.CreateMap<CNM.PSTunnelConnectionHealth, MNM.TunnelConnectionHealth>();
             Mapper.CreateMap<CNM.PSVirtualNetworkGatewaySku, MNM.VirtualNetworkGatewaySku>();
@@ -376,6 +377,8 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<CNM.PSVpnClientRevokedCertificate, MNM.VpnClientRevokedCertificate>();
             Mapper.CreateMap<CNM.PSVpnClientRootCertificate, MNM.VpnClientRootCertificate>();
             Mapper.CreateMap<CNM.PSBgpSettings, MNM.BgpSettings>();
+            Mapper.CreateMap<CNM.PSBGPPeerStatus, MNM.BgpPeerStatus>();
+            Mapper.CreateMap<CNM.PSGatewayRoute, MNM.GatewayRoute>();
 
             // MNM to CNM
             Mapper.CreateMap<MNM.VirtualNetworkGateway, CNM.PSVirtualNetworkGateway>();
@@ -383,6 +386,7 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<MNM.ConnectionSharedKey, CNM.PSConnectionSharedKey>();
             Mapper.CreateMap<MNM.LocalNetworkGateway, CNM.PSLocalNetworkGateway>();
             Mapper.CreateMap<MNM.VirtualNetworkGatewayConnection, CNM.PSVirtualNetworkGatewayConnection>();
+            Mapper.CreateMap<MNM.IpsecPolicy, CNM.PSIpsecPolicy>();
             Mapper.CreateMap<MNM.VirtualNetworkGatewayIPConfiguration, CNM.PSVirtualNetworkGatewayIpConfiguration>();
             Mapper.CreateMap<MNM.TunnelConnectionHealth, CNM.PSTunnelConnectionHealth>();
             Mapper.CreateMap<MNM.VirtualNetworkGatewaySku, CNM.PSVirtualNetworkGatewaySku>();
@@ -391,6 +395,8 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<MNM.VpnClientRevokedCertificate, CNM.PSVpnClientRevokedCertificate>();
             Mapper.CreateMap<MNM.VpnClientRootCertificate, CNM.PSVpnClientRootCertificate>();
             Mapper.CreateMap<MNM.BgpSettings, CNM.PSBgpSettings>();
+            Mapper.CreateMap<MNM.BgpPeerStatus, CNM.PSBGPPeerStatus>();
+            Mapper.CreateMap<MNM.GatewayRoute, CNM.PSGatewayRoute>();
 
             // Application Gateways
             // CNM to MNM
@@ -417,6 +423,12 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<CNM.PSApplicationGatewayBackendHealthServer, MNM.ApplicationGatewayBackendHealthServer>();
             Mapper.CreateMap<CNM.PSApplicationGatewayWebApplicationFirewallConfiguration, MNM.ApplicationGatewayWebApplicationFirewallConfiguration>();
             Mapper.CreateMap<CNM.PSApplicationGatewayConnectionDraining, MNM.ApplicationGatewayConnectionDraining>();
+            Mapper.CreateMap<CNM.PSApplicationGatewayFirewallDisabledRuleGroup, MNM.ApplicationGatewayFirewallDisabledRuleGroup>()
+                .AfterMap((src, dest) => dest.Rules = (src.Rules == null) ? null : dest.Rules);
+            Mapper.CreateMap<CNM.PSApplicationGatewayAvailableWafRuleSetsResult, MNM.ApplicationGatewayAvailableWafRuleSetsResult>();
+            Mapper.CreateMap<CNM.PSApplicationGatewayFirewallRule, MNM.ApplicationGatewayFirewallRule>();
+            Mapper.CreateMap<CNM.PSApplicationGatewayFirewallRuleGroup, MNM.ApplicationGatewayFirewallRuleGroup>();
+            Mapper.CreateMap<CNM.PSApplicationGatewayFirewallRuleSet, MNM.ApplicationGatewayFirewallRuleSet>();
 
             // MNM to CNM
             Mapper.CreateMap<MNM.ApplicationGateway, CNM.PSApplicationGateway>();
@@ -442,6 +454,12 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<MNM.ApplicationGatewayBackendHealthServer, CNM.PSApplicationGatewayBackendHealthServer>();
             Mapper.CreateMap<MNM.ApplicationGatewayWebApplicationFirewallConfiguration, CNM.PSApplicationGatewayWebApplicationFirewallConfiguration>();
             Mapper.CreateMap<MNM.ApplicationGatewayConnectionDraining, CNM.PSApplicationGatewayConnectionDraining>();
+            Mapper.CreateMap<MNM.ApplicationGatewayFirewallDisabledRuleGroup, CNM.PSApplicationGatewayFirewallDisabledRuleGroup>()
+                .AfterMap((src, dest) => dest.Rules = (src.Rules == null) ? null : dest.Rules);
+            Mapper.CreateMap<MNM.ApplicationGatewayAvailableWafRuleSetsResult, CNM.PSApplicationGatewayAvailableWafRuleSetsResult>();
+            Mapper.CreateMap<MNM.ApplicationGatewayFirewallRule, CNM.PSApplicationGatewayFirewallRule>();
+            Mapper.CreateMap<MNM.ApplicationGatewayFirewallRuleGroup, CNM.PSApplicationGatewayFirewallRuleGroup>();
+            Mapper.CreateMap<MNM.ApplicationGatewayFirewallRuleSet, CNM.PSApplicationGatewayFirewallRuleSet>();
         }
-    }
+}
 }
