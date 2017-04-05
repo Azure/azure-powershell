@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzureRmVirtualNetworkGatewayConnection
 
 ## SYNOPSIS
-Removes a virtual network gateway connection.
+Deletes a Virtual Network Gateway Connection
 
 ## SYNTAX
 
@@ -19,14 +19,17 @@ Remove-AzureRmVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName 
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmVirtualNetworkGatewayConnection** cmdlet removes a virtual network gateway connection.
+The Virtual Network Gateway Connection is the object representing the IPsec tunnel (Site-to-Site or Vnet-to-Vnet) connected to your Virtual Network Gateway in Azure.
+
+The **Remove-AzureRmVirtualNetworkGatewayConnection** cmdlet deletes the object of your connection based on Name and Resource Group Name.
 
 ## EXAMPLES
 
-### 1:
+### 1: Delete a Virtual Network Gateway Connection
 ```
-
+Remove-AzureRmVirtualNetworkGatewayConnection -Name myTunnel -ResourceGroupName myRG
 ```
+Deletes the object of the Virtual Network Gateway Connection with the name "myTunnel" within the resource group "myRG"
 
 ## PARAMETERS
 

@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/a8bd1848-6ad2-41f7-9e08-8b965a7e8c59/providers/Microsoft.Network?api-version=2016-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYThiZDE4NDgtNmFkMi00MWY3LTllMDgtOGI5NjVhN2U4YzU5L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yaz9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestUri": "/subscriptions/a8bd1848-6ad2-41f7-9e08-8b965a7e8c59/providers/Microsoft.Network?api-version=2017-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYThiZDE4NDgtNmFkMi00MWY3LTllMDgtOGI5NjVhN2U4YzU5L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yaz9hcGktdmVyc2lvbj0yMDE3LTAzLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {

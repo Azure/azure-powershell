@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 2.9.0
+
 * Fix bug in Get-* cmdlets, to allow retrieving multiple pages of data (more than 120 items)
 
 ## Version 2.8.0
