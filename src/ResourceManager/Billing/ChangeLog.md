@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 0.11.0
+
 ## Version 0.10.0
 * New Cmdlet Get-AzureRmBillingInvoice
     - cmdlet to retrieve azure billing invoices of the subscription.
