@@ -248,6 +248,7 @@
     <ItemGroup>
       <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\Microsoft*Azure*Commands*.dll" />
       <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\Microsoft.Azure.Common.Extensions.dll" />
+	  <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\Microsoft.Azure.Management.Sql.Legacy.dll" />
 	  <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\PowerShellSetup.Test.dll" />
       <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.ps1" />
       <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.psm1" />

@@ -53,6 +53,7 @@ $nic = Get-AzureRmNetworkInterface -ResourceGroupName "ResourceGroup1" -Name "Ne
 $nic.EnableIPForwarding = 1
 $nic | Set-AzureRmNetworkInterface
 ```
+
 The first command gets an existing network interface called NetworkInterface1 and stores it in the $nic variable. The second command changes the IP forwarding value to true. Finally, the third command applies the changes to the network interface. To disable IP forwarding on a network interface, follow the sample example, but be sure to change the second command to "$nic.EnableIPForwarding = 0".
 
 ### Example 4: Change the subnet of a network interface
@@ -63,6 +64,7 @@ $subnet2 = Get-AzureRmVirtualNetworkSubnetConfig -Name Subnet2 -VirtualNetwork $
 $nic.IpConfigurations[0].Subnet.Id = $subnet2.Id
 $nic | Set-AzureRmNetworkInterface
 ```
+
 The first command gets the network interface NetworkInterface1 and stores it in the $nic variable. The second command gets the virtual network associated with the subnet that the network interface is going to be associated with. The second command gets the subnet and stores it in the $subnet2 variable. The third command associated the primary private IP address of the network interface with the new subnet. Finally the last command applied these changes on the network interface.
 
 >[!NOTE] 
@@ -78,6 +80,7 @@ $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName "ResourceGroup1" -Name
 $nic.NetworkSecurityGroup = $nsg
 $nic | Set-AzureRmNetworkInterface
 ```
+
 The first command gets an existing network interface called NetworkInterface1 and stores it in the $nic variable. The second command gets an existing network security group called MyNSG and stores it in the $nsg variable. The forth command assigns the $nsg to the $nic. Finally, the fifth command applies the changes to the Network interface. To dissociate network security groups from a network interface, simple replace $nsg in the forth command with $null.
 
 ## PARAMETERS
