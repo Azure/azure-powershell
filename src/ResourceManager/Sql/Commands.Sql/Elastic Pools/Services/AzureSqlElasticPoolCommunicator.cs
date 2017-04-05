@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,8 +16,8 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using Microsoft.WindowsAzure.Management.Storage;
 using System;
 using System.Collections.Generic;
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <summary>
         /// Gets the Azure Sql Database Elastic Pool
         /// </summary>
-        public Management.Sql.Models.ElasticPool Get(string resourceGroupName, string serverName, string elasticPoolName, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.ElasticPool Get(string resourceGroupName, string serverName, string elasticPoolName, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).ElasticPools.Get(resourceGroupName, serverName, elasticPoolName).ElasticPool;
         }
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <summary>
         /// Gets the Azure Sql Database in the Elastic Pool
         /// </summary>
-        public Management.Sql.Models.Database GetDatabase(string resourceGroupName, string serverName, string elasticPoolName, string databaseName, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.Database GetDatabase(string resourceGroupName, string serverName, string elasticPoolName, string databaseName, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).ElasticPools.GetDatabases(resourceGroupName, serverName, elasticPoolName, databaseName).Database;
         }
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <summary>
         /// Lists the Azure Sql Database in the Elastic Pool
         /// </summary>
-        public IList<Management.Sql.Models.Database> ListDatabases(string resourceGroupName, string serverName, string elasticPoolName, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.Database> ListDatabases(string resourceGroupName, string serverName, string elasticPoolName, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).ElasticPools.ListDatabases(resourceGroupName, serverName, elasticPoolName).Databases;
         }
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <summary>
         /// Lists Azure Sql Databases Elastic Pool
         /// </summary>
-        public IList<Management.Sql.Models.ElasticPool> List(string resourceGroupName, string serverName, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.ElasticPool> List(string resourceGroupName, string serverName, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).ElasticPools.List(resourceGroupName, serverName).ElasticPools;
         }
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <summary>
         /// Creates or updates an Elastic Pool
         /// </summary>
-        public Management.Sql.Models.ElasticPool CreateOrUpdate(string resourceGroupName, string serverName, string elasticPoolName, string clientRequestId, ElasticPoolCreateOrUpdateParameters parameters)
+        public Management.Sql.LegacySdk.Models.ElasticPool CreateOrUpdate(string resourceGroupName, string serverName, string elasticPoolName, string clientRequestId, ElasticPoolCreateOrUpdateParameters parameters)
         {
             var resp = GetCurrentSqlClient(clientRequestId).ElasticPools.CreateOrUpdate(resourceGroupName, serverName, elasticPoolName, parameters);
             return resp.ElasticPool;
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <summary>
         /// Gets Elastic Pool Activity
         /// </summary>
-        public IList<Management.Sql.Models.ElasticPoolActivity> ListActivity(string resourceGroupName, string serverName, string elasticPoolName, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.ElasticPoolActivity> ListActivity(string resourceGroupName, string serverName, string elasticPoolName, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).ElasticPools.ListActivity(resourceGroupName, serverName, elasticPoolName).ElasticPoolActivities;
         }
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <summary>
         /// Gets Elastic Pool Database Activity
         /// </summary>
-        internal IList<Management.Sql.Models.ElasticPoolDatabaseActivity> ListDatabaseActivity(string resourceGroupName, string serverName, string poolName, string clientRequestId)
+        internal IList<Management.Sql.LegacySdk.Models.ElasticPoolDatabaseActivity> ListDatabaseActivity(string resourceGroupName, string serverName, string poolName, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).ElasticPools.ListDatabaseActivity(resourceGroupName, serverName, poolName).ElasticPoolDatabaseActivities;
         }

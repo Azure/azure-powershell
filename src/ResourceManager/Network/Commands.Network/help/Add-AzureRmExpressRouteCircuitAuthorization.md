@@ -1,14 +1,13 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 ms.assetid: 9994E2B2-20A1-4E95-9A9F-379B8B63F7F5
-online version:
+online version: 
 schema: 2.0.0
 ---
 
 # Add-AzureRmExpressRouteCircuitAuthorization
 
 ## SYNOPSIS
-
 Adds an ExpressRoute circuit authorization.
 
 ## SYNTAX
@@ -19,7 +18,6 @@ Add-AzureRmExpressRouteCircuitAuthorization -Name <String> -ExpressRouteCircuit 
 ```
 
 ## DESCRIPTION
-
 The **Add-AzureRmExpressRouteCircuitAuthorization** cmdlet adds an authorization to an ExpressRoute
 circuit. ExpressRoute circuits connect your on-premises network to the Microsoft cloud by using a
 connectivity provider instead of the public Internet. The owner of an ExpressRoute circuit can
@@ -39,8 +37,7 @@ enabled for use.
 ## EXAMPLES
 
 ### Example 1: Add an authorization to the specified ExpressRoute circuit
-
-```powershell
+```
 $Circuit = Get-AzureRmExpressRouteCircuit -Name "ContosoCircuit" -ResourceGroupName "ContosoResourceGroup"
 Add-AzureRmExpressRouteCircuitAuthorization -Name "ContosoCircuitAuthorization" -Circuit $Circuit
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $Circuit
@@ -57,30 +54,13 @@ authorization but does not activate that authorization. Activating an authorizat
 
 ## PARAMETERS
 
-### -Name
-
-Specifies the name of the circuit authorization to be added.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ExpressRouteCircuit
-
 Specifies the ExpressRoute circuit that this cmdlet adds the authorization to.
 
 ```yaml
 Type: PSExpressRouteCircuit
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -90,7 +70,6 @@ Accept wildcard characters: False
 ```
 
 ### -InformationAction
-
 Specifies how this cmdlet responds to an information event.
 
 The acceptable values for this parameter are:
@@ -115,7 +94,6 @@ Accept wildcard characters: False
 ```
 
 ### -InformationVariable
-
 Specifies an information variable.
 
 ```yaml
@@ -130,20 +108,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### CommonParameters
+### -Name
+Specifies the name of the circuit authorization to be added.
 
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
--InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
--WarningAction, and -WarningVariable. For more information, see about_CommonParameters
-(http://go.microsoft.com/fwlink/?LinkID=113216).
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
+### PSExpressRouteCircuit
 **Add-AzureRmExpressRouteCircuitAuthorization** accepts pipelined instances of the
 **Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit** object.
 
 ## OUTPUTS
 
+### PSExpressRouteCircuit
 **Add-AzureRmExpressRouteCircuitAuthorization** modifies instances of the
 **Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit** object.
 

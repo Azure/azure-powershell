@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 3.6.0
+* Add support for head and tail to the `Get-AzureRMDataLakeStoreItemContent` cmdlet. This enables returning the top N or last N new line delimited rows to be displayed.
+
 ## Version 3.5.0
 
 ## Version 3.4.0

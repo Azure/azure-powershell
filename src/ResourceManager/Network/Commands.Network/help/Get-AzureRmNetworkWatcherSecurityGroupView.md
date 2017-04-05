@@ -14,12 +14,13 @@ View the configured and effective network security group rules applied on a VM.
 ### SetByResource (Default)
 ```
 Get-AzureRmNetworkWatcherSecurityGroupView -NetworkWatcher <PSNetworkWatcher> -TargetVirtualMachineId <String>
+ [<CommonParameters>]
 ```
 
 ### SetByName
 ```
 Get-AzureRmNetworkWatcherSecurityGroupView -NetworkWatcherName <String> -ResourceGroupName <String>
- -TargetVirtualMachineId <String>
+ -TargetVirtualMachineId <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,14 +29,13 @@ The Get-AzureRmNetworkWatcherSecurityGroupView enables you to view the configure
 ## EXAMPLES
 
 ### --- Example 1: Make a Security Group View call on a VM ---
-
 ```
 $nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
 $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
 $VM = Get-AzurermVM -ResourceGroupName ContosoResourceGroup -Name VM0 
 Get-AzureRmNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id
-
 ```
+
 In the above example, we first get the regional Network Watcher, then a VM in the region. 
 Then we make a Security Group View call on the specified VM.
 
@@ -82,7 +82,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -101,6 +101,9 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
@@ -114,6 +117,7 @@ System.String
 Keywords: azure, azurerm, arm, resource, management, manager, network, networking, network watcher, flow, ip 
 
 ## RELATED LINKS
+
 [New-AzureRmNetworkWatcher]()
 [Get-AzureRmNetworkWatcher]()
 [Remove-AzureRmNetworkWatcher]()

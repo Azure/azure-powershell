@@ -8,6 +8,7 @@ schema: 2.0.0
 # Get-AzureRmLocalNetworkGateway
 
 ## SYNOPSIS
+Gets a Local Network Gateway
 
 ## SYNTAX
 
@@ -17,41 +18,19 @@ Get-AzureRmLocalNetworkGateway [-Name <String>] -ResourceGroupName <String>
 ```
 
 ## DESCRIPTION
+The Local Network Gateway is the object representing your VPN device On-Premises.
+
+The **Get-AzureRmLocalNetworkGateway** cmdlet returns the object representing your on-prem gateway based on Name and Resource Group Name.
 
 ## EXAMPLES
 
-### 1:
+### 1: Get a Local Network Gateway
 ```
-
+Get-AzureRmLocalNetworkGateway -Name myLocalGW -ResourceGroupName myRG
 ```
+Returns the object of the Local Network Gateway with the name "myLocalGW" within the resource group "myRG"
 
 ## PARAMETERS
-
-### -Name
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: ResourceName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -InformationAction
 Specifies how this cmdlet responds to an information event.
@@ -89,6 +68,32 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: ResourceName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

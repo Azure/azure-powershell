@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.FirewallRule.Model;
 using Microsoft.Azure.Commands.Sql.FirewallRule.Services;
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -109,13 +109,13 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Adapter
         }
 
         /// <summary>
-        /// Convert a Management.Sql.Models.FirewallRule to AzureSqlServerFirewallRuleModel
+        /// Convert a Management.Sql.LegacySdk.Models.FirewallRule to AzureSqlServerFirewallRuleModel
         /// </summary>
         /// <param name="resourceGroup">The resource group the server is in</param>
         /// <param name="serverName">The name of the server</param>
         /// <param name="resp">The management client server response to convert</param>
         /// <returns>The converted server model</returns>
-        private static AzureSqlServerFirewallRuleModel CreateFirewallRuleModelFromResponse(string resourceGroup, string serverName, Management.Sql.Models.FirewallRule resp)
+        private static AzureSqlServerFirewallRuleModel CreateFirewallRuleModelFromResponse(string resourceGroup, string serverName, Management.Sql.LegacySdk.Models.FirewallRule resp)
         {
             AzureSqlServerFirewallRuleModel firewallRule = new AzureSqlServerFirewallRuleModel();
 

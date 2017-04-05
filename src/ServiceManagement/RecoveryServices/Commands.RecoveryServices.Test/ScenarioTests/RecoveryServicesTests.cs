@@ -155,5 +155,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
         {
             this.RunPowerShellTest("Test-CommitRP -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
+
+        [Fact]
+        public void VaultUpgradeTest()
+        {
+            this.RunPowerShellTest(
+                "Test-VaultUpgrade" +
+                " -ResourceType \"" + resourceType + "\"" +
+                " -VaultName \"" + vaultName + "\"" +
+                " -Location \"" + location + "\"" +
+                " -TargetResourceGroupName \"" + targetRgName + "\"");
+        }
     }
 }

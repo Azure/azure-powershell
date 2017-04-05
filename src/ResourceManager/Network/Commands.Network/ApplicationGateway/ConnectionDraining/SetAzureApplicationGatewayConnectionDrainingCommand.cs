@@ -31,11 +31,13 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.ExecuteCmdlet();
 
-            this.BackendHttpSettings.ConnectionDraining = new PSApplicationGatewayConnectionDraining()
+            if(this.BackendHttpSettings.ConnectionDraining == null)
             {
-                Enabled = this.Enabled,
-                DrainTimeoutInSec = this.DrainTimeoutInSec
-            };
+                this.BackendHttpSettings.ConnectionDraining = new PSApplicationGatewayConnectionDraining();
+            }
+
+            this.BackendHttpSettings.ConnectionDraining.Enabled = this.Enabled;
+            this.BackendHttpSettings.ConnectionDraining.DrainTimeoutInSec = this.DrainTimeoutInSec;
 
             WriteObject(this.BackendHttpSettings);
         }

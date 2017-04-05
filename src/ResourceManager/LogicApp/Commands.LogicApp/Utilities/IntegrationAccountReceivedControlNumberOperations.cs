@@ -14,10 +14,10 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Utilities
 {
-    using Microsoft.Azure.Management.Logic;
-    using Microsoft.Azure.Management.Logic.Models;
     using System.Globalization;
     using System.Management.Automation;
+    using Microsoft.Azure.Management.Logic;
+    using Microsoft.Azure.Management.Logic.Models;
 
     /// <summary>
     /// LogicApp client partial class for integration account control number operations.
@@ -65,13 +65,13 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="resourceGroupName">The integration account resource group name.</param>
         /// <param name="integrationAccountName">The integration account name.</param>
         /// <param name="integrationAccountAgreementName">The integration account agreement name.</param>
-        /// <param name="controlNumberValue">The control number specific value</param>
+        /// <param name="controlNumber">The control number specific value</param>
         /// <returns>Integration account control number object.</returns>
         public IntegrationAccountControlNumber GetIntegrationAccountReceivedControlNumber(string resourceGroupName, string integrationAccountName, string integrationAccountAgreementName, string controlNumber)
         {
             return IntegrationAccountClient.SessionContentToIntegrationAccountControlNumber(
                 sessionContent: this.LogicManagementClient.Sessions
-                    .GetOrThrow(
+                    .Get(
                         resourceGroupName: resourceGroupName,
                         integrationAccountName: integrationAccountName,
                         sessionName: IntegrationAccountClient.SessionNameForReceivedControlNumber(
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="resourceGroupName">The integration account resource group name.</param>
         /// <param name="integrationAccountName">The integration account name.</param>
         /// <param name="integrationAccountAgreementName">The integration account agreement name.</param>
-        /// <param name="controlNumberValue">The control number specific value</param>
+        /// <param name="controlNumber">The control number specific value</param>
         public void RemoveIntegrationAccountReceivedControlNumber(string resourceGroupName, string integrationAccountName, string integrationAccountAgreementName, string controlNumber)
         {
             this.LogicManagementClient.Sessions

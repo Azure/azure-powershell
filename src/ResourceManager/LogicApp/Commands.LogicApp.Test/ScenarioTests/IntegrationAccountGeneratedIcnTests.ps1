@@ -59,13 +59,14 @@ function Test-GetIntegrationAccountGeneratedControlNumber
 	$agreementX12FilePath = "$TestOutputRoot\Resources\IntegrationAccountX12AgreementContent.json"
 	$agreementX12Content = [IO.File]::ReadAllText($agreementX12FilePath)
 
-	Assert-ThrowsContains { Get-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName "Random83da135" -Name "DoesNotMatter" -AgreementName "DoesNotMatter" } "Resource group 'Random83da135' could not be found."
+	# This error string is less than ideal due to AutoRest bug https://github.com/Azure/autorest/issues/2022
+	Assert-ThrowsContains { Get-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName "Random83da135" -Name "DoesNotMatter" -AgreementName "DoesNotMatter" } "Operation returned an invalid status code 'NotFound'"
 
 	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
 	$integrationAccountName = getAssetname
 	$integrationAccountX12AgreementName = getAssetname
 
-	Assert-ThrowsContains { Get-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name "Random83da135" -AgreementName "DoesNotMatter" } "The Resource 'Microsoft.Logic/integrationAccounts/Random83da135' under resource group 'IntegrationAccountPsCmdletTest' was not found."
+	Assert-ThrowsContains { Get-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name "Random83da135" -AgreementName "DoesNotMatter" } "Operation returned an invalid status code 'NotFound'"
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 	
@@ -89,7 +90,7 @@ function Test-GetIntegrationAccountGeneratedControlNumber
 	# So working this around by using ARM resource cmdlet to create a dummy entry.
 
 	# Before the workaround the control number containing session ressource cannot be found in the integration account.
-	Assert-ThrowsContains { Get-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountX12AgreementName } "could not be found in integration account"
+	Assert-ThrowsContains { Get-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountX12AgreementName } "Operation returned an invalid status code 'NotFound'"
 
 	# Now we create one with the legacy raw control number content. This cmdlet will intentionally fail to deserialize: it is meant only to operate on new control numbers that have been replicated for the purpose of disaster recovery.
 	InitializeGeneratedControlNumberSession -resourceGroup $resourceGroup -integrationAccountName $integrationAccountName -integrationAccountX12AgreementName $integrationAccountX12AgreementName -oldformat $true
@@ -134,7 +135,7 @@ function Test-UpdateIntegrationAccountGenCN
 	Assert-AreEqual "X12" $integrationAccountAgreement.AgreementType
 
 	# Verify inserting new control number records is not allowed
-	Assert-ThrowsContains { Set-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -ControlNumber "789" } "could not be found in integration account"
+	Assert-ThrowsContains { Set-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -ControlNumber "789" } "Operation returned an invalid status code 'NotFound'"
 
 	InitializeGeneratedControlNumberSession -resourceGroup $resourceGroup -integrationAccountName $integrationAccountName -integrationAccountX12AgreementName $integrationAccountAgreementName -oldformat $false
 	$initialControlNumber = Get-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName
