@@ -4,7 +4,7 @@ online version:
 schema: 2.0.0
 ---
 
-# New-AzureRmRelayHybridConnectionsKey
+# Get-AzureRmRelayHybridConnectionKey
 
 ## SYNOPSIS
 {{Fill in the Synopsis}}
@@ -12,9 +12,8 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-New-AzureRmRelayHybridConnectionsKey [-ResourceGroup] <String> [-NamespaceName] <String>
- [-HybridConnectionsName] <String> [-AuthorizationRuleName] <String> -RegenerateKey <String> [-WhatIf]
- [-Confirm]
+Get-AzureRmRelayHybridConnectionKey [-ResourceGroupName] <String> [-NamespaceName] <String>
+ [-HybridConnectionsName] <String> [-AuthorizationRuleName] <String>
 ```
 
 ## DESCRIPTION
@@ -32,7 +31,7 @@ PS C:\> {{ Add example code here }}
 ## PARAMETERS
 
 ### -AuthorizationRuleName
-Authorization Rule Name.
+HybridConnections AuthorizationRule Name.
 
 ```yaml
 Type: String
@@ -43,21 +42,6 @@ Required: True
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -91,24 +75,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -RegenerateKey
-Regenerate Keys - 'PrimaryKey'/'SecondaryKey'.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-Accepted values: PrimaryKey, SecondaryKey
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroup
-The name of the resource group
+### -ResourceGroupName
+Resource Group Name.
 
 ```yaml
 Type: String
@@ -122,22 +90,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ## INPUTS
 
 ### System.String
@@ -145,7 +97,7 @@ Accept wildcard characters: False
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleKeysAttributes
+### Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes
 
 
 ## NOTES

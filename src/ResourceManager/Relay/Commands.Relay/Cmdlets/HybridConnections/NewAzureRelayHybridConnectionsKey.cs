@@ -19,10 +19,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnections
 {
     /// <summary>
-    /// 'New-AzureRmRelayHybridConnectionsKeyKey' Cmdlet creates a new specified (PrimaryKey / SecondaryKey) key for the given HybridConnections Authorization Rule
+    /// 'New-AzureRmRelayHybridConnectionKeyKey' Cmdlet creates a new specified (PrimaryKey / SecondaryKey) key for the given HybridConnections Authorization Rule
     /// </summary>
-    [Cmdlet(VerbsCommon.New, RelayHybridConnectionsKeyVerb, SupportsShouldProcess = true), OutputType(typeof(AuthorizationRuleKeysAttributes))]
-    public class NewAzureRmRelayHybridConnectionsKeyKey : AzureRelayCmdletBase
+    [Cmdlet(VerbsCommon.New, RelayHybridConnectionKeyVerb, SupportsShouldProcess = true), OutputType(typeof(AuthorizationRuleKeysAttributes))]
+    public class NewAzureRmRelayHybridConnectionKey : AzureRelayCmdletBase
     {
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,

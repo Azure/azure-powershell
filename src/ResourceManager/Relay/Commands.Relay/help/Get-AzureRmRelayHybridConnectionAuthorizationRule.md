@@ -4,7 +4,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzureRmRelayHybridConnectionsAuthorizationRule
+# Get-AzureRmRelayHybridConnectionAuthorizationRule
 
 ## SYNOPSIS
 {{Fill in the Synopsis}}
@@ -12,7 +12,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Get-AzureRmRelayHybridConnectionsAuthorizationRule [-ResourceGroupName] <String> [-NamespaceName] <String>
+Get-AzureRmRelayHybridConnectionAuthorizationRule [-ResourceGroupName] <String> [-NamespaceName] <String>
  [-HybridConnectionsName] <String> [[-AuthorizationRuleName] <String>]
 ```
 

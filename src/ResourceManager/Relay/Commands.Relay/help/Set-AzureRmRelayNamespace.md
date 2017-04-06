@@ -30,21 +30,6 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NamespaceName
 Relay Namespace Name.
 
@@ -105,6 +90,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
@@ -116,7 +116,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -124,14 +124,11 @@ Accept wildcard characters: False
 ## INPUTS
 
 ### System.String
-System.Collections.Hashtable
-Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttirbutesUpdateParameter
-
+System.Collections.Hashtable Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttirbutesUpdateParameter
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttributes
-
 
 ## NOTES
 

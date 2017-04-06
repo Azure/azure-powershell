@@ -45,8 +45,7 @@ Get valid AuthorizationRule name
 #>
 function Get-AuthorizationRuleName
 {
-    return "Relay-Namespace-AuthorizationRule" + (getAssetName)
-	
+    return "Relay-Namespace-AuthorizationRule" + (getAssetName)	
 }
 
 <#
@@ -60,6 +59,6 @@ function OperationsListTest
     $OperationsList = Get-AzureRmRelayOperations
 	
 	# Assert 
-	Assert-True $OperationsList.Count -gt 0
+	Assert-True { $OperationsList.Count -gt 0 }
 
 }

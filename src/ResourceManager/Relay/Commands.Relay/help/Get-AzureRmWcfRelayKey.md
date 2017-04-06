@@ -94,11 +94,9 @@ Accept wildcard characters: False
 
 ### System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes
-
 
 ## NOTES
 

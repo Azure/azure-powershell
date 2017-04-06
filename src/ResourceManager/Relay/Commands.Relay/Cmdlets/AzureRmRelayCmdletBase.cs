@@ -47,9 +47,9 @@ namespace Microsoft.Azure.Commands.Relay.Commands
         protected const string RelayWcfRelayAuthorizationRuleVerb = "AzureRmWcfRelayAuthorizationRule";
         protected const string RelayWcfRelayKeyVerb = "AzureRmWcfRelayKey";
 
-        protected const string RelayHybridConnectionsVerb = "AzureRmRelayHybridConnections";
-        protected const string RelayHybridConnectionsAuthorizationRuleVerb = "AzureRmRelayHybridConnectionsAuthorizationRule";
-        protected const string RelayHybridConnectionsKeyVerb = "AzureRmRelayHybridConnectionsKey";
+        protected const string RelayHybridConnectionVerb = "AzureRmRelayHybridConnection";
+        protected const string RelayHybridConnectionAuthorizationRuleVerb = "AzureRmRelayHybridConnectionAuthorizationRule";
+        protected const string RelayHybridConnectionKeyVerb = "AzureRmRelayHybridConnectionKey";
 
         protected struct SKU
         {

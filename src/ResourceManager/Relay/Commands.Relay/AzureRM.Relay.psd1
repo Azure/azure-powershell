@@ -78,9 +78,9 @@ CmdletsToExport =  'New-AzureRmRelayNamespace', 'Get-AzureRmRelayNamespace','Set
                'New-AzureRmWcfRelay', 'Get-AzureRmWcfRelay','Set-AzureRmWcfRelay','Remove-AzureRmWcfRelay',
                'New-AzureRmWcfRelayKey', 'Get-AzureRmWcfRelayKey',
                'New-AzureRmWcfRelayAuthorizationRule', 'Get-AzureRmWcfRelayAuthorizationRule','Set-AzureRmWcfRelayAuthorizationRule', 'Remove-AzureRmWcfRelayAuthorizationRule', 
-			   'New-AzureRmRelayHybridConnections', 'Get-AzureRmRelayHybridConnections','Set-AzureRmRelayHybridConnections','Remove-AzureRmRelayHybridConnections',
-			   'New-AzureRmRelayHybridConnectionsAuthorizationRule', 'Get-AzureRmRelayHybridConnectionsAuthorizationRule','Set-AzureRmRelayHybridConnectionsAuthorizationRule', 'Remove-AzureRmRelayHybridConnectionsAuthorizationRule',
-			   'New-AzureRmRelayHybridConnectionsKey', 'Get-AzureRmRelayHybridConnectionsKey', 'Get-AzureRmCheckNameAvailability',
+			   'New-AzureRmRelayHybridConnection', 'Get-AzureRmRelayHybridConnection','Set-AzureRmRelayHybridConnection','Remove-AzureRmRelayHybridConnection',
+			   'New-AzureRmRelayHybridConnectionAuthorizationRule', 'Get-AzureRmRelayHybridConnectionAuthorizationRule','Set-AzureRmRelayHybridConnectionAuthorizationRule', 'Remove-AzureRmRelayHybridConnectionAuthorizationRule',
+			   'New-AzureRmRelayHybridConnectionKey', 'Get-AzureRmRelayHybridConnectionKey', 'Get-AzureRmCheckNameAvailability',
 			   'Get-AzureRmRelayOperations'
 
 

@@ -33,11 +33,9 @@ PS C:\> {{ Add example code here }}
 
 ### None
 
-
 ## OUTPUTS
 
 ### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Relay.Models.OperationAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]
-
 
 ## NOTES
 

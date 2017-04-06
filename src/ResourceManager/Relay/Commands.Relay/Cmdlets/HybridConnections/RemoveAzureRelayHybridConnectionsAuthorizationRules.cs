@@ -17,9 +17,9 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnections
 {
     /// <summary>
-    /// 'Remove-AzureRmRelayHybridConnectionsAuthorizationRule' Cmdlet removes/deletes AuthorizationRule
+    /// 'Remove-AzureRmRelayHybridConnectionAuthorizationRule' Cmdlet removes/deletes AuthorizationRule
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, RelayHybridConnectionsAuthorizationRuleVerb, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, RelayHybridConnectionAuthorizationRuleVerb, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRelayHybridConnectionsAuthorizationRule : AzureRelayCmdletBase
     {
         [Parameter(Mandatory = true,

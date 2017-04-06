@@ -20,12 +20,12 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnections
 {
     /// <summary>
-    /// 'Get-AzureRmRelayHybridConnections' Cmdlet gives the details of a / List of HybridConnections(s)
+    /// 'Get-AzureRmRelayHybridConnection' Cmdlet gives the details of a / List of HybridConnections(s)
     /// <para> If HybridConnections name provided, a single HybridConnections detials will be returned</para>
     /// <para> If WcfRelayHybridConnections name not provided, list of WcfRelayHybridConnections will be returned</para>
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, RelayHybridConnectionsVerb), OutputType(typeof(List<HybridConnectionAttibutes>))]
-    public class GetAzureRmRelayHybridConnections : AzureRelayCmdletBase
+    [Cmdlet(VerbsCommon.Get, RelayHybridConnectionVerb), OutputType(typeof(List<HybridConnectionAttibutes>))]
+    public class GetAzureRmRelayHybridConnection : AzureRelayCmdletBase
     {
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,

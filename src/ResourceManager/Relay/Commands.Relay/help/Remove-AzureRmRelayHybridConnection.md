@@ -4,7 +4,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Remove-AzureRmRelayHybridConnections
+# Remove-AzureRmRelayHybridConnection
 
 ## SYNOPSIS
 {{Fill in the Synopsis}}
@@ -12,7 +12,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Remove-AzureRmRelayHybridConnections [-ResourceGroupName] <String> [-NamespaceName] <String>
+Remove-AzureRmRelayHybridConnection [-ResourceGroupName] <String> [-NamespaceName] <String>
  [-HybridConnectionsName] <String> [-WhatIf] [-Confirm]
 ```
 
@@ -29,21 +29,6 @@ PS C:\> {{ Add example code here }}
 {{ Add example description here }}
 
 ## PARAMETERS
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -HybridConnectionsName
 HybridConnections Name.
@@ -87,6 +72,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -16,13 +16,13 @@ using Microsoft.Azure.Commands.Relay.Models;
 using Microsoft.Azure.Management.Relay.Models;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnections
+namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnection
 {
     /// <summary>
-    /// 'New-AzureRmRelayHybridConnections' Cmdlet creates a new HybridConnections
+    /// 'New-AzureRmRelayHybridConnection' Cmdlet creates a new HybridConnections
     /// </summary>
-    [Cmdlet(VerbsCommon.New, RelayHybridConnectionsVerb, SupportsShouldProcess = true), OutputType(typeof(HybridConnection))]
-    public class NewAzureRmRelayHybridConnections : AzureRelayCmdletBase
+    [Cmdlet(VerbsCommon.New, RelayHybridConnectionVerb, SupportsShouldProcess = true), OutputType(typeof(HybridConnectionAttibutes))]
+    public class NewAzureRmRelayHybridConnection : AzureRelayCmdletBase
     {
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,

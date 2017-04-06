@@ -173,10 +173,11 @@
     <None Include="AzureRM.Relay.psd1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="help\AzureRM.Relay.md" />
     <None Include="help\Get-AzureRmCheckNameAvailability.md" />
-    <None Include="help\Get-AzureRmRelayHybridConnections.md" />
-    <None Include="help\Get-AzureRmRelayHybridConnectionsAuthorizationRule.md" />
-    <None Include="help\Get-AzureRmRelayHybridConnectionsKey.md" />
+    <None Include="help\Get-AzureRmRelayHybridConnection.md" />
+    <None Include="help\Get-AzureRmRelayHybridConnectionAuthorizationRule.md" />
+    <None Include="help\Get-AzureRmRelayHybridConnectionKey.md" />
     <None Include="help\Get-AzureRmRelayNamespace.md" />
     <None Include="help\Get-AzureRmRelayNamespaceAuthorizationRule.md" />
     <None Include="help\Get-AzureRmRelayNamespaceKey.md" />
@@ -184,23 +185,23 @@
     <None Include="help\Get-AzureRmWcfRelay.md" />
     <None Include="help\Get-AzureRmWcfRelayAuthorizationRule.md" />
     <None Include="help\Get-AzureRmWcfRelayKey.md" />
-    <None Include="help\New-AzureRmRelayHybridConnections.md" />
-    <None Include="help\New-AzureRmRelayHybridConnectionsAuthorizationRule.md" />
-    <None Include="help\New-AzureRmRelayHybridConnectionsKey.md" />
+    <None Include="help\New-AzureRmRelayHybridConnection.md" />
+    <None Include="help\New-AzureRmRelayHybridConnectionAuthorizationRule.md" />
+    <None Include="help\New-AzureRmRelayHybridConnectionKey.md" />
     <None Include="help\New-AzureRmRelayNamespace.md" />
     <None Include="help\New-AzureRmRelayNamespaceAuthorizationRule.md" />
     <None Include="help\New-AzureRmRelayNamespaceKey.md" />
     <None Include="help\New-AzureRmWcfRelay.md" />
     <None Include="help\New-AzureRmWcfRelayAuthorizationRule.md" />
     <None Include="help\New-AzureRmWcfRelayKey.md" />
-    <None Include="help\Remove-AzureRmRelayHybridConnections.md" />
-    <None Include="help\Remove-AzureRmRelayHybridConnectionsAuthorizationRule.md" />
+    <None Include="help\Remove-AzureRmRelayHybridConnection.md" />
+    <None Include="help\Remove-AzureRmRelayHybridConnectionAuthorizationRule.md" />
     <None Include="help\Remove-AzureRmRelayNamespace.md" />
     <None Include="help\Remove-AzureRmRelayNamespaceAuthorizationRule.md" />
     <None Include="help\Remove-AzureRmWcfRelay.md" />
     <None Include="help\Remove-AzureRmWcfRelayAuthorizationRule.md" />
-    <None Include="help\Set-AzureRmRelayHybridConnections.md" />
-    <None Include="help\Set-AzureRmRelayHybridConnectionsAuthorizationRule.md" />
+    <None Include="help\Set-AzureRmRelayHybridConnection.md" />
+    <None Include="help\Set-AzureRmRelayHybridConnectionAuthorizationRule.md" />
     <None Include="help\Set-AzureRmRelayNamespace.md" />
     <None Include="help\Set-AzureRmRelayNamespaceAuthorizationRule.md" />
     <None Include="help\Set-AzureRmWcfRelay.md" />

@@ -176,12 +176,6 @@
     <None Include="ScenarioTests\WcfRelayTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Relay.Test.ScenarioTests.HybridConnectionsTests\HybridConnectionsAuthorizationRulesCRUD.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Relay.Test.ScenarioTests.HybridConnectionsTests\HybridConnectionsCRUD.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Relay.Test.ScenarioTests.RelayNamespaceTests\RelayNamespaceAuthorizationRulesCRUD.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Relay.Test.ScenarioTests.RelayNamespaceTests\RelayNamespaceCRUD.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Relay.Test.ScenarioTests.WcfRelayTests\WcfRelayAuthorizationRulesCRUD.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Relay.Test.ScenarioTests.WcfRelayTests\WcfRelayCRUD.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
@@ -212,6 +206,8 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="SessionRecords\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

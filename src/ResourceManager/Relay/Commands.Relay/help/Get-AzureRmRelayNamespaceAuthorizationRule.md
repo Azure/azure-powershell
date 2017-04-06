@@ -79,11 +79,9 @@ Accept wildcard characters: False
 
 ### System.String
 
-
 ## OUTPUTS
 
 ### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]
-
 
 ## NOTES
 

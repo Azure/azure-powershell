@@ -17,12 +17,12 @@ using Microsoft.Azure.Management.Relay.Models;
 using System.Management.Automation;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnections
+namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnection
 {
     /// <summary>
-    /// 'Set-AzureRmRelayHybridConnectionsAuthorizationRule' Cmdlet updates the specified AuthorizationRule
+    /// 'Set-AzureRmRelayHybridConnectionAuthorizationRule' Cmdlet updates the specified AuthorizationRule
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, RelayHybridConnectionsAuthorizationRuleVerb, SupportsShouldProcess = true), OutputType(typeof(AuthorizationRuleAttributes))]
+    [Cmdlet(VerbsCommon.Set, RelayHybridConnectionAuthorizationRuleVerb, SupportsShouldProcess = true), OutputType(typeof(AuthorizationRuleAttributes))]
     public class SetAzureRelayHybridConnectionsAuthorizationRule : AzureRelayCmdletBase
     {
         [Parameter(Mandatory = true,

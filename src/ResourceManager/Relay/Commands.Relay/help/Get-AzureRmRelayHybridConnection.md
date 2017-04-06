@@ -4,7 +4,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzureRmRelayHybridConnections
+# Get-AzureRmRelayHybridConnection
 
 ## SYNOPSIS
 {{Fill in the Synopsis}}
@@ -12,7 +12,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Get-AzureRmRelayHybridConnections [-ResourceGroupName] <String> [-NamespaceName] <String>
+Get-AzureRmRelayHybridConnection [-ResourceGroupName] <String> [-NamespaceName] <String>
  [-HybridConnectionsName <String>]
 ```
 

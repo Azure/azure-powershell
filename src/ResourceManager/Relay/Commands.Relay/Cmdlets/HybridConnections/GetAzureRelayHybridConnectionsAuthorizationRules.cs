@@ -24,8 +24,8 @@ namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnections
     /// <para> If AuthorizationRule name provided, a single AuthorizationRule detials will be returned</para>
     /// <para> If AuthorizationRule name not provided, list of AuthorizationRules will be returned</para>
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, RelayHybridConnectionsAuthorizationRuleVerb), OutputType(typeof(List<AuthorizationRuleAttributes>))]
-    public class GetAzureRmRelayHybridConnectionsAuthorizationRule : AzureRelayCmdletBase
+    [Cmdlet(VerbsCommon.Get, RelayHybridConnectionAuthorizationRuleVerb), OutputType(typeof(List<AuthorizationRuleAttributes>))]
+    public class GetAzureRmRelayHybridConnectionAuthorizationRule : AzureRelayCmdletBase
     {
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,

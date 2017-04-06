@@ -19,9 +19,9 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnections
 {
     /// <summary>
-    /// 'New-AzureRmRelayHybridConnectionsAuthorizationRule' Cmdlet creates a new AuthorizationRule
+    /// 'New-AzureRmRelayHybridConnectionAuthorizationRule' Cmdlet creates a new AuthorizationRule
     /// </summary>
-    [Cmdlet(VerbsCommon.New, RelayHybridConnectionsAuthorizationRuleVerb, SupportsShouldProcess = true), OutputType(typeof(AuthorizationRuleAttributes))]
+    [Cmdlet(VerbsCommon.New, RelayHybridConnectionAuthorizationRuleVerb, SupportsShouldProcess = true), OutputType(typeof(AuthorizationRuleAttributes))]
     public class NewAzureRelayHybridConnectionsAuthorizationRule : AzureRelayCmdletBase
     {
         [Parameter(Mandatory = true,

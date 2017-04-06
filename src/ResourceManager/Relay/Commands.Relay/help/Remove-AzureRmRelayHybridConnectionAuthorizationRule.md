@@ -4,7 +4,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Set-AzureRmRelayHybridConnectionsAuthorizationRule
+# Remove-AzureRmRelayHybridConnectionAuthorizationRule
 
 ## SYNOPSIS
 {{Fill in the Synopsis}}
@@ -12,9 +12,8 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Set-AzureRmRelayHybridConnectionsAuthorizationRule [-ResourceGroupName] <String> [-NamespaceName] <String>
- [-HybridConnectionsName] <String> [-AuthRuleObj] <AuthorizationRuleAttributes>
- [-AuthorizationRuleName] <String> [-Rights <String[]>] [-WhatIf] [-Confirm]
+Remove-AzureRmRelayHybridConnectionAuthorizationRule [-ResourceGroupName] <String> [-NamespaceName] <String>
+ [-HybridConnectionsName] <String> [-AuthorizationRuleName] <String> [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
@@ -31,23 +30,8 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -AuthRuleObj
-HybridConnections AuthorizationRule Object.
-
-```yaml
-Type: AuthorizationRuleAttributes
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -AuthorizationRuleName
-AuthorizationRule Name.
+HybridConnections AuthorizationRule Name.
 
 ```yaml
 Type: String
@@ -58,21 +42,6 @@ Required: True
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -121,20 +90,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Rights
-Required if 'AuthruleObj' not specified.
-Rights - e.g. 
-@("Listen","Send","Manage")
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: String[]
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: cf
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -157,12 +124,11 @@ Accept wildcard characters: False
 ## INPUTS
 
 ### System.String
-System.String[]
 
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes
+### System.Boolean
 
 
 ## NOTES

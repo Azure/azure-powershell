@@ -4,7 +4,7 @@ online version:
 schema: 2.0.0
 ---
 
-# New-AzureRmRelayHybridConnections
+# Set-AzureRmRelayHybridConnectionAuthorizationRule
 
 ## SYNOPSIS
 {{Fill in the Synopsis}}
@@ -12,9 +12,9 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-New-AzureRmRelayHybridConnections [-ResourceGroupName] <String> [-NamespaceName] <String>
- [-HybridConnectionsName] <String> [-HybridConnectionsObj <HybridConnectionAttibutes>]
- [-RequiresClientAuthorization <Boolean>] [-UserMetadata <String>] [-WhatIf] [-Confirm]
+Set-AzureRmRelayHybridConnectionAuthorizationRule [-ResourceGroupName] <String> [-NamespaceName] <String>
+ [-HybridConnectionsName] <String> [-AuthRuleObj] <AuthorizationRuleAttributes>
+ [-AuthorizationRuleName] <String> [-Rights <String[]>] [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
@@ -31,16 +31,31 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -AuthorizationRuleName
+AuthorizationRule Name.
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
-Aliases: cf
+Aliases: 
 
-Required: False
-Position: Named
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AuthRuleObj
+HybridConnections AuthorizationRule Object.
+
+```yaml
+Type: AuthorizationRuleAttributes
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -55,22 +70,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 3
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -HybridConnectionsObj
-HybridConnections object.
-
-```yaml
-Type: HybridConnectionAttibutes
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -91,21 +91,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -RequiresClientAuthorization
-true if client authorization is needed for this HybridConnections; otherwise, false
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Resource Group Name.
 
@@ -121,12 +106,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -UserMetadata
-Gets or sets usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g.
-it can be used to store  descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored.
+### -Rights
+Required if 'AuthruleObj' not specified.
+Rights - e.g. 
+@("Listen","Send","Manage")
 
 ```yaml
-Type: String
+Type: String[]
 Parameter Sets: (All)
 Aliases: 
 
@@ -134,6 +120,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -156,13 +157,12 @@ Accept wildcard characters: False
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes
-System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+System.String[]
 
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.Relay.Models.HybridConnection
+### Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes
 
 
 ## NOTES

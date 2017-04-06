@@ -46,7 +46,7 @@ Get valid AuthorizationRule name
 #>
 function Get-AuthorizationRuleName
 {
-    return "Relay-HybridConnections-AuthorizationRule" + (getAssetName)
+    return "Relay-HybridCon-AuthRule" + (getAssetName)
 	
 }
 
@@ -87,18 +87,18 @@ function HybridConnectionsTests
 	# Create a HybridConnections
     Write-Debug "Create new HybridConnections"
 	$userMetadata = "User Meta data"
-    $result = New-AzureRmRelayHybridConnections -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $HybridConnectionsName -RequiresClientAuthorization $True -UserMetadata $userMetadata
+    $result = New-AzureRmRelayHybridConnection -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $HybridConnectionsName -RequiresClientAuthorization $True -UserMetadata $userMetadata
 	
 		
     Write-Debug " Get the created HybridConnections "
-    $createdHybridConnections = Get-AzureRmRelayHybridConnections -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $HybridConnectionsName
+    $createdHybridConnections = Get-AzureRmRelayHybridConnection -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $HybridConnectionsName
 
     #Assert
 	Assert-True {$createdHybridConnections.Name -eq $HybridConnectionsName} "HybridConnections created earlier is not found."
 
 	# Get the Created HybridConnections
     Write-Debug " Get all the created HybridConnections "
-    $createdHybridConnectionsList = Get-AzureRmRelayHybridConnections -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
+    $createdHybridConnectionsList = Get-AzureRmRelayHybridConnection -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
 	    
 	#Assert
     Assert-True {$createdHybridConnectionsList[0].Name -eq $HybridConnectionsName }"HybridConnections created earlier is not found."
@@ -106,7 +106,7 @@ function HybridConnectionsTests
 	# Update the Created HybridConnections
     Write-Debug " Update HybridConnections "
 	$createdHybridConnections.UserMetadata = "usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g. it can be used to store  descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored."	   
-    $result1 = Set-AzureRmRelayHybridConnections -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $HybridConnectionsName -HybridConnectionsObj $createdHybridConnections
+    $result1 = Set-AzureRmRelayHybridConnection -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $HybridConnectionsName -HybridConnectionsObj $createdHybridConnections
     Wait-Seconds 15
 	
 	# Assert
@@ -117,7 +117,7 @@ function HybridConnectionsTests
 	Write-Debug " Delete the HybridConnections"
 	for ($i = 0; $i -lt $createdHybridConnectionsList.Count; $i++)
 	{
-		$delete1 = Remove-AzureRmRelayHybridConnections -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $HybridConnectionsName		
+		$delete1 = Remove-AzureRmRelayHybridConnection -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $HybridConnectionsName		
 	}
     Write-Debug " Delete namespaces"
     Remove-AzureRmRelayNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
@@ -163,18 +163,18 @@ function HybridConnectionsAuthTests
 	# Create a HybridConnections
     Write-Debug "Create new HybridConnections"
 	$userMetadata = "User Meta data"
-    $result = New-AzureRmRelayHybridConnections -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $HybridConnectionsName -RequiresClientAuthorization $True -UserMetadata $userMetadata
+    $result = New-AzureRmRelayHybridConnection -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $HybridConnectionsName -RequiresClientAuthorization $True -UserMetadata $userMetadata
 	
 		
     Write-Debug " Get the created HybridConnections "
-    $createdHybridConnections = Get-AzureRmRelayHybridConnections -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $HybridConnectionsName
+    $createdHybridConnections = Get-AzureRmRelayHybridConnection -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $HybridConnectionsName
 
     #Assert
 	Assert-True {$createdHybridConnections.Name -eq $HybridConnectionsName} "HybridConnections created earlier is not found."
 
 	# Create HybridConnections Authorization Rule
     Write-Debug "Create a HybridConnections Authorization Rule"
-    $resultAuthorizationRule = New-AzureRmRelayHybridConnectionsAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $result.Name -AuthorizationRuleName $authRuleName -Rights @("Listen","Send")
+    $resultAuthorizationRule = New-AzureRmRelayHybridConnectionAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $result.Name -AuthorizationRuleName $authRuleName -Rights @("Listen","Send")
 
 	# Assert
     Assert-AreEqual $authRuleName $resultAuthorizationRule.Name
@@ -185,7 +185,7 @@ function HybridConnectionsAuthTests
 
 	# Get Created HybridConnections Authorization Rule
     Write-Debug "Get created authorizationRule"
-    $createdAuthRule = Get-AzureRmRelayHybridConnectionsAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $result.Name -AuthorizationRule $authRuleName
+    $createdAuthRule = Get-AzureRmRelayHybridConnectionAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $result.Name -AuthorizationRule $authRuleName
 
 	# Assert
     Assert-AreEqual $authRuleName $createdAuthRule.Name
@@ -195,7 +195,7 @@ function HybridConnectionsAuthTests
 
 	# Get all HybridConnections Authorization Rules
     Write-Debug "Get All HybridConnections AuthorizationRule"
-    $resultAuthorizationRule1 = Get-AzureRmRelayHybridConnectionsAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $result.Name
+    $resultAuthorizationRule1 = Get-AzureRmRelayHybridConnectionAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $result.Name
 	# Assert
     $found = 0
     
@@ -212,7 +212,7 @@ function HybridConnectionsAuthTests
 	# Update the HybridConnections Authorization Rule
     Write-Debug "Update HybridConnections AuthorizationRule"
 	$createdAuthRule.Rights.Add("Manage")
-    $updatedAuthRule = Set-AzureRmRelayHybridConnectionsAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $result.Name -AuthorizationRuleName $authRuleName -AuthRuleObj $createdAuthRule
+    $updatedAuthRule = Set-AzureRmRelayHybridConnectionAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $result.Name -AuthorizationRuleName $authRuleName -AuthRuleObj $createdAuthRule
     Wait-Seconds 15
 
 	# Assert
@@ -223,7 +223,7 @@ function HybridConnectionsAuthTests
     Assert-True { $updatedAuthRule.Rights -Contains "Manage" }
 	   
     # get the Updated HybridConnections Authorization Rule
-    $updatedAuthRule = Get-AzureRmRelayHybridConnectionsAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $result.Name -AuthorizationRuleName $authRuleName
+    $updatedAuthRule = Get-AzureRmRelayHybridConnectionAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $result.Name -AuthorizationRuleName $authRuleName
     
 	# Assert
     Assert-AreEqual $authRuleName $updatedAuthRule.Name
@@ -234,7 +234,7 @@ function HybridConnectionsAuthTests
 	
 	# Get the List Keys
     Write-Debug "Get HybridConnections authorizationRules connectionStrings"
-    $namespaceListKeys = Get-AzureRmRelayHybridConnectionsKey -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $result.Name -AuthorizationRuleName $authRuleName
+    $namespaceListKeys = Get-AzureRmRelayHybridConnectionKey -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $result.Name -AuthorizationRuleName $authRuleName
 
     Assert-True {$namespaceListKeys.PrimaryConnectionString.Contains($updatedAuthRule.PrimaryKey)}
     Assert-True {$namespaceListKeys.SecondaryConnectionString.Contains($updatedAuthRule.SecondaryKey)}
@@ -242,20 +242,20 @@ function HybridConnectionsAuthTests
 	# Regentrate the Keys 
 	$policyKey = "PrimaryKey"
 
-	$namespaceRegenerateKeys = New-AzureRmRelayHybridConnectionsKey -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $result.Name -AuthorizationRuleName $authRuleName -RegenerateKey $policyKey
+	$namespaceRegenerateKeys = New-AzureRmRelayHybridConnectionKey -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $result.Name -AuthorizationRuleName $authRuleName -RegenerateKey $policyKey
 	Assert-True {$namespaceRegenerateKeys.PrimaryKey -ne $namespaceListKeys.PrimaryKey}
 
 	$policyKey1 = "SecondaryKey"
 
-	$namespaceRegenerateKeys1 = New-AzureRmRelayHybridConnectionsKey -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $result.Name -AuthorizationRuleName $authRuleName -RegenerateKey $policyKey1
+	$namespaceRegenerateKeys1 = New-AzureRmRelayHybridConnectionKey -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $result.Name -AuthorizationRuleName $authRuleName -RegenerateKey $policyKey1
 	Assert-True {$namespaceRegenerateKeys1.SecondaryKey -ne $namespaceListKeys.SecondaryKey}
 	
 	# Cleanup
     Write-Debug "Delete the created HybridConnections AuthorizationRule"
-    $resultDelete = Remove-AzureRmRelayHybridConnectionsAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $result.Name -AuthorizationRuleName $authRuleName
+    $resultDelete = Remove-AzureRmRelayHybridConnectionAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $result.Name -AuthorizationRuleName $authRuleName
     
     Write-Debug "Delete the HybridConnections"
-    Remove-AzureRmRelayHybridConnections -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $result.Name
+    Remove-AzureRmRelayHybridConnection -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $result.Name
     
     Write-Debug "Delete NameSpace"
     Remove-AzureRmRelayNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName

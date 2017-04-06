@@ -19,9 +19,9 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnections
 {
     /// <summary>
-    /// 'Get-AzureRmRelayHybridConnectionsKey' Cmdlet gives key detials for the given HybridConnections Authorization Rule
+    /// 'Get-AzureRmRelayHybridConnectionKey' Cmdlet gives key detials for the given HybridConnections Authorization Rule
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, RelayHybridConnectionsKeyVerb), OutputType(typeof(AuthorizationRuleAttributes))]
+    [Cmdlet(VerbsCommon.Get, RelayHybridConnectionKeyVerb), OutputType(typeof(AuthorizationRuleAttributes))]
     public class GetAzureRelayHybridConnectionsKey : AzureRelayCmdletBase
     {
         [Parameter(Mandatory = true,
