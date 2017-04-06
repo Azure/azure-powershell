@@ -170,7 +170,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="AzureRM.Relay.psd1">
+    <None Include="..\AzureRM.Relay.psd1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="help\AzureRM.Relay.md" />
