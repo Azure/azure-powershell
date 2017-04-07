@@ -12,29 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
+namespace Microsoft.Azure.Commands.Common.Authentication
 {
-    public interface IAzureContext 
+    public enum LoginType
     {
-        IAzureAccount Account { get; set; }
+        /// <summary>
+        /// User is logging in with orgid credentials
+        /// </summary>
+        OrgId,
 
-        IAzureTenant Tenant { get; set; }
-
-        IAzureSubscription Subscription { get; set; }
-
-        IAzureEnvironment Environment { get; set; }
-
-        string VersionProfile { get; set; }
-
-        IAuthenticationStore TokenCache { get; set; }
-
-        IDictionary<string, string> ExtendedProperties { get;}
+        /// <summary>
+        /// User is logging in with liveid credentials
+        /// </summary>
+        LiveId
     }
 }

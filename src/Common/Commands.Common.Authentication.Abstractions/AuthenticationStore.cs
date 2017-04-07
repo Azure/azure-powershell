@@ -13,22 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
-    public interface IAzureSubscription : ISerializable
+    /// <summary>
+    /// State storage for token cache
+    /// </summary>
+    public class AuthenticationStore : IAuthenticationStore
     {
-        string Id { get; set; }
-
-        string Name { get; set; }
-
-        string State { get; set; }
-
-        IDictionary<string, string> ExtendedProperties { get; }
+        public byte[] CacheData {get; set;}
     }
 }

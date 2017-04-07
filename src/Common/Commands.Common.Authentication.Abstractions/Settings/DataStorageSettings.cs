@@ -15,20 +15,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
-    public interface IAzureSessionSettings
+    public class DataStorageSettings
     {
-        IClientFactorySettings ClientSettings { get; set; }
-
-        IAuthenticationFactorySettings AuthenticationSettings { get; set; }
-
-        IDataStorageSettings DataSettings { get; set; }
-
-        IDictionary<string, string> ExtendedProperties { get;}
+        IDictionary<string, string> Settings { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
     }
 }

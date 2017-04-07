@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
-    public interface IUserAgentSettings
+    public class HandlerSettings
     {
         string Name { get; set; }
 
         string Type { get; set; }
 
-        IDictionary<string, string> Settings { get; }
+        IDictionary<string, string> Settings { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
     }
 }

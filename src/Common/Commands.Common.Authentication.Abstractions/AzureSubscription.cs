@@ -15,21 +15,20 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http.Headers;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
-    public interface IClientFactorySettings 
+    public class AzureSubscription : IAzureSubscription
     {
-        IEnumerable<IUserAgentSettings> UserAgents { get; }
+        public string Id { get; set; }
 
-        IDictionary<string, IHandlerSettings> DelegatingHandlers { get; }
+        public string Name { get; set; }
 
-        IEnumerable<IClientActionSettings> ClientActions { get; }
+        public string State { get; set; }
 
-        IDictionary<string, string> Settings { get; }
+        public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
     }
 }

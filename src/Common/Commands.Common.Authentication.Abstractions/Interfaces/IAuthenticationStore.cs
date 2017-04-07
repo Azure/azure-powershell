@@ -12,21 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
-    public interface IAzureTenant : ISerializable
+    /// <summary>
+    /// State storage for token cache
+    /// </summary>
+    public interface IAuthenticationStore
     {
-        string Id { get; set; }
-
-        string Directory { get; set; }
-
-        IDictionary<string, string> ExtendedProperties { get; }
+        /// <summary>
+        /// The serialized data from the token cache.
+        /// </summary>
+        byte[] CacheData { get; set; }
     }
 }

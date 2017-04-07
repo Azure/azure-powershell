@@ -12,23 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
+namespace Microsoft.Azure.Commands.Common.Authentication
 {
-    public interface IAzureAccount
+    public enum ShowDialog
     {
-        string Id { get; set; }
-
-        string Credential { get; set; }
-
-        string Type { get; set; }
-        
-        IDictionary<string, string> ExtendedProperties { get; set; }
+        Auto,
+        Always,
+        Never
     }
 }

@@ -12,12 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
-    public interface IAuthenticationFactorySettings
+    public class AuthenticationFactorySettings
     {
-        IDictionary<string, string> ExtendedProperties { get;}
+        public IDictionary<string, string> Settings { get; }
     }
 }

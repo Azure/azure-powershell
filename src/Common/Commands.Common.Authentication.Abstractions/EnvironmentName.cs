@@ -12,23 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
+namespace Commands.Common.Authentication.Abstractions
 {
-    /// <summary>
-    /// State storage for token cache
-    /// </summary>
-    public interface IAuthenticationStore
+    public static class EnvironmentName
     {
-        /// <summary>
-        /// Load Authentication Blob from the store.
-        /// </summary>
-        /// <returns>The current authentication data in the store.</returns>
-        byte[] LoadCacheData();
-
-        /// <summary>
-        /// Save Authentication blob to the store.
-        /// </summary>
-        /// <param name="data">The authentication data to replace.</param>
-        void StoreCacheData(byte[] data);
+        public const string AzureCloud = "AzureCloud";
+        public const string AzureChinaCloud = "AzureChinaCloud";
+        public const string AzureUSGovernment = "AzureUSGovernment";
+        public const string AzureGermanCloud = "AzureGermanCloud";
     }
+
 }

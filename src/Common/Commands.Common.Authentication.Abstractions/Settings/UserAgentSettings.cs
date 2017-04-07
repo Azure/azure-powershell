@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
-    public interface IClientActionSettings
+    public struct UserAgentSettings
     {
-        string Name { get; set; }
+        string Product { get; set; }
 
-        string Type { get; set; }
+        string Value { get; set; }
 
         IDictionary<string, string> Settings { get; }
-
     }
 }

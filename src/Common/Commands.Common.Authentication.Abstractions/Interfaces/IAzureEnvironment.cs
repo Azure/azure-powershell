@@ -14,15 +14,10 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Security;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
-    public interface IAzureEnvironment : ISerializable
+    public interface IAzureEnvironment
     {
         string Name { get; set; }
 
@@ -33,6 +28,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         Uri ResourceManager { get; set; }
 
         Uri ManagementPortalUrl { get; set; }
+
+        Uri PublishSettingsFileUrl { get; set; }
 
         Uri ActiveDirectory { get; set; }
 
@@ -54,8 +51,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 
         string GraphEndpointResourceId { get; set; }
 
-        IList<string> VersionProfiles { get; }
-       
-        IDictionary<string, string> ExtendedProperties { get; set; }
+       string AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix { get; set; }
+
+       string AzureDataLakeStoreFileSystemEndpointSuffix { get; set; }
+
+        string AdTenant { get; set; }
+
+       IList<string> VersionProfiles { get; } 
+
+        IDictionary<string, string> ExtendedProperties { get; } 
     }
 }
