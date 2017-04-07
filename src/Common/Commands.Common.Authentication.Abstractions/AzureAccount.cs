@@ -45,5 +45,33 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             return Id.GetHashCode();
         }
 
+        public static class AccountType
+        {
+            public const string Certificate = "Certificate",
+            User = "User",
+            ServicePrincipal = "ServicePrincipal",
+            AccessToken = "AccessToken";
+        }
+
+        public static class Property
+        {
+            public const string Subscriptions = "Subscriptions",
+
+        /// <summary>
+        /// Comma separated list of tenants on this account.
+        /// </summary>
+        Tenants = "Tenants",
+
+        /// <summary>
+        /// Access token.
+        /// </summary>
+        AccessToken = "AccessToken",
+
+        /// <summary>
+        /// Thumbprint for associated certificate
+        /// </summary>
+        CertificateThumbprint = "CertificateThumbprint";
+
+        }
     }
 }
