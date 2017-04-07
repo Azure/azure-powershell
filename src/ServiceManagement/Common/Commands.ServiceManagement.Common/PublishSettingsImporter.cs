@@ -89,7 +89,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             }
 
             X509Certificate2 certificate = new X509Certificate2(Convert.FromBase64String(certificateString), string.Empty);
-            AzureSession.DataStore.AddCertificate(certificate);
+            AzureSession.Instance..DataStore.AddCertificate(certificate);
 
             return certificate;
         }

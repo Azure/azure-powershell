@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 throw new ApplicationException(Resources.NoSubscriptionInContext);
             }
 
-            var creds = AzureSession.AuthenticationFactory.GetServiceClientCredentials(context, endpoint);
+            var creds = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, endpoint);
             var newHandlers = GetCustomHandlers();
             TClient client = (newHandlers == null || newHandlers.Length == 0)
                 ? CreateCustomArmClient<TClient>(context.Environment.GetEndpointAsUri(endpoint), creds)
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 throw new ApplicationException(exceptionMessage);
             }
 
-            SubscriptionCloudCredentials creds = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context, endpoint);
+            SubscriptionCloudCredentials creds = AzureSession.Instance.AuthenticationFactory.GetSubscriptionCloudCredentials(context, endpoint);
             TClient client = CreateCustomClient<TClient>(creds, context.Environment.GetEndpointAsUri(endpoint));
             foreach (DelegatingHandler handler in GetCustomHandlers())
             {

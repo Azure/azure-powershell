@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -31,7 +32,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             ShowDialog promptBehavior,
             string userId,
             SecureString password,
-            AzureAccount.AccountType credentialType)
+            string credentialType)
         {
             if (credentialType == AzureAccount.AccountType.User)
             {
@@ -44,7 +45,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             AdalConfiguration config,
             string clientId,
             string certificateThumbprint,
-            AzureAccount.AccountType credentialType)
+            string credentialType)
         {
             if (credentialType == AzureAccount.AccountType.User)
             {
@@ -80,7 +81,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             string appId,
             string thumbprint)
         {
-            var certificate = AzureSession.DataStore.GetCertificate(thumbprint);
+            var certificate = AzureSession.Instance.DataStore.GetCertificate(thumbprint);
             if (certificate == null)
             {
                 throw new ArgumentException(string.Format(Resources.CertificateNotFoundInStore, thumbprint));

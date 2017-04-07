@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             ShowDialog promptBehavior,
             string userId,
             SecureString password,
-            AzureAccount.AccountType credentialType);
+            string credentialType);
 
         /// <summary>
         /// Get a new authentication token for the given environment
@@ -52,6 +52,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             AdalConfiguration config,
             string principalId,
             string certificateThumbprint,
-            AzureAccount.AccountType credentialType);
+            string credentialType);
     }
 }

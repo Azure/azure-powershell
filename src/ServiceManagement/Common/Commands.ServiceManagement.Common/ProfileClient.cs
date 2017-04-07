@@ -57,20 +57,20 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
 
         private void UpgradeProfile()
         {
-            string oldProfileFilePath = Path.Combine(AzureSession.ProfileDirectory, AzureSession.OldProfileFile);
-            string oldProfileFilePathBackup = Path.Combine(AzureSession.ProfileDirectory, AzureSession.OldProfileFileBackup);
-            string newProfileFilePath = Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile);
-            if (AzureSession.DataStore.FileExists(oldProfileFilePath))
+            string oldProfileFilePath = Path.Combine(AzureSession.Instance..ProfileDirectory, AzureSession.Instance..OldProfileFile);
+            string oldProfileFilePathBackup = Path.Combine(AzureSession.Instance..ProfileDirectory, AzureSession.Instance..OldProfileFileBackup);
+            string newProfileFilePath = Path.Combine(AzureSession.Instance..ProfileDirectory, AzureSession.Instance..ProfileFile);
+            if (AzureSession.Instance..DataStore.FileExists(oldProfileFilePath))
             {
-                string oldProfilePath = Path.Combine(AzureSession.ProfileDirectory,
-                    AzureSession.OldProfileFile);
+                string oldProfilePath = Path.Combine(AzureSession.Instance..ProfileDirectory,
+                    AzureSession.Instance..OldProfileFile);
 
                 try
                 {
                     // Try to backup old profile
                     try
                     {
-                        AzureSession.DataStore.CopyFile(oldProfilePath, oldProfileFilePathBackup);
+                        AzureSession.Instance..DataStore.CopyFile(oldProfilePath, oldProfileFilePathBackup);
                     }
                     catch
                     {
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
 
                     AzureSMProfile oldProfile = new AzureSMProfile(oldProfilePath);
 
-                    if (AzureSession.DataStore.FileExists(newProfileFilePath))
+                    if (AzureSession.Instance..DataStore.FileExists(newProfileFilePath))
                     {
                         // Merge profile files
                         AzureSMProfile newProfile = new AzureSMProfile(newProfileFilePath);
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
                         {
                             oldProfile.Subscriptions[subscription.Id] = subscription;
                         }
-                        AzureSession.DataStore.DeleteFile(newProfileFilePath);
+                        AzureSession.Instance..DataStore.DeleteFile(newProfileFilePath);
                     }
 
                     // If there were no load errors - delete backup file
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
                     {
                         try
                         {
-                            AzureSession.DataStore.DeleteFile(oldProfileFilePathBackup);
+                            AzureSession.Instance..DataStore.DeleteFile(oldProfileFilePathBackup);
                         }
                         catch
                         {
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
                     oldProfile.Save();
 
                     // Rename WindowsAzureProfile.xml to WindowsAzureProfile.json
-                    AzureSession.DataStore.RenameFile(oldProfilePath, newProfileFilePath);
+                    AzureSession.Instance..DataStore.RenameFile(oldProfilePath, newProfileFilePath);
 
                 }
                 catch
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
                     // Something really bad happened - try to delete the old profile
                     try
                     {
-                        AzureSession.DataStore.DeleteFile(oldProfilePath);
+                        AzureSession.Instance..DataStore.DeleteFile(oldProfilePath);
                     }
                     catch
                     {
@@ -676,7 +676,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             Profile.Subscriptions.Clear();
             Profile.Save();
 
-            AzureSession.TokenCache.Clear();
+            AzureSession.Instance..TokenCache.Clear();
         }
 
         public void ClearDefaultSubscription()
@@ -686,7 +686,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
 
         public void ImportCertificate(X509Certificate2 certificate)
         {
-            AzureSession.DataStore.AddCertificate(certificate);
+            AzureSession.Instance..DataStore.AddCertificate(certificate);
         }
 
         public List<AzureAccount> ListSubscriptionAccounts(Guid subscriptionId)
@@ -726,11 +726,11 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
 
         private List<AzureSubscription> ListSubscriptionsFromPublishSettingsFile(string filePath, string environment)
         {
-            if (string.IsNullOrEmpty(filePath) || !AzureSession.DataStore.FileExists(filePath))
+            if (string.IsNullOrEmpty(filePath) || !AzureSession.Instance..DataStore.FileExists(filePath))
             {
                 throw new ArgumentException(Resources.FilePathIsNotValid, "filePath");
             }
-            return PublishSettingsImporter.ImportAzureSubscription(AzureSession.DataStore.ReadFileAsStream(filePath), this, environment).ToList();
+            return PublishSettingsImporter.ImportAzureSubscription(AzureSession.Instance..DataStore.ReadFileAsStream(filePath), this, environment).ToList();
         }
 
         private IEnumerable<AzureSubscription> ListSubscriptionsFromServerForAllAccounts(AzureEnvironment environment)
@@ -777,7 +777,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
                     if (account.Type == AzureAccount.AccountType.User && storedTenants.Count() == 1)
                     {
                         TracingAdapter.Information(Resources.AuthenticatingForSingleTenant, account.Id, storedTenants[0]);
-                        AzureSession.AuthenticationFactory.Authenticate(account, environment, storedTenants[0], password,
+                        AzureSession.Instance..AuthenticationFactory.Authenticate(account, environment, storedTenants[0], password,
                             promptBehavior);
                     }
                 }
@@ -818,10 +818,10 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
 
         private string[] LoadAccountTenants(AzureAccount account, AzureEnvironment environment, SecureString password, ShowDialog promptBehavior)
         {
-            var commonTenantToken = AzureSession.AuthenticationFactory.Authenticate(account, environment,
+            var commonTenantToken = AzureSession.Instance..AuthenticationFactory.Authenticate(account, environment,
                 AuthenticationFactory.CommonAdTenant, password, promptBehavior);
 
-            using (SubscriptionClient SubscriptionClient = AzureSession.ClientFactory
+            using (SubscriptionClient SubscriptionClient = AzureSession.Instance..ClientFactory
                         .CreateCustomClient<SubscriptionClient>(
                             new TokenCloudCredentials(commonTenantToken.AccessToken),
                             environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement)))
@@ -975,14 +975,14 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
                 {
                     var tenantAccount = new AzureAccount();
                     CopyAccount(account, tenantAccount);
-                    var tenantToken = AzureSession.AuthenticationFactory.Authenticate(tenantAccount, environment, tenant, password, ShowDialog.Never);
+                    var tenantToken = AzureSession.Instance..AuthenticationFactory.Authenticate(tenantAccount, environment, tenant, password, ShowDialog.Never);
                     if (string.Equals(tenantAccount.Id, account.Id, StringComparison.InvariantCultureIgnoreCase))
                     {
                         tenantAccount = account;
                     }
 
                     tenantAccount.SetOrAppendProperty(AzureAccount.Property.Tenants, new string[] { tenant });
-                    using (var subscriptionClient = AzureSession.ClientFactory.CreateCustomClient<SubscriptionClient>(
+                    using (var subscriptionClient = AzureSession.Instance..ClientFactory.CreateCustomClient<SubscriptionClient>(
                             new TokenCloudCredentials(tenantToken.AccessToken),
                             environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement)))
                     {

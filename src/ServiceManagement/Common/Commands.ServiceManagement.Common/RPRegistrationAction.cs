@@ -36,7 +36,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common.Models
             var registeredProviders = profile.Context.Subscription.GetPropertyAsArray(AzureSubscription.Property.RegisteredResourceProviders);
             var unregisteredProviders = providersToRegister.Where(p => !registeredProviders.Contains(p)).ToList();
             var successfullyRegisteredProvider = new List<string>();
-            SubscriptionCloudCredentials creds = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(profile.Context);
+            SubscriptionCloudCredentials creds = AzureSession.Instance..AuthenticationFactory.GetSubscriptionCloudCredentials(profile.Context);
 
             if (unregisteredProviders.Count > 0)
             {
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common.Models
         /// <typeparam name="T">The client type</typeparam>
         private void RegisterServiceManagementProviders<T>(AzureSMProfile profile)
         {
-            var credentials = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(profile.Context);
+            var credentials = AzureSession.Instance..AuthenticationFactory.GetSubscriptionCloudCredentials(profile.Context);
             var providersToRegister = RequiredResourceLookup.RequiredProvidersForServiceManagement<T>();
             var registeredProviders = profile.Context.Subscription.GetPropertyAsArray(AzureSubscription.Property.RegisteredResourceProviders);
             var unregisteredProviders = providersToRegister.Where(p => !registeredProviders.Contains(p)).ToList();

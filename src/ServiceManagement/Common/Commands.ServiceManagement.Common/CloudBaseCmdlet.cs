@@ -133,7 +133,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             return ChannelHelper.CreateServiceManagementChannel<T>(
                 ServiceBinding,
                 Profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement),
-                AzureSession.DataStore.GetCertificate(certificateThumbprint),
+                AzureSession.Instance..DataStore.GetCertificate(certificateThumbprint),
                 new HttpRestMessageInspector(WriteDebug));
         }
 

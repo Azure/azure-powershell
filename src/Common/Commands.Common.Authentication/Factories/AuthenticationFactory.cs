@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             ShowDialog promptBehavior,
             AzureEnvironment.Endpoint resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
-            return Authenticate(account, environment, tenant, password, promptBehavior, AzureSession.TokenCache, resourceId);
+            return Authenticate(account, environment, tenant, password, promptBehavior, AzureSession.Instance.TokenCache, resourceId);
         }
 
         public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context)
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
             if (context.Account.Type == AzureAccount.AccountType.Certificate)
             {
-                var certificate = AzureSession.DataStore.GetCertificate(context.Account.Id);
+                var certificate = AzureSession.Instance.DataStore.GetCertificate(context.Account.Id);
                 return new CertificateCloudCredentials(context.Subscription.Id.ToString(), certificate);
             }
 
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
             try
             {
-                var tokenCache = AzureSession.TokenCache;
+                var tokenCache = AzureSession.Instance.TokenCache;
                 TracingAdapter.Information(
                     Resources.UPNAuthenticationTrace,
                     context.Account.Id,
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                     ValidateAuthority = !context.Environment.OnPremise
                 };
 
-                var tokenCache = AzureSession.TokenCache;
+                var tokenCache = AzureSession.Instance.TokenCache;
 
                 if (context.TokenCache != null && context.TokenCache.Length > 0)
                 {

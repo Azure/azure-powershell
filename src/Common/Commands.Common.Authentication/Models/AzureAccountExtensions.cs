@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         {
             if (account.HasSubscription(id))
             {
-                var remainingSubscriptions = GetPropertyAsArray(AccountProperty.Subscriptions).Where(s => s != id.ToString()).ToArray();
+                var remainingSubscriptions = account.GetPropertyAsArray(AccountProperty.Subscriptions).Where(s => s != id.ToString()).ToArray();
 
                 if (remainingSubscriptions.Any())
                 {

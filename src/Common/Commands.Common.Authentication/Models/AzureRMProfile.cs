@@ -77,14 +77,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         {
             this.ProfilePath = path;
 
-            if (!AzureSession.DataStore.DirectoryExists(AzureSession.ProfileDirectory))
+            if (!AzureSession.Instance.DataStore.DirectoryExists(AzureSession.Instance.ProfileDirectory))
             {
-                AzureSession.DataStore.CreateDirectory(AzureSession.ProfileDirectory);
+                AzureSession.Instance.DataStore.CreateDirectory(AzureSession.Instance.ProfileDirectory);
             }
 
-            if (AzureSession.DataStore.FileExists(ProfilePath))
+            if (AzureSession.Instance.DataStore.FileExists(ProfilePath))
             {
-                string contents = AzureSession.DataStore.ReadFileAsText(ProfilePath);
+                string contents = AzureSession.Instance.DataStore.ReadFileAsText(ProfilePath);
                 var profile = JsonConvert.DeserializeObject<IAzureContextContainer>(contents);
                 Debug.Assert(profile != null);
                 DefaultContext = profile.DefaultContext;
@@ -152,14 +152,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             {
                 string contents = ToString();
                 string diskContents = string.Empty;
-                if (AzureSession.DataStore.FileExists(path))
+                if (AzureSession.Instance.DataStore.FileExists(path))
                 {
-                    diskContents = AzureSession.DataStore.ReadFileAsText(path);
+                    diskContents = AzureSession.Instance.DataStore.ReadFileAsText(path);
                 }
 
                 if (diskContents != contents)
                 {
-                    AzureSession.DataStore.WriteFile(path, contents);
+                    AzureSession.Instance.DataStore.WriteFile(path, contents);
                 }
             }
             finally

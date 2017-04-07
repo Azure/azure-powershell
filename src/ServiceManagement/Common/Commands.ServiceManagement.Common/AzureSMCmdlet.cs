@@ -58,8 +58,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             if (!TestMockSupport.RunningMocked)
             {
-                AzureSession.ClientFactory.AddAction(new RPRegistrationAction());
-                AzureSession.DataStore = new DiskDataStore();
+                AzureSession.Instance..ClientFactory.AddAction(new RPRegistrationAction());
+                AzureSession.Instance..DataStore = new DiskDataStore();
             }
         }
 
@@ -70,9 +70,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 InitializeDataCollectionProfile();
             }
 
-            string fileFullPath = Path.Combine(AzureSession.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
+            string fileFullPath = Path.Combine(AzureSession.Instance..ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
             var contents = JsonConvert.SerializeObject(_dataCollectionProfile);
-            AzureSession.DataStore.WriteFile(fileFullPath, contents);
+            AzureSession.Instance..DataStore.WriteFile(fileFullPath, contents);
             WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
         }
 
