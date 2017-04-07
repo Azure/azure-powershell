@@ -13,8 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.ApplicationInsights;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Newtonsoft.Json;
@@ -104,7 +103,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// The context for management cmdlet requests - includes account, tenant, subscription, 
         /// and credential information for targeting and authorizing management calls.
         /// </summary>
-        protected abstract AzureContext DefaultContext { get; }
+        protected abstract IAzureContext DefaultContext { get; }
 
         /// <summary>
         /// Initializes AzurePSCmdlet properties.

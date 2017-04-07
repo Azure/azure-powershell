@@ -16,6 +16,8 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
@@ -23,23 +25,53 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
     /// Represents Azure Resource Manager profile structure with default context, environments and token cache.
     /// </summary>
     [Serializable]
-    public sealed class AzureRMProfile : IAzureProfile
+    public sealed class AzureRMProfile : IAzureContextContainer
     {
+        Dictionary<string, string> _additionalProperties = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         /// <summary>
         /// Gets or sets Azure environments.
         /// </summary>
-        public Dictionary<string, AzureEnvironment> Environments { get; set; }
-
-        /// <summary>
-        /// Gets or sets the default azure context object.
-        /// </summary>
-        public AzureContext Context { get; set; }
+        public Dictionary<string, AzureEnvironment> _environments { get; set; }
 
         /// <summary>
         /// Gets the path of the profile file. 
         /// </summary>
         [JsonIgnore]
         public string ProfilePath { get; private set; }
+
+        /// <summary>
+        /// Gets the default context
+        /// </summary>
+        public IAzureContext DefaultContext { get; set;}
+
+        IEnumerable<IAzureEnvironment> IAzureContextContainer.Environments
+        {
+            get
+            {
+                return _environments.Values;
+            }
+        }
+
+        public IAuthenticationStore TokenStore
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public IDictionary<string, string> AdditionalProperties
+        {
+            get
+            {
+                return _additionalProperties;
+            }
+        }
 
         private void Load(string path)
         {
@@ -53,10 +85,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             if (AzureSession.DataStore.FileExists(ProfilePath))
             {
                 string contents = AzureSession.DataStore.ReadFileAsText(ProfilePath);
-                AzureRMProfile profile = JsonConvert.DeserializeObject<AzureRMProfile>(contents);
+                var profile = JsonConvert.DeserializeObject<IAzureContextContainer>(contents);
                 Debug.Assert(profile != null);
-                this.Context = profile.Context;
-                this.Environments = profile.Environments;
+                DefaultContext = profile.DefaultContext;
+                _environments.Clear();
+                foreach (var environment in profile.Environments)
+                {
+                    _environments[environment.Name] = new AzureEnvironment(environment);
+                }
+                this.Environments = profile.Environments.For
             }
         }
 

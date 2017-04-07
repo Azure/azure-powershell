@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
 {
     public static class DictionaryExtensions
     {
-        public static TValue GetProperty<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, TKey property)
+        public static TValue GetProperty<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey property)
         {
             if (dictionary.ContainsKey(property))
             {
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
             return default(TValue);
         }
 
-        public static string[] GetPropertyAsArray<TKey>(this Dictionary<TKey, string> dictionary, TKey property)
+        public static string[] GetPropertyAsArray<TKey>(this IDictionary<TKey, string> dictionary, TKey property)
         {
             if (dictionary.ContainsKey(property))
             {
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
             return new string[0];
         }
 
-        public static void SetProperty<TKey>(this Dictionary<TKey, string> dictionary, TKey property, params string[] values)
+        public static void SetProperty<TKey>(this IDictionary<TKey, string> dictionary, TKey property, params string[] values)
         {
             if (values == null || values.Length == 0)
             {
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
             }
         }
 
-        public static void SetOrAppendProperty<TKey>(this Dictionary<TKey, string> dictionary, TKey property, params string[] values)
+        public static void SetOrAppendProperty<TKey>(this IDictionary<TKey, string> dictionary, TKey property, params string[] values)
         {
             string oldValueString = "";
             if (dictionary.ContainsKey(property))
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
             }
         }
 
-        public static bool IsPropertySet<TKey>(this Dictionary<TKey, string> dictionary, TKey property)
+        public static bool IsPropertySet<TKey>(this IDictionary<TKey, string> dictionary, TKey property)
         {
             return dictionary.ContainsKey(property) && !string.IsNullOrEmpty(dictionary[property]);
         }

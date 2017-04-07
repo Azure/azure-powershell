@@ -13,11 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Collections;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
@@ -25,7 +27,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
     /// Represents Azure profile structure with multiple environments, subscriptions, and accounts.
     /// </summary>
     [Serializable]
-    public sealed class AzureSMProfile : IAzureProfile
+    public sealed class AzureSMProfile : IAzureContextContainer
     {
         /// <summary>
         /// Gets Azure Accounts
@@ -125,6 +127,93 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// Location of the profile file. 
         /// </summary>
         public string ProfilePath { get; private set; }
+
+        public AzureContext DefaultContext
+        {
+            get
+            {
+                return Context;
+            }
+
+            set
+            {
+                Context = value;
+            }
+        }
+
+        IEnumerable<Abstractions.AzureEnvironment> IAzureContextContainer.Environments
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public AuthenticationStore TokenStore
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public IDictionary<string, string> ExtendedProperties
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public ICollection<string> Keys
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public ICollection<Abstractions.AzureContext> Values
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public int Count
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public bool IsReadOnly
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public Abstractions.AzureContext this[string key]
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
 
         /// <summary>
         /// Initializes a new instance of AzureSMProfile
@@ -235,6 +324,61 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         {
             JsonProfileSerializer jsonSerializer = new JsonProfileSerializer();
             return jsonSerializer.Serialize(this);
+        }
+
+        public bool ContainsKey(string key)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Add(string key, Abstractions.AzureContext value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Remove(string key)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool TryGetValue(string key, out Abstractions.AzureContext value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Add(KeyValuePair<string, Abstractions.AzureContext> item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Clear()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Contains(KeyValuePair<string, Abstractions.AzureContext> item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CopyTo(KeyValuePair<string, Abstractions.AzureContext>[] array, int arrayIndex)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Remove(KeyValuePair<string, Abstractions.AzureContext> item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerator<KeyValuePair<string, Abstractions.AzureContext>> GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
         }
     }
 }

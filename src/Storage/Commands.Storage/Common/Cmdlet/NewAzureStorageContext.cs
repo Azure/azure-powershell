@@ -12,10 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.ServiceManagemenet.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using System;
@@ -335,7 +336,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         internal CloudStorageAccount GetStorageAccountWithAzureEnvironment(StorageCredentials credential,
             string storageAccountName, bool useHttps, string azureEnvironmentName = "")
         {
-            AzureEnvironment azureEnvironment = null;
+            IAzureEnvironment azureEnvironment = null;
 
             if (null != SMProfile)
             {

@@ -27,55 +27,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
     public class StorageUtilities
     {
         /// <summary>
-        /// Creates https endpoint from the given endpoint.
-        /// </summary>
-        /// <param name="endpointUri">The endpoint uri.</param>
-        /// <returns>The https endpoint uri.</returns>
-        public static Uri CreateHttpsEndpoint(string endpointUri)
-        {
-            UriBuilder builder = new UriBuilder(endpointUri) { Scheme = "https" };
-            string endpoint = builder.Uri.GetComponents(
-                UriComponents.AbsoluteUri & ~UriComponents.Port,
-                UriFormat.UriEscaped);
-
-            return new Uri(endpoint);
-        }
-
-        /// <summary>
-        /// Create a cloud storage account using an ARM storage management client
-        /// </summary>
-        /// <param name="provider">The adapter to ARM storage services.</param>
-        /// <param name="resourceGroupName">The resource group containing the storage account.</param>
-        /// <param name="accountName">The name of the storage account.</param>
-        /// <returns>A CloudStorageAccount that can be used by windows azure storage library to manipulate objects in the storage account.</returns>
-        public static CloudStorageAccount GenerateCloudStorageAccount(IStorageServiceProvider provider,
-            string resourceGroupName, string accountName)
-        {
-            if (!TestMockSupport.RunningMocked)
-            {
-                var service = provider.GetStorageService(accountName, resourceGroupName);
-
-
-                return new CloudStorageAccount(
-                    new StorageCredentials(service.Name, service.AuthenticationKeys.First()),
-                    service.BlobEndpoint,
-                    service.QueueEndpoint,
-                    service.TableEndpoint,
-                    service.FileEndpoint);
-            }
-            else
-            {
-                return new CloudStorageAccount(
-                    new StorageCredentials(accountName,
-                        Convert.ToBase64String(Encoding.UTF8.GetBytes(Guid.NewGuid().ToString()))),
-                    new Uri(string.Format("https://{0}.blob.core.windows.net", accountName)),
-                    new Uri(string.Format("https://{0}.queue.core.windows.net", accountName)),
-                    new Uri(string.Format("https://{0}.table.core.windows.net", accountName)),
-                    new Uri(string.Format("https://{0}.file.core.windows.net", accountName)));
-            }
-        }
-
-        /// <summary>
         /// Create a cloud storage account using a service management storage client
         /// </summary>
         /// <param name="storageClient">The client to use to get storage account details.</param>
@@ -95,24 +46,24 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
                 if (storageServiceResponse.StorageAccount.Properties.Endpoints.Count >= 4)
                 {
                     fileEndpoint =
-                        StorageUtilities.CreateHttpsEndpoint(
+                        GeneralUtilities.CreateHttpsEndpoint(
                             storageServiceResponse.StorageAccount.Properties.Endpoints[3].ToString());
                 }
 
                 if (storageServiceResponse.StorageAccount.Properties.Endpoints.Count >= 3)
                 {
                     tableEndpoint =
-                        StorageUtilities.CreateHttpsEndpoint(
+                        GeneralUtilities.CreateHttpsEndpoint(
                             storageServiceResponse.StorageAccount.Properties.Endpoints[2].ToString());
                     queueEndpoint =
-                        StorageUtilities.CreateHttpsEndpoint(
+                        GeneralUtilities.CreateHttpsEndpoint(
                             storageServiceResponse.StorageAccount.Properties.Endpoints[1].ToString());
                 }
 
                 if (storageServiceResponse.StorageAccount.Properties.Endpoints.Count >= 1)
                 {
                     blobEndpoint =
-                        StorageUtilities.CreateHttpsEndpoint(
+                        GeneralUtilities.CreateHttpsEndpoint(
                             storageServiceResponse.StorageAccount.Properties.Endpoints[0].ToString());
                 }
 
@@ -132,28 +83,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
                     new Uri(string.Format("https://{0}.queue.core.windows.net", accountName)),
                     new Uri(string.Format("https://{0}.table.core.windows.net", accountName)),
                     new Uri(string.Format("https://{0}.file.core.windows.net", accountName)));
-            }
-        }
-
-        /// <summary>
-        /// Create storage credentials for the given account
-        /// </summary>
-        /// <param name="provider">The storage provider for ARM storage services.</param>
-        /// <param name="resourceGroupName">The resource group containing the storage account.</param>
-        /// <param name="accountName">The storage account name.</param>
-        /// <returns>Storage credentials for the given account.</returns>
-        public static StorageCredentials GenerateStorageCredentials(IStorageServiceProvider provider,
-            string resourceGroupName, string accountName)
-        {
-            if (!TestMockSupport.RunningMocked)
-            {
-                var service = provider.GetStorageService(accountName, resourceGroupName);
-                return new StorageCredentials(accountName, service.AuthenticationKeys.First());
-            }
-            else
-            {
-                return new StorageCredentials(accountName,
-                    Convert.ToBase64String(Encoding.UTF8.GetBytes(Guid.NewGuid().ToString())));
             }
         }
 

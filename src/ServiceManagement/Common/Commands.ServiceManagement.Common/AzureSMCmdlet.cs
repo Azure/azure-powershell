@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -51,7 +52,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         }
 
 
-        protected override AzureContext DefaultContext { get { return CurrentProfile.Context; } }
+        protected override IAzureContext DefaultContext { get { return CurrentProfile.Context; } }
 
         static AzureSMCmdlet()
         {

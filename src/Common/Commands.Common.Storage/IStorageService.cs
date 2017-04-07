@@ -12,12 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System;
 using System.Collections.Generic;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Storage
 {
-    public interface IStorageService
+    public interface IStorageService : IStorageContextProvider
     {
         /// <summary>
         /// The blob service endpoint

@@ -12,12 +12,30 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Common.Authentication
+
+namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
-    public enum ShowDialog
+    public enum AccountProperty
     {
-        Auto,
-        Always,
-        Never
+        /// <summary>
+        /// Comma separated list of subscription ids on this account.
+        /// </summary>
+        Subscriptions,
+
+        /// <summary>
+        /// Comma separated list of tenants on this account.
+        /// </summary>
+        Tenants,
+
+        /// <summary>
+        /// Access token.
+        /// </summary>
+        AccessToken,
+
+        /// <summary>
+        /// Thumbprint for associated certificate
+        /// </summary>
+        CertificateThumbprint
     }
+
 }

@@ -14,7 +14,7 @@
 
 namespace Microsoft.WindowsAzure.Commands.Common.Storage
 {
-    using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+    using global::Commands.Common.Authentication.Abstractions;
     using Microsoft.WindowsAzure.Commands.Common.Storage.Properties;
     using Microsoft.WindowsAzure.Storage;
     using System;

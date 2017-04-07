@@ -12,18 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Common.Authentication
-{
-    public enum LoginType
-    {
-        /// <summary>
-        /// User is logging in with orgid credentials
-        /// </summary>
-        OrgId,
+using System;
+using System.Collections.Generic;
 
-        /// <summary>
-        /// User is logging in with liveid credentials
-        /// </summary>
-        LiveId
-    }
+namespace Microsoft.Azure.Commands.Common.Authentication.Models
+{
+        public enum AccountType
+        {
+            Certificate,
+            User,
+            ServicePrincipal,
+            AccessToken
+        }
 }

@@ -24,6 +24,7 @@ using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Profile;
 using Microsoft.WindowsAzure.Management.Storage;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
 {
@@ -31,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
     /// Sets an azure subscription.
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureSubscription", DefaultParameterSetName = UpdateSubscriptionByIdParameterSet), OutputType(typeof(AzureSubscription))]
-    public class SetAzureSubscriptionCommand : SubscriptionCmdletBase, IStorageContextProvider
+    public class SetAzureSubscriptionCommand : SubscriptionCmdletBase
     {
         private const string UpdateSubscriptionByIdParameterSet = "UpdateSubscriptionByIdParameterSetName";
 
@@ -167,7 +168,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                 var context = new AzureContext(subscription, ProfileClient.GetAccount(subscription.Account), ProfileClient.GetEnvironmentOrDefault(subscription.Environment));
                 if (Context != null)
                 {
-                    context.SetCurrentStorageAccount(this);
+                    context.SetCurrentStorageAccount(Context);
                 }
                 else
                 {

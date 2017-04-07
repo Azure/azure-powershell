@@ -10,27 +10,37 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// ----------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------
 
 namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
 {
-    using Azure.Commands.Common.Authentication.Abstractions;
-    using Microsoft.WindowsAzure.Commands.Common.Storage;
+    using Microsoft.WindowsAzure.Storage.Table;
     using System;
 
     /// <summary>
-    /// Base class for all azure storage object
+    /// Azure storage table object
     /// </summary>
-    public abstract class AzureStorageBase
+    public class AzureStorageTable : AzureStorageBase
     {
         /// <summary>
-        /// Storage context
+        /// Cloud table object
         /// </summary>
-        public IStorageContext Context { get; set; }
+        public CloudTable CloudTable { get; private set; }
 
         /// <summary>
-        /// Azure storage object name
+        /// Table uri
         /// </summary>
-        public String Name { get; set; }
+        public Uri Uri { get; private set; }
+
+        /// <summary>
+        /// Azure storage table constructor
+        /// </summary>
+        /// <param name="table">Cloud table object</param>
+        public AzureStorageTable(CloudTable table)
+        {
+            Name = table.Name;
+            CloudTable = table;
+            Uri = table.Uri;
+        }
     }
 }

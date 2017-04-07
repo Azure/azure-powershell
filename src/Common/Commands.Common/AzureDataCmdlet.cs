@@ -12,8 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
@@ -26,30 +25,30 @@ namespace Microsoft.WindowsAzure.Commands.Common
 {
     public class AzureDataCmdlet : AzurePSCmdlet
     {
-        protected override AzureContext DefaultContext
+        protected override IAzureContext DefaultContext
         {
             get
             {
-                if (RMProfile != null && RMProfile.Context != null)
+                if (RMProfile != null && RMProfile.DefaultContext != null)
                 {
-                    return RMProfile.Context;
+                    return RMProfile.DefaultContext;
                 }
 
-                if (SMProfile == null || SMProfile.Context == null)
+                if (SMProfile == null || SMProfile.DefaultContext == null)
                 {
                     throw new InvalidOperationException(Resources.NoCurrentContextForDataCmdlet);
                 }
 
-                return SMProfile.Context;
+                return SMProfile.DefaultContext;
             }
         }
 
-        public AzureSMProfile SMProfile
+        public IAzureContextContainer SMProfile
         {
             get { return AzureSMProfileProvider.Instance.Profile; }
         }
 
-        public AzureRMProfile RMProfile
+        public IAzureContextContainer RMProfile
         {
             get { return AzureRmProfileProvider.Instance.Profile; }
         }

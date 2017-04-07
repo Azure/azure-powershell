@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
-    public interface IProfileProvider<T> where T : IAzureProfile
+    public interface IProfileProvider<T> where T : IAzureContextContainer
     {
         T Profile { get; set; }
         void SetTokenCacheForProfile(T profile);
