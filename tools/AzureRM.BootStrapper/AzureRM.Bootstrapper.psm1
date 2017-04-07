@@ -184,7 +184,7 @@ function Get-AzureProfileMap
 function RetrieveProfileMap
 {
   param($WebResponse)
-  $OnlineProfileMap = ($WebResponse.Content -replace "`n|`r|`t") | ConvertFrom-Json
+  $OnlineProfileMap = $WebResponse | ConvertFrom-Json
   return $OnlineProfileMap
 }
 
@@ -223,29 +223,11 @@ function Get-AzProfile
   return $ProfileMap
 }
 
-
-# Lists the profiles available for install from gallery
-function Get-ProfilesAvailable
-{
-  param([parameter(Mandatory = $true)] [PSCustomObject] $ProfileMap)
-  $ProfileList = ""
-  foreach ($Profile in $ProfileMap) 
-  {
-    foreach ($Module in ($Profile | get-member -MemberType NoteProperty).Name)
-    {
-      $ProfileList += "Profile: $Module`n"
-      $ProfileList += "----------------`n"
-      $ProfileList += ($Profile.$Module | Format-List | Out-String)
-    } 
-  }
-  return $ProfileList
-}
-
 # Lists the profiles that are installed on the machine
 function Get-ProfilesInstalled
 {
   param([parameter(Mandatory = $true)] [PSCustomObject] $ProfileMap, [REF]$IncompleteProfiles)
-  $result = @{}
+  $result = @{} 
   $AllProfiles = ($ProfileMap | Get-Member -MemberType NoteProperty).Name
   foreach ($key in $AllProfiles)
   {
@@ -507,6 +489,14 @@ function Get-AllProfilesInstalled
   $AllProfilesInstalled = @{}
   $ProfileCache = Get-ProfileCachePath
   $ProfileMapHashes = Get-ChildItem $ProfileCache 
+
+  # If Cache is empty, use embedded source
+  if ($null -eq $ProfileMapHashes)
+  {
+    $ModulePath = [System.IO.Path]::GetDirectoryName($PSCommandPath)
+    $ProfileMapHashes = Get-Item -Path (Join-Path -Path $ModulePath -ChildPath "ProfileMap.json")
+  }
+
   foreach ($ProfileMapHash in $ProfileMapHashes)
   {
     $ProfileMap = RetryGetContent -FilePath (Join-Path $ProfileCache $ProfileMapHash.Name) 
@@ -547,6 +537,7 @@ function Update-ProfileHelper
   $ProfileCache = Get-ProfileCachePath
   $ProfileMapHashes = Get-ChildItem $ProfileCache
 
+  # Cache was updated before calling this function, so latestprofilemap will not be null. 
   $LatestProfileMap = RetryGetContent -FilePath $script:LatestProfileMapPath.FullName 
 
   # Get-Profiles installed across all hashes. 
@@ -838,7 +829,14 @@ function Get-AzureRmProfile
     if ($ListAvailable.IsPresent)
     {
       Write-Verbose "Getting all the profiles available for install"
-      Get-ProfilesAvailable $ProfileMap
+      foreach ($profile in ($ProfileMap | get-member -MemberType NoteProperty).Name)
+      {
+        $profileObj = $ProfileMap.$profile
+        $profileObj | Add-Member -MemberType NoteProperty -Name "ProfileName" -Value $profile
+        $profileObj | Add-Member -TypeName ProfileMapData 
+        $profileObj
+      }
+      return
     }
     else
     {
@@ -846,18 +844,18 @@ function Get-AzureRmProfile
       Write-Verbose "Getting profiles installed on the machine and available for import"
       $IncompleteProfiles = @()
       $profilesInstalled = Get-ProfilesInstalled -ProfileMap $ProfileMap ([REF]$IncompleteProfiles)
-      $Output = @()
       foreach ($key in $profilesInstalled.Keys)
-      {
-        $Output += "Profile : $key"
-        $Output += "-----------------"
-        $Output += ($profilesInstalled.$key | Format-Table -HideTableHeaders | Out-String)
+      {      
+        $profileObj = New-Object -TypeName psobject -property $profilesinstalled.$key
+        $profileObj.PSObject.TypeNames.Insert(0,'ProfileMapData')
+        $profileObj | Add-Member -MemberType NoteProperty -Name "ProfileName" -Value $key
+        $profileObj
       }
       if ($IncompleteProfiles.Count -gt 0)
       {
         Write-Warning "Some modules from profile(s) $(@($IncompleteProfiles) -join ', ') were not installed. Use Install-AzureRmProfile to install missing modules."
       }
-      $Output
+      return
     }
   }
 }
@@ -910,17 +908,16 @@ function Use-AzureRmProfile
     foreach ($Module in $Modules)
     {
       $ModuleCount = $ModuleCount + 1
-      if (Find-PotentialConflict -Module $Module @PSBoundParameters) 
-      {
-        continue
-      }
-
       $version = Get-AzureRmModule -Profile $Profile -Module $Module
       if (($null -eq $version) -and $PSCmdlet.ShouldProcess($module, "Installing module for profile $profile in the current scope"))
       {
         Write-Verbose "$module was not found on the machine. Trying to install..."
         if (($Force.IsPresent -or $PSCmdlet.ShouldContinue("Install Module $module for Profile $Profile from the gallery?", "Installing Modules for Profile $Profile")))
         {
+          if (Find-PotentialConflict -Module $Module @PSBoundParameters) 
+          {
+            continue
+          }
           $versions = $ProfileMap.$Profile.$Module
           $versionEnum = $versions.GetEnumerator()
           $toss = $versionEnum.MoveNext()
