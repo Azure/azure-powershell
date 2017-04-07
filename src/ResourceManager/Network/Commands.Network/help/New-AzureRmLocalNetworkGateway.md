@@ -8,6 +8,7 @@ schema: 2.0.0
 # New-AzureRmLocalNetworkGateway
 
 ## SYNOPSIS
+Creates a Local Network Gateway
 
 ## SYNTAX
 
@@ -20,13 +21,17 @@ New-AzureRmLocalNetworkGateway -Name <String> -ResourceGroupName <String> -Locat
 ```
 
 ## DESCRIPTION
+The Local Network Gateway is the object representing your VPN device On-Premises.
+
+The **New-AzureRmLocalNetworkGateway** cmdlet creates the object representing your on-prem gateway based on the Name, Resource Group Name, Location, and IP Address of the gateway, as well as the Address Prefix of the On-Premises network which will be connecting to Azure.
 
 ## EXAMPLES
 
-### 1:
+### 1: Create a Local Network Gateway
 ```
-
+New-AzureRmLocalNetworkGateway -Name myLocalGW -ResourceGroupName myRG -Location "West US" -GatewayIpAddress 23.99.221.164 -AddressPrefix "10.5.51.0/24"
 ```
+Creates the object of the Local Network Gateway with the name "myLocalGW" within the resource group "myRG" in location "West US" with the IP address "23.99.221.164" and the address prefix "10.5.51.0/24" on-prem.
 
 ## PARAMETERS
 

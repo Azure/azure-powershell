@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 2.8.0
+
 ## Version 2.7.0
 * Update help documentation for AppServicePlan cmdlets
 
