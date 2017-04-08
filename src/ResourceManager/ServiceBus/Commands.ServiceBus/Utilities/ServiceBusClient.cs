@@ -215,15 +215,14 @@ namespace Microsoft.Azure.Commands.Servicebus
 
         public QueueAttributes CreateUpdateQueue(string resourceGroupName, string namespaceName, string queueName, QueueAttributes queue)
         {
-            var parameters = new QueueCreateOrUpdateParameters()
+            QueueCreateOrUpdateParameters parameters = new QueueCreateOrUpdateParameters()
             {
                 Name = queue.Name,
                 Location = queue.Location,
                 LockDuration = queue.LockDuration,
-                AccessedAt = queue.AccessedAt,
+                //AccessedAt = queue.AccessedAt,
                 AutoDeleteOnIdle = queue.AutoDeleteOnIdle,
                 EntityAvailabilityStatus = queue.EntityAvailabilityStatus,
-                CreatedAt = queue.CreatedAt, 
                 DefaultMessageTimeToLive = queue.DefaultMessageTimeToLive,
                 DuplicateDetectionHistoryTimeWindow = queue.DuplicateDetectionHistoryTimeWindow,
                 EnableBatchedOperations = queue.EnableBatchedOperations,
@@ -233,17 +232,16 @@ namespace Microsoft.Azure.Commands.Servicebus
                 IsAnonymousAccessible = queue.IsAnonymousAccessible,
                 MaxDeliveryCount = queue.MaxDeliveryCount,
                 MaxSizeInMegabytes = queue.MaxSizeInMegabytes,
-                MessageCount = queue.MessageCount,
-                CountDetails = queue.CountDetails,
+                //MessageCount = queue.MessageCount,
+                //CountDetails = queue.CountDetails,
                 RequiresDuplicateDetection = queue.RequiresDuplicateDetection,
                 RequiresSession = queue.RequiresSession,
-                SizeInBytes = queue.SizeInBytes,
+               // SizeInBytes = queue.SizeInBytes,
                 Status = queue.Status,
                 SupportOrdering = queue.SupportOrdering,
-                UpdatedAt = queue.UpdatedAt,
         };
 
-        var response = Client.Queues.CreateOrUpdate(resourceGroupName, namespaceName, queueName, parameters);
+        QueueResource response = Client.Queues.CreateOrUpdate(resourceGroupName, namespaceName, queueName, parameters);
             return new QueueAttributes(response);
         }
 
@@ -345,11 +343,8 @@ namespace Microsoft.Azure.Commands.Servicebus
         {
             var parameters = new TopicCreateOrUpdateParameters()
             {
-                AccessedAt = topic.AccessedAt,
                 AutoDeleteOnIdle = topic.AutoDeleteOnIdle,
                 EntityAvailabilityStatus = topic.EntityAvailabilityStatus,
-                CreatedAt = topic.CreatedAt,
-                CountDetails = topic.CountDetails,
                 DefaultMessageTimeToLive = topic.DefaultMessageTimeToLive,
                 DuplicateDetectionHistoryTimeWindow = topic.DuplicateDetectionHistoryTimeWindow,
                 EnableBatchedOperations = topic.EnableBatchedOperations,
@@ -361,11 +356,8 @@ namespace Microsoft.Azure.Commands.Servicebus
                 IsExpress = topic.IsExpress,
                 MaxSizeInMegabytes = topic.MaxSizeInMegabytes,
                 RequiresDuplicateDetection = topic.RequiresDuplicateDetection,
-                SizeInBytes = topic.SizeInBytes,
                 Status = topic.Status,
-                SubscriptionCount = topic.SubscriptionCount,
                 SupportOrdering = topic.SupportOrdering,
-                UpdatedAt = topic.UpdatedAt,
                 Location = topic.Location
                 
         };
@@ -470,10 +462,7 @@ namespace Microsoft.Azure.Commands.Servicebus
         {
             var parameters = new SubscriptionCreateOrUpdateParameters()
             {
-                AccessedAt = subscription.AccessedAt,
                 AutoDeleteOnIdle = subscription.AutoDeleteOnIdle,
-                CountDetails = subscription.CountDetails,
-                CreatedAt = subscription.CreatedAt,
                 DefaultMessageTimeToLive = subscription.DefaultMessageTimeToLive,
                 DeadLetteringOnFilterEvaluationExceptions = subscription.DeadLetteringOnFilterEvaluationExceptions,
                 DeadLetteringOnMessageExpiration = subscription.DeadLetteringOnMessageExpiration,
@@ -482,10 +471,8 @@ namespace Microsoft.Azure.Commands.Servicebus
                 IsReadOnly = subscription.IsReadOnly,
                 LockDuration = subscription.LockDuration,
                 MaxDeliveryCount = subscription.MaxDeliveryCount,
-                MessageCount = subscription.MessageCount,
                 RequiresSession = subscription.RequiresSession,
                 Status = subscription.Status,
-                UpdatedAt = subscription.UpdatedAt,
                 Location = subscription.Location
         };
 

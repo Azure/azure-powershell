@@ -49,7 +49,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                 SubscriptionCount = topicResource.SubscriptionCount;
                 SupportOrdering = topicResource.SupportOrdering;
                 UpdatedAt = topicResource.UpdatedAt;
-                Location = topicResource.Location;
                 Name = topicResource.Name;
                 Id = topicResource.Id;
                 Type = topicResource.Type;

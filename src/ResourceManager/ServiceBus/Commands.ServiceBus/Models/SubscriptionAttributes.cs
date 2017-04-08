@@ -44,10 +44,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                 RequiresSession = subscriptionResource.RequiresSession;
                 Status = subscriptionResource.Status;
                 UpdatedAt = subscriptionResource.UpdatedAt;
-                Location = subscriptionResource.Location;
                 LockDuration = subscriptionResource.LockDuration;
                 Name = subscriptionResource.Name;
-                Location = subscriptionResource.Location;
             }
         }
 
