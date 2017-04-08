@@ -43,13 +43,9 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
 
         public WebService CreateAzureMlWebService(
                             string resourceGroupName,
-                            string location,
                             string webServiceName,
                             WebService serviceDefinition)
         {
-            serviceDefinition.Name = webServiceName;
-            serviceDefinition.Location = location;
-
             return this.apiClient.WebServices.CreateOrUpdateWithRequestId(
                                                 serviceDefinition,
                                                 resourceGroupName,
@@ -118,7 +114,7 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
             var cancellationTokenParam = cancellationToken ?? CancellationToken.None;
 
             var paginatedResponse =
-                    await this.apiClient.WebServices.ListWithHttpMessagesAsync(
+                    await this.apiClient.WebServices.ListBySubscriptionIdWithHttpMessagesAsync(
                                                         skipToken,
                                                         null,
                                                         cancellationTokenParam).ConfigureAwait(false);
