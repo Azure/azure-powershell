@@ -106,6 +106,66 @@ function Test-EndpointCrud
 
 <#
 .SYNOPSIS
+Full Endpoint CRUD for an endpoint in a Geographic profile
+#>
+function Test-EndpointCrudGeo
+{
+	$endpointName = getAssetname
+	$profileName = getAssetname
+	$resourceGroup = TestSetup-CreateResourceGroup
+
+	$profile = TestSetup-CreateProfile $profileName $resourceGroup.ResourceGroupName "Geographic"
+
+	$endpoint = New-AzureRmTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName  -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Enabled" -GeoMapping "GEO-NA","GEO-SA"
+
+	Assert-NotNull $endpoint
+	Assert-AreEqual $endpointName $endpoint.Name 
+	Assert-AreEqual $profileName $endpoint.ProfileName 
+	Assert-AreEqual $resourceGroup.ResourceGroupName $endpoint.ResourceGroupName 
+	Assert-AreEqual "ExternalEndpoints" $endpoint.Type
+	Assert-AreEqual "www.contoso.com" $endpoint.Target
+	Assert-AreEqual "Enabled" $endpoint.EndpointStatus
+	Assert-AreEqual "GEO-NA" $endpoint.GeoMapping[0];
+	Assert-AreEqual "GEO-SA" $endpoint.GeoMapping[1];
+
+    $endpoint = Get-AzureRmTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName  -Type "ExternalEndpoints"
+
+	Assert-NotNull $endpoint
+	Assert-AreEqual $endpointName $endpoint.Name 
+	Assert-AreEqual $profileName $endpoint.ProfileName 
+	Assert-AreEqual $resourceGroup.ResourceGroupName $endpoint.ResourceGroupName 
+	Assert-AreEqual "ExternalEndpoints" $endpoint.Type
+	Assert-AreEqual "www.contoso.com" $endpoint.Target
+	Assert-AreEqual "Enabled" $endpoint.EndpointStatus
+	Assert-AreEqual "GEO-NA" $endpoint.GeoMapping[0];
+	Assert-AreEqual "GEO-SA" $endpoint.GeoMapping[1];
+
+    $endpoint.GeoMapping.Add("GEO-AP");
+
+    $endpoint = Set-AzureRmTrafficManagerEndpoint -TrafficManagerEndpoint $endpoint
+
+    $endpoint = Get-AzureRmTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName  -Type "ExternalEndpoints"
+
+	Assert-NotNull $endpoint
+	Assert-AreEqual $endpointName $endpoint.Name 
+	Assert-AreEqual $profileName $endpoint.ProfileName 
+	Assert-AreEqual $resourceGroup.ResourceGroupName $endpoint.ResourceGroupName 
+	Assert-AreEqual "ExternalEndpoints" $endpoint.Type
+	Assert-AreEqual "www.contoso.com" $endpoint.Target
+	Assert-AreEqual "Enabled" $endpoint.EndpointStatus
+	Assert-AreEqual "GEO-NA" $endpoint.GeoMapping[0];
+	Assert-AreEqual "GEO-SA" $endpoint.GeoMapping[1];
+	Assert-AreEqual "GEO-AP" $endpoint.GeoMapping[2];
+
+	$removed = Remove-AzureRmTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" -Force
+
+    Assert-True { $removed }
+
+    Assert-Throws { Get-AzureRmTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" }
+}
+
+<#
+.SYNOPSIS
 Full Endpoint CRUD with piping
 #>
 function Test-EndpointCrudPiping

@@ -51,5 +51,11 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineScaleSetLB");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetNextLink()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineScaleSetNextLink");
+        }
     }
 }

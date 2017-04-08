@@ -31,12 +31,26 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanCreateNewConfig()
         {
+            CreateNewConfig();
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanCreateNewConfigForRServer()
+        {
+            CreateNewConfig(setEdgeNodeVmSize: true);
+        }
+
+        public void CreateNewConfig(bool setEdgeNodeVmSize = false)
+        {
             var newconfigcmdlet = new NewAzureHDInsightClusterConfigCommand
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 HDInsightManagementClient = hdinsightManagementMock.Object,
                 ClusterType = ClusterType
             };
+
+            if (setEdgeNodeVmSize) newconfigcmdlet.EdgeNodeSize = "edgeNodeVmSizeSetTest";
 
             newconfigcmdlet.ExecuteCmdlet();
             commandRuntimeMock.Verify(
@@ -52,6 +66,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                                 string.IsNullOrEmpty(c.DefaultStorageAccountName) &&
                                 string.IsNullOrEmpty(c.HeadNodeSize) &&
                                 string.IsNullOrEmpty(c.ZookeeperNodeSize) &&
+                                ((!setEdgeNodeVmSize && string.IsNullOrEmpty(c.EdgeNodeSize)) || (setEdgeNodeVmSize && c.EdgeNodeSize == "edgeNodeVmSizeSetTest")) &&
                                 c.HiveMetastore == null &&
                                 c.OozieMetastore == null &&
                                 c.ScriptActions.Count == 0)),

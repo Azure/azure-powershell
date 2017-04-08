@@ -190,7 +190,53 @@
           </ListEntry> 
         </ListEntries> 
       </ListControl> 
-    </View>	 
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>SALifeTimeSeconds</Label>
+                <PropertyName>SALifeTimeSeconds</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>SADataSizeKilobytes</Label>
+                <PropertyName>SADataSizeKilobytes</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>IpsecEncryption</Label>
+                <PropertyName>IpsecEncryption</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>IpsecIntegrity</Label>
+                <PropertyName>IpsecIntegrity</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>IkeEncryption</Label>
+                <PropertyName>IkeEncryption</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>IkeIntegrity</Label>
+                <PropertyName>IkeIntegrity</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>DhGroup</Label>
+                <PropertyName>DhGroup</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PfsGroup</Label>
+                <PropertyName>PfsGroup</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
     <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSTopology</Name>
       <ViewSelectedBy>
@@ -1983,6 +2029,36 @@
         </ListEntries>
       </ListControl>
     </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSBgpCommunity</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSBgpCommunity</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>ServiceSupportedRegion</Label>
+                <PropertyName>ServiceSupportedRegion</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>CommunityName</Label>
+                <PropertyName>CommunityName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>CommunityValue</Label>
+                <PropertyName>CommunityValue</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>CommunityPrefixes</Label>
+                <PropertyName>CommunityPrefixesText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
 	<View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSBgpServiceCommunity</Name>
       <ViewSelectedBy>
@@ -2005,8 +2081,8 @@
                 <PropertyName>Type</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>Communities</Label>
-                <PropertyName>CommunityPrefixesText</PropertyName>
+                <Label>BgpCommunities</Label>
+                <PropertyName>BgpCommunitiesText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -2120,6 +2196,63 @@
           </ListEntry>
         </ListEntries>
       </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAvailableWafRuleSetsResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAvailableWafRuleSetsResult</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>
+                  [Microsoft.Azure.Commands.Network.ApplicationGatewayPowerShellFormatting]::Format($_, 0)
+                </ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallRuleSet</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallRuleSet</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>
+                  [Microsoft.Azure.Commands.Network.ApplicationGatewayPowerShellFormatting]::Format($_, 0)
+                </ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallRuleGroup</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallRuleGroup</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>
+                    [Microsoft.Azure.Commands.Network.ApplicationGatewayPowerShellFormatting]::Format($_, 0)
+                </ScriptBlock>  
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
     </View>
   </ViewDefinitions>
 </Configuration>

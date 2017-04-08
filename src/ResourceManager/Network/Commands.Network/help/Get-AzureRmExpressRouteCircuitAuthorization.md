@@ -1,14 +1,13 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 ms.assetid: 3D80F94B-AF9D-40C2-BE7E-2F32E5E926D2
-online version:
+online version: 
 schema: 2.0.0
 ---
 
 # Get-AzureRmExpressRouteCircuitAuthorization
 
 ## SYNOPSIS
-
 Gets information about ExpressRoute circuit authorizations.
 
 ## SYNTAX
@@ -19,7 +18,6 @@ Get-AzureRmExpressRouteCircuitAuthorization [-Name <String>] -ExpressRouteCircui
 ```
 
 ## DESCRIPTION
-
 The **Get-AzureRmExpressRouteCircuitAuthorization** cmdlet gets information about the
 authorizations assigned to an ExpressRoute circuit. ExpressRoute circuits connect your on-premises
 network to the Microsoft cloud by using a connectivity provider instead of the public Internet. The
@@ -32,8 +30,7 @@ well as other information about the authorization, can be viewed at any time by 
 ## EXAMPLES
 
 ### Example 1: Get all ExpressRoute authorizations
-
-```powershell
+```
 $Circuit = Get-AzureRmExpressRouteCircuit -Name "ContosoCircuit" -ResourceGroupName "ContosoResourceGroup"
 Get-AzureRmExpressRouteCircuitAuthorization -Circuit $Circuit
 ```
@@ -46,8 +43,7 @@ variable $Circuit. The second command then uses that object reference and the
 authorizations associated with ContosoCircuit.
 
 ### Example 2: Get all ExpressRoute authorizations using the Where-Object cmdlet
-
-```powershell
+```
 $Circuit = Get-AzureRmExpressRouteCircuit -Name "ContosoCircuit" -ResourceGroupName "ContosoResourceGroup"
  Get-AzureRmExpressRouteCircuitAuthorization -Circuit $Circuit | Where-Object {$_.AuthorizationUseStatus -eq "Available"}
 ```
@@ -64,32 +60,13 @@ syntax for the Where clause:
 
 ## PARAMETERS
 
-### -Name
-
-Specifies the name of the ExpressRoute circuit authorization that this cmdlet gets.
-
--Name "ContosoCircuitAuthorization"
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ExpressRouteCircuit
-
 Specifies the ExpressRoute circuit authorization.
 
 ```yaml
 Type: PSExpressRouteCircuit
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -99,7 +76,6 @@ Accept wildcard characters: False
 ```
 
 ### -InformationAction
-
 Specifies how this cmdlet responds to an information event.
 
 The acceptable values for this parameter are:
@@ -124,7 +100,6 @@ Accept wildcard characters: False
 ```
 
 ### -InformationVariable
-
 Specifies an information variable.
 
 ```yaml
@@ -139,20 +114,35 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### CommonParameters
+### -Name
+Specifies the name of the ExpressRoute circuit authorization that this cmdlet gets.
 
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
--InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
--WarningAction, and -WarningVariable. For more information, see about_CommonParameters
-(http://go.microsoft.com/fwlink/?LinkID=113216).
+-Name "ContosoCircuitAuthorization"
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
+### PSExpressRouteCircuit
 **Get-AzureRmExpressRouteCircuitAuthorization** accepts pipelined instances of the
 **Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit** object.
 
 ## OUTPUTS
 
+### PSExpressRouteCircuitAuthorization
 **Get-AzureRmExpressRouteCircuitAuthorization** returns instances of the
 **Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization** object.
 

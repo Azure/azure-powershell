@@ -93,21 +93,6 @@ This property cannot be used if a gateway has already been configured.
 
 ## PARAMETERS
 
-### -VirtualNetworkPeering
-Specifies the virtual network peering.
-
-```yaml
-Type: PSVirtualNetworkPeering
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -InformationAction
 Specifies how this cmdlet responds to an information event.
 
@@ -144,6 +129,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VirtualNetworkPeering
+Specifies the virtual network peering.
+
+```yaml
+Type: PSVirtualNetworkPeering
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

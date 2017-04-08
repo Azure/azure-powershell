@@ -127,7 +127,13 @@
     <value>Definition content needs to be specified.</value>
   </data>
   <data name="FileDoesNotExist" xml:space="preserve">
-    <value>File {0} does not exist.</value>
+    <value>File '{0}' does not exist.</value>
+  </data>
+  <data name="GeneratedControlNumberInvalidFormat" xml:space="preserve">
+    <value>The existing generated control number for agreement '{0}' is not in a valid format.</value>
+  </data>
+  <data name="GeneratedControlNumberNotFound" xml:space="preserve">
+    <value>No generated control number was found for this agreement.</value>
   </data>
   <data name="InvalidBusinessIdentity" xml:space="preserve">
     <value>Invalid business identity.</value>
@@ -139,16 +145,19 @@
     <value>The qualifier '{0}' for partner '{1}' is invalid.</value>
   </data>
   <data name="ParameterNeedsToBeSpecified" xml:space="preserve">
-    <value>{0} needs to be specified.</value>
+    <value>'{0}' needs to be specified.</value>
   </data>
   <data name="QualifierWithValueNotSpecified" xml:space="preserve">
-    <value>Either {0} business Identity qualifier or qualifier value is not specified.</value>
+    <value>Either '{0}' business Identity qualifier or qualifier value is not specified.</value>
+  </data>
+  <data name="ReceivedControlNumberInvalidFormat" xml:space="preserve">
+    <value>The existing received control number '{0}' for agreement '{1}' is not in a valid format.</value>
   </data>
   <data name="RemoveResourceMessage" xml:space="preserve">
-    <value>Removing {0} {1}.</value>
+    <value>Removing '{0}' '{1}'.</value>
   </data>
   <data name="RemoveResourceWarning" xml:space="preserve">
-    <value>Are you sure you want to remove the {0} {1}.</value>
+    <value>Are you sure you want to remove the '{0}' '{1}'.</value>
   </data>
   <data name="ResourceAlreadyExists" xml:space="preserve">
     <value>The Resource '{0}' under resource group '{1}' already exists.</value>
@@ -156,10 +165,16 @@
   <data name="ResourceNotFound" xml:space="preserve">
     <value>The Resource '{0}' under resource group '{1}' was not found.</value>
   </data>
+  <data name="UpdateGeneratedControlNumberMessage" xml:space="preserve">
+    <value>Updating the generated control number for '{0}' '{1}'.</value>
+  </data>
+  <data name="UpdateReceivedControlNumberMessage" xml:space="preserve">
+    <value>Updating the recevied control number '{0}' for '{1}' '{2}'.</value>
+  </data>
   <data name="UpdateResourceMessage" xml:space="preserve">
-    <value>Updating {0} {1}.</value>
+    <value>Updating '{0}' '{1}'.</value>
   </data>
   <data name="UpdateResourceWarning" xml:space="preserve">
-    <value>Are you sure you want to update the {0} {1}.</value>
+    <value>Are you sure you want to update the '{0}' '{1}'.</value>
   </data>
 </root>

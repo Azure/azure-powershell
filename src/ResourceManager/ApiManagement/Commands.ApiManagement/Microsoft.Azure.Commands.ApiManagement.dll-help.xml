@@ -2380,7 +2380,7 @@ PS C:\&gt; Set-AzureRmApiManagementVirtualNetworks -ResourceGroupName "ContosoGr
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Name</maml:name>
-<maml:Description><maml:para>Specifies the name of the API Management instance that this cmdlet restores.
+<maml:Description><maml:para>Specifies the name of the API Management instance that will be restored with the backup.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>

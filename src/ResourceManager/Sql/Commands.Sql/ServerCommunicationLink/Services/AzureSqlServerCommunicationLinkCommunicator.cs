@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,8 +16,8 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using Microsoft.WindowsAzure.Management.Storage;
 using System;
 using System.Collections.Generic;
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Services
         /// <summary>
         /// Gets a server communication link
         /// </summary>
-        public Management.Sql.Models.ServerCommunicationLink Get(string resourceGroupName, string serverName, string communicationLinkName, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.ServerCommunicationLink Get(string resourceGroupName, string serverName, string communicationLinkName, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).CommunicationLinks.Get(resourceGroupName, serverName, communicationLinkName).ServerCommunicationLink;
         }
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Services
         /// <summary>
         /// Lists server communication links
         /// </summary>
-        public IList<Management.Sql.Models.ServerCommunicationLink> List(string resourceGroupName, string serverName, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.ServerCommunicationLink> List(string resourceGroupName, string serverName, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).CommunicationLinks.List(resourceGroupName, serverName).ServerCommunicationLinks;
         }
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Services
         /// <summary>
         /// Creates or updates a server communication link
         /// </summary>
-        public Management.Sql.Models.ServerCommunicationLink CreateOrUpdate(string resourceGroupName, string serverName, string communicationLinkName, string clientRequestId, ServerCommunicationLinkCreateOrUpdateParameters parameters)
+        public Management.Sql.LegacySdk.Models.ServerCommunicationLink CreateOrUpdate(string resourceGroupName, string serverName, string communicationLinkName, string clientRequestId, ServerCommunicationLinkCreateOrUpdateParameters parameters)
         {
             var resp = GetCurrentSqlClient(clientRequestId).CommunicationLinks.CreateOrUpdate(resourceGroupName, serverName, communicationLinkName, parameters);
             return resp.ServerCommunicationLink;

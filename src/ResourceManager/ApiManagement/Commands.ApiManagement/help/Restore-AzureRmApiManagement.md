@@ -48,7 +48,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the API Management instance that this cmdlet restores.
+Specifies the name of the API Management instance that will be restored with the backup.
 
 ```yaml
 Type: String
