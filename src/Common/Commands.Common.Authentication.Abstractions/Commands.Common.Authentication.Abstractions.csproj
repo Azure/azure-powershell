@@ -84,21 +84,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountProperty.cs" />
-    <Compile Include="AccountType.cs" />
     <Compile Include="AuthenticationStore.cs" />
     <Compile Include="AzureAccount.cs" />
-    <Compile Include="AzureAccountExtensions.cs" />
+    <Compile Include="Extensions\AzureAccountExtensions.cs" />
     <Compile Include="AzureEnvironmentConstants.cs" />
-    <Compile Include="AzureEnvironmentExtensions.cs" />
+    <Compile Include="Extensions\AzureEnvironmentExtensions.cs" />
     <Compile Include="AzureModule.cs" />
     <Compile Include="AzureSession.cs" />
-    <Compile Include="AzureSubscriptionExtensions.cs" />
-    <Compile Include="DictionaryExtensions.cs" />
+    <Compile Include="Extensions\AzureSubscriptionExtensions.cs" />
+    <Compile Include="Extensions\DictionaryExtensions.cs" />
     <Compile Include="DiskDataStore.cs" />
     <Compile Include="EnvironmentName.cs" />
+    <Compile Include="Extensions\ModelExtensions.cs" />
     <Compile Include="FileUtilities.cs" />
     <Compile Include="Interfaces\IAccessToken.cs" />
+    <Compile Include="Interfaces\IExtensibleSettings.cs" />
+    <Compile Include="Interfaces\IExtensibleModel.cs" />
     <Compile Include="Interfaces\IHyakAuthenticationFactory.cs" />
     <Compile Include="Interfaces\IAzureSession.cs" />
     <Compile Include="Interfaces\IAuthenticationFactory.cs" />

@@ -12,29 +12,41 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
-    public interface IAzureContext 
+    /// <summary>
+    /// The current target for azure powershell cmdlets
+    /// </summary>
+    public interface IAzureContext : IExtensibleModel
     {
+        /// <summary>
+        /// The account used for authentication
+        /// </summary>
         AzureAccount Account { get; set; }
 
+        /// <summary>
+        /// The targeted Active Directory Tenant
+        /// </summary>
         AzureTenant Tenant { get; set; }
 
+        /// <summary>
+        /// The targeted subscription
+        /// </summary>
         AzureSubscription Subscription { get; set; }
 
+        /// <summary>
+        /// The targeted azure cloud
+        /// </summary>
         AzureEnvironment Environment { get; set; }
 
+        /// <summary>
+        /// The current version profile, outlining the version and capability of cmdlets
+        /// </summary>
         string VersionProfile { get; set; }
 
+        /// <summary>
+        /// The cached authentication data
+        /// </summary>
         AuthenticationStore TokenCache { get; set; }
-
-        IDictionary<string, string> ExtendedProperties { get; }
     }
 }

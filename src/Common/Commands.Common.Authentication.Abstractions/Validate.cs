@@ -23,6 +23,9 @@ using System.Runtime.InteropServices;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
+    /// <summary>
+    /// Common validation methods
+    /// </summary>
     public static class Validate
     {
         [Flags]
@@ -64,6 +67,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             }
         }
 
+        /// <summary>
+        /// Check the given path for invalid characters
+        /// </summary>
+        /// <param name="element">The path to check</param>
+        /// <param name="exceptionMessage">The exception message to throw if the path contains invalid characters</param>
         public static void ValidatePathName(string element, string exceptionMessage)
         {
             if (element.IndexOfAny(Path.GetInvalidPathChars()) != -1)
@@ -72,6 +80,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             }
         }
 
+        /// <summary>
+        /// Check a file path for invalid characters
+        /// </summary>
+        /// <param name="element">The file name</param>
+        /// <param name="exceptionMessage">The exception messag eto throw if invalid characters are found</param>
         public static void ValidateFileName(string element, string exceptionMessage = null)
         {
             try
@@ -89,6 +102,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             }
         }
 
+        /// <summary>
+        /// Throw if the given file does not exist
+        /// </summary>
+        /// <param name="filePath">The file path to check</param>
+        /// <param name="exceptionMessage">The exception message to throw if the file does not exist</param>
         public static void ValidateFileExists(string filePath, string exceptionMessage)
         {
             if (!AzureSession.Instance.DataStore.FileExists(filePath))
@@ -97,6 +115,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             }
         }
 
+        /// <summary>
+        /// Throw if the given directory does not exist
+        /// </summary>
+        /// <param name="directory">The path to the directory</param>
+        /// <param name="exceptionMessage">The exception message to throw if the directory does not exist</param>
         public static void ValidateDirectoryExists(string directory, string exceptionMessage = null)
         {
             string msg = string.Format(Resources.PathDoesNotExist, directory);
@@ -112,6 +135,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             }
         }
 
+        /// <summary>
+        /// Validate that the given object is not null
+        /// </summary>
+        /// <param name="item">The object to check</param>
+        /// <param name="exceptionMessage">The exception to throw if the check fails</param>
         public static void ValidateNullArgument(object item, string exceptionMessage)
         {
             if (item == null)
@@ -120,6 +148,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             }
         }
 
+        /// <summary>
+        /// Verify that the given file has the required extnsion
+        /// </summary>
+        /// <param name="filePath">The file path</param>
+        /// <param name="desiredExtention">The extension desired</param>
         public static void ValidateFileExtention(string filePath, string desiredExtention)
         {
             bool invalidExtension = Convert.ToBoolean(string.Compare(Path.GetExtension(filePath), desiredExtention, true));
@@ -129,7 +162,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 throw new ArgumentException(string.Format(Resources.InvalidFileExtension, filePath, desiredExtention));
             }
         }
-
+        /// <summary>
+        /// Validate the form of the given dns name
+        /// </summary>
+        /// <param name="dnsName">The dns name to check</param>
+        /// <param name="parameterName">The name of the parameter containign the dns value in the source method calling this fucntion</param>
         public static void ValidateDnsName(string dnsName, string parameterName)
         {
             if (Uri.CheckHostName(dnsName) != UriHostNameType.Dns || dnsName.EndsWith("-"))
@@ -138,6 +175,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             }
         }
 
+        /// <summary>
+        /// Validate that the given dns name is not currently used
+        /// </summary>
+        /// <param name="dnsName">The dns name to check</param>
         public static void ValidateDnsDoesNotExist(string dnsName)
         {
             try
@@ -153,6 +194,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             }
         }
 
+        /// <summary>
+        /// Validate that the intenret connection is working
+        /// </summary>
         public static void ValidateInternetConnection()
         {
             InternetConnectionState flags = 0;
@@ -163,6 +207,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             }
         }
 
+        /// <summary>
+        /// Verify that the given test has no whitespace characetrs
+        /// </summary>
+        /// <param name="text">The text to check</param>
+        /// <param name="exceptionMessage">The exception message to throw if the check fails</param>
         public static void HasWhiteCharacter(string text, string exceptionMessage = null)
         {
             if (text.Any(char.IsWhiteSpace))

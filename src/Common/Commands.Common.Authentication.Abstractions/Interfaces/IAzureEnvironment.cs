@@ -17,48 +17,109 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
-    public interface IAzureEnvironment
+    /// <summary>
+    /// Endpoint Uris, authentication bootstrapping information and other metadata required to communicate with a particular azure cloud
+    /// </summary>
+    public interface IAzureEnvironment : IExtensibleModel
     {
+        /// <summary>
+        /// The name of the environment
+        /// </summary>
         string Name { get; set; }
 
+        /// <summary>
+        /// Determines of the environment use AAD authentication (false) or ADFS authentication (true)
+        /// </summary>
         bool OnPremise { get; set; }
 
+        /// <summary>
+        /// The RDFE endpoint
+        /// </summary>
         Uri ServiceManagement { get; set; }
 
+        /// <summary>
+        /// The Resource Manager endpoint
+        /// </summary>
         Uri ResourceManager { get; set; }
 
+        /// <summary>
+        /// The location fot eh manageemnt portal
+        /// </summary>
         Uri ManagementPortalUrl { get; set; }
 
+        /// <summary>
+        /// The location fo the publish settings doenload web application
+        /// </summary>
         Uri PublishSettingsFileUrl { get; set; }
 
+        /// <summary>
+        /// The Active Directory authentication endpoint
+        /// </summary>
         Uri ActiveDirectory { get; set; }
 
+        /// <summary>
+        /// The ARM template gallery endpoint.
+        /// </summary>
         Uri Gallery { get; set; }
 
+        /// <summary>
+        /// The Azure Active Directory Graph endpoint
+        /// </summary>
         Uri Graph { get; set; }
 
+        /// <summary>
+        /// The token audience required to access the RDFE or ARM endpoints
+        /// </summary>
         string ActiveDirectoryServiceEndpointResourceId { get; set; }
 
+        /// <summary>
+        /// The domain name suffix for storage services
+        /// </summary>
         string StorageEndpointSuffix { get; set; }
 
+        /// <summary>
+        /// The domain name suffix for Sql databases
+        /// </summary>
         string SqlDatabaseDnsSuffix { get; set; }
 
+        /// <summary>
+        /// The domain anme suffix for traffic manager endpoints
+        /// </summary>
         string TrafficManagerDnsSuffix { get; set; }
 
+        /// <summary>
+        /// The domain name suffix for Azure KeyVault valuts
+        /// </summary>
         string AzureKeyVaultDnsSuffix { get; set; }
 
+        /// <summary>
+        /// The token audience required for authenticating with Azure KeyVault vaults
+        /// </summary>
         string AzureKeyVaultServiceEndpointResourceId { get; set; }
 
+        /// <summary>
+        /// The token audience required to authenticate with the Azure Active Directory Graph services
+        /// </summary>
         string GraphEndpointResourceId { get; set; }
 
-       string AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix { get; set; }
+        /// <summary>
+        ///  The domain name suffix for Azure DataLake Catalog and Job services
+        /// </summary>
+        string AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix { get; set; }
 
-       string AzureDataLakeStoreFileSystemEndpointSuffix { get; set; }
+        /// <summary>
+        /// The domain name suffix for Azure Data Lake FileSyattem services
+        /// </summary>
+        string AzureDataLakeStoreFileSystemEndpointSuffix { get; set; }
 
+        /// <summary>
+        /// The default Active Directory Tenant
+        /// </summary>
         string AdTenant { get; set; }
 
-       IList<string> VersionProfiles { get; } 
-
-        IDictionary<string, string> ExtendedProperties { get; } 
+        /// <summary>
+        /// The set of version profile s(service capabilities) supported
+        /// </summary>
+        IList<string> VersionProfiles { get; }
     }
 }

@@ -24,6 +24,9 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
+    /// <summary>
+    /// File utilities using the data store
+    /// </summary>
     public static class FileUtilities
     {
         static FileUtilities()
@@ -31,19 +34,37 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             DataStore = new DiskDataStore();
         }
 
+        /// <summary>
+        /// The data store to use in these utilities
+        /// </summary>
         public static IDataStore DataStore { get; set; }
 
+        /// <summary>
+        /// Get the directory for the executing assembly
+        /// </summary>
+        /// <returns></returns>
         public static string GetAssemblyDirectory()
         {
             var assemblyPath = Uri.UnescapeDataString(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
             return Path.GetDirectoryName(assemblyPath);
         }
 
+        /// <summary>
+        /// Search for the path of a file starting in the assembly directory
+        /// </summary>
+        /// <param name="fileName">The file name</param>
+        /// <returns>The path of the given file in the assembly directory</returns>
         public static string GetContentFilePath(string fileName)
         {
             return GetContentFilePath(GetAssemblyDirectory(), fileName);
         }
 
+        /// <summary>
+        /// Search for the path of the given file starting in the given directory
+        /// </summary>
+        /// <param name="startDirectory">The directory to search in</param>
+        /// <param name="fileName">The file name</param>
+        /// <returns>The path to the file</returns>
         public static string GetContentFilePath(string startDirectory, string fileName)
         {
             string path = Path.Combine(startDirectory, fileName);
@@ -69,6 +90,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return path;
         }
 
+        /// <summary>
+        /// Get the directory path to the given directory in the paltform-appropriate program files path
+        /// </summary>
+        /// <param name="directoryName">The name fo the directory</param>
+        /// <param name="throwIfNotFound">Whether to throw if the directory is not found</param>
+        /// <returns>The full directory path</returns>
         public static string GetWithProgramFilesPath(string directoryName, bool throwIfNotFound)
         {
             string programFilesPath = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
@@ -193,11 +220,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
         }
 
+        /// <summary>
+        /// Get the encoding of the given file
+        /// </summary>
+        /// <param name="path">The path to the file</param>
+        /// <returns>The encoding of the file, or the defautl encoding if the file does not exist</returns>
         public static Encoding GetFileEncoding(string path)
         {
             Encoding encoding;
-
-
             if (DataStore.FileExists(path))
             {
                 using (StreamReader r = new StreamReader(DataStore.ReadFileAsStream(path)))
@@ -213,6 +243,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return encoding;
         }
 
+        /// <summary>
+        /// Combine the given array of paths
+        /// </summary>
+        /// <param name="paths">The paths to combine</param>
+        /// <returns>The combined paths</returns>
         public static string CombinePath(params string[] paths)
         {
             return Path.Combine(paths);
@@ -249,6 +284,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
         }
 
+        /// <summary>
+        /// Remove the given directory if it exists, then create the directory
+        /// </summary>
+        /// <param name="dir">The directory to recreate</param>
         public static void RecreateDirectory(string dir)
         {
             if (DataStore.DirectoryExists(dir))
@@ -296,6 +335,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return Directory.GetParent(currentPath).FullName;
         }
 
+        /// <summary>
+        /// Get the module name for the given modules
+        /// </summary>
+        /// <param name="module">The module type</param>
+        /// <returns>The mdoule name for th emoduel type</returns>
         public static string GetModuleName(AzureModule module)
         {
             switch (module)
@@ -314,6 +358,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
         }
 
+        /// <summary>
+        /// Get the name of the folder containign the given module type
+        /// </summary>
+        /// <param name="module">The module type</param>
+        /// <returns>The name fo the contianing folder</returns>
         public static string GetModuleFolderName(AzureModule module)
         {
             return module.ToString().Replace("Azure", "");

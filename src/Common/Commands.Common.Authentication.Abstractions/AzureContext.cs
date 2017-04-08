@@ -18,6 +18,9 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
+    /// <summary>
+    /// The current target of azure cmdlets, including the account, tenant, subscription and service-specific data
+    /// </summary>
     public class AzureContext : IAzureContext
     {
         /// <summary>
@@ -82,20 +85,39 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             TokenCache.CacheData = tokens;
         }
 
-
-
+        /// <summary>
+        /// The current account
+        /// </summary>
         public AzureAccount Account { get; set; }
 
+        /// <summary>
+        /// The target tenant
+        /// </summary>
         public AzureTenant Tenant { get; set; }
 
+        /// <summary>
+        /// The target subscription
+        /// </summary>
         public AzureSubscription Subscription { get; set; }
 
+        /// <summary>
+        /// The target environment
+        /// </summary>
         public AzureEnvironment Environment { get; set; }
 
+        /// <summary>
+        /// The current version profile for cmdlets
+        /// </summary>
         public string VersionProfile { get; set; }
 
+        /// <summary>
+        /// The token store
+        /// </summary>
         public AuthenticationStore TokenCache { get; set; }
 
+        /// <summary>
+        /// Additional service-specific context
+        /// </summary>
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
     }
 }

@@ -1,17 +1,39 @@
-﻿using System;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
-    public struct UserAgentSettings
+    /// <summary>
+    /// The serializable settigns for a user agent value
+    /// </summary>
+    public class UserAgentSettings : IExtensibleSettings
     {
-        string Product { get; set; }
+        /// <summary>
+        /// The product key
+        /// </summary>
+        public string Product { get; set; }
 
-        string Value { get; set; }
+        /// <summary>
+        /// The product value (version)
+        /// </summary>
+        public string Value { get; set; }
 
-        IDictionary<string, string> Settings { get; }
+        /// <summary>
+        /// Additional settings
+        /// </summary>
+        public IDictionary<string, string> Settings { get; }
     }
 }

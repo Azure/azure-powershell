@@ -17,14 +17,29 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
-    public class ClientFactorySettings 
+    /// <summary>
+    /// Stores the serialiable state of a client factory
+    /// </summary>
+    public class ClientFactorySettings : IExtensibleSettings
     {
-        IEnumerable<UserAgentSettings> UserAgents { get; }
+        /// <summary>
+        /// The user agents in the cusrrent client factory
+        /// </summary>
+        public IEnumerable<UserAgentSettings> UserAgents { get; }
 
-        IDictionary<string, HandlerSettings> DelegatingHandlers { get; }
+        /// <summary>
+        /// The set of custom delegating handlers
+        /// </summary>
+        public IDictionary<string, HandlerSettings> DelegatingHandlers { get; }
 
-        IEnumerable<ClientActionSettings> ClientActions { get; }
+        /// <summary>
+        /// The set of custom client actions
+        /// </summary>
+        public IEnumerable<ClientActionSettings> ClientActions { get; }
 
-        IDictionary<string, string> Settings { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        /// <summary>
+        /// The extensible settings for the Client factory
+        /// </summary>
+        public IDictionary<string, string> Settings { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
     }
 }

@@ -17,6 +17,9 @@ using System.Security;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
+    /// <summary>
+    /// The factory for creating authentication artifcats for http, hyak, and autorest clients
+    /// </summary>
     public interface IAuthenticationFactory : IHyakAuthenticationFactory
     {
         /// <summary>
@@ -57,8 +60,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             ShowDialog promptBehavior,
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId);
 
+        /// <summary>
+        /// Get AutoRest credentials for the given context
+        /// </summary>
+        /// <param name="context">The target azure context</param>
+        /// <returns>AutoRest client credentials targeting the given context</returns>
         ServiceClientCredentials GetServiceClientCredentials(AzureContext context);
 
+        /// <summary>
+        /// Get AutoRest credebntials using the given context and named endpoint
+        /// </summary>
+        /// <param name="context">The context to use for authentication</param>
+        /// <param name="targetEndpoint">The named endpoint the AutoRest client will target</param>
+        /// <returns>AutoRest client crentials targeting the given context and endpoint</returns>
         ServiceClientCredentials GetServiceClientCredentials(AzureContext context, string targetEndpoint);
     }
 }

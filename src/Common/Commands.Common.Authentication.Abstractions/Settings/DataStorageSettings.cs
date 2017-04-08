@@ -14,14 +14,17 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
+    /// <summary>
+    /// Serializable state for a data store
+    /// </summary>
     public class DataStorageSettings
     {
+        /// <summary>
+        /// Custom settings for the data store
+        /// </summary>
         IDictionary<string, string> Settings { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
     }
 }

@@ -17,21 +17,45 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
+    /// <summary>
+    /// A model for an Azure subscription
+    /// </summary>
     public class AzureSubscription : IAzureSubscription
     {
+        /// <summary>
+        /// The subscription identifier, a globbaly-unique identifier
+        /// </summary>
         public string Id { get; set; }
 
+        /// <summary>
+        /// The firendly name of the subscription
+        /// </summary>
         public string Name { get; set; }
 
+        /// <summary>
+        /// The subscription state.  For example, enabled or disabled
+        /// </summary>
         public string State { get; set; }
 
+        /// <summary>
+        /// Cistom properties for the subscription
+        /// </summary>
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
+        /// <summary>
+        /// Create a hash code based on the identifier - all subscriptions with the same id should hash identically
+        /// </summary>
+        /// <returns>A hash code for the subscription</returns>
         public override int GetHashCode()
         {
             return Id.GetHashCode();
         }
 
+        /// <summary>
+        /// Compare with other subscriptions based on subscription id
+        /// </summary>
+        /// <param name="obj">The object to compare</param>
+        /// <returns>True if the object is a subscription with the same identifier, otherwise false</returns>
         public override bool Equals(object obj)
         {
             var anotherSubscription = obj as AzureSubscription;
@@ -45,6 +69,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             }
         }
 
+        /// <summary>
+        /// A collection fo string constants for known extensible proeprties
+        /// </summary>
         public static class Property
         {
             /// <summary>

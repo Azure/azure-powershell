@@ -12,21 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
-    public interface IAzureTenant
+    /// <summary>
+    /// An Azure Active Directory Tenant
+    /// </summary>
+    public interface IAzureTenant : IExtensibleModel
     {
+        /// <summary>
+        /// The Tenant Identifier (GUID)
+        /// </summary>
         string Id { get; set; }
 
+        /// <summary>
+        /// The dns name of the tenant directory (domain)
+        /// </summary>
         string Directory { get; set; }
-
-        IDictionary<string, string> ExtendedProperties { get; }
     }
 }

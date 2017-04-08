@@ -1,4 +1,5 @@
-﻿// ----------------------------------------------------------------------------------
+﻿using System;
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,16 +13,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
-        public enum AccountType
-        {
-            Certificate,
-            User,
-            ServicePrincipal,
-            AccessToken
-        }
+    /// <summary>
+    /// Custom settings used to dehydrate / rehydrate a class
+    /// </summary>
+    public interface IExtensibleSettings
+    {
+        /// <summary>
+        /// The custom settings
+        /// </summary>
+        IDictionary<string, string> Settings { get; }
+    }
 }

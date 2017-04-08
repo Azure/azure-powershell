@@ -17,16 +17,41 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
+    /// <summary>
+    /// a model class for azure accoutn credentials
+    /// </summary>
     public class AzureAccount : IAzureAccount
     {
+        /// <summary>
+        /// The account displayable id
+        /// </summary>
         public string Id { get; set; }
 
+        /// <summary>
+        /// The account credentials
+        /// </summary>
         public string Credential { get; set; }
 
+        /// <summary>
+        /// The accoutn and credential type
+        /// </summary>
         public string Type { get; set; }
 
+        /// <summary>
+        /// A record of the account identifier in each tenant the accoutn has access to
+        /// </summary>
+        public IDictionary<string, string> TenantMap { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+
+        /// <summary>
+        /// Additional proeprties for accounts
+        /// </summary>
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
+        /// <summary>
+        /// identifier specific equality comparer
+        /// </summary>
+        /// <param name="obj">Another account</param>
+        /// <returns>true if accounts are equal, fase if the other object is a different account or a different object</returns>
         public override bool Equals(object obj)
         {
             var anotherAccount = obj as AzureAccount;
@@ -40,11 +65,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             }
         }
 
+        /// <summary>
+        /// Ensures that accounts representing the same id use the same hash
+        /// </summary>
+        /// <returns>A hash value based on the account displayable id</returns>
         public override int GetHashCode()
         {
             return Id.GetHashCode();
         }
 
+        /// <summary>
+        /// string constants for known credential types
+        /// </summary>
         public static class AccountType
         {
             public const string Certificate = "Certificate",
@@ -53,6 +85,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             AccessToken = "AccessToken";
         }
 
+        /// <summary>
+        /// string constants for known extended properties
+        /// </summary>
         public static class Property
         {
             public const string Subscriptions = "Subscriptions",

@@ -1,4 +1,5 @@
-﻿// ----------------------------------------------------------------------------------
+﻿using System;
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,30 +13,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
-    public enum AccountProperty
+    /// <summary>
+    /// A model class with extensible properties, to allow backward compatible updates to the model
+    /// </summary>
+    public interface IExtensibleModel
     {
         /// <summary>
-        /// Comma separated list of subscription ids on this account.
+        /// Additional properties associated with this model
         /// </summary>
-        Subscriptions,
-
-        /// <summary>
-        /// Comma separated list of tenants on this account.
-        /// </summary>
-        Tenants,
-
-        /// <summary>
-        /// Access token.
-        /// </summary>
-        AccessToken,
-
-        /// <summary>
-        /// Thumbprint for associated certificate
-        /// </summary>
-        CertificateThumbprint
+        IDictionary<string, string> ExtendedProperties { get; }
     }
-
 }

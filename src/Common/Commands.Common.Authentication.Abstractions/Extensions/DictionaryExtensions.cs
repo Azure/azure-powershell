@@ -18,8 +18,19 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
+    /// <summary>
+    /// Extension methods for retrieving properties from an extensions dictionary
+    /// </summary>
     public static class DictionaryExtensions
     {
+        /// <summary>
+        /// Safely get the value of the given property, or return the default if no value is present in the dictionary
+        /// </summary>
+        /// <typeparam name="TKey">The disctionary key type</typeparam>
+        /// <typeparam name="TValue">The dictionary value type</typeparam>
+        /// <param name="dictionary">The extensions dictionary to search</param>
+        /// <param name="property">The property to serach for</param>
+        /// <returns>The value stored in the dictionary, or the default if no value is specified</returns>
         public static TValue GetProperty<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey property)
         {
             if (dictionary.ContainsKey(property))
@@ -30,6 +41,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             return default(TValue);
         }
 
+        /// <summary>
+        /// Safely get the value of the given property as an array of strings, or return an empty array if no value is present in the dictionary.
+        /// This assumes the property is stored as a comma-separated list
+        /// </summary>
+        /// <typeparam name="TKey">The disctionary key type</typeparam>
+        /// <param name="dictionary">The extensions dictionary to search</param>
+        /// <param name="property">The property to serach for</param>
+        /// <returns>The value stored in the dictionary as a string array, or the default if no value is specified</returns>
         public static string[] GetPropertyAsArray<TKey>(this IDictionary<TKey, string> dictionary, TKey property)
         {
             if (dictionary.ContainsKey(property))
@@ -40,6 +59,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             return new string[0];
         }
 
+        /// <summary>
+        /// Replace the value of the given property with a comma separated list of strings
+        /// </summary>
+        /// <typeparam name="TKey">The disctionary key type</typeparam>
+        /// <param name="dictionary">The extensions dictionary to search</param>
+        /// <param name="property">The property to serach for</param>
+        /// <param name="values">The strings to store in the property</param>
         public static void SetProperty<TKey>(this IDictionary<TKey, string> dictionary, TKey property, params string[] values)
         {
             if (values == null || values.Length == 0)
@@ -55,6 +81,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             }
         }
 
+        /// <summary>
+        /// Merge the given array of values with the existing value of the given property - if the proeprty is not set, 
+        /// set the value to the given array of strings.  Values are stored as a comma-separated list
+        /// </summary>
+        /// <typeparam name="TKey">The disctionary key type</typeparam>
+        /// <param name="dictionary">The extensions dictionary to search</param>
+        /// <param name="property">The property to serach for</param>
+        /// <param name="values">The strings to store in the property</param>
         public static void SetOrAppendProperty<TKey>(this IDictionary<TKey, string> dictionary, TKey property, params string[] values)
         {
             string oldValueString = "";
@@ -70,6 +104,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             }
         }
 
+        /// <summary>
+        /// Determine if the given property has a value
+        /// </summary>
+        /// <typeparam name="TKey">The disctionary key type</typeparam>
+        /// <param name="dictionary">The extensions dictionary to search</param>
+        /// <param name="property">The property to serach for</param>
+        /// <returns>True if the proeprty has a value, otherwise false</returns>
         public static bool IsPropertySet<TKey>(this IDictionary<TKey, string> dictionary, TKey property)
         {
             return dictionary.ContainsKey(property) && !string.IsNullOrEmpty(dictionary[property]);

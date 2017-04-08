@@ -14,10 +14,24 @@
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
+    /// <summary>
+    /// Settings to determine the prompting behavior for interactive authentication flows
+    /// </summary>
     public enum ShowDialog
     {
+        /// <summary>
+        /// Prompt for credentials if necessary
+        /// </summary>
         Auto,
+
+        /// <summary>
+        /// Always prompt for credentials
+        /// </summary>
         Always,
+
+        /// <summary>
+        /// Fail if credential prompt is required
+        /// </summary>
         Never
     }
 }

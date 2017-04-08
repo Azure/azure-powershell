@@ -17,14 +17,29 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
-    public class SessionSettings
+    /// <summary>
+    /// The settings for the current session
+    /// </summary>
+    public class SessionSettings : IExtensibleSettings
     {
-        ClientFactorySettings ClientSettings { get; set; }
+        /// <summary>
+        /// The settings for the client factory
+        /// </summary>
+        public ClientFactorySettings ClientSettings { get; set; }
 
-        AuthenticationFactorySettings AuthenticationSettings { get; set; }
+        /// <summary>
+        /// The settings for the authentication factory
+        /// </summary>
+        public AuthenticationFactorySettings AuthenticationSettings { get; set; }
 
-        DataStorageSettings DataSettings { get; set; }
+        /// <summary>
+        /// The settigns for the data store
+        /// </summary>
+        public DataStorageSettings DataSettings { get; set; }
 
-        IDictionary<string, string> Settings { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        /// <summary>
+        /// The extended settings for the session
+        /// </summary>
+        public IDictionary<string, string> Settings { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
     }
 }

@@ -23,6 +23,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// The serialized data from the token cache.
         /// </summary>
         byte[] CacheData { get; set; }
+
+        /// <summary>
+        /// Clear all cached authentication data
+        /// </summary>
         void Clear();
     }
 }

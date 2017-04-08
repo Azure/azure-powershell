@@ -14,19 +14,27 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
+    /// <summary>
+    /// A model for an Azure Active Directory Tenant
+    /// </summary>
     public class AzureTenant : IAzureTenant
     {
+        /// <summary>
+        /// The tenant ID (globally-unique identifier)
+        /// </summary>
         public string Id { get; set; }
 
+        /// <summary>
+        /// The domain name suffix for the directory (domain)
+        /// </summary>
         public string Directory { get; set; }
 
+        /// <summary>
+        /// Custom proeprties of the tenant
+        /// </summary>
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
     }
 }

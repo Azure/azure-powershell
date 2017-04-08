@@ -17,6 +17,9 @@ using System;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
+    /// <summary>
+    /// Convenience methods for environments
+    /// </summary>
     public static class AzureEnvironmentExtensions
     {
         /// <summary>
@@ -133,6 +136,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             return result;
         }
 
+        /// <summary>
+        /// Get the url in this environment for the given named endpoint
+        /// </summary>
+        /// <param name="environment"></param>
+        /// <param name="endpoint"></param>
+        /// <returns>The Uri of the given endpoint, or null if it is not set in the given environment</returns>
         public static Uri GetEndpointAsUri(this IAzureEnvironment environment, string endpoint)
         {
             Uri endpointUri;
@@ -162,6 +171,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             return null;
         }
 
+        /// <summary>
+        /// Set the given named endpoint in this environment to the provided value
+        /// </summary>
+        /// <param name="environment">The environment to change</param>
+        /// <param name="endpointName">The named endpoint to update</param>
+        /// <param name="propertyValue">The value to set the named endpoint to in the given environment</param>
         public static void SetEndpoint(this IAzureEnvironment environment, string endpointName, string propertyValue)
         {
             switch (endpointName)
@@ -237,14 +252,25 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             return resource;
         }
 
-
-
+        /// <summary>
+        /// Determine if the given endpoint is set in the given environment
+        /// </summary>
+        /// <param name="environment">The environment to check</param>
+        /// <param name="endpoint">The named endpoint to search for</param>
+        /// <returns>True if the endpoint is set to a non-null value in the environment, otherwise false</returns>
         public static bool IsEndpointSet(this IAzureEnvironment environment, string endpoint)
         {
             string endpointValue;
             return environment.TryGetEndpointString(endpoint, out endpointValue);
         }
 
+        /// <summary>
+        /// Determine if the given endpoint is set to the provided value
+        /// </summary>
+        /// <param name="environment">The environment to search</param>
+        /// <param name="endpoint">The endpoint to check</param>
+        /// <param name="url">The value to check for</param>
+        /// <returns>True if the endpoint is set to the proviuded value, otherwise false</returns>
         public static bool IsEndpointSetToValue(this IAzureEnvironment environment, string endpoint, string url)
         {
             if (url == null && !environment.IsEndpointSet(endpoint))
@@ -261,6 +287,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             return false;
         }
 
+        /// <summary>
+        /// Get the given endpoint suffix in the given environment
+        /// </summary>
+        /// <param name="environment">The environment to check</param>
+        /// <param name="endpointSuffix">The nemaed endpoint suffix to search for</param>
+        /// <returns>The value of the endpoint suffix, or null if it is not set</returns>
         public static string GetEndpointSuffix(this IAzureEnvironment environment, string endpointSuffix)
         {
             string suffix;

@@ -12,23 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
-    public interface IAzureSubscription
+    /// <summary>
+    /// An Azure subscription
+    /// </summary>
+    public interface IAzureSubscription : IExtensibleModel
     {
+        /// <summary>
+        /// The subscription identifier (a GUID)
+        /// </summary>
         string Id { get; set; }
 
+        /// <summary>
+        /// The firendly name for the subscription
+        /// </summary>
         string Name { get; set; }
 
+        /// <summary>
+        /// The subscription state. For example, whether the subscription is active or disabled
+        /// </summary>
         string State { get; set; }
-
-        IDictionary<string, string> ExtendedProperties { get; }
     }
 }

@@ -14,9 +14,24 @@
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
+    /// <summary>
+    /// A factory for credetials used with Hyak clients
+    /// </summary>
     public interface IHyakAuthenticationFactory
     {
+        /// <summary>
+        /// Get Hyak-compatible authentication credentials for the ARM and RDFE endpoints using the given target context
+        /// </summary>
+        /// <param name="context">The target Azure context</param>
+        /// <returns>Hyak-compatible authentication credentials for the current target context</returns>
         SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context);
+
+        /// <summary>
+        /// Get Hyak-compatible authentication credentials for the given named endpoint using the given target context
+        /// </summary>
+        /// <param name="context">The target Azure context</param>
+        /// <param name="targetEndpoint">The tnamed endpoint for the client to target</param>
+        /// <returns>Hyak-compatible authentication credentials for the current target context</returns>
         SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context, string targetEndpoint);
     }
 }

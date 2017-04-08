@@ -55,7 +55,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
                 string dummyCredentialFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, TestCredentialHelper.DefaultCredentialFile);
                 if (!File.Exists(dummyCredentialFile))
                 {
-                    AzureSession.DataStore.WriteFile(dummyCredentialFile, Properties.Resources.RdfeTestDummy);
+                    AzureSession.Instance.DataStore.WriteFile(dummyCredentialFile, Properties.Resources.RdfeTestDummy);
                 }
                 this.credentialFile = dummyCredentialFile;
             }
@@ -65,7 +65,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
                 this.credentialFile = TestCredentialHelper.DefaultCredentialFile;
                 this.profileFile = TestCredentialHelper.WindowsAzureProfileFile;
             }
-            AzureSession.DataStore = new MemoryDataStore();
+            AzureSession.Instance.DataStore = new MemoryDataStore();
 
             if (Environment.GetEnvironmentVariable(outputDirKey) != null)
             {

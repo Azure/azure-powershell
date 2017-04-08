@@ -21,8 +21,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
     /// </summary>
     public class AuthenticationStore : IAuthenticationStore
     {
+        /// <summary>
+        /// Token Cache serialization
+        /// </summary>
         public virtual byte[] CacheData {get; set;}
 
+        /// <summary>
+        /// Remove all token cache state
+        /// </summary>
         public virtual void Clear()
         {
             CacheData = null;

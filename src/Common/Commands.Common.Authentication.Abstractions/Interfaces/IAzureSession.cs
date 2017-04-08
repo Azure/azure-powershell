@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
     /// <summary>
     /// Represents current Azure session.
     /// </summary>
-    public interface IAzureSession
+    public interface IAzureSession : IExtensibleModel
     {
         /// <summary>
         /// Gets or sets Azure client factory.

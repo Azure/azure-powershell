@@ -17,8 +17,18 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
+    /// <summary>
+    /// Custom configuration for Hyak cleints
+    /// </summary>
     public interface IHyakClientAction
     {
+        /// <summary>
+        /// Apply the custom configuration to a Hyak client
+        /// </summary>
+        /// <typeparam name="TClient">The client type</typeparam>
+        /// <param name="client">The client to apply configuration to</param>
+        /// <param name="profile">The curent container for Azure information</param>
+        /// <param name="endpoint">The named endpoint the client is targeting</param>
         void Apply<TClient>(TClient client, IAzureContextContainer profile, string endpoint) where TClient : ServiceClient<TClient>;
     }
 }

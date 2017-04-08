@@ -14,8 +14,14 @@
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
-    public interface IStorageContextProvider
+    /// <summary>
+    /// A provider for storage data plane connections
+    /// </summary>
+    public interface IStorageContextProvider : IExtensibleModel
     {
+        /// <summary>
+        /// The metadata for storage data plane connections
+        /// </summary>
         IStorageContext Context { get; }
     }
 }

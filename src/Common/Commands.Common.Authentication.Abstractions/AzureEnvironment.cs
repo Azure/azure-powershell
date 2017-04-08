@@ -17,6 +17,10 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
+    /// <summary>
+    /// A record of metadata necessary to manage assets in a specific azure cloud, including necessary endpoints,
+    /// location fo service-specific endpoints, and information for bootstrapping authentication
+    /// </summary>
     public class AzureEnvironment : IAzureEnvironment
     {
         /// <summary>
@@ -27,49 +31,114 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             get { return _environments; }
         }
 
+        /// <summary>
+        /// The name of the environment
+        /// </summary>
         public string Name { get; set; }
 
+        /// <summary>
+        /// Whether the environment uses AAD (false) or ADFS (true) authentication
+        /// </summary>
         public bool OnPremise { get; set; }
 
+        /// <summary>
+        /// The RDFE endpoint
+        /// </summary>
         public Uri ServiceManagement { get; set; }
 
+        /// <summary>
+        /// The Azure Resource Manager endpoint
+        /// </summary>
         public Uri ResourceManager { get; set; }
 
+        /// <summary>
+        /// The location fo the AUX portal
+        /// </summary>
         public Uri ManagementPortalUrl { get; set; }
 
+        /// <summary>
+        /// The location of the publishsettings fiel download web applciation
+        /// </summary>
         public Uri PublishSettingsFileUrl { get; set; }
 
+        /// <summary>
+        /// The authentication endpoint
+        /// </summary>
         public Uri ActiveDirectory { get; set; }
 
+        /// <summary>
+        /// The uri of the template gallery
+        /// </summary>
         public Uri Gallery { get; set; }
 
+        /// <summary>
+        /// The URI of the Azure Active Directory Graph endpoint
+        /// </summary>
         public Uri Graph { get; set; }
 
+        /// <summary>
+        /// The token audience need for tokens that target RDFE or ARM endpoints
+        /// </summary>
         public string ActiveDirectoryServiceEndpointResourceId { get; set; }
 
+        /// <summary>
+        /// The domain name suffix for storage services created in this environment
+        /// </summary>
         public string StorageEndpointSuffix { get; set; }
 
+        /// <summary>
+        /// The domain name suffix for Sql server created in this environment
+        /// </summary>
         public string SqlDatabaseDnsSuffix { get; set; }
 
+        /// <summary>
+        /// The domain name suffix for traffic manager endpoints created in this ebvironment
+        /// </summary>
         public string TrafficManagerDnsSuffix { get; set; }
 
+        /// <summary>
+        /// The domain name suffix for Aure KeyVault vaults created in this environment
+        /// </summary>
         public string AzureKeyVaultDnsSuffix { get; set; }
 
+        /// <summary>
+        /// The token audience required for communicating with the Azure KeyVault service in this environment
+        /// </summary>
         public string AzureKeyVaultServiceEndpointResourceId { get; set; }
 
+        /// <summary>
+        /// The token audience required for communicating with the Azure Active Directory Graph service in this environment
+        /// </summary>
         public string GraphEndpointResourceId { get; set; }
 
+        /// <summary>
+        /// The domain name suffix for Azure DataLake Catalog and Job services created in this environment
+        /// </summary>
         public string AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix { get; set; }
 
+        /// <summary>
+        /// The domain name suffix for Azure DataLake file systems created in this environment
+        /// </summary>
         public string AzureDataLakeStoreFileSystemEndpointSuffix { get; set; }
 
-        public string AdTenant { get; set; }
+        /// <summary>
+        /// The name of the default AdTenant in this environment
+        /// </summary>
+        public string AdTenant { get; set; } = "Common";
 
-
+        /// <summary>
+        /// The set of Azure Version Profiles supported in this environment
+        /// </summary>
         public IList<string> VersionProfiles { get; } = new List<string>();
 
+        /// <summary>
+        /// Additional environment-specific metadata
+        /// </summary>
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
+        /// <summary>
+        /// A set of string constants for each of the known environment values - allows users to specify a particular kind of endpoint by name
+        /// </summary>
         public static class Endpoint
         {
             public const string AdTenant = "AdTenant",

@@ -14,6 +14,9 @@
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
+    /// <summary>
+    /// The current azure module types
+    /// </summary>
     public enum AzureModule
     {
         AzureServiceManagement,

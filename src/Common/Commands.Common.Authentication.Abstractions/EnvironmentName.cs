@@ -14,11 +14,29 @@
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
+    /// <summary>
+    /// Collection of built-in environment names for Azure
+    /// </summary>
     public static class EnvironmentName
     {
+        /// <summary>
+        /// The Azure global cloud
+        /// </summary>
         public const string AzureCloud = "AzureCloud";
+
+        /// <summary>
+        /// The Azure Cinese Cloud
+        /// </summary>
         public const string AzureChinaCloud = "AzureChinaCloud";
+
+        /// <summary>
+        /// The Azure sovereign cloud for US Government
+        /// </summary>
         public const string AzureUSGovernment = "AzureUSGovernment";
+
+        /// <summary>
+        /// The Azure Sovereign Cloud for Germany
+        /// </summary>
         public const string AzureGermanCloud = "AzureGermanCloud";
     }
 

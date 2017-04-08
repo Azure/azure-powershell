@@ -12,23 +12,33 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
-    public interface IAzureAccount
+    /// <summary>
+    /// Representation of an azure account with credentials
+    /// </summary>
+    public interface IAzureAccount : IExtensibleModel
     {
+        /// <summary>
+        /// The displayable id for the account
+        /// </summary>
         string Id { get; set; }
 
+        /// <summary>
+        /// The account credential
+        /// </summary>
         string Credential { get; set; }
 
+        /// <summary>
+        /// The account type
+        /// </summary>
         string Type { get; set; }
 
-        IDictionary<string, string> ExtendedProperties { get; }
+        /// <summary>
+        /// The mapping between tenants the accoutn has permission to access and the accout identifier in each tenant
+        /// </summary>
+        IDictionary<string, string> TenantMap { get; }
     }
 }

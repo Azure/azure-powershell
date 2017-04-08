@@ -17,8 +17,18 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
-    public class AuthenticationFactorySettings
+    /// <summary>
+    /// Stores the serializable state of an authentication factory
+    /// </summary>
+    public class AuthenticationFactorySettings : IExtensibleSettings
     {
+        /// <summary>
+        /// The default token cache used for the authentication factory
+        /// </summary>
+        public IAuthenticationStore TokenCache { get; set; }
+        /// <summary>
+        /// The specific settings for the given authentication factory
+        /// </summary>
         public IDictionary<string, string> Settings { get; }
     }
 }

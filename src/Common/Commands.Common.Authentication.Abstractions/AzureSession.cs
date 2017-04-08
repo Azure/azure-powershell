@@ -13,12 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using System;
+using System.Collections.Generic;
 using System.Threading;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
     /// <summary>
-    /// Represents current Azure session.
+    /// Represents the current Azure session.
     /// </summary>
     public class AzureSession : IAzureSession
     {
@@ -68,6 +70,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// Gets or sets old profile file name.
         /// </summary>
         public string OldProfileFile { get; set; }
+
+        /// <summary>
+        /// Custom metadata for the session
+        /// </summary>
+        public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
         public static IAzureSession Instance
         {
