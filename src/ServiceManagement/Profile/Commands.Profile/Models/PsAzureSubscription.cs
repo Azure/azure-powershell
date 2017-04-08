@@ -18,6 +18,7 @@ using System.Linq;
 using System.ServiceModel.Description;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Profile.Models
 {
@@ -28,9 +29,9 @@ namespace Microsoft.WindowsAzure.Commands.Profile.Models
         {
             SubscriptionId = subscription.Id.ToString();
             SubscriptionName = subscription.Name;
-            Environment = subscription.Environment;
-            DefaultAccount = subscription.Account;
-            Accounts = profile.AccountTable.Values.Where(a => a.HasSubscription(subscription.Id)).ToArray();
+            Environment = subscription.GetEnvironment();
+            DefaultAccount = subscription.GetAccount();
+            Accounts = profile.AccountTable.Values.Where(a => a.HasSubscription(subscription.GetId())).ToArray();
             IsDefault = subscription.IsPropertySet(AzureSubscription.Property.Default);
             IsCurrent = profile.Context != null && profile.Context.Subscription.Id == subscription.Id;
             CurrentStorageAccountName = subscription.GetProperty(AzureSubscription.Property.StorageAccount);

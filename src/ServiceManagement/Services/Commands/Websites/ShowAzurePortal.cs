@@ -61,7 +61,7 @@ namespace Microsoft.WindowsAzure.Commands.Websites
             }
             else
             {
-                environment = Profile.Environments[Environment];
+                environment = Profile.EnvironmentTable[Environment];
             }
 
             string managementPortalUrl = environment.GetManagementPortalUrlWithRealm(Realm);

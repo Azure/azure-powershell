@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System;
 using System.Collections.Generic;
@@ -50,20 +51,17 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return new AzureEnvironment
             {
                 Name = this.Name,
-                Endpoints = new Dictionary<AzureEnvironment.Endpoint, string>
-                {
-                    { AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId, this.ActiveDirectoryServiceEndpointResourceId },
-                    { AzureEnvironment.Endpoint.AdTenant, this.AdTenantUrl },
-                    { AzureEnvironment.Endpoint.Gallery, this.GalleryEndpoint },
-                    { AzureEnvironment.Endpoint.ManagementPortalUrl, this.ManagementPortalUrl },
-                    { AzureEnvironment.Endpoint.PublishSettingsFileUrl, this.PublishSettingsFileUrl },
-                    { AzureEnvironment.Endpoint.ResourceManager, this.ResourceManagerEndpoint },
-                    { AzureEnvironment.Endpoint.ServiceManagement, this.ServiceEndpoint },
-                    { AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix, this.SqlDatabaseDnsSuffix },
-                    { AzureEnvironment.Endpoint.StorageEndpointSuffix, this.StorageEndpointSuffix },
-                    { AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix, this.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix },
-                    { AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix, this.AzureDataLakeStoreFileSystemEndpointSuffix },
-                }
+                ActiveDirectoryServiceEndpointResourceId = this.ActiveDirectoryServiceEndpointResourceId,
+                AdTenant = this.AdTenantUrl,
+                Gallery = new Uri(this.GalleryEndpoint),
+                ManagementPortalUrl = new Uri(this.ManagementPortalUrl),
+                PublishSettingsFileUrl = new Uri(this.PublishSettingsFileUrl),
+                ResourceManager = new Uri(this.ResourceManagerEndpoint),
+                ServiceManagement = new Uri(this.ServiceEndpoint), 
+                SqlDatabaseDnsSuffix = this.SqlDatabaseDnsSuffix,
+                StorageEndpointSuffix = this.StorageEndpointSuffix,
+                AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = this.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix,
+                AzureDataLakeStoreFileSystemEndpointSuffix = this.AzureDataLakeStoreFileSystemEndpointSuffix
             };
         }
 
@@ -129,7 +127,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             AzureSubscription subscription = new AzureSubscription();
             try
             {
-                subscription.Id = new Guid(this.SubscriptionId);
+                subscription.Id = this.SubscriptionId;
             }
             catch (Exception ex)
             {
@@ -143,21 +141,21 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
             if (env != null)
             {
-                subscription.Environment = env.Name;
+                subscription.SetEnvironment(env.Name);
             }
             else
             {
-                subscription.Environment = EnvironmentName.AzureCloud;
+                subscription.SetEnvironment(EnvironmentName.AzureCloud);
             }
 
             if (!string.IsNullOrEmpty(this.ManagementCertificate))
             {
-                subscription.Account = this.ManagementCertificate;
+                subscription.SetAccount(this.ManagementCertificate);
             }
 
             if (!string.IsNullOrEmpty(this.ActiveDirectoryUserId))
             {
-                subscription.Account = this.ActiveDirectoryUserId;
+                subscription.SetAccount(this.ActiveDirectoryUserId);
             }
 
             if (!string.IsNullOrEmpty(this.ActiveDirectoryTenantId))
@@ -172,13 +170,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
             if (!string.IsNullOrEmpty(this.CloudStorageAccount))
             {
-                subscription.Properties.Add(AzureSubscription.Property.StorageAccount, this.CloudStorageAccount);
+                subscription.SetStorageAccount(this.CloudStorageAccount);
             }
 
             if (this.RegisteredResourceProviders.Count() > 0)
             {
                 StringBuilder providers = new StringBuilder();
-                subscription.Properties.Add(AzureSubscription.Property.RegisteredResourceProviders,
+                subscription.SetProperty(AzureSubscription.Property.RegisteredResourceProviders,
                     string.Join(",", RegisteredResourceProviders));
             }
 

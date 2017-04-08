@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
@@ -27,8 +28,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites.Common
             {
                 if (websitesClient == null)
                 {
-                    var profile = Profile ?? AzureSMProfileProvider.Instance.Profile;
-                    websitesClient = new WebsitesClient(profile, profile.Context.Subscription, WriteDebug);
+                    var profile = Profile ?? AzureSMProfileProvider.Instance.Profile as AzureSMProfile;
+                    websitesClient = new WebsitesClient(profile, profile.DefaultContext.Subscription, WriteDebug);
                 }
                 return websitesClient;
             }

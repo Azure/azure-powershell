@@ -34,6 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Store
     using Resource = Management.Store.Models.CloudServiceListResponse.CloudService.AddOnResource;
     using Microsoft.Azure.Commands.Common.Authentication.Models;
     using Microsoft.Azure.Commands.Common.Authentication;
+    using Azure.Commands.Common.Authentication.Abstractions;
 
     public class StoreClient
     {

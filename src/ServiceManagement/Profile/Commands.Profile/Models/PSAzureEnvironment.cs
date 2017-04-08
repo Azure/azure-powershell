@@ -12,7 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using System;
 
 namespace Microsoft.WindowsAzure.Commands.Profile.Models
 {
@@ -33,24 +34,24 @@ namespace Microsoft.WindowsAzure.Commands.Profile.Models
                 Name = environment.Name,
                 OnPremise = environment.EnableAdfsAuthentication
             };
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId] =
+            newEnvironment.ActiveDirectoryServiceEndpointResourceId =
                 environment.ActiveDirectoryServiceEndpointResourceId;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.AdTenant] = environment.AdTenant;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.Gallery] = environment.GalleryUrl;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.ManagementPortalUrl] = environment.ManagementPortalUrl;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.ServiceManagement] = environment.ServiceManagementUrl;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl] =
-                environment.PublishSettingsFileUrl;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.ResourceManager] = environment.ResourceManagerUrl;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix] = environment.SqlDatabaseDnsSuffix;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix] =
+            newEnvironment.AdTenant = environment.AdTenant;
+            newEnvironment.Gallery = new Uri(environment.GalleryUrl);
+            newEnvironment.ManagementPortalUrl = new Uri(environment.ManagementPortalUrl);
+            newEnvironment.ServiceManagement = new Uri(environment.ServiceManagementUrl);
+            newEnvironment.PublishSettingsFileUrl =
+                new Uri(environment.PublishSettingsFileUrl);
+            newEnvironment.ResourceManager = new Uri(environment.ResourceManagerUrl);
+            newEnvironment.SqlDatabaseDnsSuffix = environment.SqlDatabaseDnsSuffix;
+            newEnvironment.StorageEndpointSuffix =
                 environment.StorageEndpointSuffix;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.Graph] = environment.GraphUrl;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.TrafficManagerDnsSuffix] =
+            newEnvironment.Graph = new Uri(environment.GraphUrl);
+            newEnvironment.TrafficManagerDnsSuffix =
                 environment.TrafficManagerDnsSuffix;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix] =
+            newEnvironment.AzureKeyVaultDnsSuffix =
                 environment.AzureKeyVaultDnsSuffix;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId] =
+            newEnvironment.AzureKeyVaultServiceEndpointResourceId =
                 environment.AzureKeyVaultServiceEndpointResourceId;
             return newEnvironment;
         }
@@ -83,71 +84,71 @@ namespace Microsoft.WindowsAzure.Commands.Profile.Models
             if (environment.IsEndpointSet(AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId))
             {
                 ActiveDirectoryServiceEndpointResourceId =
-                    environment.Endpoints[AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId];
+                    environment.ActiveDirectoryServiceEndpointResourceId;
             }
             if (environment.IsEndpointSet(AzureEnvironment.Endpoint.AdTenant))
             {
-                AdTenant = environment.Endpoints[AzureEnvironment.Endpoint.AdTenant];
+                AdTenant = environment.AdTenant;
             }
             if (environment.IsEndpointSet(AzureEnvironment.Endpoint.Gallery))
             {
                 GalleryUrl =
-                    environment.Endpoints[AzureEnvironment.Endpoint.Gallery];
+                    environment.Gallery.AbsoluteUri;
             }
             if (environment.IsEndpointSet(AzureEnvironment.Endpoint.ManagementPortalUrl))
             {
                 ManagementPortalUrl =
-                    environment.Endpoints[AzureEnvironment.Endpoint.ManagementPortalUrl];
+                    environment.ManagementPortalUrl.AbsoluteUri;
             }
             if (environment.IsEndpointSet(AzureEnvironment.Endpoint.ServiceManagement))
             {
                 ServiceManagementUrl =
-                    environment.Endpoints[AzureEnvironment.Endpoint.ServiceManagement];
+                    environment.ServiceManagement.AbsoluteUri;
             }
             if (environment.IsEndpointSet(AzureEnvironment.Endpoint.PublishSettingsFileUrl))
             {
                 PublishSettingsFileUrl =
-                    environment.Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl];
+                    environment.PublishSettingsFileUrl.AbsoluteUri;
             }
             if (environment.IsEndpointSet(AzureEnvironment.Endpoint.ResourceManager))
             {
                 ResourceManagerUrl =
-                    environment.Endpoints[AzureEnvironment.Endpoint.ResourceManager];
+                    environment.ResourceManager.AbsoluteUri;
             }
             if (environment.IsEndpointSet(AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix))
             {
                 SqlDatabaseDnsSuffix =
-                    environment.Endpoints[AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix];
+                    environment.SqlDatabaseDnsSuffix;
             }
             if (environment.IsEndpointSet(AzureEnvironment.Endpoint.StorageEndpointSuffix))
             {
                 StorageEndpointSuffix =
-                    environment.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix];
+                    environment.StorageEndpointSuffix;
             }
             if (environment.IsEndpointSet(AzureEnvironment.Endpoint.ActiveDirectory))
             {
                 ActiveDirectoryAuthority =
-                    environment.Endpoints[AzureEnvironment.Endpoint.ActiveDirectory];
+                    environment.ActiveDirectory.AbsoluteUri;
             }
             if (environment.IsEndpointSet(AzureEnvironment.Endpoint.Graph))
             {
                 GraphUrl =
-                    environment.Endpoints[AzureEnvironment.Endpoint.Graph];
+                    environment.Graph.AbsoluteUri;
             }
             if (environment.IsEndpointSet(AzureEnvironment.Endpoint.TrafficManagerDnsSuffix))
             {
                 TrafficManagerDnsSuffix =
-                    environment.Endpoints[AzureEnvironment.Endpoint.TrafficManagerDnsSuffix];
+                    environment.TrafficManagerDnsSuffix;
             }
             if (environment.IsEndpointSet(AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix))
             {
                 AzureKeyVaultDnsSuffix =
-                    environment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix];
+                    environment.AzureKeyVaultDnsSuffix;
             }
             if (environment.IsEndpointSet(AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId))
             {
                 AzureKeyVaultServiceEndpointResourceId =
-                    environment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId];
+                    environment.AzureKeyVaultServiceEndpointResourceId;
             }
         }
 

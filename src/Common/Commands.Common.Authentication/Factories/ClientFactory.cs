@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             _handlersLock = new ReaderWriterLockSlim();
         }
 
-        public virtual TClient CreateArmClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint) where TClient : Microsoft.Rest.ServiceClient<TClient>
+        public virtual TClient CreateArmClient<TClient>(AzureContext context, string endpoint) where TClient : Microsoft.Rest.ServiceClient<TClient>
         {
             if (context == null)
             {
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             return client;
         }
 
-        public virtual TClient CreateClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
+        public virtual TClient CreateClient<TClient>(AzureContext context, string endpoint) where TClient : ServiceClient<TClient>
         {
             if (context == null)
             {
@@ -113,8 +113,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             return client;
         }
 
-        public virtual TClient CreateClient<TClient>(AzureSMProfile profile, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
+        public virtual TClient CreateClient<TClient>(IAzureContextContainer container, string endpoint) where TClient : ServiceClient<TClient>
         {
+            var profile = container as AzureSMProfile;
             TClient client = CreateClient<TClient>(profile.Context, endpoint);
             foreach (IClientAction action in GetActions())
             {
@@ -138,26 +139,27 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         /// or
         /// environment
         /// </exception>
-        public virtual TClient CreateClient<TClient>(AzureSMProfile profile, AzureSubscription subscription, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
+        public virtual TClient CreateClient<TClient>(IAzureContextContainer container, AzureSubscription subscription, string endpoint) where TClient : ServiceClient<TClient>
         {
+            var profile = container as AzureSMProfile;
             if (subscription == null)
             {
                 throw new ApplicationException(Resources.InvalidDefaultSubscription);
             }
 
-            if (!profile.AccountTable.ContainsKey(subscription.Account))
+            if (!profile.AccountTable.ContainsKey(subscription.GetAccount()))
             {
-                throw new ArgumentException(string.Format("Account with name '{0}' does not exist.", subscription.Account), "accountName");
+                throw new ArgumentException(string.Format("Account with name '{0}' does not exist.", subscription.GetAccount()), "accountName");
             }
 
-            if (!profile.Environments.ContainsKey(subscription.Environment))
+            if (!profile.EnvironmentTable.ContainsKey(subscription.GetEnvironment()))
             {
-                throw new ArgumentException(string.Format(Resources.EnvironmentNotFound, subscription.Environment));
+                throw new ArgumentException(string.Format(Resources.EnvironmentNotFound, subscription.GetEnvironment()));
             }
 
             AzureContext context = new AzureContext(subscription,
-                profile.AccountTable[subscription.Account],
-                profile.Environments[subscription.Environment]);
+                profile.AccountTable[subscription.GetAccount()],
+                profile.EnvironmentTable[subscription.GetEnvironment()]);
 
             TClient client = CreateClient<TClient>(context, endpoint);
 

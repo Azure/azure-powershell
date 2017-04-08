@@ -44,6 +44,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
     using Microsoft.Azure.Commands.Common.Authentication.Models;
     using Microsoft.Azure.Commands.Common.Authentication;
     using Hyak.Common;
+    using Azure.Commands.Common.Authentication.Abstractions;
 
     public class CloudServiceClient : ICloudServiceClient
     {

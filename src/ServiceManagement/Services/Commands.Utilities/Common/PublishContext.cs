@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
 {
@@ -70,7 +71,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
             {
                 try
                 {
-                    ProfileClient client = new ProfileClient(new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
+                    ProfileClient client = new ProfileClient(new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile)));
                     SubscriptionId =
                         client.Profile.SubscriptionTable.Values.Where(s => s.Name == settings.Subscription)
                             .Select(s => s.Id.ToString())

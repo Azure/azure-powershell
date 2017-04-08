@@ -61,11 +61,110 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions.Properties
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No certificate was found in the certificate store with thumbprint {0}.
+        /// </summary>
+        internal static string CertificateNotFoundInStore {
+            get {
+                return ResourceManager.GetString("CertificateNotFoundInStore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Illegal characters in path..
+        /// </summary>
+        internal static string IllegalPath {
+            get {
+                return ResourceManager.GetString("IllegalPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid certificate format. Publish settings may be corrupted. Use Get-AzurePublishSettingsFile to download updated settings.
+        /// </summary>
+        internal static string InvalidCertificate {
+            get {
+                return ResourceManager.GetString("InvalidCertificate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;{0}&quot; is an invalid DNS name for {1}.
+        /// </summary>
+        internal static string InvalidDnsName {
+            get {
+                return ResourceManager.GetString("InvalidDnsName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The provided file in {0} must be have {1} extension.
+        /// </summary>
+        internal static string InvalidFileExtension {
+            get {
+                return ResourceManager.GetString("InvalidFileExtension", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} is invalid or empty.
+        /// </summary>
+        internal static string InvalidOrEmptyArgumentMessage {
+            get {
+                return ResourceManager.GetString("InvalidOrEmptyArgumentMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please connect to internet before executing this cmdlet.
+        /// </summary>
+        internal static string NoInternetConnection {
+            get {
+                return ResourceManager.GetString("NoInternetConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Path {0} doesn&apos;t exist..
+        /// </summary>
+        internal static string PathDoesNotExist {
+            get {
+                return ResourceManager.GetString("PathDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Path for {0} doesn&apos;t exist in {1}..
+        /// </summary>
+        internal static string PathDoesNotExistForElement {
+            get {
+                return ResourceManager.GetString("PathDoesNotExistForElement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &amp;whr={0}.
         /// </summary>
         internal static string PublishSettingsFileRealmFormat {
             get {
                 return ResourceManager.GetString("PublishSettingsFileRealmFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The provided service name {0} already exists, please pick another name.
+        /// </summary>
+        internal static string ServiceNameExists {
+            get {
+                return ResourceManager.GetString("ServiceNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (x86).
+        /// </summary>
+        internal static string x86InProgramFiles {
+            get {
+                return ResourceManager.GetString("x86InProgramFiles", resourceCulture);
             }
         }
     }

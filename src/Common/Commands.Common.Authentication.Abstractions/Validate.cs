@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Properties;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
@@ -21,7 +21,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
 
-namespace Microsoft.Azure.Commands.Common.Authentication
+namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
     public static class Validate
     {
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public static void ValidateFileExists(string filePath, string exceptionMessage)
         {
-            if (!FileUtilities.DataStore.FileExists(filePath))
+            if (!AzureSession.Instance.DataStore.FileExists(filePath))
             {
                 throw new FileNotFoundException(exceptionMessage);
             }
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             string msg = string.Format(Resources.PathDoesNotExist, directory);
 
-            if (!FileUtilities.DataStore.DirectoryExists(directory))
+            if (!AzureSession.Instance.DataStore.DirectoryExists(directory))
             {
                 if (!string.IsNullOrEmpty(exceptionMessage))
                 {

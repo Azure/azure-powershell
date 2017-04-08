@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             account.SetProperty(AccountProperty.AccessToken, token);
         }
 
-        public static string GetThumbPrinnt(this IAzureAccount account)
+        public static string GetThumbprint(this IAzureAccount account)
         {
             return account.GetProperty(AccountProperty.CertificateThumbprint);
         }

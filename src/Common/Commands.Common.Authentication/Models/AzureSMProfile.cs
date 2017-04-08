@@ -89,7 +89,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// <summary>
         /// Gets Azure Environments
         /// </summary>
-        public Dictionary<string, AzureEnvironment> Environments { get; set; }
+        [JsonProperty(PropertyName ="Environments")]
+        public Dictionary<string, AzureEnvironment> EnvironmentTable { get; set; }
 
         /// <summary>
         /// Gets the default azure context object.
@@ -119,9 +120,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                     var subscriptionEnvironment = DefaultSubscription.ExtendedProperties[AzureSubscription.Property.Environment];
 
                     if (subscriptionEnvironment != null &&
-                        Environments.ContainsKey(subscriptionEnvironment))
+                        EnvironmentTable.ContainsKey(subscriptionEnvironment))
                     {
-                        environment = Environments[subscriptionEnvironment];
+                        environment = EnvironmentTable[subscriptionEnvironment];
                     }
                     else
                     {
@@ -164,7 +165,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         {
             get
             {
-                return Environments.Values;
+                return EnvironmentTable.Values;
             }
         }
 
@@ -229,14 +230,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// </summary>
         public AzureSMProfile()
         {
-            Environments = new Dictionary<string, AzureEnvironment>(StringComparer.InvariantCultureIgnoreCase);
+            EnvironmentTable = new Dictionary<string, AzureEnvironment>(StringComparer.InvariantCultureIgnoreCase);
             SubscriptionTable = new Dictionary<Guid, AzureSubscription>();
             AccountTable = new Dictionary<string, AzureAccount>(StringComparer.InvariantCultureIgnoreCase);
 
             // Adding predefined environments
             foreach (AzureEnvironment env in AzureEnvironment.PublicEnvironments.Values)
             {
-                Environments[env.Name] = env;
+                EnvironmentTable[env.Name] = env;
             }
         }
 
@@ -302,7 +303,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             // Removing predefined environments
             foreach (string env in AzureEnvironment.PublicEnvironments.Keys)
             {
-                Environments.Remove(env);
+                EnvironmentTable.Remove(env);
             }
 
             try
@@ -324,7 +325,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 // Adding back predefined environments
                 foreach (AzureEnvironment env in AzureEnvironment.PublicEnvironments.Values)
                 {
-                    Environments[env.Name] = env;
+                    EnvironmentTable[env.Name] = env;
                 }
             }
         }

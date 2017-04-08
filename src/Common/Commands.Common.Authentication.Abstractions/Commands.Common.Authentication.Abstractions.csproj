@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Azure.Commands.Common.Authentication.Abstractions</RootNamespace>
     <AssemblyName>Microoft.Azure.Commands.CommonAuthentication.Abstractions</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -90,11 +91,13 @@
     <Compile Include="AzureAccountExtensions.cs" />
     <Compile Include="AzureEnvironmentConstants.cs" />
     <Compile Include="AzureEnvironmentExtensions.cs" />
+    <Compile Include="AzureModule.cs" />
     <Compile Include="AzureSession.cs" />
     <Compile Include="AzureSubscriptionExtensions.cs" />
     <Compile Include="DictionaryExtensions.cs" />
     <Compile Include="DiskDataStore.cs" />
     <Compile Include="EnvironmentName.cs" />
+    <Compile Include="FileUtilities.cs" />
     <Compile Include="Interfaces\IAccessToken.cs" />
     <Compile Include="Interfaces\IHyakAuthenticationFactory.cs" />
     <Compile Include="Interfaces\IAzureSession.cs" />
@@ -132,6 +135,7 @@
     <Compile Include="Settings\UserAgentSettings.cs" />
     <Compile Include="Settings\HandlerSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validate.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

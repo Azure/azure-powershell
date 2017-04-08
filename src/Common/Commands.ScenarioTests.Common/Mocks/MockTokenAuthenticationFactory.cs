@@ -14,7 +14,9 @@
 
 using Microsoft.Azure;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
 using System;
 using System.Security;
@@ -62,8 +64,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             string tenant,
             SecureString password,
             ShowDialog promptBehavior,
-            IdentityModel.Clients.ActiveDirectory.TokenCache tokenCache,
-            AzureEnvironment.Endpoint resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
+            IAuthenticationStore tokenCache,
+            string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
             if (account.Id == null)
             {
@@ -90,14 +92,14 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             string tenant,
             SecureString password,
             ShowDialog promptBehavior,
-            AzureEnvironment.Endpoint resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
+            string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
-            return Authenticate(account, environment, tenant, password, promptBehavior, AzureSession.TokenCache, resourceId);
+            return Authenticate(account, environment, tenant, password, promptBehavior, AzureSession.Instance.TokenCache, resourceId);
         }
 
         public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context)
         {
-            return new AccessTokenCredential(context.Subscription.Id, Token);
+            return new AccessTokenCredential(context.Subscription.GetId(), Token);
         }
 
 
@@ -106,12 +108,12 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             return new Microsoft.Rest.TokenCredentials(Token.AccessToken);
         }
 
-        public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context, AzureEnvironment.Endpoint targetEndpoint)
+        public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context, string targetEndpoint)
         {
             return new TokenCloudCredentials(context.Subscription.Id.ToString(),Token.AccessToken);
         }
         
-        public ServiceClientCredentials GetServiceClientCredentials(AzureContext context, AzureEnvironment.Endpoint targetEndpoint)
+        public ServiceClientCredentials GetServiceClientCredentials(AzureContext context, string targetEndpoint)
         {
             throw new NotImplementedException();
         }

@@ -28,6 +28,7 @@ using RDFESubscription = Microsoft.WindowsAzure.Subscriptions.Models.Subscriptio
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit.Abstractions;
 using Microsoft.WindowsAzure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Common.Authentication.Test
 {
@@ -207,17 +208,17 @@ namespace Common.Authentication.Test
             ProfileClient client = new ProfileClient(currentProfile);
 
             // Verify Environment migration
-            Assert.Equal(6, client.Profile.Environments.Count);
-            Assert.Equal("Current", client.Profile.Environments["Current"].Name);
-            Assert.Equal("Dogfood", client.Profile.Environments["Dogfood"].Name);
-            Assert.Equal("https://login.windows-ppe.net/", client.Profile.Environments["Dogfood"].Endpoints[AzureEnvironment.Endpoint.AdTenant]);
-            Assert.Equal("https://management.core.windows.net/", client.Profile.Environments["Dogfood"].Endpoints[AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId]);
-            Assert.Equal("https://df.gallery.azure-test.net", client.Profile.Environments["Dogfood"].Endpoints[AzureEnvironment.Endpoint.Gallery]);
-            Assert.Equal("https://windows.azure-test.net", client.Profile.Environments["Dogfood"].Endpoints[AzureEnvironment.Endpoint.ManagementPortalUrl]);
-            Assert.Equal("https://auxnext.windows.azure-test.net/publishsettings/index", client.Profile.Environments["Dogfood"].Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl]);
-            Assert.Equal("https://api-dogfood.resources.windows-int.net", client.Profile.Environments["Dogfood"].Endpoints[AzureEnvironment.Endpoint.ResourceManager]);
-            Assert.Equal("https://management-preview.core.windows-int.net/", client.Profile.Environments["Dogfood"].Endpoints[AzureEnvironment.Endpoint.ServiceManagement]);
-            Assert.Equal(".database.windows.net", client.Profile.Environments["Dogfood"].Endpoints[AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix]);
+            Assert.Equal(6, client.Profile.EnvironmentTable.Count);
+            Assert.Equal("Current", client.Profile.EnvironmentTable["Current"].Name);
+            Assert.Equal("Dogfood", client.Profile.EnvironmentTable["Dogfood"].Name);
+            Assert.Equal("https://login.windows-ppe.net/", client.Profile.EnvironmentTable["Dogfood"].Endpoints[AzureEnvironment.Endpoint.AdTenant]);
+            Assert.Equal("https://management.core.windows.net/", client.Profile.EnvironmentTable["Dogfood"].Endpoints[AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId]);
+            Assert.Equal("https://df.gallery.azure-test.net", client.Profile.EnvironmentTable["Dogfood"].Endpoints[AzureEnvironment.Endpoint.Gallery]);
+            Assert.Equal("https://windows.azure-test.net", client.Profile.EnvironmentTable["Dogfood"].Endpoints[AzureEnvironment.Endpoint.ManagementPortalUrl]);
+            Assert.Equal("https://auxnext.windows.azure-test.net/publishsettings/index", client.Profile.EnvironmentTable["Dogfood"].Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl]);
+            Assert.Equal("https://api-dogfood.resources.windows-int.net", client.Profile.EnvironmentTable["Dogfood"].Endpoints[AzureEnvironment.Endpoint.ResourceManager]);
+            Assert.Equal("https://management-preview.core.windows-int.net/", client.Profile.EnvironmentTable["Dogfood"].Endpoints[AzureEnvironment.Endpoint.ServiceManagement]);
+            Assert.Equal(".database.windows.net", client.Profile.EnvironmentTable["Dogfood"].Endpoints[AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix]);
 
             // Verify subscriptions
             Assert.Equal(3, client.Profile.SubscriptionTable.Count);
@@ -266,7 +267,7 @@ namespace Common.Authentication.Test
             ProfileClient client = new ProfileClient(currentProfile);
 
             // Verify Environment migration
-            Assert.Equal(4, client.Profile.Environments.Count);
+            Assert.Equal(4, client.Profile.EnvironmentTable.Count);
 
             // Verify subscriptions
             Assert.Equal(3, client.Profile.SubscriptionTable.Count);
@@ -314,7 +315,7 @@ namespace Common.Authentication.Test
             ProfileClient client = new ProfileClient(currentProfile);
 
             // Verify Environment migration
-            Assert.Equal(4, client.Profile.Environments.Count);
+            Assert.Equal(4, client.Profile.EnvironmentTable.Count);
 
             // Verify subscriptions
             Assert.Equal(0, client.Profile.SubscriptionTable.Count);
@@ -561,7 +562,7 @@ namespace Common.Authentication.Test
             client.Profile.SubscriptionTable[azureSubscription2.Id] = azureSubscription2;
             client.Profile.SubscriptionTable[azureSubscription3withoutUser.Id] = azureSubscription3withoutUser;
             client.Profile.AccountTable[azureAccount.Id] = azureAccount;
-            client.Profile.Environments[azureEnvironment.Name] = azureEnvironment;
+            client.Profile.EnvironmentTable[azureEnvironment.Name] = azureEnvironment;
 
             var account = client.ListAccounts("test").ToList();
 
@@ -583,7 +584,7 @@ namespace Common.Authentication.Test
             client.Profile.SubscriptionTable[azureSubscription2.Id] = azureSubscription2;
             client.Profile.SubscriptionTable[azureSubscription3withoutUser.Id] = azureSubscription3withoutUser;
             client.Profile.AccountTable[azureAccount.Id] = azureAccount;
-            client.Profile.Environments[azureEnvironment.Name] = azureEnvironment;
+            client.Profile.EnvironmentTable[azureEnvironment.Name] = azureEnvironment;
 
             var account = client.ListAccounts("test").ToList();
 
@@ -605,7 +606,7 @@ namespace Common.Authentication.Test
             client.Profile.SubscriptionTable[azureSubscription2.Id] = azureSubscription2;
             client.Profile.SubscriptionTable[azureSubscription3withoutUser.Id] = azureSubscription3withoutUser;
             client.Profile.AccountTable[azureAccount.Id] = azureAccount;
-            client.Profile.Environments[azureEnvironment.Name] = azureEnvironment;
+            client.Profile.EnvironmentTable[azureEnvironment.Name] = azureEnvironment;
 
             var account = client.ListAccounts("test2").ToList();
 
@@ -633,7 +634,7 @@ namespace Common.Authentication.Test
                 }
             };
             client.Profile.SubscriptionTable[azureSubscription3withoutUser.Id] = azureSubscription3withoutUser;
-            client.Profile.Environments[azureEnvironment.Name] = azureEnvironment;
+            client.Profile.EnvironmentTable[azureEnvironment.Name] = azureEnvironment;
 
             var account = client.ListAccounts(null).ToList();
 
@@ -661,7 +662,7 @@ namespace Common.Authentication.Test
                 }
             };
             client.Profile.SubscriptionTable[azureSubscription3withoutUser.Id] = azureSubscription3withoutUser;
-            client.Profile.Environments[azureEnvironment.Name] = azureEnvironment;
+            client.Profile.EnvironmentTable[azureEnvironment.Name] = azureEnvironment;
             List<string> log = new List<string>();
             client.WarningLog = log.Add;
 
@@ -694,7 +695,7 @@ namespace Common.Authentication.Test
                 }
             };
             client.Profile.SubscriptionTable[azureSubscription3withoutUser.Id] = azureSubscription3withoutUser;
-            client.Profile.Environments[azureEnvironment.Name] = azureEnvironment;
+            client.Profile.EnvironmentTable[azureEnvironment.Name] = azureEnvironment;
             List<string> log = new List<string>();
             client.WarningLog = log.Add;
 
@@ -732,7 +733,7 @@ namespace Common.Authentication.Test
                 }
             };
             client.Profile.SubscriptionTable[azureSubscription1.Id].Account = azureAccount.Id;
-            client.Profile.Environments[azureEnvironment.Name] = azureEnvironment;
+            client.Profile.EnvironmentTable[azureEnvironment.Name] = azureEnvironment;
 
             var account = client.RemoveAccount(azureAccount.Id);
 
@@ -759,7 +760,7 @@ namespace Common.Authentication.Test
                 }
             };
             client.Profile.SubscriptionTable[azureSubscription1.Id].Account = azureAccount.Id;
-            client.Profile.Environments[azureEnvironment.Name] = azureEnvironment;
+            client.Profile.EnvironmentTable[azureEnvironment.Name] = azureEnvironment;
             currentProfile.DefaultSubscription = azureSubscription1;
 
             client.RemoveAccount(azureAccount.Id);
@@ -783,12 +784,12 @@ namespace Common.Authentication.Test
             currentProfile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
             ProfileClient client = new ProfileClient(currentProfile);
 
-            Assert.Equal(4, client.Profile.Environments.Count);
+            Assert.Equal(4, client.Profile.EnvironmentTable.Count);
 
             Assert.Throws<ArgumentNullException>(() => client.AddOrSetEnvironment(null));
             var env = client.AddOrSetEnvironment(azureEnvironment);
 
-            Assert.Equal(5, client.Profile.Environments.Count);
+            Assert.Equal(5, client.Profile.EnvironmentTable.Count);
             Assert.Equal(env, azureEnvironment);
         }
 
@@ -822,12 +823,12 @@ namespace Common.Authentication.Test
             ProfileClient client = new ProfileClient(currentProfile);
 
             client.Profile.AccountTable[azureAccount.Id] = azureAccount;
-            client.Profile.Environments[azureEnvironment.Name] = azureEnvironment;
+            client.Profile.EnvironmentTable[azureEnvironment.Name] = azureEnvironment;
             client.Profile.SubscriptionTable[azureSubscription1.Id] = azureSubscription1;
             client.Profile.SubscriptionTable[azureSubscription2.Id] = azureSubscription2;
 
             Assert.Equal(2, client.Profile.SubscriptionTable.Values.Count(s => s.Environment == "Test"));
-            Assert.Equal(5, client.Profile.Environments.Count);
+            Assert.Equal(5, client.Profile.EnvironmentTable.Count);
             Assert.Equal(1, client.Profile.AccountTable.Count);
 
             Assert.Throws<ArgumentNullException>(() => client.RemoveEnvironment(null));
@@ -837,7 +838,7 @@ namespace Common.Authentication.Test
 
             Assert.Equal(azureEnvironment.Name, env.Name);
             Assert.Equal(0, client.Profile.SubscriptionTable.Values.Count(s => s.Environment == "Test"));
-            Assert.Equal(4, client.Profile.Environments.Count);
+            Assert.Equal(4, client.Profile.EnvironmentTable.Count);
             Assert.Equal(0, client.Profile.AccountTable.Count);
         }
 
@@ -857,7 +858,7 @@ namespace Common.Authentication.Test
 
             Assert.Equal(1, client.Profile.SubscriptionTable.Values.Count(s => s.Environment == EnvironmentName.AzureCloud));
             Assert.Equal(1, client.Profile.SubscriptionTable.Values.Count(s => s.Environment == EnvironmentName.AzureChinaCloud));
-            Assert.Equal(4, client.Profile.Environments.Count);
+            Assert.Equal(4, client.Profile.EnvironmentTable.Count);
             Assert.Equal(1, client.Profile.AccountTable.Count);
 
             Assert.Throws<ArgumentException>(() => client.RemoveEnvironment(EnvironmentName.AzureCloud));
@@ -865,7 +866,7 @@ namespace Common.Authentication.Test
 
             Assert.Equal(1, client.Profile.SubscriptionTable.Values.Count(s => s.Environment == EnvironmentName.AzureCloud));
             Assert.Equal(1, client.Profile.SubscriptionTable.Values.Count(s => s.Environment == EnvironmentName.AzureChinaCloud));
-            Assert.Equal(4, client.Profile.Environments.Count);
+            Assert.Equal(4, client.Profile.EnvironmentTable.Count);
             Assert.Equal(1, client.Profile.AccountTable.Count);
         }
 
@@ -877,7 +878,7 @@ namespace Common.Authentication.Test
             currentProfile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
             ProfileClient client = new ProfileClient(currentProfile);
 
-            Assert.Equal(4, client.Profile.Environments.Count);
+            Assert.Equal(4, client.Profile.EnvironmentTable.Count);
 
             Assert.Throws<ArgumentNullException>(() => client.AddOrSetEnvironment(null));
 
@@ -1074,7 +1075,7 @@ namespace Common.Authentication.Test
 
             client.Profile.AccountTable[azureAccount.Id] = azureAccount;
 
-            var subscriptions = client.RefreshSubscriptions(client.Profile.Environments[EnvironmentName.AzureChinaCloud]);
+            var subscriptions = client.RefreshSubscriptions(client.Profile.EnvironmentTable[EnvironmentName.AzureChinaCloud]);
 
             Assert.Equal(2, subscriptions.Count);
             Assert.Equal(2, subscriptions.Count(s => s.Account == "test"));

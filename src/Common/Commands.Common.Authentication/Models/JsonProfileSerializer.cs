@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         {
             return JsonConvert.SerializeObject(new
             {
-                Environments = profile.Environments.Values.ToList(),
+                Environments = profile.EnvironmentTable.Values.ToList(),
                 Subscriptions = profile.SubscriptionTable.Values.ToList(),
                 Accounts = profile.AccountTable.Values.ToList()
             }, Formatting.Indented);
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 {
                     try
                     {
-                        profile.Environments[(string)env["Name"]] =
+                        profile.EnvironmentTable[(string)env["Name"]] =
                             JsonConvert.DeserializeObject<AzureEnvironment>(env.ToString());
                     }
                     catch (Exception ex)

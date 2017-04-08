@@ -137,9 +137,7 @@
     <Compile Include="Authentication\ServicePrincipalTokenProvider.cs" />
     <Compile Include="Authentication\UserTokenProvider.cs" />
     <Compile Include="AzureSessionInitializer.cs" />
-    <Compile Include="Common\AzureModule.cs" />
     <Compile Include="Common\ProfileData.cs" />
-    <Compile Include="Common\Validate.cs" />
     <Compile Include="Extensions\CloudExceptionExtensions.cs" />
     <Compile Include="Factories\AuthenticationFactory.cs" />
     <Compile Include="Factories\ClientFactory.cs" />
@@ -157,7 +155,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Utilities\AdalTokenCache.cs" />
-    <Compile Include="Utilities\FileUtilities.cs" />
     <Compile Include="Utilities\JsonUtilities.cs" />
     <Compile Include="Utilities\XmlUtilities.cs" />
   </ItemGroup>

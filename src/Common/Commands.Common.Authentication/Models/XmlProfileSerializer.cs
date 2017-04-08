@@ -58,16 +58,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             {
                 foreach (AzureEnvironmentData oldEnv in data.Environments)
                 {
-                    profile.Environments[oldEnv.Name] = oldEnv.ToAzureEnvironment();
+                    profile.EnvironmentTable[oldEnv.Name] = oldEnv.ToAzureEnvironment();
                 }
 
-                List<AzureEnvironment> envs = profile.Environments.Values.ToList();
+                List<AzureEnvironment> envs = profile.EnvironmentTable.Values.ToList();
                 foreach (AzureSubscriptionData oldSubscription in data.Subscriptions)
                 {
                     try
                     {
                         var newSubscription = oldSubscription.ToAzureSubscription(envs);
-                        if (newSubscription.Account == null)
+                        if (newSubscription.GetAccount() == null)
                         {
                             continue;
                         }
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                             }
                         }
 
-                        profile.SubscriptionTable[newSubscription.Id] = newSubscription;
+                        profile.SubscriptionTable[newSubscription.GetId()] = newSubscription;
                     }
                     catch (Exception ex)
                     {

@@ -84,9 +84,9 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
                     {
                         // Merge profile files
                         AzureSMProfile newProfile = new AzureSMProfile(newProfileFilePath);
-                        foreach (var environment in newProfile.Environments.Values)
+                        foreach (var environment in newProfile.EnvironmentTable.Values)
                         {
-                            oldProfile.Environments[environment.Name] = environment;
+                            oldProfile.EnvironmentTable[environment.Name] = environment;
                         }
                         foreach (var subscription in newProfile.SubscriptionTable.Values)
                         {
@@ -676,7 +676,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
         {
             Profile.AccountTable.Clear();
             Profile.DefaultSubscription = null;
-            Profile.Environments.Clear();
+            Profile.EnvironmentTable.Clear();
             Profile.SubscriptionTable.Clear();
             Profile.Save();
 
@@ -1094,9 +1094,9 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             {
                 return Profile.Context.Environment;
             }
-            else if (Profile.Environments.ContainsKey(name))
+            else if (Profile.EnvironmentTable.ContainsKey(name))
             {
-                return Profile.Environments[name];
+                return Profile.EnvironmentTable[name];
             }
             else
             {
@@ -1120,9 +1120,9 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
 
             if (name != null)
             {
-                if (Profile.Environments.ContainsKey(name))
+                if (Profile.EnvironmentTable.ContainsKey(name))
                 {
-                    return Profile.Environments[name];
+                    return Profile.EnvironmentTable[name];
                 }
                 else
                 {
@@ -1131,7 +1131,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             }
             else
             {
-                return Profile.Environments.Values.FirstOrDefault(e =>
+                return Profile.EnvironmentTable.Values.FirstOrDefault(e =>
                     e.IsEndpointSetToValue(AzureEnvironment.Endpoint.ServiceManagement, serviceEndpoint) ||
                     e.IsEndpointSetToValue(AzureEnvironment.Endpoint.ResourceManager, resourceEndpoint));
             }
@@ -1141,11 +1141,11 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
         {
             if (string.IsNullOrEmpty(name))
             {
-                return Profile.Environments.Values.ToList();
+                return Profile.EnvironmentTable.Values.ToList();
             }
-            else if (Profile.Environments.ContainsKey(name))
+            else if (Profile.EnvironmentTable.ContainsKey(name))
             {
-                return new[] { Profile.Environments[name] }.ToList();
+                return new[] { Profile.EnvironmentTable[name] }.ToList();
             }
             else
             {
@@ -1164,15 +1164,15 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
                 throw new ArgumentException(Resources.RemovingDefaultEnvironmentsNotSupported, "name");
             }
 
-            if (Profile.Environments.ContainsKey(name))
+            if (Profile.EnvironmentTable.ContainsKey(name))
             {
-                var environment = Profile.Environments[name];
+                var environment = Profile.EnvironmentTable[name];
                 var subscriptions = Profile.SubscriptionTable.Values.Where(s => s.GetEnvironment() == name).ToArray();
                 foreach (var subscription in subscriptions)
                 {
                     RemoveSubscription(subscription.Id);
                 }
-                Profile.Environments.Remove(name);
+                Profile.EnvironmentTable.Remove(name);
                 return environment;
             }
             else
@@ -1194,17 +1194,17 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
                     string.Format(Resources.ChangingDefaultEnvironmentNotSupported, "environment"));
             }
 
-            if (Profile.Environments.ContainsKey(environment.Name))
+            if (Profile.EnvironmentTable.ContainsKey(environment.Name))
             {
-                Profile.Environments[environment.Name] =
-                    MergeEnvironmentProperties(environment, Profile.Environments[environment.Name]);
+                Profile.EnvironmentTable[environment.Name] =
+                    MergeEnvironmentProperties(environment, Profile.EnvironmentTable[environment.Name]);
             }
             else
             {
-                Profile.Environments[environment.Name] = environment;
+                Profile.EnvironmentTable[environment.Name] = environment;
             }
 
-            return Profile.Environments[environment.Name];
+            return Profile.EnvironmentTable[environment.Name];
         }
         #endregion
     }

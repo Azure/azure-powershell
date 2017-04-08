@@ -117,7 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CertificateNotFoundInStore" xml:space="preserve">
+    <value>No certificate was found in the certificate store with thumbprint {0}</value>
+  </data>
+  <data name="IllegalPath" xml:space="preserve">
+    <value>Illegal characters in path.</value>
+  </data>
+  <data name="InvalidCertificate" xml:space="preserve">
+    <value>Invalid certificate format. Publish settings may be corrupted. Use Get-AzurePublishSettingsFile to download updated settings</value>
+  </data>
+  <data name="InvalidDnsName" xml:space="preserve">
+    <value>"{0}" is an invalid DNS name for {1}</value>
+  </data>
+  <data name="InvalidFileExtension" xml:space="preserve">
+    <value>The provided file in {0} must be have {1} extension</value>
+  </data>
+  <data name="InvalidOrEmptyArgumentMessage" xml:space="preserve">
+    <value>{0} is invalid or empty</value>
+  </data>
+  <data name="NoInternetConnection" xml:space="preserve">
+    <value>Please connect to internet before executing this cmdlet</value>
+  </data>
+  <data name="PathDoesNotExist" xml:space="preserve">
+    <value>Path {0} doesn't exist.</value>
+  </data>
+  <data name="PathDoesNotExistForElement" xml:space="preserve">
+    <value>Path for {0} doesn't exist in {1}.</value>
+  </data>
   <data name="PublishSettingsFileRealmFormat" xml:space="preserve">
     <value>&amp;whr={0}</value>
+  </data>
+  <data name="ServiceNameExists" xml:space="preserve">
+    <value>The provided service name {0} already exists, please pick another name</value>
+  </data>
+  <data name="x86InProgramFiles" xml:space="preserve">
+    <value>(x86)</value>
   </data>
 </root>

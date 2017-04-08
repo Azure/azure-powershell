@@ -21,6 +21,7 @@ using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Profile.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Profile;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
 {
@@ -109,9 +110,9 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             });
 
             var newEnvironment = new AzureEnvironment { Name = Name, OnPremise = EnableAdfsAuthentication };
-            if (ProfileClient.Profile.Environments.ContainsKey(Name))
+            if (ProfileClient.Profile.EnvironmentTable.ContainsKey(Name))
             {
-                newEnvironment = ProfileClient.Profile.Environments[Name];
+                newEnvironment = ProfileClient.Profile.EnvironmentTable[Name];
             }
             SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.PublishSettingsFileUrl, PublishSettingsFileUrl);
             SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.ServiceManagement, ServiceEndpoint);
@@ -133,11 +134,11 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             WriteObject((PSAzureEnvironment)newEnvironment);
         }
 
-        private void SetEndpointIfProvided(AzureEnvironment newEnvironment, AzureEnvironment.Endpoint endpoint, string property)
+        private void SetEndpointIfProvided(AzureEnvironment newEnvironment, string endpoint, string property)
         {
             if (!string.IsNullOrEmpty(property))
             {
-                newEnvironment.Endpoints[endpoint] = property;
+                newEnvironment.SetEndpoint(endpoint, property);
             }
         }
 

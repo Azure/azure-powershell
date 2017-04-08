@@ -162,6 +162,64 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             return null;
         }
 
+        public static void SetEndpoint(this IAzureEnvironment environment, string endpointName, string propertyValue)
+        {
+            switch (endpointName)
+            {
+                case AzureEnvironment.Endpoint.AdTenant:
+                    environment.AdTenant = propertyValue;
+                    break;
+                case AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId:
+                    environment.ActiveDirectoryServiceEndpointResourceId = propertyValue;
+                    break;
+                case AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix:
+                    environment.AzureKeyVaultDnsSuffix = propertyValue;
+                    break;
+                case AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId:
+                    environment.AzureKeyVaultServiceEndpointResourceId = propertyValue;
+                    break;
+                case AzureEnvironment.Endpoint.GraphEndpointResourceId:
+                    environment.GraphEndpointResourceId = propertyValue;
+                    break;
+                case AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix:
+                    environment.SqlDatabaseDnsSuffix = propertyValue;
+                    break;
+                case AzureEnvironment.Endpoint.StorageEndpointSuffix:
+                    environment.StorageEndpointSuffix = propertyValue;
+                    break;
+                case AzureEnvironment.Endpoint.TrafficManagerDnsSuffix:
+                    environment.TrafficManagerDnsSuffix = propertyValue;
+                    break;
+                case AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix:
+                    environment.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = propertyValue;
+                    break;
+                case AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix:
+                    environment.AzureDataLakeStoreFileSystemEndpointSuffix = propertyValue;
+                    break;
+                case AzureEnvironment.Endpoint.ActiveDirectory:
+                    environment.ActiveDirectory = new Uri(propertyValue);
+                    break;
+                case AzureEnvironment.Endpoint.Gallery:
+                    environment.Gallery = new Uri(propertyValue);
+                    break;
+                case AzureEnvironment.Endpoint.Graph:
+                    environment.Graph = new Uri(propertyValue);
+                    break;
+                case AzureEnvironment.Endpoint.ManagementPortalUrl:
+                    environment.ManagementPortalUrl = new Uri(propertyValue);
+                    break;
+                case AzureEnvironment.Endpoint.PublishSettingsFileUrl:
+                    environment.PublishSettingsFileUrl = new Uri(propertyValue);
+                    break;
+                case AzureEnvironment.Endpoint.ResourceManager:
+                    environment.ResourceManager = new Uri(propertyValue);
+                    break;
+                case AzureEnvironment.Endpoint.ServiceManagement:
+                    environment.ServiceManagement = new Uri(propertyValue);
+                    break;
+            }
+        }
+
         /// <summary>
         /// Get the token audience for the given named endpoint
         /// </summary>

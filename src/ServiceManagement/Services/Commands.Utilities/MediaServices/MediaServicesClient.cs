@@ -32,6 +32,7 @@ using Microsoft.WindowsAzure.Management.Storage.Models;
 using Newtonsoft.Json;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.MediaServices
 {

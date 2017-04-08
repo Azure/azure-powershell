@@ -80,7 +80,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// <param name="storageAccountName">The name of the storage account</param>
         /// <param name="useHttps">True if https should be use din communicating with the storage service, otherwise false</param>
         /// <returns>The Uri of the blob service for the given service in the given environment</returns>
-        public static Uri GetStorageBlobEndpoint(this IAzureEnvironment environment, string storageAccountName, bool useHttps)
+        public static Uri GetStorageBlobEndpoint(this IAzureEnvironment environment, string storageAccountName, bool useHttps = true)
         {
             return new Uri(string.Format(environment.StorageBlobEndpointFormat(), useHttps ? "https" : "http", storageAccountName));
         }
@@ -92,7 +92,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// <param name="storageAccountName">The name of the storage account</param>
         /// <param name="useHttps">True if https should be use din communicating with the storage service, otherwise false</param>
         /// <returns>The Uri of the file service for the given service in the given environment</returns>
-        public static Uri GetStorageFileEndpoint(this IAzureEnvironment environment, string storageAccountName, bool useHttps)
+        public static Uri GetStorageFileEndpoint(this IAzureEnvironment environment, string storageAccountName, bool useHttps = true)
         {
             return new Uri(string.Format(environment.StorageFileEndpointFormat(), useHttps ? "https" : "http", storageAccountName));
         }
@@ -104,7 +104,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// <param name="storageAccountName">The name of the storage account</param>
         /// <param name="useHttps">True if https should be used in communicating with the storage service, otherwise false</param>
         /// <returns>The Uri of the queue service for the given service in the given environment</returns>
-        public static Uri GetStorageQueueEndpoint(this IAzureEnvironment environment, string storageAccountName, bool useHttps)
+        public static Uri GetStorageQueueEndpoint(this IAzureEnvironment environment, string storageAccountName, bool useHttps = true)
         {
             return new Uri(string.Format(environment.StorageQueueEndpointFormat(), useHttps ? "https" : "http", storageAccountName));
         }
@@ -116,7 +116,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// <param name="storageAccountName">The name of the storage account</param>
         /// <param name="useHttps">True if https should be used in communicating with the storage service, otherwise false</param>
         /// <returns>The Uri of the table service for the given service in the given environment</returns>
-        public static Uri GetStorageTableEndpoint(this IAzureEnvironment environment, string storageAccountName, bool useHttps)
+        public static Uri GetStorageTableEndpoint(this IAzureEnvironment environment, string storageAccountName, bool useHttps = true)
         {
             return new Uri(string.Format(environment.StorageTableEndpointFormat(), useHttps ? "https" : "http", storageAccountName));
         }

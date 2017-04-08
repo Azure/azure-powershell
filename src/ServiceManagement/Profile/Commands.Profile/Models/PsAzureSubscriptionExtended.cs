@@ -14,6 +14,7 @@
 
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Profile.Models
 {
