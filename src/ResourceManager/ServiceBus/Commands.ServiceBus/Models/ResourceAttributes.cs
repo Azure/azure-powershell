@@ -27,8 +27,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                 Id = resource.Id;
                 Name = resource.Name;
                 Type = resource.Type;
-                Location = resource.Location;
-                Tags = resource.Tags;
             }
         }
 
