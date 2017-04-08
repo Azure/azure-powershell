@@ -29,16 +29,26 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
     [Serializable]
     public sealed class AzureSMProfile : IAzureContextContainer
     {
+        Dictionary<string, AzureContext> _contexts = new Dictionary<string, AzureContext>(StringComparer.OrdinalIgnoreCase);
         /// <summary>
         /// Gets Azure Accounts
         /// </summary>
-        public Dictionary<string, AzureAccount> Accounts { get; set; }
+        public Dictionary<string, AzureAccount> AccountTable { get; set; }
 
+        [JsonProperty(PropertyName="Subscriptions")]
         /// <summary>
         /// Gets Azure Subscriptions
         /// </summary>
-        public Dictionary<Guid, AzureSubscription> Subscriptions { get; set; }
+        public Dictionary<Guid, AzureSubscription> SubscriptionTable { get; set; }
 
+        [JsonIgnore]
+        public IEnumerable<AzureSubscription> Subscriptions
+        {
+            get
+            {
+                return SubscriptionTable.Values;
+            }
+        }
         /// <summary>
         /// Gets or sets current Azure Subscription
         /// </summary>
@@ -46,28 +56,32 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         {
             get
             {
-                return Subscriptions.Values.FirstOrDefault(
-                    s => s.Properties.ContainsKey(AzureSubscription.Property.Default));
+                return SubscriptionTable.Values.FirstOrDefault(
+                    s => s.ExtendedProperties.ContainsKey(AzureSubscription.Property.Default));
             }
 
             set
             {
                 if (value == null)
                 {
-                    foreach (var subscription in Subscriptions.Values)
+                    foreach (var subscription in SubscriptionTable.Values)
                     {
                         subscription.SetProperty(AzureSubscription.Property.Default, null);
                     }
                 }
-                else if (Subscriptions.ContainsKey(value.Id))
+                else
                 {
-                    foreach (var subscription in Subscriptions.Values)
+                    var subscriptionGuid = Guid.Parse(value.Id);
+                    if (SubscriptionTable.ContainsKey(subscriptionGuid))
                     {
-                        subscription.SetProperty(AzureSubscription.Property.Default, null);
-                    }
+                        foreach (var subscription in SubscriptionTable.Values)
+                        {
+                            subscription.SetProperty(AzureSubscription.Property.Default, null);
+                        }
 
-                    Subscriptions[value.Id].Properties[AzureSubscription.Property.Default] = "True";
-                    value.Properties[AzureSubscription.Property.Default] = "True";
+                        SubscriptionTable[subscriptionGuid].ExtendedProperties[AzureSubscription.Property.Default] = "True";
+                        value.ExtendedProperties[AzureSubscription.Property.Default] = "True";
+                    }
                 }
             }
         }
@@ -91,24 +105,27 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 {
                     AzureAccount account = null;
                     AzureEnvironment environment = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
-                    if (DefaultSubscription.Account != null &&
-                        Accounts.ContainsKey(DefaultSubscription.Account))
+                    var subscriptionAccount = DefaultSubscription.GetProperty(AzureSubscription.Property.Account);
+                    if (subscriptionAccount != null &&
+                        AccountTable.ContainsKey(subscriptionAccount))
                     {
-                        account = Accounts[DefaultSubscription.Account];
+                        account = AccountTable[subscriptionAccount];
                     }
                     else
                     {
-                        TracingAdapter.Information(Resources.NoAccountInContext, DefaultSubscription.Account, DefaultSubscription.Id);
+                        TracingAdapter.Information(Resources.NoAccountInContext, subscriptionAccount, DefaultSubscription.Id);
                     }
 
-                    if (DefaultSubscription.Environment != null &&
-                        Environments.ContainsKey(DefaultSubscription.Environment))
+                    var subscriptionEnvironment = DefaultSubscription.ExtendedProperties[AzureSubscription.Property.Environment];
+
+                    if (subscriptionEnvironment != null &&
+                        Environments.ContainsKey(subscriptionEnvironment))
                     {
-                        environment = Environments[DefaultSubscription.Environment];
+                        environment = Environments[subscriptionEnvironment];
                     }
                     else
                     {
-                        TracingAdapter.Information(Resources.NoEnvironmentInContext, DefaultSubscription.Environment, DefaultSubscription.Id);
+                        TracingAdapter.Information(Resources.NoEnvironmentInContext, subscriptionEnvironment, DefaultSubscription.Id);
                     }
 
                     context = new AzureContext(DefaultSubscription, account, environment);
@@ -128,6 +145,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// </summary>
         public string ProfilePath { get; private set; }
 
+        [JsonIgnore]
         public AzureContext DefaultContext
         {
             get
@@ -137,81 +155,72 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
             set
             {
-                Context = value;
+                // do nothing, we should not set the context through AzureSMProfile
             }
         }
 
+        [JsonIgnore]
         IEnumerable<Abstractions.AzureEnvironment> IAzureContextContainer.Environments
         {
             get
             {
-                throw new NotImplementedException();
+                return Environments.Values;
             }
         }
 
-        public AuthenticationStore TokenStore
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
+        [JsonIgnore]
+        public IAuthenticationStore TokenStore { get; set; } = new AuthenticationStore();
 
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        [JsonIgnore]
+        public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
-        public IDictionary<string, string> ExtendedProperties
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
+        [JsonIgnore]
         public ICollection<string> Keys
         {
             get
             {
-                throw new NotImplementedException();
+                return _contexts.Keys;
             }
         }
 
+        [JsonIgnore]
         public ICollection<Abstractions.AzureContext> Values
         {
             get
             {
-                throw new NotImplementedException();
+                return _contexts.Values;
             }
         }
 
+        [JsonIgnore]
         public int Count
         {
             get
             {
-                throw new NotImplementedException();
+                return _contexts.Count;
             }
         }
 
+        [JsonIgnore]
         public bool IsReadOnly
         {
             get
             {
-                throw new NotImplementedException();
+                return true;
             }
         }
 
+        [JsonIgnore]
         public Abstractions.AzureContext this[string key]
         {
             get
             {
-                throw new NotImplementedException();
+                return _contexts[key];
             }
 
             set
             {
-                throw new NotImplementedException();
+                _contexts[key] = value;
             }
         }
 
@@ -221,8 +230,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         public AzureSMProfile()
         {
             Environments = new Dictionary<string, AzureEnvironment>(StringComparer.InvariantCultureIgnoreCase);
-            Subscriptions = new Dictionary<Guid, AzureSubscription>();
-            Accounts = new Dictionary<string, AzureAccount>(StringComparer.InvariantCultureIgnoreCase);
+            SubscriptionTable = new Dictionary<Guid, AzureSubscription>();
+            AccountTable = new Dictionary<string, AzureAccount>(StringComparer.InvariantCultureIgnoreCase);
 
             // Adding predefined environments
             foreach (AzureEnvironment env in AzureEnvironment.PublicEnvironments.Values)
@@ -328,57 +337,66 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
         public bool ContainsKey(string key)
         {
-            throw new NotImplementedException();
+            return _contexts.ContainsKey(key);
         }
 
         public void Add(string key, Abstractions.AzureContext value)
         {
-            throw new NotImplementedException();
+            _contexts.Add(key, value);
         }
 
         public bool Remove(string key)
         {
-            throw new NotImplementedException();
+           return _contexts.Remove(key);
         }
 
         public bool TryGetValue(string key, out Abstractions.AzureContext value)
         {
-            throw new NotImplementedException();
+            return _contexts.TryGetValue(key, out value);
         }
 
         public void Add(KeyValuePair<string, Abstractions.AzureContext> item)
         {
-            throw new NotImplementedException();
+            if (item.Key != null && item.Value != null)
+            {
+                _contexts.Add(item.Key, item.Value);
+            }
         }
 
         public void Clear()
         {
-            throw new NotImplementedException();
+            _contexts.Clear();
         }
 
         public bool Contains(KeyValuePair<string, Abstractions.AzureContext> item)
         {
-            throw new NotImplementedException();
+            return _contexts.Contains(item);
         }
 
         public void CopyTo(KeyValuePair<string, Abstractions.AzureContext>[] array, int arrayIndex)
         {
-            throw new NotImplementedException();
+            if (array != null && arrayIndex >= 0)
+            {
+                for (int i = arrayIndex; i < array.Length; ++i)
+                {
+                    _contexts.Add(array[i].Key, array[i].Value);
+                }
+            }
         }
 
         public bool Remove(KeyValuePair<string, Abstractions.AzureContext> item)
         {
-            throw new NotImplementedException();
+            return _contexts.Remove(item.Key);
         }
 
         public IEnumerator<KeyValuePair<string, Abstractions.AzureContext>> GetEnumerator()
         {
-            throw new NotImplementedException();
+           return  _contexts.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return _contexts.GetEnumerator();
         }
     }
 }

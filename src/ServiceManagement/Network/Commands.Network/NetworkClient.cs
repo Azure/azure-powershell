@@ -836,7 +836,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
 
         private static ClientType CreateClient<ClientType>(AzureSMProfile profile, AzureSubscription subscription) where ClientType : ServiceClient<ClientType>
         {
-            return AzureSession.ClientFactory.CreateClient<ClientType>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            return AzureSession.Instance.ClientFactory.CreateClient<ClientType>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
         public void CreateNetworkSecurityGroup(string name, string location, string label)

@@ -24,7 +24,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
     {
         AzureContext DefaultContext { get; set; }
         IEnumerable<AzureEnvironment> Environments { get; }
-        AuthenticationStore TokenStore { get; set; }
+        IAuthenticationStore TokenStore { get; set; }
+        IEnumerable<AzureSubscription> Subscriptions { get; }
         IDictionary<string, string> ExtendedProperties { get; }
     }
 }

@@ -97,17 +97,17 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             if (!string.IsNullOrEmpty(SubscriptionId) && string.IsNullOrEmpty(SubscriptionName))
             {
                 subscription = ProfileClient.GetSubscription(new Guid(SubscriptionId));
-                Environment = subscription.Environment;
+                Environment = subscription.GetEnvironment();
             }
             else if (string.IsNullOrEmpty(SubscriptionId) && !string.IsNullOrEmpty(SubscriptionName))
             {
                 subscription = ProfileClient.GetSubscription(SubscriptionName);
-                Environment = subscription.Environment;
+                Environment = subscription.GetEnvironment();
             }
             else
             {
                 subscription = new AzureSubscription();
-                subscription.Id = new Guid(SubscriptionId);
+                subscription.Id = SubscriptionId;
                 subscription.Name = SubscriptionName;
             }
 
@@ -125,7 +125,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             }
             else
             {
-                subscription.Environment = environment.Name;
+                subscription.SetEnvironment(environment.Name);
             }
 
             if (ServiceEndpoint != null || ResourceManagerEndpoint != null)
@@ -137,7 +137,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             if (Certificate != null)
             {
                 ProfileClient.ImportCertificate(Certificate);
-                subscription.Account = Certificate.Thumbprint;
+                subscription.SetAccount(Certificate.Thumbprint);
                 AzureAccount account = new AzureAccount
                 {
                     Id = Certificate.Thumbprint,
@@ -146,33 +146,33 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                 account.SetOrAppendProperty(AzureAccount.Property.Subscriptions, subscription.Id.ToString());
                 ProfileClient.AddOrSetAccount(account);
 
-                if (subscription.Account == null)
+                if (subscription.GetAccount() == null)
                 {
-                    subscription.Account = account.Id;
+                    subscription.SetAccount( account.Id);
                 }
             }
 
-            if (subscription.Account == null)
+            if (subscription.GetAccount() == null)
             {
                 throw new ArgumentException("Certificate is required for creating a new subscription.");
             }
 
             if (!string.IsNullOrEmpty(CurrentStorageAccountName) || Context != null)
             {
-                ProfileClient.GetAccount(subscription.Account);
+                ProfileClient.GetAccount(subscription.GetAccount());
                 if (Profile.Context != null && Profile.Context.Subscription != null &&
                     Profile.Context.Subscription.Id == subscription.Id)
                 {
                     GeneralUtilities.ClearCurrentStorageAccount();
                 }
-                var context = new AzureContext(subscription, ProfileClient.GetAccount(subscription.Account), ProfileClient.GetEnvironmentOrDefault(subscription.Environment));
+                var context = new AzureContext(subscription, ProfileClient.GetAccount(subscription.GetAccount()), ProfileClient.GetEnvironmentOrDefault(subscription.GetEnvironment()));
                 if (Context != null)
                 {
                     context.SetCurrentStorageAccount(Context);
                 }
                 else
                 {
-                    var client = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(context,
+                    var client = AzureSession.Instance.ClientFactory.CreateClient<StorageManagementClient>(context,
                         AzureEnvironment.Endpoint.ServiceManagement);
                     var account = StorageUtilities.GenerateCloudStorageAccount(client, CurrentStorageAccountName);
                     context.SetCurrentStorageAccount(account.ToString(true));

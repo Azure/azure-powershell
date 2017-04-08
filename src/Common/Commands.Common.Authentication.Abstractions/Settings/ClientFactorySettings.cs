@@ -14,19 +14,14 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
     public class ClientFactorySettings 
     {
-        IEnumerable<IUserAgentSettings> UserAgents { get; }
+        IEnumerable<UserAgentSettings> UserAgents { get; }
 
-        IDictionary<string, IHandlerSettings> DelegatingHandlers { get; }
+        IDictionary<string, HandlerSettings> DelegatingHandlers { get; }
 
         IEnumerable<ClientActionSettings> ClientActions { get; }
 

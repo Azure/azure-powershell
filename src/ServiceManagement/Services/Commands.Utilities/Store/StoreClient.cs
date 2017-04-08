@@ -142,10 +142,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Store
         public StoreClient(AzureSMProfile profile, AzureSubscription subscription)
             : this(
                 subscription,
-                AzureSession.ClientFactory.CreateClient<ComputeManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement),
-                AzureSession.ClientFactory.CreateClient<StoreManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement),
+                AzureSession.Instance.ClientFactory.CreateClient<ComputeManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement),
+                AzureSession.Instance.ClientFactory.CreateClient<StoreManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement),
                 new MarketplaceClient(),
-                AzureSession.ClientFactory.CreateClient<ManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement)) { }
+                AzureSession.Instance.ClientFactory.CreateClient<ManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement)) { }
 
         public StoreClient(
             AzureSubscription subscription,

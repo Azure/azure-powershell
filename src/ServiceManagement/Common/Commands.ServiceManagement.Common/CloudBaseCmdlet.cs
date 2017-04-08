@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
@@ -128,18 +129,18 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
 
             string certificateThumbprint = Profile.Context.Account.Id;
-            Debug.Assert(Profile.Accounts[certificateThumbprint].Type == AzureAccount.AccountType.Certificate);
+            Debug.Assert(Profile.AccountTable[certificateThumbprint].Type == AzureAccount.AccountType.Certificate);
 
             return ChannelHelper.CreateServiceManagementChannel<T>(
                 ServiceBinding,
                 Profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement),
-                AzureSession.Instance..DataStore.GetCertificate(certificateThumbprint),
+                AzureSession.Instance.DataStore.GetCertificate(certificateThumbprint),
                 new HttpRestMessageInspector(WriteDebug));
         }
 
         protected void RetryCall(Action<string> call)
         {
-            RetryCall(Profile.Context.Subscription.Id, call);
+            RetryCall(Profile.Context.Subscription.GetId(), call);
         }
 
         protected void RetryCall(Guid subsId, Action<string> call)
@@ -172,7 +173,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected TResult RetryCall<TResult>(Func<string, TResult> call)
         {
-            return RetryCall(Profile.Context.Subscription.Id, call);
+            return RetryCall(Profile.Context.Subscription.GetId(), call);
         }
 
         protected TResult RetryCall<TResult>(Guid subsId, Func<string, TResult> call)

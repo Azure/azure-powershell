@@ -555,9 +555,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
             Subscription = subscription;
             CloudBlobUtility = new CloudBlobUtility();
 
-            ManagementClient = AzureSession.ClientFactory.CreateClient<ManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
-            StorageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
-            ComputeClient = AzureSession.ClientFactory.CreateClient<ComputeManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            ManagementClient = AzureSession.Instance.ClientFactory.CreateClient<ManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            StorageClient = AzureSession.Instance.ClientFactory.CreateClient<StorageManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            ComputeClient = AzureSession.Instance.ClientFactory.CreateClient<ComputeManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
         private CloudServiceClient(string currentLocation, Action<string> debugStream, Action<string> verboseStream,

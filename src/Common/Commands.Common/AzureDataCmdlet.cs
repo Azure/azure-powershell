@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -60,13 +61,13 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 InitializeDataCollectionProfile();
             }
 
-            string fileFullPath = Path.Combine(AzureSession.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
+            string fileFullPath = Path.Combine(AzureSession.Instance.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
             var contents = JsonConvert.SerializeObject(_dataCollectionProfile);
-            if (!AzureSession.DataStore.DirectoryExists(AzureSession.ProfileDirectory))
+            if (!AzureSession.Instance.DataStore.DirectoryExists(AzureSession.Instance.ProfileDirectory))
             {
-                AzureSession.DataStore.CreateDirectory(AzureSession.ProfileDirectory);
+                AzureSession.Instance.DataStore.CreateDirectory(AzureSession.Instance.ProfileDirectory);
             }
-            AzureSession.DataStore.WriteFile(fileFullPath, contents);
+            AzureSession.Instance.DataStore.WriteFile(fileFullPath, contents);
             WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
         }
 

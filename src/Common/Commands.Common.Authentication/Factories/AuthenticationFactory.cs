@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             return GetSubscriptionCloudCredentials(context, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
-        public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context, AzureEnvironment.Endpoint targetEndpoint)
+        public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context, string targetEndpoint)
         {
             if (context.Subscription == null)
             {

@@ -16,7 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
+namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
     public static class DictionaryExtensions
     {

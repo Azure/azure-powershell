@@ -53,7 +53,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            client = AzureSession.ClientFactory.CreateClient<ManagementClient>(base.DefaultContext, AzureEnvironment.Endpoint.ServiceManagement);
+            client = AzureSession.Instance.ClientFactory.CreateClient<ManagementClient>(base.DefaultContext, AzureEnvironment.Endpoint.ServiceManagement);
             WriteObject(client);
         }
 

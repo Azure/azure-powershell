@@ -220,40 +220,40 @@ namespace Common.Authentication.Test
             Assert.Equal(".database.windows.net", client.Profile.Environments["Dogfood"].Endpoints[AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix]);
 
             // Verify subscriptions
-            Assert.Equal(3, client.Profile.Subscriptions.Count);
-            Assert.False(client.Profile.Subscriptions.ContainsKey(new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1E")));
-            Assert.True(client.Profile.Subscriptions.ContainsKey(new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1F")));
-            Assert.Equal("Test 2", client.Profile.Subscriptions[new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1F")].Name);
-            Assert.True(client.Profile.Subscriptions[new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1F")].IsPropertySet(AzureSubscription.Property.Default));
-            Assert.Equal("test@mail.com", client.Profile.Subscriptions[new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1F")].Account);
-            Assert.Equal("Dogfood", client.Profile.Subscriptions[new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1F")].Environment);
-            Assert.Equal("123", client.Profile.Subscriptions[new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1F")].Properties[AzureSubscription.Property.Tenants]);
-            Assert.True(client.Profile.Subscriptions.ContainsKey(new Guid("d1e52cbc-b073-42e2-a0a0-c2f547118a6f")));
-            Assert.Equal("Test 3", client.Profile.Subscriptions[new Guid("d1e52cbc-b073-42e2-a0a0-c2f547118a6f")].Name);
-            Assert.False(client.Profile.Subscriptions[new Guid("d1e52cbc-b073-42e2-a0a0-c2f547118a6f")].IsPropertySet(AzureSubscription.Property.Default));
-            Assert.Equal("test@mail.com", client.Profile.Subscriptions[new Guid("d1e52cbc-b073-42e2-a0a0-c2f547118a6f")].Account);
-            Assert.Equal("72f988bf-86f1-41af-91ab-2d7cd011db47", client.Profile.Subscriptions[new Guid("d1e52cbc-b073-42e2-a0a0-c2f547118a6f")].Properties[AzureSubscription.Property.Tenants]);
-            Assert.Equal(EnvironmentName.AzureCloud, client.Profile.Subscriptions[new Guid("d1e52cbc-b073-42e2-a0a0-c2f547118a6f")].Environment);
-            Assert.Equal(EnvironmentName.AzureChinaCloud, client.Profile.Subscriptions[new Guid("c14d7dc5-ed4d-4346-a02f-9f1bcf78fb66")].Environment);
+            Assert.Equal(3, client.Profile.SubscriptionTable.Count);
+            Assert.False(client.Profile.SubscriptionTable.ContainsKey(new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1E")));
+            Assert.True(client.Profile.SubscriptionTable.ContainsKey(new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1F")));
+            Assert.Equal("Test 2", client.Profile.SubscriptionTable[new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1F")].Name);
+            Assert.True(client.Profile.SubscriptionTable[new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1F")].IsPropertySet(AzureSubscription.Property.Default));
+            Assert.Equal("test@mail.com", client.Profile.SubscriptionTable[new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1F")].Account);
+            Assert.Equal("Dogfood", client.Profile.SubscriptionTable[new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1F")].Environment);
+            Assert.Equal("123", client.Profile.SubscriptionTable[new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1F")].Properties[AzureSubscription.Property.Tenants]);
+            Assert.True(client.Profile.SubscriptionTable.ContainsKey(new Guid("d1e52cbc-b073-42e2-a0a0-c2f547118a6f")));
+            Assert.Equal("Test 3", client.Profile.SubscriptionTable[new Guid("d1e52cbc-b073-42e2-a0a0-c2f547118a6f")].Name);
+            Assert.False(client.Profile.SubscriptionTable[new Guid("d1e52cbc-b073-42e2-a0a0-c2f547118a6f")].IsPropertySet(AzureSubscription.Property.Default));
+            Assert.Equal("test@mail.com", client.Profile.SubscriptionTable[new Guid("d1e52cbc-b073-42e2-a0a0-c2f547118a6f")].Account);
+            Assert.Equal("72f988bf-86f1-41af-91ab-2d7cd011db47", client.Profile.SubscriptionTable[new Guid("d1e52cbc-b073-42e2-a0a0-c2f547118a6f")].Properties[AzureSubscription.Property.Tenants]);
+            Assert.Equal(EnvironmentName.AzureCloud, client.Profile.SubscriptionTable[new Guid("d1e52cbc-b073-42e2-a0a0-c2f547118a6f")].Environment);
+            Assert.Equal(EnvironmentName.AzureChinaCloud, client.Profile.SubscriptionTable[new Guid("c14d7dc5-ed4d-4346-a02f-9f1bcf78fb66")].Environment);
 
             // Verify accounts
-            Assert.Equal(2, client.Profile.Accounts.Count);
-            Assert.Equal("test@mail.com", client.Profile.Accounts["test@mail.com"].Id);
-            Assert.Equal(AzureAccount.AccountType.User, client.Profile.Accounts["test@mail.com"].Type);
-            Assert.True(client.Profile.Accounts["test@mail.com"].GetPropertyAsArray(AzureAccount.Property.Subscriptions)
+            Assert.Equal(2, client.Profile.AccountTable.Count);
+            Assert.Equal("test@mail.com", client.Profile.AccountTable["test@mail.com"].Id);
+            Assert.Equal(AzureAccount.AccountType.User, client.Profile.AccountTable["test@mail.com"].Type);
+            Assert.True(client.Profile.AccountTable["test@mail.com"].GetPropertyAsArray(AzureAccount.Property.Subscriptions)
                 .Contains(new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1F").ToString()));
-            Assert.True(client.Profile.Accounts["test@mail.com"].GetPropertyAsArray(AzureAccount.Property.Subscriptions)
+            Assert.True(client.Profile.AccountTable["test@mail.com"].GetPropertyAsArray(AzureAccount.Property.Subscriptions)
                 .Contains(new Guid("d1e52cbc-b073-42e2-a0a0-c2f547118a6f").ToString()));
-            Assert.True(client.Profile.Accounts["3AF24D48B97730E5C4C9CCB12397B5E046F79E09"].GetPropertyAsArray(AzureAccount.Property.Subscriptions)
+            Assert.True(client.Profile.AccountTable["3AF24D48B97730E5C4C9CCB12397B5E046F79E09"].GetPropertyAsArray(AzureAccount.Property.Subscriptions)
                 .Contains(new Guid("d1e52cbc-b073-42e2-a0a0-c2f547118a6f").ToString()));
-            Assert.True(client.Profile.Accounts["test@mail.com"].GetPropertyAsArray(AzureAccount.Property.Tenants)
+            Assert.True(client.Profile.AccountTable["test@mail.com"].GetPropertyAsArray(AzureAccount.Property.Tenants)
                 .Contains("72f988bf-86f1-41af-91ab-2d7cd011db47"));
-            Assert.True(client.Profile.Accounts["test@mail.com"].GetPropertyAsArray(AzureAccount.Property.Tenants)
+            Assert.True(client.Profile.AccountTable["test@mail.com"].GetPropertyAsArray(AzureAccount.Property.Tenants)
                 .Contains("123"));
-            Assert.Equal("3AF24D48B97730E5C4C9CCB12397B5E046F79E09", client.Profile.Accounts["3AF24D48B97730E5C4C9CCB12397B5E046F79E09"].Id);
-            Assert.Equal(AzureAccount.AccountType.Certificate, client.Profile.Accounts["3AF24D48B97730E5C4C9CCB12397B5E046F79E09"].Type);
-            Assert.Equal(0, client.Profile.Accounts["3AF24D48B97730E5C4C9CCB12397B5E046F79E09"].GetPropertyAsArray(AzureAccount.Property.Tenants).Length);
-            Assert.Equal(2, client.Profile.Accounts["3AF24D48B97730E5C4C9CCB12397B5E046F79E09"].GetPropertyAsArray(AzureAccount.Property.Subscriptions).Length);
+            Assert.Equal("3AF24D48B97730E5C4C9CCB12397B5E046F79E09", client.Profile.AccountTable["3AF24D48B97730E5C4C9CCB12397B5E046F79E09"].Id);
+            Assert.Equal(AzureAccount.AccountType.Certificate, client.Profile.AccountTable["3AF24D48B97730E5C4C9CCB12397B5E046F79E09"].Type);
+            Assert.Equal(0, client.Profile.AccountTable["3AF24D48B97730E5C4C9CCB12397B5E046F79E09"].GetPropertyAsArray(AzureAccount.Property.Tenants).Length);
+            Assert.Equal(2, client.Profile.AccountTable["3AF24D48B97730E5C4C9CCB12397B5E046F79E09"].GetPropertyAsArray(AzureAccount.Property.Subscriptions).Length);
         }
 
         [Fact]
@@ -269,34 +269,34 @@ namespace Common.Authentication.Test
             Assert.Equal(4, client.Profile.Environments.Count);
 
             // Verify subscriptions
-            Assert.Equal(3, client.Profile.Subscriptions.Count);
-            Assert.True(client.Profile.Subscriptions.ContainsKey(new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1F")));
-            Assert.Equal("Test Bad Management Endpoint", client.Profile.Subscriptions[new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1F")].Name);
-            Assert.Equal(EnvironmentName.AzureCloud, client.Profile.Subscriptions[new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1F")].Environment);
-            Assert.Equal("Test Null Management Endpoint", client.Profile.Subscriptions[new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2ADFF")].Name);
-            Assert.Equal(EnvironmentName.AzureCloud, client.Profile.Subscriptions[new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2ADFF")].Environment);
+            Assert.Equal(3, client.Profile.SubscriptionTable.Count);
+            Assert.True(client.Profile.SubscriptionTable.ContainsKey(new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1F")));
+            Assert.Equal("Test Bad Management Endpoint", client.Profile.SubscriptionTable[new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1F")].Name);
+            Assert.Equal(EnvironmentName.AzureCloud, client.Profile.SubscriptionTable[new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1F")].Environment);
+            Assert.Equal("Test Null Management Endpoint", client.Profile.SubscriptionTable[new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2ADFF")].Name);
+            Assert.Equal(EnvironmentName.AzureCloud, client.Profile.SubscriptionTable[new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2ADFF")].Environment);
 
-            Assert.True(client.Profile.Subscriptions.ContainsKey(new Guid("d1e52cbc-b073-42e2-a0a0-c2f547118a6f")));
-            Assert.Equal("Test Bad Cert", client.Profile.Subscriptions[new Guid("d1e52cbc-b073-42e2-a0a0-c2f547118a6f")].Name);
+            Assert.True(client.Profile.SubscriptionTable.ContainsKey(new Guid("d1e52cbc-b073-42e2-a0a0-c2f547118a6f")));
+            Assert.Equal("Test Bad Cert", client.Profile.SubscriptionTable[new Guid("d1e52cbc-b073-42e2-a0a0-c2f547118a6f")].Name);
 
             // Verify accounts
-            Assert.Equal(2, client.Profile.Accounts.Count);
-            Assert.Equal("test@mail.com", client.Profile.Accounts["test@mail.com"].Id);
-            Assert.Equal(AzureAccount.AccountType.User, client.Profile.Accounts["test@mail.com"].Type);
-            Assert.True(client.Profile.Accounts["test@mail.com"].GetPropertyAsArray(AzureAccount.Property.Subscriptions)
+            Assert.Equal(2, client.Profile.AccountTable.Count);
+            Assert.Equal("test@mail.com", client.Profile.AccountTable["test@mail.com"].Id);
+            Assert.Equal(AzureAccount.AccountType.User, client.Profile.AccountTable["test@mail.com"].Type);
+            Assert.True(client.Profile.AccountTable["test@mail.com"].GetPropertyAsArray(AzureAccount.Property.Subscriptions)
                 .Contains(new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1F").ToString()));
-            Assert.True(client.Profile.Accounts["test@mail.com"].GetPropertyAsArray(AzureAccount.Property.Subscriptions)
+            Assert.True(client.Profile.AccountTable["test@mail.com"].GetPropertyAsArray(AzureAccount.Property.Subscriptions)
                 .Contains(new Guid("d1e52cbc-b073-42e2-a0a0-c2f547118a6f").ToString()));
-            Assert.True(client.Profile.Accounts["3AF24D48B97730E5C4C9CCB12397B5E046F79E99"].GetPropertyAsArray(AzureAccount.Property.Subscriptions)
+            Assert.True(client.Profile.AccountTable["3AF24D48B97730E5C4C9CCB12397B5E046F79E99"].GetPropertyAsArray(AzureAccount.Property.Subscriptions)
                 .Contains(new Guid("d1e52cbc-b073-42e2-a0a0-c2f547118a6f").ToString()));
-            Assert.True(client.Profile.Accounts["test@mail.com"].GetPropertyAsArray(AzureAccount.Property.Tenants)
+            Assert.True(client.Profile.AccountTable["test@mail.com"].GetPropertyAsArray(AzureAccount.Property.Tenants)
                 .Contains("72f988bf-86f1-41af-91ab-2d7cd011db47"));
-            Assert.False(client.Profile.Accounts["test@mail.com"].GetPropertyAsArray(AzureAccount.Property.Tenants)
+            Assert.False(client.Profile.AccountTable["test@mail.com"].GetPropertyAsArray(AzureAccount.Property.Tenants)
                 .Contains("123"));
-            Assert.Equal("3AF24D48B97730E5C4C9CCB12397B5E046F79E99", client.Profile.Accounts["3AF24D48B97730E5C4C9CCB12397B5E046F79E99"].Id);
-            Assert.Equal(AzureAccount.AccountType.Certificate, client.Profile.Accounts["3AF24D48B97730E5C4C9CCB12397B5E046F79E99"].Type);
-            Assert.Equal(0, client.Profile.Accounts["3AF24D48B97730E5C4C9CCB12397B5E046F79E99"].GetPropertyAsArray(AzureAccount.Property.Tenants).Length);
-            Assert.Equal(1, client.Profile.Accounts["3AF24D48B97730E5C4C9CCB12397B5E046F79E99"].GetPropertyAsArray(AzureAccount.Property.Subscriptions).Length);
+            Assert.Equal("3AF24D48B97730E5C4C9CCB12397B5E046F79E99", client.Profile.AccountTable["3AF24D48B97730E5C4C9CCB12397B5E046F79E99"].Id);
+            Assert.Equal(AzureAccount.AccountType.Certificate, client.Profile.AccountTable["3AF24D48B97730E5C4C9CCB12397B5E046F79E99"].Type);
+            Assert.Equal(0, client.Profile.AccountTable["3AF24D48B97730E5C4C9CCB12397B5E046F79E99"].GetPropertyAsArray(AzureAccount.Property.Tenants).Length);
+            Assert.Equal(1, client.Profile.AccountTable["3AF24D48B97730E5C4C9CCB12397B5E046F79E99"].GetPropertyAsArray(AzureAccount.Property.Subscriptions).Length);
 
             // Verify backup file
             Assert.True(dataStore.FileExists(oldProfileDataPathError));
@@ -317,10 +317,10 @@ namespace Common.Authentication.Test
             Assert.Equal(4, client.Profile.Environments.Count);
 
             // Verify subscriptions
-            Assert.Equal(0, client.Profile.Subscriptions.Count);
+            Assert.Equal(0, client.Profile.SubscriptionTable.Count);
 
             // Verify accounts
-            Assert.Equal(0, client.Profile.Accounts.Count);
+            Assert.Equal(0, client.Profile.AccountTable.Count);
 
             // Verify backup file
             Assert.True(dataStore.FileExists(oldProfileDataPathError));
@@ -557,10 +557,10 @@ namespace Common.Authentication.Test
             AzureSession.DataStore = dataStore;
             currentProfile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
             ProfileClient client = new ProfileClient(currentProfile);
-            client.Profile.Subscriptions[azureSubscription1.Id] = azureSubscription1;
-            client.Profile.Subscriptions[azureSubscription2.Id] = azureSubscription2;
-            client.Profile.Subscriptions[azureSubscription3withoutUser.Id] = azureSubscription3withoutUser;
-            client.Profile.Accounts[azureAccount.Id] = azureAccount;
+            client.Profile.SubscriptionTable[azureSubscription1.Id] = azureSubscription1;
+            client.Profile.SubscriptionTable[azureSubscription2.Id] = azureSubscription2;
+            client.Profile.SubscriptionTable[azureSubscription3withoutUser.Id] = azureSubscription3withoutUser;
+            client.Profile.AccountTable[azureAccount.Id] = azureAccount;
             client.Profile.Environments[azureEnvironment.Name] = azureEnvironment;
 
             var account = client.ListAccounts("test").ToList();
@@ -579,10 +579,10 @@ namespace Common.Authentication.Test
             AzureSession.DataStore = dataStore;
             currentProfile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
             ProfileClient client = new ProfileClient(currentProfile);
-            client.Profile.Subscriptions[azureSubscription1.Id] = azureSubscription1;
-            client.Profile.Subscriptions[azureSubscription2.Id] = azureSubscription2;
-            client.Profile.Subscriptions[azureSubscription3withoutUser.Id] = azureSubscription3withoutUser;
-            client.Profile.Accounts[azureAccount.Id] = azureAccount;
+            client.Profile.SubscriptionTable[azureSubscription1.Id] = azureSubscription1;
+            client.Profile.SubscriptionTable[azureSubscription2.Id] = azureSubscription2;
+            client.Profile.SubscriptionTable[azureSubscription3withoutUser.Id] = azureSubscription3withoutUser;
+            client.Profile.AccountTable[azureAccount.Id] = azureAccount;
             client.Profile.Environments[azureEnvironment.Name] = azureEnvironment;
 
             var account = client.ListAccounts("test").ToList();
@@ -601,10 +601,10 @@ namespace Common.Authentication.Test
             AzureSession.DataStore = dataStore;
             currentProfile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
             ProfileClient client = new ProfileClient(currentProfile);
-            client.Profile.Subscriptions[azureSubscription1.Id] = azureSubscription1;
-            client.Profile.Subscriptions[azureSubscription2.Id] = azureSubscription2;
-            client.Profile.Subscriptions[azureSubscription3withoutUser.Id] = azureSubscription3withoutUser;
-            client.Profile.Accounts[azureAccount.Id] = azureAccount;
+            client.Profile.SubscriptionTable[azureSubscription1.Id] = azureSubscription1;
+            client.Profile.SubscriptionTable[azureSubscription2.Id] = azureSubscription2;
+            client.Profile.SubscriptionTable[azureSubscription3withoutUser.Id] = azureSubscription3withoutUser;
+            client.Profile.AccountTable[azureAccount.Id] = azureAccount;
             client.Profile.Environments[azureEnvironment.Name] = azureEnvironment;
 
             var account = client.ListAccounts("test2").ToList();
@@ -619,11 +619,11 @@ namespace Common.Authentication.Test
             AzureSession.DataStore = dataStore;
             currentProfile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
             ProfileClient client = new ProfileClient(currentProfile);
-            client.Profile.Subscriptions[azureSubscription1.Id] = azureSubscription1;
-            client.Profile.Subscriptions[azureSubscription2.Id] = azureSubscription2;
-            client.Profile.Accounts[azureAccount.Id] = azureAccount;
+            client.Profile.SubscriptionTable[azureSubscription1.Id] = azureSubscription1;
+            client.Profile.SubscriptionTable[azureSubscription2.Id] = azureSubscription2;
+            client.Profile.AccountTable[azureAccount.Id] = azureAccount;
             azureSubscription3withoutUser.Account = "test2";
-            client.Profile.Accounts["test2"] = new AzureAccount
+            client.Profile.AccountTable["test2"] = new AzureAccount
             {
                 Id = "test2",
                 Type = AzureAccount.AccountType.User,
@@ -632,7 +632,7 @@ namespace Common.Authentication.Test
                     {AzureAccount.Property.Subscriptions, azureSubscription3withoutUser.Id.ToString()}
                 }
             };
-            client.Profile.Subscriptions[azureSubscription3withoutUser.Id] = azureSubscription3withoutUser;
+            client.Profile.SubscriptionTable[azureSubscription3withoutUser.Id] = azureSubscription3withoutUser;
             client.Profile.Environments[azureEnvironment.Name] = azureEnvironment;
 
             var account = client.ListAccounts(null).ToList();
@@ -647,11 +647,11 @@ namespace Common.Authentication.Test
             AzureSession.DataStore = dataStore;
             currentProfile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
             ProfileClient client = new ProfileClient(currentProfile);
-            client.Profile.Subscriptions[azureSubscription1.Id] = azureSubscription1;
-            client.Profile.Subscriptions[azureSubscription2.Id] = azureSubscription2;
-            client.Profile.Accounts[azureAccount.Id] = azureAccount;
+            client.Profile.SubscriptionTable[azureSubscription1.Id] = azureSubscription1;
+            client.Profile.SubscriptionTable[azureSubscription2.Id] = azureSubscription2;
+            client.Profile.AccountTable[azureAccount.Id] = azureAccount;
             azureSubscription3withoutUser.Account = "test2";
-            client.Profile.Accounts["test2"] = new AzureAccount
+            client.Profile.AccountTable["test2"] = new AzureAccount
             {
                 Id = "test2",
                 Type = AzureAccount.AccountType.User,
@@ -660,16 +660,16 @@ namespace Common.Authentication.Test
                     {AzureAccount.Property.Subscriptions, azureSubscription3withoutUser.Id.ToString()}
                 }
             };
-            client.Profile.Subscriptions[azureSubscription3withoutUser.Id] = azureSubscription3withoutUser;
+            client.Profile.SubscriptionTable[azureSubscription3withoutUser.Id] = azureSubscription3withoutUser;
             client.Profile.Environments[azureEnvironment.Name] = azureEnvironment;
             List<string> log = new List<string>();
             client.WarningLog = log.Add;
 
-            Assert.Equal(3, client.Profile.Subscriptions.Count);
+            Assert.Equal(3, client.Profile.SubscriptionTable.Count);
 
             client.RemoveAccount("test2");
 
-            Assert.Equal(2, client.Profile.Subscriptions.Count);
+            Assert.Equal(2, client.Profile.SubscriptionTable.Count);
             Assert.Equal(0, log.Count);
         }
 
@@ -680,11 +680,11 @@ namespace Common.Authentication.Test
             AzureSession.DataStore = dataStore;
             ProfileClient client = new ProfileClient(currentProfile);
 
-            client.Profile.Subscriptions[azureSubscription1.Id] = azureSubscription1;
-            client.Profile.Subscriptions[azureSubscription2.Id] = azureSubscription2;
-            client.Profile.Accounts[azureAccount.Id] = azureAccount;
+            client.Profile.SubscriptionTable[azureSubscription1.Id] = azureSubscription1;
+            client.Profile.SubscriptionTable[azureSubscription2.Id] = azureSubscription2;
+            client.Profile.AccountTable[azureAccount.Id] = azureAccount;
             azureSubscription3withoutUser.Account = "test2";
-            client.Profile.Accounts["test2"] = new AzureAccount
+            client.Profile.AccountTable["test2"] = new AzureAccount
             {
                 Id = "test2",
                 Type = AzureAccount.AccountType.User,
@@ -693,16 +693,16 @@ namespace Common.Authentication.Test
                     {AzureAccount.Property.Subscriptions, azureSubscription3withoutUser.Id.ToString()}
                 }
             };
-            client.Profile.Subscriptions[azureSubscription3withoutUser.Id] = azureSubscription3withoutUser;
+            client.Profile.SubscriptionTable[azureSubscription3withoutUser.Id] = azureSubscription3withoutUser;
             client.Profile.Environments[azureEnvironment.Name] = azureEnvironment;
             List<string> log = new List<string>();
             client.WarningLog = log.Add;
 
-            Assert.Equal(3, client.Profile.Subscriptions.Count);
+            Assert.Equal(3, client.Profile.SubscriptionTable.Count);
 
             var account = client.RemoveAccount("test");
 
-            Assert.Equal(1, client.Profile.Subscriptions.Count);
+            Assert.Equal(1, client.Profile.SubscriptionTable.Count);
             Assert.Equal("test", account.Id);
             Assert.Equal(2, account.GetPropertyAsArray(AzureAccount.Property.Subscriptions).Length);
             Assert.Equal(1, log.Count);
@@ -718,11 +718,11 @@ namespace Common.Authentication.Test
             AzureSession.DataStore = dataStore;
             currentProfile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
             ProfileClient client = new ProfileClient(currentProfile);
-            client.Profile.Subscriptions[azureSubscription1.Id] = azureSubscription1;
-            client.Profile.Subscriptions[azureSubscription2.Id] = azureSubscription2;
-            client.Profile.Accounts[azureAccount.Id] = azureAccount;
+            client.Profile.SubscriptionTable[azureSubscription1.Id] = azureSubscription1;
+            client.Profile.SubscriptionTable[azureSubscription2.Id] = azureSubscription2;
+            client.Profile.AccountTable[azureAccount.Id] = azureAccount;
             azureSubscription3withoutUser.Account = "test2";
-            client.Profile.Accounts["test2"] = new AzureAccount
+            client.Profile.AccountTable["test2"] = new AzureAccount
             {
                 Id = "test2",
                 Type = AzureAccount.AccountType.User,
@@ -731,12 +731,12 @@ namespace Common.Authentication.Test
                     {AzureAccount.Property.Subscriptions, azureSubscription1.Id.ToString()}
                 }
             };
-            client.Profile.Subscriptions[azureSubscription1.Id].Account = azureAccount.Id;
+            client.Profile.SubscriptionTable[azureSubscription1.Id].Account = azureAccount.Id;
             client.Profile.Environments[azureEnvironment.Name] = azureEnvironment;
 
             var account = client.RemoveAccount(azureAccount.Id);
 
-            Assert.Equal("test2", client.Profile.Subscriptions[azureSubscription1.Id].Account);
+            Assert.Equal("test2", client.Profile.SubscriptionTable[azureSubscription1.Id].Account);
         }
 
         [Fact]
@@ -745,11 +745,11 @@ namespace Common.Authentication.Test
             MemoryDataStore dataStore = new MemoryDataStore();
             AzureSession.DataStore = dataStore;
             ProfileClient client = new ProfileClient(currentProfile);
-            client.Profile.Subscriptions[azureSubscription1.Id] = azureSubscription1;
-            client.Profile.Subscriptions[azureSubscription2.Id] = azureSubscription2;
-            client.Profile.Accounts[azureAccount.Id] = azureAccount;
+            client.Profile.SubscriptionTable[azureSubscription1.Id] = azureSubscription1;
+            client.Profile.SubscriptionTable[azureSubscription2.Id] = azureSubscription2;
+            client.Profile.AccountTable[azureAccount.Id] = azureAccount;
             azureSubscription3withoutUser.Account = "test2";
-            client.Profile.Accounts["test2"] = new AzureAccount
+            client.Profile.AccountTable["test2"] = new AzureAccount
             {
                 Id = "test2",
                 Type = AzureAccount.AccountType.User,
@@ -758,7 +758,7 @@ namespace Common.Authentication.Test
                     {AzureAccount.Property.Subscriptions, azureSubscription1.Id.ToString()}
                 }
             };
-            client.Profile.Subscriptions[azureSubscription1.Id].Account = azureAccount.Id;
+            client.Profile.SubscriptionTable[azureSubscription1.Id].Account = azureAccount.Id;
             client.Profile.Environments[azureEnvironment.Name] = azureEnvironment;
             currentProfile.DefaultSubscription = azureSubscription1;
 
@@ -821,14 +821,14 @@ namespace Common.Authentication.Test
             currentProfile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
             ProfileClient client = new ProfileClient(currentProfile);
 
-            client.Profile.Accounts[azureAccount.Id] = azureAccount;
+            client.Profile.AccountTable[azureAccount.Id] = azureAccount;
             client.Profile.Environments[azureEnvironment.Name] = azureEnvironment;
-            client.Profile.Subscriptions[azureSubscription1.Id] = azureSubscription1;
-            client.Profile.Subscriptions[azureSubscription2.Id] = azureSubscription2;
+            client.Profile.SubscriptionTable[azureSubscription1.Id] = azureSubscription1;
+            client.Profile.SubscriptionTable[azureSubscription2.Id] = azureSubscription2;
 
-            Assert.Equal(2, client.Profile.Subscriptions.Values.Count(s => s.Environment == "Test"));
+            Assert.Equal(2, client.Profile.SubscriptionTable.Values.Count(s => s.Environment == "Test"));
             Assert.Equal(5, client.Profile.Environments.Count);
-            Assert.Equal(1, client.Profile.Accounts.Count);
+            Assert.Equal(1, client.Profile.AccountTable.Count);
 
             Assert.Throws<ArgumentNullException>(() => client.RemoveEnvironment(null));
             Assert.Throws<ArgumentException>(() => client.RemoveEnvironment("bad"));
@@ -836,9 +836,9 @@ namespace Common.Authentication.Test
             var env = client.RemoveEnvironment(azureEnvironment.Name);
 
             Assert.Equal(azureEnvironment.Name, env.Name);
-            Assert.Equal(0, client.Profile.Subscriptions.Values.Count(s => s.Environment == "Test"));
+            Assert.Equal(0, client.Profile.SubscriptionTable.Values.Count(s => s.Environment == "Test"));
             Assert.Equal(4, client.Profile.Environments.Count);
-            Assert.Equal(0, client.Profile.Accounts.Count);
+            Assert.Equal(0, client.Profile.AccountTable.Count);
         }
 
         [Fact]
@@ -849,24 +849,24 @@ namespace Common.Authentication.Test
             currentProfile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
             ProfileClient client = new ProfileClient(currentProfile);
 
-            client.Profile.Accounts[azureAccount.Id] = azureAccount;
+            client.Profile.AccountTable[azureAccount.Id] = azureAccount;
             azureSubscription1.Environment = EnvironmentName.AzureCloud;
             azureSubscription2.Environment = EnvironmentName.AzureChinaCloud;
-            client.Profile.Subscriptions[azureSubscription1.Id] = azureSubscription1;
-            client.Profile.Subscriptions[azureSubscription2.Id] = azureSubscription2;
+            client.Profile.SubscriptionTable[azureSubscription1.Id] = azureSubscription1;
+            client.Profile.SubscriptionTable[azureSubscription2.Id] = azureSubscription2;
 
-            Assert.Equal(1, client.Profile.Subscriptions.Values.Count(s => s.Environment == EnvironmentName.AzureCloud));
-            Assert.Equal(1, client.Profile.Subscriptions.Values.Count(s => s.Environment == EnvironmentName.AzureChinaCloud));
+            Assert.Equal(1, client.Profile.SubscriptionTable.Values.Count(s => s.Environment == EnvironmentName.AzureCloud));
+            Assert.Equal(1, client.Profile.SubscriptionTable.Values.Count(s => s.Environment == EnvironmentName.AzureChinaCloud));
             Assert.Equal(4, client.Profile.Environments.Count);
-            Assert.Equal(1, client.Profile.Accounts.Count);
+            Assert.Equal(1, client.Profile.AccountTable.Count);
 
             Assert.Throws<ArgumentException>(() => client.RemoveEnvironment(EnvironmentName.AzureCloud));
             Assert.Throws<ArgumentException>(() => client.RemoveEnvironment(EnvironmentName.AzureChinaCloud));
 
-            Assert.Equal(1, client.Profile.Subscriptions.Values.Count(s => s.Environment == EnvironmentName.AzureCloud));
-            Assert.Equal(1, client.Profile.Subscriptions.Values.Count(s => s.Environment == EnvironmentName.AzureChinaCloud));
+            Assert.Equal(1, client.Profile.SubscriptionTable.Values.Count(s => s.Environment == EnvironmentName.AzureCloud));
+            Assert.Equal(1, client.Profile.SubscriptionTable.Values.Count(s => s.Environment == EnvironmentName.AzureChinaCloud));
             Assert.Equal(4, client.Profile.Environments.Count);
-            Assert.Equal(1, client.Profile.Accounts.Count);
+            Assert.Equal(1, client.Profile.AccountTable.Count);
         }
 
         [Fact]
@@ -943,12 +943,12 @@ namespace Common.Authentication.Test
             client.AddOrSetEnvironment(azureEnvironment);
             client.AddOrSetSubscription(azureSubscription1);
 
-            Assert.Equal(1, client.Profile.Subscriptions.Count);
+            Assert.Equal(1, client.Profile.SubscriptionTable.Count);
 
             var subscription = client.AddOrSetSubscription(azureSubscription1);
 
-            Assert.Equal(1, client.Profile.Subscriptions.Count);
-            Assert.Equal(1, client.Profile.Accounts.Count);
+            Assert.Equal(1, client.Profile.SubscriptionTable.Count);
+            Assert.Equal(1, client.Profile.AccountTable.Count);
             Assert.Equal(subscription, azureSubscription1);
             Assert.Throws<ArgumentNullException>(() => client.AddOrSetSubscription(null));
             Assert.Throws<ArgumentNullException>(() => client.AddOrSetSubscription(
@@ -981,7 +981,7 @@ namespace Common.Authentication.Test
             newSubscription.Properties[AzureSubscription.Property.StorageAccount] = "testAccount1";
 
             client.AddOrSetSubscription(newSubscription);
-            var newSubscriptionFromProfile = client.Profile.Subscriptions[newSubscription.Id];
+            var newSubscriptionFromProfile = client.Profile.SubscriptionTable[newSubscription.Id];
 
             Assert.Equal(newSubscription.Id, currentProfile.Context.Subscription.Id);
             Assert.Equal(newSubscription.Id, newSubscriptionFromProfile.Id);
@@ -999,19 +999,19 @@ namespace Common.Authentication.Test
             currentProfile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
             ProfileClient client = new ProfileClient(currentProfile);
 
-            client.Profile.Accounts[azureAccount.Id] = azureAccount;
+            client.Profile.AccountTable[azureAccount.Id] = azureAccount;
             client.AddOrSetEnvironment(azureEnvironment);
             client.AddOrSetSubscription(azureSubscription1);
             client.SetSubscriptionAsDefault(azureSubscription1.Name, azureSubscription1.Account);
 
-            Assert.Equal(1, client.Profile.Subscriptions.Count);
+            Assert.Equal(1, client.Profile.SubscriptionTable.Count);
 
             List<string> log = new List<string>();
             client.WarningLog = log.Add;
 
             var subscription = client.RemoveSubscription(azureSubscription1.Name);
 
-            Assert.Equal(0, client.Profile.Subscriptions.Count);
+            Assert.Equal(0, client.Profile.SubscriptionTable.Count);
             Assert.Equal(azureSubscription1.Name, subscription.Name);
             Assert.Equal(1, log.Count);
             Assert.Equal(
@@ -1030,15 +1030,15 @@ namespace Common.Authentication.Test
             currentProfile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
             ProfileClient client = new ProfileClient(currentProfile);
             client.AddOrSetEnvironment(azureEnvironment);
-            client.Profile.Accounts[azureAccount.Id] = azureAccount;
+            client.Profile.AccountTable[azureAccount.Id] = azureAccount;
             client.AddOrSetSubscription(azureSubscription1);
 
             var subscriptions = client.RefreshSubscriptions(azureEnvironment);
 
-            Assert.True(client.Profile.Accounts[azureAccount.Id].HasSubscription(new Guid(rdfeSubscription1.SubscriptionId)));
-            Assert.True(client.Profile.Accounts[azureAccount.Id].HasSubscription(new Guid(rdfeSubscription2.SubscriptionId)));
-            Assert.False(client.Profile.Accounts[azureAccount.Id].HasSubscription(new Guid(csmSubscription1.SubscriptionId)));
-            Assert.True(client.Profile.Accounts[azureAccount.Id].HasSubscription(new Guid(csmSubscription1withDuplicateId.SubscriptionId)));
+            Assert.True(client.Profile.AccountTable[azureAccount.Id].HasSubscription(new Guid(rdfeSubscription1.SubscriptionId)));
+            Assert.True(client.Profile.AccountTable[azureAccount.Id].HasSubscription(new Guid(rdfeSubscription2.SubscriptionId)));
+            Assert.False(client.Profile.AccountTable[azureAccount.Id].HasSubscription(new Guid(csmSubscription1.SubscriptionId)));
+            Assert.True(client.Profile.AccountTable[azureAccount.Id].HasSubscription(new Guid(csmSubscription1withDuplicateId.SubscriptionId)));
         }
 
         [Fact]
@@ -1050,7 +1050,7 @@ namespace Common.Authentication.Test
             currentProfile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
             ProfileClient client = new ProfileClient(currentProfile);
             client.AddOrSetEnvironment(azureEnvironment);
-            client.Profile.Accounts[azureAccount.Id] = azureAccount;
+            client.Profile.AccountTable[azureAccount.Id] = azureAccount;
             client.AddOrSetSubscription(azureSubscription1);
 
             var subscriptions = client.RefreshSubscriptions(azureEnvironment);
@@ -1072,7 +1072,7 @@ namespace Common.Authentication.Test
             currentProfile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
             ProfileClient client = new ProfileClient(currentProfile);
 
-            client.Profile.Accounts[azureAccount.Id] = azureAccount;
+            client.Profile.AccountTable[azureAccount.Id] = azureAccount;
 
             var subscriptions = client.RefreshSubscriptions(client.Profile.Environments[EnvironmentName.AzureChinaCloud]);
 
@@ -1148,7 +1148,7 @@ namespace Common.Authentication.Test
             MemoryDataStore dataStore = new MemoryDataStore();
             AzureSession.DataStore = dataStore;
             ProfileClient client = new ProfileClient(currentProfile);
-            client.Profile.Accounts[azureAccount.Id] = azureAccount;
+            client.Profile.AccountTable[azureAccount.Id] = azureAccount;
             client.AddOrSetEnvironment(azureEnvironment);
             client.AddOrSetSubscription(azureSubscription2);
 
@@ -1173,7 +1173,7 @@ namespace Common.Authentication.Test
             AzureSession.DataStore = dataStore;
             currentProfile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
             ProfileClient client = new ProfileClient(currentProfile);
-            client.Profile.Accounts[azureAccount.Id] = azureAccount;
+            client.Profile.AccountTable[azureAccount.Id] = azureAccount;
             client.AddOrSetEnvironment(azureEnvironment);
             client.AddOrSetSubscription(azureSubscription2);
 
@@ -1202,11 +1202,11 @@ namespace Common.Authentication.Test
 
             client.AddOrSetEnvironment(azureEnvironment);
             var subscriptions = client.ImportPublishSettings("ImportPublishSettingsLoadsAndReturnsSubscriptions.publishsettings", azureEnvironment.Name);
-            var account = client.Profile.Accounts.Values.First();
+            var account = client.Profile.AccountTable.Values.First();
 
             Assert.True(subscriptions.All(s => s.Account == account.Id));
             Assert.Equal(6, subscriptions.Count);
-            Assert.Equal(6, client.Profile.Subscriptions.Count);
+            Assert.Equal(6, client.Profile.SubscriptionTable.Count);
         }
 
         [Fact]
@@ -1233,7 +1233,7 @@ namespace Common.Authentication.Test
 
             Assert.True(subscriptions.All(s => s.Environment == EnvironmentName.AzureCloud));
             Assert.Equal(6, subscriptions.Count);
-            Assert.Equal(7, client.Profile.Subscriptions.Count);
+            Assert.Equal(7, client.Profile.SubscriptionTable.Count);
         }
 
         [Fact]
@@ -1261,7 +1261,7 @@ namespace Common.Authentication.Test
 
             Assert.True(subscriptions.All(s => s.Environment == azureEnvironment.Name));
             Assert.Equal(6, subscriptions.Count);
-            Assert.Equal(7, client.Profile.Subscriptions.Count);
+            Assert.Equal(7, client.Profile.SubscriptionTable.Count);
         }
 
         [Fact]
@@ -1280,7 +1280,7 @@ namespace Common.Authentication.Test
 
             Assert.True(subscriptions.All(s => s.Environment == EnvironmentName.AzureChinaCloud));
             Assert.Equal(6, subscriptions.Count);
-            Assert.Equal(6, client.Profile.Subscriptions.Count);
+            Assert.Equal(6, client.Profile.SubscriptionTable.Count);
         }
 
         [Fact]
@@ -1299,7 +1299,7 @@ namespace Common.Authentication.Test
 
             Assert.True(subscriptions.All(s => s.Environment == EnvironmentName.AzureChinaCloud));
             Assert.Equal(1, subscriptions.Count);
-            Assert.Equal(1, client.Profile.Subscriptions.Count);
+            Assert.Equal(1, client.Profile.SubscriptionTable.Count);
         }
 
         [Fact]
@@ -1326,7 +1326,7 @@ namespace Common.Authentication.Test
 
             Assert.True(subscriptions.All(s => s.Environment == EnvironmentName.AzureCloud));
             Assert.Equal(6, subscriptions.Count);
-            Assert.Equal(7, client.Profile.Subscriptions.Count);
+            Assert.Equal(7, client.Profile.SubscriptionTable.Count);
         }
 
         [Fact]
@@ -1352,7 +1352,7 @@ namespace Common.Authentication.Test
 
             Assert.True(subscriptions.All(s => s.Environment == azureEnvironment.Name));
             Assert.Equal(6, subscriptions.Count);
-            Assert.Equal(7, client.Profile.Subscriptions.Count);
+            Assert.Equal(7, client.Profile.SubscriptionTable.Count);
         }
 
         [Fact]
@@ -1383,18 +1383,18 @@ namespace Common.Authentication.Test
             client.AddOrSetEnvironment(azureEnvironment);
             var subscriptions = client.ImportPublishSettings("ImportPublishSettingsLoadsAndReturnsSubscriptions.publishsettings", azureEnvironment.Name);
 
-            Assert.Equal(2, client.Profile.Accounts.Count());
-            var certAccount = client.Profile.Accounts.Values.First(a => a.Type == AzureAccount.AccountType.Certificate);
-            var userAccount = client.Profile.Accounts.Values.First(a => a.Type == AzureAccount.AccountType.User);
+            Assert.Equal(2, client.Profile.AccountTable.Count());
+            var certAccount = client.Profile.AccountTable.Values.First(a => a.Type == AzureAccount.AccountType.Certificate);
+            var userAccount = client.Profile.AccountTable.Values.First(a => a.Type == AzureAccount.AccountType.User);
 
             Assert.True(subscriptions.All(s => s.Account == certAccount.Id));
-            Assert.Equal(azureAccount.Id, client.Profile.Subscriptions.Values.First(s => s.Id == newSubscription.Id).Account);
+            Assert.Equal(azureAccount.Id, client.Profile.SubscriptionTable.Values.First(s => s.Id == newSubscription.Id).Account);
 
             Assert.True(userAccount.GetPropertyAsArray(AzureAccount.Property.Subscriptions).Contains(newSubscription.Id.ToString()));
             Assert.True(certAccount.GetPropertyAsArray(AzureAccount.Property.Subscriptions).Contains(newSubscription.Id.ToString()));
 
             Assert.Equal(6, subscriptions.Count);
-            Assert.Equal(6, client.Profile.Subscriptions.Count);
+            Assert.Equal(6, client.Profile.SubscriptionTable.Count);
         }
 
         private void SetMocks(List<RDFESubscription> rdfeSubscriptions,
@@ -1408,7 +1408,7 @@ namespace Common.Authentication.Test
             clientMocks.LoadCsmSubscriptions(csmSubscriptions);
             clientMocks.LoadTenants(tenants);
 
-            AzureSession.ClientFactory = new MockClientFactory(new object[] { clientMocks.RdfeSubscriptionClientMock.Object,
+            AzureSession.Instance.ClientFactory = new MockClientFactory(new object[] { clientMocks.RdfeSubscriptionClientMock.Object,
                 clientMocks.CsmSubscriptionClientMock.Object })
             {
                 MoqClients = true

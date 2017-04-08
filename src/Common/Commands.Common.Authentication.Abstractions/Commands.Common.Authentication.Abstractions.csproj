@@ -7,8 +7,8 @@
     <ProjectGuid>{70527617-7598-4AEF-B5BD-DB9186B8184B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Commands.Common.Authentication.Abstractions</RootNamespace>
-    <AssemblyName>Commands.Common.Authentication.Abstractions</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Commands.Common.Authentication.Abstractions</RootNamespace>
+    <AssemblyName>Microoft.Azure.Commands.CommonAuthentication.Abstractions</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -83,9 +83,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountProperty.cs" />
+    <Compile Include="AccountType.cs" />
     <Compile Include="AuthenticationStore.cs" />
+    <Compile Include="AzureAccount.cs" />
+    <Compile Include="AzureAccountExtensions.cs" />
     <Compile Include="AzureEnvironmentConstants.cs" />
+    <Compile Include="AzureEnvironmentExtensions.cs" />
     <Compile Include="AzureSession.cs" />
+    <Compile Include="AzureSubscriptionExtensions.cs" />
+    <Compile Include="DictionaryExtensions.cs" />
+    <Compile Include="DiskDataStore.cs" />
     <Compile Include="EnvironmentName.cs" />
     <Compile Include="Interfaces\IAccessToken.cs" />
     <Compile Include="Interfaces\IHyakAuthenticationFactory.cs" />
@@ -104,13 +112,17 @@
     <Compile Include="Interfaces\IDataStore.cs" />
     <Compile Include="Authentication\LoginType.cs" />
     <Compile Include="Authentication\ShowDialog.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Settings\SessionSettings.cs" />
     <Compile Include="Interfaces\IStorageContext.cs" />
     <Compile Include="Settings\ClientFactorySettings.cs" />
     <Compile Include="Settings\AuthenticationFactorySettings.cs" />
     <Compile Include="Settings\DataStorageSettings.cs" />
     <Compile Include="AzureEnvironment.cs" />
-    <Compile Include="AzureAccount.cs" />
     <Compile Include="AzureTenant.cs" />
     <Compile Include="AzureSubscription.cs" />
     <Compile Include="AzureContext.cs" />
@@ -123,6 +135,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\..\..\..\zd\azure-powershell\src\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\..\..\zd\azure-powershell\src\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />

@@ -21,6 +21,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
     /// </summary>
     public class AuthenticationStore : IAuthenticationStore
     {
-        public byte[] CacheData {get; set;}
+        public virtual byte[] CacheData {get; set;}
+
+        public virtual void Clear()
+        {
+            CacheData = null;
+        }
     }
 }

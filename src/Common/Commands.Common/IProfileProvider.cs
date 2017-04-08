@@ -16,10 +16,10 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
-    public interface IProfileProvider<T> where T : IAzureContextContainer
+    public interface IProfileProvider
     {
-        T Profile { get; set; }
-        void SetTokenCacheForProfile(T profile);
+        IAzureContextContainer Profile { get; set; }
+        void SetTokenCacheForProfile(IAzureContextContainer profile);
         void ResetDefaultProfile();
     }
 }

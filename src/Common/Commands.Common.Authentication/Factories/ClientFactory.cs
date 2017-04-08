@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using System;
@@ -144,7 +145,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 throw new ApplicationException(Resources.InvalidDefaultSubscription);
             }
 
-            if (!profile.Accounts.ContainsKey(subscription.Account))
+            if (!profile.AccountTable.ContainsKey(subscription.Account))
             {
                 throw new ArgumentException(string.Format("Account with name '{0}' does not exist.", subscription.Account), "accountName");
             }
@@ -155,7 +156,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
 
             AzureContext context = new AzureContext(subscription,
-                profile.Accounts[subscription.Account],
+                profile.AccountTable[subscription.Account],
                 profile.Environments[subscription.Environment]);
 
             TClient client = CreateClient<TClient>(context, endpoint);

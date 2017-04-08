@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.ServiceManagement.Common.XmlSchema;
 using System;
@@ -66,13 +67,15 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
                 }
             }
 
-            return new AzureSubscription
+            var subscription = new AzureSubscription
             {
-                Id = new Guid(s.Id),
+                Id = s.Id,
                 Name = s.Name,
-                Environment = environment,
-                Account = certificate.Thumbprint
             };
+            subscription.SetEnvironment(environment);
+            subscription.SetAccount(certificate.Thumbprint);
+
+            return subscription;
         }
 
         private static X509Certificate2 GetCertificate(PublishDataPublishProfile profile,
@@ -89,7 +92,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             }
 
             X509Certificate2 certificate = new X509Certificate2(Convert.FromBase64String(certificateString), string.Empty);
-            AzureSession.Instance..DataStore.AddCertificate(certificate);
+            AzureSession.Instance.DataStore.AddCertificate(certificate);
 
             return certificate;
         }

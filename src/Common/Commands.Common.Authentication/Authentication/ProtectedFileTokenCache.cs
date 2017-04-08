@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
 using System.IO;
@@ -23,13 +24,26 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     /// An implementation of the Adal token cache that stores the cache items
     /// in the DPAPI-protected file.
     /// </summary>
-    public class ProtectedFileTokenCache : TokenCache
+    public class ProtectedFileTokenCache : TokenCache, IAuthenticationStore
     {
         private static readonly string CacheFileName = Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.TokenCacheFile);
 
         private static readonly object fileLock = new object();
 
         private static readonly Lazy<ProtectedFileTokenCache> instance = new Lazy<ProtectedFileTokenCache>(() => new ProtectedFileTokenCache());
+
+        public byte[] CacheData
+        {
+            get
+            {
+                return Serialize();
+            }
+
+            set
+            {
+                Deserialize(value);
+            }
+        }
 
         // Initializes the cache against a local file.
         // If the file is already present, it loads its content in the ADAL cache

@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 
         public string GraphEndpointResourceId { get; set; }
 
-        public string AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix {get; set;}
+        public string AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix { get; set; }
 
         public string AzureDataLakeStoreFileSystemEndpointSuffix { get; set; }
 
@@ -88,11 +88,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 PublishSettingsFileUrl = "PublishSettingsFileUrl",
                 ManagementPortalUrl = "ManagementPortalUrl",
                 AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix",
-                AzureDataLakeStoreFileSystemEndpointSuffix= "AzureDataLakeStoreFileSystemEndpointSuffix";
+                AzureDataLakeStoreFileSystemEndpointSuffix = "AzureDataLakeStoreFileSystemEndpointSuffix";
 
         }
 
-        private static readonly Dictionary<string, AzureEnvironment> environments =
+        private static readonly Dictionary<string, AzureEnvironment> _environments =
     new Dictionary<string, AzureEnvironment>(StringComparer.InvariantCultureIgnoreCase)
 {
             {
@@ -100,25 +100,22 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 new AzureEnvironment
                 {
                     Name = EnvironmentName.AzureCloud,
-                    Endpoints = new Dictionary<AzureEnvironment.Endpoint, string>
-                    {
-                        { AzureEnvironmentExtensions.Endpoint.PublishSettingsFileUrl, AzureEnvironmentConstants.AzurePublishSettingsFileUrl },
-                        { AzureEnvironment.Endpoint.ServiceManagement, AzureEnvironmentConstants.AzureServiceEndpoint },
-                        { AzureEnvironment.Endpoint.ResourceManager, AzureEnvironmentConstants.AzureResourceManagerEndpoint },
-                        { AzureEnvironment.Endpoint.ManagementPortalUrl, AzureEnvironmentConstants.AzureManagementPortalUrl },
-                        { AzureEnvironment.Endpoint.ActiveDirectory, AzureEnvironmentConstants.AzureActiveDirectoryEndpoint },
-                        { AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId, AzureEnvironmentConstants.AzureServiceEndpoint },
-                        { AzureEnvironment.Endpoint.StorageEndpointSuffix, AzureEnvironmentConstants.AzureStorageEndpointSuffix },
-                        { AzureEnvironment.Endpoint.Gallery, AzureEnvironmentConstants.GalleryEndpoint },
-                        { AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix, AzureEnvironmentConstants.AzureSqlDatabaseDnsSuffix },
-                        { AzureEnvironment.Endpoint.Graph, AzureEnvironmentConstants.AzureGraphEndpoint },
-                        { AzureEnvironment.Endpoint.TrafficManagerDnsSuffix, AzureEnvironmentConstants.AzureTrafficManagerDnsSuffix },
-                        { AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix, AzureEnvironmentConstants.AzureKeyVaultDnsSuffix},
-                        { AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId, AzureEnvironmentConstants.AzureKeyVaultServiceEndpointResourceId},
-                        { AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix, AzureEnvironmentConstants.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix},
-                        { AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix, AzureEnvironmentConstants.AzureDataLakeStoreFileSystemEndpointSuffix},
-                        { AzureEnvironment.Endpoint.GraphEndpointResourceId, AzureEnvironmentConstants.AzureGraphEndpoint}
-                    }
+                    PublishSettingsFileUrl = new Uri(AzureEnvironmentConstants.AzurePublishSettingsFileUrl),
+                    ServiceManagement = new Uri(AzureEnvironmentConstants.AzureServiceEndpoint),
+                    ResourceManager = new Uri(AzureEnvironmentConstants.AzureResourceManagerEndpoint),
+                    ManagementPortalUrl = new Uri(AzureEnvironmentConstants.AzureManagementPortalUrl),
+                    ActiveDirectory = new Uri(AzureEnvironmentConstants.AzureActiveDirectoryEndpoint),
+                    ActiveDirectoryServiceEndpointResourceId = AzureEnvironmentConstants.AzureServiceEndpoint,
+                    StorageEndpointSuffix = AzureEnvironmentConstants.AzureStorageEndpointSuffix,
+                    Gallery = new Uri(AzureEnvironmentConstants.GalleryEndpoint),
+                    SqlDatabaseDnsSuffix = AzureEnvironmentConstants.AzureSqlDatabaseDnsSuffix,
+                    Graph = new Uri(AzureEnvironmentConstants.AzureGraphEndpoint),
+                    TrafficManagerDnsSuffix = AzureEnvironmentConstants.AzureTrafficManagerDnsSuffix,
+                    AzureKeyVaultDnsSuffix = AzureEnvironmentConstants.AzureKeyVaultDnsSuffix,
+                    AzureKeyVaultServiceEndpointResourceId = AzureEnvironmentConstants.AzureKeyVaultServiceEndpointResourceId,
+                    AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = AzureEnvironmentConstants.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix,
+                    AzureDataLakeStoreFileSystemEndpointSuffix = AzureEnvironmentConstants.AzureDataLakeStoreFileSystemEndpointSuffix,
+                    GraphEndpointResourceId = AzureEnvironmentConstants.AzureGraphEndpoint
                 }
             },
             {
@@ -126,74 +123,68 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 new AzureEnvironment
                 {
                     Name = EnvironmentName.AzureChinaCloud,
-                    Endpoints = new Dictionary<AzureEnvironment.Endpoint, string>
-                    {
-                        { AzureEnvironment.Endpoint.PublishSettingsFileUrl, AzureEnvironmentConstants.ChinaPublishSettingsFileUrl },
-                        { AzureEnvironment.Endpoint.ServiceManagement, AzureEnvironmentConstants.ChinaServiceEndpoint },
-                        { AzureEnvironment.Endpoint.ResourceManager, AzureEnvironmentConstants.ChinaResourceManagerEndpoint },
-                        { AzureEnvironment.Endpoint.ManagementPortalUrl, AzureEnvironmentConstants.ChinaManagementPortalUrl },
-                        { AzureEnvironment.Endpoint.ActiveDirectory, AzureEnvironmentConstants.ChinaActiveDirectoryEndpoint },
-                        { AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId, AzureEnvironmentConstants.ChinaServiceEndpoint },
-                        { AzureEnvironment.Endpoint.StorageEndpointSuffix, AzureEnvironmentConstants.ChinaStorageEndpointSuffix },
-                        { AzureEnvironment.Endpoint.Gallery, AzureEnvironmentConstants.ChinaGalleryEndpoint },
-                        { AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix, AzureEnvironmentConstants.ChinaSqlDatabaseDnsSuffix },
-                        { AzureEnvironment.Endpoint.Graph, AzureEnvironmentConstants.ChinaGraphEndpoint },
-                        { AzureEnvironment.Endpoint.TrafficManagerDnsSuffix, AzureEnvironmentConstants.ChinaTrafficManagerDnsSuffix },
-                        { AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix, AzureEnvironmentConstants.ChinaKeyVaultDnsSuffix },
-                        { AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId, AzureEnvironmentConstants.ChinaKeyVaultServiceEndpointResourceId },
-                         { AzureEnvironment.Endpoint.GraphEndpointResourceId, AzureEnvironmentConstants.ChinaGraphEndpoint}
-                       // TODO: DataLakeAnalytics and ADL do not have a China endpoint yet. Once they do, add them here.
-                    }
+                    PublishSettingsFileUrl = new Uri(AzureEnvironmentConstants.ChinaPublishSettingsFileUrl),
+                    ServiceManagement = new Uri(AzureEnvironmentConstants.ChinaServiceEndpoint),
+                    ResourceManager = new Uri(AzureEnvironmentConstants.ChinaResourceManagerEndpoint),
+                    ManagementPortalUrl = new Uri(AzureEnvironmentConstants.ChinaManagementPortalUrl),
+                    ActiveDirectory = new Uri(AzureEnvironmentConstants.ChinaActiveDirectoryEndpoint),
+                    ActiveDirectoryServiceEndpointResourceId = AzureEnvironmentConstants.ChinaServiceEndpoint,
+                    StorageEndpointSuffix = AzureEnvironmentConstants.ChinaStorageEndpointSuffix,
+                    Gallery = new Uri(AzureEnvironmentConstants.GalleryEndpoint),
+                    SqlDatabaseDnsSuffix = AzureEnvironmentConstants.ChinaSqlDatabaseDnsSuffix,
+                    Graph = new Uri(AzureEnvironmentConstants.ChinaGraphEndpoint),
+                    TrafficManagerDnsSuffix = AzureEnvironmentConstants.ChinaTrafficManagerDnsSuffix,
+                    AzureKeyVaultDnsSuffix = AzureEnvironmentConstants.ChinaKeyVaultDnsSuffix,
+                    AzureKeyVaultServiceEndpointResourceId = AzureEnvironmentConstants.ChinaKeyVaultServiceEndpointResourceId,
+                    AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = null,
+                    AzureDataLakeStoreFileSystemEndpointSuffix = null,
+                    GraphEndpointResourceId = AzureEnvironmentConstants.ChinaGraphEndpoint
                 }
             },
             {
                 EnvironmentName.AzureUSGovernment,
-                new AzureEnvironment
+                 new AzureEnvironment
                 {
                     Name = EnvironmentName.AzureUSGovernment,
-                    Endpoints = new Dictionary<AzureEnvironment.Endpoint, string>
-                    {
-                        { AzureEnvironment.Endpoint.PublishSettingsFileUrl, AzureEnvironmentConstants.USGovernmentPublishSettingsFileUrl },
-                        { AzureEnvironment.Endpoint.ServiceManagement, AzureEnvironmentConstants.USGovernmentServiceEndpoint },
-                        { AzureEnvironment.Endpoint.ResourceManager, AzureEnvironmentConstants.USGovernmentResourceManagerEndpoint },
-                        { AzureEnvironment.Endpoint.ManagementPortalUrl, AzureEnvironmentConstants.USGovernmentManagementPortalUrl },
-                        { AzureEnvironment.Endpoint.ActiveDirectory, AzureEnvironmentConstants.USGovernmentActiveDirectoryEndpoint },
-                        { AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId, AzureEnvironmentConstants.USGovernmentServiceEndpoint },
-                        { AzureEnvironment.Endpoint.StorageEndpointSuffix, AzureEnvironmentConstants.USGovernmentStorageEndpointSuffix },
-                        { AzureEnvironment.Endpoint.Gallery, AzureEnvironmentConstants.USGovernmentGalleryEndpoint },
-                        { AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix, AzureEnvironmentConstants.USGovernmentSqlDatabaseDnsSuffix },
-                        { AzureEnvironment.Endpoint.Graph, AzureEnvironmentConstants.USGovernmentGraphEndpoint },
-                        { AzureEnvironment.Endpoint.TrafficManagerDnsSuffix, AzureEnvironmentConstants.USGovernmentTrafficManagerDnsSuffix },
-                        { AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix, AzureEnvironmentConstants.USGovernmentKeyVaultDnsSuffix},
-                        { AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId, AzureEnvironmentConstants.USGovernmentKeyVaultServiceEndpointResourceId},
-                        { AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix, null},
-                        { AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix, null},
-                        { AzureEnvironment.Endpoint.GraphEndpointResourceId, AzureEnvironmentConstants.USGovernmentGraphEndpoint }
-                    }
+                    PublishSettingsFileUrl = new Uri(AzureEnvironmentConstants.USGovernmentPublishSettingsFileUrl),
+                    ServiceManagement = new Uri(AzureEnvironmentConstants.USGovernmentServiceEndpoint),
+                    ResourceManager = new Uri(AzureEnvironmentConstants.USGovernmentResourceManagerEndpoint),
+                    ManagementPortalUrl = new Uri(AzureEnvironmentConstants.USGovernmentManagementPortalUrl),
+                    ActiveDirectory = new Uri(AzureEnvironmentConstants.USGovernmentActiveDirectoryEndpoint),
+                    ActiveDirectoryServiceEndpointResourceId = AzureEnvironmentConstants.USGovernmentServiceEndpoint,
+                    StorageEndpointSuffix = AzureEnvironmentConstants.USGovernmentStorageEndpointSuffix,
+                    Gallery = new Uri(AzureEnvironmentConstants.GalleryEndpoint),
+                    SqlDatabaseDnsSuffix = AzureEnvironmentConstants.USGovernmentSqlDatabaseDnsSuffix,
+                    Graph = new Uri(AzureEnvironmentConstants.USGovernmentGraphEndpoint),
+                    TrafficManagerDnsSuffix = AzureEnvironmentConstants.USGovernmentTrafficManagerDnsSuffix,
+                    AzureKeyVaultDnsSuffix = AzureEnvironmentConstants.USGovernmentKeyVaultDnsSuffix,
+                    AzureKeyVaultServiceEndpointResourceId = AzureEnvironmentConstants.USGovernmentKeyVaultServiceEndpointResourceId,
+                    AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = null,
+                    AzureDataLakeStoreFileSystemEndpointSuffix = null,
+                    GraphEndpointResourceId = AzureEnvironmentConstants.USGovernmentGraphEndpoint
                 }
             },
             {
                 EnvironmentName.AzureGermanCloud,
-                new AzureEnvironment
+                 new AzureEnvironment
                 {
                     Name = EnvironmentName.AzureGermanCloud,
-                    Endpoints = new Dictionary<AzureEnvironment.Endpoint, string>
-                    {
-                        { AzureEnvironment.Endpoint.PublishSettingsFileUrl, AzureEnvironmentConstants.GermanPublishSettingsFileUrl },
-                        { AzureEnvironment.Endpoint.ServiceManagement, AzureEnvironmentConstants.GermanServiceEndpoint },
-                        { AzureEnvironment.Endpoint.ResourceManager, AzureEnvironmentConstants.GermanResourceManagerEndpoint },
-                        { AzureEnvironment.Endpoint.ManagementPortalUrl, AzureEnvironmentConstants.GermanManagementPortalUrl },
-                        { AzureEnvironment.Endpoint.ActiveDirectory, AzureEnvironmentConstants.GermanActiveDirectoryEndpoint },
-                        { AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId, AzureEnvironmentConstants.GermanServiceEndpoint },
-                        { AzureEnvironment.Endpoint.StorageEndpointSuffix, AzureEnvironmentConstants.GermanStorageEndpointSuffix },
-                        { AzureEnvironment.Endpoint.Gallery, AzureEnvironmentConstants.GermanGalleryEndpoint },
-                        { AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix, AzureEnvironmentConstants.GermanSqlDatabaseDnsSuffix },
-                        { AzureEnvironment.Endpoint.Graph, AzureEnvironmentConstants.GermanGraphEndpoint },
-                        { AzureEnvironment.Endpoint.TrafficManagerDnsSuffix, AzureEnvironmentConstants.GermanTrafficManagerDnsSuffix },
-                        { AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix, AzureEnvironmentConstants.GermanKeyVaultDnsSuffix },
-                        { AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId, AzureEnvironmentConstants.GermanAzureKeyVaultServiceEndpointResourceId },
-                        { AzureEnvironment.Endpoint.GraphEndpointResourceId, AzureEnvironmentConstants.GermanGraphEndpoint }
-                    }
+                    PublishSettingsFileUrl = new Uri(AzureEnvironmentConstants.GermanPublishSettingsFileUrl),
+                    ServiceManagement = new Uri(AzureEnvironmentConstants.GermanServiceEndpoint),
+                    ResourceManager = new Uri(AzureEnvironmentConstants.GermanResourceManagerEndpoint),
+                    ManagementPortalUrl = new Uri(AzureEnvironmentConstants.GermanManagementPortalUrl),
+                    ActiveDirectory = new Uri(AzureEnvironmentConstants.GermanActiveDirectoryEndpoint),
+                    ActiveDirectoryServiceEndpointResourceId = AzureEnvironmentConstants.GermanServiceEndpoint,
+                    StorageEndpointSuffix = AzureEnvironmentConstants.GermanStorageEndpointSuffix,
+                    Gallery = new Uri(AzureEnvironmentConstants.GalleryEndpoint),
+                    SqlDatabaseDnsSuffix = AzureEnvironmentConstants.GermanSqlDatabaseDnsSuffix,
+                    Graph = new Uri(AzureEnvironmentConstants.GermanGraphEndpoint),
+                    TrafficManagerDnsSuffix = AzureEnvironmentConstants.GermanTrafficManagerDnsSuffix,
+                    AzureKeyVaultDnsSuffix = AzureEnvironmentConstants.GermanKeyVaultDnsSuffix,
+                    AzureKeyVaultServiceEndpointResourceId = AzureEnvironmentConstants.GermanAzureKeyVaultServiceEndpointResourceId,
+                    AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = null,
+                    AzureDataLakeStoreFileSystemEndpointSuffix = null,
+                    GraphEndpointResourceId = AzureEnvironmentConstants.GermanGraphEndpoint
                 }
             }
 

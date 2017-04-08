@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Commands.Common.Authentication.Abstractions
+namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
     public static class EnvironmentName
     {

@@ -14,6 +14,7 @@
 
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.WindowsAzure.Management;
@@ -30,19 +31,19 @@ namespace Microsoft.Azure.ServiceManagemenet.Common.Models
         /// Registers resource providers for Sparta.
         /// </summary>
         /// <typeparam name="T">The client type</typeparam>
-        private void RegisterResourceManagerProviders<T>(IAzureProfile profile)
+        private void RegisterResourceManagerProviders<T>(IAzureContextContainer profile)
         {
             var providersToRegister = RequiredResourceLookup.RequiredProvidersForResourceManager<T>();
-            var registeredProviders = profile.Context.Subscription.GetPropertyAsArray(AzureSubscription.Property.RegisteredResourceProviders);
+            var registeredProviders = profile.DefaultContext.Subscription.GetPropertyAsArray(AzureSubscription.Property.RegisteredResourceProviders);
             var unregisteredProviders = providersToRegister.Where(p => !registeredProviders.Contains(p)).ToList();
             var successfullyRegisteredProvider = new List<string>();
-            SubscriptionCloudCredentials creds = AzureSession.Instance..AuthenticationFactory.GetSubscriptionCloudCredentials(profile.Context);
+            SubscriptionCloudCredentials creds = AzureSession.Instance.AuthenticationFactory.GetSubscriptionCloudCredentials(profile.DefaultContext);
 
             if (unregisteredProviders.Count > 0)
             {
                 using (var client = ClientFactory.CreateCustomClient<ResourceManagementClient>(
                                                         creds,
-                                                        profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)))
+                                                        profile.DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)))
                 {
                     foreach (string provider in unregisteredProviders)
                     {
@@ -66,7 +67,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common.Models
         /// <typeparam name="T">The client type</typeparam>
         private void RegisterServiceManagementProviders<T>(AzureSMProfile profile)
         {
-            var credentials = AzureSession.Instance..AuthenticationFactory.GetSubscriptionCloudCredentials(profile.Context);
+            var credentials = AzureSession.Instance.AuthenticationFactory.GetSubscriptionCloudCredentials(profile.Context);
             var providersToRegister = RequiredResourceLookup.RequiredProvidersForServiceManagement<T>();
             var registeredProviders = profile.Context.Subscription.GetPropertyAsArray(AzureSubscription.Property.RegisteredResourceProviders);
             var unregisteredProviders = providersToRegister.Where(p => !registeredProviders.Contains(p)).ToList();
@@ -123,8 +124,9 @@ namespace Microsoft.Azure.ServiceManagemenet.Common.Models
             }
         }
 
-        public void Apply<TClient>(TClient client, AzureSMProfile profile, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
+        public void Apply<TClient>(TClient client, IAzureContextContainer container, string endpoint) where TClient : ServiceClient<TClient>
         {
+            var profile = container as AzureSMProfile;
             Debug.Assert(ClientFactory != null);
 
             if (endpoint == AzureEnvironment.Endpoint.ServiceManagement)
@@ -140,8 +142,9 @@ namespace Microsoft.Azure.ServiceManagemenet.Common.Models
         public IClientFactory ClientFactory { get; set; }
 
 
-        public void ApplyArm<TClient>(TClient client, AzureRMProfile profile, AzureEnvironment.Endpoint endpoint) where TClient : Rest.ServiceClient<TClient>
+        public void ApplyArm<TClient>(TClient client, IAzureContextContainer container, string endpoint) where TClient : Rest.ServiceClient<TClient>
         {
+            var profile = container as AzureRMProfile;
             Debug.Assert(ClientFactory != null);
 
             if (endpoint == AzureEnvironment.Endpoint.ResourceManager)

@@ -30,7 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile.Models
             SubscriptionName = subscription.Name;
             Environment = subscription.Environment;
             DefaultAccount = subscription.Account;
-            Accounts = profile.Accounts.Values.Where(a => a.HasSubscription(subscription.Id)).ToArray();
+            Accounts = profile.AccountTable.Values.Where(a => a.HasSubscription(subscription.Id)).ToArray();
             IsDefault = subscription.IsPropertySet(AzureSubscription.Property.Default);
             IsCurrent = profile.Context != null && profile.Context.Subscription.Id == subscription.Id;
             CurrentStorageAccountName = subscription.GetProperty(AzureSubscription.Property.StorageAccount);

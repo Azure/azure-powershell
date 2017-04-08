@@ -137,7 +137,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
             if (ExtendedDetails.IsPresent)
             {
-                subscriptionOutput = subscriptions.Select(s => ConstructPsAzureSubscriptionExtended(s, AzureSession.ClientFactory));
+                subscriptionOutput = subscriptions.Select(s => ConstructPsAzureSubscriptionExtended(s, AzureSession.Instance.ClientFactory));
             }
             else
             {
@@ -153,7 +153,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             {
                 var response = client.Subscriptions.Get();
                 var environment = ProfileClient.GetEnvironmentOrDefault(subscription.Environment);
-                var account = ProfileClient.Profile.Accounts[subscription.Account];
+                var account = ProfileClient.Profile.AccountTable[subscription.Account];
                 bool isCert = account.Type == AzureAccount.AccountType.Certificate;
                 var psAzureSubscription = new PSAzureSubscription(subscription, ProfileClient.Profile);
                 PSAzureSubscriptionExtended result = new PSAzureSubscriptionExtended(psAzureSubscription)

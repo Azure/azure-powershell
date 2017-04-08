@@ -53,7 +53,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ServiceManagement.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ServiceManagement.Preview", "..\ServiceManagement\Compute\Commands.ServiceManagement.Preview\Commands.ServiceManagement.Preview.csproj", "{E895BBDA-0B06-46AB-B909-9B97B3ECE47E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Authentication.Abstractions", "..\..\..\..\td\azure-powershell\src\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj", "{70527617-7598-4AEF-B5BD-DB9186B8184B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Authentication.Abstractions", "..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj", "{70527617-7598-4AEF-B5BD-DB9186B8184B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

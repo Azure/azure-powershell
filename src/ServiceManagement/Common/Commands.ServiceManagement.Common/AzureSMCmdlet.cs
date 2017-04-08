@@ -42,7 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             private get
             {
-                return AzureSMProfileProvider.Instance.Profile;
+                return AzureSMProfileProvider.Instance.Profile as AzureSMProfile;
             }
 
             set
@@ -58,8 +58,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             if (!TestMockSupport.RunningMocked)
             {
-                AzureSession.Instance..ClientFactory.AddAction(new RPRegistrationAction());
-                AzureSession.Instance..DataStore = new DiskDataStore();
+                AzureSession.Instance.ClientFactory.AddAction(new RPRegistrationAction());
+                AzureSession.Instance.DataStore = new DiskDataStore();
             }
         }
 
@@ -70,9 +70,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 InitializeDataCollectionProfile();
             }
 
-            string fileFullPath = Path.Combine(AzureSession.Instance..ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
+            string fileFullPath = Path.Combine(AzureSession.Instance.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
             var contents = JsonConvert.SerializeObject(_dataCollectionProfile);
-            AzureSession.Instance..DataStore.WriteFile(fileFullPath, contents);
+            AzureSession.Instance.DataStore.WriteFile(fileFullPath, contents);
             WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
         }
 
@@ -172,7 +172,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             if (Profile == null)
             {
-                Profile = AzureSMProfileProvider.Instance.Profile;
+                Profile = AzureSMProfileProvider.Instance.Profile as AzureSMProfile;
             }
             else
             {

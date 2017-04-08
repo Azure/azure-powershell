@@ -145,16 +145,8 @@
     <Compile Include="Factories\ClientFactory.cs" />
     <Compile Include="Interfaces\IProfileSerializer.cs" />
     <Compile Include="LegacySupport.cs" />
-    <Compile Include="Models\AccountProperty.cs" />
-    <Compile Include="Models\AccountType.cs" />
-    <Compile Include="Models\AzureAccountExtensions.cs" />
-    <Compile Include="Models\AzureEnvironmentExtensions.cs" />
     <Compile Include="Models\AzureRMProfile.cs" />
     <Compile Include="Models\AzureSMProfile.cs" />
-    <Compile Include="Models\AzureSubscription.cs" />
-    <Compile Include="Models\AzureSubscription.Methods.cs" />
-    <Compile Include="Models\AzureTenant.cs" />
-    <Compile Include="Models\DiskDataStore.cs" />
     <Compile Include="Models\JsonProfileSerializer.cs" />
     <Compile Include="Models\MemoryDataStore.cs" />
     <Compile Include="Models\XmlProfileSerializer.cs" />
@@ -165,7 +157,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Utilities\AdalTokenCache.cs" />
-    <Compile Include="Utilities\DictionaryExtensions.cs" />
     <Compile Include="Utilities\FileUtilities.cs" />
     <Compile Include="Utilities\JsonUtilities.cs" />
     <Compile Include="Utilities\XmlUtilities.cs" />
@@ -180,7 +171,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\td\azure-powershell\src\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
+    <ProjectReference Include="..\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
       <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
       <Name>Commands.Common.Authentication.Abstractions</Name>
     </ProjectReference>

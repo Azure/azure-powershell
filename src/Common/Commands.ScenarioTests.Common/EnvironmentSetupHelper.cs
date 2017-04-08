@@ -82,7 +82,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         /// <param name="initializedManagementClients"></param>
         public void SetupManagementClients(params object[] initializedManagementClients)
         {
-            AzureSession.ClientFactory = new MockClientFactory(initializedManagementClients);
+            AzureSession.Instance.ClientFactory = new MockClientFactory(initializedManagementClients);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         /// <param name="initializedManagementClients"></param>
         public void SetupSomeOfManagementClients(params object[] initializedManagementClients)
         {
-            AzureSession.ClientFactory = new MockClientFactory(initializedManagementClients, false);
+            AzureSession.Instance.ClientFactory = new MockClientFactory(initializedManagementClients, false);
         }
 
         public void SetupEnvironment(AzureModule mode)
@@ -163,8 +163,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                     }
                 };
 
-                ProfileClient.Profile.Subscriptions[testSubscription.Id] = testSubscription;
-                ProfileClient.Profile.Accounts[testAccount.Id] = testAccount;
+                ProfileClient.Profile.SubscriptionTable[testSubscription.Id] = testSubscription;
+                ProfileClient.Profile.AccountTable[testAccount.Id] = testAccount;
                 ProfileClient.SetSubscriptionAsDefault(testSubscription.Name, testSubscription.Account);
             }
         }

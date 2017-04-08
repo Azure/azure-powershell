@@ -67,8 +67,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.MediaServices
         public MediaServicesClient(AzureSMProfile profile, AzureSubscription subscription, Action<string> logger)
             : this(
             logger,
-            AzureSession.ClientFactory.CreateClient<MediaServicesManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement),
-            AzureSession.ClientFactory.CreateClient<StorageManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement))
+            AzureSession.Instance.ClientFactory.CreateClient<MediaServicesManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement),
+            AzureSession.Instance.ClientFactory.CreateClient<StorageManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement))
         {
         }
 

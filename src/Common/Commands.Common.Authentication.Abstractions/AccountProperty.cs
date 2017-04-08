@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 
-namespace Microsoft.Azure.Commands.Common.Authentication.Models
+namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
     public enum AccountProperty
     {

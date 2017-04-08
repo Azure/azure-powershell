@@ -45,9 +45,9 @@ namespace Microsoft.WindowsAzure.Commands.Common
         /// </summary>
         public static void EnsureDefaultProfileDirectoryExists()
         {
-            if (!AzureSession.Instance..DataStore.DirectoryExists(AzureSession.Instance..ProfileDirectory))
+            if (!AzureSession.Instance.DataStore.DirectoryExists(AzureSession.Instance.ProfileDirectory))
             {
-                AzureSession.Instance..DataStore.CreateDirectory(AzureSession.Instance..ProfileDirectory);
+                AzureSession.Instance.DataStore.CreateDirectory(AzureSession.Instance.ProfileDirectory);
             }
         }
     }

@@ -14,10 +14,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
@@ -30,5 +26,45 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         public string State { get; set; }
 
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            var anotherSubscription = obj as AzureSubscription;
+            if (anotherSubscription == null)
+            {
+                return false;
+            }
+            else
+            {
+                return anotherSubscription.Id == Id;
+            }
+        }
+
+        public static class Property
+        {
+            /// <summary>
+            /// Comma separated registered resource providers, i.e.: websites,compute,hdinsight
+            /// </summary>
+            public const string RegisteredResourceProviders = "RegisteredResourceProviders",
+
+            /// <summary>
+            /// Associated tenants
+            /// </summary>
+            Tenants = "Tenants",
+
+            /// <summary>
+            /// If this property existed on the subscription indicates that it's default one.
+            /// </summary>
+            Default = "Default",
+
+            StorageAccount = "StorageAccount",
+            Environment = "Environment",
+                Account = "Account";
+        }
     }
 }

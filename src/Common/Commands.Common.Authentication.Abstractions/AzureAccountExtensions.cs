@@ -12,14 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 
-namespace Microsoft.Azure.Commands.Common.Authentication.Models
+namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
     public static class AzureAccountExtensions
     {
@@ -44,10 +41,46 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
             return key;
         }
+
+        public static string GetAccessToken(this IAzureAccount account)
+        {
+            return account.GetProperty(AccountProperty.AccessToken);
+        }
+
+        public static void SetAccessToken(this IAzureAccount account, string token)
+        {
+            account.SetProperty(AccountProperty.AccessToken, token);
+        }
+
+        public static string GetThumbPrinnt(this IAzureAccount account)
+        {
+            return account.GetProperty(AccountProperty.CertificateThumbprint);
+        }
+
+        public static void SetThumbprint(this IAzureAccount account, string thumbprint)
+        {
+            account.SetProperty(AccountProperty.CertificateThumbprint, thumbprint);
+        }
+
+        public static string[] GetSubscriptions(this IAzureAccount account)
+        {
+            return account.GetPropertyAsArray(AccountProperty.Subscriptions);
+        }
+
+        public static void SetSubscriptions(this IAzureAccount account, params string[] subscriptions)
+        {
+            account.SetProperty(AccountProperty.Subscriptions, subscriptions);
+        }
+
+
         public static string GetProperty(this IAzureAccount account, AccountProperty property)
         {
+            return account.GetProperty(GetPropertyKey(property));
+        }
+
+        public static string GetProperty(this IAzureAccount account, string propertyKey)
+        {
             string result = null;
-            string propertyKey = GetPropertyKey(property);
             if (propertyKey != null && account.ExtendedProperties.ContainsKey(propertyKey))
             {
                 result = account.ExtendedProperties[propertyKey];
@@ -56,10 +89,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             return result;
         }
 
+
         public static string[] GetPropertyAsArray(this IAzureAccount account, AccountProperty property)
         {
+            return account.GetPropertyAsArray(GetPropertyKey(property));
+        }
+
+        public static string[] GetPropertyAsArray(this IAzureAccount account, string propertyKey)
+        {
             string[] result = null;
-            string propertyKey = GetPropertyKey(property);
             if (propertyKey != null && account.ExtendedProperties.ContainsKey(propertyKey))
             {
                 result = account.ExtendedProperties.GetPropertyAsArray(propertyKey);
@@ -68,9 +106,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             return result;
         }
 
+
         public static void SetProperty(this IAzureAccount account, AccountProperty property, params string[] values)
         {
-            string propertyKey = GetPropertyKey(property);
+                account.SetProperty(GetPropertyKey(property), values);
+        }
+
+        public static void SetProperty(this IAzureAccount account, string propertyKey, params string[] values)
+        {
             if (propertyKey != null)
             {
                 account.ExtendedProperties.SetProperty(propertyKey, values);
@@ -79,7 +122,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
         public static void SetOrAppendProperty(this IAzureAccount account, AccountProperty property, params string[] values)
         {
-            string propertyKey = GetPropertyKey(property);
+                account.SetOrAppendProperty(GetPropertyKey(property), values);
+        }
+
+        public static void SetOrAppendProperty(this IAzureAccount account, string propertyKey, params string[] values)
+        {
             if (propertyKey != null)
             {
                 account.ExtendedProperties.SetOrAppendProperty(propertyKey, values);
@@ -88,16 +135,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
         public static bool IsPropertySet(this IAzureAccount account, AccountProperty property)
         {
+            return account.IsPropertySet(GetPropertyKey(property));
+        }
+
+        public static bool IsPropertySet(this IAzureAccount account, string propertyKey)
+        {
             bool result = false;
-            string propertyKey = GetPropertyKey(property);
             if (propertyKey != null)
             {
-
                 result = account.ExtendedProperties.IsPropertySet(propertyKey);
             }
 
             return result;
         }
+
 
         public static List<AzureSubscription> GetSubscriptions(this IAzureAccount account, IAzureContextContainer profile)
         {
@@ -110,15 +161,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
             foreach (var subscription in subscriptions)
             {
-                try
+                var foundSubscription = profile.Subscriptions.FirstOrDefault((s) => string.Equals(s.Id, subscription, StringComparison.OrdinalIgnoreCase));
+                if (foundSubscription != null)
                 {
-                    Guid subscriptionId = new Guid(subscription);
-                    Debug.Assert(profile.Subscriptions.ContainsKey(subscriptionId));
-                    subscriptionsList.Add(profile.Subscriptions[subscriptionId]);
-                }
-                catch
-                {
-                    // Skip
+                    subscriptionsList.Add(foundSubscription);
                 }
             }
 
@@ -140,7 +186,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
         public static void SetSubscriptions(this IAzureAccount account, List<AzureSubscription> subscriptions)
         {
-                account.SetProperty(AccountProperty.Subscriptions, subscriptions.Select(s => s.Id.ToString()).ToArray());
+            account.SetProperty(AccountProperty.Subscriptions, subscriptions.Select(s => s.Id.ToString()).ToArray());
         }
 
         public static void RemoveSubscription(this IAzureAccount account, Guid id)

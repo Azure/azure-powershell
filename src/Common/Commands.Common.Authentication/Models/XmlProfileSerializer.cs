@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -74,20 +75,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                         var newAccounts = oldSubscription.ToAzureAccounts();
                         foreach (var account in newAccounts)
                         {
-                            if (profile.Accounts.ContainsKey(account.Id))
+                            if (profile.AccountTable.ContainsKey(account.Id))
                             {
-                                profile.Accounts[account.Id].SetOrAppendProperty(AzureAccount.Property.Tenants,
+                                profile.AccountTable[account.Id].SetOrAppendProperty(AzureAccount.Property.Tenants,
                                     account.GetPropertyAsArray(AzureAccount.Property.Tenants));
-                                profile.Accounts[account.Id].SetOrAppendProperty(AzureAccount.Property.Subscriptions,
+                                profile.AccountTable[account.Id].SetOrAppendProperty(AzureAccount.Property.Subscriptions,
                                     account.GetPropertyAsArray(AzureAccount.Property.Subscriptions));
                             }
                             else
                             {
-                                profile.Accounts[account.Id] = account;
+                                profile.AccountTable[account.Id] = account;
                             }
                         }
 
-                        profile.Subscriptions[newSubscription.Id] = newSubscription;
+                        profile.SubscriptionTable[newSubscription.Id] = newSubscription;
                     }
                     catch (Exception ex)
                     {

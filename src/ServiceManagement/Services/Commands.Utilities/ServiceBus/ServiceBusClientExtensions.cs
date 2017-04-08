@@ -299,7 +299,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.ServiceBus
 
             subscriptionId = profile.Context.Subscription.Id.ToString();
             Subscription = profile.Context.Subscription;
-            ServiceBusClient = AzureSession.ClientFactory.CreateClient<ServiceBusManagementClient>(profile, profile.Context.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            ServiceBusClient = AzureSession.Instance.ClientFactory.CreateClient<ServiceBusManagementClient>(profile, profile.Context.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
         /// <summary>

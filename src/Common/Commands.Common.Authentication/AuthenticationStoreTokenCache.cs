@@ -53,6 +53,30 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             AfterAccess += HandleAfterAccess;
         }
 
+        /// <summary>
+        /// Create a token cache, copying any data from the given token cache
+        /// </summary>
+        /// <param name="cache">The cache to copy</param>
+        /// <param name="store">The store to use for persisting state</param>
+        public AuthenticationStoreTokenCache(TokenCache cache, AuthenticationStore store) : this(store)
+        {
+            if (null == cache)
+            {
+                throw new ArgumentNullException("Cache");
+            }
+
+            Deserialize(cache.Serialize());
+        }
+
+        /// <summary>
+        /// Create a token cache, copying any data from the given token cache
+        /// </summary>
+        /// <param name="cache">The cache to copy</param>
+        public AuthenticationStoreTokenCache(TokenCache cache) : this(cache, new AuthenticationStore())
+        {
+        }
+
+
         public void HandleAfterAccess(TokenCacheNotificationArgs args)
         {
             if (HasStateChanged)

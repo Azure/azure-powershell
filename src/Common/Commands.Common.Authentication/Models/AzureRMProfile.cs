@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using System.Collections;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
@@ -27,11 +28,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
     [Serializable]
     public sealed class AzureRMProfile : IAzureContextContainer
     {
-        Dictionary<string, string> _additionalProperties = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         /// <summary>
         /// Gets or sets Azure environments.
         /// </summary>
-        public Dictionary<string, AzureEnvironment> _environments { get; set; }
+        public Dictionary<string, AzureEnvironment> EnvironmentTable { get; set; }
+
+        public Dictionary<string, AzureContext> Contexts = new Dictionary<string, AzureContext>(StringComparer.OrdinalIgnoreCase);
 
         /// <summary>
         /// Gets the path of the profile file. 
@@ -42,34 +44,70 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// <summary>
         /// Gets the default context
         /// </summary>
-        public IAzureContext DefaultContext { get; set;}
+        public AzureContext DefaultContext { get; set;}
 
-        IEnumerable<IAzureEnvironment> IAzureContextContainer.Environments
+        public IEnumerable<AzureEnvironment> Environments
         {
             get
             {
-                return _environments.Values;
+                return EnvironmentTable.Values;
             }
         }
 
-        public IAuthenticationStore TokenStore
+        public IEnumerable<AzureSubscription> Subscriptions
         {
             get
             {
-                throw new NotImplementedException();
+                return Contexts.Values.Select((c) => c.Subscription);
+            }
+        }
+
+        public IAuthenticationStore TokenStore { get; set; } = new AuthenticationStoreTokenCache(new AuthenticationStore());
+
+        public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+
+        public ICollection<string> Keys
+        {
+            get
+            {
+                return Contexts.Keys;
+            }
+        }
+
+        public ICollection<AzureContext> Values
+        {
+            get
+            {
+                return Contexts.Values;
+            }
+        }
+
+        public int Count
+        {
+            get
+            {
+                return Contexts.Count;
+            }
+        }
+
+        public bool IsReadOnly
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        public AzureContext this[string key]
+        {
+            get
+            {
+                return Contexts[key];
             }
 
             set
             {
-                throw new NotImplementedException();
-            }
-        }
-
-        public IDictionary<string, string> AdditionalProperties
-        {
-            get
-            {
-                return _additionalProperties;
+                Contexts[key] = value;
             }
         }
 
@@ -88,12 +126,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 var profile = JsonConvert.DeserializeObject<IAzureContextContainer>(contents);
                 Debug.Assert(profile != null);
                 DefaultContext = profile.DefaultContext;
-                _environments.Clear();
+                EnvironmentTable.Clear();
                 foreach (var environment in profile.Environments)
                 {
-                    _environments[environment.Name] = new AzureEnvironment(environment);
+                    EnvironmentTable[environment.Name] = environment;
                 }
-                this.Environments = profile.Environments.For
             }
         }
 
@@ -102,12 +139,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// </summary>
         public AzureRMProfile()
         {
-            Environments = new Dictionary<string, AzureEnvironment>(StringComparer.InvariantCultureIgnoreCase);
+            EnvironmentTable = new Dictionary<string, AzureEnvironment>(StringComparer.InvariantCultureIgnoreCase);
 
             // Adding predefined environments
             foreach (AzureEnvironment env in AzureEnvironment.PublicEnvironments.Values)
             {
-                Environments[env.Name] = env;
+                EnvironmentTable[env.Name] = env;
             }
         }
 
@@ -145,7 +182,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             // Removing predefined environments
             foreach (string env in AzureEnvironment.PublicEnvironments.Keys)
             {
-                Environments.Remove(env);
+                EnvironmentTable.Remove(env);
             }
 
             try
@@ -167,7 +204,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 // Adding back predefined environments
                 foreach (AzureEnvironment env in AzureEnvironment.PublicEnvironments.Values)
                 {
-                    Environments[env.Name] = env;
+                    EnvironmentTable[env.Name] = env;
                 }
             }
         }
@@ -179,6 +216,61 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         public override string ToString()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
+        }
+
+        public bool ContainsKey(string key)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Add(string key, AzureContext value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Remove(string key)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool TryGetValue(string key, out AzureContext value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Add(KeyValuePair<string, AzureContext> item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Clear()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Contains(KeyValuePair<string, AzureContext> item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CopyTo(KeyValuePair<string, AzureContext>[] array, int arrayIndex)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Remove(KeyValuePair<string, AzureContext> item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerator<KeyValuePair<string, AzureContext>> GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
         }
     }
 }

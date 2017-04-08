@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Commands.Common;
 using Newtonsoft.Json;
 using System;
@@ -438,9 +440,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// </summary>
         public static void EnsureDefaultProfileDirectoryExists()
         {
-            if (!AzureSession.DataStore.DirectoryExists(AzureSession.ProfileDirectory))
+            if (!AzureSession.Instance.DataStore.DirectoryExists(AzureSession.Instance.ProfileDirectory))
             {
-                AzureSession.DataStore.CreateDirectory(AzureSession.ProfileDirectory);
+                AzureSession.Instance.DataStore.CreateDirectory(AzureSession.Instance.ProfileDirectory);
             }
         }
 
@@ -452,19 +454,19 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         public static void ClearCurrentStorageAccount(bool clearSMContext = false)
         {
             var RMProfile = AzureRmProfileProvider.Instance.Profile;
-            if (RMProfile != null && RMProfile.Context != null &&
-                RMProfile.Context.Subscription != null && RMProfile.Context.Subscription.IsPropertySet(AzureSubscription.Property.StorageAccount))
+            if (RMProfile != null && RMProfile.DefaultContext != null &&
+                RMProfile.DefaultContext.Subscription != null && RMProfile.DefaultContext.Subscription.IsPropertySet(AzureSubscription.Property.StorageAccount))
             {
-                RMProfile.Context.Subscription.SetProperty(AzureSubscription.Property.StorageAccount, null);
+                RMProfile.DefaultContext.Subscription.SetProperty(AzureSubscription.Property.StorageAccount, null);
             }
 
             if (clearSMContext)
             {
                 var SMProfile = AzureSMProfileProvider.Instance.Profile;
-                if (SMProfile != null && SMProfile.Context != null && SMProfile.Context.Subscription != null &&
-                    SMProfile.Context.Subscription.IsPropertySet(AzureSubscription.Property.StorageAccount))
+                if (SMProfile != null && SMProfile.DefaultContext != null && SMProfile.DefaultContext.Subscription != null &&
+                    SMProfile.DefaultContext.Subscription.IsPropertySet(AzureSubscription.Property.StorageAccount))
                 {
-                    SMProfile.Context.Subscription.SetProperty(AzureSubscription.Property.StorageAccount, null);
+                    SMProfile.DefaultContext.Subscription.SetProperty(AzureSubscription.Property.StorageAccount, null);
                 }
             }
         }

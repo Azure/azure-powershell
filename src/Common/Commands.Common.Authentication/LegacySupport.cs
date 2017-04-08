@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Common.Authentication
         /// </summary>
         public static IClientFactory ClientFactory
         {
-            get { return Microsoft.Azure.Commands.Common.Authentication.AzureSession.Instance.Instance.ClientFactory; }
+            get { return Microsoft.Azure.Commands.Common.Authentication.AzureSession.Instance.ClientFactory; }
         }
     }
 }

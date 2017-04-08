@@ -12,100 +12,45 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
-using System.IO;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using System.Threading;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
-    public class AzureSMProfileProvider : IProfileProvider<AzureSMProfile>
+    public abstract class AzureSMProfileProvider : IProfileProvider
     {
-        private AzureSMProfile _profile;
-        private AzureSMProfile _defaultProfile;
-        private TokenCache _defaultDiskTokenCache;
-        static AzureSMProfileProvider()
-        {
-            Instance = new AzureSMProfileProvider();
-        }
-        private AzureSMProfileProvider()
-        {
-            _defaultDiskTokenCache = TokenCache.DefaultShared;
-        }
-
+        private static int _initialized = 0;
         public static AzureSMProfileProvider Instance { get; private set; }
-        public AzureSMProfile Profile
+        public virtual IAzureContextContainer Profile { get; set; }
+
+
+        public virtual void ResetDefaultProfile()
         {
-            get
+            Profile.Clear();
+        }
+
+        public abstract void SetTokenCacheForProfile(IAzureContextContainer profile);
+
+        /// <summary>
+        /// Set the instance of the profile provider for AzureRM
+        /// </summary>
+        /// <param name="provider">The provider to initialize with</param>
+        /// <param name="overwrite">if true, overwrite the existing provider, if it was previously initialized</param>
+        public static void SetInstance(AzureSMProfileProvider provider, bool overwrite)
+        {
+            if (Interlocked.Exchange(ref _initialized, 1) == 0 || overwrite)
             {
-                var returnValue = _profile;
-                if (_profile == null)
-                {
-                    if (_defaultProfile == null)
-                    {
-                        _defaultProfile = InitializeDefaultProfile();
-                        SetProfileValue(null);
-                    }
-
-                    returnValue = _defaultProfile;
-                }
-
-                return returnValue;
+                Instance = provider;
             }
-            set { SetProfileValue(value); }
         }
 
         /// <summary>
-        /// Create the default profile, based on the default profile path
+        /// Set the instance of the profile provider for AzureRM, if it is not already initialized
         /// </summary>
-        /// <returns>The default profile, serialized from the default location on disk</returns>
-        private AzureSMProfile InitializeDefaultProfile()
+        /// <param name="provider">The provider</param>
+        public static void SetInstance(AzureSMProfileProvider provider)
         {
-            if (!string.IsNullOrEmpty(AzureSession.ProfileDirectory) && !string.IsNullOrEmpty(AzureSession.ProfileFile))
-            {
-                try
-                {
-                    GeneralUtilities.EnsureDefaultProfileDirectoryExists();
-                    _defaultDiskTokenCache = new ProtectedFileTokenCache(
-                        Path.Combine(AzureSession.ProfileDirectory,
-                        AzureSession.TokenCacheFile));
-                    return new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory,
-                        AzureSession.ProfileFile));
-                }
-                catch
-                {
-                    // swallow exceptions in creating the profile from disk
-                }
-            }
-
-            _defaultDiskTokenCache = TokenCache.DefaultShared;
-            return new AzureSMProfile();
-        }
-
-        private void SetProfileValue(AzureSMProfile profile)
-        {
-            _profile = profile;
-            SetTokenCacheForProfile(profile);
-        }
-
-        public void ResetDefaultProfile()
-        {
-            SetProfileValue(null);
-        }
-
-        public void SetTokenCacheForProfile(AzureSMProfile profile)
-        {
-            var defaultProfilePath = Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile);
-            if (_profile == null || string.Equals(profile.ProfilePath, defaultProfilePath, StringComparison.OrdinalIgnoreCase))
-            {
-                AzureSession.TokenCache = _defaultDiskTokenCache;
-            }
-            else
-            {
-                AzureSession.TokenCache = TokenCache.DefaultShared;
-            }
+            SetInstance(provider, false);
         }
     }
 }

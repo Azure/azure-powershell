@@ -21,6 +21,7 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using System;
 using System.Globalization;
+using System.Linq;
 using System.Management.Automation;
 using System.Security.Permissions;
 
@@ -354,8 +355,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                 {
                     try
                     {
-                        var profileClient = new ProfileClient(SMProfile);
-                        azureEnvironment = profileClient.GetEnvironmentOrDefault(azureEnvironmentName);
+                        azureEnvironment = SMProfile.Environments.First((s) => string.Equals(s.Name, environmentName, StringComparison.OrdinalIgnoreCase));
                     }
                     catch (ArgumentException e)
                     {
