@@ -46,7 +46,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
                  this.ResourceGroupName,
                  this.Name).Keys;
 
-            WriteObject(storageKeys);
+            foreach (var key in storageKeys)
+            {
+                WriteObject(key);
+            }
         }
     }
 }
