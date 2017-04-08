@@ -90,7 +90,14 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
                         var webServiceFromJson = 
                                 ModelsSerializationUtil.GetAzureMLWebServiceFromJsonDefinition(jsonDefinition);
 
-                        this.NewWebServiceDefinition = new WebService(this.Location, webServiceFromJson.Properties, webServiceFromJson.Id, this.Name, webServiceFromJson.Type, webServiceFromJson.Tags);
+                        // The name and location in command line parameters overwrite the content from 
+                        // Web Service Definition json file.
+                        this.NewWebServiceDefinition = new WebService(
+                                                                this.Location, 
+                                                                webServiceFromJson.Properties, 
+                                                                webServiceFromJson.Id, 
+                                                                this.Name, webServiceFromJson.Type, 
+                                                                webServiceFromJson.Tags);
                     }
 
                     WebService newWebService =
