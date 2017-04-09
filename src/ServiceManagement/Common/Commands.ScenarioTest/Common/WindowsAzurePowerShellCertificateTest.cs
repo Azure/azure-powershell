@@ -51,7 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
             TestMockSupport.RunningMocked = this.runningMocked;
             if (this.runningMocked)
             {
-                AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
+                AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
                 string dummyCredentialFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, TestCredentialHelper.DefaultCredentialFile);
                 if (!File.Exists(dummyCredentialFile))
                 {

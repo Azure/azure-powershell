@@ -36,8 +36,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
         }
 
         public IAccessToken Authenticate(
-            AzureAccount account,
-            AzureEnvironment environment,
+            IAzureAccount account,
+            IAzureEnvironment environment,
             string tenant,
             SecureString password,
             ShowDialog promptBehavior,
@@ -60,8 +60,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
         }
 
         public IAccessToken Authenticate(
-            AzureAccount account,
-            AzureEnvironment environment,
+            IAzureAccount account,
+            IAzureEnvironment environment,
             string tenant,
             SecureString password,
             ShowDialog promptBehavior,
@@ -70,24 +70,24 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             return Authenticate(account, environment, tenant, password, promptBehavior, AzureSession.Instance.TokenCache, resourceId);
         }
 
-        public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context)
+        public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(IAzureContext context)
         {
             return new CertificateCloudCredentials(context.Subscription.Id.ToString(), Certificate);
         }
 
 
-        public Microsoft.Rest.ServiceClientCredentials GetServiceClientCredentials(AzureContext context)
+        public Microsoft.Rest.ServiceClientCredentials GetServiceClientCredentials(IAzureContext context)
         {
             throw new System.NotImplementedException();
         }
 
-        public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context, string targetEndpoint)
+        public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(IAzureContext context, string targetEndpoint)
         {
             throw new System.NotImplementedException();
         }
 
 
-        public Rest.ServiceClientCredentials GetServiceClientCredentials(AzureContext context, string targetEndpoint)
+        public Rest.ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint)
         {
             throw new System.NotImplementedException();
         }

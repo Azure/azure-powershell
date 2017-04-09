@@ -39,6 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
     using WindowsAzure.Storage.Auth;
     using ComputeModels = Microsoft.WindowsAzure.Management.Compute.Models;
     using PowerShellAppGwModel = ApplicationGateway.Model;
+    using Azure.Commands.Common.Authentication.Abstractions;
 
     public class NetworkClient
     {

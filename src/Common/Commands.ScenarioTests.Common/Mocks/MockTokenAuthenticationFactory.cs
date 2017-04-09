@@ -27,7 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
     {
         public IAccessToken Token { get; set; }
 
-        public Func<AzureAccount, AzureEnvironment, string, IAccessToken> TokenProvider { get; set; }
+        public Func<IAzureAccount, IAzureEnvironment, string, IAccessToken> TokenProvider { get; set; }
 
         public MockTokenAuthenticationFactory()
         {
@@ -59,8 +59,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
         }
 
         public IAccessToken Authenticate(
-            AzureAccount account,
-            AzureEnvironment environment,
+            IAzureAccount account,
+            IAzureEnvironment environment,
             string tenant,
             SecureString password,
             ShowDialog promptBehavior,
@@ -87,8 +87,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             }
         }
         public IAccessToken Authenticate(
-            AzureAccount account,
-            AzureEnvironment environment,
+            IAzureAccount account,
+            IAzureEnvironment environment,
             string tenant,
             SecureString password,
             ShowDialog promptBehavior,
@@ -97,23 +97,23 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             return Authenticate(account, environment, tenant, password, promptBehavior, AzureSession.Instance.TokenCache, resourceId);
         }
 
-        public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context)
+        public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(IAzureContext context)
         {
             return new AccessTokenCredential(context.Subscription.GetId(), Token);
         }
 
 
-        public Microsoft.Rest.ServiceClientCredentials GetServiceClientCredentials(AzureContext context)
+        public Microsoft.Rest.ServiceClientCredentials GetServiceClientCredentials(IAzureContext context)
         {
             return new Microsoft.Rest.TokenCredentials(Token.AccessToken);
         }
 
-        public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context, string targetEndpoint)
+        public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(IAzureContext context, string targetEndpoint)
         {
             return new TokenCloudCredentials(context.Subscription.Id.ToString(),Token.AccessToken);
         }
         
-        public ServiceClientCredentials GetServiceClientCredentials(AzureContext context, string targetEndpoint)
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint)
         {
             throw new NotImplementedException();
         }

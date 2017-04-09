@@ -36,8 +36,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         public ITokenProvider TokenProvider { get; set; }
 
         public IAccessToken Authenticate(
-            AzureAccount account,
-            AzureEnvironment environment,
+            IAzureAccount account,
+            IAzureEnvironment environment,
             string tenant,
             SecureString password,
             ShowDialog promptBehavior,
@@ -70,8 +70,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         }
 
         public IAccessToken Authenticate(
-            AzureAccount account,
-            AzureEnvironment environment,
+            IAzureAccount account,
+            IAzureEnvironment environment,
             string tenant,
             SecureString password,
             ShowDialog promptBehavior,
@@ -80,12 +80,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             return Authenticate(account, environment, tenant, password, promptBehavior, AzureSession.Instance.TokenCache, resourceId);
         }
 
-        public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context)
+        public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(IAzureContext context)
         {
             return GetSubscriptionCloudCredentials(context, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
-        public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context, string targetEndpoint)
+        public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(IAzureContext context, string targetEndpoint)
         {
             if (context.Subscription == null)
             {
@@ -177,13 +177,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
         }
 
-        public ServiceClientCredentials GetServiceClientCredentials(AzureContext context)
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context)
         {
             return GetServiceClientCredentials(context,
                 AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId);
         }
 
-        public ServiceClientCredentials GetServiceClientCredentials(AzureContext context, string targetEndpoint)
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint)
         {
             if (context.Account == null)
             {
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
         }
 
-        private AdalConfiguration GetAdalConfiguration(AzureEnvironment environment, string tenantId,
+        private AdalConfiguration GetAdalConfiguration(IAzureEnvironment environment, string tenantId,
             string resourceId, TokenCache tokenCache)
         {
             if (environment == null)

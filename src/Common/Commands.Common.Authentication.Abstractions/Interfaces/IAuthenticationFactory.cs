@@ -34,8 +34,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <param name="resourceId">Optional, the AD resource id</param>
         /// <returns></returns>
         IAccessToken Authenticate(
-            AzureAccount account,
-            AzureEnvironment environment,
+            IAzureAccount account,
+            IAzureEnvironment environment,
             string tenant,
             SecureString password,
             ShowDialog promptBehavior,
@@ -53,8 +53,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <param name="resourceId">Optional, the AD resource id</param>
         /// <returns></returns>
         IAccessToken Authenticate(
-            AzureAccount account,
-            AzureEnvironment environment,
+            IAzureAccount account,
+            IAzureEnvironment environment,
             string tenant,
             SecureString password,
             ShowDialog promptBehavior,
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// </summary>
         /// <param name="context">The target azure context</param>
         /// <returns>AutoRest client credentials targeting the given context</returns>
-        ServiceClientCredentials GetServiceClientCredentials(AzureContext context);
+        ServiceClientCredentials GetServiceClientCredentials(IAzureContext context);
 
         /// <summary>
         /// Get AutoRest credebntials using the given context and named endpoint
@@ -73,6 +73,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <param name="context">The context to use for authentication</param>
         /// <param name="targetEndpoint">The named endpoint the AutoRest client will target</param>
         /// <returns>AutoRest client crentials targeting the given context and endpoint</returns>
-        ServiceClientCredentials GetServiceClientCredentials(AzureContext context, string targetEndpoint);
+        ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint);
     }
 }

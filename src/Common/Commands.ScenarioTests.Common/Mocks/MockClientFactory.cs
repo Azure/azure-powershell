@@ -49,7 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             throwWhenNotAvailable = throwIfClientNotSpecified;
         }
 
-        public TClient CreateClient<TClient>(AzureContext context, string endpoint) where TClient : ServiceClient<TClient>
+        public TClient CreateClient<TClient>(IAzureContext context, string endpoint) where TClient : ServiceClient<TClient>
         {
             Debug.Assert(context != null);
 
@@ -208,7 +208,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             }
         }
 
-        public TClient CreateArmClient<TClient>(AzureContext context, string endpoint) where TClient : Rest.ServiceClient<TClient>
+        public TClient CreateArmClient<TClient>(IAzureContext context, string endpoint) where TClient : Rest.ServiceClient<TClient>
         {
             Debug.Assert(context != null);
             var credentials = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context);

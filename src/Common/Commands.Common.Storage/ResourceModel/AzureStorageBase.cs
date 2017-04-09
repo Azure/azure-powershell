@@ -21,7 +21,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
     /// <summary>
     /// Base class for all azure storage object
     /// </summary>
-    public abstract class AzureStorageBase
+    public class AzureStorageBase
     {
         /// <summary>
         /// Storage context

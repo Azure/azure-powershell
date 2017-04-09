@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// </summary>
         /// <param name="context">The target Azure context</param>
         /// <returns>Hyak-compatible authentication credentials for the current target context</returns>
-        SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context);
+        SubscriptionCloudCredentials GetSubscriptionCloudCredentials(IAzureContext context);
 
         /// <summary>
         /// Get Hyak-compatible authentication credentials for the given named endpoint using the given target context
@@ -32,6 +32,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <param name="context">The target Azure context</param>
         /// <param name="targetEndpoint">The tnamed endpoint for the client to target</param>
         /// <returns>Hyak-compatible authentication credentials for the current target context</returns>
-        SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context, string targetEndpoint);
+        SubscriptionCloudCredentials GetSubscriptionCloudCredentials(IAzureContext context, string targetEndpoint);
     }
 }

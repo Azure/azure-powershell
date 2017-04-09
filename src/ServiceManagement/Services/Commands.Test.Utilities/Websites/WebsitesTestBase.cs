@@ -20,6 +20,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Websites
 {
@@ -61,12 +62,12 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Websites
 
             currentProfile = new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
             AzureSMCmdlet.CurrentProfile = currentProfile;
-            var subscription = new AzureSubscription { Id = new Guid(subscriptionId) };
-            subscription.Properties[AzureSubscription.Property.Default] = "True";
+            var subscription = new AzureSubscription { Id = subscriptionId };
+            subscription.SetDefault();
             currentProfile.SubscriptionTable[new Guid(subscriptionId)] = subscription;
             if (storageName != null)
             {
-                currentProfile.Context.Subscription.Properties[AzureSubscription.Property.StorageAccount] = storageName;
+                currentProfile.Context.Subscription.SetStorageAccount(storageName);
             }
             currentProfile.Save();
         }

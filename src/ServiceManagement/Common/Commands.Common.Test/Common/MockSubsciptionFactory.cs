@@ -43,7 +43,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             throw new NotImplementedException();
         }
 
-        public TClient CreateClient<TClient>(AzureContext context, string endpoint) where TClient : Hyak.Common.ServiceClient<TClient>
+        public TClient CreateClient<TClient>(IAzureContext context, string endpoint) where TClient : Hyak.Common.ServiceClient<TClient>
         {
             throw new NotImplementedException();
         }
@@ -96,7 +96,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         public HashSet<ProductInfoHeaderValue> UserAgents { get; set; }
 
 
-        public TClient CreateArmClient<TClient>(AzureContext context, string endpoint) where TClient : Microsoft.Rest.ServiceClient<TClient>
+        public TClient CreateArmClient<TClient>(IAzureContext context, string endpoint) where TClient : Microsoft.Rest.ServiceClient<TClient>
         {
             throw new NotImplementedException();
         }

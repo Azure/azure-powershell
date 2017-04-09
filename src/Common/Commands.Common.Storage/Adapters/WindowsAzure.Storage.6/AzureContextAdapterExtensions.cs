@@ -41,7 +41,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Adapters
                 }
                 catch
                 {
-                    var storageClient = AzureSession.Instance.ClientFactory.CreateClient<StorageManagementClient>(context as AzureContext, AzureEnvironment.Endpoint.ServiceManagement);
+                    var storageClient = AzureSession.Instance.ClientFactory.CreateClient<StorageManagementClient>(context, AzureEnvironment.Endpoint.ServiceManagement);
                     var provider = new RDFEStorageProvider(storageClient, context.Environment);
                     var service = provider.GetStorageService(storageConnectionString, null);
                     return (service.Context as AzureStorageContext).StorageAccount;

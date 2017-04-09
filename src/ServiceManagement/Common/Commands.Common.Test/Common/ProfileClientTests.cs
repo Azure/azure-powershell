@@ -133,7 +133,7 @@ namespace Common.Authentication.Test
             AzureSMProfile newProfile = new AzureSMProfile();
             ProfileClient client1 = new ProfileClient(newProfile);
             var newAccount = new AzureAccount { Id = "foo" };
-            newAccount.Properties[AzureAccount.Property.Tenants] = "123";
+            newAccount.SetTenants("123");
 
             client1.InitializeProfile(AzureEnvironment.PublicEnvironments["AzureCloud"],
                 new Guid(rdfeSubscription2.SubscriptionId), newAccount, null, null);
@@ -211,14 +211,14 @@ namespace Common.Authentication.Test
             Assert.Equal(6, client.Profile.EnvironmentTable.Count);
             Assert.Equal("Current", client.Profile.EnvironmentTable["Current"].Name);
             Assert.Equal("Dogfood", client.Profile.EnvironmentTable["Dogfood"].Name);
-            Assert.Equal("https://login.windows-ppe.net/", client.Profile.EnvironmentTable["Dogfood"].Endpoints[AzureEnvironment.Endpoint.AdTenant]);
-            Assert.Equal("https://management.core.windows.net/", client.Profile.EnvironmentTable["Dogfood"].Endpoints[AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId]);
-            Assert.Equal("https://df.gallery.azure-test.net", client.Profile.EnvironmentTable["Dogfood"].Endpoints[AzureEnvironment.Endpoint.Gallery]);
-            Assert.Equal("https://windows.azure-test.net", client.Profile.EnvironmentTable["Dogfood"].Endpoints[AzureEnvironment.Endpoint.ManagementPortalUrl]);
-            Assert.Equal("https://auxnext.windows.azure-test.net/publishsettings/index", client.Profile.EnvironmentTable["Dogfood"].Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl]);
-            Assert.Equal("https://api-dogfood.resources.windows-int.net", client.Profile.EnvironmentTable["Dogfood"].Endpoints[AzureEnvironment.Endpoint.ResourceManager]);
-            Assert.Equal("https://management-preview.core.windows-int.net/", client.Profile.EnvironmentTable["Dogfood"].Endpoints[AzureEnvironment.Endpoint.ServiceManagement]);
-            Assert.Equal(".database.windows.net", client.Profile.EnvironmentTable["Dogfood"].Endpoints[AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix]);
+            Assert.Equal("https://login.windows-ppe.net/", client.Profile.EnvironmentTable["Dogfood"].GetEndpoint(AzureEnvironment.Endpoint.AdTenant));
+            Assert.Equal("https://management.core.windows.net/", client.Profile.EnvironmentTable["Dogfood"].GetEndpoint(AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId));
+            Assert.Equal("https://df.gallery.azure-test.net", client.Profile.EnvironmentTable["Dogfood"].GetEndpoint(AzureEnvironment.Endpoint.Gallery));
+            Assert.Equal("https://windows.azure-test.net", client.Profile.EnvironmentTable["Dogfood"].GetEndpoint(AzureEnvironment.Endpoint.ManagementPortalUrl));
+            Assert.Equal("https://auxnext.windows.azure-test.net/publishsettings/index", client.Profile.EnvironmentTable["Dogfood"].GetEndpoint(AzureEnvironment.Endpoint.PublishSettingsFileUrl));
+            Assert.Equal("https://api-dogfood.resources.windows-int.net", client.Profile.EnvironmentTable["Dogfood"].GetEndpoint(AzureEnvironment.Endpoint.ResourceManager));
+            Assert.Equal("https://management-preview.core.windows-int.net/", client.Profile.EnvironmentTable["Dogfood"].GetEndpoint(AzureEnvironment.Endpoint.ServiceManagement));
+            Assert.Equal(".database.windows.net", client.Profile.EnvironmentTable["Dogfood"].GetEndpoint(AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix));
 
             // Verify subscriptions
             Assert.Equal(3, client.Profile.SubscriptionTable.Count);
@@ -466,7 +466,7 @@ namespace Common.Authentication.Test
             Assert.NotNull(userA);
             Assert.Contains<string>(rdfeSubscription1.SubscriptionId, userA.GetPropertyAsArray(AzureAccount.Property.Subscriptions), StringComparer.OrdinalIgnoreCase);
             Assert.NotNull(subrdfe1);
-            Assert.Equal("UserA", subrdfe1.Account);
+            Assert.Equal("UserA", subrdfe1.GetAccount());
         }
 
         /// <summary>
@@ -511,8 +511,8 @@ namespace Common.Authentication.Test
             Assert.Contains<string>(guestRdfeSubscription.SubscriptionId, userB.GetPropertyAsArray(AzureAccount.Property.Subscriptions), StringComparer.OrdinalIgnoreCase);
             Assert.NotNull(subrdfe1);
             Assert.NotNull(subGuest);
-            Assert.Equal("UserA", subrdfe1.Account);
-            Assert.Equal("UserB", subGuest.Account);
+            Assert.Equal("UserA", subrdfe1.GetAccount());
+            Assert.Equal("UserB", subGuest.GetAccount());
         }
         /// <summary>
         /// Test that when accountId is added more than once with different capitalization, only a single accountId is added
@@ -682,13 +682,13 @@ namespace Common.Authentication.Test
             client.Profile.SubscriptionTable[azureSubscription2.GetId()] = azureSubscription2;
             client.Profile.AccountTable[azureAccount.Id] = azureAccount;
             azureSubscription3withoutUser.SetAccount("test2");
-            var account = new AzureAccount
+            var account1 = new AzureAccount
             {
                 Id = "test2",
                 Type = AzureAccount.AccountType.User,
             };
-            account.SetSubscriptions(azureSubscription3withoutUser.Id);
-            client.Profile.AccountTable["test2"] = account;
+            account1.SetSubscriptions(azureSubscription3withoutUser.Id);
+            client.Profile.AccountTable["test2"] = account1;
             client.Profile.SubscriptionTable[azureSubscription3withoutUser.GetId()] = azureSubscription3withoutUser;
             client.Profile.EnvironmentTable[azureEnvironment.Name] = azureEnvironment;
             List<string> log = new List<string>();
@@ -875,15 +875,15 @@ namespace Common.Authentication.Test
 
             var env2 = client.AddOrSetEnvironment(azureEnvironment);
             Assert.Equal(env2.Name, azureEnvironment.Name);
-            Assert.NotNull(env2.Endpoints[AzureEnvironment.Endpoint.ServiceManagement]);
+            Assert.NotNull(env2.GetEndpoint(AzureEnvironment.Endpoint.ServiceManagement));
             AzureEnvironment newEnv = new AzureEnvironment
             {
                 Name = azureEnvironment.Name
             };
-            newEnv.Endpoints[AzureEnvironment.Endpoint.Graph] = "foo";
+            newEnv.SetEndpoint(AzureEnvironment.Endpoint.Graph, "foo");
             env2 = client.AddOrSetEnvironment(newEnv);
-            Assert.Equal("foo", env2.Endpoints[AzureEnvironment.Endpoint.Graph]);
-            Assert.NotNull(env2.Endpoints[AzureEnvironment.Endpoint.ServiceManagement]);
+            Assert.Equal("foo", env2.GetEndpoint(AzureEnvironment.Endpoint.Graph));
+            Assert.NotNull(env2.GetEndpoint(AzureEnvironment.Endpoint.ServiceManagement));
         }
 
         [Fact]
@@ -958,29 +958,29 @@ namespace Common.Authentication.Test
             client.AddOrSetEnvironment(azureEnvironment);
             client.AddOrSetSubscription(azureSubscription1);
             currentProfile.DefaultSubscription = azureSubscription1;
-            azureSubscription1.Properties[AzureSubscription.Property.StorageAccount] = "testAccount";
+            azureSubscription1.SetStorageAccount("testAccount");
             Assert.Equal(azureSubscription1.GetId(), currentProfile.Context.Subscription.GetId());
-            Assert.Equal(azureSubscription1.Properties[AzureSubscription.Property.StorageAccount],
-                currentProfile.Context.Subscription.Properties[AzureSubscription.Property.StorageAccount]);
+            Assert.Equal(azureSubscription1.GetStorageAccount(),
+                currentProfile.Context.Subscription.GetStorageAccount());
 
             var newSubscription = new AzureSubscription
             {
-                Id = azureSubscription1.GetId(),
-                Environment = azureSubscription1.GetEnvironment(),
-                Account = azureSubscription1.GetAccount(),
+                Id = azureSubscription1.Id,
                 Name = azureSubscription1.Name
             };
-            newSubscription.Properties[AzureSubscription.Property.StorageAccount] = "testAccount1";
+            newSubscription.SetEnvironment(azureSubscription1.GetEnvironment());
+            newSubscription.SetAccount(azureSubscription1.GetAccount());
+            newSubscription.SetStorageAccount("testAccount1");
 
             client.AddOrSetSubscription(newSubscription);
             var newSubscriptionFromProfile = client.Profile.SubscriptionTable[newSubscription.GetId()];
 
             Assert.Equal(newSubscription.GetId(), currentProfile.Context.Subscription.GetId());
             Assert.Equal(newSubscription.GetId(), newSubscriptionFromProfile.GetId());
-            Assert.Equal(newSubscription.Properties[AzureSubscription.Property.StorageAccount],
-                currentProfile.Context.Subscription.Properties[AzureSubscription.Property.StorageAccount]);
-            Assert.Equal(newSubscription.Properties[AzureSubscription.Property.StorageAccount],
-                newSubscriptionFromProfile.Properties[AzureSubscription.Property.StorageAccount]);
+            Assert.Equal(newSubscription.GetStorageAccount(),
+                currentProfile.Context.Subscription.GetStorageAccount());
+            Assert.Equal(newSubscription.GetStorageAccount(),
+                newSubscriptionFromProfile.GetStorageAccount());
         }
 
         [Fact]
@@ -991,7 +991,7 @@ namespace Common.Authentication.Test
             currentProfile = new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
             ProfileClient client = new ProfileClient(currentProfile);
 
-            client.Profile.AccountTable[azureAccount.GetId()] = azureAccount;
+            client.Profile.AccountTable[azureAccount.Id] = azureAccount;
             client.AddOrSetEnvironment(azureEnvironment);
             client.AddOrSetSubscription(azureSubscription1);
             client.SetSubscriptionAsDefault(azureSubscription1.Name, azureSubscription1.GetAccount());
@@ -1151,7 +1151,7 @@ namespace Common.Authentication.Test
             Assert.Equal(azureSubscription2.Id, client.Profile.DefaultSubscription.Id);
             Assert.Equal(azureSubscription2.Id, currentProfile.Context.Subscription.Id);
             Assert.Equal(azureSubscription2.GetAccount(), currentProfile.Context.Account.Id);
-            Assert.Equal(azureSubscription2.Environment, currentProfile.Context.GetEnvironment().Name);
+            Assert.Equal(azureSubscription2.GetEnvironment(), currentProfile.Context.Environment.Name);
             var notFoundEx = Assert.Throws<ArgumentException>(() => client.SetSubscriptionAsDefault("bad", null));
             var invalidEx = Assert.Throws<ArgumentException>(() => client.SetSubscriptionAsDefault(null, null));
             Assert.Contains("doesn't exist", notFoundEx.Message);
@@ -1236,7 +1236,7 @@ namespace Common.Authentication.Test
             currentProfile = new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
             ProfileClient client = new ProfileClient(currentProfile);
             client.AddOrSetAccount(azureAccount);
-            azureEnvironment.Endpoints[AzureEnvironment.Endpoint.ServiceManagement] = "https://newmanagement.core.windows.net/";
+            azureEnvironment.SetEndpoint(AzureEnvironment.Endpoint.ServiceManagement, "https://newmanagement.core.windows.net/");
             client.AddOrSetEnvironment(azureEnvironment);
             client.AddOrSetSubscription(azureSubscription1);
             client.SetSubscriptionAsDefault(azureSubscription1.Name, azureAccount.Id);
@@ -1393,7 +1393,7 @@ namespace Common.Authentication.Test
         private void SetMocks(List<RDFESubscription> rdfeSubscriptions,
             List<CSMSubscription> csmSubscriptions,
             List<TenantIdDescription> tenants = null,
-            Func<AzureAccount, AzureEnvironment, string, IAccessToken> tokenProvider = null)
+            Func<IAzureAccount, IAzureEnvironment, string, IAccessToken> tokenProvider = null)
         {
             ClientMocks clientMocks = new ClientMocks(new Guid(defaultSubscription));
 
@@ -1413,7 +1413,7 @@ namespace Common.Authentication.Test
                 mockFactory.TokenProvider = tokenProvider;
             }
 
-            AzureSession.AuthenticationFactory = mockFactory;
+            AzureSession.Instance.AuthenticationFactory = mockFactory;
         }
 
         private void SetMockData()
@@ -1479,40 +1479,34 @@ namespace Common.Authentication.Test
             };
             azureSubscription1 = new AzureSubscription
             {
-                Id = new Guid("56E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1E"),
-                Name = "LocalSub1",
-                Environment = "Test",
-                Account = "test",
-                Properties = new Dictionary<AzureSubscription.Property, string>
-                {
-                    { AzureSubscription.Property.Default, "True" } 
-                }
+                Id = "56E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1E",
+                Name = "LocalSub1"
             };
+            azureSubscription1.SetDefault();
+            azureSubscription1.SetEnvironment("Test");
+            azureSubscription1.SetAccount("test");
             azureSubscription2 = new AzureSubscription
             {
-                Id = new Guid("66E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1E"),
+                Id = "66E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1E",
                 Name = "LocalSub2",
-                Environment = "Test",
-                Account = "test"
             };
+            azureSubscription2.SetEnvironment("Test");
+            azureSubscription2.SetAccount("test");
             azureSubscription3withoutUser = new AzureSubscription
             {
-                Id = new Guid("76E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1E"),
+                Id = "76E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1E",
                 Name = "LocalSub3",
-                Environment = "Test",
             };
+            azureSubscription3withoutUser.SetEnvironment("Test");
             azureEnvironment = new AzureEnvironment
             {
                 Name = "Test",
-                Endpoints = new Dictionary<AzureEnvironment.Endpoint, string>
-                {
-                    { AzureEnvironment.Endpoint.ServiceManagement, "https://umapi.rdfetest.dnsdemo4.com:8443/" },
-                    { AzureEnvironment.Endpoint.ManagementPortalUrl, "https://windows.azure-test.net" },
-                    { AzureEnvironment.Endpoint.AdTenant, "https://login.windows-ppe.net/" },
-                    { AzureEnvironment.Endpoint.ActiveDirectory, "https://login.windows-ppe.net/" },
-                    { AzureEnvironment.Endpoint.Gallery, "https://current.gallery.azure-test.net" },
-                    { AzureEnvironment.Endpoint.ResourceManager, "https://api-current.resources.windows-int.net/" },
-                }
+                ServiceManagement = new Uri("https://umapi.rdfetest.dnsdemo4.com:8443/"),
+                ManagementPortalUrl = new Uri("https://windows.azure-test.net"),
+                AdTenant = "https://login.windows-ppe.net/",
+                ActiveDirectory = new Uri("https://login.windows-ppe.net/"),
+                Gallery = new Uri("https://current.gallery.azure-test.net"),
+                ResourceManager = new Uri("https://api-current.resources.windows-int.net/")
             };
             azureAccount = new AzureAccount
             {
@@ -1522,8 +1516,8 @@ namespace Common.Authentication.Test
 
             azureAccount.SetSubscriptions(azureSubscription1.Id + "," + azureSubscription2.Id);
             newProfileDataPath = Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile);
-            oldProfileDataPath = Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.OldProfileFile);
-            oldProfileDataPathError = Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.OldProfileFileBackup);
+            oldProfileDataPath = Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.OldProfileFile);
+            oldProfileDataPathError = Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.OldProfileFileBackup);
             oldProfileData = @"<?xml version=""1.0"" encoding=""utf-8""?>
                 <ProfileData xmlns:i=""http://www.w3.org/2001/XMLSchema-instance"" xmlns=""http://schemas.datacontract.org/2004/07/Microsoft.Azure.Common.Authentication"">
                   <DefaultEnvironmentName>AzureCloud</DefaultEnvironmentName>

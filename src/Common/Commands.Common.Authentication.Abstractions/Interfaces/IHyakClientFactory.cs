@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// <param name="endpoint">The named endpoint the client shoulld target</param>
         /// <returns>A client properly authenticated in the given context, properly configured for use with Azure PowerShell, 
         /// targeting the given named endpoint in the targeted environment</returns>
-        TClient CreateClient<TClient>(AzureContext context, string endpoint) where TClient : ServiceClient<TClient>;
+        TClient CreateClient<TClient>(IAzureContext context, string endpoint) where TClient : ServiceClient<TClient>;
 
         /// <summary>
         /// Create a properly configured Hyak client using the given target Azure context and named endpoint
