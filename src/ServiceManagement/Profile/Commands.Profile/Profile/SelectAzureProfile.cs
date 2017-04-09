@@ -56,7 +56,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             if (ParameterSetName == DefaultProfileParameterSet)
             {
                 AzureSMProfileProvider.Instance.ResetDefaultProfile();
-                Profile = AzureSMProfileProvider.Instance.Profile;
+                Profile = AzureSMProfileProvider.Instance.Profile as AzureSMProfile;
             }
 
             if (Profile == null)

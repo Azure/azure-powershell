@@ -142,8 +142,8 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
         private void InitializeAzureProfile(AzureSMProfile profile, string parameterSet, AzureProfileSettings settings)
         {
-            var savedCache = AzureSession.TokenCache;
-            AzureSession.TokenCache = TokenCache.DefaultShared;
+            var savedCache = AzureSession.Instance.TokenCache;
+            AzureSession.Instance.TokenCache = new AuthenticationStoreTokenCache(TokenCache.DefaultShared);
             try
             {
 
@@ -195,7 +195,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             }
             finally
             {
-                AzureSession.TokenCache = savedCache;
+                AzureSession.Instance.TokenCache = savedCache;
             }
         }
 

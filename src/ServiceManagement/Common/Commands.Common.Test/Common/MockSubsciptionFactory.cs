@@ -22,6 +22,7 @@ using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 {
@@ -32,17 +33,17 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             throw new NotImplementedException();
         }
 
-        public TClient CreateClient<TClient>(AzureSMProfile profile, AzureSubscription subscription, AzureEnvironment.Endpoint endpoint) where TClient : Hyak.Common.ServiceClient<TClient>
+        public TClient CreateClient<TClient>(IAzureContextContainer profile, AzureSubscription subscription, string endpoint) where TClient : Hyak.Common.ServiceClient<TClient>
         {
             throw new NotImplementedException();
         }
 
-        public TClient CreateClient<TClient>(AzureSMProfile profile, AzureEnvironment.Endpoint endpoint) where TClient : Hyak.Common.ServiceClient<TClient>
+        public TClient CreateClient<TClient>(IAzureContextContainer profile, string endpoint) where TClient : Hyak.Common.ServiceClient<TClient>
         {
             throw new NotImplementedException();
         }
 
-        public TClient CreateClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint) where TClient : Hyak.Common.ServiceClient<TClient>
+        public TClient CreateClient<TClient>(AzureContext context, string endpoint) where TClient : Hyak.Common.ServiceClient<TClient>
         {
             throw new NotImplementedException();
         }
@@ -95,7 +96,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         public HashSet<ProductInfoHeaderValue> UserAgents { get; set; }
 
 
-        public TClient CreateArmClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint) where TClient : Microsoft.Rest.ServiceClient<TClient>
+        public TClient CreateArmClient<TClient>(AzureContext context, string endpoint) where TClient : Microsoft.Rest.ServiceClient<TClient>
         {
             throw new NotImplementedException();
         }

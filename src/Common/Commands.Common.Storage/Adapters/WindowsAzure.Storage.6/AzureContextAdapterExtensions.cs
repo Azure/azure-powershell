@@ -12,11 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Management.Storage.Models;
+using Microsoft.WindowsAzure.Management.Storage;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.WindowsAzure.Commands.Common.Storage;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Adapters
 {
@@ -39,7 +41,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Adapters
                 }
                 catch
                 {
-                    // return null if we could not parse the connection string
+                    var storageClient = AzureSession.Instance.ClientFactory.CreateClient<StorageManagementClient>(context as AzureContext, AzureEnvironment.Endpoint.ServiceManagement);
+                    var provider = new RDFEStorageProvider(storageClient, context.Environment);
+                    var service = provider.GetStorageService(storageConnectionString, null);
+                    return (service.Context as AzureStorageContext).StorageAccount;
                 }
             }
 

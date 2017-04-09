@@ -500,7 +500,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
         /// 4. The one get from current Azure Environment
         /// </summary>
         public static string InitializeStorageAccountEndpoint(string storageAccountName, string storageAccountKey, IStorageManagementClient storageClient,
-            AzureStorageContext storageContext = null, string configurationPath = null, AzureContext defaultContext = null)
+            AzureStorageContext storageContext = null, string configurationPath = null, IAzureContext defaultContext = null)
         {
             string storageAccountEndpoint = null;
             StorageAccount storageAccount = null;

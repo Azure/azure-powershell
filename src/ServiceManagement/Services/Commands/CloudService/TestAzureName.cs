@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,6 +21,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.ServiceBus;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites;
 using Microsoft.Azure.Commands.Common.Authentication;
 using System.Reflection;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.CloudService
 {

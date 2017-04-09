@@ -150,7 +150,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AzureContextAdapterExtensions.cs" />
     <Compile Include="AzureStorageContext.cs" />
     <Compile Include="IStorageService.cs" />
     <Compile Include="IStorageServiceProvider.cs" />

@@ -28,6 +28,8 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Storage;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Storage.Adapters;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
 {
@@ -164,7 +166,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
             CloudStorageAccount currentStorage = null;
             try
             {
-                currentStorage = currentSubscription.GetCloudStorageAccount(Profile);
+                currentStorage = Profile.Context.GetCurrentStorageAccount();
             }
             catch (Exception ex) // couldn't access
             {

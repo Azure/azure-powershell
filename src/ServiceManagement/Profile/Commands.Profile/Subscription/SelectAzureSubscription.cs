@@ -21,6 +21,7 @@ using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Profile;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Profile.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
 {
@@ -146,7 +147,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
             if (subscription != null)
             {
-                return subscription.Account;
+                return subscription.GetAccount();
             }
             else
             {

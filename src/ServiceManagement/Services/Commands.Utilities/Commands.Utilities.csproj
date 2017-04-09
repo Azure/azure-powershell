@@ -204,6 +204,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\RDFE.Storage\RDFEStorageProvider.cs">
+      <Link>Common\RDFEStorageProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\AzureContextAdapterExtensions.cs">
+      <Link>Common\AzureContextAdapterExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\CloudStorageService.cs">
+      <Link>Common\CloudStorageService.cs</Link>
+    </Compile>
     <Compile Include="CloudService\AddRole.cs" />
     <Compile Include="CloudService\CloudServiceClient.cs" />
     <Compile Include="CloudService\ICloudServiceClient.cs" />
