@@ -56,6 +56,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public EnvironmentSetupHelper()
         {
+            AzureSessionInitializer.InitializeAzureSession();
             var datastore = new MemoryDataStore();
             AzureSession.Instance.DataStore = datastore;
             var profile = new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));

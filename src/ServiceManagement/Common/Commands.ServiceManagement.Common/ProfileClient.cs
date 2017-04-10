@@ -651,7 +651,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
                 throw new ArgumentException(string.Format(Resources.SubscriptionNameNotFoundMessage, name), "name");
             }
 
-            return SetSubscriptionAsDefault(subscription.Id, accountName);
+            return SetSubscriptionAsDefault(subscription.GetId(), accountName);
         }
 
         public AzureSubscription SetSubscriptionAsDefault(Guid id, string accountName)

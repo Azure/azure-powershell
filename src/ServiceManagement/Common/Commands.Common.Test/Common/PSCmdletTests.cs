@@ -37,6 +37,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
     {
         public PSCmdletTests(ITestOutputHelper output)
         {
+            AzureSessionInitializer.InitializeAzureSession();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 

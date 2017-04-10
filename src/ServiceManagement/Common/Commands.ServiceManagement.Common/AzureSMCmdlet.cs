@@ -56,6 +56,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         static AzureSMCmdlet()
         {
+            ServiceManagementProfileProvider.InitializeServiceManagementProfile();
             if (!TestMockSupport.RunningMocked)
             {
                 AzureSession.Instance.ClientFactory.AddAction(new RPRegistrationAction());

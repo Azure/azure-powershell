@@ -31,6 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         public AuthenticationFactoryTests(ITestOutputHelper output)
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            AzureSessionInitializer.InitializeAzureSession();
         }
 
         [Fact]

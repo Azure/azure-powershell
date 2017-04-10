@@ -61,6 +61,7 @@ namespace Common.Authentication.Test
 
         public ProfileClientTests(ITestOutputHelper output)
         {
+            AzureSessionInitializer.InitializeAzureSession();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             SetMockData();
             currentProfile = new AzureSMProfile();
