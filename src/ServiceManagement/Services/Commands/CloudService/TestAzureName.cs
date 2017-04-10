@@ -22,6 +22,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Websites;
 using Microsoft.Azure.Commands.Common.Authentication;
 using System.Reflection;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.CloudService
 {
@@ -122,6 +123,8 @@ namespace Microsoft.WindowsAzure.Commands.CloudService
         {
             try
             {
+                AzureSessionInitializer.InitializeAzureSession();
+                ServiceManagementProfileProvider.InitializeServiceManagementProfile();
                 System.Management.Automation.PowerShell invoker = null;
                 invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
                 invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(

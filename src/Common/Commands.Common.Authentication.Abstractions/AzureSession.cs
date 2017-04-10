@@ -89,11 +89,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// </summary>
         /// <param name="instance">The instance of AzureSession to use</param>
         /// <param name="overwrite">If true, always overwrite the current instance.  Otherwise do not initialize</param>
-        public static void Initialize(IAzureSession instance, bool overwrite)
+        public static void Initialize(Func<IAzureSession> instanceCreator, bool overwrite)
         {
             if (Interlocked.Exchange(ref _initialized, 1) == 0 || overwrite)
             {
-                _instance = instance;
+                _instance = instanceCreator();
             }
         }
 
@@ -101,9 +101,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// Initialize the current instance, if it it not already inbitialized
         /// </summary>
         /// <param name="instance"></param>
-        public static void Initialize(IAzureSession instance)
+        public static void Initialize(Func<IAzureSession> instanceCreator)
         {
-            Initialize(instance, false);
+            Initialize(instanceCreator, false);
         }
     }
 }

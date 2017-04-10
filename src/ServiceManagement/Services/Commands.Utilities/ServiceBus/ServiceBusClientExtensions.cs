@@ -34,6 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.ServiceBus
     using Microsoft.Azure.Commands.Common.Authentication;
     using Hyak.Common;
     using Azure.Commands.Common.Authentication.Abstractions;
+    using Common;
 
     public class ServiceBusClientExtensions
     {

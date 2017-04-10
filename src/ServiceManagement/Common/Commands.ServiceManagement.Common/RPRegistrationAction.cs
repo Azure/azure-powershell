@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.Resources;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -144,12 +145,11 @@ namespace Microsoft.Azure.ServiceManagemenet.Common.Models
 
         public void ApplyArm<TClient>(TClient client, IAzureContextContainer container, string endpoint) where TClient : Rest.ServiceClient<TClient>
         {
-            var profile = container as AzureRMProfile;
             Debug.Assert(ClientFactory != null);
 
             if (endpoint == AzureEnvironment.Endpoint.ResourceManager)
             {
-                RegisterResourceManagerProviders<TClient>(profile);
+                RegisterResourceManagerProviders<TClient>(container);
             }
         }
     }

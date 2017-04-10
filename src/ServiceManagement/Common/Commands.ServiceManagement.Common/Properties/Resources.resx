@@ -117,25 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CertificateNotFoundInStore" xml:space="preserve">
-    <value>No certificate was found in the certificate store with thumbprint {0}</value>
+  <data name="BadProfileTypeArgument" xml:space="preserve">
+    <value>[ServiceManagement]: Type argument to GetProfile must be AzureSMProfile</value>
   </data>
-  <data name="IllegalPath" xml:space="preserve">
-    <value>Illegal characters in path.</value>
+  <data name="NoAccountInContext" xml:space="preserve">
+    <value>[ServiceManagement]: No matching account record for account {0} in subscription {1}</value>
   </data>
-  <data name="InvalidCertificate" xml:space="preserve">
-    <value>Invalid certificate format. Publish settings may be corrupted. Use Get-AzurePublishSettingsFile to download updated settings</value>
-  </data>
-  <data name="InvalidDnsName" xml:space="preserve">
-    <value>"{0}" is an invalid DNS name for {1}</value>
-  </data>
-  <data name="NoInternetConnection" xml:space="preserve">
-    <value>Please connect to internet before executing this cmdlet</value>
-  </data>
-  <data name="PublishSettingsFileRealmFormat" xml:space="preserve">
-    <value>&amp;whr={0}</value>
-  </data>
-  <data name="ServiceNameExists" xml:space="preserve">
-    <value>The provided service name {0} already exists, please pick another name</value>
+  <data name="NoEnvironmentInContext" xml:space="preserve">
+    <value>[ServiceManagement]: No matching environment record for environment {0} in subscription {1}, using AzureCloud environment instead</value>
   </data>
 </root>

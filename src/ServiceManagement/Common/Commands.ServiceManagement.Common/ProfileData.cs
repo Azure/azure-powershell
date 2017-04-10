@@ -13,15 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace Microsoft.Azure.Commands.Common.Authentication
-{
+namespace Microsoft.WindowsAzure.Commands.Utilities.Common
+{ 
     /// <summary>
     /// This class provides the representation of data loaded and saved into data files
     /// for AzureSMProfile.

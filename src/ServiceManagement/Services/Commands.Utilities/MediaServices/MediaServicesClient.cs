@@ -33,6 +33,7 @@ using Newtonsoft.Json;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.MediaServices
 {

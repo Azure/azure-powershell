@@ -12,9 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Properties;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -22,7 +23,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace Microsoft.Azure.Commands.Common.Authentication
+namespace Microsoft.WindowsAzure.Commands.Common
 {
     /// <summary>
     /// File utilities using the data store

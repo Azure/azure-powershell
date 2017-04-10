@@ -31,6 +31,7 @@ using Microsoft.Azure;
 using System.IO;
 using Microsoft.Azure.ServiceManagemenet.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 {

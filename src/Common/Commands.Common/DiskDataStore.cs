@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Properties;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 using System;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
-namespace Microsoft.Azure.Commands.Common.Authentication.Models
+namespace Microsoft.WindowsAzure.Commands.Common
 {
     /// <summary>
     /// A ddata store based on the managed windows file system functions (System.IO)

@@ -12,7 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Properties;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
@@ -21,7 +22,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
 
-namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
+namespace Microsoft.WindowsAzure.Commands.Common
 {
     /// <summary>
     /// Common validation methods

@@ -13,17 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using System;
 using System.Threading;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
-    public class AzureRmProfileProvider : IProfileProvider
+    public abstract class AzureRmProfileProvider: IProfileProvider 
     {
         private static int _initialized = 0;
         public static AzureRmProfileProvider Instance { get; private set; }
         public virtual IAzureContextContainer Profile { get; set; }
-
+        public abstract T GetProfile<T>() where T : class, IAzureContextContainer;
         public virtual void SetTokenCacheForProfile(IAzureContextContainer profile)
         {
 
@@ -39,11 +39,11 @@ namespace Microsoft.WindowsAzure.Commands.Common
         /// </summary>
         /// <param name="provider">The provider to initialize with</param>
         /// <param name="overwrite">if true, overwrite the existing provider, if it was previously initialized</param>
-        public static void SetInstance(AzureRmProfileProvider provider, bool overwrite)
+        public static void SetInstance(Func<AzureRmProfileProvider> provider, bool overwrite)
         {
             if (Interlocked.Exchange(ref _initialized, 1) == 0 || overwrite)
             {
-                Instance = provider;
+                Instance = provider();
             }
         }
 
@@ -51,7 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
         /// Set the instance of the profile provider for AzureRM, if it is not already initialized
         /// </summary>
         /// <param name="provider">The provider</param>
-        public static void SetInstance(AzureRmProfileProvider provider)
+        public static void SetInstance(Func<AzureRmProfileProvider> provider)
         {
             SetInstance(provider, false);
         }

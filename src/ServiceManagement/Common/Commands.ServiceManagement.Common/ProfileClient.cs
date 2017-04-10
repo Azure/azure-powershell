@@ -15,9 +15,9 @@
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Subscriptions;
 using System;
 using System.Collections.Generic;
@@ -823,7 +823,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
         private string[] LoadAccountTenants(AzureAccount account, AzureEnvironment environment, SecureString password, ShowDialog promptBehavior)
         {
             var commonTenantToken = AzureSession.Instance.AuthenticationFactory.Authenticate(account, environment,
-                AuthenticationFactory.CommonAdTenant, password, promptBehavior);
+                environment.AdTenant, password, promptBehavior);
 
             using (SubscriptionClient SubscriptionClient = AzureSession.Instance.ClientFactory
                         .CreateCustomClient<SubscriptionClient>(

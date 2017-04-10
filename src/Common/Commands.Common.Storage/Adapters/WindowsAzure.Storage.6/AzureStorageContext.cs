@@ -14,10 +14,11 @@
 
 namespace Microsoft.WindowsAzure.Commands.Common.Storage
 {
-    using global::Commands.Common.Authentication.Abstractions;
+    using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.WindowsAzure.Commands.Common.Storage.Properties;
     using Microsoft.WindowsAzure.Storage;
     using System;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Storage context
@@ -121,6 +122,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
         }
 
         /// <summary>
+        /// Custom propeties for the storage context
+        /// </summary>
+        public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+
+        /// <summary>
         /// Create a storage context usign cloud storage account
         /// </summary>
         /// <param name="account">cloud storage account</param>
@@ -156,11 +162,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
             {
                 if (account.Credentials.IsSAS)
                 {
-                    StorageAccountName = Resources.SasTokenAccountName;
+                    StorageAccountName = "[SasToken]";
                 }
                 else
                 {
-                    StorageAccountName = Resources.AnonymousAccountName;
+                    StorageAccountName = "[Anonymous]";
                 }
             }
         }

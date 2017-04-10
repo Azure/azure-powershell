@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Microsoft.Azure.Commands.Common.Authentication
+namespace Microsoft.WindowsAzure.Commands.Common
 {
     public static class JsonUtilities
     {

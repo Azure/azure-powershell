@@ -12,17 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using System.Collections.Generic;
-
-namespace Microsoft.Azure.Commands.Common.Authentication
+namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
-    public interface IProfileSerializer
+    public interface IProfileProvider
     {
-        string Serialize(AzureSMProfile profile);
-
-        bool Deserialize(string contents, AzureSMProfile profile);
-
-        IList<string> DeserializeErrors { get; }
+        IAzureContextContainer Profile { get; set; }
+        T GetProfile<T>() where T : class, IAzureContextContainer;
+        void SetTokenCacheForProfile(IAzureContextContainer profile);
+        void ResetDefaultProfile();
     }
 }

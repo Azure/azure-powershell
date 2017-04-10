@@ -14,14 +14,15 @@
 
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Common.Properties;
 
-namespace Microsoft.Azure.Commands.Common.Authentication.Models
+namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
     /// <summary>
     /// Represents Azure profile structure with multiple environments, subscriptions, and accounts.
@@ -161,11 +162,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         }
 
         [JsonIgnore]
-        IEnumerable<Abstractions.AzureEnvironment> IAzureContextContainer.Environments
+       public IEnumerable<AzureEnvironment> Environments
         {
             get
             {
                 return EnvironmentTable.Values;
+            }
+        }
+
+        [JsonIgnore]
+        public IEnumerable<AzureAccount> Accounts
+        {
+            get
+            {
+                return AccountTable.Values;
             }
         }
 
@@ -185,7 +195,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         }
 
         [JsonIgnore]
-        public ICollection<Abstractions.AzureContext> Values
+        public ICollection<AzureContext> Values
         {
             get
             {
@@ -212,7 +222,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         }
 
         [JsonIgnore]
-        public Abstractions.AzureContext this[string key]
+        public AzureContext this[string key]
         {
             get
             {
@@ -341,7 +351,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             return _contexts.ContainsKey(key);
         }
 
-        public void Add(string key, Abstractions.AzureContext value)
+        public void Add(string key, AzureContext value)
         {
             _contexts.Add(key, value);
         }
@@ -351,12 +361,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
            return _contexts.Remove(key);
         }
 
-        public bool TryGetValue(string key, out Abstractions.AzureContext value)
+        public bool TryGetValue(string key, out AzureContext value)
         {
             return _contexts.TryGetValue(key, out value);
         }
 
-        public void Add(KeyValuePair<string, Abstractions.AzureContext> item)
+        public void Add(KeyValuePair<string, AzureContext> item)
         {
             if (item.Key != null && item.Value != null)
             {
@@ -369,12 +379,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             _contexts.Clear();
         }
 
-        public bool Contains(KeyValuePair<string, Abstractions.AzureContext> item)
+        public bool Contains(KeyValuePair<string, AzureContext> item)
         {
             return _contexts.Contains(item);
         }
 
-        public void CopyTo(KeyValuePair<string, Abstractions.AzureContext>[] array, int arrayIndex)
+        public void CopyTo(KeyValuePair<string, AzureContext>[] array, int arrayIndex)
         {
             if (array != null && arrayIndex >= 0)
             {
@@ -385,12 +395,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             }
         }
 
-        public bool Remove(KeyValuePair<string, Abstractions.AzureContext> item)
+        public bool Remove(KeyValuePair<string, AzureContext> item)
         {
             return _contexts.Remove(item.Key);
         }
 
-        public IEnumerator<KeyValuePair<string, Abstractions.AzureContext>> GetEnumerator()
+        public IEnumerator<KeyValuePair<string, AzureContext>> GetEnumerator()
         {
            return  _contexts.GetEnumerator();
         }

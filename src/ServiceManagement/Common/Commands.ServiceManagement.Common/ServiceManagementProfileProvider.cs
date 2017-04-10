@@ -14,11 +14,10 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
 using System.IO;
+using System;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Common.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
@@ -26,11 +25,6 @@ namespace Microsoft.WindowsAzure.Commands.Common
     {
         private AzureSMProfile _profile;
         private AzureSMProfile _defaultProfile;
-        private IAuthenticationStore _defaultDiskTokenCache;
-        private ServiceManagementProfileProvider()
-        {
-            _defaultDiskTokenCache = new AuthenticationStoreTokenCache(TokenCache.DefaultShared);
-        }
 
         public override IAzureContextContainer Profile
         {
@@ -53,6 +47,16 @@ namespace Microsoft.WindowsAzure.Commands.Common
             set { SetProfileValue(value); }
         }
 
+        public override T GetProfile<T>() 
+        {
+           if (!typeof(T).IsAssignableFrom(typeof(AzureSMProfile)))
+            {
+                throw new ArgumentOutOfRangeException(nameof(T), Resources.BadProfileTypeArgument);
+            }
+
+            return _profile as T;
+        }
+
         /// <summary>
         /// Create the default profile, based on the default profile path
         /// </summary>
@@ -64,9 +68,6 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 try
                 {
                     GeneralUtilities.EnsureDefaultProfileDirectoryExists();
-                    _defaultDiskTokenCache = new ProtectedFileTokenCache(
-                        Path.Combine(AzureSession.Instance.ProfileDirectory,
-                        AzureSession.Instance.TokenCacheFile));
                     return new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory,
                         AzureSession.Instance.ProfileFile));
                 }
@@ -76,7 +77,6 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 }
             }
 
-            _defaultDiskTokenCache = new AuthenticationStoreTokenCache(TokenCache.DefaultShared);
             return new AzureSMProfile();
         }
 
@@ -84,7 +84,6 @@ namespace Microsoft.WindowsAzure.Commands.Common
         {
             AzureSMProfile profile = container as AzureSMProfile;
             _profile = profile;
-            SetTokenCacheForProfile(profile);
         }
 
         public override void ResetDefaultProfile()
@@ -94,16 +93,14 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public override void SetTokenCacheForProfile(IAzureContextContainer container)
         {
-            var profile = container as AzureSMProfile;
-            var defaultProfilePath = Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile);
-            if (_profile == null || string.Equals(profile.ProfilePath, defaultProfilePath, StringComparison.OrdinalIgnoreCase))
-            {
-                AzureSession.Instance.TokenCache = _defaultDiskTokenCache;
-            }
-            else
-            {
-                AzureSession.Instance.TokenCache = new AuthenticationStoreTokenCache(TokenCache.DefaultShared);
-            }
+        }
+
+        /// <summary>
+        /// Initialize the profile provider for service management cmdlets
+        /// </summary>
+        public static void InitializeServiceManagementProfile()
+        {
+            SetInstance(() => new ServiceManagementProfileProvider());
         }
     }
 }

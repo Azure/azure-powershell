@@ -16,19 +16,20 @@ using Microsoft.WindowsAzure.Commands.Common.Storage;
 using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using System.Linq;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Common.Storage.Adapters
 {
+    /// <summary>
+    /// RDFE Storage Service
+    /// </summary>
     public class CloudStorageService : IStorageService
     {
         string _name;
         List<string> _authenticationKeys = new List<string>();
         IAzureEnvironment _environment;
-        AzureStorageContext _context;
+        Uri _blobEndpoint, _queueEndpoint, _tableEndpoint, _fileEndpoint;
+
         public CloudStorageService(string accountName,
             string[] authenticationKeys, IAzureEnvironment environment)
         {
@@ -38,32 +39,31 @@ namespace Microsoft.Azure.Commands.Common.Storage.Adapters
                 _authenticationKeys.Add(key);
             }
             _environment = environment;
-           var storage = new CloudStorageAccount(new StorageCredentials(accountName, authenticationKeys.First()),
-                new StorageUri(environment.GetStorageBlobEndpoint(accountName, true)),
-                new StorageUri(environment.GetStorageQueueEndpoint(accountName, true)),
-                new StorageUri(environment.GetStorageTableEndpoint(accountName, true)),
-                new StorageUri(environment.GetStorageFileEndpoint(accountName, true)));
-            _context = new AzureStorageContext(storage);
+
+            _blobEndpoint = environment.GetStorageBlobEndpoint(accountName, true);
+            _queueEndpoint = environment.GetStorageQueueEndpoint(accountName, true);
+            _tableEndpoint = environment.GetStorageTableEndpoint(accountName, true);
+            _fileEndpoint = environment.GetStorageFileEndpoint(accountName, true);
         }
 
         public Uri BlobEndpoint
         {
-            get { return new Uri(_context.BlobEndPoint); }
+            get { return _blobEndpoint; }
         }
 
         public Uri FileEndpoint
         {
-            get { return new Uri(_context.FileEndPoint); }
+            get { return _fileEndpoint; }
         }
 
         public Uri QueueEndpoint
         {
-            get { return new Uri(_context.QueueEndPoint); }
+            get { return _queueEndpoint; }
         }
 
         public Uri TableEndpoint
         {
-            get { return new Uri(_context.TableEndPoint); }
+            get { return _tableEndpoint; }
         }
 
         public string Name
@@ -74,14 +74,6 @@ namespace Microsoft.Azure.Commands.Common.Storage.Adapters
         public List<string> AuthenticationKeys
         {
             get { return _authenticationKeys; }
-        }
-
-        public IStorageContext Context
-        {
-            get
-            {
-                return _context;
-            }
         }
 
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);

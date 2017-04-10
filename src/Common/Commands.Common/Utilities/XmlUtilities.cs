@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 using System;
 using System.IO;
 using System.Text;
@@ -21,7 +21,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 
-namespace Microsoft.Azure.Commands.Common.Authentication
+namespace Microsoft.WindowsAzure.Commands.Common
 {
     public static class XmlUtilities
     {

@@ -20,6 +20,7 @@ using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.ServiceManagemenet.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 {

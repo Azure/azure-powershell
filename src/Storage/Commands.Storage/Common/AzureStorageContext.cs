@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.WindowsAzure.Commands.Common.Storage
+namespace Microsoft.WindowsAzure.Commands.Storage
 {
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.WindowsAzure.Commands.Common.Storage.Properties;
@@ -162,11 +162,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
             {
                 if (account.Credentials.IsSAS)
                 {
-                    StorageAccountName = Resources.SasTokenAccountName;
+                    StorageAccountName = "[SasToken]";
                 }
                 else
                 {
-                    StorageAccountName = Resources.AnonymousAccountName;
+                    StorageAccountName = "[Anonymous]";
                 }
             }
         }

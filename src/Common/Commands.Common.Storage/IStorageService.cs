@@ -18,7 +18,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Storage
 {
-    public interface IStorageService : IStorageContextProvider
+    public interface IStorageService
     {
         /// <summary>
         /// The blob service endpoint

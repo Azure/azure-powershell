@@ -148,7 +148,6 @@
     <Compile Include="PermissiveRecordMatcherWithApiExclusion.cs" />
     <Compile Include="PowerShellExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SMTestBase.cs" />
     <Compile Include="XunitTracingInterceptor.cs" />
   </ItemGroup>
   <ItemGroup>

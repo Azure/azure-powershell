@@ -37,8 +37,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         IAuthenticationStore TokenStore { get; set; }
 
         /// <summary>
-        /// The set of all subscriptions used in the environemnts
+        /// The set of all subscriptions used in the container
         /// </summary>
         IEnumerable<AzureSubscription> Subscriptions { get; }
+
+        /// <summary>
+        /// The set of all accounts in the container
+        /// </summary>
+        IEnumerable<AzureAccount> Accounts { get; }
     }
 }

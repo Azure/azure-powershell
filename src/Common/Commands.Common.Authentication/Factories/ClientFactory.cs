@@ -115,11 +115,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
         public virtual TClient CreateClient<TClient>(IAzureContextContainer container, string endpoint) where TClient : ServiceClient<TClient>
         {
-            var profile = container as AzureSMProfile;
-            TClient client = CreateClient<TClient>(profile.Context, endpoint);
+            TClient client = CreateClient<TClient>(container.DefaultContext, endpoint);
             foreach (IClientAction action in GetActions())
             {
-                action.Apply<TClient>(client, profile, endpoint);
+                action.Apply<TClient>(client, container, endpoint);
             }
 
             return client;
@@ -139,27 +138,28 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         /// or
         /// environment
         /// </exception>
-        public virtual TClient CreateClient<TClient>(IAzureContextContainer container, AzureSubscription subscription, string endpoint) where TClient : ServiceClient<TClient>
+        public virtual TClient CreateClient<TClient>(IAzureContextContainer profile, AzureSubscription subscription, string endpoint) where TClient : ServiceClient<TClient>
         {
-            var profile = container as AzureSMProfile;
             if (subscription == null)
             {
                 throw new ApplicationException(Resources.InvalidDefaultSubscription);
             }
 
-            if (!profile.AccountTable.ContainsKey(subscription.GetAccount()))
+            var account = profile.Accounts.FirstOrDefault((a) => string.Equals(a.Id, (subscription.GetAccount()), StringComparison.OrdinalIgnoreCase));
+
+            if (null == account)
             {
                 throw new ArgumentException(string.Format("Account with name '{0}' does not exist.", subscription.GetAccount()), "accountName");
             }
 
-            if (!profile.EnvironmentTable.ContainsKey(subscription.GetEnvironment()))
+            var environment = profile.Environments.FirstOrDefault((e) => string.Equals(e.Name, subscription.GetEnvironment(), StringComparison.OrdinalIgnoreCase));
+
+            if (null == environment)
             {
                 throw new ArgumentException(string.Format(Resources.EnvironmentNotFound, subscription.GetEnvironment()));
             }
 
-            AzureContext context = new AzureContext(subscription,
-                profile.AccountTable[subscription.GetAccount()],
-                profile.EnvironmentTable[subscription.GetEnvironment()]);
+            AzureContext context = new AzureContext(subscription, account, environment);
 
             TClient client = CreateClient<TClient>(context, endpoint);
 

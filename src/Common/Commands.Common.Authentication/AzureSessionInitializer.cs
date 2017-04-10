@@ -12,27 +12,36 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.IO;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
     /// <summary>
-    /// Represents current Azure session.
+    /// Initializer for the current Azure session.
     /// </summary>
     public static class AzureSessionInitializer
     {
+        /// <summary>
+        /// Initialize the azure session if it is not already initialized
+        /// </summary>
         public static void InitializeAzureSession()
+        {
+            AzureSession.Initialize(CreateInstance);
+        }
+
+        static IAzureSession CreateInstance()
         {
             var session = new AzureSession
             {
                 ClientFactory = new ClientFactory(),
                 AuthenticationFactory = new AuthenticationFactory(),
-                DataStore = new MemoryDataStore(),
-                TokenCache = new AuthenticationStoreTokenCache(new Abstractions.AuthenticationStore()),
+                DataStore = new DiskDataStore(),
                 OldProfileFile = "WindowsAzureProfile.xml",
                 OldProfileFileBackup = "WindowsAzureProfile.xml.bak",
                 ProfileDirectory = Path.Combine(
@@ -41,6 +50,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 ProfileFile = "AzureProfile.json",
                 TokenCacheFile = "TokenCache.dat"
             };
+            try
+            {
+                FileUtilities.DataStore = session.DataStore;
+                FileUtilities.EnsureDirectoryExists(session.ProfileDirectory);
+                var cacheFile = Path.Combine(session.ProfileDirectory, session.TokenCacheFile);
+                session.TokenCache = new ProtectedFileTokenCache(cacheFile);
+            }
+            catch
+            {
+                session.TokenCache = new AuthenticationStoreTokenCache(new AuthenticationStore());
+            }
+
+            return session;
         }
     }
 }

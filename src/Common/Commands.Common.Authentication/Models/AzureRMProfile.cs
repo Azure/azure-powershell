@@ -62,6 +62,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             }
         }
 
+        public IEnumerable<AzureAccount> Accounts
+        {
+            get
+            {
+                return Contexts.Values.Select((c) => c.Account);
+            }
+        }
+
         public IAuthenticationStore TokenStore { get; set; } = new AuthenticationStoreTokenCache(new AuthenticationStore());
 
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);

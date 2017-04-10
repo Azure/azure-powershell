@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions.Properties {
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions.Properties
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Common.Authentication.Abstractions.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.WindowsAzure.Commands.ServiceManagement.Common.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,65 +61,29 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions.Properties
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No certificate was found in the certificate store with thumbprint {0}.
+        ///   Looks up a localized string similar to [ServiceManagement]: Type argument to GetProfile must be AzureSMProfile.
         /// </summary>
-        internal static string CertificateNotFoundInStore {
+        internal static string BadProfileTypeArgument {
             get {
-                return ResourceManager.GetString("CertificateNotFoundInStore", resourceCulture);
+                return ResourceManager.GetString("BadProfileTypeArgument", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Illegal characters in path..
+        ///   Looks up a localized string similar to [ServiceManagement]: No matching account record for account {0} in subscription {1}.
         /// </summary>
-        internal static string IllegalPath {
+        internal static string NoAccountInContext {
             get {
-                return ResourceManager.GetString("IllegalPath", resourceCulture);
+                return ResourceManager.GetString("NoAccountInContext", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid certificate format. Publish settings may be corrupted. Use Get-AzurePublishSettingsFile to download updated settings.
+        ///   Looks up a localized string similar to [ServiceManagement]: No matching environment record for environment {0} in subscription {1}, using AzureCloud environment instead.
         /// </summary>
-        internal static string InvalidCertificate {
+        internal static string NoEnvironmentInContext {
             get {
-                return ResourceManager.GetString("InvalidCertificate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &quot;{0}&quot; is an invalid DNS name for {1}.
-        /// </summary>
-        internal static string InvalidDnsName {
-            get {
-                return ResourceManager.GetString("InvalidDnsName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Please connect to internet before executing this cmdlet.
-        /// </summary>
-        internal static string NoInternetConnection {
-            get {
-                return ResourceManager.GetString("NoInternetConnection", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;whr={0}.
-        /// </summary>
-        internal static string PublishSettingsFileRealmFormat {
-            get {
-                return ResourceManager.GetString("PublishSettingsFileRealmFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The provided service name {0} already exists, please pick another name.
-        /// </summary>
-        internal static string ServiceNameExists {
-            get {
-                return ResourceManager.GetString("ServiceNameExists", resourceCulture);
+                return ResourceManager.GetString("NoEnvironmentInContext", resourceCulture);
             }
         }
     }

@@ -148,6 +148,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\ResourceModel\AzureStorageBlob.cs">
+      <Link>Common\AzureStorageBlob.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\ResourceModel\AzureStorageContainer.cs">
+      <Link>Common\AzureStorageContainer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\ResourceModel\AzureStorageQueue.cs">
+      <Link>Common\AzureStorageQueue.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\ResourceModel\AzureStorageTable.cs">
+      <Link>Common\AzureStorageTable.cs</Link>
+    </Compile>
     <Compile Include="Blob\Cmdlet\GetAzureStorageBlob.cs" />
     <Compile Include="Blob\Cmdlet\GetAzureStorageBlobContent.cs" />
     <Compile Include="Blob\Cmdlet\GetAzureStorageBlobCopyState.cs" />
@@ -165,6 +177,7 @@
     <Compile Include="Blob\Cmdlet\SetAzureStorageContainerStoredAccessPolicy.cs" />
     <Compile Include="Blob\DataMovementUserData.cs" />
     <Compile Include="Common\AccessPolicyHelper.cs" />
+    <Compile Include="Common\AzureStorageContext.cs" />
     <Compile Include="Common\BlobToAzureFileNameResolver.cs" />
     <Compile Include="Common\BlobToFileNameResolver.cs" />
     <Compile Include="Common\BlobUploadRequestQueue.cs" />
