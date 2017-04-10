@@ -101,12 +101,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                     nextPageLink = pageResult.NextPageLink;
                 }
+                var psObject = new List<PSDiskList>();
                 foreach (var r in resultList)
                 {
-                    var psObject = new PSDisk();
-                    Mapper.Map<Disk, PSDisk>(r, psObject);
-                    WriteObject(psObject);
+                    psObject.Add(Mapper.Map<Disk, PSDiskList>(r));
                 }
+                WriteObject(psObject);
             }
             else
             {
@@ -122,12 +122,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                     nextPageLink = pageResult.NextPageLink;
                 }
+                var psObject = new List<PSDiskList>();
                 foreach (var r in resultList)
                 {
-                    var psObject = new PSDisk();
-                    Mapper.Map<Disk, PSDisk>(r, psObject);
-                    WriteObject(psObject);
+                    psObject.Add(Mapper.Map<Disk, PSDiskList>(r));
                 }
+                WriteObject(psObject);
             }
         }
 
