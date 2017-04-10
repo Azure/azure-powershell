@@ -43,10 +43,6 @@ Filters active directory users.
 ## EXAMPLES
 
 ### --------------------------  Filters users using UPN  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 PS C:\> Get-AzureRmADUser -UPN foo@domain.com
 ```
@@ -54,10 +50,6 @@ PS C:\> Get-AzureRmADUser -UPN foo@domain.com
 Gets user with foo@domain.com
 
 ### --------------------------  Filters users using Search String  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 PS C:\> Get-AzureRmADUser -SearchString Joe
 ```
@@ -65,10 +57,6 @@ PS C:\> Get-AzureRmADUser -SearchString Joe
 Filters all ad users that has Joe in the display name.
 
 ### --------------------------  List AD users  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 PS C:\> Get-AzureRmADUser
 ```

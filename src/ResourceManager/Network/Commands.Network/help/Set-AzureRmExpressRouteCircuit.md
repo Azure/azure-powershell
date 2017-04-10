@@ -23,7 +23,7 @@ The **Set-AzureRmExpressRouteCircuit** cmdlet saves the modified ExpressRoute ci
 
 ### Example 1: Change the ServiceKey of an ExpressRoute circuit
 ```
-$ckt = Get-AzureRmExpressRouteCircuitï¿½-Nameï¿½$CircuitNameï¿½-ResourceGroupNameï¿½$rg
+$ckt = Get-AzureRmExpressRouteCircuit -Name $CircuitName -ResourceGroupName $rg
 $ckt.ServiceKey = '64ce99dd-ee70-4e74-b6b8-91c6307433a0'
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```

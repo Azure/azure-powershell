@@ -103,10 +103,6 @@ ResourceName, ResourceType, ResourceGroupName and (optionally) ParentResource - 
 ## EXAMPLES
 
 ### --------------------------  Example 1  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 PS C:\> Remove-AzureRmRoleAssignment -ResourceGroupName rg1 -SignInName john.doe@contoso.com -RoleDefinitionName Reader
 ```
@@ -114,10 +110,6 @@ PS C:\> Remove-AzureRmRoleAssignment -ResourceGroupName rg1 -SignInName john.doe
 Removes a role assignment for john.doe@contoso.com who is assigned to the Reader role at the rg1 resourcegroup scope.
 
 ### --------------------------  Example 2  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 PS C:\> Remove-AzureRmRoleAssignment -ObjectId 36f81fc3-b00f-48cd-8218-3879f51ff39f -RoleDefinitionName Reader
 ```

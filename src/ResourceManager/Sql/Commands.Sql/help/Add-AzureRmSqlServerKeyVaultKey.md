@@ -23,10 +23,6 @@ The server must have 'get, wrapKey, unwrapKey' permissions to the vault.
 ## EXAMPLES
 
 ### --------------------------  Example 1: Add Key Vault key  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 PS C:\> Add-AzureRmSqlServerKeyVaultKey -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' -ServerName 'ContosoServer' -ResourceGroupName 'ContosoResourceGroup'
 ```

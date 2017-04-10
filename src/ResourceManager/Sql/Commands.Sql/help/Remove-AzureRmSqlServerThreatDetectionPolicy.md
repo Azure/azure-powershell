@@ -25,12 +25,6 @@ To use this cmdlet, specify the ResourceGroupName and ServerName parameters to i
 ## EXAMPLES
 
 ### --------------------------  Example 1: Remove a threat detection policy for a database  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
-
-
 ```
 PS C:\> Remove-AzureRmSqlServerThreatDetectionPolicy -ResourceGroupName "ResourceGroup11" -ServerName "Server01"
 ```

@@ -28,6 +28,7 @@ The **Remove-AzureRmVirtualNetworkGatewayConnection** cmdlet deletes the object 
 ```
 Remove-AzureRmVirtualNetworkGatewayConnection -Name myTunnel -ResourceGroupName myRG
 ```
+
 Deletes the object of the Virtual Network Gateway Connection with the name "myTunnel" within the resource group "myRG"
 
 ## PARAMETERS

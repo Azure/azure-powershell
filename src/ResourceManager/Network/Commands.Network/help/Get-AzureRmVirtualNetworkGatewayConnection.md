@@ -27,6 +27,7 @@ The **Get-AzureRmVirtualNetworkGatewayConnection** cmdlet returns the object of 
 ```
 Get-AzureRmVirtualNetworkGatewayConnection -Name myTunnel -ResourceGroupName myRG
 ```
+
 Returns the object of the Virtual Network Gateway Connection with the name "myTunnel" within the resource group "myRG"
 
 ## PARAMETERS

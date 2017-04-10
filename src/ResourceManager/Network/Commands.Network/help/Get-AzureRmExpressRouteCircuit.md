@@ -25,7 +25,7 @@ operate on ExpressRoute circuits.
 
 ### Example 1: Get the ExpressRoute circuit to be deleted
 ```
-Get-AzureRmExpressRouteCircuitï¿½-Nameï¿½$CircuitNameï¿½-ResourceGroupNameï¿½$rg | Remove-AzureRmExpressRouteCircuit
+Get-AzureRmExpressRouteCircuit -Name $CircuitName -ResourceGroupName $rg | Remove-AzureRmExpressRouteCircuit
 ```
 
 ## PARAMETERS

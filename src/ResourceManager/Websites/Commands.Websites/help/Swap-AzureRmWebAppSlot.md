@@ -1,4 +1,5 @@
 ---
+external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
 schema: 2.0.0
 ---
 

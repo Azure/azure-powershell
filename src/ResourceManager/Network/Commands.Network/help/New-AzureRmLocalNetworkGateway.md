@@ -30,6 +30,7 @@ The **New-AzureRmLocalNetworkGateway** cmdlet creates the object representing yo
 ```
 New-AzureRmLocalNetworkGateway -Name myLocalGW -ResourceGroupName myRG -Location "West US" -GatewayIpAddress 23.99.221.164 -AddressPrefix "10.5.51.0/24"
 ```
+
 Creates the object of the Local Network Gateway with the name "myLocalGW" within the resource group "myRG" in location "West US" with the IP address "23.99.221.164" and the address prefix "10.5.51.0/24" on-prem.
 
 ## PARAMETERS

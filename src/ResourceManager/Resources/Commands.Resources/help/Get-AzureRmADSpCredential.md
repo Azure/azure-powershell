@@ -29,10 +29,6 @@ This command will retrieve all of the credential properties (but not the credent
 ## EXAMPLES
 
 ### --------------------------  Example 1  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 PS E:\> Get-AzureRmADSpCredential -ServicePrincipalName http://test12345
 ```

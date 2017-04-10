@@ -27,6 +27,7 @@ The **Get-AzureRmVirtualNetworkGateway** cmdlet returns the object of your gatew
 ```
 Get-AzureRmVirtualNetworkGateway -Name myGateway -ResourceGroupName myRG
 ```
+
 Returns the object of the Virtual Network Gateway with the name "myGateway" within the resource group "myRG"
 
 ## PARAMETERS

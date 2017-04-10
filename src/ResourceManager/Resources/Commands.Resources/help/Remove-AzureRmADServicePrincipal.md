@@ -23,10 +23,6 @@ Deletes the azure active directory service principal.
 ## EXAMPLES
 
 ### --------------------------  Delete AAD service principal.  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 PS C:\> Remove-AzureRmADServicePrincipal -ObjectId 61b5d8ea-fdc6-40a2-8d5b-ad447c678d45
 ```

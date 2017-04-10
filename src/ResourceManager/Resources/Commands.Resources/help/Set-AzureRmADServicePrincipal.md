@@ -32,10 +32,6 @@ To update the properties associated with the underlying application, please use 
 ## EXAMPLES
 
 ### --------------------------  Example 1  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 Set-AzureRmADServicePrincipal -ObjectId 784136ca-3ae2-4fdd-a388-89d793e7c780 -DisplayName "UpdatedNameForSp"
 ```
@@ -43,10 +39,6 @@ Set-AzureRmADServicePrincipal -ObjectId 784136ca-3ae2-4fdd-a388-89d793e7c780 -Di
 Updates the display name for the service principal with specified object id.
 
 ### --------------------------  Example 2  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 Set-AzureRmADServicePrincipal -ServicePrincipalName "http://MyApp1" -DisplayName "UpdatedNameforSp"
 ```

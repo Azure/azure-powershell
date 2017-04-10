@@ -22,10 +22,6 @@ Get a group members.
 ## EXAMPLES
 
 ### --------------------------  Filters group members using group object id  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 PS C:\> Get-AzureRmADGroupMember -GroupObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE
 ```
