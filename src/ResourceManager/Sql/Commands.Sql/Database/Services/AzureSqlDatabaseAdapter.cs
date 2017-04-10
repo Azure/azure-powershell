@@ -206,28 +206,28 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                    {
                        return new AzureSqlDatabaseActivityModel()
                        {
-                           DatabaseName = r.Properties.DatabaseName,
-                           EndTime = r.Properties.EndTime,
-                           ErrorCode = r.Properties.ErrorCode,
-                           ErrorMessage = r.Properties.ErrorMessage,
-                           ErrorSeverity = r.Properties.ErrorSeverity,
-                           Operation = r.Properties.Operation,
-                           OperationId = r.Properties.OperationId,
-                           PercentComplete = r.Properties.PercentComplete,
-                           ServerName = r.Properties.ServerName,
-                           StartTime = r.Properties.StartTime,
-                           State = r.Properties.State,
+                           DatabaseName = r.DatabaseName,
+                           EndTime = r.EndTime,
+                           ErrorCode = r.ErrorCode,
+                           ErrorMessage = r.ErrorMessage,
+                           ErrorSeverity = r.ErrorSeverity,
+                           Operation = r.Operation,
+                           OperationId = r.OperationId.Value,
+                           PercentComplete = r.PercentComplete,
+                           ServerName = r.ServerName,
+                           StartTime = r.StartTime,
+                           State = r.State,
                            Properties = new AzureSqlDatabaseActivityModel.DatabaseState()
                            {
                                Current = new Dictionary<string, string>()
                                {
-                                    {"CurrentElasticPoolName", r.Properties.CurrentElasticPoolName},
-                                    {"CurrentServiceObjectiveName", r.Properties.CurrentServiceObjectiveName},
+                                    {"CurrentElasticPoolName", r.CurrentElasticPoolName},
+                                    {"CurrentServiceObjectiveName", r.CurrentServiceObjective},
                                },
                                Requested = new Dictionary<string, string>()
                                {
-                                    {"RequestedElasticPoolName", r.Properties.RequestedElasticPoolName},
-                                    {"RequestedServiceObjectiveName", r.Properties.RequestedServiceObjectiveName},
+                                    {"RequestedElasticPoolName", r.RequestedElasticPoolName},
+                                    {"RequestedServiceObjectiveName", r.RequestedServiceObjective},
                                }
                            }
                        };
