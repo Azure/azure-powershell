@@ -44,11 +44,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
-                RecoveryServicesOperationStatusResponse response = RecoveryServicesClient.DeleteVault(this.Vault.ResourceGroupName, this.Vault.Name);
+                var response = RecoveryServicesClient.DeleteVault(this.Vault.ResourceGroupName, this.Vault.Name);
 
                 VaultOperationOutput output = new VaultOperationOutput()
                 {
-                    Response = response.StatusCode == HttpStatusCode.OK ? Resources.VaultDeletionSuccessMessage : response.StatusCode.ToString()
+                    Response = response.Response.StatusCode == HttpStatusCode.OK ? Resources.VaultDeletionSuccessMessage : response.Response.StatusCode.ToString()
                 };
 
                 this.WriteObject(output, true);
