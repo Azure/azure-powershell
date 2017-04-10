@@ -23,10 +23,6 @@ You can view all keys on a server or view a specific key by providing the KeyId.
 ## EXAMPLES
 
 ### --------------------------  Example 1: Get all Key Vault keys  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 PS C:\> Get-AzureRmSqlServerKeyVaultKey -ServerName 'ContosoServer' -ResourceGroupName 'ContosoResourceGroup'
 ```

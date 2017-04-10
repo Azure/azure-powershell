@@ -33,6 +33,7 @@ The **New-AzureRmVirtualNetworkGatewayIpConfig** cmdlet creates a configuration 
 ```
 $gwIpConfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name myGWIpConfig -SubnetId $myGWsubnet.Id -PublicIpAddressId $myGWpip.Id
 ```
+
 Configures a Virtual Network Gateway with a Public IP Address. The variable $myGWsubnet is obtained using the **Get-AzureRmVirtualNetworkSubnetConfig** cmdlet on the "GatewaySubnet" within the Virtual Network you intend to create a Virtual Network Gateway. The variable $myGWpip is obtained using the **New-AzureRmPublicIpAddress** cmdlet.
 
 ## PARAMETERS

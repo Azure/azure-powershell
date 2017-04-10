@@ -27,6 +27,7 @@ The **Get-AzureRmLocalNetworkGateway** cmdlet returns the object representing yo
 ```
 Get-AzureRmLocalNetworkGateway -Name myLocalGW -ResourceGroupName myRG
 ```
+
 Returns the object of the Local Network Gateway with the name "myLocalGW" within the resource group "myRG"
 
 ## PARAMETERS

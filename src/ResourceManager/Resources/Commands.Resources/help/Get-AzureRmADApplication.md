@@ -45,10 +45,6 @@ If no parameter is provided, it fetches all applications under the tenant.
 ## EXAMPLES
 
 ### --------------------------  Example 1  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 PS E:\> Get-AzureRmADApplication
 ```
@@ -56,10 +52,6 @@ PS E:\> Get-AzureRmADApplication
 Lists all the applications under a tenant.
 
 ### --------------------------  Example 2  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 PS E:\> Get-AzureRmADApplication -IdentifierUri http://mySecretApp1
 ```

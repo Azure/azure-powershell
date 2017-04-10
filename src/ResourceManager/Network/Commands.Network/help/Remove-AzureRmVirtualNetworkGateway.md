@@ -28,6 +28,7 @@ The **Get-AzureRmVirtualNetworkGateway** cmdlet returns the object of your gatew
 ```
 Remove-AzureRmVirtualNetworkGateway -Name myGateway -ResourceGroupName myRG
 ```
+
 Deletes the object of the Virtual Network Gateway with the name "myGateway" within the resource group "myRG"
 
 Note: You must first delete all connections to the Virtual Network Gateway using the **Remove-AzureRmVirtualNetworkGatewayConnection** cmdlet.

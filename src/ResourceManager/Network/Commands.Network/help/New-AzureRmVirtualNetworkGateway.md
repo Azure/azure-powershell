@@ -38,6 +38,7 @@ You can also choose to include other features like BGP and Active-Active.
 ```
 New-AzureRmVirtualNetworkGateway -Name myGW -ResourceGroupName myRG -Location "West US" -IpConfigurations $gwIpConfig  -GatewayType "Vpn" -VpnType "RouteBased" -GatewaySku "Standard"
 ```
+
 Creates the Virtual Network Gateway in Azure with the name "myGW" within the resource group "myRG" in the location "West US" with the previously created IP configurations saved in the variable "gwIpConfig," the gateway type of "Vpn," the vpn type "RouteBased," and the sku "Standard."
 
 ## PARAMETERS

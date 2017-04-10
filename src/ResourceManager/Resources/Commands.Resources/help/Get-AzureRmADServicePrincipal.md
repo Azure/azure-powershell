@@ -38,10 +38,6 @@ Filters active directory service principals.
 ## EXAMPLES
 
 ### --------------------------  Filters service principals using SPN  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 PS C:\> Get-AzureRmADServicePrincipal -SPN 36f81fc3-b00f-48cd-8218-3879f51ff39f
 ```
@@ -49,10 +45,6 @@ PS C:\> Get-AzureRmADServicePrincipal -SPN 36f81fc3-b00f-48cd-8218-3879f51ff39f
 Gets service principals with 36f81fc3-b00f-48cd-8218-3879f51ff39f SPN.
 
 ### --------------------------  Filters service principals using Search String  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 PS C:\> Get-AzureRmADServicePrincipal -SearchString "Web"
 ```
@@ -60,10 +52,6 @@ PS C:\> Get-AzureRmADServicePrincipal -SearchString "Web"
 Filters all ad service principals that have display name starting with "Web".
 
 ### --------------------------  List AD service principals  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 PS C:\> Get-AzureRmADServicePrincipal
 ```

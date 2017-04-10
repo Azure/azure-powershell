@@ -34,10 +34,6 @@ To inspect individual operations that a role grants access to, review the Action
 ## EXAMPLES
 
 ### --------------------------  Example 1  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 PS C:\> Get-AzureRmRoleDefinition -Name Reader
 ```
@@ -45,10 +41,6 @@ PS C:\> Get-AzureRmRoleDefinition -Name Reader
 Get the Reader role definition
 
 ### --------------------------  Example 2  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 PS C:\> Get-AzureRmRoleDefinition
 ```

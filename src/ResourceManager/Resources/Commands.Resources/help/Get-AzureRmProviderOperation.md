@@ -28,28 +28,16 @@ Use Get-AzureRmProviderOperation Microsoft.Compute/* to get all operations of Mi
 ## EXAMPLES
 
 ### --------------------------  Get all actions for all providers  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 PS C:\> Get-AzureRmProviderOperation *
 ```
 
 ### --------------------------  Get actions for a particular resource provider  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 PS C:\> Get-AzureRmProviderOperation Microsoft.Insights/*
 ```
 
 ### --------------------------  Get all actions that can be performed on virtual machines  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 PS C:\> Get-AzureRmProviderOperation */virtualMachines/*
 ```

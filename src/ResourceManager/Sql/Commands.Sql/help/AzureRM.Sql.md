@@ -200,8 +200,8 @@ Removes a data masking rule from a database.
 ### [Remove-AzureRmSqlDatabaseFailoverGroup](Remove-AzureRmSqlDatabaseFailoverGroup.md)
 The Cmdlet that removes the Azure SQL Failover Group
 
-### [Remove-AzureRmSqlDatabaseFromFailoverGroup](Remove-AzureRmSqlDatabaseFailoverGroup.md)
-Cmdlet that removes databases from the Azure SQL Failover Group
+### [Remove-AzureRmSqlDatabaseFailoverGroup](Remove-AzureRmSqlDatabaseFailoverGroup.md)
+The Cmdlet that removes the Azure SQL Failover Group
 
 ### [Remove-AzureRmSqlDatabaseSecondary](Remove-AzureRmSqlDatabaseSecondary.md)
 Terminates data replication between a SQL Database and the specified secondary database.

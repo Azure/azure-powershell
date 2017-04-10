@@ -24,12 +24,12 @@ The **Remove-AzureRmExpressRouteCircuit** cmdlet removes an ExpressRoute circuit
 
 ### Example 1: Delete an ExpressRoute circuit
 ```
-Remove-AzureRmExpressRouteCircuit -Nameï¿½$CircuitNameï¿½-ResourceGroupNameï¿½$rg
+Remove-AzureRmExpressRouteCircuit -Name $CircuitName -ResourceGroupName $rg
 ```
 
 ### Example 2: Delete an ExpressRoute circuit using the pipeline
 ```
-Get-AzureRmExpressRouteCircuitï¿½-Nameï¿½$CircuitNameï¿½-ResourceGroupNameï¿½$rg | Remove-AzureRmExpressRouteCircuit
+Get-AzureRmExpressRouteCircuit -Name $CircuitName -ResourceGroupName $rg | Remove-AzureRmExpressRouteCircuit
 ```
 
 ## PARAMETERS

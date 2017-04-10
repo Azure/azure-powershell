@@ -36,19 +36,11 @@ If there are existing role assignments made to the custom role to be deleted, th
 ## EXAMPLES
 
 ### --------------------------  Example 1  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 Get-AzureRmRoleDefinition -Name "Virtual Machine Operator" | Remove-AzureRmRoleDefinition
 ```
 
 ### --------------------------  Example 2  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 Remove-AzureRmRoleDefinition -Id "52a6cc13-ff92-47a8-a39b-2a8205c3087e"
 ```

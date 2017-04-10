@@ -28,6 +28,7 @@ The **Remove-AzureRmLocalNetworkGateway** cmdlet deletes the object representing
 ```
 Remove-AzureRmLocalNetworkGateway -Name myLocalGW -ResourceGroupName myRG
 ```
+
 Deletes the object of the Local Network Gateway with the name "myLocalGW" within the resource group "myRG"
 
 Note: You must first delete all connections to the Local Network Gateway using the **Remove-AzureRmVirtualNetworkGatewayConnection** cmdlet.
