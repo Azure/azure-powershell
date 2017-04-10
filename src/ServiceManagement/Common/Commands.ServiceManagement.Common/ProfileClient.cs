@@ -973,17 +973,22 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
                     ?? account2.ExtendedProperties[propertyKey];
             }
 
-            // Merge Tenants
-            var tenants = account1.GetPropertyAsArray(AzureAccount.Property.Tenants)
-                    .Union(account2.GetPropertyAsArray(AzureAccount.Property.Tenants), StringComparer.CurrentCultureIgnoreCase);
+            var tenants1 = account1.GetPropertyAsArray(AzureAccount.Property.Tenants);
+            var tenants2 = account2.GetPropertyAsArray(AzureAccount.Property.Tenants);
+            if (tenants1 != null || tenants2 != null)
+            {
+                var tenants = (tenants1 == null ? tenants2 : (tenants2 == null ? tenants1 : tenants1.Union(tenants2)));
+                mergeAccount.SetProperty(AzureAccount.Property.Tenants, tenants.ToArray());
+            }
 
-            mergeAccount.SetProperty(AzureAccount.Property.Tenants, tenants.ToArray());
+            var subscriptions1 = account1.GetPropertyAsArray(AzureAccount.Property.Subscriptions);
+            var subscriptions2 = account2.GetPropertyAsArray(AzureAccount.Property.Subscriptions);
+            if (subscriptions1 != null || subscriptions2 != null)
+            {
+                var subscriptions = (subscriptions1 == null ? subscriptions2 : (subscriptions2 == null ? subscriptions1 : subscriptions1.Union(subscriptions2)));
+                mergeAccount.SetProperty(AzureAccount.Property.Subscriptions, subscriptions.ToArray());
+            }
 
-            // Merge Subscriptions
-            var subscriptions = account1.GetPropertyAsArray(AzureAccount.Property.Subscriptions)
-                    .Union(account2.GetPropertyAsArray(AzureAccount.Property.Subscriptions), StringComparer.CurrentCultureIgnoreCase);
-
-            mergeAccount.SetProperty(AzureAccount.Property.Subscriptions, subscriptions.ToArray());
 
             return mergeAccount;
         }

@@ -33,6 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 
         public SMTestBase()
         {
+            AzureSessionInitializer.InitializeAzureSession();
             System.Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
             BaseSetup();
         }
