@@ -8,6 +8,7 @@ schema: 2.0.0
 # New-AzureRmVirtualNetworkGateway
 
 ## SYNOPSIS
+Creates a Virtual Network Gateway
 
 ## SYNTAX
 
@@ -23,13 +24,21 @@ New-AzureRmVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Loc
 ```
 
 ## DESCRIPTION
+The Virtual Network Gateway is the object representing your gateway in Azure.
+
+The **New-AzureRmVirtualNetworkGateway** cmdlet creates the object of your gateway in Azure based on the Name, Resource Group Name, Location, and IP configuration, as well as the Gateway Type and if VPN, the VPN Type. You can also name the Gateway SKU.
+
+If this Gateway is being used for Point-to-Site connections, you will also need to include the VPN Client Address Pool from which to assign addresses to connecting clients and the VPN Client Root Certificate used to authenticate VPN clients connecting to the Gateway.
+
+You can also choose to include other features like BGP and Active-Active.
 
 ## EXAMPLES
 
-### 1:
+### 1: Create a Virtual Network Gateway
 ```
-
+New-AzureRmVirtualNetworkGateway -Name myGW -ResourceGroupName myRG -Location "West US" -IpConfigurations $gwIpConfig  -GatewayType "Vpn" -VpnType "RouteBased" -GatewaySku "Standard"
 ```
+Creates the Virtual Network Gateway in Azure with the name "myGW" within the resource group "myRG" in the location "West US" with the previously created IP configurations saved in the variable "gwIpConfig," the gateway type of "Vpn," the vpn type "RouteBased," and the sku "Standard."
 
 ## PARAMETERS
 

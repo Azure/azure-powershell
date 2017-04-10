@@ -122,7 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-@{Text=}
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: SwitchParameter
@@ -137,7 +137,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-@{Text=}
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter
@@ -170,4 +170,3 @@ Keywords: azure, azurerm, arm, resource, management, manager, network, networkin
 [Remove-AzureRmRouteFilter]()
 
 [Set-AzureRmRouteFilter]()
-

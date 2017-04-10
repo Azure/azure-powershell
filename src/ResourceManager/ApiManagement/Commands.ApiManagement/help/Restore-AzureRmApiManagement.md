@@ -32,7 +32,7 @@ This command restores an API Management service from Azure storage blob.
 ## PARAMETERS
 
 ### -Name
-Specifies the name of the API Management instance that this cmdlet restores.
+Specifies the name of the API Management instance that will be restored with the backup.
 
 ```yaml
 Type: String

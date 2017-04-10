@@ -350,6 +350,9 @@ Creates an ExpressRoute circuit authorization.
 ### [New-AzureRmExpressRouteCircuitPeeringConfig](New-AzureRmExpressRouteCircuitPeeringConfig.md)
 Creates a new peering configuration to be added to an ExpressRoute circuit.
 
+### [New-AzureRmIpsecPolicy](New-AzureRmIpsecPolicy.md)
+Creates an IPSec Policy to be added to a virtual network gateway connection.
+
 ### [New-AzureRmLoadBalancer](New-AzureRmLoadBalancer.md)
 Creates a load balancer.
 
@@ -414,13 +417,13 @@ Creates a route table.
 Creates a virtual network.
 
 ### [New-AzureRmVirtualNetworkGateway](New-AzureRmVirtualNetworkGateway.md)
-{{Manually Enter New-AzureRmVirtualNetworkGateway Description Here}}
+Creates a new virtual network gateway.
 
 ### [New-AzureRmVirtualNetworkGatewayConnection](New-AzureRmVirtualNetworkGatewayConnection.md)
-{{Manually Enter New-AzureRmVirtualNetworkGatewayConnection Description Here}}
+Creates a new virtual network gateway connection.
 
 ### [New-AzureRmVirtualNetworkGatewayIpConfig](New-AzureRmVirtualNetworkGatewayIpConfig.md)
-{{Manually Enter New-AzureRmVirtualNetworkGatewayIpConfig Description Here}}
+Creates a new IP configuration to be added to a virtual network gateway.
 
 ### [New-AzureRmVirtualNetworkSubnetConfig](New-AzureRmVirtualNetworkSubnetConfig.md)
 Creates a virtual network subnet configuration.

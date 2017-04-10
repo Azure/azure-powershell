@@ -8,6 +8,7 @@ schema: 2.0.0
 # Get-AzureRmLocalNetworkGateway
 
 ## SYNOPSIS
+Gets a Local Network Gateway
 
 ## SYNTAX
 
@@ -16,13 +17,17 @@ Get-AzureRmLocalNetworkGateway [-Name <String>] -ResourceGroupName <String> [<Co
 ```
 
 ## DESCRIPTION
+The Local Network Gateway is the object representing your VPN device On-Premises.
+
+The **Get-AzureRmLocalNetworkGateway** cmdlet returns the object representing your on-prem gateway based on Name and Resource Group Name.
 
 ## EXAMPLES
 
-### 1:
+### 1: Get a Local Network Gateway
 ```
-
+Get-AzureRmLocalNetworkGateway -Name myLocalGW -ResourceGroupName myRG
 ```
+Returns the object of the Local Network Gateway with the name "myLocalGW" within the resource group "myRG"
 
 ## PARAMETERS
 

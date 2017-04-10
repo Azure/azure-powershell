@@ -8,6 +8,7 @@ schema: 2.0.0
 # Get-AzureRmVirtualNetworkGateway
 
 ## SYNOPSIS
+Gets a Virtual Network Gateway
 
 ## SYNTAX
 
@@ -16,13 +17,17 @@ Get-AzureRmVirtualNetworkGateway [-Name <String>] -ResourceGroupName <String> [<
 ```
 
 ## DESCRIPTION
+The Virtual Network Gateway is the object representing your gateway in Azure.
+
+The **Get-AzureRmVirtualNetworkGateway** cmdlet returns the object of your gateway in Azure based on Name and Resource Group Name.
 
 ## EXAMPLES
 
-### 1:
+### 1: Get a Virtual Network Gateway
 ```
-
+Get-AzureRmVirtualNetworkGateway -Name myGateway -ResourceGroupName myRG
 ```
+Returns the object of the Virtual Network Gateway with the name "myGateway" within the resource group "myRG"
 
 ## PARAMETERS
 

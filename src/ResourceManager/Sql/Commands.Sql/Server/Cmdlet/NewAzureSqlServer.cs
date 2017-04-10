@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Rest.Azure;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
