@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 }
                 else
                 {
-                    this.GetVaultsUnderResourceGroup();
+                    this.GetVaultsUnderResourceGroup(this.ResourceGroupName);
                 }
             }
             catch (Exception exception)
@@ -66,12 +66,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Get vaults under a resouce group.
         /// </summary>
-        private void GetVaultsUnderResourceGroup()
+        private void GetVaultsUnderResourceGroup(string resourceGroupName)
         {
-            VaultListResponse vaultListResponse =
-                RecoveryServicesClient.GetVaultsInResouceGroup(this.ResourceGroupName);
+            List<Vault> vaultListResponse =
+                RecoveryServicesClient.GetVaultsInResouceGroup(resourceGroupName);
 
-            this.WriteVaults(vaultListResponse.Vaults);
+            this.WriteVaults(vaultListResponse);
         }
 
         /// <summary>
@@ -79,12 +79,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void GetVaultsUnderAllResourceGroups()
         {
+            
             foreach (var resourceGroup in RecoveryServicesClient.GetResouceGroups().ResourceGroups)
             {
-                VaultListResponse vaultListResponse =
-                    RecoveryServicesClient.GetVaultsInResouceGroup(resourceGroup.Name);
-
-                this.WriteVaults(vaultListResponse.Vaults);
+                try
+                {
+                    GetVaultsUnderResourceGroup(resourceGroup.Name);
+                }
+                catch (Exception ex)
+                {
+                    WriteDebug("GetVaultsUnderResourceGroup failed: " + ex.Message);
+                }
             }
         }
 

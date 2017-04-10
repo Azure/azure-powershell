@@ -56,13 +56,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
-                VaultCreateArgs vaultCreateArgs = new VaultCreateArgs();
+                Vault vaultCreateArgs = new Vault();
                 vaultCreateArgs.Location = this.Location;
                 vaultCreateArgs.Properties = new VaultProperties();
-                vaultCreateArgs.Sku = new VaultSku();
-                vaultCreateArgs.Sku.Name = "standard";
+                vaultCreateArgs.Sku = new Sku();
+                vaultCreateArgs.Sku.Name = SkuName.Standard;
 
-                VaultCreateResponse response = RecoveryServicesClient.CreateVault(this.ResourceGroupName, this.Name, vaultCreateArgs);
+                Vault response = RecoveryServicesClient.CreateVault(this.ResourceGroupName, this.Name, vaultCreateArgs);
 
                 this.WriteObject(new ARSVault(response));
             }
