@@ -27,6 +27,7 @@ using Microsoft.WindowsAzure.Management.HDInsight.Logging;
 using Microsoft.Azure.Commands.Common.Authentication;
 using System.IO;
 using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
 {
@@ -121,14 +122,14 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
             {
                 this.WriteWarning("The -Subscription parameter is deprecated, Please use Select-AzureSubscription -Current to select a subscription to use.");
 
-                ProfileClient client = new ProfileClient(new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
+                ProfileClient client = new ProfileClient(new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile)));
 
                 var subscriptionResolver =
                     ServiceLocator.Instance.Locate<IAzureHDInsightSubscriptionResolverFactory>().Create(client.Profile);
                 var resolvedSubscription = subscriptionResolver.ResolveSubscription(Subscription);
-                if (certificate.IsNotNull() && resolvedSubscription.Account != certificate.Thumbprint)
+                if (certificate.IsNotNull() && resolvedSubscription.GetAccount() != certificate.Thumbprint)
                 {
-                    AzureSession.DataStore.AddCertificate(certificate);
+                    AzureSession.Instance.DataStore.AddCertificate(certificate);
                 }
 
                 if (resolvedSubscription.IsNull())

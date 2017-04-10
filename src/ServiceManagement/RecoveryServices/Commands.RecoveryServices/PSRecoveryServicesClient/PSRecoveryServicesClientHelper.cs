@@ -14,9 +14,7 @@
 
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Management.SiteRecovery;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
@@ -85,7 +83,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             bool associatedSubscription = false;
             List<AzureSubscription> subscriptions =
-                new List<AzureSubscription>(this.Profile.Subscriptions.Values);
+                new List<AzureSubscription>(this.Profile.Subscriptions);
 
             foreach (AzureSubscription sub in subscriptions)
             {

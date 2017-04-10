@@ -28,6 +28,8 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
     using WamlDatabaseCopy = Management.Sql.Models.DatabaseCopy;
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure;
+    using Azure.Commands.Common.Authentication.Abstractions;
+    using Utilities.Common;
 
     /// <summary>
     /// Implementation of the <see cref="IServerDataServiceContext"/> with Certificate authentication.
@@ -176,7 +178,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
             this.clientRequestId = SqlDatabaseCmdletBase.GenerateClientTracingId();
 
             // Get the SQL management client
-            SqlManagementClient sqlManagementClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            SqlManagementClient sqlManagementClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
             this.AddTracingHeaders(sqlManagementClient);
 
             // Retrieve the list of databases
@@ -197,7 +199,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
             this.clientRequestId = SqlDatabaseCmdletBase.GenerateClientTracingId();
 
             // Get the SQL management client
-            SqlManagementClient sqlManagementClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            SqlManagementClient sqlManagementClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
             this.AddTracingHeaders(sqlManagementClient);
 
             // Retrieve the specified database
@@ -221,7 +223,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
             this.clientRequestId = SqlDatabaseCmdletBase.GenerateClientTracingId();
 
             // Get the SQL management client
-            SqlManagementClient sqlManagementClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            SqlManagementClient sqlManagementClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
             this.AddTracingHeaders(sqlManagementClient);
 
             // Retrieve the specified database
@@ -278,7 +280,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
             this.clientRequestId = SqlDatabaseCmdletBase.GenerateClientTracingId();
 
             // Get the SQL management client
-            SqlManagementClient sqlManagementClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            SqlManagementClient sqlManagementClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
             this.AddTracingHeaders(sqlManagementClient);
 
             DatabaseCreateParameters parameters = new DatabaseCreateParameters()
@@ -322,7 +324,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
             this.clientRequestId = SqlDatabaseCmdletBase.GenerateClientTracingId();
 
             // Get the SQL management client
-            SqlManagementClient sqlManagementClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            SqlManagementClient sqlManagementClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
             this.AddTracingHeaders(sqlManagementClient);
 
             // Retrieve the specified database
@@ -371,7 +373,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
             this.clientRequestId = SqlDatabaseCmdletBase.GenerateClientTracingId();
 
             // Get the SQL management client
-            SqlManagementClient sqlManagementClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            SqlManagementClient sqlManagementClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
             this.AddTracingHeaders(sqlManagementClient);
 
             // Retrieve the list of databases
@@ -402,7 +404,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
             this.clientRequestId = SqlDatabaseCmdletBase.GenerateClientTracingId();
 
             // Get the SQL management client
-            SqlManagementClient sqlManagementClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            SqlManagementClient sqlManagementClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
             this.AddTracingHeaders(sqlManagementClient);
 
             // Retrieve the specified database
@@ -501,7 +503,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
             this.clientRequestId = SqlDatabaseCmdletBase.GenerateClientTracingId();
 
             // Get the SQL management client
-            SqlManagementClient sqlManagementClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            SqlManagementClient sqlManagementClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
             this.AddTracingHeaders(sqlManagementClient);
 
             // Retrieve the specified Operation
@@ -524,7 +526,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
             this.clientRequestId = SqlDatabaseCmdletBase.GenerateClientTracingId();
 
             // Get the SQL management client
-            SqlManagementClient sqlManagementClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            SqlManagementClient sqlManagementClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
             this.AddTracingHeaders(sqlManagementClient);
 
             // Retrieve all operations on specified database
@@ -557,7 +559,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
             this.clientRequestId = SqlDatabaseCmdletBase.GenerateClientTracingId();
 
             // Get the SQL management client
-            SqlManagementClient sqlManagementClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            SqlManagementClient sqlManagementClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
             this.AddTracingHeaders(sqlManagementClient);
 
             // Retrieve the operations on specified server 
@@ -590,7 +592,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
             this.clientRequestId = SqlDatabaseCmdletBase.GenerateClientTracingId();
 
             // Get the SQL management client
-            SqlManagementClient sqlManagementClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            SqlManagementClient sqlManagementClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
             this.AddTracingHeaders(sqlManagementClient);
 
             IEnumerable<WamlDatabaseCopy> copyResponses = null;
@@ -645,7 +647,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
             this.clientRequestId = SqlDatabaseCmdletBase.GenerateClientTracingId();
 
             // Get the SQL management client
-            SqlManagementClient sqlManagementClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            SqlManagementClient sqlManagementClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
             this.AddTracingHeaders(sqlManagementClient);
 
             // Figure out which database is local, as that's the one we need to pass in.
@@ -684,7 +686,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
             this.clientRequestId = SqlDatabaseCmdletBase.GenerateClientTracingId();
 
             // Get the SQL management client
-            SqlManagementClient sqlManagementClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            SqlManagementClient sqlManagementClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
             this.AddTracingHeaders(sqlManagementClient);
 
             DatabaseCopyCreateResponse response = sqlManagementClient.DatabaseCopies.Create(
@@ -714,7 +716,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
             this.clientRequestId = SqlDatabaseCmdletBase.GenerateClientTracingId();
 
             // Get the SQL management client
-            SqlManagementClient sqlManagementClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            SqlManagementClient sqlManagementClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
             this.AddTracingHeaders(sqlManagementClient);
 
             // Get the local database, as it's the one we need to pass in.
@@ -750,7 +752,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
             this.clientRequestId = SqlDatabaseCmdletBase.GenerateClientTracingId();
 
             // Get the SQL management client
-            SqlManagementClient sqlManagementClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            SqlManagementClient sqlManagementClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
             this.AddTracingHeaders(sqlManagementClient);
 
             // Retrieve the list of databases
@@ -774,7 +776,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
             this.clientRequestId = SqlDatabaseCmdletBase.GenerateClientTracingId();
 
             // Get the SQL management client
-            SqlManagementClient sqlManagementClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            SqlManagementClient sqlManagementClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
             this.AddTracingHeaders(sqlManagementClient);
 
             // Retrieve the specified database
@@ -810,7 +812,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
             this.clientRequestId = SqlDatabaseCmdletBase.GenerateClientTracingId();
 
             // Get the SQL management client
-            SqlManagementClient sqlManagementClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            SqlManagementClient sqlManagementClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(this.profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
             this.AddTracingHeaders(sqlManagementClient);
 
             // Create the restore operation

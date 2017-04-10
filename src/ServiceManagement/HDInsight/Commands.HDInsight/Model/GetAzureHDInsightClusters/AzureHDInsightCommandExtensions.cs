@@ -23,6 +23,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters
 {
@@ -34,20 +36,20 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
             AzureEnvironment environment,
             AzureSMProfile profile)
         {
-            var accountId = currentSubscription.Account;
-            Debug.Assert(profile.Accounts.ContainsKey(accountId));
+            var accountId = currentSubscription.GetAccount();
+            Debug.Assert(profile.AccountTable.ContainsKey(accountId));
 
-            if (profile.Accounts[accountId].Type == AzureAccount.AccountType.Certificate)
+            if (profile.AccountTable[accountId].Type == AzureAccount.AccountType.Certificate)
             {
-                return GetSubscriptionCertificateCredentials(command, currentSubscription, profile.Accounts[accountId], environment);
+                return GetSubscriptionCertificateCredentials(command, currentSubscription, profile.AccountTable[accountId], environment);
             }
-            else if (profile.Accounts[accountId].Type == AzureAccount.AccountType.User)
+            else if (profile.AccountTable[accountId].Type == AzureAccount.AccountType.User)
             {
-                return GetAccessTokenCredentials(command, currentSubscription, profile.Accounts[accountId], environment);
+                return GetAccessTokenCredentials(command, currentSubscription, profile.AccountTable[accountId], environment);
             }
-            else if (profile.Accounts[accountId].Type == AzureAccount.AccountType.ServicePrincipal)
+            else if (profile.AccountTable[accountId].Type == AzureAccount.AccountType.ServicePrincipal)
             {
-                return GetAccessTokenCredentials(command, currentSubscription, profile.Accounts[accountId], environment);
+                return GetAccessTokenCredentials(command, currentSubscription, profile.AccountTable[accountId], environment);
             }
 
             throw new NotSupportedException();
@@ -58,8 +60,8 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
         {
             return new HDInsightCertificateCredential
             {
-                SubscriptionId = currentSubscription.Id,
-                Certificate = AzureSession.DataStore.GetCertificate(currentSubscription.Account),
+                SubscriptionId = currentSubscription.GetId(),
+                Certificate = AzureSession.Instance.DataStore.GetCertificate(currentSubscription.GetAccount()),
                 Endpoint = environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement),
             };
         }
@@ -67,10 +69,10 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
         public static IHDInsightSubscriptionCredentials GetAccessTokenCredentials(this IAzureHDInsightCommonCommandBase command, 
             AzureSubscription currentSubscription, AzureAccount azureAccount, AzureEnvironment environment)
         {
-            ProfileClient profileClient = new ProfileClient(new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
+            ProfileClient profileClient = new ProfileClient(new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile)));
             AzureContext azureContext = new AzureContext(currentSubscription, azureAccount, environment);
 
-            var cloudCredentials = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(azureContext) as AccessTokenCredential;
+            var cloudCredentials = AzureSession.Instance.AuthenticationFactory.GetSubscriptionCloudCredentials(azureContext) as AccessTokenCredential;
             if (cloudCredentials != null)
             {
                 var field= typeof(AccessTokenCredential).GetField("token", BindingFlags.NonPublic | BindingFlags.GetField | BindingFlags.Instance);
@@ -79,7 +81,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
                 {
                     return new HDInsightAccessTokenCredential()
                     {
-                        SubscriptionId = currentSubscription.Id,
+                        SubscriptionId = currentSubscription.GetId(),
                         AccessToken = accessToken.AccessToken
                     };
                 }

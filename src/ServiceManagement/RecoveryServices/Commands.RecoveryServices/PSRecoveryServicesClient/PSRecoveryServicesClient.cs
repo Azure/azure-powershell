@@ -32,6 +32,7 @@ using Microsoft.WindowsAzure.Management.RecoveryServices;
 using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
 using Microsoft.WindowsAzure.Management.SiteRecovery;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -88,7 +89,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             this.Profile = AzureSMProfile;
             this.recoveryServicesClient =
-                AzureSession.ClientFactory.CreateClient<RecoveryServicesManagementClient>(AzureSMProfile, azureSubscription, AzureEnvironment.Endpoint.ServiceManagement);
+                AzureSession.Instance.ClientFactory.CreateClient<RecoveryServicesManagementClient>(AzureSMProfile, azureSubscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
         /// <summary>
@@ -248,7 +249,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
 
             SiteRecoveryManagementClient siteRecoveryClient =
-                AzureSession.ClientFactory.CreateCustomClient<SiteRecoveryManagementClient>(asrVaultCreds.CloudServiceName, 
+                AzureSession.Instance.ClientFactory.CreateCustomClient<SiteRecoveryManagementClient>(asrVaultCreds.CloudServiceName, 
                 asrVaultCreds.ResourceName, recoveryServicesClient.Credentials, 
                 Profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement));
 

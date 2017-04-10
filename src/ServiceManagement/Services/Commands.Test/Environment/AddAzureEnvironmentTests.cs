@@ -24,6 +24,8 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.ServiceManagemenet.Common;
+using System.Linq;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Environment
 {
@@ -34,7 +36,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
         public AddAzureEnvironmentTests()
         {
             dataStore = new MemoryDataStore();
-            AzureSession.DataStore = dataStore;
+            AzureSession.Instance.DataStore = dataStore;
         }
 
         public void Cleanup()
@@ -67,10 +69,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
             ProfileClient client = new ProfileClient(profile);
             AzureEnvironment env = client.GetEnvironmentOrDefault("KaTaL");
             Assert.Equal(env.Name, cmdlet.Name);
-            Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl], cmdlet.PublishSettingsFileUrl);
-            Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.ServiceManagement], cmdlet.ServiceEndpoint);
-            Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.ManagementPortalUrl], cmdlet.ManagementPortalUrl);
-            Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.Gallery], "http://galleryendpoint.com");
+            Assert.Equal(env.PublishSettingsFileUrl.ToString(), cmdlet.PublishSettingsFileUrl);
+            Assert.Equal(env.ServiceManagement.ToString(), cmdlet.ServiceEndpoint);
+            Assert.Equal(env.ManagementPortalUrl.ToString(), cmdlet.ManagementPortalUrl);
+            Assert.Equal(env.Gallery.ToString(), "http://galleryendpoint.com");
         }
 
         [Fact]
@@ -94,10 +96,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
 
             commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Once());
             ProfileClient client = new ProfileClient(profile);
-            AzureEnvironment env = client.Profile.Environments["KaTaL"];
+            AzureEnvironment env = client.Profile.EnvironmentTable["KaTaL"];
             Assert.Equal(env.Name, cmdlet.Name);
             Assert.True(env.OnPremise);
-            Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl], cmdlet.PublishSettingsFileUrl);
+            Assert.Equal(env.PublishSettingsFileUrl.ToString(), cmdlet.PublishSettingsFileUrl);
         }
 
         [Fact]
@@ -119,7 +121,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
             ProfileClient client = new ProfileClient(profile);
-            int count = client.Profile.Environments.Count;
+            int count = client.Profile.Environments.Count();
 
             // Add again
             cmdlet.Name = "kAtAl";
@@ -165,9 +167,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
 
             commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Once());
             ProfileClient client = new ProfileClient(profile);
-            AzureEnvironment env = client.Profile.Environments["KaTaL"];
+            AzureEnvironment env = client.Profile.EnvironmentTable["KaTaL"];
             Assert.Equal(env.Name, cmdlet.Name);
-            Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl], actual.PublishSettingsFileUrl);
+            Assert.Equal(env.PublishSettingsFileUrl.ToString(), actual.PublishSettingsFileUrl);
         }
 
         [Fact]
@@ -223,7 +225,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
             Assert.Equal( cmdlet.TrafficManagerDnsSuffix , actual.TrafficManagerDnsSuffix);
             commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Once());
             ProfileClient client = new ProfileClient(profile);
-            AzureEnvironment env = client.Profile.Environments["KaTaL"];
+            AzureEnvironment env = client.Profile.EnvironmentTable["KaTaL"];
             Assert.Equal(env.Name, cmdlet.Name);
         }
 

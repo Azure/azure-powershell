@@ -45,7 +45,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
     using AutomationManagement = WindowsAzure.Management.Automation;
     using Microsoft.Azure.Commands.Common.Authentication;
     using Hyak.Common;
-
+    using Commands.Common.Authentication.Abstractions;
+    using WindowsAzure.Commands.Utilities.Common;
 
     public class AutomationClient : IAutomationClient
     {
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public AutomationClient(AzureSMProfile profile, AzureSubscription subscription)
             : this(subscription,
-            AzureSession.ClientFactory.CreateClient<AutomationManagement.AutomationManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement))
+            AzureSession.Instance.ClientFactory.CreateClient<AutomationManagement.AutomationManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement))
         {
         }
 

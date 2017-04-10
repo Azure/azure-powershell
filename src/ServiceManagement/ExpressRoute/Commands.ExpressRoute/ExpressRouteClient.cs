@@ -29,7 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
     using Microsoft.Azure.Commands.Common.Authentication.Models;
     using Microsoft.Azure.Commands.Common.Authentication;
     using Hyak.Common;
-
+    using Azure.Commands.Common.Authentication.Abstractions;
 
     public class ExpressRouteClient
     {
@@ -37,7 +37,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 
         private static ClientType CreateClient<ClientType>(AzureSMProfile profile, AzureSubscription subscription) where ClientType : ServiceClient<ClientType>
         {
-            return AzureSession.ClientFactory.CreateClient<ClientType>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            return AzureSession.Instance.ClientFactory.CreateClient<ClientType>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
         /// <summary>

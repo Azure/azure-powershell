@@ -28,6 +28,7 @@ using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.MockServer;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.ServiceManagemenet.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests
 {
@@ -113,7 +114,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests
             return new AzureSubscription
             {
                 Name = "TestSubscription",
-                Id = new Guid("00000000-0000-0000-0000-000000000000")
+                Id = "00000000-0000-0000-0000-000000000000"
             };
         }
 
@@ -296,17 +297,14 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests
                 "clientCertificate",
                 certificate);
 
-            var profile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            var profile = new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
             AzureSMCmdlet.CurrentProfile = profile;
             ProfileClient client = new ProfileClient(profile);
             client.AddOrSetEnvironment(new AzureEnvironment
                 {
                     Name = UnitTestEnvironmentName,
-                    Endpoints = new Dictionary<AzureEnvironment.Endpoint, string>
-                    {
-                        {AzureEnvironment.Endpoint.ServiceManagement, MockHttpServer.DefaultHttpsServerPrefixUri.AbsoluteUri},
-                        {AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix, ".database.windows.net"}
-                    }
+                    ServiceManagement = MockHttpServer.DefaultHttpsServerPrefixUri,
+                    SqlDatabaseDnsSuffix = ".database.windows.net"
                 });
             
             var account = new AzureAccount
@@ -317,11 +315,11 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests
 
             var subscription = new AzureSubscription
             {
-                Id = subscriptionId,
+                Id = subscriptionId.ToString(),
                 Name = UnitTestSubscriptionName,
-                Environment = UnitTestEnvironmentName,
-                Account = account.Id
             };
+            subscription.SetEnvironment(UnitTestEnvironmentName);
+            subscription.SetAccount(account.Id);
 
             client.AddOrSetAccount(account);
             client.AddOrSetSubscription(subscription);

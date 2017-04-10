@@ -21,6 +21,7 @@ using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Sql;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase
 {
@@ -63,7 +64,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase
             // Get the SQL management client for the current subscription
             AzureSubscription subscription = Profile.Context.Subscription;
             SqlDatabaseCmdletBase.ValidateSubscription(subscription);
-            SqlManagementClient client = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            SqlManagementClient client = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
             client.HttpClient.DefaultRequestHeaders.Add(Constants.ClientSessionIdHeaderName, clientSessionId);
             client.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
             return client;

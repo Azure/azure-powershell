@@ -19,6 +19,7 @@ using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandInterfaces;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImplementations
 {

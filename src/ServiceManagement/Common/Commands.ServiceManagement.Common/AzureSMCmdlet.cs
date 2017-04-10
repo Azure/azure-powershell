@@ -42,11 +42,13 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             private get
             {
+                ServiceManagementProfileProvider.InitializeServiceManagementProfile();
                 return AzureSMProfileProvider.Instance.Profile as AzureSMProfile;
             }
 
             set
             {
+                ServiceManagementProfileProvider.InitializeServiceManagementProfile();
                 AzureSMProfileProvider.Instance.Profile = value;
             }
         }

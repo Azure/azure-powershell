@@ -26,7 +26,8 @@ using Microsoft.WindowsAzure.Management.Scheduler;
 using Microsoft.WindowsAzure.Management.StorSimple;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using Microsoft.WindowsAzure.Management.Scheduler.Models;
-
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple
 {
@@ -52,7 +53,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             
             this.Profile = AzureSMProfile;
 
-            this.cloudServicesClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(AzureSMProfile, currentSubscription, AzureEnvironment.Endpoint.ServiceManagement);
+            this.cloudServicesClient = AzureSession.Instance.ClientFactory.CreateClient<CloudServiceManagementClient>(AzureSMProfile, currentSubscription, AzureEnvironment.Endpoint.ServiceManagement);
             
             ResourceCachetimeoutPolicy.AbsoluteExpiration = DateTimeOffset.Now.AddHours(1.0d);
         }
@@ -65,7 +66,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         private StorSimpleManagementClient GetStorSimpleClient()
         {
             var storSimpleClient =
-                AzureSession.ClientFactory.CreateCustomClient<StorSimpleManagementClient>(
+                AzureSession.Instance.ClientFactory.CreateCustomClient<StorSimpleManagementClient>(
                     StorSimpleContext.CloudServiceName,
                     StorSimpleContext.ResourceName, StorSimpleContext.ResourceId,
                     StorSimpleContext.ResourceProviderNameSpace, this.cloudServicesClient.Credentials,
