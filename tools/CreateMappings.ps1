@@ -20,23 +20,26 @@ $cmdlets = Get-ChildItem $RootPath -Recurse | Where-Object { $_.FullName -cmatch
 
 $k = 0;
 $cmdlets | ForEach-Object {
-    $cmdletPath = $_;
-    $cmdlet = $cmdletPath.BaseName;
+    $cmdletPath = Split-Path $_.FullName -Parent;
+    $cmdlet = $_.BaseName;
+
+    # First, match to module path.
+    $matchedRule = @($rules | Where-Object { $cmdletPath -cmatch ".*$($_.Regex).*" })[0];
 
     # Try to match this cmdlet with at least one rule.
-    $matchedRules = @($rules | Where-Object { $cmdlet -cmatch ".*$($_.Regex).*" });
+    $possibleBetterMatch = @($rules | Where-Object { $cmdlet -cmatch ".*$($_.Regex).*" })[0];
 
-    # If cmdlet does not match, try the path.
-    if($matchedRules.Count -eq 0) {
-        $matchedRules += @($rules | Where-Object { $cmdletPath.FullName -cmatch ".*$($_.Regex).*" });
+    # Look for a better match, but ensure that the groups match.
+    if(($matchedRule.Group -ne $null) -and ($matchedRule.Group -eq $possibleBetterMatch.Group)) {
+        $matchedRule = $possibleBetterMatch;
     }
 
     # Take note of unmatched cmdlets and write to outputs.
-    if($matchedRules.Count -eq 0) {
+    if($matchedRule -eq $null) {
         $warnings += $cmdlet;
         $results[$cmdlet] = "Other";
     } else {
-        $results[$cmdlet] = $matchedRules.Get(0).Alias;
+        $results[$cmdlet] = $matchedRule.Alias;
     }
 
     # Progress stuff.
