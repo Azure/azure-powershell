@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -136,12 +136,12 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         }
 
         /// <summary>
-        /// Construct AzureSqlDatabaseModel from Management.Sql.Models.Database object
+        /// Construct AzureSqlDatabaseModel from Management.Sql.LegacySdk.Models.Database object
         /// </summary>
         /// <param name="resourceGroup">Resource group</param>
         /// <param name="serverName">Server name</param>
         /// <param name="database">Database object</param>
-        public AzureSqlDatabaseModel(string resourceGroup, string serverName, Management.Sql.Models.Database database)
+        public AzureSqlDatabaseModel(string resourceGroup, string serverName, Management.Sql.LegacySdk.Models.Database database)
         {
             Guid id = Guid.Empty;
             DatabaseEdition edition = DatabaseEdition.None;

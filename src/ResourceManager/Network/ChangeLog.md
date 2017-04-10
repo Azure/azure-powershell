@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,6 +18,17 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 3.7.0
+* Added support for new web application firewall features to Application Gateways
+    - Added New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig
+    - Added Get-AzureRmApplicationGatewayAvailableWafRuleSets (Alias: List-AzureRmApplicationGatewayAvailableWafRuleSets)
+    - Updated New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration: Added parameter -RuleSetType -RuleSetVersion and -DisabledRuleGroups
+    - Updated Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration: Added parameter -RuleSetType -RuleSetVersion and -DisabledRuleGroups
+
+* Added support for IPSec policies to Virtual Network Gateway Connections
+	- Added New-AzureRmIpsecPolicy
+	- Updated New-AzureRmVirtualNetworkGatewayConnection: Added parameter -IpsecPolicies and -UsePolicyBasedTrafficSelectors
 
 ## Version 3.6.0
 * Added support for connection draining to Application Gateways
