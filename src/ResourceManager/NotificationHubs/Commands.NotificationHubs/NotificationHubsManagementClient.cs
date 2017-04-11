@@ -230,7 +230,6 @@ namespace Microsoft.Azure.Commands.NotificationHubs
             var parameter = new NotificationHubCreateOrUpdateParameters()
             {
                 Location = nhAttributes.Location,
-                Tags = new Dictionary<string, string>(nhAttributes.Tags),
                 AdmCredential = nhAttributes.AdmCredential,
                 ApnsCredential = nhAttributes.ApnsCredential,
                 BaiduCredential = nhAttributes.BaiduCredential,
@@ -240,6 +239,11 @@ namespace Microsoft.Azure.Commands.NotificationHubs
                 NotificationHubCreateOrUpdateParametersName = nhAttributes.Name,
                 RegistrationTtl = nhAttributes.RegistrationTtl
             };
+
+            if (nhAttributes.Tags != null)
+            {
+                parameter.Tags = new Dictionary<string, string>(nhAttributes.Tags);
+            }
 
             var response = Client.NotificationHubs.CreateOrUpdate(resourceGroupName, namespaceName, nhAttributes.Name, parameter);
             return new NotificationHubAttributes(response);
