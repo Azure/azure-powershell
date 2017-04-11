@@ -523,7 +523,7 @@ Describe "Uninstall-ModuleHelper" {
             Mock Uninstall-Module -Verifiable { throw "No match was found for the specified search criteria and module names" }
             It "Should write error to error pipeline" {
                 Uninstall-ModuleHelper -Module 'Module1' -Version '1.0' -Profile 'Profile1' -RemovePreviousVersions -ErrorVariable ev -ea SilentlyContinue 
-                ($null -ne ($ev -match "If you installed via an MSI")) | Should be $true
+                ($ev -match "If you installed via an MSI") | Should not be $null
                 $Script:mockCalled | Should Be 1
                 Assert-VerifiableMocks
             } 
@@ -551,7 +551,7 @@ Describe "Uninstall-ModuleHelper" {
             Mock Uninstall-Module -Verifiable { throw "The module is currently in use" }
             It "Should write error to error pipeline" {
                 Uninstall-ModuleHelper -Module 'Module1' -Version '1.0' -Profile 'Profile1' -RemovePreviousVersions -ErrorVariable ev -ea SilentlyContinue 
-                ($null -ne ($ev -match "The module is currently in use")) | Should be $true
+                ($ev -match "The module is currently in use") | Should not be $null
                 $Script:mockCalled | Should Be 1
                 Assert-VerifiableMocks
             } 
