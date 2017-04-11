@@ -75,6 +75,8 @@ Accept wildcard characters: False
 ```
 
 ### -Fabric
+An instance of an ASRFabric object.
+
 ```yaml
 Type: ASRFabric
 Parameter Sets: ByFabricObject
@@ -88,6 +90,8 @@ Accept wildcard characters: False
 ```
 
 ### -Server
+An instance of an ASRServer object.
+
 ```yaml
 Type: ASRServer
 Parameter Sets: ByServerObject

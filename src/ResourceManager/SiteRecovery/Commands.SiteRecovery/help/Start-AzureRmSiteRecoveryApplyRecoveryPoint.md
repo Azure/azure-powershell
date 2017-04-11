@@ -26,7 +26,7 @@ The **Start-AzureRmSiteRecoveryApplyRecoveryPoint** changes a recovery point for
 ## PARAMETERS
 
 ### -RecoveryPoint
-Specifies the recovery point object that this cmdlet changes.
+An instance of an ASRRecoveryPoint object that this cmdlet will change.
 
 ```yaml
 Type: ASRRecoveryPoint
@@ -41,7 +41,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReplicationProtectedItem
-Specifies the Replication Protected Item object.
+An instance of an ASRReplicationProtectedItem object.
 
 ```yaml
 Type: ASRReplicationProtectedItem
@@ -56,6 +56,8 @@ Accept wildcard characters: False
 ```
 
 ### -DataEncryptionPrimaryCertFile
+A string specifying the primary data encryption certificate.
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -69,6 +71,8 @@ Accept wildcard characters: False
 ```
 
 ### -DataEncryptionSecondaryCertFile
+A string specifying the secondary data encryption certificate.
+
 ```yaml
 Type: String
 Parameter Sets: (All)

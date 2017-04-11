@@ -87,6 +87,8 @@ Accept wildcard characters: False
 ```
 
 ### -ReplicationProtectedItem
+The item to be protected.
+
 ```yaml
 Type: ASRReplicationProtectedItem
 Parameter Sets: ByRPIObject
