@@ -124,6 +124,7 @@ namespace Microsoft.WindowsAzure.Commands.WAPackIaaS.VirtualMachine
             {
                 newVirtualMachine = new Utilities.WAPackIaaS.DataContract.VirtualMachine()
                 {
+                    ComputerName = Name,
                     Name = Name,
                     VMTemplateId = Template.ID,
                     LocalAdminUserName = VMCredential.UserName,
@@ -136,6 +137,7 @@ namespace Microsoft.WindowsAzure.Commands.WAPackIaaS.VirtualMachine
             {
                 newVirtualMachine = new Utilities.WAPackIaaS.DataContract.VirtualMachine()
                 {
+                    ComputerName = Name,
                     Name = Name,
                     VMTemplateId = Template.ID,
                     LocalAdminUserName = VMCredential.UserName,
@@ -148,6 +150,7 @@ namespace Microsoft.WindowsAzure.Commands.WAPackIaaS.VirtualMachine
             {
                 newVirtualMachine = new Utilities.WAPackIaaS.DataContract.VirtualMachine()
                 {
+                    ComputerName = Name,
                     Name = Name,
                     HardwareProfileId = VMSizeProfile.ID,
                     VirtualHardDiskId = OSDisk.ID,
