@@ -838,15 +838,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Desired IP Tag is an invalided IP Tag Type.
-        /// </summary>
-        public static string InvalidIPTagTypeException {
-            get {
-                return ResourceManager.GetString("InvalidIPTagTypeException", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to You must specify the thumbprint algorithm..
         /// </summary>
         public static string InvalidThumbprint {
