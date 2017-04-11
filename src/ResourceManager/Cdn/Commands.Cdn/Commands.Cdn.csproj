@@ -79,7 +79,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Cdn">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Cdn.3.0.0-preview\lib\net45\Microsoft.Azure.Management.Cdn.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Cdn.3.0.1-preview\lib\net45\Microsoft.Azure.Management.Cdn.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -91,6 +91,8 @@
   <ItemGroup>
     <Compile Include="Common\AzureCdnCmdletBase.cs" />
     <Compile Include="Common\Constants.cs" />
+    <Compile Include="CustomDomain\DisableAzureRmCdnCustomDomainHttps.cs" />
+    <Compile Include="CustomDomain\EnableAzureRmCdnCustomDomainHttps.cs" />
     <Compile Include="CustomDomain\GetAzureRmCdnCustomDomain.cs" />
     <Compile Include="CustomDomain\NewAzureRmCdnCustomDomain.cs" />
     <Compile Include="CustomDomain\RemoveAzureRmCdnCustomDomain.cs" />
@@ -111,6 +113,7 @@
     <Compile Include="Helpers\ModelExtensions.cs" />
     <Compile Include="Models\CustomDomain\PSCustomDomain.cs" />
     <Compile Include="Models\CustomDomain\PSCustomDomainResourceState.cs" />
+    <Compile Include="Models\CustomDomain\PSCustomHttpsProvisioningState.cs" />
     <Compile Include="Models\Endpoint\PSCheckNameAvailabilityOutput.cs" />
     <Compile Include="Models\Endpoint\PSCustomDomainInvalidReason.cs" />
     <Compile Include="Models\Endpoint\PSDeepCreatedOrigin.cs" />

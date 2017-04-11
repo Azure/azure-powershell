@@ -12,26 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Cdn.Common;
-using Microsoft.Azure.Commands.Cdn.Helpers;
-using Microsoft.Azure.Commands.Cdn.Properties;
-using Microsoft.Azure.Management.Cdn;
-using Microsoft.Azure.Commands.Cdn.Models;
-using System.Linq;
-
-namespace Microsoft.Azure.Commands.Cdn.Endpoint
+namespace Microsoft.Azure.Commands.Cdn.Models.CustomDomain
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmCdnSubscriptionResourceUsage"), OutputType(typeof(PSResourceUsage))]
-    public class GetAzureRmCdnSubscriptionResourceUsage : AzureCdnCmdletBase
+    public enum PSCustomHttpsProvisioningState
     {
-
-        public override void ExecuteCmdlet()
-        {
-            var resourceUsages = CdnManagementClient.ListResourceUsage().Select(r => r.ToPsResourceUsage());
-
-            WriteVerbose(Resources.Success);
-            WriteObject(resourceUsages);
-        }
+        Enabling,
+        Enabled,
+        Disabling,
+        Disabled,
+        Failed
     }
 }

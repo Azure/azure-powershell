@@ -232,6 +232,24 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Custom domain with name &apos;{0}&apos; in the endpoint &apos;{1}&apos;, profile &apos;{2}&apos;, and resource group &apos;{3}&apos; has https disabling..
+        /// </summary>
+        internal static string Success_DisableCustomDomainHttps {
+            get {
+                return ResourceManager.GetString("Success_DisableCustomDomainHttps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Custom domain with name &apos;{0}&apos; in the endpoint &apos;{1}&apos;, profile &apos;{2}&apos;, and resource group &apos;{3}&apos; has https enabling..
+        /// </summary>
+        internal static string Success_EnableCustomDomainHttps {
+            get {
+                return ResourceManager.GetString("Success_EnableCustomDomainHttps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove-AzureRmCdnCustomDomain on {0}..
         /// </summary>
         internal static string Success_RemoveCustomDomain {
