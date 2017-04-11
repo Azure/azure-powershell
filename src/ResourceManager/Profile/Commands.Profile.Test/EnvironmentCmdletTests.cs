@@ -283,6 +283,27 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             Assert.Equal(env.Name, cmdlet.Name);
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CreateEnvironmentWithTrailingSlashInActiveDirectory()
+        {
+            Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
+            PSAzureEnvironment actual = null;
+            commandRuntimeMock.Setup(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()))
+                .Callback((object output) => actual = (PSAzureEnvironment)output);
+            var cmdlet = new AddAzureRMEnvironmentCommand()
+            {
+                CommandRuntime = commandRuntimeMock.Object,
+                Name = "Katal",
+                ActiveDirectoryEndpoint = "https://ActiveDirectoryEndpoint/"
+            };
+
+            cmdlet.InvokeBeginProcessing();
+            cmdlet.ExecuteCmdlet();
+            cmdlet.InvokeEndProcessing();
+            Assert.Equal(cmdlet.ActiveDirectoryEndpoint, actual.ActiveDirectoryAuthority, StringComparer.OrdinalIgnoreCase);
+        }
+
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
