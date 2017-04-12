@@ -221,24 +221,27 @@ function Test-ListWebServices
             # Create a few web services in the same resource group
             $svcDefinition = LoadWebServiceDefinitionForTest $TEST_WEBSERVICE_DEFINITION_FILE `
                                     $commitmentPlanId $storageAccount
-            LogOutput "Creating web service: $webServiceName"
+            LogOutput "Creating web service 1: $webServiceName"
             $svc1 = New-AzureRmMlWebService -ResourceGroupName $rgName -Location $location `
                                     -Name $webServiceName -NewWebServiceDefinition $svcDefinition `
                                     -Force
             Assert-NotNull $svc1
-            LogOutput "Created web service: $($svc1.Id)"                     
+            LogOutput "Created web service 1: $($svc1.Id)"                     
             ValidateWebServiceResult $rgName $webServiceName $location $svc1
-            LogOutput "Creating web service: $sameGroupWebServiceName"
+            LogOutput "Creating web service 2: $sameGroupWebServiceName"
             $svc2 = New-AzureRmMlWebService -ResourceGroupName $rgName -Location $location `
                             -Name $sameGroupWebServiceName -NewWebServiceDefinition $svcDefinition `
                             -Force
             Assert-NotNull $svc2
-            LogOutput "Created web service: $($svc2.Id)"                     
+            LogOutput "Created web service 2: $($svc2.Id)"                     
             ValidateWebServiceResult $rgName $sameGroupWebServiceName $location $svc2
 
             # Create a web service in a different resource group
             LogOutput "Creating resource group: $otherResourceGroupName"    
             $otherGroup = New-AzureRmResourceGroup -Name $otherResourceGroupName -Location $location        
+            LogOutput("111111111111111111111111")
+            LogOutput $otherGroup
+            LogOutput("222222222222222222222222")
             LogOutput("Created resource group: $($otherGroup.ResourceId)")
             LogOutput "Creating web service: $otherGroupWebServiceName"
             $svc3 = New-AzureRmMlWebService -ResourceGroupName $otherResourceGroupName -Location $location `
@@ -311,14 +314,17 @@ function RunWebServicesTest([ScriptBlock] $testScript)
         # Setup
         LogOutput "Creating resource group: $rgName"    
         $group = New-AzureRmResourceGroup -Name $rgName -Location $location        
+        LogOutput("111111111111111111111111")
+        LogOutput("222222222222222222222222")
         LogOutput("Created resource group: $($group.ResourceId)")
+        LogOutput("Created resource group: $($group.ResourceGroupName)")
 
         LogOutput "Creating storage account: $storageAccountName"    
         $storageAccount = Create-TestStorageAccount $rgName $location $storageAccountName        
         LogOutput("Created storage account: $storageAccountName")
 
         LogOutput "Creating commitment plan resource: $commitmentPlanName"
-        $cpSku = @{Name = 'PLAN_SKU_NAME'; Tier='PLAN_SKU_TIER'; Capacity=1}
+        $cpSku = @{Name = 'S1'; Tier='Standard'; Capacity=1}
         $cpPlan = New-AzureRmResource -Location $location -ResourceType `
                         "Microsoft.MachineLearning/CommitmentPlans" -ResourceName $commitmentPlanName `
                         -ResourceGroupName $rgName -SkuObject $cpSku -Properties @{} `
