@@ -7,7 +7,7 @@ schema: 2.0.0
 # Set-AzureRmWcfRelayAuthorizationRule
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Updates the specified authorization rule description for the given WcfRelay.
 
 ## SYNTAX
 
@@ -18,16 +18,20 @@ Set-AzureRmWcfRelayAuthorizationRule [-ResourceGroupName] <String> [-NamespaceNa
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzureRmWcfRelayAuthorizationRule** cmdlet updates the description for the specified authorization rule of the given WcfRelay.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $getWcfRelayAutho = Get-AzureRmWcfRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -WcfRelayName TestWCFRe
+lay1 -AuthorizationRuleName AuthoRule1
+PS C:\> $getWcfRelayAutho.Rights.Add("Manage")
+PS C:\> Set-AzureRmWcfRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -WcfRelayName TestWCFRelay1 -AuthorizationR
+uleName AuthoRule1 -AuthRuleObj $getWcfRelayAutho
 ```
 
-{{ Add example description here }}
+Adds **Manage** to the access rights of the authorization rule `AuthoRule1` of the WcfRelay `TestWCFRelay1`.
 
 ## PARAMETERS
 
@@ -153,15 +157,34 @@ Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-System.String\[\]
+### -ResourceGroupName
+ System.String 
 
+### -NamespaceName
+ System.String 
+ 
+### -WcfRelayName
+ System.String 
+
+### -AuthorizationRuleName
+ System.String
+
+### -AuthRuleObj
+ Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes
+ 
 ## OUTPUTS
-
 ### Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes
+
+Rights : {Listen, Send, Manage}
+Name   : AuthoRule1
+Type   : Microsoft.Relay/AuthorizationRules
+Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/WcfRelays/TestWCFRelay
+         1/authorizationRules/AuthoRule1
 
 ## NOTES
 

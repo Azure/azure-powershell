@@ -16,7 +16,6 @@ namespace Microsoft.Azure.Commands.Relay.Models
     /// <summary>
     /// Description of a Namespace resource.
     /// </summary>
-    [JsonTransformation]
     public partial class RelayNamespaceAttributes : TrackedResourceAttributes
     {
         /// <summary>

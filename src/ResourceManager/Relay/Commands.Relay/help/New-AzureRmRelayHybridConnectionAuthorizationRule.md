@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmRelayHybridConnectionAuthorizationRule
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a new authorization rule for the specified HybridConnection .
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ New-AzureRmRelayHybridConnectionAuthorizationRule [-ResourceGroupName] <String> 
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzureRmRelayHybridConnectionAuthorizationRule** cmdlet creates a new authorization rule for the specified HybridConnection.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmRelayHybridConnectionAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -HybridConnectionsName TestHybridConnection -AuthorizationRuleName AuthoRule1 -Rights @("Listen","Send")
 ```
 
-{{ Add example description here }}
+Creates authorization rule `AuthoRule1` with **Listen and Send** rights for the HybridConnection `TestHybridConnection`.
 
 ## PARAMETERS
 
@@ -116,7 +116,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -132,21 +132,38 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-System.String[]
+### -ResourceGroupName
+ System.String 
 
+### -NamespaceName
+ System.String 
+ 
+### -HybridConnectionsName
+ System.String 
+
+### -AuthorizationRuleName
+ System.String
+
+### -Rights
+ System.String []
 
 ## OUTPUTS
-
 ### Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes
 
+Rights : {Listen, Send}
+Name   : AuthoRule1
+Type   : Microsoft.Relay/AuthorizationRules
+Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/HybridConnections/Test
+         HybridConnection/authorizationRules/AuthoRule1
 
 ## NOTES
 

@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmRelayHybridConnection
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes the HybridConnection from the specified HybridConnection namespace.
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ Remove-AzureRmRelayHybridConnection [-ResourceGroupName] <String> [-NamespaceNam
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzureRmRelayHybridConnection** cmdlet removes the HybridConnection from the specified Relay namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmRelayHybridConnection -ResourceGroup Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -HybridConnectionsName TestHybridConnection
 ```
 
-{{ Add example description here }}
+Removes the HybridConnection `TestHybridConnection` from the namespace `TestNameSpace-Relay1`.
 
 ## PARAMETERS
 
@@ -85,7 +85,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -101,15 +101,23 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
+### -ResourceGroup
+	System.String
 
+### -NamespaceName
+	System.String
+
+### -HybridConnectionsName
+	System.String
 
 ## OUTPUTS
 

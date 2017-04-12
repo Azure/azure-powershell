@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmWcfRelay
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes the WcfRelay from the specified Relay namespace.
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ Remove-AzureRmWcfRelay [-ResourceGroupName] <String> [-NamespaceName] <String> [
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzureRmWcfRelay** cmdlet removes the WcfRelay from the specified Relay namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmWcfRelay -ResourceGroup Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -WcfRelayName TestWCFRelay1
 ```
 
-{{ Add example description here }}
+Removes the WcfRelay `TestWCFRelay1` from the namespace `TestNameSpace-Relay1`.
 
 ## PARAMETERS
 
@@ -105,13 +105,23 @@ Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
+### -ResourceGroup
+ System.String
+ 
+
+### -NamespaceName
+ System.String
+ 
+
+### -WcfRelayName
+ System.String
 
 ## OUTPUTS
-
 ### System.Object
 
 ## NOTES

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.WcfRelay
             Position = 0,
             HelpMessage = "The name of the resource group")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroup { get; set; }
+        public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.WcfRelay
             // Get a WcfRelay List Keys for the specified AuthorizationRule
             if (ShouldProcess(target: RegenerateKey, action: string.Format("Generating PrimaryKey/SecondaryKey for AuthorizationRule: {0} of WcfRelay:{1}", AuthorizationRuleName, WcfRelayName)))
             {
-               WriteObject(Client.SetRegenerateKeys(ResourceGroup, NamespaceName, WcfRelayName, AuthorizationRuleName, RegenerateKey));
+               WriteObject(Client.SetRegenerateKeys(ResourceGroupName, NamespaceName, WcfRelayName, AuthorizationRuleName, RegenerateKey));
             }
         }
     }

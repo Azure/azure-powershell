@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.WcfRelay
     /// <summary>
     /// 'Get-AzureRmWcfRelayKey' Cmdlet gives key detials for the given WcfRelay Authorization Rule
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, RelayWcfRelayKeyVerb), OutputType(typeof(AuthorizationRuleAttributes))]
+    [Cmdlet(VerbsCommon.Get, RelayWcfRelayKeyVerb), OutputType(typeof(AuthorizationRuleKeysAttributes))]
     public class GetAzureWcfRelayKey : AzureRelayCmdletBase
     {
         [Parameter(Mandatory = true,

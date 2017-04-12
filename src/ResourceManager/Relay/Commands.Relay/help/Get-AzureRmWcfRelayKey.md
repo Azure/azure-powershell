@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmWcfRelayKey
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets the primary and secondary connection strings for the given WcfRelay.
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ Get-AzureRmWcfRelayKey [-ResourceGroupName] <String> [-NamespaceName] <String> [
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmWcfRelayKey** cmdlet returns the primary and secondary connection strings for the given WcfRelay.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmWcfRelayKey -ResourceGroup Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -WcfRelayName TestWCFRelay1 -AuthorizationRuleName AuthoRule1
 ```
 
-{{ Add example description here }}
+Returns the primary and secondary connection strings for the specified WcfRelay.
 
 ## PARAMETERS
 
@@ -89,16 +89,34 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
+### -ResourceGroupName
+ System.String 
+
+### -NamespaceName
+ System.String 
+ 
+### -WcfRelayName
+ System.String 
+
+### -AuthorizationRuleName
+ System.String
 
 ## OUTPUTS
+### Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleKeysAttributes
 
-### Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes
+PrimaryConnectionString   : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;Ent
+                            ityPath=TestWCFRelay1
+SecondaryConnectionString : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;Ent
+                            ityPath=TestWCFRelay1
+PrimaryKey                : ############################################
+SecondaryKey              : ############################################
+KeyName                   : AuthoRule1
 
 ## NOTES
 
 ## RELATED LINKS
-

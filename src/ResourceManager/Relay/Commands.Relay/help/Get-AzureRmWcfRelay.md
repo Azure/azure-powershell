@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmWcfRelay
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Returns a description for the specified WcfRelay.
 
 ## SYNTAX
 
@@ -16,16 +16,16 @@ Get-AzureRmWcfRelay [-ResourceGroupName] <String> [-NamespaceName] <String> [[-W
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmWcfRelay** cmdlet returns a description of the specified WcfRelay.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmWcfRelay -ResourceGroup Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -WcfRelayName TestWCFRelay1
 ```
 
-{{ Add example description here }}
+Returns the description of the WcfRelay. 
 
 ## PARAMETERS
 
@@ -73,14 +73,38 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
+### -ResourceGroup
+ System.String
+ 
+
+### -NamespaceName
+ System.String
+ 
+
+### -WcfRelayName
+ System.String 
 
 ## OUTPUTS
 
 ### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]
+
+RelayType                   : NetTcp
+CreatedAt                   : 4/12/2017 2:23:08 AM
+UpdatedAt                   : 4/12/2017 2:23:08 AM
+ListenerCount               : 0
+RequiresClientAuthorization : True
+RequiresTransportSecurity   : True
+IsDynamic                   : False
+UserMetadata                : User Meta data
+Id                          : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/W
+                              cfRelays/TestWCFRelay1
+Name                        : TestWCFRelay1
+Type                        : Microsoft.Relay/WcfRelays
 
 ## NOTES
 

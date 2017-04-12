@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmRelayNamespace
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a new Relay namespace.
 
 ## SYNTAX
 
@@ -17,16 +17,15 @@ New-AzureRmRelayNamespace [-ResourceGroupName] <String> [-NamespaceName] <String
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzureRmRelayNamespace** cmdlet creates a new Relay namespace. Once created, the namespace resource manifest is immutable. This operation is idempotent.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmRelayNamespace -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -Location "West US" -Tag @{Tag1="Tag1Value"}
 ```
-
-{{ Add example description here }}
+Creates a new Relay namespace within the specified resource group.
 
 ## PARAMETERS
 
@@ -120,15 +119,40 @@ Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-System.Collections.Hashtable
+### -ResourceGroup
+ System.String
+
+### -NamespaceName
+ System.String
+
+### -Location
+ System.String
+
+### -SkuName
+ System.String
+
+### -Tag
+ System.Collections.Hashtable
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttributes
+
+ProvisioningState  : Succeeded
+CreatedAt          : 4/12/2017 12:38:47 AM
+UpdatedAt          : 4/12/2017 12:39:10 AM
+ServiceBusEndpoint : https://TestNameSpace-Relay1.servicebus.windows.net:443/
+MetricId           : 854d368f-1828-428f-8f3c-f2affa9b2f7d:testnamespace-relay1
+Location           : West US
+Tags               : {[tag1, Tag1Value]}
+Id                 : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1
+Name               : TestNameSpace-Relay1
+Type               : Microsoft.Relay/namespaces
 
 ## NOTES
 

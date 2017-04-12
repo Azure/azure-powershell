@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
     /// <summary>
     /// 'Get-AzureRmCheckNameAvailability' Cmdlet Check Availability of the NameSpace Name
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmCheckNameAvailability"), OutputType(typeof(List<RelayNamespaceAttributes>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmCheckNameAvailability"), OutputType(typeof(List<CheckNameAvailabilityResultAttributes>))]
     public class GetAzureRmCheckNameAvailability : AzureRelayCmdletBase
     {
         [Parameter(

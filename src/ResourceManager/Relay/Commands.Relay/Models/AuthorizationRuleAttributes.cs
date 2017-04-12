@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Commands.Relay.Models
     /// <summary>
     /// Description of a Namespace AuthorizationRules.
     /// </summary>
-    public partial class AuthorizationRuleAttributes : ResourceAttributes
+    public partial class AuthorizationRuleAttributes
     {
         /// <summary>
         /// 
@@ -44,8 +44,11 @@ namespace Microsoft.Azure.Commands.Relay.Models
         /// <param name="name">Resource name</param>
         /// <param name="type">Resource type</param>
         
-        public AuthorizationRuleAttributes(AuthorizationRule authorizationrule) : base(authorizationrule.Id, authorizationrule.Name, authorizationrule.Type)
+        public AuthorizationRuleAttributes(AuthorizationRule authorizationrule)
         {
+            Id = authorizationrule.Id;
+            Name = authorizationrule.Name;
+            Type = authorizationrule.Type;
             Rights = authorizationrule.Rights;
         }
 
@@ -54,7 +57,22 @@ namespace Microsoft.Azure.Commands.Relay.Models
         /// Gets or sets the rights associated with the rule.
         /// </summary>
         public IList<string> Rights { get; set; }
-        
+
+        /// <summary>
+        /// Gets or sets the rights associated with the rule.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the rights associated with the rule.
+        /// </summary>
+        public string Type { get; set; }
+
+        /// <summary>
+        /// Gets or sets the rights associated with the rule.
+        /// </summary>
+        public string Id { get; set; }
+
     }
 }
 

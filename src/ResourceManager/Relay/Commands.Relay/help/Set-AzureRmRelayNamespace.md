@@ -7,7 +7,7 @@ schema: 2.0.0
 # Set-AzureRmRelayNamespace
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Updates the description of an existing Relay namespace.
 
 ## SYNTAX
 
@@ -17,16 +17,15 @@ Set-AzureRmRelayNamespace [-ResourceGroupName] <String> [-NamespaceName] <String
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzureRmRelayNamespace** cmdlet updates the description of the specified Relay namespace within the resource group.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzureRmRelayNamespace -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -Tag @{Tag2="Tag2Value"}
 ```
-
-{{ Add example description here }}
+Updates the Relay namespace with a new description.
 
 ## PARAMETERS
 
@@ -121,14 +120,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
-### System.String
-System.Collections.Hashtable Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttirbutesUpdateParameter
+### -ResourceGroup
+ System.String
+
+### -NamespaceName
+ System.String
+
+### -Location
+ System.String
+
+### -Tag
+ System.Collections.Hashtable
 
 ## OUTPUTS
-
 ### Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttributes
+
+ProvisioningState  :
+CreatedAt          : 4/12/2017 12:38:47 AM
+UpdatedAt          : 4/12/2017 12:39:10 AM
+ServiceBusEndpoint : https://TestNameSpace-Relay1.servicebus.windows.net:443/
+MetricId           :
+Location           :
+Tags               : {[tag2, Tag2Value]}
+Id                 :
+Name               :
+Type               :
 
 ## NOTES
 

@@ -7,7 +7,7 @@ schema: 2.0.0
 # Set-AzureRmRelayHybridConnectionAuthorizationRule
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Updates the specified authorization rule description for the given HybridConnection.
 
 ## SYNTAX
 
@@ -18,16 +18,20 @@ Set-AzureRmRelayHybridConnectionAuthorizationRule [-ResourceGroupName] <String> 
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzureRmRelayHybridConnectionAuthorizationRule** cmdlet updates the description for the specified authorization rule of the given HybridConnection.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $GetHybirdAutho = Get-AzureRmRelayHybridConnectionAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -HybridConne
+ctionsName TestHybridConnection -AuthorizationRuleName AuthoRule1
+PS C:\> $GetHybirdAutho.Rights.Add("Manage")
+PS C:\> Set-AzureRmRelayHybridConnectionAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -HybridConnectionsName TestHyb
+ridConnection -AuthorizationRuleName AuthoRule1 -AuthRuleObj $GetHybirdAutho
 ```
 
-{{ Add example description here }}
+Adds **Manage** to the access rights of the authorization rule `AuthoRule1` of the HybridConnection `TestHybridConnection`.
 
 ## PARAMETERS
 
@@ -133,7 +137,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -149,21 +153,38 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-System.String[]
+### -ResourceGroupName
+ System.String 
 
+### -NamespaceName
+ System.String 
+ 
+### -HybridConnectionsName
+ System.String 
+
+### -AuthorizationRuleName
+ System.String
+
+### -AuthRuleObj
+ Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes
 
 ## OUTPUTS
-
 ### Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes
 
+Rights : {Listen, Send, Manage}
+Name   : AuthoRule1
+Type   : Microsoft.Relay/AuthorizationRules
+Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/HybridConnections/Test
+         HybridConnection/authorizationRules/AuthoRule1
 
 ## NOTES
 

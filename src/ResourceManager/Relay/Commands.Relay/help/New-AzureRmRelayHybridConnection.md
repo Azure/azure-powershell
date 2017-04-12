@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmRelayHybridConnection
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a HybridConnection in the specified Relay namespace.
 
 ## SYNTAX
 
@@ -18,16 +18,16 @@ New-AzureRmRelayHybridConnection [-ResourceGroupName] <String> [-NamespaceName] 
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzureRmRelayHybridConnection** cmdlet creates a HybridConnection in the specified Relay namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmRelayHybridConnection -ResourceGroup Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -HybridConnectionsName TestHybridConnection -RequiresClientAuthorization $True -UserMetadata "User Meta data"
 ```
 
-{{ Add example description here }}
+Creates a new HybridConnection `TestHybridConnection` in the specified Relay namespace `TestNameSpace-Relay1`.
 
 ## PARAMETERS
 
@@ -132,7 +132,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -148,22 +148,43 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
-### System.String
-Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes
-System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+### -ResourceGroup
+	System.String
 
+### -NamespaceName
+	System.String
+
+### -HybridConnectionsName
+	System.String
+
+### -RequiresClientAuthorization
+	System.Boolean
+
+### -UserMetadata
+	System.String
 
 ## OUTPUTS
-
 ### Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes
 
+CreatedAt                   : 4/12/2017 3:17:02 AM
+UpdatedAt                   : 4/12/2017 3:17:02 AM
+ListenerCount               :
+RequiresClientAuthorization : True
+UserMetadata                : User Meta data
+Id                          : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/H
+                              ybridConnections/TestHybridConnection
+Name                        : TestHybridConnection
+Type                        : Microsoft.Relay/HybridConnections
 
 ## NOTES
 

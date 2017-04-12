@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
             Position = 0,
             HelpMessage = "The name of the resource group")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroup { get; set; }
+        public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
             // Get a Relay List Keys for the specified AuthorizationRule
             if (ShouldProcess(target: RegenerateKeys, action: string.Format("Generating Key:{0} for AuthorizationRule:{1} of NameSpace:{2}", RegenerateKeys, AuthorizationRuleName, NamespaceName)))
             {
-                WriteObject(Client.SetRegenerateKeys(ResourceGroup, NamespaceName, AuthorizationRuleName, RegenerateKeys));
+                WriteObject(Client.SetRegenerateKeys(ResourceGroupName, NamespaceName, AuthorizationRuleName, RegenerateKeys));
             }
         }
     }

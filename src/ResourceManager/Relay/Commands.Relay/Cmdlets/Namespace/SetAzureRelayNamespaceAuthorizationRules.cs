@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Required if 'AuthruleObj' not specified. Rights - e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
         [ValidateNotNullOrEmpty]
-        public string[] Rights { get; set; }
+        public string[] Right { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -70,8 +70,8 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
             else
             {
                 sasRule.Rights = new List<string>();
-                if (Rights != null && Rights.Length > 0)
-                foreach (string test in Rights)
+                if (Right != null && Right.Length > 0)
+                foreach (string test in Right)
                 {
                     sasRule.Rights.Add(test);
                 }

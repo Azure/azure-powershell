@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmWcfRelayAuthorizationRule
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets the description of a specified authorization rule for a given WcfRelay.
 
 ## SYNTAX
 
@@ -17,16 +17,17 @@ Get-AzureRmWcfRelayAuthorizationRule [-ResourceGroupName] <String> [-NamespaceNa
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmWcfRelayAuthorizationRule** cmdlet gets the description of a specified authorization rule on the given WcfRelay.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\>Get-AzureRmWcfRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -WcfRelayName TestWCFRelay1 -AuthorizationR
+uleName AuthoRule1
 ```
 
-{{ Add example description here }}
+Returns the specified authorization rule description for a given WcfRelay.
 
 ## PARAMETERS
 
@@ -89,14 +90,30 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
+### -ResourceGroupName
+ System.String 
+
+### -NamespaceName
+ System.String 
+ 
+### -WcfRelayName
+ System.String 
+
+### -AuthorizationRuleName
+ System.String
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]
+Rights : {Listen, Send}
+Name   : AuthoRule1
+Type   : Microsoft.Relay/AuthorizationRules
+Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/WcfRelays/TestWCFRelay
+         1/authorizationRules/AuthoRule1
 
 ## NOTES
 

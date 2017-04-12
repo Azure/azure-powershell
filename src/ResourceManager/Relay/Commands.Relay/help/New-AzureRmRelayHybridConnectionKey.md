@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmRelayHybridConnectionKey
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Regenerates the primary or secondary connection strings for the HybridConnection.
 
 ## SYNTAX
 
@@ -18,16 +18,23 @@ New-AzureRmRelayHybridConnectionKey [-ResourceGroup] <String> [-NamespaceName] <
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzureRmRelayHybridConnectionKey** cmdlet regenerates the primary or secondary connection strings for the specified HybridConnection and authorization rule.
 
 ## EXAMPLES
 
 ### Example 1
+
 ```
-PS C:\> {{ Add example code here }}
+PS C:\>New-AzureRmRelayHybridConnectionKey -ResourceGroup Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -HybridConnectionsName TestHybridConnection -AuthorizationRuleName AuthoRule1 -RegenerateKey PrimaryKey
 ```
 
-{{ Add example description here }}
+Regenerates the Primary connection string for the namespace.
+
+```
+PS C:\>New-AzureRmRelayHybridConnectionKey -ResourceGroup Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -HybridConnectionsName TestHybridConnection -AuthorizationRuleName AuthoRule1 -RegenerateKey SecondaryKey
+```
+
+Regenerates the Secondary connection string for the namespace.
 
 ## PARAMETERS
 
@@ -117,7 +124,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -133,7 +140,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -142,11 +149,16 @@ Accept wildcard characters: False
 
 ### System.String
 
-
 ## OUTPUTS
-
 ### Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleKeysAttributes
 
+PrimaryConnectionString   : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;Ent
+                            ityPath=TestHybridConnection
+SecondaryConnectionString : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;Ent
+                            ityPath=TestHybridConnection
+PrimaryKey                : ############################################
+SecondaryKey              : ############################################
+KeyName                   : AuthoRule1
 
 ## NOTES
 

@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmRelayNamespaceKey
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets the primary and secondary connection strings for the namespace.
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ Get-AzureRmRelayNamespaceKey [-ResourceGroupName] <String> [-NamespaceName] <Str
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmRelayNamespaceKey** cmdlet returns the primary and secondary connection strings for the given namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmRelayNamespaceKey -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -AuthorizationRuleName AuthoRule1
 ```
 
-{{ Add example description here }}
+Primary and secondary connection string to the specified namespace.
 
 ## PARAMETERS
 
@@ -74,14 +74,30 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
+### -ResourceGroup
+ System.String
+ 
+
+### -NamespaceName
+ System.String
+ 
+
+### -AuthorizationRuleName
+ System.String
 
 ## OUTPUTS
-
 ### Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleKeysAttributes
+
+PrimaryConnectionString   : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################
+SecondaryConnectionString : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################
+PrimaryKey                : ############################################
+SecondaryKey              : ############################################
+KeyName                   : AuthoRule1
 
 ## NOTES
 

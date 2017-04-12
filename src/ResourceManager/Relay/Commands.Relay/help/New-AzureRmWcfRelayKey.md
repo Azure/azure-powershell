@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmWcfRelayKey
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Regenerates the primary or secondary connection strings for the WcfRelay.
 
 ## SYNTAX
 
@@ -17,16 +17,21 @@ New-AzureRmWcfRelayKey [-ResourceGroup] <String> [-NamespaceName] <String> [-Wcf
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzureRmWcfRelayKey** cmdlet regenerates the primary or secondary connection strings for the specified WcfRelay and authorization rule.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\>New-AzureRmWcfRelayKey -ResourceGroup Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -WcfRelayName TestWCFRelay1 -AuthorizationRuleName AuthoRule1 -RegenerateKey PrimaryKey
 ```
+Regenerates the primary connection string for the namespace.
 
-{{ Add example description here }}
+### Example 2
+```
+PS C:\>New-AzureRmWcfRelayKey -ResourceGroup Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -WcfRelayName TestWCFRelay1 -AuthorizationRuleName AuthoRule1 -RegenerateKey SecondaryKey
+```
+Regenerates the Secondary connection string for the namespace.
 
 ## PARAMETERS
 
@@ -136,14 +141,36 @@ Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
+### -ResourceGroupName
+ System.String 
+
+### -NamespaceName
+ System.String 
+ 
+### -WcfRelayName
+ System.String 
+
+### -AuthorizationRuleName
+ System.String
+
+### -RegenerateKeys
+ System.String
 
 ## OUTPUTS
-
 ### Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleKeysAttributes
+
+PrimaryConnectionString   : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;Ent
+                            ityPath=TestWCFRelay1
+SecondaryConnectionString : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;Ent
+                            ityPath=TestWCFRelay1
+PrimaryKey                : ############################################
+SecondaryKey              : ############################################
+KeyName                   : AuthoRule1
 
 ## NOTES
 

@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmRelayNamespaceKey
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Regenerates the primary or secondary connection strings for the Service Bus namespace.
 
 ## SYNTAX
 
@@ -17,16 +17,15 @@ New-AzureRmRelayNamespaceKey [-ResourceGroup] <String> [-NamespaceName] <String>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzureRmRelayNamespaceKey** cmdlet generates new primary or secondary connection strings for the specified namespace and authorization rule.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmRelayNamespaceKey -ResourceGroup Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -AuthorizationRuleName AuthoRule1 -RegenerateKeys PrimaryKey
 ```
-
-{{ Add example description here }}
+Regenerates the primary or secondary connection strings for the namespace.
 
 ## PARAMETERS
 
@@ -122,13 +121,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
-### System.String
+### -ResourceGroup
+ System.String
+ 
+
+### -NamespaceName
+ System.String
+ 
+
+### -AuthorizationRuleName
+ System.String
+ 
+
+### -RegenerateKeys
+ System.String
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleKeysAttributes
+PrimaryConnectionString   : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################
+SecondaryConnectionString : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################
+PrimaryKey                : ############################################
+SecondaryKey              : ############################################
+KeyName                   : AuthoRule1
 
 ## NOTES
 

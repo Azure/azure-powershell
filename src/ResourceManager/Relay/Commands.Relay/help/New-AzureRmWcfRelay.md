@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmWcfRelay
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a WcfRelay in the specified Relay namespace.
 
 ## SYNTAX
 
@@ -18,16 +18,17 @@ New-AzureRmWcfRelay [-ResourceGroupName] <String> [-NamespaceName] <String> [-Wc
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzureRmWcfRelay** cmdlet creates a WcfRelay in the specified Relay namespace.
+
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmWcfRelay -ResourceGroup Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -WcfRelayName TestWCFRelay -WcfRelayType "NetTcp"  -RequiresClientAuthorization $True -RequiresTransportSecurity $True -UserMetadata "User Meta data"
 ```
 
-{{ Add example description here }}
+Creates a new WcfRelay `TestWCFRelay` in the specified Relay namespace `TestNameSpace-Relay1`.
 
 ## PARAMETERS
 
@@ -185,14 +186,49 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
-### System.String
-Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes System.Nullable\`1\[\[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\]\]
+### -ResourceGroup
+	System.String
+
+### -NamespaceName
+	System.String
+
+### -WcfRelayName
+	System.String
+
+### -WcfRelayType
+	System.String
+
+### -RequiresClientAuthorization
+	System.Boolean
+
+### -RequiresTransportSecurity
+	System.Boolean
+
+### -UserMetadata
+	System.String
+
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes
+
+RelayType                   : NetTcp
+CreatedAt                   : 4/12/2017 1:56:46 AM
+UpdatedAt                   : 4/12/2017 1:56:46 AM
+ListenerCount               :
+RequiresClientAuthorization : True
+RequiresTransportSecurity   : True
+IsDynamic                   : False
+UserMetadata                : User Meta data
+Id                          : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/W
+                              cfRelays/TestWCFRelay
+Name                        : TestWCFRelay
+Type                        : Microsoft.Relay/WcfRelays
 
 ## NOTES
 

@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnections
     /// <summary>
     /// 'Get-AzureRmRelayHybridConnectionKey' Cmdlet gives key detials for the given HybridConnections Authorization Rule
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, RelayHybridConnectionKeyVerb), OutputType(typeof(AuthorizationRuleAttributes))]
+    [Cmdlet(VerbsCommon.Get, RelayHybridConnectionKeyVerb), OutputType(typeof(AuthorizationRuleKeysAttributes))]
     public class GetAzureRelayHybridConnectionsKey : AzureRelayCmdletBase
     {
         [Parameter(Mandatory = true,

@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmWcfRelayAuthorizationRule
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a new authorization rule for the specified WcfRelay .
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ New-AzureRmWcfRelayAuthorizationRule [-ResourceGroupName] <String> [-NamespaceNa
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzureRmWcfRelayAuthorizationRule** cmdlet creates a new authorization rule for the specified WcfRelay.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\>New-AzureRmWcfRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -WcfRelayName TestWCFRelay1 -AuthorizationRuleName AuthoRule1 -Rights @("Listen","Send")
 ```
 
-{{ Add example description here }}
+Creates authorization rule `AuthoRule1` with **Listen and Send** rights for the WcfRelay `TestWCFRelay1`.
 
 ## PARAMETERS
 
@@ -136,15 +136,34 @@ Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-System.String\[\]
+### -ResourceGroupName
+ System.String 
+
+### -NamespaceName
+ System.String 
+ 
+### -WcfRelayName
+ System.String 
+
+### -AuthorizationRuleName
+ System.String
+
+### -Rights
+ System.String []
 
 ## OUTPUTS
-
 ### Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes
+
+Rights : {Listen, Send}
+Name   : AuthoRule1
+Type   : Microsoft.Relay/AuthorizationRules
+Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/WcfRelays/TestWCFRelay
+         1/authorizationRules/AuthoRule1
 
 ## NOTES
 

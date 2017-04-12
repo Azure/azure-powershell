@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmCheckNameAvailability
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Checks the Availability of the given NameSpace Name
 
 ## SYNTAX
 
@@ -16,16 +16,15 @@ Get-AzureRmCheckNameAvailability [-NamespaceName] <String>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmCheckNameAvailability** Cmdlet Check Availability of the NameSpace Name
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmCheckNameAvailability -NamespaceName TestingtheAvailability
 ```
-
-{{ Add example description here }}
+Returns the status on availability of the namespace name
 
 ## PARAMETERS
 
@@ -43,16 +42,27 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
+### -NamespaceName
+ System.String
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]
+### [Microsoft.Azure.Commands.Relay.Models.CheckNameAvailabilityResultAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]
+
+NameAvailable Reason Message
+------------- ------ -------
+         True   None
+
+
+NameAvailable      Reason Message
+-------------      ------ -------
+        False InvalidName The specified service namespace is invalid.
 
 ## NOTES
 
 ## RELATED LINKS
-

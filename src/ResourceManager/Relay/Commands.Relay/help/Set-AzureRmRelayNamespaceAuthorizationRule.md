@@ -7,7 +7,7 @@ schema: 2.0.0
 # Set-AzureRmRelayNamespaceAuthorizationRule
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Updates the specified authorization rule description for the given Relay namespace.
 
 ## SYNTAX
 
@@ -18,16 +18,20 @@ Set-AzureRmRelayNamespaceAuthorizationRule [-ResourceGroupName] <String> [-Names
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzureRmRelayNamespaceAuthorizationRule** cmdlet updates the description for the specified authorization rule in the given Relay namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\>
+PS C:\> $getAutoRule = Get-AzureRmRelayNamespaceAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -AuthorizationRuleName
+ AuthoRule1
+PS C:\> $getAutoRule.Rights.Add("Manage")
+PS C:\> Set-AzureRmRelayNamespaceAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -AuthorizationRuleName AuthoRule1 -AuthRuleObj $getAutoRule
 ```
 
-{{ Add example description here }}
+Adds **Manage** from the access rights of the authorization rule `AuthoRule1` in namespace `TestNameSpace-Relay1`.
 
 ## PARAMETERS
 
@@ -139,14 +143,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
-### System.String
-System.String\[\]
+### -ResourceGroup
+ System.String
+
+### -NamespaceName
+ System.String
+ 
+### -AuthorizationRuleName
+ System.String
+
+### -AuthRuleObj
+ Microsoft.Azure.Commands.ServiceBus.Models.SharedAccessAuthorizationRuleAttributes
 
 ## OUTPUTS
-
 ### Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes
+
+Rights : {Manage, Listen, Send}
+Name   : AuthoRule1
+Type   : Microsoft.Relay/AuthorizationRules
+Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/AuthorizationRules/Aut
+         hoRule1
 
 ## NOTES
 

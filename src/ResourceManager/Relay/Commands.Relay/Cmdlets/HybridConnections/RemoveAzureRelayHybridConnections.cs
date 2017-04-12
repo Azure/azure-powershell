@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnections
     /// <summary>
     /// 'Remove-AzureRmRelayHybridConnection' Cmdlet removes the specified HybridConnections
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, RelayHybridConnectionVerb, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, RelayHybridConnectionVerb, SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureRelayHybridConnections : AzureRelayCmdletBase
     {
         [Parameter(Mandatory = true,

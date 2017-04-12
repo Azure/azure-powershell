@@ -206,9 +206,6 @@
     <None Include="help\Set-AzureRmRelayNamespaceAuthorizationRule.md" />
     <None Include="help\Set-AzureRmWcfRelay.md" />
     <None Include="help\Set-AzureRmWcfRelayAuthorizationRule.md" />
-    <None Include="Microsoft.Azure.Commands.Relay.format.ps1xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>

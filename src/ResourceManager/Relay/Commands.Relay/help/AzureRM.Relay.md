@@ -1,109 +1,109 @@
 ---
-Module Name: AzureRM.Relay
+Module Name: AzureRm.Relay
 Module Guid: 5728d353-7ad5-42d8-b00a-46aaecf07b91
-Download Help Link: {{Please enter FwLink manually}}
-Help Version: {{Please enter version of help manually (X.X.X.X) format}}
+Download Help Link: None_Azure
+Help Version: 4.0.0.0
 Locale: en-US
 ---
 
-# AzureRM.Relay Module
+# AzureRm.Relay Module
 ## Description
 {{Manually Enter Description Here}}
 
-## AzureRM.Relay Cmdlets
+## AzureRm.Relay Cmdlets
 ### [Get-AzureRmCheckNameAvailability](Get-AzureRmCheckNameAvailability.md)
-{{Manually Enter Get-AzureRmCheckNameAvailability Description Here}}
+Gets the availability status of given namespace name.
 
 ### [Get-AzureRmRelayHybridConnection](Get-AzureRmRelayHybridConnection.md)
-{{Manually Enter Get-AzureRmRelayHybridConnection Description Here}}
+Gets an existing Relay Hybridconnection or list of Relay Hybridconnection in an existing Relay namespace.
 
 ### [Get-AzureRmRelayHybridConnectionAuthorizationRule](Get-AzureRmRelayHybridConnectionAuthorizationRule.md)
-{{Manually Enter Get-AzureRmRelayHybridConnectionAuthorizationRule Description Here}}
+Gets the authorization rule or list of authorization rules in a Relay Hybridconnection.
 
 ### [Get-AzureRmRelayHybridConnectionKey](Get-AzureRmRelayHybridConnectionKey.md)
-{{Manually Enter Get-AzureRmRelayHybridConnectionKey Description Here}}
+Gets the primary or secondary key for an authorization rule in an existing Relay Hybridconnection.
 
 ### [Get-AzureRmRelayNamespace](Get-AzureRmRelayNamespace.md)
-{{Manually Enter Get-AzureRmRelayNamespace Description Here}}
+Gets a namespace or list of namespaces in the existing resource group.
 
 ### [Get-AzureRmRelayNamespaceAuthorizationRule](Get-AzureRmRelayNamespaceAuthorizationRule.md)
-{{Manually Enter Get-AzureRmRelayNamespaceAuthorizationRule Description Here}}
+Gets the authorization rule or list of authorization rules in a Relay namespace.
 
 ### [Get-AzureRmRelayNamespaceKey](Get-AzureRmRelayNamespaceKey.md)
-{{Manually Enter Get-AzureRmRelayNamespaceKey Description Here}}
+Gets the primary or secondary key for an authorization rule in an existing Relay namespace.
 
 ### [Get-AzureRmRelayOperations](Get-AzureRmRelayOperations.md)
-{{Manually Enter Get-AzureRmRelayOperations Description Here}}
+Gets the list of operations available under Relay service.
 
 ### [Get-AzureRmWcfRelay](Get-AzureRmWcfRelay.md)
-{{Manually Enter Get-AzureRmWcfRelay Description Here}}
+Gets an existing queue or list of WcfRelay in an existing Relay namespace.
 
 ### [Get-AzureRmWcfRelayAuthorizationRule](Get-AzureRmWcfRelayAuthorizationRule.md)
-{{Manually Enter Get-AzureRmWcfRelayAuthorizationRule Description Here}}
+Gets the authorization rule or list of authorization rules in a WcfRelay.
 
 ### [Get-AzureRmWcfRelayKey](Get-AzureRmWcfRelayKey.md)
-{{Manually Enter Get-AzureRmWcfRelayKey Description Here}}
+Gets the primary or secondary key for an authorization rule in an existing WcfRelay.
 
 ### [New-AzureRmRelayHybridConnection](New-AzureRmRelayHybridConnection.md)
-{{Manually Enter New-AzureRmRelayHybridConnection Description Here}}
+Adds a new Hybridconnection to an existing Relay namespace.
 
 ### [New-AzureRmRelayHybridConnectionAuthorizationRule](New-AzureRmRelayHybridConnectionAuthorizationRule.md)
-{{Manually Enter New-AzureRmRelayHybridConnectionAuthorizationRule Description Here}}
+Adds a new authorization rule to an existing Hybridconnection in a Relay namespace.
 
 ### [New-AzureRmRelayHybridConnectionKey](New-AzureRmRelayHybridConnectionKey.md)
-{{Manually Enter New-AzureRmRelayHybridConnectionKey Description Here}}
+Generates a new primary or secondary key for an authorization rule in an existing Relay Hybridconnection.
 
 ### [New-AzureRmRelayNamespace](New-AzureRmRelayNamespace.md)
-{{Manually Enter New-AzureRmRelayNamespace Description Here}}
+Adds a new Relay namespace in the existing resource group.
 
 ### [New-AzureRmRelayNamespaceAuthorizationRule](New-AzureRmRelayNamespaceAuthorizationRule.md)
-{{Manually Enter New-AzureRmRelayNamespaceAuthorizationRule Description Here}}
+Adds a new authorization rule to an existing Relay namespace.
 
 ### [New-AzureRmRelayNamespaceKey](New-AzureRmRelayNamespaceKey.md)
-{{Manually Enter New-AzureRmRelayNamespaceKey Description Here}}
+Generates a new primary or secondary key for an authorization rule in an existing Relay namespace.
 
 ### [New-AzureRmWcfRelay](New-AzureRmWcfRelay.md)
-{{Manually Enter New-AzureRmWcfRelay Description Here}}
+Adds a new WcfRelay to an existing namespace.
 
 ### [New-AzureRmWcfRelayAuthorizationRule](New-AzureRmWcfRelayAuthorizationRule.md)
-{{Manually Enter New-AzureRmWcfRelayAuthorizationRule Description Here}}
+Adds a new authorization rule to an existing WcfRelay in a Relay namespace.
 
 ### [New-AzureRmWcfRelayKey](New-AzureRmWcfRelayKey.md)
-{{Manually Enter New-AzureRmWcfRelayKey Description Here}}
+Generates a new primary or secondary key for an authorization rule in an existing WcfRelay.
 
 ### [Remove-AzureRmRelayHybridConnection](Remove-AzureRmRelayHybridConnection.md)
-{{Manually Enter Remove-AzureRmRelayHybridConnection Description Here}}
+Deletes an existing Hybridconnection in a Relay namespace.
 
 ### [Remove-AzureRmRelayHybridConnectionAuthorizationRule](Remove-AzureRmRelayHybridConnectionAuthorizationRule.md)
-{{Manually Enter Remove-AzureRmRelayHybridConnectionAuthorizationRule Description Here}}
+Deletes an existing authorization rule in a Relay Hybridconnection.
 
 ### [Remove-AzureRmRelayNamespace](Remove-AzureRmRelayNamespace.md)
-{{Manually Enter Remove-AzureRmRelayNamespace Description Here}}
+Deletes an existing Relay namespace.
 
 ### [Remove-AzureRmRelayNamespaceAuthorizationRule](Remove-AzureRmRelayNamespaceAuthorizationRule.md)
-{{Manually Enter Remove-AzureRmRelayNamespaceAuthorizationRule Description Here}}
+Deletes an existing authorization rule in a Relay namespace.
 
 ### [Remove-AzureRmWcfRelay](Remove-AzureRmWcfRelay.md)
-{{Manually Enter Remove-AzureRmWcfRelay Description Here}}
+Deletes an existing WcfRelay in a Relay namespace.
 
 ### [Remove-AzureRmWcfRelayAuthorizationRule](Remove-AzureRmWcfRelayAuthorizationRule.md)
-{{Manually Enter Remove-AzureRmWcfRelayAuthorizationRule Description Here}}
+Deletes an existing authorization rule in a WcfRelay.
 
 ### [Set-AzureRmRelayHybridConnection](Set-AzureRmRelayHybridConnection.md)
-{{Manually Enter Set-AzureRmRelayHybridConnection Description Here}}
+Updates properties of an existing Hybridconnection in a Relay namespace.
 
 ### [Set-AzureRmRelayHybridConnectionAuthorizationRule](Set-AzureRmRelayHybridConnectionAuthorizationRule.md)
-{{Manually Enter Set-AzureRmRelayHybridConnectionAuthorizationRule Description Here}}
+Updates an authorization rule in a Hybridconnection.
 
 ### [Set-AzureRmRelayNamespace](Set-AzureRmRelayNamespace.md)
-{{Manually Enter Set-AzureRmRelayNamespace Description Here}}
+Updates properties of an existing Relay namespace.
 
 ### [Set-AzureRmRelayNamespaceAuthorizationRule](Set-AzureRmRelayNamespaceAuthorizationRule.md)
-{{Manually Enter Set-AzureRmRelayNamespaceAuthorizationRule Description Here}}
+Updates properties of an existing authorization rule in a Relay namespace.
 
 ### [Set-AzureRmWcfRelay](Set-AzureRmWcfRelay.md)
-{{Manually Enter Set-AzureRmWcfRelay Description Here}}
+Updates properties of an existing WcfRelay in a Relay namespace.
 
 ### [Set-AzureRmWcfRelayAuthorizationRule](Set-AzureRmWcfRelayAuthorizationRule.md)
-{{Manually Enter Set-AzureRmWcfRelayAuthorizationRule Description Here}}
+Updates an authorization rule in a WcfRelay.
 

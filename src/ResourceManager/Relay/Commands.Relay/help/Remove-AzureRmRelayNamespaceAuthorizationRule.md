@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmRelayNamespaceAuthorizationRule
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes the authorization rule of a Relay namespace from the specified resource group.
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ Remove-AzureRmRelayNamespaceAuthorizationRule [-ResourceGroupName] <String> [-Na
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzureRmRelayNamespaceAuthorizationRule** cmdlet removes the authorization rule of a Relay namespace for the specified resource group.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmRelayNamespaceAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -AuthorizationRuleName AuthoRule1
 ```
 
-{{ Add example description here }}
+Removes the authorization rule `AuthoRule1` of namespace `TestNameSpace-Relay1` from the specified resource group.
 
 ## PARAMETERS
 
@@ -106,9 +106,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
-### System.String
+### -ResourceGroup
+ System.String
+
+### -NamespaceName
+ System.String
+
+### -AuthorizationRuleName
+ System.String
 
 ## OUTPUTS
 

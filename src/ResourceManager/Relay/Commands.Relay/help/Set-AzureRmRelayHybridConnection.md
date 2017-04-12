@@ -7,7 +7,7 @@ schema: 2.0.0
 # Set-AzureRmRelayHybridConnection
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Updates the description of a HybridConnection in the specified Relay namespace.
 
 ## SYNTAX
 
@@ -18,16 +18,22 @@ Set-AzureRmRelayHybridConnection [-ResourceGroupName] <String> [-NamespaceName] 
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzureRmRelayHybridConnection** cmdlet updates the description for the HybridConnection in the specified Relay namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\>
+PS C:\> $GetHybrid = Get-AzureRmRelayHybridConnection -ResourceGroup Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -HybridConnectionsName TestHybridConne
+ction
+PS C:\> $GetHybrid.UserMetadata = "usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g. it can be used to store  desc
+>> riptive data, such as list of teams and their contact information also user-defined configuration settings can be stored."
+PS C:\> Set-AzureRmRelayHybridConnection -ResourceGroup Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -HybridConnectionsName TestHybridConnection -Hybrid
+ConnectionsObj $GetHybrid
 ```
 
-{{ Add example description here }}
+Updates the specified HybridConnection with a new description in the specified namespace. This example updates the **UserMetadata** property with new value.
 
 ## PARAMETERS
 
@@ -132,7 +138,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -148,22 +154,42 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes
-System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+### -ResourceGroup
+ System.String
+ 
 
+### -NamespaceName
+ System.String
+ 
 
+### -WcfRelayName
+ System.String 
+ 
+### -HybridConnectionsObj
+ Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes
+ 
 ## OUTPUTS
-
 ### Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes
 
+CreatedAt                   :
+UpdatedAt                   :
+ListenerCount               :
+RequiresClientAuthorization : True
+UserMetadata                : usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g. it can be used to store  desc
+                              riptive data, such as list of teams and their contact information also user-defined configuration settings can be stored.
+Id                          : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/H
+                              ybridConnections/TestHybridConnection
+Name                        : TestHybridConnection
+Type                        : Microsoft.Relay/HybridConnections
 
 ## NOTES
 

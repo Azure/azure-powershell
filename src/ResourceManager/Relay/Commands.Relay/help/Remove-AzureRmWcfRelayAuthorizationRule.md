@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmWcfRelayAuthorizationRule
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes the authorization rule of a WcfRelay from the specified Relay namespace.
 
 ## SYNTAX
 
@@ -17,16 +17,17 @@ Remove-AzureRmWcfRelayAuthorizationRule [-ResourceGroupName] <String> [-Namespac
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzureRmWcfRelayAuthorizationRule** cmdlet removes the authorization rule of a WcfRelay from the specified Relay namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\>Remove-AzureRmWcfRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -WcfRelayName TestWCFRelay1 -AuthorizationR
+uleName AuthoRule1
 ```
 
-{{ Add example description here }}
+Removes the authorization rule `AuthoRule1` of the WcfRelay `TestWCFRelay1` from the namespace `TestNameSpace-Relay1`.
 
 ## PARAMETERS
 
@@ -120,10 +121,22 @@ Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
+### -ResourceGroupName
+ System.String 
+
+### -NamespaceName
+ System.String 
+ 
+### -WcfRelayName
+ System.String 
+
+### -AuthorizationRuleName
+ System.String
 
 ## OUTPUTS
 

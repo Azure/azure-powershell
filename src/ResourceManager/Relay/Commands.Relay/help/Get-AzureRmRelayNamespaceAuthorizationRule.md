@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmRelayNamespaceAuthorizationRule
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets a description of the specified authorization rule for a given namespace.
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ Get-AzureRmRelayNamespaceAuthorizationRule [-ResourceGroupName] <String> [-Names
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmRelayNamespaceAuthorizationRule** cmdlet gets the description of the specified authorization rule in the given namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmRelayNamespaceAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -AuthorizationRuleName AuthoRule1
 ```
 
-{{ Add example description here }}
+Returns the specified authorization rule description for a specified namespace.
 
 ## PARAMETERS
 
@@ -75,13 +75,31 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
-### System.String
+### -ResourceGroup
+ System.String
+ 
+
+### -NamespaceName
+ System.String
+ 
+
+### -AuthorizationRuleName
+ System.String
 
 ## OUTPUTS
 
 ### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]
+
+Rights : {Listen, Send}
+Name   : AuthoRule1
+Type   : Microsoft.Relay/AuthorizationRules
+Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/AuthorizationRules/Aut
+         hoRule1
 
 ## NOTES
 

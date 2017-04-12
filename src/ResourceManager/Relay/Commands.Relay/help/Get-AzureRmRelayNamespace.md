@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmRelayNamespace
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets a description for the specified Relay namespace within the resource group.
 
 ## SYNTAX
 
@@ -16,16 +16,16 @@ Get-AzureRmRelayNamespace [[-ResourceGroupName] <String>] [[-NamespaceName] <Str
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmRelayNamespace** cmdlet gets a description for the specified Relay namespace within the resource group.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmRelayNamespace -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1
 ```
 
-{{ Add example description here }}
+Returns a description of the specified Relay namespace.
 
 ## PARAMETERS
 
@@ -58,14 +58,31 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
+### -ResourceGroup
+System.String
+
+### -NamespaceName
+ System.String
 
 ## OUTPUTS
 
 ### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]
+
+ProvisioningState  : Succeeded
+CreatedAt          : 4/12/2017 12:38:47 AM
+UpdatedAt          : 4/12/2017 12:39:10 AM
+ServiceBusEndpoint : https://TestNameSpace-Relay1.servicebus.windows.net:443/
+MetricId           : 854d368f-1828-428f-8f3c-f2affa9b2f7d:testnamespace-relay1
+Location           : West US
+Tags               : {[tag1, Tag1Value]}
+Id                 : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1
+Name               : TestNameSpace-Relay1
+Type               : Microsoft.Relay/namespaces
 
 ## NOTES
 

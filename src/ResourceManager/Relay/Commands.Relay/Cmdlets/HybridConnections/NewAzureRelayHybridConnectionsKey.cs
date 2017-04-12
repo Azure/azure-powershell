@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnections
             Position = 0,
             HelpMessage = "The name of the resource group")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroup { get; set; }
+        public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnections
             // Get a HybridConnections List Keys for the specified AuthorizationRule
             if (ShouldProcess(target: RegenerateKey, action: string.Format("Generating PrimaryKey/SecondaryKey for AuthorizationRule: {0} of HybridConnections:{1}", AuthorizationRuleName, HybridConnectionsName)))
             {
-               WriteObject(Client.SethybridConnectionsRegenerateKeys(ResourceGroup, NamespaceName, HybridConnectionsName, AuthorizationRuleName, RegenerateKey));
+               WriteObject(Client.SethybridConnectionsRegenerateKeys(ResourceGroupName, NamespaceName, HybridConnectionsName, AuthorizationRuleName, RegenerateKey));
             }
         }
     }

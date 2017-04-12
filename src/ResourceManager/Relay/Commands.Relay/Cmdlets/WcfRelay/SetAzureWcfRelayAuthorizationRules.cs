@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.WcfRelay
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Required if 'AuthruleObj' not specified. Rights - e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
         [ValidateNotNullOrEmpty]
-        public string[] Rights { get; set; }        
+        public string[] Right { get; set; }        
 
         public override void ExecuteCmdlet()
         {
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.WcfRelay
             else
             {
 
-                foreach (string test in Rights)
+                foreach (string test in Right)
                 {
                     sasRule.Rights.Add(test);
                 }
