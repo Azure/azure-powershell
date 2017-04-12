@@ -296,6 +296,64 @@ function Test-ListWebServices
 
 <#
 .SYNOPSIS
+Tests creating a regional properties and get it
+#>
+function Test-CreateAndGetRegionalProperties
+{
+    $actualTest = {
+        param([string] $rgName, [string] $location, [string] $webServiceName, `
+                [string] $commitmentPlanId, [object] $storageAccount)
+
+        $definitionFile = "";
+        try 
+        {
+            # Create a valid service definition file
+            $svcDefinition = LoadWebServiceDefinitionForTest $TEST_WEBSERVICE_DEFINITION_FILE `
+                                                             $commitmentPlanId $storageAccount
+            $definitionFile = "$webServiceName.json"
+            LogOutput "Exporting web service definition to file: $definitionFile"
+            Export-AzureRmMlWebService -WebService $svcDefinition -OutputFile $definitionFile
+            LogOutput "Checking that exported service definition exists at $definitionFile"
+            Assert-True { Test-Path $definitionFile }
+
+            # Create a new web service from the local file definition
+            LogOutput "Creating web service: $webServiceName"
+            $svc = New-AzureRmMlWebService -ResourceGroupName $rgName -Location $location `
+                                        -Name $webServiceName -DefinitionFile $definitionFile `
+                                        -Force
+            LogOutput "Created web service: $webServiceName"
+            ValidateWebServiceResult $rgName $webServiceName $location $svc
+
+			$newRegion = "westcentralus"
+
+			# Validate that service no longer exists 
+            Assert-ThrowsContains { Get-AzureRmMlWebService -ResourceGroupName $rgName `
+                                        -Name $webServiceName -region $newRegion} "PerRegionPayloadNotFound"
+
+            LogOutput "Creating web service regional properties for $webServiceName in $newRegion"
+			New-AzureRmMlWebServiceRegionalProperties -ResourceGroupName $rgName -Name $webServiceName -region $newRegion -Force
+
+			$newSvc = Get-AzureRmMlWebService -ResourceGroupName $rgName -Name $webServiceName -region $newRegion
+			ValidateWebServiceResult $rgName $webServiceName $location $svc
+			
+			Assert-AreEqual $newSvc.Properties.Package.Nodes["node1"].parameters["Account Key"].certificateThumbprint "189FFCD52B84562DF6BFA9678357B0B23524D543"
+        }
+        finally
+        {
+            if (Test-Path $definitionFile)
+            {
+                Remove-Item $definitionFile
+            }
+            
+            Clean-WebService $rgName $webServiceName            
+        }
+    };
+
+    RunWebServicesTest $actualTest
+}
+
+<#
+.SYNOPSIS
 Base function for running web services tests
 #>
 function RunWebServicesTest([ScriptBlock] $testScript)
