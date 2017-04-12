@@ -8622,6 +8622,31 @@ PS C:\&gt; Add-AzureVMImage -ImageName $IMGName -Label "Test1" -Description "Tes
 </command:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <command:details>
+    <command:name>New-AzureIPTag</command:name>
+    <command:verb>New</command:verb>
+    <command:noun>AzureIPTag</command:noun>
+    <maml:description>
+      <maml:para>
+        Creates IPTag of given type and Value.
+      </maml:para>
+    </maml:description>
+  </command:details>
+  <command:syntax>
+  </command:syntax>  
+  <command:examples>
+    <command:example>
+      <maml:title>--------------------------  Example 1: Create IpTags --------------------------</maml:title>
+      <dev:code>PS C:\&gt;New-AzureIPTag</dev:code>
+      <dev:remarks>
+        <maml:para>
+          This command creates Ip Tags.
+        </maml:para>
+      </dev:remarks>
+    </command:example>
+  </command:examples>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <command:details><command:name>Get-AzureRoleSize</command:name>
 <command:verb>Get</command:verb>
 <command:noun>AzureRoleSize</command:noun>
