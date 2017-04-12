@@ -52,6 +52,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         KeyBundle RestoreKey(string vaultName, string inputBlobPath);
 
+        string BackupSecret(string vaultName, string secretName, string outputBlobPath);
+
+        Secret RestoreSecret(string vaultName, string inputBlobPath);
+
         #region Certificate actions
 
         Contacts SetCertificateContacts(string vaultName, Contacts contacts);
