@@ -180,6 +180,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests.WebServiceTests\TestUpdateWebService.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests.WebServiceTests\TestCreateAndGetRegionalProperties.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests.CommitmentPlanTests\TestCreateGetRemoveCommitmentPlan.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -336,7 +336,7 @@ function Test-CreateAndGetRegionalProperties
 			$newSvc = Get-AzureRmMlWebService -ResourceGroupName $rgName -Name $webServiceName -region $newRegion
 			ValidateWebServiceResult $rgName $webServiceName $location $svc
 			
-			Assert-AreEqual $newSvc.Properties.Package.Nodes["node1"].parameters["Account Key"].certificateThumbprint "189FFCD52B84562DF6BFA9678357B0B23524D543"
+			Assert-AreEqual $newSvc.Properties.Package.Nodes["node1"].parameters["Account Key"].certificateThumbprint "ENCRYPTED_CERTIFICATETHUMBPRINT_2"
         }
         finally
         {
