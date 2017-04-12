@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<helpItems schema="maml">
+<?xml version="1.0" encoding="utf-8"?>
+<helpItems xmlns="http://msh" schema="maml">
 
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <command:details><command:name>Add-AzureKeyVaultCertificate</command:name>
@@ -49,7 +49,7 @@
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Tags"><maml:name>Tag</maml:name>
-<maml:Description><maml:para>A hashtable representing certificate tags.
+<maml:Description><maml:para>Specifies a hash table that contains certificate tags.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
@@ -104,7 +104,7 @@
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Tags"><maml:name>Tag</maml:name>
-<maml:Description><maml:para>A hashtable representing certificate tags.
+<maml:Description><maml:para>Specifies a hash table that contains certificate tags.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
@@ -184,6 +184,8 @@ Updated     : 2/8/2016 11:21:45 PM</dev:code>
 </maml:para>
 <maml:para>The final command uses the Get-AzureKeyVaultCertificate cmdlet to get the certificate.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -316,6 +318,8 @@ Updated     : 2/8/2016 11:21:45 PM</dev:code>
 <dev:code>PS C:\&gt;Add-AzureKeyVaultCertificateContact -VaultName "ContosoKV01" -EmailAddress "patti.fuller@contoso.com" -PassThru</dev:code>
 <dev:remarks><maml:para>This command adds Patti Fuller as a certificate contact for the ContosoKV01 key vault and returns the KeyVaultCertificateContact object.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -337,15 +341,15 @@ Updated     : 2/8/2016 11:21:45 PM</dev:code>
 </command:details>
 <maml:description><maml:para>The Add-AzureKeyVaultKey cmdlet creates a key in a key vault in Azure Key Vault, or imports a key into a key vault. Use this cmdlet to add keys by using any of the following methods:
 </maml:para>
-<maml:para>-- Create a key in a hardware security module (HSM) in the Key Vault service. 
+<maml:para>- Create a key in a hardware security module (HSM) in the Key Vault service.
 </maml:para>
-<maml:para>-- Create a key in software in the Key Vault service.
+<maml:para>- Create a key in software in the Key Vault service.
 </maml:para>
-<maml:para>-- Import a key from your own hardware security module (HSM) to HSMs in the Key Vault service.
+<maml:para>- Import a key from your own hardware security module (HSM) to HSMs in the Key Vault service.
 </maml:para>
-<maml:para>-- Import a key from a .pfx file on your computer.
+<maml:para>- Import a key from a .pfx file on your computer.
 </maml:para>
-<maml:para>-- Import a key from a .pfx file on your computer to hardware security modules (HSMs) in the Key Vault service.
+<maml:para>- Import a key from a .pfx file on your computer to hardware security modules (HSMs) in the Key Vault service.
 </maml:para>
 <maml:para>
 </maml:para>
@@ -382,11 +386,11 @@ Updated     : 2/8/2016 11:21:45 PM</dev:code>
 </maml:para>
 <maml:para>Note: To use HSM as your destination, you must have a key vault that supports HSMs. For more information about the service tiers and capabilities for Azure Key Vault, see the Azure Key Vault Pricing website (http://go.microsoft.com/fwlink/?linkid=512521).
 </maml:para>
-<maml:para>This parameter is required when you create a new key. If you import a key by using the KeyFilePath parameter, this parameter is optional: 
+<maml:para>This parameter is required when you create a new key. If you import a key by using the KeyFilePath parameter, this parameter is optional:
 </maml:para>
-<maml:para>-- If you do not specify this parameter, and this cmdlet imports a key that has .byok file name extension, it imports that key as an HSM-protected key. The cmdlet cannot import that key as software-protected key.
+<maml:para>- If you do not specify this parameter, and this cmdlet imports a key that has .byok file name extension, it imports that key as an HSM-protected key. The cmdlet cannot import that key as software-protected key.
 </maml:para>
-<maml:para>-- If you do not specify this parameter, and this cmdlet imports a key that has a .pfx file name extension, it imports the key as a software-protected key.
+<maml:para>- If you do not specify this parameter, and this cmdlet imports a key that has a .pfx file name extension, it imports the key as a software-protected key.
 </maml:para>
 </maml:Description>
 <command:parameterValueGroup><command:parameterValue required="false" variableLength="false">HSM</command:parameterValue>
@@ -408,7 +412,7 @@ Updated     : 2/8/2016 11:21:45 PM</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Expires</maml:name>
-<maml:Description><maml:para>Specifies the expiration time, as a DateTime object, for the key that this cmdlet adds. This parameter uses Coordinated Universal Time (UTC). To obtain a DateTime object, use the Get-Date cmdlet. For more information, type Get-Help Get-Date. If you do not specify this parameter, the key does not expire.
+<maml:Description><maml:para>Specifies the expiration time, as a DateTime object, for the key that this cmdlet adds. This parameter uses Coordinated Universal Time (UTC). To obtain a DateTime object, use the Get-Date cmdlet. For more information, type `Get-Help Get-Date`. If you do not specify this parameter, the key does not expire.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
@@ -421,21 +425,21 @@ Updated     : 2/8/2016 11:21:45 PM</dev:code>
 </maml:para>
 <maml:para>The acceptable values for this parameter are a comma-separated list of key operations as defined by the JSON Web Key (JWK) specification (http://go.microsoft.com/fwlink/?LinkID=613300&amp;clcid=0x409): 
 </maml:para>
-<maml:para>-- Encrypt 
+<maml:para>- Encrypt
 </maml:para>
-<maml:para>-- Decrypt
+<maml:para>- Decrypt
 </maml:para>
-<maml:para>-- Wrap
+<maml:para>- Wrap
 </maml:para>
-<maml:para>-- Unwrap
+<maml:para>- Unwrap
 </maml:para>
-<maml:para>-- Sign
+<maml:para>- Sign
 </maml:para>
-<maml:para>-- Verify
+<maml:para>- Verify
 </maml:para>
-<maml:para>-- Backup
+<maml:para>- Backup
 </maml:para>
-<maml:para>-- Restore
+<maml:para>- Restore
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -461,7 +465,15 @@ Updated     : 2/8/2016 11:21:45 PM</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Tags"><maml:name>Tag</maml:name>
-<maml:Description><maml:para>A hashtable representing key tags.
+<maml:Description><maml:para>Specifies a hash table that contains certificate tags.
+</maml:para>
+<maml:para>To use HSM as your destination, you must have a key vault that supports HSMs. For more information about the service tiers and capabilities for Azure Key Vault, see the Azure Key Vault Pricing website (http://go.microsoft.com/fwlink/?linkid=512521).
+</maml:para>
+<maml:para>This parameter is required when you create a new key. If you import a key by using the KeyFilePath parameter, this parameter is optional:
+</maml:para>
+<maml:para>- If you do not specify this parameter, and this cmdlet imports a key that has .byok file name extension, it imports that key as an HSM-protected key. The cmdlet cannot import that key as software-protected key.
+</maml:para>
+<maml:para>- If you do not specify this parameter, and this cmdlet imports a key that has a .pfx file name extension, it imports the key as a software-protected key.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
@@ -502,11 +514,11 @@ Updated     : 2/8/2016 11:21:45 PM</dev:code>
 </maml:para>
 <maml:para>Note: To use HSM as your destination, you must have a key vault that supports HSMs. For more information about the service tiers and capabilities for Azure Key Vault, see the Azure Key Vault Pricing website (http://go.microsoft.com/fwlink/?linkid=512521).
 </maml:para>
-<maml:para>This parameter is required when you create a new key. If you import a key by using the KeyFilePath parameter, this parameter is optional: 
+<maml:para>This parameter is required when you create a new key. If you import a key by using the KeyFilePath parameter, this parameter is optional:
 </maml:para>
-<maml:para>-- If you do not specify this parameter, and this cmdlet imports a key that has .byok file name extension, it imports that key as an HSM-protected key. The cmdlet cannot import that key as software-protected key.
+<maml:para>- If you do not specify this parameter, and this cmdlet imports a key that has .byok file name extension, it imports that key as an HSM-protected key. The cmdlet cannot import that key as software-protected key.
 </maml:para>
-<maml:para>-- If you do not specify this parameter, and this cmdlet imports a key that has a .pfx file name extension, it imports the key as a software-protected key.
+<maml:para>- If you do not specify this parameter, and this cmdlet imports a key that has a .pfx file name extension, it imports the key as a software-protected key.
 </maml:para>
 </maml:Description>
 <command:parameterValueGroup><command:parameterValue required="false" variableLength="false">HSM</command:parameterValue>
@@ -528,7 +540,7 @@ Updated     : 2/8/2016 11:21:45 PM</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Expires</maml:name>
-<maml:Description><maml:para>Specifies the expiration time, as a DateTime object, for the key that this cmdlet adds. This parameter uses Coordinated Universal Time (UTC). To obtain a DateTime object, use the Get-Date cmdlet. For more information, type Get-Help Get-Date. If you do not specify this parameter, the key does not expire.
+<maml:Description><maml:para>Specifies the expiration time, as a DateTime object, for the key that this cmdlet adds. This parameter uses Coordinated Universal Time (UTC). To obtain a DateTime object, use the Get-Date cmdlet. For more information, type `Get-Help Get-Date`. If you do not specify this parameter, the key does not expire.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
@@ -537,7 +549,7 @@ Updated     : 2/8/2016 11:21:45 PM</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>KeyFilePassword</maml:name>
-<maml:Description><maml:para>Specifies a password for the imported file as a SecureString object. To obtain a SecureString object, use the ConvertTo-SecureString cmdlet. For more information, type Get-Help ConvertTo-SecureString. You must specify this password to import a file with a .pfx file name extension.
+<maml:Description><maml:para>Specifies a password for the imported file as a SecureString object. To obtain a SecureString object, use the ConvertTo-SecureString cmdlet. For more information, type `Get-Help ConvertTo-SecureString`. You must specify this password to import a file with a .pfx file name extension.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
@@ -548,9 +560,9 @@ Updated     : 2/8/2016 11:21:45 PM</dev:code>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>KeyFilePath</maml:name>
 <maml:Description><maml:para>Specifies the path of a local file that contains key material that this cmdlet imports. The valid file name extensions are .byok and .pfx. 
 </maml:para>
-<maml:para>-- If the file is a .byok file, the key is automatically protected by HSMs after the import and you cannot override this default.
+<maml:para>- If the file is a .byok file, the key is automatically protected by HSMs after the import and you cannot override this default.
 </maml:para>
-<maml:para>-- If the file is a .pfx file, the key is automatically protected by software after the import. To override this default, set the Destination parameter to HSM so that the key is HSM-protected.
+<maml:para>- If the file is a .pfx file, the key is automatically protected by software after the import. To override this default, set the Destination parameter to HSM so that the key is HSM-protected.
 </maml:para>
 <maml:para>When you specify this parameter, the Destination parameter is optional.
 </maml:para>
@@ -565,21 +577,21 @@ Updated     : 2/8/2016 11:21:45 PM</dev:code>
 </maml:para>
 <maml:para>The acceptable values for this parameter are a comma-separated list of key operations as defined by the JSON Web Key (JWK) specification (http://go.microsoft.com/fwlink/?LinkID=613300&amp;clcid=0x409): 
 </maml:para>
-<maml:para>-- Encrypt 
+<maml:para>- Encrypt
 </maml:para>
-<maml:para>-- Decrypt
+<maml:para>- Decrypt
 </maml:para>
-<maml:para>-- Wrap
+<maml:para>- Wrap
 </maml:para>
-<maml:para>-- Unwrap
+<maml:para>- Unwrap
 </maml:para>
-<maml:para>-- Sign
+<maml:para>- Sign
 </maml:para>
-<maml:para>-- Verify
+<maml:para>- Verify
 </maml:para>
-<maml:para>-- Backup
+<maml:para>- Backup
 </maml:para>
-<maml:para>-- Restore
+<maml:para>- Restore
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -605,7 +617,15 @@ Updated     : 2/8/2016 11:21:45 PM</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Tags"><maml:name>Tag</maml:name>
-<maml:Description><maml:para>A hashtable representing key tags.
+<maml:Description><maml:para>Specifies a hash table that contains certificate tags.
+</maml:para>
+<maml:para>To use HSM as your destination, you must have a key vault that supports HSMs. For more information about the service tiers and capabilities for Azure Key Vault, see the Azure Key Vault Pricing website (http://go.microsoft.com/fwlink/?linkid=512521).
+</maml:para>
+<maml:para>This parameter is required when you create a new key. If you import a key by using the KeyFilePath parameter, this parameter is optional:
+</maml:para>
+<maml:para>- If you do not specify this parameter, and this cmdlet imports a key that has .byok file name extension, it imports that key as an HSM-protected key. The cmdlet cannot import that key as software-protected key.
+</maml:para>
+<maml:para>- If you do not specify this parameter, and this cmdlet imports a key that has a .pfx file name extension, it imports the key as a software-protected key.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
@@ -628,11 +648,11 @@ Updated     : 2/8/2016 11:21:45 PM</dev:code>
 </maml:para>
 <maml:para>Note: To use HSM as your destination, you must have a key vault that supports HSMs. For more information about the service tiers and capabilities for Azure Key Vault, see the Azure Key Vault Pricing website (http://go.microsoft.com/fwlink/?linkid=512521).
 </maml:para>
-<maml:para>This parameter is required when you create a new key. If you import a key by using the KeyFilePath parameter, this parameter is optional: 
+<maml:para>This parameter is required when you create a new key. If you import a key by using the KeyFilePath parameter, this parameter is optional:
 </maml:para>
-<maml:para>-- If you do not specify this parameter, and this cmdlet imports a key that has .byok file name extension, it imports that key as an HSM-protected key. The cmdlet cannot import that key as software-protected key.
+<maml:para>- If you do not specify this parameter, and this cmdlet imports a key that has .byok file name extension, it imports that key as an HSM-protected key. The cmdlet cannot import that key as software-protected key.
 </maml:para>
-<maml:para>-- If you do not specify this parameter, and this cmdlet imports a key that has a .pfx file name extension, it imports the key as a software-protected key.
+<maml:para>- If you do not specify this parameter, and this cmdlet imports a key that has a .pfx file name extension, it imports the key as a software-protected key.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -650,7 +670,7 @@ Updated     : 2/8/2016 11:21:45 PM</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Expires</maml:name>
-<maml:Description><maml:para>Specifies the expiration time, as a DateTime object, for the key that this cmdlet adds. This parameter uses Coordinated Universal Time (UTC). To obtain a DateTime object, use the Get-Date cmdlet. For more information, type Get-Help Get-Date. If you do not specify this parameter, the key does not expire.
+<maml:Description><maml:para>Specifies the expiration time, as a DateTime object, for the key that this cmdlet adds. This parameter uses Coordinated Universal Time (UTC). To obtain a DateTime object, use the Get-Date cmdlet. For more information, type `Get-Help Get-Date`. If you do not specify this parameter, the key does not expire.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
@@ -659,7 +679,7 @@ Updated     : 2/8/2016 11:21:45 PM</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>KeyFilePassword</maml:name>
-<maml:Description><maml:para>Specifies a password for the imported file as a SecureString object. To obtain a SecureString object, use the ConvertTo-SecureString cmdlet. For more information, type Get-Help ConvertTo-SecureString. You must specify this password to import a file with a .pfx file name extension.
+<maml:Description><maml:para>Specifies a password for the imported file as a SecureString object. To obtain a SecureString object, use the ConvertTo-SecureString cmdlet. For more information, type `Get-Help ConvertTo-SecureString`. You must specify this password to import a file with a .pfx file name extension.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
@@ -670,9 +690,9 @@ Updated     : 2/8/2016 11:21:45 PM</dev:code>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>KeyFilePath</maml:name>
 <maml:Description><maml:para>Specifies the path of a local file that contains key material that this cmdlet imports. The valid file name extensions are .byok and .pfx. 
 </maml:para>
-<maml:para>-- If the file is a .byok file, the key is automatically protected by HSMs after the import and you cannot override this default.
+<maml:para>- If the file is a .byok file, the key is automatically protected by HSMs after the import and you cannot override this default.
 </maml:para>
-<maml:para>-- If the file is a .pfx file, the key is automatically protected by software after the import. To override this default, set the Destination parameter to HSM so that the key is HSM-protected.
+<maml:para>- If the file is a .pfx file, the key is automatically protected by software after the import. To override this default, set the Destination parameter to HSM so that the key is HSM-protected.
 </maml:para>
 <maml:para>When you specify this parameter, the Destination parameter is optional.
 </maml:para>
@@ -687,21 +707,21 @@ Updated     : 2/8/2016 11:21:45 PM</dev:code>
 </maml:para>
 <maml:para>The acceptable values for this parameter are a comma-separated list of key operations as defined by the JSON Web Key (JWK) specification (http://go.microsoft.com/fwlink/?LinkID=613300&amp;clcid=0x409): 
 </maml:para>
-<maml:para>-- Encrypt 
+<maml:para>- Encrypt
 </maml:para>
-<maml:para>-- Decrypt
+<maml:para>- Decrypt
 </maml:para>
-<maml:para>-- Wrap
+<maml:para>- Wrap
 </maml:para>
-<maml:para>-- Unwrap
+<maml:para>- Unwrap
 </maml:para>
-<maml:para>-- Sign
+<maml:para>- Sign
 </maml:para>
-<maml:para>-- Verify
+<maml:para>- Verify
 </maml:para>
-<maml:para>-- Backup
+<maml:para>- Backup
 </maml:para>
-<maml:para>-- Restore
+<maml:para>- Restore
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -746,7 +766,15 @@ Updated     : 2/8/2016 11:21:45 PM</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Tags"><maml:name>Tag</maml:name>
-<maml:Description><maml:para>A hashtable representing key tags.
+<maml:Description><maml:para>Specifies a hash table that contains certificate tags.
+</maml:para>
+<maml:para>To use HSM as your destination, you must have a key vault that supports HSMs. For more information about the service tiers and capabilities for Azure Key Vault, see the Azure Key Vault Pricing website (http://go.microsoft.com/fwlink/?linkid=512521).
+</maml:para>
+<maml:para>This parameter is required when you create a new key. If you import a key by using the KeyFilePath parameter, this parameter is optional:
+</maml:para>
+<maml:para>- If you do not specify this parameter, and this cmdlet imports a key that has .byok file name extension, it imports that key as an HSM-protected key. The cmdlet cannot import that key as software-protected key.
+</maml:para>
+<maml:para>- If you do not specify this parameter, and this cmdlet imports a key that has a .pfx file name extension, it imports the key as a software-protected key.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
@@ -786,12 +814,16 @@ Updated     : 2/8/2016 11:21:45 PM</dev:code>
 <dev:code>PS C:\&gt;Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Destination 'Software'</dev:code>
 <dev:remarks><maml:para>This command creates a software-protected key named ITSoftware in the key vault named Contoso.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Create an HSM-protected key</maml:title>
 <dev:code>PS C:\&gt;Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITHsm' -Destination 'HSM'</dev:code>
 <dev:remarks><maml:para>This command creates an HSM-protected key in the key vault named Contoso.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3: Create a key with non-default values</maml:title>
@@ -802,12 +834,14 @@ PS C:\&gt; $Tags = @{'Severity' = 'high'; 'Accounting' = null}
 PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITHsmNonDefault' -Destination 'HSM' -Expires $Expires -NotBefore $NotBefore -KeyOps $KeyOperations -Disable -Tags $Tags</dev:code>
 <dev:remarks><maml:para>The first command stores the values decrypt and verify in the $KeyOperations variable.
 </maml:para>
-<maml:para>The second command creates a DateTime object, defined in UTC, by using the Get-Date cmdlet. That object specifies a time two years in the future. The command stores that date in the $Expires variable. For more information, type Get-Help Get-Date.
+<maml:para>The second command creates a DateTime object, defined in UTC, by using the Get-Date cmdlet. That object specifies a time two years in the future. The command stores that date in the $Expires variable. For more information, type `Get-Help Get-Date`.
 </maml:para>
 <maml:para>The third command creates a DateTime object by using the Get-Date cmdlet. That object specifies current UTC time. The command stores that date in the $NotBefore variable.
 </maml:para>
 <maml:para>The final command creates a key named ITHsmNonDefault that is an HSM-protected key. The command specifies values for allowed key operations stored $KeyOperations. The command specifies times for the Expires and NotBefore parameters created in the previous commands, and tags for high severity and IT. The new key is disabled. You can enable it by using the Set-AzureKeyVaultKey cmdlet.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 4: Import an HSM-protected key</maml:title>
@@ -816,15 +850,19 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITHsmNonDefault' -De
 </maml:para>
 <maml:para>To import a key from your own hardware security module, you must first generate a BYOK package (a file with a .byok file name extension) by using the Azure Key Vault BYOK toolset. For more information, see How to Generate and Transfer HSM-Protected Keys for Azure Key Vault (http://go.microsoft.com/fwlink/?LinkId=522252).
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 5: Import a software-protected key</maml:title>
 <dev:code>PS C:\&gt;$Password = ConvertTo-SecureString -String 'Password' -AsPlainText -Force
 PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfx' -KeyFilePath 'C:\Contoso\ITPfx.pfx' -KeyFilePassword $Password</dev:code>
-<dev:remarks><maml:para>The first command converts a string into a secure string by using the ConvertTo-SecureString cmdlet, and then stores that string in the $Password variable. For more information, type Get-Help ConvertTo-SecureString.
+<dev:remarks><maml:para>The first command converts a string into a secure string by using the ConvertTo-SecureString cmdlet, and then stores that string in the $Password variable. For more information, type `Get-Help ConvertTo-SecureString`.
 </maml:para>
 <maml:para>The second command creates a software password in the Contoso key vault. The command specifies the location for the key and the password stored in $Password.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 6: Import a key and assign attributes</maml:title>
@@ -840,6 +878,8 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfxToHSM' -Destina
 </maml:para>
 <maml:para>The final command imports a key as an HSM key from the specified location. The command specifies the expiration time stored in $Expires and password stored in $Password, and applies the tags stored in $tags.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -872,9 +912,9 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfxToHSM' -Destina
 </maml:para>
 <maml:para>Typical reasons to use this cmdlet are: 
 </maml:para>
-<maml:para>-- You want to escrow a copy of your key, so that you have an offline copy in case you accidentally delete your key in your key vault.
+<maml:para>- You want to escrow a copy of your key, so that you have an offline copy in case you accidentally delete your key in your key vault.
 </maml:para>
-<maml:para>-- You created a key using Key Vault and now want to clone the key into a different Azure region, so that you can use it from all instances of your distributed application. Use the Backup-AzureKeyVaultKey cmdlet to retrieve the key in encrypted format and then use the Restore-AzureKeyVaultKey cmdlet and specify a key vault in the second region.
+<maml:para>- You created a key using Key Vault and now want to clone the key into a different Azure region, so that you can use it from all instances of your distributed application. Use the Backup-AzureKeyVaultKey cmdlet to retrieve the key in encrypted format and then use the Restore-AzureKeyVaultKey cmdlet and specify a key vault in the second region.
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Backup-AzureKeyVaultKey</maml:name>
@@ -979,12 +1019,16 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfxToHSM' -Destina
 <dev:code>PS C:\&gt;Backup-AzureKeyVaultKey -VaultName 'MyKeyVault' -Name 'MyKey'</dev:code>
 <dev:remarks><maml:para>This command retrieves the key named MyKey from the key vault named MyKeyVault and saves a backup of that key to a file that is automatically named for you, and displays the file name.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Back up a key to a specified file name</maml:title>
 <dev:code>PS C:\&gt;Backup-AzureKeyVaultKey -VaultName 'MyKeyVault' -Name 'MyKey' -OutputFile 'C:\Backup.blob'</dev:code>
 <dev:remarks><maml:para>This command retrieves the key named MyKey from the key vaultnamed MyKeyVault and saves a backup of that key to a file named Backup.blob.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1001,6 +1045,155 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfxToHSM' -Destina
 <maml:uri></maml:uri>
 </maml:navigationLink>
 <maml:navigationLink><maml:linkText>Restore-AzureKeyVaultKey</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+</command:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<command:details><command:name>Backup-AzureKeyVaultSecret</command:name>
+<command:verb>Backup</command:verb>
+<command:noun>AzureKeyVaultSecret</command:noun>
+<maml:description><maml:para>Backs up a secret in a key vault.
+</maml:para>
+</maml:description>
+</command:details>
+<maml:description><maml:para>The Backup-AzureKeyVaultSecret cmdlet backs up a specified secret in a key vault by downloading it and storing it in a file. If there are multiple versions of the secret, all versions are included in the backup. Because the downloaded content is encrypted, it cannot be used outside of Azure Key Vault. You can restore a backed-up secret to any key vault in the subscription that it was backed up from.
+</maml:para>
+<maml:para>Typical reasons to use this cmdlet are:
+</maml:para>
+<maml:para>- You want to escrow a copy of your secret, so that you have an offline copy in case you accidentally delete your secret in your key vault.
+</maml:para>
+<maml:para>- You added a secret to a key vault and now want to clone the secret into a different Azure region, so that you can use it from all instances of your distributed application. Use the Backup-AzureKeyVaultSecret cmdlet to retrieve the secret in encrypted format and then use the Restore-AzureKeyVaultSecret cmdlet and specify a key vault in the second region. (Note that the regions must belong to the same geography.)
+</maml:para>
+</maml:description>
+<command:syntax><command:syntaxItem><maml:name>Backup-AzureKeyVaultSecret</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>VaultName</maml:name>
+<maml:Description><maml:para>Specifies the name of the key vault that contains the secret to back up.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="SecretName"><maml:name>Name</maml:name>
+<maml:Description><maml:para>Specifies the name of the secret to back up.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>OutputFile</maml:name>
+<maml:Description><maml:para>Specifies the output file in which the backup blob is stored. If you do not specify this parameter, this cmdlet generates a file name for you. If you specify the name of an existing output file, the operation will not complete and returns an error message that the backup file already exists.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+</command:syntax>
+<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="SecretName"><maml:name>Name</maml:name>
+<maml:Description><maml:para>Specifies the name of the secret to back up.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>OutputFile</maml:name>
+<maml:Description><maml:para>Specifies the output file in which the backup blob is stored. If you do not specify this parameter, this cmdlet generates a file name for you. If you specify the name of an existing output file, the operation will not complete and returns an error message that the backup file already exists.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>VaultName</maml:name>
+<maml:Description><maml:para>Specifies the name of the key vault that contains the secret to back up.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+</command:parameters>
+<command:inputTypes></command:inputTypes>
+<command:returnValues></command:returnValues>
+<maml:alertSet><maml:alert><maml:para>
+</maml:para>
+</maml:alert>
+</maml:alertSet>
+<command:examples><command:example><maml:title>Example 1: Back up a secret with an automatically generated file name</maml:title>
+<dev:code>PS C:\&gt;Backup-AzureKeyVaultSecret -VaultName 'MyKeyVault' -Name 'MySecret'</dev:code>
+<dev:remarks><maml:para>This command retrieves the secret named MySecret from the key vault named MyKeyVault and saves a backup of that secret to a file that is automatically named for you, and displays the file name.
+</maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>Example 2: Back up a secret to a specified file name</maml:title>
+<dev:code>PS C:\&gt;Backup-AzureKeyVaultSecret -VaultName 'MyKeyVault' -Name 'MySecret' -OutputFile 'C:\Backup.blob'</dev:code>
+<dev:remarks><maml:para>This command retrieves the secret named MySecret from the key vaultnamed MyKeyVault and saves a backup of that secret to a file named Backup.blob.
+</maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
+</dev:remarks>
+</command:example>
+</command:examples>
+<command:relatedLinks><maml:navigationLink><maml:linkText>Online Version:</maml:linkText>
+<maml:uri>http://go.microsoft.com/fwlink/?LinkId=690296</maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Set-AzureKeyVaultSecret</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Get-AzureKeyVaultSecret</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Remove-AzureKeyVaultSecret</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Restore-AzureKeyVaultSecret</maml:linkText>
 <maml:uri></maml:uri>
 </maml:navigationLink>
 </command:relatedLinks>
@@ -1145,6 +1338,8 @@ Created     : 2/8/2016 11:21:45 PM
 Updated     : 2/8/2016 11:21:45 PM</dev:code>
 <dev:remarks><maml:para>This command gets the certificate named TestCert01 from the key vault named ContosoKV01.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1205,6 +1400,8 @@ Updated     : 2/8/2016 11:21:45 PM</dev:code>
 <dev:code>PS C:\&gt;$Contacts = Get-AzureKeyVaultCertificateContact -VaultName "Contoso"</dev:code>
 <dev:remarks><maml:para>This command gets all of the contacts for the certificate objects in the Contoso key vault, and then stores them in the $Contacts variable.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1288,13 +1485,15 @@ ApiKey              :
 OrganizationDetails : Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOrganizationDetails</dev:code>
 <dev:remarks><maml:para>This command gets the certificate issuer named TestIssuer01.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
-<command:relatedLinks><maml:navigationLink><maml:linkText>Set-AzureKeyVaultCertificateIssuer</maml:linkText>
+<command:relatedLinks><maml:navigationLink><maml:linkText>Remove-AzureKeyVaultCertificateIssuer</maml:linkText>
 <maml:uri></maml:uri>
 </maml:navigationLink>
-<maml:navigationLink><maml:linkText>Remove-AzureKeyVaultCertificateIssuer</maml:linkText>
+<maml:navigationLink><maml:linkText>Set-AzureKeyVaultCertificateIssuer</maml:linkText>
 <maml:uri></maml:uri>
 </maml:navigationLink>
 <maml:navigationLink><maml:linkText>Set-AzureKeyVaultCertificateIssuer</maml:linkText>
@@ -1379,6 +1578,8 @@ ErrorCode                 :
 ErrorMessage              :</dev:code>
 <dev:remarks><maml:para>This command gets the status of the certificate operation for TestCert01 on the ContosoKV01 key vault.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1473,6 +1674,8 @@ Created                         : 2/8/2016 11:10:29 PM
 Updated                         : 2/8/2016 11:10:29 PM</dev:code>
 <dev:remarks><maml:para>This command gets the certificate policy for TestCert01 certificate in the ContosoKV01 key vault.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1492,7 +1695,7 @@ Updated                         : 2/8/2016 11:10:29 PM</dev:code>
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>The Get-AzureKeyVaultKey cmdlet gets  Azure Key Vault keys. This cmdlet gets a specific Microsoft.Azure.Commands.KeyVault.Models.KeyBundle or a list of all KeyBundle objects in a key vault or by version.
+<maml:description><maml:para>The Get-AzureKeyVaultKey cmdlet gets Azure Key Vault keys. This cmdlet gets a specific Microsoft.Azure.Commands.KeyVault.Models.KeyBundle or a list of all KeyBundle objects in a key vault or by version.
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Get-AzureKeyVaultKey</maml:name>
@@ -1517,7 +1720,7 @@ Updated                         : 2/8/2016 11:10:29 PM</dev:code>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>IncludeVersions</maml:name>
 <maml:Description><maml:para>Indicates that this cmdlet gets all versions of a key. The current version of a key is the first one on the list. If you specify this parameter you must also specify the Name and VaultName parameters.
 </maml:para>
-<maml:para>If you do not specify the IncludeVersions parameter, this cmdlet gets the current version of the key with the specified Name.
+<maml:para>If you do not specify the IncludeVersions parameter, this cmdlet gets the current version of the key with the specified Name .
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -1558,7 +1761,7 @@ Updated                         : 2/8/2016 11:10:29 PM</dev:code>
 <command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>IncludeVersions</maml:name>
 <maml:Description><maml:para>Indicates that this cmdlet gets all versions of a key. The current version of a key is the first one on the list. If you specify this parameter you must also specify the Name and VaultName parameters.
 </maml:para>
-<maml:para>If you do not specify the IncludeVersions parameter, this cmdlet gets the current version of the key with the specified Name.
+<maml:para>If you do not specify the IncludeVersions parameter, this cmdlet gets the current version of the key with the specified Name .
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -1616,24 +1819,32 @@ Updated                         : 2/8/2016 11:10:29 PM</dev:code>
 <dev:code>PS C:\&gt;Get-AzureKeyVaultKey -VaultName 'Contoso'</dev:code>
 <dev:remarks><maml:para>This command gets all the keys in the key vault named Contoso.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Get the current version of a key</maml:title>
 <dev:code>PS C:\&gt;Get-AzureKeyVaultKey -VaultName 'Contoso' -KeyName 'ITPfx'</dev:code>
 <dev:remarks><maml:para>This command gets the current version of the key named ITPfx in the key vault named Contoso.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3: Get all versions of a key</maml:title>
 <dev:code>PS C:\&gt;Get-AzureKeyVaultKey -VaultName 'Contoso' -KeyName 'ITPfx' -IncludeVersions</dev:code>
 <dev:remarks><maml:para>This command gets all versions the key named ITPfx in the key vaultnamed Contoso.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 4: Get a specific version of a key</maml:title>
 <dev:code>PS C:\&gt;$Key = Get-AzureKeyVaultKey -VaultName 'Contoso' -KeyName 'ITPfx' -Version '5A12A276385949DB8B5F82AFEE85CAED'</dev:code>
 <dev:remarks><maml:para>This command gets a specific version of the key named ITPfx in the key vault named Contoso. After running this command, you can inspect various properties of the key by navigating the $Key object.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1684,7 +1895,7 @@ Updated                         : 2/8/2016 11:10:29 PM</dev:code>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>IncludeVersions</maml:name>
 <maml:Description><maml:para>Indicates that this cmdlet gets all versions of a secret. The current version of a secret is the first one on the list. If you specify this parameter you must also specify the Name and VaultName parameters.
 </maml:para>
-<maml:para>If you do not specify the IncludeVersions parameter, this cmdlet gets the current version of the secret with the specified Name.
+<maml:para>If you do not specify the IncludeVersions parameter, this cmdlet gets the current version of the secret with the specified Name .
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -1725,7 +1936,7 @@ Updated                         : 2/8/2016 11:10:29 PM</dev:code>
 <command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>IncludeVersions</maml:name>
 <maml:Description><maml:para>Indicates that this cmdlet gets all versions of a secret. The current version of a secret is the first one on the list. If you specify this parameter you must also specify the Name and VaultName parameters.
 </maml:para>
-<maml:para>If you do not specify the IncludeVersions parameter, this cmdlet gets the current version of the secret with the specified Name.
+<maml:para>If you do not specify the IncludeVersions parameter, this cmdlet gets the current version of the secret with the specified Name .
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -1783,24 +1994,32 @@ Updated                         : 2/8/2016 11:10:29 PM</dev:code>
 <dev:code>PS C:\&gt;Get-AzureKeyVaultSecret -VaultName 'Contoso'</dev:code>
 <dev:remarks><maml:para>This command gets the current versions of all secrets in the key vault named Contoso.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Get all versions of a specific secret</maml:title>
 <dev:code>PS C:\&gt;Get-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -IncludeVersions</dev:code>
 <dev:remarks><maml:para>This command gets all versions of the secret named ITSecret in the key vault named Contoso.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3: Get the current version of a specific secret</maml:title>
 <dev:code>PS C:\&gt;Get-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret'</dev:code>
 <dev:remarks><maml:para>This command gets the current version of the secret named ITSecret in the key vault named Contoso.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 4: Get a specific version of a specific secret</maml:title>
 <dev:code>PS C:\&gt;Get-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -Version '6A12A286385949DB8B5F82AFEF85CAE9'</dev:code>
 <dev:remarks><maml:para>This command gets a specific version of the secret named ITSecret in the key vault named Contoso.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 5: Get the plain text value of the current version of a specific secret</maml:title>
@@ -1808,6 +2027,8 @@ Updated                         : 2/8/2016 11:10:29 PM</dev:code>
 PS C:\&gt; Write-Host "Secret Value is: " $secret.SecretValueText</dev:code>
 <dev:remarks><maml:para>These commands get the current version of a secret named ITSecret, and then displays the plain text value of that secret.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1916,18 +2137,24 @@ PS C:\&gt; Write-Host "Secret Value is: " $secret.SecretValueText</dev:code>
 <dev:code>PS C:\&gt;Get-AzureRMKeyVault</dev:code>
 <dev:remarks><maml:para>This command gets all the key vaults in your current subscription.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Get a specific key vault</maml:title>
 <dev:code>PS C:\&gt;$MyVault = Get-AzureRMKeyVault -VaultName 'Contoso03Vault'</dev:code>
 <dev:remarks><maml:para>This command gets the key vault named Contoso03Vault in your current subscription, and then stores it in the $MyVault variable. You can inspect the properties of $MyVault to get details about the key vault.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3: Get key vaults in a resource group</maml:title>
 <dev:code>PS C:\&gt;Get-AzureRMKeyVault -ResourceGroupName 'ContosoPayRollResourceGroup'</dev:code>
 <dev:remarks><maml:para>This command gets all the key vaults in the resource group named ContosoPayRollResourceGroup.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1954,9 +2181,9 @@ PS C:\&gt; Write-Host "Secret Value is: " $secret.SecretValueText</dev:code>
 </maml:para>
 <maml:para>You can create the certificate to import by using one of the following methods: 
 </maml:para>
-<maml:para>-- Use the Add-AzureKeyVaultCertificate cmdlet to create a certificate signing request and submit it to a certificate authority.
+<maml:para>- Use the New-AzureKeyVaultCertificateSigningRequest cmdlet to create a certificate signing request and submit it to a certificate authority.
 </maml:para>
-<maml:para>-- Use an existing certificate package file, such as a .pfx or .p12 file, which contains both the certificate and private key.
+<maml:para>- Use an existing certificate package file, such as a .pfx or .p12 file, which contains both the certificate and private key.
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Import-AzureKeyVaultCertificate</maml:name>
@@ -1996,7 +2223,7 @@ PS C:\&gt; Write-Host "Secret Value is: " $secret.SecretValueText</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Tag</maml:name>
-<maml:Description><maml:para>A hashtable representing certificate tags.
+<maml:Description><maml:para>Specifies a hash table that contains certificate tags.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
@@ -2059,7 +2286,7 @@ PS C:\&gt; Write-Host "Secret Value is: " $secret.SecretValueText</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Tag</maml:name>
-<maml:Description><maml:para>A hashtable representing certificate tags.
+<maml:Description><maml:para>Specifies a hash table that contains certificate tags.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
@@ -2113,7 +2340,7 @@ PS C:\&gt; Write-Host "Secret Value is: " $secret.SecretValueText</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Tag</maml:name>
-<maml:Description><maml:para>A hashtable representing certificate tags.
+<maml:Description><maml:para>Specifies a hash table that contains certificate tags.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
@@ -2176,7 +2403,7 @@ PS C:\&gt; Write-Host "Secret Value is: " $secret.SecretValueText</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Tag</maml:name>
-<maml:Description><maml:para>A hashtable representing certificate tags.
+<maml:Description><maml:para>Specifies a hash table that contains certificate tags.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
@@ -2258,7 +2485,7 @@ PS C:\&gt; Write-Host "Secret Value is: " $secret.SecretValueText</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Tag</maml:name>
-<maml:Description><maml:para>A hashtable representing certificate tags.
+<maml:Description><maml:para>Specifies a hash table that contains certificate tags.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
@@ -2319,6 +2546,8 @@ Updated     : 2/8/2016 11:50:43 PM</dev:code>
 </maml:para>
 <maml:para>The second command imports the certificate named ImportCert01 into the CosotosoKV01 key vault.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -2464,6 +2693,8 @@ Updated     : 2/8/2016 11:50:43 PM</dev:code>
 <dev:code>PS C:\&gt;$AdminDetails = New-AzureKeyVaultCertificateAdministratorDetails -FirstName "Patti" -LastName "Fuller" -EmailAddress "patti.fuller@contoso.com" -PhoneNumber "5553334444"</dev:code>
 <dev:remarks><maml:para>This command creates an in-memory certificate administrator details object, and then stores it in the $AdminDetails variable.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -2576,6 +2807,8 @@ $OrgDetails = New-AzureKeyVaultCertificateOrganizationDetails -Name "Contoso" -A
 </maml:para>
 <maml:para>The second command creates a certificate organization details object, and then stores it in the $OrgDetails variable.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -2660,9 +2893,9 @@ $OrgDetails = New-AzureKeyVaultCertificateOrganizationDetails -Name "Contoso" -A
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyType</maml:name>
 <maml:Description><maml:para>Specifies the key type of the key that backs the certificate. The acceptable values for this parameter are:
 </maml:para>
-<maml:para>-- RSA 
+<maml:para>- RSA
 </maml:para>
-<maml:para>-- RSA-HSM
+<maml:para>- RSA-HSM
 </maml:para>
 </maml:Description>
 <command:parameterValueGroup><command:parameterValue required="false" variableLength="false">RSA</command:parameterValue>
@@ -2674,7 +2907,7 @@ $OrgDetails = New-AzureKeyVaultCertificateOrganizationDetails -Name "Contoso" -A
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyUsage</maml:name>
-<maml:Description><maml:para>@{Text=}
+<maml:Description><maml:para>Specifies the key usages in the certificate.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">System.Collections.Generic.List`1[System.String]</command:parameterValue>
@@ -2711,9 +2944,9 @@ $OrgDetails = New-AzureKeyVaultCertificateOrganizationDetails -Name "Contoso" -A
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SecretContentType</maml:name>
 <maml:Description><maml:para>Specifies the content type of the new key vault secret. The acceptable values for this parameter are:
 </maml:para>
-<maml:para>-- application/x-pkcs12
+<maml:para>- application/x-pkcs12
 </maml:para>
-<maml:para>-- application/x-pem-file
+<maml:para>- application/x-pem-file
 </maml:para>
 </maml:Description>
 <command:parameterValueGroup><command:parameterValue required="false" variableLength="false">application/x-pkcs12</command:parameterValue>
@@ -2835,9 +3068,9 @@ $OrgDetails = New-AzureKeyVaultCertificateOrganizationDetails -Name "Contoso" -A
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyType</maml:name>
 <maml:Description><maml:para>Specifies the key type of the key that backs the certificate. The acceptable values for this parameter are:
 </maml:para>
-<maml:para>-- RSA 
+<maml:para>- RSA
 </maml:para>
-<maml:para>-- RSA-HSM
+<maml:para>- RSA-HSM
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -2846,7 +3079,7 @@ $OrgDetails = New-AzureKeyVaultCertificateOrganizationDetails -Name "Contoso" -A
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyUsage</maml:name>
-<maml:Description><maml:para>@{Text=}
+<maml:Description><maml:para>Specifies the key usages in the certificate.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">System.Collections.Generic.List`1[System.String]</command:parameterValue>
@@ -2884,9 +3117,9 @@ $OrgDetails = New-AzureKeyVaultCertificateOrganizationDetails -Name "Contoso" -A
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SecretContentType</maml:name>
 <maml:Description><maml:para>Specifies the content type of the new key vault secret. The acceptable values for this parameter are:
 </maml:para>
-<maml:para>-- application/x-pkcs12
+<maml:para>- application/x-pkcs12
 </maml:para>
-<maml:para>-- application/x-pem-file
+<maml:para>- application/x-pem-file
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -2950,6 +3183,8 @@ $OrgDetails = New-AzureKeyVaultCertificateOrganizationDetails -Name "Contoso" -A
 <dev:code>PS C:\&gt;New-AzureKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal</dev:code>
 <dev:remarks><maml:para>This command creates a certificate policy that is valid for six months and reuses the key to renew the certificate.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -2994,7 +3229,7 @@ $OrgDetails = New-AzureKeyVaultCertificateOrganizationDetails -Name "Contoso" -A
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>Location</maml:name>
-<maml:Description><maml:para>Specifies the Azure region in which to create the key vault. Use the command Get-AzureLocation to see your choices. For more information, type Get-Help Get-AzureLocation.
+<maml:Description><maml:para>Specifies the Azure region in which to create the key vault. Use the command Get-AzureLocation (https://msdn.microsoft.com/ library/azure/mt589064.aspx) to see your choices. For more information, type `Get-Help Get-AzureLocation`.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -3093,7 +3328,7 @@ $OrgDetails = New-AzureKeyVaultCertificateOrganizationDetails -Name "Contoso" -A
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>Location</maml:name>
-<maml:Description><maml:para>Specifies the Azure region in which to create the key vault. Use the command Get-AzureLocation to see your choices. For more information, type Get-Help Get-AzureLocation.
+<maml:Description><maml:para>Specifies the Azure region in which to create the key vault. Use the command Get-AzureLocation (https://msdn.microsoft.com/ library/azure/mt589064.aspx) to see your choices. For more information, type `Get-Help Get-AzureLocation`.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -3172,12 +3407,16 @@ $OrgDetails = New-AzureKeyVaultCertificateOrganizationDetails -Name "Contoso" -A
 <dev:code>PS C:\&gt;New-AzureRmKeyVault -VaultName 'Contoso03Vault' -ResourceGroupName 'Group14' -Location 'East US'</dev:code>
 <dev:remarks><maml:para>This command creates a key vault named Contoso03Vault, in the Azure region East US. The command adds the key vault to the resource group named Group14. Because the command does not specify a value for the SKU parameter, it creates a Standard key vault.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Create a Premium key vault</maml:title>
 <dev:code>PS C:\&gt;New-AzureRmKeyVault -VaultName 'Contoso03Vault' -ResourceGroupName 'Group14' -Location 'East US' -Sku 'Premium'</dev:code>
 <dev:remarks><maml:para>This command creates a key vault, just like the previous example. However, it specifies a value of Premium for the SKU parameter to create a Premium key vault.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -3239,7 +3478,7 @@ $OrgDetails = New-AzureKeyVaultCertificateOrganizationDetails -Name "Contoso" -A
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -3293,7 +3532,7 @@ $OrgDetails = New-AzureKeyVaultCertificateOrganizationDetails -Name "Contoso" -A
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -3334,6 +3573,8 @@ Created     : 2/8/2016 11:29:33 PM
 Updated     : 2/8/2016 11:29:33 PM</dev:code>
 <dev:remarks><maml:para>This command removes the certificate named SelfSigned01 from the key vault named ContosoKV01. This command specifies the Force parameter. Therefore, the cmdlet does not prompt you for confirmation.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -3460,6 +3701,8 @@ Updated     : 2/8/2016 11:29:33 PM</dev:code>
 <dev:code>PS C:\&gt;Remove-AzureKeyVaultCertificateContact -VaultName "Contoso01" -EmailAddress "patti.fuller@contoso.com"</dev:code>
 <dev:remarks><maml:para>This command removes Patti Fuller as a certificate contact for the Contoso01 key vault.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -3518,7 +3761,7 @@ Updated     : 2/8/2016 11:29:33 PM</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -3572,7 +3815,7 @@ Updated     : 2/8/2016 11:29:33 PM</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -3600,13 +3843,15 @@ Updated     : 2/8/2016 11:29:33 PM</dev:code>
 <dev:code>PS C:\&gt;Remove-AzureKeyVaultCertificateIssuer -VaultName "ContosoKV01" -Name "TestIssuer01" -Force</dev:code>
 <dev:remarks><maml:para>This command removes the certificate issuer named TestIssuer01 from the ContosoKV01 key vault.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
-<command:relatedLinks><maml:navigationLink><maml:linkText>Set-AzureKeyVaultCertificateIssuer</maml:linkText>
+<command:relatedLinks><maml:navigationLink><maml:linkText>Get-AzureKeyVaultCertificateIssuer</maml:linkText>
 <maml:uri></maml:uri>
 </maml:navigationLink>
-<maml:navigationLink><maml:linkText>Get-AzureKeyVaultCertificateIssuer</maml:linkText>
+<maml:navigationLink><maml:linkText>Set-AzureKeyVaultCertificateIssuer</maml:linkText>
 <maml:uri></maml:uri>
 </maml:navigationLink>
 <maml:navigationLink><maml:linkText>Set-AzureKeyVaultCertificateIssuer</maml:linkText>
@@ -3661,7 +3906,7 @@ Updated     : 2/8/2016 11:29:33 PM</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -3715,7 +3960,7 @@ Updated     : 2/8/2016 11:29:33 PM</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -3743,6 +3988,8 @@ Updated     : 2/8/2016 11:29:33 PM</dev:code>
 <dev:code>PS C:\&gt;Remove-AzureKeyVaultCertificateOperation -VaultName "ContosoKV01" -Name "TestCert01" -Force</dev:code>
 <dev:remarks><maml:para>This command removes the certificate operation named TestCert01 from the ContosoKV01 key vault without prompting for confirmation.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -3758,152 +4005,219 @@ Updated     : 2/8/2016 11:29:33 PM</dev:code>
 <command:details><command:name>Remove-AzureKeyVaultKey</command:name>
 <command:verb>Remove</command:verb>
 <command:noun>AzureKeyVaultKey</command:noun>
-<maml:description><maml:para>Deletes a key in a key vault.
-</maml:para>
-</maml:description>
+<maml:description><maml:para>Deletes a key in a key vault.</maml:para></maml:description>
 </command:details>
-<maml:description><maml:para>The Remove-AzureKeyVaultKey cmdlet deletes a key in a key vault. This cmdlet has a value of high for the ConfirmImpact property.
-</maml:para>
-</maml:description>
-<command:syntax><command:syntaxItem><maml:name>Remove-AzureKeyVaultKey</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>VaultName</maml:name>
-<maml:Description><maml:para>Specifies the name of the key vault from which to remove the key. This cmdlet constructs the FQDN of a key vault based on the name that this parameter specifies and your current environment.
-</maml:para>
-</maml:Description>
+<maml:description><maml:para>The Remove-AzureKeyVaultKey cmdlet deletes a key in a key vault. This cmdlet has a value of high for the ConfirmImpact property.</maml:para></maml:description>
+<command:syntax>
+<command:syntaxItem>
+<maml:name>Remove-AzureKeyVaultKey</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
+<maml:name>VaultName</maml:name>
+<maml:Description><maml:para>  Specifies the name of the key vault from which to remove the key. This cmdlet constructs the FQDN of a key vault based on the name that this parameter specifies and your current environment.</maml:para></maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
+<dev:type>
+<maml:name>String</maml:name>
+<maml:uri />
+</dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="KeyName"><maml:name>Name</maml:name>
-<maml:Description><maml:para>Specifies the name of the key to remove. This cmdlet constructs the fully qualified domain name (FQDN) of a key based on the name that this parameter specifies, the name of the key vault, and your current environment.
-</maml:para>
-</maml:Description>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="KeyName">
+<maml:name>Name</maml:name>
+<maml:Description><maml:para>  Specifies the name of the key to remove. This cmdlet constructs the fully qualified domain name (FQDN) of a key based on the name that this parameter specifies, the name of the key vault, and your current environment.</maml:para></maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
+<dev:type>
+<maml:name>String</maml:name>
+<maml:uri />
+</dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
-<maml:Description><maml:para>Forces the command to run without asking for user confirmation.
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+<maml:name>Force</maml:name>
+<maml:Description>
+<maml:para>
+  Forces the command to run without asking for user confirmation.
 </maml:para>
 </maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
+<dev:type>
+<maml:name>SwitchParameter</maml:name>
+<maml:uri />
+</dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PassThru</maml:name>
-<maml:Description><maml:para>Indicates that this cmdlet returns a Microsoft.Azure.Commands.KeyVault.Models.KeyBundle object. By default, this cmdlet does not generate any output.
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+<maml:name>PassThru</maml:name>
+<maml:Description>
+<maml:para>
+  Indicates that this cmdlet returns a Microsoft.Azure.Commands.KeyVault.Models.KeyBundle object. By default, this cmdlet does not generate any output.
 </maml:para>
 </maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
+<dev:type>
+<maml:name>SwitchParameter</maml:name>
+<maml:uri />
+</dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+<maml:name>Confirm</maml:name>
+<maml:Description>
+<maml:para>
+  Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
+<dev:type>
+<maml:name>SwitchParameter</maml:name>
+<maml:uri />
+</dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.Shows what would happen if the cmdlet runs. The cmdlet is not run.
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+<maml:name>WhatIf</maml:name>
+<maml:Description>
+<maml:para>
+  Shows what would happen if the cmdlet runs. The cmdlet is not run.Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
 </maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
+<dev:type>
+<maml:name>SwitchParameter</maml:name>
+<maml:uri />
+</dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
-<maml:Description><maml:para>Forces the command to run without asking for user confirmation.
+<command:parameters>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+<maml:name>Force</maml:name>
+<maml:Description>
+<maml:para>
+Forces the command to run without asking for user confirmation.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
+<dev:type>
+<maml:name>SwitchParameter</maml:name>
+<maml:uri />
+</dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="KeyName"><maml:name>Name</maml:name>
-<maml:Description><maml:para>Specifies the name of the key to remove. This cmdlet constructs the fully qualified domain name (FQDN) of a key based on the name that this parameter specifies, the name of the key vault, and your current environment.
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="KeyName">
+<maml:name>Name</maml:name>
+<maml:Description>
+<maml:para>
+Specifies the name of the key to remove. This cmdlet constructs the fully qualified domain name (FQDN) of a key based on the name that this parameter specifies, the name of the key vault, and your current environment.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
+<dev:type>
+<maml:name>String</maml:name>
+<maml:uri />
+</dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PassThru</maml:name>
-<maml:Description><maml:para>Indicates that this cmdlet returns a Microsoft.Azure.Commands.KeyVault.Models.KeyBundle object. By default, this cmdlet does not generate any output.
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+<maml:name>PassThru</maml:name>
+<maml:Description>
+<maml:para>
+Indicates that this cmdlet returns a Microsoft.Azure.Commands.KeyVault.Models.KeyBundle object. By default, this cmdlet does not generate any output.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
+<dev:type>
+<maml:name>SwitchParameter</maml:name>
+<maml:uri />
+</dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>VaultName</maml:name>
-<maml:Description><maml:para>Specifies the name of the key vault from which to remove the key. This cmdlet constructs the FQDN of a key vault based on the name that this parameter specifies and your current environment.
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
+<maml:name>VaultName</maml:name>
+<maml:Description>
+<maml:para>
+Specifies the name of the key vault from which to remove the key. This cmdlet constructs the FQDN of a key vault based on the name that this parameter specifies and your current environment.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
+<dev:type>
+<maml:name>String</maml:name>
+<maml:uri />
+</dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+<maml:name>Confirm</maml:name>
+<maml:Description>
+<maml:para>
+Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
+<dev:type>
+<maml:name>SwitchParameter</maml:name>
+<maml:uri />
+</dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.Shows what would happen if the cmdlet runs. The cmdlet is not run.
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+<maml:name>WhatIf</maml:name>
+<maml:Description>
+<maml:para>
+Shows what would happen if the cmdlet runs. The cmdlet is not run.Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
+<dev:type>
+<maml:name>SwitchParameter</maml:name>
+<maml:uri />
+</dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 </command:parameters>
-<command:inputTypes><command:inputType><dev:type><maml:name>String</maml:name>
+<command:inputTypes>
+<command:inputType>
+<dev:type>
+<maml:name>String</maml:name>
 </dev:type>
-<maml:description><maml:para>
+<maml:description>
+<maml:para>
 </maml:para>
 </maml:description>
 </command:inputType>
 </command:inputTypes>
-<command:returnValues><command:returnValue><dev:type><maml:name>Microsoft.Azure.Commands.KeyVault.Models.KeyBundle</maml:name>
+<command:returnValues>
+<command:returnValue>
+<dev:type>
+<maml:name>Microsoft.Azure.Commands.KeyVault.Models.KeyBundle</maml:name>
 </dev:type>
-<maml:description><maml:para>This cmdlet returns a value only if you specify the PassThru parameter.
+<maml:description>
+<maml:para>
+This cmdlet returns a value only if you specify the PassThru parameter.
 </maml:para>
 </maml:description>
 </command:returnValue>
 </command:returnValues>
-<maml:alertSet><maml:alert><maml:para>
+<maml:alertSet>
+<maml:alert>
+<maml:para>
 </maml:para>
 </maml:alert>
 </maml:alertSet>
-<command:examples><command:example><maml:title>Example 1: Remove a key from a key vault</maml:title>
+<command:examples>
+<command:example>
+<maml:title>Example 1: Remove a key from a key vault</maml:title>
 <dev:code>PS C:\&gt;Remove-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware'</dev:code>
-<dev:remarks><maml:para>This command removes the key named ITSoftware from the key vault named Contoso.
+<dev:remarks>
+<maml:para>
+This command removes the key named ITSoftware from the key vault named Contoso.
 </maml:para>
-</dev:remarks>
-</command:example>
-<command:example><maml:title>Example 2: Remove a key without user confirmation</maml:title>
+</dev:remarks></command:example><command:example><maml:title>Example 2: Remove a key without user confirmation</maml:title>
 <dev:code>PS C:\&gt;Remove-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Force -Confirm:$False</dev:code>
-<dev:remarks><maml:para>This command removes the key named ITSoftware from the key vault named Contoso. The command specifies the Force and Confirm parameters, and, therefore, the cmdlet does not prompt you for confirmation.
+<dev:remarks>
+<maml:para>
+This command removes the key named ITSoftware from the key vault named Contoso. The command specifies the Force and Confirm parameters, and, therefore, the cmdlet does not prompt you for confirmation.
 </maml:para>
 </dev:remarks>
 </command:example>
-<command:example><maml:title>Example 3: Remove keys by using the pipeline operator</maml:title>
+<command:example>
+<maml:title>Example 3: Remove keys by using the pipeline operator</maml:title>
 <dev:code>PS C:\&gt;Get-AzureKeyVaultKey -VaultName 'Contoso' | Where-Object {$_.Attributes.Enabled -eq $False} | Remove-AzureKeyVaultKey</dev:code>
 <dev:remarks><maml:para>This command gets all the keys in the key vault named Contoso, and passes them to the Where-Object cmdlet by using the pipeline operator. That cmdlet passes the keys that have a value of $False for the Enabled attribute to the current cmdlet. That cmdlet removes those keys.
 </maml:para>
@@ -3971,7 +4285,7 @@ Updated     : 2/8/2016 11:29:33 PM</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -4025,7 +4339,7 @@ Updated     : 2/8/2016 11:29:33 PM</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -4065,12 +4379,16 @@ Updated     : 2/8/2016 11:29:33 PM</dev:code>
 <dev:code>PS C:\&gt;Remove-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret'</dev:code>
 <dev:remarks><maml:para>This command removes the secret named FinanceSecret from the key vault named Contoso.'
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Remove a secret from a key vault without user confirmation</maml:title>
 <dev:code>PS C:\&gt;Remove-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret' -Force -Confirm:$False</dev:code>
 <dev:remarks><maml:para>This command removes the secret named FinanceSecret from the key vault named Contoso. The command specifies the Force and Confirm parameters, and, therefore, the cmdlet does not prompt you for confirmation.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -4126,7 +4444,7 @@ Updated     : 2/8/2016 11:29:33 PM</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -4171,7 +4489,7 @@ Updated     : 2/8/2016 11:29:33 PM</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -4199,12 +4517,16 @@ Updated     : 2/8/2016 11:29:33 PM</dev:code>
 <dev:code>PS C:\&gt;Remove-AzureRmKeyVault -VaultName "Contoso03Vault"</dev:code>
 <dev:remarks><maml:para>This command removes the key vault named Contoso03Vault from your current subscription.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Remove a key vault from a specified resource group</maml:title>
 <dev:code>PS C:\&gt;Remove-AzureRmKeyVault -VaultName "Contoso03Vault" -ResourceGroupName "Group14"</dev:code>
 <dev:remarks><maml:para>This command removes the key vault named Contoso03Vault from the named resource group. If you do not specify the resource group name, the cmdlet searches for the named key vault to delete in your current subscription.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -4227,7 +4549,7 @@ Updated     : 2/8/2016 11:29:33 PM</dev:code>
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>The Remove-AzureRmKeyVaultAccessPolicy cmdlet removes all permissions for a user or application or for all users and applications from a key vault.. Even if you remove all permissions, the owner of the Azure subscription that contains the key vault can add permissions to the key vault.
+<maml:description><maml:para>The Remove-AzureRmKeyVaultAccessPolicy cmdlet removes all permissions for a user or application or for all users and applications from a key vault. Even if you remove all permissions, the owner of the Azure subscription that contains the key vault can add permissions to the key vault.
 </maml:para>
 <maml:para>Note that although specifying the resource group is optional for this cmdlet, you should do so for better performance.
 </maml:para>
@@ -4594,24 +4916,32 @@ Updated     : 2/8/2016 11:29:33 PM</dev:code>
 <dev:code>PS C:\&gt;Remove-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com'</dev:code>
 <dev:remarks><maml:para>This command removes all the permissions that a user PattiFuller@contoso.com has on the key vault named Contoso03Vault.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Remove permissions for an application</maml:title>
 <dev:code>PS C:\&gt;Remove-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ServicePrincipalName 'http://payroll.contoso.com'</dev:code>
 <dev:remarks><maml:para>This command removes all the permissions that an application has on the key vault named Contoso03Vault. This example identifies the application by using the service principal name registered in Azure Active Directory, http://payroll.contoso.com.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3: Remove permissions for an application by using its object ID</maml:title>
 <dev:code>PS C:\&gt;Remove-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ObjectID 34595082-9346-41b6-8d6b-295a2808b8db</dev:code>
 <dev:remarks><maml:para>This command removes all the permissions that an application has on the key vault named Contoso03Vault. This example identifies the application by the object ID of the service principal.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 4: Remove permissions for the Microsoft.Compute resource provider</maml:title>
 <dev:code>PS C:\&gt;Remove-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ResourceGroupName 'Group14' -EnabledForDeployment</dev:code>
 <dev:remarks><maml:para>This command removes permission for the Microsoft.Compute resource provider to get secrets from the Contoso03Vault.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -4720,6 +5050,8 @@ Updated     : 2/8/2016 11:29:33 PM</dev:code>
 <dev:code>PS C:\&gt;Restore-AzureKeyVaultKey -VaultName 'MyKeyVault' -InputFile "C:\Backup.blob"</dev:code>
 <dev:remarks><maml:para>This command restores a key, including all of its versions, from the backup file named Backup.blob into the key vault named MyKeyVault.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -4736,6 +5068,125 @@ Updated     : 2/8/2016 11:29:33 PM</dev:code>
 <maml:uri></maml:uri>
 </maml:navigationLink>
 <maml:navigationLink><maml:linkText>Remove-AzureKeyVaultKey</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+</command:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<command:details><command:name>Restore-AzureKeyVaultSecret</command:name>
+<command:verb>Restore</command:verb>
+<command:noun>AzureKeyVaultSecret</command:noun>
+<maml:description><maml:para>Creates a secret in a key vault from a backed-up secret.
+</maml:para>
+</maml:description>
+</command:details>
+<maml:description><maml:para>The Restore-AzureKeyVaultSecret cmdlet creates a secret in the specified key vault. This secret is a replica of the backed-up secret in the input file and has the same name as the original secret. If the key vault already has a secret by the same name, this cmdlet fails instead of overwriting the original secret. If the backup contains multiple versions of a secret, all versions are restored.
+</maml:para>
+<maml:para>The key vault that you restore the secret into can be different from the key vault that you backed up the secret from. However, the key vault must use the same subscription and be in an Azure region in the same geography (for example, North America). See the Microsoft Azure Trust Center (https://azure.microsoft.com/support/trust-center/) for the mapping of Azure regions to geographies.
+</maml:para>
+</maml:description>
+<command:syntax><command:syntaxItem><maml:name>Restore-AzureKeyVaultSecret</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>VaultName</maml:name>
+<maml:Description><maml:para>Specifies the name of the key vault into which to restore the secret.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none"><maml:name>InputFile</maml:name>
+<maml:Description><maml:para>Specifies the input file that contains the backup of the secret to restore.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+</command:syntax>
+<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none"><maml:name>InputFile</maml:name>
+<maml:Description><maml:para>Specifies the input file that contains the backup of the secret to restore.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>VaultName</maml:name>
+<maml:Description><maml:para>Specifies the name of the key vault into which to restore the secret.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+</command:parameters>
+<command:inputTypes></command:inputTypes>
+<command:returnValues></command:returnValues>
+<maml:alertSet><maml:alert><maml:para>
+</maml:para>
+</maml:alert>
+</maml:alertSet>
+<command:examples><command:example><maml:title>Example 1: Restore a backed-up secret</maml:title>
+<dev:code>PS C:\&gt;Restore-AzureKeyVaultSecret -VaultName 'MyKeyVault' -InputFile "C:\Backup.blob"</dev:code>
+<dev:remarks><maml:para>This command restores a secret, including all of its versions, from the backup file named Backup.blob into the key vault named MyKeyVault.
+</maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
+</dev:remarks>
+</command:example>
+</command:examples>
+<command:relatedLinks><maml:navigationLink><maml:linkText>Online Version:</maml:linkText>
+<maml:uri>http://go.microsoft.com/fwlink/?LinkId=690301</maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Set-AzureKeyVaultSecret</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Backup-AzureKeyVaultSecret</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Get-AzureKeyVaultSecret</maml:linkText>
+<maml:uri></maml:uri>
+</maml:navigationLink>
+<maml:navigationLink><maml:linkText>Remove-AzureKeyVaultSecret</maml:linkText>
 <maml:uri></maml:uri>
 </maml:navigationLink>
 </command:relatedLinks>
@@ -4805,7 +5256,7 @@ Updated     : 2/8/2016 11:29:33 PM</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Tag</maml:name>
-<maml:Description><maml:para>A hashtable representing certificate tags. If not specified, the existing tags of the sertificate remain unchanged. Remove a tag by specifying an empty Hashtable.
+<maml:Description><maml:para>Specifies a hash table that contains certificate tags. If not specified, the existing tags of the sertificate remain unchanged. Remove a tag by specifying an empty Hashtable.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
@@ -4878,7 +5329,7 @@ Updated     : 2/8/2016 11:29:33 PM</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Tag</maml:name>
-<maml:Description><maml:para>A hashtable representing certificate tags. If not specified, the existing tags of the sertificate remain unchanged. Remove a tag by specifying an empty Hashtable.
+<maml:Description><maml:para>Specifies a hash table that contains certificate tags. If not specified, the existing tags of the sertificate remain unchanged. Remove a tag by specifying an empty Hashtable.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
@@ -4939,6 +5390,8 @@ Updated     : 8/1/2016 5:37:48 PM</dev:code>
 </maml:para>
 <maml:para>The final command displays the TestCert01 certificate by using the Get-AzureKeyVaultCertificate cmdlet to verify the operation.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -5196,6 +5649,8 @@ Updated     : 8/1/2016 5:37:48 PM</dev:code>
 <dev:code>PS C:\&gt;$Issuer = Set-AzureKeyVaultCertificateIssuer -VaultName "Contosokv01" -Name "TestIssuer01" -IssuerProvider "Test" -AccountId "555" -ApiKey $Password -OrganizationDetails $OrgDetails -PassThru</dev:code>
 <dev:remarks><maml:para>This command sets the properties for a certificate issuer, and then stores it in the $Issuer variable.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -5267,9 +5722,9 @@ Updated     : 8/1/2016 5:37:48 PM</dev:code>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyType</maml:name>
 <maml:Description><maml:para>Specifies the key type of the key that backs the certificate. The acceptable values for this parameter are:
 </maml:para>
-<maml:para>-- RSA 
+<maml:para>- RSA
 </maml:para>
-<maml:para>-- RSA-HSM
+<maml:para>- RSA-HSM
 </maml:para>
 </maml:Description>
 <command:parameterValueGroup><command:parameterValue required="false" variableLength="false">RSA</command:parameterValue>
@@ -5388,9 +5843,9 @@ Updated     : 8/1/2016 5:37:48 PM</dev:code>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyType</maml:name>
 <maml:Description><maml:para>Specifies the key type of the key that backs the certificate. The acceptable values for this parameter are:
 </maml:para>
-<maml:para>-- RSA 
+<maml:para>- RSA
 </maml:para>
-<maml:para>-- RSA-HSM
+<maml:para>- RSA-HSM
 </maml:para>
 </maml:Description>
 <command:parameterValueGroup><command:parameterValue required="false" variableLength="false">RSA</command:parameterValue>
@@ -5402,7 +5857,7 @@ Updated     : 8/1/2016 5:37:48 PM</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyUsage</maml:name>
-<maml:Description><maml:para>@{Text=}
+<maml:Description><maml:para>Specifies the key usages in the certificate.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">System.Collections.Generic.List`1[System.String]</command:parameterValue>
@@ -5448,9 +5903,9 @@ Updated     : 8/1/2016 5:37:48 PM</dev:code>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SecretContentType</maml:name>
 <maml:Description><maml:para>Specifies the content type of the new key vault secret. The acceptable values for this parameter are:
 </maml:para>
-<maml:para>-- application/x-pkcs12
+<maml:para>- application/x-pkcs12
 </maml:para>
-<maml:para>-- application/x-pem-file
+<maml:para>- application/x-pem-file
 </maml:para>
 </maml:Description>
 <command:parameterValueGroup><command:parameterValue required="false" variableLength="false">application/x-pkcs12</command:parameterValue>
@@ -5581,9 +6036,9 @@ Updated     : 8/1/2016 5:37:48 PM</dev:code>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyType</maml:name>
 <maml:Description><maml:para>Specifies the key type of the key that backs the certificate. The acceptable values for this parameter are:
 </maml:para>
-<maml:para>-- RSA 
+<maml:para>- RSA
 </maml:para>
-<maml:para>-- RSA-HSM
+<maml:para>- RSA-HSM
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -5592,7 +6047,7 @@ Updated     : 8/1/2016 5:37:48 PM</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyUsage</maml:name>
-<maml:Description><maml:para>@{Text=}
+<maml:Description><maml:para>Specifies the key usages in the certificate.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">System.Collections.Generic.List`1[System.String]</command:parameterValue>
@@ -5648,9 +6103,9 @@ Updated     : 8/1/2016 5:37:48 PM</dev:code>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SecretContentType</maml:name>
 <maml:Description><maml:para>Specifies the content type of the new key vault secret. The acceptable values for this parameter are:
 </maml:para>
-<maml:para>-- application/x-pkcs12
+<maml:para>- application/x-pkcs12
 </maml:para>
-<maml:para>-- application/x-pem-file
+<maml:para>- application/x-pem-file
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -5729,6 +6184,8 @@ Updated     : 8/1/2016 5:37:48 PM</dev:code>
 <dev:code>PS C:\&gt;Set-AzureKeyVaultCertificatePolicy -VaultName "ContosoKV01" -Name "TestCert01" -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal $True</dev:code>
 <dev:remarks><maml:para>This command sets the policy for the TestCert01 certificate in the ContosoKV01 key vault.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -5789,7 +6246,7 @@ Updated     : 8/1/2016 5:37:48 PM</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Expires</maml:name>
-<maml:Description><maml:para>Specifies the expiration time, as a DateTime object, for the key that this cmdlet updates. This parameter uses Coordinated Universal Time (UTC). To obtain a DateTime object, use the Get-Date cmdlet. For more information, type Get-Help Get-Date.
+<maml:Description><maml:para>Specifies the expiration time, as a DateTime object, for the key that this cmdlet updates. This parameter uses Coordinated Universal Time (UTC). To obtain a DateTime object, use the Get-Date cmdlet. For more information, type `Get-Help Get-Date`.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
@@ -5802,21 +6259,21 @@ Updated     : 8/1/2016 5:37:48 PM</dev:code>
 </maml:para>
 <maml:para>The acceptable values for this parameter are a comma-separated list of key operations as defined by the JSON Web Key specification. These values (case-sensitive) are: 
 </maml:para>
-<maml:para>-- encrypt 
+<maml:para>- encrypt
 </maml:para>
-<maml:para>-- decrypt
+<maml:para>- decrypt
 </maml:para>
-<maml:para>-- wrap
+<maml:para>- wrap
 </maml:para>
-<maml:para>-- unwrap
+<maml:para>- unwrap
 </maml:para>
-<maml:para>-- sign
+<maml:para>- sign
 </maml:para>
-<maml:para>-- verify
+<maml:para>- verify
 </maml:para>
-<maml:para>-- backup
+<maml:para>- backup
 </maml:para>
-<maml:para>-- restore
+<maml:para>- restore
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -5850,7 +6307,7 @@ Updated     : 8/1/2016 5:37:48 PM</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Tags"><maml:name>Tag</maml:name>
-<maml:Description><maml:para>A hashtable represents key tags. If not specified, the existings tags of the key remain unchanged.
+<maml:Description><maml:para>Specifies a hash table that contains certificate tags. If not specified, the existings tags of the key remain unchanged.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
@@ -5878,7 +6335,7 @@ Updated     : 8/1/2016 5:37:48 PM</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Expires</maml:name>
-<maml:Description><maml:para>Specifies the expiration time, as a DateTime object, for the key that this cmdlet updates. This parameter uses Coordinated Universal Time (UTC). To obtain a DateTime object, use the Get-Date cmdlet. For more information, type Get-Help Get-Date.
+<maml:Description><maml:para>Specifies the expiration time, as a DateTime object, for the key that this cmdlet updates. This parameter uses Coordinated Universal Time (UTC). To obtain a DateTime object, use the Get-Date cmdlet. For more information, type `Get-Help Get-Date`.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
@@ -5891,21 +6348,21 @@ Updated     : 8/1/2016 5:37:48 PM</dev:code>
 </maml:para>
 <maml:para>The acceptable values for this parameter are a comma-separated list of key operations as defined by the JSON Web Key specification. These values (case-sensitive) are: 
 </maml:para>
-<maml:para>-- encrypt 
+<maml:para>- encrypt
 </maml:para>
-<maml:para>-- decrypt
+<maml:para>- decrypt
 </maml:para>
-<maml:para>-- wrap
+<maml:para>- wrap
 </maml:para>
-<maml:para>-- unwrap
+<maml:para>- unwrap
 </maml:para>
-<maml:para>-- sign
+<maml:para>- sign
 </maml:para>
-<maml:para>-- verify
+<maml:para>- verify
 </maml:para>
-<maml:para>-- backup
+<maml:para>- backup
 </maml:para>
-<maml:para>-- restore
+<maml:para>- restore
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -5968,7 +6425,7 @@ Updated     : 8/1/2016 5:37:48 PM</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Tags"><maml:name>Tag</maml:name>
-<maml:Description><maml:para>A hashtable represents key tags. If not specified, the existings tags of the key remain unchanged.
+<maml:Description><maml:para>Specifies a hash table that contains certificate tags. If not specified, the existings tags of the key remain unchanged.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
@@ -6008,18 +6465,22 @@ Updated     : 8/1/2016 5:37:48 PM</dev:code>
 <dev:code>PS C:\&gt;$Expires = (Get-Date).AddYears(2).ToUniversalTime() 
 PS C:\&gt; $Tags = @{'Severity' = 'high'; 'Accounting' = null}
 PS C:\&gt; Set-AzureKeyVaultKeyAttribute -VaultName 'Contoso' -Name 'ITSoftware' -Expires $Expires -Enable $True -Tags $Tags -PassThru</dev:code>
-<dev:remarks><maml:para>The first command creates a DateTime object by using the Get-Date cmdlet. That object specifies a time two years in the future. The command stores that date in the $Expires variable. For more information, type Get-Help Get-Date.
+<dev:remarks><maml:para>The first command creates a DateTime object by using the Get-Date cmdlet. That object specifies a time two years in the future. The command stores that date in the $Expires variable. For more information, type `Get-Help Get-Date`.
 </maml:para>
 <maml:para>The second command creates a variable to store tag values of high severity and Accounting.
 </maml:para>
 <maml:para>The final command modifies a key named ITSoftware. The command enables the key, sets its expiration time to the time stored in $Expires, and sets the tags that are stored in $Tags.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Modify a key to delete all tags</maml:title>
 <dev:code>PS C:\&gt;Set-AzureKeyVaultKeyAttribute -VaultName 'Contoso' -Name 'ITSoftware' -Version '7EEA45C6EE50490B9C3176F80AC1A0DG' -Tags @{}</dev:code>
 <dev:remarks><maml:para>This commands deletes all tags for a specific version of a key named ITSoftware.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -6068,7 +6529,7 @@ PS C:\&gt; Set-AzureKeyVaultKeyAttribute -VaultName 'Contoso' -Name 'ITSoftware'
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none"><maml:name>SecretValue</maml:name>
-<maml:Description><maml:para>Specifies the value for the secret as a SecureString object. To obtain a SecureString object, use the ConvertTo-SecureString cmdlet. For more information, type Get-Help ConvertTo-SecureString.
+<maml:Description><maml:para>Specifies the value for the secret as a SecureString object. To obtain a SecureString object, use the ConvertTo-SecureString cmdlet. For more information, type `Get-Help ConvertTo-SecureString`.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
@@ -6094,7 +6555,7 @@ PS C:\&gt; Set-AzureKeyVaultKeyAttribute -VaultName 'Contoso' -Name 'ITSoftware'
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Expires</maml:name>
-<maml:Description><maml:para>Specifies the expiration time, as a DateTime object, for the secret that this cmdlet updates. This parameter uses Coordinated Universal Time (UTC). To obtain a DateTime object, use the Get-Date cmdlet. For more information, type Get-Help Get-Date.
+<maml:Description><maml:para>Specifies the expiration time, as a DateTime object, for the secret that this cmdlet updates. This parameter uses Coordinated Universal Time (UTC). To obtain a DateTime object, use the Get-Date cmdlet. For more information, type `Get-Help Get-Date`.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
@@ -6120,7 +6581,7 @@ PS C:\&gt; Set-AzureKeyVaultKeyAttribute -VaultName 'Contoso' -Name 'ITSoftware'
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Tags"><maml:name>Tag</maml:name>
-<maml:Description><maml:para>A hashtable representing secret tags.
+<maml:Description><maml:para>Specifies a hash table that contains certificate tags.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
@@ -6157,7 +6618,7 @@ PS C:\&gt; Set-AzureKeyVaultKeyAttribute -VaultName 'Contoso' -Name 'ITSoftware'
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Expires</maml:name>
-<maml:Description><maml:para>Specifies the expiration time, as a DateTime object, for the secret that this cmdlet updates. This parameter uses Coordinated Universal Time (UTC). To obtain a DateTime object, use the Get-Date cmdlet. For more information, type Get-Help Get-Date.
+<maml:Description><maml:para>Specifies the expiration time, as a DateTime object, for the secret that this cmdlet updates. This parameter uses Coordinated Universal Time (UTC). To obtain a DateTime object, use the Get-Date cmdlet. For more information, type `Get-Help Get-Date`.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
@@ -6184,7 +6645,7 @@ PS C:\&gt; Set-AzureKeyVaultKeyAttribute -VaultName 'Contoso' -Name 'ITSoftware'
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none"><maml:name>SecretValue</maml:name>
-<maml:Description><maml:para>Specifies the value for the secret as a SecureString object. To obtain a SecureString object, use the ConvertTo-SecureString cmdlet. For more information, type Get-Help ConvertTo-SecureString.
+<maml:Description><maml:para>Specifies the value for the secret as a SecureString object. To obtain a SecureString object, use the ConvertTo-SecureString cmdlet. For more information, type `Get-Help ConvertTo-SecureString`.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
@@ -6211,7 +6672,7 @@ PS C:\&gt; Set-AzureKeyVaultKeyAttribute -VaultName 'Contoso' -Name 'ITSoftware'
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Tags"><maml:name>Tag</maml:name>
-<maml:Description><maml:para>A hashtable representing secret tags.
+<maml:Description><maml:para>Specifies a hash table that contains certificate tags.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
@@ -6250,10 +6711,12 @@ PS C:\&gt; Set-AzureKeyVaultKeyAttribute -VaultName 'Contoso' -Name 'ITSoftware'
 <command:examples><command:example><maml:title>Example 1: Modify the value of a secret using default attributes</maml:title>
 <dev:code>PS C:\&gt;$Secret = ConvertTo-SecureString -String 'Password' -AsPlainText -Force 
 PS C:\&gt; Set-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -SecretValue $Secret</dev:code>
-<dev:remarks><maml:para>The first command converts a string into a secure string by using the ConvertTo-SecureString cmdlet, and then stores that string in the $Secret variable. For more information, type Get-Help ConvertTo-SecureString.
+<dev:remarks><maml:para>The first command converts a string into a secure string by using the ConvertTo-SecureString cmdlet, and then stores that string in the $Secret variable. For more information, type `Get-Help ConvertTo-SecureString`.
 </maml:para>
 <maml:para>The second command modifies value of the secret named ITSecret in the key vault named Contoso. The secret value becomes the value stored in $Secret.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Modify the value of a secret using custom attributes</maml:title>
@@ -6263,12 +6726,14 @@ PS C:\&gt; $NBF =(Get-Date).ToUniversalTime()
 PS C:\&gt; $Tags = @{ 'Severity' = 'medium'; 'IT' = null }
 PS C:\&gt; $ContentType = 'txt'  
 PS C:\&gt; Set-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -SecretValue $Secret -Expires $Expires -NotBefore $NBF -ContentType $ContentType -Disable $False -Tags $Tags</dev:code>
-<dev:remarks><maml:para>The first command converts a string into a secure string by using the ConvertTo-SecureString cmdlet, and then stores that string in the $Secret variable. For more information, type Get-Help ConvertTo-SecureString.
+<dev:remarks><maml:para>The first command converts a string into a secure string by using the ConvertTo-SecureString cmdlet, and then stores that string in the $Secret variable. For more information, type `Get-Help ConvertTo-SecureString`.
 </maml:para>
 <maml:para>The next commands define custom attributes for the expiry date, tags, and context type, and store the attributes in variables.
 </maml:para>
 <maml:para>The final command modifies values of the secret named ITSecret in the key vault named Contoso, by using the values specified previously as variables.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -6375,7 +6840,7 @@ PS C:\&gt; Set-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -Secret
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Tags"><maml:name>Tag</maml:name>
-<maml:Description><maml:para>A hashtable representing secret tags. If not specified, the existing tags of the secret remain unchanged. Remove a tag by specifying an empty Hashtable.
+<maml:Description><maml:para>Specifies a hash table that contains certificate tags. If not specified, the existing tags of the secret remain unchanged. Remove a tag by specifying an empty Hashtable.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
@@ -6475,7 +6940,7 @@ PS C:\&gt; Set-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -Secret
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Tags"><maml:name>Tag</maml:name>
-<maml:Description><maml:para>A hashtable representing secret tags. If not specified, the existing tags of the secret remain unchanged. Remove a tag by specifying an empty Hashtable.
+<maml:Description><maml:para>Specifies a hash table that contains certificate tags. If not specified, the existing tags of the secret remain unchanged. Remove a tag by specifying an empty Hashtable.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
@@ -6521,12 +6986,16 @@ PS C:\&gt; Set-AzureKeyVaultSecretAttribute -VaultName 'ContosoVault' -Name 'HR'
 </maml:para>
 <maml:para>The final command modifies the attributes for the secret named HR in the key vault named ContosoVault, using the stored variables.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Delete the tags and content type for a secret</maml:title>
 <dev:code>PS C:\&gt;Set-AzureKeyVaultSecretAttribute -VaultName 'ContosoVault' -Name 'HR' -Version '9EEA45C6EE50490B9C3176A80AC1A0DF' -ContentType '' -Tags -@{}</dev:code>
 <dev:remarks><maml:para>This command deletes the tags and the content type for the specified version of the secret named HR in the key vault named Contoso.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3: Disable the current version of secrets whose name begins with IT</maml:title>
@@ -6539,6 +7008,8 @@ PS C:\&gt; Get-AzureKeyVaultSecret $Vault | Where-Object {$_.Name -like $Prefix 
 </maml:para>
 <maml:para>The third command uses the Get-AzureKeyVaultSecret cmdlet to get the secrets in the specified key vault, and then passes those secrets to the Where-Object cmdlet. The Where-Object cmdlet filters the secrets for names that begin with the characters IT. The command pipes the secrets that match the filter to the Set-AzureKeyVaultSecretAttribute cmdlet, which disables them.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 4: Set the ContentType for all versions of a secret</maml:title>
@@ -6546,8 +7017,10 @@ PS C:\&gt; Get-AzureKeyVaultSecret $Vault | Where-Object {$_.Name -like $Prefix 
 PS C:\&gt; $Name = 'HR'
 PS C:\&gt; $ContentType = 'xml'
 PS C:\&gt; Get-AzureKeyVaultKey -VaultName $VaultName -Name $Name -IncludeVersions | Set-AzureKeyVaultSecretAttribute -ContentType $ContentType</dev:code>
-<dev:remarks><maml:para>The first three commands define string variables to use for the VaultName, Name, and ContentType parameters. The fourth command uses the Get-AzureKeyVaultKey cmdlet to get the specified keys, and pipes the keys to the Set-AzureKeyVaultSecretAttribute cmdlet to set their content type to XML.
+<dev:remarks><maml:para>The first three commands define string variables to use for the VaultName , Name , and ContentType parameters. The fourth command uses the Get-AzureKeyVaultKey cmdlet to get the specified keys, and pipes the keys to the Set-AzureKeyVaultSecretAttribute cmdlet to set their content type to XML.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -6577,15 +7050,15 @@ PS C:\&gt; Get-AzureKeyVaultKey -VaultName $VaultName -Name $Name -IncludeVersio
 </maml:para>
 <maml:para>If you are setting permissions for a security group, this operation affects only users in that security group.
 </maml:para>
-<maml:para>The following directories must all be the same Azure directory:  -- The default directory of the Azure subscription in which the key vault resides. 
+<maml:para>The following directories must all be the same Azure directory:  - The default directory of the Azure subscription in which the key vault resides.
 </maml:para>
-<maml:para>-- The Azure directory that contains the user or application group that you are granting permissions to.
+<maml:para>- The Azure directory that contains the user or application group that you are granting permissions to.
 </maml:para>
 <maml:para>
 </maml:para>
 <maml:para>Examples of scenarios when these conditions are not met and this cmdlet will not work are: 
 </maml:para>
-<maml:para>-- Authorizing a user from a different organization to manage your key vault. Each organization has its own directory.  -- Your Azure account has multiple directories. If you register an application in a directory other than the default directory, you cannot authorize that application to use your key vault. The application must be in the default directory.
+<maml:para>- Authorizing a user from a different organization to manage your key vault. Each organization has its own directory.  - Your Azure account has multiple directories. If you register an application in a directory other than the default directory, you cannot authorize that application to use your key vault. The application must be in the default directory.
 </maml:para>
 <maml:para>Note that although specifying the resource group is optional for this cmdlet, you should do so for better performance.
 </maml:para>
@@ -6668,35 +7141,35 @@ PS C:\&gt; Get-AzureKeyVaultKey -VaultName $VaultName -Name $Name -IncludeVersio
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>PermissionsToKeys</maml:name>
 <maml:Description><maml:para>Specifies an array of key operation permissions to grant to a user or service principal. The acceptable values for this parameter are:
 </maml:para>
-<maml:para>-- Decrypt
+<maml:para>- Decrypt
 </maml:para>
-<maml:para>-- Encrypt
+<maml:para>- Encrypt
 </maml:para>
-<maml:para>-- UnwrapKey
+<maml:para>- UnwrapKey
 </maml:para>
-<maml:para>-- WrapKey
+<maml:para>- WrapKey
 </maml:para>
-<maml:para>-- Verify
+<maml:para>- Verify
 </maml:para>
-<maml:para>-- Sign
+<maml:para>- Sign
 </maml:para>
-<maml:para>-- Get
+<maml:para>- Get
 </maml:para>
-<maml:para>-- List
+<maml:para>- List
 </maml:para>
-<maml:para>-- Update
+<maml:para>- Update
 </maml:para>
-<maml:para>-- Create
+<maml:para>- Create
 </maml:para>
-<maml:para>-- Import
+<maml:para>- Import
 </maml:para>
-<maml:para>-- Delete
+<maml:para>- Delete
 </maml:para>
-<maml:para>-- Backup
+<maml:para>- Backup
 </maml:para>
-<maml:para>-- Restore
+<maml:para>- Restore
 </maml:para>
-<maml:para>-- All
+<maml:para>- All
 </maml:para>
 </maml:Description>
 <command:parameterValueGroup><command:parameterValue required="false" variableLength="false">decrypt</command:parameterValue>
@@ -6723,21 +7196,23 @@ PS C:\&gt; Get-AzureKeyVaultKey -VaultName $VaultName -Name $Name -IncludeVersio
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>PermissionsToSecrets</maml:name>
 <maml:Description><maml:para>Specifies an array of secret operation permissions to grant to a user or service principal. The acceptable values for this parameter are:
 </maml:para>
-<maml:para>-- Get
+<maml:para>- Get
 </maml:para>
-<maml:para>-- List
+<maml:para>- List
 </maml:para>
-<maml:para>-- Set
+<maml:para>- Set
 </maml:para>
-<maml:para>-- Delete
+<maml:para>- Delete
 </maml:para>
-<maml:para>-- All
+<maml:para>- All
 </maml:para>
 </maml:Description>
 <command:parameterValueGroup><command:parameterValue required="false" variableLength="false">get</command:parameterValue>
 <command:parameterValue required="false" variableLength="false">list</command:parameterValue>
 <command:parameterValue required="false" variableLength="false">set</command:parameterValue>
 <command:parameterValue required="false" variableLength="false">delete</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">backup</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">restore</command:parameterValue>
 <command:parameterValue required="false" variableLength="false">all</command:parameterValue>
 </command:parameterValueGroup>
 <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -6882,35 +7357,35 @@ PS C:\&gt; Get-AzureKeyVaultKey -VaultName $VaultName -Name $Name -IncludeVersio
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>PermissionsToKeys</maml:name>
 <maml:Description><maml:para>Specifies an array of key operation permissions to grant to a user or service principal. The acceptable values for this parameter are:
 </maml:para>
-<maml:para>-- Decrypt
+<maml:para>- Decrypt
 </maml:para>
-<maml:para>-- Encrypt
+<maml:para>- Encrypt
 </maml:para>
-<maml:para>-- UnwrapKey
+<maml:para>- UnwrapKey
 </maml:para>
-<maml:para>-- WrapKey
+<maml:para>- WrapKey
 </maml:para>
-<maml:para>-- Verify
+<maml:para>- Verify
 </maml:para>
-<maml:para>-- Sign
+<maml:para>- Sign
 </maml:para>
-<maml:para>-- Get
+<maml:para>- Get
 </maml:para>
-<maml:para>-- List
+<maml:para>- List
 </maml:para>
-<maml:para>-- Update
+<maml:para>- Update
 </maml:para>
-<maml:para>-- Create
+<maml:para>- Create
 </maml:para>
-<maml:para>-- Import
+<maml:para>- Import
 </maml:para>
-<maml:para>-- Delete
+<maml:para>- Delete
 </maml:para>
-<maml:para>-- Backup
+<maml:para>- Backup
 </maml:para>
-<maml:para>-- Restore
+<maml:para>- Restore
 </maml:para>
-<maml:para>-- All
+<maml:para>- All
 </maml:para>
 </maml:Description>
 <command:parameterValueGroup><command:parameterValue required="false" variableLength="false">decrypt</command:parameterValue>
@@ -6937,21 +7412,27 @@ PS C:\&gt; Get-AzureKeyVaultKey -VaultName $VaultName -Name $Name -IncludeVersio
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>PermissionsToSecrets</maml:name>
 <maml:Description><maml:para>Specifies an array of secret operation permissions to grant to a user or service principal. The acceptable values for this parameter are:
 </maml:para>
-<maml:para>-- Get
+<maml:para>- Get
 </maml:para>
-<maml:para>-- List
+<maml:para>- List
 </maml:para>
-<maml:para>-- Set
+<maml:para>- Set
 </maml:para>
-<maml:para>-- Delete
+<maml:para>- Delete
 </maml:para>
-<maml:para>-- All
+<maml:para>- Backup
+</maml:para>
+<maml:para>- Restore
+</maml:para>
+<maml:para>- All
 </maml:para>
 </maml:Description>
 <command:parameterValueGroup><command:parameterValue required="false" variableLength="false">get</command:parameterValue>
 <command:parameterValue required="false" variableLength="false">list</command:parameterValue>
 <command:parameterValue required="false" variableLength="false">set</command:parameterValue>
 <command:parameterValue required="false" variableLength="false">delete</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">backup</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">restore</command:parameterValue>
 <command:parameterValue required="false" variableLength="false">all</command:parameterValue>
 </command:parameterValueGroup>
 <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -7037,35 +7518,35 @@ PS C:\&gt; Get-AzureKeyVaultKey -VaultName $VaultName -Name $Name -IncludeVersio
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>PermissionsToKeys</maml:name>
 <maml:Description><maml:para>Specifies an array of key operation permissions to grant to a user or service principal. The acceptable values for this parameter are:
 </maml:para>
-<maml:para>-- Decrypt
+<maml:para>- Decrypt
 </maml:para>
-<maml:para>-- Encrypt
+<maml:para>- Encrypt
 </maml:para>
-<maml:para>-- UnwrapKey
+<maml:para>- UnwrapKey
 </maml:para>
-<maml:para>-- WrapKey
+<maml:para>- WrapKey
 </maml:para>
-<maml:para>-- Verify
+<maml:para>- Verify
 </maml:para>
-<maml:para>-- Sign
+<maml:para>- Sign
 </maml:para>
-<maml:para>-- Get
+<maml:para>- Get
 </maml:para>
-<maml:para>-- List
+<maml:para>- List
 </maml:para>
-<maml:para>-- Update
+<maml:para>- Update
 </maml:para>
-<maml:para>-- Create
+<maml:para>- Create
 </maml:para>
-<maml:para>-- Import
+<maml:para>- Import
 </maml:para>
-<maml:para>-- Delete
+<maml:para>- Delete
 </maml:para>
-<maml:para>-- Backup
+<maml:para>- Backup
 </maml:para>
-<maml:para>-- Restore
+<maml:para>- Restore
 </maml:para>
-<maml:para>-- All
+<maml:para>- All
 </maml:para>
 </maml:Description>
 <command:parameterValueGroup><command:parameterValue required="false" variableLength="false">decrypt</command:parameterValue>
@@ -7092,15 +7573,15 @@ PS C:\&gt; Get-AzureKeyVaultKey -VaultName $VaultName -Name $Name -IncludeVersio
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>PermissionsToSecrets</maml:name>
 <maml:Description><maml:para>Specifies an array of secret operation permissions to grant to a user or service principal. The acceptable values for this parameter are:
 </maml:para>
-<maml:para>-- Get
+<maml:para>- Get
 </maml:para>
-<maml:para>-- List
+<maml:para>- List
 </maml:para>
-<maml:para>-- Set
+<maml:para>- Set
 </maml:para>
-<maml:para>-- Delete
+<maml:para>- Delete
 </maml:para>
-<maml:para>-- All
+<maml:para>- All
 </maml:para>
 </maml:Description>
 <command:parameterValueGroup><command:parameterValue required="false" variableLength="false">get</command:parameterValue>
@@ -7216,35 +7697,35 @@ PS C:\&gt; Get-AzureKeyVaultKey -VaultName $VaultName -Name $Name -IncludeVersio
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>PermissionsToKeys</maml:name>
 <maml:Description><maml:para>Specifies an array of key operation permissions to grant to a user or service principal. The acceptable values for this parameter are:
 </maml:para>
-<maml:para>-- Decrypt
+<maml:para>- Decrypt
 </maml:para>
-<maml:para>-- Encrypt
+<maml:para>- Encrypt
 </maml:para>
-<maml:para>-- UnwrapKey
+<maml:para>- UnwrapKey
 </maml:para>
-<maml:para>-- WrapKey
+<maml:para>- WrapKey
 </maml:para>
-<maml:para>-- Verify
+<maml:para>- Verify
 </maml:para>
-<maml:para>-- Sign
+<maml:para>- Sign
 </maml:para>
-<maml:para>-- Get
+<maml:para>- Get
 </maml:para>
-<maml:para>-- List
+<maml:para>- List
 </maml:para>
-<maml:para>-- Update
+<maml:para>- Update
 </maml:para>
-<maml:para>-- Create
+<maml:para>- Create
 </maml:para>
-<maml:para>-- Import
+<maml:para>- Import
 </maml:para>
-<maml:para>-- Delete
+<maml:para>- Delete
 </maml:para>
-<maml:para>-- Backup
+<maml:para>- Backup
 </maml:para>
-<maml:para>-- Restore
+<maml:para>- Restore
 </maml:para>
-<maml:para>-- All
+<maml:para>- All
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -7255,15 +7736,19 @@ PS C:\&gt; Get-AzureKeyVaultKey -VaultName $VaultName -Name $Name -IncludeVersio
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>PermissionsToSecrets</maml:name>
 <maml:Description><maml:para>Specifies an array of secret operation permissions to grant to a user or service principal. The acceptable values for this parameter are:
 </maml:para>
-<maml:para>-- Get
+<maml:para>- Get
 </maml:para>
-<maml:para>-- List
+<maml:para>- List
 </maml:para>
-<maml:para>-- Set
+<maml:para>- Set
 </maml:para>
-<maml:para>-- Delete
+<maml:para>- Delete
 </maml:para>
-<maml:para>-- All
+<maml:para>- Backup
+</maml:para>
+<maml:para>- Restore
+</maml:para>
+<maml:para>- All
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -7354,30 +7839,40 @@ PS C:\&gt; Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrin
 </maml:para>
 <maml:para>The final command further modifies the existing permissions for PattiFuller@contoso.com to remove all permissions to key operations. The permissions to secret operations remain unchanged after this command. The PassThru parameter results in the updated object being returned by the cmdlet.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Grant permissions for an application service principal to read and write secrets</maml:title>
 <dev:code>PS C:\&gt;Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ServicePrincipalName 'http://payroll.contoso.com' -PermissionsToSecrets 'Get,Set'</dev:code>
 <dev:remarks><maml:para>This command grants permissions for an application for a key vault named Contoso03Vault. The ServicePrincipalName parameter specifies the application. The application must be registered in your Azure Active Directory. The value of the ServicePrincipalName parameter must be either the service principal name of the application or the application ID GUID. This example specifies the service principal name http://payroll.contoso.com, and the command grants the application permissions to read and write secrets.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3: Grant permissions for an application using its object ID</maml:title>
 <dev:code>PS C:\&gt;Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ObjectId 34595082-9346-41b6-8d6b-295a2808b8db -PermissionsToSecrets 'Get,Set'</dev:code>
 <dev:remarks><maml:para>This command grants the application permissions to read and write secrets. This example specifies the application using the object ID of the service principal of the application.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 4: Grant permissions for a user principal name</maml:title>
 <dev:code>PS C:\&gt;Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToSecrets 'Get,List,Set'</dev:code>
 <dev:remarks><maml:para>This command grants get, list, and set permissions for the specified user principal name for access to secrets.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 5: Enable secrets to be retrieved from a key vault vault by the Microsoft.Compute resource providerkey vault</maml:title>
 <dev:code>PS C:\&gt;Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ResourceGroupName 'Group14' -EnabledForDeployment</dev:code>
 <dev:remarks><maml:para>This command grants the permissions for secrets to be retrieved from the Contoso03Vault key vault by the Microsoft.Compute resource provider.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 6: Grant permissions to a security group</maml:title>
@@ -7388,10 +7883,20 @@ DisplayName                    Type                           ObjectId
 group1                                                        96a0daa6-9841-4a9c-bdeb-e7062276c688
 group2                                                        b8a401eb-63ad-4a30-b0e1-a7461969fe54
 group3                                                        da07a6be-2c1e-4e42-934d-ceb57cf652b4</dev:code>
-<dev:remarks><maml:para>The first command uses the Get-AzureRmADGroup cmdlet to get all Active Directory groups. From the output, you see 3 groups returned, named group1, group2, and group3. Multiple groups can have the same name but always have a unique ObjectId. When more than one group that has the same name is returned, use the ObjectId in the output to identify the one you want to use.
+<dev:remarks><maml:para>The first command uses the Get-AzureRmADGroup cmdlet to get all Active Directory groups. From the output, you see 3 groups returned, named group1 , group2 , and group3 . Multiple groups can have the same name but always have a unique ObjectId. When more than one group that has the same name is returned, use the ObjectId in the output to identify the one you want to use.
 </maml:para>
-<maml:para>You then use the output of this command with Set-AzureRmKeyVaultAccessPolicy to grant permissions to group2 for your key vault, named myownvault. This example enumerates the groups named 'group2' inline in the same command line. There may be multiple groups in the returned list that are named 'group2'. This example picks the first one, indicated by index [0] in the returned list.
+<maml:para>You then use the output of this command with Set-AzureRmKeyVaultAccessPolicy to grant permissions to group2 for your key vault, named myownvault . This example enumerates the groups named 'group2' inline in the same command line. There may be multiple groups in the returned list that are named 'group2'. This example picks the first one, indicated by index [0] in the returned list.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>Example 7: Grant Azure Information Protection access to the customer-managed tenant key (BYOK)</maml:title>
+<dev:code>PS C:\&gt;Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso04Vault' -ServicePrincipalName 00000012-0000-0000-c000-000000000000 -PermissionsToKeys decrypt,encrypt,unwrapkey,wrapkey,verify,sign,get</dev:code>
+<dev:remarks><maml:para>This command authorizes Azure Information Protection to use a customer-managed key (the bring your own key, or "BYOK" scenario) as the Azure Information Protection tenant key. When you run this command, specify your own vault name but you must specify the ServicePrincipalName parameter with the GUID 00000012-0000-0000-c000-000000000000 and specify all the permissions in the example.
+</maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -7445,7 +7950,7 @@ group3                                                        da07a6be-2c1e-4e42
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -7490,7 +7995,7 @@ group3                                                        da07a6be-2c1e-4e42
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -7534,6 +8039,8 @@ ErrorCode                 :
 ErrorMessage              :</dev:code>
 <dev:remarks><maml:para>This command cancels the TestCert02 certificate operation.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>

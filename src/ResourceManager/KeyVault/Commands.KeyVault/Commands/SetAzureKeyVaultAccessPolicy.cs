@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = ByUserPrincipalName,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies secret operation permissions to grant to a user or service principal.")]
-        [ValidateSet("get", "list", "set", "delete", "all")]
+        [ValidateSet("get", "list", "set", "delete", "backup", "restore", "all")]
         public string[] PermissionsToSecrets { get; set; }
 
         /// <summary>

@@ -145,6 +145,39 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Backup secret.
+        /// </summary>
+        internal static string BackupSecret
+        {
+            get
+            {
+                return ResourceManager.GetString( "BackupSecret", resourceCulture );
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The backup secret file &apos;{0}&apos; already exists..
+        /// </summary>
+        internal static string BackupSecretFileAlreadyExists
+        {
+            get
+            {
+                return ResourceManager.GetString( "BackupSecretFileAlreadyExists", resourceCulture );
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find backup secret file &apos;{0}&apos;.
+        /// </summary>
+        internal static string BackupSecretFileNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString( "BackupSecretFileNotFound", resourceCulture );
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Bad Parameter Set Name.
         /// </summary>
         internal static string BadParameterSetName {
@@ -564,6 +597,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string RestoreKey {
             get {
                 return ResourceManager.GetString("RestoreKey", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Restore secret.
+        /// </summary>
+        internal static string RestoreSecret
+        {
+            get
+            {
+                return ResourceManager.GetString( "RestoreSecret", resourceCulture );
             }
         }
 

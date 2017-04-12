@@ -654,6 +654,90 @@ function Test_RemoveSecretInNoPermissionVault
 
 <#
 .SYNOPSIS
+Tests backup and restoring of a secret
+#>
+function Test_BackupRestoreSecret
+{
+    $keyVault = Get-KeyVault
+    $name=Get-SecretName 'backuprestore'   
+    $secret=Set-AzureKeyVaultSecret -VaultName $keyVault -Name $name -SecretValue $securedata
+    Assert-NotNull $secret                 
+    $global:createdSecrets += $name
+
+    $backupblob = Backup-AzureKeyVaultSecret -VaultName $keyVault -SecretName $name       
+    Remove-AzureKeyVaultSecret -VaultName $keyVault -Name $name -Force -Confirm:$false
+    $restoredSecret = Restore-AzureKeyVaultSecret -VaultName $keyVault -InputFile $backupblob
+    
+    $retrievedSecret = Get-AzureKeyVaultSecret -VaultName $keyVault -SecretName $name
+    Assert-AreEqual $retrievedSecret.SecretValueText $securedata
+}
+
+<#
+.SYNOPSIS
+Tests backup of a non-existing secret
+#>
+function Test_BackupNonExistingSecret
+{
+    $keyVault = Get-KeyVault
+    $name=Get-SecretName 'backupnonexisting'
+
+    Assert-Throws { Backup-AzureKeyVaultSecret -VaultName $keyVault -SecretName $name }
+}
+
+<#
+.SYNOPSIS
+Tests backup of a secret to a specific file and ability to restore
+#>
+function Test_BackupSecretToANamedFile
+{
+    $keyVault = Get-KeyVault
+    $name=Get-SecretName 'backupnamedfile'
+    $secret=Set-AzureKeyVaultSecret -VaultName $keyVault -Name $name -SecretValue $securedata
+    Assert-NotNull $secret                 
+    $global:createdSecrets += $name
+  
+    $backupfile='.\backup' + ([GUID]::NewGuid()).GUID.ToString() + '.blob'
+ 
+    Backup-AzureKeyVaultSecret -VaultName $keyVault -SecretName $name -OutputFile $backupfile    
+    Remove-AzureKeyVaultSecret -VaultName $keyVault -Name $name -Force -Confirm:$false
+    $restoredSecret = Restore-AzureKeyVaultSecret -VaultName $keyVault -InputFile $backupfile
+
+    $retrievedSecret = Get-AzureKeyVaultSecret -VaultName $keyVault -SecretName $name
+    Assert-AreEqual $retrievedSecret.SecretValueText $securedata
+}
+
+<#
+.SYNOPSIS
+Tests backup of a key to a specific, existing file 
+#>
+function Test_BackupSecretToExistingFile
+{
+    $keyVault = Get-KeyVault
+    $name=Get-SecretName 'backupexistingfile'
+    $secret=Set-AzureKeyVaultSecret -VaultName $keyVault -Name $name -SecretValue $securedata
+    Assert-NotNull $secret                 
+    $global:createdSecrets += $name
+  
+    $backupfile='.\backup' + ([GUID]::NewGuid()).GUID.ToString() + '.blob'
+ 
+    Backup-AzureKeyVaultSecret -VaultName $keyVault -SecretName $name -OutputFile $backupfile        
+    Assert-Throws { Backup-AzureKeyVaultSecret -VaultName $keyVault -SecretName $name -OutputFile $backupfile }
+}
+
+
+<#
+.SYNOPSIS
+Tests restoring a secret from a non-existing file
+#>
+function Test_RestoreSecretFromNonExistingFile
+{
+    $keyVault = Get-KeyVault
+
+    Assert-Throws { Restore-AzureKeyVaultSecret -VaultName $keyVault -InputFile c:\nonexisting.blob }
+}
+
+<#
+.SYNOPSIS
 Tests pipeline commands to update values of multiple secrets
 #>
 function Test_PipelineUpdateSecrets
