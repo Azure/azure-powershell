@@ -27,7 +27,7 @@ Cmdlets that you run in the current session use this information to authenticate
 
 ## EXAMPLES
 
-### Example 1: Importing a profile from a AzureRmProfile
+### Example 1: Importing a context from a AzureRmProfile
 ```
 PS C:\> Import-AzureRmContext -AzureContext (Add-AzureRmAccount)
 
@@ -39,9 +39,9 @@ SubscriptionName      : Test Subscription
 CurrentStorageAccount :
 ```
 
-This example imports a profile from a PSAzureProfile that is passed through to the cmdlet.
+This example imports a context from a PSAzureProfile that is passed through to the cmdlet.
 
-### Example 2: Importing a profile from a JSON file
+### Example 2: Importing a context from a JSON file
 ```
 PS C:\> Import-AzureRmContext -Path C:\test.json
 
@@ -53,13 +53,13 @@ SubscriptionName      : Test Subscription
 CurrentStorageAccount :
 ```
 
-This example selects a profile from a JSON file that is passed through to the cmdlet. This JSON file can be created from Import-AzureRmContext.
+This example selects a context from a JSON file that is passed through to the cmdlet. This JSON file can be created from Import-AzureRmContext.
 
 ## PARAMETERS
 
 ### -AzureContext
-Specifies the Azure profile from which this cmdlet reads.
-If you do not specify a profile, this cmdlet reads from the local default profile.
+Specifies the Azure context from which this cmdlet reads.
+If you do not specify a context, this cmdlet reads from the local default context.
 
 ```yaml
 Type: AzureRMProfile
@@ -74,7 +74,7 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-Specifies the path to profile information saved by using Save-AzureRMProfile.
+Specifies the path to context information saved by using Save-AzureRMContext.
 
 ```yaml
 Type: String
