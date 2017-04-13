@@ -17,10 +17,10 @@
 	1. This starts VS Dev command prompt in PowerShell
 2. Import module that helps in performing basic repository tasks
 	1. Import-Module Repo-Tasks.psd1
-	2. Type Get-Commands -Module Repo-Tasks to see list of cmdlets
+	2. Type Get-Command -Module Repo-Tasks to see list of cmdlets
 	3. Get-Help <CommandName> to get help on individual commands.
 
-## 2. Accquring TestFramework
+## 2. Acquiring TestFramework
 
 TestFramework is available on NuGet at https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.TestFramework/ .
 
