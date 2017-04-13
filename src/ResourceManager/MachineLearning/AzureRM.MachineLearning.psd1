@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.0'
+ModuleVersion = '1.0.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -80,7 +80,7 @@ CmdletsToExport = 'Move-AzureRmMlCommitmentAssociation',
                'Get-AzureRmMlWebService', 'Update-AzureRmMlWebService', 
                'Export-AzureRmMlWebService', 'Get-AzureRmMlWebServiceKeys', 
                'Import-AzureRmMlWebService', 'New-AzureRmMlCommitmentPlan', 
-               'New-AzureRmMlWebService'
+               'New-AzureRmMlWebService', 'New-AzureRmMlWebServiceRegionalProperties'
 
 # Variables to export from this module
 # VariablesToExport = @()
