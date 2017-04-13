@@ -137,7 +137,6 @@ Accept wildcard characters: False
 
 ### -Protocol
 Specifies the protocol used to send probe.
-This cmdlet supports HTTP only.
 
 ```yaml
 Type: String

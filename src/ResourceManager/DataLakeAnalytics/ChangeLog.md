@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix help for some commands to have the proper verbage and examples.
+
+## Version 2.8.0
+* Fix help for some commands to have the proper verbage and examples.
 
 ## Version 2.7.0
 
