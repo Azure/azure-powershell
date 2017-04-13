@@ -444,11 +444,19 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
                     VirtualMachineExtension parameters = GetVmExtensionParameters(virtualMachineResponse);
 
-                    this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                    AzureOperationResponse<VirtualMachineExtension> extensionPushResult = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
                         this.ResourceGroupName,
                         this.VMName,
                         this.Name,
                         parameters).GetAwaiter().GetResult();
+
+                    if (!extensionPushResult.Response.IsSuccessStatusCode)
+                    {
+                        ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture, "Installation failed for extension {0}", parameters.VirtualMachineExtensionType)),
+                                                              "InvalidResult",
+                                                              ErrorCategory.InvalidResult,
+                                                              null));
+                    }
 
                     var op = UpdateVmEncryptionSettings();
                     var result = Mapper.Map<PSAzureOperationResponse>(op);
