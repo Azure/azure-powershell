@@ -68,19 +68,19 @@ function RelayNamespaceAuthTests
     Write-Debug " Create new RelayNamespace namespace"
     Write-Debug "Namespace name : $namespaceName"
 	
-    $result = New-AzureRmRelayNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -Location $location
+    $result = New-AzureRmRelayNamespace -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -Location $location
     Wait-Seconds 15
 
 	Assert-True {$result.ProvisioningState -eq "Succeeded"}
     
 	Write-Debug " Get the created namespace within the resource group"
-    $createdNamespace = Get-AzureRmRelayNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
+    $createdNamespace = Get-AzureRmRelayNamespace -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName
 
     Assert-True {$createdNamespace.Name -eq $namespaceName} "Namespace created earlier is not found."
 
     Write-Debug "Create a Namespace Authorization Rule"    
     Write-Debug "Auth Rule name : $authRuleName"
-    $result = New-AzureRmRelayNamespaceAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -AuthorizationRuleName $authRuleName -Rights @("Listen","Send")
+    $result = New-AzureRmRelayNamespaceAuthorizationRule -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AuthorizationRuleName $authRuleName -Right @("Listen","Send")
 
     Assert-AreEqual $authRuleName $result.Name
     Assert-AreEqual 2 $result.Rights.Count
@@ -88,7 +88,7 @@ function RelayNamespaceAuthTests
     Assert-True { $result.Rights -Contains "Send" }
 
     Write-Debug "Get created authorizationRule"
-    $createdAuthRule = Get-AzureRmRelayNamespaceAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -AuthorizationRuleName $authRuleName
+    $createdAuthRule = Get-AzureRmRelayNamespaceAuthorizationRule -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AuthorizationRuleName $authRuleName
 
     Assert-AreEqual $authRuleName $createdAuthRule.Name
     Assert-AreEqual 2 $createdAuthRule.Rights.Count
@@ -97,7 +97,7 @@ function RelayNamespaceAuthTests
 
     Write-Debug "Get the default Namespace AuthorizationRule"
     $defaultNamespaceAuthRule = "RootManageSharedAccessKey"
-    $result = Get-AzureRmRelayNamespaceAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -AuthorizationRuleName $defaultNamespaceAuthRule
+    $result = Get-AzureRmRelayNamespaceAuthorizationRule -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AuthorizationRuleName $defaultNamespaceAuthRule
 
     Assert-AreEqual $defaultNamespaceAuthRule $result.Name
     Assert-AreEqual 3 $result.Rights.Count 
@@ -106,7 +106,7 @@ function RelayNamespaceAuthTests
     Assert-True { $result.Rights -Contains "Manage" }  
 
     Write-Debug "Get All Namespace AuthorizationRule"
-    $result = Get-AzureRmRelayNamespaceAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName 
+    $result = Get-AzureRmRelayNamespaceAuthorizationRule -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName 
     $count = $result.Items.Count
     Write-Debug "Auth Rule Count : $count"
 
@@ -136,7 +136,7 @@ function RelayNamespaceAuthTests
 	
     Write-Debug "Update Namespace AuthorizationRules"   
     $createdAuthRule.Rights.Add("Manage")
-    $updatedAuthRule = Set-AzureRmRelayNamespaceAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -AuthRuleObj $createdAuthRule
+    $updatedAuthRule = Set-AzureRmRelayNamespaceAuthorizationRule -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AuthRuleObj $createdAuthRule
     
     Assert-AreEqual $authRuleName $updatedAuthRule.Name
     Assert-AreEqual 3 $updatedAuthRule.Rights.Count
@@ -146,7 +146,7 @@ function RelayNamespaceAuthTests
     Wait-Seconds 15
     
     Write-Debug "Get updated Namespace AuthorizationRules"
-    $updatedAuthRule = Get-AzureRmRelayNamespaceAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -AuthorizationRuleName $authRuleName
+    $updatedAuthRule = Get-AzureRmRelayNamespaceAuthorizationRule -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AuthorizationRuleName $authRuleName
     
     Assert-AreEqual $authRuleName $updatedAuthRule.Name
     Assert-AreEqual 3 $updatedAuthRule.Rights.Count
@@ -156,7 +156,7 @@ function RelayNamespaceAuthTests
 
 
     Write-Debug "Get namespace authorizationRules connectionStrings"
-    $namespaceListKeys = Get-AzureRmRelayNamespaceKey -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -AuthorizationRuleName $authRuleName
+    $namespaceListKeys = Get-AzureRmRelayNamespaceKey -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AuthorizationRuleName $authRuleName
 
     Assert-True {$namespaceListKeys.PrimaryConnectionString.Contains($updatedAuthRule.PrimaryKey)}
     Assert-True {$namespaceListKeys.SecondaryConnectionString.Contains($updatedAuthRule.SecondaryKey)}
@@ -164,21 +164,21 @@ function RelayNamespaceAuthTests
 	Write-Debug "Regenrate Authorizationrules Keys"
 	$policyKey = "PrimaryKey"
 
-	$namespaceRegenerateKeys = New-AzureRmRelayNamespaceKey -ResourceGroup $resourceGroupName -NamespaceName $namespaceName  -AuthorizationRuleName $authRuleName -RegenerateKeys $policyKey
+	$namespaceRegenerateKeys = New-AzureRmRelayNamespaceKey -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName  -AuthorizationRuleName $authRuleName -RegenerateKeys $policyKey
 	Assert-True {$namespaceRegenerateKeys.PrimaryKey -ne $namespaceListKeys.PrimaryKey}
 
 	$policyKey1 = "SecondaryKey"
 
-	$namespaceRegenerateKeys1 = New-AzureRmRelayNamespaceKey -ResourceGroup $resourceGroupName -NamespaceName $namespaceName  -AuthorizationRuleName $authRuleName -RegenerateKeys $policyKey1
+	$namespaceRegenerateKeys1 = New-AzureRmRelayNamespaceKey -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName  -AuthorizationRuleName $authRuleName -RegenerateKeys $policyKey1
 	Assert-True {$namespaceRegenerateKeys1.SecondaryKey -ne $namespaceListKeys.SecondaryKey}
 
 
 	# Cleanup
     Write-Debug "Delete the created Namespace AuthorizationRule"
-    $result = Remove-AzureRmRelayNamespaceAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -AuthorizationRuleName $authRuleName
+    $result = Remove-AzureRmRelayNamespaceAuthorizationRule -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AuthorizationRuleName $authRuleName
     
     Write-Debug " Delete namespaces"
-    Remove-AzureRmRelayNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
+    Remove-AzureRmRelayNamespace -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName
 
 	Write-Debug " Delete resourcegroup"
 	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force	   
@@ -208,24 +208,24 @@ function RelayNamespaceTests
      
     Write-Debug " Create new Relay namespace"
     Write-Debug "NamespaceName : $namespaceName" 
-    $result = New-AzureRmRelayNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -Location $location
+    $result = New-AzureRmRelayNamespace -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -Location $location
     Wait-Seconds 15
 	
 	# Assert 
 	Assert-True {$result.ProvisioningState -eq "Succeeded"}
 
     Write-Debug "Get the created namespace within the resource group"
-    $createdNamespace = Get-AzureRmRelayNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
+    $createdNamespace = Get-AzureRmRelayNamespace -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName
    
     Assert-True {$createdNamespace.Name -eq $namespaceName} "Get-AzureRmRelayNamespace Namespace created earlier is not found. "    
 
     
     Write-Debug "Namespace name : $namespaceName2" 
-    $result = New-AzureRmRelayNamespace -ResourceGroup $secondResourceGroup -NamespaceName $namespaceName2 -Location $location
+    $result = New-AzureRmRelayNamespace -ResourceGroupName $secondResourceGroup -NamespaceName $namespaceName2 -Location $location
     Wait-Seconds 15
 
     Write-Debug "Get all the namespaces created in the resourceGroup"
-    $allCreatedNamespace = Get-AzureRmRelayNamespace -ResourceGroup $secondResourceGroup 
+    $allCreatedNamespace = Get-AzureRmRelayNamespace -ResourceGroupName $secondResourceGroup 
 
     Assert-True {$allCreatedNamespace[0].Name -eq $namespaceName2} "Get-AzureRmRelayNamespace - ResourceGroup Namespace created earlier is not found"
     
@@ -251,8 +251,8 @@ function RelayNamespaceTests
     Assert-True {$found -eq 0} "Get-AzureRmRelayNamespace - Subscription Namespaces created earlier is not found. 3"    
 
     Write-Debug " Delete namespaces"
-    Remove-AzureRmRelayNamespace -ResourceGroup $secondResourceGroup -NamespaceName $namespaceName2
-    Remove-AzureRmRelayNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
+    Remove-AzureRmRelayNamespace -ResourceGroupName $secondResourceGroup -NamespaceName $namespaceName2
+    Remove-AzureRmRelayNamespace -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName
 
 	Write-Debug " Delete resourcegroup"
 	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force

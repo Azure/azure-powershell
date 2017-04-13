@@ -75,7 +75,7 @@ function CheckNameAvailabilityTests
     
     Write-Debug " Create new Relay namespace"
     Write-Debug "NamespaceName : $namespaceName" 
-    $result = New-AzureRmRelayNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -Location $location
+    $result = New-AzureRmRelayNamespace -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -Location $location
     Wait-Seconds 15
 
 	# Assert 
@@ -85,7 +85,7 @@ function CheckNameAvailabilityTests
 	Assert-False {$ReCheckNameAvailability.NameAvailable} "The Namespace Name Available failed"  
 	
     Write-Debug " Delete namespaces"
-    Remove-AzureRmRelayNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
+    Remove-AzureRmRelayNamespace -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName
 
 	Write-Debug " Delete resourcegroup"
 	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force

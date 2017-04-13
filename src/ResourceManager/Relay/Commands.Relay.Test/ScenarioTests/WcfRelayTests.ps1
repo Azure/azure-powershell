@@ -72,7 +72,7 @@ function WcfRelayTests
     # Create Relay Namespace
     Write-Debug "  Create new Relay namespace"
     Write-Debug " Namespace name : $namespaceName"
-    $result = New-AzureRmRelayNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -Location $location
+    $result = New-AzureRmRelayNamespace -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -Location $location
     Wait-Seconds 15
 
 	# Assert
@@ -80,7 +80,7 @@ function WcfRelayTests
 
 	# get the created Relay Namespace 
     Write-Debug " Get the created namespace within the resource group"
-    $returnedNamespace = Get-AzureRmRelayNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName    
+    $returnedNamespace = Get-AzureRmRelayNamespace -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName    
 	# Assert
     Assert-AreEqual $location $returnedNamespace.Location "NameSpace Location Not matched."        
     Assert-True {$returnedNamespace.Name -eq $namespaceName} "Namespace created earlier is not found."
@@ -89,18 +89,18 @@ function WcfRelayTests
     Write-Debug "Create new WcfRelay"    
 	$wcfRelayType = "NetTcp"
 	$userMetadata = "User Meta data"
-    $result = New-AzureRmWcfRelay -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $wcfRelayName -WcfRelayType $wcfRelayType  -RequiresClientAuthorization $True -RequiresTransportSecurity $True -UserMetadata $userMetadata
+    $result = New-AzureRmWcfRelay -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $wcfRelayName -WcfRelayType $wcfRelayType  -RequiresClientAuthorization $True -RequiresTransportSecurity $True -UserMetadata $userMetadata
 	
 		
     Write-Debug " Get the created WcfRelay "
-    $createdWcfRelay = Get-AzureRmWcfRelay -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $wcfRelayName
+    $createdWcfRelay = Get-AzureRmWcfRelay -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $wcfRelayName
 
     # Assert
 	Assert-True {$createdWcfRelay.Name -eq $wcfRelayName} "WcfRelay created earlier is not found."
 
 	# Get the Created WcfRelay
     Write-Debug " Get all the created WcfRelay "
-    $createdWcfRelayList = Get-AzureRmWcfRelay -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
+    $createdWcfRelayList = Get-AzureRmWcfRelay -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName
 	    
 	# Assert
     Assert-True {$createdWcfRelayList[0].Name -eq $wcfRelayName }"WcfRelay created earlier is not found."
@@ -108,7 +108,7 @@ function WcfRelayTests
 	# Update the Created WcfRelay
     Write-Debug " Update the first WcfRelay "
 	$createdWcfRelay.UserMetadata = "usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g. it can be used to store  descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored."	   
-    $result1 = Set-AzureRmWcfRelay -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $wcfRelayName -WcfRelayObj $createdWcfRelay
+    $result1 = Set-AzureRmWcfRelay -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $wcfRelayName -WcfRelayObj $createdWcfRelay
     Wait-Seconds 15
 	
 	# Assert
@@ -119,10 +119,10 @@ function WcfRelayTests
 	Write-Debug " Delete the WcfRelay"
 	for ($i = 0; $i -lt $createdWcfRelayList.Count; $i++)
 	{
-		$delete1 = Remove-AzureRmWcfRelay -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $wcfRelayName		
+		$delete1 = Remove-AzureRmWcfRelay -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $wcfRelayName		
 	}
     Write-Debug " Delete namespaces"
-    Remove-AzureRmRelayNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
+    Remove-AzureRmRelayNamespace -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName
 
 	Write-Debug " Delete resourcegroup"
 	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
@@ -149,7 +149,7 @@ function WcfRelayAuthTests
     # Create Relay Namespace 
     Write-Debug " Create new Relay namespace"
     Write-Debug "Namespace name : $namespaceName"
-    $result = New-AzureRmRelayNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -Location $location
+    $result = New-AzureRmRelayNamespace -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -Location $location
     Wait-Seconds 15
     
 	# Assert
@@ -157,7 +157,7 @@ function WcfRelayAuthTests
 
 	# Get Created NameSpace
     Write-Debug " Get the created namespace within the resource group"
-    $createdNamespace = Get-AzureRmRelayNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
+    $createdNamespace = Get-AzureRmRelayNamespace -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName
     
 	# Assert
     $found = 0
@@ -175,18 +175,18 @@ function WcfRelayAuthTests
     Write-Debug " Create new WcfRelay "    
 	$wcfRelayType = "NetTcp"
 	$userMetadata = "usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g. it can be used to store  descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored."
-    $result1 = New-AzureRmWcfRelay -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $wcfRelayName -WcfRelayType $wcfRelayType  -RequiresClientAuthorization $true -RequiresTransportSecurity $true -UserMetadata $userMetadata
+    $result1 = New-AzureRmWcfRelay -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $wcfRelayName -WcfRelayType $wcfRelayType  -RequiresClientAuthorization $true -RequiresTransportSecurity $true -UserMetadata $userMetadata
 	
 		
     Write-Debug " Get the created WcfRelay"
-    $createdWcfRelay = Get-AzureRmWcfRelay -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $result1.Name
+    $createdWcfRelay = Get-AzureRmWcfRelay -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $result1.Name
 
     # Assert
 	Assert-True {$createdWcfRelay.Count -eq 1} "WcfRelay List count is not equal to 1 "  
 
 	# Create WcfRelay Authorization Rule
     Write-Debug "Create a WcfRelay Authorization Rule"
-    $result = New-AzureRmWcfRelayAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $result1.Name -AuthorizationRuleName $authRuleName -Rights @("Listen","Send")
+    $result = New-AzureRmWcfRelayAuthorizationRule -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $result1.Name -AuthorizationRuleName $authRuleName -Right @("Listen","Send")
 
 	# Assert
     Assert-AreEqual $authRuleName $result.Name
@@ -197,7 +197,7 @@ function WcfRelayAuthTests
 
 	# Get Created WcfRelay Authorization Rule
     Write-Debug "Get created authorizationRule"
-    $createdAuthRule = Get-AzureRmWcfRelayAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $result1.Name -AuthorizationRule $authRuleName
+    $createdAuthRule = Get-AzureRmWcfRelayAuthorizationRule -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $result1.Name -AuthorizationRule $authRuleName
 
 	# Assert
     Assert-AreEqual $authRuleName $createdAuthRule.Name
@@ -207,7 +207,7 @@ function WcfRelayAuthTests
 
 	# Get all WcfRelay Authorization Rules
     Write-Debug "Get All WcfRelay AuthorizationRule"
-    $result = Get-AzureRmWcfRelayAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $result1.Name
+    $result = Get-AzureRmWcfRelayAuthorizationRule -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $result1.Name
 	# Assert
     $found = 0
     
@@ -224,7 +224,7 @@ function WcfRelayAuthTests
 	# Update the WcfRelay Authorization Rule
     Write-Debug "Update WcfRelay AuthorizationRule"
 	$createdAuthRule.Rights.Add("Manage")
-    $updatedAuthRule = Set-AzureRmWcfRelayAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $result1.Name -AuthorizationRuleName $authRuleName -AuthRuleObj $createdAuthRule
+    $updatedAuthRule = Set-AzureRmWcfRelayAuthorizationRule -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $result1.Name -AuthorizationRuleName $authRuleName -AuthRuleObj $createdAuthRule
     Wait-Seconds 15
 
 	# Assert
@@ -235,7 +235,7 @@ function WcfRelayAuthTests
     Assert-True { $updatedAuthRule.Rights -Contains "Manage" }
 	   
     # get the Updated WcfRelay Authorization Rule
-    $updatedAuthRule = Get-AzureRmWcfRelayAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $result1.Name -AuthorizationRuleName $authRuleName
+    $updatedAuthRule = Get-AzureRmWcfRelayAuthorizationRule -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $result1.Name -AuthorizationRuleName $authRuleName
     
 	# Assert
     Assert-AreEqual $authRuleName $updatedAuthRule.Name
@@ -246,7 +246,7 @@ function WcfRelayAuthTests
 	
 	# Get the List Keys
     Write-Debug "Get WcfRelay authorizationRules connectionStrings"
-    $namespaceListKeys = Get-AzureRmWcfRelayKey -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $result1.Name -AuthorizationRuleName $authRuleName
+    $namespaceListKeys = Get-AzureRmWcfRelayKey -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $result1.Name -AuthorizationRuleName $authRuleName
 
     Assert-True {$namespaceListKeys.PrimaryConnectionString.Contains($updatedAuthRule.PrimaryKey)}
     Assert-True {$namespaceListKeys.SecondaryConnectionString.Contains($updatedAuthRule.SecondaryKey)}
@@ -254,23 +254,23 @@ function WcfRelayAuthTests
 	# Regentrate the Keys 
 	$policyKey = "PrimaryKey"
 
-	$namespaceRegenerateKeys = New-AzureRmWcfRelayKey -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $result1.Name -AuthorizationRuleName $authRuleName -RegenerateKey $policyKey
+	$namespaceRegenerateKeys = New-AzureRmWcfRelayKey -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $result1.Name -AuthorizationRuleName $authRuleName -RegenerateKey $policyKey
 	Assert-True {$namespaceRegenerateKeys.PrimaryKey -ne $namespaceListKeys.PrimaryKey}
 
 	$policyKey1 = "SecondaryKey"
 
-	$namespaceRegenerateKeys1 = New-AzureRmWcfRelayKey -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $result1.Name -AuthorizationRuleName $authRuleName -RegenerateKey $policyKey1
+	$namespaceRegenerateKeys1 = New-AzureRmWcfRelayKey -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $result1.Name -AuthorizationRuleName $authRuleName -RegenerateKey $policyKey1
 	Assert-True {$namespaceRegenerateKeys1.SecondaryKey -ne $namespaceListKeys.SecondaryKey}
 	
 	# Cleanup
     Write-Debug "Delete the created WcfRelay AuthorizationRule"
-    $result = Remove-AzureRmWcfRelayAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $result1.Name -AuthorizationRuleName $authRuleName
+    $result = Remove-AzureRmWcfRelayAuthorizationRule -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $result1.Name -AuthorizationRuleName $authRuleName
     
     Write-Debug "Delete the WcfRelay"
-    Remove-AzureRmWcfRelay -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $result1.Name
+    Remove-AzureRmWcfRelay -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $result1.Name
     
     Write-Debug "Delete NameSpace"
-    Remove-AzureRmRelayNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
+    Remove-AzureRmRelayNamespace -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName
 
 	Write-Debug " Delete resourcegroup"
 	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
