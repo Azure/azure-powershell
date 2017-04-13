@@ -23,7 +23,7 @@ The **Update-AzureRmContainerRegistry** cmdlet updates a container registry.
 
 ### Example 1: Enable admin user for a specified container registry
 ```
-PS C:\>Set-AzureRmContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -AdminUserEnabled $true
+PS C:\>Update-AzureRmContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -AdminUserEnabled $true
 
 Id                 : /subscriptions/3eb31d8d-2879-4706-89b4-4dc4047726c6/resourceGroups/MyResourceGroup/providers/Microsoft.ContainerRegistry/registries/MyRegistry
 ResourceGroupName  : MyResourceGroup
@@ -44,7 +44,7 @@ This command enables admin user for the specified container registry.
 
 ### Example 2: Set the storage account used by a specified container registry
 ```
-PS C:\>Set-AzureRmContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -StorageAccountName "mystorageaccount"
+PS C:\>Update-AzureRmContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -StorageAccountName "mystorageaccount"
 
 Id                 : /subscriptions/3eb31d8d-2879-4706-89b4-4dc4047726c6/resourceGroups/MyResourceGroup/providers/Microsoft.ContainerRegistry/registries/MyRegistry
 ResourceGroupName  : MyResourceGroup

@@ -23,8 +23,8 @@
 * Add PowerShell cmdlets for Azure Container Registry
     - New-AzureRmContainerRegistry
     - Get-AzureRmContainerRegistry
-    - Set-AzureRmContainerRegistry
+    - Update-AzureRmContainerRegistry
     - Remove-AzureRmContainerRegistry
-    - New-AzureRmContainerRegistryCredential
     - Get-AzureRmContainerRegistryCredential
-    - Get-AzureRmContainerRegistryNameAvailability
+    - Update-AzureRmContainerRegistryCredential
+    - Test-AzureRmContainerRegistryNameAvailability

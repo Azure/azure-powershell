@@ -799,7 +799,7 @@ NameAvailable Reason Message
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1: Enable admin user for a specified container registry</maml:title>
-<dev:code>PS C:\&gt;Set-AzureRmContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -AdminUserEnabled $true
+<dev:code>PS C:\&gt;Update-AzureRmContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -AdminUserEnabled $true
 
 Id                 : /subscriptions/3eb31d8d-2879-4706-89b4-4dc4047726c6/resourceGroups/MyResourceGroup/providers/Microsoft.ContainerRegistry/registries/MyRegistry
 ResourceGroupName  : MyResourceGroup
@@ -821,7 +821,7 @@ StorageAccountName : myregistry154817</dev:code>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Set the storage account used by a specified container registry</maml:title>
-<dev:code>PS C:\&gt;Set-AzureRmContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -StorageAccountName "mystorageaccount"
+<dev:code>PS C:\&gt;Update-AzureRmContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -StorageAccountName "mystorageaccount"
 
 Id                 : /subscriptions/3eb31d8d-2879-4706-89b4-4dc4047726c6/resourceGroups/MyResourceGroup/providers/Microsoft.ContainerRegistry/registries/MyRegistry
 ResourceGroupName  : MyResourceGroup
