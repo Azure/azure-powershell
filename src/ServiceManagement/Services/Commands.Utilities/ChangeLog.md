@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,9 +18,11 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Add initiate maintenance PowerShell cmdlet.
 
-* Add Maintenance Status field to Get-AzureVM response.
+## Version 3.8.0
+* Restart-AzureVM: Added InitiateMaintenance parameter for performing maintenance during VM restart.
+
+* Get-AzureVM: Added Maintenance Status field.
 
 * Added new cmdlets to support Recovery Services vault upgrade
     - Test-AzureRecoveryServicesVaultUpgrade
