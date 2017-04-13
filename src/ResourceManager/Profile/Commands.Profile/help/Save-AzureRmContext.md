@@ -68,8 +68,8 @@ Accept wildcard characters: False
 ```
 
 ### -Profile
-Specifies the Azure profile from which this cmdlet reads.
-If you do not specify a profile, this cmdlet reads from the local default profile.
+Specifies the Azure context from which this cmdlet reads.
+If you do not specify a context, this cmdlet reads from the local default context.
 
 ```yaml
 Type: AzureRMProfile
