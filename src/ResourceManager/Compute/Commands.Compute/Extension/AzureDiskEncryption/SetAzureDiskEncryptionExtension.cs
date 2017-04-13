@@ -469,7 +469,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
                     if (!extensionPushResult.Response.IsSuccessStatusCode)
                     {
-                        ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture, "Installation failed for extension {0}", parameters.VirtualMachineExtensionType)),
+                        ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture,
+                                                                                       "Installation failed for extension {0} with error {1}",
+                                                                                       parameters.VirtualMachineExtensionType,
+                                                                                       extensionPushResult.Response.Content.ReadAsStringAsync().GetAwaiter().GetResult())),
                                                               "InvalidResult",
                                                               ErrorCategory.InvalidResult,
                                                               null));
