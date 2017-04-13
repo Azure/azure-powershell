@@ -2688,9 +2688,6 @@
                         <Component Id="cmpFFBB02236C61457EE8C736240AF8CC47" Guid="*">
                             <File Id="fil1F019445A1CB8C6D20E5C5970FEC946A" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Relay\Microsoft.Azure.Commands.Relay.dll-Help.xml" />
                         </Component>
-                        <Component Id="cmp1613DBDD32EC11D7170967DB46654AF8" Guid="*">
-                            <File Id="filF652570AD26E252F9A5C8761166C75F4" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Relay\Microsoft.Azure.Commands.Relay.format.ps1xml" />
-                        </Component>
                         <Component Id="cmp919B41DAD65FB9733B39469E12E71755" Guid="*">
                             <File Id="fil6E1B7B5F97E3798D83684ABCA247E782" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Relay\Microsoft.Azure.Commands.ResourceManager.Common.dll" />
                         </Component>
@@ -6387,7 +6384,6 @@
             <ComponentRef Id="cmp349631E795DBC079D69D730E56F79159" />
             <ComponentRef Id="cmp0B1DAE7F253E744037B651E0433683D2" />
             <ComponentRef Id="cmpFFBB02236C61457EE8C736240AF8CC47" />
-            <ComponentRef Id="cmp1613DBDD32EC11D7170967DB46654AF8" />
             <ComponentRef Id="cmp919B41DAD65FB9733B39469E12E71755" />
             <ComponentRef Id="cmp26D1A4999F18C77C33BC717A46F24F1E" />
             <ComponentRef Id="cmp15D650C6AFDFA76E1AC5E0E9CD809C4F" />
