@@ -282,6 +282,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                                                       null));
             }
 
+            DiskEncryptionSettings encryptionSettingsBackup = vmParameters.StorageProfile.OsDisk.EncryptionSettings;
+
             DiskEncryptionSettings encryptionSettings = new DiskEncryptionSettings();
             encryptionSettings.Enabled = true;
             encryptionSettings.DiskEncryptionKey = new KeyVaultSecretReference();
@@ -306,10 +308,25 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 Location = vmParameters.Location,
                 Tags = vmParameters.Tags
             };
-            return this.ComputeClient.ComputeManagementClient.VirtualMachines.CreateOrUpdateWithHttpMessagesAsync(
+
+            AzureOperationResponse<VirtualMachine> updateResult = this.ComputeClient.ComputeManagementClient.VirtualMachines.CreateOrUpdateWithHttpMessagesAsync(
                 this.ResourceGroupName,
                 vmParameters.Name,
                 parameters).GetAwaiter().GetResult();
+
+            if(!updateResult.Response.IsSuccessStatusCode)
+            {
+                vmParameters = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(
+                   this.ResourceGroupName, this.VMName));
+                vmParameters.StorageProfile.OsDisk.EncryptionSettings = encryptionSettingsBackup;
+
+                this.ComputeClient.ComputeManagementClient.VirtualMachines.CreateOrUpdateWithHttpMessagesAsync(
+                    this.ResourceGroupName,
+                    vmParameters.Name,
+                    parameters).GetAwaiter().GetResult();
+            }
+
+            return updateResult;
         }
 
         private Hashtable GetExtensionPublicSettings()
