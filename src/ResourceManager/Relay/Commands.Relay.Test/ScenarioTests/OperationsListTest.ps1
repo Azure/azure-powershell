@@ -56,7 +56,7 @@ function OperationsListTest
 {
     # Setup	
     Write-Debug "Get Operations List"
-    $OperationsList = Get-AzureRmRelayOperations
+    $OperationsList = Get-AzureRmRelayOperation
 	
 	# Assert 
 	Assert-True { $OperationsList.Count -gt 0 }

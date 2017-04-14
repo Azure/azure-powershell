@@ -30,6 +30,7 @@ PS C:\>New-AzureRmRelayHybridConnectionKey -ResourceGroup Default-ServiceBus-Wes
 
 Regenerates the Primary connection string for the namespace.
 
+### Example 2
 ```
 PS C:\>New-AzureRmRelayHybridConnectionKey -ResourceGroup Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -HybridConnectionsName TestHybridConnection -AuthorizationRuleName AuthoRule1 -RegenerateKey SecondaryKey
 ```

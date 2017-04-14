@@ -164,12 +164,12 @@ function RelayNamespaceAuthTests
 	Write-Debug "Regenrate Authorizationrules Keys"
 	$policyKey = "PrimaryKey"
 
-	$namespaceRegenerateKeys = New-AzureRmRelayNamespaceKey -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName  -AuthorizationRuleName $authRuleName -RegenerateKeys $policyKey
+	$namespaceRegenerateKeys = New-AzureRmRelayNamespaceKey -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName  -AuthorizationRuleName $authRuleName -RegenerateKey $policyKey
 	Assert-True {$namespaceRegenerateKeys.PrimaryKey -ne $namespaceListKeys.PrimaryKey}
 
 	$policyKey1 = "SecondaryKey"
 
-	$namespaceRegenerateKeys1 = New-AzureRmRelayNamespaceKey -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName  -AuthorizationRuleName $authRuleName -RegenerateKeys $policyKey1
+	$namespaceRegenerateKeys1 = New-AzureRmRelayNamespaceKey -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName  -AuthorizationRuleName $authRuleName -RegenerateKey $policyKey1
 	Assert-True {$namespaceRegenerateKeys1.SecondaryKey -ne $namespaceListKeys.SecondaryKey}
 
 

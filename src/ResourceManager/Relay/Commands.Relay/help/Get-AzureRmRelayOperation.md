@@ -4,25 +4,25 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzureRmRelayOperations
+# Get-AzureRmRelayOperation
 
 ## SYNOPSIS
-List supported Relay Operations 
+List supported Relay Operations
 
 ## SYNTAX
 
 ```
-Get-AzureRmRelayOperations
+Get-AzureRmRelayOperation
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmRelayOperations** cmdlet Lists the Relay supported Operations.
+The **Get-AzureRmRelayOperation** cmdlet Lists the Relay supported Operations.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmRelayOperations
+PS C:\> Get-AzureRmRelayOperation
 ```
 
 Lists Relay supported operations

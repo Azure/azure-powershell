@@ -32,7 +32,7 @@ Gets the authorization rule or list of authorization rules in a Relay namespace.
 ### [Get-AzureRmRelayNamespaceKey](Get-AzureRmRelayNamespaceKey.md)
 Gets the primary or secondary key for an authorization rule in an existing Relay namespace.
 
-### [Get-AzureRmRelayOperations](Get-AzureRmRelayOperations.md)
+### [Get-AzureRmRelayOperation](Get-AzureRmRelayOperation.md)
 Gets the list of operations available under Relay service.
 
 ### [Get-AzureRmWcfRelay](Get-AzureRmWcfRelay.md)

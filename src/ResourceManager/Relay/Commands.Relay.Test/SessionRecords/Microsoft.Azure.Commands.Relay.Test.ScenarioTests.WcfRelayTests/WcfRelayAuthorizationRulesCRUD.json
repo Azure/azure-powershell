@@ -25,16 +25,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14894"
+          "14917"
         ],
         "x-ms-request-id": [
-          "f09d8c5f-3fc5-4b76-96ba-c7717f3f8169"
+          "08189401-6d39-4e10-a655-c492c20587f3"
         ],
         "x-ms-correlation-request-id": [
-          "f09d8c5f-3fc5-4b76-96ba-c7717f3f8169"
+          "08189401-6d39-4e10-a655-c492c20587f3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20170413T083755Z:f09d8c5f-3fc5-4b76-96ba-c7717f3f8169"
+          "WESTUS2:20170413T225730Z:08189401-6d39-4e10-a655-c492c20587f3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -43,14 +43,14 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 13 Apr 2017 08:37:55 GMT"
+          "Thu, 13 Apr 2017 22:57:30 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourcegroups/RGName-onesdk123?api-version=2016-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlZ3JvdXBzL1JHTmFtZS1vbmVzZGsxMjM/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourcegroups/RGName-onesdk1912?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlZ3JvdXBzL1JHTmFtZS1vbmVzZGsxOTEyP2FwaS12ZXJzaW9uPTIwMTYtMDItMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
       "RequestHeaders": {
@@ -64,10 +64,10 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk123\",\r\n  \"name\": \"RGName-onesdk123\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk1912\",\r\n  \"name\": \"RGName-onesdk1912\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "185"
+          "187"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -79,16 +79,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1196"
         ],
         "x-ms-request-id": [
-          "0fddca3b-2704-4192-ba9f-dfea94a2715e"
+          "279e3a45-3add-4f5d-8bb9-16fb79418ecc"
         ],
         "x-ms-correlation-request-id": [
-          "0fddca3b-2704-4192-ba9f-dfea94a2715e"
+          "279e3a45-3add-4f5d-8bb9-16fb79418ecc"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20170413T083756Z:0fddca3b-2704-4192-ba9f-dfea94a2715e"
+          "WESTUS2:20170413T225731Z:279e3a45-3add-4f5d-8bb9-16fb79418ecc"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -97,14 +97,14 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 13 Apr 2017 08:37:55 GMT"
+          "Thu, 13 Apr 2017 22:57:31 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk123/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1866?api-version=2016-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxMjMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWxheS9uYW1lc3BhY2VzL1JlbGF5LU5hbWVzcGFjZS1vbmVzZGsxODY2P2FwaS12ZXJzaW9uPTIwMTYtMDctMDE=",
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk1912/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1053?api-version=2016-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxOTEyL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVsYXkvbmFtZXNwYWNlcy9SZWxheS1OYW1lc3BhY2Utb25lc2RrMTA1Mz9hcGktdmVyc2lvbj0yMDE2LTA3LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"location\": \"West US\"\r\n}",
       "RequestHeaders": {
@@ -115,7 +115,7 @@
           "96"
         ],
         "x-ms-client-request-id": [
-          "d7cbc64d-d832-41cc-b8e7-693b41fd77cc"
+          "e55a0bad-96b5-4e5c-8665-c80e122e5ef9"
         ],
         "accept-language": [
           "en-US"
@@ -127,10 +127,10 @@
           "Microsoft.Azure.Management.Relay.RelayManagementClient/0.0.1-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk123/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1866\",\r\n  \"name\": \"Relay-Namespace-onesdk1866\",\r\n  \"type\": \"Microsoft.Relay/namespaces\",\r\n  \"location\": \"West US\",\r\n  \"kind\": \"Relay\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Unknown\",\r\n    \"metricId\": \"854d368f-1828-428f-8f3c-f2affa9b2f7d:relay-namespace-onesdk1866\",\r\n    \"enabled\": false,\r\n    \"namespaceType\": \"Relay\",\r\n    \"messagingSku\": 2\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk1912/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1053\",\r\n  \"name\": \"Relay-Namespace-onesdk1053\",\r\n  \"type\": \"Microsoft.Relay/namespaces\",\r\n  \"location\": \"West US\",\r\n  \"kind\": \"Relay\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Unknown\",\r\n    \"metricId\": \"854d368f-1828-428f-8f3c-f2affa9b2f7d:relay-namespace-onesdk1053\",\r\n    \"enabled\": false,\r\n    \"namespaceType\": \"Relay\",\r\n    \"messagingSku\": 2\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "499"
+          "500"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -142,729 +142,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "e802b37a-dfa1-416b-bd98-23a7650828fc_M4_M4"
-        ],
-        "Server-SB": [
-          "Service-Bus-Resource-Provider/SN1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Server": [
-          "Service-Bus-Resource-Provider/SN1",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
-        ],
-        "x-ms-correlation-request-id": [
-          "d38714d8-b87c-441f-8a97-c3b81fff1f50"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20170413T083757Z:d38714d8-b87c-441f-8a97-c3b81fff1f50"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Date": [
-          "Thu, 13 Apr 2017 08:37:57 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk123/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1866?api-version=2016-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxMjMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWxheS9uYW1lc3BhY2VzL1JlbGF5LU5hbWVzcGFjZS1vbmVzZGsxODY2P2FwaS12ZXJzaW9uPTIwMTYtMDctMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.1637.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.14393",
-          "Microsoft.Azure.Management.Relay.RelayManagementClient/0.0.1-preview"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk123/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1866\",\r\n  \"name\": \"Relay-Namespace-onesdk1866\",\r\n  \"type\": \"Microsoft.Relay/namespaces\",\r\n  \"location\": \"West US\",\r\n  \"kind\": \"Relay\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 1\r\n  },\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"metricId\": \"854d368f-1828-428f-8f3c-f2affa9b2f7d:relay-namespace-onesdk1866\",\r\n    \"status\": \"Active\",\r\n    \"createdAt\": \"2017-04-13T08:37:57.777Z\",\r\n    \"serviceBusEndpoint\": \"https://Relay-Namespace-onesdk1866.servicebus.windows.net:443/\",\r\n    \"enabled\": true,\r\n    \"critical\": false,\r\n    \"scaleUnit\": \"BY3-008\",\r\n    \"dataCenter\": \"BY3\",\r\n    \"updatedAt\": \"2017-04-13T08:38:21.347Z\",\r\n    \"namespaceType\": \"Relay\",\r\n    \"messagingSku\": 2\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "751"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "ef992390-d9d7-4486-b24a-34f1830e7788_M4_M4"
-        ],
-        "Server-SB": [
-          "Service-Bus-Resource-Provider/SN1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Server": [
-          "Service-Bus-Resource-Provider/SN1",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14967"
-        ],
-        "x-ms-correlation-request-id": [
-          "9a6a7e64-e152-46ee-9c8a-8c6be743a68a"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20170413T083827Z:9a6a7e64-e152-46ee-9c8a-8c6be743a68a"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Date": [
-          "Thu, 13 Apr 2017 08:38:27 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk123/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1866?api-version=2016-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxMjMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWxheS9uYW1lc3BhY2VzL1JlbGF5LU5hbWVzcGFjZS1vbmVzZGsxODY2P2FwaS12ZXJzaW9uPTIwMTYtMDctMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "e9a2e859-6198-40eb-ac63-cab6259e5bc4"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.1637.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.14393",
-          "Microsoft.Azure.Management.Relay.RelayManagementClient/0.0.1-preview"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk123/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1866\",\r\n  \"name\": \"Relay-Namespace-onesdk1866\",\r\n  \"type\": \"Microsoft.Relay/namespaces\",\r\n  \"location\": \"West US\",\r\n  \"kind\": \"Relay\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 1\r\n  },\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"metricId\": \"854d368f-1828-428f-8f3c-f2affa9b2f7d:relay-namespace-onesdk1866\",\r\n    \"status\": \"Active\",\r\n    \"createdAt\": \"2017-04-13T08:37:57.777Z\",\r\n    \"serviceBusEndpoint\": \"https://Relay-Namespace-onesdk1866.servicebus.windows.net:443/\",\r\n    \"enabled\": true,\r\n    \"critical\": false,\r\n    \"scaleUnit\": \"BY3-008\",\r\n    \"dataCenter\": \"BY3\",\r\n    \"updatedAt\": \"2017-04-13T08:38:21.347Z\",\r\n    \"namespaceType\": \"Relay\",\r\n    \"messagingSku\": 2\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "751"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "d7179220-b373-4fb1-a454-6b0a32a7327a_M4_M4"
-        ],
-        "Server-SB": [
-          "Service-Bus-Resource-Provider/SN1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Server": [
-          "Service-Bus-Resource-Provider/SN1",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14965"
-        ],
-        "x-ms-correlation-request-id": [
-          "42bb611f-4eec-44d1-9074-bd8048e94641"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20170413T083842Z:42bb611f-4eec-44d1-9074-bd8048e94641"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Date": [
-          "Thu, 13 Apr 2017 08:38:42 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk123/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1866/WcfRelays/WcfRelay-onesdk3636?api-version=2016-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxMjMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWxheS9uYW1lc3BhY2VzL1JlbGF5LU5hbWVzcGFjZS1vbmVzZGsxODY2L1djZlJlbGF5cy9XY2ZSZWxheS1vbmVzZGszNjM2P2FwaS12ZXJzaW9uPTIwMTYtMDctMDE=",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"relayType\": \"NetTcp\",\r\n    \"requiresClientAuthorization\": true,\r\n    \"requiresTransportSecurity\": true,\r\n    \"userMetadata\": \"usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g. it can be used to store  descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored.\"\r\n  }\r\n}",
-      "RequestHeaders": {
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "415"
-        ],
-        "x-ms-client-request-id": [
-          "ebe1ba3b-7e47-433f-bad8-4ac1ddeb62a7"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.1637.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.14393",
-          "Microsoft.Azure.Management.Relay.RelayManagementClient/0.0.1-preview"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk123/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1866/WcfRelays/WcfRelay-onesdk3636\",\r\n  \"name\": \"WcfRelay-onesdk3636\",\r\n  \"type\": \"Microsoft.Relay/WcfRelays\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"path\": \"\",\r\n    \"listenerType\": \"RelayedConnection\",\r\n    \"createdAt\": \"2017-04-13T08:38:43.8628532Z\",\r\n    \"updatedAt\": \"2017-04-13T08:38:43.8628532Z\",\r\n    \"relayType\": \"NetTcp\",\r\n    \"requiresClientAuthorization\": true,\r\n    \"requiresTransportSecurity\": true,\r\n    \"publishToRegistry\": false,\r\n    \"isDynamic\": false,\r\n    \"userMetadata\": \"usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g. it can be used to store  descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored.\"\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "833"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "d8d25053-023a-4288-a0d3-db13bb15fedd_M4_M4"
-        ],
-        "Server-SB": [
-          "Service-Bus-Resource-Provider/SN1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Server": [
-          "Service-Bus-Resource-Provider/SN1",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
-        ],
-        "x-ms-correlation-request-id": [
-          "b0f32b10-b0d7-49d4-9269-d88ebc9becb7"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20170413T083844Z:b0f32b10-b0d7-49d4-9269-d88ebc9becb7"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Date": [
-          "Thu, 13 Apr 2017 08:38:44 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk123/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1866/WcfRelays/WcfRelay-onesdk3636?api-version=2016-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxMjMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWxheS9uYW1lc3BhY2VzL1JlbGF5LU5hbWVzcGFjZS1vbmVzZGsxODY2L1djZlJlbGF5cy9XY2ZSZWxheS1vbmVzZGszNjM2P2FwaS12ZXJzaW9uPTIwMTYtMDctMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "de9dc30d-d508-4794-bd6b-4b04b46932a0"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.1637.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.14393",
-          "Microsoft.Azure.Management.Relay.RelayManagementClient/0.0.1-preview"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk123/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1866/WcfRelays/WcfRelay-onesdk3636\",\r\n  \"name\": \"WcfRelay-onesdk3636\",\r\n  \"type\": \"Microsoft.Relay/WcfRelays\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"path\": \"\",\r\n    \"listenerType\": \"RelayedConnection\",\r\n    \"listenerCount\": 0,\r\n    \"createdAt\": \"2017-04-13T08:38:43.8628532Z\",\r\n    \"updatedAt\": \"2017-04-13T08:38:43.8628532Z\",\r\n    \"relayType\": \"NetTcp\",\r\n    \"requiresClientAuthorization\": true,\r\n    \"requiresTransportSecurity\": true,\r\n    \"publishToRegistry\": false,\r\n    \"isDynamic\": false,\r\n    \"userMetadata\": \"usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g. it can be used to store  descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored.\"\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "851"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "fb2b84a6-258a-4171-beff-c84941641c75_M4_M4"
-        ],
-        "Server-SB": [
-          "Service-Bus-Resource-Provider/SN1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Server": [
-          "Service-Bus-Resource-Provider/SN1",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14964"
-        ],
-        "x-ms-correlation-request-id": [
-          "9efc50af-30a7-4c4d-b0ad-0ca8d7aa4033"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20170413T083844Z:9efc50af-30a7-4c4d-b0ad-0ca8d7aa4033"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Date": [
-          "Thu, 13 Apr 2017 08:38:44 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk123/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1866/WcfRelays/WcfRelay-onesdk3636/authorizationRules/Relay-WcfRelay-AuthorizationRuleonesdk9724?api-version=2016-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxMjMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWxheS9uYW1lc3BhY2VzL1JlbGF5LU5hbWVzcGFjZS1vbmVzZGsxODY2L1djZlJlbGF5cy9XY2ZSZWxheS1vbmVzZGszNjM2L2F1dGhvcml6YXRpb25SdWxlcy9SZWxheS1XY2ZSZWxheS1BdXRob3JpemF0aW9uUnVsZW9uZXNkazk3MjQ/YXBpLXZlcnNpb249MjAxNi0wNy0wMQ==",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"rights\": [\r\n      \"Listen\",\r\n      \"Send\"\r\n    ]\r\n  }\r\n}",
-      "RequestHeaders": {
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "83"
-        ],
-        "x-ms-client-request-id": [
-          "75a2065d-7182-44e2-8a0b-9179e066ed0c"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.1637.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.14393",
-          "Microsoft.Azure.Management.Relay.RelayManagementClient/0.0.1-preview"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk123/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1866/WcfRelays/WcfRelay-onesdk3636/authorizationRules/Relay-WcfRelay-AuthorizationRuleonesdk9724\",\r\n  \"name\": \"Relay-WcfRelay-AuthorizationRuleonesdk9724\",\r\n  \"type\": \"Microsoft.Relay/AuthorizationRules\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"rights\": [\r\n      \"Listen\",\r\n      \"Send\"\r\n    ]\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "419"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "02ec6693-e814-4a2f-8c1a-46b0d18f5878_M4_M4"
-        ],
-        "Server-SB": [
-          "Service-Bus-Resource-Provider/SN1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Server": [
-          "Service-Bus-Resource-Provider/SN1",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
-        ],
-        "x-ms-correlation-request-id": [
-          "20742e7d-542b-434e-8208-67a0d36fb4d3"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20170413T083850Z:20742e7d-542b-434e-8208-67a0d36fb4d3"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Date": [
-          "Thu, 13 Apr 2017 08:38:49 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk123/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1866/WcfRelays/WcfRelay-onesdk3636/authorizationRules/Relay-WcfRelay-AuthorizationRuleonesdk9724?api-version=2016-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxMjMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWxheS9uYW1lc3BhY2VzL1JlbGF5LU5hbWVzcGFjZS1vbmVzZGsxODY2L1djZlJlbGF5cy9XY2ZSZWxheS1vbmVzZGszNjM2L2F1dGhvcml6YXRpb25SdWxlcy9SZWxheS1XY2ZSZWxheS1BdXRob3JpemF0aW9uUnVsZW9uZXNkazk3MjQ/YXBpLXZlcnNpb249MjAxNi0wNy0wMQ==",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"rights\": [\r\n      \"Listen\",\r\n      \"Send\",\r\n      \"Manage\"\r\n    ]\r\n  }\r\n}",
-      "RequestHeaders": {
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "100"
-        ],
-        "x-ms-client-request-id": [
-          "b896e1d5-d08d-4408-a0ea-0ba4ea65ce8e"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.1637.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.14393",
-          "Microsoft.Azure.Management.Relay.RelayManagementClient/0.0.1-preview"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk123/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1866/WcfRelays/WcfRelay-onesdk3636/authorizationRules/Relay-WcfRelay-AuthorizationRuleonesdk9724\",\r\n  \"name\": \"Relay-WcfRelay-AuthorizationRuleonesdk9724\",\r\n  \"type\": \"Microsoft.Relay/AuthorizationRules\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"rights\": [\r\n      \"Listen\",\r\n      \"Send\",\r\n      \"Manage\"\r\n    ]\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "428"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "4d898def-36c5-44f4-9419-4df53ef52e14_M4_M4"
-        ],
-        "Server-SB": [
-          "Service-Bus-Resource-Provider/SN1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Server": [
-          "Service-Bus-Resource-Provider/SN1",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1195"
-        ],
-        "x-ms-correlation-request-id": [
-          "e8ba4ea5-ebb2-47b2-bdd2-01030c7c0e86"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20170413T083911Z:e8ba4ea5-ebb2-47b2-bdd2-01030c7c0e86"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Date": [
-          "Thu, 13 Apr 2017 08:39:10 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk123/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1866/WcfRelays/WcfRelay-onesdk3636/authorizationRules/Relay-WcfRelay-AuthorizationRuleonesdk9724?api-version=2016-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxMjMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWxheS9uYW1lc3BhY2VzL1JlbGF5LU5hbWVzcGFjZS1vbmVzZGsxODY2L1djZlJlbGF5cy9XY2ZSZWxheS1vbmVzZGszNjM2L2F1dGhvcml6YXRpb25SdWxlcy9SZWxheS1XY2ZSZWxheS1BdXRob3JpemF0aW9uUnVsZW9uZXNkazk3MjQ/YXBpLXZlcnNpb249MjAxNi0wNy0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "df917453-da69-41df-9c56-1ef5871e13dc"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.1637.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.14393",
-          "Microsoft.Azure.Management.Relay.RelayManagementClient/0.0.1-preview"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk123/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1866/WcfRelays/WcfRelay-onesdk3636/authorizationRules/Relay-WcfRelay-AuthorizationRuleonesdk9724\",\r\n  \"name\": \"Relay-WcfRelay-AuthorizationRuleonesdk9724\",\r\n  \"type\": \"Microsoft.Relay/AuthorizationRules\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"rights\": [\r\n      \"Listen\",\r\n      \"Send\"\r\n    ]\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "419"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "7d0e351a-a17a-4893-b34a-c0e0e6b78ea2_M4_M4"
-        ],
-        "Server-SB": [
-          "Service-Bus-Resource-Provider/SN1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Server": [
-          "Service-Bus-Resource-Provider/SN1",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14963"
-        ],
-        "x-ms-correlation-request-id": [
-          "e98f86cf-2391-4d0e-99d3-67c30fe67ebe"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20170413T083905Z:e98f86cf-2391-4d0e-99d3-67c30fe67ebe"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Date": [
-          "Thu, 13 Apr 2017 08:39:04 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk123/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1866/WcfRelays/WcfRelay-onesdk3636/authorizationRules/Relay-WcfRelay-AuthorizationRuleonesdk9724?api-version=2016-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxMjMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWxheS9uYW1lc3BhY2VzL1JlbGF5LU5hbWVzcGFjZS1vbmVzZGsxODY2L1djZlJlbGF5cy9XY2ZSZWxheS1vbmVzZGszNjM2L2F1dGhvcml6YXRpb25SdWxlcy9SZWxheS1XY2ZSZWxheS1BdXRob3JpemF0aW9uUnVsZW9uZXNkazk3MjQ/YXBpLXZlcnNpb249MjAxNi0wNy0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "3906fde4-4039-4345-bfd0-3c9854233de7"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.1637.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.14393",
-          "Microsoft.Azure.Management.Relay.RelayManagementClient/0.0.1-preview"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk123/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1866/WcfRelays/WcfRelay-onesdk3636/authorizationRules/Relay-WcfRelay-AuthorizationRuleonesdk9724\",\r\n  \"name\": \"Relay-WcfRelay-AuthorizationRuleonesdk9724\",\r\n  \"type\": \"Microsoft.Relay/AuthorizationRules\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"rights\": [\r\n      \"Listen\",\r\n      \"Send\",\r\n      \"Manage\"\r\n    ]\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "428"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "96531371-274d-4332-988d-92b0d6e36392_M4_M4"
-        ],
-        "Server-SB": [
-          "Service-Bus-Resource-Provider/SN1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Server": [
-          "Service-Bus-Resource-Provider/SN1",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14961"
-        ],
-        "x-ms-correlation-request-id": [
-          "7f54b138-caae-48bd-8815-d151310bf821"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20170413T083926Z:7f54b138-caae-48bd-8815-d151310bf821"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Date": [
-          "Thu, 13 Apr 2017 08:39:25 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk123/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1866/WcfRelays/WcfRelay-onesdk3636/authorizationRules?api-version=2016-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxMjMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWxheS9uYW1lc3BhY2VzL1JlbGF5LU5hbWVzcGFjZS1vbmVzZGsxODY2L1djZlJlbGF5cy9XY2ZSZWxheS1vbmVzZGszNjM2L2F1dGhvcml6YXRpb25SdWxlcz9hcGktdmVyc2lvbj0yMDE2LTA3LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "5e3f7f06-644a-40bf-b977-74d203b66c50"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.1637.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.14393",
-          "Microsoft.Azure.Management.Relay.RelayManagementClient/0.0.1-preview"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk123/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1866/WcfRelays/WcfRelay-onesdk3636/authorizationRules/Relay-WcfRelay-AuthorizationRuleonesdk9724\",\r\n      \"name\": \"Relay-WcfRelay-AuthorizationRuleonesdk9724\",\r\n      \"type\": \"Microsoft.Relay/AuthorizationRules\",\r\n      \"location\": \"West US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"rights\": [\r\n          \"Listen\",\r\n          \"Send\"\r\n        ]\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "447"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "7065944d-1f24-48f3-9804-5b34c31c28eb_M4_M4"
-        ],
-        "Server-SB": [
-          "Service-Bus-Resource-Provider/SN1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Server": [
-          "Service-Bus-Resource-Provider/SN1",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14962"
-        ],
-        "x-ms-correlation-request-id": [
-          "c546ddb0-dc3b-4f1b-8d85-843c4f7ef025"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20170413T083905Z:c546ddb0-dc3b-4f1b-8d85-843c4f7ef025"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Date": [
-          "Thu, 13 Apr 2017 08:39:05 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk123/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1866/WcfRelays/WcfRelay-onesdk3636/authorizationRules/Relay-WcfRelay-AuthorizationRuleonesdk9724/ListKeys?api-version=2016-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxMjMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWxheS9uYW1lc3BhY2VzL1JlbGF5LU5hbWVzcGFjZS1vbmVzZGsxODY2L1djZlJlbGF5cy9XY2ZSZWxheS1vbmVzZGszNjM2L2F1dGhvcml6YXRpb25SdWxlcy9SZWxheS1XY2ZSZWxheS1BdXRob3JpemF0aW9uUnVsZW9uZXNkazk3MjQvTGlzdEtleXM/YXBpLXZlcnNpb249MjAxNi0wNy0wMQ==",
-      "RequestMethod": "POST",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "4df8b628-dc1d-4474-989c-8422eb7b270f"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.1637.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.14393",
-          "Microsoft.Azure.Management.Relay.RelayManagementClient/0.0.1-preview"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"primaryConnectionString\": \"Endpoint=sb://relay-namespace-onesdk1866.servicebus.windows.net/;SharedAccessKeyName=Relay-WcfRelay-AuthorizationRuleonesdk9724;SharedAccessKey=8Kcan6vHlD1m0spvv/SvVfuvOFrhHc60/ocMehogQOE=;EntityPath=WcfRelay-onesdk3636\",\r\n  \"secondaryConnectionString\": \"Endpoint=sb://relay-namespace-onesdk1866.servicebus.windows.net/;SharedAccessKeyName=Relay-WcfRelay-AuthorizationRuleonesdk9724;SharedAccessKey=NyE12HkbCqOTowLciVcjssUc5nm/+yNcTsygGpnzoqw=;EntityPath=WcfRelay-onesdk3636\",\r\n  \"primaryKey\": \"8Kcan6vHlD1m0spvv/SvVfuvOFrhHc60/ocMehogQOE=\",\r\n  \"secondaryKey\": \"NyE12HkbCqOTowLciVcjssUc5nm/+yNcTsygGpnzoqw=\",\r\n  \"keyName\": \"Relay-WcfRelay-AuthorizationRuleonesdk9724\"\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "676"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "eabcfed0-5301-4491-9a96-f8a08cf542da_M4_M4"
-        ],
-        "Server-SB": [
-          "Service-Bus-Resource-Provider/SN1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Server": [
-          "Service-Bus-Resource-Provider/SN1",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1194"
-        ],
-        "x-ms-correlation-request-id": [
-          "363230a8-4735-4435-bbe0-cf556854c28c"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20170413T083926Z:363230a8-4735-4435-bbe0-cf556854c28c"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Date": [
-          "Thu, 13 Apr 2017 08:39:25 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk123/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1866/WcfRelays/WcfRelay-onesdk3636/authorizationRules/Relay-WcfRelay-AuthorizationRuleonesdk9724/regenerateKeys?api-version=2016-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxMjMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWxheS9uYW1lc3BhY2VzL1JlbGF5LU5hbWVzcGFjZS1vbmVzZGsxODY2L1djZlJlbGF5cy9XY2ZSZWxheS1vbmVzZGszNjM2L2F1dGhvcml6YXRpb25SdWxlcy9SZWxheS1XY2ZSZWxheS1BdXRob3JpemF0aW9uUnVsZW9uZXNkazk3MjQvcmVnZW5lcmF0ZUtleXM/YXBpLXZlcnNpb249MjAxNi0wNy0wMQ==",
-      "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"policyKey\": \"PrimaryKey\"\r\n}",
-      "RequestHeaders": {
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "33"
-        ],
-        "x-ms-client-request-id": [
-          "10ff7bed-dc24-4c0e-a0b1-758c42190b76"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.1637.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.14393",
-          "Microsoft.Azure.Management.Relay.RelayManagementClient/0.0.1-preview"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"primaryConnectionString\": \"Endpoint=sb://relay-namespace-onesdk1866.servicebus.windows.net/;SharedAccessKeyName=Relay-WcfRelay-AuthorizationRuleonesdk9724;SharedAccessKey=fD9S5ZSztXmZh710cv9oHIFc/fTt0+nS56wLAWj3sfE=;EntityPath=WcfRelay-onesdk3636\",\r\n  \"secondaryConnectionString\": \"Endpoint=sb://relay-namespace-onesdk1866.servicebus.windows.net/;SharedAccessKeyName=Relay-WcfRelay-AuthorizationRuleonesdk9724;SharedAccessKey=NyE12HkbCqOTowLciVcjssUc5nm/+yNcTsygGpnzoqw=;EntityPath=WcfRelay-onesdk3636\",\r\n  \"primaryKey\": \"fD9S5ZSztXmZh710cv9oHIFc/fTt0+nS56wLAWj3sfE=\",\r\n  \"secondaryKey\": \"NyE12HkbCqOTowLciVcjssUc5nm/+yNcTsygGpnzoqw=\",\r\n  \"keyName\": \"Relay-WcfRelay-AuthorizationRuleonesdk9724\"\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "676"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "dd713004-07de-4d67-a576-84488242f109_M4_M4"
+          "3c318238-e7d5-4470-bf44-a6561d3c0e5f_M0_M0"
         ],
         "Server-SB": [
           "Service-Bus-Resource-Provider/SN1"
@@ -880,38 +158,26 @@
           "1193"
         ],
         "x-ms-correlation-request-id": [
-          "49b3b0c6-5102-4237-bd80-6c62afa8a68b"
+          "9192a0f2-3191-4134-b0b2-8e53ab101ab7"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20170413T083926Z:49b3b0c6-5102-4237-bd80-6c62afa8a68b"
+          "WESTUS2:20170413T225732Z:9192a0f2-3191-4134-b0b2-8e53ab101ab7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Thu, 13 Apr 2017 08:39:26 GMT"
+          "Thu, 13 Apr 2017 22:57:32 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk123/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1866/WcfRelays/WcfRelay-onesdk3636/authorizationRules/Relay-WcfRelay-AuthorizationRuleonesdk9724/regenerateKeys?api-version=2016-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxMjMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWxheS9uYW1lc3BhY2VzL1JlbGF5LU5hbWVzcGFjZS1vbmVzZGsxODY2L1djZlJlbGF5cy9XY2ZSZWxheS1vbmVzZGszNjM2L2F1dGhvcml6YXRpb25SdWxlcy9SZWxheS1XY2ZSZWxheS1BdXRob3JpemF0aW9uUnVsZW9uZXNkazk3MjQvcmVnZW5lcmF0ZUtleXM/YXBpLXZlcnNpb249MjAxNi0wNy0wMQ==",
-      "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"policyKey\": \"SecondaryKey\"\r\n}",
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk1912/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1053?api-version=2016-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxOTEyL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVsYXkvbmFtZXNwYWNlcy9SZWxheS1OYW1lc3BhY2Utb25lc2RrMTA1Mz9hcGktdmVyc2lvbj0yMDE2LTA3LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
       "RequestHeaders": {
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "35"
-        ],
-        "x-ms-client-request-id": [
-          "cec7cf49-76f2-4166-935a-9d410874f9bd"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
         "User-Agent": [
           "FxVersion/4.6.1637.0",
           "OSName/Windows_10_Enterprise",
@@ -919,10 +185,10 @@
           "Microsoft.Azure.Management.Relay.RelayManagementClient/0.0.1-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryConnectionString\": \"Endpoint=sb://relay-namespace-onesdk1866.servicebus.windows.net/;SharedAccessKeyName=Relay-WcfRelay-AuthorizationRuleonesdk9724;SharedAccessKey=fD9S5ZSztXmZh710cv9oHIFc/fTt0+nS56wLAWj3sfE=;EntityPath=WcfRelay-onesdk3636\",\r\n  \"secondaryConnectionString\": \"Endpoint=sb://relay-namespace-onesdk1866.servicebus.windows.net/;SharedAccessKeyName=Relay-WcfRelay-AuthorizationRuleonesdk9724;SharedAccessKey=AdXwVLUOJdTU770XCI39fJEfiLZYk5iEsxwVRO/Fnrs=;EntityPath=WcfRelay-onesdk3636\",\r\n  \"primaryKey\": \"fD9S5ZSztXmZh710cv9oHIFc/fTt0+nS56wLAWj3sfE=\",\r\n  \"secondaryKey\": \"AdXwVLUOJdTU770XCI39fJEfiLZYk5iEsxwVRO/Fnrs=\",\r\n  \"keyName\": \"Relay-WcfRelay-AuthorizationRuleonesdk9724\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk1912/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1053\",\r\n  \"name\": \"Relay-Namespace-onesdk1053\",\r\n  \"type\": \"Microsoft.Relay/namespaces\",\r\n  \"location\": \"West US\",\r\n  \"kind\": \"Relay\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 1\r\n  },\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"metricId\": \"854d368f-1828-428f-8f3c-f2affa9b2f7d:relay-namespace-onesdk1053\",\r\n    \"status\": \"Active\",\r\n    \"createdAt\": \"2017-04-13T22:57:34.03Z\",\r\n    \"serviceBusEndpoint\": \"https://Relay-Namespace-onesdk1053.servicebus.windows.net:443/\",\r\n    \"enabled\": true,\r\n    \"critical\": false,\r\n    \"scaleUnit\": \"BY3-008\",\r\n    \"dataCenter\": \"BY3\",\r\n    \"updatedAt\": \"2017-04-13T22:57:54.813Z\",\r\n    \"namespaceType\": \"Relay\",\r\n    \"messagingSku\": 2\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "676"
+          "751"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -934,7 +200,141 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "5dbe77d9-4813-4e00-9ef2-019775bbcc6d_M4_M4"
+          "c2e05dc6-b5c4-43c6-a266-6acd6b84613a_M0_M0"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14920"
+        ],
+        "x-ms-correlation-request-id": [
+          "175c2670-a49d-45cb-a2c7-2e3b8a4f0281"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170413T225802Z:175c2670-a49d-45cb-a2c7-2e3b8a4f0281"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Thu, 13 Apr 2017 22:58:02 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk1912/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1053?api-version=2016-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxOTEyL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVsYXkvbmFtZXNwYWNlcy9SZWxheS1OYW1lc3BhY2Utb25lc2RrMTA1Mz9hcGktdmVyc2lvbj0yMDE2LTA3LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cc5e88ed-af36-41e3-82cd-772793a14a40"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Relay.RelayManagementClient/0.0.1-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk1912/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1053\",\r\n  \"name\": \"Relay-Namespace-onesdk1053\",\r\n  \"type\": \"Microsoft.Relay/namespaces\",\r\n  \"location\": \"West US\",\r\n  \"kind\": \"Relay\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 1\r\n  },\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"metricId\": \"854d368f-1828-428f-8f3c-f2affa9b2f7d:relay-namespace-onesdk1053\",\r\n    \"status\": \"Active\",\r\n    \"createdAt\": \"2017-04-13T22:57:34.03Z\",\r\n    \"serviceBusEndpoint\": \"https://Relay-Namespace-onesdk1053.servicebus.windows.net:443/\",\r\n    \"enabled\": true,\r\n    \"critical\": false,\r\n    \"scaleUnit\": \"BY3-008\",\r\n    \"dataCenter\": \"BY3\",\r\n    \"updatedAt\": \"2017-04-13T22:57:54.813Z\",\r\n    \"namespaceType\": \"Relay\",\r\n    \"messagingSku\": 2\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "751"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "470621f4-b2ab-4351-b006-0a8aac6ef813_M0_M0"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14919"
+        ],
+        "x-ms-correlation-request-id": [
+          "2a7e5151-61d6-4565-8390-4e39188cf5a2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170413T225817Z:2a7e5151-61d6-4565-8390-4e39188cf5a2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Thu, 13 Apr 2017 22:58:17 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk1912/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1053/WcfRelays/WcfRelay-onesdk5913?api-version=2016-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxOTEyL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVsYXkvbmFtZXNwYWNlcy9SZWxheS1OYW1lc3BhY2Utb25lc2RrMTA1My9XY2ZSZWxheXMvV2NmUmVsYXktb25lc2RrNTkxMz9hcGktdmVyc2lvbj0yMDE2LTA3LTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"relayType\": \"NetTcp\",\r\n    \"requiresClientAuthorization\": true,\r\n    \"requiresTransportSecurity\": true,\r\n    \"userMetadata\": \"usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g. it can be used to store  descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored.\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "415"
+        ],
+        "x-ms-client-request-id": [
+          "2f6d9b05-0fa2-45c7-aae3-f560775f49a1"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Relay.RelayManagementClient/0.0.1-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk1912/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1053/WcfRelays/WcfRelay-onesdk5913\",\r\n  \"name\": \"WcfRelay-onesdk5913\",\r\n  \"type\": \"Microsoft.Relay/WcfRelays\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"path\": \"\",\r\n    \"listenerType\": \"RelayedConnection\",\r\n    \"createdAt\": \"2017-04-13T22:58:19.4196782Z\",\r\n    \"updatedAt\": \"2017-04-13T22:58:19.4196782Z\",\r\n    \"relayType\": \"NetTcp\",\r\n    \"requiresClientAuthorization\": true,\r\n    \"requiresTransportSecurity\": true,\r\n    \"publishToRegistry\": false,\r\n    \"isDynamic\": false,\r\n    \"userMetadata\": \"usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g. it can be used to store  descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "834"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "aa39e710-b430-4c46-a330-5f00882267be_M0_M0"
         ],
         "Server-SB": [
           "Service-Bus-Resource-Provider/SN1"
@@ -950,28 +350,28 @@
           "1192"
         ],
         "x-ms-correlation-request-id": [
-          "cfa0f471-75f8-4385-9a8e-f8b3210c6ed6"
+          "0be68bea-04a7-4099-8023-07593b0aa589"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20170413T083927Z:cfa0f471-75f8-4385-9a8e-f8b3210c6ed6"
+          "WESTUS2:20170413T225819Z:0be68bea-04a7-4099-8023-07593b0aa589"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Thu, 13 Apr 2017 08:39:26 GMT"
+          "Thu, 13 Apr 2017 22:58:19 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk123/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1866/WcfRelays/WcfRelay-onesdk3636/authorizationRules/Relay-WcfRelay-AuthorizationRuleonesdk9724?api-version=2016-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxMjMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWxheS9uYW1lc3BhY2VzL1JlbGF5LU5hbWVzcGFjZS1vbmVzZGsxODY2L1djZlJlbGF5cy9XY2ZSZWxheS1vbmVzZGszNjM2L2F1dGhvcml6YXRpb25SdWxlcy9SZWxheS1XY2ZSZWxheS1BdXRob3JpemF0aW9uUnVsZW9uZXNkazk3MjQ/YXBpLXZlcnNpb249MjAxNi0wNy0wMQ==",
-      "RequestMethod": "DELETE",
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk1912/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1053/WcfRelays/WcfRelay-onesdk5913?api-version=2016-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxOTEyL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVsYXkvbmFtZXNwYWNlcy9SZWxheS1OYW1lc3BhY2Utb25lc2RrMTA1My9XY2ZSZWxheXMvV2NmUmVsYXktb25lc2RrNTkxMz9hcGktdmVyc2lvbj0yMDE2LTA3LTAx",
+      "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1461dbcf-75d9-4d17-bc15-c1fbf30236a1"
+          "2513d524-85ab-4a93-8633-f4e045b29de1"
         ],
         "accept-language": [
           "en-US"
@@ -983,10 +383,13 @@
           "Microsoft.Azure.Management.Relay.RelayManagementClient/0.0.1-preview"
         ]
       },
-      "ResponseBody": "",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk1912/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1053/WcfRelays/WcfRelay-onesdk5913\",\r\n  \"name\": \"WcfRelay-onesdk5913\",\r\n  \"type\": \"Microsoft.Relay/WcfRelays\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"path\": \"\",\r\n    \"listenerType\": \"RelayedConnection\",\r\n    \"listenerCount\": 0,\r\n    \"createdAt\": \"2017-04-13T22:58:19.4196782Z\",\r\n    \"updatedAt\": \"2017-04-13T22:58:19.4196782Z\",\r\n    \"relayType\": \"NetTcp\",\r\n    \"requiresClientAuthorization\": true,\r\n    \"requiresTransportSecurity\": true,\r\n    \"publishToRegistry\": false,\r\n    \"isDynamic\": false,\r\n    \"userMetadata\": \"usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g. it can be used to store  descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored.\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "0"
+          "852"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
@@ -995,7 +398,77 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "e966e961-8be6-430d-83aa-62d5d65bcd9a_M4_M4"
+          "c2ed8061-409d-486b-9951-43557f3a9921_M0_M0"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14918"
+        ],
+        "x-ms-correlation-request-id": [
+          "313c2bfb-d655-4d9b-bb40-59e5d7e0b4a1"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170413T225820Z:313c2bfb-d655-4d9b-bb40-59e5d7e0b4a1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Thu, 13 Apr 2017 22:58:19 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk1912/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1053/WcfRelays/WcfRelay-onesdk5913/authorizationRules/Relay-WcfRelay-AuthorizationRuleonesdk2427?api-version=2016-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxOTEyL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVsYXkvbmFtZXNwYWNlcy9SZWxheS1OYW1lc3BhY2Utb25lc2RrMTA1My9XY2ZSZWxheXMvV2NmUmVsYXktb25lc2RrNTkxMy9hdXRob3JpemF0aW9uUnVsZXMvUmVsYXktV2NmUmVsYXktQXV0aG9yaXphdGlvblJ1bGVvbmVzZGsyNDI3P2FwaS12ZXJzaW9uPTIwMTYtMDctMDE=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"rights\": [\r\n      \"Listen\",\r\n      \"Send\"\r\n    ]\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "83"
+        ],
+        "x-ms-client-request-id": [
+          "45a2b566-3833-427b-bc69-26982482b310"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Relay.RelayManagementClient/0.0.1-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk1912/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1053/WcfRelays/WcfRelay-onesdk5913/authorizationRules/Relay-WcfRelay-AuthorizationRuleonesdk2427\",\r\n  \"name\": \"Relay-WcfRelay-AuthorizationRuleonesdk2427\",\r\n  \"type\": \"Microsoft.Relay/AuthorizationRules\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"rights\": [\r\n      \"Listen\",\r\n      \"Send\"\r\n    ]\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "420"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "11fec7df-a645-4290-9c12-7eb76cbc268a_M0_M0"
         ],
         "Server-SB": [
           "Service-Bus-Resource-Provider/SN1"
@@ -1011,28 +484,34 @@
           "1191"
         ],
         "x-ms-correlation-request-id": [
-          "b421756b-20ac-4a8c-ae43-8bee702c8ad0"
+          "15774c0f-cb2d-4e54-8464-1d3091700ee7"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20170413T083927Z:b421756b-20ac-4a8c-ae43-8bee702c8ad0"
+          "WESTUS2:20170413T225825Z:15774c0f-cb2d-4e54-8464-1d3091700ee7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Thu, 13 Apr 2017 08:39:26 GMT"
+          "Thu, 13 Apr 2017 22:58:25 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk123/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1866/WcfRelays/WcfRelay-onesdk3636?api-version=2016-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxMjMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWxheS9uYW1lc3BhY2VzL1JlbGF5LU5hbWVzcGFjZS1vbmVzZGsxODY2L1djZlJlbGF5cy9XY2ZSZWxheS1vbmVzZGszNjM2P2FwaS12ZXJzaW9uPTIwMTYtMDctMDE=",
-      "RequestMethod": "DELETE",
-      "RequestBody": "",
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk1912/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1053/WcfRelays/WcfRelay-onesdk5913/authorizationRules/Relay-WcfRelay-AuthorizationRuleonesdk2427?api-version=2016-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxOTEyL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVsYXkvbmFtZXNwYWNlcy9SZWxheS1OYW1lc3BhY2Utb25lc2RrMTA1My9XY2ZSZWxheXMvV2NmUmVsYXktb25lc2RrNTkxMy9hdXRob3JpemF0aW9uUnVsZXMvUmVsYXktV2NmUmVsYXktQXV0aG9yaXphdGlvblJ1bGVvbmVzZGsyNDI3P2FwaS12ZXJzaW9uPTIwMTYtMDctMDE=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"rights\": [\r\n      \"Listen\",\r\n      \"Send\",\r\n      \"Manage\"\r\n    ]\r\n  }\r\n}",
       "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "100"
+        ],
         "x-ms-client-request-id": [
-          "5e091595-564c-40a4-91d9-8a1cdc88dc6c"
+          "55f6714a-e56d-469e-94a7-5a3e75e8db0a"
         ],
         "accept-language": [
           "en-US"
@@ -1044,10 +523,13 @@
           "Microsoft.Azure.Management.Relay.RelayManagementClient/0.0.1-preview"
         ]
       },
-      "ResponseBody": "",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk1912/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1053/WcfRelays/WcfRelay-onesdk5913/authorizationRules/Relay-WcfRelay-AuthorizationRuleonesdk2427\",\r\n  \"name\": \"Relay-WcfRelay-AuthorizationRuleonesdk2427\",\r\n  \"type\": \"Microsoft.Relay/AuthorizationRules\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"rights\": [\r\n      \"Listen\",\r\n      \"Send\",\r\n      \"Manage\"\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "0"
+          "429"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
@@ -1055,8 +537,8 @@
         "Pragma": [
           "no-cache"
         ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+        "x-ms-request-id": [
+          "f768bcba-51be-4afb-879f-b4e66b4c1d45_M0_M0"
         ],
         "Server-SB": [
           "Service-Bus-Resource-Provider/SN1"
@@ -1071,29 +553,425 @@
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1190"
         ],
-        "x-ms-request-id": [
-          "d6d7d656-edae-43fe-9e83-e3a0a8d97e77"
-        ],
         "x-ms-correlation-request-id": [
-          "d6d7d656-edae-43fe-9e83-e3a0a8d97e77"
+          "e91d6c63-0503-46bf-81d6-e7fe4cde2046"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20170413T083928Z:d6d7d656-edae-43fe-9e83-e3a0a8d97e77"
+          "WESTUS2:20170413T225846Z:e91d6c63-0503-46bf-81d6-e7fe4cde2046"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Thu, 13 Apr 2017 08:39:27 GMT"
+          "Thu, 13 Apr 2017 22:58:46 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk123/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1866?api-version=2016-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxMjMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWxheS9uYW1lc3BhY2VzL1JlbGF5LU5hbWVzcGFjZS1vbmVzZGsxODY2P2FwaS12ZXJzaW9uPTIwMTYtMDctMDE=",
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk1912/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1053/WcfRelays/WcfRelay-onesdk5913/authorizationRules/Relay-WcfRelay-AuthorizationRuleonesdk2427?api-version=2016-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxOTEyL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVsYXkvbmFtZXNwYWNlcy9SZWxheS1OYW1lc3BhY2Utb25lc2RrMTA1My9XY2ZSZWxheXMvV2NmUmVsYXktb25lc2RrNTkxMy9hdXRob3JpemF0aW9uUnVsZXMvUmVsYXktV2NmUmVsYXktQXV0aG9yaXphdGlvblJ1bGVvbmVzZGsyNDI3P2FwaS12ZXJzaW9uPTIwMTYtMDctMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "dccc973b-8b2b-43d2-8969-d8f844891675"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Relay.RelayManagementClient/0.0.1-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk1912/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1053/WcfRelays/WcfRelay-onesdk5913/authorizationRules/Relay-WcfRelay-AuthorizationRuleonesdk2427\",\r\n  \"name\": \"Relay-WcfRelay-AuthorizationRuleonesdk2427\",\r\n  \"type\": \"Microsoft.Relay/AuthorizationRules\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"rights\": [\r\n      \"Listen\",\r\n      \"Send\"\r\n    ]\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "420"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "301b6800-4d14-4b35-ab1b-b126e02abeb1_M0_M0"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14917"
+        ],
+        "x-ms-correlation-request-id": [
+          "fd124b75-87be-48af-a458-93416debd654"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170413T225841Z:fd124b75-87be-48af-a458-93416debd654"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Thu, 13 Apr 2017 22:58:40 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk1912/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1053/WcfRelays/WcfRelay-onesdk5913/authorizationRules/Relay-WcfRelay-AuthorizationRuleonesdk2427?api-version=2016-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxOTEyL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVsYXkvbmFtZXNwYWNlcy9SZWxheS1OYW1lc3BhY2Utb25lc2RrMTA1My9XY2ZSZWxheXMvV2NmUmVsYXktb25lc2RrNTkxMy9hdXRob3JpemF0aW9uUnVsZXMvUmVsYXktV2NmUmVsYXktQXV0aG9yaXphdGlvblJ1bGVvbmVzZGsyNDI3P2FwaS12ZXJzaW9uPTIwMTYtMDctMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "00bcb182-475c-47fc-95a1-2ff6ecfbb722"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Relay.RelayManagementClient/0.0.1-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk1912/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1053/WcfRelays/WcfRelay-onesdk5913/authorizationRules/Relay-WcfRelay-AuthorizationRuleonesdk2427\",\r\n  \"name\": \"Relay-WcfRelay-AuthorizationRuleonesdk2427\",\r\n  \"type\": \"Microsoft.Relay/AuthorizationRules\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"rights\": [\r\n      \"Listen\",\r\n      \"Send\",\r\n      \"Manage\"\r\n    ]\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "429"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "cec775f0-248b-48ee-bbf3-a8deda7d94d5_M0_M0"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14915"
+        ],
+        "x-ms-correlation-request-id": [
+          "c8c12820-a2fa-406a-90f9-58e31160f8d3"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170413T225902Z:c8c12820-a2fa-406a-90f9-58e31160f8d3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Thu, 13 Apr 2017 22:59:01 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk1912/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1053/WcfRelays/WcfRelay-onesdk5913/authorizationRules?api-version=2016-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxOTEyL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVsYXkvbmFtZXNwYWNlcy9SZWxheS1OYW1lc3BhY2Utb25lc2RrMTA1My9XY2ZSZWxheXMvV2NmUmVsYXktb25lc2RrNTkxMy9hdXRob3JpemF0aW9uUnVsZXM/YXBpLXZlcnNpb249MjAxNi0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "70b7326c-f2bf-4003-a628-ea99111d830e"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Relay.RelayManagementClient/0.0.1-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk1912/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1053/WcfRelays/WcfRelay-onesdk5913/authorizationRules/Relay-WcfRelay-AuthorizationRuleonesdk2427\",\r\n      \"name\": \"Relay-WcfRelay-AuthorizationRuleonesdk2427\",\r\n      \"type\": \"Microsoft.Relay/AuthorizationRules\",\r\n      \"location\": \"West US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"rights\": [\r\n          \"Listen\",\r\n          \"Send\"\r\n        ]\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "448"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "884a07a6-e9b3-41ab-acd3-c032ae965d18_M0_M0"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14916"
+        ],
+        "x-ms-correlation-request-id": [
+          "65e51857-57c9-4e10-9465-9d6897e1cda3"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170413T225841Z:65e51857-57c9-4e10-9465-9d6897e1cda3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Thu, 13 Apr 2017 22:58:40 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk1912/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1053/WcfRelays/WcfRelay-onesdk5913/authorizationRules/Relay-WcfRelay-AuthorizationRuleonesdk2427/ListKeys?api-version=2016-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxOTEyL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVsYXkvbmFtZXNwYWNlcy9SZWxheS1OYW1lc3BhY2Utb25lc2RrMTA1My9XY2ZSZWxheXMvV2NmUmVsYXktb25lc2RrNTkxMy9hdXRob3JpemF0aW9uUnVsZXMvUmVsYXktV2NmUmVsYXktQXV0aG9yaXphdGlvblJ1bGVvbmVzZGsyNDI3L0xpc3RLZXlzP2FwaS12ZXJzaW9uPTIwMTYtMDctMDE=",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7807a6f8-8199-42b2-814c-399bc73f9f3b"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Relay.RelayManagementClient/0.0.1-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"primaryConnectionString\": \"Endpoint=sb://relay-namespace-onesdk1053.servicebus.windows.net/;SharedAccessKeyName=Relay-WcfRelay-AuthorizationRuleonesdk2427;SharedAccessKey=gU2g024xl3+t6bl1QL9Dca61FX4MD4A/oWLzBQXKrn0=;EntityPath=WcfRelay-onesdk5913\",\r\n  \"secondaryConnectionString\": \"Endpoint=sb://relay-namespace-onesdk1053.servicebus.windows.net/;SharedAccessKeyName=Relay-WcfRelay-AuthorizationRuleonesdk2427;SharedAccessKey=F8K5Qtb7cGDcjazuoUQge0GNTJubcCVogxKjOyLe/XE=;EntityPath=WcfRelay-onesdk5913\",\r\n  \"primaryKey\": \"gU2g024xl3+t6bl1QL9Dca61FX4MD4A/oWLzBQXKrn0=\",\r\n  \"secondaryKey\": \"F8K5Qtb7cGDcjazuoUQge0GNTJubcCVogxKjOyLe/XE=\",\r\n  \"keyName\": \"Relay-WcfRelay-AuthorizationRuleonesdk2427\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "676"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "b21ec116-d050-4b2c-8b5c-62398c5e1a74_M0_M0"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1189"
+        ],
+        "x-ms-correlation-request-id": [
+          "c6ea0c31-d1c3-477b-b2e5-49711f0f03a9"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170413T225902Z:c6ea0c31-d1c3-477b-b2e5-49711f0f03a9"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Thu, 13 Apr 2017 22:59:01 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk1912/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1053/WcfRelays/WcfRelay-onesdk5913/authorizationRules/Relay-WcfRelay-AuthorizationRuleonesdk2427/regenerateKeys?api-version=2016-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxOTEyL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVsYXkvbmFtZXNwYWNlcy9SZWxheS1OYW1lc3BhY2Utb25lc2RrMTA1My9XY2ZSZWxheXMvV2NmUmVsYXktb25lc2RrNTkxMy9hdXRob3JpemF0aW9uUnVsZXMvUmVsYXktV2NmUmVsYXktQXV0aG9yaXphdGlvblJ1bGVvbmVzZGsyNDI3L3JlZ2VuZXJhdGVLZXlzP2FwaS12ZXJzaW9uPTIwMTYtMDctMDE=",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"policyKey\": \"PrimaryKey\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "33"
+        ],
+        "x-ms-client-request-id": [
+          "32bdf420-0044-4efd-b059-a73adaaf50ff"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Relay.RelayManagementClient/0.0.1-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"primaryConnectionString\": \"Endpoint=sb://relay-namespace-onesdk1053.servicebus.windows.net/;SharedAccessKeyName=Relay-WcfRelay-AuthorizationRuleonesdk2427;SharedAccessKey=ZKLWiVvf249WoB+9Hq681FtxmPsD0LqhVxfK4qkgjy8=;EntityPath=WcfRelay-onesdk5913\",\r\n  \"secondaryConnectionString\": \"Endpoint=sb://relay-namespace-onesdk1053.servicebus.windows.net/;SharedAccessKeyName=Relay-WcfRelay-AuthorizationRuleonesdk2427;SharedAccessKey=F8K5Qtb7cGDcjazuoUQge0GNTJubcCVogxKjOyLe/XE=;EntityPath=WcfRelay-onesdk5913\",\r\n  \"primaryKey\": \"ZKLWiVvf249WoB+9Hq681FtxmPsD0LqhVxfK4qkgjy8=\",\r\n  \"secondaryKey\": \"F8K5Qtb7cGDcjazuoUQge0GNTJubcCVogxKjOyLe/XE=\",\r\n  \"keyName\": \"Relay-WcfRelay-AuthorizationRuleonesdk2427\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "676"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "66b65725-3978-42a8-b208-38617e10497f_M0_M0"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1188"
+        ],
+        "x-ms-correlation-request-id": [
+          "dbc250c0-d6c1-42ad-bed0-8841cad05f3e"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170413T225902Z:dbc250c0-d6c1-42ad-bed0-8841cad05f3e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Thu, 13 Apr 2017 22:59:02 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk1912/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1053/WcfRelays/WcfRelay-onesdk5913/authorizationRules/Relay-WcfRelay-AuthorizationRuleonesdk2427/regenerateKeys?api-version=2016-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxOTEyL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVsYXkvbmFtZXNwYWNlcy9SZWxheS1OYW1lc3BhY2Utb25lc2RrMTA1My9XY2ZSZWxheXMvV2NmUmVsYXktb25lc2RrNTkxMy9hdXRob3JpemF0aW9uUnVsZXMvUmVsYXktV2NmUmVsYXktQXV0aG9yaXphdGlvblJ1bGVvbmVzZGsyNDI3L3JlZ2VuZXJhdGVLZXlzP2FwaS12ZXJzaW9uPTIwMTYtMDctMDE=",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"policyKey\": \"SecondaryKey\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "35"
+        ],
+        "x-ms-client-request-id": [
+          "8c54fbb6-758e-4c9a-b38b-85bc5cfc58f1"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Relay.RelayManagementClient/0.0.1-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"primaryConnectionString\": \"Endpoint=sb://relay-namespace-onesdk1053.servicebus.windows.net/;SharedAccessKeyName=Relay-WcfRelay-AuthorizationRuleonesdk2427;SharedAccessKey=ZKLWiVvf249WoB+9Hq681FtxmPsD0LqhVxfK4qkgjy8=;EntityPath=WcfRelay-onesdk5913\",\r\n  \"secondaryConnectionString\": \"Endpoint=sb://relay-namespace-onesdk1053.servicebus.windows.net/;SharedAccessKeyName=Relay-WcfRelay-AuthorizationRuleonesdk2427;SharedAccessKey=XLrf/j08yycBqhl4DijHs4DpB95pmoCpgnTAnSC27X0=;EntityPath=WcfRelay-onesdk5913\",\r\n  \"primaryKey\": \"ZKLWiVvf249WoB+9Hq681FtxmPsD0LqhVxfK4qkgjy8=\",\r\n  \"secondaryKey\": \"XLrf/j08yycBqhl4DijHs4DpB95pmoCpgnTAnSC27X0=\",\r\n  \"keyName\": \"Relay-WcfRelay-AuthorizationRuleonesdk2427\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "676"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "040e47db-b50e-427e-a618-0e786a880b43_M0_M0"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1187"
+        ],
+        "x-ms-correlation-request-id": [
+          "f3303605-2e42-4fba-9f4a-cfd1aab754d0"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170413T225903Z:f3303605-2e42-4fba-9f4a-cfd1aab754d0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Thu, 13 Apr 2017 22:59:02 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk1912/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1053/WcfRelays/WcfRelay-onesdk5913/authorizationRules/Relay-WcfRelay-AuthorizationRuleonesdk2427?api-version=2016-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxOTEyL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVsYXkvbmFtZXNwYWNlcy9SZWxheS1OYW1lc3BhY2Utb25lc2RrMTA1My9XY2ZSZWxheXMvV2NmUmVsYXktb25lc2RrNTkxMy9hdXRob3JpemF0aW9uUnVsZXMvUmVsYXktV2NmUmVsYXktQXV0aG9yaXphdGlvblJ1bGVvbmVzZGsyNDI3P2FwaS12ZXJzaW9uPTIwMTYtMDctMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "749f3505-8350-49d3-9320-a09175a34c9e"
+          "5bc38e96-0a46-4730-8067-6e57453a8ae6"
         ],
         "accept-language": [
           "en-US"
@@ -1117,7 +995,129 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "bdef760f-96a6-4939-b3dc-ea66700b65c8_M4_M4"
+          "539a519d-89d7-4797-aca2-175885b5f0a5_M0_M0"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1186"
+        ],
+        "x-ms-correlation-request-id": [
+          "0168f09d-ef51-436e-a00b-56c8617c561d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170413T225903Z:0168f09d-ef51-436e-a00b-56c8617c561d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Thu, 13 Apr 2017 22:59:03 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk1912/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1053/WcfRelays/WcfRelay-onesdk5913?api-version=2016-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxOTEyL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVsYXkvbmFtZXNwYWNlcy9SZWxheS1OYW1lc3BhY2Utb25lc2RrMTA1My9XY2ZSZWxheXMvV2NmUmVsYXktb25lc2RrNTkxMz9hcGktdmVyc2lvbj0yMDE2LTA3LTAx",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2d661e0e-9293-4e30-b624-254205475ad8"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Relay.RelayManagementClient/0.0.1-preview"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1185"
+        ],
+        "x-ms-request-id": [
+          "0650bb34-17e0-48f2-a05f-99db64eb5d74"
+        ],
+        "x-ms-correlation-request-id": [
+          "0650bb34-17e0-48f2-a05f-99db64eb5d74"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170413T225904Z:0650bb34-17e0-48f2-a05f-99db64eb5d74"
+        ],
+        "Date": [
+          "Thu, 13 Apr 2017 22:59:03 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk1912/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1053?api-version=2016-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxOTEyL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVsYXkvbmFtZXNwYWNlcy9SZWxheS1OYW1lc3BhY2Utb25lc2RrMTA1Mz9hcGktdmVyc2lvbj0yMDE2LTA3LTAx",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a3e911b6-6d11-42b0-85a5-ed009e64e3cf"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Relay.RelayManagementClient/0.0.1-preview"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "9af9a22e-7219-4c0b-9cd1-e6f255658ca9_M0_M0"
         ],
         "Server-SB": [
           "Service-Bus-Resource-Provider/SN1"
@@ -1126,33 +1126,33 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk123/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1866/operationresults/Relay-Namespace-onesdk1866?api-version=2016-07-01"
+          "https://management.azure.com/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk1912/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1053/operationresults/Relay-Namespace-onesdk1053?api-version=2016-07-01"
         ],
         "Server": [
           "Service-Bus-Resource-Provider/SN1",
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1189"
+          "1184"
         ],
         "x-ms-correlation-request-id": [
-          "e24519ae-abac-45ee-b9b2-b9cbd8f3b9c0"
+          "90410259-46d5-4f4e-86d6-76523f906070"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20170413T083929Z:e24519ae-abac-45ee-b9b2-b9cbd8f3b9c0"
+          "WESTUS2:20170413T225904Z:90410259-46d5-4f4e-86d6-76523f906070"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Thu, 13 Apr 2017 08:39:28 GMT"
+          "Thu, 13 Apr 2017 22:59:04 GMT"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk123/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1866/operationresults/Relay-Namespace-onesdk1866?api-version=2016-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxMjMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWxheS9uYW1lc3BhY2VzL1JlbGF5LU5hbWVzcGFjZS1vbmVzZGsxODY2L29wZXJhdGlvbnJlc3VsdHMvUmVsYXktTmFtZXNwYWNlLW9uZXNkazE4NjY/YXBpLXZlcnNpb249MjAxNi0wNy0wMQ==",
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk1912/providers/Microsoft.Relay/namespaces/Relay-Namespace-onesdk1053/operationresults/Relay-Namespace-onesdk1053?api-version=2016-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsxOTEyL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVsYXkvbmFtZXNwYWNlcy9SZWxheS1OYW1lc3BhY2Utb25lc2RrMTA1My9vcGVyYXRpb25yZXN1bHRzL1JlbGF5LU5hbWVzcGFjZS1vbmVzZGsxMDUzP2FwaS12ZXJzaW9uPTIwMTYtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1175,7 +1175,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "9cfca210-8e6d-4991-b5e8-ff3ca9c5ff21_M4_M4"
+          "5ae45eb3-653f-4a55-8f38-4285ae33375b_M0_M0"
         ],
         "Server-SB": [
           "Service-Bus-Resource-Provider/SN1"
@@ -1188,26 +1188,26 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14960"
+          "14913"
         ],
         "x-ms-correlation-request-id": [
-          "1c6835dc-8548-4e5d-91b9-58525cfe2a4e"
+          "471f60b6-367b-49d8-9a6d-1989e9322c83"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20170413T083959Z:1c6835dc-8548-4e5d-91b9-58525cfe2a4e"
+          "WESTUS2:20170413T225935Z:471f60b6-367b-49d8-9a6d-1989e9322c83"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Thu, 13 Apr 2017 08:39:58 GMT"
+          "Thu, 13 Apr 2017 22:59:34 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourcegroups/RGName-onesdk123?api-version=2016-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlZ3JvdXBzL1JHTmFtZS1vbmVzZGsxMjM/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourcegroups/RGName-onesdk1912?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlZ3JvdXBzL1JHTmFtZS1vbmVzZGsxOTEyP2FwaS12ZXJzaW9uPTIwMTYtMDItMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1230,16 +1230,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1194"
         ],
         "x-ms-request-id": [
-          "9fa54e6a-7982-4c9f-a534-83883ac0ef17"
+          "f04bd65b-67a6-4dbd-b4a9-2bb2ced931a0"
         ],
         "x-ms-correlation-request-id": [
-          "9fa54e6a-7982-4c9f-a534-83883ac0ef17"
+          "f04bd65b-67a6-4dbd-b4a9-2bb2ced931a0"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20170413T084000Z:9fa54e6a-7982-4c9f-a534-83883ac0ef17"
+          "WESTUS2:20170413T225935Z:f04bd65b-67a6-4dbd-b4a9-2bb2ced931a0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1248,17 +1248,17 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 13 Apr 2017 08:39:59 GMT"
+          "Thu, 13 Apr 2017 22:59:35 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREsxMjMtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01"
+          "https://management.azure.com/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREsxOTEyLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREsxMjMtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFTUjA1QlRVVTZNa1JQVGtWVFJFc3hNak10VjBWVFZGVlRJaXdpYW05aVRHOWpZWFJwYjI0aU9pSjNaWE4wZFhNaWZRP2FwaS12ZXJzaW9uPTIwMTYtMDItMDE=",
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREsxOTEyLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFTUjA1QlRVVTZNa1JQVGtWVFJFc3hPVEV5TFZkRlUxUlZVeUlzSW1wdllreHZZMkYwYVc5dUlqb2lkMlZ6ZEhWekluMD9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1284,16 +1284,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14998"
+          "14903"
         ],
         "x-ms-request-id": [
-          "5c3b4b83-0313-42f9-bc1f-2049275aae92"
+          "e88a342c-bb89-41ca-b56d-1a5a95ddf515"
         ],
         "x-ms-correlation-request-id": [
-          "5c3b4b83-0313-42f9-bc1f-2049275aae92"
+          "e88a342c-bb89-41ca-b56d-1a5a95ddf515"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20170413T084000Z:5c3b4b83-0313-42f9-bc1f-2049275aae92"
+          "WESTUS2:20170413T225936Z:e88a342c-bb89-41ca-b56d-1a5a95ddf515"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1302,17 +1302,17 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 13 Apr 2017 08:39:59 GMT"
+          "Thu, 13 Apr 2017 22:59:35 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREsxMjMtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01"
+          "https://management.azure.com/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREsxOTEyLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREsxMjMtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFTUjA1QlRVVTZNa1JQVGtWVFJFc3hNak10VjBWVFZGVlRJaXdpYW05aVRHOWpZWFJwYjI0aU9pSjNaWE4wZFhNaWZRP2FwaS12ZXJzaW9uPTIwMTYtMDItMDE=",
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREsxOTEyLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFTUjA1QlRVVTZNa1JQVGtWVFJFc3hPVEV5TFZkRlUxUlZVeUlzSW1wdllreHZZMkYwYVc5dUlqb2lkMlZ6ZEhWekluMD9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1338,16 +1338,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14997"
+          "14902"
         ],
         "x-ms-request-id": [
-          "c9b0b0ff-7add-4807-ab84-9bb7c10175ce"
+          "ec78fad0-6f2f-473f-b7fe-b60fc66b8e0a"
         ],
         "x-ms-correlation-request-id": [
-          "c9b0b0ff-7add-4807-ab84-9bb7c10175ce"
+          "ec78fad0-6f2f-473f-b7fe-b60fc66b8e0a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20170413T084015Z:c9b0b0ff-7add-4807-ab84-9bb7c10175ce"
+          "WESTUS2:20170413T225951Z:ec78fad0-6f2f-473f-b7fe-b60fc66b8e0a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1356,71 +1356,17 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 13 Apr 2017 08:40:15 GMT"
+          "Thu, 13 Apr 2017 22:59:51 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREsxMjMtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01"
+          "https://management.azure.com/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREsxOTEyLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREsxMjMtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFTUjA1QlRVVTZNa1JQVGtWVFJFc3hNak10VjBWVFZGVlRJaXdpYW05aVRHOWpZWFJwYjI0aU9pSjNaWE4wZFhNaWZRP2FwaS12ZXJzaW9uPTIwMTYtMDItMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-version": [
-          "2016-02-01"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "0"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14996"
-        ],
-        "x-ms-request-id": [
-          "e8286321-3668-4a32-90bb-9338ed1f5fc7"
-        ],
-        "x-ms-correlation-request-id": [
-          "e8286321-3668-4a32-90bb-9338ed1f5fc7"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20170413T084030Z:e8286321-3668-4a32-90bb-9338ed1f5fc7"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 13 Apr 2017 08:40:30 GMT"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREsxMjMtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01"
-        ]
-      },
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREsxMjMtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFTUjA1QlRVVTZNa1JQVGtWVFJFc3hNak10VjBWVFZGVlRJaXdpYW05aVRHOWpZWFJwYjI0aU9pSjNaWE4wZFhNaWZRP2FwaS12ZXJzaW9uPTIwMTYtMDItMDE=",
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREsxOTEyLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFTUjA1QlRVVTZNa1JQVGtWVFJFc3hPVEV5TFZkRlUxUlZVeUlzSW1wdllreHZZMkYwYVc5dUlqb2lkMlZ6ZEhWekluMD9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1443,16 +1389,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14995"
+          "14901"
         ],
         "x-ms-request-id": [
-          "4cc6f119-33fe-403b-b596-82667b07cab1"
+          "12a80f4a-37be-4695-a256-9165e43b394f"
         ],
         "x-ms-correlation-request-id": [
-          "4cc6f119-33fe-403b-b596-82667b07cab1"
+          "12a80f4a-37be-4695-a256-9165e43b394f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20170413T084045Z:4cc6f119-33fe-403b-b596-82667b07cab1"
+          "WESTUS2:20170413T230006Z:12a80f4a-37be-4695-a256-9165e43b394f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1461,7 +1407,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 13 Apr 2017 08:40:45 GMT"
+          "Thu, 13 Apr 2017 23:00:05 GMT"
         ]
       },
       "StatusCode": 200
@@ -1469,10 +1415,10 @@
   ],
   "Names": {
     "": [
-      "onesdk123",
-      "onesdk1866",
-      "onesdk3636",
-      "onesdk9724"
+      "onesdk1912",
+      "onesdk1053",
+      "onesdk5913",
+      "onesdk2427"
     ]
   },
   "Variables": {

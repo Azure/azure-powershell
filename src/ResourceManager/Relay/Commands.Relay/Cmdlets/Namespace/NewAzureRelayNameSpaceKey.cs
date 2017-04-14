@@ -52,16 +52,16 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
         [ValidateSet(RegeneKeys.PrimaryKey,
             RegeneKeys.SecondaryKey,
             IgnoreCase = true)]      
-        public string RegenerateKeys { get; set; }
+        public string RegenerateKey { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var regenKey = new RegenerateKeysParameters(RegenerateKeys);
+            var regenKey = new RegenerateKeysParameters(RegenerateKey);
 
             // Get a Relay List Keys for the specified AuthorizationRule
-            if (ShouldProcess(target: RegenerateKeys, action: string.Format("Generating Key:{0} for AuthorizationRule:{1} of NameSpace:{2}", RegenerateKeys, AuthorizationRuleName, NamespaceName)))
+            if (ShouldProcess(target: RegenerateKey, action: string.Format("Generating Key:{0} for AuthorizationRule:{1} of NameSpace:{2}", RegenerateKey, AuthorizationRuleName, NamespaceName)))
             {
-                WriteObject(Client.SetRegenerateKeys(ResourceGroupName, NamespaceName, AuthorizationRuleName, RegenerateKeys));
+                WriteObject(Client.SetRegenerateKeys(ResourceGroupName, NamespaceName, AuthorizationRuleName, RegenerateKey));
             }
         }
     }

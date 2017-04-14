@@ -21,10 +21,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
 {
     /// <summary>
-    /// 'Get-AzureRmRelayOperations' Cmdlet retrive the Operations List
+    /// 'Get-AzureRmRelayOperation' Cmdlet retrive the Operations List
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRelayOperations"), OutputType(typeof(List<OperationAttributes>))]
-    public class GetAzureRmRelayOperations : AzureRelayCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmRelayOperation"), OutputType(typeof(List<OperationAttributes>))]
+    public class GetAzureRmRelayOperation : AzureRelayCmdletBase
     {
         public override void ExecuteCmdlet()
             {       //Get Relay Operations List

@@ -181,7 +181,7 @@
     <None Include="help\Get-AzureRmRelayNamespace.md" />
     <None Include="help\Get-AzureRmRelayNamespaceAuthorizationRule.md" />
     <None Include="help\Get-AzureRmRelayNamespaceKey.md" />
-    <None Include="help\Get-AzureRmRelayOperations.md" />
+    <None Include="help\Get-AzureRmRelayOperation.md" />
     <None Include="help\Get-AzureRmWcfRelay.md" />
     <None Include="help\Get-AzureRmWcfRelayAuthorizationRule.md" />
     <None Include="help\Get-AzureRmWcfRelayKey.md" />
@@ -233,6 +233,5 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

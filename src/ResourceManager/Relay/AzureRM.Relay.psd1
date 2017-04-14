@@ -81,7 +81,7 @@ CmdletsToExport =  'New-AzureRmRelayNamespace', 'Get-AzureRmRelayNamespace','Set
 			   'New-AzureRmRelayHybridConnection', 'Get-AzureRmRelayHybridConnection','Set-AzureRmRelayHybridConnection','Remove-AzureRmRelayHybridConnection',
 			   'New-AzureRmRelayHybridConnectionAuthorizationRule', 'Get-AzureRmRelayHybridConnectionAuthorizationRule','Set-AzureRmRelayHybridConnectionAuthorizationRule', 'Remove-AzureRmRelayHybridConnectionAuthorizationRule',
 			   'New-AzureRmRelayHybridConnectionKey', 'Get-AzureRmRelayHybridConnectionKey', 'Get-AzureRmCheckNameAvailability',
-			   'Get-AzureRmRelayOperations'
+			   'Get-AzureRmRelayOperation'
 
 
 # Variables to export from this module
