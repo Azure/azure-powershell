@@ -45,12 +45,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <summary>
         /// The location fot eh manageemnt portal
         /// </summary>
-        Uri ManagementPortalUrl { get; set; }
+        Uri ManagementPortal { get; set; }
 
         /// <summary>
         /// The location fo the publish settings doenload web application
         /// </summary>
-        Uri PublishSettingsFileUrl { get; set; }
+        Uri PublishSettingsFile { get; set; }
 
         /// <summary>
         /// The Active Directory authentication endpoint

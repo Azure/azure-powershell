@@ -46,9 +46,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             dataStore = new MemoryDataStore();
-            AzureSession.DataStore = dataStore;
+            AzureSession.Instance.DataStore = dataStore;
             commandRuntimeMock = new MockCommandRuntime();
-            AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
+            AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
         }
 
         [Fact]

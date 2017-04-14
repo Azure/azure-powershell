@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         private Microsoft.WindowsAzure.Management.Storage.StorageManagementClient GetCurrentStorageClient(AzureContext context)
         {
             if (StorageClient == null)
-                StorageClient = AzureSession.ClientFactory.CreateClient<Microsoft.WindowsAzure.Management.Storage.StorageManagementClient>(Context, AzureEnvironment.Endpoint.ServiceManagement);
+                StorageClient = AzureSession.Instance.ClientFactory.CreateClient<Microsoft.WindowsAzure.Management.Storage.StorageManagementClient>(Context, AzureEnvironment.Endpoint.ServiceManagement);
             return StorageClient;
         }
 
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         private Microsoft.Azure.Management.Storage.StorageManagementClient GetCurrentStorageV2Client(AzureContext context)
         {
             if (StorageV2Client == null)
-                StorageV2Client = AzureSession.ClientFactory.CreateClient<Microsoft.Azure.Management.Storage.StorageManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+                StorageV2Client = AzureSession.Instance.ClientFactory.CreateClient<Microsoft.Azure.Management.Storage.StorageManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             return StorageV2Client;
         }
 
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         private ResourceManagementClient GetCurrentResourcesClient(AzureContext context)
         {
             if (ResourcesClient == null)
-                ResourcesClient = AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+                ResourcesClient = AzureSession.Instance.ClientFactory.CreateClient<ResourceManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             return ResourcesClient;
         }
 
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
-                SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+                SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
             SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
             SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);

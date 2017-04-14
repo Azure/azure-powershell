@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
 
                 if (shouldContinue)
                 {
-                    var storageClient = AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
+                    var storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
 
                     // Parse configs, and auto fill incomplete parts
                     Tuple<Hashtable, Hashtable> settings = DiagnosticsHelper.GetConfigurationsFromFiles(this.SettingFilePath, this.ProtectedSettingFilePath, this.VirtualMachineScaleSet.Id, this, storageClient);

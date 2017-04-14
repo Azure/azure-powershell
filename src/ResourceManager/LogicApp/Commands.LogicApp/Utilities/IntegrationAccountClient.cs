@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="context">The Azure context instance</param>
         public IntegrationAccountClient(AzureContext context)
         {
-            this.LogicManagementClient = AzureSession.ClientFactory.CreateArmClient<LogicManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);            
+            this.LogicManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<LogicManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);            
             this.LogicManagementClient.SubscriptionId = context.Subscription.Id.ToString();            
         }
 

@@ -49,8 +49,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 throw new ApplicationException(Resources.NoSubscriptionInContext);
             }
 
-            var creds = AzureSession.AuthenticationFactory.GetServiceClientCredentials(context);
-            var clientFactory = AzureSession.ClientFactory;
+            var creds = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context);
+            var clientFactory = AzureSession.Instance.ClientFactory;
             var newHandlers = clientFactory.GetCustomHandlers();
             TClient client;
             if (!parameterizedBaseUri)

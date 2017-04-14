@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (!string.IsNullOrEmpty(storageName))
             {
-                var storageClient = AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.Context,
+                var storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.Context,
                         AzureEnvironment.Endpoint.ResourceManager);
 
                 var storageAccount = storageClient.StorageAccounts.GetProperties(this.ResourceGroupName, storageName);
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         protected string GetSasUrlStr(string storageName, string storageKey, string containerName, string blobName)
         {
-            var storageClient = AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.Context,
+            var storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.Context,
                         AzureEnvironment.Endpoint.ResourceManager);
             var cred = new StorageCredentials(storageName, storageKey);
             var storageAccount = string.IsNullOrEmpty(this.StorageEndpointSuffix)

@@ -22,22 +22,22 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <summary>
         /// The account used for authentication
         /// </summary>
-        AzureAccount Account { get; set; }
+        IAzureAccount Account { get; set; }
 
         /// <summary>
         /// The targeted Active Directory Tenant
         /// </summary>
-        AzureTenant Tenant { get; set; }
+        IAzureTenant Tenant { get; set; }
 
         /// <summary>
         /// The targeted subscription
         /// </summary>
-        AzureSubscription Subscription { get; set; }
+        IAzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// The targeted azure cloud
         /// </summary>
-        AzureEnvironment Environment { get; set; }
+        IAzureEnvironment Environment { get; set; }
 
         /// <summary>
         /// The current version profile, outlining the version and capability of cmdlets
@@ -47,6 +47,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <summary>
         /// The cached authentication data
         /// </summary>
-        AuthenticationStore TokenCache { get; set; }
+        IAzureTokenCache TokenCache { get; set; }
     }
 }

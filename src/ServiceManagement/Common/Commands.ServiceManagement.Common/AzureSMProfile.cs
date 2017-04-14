@@ -30,20 +30,20 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
     [Serializable]
     public sealed class AzureSMProfile : IAzureContextContainer
     {
-        Dictionary<string, AzureContext> _contexts = new Dictionary<string, AzureContext>(StringComparer.OrdinalIgnoreCase);
+        Dictionary<string, IAzureContext> _contexts = new Dictionary<string, IAzureContext>(StringComparer.OrdinalIgnoreCase);
         /// <summary>
         /// Gets Azure Accounts
         /// </summary>
-        public Dictionary<string, AzureAccount> AccountTable { get; set; }
+        public Dictionary<string, IAzureAccount> AccountTable { get; set; }
 
         [JsonProperty(PropertyName="Subscriptions")]
         /// <summary>
         /// Gets Azure Subscriptions
         /// </summary>
-        public Dictionary<Guid, AzureSubscription> SubscriptionTable { get; set; }
+        public Dictionary<Guid, IAzureSubscription> SubscriptionTable { get; set; }
 
         [JsonIgnore]
-        public IEnumerable<AzureSubscription> Subscriptions
+        public IEnumerable<IAzureSubscription> Subscriptions
         {
             get
             {
@@ -53,7 +53,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// <summary>
         /// Gets or sets current Azure Subscription
         /// </summary>
-        public AzureSubscription DefaultSubscription
+        public IAzureSubscription DefaultSubscription
         {
             get
             {
@@ -91,13 +91,13 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// Gets Azure Environments
         /// </summary>
         [JsonProperty(PropertyName ="Environments")]
-        public Dictionary<string, AzureEnvironment> EnvironmentTable { get; set; }
+        public Dictionary<string, IAzureEnvironment> EnvironmentTable { get; set; }
 
         /// <summary>
         /// Gets the default azure context object.
         /// </summary>
         [JsonIgnore]
-        public AzureContext Context
+        public IAzureContext Context
         {
             get
             {
@@ -105,8 +105,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
                 if (DefaultSubscription != null)
                 {
-                    AzureAccount account = null;
-                    AzureEnvironment environment = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
+                    IAzureAccount account = null;
+                    IAzureEnvironment environment = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
                     var subscriptionAccount = DefaultSubscription.GetProperty(AzureSubscription.Property.Account);
                     if (subscriptionAccount != null &&
                         AccountTable.ContainsKey(subscriptionAccount))
@@ -148,7 +148,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         public string ProfilePath { get; private set; }
 
         [JsonIgnore]
-        public AzureContext DefaultContext
+        public IAzureContext DefaultContext
         {
             get
             {
@@ -162,7 +162,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         }
 
         [JsonIgnore]
-       public IEnumerable<AzureEnvironment> Environments
+       public IEnumerable<IAzureEnvironment> Environments
         {
             get
             {
@@ -171,7 +171,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         }
 
         [JsonIgnore]
-        public IEnumerable<AzureAccount> Accounts
+        public IEnumerable<IAzureAccount> Accounts
         {
             get
             {
@@ -180,7 +180,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         }
 
         [JsonIgnore]
-        public IAuthenticationStore TokenStore { get; set; } = new AuthenticationStore();
+        public IAzureTokenCache TokenStore { get; set; } = new AzureTokenCache();
 
         [JsonIgnore]
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
@@ -195,7 +195,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         }
 
         [JsonIgnore]
-        public ICollection<AzureContext> Values
+        public ICollection<IAzureContext> Values
         {
             get
             {
@@ -222,7 +222,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         }
 
         [JsonIgnore]
-        public AzureContext this[string key]
+        public IAzureContext this[string key]
         {
             get
             {
@@ -240,9 +240,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// </summary>
         public AzureSMProfile()
         {
-            EnvironmentTable = new Dictionary<string, AzureEnvironment>(StringComparer.InvariantCultureIgnoreCase);
-            SubscriptionTable = new Dictionary<Guid, AzureSubscription>();
-            AccountTable = new Dictionary<string, AzureAccount>(StringComparer.InvariantCultureIgnoreCase);
+            EnvironmentTable = new Dictionary<string, IAzureEnvironment>(StringComparer.InvariantCultureIgnoreCase);
+            SubscriptionTable = new Dictionary<Guid, IAzureSubscription>();
+            AccountTable = new Dictionary<string, IAzureAccount>(StringComparer.InvariantCultureIgnoreCase);
 
             // Adding predefined environments
             foreach (AzureEnvironment env in AzureEnvironment.PublicEnvironments.Values)
@@ -351,7 +351,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             return _contexts.ContainsKey(key);
         }
 
-        public void Add(string key, AzureContext value)
+        public void Add(string key, IAzureContext value)
         {
             _contexts.Add(key, value);
         }
@@ -361,12 +361,12 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
            return _contexts.Remove(key);
         }
 
-        public bool TryGetValue(string key, out AzureContext value)
+        public bool TryGetValue(string key, out IAzureContext value)
         {
             return _contexts.TryGetValue(key, out value);
         }
 
-        public void Add(KeyValuePair<string, AzureContext> item)
+        public void Add(KeyValuePair<string, IAzureContext> item)
         {
             if (item.Key != null && item.Value != null)
             {
@@ -379,12 +379,12 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             _contexts.Clear();
         }
 
-        public bool Contains(KeyValuePair<string, AzureContext> item)
+        public bool Contains(KeyValuePair<string, IAzureContext> item)
         {
             return _contexts.Contains(item);
         }
 
-        public void CopyTo(KeyValuePair<string, AzureContext>[] array, int arrayIndex)
+        public void CopyTo(KeyValuePair<string, IAzureContext>[] array, int arrayIndex)
         {
             if (array != null && arrayIndex >= 0)
             {
@@ -395,12 +395,12 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
         }
 
-        public bool Remove(KeyValuePair<string, AzureContext> item)
+        public bool Remove(KeyValuePair<string, IAzureContext> item)
         {
             return _contexts.Remove(item.Key);
         }
 
-        public IEnumerator<KeyValuePair<string, AzureContext>> GetEnumerator()
+        public IEnumerator<KeyValuePair<string, IAzureContext>> GetEnumerator()
         {
            return  _contexts.GetEnumerator();
         }

@@ -31,7 +31,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
     /// </summary>
     public static class PublishSettingsImporter
     {
-        public static IEnumerable<AzureSubscription> ImportAzureSubscription(Stream stream,
+        public static IEnumerable<IAzureSubscription> ImportAzureSubscription(Stream stream,
             ProfileClient azureProfileClient, string environment)
         {
             var publishData = DeserializePublishData(stream);

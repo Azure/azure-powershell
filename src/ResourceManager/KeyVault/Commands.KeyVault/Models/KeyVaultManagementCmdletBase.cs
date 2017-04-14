@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 if (_activeDirectoryClient == null)
                 {
-                    _dataServiceCredential = new DataServiceCredential(AzureSession.AuthenticationFactory, DefaultProfile.Context, AzureEnvironment.Endpoint.Graph);
+                    _dataServiceCredential = new DataServiceCredential(AzureSession.Instance.AuthenticationFactory, DefaultProfile.Context, AzureEnvironment.Endpoint.Graph);
                     _activeDirectoryClient = new ActiveDirectoryClient(new Uri(string.Format("{0}/{1}",
                         DefaultProfile.Context.Environment.Endpoints[AzureEnvironment.Endpoint.Graph], _dataServiceCredential.TenantId)),
                         () => Task.FromResult(_dataServiceCredential.GetToken()));

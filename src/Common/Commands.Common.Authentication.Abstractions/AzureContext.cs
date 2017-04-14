@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <param name="subscription">The azure subscription object</param>
         /// <param name="account">The azure account object</param>
         /// <param name="environment">The azure environment object</param>
-        public AzureContext(AzureSubscription subscription, AzureAccount account, AzureEnvironment environment)
+        public AzureContext(IAzureSubscription subscription, IAzureAccount account, IAzureEnvironment environment)
             : this(subscription, account, environment, null)
         {
 
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <param name="account">The azure account object</param>
         /// <param name="environment">The azure environment object</param>
         /// <param name="tenant">The azure tenant object</param>
-        public AzureContext(AzureAccount account, AzureEnvironment environment, AzureTenant tenant)
+        public AzureContext(IAzureAccount account, IAzureEnvironment environment, IAzureTenant tenant)
             : this(null, account, environment, tenant)
         {
 
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <param name="environment">The azure environment object</param>
         /// <param name="tenant">The azure tenant object</param>
         [JsonConstructor]
-        public AzureContext(AzureSubscription subscription, AzureAccount account, AzureEnvironment environment, AzureTenant tenant) 
+        public AzureContext(IAzureSubscription subscription, IAzureAccount account, IAzureEnvironment environment, IAzureTenant tenant) 
             : this(subscription, account, environment, tenant, null)
         {
         }
@@ -75,35 +75,35 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <param name="account">The azure account object</param>
         /// <param name="environment">The azure environment object</param>
         /// <param name="tenant">The azure tenant object</param>
-        public AzureContext(AzureSubscription subscription, AzureAccount account, AzureEnvironment environment, AzureTenant tenant, byte[] tokens)
+        public AzureContext(IAzureSubscription subscription, IAzureAccount account, IAzureEnvironment environment, IAzureTenant tenant, byte[] tokens)
         {
             Subscription = subscription;
             Account = account;
             Environment = environment;
             Tenant = tenant;
-            TokenCache = new AuthenticationStore();
+            TokenCache = new AzureTokenCache();
             TokenCache.CacheData = tokens;
         }
 
         /// <summary>
         /// The current account
         /// </summary>
-        public AzureAccount Account { get; set; }
+        public IAzureAccount Account { get; set; }
 
         /// <summary>
         /// The target tenant
         /// </summary>
-        public AzureTenant Tenant { get; set; }
+        public IAzureTenant Tenant { get; set; }
 
         /// <summary>
         /// The target subscription
         /// </summary>
-        public AzureSubscription Subscription { get; set; }
+        public IAzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// The target environment
         /// </summary>
-        public AzureEnvironment Environment { get; set; }
+        public IAzureEnvironment Environment { get; set; }
 
         /// <summary>
         /// The current version profile for cmdlets
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <summary>
         /// The token store
         /// </summary>
-        public AuthenticationStore TokenCache { get; set; }
+        public IAzureTokenCache TokenCache { get; set; }
 
         /// <summary>
         /// Additional service-specific context

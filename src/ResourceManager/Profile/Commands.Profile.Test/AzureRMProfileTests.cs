@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
         private static RMProfileClient SetupTestEnvironment(List<string> tenants, params List<string>[] subscriptionLists)
         {
-            AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory(DefaultAccount,
+            AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory(DefaultAccount,
                 Guid.NewGuid().ToString(), DefaultTenant.ToString());
             var subscriptionList = new Queue<List<string>>(subscriptionLists);
             var clientFactory = new MockSubscriptionClientFactory(tenants, subscriptionList);
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 clientFactory.GetSubscriptionClient()
             }, true);
             mock.MoqClients = true;
-            AzureSession.ClientFactory = mock;
+            AzureSession.Instance.ClientFactory = mock;
             Context = new AzureContext(new AzureSubscription()
             {
                 Account = DefaultAccount,
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var secondList = new List<string> { Guid.NewGuid().ToString() };
             var client = SetupTestEnvironment(tenants, firstList, secondList);
 
-            ((MockTokenAuthenticationFactory)AzureSession.AuthenticationFactory).TokenProvider = (account, environment, tenant) =>
+            ((MockTokenAuthenticationFactory)AzureSession.Instance.AuthenticationFactory).TokenProvider = (account, environment, tenant) =>
             new MockAccessToken
             {
                 UserId = "aaa@contoso.com",
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var firstList = new List<string> { Guid.NewGuid().ToString() };
             var client = SetupTestEnvironment(tenants, firstList);
 
-            ((MockTokenAuthenticationFactory)AzureSession.AuthenticationFactory).TokenProvider = (account, environment, tenant) =>
+            ((MockTokenAuthenticationFactory)AzureSession.Instance.AuthenticationFactory).TokenProvider = (account, environment, tenant) =>
             new MockAccessToken
             {
                 UserId = "aaa@contoso.com",
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var secondList = new List<string> { Guid.NewGuid().ToString() };
             var client = SetupTestEnvironment(tenants, firstList, secondList);
 
-            ((MockTokenAuthenticationFactory)AzureSession.AuthenticationFactory).TokenProvider = (account, environment, tenant) =>
+            ((MockTokenAuthenticationFactory)AzureSession.Instance.AuthenticationFactory).TokenProvider = (account, environment, tenant) =>
             new MockAccessToken
             {
                 UserId = "aaa@contoso.com",
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var secondList = new List<string> { Guid.NewGuid().ToString(), subscriptionInSecondTenant };
             var client = SetupTestEnvironment(tenants, firstList, secondList);
 
-            ((MockTokenAuthenticationFactory)AzureSession.AuthenticationFactory).TokenProvider = (account, environment, tenant) =>
+            ((MockTokenAuthenticationFactory)AzureSession.Instance.AuthenticationFactory).TokenProvider = (account, environment, tenant) =>
             new MockAccessToken
             {
                 UserId = "aaa@contoso.com",
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var secondList = new List<string> { Guid.NewGuid().ToString(), subscriptionInSecondTenant };
             var client = SetupTestEnvironment(tenants, firstList, secondList);
 
-            ((MockTokenAuthenticationFactory)AzureSession.AuthenticationFactory).TokenProvider = (account, environment, tenant) =>
+            ((MockTokenAuthenticationFactory)AzureSession.Instance.AuthenticationFactory).TokenProvider = (account, environment, tenant) =>
             new MockAccessToken
             {
                 UserId = "aaa@contoso.com",
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 TenantId = tenants.Last()
             });
 
-            ((MockTokenAuthenticationFactory)AzureSession.AuthenticationFactory).TokenProvider = (account, environment, tenant) =>
+            ((MockTokenAuthenticationFactory)AzureSession.Instance.AuthenticationFactory).TokenProvider = (account, environment, tenant) =>
                 {
                     var token = tokens.Dequeue();
                     account.Id = token.UserId;
@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 AccessToken = "bbb"
             });
 
-            ((MockTokenAuthenticationFactory)AzureSession.AuthenticationFactory).TokenProvider = (account, environment, tenant) =>
+            ((MockTokenAuthenticationFactory)AzureSession.Instance.AuthenticationFactory).TokenProvider = (account, environment, tenant) =>
             {
                 throw new AadAuthenticationCanceledException("Login window was closed", null);
             };
@@ -484,9 +484,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var client = SetupTestEnvironment(tenants, firstList, secondList, thirdList, fourthList);
 
             var dataStore = new MemoryDataStore();
-            AzureSession.DataStore = dataStore;
+            AzureSession.Instance.DataStore = dataStore;
             var commandRuntimeMock = new MockCommandRuntime();
-            AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
+            AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
             var profile = new AzureRMProfile();
             profile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
             profile.Context = Context;
@@ -530,9 +530,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var client = SetupTestEnvironment(tenants, firstList, secondList, thirdList, fourthList);
 
             var dataStore = new MemoryDataStore();
-            AzureSession.DataStore = dataStore;
+            AzureSession.Instance.DataStore = dataStore;
             var commandRuntimeMock = new MockCommandRuntime();
-            AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
+            AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
             var profile = new AzureRMProfile();
             profile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
             profile.Context = Context;
@@ -580,9 +580,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var subscriptionName = MockSubscriptionClientFactory.GetSubscriptionNameFromId(secondTenantSubscriptions[2]);
 
             var dataStore = new MemoryDataStore();
-            AzureSession.DataStore = dataStore;
+            AzureSession.Instance.DataStore = dataStore;
             var commandRuntimeMock = new MockCommandRuntime();
-            AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
+            AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
             var profile = new AzureRMProfile();
             profile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
             profile.Context = Context;

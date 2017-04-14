@@ -39,5 +39,4 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// </summary>
         public const string AzureGermanCloud = "AzureGermanCloud";
     }
-
 }

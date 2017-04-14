@@ -53,8 +53,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 ActiveDirectoryServiceEndpointResourceId = this.ActiveDirectoryServiceEndpointResourceId,
                 AdTenant = this.AdTenantUrl,
                 Gallery = new Uri(this.GalleryEndpoint),
-                ManagementPortalUrl = new Uri(this.ManagementPortalUrl),
-                PublishSettingsFileUrl = new Uri(this.PublishSettingsFileUrl),
+                ManagementPortal = new Uri(this.ManagementPortalUrl),
+                PublishSettingsFile = new Uri(this.PublishSettingsFileUrl),
                 ResourceManager = new Uri(this.ResourceManagerEndpoint),
                 ServiceManagement = new Uri(this.ServiceEndpoint), 
                 SqlDatabaseDnsSuffix = this.SqlDatabaseDnsSuffix,
@@ -121,7 +121,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
         }
 
-        public AzureSubscription ToAzureSubscription(List<AzureEnvironment> envs)
+        public IAzureSubscription ToAzureSubscription(List<IAzureEnvironment> envs)
         {
             AzureSubscription subscription = new AzureSubscription();
             try
@@ -135,8 +135,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             subscription.Name = Name;
 
             // Logic to detect what is the subscription environment relies on having ManagementEndpoint (i.e. RDFE endpoint) set already on the subscription
-            List<AzureEnvironment> allEnvs = envs.Union(AzureEnvironment.PublicEnvironments.Values).ToList();
-            AzureEnvironment env = allEnvs.FirstOrDefault(e => e.IsEndpointSetToValue(AzureEnvironment.Endpoint.ServiceManagement, this.ManagementEndpoint));
+            List<IAzureEnvironment> allEnvs = envs.Union(AzureEnvironment.PublicEnvironments.Values).ToList();
+            IAzureEnvironment env = allEnvs.FirstOrDefault(e => e.IsEndpointSetToValue(AzureEnvironment.Endpoint.ServiceManagement, this.ManagementEndpoint));
 
             if (env != null)
             {

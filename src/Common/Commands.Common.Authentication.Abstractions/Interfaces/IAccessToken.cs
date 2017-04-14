@@ -45,6 +45,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// <summary>
         /// If this token was obtained with user credentials, the type of user credentials used
         /// </summary>
-        LoginType LoginType { get; }
+        string LoginType { get; }
     }
 }

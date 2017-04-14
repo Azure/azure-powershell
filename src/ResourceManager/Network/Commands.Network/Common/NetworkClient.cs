@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Network
         public Action<string> WarningLogger { get; set; }
 
         public NetworkClient(AzureContext context)
-            : this(AzureSession.ClientFactory.CreateArmClient<NetworkManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+            : this(AzureSession.Instance.ClientFactory.CreateArmClient<NetworkManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
         }
 

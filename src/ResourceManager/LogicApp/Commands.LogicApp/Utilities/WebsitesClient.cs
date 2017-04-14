@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="context"></param>
         public WebsitesClient(AzureContext context)
         {
-            this.WrappedWebsitesClient = AzureSession.ClientFactory.CreateArmClient<WebSiteManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            this.WrappedWebsitesClient = AzureSession.Instance.ClientFactory.CreateArmClient<WebSiteManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         /// <summary>

@@ -62,7 +62,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                     profile.EnvironmentTable[oldEnv.Name] = oldEnv.ToAzureEnvironment();
                 }
 
-                List<AzureEnvironment> envs = profile.EnvironmentTable.Values.ToList();
+                List<IAzureEnvironment> envs = profile.EnvironmentTable.Values.ToList();
                 foreach (AzureSubscriptionData oldSubscription in data.Subscriptions)
                 {
                     try

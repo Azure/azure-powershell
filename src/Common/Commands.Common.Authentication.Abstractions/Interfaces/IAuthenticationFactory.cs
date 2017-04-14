@@ -38,8 +38,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             IAzureEnvironment environment,
             string tenant,
             SecureString password,
-            ShowDialog promptBehavior,
-            IAuthenticationStore tokenCache,
+            string promptBehavior,
+            IAzureTokenCache tokenCache,
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId);
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             IAzureEnvironment environment,
             string tenant,
             SecureString password,
-            ShowDialog promptBehavior,
+            string promptBehavior,
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId);
 
         /// <summary>

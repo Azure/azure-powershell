@@ -308,7 +308,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
 
         #region Account management
 
-        public AzureAccount AddAccountAndLoadSubscriptions(AzureAccount account, AzureEnvironment environment, SecureString password)
+        public IAzureAccount AddAccountAndLoadSubscriptions(IAzureAccount account, IAzureEnvironment environment, SecureString password)
         {
             if (environment == null)
             {
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             }
         }
 
-        public AzureAccount AddOrSetAccount(AzureAccount account)
+        public IAzureAccount AddOrSetAccount(IAzureAccount account)
         {
             if (account == null)
             {
@@ -377,7 +377,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             return Profile.AccountTable[account.Id];
         }
 
-        public AzureAccount GetAccountOrDefault(string accountName)
+        public IAzureAccount GetAccountOrDefault(string accountName)
         {
             if (string.IsNullOrEmpty(accountName))
             {
@@ -393,7 +393,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             }
         }
 
-        public AzureAccount GetAccountOrNull(string accountName)
+        public IAzureAccount GetAccountOrNull(string accountName)
         {
             if (string.IsNullOrEmpty(accountName))
             {
@@ -410,7 +410,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             }
         }
 
-        public AzureAccount GetAccount(string accountName)
+        public IAzureAccount GetAccount(string accountName)
         {
             var account = GetAccountOrNull(accountName);
 
@@ -422,9 +422,9 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             return account;
         }
 
-        public IEnumerable<AzureAccount> ListAccounts(string accountName)
+        public IEnumerable<IAzureAccount> ListAccounts(string accountName)
         {
-            List<AzureAccount> accounts = new List<AzureAccount>();
+            List<IAzureAccount> accounts = new List<IAzureAccount>();
 
             if (!string.IsNullOrEmpty(accountName))
             {
@@ -441,7 +441,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             return accounts;
         }
 
-        public AzureAccount RemoveAccount(string accountId)
+        public IAzureAccount RemoveAccount(string accountId)
         {
             if (string.IsNullOrEmpty(accountId))
             {
@@ -453,14 +453,14 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
                 throw new ArgumentException(Resources.UserNameIsNotValid, "accountId");
             }
 
-            AzureAccount account = Profile.AccountTable[accountId];
+            IAzureAccount account = Profile.AccountTable[accountId];
             Profile.AccountTable.Remove(account.Id);
 
             foreach (AzureSubscription subscription in account.GetSubscriptions(Profile).ToArray())
             {
                 if (string.Equals(subscription.GetAccount(), accountId, StringComparison.InvariantCultureIgnoreCase))
                 {
-                    AzureAccount remainingAccount = GetSubscriptionAccount(Guid.Parse(subscription.Id));
+                    IAzureAccount remainingAccount = GetSubscriptionAccount(Guid.Parse(subscription.Id));
                     // There's no default account to use, remove the subscription.
                     if (remainingAccount == null)
                     {
@@ -484,10 +484,10 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             return account;
         }
 
-        private AzureAccount GetSubscriptionAccount(Guid subscriptionId)
+        private IAzureAccount GetSubscriptionAccount(Guid subscriptionId)
         {
-            List<AzureAccount> accounts = ListSubscriptionAccounts(subscriptionId);
-            AzureAccount account = accounts.FirstOrDefault(a => a.Type != AzureAccount.AccountType.Certificate);
+            List<IAzureAccount> accounts = ListSubscriptionAccounts(subscriptionId);
+            IAzureAccount account = accounts.FirstOrDefault(a => a.Type != AzureAccount.AccountType.Certificate);
 
             if (account != null)
             {
@@ -505,7 +505,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
 
         #region Subscription management
 
-        public AzureSubscription AddOrSetSubscription(AzureSubscription subscription)
+        public IAzureSubscription AddOrSetSubscription(IAzureSubscription subscription)
         {
             if (subscription == null)
             {
@@ -555,7 +555,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             }
         }
 
-        public AzureSubscription RemoveSubscription(Guid id)
+        public IAzureSubscription RemoveSubscription(Guid id)
         {
             if (!Profile.SubscriptionTable.ContainsKey(id))
             {
@@ -573,7 +573,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             Profile.SubscriptionTable.Remove(id);
 
             // Remove this subscription from its associated AzureAccounts
-            List<AzureAccount> accounts = ListSubscriptionAccounts(id);
+            List<IAzureAccount> accounts = ListSubscriptionAccounts(id);
 
             foreach (AzureAccount account in accounts)
             {
@@ -587,7 +587,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             return subscription;
         }
 
-        public List<AzureSubscription> RefreshSubscriptions(AzureEnvironment environment)
+        public List<IAzureSubscription> RefreshSubscriptions(IAzureEnvironment environment)
         {
             if (environment == null)
             {
@@ -610,7 +610,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             return Profile.SubscriptionTable.Values.ToList();
         }
 
-        public AzureSubscription GetSubscription(Guid id)
+        public IAzureSubscription GetSubscription(Guid id)
         {
             if (Profile.SubscriptionTable.ContainsKey(id))
             {
@@ -622,9 +622,9 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             }
         }
 
-        public AzureSubscription GetSubscription(string name)
+        public IAzureSubscription GetSubscription(string name)
         {
-            AzureSubscription subscription = Profile.SubscriptionTable.Values
+            IAzureSubscription subscription = Profile.SubscriptionTable.Values
                 .FirstOrDefault(s => s.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
 
             if (subscription != null)
@@ -637,7 +637,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             }
         }
 
-        public AzureSubscription SetSubscriptionAsDefault(string name, string accountName)
+        public IAzureSubscription SetSubscriptionAsDefault(string name, string accountName)
         {
             if (name == null)
             {
@@ -654,9 +654,9 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             return SetSubscriptionAsDefault(subscription.GetId(), accountName);
         }
 
-        public AzureSubscription SetSubscriptionAsDefault(Guid id, string accountName)
+        public IAzureSubscription SetSubscriptionAsDefault(Guid id, string accountName)
         {
-            AzureSubscription subscription = GetSubscription(id);
+            IAzureSubscription subscription = GetSubscription(id);
 
             if (subscription != null)
             {
@@ -693,13 +693,13 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             AzureSession.Instance.DataStore.AddCertificate(certificate);
         }
 
-        public List<AzureAccount> ListSubscriptionAccounts(Guid subscriptionId)
+        public List<IAzureAccount> ListSubscriptionAccounts(Guid subscriptionId)
         {
             return Profile.AccountTable.Where(a => a.Value.HasSubscription(subscriptionId))
                 .Select(a => a.Value).ToList();
         }
 
-        public List<AzureSubscription> ImportPublishSettings(string filePath, string environmentName)
+        public List<IAzureSubscription> ImportPublishSettings(string filePath, string environmentName)
         {
             var subscriptions = ListSubscriptionsFromPublishSettingsFile(filePath, environmentName);
             if (subscriptions.Any())
@@ -725,10 +725,11 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
                     }
                 }
             }
+
             return subscriptions;
         }
 
-        private List<AzureSubscription> ListSubscriptionsFromPublishSettingsFile(string filePath, string environment)
+        private List<IAzureSubscription> ListSubscriptionsFromPublishSettingsFile(string filePath, string environment)
         {
             if (string.IsNullOrEmpty(filePath) || !AzureSession.Instance.DataStore.FileExists(filePath))
             {
@@ -737,7 +738,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             return PublishSettingsImporter.ImportAzureSubscription(AzureSession.Instance.DataStore.ReadFileAsStream(filePath), this, environment).ToList();
         }
 
-        private IEnumerable<AzureSubscription> ListSubscriptionsFromServerForAllAccounts(AzureEnvironment environment)
+        private IEnumerable<AzureSubscription> ListSubscriptionsFromServerForAllAccounts(IAzureEnvironment environment)
         {
             // Get all AD accounts and iterate
             var accountNames = Profile.AccountTable.Keys;
@@ -766,7 +767,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             }
         }
 
-        private IEnumerable<AzureSubscription> ListSubscriptionsFromServer(AzureAccount account, AzureEnvironment environment, SecureString password, ShowDialog promptBehavior)
+        private IEnumerable<AzureSubscription> ListSubscriptionsFromServer(IAzureAccount account, IAzureEnvironment environment, SecureString password, string promptBehavior)
         {
             string[] tenants = null;
             try
@@ -820,7 +821,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             }
         }
 
-        private string[] LoadAccountTenants(AzureAccount account, AzureEnvironment environment, SecureString password, ShowDialog promptBehavior)
+        private string[] LoadAccountTenants(IAzureAccount account, IAzureEnvironment environment, SecureString password, string promptBehavior)
         {
             var commonTenantToken = AzureSession.Instance.AuthenticationFactory.Authenticate(account, environment,
                 environment.AdTenant, password, promptBehavior);
@@ -839,7 +840,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             }
         }
 
-        private AzureSubscription MergeSubscriptionProperties(AzureSubscription subscription1, AzureSubscription subscription2)
+        private IAzureSubscription MergeSubscriptionProperties(IAzureSubscription subscription1, IAzureSubscription subscription2)
         {
             if (subscription1 == null || subscription2 == null)
             {
@@ -895,7 +896,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             return mergedSubscription;
         }
 
-        private AzureEnvironment MergeEnvironmentProperties(AzureEnvironment environment1, AzureEnvironment environment2)
+        private IAzureEnvironment MergeEnvironmentProperties(IAzureEnvironment environment1, IAzureEnvironment environment2)
         {
             if (environment1 == null || environment2 == null)
             {
@@ -935,8 +936,8 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
                 mergedEnvironment.Gallery = environment1.Gallery ?? environment2.Gallery;
                 mergedEnvironment.Graph = environment1.Graph ?? environment2.Graph;
                 mergedEnvironment.GraphEndpointResourceId = environment1.GraphEndpointResourceId ?? environment2.GraphEndpointResourceId;
-                mergedEnvironment.ManagementPortalUrl = environment1.ManagementPortalUrl ?? environment2.ManagementPortalUrl;
-                mergedEnvironment.PublishSettingsFileUrl = environment1.PublishSettingsFileUrl ?? environment2.PublishSettingsFileUrl;
+                mergedEnvironment.ManagementPortal = environment1.ManagementPortal ?? environment2.ManagementPortal;
+                mergedEnvironment.PublishSettingsFile = environment1.PublishSettingsFile ?? environment2.PublishSettingsFile;
                 mergedEnvironment.ResourceManager = environment1.ResourceManager ?? environment2.ResourceManager;
                 mergedEnvironment.ServiceManagement = environment1.ServiceManagement ?? environment2.ServiceManagement;
                 mergedEnvironment.SqlDatabaseDnsSuffix = environment1.SqlDatabaseDnsSuffix ?? environment2.SqlDatabaseDnsSuffix;
@@ -947,7 +948,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             return mergedEnvironment;
         }
 
-        private AzureAccount MergeAccountProperties(AzureAccount account1, AzureAccount account2)
+        private AzureAccount MergeAccountProperties(IAzureAccount account1, IAzureAccount account2)
         {
             if (account1 == null || account2 == null)
             {
@@ -993,13 +994,13 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             return mergeAccount;
         }
 
-        private void CopyAccount(AzureAccount sourceAccount, AzureAccount targetAccount)
+        private void CopyAccount(IAzureAccount sourceAccount, IAzureAccount targetAccount)
         {
             targetAccount.Id = sourceAccount.Id;
             targetAccount.Type = sourceAccount.Type;
         }
 
-        private IEnumerable<AzureSubscription> ListServiceManagementSubscriptions(AzureAccount account, AzureEnvironment environment, SecureString password, ShowDialog promptBehavior, string[] tenants)
+        private IEnumerable<AzureSubscription> ListServiceManagementSubscriptions(IAzureAccount account, IAzureEnvironment environment, SecureString password, string promptBehavior, string[] tenants)
         {
             List<AzureSubscription> result = new List<AzureSubscription>();
 
@@ -1012,7 +1013,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             {
                 try
                 {
-                    var tenantAccount = new AzureAccount();
+                    IAzureAccount tenantAccount = new AzureAccount();
                     CopyAccount(account, tenantAccount);
                     var tenantToken = AzureSession.Instance.AuthenticationFactory.Authenticate(tenantAccount, environment, tenant, password, ShowDialog.Never);
                     if (string.Equals(tenantAccount.Id, account.Id, StringComparison.InvariantCultureIgnoreCase))
@@ -1087,7 +1088,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
 
         #region Environment management
 
-        public AzureEnvironment GetEnvironmentOrDefault(string name)
+        public IAzureEnvironment GetEnvironmentOrDefault(string name)
         {
             if (string.IsNullOrEmpty(name) &&
                 Profile.DefaultSubscription == null)
@@ -1109,7 +1110,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             }
         }
 
-        public AzureEnvironment GetEnvironment(string name, string serviceEndpoint, string resourceEndpoint)
+        public IAzureEnvironment GetEnvironment(string name, string serviceEndpoint, string resourceEndpoint)
         {
             if (serviceEndpoint == null)
             {
@@ -1142,7 +1143,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             }
         }
 
-        public List<AzureEnvironment> ListEnvironments(string name)
+        public List<IAzureEnvironment> ListEnvironments(string name)
         {
             if (string.IsNullOrEmpty(name))
             {
@@ -1154,11 +1155,11 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             }
             else
             {
-                return new AzureEnvironment[0].ToList();
+                return new IAzureEnvironment[0].ToList();
             }
         }
 
-        public AzureEnvironment RemoveEnvironment(string name)
+        public IAzureEnvironment RemoveEnvironment(string name)
         {
             if (string.IsNullOrEmpty(name))
             {
@@ -1186,7 +1187,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             }
         }
 
-        public AzureEnvironment AddOrSetEnvironment(AzureEnvironment environment)
+        public IAzureEnvironment AddOrSetEnvironment(AzureEnvironment environment)
         {
             if (environment == null)
             {

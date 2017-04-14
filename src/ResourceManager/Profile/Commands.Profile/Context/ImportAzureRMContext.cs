@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 ConfirmAction(string.Format(Resources.ProcessImportContextFromFile, Path), Resources.ImportContextTarget, () =>
                 {
-                    if (!Common.Authentication.AzureSession.DataStore.FileExists(Path))
+                    if (!Common.Authentication.AzureSession.Instance.DataStore.FileExists(Path))
                     {
                         throw new PSArgumentException(string.Format(
                             Microsoft.Azure.Commands.Profile.Properties.Resources.FileNotFound,

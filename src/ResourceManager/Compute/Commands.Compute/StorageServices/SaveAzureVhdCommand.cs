@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
             if (storagekey == null)
             {
-                var storageClient = AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(
+                var storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(
                         DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
 
 

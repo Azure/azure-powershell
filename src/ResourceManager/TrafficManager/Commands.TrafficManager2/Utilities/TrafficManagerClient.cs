@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
         public Action<string> ErrorLogger { get; set; }
 
         public TrafficManagerClient(AzureContext context)
-            : this(AzureSession.ClientFactory.CreateClient<TrafficManagerManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+            : this(AzureSession.Instance.ClientFactory.CreateClient<TrafficManagerManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
         }
 

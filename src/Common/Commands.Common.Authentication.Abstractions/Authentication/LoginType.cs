@@ -17,16 +17,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     /// <summary>
     /// The type of user account
     /// </summary>
-    public enum LoginType
+    public static class LoginType
     {
         /// <summary>
         /// User is logging in with orgid (work or school) credentials
         /// </summary>
-        OrgId,
+        public const string OrgId = "OrgId",
 
         /// <summary>
         /// User is logging in with liveid (personal) credentials
         /// </summary>
-        LiveId
+        LiveId = "LiveId";
     }
 }

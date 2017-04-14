@@ -156,9 +156,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 }
             }
 
-            cloudCredentials = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(azureProfile.Context);
+            cloudCredentials = AzureSession.Instance.AuthenticationFactory.GetSubscriptionCloudCredentials(azureProfile.Context);
             this.recoveryServicesClient =
-            AzureSession.ClientFactory.CreateCustomClient<SiteRecoveryVaultManagementClient>(
+            AzureSession.Instance.ClientFactory.CreateCustomClient<SiteRecoveryVaultManagementClient>(
                 asrVaultCreds.ResourceNamespace,
                 asrVaultCreds.ARMResourceType,
                 cloudCredentials,
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             }
             
             SiteRecoveryManagementClient siteRecoveryClient =
-                AzureSession.ClientFactory.CreateCustomClient<SiteRecoveryManagementClient>(
+                AzureSession.Instance.ClientFactory.CreateCustomClient<SiteRecoveryManagementClient>(
                 asrVaultCreds.ResourceName,
                 asrVaultCreds.ResourceGroupName,
                 asrVaultCreds.ResourceNamespace,

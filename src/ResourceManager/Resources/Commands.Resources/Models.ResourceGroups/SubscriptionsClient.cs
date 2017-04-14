@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// </summary>
         /// <param name="context">Profile containing resources to manipulate</param>
         public SubscriptionsClient(AzureContext context)
-            : this(AzureSession.ClientFactory.CreateClient<SubscriptionClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+            : this(AzureSession.Instance.ClientFactory.CreateClient<SubscriptionClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
 
         }

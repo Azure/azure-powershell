@@ -37,15 +37,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void VerifyUserAgentValuesAreTransmitted()
         {
-            var storedClientFactory = AzureSession.ClientFactory;
-            var storedAuthFactory = AzureSession.AuthenticationFactory;
+            var storedClientFactory = AzureSession.Instance.ClientFactory;
+            var storedAuthFactory = AzureSession.Instance.AuthenticationFactory;
             try
             {
                 var authFactory = new AuthenticationFactory();
                 authFactory.TokenProvider = new MockAccessTokenProvider(Guid.NewGuid().ToString(), "user@contoso.com");
-                AzureSession.AuthenticationFactory = authFactory;
+                AzureSession.Instance.AuthenticationFactory = authFactory;
                 var factory = new ClientFactory();
-                AzureSession.ClientFactory = factory;
+                AzureSession.Instance.ClientFactory = factory;
                 factory.UserAgents.Clear();
                 factory.AddUserAgent("agent1");
                 factory.AddUserAgent("agent1", "1.0.0");
@@ -82,8 +82,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             }
             finally
             {
-                AzureSession.ClientFactory = storedClientFactory;
-                AzureSession.AuthenticationFactory = storedAuthFactory;
+                AzureSession.Instance.ClientFactory = storedClientFactory;
+                AzureSession.Instance.AuthenticationFactory = storedAuthFactory;
             }
         }
     }

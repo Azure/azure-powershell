@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// <param name="context">Profile containing resources to manipulate</param>
         public SubscriptionSdkClient(AzureContext context)
             : this(
-                AzureSession.ClientFactory.CreateArmClient<SubscriptionClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+                AzureSession.Instance.ClientFactory.CreateArmClient<SubscriptionClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
 
         }

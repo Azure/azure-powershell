@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
             catch
             {
-                session.TokenCache = new AuthenticationStoreTokenCache(new AuthenticationStore());
+                session.TokenCache = new AuthenticationStoreTokenCache(new AzureTokenCache());
             }
 
             return session;

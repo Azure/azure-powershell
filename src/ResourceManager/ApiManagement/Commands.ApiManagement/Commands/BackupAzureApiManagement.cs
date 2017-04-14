@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
+    using Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.ApiManagement.Models;
     using Microsoft.WindowsAzure.Commands.Common.Storage;
     using System.Management.Automation;
@@ -44,7 +45,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             Mandatory = true,
             HelpMessage = "The storage connection context.")]
         [ValidateNotNull]
-        public AzureStorageContext StorageContext { get; set; }
+        public IStorageContext StorageContext { get; set; }
 
         [Parameter(
             Mandatory = true,

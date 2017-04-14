@@ -87,6 +87,8 @@
     <Compile Include="AuthenticationStore.cs" />
     <Compile Include="Authentication\AadAuthenticationException.cs" />
     <Compile Include="AzureAccount.cs" />
+    <Compile Include="AzureRmProfileProvider.cs" />
+    <Compile Include="AzureSMProfileProvider.cs" />
     <Compile Include="Extensions\AzureAccountExtensions.cs" />
     <Compile Include="AzureEnvironmentConstants.cs" />
     <Compile Include="Extensions\AzureEnvironmentExtensions.cs" />
@@ -96,6 +98,7 @@
     <Compile Include="Extensions\DictionaryExtensions.cs" />
     <Compile Include="EnvironmentName.cs" />
     <Compile Include="Extensions\ModelExtensions.cs" />
+    <Compile Include="Extensions\AzureTenantExtensions.cs" />
     <Compile Include="Interfaces\IAccessToken.cs" />
     <Compile Include="Interfaces\IExtensibleSettings.cs" />
     <Compile Include="Interfaces\IExtensibleModel.cs" />

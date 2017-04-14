@@ -45,10 +45,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     endpoint = environment.Graph;
                     break;
                 case AzureEnvironment.Endpoint.ManagementPortalUrl:
-                    endpoint = environment.ManagementPortalUrl;
+                    endpoint = environment.ManagementPortal;
                     break;
                 case AzureEnvironment.Endpoint.PublishSettingsFileUrl:
-                    endpoint = environment.PublishSettingsFileUrl;
+                    endpoint = environment.PublishSettingsFile;
                     break;
                 case AzureEnvironment.Endpoint.ResourceManager:
                     endpoint = environment.ResourceManager;
@@ -117,10 +117,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     propertyValue = environment.Graph.ToString();
                     break;
                 case AzureEnvironment.Endpoint.ManagementPortalUrl:
-                    propertyValue = environment.ManagementPortalUrl.ToString();
+                    propertyValue = environment.ManagementPortal.ToString();
                     break;
                 case AzureEnvironment.Endpoint.PublishSettingsFileUrl:
-                    propertyValue = environment.PublishSettingsFileUrl.ToString();
+                    propertyValue = environment.PublishSettingsFile.ToString();
                     break;
                 case AzureEnvironment.Endpoint.ResourceManager:
                     propertyValue = environment.ResourceManager.ToString();
@@ -221,10 +221,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     environment.Graph = new Uri(propertyValue);
                     break;
                 case AzureEnvironment.Endpoint.ManagementPortalUrl:
-                    environment.ManagementPortalUrl = new Uri(propertyValue);
+                    environment.ManagementPortal = new Uri(propertyValue);
                     break;
                 case AzureEnvironment.Endpoint.PublishSettingsFileUrl:
-                    environment.PublishSettingsFileUrl = new Uri(propertyValue);
+                    environment.PublishSettingsFile = new Uri(propertyValue);
                     break;
                 case AzureEnvironment.Endpoint.ResourceManager:
                     environment.ResourceManager = new Uri(propertyValue);
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 realm = string.Empty;
             }
 
-            return  environment. ManagementPortalUrl + realm;
+            return  environment. ManagementPortal + realm;
         }
 
         /// <summary>
@@ -339,7 +339,92 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             {
                 realm = string.Empty;
             }
-            return environment.PublishSettingsFileUrl + realm;
+            return environment.PublishSettingsFile + realm;
+        }
+
+        public static void CopyFrom(this IAzureEnvironment environment, IAzureEnvironment other)
+        {
+            environment.Name = other.Name;
+            environment.OnPremise =  other.OnPremise;
+            if ( other.IsEndpointSet(AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId))
+            {
+                environment.ActiveDirectoryServiceEndpointResourceId =  other.ActiveDirectoryServiceEndpointResourceId;
+            }
+            if ( other.IsEndpointSet(AzureEnvironment.Endpoint.AdTenant))
+            {
+                environment.AdTenant =  other.AdTenant;
+            }
+            if ( other.IsEndpointSet(AzureEnvironment.Endpoint.Gallery))
+            {
+                environment.Gallery =  other.Gallery;
+            }
+            if ( other.IsEndpointSet(AzureEnvironment.Endpoint.ManagementPortalUrl))
+            {
+                environment.ManagementPortal =  other.ManagementPortal;
+            }
+            if ( other.IsEndpointSet(AzureEnvironment.Endpoint.ServiceManagement))
+            {
+                environment.ServiceManagement =  other.ServiceManagement;
+            }
+            if ( other.IsEndpointSet(AzureEnvironment.Endpoint.PublishSettingsFileUrl))
+            {
+                environment.PublishSettingsFile =  other.PublishSettingsFile;
+            }
+            if ( other.IsEndpointSet(AzureEnvironment.Endpoint.ResourceManager))
+            {
+                environment.ResourceManager =  other.ResourceManager;
+            }
+            if ( other.IsEndpointSet(AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix))
+            {
+                environment.SqlDatabaseDnsSuffix =  other.SqlDatabaseDnsSuffix;
+            }
+            if ( other.IsEndpointSet(AzureEnvironment.Endpoint.StorageEndpointSuffix))
+            {
+                environment.StorageEndpointSuffix =  other.StorageEndpointSuffix;
+            }
+            if ( other.IsEndpointSet(AzureEnvironment.Endpoint.ActiveDirectory))
+            {
+                environment.ActiveDirectory =  other.ActiveDirectory;
+            }
+            if ( other.IsEndpointSet(AzureEnvironment.Endpoint.Graph))
+            {
+                environment.Graph =  other.Graph;
+            }
+            if ( other.IsEndpointSet(AzureEnvironment.Endpoint.GraphEndpointResourceId))
+            {
+                environment.GraphEndpointResourceId =  other.GraphEndpointResourceId;
+            }
+            if ( other.IsEndpointSet(AzureEnvironment.Endpoint.TrafficManagerDnsSuffix))
+            {
+                environment.TrafficManagerDnsSuffix =  other.TrafficManagerDnsSuffix;
+            }
+            if ( other.IsEndpointSet(AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix))
+            {
+                environment.AzureKeyVaultDnsSuffix =  other.AzureKeyVaultDnsSuffix;
+            }
+            if ( other.IsEndpointSet(AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix))
+            {
+                environment.AzureDataLakeStoreFileSystemEndpointSuffix =  other.AzureDataLakeStoreFileSystemEndpointSuffix;
+            }
+            if ( other.IsEndpointSet(AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix))
+            {
+                environment.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix =
+                     other.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix;
+            }
+            if ( other.IsEndpointSet(AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId))
+            {
+                environment.AzureKeyVaultServiceEndpointResourceId =
+                     other.AzureKeyVaultServiceEndpointResourceId;
+            }
+
+            environment.VersionProfiles.Clear();
+            foreach (var profile in other.VersionProfiles)
+            {
+                environment.VersionProfiles.Add(profile);
+            }
+
+            environment.CopyPropertiesFrom(other);
+
         }
     }
 

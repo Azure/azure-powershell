@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     /// An implementation of the Adal token cache that stores the cache items
     /// in the DPAPI-protected file.
     /// </summary>
-    public class ProtectedFileTokenCache : TokenCache, IAuthenticationStore
+    public class ProtectedFileTokenCache : TokenCache, IAzureTokenCache
     {
         private static readonly string CacheFileName = Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.TokenCacheFile);
 

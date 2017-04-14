@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// <summary>
         /// Gets or sets the token cache store.
         /// </summary>
-        public IAuthenticationStore TokenCache { get; set; }
+        public IAzureTokenCache TokenCache { get; set; }
 
         /// <summary>
         /// Gets or sets profile directory.
@@ -70,6 +70,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// Gets or sets old profile file name.
         /// </summary>
         public string OldProfileFile { get; set; }
+
+        /// <summary>
+        /// The directory contianing the ARM ContextContainer
+        /// </summary>
+        public string ARMProfileDirectory { get; set; }
+
+        /// <summary>
+        /// The name fo the ARMContextContainer
+        /// </summary>
+        public string ARMProfileFile { get; set; }
 
         /// <summary>
         /// Custom metadata for the session

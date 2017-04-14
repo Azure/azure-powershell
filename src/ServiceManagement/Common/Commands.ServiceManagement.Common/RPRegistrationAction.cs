@@ -105,7 +105,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common.Models
             }
         }
 
-        private void UpdateSubscriptionRegisteredProviders(AzureSMProfile profile, AzureSubscription subscription, List<string> providers)
+        private void UpdateSubscriptionRegisteredProviders(AzureSMProfile profile, IAzureSubscription subscription, List<string> providers)
         {
             if (providers != null && providers.Count > 0)
             {

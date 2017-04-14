@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
                 BlobUri osBlobUri = null;
                 if (BlobUri.TryParseUri(new Uri(blobUri), out osBlobUri))
                 {
-                    StorageManagementClient storageClient = AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(azContext, AzureEnvironment.Endpoint.ResourceManager);
+                    StorageManagementClient storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(azContext, AzureEnvironment.Endpoint.ResourceManager);
 
                     // Need to convert osBlobUri.StorageAccountName into corresponding resource group name
 
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
         public void RemoveSnapshot(AzureVMBackupConfig vmConfig, string snapshotTag, VirtualMachineExtensionBaseCmdlet virtualMachineExtensionBaseCmdlet)
         {
             var virtualMachineResponse = virtualMachineExtensionBaseCmdlet.ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(vmConfig.ResourceGroupName, vmConfig.VMName);
-            StorageManagementClient storageClient = AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(virtualMachineExtensionBaseCmdlet.DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
+            StorageManagementClient storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(virtualMachineExtensionBaseCmdlet.DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
 
             StorageCredentialsFactory storageCredentialsFactory = new StorageCredentialsFactory(vmConfig.ResourceGroupName, storageClient, virtualMachineExtensionBaseCmdlet.DefaultProfile.Context.Subscription);
 

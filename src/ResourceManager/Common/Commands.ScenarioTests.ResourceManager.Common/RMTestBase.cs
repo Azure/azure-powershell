@@ -61,13 +61,13 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 
             AzureRmProfileProvider.Instance.Profile = currentProfile;
 
-            // Now override AzureSession.DataStore to use the MemoryDataStore
-            if (AzureSession.DataStore != null && !(AzureSession.DataStore is MemoryDataStore))
+            // Now override AzureSession.Instance.DataStore to use the MemoryDataStore
+            if (AzureSession.Instance.DataStore != null && !(AzureSession.Instance.DataStore is MemoryDataStore))
             {
-                AzureSession.DataStore = new MemoryDataStore();
+                AzureSession.Instance.DataStore = new MemoryDataStore();
             }
 
-            AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
+            AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
             TestMockSupport.RunningMocked = true;
             //This is needed for AutoRest Authentication
             SynchronizationContext.SetSynchronizationContext(new SynchronizationContext());

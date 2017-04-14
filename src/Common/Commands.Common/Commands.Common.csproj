@@ -141,8 +141,6 @@
     <Compile Include="AzurePSCmdlet.cs" />
     <Compile Include="AzurePSDataCollectionProfile.cs" />
     <Compile Include="AzurePowerShell.cs" />
-    <Compile Include="AzureRmProfileProvider.cs" />
-    <Compile Include="AzureSMProfileProvider.cs" />
     <Compile Include="Extensions\ConcurrentQueueExtensions.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Extensions\ContextExtensions.cs" />

@@ -40,12 +40,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <summary>
         /// Gets or sets the token cache store.
         /// </summary>
-        IAuthenticationStore TokenCache { get; set; }
+        IAzureTokenCache TokenCache { get; set; }
 
         /// <summary>
         /// Gets or sets profile directory.
         /// </summary>
-       string ProfileDirectory { get; set; }
+        string ProfileDirectory { get; set; }
 
         /// <summary>
         /// Gets or sets token cache file path.
@@ -66,5 +66,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// Gets or sets old profile file name.
         /// </summary>
         string OldProfileFile { get; set; }
+
+        /// <summary>
+        /// The directory contianing the ARM Profile
+        /// </summary>
+        string ARMProfileDirectory { get; set; }
+
+        /// <summary>
+        /// The file name of the ARM Profile file
+        /// </summary>
+        string ARMProfileFile { get; set; }
     }
 }

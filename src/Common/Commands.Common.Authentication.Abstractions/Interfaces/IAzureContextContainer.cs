@@ -19,31 +19,31 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
     /// <summary>
     /// Storage container for all targeted environments, allowing the user to store named target configurations
     /// </summary>
-    public interface IAzureContextContainer: IDictionary<string, AzureContext>, IExtensibleModel
+    public interface IAzureContextContainer: IDictionary<string, IAzureContext>, IExtensibleModel
     {
         /// <summary>
         /// The azure target configuration to use by default
         /// </summary>
-        AzureContext DefaultContext { get; set; }
+        IAzureContext DefaultContext { get; set; }
 
         /// <summary>
         /// The set of environments that can be targeted
         /// </summary>
-        IEnumerable<AzureEnvironment> Environments { get; }
+        IEnumerable<IAzureEnvironment> Environments { get; }
 
         /// <summary>
         /// The authentication data used across environments
         /// </summary>
-        IAuthenticationStore TokenStore { get; set; }
+        IAzureTokenCache TokenStore { get; set; }
 
         /// <summary>
         /// The set of all subscriptions used in the container
         /// </summary>
-        IEnumerable<AzureSubscription> Subscriptions { get; }
+        IEnumerable<IAzureSubscription> Subscriptions { get; }
 
         /// <summary>
         /// The set of all accounts in the container
         /// </summary>
-        IEnumerable<AzureAccount> Accounts { get; }
+        IEnumerable<IAzureAccount> Accounts { get; }
     }
 }

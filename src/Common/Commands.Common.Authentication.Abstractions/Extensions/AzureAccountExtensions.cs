@@ -109,10 +109,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <param name="account">The account to look for</param>
         /// <param name="profile">The profile to search</param>
         /// <returns>A list of subscriptions available to the given account</returns>
-        public static List<AzureSubscription> GetSubscriptions(this IAzureAccount account, IAzureContextContainer profile)
+        public static List<IAzureSubscription> GetSubscriptions(this IAzureAccount account, IAzureContextContainer profile)
         {
             string[] subscriptions = new string[0];
-            List<AzureSubscription> subscriptionsList = new List<AzureSubscription>();
+            List<IAzureSubscription> subscriptionsList = new List<IAzureSubscription>();
             if (account.IsPropertySet(AzureAccount.Property.Subscriptions))
             {
                 subscriptions = account.GetSubscriptions();
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// </summary>
         /// <param name="account">The account to change</param>
         /// <param name="subscriptions">The subscriptions to replace the current subscription list in the account</param>
-        public static void SetSubscriptions(this IAzureAccount account, List<AzureSubscription> subscriptions)
+        public static void SetSubscriptions(this IAzureAccount account, List<IAzureSubscription> subscriptions)
         {
             account.SetSubscriptions(subscriptions.Select(s => s.Id.ToString()).ToArray());
         }
@@ -179,6 +179,23 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     account.ExtendedProperties.Remove(AzureAccount.Property.Subscriptions);
                 }
             }
+        }
+
+        /// <summary>
+        /// Copy account properties from the given account
+        /// </summary>
+        /// <param name="account">The account to copy to (target)</param>
+        /// <param name="other">The account to copy from (source)</param>
+        public static void CopyFrom(this IAzureAccount account, IAzureAccount source)
+        {
+            account.Credential = source.Credential;
+            account.Id = source.Id;
+            account.Type = source.Type;
+            foreach (var item in source.TenantMap)
+            {
+                account.TenantMap[item.Key] = item.Value;
+            }
+            account.CopyPropertiesFrom(source);
         }
     }
 }

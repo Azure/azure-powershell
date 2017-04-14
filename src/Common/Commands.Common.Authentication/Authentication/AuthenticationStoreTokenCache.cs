@@ -19,9 +19,9 @@ using System.Threading;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
-    public class AuthenticationStoreTokenCache : TokenCache, IAuthenticationStore, IDisposable
+    public class AuthenticationStoreTokenCache : TokenCache, IAzureTokenCache, IDisposable
     {
-        AuthenticationStore _tokenStore;
+        AzureTokenCache _tokenStore;
 
         public byte[] CacheData
         {
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
         }
 
-        public AuthenticationStoreTokenCache(AuthenticationStore store) : base()
+        public AuthenticationStoreTokenCache(AzureTokenCache store) : base()
         {
             if (null == store)
             {
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// </summary>
         /// <param name="cache">The cache to copy</param>
         /// <param name="store">The store to use for persisting state</param>
-        public AuthenticationStoreTokenCache(TokenCache cache, AuthenticationStore store) : this(store)
+        public AuthenticationStoreTokenCache(TokenCache cache, AzureTokenCache store) : this(store)
         {
             if (null == cache)
             {
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// Create a token cache, copying any data from the given token cache
         /// </summary>
         /// <param name="cache">The cache to copy</param>
-        public AuthenticationStoreTokenCache(TokenCache cache) : this(cache, new AuthenticationStore())
+        public AuthenticationStoreTokenCache(TokenCache cache) : this(cache, new AzureTokenCache())
         {
         }
 

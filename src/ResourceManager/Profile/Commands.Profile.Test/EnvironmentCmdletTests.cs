@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             dataStore = new MemoryDataStore();
-            AzureSession.DataStore = dataStore;
+            AzureSession.Instance.DataStore = dataStore;
         }
 
         public void Cleanup()

@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
     /// <summary>
     /// State storage for token cache
     /// </summary>
-    public interface IAuthenticationStore
+    public interface IAzureTokenCache
     {
         /// <summary>
         /// The serialized data from the token cache.

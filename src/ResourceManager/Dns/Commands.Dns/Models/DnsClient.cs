@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
         };
 
         public DnsClient(AzureContext context)
-            : this(AzureSession.ClientFactory.CreateArmClient<DnsManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+            : this(AzureSession.Instance.ClientFactory.CreateArmClient<DnsManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
         }
 

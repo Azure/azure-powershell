@@ -120,5 +120,38 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         {
             subscription.SetProperty(AzureSubscription.Property.Default, "True");
         }
+
+        /// <summary>
+        /// Get the tenants associated with this subscription
+        /// </summary>
+        /// <param name="subscription">The subscription to check</param>
+        /// <returns>The list of tenants</returns>
+        public static string GetTenant(this IAzureSubscription subscription)
+        {
+            return subscription.GetProperty(AzureSubscription.Property.Tenants);
+        }
+
+        /// <summary>
+        /// Set the tenants associated with thsi susbcription
+        /// </summary>
+        /// <param name="subscription">The subscription to set</param>
+        /// <param name="tenants">The tenants associated with the subscription</param>
+        public static void SetTenant(this IAzureSubscription subscription, string tenant)
+        {
+            subscription.SetProperty(AzureSubscription.Property.Tenants, tenant);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="subscription"></param>
+        /// <param name="other"></param>
+        public static void CopyFrom(this IAzureSubscription subscription, IAzureSubscription other)
+        {
+            subscription.Id = other.Id;
+            subscription.Name = other.Name;
+            subscription.State = other.State;
+            subscription.CopyPropertiesFrom(other);
+        }
     }
 }

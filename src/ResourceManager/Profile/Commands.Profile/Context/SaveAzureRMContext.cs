@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Profile
                     string.Format(Resources.ProfileWriteWarning, Path),
                     string.Empty))
                 {
-                    if (!AzureSession.DataStore.FileExists(Path) || Force ||
+                    if (!AzureSession.Instance.DataStore.FileExists(Path) || Force ||
                         ShouldContinue(string.Format(Resources.FileOverwriteMessage, Path), 
                         Resources.FileOverwriteCaption))
                     {
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Profile
                         throw new ArgumentException(Resources.AzureProfileMustNotBeNull);
                     }
 
-                    if (!AzureSession.DataStore.FileExists(Path) || Force.IsPresent ||
+                    if (!AzureSession.Instance.DataStore.FileExists(Path) || Force.IsPresent ||
                         ShouldContinue(string.Format(Resources.FileOverwriteMessage, Path), 
                         Resources.FileOverwriteCaption))
                     {

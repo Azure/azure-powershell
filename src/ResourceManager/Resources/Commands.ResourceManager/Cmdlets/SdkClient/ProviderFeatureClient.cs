@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// <param name="context">The azure context</param>
         public ProviderFeatureClient(AzureContext context)
         {
-            this.FeaturesManagementClient = AzureSession.ClientFactory.CreateArmClient<FeatureClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            this.FeaturesManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<FeatureClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         /// <summary>

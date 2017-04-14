@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
         /// <param name="context"></param>
         public ActiveDirectoryClient(AzureContext context)
         {
-            GraphClient = AzureSession.ClientFactory.CreateArmClient<GraphRbacManagementClient>(
+            GraphClient = AzureSession.Instance.ClientFactory.CreateArmClient<GraphRbacManagementClient>(
                 context, AzureEnvironment.Endpoint.Graph);
 
             GraphClient.TenantID = context.Tenant.Id.ToString();

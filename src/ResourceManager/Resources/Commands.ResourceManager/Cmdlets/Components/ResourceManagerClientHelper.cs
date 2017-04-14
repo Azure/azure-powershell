@@ -46,8 +46,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                 endpointUri: endpointUri,
                 httpClientHelper: HttpClientHelperFactory.Instance
                 .CreateHttpClientHelper(
-                        credentials: AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context),
-                        headerValues: AzureSession.ClientFactory.UserAgents,
+                        credentials: AzureSession.Instance.AuthenticationFactory.GetSubscriptionCloudCredentials(context),
+                        headerValues: AzureSession.Instance.ClientFactory.UserAgents,
                         cmdletHeaderValues: cmdletHeaderValues));
         }
     }

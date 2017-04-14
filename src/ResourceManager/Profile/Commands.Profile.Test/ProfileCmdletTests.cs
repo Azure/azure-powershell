@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             dataStore = new MemoryDataStore();
-            AzureSession.DataStore = dataStore;
+            AzureSession.Instance.DataStore = dataStore;
             commandRuntimeMock = new MockCommandRuntime();
-            AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
+            AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
         }
 
         [Fact]
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            Assert.True(AzureSession.DataStore.FileExists("X:\\foo.json"));
+            Assert.True(AzureSession.Instance.DataStore.FileExists("X:\\foo.json"));
             var profile2 = new AzureRMProfile("X:\\foo.json");
             Assert.True(profile2.Environments.ContainsKey("foo"));
         }
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            Assert.True(AzureSession.DataStore.FileExists("X:\\foo.json"));
+            Assert.True(AzureSession.Instance.DataStore.FileExists("X:\\foo.json"));
             var profile2 = new AzureRMProfile("X:\\foo.json");
             Assert.True(profile2.Environments.ContainsKey("foo"));
         }

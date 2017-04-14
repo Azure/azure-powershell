@@ -88,10 +88,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             /// If this property existed on the subscription indicates that it's default one.
             /// </summary>
             Default = "Default",
-
             StorageAccount = "StorageAccount",
             Environment = "Environment",
-                Account = "Account";
+            Account = "Account";
         }
     }
 }

@@ -492,7 +492,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         //Get ApplicationId for the given ObjectId.
         private Guid GetApplicationId()
         {
-            GraphRbacManagementClient graphClient = AzureSession.ClientFactory.CreateArmClient<GraphRbacManagementClient>(
+            GraphRbacManagementClient graphClient = AzureSession.Instance.ClientFactory.CreateArmClient<GraphRbacManagementClient>(
                 DefaultProfile.Context, AzureEnvironment.Endpoint.Graph);
 
             graphClient.TenantID = DefaultProfile.Context.Tenant.Id.ToString();

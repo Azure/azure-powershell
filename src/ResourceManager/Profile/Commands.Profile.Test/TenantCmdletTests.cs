@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             dataStore = new MemoryDataStore();
-            AzureSession.DataStore = dataStore;
+            AzureSession.Instance.DataStore = dataStore;
             commandRuntimeMock = new MockCommandRuntime();
             AzureRmProfileProvider.Instance.Profile = new AzureRMProfile();
         }

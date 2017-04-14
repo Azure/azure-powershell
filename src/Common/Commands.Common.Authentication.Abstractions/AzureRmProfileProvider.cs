@@ -16,7 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System;
 using System.Threading;
 
-namespace Microsoft.WindowsAzure.Commands.Common
+namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
     public abstract class AzureRmProfileProvider: IProfileProvider 
     {

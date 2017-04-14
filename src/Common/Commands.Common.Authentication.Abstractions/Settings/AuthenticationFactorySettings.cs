@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <summary>
         /// The default token cache used for the authentication factory
         /// </summary>
-        public IAuthenticationStore TokenCache { get; set; }
+        public IAzureTokenCache TokenCache { get; set; }
         /// <summary>
         /// The specific settings for the given authentication factory
         /// </summary>

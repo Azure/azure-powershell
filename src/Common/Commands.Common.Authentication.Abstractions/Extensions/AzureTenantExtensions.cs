@@ -12,27 +12,32 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
 using System;
 
-namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
+namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
-    public class MockAccessToken : IAccessToken
+    public static class AzureTenantExtensions
     {
-        private string _tenantId = String.Empty;
-        public void AuthorizeRequest(Action<string, string> authTokenSetter)
+        /// <summary>
+        /// Get the tenant Id as a Guid
+        /// </summary>
+        /// <param name="tenant">The tenant to check</param>
+        /// <returns>The tenant ID as a Guid</returns>
+        public static Guid GetId(this IAzureTenant tenant)
         {
-            authTokenSetter("Bearer", AccessToken);
+            return new Guid(tenant.Id);
         }
 
-        public string AccessToken { get; set; }
-        public string UserId { get; set; }
-        public string LoginType { get; set; }
-
-        public string TenantId
+        /// <summary>
+        /// Copy tenaht properties from another tenant
+        /// </summary>
+        /// <param name="tenant"></param>
+        /// <param name="other"></param>
+        public static void CopyFrom(this IAzureTenant tenant, IAzureTenant other)
         {
-            get { return _tenantId; }
-            set { _tenantId = value; }
+            tenant.Id = other.Id;
+            tenant.Directory = other.Directory;
+            tenant.CopyFrom(other);
         }
     }
 }

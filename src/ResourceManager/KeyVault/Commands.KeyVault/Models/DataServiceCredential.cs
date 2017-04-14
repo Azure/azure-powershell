@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             try
             {
-                var tokenCache = AzureSession.TokenCache;
+                var tokenCache = AzureSession.Instance.TokenCache;
                 if (context.TokenCache != null && context.TokenCache.Length > 0)
                 {
                     tokenCache = new TokenCache(context.TokenCache);

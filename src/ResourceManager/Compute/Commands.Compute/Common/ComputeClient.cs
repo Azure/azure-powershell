@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Compute
         public Action<string> ErrorLogger { get; set; }
 
         public ComputeClient(AzureContext context)
-            : this(AzureSession.ClientFactory.CreateArmClient<ComputeManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+            : this(AzureSession.Instance.ClientFactory.CreateArmClient<ComputeManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
         }
 

@@ -14,7 +14,6 @@
 
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
@@ -29,7 +28,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public IAccessToken GetAccessToken(
             AdalConfiguration config,
-            ShowDialog promptBehavior,
+            string promptBehavior,
             string userId,
             SecureString password,
             string credentialType)
@@ -163,7 +162,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
             public string AccessToken { get { return AuthResult.AccessToken; } }
 
-            public LoginType LoginType { get { return LoginType.OrgId; } }
+            public string LoginType { get { return Authentication.LoginType.OrgId; } }
 
             public string TenantId { get { return this.Configuration.AdDomain; } }
 
