@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.DataMasking.Model;
@@ -38,7 +39,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         /// </summary>
         /// <param name="subscription">The AzureSubscription in which the current execution is performed</param>
         /// <returns>An initialized and ready to use ModelAdapter object</returns>
-        protected override SqlDataMaskingAdapter InitModelAdapter(AzureSubscription subscription)
+        protected override SqlDataMaskingAdapter InitModelAdapter(IAzureSubscription subscription)
         {
             return new SqlDataMaskingAdapter(DefaultProfile.DefaultContext);
         }

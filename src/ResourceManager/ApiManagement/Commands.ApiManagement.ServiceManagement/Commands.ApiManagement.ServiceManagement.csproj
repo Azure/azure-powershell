@@ -302,9 +302,6 @@
     <None Include="packages.config" />
     <None Include="MSSharedLibKey.snk" />
   </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

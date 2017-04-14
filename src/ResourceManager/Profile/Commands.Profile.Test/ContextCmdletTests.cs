@@ -31,6 +31,7 @@ using System.Management.Automation;
 using Xunit;
 using Xunit.Abstractions;
 using Xunit.Sdk;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 {
@@ -68,7 +69,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             // Verify
             Assert.True(commandRuntimeMock.OutputPipeline.Count == 1);
             var context = (PSAzureContext)commandRuntimeMock.OutputPipeline[0];
-            Assert.Equal("test", context.Subscription.SubscriptionName);
+            Assert.Equal("test", context.Subscription.Name);
         }
 
         [Fact]
@@ -83,7 +84,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 
             // Make sure that the tenant ID we are attempting to set is
             // valid for the account
-            var account = AzureRmProfileProvider.Instance.Profile.Context.Account;
+            var account = AzureRmProfileProvider.Instance.Profile.DefaultContext.Account;
             var existingTenants = account.GetProperty(AzureAccount.Property.Tenants);
             var allowedTenants = existingTenants == null ? tenantToSet : existingTenants + "," + tenantToSet;
             account.SetProperty(AzureAccount.Property.Tenants, allowedTenants);
@@ -101,7 +102,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             var context = (PSAzureContext)commandRuntimeMock.OutputPipeline[0];
 
             // TenantId is not sufficient to change the context.
-            Assert.NotEqual(tenantToSet, context.Tenant.TenantId);
+            Assert.NotEqual(tenantToSet, context.Tenant.Id);
         }
 
         [Fact]

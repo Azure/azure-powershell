@@ -24,12 +24,13 @@ using System.Linq;
 using System.Net;
 using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Management.KeyVault.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public class VaultManagementClient
     {
-        public VaultManagementClient(AzureContext context)
+        public VaultManagementClient(IAzureContext context)
         {
             KeyVaultManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<KeyVaultManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }

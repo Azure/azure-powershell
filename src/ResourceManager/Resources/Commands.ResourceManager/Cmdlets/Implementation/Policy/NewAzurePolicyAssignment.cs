@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System;
     using System.Linq;
     using System.Collections;
+    using WindowsAzure.Commands.Common;
 
     /// <summary>
     /// Creates a policy assignment.

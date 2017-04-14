@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Rest;
 using System;

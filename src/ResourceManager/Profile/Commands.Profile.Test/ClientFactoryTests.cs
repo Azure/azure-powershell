@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
@@ -53,24 +54,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 factory.AddUserAgent("agent1", "1.9.8");
                 factory.AddUserAgent("agent2");
                 Assert.Equal(4, factory.UserAgents.Count);
+                var sub = new AzureSubscription
+                {
+                    Id = Guid.NewGuid().ToString(),
+                };
+                sub.SetTenant("123");
+                var account = new AzureAccount
+                {
+                    Id = "user@contoso.com",
+                    Type = AzureAccount.AccountType.User,
+                };
+                account.SetTenants("123");
                 var client = factory.CreateClient<NullClient>(new AzureContext(
-                    new AzureSubscription
-                    {
-                        Id = Guid.NewGuid(),
-                        Properties = new Dictionary<AzureSubscription.Property, string>
-                        {
-                            {AzureSubscription.Property.Tenants, "123"}
-                        }
-                    },
-                    new AzureAccount
-                    {
-                        Id = "user@contoso.com",
-                        Type = AzureAccount.AccountType.User,
-                        Properties = new Dictionary<AzureAccount.Property, string>
-                        {
-                            {AzureAccount.Property.Tenants, "123"}
-                        }
-                    },
+                    sub,
+                    account,
                     AzureEnvironment.PublicEnvironments["AzureCloud"]
 
                     ), AzureEnvironment.Endpoint.ResourceManager);

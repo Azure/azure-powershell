@@ -14,6 +14,7 @@
 
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
@@ -64,7 +65,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// Creates new ResourceManagementClient
         /// </summary>
         /// <param name="context">Profile containing resources to manipulate</param>
-        public ResourcesClient(AzureContext context)
+        public ResourcesClient(IAzureContext context)
             : this(
                 AzureSession.Instance.ClientFactory.CreateClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
                 new GalleryTemplatesClient(context),

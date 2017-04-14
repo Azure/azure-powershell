@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Sql.Common;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Sql.RecommendedAction.Model;
 using Microsoft.Azure.Commands.Sql.RecommendedAction.Service;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet
 {
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet
         /// </summary>
         /// <param name="subscription">The subscription the cmdlets are operation under</param>
         /// <returns>The advisor adapter</returns>
-        protected override AzureSqlDatabaseRecommendedActionAdapter InitModelAdapter(AzureSubscription subscription)
+        protected override AzureSqlDatabaseRecommendedActionAdapter InitModelAdapter(IAzureSubscription subscription)
         {
             return new AzureSqlDatabaseRecommendedActionAdapter(DefaultProfile.DefaultContext);
         }

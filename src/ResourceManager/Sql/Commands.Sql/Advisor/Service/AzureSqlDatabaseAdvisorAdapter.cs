@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.Sql.Advisor.Model;
 using Microsoft.Azure.Commands.Sql.Services;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Advisor.Service
 {
@@ -33,12 +34,12 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Service
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Constructs adapter
         /// </summary>
-        public AzureSqlDatabaseAdvisorAdapter(AzureContext context)
+        public AzureSqlDatabaseAdvisorAdapter(IAzureContext context)
         {
             Context = context;
             Communicator = new AzureSqlDatabaseAdvisorCommunicator(Context);

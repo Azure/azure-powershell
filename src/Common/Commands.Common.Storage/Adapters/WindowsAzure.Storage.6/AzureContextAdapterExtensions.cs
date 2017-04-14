@@ -16,9 +16,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.Management.Storage.Models;
-using Microsoft.WindowsAzure.Management.Storage;
-using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using System.Linq;
 using System;
@@ -32,7 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Adapters
         /// </summary>
         /// <param name="context">The current Azure context.</param>
         /// <returns>The current storage account, or null, if no current storage account is set.</returns>
-        public static CloudStorageAccount GetCurrentStorageAccount(this IAzureContext context)
+        public static CloudStorageAccount GetCurrentStorageAccount(this IAzureContext context, IStorageServiceProvider provider)
         {
             if (context != null)
             {
@@ -44,8 +41,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Adapters
                 }
                 catch
                 {
-                    var storageClient = AzureSession.Instance.ClientFactory.CreateClient<StorageManagementClient>(context, AzureEnvironment.Endpoint.ServiceManagement);
-                    var provider = new RDFEStorageProvider(storageClient, context.Environment);
                     var service = provider.GetStorageService(storageConnectionString, null);
                     return service.GetCloudStorageAccount();
                 }
@@ -97,10 +92,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Adapters
         /// <param name="provider">The storage service provider to retrieve storage service details</param>
         /// <param name="accountName">The storage accoutn name</param>
         /// <returns>A CloudStorageAccount client for storage data plane tasks</returns>
-        public static CloudStorageAccount GetCloudStorageAccount(this IStorageServiceProvider provider, string accountName)
+        public static CloudStorageAccount GetCloudStorageAccount(this IStorageServiceProvider provider, string accountName, string resourceGroupName = null)
         {
-            return provider.GetStorageService(accountName, null).GetCloudStorageAccount();
+            return provider.GetStorageService(accountName, resourceGroupName).GetCloudStorageAccount();
         }
+
+
 
         /// <summary>
         /// Get a CloudStorageAccount client for the current storage service using the given storage service provider

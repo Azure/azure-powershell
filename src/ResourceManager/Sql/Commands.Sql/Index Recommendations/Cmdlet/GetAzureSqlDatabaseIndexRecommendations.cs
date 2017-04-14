@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Model;
@@ -103,7 +104,7 @@ namespace Microsoft.Azure.Commands.Sql.Cmdlet
         /// </summary>
         /// <param name="subscription">The subscription the cmdlets are operation under</param>
         /// <returns>The recommended index adapter</returns>
-        protected override AzureSqlDatabaseIndexRecommendationAdapter InitModelAdapter(AzureSubscription subscription)
+        protected override AzureSqlDatabaseIndexRecommendationAdapter InitModelAdapter(IAzureSubscription subscription)
         {
             return new AzureSqlDatabaseIndexRecommendationAdapter(DefaultProfile.DefaultContext);
         }

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Database.Model;
@@ -39,7 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// </summary>
         /// <param name="subscription"></param>
         /// <returns></returns>
-        protected override AzureSqlFailoverGroupAdapter InitModelAdapter(AzureSubscription subscription)
+        protected override AzureSqlFailoverGroupAdapter InitModelAdapter(IAzureSubscription subscription)
         {
             return new AzureSqlFailoverGroupAdapter(DefaultProfile.DefaultContext);
         }

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Sql;
@@ -32,17 +33,17 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Service
         /// <summary>
         /// Gets or set the Azure subscription
         /// </summary>
-        protected static AzureSubscription Subscription { get; set; }
+        protected static IAzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Base class contructor for RecommendedAction REST API Communicators.
         /// </summary>
-        public AzureSqlRecommendedActionCommunicatorBase(AzureContext context)
+        public AzureSqlRecommendedActionCommunicatorBase(IAzureContext context)
         {
             Context = context;
             if (context.Subscription != Subscription)

@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Sql.Services;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Common
 {
@@ -107,7 +108,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// </summary>
         /// <param name="subscription">The AzureSubscription in which the current execution is performed</param>
         /// <returns>An initialized and ready to use ModelAdapter object</returns>
-        protected abstract A InitModelAdapter(AzureSubscription subscription);
+        protected abstract A InitModelAdapter(IAzureSubscription subscription);
 
         /// <summary>
         /// Transforms the given model object to be an object that is written out

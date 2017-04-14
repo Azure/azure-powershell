@@ -91,6 +91,7 @@
     <Compile Include="AzureSMProfileProvider.cs" />
     <Compile Include="Extensions\AzureAccountExtensions.cs" />
     <Compile Include="AzureEnvironmentConstants.cs" />
+    <Compile Include="Extensions\AzureContextExtensions.cs" />
     <Compile Include="Extensions\AzureEnvironmentExtensions.cs" />
     <Compile Include="AzureModule.cs" />
     <Compile Include="AzureSession.cs" />

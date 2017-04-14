@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Database.Model;
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Commands.Sql.DatabaseActivation.Cmdlet
         /// </summary>
         /// <param name="subscription"></param>
         /// <returns></returns>
-        protected override AzureSqlDatabaseActivationAdapter InitModelAdapter(AzureSubscription subscription)
+        protected override AzureSqlDatabaseActivationAdapter InitModelAdapter(IAzureSubscription subscription)
         {
             return new AzureSqlDatabaseActivationAdapter(DefaultProfile.DefaultContext);
         }

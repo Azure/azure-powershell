@@ -14,6 +14,7 @@
 
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption;
@@ -78,7 +79,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
         /// <param name="taskId"></param>
         /// <param name="storageCredentialsFactory"></param>
         /// <returns></returns>
-        public List<CloudPageBlob> FindSnapshot(AzureContext azContext, List<string> blobUris, List<StorageCredentialsFactory> storageCredentialsFactory, Dictionary<string, string> snapshotQuery)
+        public List<CloudPageBlob> FindSnapshot(IAzureContext azContext, List<string> blobUris, List<StorageCredentialsFactory> storageCredentialsFactory, Dictionary<string, string> snapshotQuery)
         {
             List<CloudPageBlob> snapshots = new List<CloudPageBlob>();
             for (int i = 0; i < blobUris.Count; i++)
@@ -133,7 +134,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
             return result.Groups[2].Value;
         }
 
-        public AzureVMBackupBlobSasUris GenerateBlobSasUris(List<string> blobUris, AzureContext azContext)
+        public AzureVMBackupBlobSasUris GenerateBlobSasUris(List<string> blobUris, IAzureContext azContext)
         {
             AzureVMBackupBlobSasUris blobSASUris = new AzureVMBackupBlobSasUris();
 

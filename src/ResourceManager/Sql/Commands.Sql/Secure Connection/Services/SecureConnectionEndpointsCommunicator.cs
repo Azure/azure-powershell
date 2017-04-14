@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Sql;
@@ -28,11 +29,11 @@ namespace Microsoft.Azure.Commands.Sql.SecureConnection.Services
     {
         private static SqlManagementClient SqlClient { get; set; }
 
-        private static AzureSubscription Subscription { get; set; }
+        private static IAzureSubscription Subscription { get; set; }
 
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
-        public SecureConnectionEndpointsCommunicator(AzureContext context)
+        public SecureConnectionEndpointsCommunicator(IAzureContext context)
         {
             Context = context;
             if (context.Subscription != Subscription)

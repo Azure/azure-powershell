@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using Microsoft.Azure.Commands.ApiManagement.Models;
     using Microsoft.WindowsAzure.Commands.Common.Storage;
     using System.Management.Automation;
+    using WindowsAzure.Commands.Storage.Adapters;
 
     [Cmdlet(VerbsData.Restore, "AzureRmApiManagement"), OutputType(typeof(PsApiManagement))]
     public class RestoreAzureApiManagement : AzureApiManagementCmdletBase
@@ -67,12 +68,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
         public override void ExecuteCmdlet()
         {
+            var account = StorageContext.GetCloudStorageAccount();
             ExecuteLongRunningCmdletWrap(
                 () => Client.BeginRestoreApiManagement(
                     ResourceGroupName,
                     Name,
-                    StorageContext.StorageAccount.Credentials.AccountName,
-                    StorageContext.StorageAccount.Credentials.ExportBase64EncodedKey(),
+                    account.Credentials.AccountName,
+                    account.Credentials.ExportBase64EncodedKey(),
                     SourceContainerName,
                     SourceBlobName),
                 PassThru.IsPresent);

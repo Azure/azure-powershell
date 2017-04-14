@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Sql.Common;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Sql.Advisor.Model;
 using Microsoft.Azure.Commands.Sql.Advisor.Service;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
 {
@@ -49,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
         /// </summary>
         /// <param name="subscription">The subscription the cmdlets are operation under</param>
         /// <returns>The advisor adapter</returns>
-        protected override AzureSqlElasticPoolAdvisorAdapter InitModelAdapter(AzureSubscription subscription)
+        protected override AzureSqlElasticPoolAdvisorAdapter InitModelAdapter(IAzureSubscription subscription)
         {
             return new AzureSqlElasticPoolAdvisorAdapter(DefaultProfile.DefaultContext);
         }

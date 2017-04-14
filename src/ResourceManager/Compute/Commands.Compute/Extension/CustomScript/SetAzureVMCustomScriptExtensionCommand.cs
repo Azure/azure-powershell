@@ -14,6 +14,7 @@
 
 using AutoMapper;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
@@ -192,7 +193,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         protected string GetStorageName()
         {
-            return DefaultProfile.DefaultContext.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
+            return DefaultProfile.DefaultContext.Subscription.GetStorageAccount();
         }
 
         protected string GetStorageKey(string storageName)

@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.ActiveDirectory.GraphClient;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -61,7 +62,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 {
                     _dataServiceCredential = new DataServiceCredential(AzureSession.Instance.AuthenticationFactory, DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.Graph);
                     _activeDirectoryClient = new ActiveDirectoryClient(new Uri(string.Format("{0}/{1}",
-                        DefaultProfile.DefaultContext.Environment.Endpoints[AzureEnvironment.Endpoint.Graph], _dataServiceCredential.TenantId)),
+                        DefaultProfile.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.Graph), _dataServiceCredential.TenantId)),
                         () => Task.FromResult(_dataServiceCredential.GetToken()));
                 }
                 return this._activeDirectoryClient;
@@ -162,12 +163,12 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         protected Guid GetTenantId()
         {
-            if (DefaultContext.Tenant == null || DefaultContext.Tenant.Id == Guid.Empty)
+            if (DefaultContext.Tenant == null || DefaultContext.Tenant.GetId() == Guid.Empty)
             {
                 throw new InvalidOperationException(PSKeyVaultProperties.Resources.InvalidAzureEnvironment);
             }
 
-            return DefaultContext.Tenant.Id;
+            return DefaultContext.Tenant.GetId();
         }
 
         protected string GetCurrentUsersObjectId()

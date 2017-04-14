@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model;
@@ -38,7 +39,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
         /// </summary>
         /// <param name="subscription">The subscription</param>
         /// <returns>Link adapter for ServerCommunicationLink</returns>
-        protected override AzureSqlServerCommunicationLinkAdapter InitModelAdapter(AzureSubscription subscription)
+        protected override AzureSqlServerCommunicationLinkAdapter InitModelAdapter(IAzureSubscription subscription)
         {
             return new AzureSqlServerCommunicationLinkAdapter(DefaultProfile.DefaultContext);
         }

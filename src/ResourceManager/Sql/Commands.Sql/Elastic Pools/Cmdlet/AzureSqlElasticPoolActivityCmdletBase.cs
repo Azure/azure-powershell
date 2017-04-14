@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ElasticPool.Model;
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// </summary>
         /// <param name="subscription"></param>
         /// <returns></returns>
-        protected override AzureSqlElasticPoolAdapter InitModelAdapter(AzureSubscription subscription)
+        protected override AzureSqlElasticPoolAdapter InitModelAdapter(IAzureSubscription subscription)
         {
             return new AzureSqlElasticPoolAdapter(DefaultProfile.DefaultContext);
         }

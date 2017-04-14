@@ -13,13 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
     public static class ContextExtensions
     {
-        public static string GetCurrentStorageAccountName(this AzureContext context)
+        public static string GetCurrentStorageAccountName(this IAzureContext context)
         {
             string result = null;
             if (context != null && context.Subscription != null

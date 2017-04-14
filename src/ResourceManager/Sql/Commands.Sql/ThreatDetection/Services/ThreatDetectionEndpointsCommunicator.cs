@@ -20,6 +20,7 @@ using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
 {
@@ -36,14 +37,14 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// <summary>
         /// Gets or set the Azure subscription
         /// </summary>
-        private static AzureSubscription Subscription { get; set; }
+        private static IAzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
-        public ThreatDetectionEndpointsCommunicator(AzureContext context)
+        public ThreatDetectionEndpointsCommunicator(IAzureContext context)
         {
             Context = context;
             if (context.Subscription != Subscription)

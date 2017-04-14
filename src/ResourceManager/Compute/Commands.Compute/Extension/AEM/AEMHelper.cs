@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.StorageServices;
 using Microsoft.Azure.Management.Compute.Models;
@@ -44,10 +45,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
         private Dictionary<string, StorageAccount> _StorageCache = new Dictionary<string, StorageAccount>(StringComparer.InvariantCultureIgnoreCase);
         private Dictionary<string, string> _StorageKeyCache = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
         private StorageManagementClient _StorageClient;
-        private AzureSubscription _Subscription;
+        private IAzureSubscription _Subscription;
 
         public AEMHelper(Action<ErrorRecord> errorAction, Action<string> verboseAction, Action<string> warningAction,
-            PSHostUserInterface ui, StorageManagementClient storageClient, AzureSubscription subscription)
+            PSHostUserInterface ui, StorageManagementClient storageClient, IAzureSubscription subscription)
         {
             this._ErrorAction = errorAction;
             this._VerboseAction = verboseAction;

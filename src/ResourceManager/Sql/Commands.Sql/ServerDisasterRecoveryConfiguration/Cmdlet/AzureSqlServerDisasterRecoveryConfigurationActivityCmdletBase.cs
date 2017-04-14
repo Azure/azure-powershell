@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Model;
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Cmdle
         /// </summary>
         /// <param name="subscription"></param>
         /// <returns></returns>
-        protected override AzureSqlServerDisasterRecoveryConfigurationAdapter InitModelAdapter(AzureSubscription subscription)
+        protected override AzureSqlServerDisasterRecoveryConfigurationAdapter InitModelAdapter(IAzureSubscription subscription)
         {
             return new AzureSqlServerDisasterRecoveryConfigurationAdapter(DefaultProfile.DefaultContext);
         }

@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
 using System.Collections.Generic;
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Service
         /// <summary>
         /// Creates a communicator for Azure Sql Elastic Pool Advisors
         /// </summary>
-        public AzureSqlElasticPoolAdvisorCommunicator(AzureContext context) : base(context)
+        public AzureSqlElasticPoolAdvisorCommunicator(IAzureContext context) : base(context)
         {
         }
 

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile;
 using Microsoft.Azure.Commands.Profile.Models;
@@ -43,7 +44,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         private static string DefaultSubscriptionName = "Contoso Subscription";
         private static string DefaultDomain = "contoso.com";
         private static Guid DefaultTenant = Guid.NewGuid();
-        private static AzureContext Context;
+        private static IAzureContext Context;
 
         private static RMProfileClient SetupTestEnvironment(List<string> tenants, params List<string>[] subscriptionLists)
         {
@@ -57,18 +58,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             }, true);
             mock.MoqClients = true;
             AzureSession.Instance.ClientFactory = mock;
-            Context = new AzureContext(new AzureSubscription()
+            var sub = new AzureSubscription()
             {
-                Account = DefaultAccount,
-                Environment = EnvironmentName.AzureCloud,
-                Id = DefaultSubscription,
+                Id = DefaultSubscription.ToString(),
                 Name = DefaultSubscriptionName
-            },
+            };
+            sub.SetAccount(DefaultAccount);
+            sub.SetEnvironment(EnvironmentName.AzureCloud);
+            Context = new AzureContext(sub,
                 new AzureAccount() { Id = DefaultAccount, Type = AzureAccount.AccountType.User },
                 AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud],
-                new AzureTenant() { Domain = DefaultDomain, Id = DefaultTenant });
+                new AzureTenant() { Directory = DefaultDomain, Id = DefaultTenant.ToString() });
             var profile = new AzureRMProfile();
-            profile.Context = Context;
+            profile.DefaultContext = Context;
             return new RMProfileClient(profile);
         }
 
@@ -301,7 +303,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 null,
                 null);
 
-            var tenantsInAccount = azureRmProfile.Context.Account.GetPropertyAsArray(AzureAccount.Property.Tenants);
+            var tenantsInAccount = azureRmProfile.DefaultContext.Account.GetPropertyAsArray(AzureAccount.Property.Tenants);
             Assert.Equal(1, tenantsInAccount.Length);
             Assert.Equal(tenants.First(), tenantsInAccount[0]);
         }
@@ -354,13 +356,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                                                        thirdList, fourthList, 
                                                        thirdList, fourthList,
                                                        thirdList, fourthList);
-            var subResults = new List<AzureSubscription>(client.ListSubscriptions());
+            var subResults = new List<IAzureSubscription>(client.ListSubscriptions());
             Assert.Equal(7, subResults.Count);
             var tenantResults = client.ListTenants();
             Assert.Equal(2, tenantResults.Count());
             tenantResults = client.ListTenants(DefaultTenant.ToString());
             Assert.Equal(1, tenantResults.Count());
-            AzureSubscription subValue;
+            IAzureSubscription subValue;
             Assert.True(client.TryGetSubscriptionById(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
             Assert.Equal(DefaultSubscription.ToString(), subValue.Id.ToString());
             Assert.True(client.TryGetSubscriptionByName(DefaultTenant.ToString(),
@@ -379,13 +381,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var thirdList = firstList;
             var fourthList = firstList;
             var client = SetupTestEnvironment(tenants, firstList, secondList, thirdList, fourthList, firstList, firstList);
-            var subResults = new List<AzureSubscription>(client.ListSubscriptions());
+            var subResults = new List<IAzureSubscription>(client.ListSubscriptions());
             Assert.Equal(2, subResults.Count);
             var tenantResults = client.ListTenants();
             Assert.Equal(1, tenantResults.Count());
             tenantResults = client.ListTenants(DefaultTenant.ToString());
             Assert.Equal(1, tenantResults.Count());
-            AzureSubscription subValue;
+            IAzureSubscription subValue;
             Assert.True(client.TryGetSubscriptionById(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
             Assert.Equal(DefaultSubscription.ToString(), subValue.Id.ToString());
             Assert.True(client.TryGetSubscriptionByName(DefaultTenant.ToString(),
@@ -407,9 +409,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var client = SetupTestEnvironment(tenants, firstList, secondList, 
                                                        thirdList, fourthList, 
                                                        thirdList, fourthList);
-            var subResults = new List<AzureSubscription>(client.ListSubscriptions());
+            var subResults = new List<IAzureSubscription>(client.ListSubscriptions());
             Assert.Equal(2, subResults.Count);
-            AzureSubscription subValue;
+            IAzureSubscription subValue;
             Assert.False(client.TryGetSubscriptionById(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
             Assert.False(client.TryGetSubscriptionByName("random-tenant", "random-subscription", out subValue));
         }
@@ -435,7 +437,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                                                        subscriptions, subscriptions,
                                                        subscriptions, subscriptions);
             Assert.Equal(0, client.ListSubscriptions().Count());
-            AzureSubscription subValue;
+            IAzureSubscription subValue;
             Assert.False(client.TryGetSubscriptionById(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
             Assert.False(client.TryGetSubscriptionByName(DefaultTenant.ToString(), "random-name", out subValue));
         }
@@ -450,7 +452,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             profile = new AzureRMProfile();
             Assert.Throws<ArgumentNullException>(() => profile.SetContextWithCache(null));
             profile.SetContextWithCache(context);
-            Assert.Equal(TokenCache.DefaultShared.Serialize(), profile.Context.TokenCache);
+            Assert.Equal(TokenCache.DefaultShared.Serialize(), profile.DefaultContext.TokenCache.CacheData);
         }
 
         [Fact]
@@ -488,8 +490,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var commandRuntimeMock = new MockCommandRuntime();
             AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
             var profile = new AzureRMProfile();
-            profile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
-            profile.Context = Context;
+            profile.EnvironmentTable.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
+            profile.DefaultContext = Context;
             var cmdlt = new GetAzureRMSubscriptionCommand();
             // Setup
             cmdlt.DefaultProfile = profile;
@@ -504,7 +506,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
             Assert.True(commandRuntimeMock.OutputPipeline.Count == 7);
             Assert.Equal("Disabled", ((PSAzureSubscription)commandRuntimeMock.OutputPipeline[2]).State);
-            Assert.Equal(subscriptionName, ((PSAzureSubscription)commandRuntimeMock.OutputPipeline[2]).SubscriptionName);
+            Assert.Equal(subscriptionName, ((PSAzureSubscription)commandRuntimeMock.OutputPipeline[2]).Name);
         }
 
         [Fact]
@@ -534,8 +536,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var commandRuntimeMock = new MockCommandRuntime();
             AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
             var profile = new AzureRMProfile();
-            profile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
-            profile.Context = Context;
+            profile.EnvironmentTable.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
+            profile.DefaultContext = Context;
             var cmdlt = new GetAzureRMSubscriptionCommand();
             // Setup
             cmdlt.DefaultProfile = profile;
@@ -551,7 +553,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
             // Make sure we can get a subscription from the second page of the second tenant by subscription Id
             var resultSubscription = (PSAzureSubscription)commandRuntimeMock.OutputPipeline[0];
-            Assert.Equal(secondTenantSubscriptions[2], resultSubscription.SubscriptionId);
+            Assert.Equal(secondTenantSubscriptions[2], resultSubscription.Id);
             Assert.Equal(tenants[1], resultSubscription.TenantId);
         }
 
@@ -584,8 +586,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var commandRuntimeMock = new MockCommandRuntime();
             AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
             var profile = new AzureRMProfile();
-            profile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
-            profile.Context = Context;
+            profile.EnvironmentTable.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
+            profile.DefaultContext = Context;
             var cmdlt = new GetAzureRMSubscriptionCommand();
             // Setup
             cmdlt.DefaultProfile = profile;
@@ -601,7 +603,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
             // Make sure we can get a subscription from the second page of the second tenant by subscription name
             var resultSubscription = (PSAzureSubscription)commandRuntimeMock.OutputPipeline[0];
-            Assert.Equal(subscriptionName, resultSubscription.SubscriptionName);
+            Assert.Equal(subscriptionName, resultSubscription.Name);
             Assert.Equal(tenants[1], resultSubscription.TenantId);
         }
 

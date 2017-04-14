@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Management.Resources;
@@ -49,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// <summary>
         /// Gets or sets the Azure subscription
         /// </summary>
-        private static AzureSubscription Subscription { get; set; }
+        private static IAzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// The resources management client used by this communicator
@@ -59,13 +60,13 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Default Constructor.
         /// </summary>
         /// <param name="context">The Azure context</param>
-        public AzureEndpointsCommunicator(AzureContext context)
+        public AzureEndpointsCommunicator(IAzureContext context)
         {
             Context = context;
             if (context.Subscription != Subscription)
@@ -205,7 +206,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// <summary>
         /// Lazy creation of a single instance of a storage client
         /// </summary>
-        private Microsoft.WindowsAzure.Management.Storage.StorageManagementClient GetCurrentStorageClient(AzureContext context)
+        private Microsoft.WindowsAzure.Management.Storage.StorageManagementClient GetCurrentStorageClient(IAzureContext context)
         {
             if (StorageClient == null)
                 StorageClient = AzureSession.Instance.ClientFactory.CreateClient<Microsoft.WindowsAzure.Management.Storage.StorageManagementClient>(Context, AzureEnvironment.Endpoint.ServiceManagement);
@@ -215,7 +216,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// <summary>
         /// Lazy creation of a single instance of a storage client
         /// </summary>
-        private Microsoft.Azure.Management.Storage.StorageManagementClient GetCurrentStorageV2Client(AzureContext context)
+        private Microsoft.Azure.Management.Storage.StorageManagementClient GetCurrentStorageV2Client(IAzureContext context)
         {
             if (StorageV2Client == null)
                 StorageV2Client = AzureSession.Instance.ClientFactory.CreateClient<Microsoft.Azure.Management.Storage.StorageManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
@@ -225,7 +226,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// <summary>
         /// Lazy creation of a single instance of a resoures client
         /// </summary>
-        private ResourceManagementClient GetCurrentResourcesClient(AzureContext context)
+        private ResourceManagementClient GetCurrentResourcesClient(IAzureContext context)
         {
             if (ResourcesClient == null)
                 ResourcesClient = AzureSession.Instance.ClientFactory.CreateClient<ResourceManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);

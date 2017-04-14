@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
@@ -39,7 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         /// </summary>
         /// <param name="subscription">The AzureSubscription in which the current execution is performed</param>
         /// <returns>An initialized and ready to use ModelAdapter object</returns>
-        protected override SqlThreatDetectionAdapter InitModelAdapter(AzureSubscription subscription)
+        protected override SqlThreatDetectionAdapter InitModelAdapter(IAzureSubscription subscription)
         {
             return new SqlThreatDetectionAdapter(DefaultProfile.DefaultContext);
         }
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         protected override DatabaseThreatDetectionPolicyModel PersistChanges(DatabaseThreatDetectionPolicyModel model)
         {
             ModelAdapter.SetDatabaseThreatDetectionPolicy(model, clientRequestId,
-                    DefaultContext.Environment.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix]);
+                    DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
             return null;
         }
     }

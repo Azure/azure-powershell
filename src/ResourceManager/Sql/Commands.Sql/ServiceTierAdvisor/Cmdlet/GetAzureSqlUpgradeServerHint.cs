@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Services;
@@ -75,7 +76,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Cmdlet
         /// </summary>
         /// <param name="subscription">Subscription</param>
         /// <returns>Returns new AzureSqlServiceTierAdvisorAdapter</returns>
-        protected override AzureSqlServiceTierAdvisorAdapter InitModelAdapter(AzureSubscription subscription)
+        protected override AzureSqlServiceTierAdvisorAdapter InitModelAdapter(IAzureSubscription subscription)
         {
             return new AzureSqlServiceTierAdvisorAdapter(DefaultProfile.DefaultContext);
         }

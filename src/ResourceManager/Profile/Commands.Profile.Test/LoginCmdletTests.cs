@@ -28,6 +28,7 @@ using System.Net.Http.Headers;
 using System.Diagnostics;
 using System;
 using System.Security;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
@@ -96,8 +97,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context);
-            Assert.Equal("microsoft.com", AzureRmProfileProvider.Instance.Profile.Context.Tenant.Domain);
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.DefaultContext);
+            Assert.Equal("microsoft.com", AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Directory);
         }
 
         [Fact]
@@ -130,8 +131,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context);
-            Assert.Equal("microsoft.com", AzureRmProfileProvider.Instance.Profile.Context.Tenant.Domain);
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.DefaultContext);
+            Assert.Equal("microsoft.com", AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Directory);
         }
 
         [Fact]
@@ -147,8 +148,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context);
-            Assert.Equal("microsoft.com", AzureRmProfileProvider.Instance.Profile.Context.Tenant.Domain);
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.DefaultContext);
+            Assert.Equal("microsoft.com", AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Directory);
         }
 
         [Fact]
@@ -165,8 +166,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context);
-            Assert.Equal("microsoft.com", AzureRmProfileProvider.Instance.Profile.Context.Tenant.Domain);
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.DefaultContext);
+            Assert.Equal("microsoft.com", AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Directory);
         }
 
         [Fact]
@@ -184,8 +185,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context);
-            Assert.Equal("microsoft.com", AzureRmProfileProvider.Instance.Profile.Context.Tenant.Domain);
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.DefaultContext);
+            Assert.Equal("microsoft.com", AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Directory);
         }
 
         [Fact]
@@ -220,10 +221,10 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context);
-            Assert.Equal("AzureSDKTeam.onmicrosoft.com", AzureRmProfileProvider.Instance.Profile.Context.Tenant.Domain);
-            Assert.Equal(cmdlt.TenantId, AzureRmProfileProvider.Instance.Profile.Context.Tenant.Id.ToString());
-            Assert.Null(AzureRmProfileProvider.Instance.Profile.Context.Subscription);
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.DefaultContext);
+            Assert.Equal("AzureSDKTeam.onmicrosoft.com", AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Directory);
+            Assert.Equal(cmdlt.TenantId, AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id.ToString());
+            Assert.Null(AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription);
         }
 
         [Fact]
@@ -244,13 +245,13 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context);
-            Assert.Equal(cmdlt.TenantId, AzureRmProfileProvider.Instance.Profile.Context.Tenant.Id.ToString());
-            Assert.Equal(cmdlt.ApplicationId, AzureRmProfileProvider.Instance.Profile.Context.Account.Id.ToString());
-            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context.Subscription);
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.DefaultContext);
+            Assert.Equal(cmdlt.TenantId, AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id.ToString());
+            Assert.Equal(cmdlt.ApplicationId, AzureRmProfileProvider.Instance.Profile.DefaultContext.Account.Id.ToString());
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription);
             Assert.Equal(
                 cmdlt.CertificateThumbprint,
-                AzureRmProfileProvider.Instance.Profile.Context.Account.GetProperty(AzureAccount.Property.CertificateThumbprint));
+                AzureRmProfileProvider.Instance.Profile.DefaultContext.Account.GetProperty(AzureAccount.Property.CertificateThumbprint));
 
         }
 
@@ -268,9 +269,9 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context);
-            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context.Account);
-            var tenants = AzureRmProfileProvider.Instance.Profile.Context.Account.GetPropertyAsArray(AzureAccount.Property.Tenants);
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.DefaultContext);
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.DefaultContext.Account);
+            var tenants = AzureRmProfileProvider.Instance.Profile.DefaultContext.Account.GetTenants();
             Assert.NotNull(tenants);
             Assert.Equal(2, tenants.Length);
         }
@@ -282,16 +283,16 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var cmdlt = new AddAzureRMAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.EnvironmentName = "AzureUSGovernment";
+            cmdlt.Environment = "AzureUSGovernment";
 
             // Act
             cmdlt.InvokeBeginProcessing();
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context);
-            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context.Environment);
-            Assert.Equal("AzureUSGovernment", AzureRmProfileProvider.Instance.Profile.Context.Environment.Name);
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.DefaultContext);
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.DefaultContext.Environment);
+            Assert.Equal("AzureUSGovernment", AzureRmProfileProvider.Instance.Profile.DefaultContext.Environment.Name);
         }
 
         [Fact]
@@ -338,7 +339,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var cmdlt = new AddAzureRMAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.EnvironmentName = "unknown";
+            cmdlt.Environment = "unknown";
             var testPassed = false;
 
             // Act

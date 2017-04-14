@@ -24,6 +24,7 @@ using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Server.Adapter
 {
@@ -40,13 +41,13 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Constructs a server adapter
         /// </summary>
         /// <param name="context">The current azure profile</param>
-        public AzureSqlServerAdapter(AzureContext context)
+        public AzureSqlServerAdapter(IAzureContext context)
         {
             Context = context;
             Communicator = new AzureSqlServerCommunicator(Context);

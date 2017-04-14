@@ -171,6 +171,12 @@
     <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\ARM.Storage.4\ARMStorageService.cs">
       <Link>Common\ARMStorageService.cs</Link>
     </Compile>
+    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\AzureContextAdapterExtensions.cs">
+      <Link>Common\AzureContextAdapterExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\AzureStorageContext.cs">
+      <Link>Common\AzureStorageContext.cs</Link>
+    </Compile>
     <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionCmdletConstants.cs">
       <Link>Extension\DSC\DscExtensionCmdletConstants.cs</Link>
     </Compile>

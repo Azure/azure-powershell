@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
     using Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.ApiManagement.Models;
+    using Microsoft.WindowsAzure.Commands.Storage.Adapters;
     using Microsoft.WindowsAzure.Commands.Common.Storage;
     using System.Management.Automation;
 
@@ -65,12 +66,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
         public override void ExecuteCmdlet()
         {
+            var account = StorageContext.GetCloudStorageAccount();
             ExecuteLongRunningCmdletWrap(
                 () => Client.BeginBackupApiManagement(
                     ResourceGroupName,
                     Name,
-                    StorageContext.StorageAccount.Credentials.AccountName,
-                    StorageContext.StorageAccount.Credentials.ExportBase64EncodedKey(),
+                    account.Credentials.AccountName,
+                    account.Credentials.ExportBase64EncodedKey(),
                     TargetContainerName,
                     TargetBlobName),
                 PassThru.IsPresent

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
@@ -27,7 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Service
         /// <summary>
         /// Creates a communicator for Azure Sql Database Recommended Actions
         /// </summary>
-        public AzureSqlDatabaseRecommendedActionCommunicator(AzureContext context)
+        public AzureSqlDatabaseRecommendedActionCommunicator(IAzureContext context)
             : base(context)
         {
         }

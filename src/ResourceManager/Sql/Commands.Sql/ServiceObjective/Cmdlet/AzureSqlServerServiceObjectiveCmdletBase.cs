@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ServiceObjective.Adapter;
@@ -28,7 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
         /// </summary>
         /// <param name="subscription">The subscription the cmdlets are operation under</param>
         /// <returns>The service objective adapter</returns>
-        protected override AzureSqlServerServiceObjectiveAdapter InitModelAdapter(AzureSubscription subscription)
+        protected override AzureSqlServerServiceObjectiveAdapter InitModelAdapter(IAzureSubscription subscription)
         {
             return new AzureSqlServerServiceObjectiveAdapter(DefaultProfile.DefaultContext);
         }
