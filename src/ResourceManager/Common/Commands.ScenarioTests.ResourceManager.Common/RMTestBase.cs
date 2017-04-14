@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Threading;
 using Moq;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 {
@@ -45,20 +46,20 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
         {
             currentProfile = new AzureRMProfile();
             var newGuid = Guid.NewGuid();
-            currentProfile.Context = new AzureContext(
-                new AzureSubscription { Id = newGuid, Name = "test", Environment = EnvironmentName.AzureCloud, Account = "test" },
-                new AzureAccount
-                {
-                    Id = "test",
-                    Type = AzureAccount.AccountType.User,
-                    Properties = new Dictionary<AzureAccount.Property, string>
-                    {
-                            {AzureAccount.Property.Subscriptions, newGuid.ToString()}
-                    }
-                },
+            var account = new AzureAccount
+            {
+                Id = "test",
+                Type = AzureAccount.AccountType.User,
+            };
+            account.SetSubscriptions(newGuid.ToString());
+            var subscription = new AzureSubscription { Id = newGuid.ToString(), Name = "test"};
+            subscription.SetAccount("test");
+            subscription.SetEnvironment(EnvironmentName.AzureCloud);
+            currentProfile.DefaultContext = new AzureContext(
+                subscription,
+                account,
             AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud],
-            new AzureTenant { Id = Guid.NewGuid(), Domain = "testdomain.onmicrosoft.com" });
-
+            new AzureTenant { Id = Guid.NewGuid().ToString(), Directory = "testdomain.onmicrosoft.com" });
             AzureRmProfileProvider.Instance.Profile = currentProfile;
 
             // Now override AzureSession.Instance.DataStore to use the MemoryDataStore

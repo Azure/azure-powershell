@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Compute
                     if (string.Equals(this.ParameterSetName, SetCustomScriptExtensionByContainerBlobsParamSetName))
                     {
                         this.StorageEndpointSuffix = string.IsNullOrEmpty(this.StorageEndpointSuffix) ?
-                            DefaultProfile.Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix) : this.StorageEndpointSuffix;
+                            DefaultProfile.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix) : this.StorageEndpointSuffix;
                         var sName = string.IsNullOrEmpty(this.StorageAccountName) ? GetStorageName() : this.StorageAccountName;
                         var sKey = string.IsNullOrEmpty(this.StorageAccountKey) ? GetStorageKey(sName) : this.StorageAccountKey;
 
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         protected string GetStorageName()
         {
-            return DefaultProfile.Context.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
+            return DefaultProfile.DefaultContext.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
         }
 
         protected string GetStorageKey(string storageName)
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (!string.IsNullOrEmpty(storageName))
             {
-                var storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.Context,
+                var storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.DefaultContext,
                         AzureEnvironment.Endpoint.ResourceManager);
 
                 var storageAccount = storageClient.StorageAccounts.GetProperties(this.ResourceGroupName, storageName);
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         protected string GetSasUrlStr(string storageName, string storageKey, string containerName, string blobName)
         {
-            var storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.Context,
+            var storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.DefaultContext,
                         AzureEnvironment.Endpoint.ResourceManager);
             var cred = new StorageCredentials(storageName, storageKey);
             var storageAccount = string.IsNullOrEmpty(this.StorageEndpointSuffix)

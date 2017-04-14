@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
         /// <returns>The server adapter</returns>
         protected ImportExportDatabaseAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new ImportExportDatabaseAdapter(DefaultProfile.Context);
+            return new ImportExportDatabaseAdapter(DefaultProfile.DefaultContext);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            ModelAdapter = InitModelAdapter(DefaultProfile.Context.Subscription);
+            ModelAdapter = InitModelAdapter(DefaultProfile.DefaultContext.Subscription);
             AzureSqlDatabaseImportExportStatusModel model = GetEntity();
 
             if (model != null)

@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Commands.Profile
 
                 var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRMProfile>());
 
-                WriteObject((PSAzureProfile) profileClient.Login(azureAccount, Environment, TenantId, SubscriptionId,
+                WriteObject((PSAzureProfile) profileClient.Login(azureAccount, _environment, TenantId, SubscriptionId,
                     SubscriptionName, password));
             }
         }

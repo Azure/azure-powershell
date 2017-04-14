@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet
         /// <returns>The advisor adapter</returns>
         protected override AzureSqlDatabaseRecommendedActionAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new AzureSqlDatabaseRecommendedActionAdapter(DefaultProfile.Context);
+            return new AzureSqlDatabaseRecommendedActionAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

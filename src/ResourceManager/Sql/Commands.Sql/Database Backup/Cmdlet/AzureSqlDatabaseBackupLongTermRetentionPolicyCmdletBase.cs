@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// <returns></returns>
         protected override AzureSqlDatabaseBackupAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new AzureSqlDatabaseBackupAdapter(DefaultProfile.Context);
+            return new AzureSqlDatabaseBackupAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Cmdlet
         /// <returns></returns>
         protected override AzureSqlElasticPoolRecommendationAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new AzureSqlElasticPoolRecommendationAdapter(DefaultProfile.Context);
+            return new AzureSqlElasticPoolRecommendationAdapter(DefaultProfile.DefaultContext);
         }
 
         /// <summary>

@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Management.DataLake.Store;
 using Microsoft.Azure.Management.DataLake.Store.Models;
 using Microsoft.Rest;
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         #region Constructors
 
-        public DataLakeStoreFileSystemClient(AzureContext context)
+        public DataLakeStoreFileSystemClient(IAzureContext context)
         {
             if (context == null)
             {

@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet
         /// <returns>The advisor adapter</returns>
         protected override AzureSqlServerRecommendedActionAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new AzureSqlServerRecommendedActionAdapter(DefaultProfile.Context);
+            return new AzureSqlServerRecommendedActionAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

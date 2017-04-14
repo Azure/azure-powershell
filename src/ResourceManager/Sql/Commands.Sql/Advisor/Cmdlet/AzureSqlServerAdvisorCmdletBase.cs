@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
         /// <returns>The advisor adapter</returns>
         protected override AzureSqlServerAdvisorAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new AzureSqlServerAdvisorAdapter(DefaultProfile.Context);
+            return new AzureSqlServerAdvisorAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

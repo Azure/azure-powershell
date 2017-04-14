@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
         /// <returns>The service objective adapter</returns>
         protected override AzureSqlServerServiceObjectiveAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new AzureSqlServerServiceObjectiveAdapter(DefaultProfile.Context);
+            return new AzureSqlServerServiceObjectiveAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

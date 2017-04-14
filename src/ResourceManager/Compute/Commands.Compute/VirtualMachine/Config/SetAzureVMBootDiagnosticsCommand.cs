@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Compute
                 else
                 {
                     var storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(
-                        DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
+                        DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
                     var storageAccount = storageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.StorageAccountName);
 
                     if (storageAccount.AccountType.Equals(AccountType.PremiumLRS))

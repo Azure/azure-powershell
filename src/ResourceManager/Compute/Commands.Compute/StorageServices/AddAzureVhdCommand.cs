@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             StorageCredentialsFactory storageCredentialsFactory;
 
             var storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(
-                        DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
+                        DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
 
             if (StorageCredentialsFactory.IsChannelRequired(Destination))
             {

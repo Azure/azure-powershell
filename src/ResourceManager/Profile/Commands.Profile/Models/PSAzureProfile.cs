@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
@@ -39,10 +40,10 @@ namespace Microsoft.Azure.Commands.Profile.Models
 
             var result = new PSAzureProfile
             {
-                Context = profile.Context
+                Context = new PSAzureContext(profile.DefaultContext)
             };
 
-            profile.Environments
+            profile.EnvironmentTable
                 .ForEach((e) => result.Environments[e.Key] = (PSAzureEnvironment)e.Value);
             return result;
         }
@@ -61,9 +62,9 @@ namespace Microsoft.Azure.Commands.Profile.Models
 
             var result = new AzureRMProfile
             {
-                Context = profile.Context
+                DefaultContext = profile.Context
             };
-            profile.Environments.ForEach((e) => result.Environments[e.Key] = (AzureEnvironment)e.Value);
+            profile.Environments.ForEach((e) => result.EnvironmentTable[e.Key] = (IAzureEnvironment)e.Value);
             return result;
         }
 

@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// <returns></returns>
         protected override AzureSqlFailoverGroupAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new AzureSqlFailoverGroupAdapter(DefaultProfile.Context);
+            return new AzureSqlFailoverGroupAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

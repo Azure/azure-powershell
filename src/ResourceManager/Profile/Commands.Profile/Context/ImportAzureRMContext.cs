@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
@@ -81,16 +82,16 @@ namespace Microsoft.Azure.Commands.Profile
                     WriteExceptionError( new ArgumentException(Resources.AzureProfileMustNotBeNull));
                 }
 
-                if (AzureRmProfileProvider.Instance.Profile.Context != null &&
-                    AzureRmProfileProvider.Instance.Profile.Context.Subscription != null &&
-                    AzureRmProfileProvider.Instance.Profile.Context.Subscription.State != null &&
-                    !AzureRmProfileProvider.Instance.Profile.Context.Subscription.State.Equals(
+                if (AzureRmProfileProvider.Instance.Profile.DefaultContext != null &&
+                    AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription != null &&
+                    AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.State != null &&
+                    !AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.State.Equals(
                     "Enabled",
                     StringComparison.OrdinalIgnoreCase))
                 {
                     WriteWarning(string.Format(
                                    Microsoft.Azure.Commands.Profile.Properties.Resources.SelectedSubscriptionNotActive,
-                                   AzureRmProfileProvider.Instance.Profile.Context.Subscription.State));
+                                   AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.State));
                 }
 
                 WriteObject((PSAzureProfile)AzureRmProfileProvider.Instance.Profile);

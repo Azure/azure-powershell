@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.Compute
             }
 
             var storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(
-                        DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
+                        DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
 
 
             var storageService = storageClient.StorageAccounts.GetProperties(this.ResourceGroupName, blobUri.StorageAccountName);

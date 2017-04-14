@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Cmdle
         /// <returns></returns>
         protected override AzureSqlServerDisasterRecoveryConfigurationAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new AzureSqlServerDisasterRecoveryConfigurationAdapter(DefaultProfile.Context);
+            return new AzureSqlServerDisasterRecoveryConfigurationAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

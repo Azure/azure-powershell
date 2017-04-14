@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.DatabaseActivation.Cmdlet
         /// <returns></returns>
         protected override AzureSqlDatabaseActivationAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new AzureSqlDatabaseActivationAdapter(DefaultProfile.Context);
+            return new AzureSqlDatabaseActivationAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

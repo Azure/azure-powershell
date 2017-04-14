@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         /// <returns>An initialized and ready to use ModelAdapter object</returns>
         protected override SqlThreatDetectionAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new SqlThreatDetectionAdapter(DefaultProfile.Context);
+            return new SqlThreatDetectionAdapter(DefaultProfile.DefaultContext);
         }
 
         /// <summary>

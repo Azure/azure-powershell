@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.SecureConnection.Cmdlet
         /// <returns>An initialized and ready to use ModelAdapter object</returns>
         protected override SqlSecureConnectionAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new SqlSecureConnectionAdapter(DefaultProfile.Context);
+            return new SqlSecureConnectionAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

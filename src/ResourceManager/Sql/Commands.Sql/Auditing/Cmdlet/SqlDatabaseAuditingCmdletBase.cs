@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// <returns>An initialized and ready to use ModelAdapter object</returns>
         protected override SqlAuditAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new SqlAuditAdapter(DefaultProfile.Context);
+            return new SqlAuditAdapter(DefaultProfile.DefaultContext);
         }
 
         /// <summary>

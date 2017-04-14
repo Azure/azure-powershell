@@ -12,6 +12,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
@@ -55,7 +56,7 @@ namespace Microsoft.Azure.Commands.Profile
             var tenant = TenantId;
             if (!string.IsNullOrWhiteSpace(this.SubscriptionName))
             {
-                AzureSubscription result;
+                IAzureSubscription result;
                 try
                 {
                     if (!this._client.TryGetSubscriptionByName(tenant, this.SubscriptionName, out result))
@@ -74,7 +75,7 @@ namespace Microsoft.Azure.Commands.Profile
             }
             else if (!string.IsNullOrWhiteSpace(this.SubscriptionId))
             {
-                AzureSubscription result;
+                IAzureSubscription result;
                 try
                 {
                     if (!this._client.TryGetSubscriptionById(tenant, this.SubscriptionId, out result))

@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
         /// <returns>The advisor adapter</returns>
         protected override AzureSqlElasticPoolAdvisorAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new AzureSqlElasticPoolAdvisorAdapter(DefaultProfile.Context);
+            return new AzureSqlElasticPoolAdvisorAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

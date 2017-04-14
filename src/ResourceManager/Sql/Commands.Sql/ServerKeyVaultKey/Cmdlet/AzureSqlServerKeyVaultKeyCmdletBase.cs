@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Cmdlet
         /// <returns>The ServerKeyVaultKey adapter</returns>
         protected override AzureSqlServerKeyVaultKeyAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new AzureSqlServerKeyVaultKeyAdapter(DefaultProfile.Context);
+            return new AzureSqlServerKeyVaultKeyAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

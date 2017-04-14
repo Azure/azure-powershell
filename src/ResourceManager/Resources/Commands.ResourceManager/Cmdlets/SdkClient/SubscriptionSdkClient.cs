@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Internal.Subscriptions;
 using Microsoft.Azure.Internal.Subscriptions.Models;
@@ -35,7 +36,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// Creates new SubscriptionsClient
         /// </summary>
         /// <param name="context">Profile containing resources to manipulate</param>
-        public SubscriptionSdkClient(AzureContext context)
+        public SubscriptionSdkClient(IAzureContext context)
             : this(
                 AzureSession.Instance.ClientFactory.CreateArmClient<SubscriptionClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {

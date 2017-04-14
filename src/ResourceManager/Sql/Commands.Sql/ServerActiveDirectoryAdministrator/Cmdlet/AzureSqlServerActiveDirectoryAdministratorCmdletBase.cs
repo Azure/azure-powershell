@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
         /// <returns></returns>
         protected override AzureSqlServerActiveDirectoryAdministratorAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new AzureSqlServerActiveDirectoryAdministratorAdapter(DefaultProfile.Context);
+            return new AzureSqlServerActiveDirectoryAdministratorAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

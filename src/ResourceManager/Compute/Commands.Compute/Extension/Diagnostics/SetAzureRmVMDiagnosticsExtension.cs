@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Commands.Compute
                 if (this.storageClient == null)
                 {
                     this.storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(
-                        DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
+                        DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
                 }
 
                 return this.storageClient;

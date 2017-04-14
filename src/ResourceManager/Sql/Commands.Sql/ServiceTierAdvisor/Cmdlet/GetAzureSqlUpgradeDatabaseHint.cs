@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Cmdlet
         /// <returns>Returns new AzureSqlServiceTierAdvisorAdapter</returns>
         protected override AzureSqlServiceTierAdvisorAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new AzureSqlServiceTierAdvisorAdapter(DefaultProfile.Context);
+            return new AzureSqlServiceTierAdvisorAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

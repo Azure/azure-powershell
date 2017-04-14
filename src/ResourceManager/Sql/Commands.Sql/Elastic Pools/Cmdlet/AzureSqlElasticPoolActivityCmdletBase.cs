@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// <returns></returns>
         protected override AzureSqlElasticPoolAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new AzureSqlElasticPoolAdapter(DefaultProfile.Context);
+            return new AzureSqlElasticPoolAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

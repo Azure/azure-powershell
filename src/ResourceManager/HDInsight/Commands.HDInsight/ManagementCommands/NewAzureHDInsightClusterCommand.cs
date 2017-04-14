@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
@@ -485,7 +486,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 return tenantId;
             }
 
-            var tenantIdStr = DefaultProfile.Context.Subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants).FirstOrDefault();
+            var tenantIdStr = DefaultProfile.DefaultContext.Subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants).FirstOrDefault();
             return new Guid(tenantIdStr);
         }
 
@@ -493,9 +494,9 @@ namespace Microsoft.Azure.Commands.HDInsight
         private Guid GetApplicationId()
         {
             GraphRbacManagementClient graphClient = AzureSession.Instance.ClientFactory.CreateArmClient<GraphRbacManagementClient>(
-                DefaultProfile.Context, AzureEnvironment.Endpoint.Graph);
+                DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.Graph);
 
-            graphClient.TenantID = DefaultProfile.Context.Tenant.Id.ToString();
+            graphClient.TenantID = DefaultProfile.DefaultContext.Tenant.Id.ToString();
 
             Microsoft.Azure.Graph.RBAC.Models.ServicePrincipal sp = graphClient.ServicePrincipals.Get(ObjectId.ToString());
 

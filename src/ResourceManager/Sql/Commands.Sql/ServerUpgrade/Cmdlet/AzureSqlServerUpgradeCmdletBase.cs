@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
         /// <returns>The server adapter</returns>
         protected override AzureSqlServerUpgradeAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new AzureSqlServerUpgradeAdapter(DefaultProfile.Context);
+            return new AzureSqlServerUpgradeAdapter(DefaultProfile.DefaultContext);
         }
 
     }

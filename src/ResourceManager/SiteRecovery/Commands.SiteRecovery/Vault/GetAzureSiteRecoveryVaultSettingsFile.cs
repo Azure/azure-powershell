@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void GetVaultSettingsFile()
         {
-            AzureSubscription subscription = DefaultProfile.Context.Subscription;
+            AzureSubscription subscription = DefaultProfile.DefaultContext.Subscription;
 
             // Generate certificate
             X509Certificate2 cert = CertUtils.CreateSelfSignedCertificate(VaultCertificateExpiryInHoursForHRM, subscription.Id.ToString(), this.Vault.Name);

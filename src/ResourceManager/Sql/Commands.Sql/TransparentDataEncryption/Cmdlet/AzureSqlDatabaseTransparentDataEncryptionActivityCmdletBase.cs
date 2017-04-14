@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
         /// <returns>The server adapter</returns>
         protected override AzureSqlDatabaseTransparentDataEncryptionAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new AzureSqlDatabaseTransparentDataEncryptionAdapter(DefaultProfile.Context);
+            return new AzureSqlDatabaseTransparentDataEncryptionAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
         /// <returns>The server adapter</returns>
         protected override ImportExportDatabaseAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new ImportExportDatabaseAdapter(DefaultProfile.Context);
+            return new ImportExportDatabaseAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

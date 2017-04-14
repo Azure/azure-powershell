@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (!string.IsNullOrEmpty(storageName))
             {
-                var storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.Context,
+                var storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.DefaultContext,
                         AzureEnvironment.Endpoint.ResourceManager);
 
                 var storageAccount = storageClient.StorageAccounts.GetProperties(this.ResourceGroupName, storageName);

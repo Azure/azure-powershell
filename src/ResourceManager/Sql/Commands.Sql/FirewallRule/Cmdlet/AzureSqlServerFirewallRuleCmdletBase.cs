@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         /// <returns>The server adapter</returns>
         protected override AzureSqlServerFirewallRuleAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new AzureSqlServerFirewallRuleAdapter(DefaultProfile.Context);
+            return new AzureSqlServerFirewallRuleAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

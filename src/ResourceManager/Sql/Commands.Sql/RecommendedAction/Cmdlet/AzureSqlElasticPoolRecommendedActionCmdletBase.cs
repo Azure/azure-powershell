@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet
         /// <returns>The advisor adapter</returns>
         protected override AzureSqlElasticPoolRecommendedActionAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new AzureSqlElasticPoolRecommendedActionAdapter(DefaultProfile.Context);
+            return new AzureSqlElasticPoolRecommendedActionAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

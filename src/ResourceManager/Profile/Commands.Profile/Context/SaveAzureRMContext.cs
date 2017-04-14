@@ -20,6 +20,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -71,7 +72,7 @@ namespace Microsoft.Azure.Commands.Profile
                         ShouldContinue(string.Format(Resources.FileOverwriteMessage, Path), 
                         Resources.FileOverwriteCaption))
                     {
-                        AzureRmProfileProvider.Instance.Profile.Save(Path);
+                        AzureRmProfileProvider.Instance.GetProfile<AzureRMProfile>().Save(Path);
                         WriteVerbose(string.Format(Resources.ProfileCurrentSaved, Path));
                     }
                 }
