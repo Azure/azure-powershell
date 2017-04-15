@@ -186,7 +186,7 @@ function WcfRelayAuthTests
 
 	# Create WcfRelay Authorization Rule
     Write-Debug "Create a WcfRelay Authorization Rule"
-    $result = New-AzureRmWcfRelayAuthorizationRule -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $result1.Name -AuthorizationRuleName $authRuleName -Right @("Listen","Send")
+    $result = New-AzureRmWcfRelayAuthorizationRule -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -WcfRelayName $result1.Name -AuthorizationRuleName $authRuleName -Rights @("Listen","Send")
 
 	# Assert
     Assert-AreEqual $authRuleName $result.Name

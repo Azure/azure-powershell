@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnection
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Required if 'AuthruleObj' not specified. Rights - e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
         [ValidateNotNullOrEmpty]
-        public string[] Right { get; set; }        
+        public string[] Rights { get; set; }        
 
         public override void ExecuteCmdlet()
         {
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnection
             else
             {
 
-                foreach (string test in Right)
+                foreach (string test in Rights)
                 {
                     sasRule.Rights.Add(test);
                 }

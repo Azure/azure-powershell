@@ -56,14 +56,14 @@ namespace Microsoft.Azure.Commands.Relay.Commands.WcfRelay
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Rights, e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
         [ValidateNotNullOrEmpty]
-        public string[] Right { get; set; }
+        public string[] Rights { get; set; }
 
         public override void ExecuteCmdlet()
         {            
             AuthorizationRuleAttributes sasRule = new AuthorizationRuleAttributes();
             sasRule.Rights = new List<string>();
 
-            foreach (string test in Right)
+            foreach (string test in Rights)
             {
                 sasRule.Rights.Add(test);
             }

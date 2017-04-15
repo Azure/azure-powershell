@@ -56,13 +56,13 @@ namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnections
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Rights, e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
         [ValidateNotNullOrEmpty]
-        public string[] Right { get; set; }
+        public string[] Rights { get; set; }
 
         public override void ExecuteCmdlet()
         {            
             AuthorizationRuleAttributes sasRule = new AuthorizationRuleAttributes();
             
-            foreach (string test in Right)
+            foreach (string test in Rights)
             {
                 sasRule.Rights.Add(test);
             }

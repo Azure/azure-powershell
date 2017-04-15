@@ -80,7 +80,7 @@ function RelayNamespaceAuthTests
 
     Write-Debug "Create a Namespace Authorization Rule"    
     Write-Debug "Auth Rule name : $authRuleName"
-    $result = New-AzureRmRelayNamespaceAuthorizationRule -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AuthorizationRuleName $authRuleName -Right @("Listen","Send")
+    $result = New-AzureRmRelayNamespaceAuthorizationRule -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AuthorizationRuleName $authRuleName -Rights @("Listen","Send")
 
     Assert-AreEqual $authRuleName $result.Name
     Assert-AreEqual 2 $result.Rights.Count

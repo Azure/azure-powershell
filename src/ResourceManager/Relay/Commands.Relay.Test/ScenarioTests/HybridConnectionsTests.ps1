@@ -174,7 +174,7 @@ function HybridConnectionsAuthTests
 
 	# Create HybridConnections Authorization Rule
     Write-Debug "Create a HybridConnections Authorization Rule"
-    $resultAuthorizationRule = New-AzureRmRelayHybridConnectionAuthorizationRule -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $result.Name -AuthorizationRuleName $authRuleName -Right @("Listen","Send")
+    $resultAuthorizationRule = New-AzureRmRelayHybridConnectionAuthorizationRule -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -HybridConnectionsName $result.Name -AuthorizationRuleName $authRuleName -Rights @("Listen","Send")
 
 	# Assert
     Assert-AreEqual $authRuleName $resultAuthorizationRule.Name
