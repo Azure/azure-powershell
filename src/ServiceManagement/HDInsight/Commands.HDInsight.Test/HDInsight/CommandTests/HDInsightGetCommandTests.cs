@@ -206,7 +206,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CommandTests
             };
             waSubscription.SetAccount("test");
             var profile = new AzureSMProfile();
-            ProfileClient profileClient = new ProfileClient(new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile)));
+            ProfileClient profileClient = new ProfileClient(
+                new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile)));
             var accessTokenCreds = getClustersCommand.GetJobSubmissionClientCredentials(
                 waSubscription,
                 profileClient.Profile.Context.Environment,

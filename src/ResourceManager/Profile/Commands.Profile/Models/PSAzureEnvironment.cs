@@ -143,12 +143,12 @@ namespace Microsoft.Azure.Commands.Profile.Models
         {
             get
             {
-                return new Uri(ActiveDirectoryAuthority);
+                return UrlOrNull(ActiveDirectoryAuthority);
             }
 
             set
             {
-                this.ActiveDirectoryAuthority = value.AbsoluteUri;
+                this.ActiveDirectoryAuthority = StringOrNull(value);
             }
         }
 
@@ -156,12 +156,12 @@ namespace Microsoft.Azure.Commands.Profile.Models
         {
             get
             {
-                return new Uri(GalleryUrl);
+                return UrlOrNull(GalleryUrl);
             }
 
             set
             {
-                GalleryUrl = value.AbsoluteUri;
+                GalleryUrl = StringOrNull(value);
             }
         }
 
@@ -169,12 +169,12 @@ namespace Microsoft.Azure.Commands.Profile.Models
         {
             get
             {
-                return new Uri(ServiceManagementUrl);
+                return UrlOrNull(ServiceManagementUrl);
             }
 
             set
             {
-                ServiceManagementUrl = value.AbsoluteUri;
+                ServiceManagementUrl = StringOrNull(value);
             }
         }
 
@@ -182,12 +182,12 @@ namespace Microsoft.Azure.Commands.Profile.Models
         {
             get
             {
-                return new Uri(ResourceManagerUrl);
+                return UrlOrNull(ResourceManagerUrl);
             }
 
             set
             {
-                ResourceManagerUrl = value.AbsoluteUri;
+                ResourceManagerUrl = StringOrNull(value);
             }
         }
 
@@ -195,12 +195,12 @@ namespace Microsoft.Azure.Commands.Profile.Models
         {
             get
             {
-                return new Uri(GraphUrl);
+                return UrlOrNull(GraphUrl);
             }
 
             set
             {
-                GraphUrl = value.AbsoluteUri;
+                GraphUrl = StringOrNull(value);
             }
         }
 
@@ -208,12 +208,12 @@ namespace Microsoft.Azure.Commands.Profile.Models
         {
             get
             {
-                return new Uri(ManagementPortalUrl);
+                return UrlOrNull(ManagementPortalUrl);
             }
 
             set
             {
-                ManagementPortalUrl = value.AbsoluteUri;
+                ManagementPortalUrl = StringOrNull(value);
             }
         }
 
@@ -221,12 +221,12 @@ namespace Microsoft.Azure.Commands.Profile.Models
         {
             get
             {
-                return new Uri(PublishSettingsFileUrl);
+                return UrlOrNull(PublishSettingsFileUrl);
             }
 
             set
             {
-                PublishSettingsFileUrl = value.AbsoluteUri;
+                PublishSettingsFileUrl = StringOrNull(value);
             }
         }
 
@@ -314,6 +314,28 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public override string ToString()
         {
             return this.Name;
+        }
+
+        static Uri UrlOrNull(string urlValue)
+        {
+            Uri result = null;
+            if (urlValue != null)
+            {
+                result = new Uri(urlValue);
+            }
+
+            return result;
+        }
+
+        static string StringOrNull(Uri urlValue)
+        {
+            string result = null;
+            if (urlValue != null)
+            {
+                result = urlValue.AbsoluteUri;
+            }
+
+            return result;
         }
     }
 }

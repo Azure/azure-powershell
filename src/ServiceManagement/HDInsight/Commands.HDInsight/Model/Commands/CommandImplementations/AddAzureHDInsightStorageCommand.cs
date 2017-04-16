@@ -50,7 +50,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImp
 
         public string StorageAccountName { get; set; }
 
-        public AzureSubscription CurrentSubscription { get; set; }
+        public IAzureSubscription CurrentSubscription { get; set; }
 
         public void Cancel()
         {

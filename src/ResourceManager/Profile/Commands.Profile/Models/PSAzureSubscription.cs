@@ -35,9 +35,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
                 return null;
             }
 
-            var subscription = new PSAzureSubscription();
-            subscription.CopyFrom(other);
-            return subscription;
+            return new PSAzureSubscription(other);
         }
 
         /// <summary>
@@ -52,7 +50,9 @@ namespace Microsoft.Azure.Commands.Profile.Models
                 return null;
             }
 
-            return new PSAzureSubscription(other);
+            var subscription = new AzureSubscription();
+            subscription.CopyFrom(other);
+            return subscription;
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
             }
             set
             {
-                this.SetStorageAccount(value);
+                this.SetStorageAccount(string.Format("AccountName={0}",value));
             }
         }
 
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
 
         public override string ToString()
         {
-            return this.Id;
+            return this.GetId().ToString();
         }
 
         public static string GetAccountName(string connectionString)

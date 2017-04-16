@@ -77,11 +77,11 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
 
             commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Once());
             client = new ProfileClient(new AzureSMProfile(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AzureSession.Instance.ProfileFile)));
-            AzureEnvironment env = client.Profile.EnvironmentTable["KaTaL"];
+            IAzureEnvironment env = client.Profile.EnvironmentTable["KaTaL"];
             Assert.Equal(env.Name.ToLower(), cmdlet.Name.ToLower());
-            Assert.Equal(env.PublishSettingsFileUrl.ToString(), cmdlet.PublishSettingsFileUrl);
+            Assert.Equal(env.PublishSettingsFile.ToString(), cmdlet.PublishSettingsFileUrl);
             Assert.Equal(env.ServiceManagement.ToString(), cmdlet.ServiceEndpoint);
-            Assert.Equal(env.ManagementPortalUrl.ToString(), cmdlet.ManagementPortalUrl);
+            Assert.Equal(env.ManagementPortal.ToString(), cmdlet.ManagementPortalUrl);
             Assert.Equal(env.Gallery.ToString(), "galleryendpoint");
         }
 

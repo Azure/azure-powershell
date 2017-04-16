@@ -32,6 +32,7 @@ using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
     using Common.Authentication.Abstractions;
+    using ResourceManager.Common;
     using System.IO;
 
     public class SqlTestsBase : RMTestBase
@@ -60,6 +61,8 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         
         protected void RunPowerShellTest(params string[] scripts)
         {
+            AzureSessionInitializer.InitializeAzureSession();
+            ResourceManagerProfileProvider.InitializeResourceManagerProfile();
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
 

@@ -246,6 +246,8 @@ namespace Microsoft.Azure.Commands.Profile
         {
             try
             {
+                AzureSessionInitializer.InitializeAzureSession();
+                ResourceManagerProfileProvider.InitializeResourceManagerProfile();
                 System.Management.Automation.PowerShell invoker = null;
                 invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
                 invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(

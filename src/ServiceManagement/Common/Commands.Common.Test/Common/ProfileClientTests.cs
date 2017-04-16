@@ -30,6 +30,7 @@ using Xunit.Abstractions;
 using Microsoft.WindowsAzure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Common.Authentication.Test
 {
@@ -62,6 +63,7 @@ namespace Common.Authentication.Test
         public ProfileClientTests(ITestOutputHelper output)
         {
             AzureSessionInitializer.InitializeAzureSession();
+            ServiceManagementProfileProvider.InitializeServiceManagementProfile();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             SetMockData();
             currentProfile = new AzureSMProfile();
@@ -1504,7 +1506,7 @@ namespace Common.Authentication.Test
             {
                 Name = "Test",
                 ServiceManagement = new Uri("https://umapi.rdfetest.dnsdemo4.com:8443/"),
-                ManagementPortalUrl = new Uri("https://windows.azure-test.net"),
+                ManagementPortal = new Uri("https://windows.azure-test.net"),
                 AdTenant = "https://login.windows-ppe.net/",
                 ActiveDirectory = new Uri("https://login.windows-ppe.net/"),
                 Gallery = new Uri("https://current.gallery.azure-test.net"),

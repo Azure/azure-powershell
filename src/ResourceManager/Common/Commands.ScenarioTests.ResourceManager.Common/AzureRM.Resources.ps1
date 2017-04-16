@@ -121,23 +121,18 @@ function Remove-AzureRmResourceGroup
 
 function Get-Context
 {
-    [Microsoft.Azure.Commands.Common.Authentication.Models.AzureContext]$context = $null
-    $profile = [Microsoft.WindowsAzure.Commands.Common.AzureRmProfileProvider]::Instance.Profile
-    if ($profile -ne $null)
-    {
-      $context = $profile.DefaultContext
-    }
-    return $context
+      return [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext
 }
 
 function Get-ResourcesClient
 {
-  param([Microsoft.Azure.Commands.Common.Authentication.Models.AzureContext] $context)
-  $factory = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::ClientFactory
-  [System.Type[]]$types = [Microsoft.Azure.Commands.Common.Authentication.Models.AzureContext], [Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint]
-  $method = [Microsoft.Azure.Commands.Common.Authentication.IClientFactory].GetMethod("CreateClient", $types)
+  param([Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext] $context)
+  $factory = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.ClientFactory
+  [System.Type[]]$types = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext], 
+	[string]
+  $method = [Microsoft.Azure.Commands.Common.Authentication.IHyakClientFactory].GetMethod("CreateClient", $types)
   $closedMethod = $method.MakeGenericMethod([Microsoft.Azure.Management.Resources.ResourceManagementClient])
-  $arguments = $context, [Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint]::ResourceManager
+  $arguments = $context, [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment+Endpoint]::ResourceManager
   $client = $closedMethod.Invoke($factory, $arguments)
   return $client
 }

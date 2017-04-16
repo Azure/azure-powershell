@@ -86,13 +86,16 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <param name="context"></param>
         public PSAzureContext(IAzureContext context)
         {
-            Account = new PSAzureRmAccount(context.Account);
-            Environment = new PSAzureEnvironment(context.Environment);
-            Subscription = new PSAzureSubscription(context.Subscription);
-            Tenant = new PSAzureTenant(context.Tenant);
-            TokenCache = context.TokenCache;
-            this.VersionProfile = context.VersionProfile;
-            this.CopyPropertiesFrom(context);
+            if (context != null)
+            {
+                Account = context.Account == null ? null : new PSAzureRmAccount(context.Account);
+                Environment = context.Environment == null ? null : new PSAzureEnvironment(context.Environment);
+                Subscription = context.Subscription == null ? null : new PSAzureSubscription(context.Subscription);
+                Tenant = context.Tenant == null ? null : new PSAzureTenant(context.Tenant);
+                TokenCache = context.TokenCache;
+                this.VersionProfile = context.VersionProfile;
+                this.CopyPropertiesFrom(context);
+            }
         }
 
         /// <summary>

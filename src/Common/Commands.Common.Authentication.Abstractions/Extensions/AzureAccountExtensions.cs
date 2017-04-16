@@ -188,14 +188,17 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <param name="other">The account to copy from (source)</param>
         public static void CopyFrom(this IAzureAccount account, IAzureAccount source)
         {
-            account.Credential = source.Credential;
-            account.Id = source.Id;
-            account.Type = source.Type;
-            foreach (var item in source.TenantMap)
+            if (source != null)
             {
-                account.TenantMap[item.Key] = item.Value;
+                account.Credential = source.Credential;
+                account.Id = source.Id;
+                account.Type = source.Type;
+                foreach (var item in source.TenantMap)
+                {
+                    account.TenantMap[item.Key] = item.Value;
+                }
+                account.CopyPropertiesFrom(source);
             }
-            account.CopyPropertiesFrom(source);
         }
     }
 }

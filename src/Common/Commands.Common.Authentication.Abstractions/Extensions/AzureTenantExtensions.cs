@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <returns>The tenant ID as a Guid</returns>
         public static Guid GetId(this IAzureTenant tenant)
         {
-            return new Guid(tenant.Id);
+            return tenant.Id == null? Guid.Empty: new Guid(tenant.Id);
         }
 
         /// <summary>
@@ -35,9 +35,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <param name="other"></param>
         public static void CopyFrom(this IAzureTenant tenant, IAzureTenant other)
         {
-            tenant.Id = other.Id;
-            tenant.Directory = other.Directory;
-            tenant.CopyFrom(other);
+            if (other != null)
+            {
+                tenant.Id = other.Id;
+                tenant.Directory = other.Directory;
+                tenant.CopyPropertiesFrom(other);
+            }
         }
     }
 }

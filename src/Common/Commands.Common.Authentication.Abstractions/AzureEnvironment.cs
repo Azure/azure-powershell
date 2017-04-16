@@ -49,7 +49,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     AzureKeyVaultServiceEndpointResourceId = AzureEnvironmentConstants.AzureKeyVaultServiceEndpointResourceId,
                     AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = AzureEnvironmentConstants.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix,
                     AzureDataLakeStoreFileSystemEndpointSuffix = AzureEnvironmentConstants.AzureDataLakeStoreFileSystemEndpointSuffix,
-                    GraphEndpointResourceId = AzureEnvironmentConstants.AzureGraphEndpoint
+                    GraphEndpointResourceId = AzureEnvironmentConstants.AzureGraphEndpoint,
+                    AdTenant = "Common"
                 }
             },
             {
@@ -72,7 +73,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     AzureKeyVaultServiceEndpointResourceId = AzureEnvironmentConstants.ChinaKeyVaultServiceEndpointResourceId,
                     AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = null,
                     AzureDataLakeStoreFileSystemEndpointSuffix = null,
-                    GraphEndpointResourceId = AzureEnvironmentConstants.ChinaGraphEndpoint
+                    GraphEndpointResourceId = AzureEnvironmentConstants.ChinaGraphEndpoint,
+                    AdTenant = "Common"
                 }
             },
             {
@@ -95,7 +97,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     AzureKeyVaultServiceEndpointResourceId = AzureEnvironmentConstants.USGovernmentKeyVaultServiceEndpointResourceId,
                     AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = null,
                     AzureDataLakeStoreFileSystemEndpointSuffix = null,
-                    GraphEndpointResourceId = AzureEnvironmentConstants.USGovernmentGraphEndpoint
+                    GraphEndpointResourceId = AzureEnvironmentConstants.USGovernmentGraphEndpoint,
+                    AdTenant = "Common"
                 }
             },
             {
@@ -118,7 +121,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     AzureKeyVaultServiceEndpointResourceId = AzureEnvironmentConstants.GermanAzureKeyVaultServiceEndpointResourceId,
                     AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = null,
                     AzureDataLakeStoreFileSystemEndpointSuffix = null,
-                    GraphEndpointResourceId = AzureEnvironmentConstants.GermanGraphEndpoint
+                    GraphEndpointResourceId = AzureEnvironmentConstants.GermanGraphEndpoint,
+                    AdTenant = "Common"
                 }
             }
        };
@@ -216,7 +220,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <summary>
         /// The name of the default AdTenant in this environment
         /// </summary>
-        public string AdTenant { get; set; } = "Common";
+        public string AdTenant { get; set; } 
 
         /// <summary>
         /// The set of Azure Version Profiles supported in this environment

@@ -36,7 +36,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
     /// </summary>
     public abstract class AzureHDInsightCmdlet : AzureSMCmdlet
     {
-        internal static AzureSubscription testSubscription;
+        internal static IAzureSubscription testSubscription;
 
         private ILogWriter logger;
 

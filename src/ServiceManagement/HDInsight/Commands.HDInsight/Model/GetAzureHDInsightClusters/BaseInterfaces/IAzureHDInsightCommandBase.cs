@@ -28,6 +28,6 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
 
         Task EndProcessing();
 
-        AzureSubscription CurrentSubscription { get; set; }
+        IAzureSubscription CurrentSubscription { get; set; }
     }
 }

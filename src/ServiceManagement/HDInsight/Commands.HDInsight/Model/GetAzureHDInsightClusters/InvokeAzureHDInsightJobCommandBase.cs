@@ -52,7 +52,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
             get { return this.client != null ? this.client.CancellationToken : new CancellationTokenSource().Token; }
         }
 
-        public AzureSubscription CurrentSubscription { get; set; }
+        public IAzureSubscription CurrentSubscription { get; set; }
 
         public AzureHDInsightClusterConnection Connection { get; set; }
 

@@ -1272,7 +1272,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             {
                 Name = "Test",
                 ServiceManagement = new System.Uri("https://umapi.rdfetest.dnsdemo4.com:8443/"),
-                ManagementPortalUrl = new Uri("https://windows.azure-test.net"),
+                ManagementPortal = new Uri("https://windows.azure-test.net"),
                 AdTenant = "https://login.windows-ppe.net/",
                 ActiveDirectory = new Uri("https://login.windows-ppe.net/"),
                 Gallery = new Uri("https://current.gallery.azure-test.net"),

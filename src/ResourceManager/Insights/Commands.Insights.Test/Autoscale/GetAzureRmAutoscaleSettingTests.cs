@@ -25,6 +25,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Xunit;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
 {
@@ -42,6 +44,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
 
         public GetAzureRmAutoscaleSettingTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            AzureSessionInitializer.InitializeAzureSession();
+            ResourceManagerProfileProvider.InitializeResourceManagerProfile();
             //ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             insightsAutoscaleOperationsMock = new Mock<IAutoscaleSettingsOperations>();
             insightsManagementClientMock = new Mock<InsightsManagementClient>();

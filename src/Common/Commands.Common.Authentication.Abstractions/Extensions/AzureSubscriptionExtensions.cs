@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <returns>The globally unique id, if the id is set, otherwise, the enpty Guid</returns>
         public static Guid GetId(this IAzureSubscription subscription)
         {
-            return new Guid(subscription.Id);
+            return subscription.Id == null? Guid.Empty: new Guid(subscription.Id);
         }
 
         /// <summary>
@@ -148,10 +148,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <param name="other"></param>
         public static void CopyFrom(this IAzureSubscription subscription, IAzureSubscription other)
         {
-            subscription.Id = other.Id;
-            subscription.Name = other.Name;
-            subscription.State = other.State;
-            subscription.CopyPropertiesFrom(other);
+            if (other != null)
+            {
+                subscription.Id = other.Id;
+                subscription.Name = other.Name;
+                subscription.State = other.State;
+                subscription.CopyPropertiesFrom(other);
+            }
         }
     }
 }

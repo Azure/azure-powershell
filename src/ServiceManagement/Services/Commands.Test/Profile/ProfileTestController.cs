@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Test.Profile
                 mockName);
         }
 
-        public void RunPSTestWithToken(Func<AzureContext, string, string> testBuilder , params string[] scripts)
+        public void RunPSTestWithToken(Func<IAzureContext, string, string> testBuilder , params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);

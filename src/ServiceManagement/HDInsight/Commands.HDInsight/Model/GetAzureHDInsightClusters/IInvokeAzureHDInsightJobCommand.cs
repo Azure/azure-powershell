@@ -26,7 +26,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
     {
         CancellationToken CancellationToken { get; }
 
-        AzureSubscription CurrentSubscription { get; set; }
+        IAzureSubscription CurrentSubscription { get; set; }
 
         AzureHDInsightClusterConnection Connection { get; set; }
 

@@ -107,9 +107,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <param name="source"></param>
         public static void CopyPropertiesFrom(this IExtensibleModel model, IExtensibleModel source)
         {
-            foreach (var item in source.ExtendedProperties)
+            if (source != null)
             {
-                model.ExtendedProperties[item.Key] = item.Value;
+                foreach (var item in source.ExtendedProperties)
+                {
+                    model.ExtendedProperties[item.Key] = item.Value;
+                }
             }
         }
     }

@@ -42,7 +42,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
 
         public string Subscription { get; set; }
 
-        public AzureSubscription CurrentSubscription { get; set; }
+        public IAzureSubscription CurrentSubscription { get; set; }
 
         public virtual void Cancel()
         {

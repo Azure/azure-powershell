@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var subscription = (PSAzureSubscription)(new AzureSubscription());
             Assert.NotNull(subscription);
             Assert.Null(subscription.CurrentStorageAccountName);
-            Assert.Equal(Guid.Empty.ToString(), subscription.Id);
+            Assert.Equal(Guid.Empty, subscription.GetId());
             Assert.Null(subscription.Name);
             Assert.Null(subscription.TenantId);
             Assert.NotNull(subscription.ToString());
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.NotNull(subscription);
             Assert.False(subscription.IsPropertySet(AzureSubscription.Property.StorageAccount));
             Assert.False(subscription.IsPropertySet(AzureSubscription.Property.Tenants));
-            Assert.Equal(Guid.Empty.ToString(), subscription.Id);
+            Assert.Equal(Guid.Empty, subscription.GetId());
             Assert.Null(subscription.Name);
         }
 
@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var tenant = (PSAzureTenant)(new AzureTenant());
             Assert.NotNull(tenant);
             Assert.Null(tenant.Directory);
-            Assert.Equal(Guid.Empty.ToString(), tenant.Id);
+            Assert.Equal(Guid.Empty, tenant.GetId());
             Assert.Null(tenant.ToString());
         }
 
@@ -382,7 +382,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var tenant = (AzureTenant)(new PSAzureTenant());
             Assert.NotNull(tenant);
             Assert.Null(tenant.Directory);
-            Assert.Equal(Guid.Empty.ToString(), tenant.Id);
+            Assert.Equal(Guid.Empty, tenant.GetId());
         }
 
         [Theory,
@@ -508,7 +508,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Equal(oldContext.Subscription.Name, context.Subscription.Name);
             Assert.Equal(oldContext.Subscription.Id.ToString(), context.Subscription.Id);
             Assert.Equal(oldContext.Subscription.GetTenant(), context.Subscription.GetTenant());
-            Assert.Equal(expectedAccountName, context.Subscription.GetStorageAccount());
+            Assert.Equal(expectedAccountName, ((PSAzureSubscription)context.Subscription).CurrentStorageAccountName);
             Assert.Equal(storageAccount, context.Subscription.GetStorageAccount());
             Assert.NotNull(context.ToString());
         }

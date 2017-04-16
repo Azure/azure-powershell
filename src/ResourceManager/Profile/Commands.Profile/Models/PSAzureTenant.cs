@@ -35,9 +35,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
                 return null;
             }
 
-            var tenant = new PSAzureTenant();
-            tenant.CopyFrom(other);
-            return tenant;
+            return new PSAzureTenant(other);
         }
 
         /// <summary>

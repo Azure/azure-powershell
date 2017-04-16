@@ -20,6 +20,10 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Commands.Storage.Adapters;
+using Microsoft.Azure.Commands.Management.Storage.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Management.Storage;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
 {
@@ -42,7 +46,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
             }
             else
             {
-                var storageAccount = cmdlet.Profile.Context.GetCurrentStorageAccount();
+                var storageAccount = cmdlet.Profile.Context.GetCurrentStorageAccount(
+                    new RDFEStorageProvider(AzureSession.Instance.ClientFactory.CreateClient<StorageManagementClient>(
+                        cmdlet.Profile.Context, AzureEnvironment.Endpoint.ServiceManagement), cmdlet.Profile.Context.Environment));
                 if (storageAccount != null)
                 {
                     credentials = storageAccount.Credentials;

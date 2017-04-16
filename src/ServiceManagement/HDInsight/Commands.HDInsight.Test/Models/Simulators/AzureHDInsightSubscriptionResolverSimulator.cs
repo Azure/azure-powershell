@@ -30,7 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Simulators
 {
     internal class AzureHDInsightSubscriptionResolverSimulator : IAzureHDInsightSubscriptionResolver
     {
-        private IEnumerable<AzureSubscription> knownSubscriptions;
+        private IEnumerable<IAzureSubscription> knownSubscriptions;
 
         internal AzureHDInsightSubscriptionResolverSimulator()
         {
@@ -57,7 +57,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Simulators
                 };
         }
 
-        public AzureSubscription ResolveSubscription(string subscription)
+        public IAzureSubscription ResolveSubscription(string subscription)
         {
             Guid subId;
             if (Guid.TryParse(subscription, out subId))
