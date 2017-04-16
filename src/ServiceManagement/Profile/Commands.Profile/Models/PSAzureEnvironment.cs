@@ -38,9 +38,9 @@ namespace Microsoft.WindowsAzure.Commands.Profile.Models
                 environment.ActiveDirectoryServiceEndpointResourceId;
             newEnvironment.AdTenant = environment.AdTenant;
             newEnvironment.Gallery = new Uri(environment.GalleryUrl);
-            newEnvironment.ManagementPortalUrl = new Uri(environment.ManagementPortalUrl);
+            newEnvironment.ManagementPortal = new Uri(environment.ManagementPortalUrl);
             newEnvironment.ServiceManagement = new Uri(environment.ServiceManagementUrl);
-            newEnvironment.PublishSettingsFileUrl =
+            newEnvironment.PublishSettingsFile =
                 new Uri(environment.PublishSettingsFileUrl);
             newEnvironment.ResourceManager = new Uri(environment.ResourceManagerUrl);
             newEnvironment.SqlDatabaseDnsSuffix = environment.SqlDatabaseDnsSuffix;
@@ -98,7 +98,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile.Models
             if (environment.IsEndpointSet(AzureEnvironment.Endpoint.ManagementPortalUrl))
             {
                 ManagementPortalUrl =
-                    environment.ManagementPortalUrl.AbsoluteUri;
+                    environment.ManagementPortal.AbsoluteUri;
             }
             if (environment.IsEndpointSet(AzureEnvironment.Endpoint.ServiceManagement))
             {
@@ -108,7 +108,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile.Models
             if (environment.IsEndpointSet(AzureEnvironment.Endpoint.PublishSettingsFileUrl))
             {
                 PublishSettingsFileUrl =
-                    environment.PublishSettingsFileUrl.AbsoluteUri;
+                    environment.PublishSettingsFile.AbsoluteUri;
             }
             if (environment.IsEndpointSet(AzureEnvironment.Endpoint.ResourceManager))
             {

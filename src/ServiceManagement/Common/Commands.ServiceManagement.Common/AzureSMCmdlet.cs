@@ -54,7 +54,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         }
 
 
-        protected override IAzureContext DefaultContext { get { return CurrentProfile.Context; } }
+        protected override IAzureContext DefaultContext { get { return CurrentProfile.DefaultContext; } }
 
         static AzureSMCmdlet()
         {

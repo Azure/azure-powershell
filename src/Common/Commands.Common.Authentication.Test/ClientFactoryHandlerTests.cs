@@ -23,6 +23,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Common.Authentication.Test
 {
@@ -34,25 +35,27 @@ namespace Common.Authentication.Test
         {
             string userAccount = "user@contoso.com";
             Guid subscriptionId = Guid.NewGuid();
-             AzureContext context = new AzureContext
+            var account = new AzureAccount()
+            {
+                Id = userAccount,
+                Type = AzureAccount.AccountType.User,
+            };
+            account.SetTenants("common");
+            var sub = new AzureSubscription()
+            {
+                Id = subscriptionId.ToString(),
+            };
+            sub.SetAccount(userAccount);
+            sub.SetEnvironment("AzureCloud");
+            sub.SetTenant("common");
+            AzureContext context = new AzureContext
             (
-                new AzureSubscription()
-                {
-                    Account = userAccount,
-                    Environment = "AzureCloud",
-                    Id = subscriptionId,
-                    Properties = new Dictionary<AzureSubscription.Property, string>() { { AzureSubscription.Property.Tenants, "common" } }
-                }, 
-                new AzureAccount()
-                {
-                    Id = userAccount,
-                    Type = AzureAccount.AccountType.User,
-                    Properties = new Dictionary<AzureAccount.Property, string>() { { AzureAccount.Property.Tenants, "common" } }
-                },
+                sub, 
+                account,
                 AzureEnvironment.PublicEnvironments["AzureCloud"]
             );
 
-            AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory(userAccount, Guid.NewGuid().ToString());
+            AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory(userAccount, Guid.NewGuid().ToString());
             var mockHandler = new MockDelegatingHandler();
             var factory = new ClientFactory();
             factory.AddHandler(mockHandler);

@@ -28,8 +28,10 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Management.Automation;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading.Tasks;
 using Xunit;
 using Xunit.Abstractions;
@@ -607,6 +609,207 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.Equal(tenants[1], resultSubscription.TenantId);
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ProfileSerializeDeserializeWorks()
+        {
+            var dataStore = new MockDataStore();
+            AzureSession.Instance.DataStore = dataStore;
+            var profilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AzureSession.Instance.ProfileFile);
+            var currentProfile = new AzureRMProfile(profilePath);
+            var tenantId = Guid.NewGuid().ToString();
+            var environment = new AzureEnvironment
+            {
+                Name = "testCloud",
+                ActiveDirectory= new Uri("http://contoso.com")
+            };
+            var account = new AzureAccount
+            {
+                Id = "me@contoso.com",
+                Type = AzureAccount.AccountType.User,
+            };
+            account.SetTenants(tenantId);
+            var sub = new AzureSubscription
+            {
+                Id = new Guid().ToString(),
+                Name = "Contoso Test Subscription",
+            };
+            sub.SetAccount(account.Id);
+            sub.SetEnvironment(environment.Name);
+            sub.SetTenant(tenantId);
+            var tenant = new AzureTenant
+            {
+                Id = tenantId,
+                Directory = "contoso.com"
+            };
+
+            currentProfile.DefaultContext = new AzureContext(sub, account, environment, tenant);
+            currentProfile.EnvironmentTable[environment.Name] = environment;
+            currentProfile.DefaultContext.TokenCache = new AuthenticationStoreTokenCache(new AzureTokenCache { CacheData = new byte[] { 1, 2, 3, 4, 5, 6, 8, 9, 0 } });
+
+            AzureRMProfile deserializedProfile;
+            // Round-trip the exception: Serialize and de-serialize with a BinaryFormatter
+            BinaryFormatter bf = new BinaryFormatter();
+            using (MemoryStream ms = new MemoryStream())
+            {
+                // "Save" object state
+                bf.Serialize(ms, currentProfile);
+
+                // Re-use the same stream for de-serialization
+                ms.Seek(0, 0);
+
+                // Replace the original exception with de-serialized one
+                deserializedProfile = (AzureRMProfile)bf.Deserialize(ms);
+            }
+            Assert.NotNull(deserializedProfile);
+            var jCurrentProfile = currentProfile.ToString();
+            var jDeserializedProfile = deserializedProfile.ToString();
+            Assert.Equal(jCurrentProfile, jDeserializedProfile);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SavingProfileWorks()
+        {
+            string expected = @"{
+  ""Environments"": {
+    ""testCloud"": {
+      ""Name"": ""testCloud"",
+      ""OnPremise"": false,
+      ""Endpoints"": {
+        ""ActiveDirectory"": ""http://contoso.com""
+      }
+    }
+  },
+  ""Context"": {
+    ""Account"": {
+      ""Id"": ""me@contoso.com"",
+      ""Type"": 1,
+      ""Properties"": {
+        ""Tenants"": ""3c0ff8a7-e8bb-40e8-ae66-271343379af6""
+      }
+    },
+    ""Subscription"": {
+      ""Id"": ""00000000-0000-0000-0000-000000000000"",
+      ""Name"": ""Contoso Test Subscription"",
+      ""Environment"": ""testCloud"",
+      ""Account"": ""me@contoso.com"",
+      ""State"": ""Enabled"",
+      ""Properties"": {
+        ""Tenants"": ""3c0ff8a7-e8bb-40e8-ae66-271343379af6""
+      }
+    },
+    ""Environment"": {
+      ""Name"": ""testCloud"",
+      ""OnPremise"": false,
+      ""Endpoints"": {
+        ""ActiveDirectory"": ""http://contoso.com""
+      }
+    },
+    ""Tenant"": {
+      ""Id"": ""3c0ff8a7-e8bb-40e8-ae66-271343379af6"",
+      ""Domain"": ""contoso.com""
+    },
+    ""TokenCache"": ""AQIDBAUGCAkA""
+  }
+}";
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AzureSession.Instance.ProfileFile);
+            var dataStore = new MockDataStore();
+            AzureSession.Instance.DataStore = dataStore;
+            AzureRMProfile profile = new AzureRMProfile(path);
+            var tenantId = new Guid("3c0ff8a7-e8bb-40e8-ae66-271343379af6");
+            var environment = new AzureEnvironment
+            {
+                Name = "testCloud",
+                ActiveDirectory = new Uri("http://contoso.com")
+            };
+            var account = new AzureAccount
+            {
+                Id = "me@contoso.com",
+                Type = AzureAccount.AccountType.User,
+            };
+            account.SetTenants(tenantId.ToString());
+            var sub = new AzureSubscription
+            {
+                Id = new Guid().ToString(),
+                Name = "Contoso Test Subscription",
+                State = "Enabled",
+            };
+            sub.SetAccount(account.Id);
+            sub.SetEnvironment(environment.Name);
+            sub.SetTenant(tenantId.ToString());
+            var tenant = new AzureTenant
+            {
+                Id = tenantId.ToString(),
+                Directory = "contoso.com"
+            };
+            profile.DefaultContext = new AzureContext(sub, account, environment, tenant);
+            profile.EnvironmentTable[environment.Name] = environment;
+            profile.DefaultContext.TokenCache = new AuthenticationStoreTokenCache(new AzureTokenCache { CacheData = new byte[] { 1, 2, 3, 4, 5, 6, 8, 9, 0 } });
+            profile.Save();
+            string actual = dataStore.ReadFileAsText(path);
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void LoadingProfileWorks()
+        {
+            string contents = @"{
+  ""Environments"": {
+    ""testCloud"": {
+      ""Name"": ""testCloud"",
+      ""OnPremise"": false,
+      ""Endpoints"": {
+        ""ActiveDirectory"": ""http://contoso.com""
+      }
+    }
+  },
+  ""Context"": {
+    ""TokenCache"": ""AQIDBAUGCAkA"",
+    ""Account"": {
+      ""Id"": ""me@contoso.com"",
+      ""Type"": 1,
+      ""Properties"": {
+        ""Tenants"": ""3c0ff8a7-e8bb-40e8-ae66-271343379af6""
+      }
+    },
+    ""Subscription"": {
+      ""Id"": ""00000000-0000-0000-0000-000000000000"",
+      ""Name"": ""Contoso Test Subscription"",
+      ""Environment"": ""testCloud"",
+      ""Account"": ""me@contoso.com"",
+      ""Properties"": {
+        ""Tenants"": ""3c0ff8a7-e8bb-40e8-ae66-271343379af6""
+      }
+    },
+    ""Environment"": {
+      ""Name"": ""testCloud"",
+      ""OnPremise"": false,
+      ""Endpoints"": {
+        ""ActiveDirectory"": ""http://contoso.com""
+      }
+    },
+    ""Tenant"": {
+      ""Id"": ""3c0ff8a7-e8bb-40e8-ae66-271343379af6"",
+      ""Domain"": ""contoso.com""
+    }
+  }
+}";
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AzureSession.Instance.ProfileFile);
+            var dataStore = new MockDataStore();
+            AzureSession.Instance.DataStore = dataStore;
+            dataStore.WriteFile(path, contents);
+            var profile = new AzureRMProfile(path);
+            Assert.Equal(5, profile.Environments.Count());
+            Assert.Equal("3c0ff8a7-e8bb-40e8-ae66-271343379af6", profile.DefaultContext.Tenant.Id.ToString());
+            Assert.Equal("contoso.com", profile.DefaultContext.Tenant.Directory);
+            Assert.Equal("00000000-0000-0000-0000-000000000000", profile.DefaultContext.Subscription.Id.ToString());
+            Assert.Equal("testCloud", profile.DefaultContext.Environment.Name);
+            Assert.Equal("me@contoso.com", profile.DefaultContext.Account.Id);
+            Assert.Equal(new byte[] { 1, 2, 3, 4, 5, 6, 8, 9, 0 }, profile.DefaultContext.TokenCache.CacheData);
+            Assert.Equal(path, profile.ProfilePath);
+        }
         private class MockPage<T> : IPage<T>
         {
             public MockPage(IList<T> Items)

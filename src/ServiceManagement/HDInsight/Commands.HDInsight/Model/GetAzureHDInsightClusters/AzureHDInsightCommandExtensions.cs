@@ -32,8 +32,8 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
     {
         public static IHDInsightSubscriptionCredentials GetSubscriptionCredentials(
             this IAzureHDInsightCommonCommandBase command,
-            AzureSubscription currentSubscription,
-            AzureEnvironment environment,
+            IAzureSubscription currentSubscription,
+            IAzureEnvironment environment,
             AzureSMProfile profile)
         {
             var accountId = currentSubscription.GetAccount();
@@ -56,7 +56,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
         }
 
         public static IHDInsightSubscriptionCredentials GetSubscriptionCertificateCredentials(this IAzureHDInsightCommonCommandBase command, 
-            AzureSubscription currentSubscription, AzureAccount azureAccount, AzureEnvironment environment)
+            IAzureSubscription currentSubscription, IAzureAccount azureAccount, IAzureEnvironment environment)
         {
             return new HDInsightCertificateCredential
             {
@@ -67,7 +67,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
         }
 
         public static IHDInsightSubscriptionCredentials GetAccessTokenCredentials(this IAzureHDInsightCommonCommandBase command, 
-            AzureSubscription currentSubscription, AzureAccount azureAccount, AzureEnvironment environment)
+            IAzureSubscription currentSubscription, IAzureAccount azureAccount, IAzureEnvironment environment)
         {
             ProfileClient profileClient = new ProfileClient(new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile)));
             AzureContext azureContext = new AzureContext(currentSubscription, azureAccount, environment);
@@ -91,8 +91,8 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
 
         public static IJobSubmissionClientCredential GetJobSubmissionClientCredentials(
             this IAzureHDInsightJobCommandCredentialsBase command,
-            AzureSubscription currentSubscription,
-            AzureEnvironment environment, string cluster,
+            IAzureSubscription currentSubscription,
+            IAzureEnvironment environment, string cluster,
             AzureSMProfile profile)
         {
             IJobSubmissionClientCredential clientCredential = null;

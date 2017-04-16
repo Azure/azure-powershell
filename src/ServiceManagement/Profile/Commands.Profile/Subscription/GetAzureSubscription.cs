@@ -66,7 +66,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             switch (ParameterSetName)
             {
                 case "ByName":
-                    IEnumerable<AzureSubscription> subscriptions = new AzureSubscription[0];
+                    IEnumerable<IAzureSubscription> subscriptions = new AzureSubscription[0];
                     if (Profile.Context != null && Profile.Context.Environment != null)
                     {
                         subscriptions = ProfileClient.RefreshSubscriptions(Profile.Context.Environment)
@@ -127,12 +127,12 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             }
         }
 
-        private void WriteSubscriptions(params AzureSubscription[] subscriptions)
+        private void WriteSubscriptions(params IAzureSubscription[] subscriptions)
         {
-            WriteSubscriptions((IEnumerable<AzureSubscription>)subscriptions);
+            WriteSubscriptions((IEnumerable<IAzureSubscription>)subscriptions);
         }
 
-        private void WriteSubscriptions(IEnumerable<AzureSubscription> subscriptions)
+        private void WriteSubscriptions(IEnumerable<IAzureSubscription> subscriptions)
         {
             IEnumerable<PSAzureSubscription> subscriptionOutput;
 
@@ -148,7 +148,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             WriteObject(subscriptionOutput, true);
         }
 
-        private PSAzureSubscriptionExtended ConstructPsAzureSubscriptionExtended(AzureSubscription subscription, IClientFactory clientFactory)
+        private PSAzureSubscriptionExtended ConstructPsAzureSubscriptionExtended(IAzureSubscription subscription, IClientFactory clientFactory)
         {
             using (var client = clientFactory.CreateClient<ManagementClient>(Profile, subscription, AzureEnvironment.Endpoint.ServiceManagement))
             {

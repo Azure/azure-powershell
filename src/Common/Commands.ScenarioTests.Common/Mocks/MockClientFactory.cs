@@ -65,7 +65,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             return CreateClient<TClient>(profile, profile.DefaultContext.Subscription, endpoint);
         }
 
-        public TClient CreateClient<TClient>(IAzureContextContainer container, AzureSubscription subscription, string endpoint) where TClient : ServiceClient<TClient>
+        public TClient CreateClient<TClient>(IAzureContextContainer container, IAzureSubscription subscription, string endpoint) where TClient : ServiceClient<TClient>
         {
             var profile = container as AzureSMProfile;
             if (subscription == null)

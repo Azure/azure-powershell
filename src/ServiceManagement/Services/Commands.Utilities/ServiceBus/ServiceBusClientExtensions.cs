@@ -40,7 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.ServiceBus
     {
         private string subscriptionId;
 
-        public AzureSubscription Subscription { get; set; }
+        public IAzureSubscription Subscription { get; set; }
 
         public ServiceBusManagementClient ServiceBusClient { get; internal set; }
 

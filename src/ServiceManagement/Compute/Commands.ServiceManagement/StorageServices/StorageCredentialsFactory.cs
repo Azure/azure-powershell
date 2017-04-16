@@ -25,7 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.StorageServices
     public class StorageCredentialsFactory
     {
         private StorageManagementClient client;
-        private AzureSubscription currentSubscription;
+        private IAzureSubscription currentSubscription;
 
         public static bool IsChannelRequired(Uri destination)
         {
@@ -36,7 +36,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.StorageServices
         {
         }
 
-        public StorageCredentialsFactory(StorageManagementClient client, AzureSubscription currentSubscription)
+        public StorageCredentialsFactory(StorageManagementClient client, IAzureSubscription currentSubscription)
         {
             this.client = client;
             this.currentSubscription = currentSubscription;

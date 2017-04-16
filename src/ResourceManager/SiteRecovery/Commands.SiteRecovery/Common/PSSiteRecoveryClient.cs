@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.SiteRecovery;
 using Microsoft.Azure.Management.SiteRecovery.Models;
@@ -91,7 +92,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// required current subscription.
         /// </summary>
         /// <param name="azureSubscription">Azure Subscription</param>
-        public PSRecoveryServicesClient(IAzureProfile azureProfile)
+        public PSRecoveryServicesClient(IAzureContextContainer azureProfile)
         {
             System.Configuration.Configuration siteRecoveryConfig = ConfigurationManager.OpenExeConfiguration(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
@@ -133,13 +134,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             {
                 if (appSettings.Settings.Count == 0)
                 {
-                    endPointUri = azureProfile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager);
+                    endPointUri = azureProfile.DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager);
                 }
                 else
                 {
                     if (null == appSettings.Settings["RDFEProxy"])
                     {
-                        endPointUri = azureProfile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager);
+                        endPointUri = azureProfile.DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager);
 
                     }
                     else
@@ -156,13 +157,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 }
             }
 
-            cloudCredentials = AzureSession.Instance.AuthenticationFactory.GetSubscriptionCloudCredentials(azureProfile.Context);
+            cloudCredentials = AzureSession.Instance.AuthenticationFactory.GetSubscriptionCloudCredentials(azureProfile.DefaultContext);
             this.recoveryServicesClient =
             AzureSession.Instance.ClientFactory.CreateCustomClient<SiteRecoveryVaultManagementClient>(
                 asrVaultCreds.ResourceNamespace,
                 asrVaultCreds.ARMResourceType,
                 cloudCredentials,
-                azureProfile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager));
+                azureProfile.DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager));
         }
 
         private static bool IgnoreCertificateErrorHandler

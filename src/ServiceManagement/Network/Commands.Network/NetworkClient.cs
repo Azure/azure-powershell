@@ -51,7 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
         public static readonly string WithRoutesDetailLevel = "full";
         public static readonly string WithoutRoutesDetailLevel = "noroutes";
 
-        public NetworkClient(AzureSMProfile profile, AzureSubscription subscription, ICommandRuntime commandRuntime)
+        public NetworkClient(AzureSMProfile profile, IAzureSubscription subscription, ICommandRuntime commandRuntime)
             : this(CreateClient<NetworkManagementClient>(profile, subscription),
                    CreateClient<ComputeManagementClient>(profile, subscription),
                    CreateClient<ManagementClient>(profile, subscription),
@@ -835,7 +835,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
             operationContext.OperationDescription = commandRuntime.ToString();
         }
 
-        private static ClientType CreateClient<ClientType>(AzureSMProfile profile, AzureSubscription subscription) where ClientType : ServiceClient<ClientType>
+        private static ClientType CreateClient<ClientType>(AzureSMProfile profile, IAzureSubscription subscription) where ClientType : ServiceClient<ClientType>
         {
             return AzureSession.Instance.ClientFactory.CreateClient<ClientType>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
         }

@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// required current subscription.
         /// </summary>
         /// <param name="azureSubscription">Azure Subscription</param>
-        public PSRecoveryServicesClient(AzureSMProfile AzureSMProfile, AzureSubscription azureSubscription)
+        public PSRecoveryServicesClient(AzureSMProfile AzureSMProfile, IAzureSubscription azureSubscription)
         {
             this.Profile = AzureSMProfile;
             this.recoveryServicesClient =

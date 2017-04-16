@@ -32,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.TrafficManager.Utilities
     {
         public TrafficManagerManagementClient Client { get; internal set; }
 
-        public TrafficManagerClient(AzureSMProfile profile, AzureSubscription subscription)
+        public TrafficManagerClient(AzureSMProfile profile, IAzureSubscription subscription)
         {
             this.Client = AzureSession.Instance.ClientFactory.CreateClient<TrafficManagerManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
         }

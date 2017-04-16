@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 {
     public interface IAutomationClient
     {
-        AzureSubscription Subscription { get; }
+        IAzureSubscription Subscription { get; }
 
         #region JobStreams
 

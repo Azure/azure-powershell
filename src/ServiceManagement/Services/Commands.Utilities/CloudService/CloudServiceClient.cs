@@ -56,7 +56,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
 
         internal ComputeManagementClient ComputeClient { get; set; }
 
-        public AzureSubscription Subscription { get; set; }
+        public IAzureSubscription Subscription { get; set; }
 
         public Action<string> DebugStream { get; set; }
 
@@ -546,7 +546,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
         /// <param name="warningStream">Action used to log warning messages</param>
         public CloudServiceClient(
             AzureSMProfile profile, 
-            AzureSubscription subscription,
+            IAzureSubscription subscription,
             string currentLocation = null,
             Action<string> debugStream = null,
             Action<string> verboseStream = null,

@@ -51,7 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
         /// <summary>
         /// The subscription used to connect and authenticate.
         /// </summary>
-        private readonly AzureSubscription subscription;
+        private readonly IAzureSubscription subscription;
 
         private AzureSMProfile profile;
 
@@ -64,7 +64,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
         /// <param name="serverName">The name of the server to connect to.</param>
         private ServerDataServiceCertAuth(
             AzureSMProfile profile,
-            AzureSubscription subscription,
+            IAzureSubscription subscription,
             string serverName)
         {
             this.profile = profile;
@@ -119,7 +119,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
         public static ServerDataServiceCertAuth Create(
             string serverName,
             AzureSMProfile profile,
-            AzureSubscription subscription)
+            IAzureSubscription subscription)
         {
             if (string.IsNullOrEmpty(serverName))
             {

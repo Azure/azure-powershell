@@ -33,7 +33,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
             this.profile = profile;
         }
 
-        public AzureSubscription ResolveSubscription(string subscription)
+        public IAzureSubscription ResolveSubscription(string subscription)
         {
             var resolvedSubscription = this.profile.Subscriptions.FirstOrDefault(s => s.Id == subscription);
             if (resolvedSubscription.IsNull())

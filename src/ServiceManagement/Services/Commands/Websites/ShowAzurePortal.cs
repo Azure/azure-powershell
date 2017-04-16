@@ -55,7 +55,7 @@ namespace Microsoft.WindowsAzure.Commands.Websites
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            AzureEnvironment environment;
+            IAzureEnvironment environment;
             if (string.IsNullOrEmpty(Environment))
             {
                 environment = Profile.Context.Environment;

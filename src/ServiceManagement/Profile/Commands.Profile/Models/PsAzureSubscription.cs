@@ -26,7 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile.Models
     public class PSAzureSubscription
     {
         public PSAzureSubscription() {}
-        public PSAzureSubscription(AzureSubscription subscription, AzureSMProfile profile)
+        public PSAzureSubscription(IAzureSubscription subscription, AzureSMProfile profile)
         {
             SubscriptionId = subscription.Id.ToString();
             SubscriptionName = subscription.Name;
@@ -47,7 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile.Models
         
         public string DefaultAccount { get; set; }
         
-        public AzureAccount[] Accounts { get; set; }
+        public IAzureAccount[] Accounts { get; set; }
         
         public bool IsDefault { get; set; }
         

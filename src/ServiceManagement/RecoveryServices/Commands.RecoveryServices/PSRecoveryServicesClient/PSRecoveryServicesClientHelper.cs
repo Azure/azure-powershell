@@ -82,8 +82,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
 
             bool associatedSubscription = false;
-            List<AzureSubscription> subscriptions =
-                new List<AzureSubscription>(this.Profile.Subscriptions);
+            List<IAzureSubscription> subscriptions =
+                new List<IAzureSubscription>(this.Profile.Subscriptions);
 
             foreach (AzureSubscription sub in subscriptions)
             {

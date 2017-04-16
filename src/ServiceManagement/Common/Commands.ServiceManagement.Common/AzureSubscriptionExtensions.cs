@@ -20,7 +20,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
     public static class AzureSubscriptionExtensions
     {
 
-        public static string GetStorageAccountName(this AzureSubscription subscription)
+        public static string GetStorageAccountName(this IAzureSubscription subscription)
         {
             if (subscription == null || !subscription.IsPropertySet(AzureSubscription.Property.StorageAccount))
             {

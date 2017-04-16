@@ -46,7 +46,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         /// </summary>
         public AzureSMProfile Profile { get; set; }
 
-        public StorSimpleClient(AzureSMProfile AzureSMProfile, AzureSubscription currentSubscription)  
+        public StorSimpleClient(AzureSMProfile AzureSMProfile, IAzureSubscription currentSubscription)  
         {
             // Temp code to be able to test internal env.
             ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };//IgnoreCertificateErrorHandler;//delegate { return true; };

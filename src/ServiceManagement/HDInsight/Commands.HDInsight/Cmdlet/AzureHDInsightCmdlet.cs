@@ -116,7 +116,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
             }
         }
 
-        protected AzureSubscription GetCurrentSubscription(string Subscription, X509Certificate2 certificate)
+        protected IAzureSubscription GetCurrentSubscription(string Subscription, X509Certificate2 certificate)
         {
             if (Subscription.IsNotNullOrEmpty())
             {

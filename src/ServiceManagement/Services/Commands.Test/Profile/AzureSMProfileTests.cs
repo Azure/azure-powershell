@@ -22,6 +22,8 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Common.Authentication.Test
 {
@@ -32,33 +34,32 @@ namespace Common.Authentication.Test
         public void ProfileSaveDoesNotSerializeContext()
         {
             var dataStore = new MockDataStore();
-            var profilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AzureSession.ProfileFile);
+            var profilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AzureSession.Instance.ProfileFile);
             var profile = new AzureSMProfile(profilePath);
-            AzureSession.DataStore = dataStore;
+            AzureSession.Instance.DataStore = dataStore;
             var tenant = Guid.NewGuid().ToString();
             var environment = new AzureEnvironment
             {
                 Name = "testCloud",
-                Endpoints = { { AzureEnvironment.Endpoint.ActiveDirectory, "http://contoso.com" } }
+                ActiveDirectory = new Uri("http://contoso.com")
             };
             var account = new AzureAccount
             {
                 Id = "me@contoso.com",
                 Type = AzureAccount.AccountType.User,
-                Properties = { { AzureAccount.Property.Tenants, tenant } }
             };
+            account.SetTenants(tenant);
             var sub = new AzureSubscription
             {
-                Account = account.Id,
-                Environment = environment.Name,
-                Id = new Guid(),
+                Id = new Guid().ToString(),
                 Name = "Contoso Test Subscription",
-                Properties = { { AzureSubscription.Property.Tenants, tenant } }
             };
-
-            profile.Environments[environment.Name] = environment;
-            profile.Accounts[account.Id] = account;
-            profile.Subscriptions[sub.Id] = sub;
+            sub.SetAccount(account.Id);
+            sub.SetEnvironment(environment.Name);
+            sub.SetTenant(tenant);
+            profile.EnvironmentTable[environment.Name] = environment;
+            profile.AccountTable[account.Id] = account;
+            profile.SubscriptionTable[sub.GetId()] = sub;
 
             profile.Save();
 
@@ -71,11 +72,11 @@ namespace Common.Authentication.Test
             Assert.True(serializer.Deserialize(profileContents, parsedProfile));
             Assert.NotNull(parsedProfile);
             Assert.NotNull(parsedProfile.Environments);
-            Assert.True(parsedProfile.Environments.ContainsKey(environment.Name));
+            Assert.True(parsedProfile.EnvironmentTable.ContainsKey(environment.Name));
             Assert.NotNull(parsedProfile.Accounts);
-            Assert.True(parsedProfile.Accounts.ContainsKey(account.Id));
+            Assert.True(parsedProfile.AccountTable.ContainsKey(account.Id));
             Assert.NotNull(parsedProfile.Subscriptions);
-            Assert.True(parsedProfile.Subscriptions.ContainsKey(sub.Id));
+            Assert.True(parsedProfile.SubscriptionTable.ContainsKey(sub.GetId()));
         }
 
         [Fact]
@@ -83,33 +84,33 @@ namespace Common.Authentication.Test
        public void ProfileSerializeDeserializeWorks()
         {
             var dataStore = new MockDataStore();
-            var profilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AzureSession.ProfileFile);
+            var profilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AzureSession.Instance.ProfileFile);
             var profile = new AzureSMProfile(profilePath);
-            AzureSession.DataStore = dataStore;
+            AzureSession.Instance.DataStore = dataStore;
             var tenant = Guid.NewGuid().ToString();
             var environment = new AzureEnvironment
             {
                 Name = "testCloud",
-                Endpoints = { { AzureEnvironment.Endpoint.ActiveDirectory, "http://contoso.com" } }
+                ActiveDirectory = new Uri("http://contoso.com")
             };
             var account = new AzureAccount
             {
                 Id = "me@contoso.com",
                 Type = AzureAccount.AccountType.User,
-                Properties = { { AzureAccount.Property.Tenants, tenant } }
             };
+            account.SetTenants(tenant);
             var sub = new AzureSubscription
             {
-                Account = account.Id,
-                Environment = environment.Name,
-                Id = new Guid(),
+                Id = new Guid().ToString(),
                 Name = "Contoso Test Subscription",
-                Properties = { { AzureSubscription.Property.Tenants, tenant } }
             };
+            sub.SetAccount(account.Id);
+            sub.SetEnvironment(environment.Name);
+            sub.SetTenant(tenant);
 
-            profile.Environments[environment.Name] = environment;
-            profile.Accounts[account.Id] = account;
-            profile.Subscriptions[sub.Id] = sub;
+            profile.EnvironmentTable[environment.Name] = environment;
+            profile.AccountTable[account.Id] = account;
+            profile.SubscriptionTable[sub.GetId()] = sub;
 
             AzureSMProfile deserializedProfile;
             // Round-trip the exception: Serialize and de-serialize with a BinaryFormatter
@@ -150,15 +151,15 @@ namespace Common.Authentication.Test
             account.SetProperty(AzureAccount.Property.Tenants, tenantId.ToString());
             var subscription = new AzureSubscription
             {
-                Id = subscriptionId,
-                Account = accountNameCase,
-                Environment = EnvironmentName.AzureCloud
+                Id = subscriptionId.ToString(),
             };
+            subscription.SetAccount(accountNameCase);
+            subscription.SetEnvironment(EnvironmentName.AzureCloud);
             
             subscription.SetProperty(AzureSubscription.Property.Default, "true");
             subscription.SetProperty(AzureSubscription.Property.Tenants, tenantId.ToString());
-            profile.Accounts.Add(accountName, account);
-            profile.Subscriptions.Add(subscriptionId, subscription);
+            profile.AccountTable.Add(accountName, account);
+            profile.SubscriptionTable.Add(subscriptionId, subscription);
             Assert.NotNull(profile.Context);
             Assert.NotNull(profile.Context.Account);
             Assert.NotNull(profile.Context.Environment);
@@ -174,19 +175,20 @@ namespace Common.Authentication.Test
             AzureSMProfile profile = new AzureSMProfile();
             string accountId = "accountId";
             Guid subscriptionId = Guid.NewGuid();
-            profile.Accounts.Add(accountId, new AzureAccount { Id = accountId, Type = AzureAccount.AccountType.User });
-            profile.Subscriptions.Add(subscriptionId, new AzureSubscription
+            profile.AccountTable.Add(accountId, new AzureAccount { Id = accountId, Type = AzureAccount.AccountType.User });
+            var sub = new AzureSubscription
             {
-                Account = accountId,
-                Environment = EnvironmentName.AzureChinaCloud,
                 Name = "hello",
-                Id = subscriptionId
-            });
-            profile.DefaultSubscription = profile.Subscriptions[subscriptionId];
-            AzureContext context = profile.Context;
+                Id = subscriptionId.ToString()
+            };
+            sub.SetAccount(accountId);
+            sub.SetEnvironment(EnvironmentName.AzureChinaCloud);
+            profile.SubscriptionTable.Add(subscriptionId, sub);
+            profile.DefaultSubscription = profile.SubscriptionTable[subscriptionId];
+            IAzureContext context = profile.Context;
 
             Assert.Equal(accountId, context.Account.Id);
-            Assert.Equal(subscriptionId, context.Subscription.Id);
+            Assert.Equal(subscriptionId.ToString(), context.Subscription.Id);
             Assert.Equal(EnvironmentName.AzureChinaCloud, context.Environment.Name);
         }
     }

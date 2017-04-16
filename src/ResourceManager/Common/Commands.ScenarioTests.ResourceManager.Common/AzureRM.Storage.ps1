@@ -176,7 +176,7 @@ function Get-Context
     $profile = [Microsoft.WindowsAzure.Commands.Common.AzureRmProfileProvider]::Instance.Profile
     if ($profile -ne $null)
     {
-      $context = $profile.Context
+      $context = $profile.DefaultContext
     }
 
     return $context

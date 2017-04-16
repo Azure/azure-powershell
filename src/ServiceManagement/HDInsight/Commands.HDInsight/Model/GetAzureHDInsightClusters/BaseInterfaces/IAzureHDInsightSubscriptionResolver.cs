@@ -19,6 +19,6 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
 {
     internal interface IAzureHDInsightSubscriptionResolver
     {
-        AzureSubscription ResolveSubscription(string subscription);
+        IAzureSubscription ResolveSubscription(string subscription);
     }
 }

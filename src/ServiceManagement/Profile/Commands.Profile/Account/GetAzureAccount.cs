@@ -40,7 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
-            IEnumerable<AzureAccount> accounts = Profile.AccountTable.Values.Where(a => Name == null || a.Id == Name);
+            IEnumerable<IAzureAccount> accounts = Profile.AccountTable.Values.Where(a => Name == null || a.Id == Name);
             List<PSAzureAccount> output = new List<PSAzureAccount>();
             foreach (AzureAccount account in accounts) {
                 output.Add(account.ToPSAzureAccount());

@@ -148,7 +148,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
 
         #region Current Subscription Management
 
-        private AzureSubscription CurrentSubscription
+        private IAzureSubscription CurrentSubscription
         {
             get
             {
@@ -212,7 +212,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
         /// or <c>null</c> if an error occurred.</returns>
         internal ServerDataServiceCertAuth GetServerDataServiceByCertAuth(
             string serverName,
-            AzureSubscription subscription)
+            IAzureSubscription subscription)
         {
             ServerDataServiceCertAuth context = null;
             SqlDatabaseCmdletBase.ValidateSubscription(subscription);
@@ -258,7 +258,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
                 case FullyQualifiedServerNameWithCertAuthParamSet:
                 case ServerNameWithCertAuthParamSet:
                     // Get the current subscription data.
-                    AzureSubscription subscription = CurrentSubscription;
+                    IAzureSubscription subscription = CurrentSubscription;
 
                     // Create a context using the subscription datat
                     return this.GetServerDataServiceByCertAuth(

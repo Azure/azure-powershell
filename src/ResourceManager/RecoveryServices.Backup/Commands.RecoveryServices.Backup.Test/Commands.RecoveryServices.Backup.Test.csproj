@@ -80,7 +80,7 @@
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.5\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.TestFramework.1.3.6-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.TestFramework.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.TestFramework.1.5.1-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.TestFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks">
       <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
@@ -264,6 +264,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
+      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
+      <Name>Commands.Common.Authentication.Abstractions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
       <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
       <Name>Commands.Common.Authentication</Name>

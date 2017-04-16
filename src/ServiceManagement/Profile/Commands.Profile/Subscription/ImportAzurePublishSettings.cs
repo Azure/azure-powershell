@@ -54,7 +54,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                 ImportFile();
             }
 
-            AzureSubscription defaultSubscription = ProfileClient.Profile.DefaultSubscription;
+            IAzureSubscription defaultSubscription = ProfileClient.Profile.DefaultSubscription;
             Debug.Assert(Profile.Context != null);
         }
 

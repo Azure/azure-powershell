@@ -57,13 +57,13 @@ namespace Microsoft.Azure.Commands.Automation.Common
         {
         }
 
-        public AutomationClient(AzureSMProfile profile, AzureSubscription subscription)
+        public AutomationClient(AzureSMProfile profile, IAzureSubscription subscription)
             : this(subscription,
             AzureSession.Instance.ClientFactory.CreateClient<AutomationManagement.AutomationManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement))
         {
         }
 
-        public AutomationClient(AzureSubscription subscription,
+        public AutomationClient(IAzureSubscription subscription,
             AutomationManagement.IAutomationManagementClient automationManagementClient)
         {
             Requires.Argument("automationManagementClient", automationManagementClient).NotNull();
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             this.automationManagementClient = automationManagementClient;
         }
 
-        public AzureSubscription Subscription { get; private set; }
+        public IAzureSubscription Subscription { get; private set; }
 
         #region Schedule Operations
 

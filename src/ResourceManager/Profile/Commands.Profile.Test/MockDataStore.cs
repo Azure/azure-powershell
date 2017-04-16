@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,9 +21,9 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Microsoft.Azure.Commands.Common.Authentication.Models
+namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 {
-    public class MemoryDataStore : IDataStore
+    public class MockDataStore : IDataStore
     {
         private Dictionary<string, string> virtualStore = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
         private Dictionary<string, X509Certificate2> certStore = new Dictionary<string, X509Certificate2>(StringComparer.InvariantCultureIgnoreCase);
@@ -312,6 +313,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                     sb.Append(chars[i]);
             }
             return sb.ToString().ToLowerInvariant();
-        }
+        } 
     }
 }

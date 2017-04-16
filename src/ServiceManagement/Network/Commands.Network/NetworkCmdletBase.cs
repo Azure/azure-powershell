@@ -28,7 +28,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
     {
         private NetworkClient client;
 
-        protected AzureSubscription CurrentSubscription
+        protected IAzureSubscription CurrentSubscription
         {
             get { return Profile.Context.Subscription; }
         }

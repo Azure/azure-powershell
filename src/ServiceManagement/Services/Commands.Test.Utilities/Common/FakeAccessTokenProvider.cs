@@ -37,7 +37,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
             };
         }
 
-        public IAccessToken GetAccessToken(AdalConfiguration config, ShowDialog promptBehavior, string userId, SecureString password,
+        public IAccessToken GetAccessToken(AdalConfiguration config, string promptBehavior, string userId, SecureString password,
             string credentialType)
         {
             return this.accessToken;

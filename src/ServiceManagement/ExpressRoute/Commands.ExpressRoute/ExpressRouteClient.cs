@@ -35,7 +35,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
     {
         public ExpressRouteManagementClient Client { get; internal set; }
 
-        private static ClientType CreateClient<ClientType>(AzureSMProfile profile, AzureSubscription subscription) where ClientType : ServiceClient<ClientType>
+        private static ClientType CreateClient<ClientType>(AzureSMProfile profile, IAzureSubscription subscription) where ClientType : ServiceClient<ClientType>
         {
             return AzureSession.Instance.ClientFactory.CreateClient<ClientType>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
@@ -45,7 +45,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         /// </summary>
         /// <param name="subscription">Subscription containing websites to manipulate</param>
         /// <param name="profile">Azure Profile</param>
-        public ExpressRouteClient(AzureSMProfile profile, AzureSubscription subscription)
+        public ExpressRouteClient(AzureSMProfile profile, IAzureSubscription subscription)
             : this(CreateClient<ExpressRouteManagementClient>(profile, subscription))
         {
         }

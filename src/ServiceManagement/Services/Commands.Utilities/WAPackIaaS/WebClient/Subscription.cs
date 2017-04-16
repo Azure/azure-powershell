@@ -54,7 +54,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.WAPackIaaS.WebClient
             this.Certificate = new X509Certificate2();
         }
 
-        internal Subscription(AzureSubscription azureSubscription)
+        internal Subscription(IAzureSubscription azureSubscription)
         {
             if (azureSubscription == null)
             {

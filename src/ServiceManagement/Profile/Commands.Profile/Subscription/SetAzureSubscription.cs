@@ -92,7 +92,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            AzureSubscription subscription = null;
+            IAzureSubscription subscription = null;
 
             if (!string.IsNullOrEmpty(SubscriptionId) && string.IsNullOrEmpty(SubscriptionName))
             {
@@ -111,7 +111,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                 subscription.Name = SubscriptionName;
             }
 
-            AzureEnvironment environment = ProfileClient.GetEnvironment(Environment, ServiceEndpoint, ResourceManagerEndpoint);
+            IAzureEnvironment environment = ProfileClient.GetEnvironment(Environment, ServiceEndpoint, ResourceManagerEndpoint);
             if (environment == null)
             {
                 var profileClient = new ProfileClient(Profile);

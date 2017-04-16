@@ -21,7 +21,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
 {
     public static class ProfileClientExtensions
     {
-        public static PSAzureAccount ToPSAzureAccount(this AzureAccount account)
+        public static PSAzureAccount ToPSAzureAccount(this IAzureAccount account)
         {
             string subscriptionsList = account.GetProperty(AzureAccount.Property.Subscriptions);
             string tenantsList = account.GetProperty(AzureAccount.Property.Tenants);

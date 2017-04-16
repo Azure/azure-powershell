@@ -33,7 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             throw new NotImplementedException();
         }
 
-        public TClient CreateClient<TClient>(IAzureContextContainer profile, AzureSubscription subscription, string endpoint) where TClient : Hyak.Common.ServiceClient<TClient>
+        public TClient CreateClient<TClient>(IAzureContextContainer profile, IAzureSubscription subscription, string endpoint) where TClient : Hyak.Common.ServiceClient<TClient>
         {
             throw new NotImplementedException();
         }

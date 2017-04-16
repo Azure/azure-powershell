@@ -20,6 +20,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Common.Authentication.Test
 {
@@ -35,26 +36,21 @@ namespace Common.Authentication.Test
             };
 
             var subscriptionId = Guid.NewGuid();
-
+            var account = new AzureAccount
+            {
+                Id = "testuser",
+                Type = AzureAccount.AccountType.User,
+            };
+            account.SetTenants("123");
+            var sub = new AzureSubscription
+            {
+                Id = subscriptionId.ToString(),
+            };
+            sub.SetTenant("123");
             var credential = authFactory.GetSubscriptionCloudCredentials(new AzureContext
             (
-                new AzureSubscription
-                {
-                    Id = subscriptionId,
-                    Properties = new Dictionary<AzureSubscription.Property, string>
-                    {
-                        { AzureSubscription.Property.Tenants, "123"}
-                    }
-                },
-                new AzureAccount
-                {
-                    Id = "testuser",
-                    Type = AzureAccount.AccountType.User,
-                    Properties = new Dictionary<AzureAccount.Property, string>
-                    {
-                        { AzureAccount.Property.Tenants, "123" }
-                    }
-                },
+                sub,
+               account,
                 AzureEnvironment.PublicEnvironments["AzureCloud"]
             ));
 
@@ -72,34 +68,27 @@ namespace Common.Authentication.Test
             };
 
             var subscriptionId = Guid.NewGuid();
+            var account = new AzureAccount
+            {
+                Id = "testuser",
+                Type = AzureAccount.AccountType.User,
+            };
+            account.SetTenants("123");
+            var sub = new AzureSubscription
+            {
+                Id = subscriptionId.ToString(),
+            };
+            sub.SetTenant("123");
             var context = new AzureContext
             (
-                new AzureSubscription
-                {
-                    Id = subscriptionId,
-                    Properties = new Dictionary<AzureSubscription.Property, string>
-                    {
-                        { AzureSubscription.Property.Tenants, "123"}
-                    }
-                },
-                new AzureAccount
-                {
-                    Id = "testuser",
-                    Type = AzureAccount.AccountType.User,
-                    Properties = new Dictionary<AzureAccount.Property, string>
-                    {
-                        { AzureAccount.Property.Tenants, "123" }
-                    }
-                },
+                sub,
+                account,
                 new AzureEnvironment
                 {
                     Name = "Katal",
                     OnPremise = true,
-                    Endpoints = new Dictionary<AzureEnvironment.Endpoint, string>
-                    {
-                        { AzureEnvironment.Endpoint.ActiveDirectory, "http://ad.com" },
-                        { AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId, "http://adresource.com" }
-                    }
+                    ActiveDirectory = new Uri("http://ad.com"),
+                    ActiveDirectoryServiceEndpointResourceId = "http://adresource.com"
                 }
             );
 

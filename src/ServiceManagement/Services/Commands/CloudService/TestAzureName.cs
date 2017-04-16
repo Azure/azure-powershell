@@ -52,7 +52,7 @@ namespace Microsoft.WindowsAzure.Commands.CloudService
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        public bool IsDNSAvailable(AzureSubscription subscription, string name)
+        public bool IsDNSAvailable(IAzureSubscription subscription, string name)
         {
             EnsureCloudServiceClientInitialized(subscription);
             bool available = this.CloudServiceClient.CheckHostedServiceNameAvailability(name);
@@ -60,7 +60,7 @@ namespace Microsoft.WindowsAzure.Commands.CloudService
             return available;
         }
 
-        public bool IsStorageServiceAvailable(AzureSubscription subscription, string name)
+        public bool IsStorageServiceAvailable(IAzureSubscription subscription, string name)
         {
             EnsureCloudServiceClientInitialized(subscription);
             bool available = this.CloudServiceClient.CheckStorageServiceAvailability(name);
@@ -77,7 +77,7 @@ namespace Microsoft.WindowsAzure.Commands.CloudService
             return result;
         }
 
-        private void EnsureCloudServiceClientInitialized(AzureSubscription subscription)
+        private void EnsureCloudServiceClientInitialized(IAzureSubscription subscription)
         {
             this.CloudServiceClient = this.CloudServiceClient ?? new CloudServiceClient(
                 Profile,

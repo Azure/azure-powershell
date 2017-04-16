@@ -109,7 +109,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                 }
             });
 
-            var newEnvironment = new AzureEnvironment { Name = Name, OnPremise = EnableAdfsAuthentication };
+            IAzureEnvironment newEnvironment = new AzureEnvironment { Name = Name, OnPremise = EnableAdfsAuthentication };
             if (ProfileClient.Profile.EnvironmentTable.ContainsKey(Name))
             {
                 newEnvironment = ProfileClient.Profile.EnvironmentTable[Name];
@@ -134,7 +134,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             WriteObject((PSAzureEnvironment)newEnvironment);
         }
 
-        private void SetEndpointIfProvided(AzureEnvironment newEnvironment, string endpoint, string property)
+        private void SetEndpointIfProvided(IAzureEnvironment newEnvironment, string endpoint, string property)
         {
             if (!string.IsNullOrEmpty(property))
             {

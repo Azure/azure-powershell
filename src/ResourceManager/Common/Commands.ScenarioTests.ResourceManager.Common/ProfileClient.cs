@@ -1003,7 +1003,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             else if (string.IsNullOrEmpty(name) &&
                 Profile.DefaultSubscription != null)
             {
-                return Profile.Context.Environment;
+                return Profile.DefaultContext.Environment;
             }
             else if (Profile.EnvironmentTable.ContainsKey(name))
             {

@@ -381,7 +381,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
         {
             if (string.IsNullOrEmpty(accountName))
             {
-                return Profile.Context.Account;
+                return Profile.DefaultContext.Account;
             }
             else if (Profile.AccountTable.ContainsKey(accountName))
             {
@@ -738,12 +738,12 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             return PublishSettingsImporter.ImportAzureSubscription(AzureSession.Instance.DataStore.ReadFileAsStream(filePath), this, environment).ToList();
         }
 
-        private IEnumerable<AzureSubscription> ListSubscriptionsFromServerForAllAccounts(IAzureEnvironment environment)
+        private IEnumerable<IAzureSubscription> ListSubscriptionsFromServerForAllAccounts(IAzureEnvironment environment)
         {
             // Get all AD accounts and iterate
             var accountNames = Profile.AccountTable.Keys;
 
-            List<AzureSubscription> subscriptions = new List<AzureSubscription>();
+            List<IAzureSubscription> subscriptions = new List<IAzureSubscription>();
 
             foreach (var accountName in accountNames.ToArray())
             {
@@ -1098,7 +1098,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             else if (string.IsNullOrEmpty(name) &&
                 Profile.DefaultSubscription != null)
             {
-                return Profile.Context.Environment;
+                return Profile.DefaultContext.Environment;
             }
             else if (Profile.EnvironmentTable.ContainsKey(name))
             {
@@ -1187,7 +1187,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             }
         }
 
-        public IAzureEnvironment AddOrSetEnvironment(AzureEnvironment environment)
+        public IAzureEnvironment AddOrSetEnvironment(IAzureEnvironment environment)
         {
             if (environment == null)
             {

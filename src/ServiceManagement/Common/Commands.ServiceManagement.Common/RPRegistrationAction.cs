@@ -68,9 +68,9 @@ namespace Microsoft.Azure.ServiceManagemenet.Common.Models
         /// <typeparam name="T">The client type</typeparam>
         private void RegisterServiceManagementProviders<T>(AzureSMProfile profile)
         {
-            var credentials = AzureSession.Instance.AuthenticationFactory.GetSubscriptionCloudCredentials(profile.Context);
+            var credentials = AzureSession.Instance.AuthenticationFactory.GetSubscriptionCloudCredentials(profile.DefaultContext);
             var providersToRegister = RequiredResourceLookup.RequiredProvidersForServiceManagement<T>();
-            var registeredProviders = profile.Context.Subscription.GetPropertyAsArray(AzureSubscription.Property.RegisteredResourceProviders);
+            var registeredProviders = profile.DefaultContext.Subscription.GetPropertyAsArray(AzureSubscription.Property.RegisteredResourceProviders);
             var unregisteredProviders = providersToRegister.Where(p => !registeredProviders.Contains(p)).ToList();
             var successfullyRegisteredProvider = new List<string>();
 
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common.Models
             {
                 using (var client = new ManagementClient(
                                             credentials,
-                                            profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement)))
+                                            profile.DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement)))
                 {
                     foreach (var provider in unregisteredProviders)
                     {
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common.Models
                 }
 
                 Debug.Assert(profile is AzureSMProfile);
-                UpdateSubscriptionRegisteredProviders((AzureSMProfile)profile, profile.Context.Subscription, successfullyRegisteredProvider);
+                UpdateSubscriptionRegisteredProviders((AzureSMProfile)profile, profile.DefaultContext.Subscription, successfullyRegisteredProvider);
             }
         }
 
