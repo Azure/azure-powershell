@@ -108,10 +108,6 @@ namespace Microsoft.Azure.Commands.Profile.Models
             {
                 return GetAccountName(CurrentStorageAccount);
             }
-            set
-            {
-                this.SetStorageAccount(string.Format("AccountName={0}",value));
-            }
         }
 
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);

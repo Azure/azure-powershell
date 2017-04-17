@@ -30,6 +30,7 @@ namespace Common.Authentication.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void VerifySubscriptionTokenCacheRemove()
         {
+            AzureSessionInitializer.InitializeAzureSession();
             var authFactory = new AuthenticationFactory
             {
                 TokenProvider = new MockAccessTokenProvider("testtoken", "testuser")
@@ -62,6 +63,7 @@ namespace Common.Authentication.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
        public void VerifyValidateAuthorityFalseForOnPremise()
         {
+            AzureSessionInitializer.InitializeAzureSession();
             var authFactory = new AuthenticationFactory
             {
                 TokenProvider = new MockAccessTokenProvider("testtoken", "testuser")

@@ -203,7 +203,7 @@ function Get-StorageClient
     }
     else
     {
-      $method = [Microsoft.Azure.Commands.Common.Authentication.IClientFactory].GetMethod("CreateClient", $types)
+      $method = [Microsoft.Azure.Commands.Common.Authentication.IHyakClientFactory].GetMethod("CreateClient", $types)
     }
     $closedMethod = $method.MakeGenericMethod([Microsoft.Azure.Management.Storage.StorageManagementClient])
     $arguments = $context, [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment+Endpoint]::ResourceManager

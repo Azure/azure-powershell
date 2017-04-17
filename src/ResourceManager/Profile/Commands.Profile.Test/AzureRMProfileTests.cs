@@ -78,6 +78,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
         public AzureRMProfileTests(ITestOutputHelper output)
         {
+            AzureSessionInitializer.InitializeAzureSession();
+            ResourceManagerProfileProvider.InitializeResourceManagerProfile();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 

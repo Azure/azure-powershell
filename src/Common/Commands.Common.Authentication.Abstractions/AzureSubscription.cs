@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
     /// <summary>
     /// A model for an Azure subscription
     /// </summary>
+    [Serializable]
     public class AzureSubscription : IAzureSubscription
     {
         /// <summary>

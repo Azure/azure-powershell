@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
@@ -33,6 +34,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
         public TenantCmdletTests(ITestOutputHelper output)
         {
+            AzureSessionInitializer.InitializeAzureSession();
+            ResourceManagerProfileProvider.InitializeResourceManagerProfile();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             dataStore = new MemoryDataStore();
             AzureSession.Instance.DataStore = dataStore;

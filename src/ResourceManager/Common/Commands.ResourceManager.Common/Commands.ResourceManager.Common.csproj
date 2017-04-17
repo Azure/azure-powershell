@@ -144,6 +144,7 @@
     <Compile Include="AccessTokenExtensions.cs" />
     <Compile Include="AzureRmCmdlet.cs" />
     <Compile Include="AzureRMProfile.cs" />
+    <Compile Include="AzureRmProfileConverter.cs" />
     <Compile Include="AzureRMProfileExtensions.cs" />
     <Compile Include="Generated\DeploymentOperations.cs" />
     <Compile Include="Generated\DeploymentOperationsExtensions.cs" />

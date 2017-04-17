@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
     /// <summary>
     /// The current target of azure cmdlets, including the account, tenant, subscription and service-specific data
     /// </summary>
+    [Serializable]
     public class AzureContext : IAzureContext
     {
         /// <summary>

@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
     /// A record of metadata necessary to manage assets in a specific azure cloud, including necessary endpoints,
     /// location fo service-specific endpoints, and information for bootstrapping authentication
     /// </summary>
+    [Serializable]
     public class AzureEnvironment : IAzureEnvironment
     {
         /// <summary>

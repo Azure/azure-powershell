@@ -12,11 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
     /// <summary>
     /// State storage for token cache
     /// </summary>
+    [Serializable]
     public class AzureTokenCache : IAzureTokenCache
     {
         /// <summary>

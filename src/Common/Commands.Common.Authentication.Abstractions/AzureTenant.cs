@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
     /// <summary>
     /// A model for an Azure Active Directory Tenant
     /// </summary>
+    [Serializable]
     public class AzureTenant : IAzureTenant
     {
         /// <summary>

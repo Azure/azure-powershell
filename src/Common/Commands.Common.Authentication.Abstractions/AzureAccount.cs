@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
     /// <summary>
     /// a model class for azure accoutn credentials
     /// </summary>
+    [Serializable]
     public class AzureAccount : IAzureAccount
     {
         /// <summary>

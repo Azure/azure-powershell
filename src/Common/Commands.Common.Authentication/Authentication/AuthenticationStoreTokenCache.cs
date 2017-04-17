@@ -19,6 +19,7 @@ using System.Threading;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
+    [Serializable]
     public class AuthenticationStoreTokenCache : TokenCache, IAzureTokenCache, IDisposable
     {
         AzureTokenCache _tokenStore;

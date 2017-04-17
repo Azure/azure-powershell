@@ -54,7 +54,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 new PSAzureSubscription
                 {
                     CurrentStorageAccount = storageAccount,
-                    CurrentStorageAccountName = PSAzureSubscription.GetAccountName(storageAccount),
                     Id = subscriptionId.ToString(),
                     Name = "Test Subscription 1",
                     TenantId = tenantId.ToString()

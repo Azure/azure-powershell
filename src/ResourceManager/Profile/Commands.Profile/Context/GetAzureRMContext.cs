@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Commands.Profile
     {
         public override void ExecuteCmdlet()
         {
-            WriteObject((PSAzureContext)AzureRmProfileProvider.Instance.Profile.DefaultContext);
+            WriteObject(new PSAzureContext(AzureRmProfileProvider.Instance.GetProfile<AzureRMProfile>().DefaultContext));
         }
     }
 }

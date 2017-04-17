@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Profile
                                    AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.State));
                 }
 
-                WriteObject((PSAzureProfile)AzureRmProfileProvider.Instance.Profile);
+                WriteObject((PSAzureProfile)AzureRmProfileProvider.Instance.GetProfile<AzureRMProfile>());
             }
         }
     }

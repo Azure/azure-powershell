@@ -19,6 +19,7 @@ using System.Diagnostics;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System.Collections;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
@@ -31,8 +32,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// <summary>
         /// Gets or sets Azure environments.
         /// </summary>
+        [JsonConverter(typeof(AzureRmProfileConverter))]
         public Dictionary<string, IAzureEnvironment> EnvironmentTable { get; set; }
 
+        [JsonConverter(typeof(AzureRmProfileConverter))]
         public Dictionary<string, IAzureContext> Contexts = new Dictionary<string, IAzureContext>(StringComparer.OrdinalIgnoreCase);
 
         /// <summary>
@@ -44,8 +47,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// <summary>
         /// Gets the default context
         /// </summary>
+        [JsonConverter(typeof(AzureRmProfileConverter))]
         public IAzureContext DefaultContext { get; set;}
 
+        [JsonConverter(typeof(AzureRmProfileConverter))]
         public IEnumerable<IAzureEnvironment> Environments
         {
             get
@@ -54,6 +59,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             }
         }
 
+        [JsonConverter(typeof(AzureRmProfileConverter))]
         public IEnumerable<IAzureSubscription> Subscriptions
         {
             get
@@ -62,6 +68,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             }
         }
 
+        [JsonConverter(typeof(AzureRmProfileConverter))]
         public IEnumerable<IAzureAccount> Accounts
         {
             get
@@ -70,6 +77,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             }
         }
 
+        [JsonConverter(typeof(AzureRmProfileConverter))]
         public IAzureTokenCache TokenStore { get; set; } = new AzureTokenCache();
 
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
@@ -82,6 +90,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             }
         }
 
+        [JsonIgnore]
         public ICollection<IAzureContext> Values
         {
             get
@@ -106,6 +115,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             }
         }
 
+        [JsonIgnore]
         public IAzureContext this[string key]
         {
             get
@@ -131,7 +141,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             if (AzureSession.Instance.DataStore.FileExists(ProfilePath))
             {
                 string contents = AzureSession.Instance.DataStore.ReadFileAsText(ProfilePath);
-                var profile = JsonConvert.DeserializeObject<IAzureContextContainer>(contents);
+                var profile = JsonConvert.DeserializeObject<AzureRMProfile>(contents, new AzureRmProfileConverter());
                 Debug.Assert(profile != null);
                 DefaultContext = profile.DefaultContext;
                 EnvironmentTable.Clear();

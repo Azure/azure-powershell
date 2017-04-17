@@ -33,6 +33,7 @@ namespace Common.Authentication.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DelegatingHandlersAreCloned()
         {
+            AzureSessionInitializer.InitializeAzureSession();
             string userAccount = "user@contoso.com";
             Guid subscriptionId = Guid.NewGuid();
             var account = new AzureAccount()
