@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             if (fabircExtension == null || diagnosticsVmExt == null || existingStorageProfile == null)
             {
-                throw new NotSupportedException("The resouce group should have at least one vaild vmext for service fabric");
+                throw new NotSupportedException("The resource group should have at least one valid vmext for service fabric");
             }
 
             fabircExtension.Name = string.Format("{0}_ServiceFabricNode", this.NodeTypeName);
@@ -389,7 +389,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private string GetRandomName()
         {
-            string name = string.Empty;
+            var name = string.Empty;
 
             if (!dontRandom)
             {
@@ -436,15 +436,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
            
             var ipConfiguration = existingNetworkConfig.IpConfigurations.FirstOrDefault();
             var subNetId = ipConfiguration.Subnet.Id;
-            const string VirtualNetworks = "Microsoft.Network/virtualNetworks/";
+            const string virtualNetworks = "Microsoft.Network/virtualNetworks/";
             var virtualNetwork = string.Empty;
             int index = -1;
             if ((index = subNetId.IndexOf(
-                VirtualNetworks,
+                virtualNetworks,
                 StringComparison.InvariantCultureIgnoreCase)) != -1)
             {
-                var end = subNetId.IndexOf("/", index + VirtualNetworks.Length);
-                virtualNetwork = subNetId.Substring(index + VirtualNetworks.Length, end - index - VirtualNetworks.Length);
+                var end = subNetId.IndexOf("/", index + virtualNetworks.Length);
+                virtualNetwork = subNetId.Substring(index + virtualNetworks.Length, end - index - virtualNetworks.Length);
             }
 
             if (string.IsNullOrEmpty(virtualNetwork))

@@ -61,7 +61,9 @@ Accept wildcard characters: False
 ```
 
 ### -Number
-VM instance number```yaml
+VM instance number
+
+```yaml
 Type: Int32
 Parameter Sets: (All)
 Aliases: NumberOfNodesToAdd

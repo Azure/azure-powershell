@@ -71,7 +71,9 @@ This command will add certificate by creating an new self signed certificate and
 ## PARAMETERS
 
 ### -CertificateDnsName
-The Dns name of the certificate to be created```yaml
+The Dns name of the certificate to be created
+
+```yaml
 Type: String
 Parameter Sets: ByNewPfxAndVaultName, ByNewPfxAndVaultId
 Aliases: Dns
@@ -84,7 +86,9 @@ Accept wildcard characters: False
 ```
 
 ### -CertificatePassword
-The password of the pfx file```yaml
+The password of the pfx file
+
+```yaml
 Type: SecureString
 Parameter Sets: ByNewPfxAndVaultName, ByExistingPfxAndVaultName, ByExistingPfxSetAndVaultId, ByNewPfxAndVaultId
 Aliases: Password
@@ -97,7 +101,9 @@ Accept wildcard characters: False
 ```
 
 ### -CertificateThumprint
-The thumprint for the Azure key vault secret```yaml
+The thumprint for the Azure key vault secret
+
+```yaml
 Type: String
 Parameter Sets: ByExistingKeyVault
 Aliases: Thumbprint
@@ -155,7 +161,9 @@ Accept wildcard characters: False
 ```
 
 ### -KeyVaultResouceId
-Azure key vault resource id```yaml
+Azure key vault resource id
+
+```yaml
 Type: String
 Parameter Sets: ByExistingPfxSetAndVaultId, ByNewPfxAndVaultId
 Aliases: 
@@ -168,7 +176,9 @@ Accept wildcard characters: False
 ```
 
 ### -PfxDestinationFile
-The destination path of the new Pfx file to be created```yaml
+The destination path of the new Pfx file to be created
+
+```yaml
 Type: String
 Parameter Sets: ByNewPfxAndVaultName, ByNewPfxAndVaultId
 Aliases: Destination
@@ -181,7 +191,9 @@ Accept wildcard characters: False
 ```
 
 ### -PfxSourceFile
-The existing Pfx file path```yaml
+The existing Pfx file path
+
+```yaml
 Type: String
 Parameter Sets: ByExistingPfxAndVaultName, ByExistingPfxSetAndVaultId
 Aliases: Source

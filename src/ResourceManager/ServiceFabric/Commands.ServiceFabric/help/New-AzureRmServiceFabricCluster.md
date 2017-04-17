@@ -252,7 +252,9 @@ Accept wildcard characters: False
 ```
 
 ### -ParameterFile
-The path of the template parameter file.```yaml
+The path of the template parameter file.
+
+```yaml
 Type: String
 Parameter Sets: ByExistingKeyVault, ByNewPfxAndVaultName, ByExistingPfxAndVaultName, ByExistingPfxSetAndVaultId, ByNewPfxAndVaultId
 Aliases: 
