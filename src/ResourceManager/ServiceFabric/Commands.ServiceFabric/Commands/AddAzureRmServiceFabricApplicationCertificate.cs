@@ -16,13 +16,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.ServiceFabric.Commands;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
 
-namespace Microsoft.Azure.Commands.ServiceFabric
+namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     [Cmdlet(VerbsCommon.Add, CmdletNoun.AzureRmServiceFabricApplicationCertificate)]
     public class AddAzureRmServiceFabricApplicationCertificate : ServiceFabricClusterCertificateCmdlet

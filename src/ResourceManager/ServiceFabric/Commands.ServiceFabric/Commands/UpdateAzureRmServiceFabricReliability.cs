@@ -24,7 +24,7 @@ using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Propertie
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsData.Update, CmdletNoun.AzureRmServiceFabricReliability), OutputType(typeof(PsCluster))]
+    [Cmdlet(VerbsData.Update, CmdletNoun.AzureRmServiceFabricReliability), OutputType(typeof(PSCluster))]
     public class UpdateAzureRmServiceFabricReliability : ServiceFabricClusterCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public ReliabilityLevel ReliabilityLevel { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Automaticly adjust nodes number when changing reliability")]
+                   HelpMessage = "Adjust nodes number automatically when changing reliability")]
         [Alias("AutoAdjustNodes")]
         public SwitchParameter AutoAddNodes
         {
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         {
             var clusterRes = GetCurrentCluster();
             var nodeTypes = clusterRes.NodeTypes;
-            var primaryNodeType = nodeTypes.First(nt => nt.IsPrimary == true);
+            var primaryNodeType = nodeTypes.First(nt => nt.IsPrimary);
             var vmss = GetVmss(primaryNodeType.Name);
             return vmss;
         }

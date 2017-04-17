@@ -12,7 +12,6 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-
 function Test-UpdateAzureRmServiceFabricDurability
 {
 	$nodeTypeName = Get-NodeTypeName
@@ -96,7 +95,7 @@ function Test-NewAzureRmServiceFabricCluster
 	$keyvaultRg = Get-KeyVaultResourceGroup
 
 	$cluster = New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -TemplateFile .\Resources\template.json `
-	          -TemplateParameterFile .\Resources\parameters.json  -SecretIdentifier $keyvaulturi -Thumprint $thumbprint
+	          -ParameterFile .\Resources\parameters.json  -SecretIdentifier $keyvaulturi -Thumprint $thumbprint
 	$clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName 
 	Assert-NotNull $clusters[0]
 }

@@ -14,6 +14,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
@@ -23,7 +24,7 @@ using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Propertie
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Add, CmdletNoun.AzureRmServiceFabricClientCertificate), OutputType(typeof(PsCluster))]
+    [Cmdlet(VerbsCommon.Add, CmdletNoun.AzureRmServiceFabricClientCertificate), OutputType(typeof(PSCluster))]
     public class AddAzureRmServiceFabricClientCertificate : ServiceFabricClusterCmdlet
     {
         protected const string SingleUpdateWithCommonNameSet = "SingleUpdateWithCommonName";
@@ -31,15 +32,41 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         protected const string MultipleUpdatesWithCommonNameSet = "MultipleUpdatesWithCommonName";
         protected const string MultipleUpdatesWithThumbprintSet = "MultipleUpdatesWithThumbprint";
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = MultipleUpdatesWithThumbprintSet,
-                   HelpMessage = "Specify client certificate thumbprint and flag")]
+        /// <summary>
+        /// Resource group name
+        /// </summary>
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = SingleUpdateWithCommonNameSet, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify the name of the resource group.")]
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = SingleUpdateWithThumbprintSet, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify the name of the resource group.")]
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = MultipleUpdatesWithCommonNameSet, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify the name of the resource group.")]
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = MultipleUpdatesWithThumbprintSet, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify the name of the resource group.")]
         [ValidateNotNullOrEmpty()]
-        public Hashtable ThumbprintsAndFlags { get; set; }
+        public override string ResourceGroupName { get; set; }
+
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = SingleUpdateWithCommonNameSet, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify the name of the cluster")]
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = SingleUpdateWithThumbprintSet, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify the name of the cluster")]
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = MultipleUpdatesWithCommonNameSet, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify the name of the cluster")]
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = MultipleUpdatesWithThumbprintSet, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify the name of the cluster")]
+        [ValidateNotNullOrEmpty()]
+        public override string ClusterName { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = MultipleUpdatesWithThumbprintSet,
+                   HelpMessage = "Specify client certificate thumbprint and authentication type")]
+        [ValidateNotNullOrEmpty()]
+        [Alias("ThumbprintsAndAuthenticationTypes")]
+        public Hashtable ThumbprintsAndTypes { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = MultipleUpdatesWithCommonNameSet,
-                   HelpMessage = "Specify client common name and issuer thumbprint(use ';' to separate them) and flag")]
+                   HelpMessage = "Specify client common name , issuer thumbprint and authentication type")]
         [ValidateNotNullOrEmpty()]
-        public Hashtable CommonNameIssuersAndFlags { get; set; }
+        public PSClientCertificateCommonName[] CommonNames { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = SingleUpdateWithThumbprintSet,
                    HelpMessage = "Specify client certificate thumbprint")]
@@ -53,7 +80,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public string CommonName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = SingleUpdateWithCommonNameSet,
-                   HelpMessage = "Specify client certificate issuer thumbprint")]
+                   HelpMessage = "Specify thumbprint of client certificate's issuer")]
         [ValidateNotNullOrEmpty()]
         public string IssuerThumbprint { get; set; }
 
@@ -116,20 +143,21 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         protected List<ClientCertificateThumbprint> ParseArgumentsForThumbprint()
         {
             var allCertThumbprints = new List<ClientCertificateThumbprint>();
-            if (this.ThumbprintsAndFlags != null)
+            if (this.ThumbprintsAndTypes != null)
             {
-                foreach (var key in ThumbprintsAndFlags.Keys)
+                foreach (var key in ThumbprintsAndTypes.Keys)
                 {
                     if (key is string && !string.IsNullOrEmpty((string)key))
                     {
                         var thumbprint = (string)key;
-                        var isAdminObj = this.ThumbprintsAndFlags[key];
+                        var isAdminObj = this.ThumbprintsAndTypes[key];
                         bool isAdmin;
                         if (isAdminObj is string)
                         {
                             if (!bool.TryParse((string)isAdminObj, out isAdmin))
                             {
-                                throw new PSArgumentException(ServiceFabricProperties.Resources.CanNotParseValueInThumbprintAndFlags);
+                                throw new PSArgumentException(
+                                    ServiceFabricProperties.Resources.CanNotParseValueInThumbprintAndFlags);
                             }
                         }
                         else if (isAdminObj is bool)
@@ -138,7 +166,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         }
                         else
                         {
-                            throw new PSArgumentException(ServiceFabricProperties.Resources.CanNotParseValueInThumbprintAndFlags);
+                            throw new PSArgumentException(
+                                ServiceFabricProperties.Resources.CanNotParseValueInThumbprintAndFlags);
                         }
 
                         allCertThumbprints.Add(new ClientCertificateThumbprint()
@@ -150,7 +179,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     }
                     else
                     {
-                        throw new PSArgumentException(ServiceFabricProperties.Resources.CanNotParseValueInThumbprintAndFlags);
+                        throw new PSArgumentException(
+                            ServiceFabricProperties.Resources.CanNotParseValueInThumbprintAndFlags);
                     }
                 }
             }
@@ -170,53 +200,13 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         protected List<ClientCertificateCommonName> ParseArgumentsForCommonName(bool ignoreIssuerThumbprint)
         {
             var allCommonNames = new List<ClientCertificateCommonName>();
-            if (this.CommonNameIssuersAndFlags != null)
+            if (this.CommonNames != null)
             {
-                foreach (var key in this.CommonNameIssuersAndFlags.Keys)
-                {
-                    if (key is string && !string.IsNullOrEmpty((string)key))
-                    {
-                        var commonNameAndIssuers = (string)key;
-                        var result = commonNameAndIssuers.Split(';');
-                        if (result.Length != 2 && !ignoreIssuerThumbprint)
-                        {
-                            throw new PSInvalidOperationException();
-                        }
-
-                        var commonName = result[0];
-                        var issuer = result[1];
-
-                        var isAdminObj = this.CommonNameIssuersAndFlags[key];
-                        bool isAdmin;
-                        if (isAdminObj is string)
-                        {
-                            if (!bool.TryParse((string)isAdminObj, out isAdmin))
-                            {
-                                throw new PSArgumentException(ServiceFabricProperties.Resources.CanNotParseValueInNameIssuersAndFlags);
-                            }
-                        }
-                        else if (isAdminObj is bool)
-                        {
-                            isAdmin = (bool)isAdminObj;
-                        }
-                        else
-                        {
-                            throw new PSArgumentException(ServiceFabricProperties.Resources.CanNotParseValueInNameIssuersAndFlags);
-                        }
-
-                        allCommonNames.Add(new ClientCertificateCommonName()
-                        {
-                            CertificateCommonName = commonName,
-                            CertificateIssuerThumbprint = issuer,
-                            IsAdmin = isAdmin
-                        });
-
-                    }
-                    else
-                    {
-                        throw new PSArgumentException(ServiceFabricProperties.Resources.CanNotParseValueInNameIssuersAndFlags);
-                    }
-                }
+                allCommonNames = this.CommonNames.Select(
+                    c=> new ClientCertificateCommonName(
+                        c.IsAdmin,
+                        c.CertificateCommonName,
+                        c.CertificateIssuerThumbprint)).ToList();
             }
             else
             {

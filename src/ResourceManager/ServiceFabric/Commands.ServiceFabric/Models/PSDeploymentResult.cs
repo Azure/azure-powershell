@@ -12,15 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.ServiceFabric.Models;
-using Newtonsoft.Json;
-using System.Collections.Generic;
+using Microsoft.Azure.Management.ResourceManager.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Models
 {
-    public class PSSettingsSectionDescription : SettingsSectionDescription
+    public class PSDeploymentResult
     {
-        [JsonProperty(PropertyName = "parameters")]
-        public new IList<PSSettingsParameterDescription> Parameters { get; set; }
+        public string VmUserName { get; set; }
+
+        public DeploymentExtended DeploymentDetail { get; set; }
+
+        public PSCluster ClusterDetail { get; set; }
+
+        public PSDeploymentResult()
+        {
+        }
+
+        public PSDeploymentResult(DeploymentExtended deployment, PSCluster cluster)
+        {
+            this.DeploymentDetail = deployment;
+            this.ClusterDetail = cluster;
+        }
     }
 }

@@ -18,18 +18,17 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.ServiceFabric;
 using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Remove,  CmdletNoun.AzureRmServiceFabricNodeType), OutputType(typeof(PsCluster))]
+    [Cmdlet(VerbsCommon.Remove,  CmdletNoun.AzureRmServiceFabricNodeType), OutputType(typeof(PSCluster))]
     public class RemoveAzureRmServiceFabricNodeType : ServiceFabricVmssCmdletBase
     {
         public override void ExecuteCmdlet()
         {
-            if (!CheckExistence())
+            if (!CheckNodeTypeExistence())
             {
                 throw new PSInvalidOperationException();
             }
@@ -75,8 +74,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             
             ComputeClient.VirtualMachineScaleSets.Delete(this.ResourceGroupName, this.NodeTypeName);
 
-            cluster = RemoveNodeTypeToSFRP();
-            WriteObject((PsCluster)cluster,true);
+            cluster = RemoveNodeTypeFromSfrp();
+            WriteObject((PSCluster)cluster,true);
         }
     }
 }

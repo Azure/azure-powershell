@@ -12,7 +12,7 @@ Update durability of the cluster
 ## SYNTAX
 
 ```
-Update-AzureRmServiceFabricDurability [-Level] <DurabilityLevel> [-NodeTypeName] <String> [[-SkuName] <String>]
+Update-AzureRmServiceFabricDurability -Level <DurabilityLevel> -NodeTypeName <String> [-SkuName <String>]
  [-ClusterName] <String> [-ResourceGroupName] <String> [<CommonParameters>]
 ```
 
@@ -55,7 +55,7 @@ Aliases: DurabilityLevel
 Accepted values: Bronze, Silver, Gold
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -70,7 +70,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -100,7 +100,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

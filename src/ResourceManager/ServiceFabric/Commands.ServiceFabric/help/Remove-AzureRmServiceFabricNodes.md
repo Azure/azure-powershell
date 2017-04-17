@@ -12,8 +12,8 @@ Remove nodes from the specific node type
 ## SYNTAX
 
 ```
-Remove-AzureRmServiceFabricNodes [-NumberOfNodesToRemove] <Int32> [[-NodeTypeName] <String>]
- [-ClusterName] <String> [-ResourceGroupName] <String> [<CommonParameters>]
+Remove-AzureRmServiceFabricNodes -Number <Int32> [-NodeTypeName <String>] [-ClusterName] <String>
+ [-ResourceGroupName] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,22 +54,20 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -NumberOfNodesToRemove
-Number of nodes to remove
-
-```yaml
+### -Number
+Number of nodes to remove```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: InstanceNumber
+Aliases: NumberOfNodesToRemove
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

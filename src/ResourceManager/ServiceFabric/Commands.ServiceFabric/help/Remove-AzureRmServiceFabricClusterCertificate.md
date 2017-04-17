@@ -12,7 +12,7 @@ Remove cluster certificate
 ## SYNTAX
 
 ```
-Remove-AzureRmServiceFabricClusterCertificate [-Thumbprint] <String> [-ClusterName] <String>
+Remove-AzureRmServiceFabricClusterCertificate -Thumbprint <String> [-ClusterName] <String>
  [-ResourceGroupName] <String> [<CommonParameters>]
 ```
 
@@ -69,7 +69,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

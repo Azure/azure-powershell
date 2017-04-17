@@ -13,13 +13,13 @@ Add or update one or multiple ServiceFabric settings to the cluster
 
 ### OneSetting
 ```
-Set-AzureRmServiceFabricSettings [-Section] <String> [-Parameter] <String> [-Value] <String>
- [-ClusterName] <String> [-ResourceGroupName] <String> [<CommonParameters>]
+Set-AzureRmServiceFabricSettings -Section <String> -Parameter <String> -Value <String> [-ClusterName] <String>
+ [-ResourceGroupName] <String> [<CommonParameters>]
 ```
 
 ### BatchSettings
 ```
-Set-AzureRmServiceFabricSettings [-SettingsSectionDescriptions] <PSSettingsSectionDescription[]>
+Set-AzureRmServiceFabricSettings -SettingsSectionDescriptions <PSSettingsSectionDescription[]>
  [-ClusterName] <String> [-ResourceGroupName] <String> [<CommonParameters>]
 ```
 
@@ -94,7 +94,7 @@ Parameter Sets: OneSetting
 Aliases: 
 
 Required: True
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -124,7 +124,7 @@ Parameter Sets: OneSetting
 Aliases: 
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -139,7 +139,7 @@ Parameter Sets: BatchSettings
 Aliases: 
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -154,7 +154,7 @@ Parameter Sets: OneSetting
 Aliases: 
 
 Required: True
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

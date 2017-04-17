@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.ServiceFabric.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureRmServiceFabricSettings), OutputType(typeof(PsCluster))]
+    [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureRmServiceFabricSettings), OutputType(typeof(PSCluster))]
     public class RemoveAzureRmServiceFabricSettings : ServiceFabricSettingsCmdletBase
     {
         public override string Value { get; set; }
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 FabricSettings = fabricSettings
             });
 
-            WriteObject((PsCluster)cluster,true);
+            WriteObject((PSCluster)cluster,true);
         }
     }
 }

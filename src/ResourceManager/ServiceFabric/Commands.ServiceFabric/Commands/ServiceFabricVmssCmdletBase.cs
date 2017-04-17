@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [ValidateNotNullOrEmpty()]
         public string NodeTypeName { get; set; }
 
-        protected bool CheckExistence()
+        protected bool CheckNodeTypeExistence()
         {
             var vmss = SafeGetResource(() =>
             ComputeClient.VirtualMachineScaleSets.Get(
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             return vmss != null;
         }
 
-        protected PsCluster RemoveNodeTypeToSFRP()
+        protected PSCluster RemoveNodeTypeFromSfrp()
         {
             var cluster = SFRPClient.Clusters.Get(this.ResourceGroupName, this.ClusterName);
             cluster.NodeTypes.Remove(

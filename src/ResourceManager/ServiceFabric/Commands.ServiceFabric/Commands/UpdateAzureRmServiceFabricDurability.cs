@@ -26,7 +26,7 @@ using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Propertie
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsData.Update, CmdletNoun.AzureRmServiceFabricDurability), OutputType(typeof(PsCluster))]
+    [Cmdlet(VerbsData.Update, CmdletNoun.AzureRmServiceFabricDurability), OutputType(typeof(PSCluster))]
     public class UpdateAzureRmServiceFabricDurability : ServiceFabricClusterCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
     public class UpdateAzureRmServiceFabricVmssBase : ServiceFabricClusterCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "VM instance number")]
+                   HelpMessage = "The number of nodes to add")]
         [ValidateNotNullOrEmpty()]
         [Alias("NumberOfNodesToAdd")]
         public virtual int Number { get; set; }
@@ -74,11 +74,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 vmss);
 
             cluster = SFRPClient.Clusters.Get(this.ResourceGroupName, this.ClusterName);
-            var nodeType = cluster.NodeTypes.Where(n =>
-            string.Equals(
-                this.NodeTypeName,
-                n.Name,
-                StringComparison.InvariantCultureIgnoreCase)).First();
+            var nodeType = cluster.NodeTypes.First(
+                n => string.Equals(
+                    this.NodeTypeName,
+                    n.Name,
+                    StringComparison.OrdinalIgnoreCase));
 
             nodeType.VmInstanceCount = Convert.ToInt32(vmss.Sku.Capacity);
 
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 NodeTypes = cluster.NodeTypes
             });
 
-            WriteObject((PsCluster)cluster,true);
+            WriteObject((PSCluster)cluster,true);
         }
 
         protected int GetReliabilityLevel()

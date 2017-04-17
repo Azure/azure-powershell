@@ -32,7 +32,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Common
         public const int DefaultFrontendPortRangeEnd = 4500;
         public const int DefaultBackendPort = 3389;
 
+        public const string VirtualMachineScaleSetsType = "Microsoft.Compute/virtualMachineScaleSets";
         public const string KeyVaultType = "Microsoft.KeyVault/vaults";
+        public const string ServiceFabricType = "Microsoft.ServiceFabric/clusters";
         public const string ServieFabricTag = "Service Fabric";
+
+        public const string ServiceFabricWindowsNodeExtName = "ServiceFabricNode";
+        public const string ServiceFabricLinuxNodeExtName = "ServiceFabricLinuxNode";
     }
 }

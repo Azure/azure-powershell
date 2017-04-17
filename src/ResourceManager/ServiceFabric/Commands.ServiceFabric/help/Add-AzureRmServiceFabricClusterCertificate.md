@@ -11,38 +11,38 @@ Add a secondary cluster certificate to the cluster
 
 ## SYNTAX
 
+### ByExistingKeyVault
+```
+Add-AzureRmServiceFabricClusterCertificate [-ResourceGroupName] <String> [-ClusterName] <String>
+ -SecretIdentifier <String> -CertificateThumprint <String> [<CommonParameters>]
+```
+
 ### ByNewPfxAndVaultName
 ```
-Add-AzureRmServiceFabricClusterCertificate -KeyVaultName <String> -KeyVaultResouceGroupName <String>
- [-SecretName <String>] -PfxDestinationFile <String> -Password <SecureString> -CertificateDnsName <String>
- [-ClusterName] <String> [-ResourceGroupName] <String> [<CommonParameters>]
+Add-AzureRmServiceFabricClusterCertificate [-ResourceGroupName] <String> [-ClusterName] <String>
+ -KeyVaultName <String> -KeyVaultResouceGroupName <String> [-SecretName <String>] -PfxDestinationFile <String>
+ -CertificatePassword <SecureString> -CertificateDnsName <String> [<CommonParameters>]
 ```
 
 ### ByExistingPfxAndVaultName
 ```
-Add-AzureRmServiceFabricClusterCertificate -KeyVaultName <String> -KeyVaultResouceGroupName <String>
- [-SecretName <String>] -PfxSourceFile <String> -Password <SecureString> [-ClusterName] <String>
- [-ResourceGroupName] <String> [<CommonParameters>]
+Add-AzureRmServiceFabricClusterCertificate [-ResourceGroupName] <String> [-ClusterName] <String>
+ -KeyVaultName <String> -KeyVaultResouceGroupName <String> [-SecretName <String>] -PfxSourceFile <String>
+ -CertificatePassword <SecureString> [<CommonParameters>]
+```
+
+### ByExistingPfxSetAndVaultId
+```
+Add-AzureRmServiceFabricClusterCertificate [-ResourceGroupName] <String> [-ClusterName] <String>
+ -KeyVaultResouceId <String> [-SecretName <String>] -PfxSourceFile <String> -CertificatePassword <SecureString>
+ [<CommonParameters>]
 ```
 
 ### ByNewPfxAndVaultId
 ```
 Add-AzureRmServiceFabricClusterCertificate -KeyVaultResouceId <String> [-SecretName <String>]
- -PfxDestinationFile <String> -Password <SecureString> -CertificateDnsName <String> [-ClusterName] <String>
- [-ResourceGroupName] <String> [<CommonParameters>]
-```
-
-### ByExistingPfxSetAndVaultId
-```
-Add-AzureRmServiceFabricClusterCertificate -KeyVaultResouceId <String> [-SecretName <String>]
- -PfxSourceFile <String> -Password <SecureString> [-ClusterName] <String> [-ResourceGroupName] <String>
+ -PfxDestinationFile <String> -CertificatePassword <SecureString> -CertificateDnsName <String>
  [<CommonParameters>]
-```
-
-### ByExistingKeyVault
-```
-Add-AzureRmServiceFabricClusterCertificate -SecretIdentifier <String> -CertificateThumprint <String>
- [-ClusterName] <String> [-ResourceGroupName] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,6 +84,19 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -CertificatePassword
+The password of the pfx file```yaml
+Type: SecureString
+Parameter Sets: ByNewPfxAndVaultName, ByExistingPfxAndVaultName, ByExistingPfxSetAndVaultId, ByNewPfxAndVaultId
+Aliases: Password
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -CertificateThumprint
 The thumprint for the Azure key vault secret```yaml
 Type: String
@@ -102,7 +115,7 @@ Specifies the name of the cluster
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByExistingKeyVault, ByNewPfxAndVaultName, ByExistingPfxAndVaultName, ByExistingPfxSetAndVaultId
 Aliases: 
 
 Required: True
@@ -145,22 +158,7 @@ Accept wildcard characters: False
 ### -KeyVaultResouceId
 Azure key vault resource id```yaml
 Type: String
-Parameter Sets: ByNewPfxAndVaultId, ByExistingPfxSetAndVaultId
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Password
-The password of the pfx file
-
-```yaml
-Type: SecureString
-Parameter Sets: ByNewPfxAndVaultName, ByExistingPfxAndVaultName, ByNewPfxAndVaultId, ByExistingPfxSetAndVaultId
+Parameter Sets: ByExistingPfxSetAndVaultId, ByNewPfxAndVaultId
 Aliases: 
 
 Required: True
@@ -201,7 +199,7 @@ Specifies the name of the resource group.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByExistingKeyVault, ByNewPfxAndVaultName, ByExistingPfxAndVaultName, ByExistingPfxSetAndVaultId
 Aliases: 
 
 Required: True
@@ -231,7 +229,7 @@ Azure key vault secret name, if not specified, it will use the new or existing c
 
 ```yaml
 Type: String
-Parameter Sets: ByNewPfxAndVaultName, ByExistingPfxAndVaultName, ByNewPfxAndVaultId, ByExistingPfxSetAndVaultId
+Parameter Sets: ByNewPfxAndVaultName, ByExistingPfxAndVaultName, ByExistingPfxSetAndVaultId, ByNewPfxAndVaultId
 Aliases: 
 
 Required: False

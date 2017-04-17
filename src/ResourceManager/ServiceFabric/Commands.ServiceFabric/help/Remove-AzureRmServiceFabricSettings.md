@@ -13,13 +13,13 @@ Remove one or multiple ServiceFabric settings from the cluster
 
 ### OneSetting
 ```
-Remove-AzureRmServiceFabricSettings [-Section] <String> [-Parameter] <String> [-ClusterName] <String>
+Remove-AzureRmServiceFabricSettings -Section <String> -Parameter <String> [-ClusterName] <String>
  [-ResourceGroupName] <String> [<CommonParameters>]
 ```
 
 ### BatchSettings
 ```
-Remove-AzureRmServiceFabricSettings [-SettingsSectionDescriptions] <PSSettingsSectionDescription[]>
+Remove-AzureRmServiceFabricSettings -SettingsSectionDescriptions <PSSettingsSectionDescription[]>
  [-ClusterName] <String> [-ResourceGroupName] <String> [<CommonParameters>]
 ```
 
@@ -61,7 +61,7 @@ Parameter Sets: OneSetting
 Aliases: 
 
 Required: True
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -91,7 +91,7 @@ Parameter Sets: OneSetting
 Aliases: 
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -106,7 +106,7 @@ Parameter Sets: BatchSettings
 Aliases: 
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

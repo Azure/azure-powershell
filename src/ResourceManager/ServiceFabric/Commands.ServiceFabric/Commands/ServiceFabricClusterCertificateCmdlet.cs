@@ -18,7 +18,9 @@ using System.IO;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 using System.Security;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Common.Authentication;
@@ -27,6 +29,8 @@ using Microsoft.Azure.Management.KeyVault.Models;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
+using Microsoft.Azure.KeyVault;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -37,6 +41,34 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         protected const string ByExistingPfxAndVaultName = "ByExistingPfxAndVaultName";      
         protected const string ByNewPfxAndVaultId = "ByNewPfxAndVaultId";
         protected const string ByExistingPfxSetAndVaultId = "ByExistingPfxSetAndVaultId";
+
+        //Used only by NewAzureRmServicefabricCluster
+        protected const string ByDefaultArmTemplate = "ByDefaultArmTemplate";
+
+        /// <summary>
+        /// Resource group name
+        /// </summary>
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ExistingKeyVaultSet, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify the name of the resource group.")]
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByNewPfxAndVaultName, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify the name of the resource group.")]
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByExistingPfxAndVaultName, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify the name of the resource group.")]
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByExistingPfxSetAndVaultId, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify the name of the resource group.")]
+        [ValidateNotNullOrEmpty()]
+        public override string ResourceGroupName { get; set; }
+
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = ExistingKeyVaultSet, ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Specify the name of the cluster")]
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = ByNewPfxAndVaultName, ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Specify the name of the cluster")]
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = ByExistingPfxAndVaultName, ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Specify the name of the cluster")]
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = ByExistingPfxSetAndVaultId, ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Specify the name of the cluster")]
+        [ValidateNotNullOrEmpty()]
+        public override string ClusterName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ByNewPfxAndVaultName,
                    HelpMessage = "Azure key vault name")]
@@ -101,7 +133,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                    HelpMessage = "The password of the pfx file")]
         [ValidateNotNullOrEmpty]
         [Alias("Password")]
-        public SecureString CertificatPassword { get; set; }
+        public virtual SecureString CertificatePassword { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ByNewPfxAndVaultId,
                    HelpMessage = "The Dns name of the certificate to be created")]
@@ -109,12 +141,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                    HelpMessage = "The Dns name of the certificate to be created")]
         [ValidateNotNullOrEmpty]
         [Alias("Dns")]
-        public string CertificateDnsName { get; set; }
+        public virtual string CertificateDnsName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ExistingKeyVaultSet,
-                   HelpMessage = "The thumprint for the Azure key vault secret")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ExistingKeyVaultSet,
+                  HelpMessage = "The thumbprint for the Azure key vault secret")]
         [ValidateNotNullOrEmpty]
-        [Alias("Thumprint")]
+        [Alias("Thumbprint")]
         public string CertificateThumprint { get; set; }
 
         public Lazy<IResourceManagementClient> resourceManagerClient;
@@ -157,11 +189,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     throw new PSArgumentException(string.Format("File name contains invalid chars {0}", fileName));
                 }
             }
-            else
-            {
-                throw new PSArgumentException(this.PfxDestinationFile);
-            }
-
+           
             using (var ps = System.Management.Automation.PowerShell.Create())
             {
                 ps.Runspace = RunspaceFactory.CreateRunspace();
@@ -176,7 +204,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
                 var exportCertCmd = new Command("Export-PfxCertificate");
                 exportCertCmd.Parameters.Add("FilePath", newCertFilePath);
-                exportCertCmd.Parameters.Add("Password", this.CertificatPassword);
+                exportCertCmd.Parameters.Add("Password", this.CertificatePassword);
                 pipeline.Commands.Add(exportCertCmd);
 
                 pipeline.Invoke();
@@ -196,7 +224,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             }
 
-            return new KeyValuePair<string, SecureString>(newCertFilePath, this.CertificatPassword);
+            return new KeyValuePair<string, SecureString>(newCertFilePath, this.CertificatePassword);
         }
 
         internal CertificateInformation GetOrCreateCertificateInformation()
@@ -208,13 +236,21 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     ExtractVaultNameAndGroupNameFromId();
                 }
 
+                // only for NewAzureRmServiceFabricCluster cmdlet
+                if (ParameterSetName.CompareTo(ByDefaultArmTemplate) == 0)
+                {
+                    this.KeyVaultName = this.ResourceGroupName;
+                    // The resouce group should be created before this
+                    this.KeyVaultResouceGroupName = this.ResourceGroupName;                    
+                }
+
                 var resourceGroup = SafeGetResource(
-                    () => ResourceManagerClient.ResourceGroups.Get(
+                    () => this.ResourceManagerClient.ResourceGroups.Get(
                         this.KeyVaultResouceGroupName));
 
                 if (resourceGroup == null)
                 {
-                    ResourceManagerClient.ResourceGroups.CreateOrUpdate(
+                    this.ResourceManagerClient.ResourceGroups.CreateOrUpdate(
                         this.KeyVaultResouceGroupName,
                         new ResourceGroup()
                         {
@@ -227,6 +263,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 case ByNewPfxAndVaultName:
                 case ByNewPfxAndVaultId:
+                case ByDefaultArmTemplate:
                     {
                         var pfxAndPassword = CreateSelfSignedCertificate();
                         var pfxPath = pfxAndPassword.Key;
@@ -251,7 +288,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         Vault vault = null;
                         SecretBundle secretBundle = null;
                         GetKeyVaultReady(out vault, out secretBundle, this.PfxSourceFile);
-                        var thumbprint = new X509Certificate2(this.PfxSourceFile, this.CertificatPassword).Thumbprint;
+                        var thumbprint = new X509Certificate2(this.PfxSourceFile, this.CertificatePassword).Thumbprint;
                         return new CertificateInformation()
                         {
                             KeyVault = vault,
@@ -267,7 +304,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         {
                             KeyVault = vault,
                             SecretUrl = this.SecretIdentifier,
-                            Thumbprint = this.CertificateThumprint
+                            Thumbprint = GetThumbprintFromSecret(this.SecretIdentifier)
                         };
                     }
             }
@@ -275,7 +312,60 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             return null;
         }
 
-        void ExtractVaultNameAndGroupNameFromId()
+        private string GetThumbprintFromSecret(string secretUrl)
+        {
+            if (!string.IsNullOrWhiteSpace(this.CertificateThumprint))
+            {
+                return this.CertificateThumprint;
+            }
+
+            if (string.IsNullOrWhiteSpace(secretUrl))
+            {
+                throw new PSArgumentException("secretUrl");
+            }
+
+            var secretBundle = this.KeyVaultClient.GetSecretAsync(secretUrl).Result;
+            var secretValue = secretBundle.Value;
+            try
+            {
+                if (secretValue != null)
+                {
+                    var secretBytes = Convert.FromBase64String(secretValue);
+                    try
+                    {
+                        var certCollection = new X509Certificate2Collection();
+                        certCollection.Import(secretBytes, null, X509KeyStorageFlags.Exportable);
+                        return certCollection[0].Thumbprint;
+                    }
+                    catch (CryptographicException)
+                    {
+                        var content = Encoding.UTF8.GetString(secretBytes);
+                        var jsonBlob = JsonConvert.DeserializeObject<JsonBlob>(content);
+                        var certCollection = new X509Certificate2Collection();
+                        if (jsonBlob.DataType.Equals("pfx", StringComparison.CurrentCultureIgnoreCase))
+                        {
+                            certCollection.Import(
+                                Convert.FromBase64String(jsonBlob.Data),
+                                jsonBlob.Password,
+                                X509KeyStorageFlags.Exportable);
+                            return certCollection[0].Thumbprint;
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+               WriteError(new ErrorRecord(
+                   e,
+                   string.Empty,
+                   ErrorCategory.NotSpecified,
+                   null));
+            }
+
+            throw new PSInvalidOperationException(string.Format("Failed to find the thumbprint from {0} , please specify thumbprint explicitly using -CertificateThumprint", secretUrl));
+        }
+
+        private void ExtractVaultNameAndGroupNameFromId()
         {
             if (string.IsNullOrWhiteSpace(this.KeyVaultResouceId))
             {
@@ -327,6 +417,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 this.SecretName = string.IsNullOrEmpty(this.PfxDestinationFile) ?
                     Path.GetFileNameWithoutExtension(this.PfxSourceFile) :
                     Path.GetFileNameWithoutExtension(this.PfxDestinationFile);
+                if (this.SecretName.Contains("."))
+                {
+                    this.SecretName = this.SecretName.Replace(".", "");
+                }
             }
 
             vault = GetKeyVault(this.KeyVaultResouceGroupName, this.KeyVaultName);
@@ -343,7 +437,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                   this.KeyVaultName,
                   this.SecretName,
                   pfxPath,
-                  this.CertificatPassword);
+                  this.CertificatePassword);
         }
     }
 }

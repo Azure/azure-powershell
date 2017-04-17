@@ -12,15 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.ServiceFabric.Models;
-using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Models
 {
-    public class PSSettingsSectionDescription : SettingsSectionDescription
+    public enum ClusterSize
     {
-        [JsonProperty(PropertyName = "parameters")]
-        public new IList<PSSettingsParameterDescription> Parameters { get; set; }
+        OneNode = 1,
+        ThreeNodes = 3,
+        FiveNodes = 5
     }
 }

@@ -22,6 +22,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     public class ServiceFabricSettingsCmdletBase : ServiceFabricClusterCmdlet
     {
+        private List<PSSettingsSectionDescription> changedSettingsSectionDescriptions =
+            new List<PSSettingsSectionDescription>();
         protected const string OneCertSet = "OneSetting";
         protected const string GroupCertSet = "BatchSettings";
 
@@ -44,9 +46,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                    HelpMessage = "Client authentication type")]
         [ValidateNotNullOrEmpty()]
         public PSSettingsSectionDescription[] SettingsSectionDescriptions { get; set; }
-
-        List<PSSettingsSectionDescription> changedSettingsSectionDescriptions =
-            new List<PSSettingsSectionDescription>();
 
         protected List<PSSettingsSectionDescription> ChangedSettingsSectionDescriptions
         {

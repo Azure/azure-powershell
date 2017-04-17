@@ -12,7 +12,7 @@ Update reliability of the cluster
 ## SYNTAX
 
 ```
-Update-AzureRmServiceFabricReliability [-ReliabilityLevel] <ReliabilityLevel> [-AutoAddNodes]
+Update-AzureRmServiceFabricReliability -ReliabilityLevel <ReliabilityLevel> [-AutoAddNodes]
  [-ClusterName] <String> [-ResourceGroupName] <String> [<CommonParameters>]
 ```
 
@@ -39,7 +39,7 @@ Parameter Sets: (All)
 Aliases: AutoAdjustNodes
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -70,7 +70,7 @@ Aliases:
 Accepted values: Bronze, Silver, Gold
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

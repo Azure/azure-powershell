@@ -12,9 +12,9 @@ Add a node type to the existing cluster
 ## SYNTAX
 
 ```
-Add-AzureRmServiceFabricNodeType [[-Sku] <String>] [[-Tier] <String>] [-Capacity] <Int32>
- [-VmUserName] <String> [-VmPassword] <String> [-NodeTypeName] <String> [-ClusterName] <String>
- [-ResourceGroupName] <String> [<CommonParameters>]
+Add-AzureRmServiceFabricNodeType [-Sku <String>] [-Tier <String>] -Capacity <Int32> -VmUserName <String>
+ -VmPassword <String> -NodeTypeName <String> [-ClusterName] <String> [-ResourceGroupName] <String>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,7 +40,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -70,7 +70,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -100,7 +100,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -115,7 +115,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -130,7 +130,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 7
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -145,7 +145,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 6
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

@@ -12,7 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Management.Automation;
+using System.Management.Automation.Runspaces;
 using Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests;
+using Microsoft.Azure.Commands.ServiceFabric.Commands;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -27,6 +31,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
         public TestServiceFabric(ITestOutputHelper output)
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+
+            AddAzureRmServiceFabricNodeType.dontRandom = true;
         }
 
         [Fact]
