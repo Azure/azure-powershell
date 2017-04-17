@@ -26,13 +26,13 @@ Add-AzureRmServiceFabricClientCertificate [-ResourceGroupName] <String> [-Cluste
 ### MultipleUpdatesWithCommonName
 ```
 Add-AzureRmServiceFabricClientCertificate [-ResourceGroupName] <String> [-ClusterName] <String>
- -CommonNameIssuersAndFlags <Hashtable> [<CommonParameters>]
+ -CommonNames <PSClientCertificateCommonName[]> [<CommonParameters>]
 ```
 
 ### MultipleUpdatesWithThumbprint
 ```
 Add-AzureRmServiceFabricClientCertificate [-ResourceGroupName] <String> [-ClusterName] <String>
- -ThumbprintsAndFlags <Hashtable> [<CommonParameters>]
+ -ThumbprintsAndTypes <Hashtable> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -87,11 +87,9 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -CommonNameIssuersAndFlags
-Specify client common name and issuer thumbprint(use ';' to separate) and flag
-
-```yaml
-Type: Hashtable
+### -CommonNames
+Specify client common name , issuer thumbprint and authentication type```yaml
+Type: PSClientCertificateCommonName[]
 Parameter Sets: MultipleUpdatesWithCommonName
 Aliases: 
 
@@ -162,13 +160,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ThumbprintsAndFlags
-Specify client certificate thumbprint and flag
-
-```yaml
+### -ThumbprintsAndTypes
+Specify client certificate thumbprint and authentication type```yaml
 Type: Hashtable
 Parameter Sets: MultipleUpdatesWithThumbprint
-Aliases: 
+Aliases: ThumbprintsAndAuthenticationTypes
 
 Required: True
 Position: Named
