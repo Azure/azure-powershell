@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
-
+* Get-AzureRmStorageAccountKey: Key list is now enumerated on the pipeline
 ## Version 2.8.0
 
 ## Version 2.7.0
