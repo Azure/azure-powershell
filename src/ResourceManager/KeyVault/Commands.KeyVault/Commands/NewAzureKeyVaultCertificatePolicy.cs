@@ -169,6 +169,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 var policy = new KeyVaultCertificatePolicy
                 {
                     DnsNames = DnsNames,
+                    KeyUsage = KeyUsage,
                     Ekus = Ekus,
                     Enabled = !Disabled.IsPresent,
                     IssuerName = IssuerName,
