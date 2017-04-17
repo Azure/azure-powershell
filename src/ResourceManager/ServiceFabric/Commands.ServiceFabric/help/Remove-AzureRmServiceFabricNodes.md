@@ -61,7 +61,9 @@ Accept wildcard characters: False
 ```
 
 ### -Number
-Number of nodes to remove```yaml
+Number of nodes to remove
+
+```yaml
 Type: Int32
 Parameter Sets: (All)
 Aliases: NumberOfNodesToRemove
