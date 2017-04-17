@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Commands.Profile
                         AzureDataLakeStoreFileSystemEndpointSuffix);
                     newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.AdTenant, AdTenant);
                     newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.GraphEndpointResourceId, GraphAudience);
-                    WriteObject((PSAzureEnvironment)profileClient.AddOrSetEnvironment(newEnvironment));
+                    WriteObject(new PSAzureEnvironment(profileClient.AddOrSetEnvironment(newEnvironment)));
                 });
         }
     }

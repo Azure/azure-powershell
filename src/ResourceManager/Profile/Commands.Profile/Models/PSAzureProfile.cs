@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
             };
 
             profile.EnvironmentTable
-                .ForEach((e) => result.Environments[e.Key] = (PSAzureEnvironment)e.Value);
+                .ForEach((e) => result.Environments[e.Key] = new PSAzureEnvironment(e.Value));
             return result;
         }
 

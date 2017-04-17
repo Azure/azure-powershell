@@ -60,9 +60,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 CommandRuntime = commandRuntimeMock.Object,
                 Name = "Katal",
                 PublishSettingsFileUrl = "http://microsoft.com",
-                ServiceEndpoint = "endpoint.net",
-                ManagementPortalUrl = "management portal url",
-                StorageEndpoint = "endpoint.net",
+                ServiceEndpoint = "https://endpoint.net",
+                ManagementPortalUrl = "http://management.portal.url",
+                StorageEndpoint = "http://endpoint.net",
                 GalleryEndpoint = "http://galleryendpoint.com",
             };
             cmdlet.InvokeBeginProcessing();
@@ -116,9 +116,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 CommandRuntime = commandRuntimeMock.Object,
                 Name = "Katal",
                 PublishSettingsFileUrl = "http://microsoft.com",
-                ServiceEndpoint = "endpoint.net",
-                ManagementPortalUrl = "management portal url",
-                StorageEndpoint = "endpoint.net"
+                ServiceEndpoint = "http://endpoint.net",
+                ManagementPortalUrl = "https://management.portal.url",
+                StorageEndpoint = "http://endpoint.net"
             };
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             // Add again
             cmdlet.Name = "kAtAl";
             cmdlet.ExecuteCmdlet();
-            IAzureEnvironment env = AzureRmProfileProvider.Instance.Profile.Environments.First((e) => e.Name == "KaTaL");
+            IAzureEnvironment env = AzureRmProfileProvider.Instance.Profile.GetEnvironment("KaTaL");
             Assert.Equal(env.Name, cmdlet.Name);
         }
 

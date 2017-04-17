@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.Profile
                         GraphAudience);
                     profileClient.AddOrSetEnvironment(newEnvironment);
 
-                    WriteObject((PSAzureEnvironment)newEnvironment);
+                    WriteObject(new PSAzureEnvironment(newEnvironment));
                 });
         }
 

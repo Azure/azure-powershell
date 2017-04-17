@@ -29,7 +29,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// <param name="connectionString">The connection string to check.</param>
         public static void SetCurrentStorageAccount(this IAzureContext context, string connectionString)
         {
-            context.ExtendedProperties[StorageContextConnectionString] = connectionString;
+            if (context.Subscription != null)
+            {
+                context.Subscription.SetStorageAccount(connectionString);
+            }
         }
 
         /// <summary>
@@ -63,10 +66,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// storage account is selected.</returns>
         public static string GetCurrentStorageAccountConnectionString(this IAzureContext context)
         {
-            string result = null;
-            if (context.ExtendedProperties.ContainsKey(StorageContextConnectionString))
+            string result = null; 
+            if (context.Subscription != null)
             {
-                result = context.ExtendedProperties[StorageContextConnectionString];
+                result = context.Subscription.GetStorageAccount();
             }
 
             return result;

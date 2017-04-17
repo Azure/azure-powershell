@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Profile
                                Microsoft.Azure.Commands.Profile.Properties.Resources.SelectedSubscriptionNotActive,
                                AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.State));
             }
-            WriteObject((PSAzureContext)AzureRmProfileProvider.Instance.Profile.DefaultContext);
+            WriteObject(new PSAzureContext(AzureRmProfileProvider.Instance.Profile.DefaultContext));
         }
     }
 }

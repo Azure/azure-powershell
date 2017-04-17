@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Profile
                         ThrowSubscriptionNotFoundError(this.TenantId, this.SubscriptionName);
                     }
 
-                    WriteObject((PSAzureSubscription)result);
+                    WriteObject(new PSAzureSubscription(result));
                 }
                 catch (AadAuthenticationException exception)
                 {
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Profile
                         ThrowSubscriptionNotFoundError(this.TenantId, this.SubscriptionId);
                     }
 
-                    WriteObject((PSAzureSubscription)result);
+                    WriteObject( new PSAzureSubscription(result));
                 }
                 catch (AadAuthenticationException exception)
                 {
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Profile
                 try
                 {
                     var subscriptions = _client.ListSubscriptions(tenant);
-                    WriteObject(subscriptions.Select((s) => (PSAzureSubscription)s), enumerateCollection: true);
+                    WriteObject(subscriptions.Select((s) => new PSAzureSubscription(s)), enumerateCollection: true);
                 }
                 catch (AadAuthenticationException exception)
                 {

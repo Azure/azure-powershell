@@ -29,6 +29,7 @@ using System.Diagnostics;
 using System;
 using System.Security;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
@@ -39,6 +40,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
         public LoginCmdletTests(ITestOutputHelper output)
         {
+            AzureSessionInitializer.InitializeAzureSession();
+            ResourceManagerProfileProvider.InitializeResourceManagerProfile();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             dataStore = new MemoryDataStore();
             AzureSession.Instance.DataStore = dataStore;
@@ -341,6 +344,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.Environment = "unknown";
             var testPassed = false;
+            cmdlt.SetBoundParameters(new Dictionary<string, object>() { { "Environment", "unknown" } });
 
             // Act
             try

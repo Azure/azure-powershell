@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Profile
             ConfirmAction(
                 "removing environment",
                 Name,
-                () => WriteObject((PSAzureEnvironment)profileClient.RemoveEnvironment(Name)));
+                () => WriteObject(new PSAzureEnvironment(profileClient.RemoveEnvironment(Name))));
         }
     }
 }
