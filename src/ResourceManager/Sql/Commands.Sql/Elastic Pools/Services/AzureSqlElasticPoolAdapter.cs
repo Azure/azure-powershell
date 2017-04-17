@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
                 ErrorMessage = model.ErrorMessage,
                 ErrorSeverity = model.ErrorSeverity,
                 Operation = model.Operation,
-                OperationId = Guid.Parse(model.OperationId),
+                OperationId = model.OperationId,
                 PercentComplete = model.PercentComplete,
                 RequestedDatabaseDtuMax = model.RequestedDatabaseDtuMax,
                 RequestedDatabaseDtuMin = model.RequestedDatabaseDtuMin,

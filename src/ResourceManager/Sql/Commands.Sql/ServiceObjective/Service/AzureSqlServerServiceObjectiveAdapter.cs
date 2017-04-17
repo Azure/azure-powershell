@@ -90,10 +90,10 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Adapter
                 ResourceGroupName = resourceGroupName,
                 ServerName = serverName,
                 ServiceObjectiveName = resp.ServiceObjectiveName,
-                IsDefault = resp.IsDefault.Value,
-                IsSystem = resp.IsSystem.Value,
+                IsDefault = resp.IsDefault,
+                IsSystem = resp.IsSystem,
                 Description = resp.Description,
-                Enabled = resp.Enabled.Value
+                Enabled = resp.Enabled
             };
             return slo;
         }
