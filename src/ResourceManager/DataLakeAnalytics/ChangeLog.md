@@ -22,9 +22,6 @@
 ## Version 2.8.0
 * Fix help for some commands to have the proper verbage and examples.
 
-## Version 2.8.0
-* Fix help for some commands to have the proper verbage and examples.
-
 ## Version 2.7.0
 
 ## Version 2.6.0
