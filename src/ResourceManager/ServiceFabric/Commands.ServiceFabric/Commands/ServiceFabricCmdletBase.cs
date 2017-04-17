@@ -46,9 +46,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         /// <summary>
         /// Resource group name
         /// </summary>
-        [Parameter(Mandatory = true,
-            Position = 0,
-            ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the resource group.")]
         [ValidateNotNullOrEmpty()]
         public virtual string ResourceGroupName { get; set; }
@@ -488,9 +486,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             if (!string.IsNullOrEmpty(resource))
             {
                 DefaultContext.Environment.Endpoints
-                    [
-                    AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId
-                    ] = resource;
+                    [AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId] = resource;
             }
 
             var tokenCache = AzureSession.TokenCache;
@@ -521,11 +517,22 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         {
             try
             {
-               return action();
+                return action();
             }
             catch (Rest.Azure.CloudException ce)
             {
-                if(ce.Response != null && ce.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                if (ce.Response != null && ce.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    return default(T);
+                }
+
+                throw;
+            }
+            catch (Management.ServiceFabric.Models.ErrorModelException e)
+            {
+                if (e.Body?.Error != null && 
+                   (e.Body.Error.Code == "ResourceGroupNotFound" ||
+                    e.Body.Error.Code == "ResourceNotFound"))
                 {
                     return default(T);
                 }

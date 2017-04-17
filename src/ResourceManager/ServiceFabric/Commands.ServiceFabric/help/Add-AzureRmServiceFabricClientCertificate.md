@@ -11,28 +11,28 @@ Add common name or thumbprint to the cluster for client authentication
 
 ## SYNTAX
 
-### MultipleUpdatesWithThumbprint
+### SingleUpdateWithCommonName
 ```
-Add-AzureRmServiceFabricClientCertificate [-ThumbprintsAndFlags] <Hashtable> [-ClusterName] <String>
- [-ResourceGroupName] <String> [<CommonParameters>]
-```
-
-### MultipleUpdatesWithCommonName
-```
-Add-AzureRmServiceFabricClientCertificate [-CommonNameIssuersAndFlags] <Hashtable> [-ClusterName] <String>
- [-ResourceGroupName] <String> [<CommonParameters>]
+Add-AzureRmServiceFabricClientCertificate [-ResourceGroupName] <String> [-ClusterName] <String>
+ -CommonName <String> -IssuerThumbprint <String> -IsAdmin <Boolean> [<CommonParameters>]
 ```
 
 ### SingleUpdateWithThumbprint
 ```
-Add-AzureRmServiceFabricClientCertificate [-Thumbprint] <String> [-IsAdmin] <Boolean> [-ClusterName] <String>
- [-ResourceGroupName] <String> [<CommonParameters>]
+Add-AzureRmServiceFabricClientCertificate [-ResourceGroupName] <String> [-ClusterName] <String>
+ -Thumbprint <String> -IsAdmin <Boolean> [<CommonParameters>]
 ```
 
-### SingleUpdateWithCommonName
+### MultipleUpdatesWithCommonName
 ```
-Add-AzureRmServiceFabricClientCertificate [-CommonName] <String> [-IssuerThumbprint] <String>
- [-IsAdmin] <Boolean> [-ClusterName] <String> [-ResourceGroupName] <String> [<CommonParameters>]
+Add-AzureRmServiceFabricClientCertificate [-ResourceGroupName] <String> [-ClusterName] <String>
+ -CommonNameIssuersAndFlags <Hashtable> [<CommonParameters>]
+```
+
+### MultipleUpdatesWithThumbprint
+```
+Add-AzureRmServiceFabricClientCertificate [-ResourceGroupName] <String> [-ClusterName] <String>
+ -ThumbprintsAndFlags <Hashtable> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,7 +81,7 @@ Parameter Sets: SingleUpdateWithCommonName
 Aliases: 
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -96,7 +96,7 @@ Parameter Sets: MultipleUpdatesWithCommonName
 Aliases: 
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -107,11 +107,11 @@ Client authentication type
 
 ```yaml
 Type: Boolean
-Parameter Sets: SingleUpdateWithThumbprint, SingleUpdateWithCommonName
+Parameter Sets: SingleUpdateWithCommonName, SingleUpdateWithThumbprint
 Aliases: 
 
 Required: True
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -126,7 +126,7 @@ Parameter Sets: SingleUpdateWithCommonName
 Aliases: 
 
 Required: True
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -156,7 +156,7 @@ Parameter Sets: SingleUpdateWithThumbprint
 Aliases: ClientCertificateThumbprint
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -171,7 +171,7 @@ Parameter Sets: MultipleUpdatesWithThumbprint
 Aliases: 
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

@@ -21,15 +21,15 @@ using Microsoft.Azure.Management.ServiceFabric;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureRmServiceFabricCluster), OutputType(typeof(IList<PsCluster>))]
+    [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureRmServiceFabricCluster), OutputType(typeof(IList<PSCluster>))]
     public class GetAzureRmServiceFabricCluster : ServiceFabricClusterCmdlet
     {
-        [Parameter(Mandatory = false, Position = 1, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false, Position = 0, ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specify the name of the resource group.")]
         [ValidateNotNullOrEmpty()]
         public override string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = false, Position = 2, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false, Position = 1, ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specify the name of the cluster")]
         [ValidateNotNullOrEmpty()]
         public override string ClusterName { get; set; }
@@ -39,19 +39,19 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             if (ResourceGroupName != null && ClusterName != null)
             {
                 var cluster = SFRPClient.Clusters.Get(ResourceGroupName, ClusterName);
-                WriteObject(new List<PsCluster>() { new PsCluster(cluster) }, true);
+                WriteObject(new List<PSCluster>() { new PSCluster(cluster) }, true);
             }
             else if (ResourceGroupName != null)
             {
                 var clusters = SFRPClient.Clusters.
                     ListByResourceGroup(ResourceGroupName).
-                    Select(c => new PsCluster(c)).ToList();
+                    Select(c => new PSCluster(c)).ToList();
 
                 WriteObject(clusters, true);
             }
             else if (ResourceGroupName == null && ClusterName == null)
             {
-                var clusters = SFRPClient.Clusters.List().Select(c => new PsCluster(c)).ToList();
+                var clusters = SFRPClient.Clusters.List().Select(c => new PSCluster(c)).ToList();
                 WriteObject(clusters, true);
             }
         }

@@ -40,6 +40,15 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Password"><maml:name>CertificatePassword</maml:name>
+<maml:Description><maml:para>The password of the pfx file
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+<dev:type><maml:name>SecureString</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyVaultName</maml:name>
 <maml:Description><maml:para>Azure key vault name
 </maml:para>
@@ -58,12 +67,50 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Password</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Destination"><maml:name>PfxDestinationFile</maml:name>
+<maml:Description><maml:para>The destination path of the new Pfx file to be created
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SecretName</maml:name>
+<maml:Description><maml:para>Azure key vault secret name, if not specified, it will use the new or existing certificate name
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+<command:syntaxItem><maml:name>Add-AzureRmServiceFabricApplicationCertificate</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Dns"><maml:name>CertificateDnsName</maml:name>
+<maml:Description><maml:para>The Dns name of the certificate to be created
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Password"><maml:name>CertificatePassword</maml:name>
 <maml:Description><maml:para>The password of the pfx file
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
 <dev:type><maml:name>SecureString</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyVaultResouceId</maml:name>
+<maml:Description><maml:para>Azure key vault resource id
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -105,12 +152,77 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Dns"><maml:name>CertificateDnsName</maml:name>
-<maml:Description><maml:para>The Dns name of the certificate to be created
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Password"><maml:name>CertificatePassword</maml:name>
+<maml:Description><maml:para>The password of the pfx file
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+<dev:type><maml:name>SecureString</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyVaultName</maml:name>
+<maml:Description><maml:para>Azure key vault name
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyVaultResouceGroupName</maml:name>
+<maml:Description><maml:para>Azure key vault resource group name
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Source"><maml:name>PfxSourceFile</maml:name>
+<maml:Description><maml:para>The existing Pfx file path
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SecretName</maml:name>
+<maml:Description><maml:para>Azure key vault secret name, if not specified, it will use the new or existing certificate name
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+<command:syntaxItem><maml:name>Add-AzureRmServiceFabricApplicationCertificate</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
+<maml:Description><maml:para>Specifies the name of the resource group.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>ClusterName</maml:name>
+<maml:Description><maml:para>Specifies the name of the cluster
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Password"><maml:name>CertificatePassword</maml:name>
+<maml:Description><maml:para>The password of the pfx file
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+<dev:type><maml:name>SecureString</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -123,17 +235,8 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Password</maml:name>
-<maml:Description><maml:para>The password of the pfx file
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
-<dev:type><maml:name>SecureString</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Destination"><maml:name>PfxDestinationFile</maml:name>
-<maml:Description><maml:para>The destination path of the new Pfx file to be created
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Source"><maml:name>PfxSourceFile</maml:name>
+<maml:Description><maml:para>The existing Pfx file path
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -189,127 +292,6 @@
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 </command:syntaxItem>
-<command:syntaxItem><maml:name>Add-AzureRmServiceFabricApplicationCertificate</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
-<maml:Description><maml:para>Specifies the name of the resource group.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>ClusterName</maml:name>
-<maml:Description><maml:para>Specifies the name of the cluster
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyVaultName</maml:name>
-<maml:Description><maml:para>Azure key vault name
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyVaultResouceGroupName</maml:name>
-<maml:Description><maml:para>Azure key vault resource group name
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Password</maml:name>
-<maml:Description><maml:para>The password of the pfx file
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
-<dev:type><maml:name>SecureString</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Source"><maml:name>PfxSourceFile</maml:name>
-<maml:Description><maml:para>The existing Pfx file path
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SecretName</maml:name>
-<maml:Description><maml:para>Azure key vault secret name, if not specified, it will use the new or existing certificate name
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-</command:syntaxItem>
-<command:syntaxItem><maml:name>Add-AzureRmServiceFabricApplicationCertificate</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
-<maml:Description><maml:para>Specifies the name of the resource group.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>ClusterName</maml:name>
-<maml:Description><maml:para>Specifies the name of the cluster
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyVaultResouceId</maml:name>
-<maml:Description><maml:para>Azure key vault resource id
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Password</maml:name>
-<maml:Description><maml:para>The password of the pfx file
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
-<dev:type><maml:name>SecureString</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Source"><maml:name>PfxSourceFile</maml:name>
-<maml:Description><maml:para>The existing Pfx file path
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SecretName</maml:name>
-<maml:Description><maml:para>Azure key vault secret name, if not specified, it will use the new or existing certificate name
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-</command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Dns"><maml:name>CertificateDnsName</maml:name>
 <maml:Description><maml:para>The Dns name of the certificate to be created
@@ -317,6 +299,15 @@
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Password"><maml:name>CertificatePassword</maml:name>
+<maml:Description><maml:para>The password of the pfx file
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+<dev:type><maml:name>SecureString</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -362,15 +353,6 @@
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Password</maml:name>
-<maml:Description><maml:para>The password of the pfx file
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
-<dev:type><maml:name>SecureString</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -492,7 +474,7 @@ PS C:\&gt; Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName 'Gr
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>CommonName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>CommonName</maml:name>
 <maml:Description><maml:para>Specify client certificate common name
 </maml:para>
 </maml:Description>
@@ -501,21 +483,21 @@ PS C:\&gt; Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName 'Gr
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="none"><maml:name>IssuerThumbprint</maml:name>
-<maml:Description><maml:para>Specify client certificate issuer thumbprint
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="5" aliases="none"><maml:name>IsAdmin</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>IsAdmin</maml:name>
 <maml:Description><maml:para>Client authentication type
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
 <dev:type><maml:name>Boolean</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>IssuerThumbprint</maml:name>
+<maml:Description><maml:para>Specify client certificate issuer thumbprint
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -539,7 +521,7 @@ PS C:\&gt; Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName 'Gr
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>CommonNameIssuersAndFlags</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>CommonNameIssuersAndFlags</maml:name>
 <maml:Description><maml:para>Specify client common name and issuer thumbprint(use ';' to separate) and flag
 </maml:para>
 </maml:Description>
@@ -568,21 +550,21 @@ PS C:\&gt; Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName 'Gr
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="ClientCertificateThumbprint"><maml:name>Thumbprint</maml:name>
-<maml:Description><maml:para>Specify client certificate thumbprint
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="5" aliases="none"><maml:name>IsAdmin</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>IsAdmin</maml:name>
 <maml:Description><maml:para>Client authentication type
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
 <dev:type><maml:name>Boolean</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ClientCertificateThumbprint"><maml:name>Thumbprint</maml:name>
+<maml:Description><maml:para>Specify client certificate thumbprint
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -606,7 +588,7 @@ PS C:\&gt; Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName 'Gr
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>ThumbprintsAndFlags</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ThumbprintsAndFlags</maml:name>
 <maml:Description><maml:para>Specify client certificate thumbprint and flag
 </maml:para>
 </maml:Description>
@@ -626,7 +608,7 @@ PS C:\&gt; Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName 'Gr
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>CommonName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>CommonName</maml:name>
 <maml:Description><maml:para>Specify client certificate common name
 </maml:para>
 </maml:Description>
@@ -635,7 +617,7 @@ PS C:\&gt; Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName 'Gr
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>CommonNameIssuersAndFlags</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>CommonNameIssuersAndFlags</maml:name>
 <maml:Description><maml:para>Specify client common name and issuer thumbprint(use ';' to separate) and flag
 </maml:para>
 </maml:Description>
@@ -644,7 +626,7 @@ PS C:\&gt; Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName 'Gr
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="5" aliases="none"><maml:name>IsAdmin</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>IsAdmin</maml:name>
 <maml:Description><maml:para>Client authentication type
 </maml:para>
 </maml:Description>
@@ -653,7 +635,7 @@ PS C:\&gt; Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName 'Gr
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="none"><maml:name>IssuerThumbprint</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>IssuerThumbprint</maml:name>
 <maml:Description><maml:para>Specify client certificate issuer thumbprint
 </maml:para>
 </maml:Description>
@@ -671,7 +653,7 @@ PS C:\&gt; Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName 'Gr
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="ClientCertificateThumbprint"><maml:name>Thumbprint</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ClientCertificateThumbprint"><maml:name>Thumbprint</maml:name>
 <maml:Description><maml:para>Specify client certificate thumbprint
 </maml:para>
 </maml:Description>
@@ -680,7 +662,7 @@ PS C:\&gt; Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName 'Gr
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>ThumbprintsAndFlags</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ThumbprintsAndFlags</maml:name>
 <maml:Description><maml:para>Specify client certificate thumbprint and flag
 </maml:para>
 </maml:Description>
@@ -767,6 +749,15 @@ PS C:\&gt; Add-AzureRmServiceFabricClientCertificate -CommonNameIssuersAndFlags 
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Password"><maml:name>CertificatePassword</maml:name>
+<maml:Description><maml:para>The password of the pfx file
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+<dev:type><maml:name>SecureString</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyVaultName</maml:name>
 <maml:Description><maml:para>Azure key vault name
 </maml:para>
@@ -785,12 +776,50 @@ PS C:\&gt; Add-AzureRmServiceFabricClientCertificate -CommonNameIssuersAndFlags 
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Password</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Destination"><maml:name>PfxDestinationFile</maml:name>
+<maml:Description><maml:para>The destination path of the new Pfx file to be created
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SecretName</maml:name>
+<maml:Description><maml:para>Azure key vault secret name, if not specified, it will use the new or existing certificate name
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+<command:syntaxItem><maml:name>Add-AzureRmServiceFabricClusterCertificate</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Dns"><maml:name>CertificateDnsName</maml:name>
+<maml:Description><maml:para>The Dns name of the certificate to be created
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Password"><maml:name>CertificatePassword</maml:name>
 <maml:Description><maml:para>The password of the pfx file
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
 <dev:type><maml:name>SecureString</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyVaultResouceId</maml:name>
+<maml:Description><maml:para>Azure key vault resource id
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -832,12 +861,77 @@ PS C:\&gt; Add-AzureRmServiceFabricClientCertificate -CommonNameIssuersAndFlags 
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Dns"><maml:name>CertificateDnsName</maml:name>
-<maml:Description><maml:para>The Dns name of the certificate to be created
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Password"><maml:name>CertificatePassword</maml:name>
+<maml:Description><maml:para>The password of the pfx file
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+<dev:type><maml:name>SecureString</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyVaultName</maml:name>
+<maml:Description><maml:para>Azure key vault name
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyVaultResouceGroupName</maml:name>
+<maml:Description><maml:para>Azure key vault resource group name
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Source"><maml:name>PfxSourceFile</maml:name>
+<maml:Description><maml:para>The existing Pfx file path
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SecretName</maml:name>
+<maml:Description><maml:para>Azure key vault secret name, if not specified, it will use the new or existing certificate name
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+<command:syntaxItem><maml:name>Add-AzureRmServiceFabricClusterCertificate</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
+<maml:Description><maml:para>Specifies the name of the resource group.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>ClusterName</maml:name>
+<maml:Description><maml:para>Specifies the name of the cluster
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Password"><maml:name>CertificatePassword</maml:name>
+<maml:Description><maml:para>The password of the pfx file
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+<dev:type><maml:name>SecureString</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -850,17 +944,8 @@ PS C:\&gt; Add-AzureRmServiceFabricClientCertificate -CommonNameIssuersAndFlags 
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Password</maml:name>
-<maml:Description><maml:para>The password of the pfx file
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
-<dev:type><maml:name>SecureString</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Destination"><maml:name>PfxDestinationFile</maml:name>
-<maml:Description><maml:para>The destination path of the new Pfx file to be created
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Source"><maml:name>PfxSourceFile</maml:name>
+<maml:Description><maml:para>The existing Pfx file path
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -916,127 +1001,6 @@ PS C:\&gt; Add-AzureRmServiceFabricClientCertificate -CommonNameIssuersAndFlags 
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 </command:syntaxItem>
-<command:syntaxItem><maml:name>Add-AzureRmServiceFabricClusterCertificate</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
-<maml:Description><maml:para>Specifies the name of the resource group.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>ClusterName</maml:name>
-<maml:Description><maml:para>Specifies the name of the cluster
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyVaultName</maml:name>
-<maml:Description><maml:para>Azure key vault name
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyVaultResouceGroupName</maml:name>
-<maml:Description><maml:para>Azure key vault resource group name
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Password</maml:name>
-<maml:Description><maml:para>The password of the pfx file
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
-<dev:type><maml:name>SecureString</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Source"><maml:name>PfxSourceFile</maml:name>
-<maml:Description><maml:para>The existing Pfx file path
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SecretName</maml:name>
-<maml:Description><maml:para>Azure key vault secret name, if not specified, it will use the new or existing certificate name
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-</command:syntaxItem>
-<command:syntaxItem><maml:name>Add-AzureRmServiceFabricClusterCertificate</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
-<maml:Description><maml:para>Specifies the name of the resource group.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>ClusterName</maml:name>
-<maml:Description><maml:para>Specifies the name of the cluster
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyVaultResouceId</maml:name>
-<maml:Description><maml:para>Azure key vault resource id
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Password</maml:name>
-<maml:Description><maml:para>The password of the pfx file
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
-<dev:type><maml:name>SecureString</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Source"><maml:name>PfxSourceFile</maml:name>
-<maml:Description><maml:para>The existing Pfx file path
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SecretName</maml:name>
-<maml:Description><maml:para>Azure key vault secret name, if not specified, it will use the new or existing certificate name
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-</command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Dns"><maml:name>CertificateDnsName</maml:name>
 <maml:Description><maml:para>The Dns name of the certificate to be created
@@ -1044,6 +1008,15 @@ PS C:\&gt; Add-AzureRmServiceFabricClientCertificate -CommonNameIssuersAndFlags 
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Password"><maml:name>CertificatePassword</maml:name>
+<maml:Description><maml:para>The password of the pfx file
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+<dev:type><maml:name>SecureString</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -1089,15 +1062,6 @@ PS C:\&gt; Add-AzureRmServiceFabricClientCertificate -CommonNameIssuersAndFlags 
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Password</maml:name>
-<maml:Description><maml:para>The password of the pfx file
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
-<dev:type><maml:name>SecureString</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -1222,21 +1186,21 @@ PS c:\&gt; add-AzureRmServiceFabricClusterCertificate -ResourceGroupName 'Group2
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="InstanceNumber"><maml:name>NumberOfNodesToAdd</maml:name>
-<maml:Description><maml:para>VM instance number
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
-<dev:type><maml:name>Int32</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="none"><maml:name>NodeTypeName</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>NodeTypeName</maml:name>
 <maml:Description><maml:para>Node type name
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="NumberOfNodesToAdd"><maml:name>Number</maml:name>
+<maml:Description><maml:para>VM instance number
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -1251,7 +1215,7 @@ PS c:\&gt; add-AzureRmServiceFabricClusterCertificate -ResourceGroupName 'Group2
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="none"><maml:name>NodeTypeName</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>NodeTypeName</maml:name>
 <maml:Description><maml:para>Node type name
 </maml:para>
 </maml:Description>
@@ -1260,7 +1224,7 @@ PS c:\&gt; add-AzureRmServiceFabricClusterCertificate -ResourceGroupName 'Group2
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="InstanceNumber"><maml:name>NumberOfNodesToAdd</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="NumberOfNodesToAdd"><maml:name>Number</maml:name>
 <maml:Description><maml:para>VM instance number
 </maml:para>
 </maml:Description>
@@ -1336,34 +1300,7 @@ PS c:\&gt; add-AzureRmServiceFabricClusterCertificate -ResourceGroupName 'Group2
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>NodeTypeName</maml:name>
-<maml:Description><maml:para>The node type name
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>Sku</maml:name>
-<maml:Description><maml:para>The sku name
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="none"><maml:name>Tier</maml:name>
-<maml:Description><maml:para>Tier
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="5" aliases="none"><maml:name>Capacity</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Capacity</maml:name>
 <maml:Description><maml:para>Capacity
 </maml:para>
 </maml:Description>
@@ -1372,8 +1309,8 @@ PS c:\&gt; add-AzureRmServiceFabricClusterCertificate -ResourceGroupName 'Group2
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="6" aliases="none"><maml:name>VmUserName</maml:name>
-<maml:Description><maml:para>The user name for login to Vm
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>NodeTypeName</maml:name>
+<maml:Description><maml:para>The node type name
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1381,8 +1318,35 @@ PS c:\&gt; add-AzureRmServiceFabricClusterCertificate -ResourceGroupName 'Group2
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="7" aliases="none"><maml:name>VmPassword</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Sku</maml:name>
+<maml:Description><maml:para>The sku name
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Tier</maml:name>
+<maml:Description><maml:para>Tier
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>VmPassword</maml:name>
 <maml:Description><maml:para>The password of login to the Vm
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>VmUserName</maml:name>
+<maml:Description><maml:para>The user name for login to Vm
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1392,7 +1356,7 @@ PS c:\&gt; add-AzureRmServiceFabricClusterCertificate -ResourceGroupName 'Group2
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="5" aliases="none"><maml:name>Capacity</maml:name>
+<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Capacity</maml:name>
 <maml:Description><maml:para>Capacity
 </maml:para>
 </maml:Description>
@@ -1410,7 +1374,7 @@ PS c:\&gt; add-AzureRmServiceFabricClusterCertificate -ResourceGroupName 'Group2
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>NodeTypeName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>NodeTypeName</maml:name>
 <maml:Description><maml:para>The node type name
 </maml:para>
 </maml:Description>
@@ -1428,7 +1392,7 @@ PS c:\&gt; add-AzureRmServiceFabricClusterCertificate -ResourceGroupName 'Group2
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>Sku</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Sku</maml:name>
 <maml:Description><maml:para>The sku name
 </maml:para>
 </maml:Description>
@@ -1437,7 +1401,7 @@ PS c:\&gt; add-AzureRmServiceFabricClusterCertificate -ResourceGroupName 'Group2
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="none"><maml:name>Tier</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Tier</maml:name>
 <maml:Description><maml:para>Tier
 </maml:para>
 </maml:Description>
@@ -1446,7 +1410,7 @@ PS c:\&gt; add-AzureRmServiceFabricClusterCertificate -ResourceGroupName 'Group2
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="7" aliases="none"><maml:name>VmPassword</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>VmPassword</maml:name>
 <maml:Description><maml:para>The password of login to the Vm
 </maml:para>
 </maml:Description>
@@ -1455,7 +1419,7 @@ PS c:\&gt; add-AzureRmServiceFabricClusterCertificate -ResourceGroupName 'Group2
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="6" aliases="none"><maml:name>VmUserName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>VmUserName</maml:name>
 <maml:Description><maml:para>The user name for login to Vm
 </maml:para>
 </maml:Description>
@@ -1504,7 +1468,7 @@ PS c:\&gt; add-AzureRmServiceFabricClusterCertificate -ResourceGroupName 'Group2
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Get-AzureRmServiceFabricCluster</maml:name>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>ResourceGroupName</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
 <maml:Description><maml:para>Specifies the name of the resource group.
 </maml:para>
 </maml:Description>
@@ -1513,7 +1477,7 @@ PS c:\&gt; add-AzureRmServiceFabricClusterCertificate -ResourceGroupName 'Group2
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>ClusterName</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>ClusterName</maml:name>
 <maml:Description><maml:para>Specifies the name of the cluster
 </maml:para>
 </maml:Description>
@@ -1524,7 +1488,7 @@ PS c:\&gt; add-AzureRmServiceFabricClusterCertificate -ResourceGroupName 'Group2
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>ClusterName</maml:name>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>ClusterName</maml:name>
 <maml:Description><maml:para>Specifies the name of the cluster
 </maml:para>
 </maml:Description>
@@ -1533,7 +1497,7 @@ PS c:\&gt; add-AzureRmServiceFabricClusterCertificate -ResourceGroupName 'Group2
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>ResourceGroupName</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
 <maml:Description><maml:para>Specifies the name of the resource group.
 </maml:para>
 </maml:Description>
@@ -1600,8 +1564,26 @@ PS c:\&gt; add-AzureRmServiceFabricClusterCertificate -ResourceGroupName 'Group2
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyVaultResouceId</maml:name>
-<maml:Description><maml:para>Azure key vault resource id
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="CertPwd"><maml:name>CertificatePassword</maml:name>
+<maml:Description><maml:para>The password of the pfx file
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+<dev:type><maml:name>SecureString</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyVaultName</maml:name>
+<maml:Description><maml:para>Azure key vault name
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyVaultResouceGroupName</maml:name>
+<maml:Description><maml:para>Azure key vault resource group name
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1618,15 +1600,6 @@ PS c:\&gt; add-AzureRmServiceFabricClusterCertificate -ResourceGroupName 'Group2
 </command:parameterValueGroup>
 <command:parameterValue required="true" variableLength="false">DeploymentMode</command:parameterValue>
 <dev:type><maml:name>DeploymentMode</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Password</maml:name>
-<maml:Description><maml:para>The password of the pfx file
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
-<dev:type><maml:name>SecureString</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -1686,6 +1659,155 @@ PS c:\&gt; add-AzureRmServiceFabricClusterCertificate -ResourceGroupName 'Group2
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="CertPwd"><maml:name>CertificatePassword</maml:name>
+<maml:Description><maml:para>The password of the pfx file
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+<dev:type><maml:name>SecureString</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ClusterSize</maml:name>
+<maml:Description><maml:para>The cluster size, the default is 5 nodes clusters
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">OneNode</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">ThreeNodes</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">FiveNodes</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">ClusterSize</command:parameterValue>
+<dev:type><maml:name>ClusterSize</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Location</maml:name>
+<maml:Description><maml:para>The resource group location
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="OperatingSystem"><maml:name>OS</maml:name>
+<maml:Description><maml:para>The OS of the cluster
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">Windows</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Linux</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">OS</command:parameterValue>
+<dev:type><maml:name>OS</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>VmPassword</maml:name>
+<maml:Description><maml:para>The password of the Vms
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+<dev:type><maml:name>SecureString</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+<command:syntaxItem><maml:name>New-AzureRmServiceFabricCluster</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Dns"><maml:name>CertificateDnsName</maml:name>
+<maml:Description><maml:para>The Dns name of the certificate to be created
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="CertPwd"><maml:name>CertificatePassword</maml:name>
+<maml:Description><maml:para>The password of the pfx file
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+<dev:type><maml:name>SecureString</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyVaultResouceId</maml:name>
+<maml:Description><maml:para>Azure key vault resource id
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Mode</maml:name>
+<maml:Description><maml:para>The deployment mode.
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">Incremental</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Complete</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">DeploymentMode</command:parameterValue>
+<dev:type><maml:name>DeploymentMode</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Destination"><maml:name>PfxDestinationFile</maml:name>
+<maml:Description><maml:para>The destination path of the new Pfx file to be created
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SecretName</maml:name>
+<maml:Description><maml:para>Azure key vault secret name, if not specified, it will use the new or existing certificate name
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>TemplateFile</maml:name>
+<maml:Description><maml:para>The path of the template file.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>TemplateParameterFile</maml:name>
+<maml:Description><maml:para>The path of the template parameter file.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+<command:syntaxItem><maml:name>New-AzureRmServiceFabricCluster</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
+<maml:Description><maml:para>Specifies the name of the resource group.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="CertPwd"><maml:name>CertificatePassword</maml:name>
+<maml:Description><maml:para>The password of the pfx file
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+<dev:type><maml:name>SecureString</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyVaultName</maml:name>
 <maml:Description><maml:para>Azure key vault name
 </maml:para>
@@ -1716,7 +1838,54 @@ PS c:\&gt; add-AzureRmServiceFabricClusterCertificate -ResourceGroupName 'Group2
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Password</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Source"><maml:name>PfxSourceFile</maml:name>
+<maml:Description><maml:para>The existing Pfx file path
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SecretName</maml:name>
+<maml:Description><maml:para>Azure key vault secret name, if not specified, it will use the new or existing certificate name
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>TemplateFile</maml:name>
+<maml:Description><maml:para>The path of the template file.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>TemplateParameterFile</maml:name>
+<maml:Description><maml:para>The path of the template parameter file.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+<command:syntaxItem><maml:name>New-AzureRmServiceFabricCluster</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
+<maml:Description><maml:para>Specifies the name of the resource group.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="CertPwd"><maml:name>CertificatePassword</maml:name>
 <maml:Description><maml:para>The password of the pfx file
 </maml:para>
 </maml:Description>
@@ -1725,8 +1894,29 @@ PS c:\&gt; add-AzureRmServiceFabricClusterCertificate -ResourceGroupName 'Group2
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Destination"><maml:name>PfxDestinationFile</maml:name>
-<maml:Description><maml:para>The destination path of the new Pfx file to be created
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyVaultResouceId</maml:name>
+<maml:Description><maml:para>Azure key vault resource id
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Mode</maml:name>
+<maml:Description><maml:para>The deployment mode.
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">Incremental</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Complete</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">DeploymentMode</command:parameterValue>
+<dev:type><maml:name>DeploymentMode</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Source"><maml:name>PfxSourceFile</maml:name>
+<maml:Description><maml:para>The existing Pfx file path
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1795,169 +1985,6 @@ PS c:\&gt; add-AzureRmServiceFabricClusterCertificate -ResourceGroupName 'Group2
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SecretIdentifier</maml:name>
 <maml:Description><maml:para>The existing Azure key vault secret uri
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>TemplateFile</maml:name>
-<maml:Description><maml:para>The path of the template file.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>TemplateParameterFile</maml:name>
-<maml:Description><maml:para>The path of the template parameter file.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-</command:syntaxItem>
-<command:syntaxItem><maml:name>New-AzureRmServiceFabricCluster</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
-<maml:Description><maml:para>Specifies the name of the resource group.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyVaultName</maml:name>
-<maml:Description><maml:para>Azure key vault name
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyVaultResouceGroupName</maml:name>
-<maml:Description><maml:para>Azure key vault resource group name
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Mode</maml:name>
-<maml:Description><maml:para>The deployment mode.
-</maml:para>
-</maml:Description>
-<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">Incremental</command:parameterValue>
-<command:parameterValue required="false" variableLength="false">Complete</command:parameterValue>
-</command:parameterValueGroup>
-<command:parameterValue required="true" variableLength="false">DeploymentMode</command:parameterValue>
-<dev:type><maml:name>DeploymentMode</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Password</maml:name>
-<maml:Description><maml:para>The password of the pfx file
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
-<dev:type><maml:name>SecureString</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Source"><maml:name>PfxSourceFile</maml:name>
-<maml:Description><maml:para>The existing Pfx file path
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SecretName</maml:name>
-<maml:Description><maml:para>Azure key vault secret name, if not specified, it will use the new or existing certificate name
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>TemplateFile</maml:name>
-<maml:Description><maml:para>The path of the template file.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>TemplateParameterFile</maml:name>
-<maml:Description><maml:para>The path of the template parameter file.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-</command:syntaxItem>
-<command:syntaxItem><maml:name>New-AzureRmServiceFabricCluster</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
-<maml:Description><maml:para>Specifies the name of the resource group.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>KeyVaultResouceId</maml:name>
-<maml:Description><maml:para>Azure key vault resource id
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Mode</maml:name>
-<maml:Description><maml:para>The deployment mode.
-</maml:para>
-</maml:Description>
-<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">Incremental</command:parameterValue>
-<command:parameterValue required="false" variableLength="false">Complete</command:parameterValue>
-</command:parameterValueGroup>
-<command:parameterValue required="true" variableLength="false">DeploymentMode</command:parameterValue>
-<dev:type><maml:name>DeploymentMode</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Password</maml:name>
-<maml:Description><maml:para>The password of the pfx file
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
-<dev:type><maml:name>SecureString</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Source"><maml:name>PfxSourceFile</maml:name>
-<maml:Description><maml:para>The existing Pfx file path
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SecretName</maml:name>
-<maml:Description><maml:para>Azure key vault secret name, if not specified, it will use the new or existing certificate name
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1994,12 +2021,30 @@ PS c:\&gt; add-AzureRmServiceFabricClusterCertificate -ResourceGroupName 'Group2
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="CertPwd"><maml:name>CertificatePassword</maml:name>
+<maml:Description><maml:para>The password of the pfx file
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+<dev:type><maml:name>SecureString</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Thumprint"><maml:name>CertificateThumprint</maml:name>
 <maml:Description><maml:para>The thumprint for the Azure key vault secret
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ClusterSize</maml:name>
+<maml:Description><maml:para>The cluster size, the default is 5 nodes clusters
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">ClusterSize</command:parameterValue>
+<dev:type><maml:name>ClusterSize</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -2030,6 +2075,15 @@ PS c:\&gt; add-AzureRmServiceFabricClusterCertificate -ResourceGroupName 'Group2
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Location</maml:name>
+<maml:Description><maml:para>The resource group location
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Mode</maml:name>
 <maml:Description><maml:para>The deployment mode.
 </maml:para>
@@ -2039,12 +2093,12 @@ PS c:\&gt; add-AzureRmServiceFabricClusterCertificate -ResourceGroupName 'Group2
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Password</maml:name>
-<maml:Description><maml:para>The password of the pfx file
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="OperatingSystem"><maml:name>OS</maml:name>
+<maml:Description><maml:para>The OS of the cluster
 </maml:para>
 </maml:Description>
-<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
-<dev:type><maml:name>SecureString</maml:name>
+<command:parameterValue required="true" variableLength="false">OS</command:parameterValue>
+<dev:type><maml:name>OS</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -2108,6 +2162,15 @@ PS c:\&gt; add-AzureRmServiceFabricClusterCertificate -ResourceGroupName 'Group2
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>VmPassword</maml:name>
+<maml:Description><maml:para>The password of the Vms
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+<dev:type><maml:name>SecureString</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -2198,7 +2261,7 @@ PS C:\&gt; New-AzureRmServiceFabricCluster -TemplateFile 'c:\template.json' -Tem
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>CommonName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>CommonName</maml:name>
 <maml:Description><maml:para>Specify client certificate common name
 </maml:para>
 </maml:Description>
@@ -2207,7 +2270,7 @@ PS C:\&gt; New-AzureRmServiceFabricCluster -TemplateFile 'c:\template.json' -Tem
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="none"><maml:name>IssuerThumbprint</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>IssuerThumbprint</maml:name>
 <maml:Description><maml:para>Specify client certificate issuer thumbprint
 </maml:para>
 </maml:Description>
@@ -2236,7 +2299,7 @@ PS C:\&gt; New-AzureRmServiceFabricCluster -TemplateFile 'c:\template.json' -Tem
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>CommonNameIssuersAndFlags</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>CommonNameIssuersAndFlags</maml:name>
 <maml:Description><maml:para>Specify client common name and issuer thumbprint(use ';' to separate) and flag
 </maml:para>
 </maml:Description>
@@ -2265,7 +2328,7 @@ PS C:\&gt; New-AzureRmServiceFabricCluster -TemplateFile 'c:\template.json' -Tem
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="ClientCertificateThumbprint"><maml:name>Thumbprint</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ClientCertificateThumbprint"><maml:name>Thumbprint</maml:name>
 <maml:Description><maml:para>Specify client certificate thumbprint
 </maml:para>
 </maml:Description>
@@ -2294,7 +2357,7 @@ PS C:\&gt; New-AzureRmServiceFabricCluster -TemplateFile 'c:\template.json' -Tem
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>ThumbprintsAndFlags</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ThumbprintsAndFlags</maml:name>
 <maml:Description><maml:para>Specify client certificate thumbprint and flag
 </maml:para>
 </maml:Description>
@@ -2314,7 +2377,7 @@ PS C:\&gt; New-AzureRmServiceFabricCluster -TemplateFile 'c:\template.json' -Tem
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>CommonName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>CommonName</maml:name>
 <maml:Description><maml:para>Specify client certificate common name
 </maml:para>
 </maml:Description>
@@ -2323,7 +2386,7 @@ PS C:\&gt; New-AzureRmServiceFabricCluster -TemplateFile 'c:\template.json' -Tem
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>CommonNameIssuersAndFlags</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>CommonNameIssuersAndFlags</maml:name>
 <maml:Description><maml:para>Specify client common name and issuer thumbprint(use ';' to separate) and flag
 </maml:para>
 </maml:Description>
@@ -2332,7 +2395,7 @@ PS C:\&gt; New-AzureRmServiceFabricCluster -TemplateFile 'c:\template.json' -Tem
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="none"><maml:name>IssuerThumbprint</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>IssuerThumbprint</maml:name>
 <maml:Description><maml:para>Specify client certificate issuer thumbprint
 </maml:para>
 </maml:Description>
@@ -2350,7 +2413,7 @@ PS C:\&gt; New-AzureRmServiceFabricCluster -TemplateFile 'c:\template.json' -Tem
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="ClientCertificateThumbprint"><maml:name>Thumbprint</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ClientCertificateThumbprint"><maml:name>Thumbprint</maml:name>
 <maml:Description><maml:para>Specify client certificate thumbprint
 </maml:para>
 </maml:Description>
@@ -2359,7 +2422,7 @@ PS C:\&gt; New-AzureRmServiceFabricCluster -TemplateFile 'c:\template.json' -Tem
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>ThumbprintsAndFlags</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ThumbprintsAndFlags</maml:name>
 <maml:Description><maml:para>Specify client certificate thumbprint and flag
 </maml:para>
 </maml:Description>
@@ -2436,7 +2499,7 @@ PS c:&gt;Remove-AzureRmServiceFabricClientCertificate -CommonNameIssuersAndFlags
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>Thumbprint</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Thumbprint</maml:name>
 <maml:Description><maml:para>Specify the cluster thumbprint which to be removed
 </maml:para>
 </maml:Description>
@@ -2465,7 +2528,7 @@ PS c:&gt;Remove-AzureRmServiceFabricClientCertificate -CommonNameIssuersAndFlags
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>Thumbprint</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Thumbprint</maml:name>
 <maml:Description><maml:para>Specify the cluster thumbprint which to be removed
 </maml:para>
 </maml:Description>
@@ -2532,21 +2595,21 @@ PS c:&gt;Remove-AzureRmServiceFabricClientCertificate -CommonNameIssuersAndFlags
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="InstanceNumber"><maml:name>NumberOfNodesToRemove</maml:name>
-<maml:Description><maml:para>Number of nodes to remove
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
-<dev:type><maml:name>Int32</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="none"><maml:name>NodeTypeName</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>NodeTypeName</maml:name>
 <maml:Description><maml:para>Node type name
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="NumberOfNodesToRemove"><maml:name>Number</maml:name>
+<maml:Description><maml:para>Number of nodes to remove
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -2561,7 +2624,7 @@ PS c:&gt;Remove-AzureRmServiceFabricClientCertificate -CommonNameIssuersAndFlags
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="none"><maml:name>NodeTypeName</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>NodeTypeName</maml:name>
 <maml:Description><maml:para>Node type name
 </maml:para>
 </maml:Description>
@@ -2570,7 +2633,7 @@ PS c:&gt;Remove-AzureRmServiceFabricClientCertificate -CommonNameIssuersAndFlags
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="InstanceNumber"><maml:name>NumberOfNodesToRemove</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="NumberOfNodesToRemove"><maml:name>Number</maml:name>
 <maml:Description><maml:para>Number of nodes to remove
 </maml:para>
 </maml:Description>
@@ -2646,7 +2709,7 @@ PS c:&gt;Remove-AzureRmServiceFabricClientCertificate -CommonNameIssuersAndFlags
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>NodeTypeName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>NodeTypeName</maml:name>
 <maml:Description><maml:para>The node type name
 </maml:para>
 </maml:Description>
@@ -2666,7 +2729,7 @@ PS c:&gt;Remove-AzureRmServiceFabricClientCertificate -CommonNameIssuersAndFlags
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>NodeTypeName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>NodeTypeName</maml:name>
 <maml:Description><maml:para>The node type name
 </maml:para>
 </maml:Description>
@@ -2742,8 +2805,8 @@ PS c:&gt;Remove-AzureRmServiceFabricClientCertificate -CommonNameIssuersAndFlags
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>Section</maml:name>
-<maml:Description><maml:para>Section
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Parameter</maml:name>
+<maml:Description><maml:para>Parameter
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -2751,8 +2814,8 @@ PS c:&gt;Remove-AzureRmServiceFabricClientCertificate -CommonNameIssuersAndFlags
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="none"><maml:name>Parameter</maml:name>
-<maml:Description><maml:para>Parameter
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Section</maml:name>
+<maml:Description><maml:para>Section
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -2780,7 +2843,7 @@ PS c:&gt;Remove-AzureRmServiceFabricClientCertificate -CommonNameIssuersAndFlags
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>SettingsSectionDescriptions</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SettingsSectionDescriptions</maml:name>
 <maml:Description><maml:para>Client authentication type
 </maml:para>
 </maml:Description>
@@ -2800,7 +2863,7 @@ PS c:&gt;Remove-AzureRmServiceFabricClientCertificate -CommonNameIssuersAndFlags
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="none"><maml:name>Parameter</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Parameter</maml:name>
 <maml:Description><maml:para>Parameter
 </maml:para>
 </maml:Description>
@@ -2818,7 +2881,7 @@ PS c:&gt;Remove-AzureRmServiceFabricClientCertificate -CommonNameIssuersAndFlags
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>Section</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Section</maml:name>
 <maml:Description><maml:para>Section
 </maml:para>
 </maml:Description>
@@ -2827,7 +2890,7 @@ PS c:&gt;Remove-AzureRmServiceFabricClientCertificate -CommonNameIssuersAndFlags
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>SettingsSectionDescriptions</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SettingsSectionDescriptions</maml:name>
 <maml:Description><maml:para>Client authentication type
 </maml:para>
 </maml:Description>
@@ -2894,16 +2957,7 @@ PS c:&gt;Remove-AzureRmServiceFabricClientCertificate -CommonNameIssuersAndFlags
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>Section</maml:name>
-<maml:Description><maml:para>Section
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="none"><maml:name>Parameter</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Parameter</maml:name>
 <maml:Description><maml:para>Parameter
 </maml:para>
 </maml:Description>
@@ -2912,7 +2966,16 @@ PS c:&gt;Remove-AzureRmServiceFabricClientCertificate -CommonNameIssuersAndFlags
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="5" aliases="none"><maml:name>Value</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Section</maml:name>
+<maml:Description><maml:para>Section
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Value</maml:name>
 <maml:Description><maml:para>Value
 </maml:para>
 </maml:Description>
@@ -2941,7 +3004,7 @@ PS c:&gt;Remove-AzureRmServiceFabricClientCertificate -CommonNameIssuersAndFlags
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>SettingsSectionDescriptions</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SettingsSectionDescriptions</maml:name>
 <maml:Description><maml:para>Client authentication type
 </maml:para>
 </maml:Description>
@@ -2961,7 +3024,7 @@ PS c:&gt;Remove-AzureRmServiceFabricClientCertificate -CommonNameIssuersAndFlags
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="none"><maml:name>Parameter</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Parameter</maml:name>
 <maml:Description><maml:para>Parameter
 </maml:para>
 </maml:Description>
@@ -2979,7 +3042,7 @@ PS c:&gt;Remove-AzureRmServiceFabricClientCertificate -CommonNameIssuersAndFlags
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>Section</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Section</maml:name>
 <maml:Description><maml:para>Section
 </maml:para>
 </maml:Description>
@@ -2988,7 +3051,7 @@ PS c:&gt;Remove-AzureRmServiceFabricClientCertificate -CommonNameIssuersAndFlags
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>SettingsSectionDescriptions</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SettingsSectionDescriptions</maml:name>
 <maml:Description><maml:para>Client authentication type
 </maml:para>
 </maml:Description>
@@ -2997,7 +3060,7 @@ PS c:&gt;Remove-AzureRmServiceFabricClientCertificate -CommonNameIssuersAndFlags
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="5" aliases="none"><maml:name>Value</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Value</maml:name>
 <maml:Description><maml:para>Value
 </maml:para>
 </maml:Description>
@@ -3096,7 +3159,7 @@ PS c:\&gt; Set-AzureRmServiceFabricSettings -SettingsSectionDescriptions $arry -
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>UpgradeMode</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>UpgradeMode</maml:name>
 <maml:Description><maml:para>ClusterUpgradeMode
 </maml:para>
 </maml:Description>
@@ -3108,7 +3171,7 @@ PS c:\&gt; Set-AzureRmServiceFabricSettings -SettingsSectionDescriptions $arry -
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="ClusterCodeVersion"><maml:name>Version</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ClusterCodeVersion"><maml:name>Version</maml:name>
 <maml:Description><maml:para>Cluster code version
 </maml:para>
 </maml:Description>
@@ -3137,7 +3200,7 @@ PS c:\&gt; Set-AzureRmServiceFabricSettings -SettingsSectionDescriptions $arry -
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>UpgradeMode</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>UpgradeMode</maml:name>
 <maml:Description><maml:para>ClusterUpgradeMode
 </maml:para>
 </maml:Description>
@@ -3146,7 +3209,7 @@ PS c:\&gt; Set-AzureRmServiceFabricSettings -SettingsSectionDescriptions $arry -
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="ClusterCodeVersion"><maml:name>Version</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="ClusterCodeVersion"><maml:name>Version</maml:name>
 <maml:Description><maml:para>Cluster code version
 </maml:para>
 </maml:Description>
@@ -3213,7 +3276,7 @@ PS c:\&gt; Set-AzureRmServiceFabricSettings -SettingsSectionDescriptions $arry -
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="DurabilityLevel"><maml:name>Level</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="DurabilityLevel"><maml:name>Level</maml:name>
 <maml:Description><maml:para>DurabilityLevel
 </maml:para>
 </maml:Description>
@@ -3226,7 +3289,7 @@ PS c:\&gt; Set-AzureRmServiceFabricSettings -SettingsSectionDescriptions $arry -
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="none"><maml:name>NodeTypeName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>NodeTypeName</maml:name>
 <maml:Description><maml:para>NodeTypeName
 </maml:para>
 </maml:Description>
@@ -3235,7 +3298,7 @@ PS c:\&gt; Set-AzureRmServiceFabricSettings -SettingsSectionDescriptions $arry -
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="5" aliases="none"><maml:name>SkuName</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SkuName</maml:name>
 <maml:Description><maml:para>SkuName
 </maml:para>
 </maml:Description>
@@ -3255,7 +3318,7 @@ PS c:\&gt; Set-AzureRmServiceFabricSettings -SettingsSectionDescriptions $arry -
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="DurabilityLevel"><maml:name>Level</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="DurabilityLevel"><maml:name>Level</maml:name>
 <maml:Description><maml:para>DurabilityLevel
 </maml:para>
 </maml:Description>
@@ -3264,7 +3327,7 @@ PS c:\&gt; Set-AzureRmServiceFabricSettings -SettingsSectionDescriptions $arry -
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="none"><maml:name>NodeTypeName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>NodeTypeName</maml:name>
 <maml:Description><maml:para>NodeTypeName
 </maml:para>
 </maml:Description>
@@ -3282,7 +3345,7 @@ PS c:\&gt; Set-AzureRmServiceFabricSettings -SettingsSectionDescriptions $arry -
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="5" aliases="none"><maml:name>SkuName</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SkuName</maml:name>
 <maml:Description><maml:para>SkuName
 </maml:para>
 </maml:Description>
@@ -3349,7 +3412,15 @@ PS c:\&gt; Set-AzureRmServiceFabricSettings -SettingsSectionDescriptions $arry -
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>ReliabilityLevel</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="AutoAdjustNodes"><maml:name>AutoAddNodes</maml:name>
+<maml:Description><maml:para>Automatic adjust nodes number when changing reliability
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ReliabilityLevel</maml:name>
 <maml:Description><maml:para>VM instance number
 </maml:para>
 </maml:Description>
@@ -3362,17 +3433,9 @@ PS c:\&gt; Set-AzureRmServiceFabricSettings -SettingsSectionDescriptions $arry -
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="AutoAdjustNodes"><maml:name>AutoAddNodes</maml:name>
-<maml:Description><maml:para>Automatic adjust nodes number when changing reliability
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="AutoAdjustNodes"><maml:name>AutoAddNodes</maml:name>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="AutoAdjustNodes"><maml:name>AutoAddNodes</maml:name>
 <maml:Description><maml:para>Automatic adjust nodes number when changing reliability
 </maml:para>
 </maml:Description>
@@ -3390,7 +3453,7 @@ PS c:\&gt; Set-AzureRmServiceFabricSettings -SettingsSectionDescriptions $arry -
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>ReliabilityLevel</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ReliabilityLevel</maml:name>
 <maml:Description><maml:para>VM instance number
 </maml:para>
 </maml:Description>

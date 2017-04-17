@@ -102,10 +102,15 @@
     <Compile Include="Commands\UpdateAzureRmServiceFabricVmssBase.cs" />
     <Compile Include="Models\CertificateInformation.cs" />
     <Compile Include="Models\ClusterProvisioningState.cs" />
+    <Compile Include="Models\ClusterSize.cs" />
     <Compile Include="Models\ClusterType.cs" />
     <Compile Include="Models\DurabilityLevel.cs" />
     <Compile Include="Models\ClusterUpgradeMode.cs" />
-    <Compile Include="Models\PsCluster.cs" />
+    <Compile Include="Models\JsonBlob.cs" />
+    <Compile Include="Models\OS.cs" />
+    <Compile Include="Models\PSClientCertificateCommonName.cs" />
+    <Compile Include="Models\PSCluster.cs" />
+    <Compile Include="Models\PSDeploymentResult.cs" />
     <Compile Include="Models\PSSettingsParameterDescription.cs" />
     <Compile Include="Models\PSSettingsSectionDescription.cs" />
     <Compile Include="Models\ReliabilityLevel.cs" />
@@ -118,6 +123,14 @@
     <None Include="..\AzureRM.ServiceFabric.psd1">
       <Link>AzureRM.ServiceFabric.psd1</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Template\Linux\parameter.json" />
+    <None Include="Template\Linux\template.json" />
+    <None Include="Template\Windows\parameter.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Template\Windows\template.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>

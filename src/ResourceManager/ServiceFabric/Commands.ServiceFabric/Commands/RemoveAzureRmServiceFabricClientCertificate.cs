@@ -23,7 +23,7 @@ using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Propertie
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureRmServiceFabricClientCertificate), OutputType(typeof(PsCluster))]
+    [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureRmServiceFabricClientCertificate), OutputType(typeof(PSCluster))]
     public class RemoveAzureRmServiceFabricClientCertificate : AddAzureRmServiceFabricClientCertificate
     {
         public override bool IsAdmin { get; set; }

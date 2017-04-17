@@ -12,7 +12,7 @@ Add nodes to the specific node type
 ## SYNTAX
 
 ```
-Add-AzureRmServiceFabricNodes [-NumberOfNodesToAdd] <Int32> [[-NodeTypeName] <String>] [-ClusterName] <String>
+Add-AzureRmServiceFabricNodes -Number <Int32> [-NodeTypeName <String>] [-ClusterName] <String>
  [-ResourceGroupName] <String> [<CommonParameters>]
 ```
 
@@ -54,22 +54,20 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -NumberOfNodesToAdd
-VM instance number
-
-```yaml
+### -Number
+VM instance number```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: InstanceNumber
+Aliases: NumberOfNodesToAdd
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

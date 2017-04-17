@@ -195,6 +195,9 @@
   <data name="FileNotExist" xml:space="preserve">
     <value>File {0} doesnt exist</value>
   </data>
+  <data name="NewExistingCluster" xml:space="preserve">
+    <value>The cluster {0} exists , please remove the resource group, and try again.</value>
+  </data>
   <data name="NodeTypeAlreadyExist" xml:space="preserve">
     <value>{0} already exists in the cluster</value>
   </data>

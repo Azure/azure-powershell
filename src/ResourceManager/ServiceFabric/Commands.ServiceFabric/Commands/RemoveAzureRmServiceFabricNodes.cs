@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.ServiceFabric.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureRmServiceFabricNodes), OutputType(typeof(PsCluster))]
+    [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureRmServiceFabricNodes), OutputType(typeof(PSCluster))]
     public class RemoveAzureRmServiceFabricNodes : UpdateAzureRmServiceFabricVmssBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,

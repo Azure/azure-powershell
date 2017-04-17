@@ -13,14 +13,14 @@ Set ServiceFabric upgrade type of the cluster
 
 ### Automatic
 ```
-Set-AzureRmServiceFabricUpgradeType [-UpgradeMode] <ClusterUpgradeMode> [-ClusterName] <String>
- [-ResourceGroupName] <String> [<CommonParameters>]
+Set-AzureRmServiceFabricUpgradeType [-ResourceGroupName] <String> [-ClusterName] <String>
+ -UpgradeMode <ClusterUpgradeMode> [<CommonParameters>]
 ```
 
 ### Manual
 ```
-Set-AzureRmServiceFabricUpgradeType [-UpgradeMode] <ClusterUpgradeMode> [-Version] <String>
- [-ClusterName] <String> [-ResourceGroupName] <String> [<CommonParameters>]
+Set-AzureRmServiceFabricUpgradeType [-ResourceGroupName] <String> [-ClusterName] <String>
+ -UpgradeMode <ClusterUpgradeMode> -Version <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,7 +77,7 @@ Aliases:
 Accepted values: Automatic, Manual
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -92,7 +92,7 @@ Parameter Sets: Manual
 Aliases: ClusterCodeVersion
 
 Required: True
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

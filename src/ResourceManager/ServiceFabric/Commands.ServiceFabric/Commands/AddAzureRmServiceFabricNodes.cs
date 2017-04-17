@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.ServiceFabric.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Add, CmdletNoun.AzureRmServiceFabricNodes), OutputType(typeof(PsCluster))]
+    [Cmdlet(VerbsCommon.Add, CmdletNoun.AzureRmServiceFabricNodes), OutputType(typeof(PSCluster))]
     public class AddAzureRmServiceFabricNodes : UpdateAzureRmServiceFabricVmssBase
     {
         public override void ExecuteCmdlet()

@@ -11,28 +11,28 @@ Remove client certificate from the cluster
 
 ## SYNTAX
 
-### MultipleUpdatesWithThumbprint
+### SingleUpdateWithCommonName
 ```
-Remove-AzureRmServiceFabricClientCertificate [-ThumbprintsAndFlags] <Hashtable> [-ClusterName] <String>
- [-ResourceGroupName] <String> [<CommonParameters>]
-```
-
-### MultipleUpdatesWithCommonName
-```
-Remove-AzureRmServiceFabricClientCertificate [-CommonNameIssuersAndFlags] <Hashtable> [-ClusterName] <String>
- [-ResourceGroupName] <String> [<CommonParameters>]
+Remove-AzureRmServiceFabricClientCertificate [-ResourceGroupName] <String> [-ClusterName] <String>
+ -CommonName <String> -IssuerThumbprint <String> [<CommonParameters>]
 ```
 
 ### SingleUpdateWithThumbprint
 ```
-Remove-AzureRmServiceFabricClientCertificate [-Thumbprint] <String> [-ClusterName] <String>
- [-ResourceGroupName] <String> [<CommonParameters>]
+Remove-AzureRmServiceFabricClientCertificate [-ResourceGroupName] <String> [-ClusterName] <String>
+ -Thumbprint <String> [<CommonParameters>]
 ```
 
-### SingleUpdateWithCommonName
+### MultipleUpdatesWithCommonName
 ```
-Remove-AzureRmServiceFabricClientCertificate [-CommonName] <String> [-IssuerThumbprint] <String>
- [-ClusterName] <String> [-ResourceGroupName] <String> [<CommonParameters>]
+Remove-AzureRmServiceFabricClientCertificate [-ResourceGroupName] <String> [-ClusterName] <String>
+ -CommonNameIssuersAndFlags <Hashtable> [<CommonParameters>]
+```
+
+### MultipleUpdatesWithThumbprint
+```
+Remove-AzureRmServiceFabricClientCertificate [-ResourceGroupName] <String> [-ClusterName] <String>
+ -ThumbprintsAndFlags <Hashtable> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,7 +81,7 @@ Parameter Sets: SingleUpdateWithCommonName
 Aliases: 
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -96,7 +96,7 @@ Parameter Sets: MultipleUpdatesWithCommonName
 Aliases: 
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -111,7 +111,7 @@ Parameter Sets: SingleUpdateWithCommonName
 Aliases: 
 
 Required: True
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -141,7 +141,7 @@ Parameter Sets: SingleUpdateWithThumbprint
 Aliases: ClientCertificateThumbprint
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -156,7 +156,7 @@ Parameter Sets: MultipleUpdatesWithThumbprint
 Aliases: 
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

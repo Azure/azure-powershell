@@ -3,16 +3,16 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "clusterLocation": {
-      "value": "southcentralus"
+      "value": ""
     },
     "clusterName": {
-      "value": "[replaceclusterName]"
+      "value": ""
     },
     "adminUserName": {
-      "value": "username"
+      "value": "adminuser"
     },
     "adminPassword": {
-      "value": "User@123"
+      "value": ""
     },
     "vmImagePublisher": {
       "value": "MicrosoftWindowsServer"
@@ -36,7 +36,7 @@
       "value": "My"
     },
     "certificateThumbprint": {
-      "value": "99912345o458045827c723047234"
+      "value": ""
     },
     "sourceVaultvalue": {
       "value": "/subscriptions/<Sub ID>/resourceGroups/<Resource group name>/providers/Microsoft.KeyVault/vaults/<vault name>"
@@ -57,7 +57,7 @@
       "value": "Standard_LRS"
     },
     "nt0InstanceCount": {
-      "value": 5
+      "value": "vmCount"
     }
   }
 }

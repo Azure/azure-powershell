@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         #region SFRP
 
-        protected PsCluster SendPatchRequest(
+        protected PSCluster SendPatchRequest(
              ClusterUpdateParameters request,
              bool longRunningOperation = true)
         {
@@ -57,44 +57,46 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 throw;
             }
 
-            if (longRunningOperation)
-            {
-                while (true)
-                {
-                    cluster = GetCurrentCluster();
-                    var clusterStateStr = cluster.ClusterState;
-                    ClusterProvisioningState clusterState;
-                    if (!Enum.TryParse(clusterStateStr, out clusterState))
-                    {
-                        throw new PSInvalidOperationException(clusterStateStr);
-                    }
+            return new Models.PSCluster(cluster);
 
-                    if (clusterState == ClusterProvisioningState.Ready ||
-                        clusterState == ClusterProvisioningState.Failed)
-                    {
-                        if (clusterState == ClusterProvisioningState.Failed)
-                        {
-                            throw new PSInvalidCastException("Failed to upgrade the cluster");
-                        }
+            //if (longRunningOperation)
+            //{
+            //    while (true)
+            //    {
+            //        cluster = GetCurrentCluster();
+            //        var clusterStateStr = cluster.ClusterState;
+            //        ClusterProvisioningState clusterState;
+            //        if (!Enum.TryParse(clusterStateStr, out clusterState))
+            //        {
+            //            throw new PSInvalidOperationException(clusterStateStr);
+            //        }
 
-                        return new PsCluster(cluster);
-                    }
-                    else
-                    {
-                        //TODO
-                        System.Threading.Thread.Sleep(20 * 1000);
-                    }
-                }
-            }
+            //        if (clusterState == ClusterProvisioningState.Ready ||
+            //            clusterState == ClusterProvisioningState.Failed)
+            //        {
+            //            if (clusterState == ClusterProvisioningState.Failed)
+            //            {
+            //                throw new PSInvalidCastException("Failed to upgrade the cluster");
+            //            }
 
-            return new PsCluster(cluster);
+            //            return new PsCluster(cluster);
+            //        }
+            //        else
+            //        {
+            //            //TODO
+            //            System.Threading.Thread.Sleep(20 * 1000);
+            //        }
+            //    }
+            //}
+
+            //return new PsCluster(cluster);
         }
 
-        protected Task<PsCluster> PatchAsync(
+        protected Task<PSCluster> PatchAsync(
             ClusterUpdateParameters request,
             bool longRunningOperation)
         {
-            return Task.Run<PsCluster>(() => SendPatchRequest(request, longRunningOperation));
+            return Task.Run<PSCluster>(() => SendPatchRequest(request, longRunningOperation));
         }
 
         protected Cluster GetCurrentCluster()

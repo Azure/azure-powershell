@@ -19,11 +19,25 @@ using Microsoft.Azure.Management.ServiceFabric.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Set, CmdletNoun.AzureRmServiceFabricUpgradeType), OutputType(typeof(PsCluster))]
+    [Cmdlet(VerbsCommon.Set, CmdletNoun.AzureRmServiceFabricUpgradeType), OutputType(typeof(PSCluster))]
     public class SetAzureRmServiceFabricUpgradeType : ServiceFabricClusterCmdlet
     {
         private const string AutomaticSet = "Automatic";
         private const string ManualSet = "Manual";
+
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = AutomaticSet, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify the name of the resource group.")]
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ManualSet, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify the name of the resource group.")]
+        [ValidateNotNullOrEmpty()]
+        public override string ResourceGroupName { get; set; }
+
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = AutomaticSet, ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Specify the name of the cluster")]
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = ManualSet, ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Specify the name of the cluster")]
+        [ValidateNotNullOrEmpty()]
+        public override string ClusterName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = AutomaticSet,
                    HelpMessage = "ClusterUpgradeMode")]

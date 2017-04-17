@@ -295,6 +295,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The cluster {0} exists , please remove the resource group, and try again..
+        /// </summary>
+        internal static string NewExistingCluster {
+            get {
+                return ResourceManager.GetString("NewExistingCluster", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} already exists in the cluster.
         /// </summary>
         internal static string NodeTypeAlreadyExist {

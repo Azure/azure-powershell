@@ -12,9 +12,44 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+$global:time = Get-Date
+$global:suffix = $time.ToString("yyyyMMdd")
+$global:prefix = 'ps'
+
+function WaitClusterReady
+{
+	$clusterName = Get-ClusterName
+	$resourceGroupName = Get-ResourceGroupName
+	$pwd = Get-Pwd | ConvertTo-SecureString -AsPlainText -Force
+	Try  
+    {  
+        $clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName
+    }   
+    Catch
+    {  
+		ReplaceParameterFile
+		$keyvaulturi = Get-SecretUrl
+		$resourceGroupName = Get-ResourceGroupName
+		New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -TemplateFile .\Resources\template.json `
+	          -ParameterFile .\Resources\parameters.json  -SecretIdentifier $keyvaulturi -Thumbprint Get-ThumbprintByFile
+    } 	 
+	
+	$clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName
+	while($clusters[0].ClusterState -ne 'Ready' -and $clusters[0].ClusterState -ne 'Failed')
+	{
+		Start-Sleep -s 60
+	}
+}
+
+function ReplaceParameterFile
+{
+	$cluster = Get-ClusterName
+	(Get-Content .\Resources\parameters.json).replace('[replaceclusterName]', $cluster) | Set-Content .\Resources\parameters.json
+}
+
 function Get-ResourceGroupName
 {
-    return "sftestingrg";
+    return $global:prefix + $global:suffix;
 }
 
 function Get-ResourceGroupLocation
@@ -24,17 +59,17 @@ function Get-ResourceGroupLocation
 
 function Get-ClusterName
 {
-    return "sftesting";
+    return $global:prefix + $global:suffix;
 }
 
 function Get-NewClusterName
 {
-	return 'sftestnew'
+	return 'new' + $global:prefix + $global:suffix;
 }
 
 function Get-NewResourceGroupName
 {
-    return "sftestrgnew";
+    return 'new' + $global:prefix + $global:suffix
 }
 
 function Get-NodeTypeName
@@ -49,17 +84,17 @@ function Get-Cert
 
 function Get-Pwd
 {
-    return "123";
+    return "User@123";
 }
 
 function Get-KeyVaultName
 {
-    return "mykvn1";
+    return "kvps";
 }
 
 function Get-KeyVaultResourceGroup
 {
-    return "mykvrg1";
+    return "kvps";
 }
 
 function Get-KeyVaultResourceGroupLocation
@@ -69,7 +104,7 @@ function Get-KeyVaultResourceGroupLocation
 
 function Get-SecretUrl
 {
-	return 'https://mykvn1.vault.azure.net/secrets/newsftestrg1/2ab7432ce5554650a58509b43225d8aa'
+	return 'https://kvps.vault.azure.net:443/secrets/kvpsrg/6202d05ec08c4767911ddf0613c2b1e8'
 }
 
 function Get-ThumbprintByFile

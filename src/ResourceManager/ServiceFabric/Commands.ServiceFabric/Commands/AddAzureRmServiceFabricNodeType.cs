@@ -30,7 +30,7 @@ using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Propertie
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Add, CmdletNoun.AzureRmServiceFabricNodeType), OutputType(typeof(PsCluster))]
+    [Cmdlet(VerbsCommon.Add, CmdletNoun.AzureRmServiceFabricNodeType), OutputType(typeof(PSCluster))]
     public class AddAzureRmServiceFabricNodeType : ServiceFabricVmssCmdletBase
     {
         private const string LoadBalancerIdFormat = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}";
@@ -75,11 +75,13 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private string diagnosticsStorageName;
         private string addressPrefix;
-        private bool dontRandom = true;
+
+        //For testing
+        internal static bool dontRandom = false;
 
         public override void ExecuteCmdlet()
         {
-            if (CheckExistence())
+            if (CheckNodeTypeExistence())
             {
                 throw new PSArgumentException(string.Format("{0} exists", this.NodeTypeName));
             }
@@ -92,14 +94,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                RemoveNodeTypeToSFRP();
+                RemoveNodeTypeFromSfrp();
                 throw;
             }
 
             WriteObject(cluster,true);
         }
 
-        private PsCluster AddNodeTypeToSFRP()
+        private PSCluster AddNodeTypeToSFRP()
         {
             var cluster = SFRPClient.Clusters.Get(this.ResourceGroupName, this.ClusterName);
 
@@ -285,9 +287,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 settings["nicPrefixOverride"] = this.addressPrefix;
             }
-
-            //TODO We have a bug in vmExt,Remove this after is resolved
-            settings["testExtension"] = true;
 
             var keys = GetStorageAccountKey(this.diagnosticsStorageName);
 

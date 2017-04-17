@@ -12,7 +12,7 @@ Remove a node type from the cluster
 ## SYNTAX
 
 ```
-Remove-AzureRmServiceFabricNodeType [-NodeTypeName] <String> [-ClusterName] <String>
+Remove-AzureRmServiceFabricNodeType -NodeTypeName <String> [-ClusterName] <String>
  [-ResourceGroupName] <String> [<CommonParameters>]
 ```
 
@@ -54,7 +54,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
