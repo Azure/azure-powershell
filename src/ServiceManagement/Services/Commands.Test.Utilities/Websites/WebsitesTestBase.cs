@@ -32,6 +32,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Websites
         [TestInitialize]
         public virtual void SetupTest()
         {
+            AzureSessionInitializer.InitializeAzureSession();
+            ServiceManagementProfileProvider.InitializeServiceManagementProfile();
             new FileSystemHelper(this).CreateAzureSdkDirectoryAndImportPublishSettings();
 
             currentProfile = new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));

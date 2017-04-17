@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
 using System.IO;
@@ -26,7 +27,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     /// </summary>
     public class ProtectedFileTokenCache : TokenCache, IAzureTokenCache
     {
-        private static readonly string CacheFileName = Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.TokenCacheFile);
+        private static readonly string CacheFileName = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                Resources.AzureDirectoryName, "TokenCache.dat");
 
         private static readonly object fileLock = new object();
 

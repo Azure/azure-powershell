@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     {
         static IAzureSession _instance;
         static int _initialized = 0;
+        static ReaderWriterLockSlim sessionLock = new ReaderWriterLockSlim();
         /// <summary>
         /// Gets or sets Azure client factory.
         /// </summary>
@@ -90,7 +91,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             get
             {
-                return _instance;
+                sessionLock.EnterReadLock();
+                try
+                {
+                    return _instance;
+                }
+                finally
+                {
+                    sessionLock.ExitReadLock();
+                }
             }
         }
 
@@ -101,9 +110,17 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// <param name="overwrite">If true, always overwrite the current instance.  Otherwise do not initialize</param>
         public static void Initialize(Func<IAzureSession> instanceCreator, bool overwrite)
         {
-            if (Interlocked.Exchange(ref _initialized, 1) == 0 || overwrite)
+            try
             {
-                _instance = instanceCreator();
+                sessionLock.EnterWriteLock();
+                if (Interlocked.Exchange(ref _initialized, 1) == 0 || overwrite)
+                {
+                    _instance = instanceCreator();
+                }
+            }
+            finally
+            {
+                sessionLock.ExitWriteLock();
             }
         }
 

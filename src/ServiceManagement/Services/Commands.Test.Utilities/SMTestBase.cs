@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.ServiceManagemenet.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 {
@@ -34,6 +35,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
         public SMTestBase()
         {
             AzureSessionInitializer.InitializeAzureSession();
+            ServiceManagementProfileProvider.InitializeServiceManagementProfile();
             System.Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
             BaseSetup();
         }
@@ -44,7 +46,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
         [TestInitialize]
         public void BaseSetup()
         {
-            if (AzureSession.Instance.DataStore != null && !(AzureSession.Instance.DataStore is MemoryDataStore))
+            AzureSessionInitializer.InitializeAzureSession();
+            ServiceManagementProfileProvider.InitializeServiceManagementProfile();
+            if (AzureSession.Instance.DataStore == null || ( AzureSession.Instance.DataStore != null && !(AzureSession.Instance.DataStore is MemoryDataStore)))
             {
                 AzureSession.Instance.DataStore = new MemoryDataStore();
             }

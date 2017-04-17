@@ -26,6 +26,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.ServiceManagemenet.Common;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Environment
 {
@@ -35,6 +36,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
 
         public AddAzureEnvironmentTests()
         {
+            AzureSessionInitializer.InitializeAzureSession();
+            ServiceManagementProfileProvider.InitializeServiceManagementProfile();
             dataStore = new MemoryDataStore();
             AzureSession.Instance.DataStore = dataStore;
         }

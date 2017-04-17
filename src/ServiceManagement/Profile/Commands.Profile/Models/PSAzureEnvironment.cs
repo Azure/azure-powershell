@@ -77,7 +77,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile.Models
         /// Initializes a new Azure environment from the given internal representation.
         /// </summary>
         /// <param name="environment">The internal representation of the environment.</param>
-        public PSAzureEnvironment(AzureEnvironment environment)
+        public PSAzureEnvironment(IAzureEnvironment environment)
         {
             Name = environment.Name;
             EnableAdfsAuthentication = environment.OnPremise;

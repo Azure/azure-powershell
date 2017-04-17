@@ -39,6 +39,7 @@ using System.IO;
 using Microsoft.Azure.ServiceManagemenet.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Utilities
 {
@@ -261,6 +262,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Utilities
         {
             if (!IsInitialized)
             {
+                AzureSessionInitializer.InitializeAzureSession();
+                ServiceManagementProfileProvider.InitializeServiceManagementProfile();
                 TestRunSetup();
                 IsInitialized = true;
             }

@@ -861,9 +861,11 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
 
             mergedSubscription.SetAccount(subscription1.GetAccount() ?? subscription2.GetAccount());
             mergedSubscription.SetEnvironment(subscription1.GetEnvironment());
+            var sub1Keys = (subscription1.ExtendedProperties == null || subscription1.ExtendedProperties.Count < 1) ? new string[0] : subscription1.ExtendedProperties.Keys;
+            var sub2Keys = (subscription2.ExtendedProperties == null || subscription2.ExtendedProperties.Count < 1) ? new string[0] : subscription2.ExtendedProperties.Keys;
 
             // Merge all properties
-            foreach (string propertyKey in subscription1.ExtendedProperties.Keys.Union(subscription2.ExtendedProperties.Keys))
+            foreach (string propertyKey in sub1Keys.Union(sub2Keys))
             {
                 string propertyValue = null;
                 if (subscription1.IsPropertySet(propertyKey))
@@ -881,18 +883,12 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
                 }
             }
 
+            var s1prods = subscription1.GetPropertyAsArray(AzureSubscription.Property.RegisteredResourceProviders) ?? new string[0];
+            var s2prods = subscription2.GetPropertyAsArray(AzureSubscription.Property.RegisteredResourceProviders) ?? new string[0];
             // Merge RegisteredResourceProviders
-            var registeredProviders = subscription1.GetPropertyAsArray(AzureSubscription.Property.RegisteredResourceProviders)
-                    .Union(subscription2.GetPropertyAsArray(AzureSubscription.Property.RegisteredResourceProviders), StringComparer.CurrentCultureIgnoreCase);
+            var registeredProviders = s1prods.Union(s2prods, StringComparer.CurrentCultureIgnoreCase);
 
             mergedSubscription.SetProperty(AzureSubscription.Property.RegisteredResourceProviders, registeredProviders.ToArray());
-
-            // Merge Tenants
-            var tenants = subscription1.GetPropertyAsArray(AzureSubscription.Property.Tenants)
-                    .Union(subscription2.GetPropertyAsArray(AzureSubscription.Property.Tenants), StringComparer.CurrentCultureIgnoreCase);
-
-            mergedSubscription.SetProperty(AzureSubscription.Property.Tenants, tenants.ToArray());
-
             return mergedSubscription;
         }
 
@@ -917,15 +913,17 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
                 mergedEnvironment.VersionProfiles.Add(profile);
             }
 
-            foreach (var propertyKey in environment1.ExtendedProperties.Keys.Union(environment2.ExtendedProperties.Keys))
+            var e1Keys = (environment1.ExtendedProperties == null || environment1.ExtendedProperties.Count < 1) ? new string[0] : environment1.ExtendedProperties.Keys;
+            var e2Keys = (environment2.ExtendedProperties == null || environment2.ExtendedProperties.Count < 1) ? new string[0] : environment2.ExtendedProperties.Keys;
+
+            // Merge all properties
+            foreach (string propertyKey in e1Keys.Union(e2Keys))
             {
                 mergedEnvironment.ExtendedProperties[propertyKey] = environment1.ExtendedProperties[propertyKey] 
                     ?? environment2.ExtendedProperties[propertyKey];
             }
 
             // Merge all properties
-            foreach (AzureEnvironment.Endpoint property in Enum.GetValues(typeof(AzureEnvironment.Endpoint)))
-            {
                 mergedEnvironment.ActiveDirectory = environment1.ActiveDirectory ?? environment2.ActiveDirectory;
                 mergedEnvironment.ActiveDirectoryServiceEndpointResourceId = environment1.ActiveDirectoryServiceEndpointResourceId ?? environment2.ActiveDirectoryServiceEndpointResourceId;
                 mergedEnvironment.AdTenant = environment1.AdTenant ?? environment2.AdTenant;
@@ -943,7 +941,6 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
                 mergedEnvironment.SqlDatabaseDnsSuffix = environment1.SqlDatabaseDnsSuffix ?? environment2.SqlDatabaseDnsSuffix;
                 mergedEnvironment.StorageEndpointSuffix = environment1.StorageEndpointSuffix ?? environment2.StorageEndpointSuffix;
                 mergedEnvironment.TrafficManagerDnsSuffix = environment1.TrafficManagerDnsSuffix ?? environment2.TrafficManagerDnsSuffix;
-            }
 
             return mergedEnvironment;
         }
@@ -968,7 +965,11 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
                 Type = account1.Type
             };
 
-            foreach (var propertyKey in account1.ExtendedProperties.Keys.Union(account2.ExtendedProperties.Keys))
+            var e1Keys = (account1.ExtendedProperties == null || account1.ExtendedProperties.Count < 1) ? new string[0] : account1.ExtendedProperties.Keys;
+            var e2Keys = (account2.ExtendedProperties == null || account2.ExtendedProperties.Count < 1) ? new string[0] : account2.ExtendedProperties.Keys;
+
+            // Merge all properties
+            foreach (string propertyKey in e1Keys.Union(e2Keys))
             {
                 mergeAccount.ExtendedProperties[propertyKey] = account1.ExtendedProperties[propertyKey]
                     ?? account2.ExtendedProperties[propertyKey];

@@ -118,7 +118,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                         TracingAdapter.Information(Resources.NoAccountInContext, subscriptionAccount, DefaultSubscription.Id);
                     }
 
-                    var subscriptionEnvironment = DefaultSubscription.ExtendedProperties[AzureSubscription.Property.Environment];
+                    var subscriptionEnvironment = DefaultSubscription.GetEnvironment();
 
                     if (subscriptionEnvironment != null &&
                         EnvironmentTable.ContainsKey(subscriptionEnvironment))

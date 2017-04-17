@@ -56,16 +56,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected override IAzureContext DefaultContext { get { return CurrentProfile.DefaultContext; } }
 
-        static AzureSMCmdlet()
-        {
-            ServiceManagementProfileProvider.InitializeServiceManagementProfile();
-            if (!TestMockSupport.RunningMocked)
-            {
-                AzureSession.Instance.ClientFactory.AddAction(new RPRegistrationAction());
-                AzureSession.Instance.DataStore = new DiskDataStore();
-            }
-        }
-
         protected override void SaveDataCollectionProfile()
         {
             if (_dataCollectionProfile == null)

@@ -53,6 +53,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         public ProfileCmdltsTests()
             : base()
         {
+            AzureSessionInitializer.InitializeAzureSession();
+            ServiceManagementProfileProvider.InitializeServiceManagementProfile();
             dataStore = new MemoryDataStore();
             AzureSession.Instance.DataStore = dataStore;
             commandRuntimeMock = new MockCommandRuntime();

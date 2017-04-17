@@ -48,6 +48,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         /// </summary>
         public PublishContextTests()
         {
+            AzureSessionInitializer.InitializeAzureSession();
+            AzureSession.Instance.DataStore = new DiskDataStore();
+            ServiceManagementProfileProvider.InitializeServiceManagementProfile();
             AzurePowerShell.ProfileDirectory = Test.Utilities.Common.Data.AzureSdkAppDir;
             service = new AzureServiceWrapper(Directory.GetCurrentDirectory(), Path.GetRandomFileName(), null);
             service.CreateVirtualCloudPackage();
