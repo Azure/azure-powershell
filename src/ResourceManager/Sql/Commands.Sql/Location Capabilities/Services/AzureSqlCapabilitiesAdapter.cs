@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         {
             ServiceObjectiveCapabilityModel slo = new ServiceObjectiveCapabilityModel();
 
-            slo.Id = Guid.Parse(s.Id);
+            slo.Id = s.Id;
             slo.ServiceObjectiveName = s.Name;
             slo.Status = s.Status.ToString();
             slo.SupportedMaxSizes = s.SupportedMaxSizes.Select(CreateSupportedMaxSizeModel).ToList();
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         {
             MaxSizeCapabilityModel maxSize = new MaxSizeCapabilityModel();
 
-            maxSize.Limit = m.Limit.Value;
+            maxSize.Limit = m.Limit;
             maxSize.Status = m.Status.ToString();
             maxSize.Unit = m.Unit.ToString();
 

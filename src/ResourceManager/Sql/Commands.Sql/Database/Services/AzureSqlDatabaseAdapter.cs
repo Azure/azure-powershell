@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                            ErrorMessage = r.ErrorMessage,
                            ErrorSeverity = r.ErrorSeverity,
                            Operation = r.Operation,
-                           OperationId = r.OperationId.Value,
+                           OperationId = r.OperationId,
                            PercentComplete = r.PercentComplete,
                            ServerName = r.ServerName,
                            StartTime = r.StartTime,
