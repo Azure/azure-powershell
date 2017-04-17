@@ -13,44 +13,42 @@ Create an new ServiceFabric cluster
 
 ### ByExistingKeyVault
 ```
-New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String>
- -TemplateParameterFile <String> [-Mode <DeploymentMode>] -SecretIdentifier <String>
- -CertificateThumprint <String> [<CommonParameters>]
+New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> -ParameterFile <String>
+ [-Mode <DeploymentMode>] -SecretIdentifier <String> [-CertificateThumprint <String>] [<CommonParameters>]
 ```
 
 ### ByNewPfxAndVaultName
 ```
-New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String>
- -TemplateParameterFile <String> [-Mode <DeploymentMode>] -CertificatePassword <SecureString>
- -CertificateDnsName <String> -KeyVaultName <String> -KeyVaultResouceGroupName <String> [-SecretName <String>]
- -PfxDestinationFile <String> [<CommonParameters>]
+New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> -ParameterFile <String>
+ [-Mode <DeploymentMode>] -CertificatePassword <SecureString> -CertificateDnsName <String>
+ -KeyVaultName <String> -KeyVaultResouceGroupName <String> [-SecretName <String>] -PfxDestinationFile <String>
+ [<CommonParameters>]
 ```
 
 ### ByExistingPfxAndVaultName
 ```
-New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String>
- -TemplateParameterFile <String> [-Mode <DeploymentMode>] -CertificatePassword <SecureString>
- -KeyVaultName <String> -KeyVaultResouceGroupName <String> [-SecretName <String>] -PfxSourceFile <String>
- [<CommonParameters>]
+New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> -ParameterFile <String>
+ [-Mode <DeploymentMode>] -CertificatePassword <SecureString> -KeyVaultName <String>
+ -KeyVaultResouceGroupName <String> [-SecretName <String>] -PfxSourceFile <String> [<CommonParameters>]
 ```
 
 ### ByExistingPfxSetAndVaultId
 ```
-New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String>
- -TemplateParameterFile <String> [-Mode <DeploymentMode>] -CertificatePassword <SecureString>
- -KeyVaultResouceId <String> [-SecretName <String>] -PfxSourceFile <String> [<CommonParameters>]
+New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> -ParameterFile <String>
+ [-Mode <DeploymentMode>] -CertificatePassword <SecureString> -KeyVaultResouceId <String>
+ [-SecretName <String>] -PfxSourceFile <String> [<CommonParameters>]
 ```
 
 ### ByDefaultArmTemplate
 ```
-New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> -Location <String> [-ClusterSize <ClusterSize>]
- -CertificatePassword <SecureString> -CertificateDnsName <String> -VmPassword <SecureString> [-OS <OS>]
- [<CommonParameters>]
+New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> [-Mode <DeploymentMode>] -Location <String>
+ [-ClusterSize <ClusterSize>] -CertificatePassword <SecureString> -CertificateDnsName <String>
+ -VmPassword <SecureString> [-OS <OS>] [<CommonParameters>]
 ```
 
 ### ByNewPfxAndVaultId
 ```
-New-AzureRmServiceFabricCluster -TemplateFile <String> -TemplateParameterFile <String> [-Mode <DeploymentMode>]
+New-AzureRmServiceFabricCluster -TemplateFile <String> -ParameterFile <String> [-Mode <DeploymentMode>]
  -CertificatePassword <SecureString> -CertificateDnsName <String> -KeyVaultResouceId <String>
  [-SecretName <String>] -PfxDestinationFile <String> [<CommonParameters>]
 ```
@@ -136,9 +134,9 @@ The thumprint for the Azure key vault secret
 ```yaml
 Type: String
 Parameter Sets: ByExistingKeyVault
-Aliases: Thumprint
+Aliases: Thumbprint
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -226,7 +224,7 @@ The deployment mode.
 
 ```yaml
 Type: DeploymentMode
-Parameter Sets: ByExistingKeyVault, ByNewPfxAndVaultName, ByExistingPfxAndVaultName, ByExistingPfxSetAndVaultId, ByNewPfxAndVaultId
+Parameter Sets: (All)
 Aliases: 
 Accepted values: Incremental, Complete
 
@@ -247,6 +245,19 @@ Aliases: OperatingSystem
 Accepted values: Windows, Linux
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ParameterFile
+The path of the template parameter file.```yaml
+Type: String
+Parameter Sets: ByExistingKeyVault, ByNewPfxAndVaultName, ByExistingPfxAndVaultName, ByExistingPfxSetAndVaultId, ByNewPfxAndVaultId
+Aliases: 
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -330,21 +341,6 @@ Accept wildcard characters: False
 
 ### -TemplateFile
 The path of the template file.
-
-```yaml
-Type: String
-Parameter Sets: ByExistingKeyVault, ByNewPfxAndVaultName, ByExistingPfxAndVaultName, ByExistingPfxSetAndVaultId, ByNewPfxAndVaultId
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -TemplateParameterFile
-The path of the template parameter file.
 
 ```yaml
 Type: String

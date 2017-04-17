@@ -14,7 +14,7 @@ Add an certificate which will be used as application certificate
 ### ByExistingKeyVault
 ```
 Add-AzureRmServiceFabricApplicationCertificate [-ResourceGroupName] <String> [-ClusterName] <String>
- -SecretIdentifier <String> -CertificateThumprint <String> [<CommonParameters>]
+ -SecretIdentifier <String> [-CertificateThumprint <String>] [<CommonParameters>]
 ```
 
 ### ByNewPfxAndVaultName
@@ -100,9 +100,9 @@ Accept wildcard characters: False
 The thumprint for the Azure key vault secret```yaml
 Type: String
 Parameter Sets: ByExistingKeyVault
-Aliases: Thumprint
+Aliases: Thumbprint
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
