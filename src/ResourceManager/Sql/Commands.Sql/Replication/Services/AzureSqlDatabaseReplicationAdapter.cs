@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.Sql.Replication.Model;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Commands.Sql.Server.Services;
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
                 {
                     SourceDatabaseId = string.Format(AzureReplicationLinkModel.SourceIdTemplate, _subscription.Id.ToString(),
                         model.ResourceGroupName, model.ServerName, model.DatabaseName),
-                    CreateMode = Management.Sql.Models.DatabaseCreateMode.Copy,
+                    CreateMode = Management.Sql.LegacySdk.Models.DatabaseCreateMode.Copy,
                     ElasticPoolName = model.ElasticPoolName,
                     RequestedServiceObjectiveName = model.ServiceObjectiveName,
                 }
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// <param name="response">The database create response</param>
         /// <returns>A powershell DatabaseCopy object</returns>
         private AzureSqlDatabaseCopyModel CreateDatabaseCopyModelFromDatabaseCreateOrUpdateResponse(string copyResourceGroupName, string copyServerName, string copyDatabaseName,
-            string resourceGroupName, string serverName, string databaseName, Management.Sql.Models.DatabaseCreateOrUpdateResponse response)
+            string resourceGroupName, string serverName, string databaseName, Management.Sql.LegacySdk.Models.DatabaseCreateOrUpdateResponse response)
         {
             // the response does not contain the majority of the information we wish to expose to the user, so most of the data is passed from the inputs.
             AzureSqlDatabaseCopyModel model = new AzureSqlDatabaseCopyModel();
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
                 {
                     SourceDatabaseId = string.Format(AzureReplicationLinkModel.SourceIdTemplate, _subscription.Id.ToString(),
                         model.ResourceGroupName, model.ServerName, model.DatabaseName),
-                    CreateMode = model.AllowConnections.HasFlag(AllowConnections.All) ? Management.Sql.Models.DatabaseCreateMode.Secondary : Management.Sql.Models.DatabaseCreateMode.NonReadableSecondary,
+                    CreateMode = model.AllowConnections.HasFlag(AllowConnections.All) ? Management.Sql.LegacySdk.Models.DatabaseCreateMode.Secondary : Management.Sql.LegacySdk.Models.DatabaseCreateMode.NonReadableSecondary,
                     ElasticPoolName = model.SecondaryElasticPoolName,
                     RequestedServiceObjectiveName = model.SecondaryServiceObjectiveName,
                 }
@@ -233,12 +233,12 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// <param name="response">The replication link response</param>
         /// <returns>The Azure SQL Database ReplicationLink object</returns>
         private AzureReplicationLinkModel CreateReplicationLinkModelFromReplicationLinkResponse(string resourceGroupName,
-            string serverName, string databaseName, string partnerResourceGroupName, Management.Sql.Models.ReplicationLink resp)
+            string serverName, string databaseName, string partnerResourceGroupName, Management.Sql.LegacySdk.Models.ReplicationLink resp)
         {
             // partnerResourceGroupName is required because it is not exposed in any reponse from the service.
             // AllowConnections.ReadOnly is not yet supported
-            AllowConnections allowConnections = (resp.Properties.Role.Equals(Management.Sql.Models.DatabaseCreateMode.Secondary)
-                || resp.Properties.PartnerRole.Equals(Management.Sql.Models.DatabaseCreateMode.Secondary)) ? AllowConnections.All : AllowConnections.No;
+            AllowConnections allowConnections = (resp.Properties.Role.Equals(Management.Sql.LegacySdk.Models.DatabaseCreateMode.Secondary)
+                || resp.Properties.PartnerRole.Equals(Management.Sql.LegacySdk.Models.DatabaseCreateMode.Secondary)) ? AllowConnections.All : AllowConnections.No;
 
             AzureReplicationLinkModel model = new AzureReplicationLinkModel();
 

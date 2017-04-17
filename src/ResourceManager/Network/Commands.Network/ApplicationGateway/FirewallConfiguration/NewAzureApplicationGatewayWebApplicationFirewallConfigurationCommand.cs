@@ -31,6 +31,9 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     Enabled = this.Enabled,
                     FirewallMode = this.FirewallMode,
+                    RuleSetType = this.RuleSetType,
+                    RuleSetVersion = this.RuleSetVersion,
+                    DisabledRuleGroups = this.DisabledRuleGroups
                 };
 
                 WriteObject(firewallConfiguration);

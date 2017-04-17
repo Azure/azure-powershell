@@ -4556,6 +4556,9 @@
                         <Component Id="cmpD7A9F76B2346156CA8F83F41A302B714" Guid="*">
                             <File Id="fil0218D7505353104A9DB742A55A839351" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RecoveryServices\Microsoft.WindowsAzure.Management.dll" />
                         </Component>
+                        <Component Id="cmp978E2B6D0B55656CE9AC220DD150F137" Guid="*">
+                            <File Id="fil9BA3FAC7A7DD755034414EBADFC43F6F" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RecoveryServices\Microsoft.WindowsAzure.Management.RecoveryServicesVaultUpgrade.dll" />
+                        </Component>
                         <Component Id="cmp4D3E383B38EF4392E70E981B7CA033D7" Guid="*">
                             <File Id="fil3D6B846AC421D38C5A9CB40A58B058B6" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RecoveryServices\Microsoft.WindowsAzure.Management.SiteRecovery.dll" />
                         </Component>
@@ -6989,6 +6992,7 @@
             <ComponentRef Id="cmp8CDB44BA783FF24C94CDFC5D12066BB1" />
             <ComponentRef Id="cmpFC1B889D1C71DA8CC150C73682BF3892" />
             <ComponentRef Id="cmpD7A9F76B2346156CA8F83F41A302B714" />
+            <ComponentRef Id="cmp978E2B6D0B55656CE9AC220DD150F137" />
             <ComponentRef Id="cmp4D3E383B38EF4392E70E981B7CA033D7" />
             <ComponentRef Id="cmp50D44814DFFEA762A53D9DEDCE48F689" />
             <ComponentRef Id="cmp439E7C155DEEFC3877653E4ED11F66AC" />

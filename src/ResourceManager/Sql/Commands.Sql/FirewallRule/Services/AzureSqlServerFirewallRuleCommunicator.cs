@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,8 +16,8 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
 using System.Collections.Generic;
 
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Services
         /// <summary>
         /// Gets the Azure Sql Database Server FirewallRules
         /// </summary>
-        public Management.Sql.Models.FirewallRule Get(string resourceGroupName, string serverName, string firewallRuleName, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.FirewallRule Get(string resourceGroupName, string serverName, string firewallRuleName, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).FirewallRules.Get(resourceGroupName, serverName, firewallRuleName).FirewallRule;
         }
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Services
         /// <summary>
         /// Lists Azure Sql Databases Server FirewallRules
         /// </summary>
-        public IList<Management.Sql.Models.FirewallRule> List(string resourceGroupName, string serverName, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.FirewallRule> List(string resourceGroupName, string serverName, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).FirewallRules.List(resourceGroupName, serverName).FirewallRules;
         }
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Services
         /// <summary>
         /// Creates or updates an Azure Sql Database Server FirewallRule
         /// </summary>
-        public Management.Sql.Models.FirewallRule CreateOrUpdate(string resourceGroupName, string serverName, string firewallRuleName, string clientRequestId, FirewallRuleCreateOrUpdateParameters parameters)
+        public Management.Sql.LegacySdk.Models.FirewallRule CreateOrUpdate(string resourceGroupName, string serverName, string firewallRuleName, string clientRequestId, FirewallRuleCreateOrUpdateParameters parameters)
         {
             return GetCurrentSqlClient(clientRequestId).FirewallRules.CreateOrUpdate(resourceGroupName, serverName, firewallRuleName, parameters).FirewallRule;
         }

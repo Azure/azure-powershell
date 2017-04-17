@@ -1,10 +1,9 @@
-﻿extern alias MicrosoftAzureCommandsResources;
-
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+extern alias MicrosoftAzureCommandsResources;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Model;
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using MicrosoftAzureCommandsResources::Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 // ----------------------------------------------------------------------------------
 //
@@ -147,7 +146,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// <param name="serverName">The name of the Azure Sql ServerActiveDirectoryAdministrator Server</param>
         /// <param name="admin">The service response</param>
         /// <returns>The converted model</returns>
-        public static AzureSqlServerActiveDirectoryAdministratorModel CreateServerActiveDirectoryAdministratorModelFromResponse(string resourceGroup, string serverName, Management.Sql.Models.ServerAdministrator admin)
+        public static AzureSqlServerActiveDirectoryAdministratorModel CreateServerActiveDirectoryAdministratorModelFromResponse(string resourceGroup, string serverName, Management.Sql.LegacySdk.Models.ServerAdministrator admin)
         {
             AzureSqlServerActiveDirectoryAdministratorModel model = new AzureSqlServerActiveDirectoryAdministratorModel();
 

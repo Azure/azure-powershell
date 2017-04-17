@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,6 @@ using Microsoft.Azure.Commands.ScenarioTest.Mocks;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -51,12 +50,13 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
         protected virtual void SetupManagementClients(RestTestFramework.MockContext context)
         {
-            var sqlCSMClient = GetSqlClient();
+            var sqlClient = GetSqlClient(context);
+            var sqlLegacyClient = GetLegacySqlClient();
             var storageClient = GetStorageClient();
             //TODO, Remove the MockDeploymentFactory call when the test is re-recorded
             var resourcesClient = MockDeploymentClientFactory.GetResourceClient(GetResourcesClient());
             var authorizationClient = GetAuthorizationManagementClient();
-            helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, resourcesClient, authorizationClient);
+            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, storageClient, resourcesClient, authorizationClient);
         }
         
         protected void RunPowerShellTest(params string[] scripts)
@@ -97,9 +97,23 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             }
         }
 
-        protected SqlManagementClient GetSqlClient()
+        protected Management.Sql.SqlManagementClient GetSqlClient(RestTestFramework.MockContext context)
         {
-            SqlManagementClient client = TestBase.GetServiceClient<SqlManagementClient>(new CSMTestEnvironmentFactory());
+            Management.Sql.SqlManagementClient client =
+                context.GetServiceClient<Management.Sql.SqlManagementClient>(
+                    RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                client.LongRunningOperationRetryTimeout = 0;
+            }
+            return client;
+        }
+
+        protected Management.Sql.LegacySdk.SqlManagementClient GetLegacySqlClient()
+        {
+            Management.Sql.LegacySdk.SqlManagementClient client = 
+                TestBase.GetServiceClient<Management.Sql.LegacySdk.SqlManagementClient>(
+                    new CSMTestEnvironmentFactory());
             if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
                 client.LongRunningOperationInitialTimeout = 0;

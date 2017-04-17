@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Management.Sql;
+using Microsoft.Azure.Management.Sql.LegacySdk;
 using System;
 using System.Collections.Generic;
 
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Services
         /// <param name="expand">Expand string</param>
         /// <param name="clientRequestId">Request identifier</param>
         /// <returns></returns>
-        public Management.Sql.Models.Database GetDatabaseExpanded(string resourceGroupName, string serverName, string databaseName, string expand, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.Database GetDatabaseExpanded(string resourceGroupName, string serverName, string databaseName, string expand, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).Databases.GetExpanded(resourceGroupName, serverName, databaseName, expand).Database;
         }
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Services
         /// <param name="expand">Expand string</param>
         /// <param name="clientRequestId">Request identifier</param>
         /// <returns>List of databases</returns>
-        public IList<Management.Sql.Models.Database> ListDatabasesExpanded(string resourceGroupName, string serverName, string expand, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.Database> ListDatabasesExpanded(string resourceGroupName, string serverName, string expand, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).Databases.ListExpanded(resourceGroupName, serverName, expand).Databases;
         }
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Services
         /// <param name="serverName">The name of Azure Sql server</param>
         /// <param name="clientRequestId">Request identifier</param>
         /// <returns>List of recommended elastic pools</returns>
-        public IList<Management.Sql.Models.RecommendedElasticPool> GetRecommendedElasticPoolsExpanded(string resourceGroupName, string serverName, string expand, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.RecommendedElasticPool> GetRecommendedElasticPoolsExpanded(string resourceGroupName, string serverName, string expand, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).RecommendedElasticPools.ListExpanded(resourceGroupName, serverName, expand).RecommendedElasticPools;
         }

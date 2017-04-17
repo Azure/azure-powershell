@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model;
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Services
         /// <param name="serverName">The name of the Azure Sql Database Server</param>
         /// <param name="link">The service response</param>
         /// <returns>The converted model</returns>
-        private AzureSqlServerCommunicationLinkModel CreateServerCommunicationLinkModelFromResponse(string resourceGroup, string serverName, Management.Sql.Models.ServerCommunicationLink link)
+        private AzureSqlServerCommunicationLinkModel CreateServerCommunicationLinkModelFromResponse(string resourceGroup, string serverName, Management.Sql.LegacySdk.Models.ServerCommunicationLink link)
         {
             AzureSqlServerCommunicationLinkModel model = new AzureSqlServerCommunicationLinkModel();
 

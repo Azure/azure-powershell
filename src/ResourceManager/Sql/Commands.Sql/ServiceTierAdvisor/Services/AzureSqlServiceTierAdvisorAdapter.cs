@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Services
         /// </summary>
         /// <param name="database">Database object</param>
         /// <returns>Returns UpgradeDatabaseHint</returns>
-        private RecommendedDatabaseProperties CreateUpgradeDatabaseHint(Management.Sql.Models.Database database)
+        private RecommendedDatabaseProperties CreateUpgradeDatabaseHint(Management.Sql.LegacySdk.Models.Database database)
         {
             return new RecommendedDatabaseProperties()
             {

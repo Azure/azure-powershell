@@ -133,7 +133,7 @@
     <value>"default "</value>
   </data>
   <data name="DefaultingEncryptionType" xml:space="preserve">
-    <value>No Encryption type passed in, defaulting to Service managed encryption. To opt out, explicitly pass in -Encryption None</value>
+    <value>No Encryption type passed in, defaulting to Service managed encryption. To opt out, explicitly pass in -DisableEncryption</value>
   </data>
   <data name="DiagnosticDirectoryAlreadyExists" xml:space="preserve">
     <value>The specified path: {0} already exists as a directory. Please specify a path (including file name) of a new file to create or an existing file to append to.</value>

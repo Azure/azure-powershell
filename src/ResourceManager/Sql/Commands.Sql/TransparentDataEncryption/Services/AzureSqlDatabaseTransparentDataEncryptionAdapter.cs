@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model;
 using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model;
 using Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Services;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -115,13 +115,13 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
         }
 
         /// <summary>
-        /// Convert a Management.Sql.Models.TransparentDataEncryption to AzureSqlDatabaseTransparentDataEncryptionModel
+        /// Convert a Management.Sql.LegacySdk.Models.TransparentDataEncryption to AzureSqlDatabaseTransparentDataEncryptionModel
         /// </summary>
         /// <param name="resourceGroup">The resource group the server is in</param>
         /// <param name="serverName">The name of the server</param>
         /// <param name="resp">The management client server response to convert</param>
         /// <returns>The converted server model</returns>
-        private static AzureSqlDatabaseTransparentDataEncryptionModel CreateTransparentDataEncryptionModelFromResponse(string resourceGroup, string serverName, string databaseName, Management.Sql.Models.TransparentDataEncryption resp)
+        private static AzureSqlDatabaseTransparentDataEncryptionModel CreateTransparentDataEncryptionModelFromResponse(string resourceGroup, string serverName, string databaseName, Management.Sql.LegacySdk.Models.TransparentDataEncryption resp)
         {
             AzureSqlDatabaseTransparentDataEncryptionModel TransparentDataEncryption = new AzureSqlDatabaseTransparentDataEncryptionModel();
 
@@ -137,13 +137,13 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
         }
 
         /// <summary>
-        /// Convert a Management.Sql.Models.TransparentDataEncryption to AzureSqlDatabaseTransparentDataEncryptionModel
+        /// Convert a Management.Sql.LegacySdk.Models.TransparentDataEncryption to AzureSqlDatabaseTransparentDataEncryptionModel
         /// </summary>
         /// <param name="resourceGroup">The resource group the server is in</param>
         /// <param name="serverName">The name of the server</param>
         /// <param name="resp">The management client server response to convert</param>
         /// <returns>The converted server model</returns>
-        private static AzureSqlDatabaseTransparentDataEncryptionActivityModel CreateTransparentDataEncryptionActivityModelFromResponse(string resourceGroup, string serverName, string databaseName, Management.Sql.Models.TransparentDataEncryptionActivity resp)
+        private static AzureSqlDatabaseTransparentDataEncryptionActivityModel CreateTransparentDataEncryptionActivityModelFromResponse(string resourceGroup, string serverName, string databaseName, Management.Sql.LegacySdk.Models.TransparentDataEncryptionActivity resp)
         {
             AzureSqlDatabaseTransparentDataEncryptionActivityModel TransparentDataEncryptionActivity = new AzureSqlDatabaseTransparentDataEncryptionActivityModel();
 
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
         }
 
         /// <summary>
-        /// Convert a Management.Sql.Models.TransparentDataEncryption.EncryptionProtector to AzureSqlServerTransparentDataEncryptionProtectorModel
+        /// Convert a Management.Sql.LegacySdk.Models.TransparentDataEncryption.EncryptionProtector to AzureSqlServerTransparentDataEncryptionProtectorModel
         /// </summary>
         /// <param name="resourceGroup">The resource group the server is in</param>
         /// <param name="serverName">The name of the server</param>

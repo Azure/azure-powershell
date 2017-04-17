@@ -416,6 +416,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var subResults = new List<IAzureSubscription>(client.ListSubscriptions());
             Assert.Equal(2, subResults.Count);
             IAzureSubscription subValue;
+
             Assert.False(client.TryGetSubscriptionById(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
             Assert.False(client.TryGetSubscriptionByName("random-tenant", "random-subscription", out subValue));
         }
@@ -556,7 +557,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.True(commandRuntimeMock.OutputPipeline.Count == 1);
 
             // Make sure we can get a subscription from the second page of the second tenant by subscription Id
-            var resultSubscription = (PSAzureSubscription)commandRuntimeMock.OutputPipeline[0];
+
             Assert.Equal(secondTenantSubscriptions[2], resultSubscription.Id);
             Assert.Equal(tenants[1], resultSubscription.TenantId);
         }
@@ -812,6 +813,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.Equal(new byte[] { 1, 2, 3, 4, 5, 6, 8, 9, 0 }, profile.DefaultContext.TokenCache.CacheData);
             Assert.Equal(path, profile.ProfilePath);
         }
+
         private class MockPage<T> : IPage<T>
         {
             public MockPage(IList<T> Items)

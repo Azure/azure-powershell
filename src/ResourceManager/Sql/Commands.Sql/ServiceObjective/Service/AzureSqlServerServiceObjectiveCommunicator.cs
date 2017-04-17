@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Sql;
+using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.WindowsAzure.Management.Storage;
 using System;
 using System.Collections.Generic;
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Services
         /// <summary>
         /// Gets the Azure Sql Database Server ServiceObjective
         /// </summary>
-        public Management.Sql.Models.ServiceObjective Get(string resourceGroupName, string serverName, string serviceObjectiveName, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.ServiceObjective Get(string resourceGroupName, string serverName, string serviceObjectiveName, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).ServiceObjectives.Get(resourceGroupName, serverName, serviceObjectiveName).ServiceObjective;
         }
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Services
         /// <summary>
         /// Lists Azure Sql Databases Server ServiceObjective
         /// </summary>
-        public IList<Management.Sql.Models.ServiceObjective> List(string resourceGroupName, string serverName, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.ServiceObjective> List(string resourceGroupName, string serverName, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).ServiceObjectives.List(resourceGroupName, serverName).ServiceObjectives;
         }

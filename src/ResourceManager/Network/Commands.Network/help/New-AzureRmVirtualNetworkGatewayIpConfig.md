@@ -8,6 +8,7 @@ schema: 2.0.0
 # New-AzureRmVirtualNetworkGatewayIpConfig
 
 ## SYNOPSIS
+Creates an IP Configuration for a Virtual Network Gateway
 
 ## SYNTAX
 
@@ -26,13 +27,15 @@ New-AzureRmVirtualNetworkGatewayIpConfig -Name <String> [-PrivateIpAddress <Stri
 ```
 
 ## DESCRIPTION
+The **New-AzureRmVirtualNetworkGatewayIpConfig** cmdlet creates a configuration assigned to a Virtual Network Gateway with a (previously created) Public IP Address based on Subnet ID.
 
 ## EXAMPLES
 
-### 1:
+### 1: Create an IP Configuration for a Virtual Network Gateway
 ```
-
+$gwIpConfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name myGWIpConfig -SubnetId $myGWsubnet.Id -PublicIpAddressId $myGWpip.Id
 ```
+Configures a Virtual Network Gateway with a Public IP Address. The variable $myGWsubnet is obtained using the **Get-AzureRmVirtualNetworkSubnetConfig** cmdlet on the "GatewaySubnet" within the Virtual Network you intend to create a Virtual Network Gateway. The variable $myGWpip is obtained using the **New-AzureRmPublicIpAddress** cmdlet.
 
 ## PARAMETERS
 

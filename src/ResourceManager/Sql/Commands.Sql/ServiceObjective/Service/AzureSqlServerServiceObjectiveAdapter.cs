@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -78,13 +78,13 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Adapter
         }
 
         /// <summary>
-        /// Convert a Management.Sql.Models.ServiceObjective to AzureSqlDatabaseServerServiceObjectiveModel
+        /// Convert a Management.Sql.LegacySdk.Models.ServiceObjective to AzureSqlDatabaseServerServiceObjectiveModel
         /// </summary>
         /// <param name="resourceGroupName">The resource group the server is in</param>
         /// <param name="serverName">The name of the server</param>
         /// <param name="resp">The management client ServiceObjective response to convert</param>
         /// <returns>The converted ServiceObjective model</returns>
-        private static AzureSqlServerServiceObjectiveModel CreateServiceObjectiveModelFromResponse(string resourceGroupName, string serverName, Management.Sql.Models.ServiceObjective resp)
+        private static AzureSqlServerServiceObjectiveModel CreateServiceObjectiveModelFromResponse(string resourceGroupName, string serverName, Management.Sql.LegacySdk.Models.ServiceObjective resp)
         {
             AzureSqlServerServiceObjectiveModel slo = new AzureSqlServerServiceObjectiveModel();
 

@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Name of API Management.")]
+            HelpMessage = "Name of the API Management instance that will be restored with this backup.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,8 +17,8 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Model;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
 using System.Collections.Generic;
 
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Sql.Service
         /// <returns>List of all recommended indexes for specified server</returns>
         public List<IndexRecommendation> ListRecommendedIndexes(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
         {
-            var databases = new List<Management.Sql.Models.Database>();
+            var databases = new List<Management.Sql.LegacySdk.Models.Database>();
 
             var recommendedIndexes = new List<IndexRecommendation>();
             if (string.IsNullOrEmpty(databaseName))

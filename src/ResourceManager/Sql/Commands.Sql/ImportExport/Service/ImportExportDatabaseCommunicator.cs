@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,8 +16,8 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Services
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <summary>
         /// Creates new export request
         /// </summary>
-        public Management.Sql.Models.ImportExportResponse Export(string resourceGroupName, string serverName, string databaseName, ExportRequestParameters parameters, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.ImportExportResponse Export(string resourceGroupName, string serverName, string databaseName, ExportRequestParameters parameters, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).ImportExport.Export(resourceGroupName, serverName, databaseName, parameters);
         }
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <summary>
         /// Creates new import request
         /// </summary>
-        public Management.Sql.Models.ImportExportResponse Import(string resourceGroupName, string serverName, ImportRequestParameters parameters, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.ImportExportResponse Import(string resourceGroupName, string serverName, ImportRequestParameters parameters, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).ImportExport.Import(resourceGroupName, serverName, parameters);
         }
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <summary>
         /// Gets the status of an import/export operations
         /// </summary>
-        public Management.Sql.Models.ImportExportOperationStatusResponse GetStatus(string operationStatusLink, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.ImportExportOperationStatusResponse GetStatus(string operationStatusLink, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).ImportExport.GetImportExportOperationStatus(operationStatusLink);
         }

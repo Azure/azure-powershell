@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Management.Sql;
+using Microsoft.Azure.Management.Sql.LegacySdk;
 using System;
 
 namespace Microsoft.Azure.Commands.Sql.DatabaseActivation.Services
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Sql.DatabaseActivation.Services
         /// <summary>
         /// Pause a Azure SQL Data Warehouse database.
         /// </summary>
-        public Management.Sql.Models.Database Pause(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.Database Pause(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).DatabaseActivation.Pause(resourceGroupName, serverName, databaseName).Database;
         }
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Sql.DatabaseActivation.Services
         /// <summary>
         /// Resume a Azure SQL Data Warehouse database.
         /// </summary>
-        public Management.Sql.Models.Database Resume(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.Database Resume(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).DatabaseActivation.Resume(resourceGroupName, serverName, databaseName).Database;
         }

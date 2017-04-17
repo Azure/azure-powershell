@@ -91,6 +91,9 @@
     <Reference Include="Microsoft.WindowsAzure.Management">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management.RecoveryServicesVaultUpgrade, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServicesVaultUpgrade.1.0.0-preview\lib\net40\Microsoft.WindowsAzure.Management.RecoveryServicesVaultUpgrade.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.SiteRecovery, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.0.5.1-preview\lib\net40\Microsoft.WindowsAzure.Management.SiteRecovery.dll</HintPath>
@@ -132,6 +135,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="lib\PSVaultUpgradeObjects.cs" />
     <Compile Include="lib\PSStorageObjects.cs" />
     <Compile Include="lib\PSNetworkObjects.cs" />
     <Compile Include="lib\CertUtils.cs" />
@@ -148,6 +152,7 @@
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesCloudServiceClient.cs" />
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesProtectionProfileClient.cs" />
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesClientHelper.cs" />
+    <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesVaultUpgradeClient.cs" />
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesSiteClient.cs" />
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesStorageClient.cs" />
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesStorageMappingClient.cs" />
@@ -171,6 +176,8 @@
     <Compile Include="Service\NewAzureSiteRecoverySite.cs" />
     <Compile Include="Service\GetAzureSiteRecoverySite.cs" />
     <Compile Include="Service\SetAzureSiteRecoveryVM.cs" />
+    <Compile Include="Service\TestAzureRecoveryServicesVaultUpgrade.cs" />
+    <Compile Include="Service\InvokeAzureRecoveryServicesVaultUpgrade.cs" />
     <Compile Include="Service\StartAzureSiteRecoveryProtectionProfileAssociationJob.cs" />
     <Compile Include="Service\CreateAzureSiteRecoveryProtectionProfileObject.cs" />
     <Compile Include="Service\NewAzureSiteRecoveryVault.cs" />
