@@ -224,8 +224,23 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 foreach (var vm in vms)
                 {
                     //TODO
-                    var ext = vm.VirtualMachineProfile.ExtensionProfile.Extensions.FirstOrDefault(e =>
-                    string.Equals(e.Type, "ServiceFabricNode", StringComparison.InvariantCultureIgnoreCase));
+                    var ext = vm.VirtualMachineProfile.ExtensionProfile.Extensions.FirstOrDefault(
+                        e =>
+                        string.Equals(
+                            e.Type, 
+                            Constants.ServiceFabricWindowsNodeExtName, 
+                            StringComparison.OrdinalIgnoreCase));
+
+                    if (ext == null)
+                    {
+                        ext = vm.VirtualMachineProfile.ExtensionProfile.Extensions.FirstOrDefault(
+                            e =>
+                            string.Equals(
+                                e.Type, 
+                                Constants.ServiceFabricLinuxNodeExtName, 
+                                StringComparison.OrdinalIgnoreCase));
+                    }
+
                     if (ext != null)
                     {
                         fabircExtension = ext;
