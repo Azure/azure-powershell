@@ -176,6 +176,8 @@
   <!-- Build all flavors of the Cmdlets -->
   <Target Name="Build" DependsOnTargets="RestoreNugetPackages;BuildMsBuildTask">
     <Message Importance="high" Text="Building Cmdlets..." />
+
+    <Exec Command="$(PowerShellCommand) -NonInteractive -NoLogo -NoProfile -Command &quot; . $(LibraryToolsFolder)\CreateMappings.ps1 -RootPath $(LibrarySourceFolder) -OutputFile $(PackageDirectory)\groupMapping.json -WarningFile $(PackageDirectory)\groupMappingWarnings.json -RulesFile $(LibraryToolsFolder)\CreateMappings_rules.json &quot;"/>
 	
     <MSBuild
       Projects="@(CmdletSolutionsToBuild)"
