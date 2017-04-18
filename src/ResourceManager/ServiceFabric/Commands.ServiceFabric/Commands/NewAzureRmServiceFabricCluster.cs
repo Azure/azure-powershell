@@ -188,14 +188,16 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             var deploymentName = GenerateDeploymentName();
             var deployment = CreateBasicDeployment(this.Mode, null);
 
-            this.vmUserName = ((JObject)deployment.Properties.Parameters)["adminUserName"]["value"].ToString();
-
             GetClusterNameAndLocation((JObject)deployment.Properties.Template, out clusterName, out location);
             if (IsARMParameter(ref clusterName))
             {
                 this.ClusterName = ParseParameter(
                      (JObject)deployment.Properties.Parameters,
                      clusterName);
+            }
+            else
+            {
+                this.ClusterName = clusterName;
             }
 
             if (IsARMParameter(ref location))
@@ -204,17 +206,33 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     (JObject)deployment.Properties.Parameters,
                     location);
             }
+            else
+            {
+                this.resourceLocation = location;
+            }
 
             var certInformation = GetOrCreateCertificateInformation();
-
+            string adminUserName;
             deployment.Properties.Template = ReplaceTemplate(
                 (JObject)deployment.Properties.Template,
                 certInformation.Thumbprint,
                 null,
                 certInformation.KeyVault.Id,
                 certInformation.SecretUrl,
-                null
+                null,
+                out adminUserName
                 );
+
+            if (IsARMParameter(ref adminUserName))
+            {
+                this.vmUserName = ParseParameter(
+                    (JObject)deployment.Properties.Parameters,
+                    adminUserName);
+            }
+            else
+            {
+                this.vmUserName = adminUserName;
+            }
 
             if (deployment.Properties.Template == null)
             {
@@ -309,13 +327,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             var certInformation = GetOrCreateCertificateInformation();
 
+            string adminUserName;
             deployment.Properties.Template = ReplaceTemplate(
                 (JObject)deployment.Properties.Template,
                 certInformation.Thumbprint,
                 null,
                 certInformation.KeyVault.Id,
                 certInformation.SecretUrl,
-                null
+                null,
+                out adminUserName
                 );
 
             var validateResult = ResourceManagerClient.Deployments.Validate(
@@ -361,7 +381,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
 
             if (parameter.IndexOf('[') == -1 ||
-                parameter.IndexOf("parameters", StringComparison.InvariantCultureIgnoreCase) == -1)
+                parameter.IndexOf("parameters", StringComparison.OrdinalIgnoreCase) == -1)
             {
                 return false;
             }
@@ -436,7 +456,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             string secondaryCertificateThumbprint,
             string sourceVaultValue,
             string certificateUrl,
-            string secondaryCertificateUrl
+            string secondaryCertificateUrl,
+            out string adminUsernameParameterName
             )
         {
             if (string.IsNullOrEmpty(certificateThumbprint) ||
@@ -445,7 +466,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 throw new Exception();
             }
-
+            adminUsernameParameterName = string.Empty;
             var resources = template["resources"];
             if (resources != null)
             {
@@ -463,10 +484,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                             Constants.VirtualMachineScaleSetsType,
                             StringComparison.OrdinalIgnoreCase) == 0)
                         {
-                            var extensions = item["properties"]
-                                                  ["virtualMachineProfile"]
-                                                  ["extensionProfile"]
-                                                  ["extensions"];
+                            var extensions = item["properties"]["virtualMachineProfile"]["extensionProfile"]["extensions"];
 
                             //Windows extention
                             var extension = extensions.Children().First(e => string.Compare(
@@ -505,10 +523,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                                 }
                             }
 
-                            var secrets = item["properties"]
-                                              ["virtualMachineProfile"]
-                                              ["osProfile"]
-                                              ["secrets"].First();
+                            adminUsernameParameterName = item["properties"]["virtualMachineProfile"]["osProfile"]["adminUsername"].ToString();
+                            var secrets = item["properties"]["virtualMachineProfile"]["osProfile"]["secrets"].First();
 
                             var sourceVault = secrets["sourceVault"];
                             sourceVault["id"] = sourceVaultValue;
@@ -599,8 +615,18 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private string ParseParameter(JObject parameters, string propertyName)
         {
-            var valueStr = parameters[propertyName]["value"].ToString().Trim();
-            var singleOrDefault = valueStr.Split('\"').SingleOrDefault(v => !string.IsNullOrWhiteSpace(v));
+            var valueProperty = parameters.Children().SingleOrDefault(p => ((JProperty) p).Name.Equals(
+                                                                      propertyName, 
+                                                                      StringComparison.OrdinalIgnoreCase));
+           
+            if (valueProperty == null || valueProperty.First == null || valueProperty.First["value"] == null)
+            {
+                throw new PSInvalidOperationException(string.Format("Failed to find {0}", propertyName));
+            }
+
+            var value = valueProperty.First["value"];
+            var valueStr = value.ToString().Trim();
+            var singleOrDefault = valueStr.Replace("\"","");
             return singleOrDefault?.Trim();
         }
 
