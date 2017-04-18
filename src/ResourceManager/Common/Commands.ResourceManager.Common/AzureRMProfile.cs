@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             }
         }
 
-        [JsonConverter(typeof(AzureRmProfileConverter))]
+        [JsonIgnore]
         public IEnumerable<IAzureSubscription> Subscriptions
         {
             get
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             }
         }
 
-        [JsonConverter(typeof(AzureRmProfileConverter))]
+        [JsonIgnore]
         public IEnumerable<IAzureAccount> Accounts
         {
             get
@@ -82,6 +82,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
+        [JsonIgnore]
         public ICollection<string> Keys
         {
             get
@@ -99,6 +100,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             }
         }
 
+        [JsonIgnore]
         public int Count
         {
             get
@@ -107,6 +109,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             }
         }
 
+        [JsonIgnore]
         public bool IsReadOnly
         {
             get

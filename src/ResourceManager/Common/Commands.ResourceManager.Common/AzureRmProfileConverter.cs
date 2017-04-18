@@ -12,48 +12,82 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
     public class AzureRmProfileConverter : JsonConverter
     {
-        public override bool CanWrite => false;
+        public override bool CanWrite => true;
         public override bool CanRead => true;
         public override bool CanConvert(Type objectType)
         {
             return objectType == typeof(IAzureContext) 
                 || objectType == typeof(IAzureAccount) 
-                || objectType == typeof(IAzureSubscription) 
+                || objectType == typeof(IAzureSubscription)
+                || objectType == typeof(IAzureEnvironment)
                 || objectType == typeof(IAzureTenant) 
-                || objectType == typeof(IAzureTokenCache);
+                || objectType == typeof(IAzureTokenCache)
+                || objectType == typeof(AzureTokenCache) 
+                || objectType == typeof(ProtectedFileTokenCache)
+                || objectType == typeof(AuthenticationStoreTokenCache);
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            if (objectType is IAzureContext)
+            if (objectType == typeof(IAzureContext))
             {
                 return serializer.Deserialize<AzureContext>(reader);
             }
-            else if (objectType is IAzureAccount)
+            else if (objectType == typeof(IAzureAccount))
             {
                 return serializer.Deserialize<AzureAccount>(reader);
             }
-            else if (objectType is IAzureSubscription)
+            else if (objectType  == typeof(IAzureSubscription))
             {
                 return serializer.Deserialize<AzureSubscription>(reader);
             }
-            else if (objectType is IAzureTenant)
+            else if (objectType == typeof(IAzureTenant))
             {
                 return serializer.Deserialize<AzureTenant>(reader);
             }
-            else if (objectType is IAzureTokenCache)
+            else if (objectType == typeof(IAzureEnvironment))
             {
-                return serializer.Deserialize<AzureTokenCache>(reader);
+                return serializer.Deserialize<AzureEnvironment>(reader);
+            }
+            else if (objectType == typeof(IAzureTokenCache))
+            {
+                var tempResult = serializer.Deserialize<byte[]>(reader);
+                return new AzureTokenCache { CacheData = tempResult };
+            }
+            else if (objectType == typeof(Dictionary<string, IAzureEnvironment>))
+            {
+                var tempResult = serializer.Deserialize<Dictionary<string, AzureEnvironment>>(reader);
+                var result = new Dictionary<string, IAzureEnvironment>(StringComparer.OrdinalIgnoreCase);
+                foreach (var key in tempResult.Keys)
+                {
+                    result[key] = tempResult[key];
+                }
+
+                return result;
+            }
+            else if (objectType == typeof(Dictionary<string, IAzureContext>))
+            {
+                var tempResult = serializer.Deserialize<Dictionary<string, AzureContext>>(reader);
+                var result = new Dictionary<string, IAzureContext>(StringComparer.OrdinalIgnoreCase);
+                foreach (var key in tempResult.Keys)
+                {
+                    result[key] = tempResult[key];
+                }
+
+                return result;
             }
 
             return serializer.Deserialize(reader);
@@ -61,7 +95,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            throw new NotImplementedException();
+            IAzureTokenCache cache = value as IAzureTokenCache;
+            if (cache != null)
+            {
+                value = new AzureTokenCache { CacheData = cache.CacheData };
+            }
+
+            serializer.Serialize(writer, value);
         }
     }
 }

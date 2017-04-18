@@ -19,6 +19,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using System.Linq;
 using System;
+using System.Text;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Adapters
 {
@@ -94,6 +95,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Adapters
         /// <returns>A CloudStorageAccount client for storage data plane tasks</returns>
         public static CloudStorageAccount GetCloudStorageAccount(this IStorageServiceProvider provider, string accountName, string resourceGroupName = null)
         {
+#if DEBUG
+            if  (TestMockSupport.RunningMocked)
+           {
+                return new CloudStorageAccount(new StorageCredentials(accountName,
+                    Convert.ToBase64String(Encoding.UTF8.GetBytes(Guid.NewGuid().ToString()))), true);
+           }
+#endif
             return provider.GetStorageService(accountName, resourceGroupName).GetCloudStorageAccount();
         }
 

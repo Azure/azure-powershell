@@ -1,10 +1,3 @@
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-extern alias MicrosoftAzureCommandsResources;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Model;
-using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Management.Sql.LegacySdk.Models;
-using MicrosoftAzureCommandsResources::Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 // ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
@@ -19,6 +12,12 @@ using MicrosoftAzureCommandsResources::Microsoft.Azure.Commands.Resources.Models
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+extern alias MicrosoftAzureCommandsResources;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Model;
+using Microsoft.Azure.Commands.Sql.Services;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
+using MicrosoftAzureCommandsResources::Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -557,7 +557,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.True(commandRuntimeMock.OutputPipeline.Count == 1);
 
             // Make sure we can get a subscription from the second page of the second tenant by subscription Id
-
+            var resultSubscription = (PSAzureSubscription)commandRuntimeMock.OutputPipeline[0];
             Assert.Equal(secondTenantSubscriptions[2], resultSubscription.Id);
             Assert.Equal(tenants[1], resultSubscription.TenantId);
         }
