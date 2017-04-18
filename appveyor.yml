@@ -2,61 +2,30 @@ branches:
   only:
     - master
 environment:
+  nodejs_version: "6"
   github_access_token:
     secure: VMFbecLLHzDq/09YDPbcM0VDDSwwgY57vr5GXK6cZZ4Ti/Xs5RZoylzV8MMr1350
 
-build_script:
-  - ps: |
-      $ErrorActionPreference = "Stop"
-      $response = Invoke-WebRequest ("https://api.github.com/repos/" + $env:APPVEYOR_REPO_NAME + "/releases/latest") -Timeout 10
-      if($response -ne $null -and $response.StatusCode -ne 200)
-      {
-        $host.SetShouldExit(1)
-      }
-
-      $unzip_path = "C:\projects\release"
-      $unzip_file = $unzip_path + "zip"
-      Invoke-WebRequest ($response.Content | ConvertFrom-Json).zipball_url -OutFile $unzip_file
-      7z x $unzip_file -o"$unzip_path"
-      $src = Join-Path (ls $unzip_path -dir | select -First 1 | % { $_.FullName }) "src"
-      $global:output = Join-Path $unzip_path "output"
-      ni $global:output -type dir
-      $pattern = "\d(.\d)*"
-
-      foreach($folder in (ls $src -dir))
-      {
-        foreach($module in (ls $folder.FullName -dir | % { $_.FullName }))
-        {
-          # find out docs in help folder and version in .psd1 file 
-          $help = ls $module -dir -Recurse | ? { $_.Name -eq "help" } | select -First 1 | % { $_.FullName }
-          if($help -eq $null)
-          {
-            continue
-          }
-          $psd1= ls $module | ? { $_.extension -eq ".psd1" } | select -First 1 | % { $_.FullName }
-          if($psd1 -eq $null)
-          {
-            continue
-          }
-          if((gc $psd1 | Out-String) -notmatch "ModuleVersion\s*=\s*'$pattern'")
-          {
-            continue
-          }
-          if($matches[0] -match $pattern)
-          {
-            robocopy $help "*.md" (Join-Path $global:output $folder | Join-Path -ChildPath (gi $psd1).BaseName | Join-Path -ChildPath ("v" + $matches[0]))
-          }
-        }
-      }
-test: off
-shallow_clone: true
-on_success:
+before_build:
+  - set path=%programfiles(x86)%\Microsoft SDKs\TypeScript\2.2;%path%
+  - ps: Install-Product node $env:nodejs_version
   - git config --global credential.helper store
   - ps: ac "$env:USERPROFILE\.git-credentials" "https://$($env:github_access_token):x-oauth-basic@github.com`n"
   - git config --global user.email %email%
   - git config --global user.name %name%
+  - git clone -q https://github.com/MicrosoftDocs/azure-psdocs-ciscripts azpsci
+  - cd azpsci
+  - npm install
+  - npm install -g typescript
+  - tsc
+  - cd ..
+build_script:
+  - node azpsci/out/ci0.js src c:\projects\_output
+
+test: off
+on_success:
   - git clone -q --branch=%target_branch% %content_repo% %TEMP%\Azure
   - cd %TEMP%\Azure
-  - ps: ls $global:output -dir | % { copy $_.FullName (ls -dir | select -First 1) -Recurse -Force }
+  - ps: ls c:\projects\_output -dir | % { copy $_.FullName (ls -dir | select -First 1) -Recurse -Force }
   - git add -A
   - git diff --quiet --exit-code --cached || git commit -m "Sync docs from source code repo to content repo." && git push origin %target_branch% && appveyor AddMessage "Content Updated"
