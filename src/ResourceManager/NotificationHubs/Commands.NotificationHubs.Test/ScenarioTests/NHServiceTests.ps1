@@ -481,6 +481,12 @@ function Test-CRUDNotificationHub
     Assert-AreEqual  $createdNotificationHub.WnsCredential.SecretKey $pnsCredentials.WnsCredential.SecretKey
     Assert-AreEqual  $createdNotificationHub.WnsCredential.WindowsLiveEndpoint $pnsCredentials.WnsCredential.WindowsLiveEndpoint
 
+	#Test NotificationHub creation with tags as null
+	$result = New-AzureRmNotificationHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -InputFile .\Resources\NewNotificationHubNoTags.json
+	$createdNotificationHub = Get-AzureRmNotificationHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -NotificationHub $notificationHubName
+    Assert-True {$createdNotificationHub.Count -eq 1}
+
+
     Write-Debug " Delete the NotificationHub"
     $delete1 = Remove-AzureRmNotificationHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -NotificationHub $notificationHubName -Force
     $delete2 = Remove-AzureRmNotificationHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -NotificationHub $notificationHubName2 -Force
