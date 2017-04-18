@@ -203,3 +203,4 @@ FakesAssemblies/
 /tools/*.dll
 *.GhostDoc.xml
 pingme.txt
+groupMapping*.json
