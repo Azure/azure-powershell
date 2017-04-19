@@ -30873,7 +30873,7 @@
           "ValidateNotNullOrEmpty": true
         },
         {
-          "Name": "ChefServiceInterval",
+          "Name": "ChefDaemonInterval",
           "AliasList": [],
           "Type": {
             "Namespace": "System",
@@ -31264,7 +31264,7 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "ChefServiceInterval",
+                "Name": "ChefDaemonInterval",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
@@ -31716,7 +31716,7 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "ChefServiceInterval",
+                "Name": "ChefDaemonInterval",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
@@ -32168,7 +32168,7 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "ChefServiceInterval",
+                "Name": "ChefDaemonInterval",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
