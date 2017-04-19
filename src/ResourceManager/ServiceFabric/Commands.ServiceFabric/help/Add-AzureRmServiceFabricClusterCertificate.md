@@ -266,6 +266,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Remove-AzureRmServiceFabricClusterCertificate](./[Remove-AzureRmServiceFabricClusterCertificate.md)
+[Remove-AzureRmServiceFabricClusterCertificate](./Remove-AzureRmServiceFabricClusterCertificate.md)
 [New-AzureRmServiceFabricCluster](./New-AzureRmServiceFabricCluster.md)
 [Add-AzureRmServiceFabricApplicationCertificate](./Add-AzureRmServiceFabricApplicationCertificate.md)
