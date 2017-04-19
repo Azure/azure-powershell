@@ -43,6 +43,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     public class ServiceFabricCmdletBase : AzureRMCmdlet
     {
+        private const int NewCreatedKeyVaultWaitTimeInSec = 15;
+
         /// <summary>
         /// Resource group name
         /// </summary>
@@ -333,6 +335,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 resouceGroupName,
                 vaultName,
                 keyVaultParameter);
+
+            System.Threading.Thread.Sleep(TimeSpan.FromSeconds(NewCreatedKeyVaultWaitTimeInSec));
 
             if (accessPolicy == null)
             {
