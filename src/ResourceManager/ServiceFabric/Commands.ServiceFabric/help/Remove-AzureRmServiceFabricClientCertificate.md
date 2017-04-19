@@ -179,4 +179,4 @@ System.Boolean
 
 ## RELATED LINKS
 
-[Add-AzureRmServiceFabricClientCertificate](./[Add-AzureRmServiceFabricClientCertificate.md)
+[Add-AzureRmServiceFabricClientCertificate](./Add-AzureRmServiceFabricClientCertificate.md)
