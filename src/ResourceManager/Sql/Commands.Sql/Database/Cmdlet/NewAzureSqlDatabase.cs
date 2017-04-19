@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmSqlDatabase", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.Low)]
-    public class NewAzureSqlDatabase : AzureSqlDatabaseCmdletBase
+    public class NewAzureSqlDatabase : AzureSqlDatabaseCmdletBase<AzureSqlDatabaseCreateOrUpdateModel>
     {
         /// <summary>
         /// Gets or sets the name of the database to create.
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
-        protected override IEnumerable<AzureSqlDatabaseModel> GetEntity()
+        protected override AzureSqlDatabaseCreateOrUpdateModel GetEntity()
         {
             // We try to get the database.  Since this is a create, we don't want the database to exist
             try
@@ -158,27 +158,28 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// </summary>
         /// <param name="model">Model retrieved from service</param>
         /// <returns>The model that was passed in</returns>
-        protected override IEnumerable<AzureSqlDatabaseModel> ApplyUserInputToModel(IEnumerable<AzureSqlDatabaseModel> model)
+        protected override AzureSqlDatabaseCreateOrUpdateModel ApplyUserInputToModel(AzureSqlDatabaseCreateOrUpdateModel model)
         {
             string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
-            List<Model.AzureSqlDatabaseModel> newEntity = new List<AzureSqlDatabaseModel>();
-            newEntity.Add(new AzureSqlDatabaseModel()
+            return new AzureSqlDatabaseCreateOrUpdateModel
             {
-                Location = location,
-                ResourceGroupName = ResourceGroupName,
-                ServerName = ServerName,
-                CatalogCollation = CatalogCollation,
-                CollationName = CollationName,
-                DatabaseName = DatabaseName,
-                Edition = Edition,
-                MaxSizeBytes = MaxSizeBytes,
-                RequestedServiceObjectiveName = RequestedServiceObjectiveName,
-                Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
-                ElasticPoolName = ElasticPoolName,
-                ReadScale = ReadScale,
+                Database = new AzureSqlDatabaseModel()
+                {
+                    Location = location,
+                    ResourceGroupName = ResourceGroupName,
+                    ServerName = ServerName,
+                    CatalogCollation = CatalogCollation,
+                    CollationName = CollationName,
+                    DatabaseName = DatabaseName,
+                    Edition = Edition,
+                    MaxSizeBytes = MaxSizeBytes,
+                    RequestedServiceObjectiveName = RequestedServiceObjectiveName,
+                    Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
+                    ElasticPoolName = ElasticPoolName,
+                    ReadScale = ReadScale
+                },
                 SampleName = SampleName
-            });
-            return newEntity;
+            };
         }
 
         /// <summary>
@@ -186,11 +187,21 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// </summary>
         /// <param name="entity">The output of apply user input to model</param>
         /// <returns>The input entity</returns>
-        protected override IEnumerable<AzureSqlDatabaseModel> PersistChanges(IEnumerable<AzureSqlDatabaseModel> entity)
+        protected override AzureSqlDatabaseCreateOrUpdateModel PersistChanges(AzureSqlDatabaseCreateOrUpdateModel entity)
         {
-            return new List<AzureSqlDatabaseModel>() {
-                ModelAdapter.UpsertDatabase(this.ResourceGroupName, this.ServerName, entity.First())
+            return new AzureSqlDatabaseCreateOrUpdateModel
+            {
+                Database = ModelAdapter.UpsertDatabase(this.ResourceGroupName, this.ServerName, entity)
             };
+        }
+
+        /// <summary>
+        /// Strips away the create or update properties from the model so that just the regular properties
+        /// are written to cmdlet output.
+        /// </summary>
+        protected override object TransformModelToOutputObject(AzureSqlDatabaseCreateOrUpdateModel model)
+        {
+            return model.Database;
         }
     }
 }
