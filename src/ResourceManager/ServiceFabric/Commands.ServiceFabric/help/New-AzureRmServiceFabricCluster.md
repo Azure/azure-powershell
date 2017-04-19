@@ -385,6 +385,6 @@ Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode
 
 ## RELATED LINKS
 
-[Get-AzureRmServiceFabricCluster](./[Get-AzureRmServiceFabricCluster.md)
+[Get-AzureRmServiceFabricCluster](./Get-AzureRmServiceFabricCluster.md)
 [Add-AzureRmServiceFabricClusterCertificate](./Add-AzureRmServiceFabricClusterCertificate.md)
 [Add-AzureRmServiceFabricApplicationCertificate](./Add-AzureRmServiceFabricApplicationCertificate.md)

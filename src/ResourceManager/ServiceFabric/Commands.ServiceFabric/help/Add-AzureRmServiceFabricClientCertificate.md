@@ -194,4 +194,4 @@ System.Boolean
 
 ## RELATED LINKS
 
-[Remove-AzureRmServiceFabricClientCertificate](./[Remove-AzureRmServiceFabricClientCertificate.md)
+[Remove-AzureRmServiceFabricClientCertificate](./Remove-AzureRmServiceFabricClientCertificate.md)
