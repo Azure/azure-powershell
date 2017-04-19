@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <param name="serverName">The name of the Azure Sql Database Server</param>
         /// <param name="model">The input parameters for the create/update operation</param>
         /// <returns>The upserted Azure Sql Database</returns>
-        internal AzureSqlDatabaseModel UpsertDatabase(string resourceGroup, string serverName, AzureSqlDatabaseModel model)
+        internal AzureSqlDatabaseModel UpsertDatabase(string resourceGroup, string serverName, AzureSqlDatabaseCreateOrUpdateModel model)
         {
             // Use AutoRest or Hyak SDK depending on model parameters.
             // This is done because we want to add support for -SampleName, which is only supported by AutoRest SDK.
@@ -140,17 +140,17 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             if (!string.IsNullOrEmpty(model.SampleName))
             {
                 // Use AutoRest SDK
-                var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, model.DatabaseName, Util.GenerateTracingId(), new Management.Sql.Models.Database
+                var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, model.Database.DatabaseName, Util.GenerateTracingId(), new Management.Sql.Models.Database
                 {
-                    Location = model.Location,
-                    Tags = model.Tags,
-                    Collation = model.CollationName,
-                    Edition = model.Edition == DatabaseEdition.None ? null : model.Edition.ToString(),
-                    MaxSizeBytes = model.MaxSizeBytes.ToString(),
-                    RequestedServiceObjectiveId = model.RequestedServiceObjectiveId,
-                    ElasticPoolName = model.ElasticPoolName,
-                    RequestedServiceObjectiveName = model.RequestedServiceObjectiveName,
-                    ReadScale = (ReadScale)Enum.Parse(typeof(ReadScale), model.ReadScale.ToString()),
+                    Location = model.Database.Location,
+                    Tags = model.Database.Tags,
+                    Collation = model.Database.CollationName,
+                    Edition = model.Database.Edition == DatabaseEdition.None ? null : model.Database.Edition.ToString(),
+                    MaxSizeBytes = model.Database.MaxSizeBytes.ToString(),
+                    RequestedServiceObjectiveId = model.Database.RequestedServiceObjectiveId,
+                    ElasticPoolName = model.Database.ElasticPoolName,
+                    RequestedServiceObjectiveName = model.Database.RequestedServiceObjectiveName,
+                    ReadScale = (ReadScale)Enum.Parse(typeof(ReadScale), model.Database.ReadScale.ToString()),
                     SampleName = model.SampleName
                 });
 
@@ -159,19 +159,19 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             else
             {
                 // Use Hyak SDK
-                var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, model.DatabaseName, Util.GenerateTracingId(), new DatabaseCreateOrUpdateParameters
+                var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, model.Database.DatabaseName, Util.GenerateTracingId(), new DatabaseCreateOrUpdateParameters
                 {
-                    Location = model.Location,
-                    Tags = model.Tags,
+                    Location = model.Database.Location,
+                    Tags = model.Database.Tags,
                     Properties = new DatabaseCreateOrUpdateProperties()
                     {
-                        Collation = model.CollationName,
-                        Edition = model.Edition == DatabaseEdition.None ? null : model.Edition.ToString(),
-                        MaxSizeBytes = model.MaxSizeBytes,
-                        RequestedServiceObjectiveId = model.RequestedServiceObjectiveId,
-                        ElasticPoolName = model.ElasticPoolName,
-                        RequestedServiceObjectiveName = model.RequestedServiceObjectiveName,
-                        ReadScale = model.ReadScale.ToString(),
+                        Collation = model.Database.CollationName,
+                        Edition = model.Database.Edition == DatabaseEdition.None ? null : model.Database.Edition.ToString(),
+                        MaxSizeBytes = model.Database.MaxSizeBytes,
+                        RequestedServiceObjectiveId = model.Database.RequestedServiceObjectiveId,
+                        ElasticPoolName = model.Database.ElasticPoolName,
+                        RequestedServiceObjectiveName = model.Database.RequestedServiceObjectiveName,
+                        ReadScale = model.Database.ReadScale.ToString(),
                     }
                 });
 

@@ -129,11 +129,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public DatabaseReadScale? ReadScale { get; set; }
 
         /// <summary>
-        /// Gets or sets the sample name.
-        /// </summary>
-        public string SampleName { get; set; }
-
-        /// <summary>
         /// Construct AzureSqlDatabaseModel
         /// </summary>
         public AzureSqlDatabaseModel()
