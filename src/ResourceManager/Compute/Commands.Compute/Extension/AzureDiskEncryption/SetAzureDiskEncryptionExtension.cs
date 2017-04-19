@@ -284,6 +284,12 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
             DiskEncryptionSettings encryptionSettingsBackup = vmParameters.StorageProfile.OsDisk.EncryptionSettings;
 
+            if (encryptionSettingsBackup == null)
+            {
+                encryptionSettingsBackup = new DiskEncryptionSettings();
+                encryptionSettingsBackup.Enabled = false;
+            }
+
             DiskEncryptionSettings encryptionSettings = new DiskEncryptionSettings();
             encryptionSettings.Enabled = true;
             encryptionSettings.DiskEncryptionKey = new KeyVaultSecretReference();
