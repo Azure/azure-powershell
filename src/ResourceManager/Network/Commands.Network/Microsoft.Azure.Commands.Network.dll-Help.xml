@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <helpItems xmlns="http://msh" schema="maml">
 
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
@@ -10953,7 +10953,7 @@ PS C:\&gt; $FirewallConfig = Get-AzureRmApplicationGatewayWebApplicationFirewall
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1: Get the ExpressRoute circuit to be deleted</maml:title>
-<dev:code>Get-AzureRmExpressRouteCircuit�-Name�$CircuitName�-ResourceGroupName�$rg | Remove-AzureRmExpressRouteCircuit</dev:code>
+<dev:code>Get-AzureRmExpressRouteCircuit?-Name?$CircuitName?-ResourceGroupName?$rg | Remove-AzureRmExpressRouteCircuit</dev:code>
 <dev:remarks><maml:para>
 </maml:para>
 <maml:para></maml:para>
@@ -38689,7 +38689,7 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $Circuit</dev:code>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Get-AzureRmExpressRouteCircuit�-Name�$CircuitName�-ResourceGroupName�$rg | Remove-AzureRmExpressRouteCircuit</dev:code>
+			<dev:code>Get-AzureRmExpressRouteCircuit?-Name?$CircuitName?-ResourceGroupName?$rg | Remove-AzureRmExpressRouteCircuit</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -61772,7 +61772,7 @@ PS C:\&gt; $AppGW = Remove-AzureRmApplicationGatewaySslPolicy -ApplicationGatewa
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Remove-AzureRmExpressRouteCircuit -Name�$CircuitName�-ResourceGroupName�$rg</dev:code>
+			<dev:code>Remove-AzureRmExpressRouteCircuit -Name?$CircuitName?-ResourceGroupName?$rg</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -61792,7 +61792,7 @@ PS C:\&gt; $AppGW = Remove-AzureRmApplicationGatewaySslPolicy -ApplicationGatewa
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Get-AzureRmExpressRouteCircuit�-Name�$CircuitName�-ResourceGroupName�$rg | Remove-AzureRmExpressRouteCircuit</dev:code>
+			<dev:code>Get-AzureRmExpressRouteCircuit?-Name?$CircuitName?-ResourceGroupName?$rg | Remove-AzureRmExpressRouteCircuit</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -62062,9 +62062,9 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $Circuit</dev:code>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>$circuit =�Get-AzureRmExpressRouteCircuit�-Name�$CircuitName�-ResourceGroupName�$rg
-Remove-AzureRmExpressRouteCircuitPeeringConfig�-Name�&apos;AzurePrivatePeering&apos; -ExpressRouteCircuit $circuit
-Set-AzureRmExpressRouteCircuit�-ExpressRouteCircuit�$circuit</dev:code>
+			<dev:code>$circuit =?Get-AzureRmExpressRouteCircuit?-Name?$CircuitName?-ResourceGroupName?$rg
+Remove-AzureRmExpressRouteCircuitPeeringConfig?-Name?&apos;AzurePrivatePeering&apos; -ExpressRouteCircuit $circuit
+Set-AzureRmExpressRouteCircuit?-ExpressRouteCircuit?$circuit</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -71212,7 +71212,7 @@ PS C:\&gt; Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -App
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>$ckt = Get-AzureRmExpressRouteCircuit�-Name�$CircuitName�-ResourceGroupName�$rg
+			<dev:code>$ckt = Get-AzureRmExpressRouteCircuit?-Name?$CircuitName?-ResourceGroupName?$rg
 $ckt.ServiceKey = &apos;64ce99dd-ee70-4e74-b6b8-91c6307433a0&apos;
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt</dev:code>
 			<dev:remarks>
