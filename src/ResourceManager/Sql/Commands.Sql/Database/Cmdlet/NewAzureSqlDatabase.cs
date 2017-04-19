@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags; 
 using System.Collections.Generic;
@@ -101,6 +100,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Alias("Tag")]
         public Hashtable Tags { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "The name of the sample schema to apply when creating this database.")]
+        [ValidateNotNullOrEmpty]
+        public string SampleName { get; set; }
+
         /// <summary>
         /// Overriding to add warning message
         /// </summary>
@@ -120,7 +124,18 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             {
                 ModelAdapter.GetDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName);
             }
-            catch (CloudException ex)
+            catch (Hyak.Common.CloudException ex) // when using Hyak SDK
+            {
+                if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    // This is what we want.  We looked and there is no database with this name.
+                    return null;
+                }
+
+                // Unexpected exception encountered
+                throw;
+            }
+            catch (Microsoft.Rest.Azure.CloudException ex) // when using AutoRest SDK
             {
                 if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
@@ -160,7 +175,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 RequestedServiceObjectiveName = RequestedServiceObjectiveName,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
                 ElasticPoolName = ElasticPoolName,
-                ReadScale =ReadScale,
+                ReadScale = ReadScale,
+                SampleName = SampleName
             });
             return newEntity;
         }
