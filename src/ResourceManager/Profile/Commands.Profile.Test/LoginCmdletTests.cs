@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             dataStore = new MemoryDataStore();
             AzureSession.Instance.DataStore = dataStore;
             commandRuntimeMock = new MockCommandRuntime();
-            AzureRmProfileProvider.Instance.Profile = new AzureRMProfile();
+            AzureRmProfileProvider.Instance.Profile = new AzureRmProfile();
         }
 
         [Fact]

@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 new AzureAccount() { Id = DefaultAccount, Type = AzureAccount.AccountType.User },
                 AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud],
                 new AzureTenant() { Directory = DefaultDomain, Id = DefaultTenant.ToString() });
-            var profile = new AzureRMProfile();
+            var profile = new AzureRmProfile();
             profile.DefaultContext = Context;
             return new RMProfileClient(profile);
         }
@@ -451,10 +451,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetContextPreservesTokenCache()
         {
-            AzureRMProfile profile = null;
+            AzureRmProfile profile = null;
             AzureContext context = new AzureContext(null, null, null, null);
             Assert.Throws<ArgumentNullException>(() => profile.SetContextWithCache(context));
-            profile = new AzureRMProfile();
+            profile = new AzureRmProfile();
             Assert.Throws<ArgumentNullException>(() => profile.SetContextWithCache(null));
             profile.SetContextWithCache(context);
             Assert.Equal(TokenCache.DefaultShared.Serialize(), profile.DefaultContext.TokenCache.CacheData);
@@ -494,7 +494,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             AzureSession.Instance.DataStore = dataStore;
             var commandRuntimeMock = new MockCommandRuntime();
             AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
-            var profile = new AzureRMProfile();
+            var profile = new AzureRmProfile();
             profile.EnvironmentTable.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
             profile.DefaultContext = Context;
             var cmdlt = new GetAzureRMSubscriptionCommand();
@@ -540,7 +540,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             AzureSession.Instance.DataStore = dataStore;
             var commandRuntimeMock = new MockCommandRuntime();
             AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
-            var profile = new AzureRMProfile();
+            var profile = new AzureRmProfile();
             profile.EnvironmentTable.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
             profile.DefaultContext = Context;
             var cmdlt = new GetAzureRMSubscriptionCommand();
@@ -590,7 +590,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             AzureSession.Instance.DataStore = dataStore;
             var commandRuntimeMock = new MockCommandRuntime();
             AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
-            var profile = new AzureRMProfile();
+            var profile = new AzureRmProfile();
             profile.EnvironmentTable.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
             profile.DefaultContext = Context;
             var cmdlt = new GetAzureRMSubscriptionCommand();
@@ -619,12 +619,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var dataStore = new MockDataStore();
             AzureSession.Instance.DataStore = dataStore;
             var profilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AzureSession.Instance.ProfileFile);
-            var currentProfile = new AzureRMProfile(profilePath);
+            var currentProfile = new AzureRmProfile(profilePath);
             var tenantId = Guid.NewGuid().ToString();
             var environment = new AzureEnvironment
             {
                 Name = "testCloud",
-                ActiveDirectory= new Uri("http://contoso.com")
+                ActiveDirectoryAuthority= "http://contoso.com"
             };
             var account = new AzureAccount
             {
@@ -648,9 +648,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
             currentProfile.DefaultContext = new AzureContext(sub, account, environment, tenant);
             currentProfile.EnvironmentTable[environment.Name] = environment;
-            currentProfile.DefaultContext.TokenCache = new AuthenticationStoreTokenCache(new AzureTokenCache { CacheData = new byte[] { 1, 2, 3, 4, 5, 6, 8, 9, 0 } });
+            currentProfile.DefaultContext.TokenCache =new AzureTokenCache { CacheData = new byte[] { 1, 2, 3, 4, 5, 6, 8, 9, 0 } };
 
-            AzureRMProfile deserializedProfile;
+            AzureRmProfile deserializedProfile;
             // Round-trip the exception: Serialize and de-serialize with a BinaryFormatter
             BinaryFormatter bf = new BinaryFormatter();
             using (MemoryStream ms = new MemoryStream())
@@ -662,7 +662,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 ms.Seek(0, 0);
 
                 // Replace the original exception with de-serialized one
-                deserializedProfile = (AzureRMProfile)bf.Deserialize(ms);
+                deserializedProfile = (AzureRmProfile)bf.Deserialize(ms);
             }
             Assert.NotNull(deserializedProfile);
             var jCurrentProfile = currentProfile.ToString();
@@ -719,12 +719,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AzureSession.Instance.ProfileFile);
             var dataStore = new MockDataStore();
             AzureSession.Instance.DataStore = dataStore;
-            AzureRMProfile profile = new AzureRMProfile(path);
+            AzureRmProfile profile = new AzureRmProfile(path);
             var tenantId = new Guid("3c0ff8a7-e8bb-40e8-ae66-271343379af6");
             var environment = new AzureEnvironment
             {
                 Name = "testCloud",
-                ActiveDirectory = new Uri("http://contoso.com")
+                ActiveDirectoryAuthority = "http://contoso.com"
             };
             var account = new AzureAccount
             {
@@ -803,7 +803,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var dataStore = new MockDataStore();
             AzureSession.Instance.DataStore = dataStore;
             dataStore.WriteFile(path, contents);
-            var profile = new AzureRMProfile(path);
+            var profile = new AzureRmProfile(path);
             Assert.Equal(5, profile.Environments.Count());
             Assert.Equal("3c0ff8a7-e8bb-40e8-ae66-271343379af6", profile.DefaultContext.Tenant.Id.ToString());
             Assert.Equal("contoso.com", profile.DefaultContext.Tenant.Directory);

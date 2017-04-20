@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// </summary>
         /// <param name="profile">The profile to convert.</param>
         /// <returns>The converted profile.</returns>
-        public static implicit operator PSAzureProfile(AzureRMProfile profile)
+        public static implicit operator PSAzureProfile(AzureRmProfile profile)
         {
             if (profile == null)
             {
@@ -53,14 +53,14 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// </summary>
         /// <param name="profile">The profile to convert.</param>
         /// <returns>The converted profile.</returns>
-        public static implicit operator AzureRMProfile(PSAzureProfile profile)
+        public static implicit operator AzureRmProfile(PSAzureProfile profile)
         {
             if (profile == null)
             {
                 return null;
             }
 
-            var result = new AzureRMProfile
+            var result = new AzureRmProfile
             {
                 DefaultContext = profile.Context
             };

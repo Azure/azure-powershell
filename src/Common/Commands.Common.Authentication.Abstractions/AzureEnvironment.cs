@@ -35,16 +35,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 new AzureEnvironment
                 {
                     Name = EnvironmentName.AzureCloud,
-                    PublishSettingsFile = new Uri(AzureEnvironmentConstants.AzurePublishSettingsFileUrl),
-                    ServiceManagement = new Uri(AzureEnvironmentConstants.AzureServiceEndpoint),
-                    ResourceManager = new Uri(AzureEnvironmentConstants.AzureResourceManagerEndpoint),
-                    ManagementPortal = new Uri(AzureEnvironmentConstants.AzureManagementPortalUrl),
-                    ActiveDirectory = new Uri(AzureEnvironmentConstants.AzureActiveDirectoryEndpoint),
+                    PublishSettingsFileUrl = AzureEnvironmentConstants.AzurePublishSettingsFileUrl,
+                    ServiceManagementUrl = AzureEnvironmentConstants.AzureServiceEndpoint,
+                    ResourceManagerUrl = AzureEnvironmentConstants.AzureResourceManagerEndpoint,
+                    ManagementPortalUrl = AzureEnvironmentConstants.AzureManagementPortalUrl,
+                    ActiveDirectoryAuthority = AzureEnvironmentConstants.AzureActiveDirectoryEndpoint,
                     ActiveDirectoryServiceEndpointResourceId = AzureEnvironmentConstants.AzureServiceEndpoint,
                     StorageEndpointSuffix = AzureEnvironmentConstants.AzureStorageEndpointSuffix,
-                    Gallery = new Uri(AzureEnvironmentConstants.GalleryEndpoint),
+                    GalleryUrl = AzureEnvironmentConstants.GalleryEndpoint,
                     SqlDatabaseDnsSuffix = AzureEnvironmentConstants.AzureSqlDatabaseDnsSuffix,
-                    Graph = new Uri(AzureEnvironmentConstants.AzureGraphEndpoint),
+                    GraphUrl = AzureEnvironmentConstants.AzureGraphEndpoint,
                     TrafficManagerDnsSuffix = AzureEnvironmentConstants.AzureTrafficManagerDnsSuffix,
                     AzureKeyVaultDnsSuffix = AzureEnvironmentConstants.AzureKeyVaultDnsSuffix,
                     AzureKeyVaultServiceEndpointResourceId = AzureEnvironmentConstants.AzureKeyVaultServiceEndpointResourceId,
@@ -59,16 +59,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 new AzureEnvironment
                 {
                     Name = EnvironmentName.AzureChinaCloud,
-                    PublishSettingsFile = new Uri(AzureEnvironmentConstants.ChinaPublishSettingsFileUrl),
-                    ServiceManagement = new Uri(AzureEnvironmentConstants.ChinaServiceEndpoint),
-                    ResourceManager = new Uri(AzureEnvironmentConstants.ChinaResourceManagerEndpoint),
-                    ManagementPortal = new Uri(AzureEnvironmentConstants.ChinaManagementPortalUrl),
-                    ActiveDirectory = new Uri(AzureEnvironmentConstants.ChinaActiveDirectoryEndpoint),
+                    PublishSettingsFileUrl = AzureEnvironmentConstants.ChinaPublishSettingsFileUrl,
+                    ServiceManagementUrl = AzureEnvironmentConstants.ChinaServiceEndpoint,
+                    ResourceManagerUrl = AzureEnvironmentConstants.ChinaResourceManagerEndpoint,
+                    ManagementPortalUrl = AzureEnvironmentConstants.ChinaManagementPortalUrl,
+                    ActiveDirectoryAuthority = AzureEnvironmentConstants.ChinaActiveDirectoryEndpoint,
                     ActiveDirectoryServiceEndpointResourceId = AzureEnvironmentConstants.ChinaServiceEndpoint,
                     StorageEndpointSuffix = AzureEnvironmentConstants.ChinaStorageEndpointSuffix,
-                    Gallery = new Uri(AzureEnvironmentConstants.GalleryEndpoint),
+                    GalleryUrl = AzureEnvironmentConstants.GalleryEndpoint,
                     SqlDatabaseDnsSuffix = AzureEnvironmentConstants.ChinaSqlDatabaseDnsSuffix,
-                    Graph = new Uri(AzureEnvironmentConstants.ChinaGraphEndpoint),
+                    GraphUrl = AzureEnvironmentConstants.ChinaGraphEndpoint,
                     TrafficManagerDnsSuffix = AzureEnvironmentConstants.ChinaTrafficManagerDnsSuffix,
                     AzureKeyVaultDnsSuffix = AzureEnvironmentConstants.ChinaKeyVaultDnsSuffix,
                     AzureKeyVaultServiceEndpointResourceId = AzureEnvironmentConstants.ChinaKeyVaultServiceEndpointResourceId,
@@ -83,16 +83,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                  new AzureEnvironment
                 {
                     Name = EnvironmentName.AzureUSGovernment,
-                    PublishSettingsFile = new Uri(AzureEnvironmentConstants.USGovernmentPublishSettingsFileUrl),
-                    ServiceManagement = new Uri(AzureEnvironmentConstants.USGovernmentServiceEndpoint),
-                    ResourceManager = new Uri(AzureEnvironmentConstants.USGovernmentResourceManagerEndpoint),
-                    ManagementPortal = new Uri(AzureEnvironmentConstants.USGovernmentManagementPortalUrl),
-                    ActiveDirectory = new Uri(AzureEnvironmentConstants.USGovernmentActiveDirectoryEndpoint),
+                    PublishSettingsFileUrl = AzureEnvironmentConstants.USGovernmentPublishSettingsFileUrl,
+                    ServiceManagementUrl = AzureEnvironmentConstants.USGovernmentServiceEndpoint,
+                    ResourceManagerUrl = AzureEnvironmentConstants.USGovernmentResourceManagerEndpoint,
+                    ManagementPortalUrl = AzureEnvironmentConstants.USGovernmentManagementPortalUrl,
+                    ActiveDirectoryAuthority = AzureEnvironmentConstants.USGovernmentActiveDirectoryEndpoint,
                     ActiveDirectoryServiceEndpointResourceId = AzureEnvironmentConstants.USGovernmentServiceEndpoint,
                     StorageEndpointSuffix = AzureEnvironmentConstants.USGovernmentStorageEndpointSuffix,
-                    Gallery = new Uri(AzureEnvironmentConstants.GalleryEndpoint),
+                    GalleryUrl = AzureEnvironmentConstants.GalleryEndpoint,
                     SqlDatabaseDnsSuffix = AzureEnvironmentConstants.USGovernmentSqlDatabaseDnsSuffix,
-                    Graph = new Uri(AzureEnvironmentConstants.USGovernmentGraphEndpoint),
+                    GraphUrl = AzureEnvironmentConstants.USGovernmentGraphEndpoint,
                     TrafficManagerDnsSuffix = AzureEnvironmentConstants.USGovernmentTrafficManagerDnsSuffix,
                     AzureKeyVaultDnsSuffix = AzureEnvironmentConstants.USGovernmentKeyVaultDnsSuffix,
                     AzureKeyVaultServiceEndpointResourceId = AzureEnvironmentConstants.USGovernmentKeyVaultServiceEndpointResourceId,
@@ -107,16 +107,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                  new AzureEnvironment
                 {
                     Name = EnvironmentName.AzureGermanCloud,
-                    PublishSettingsFile = new Uri(AzureEnvironmentConstants.GermanPublishSettingsFileUrl),
-                    ServiceManagement = new Uri(AzureEnvironmentConstants.GermanServiceEndpoint),
-                    ResourceManager = new Uri(AzureEnvironmentConstants.GermanResourceManagerEndpoint),
-                    ManagementPortal = new Uri(AzureEnvironmentConstants.GermanManagementPortalUrl),
-                    ActiveDirectory = new Uri(AzureEnvironmentConstants.GermanActiveDirectoryEndpoint),
+                    PublishSettingsFileUrl = AzureEnvironmentConstants.GermanPublishSettingsFileUrl,
+                    ServiceManagementUrl = AzureEnvironmentConstants.GermanServiceEndpoint,
+                    ResourceManagerUrl = AzureEnvironmentConstants.GermanResourceManagerEndpoint,
+                    ManagementPortalUrl = AzureEnvironmentConstants.GermanManagementPortalUrl,
+                    ActiveDirectoryAuthority = AzureEnvironmentConstants.GermanActiveDirectoryEndpoint,
                     ActiveDirectoryServiceEndpointResourceId = AzureEnvironmentConstants.GermanServiceEndpoint,
                     StorageEndpointSuffix = AzureEnvironmentConstants.GermanStorageEndpointSuffix,
-                    Gallery = new Uri(AzureEnvironmentConstants.GalleryEndpoint),
+                    GalleryUrl = AzureEnvironmentConstants.GalleryEndpoint,
                     SqlDatabaseDnsSuffix = AzureEnvironmentConstants.GermanSqlDatabaseDnsSuffix,
-                    Graph = new Uri(AzureEnvironmentConstants.GermanGraphEndpoint),
+                    GraphUrl = AzureEnvironmentConstants.GermanGraphEndpoint,
                     TrafficManagerDnsSuffix = AzureEnvironmentConstants.GermanTrafficManagerDnsSuffix,
                     AzureKeyVaultDnsSuffix = AzureEnvironmentConstants.GermanKeyVaultDnsSuffix,
                     AzureKeyVaultServiceEndpointResourceId = AzureEnvironmentConstants.GermanAzureKeyVaultServiceEndpointResourceId,
@@ -141,37 +141,37 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <summary>
         /// The RDFE endpoint
         /// </summary>
-        public Uri ServiceManagement { get; set; }
+        public string ServiceManagementUrl { get; set; }
 
         /// <summary>
         /// The Azure Resource Manager endpoint
         /// </summary>
-        public Uri ResourceManager { get; set; }
+        public string ResourceManagerUrl { get; set; }
 
         /// <summary>
         /// The location fo the AUX portal
         /// </summary>
-        public Uri ManagementPortal { get; set; }
+        public string ManagementPortalUrl { get; set; }
 
         /// <summary>
         /// The location of the publishsettings fiel download web applciation
         /// </summary>
-        public Uri PublishSettingsFile { get; set; }
+        public string PublishSettingsFileUrl { get; set; }
 
         /// <summary>
         /// The authentication endpoint
         /// </summary>
-        public Uri ActiveDirectory { get; set; }
+        public string ActiveDirectoryAuthority { get; set; }
 
         /// <summary>
         /// The uri of the template gallery
         /// </summary>
-        public Uri Gallery { get; set; }
+        public string GalleryUrl { get; set; }
 
         /// <summary>
         /// The URI of the Azure Active Directory Graph endpoint
         /// </summary>
-        public Uri Graph { get; set; }
+        public string GraphUrl { get; set; }
 
         /// <summary>
         /// The token audience need for tokens that target RDFE or ARM endpoints

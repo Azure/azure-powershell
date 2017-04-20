@@ -143,7 +143,7 @@
   <ItemGroup>
     <Compile Include="AccessTokenExtensions.cs" />
     <Compile Include="AzureRmCmdlet.cs" />
-    <Compile Include="AzureRMProfile.cs" />
+    <Compile Include="AzureRmProfile.cs" />
     <Compile Include="AzureRmProfileConverter.cs" />
     <Compile Include="AzureRMProfileExtensions.cs" />
     <Compile Include="Generated\DeploymentOperations.cs" />
@@ -261,6 +261,8 @@
     <Compile Include="Generated\TenantsOperations.cs" />
     <Compile Include="Generated\TenantsOperationsExtensions.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Serialization\CacheBuffer.cs" />
+    <Compile Include="Serialization\LegacyAzureAccount.cs" />
     <Compile Include="PaginatedResponseHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -271,6 +273,12 @@
     <Compile Include="ResourceManagerProfileProvider.cs" />
     <Compile Include="ResponseWithContinuation.cs" />
     <Compile Include="RPRegistrationDelegatingHandler.cs" />
+    <Compile Include="Serialization\LegacyAzureContext.cs" />
+    <Compile Include="Serialization\LegacyAzureEnvironment.cs" />
+    <Compile Include="Serialization\LegacyAzureRmProfile.cs" />
+    <Compile Include="Serialization\LegacyAzureSubscription.cs" />
+    <Compile Include="Serialization\LegacyAzureTenant.cs" />
+    <Compile Include="Serialization\ProfileConverter.cs" />
     <Compile Include="ServiceClientTracingInterceptor.cs" />
     <Compile Include="Tags\PSTag.cs" />
     <Compile Include="Tags\PSTagValue.cs" />

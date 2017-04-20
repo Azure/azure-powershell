@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Profile
             ConfirmAction("adding environment", Name,
                 () =>
                 {
-                    var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRMProfile>());
+                    var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>());
 
                     var newEnvironment = new AzureEnvironment
                     {

@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.Profile
             base.BeginProcessing();
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Environment)))
             {
-                var profile = AzureRmProfileProvider.Instance.GetProfile<AzureRMProfile>();
+                var profile = AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>();
                 if (profile.EnvironmentTable.ContainsKey(Environment))
                 {
                     _environment = profile.EnvironmentTable[Environment];
@@ -229,10 +229,10 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 if (AzureRmProfileProvider.Instance.Profile == null)
                 {
-                    AzureRmProfileProvider.Instance.Profile = new AzureRMProfile();
+                    AzureRmProfileProvider.Instance.Profile = new AzureRmProfile();
                 }
 
-                var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRMProfile>());
+                var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>());
 
                 WriteObject((PSAzureProfile) profileClient.Login(azureAccount, _environment, TenantId, SubscriptionId,
                     SubscriptionName, password));

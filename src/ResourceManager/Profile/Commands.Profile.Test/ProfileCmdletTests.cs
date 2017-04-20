@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SelectAzureProfileInMemory()
         {
-            var profile = new AzureRMProfile();
+            var profile = new AzureRmProfile();
             profile.EnvironmentTable.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
             ImportAzureRMContextCommand cmdlt = new ImportAzureRMContextCommand();
             // Setup
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            Assert.True(AzureRmProfileProvider.Instance.GetProfile<AzureRMProfile>().EnvironmentTable.ContainsKey("foo"));
+            Assert.True(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().EnvironmentTable.ContainsKey("foo"));
         }
 
         [Fact]
@@ -85,12 +85,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SelectAzureProfileFromDisk()
         {
-            var profile = new AzureRMProfile();
+            var profile = new AzureRmProfile();
             profile.EnvironmentTable.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
             profile.Save("X:\\foo.json");
-#pragma warning disable CS0618 // Suppress obsolescence warning: cmdlet name is changing
             ImportAzureRMContextCommand cmdlt = new ImportAzureRMContextCommand();
-#pragma warning restore CS0618 // Suppress obsolescence warning: cmdlet name is changing
             // Setup
             cmdlt.Path = "X:\\foo.json";
             cmdlt.CommandRuntime = commandRuntimeMock;
@@ -108,7 +106,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SaveAzureProfileInMemory()
         {
-            var profile = new AzureRMProfile();
+            var profile = new AzureRmProfile();
             profile.EnvironmentTable.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
 #pragma warning disable CS0618 // Suppress obsolescence warning: cmdlet name is changing
             SaveAzureRMContextCommand cmdlt = new SaveAzureRMContextCommand();
@@ -125,7 +123,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 
             // Verify
             Assert.True(AzureSession.Instance.DataStore.FileExists("X:\\foo.json"));
-            var profile2 = new AzureRMProfile("X:\\foo.json");
+            var profile2 = new AzureRmProfile("X:\\foo.json");
             Assert.True(profile2.Environments.Any((e) => string.Equals(e.Name, "foo")));
         }
 
@@ -149,7 +147,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SaveAzureProfileFromDefault()
         {
-            var profile = new AzureRMProfile();
+            var profile = new AzureRmProfile();
             profile.EnvironmentTable.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
             profile.DefaultContext = new AzureContext(new AzureSubscription(), new AzureAccount(), profile.EnvironmentTable["foo"]);
             AzureRmProfileProvider.Instance.Profile = profile;
@@ -165,7 +163,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 
             // Verify
             Assert.True(AzureSession.Instance.DataStore.FileExists("X:\\foo.json"));
-            var profile2 = new AzureRMProfile("X:\\foo.json");
+            var profile2 = new AzureRmProfile("X:\\foo.json");
             Assert.True(profile2.EnvironmentTable.ContainsKey("foo"));
         }
     }

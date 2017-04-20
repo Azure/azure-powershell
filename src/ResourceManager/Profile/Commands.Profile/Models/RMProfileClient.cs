@@ -34,11 +34,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
     public class RMProfileClient
     {
-        private AzureRMProfile _profile;
+        private AzureRmProfile _profile;
         private IAzureTokenCache _cache;
         public Action<string> WarningLog;
 
-        public RMProfileClient(AzureRMProfile profile)
+        public RMProfileClient(AzureRmProfile profile)
         {
             _profile = profile;
             var context = _profile.DefaultContext;
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
         }
 
-        public AzureRMProfile Login(
+        public AzureRmProfile Login(
             IAzureAccount account,
             IAzureEnvironment environment,
             string tenantId,
@@ -411,21 +411,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             AzureEnvironment mergedEnvironment = new AzureEnvironment
             {
                 Name = environment1.Name,
-                ActiveDirectory = environment1.ActiveDirectory ?? environment2.ActiveDirectory,
+                ActiveDirectoryAuthority = environment1.ActiveDirectoryAuthority ?? environment2.ActiveDirectoryAuthority,
                 ActiveDirectoryServiceEndpointResourceId = environment1.ActiveDirectoryServiceEndpointResourceId ?? environment2.ActiveDirectoryServiceEndpointResourceId,
                 AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = environment1.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix ?? environment2.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix,
                 AzureKeyVaultDnsSuffix = environment1.AzureKeyVaultDnsSuffix ?? environment2.AzureKeyVaultDnsSuffix,
-                Gallery = environment1.Gallery ?? environment2.Gallery,
+                GalleryUrl = environment1.GalleryUrl ?? environment2.GalleryUrl,
                 GraphEndpointResourceId = environment1.GraphEndpointResourceId ?? environment2.GraphEndpointResourceId,
                 AdTenant = environment1.AdTenant ?? environment2.AdTenant,
                 AzureDataLakeStoreFileSystemEndpointSuffix = environment1.AzureDataLakeStoreFileSystemEndpointSuffix ?? environment2.AzureDataLakeStoreFileSystemEndpointSuffix,
                 AzureKeyVaultServiceEndpointResourceId = environment1.AzureKeyVaultServiceEndpointResourceId ?? environment2.AzureKeyVaultServiceEndpointResourceId,
-                Graph = environment1.Graph ?? environment2.Graph,
-                ManagementPortal = environment1.ManagementPortal ?? environment2.ManagementPortal,
+                GraphUrl = environment1.GraphUrl ?? environment2.GraphUrl,
+                ManagementPortalUrl = environment1.ManagementPortalUrl ?? environment2.ManagementPortalUrl,
                 OnPremise = environment1.OnPremise || environment2.OnPremise,
-                PublishSettingsFile = environment1.PublishSettingsFile ?? environment2.PublishSettingsFile,
-                ResourceManager = environment1.ResourceManager ?? environment2.ResourceManager,
-                ServiceManagement = environment1.ServiceManagement ?? environment2.ServiceManagement,
+                PublishSettingsFileUrl = environment1.PublishSettingsFileUrl ?? environment2.PublishSettingsFileUrl,
+                ResourceManagerUrl = environment1.ResourceManagerUrl ?? environment2.ResourceManagerUrl,
+                ServiceManagementUrl = environment1.ServiceManagementUrl ?? environment2.ServiceManagementUrl,
                 SqlDatabaseDnsSuffix = environment1.SqlDatabaseDnsSuffix ?? environment2.SqlDatabaseDnsSuffix,
                 StorageEndpointSuffix = environment1.StorageEndpointSuffix ?? environment2.StorageEndpointSuffix,
                 TrafficManagerDnsSuffix = environment1.TrafficManagerDnsSuffix ?? environment2.TrafficManagerDnsSuffix

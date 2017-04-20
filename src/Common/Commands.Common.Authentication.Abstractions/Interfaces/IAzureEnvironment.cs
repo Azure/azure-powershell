@@ -35,37 +35,37 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <summary>
         /// The RDFE endpoint
         /// </summary>
-        Uri ServiceManagement { get; set; }
+        string ServiceManagementUrl { get; set; }
 
         /// <summary>
         /// The Resource Manager endpoint
         /// </summary>
-        Uri ResourceManager { get; set; }
+        string ResourceManagerUrl { get; set; }
 
         /// <summary>
         /// The location fot eh manageemnt portal
         /// </summary>
-        Uri ManagementPortal { get; set; }
+        string ManagementPortalUrl { get; set; }
 
         /// <summary>
         /// The location fo the publish settings doenload web application
         /// </summary>
-        Uri PublishSettingsFile { get; set; }
+        string PublishSettingsFileUrl { get; set; }
 
         /// <summary>
         /// The Active Directory authentication endpoint
         /// </summary>
-        Uri ActiveDirectory { get; set; }
+        string ActiveDirectoryAuthority { get; set; }
 
         /// <summary>
         /// The ARM template gallery endpoint.
         /// </summary>
-        Uri Gallery { get; set; }
+        string GalleryUrl { get; set; }
 
         /// <summary>
         /// The Azure Active Directory Graph endpoint
         /// </summary>
-        Uri Graph { get; set; }
+        string GraphUrl { get; set; }
 
         /// <summary>
         /// The token audience required to access the RDFE or ARM endpoints

@@ -37,16 +37,16 @@ namespace Microsoft.WindowsAzure.Commands.Profile.Models
             newEnvironment.ActiveDirectoryServiceEndpointResourceId =
                 environment.ActiveDirectoryServiceEndpointResourceId;
             newEnvironment.AdTenant = environment.AdTenant;
-            newEnvironment.Gallery = new Uri(environment.GalleryUrl);
-            newEnvironment.ManagementPortal = new Uri(environment.ManagementPortalUrl);
-            newEnvironment.ServiceManagement = new Uri(environment.ServiceManagementUrl);
-            newEnvironment.PublishSettingsFile =
-                new Uri(environment.PublishSettingsFileUrl);
-            newEnvironment.ResourceManager = new Uri(environment.ResourceManagerUrl);
+            newEnvironment.GalleryUrl = environment.GalleryUrl;
+            newEnvironment.ManagementPortalUrl = environment.ManagementPortalUrl;
+            newEnvironment.ServiceManagementUrl = environment.ServiceManagementUrl;
+            newEnvironment.PublishSettingsFileUrl =
+                environment.PublishSettingsFileUrl;
+            newEnvironment.ResourceManagerUrl = environment.ResourceManagerUrl;
             newEnvironment.SqlDatabaseDnsSuffix = environment.SqlDatabaseDnsSuffix;
             newEnvironment.StorageEndpointSuffix =
                 environment.StorageEndpointSuffix;
-            newEnvironment.Graph = new Uri(environment.GraphUrl);
+            newEnvironment.GraphUrl = environment.GraphUrl;
             newEnvironment.TrafficManagerDnsSuffix =
                 environment.TrafficManagerDnsSuffix;
             newEnvironment.AzureKeyVaultDnsSuffix =
@@ -93,27 +93,27 @@ namespace Microsoft.WindowsAzure.Commands.Profile.Models
             if (environment.IsEndpointSet(AzureEnvironment.Endpoint.Gallery))
             {
                 GalleryUrl =
-                    environment.Gallery.AbsoluteUri;
+                    environment.GalleryUrl;
             }
             if (environment.IsEndpointSet(AzureEnvironment.Endpoint.ManagementPortalUrl))
             {
                 ManagementPortalUrl =
-                    environment.ManagementPortal.AbsoluteUri;
+                    environment.ManagementPortalUrl;
             }
             if (environment.IsEndpointSet(AzureEnvironment.Endpoint.ServiceManagement))
             {
                 ServiceManagementUrl =
-                    environment.ServiceManagement.AbsoluteUri;
+                    environment.ServiceManagementUrl;
             }
             if (environment.IsEndpointSet(AzureEnvironment.Endpoint.PublishSettingsFileUrl))
             {
                 PublishSettingsFileUrl =
-                    environment.PublishSettingsFile.AbsoluteUri;
+                    environment.PublishSettingsFileUrl;
             }
             if (environment.IsEndpointSet(AzureEnvironment.Endpoint.ResourceManager))
             {
                 ResourceManagerUrl =
-                    environment.ResourceManager.AbsoluteUri;
+                    environment.ResourceManagerUrl;
             }
             if (environment.IsEndpointSet(AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix))
             {
@@ -128,12 +128,12 @@ namespace Microsoft.WindowsAzure.Commands.Profile.Models
             if (environment.IsEndpointSet(AzureEnvironment.Endpoint.ActiveDirectory))
             {
                 ActiveDirectoryAuthority =
-                    environment.ActiveDirectory.AbsoluteUri;
+                    environment.ActiveDirectoryAuthority;
             }
             if (environment.IsEndpointSet(AzureEnvironment.Endpoint.Graph))
             {
                 GraphUrl =
-                    environment.Graph.AbsoluteUri;
+                    environment.GraphUrl;
             }
             if (environment.IsEndpointSet(AzureEnvironment.Endpoint.TrafficManagerDnsSuffix))
             {

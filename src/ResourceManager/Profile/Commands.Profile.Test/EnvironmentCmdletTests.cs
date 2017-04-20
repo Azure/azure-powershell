@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.InvokeEndProcessing();
 
             commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Once());
-            var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRMProfile>());
+            var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>());
             IAzureEnvironment env = AzureRmProfileProvider.Instance.Profile.Environments.First((e) => string.Equals(e.Name, "KaTaL", StringComparison.OrdinalIgnoreCase));
             Assert.Equal(env.Name, cmdlet.Name);
             Assert.Equal(env.GetEndpoint(AzureEnvironment.Endpoint.PublishSettingsFileUrl), cmdlet.PublishSettingsFileUrl);
@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
             const string name = "test";
-            RMProfileClient client = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRMProfile>());
+            RMProfileClient client = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>());
             client.AddOrSetEnvironment(new AzureEnvironment
             {
                 Name = name

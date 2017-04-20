@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                     var environment = AzureRmProfileProvider.Instance.Profile.GetEnvironment(AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.GetEnvironment());
                     environment.SetEndpoint(AzureEnvironment.Endpoint.Graph, csmEnvironment.Endpoints.GraphUri.AbsoluteUri);
                     environment.SetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix, "core.windows.net");
-                    AzureRmProfileProvider.Instance.GetProfile<AzureRMProfile>().Save();
+                    AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().Save();
                 }
             }
         }

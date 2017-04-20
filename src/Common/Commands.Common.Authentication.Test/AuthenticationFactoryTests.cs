@@ -89,7 +89,7 @@ namespace Common.Authentication.Test
                 {
                     Name = "Katal",
                     OnPremise = true,
-                    ActiveDirectory = new Uri("http://ad.com"),
+                    ActiveDirectoryAuthority = "http://ad.com",
                     ActiveDirectoryServiceEndpointResourceId = "http://adresource.com"
                 }
             );

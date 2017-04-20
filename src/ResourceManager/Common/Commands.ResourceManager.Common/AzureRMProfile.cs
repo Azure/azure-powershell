@@ -20,6 +20,7 @@ using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System.Collections;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using System.Xml.Serialization;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
@@ -27,30 +28,42 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
     /// Represents Azure Resource Manager profile structure with default context, environments and token cache.
     /// </summary>
     [Serializable]
-    public sealed class AzureRMProfile : IAzureContextContainer
+    public class AzureRmProfile : IAzureContextContainer
     {
+        public const string DefaultContextKey = "Default";
         /// <summary>
         /// Gets or sets Azure environments.
         /// </summary>
-        [JsonConverter(typeof(AzureRmProfileConverter))]
         public Dictionary<string, IAzureEnvironment> EnvironmentTable { get; set; }
 
-        [JsonConverter(typeof(AzureRmProfileConverter))]
-        public Dictionary<string, IAzureContext> Contexts = new Dictionary<string, IAzureContext>(StringComparer.OrdinalIgnoreCase);
+        public Dictionary<string, IAzureContext> Contexts { get; set; } = new Dictionary<string, IAzureContext>(StringComparer.OrdinalIgnoreCase);
 
         /// <summary>
         /// Gets the path of the profile file. 
         /// </summary>
         [JsonIgnore]
-        public string ProfilePath { get; private set; }
+        [XmlIgnore]
+        public string ProfilePath { get; protected set; }
 
         /// <summary>
         /// Gets the default context
         /// </summary>
-        [JsonConverter(typeof(AzureRmProfileConverter))]
-        public IAzureContext DefaultContext { get; set;}
+        [JsonIgnore]
+        [XmlIgnore]
+        public virtual IAzureContext DefaultContext
+        {
+            get
+            {
+                return this[DefaultContextKey];
+            }
+            set
+            {
+                this[DefaultContextKey] = value;
+            }
+        }
 
-        [JsonConverter(typeof(AzureRmProfileConverter))]
+        [JsonIgnore]
+        [XmlIgnore]
         public IEnumerable<IAzureEnvironment> Environments
         {
             get
@@ -77,10 +90,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             }
         }
 
-        [JsonConverter(typeof(AzureRmProfileConverter))]
         public IAzureTokenCache TokenStore { get; set; } = new AzureTokenCache();
 
-        public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        public IDictionary<string, string> ExtendedProperties { get; set;} = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
         [JsonIgnore]
         public ICollection<string> Keys
@@ -144,13 +156,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             if (AzureSession.Instance.DataStore.FileExists(ProfilePath))
             {
                 string contents = AzureSession.Instance.DataStore.ReadFileAsText(ProfilePath);
-                var profile = JsonConvert.DeserializeObject<AzureRMProfile>(contents, new AzureRmProfileConverter());
+                var profile = JsonConvert.DeserializeObject<IAzureContextContainer>(contents, new AzureRmProfileConverter());
                 Debug.Assert(profile != null);
-                DefaultContext = profile.DefaultContext;
                 EnvironmentTable.Clear();
                 foreach (var environment in profile.Environments)
                 {
                     EnvironmentTable[environment.Name] = environment;
+                }
+
+                Clear();
+                foreach (var context in profile)
+                {
+                    this.Add(context.Key, context.Value);
                 }
             }
         }
@@ -158,7 +175,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// <summary>
         /// Creates new instance of AzureRMProfile.
         /// </summary>
-        public AzureRMProfile()
+        public AzureRmProfile()
         {
             EnvironmentTable = new Dictionary<string, IAzureEnvironment>(StringComparer.InvariantCultureIgnoreCase);
 
@@ -173,7 +190,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// Initializes a new instance of AzureRMProfile and loads its content from specified path.
         /// </summary>
         /// <param name="path">The location of profile file on disk.</param>
-        public AzureRMProfile(string path) : this()
+        public AzureRmProfile(string path) : this()
         {
             Load(path);
         }
@@ -236,7 +253,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// <returns>The current string.</returns>
         public override string ToString()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented, new AzureRmProfileConverter());
         }
 
         public bool ContainsKey(string key)

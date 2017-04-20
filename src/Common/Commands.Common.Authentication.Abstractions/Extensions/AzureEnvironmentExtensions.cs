@@ -36,25 +36,25 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             switch(endpointName)
             {
                 case AzureEnvironment.Endpoint.ActiveDirectory:
-                    endpoint = environment.ActiveDirectory;
+                    endpoint = new Uri(environment.ActiveDirectoryAuthority);
                     break;
                 case AzureEnvironment.Endpoint.Gallery:
-                    endpoint = environment.Gallery;
+                    endpoint = new Uri(environment.GalleryUrl);
                     break;
                 case AzureEnvironment.Endpoint.Graph:
-                    endpoint = environment.Graph;
+                    endpoint = new Uri(environment.GraphUrl);
                     break;
                 case AzureEnvironment.Endpoint.ManagementPortalUrl:
-                    endpoint = environment.ManagementPortal;
+                    endpoint = new Uri(environment.ManagementPortalUrl);
                     break;
                 case AzureEnvironment.Endpoint.PublishSettingsFileUrl:
-                    endpoint = environment.PublishSettingsFile;
+                    endpoint = new Uri(environment.PublishSettingsFileUrl);
                     break;
                 case AzureEnvironment.Endpoint.ResourceManager:
-                    endpoint = environment.ResourceManager;
+                    endpoint = new Uri(environment.ResourceManagerUrl);
                     break;
                 case AzureEnvironment.Endpoint.ServiceManagement:
-                    endpoint = environment.ServiceManagement;
+                    endpoint = new Uri(environment.ServiceManagementUrl);
                     break;
                 default:
                     result = false;
@@ -107,25 +107,25 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     propertyValue = environment.AzureDataLakeStoreFileSystemEndpointSuffix;
                     break;
                 case AzureEnvironment.Endpoint.ActiveDirectory:
-                    propertyValue = environment.ActiveDirectory?.ToString();
+                    propertyValue = environment.ActiveDirectoryAuthority;
                     break;
                 case AzureEnvironment.Endpoint.Gallery:
-                    propertyValue = environment.Gallery?.ToString();
+                    propertyValue = environment.GalleryUrl;
                     break;
                 case AzureEnvironment.Endpoint.Graph:
-                    propertyValue = environment.Graph?.ToString();
+                    propertyValue = environment.GraphUrl;
                     break;
                 case AzureEnvironment.Endpoint.ManagementPortalUrl:
-                    propertyValue = environment.ManagementPortal?.ToString();
+                    propertyValue = environment.ManagementPortalUrl;
                     break;
                 case AzureEnvironment.Endpoint.PublishSettingsFileUrl:
-                    propertyValue = environment.PublishSettingsFile?.ToString();
+                    propertyValue = environment.PublishSettingsFileUrl;
                     break;
                 case AzureEnvironment.Endpoint.ResourceManager:
-                    propertyValue = environment.ResourceManager?.ToString();
+                    propertyValue = environment.ResourceManagerUrl;
                     break;
                 case AzureEnvironment.Endpoint.ServiceManagement:
-                    propertyValue = environment.ServiceManagement?.ToString();
+                    propertyValue = environment.ServiceManagementUrl;
                     break;
                 default:
                     break;
@@ -212,25 +212,25 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                         environment.AzureDataLakeStoreFileSystemEndpointSuffix = propertyValue;
                         break;
                     case AzureEnvironment.Endpoint.ActiveDirectory:
-                        environment.ActiveDirectory = new Uri(propertyValue);
+                        environment.ActiveDirectoryAuthority = propertyValue;
                         break;
                     case AzureEnvironment.Endpoint.Gallery:
-                        environment.Gallery = new Uri(propertyValue);
+                        environment.GalleryUrl = propertyValue;
                         break;
                     case AzureEnvironment.Endpoint.Graph:
-                        environment.Graph = new Uri(propertyValue);
+                        environment.GraphUrl = propertyValue;
                         break;
                     case AzureEnvironment.Endpoint.ManagementPortalUrl:
-                        environment.ManagementPortal = new Uri(propertyValue);
+                        environment.ManagementPortalUrl = propertyValue;
                         break;
                     case AzureEnvironment.Endpoint.PublishSettingsFileUrl:
-                        environment.PublishSettingsFile = new Uri(propertyValue);
+                        environment.PublishSettingsFileUrl = propertyValue;
                         break;
                     case AzureEnvironment.Endpoint.ResourceManager:
-                        environment.ResourceManager = new Uri(propertyValue);
+                        environment.ResourceManagerUrl = propertyValue;
                         break;
                     case AzureEnvironment.Endpoint.ServiceManagement:
-                        environment.ServiceManagement = new Uri(propertyValue);
+                        environment.ServiceManagementUrl = propertyValue;
                         break;
                 }
             }
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 realm = string.Empty;
             }
 
-            return  environment. ManagementPortal + realm;
+            return  environment.ManagementPortalUrl + realm;
         }
 
         /// <summary>
@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             {
                 realm = string.Empty;
             }
-            return environment.PublishSettingsFile + realm;
+            return environment.PublishSettingsFileUrl + realm;
         }
 
         public static void CopyFrom(this IAzureEnvironment environment, IAzureEnvironment other)
@@ -359,23 +359,23 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 }
                 if (other.IsEndpointSet(AzureEnvironment.Endpoint.Gallery))
                 {
-                    environment.Gallery = other.Gallery;
+                    environment.GalleryUrl = other.GalleryUrl;
                 }
                 if (other.IsEndpointSet(AzureEnvironment.Endpoint.ManagementPortalUrl))
                 {
-                    environment.ManagementPortal = other.ManagementPortal;
+                    environment.ManagementPortalUrl = other.ManagementPortalUrl;
                 }
                 if (other.IsEndpointSet(AzureEnvironment.Endpoint.ServiceManagement))
                 {
-                    environment.ServiceManagement = other.ServiceManagement;
+                    environment.ServiceManagementUrl = other.ServiceManagementUrl;
                 }
                 if (other.IsEndpointSet(AzureEnvironment.Endpoint.PublishSettingsFileUrl))
                 {
-                    environment.PublishSettingsFile = other.PublishSettingsFile;
+                    environment.PublishSettingsFileUrl = other.PublishSettingsFileUrl;
                 }
                 if (other.IsEndpointSet(AzureEnvironment.Endpoint.ResourceManager))
                 {
-                    environment.ResourceManager = other.ResourceManager;
+                    environment.ResourceManagerUrl = other.ResourceManagerUrl;
                 }
                 if (other.IsEndpointSet(AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix))
                 {
@@ -387,11 +387,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 }
                 if (other.IsEndpointSet(AzureEnvironment.Endpoint.ActiveDirectory))
                 {
-                    environment.ActiveDirectory = other.ActiveDirectory;
+                    environment.ActiveDirectoryAuthority = other.ActiveDirectoryAuthority;
                 }
                 if (other.IsEndpointSet(AzureEnvironment.Endpoint.Graph))
                 {
-                    environment.Graph = other.Graph;
+                    environment.GraphUrl = other.GraphUrl;
                 }
                 if (other.IsEndpointSet(AzureEnvironment.Endpoint.GraphEndpointResourceId))
                 {

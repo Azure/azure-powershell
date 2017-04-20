@@ -79,10 +79,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
             client = new ProfileClient(new AzureSMProfile(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AzureSession.Instance.ProfileFile)));
             IAzureEnvironment env = client.Profile.EnvironmentTable["KaTaL"];
             Assert.Equal(env.Name.ToLower(), cmdlet.Name.ToLower());
-            Assert.Equal(env.PublishSettingsFile.ToString(), cmdlet.PublishSettingsFileUrl);
-            Assert.Equal(env.ServiceManagement.ToString(), cmdlet.ServiceEndpoint);
-            Assert.Equal(env.ManagementPortal.ToString(), cmdlet.ManagementPortalUrl);
-            Assert.Equal(env.Gallery.ToString(), "galleryendpoint");
+            Assert.Equal(env.PublishSettingsFileUrl, cmdlet.PublishSettingsFileUrl);
+            Assert.Equal(env.ServiceManagementUrl, cmdlet.ServiceEndpoint);
+            Assert.Equal(env.ManagementPortalUrl, cmdlet.ManagementPortalUrl);
+            Assert.Equal(env.GalleryUrl, "galleryendpoint");
         }
 
         [Fact]

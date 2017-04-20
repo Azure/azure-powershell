@@ -63,7 +63,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             var datastore = new MemoryDataStore();
             AzureSession.Instance.DataStore = datastore;
             var profile = new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
-            var rmprofile = new AzureRMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
+            var rmprofile = new AzureRmProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
             rmprofile.EnvironmentTable.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
             rmprofile.DefaultContext = new AzureContext(new AzureSubscription(), new AzureAccount(), rmprofile.EnvironmentTable["foo"], new AzureTenant());
             rmprofile.DefaultContext.Subscription.SetEnvironment("foo");
@@ -193,11 +193,11 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             AzureEnvironment environment = new AzureEnvironment { Name = testEnvironmentName };
 
             Debug.Assert(currentEnvironment != null);
-            environment.ActiveDirectory = currentEnvironment.Endpoints.AADAuthUri;
-            environment.Gallery = currentEnvironment.Endpoints.GalleryUri;
-            environment.ServiceManagement = currentEnvironment.BaseUri;
-            environment.ResourceManager = currentEnvironment.Endpoints.ResourceManagementUri;
-            environment.Graph = currentEnvironment.Endpoints.GraphUri;
+            environment.ActiveDirectoryAuthority = currentEnvironment.Endpoints.AADAuthUri.AbsoluteUri;
+            environment.GalleryUrl = currentEnvironment.Endpoints.GalleryUri.AbsoluteUri;
+            environment.ServiceManagementUrl = currentEnvironment.BaseUri.AbsoluteUri;
+            environment.ResourceManagerUrl = currentEnvironment.Endpoints.ResourceManagementUri.AbsoluteUri;
+            environment.GraphUrl = currentEnvironment.Endpoints.GraphUri.AbsoluteUri;
             environment.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = currentEnvironment.Endpoints.DataLakeAnalyticsJobAndCatalogServiceUri.OriginalString.Replace("https://", ""); // because it is just a sufix
             environment.AzureDataLakeStoreFileSystemEndpointSuffix = currentEnvironment.Endpoints.DataLakeStoreServiceUri.OriginalString.Replace("https://", ""); // because it is just a sufix
 
@@ -206,9 +206,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 ProfileClient.AddOrSetEnvironment(environment);
             }
 
-            if (!AzureRmProfileProvider.Instance.GetProfile<AzureRMProfile>().EnvironmentTable.ContainsKey(testEnvironmentName))
+            if (!AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().EnvironmentTable.ContainsKey(testEnvironmentName))
             {
-                AzureRmProfileProvider.Instance.GetProfile<AzureRMProfile>().EnvironmentTable[testEnvironmentName] = environment;
+                AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().EnvironmentTable[testEnvironmentName] = environment;
             }
 
             if (currentEnvironment.SubscriptionId != null)

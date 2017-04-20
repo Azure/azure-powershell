@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.Profile
             ConfirmAction("updating environment", Name,
                 () =>
                 {
-                    var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRMProfile>());
+                    var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>());
 
                     foreach (var key in AzureEnvironment.PublicEnvironments.Keys)
                     {
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Profile
                     }
 
                     IAzureEnvironment newEnvironment = new AzureEnvironment { Name = Name, OnPremise = EnableAdfsAuthentication };
-                    var profile = AzureRmProfileProvider.Instance.GetProfile<AzureRMProfile>();
+                    var profile = AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>();
                     if (profile.EnvironmentTable.ContainsKey(Name))
                     {
                         newEnvironment = profile.EnvironmentTable[Name];

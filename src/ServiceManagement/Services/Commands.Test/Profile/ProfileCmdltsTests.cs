@@ -1273,12 +1273,12 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             azureEnvironment = new AzureEnvironment
             {
                 Name = "Test",
-                ServiceManagement = new System.Uri("https://umapi.rdfetest.dnsdemo4.com:8443/"),
-                ManagementPortal = new Uri("https://windows.azure-test.net"),
+                ServiceManagementUrl = "https://umapi.rdfetest.dnsdemo4.com:8443/",
+                ManagementPortalUrl = "https://windows.azure-test.net",
                 AdTenant = "https://login.windows-ppe.net/",
-                ActiveDirectory = new Uri("https://login.windows-ppe.net/"),
-                Gallery = new Uri("https://current.gallery.azure-test.net"),
-                ResourceManager = new Uri("https://api-current.resources.windows-int.net/"),                    
+                ActiveDirectoryAuthority = "https://login.windows-ppe.net/",
+                GalleryUrl = "https://current.gallery.azure-test.net",
+                ResourceManagerUrl = "https://api-current.resources.windows-int.net/",                    
                 AzureKeyVaultDnsSuffix = "vault-int.azure-int.net",
                 AzureKeyVaultServiceEndpointResourceId = "https://vault-int.azure-int.net/"
             };

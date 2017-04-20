@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     Constants.BackupNamespace;
 
             RecoveryServicesVaultUpgradeManagementClient VaultUpgradeClient =
-                AzureSession.ClientFactory.CreateCustomClient<RecoveryServicesVaultUpgradeManagementClient>(
+                AzureSession.Instance.ClientFactory.CreateCustomClient<RecoveryServicesVaultUpgradeManagementClient>(
                     this.GetCloudServiceName(resourceName, location, resourceType),
                     resourceNamespace,
                     resourceType,

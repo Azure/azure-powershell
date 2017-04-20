@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Profile
     public class SaveAzureRMContextCommand : AzureRMCmdlet
     {
         [Parameter(Mandatory = false, Position = 0, ValueFromPipeline = true)]
-        public AzureRMProfile Profile { get; set; }
+        public AzureRmProfile Profile { get; set; }
 
         [Parameter(Mandatory = true, Position = 1)]
         public string Path { get; set; }
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Profile
                         ShouldContinue(string.Format(Resources.FileOverwriteMessage, Path), 
                         Resources.FileOverwriteCaption))
                     {
-                        AzureRmProfileProvider.Instance.GetProfile<AzureRMProfile>().Save(Path);
+                        AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().Save(Path);
                         WriteVerbose(string.Format(Resources.ProfileCurrentSaved, Path));
                     }
                 }

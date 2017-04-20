@@ -72,10 +72,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
             ProfileClient client = new ProfileClient(profile);
             IAzureEnvironment env = client.GetEnvironmentOrDefault("KaTaL");
             Assert.Equal(env.Name, cmdlet.Name);
-            Assert.Equal(env.PublishSettingsFile.ToString(), cmdlet.PublishSettingsFileUrl);
-            Assert.Equal(env.ServiceManagement.ToString(), cmdlet.ServiceEndpoint);
-            Assert.Equal(env.ManagementPortal.ToString(), cmdlet.ManagementPortalUrl);
-            Assert.Equal(env.Gallery.ToString(), "http://galleryendpoint.com");
+            Assert.Equal(env.PublishSettingsFileUrl, cmdlet.PublishSettingsFileUrl);
+            Assert.Equal(env.ServiceManagementUrl, cmdlet.ServiceEndpoint);
+            Assert.Equal(env.ManagementPortalUrl, cmdlet.ManagementPortalUrl);
+            Assert.Equal(env.GalleryUrl, "http://galleryendpoint.com");
         }
 
         [Fact]
@@ -102,7 +102,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
             IAzureEnvironment env = client.Profile.EnvironmentTable["KaTaL"];
             Assert.Equal(env.Name, cmdlet.Name);
             Assert.True(env.OnPremise);
-            Assert.Equal(env.PublishSettingsFile.ToString(), cmdlet.PublishSettingsFileUrl);
+            Assert.Equal(env.PublishSettingsFileUrl, cmdlet.PublishSettingsFileUrl);
         }
 
         [Fact]
@@ -172,7 +172,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
             ProfileClient client = new ProfileClient(profile);
             IAzureEnvironment env = client.Profile.EnvironmentTable["KaTaL"];
             Assert.Equal(env.Name, cmdlet.Name);
-            Assert.Equal(env.PublishSettingsFile.ToString(), actual.PublishSettingsFileUrl);
+            Assert.Equal(env.PublishSettingsFileUrl, actual.PublishSettingsFileUrl);
         }
 
         [Fact]

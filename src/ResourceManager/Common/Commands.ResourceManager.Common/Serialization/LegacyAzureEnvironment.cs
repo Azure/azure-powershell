@@ -12,25 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Profile.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Common;
-using System.Management.Automation;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.Profile
+namespace Microsoft.Azure.Commands.ResourceManager.Common.Serialization
 {
-    /// <summary>
-    /// Cmdlet to get current context. 
-    /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmContext")]
-    [OutputType(typeof(PSAzureContext))]
-    public class GetAzureRMContextCommand : AzureRMCmdlet
+    public class LegacyAzureEnvironment
     {
-        public override void ExecuteCmdlet()
-        {
-            WriteObject(new PSAzureContext(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().DefaultContext));
-        }
+        public string Name { get; set; }
+
+        public bool OnPremise { get; set; }
+
+        public Dictionary<string, string> Endpoints { get; set; }
     }
 }

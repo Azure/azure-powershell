@@ -15,6 +15,8 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Serialization;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -37,11 +39,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 || objectType == typeof(IAzureTokenCache)
                 || objectType == typeof(AzureTokenCache) 
                 || objectType == typeof(ProtectedFileTokenCache)
-                || objectType == typeof(AuthenticationStoreTokenCache);
+                || objectType == typeof(AuthenticationStoreTokenCache)
+                || objectType == typeof(IAzureContextContainer);
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
+            if (objectType == typeof(IAzureContextContainer))
+            {
+                try
+                {
+                    var profile = serializer.Deserialize<LegacyAzureRmProfile>(reader);
+                    return profile.Convert();
+                }
+                catch
+                {
+                    return serializer.Deserialize<AzureRmProfile>(reader);
+                }
+            }
             if (objectType == typeof(IAzureContext))
             {
                 return serializer.Deserialize<AzureContext>(reader);
@@ -98,7 +113,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             IAzureTokenCache cache = value as IAzureTokenCache;
             if (cache != null)
             {
-                value = new AzureTokenCache { CacheData = cache.CacheData };
+                value = new CacheBuffer { CacheData = cache.CacheData };
             }
 
             serializer.Serialize(writer, value);

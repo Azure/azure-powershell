@@ -119,17 +119,17 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             AzureEnvironment environment = new AzureEnvironment { Name = testEnvironmentName };
 
             Debug.Assert(currentEnvironment != null);
-            environment.ActiveDirectory = currentEnvironment.Endpoints.AADAuthUri;
-            environment.Gallery = currentEnvironment.Endpoints.GalleryUri;
+            environment.ActiveDirectoryAuthority = currentEnvironment.Endpoints.AADAuthUri.AbsoluteUri;
+            environment.GalleryUrl = currentEnvironment.Endpoints.GalleryUri.AbsoluteUri;
 
             if (csmEnvironment != null)
             {
-                environment.ResourceManager = csmEnvironment.BaseUri;
+                environment.ResourceManagerUrl = csmEnvironment.BaseUri.AbsoluteUri;
             }
 
             if (rdfeEnvironment != null)
             {
-                environment.ServiceManagement = rdfeEnvironment.BaseUri;
+                environment.ServiceManagementUrl = rdfeEnvironment.BaseUri.AbsoluteUri;
             }
 
             if (!ProfileClient.Profile.EnvironmentTable.ContainsKey(testEnvironmentName))

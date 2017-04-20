@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(ParameterSetName = InMemoryProfileParameterSet, Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         [Alias("Profile")]
-        public AzureRMProfile AzureContext { get; set; }
+        public AzureRmProfile AzureContext { get; set; }
 
         [Parameter(ParameterSetName = ProfileFromDiskParameterSet, Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Profile
                             Path));
                     }
 
-                    AzureRmProfileProvider.Instance.Profile = new AzureRMProfile(Path);
+                    AzureRmProfileProvider.Instance.Profile = new AzureRmProfile(Path);
                     executionComplete = true;
                 });
             }
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Profile
                                    AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.State));
                 }
 
-                WriteObject((PSAzureProfile)AzureRmProfileProvider.Instance.GetProfile<AzureRMProfile>());
+                WriteObject((PSAzureProfile)AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>());
             }
         }
     }

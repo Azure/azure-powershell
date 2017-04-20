@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
-        public static AzureRMProfile CreateAzureRMProfile(string storageAccount)
+        public static AzureRmProfile CreateAzureRMProfile(string storageAccount)
         {
             var tenantId = Guid.NewGuid();
             var subscriptionId = Guid.NewGuid();
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
                     Id = tenantId.ToString()
                 }
             };
-            return new AzureRMProfile() { DefaultContext = context };
+            return new AzureRmProfile() { DefaultContext = context };
         }
 
         public static AzureSMProfile CreateAzureSMProfile(string storageAccount)
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             return profile;
         }
 
-        public static void RunDataProfileTest(AzureRMProfile rmProfile, AzureSMProfile smProfile, Action testAction)
+        public static void RunDataProfileTest(AzureRmProfile rmProfile, AzureSMProfile smProfile, Action testAction)
         {
             var savedRmProfile = AzureRmProfileProvider.Instance.Profile;
             var savedSmProfile = AzureSMProfileProvider.Instance.Profile;
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanClearStorageAccountForEmptyProfile()
         {
-            var rmProfile = new AzureRMProfile();
+            var rmProfile = new AzureRmProfile();
             rmProfile.DefaultContext = new AzureContext(null, null, null, null);
             RunDataProfileTest(
                  rmProfile,

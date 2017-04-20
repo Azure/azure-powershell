@@ -303,7 +303,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests
             client.AddOrSetEnvironment(new AzureEnvironment
                 {
                     Name = UnitTestEnvironmentName,
-                    ServiceManagement = MockHttpServer.DefaultHttpsServerPrefixUri,
+                    ServiceManagementUrl = MockHttpServer.DefaultHttpsServerPrefixUri.AbsoluteUri,
                     SqlDatabaseDnsSuffix = ".database.windows.net"
                 });
             

@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 throw new ArgumentNullException("environment");
             }
 
-            var adEndpoint = environment.ActiveDirectory;
+            var adEndpoint = environment.ActiveDirectoryAuthority;
             if (null == adEndpoint)
             {
                 throw new ArgumentOutOfRangeException(

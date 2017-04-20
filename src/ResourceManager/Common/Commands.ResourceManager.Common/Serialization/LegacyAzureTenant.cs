@@ -12,25 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Profile.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Common;
-using System.Management.Automation;
+using System;
 
-namespace Microsoft.Azure.Commands.Profile
+namespace Microsoft.Azure.Commands.ResourceManager.Common.Serialization
 {
-    /// <summary>
-    /// Cmdlet to get current context. 
-    /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmContext")]
-    [OutputType(typeof(PSAzureContext))]
-    public class GetAzureRMContextCommand : AzureRMCmdlet
+    public class LegacyAzureTenant
     {
-        public override void ExecuteCmdlet()
-        {
-            WriteObject(new PSAzureContext(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().DefaultContext));
-        }
+        /// <summary>
+        /// Gets or sets the tenant id.
+        /// </summary>
+        public Guid Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the tenant domain.
+        /// </summary>
+        public string Domain { get; set; }
+
     }
 }

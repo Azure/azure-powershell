@@ -32,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
     /// </summary>
     public abstract class RMTestBase
     {
-        protected AzureRMProfile currentProfile;
+        protected AzureRmProfile currentProfile;
 
         public RMTestBase()
         {
@@ -47,7 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
         {
             AzureSessionInitializer.InitializeAzureSession();
             ResourceManagerProfileProvider.InitializeResourceManagerProfile();
-            currentProfile = new AzureRMProfile();
+            currentProfile = new AzureRmProfile();
             var newGuid = Guid.NewGuid();
             var account = new AzureAccount
             {
