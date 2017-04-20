@@ -56,7 +56,7 @@ ElasticPoolName   : ElasticPool01
 Location          : Central US
 CreationDate      : 8/26/2015 10:00:17 PM
 State             : Ready
-Edition           : Standard
+Edition           : Premium
 Dtu               : 200
 DatabaseDtuMax    : 100
 DatabaseDtuMin    : 20
@@ -65,7 +65,7 @@ Tags              :
 ```
 
 This command modifies properties for an elastic pool named elasticpool01.
-The command sets the max storage for an elastic pool to 2 GB.
+The command sets the max storage for an elastic pool to 2 TB.
 
 ## PARAMETERS
 
