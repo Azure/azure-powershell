@@ -139,10 +139,6 @@
       <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
       <Name>Commands.Common.Authentication.Abstractions</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Test\Commands.Common.Authentication.Test.csproj">
-      <Project>{c2cf99a2-d35e-4aed-afb9-c26960af1d0d}</Project>
-      <Name>Commands.Common.Authentication.Test</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
       <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
       <Name>Commands.Common.Authentication</Name>
