@@ -21,6 +21,7 @@ using Microsoft.Azure.Management.RecoveryServices.Models;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using System.Configuration;
 using System.Net.Security;
+using Microsoft.Azure.Management.Resources;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -29,6 +30,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// </summary>
     public partial class PSRecoveryServicesClient
     {
+        public const string ProductionRpNamespace = "Microsoft.RecoveryServices";
+
         /// <summary>
         /// client request id.
         /// </summary>
@@ -37,11 +40,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets the value of recovery services management client.
         /// </summary>
-        public RecoveryServicesManagementClient GetRecoveryServicesClient
+        public RecoveryServicesClient GetRecoveryServicesClient
         {
             get
             {
                 return this.recoveryServicesClient;
+            }
+        }
+
+        public ResourceManagementClient RmClient
+        {
+            get
+            {
+                return resourceManagementClient;
+            }
+        }
+
+        public string RpNamespace
+        {
+            get
+            {
+                return rpNamespace;
             }
         }
 
@@ -69,20 +88,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Recovery Services client.
         /// </summary>
-        private RecoveryServicesManagementClient recoveryServicesClient;
+        private RecoveryServicesClient recoveryServicesClient;
+
+        private ResourceManagementClient resourceManagementClient;
+
+        private string rpNamespace;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PSRecoveryServicesClient" /> class with 
         /// required current subscription.
         /// </summary>
         /// <param name="azureSubscription">Azure Subscription</param>
-        public PSRecoveryServicesClient(IAzureProfile azureProfile)
+        public PSRecoveryServicesClient(IAzureProfile azureProfile, AzureContext defaultContext)
         {
             System.Configuration.Configuration recoveryServicesConfig = ConfigurationManager.OpenExeConfiguration(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
             System.Configuration.AppSettingsSection appSettings = (System.Configuration.AppSettingsSection)recoveryServicesConfig.GetSection("appSettings");
 
-            string resourceNamespace = string.Empty;
+            var resourceProviderNamespace = string.Empty;
             string resourceType = string.Empty;
             
             // Get Resource provider namespace from config if needed to communicate with internal deployments
@@ -90,28 +113,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             {
                 if (appSettings.Settings.Count == 0)
                 {
-                    resourceNamespace = "Microsoft.RecoveryServices";
+                    resourceProviderNamespace = ProductionRpNamespace;
                 }
                 else
                 {
-                    resourceNamespace =
+                    resourceProviderNamespace =
                         null == appSettings.Settings["ProviderNamespace"]
-                        ? "Microsoft.RecoveryServices"
+                        ? ProductionRpNamespace
                         : appSettings.Settings["ProviderNamespace"].Value;
                 }
 
                 Utilities.UpdateCurrentVaultContext(new ASRVaultCreds()
                 {
-                    ResourceNamespace = resourceNamespace,
+                    ResourceNamespace = resourceProviderNamespace,
                     ARMResourceType = resourceType
                 });
             }
 
-            this.recoveryServicesClient =
-            AzureSession.ClientFactory.CreateCustomClient<RecoveryServicesManagementClient>(
-                arsVaultCreds.ResourceNamespace,
-                AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(azureProfile.Context),
-                azureProfile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager));
+            rpNamespace = string.Copy(resourceProviderNamespace);
+
+            this.recoveryServicesClient =                
+            AzureSession.ClientFactory.CreateArmClient<RecoveryServicesClient>(
+                defaultContext, AzureEnvironment.Endpoint.ResourceManager);
+
+            resourceManagementClient = AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(defaultContext, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         private static bool IgnoreCertificateErrorHandler
@@ -143,22 +168,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             return resourceId.Substring(startIndex, endIndex - startIndex);
         }
 
-        /// <summary>
-        /// Gets request headers.
-        /// </summary>
-        /// <param name="shouldSignRequest">specifies whether to sign the request or not</param>
-        /// <returns>Custom request headers</returns>
-        public CustomRequestHeaders GetRequestHeaders()
-        {
-            this.ClientRequestId = Guid.NewGuid().ToString() + "-" + DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ssZ") + "-P";
+        ///// <summary>
+        ///// Gets request headers.
+        ///// </summary>
+        ///// <param name="shouldSignRequest">specifies whether to sign the request or not</param>
+        ///// <returns>Custom request headers</returns>
+        //public CustomRequestHeaders GetRequestHeaders()
+        //{
+        //    this.ClientRequestId = Guid.NewGuid().ToString() + "-" + DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ssZ") + "-P";
 
-            return new CustomRequestHeaders()
-            {
-                // ClientRequestId is a unique ID for every request.
-                // It is useful when diagnosing failures in API calls.
-                ClientRequestId = this.ClientRequestId,
-                AgentAuthenticationHeader = ""
-            };
-        }
+        //    return new CustomRequestHeaders()
+        //    {
+        //        // ClientRequestId is a unique ID for every request.
+        //        // It is useful when diagnosing failures in API calls.
+        //        ClientRequestId = this.ClientRequestId,
+        //        AgentAuthenticationHeader = ""
+        //    };
+        //}
     }
 }
