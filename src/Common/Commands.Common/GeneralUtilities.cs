@@ -251,6 +251,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         public static string EnsureTrailingSlash(string url)
         {
+            if (string.IsNullOrWhiteSpace(url))
+            {
+                return url;
+            }
+
             UriBuilder address = new UriBuilder(url);
             if (!address.Path.EndsWith("/", StringComparison.Ordinal))
             {

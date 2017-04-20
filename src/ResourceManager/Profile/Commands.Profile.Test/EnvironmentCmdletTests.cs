@@ -239,19 +239,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 Name = "Katal",
-                ActiveDirectoryEndpoint = "ActiveDirectoryEndpoint",
+                ActiveDirectoryEndpoint = "https://ActiveDirectoryEndpoint",
                 AdTenant = "AdTenant",
                 AzureKeyVaultDnsSuffix = "AzureKeyVaultDnsSuffix",
-                ActiveDirectoryServiceEndpointResourceId = "ActiveDirectoryServiceEndpointResourceId",
-                AzureKeyVaultServiceEndpointResourceId = "AzureKeyVaultServiceEndpointResourceId",
+                ActiveDirectoryServiceEndpointResourceId = "https://ActiveDirectoryServiceEndpointResourceId",
+                AzureKeyVaultServiceEndpointResourceId = "https://AzureKeyVaultServiceEndpointResourceId",
                 EnableAdfsAuthentication = true,
-                GalleryEndpoint = "GalleryEndpoint",
-                GraphEndpoint = "GraphEndpoint",
-                ManagementPortalUrl = "ManagementPortalUrl",
-                PublishSettingsFileUrl = "PublishSettingsFileUrl",
-                ResourceManagerEndpoint = "ResourceManagerEndpoint",
-                ServiceEndpoint = "ServiceEndpoint",
-                StorageEndpoint = "StorageEndpoint",
+                GalleryEndpoint = "https://GalleryEndpoint",
+                GraphEndpoint = "https://GraphEndpoint",
+                ManagementPortalUrl = "https://ManagementPortalUrl",
+                PublishSettingsFileUrl = "https://PublishSettingsFileUrl",
+                ResourceManagerEndpoint = "https://ResourceManagerEndpoint",
+                ServiceEndpoint = "https://ServiceEndpoint",
+                StorageEndpoint = "https://StorageEndpoint",
                 SqlDatabaseDnsSuffix = "SqlDatabaseDnsSuffix",
                 TrafficManagerDnsSuffix = "TrafficManagerDnsSuffix",
                 GraphAudience = "GaraphAudience"
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.InvokeEndProcessing();
             Assert.Equal(cmdlet.Name, actual.Name);
             Assert.Equal(cmdlet.EnableAdfsAuthentication.ToBool(), actual.EnableAdfsAuthentication);
-            Assert.Equal(cmdlet.ActiveDirectoryEndpoint, actual.ActiveDirectoryAuthority);
+            Assert.Equal(cmdlet.ActiveDirectoryEndpoint + "/", actual.ActiveDirectoryAuthority, StringComparer.OrdinalIgnoreCase);
             Assert.Equal(cmdlet.ActiveDirectoryServiceEndpointResourceId,
                 actual.ActiveDirectoryServiceEndpointResourceId);
             Assert.Equal(cmdlet.AdTenant, actual.AdTenant);
@@ -281,6 +281,27 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Once());
             AzureEnvironment env = AzureRmProfileProvider.Instance.Profile.Environments["KaTaL"];
             Assert.Equal(env.Name, cmdlet.Name);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CreateEnvironmentWithTrailingSlashInActiveDirectory()
+        {
+            Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
+            PSAzureEnvironment actual = null;
+            commandRuntimeMock.Setup(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()))
+                .Callback((object output) => actual = (PSAzureEnvironment)output);
+            var cmdlet = new AddAzureRMEnvironmentCommand()
+            {
+                CommandRuntime = commandRuntimeMock.Object,
+                Name = "Katal",
+                ActiveDirectoryEndpoint = "https://ActiveDirectoryEndpoint/"
+            };
+
+            cmdlet.InvokeBeginProcessing();
+            cmdlet.ExecuteCmdlet();
+            cmdlet.InvokeEndProcessing();
+            Assert.Equal(cmdlet.ActiveDirectoryEndpoint, actual.ActiveDirectoryAuthority, StringComparer.OrdinalIgnoreCase);
         }
 
 
