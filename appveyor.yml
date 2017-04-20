@@ -7,7 +7,6 @@ environment:
     secure: VMFbecLLHzDq/09YDPbcM0VDDSwwgY57vr5GXK6cZZ4Ti/Xs5RZoylzV8MMr1350
 
 before_build:
-  - set path=%programfiles(x86)%\Microsoft SDKs\TypeScript\2.2;%path%
   - ps: Install-Product node $env:nodejs_version
   - git config --global credential.helper store
   - ps: ac "$env:USERPROFILE\.git-credentials" "https://$($env:github_access_token):x-oauth-basic@github.com`n"
@@ -16,8 +15,8 @@ before_build:
   - git clone -q https://github.com/MicrosoftDocs/azure-psdocs-ciscripts azpsci
   - cd azpsci
   - npm install
-  - npm install -g typescript
-  - tsc
+  - npm install typescript
+  - node ./node_modules/typescript/bin/tsc
   - cd ..
 build_script:
   - node azpsci/out/ci0.js src c:\projects\_output
