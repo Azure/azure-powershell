@@ -77,11 +77,11 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            WriteWarning("This output of this cmdlet will change in the next release to return the updated or newly created object.");
+            WriteWarning("This output of this cmdlet will change in the next release to return a single object, not a list, that incldes the updated or newly created object.");
             AlertRuleResource parameters = this.CreateSdkCallParameters();
 
             // Part of the result of this operation is operation (result.Body ==> a AutoscaleSettingResource) is being discarded for backwards compatibility
-            var result = this.InsightsManagementClient.AlertRules.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName: this.ResourceGroup, parameters: parameters, ruleName: parameters.AlertRuleResourceName).Result;
+            var result = this.MonitorManagementClient.AlertRules.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName: this.ResourceGroup, parameters: parameters, ruleName: parameters.AlertRuleResourceName).Result;
 
             // Keep this response for backwards compatibility.
             // Note: Create operations return the newly created object in the new specification, i.e. need to use result.Body

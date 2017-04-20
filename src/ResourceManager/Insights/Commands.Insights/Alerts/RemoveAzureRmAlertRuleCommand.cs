@@ -14,7 +14,6 @@
 
 using System.Collections.Generic;
 using System.Net;
-using Microsoft.Azure.Management.Insights;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Insights.Alerts
@@ -50,8 +49,8 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            WriteWarning("The output of this cmdlet will change. The cmdlet will not return anything in future releases.");
-            var result = this.InsightsManagementClient.AlertRules.DeleteWithHttpMessagesAsync(resourceGroupName: this.ResourceGroup, ruleName: this.Name).Result;
+            WriteWarning("The type of the output of this cmdlet will change in future releases to become a single object, not a list.");
+            var result = this.MonitorManagementClient.AlertRules.DeleteWithHttpMessagesAsync(resourceGroupName: this.ResourceGroup, ruleName: this.Name).Result;
 
             // Keep this response for backwards compatibility.
             // Note: Delete operations return nothing in the new specification.
@@ -60,7 +59,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                 new AzureOperationResponse()
                 {
                     RequestId = result.RequestId,
-                    StatusCode = HttpStatusCode.OK
+                    StatusCode = result.Response != null ? result.Response.StatusCode : HttpStatusCode.OK
                 }
             };
 

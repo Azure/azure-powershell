@@ -31,8 +31,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
     public class GetAzureRmAutoscaleHistoryTests
     {
         private readonly GetAzureRmAutoscaleHistoryCommand cmdlet;
-        private readonly Mock<InsightsClient> insightsClientMock;
-        private readonly Mock<IEventsOperations> insightsEventOperationsMock;
+        private readonly Mock<MonitorClient> MonitorClientMock;
+        private readonly Mock<IActivityLogsOperations> insightsEventOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
         private AzureOperationResponse<IPage<EventData>> response;
         private ODataQuery<EventData> filter;
@@ -41,13 +41,13 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
         public GetAzureRmAutoscaleHistoryTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             //ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
-            insightsEventOperationsMock = new Mock<IEventsOperations>();
-            insightsClientMock = new Mock<InsightsClient>();
+            insightsEventOperationsMock = new Mock<IActivityLogsOperations>();
+            MonitorClientMock = new Mock<MonitorClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetAzureRmAutoscaleHistoryCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                InsightsClient = insightsClientMock.Object
+                MonitorClient = MonitorClientMock.Object
             };
 
             response = Test.Utilities.InitializeResponse();
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
                     selected = s;
                 });
 
-            insightsClientMock.SetupGet(f => f.Events).Returns(this.insightsEventOperationsMock.Object);
+            MonitorClientMock.SetupGet(f => f.ActivityLogs).Returns(this.insightsEventOperationsMock.Object);
         }
 
         [Fact]

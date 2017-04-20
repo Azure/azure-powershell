@@ -54,20 +54,6 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">List`1[AutoscaleNotification]</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>Add-AzureRmAutoscaleSetting</maml:name>
@@ -119,20 +105,6 @@
 					<maml:para>List of comma-separated notifications</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">List`1[AutoscaleNotification]</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -197,30 +169,6 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			<dev:type>
-				<maml:name>ActionPreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Location</maml:name>
 			<maml:description>
@@ -253,6 +201,30 @@
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
+			<dev:type>
+				<maml:name>actionpreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -448,20 +420,6 @@ Add-AzureRmAutoscaleSetting -Location &quot;East US&quot; -Name MySetting -Resou
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">List`1[RuleAction]</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -626,9 +584,9 @@ Add-AzureRmAutoscaleSetting -Location &quot;East US&quot; -Name MySetting -Resou
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
 			<dev:type>
-				<maml:name>ActionPreference</maml:name>
+				<maml:name>actionpreference</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -638,9 +596,9 @@ Add-AzureRmAutoscaleSetting -Location &quot;East US&quot; -Name MySetting -Resou
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -787,20 +745,6 @@ Add-AzureRmAutoscaleSetting -Location &quot;East US&quot; -Name MySetting -Resou
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">List`1[String]</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -881,9 +825,9 @@ Add-AzureRmAutoscaleSetting -Location &quot;East US&quot; -Name MySetting -Resou
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
 			<dev:type>
-				<maml:name>ActionPreference</maml:name>
+				<maml:name>actionpreference</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -893,9 +837,9 @@ Add-AzureRmAutoscaleSetting -Location &quot;East US&quot; -Name MySetting -Resou
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -1052,20 +996,6 @@ Add-AzureRmAutoscaleSetting -Location &quot;East US&quot; -Name MySetting -Resou
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">List`1[RuleAction]</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -1218,9 +1148,9 @@ Add-AzureRmAutoscaleSetting -Location &quot;East US&quot; -Name MySetting -Resou
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
 			<dev:type>
-				<maml:name>ActionPreference</maml:name>
+				<maml:name>actionpreference</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -1230,9 +1160,9 @@ Add-AzureRmAutoscaleSetting -Location &quot;East US&quot; -Name MySetting -Resou
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -1468,20 +1398,6 @@ If the rule exists, then it just disables it.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">List`1[RuleAction]</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -1622,9 +1538,9 @@ If the rule exists, then it just disables it.</maml:para>
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
 			<dev:type>
-				<maml:name>ActionPreference</maml:name>
+				<maml:name>actionpreference</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -1634,9 +1550,9 @@ If the rule exists, then it just disables it.</maml:para>
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -1779,20 +1695,6 @@ If the rule exists, then it just disables it.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -1873,9 +1775,9 @@ If the rule exists, then it just disables it.</maml:para>
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
 			<dev:type>
-				<maml:name>ActionPreference</maml:name>
+				<maml:name>actionpreference</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -1885,9 +1787,9 @@ If the rule exists, then it just disables it.</maml:para>
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -2026,20 +1928,6 @@ If the rule exists, then it just disables it.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>Get-AzureRmAlertRule</maml:name>
@@ -2064,20 +1952,6 @@ If the rule exists, then it just disables it.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>Get-AzureRmAlertRule</maml:name>
@@ -2101,20 +1975,6 @@ If the rule exists, then it just disables it.</maml:para>
 					<maml:para>If present, it enables the display of full details in the output.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -2143,30 +2003,6 @@ If the rule exists, then it just disables it.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			<dev:type>
-				<maml:name>ActionPreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Name</maml:name>
 			<maml:description>
@@ -2187,6 +2023,30 @@ If the rule exists, then it just disables it.</maml:para>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
+			<dev:type>
+				<maml:name>actionpreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -2374,20 +2234,6 @@ The output contains only basic information about the alert rule.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -2468,9 +2314,9 @@ The output contains only basic information about the alert rule.</maml:para>
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
 			<dev:type>
-				<maml:name>ActionPreference</maml:name>
+				<maml:name>actionpreference</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -2480,9 +2326,9 @@ The output contains only basic information about the alert rule.</maml:para>
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -2620,20 +2466,6 @@ The output contains only basic information about the alert rule.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -2678,9 +2510,9 @@ The output contains only basic information about the alert rule.</maml:para>
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
 			<dev:type>
-				<maml:name>ActionPreference</maml:name>
+				<maml:name>actionpreference</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -2690,9 +2522,9 @@ The output contains only basic information about the alert rule.</maml:para>
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -2816,17 +2648,10 @@ The output contains only basic information about the alert rule.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
+					<maml:para>The name of the diagnostic setting. Formerly only the name &quot;service&quot; was supported.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -2845,14 +2670,26 @@ The output contains only basic information about the alert rule.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para>The name of the diagnostic setting. Formerly only the name &quot;service&quot; was supported.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>service</dev:defaultValue>
+		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>InformationAction</maml:name>
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
 			<dev:type>
-				<maml:name>ActionPreference</maml:name>
+				<maml:name>actionpreference</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -2862,9 +2699,9 @@ The output contains only basic information about the alert rule.</maml:para>
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -3004,20 +2841,6 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>Get-AzureRmLog</maml:name>
@@ -3071,20 +2894,6 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 					<maml:para>If present it indicates total number of events to be fetched for the filter specified. This parameter is optional. The default is 1000.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
@@ -3140,20 +2949,6 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>Get-AzureRmLog</maml:name>
@@ -3208,20 +3003,6 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>Get-AzureRmLog</maml:name>
@@ -3268,20 +3049,6 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 					<maml:para>If present it indicates total number of events to be fetched for the filter specified. This parameter is optional. The default is 1000.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -3372,30 +3139,6 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			<dev:type>
-				<maml:name>ActionPreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 			<maml:name>ResourceId</maml:name>
 			<maml:description>
@@ -3428,6 +3171,30 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
+			<dev:type>
+				<maml:name>actionpreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -3903,20 +3670,6 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -3937,9 +3690,9 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
 			<dev:type>
-				<maml:name>ActionPreference</maml:name>
+				<maml:name>actionpreference</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -3949,9 +3702,9 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -4032,12 +3785,43 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>MetricNames</maml:name>
+				<maml:description>
+					<maml:para>Comma-separated list of metric names. This mandatory in the full parameter group call. If given, it enables all the other parameters, hence that is called a full parameter call. If not given, no other parameter is accepted. Note: the ResourceId parameter is always mandatory and enabled. DetailedOutput is always optional and always enabled.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>DetailedOutput</maml:name>
+				<maml:description>
+					<maml:para>If present it indicates that the output will be detailed. This parameter is optional. The default is no (i.e. summarized output.)</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Get-AzureRmMetric</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+				<maml:name>ResourceId</maml:name>
+				<maml:description>
+					<maml:para>The id of the resource the metric is associated to.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>TimeGrain</maml:name>
 				<maml:description>
 					<maml:para>The time grain of the metric to be retrieve.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">TimeSpan</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>AggregationType</maml:name>
+				<maml:description>
+					<maml:para>The metric&#39;s aggregation type. It can take one value of the following set: None, Average, Count, Minimum, Maximum, Total.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[AggregationType]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>StartTime</maml:name>
@@ -4055,7 +3839,7 @@ The value must be later than StartTime.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>MetricNames</maml:name>
 				<maml:description>
 					<maml:para>Comma-separated list of metric names. This mandatory in the full parameter group call. If given, it enables all the other parameters, hence that is called a full parameter call. If not given, no other parameter is accepted. Note: the ResourceId parameter is always mandatory and enabled. DetailedOutput is always optional and always enabled.</maml:para>
@@ -4068,20 +3852,6 @@ The value must be later than StartTime.</maml:para>
 					<maml:para>If present it indicates that the output will be detailed. This parameter is optional. The default is no (i.e. summarized output.)</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -4098,7 +3868,31 @@ The value must be later than StartTime.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+			<maml:name>MetricNames</maml:name>
+			<maml:description>
+				<maml:para>Comma-separated list of metric names. This mandatory in the full parameter group call. If given, it enables all the other parameters, hence that is called a full parameter call. If not given, no other parameter is accepted. Note: the ResourceId parameter is always mandatory and enabled. DetailedOutput is always optional and always enabled.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			<dev:type>
+				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>DetailedOutput</maml:name>
+			<maml:description>
+				<maml:para>If present it indicates that the output will be detailed. This parameter is optional. The default is no (i.e. summarized output.)</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>TimeGrain</maml:name>
 			<maml:description>
 				<maml:para>The time grain of the metric to be retrieve.</maml:para>
@@ -4106,6 +3900,18 @@ The value must be later than StartTime.</maml:para>
 			<command:parameterValue required="true" variableLength="false">TimeSpan</command:parameterValue>
 			<dev:type>
 				<maml:name>TimeSpan</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>AggregationType</maml:name>
+			<maml:description>
+				<maml:para>The metric&#39;s aggregation type. It can take one value of the following set: None, Average, Count, Minimum, Maximum, Total.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">Nullable`1[AggregationType]</command:parameterValue>
+			<dev:type>
+				<maml:name>Nullable`1[AggregationType]</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -4136,38 +3942,14 @@ The value must be later than StartTime.</maml:para>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>MetricNames</maml:name>
-			<maml:description>
-				<maml:para>Comma-separated list of metric names. This mandatory in the full parameter group call. If given, it enables all the other parameters, hence that is called a full parameter call. If not given, no other parameter is accepted. Note: the ResourceId parameter is always mandatory and enabled. DetailedOutput is always optional and always enabled.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
-			<dev:type>
-				<maml:name>String[]</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>DetailedOutput</maml:name>
-			<maml:description>
-				<maml:para>If present it indicates that the output will be detailed. This parameter is optional. The default is no (i.e. summarized output.)</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>InformationAction</maml:name>
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
 			<dev:type>
-				<maml:name>ActionPreference</maml:name>
+				<maml:name>actionpreference</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -4177,21 +3959,9 @@ The value must be later than StartTime.</maml:para>
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
-			<maml:name>AggregationType</maml:name>
-			<maml:description>
-				<maml:para>The metric&#39;s aggregation type. It can take one value of the following set: None, Average, Count, Minimum, Maximum, Total.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">nullable`1[aggregationtype]</command:parameterValue>
-			<dev:type>
-				<maml:name>nullable`1[aggregationtype]</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -4368,20 +4138,6 @@ Get-AzureRmMetric -ResourceId /subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd119
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -4426,9 +4182,9 @@ Get-AzureRmMetric -ResourceId /subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd119
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
 			<dev:type>
-				<maml:name>ActionPreference</maml:name>
+				<maml:name>actionpreference</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -4438,9 +4194,9 @@ Get-AzureRmMetric -ResourceId /subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd119
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -4611,20 +4367,6 @@ Name                   :
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -4693,9 +4435,9 @@ Name                   :
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
 			<dev:type>
-				<maml:name>ActionPreference</maml:name>
+				<maml:name>actionpreference</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -4705,9 +4447,9 @@ Name                   :
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -4806,20 +4548,6 @@ Name                   :
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -4852,9 +4580,9 @@ Name                   :
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
 			<dev:type>
-				<maml:name>ActionPreference</maml:name>
+				<maml:name>actionpreference</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -4864,9 +4592,9 @@ Name                   :
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -5021,20 +4749,6 @@ Name                   :
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -5067,9 +4781,9 @@ Name                   :
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
 			<dev:type>
-				<maml:name>ActionPreference</maml:name>
+				<maml:name>actionpreference</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -5079,9 +4793,9 @@ Name                   :
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -5230,20 +4944,6 @@ Name                   :
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -5300,9 +5000,9 @@ Name                   :
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
 			<dev:type>
-				<maml:name>ActionPreference</maml:name>
+				<maml:name>actionpreference</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -5312,9 +5012,9 @@ Name                   :
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -5458,20 +5158,6 @@ Name                   :
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">List`1[ScaleRule]</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>New-AzureRmAutoscaleProfile</maml:name>
@@ -5530,20 +5216,6 @@ Name                   :
 					<maml:para>The list of rules to add to the newly created profile.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">List`1[ScaleRule]</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
@@ -5618,20 +5290,6 @@ Name                   :
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">List`1[ScaleRule]</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -5691,30 +5349,6 @@ Name                   :
 			<command:parameterValue required="true" variableLength="true">List`1[ScaleRule]</command:parameterValue>
 			<dev:type>
 				<maml:name>List`1[ScaleRule]</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			<dev:type>
-				<maml:name>ActionPreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -5811,6 +5445,30 @@ Name                   :
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
+			<dev:type>
+				<maml:name>actionpreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -6071,20 +5729,6 @@ $profile = New-AzureRmAutoscaleProfile -DefaultCapacity &quot;1&quot; -MaximumCa
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -6237,9 +5881,9 @@ $profile = New-AzureRmAutoscaleProfile -DefaultCapacity &quot;1&quot; -MaximumCa
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
 			<dev:type>
-				<maml:name>ActionPreference</maml:name>
+				<maml:name>actionpreference</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -6249,9 +5893,9 @@ $profile = New-AzureRmAutoscaleProfile -DefaultCapacity &quot;1&quot; -MaximumCa
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -6392,20 +6036,6 @@ $rule2 = New-AzureRmAutoscaleRule -MetricName Requests -MetricResourceId &quot;/
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -6438,9 +6068,9 @@ $rule2 = New-AzureRmAutoscaleRule -MetricName Requests -MetricResourceId &quot;/
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
 			<dev:type>
-				<maml:name>ActionPreference</maml:name>
+				<maml:name>actionpreference</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -6450,9 +6080,9 @@ $rule2 = New-AzureRmAutoscaleRule -MetricName Requests -MetricResourceId &quot;/
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -6551,20 +6181,6 @@ $rule2 = New-AzureRmAutoscaleRule -MetricName Requests -MetricResourceId &quot;/
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -6597,9 +6213,9 @@ $rule2 = New-AzureRmAutoscaleRule -MetricName Requests -MetricResourceId &quot;/
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
 			<dev:type>
-				<maml:name>ActionPreference</maml:name>
+				<maml:name>actionpreference</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -6609,9 +6225,9 @@ $rule2 = New-AzureRmAutoscaleRule -MetricName Requests -MetricResourceId &quot;/
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -6730,20 +6346,6 @@ $rule2 = New-AzureRmAutoscaleRule -MetricName Requests -MetricResourceId &quot;/
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -6776,9 +6378,9 @@ $rule2 = New-AzureRmAutoscaleRule -MetricName Requests -MetricResourceId &quot;/
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
 			<dev:type>
-				<maml:name>ActionPreference</maml:name>
+				<maml:name>actionpreference</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -6788,9 +6390,9 @@ $rule2 = New-AzureRmAutoscaleRule -MetricName Requests -MetricResourceId &quot;/
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -6850,6 +6452,105 @@ $rule2 = New-AzureRmAutoscaleRule -MetricName Requests -MetricResourceId &quot;/
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <!--Generated by PS Cmdlet Help Editor-->
 	<command:details>
+		<command:name>Remove-AzureRmDiagnosticSetting</command:name>
+		<maml:description>
+			<maml:para>Removes diagnostic settings</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>Remove</command:verb>
+		<command:noun>AzureRmDiagnosticSetting</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>Removes diagnostic settings</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Remove-AzureRmDiagnosticSetting</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+				<maml:name>ResourceId</maml:name>
+				<maml:description>
+					<maml:para>The id of the resource.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>The name of the diagnostic setting. Formerly only the name &quot;service&quot; was supported.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+			<maml:name>ResourceId</maml:name>
+			<maml:description>
+				<maml:para>The id of the resource.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para>The name of the diagnostic setting. Formerly only the name &quot;service&quot; was supported.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>service</dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
 		<command:name>Remove-AzureRmLogProfile</command:name>
 		<maml:description>
 			<maml:para>Removes a log profile</maml:para>
@@ -6874,20 +6575,6 @@ $rule2 = New-AzureRmAutoscaleRule -MetricName Requests -MetricResourceId &quot;/
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -6908,9 +6595,9 @@ $rule2 = New-AzureRmAutoscaleRule -MetricName Requests -MetricResourceId &quot;/
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
 			<dev:type>
-				<maml:name>ActionPreference</maml:name>
+				<maml:name>actionpreference</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -6920,9 +6607,9 @@ $rule2 = New-AzureRmAutoscaleRule -MetricName Requests -MetricResourceId &quot;/
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -6975,380 +6662,404 @@ $rule2 = New-AzureRmAutoscaleRule -MetricName Requests -MetricResourceId &quot;/
 		</maml:navigationLink>
 	</maml:relatedLinks>
 </command:command>
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-    <!--Generated by PS Cmdlet Help Editor-->
-    <command:details>
-      <command:name>Set-AzureRmDiagnosticSetting</command:name>
-      <maml:description>
-        <maml:para>Sets the logs and metrics settings for the resource.</maml:para>
-      </maml:description>
-      <maml:copyright>
-        <maml:para />
-      </maml:copyright>
-      <command:verb>Set</command:verb>
-      <command:noun>AzureRmDiagnosticSetting</command:noun>
-      <dev:version />
-    </command:details>
-    <maml:description>
-      <maml:para>This command enables or disables each timegrain and log category for the particular resource. The logs and metrics will be stored in the defined storage account.</maml:para>
-    </maml:description>
-    <command:syntax>
-      <command:syntaxItem>
-        <maml:name>Set-AzureRmDiagnosticSetting</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>ResourceId</maml:name>
-          <maml:description>
-            <maml:para>The id of the resource.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>StorageAccountId</maml:name>
-          <maml:description>
-            <maml:para>The id of the storage account where the data will be saved to.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>ServiceBusRuleId</maml:name>
-          <maml:description>
-            <maml:para>The Id of the service bus rule</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>Enabled</maml:name>
-          <maml:description>
-            <maml:para>The value indicating whether the diagnostics should be enabled or disabled</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="true">Nullable`1[Boolean]</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>Categories</maml:name>
-          <maml:description>
-            <maml:para>The list of log categories to be enabled or disabled, according to the value in -Enable. If no category is specified, this command assumes all categories.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="true">List`1[String]</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>Timegrains</maml:name>
-          <maml:description>
-            <maml:para>The list of timegrains to be enabled or disabled for metrics, according to the value in -Enable. If no timegrain is specified, this command assumes all available timegrains.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="true">List`1[String]</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>RetentionEnabled</maml:name>
-          <maml:description>
-            <maml:para>Flag to enable/disable retention</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="true">Nullable`1[Boolean]</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>WorkspaceId</maml:name>
-          <maml:description>
-            <maml:para>The resource Id of the Log Analytics workspace to send logs/metrics to.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>RetentionInDays</maml:name>
-          <maml:description>
-            <maml:para>The number of retention days.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>InformationAction</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>InformationVariable</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-    </command:syntax>
-    <command:parameters>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-        <maml:name>ResourceId</maml:name>
-        <maml:description>
-          <maml:para>The id of the resource.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-        <maml:name>StorageAccountId</maml:name>
-        <maml:description>
-          <maml:para>The id of the storage account where the data will be saved to.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-        <maml:name>ServiceBusRuleId</maml:name>
-        <maml:description>
-          <maml:para>The Id of the service bus rule</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-        <maml:name>Enabled</maml:name>
-        <maml:description>
-          <maml:para>The value indicating whether the diagnostics should be enabled or disabled</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="true">Nullable`1[Boolean]</command:parameterValue>
-        <dev:type>
-          <maml:name>Nullable`1[Boolean]</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-        <maml:name>Categories</maml:name>
-        <maml:description>
-          <maml:para>The list of log categories to be enabled or disabled, according to the value in -Enable. If no category is specified, this command assumes all categories.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="true">List`1[String]</command:parameterValue>
-        <dev:type>
-          <maml:name>List`1[String]</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-        <maml:name>Timegrains</maml:name>
-        <maml:description>
-          <maml:para>The list of timegrains to be enabled or disabled for metrics, according to the value in -Enable. If no timegrain is specified, this command assumes all available timegrains.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="true">List`1[String]</command:parameterValue>
-        <dev:type>
-          <maml:name>List`1[String]</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-        <maml:name>RetentionEnabled</maml:name>
-        <maml:description>
-          <maml:para>Flag to enable/disable retention</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="true">Nullable`1[Boolean]</command:parameterValue>
-        <dev:type>
-          <maml:name>Nullable`1[Boolean]</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-        <maml:name>WorkspaceId</maml:name>
-        <maml:description>
-          <maml:para>The resource Id of the Log Analytics workspace to send logs/metrics to.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-        <maml:name>RetentionInDays</maml:name>
-        <maml:description>
-          <maml:para>The number of retention days.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
-        <dev:type>
-          <maml:name>Nullable`1[Int32]</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>InformationAction</maml:name>
-        <maml:description>
-          <maml:para />
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-        <dev:type>
-          <maml:name>ActionPreference</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>InformationVariable</maml:name>
-        <maml:description>
-          <maml:para />
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-    </command:parameters>
-    <command:inputTypes>
-      <command:inputType>
-        <dev:type>
-          <maml:name></maml:name>
-          <maml:uri></maml:uri>
-          <maml:description/>
-        </dev:type>
-        <maml:description>
-          <maml:para>
-          </maml:para>
-        </maml:description>
-      </command:inputType>
-    </command:inputTypes>
-    <command:returnValues>
-      <command:returnValue>
-        <dev:type>
-          <maml:name></maml:name>
-          <maml:uri></maml:uri>
-          <maml:description/>
-        </dev:type>
-        <maml:description>
-          <maml:para>
-          </maml:para>
-        </maml:description>
-      </command:returnValue>
-    </command:returnValues>
-    <command:terminatingErrors></command:terminatingErrors>
-    <command:nonTerminatingErrors></command:nonTerminatingErrors>
-    <maml:alertSet>
-      <maml:title></maml:title>
-      <maml:alert>
-        <maml:para />
-      </maml:alert>
-    </maml:alertSet>
-    <command:examples>
-      <command:example>
-        <maml:title>--------------------------  Enabling all  --------------------------</maml:title>
-        <maml:introduction>
-          <maml:paragraph>PS C:\&gt;</maml:paragraph>
-        </maml:introduction>
-        <dev:code>Set-AzureRmDiagnosticSetting -ResourceId &lt;resourceId&gt; -Enable $true</dev:code>
-        <dev:remarks>
-          <maml:para>This will enable all available metrics and logs for the resource.</maml:para>
-          <maml:para />
-          <maml:para />
-          <maml:para></maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText>
-              <maml:para />
-            </command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-      <command:example>
-        <maml:title>--------------------------  Disabling all  --------------------------</maml:title>
-        <maml:introduction>
-          <maml:paragraph>PS C:\&gt;</maml:paragraph>
-        </maml:introduction>
-        <dev:code>Set-AzureRmDiagnosticSetting -ResourceId &lt;resourceId&gt; -Enable $false</dev:code>
-        <dev:remarks>
-          <maml:para>This will disable all available metrics and logs for the resource &lt;resourceName&gt;.</maml:para>
-          <maml:para />
-          <maml:para />
-          <maml:para></maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText>
-              <maml:para />
-            </command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-      <command:example>
-        <maml:title>--------------------------  Enabling some categories  --------------------------</maml:title>
-        <maml:introduction>
-          <maml:paragraph>PS C:\&gt;</maml:paragraph>
-        </maml:introduction>
-        <dev:code>Set-AzureRmDiagnosticSetting -ResourceId &lt;resourceId&gt; -Enable $true -Categories Category1,Category2</dev:code>
-        <dev:remarks>
-          <maml:para>This will enable only Category1 and Category2. All timegrains and other categories will remain the same.</maml:para>
-          <maml:para />
-          <maml:para />
-          <maml:para></maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText>
-              <maml:para />
-            </command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-      <command:example>
-        <maml:title>--------------------------  Enabling some timegrains and categories  --------------------------</maml:title>
-        <maml:introduction>
-          <maml:paragraph>PS C:\&gt;</maml:paragraph>
-        </maml:introduction>
-        <dev:code>Set-AzureRmDiagnosticSetting -ResourceId &lt;resourceId&gt; -Enable $true -Categories Category1,Category2 -Timegrains PT1M</dev:code>
-        <dev:remarks>
-          <maml:para>This will enable only Category1, Category2 and timegrain PT1M. All timegrains and other categories will remain the same.</maml:para>
-          <maml:para />
-          <maml:para />
-          <maml:para></maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText>
-              <maml:para />
-            </command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-      <command:example>
-        <maml:title>--------------------------  Enabling logs and metrics to go to a Log Analytics workspace  --------------------------</maml:title>
-        <maml:introduction>
-          <maml:paragraph>PS C:\&gt;</maml:paragraph>
-        </maml:introduction>
-        <dev:code>Set-AzureRmDiagnosticSetting -ResourceId &lt;resourceId&gt; --WorkspaceId $workspaceResourceId -Enable $true</dev:code>
-        <dev:remarks>
-          <maml:para>This will enable all logs and metrics for the resource to be sent to a Log Analytics workspace. You can get the resource Id for a workspace using (Get-AzureRmOperationalInsightsWorkspace).ResourceId .</maml:para>
-          <maml:para />
-          <maml:para />
-          <maml:para></maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText>
-              <maml:para />
-            </command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-    </command:examples>
-    <maml:relatedLinks>
-      <maml:navigationLink>
-        <maml:linkText>Get-AzureRmDiagnosticSetting</maml:linkText>
-        <maml:uri></maml:uri>
-      </maml:navigationLink>
-    </maml:relatedLinks>
-  </command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>Set-AzureRmDiagnosticSetting</command:name>
+		<maml:description>
+			<maml:para>Sets the logs and metrics settings for the resource.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>Set</command:verb>
+		<command:noun>AzureRmDiagnosticSetting</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>This command enables or disables each timegrain and log category for the particular resource. The logs and metrics will be stored in the defined storage account.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Set-AzureRmDiagnosticSetting</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ResourceId</maml:name>
+				<maml:description>
+					<maml:para>The id of the resource.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>The name of the diagnostic setting. Formerly only the name &quot;service&quot; was supported.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>StorageAccountId</maml:name>
+				<maml:description>
+					<maml:para>The id of the storage account where the data will be saved to.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ServiceBusRuleId</maml:name>
+				<maml:description>
+					<maml:para>The Id of the service bus rule</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>EventHubAuthorizationRuleId</maml:name>
+				<maml:description>
+					<maml:para>The EventHub authorization rule Id.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Enabled</maml:name>
+				<maml:description>
+					<maml:para>The value indicating whether the diagnostics should be enabled or disabled</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Categories</maml:name>
+				<maml:description>
+					<maml:para>The list of log categories to be enabled or disabled, according to the value in -Enable. If no category is specified, this command assumes all categories.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">List`1[String]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Timegrains</maml:name>
+				<maml:description>
+					<maml:para>The list of timegrains to be enabled or disabled for metrics, according to the value in -Enable. If no timegrain is specified, this command assumes all available timegrains.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">List`1[String]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>RetentionEnabled</maml:name>
+				<maml:description>
+					<maml:para>Flag to enable/disable retention</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[Boolean]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>WorkspaceId</maml:name>
+				<maml:description>
+					<maml:para>The resource Id of the Log Analytics workspace to send logs/metrics to.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>RetentionInDays</maml:name>
+				<maml:description>
+					<maml:para>The number of retention days.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>ResourceId</maml:name>
+			<maml:description>
+				<maml:para>The id of the resource.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para>The name of the diagnostic setting. Formerly only the name &quot;service&quot; was supported.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>service</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>StorageAccountId</maml:name>
+			<maml:description>
+				<maml:para>The id of the storage account where the data will be saved to.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>ServiceBusRuleId</maml:name>
+			<maml:description>
+				<maml:para>The Id of the service bus rule</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>EventHubAuthorizationRuleId</maml:name>
+			<maml:description>
+				<maml:para>The EventHub authorization rule Id.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Enabled</maml:name>
+			<maml:description>
+				<maml:para>The value indicating whether the diagnostics should be enabled or disabled</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
+			<dev:type>
+				<maml:name>Boolean</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Categories</maml:name>
+			<maml:description>
+				<maml:para>The list of log categories to be enabled or disabled, according to the value in -Enable. If no category is specified, this command assumes all categories.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">List`1[String]</command:parameterValue>
+			<dev:type>
+				<maml:name>List`1[String]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Timegrains</maml:name>
+			<maml:description>
+				<maml:para>The list of timegrains to be enabled or disabled for metrics, according to the value in -Enable. If no timegrain is specified, this command assumes all available timegrains.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">List`1[String]</command:parameterValue>
+			<dev:type>
+				<maml:name>List`1[String]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>RetentionEnabled</maml:name>
+			<maml:description>
+				<maml:para>Flag to enable/disable retention</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">Nullable`1[Boolean]</command:parameterValue>
+			<dev:type>
+				<maml:name>Nullable`1[Boolean]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>WorkspaceId</maml:name>
+			<maml:description>
+				<maml:para>The resource Id of the Log Analytics workspace to send logs/metrics to.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>RetentionInDays</maml:name>
+			<maml:description>
+				<maml:para>The number of retention days.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
+			<dev:type>
+				<maml:name>Nullable`1[Int32]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
+			<dev:type>
+				<maml:name>actionpreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Enabling all  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>Set-AzureRmDiagnosticSetting -ResourceId &lt;resourceId&gt; -Enable $true</dev:code>
+			<dev:remarks>
+				<maml:para>This will enable all available metrics and logs for the resource.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Disabling all  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>Set-AzureRmDiagnosticSetting -ResourceId &lt;resourceId&gt; -Enable $false</dev:code>
+			<dev:remarks>
+				<maml:para>This will disable all available metrics and logs for the resource &lt;resourceName&gt;.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Enabling some categories  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>Set-AzureRmDiagnosticSetting -ResourceId &lt;resourceId&gt; -Enable $true -Categories Category1,Category2</dev:code>
+			<dev:remarks>
+				<maml:para>This will enable only Category1 and Category2. All timegrains and other categories will remain the same.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Enabling some timegrains and categories  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>Set-AzureRmDiagnosticSetting -ResourceId &lt;resourceId&gt; -Enable $true -Categories Category1,Category2 -Timegrains PT1M</dev:code>
+			<dev:remarks>
+				<maml:para>This will enable only Category1, Category2 and timegrain PT1M. All timegrains and other categories will remain the same.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Enabling logs and metrics to go to a Log Analytics workspace  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>Set-AzureRmDiagnosticSetting -ResourceId &lt;resourceId&gt; --WorkspaceId $workspaceResourceId -Enable $true</dev:code>
+			<dev:remarks>
+				<maml:para>This will enable all logs and metrics for the resource to be sent to a Log Analytics workspace. You can get the resource Id for a workspace using (Get-AzureRmOperationalInsightsWorkspace).ResourceId .</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Get-AzureRmDiagnosticSetting</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
 </helpItems>

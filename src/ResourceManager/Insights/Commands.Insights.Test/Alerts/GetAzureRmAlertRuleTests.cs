@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
     public class GetAzureRmAlertRuleTests
     {
         private readonly GetAzureRmAlertRuleCommand cmdlet;
-        private readonly Mock<InsightsManagementClient> insightsManagementClientMock;
+        private readonly Mock<MonitorManagementClient> insightsManagementClientMock;
         private readonly Mock<IAlertOperations> insightsAlertRuleOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
         private RuleGetResponse singleResponse;
@@ -41,12 +41,12 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
         {
             //XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             insightsAlertRuleOperationsMock = new Mock<IAlertOperations>();
-            insightsManagementClientMock = new Mock<InsightsManagementClient>();
+            insightsManagementClientMock = new Mock<MonitorManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetAzureRmAlertRuleCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                InsightsManagementClient = insightsManagementClientMock.Object
+                MonitorManagementClient = insightsManagementClientMock.Object
             };
 
             listResponse = Utilities.InitializeRuleListResponse();

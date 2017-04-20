@@ -89,17 +89,19 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
 
         protected override AlertRuleResource CreateSdkCallParameters()
         {
+            WriteWarning("*** Add-AzureRMLogAlertRule cmdlet will be deprecated in future releases.");
+
             RuleCondition condition = this.CreateRuleCondition();
 
             WriteVerboseWithTimestamp(string.Format("CreateSdkCallParameters: Creating rule object"));
-            var rule = new AlertRuleResource(
-                location: this.Location,
-                isEnabled: !this.DisableRule,
-                alertRuleResourceName: this.Name)
+            var rule = new AlertRuleResource()
             {
                 Description = this.Description ?? Utilities.GetDefaultDescription("log alert rule"),
                 Condition = condition,
                 Actions = this.Actions,
+                Location = this.Location,
+                IsEnabled = !this.DisableRule,
+                AlertRuleResourceName = this.Name,
 
                 // DO NOT REMOVE OR CHANGE the following. The two elements in the Tags are required by other services.
                 Tags = new Dictionary<string, string>(),

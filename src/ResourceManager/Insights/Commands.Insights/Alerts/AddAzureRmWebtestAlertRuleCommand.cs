@@ -79,11 +79,14 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
             RuleCondition condition = this.CreateRuleCondition();
 
             WriteVerboseWithTimestamp(string.Format("CreateSdkCallParameters: Creating rule object"));
-            return new AlertRuleResource(location: this.Location, isEnabled: !this.DisableRule, alertRuleResourceName: this.Name)
+            return new AlertRuleResource()
             {
                 Description = this.Description ?? Utilities.GetDefaultDescription("webtest alert rule"),
                 Condition = condition,
                 Actions = this.Actions,
+                Location = this.Location,
+                IsEnabled = !this.DisableRule,
+                AlertRuleResourceName = this.Name,
 
                 // DO NOT REMOVE OR CHANGE the following. The two elements in the Tags are required by other services.
                 Tags = new Dictionary<string, string>()

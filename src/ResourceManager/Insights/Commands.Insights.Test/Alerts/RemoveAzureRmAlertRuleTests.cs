@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
     public class RemoveAzureRmAlertRuleTests
     {
         private readonly RemoveAzureRmAlertRuleCommand cmdlet;
-        private readonly Mock<InsightsManagementClient> insightsManagementClientMock;
+        private readonly Mock<MonitorManagementClient> insightsManagementClientMock;
         private readonly Mock<IAlertOperations> insightsAlertRuleOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
         private AzureOperationResponse response;
@@ -39,12 +39,12 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
         {
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             insightsAlertRuleOperationsMock = new Mock<IAlertOperations>();
-            insightsManagementClientMock = new Mock<InsightsManagementClient>();
+            insightsManagementClientMock = new Mock<MonitorManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new RemoveAzureRmAlertRuleCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                InsightsManagementClient = insightsManagementClientMock.Object
+                MonitorManagementClient = insightsManagementClientMock.Object
             };
 
             response = new AzureOperationResponse()

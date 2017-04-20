@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
     public class RemoveAzureRmAutoscaleSettingTests
     {
         private readonly RemoveAzureRmAutoscaleSettingCommand cmdlet;
-        private readonly Mock<InsightsManagementClient> insightsManagementClientMock;
+        private readonly Mock<MonitorManagementClient> insightsManagementClientMock;
         private readonly Mock<IAutoscaleSettingsOperations> insightsAutoscaleOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
         private string resourceGroup;
@@ -40,12 +40,12 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
         {
             //ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             insightsAutoscaleOperationsMock = new Mock<IAutoscaleSettingsOperations>();
-            insightsManagementClientMock = new Mock<InsightsManagementClient>();
+            insightsManagementClientMock = new Mock<MonitorManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new RemoveAzureRmAutoscaleSettingCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                InsightsManagementClient = insightsManagementClientMock.Object
+                MonitorManagementClient = insightsManagementClientMock.Object
             };
 
             insightsAutoscaleOperationsMock.Setup(f => f.DeleteWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
