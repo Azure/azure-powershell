@@ -55,7 +55,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 FileUtilities.DataStore = session.DataStore;
                 FileUtilities.EnsureDirectoryExists(session.ProfileDirectory);
                 var cacheFile = Path.Combine(session.ProfileDirectory, session.TokenCacheFile);
-                session.TokenCache = new ProtectedFileTokenCache(cacheFile);
+                var contents = new byte[0];
+                if (session.DataStore.FileExists(cacheFile))
+                {
+                    contents = session.DataStore.ReadFileAsBytes(cacheFile);
+                }
+
+                session.TokenCache = new ProtectedFileTokenCache(contents);
             }
             catch
             {

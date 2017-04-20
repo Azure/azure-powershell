@@ -55,6 +55,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             Initialize(CacheFileName);
         }
 
+        public ProtectedFileTokenCache(byte[] inputData)
+        {
+            AfterAccess = AfterAccessNotification;
+            BeforeAccess = BeforeAccessNotification;
+            CacheData = inputData;
+        }
+
         private void Initialize(string fileName)
         {
             AfterAccess = AfterAccessNotification;
