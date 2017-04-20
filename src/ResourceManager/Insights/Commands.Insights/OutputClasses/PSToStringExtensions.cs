@@ -73,17 +73,6 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             return localizedValue ? inputString.LocalizedValue : inputString.Value;
         }
 
-        /// <summary>
-        /// A string representation of the Dimension including indentation
-        /// </summary>
-        /// <param name="inputString">The input string</param>
-        /// <param name="localizedValue">Flag to inidicate if the localized value must be printed or not</param>
-        /// <returns>A string representation of the LocalizableString</returns>
-        public static string ToString(this Microsoft.Azure.Insights.Legacy.Models.LocalizableString inputString, bool localizedValue)
-        {
-            return localizedValue ? inputString.LocalizedValue : inputString.Value;
-        }
-
         #region Extensions for Alerts
 
         /// <summary>
@@ -506,7 +495,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             output.AddSpacesInFront(indentationTabs).AppendLine("Count      : " + metricValue.Count);
             output.AddSpacesInFront(indentationTabs).AppendLine("Maximum    : " + metricValue.Maximum);
             output.AddSpacesInFront(indentationTabs).AppendLine("Minimum    : " + metricValue.Minimum);
-            output.AddSpacesInFront(indentationTabs).AppendLine("Timestamp  : " + metricValue.Timestamp);
+            output.AddSpacesInFront(indentationTabs).AppendLine("Timestamp  : " + metricValue.TimeStamp);
             output.AddSpacesInFront(indentationTabs).Append("Total      : " + metricValue.Total);
             return output.ToString();
         }
@@ -522,38 +511,6 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         {
             StringBuilder output = new StringBuilder();
             metricValues.ForEach(value => output.Append(value.ToString(indentationTabs)));
-
-            return output.ToString();
-        }
-
-        /// <summary>
-        /// A string representation of the list of MetricAvailability objects including indentation
-        /// </summary>
-        /// <param name="metricAvailabilities">The list of MetricAvailability objects</param>
-        /// <param name="indentationTabs">The number of tabs to insert in front of each member</param>
-        /// <returns>A string representation of the list of MetricAvailability objects including indentation</returns>
-        public static string ToString(this IList<Microsoft.Azure.Insights.Legacy.Models.MetricAvailability> metricAvailabilities, int indentationTabs)
-        {
-            StringBuilder output = new StringBuilder();
-            metricAvailabilities.ForEach(availability => output.Append(availability.ToString(indentationTabs)));
-
-            return output.ToString();
-        }
-
-        /// <summary>
-        /// A string representation of the MetricAvailability including indentation
-        /// </summary>
-        /// <param name="metricAvailability">The MetricAvailability object</param>
-        /// <param name="indentationTabs">The number of tabs to insert in front of each member</param>
-        /// <returns>A string representation of the MetricAvailability including indentation</returns>
-        public static string ToString(this Microsoft.Azure.Insights.Legacy.Models.MetricAvailability metricAvailability, int indentationTabs)
-        {
-            StringBuilder output = new StringBuilder();
-            if (metricAvailability != null)
-            {
-                output.AppendLine();
-                output.AddSpacesInFront(indentationTabs).Append(string.Format("Retention : {0},   TimeGrain    : {1}", metricAvailability.Retention, metricAvailability.TimeGrain));
-            }
 
             return output.ToString();
         }

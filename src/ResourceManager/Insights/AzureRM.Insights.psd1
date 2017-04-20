@@ -60,7 +60,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '2.8.0'; }
 # ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+# TypesToProcess = '.\Microsoft.Azure.Commands.Insights.Types.ps1xml'
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = '.\Microsoft.Azure.Commands.Insights.format.ps1xml'
@@ -83,7 +83,8 @@ CmdletsToExport = 'Get-AzureRmUsage', 'Get-AzureRmMetricDefinition',
                'Add-AzureRmMetricAlertRule', 'Add-AzureRmLogAlertRule', 
                'Add-AzureRmWebtestAlertRule', 'Get-AzureRmAlertHistory', 
                'Get-AzureRmAlertRule', 'New-AzureRmAlertRuleEmail', 
-               'New-AzureRmAlertRuleWebhook', 'Remove-AzureRmAlertRule'
+               'New-AzureRmAlertRuleWebhook', 'Remove-AzureRmAlertRule',
+               'Remove-AzureRmDiagnosticSetting'
 
 # Variables to export from this module
 # VariablesToExport = @()
