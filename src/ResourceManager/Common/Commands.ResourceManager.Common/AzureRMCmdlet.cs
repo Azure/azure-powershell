@@ -37,16 +37,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
     public abstract class AzureRMCmdlet : AzurePSCmdlet
     {
         protected ServiceClientTracingInterceptor _serviceClientTracingInterceptor;
-        /// <summary>
-        /// Static constructor for AzureRMCmdlet.
-        /// </summary>
-        static AzureRMCmdlet()
-        {
-            if (!TestMockSupport.RunningMocked)
-            {
-                AzureSession.Instance.DataStore = new DiskDataStore();
-            }
-        }
 
         /// <summary>
         /// Creates new instance from AzureRMCmdlet and add the RPRegistration handler.

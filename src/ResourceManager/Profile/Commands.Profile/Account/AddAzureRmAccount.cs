@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.IO;
 using System.Management.Automation;
@@ -248,6 +249,10 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 AzureSessionInitializer.InitializeAzureSession();
                 ResourceManagerProfileProvider.InitializeResourceManagerProfile();
+                if (!TestMockSupport.RunningMocked)
+                {
+                    AzureSession.Instance.DataStore = new DiskDataStore();
+                }
                 System.Management.Automation.PowerShell invoker = null;
                 invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
                 invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(

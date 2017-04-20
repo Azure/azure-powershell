@@ -217,6 +217,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.AnalysisServices.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlManagement", "ResourceManager\Sql\LegacySdk\SqlManagement.csproj", "{04B53727-16E6-4EF0-9116-04C7F1C33842}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ScenarioTests.Common", "Common\Commands.ScenarioTests.Common\Commands.ScenarioTests.Common.csproj", "{C1BDA476-A5CC-4394-914D-48B0EC31A710}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1463,6 +1465,18 @@ Global
 		{04B53727-16E6-4EF0-9116-04C7F1C33842}.Release|x64.Build.0 = Release|Any CPU
 		{04B53727-16E6-4EF0-9116-04C7F1C33842}.Release|x86.ActiveCfg = Release|Any CPU
 		{04B53727-16E6-4EF0-9116-04C7F1C33842}.Release|x86.Build.0 = Release|Any CPU
+		{C1BDA476-A5CC-4394-914D-48B0EC31A710}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1BDA476-A5CC-4394-914D-48B0EC31A710}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1BDA476-A5CC-4394-914D-48B0EC31A710}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C1BDA476-A5CC-4394-914D-48B0EC31A710}.Debug|x64.Build.0 = Debug|Any CPU
+		{C1BDA476-A5CC-4394-914D-48B0EC31A710}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C1BDA476-A5CC-4394-914D-48B0EC31A710}.Debug|x86.Build.0 = Debug|Any CPU
+		{C1BDA476-A5CC-4394-914D-48B0EC31A710}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1BDA476-A5CC-4394-914D-48B0EC31A710}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1BDA476-A5CC-4394-914D-48B0EC31A710}.Release|x64.ActiveCfg = Release|Any CPU
+		{C1BDA476-A5CC-4394-914D-48B0EC31A710}.Release|x64.Build.0 = Release|Any CPU
+		{C1BDA476-A5CC-4394-914D-48B0EC31A710}.Release|x86.ActiveCfg = Release|Any CPU
+		{C1BDA476-A5CC-4394-914D-48B0EC31A710}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1511,5 +1525,6 @@ Global
 		{7181C815-A8C5-4BEC-988F-BD1F64D0BDC9} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{133561EC-8192-4ADC-AF41-39C4D3AD323B} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{B36F96EC-A9C1-4C86-B406-472FF4458C9E} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{C1BDA476-A5CC-4394-914D-48B0EC31A710} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 	EndGlobalSection
 EndGlobal
