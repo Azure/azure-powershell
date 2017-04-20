@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
     public class ResourceManagerProfileProvider : AzureRmProfileProvider
     {
-        AzureRmProfile _profile = new AzureRmProfile();
+        AzureRmProfile _profile = new AzureRmProfile { DefaultContext = new AzureContext() };
         public override void ResetDefaultProfile()
         {
             Profile.TokenStore.Clear();

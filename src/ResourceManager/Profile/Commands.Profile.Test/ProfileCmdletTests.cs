@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
@@ -37,6 +38,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 
         public ProfileCmdletTests(ITestOutputHelper output)
         {
+            AzureSessionInitializer.InitializeAzureSession();
+            ResourceManagerProfileProvider.InitializeResourceManagerProfile();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             dataStore = new MemoryDataStore();
             AzureSession.Instance.DataStore = dataStore;
@@ -48,7 +51,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SelectAzureProfileInMemory()
         {
-            var profile = new AzureRmProfile();
+            var profile = new AzureRmProfile { DefaultContext = new AzureContext() };
             profile.EnvironmentTable.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
             ImportAzureRMContextCommand cmdlt = new ImportAzureRMContextCommand();
             // Setup

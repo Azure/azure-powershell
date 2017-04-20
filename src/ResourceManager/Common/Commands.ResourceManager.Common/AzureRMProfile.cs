@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// <summary>
         /// Gets or sets Azure environments.
         /// </summary>
-        public Dictionary<string, IAzureEnvironment> EnvironmentTable { get; set; }
+        public Dictionary<string, IAzureEnvironment> EnvironmentTable { get; set; } = new Dictionary<string, IAzureEnvironment>(StringComparer.OrdinalIgnoreCase);
 
         public Dictionary<string, IAzureContext> Contexts { get; set; } = new Dictionary<string, IAzureContext>(StringComparer.OrdinalIgnoreCase);
 
@@ -54,7 +54,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         {
             get
             {
-                return this[DefaultContextKey];
+                IAzureContext result = null;
+                if (this.ContainsKey(DefaultContextKey))
+                {
+                    result = this[DefaultContextKey];
+                }
+
+                return result;
             }
             set
             {
