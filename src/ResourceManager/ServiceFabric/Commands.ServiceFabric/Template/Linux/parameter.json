@@ -1,0 +1,48 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "clusterName": {
+      "value": ""
+    },
+    "adminUserName": {
+      "value": "admuser"
+    },
+    "vmImagePublisher": {
+      "value": "Microsoft.Azure.ServiceFabric"
+    },
+    "vmImageOffer": {
+      "value": "UbuntuServer"
+    },
+    "vmImageSku": {
+      "value": "16.04"
+    },
+    "vmImageVersion": {
+      "value": "6.0.11"
+    },
+    "loadBalancedAppPort1": {
+      "value": 80
+    },
+    "loadBalancedAppPort2": {
+      "value": 8081
+    },
+    "certificateStoreValue": {
+      "value": "My"
+    },
+    "clusterProtectionLevel": {
+      "value": "EncryptAndSign"
+    },
+    "storageAccountType": {
+      "value": "Standard_LRS"
+    },
+    "supportLogStorageAccountType": {
+      "value": "Standard_LRS"
+    },
+    "applicationDiagnosticsStorageAccountType": {
+      "value": "Standard_LRS"
+    },
+    "nt0InstanceCount": {
+      "value": 5
+    }
+  }
+}
