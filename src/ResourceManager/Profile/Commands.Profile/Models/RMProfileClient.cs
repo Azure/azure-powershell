@@ -647,7 +647,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 AzureContext context = new AzureContext(_profile.Context.Subscription, account, environment, 
                                             CreateTenantFromString(tenantId, accessToken.TenantId));
 
-                return subscriptionClient.ListAll().Select(s => s.ToAzureSubscription(context));
+                return subscriptionClient.ListAll().Select(s => s.ToAzureSubscription(context)).ToList();
             }
             finally
             {
