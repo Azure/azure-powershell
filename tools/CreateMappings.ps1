@@ -2,7 +2,7 @@
 
 # Define parameters.
 param(
-    [string] $RootPath = "..\src", 
+    [string] $RootPath = "$PSScriptRoot\..\src", 
     [string] $OutputFile = "groupMapping.json", 
     [string] $WarningFile = "groupMappingWarnings.json", 
     [string] $RulesFile = "CreateMappings_rules.json" 
