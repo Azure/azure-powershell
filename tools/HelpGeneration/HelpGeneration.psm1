@@ -1,5 +1,4 @@
 ﻿#Requires -Modules platyPS
-
 function Generate-MarkdownHelp
 {
     [CmdletBinding()]
@@ -10,30 +9,20 @@ function Generate-MarkdownHelp
     )
 
     $HelpFolder = Get-Item $HelpFolderPath
-
     $ModuleFolder = $HelpFolder.Parent
-
     $ModuleFolderPath = $ModuleFolder.FullName
-
     if ($ModuleFolder.Name -eq "Azure.AnalysisServices")
     {
         return
     }
 
     $NewHelpFolderPath = "$ModuleFolderPath\temp_help"
-
-    $psd1 = Get-ChildItem $ModuleFolderPath | where { $_.Name -eq "$($ModuleFolder.Name).psd1" }
-    
+    $psd1 = Get-ChildItem $ModuleFolderPath | where { $_.Name -eq "$($ModuleFolder.Name).psd1" }    
     Import-Module $psd1.FullName -Scope Global
-
     New-Item -Path $NewHelpFolderPath -ItemType Directory -Force | Out-Null
-
     Copy-Item -Path "$HelpFolderPath\*" -Destination $NewHelpFolderPath
-
     Update-MarkdownHelpModule -Path $NewHelpFolderPath -RefreshModulePage -AlphabeticParamsOrder | Out-Null
-
     $errors = Compare-MarkdownHelp $HelpFolderPath $NewHelpFolderPath
-
     if ($errors.Length -gt 0)
     {
         $errorMessage = @()
@@ -53,21 +42,16 @@ function Compare-MarkdownHelp
     (
         [Parameter(Mandatory = $true, Position = 0)]
         [String]$OldHelpFolderPath,
-
         [Parameter(Mandatory = $true, Position = 1)]
         [String]$NewHelpFolderPath
     )
 
-    $comparatorInstance = New-Object MarkdownComparator.Comparator
-    
+    $comparatorInstance = New-Object MarkdownComparator.Comparator    
     $OldHelpFolder = Get-Item $OldHelpFolderPath
-
     $errors = @()
-
     foreach ($oldFile in Get-ChildItem $OldHelpFolder)
     {
         $newFilePath = "$NewHelpFolderPath\$($oldFile.Name)"
-
         if ($oldFile.Name -notlike "*-*")
         {
             continue;
@@ -76,7 +60,6 @@ function Compare-MarkdownHelp
         try
         {
             $result = $comparatorInstance.Compare($oldFile.FullName, $newFilePath)
-
             if ($result -ne 0)
             {
                 $errors += $oldFile.Name
@@ -96,19 +79,19 @@ function Validate-MarkdownHelp
     [CmdletBinding()]
     Param(
         [Parameter(Mandatory = $true, Position = 0)]
-        [String]$HelpFolderPath
+        [String]$HelpFolderPath,
+        [Parameter(Mandatory = $true, Position = 1)]
+        [String]$SuppressedExceptionsPath,
+        [Parameter(Mandatory = $true, Position = 2)]
+        [String]$NewExceptionsPath
     )
 
     PROCESS
     {
         $HelpFolder = Get-Item $HelpFolderPath
-
-        $Exceptions = Import-Csv "$PSScriptRoot\..\..\src\Package\Exceptions\ValidateHelpExceptions.csv" | where { $_.Module -eq "$($HelpFolder.Parent.Name)" }
-
+        $Exceptions = Import-Csv "$SuppressedExceptionsPath\ValidateHelpIssues.csv" | where { $_.Module -eq "$($HelpFolder.Parent.Name)" }
         [String[]]$errors = @()
-
         $MarkdownFiles = Get-ChildItem -Path $HelpFolder
-
         foreach ($file in $MarkdownFiles)
         {
             # Ignore the module page
@@ -118,9 +101,7 @@ function Validate-MarkdownHelp
             }
 
             $fileErrors = @()
-
             $content = Get-Content $file.FullName
-
             for ($idx = 0; $idx -lt $content.Length; $idx++)
             {
                 switch -Wildcard ($content[$idx])
@@ -134,7 +115,6 @@ function Validate-MarkdownHelp
                         for (;;)
                         {
                             $foundSynopsis = $foundSynopsis -or (!([string]::IsNullOrWhiteSpace("$($content[$idx])")))
-
                             if ($content[$idx+1] -notcontains "## SYNTAX")
                             {
                                 $idx++
@@ -164,7 +144,6 @@ function Validate-MarkdownHelp
                         for (;;)
                         {
                             $foundDescription = $foundDescription -or (!([string]::IsNullOrWhiteSpace("$($content[$idx])")))
-
                             if ($content[$idx+1] -notcontains "## EXAMPLES")
                             {
                                 $idx++
@@ -231,8 +210,7 @@ function Validate-MarkdownHelp
             # If the markdown file had any missing help, add them to the list to be printed later
             if ($fileErrors.Count -gt 0)
             {
-                $fileExceptions = $Exceptions | where { $_.Target -eq "$file" }
-                
+                $fileExceptions = $Exceptions | where { $_.Target -eq "$file" }                
                 $fileErrors | foreach {
                     $error = $_
 
@@ -251,7 +229,7 @@ function Validate-MarkdownHelp
         # If there were any errors recorded, print them out and throw
         if ($errors.Count -gt 0)
         {
-            $errors | foreach { Add-Content "$PSScriptRoot\..\..\src\Package\ValidateHelpExceptions.csv" $_ }
+            $errors | foreach { Add-Content "$NewExceptionsPath\ValidateHelpIssues.csv" $_ }
         }
     }
 }
@@ -266,14 +244,11 @@ function Generate-MamlHelp
     )
 
     $HelpFolder = Get-Item $HelpFolderPath
-
     $MarkdownFiles = Get-ChildItem $HelpFolderPath
 
     # Generate the MAML help from the markdown files
-    New-ExternalHelp -Path $HelpFolderPath -OutputPath $HelpFolder.Parent.FullName -Force
-    
+    New-ExternalHelp -Path $HelpFolderPath -OutputPath $HelpFolder.Parent.FullName -Force    
     $dir = Get-ChildItem $HelpFolder.Parent.FullName
-
     $MAML = $dir | Where { $_.FullName -like "*.dll-Help.xml*" }
     
     # Modify the MAML (add spaces between examples)
@@ -287,7 +262,6 @@ function Modify-MamlHelp
     (
         [Parameter(Mandatory = $true, Position = 0)]
         [System.IO.DirectoryInfo]$HelpFolder,
-
         [Parameter(Mandatory = $true, Position = 1)]
         [System.IO.FileInfo]$MAML
     )
@@ -296,7 +270,6 @@ function Modify-MamlHelp
 
     # Keep track of the number of examples we find so we can add enough space in the new array
     $exampleCount = 0
-
     for ($idx = 0; $idx -lt $content.Length; $idx++)
     {
         if ($content[$idx] -like "*<command:example>*")
@@ -308,9 +281,7 @@ function Modify-MamlHelp
     # Since we will be adding two <maml:para></maml:para> tags to the MAML, we need to adjust the size of the array
     $newContentLength = $content.Length + (2 * $exampleCount)
     $newContent = New-Object string[] $newContentLength
-
     $buffer = 0
-
     for ($idx = 0; $idx -lt $content.Length; $idx++)
     {
         $newContent[$idx + $buffer] = $content[$idx]
@@ -328,7 +299,6 @@ function Modify-MamlHelp
     # Replace the contents of the current MAML with the new contents
     $result = $newContent -join "`r`n"
     $tempFile = Get-Item "$($HelpFolder.Parent.FullName)\$($MAML.Name)"
-
     [System.IO.File]::WriteAllText($tempFile.FullName, $result)
 
     # Check to ensure that the MAML file is still valid XML
