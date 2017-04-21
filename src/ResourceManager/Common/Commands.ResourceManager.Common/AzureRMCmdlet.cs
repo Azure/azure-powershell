@@ -43,12 +43,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         /// </summary>
         public AzureRMCmdlet()
         {
-            AzureSession.Instance.ClientFactory.RemoveHandler(typeof(RPRegistrationDelegatingHandler));
-            AzureSession.Instance.ClientFactory.AddHandler(new RPRegistrationDelegatingHandler(
-                () => new ResourceManagementClient(
-                    DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
-                    AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(DefaultContext, AzureEnvironment.Endpoint.ResourceManager)),
-                s => DebugMessages.Enqueue(s)));
         }
 
         /// <summary>
@@ -67,7 +61,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             get
             {
-                if (DefaultProfile == null || DefaultProfile.DefaultContext == null)
+                if (DefaultProfile == null || DefaultProfile.DefaultContext == null || DefaultProfile.DefaultContext.Account == null)
                 {
                     throw new PSInvalidOperationException("Run Login-AzureRmAccount to login.");
                 }
@@ -296,6 +290,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 _serviceClientTracingInterceptor = null;
                 AzureSession.Instance.ClientFactory.RemoveHandler(typeof(RPRegistrationDelegatingHandler));
             }
+        }
+
+        protected override void BeginProcessing()
+        {
+            AzureSession.Instance.ClientFactory.RemoveHandler(typeof(RPRegistrationDelegatingHandler));
+            AzureSession.Instance.ClientFactory.AddHandler(new RPRegistrationDelegatingHandler(
+                () => new ResourceManagementClient(
+                    DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
+                    AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(DefaultContext, AzureEnvironment.Endpoint.ResourceManager)),
+                s => DebugMessages.Enqueue(s)));
+
+            base.BeginProcessing();
         }
     }
 }

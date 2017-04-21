@@ -433,7 +433,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
             foreach (var property in environment1.ExtendedProperties.Keys.Union(environment2.ExtendedProperties.Keys))
             {
-                mergedEnvironment.ExtendedProperties[property] = environment1.ExtendedProperties.ContainsKey(property) ? 
+                mergedEnvironment.ExtendedProperties[property] = environment1.ExtendedProperties.ContainsKey(property) ?
                     environment1.ExtendedProperties[property] : environment2.ExtendedProperties[property];
             }
 
@@ -567,7 +567,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 var commonTenantToken = AcquireAccessToken(account, environment, AuthenticationFactory.CommonAdTenant,
                     password, promptBehavior);
-                
+
                 SubscriptionClient subscriptionClient = null;
                 try
                 {
@@ -586,7 +586,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     {
                         subscriptionClient.Dispose();
                     }
-                }               
+                }
             }
             catch
             {
@@ -643,27 +643,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
 
             SubscriptionClient subscriptionClient = null;
-            try
-            {
-                subscriptionClient = AzureSession.Instance.ClientFactory.CreateCustomArmClient<SubscriptionClient>(
-                        environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
-                        new TokenCredentials(accessToken.AccessToken) as ServiceClientCredentials,
-                        AzureSession.Instance.ClientFactory.GetCustomHandlers());
+            subscriptionClient = AzureSession.Instance.ClientFactory.CreateCustomArmClient<SubscriptionClient>(
+                    environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
+                    new TokenCredentials(accessToken.AccessToken) as ServiceClientCredentials,
+                    AzureSession.Instance.ClientFactory.GetCustomHandlers());
 
-                AzureContext context = new AzureContext(_profile.DefaultContext.Subscription, account, environment, 
-                                            CreateTenantFromString(tenantId, accessToken.TenantId));
+            AzureContext context = new AzureContext(_profile.DefaultContext.Subscription, account, environment,
+                                        CreateTenantFromString(tenantId, accessToken.TenantId));
 
-                return subscriptionClient.ListAll().Select(s => s.ToAzureSubscription(context));
-            }
-            finally
-            {
-                // In test mode, we are reusing the client since disposing of it will
-                // fail some tests (due to HttpClient being null)
-                if (subscriptionClient != null && !TestMockSupport.RunningMocked)
-                {
-                    subscriptionClient.Dispose();
-                }
-            }
+            return subscriptionClient.ListAll().Select(s => s.ToAzureSubscription(context));
         }
 
         private void WriteWarningMessage(string message)
