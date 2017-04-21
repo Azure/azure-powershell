@@ -58,38 +58,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
 
             return new Models.PSCluster(cluster);
-
-            //if (longRunningOperation)
-            //{
-            //    while (true)
-            //    {
-            //        cluster = GetCurrentCluster();
-            //        var clusterStateStr = cluster.ClusterState;
-            //        ClusterProvisioningState clusterState;
-            //        if (!Enum.TryParse(clusterStateStr, out clusterState))
-            //        {
-            //            throw new PSInvalidOperationException(clusterStateStr);
-            //        }
-
-            //        if (clusterState == ClusterProvisioningState.Ready ||
-            //            clusterState == ClusterProvisioningState.Failed)
-            //        {
-            //            if (clusterState == ClusterProvisioningState.Failed)
-            //            {
-            //                throw new PSInvalidCastException("Failed to upgrade the cluster");
-            //            }
-
-            //            return new PsCluster(cluster);
-            //        }
-            //        else
-            //        {
-            //            //TODO
-            //            System.Threading.Thread.Sleep(20 * 1000);
-            //        }
-            //    }
-            //}
-
-            //return new PsCluster(cluster);
         }
 
         protected Task<PSCluster> PatchAsync(

@@ -20,29 +20,32 @@ Add-AzureRmServiceFabricClusterCertificate [-ResourceGroupName] <String> [-Clust
 ### ByNewPfxAndVaultName
 ```
 Add-AzureRmServiceFabricClusterCertificate [-ResourceGroupName] <String> [-ClusterName] <String>
- -KeyVaultName <String> -KeyVaultResouceGroupName <String> [-SecretName <String>] -PfxDestinationFile <String>
- -CertificatePassword <SecureString> -CertificateDnsName <String> [<CommonParameters>]
+ [-KeyVaultName <String>] [-KeyVaultResouceGroupName <String>] [-PfxDestinationFile <String>]
+ -CertificateSubjectName <String> [<CommonParameters>]
 ```
 
 ### ByExistingPfxAndVaultName
 ```
 Add-AzureRmServiceFabricClusterCertificate [-ResourceGroupName] <String> [-ClusterName] <String>
- -KeyVaultName <String> -KeyVaultResouceGroupName <String> [-SecretName <String>] -PfxSourceFile <String>
+ -KeyVaultName <String> -KeyVaultResouceGroupName <String> -PfxSourceFile <String>
  -CertificatePassword <SecureString> [<CommonParameters>]
 ```
 
 ### ByExistingPfxSetAndVaultId
 ```
 Add-AzureRmServiceFabricClusterCertificate [-ResourceGroupName] <String> [-ClusterName] <String>
- -KeyVaultResouceId <String> [-SecretName <String>] -PfxSourceFile <String> -CertificatePassword <SecureString>
- [<CommonParameters>]
+ -KeyVaultResouceId <String> -PfxSourceFile <String> -CertificatePassword <SecureString> [<CommonParameters>]
 ```
 
 ### ByNewPfxAndVaultId
 ```
-Add-AzureRmServiceFabricClusterCertificate -KeyVaultResouceId <String> [-SecretName <String>]
- -PfxDestinationFile <String> -CertificatePassword <SecureString> -CertificateDnsName <String>
- [<CommonParameters>]
+Add-AzureRmServiceFabricClusterCertificate -KeyVaultResouceId <String> [-PfxDestinationFile <String>]
+ -CertificateSubjectName <String> [<CommonParameters>]
+```
+
+### ByDefaultArmTemplate
+```
+Add-AzureRmServiceFabricClusterCertificate [-PfxDestinationFile <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,13 +74,13 @@ This command will add certificate by creating an new self signed certificate and
 
 ## PARAMETERS
 
-### -CertificateDnsName
-The Dns name of the certificate to be created
+### -CertificatePassword
+The password of the pfx file
 
 ```yaml
-Type: String
-Parameter Sets: ByNewPfxAndVaultName, ByNewPfxAndVaultId
-Aliases: Dns
+Type: SecureString
+Parameter Sets: ByExistingPfxAndVaultName, ByExistingPfxSetAndVaultId
+Aliases: Password
 
 Required: True
 Position: Named
@@ -86,13 +89,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -CertificatePassword
-The password of the pfx file
+### -CertificateSubjectName
+The Dns name of the certificate to be created
 
 ```yaml
-Type: SecureString
-Parameter Sets: ByNewPfxAndVaultName, ByExistingPfxAndVaultName, ByExistingPfxSetAndVaultId, ByNewPfxAndVaultId
-Aliases: Password
+Type: String
+Parameter Sets: ByNewPfxAndVaultName, ByNewPfxAndVaultId
+Aliases: Subject
 
 Required: True
 Position: Named
@@ -136,7 +139,19 @@ Azure key vault name
 
 ```yaml
 Type: String
-Parameter Sets: ByNewPfxAndVaultName, ByExistingPfxAndVaultName
+Parameter Sets: ByNewPfxAndVaultName
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: ByExistingPfxAndVaultName
 Aliases: 
 
 Required: True
@@ -151,7 +166,19 @@ Azure key vault resource group name
 
 ```yaml
 Type: String
-Parameter Sets: ByNewPfxAndVaultName, ByExistingPfxAndVaultName
+Parameter Sets: ByNewPfxAndVaultName
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: ByExistingPfxAndVaultName
 Aliases: 
 
 Required: True
@@ -181,10 +208,10 @@ The destination path of the new Pfx file to be created
 
 ```yaml
 Type: String
-Parameter Sets: ByNewPfxAndVaultName, ByNewPfxAndVaultId
+Parameter Sets: ByNewPfxAndVaultName, ByNewPfxAndVaultId, ByDefaultArmTemplate
 Aliases: Destination
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -230,21 +257,6 @@ Parameter Sets: ByExistingKeyVault
 Aliases: 
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SecretName
-Azure key vault secret name, if not specified, it will use the new or existing certificate name
-
-```yaml
-Type: String
-Parameter Sets: ByNewPfxAndVaultName, ByExistingPfxAndVaultName, ByExistingPfxSetAndVaultId, ByNewPfxAndVaultId
-Aliases: 
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

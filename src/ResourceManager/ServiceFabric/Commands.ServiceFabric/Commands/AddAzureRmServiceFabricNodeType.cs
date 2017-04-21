@@ -91,9 +91,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 CreateVmss();
             }
-            catch (Exception e)
+            catch (Exception )
             {
-                Console.WriteLine(e);
                 RemoveNodeTypeFromSfrp();
                 throw;
             }

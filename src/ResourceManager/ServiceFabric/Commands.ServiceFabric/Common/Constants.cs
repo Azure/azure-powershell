@@ -36,8 +36,13 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Common
         public const string KeyVaultType = "Microsoft.KeyVault/vaults";
         public const string ServiceFabricType = "Microsoft.ServiceFabric/clusters";
         public const string ServieFabricTag = "Service Fabric";
+        public const string ServiceFabricPublisher = "Microsoft.Azure.ServiceFabric";
 
         public const string ServiceFabricWindowsNodeExtName = "ServiceFabricNode";
         public const string ServiceFabricLinuxNodeExtName = "ServiceFabricLinuxNode";
+
+        public const string SecretContentType = "application/x-pkcs12";
+
+        public const string SelfSignedIssuerName = "Self";
     }
 }
