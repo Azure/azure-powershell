@@ -24,18 +24,18 @@ This command must be executed on the primary server. The command drops the corre
 ## EXAMPLES
 
 ### Example 1
-```
 Remove one database from the Failover Group
 
+```
 PS C:\> Get-AzureRmSqlDatabase -ServerName testsvr -ResourceGroupName myrg2 -DatabaseName testdb | Remove-AzureRmSqlDatabaseFromFailoverGroup -FailoverGroupName testfg -ResourceGroupName rg2 -ServerName testsvr
 ```
 
-### Example 2
-```
+### Example 2:
 Remove all databases in a server from the Failover Group
 
+```
 PS C:\> Get-AzureRmSqlDatabase -ServerName testsvr -ResourceGroupName myrg2 | Remove-AzureRmSqlDatabaseFromFailoverGroup -FailoverGroupName testfg -ResourceGroupName rg2 -ServerName testsvr
-
+```
 
 ## PARAMETERS
 
