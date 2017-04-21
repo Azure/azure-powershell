@@ -102,7 +102,6 @@
     <Compile Include="Commands\UpdateAzureRmServiceFabricVmssBase.cs" />
     <Compile Include="Models\CertificateInformation.cs" />
     <Compile Include="Models\ClusterProvisioningState.cs" />
-    <Compile Include="Models\ClusterSize.cs" />
     <Compile Include="Models\ClusterType.cs" />
     <Compile Include="Models\DurabilityLevel.cs" />
     <Compile Include="Models\ClusterUpgradeMode.cs" />

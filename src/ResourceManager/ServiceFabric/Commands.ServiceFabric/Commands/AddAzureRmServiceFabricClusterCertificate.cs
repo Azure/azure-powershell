@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 var input = string.Format(
                     @"{{""thumbprint"":""{0}"",""x509StoreName"":""{1}""}}",
                     certInformation.Thumbprint,
-                    "My");
+                    Constants.DefaultCertificateStore);
 
                 extConfig["certificateSecondary"] = JObject.Parse(input);
 
@@ -90,10 +90,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                            }));
                 }
 
-                ComputeClient.VirtualMachineScaleSets.CreateOrUpdate(
+                PrintDetailIfThrow(() => ComputeClient.VirtualMachineScaleSets.CreateOrUpdate( 
                     ResourceGroupName,
                     vmss.Name,
-                    vmss);
+                    vmss));
             }
             var patchRequest = new ClusterUpdateParameters
             {

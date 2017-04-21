@@ -23,10 +23,12 @@ using Newtonsoft.Json.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
+using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.Azure.Management.ServiceFabric;
 using Microsoft.WindowsAzure.Commands.Common;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -39,10 +41,21 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public const string LinuxTemplateRelativePath = @"Template\Linux";
         public const string ParameterFileName = @"parameter.json";
         public const string TemplateFileName = @"template.json";
-        public const string DefaultPfxName = "ServiceFabricSelfSigned";
+    
+        private string adminUserName = string.Empty;
+        private string durability = DurabilityLevel.Bronze.ToString();
+        private string reliabilityLevel = ReliabilityLevel.Bronze.ToString();
 
-        private const string PfxFileSuffix = ".pfx";
-        private string vmUserName = string.Empty;
+        private string reliabilityLevelParameter = string.Empty;
+        private string durabilityLevelParameter = string.Empty;
+        private string clusterNameParameter = string.Empty;
+        private string vmInstanceParameter = string.Empty;
+        private string adminPasswordParameter = string.Empty;
+        private string adminUserParameter = string.Empty;
+        private string locationParameter = string.Empty;
+        private string thumbprintParameter = string.Empty;
+        private string keyVaultParameter = string.Empty;
+        private string certificateUrlParameter = string.Empty;
 
         /// <summary>
         /// Resource group name
@@ -86,49 +99,23 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [ValidateNotNullOrEmpty]
         public string ParameterFile { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = ByExistingPfxSetAndVaultId, ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "The deployment mode.")]
-        [Parameter(Mandatory = false, ParameterSetName = ByNewPfxAndVaultId, ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "The deployment mode.")]
-        [Parameter(Mandatory = false, ParameterSetName = ByExistingPfxAndVaultName, ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "The deployment mode.")]
-        [Parameter(Mandatory = false, ParameterSetName = ByNewPfxAndVaultName, ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "The deployment mode.")]
-        [Parameter(Mandatory = false, ParameterSetName = ExistingKeyVaultSet, ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "The deployment mode.")]
-        [Parameter(Mandatory = false, ParameterSetName = ByDefaultArmTemplate, ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "The deployment mode.")]
-        public DeploymentMode Mode { get; set; }
-
         #region ByDefaultArmTemplate
 
         [Parameter(Mandatory = true, ParameterSetName = ByDefaultArmTemplate, ValueFromPipelineByPropertyName = true,
                    HelpMessage = "The resource group location")]
         public string Location { get; set; }
 
-        private ClusterSize clusterSize = ClusterSize.FiveNodes;
+        private int clusterSize = 5;
         [Parameter(Mandatory = false, ParameterSetName = ByDefaultArmTemplate, ValueFromPipelineByPropertyName = true,
                    HelpMessage = "The cluster size, the default is 5 nodes clusters")]
-        public ClusterSize ClusterSize
+        [ValidateRange(1, 2147483647)]
+        public int ClusterSize
         {
             get { return this.clusterSize; }
             set { this.clusterSize = value; }
         }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ByNewPfxAndVaultId,
-                 HelpMessage = "The password of the pfx file")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ByExistingPfxSetAndVaultId,
-                 HelpMessage = "The password of the pfx file")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ByNewPfxAndVaultName,
-                 HelpMessage = "The password of the pfx file")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ByExistingPfxAndVaultName,
-                 HelpMessage = "The password of the pfx file")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ByDefaultArmTemplate,
-                   HelpMessage = "The password of the pfx file")]
-        [ValidateNotNullOrEmpty]
-        [Alias("CertPwd")]
-        public override SecureString CertificatePassword { get; set; }
-
+        private string certificateSubjectName;
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ByNewPfxAndVaultId,
                    HelpMessage = "The Dns name of the certificate to be created")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ByNewPfxAndVaultName,
@@ -136,8 +123,22 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ByDefaultArmTemplate,
                    HelpMessage = "The Dns name of the certificate to be created")]
         [ValidateNotNullOrEmpty]
-        [Alias("Dns")]
-        public override string CertificateDnsName { get; set; }
+        [Alias("Subject")]
+        public override string CertificateSubjectName
+        {
+            get { return this.certificateSubjectName; }
+            set
+            {
+                if (!value.StartsWith("cn=", StringComparison.OrdinalIgnoreCase))
+                {
+                    this.certificateSubjectName = string.Concat("cn=", value);
+                }
+                else
+                {
+                    this.certificateSubjectName = value;
+                }
+            }
+        }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ByDefaultArmTemplate,
            HelpMessage = "The password of the Vm")]
@@ -183,61 +184,21 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private void DeployWithoutDefaultTemplate()
         {
-            string clusterName = null;
-            string location = null;
             var deploymentName = GenerateDeploymentName();
-            var deployment = CreateBasicDeployment(this.Mode, null);
+            var deployment = CreateBasicDeployment(DeploymentMode.Incremental, null);
 
-            GetClusterNameAndLocation((JObject)deployment.Properties.Template, out clusterName, out location);
-            if (IsARMParameter(ref clusterName))
-            {
-                this.ClusterName = ParseParameter(
-                     (JObject)deployment.Properties.Parameters,
-                     clusterName);
-            }
-            else
-            {
-                this.ClusterName = clusterName;
-            }
-
-            if (IsARMParameter(ref location))
-            {
-                this.resourceLocation = ParseParameter(
-                    (JObject)deployment.Properties.Parameters,
-                    location);
-            }
-            else
-            {
-                this.resourceLocation = location;
-            }
-
+            ParseTempldate();
+            GetParameters((JObject)deployment.Properties.Parameters);
+   
             var certInformation = GetOrCreateCertificateInformation();
-            string adminUserName;
-            deployment.Properties.Template = ReplaceTemplate(
-                (JObject)deployment.Properties.Template,
-                certInformation.Thumbprint,
-                null,
+
+            deployment.Properties.Parameters = SetParameters(
+                (JObject)deployment.Properties.Parameters,
                 certInformation.KeyVault.Id,
                 certInformation.SecretUrl,
-                null,
-                out adminUserName
-                );
-
-            if (IsARMParameter(ref adminUserName))
-            {
-                this.vmUserName = ParseParameter(
-                    (JObject)deployment.Properties.Parameters,
-                    adminUserName);
-            }
-            else
-            {
-                this.vmUserName = adminUserName;
-            }
-
-            if (deployment.Properties.Template == null)
-            {
-                throw new PSInvalidOperationException(ServiceFabricProperties.Resources.FailedToParseTemplateFile);
-            }
+                certInformation.Thumbprint,
+                this.durability,
+                this.reliabilityLevel);   
 
             ResourceManagerClient.ResourceGroups.CreateOrUpdate(
                 this.ResourceGroupName,
@@ -254,18 +215,21 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             CheckValidationResult(validateResult);
 
-            var deploymentDetail = ResourceManagerClient.Deployments.CreateOrUpdate(
-                ResourceGroupName,
-                deploymentName,
-                deployment);
+            DeploymentExtended deploymentDetail = null;
+
+            PrintDetailIfThrow(() =>
+                 deploymentDetail = ResourceManagerClient.Deployments.CreateOrUpdate(
+                     ResourceGroupName,
+                     deploymentName,
+                     deployment));
 
             var cluster = SFRPClient.Clusters.Get(this.ResourceGroupName, this.ClusterName);
             WriteObject(new PSDeploymentResult(
                 deploymentDetail,
                 new PSCluster(cluster))
-                {
-                    VmUserName = this.vmUserName
-                }, true);
+            {
+                VmUserName = this.adminUserParameter
+            }, true);
         }
 
         private void DeployWithDefaultTemplate()
@@ -273,6 +237,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             this.ClusterName = this.ResourceGroupName;
             var existingCluster = SafeGetResource(
                  () => SFRPClient.Clusters.Get(this.ResourceGroupName, this.ClusterName));
+
+            if (this.ClusterSize == 1)
+            {
+                this.reliabilityLevel = "None";
+            }
 
             if (existingCluster != null)
             {
@@ -304,9 +273,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             this.resourceLocation = Location;
             this.TemplateFile = templateFilePath;
             this.ParameterFile = parameterFilePath;
-            this.PfxDestinationFile = Path.Combine(
-                this.GetDefaultPfxName(this.SessionState.Path.CurrentFileSystemLocation.Path)
-                );
+            if(string.IsNullOrEmpty(PfxDestinationFile))
+           
             this.ClusterName = this.ResourceGroupName;
 
             this.ResourceManagerClient.ResourceGroups.CreateOrUpdate(
@@ -314,29 +282,27 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 new ResourceGroup()
                 {
                     Location = this.Location
-                });            
+                });
 
-            var clusterSizes = (int)this.clusterSize;
-            var parameters = ReplaceParameterFile(
-                this.Location,
-                this.ClusterName,
-                this.VmPassword.ConvertToString(),
-                clusterSizes);
+            var deployment = CreateBasicDeployment(DeploymentMode.Incremental, null);
+            ParseTempldate();
 
-            var deployment = CreateBasicDeployment(this.Mode, null, parameters);
+            this.adminUserName = GetParameter((JObject)deployment.Properties.Parameters, this.adminUserParameter) ?? this.adminUserParameter;
 
             var certInformation = GetOrCreateCertificateInformation();
 
-            string adminUserName;
-            deployment.Properties.Template = ReplaceTemplate(
-                (JObject)deployment.Properties.Template,
-                certInformation.Thumbprint,
-                null,
-                certInformation.KeyVault.Id,
-                certInformation.SecretUrl,
-                null,
-                out adminUserName
-                );
+            deployment.Properties.Parameters = SetParameters(
+               (JObject)deployment.Properties.Parameters,
+               certInformation.KeyVault.Id,
+               certInformation.SecretUrl,
+               certInformation.Thumbprint,
+               this.durability,
+               this.reliabilityLevel,
+               this.Location,
+               this.ClusterName,
+               this.VmPassword.ConvertToString(),
+               (int)this.clusterSize
+              );
 
             var validateResult = ResourceManagerClient.Deployments.Validate(
                 ResourceGroupName,
@@ -347,58 +313,22 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             CheckValidationResult(validateResult);
 
             var deploymentName = GenerateDeploymentName();
-            var deploymentDetail = ResourceManagerClient.Deployments.CreateOrUpdate(
-                ResourceGroupName,
-                deploymentName,
-                deployment);
+
+            DeploymentExtended deploymentDetail = null;
+
+            PrintDetailIfThrow(()=> 
+                deploymentDetail = ResourceManagerClient.Deployments.CreateOrUpdate(  
+                    ResourceGroupName, 
+                    deploymentName,  
+                    deployment));
 
             var cluster = SFRPClient.Clusters.Get(this.ResourceGroupName, this.ClusterName);
             WriteObject(new PSDeploymentResult(
                 deploymentDetail,
                 new PSCluster(cluster))
-                {
-                    VmUserName = this.vmUserName
-                }, true);
-        }
-
-        private string GetDefaultPfxName(string outPutDir)
-        {
-            var filePath = Path.Combine(outPutDir, string.Concat(DefaultPfxName, PfxFileSuffix));
-            int i = 1;
-            while (File.Exists(filePath))
             {
-                filePath = Path.Combine(outPutDir, string.Concat(DefaultPfxName, i++.ToString(), PfxFileSuffix));
-            }
-
-            return filePath;
-        }
-
-        private bool IsARMParameter(ref string parameter)
-        {
-            if (string.IsNullOrEmpty(parameter))
-            {
-                throw new PSArgumentException("Parameter");
-            }
-
-            if (parameter.IndexOf('[') == -1 ||
-                parameter.IndexOf("parameters", StringComparison.OrdinalIgnoreCase) == -1)
-            {
-                return false;
-            }
-            else
-            {
-                int front = parameter.IndexOf('(');
-                int back = parameter.IndexOf(')');
-                var subStr = parameter.Substring(front + 1, back - front - 1);
-                var p = subStr.Trim().Split('\'').Where(s => !string.IsNullOrEmpty(s));
-                if (p.Count() != 1)
-                {
-                    throw new PSInvalidOperationException(ServiceFabricProperties.Resources.FailedToParseParameterFile);
-                }
-
-                parameter = p.First().Trim();
-                return true;
-            }
+                VmUserName = this.adminUserName
+            }, true);
         }
 
         private string GenerateDeploymentName()
@@ -413,10 +343,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
         }
 
-        private Deployment CreateBasicDeployment(
-            DeploymentMode deploymentMode,
-            string debugSetting,
-            JObject parameters = null)
+        private Deployment CreateBasicDeployment(DeploymentMode deploymentMode, string debugSetting, JObject parameters = null)
         {
             var deployment = new Deployment
             {
@@ -450,188 +377,191 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             return deployment;
         }
 
-        private JObject ReplaceTemplate(
-            JObject template,
-            string certificateThumbprint,
-            string secondaryCertificateThumbprint,
-            string sourceVaultValue,
+        private JObject SetParameters(
+            JObject parameters,
+            string keyVault,
             string certificateUrl,
-            string secondaryCertificateUrl,
-            out string adminUsernameParameterName
-            )
+            string thumbprint,
+            string durabilityLevel,
+            string reliability,
+            string location = null,
+            string clusterName = null,
+            string adminPassword = null,
+            int vmSize = -1)
         {
-            if (string.IsNullOrEmpty(certificateThumbprint) ||
-                string.IsNullOrEmpty(sourceVaultValue) ||
-                string.IsNullOrEmpty(certificateUrl))
+            SetParameter(ref parameters, this.thumbprintParameter, thumbprint);
+            SetParameter(ref parameters, this.keyVaultParameter, keyVault);
+            SetParameter(ref parameters, this.certificateUrlParameter, certificateUrl);
+            SetParameter(ref parameters, this.durabilityLevelParameter, durabilityLevel);
+            SetParameter(ref parameters, this.reliabilityLevelParameter, reliability);
+
+            if (location != null)
             {
-                throw new Exception();
+                SetParameter(ref parameters, this.locationParameter, location);
             }
-            adminUsernameParameterName = string.Empty;
-            var resources = template["resources"];
-            if (resources != null)
+
+            if (clusterName != null)
             {
-                foreach (var item in resources.Children())
+                SetParameter(ref parameters, this.clusterNameParameter, clusterName);
+            }
+
+            if (adminPassword != null)
+            {
+                SetParameter(ref parameters, this.adminPasswordParameter, adminPassword);
+            }
+
+            if (vmSize != -1)
+            {
+                SetParameter(ref parameters, this.vmInstanceParameter, vmSize);
+            }
+
+            return parameters;
+        }
+
+
+        private void GetParameters(JObject parameters)
+        {
+            this.adminUserName = GetParameter(parameters, this.adminUserParameter) ?? this.adminUserParameter;
+            this.resourceLocation = GetParameter(parameters, this.locationParameter) ?? this.locationParameter;
+            this.ClusterName = GetParameter(parameters, this.clusterNameParameter) ?? this.clusterNameParameter;
+        }
+
+        private void SetParameter(ref JObject parameters, string parameterName, int value)
+        {
+            var token = parameters.Children().SingleOrDefault(
+                    j => ((JProperty)j).Name.Equals(parameterName, StringComparison.OrdinalIgnoreCase));
+
+            if (token != null)
+            {
+                token.First()["value"] = value;
+            }
+        }
+
+        private void SetParameter(ref JObject parameters, string parameterName, string value)
+        {
+            var token = parameters.Children().SingleOrDefault(
+                    j => ((JProperty)j).Name.Equals(parameterName, StringComparison.OrdinalIgnoreCase));
+
+            if (token != null)
+            {
+                token.First()["value"] = value;
+            }
+        }
+
+        private string GetParameter(JObject parameters, string parameterName)
+        {
+            return parameters.GetValue(
+                parameterName,
+                StringComparison.OrdinalIgnoreCase)["value"].ToString();
+        }
+
+        private void ParseTempldate()
+        {
+            var templateString = FileUtilities.DataStore.ReadFileAsText(this.TemplateFile);
+            var jObject = JObject.Parse(templateString);
+            var resources = jObject.SelectToken("resources");
+
+            var settings = new JsonSerializerSettings
+            {
+                Error = (sender, argss) =>
                 {
-                    if (item["tags"] != null
-                        && item["tags"]["resourceType"] != null
-                        && string.Compare(
-                            item["tags"]["resourceType"].ToString(),
-                            Constants.ServieFabricTag,
-                            StringComparison.OrdinalIgnoreCase) == 0)
+                    argss.ErrorContext.Handled = true;
+                }
+            };
+
+            var serializer = JsonSerializer.Create(settings);
+
+            foreach (var resource in resources)
+            {
+                if (resource["type"].ToString().Equals(Constants.VirtualMachineScaleSetsType, StringComparison.OrdinalIgnoreCase))
+                {
+                    this.locationParameter = ((JValue)resource.SelectToken("location")).ToString();
+                    var resourceObject = (JObject)resource;
+                    this.vmInstanceParameter = ((JValue)resourceObject.SelectToken("sku.capacity", true)).ToString();
+
+                    resourceObject = (JObject)resourceObject.SelectToken("properties.virtualMachineProfile", true);
+                    var vmssProfile = resourceObject.ToObject<VirtualMachineScaleSetVMProfile>(serializer);
+                    this.adminUserParameter = vmssProfile.OsProfile.AdminUsername;
+                    this.adminPasswordParameter = vmssProfile.OsProfile.AdminPassword;
+
+                    foreach (var secret in vmssProfile.OsProfile.Secrets)
                     {
-                        if (item["type"] != null && string.Compare(
-                            item["type"].ToString(),
-                            Constants.VirtualMachineScaleSetsType,
-                            StringComparison.OrdinalIgnoreCase) == 0)
+                        if (!secret.SourceVault.Id.Equals(GetParameterName(secret.SourceVault.Id)))
                         {
-                            var extensions = item["properties"]["virtualMachineProfile"]["extensionProfile"]["extensions"];
-
-                            //Windows extention
-                            var extension = extensions.Children().First(e => string.Compare(
-                                e["properties"]["type"].ToString(),
-                                Constants.ServiceFabricWindowsNodeExtName,
-                                StringComparison.OrdinalIgnoreCase) == 0);
-
-                            //Linux extention
-                            if (extension == null || !extension.Any())
+                            keyVaultParameter = secret.SourceVault.Id;
+                            foreach (var cert in secret.VaultCertificates)
                             {
-                                extension = extensions.Children().First(e => string.Compare(
-                                    e["properties"]["type"].ToString(),
-                                    Constants.ServiceFabricLinuxNodeExtName,
-                                    StringComparison.OrdinalIgnoreCase) == 0);
-                            }
-
-                            if (extension == null || !extension.Any())
-                            {
-                                throw new PSArgumentException();
-                            }
-
-                            var certificate = extension["properties"]["settings"]["certificate"];
-
-                            if (!string.IsNullOrEmpty(certificateThumbprint))
-                            {
-                                certificate["thumbprint"] = certificateThumbprint;
-                            }
-
-                            if (!string.IsNullOrEmpty(secondaryCertificateThumbprint))
-                            {
-                                var certificateSecondary = extension["properties"]["settings"]["certificateSecondary"];
-                                if (certificateSecondary == null)
+                                if (!cert.CertificateUrl.Equals(GetParameterName(cert.CertificateUrl)))
                                 {
-                                    extension["properties"]["settings"]["certificateSecondary"] = certificate;
-                                    extension["properties"]["settings"]["certificateSecondary"]["thumbprint"] = secondaryCertificateThumbprint;
+                                    this.certificateUrlParameter = cert.CertificateUrl;
                                 }
                             }
-
-                            adminUsernameParameterName = item["properties"]["virtualMachineProfile"]["osProfile"]["adminUsername"].ToString();
-                            var secrets = item["properties"]["virtualMachineProfile"]["osProfile"]["secrets"].First();
-
-                            var sourceVault = secrets["sourceVault"];
-                            sourceVault["id"] = sourceVaultValue;
-                            var vaultCertificates = (JArray)secrets["vaultCertificates"];
-
-                            vaultCertificates[0]["certificateUrl"] = certificateUrl;
-                            if (!string.IsNullOrEmpty(secondaryCertificateUrl))
-                            {
-                                if (vaultCertificates.Count == 1)
-                                {
-                                    vaultCertificates.AddFirst(vaultCertificates.First());
-                                }
-
-                                vaultCertificates[1]["certificateUrl"] = secondaryCertificateUrl;
-                            }
                         }
+                    }
 
-                        if (item["type"] != null && string.Compare(
-                            item["type"].ToString(),
-                            Constants.ServiceFabricType,
-                            StringComparison.OrdinalIgnoreCase) == 0)
+                    var resourceArray = (JArray)resourceObject.SelectToken("extensionProfile.extensions");
+
+                    foreach (var extObject in resourceArray)
+                    {
+                        var extProperty = (JObject)extObject.SelectToken("properties", true);
+
+                        var publisher = (JValue)extProperty.SelectToken("publisher", true);
+
+                        if (publisher.ToString().Equals(Constants.ServiceFabricPublisher, StringComparison.OrdinalIgnoreCase))
                         {
+                            var extSetting = (JObject)extProperty.SelectToken("settings", true);
 
-                            item["properties"]["certificate"]["thumbprint"] = certificateThumbprint;
-                            if (!string.IsNullOrEmpty(secondaryCertificateThumbprint))
-                            {
-                                item["properties"]["certificate"]["thumbprintSecondary"] = secondaryCertificateThumbprint;
-                            }
+                            this.durabilityLevelParameter = extSetting["durabilityLevel"].ToString();
+                            this.thumbprintParameter = extSetting["certificate"]["thumbprint"].ToString();
                         }
-
                     }
                 }
 
-                return template;
-            }
-
-            return null;
-        }
-
-        private JObject ReplaceParameterFile(
-            string clusterLocation,
-            string clusterName,
-            string adminPassword,
-            int nt0InstanceCount)
-        {
-            var parameters = JObject.Parse(
-                    FileUtilities.DataStore.ReadFileAsText(this.ParameterFile))["parameters"];
-
-            parameters["clusterLocation"]["value"] = clusterLocation;
-            parameters["clusterName"]["value"] = clusterName;
-            parameters["adminPassword"]["value"] = adminPassword;
-            parameters["nt0InstanceCount"]["value"] = nt0InstanceCount;
-
-            this.vmUserName = parameters["adminUserName"]["value"].ToString();
-
-            return (JObject)parameters;
-        }
-
-        private void GetClusterNameAndLocation(
-            JObject template,
-            out string clusterName,
-            out string location)
-        {
-            clusterName = null;
-            location = null;
-
-            var resources = template["resources"];
-            foreach (var item in resources.Children())
-            {
-                if (item["tags"] != null
-                    && item["tags"]["resourceType"] != null
-                    && string.Compare(
-                        item["tags"]["resourceType"].ToString(),
-                        Constants.ServieFabricTag,
-                        StringComparison.OrdinalIgnoreCase) == 0)
+                if (resource["type"].ToString().Equals(Constants.ServiceFabricType, StringComparison.OrdinalIgnoreCase))
                 {
-                    if (item["type"] != null && string.Compare(
-                            item["type"].ToString(),
-                            Constants.ServiceFabricType,
-                            StringComparison.OrdinalIgnoreCase) == 0)
-                    {
-                        location = item["location"].ToString();
-                        clusterName = item["name"].ToString();
-                    }
+                    this.clusterNameParameter = ((JValue)resource.SelectToken("name")).ToString();
+                    this.reliabilityLevelParameter =
+                        ((JValue) resource.SelectToken("properties.reliabilityLevel")).ToString();
                 }
             }
+
+            this.adminUserParameter = GetParameterName(this.adminUserParameter);
+            this.locationParameter = GetParameterName(this.locationParameter);
+            this.thumbprintParameter = GetParameterName(this.thumbprintParameter);
+            this.keyVaultParameter = GetParameterName(this.keyVaultParameter);
+            this.certificateUrlParameter = GetParameterName(this.certificateUrlParameter);
+            this.clusterNameParameter = GetParameterName(this.clusterNameParameter);
+            this.adminPasswordParameter = GetParameterName(this.adminPasswordParameter);
+            this.vmInstanceParameter = GetParameterName(this.vmInstanceParameter);
+            this.durabilityLevelParameter = GetParameterName(this.durabilityLevelParameter);
+            this.reliabilityLevelParameter = GetParameterName(this.reliabilityLevelParameter);
         }
 
-        private string ParseParameter(JObject parameters, string propertyName)
+        private string GetParameterName(string parameter)
         {
-            var valueProperty = parameters.Children().SingleOrDefault(p => ((JProperty) p).Name.Equals(
-                                                                      propertyName, 
-                                                                      StringComparison.OrdinalIgnoreCase));
-           
-            if (valueProperty == null || valueProperty.First == null || valueProperty.First["value"] == null)
+            var parameterArray = parameter.Split(
+                new char[] { '[', ']', '(', ')', '\'' },
+                StringSplitOptions.RemoveEmptyEntries);
+
+            if (parameterArray.Count() == 1)
             {
-                throw new PSInvalidOperationException(string.Format("Failed to find {0}", propertyName));
+                return parameter;
             }
 
-            var value = valueProperty.First["value"];
-            var valueStr = value.ToString().Trim();
-            var singleOrDefault = valueStr.Replace("\"","");
-            return singleOrDefault?.Trim();
+            if (parameterArray[0].Equals("variables", StringComparison.OrdinalIgnoreCase))
+            {
+                var templateString = FileUtilities.DataStore.ReadFileAsText(this.TemplateFile);
+                var jObject = JObject.Parse(templateString);
+                var variables = jObject.SelectToken("variables");
+                return GetParameterName(variables[parameterArray[1]].ToString());
+            }
+            else
+            {
+                return parameterArray[1];
+            }
         }
 
-        private void DisplayInnerDetailErrorMessage(
-            ResourceManagementErrorWithDetails error)
+        private void DisplayInnerDetailErrorMessage(ResourceManagementErrorWithDetails error)
         {
             var ex = new Exception(string.Format(ErrorFormat, error.Code, error.Message));
             WriteError(
@@ -650,8 +580,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
         }
 
-        private void CheckValidationResult(
-            DeploymentValidateResult validateResult)
+        private void CheckValidationResult(DeploymentValidateResult validateResult)
         {
             if (validateResult.Error != null)
             {

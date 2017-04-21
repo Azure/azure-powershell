@@ -19,6 +19,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
@@ -35,6 +36,7 @@ using Microsoft.Azure.Management.KeyVault.Models;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.ServiceFabric;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Common;
 using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
@@ -53,7 +55,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [ValidateNotNullOrEmpty()]
         public virtual string ResourceGroupName { get; set; }
 
-        #region Key Vault 
+        #region Key Vault Property 
 
         protected readonly string[] DefaultPermissionsToKeys =
         {
@@ -150,12 +152,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 DefaultProfile.Context,
                 AzureEnvironment.Endpoint.ResourceManager));
 
-            keyVaultClient = new Lazy<IKeyVaultClient>(() => 
+            keyVaultClient = new Lazy<IKeyVaultClient>(() =>
             new KeyVaultClient(AuthenticationCallback));
 
             graphClient = new Lazy<GraphRbacManagementClient>(() =>
              AzureSession.ClientFactory.CreateArmClient<GraphRbacManagementClient>(
-                DefaultProfile.Context, AzureEnvironment.Endpoint.Graph));          
+                DefaultProfile.Context, AzureEnvironment.Endpoint.Graph));
         }
 
         #endregion
@@ -182,7 +184,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 {
                     throw new PSInvalidOperationException(
                         string.Format(
-                            ServiceFabricProperties.Resources.CanNotFindTheNodeType,name));
+                            ServiceFabricProperties.Resources.CanNotFindTheNodeType, name));
                 }
 
                 return vmss.First();
@@ -221,9 +223,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         #region Key Vault 
 
-        protected Vault GetKeyVault(
-            string keyVaultResouceGroupName,
-            string vaultName)
+        protected Vault GetKeyVault(string keyVaultResouceGroupName, string vaultName)
         {
             if (!string.IsNullOrWhiteSpace(vaultName))
             {
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             if (vault == null)
             {
                 throw new PSInvalidOperationException(
-                    string.Format( 
+                    string.Format(
                         ServiceFabricProperties.Resources.CanNotFindVault,
                         vaultName));
             }
@@ -282,10 +282,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             return rg;
         }
 
-        protected Vault CreateKeyVault(
-            string vaultName,
-            string vaultLocation,
-            string resouceGroupName)
+        protected Vault CreateKeyVault(string vaultName, string vaultLocation, string resouceGroupName)
         {
             var userObjectId = string.Empty;
             AccessPolicyEntry accessPolicy = null;
@@ -302,7 +299,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 accessPolicy = new AccessPolicyEntry()
                 {
-                    TenantId =  GetTenantId(DefaultContext),
+                    TenantId = GetTenantId(DefaultContext),
                     ObjectId = userObjectId,
                     Permissions = new Permissions
                     {
@@ -326,7 +323,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     TenantId = GetTenantId(DefaultContext),
                     VaultUri = string.Empty,
                     AccessPolicies = accessPolicy == null ?
-                        new AccessPolicyEntry[] { } : 
+                        new AccessPolicyEntry[] { } :
                         new[] { accessPolicy }
                 }
             };
@@ -374,9 +371,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             return tenant;
         }
 
-        protected Vault EnableKeyVaultForDeployment(
-            string keyVaultResouceGroupName,
-            string vaultName)
+        protected Vault EnableKeyVaultForDeployment(string keyVaultResouceGroupName, string vaultName)
         {
             var keyVault = GetKeyVault(keyVaultResouceGroupName, vaultName);
             keyVault.Properties.EnabledForDeployment = true;
@@ -394,12 +389,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             return vault;
         }
 
-        protected SecretBundle SetAzureKeyVaultSecret(
-            string keyVaultName,
-            string secretName,
-            string pfxFilePath,
-            SecureString password
-            )
+        protected SecretBundle SetAzureKeyVaultSecret(string keyVaultName, string secretName, string pfxFilePath, SecureString password , out string thumbprint)
         {
             var keyFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(pfxFilePath));
             if (!keyFile.Exists)
@@ -408,13 +398,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     string.Format(ServiceFabricProperties.Resources.FileNotExist, pfxFilePath));
             }
 
+            thumbprint = new X509Certificate2(pfxFilePath, password).Thumbprint;
+
             var collection = new X509Certificate2Collection();
             var flag = X509KeyStorageFlags.Exportable;
             var contentType = X509ContentType.Pkcs12;
 
             collection.Import(
                 pfxFilePath,
-                password.ConvertToString(), 
+                password.ConvertToString(),
                 flag);
 
             var clearBytes = collection.Export(contentType);
@@ -425,7 +417,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 secureStr.AppendChar(c);
             }
 
-            var secretContentType = "application/x-pkcs12";
+            var secretContentType = Constants.SecretContentType;
             var secret = KeyVaultClient.SetSecretAsync(
                 CreateVaultUri(keyVaultName).ToString(),
                 secretName,
@@ -444,7 +436,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 var user = GraphClient.Users.List(
                     new Rest.Azure.OData.ODataQuery<User>(
-                        string.Format("$filter=userPrincipalName eq '{0}'" , DefaultContext.Account.Id)
+                        string.Format("$filter=userPrincipalName eq '{0}'", DefaultContext.Account.Id)
                         )).FirstOrDefault();
 
                 objectId = user.ObjectId;
@@ -458,7 +450,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                             string.Format("$filter=servicePrincipalNames/any(c: c eq '{0}')", DefaultContext.Account.Id))
                         ).FirstOrDefault();
 
-                    objectId = user.ObjectId;                  
+                    objectId = user.ObjectId;
                 }
             }
 
@@ -470,7 +462,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             string suffix = string.Empty;
             if (DefaultContext.Environment.Endpoints.ContainsKey(AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix))
             {
-                 suffix = DefaultContext.Environment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix];
+                suffix = DefaultContext.Environment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix];
             }
             else
             {
@@ -482,10 +474,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             return builder.Uri;
         }
 
-        private Task<string> AuthenticationCallback(
-            string authority,
-            string resource,
-            string scope)
+        private Task<string> AuthenticationCallback(string authority, string resource, string scope)
         {
             if (!string.IsNullOrEmpty(resource))
             {
@@ -516,7 +505,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             return Task.FromResult(tokenStr);
         }
 
+        #endregion
 
+        #region Helper
         protected T SafeGetResource<T>(Func<T> action)
         {
             try
@@ -534,7 +525,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
             catch (Management.ServiceFabric.Models.ErrorModelException e)
             {
-                if (e.Body?.Error != null && 
+                if (e.Body?.Error != null &&
                    (e.Body.Error.Code == "ResourceGroupNotFound" ||
                     e.Body.Error.Code == "ResourceNotFound"))
                 {
@@ -545,6 +536,51 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
         }
 
+        protected void PrintDetailIfThrow(System.Action action)
+        {
+            try
+            {
+                action();
+            }
+            catch (CloudException cloudException)
+            {
+                if (cloudException.Body != null)
+                {
+                    var cloudErrorMessage = GetCloudErrorMessage(cloudException.Body);
+                    var ex = new Exception(cloudErrorMessage);
+                    WriteError(
+                        new ErrorRecord(ex, string.Empty, ErrorCategory.NotSpecified, null));
+                }
+
+                throw;
+            }
+        }
+
+        private string GetCloudErrorMessage(CloudError error)
+        {
+            if (error == null)
+            {
+                return string.Empty;
+            }
+
+            var sb = new StringBuilder();
+            if (error.Details != null)
+            {
+                foreach (var detail in error.Details)
+                {
+                    sb.Append(GetCloudErrorMessage(detail));
+                }                                        
+            }
+
+            var message = string.Format(
+                "Code:{0},Message:{1} {2} Details {3}",  
+                error.Code,                      
+                error.Message,         
+                Environment.NewLine,  
+                sb);
+
+            return message;
+        }
         #endregion
     }
 }
