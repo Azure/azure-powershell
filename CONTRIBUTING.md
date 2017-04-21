@@ -117,7 +117,7 @@ For Storage, this change log is located at `src\Storage\ChangeLog.md`.
 
 #### Breaking Changes
 
-Breaking changes should **not** be introduced into the repository without giving customers at least six months notice. For a description of breaking changes in Azure PowerShell, see [here](https://github.com/Azure/azure-powershell/blob/dev/documentation/breaking-changes.md).
+Breaking changes should **not** be introduced into the repository without giving customers at least six months notice. For a description of breaking changes in Azure PowerShell, see [here](https://github.com/Azure/azure-powershell/blob/dev/documentation/breaking-changes/breaking-changes-definition.md).
 
 Whenever a service team announces a breaking change, they must add it to the `upcoming-breaking-changes.md` file in their respective service folder. When the service team is ready to release the module with the breaking change, they must move the corresponding information from `upcoming-breaking-changes.md` into the `current-breaking-changes.md` file located in their service folder.
 

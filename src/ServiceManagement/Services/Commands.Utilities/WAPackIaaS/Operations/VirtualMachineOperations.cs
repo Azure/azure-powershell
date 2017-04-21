@@ -50,6 +50,13 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.WAPackIaaS.Operations
             return resultList[0];
         }
 
+        public override List<VirtualMachine> Read()
+        {
+            var resultList = this.Read(new Dictionary<string, string>(), "VirtualNetworkAdapters,VMCheckpoints,VirtualSCSIAdapters,VirtualHardDisks,VirtualDVDDrives,VirtualDiskDrives");
+            return resultList;
+        }
+
+
         public List<VirtualMachine> Read(string vmName)
         {
             var filterDict = new Dictionary<string, string>
@@ -57,8 +64,22 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.WAPackIaaS.Operations
                     {"Name", vmName}
                 };
 
-            var resultList = this.Read(filterDict);
+            var resultList = this.Read(filterDict, "VirtualNetworkAdapters,VMCheckpoints,VirtualSCSIAdapters,VirtualHardDisks,VirtualDVDDrives,VirtualDiskDrives");
             return resultList;
+        }
+
+        public override VirtualMachine Read(Guid id)
+        {
+            var filterDict = new Dictionary<string, string>
+                {
+                    {"ID", id.ToString()}
+                };
+
+            var resultList = this.Read(filterDict, "VirtualNetworkAdapters,VMCheckpoints,VirtualSCSIAdapters,VirtualHardDisks,VirtualDVDDrives,VirtualDiskDrives");
+            if (resultList.Count <= 0)
+                throw new WAPackOperationException(string.Format(Resources.ResourceNotFound, id));
+
+            return resultList[0];
         }
 
         public override VirtualMachine Update(VirtualMachine toUpdate, out Guid? jobId)
