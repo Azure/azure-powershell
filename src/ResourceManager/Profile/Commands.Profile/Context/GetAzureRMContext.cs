@@ -36,11 +36,7 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 if (DefaultProfile == null || DefaultProfile.Context == null)
                 {
-                    WriteError(new ErrorRecord(
-                        new PSInvalidOperationException("Run Login-AzureRmAccount to login."),
-                        string.Empty,
-                        ErrorCategory.AuthenticationError,
-                        null));
+                    return null;
                 }
 
                 return DefaultProfile.Context;
@@ -49,7 +45,16 @@ namespace Microsoft.Azure.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
-            WriteObject((PSAzureContext)AzureRmProfileProvider.Instance.Profile.Context);
+            var context = (PSAzureContext)AzureRmProfileProvider.Instance.Profile.Context;
+            if (context == null)
+            {
+                WriteError(new ErrorRecord(
+                        new PSInvalidOperationException("Run Login-AzureRmAccount to login."),
+                        string.Empty,
+                        ErrorCategory.AuthenticationError,
+                        null));
+            }
+            WriteObject(context);
         }
     }
 }
