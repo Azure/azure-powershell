@@ -13,9 +13,9 @@ Gets usage statistics of an ExpressRoute circuit.
 ## SYNTAX
 
 ```
-Get-AzureRmExpressRouteCircuitStats [-Name <String>] -ResourceGroupName <String>
- -ExpressRouteCircuitName <String> [-PeeringType <String>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmExpressRouteCircuitStats -ResourceGroupName <String> -ExpressRouteCircuitName <String>
+ [-PeeringType <String>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,12 +38,12 @@ The name of the ExpressRoute circuit being examined.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: Name, ResourceName
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -83,19 +83,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The resource name.```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: ResourceName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

@@ -8,6 +8,7 @@ schema: 2.0.0
 # Get-AzureRmVirtualNetworkGatewayConnection
 
 ## SYNOPSIS
+Gets a Virtual Network Gateway Connection
 
 ## SYNTAX
 
@@ -17,13 +18,17 @@ Get-AzureRmVirtualNetworkGatewayConnection [-Name <String>] -ResourceGroupName <
 ```
 
 ## DESCRIPTION
+The Virtual Network Gateway Connection is the object representing the IPsec tunnel (Site-to-Site or Vnet-to-Vnet) connected to your Virtual Network Gateway in Azure.
+
+The **Get-AzureRmVirtualNetworkGatewayConnection** cmdlet returns the object of your connection based on Name and Resource Group Name.
 
 ## EXAMPLES
 
-### 1:
+### 1: Get a Virtual Network Gateway Connection
 ```
-
+Get-AzureRmVirtualNetworkGatewayConnection -Name myTunnel -ResourceGroupName myRG
 ```
+Returns the object of the Virtual Network Gateway Connection with the name "myTunnel" within the resource group "myRG"
 
 ## PARAMETERS
 

@@ -14,9 +14,10 @@ Creates a non-persisted cluster configuration object that describes an Azure HDI
 
 ```
 New-AzureRmHDInsightClusterConfig [-DefaultStorageAccountName <String>] [-DefaultStorageAccountKey <String>]
- [-OozieMetastore <AzureHDInsightMetastore>] [-HiveMetastore <AzureHDInsightMetastore>]
- [-HeadNodeSize <String>] [-WorkerNodeSize <String>] [-ZookeeperNodeSize <String>] [-ClusterType <String>]
- [-ClusterTier <Tier>] [-ObjectId <Guid>] [-CertificateFileContents <Byte[]>] [-CertificateFilePath <String>]
+ [-DefaultStorageAccountType <StorageType>] [-OozieMetastore <AzureHDInsightMetastore>]
+ [-HiveMetastore <AzureHDInsightMetastore>] [-HeadNodeSize <String>] [-WorkerNodeSize <String>]
+ [-EdgeNodeSize <String>] [-ZookeeperNodeSize <String>] [-ClusterType <String>] [-ClusterTier <Tier>]
+ [-ObjectId <Guid>] [-CertificateFileContents <Byte[]>] [-CertificateFilePath <String>]
  [-CertificatePassword <String>] [-AadTenantId <Guid>] [-InformationAction <ActionPreference>]
  [-InformationVariable <String>] [<CommonParameters>]
 ```
@@ -97,6 +98,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultStorageAccountType
+Specifies the type of the default storage account that the HDInsight cluster will use. Possible values are AzureStorage and AzureDataLakeStore.```yaml
+Type: StorageType
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: AzureStorage
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -OozieMetastore
 Specifies the metastore to store Oozie metadata.
 You can alternatively use the **Add-AzureRmHDInsightMetastore** cmdlet.
@@ -167,6 +181,19 @@ Use Get-AzureRMVMSize for acceptable VM sizes, and see HDInsight's pricing page.
 This parameter is valid only for HBase or Storm clusters.
 
 ```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EdgeNodeSize
+Specifies the size of the virtual machine for the edge node. Use Get-AzureRmVMSize for acceptable VM sizes, and see HDInsight's pricing page. This parameter is valid only for RServer clusters.```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 

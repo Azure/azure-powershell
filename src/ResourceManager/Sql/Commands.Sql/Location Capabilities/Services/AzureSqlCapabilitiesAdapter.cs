@@ -1,4 +1,4 @@
-﻿//
+//
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         /// </summary>
         /// <param name="resp">The object to transform</param>
         /// <returns>The converted location capability model</returns>
-        private LocationCapabilityModel CreateLocationCapabilityModel(Management.Sql.Models.LocationCapability resp)
+        private LocationCapabilityModel CreateLocationCapabilityModel(Management.Sql.LegacySdk.Models.LocationCapability resp)
         {
             LocationCapabilityModel model = new LocationCapabilityModel();
             model.LocationName = resp.Name;
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         /// </summary>
         /// <param name="v">The object to transform</param>
         /// <returns>The converted server version capability model</returns>
-        private ServerVersionCapabilityModel CreateSupportedVersionsModel(Management.Sql.Models.ServerVersionCapability v)
+        private ServerVersionCapabilityModel CreateSupportedVersionsModel(Management.Sql.LegacySdk.Models.ServerVersionCapability v)
         {
             ServerVersionCapabilityModel version = new ServerVersionCapabilityModel();
             version.ServerVersionName = v.Name;
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         /// </summary>
         /// <param name="e">The object to transform</param>
         /// <returns>The converted database edition capability model</returns>
-        private EditionCapabilityModel CreateSupportedEditionModel(Management.Sql.Models.EditionCapability e)
+        private EditionCapabilityModel CreateSupportedEditionModel(Management.Sql.LegacySdk.Models.EditionCapability e)
         {
             EditionCapabilityModel edition = new EditionCapabilityModel();
             edition.EditionName = e.Name;
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         /// </summary>
         /// <param name="s">The object to transform</param>
         /// <returns>The converted edition Service Level Objective capability model</returns>
-        private ServiceObjectiveCapabilityModel CreateSupportedSLOModel(Management.Sql.Models.ServiceObjectiveCapability s)
+        private ServiceObjectiveCapabilityModel CreateSupportedSLOModel(Management.Sql.LegacySdk.Models.ServiceObjectiveCapability s)
         {
             ServiceObjectiveCapabilityModel slo = new ServiceObjectiveCapabilityModel();
 
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         /// </summary>
         /// <param name="e">The object to transform</param>
         /// <returns>The converted database max size capability model</returns>
-        private MaxSizeCapabilityModel CreateSupportedMaxSizeModel(Management.Sql.Models.MaxSizeCapability m)
+        private MaxSizeCapabilityModel CreateSupportedMaxSizeModel(Management.Sql.LegacySdk.Models.MaxSizeCapability m)
         {
             MaxSizeCapabilityModel maxSize = new MaxSizeCapabilityModel();
 

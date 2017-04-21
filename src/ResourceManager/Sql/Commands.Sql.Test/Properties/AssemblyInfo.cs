@@ -1,4 +1,4 @@
-﻿// Licensed under the Apache License, Version 2.0 (the "License");
+// Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 // http://www.apache.org/licenses/LICENSE-2.0
@@ -33,6 +33,6 @@ using Xunit;
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("f6f46134-9c1b-4599-8dd0-789299c076ef")]
 
-[assembly: AssemblyVersion("2.7.0")]
-[assembly: AssemblyFileVersion("2.7.0")]
+[assembly: AssemblyVersion("2.8.0")]
+[assembly: AssemblyFileVersion("2.8.0")]
 [assembly: CollectionBehavior(DisableTestParallelization = true)]

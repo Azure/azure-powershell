@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.Sql.Database.Services;
 using Microsoft.Azure.Commands.Sql.FailoverGroup.Model;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
             ReadWriteEndpoint readWriteEndpoint = new ReadWriteEndpoint();
             readWriteEndpoint.FailoverPolicy = model.ReadWriteFailoverPolicy;
 
-            if (model.FailoverWithDataLossGracePeriodHours.HasValue)
+            if (model.FailoverWithDataLossGracePeriodHours.HasValue && !string.Equals(model.ReadWriteFailoverPolicy, FailoverPolicy.Manual.ToString()))
             {
                 readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = model.FailoverWithDataLossGracePeriodHours * 60;
             }
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
             ReadWriteEndpoint readWriteEndpoint = new ReadWriteEndpoint();
             readWriteEndpoint.FailoverPolicy = model.ReadWriteFailoverPolicy;
 
-            if (model.FailoverWithDataLossGracePeriodHours.HasValue)
+            if (!string.Equals(model.ReadWriteFailoverPolicy, FailoverPolicy.Manual.ToString()))
             {
                 readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = model.FailoverWithDataLossGracePeriodHours * 60;
             }
@@ -158,7 +158,8 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
             {
                 readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = null;
             }
-            
+
+
             var resp = Communicator.PatchUpdate(model.ResourceGroupName, model.ServerName, model.FailoverGroupName, Util.GenerateTracingId(), new FailoverGroupPatchUpdateParameters()
             {
                 Location = model.Location,
@@ -267,7 +268,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// <param name="serverName">The name of the Azure Sql Database Server</param>
         /// <param name="pool">The service response</param>
         /// <returns>The converted model</returns>
-        private AzureSqlFailoverGroupModel CreateFailoverGroupModelFromResponse(string resourceGroup, string serverName, Management.Sql.Models.FailoverGroup failoverGroup)
+        private AzureSqlFailoverGroupModel CreateFailoverGroupModelFromResponse(string resourceGroup, string serverName, Management.Sql.LegacySdk.Models.FailoverGroup failoverGroup)
         {
             AzureSqlFailoverGroupModel model = new AzureSqlFailoverGroupModel();
 

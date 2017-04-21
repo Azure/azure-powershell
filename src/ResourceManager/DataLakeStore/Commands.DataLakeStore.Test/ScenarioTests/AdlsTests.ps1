@@ -132,13 +132,17 @@ function Test-DataLakeStoreFirewall
 		Assert-True {Test-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}
 
 		# Enable the firewall state and azure IPs
-		Assert-AreEqual "Disabled" $accountCreated.FirewallState 
-		Assert-AreEqual "Disabled" $accountCreated.FirewallAllowAzureIps 
+		Assert-AreEqual "Disabled" $accountCreated.FirewallState
+		
+		# TODO: Re-enable this when this property is re-introduced by the service
+		# Assert-AreEqual "Disabled" $accountCreated.FirewallAllowAzureIps 
 
 		$accountSet = Set-AzureRMDataLakeStoreAccount -Name $accountName -FirewallState "Enabled" -AllowAzureIpState "Enabled"
 
-		Assert-AreEqual "Enabled" $accountSet.FirewallState 
-		Assert-AreEqual "Enabled" $accountSet.FirewallAllowAzureIps
+		Assert-AreEqual "Enabled" $accountSet.FirewallState
+		
+		# TODO: Re-enable this when this property is re-introduced by the service
+		# Assert-AreEqual "Enabled" $accountSet.FirewallAllowAzureIps
 
 		$firewallRuleName = getAssetName
 		$startIp = "127.0.0.1"
@@ -465,6 +469,28 @@ function Test-DataLakeStoreFileSystem
 		# Preview a subset with a specific length
 		$previewContent = Get-AzureRMDataLakeStoreItemContent -Account $accountName -Path $concatFile -Offset 2 -Length $content.Length
 		Assert-AreEqual $content.length $previewContent.Length
+
+		# Create a file with 4 rows and get the top 2 and last 2.
+		$previewHeadTailFile = "/headtail/filetest.txt"
+		$headTailContent = @"
+1
+2
+3
+4
+"@
+		New-AzureRMDataLakeStoreItem -Account $accountName -Path $previewHeadTailFile -Force -Value $headTailContent
+		
+		# Get the first two elements
+		$headTailResult = Get-AzureRMDataLakeStoreItemContent -Account $accountName -Path $previewHeadTailFile -Head 2
+		Assert-AreEqual 2 $headTailResult.Length
+		Assert-AreEqual 1 $headTailResult[0]
+		Assert-AreEqual 2 $headTailResult[1]
+
+		# get the last two elements
+		$headTailResult = Get-AzureRMDataLakeStoreItemContent -Account $accountName -Path $previewHeadTailFile -Tail 2
+		Assert-AreEqual 2 $headTailResult.Length
+		Assert-AreEqual 3 $headTailResult[0]
+		Assert-AreEqual 4 $headTailResult[1]
 
 		# Import and get file
 		$localFileInfo = Get-ChildItem $fileToCopy
