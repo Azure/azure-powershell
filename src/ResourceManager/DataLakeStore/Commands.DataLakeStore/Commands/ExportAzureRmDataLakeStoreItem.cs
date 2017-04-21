@@ -18,6 +18,7 @@ using Microsoft.Azure.Management.DataLake.Store.Models;
 using Microsoft.Rest.Azure;
 using System.Management.Automation;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Rest;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
@@ -148,12 +149,20 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                     DataLakeStoreTraceLogger logger = null;
                     var originalLevel = AdalTrace.TraceSource.Switch.Level;
                     var originalLegacyLevel = AdalTrace.LegacyTraceSwitch.Level;
+                    var previousTracing = ServiceClientTracing.IsEnabled;
                     try
                     {
                         if (ParameterSetName.Equals(DiagnosticParameterSetName) && DiagnosticLogLevel != LogLevel.None)
                         {
                             var diagnosticPath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(DiagnosticLogPath);
                             logger = new DataLakeStoreTraceLogger(this, diagnosticPath, DiagnosticLogLevel);
+                        }
+
+                        if (logger == null)
+                        {
+                            // if the caller does not explicitly want logging, we will explicitly turn it off
+                            // for performance reasons
+                            ServiceClientTracing.IsEnabled = false;
                         }
 
                         if (type == FileType.FILE)
@@ -173,6 +182,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                     }
                     finally
                     {
+                        // set service client tracing back always
+                        ServiceClientTracing.IsEnabled = previousTracing;
                         if (logger != null)
                         {
                             // dispose and free the logger.

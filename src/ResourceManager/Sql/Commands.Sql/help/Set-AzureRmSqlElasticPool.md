@@ -45,6 +45,27 @@ Tags              :
 This command modifies properties for an elastic pool named elasticpool01.
 The command sets the number of DTUs for the elastic pool to 1000 and sets the minimum and maximum DTUs.
 
+### Example 2: Modify the max storage of an elastic pool
+```
+PS C:\>Set-AzureRmSqlDatabaseElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01" -StorageMB 2097152
+ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/resourcegroup01/providers/Microsoft.Sql/servers/Server01/elasticPools/ElasticPool01
+ResourceGroupName : ResourceGroup01
+ServerName        : Server01
+ElasticPoolName   : ElasticPool01
+Location          : Central US
+CreationDate      : 8/26/2015 10:00:17 PM
+State             : Ready
+Edition           : Premium
+Dtu               : 200
+DatabaseDtuMax    : 100
+DatabaseDtuMin    : 20
+StorageMB         : 2097152
+Tags              :
+```
+
+This command modifies properties for an elastic pool named elasticpool01.
+The command sets the max storage for an elastic pool to 2 TB.
+
 ## PARAMETERS
 
 ### -DatabaseDtuMax
