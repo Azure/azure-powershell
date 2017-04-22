@@ -29,6 +29,7 @@ using System.IO;
 using System.Linq;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Websites
 {
@@ -149,8 +150,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ProcessGetWebsiteWithNullSubscription()
         {
-            currentProfile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-            currentProfile.Subscriptions.Clear();
+            currentProfile = new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
+            currentProfile.SubscriptionTable.Clear();
             currentProfile.Save();
             AzureSMCmdlet.CurrentProfile = currentProfile;
 
@@ -248,6 +249,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetsSlots()
         {
+            AzureSessionInitializer.InitializeAzureSession();
+            ServiceManagementProfileProvider.InitializeServiceManagementProfile();
             // Setup
             string slot = "staging";
             var clientMock = new Mock<IWebsitesClient>();

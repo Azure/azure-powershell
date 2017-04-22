@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -26,7 +27,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         /// </summary>
         /// <param name="profile">The profile to change the context for</param>
         /// <param name="newContext">The new context, with no token cache information.</param>
-        public static void SetContextWithCache(this AzureRMProfile profile, AzureContext newContext)
+        public static void SetContextWithCache(this IAzureContextContainer profile, IAzureContext newContext)
         {
             if (profile == null)
             {
@@ -38,8 +39,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 throw new ArgumentNullException("newContext", Resources.ContextCannotBeNull);
             }
 
-            newContext.TokenCache = TokenCache.DefaultShared.Serialize();
-            profile.Context = newContext;
+            newContext.TokenCache = new AzureTokenCache { CacheData = TokenCache.DefaultShared.Serialize() };
+            profile.DefaultContext = newContext;
         }
     }
 }

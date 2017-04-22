@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -41,26 +42,19 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             private get
             {
-                return AzureSMProfileProvider.Instance.Profile;
+                ServiceManagementProfileProvider.InitializeServiceManagementProfile();
+                return AzureSMProfileProvider.Instance.Profile as AzureSMProfile;
             }
 
             set
             {
+                ServiceManagementProfileProvider.InitializeServiceManagementProfile();
                 AzureSMProfileProvider.Instance.Profile = value;
             }
         }
 
 
-        protected override AzureContext DefaultContext { get { return CurrentProfile.Context; } }
-
-        static AzureSMCmdlet()
-        {
-            if (!TestMockSupport.RunningMocked)
-            {
-                AzureSession.ClientFactory.AddAction(new RPRegistrationAction());
-                AzureSession.DataStore = new DiskDataStore();
-            }
-        }
+        protected override IAzureContext DefaultContext { get { return CurrentProfile.DefaultContext; } }
 
         protected override void SaveDataCollectionProfile()
         {
@@ -69,9 +63,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 InitializeDataCollectionProfile();
             }
 
-            string fileFullPath = Path.Combine(AzureSession.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
+            string fileFullPath = Path.Combine(AzureSession.Instance.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
             var contents = JsonConvert.SerializeObject(_dataCollectionProfile);
-            AzureSession.DataStore.WriteFile(fileFullPath, contents);
+            AzureSession.Instance.DataStore.WriteFile(fileFullPath, contents);
             WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
         }
 
@@ -171,7 +165,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             if (Profile == null)
             {
-                Profile = AzureSMProfileProvider.Instance.Profile;
+                Profile = AzureSMProfileProvider.Instance.Profile as AzureSMProfile;
             }
             else
             {

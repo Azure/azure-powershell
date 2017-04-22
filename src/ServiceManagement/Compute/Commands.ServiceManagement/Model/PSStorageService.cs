@@ -14,19 +14,16 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Management.Storage;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
 {
     public class PSStorageService : StorageServicePropertiesOperationContext, IStorageContextProvider
     {
         private AzureStorageContext _context;
-        public AzureStorageContext Context
+        public IStorageContext Context
         {
             get { return _context; }
         }
@@ -71,6 +68,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
                 return StorageUtilities.GenerateCloudStorageAccount(client, account.StorageAccountName);
             }, account.StorageAccountName) as AzureStorageContext); 
         }
+
+        /// <summary>
+        /// Custom properties for the context
+        /// </summary>
+        public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
         /// <summary>
         /// String representation of this account

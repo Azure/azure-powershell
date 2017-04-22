@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -28,7 +30,7 @@ namespace Microsoft.Azure.Commands.Profile
     {
         public override void ExecuteCmdlet()
         {
-            WriteObject((PSAzureContext)AzureRmProfileProvider.Instance.Profile.Context);
+            WriteObject(new PSAzureContext(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().DefaultContext));
         }
     }
 }

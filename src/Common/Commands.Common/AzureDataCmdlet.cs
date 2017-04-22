@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
@@ -26,30 +26,30 @@ namespace Microsoft.WindowsAzure.Commands.Common
 {
     public class AzureDataCmdlet : AzurePSCmdlet
     {
-        protected override AzureContext DefaultContext
+        protected override IAzureContext DefaultContext
         {
             get
             {
-                if (RMProfile != null && RMProfile.Context != null)
+                if (RMProfile != null && RMProfile.DefaultContext != null)
                 {
-                    return RMProfile.Context;
+                    return RMProfile.DefaultContext;
                 }
 
-                if (SMProfile == null || SMProfile.Context == null)
+                if (SMProfile == null || SMProfile.DefaultContext == null)
                 {
                     throw new InvalidOperationException(Resources.NoCurrentContextForDataCmdlet);
                 }
 
-                return SMProfile.Context;
+                return SMProfile.DefaultContext;
             }
         }
 
-        public AzureSMProfile SMProfile
+        public IAzureContextContainer SMProfile
         {
             get { return AzureSMProfileProvider.Instance.Profile; }
         }
 
-        public AzureRMProfile RMProfile
+        public IAzureContextContainer RMProfile
         {
             get { return AzureRmProfileProvider.Instance.Profile; }
         }
@@ -61,13 +61,13 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 InitializeDataCollectionProfile();
             }
 
-            string fileFullPath = Path.Combine(AzureSession.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
+            string fileFullPath = Path.Combine(AzureSession.Instance.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
             var contents = JsonConvert.SerializeObject(_dataCollectionProfile);
-            if (!AzureSession.DataStore.DirectoryExists(AzureSession.ProfileDirectory))
+            if (!AzureSession.Instance.DataStore.DirectoryExists(AzureSession.Instance.ProfileDirectory))
             {
-                AzureSession.DataStore.CreateDirectory(AzureSession.ProfileDirectory);
+                AzureSession.Instance.DataStore.CreateDirectory(AzureSession.Instance.ProfileDirectory);
             }
-            AzureSession.DataStore.WriteFile(fileFullPath, contents);
+            AzureSession.Instance.DataStore.WriteFile(fileFullPath, contents);
             WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
         }
 

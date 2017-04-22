@@ -11,6 +11,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+param(
+    [Parameter(Mandatory = $false, Position = 0)]
+    [string] $buildConfig,
+    [Parameter(Mandatory = $false, Position = 1)]
+    [string] $scope
+)
+
 function Create-ModulePsm1
 {
   [CmdletBinding()]
@@ -43,13 +50,6 @@ function Create-ModulePsm1
      $file = Get-Item -Path $templateOutputPath
   }
 }
-
-param(
-    [Parameter(Mandatory = $false, Position = 0)]
-    [string] $buildConfig,
-    [Parameter(Mandatory = $false, Position = 1)]
-    [string] $scope
-)
 
 if ([string]::IsNullOrEmpty($buildConfig))
 {

@@ -21,6 +21,7 @@ using Microsoft.Azure.Management.RecoveryServices.Models;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using System.Configuration;
 using System.Net.Security;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -47,7 +48,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
         /// Azure profile
         /// </summary>
-        public IAzureProfile Profile { get; set; }
+        public IAzureContextContainer Profile { get; set; }
 
         /// <summary>
         /// Resource credentials holds vault, cloud service name, vault key and other details.
@@ -76,7 +77,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// required current subscription.
         /// </summary>
         /// <param name="azureSubscription">Azure Subscription</param>
-        public PSRecoveryServicesClient(IAzureProfile azureProfile)
+        public PSRecoveryServicesClient(IAzureContextContainer azureProfile)
         {
             System.Configuration.Configuration recoveryServicesConfig = ConfigurationManager.OpenExeConfiguration(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
@@ -108,10 +109,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
 
             this.recoveryServicesClient =
-            AzureSession.ClientFactory.CreateCustomClient<RecoveryServicesManagementClient>(
+            AzureSession.Instance.ClientFactory.CreateCustomClient<RecoveryServicesManagementClient>(
                 arsVaultCreds.ResourceNamespace,
-                AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(azureProfile.Context),
-                azureProfile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager));
+                AzureSession.Instance.AuthenticationFactory.GetSubscriptionCloudCredentials(azureProfile.DefaultContext),
+                azureProfile.DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager));
         }
 
         private static bool IgnoreCertificateErrorHandler

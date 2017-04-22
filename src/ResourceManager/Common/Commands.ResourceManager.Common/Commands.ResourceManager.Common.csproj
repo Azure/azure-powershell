@@ -143,6 +143,8 @@
   <ItemGroup>
     <Compile Include="AccessTokenExtensions.cs" />
     <Compile Include="AzureRmCmdlet.cs" />
+    <Compile Include="AzureRmProfile.cs" />
+    <Compile Include="AzureRmProfileConverter.cs" />
     <Compile Include="AzureRMProfileExtensions.cs" />
     <Compile Include="Generated\DeploymentOperations.cs" />
     <Compile Include="Generated\DeploymentOperationsExtensions.cs" />
@@ -259,6 +261,8 @@
     <Compile Include="Generated\TenantsOperations.cs" />
     <Compile Include="Generated\TenantsOperationsExtensions.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Serialization\CacheBuffer.cs" />
+    <Compile Include="Serialization\LegacyAzureAccount.cs" />
     <Compile Include="PaginatedResponseHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -266,8 +270,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ResourceManagerProfileProvider.cs" />
     <Compile Include="ResponseWithContinuation.cs" />
     <Compile Include="RPRegistrationDelegatingHandler.cs" />
+    <Compile Include="Serialization\LegacyAzureContext.cs" />
+    <Compile Include="Serialization\LegacyAzureEnvironment.cs" />
+    <Compile Include="Serialization\LegacyAzureRmProfile.cs" />
+    <Compile Include="Serialization\LegacyAzureSubscription.cs" />
+    <Compile Include="Serialization\LegacyAzureTenant.cs" />
+    <Compile Include="Serialization\ProfileConverter.cs" />
     <Compile Include="ServiceClientTracingInterceptor.cs" />
     <Compile Include="Tags\PSTag.cs" />
     <Compile Include="Tags\PSTagValue.cs" />
@@ -286,8 +297,12 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
+      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
+      <Name>Commands.Common.Authentication.Abstractions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
-      <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
+      <Project>{D3804B64-C0D3-48F8-82EC-1F632F833C9E}</Project>
       <Name>Commands.Common.Authentication</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">

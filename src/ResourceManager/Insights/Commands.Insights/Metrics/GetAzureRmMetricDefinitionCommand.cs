@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
             bool fullDetails = this.DetailedOutput.IsPresent;
 
             WriteWarning("API deprecation: The use of the legacy metrics API will be discontinued in the next release. This implies a change in the output of this cmdlet.");
-            using (var clientTemp = AzureSession.ClientFactory.CreateClient<InsightsClient>(DefaultProfile.Context, Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment.Endpoint .ResourceManager))
+            using (var clientTemp = AzureSession.Instance.ClientFactory.CreateClient<InsightsClient>(DefaultProfile.DefaultContext, Common.Authentication.Abstractions.AzureEnvironment.Endpoint.ResourceManager))
             {
                 // Call the proper API methods to return a list of raw records.
                 MetricDefinitionListResponse response = clientTemp.MetricDefinitionOperations.GetMetricDefinitionsAsync(resourceUri: this.ResourceId, filterString: queryFilter, cancellationToken: CancellationToken.None).Result;

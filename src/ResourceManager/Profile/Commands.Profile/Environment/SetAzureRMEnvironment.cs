@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -116,7 +117,7 @@ namespace Microsoft.Azure.Commands.Profile
             ConfirmAction("updating environment", Name,
                 () =>
                 {
-                    var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
+                    var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>());
 
                     foreach (var key in AzureEnvironment.PublicEnvironments.Keys)
                     {
@@ -127,10 +128,11 @@ namespace Microsoft.Azure.Commands.Profile
                         }
                     }
 
-                    var newEnvironment = new AzureEnvironment { Name = Name, OnPremise = EnableAdfsAuthentication };
-                    if (AzureRmProfileProvider.Instance.Profile.Environments.ContainsKey(Name))
+                    IAzureEnvironment newEnvironment = new AzureEnvironment { Name = Name, OnPremise = EnableAdfsAuthentication };
+                    var profile = AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>();
+                    if (profile.EnvironmentTable.ContainsKey(Name))
                     {
-                        newEnvironment = AzureRmProfileProvider.Instance.Profile.Environments[Name];
+                        newEnvironment = profile.EnvironmentTable[Name];
                     }
 
                     SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.PublishSettingsFileUrl,
@@ -169,15 +171,15 @@ namespace Microsoft.Azure.Commands.Profile
                         GraphAudience);
                     profileClient.AddOrSetEnvironment(newEnvironment);
 
-                    WriteObject((PSAzureEnvironment)newEnvironment);
+                    WriteObject(new PSAzureEnvironment(newEnvironment));
                 });
         }
 
-        private void SetEndpointIfProvided(AzureEnvironment newEnvironment, AzureEnvironment.Endpoint endpoint, string property)
+        private void SetEndpointIfProvided(IAzureEnvironment newEnvironment, string endpoint, string property)
         {
             if (!string.IsNullOrEmpty(property))
             {
-                newEnvironment.Endpoints[endpoint] = property;
+                newEnvironment.SetEndpoint(endpoint, property);
             }
         }
     }

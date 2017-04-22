@@ -22,6 +22,8 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Threading;
 using Moq;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 {
@@ -30,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
     /// </summary>
     public abstract class RMTestBase
     {
-        protected AzureRMProfile currentProfile;
+        protected AzureRmProfile currentProfile;
 
         public RMTestBase()
         {
@@ -43,31 +45,33 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
         /// </summary>
         public void BaseSetup()
         {
-            currentProfile = new AzureRMProfile();
+            AzureSessionInitializer.InitializeAzureSession();
+            ResourceManagerProfileProvider.InitializeResourceManagerProfile();
+            currentProfile = new AzureRmProfile();
             var newGuid = Guid.NewGuid();
-            currentProfile.Context = new AzureContext(
-                new AzureSubscription { Id = newGuid, Name = "test", Environment = EnvironmentName.AzureCloud, Account = "test" },
-                new AzureAccount
-                {
-                    Id = "test",
-                    Type = AzureAccount.AccountType.User,
-                    Properties = new Dictionary<AzureAccount.Property, string>
-                    {
-                            {AzureAccount.Property.Subscriptions, newGuid.ToString()}
-                    }
-                },
+            var account = new AzureAccount
+            {
+                Id = "test",
+                Type = AzureAccount.AccountType.User,
+            };
+            account.SetSubscriptions(newGuid.ToString());
+            var subscription = new AzureSubscription { Id = newGuid.ToString(), Name = "test"};
+            subscription.SetAccount("test");
+            subscription.SetEnvironment(EnvironmentName.AzureCloud);
+            currentProfile.DefaultContext = new AzureContext(
+                subscription,
+                account,
             AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud],
-            new AzureTenant { Id = Guid.NewGuid(), Domain = "testdomain.onmicrosoft.com" });
-
+            new AzureTenant { Id = Guid.NewGuid().ToString(), Directory = "testdomain.onmicrosoft.com" });
             AzureRmProfileProvider.Instance.Profile = currentProfile;
 
-            // Now override AzureSession.DataStore to use the MemoryDataStore
-            if (AzureSession.DataStore != null && !(AzureSession.DataStore is MemoryDataStore))
+            // Now override AzureSession.Instance.DataStore to use the MemoryDataStore
+            if (AzureSession.Instance.DataStore != null && !(AzureSession.Instance.DataStore is MemoryDataStore))
             {
-                AzureSession.DataStore = new MemoryDataStore();
+                AzureSession.Instance.DataStore = new MemoryDataStore();
             }
 
-            AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
+            AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
             TestMockSupport.RunningMocked = true;
             //This is needed for AutoRest Authentication
             SynchronizationContext.SetSynchronizationContext(new SynchronizationContext());

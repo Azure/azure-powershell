@@ -34,6 +34,7 @@ using MockStorageService = Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 {
@@ -109,10 +110,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 
             subscription = new AzureSubscription
             {
-                Properties = new Dictionary<AzureSubscription.Property,string> {{AzureSubscription.Property.Default, "True"}},
-                Id = Guid.NewGuid(),
+                Id = Guid.NewGuid().ToString(),
                 Name = Test.Utilities.Common.Data.Subscription1,
             };
+            subscription.SetDefault();
 
             cloudBlobUtilityMock = new Mock<CloudBlobUtility>();
             cloudBlobUtilityMock.Setup(f => f.UploadPackageToBlob(
@@ -121,7 +122,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
                 It.IsAny<string>(),
                 It.IsAny<BlobRequestOptions>())).Returns(new Uri("http://www.packageurl.azure.com"));
 
-            clientMocks = new ClientMocks(subscription.Id);
+            clientMocks = new ClientMocks(subscription.GetId());
 
             services.InitializeMocks(clientMocks.ComputeManagementClientMock);
             storageService.InitializeMocks(clientMocks.StorageManagementClientMock);
@@ -374,7 +375,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
                 files.CreateAzureSdkDirectoryAndImportPublishSettings();
                 var cloudServiceProject = new CloudServiceProject(rootPath, FileUtilities.GetContentFilePath(@"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Services"));
                 cloudServiceProject.AddWebRole(Test.Utilities.Common.Data.NodeWebRoleScaffoldingPath);
-                subscription.Properties[AzureSubscription.Property.StorageAccount] = storageName;
+                subscription.SetStorageAccount(storageName);
 
                 ExecuteInTempCurrentDirectory(rootPath, () => client.PublishCloudService(location: "West US"));
 
