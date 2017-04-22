@@ -2556,9 +2556,6 @@
                         <Component Id="cmpF8AEF0C5D785D40AEC8F1BF4ACE4E939" Guid="*">
                             <File Id="filA708CDDEB8C8A8363E22F4C83953E14E" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RecoveryServices.Backup\Microsoft.Rest.ClientRuntime.dll" />
                         </Component>
-                        <Component Id="cmp0FB4C1F5BB0FB399774156C4B56696B8" Guid="*">
-                            <File Id="fil4E1010AEBDF69B9DF75CE473426C64B7" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RecoveryServices.Backup\Microsoft.Threading.Tasks.dll" />
-                        </Component>
                         <Component Id="cmp7B84FC694FB5281CF08E6F1B41D07E12" Guid="*">
                             <File Id="filF61F62275153BB9F26EB1521CB9F8499" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RecoveryServices.Backup\Microsoft.WindowsAzure.Commands.Common.dll" />
                         </Component>
@@ -6272,7 +6269,6 @@
             <ComponentRef Id="cmp902DC2364C6FF451A60B4D115B5DC7A9" />
             <ComponentRef Id="cmpDB3F89FCB6F69647096085E3C07D2EA7" />
             <ComponentRef Id="cmpF8AEF0C5D785D40AEC8F1BF4ACE4E939" />
-            <ComponentRef Id="cmp0FB4C1F5BB0FB399774156C4B56696B8" />
             <ComponentRef Id="cmp7B84FC694FB5281CF08E6F1B41D07E12" />
             <ComponentRef Id="cmpF9EE1FA96DC6D8D178B61CD12160F541" />
             <ComponentRef Id="cmp829F9EDD9A1D61A93ABE0F823CA9C181" />
