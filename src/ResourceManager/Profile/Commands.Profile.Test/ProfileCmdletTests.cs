@@ -90,6 +90,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         {
             var profile = new AzureRmProfile();
             profile.EnvironmentTable.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
+            profile.EnvironmentTable["foo"].Name = "foo";
             profile.Save("X:\\foo.json");
             ImportAzureRMContextCommand cmdlt = new ImportAzureRMContextCommand();
             // Setup
@@ -111,9 +112,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         {
             var profile = new AzureRmProfile();
             profile.EnvironmentTable.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
-#pragma warning disable CS0618 // Suppress obsolescence warning: cmdlet name is changing
+            profile.EnvironmentTable["foo"].Name = "foo";
             SaveAzureRMContextCommand cmdlt = new SaveAzureRMContextCommand();
-#pragma warning restore CS0618 // Suppress obsolescence warning: cmdlet name is changing
             // Setup
             cmdlt.Profile = profile;
             cmdlt.Path = "X:\\foo.json";

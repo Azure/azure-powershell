@@ -18,7 +18,6 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Collections;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Common.Properties;
 
@@ -180,60 +179,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         }
 
         [JsonIgnore]
-        public IAzureTokenCache TokenStore { get; set; } = new AzureTokenCache();
-
-        [JsonIgnore]
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-
-        [JsonIgnore]
-        public ICollection<string> Keys
-        {
-            get
-            {
-                return _contexts.Keys;
-            }
-        }
-
-        [JsonIgnore]
-        public ICollection<IAzureContext> Values
-        {
-            get
-            {
-                return _contexts.Values;
-            }
-        }
-
-        [JsonIgnore]
-        public int Count
-        {
-            get
-            {
-                return _contexts.Count;
-            }
-        }
-
-        [JsonIgnore]
-        public bool IsReadOnly
-        {
-            get
-            {
-                return true;
-            }
-        }
-
-        [JsonIgnore]
-        public IAzureContext this[string key]
-        {
-            get
-            {
-                return _contexts[key];
-            }
-
-            set
-            {
-                _contexts[key] = value;
-            }
-        }
 
         /// <summary>
         /// Initializes a new instance of AzureSMProfile
@@ -346,68 +292,12 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             return jsonSerializer.Serialize(this);
         }
 
-        public bool ContainsKey(string key)
-        {
-            return _contexts.ContainsKey(key);
-        }
-
-        public void Add(string key, IAzureContext value)
-        {
-            _contexts.Add(key, value);
-        }
-
-        public bool Remove(string key)
-        {
-           return _contexts.Remove(key);
-        }
-
-        public bool TryGetValue(string key, out IAzureContext value)
-        {
-            return _contexts.TryGetValue(key, out value);
-        }
-
-        public void Add(KeyValuePair<string, IAzureContext> item)
-        {
-            if (item.Key != null && item.Value != null)
-            {
-                _contexts.Add(item.Key, item.Value);
-            }
-        }
-
         public void Clear()
         {
             _contexts.Clear();
-        }
-
-        public bool Contains(KeyValuePair<string, IAzureContext> item)
-        {
-            return _contexts.Contains(item);
-        }
-
-        public void CopyTo(KeyValuePair<string, IAzureContext>[] array, int arrayIndex)
-        {
-            if (array != null && arrayIndex >= 0)
-            {
-                for (int i = arrayIndex; i < array.Length; ++i)
-                {
-                    _contexts.Add(array[i].Key, array[i].Value);
-                }
-            }
-        }
-
-        public bool Remove(KeyValuePair<string, IAzureContext> item)
-        {
-            return _contexts.Remove(item.Key);
-        }
-
-        public IEnumerator<KeyValuePair<string, IAzureContext>> GetEnumerator()
-        {
-           return  _contexts.GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return _contexts.GetEnumerator();
+            EnvironmentTable.Clear();
+            SubscriptionTable.Clear();
+            AccountTable.Clear();
         }
     }
 }

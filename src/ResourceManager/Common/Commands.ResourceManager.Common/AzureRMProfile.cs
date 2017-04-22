@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System.Collections;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using System.Xml.Serialization;
+using Microsoft.Azure.Commands.ResourceManager.Common.Serialization;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
@@ -55,16 +56,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             get
             {
                 IAzureContext result = null;
-                if (this.ContainsKey(DefaultContextKey))
+                if (this.Contexts.ContainsKey(DefaultContextKey))
                 {
-                    result = this[DefaultContextKey];
+                    result = this.Contexts[DefaultContextKey];
                 }
 
                 return result;
             }
             set
             {
-                this[DefaultContextKey] = value;
+                this.Contexts[DefaultContextKey] = value;
             }
         }
 
@@ -96,59 +97,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             }
         }
 
-        public IAzureTokenCache TokenStore { get; set; } = new AzureTokenCache();
-
         public IDictionary<string, string> ExtendedProperties { get; set;} = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-
-        [JsonIgnore]
-        public ICollection<string> Keys
-        {
-            get
-            {
-                return Contexts.Keys;
-            }
-        }
-
-        [JsonIgnore]
-        public ICollection<IAzureContext> Values
-        {
-            get
-            {
-                return Contexts.Values;
-            }
-        }
-
-        [JsonIgnore]
-        public int Count
-        {
-            get
-            {
-                return Contexts.Count;
-            }
-        }
-
-        [JsonIgnore]
-        public bool IsReadOnly
-        {
-            get
-            {
-                return false;
-            }
-        }
-
-        [JsonIgnore]
-        public IAzureContext this[string key]
-        {
-            get
-            {
-                return Contexts[key];
-            }
-
-            set
-            {
-                Contexts[key] = value;
-            }
-        }
 
         private void Load(string path)
         {
@@ -162,18 +111,23 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             if (AzureSession.Instance.DataStore.FileExists(ProfilePath))
             {
                 string contents = AzureSession.Instance.DataStore.ReadFileAsText(ProfilePath);
-                var profile = JsonConvert.DeserializeObject<IAzureContextContainer>(contents, new AzureRmProfileConverter());
+                var oldProfile = JsonConvert.DeserializeObject<LegacyAzureRmProfile>(contents);
+                AzureRmProfile profile;
+                if (!oldProfile.TryConvert(out profile))
+                {
+                    profile = JsonConvert.DeserializeObject<IAzureContextContainer>(contents, new AzureRmProfileConverter()) as AzureRmProfile;
+                }
                 Debug.Assert(profile != null);
                 EnvironmentTable.Clear();
-                foreach (var environment in profile.Environments)
+                foreach (var environment in profile.EnvironmentTable)
                 {
-                    EnvironmentTable[environment.Name] = environment;
+                    EnvironmentTable[environment.Key] = environment.Value;
                 }
 
-                Clear();
-                foreach (var context in profile)
+                Contexts.Clear();
+                foreach (var context in profile.Contexts)
                 {
-                    this.Add(context.Key, context.Value);
+                    this.Contexts.Add(context.Key, context.Value);
                 }
             }
         }
@@ -262,67 +216,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             return JsonConvert.SerializeObject(this, Formatting.Indented, new AzureRmProfileConverter());
         }
 
-        public bool ContainsKey(string key)
-        {
-            return Contexts.ContainsKey(key);
-        }
-
-        public void Add(string key, IAzureContext value)
-        {
-            Contexts.Add(key, value);
-        }
-
-        public bool Remove(string key)
-        {
-            return Contexts.Remove(key);
-        }
-
-        public bool TryGetValue(string key, out IAzureContext value)
-        {
-            return Contexts.TryGetValue(key, out value);
-        }
-
-        public void Add(KeyValuePair<string, IAzureContext> item)
-        {
-            Contexts.Add(item.Key, item.Value);
-        }
-
+        /// <summary>
+        /// Set the contaienr to its defautl state
+        /// </summary>
         public void Clear()
         {
             Contexts.Clear();
-        }
-
-        public bool Contains(KeyValuePair<string, IAzureContext> item)
-        {
-            return Contexts.Contains(item);
-        }
-
-        public void CopyTo(KeyValuePair<string, IAzureContext>[] array, int arrayIndex)
-        {
-            if (arrayIndex + Contexts.Count > array.Length)
+            DefaultContext = new AzureContext();
+            EnvironmentTable.Clear();
+            foreach (var environment in AzureEnvironment.PublicEnvironments)
             {
-                throw new ArgumentOutOfRangeException("arrayIndex", "Array not large enough to receive contexts");
+                EnvironmentTable.Add(environment.Key, environment.Value);
             }
-
-            foreach (var pair in Contexts)
-            {
-                array[arrayIndex++] = pair;
-            }
-        }
-
-        public bool Remove(KeyValuePair<string, IAzureContext> item)
-        {
-            return Contexts.Remove(item.Key);
-        }
-
-        public IEnumerator<KeyValuePair<string, IAzureContext>> GetEnumerator()
-        {
-            return Contexts.GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return Contexts.GetEnumerator();
         }
     }
 }

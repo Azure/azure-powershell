@@ -87,16 +87,27 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Serialization
             return result;
         }
 
-        public static AzureRmProfile Convert(this LegacyAzureRmProfile profile)
+        public static bool TryConvert(this LegacyAzureRmProfile profile, out AzureRmProfile result)
         {
-            var result = new AzureRmProfile();
-            foreach ( var environmentKey  in profile.Environments.Keys)
+            result = new AzureRmProfile();
+            if (profile != null)
             {
-                result.EnvironmentTable[environmentKey] = profile.Environments[environmentKey].Convert();
+                if (profile.Environments != null)
+                {
+                    foreach (var environmentKey in profile.Environments.Keys)
+                    {
+                        result.EnvironmentTable[environmentKey] = profile.Environments[environmentKey].Convert();
+                    }
+                }
+
+                if (profile.Context != null)
+                {
+                    result.DefaultContext = profile.Context.Convert();
+                }
             }
 
-            result.DefaultContext = profile.Context.Convert();
-            return result;
+            return profile != null && profile.Context != null;
+            
         }
     }
 }

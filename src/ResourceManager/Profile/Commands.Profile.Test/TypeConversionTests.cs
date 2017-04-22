@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var azEnvironment = (AzureEnvironment)environment;
             Assert.NotNull(environment);
             CheckEndpoint(AzureEnvironment.Endpoint.ActiveDirectory, azEnvironment,
-                environment.ActiveDirectory.AbsoluteUri);
+                environment.ActiveDirectoryAuthority);
             CheckEndpoint(AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId,
                 azEnvironment, environment.ActiveDirectoryServiceEndpointResourceId);
             CheckEndpoint(AzureEnvironment.Endpoint.AdTenant, azEnvironment,
@@ -186,19 +186,19 @@ namespace Microsoft.Azure.Commands.Profile.Test
             CheckEndpoint(AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId, azEnvironment,
                 environment.AzureKeyVaultServiceEndpointResourceId);
             CheckEndpoint(AzureEnvironment.Endpoint.Gallery, azEnvironment,
-                environment.Gallery.AbsoluteUri);
+                environment.GalleryUrl);
             CheckEndpoint(AzureEnvironment.Endpoint.Graph, azEnvironment,
-                environment.Graph.AbsoluteUri);
+                environment.GraphUrl);
             CheckEndpoint(AzureEnvironment.Endpoint.GraphEndpointResourceId, azEnvironment,
                 environment.GraphEndpointResourceId);
             CheckEndpoint(AzureEnvironment.Endpoint.ManagementPortalUrl, azEnvironment,
-                environment.ManagementPortal.AbsoluteUri);
+                environment.ManagementPortalUrl);
             CheckEndpoint(AzureEnvironment.Endpoint.PublishSettingsFileUrl, azEnvironment,
                 environment.PublishSettingsFileUrl);
             CheckEndpoint(AzureEnvironment.Endpoint.ResourceManager, azEnvironment,
-                environment.ResourceManager.AbsoluteUri);
+                environment.ResourceManagerUrl);
             CheckEndpoint(AzureEnvironment.Endpoint.ServiceManagement, azEnvironment,
-                environment.ServiceManagement.AbsoluteUri);
+                environment.ServiceManagementUrl);
             CheckEndpoint(AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix, azEnvironment,
                 environment.SqlDatabaseDnsSuffix);
             CheckEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix, azEnvironment,

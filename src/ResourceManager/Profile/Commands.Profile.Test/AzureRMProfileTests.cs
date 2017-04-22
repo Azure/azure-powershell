@@ -675,46 +675,88 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         public void SavingProfileWorks()
         {
             string expected = @"{
-  ""Environments"": {
+  ""EnvironmentTable"": {
     ""testCloud"": {
       ""Name"": ""testCloud"",
       ""OnPremise"": false,
-      ""Endpoints"": {
-        ""ActiveDirectory"": ""http://contoso.com""
-      }
+      ""ServiceManagementUrl"": null,
+      ""ResourceManagerUrl"": null,
+      ""ManagementPortalUrl"": null,
+      ""PublishSettingsFileUrl"": null,
+      ""ActiveDirectoryAuthority"": ""http://contoso.com"",
+      ""GalleryUrl"": null,
+      ""GraphUrl"": null,
+      ""ActiveDirectoryServiceEndpointResourceId"": null,
+      ""StorageEndpointSuffix"": null,
+      ""SqlDatabaseDnsSuffix"": null,
+      ""TrafficManagerDnsSuffix"": null,
+      ""AzureKeyVaultDnsSuffix"": null,
+      ""AzureKeyVaultServiceEndpointResourceId"": null,
+      ""GraphEndpointResourceId"": null,
+      ""AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix"": null,
+      ""AzureDataLakeStoreFileSystemEndpointSuffix"": null,
+      ""AdTenant"": null,
+      ""VersionProfiles"": [],
+      ""ExtendedProperties"": {}
     }
   },
-  ""Context"": {
-    ""Account"": {
-      ""Id"": ""me@contoso.com"",
-      ""Type"": 1,
-      ""Properties"": {
-        ""Tenants"": ""3c0ff8a7-e8bb-40e8-ae66-271343379af6""
-      }
-    },
-    ""Subscription"": {
-      ""Id"": ""00000000-0000-0000-0000-000000000000"",
-      ""Name"": ""Contoso Test Subscription"",
-      ""Environment"": ""testCloud"",
-      ""Account"": ""me@contoso.com"",
-      ""State"": ""Enabled"",
-      ""Properties"": {
-        ""Tenants"": ""3c0ff8a7-e8bb-40e8-ae66-271343379af6""
-      }
-    },
-    ""Environment"": {
-      ""Name"": ""testCloud"",
-      ""OnPremise"": false,
-      ""Endpoints"": {
-        ""ActiveDirectory"": ""http://contoso.com""
-      }
-    },
-    ""Tenant"": {
-      ""Id"": ""3c0ff8a7-e8bb-40e8-ae66-271343379af6"",
-      ""Domain"": ""contoso.com""
-    },
-    ""TokenCache"": ""AQIDBAUGCAkA""
-  }
+  ""Contexts"": {
+    ""Default"": {
+      ""Account"": {
+        ""Id"": ""me@contoso.com"",
+        ""Credential"": null,
+        ""Type"": ""User"",
+        ""TenantMap"": {},
+        ""ExtendedProperties"": {
+          ""Tenants"": ""3c0ff8a7-e8bb-40e8-ae66-271343379af6""
+        }
+      },
+      ""Tenant"": {
+        ""Id"": ""3c0ff8a7-e8bb-40e8-ae66-271343379af6"",
+        ""Directory"": ""contoso.com"",
+        ""ExtendedProperties"": {}
+      },
+      ""Subscription"": {
+        ""Id"": ""00000000-0000-0000-0000-000000000000"",
+        ""Name"": ""Contoso Test Subscription"",
+        ""State"": ""Enabled"",
+        ""ExtendedProperties"": {
+          ""Account"": ""me@contoso.com"",
+          ""Environment"": ""testCloud"",
+          ""Tenants"": ""3c0ff8a7-e8bb-40e8-ae66-271343379af6""
+        }
+      },
+      ""Environment"": {
+        ""Name"": ""testCloud"",
+        ""OnPremise"": false,
+        ""ServiceManagementUrl"": null,
+        ""ResourceManagerUrl"": null,
+        ""ManagementPortalUrl"": null,
+        ""PublishSettingsFileUrl"": null,
+        ""ActiveDirectoryAuthority"": ""http://contoso.com"",
+        ""GalleryUrl"": null,
+        ""GraphUrl"": null,
+        ""ActiveDirectoryServiceEndpointResourceId"": null,
+        ""StorageEndpointSuffix"": null,
+        ""SqlDatabaseDnsSuffix"": null,
+        ""TrafficManagerDnsSuffix"": null,
+        ""AzureKeyVaultDnsSuffix"": null,
+        ""AzureKeyVaultServiceEndpointResourceId"": null,
+        ""GraphEndpointResourceId"": null,
+        ""AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix"": null,
+        ""AzureDataLakeStoreFileSystemEndpointSuffix"": null,
+        ""AdTenant"": null,
+        ""VersionProfiles"": [],
+        ""ExtendedProperties"": {}
+      },
+      ""VersionProfile"": null,
+      ""TokenCache"": {
+        ""CacheData"": ""AQIDBAUGCAkA""
+      },
+      ""ExtendedProperties"": {}
+    }
+  },
+  ""ExtendedProperties"": {}
 }";
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AzureSession.Instance.ProfileFile);
             var dataStore = new MockDataStore();

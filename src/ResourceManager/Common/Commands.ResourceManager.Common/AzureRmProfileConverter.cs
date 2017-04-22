@@ -47,15 +47,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             if (objectType == typeof(IAzureContextContainer))
             {
-                try
-                {
-                    var profile = serializer.Deserialize<LegacyAzureRmProfile>(reader);
-                    return profile.Convert();
-                }
-                catch
-                {
-                    return serializer.Deserialize<AzureRmProfile>(reader);
-                }
+                return serializer.Deserialize<AzureRmProfile>(reader);
             }
             if (objectType == typeof(IAzureContext))
             {
@@ -79,8 +71,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
             else if (objectType == typeof(IAzureTokenCache))
             {
-                var tempResult = serializer.Deserialize<byte[]>(reader);
-                return new AzureTokenCache { CacheData = tempResult };
+                var tempResult = serializer.Deserialize<CacheBuffer>(reader);
+                return new AzureTokenCache { CacheData = tempResult.CacheData };
             }
             else if (objectType == typeof(Dictionary<string, IAzureEnvironment>))
             {

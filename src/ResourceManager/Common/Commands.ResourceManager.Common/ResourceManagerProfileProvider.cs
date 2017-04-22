@@ -22,7 +22,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         AzureRmProfile _profile = new AzureRmProfile { DefaultContext = new AzureContext() };
         public override void ResetDefaultProfile()
         {
-            Profile.TokenStore.Clear();
+            foreach (var context in _profile.Contexts.Values)
+            {
+                context.TokenCache.Clear();
+            }
+
             base.ResetDefaultProfile();
         }
 
