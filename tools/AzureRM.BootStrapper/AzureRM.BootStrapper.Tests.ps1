@@ -501,7 +501,7 @@ Describe "Uninstall-ModuleHelper" {
             }
         }
 
-        Context "Uninstall-Module threw error: MSI Install" {
+        Context "Uninstall-Module threw error MSI Install" {
             # Arrange
             $VersionObj = New-Object -TypeName System.Version -ArgumentList "1.0" 
             $moduleObj = New-Object -TypeName PSObject 
@@ -529,7 +529,7 @@ Describe "Uninstall-ModuleHelper" {
             } 
         }
 
-        Context "Uninstall-Module threw error: In Use" {
+        Context "Uninstall-Module threw error In Use" {
             # Arrange
             $VersionObj = New-Object -TypeName System.Version -ArgumentList "1.0" 
             $moduleObj = New-Object -TypeName PSObject 
