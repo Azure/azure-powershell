@@ -140,9 +140,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             EnvironmentTable = new Dictionary<string, IAzureEnvironment>(StringComparer.InvariantCultureIgnoreCase);
 
             // Adding predefined environments
-            foreach (AzureEnvironment env in AzureEnvironment.PublicEnvironments.Values)
+            foreach (var env in AzureEnvironment.PublicEnvironments)
             {
-                EnvironmentTable[env.Name] = env;
+                EnvironmentTable[env.Key] = env.Value;
             }
         }
 

@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             return new AzureRmProfile() { DefaultContext = context };
         }
 
-        public static AzureSMProfile CreateAzureSMProfile(string storageAccount)
+        public static AzureSMProfile CreateAzureSMProfile  (string storageAccount)
         {
             var profile = new AzureSMProfile();
             var client = new ProfileClient(profile);
@@ -98,6 +98,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
         public static void RunDataProfileTest(AzureRmProfile rmProfile, AzureSMProfile smProfile, Action testAction)
         {
+            AzureSession.Instance.DataStore = new MemoryDataStore();
             var savedRmProfile = AzureRmProfileProvider.Instance.Profile;
             var savedSmProfile = AzureSMProfileProvider.Instance.Profile;
             try
