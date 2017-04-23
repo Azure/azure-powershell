@@ -367,11 +367,11 @@ function Uninstall-ModuleHelper
               $sdkPath = (join-path ${env:ProgramFiles(x86)} -childpath "\Microsoft SDKs\Azure\PowerShell\")
               if (($null -ne $moduleInstalled.Path) -and ($moduleInstalled.Path.Contains($sdkPath)))
               {
-                Write-Error "Unable to uninstall module $module because it was installed in a different scope than expected. If you installed via an MSI, please uninstall the MSI before proceeding."
+                Write-Error "Unable to uninstall module $module because it was installed in a different scope than expected. If you installed via an MSI, please uninstall the MSI before proceeding." -Category InvalidOperation
                 break 
               }
             }
-            Write-Error "Unable to uninstall module $module because it was installed in a different scope than expected. If you installed the module to a custom directory in your path, please remove the module manually, by using Uninstall-Module, or removing the module directory."
+            Write-Error "Unable to uninstall module $module because it was installed in a different scope than expected. If you installed the module to a custom directory in your path, please remove the module manually, by using Uninstall-Module, or removing the module directory." -Category InvalidOperation
           }
           else {
             Write-Error $_.Exception.Message
