@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The Azure SQL Database to be added to the Failover Group.")]
+            HelpMessage = "One or more Azure SQL Databases on the Failover Group's primary server to be added to the Failover Group.")]
         [ValidateNotNullOrEmpty]
         public List<AzureSqlDatabaseModel> Database { get; set; }
 

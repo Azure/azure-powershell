@@ -7,44 +7,42 @@ schema: 2.0.0
 # New-AzureRmSqlDatabaseFailoverGroup
 
 ## SYNOPSIS
-This command is executed in the context of the primary server. It creates the new Azure SQL Failover Group on the server. 
+This command creates a new Azure SQL Database Failover Group.
 
 ## SYNTAX
 
 ```
-New-AzureRmSqlDatabaseFailoverGroup -FailoverGroupName <String> [-PartnerResourceGroupName <String>]
- -PartnerServerName <String> [-FailoverPolicy <FailoverPolicy>] [-GracePeriodWithDataLossHour <Int32>]
- [-AllowReadOnlyFailoverToPrimary <AllowReadOnlyFailoverToPrimary>] [-Tag <Hashtable>] [-ServerName] <String>
- [-ResourceGroupName] <String> [<CommonParameters>]
+New-AzureRmSqlDatabaseFailoverGroup -ServerName <String> -FailoverGroupName <String>
+ [-PartnerResourceGroupName <String>] -PartnerServerName <String> [-FailoverPolicy <FailoverPolicy>]
+ [-GracePeriodWithDataLossHours <Int32>] -ResourceGroupName <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Cmdlet that creates the new Azure SQL Failover Group on the server. 
+Creates a new Azure SQL Database Failover Group for the specified servers.
+
+Two Azure SQL Database TDS endpoints are created at '<FailoverGroupName>.<SqlDatabaseDnsSuffix>' (for example, '<FailoverGroupName>.database.windows.net') and '<FailoverGroupName>.secondary.<SqlDatabaseDnsSuffix>.' These endpoints may be used to connect to the primary and secondary servers in the Failover Group, respectively. If the primary server is affected by an outage, automatic failover of the endpoints and databases will be triggered as dictated by the Failover Group's failover policy and grace period.
+
+Newly created Failover Groups do not contain any databases. To control the set of databases in a Failover Group, use the 'Add-AzureRmSqlDatabaseToFailoverGroup' and 'Remove-AzureRmSqlDatabaseFromFailoverGroup' cmdlets.
+
+During preview of the Failover Groups feature, only values greater than or equal to 1 hour are supported for the '-GracePeriodWithDataLossHours' parameter.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> C:\> $ag = New-AzureRMSqlDatabaseFailoverGroup -ResourceGroupName "myrg" -ServerName "myserver" -PartnerServerName "mydrserver" -FailoverGroupName "MyFG" -FailoverPolicy "Automatic" -AllowReadOnlyFailoverToPrimary "Enabled" -GracePeriodWithDataLossHours 1
+C:\> $failoverGroup = New-AzureRMSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName primaryserver -PartnerServerName secondaryserver -FailoverGroupName fg -FailoverPolicy Automatic -GracePeriodWithDataLossHours 1
 ```
+
+This command creates a new Failover Group with failover policy 'Automatic' for two servers in the same resource group.
+
+### Example 2
+```
+C:\> $failoverGroup = New-AzureRMSqlDatabaseFailoverGroup -ResourceGroupName rg1 -ServerName primaryserver -PartnerResourceGroupName rg2 -PartnerServerName secondaryserver1 -FailoverGroupName fg -FailoverPolicy Manual
+```
+
+This command creates a new Failover Group with failover policy 'Manual' for two servers in different resource groups.
 
 ## PARAMETERS
-
-### -AllowReadOnlyFailoverToPrimary
-The failover policy for read only endpoint of the failover group.
-
-```yaml
-Type: AllowReadOnlyFailoverToPrimary
-Parameter Sets: (All)
-Aliases: 
-Accepted values: Enabled, Disabled
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -FailoverGroupName
 The name of the Azure SQL FailoverGroup to create.
@@ -77,8 +75,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GracePeriodWithDataLossHour
-The window of grace period that we tolerate with data loss during a failover operation for the failover group.
+### -GracePeriodWithDataLossHours
+The grace period for failover with data loss of the failover group.
 
 ```yaml
 Type: Int32
@@ -152,21 +150,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tag
-The tag to associate with the Azure SQL Database Failover Group
-
-```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -182,3 +165,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+[Set-AzureRmSqlDatabaseFailoverGroup](./Set-AzureRmSqlDatabaseFailoverGroup.md)
+
+[Get-AzureRmSqlDatabaseFailoverGroup](./Get-AzureRmSqlDatabaseFailoverGroup.md)
+
+[Add-AzureRmSqlDatabaseToFailoverGroup](./Add-AzureRmSqlDatabaseToFailoverGroup.md)
+
+[Remove-AzureRmSqlDatabaseFromFailoverGroup](./Remove-AzureRmSqlDatabaseFromFailoverGroup.md)
+
+[Switch-AzureRmSqlDatabaseFailoverGroup](./Switch-AzureRmSqlDatabaseFailoverGroup.md)
+
+[Remove-AzureRmSqlDatabaseFailoverGroup](./Remove-AzureRmSqlDatabaseFailoverGroup.md)
