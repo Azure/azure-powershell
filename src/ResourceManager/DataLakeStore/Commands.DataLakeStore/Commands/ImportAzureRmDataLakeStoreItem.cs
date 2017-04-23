@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System.IO;
 using System.Management.Automation;
 
@@ -151,8 +150,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 () =>
                 {
                     DataLakeStoreTraceLogger logger = null;
-                    var originalLevel = AdalTrace.TraceSource.Switch.Level;
-                    var originalLegacyLevel = AdalTrace.LegacyTraceSwitch.Level;
                     try
                     {
                         if (ParameterSetName.Equals(DiagnosticParameterSetName) && DiagnosticLogLevel != LogLevel.None)

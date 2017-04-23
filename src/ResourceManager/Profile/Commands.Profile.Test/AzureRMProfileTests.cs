@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile;
 using Microsoft.Azure.Commands.Profile.Models;
+using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Internal.Subscriptions.Models;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -78,8 +79,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
         public AzureRMProfileTests(ITestOutputHelper output)
         {
-            AzureSessionInitializer.InitializeAzureSession();
-            ResourceManagerProfileProvider.InitializeResourceManagerProfile();
+            TestExecutionHelpers.SetUpSessionAndProfile();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 

@@ -97,8 +97,6 @@ namespace Microsoft.Azure.Commands.Scheduler.Test.ScenarioTests
         /// <param name="scripts">Scripts to be executed.</param>
         public void RunPowerShellTests(params string[] scripts)
         {
-            AzureSessionInitializer.InitializeAzureSession();
-            ResourceManagerProfileProvider.InitializeResourceManagerProfile();
             string callingClassType = TestUtilities.GetCallingClass(2);
             string mockName = TestUtilities.GetCurrentMethodName(2);
             RunPsTestScheduler(

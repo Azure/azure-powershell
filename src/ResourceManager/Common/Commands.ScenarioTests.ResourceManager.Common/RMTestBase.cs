@@ -24,6 +24,7 @@ using System.Threading;
 using Moq;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ScenarioTest;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 {
@@ -45,8 +46,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
         /// </summary>
         public void BaseSetup()
         {
-            AzureSessionInitializer.InitializeAzureSession();
-            ResourceManagerProfileProvider.InitializeResourceManagerProfile();
+            TestExecutionHelpers.SetUpSessionAndProfile();
             currentProfile = new AzureRmProfile();
             var newGuid = Guid.NewGuid();
             var account = new AzureAccount

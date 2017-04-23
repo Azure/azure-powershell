@@ -20,8 +20,40 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
     public abstract class AzureSMProfileProvider : IProfileProvider
     {
-        private static int _initialized = 0;
-        public static AzureSMProfileProvider Instance { get; private set; }
+        private static ReaderWriterLockSlim _lock = new ReaderWriterLockSlim();
+        private static bool _initialized = false;
+        private static AzureSMProfileProvider _instance;
+        public static AzureSMProfileProvider Instance
+        {   get
+            {
+                try
+                {
+                    _lock.EnterReadLock();
+                    try
+                    {
+                        if (null == _instance)
+                        {
+                            throw new InvalidOperationException(Abstractions.Properties.Resources.ProfileNotInitialized);
+                        }
+
+                        return _instance;
+                    }
+                    finally
+                    {
+                        _lock.ExitReadLock();
+                    }
+                }
+                catch (LockRecursionException lockException)
+                {
+                    throw new InvalidOperationException(Abstractions.Properties.Resources.ProfileLockReadRecursion, lockException);
+                }
+                catch (ObjectDisposedException disposedException)
+                {
+                    throw new InvalidOperationException(Abstractions.Properties.Resources.ProfileLockReadDisposed, disposedException);
+                }
+            }
+        }
+
         public virtual IAzureContextContainer Profile { get; set; }
         public abstract T GetProfile<T>() where T : class, IAzureContextContainer;
 
@@ -39,9 +71,29 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <param name="overwrite">if true, overwrite the existing provider, if it was previously initialized</param>
         public static void SetInstance(Func<AzureSMProfileProvider> provider, bool overwrite)
         {
-            if (Interlocked.Exchange(ref _initialized, 1) == 0 || overwrite)
+            try
             {
-                Instance = provider();
+                _lock.EnterWriteLock();
+                try
+                {
+                    if (!_initialized || overwrite)
+                    {
+                        _initialized = true;
+                        _instance = provider();
+                    }
+                }
+                finally
+                {
+                    _lock.ExitWriteLock();
+                }
+            }
+            catch (LockRecursionException lockException)
+            {
+                throw new InvalidOperationException(Abstractions.Properties.Resources.ProfileLockWriteRecursion, lockException);
+            }
+            catch (ObjectDisposedException disposedException)
+            {
+                throw new InvalidOperationException(Abstractions.Properties.Resources.ProfileLockWriteDisposed, disposedException);
             }
         }
 

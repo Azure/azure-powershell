@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics;
 using System.IO;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
@@ -76,5 +77,21 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// The file name of the ARM Profile file
         /// </summary>
         string ARMProfileFile { get; set; }
+
+        /// <summary>
+        /// The trace level for authentication
+        /// </summary>
+        TraceLevel AuthenticationLegacyTraceLevel { get; set; }
+
+        /// <summary>
+        /// The trace source levels for authentication
+        /// </summary>
+        SourceLevels AuthenticationTraceSourceLevel { get; set; }
+
+        /// <summary>
+        /// The trace listeners for authentication traces
+        /// </summary>
+        TraceListenerCollection AuthenticationTraceListeners { get; }
+
     }
 }

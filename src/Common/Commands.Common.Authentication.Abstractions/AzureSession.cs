@@ -16,17 +16,18 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Diagnostics;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
     /// <summary>
     /// Represents the current Azure session.
     /// </summary>
-    public class AzureSession : IAzureSession
+    public abstract class AzureSession : IAzureSession
     {
         static IAzureSession _instance;
-        static int _initialized = 0;
-        static ReaderWriterLockSlim sessionLock = new ReaderWriterLockSlim();
+        static bool _initialized = false;
+        static ReaderWriterLockSlim sessionLock = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
         /// <summary>
         /// Gets or sets Azure client factory.
         /// </summary>
@@ -91,17 +92,39 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             get
             {
-                sessionLock.EnterReadLock();
                 try
                 {
-                    return _instance;
+                    sessionLock.EnterReadLock();
+                    try
+                    {
+                        if (null == _instance)
+                        {
+                            throw new InvalidOperationException(Abstractions.Properties.Resources.SessionNotInitialized);
+                        }
+
+                        return _instance;
+                    }
+                    finally
+                    {
+                        sessionLock.ExitReadLock();
+                    }
                 }
-                finally
+                catch (LockRecursionException lockException)
                 {
-                    sessionLock.ExitReadLock();
+                    throw new InvalidOperationException(Abstractions.Properties.Resources.SessionLockReadRecursion, lockException);
+                }
+                catch (ObjectDisposedException disposedException)
+                {
+                    throw new InvalidOperationException(Abstractions.Properties.Resources.SessionLockReadDisposed, disposedException);
                 }
             }
         }
+
+        public abstract TraceLevel AuthenticationLegacyTraceLevel { get; set; }
+
+        public abstract TraceListenerCollection AuthenticationTraceListeners { get; }
+
+        public abstract SourceLevels AuthenticationTraceSourceLevel { get; set; }
 
         /// <summary>
         /// Initialize the AzureSession, avoid contention at startup
@@ -113,14 +136,26 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             try
             {
                 sessionLock.EnterWriteLock();
-                if (Interlocked.Exchange(ref _initialized, 1) == 0 || overwrite)
+                try
                 {
-                    _instance = instanceCreator();
+                    if (!_initialized || overwrite)
+                    {
+                        _initialized = true;
+                        _instance = instanceCreator();
+                    }
+                }
+                finally
+                {
+                    sessionLock.ExitWriteLock();
                 }
             }
-            finally
+            catch (LockRecursionException lockException)
             {
-                sessionLock.ExitWriteLock();
+                throw new InvalidOperationException(Abstractions.Properties.Resources.SessionLockWriteRecursion, lockException);
+            }
+            catch (ObjectDisposedException disposedException)
+            {
+                throw new InvalidOperationException(Abstractions.Properties.Resources.SessionLockWriteDisposed, disposedException);
             }
         }
 

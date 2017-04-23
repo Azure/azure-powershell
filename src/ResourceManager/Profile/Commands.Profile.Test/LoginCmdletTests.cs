@@ -30,6 +30,7 @@ using System;
 using System.Security;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
@@ -40,8 +41,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
         public LoginCmdletTests(ITestOutputHelper output)
         {
-            AzureSessionInitializer.InitializeAzureSession();
-            ResourceManagerProfileProvider.InitializeResourceManagerProfile();
+            TestExecutionHelpers.SetUpSessionAndProfile();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             dataStore = new MemoryDataStore();
             AzureSession.Instance.DataStore = dataStore;

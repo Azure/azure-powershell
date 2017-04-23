@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Profile
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
-            _client = new RMProfileClient(DefaultProfile);
+            _client = new RMProfileClient(DefaultProfile as AzureRmProfile);
             _client.WarningLog = (s) => WriteWarning(s);
         }
 

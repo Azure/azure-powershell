@@ -16,9 +16,11 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.IO;
+using System.Diagnostics;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -37,7 +39,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         static IAzureSession CreateInstance()
         {
-            var session = new AzureSession
+            var session = new AdalSession
             {
                 ClientFactory = new ClientFactory(),
                 AuthenticationFactory = new AuthenticationFactory(),
@@ -69,6 +71,43 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
 
             return session;
+        }
+
+        public class AdalSession : AzureSession
+        {
+            public override TraceLevel AuthenticationLegacyTraceLevel
+            {
+                get
+                {
+                    return AdalTrace.LegacyTraceSwitch.Level;
+                }
+
+                set
+                {
+                    AdalTrace.LegacyTraceSwitch.Level = value;
+                }
+            }
+
+            public override TraceListenerCollection AuthenticationTraceListeners
+            {
+                get
+                {
+                    return AdalTrace.TraceSource.Listeners;
+                }
+            }
+
+            public override SourceLevels AuthenticationTraceSourceLevel
+            {
+                get
+                {
+                    return AdalTrace.TraceSource.Switch.Level;
+                }
+
+                set
+                {
+                    AdalTrace.TraceSource.Switch.Level = value;
+                }
+            }
         }
     }
 }

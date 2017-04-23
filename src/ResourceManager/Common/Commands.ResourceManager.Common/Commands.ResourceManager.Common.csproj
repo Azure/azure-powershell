@@ -69,24 +69,12 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.20.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.3.860, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.28.3.860, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.5\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.5\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.9-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -143,9 +131,6 @@
   <ItemGroup>
     <Compile Include="AccessTokenExtensions.cs" />
     <Compile Include="AzureRmCmdlet.cs" />
-    <Compile Include="AzureRmProfile.cs" />
-    <Compile Include="AzureRmProfileConverter.cs" />
-    <Compile Include="AzureRMProfileExtensions.cs" />
     <Compile Include="Generated\DeploymentOperations.cs" />
     <Compile Include="Generated\DeploymentOperationsExtensions.cs" />
     <Compile Include="Generated\DeploymentsOperations.cs" />
@@ -261,8 +246,6 @@
     <Compile Include="Generated\TenantsOperations.cs" />
     <Compile Include="Generated\TenantsOperationsExtensions.cs" />
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Serialization\CacheBuffer.cs" />
-    <Compile Include="Serialization\LegacyAzureAccount.cs" />
     <Compile Include="PaginatedResponseHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -270,15 +253,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ResourceManagerProfileProvider.cs" />
     <Compile Include="ResponseWithContinuation.cs" />
     <Compile Include="RPRegistrationDelegatingHandler.cs" />
-    <Compile Include="Serialization\LegacyAzureContext.cs" />
-    <Compile Include="Serialization\LegacyAzureEnvironment.cs" />
-    <Compile Include="Serialization\LegacyAzureRmProfile.cs" />
-    <Compile Include="Serialization\LegacyAzureSubscription.cs" />
-    <Compile Include="Serialization\LegacyAzureTenant.cs" />
-    <Compile Include="Serialization\ProfileConverter.cs" />
     <Compile Include="ServiceClientTracingInterceptor.cs" />
     <Compile Include="Tags\PSTag.cs" />
     <Compile Include="Tags\PSTagValue.cs" />
@@ -300,10 +276,6 @@
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
       <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
       <Name>Commands.Common.Authentication.Abstractions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
-      <Project>{D3804B64-C0D3-48F8-82EC-1F632F833C9E}</Project>
-      <Name>Commands.Common.Authentication</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>

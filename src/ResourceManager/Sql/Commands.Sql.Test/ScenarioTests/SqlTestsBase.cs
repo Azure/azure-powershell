@@ -61,8 +61,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         
         protected void RunPowerShellTest(params string[] scripts)
         {
-            AzureSessionInitializer.InitializeAzureSession();
-            ResourceManagerProfileProvider.InitializeResourceManagerProfile();
+            TestExecutionHelpers.SetUpSessionAndProfile();
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
 

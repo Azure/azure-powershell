@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -31,8 +32,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
     {
         public CommonDataCmdletTests(ITestOutputHelper output)
         {
-            AzureSessionInitializer.InitializeAzureSession();
-            ResourceManagerProfileProvider.InitializeResourceManagerProfile();
+            TestExecutionHelpers.SetUpSessionAndProfile();
             ServiceManagementProfileProvider.InitializeServiceManagementProfile();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }

@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         /// <summary>
         /// Gets or sets the global profile for ARM cmdlets.
         /// </summary>
-        public AzureRmProfile DefaultProfile
+        public IAzureContextContainer DefaultProfile
         {
-            get { return AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>(); }
+            get { return AzureRmProfileProvider.Instance.Profile; }
             set { AzureRmProfileProvider.Instance.Profile = value; }
         }
 

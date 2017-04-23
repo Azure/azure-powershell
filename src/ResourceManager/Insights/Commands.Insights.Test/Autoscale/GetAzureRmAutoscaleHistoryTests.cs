@@ -27,6 +27,7 @@ using System.Threading.Tasks;
 using Xunit;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
 {
@@ -42,8 +43,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
 
         public GetAzureRmAutoscaleHistoryTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            AzureSessionInitializer.InitializeAzureSession();
-            ResourceManagerProfileProvider.InitializeResourceManagerProfile();
+            TestExecutionHelpers.SetUpSessionAndProfile();
             //ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             insightsEventOperationsMock = new Mock<IEventsOperations>();
             insightsClientMock = new Mock<InsightsClient>();
