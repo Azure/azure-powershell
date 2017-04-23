@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
-            HelpMessage = "The name of the Azure SQL Database Failover Group to retrieve.")]
+            HelpMessage = "The name of the Azure SQL Database Failover Group.")]
         [ValidateNotNullOrEmpty]
         public string FailoverGroupName { get; set; }
 

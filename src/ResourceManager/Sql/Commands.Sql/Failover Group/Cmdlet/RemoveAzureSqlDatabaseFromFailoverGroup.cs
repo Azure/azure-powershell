@@ -56,14 +56,14 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The Azure SQL Database to be removed from the Failover Group.")]
+            HelpMessage = "One or more Azure SQL Databases on the Failover Group's primary server to be removed from the Failover Group.")]
         [ValidateNotNullOrEmpty]
         public List<AzureSqlDatabaseModel> Database { get; set; }
 
         /// <summary>
         /// Defines whether it is ok to skip the requesting of rule removal confirmation
         /// </summary>
-        [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
+        [Parameter(HelpMessage = "Skip confirmation message for performing the action.")]
         public SwitchParameter Force { get; set; }
 
         /// <summary>

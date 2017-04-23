@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// <summary>
         /// Defines whether it is ok to skip the requesting of rule removal confirmation
         /// </summary>
-        [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
+        [Parameter(HelpMessage = "Skip confirmation message for performing the action.")]
         public SwitchParameter Force { get; set; }
 
         /// <summary>
