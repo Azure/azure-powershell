@@ -32,7 +32,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         void RetrieveRightErrorFromCsPackProcess()
         {
-            AzureSession.Instance.DataStore = new DiskDataStore();
             string serviceName = "AzureService";
             string sampleError = "error";
             string stagingFolder = FileSystemHelper.GetTemporaryDirectoryName();

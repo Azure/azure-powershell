@@ -39,7 +39,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Scaffold
         {
             AzurePowerShell.ProfileDirectory = Test.Utilities.Common.Data.AzureSdkAppDir;
             mockCommandRuntime = new MockCommandRuntime();
-            AzureSession.Instance.DataStore = new DiskDataStore();
         }
 
         [Fact]

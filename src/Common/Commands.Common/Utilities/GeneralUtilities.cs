@@ -463,7 +463,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 }
             }
 
-            if (clearSMContext)
+            if (clearSMContext && AzureSMProfileProvider.Instance != null)
             {
                 var SMProfile = AzureSMProfileProvider.Instance.Profile;
                 if (SMProfile != null && SMProfile.DefaultContext != null && SMProfile.DefaultContext.Subscription != null &&

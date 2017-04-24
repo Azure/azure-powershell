@@ -42,7 +42,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
             mockCommandRuntime = new MockCommandRuntime();
             newServiceCmdlet = new NewAzureServiceProjectCommand();
             newServiceCmdlet.CommandRuntime = mockCommandRuntime;
-            AzureSession.Instance.DataStore = new DiskDataStore();
         }
 
         public void TestCleanup()

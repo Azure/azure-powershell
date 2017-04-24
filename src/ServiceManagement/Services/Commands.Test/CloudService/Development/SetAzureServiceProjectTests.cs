@@ -41,7 +41,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cm
             setServiceProjectCmdlet = new SetAzureServiceProjectCommand();
             setServiceProjectCmdlet.CommandRuntime = mockCommandRuntime;
             setServiceProjectCmdlet.PassThru = true;
-            AzureSession.Instance.DataStore = new DiskDataStore();
         }
 
         [Fact]

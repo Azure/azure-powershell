@@ -41,7 +41,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Scaffold
             mockCommandRuntime = new MockCommandRuntime();
             cmdlet.CommandRuntime = mockCommandRuntime;
             TestMockSupport.TestExecutionFolder = AppDomain.CurrentDomain.BaseDirectory;
-            AzureSession.Instance.DataStore = new DiskDataStore();
         }
 
         [Fact]
