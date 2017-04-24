@@ -31,83 +31,28 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public override void ExecuteCmdlet()
         {
             var certInformation = base.GetOrCreateCertificateInformation();
-            var vmssPages = ComputeClient.VirtualMachineScaleSets.List(this.ResourceGroupName);
 
-            var allTasks = new List<Task>();
             if (ShouldProcess(target: this.Name, action: string.Format("Add application certificate to {0}", this.Name)))
             {
+                var allTasks = new List<Task>();
+                var vmssPages = ComputeClient.VirtualMachineScaleSets.List(this.ResourceGroupName);
+
+                if (vmssPages == null || !vmssPages.Any())
+                {
+                    throw new PSArgumentException(string.Format(
+                        ServiceFabricProperties.Resources.NoneNodeTypeFound,
+                        this.ResourceGroupName));
+                }
+
                 do
                 {
-                    if (vmssPages == null || !vmssPages.Any())
+                    if (!vmssPages.Any())
                     {
-                        throw new PSArgumentException(string.Format(
-                            ServiceFabricProperties.Resources.NoneNodeTypeFound,
-                            this.ResourceGroupName));
+                        break;
                     }
 
-                    foreach (var vmss in vmssPages)
-                    {
-                        var secretGroup = vmss.VirtualMachineProfile.OsProfile.Secrets.SingleOrDefault(
-                            s =>
-                                s.SourceVault.Id.Equals(certInformation.KeyVault.Id, StringComparison.OrdinalIgnoreCase));
-                        if (secretGroup == null)
-                        {
-                            vmss.VirtualMachineProfile.OsProfile.Secrets.Add(
-                                new VaultSecretGroup()
-                                {
-                                    SourceVault = new SubResource()
-                                    {
-                                        Id = certInformation.KeyVault.Id
-                                    },
-                                    VaultCertificates = new List<VaultCertificate>()
-                                    {
-                                        new VaultCertificate()
-                                        {
-                                            CertificateStore = Constants.DefaultCertificateStore,
-                                            CertificateUrl = certInformation.SecretUrl
-                                        }
-                                    }
-                                });
-                        }
-                        else
-                        {
-                            if (secretGroup.VaultCertificates != null)
-                            {
-                                var exsit =
-                                    secretGroup.VaultCertificates.Any(
-                                        cert =>
-                                            cert.CertificateUrl.Equals(certInformation.SecretUrl,
-                                                StringComparison.OrdinalIgnoreCase));
+                    allTasks.AddRange(vmssPages.Select(vmss => AddCertToVmss(vmss, certInformation)));
 
-                                if (!exsit)
-                                {
-                                    secretGroup.VaultCertificates.Add(
-                                        new VaultCertificate()
-                                        {
-                                            CertificateStore = Constants.DefaultCertificateStore,
-                                            CertificateUrl = certInformation.SecretUrl
-                                        });
-                                }
-                            }
-                            else
-                            {
-                                secretGroup.VaultCertificates = new List<VaultCertificate>()
-                                {
-                                    new VaultCertificate()
-                                    {
-                                        CertificateStore = Constants.DefaultCertificateStore,
-                                        CertificateUrl = certInformation.SecretUrl
-                                    }
-                                };
-                            }
-                        }
-
-                        allTasks.Add(
-                            ComputeClient.VirtualMachineScaleSets.CreateOrUpdateAsync(
-                                this.ResourceGroupName,
-                                vmss.Name,
-                                vmss));
-                    }
                 } while (!string.IsNullOrEmpty(vmssPages.NextPageLink) &&
                          (vmssPages = ComputeClient.VirtualMachineScaleSets.ListNext(vmssPages.NextPageLink)) != null);
 

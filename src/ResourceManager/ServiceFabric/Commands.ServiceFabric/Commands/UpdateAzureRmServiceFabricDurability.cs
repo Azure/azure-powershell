@@ -29,16 +29,29 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
     [Cmdlet(VerbsData.Update, CmdletNoun.AzureRmServiceFabricDurability, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class UpdateAzureRmServiceFabricDurability : ServiceFabricClusterCmdlet
     {
+        /// <summary>
+        /// Resource group name
+        /// </summary>
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify the name of the resource group.")]
+        [ValidateNotNullOrEmpty()]
+        public override string ResourceGroupName { get; set; }
+
+        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Specify the name of the cluster")]
+        [ValidateNotNullOrEmpty()]
+        public override string Name { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true,
+           HelpMessage = "Specify Service Fabric node type name")]
+        [ValidateNotNullOrEmpty()]
+        public string NodeTypeName { get; set; } 
+
         [Parameter(Mandatory = true, ValueFromPipeline = true,
                    HelpMessage = "Specify durability Level")]
         [ValidateNotNullOrEmpty()]
         [Alias("DurabilityLevel")]
-        public DurabilityLevel Level { get; set; }
-
-        [Parameter(Mandatory = true, ValueFromPipeline = true,
-                   HelpMessage = "Specify Service Fabric node type name")]
-        [ValidateNotNullOrEmpty()]
-        public string NodeTypeName { get; set; }
+        public DurabilityLevel Level { get; set; } 
 
         [Parameter(Mandatory = false, ValueFromPipeline = true,
                    HelpMessage = "Specify the SKU of the node type")]

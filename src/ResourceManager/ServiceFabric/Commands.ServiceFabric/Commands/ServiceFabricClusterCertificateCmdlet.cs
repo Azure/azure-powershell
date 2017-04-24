@@ -15,12 +15,13 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Management.Automation;
-using System.Management.Automation.Runspaces;
 using System.Security;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Common.Authentication;
@@ -31,6 +32,9 @@ using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.Azure.KeyVault;
 using Newtonsoft.Json;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
+using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.Management.Compute.Models;
+using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -324,6 +328,107 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
         }
 
+        internal Task AddCertToVmss(VirtualMachineScaleSet vmss, CertificateInformation certInformation)
+        {
+            var secretGroup = vmss.VirtualMachineProfile.OsProfile.Secrets.SingleOrDefault(
+                s => s.SourceVault.Id.Equals(certInformation.KeyVault.Id, StringComparison.OrdinalIgnoreCase));
+            if (secretGroup == null)
+            {
+                vmss.VirtualMachineProfile.OsProfile.Secrets.Add(
+                    new VaultSecretGroup()
+                    {
+                        SourceVault = new Management.Compute.Models.SubResource()
+                        {
+                            Id = certInformation.KeyVault.Id
+                        },
+                        VaultCertificates = new List<VaultCertificate>()
+                        {
+                          new VaultCertificate()
+                          {
+                          CertificateStore = Constants.DefaultCertificateStore,
+                          CertificateUrl = certInformation.SecretUrl
+                          }
+                        }
+                    });
+            }
+            else
+            {
+                if (secretGroup.VaultCertificates != null)
+                {
+                    var exsit =
+                        secretGroup.VaultCertificates.Any(
+                            cert =>
+                                cert.CertificateUrl.Equals(certInformation.SecretUrl,
+                                    StringComparison.OrdinalIgnoreCase));
+
+                    if (!exsit)
+                    {
+                        secretGroup.VaultCertificates.Add(
+                            new VaultCertificate()
+                            {
+                                CertificateStore = Constants.DefaultCertificateStore,
+                                CertificateUrl = certInformation.SecretUrl
+                            });
+                    }
+                }
+                else
+                {
+                    secretGroup.VaultCertificates = new List<VaultCertificate>()
+                    {
+                        new VaultCertificate()
+                        {
+                            CertificateStore = Constants.DefaultCertificateStore,
+                            CertificateUrl = certInformation.SecretUrl
+                        }
+                   };
+                }
+            }
+
+            return ComputeClient.VirtualMachineScaleSets.CreateOrUpdateAsync(
+                   this.ResourceGroupName,
+                   vmss.Name,
+                   vmss);
+        }
+
+        protected void GetKeyVaultReady(out Vault vault, out CertificateBundle certificateBundle, out string thumbprint, string srcPfxPath = null)
+        { 
+            vault = TryGetKeyVault(this.KeyVaultResouceGroupName, this.KeyVaultName);
+
+            if (vault == null)
+            {
+                vault = CreateKeyVault(this.Name, this.KeyVaultName, this.KeyVaultResouceGroupLocation, this.KeyVaultResouceGroupName);
+            }
+
+            SetCertificateName();
+
+            if (!string.IsNullOrEmpty(srcPfxPath))
+            {
+                certificateBundle = ImportCertificateToAzureKeyVault(
+                    this.KeyVaultName,
+                    this.KeyVaultCertificateName,
+                    srcPfxPath,
+                    this.CertificatePassword,
+                    out thumbprint);
+            }
+            else
+            {
+                var vaultUrl = CreateVaultUri(vault.Name);
+                CreateSelfSignedCertificate(
+                    this.CertificateSubjectName,
+                    vaultUrl.ToString(),
+                    out thumbprint,
+                    out certificateBundle);
+            }
+        }
+
+        protected void SetCertificateName()
+        {
+            if (string.IsNullOrWhiteSpace(this.KeyVaultCertificateName))
+            {
+                this.KeyVaultCertificateName = string.Format("{0}{1}", this.ResourceGroupName, DateTime.Now.ToString("yyyyMMddHHmmss"));
+            }
+        }
+
         private string GetThumbprintFromSecret(string secretUrl)
         {
             if (!string.IsNullOrWhiteSpace(this.CertificateThumprint))
@@ -421,7 +526,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             this.KeyVaultResouceGroupName = tokens[3];
         }
 
-        private void ExtractSecretNameFromSecretIdentifier(string secretIdentifier, out string vaultSecretName,out string version)
+        private void ExtractSecretNameFromSecretIdentifier(string secretIdentifier, out string vaultSecretName, out string version)
         {
             vaultSecretName = string.Empty;
             version = string.Empty;
@@ -443,45 +548,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             vaultSecretName = tokens[3];
             version = tokens[4];
-        }
-
-        protected void GetKeyVaultReady(out Vault vault, out CertificateBundle certificateBundle, out string thumbprint, string srcPfxPath = null)
-        { 
-            vault = TryGetKeyVault(this.KeyVaultResouceGroupName, this.KeyVaultName);
-
-            if (vault == null)
-            {
-                vault = CreateKeyVault(this.Name, this.KeyVaultName, this.KeyVaultResouceGroupLocation, this.KeyVaultResouceGroupName);
-            }
-
-            SetCertificateName();
-
-            if (!string.IsNullOrEmpty(srcPfxPath))
-            {
-                certificateBundle = ImportCertificateToAzureKeyVault(
-                    this.KeyVaultName,
-                    this.KeyVaultCertificateName,
-                    srcPfxPath,
-                    this.CertificatePassword,
-                    out thumbprint);
-            }
-            else
-            {
-                var vaultUrl = CreateVaultUri(vault.Name);
-                CreateSelfSignedCertificate(
-                    this.CertificateSubjectName,
-                    vaultUrl.ToString(),
-                    out thumbprint,
-                    out certificateBundle);
-            }
-        }
-
-        protected void SetCertificateName()
-        {
-            if (string.IsNullOrWhiteSpace(this.KeyVaultCertificateName))
-            {
-                this.KeyVaultCertificateName = string.Format("{0}{1}", this.ResourceGroupName, DateTime.Now.ToString("yyyyMMddHHmmss"));
-            }
         }
     }
 }

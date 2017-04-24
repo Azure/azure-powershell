@@ -27,6 +27,19 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
     [Cmdlet(VerbsData.Update, CmdletNoun.AzureRmServiceFabricReliability, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class UpdateAzureRmServiceFabricReliability : ServiceFabricClusterCmdlet
     {
+        /// <summary>
+        /// Resource group name
+        /// </summary>
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify the name of the resource group.")]
+        [ValidateNotNullOrEmpty()]
+        public override string ResourceGroupName { get; set; }
+
+        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Specify the name of the cluster")]
+        [ValidateNotNullOrEmpty()]
+        public override string Name { get; set; }
+
         [Parameter(Mandatory = true, ValueFromPipeline = true,
                    HelpMessage = "VM instance number")]
         [ValidateNotNullOrEmpty()]
@@ -86,6 +99,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
                     if (primaryVmss.Sku.Capacity < instanceNumber)
                     {
+                        primaryVmss.Sku.Capacity = instanceNumber;
                         ComputeClient.VirtualMachineScaleSets.CreateOrUpdate(
                             this.ResourceGroupName,
                             primaryVmss.Name,   

@@ -39,14 +39,17 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public override string Name { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true,
-                   HelpMessage = "The number of nodes to add")]
-        [ValidateNotNullOrEmpty()]
-        [Alias("NumberOfNodesToAdd")]
-        public virtual int Number { get; set; }
+                HelpMessage = "Node type name")]
+        public virtual string NodeType { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true,
-                   HelpMessage = "Node type name")]
-        public string NodeType { get; set; }
+            HelpMessage = "The number of nodes to add")]
+        [ValidateRange(1, 2147483647)]
+        [Alias("NumberOfNodesToAdd")]
+        public virtual int Number
+        {
+            get; set;
+        }  
 
         public override void ExecuteCmdlet()
         {

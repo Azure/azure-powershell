@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Insecure cluster {0} is not allowed to add Certificate.
+        ///   Looks up a localized string similar to Insecure cluster {0} is not allowed to add certificate.
         /// </summary>
         internal static string AddCertToUnsecureCluster {
             get {
@@ -75,15 +75,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         internal static string CannotChangeDurabilityFrom {
             get {
                 return ResourceManager.GetString("CannotChangeDurabilityFrom", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Can&apos;t change reliability level with durability with bronze,please change durability to Silver or above.
-        /// </summary>
-        internal static string CannotChangeReliabilityLevelWithDurabilityWithBronze {
-            get {
-                return ResourceManager.GetString("CannotChangeReliabilityLevelWithDurabilityWithBronze", resourceCulture);
             }
         }
         
@@ -115,7 +106,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not find durability level setting.
+        ///   Looks up a localized string similar to Can&apos;t find durability level setting.
         /// </summary>
         internal static string CannotFindDurabilityLevelSetting {
             get {
@@ -124,7 +115,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not find tenant Id.
+        ///   Looks up a localized string similar to Can&apos;t find tenant Id.
         /// </summary>
         internal static string CannotFindTenantId {
             get {
@@ -142,7 +133,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not find the thumbprint {0} in the cluster.
+        ///   Looks up a localized string similar to Can&apos;t find the thumbprint {0} in the cluster.
         /// </summary>
         internal static string CannotFindThumbprintInTheCluster {
             get {
@@ -178,25 +169,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not parse CommonNameIssuersAndFlags.
-        /// </summary>
-        internal static string CannotParseValueInNameIssuersAndFlags {
-            get {
-                return ResourceManager.GetString("CannotParseValueInNameIssuersAndFlags", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Can not parse ThumbprintsAndFlags.
-        /// </summary>
-        internal static string CannotParseValueInThumbprintAndFlags {
-            get {
-                return ResourceManager.GetString("CannotParseValueInThumbprintAndFlags", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Can&apos;t not update bronze node type,please update it to Silver or above.
+        ///   Looks up a localized string similar to Can&apos;t not update node type which durability is bronze,please update it to Silver or above first.
         /// </summary>
         internal static string CannotUpdateBronzeNodeType {
             get {
@@ -205,7 +178,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can&apos;t update nodes count {0} to less then reliability level {1}.
+        ///   Looks up a localized string similar to Can&apos;t update nodes count {0} to less than the reliability level {1}.
         /// </summary>
         internal static string CannotUpdateNodeCountLessThenReliabilityLevel {
             get {
@@ -214,7 +187,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not update Sku with durability with Bronze , please change durability to Silver or above.
+        ///   Looks up a localized string similar to Can not update Sku while durability is Bronze , please update durability to Silver or above first.
         /// </summary>
         internal static string CannotUpdateSkuWithDurabilityWithBronze {
             get {
@@ -250,7 +223,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Durability level mismatches between node type and ServiceFabric resource provider.
+        ///   Looks up a localized string similar to Durability level mismatches between node type and Service Fabric cluster setting.
         /// </summary>
         internal static string DurabilityLevelMismatches {
             get {
@@ -304,7 +277,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to File {0} doesnt exist.
+        ///   Looks up a localized string similar to File {0} doesn&apos;t exist.
         /// </summary>
         internal static string FileNotExist {
             get {
@@ -331,7 +304,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invaild existing VMSS configuration.
+        ///   Looks up a localized string similar to Invalid existing VMSS configuration.
         /// </summary>
         internal static string InvalidVmssConfiguration {
             get {
@@ -349,7 +322,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} already exists in the cluster.
+        ///   Looks up a localized string similar to Node type {0} already exists in the cluster.
         /// </summary>
         internal static string NodeTypeAlreadyExist {
             get {
@@ -385,7 +358,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Insecure cluster {0} is not allowed to removeCertificate.
+        ///   Looks up a localized string similar to Insecure cluster {0} is not allowed to remove certificate.
         /// </summary>
         internal static string RemoveCertFromUnsecureCluster {
             get {
