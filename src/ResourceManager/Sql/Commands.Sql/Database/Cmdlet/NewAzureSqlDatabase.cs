@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 
         [Parameter(Mandatory = false,
             HelpMessage = "The name of the sample schema to apply when creating this database.")]
-        [ValidateNotNullOrEmpty]
+        [ValidateSet(Management.Sql.Models.SampleName.AdventureWorksLT)]
         public string SampleName { get; set; }
 
         /// <summary>
