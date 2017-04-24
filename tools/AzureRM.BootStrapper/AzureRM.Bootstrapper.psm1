@@ -19,12 +19,14 @@ $Script:IsCoreEdition = ($PSVersionTable.PSEdition -eq 'Core')
 $script:IsAdmin = $false
 if ((-not $Script:IsCoreEdition) -or ($IsWindows))
 {
+  $script:ProgramFilesPSPath = $env:ProgramFiles
   If (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator"))
   {
     $script:IsAdmin = $true
   }
 }
 else {
+  $script:ProgramFilesPSPath = $PSHOME
   # on Linux, tests run via sudo will generally report "root" for whoami
   if ( (whoami) -match "root" ) 
   {
@@ -346,7 +348,7 @@ function Uninstall-ModuleHelper
     $moduleInstalled = Get-Module -Name $Module -ListAvailable | Where-Object { $_.Version -eq $version} 
     if ($PSCmdlet.ShouldProcess("$module version $version", "Remove module")) 
     {
-      if (($null -ne $moduleInstalled) -and ($Remove.IsPresent -or $PSCmdlet.ShouldContinue("Remove module $Module version $version", "Removing Modules for profile $Profile"))) 
+      if (($null -ne $moduleInstalled) -and ($Remove.IsPresent -or $PSCmdlet.ShouldContinue("Uninstall module $Module version $version", "Uninstall Modules for profile $Profile"))) 
       {
         Write-Verbose "Removing module from session"
         Remove-Module -Name $module -Force -ErrorAction "SilentlyContinue"
@@ -357,7 +359,24 @@ function Uninstall-ModuleHelper
         }
         catch
         {
-          Write-Error $_.Exception.Message
+          if ($_.Exception.Message -match "No match was found")
+          {
+            # Check for msi installation (Install folder: C:\ProgramFiles(x86)\Microsoft SDKs\Azure\PowerShell) Only in windows
+            if ((-not $Script:IsCoreEdition) -or ($IsWindows))
+            {
+              $sdkPath1 = (join-path ${env:ProgramFiles(x86)} -childpath "\Microsoft SDKs\Azure\PowerShell\")
+              $sdkPath2 = (join-path $script:ProgramFilesPSPath -childpath "\Microsoft SDKs\Azure\PowerShell\")
+              if (($null -ne $moduleInstalled.Path) -and (($moduleInstalled.Path.Contains($sdkPath1) -or $moduleInstalled.Path.Contains($sdkPath2))))
+              {
+                Write-Error "Unable to uninstall module $module because it was installed in a different scope than expected. If you installed via an MSI, please uninstall the MSI before proceeding." -Category InvalidOperation
+                break 
+              }
+            }
+            Write-Error "Unable to uninstall module $module because it was installed in a different scope than expected. If you installed the module to a custom directory in your path, please remove the module manually, by using Uninstall-Module, or removing the module directory." -Category InvalidOperation
+          }
+          else {
+            Write-Error $_.Exception.Message
+          }
           break
         }
       }
@@ -602,12 +621,13 @@ function Find-PotentialConflict
   # If Admin, check CurrentUser Module folder path and vice versa
   if ($script:IsAdmin)
   {
-    $availableModules | ForEach-Object { if (($null -ne $_.Path) -and $_.Path.Contains($env:HOMEPATH)) { $IsPotentialConflict = $true } }
+    $availableModules | ForEach-Object { if (($null -ne $_.Path) -and $_.Path.Contains($HOME)) { $IsPotentialConflict = $true } }
   }
-  else {
-    $availableModules | ForEach-Object { if (($null -ne $_.Path) -and $_.Path.Contains($env:ProgramFiles)) { $IsPotentialConflict = $true } }
+  else { 
+    $availableModules | ForEach-Object { if (($null -ne $_.Path) -and $_.Path.Contains($script:ProgramFilesPSPath)) { $IsPotentialConflict = $true } }
   }
 
+  # If potential conflict found, confirm with user for continuing with module installation if 'force' was not used
   if ($IsPotentialConflict)
   {
     if (($Force.IsPresent) -or ($PSCmdlet.ShouldContinue(`
@@ -620,7 +640,9 @@ function Find-PotentialConflict
       return $true
     }
   }
-  return $false
+
+  # False if no conflict was found
+  return $false 
 }
 
 # Helper function to invoke install-module
