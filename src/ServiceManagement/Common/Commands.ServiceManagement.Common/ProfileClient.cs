@@ -955,7 +955,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             {
                 throw new ArgumentException("Account Ids do not match.");
             }
-            if (account1.Type != account2.Type)
+            if (!string.Equals(account1.Type, account2.Type, StringComparison.InvariantCultureIgnoreCase))
             {
                 throw new ArgumentException("Account1 types do not match.");
             }

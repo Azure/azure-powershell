@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
     {
         public ClientFactoryTests(ITestOutputHelper output)
         {
+            AzureSessionInitializer.InitializeAzureSession();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
