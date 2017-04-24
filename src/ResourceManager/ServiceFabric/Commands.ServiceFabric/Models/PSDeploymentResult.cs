@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.ResourceManager.Models;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Models
 {
@@ -20,18 +20,46 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
     {
         public string VmUserName { get; set; }
 
-        public DeploymentExtended DeploymentDetail { get; set; }
+        public X509Certificate2 Certificate { get; set; }
 
-        public PSCluster ClusterDetail { get; set; }
+        public string Thumbprint { get; set; }
+
+        public string KeyVaultName { get; set; }
+
+        public string KeyVaultCertificateName { get; set; }
+
+        public string KeyVaultSecretName { get; set; }
+
+        public string KeyVaultSecretVersion { get; set; }
+
+        public PSDeploymentExtended DeploymentDetail { get; set; }
+
+        public PSCluster ClusterDetail { get; set; } 
 
         public PSDeploymentResult()
         {
         }
 
-        public PSDeploymentResult(DeploymentExtended deployment, PSCluster cluster)
+        public PSDeploymentResult(
+            PSDeploymentExtended deployment, 
+            PSCluster cluster,
+            string vmUserName,
+            X509Certificate2 certificate,
+            string thumbprint,
+            string keyVaultName,
+            string keyVaultCertificateName,
+            string keyVaultSecretName,
+            string keyVaultSecretVersion)
         {
             this.DeploymentDetail = deployment;
             this.ClusterDetail = cluster;
+            this.VmUserName = vmUserName;
+            this.KeyVaultName = keyVaultName;
+            this.Certificate = certificate;
+            this.KeyVaultCertificateName = keyVaultCertificateName;
+            this.KeyVaultSecretName = keyVaultSecretName;
+            this.KeyVaultSecretVersion = keyVaultSecretVersion;
+            this.Thumbprint = thumbprint;
         }
     }
 }

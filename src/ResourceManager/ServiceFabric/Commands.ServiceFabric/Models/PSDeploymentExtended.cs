@@ -12,11 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.ResourceManager.Models;
+
 namespace Microsoft.Azure.Commands.ServiceFabric.Models
 {
-    public enum OS
+    public class PSDeploymentExtended : DeploymentExtended
     {
-        Windows,
-        Linux
+        public PSDeploymentExtended(DeploymentExtended deploymentExtended) :
+            base(name: deploymentExtended.Name, id: deploymentExtended.Id, properties: deploymentExtended.Properties)
+        { 
+        } 
     }
 }

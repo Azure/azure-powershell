@@ -12,14 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Security.Cryptography.X509Certificates;
+
 namespace Microsoft.Azure.Commands.ServiceFabric.Models
 {
-    public enum ReliabilityLevel
+    public class PSKeyVault
     {
-        None = 1,
-        Bronze = 3, // The system services replica set count (3/3) and Seed Nodes = 3
-        Silver = 5, // The system services replica set count (3/5) and Seed Nodes = 5
-        Gold = 7, // The system services replica set count (5/7) and Seed Nodes = 7
-        Platinum = 9 // The system services replica set count (5/7) and Seed Nodes >= 9
+        public X509Certificate2 Certificate { get; set; }
+
+        public string KeyVaultName { get; set; }
+
+        public string KeyVaultCertificateName { get; set; }
+
+        public string KeyVaultSecretName { get; set; }
+
+        public string KeyVaultSecretVersion { get; set; }
     }
 }

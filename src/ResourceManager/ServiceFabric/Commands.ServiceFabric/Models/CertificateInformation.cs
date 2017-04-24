@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.KeyVault.Models;
+using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Management.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Models
@@ -21,7 +21,17 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
     {
         internal Vault KeyVault { get; set; }
 
+        internal X509Certificate2 Certificate { get; set; }
+
+        internal string CertificateUrl { get; set; }
+
+        internal string CertificateName { get; set; }
+
         internal string SecretUrl { get; set; }
+
+        internal string SecretName { get; set; }
+
+        internal string Version { get; set; }
 
         internal string Thumbprint { get; set; }
     }

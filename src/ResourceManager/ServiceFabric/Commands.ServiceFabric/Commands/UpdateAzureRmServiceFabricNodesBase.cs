@@ -23,39 +23,51 @@ using Microsoft.Azure.Management.ServiceFabric.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    public class UpdateAzureRmServiceFabricVmssBase : ServiceFabricClusterCmdlet
+    public class UpdateAzureRmServiceFabricNodesBase : ServiceFabricClusterCmdlet
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
+        /// <summary>
+        /// Resource group name
+        /// </summary>
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify the name of the resource group.")]
+        [ValidateNotNullOrEmpty()]
+        public override string ResourceGroupName { get; set; }
+
+        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Specify the name of the cluster")]
+        [ValidateNotNullOrEmpty()]
+        public override string Name { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true,
                    HelpMessage = "The number of nodes to add")]
         [ValidateNotNullOrEmpty()]
         [Alias("NumberOfNodesToAdd")]
         public virtual int Number { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, ValueFromPipeline = true,
                    HelpMessage = "Node type name")]
-        public string NodeTypeName { get; set; }
+        public string NodeType { get; set; }
 
         public override void ExecuteCmdlet()
         {
             var cluster = GetCurrentCluster();
             DurabilityLevel durabilityLevel;
-            bool missMatch = false;
-            var vmss = GetVmss(this.NodeTypeName);
-            GetDurabilityLevel(out durabilityLevel, out missMatch, this.NodeTypeName);
+            bool isMismatched = false;
+            var vmss = GetVmss(this.NodeType);
+            GetDurabilityLevel(this.NodeType, out durabilityLevel, out isMismatched);
 
             if (this.Number < 0)
             {
                 if (durabilityLevel == DurabilityLevel.Bronze)
                 {
-                    throw new PSInvalidOperationException(
-                        ServiceFabricProperties.Resources.CanNotUpdateBronzeNodeType);
+                    throw new PSInvalidOperationException(ServiceFabricProperties.Resources.CannotUpdateBronzeNodeType);
                 }
             }
 
             vmss.Sku.Capacity += this.Number;
             if (vmss.Sku.Capacity < 0)
             {
-                throw new PSArgumentException(this.Number.ToString());
+                throw new PSArgumentException("The Vm size is less then zero");
             }
 
             var minInstanceCount = GetReliabilityLevel();
@@ -63,20 +75,17 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 throw new PSArgumentException(
                     string.Format(
-                        ServiceFabricProperties.Resources.CanNotUpdateBronzeNodeType,
-                        this.Number,
+                        ServiceFabricProperties.Resources.CannotUpdateNodeCountLessThenReliabilityLevel,
+                        vmss.Sku.Capacity,
                         cluster.ReliabilityLevel));
             }
 
-            ComputeClient.VirtualMachineScaleSets.CreateOrUpdate(
-                ResourceGroupName, 
-                vmss.Name,
-                vmss);
+            this.ComputeClient.VirtualMachineScaleSets.CreateOrUpdate(this.ResourceGroupName, vmss.Name, vmss);
 
-            cluster = SFRPClient.Clusters.Get(this.ResourceGroupName, this.ClusterName);
-            var nodeType = cluster.NodeTypes.First(
-                n => string.Equals(
-                    this.NodeTypeName,
+            cluster = SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name);
+            var nodeType = cluster.NodeTypes.Single(
+                n => string.Equals( 
+                    this.NodeType,
                     n.Name,
                     StringComparison.OrdinalIgnoreCase));
 
@@ -87,7 +96,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 NodeTypes = cluster.NodeTypes
             });
 
-            WriteObject((PSCluster)cluster,true);
+            WriteObject((PSCluster)cluster, true);
         }
 
         protected int GetReliabilityLevel()
@@ -102,7 +111,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             else
             {
                 throw new PSInvalidOperationException(
-                    ServiceFabricProperties.Resources.CanNotGetReliabilityLevel);
+                    ServiceFabricProperties.Resources.CannotGetReliabilityLevel);
             }
         }
     }

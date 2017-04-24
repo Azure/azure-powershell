@@ -26,7 +26,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    public class ServiceFabricVmssCmdletBase : ServiceFabricClusterCmdlet
+    public class ServiceFabricNodeTypeCmdletBase : ServiceFabricClusterCmdlet
     {
         protected Lazy<IStorageManagementClient> storageManagementClient;
         protected Lazy<INetworkManagementClient> networkManagementClient;
@@ -41,38 +41,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             get { return networkManagementClient.Value; }
         }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, ValueFromPipeline = true,
                    HelpMessage = "The node type name")]
         [ValidateNotNullOrEmpty()]
-        public string NodeTypeName { get; set; }
+        public virtual string NodeType { get; set; }
 
-        protected bool CheckNodeTypeExistence()
-        {
-            var vmss = SafeGetResource(() =>
-            ComputeClient.VirtualMachineScaleSets.Get(
-                this.ResourceGroupName,
-                this.NodeTypeName));
-
-            return vmss != null;
-        }
-
-        protected PSCluster RemoveNodeTypeFromSfrp()
-        {
-            var cluster = SFRPClient.Clusters.Get(this.ResourceGroupName, this.ClusterName);
-            cluster.NodeTypes.Remove(
-                cluster.NodeTypes.SingleOrDefault(
-                    c => string.Equals(
-                        c.Name,
-                        this.NodeTypeName,
-                        StringComparison.InvariantCultureIgnoreCase)));
-
-            return SendPatchRequest(new Management.ServiceFabric.Models.ClusterUpdateParameters()
-            {
-                NodeTypes = cluster.NodeTypes
-            });
-        }
-
-        public ServiceFabricVmssCmdletBase()
+        public ServiceFabricNodeTypeCmdletBase()
         {
             storageManagementClient = new Lazy<IStorageManagementClient>(() =>
              AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(
@@ -84,5 +58,32 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                AzureRmProfileProvider.Instance.Profile.Context,
                AzureEnvironment.Endpoint.ResourceManager));
         }
+
+        protected bool CheckNodeTypeExistence()
+        {
+            var vmss = SafeGetResource(
+                () =>
+                ComputeClient.VirtualMachineScaleSets.Get( 
+                    this.ResourceGroupName,     
+                    this.NodeType));
+
+            return vmss != null;
+        }
+
+        protected PSCluster RemoveNodeTypeFromSfrp()
+        {
+            var cluster = SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name);
+            cluster.NodeTypes.Remove(
+                cluster.NodeTypes.SingleOrDefault(
+                    c => string.Equals(
+                        c.Name,
+                        this.NodeType,
+                        StringComparison.InvariantCultureIgnoreCase)));
+
+            return SendPatchRequest(new Management.ServiceFabric.Models.ClusterUpdateParameters()
+            {
+                NodeTypes = cluster.NodeTypes
+            });
+        }  
     }
 }

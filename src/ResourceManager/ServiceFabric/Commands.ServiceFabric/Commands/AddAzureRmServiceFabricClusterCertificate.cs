@@ -20,12 +20,13 @@ using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.ServiceFabric.Models;
+using Microsoft.Rest.Azure;
 using Newtonsoft.Json.Linq;
 using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Add, CmdletNoun.AzureRmServiceFabricClusterCertificate), OutputType(typeof(PSCluster))]
+    [Cmdlet(VerbsCommon.Add, CmdletNoun.AzureRmServiceFabricClusterCertificate), OutputType(typeof (PSCluster))]
     public class AddAzureRmServiceFabricClusterCertificate : ServiceFabricClusterCertificateCmdlet
     {
         public override void ExecuteCmdlet()
@@ -38,71 +39,86 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 throw new PSInvalidOperationException(
                     string.Format(
                         ServiceFabricProperties.Resources.AddCertToUnsecureCluster,
-                        this.ClusterName));
+                        this.Name));
             }
 
-            var certInformation = base.GetOrCreateCertificateInformation();
-
-            foreach (var vmss in ComputeClient.VirtualMachineScaleSets.List(this.ResourceGroupName))
+            if (ShouldProcess(target: this.Name, action: string.Format("Add cluster certificate to {0}", this.Name)))
             {
-                var ext = FindFabricVmExt(vmss.VirtualMachineProfile.ExtensionProfile.Extensions);
+                var certInformation = base.GetOrCreateCertificateInformation();
 
-                var extConfig = (JObject)ext.Settings;
-                var input = string.Format(
-                    @"{{""thumbprint"":""{0}"",""x509StoreName"":""{1}""}}",
-                    certInformation.Thumbprint,
-                    Constants.DefaultCertificateStore);
-
-                extConfig["certificateSecondary"] = JObject.Parse(input);
-
-                vmss.VirtualMachineProfile.
-                    ExtensionProfile.
-                    Extensions.
-                    First().
-                    Settings = extConfig;
-
-                bool existing = false;
-                if (vmss.VirtualMachineProfile.OsProfile.Secrets != null)
+                var vmssPages = ComputeClient.VirtualMachineScaleSets.List(this.ResourceGroupName);
+                do
                 {
-                    foreach (var vaultSecretGroup in vmss.VirtualMachineProfile.OsProfile.Secrets)
+                    if (vmssPages == null || !vmssPages.Any())
                     {
-                        if (string.Compare(
-                            vaultSecretGroup.SourceVault.Id,
-                            certInformation.KeyVault.Id,
-                            StringComparison.OrdinalIgnoreCase) == 0)
-                        {
-                            vaultSecretGroup.VaultCertificates.Add(
-                                new VaultCertificate(certInformation.SecretUrl, Constants.DefaultCertificateStore));
-
-                            existing = true;
-                        }
+                        break;
                     }
-                }
 
-                if (!existing)
+                    foreach (var vmss in vmssPages)
+                    {
+                        var ext = FindFabricVmExt(vmss.VirtualMachineProfile.ExtensionProfile.Extensions);
+
+                        var extConfig = (JObject) ext.Settings;
+                        var input = string.Format(
+                            @"{{""thumbprint"":""{0}"",""x509StoreName"":""{1}""}}",
+                            certInformation.Thumbprint,
+                            Constants.DefaultCertificateStore);
+
+                        extConfig["certificateSecondary"] = JObject.Parse(input);
+
+                        vmss.VirtualMachineProfile.
+                            ExtensionProfile.
+                            Extensions.
+                            First().
+                            Settings = extConfig;
+
+                        var existing = false;
+                        if (vmss.VirtualMachineProfile.OsProfile.Secrets != null)
+                        {
+                            foreach (var vaultSecretGroup in vmss.VirtualMachineProfile.OsProfile.Secrets)
+                            {
+                                if (vaultSecretGroup.SourceVault.Id.Equals(
+                                    certInformation.KeyVault.Id,
+                                    StringComparison.OrdinalIgnoreCase))
+                                {
+                                    vaultSecretGroup.VaultCertificates.Add(
+                                        new VaultCertificate(certInformation.SecretUrl,
+                                            Constants.DefaultCertificateStore));
+
+                                    existing = true;
+                                }
+                            }
+                        }
+
+                        if (!existing)
+                        {
+                            vmss.VirtualMachineProfile.OsProfile.Secrets.Add(
+                                new VaultSecretGroup(
+                                    new SubResource(certInformation.KeyVault.Id),
+                                    new[]
+                                    {
+                                        new VaultCertificate(certInformation.SecretUrl,
+                                            Constants.DefaultCertificateStore)
+                                    }));
+                        }
+
+                        PrintDetailIfThrow(() => ComputeClient.VirtualMachineScaleSets.CreateOrUpdate(
+                            ResourceGroupName,
+                            vmss.Name,
+                            vmss));
+                    }
+                } while (!string.IsNullOrEmpty(vmssPages.NextPageLink) &&
+                        (vmssPages = ComputeClient.VirtualMachineScaleSets.ListNext(vmssPages.NextPageLink)) != null);
+
+                var patchRequest = new ClusterUpdateParameters
                 {
-                    vmss.VirtualMachineProfile.OsProfile.Secrets.Add(
-                       new VaultSecretGroup(
-                           new SubResource(certInformation.KeyVault.Id),
-                           new[]
-                           {
-                            new VaultCertificate(certInformation.SecretUrl, Constants.DefaultCertificateStore)
-                           }));
-                }
+                    Certificate = clusterResource.Certificate
+                };
 
-                PrintDetailIfThrow(() => ComputeClient.VirtualMachineScaleSets.CreateOrUpdate( 
-                    ResourceGroupName,
-                    vmss.Name,
-                    vmss));
+                patchRequest.Certificate.ThumbprintSecondary = certInformation.Thumbprint;
+                var cluster = SendPatchRequest(patchRequest);
+                WriteObject(cluster);
             }
-            var patchRequest = new ClusterUpdateParameters
-            {
-                Certificate = clusterResource.Certificate
-            };
-            
-            patchRequest.Certificate.ThumbprintSecondary = certInformation.Thumbprint;
-            var cluster = SendPatchRequest(patchRequest);
-            WriteObject(cluster);
         }
     }
 }
