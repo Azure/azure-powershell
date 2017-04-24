@@ -110,7 +110,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
         /// <param name="exceptionMessage">The exception message to throw if the file does not exist</param>
         public static void ValidateFileExists(string filePath, string exceptionMessage)
         {
-            if (!AzureSession.Instance.DataStore.FileExists(filePath))
+            if (!FileUtilities.DataStore.FileExists(filePath))
             {
                 throw new FileNotFoundException(exceptionMessage);
             }
@@ -125,7 +125,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
         {
             string msg = string.Format(Resources.PathDoesNotExist, directory);
 
-            if (!AzureSession.Instance.DataStore.DirectoryExists(directory))
+            if (!FileUtilities.DataStore.DirectoryExists(directory))
             {
                 if (!string.IsNullOrEmpty(exceptionMessage))
                 {

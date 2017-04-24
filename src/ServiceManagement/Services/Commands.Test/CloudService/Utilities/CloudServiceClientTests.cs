@@ -90,7 +90,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         public CloudServiceClientTests()
         {
             AzurePowerShell.ProfileDirectory = Test.Utilities.Common.Data.AzureSdkAppDir;
-            AzureSession.Instance.DataStore = new DiskDataStore();
 
             storageService = new MockStorageService()
                 .Add(a => SetupStorage(serviceName.ToLowerInvariant(), a))

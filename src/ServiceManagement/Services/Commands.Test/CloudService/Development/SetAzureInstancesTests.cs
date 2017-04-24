@@ -43,7 +43,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cm
             cmdlet = new SetAzureServiceProjectRoleCommand();
             cmdlet.CommandRuntime = mockCommandRuntime;
             cmdlet.PassThru = true;
-            AzureSession.Instance.DataStore = new DiskDataStore();
 
         }
 

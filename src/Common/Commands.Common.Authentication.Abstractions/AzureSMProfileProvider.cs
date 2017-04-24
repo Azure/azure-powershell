@@ -31,11 +31,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     _lock.EnterReadLock();
                     try
                     {
-                        if (null == _instance)
-                        {
-                            throw new InvalidOperationException(Abstractions.Properties.Resources.ProfileNotInitialized);
-                        }
-
                         return _instance;
                     }
                     finally

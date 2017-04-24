@@ -48,7 +48,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService
                 CloudServiceClient = cloudServiceClientMock.Object,
                 CommandRuntime = mockCommandRuntime
             };
-            AzureSession.Instance.DataStore = new DiskDataStore();
         }
 
         [Fact]

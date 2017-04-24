@@ -47,7 +47,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
             mockCommandRuntime = new MockCommandRuntime();
             disableRDCmdlet = new DisableAzureServiceProjectRemoteDesktopCommand();
             disableRDCmdlet.CommandRuntime = mockCommandRuntime;
-            AzureSession.Instance.DataStore = new DiskDataStore();
         }
 
         private static void VerifyDisableRoleSettings(CloudServiceProject service)

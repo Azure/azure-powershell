@@ -56,7 +56,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
             addNodeWorkerCmdlet.CommandRuntime = mockCommandRuntime;
             addNodeWebCmdlet.CommandRuntime = mockCommandRuntime;
             enableRDCmdlet.CommandRuntime = mockCommandRuntime;
-            AzureSession.Instance.DataStore = new DiskDataStore();
         }
 
         /// <summary>
