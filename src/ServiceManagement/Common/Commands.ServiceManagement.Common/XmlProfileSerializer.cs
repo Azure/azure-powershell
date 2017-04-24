@@ -47,7 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             {
                 contents = contents.Replace(
                     "http://schemas.datacontract.org/2004/07/Microsoft.Azure.Common.Authentication",
-                    "http://schemas.datacontract.org/2004/07/Microsoft.Azure.Commands.Common.Authentication");
+                    "http://schemas.datacontract.org/2004/07/Microsoft.WindowsAzure.Commands.Utilities.Common");
             }
 
             using (MemoryStream s = new MemoryStream(Encoding.UTF8.GetBytes(contents ?? "")))

@@ -530,7 +530,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
                 // Verify
                 foreach (var subscription in expected)
                 {
-                    Assert.Equal(cmdlt.ProfileClient.GetSubscription(subscription.Id).GetEnvironment(), expectedEnv);
+                    Assert.Equal(cmdlt.ProfileClient.GetSubscription(new Guid(subscription.Id)).GetEnvironment(), expectedEnv);
                 }
                 Assert.Equal(1, commandRuntimeMock.OutputPipeline.Count);
             }
@@ -574,7 +574,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
                 // Verify
                 foreach (var subscription in expected)
                 {
-                    Assert.Equal(cmdlt.ProfileClient.GetSubscription(subscription.Id).GetEnvironment(), expectedEnv);
+                    Assert.Equal(cmdlt.ProfileClient.GetSubscription(new Guid(subscription.Id)).GetEnvironment(), expectedEnv);
                 }
                 Assert.Equal(1, commandRuntimeMock.OutputPipeline.Count);
             }
@@ -621,7 +621,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
                 // Verify
                 foreach (var subscription in expected)
                 {
-                    Assert.Equal(client.GetSubscription(subscription.Id).GetEnvironment(), expectedEnv);
+                    Assert.Equal(client.GetSubscription(new Guid(subscription.Id)).GetEnvironment(), expectedEnv);
                 }
                 Assert.Equal(1, commandRuntimeMock.OutputPipeline.Count);
                 Assert.Equal(oldProfile.Subscriptions.Count(), 0);

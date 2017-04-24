@@ -257,7 +257,7 @@ namespace Common.Authentication.Test
                 .Contains("123"));
             Assert.Equal("3AF24D48B97730E5C4C9CCB12397B5E046F79E09", client.Profile.AccountTable["3AF24D48B97730E5C4C9CCB12397B5E046F79E09"].Id);
             Assert.Equal(AzureAccount.AccountType.Certificate, client.Profile.AccountTable["3AF24D48B97730E5C4C9CCB12397B5E046F79E09"].Type);
-            Assert.Equal(0, client.Profile.AccountTable["3AF24D48B97730E5C4C9CCB12397B5E046F79E09"].GetPropertyAsArray(AzureAccount.Property.Tenants).Length);
+            Assert.False(client.Profile.AccountTable["3AF24D48B97730E5C4C9CCB12397B5E046F79E09"].IsPropertySet(AzureAccount.Property.Tenants));
             Assert.Equal(2, client.Profile.AccountTable["3AF24D48B97730E5C4C9CCB12397B5E046F79E09"].GetPropertyAsArray(AzureAccount.Property.Subscriptions).Length);
         }
 

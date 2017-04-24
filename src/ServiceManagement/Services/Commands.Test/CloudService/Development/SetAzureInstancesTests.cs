@@ -24,6 +24,8 @@ using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cmdlet
 {
@@ -41,6 +43,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cm
             cmdlet = new SetAzureServiceProjectRoleCommand();
             cmdlet.CommandRuntime = mockCommandRuntime;
             cmdlet.PassThru = true;
+            AzureSession.Instance.DataStore = new DiskDataStore();
+
         }
 
         [Fact]

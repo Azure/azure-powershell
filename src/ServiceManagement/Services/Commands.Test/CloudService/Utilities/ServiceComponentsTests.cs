@@ -24,6 +24,8 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 {
@@ -40,6 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
             mockCommandRuntime = new MockCommandRuntime();
             newServiceCmdlet = new NewAzureServiceProjectCommand();
             newServiceCmdlet.CommandRuntime = mockCommandRuntime;
+            AzureSession.Instance.DataStore = new DiskDataStore();
         }
 
         public void TestCleanup()

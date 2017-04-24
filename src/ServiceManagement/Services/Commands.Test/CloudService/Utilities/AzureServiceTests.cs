@@ -192,6 +192,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
             AzureTool.IgnoreMissingSDKError = true;
             AzurePowerShell.ProfileDirectory = Test.Utilities.Common.Data.AzureSdkAppDir;
             mockCommandRuntime = new MockCommandRuntime();
+            AzureSession.Instance.DataStore = new DiskDataStore();
         }
 
         [Fact]

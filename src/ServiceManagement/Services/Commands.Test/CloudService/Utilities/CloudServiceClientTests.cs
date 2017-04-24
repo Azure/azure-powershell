@@ -13,13 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Threading;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
@@ -92,6 +90,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         public CloudServiceClientTests()
         {
             AzurePowerShell.ProfileDirectory = Test.Utilities.Common.Data.AzureSdkAppDir;
+            AzureSession.Instance.DataStore = new DiskDataStore();
 
             storageService = new MockStorageService()
                 .Add(a => SetupStorage(serviceName.ToLowerInvariant(), a))

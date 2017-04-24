@@ -91,16 +91,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <param name="values">The strings to store in the property</param>
         public static void SetOrAppendProperty<TKey>(this IDictionary<TKey, string> dictionary, TKey property, params string[] values)
         {
-            string oldValueString = "";
-            if (dictionary.ContainsKey(property))
+            if (values != null && values.Length > 0)
             {
-                oldValueString = dictionary[property];
-            }
-            var oldValues = oldValueString.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-            var newValues = oldValues.Union(values, StringComparer.CurrentCultureIgnoreCase).Where(s => !string.IsNullOrEmpty(s)).ToArray();
-            if (newValues.Any())
-            {
-                dictionary[property] = string.Join(",", newValues);
+                string oldValueString = "";
+                if (dictionary.ContainsKey(property))
+                {
+                    oldValueString = dictionary[property];
+                }
+                var oldValues = oldValueString.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                var newValues = oldValues.Union(values, StringComparer.CurrentCultureIgnoreCase).Where(s => !string.IsNullOrEmpty(s)).ToArray();
+                if (newValues.Any())
+                {
+                    dictionary[property] = string.Join(",", newValues);
+                }
             }
         }
 
