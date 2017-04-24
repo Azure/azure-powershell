@@ -364,8 +364,9 @@ function Uninstall-ModuleHelper
             # Check for msi installation (Install folder: C:\ProgramFiles(x86)\Microsoft SDKs\Azure\PowerShell) Only in windows
             if ((-not $Script:IsCoreEdition) -or ($IsWindows))
             {
-              $sdkPath = (join-path ${env:ProgramFiles(x86)} -childpath "\Microsoft SDKs\Azure\PowerShell\")
-              if (($null -ne $moduleInstalled.Path) -and ($moduleInstalled.Path.Contains($sdkPath)))
+              $sdkPath1 = (join-path ${env:ProgramFiles(x86)} -childpath "\Microsoft SDKs\Azure\PowerShell\")
+              $sdkPath2 = (join-path $script:ProgramFilesPSPath -childpath "\Microsoft SDKs\Azure\PowerShell\")
+              if (($null -ne $moduleInstalled.Path) -and (($moduleInstalled.Path.Contains($sdkPath1) -or $moduleInstalled.Path.Contains($sdkPath2))))
               {
                 Write-Error "Unable to uninstall module $module because it was installed in a different scope than expected. If you installed via an MSI, please uninstall the MSI before proceeding." -Category InvalidOperation
                 break 
