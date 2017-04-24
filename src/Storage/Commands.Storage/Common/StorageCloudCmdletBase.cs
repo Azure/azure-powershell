@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+using Microsoft.WindowsAzure.Commands.Storage.Adapters;
 using Microsoft.WindowsAzure.Commands.Storage.File;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Storage;
@@ -43,7 +44,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     {
         [Parameter(HelpMessage = "Azure Storage Context Object",
             ValueFromPipeline = true, ValueFromPipelineByPropertyName = true)]
-        public virtual AzureStorageContext Context { get; set; }
+        public virtual IStorageContext Context { get; set; }
 
         [Parameter(HelpMessage = "The server time out for each request in seconds.")]
         public virtual int? ServerTimeoutPerRequest { get; set; }
@@ -226,13 +227,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <returns>Storage account</returns>
         internal AzureStorageContext GetCmdletStorageContext()
         {
-            this.Context = this.GetCmdletStorageContext(this.Context);
-
-            return this.Context;
+            var context = this.GetCmdletStorageContext(this.Context);
+            this.Context = context;
+            return context;
         }
 
-        internal AzureStorageContext GetCmdletStorageContext(AzureStorageContext context)
+        internal AzureStorageContext GetCmdletStorageContext(IStorageContext inContext)
         {
+            AzureStorageContext context = inContext as AzureStorageContext;
+            if (context == null && inContext != null)
+            {
+                context = new AzureStorageContext(inContext.GetCloudStorageAccount());
+            }
+
             if (context != null)
             {
                 WriteDebugLog(String.Format(Resources.UseStorageAccountFromContext, context.StorageAccountName));

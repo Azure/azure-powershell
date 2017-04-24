@@ -46,12 +46,30 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public IAzureContextContainer SMProfile
         {
-            get { return AzureSMProfileProvider.Instance.Profile; }
+            get
+            {
+                IAzureContextContainer result = null;
+                if (AzureSMProfileProvider.Instance != null)
+                {
+                    result = AzureSMProfileProvider.Instance.Profile;
+                }
+
+                return result;
+            }
         }
 
         public IAzureContextContainer RMProfile
         {
-            get { return AzureRmProfileProvider.Instance.Profile; }
+            get
+            {
+                IAzureContextContainer result = null;
+                if (AzureRmProfileProvider.Instance != null)
+                {
+                    result = AzureRmProfileProvider.Instance.Profile;
+                }
+
+                return result;
+            }
         }
 
         protected override void SaveDataCollectionProfile()

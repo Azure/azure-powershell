@@ -126,7 +126,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             AzureSubscription subscription = new AzureSubscription();
             try
             {
-                subscription.Id = this.SubscriptionId;
+                subscription.Id = new Guid(this.SubscriptionId).ToString();
             }
             catch (Exception ex)
             {
@@ -135,6 +135,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             subscription.Name = Name;
 
             // Logic to detect what is the subscription environment relies on having ManagementEndpoint (i.e. RDFE endpoint) set already on the subscription
+            if (null == envs)
+            {
+                envs = new List<IAzureEnvironment>();
+            }
+
             List<IAzureEnvironment> allEnvs = envs.Union(AzureEnvironment.PublicEnvironments.Values).ToList();
             IAzureEnvironment env = allEnvs.FirstOrDefault(e => e.IsEndpointSetToValue(AzureEnvironment.Endpoint.ServiceManagement, this.ManagementEndpoint));
 

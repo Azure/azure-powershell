@@ -536,7 +536,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             return Profile.SubscriptionTable[subscriptionId];
         }
 
-        public AzureSubscription RemoveSubscription(string name)
+        public IAzureSubscription RemoveSubscription(string name)
         {
             if (string.IsNullOrEmpty(name))
             {
@@ -551,7 +551,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             }
             else
             {
-                return RemoveSubscription(subscription.Id);
+                return RemoveSubscription(subscription.GetId());
             }
         }
 
@@ -846,7 +846,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             {
                 throw new ArgumentNullException("subscription1");
             }
-            if (subscription1.Id != subscription2.Id)
+            if (!string.Equals(subscription1.Id, subscription2.Id, StringComparison.OrdinalIgnoreCase))
             {
                 throw new ArgumentException("Subscription Ids do not match.");
             }
@@ -1043,7 +1043,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
                                     subscription.ActiveDirectoryTenantId);
                                 psSubscription.SetAccount(tenantAccount.Id);
                                 tenantAccount.SetOrAppendProperty(AzureAccount.Property.Subscriptions,
-                                    new string[] { psSubscription.Id.ToString() });
+                                    new string[] { psSubscription.Id });
                                 result.Add(psSubscription);
                             }
                         }
@@ -1177,7 +1177,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
                 var subscriptions = Profile.SubscriptionTable.Values.Where(s => s.GetEnvironment() == name).ToArray();
                 foreach (var subscription in subscriptions)
                 {
-                    RemoveSubscription(subscription.Id);
+                    RemoveSubscription(subscription.GetId());
                 }
                 Profile.EnvironmentTable.Remove(name);
                 return environment;

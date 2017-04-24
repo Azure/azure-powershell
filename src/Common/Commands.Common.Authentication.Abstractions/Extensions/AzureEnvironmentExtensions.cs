@@ -56,6 +56,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 case AzureEnvironment.Endpoint.ServiceManagement:
                     endpoint = new Uri(environment.ServiceManagementUrl);
                     break;
+                case AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId:
+                    endpoint = new Uri(environment.ActiveDirectoryServiceEndpointResourceId);
+                    break;
+                case AzureEnvironment.Endpoint.GraphEndpointResourceId:
+                    endpoint = new Uri(environment.GraphEndpointResourceId);
+                    break;
                 default:
                     result = false;
                     break;

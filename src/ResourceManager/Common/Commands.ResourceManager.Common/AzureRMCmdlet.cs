@@ -50,8 +50,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         /// </summary>
         public IAzureContextContainer DefaultProfile
         {
-            get { return AzureRmProfileProvider.Instance.Profile; }
-            set { AzureRmProfileProvider.Instance.Profile = value; }
+            get
+            {
+                if (AzureRmProfileProvider.Instance == null)
+                {
+                    throw new InvalidOperationException(Resources.ProfileNotInitialized);
+                }
+
+                return AzureRmProfileProvider.Instance.Profile;
+            }
+            set
+            {
+                if (AzureRmProfileProvider.Instance == null)
+                {
+                    throw new InvalidOperationException(Resources.ProfileNotInitialized);
+                }
+
+                AzureRmProfileProvider.Instance.Profile = value;
+            }
         }
 
         /// <summary>

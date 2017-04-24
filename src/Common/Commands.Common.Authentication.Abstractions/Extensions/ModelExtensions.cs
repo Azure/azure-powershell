@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <returns>The value of the property in the given model, or an empty array if the property is not set</returns>
         public static string[] GetPropertyAsArray(this IExtensibleModel model, string propertyKey)
         {
-            string[] result = null;
+            string[] result = new string[0];
             if (model.IsPropertySet(propertyKey))
             {
                 result = model.ExtendedProperties.GetPropertyAsArray(propertyKey);

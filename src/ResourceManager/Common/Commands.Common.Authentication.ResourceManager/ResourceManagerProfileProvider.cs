@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 
@@ -19,7 +20,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
     public class ResourceManagerProfileProvider : AzureRmProfileProvider
     {
-        AzureRmProfile _profile = new AzureRmProfile { DefaultContext = new AzureContext() };
+        AzureRmProfile _profile = new AzureRmProfile { DefaultContext = new AzureContext { TokenCache = AzureSession.Instance.TokenCache } };
         public override void ResetDefaultProfile()
         {
             foreach (var context in _profile.Contexts.Values)

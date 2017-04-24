@@ -136,6 +136,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\AzureContextAdapterExtensions.cs">
+      <Link>Common\Cmdlet\AzureContextAdapterExtensions.cs</Link>
+    </Compile>
     <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\ResourceModel\AzureStorageBlob.cs">
       <Link>Common\AzureStorageBlob.cs</Link>
     </Compile>

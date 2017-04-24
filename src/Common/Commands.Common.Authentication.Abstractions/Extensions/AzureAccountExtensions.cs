@@ -139,11 +139,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         public static bool HasSubscription(this IAzureAccount account, Guid subscriptionId)
         {
             bool exists = false;
-            string subscriptions = account.GetProperty(AzureAccount.Property.Subscriptions);
+            var subscriptions = account.GetPropertyAsArray(AzureAccount.Property.Subscriptions);
 
-            if (!string.IsNullOrEmpty(subscriptions))
+            if (subscriptions != null && subscriptions.Length > 0)
             {
-                exists = subscriptions.Contains(subscriptionId.ToString());
+                exists = subscriptions.Contains(subscriptionId.ToString(), StringComparer.OrdinalIgnoreCase);
             }
 
             return exists;
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         {
             if (account.HasSubscription(id))
             {
-                var remainingSubscriptions = account.GetSubscriptions().Where(s => s != id.ToString()).ToArray();
+                var remainingSubscriptions = account.GetSubscriptions().Where(s => new Guid(s) != id).ToArray();
 
                 if (remainingSubscriptions.Any())
                 {
