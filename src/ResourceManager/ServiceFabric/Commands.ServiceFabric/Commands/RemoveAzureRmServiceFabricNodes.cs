@@ -18,18 +18,18 @@ using Microsoft.Azure.Commands.ServiceFabric.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureRmServiceFabricNodes), OutputType(typeof(PSCluster))]
-    public class RemoveAzureRmServiceFabricNodes : UpdateAzureRmServiceFabricVmssBase
+    [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureRmServiceFabricNodes, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
+    public class RemoveAzureRmServiceFabricNodes : UpdateAzureRmServiceFabricNodesBase
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, ValueFromPipeline = true,
                   HelpMessage = "Number of nodes to remove")]
-        [ValidateNotNullOrEmpty()]
+        [ValidateRange(1, 2147483647)]
         [Alias("NumberOfNodesToRemove")]
         public override int Number
         {
             get { return this.number; }
             set { number = -value; }
-        } 
+        }
         private int number;
 
         public override void ExecuteCmdlet()
@@ -39,7 +39,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 throw new PSArgumentException(this.Number.ToString());
             }
 
-            base.ExecuteCmdlet();
+            if (ShouldProcess(target: this.NodeType, action: string.Format("Remove nodes from {0}", this.NodeType)))
+            {
+                base.ExecuteCmdlet();
+            }
         }
     }
 }

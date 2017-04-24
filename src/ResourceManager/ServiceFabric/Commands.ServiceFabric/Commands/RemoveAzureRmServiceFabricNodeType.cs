@@ -23,59 +23,62 @@ using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Propertie
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Remove,  CmdletNoun.AzureRmServiceFabricNodeType), OutputType(typeof(PSCluster))]
-    public class RemoveAzureRmServiceFabricNodeType : ServiceFabricVmssCmdletBase
+    [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureRmServiceFabricNodeType, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
+    public class RemoveAzureRmServiceFabricNodeType : ServiceFabricNodeTypeCmdletBase
     {
         public override void ExecuteCmdlet()
         {
             if (!CheckNodeTypeExistence())
             {
-                throw new PSInvalidOperationException();
+                throw new PSArgumentException(this.NodeType);
             }
 
-            var cluster = SFRPClient.Clusters.Get(this.ResourceGroupName, this.ClusterName);
+            var cluster = SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name);
 
             if (cluster.NodeTypes == null)
             {
                 throw new PSInvalidOperationException(ServiceFabricProperties.Resources.NoneNodeTypeFound);
             }
 
-            var existingNodeType = cluster.NodeTypes.SingleOrDefault(n =>
-            string.Equals(
-                this.NodeTypeName,
-                n.Name,
-                StringComparison.InvariantCultureIgnoreCase));
+            var existingNodeType = cluster.NodeTypes.FirstOrDefault(n =>
+                this.NodeType.Equals(
+                    n.Name,    
+                    StringComparison.OrdinalIgnoreCase));
 
             if (existingNodeType == null)
             {
                 throw new PSInvalidOperationException(
                     string.Format(
-                        ServiceFabricProperties.Resources.CanNotFindTheNodeType,
-                        this.NodeTypeName));
+                        ServiceFabricProperties.Resources.CannotFindTheNodeType,
+                        this.NodeType));
             }
 
             if (existingNodeType.IsPrimary)
             {
                 throw new PSInvalidOperationException(
                     string.Format(
-                        ServiceFabricProperties.Resources.CanNotDeletePrimayNodeType,
-                        this.NodeTypeName));
+                        ServiceFabricProperties.Resources.CannotDeletePrimayNodeType,
+                        this.NodeType));
             }
 
             DurabilityLevel durabilityLevel;
             bool missMatch;
-            GetDurabilityLevel(out durabilityLevel, out missMatch, this.NodeTypeName);
-            
+            GetDurabilityLevel(this.NodeType, out durabilityLevel, out missMatch);
+
             if (durabilityLevel == DurabilityLevel.Bronze)
             {
                 throw new PSInvalidOperationException(
-                    ServiceFabricProperties.Resources.CanNotUpdateBronzeNodeType);
+                    ServiceFabricProperties.Resources.CannotUpdateBronzeNodeType);
             }
-            
-            ComputeClient.VirtualMachineScaleSets.Delete(this.ResourceGroupName, this.NodeTypeName);
 
-            cluster = RemoveNodeTypeFromSfrp();
-            WriteObject((PSCluster)cluster,true);
+            if (ShouldProcess(target: this.NodeType, action: string.Format("Remove a nodetype {0} from {0} ", this.NodeType, this.Name)))
+            {
+                ComputeClient.VirtualMachineScaleSets.Delete(this.ResourceGroupName, this.NodeType);
+
+                cluster = RemoveNodeTypeFromSfrp();
+
+                WriteObject((PSCluster)cluster, true);
+            }
         }
     }
 }

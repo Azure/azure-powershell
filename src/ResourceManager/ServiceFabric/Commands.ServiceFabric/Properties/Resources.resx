@@ -120,52 +120,55 @@
   <data name="AddCertToUnsecureCluster" xml:space="preserve">
     <value>Insecure cluster {0} is not allowed to add Certificate</value>
   </data>
-  <data name="CanNodFindCertificateInCluster" xml:space="preserve">
-    <value>Can't find the certificate {0} in the cluster</value>
-  </data>
-  <data name="CanNodFindCommonNameAndIssuer" xml:space="preserve">
-    <value>Can't find the common name {0} and issuer {1} in the cluster</value>
-  </data>
-  <data name="CanNotChangeDurabilityFrom" xml:space="preserve">
+  <data name="CannotChangeDurabilityFrom" xml:space="preserve">
     <value>Can't change durability from {0} {1}</value>
   </data>
-  <data name="CanNotChangeReliabilityLevelWithDurabilityWithBronze" xml:space="preserve">
+  <data name="CannotChangeReliabilityLevelWithDurabilityWithBronze" xml:space="preserve">
     <value>Can't change reliability level with durability with bronze,please change durability to Silver or above</value>
   </data>
-  <data name="CanNotDeletePrimayNodeType" xml:space="preserve">
+  <data name="CannotDeletePrimayNodeType" xml:space="preserve">
     <value>Can not delete primay node type {0}</value>
   </data>
-  <data name="CanNotFindTenantId" xml:space="preserve">
+  <data name="CannotFindCertificateInCluster" xml:space="preserve">
+    <value>Can't find the certificate {0} in the cluster</value>
+  </data>
+  <data name="CannotFindCommonNameAndIssuer" xml:space="preserve">
+    <value>Can't find the common name {0} and issuer {1} in the cluster</value>
+  </data>
+  <data name="CannotFindDurabilityLevelSetting" xml:space="preserve">
+    <value>Can not find durability level setting</value>
+  </data>
+  <data name="CannotFindTenantId" xml:space="preserve">
     <value>Can not find tenant Id</value>
   </data>
-  <data name="CanNotFindTheNodeType" xml:space="preserve">
+  <data name="CannotFindTheNodeType" xml:space="preserve">
     <value>Can't find the node type {0}</value>
   </data>
-  <data name="CanNotFindThumbprintInTheCluster" xml:space="preserve">
+  <data name="CannotFindThumbprintInTheCluster" xml:space="preserve">
     <value>Can not find the thumbprint {0} in the cluster</value>
   </data>
-  <data name="CanNotFindVault" xml:space="preserve">
+  <data name="CannotFindVault" xml:space="preserve">
     <value>Can not find key vault {0}</value>
   </data>
-  <data name="CanNotGetReliabilityLevel" xml:space="preserve">
+  <data name="CannotGetReliabilityLevel" xml:space="preserve">
     <value>Can't get reliability level</value>
   </data>
-  <data name="CanNotParseReliabilityLevel" xml:space="preserve">
+  <data name="CannotParseReliabilityLevel" xml:space="preserve">
     <value>Can not parse reliability level {0}</value>
   </data>
-  <data name="CanNotParseValueInNameIssuersAndFlags" xml:space="preserve">
+  <data name="CannotParseValueInNameIssuersAndFlags" xml:space="preserve">
     <value>Can not parse CommonNameIssuersAndFlags</value>
   </data>
-  <data name="CanNotParseValueInThumbprintAndFlags" xml:space="preserve">
+  <data name="CannotParseValueInThumbprintAndFlags" xml:space="preserve">
     <value>Can not parse ThumbprintsAndFlags</value>
   </data>
-  <data name="CanNotUpdateBronzeNodeType" xml:space="preserve">
+  <data name="CannotUpdateBronzeNodeType" xml:space="preserve">
     <value>Can't not update bronze node type,please update it to Silver or above</value>
   </data>
-  <data name="CanNotUpdateNodeCountLessThenReliabilityLevel" xml:space="preserve">
+  <data name="CannotUpdateNodeCountLessThenReliabilityLevel" xml:space="preserve">
     <value>Can't update nodes count {0} to less then reliability level {1}</value>
   </data>
-  <data name="CanNotUpdateSkuWithDurabilityWithBronze" xml:space="preserve">
+  <data name="CannotUpdateSkuWithDurabilityWithBronze" xml:space="preserve">
     <value>Can not update Sku with durability with Bronze , please change durability to Silver or above</value>
   </data>
   <data name="DeploymentFailed" xml:space="preserve">
@@ -173,6 +176,9 @@
   </data>
   <data name="DeploymentSucceeded" xml:space="preserve">
     <value>Deployment succeeded</value>
+  </data>
+  <data name="DuplicatedFabricSetting" xml:space="preserve">
+    <value>Contains duplicate fabric setting {0}</value>
   </data>
   <data name="DurabilityLevelMismatches" xml:space="preserve">
     <value>Durability level mismatches between node type and ServiceFabric resource provider</value>
@@ -195,6 +201,15 @@
   <data name="FileNotExist" xml:space="preserve">
     <value>File {0} doesnt exist</value>
   </data>
+  <data name="InvalidTemplateFile" xml:space="preserve">
+    <value>Invalid template file</value>
+  </data>
+  <data name="InvalidTemplateParameterFile" xml:space="preserve">
+    <value>Invalid template parameter file</value>
+  </data>
+  <data name="InvalidVmssConfiguration" xml:space="preserve">
+    <value>Invaild existing VMSS configuration</value>
+  </data>
   <data name="NewExistingCluster" xml:space="preserve">
     <value>The cluster {0} exists , please remove the resource group, and try again.</value>
   </data>
@@ -214,7 +229,7 @@
     <value>Insecure cluster {0} is not allowed to removeCertificate</value>
   </data>
   <data name="UseAutoToIncreaseNodesCount" xml:space="preserve">
-    <value>Use 'AutoAddNodes' switch to automatically increase nodes count</value>
+    <value>Primay node count is {0} which is less than the node count {1} that target reliability level requires, Please use 'AutoAddNodes' switch to automatically increase nodes count</value>
   </data>
   <data name="VaultCreatedWithOutAccessPolicy" xml:space="preserve">
     <value>Access policy is not set. No user or application have access permission to use this vault. Please use Set-AzureRmKeyVaultAccessPolicy to set access policies.</value>

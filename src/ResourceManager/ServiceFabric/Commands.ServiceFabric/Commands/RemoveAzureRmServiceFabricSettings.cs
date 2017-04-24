@@ -20,32 +20,43 @@ using Microsoft.Azure.Management.ServiceFabric.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureRmServiceFabricSettings), OutputType(typeof(PSCluster))]
+    [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureRmServiceFabricSettings, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class RemoveAzureRmServiceFabricSettings : ServiceFabricSettingsCmdletBase
     {
         public override string Value { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var cluster = SFRPClient.Clusters.Get(this.ResourceGroupName, this.ClusterName);
+            var cluster = SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name);
             var settings = FabricSettingsToDictionary(cluster.FabricSettings);
 
-            foreach (var setting in this.ChangedSettingsSectionDescriptions)
+            foreach (var setting in this.UpdatedSettingsSectionDescriptionListList)
             {
                 foreach (var ps in setting.Parameters)
                 {
-                    settings[setting.Name].Remove(ps.Name);
+                    if (!settings.ContainsKey(setting.Name))
+                    {
+                        throw new PSArgumentException(setting.Name);
+                    }
+
+                    if (!settings[setting.Name].Remove(ps.Name))
+                    {
+                        throw new PSArgumentException(ps.Name);
+                    }
                 }
             }
 
             var fabricSettings = DictionaryToFabricSettings(settings);
 
-            cluster = SendPatchRequest(new ClusterUpdateParameters()
+            if (ShouldProcess(target: this.Name, action: string.Format("Remove fabric settings from {0} ", this.Name)))
             {
-                FabricSettings = fabricSettings
-            });
+                cluster = SendPatchRequest(new ClusterUpdateParameters()
+                {
+                    FabricSettings = fabricSettings
+                });
 
-            WriteObject((PSCluster)cluster,true);
+                WriteObject((PSCluster)cluster, true);
+            }
         }
     }
 }

@@ -32,13 +32,13 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, Position = 1, ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specify the name of the cluster")]
         [ValidateNotNullOrEmpty()]
-        public override string ClusterName { get; set; }
+        public override string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (ResourceGroupName != null && ClusterName != null)
+            if (ResourceGroupName != null && Name != null)
             {
-                var cluster = SFRPClient.Clusters.Get(ResourceGroupName, ClusterName);
+                var cluster = SFRPClient.Clusters.Get(ResourceGroupName, Name);
                 WriteObject(new List<PSCluster>() { new PSCluster(cluster) }, true);
             }
             else if (ResourceGroupName != null)
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
                 WriteObject(clusters, true);
             }
-            else if (ResourceGroupName == null && ClusterName == null)
+            else if (ResourceGroupName == null && Name == null)
             {
                 var clusters = SFRPClient.Clusters.List().Select(c => new PSCluster(c)).ToList();
                 WriteObject(clusters, true);
