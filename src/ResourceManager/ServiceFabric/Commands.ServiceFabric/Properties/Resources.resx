@@ -118,13 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddCertToUnsecureCluster" xml:space="preserve">
-    <value>Insecure cluster {0} is not allowed to add Certificate</value>
+    <value>Insecure cluster {0} is not allowed to add certificate</value>
   </data>
   <data name="CannotChangeDurabilityFrom" xml:space="preserve">
     <value>Can't change durability from {0} {1}</value>
-  </data>
-  <data name="CannotChangeReliabilityLevelWithDurabilityWithBronze" xml:space="preserve">
-    <value>Can't change reliability level with durability with bronze,please change durability to Silver or above</value>
   </data>
   <data name="CannotDeletePrimayNodeType" xml:space="preserve">
     <value>Can not delete primay node type {0}</value>
@@ -136,16 +133,16 @@
     <value>Can't find the common name {0} and issuer {1} in the cluster</value>
   </data>
   <data name="CannotFindDurabilityLevelSetting" xml:space="preserve">
-    <value>Can not find durability level setting</value>
+    <value>Can't find durability level setting</value>
   </data>
   <data name="CannotFindTenantId" xml:space="preserve">
-    <value>Can not find tenant Id</value>
+    <value>Can't find tenant Id</value>
   </data>
   <data name="CannotFindTheNodeType" xml:space="preserve">
     <value>Can't find the node type {0}</value>
   </data>
   <data name="CannotFindThumbprintInTheCluster" xml:space="preserve">
-    <value>Can not find the thumbprint {0} in the cluster</value>
+    <value>Can't find the thumbprint {0} in the cluster</value>
   </data>
   <data name="CannotFindVault" xml:space="preserve">
     <value>Can not find key vault {0}</value>
@@ -156,20 +153,14 @@
   <data name="CannotParseReliabilityLevel" xml:space="preserve">
     <value>Can not parse reliability level {0}</value>
   </data>
-  <data name="CannotParseValueInNameIssuersAndFlags" xml:space="preserve">
-    <value>Can not parse CommonNameIssuersAndFlags</value>
-  </data>
-  <data name="CannotParseValueInThumbprintAndFlags" xml:space="preserve">
-    <value>Can not parse ThumbprintsAndFlags</value>
-  </data>
   <data name="CannotUpdateBronzeNodeType" xml:space="preserve">
-    <value>Can't not update bronze node type,please update it to Silver or above</value>
+    <value>Can't not update node type which durability is bronze,please update it to Silver or above first</value>
   </data>
   <data name="CannotUpdateNodeCountLessThenReliabilityLevel" xml:space="preserve">
-    <value>Can't update nodes count {0} to less then reliability level {1}</value>
+    <value>Can't update nodes count {0} to less than the reliability level {1}</value>
   </data>
   <data name="CannotUpdateSkuWithDurabilityWithBronze" xml:space="preserve">
-    <value>Can not update Sku with durability with Bronze , please change durability to Silver or above</value>
+    <value>Can not update Sku while durability is Bronze , please update durability to Silver or above first</value>
   </data>
   <data name="DeploymentFailed" xml:space="preserve">
     <value>Deployment failed</value>
@@ -181,7 +172,7 @@
     <value>Contains duplicate fabric setting {0}</value>
   </data>
   <data name="DurabilityLevelMismatches" xml:space="preserve">
-    <value>Durability level mismatches between node type and ServiceFabric resource provider</value>
+    <value>Durability level mismatches between node type and Service Fabric cluster setting</value>
   </data>
   <data name="FailedToCreateSelfSignedCertificate" xml:space="preserve">
     <value>Failed to create self signed certificate</value>
@@ -199,7 +190,7 @@
     <value>Failed to parse template file</value>
   </data>
   <data name="FileNotExist" xml:space="preserve">
-    <value>File {0} doesnt exist</value>
+    <value>File {0} doesn't exist</value>
   </data>
   <data name="InvalidTemplateFile" xml:space="preserve">
     <value>Invalid template file</value>
@@ -208,13 +199,13 @@
     <value>Invalid template parameter file</value>
   </data>
   <data name="InvalidVmssConfiguration" xml:space="preserve">
-    <value>Invaild existing VMSS configuration</value>
+    <value>Invalid existing VMSS configuration</value>
   </data>
   <data name="NewExistingCluster" xml:space="preserve">
     <value>The cluster {0} exists , please remove the resource group, and try again.</value>
   </data>
   <data name="NodeTypeAlreadyExist" xml:space="preserve">
-    <value>{0} already exists in the cluster</value>
+    <value>Node type {0} already exists in the cluster</value>
   </data>
   <data name="NoneCertificateFound" xml:space="preserve">
     <value>Did not find any certificate in the cluster</value>
@@ -226,7 +217,7 @@
     <value>There is only one certificate in the cluster, it can't be removed</value>
   </data>
   <data name="RemoveCertFromUnsecureCluster" xml:space="preserve">
-    <value>Insecure cluster {0} is not allowed to removeCertificate</value>
+    <value>Insecure cluster {0} is not allowed to remove certificate</value>
   </data>
   <data name="UseAutoToIncreaseNodesCount" xml:space="preserve">
     <value>Primay node count is {0} which is less than the node count {1} that target reliability level requires, Please use 'AutoAddNodes' switch to automatically increase nodes count</value>

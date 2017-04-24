@@ -48,6 +48,19 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         //For testing
         internal static bool dontRandom = false;
 
+        /// <summary>
+        /// Resource group name
+        /// </summary>
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify the name of the resource group.")]
+        [ValidateNotNullOrEmpty()]
+        public override string ResourceGroupName { get; set; }
+
+        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Specify the name of the cluster")]
+        [ValidateNotNullOrEmpty()]
+        public override string Name { get; set; }
+
         [Parameter(Mandatory = true, ValueFromPipeline = true,
                   HelpMessage = "The node type name")]
         [ValidateNotNullOrEmpty()]
@@ -55,7 +68,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         [Parameter(Mandatory = true, ValueFromPipeline = true,
                    HelpMessage = "Capacity")]
-        [ValidateNotNullOrEmpty()]
+        [ValidateRange(1, 2147483647)]  
         public int Capacity { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true,
