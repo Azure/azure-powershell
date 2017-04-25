@@ -32,7 +32,7 @@ Template parameter file values that you specify at the command line take precede
 PS C:\> Set-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName "ResourceGroup1" -Name "IntegrationAccount1" -AgreementName "IntegrationAccountAgreement1" -ControlNumber "123" -IsMessageProcessingFailed $true
 ControlNumber             : 1100
 ControlNumberChangedTime  : 2/15/2017 12:36:00 AM
-IsMessageProcessingFailed : true
+IsMessageProcessingFailed : True
 ```
 
 This command updates the integration account received interchange control number for a specific integration account agreement and value with message processing status failed.

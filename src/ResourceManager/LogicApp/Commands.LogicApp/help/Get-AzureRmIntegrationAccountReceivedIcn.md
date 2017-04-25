@@ -7,13 +7,13 @@ schema: 2.0.0
 # Get-AzureRmIntegrationAccountReceivedIcn
 
 ## SYNOPSIS
-This cmdlet retrieves a specific received interchange control number per agreement and control number value.
+This cmdlet retrieves a specific received X12 interchange control number per agreement and control number value.
 
 ## SYNTAX
 
 ```
 Get-AzureRmIntegrationAccountReceivedIcn -ResourceGroupName <String> -Name <String> -AgreementName <String>
- -ControlNumberValue <String> [<CommonParameters>]
+ -ControlNumberValue <String>
 ```
 
 ## DESCRIPTION
@@ -26,6 +26,7 @@ This cmdlet is meant to be used in disaster recovery scenarios to validate the p
 PS C:\> Get-AzureRmIntegrationAccountReceivedIcn -ResourceGroupName "groupName" -Name "accountName" -AgreementName "X12AgreementName" -ControlNumberValue "000000641"
 ControlNumber            : 000000641
 ControlNumberChangedTime : 2/15/2017 12:36:00 AM
+IsMessageProcessingFailed: False
 ```
 
 This command gets the integration account received interchange control number by agreement name and control number value.
@@ -92,9 +93,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
-
 ## INPUTS
 
 ### System.String
@@ -107,5 +105,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Set-AzureRmIntegrationAccountReceivedIcn](./Set-AzureRmIntegrationAccountReceivedIcn.md)
-[Remove-AzureRmIntegrationAccountReceivedIcn](./Remove-AzureRmIntegrationAccountReceivedIcn.md)
+[Set-AzureRmIntegrationAccountReceivedIcn]()
+
+[Remove-AzureRmIntegrationAccountReceivedIcn]()

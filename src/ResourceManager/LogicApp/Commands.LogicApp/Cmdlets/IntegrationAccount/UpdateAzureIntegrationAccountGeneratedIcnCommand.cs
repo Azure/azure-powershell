@@ -72,6 +72,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 integrationAccountName: this.Name,
                 integrationAccountAgreementName: this.AgreementName);
 
+            integrationAccountGeneratedIcn.MessageType = MessageType.X12;
             integrationAccountGeneratedIcn.ControlNumber = this.ControlNumber;
             integrationAccountGeneratedIcn.ControlNumberChangedTime = DateTime.UtcNow > integrationAccountGeneratedIcn.ControlNumberChangedTime ?
                 DateTime.UtcNow :

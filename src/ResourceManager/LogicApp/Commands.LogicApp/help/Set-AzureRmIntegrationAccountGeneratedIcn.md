@@ -37,6 +37,7 @@ PS C:\> $incrementedControlNumberValue = [convert]::ToString([convert]::ToInt32(
 PS C:\> Set-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -ControlNumber $incrementedControlNumberValue
 ControlNumber            : 1100
 ControlNumberChangedTime : 2/15/2017 12:36:00 AM
+IsMessageProcessingFailed:
 ```
 
 This command gets the integration account  generated interchange control number for a specific integration account agreement, increase its value by 100 then writes back the updated value.

@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmIntegrationAccountReceivedIcn
 
 ## SYNOPSIS
-This cmdlet removes a specific received interchange control number per agreement and control number value.
+This cmdlet removes a specific received X12 interchange control number per agreement and control number value.
 
 ## SYNTAX
 
@@ -17,8 +17,8 @@ Remove-AzureRmIntegrationAccountReceivedIcn -ResourceGroupName <String> -Name <S
 ```
 
 ## DESCRIPTION
-This cmdlet is meant to be used in disaster recovery scenarios to remove a received interchange control number from the integration account so that the B2B connector may process again the message when duplicate number detection is enabled.
-In rare occasions the received interchange control number may be reserved shortly before a disaster and before the B2B connector rejects the interchange as erroneous.
+This cmdlet is meant to be used in disaster recovery scenarios to remove a received X12 interchange control number from the integration account so that the B2B connector may process again the message when duplicate number detection is enabled.
+In rare occasions the received X12 interchange control number may be reserved shortly before a disaster and before the B2B connector rejects the interchange as erroneous.
 In such occasions the operation may want to enable the recovery site to process again the same interchange after its payload is corrected.
 
 ## EXAMPLES
@@ -43,9 +43,9 @@ At line:1 char:1
     + FullyQualifiedErrorId : Microsoft.Azure.Commands.LogicApp.Cmdlets.GetAzureIntegrationAccountReceivedIcnCommand
 ```
 
-Attempts to get a received interchange control number which content is not in a valid format.
-Removes the received interchange control number.
-Confirms the received interchange control number was removed by attempting to get it again.
+Attempts to get a received X12 interchange control number which content is not in a valid format.
+Removes the received X12 interchange control number.
+Confirms the received X12 interchange control number was removed by attempting to get it again.
 
 ## PARAMETERS
 

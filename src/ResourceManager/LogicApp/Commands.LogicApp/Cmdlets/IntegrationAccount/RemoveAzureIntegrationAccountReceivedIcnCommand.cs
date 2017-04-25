@@ -66,6 +66,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                         resourceGroupName: this.ResourceGroupName,
                         integrationAccountName: this.Name,
                         integrationAccountAgreementName: this.AgreementName,
+                        agreementType: Management.Logic.Models.AgreementType.X12,
                         controlNumber: this.ControlNumberValue);
                 });
         }

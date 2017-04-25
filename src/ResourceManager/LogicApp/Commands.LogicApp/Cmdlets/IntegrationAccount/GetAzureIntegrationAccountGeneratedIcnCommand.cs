@@ -63,7 +63,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 sendToPipeline: string.IsNullOrEmpty(this.AgreementName) ?
                     this.IntegrationAccountClient.ListIntegrationAccountGeneratedIcns(
                         resourceGroupName: this.ResourceGroupName,
-                        integrationAccountName: this.Name) as object :
+                        integrationAccountName: this.Name,
+                        agreementType: Management.Logic.Models.AgreementType.X12) as object :
                     this.IntegrationAccountClient.GetIntegrationAccountGeneratedIcn(
                         resourceGroupName: this.ResourceGroupName,
                         integrationAccountName: this.Name,
