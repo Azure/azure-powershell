@@ -284,10 +284,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         {
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
             SetupConfirmation(commandRuntimeMock);
-
+            var profile = new AzureRmProfile();
             foreach (var env in AzureEnvironment.PublicEnvironments)
             {
-                var profile = new AzureRmProfile();
+                Assert.True(profile.GetEnvironment(env.Key) != null, string.Format("Key: {0} produces null environment.  From profile {1}", env.Key, profile.ToString()));
                 var cmdlet = new SetAzureRMEnvironmentCommand
                 {
                     CommandRuntime = commandRuntimeMock.Object,
@@ -298,9 +298,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 var savedValue = env.Value.PublishSettingsFileUrl;
                 cmdlet.InvokeBeginProcessing();
                 Assert.Throws<InvalidOperationException>(() => cmdlet.ExecuteCmdlet());
-                var newValue = profile.GetEnvironment(env.Key).PublishSettingsFileUrl;
-                Assert.Equal(savedValue, newValue);
-                Assert.NotEqual(cmdlet.PublishSettingsFileUrl, newValue);
+                var environment = profile.GetEnvironment(env.Key);
+                Assert.True(environment != null, string.Format("Key: {0} produces null environment.  From profile {1}", env.Key, profile.ToString()));
+                Assert.Equal(savedValue, environment.PublishSettingsFileUrl);
+                Assert.NotEqual(cmdlet.PublishSettingsFileUrl, environment.PublishSettingsFileUrl);
             }
         }
 

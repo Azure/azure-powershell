@@ -31,22 +31,21 @@ namespace Microsoft.Azure.Commands.Profile
         /// <summary>
         /// Gets the current default context.
         /// </summary>
-        protected override AzureContext DefaultContext
+        protected override IAzureContext DefaultContext
         {
             get
             {
-                if (DefaultProfile == null || DefaultProfile.Context == null)
+                if (DefaultProfile == null || DefaultProfile.DefaultContext == null)
                 {
                     return null;
                 }
 
-                return DefaultProfile.Context;
+                return DefaultProfile.DefaultContext;
             }
         }
 
         public override void ExecuteCmdlet()
         {
-            WriteObject((PSAzureContext)AzureRmProfileProvider.Instance.Profile.Context);
             if (DefaultContext == null)
             {
                 WriteError(new ErrorRecord(
@@ -55,7 +54,7 @@ namespace Microsoft.Azure.Commands.Profile
                         ErrorCategory.AuthenticationError,
                         null));
             }
-            WriteObject(new PSAzureContext(context));
+            WriteObject(new PSAzureContext(DefaultContext));
         }
     }
 }
