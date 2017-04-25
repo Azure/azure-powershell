@@ -79,19 +79,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             HelpMessage = "Specify the name of the resource group.")]
         [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByExistingPfxAndVaultName, ValueFromPipeline = true,
             HelpMessage = "Specify the name of the resource group.")]
-        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByExistingPfxAndVaultId, ValueFromPipeline = true,
-            HelpMessage = "Specify the name of the resource group.")]
         [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByDefaultArmTemplate, ValueFromPipeline = true,
-            HelpMessage = "Specify the name of the resource group.")]
-        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByNewPfxAndVaultId, ValueFromPipeline = true,
             HelpMessage = "Specify the name of the resource group.")]
         [ValidateNotNullOrEmpty()]
         public override string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = ByExistingPfxAndVaultId, ValueFromPipeline = true,
-                   HelpMessage = "The path to the template file.")]
-        [Parameter(Mandatory = true, ParameterSetName = ByNewPfxAndVaultId, ValueFromPipeline = true,
-                   HelpMessage = "The path to the template file.")]
         [Parameter(Mandatory = true, ParameterSetName = ByExistingPfxAndVaultName, ValueFromPipeline = true,
                    HelpMessage = "The path to the template file.")]
         [Parameter(Mandatory = true, ParameterSetName = ByNewPfxAndVaultName, ValueFromPipeline = true,
@@ -101,10 +93,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [ValidateNotNullOrEmpty]
         public string TemplateFile { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = ByExistingPfxAndVaultId, ValueFromPipeline = true,
-                   HelpMessage = "The path to the template parameter file.")]
-        [Parameter(Mandatory = true, ParameterSetName = ByNewPfxAndVaultId, ValueFromPipeline = true,
-                   HelpMessage = "The path to the template parameter file.")]
         [Parameter(Mandatory = true, ParameterSetName = ExistingKeyVault, ValueFromPipeline = true,
                    HelpMessage = "The path to the template parameter file.")]
         [Parameter(Mandatory = true, ParameterSetName = ByNewPfxAndVaultName, ValueFromPipeline = true,
@@ -114,23 +102,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [ValidateNotNullOrEmpty]
         public string ParameterFile { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultId,
-                   HelpMessage = "Azure key vault resource id")]
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultId,
-                   HelpMessage = "Azure key vault resource id")]
-        [ValidateNotNullOrEmpty]
-        public override string KeyVaultResouceId { get; set; }
-
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultId,
-                HelpMessage = "The existing Pfx file path for the primary cluster certificate")]
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
                 HelpMessage = "The existing Pfx file path for the primary cluster certificate")]
         [ValidateNotNullOrEmpty]
         [Alias("Source")]
         public override string PfxSourceFile { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultId,
-           HelpMessage = "The folder of the new Pfx file to be created")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultName,
            HelpMessage = "The folder of the new Pfx file to be created")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByDefaultArmTemplate,
@@ -139,11 +116,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Alias("Destination")]
         public override string PfxOutputFolder { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultId,
-                  HelpMessage = "The password of the pfx file")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
-                  HelpMessage = "The password of the pfx file")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultId,
                   HelpMessage = "The password of the pfx file")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultName,
                   HelpMessage = "The password of the pfx file")]
@@ -153,16 +126,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Alias("CertPassword")]
         public override SecureString CertificatePassword { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultId,
-                HelpMessage = "The existing Pfx file path for the secondary cluster certificate")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
                 HelpMessage = "The existing Pfx file path for the secondary cluster certificate")]
         [ValidateNotNullOrEmpty]
         [Alias("SecSource")]
         public string SecondaryPfxSourceFile { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultId,
-                 HelpMessage = "The password of the pfx file")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
                  HelpMessage = "The password of the pfx file")]
         [ValidateNotNullOrEmpty]
@@ -185,18 +154,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         #region ByDefaultArmTemplate
 
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultName,
-                  HelpMessage = "Azure key vault certificate name")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
-                  HelpMessage = "Azure key vault certificate name")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultId,
-                  HelpMessage = "Azure key vault certificate name")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultId,
-                  HelpMessage = "Azure key vault certificate name.")]
-        [ValidateNotNullOrEmpty]
-        [Alias("CertificateName")]
-        public override string KeyVaultCertificateName { get; set; }
-
         [Parameter(Mandatory = true, ParameterSetName = ByDefaultArmTemplate, ValueFromPipeline = true,
                    HelpMessage = "The resource group location")]
         public string Location { get; set; }
@@ -212,8 +169,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         }
 
         private string certificateSubjectName;
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultId,
-                   HelpMessage = "The subject name of the certificate to be created")]
+   
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultName,
                    HelpMessage = "The subject name of the certificate to be created")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByDefaultArmTemplate,
@@ -698,7 +654,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             SetParameter(ref parameters, this.durabilityLevelParameter, durabilityLevel);
             SetParameter(ref parameters, this.reliabilityLevelParameter, reliability);
-            SetParameter(ref parameters, this.Sku, sku);
+            SetParameter(ref parameters, this.skuParameter, sku);
 
             if (location != null)
             {
@@ -722,7 +678,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             return parameters;
         }
-
 
         private void ExtractParametersWithoutDefaultTemplate(JObject parameters)
         {
@@ -751,14 +706,16 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private void SetParameter(ref JObject parameters, string parameterName, string value)
         {
-            if (value != null) { 
-            var token = parameters.Children().SingleOrDefault(
-                    j => ((JProperty)j).Name.Equals(parameterName, StringComparison.OrdinalIgnoreCase));
-
-            if (token != null && token.Any())
+            if (value != null)
             {
-                token.First()["value"] = value;
-            }}
+                var token = parameters.Children().SingleOrDefault(
+                        j => ((JProperty)j).Name.Equals(parameterName, StringComparison.OrdinalIgnoreCase));
+
+                if (token != null && token.Any())
+                {
+                    token.First()["value"] = value;
+                }
+            }
         }
 
         private string TryGetParameter(JObject parameters, string parameterName)
