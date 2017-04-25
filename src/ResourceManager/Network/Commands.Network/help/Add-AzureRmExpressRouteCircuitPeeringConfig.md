@@ -16,8 +16,7 @@ Adds a peering configuration to an ExpressRoute circuit.
 ```
 Add-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit <PSExpressRouteCircuit>
  -PeeringType <String> -PeerASN <Int32> -PrimaryPeerAddressPrefix <String> -SecondaryPeerAddressPrefix <String>
- -VlanId <Int32> [-SharedKey <String>] [-RouteFilter <PSRouteFilter>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ -VlanId <Int32> [-SharedKey <String>] [-RouteFilter <PSRouteFilter>] [<CommonParameters>]
 ```
 
 ### MicrosoftPeeringConfig
@@ -26,16 +25,14 @@ Add-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit 
  -PeeringType <String> -PeerASN <Int32> -PrimaryPeerAddressPrefix <String> -SecondaryPeerAddressPrefix <String>
  -VlanId <Int32> [-SharedKey <String>]
  [-MicrosoftConfigAdvertisedPublicPrefixes <System.Collections.Generic.List`1[System.String]>]
- [-MicrosoftConfigCustomerAsn <Int32>] [-MicrosoftConfigRoutingRegistryName <String>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-MicrosoftConfigCustomerAsn <Int32>] [-MicrosoftConfigRoutingRegistryName <String>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
 Add-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit <PSExpressRouteCircuit>
  -PeeringType <String> -PeerASN <Int32> -PrimaryPeerAddressPrefix <String> -SecondaryPeerAddressPrefix <String>
- -VlanId <Int32> [-SharedKey <String>] [-RouteFilterId <String>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ -VlanId <Int32> [-SharedKey <String>] [-RouteFilterId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -78,45 +75,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -208,6 +166,7 @@ The acceptable values for this parameter are: `AzurePrivatePeering`, `AzurePubli
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: AzurePrivatePeering, AzurePublicPeering, MicrosoftPeering
 
 Required: True
 Position: Named

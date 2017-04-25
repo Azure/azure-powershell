@@ -14,8 +14,7 @@ Backs up an API Management service.
 
 ```
 Backup-AzureRmApiManagement -ResourceGroupName <String> -Name <String> -StorageContext <AzureStorageContext>
- -TargetContainerName <String> [-TargetBlobName <String>] [-PassThru] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ -TargetContainerName <String> [-TargetBlobName <String>] [-PassThru] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,8 +32,8 @@ This command backs up an API Management service to a Storage blob.
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the name of the of resource group under which the API Management deployment exists.
+### -Name
+Specifies the name of the API Management deployment that this cmdlet backs up.
 
 ```yaml
 Type: String
@@ -48,8 +47,23 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Name
-Specifies the name of the API Management deployment that this cmdlet backs up.
+### -PassThru
+Indicates that this cmdlet returns the backed up **PsApiManagement** object, if the operation succeeds.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the name of the of resource group under which the API Management deployment exists.
 
 ```yaml
 Type: String
@@ -78,22 +92,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -TargetContainerName
-Specifies the name of the container of the blob for the backup.
-If the container does not exist, this cmdlet creates it.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -TargetBlobName
 Specifies the name of the blob for the backup.
 If the blob does not exist, this cmdlet creates it.
@@ -113,54 +111,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Indicates that this cmdlet returns the backed up **PsApiManagement** object, if the operation succeeds.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -TargetContainerName
+Specifies the name of the container of the blob for the backup.
+If the container does not exist, this cmdlet creates it.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

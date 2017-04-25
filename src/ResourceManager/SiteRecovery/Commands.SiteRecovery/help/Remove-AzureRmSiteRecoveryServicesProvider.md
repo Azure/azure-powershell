@@ -24,21 +24,6 @@ The **Remove-AzureRmSiteRecoveryServicesProvider** cmdlet removes an Azure Site 
 
 ## PARAMETERS
 
-### -ServicesProvider
-Specifies the Services Provider object.
-
-```yaml
-Type: ASRRecoveryServicesProvider
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Force
 Forces the command to run without asking for user confirmation.
 
@@ -51,6 +36,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServicesProvider
+Specifies the Services Provider object.
+
+```yaml
+Type: ASRRecoveryServicesProvider
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
