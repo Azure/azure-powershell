@@ -27,12 +27,118 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
-        // Currently the test runs too long to be marked as a check-in test.
-        [Fact(Skip = "Hydra TestFramework Issue, cannot login to authenticate in order to record the tests")]
+        [Fact]
         public void TestFailoverGroup()
         {
             RunPowerShellTest("Test-FailoverGroup");
         }
 
+        [Fact]
+        public void TestCreateFailoverGroup_Named()
+        {
+            RunPowerShellTest("Test-CreateFailoverGroup-Named");
+        }
+
+        [Fact]
+        public void TestCreateFailoverGroup_Positional()
+        {
+            RunPowerShellTest("Test-CreateFailoverGroup-Positional");
+        }
+
+        [Fact]
+        public void TestCreateFailoverGroup_AutomaticPolicy()
+        {
+            RunPowerShellTest("Test-CreateFailoverGroup-AutomaticPolicy");
+        }
+
+        [Fact]
+        public void TestCreateFailoverGroup_AutomaticPolicyGracePeriodReadOnlyFailover()
+        {
+            RunPowerShellTest("Test-CreateFailoverGroup-AutomaticPolicyGracePeriodReadOnlyFailover");
+        }
+
+        [Fact]
+        public void TestCreateFailoverGroup_ZeroGracePeriod()
+        {
+            RunPowerShellTest("Test-CreateFailoverGroup-ZeroGracePeriod");
+        }
+
+        [Fact]
+        public void TestCreateFailoverGroup_ManualPolicy()
+        {
+            RunPowerShellTest("Test-CreateFailoverGroup-ManualPolicy");
+        }
+
+        [Fact]
+        public void TestCreateFailoverGroup_Overflow()
+        {
+            RunPowerShellTest("Test-CreateFailoverGroup-Overflow");
+        }
+
+        [Fact]
+        public void TestSetFailoverGroup_Named()
+        {
+            RunPowerShellTest("Test-SetFailoverGroup-Named");
+        }
+
+        [Fact]
+        public void TestSetFailoverGroup_Positional()
+        {
+            RunPowerShellTest("Test-SetFailoverGroup-Positional");
+        }
+
+        [Fact]
+        public void TestSetFailoverGroup_PipeServer()
+        {
+            RunPowerShellTest("Test-SetFailoverGroup-PipeServer");
+        }
+
+        [Fact]
+        public void TestSetFailoverGroup_AutomaticWithGracePeriodReadOnlyFailover()
+        {
+            RunPowerShellTest("Test-SetFailoverGroup-AutomaticWithGracePeriodReadOnlyFailover");
+        }
+
+        [Fact]
+        public void TestSetFailoverGroup_AutomaticWithGracePeriodZero()
+        {
+            RunPowerShellTest("Test-SetFailoverGroup-AutomaticWithGracePeriodZero");
+        }
+
+        [Fact]
+        public void TestSetFailoverGroup_AutomaticToManual()
+        {
+            RunPowerShellTest("Test-SetFailoverGroup-AutomaticToManual");
+        }
+
+        [Fact]
+        public void TestSetFailoverGroup_ManualToAutomaticNoGracePeriod()
+        {
+            RunPowerShellTest("Test-SetFailoverGroup-ManualToAutomaticNoGracePeriod");
+        }
+
+        [Fact]
+        public void TestSetFailoverGroup_Overflow()
+        {
+            RunPowerShellTest("Test-SetFailoverGroup-Overflow");
+        }
+
+        [Fact]
+        public void Test_AddRemoveDatabasesToFromFailoverGroup()
+        {
+            RunPowerShellTest("Test-AddRemoveDatabasesToFromFailoverGroup");
+        }
+
+        [Fact]
+        public void TestSwitchFailoverGroup()
+        {
+            RunPowerShellTest("Test-SwitchFailoverGroup");
+        }
+
+        [Fact]
+        public void TestSwitchFailoverGroupAllowDataLoss()
+        {
+            RunPowerShellTest("Test-SwitchFailoverGroupAllowDataLoss");
+        }
     }
 }
