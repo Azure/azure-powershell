@@ -62,7 +62,19 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 } while (!string.IsNullOrEmpty(vmssPages.NextPageLink) &&
                          (vmssPages = this.ComputeClient.VirtualMachineScaleSets.ListNext(vmssPages.NextPageLink)) != null);
 
-                Task.Factory.ContinueWhenAll(allTasks.ToArray(), _ => { token.Cancel(); }, CancellationToken.None);
+                var task = Task.Factory.ContinueWhenAll(
+                    allTasks.ToArray(),
+                    tasks =>
+                    {
+                        token.Cancel();
+                        if (tasks.Any(t => t.IsFaulted && t.Exception != null))
+                        {
+                            var aggregateException = tasks.First(t => t.IsFaulted).Exception;
+                            if (aggregateException != null)
+                                throw aggregateException;
+                        }
+                    },
+                    CancellationToken.None);
 
                 while (!token.IsCancellationRequested)
                 {
@@ -88,6 +100,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
                     Thread.Sleep(TimeSpan.FromSeconds(WriteVerboseIntervalInSec));
                 }
+
+                if (task.IsFaulted)
+                {
+                    PrintDetailIfThrow(() => { throw task.Exception; });
+                }
             }
 
             WriteObject(new PSKeyVault()
@@ -97,7 +114,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 KeyVaultCertificateName = certInformation.KeyVault.Name,
                 KeyVaultSecretName = certInformation.SecretName,
                 KeyVaultSecretVersion = certInformation.Version
-            }); 
+            });
         }
     }
 }

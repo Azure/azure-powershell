@@ -48,8 +48,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         //Used only by NewAzureRmServicefabricCluster
         protected const string ByDefaultArmTemplate = "ByDefaultArmTemplate";
 
-        public const string DefaultPfxFileName = "ServiceFabricSelfSigned";
-
         private string keyVaultCertificateName { get; set; }
 
         /// <summary>
@@ -270,7 +268,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             var suffx = string.Empty;
             var ret = string.Empty;
             const string fileExt = ".pfx";
-            while (File.Exists(ret = Path.Combine(dir, string.Concat(DefaultPfxFileName, suffx, fileExt))) && ++retry <= 50)
+            while (File.Exists(ret = Path.Combine(dir, string.Concat(this.keyVaultCertificateName, suffx, fileExt))) && ++retry <= 50)
             {
                 suffx = retry.ToString();
             }

@@ -71,6 +71,9 @@
     <None Include="help\Set-AzureRmServiceFabricUpgradeType.md" />
     <None Include="help\Update-AzureRmServiceFabricDurability.md" />
     <None Include="help\Update-AzureRmServiceFabricReliability.md" />
+    <None Include="Microsoft.Azure.Commands.ServiceFabric.format.ps1xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
