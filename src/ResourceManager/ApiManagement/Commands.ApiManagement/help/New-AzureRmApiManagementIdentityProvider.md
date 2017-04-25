@@ -14,8 +14,7 @@ Creates a new Identity Provider configuration.
 ```
 New-AzureRmApiManagementIdentityProvider -Context <PsApiManagementContext>
  -Type <PsApiManagementIdentityProviderType> -ClientId <String> -ClientSecret <String>
- [-AllowedTenants <String[]>] [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf]
- [-Confirm]
+ [-AllowedTenants <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,8 +22,7 @@ Creates a new Identity Provider configuration.
 
 ## EXAMPLES
 
-### Example 1: Configures Facebook as an identity Provider for Developer Portal Logins 
-
+### Example 1: Configures Facebook as an identity Provider for Developer Portal Logins
 ```
 New-AzureRmApiManagementIdentityProvider -Context $apimContext -Type 'Facebook' -ClientId 'sdfsfwerwerw' -ClientSecret 'sdgsdfgfst43tewfewrf'
 ```
@@ -97,45 +95,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Type
 Identifier of a Identity Provider.
 If specified will try to find identity provider configuration by the identifier.
@@ -145,6 +104,7 @@ This parameter is optional.
 Type: PsApiManagementIdentityProviderType
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Facebook, Google, Microsoft, Twitter, Aad
 
 Required: True
 Position: Named
@@ -183,6 +143,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ## OUTPUTS
@@ -192,6 +155,7 @@ Accept wildcard characters: False
 ## NOTES
 
 ## RELATED LINKS
+
 [New-AzureRmApiManagementIdentityProvider](./New-AzureRmApiManagementIdentityProvider.md)
 
 [Get-AzureRmApiManagementIdentityProvider](./Get-AzureRmApiManagementIdentityProvider.md)

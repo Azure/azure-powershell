@@ -16,8 +16,7 @@ Creates a database or an elastic database.
 New-AzureRmSqlDatabase -DatabaseName <String> [-CollationName <String>] [-CatalogCollation <String>]
  [-MaxSizeBytes <Int64>] [-Edition <DatabaseEdition>] [-RequestedServiceObjectiveName <String>]
  [-ElasticPoolName <String>] [-ReadScale <DatabaseReadScale>] [-Tags <Hashtable>] [-SampleName <String>]
- [-ServerName] <String> [-ResourceGroupName] <String> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ServerName] <String> [-ResourceGroupName] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -140,6 +139,7 @@ The acceptable values for this parameter are:
 Type: DatabaseEdition
 Parameter Sets: (All)
 Aliases: 
+Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch, Free, PremiumRS
 
 Required: False
 Position: Named
@@ -163,6 +163,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -InformationAction
 Specifies how this cmdlet responds to an information event.
 
@@ -189,9 +190,13 @@ Accept wildcard characters: False
 
 ### -InformationVariable
 Specifies an information variable.
+=======
+### -MaxSizeBytes
+Specifies the maximum size of the database in bytes.
+>>>>>>> azure/preview
 
 ```yaml
-Type: String
+Type: Int64
 Parameter Sets: (All)
 Aliases: iv
 
@@ -202,6 +207,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -MaxSizeBytes
 Specifies the maximum size of the database in bytes.
 
@@ -209,6 +215,14 @@ Specifies the maximum size of the database in bytes.
 Type: Int64
 Parameter Sets: (All)
 Aliases: 
+=======
+### -ReadScale
+The read scale option to assign to the Azure SQL Database.(Enabled/Disabled)```yaml
+Type: DatabaseReadScale
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Disabled, Enabled
+>>>>>>> azure/preview
 
 Required: False
 Position: Named
@@ -217,6 +231,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -ReadScale
 The read scale option to assign to the Azure SQL Database.(Enabled/Disabled)```yaml
 Type: DatabaseReadScale
@@ -230,6 +245,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+=======
+>>>>>>> azure/preview
 ### -RequestedServiceObjectiveName
 Specifies the name of the service objective to assign to the database.
 

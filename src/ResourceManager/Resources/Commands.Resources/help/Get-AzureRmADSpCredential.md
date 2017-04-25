@@ -14,14 +14,12 @@ Retrieves a list of credentials associated with a service principal.
 
 ### ObjectIdParameterSet (Default)
 ```
-Get-AzureRmADSpCredential -ObjectId <String> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>]
+Get-AzureRmADSpCredential -ObjectId <String> [<CommonParameters>]
 ```
 
 ### SPNParameterSet
 ```
-Get-AzureRmADSpCredential -ServicePrincipalName <String> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>]
+Get-AzureRmADSpCredential -ServicePrincipalName <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,8 +29,6 @@ This command will retrieve all of the credential properties (but not the credent
 ## EXAMPLES
 
 ### --------------------------  Example 1  --------------------------
-@{paragraph=PS C:\\\>}
-
 ```
 PS E:\> Get-AzureRmADSpCredential -ServicePrincipalName http://test12345
 ```
@@ -56,45 +52,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ServicePrincipalName
 The name (SPN) of the service principal to retrieve credentials from.
 
@@ -109,6 +66,9 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

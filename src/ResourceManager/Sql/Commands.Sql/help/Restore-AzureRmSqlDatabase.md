@@ -17,7 +17,7 @@ Restores a SQL database.
 Restore-AzureRmSqlDatabase [-FromPointInTimeBackup] -PointInTime <DateTime> -ResourceId <String>
  -ServerName <String> -TargetDatabaseName <String> [-Edition <DatabaseEdition>]
  [-ServiceObjectiveName <String>] [-ElasticPoolName <String>] [-ResourceGroupName] <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### FromDeletedDatabaseBackup
@@ -25,23 +25,21 @@ Restore-AzureRmSqlDatabase [-FromPointInTimeBackup] -PointInTime <DateTime> -Res
 Restore-AzureRmSqlDatabase [-FromDeletedDatabaseBackup] [-PointInTime <DateTime>] -DeletionDate <DateTime>
  -ResourceId <String> -ServerName <String> -TargetDatabaseName <String> [-Edition <DatabaseEdition>]
  [-ServiceObjectiveName <String>] [-ElasticPoolName <String>] [-ResourceGroupName] <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### FromGeoBackup
 ```
 Restore-AzureRmSqlDatabase [-FromGeoBackup] -ResourceId <String> -ServerName <String>
  -TargetDatabaseName <String> [-Edition <DatabaseEdition>] [-ServiceObjectiveName <String>]
- [-ElasticPoolName <String>] [-ResourceGroupName] <String> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ [-ElasticPoolName <String>] [-ResourceGroupName] <String> [<CommonParameters>]
 ```
 
 ### FromLongTermRetentionBackup
 ```
 Restore-AzureRmSqlDatabase [-FromLongTermRetentionBackup] -ResourceId <String> -ServerName <String>
  -TargetDatabaseName <String> [-Edition <DatabaseEdition>] [-ServiceObjectiveName <String>]
- [-ElasticPoolName <String>] [-ResourceGroupName] <String> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ [-ElasticPoolName <String>] [-ResourceGroupName] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,6 +92,108 @@ The second command restores the backup in $GeoBackup to the SQL database named R
 
 ## PARAMETERS
 
+### -DeletionDate
+Specifies the deletion date as a **DateTime** object.
+To get a **DateTime** object, use the Get-Date cmdlet.
+
+```yaml
+Type: DateTime
+Parameter Sets: FromDeletedDatabaseBackup
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Edition
+Specifies the edition of the SQL database.
+The acceptable values for this parameter are:
+
+- None
+- Premium
+- Basic
+- Standard
+- DataWarehouse
+- Free
+
+```yaml
+Type: DatabaseEdition
+Parameter Sets: (All)
+Aliases: 
+Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch, Free, PremiumRS
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ElasticPoolName
+Specifies the name of the elastic pool in which to put the SQL database.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -FromDeletedDatabaseBackup
+Indicates that this cmdlet restores a database from a backup of a deleted SQL database.
+You can use the Get-AzureRMSqlDeletedDatabaseBackup cmdlet to get the backup of a deleted SQL database.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: FromDeletedDatabaseBackup
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FromGeoBackup
+Indicates that this cmdlet restores a SQL database from a geo-redundant backup.
+You can use the Get-AzureRMSqlDatabaseGeoBackup cmdlet to get a geo-redundant backup.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: FromGeoBackup
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FromLongTermRetentionBackup
+Indicates that this cmdlet restores a SQL database from a long term retention backup.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: FromLongTermRetentionBackup
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -FromPointInTimeBackup
 Indicates that this cmdlet restores a SQL database from a point-in-time backup.
 
@@ -139,6 +239,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceGroupName
+Specifies the name of the resource group to which this cmdlet assigns the SQL database.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ResourceId
 Specifies the ID of the resource to restore.
 
@@ -169,44 +284,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -TargetDatabaseName
-Specifies the name of the database to restore to.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Edition
-Specifies the edition of the SQL database.
-The acceptable values for this parameter are:
-
-- None
-- Premium
-- Basic
-- Standard
-- DataWarehouse
-- Free
-
-```yaml
-Type: DatabaseEdition
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ServiceObjectiveName
 Specifies the name of the service objective.
 
@@ -222,23 +299,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ElasticPoolName
-Specifies the name of the elastic pool in which to put the SQL database.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specifies the name of the resource group to which this cmdlet assigns the SQL database.
+### -TargetDatabaseName
+Specifies the name of the database to restore to.
 
 ```yaml
 Type: String
@@ -246,108 +308,6 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -FromDeletedDatabaseBackup
-Indicates that this cmdlet restores a database from a backup of a deleted SQL database.
-You can use the Get-AzureRMSqlDeletedDatabaseBackup cmdlet to get the backup of a deleted SQL database.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: FromDeletedDatabaseBackup
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DeletionDate
-Specifies the deletion date as a **DateTime** object.
-To get a **DateTime** object, use the Get-Date cmdlet.
-
-```yaml
-Type: DateTime
-Parameter Sets: FromDeletedDatabaseBackup
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -FromGeoBackup
-Indicates that this cmdlet restores a SQL database from a geo-redundant backup.
-You can use the Get-AzureRMSqlDatabaseGeoBackup cmdlet to get a geo-redundant backup.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: FromGeoBackup
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FromLongTermRetentionBackup
-Indicates that this cmdlet restores a SQL database from a long term retention backup.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: FromLongTermRetentionBackup
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

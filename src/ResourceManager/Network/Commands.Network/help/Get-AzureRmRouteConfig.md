@@ -13,8 +13,7 @@ Gets routes from a route table.
 ## SYNTAX
 
 ```
-Get-AzureRmRouteConfig [-Name <String>] -RouteTable <PSRouteTable> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmRouteConfig [-Name <String>] -RouteTable <PSRouteTable> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,45 +39,6 @@ The command passes that table to the current cmdlet by using the pipeline operat
 The current cmdlet gets the route named Route07 in the route table named RouteTable01.
 
 ## PARAMETERS
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Name
 Specifies the name of the route that this cmdlet gets.

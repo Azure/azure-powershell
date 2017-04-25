@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         public FeatureClient FeatureClient { get; private set; }
 
-        public SubscriptionClient SubscriptionClient { get; private set; }
+        public Internal.Subscriptions.SubscriptionClient SubscriptionClient { get; private set; }
 
         public GalleryClient GalleryClient { get; private set; }
 
@@ -265,9 +265,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             return LegacyTest.TestBase.GetServiceClient<LegacyRMSubscription.SubscriptionClient>(this.csmTestFactory);
         }
 
-        private SubscriptionClient GetSubscriptionClient(MockContext context)
+        private Internal.Subscriptions.SubscriptionClient GetSubscriptionClient(MockContext context)
         {
-            return context.GetServiceClient<SubscriptionClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<Internal.Subscriptions.SubscriptionClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private GalleryClient GetGalleryClient()

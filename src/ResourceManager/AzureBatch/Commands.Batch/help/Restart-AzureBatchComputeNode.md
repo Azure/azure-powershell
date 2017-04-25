@@ -114,6 +114,7 @@ The default is Requeue.
 Type: ComputeNodeRebootOption
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Requeue, Terminate, TaskCompletion, RetainedData
 
 Required: False
 Position: 2

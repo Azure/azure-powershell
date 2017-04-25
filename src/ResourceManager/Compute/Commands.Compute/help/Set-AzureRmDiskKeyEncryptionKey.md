@@ -12,7 +12,7 @@ Sets the key encryption key properties on a disk object.
 ## SYNTAX
 
 ```
-Set-AzureRmDiskKeyEncryptionKey [-Disk] <Disk> [[-KeyUrl] <String>] [-SourceVaultId <String>] [-WhatIf]
+Set-AzureRmDiskKeyEncryptionKey [-Disk] <Disk> [[-KeyUrl] <String>] [[-SourceVaultId] <String>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -78,7 +78,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

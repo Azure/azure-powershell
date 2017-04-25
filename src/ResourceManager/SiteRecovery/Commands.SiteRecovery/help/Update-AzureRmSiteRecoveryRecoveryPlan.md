@@ -36,21 +36,6 @@ This command updates the specified recovery plan, and then publishes it.
 
 ## PARAMETERS
 
-### -RecoveryPlan
-Specifies a recovery plan that this cmdlet updates.
-
-```yaml
-Type: ASRRecoveryPlan
-Parameter Sets: ByRPObject
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Path
 Specifies the path of the recovery plan file of the recovery plan that this cmdlet updates.
 
@@ -63,6 +48,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryPlan
+Specifies a recovery plan that this cmdlet updates.
+
+```yaml
+Type: ASRRecoveryPlan
+Parameter Sets: ByRPObject
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

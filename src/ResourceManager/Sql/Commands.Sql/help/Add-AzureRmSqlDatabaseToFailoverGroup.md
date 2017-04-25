@@ -12,9 +12,9 @@ Cmdlet that adds databases into the Azure SQL Failover Group
 ## SYNTAX
 
 ```
-Add-AzureRmSqlDatabaseToFailoverGroup -FailoverGroupName <String>
- -Databases <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel]>
- [-Tags <Hashtable>] -ServerName <String> -ResourceGroupName <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzureRmSqlDatabaseToFailoverGroup [-FailoverGroupName] <String>
+ -Database <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel]>
+ [-Tag <Hashtable>] [-ServerName] <String> [-ResourceGroupName] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,16 +28,17 @@ PS C:\> Add-AzureRmSqlDatabaseToFailoverGroup -FailoverGroupName myFg-ResourceGr
 ```
 
 ### Example 2
-```
 Using Pipe Line to pipe in the database objects 
-
+```
 PS C:\> Get-AzureRmSqlDatabase -ServerName testsvr -ResourceGroupName rg2 | Add-AzureRmSqlDatabaseToFailoverGroup -FailoverGroupName myFg-ResourceGroupName myRg -ServerName mysvr
 ```
 
 ## PARAMETERS
 
-### -Databases
-The Azure SQL Databases to be added to the secondary server.```yaml
+### -Database
+The Azure SQL Database to be added to the secondary server.
+
+```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel]
 Parameter Sets: (All)
 Aliases: 
@@ -50,79 +51,57 @@ Accept wildcard characters: False
 ```
 
 ### -FailoverGroupName
-The name of the Azure SQL Failover Group.```yaml
+The name of the Azure SQL Failover Group.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.```yaml
+The name of the resource group.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -ServerName
-The name of the Azure SQL Server the Failover Group is in.```yaml
+The name of the Azure SQL Server the Failover Group is in.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tags
-The tags to associate with the Azure Sql Elastic Pool```yaml
+### -Tag
+The tags to associate with the Azure SQL Database Failover Group
+
+```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: Tag
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
+Aliases: 
 
 Required: False
 Position: Named

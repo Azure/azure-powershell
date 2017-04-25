@@ -83,23 +83,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WebAppName
-Specifies the name of the Web App that this cmdlet gets SSL bindings from.
-
-You cannot use the *WebAppName* parameter and the *WebApp* parameter in the same command.
-
-```yaml
-Type: String
-Parameter Sets: S1
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Slot
 Specifies a Web App deployment slot.
 To get a deployment slot, use the Get-AzureRMWebAppSlot cmdlet.
@@ -129,6 +112,23 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -WebAppName
+Specifies the name of the Web App that this cmdlet gets SSL bindings from.
+
+You cannot use the *WebAppName* parameter and the *WebApp* parameter in the same command.
+
+```yaml
+Type: String
+Parameter Sets: S1
+Aliases: 
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
