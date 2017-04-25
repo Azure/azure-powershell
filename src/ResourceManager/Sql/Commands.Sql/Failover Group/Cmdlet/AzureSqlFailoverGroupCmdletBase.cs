@@ -64,7 +64,15 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             {
                 // Use 1 if 0 is provided. They are equivalent from the service's perspective, but 1 is more
                 // representative of what a user will see.
+                WriteWarning(string.Format(Properties.Resources.FailoverGroupDataLossHoursUnsupportedLowValue, gracePeriod, 1));
                 gracePeriod = 1;
+            }
+
+            int maxAllowedValue = int.MaxValue / 60;
+            if (gracePeriod.HasValue && gracePeriod.Value > maxAllowedValue)
+            {
+                WriteWarning(string.Format(Properties.Resources.FailoverGroupDataLossHoursOverflow, gracePeriod, maxAllowedValue));
+                gracePeriod = maxAllowedValue;
             }
 
             return gracePeriod;

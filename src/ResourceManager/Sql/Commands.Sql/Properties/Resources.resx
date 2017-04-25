@@ -318,7 +318,7 @@
   <data name="RemoveAzureSqlDatabaseFailoverGroupWarning" xml:space="preserve">
     <value>Are you sure you want to remove the Azure Sql Database Failover Group '{0}' on server '{1}'?</value>
   </data>
-    <data name="RemoveAzureSqlDatabaseFromAzureSqlDatabaseFailoverGroupDescription" xml:space="preserve">
+  <data name="RemoveAzureSqlDatabaseFromAzureSqlDatabaseFailoverGroupDescription" xml:space="preserve">
     <value>Permanently removing this Azure Sql Database from  Azure Sql Database Failover Group '{0}' on server '{1}'.</value>
   </data>
   <data name="RemoveAzureSqlDatabaseeFromAzureSqlDatabaseFailoverGroupWarning" xml:space="preserve">
@@ -332,5 +332,11 @@
   </data>
   <data name="FailoverGroupRemoveDatabaseNotExists" xml:space="preserve">
     <value>Database to be removed with id {0} in Failover Group with name: '{1}'  in server '{2} does not exist'.</value>
+  </data>
+  <data name="FailoverGroupDataLossHoursOverflow" xml:space="preserve">
+    <value>Value {0} is too large for the 'GracePeriodWithDataLossHours' parameter. Using the largest supported value, {1}.</value>
+  </data>
+  <data name="FailoverGroupDataLossHoursUnsupportedLowValue" xml:space="preserve">
+    <value>A value of {0} is not yet supported for the 'GracePeriodWithDataLossHours' parameter. Using the smallest supported value, {1}.</value>
   </data>
 </root>
