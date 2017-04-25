@@ -22,61 +22,61 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Requests that a backup of the specified key be downloaded and stored to a file
     /// </summary>
-    [Cmdlet(VerbsData.Backup, "AzureKeyVaultKey",
-        SupportsShouldProcess = true, 
-        HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(String))]
-    public class BackupAzureKeyVaultKey : KeyVaultCmdletBase
+    [Cmdlet( VerbsData.Backup, "AzureKeyVaultSecret",
+        SupportsShouldProcess = true,
+        HelpUri = Constants.KeyVaultHelpUri )]
+    [OutputType( typeof( String ) )]
+    public class BackupAzureKeyVaultSecret : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions
 
         /// <summary>
         /// Vault name
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter( Mandatory = true,
                    Position = 0,
                    ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
-        [ValidateNotNullOrEmpty]        
+                   HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment." )]
+        [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
         /// <summary>
         /// Key name
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter( Mandatory = true,
                    Position = 1,
                    ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
-        [ValidateNotNullOrEmpty]        
-        [Alias(Constants.KeyName)]
+                   HelpMessage = "Secret name. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name." )]
+        [ValidateNotNullOrEmpty]
+        [Alias( Constants.SecretName )]
         public string Name { get; set; }
 
         /// <summary>
         /// The output file in which the backup blob is to be stored
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter( Mandatory = false,
                    Position = 2,
                    ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Output file. The output file to store the backed up key blob in. If not present, a default filename is chosen.")]
+                   HelpMessage = "Output file. The output file to store the backed up secret blob in. If not present, a default filename is chosen." )]
         [ValidateNotNullOrEmpty]
         public string OutputFile { get; set; }
 
         #endregion Input Parameter Definition
 
-        public override void ExecuteCmdlet()
+        public override void ExecuteCmdlet( )
         {
-            if (ShouldProcess(Name, Properties.Resources.BackupKey))
+            if ( ShouldProcess( Name, Properties.Resources.BackupSecret ) )
             {
-                if (string.IsNullOrEmpty(OutputFile))
+                if ( string.IsNullOrEmpty( OutputFile ) )
                 {
                     OutputFile = GetDefaultFileForOperation("backup", VaultName, Name);
                 }
 
-                var filePath = ResolvePathFromFilename(OutputFile, throwOnPreExisting: true, errorMessage: KeyVaultProperties.Resources.BackupKeyFileAlreadyExists);
+                var filePath = ResolvePathFromFilename(OutputFile, throwOnPreExisting: true, errorMessage: KeyVaultProperties.Resources.BackupSecretFileAlreadyExists);
 
-                var backupBlobPath = this.DataServiceClient.BackupKey(VaultName, Name, filePath);
+                var backupBlobPath = this.DataServiceClient.BackupSecret(VaultName, Name, filePath);
 
-                this.WriteObject(backupBlobPath);
+                this.WriteObject( backupBlobPath );
             }
         }
     }

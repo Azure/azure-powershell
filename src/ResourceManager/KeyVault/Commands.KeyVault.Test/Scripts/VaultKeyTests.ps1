@@ -853,7 +853,7 @@ function Test_BackupRestoreKey
 .SYNOPSIS
 Tests backup a none existing key
 #>
-function Test_BackupNonExisitingKey
+function Test_BackupNonExistingKey
 {
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'backupnonexisting'
@@ -865,7 +865,7 @@ function Test_BackupNonExisitingKey
 .SYNOPSIS
 Tests backup a key to a specific file and be able to restore
 #>
-function Test_BackupToANamedFile
+function Test_BackupKeyToANamedFile
 {
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'backupnamedfile'
@@ -885,7 +885,7 @@ function Test_BackupToANamedFile
 .SYNOPSIS
 Tests backup a key to a specific file which exists 
 #>
-function Test_BackupToExistingFile
+function Test_BackupKeyToExistingFile
 {
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'backupexistingfile'
@@ -904,7 +904,7 @@ function Test_BackupToExistingFile
 .SYNOPSIS
 Tests restore a key from a none existing file
 #>
-function Test_RestoreFromNonExistingFile
+function Test_RestoreKeyFromNonExistingFile
 {
     $keyVault = Get-KeyVault
 

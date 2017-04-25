@@ -12,14 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.IO;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using System.Net.Http;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public class KeyVaultCmdletBase : AzureRMCmdlet
     {
+        public static readonly DateTime EpochDate = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+
         internal IKeyVaultDataServiceClient DataServiceClient
         {
             get
@@ -39,6 +42,25 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
         }
 
+        protected string GetDefaultFileForOperation( string operationName, string vaultName, string entityName )
+        {
+            // caller is responsible for parameter validation
+            var currentPath = CurrentPath();
+            var filename = string.Format("{0}\\{1}-{2}-{3}-{4}", currentPath, vaultName, entityName, DateTime.UtcNow.Subtract(EpochDate).TotalSeconds);
+
+            return filename;
+        }
+
+        protected string ResolvePathFromFilename( string filePath, bool throwOnPreExisting, string errorMessage )
+        {
+            FileInfo file = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(filePath));
+            if ( file.Exists && throwOnPreExisting )
+            {
+                throw new IOException( string.Format( errorMessage, filePath ) );
+            }
+
+            return file.FullName;
+        }
 
         private IKeyVaultDataServiceClient dataServiceClient;
     }

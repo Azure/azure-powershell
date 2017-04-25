@@ -812,6 +812,56 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return new KeyBundle(keyBundle, this.vaultUriHelper);
         }
 
+        public string BackupSecret( string vaultName, string secretName, string outputBlobPath )
+        {
+            if ( string.IsNullOrEmpty( vaultName ) )
+                throw new ArgumentNullException( "vaultName" );
+            if ( string.IsNullOrEmpty( secretName ) )
+                throw new ArgumentNullException( "secretName" );
+            if ( string.IsNullOrEmpty( outputBlobPath ) )
+                throw new ArgumentNullException( "outputBlobPath" );
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+
+            BackupSecretResult backupSecretResult;
+            try
+            {
+                backupSecretResult = this.keyVaultClient.BackupSecretAsync( vaultAddress, secretName ).GetAwaiter( ).GetResult( );
+            }
+            catch ( Exception ex )
+            {
+                throw GetInnerException( ex );
+            }
+
+            File.WriteAllBytes( outputBlobPath, backupSecretResult.Value );
+
+            return outputBlobPath;
+        }
+
+        public Secret RestoreSecret( string vaultName, string inputBlobPath )
+        {
+            if ( string.IsNullOrEmpty( vaultName ) )
+                throw new ArgumentNullException( "vaultName" );
+            if ( string.IsNullOrEmpty( inputBlobPath ) )
+                throw new ArgumentNullException( "inputBlobPath" );
+
+            var backupBlob = File.ReadAllBytes(inputBlobPath);
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+
+            Azure.KeyVault.Models.SecretBundle secretBundle;
+            try
+            {
+                secretBundle = this.keyVaultClient.RestoreSecretAsync( vaultAddress, backupBlob ).GetAwaiter( ).GetResult( );
+            }
+            catch ( Exception ex )
+            {
+                throw GetInnerException( ex );
+            }
+
+            return new Secret( secretBundle, this.vaultUriHelper );
+        }
+
         public CertificatePolicy GetCertificatePolicy(string vaultName, string certificateName)
         {
             if (string.IsNullOrEmpty(vaultName))
