@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
-            var context = (PSAzureContext)AzureRmProfileProvider.Instance.Profile.Context;
+            var context = (PSAzureContext)DefaultContext;
             if (context == null)
             {
                 WriteError(new ErrorRecord(

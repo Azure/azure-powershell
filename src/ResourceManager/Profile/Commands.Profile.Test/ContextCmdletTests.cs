@@ -89,10 +89,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 cmdlt.ExecuteCmdlet();
                 cmdlt.InvokeEndProcessing();
             }
-            catch
-            {
-                
-            }
             finally
             {
                 AzureRmProfileProvider.Instance.Profile = profile;
