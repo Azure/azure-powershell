@@ -43,20 +43,8 @@ This command gets information for the feature named AllowPreReleaseRegions for t
 
 ## PARAMETERS
 
-### -ProviderNamespace
-Specifies the namespace for which this cmdlet gets provider features.
-
-```yaml
-Type: String
-Parameter Sets: ListAvailableParameterSet
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
+### -FeatureName
+Specifies the name of the feature to get.
 
 ```yaml
 Type: String
@@ -85,8 +73,20 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FeatureName
-Specifies the name of the feature to get.
+### -ProviderNamespace
+Specifies the namespace for which this cmdlet gets provider features.
+
+```yaml
+Type: String
+Parameter Sets: ListAvailableParameterSet
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ```yaml
 Type: String

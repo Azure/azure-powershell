@@ -34,6 +34,22 @@ The second command sets the backup storage redundancy for $Vault01 to GeoRedunda
 
 ## PARAMETERS
 
+### -BackupStorageRedundancy
+Specifies the backup storage redundancy type.
+
+```yaml
+Type: AzureRmRecoveryServicesBackupStorageRedundancyType
+Parameter Sets: (All)
+Aliases: 
+Accepted values: GeoRedundant, LocallyRedundant
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Vault
 Specifies the name of the vault.
 The vault must be an **AzureRmRecoveryServicesVault** object.
@@ -47,21 +63,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -BackupStorageRedundancy
-Specifies the backup storage redundancy type.
-
-```yaml
-Type: AzureRmRecoveryServicesBackupStorageRedundancyType
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -13,8 +13,7 @@ Gets the API keys for an account.
 ## SYNTAX
 
 ```
-Get-AzureRmCognitiveServicesAccountKey [-ResourceGroupName] <String> [-Name] <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmCognitiveServicesAccountKey [-ResourceGroupName] <String> [-Name] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,21 +33,6 @@ Use New-AzureRmCognitiveServicesAccountKey to regenerate a key.
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the name of the resource group the account is assigned to.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Name
 Specifies the name of the account.
 This cmdlet gets the keys for this account.
@@ -65,42 +49,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -ResourceGroupName
+Specifies the name of the resource group the account is assigned to.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

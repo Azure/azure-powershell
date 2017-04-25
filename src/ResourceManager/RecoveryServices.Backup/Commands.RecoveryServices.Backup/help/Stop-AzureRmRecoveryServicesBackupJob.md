@@ -14,14 +14,12 @@ Cancels a running job.
 
 ### JobFilterSet (Default)
 ```
-Stop-AzureRmRecoveryServicesBackupJob [-Job] <JobBase> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+Stop-AzureRmRecoveryServicesBackupJob [-Job] <JobBase> [<CommonParameters>]
 ```
 
 ### IdFilterSet
 ```
-Stop-AzureRmRecoveryServicesBackupJob [-JobId] <String> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+Stop-AzureRmRecoveryServicesBackupJob [-JobId] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,40 +44,17 @@ The last command stops the job by specifying the Instance ID of the backup job i
 
 ## PARAMETERS
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -Job
+Specifies a job that this cmdlet cancels.
+To obtain a **BackupJob** object, use the Get-AzureRmRecoveryServicesBackupJob cmdlet.
 
 ```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
+Type: JobBase
+Parameter Sets: JobFilterSet
+Aliases: 
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -97,22 +72,6 @@ Aliases:
 
 Required: True
 Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Job
-Specifies a job that this cmdlet cancels.
-To obtain a **BackupJob** object, use the Get-AzureRmRecoveryServicesBackupJob cmdlet.
-
-```yaml
-Type: JobBase
-Parameter Sets: JobFilterSet
-Aliases: 
-
-Required: True
-Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
