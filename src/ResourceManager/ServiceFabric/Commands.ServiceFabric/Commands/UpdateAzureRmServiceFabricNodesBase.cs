@@ -15,6 +15,8 @@
 using System;
 using System.Linq;
 using System.Management.Automation;
+using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.ServiceFabric;
@@ -68,6 +70,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 }
             }
 
+            if (vmss.Sku.Capacity == null)
+            {
+                throw new PSInvalidOperationException(ServiceFabricProperties.Resources.InvalidVmssConfiguration);
+            }
+
             vmss.Sku.Capacity += this.Number;
             if (vmss.Sku.Capacity < 0)
             {
@@ -84,7 +91,38 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         cluster.ReliabilityLevel));
             }
 
-            this.ComputeClient.VirtualMachineScaleSets.CreateOrUpdate(this.ResourceGroupName, vmss.Name, vmss);
+            var tokenSource = new CancellationTokenSource();
+
+            WriteVerboseWithTimestamp("Begin to add nodes to the node type");
+
+            var updateTask = Task.Factory.StartNew(() =>
+            {
+                try
+                {
+                    this.ComputeClient.VirtualMachineScaleSets.CreateOrUpdate(this.ResourceGroupName, vmss.Name, vmss);
+                }
+                finally
+                {
+                    tokenSource.Cancel();
+                }
+            });
+
+            while (!tokenSource.IsCancellationRequested)
+            {
+                var v =  SafeGetResource(()=> this.ComputeClient.VirtualMachineScaleSets.Get(this.ResourceGroupName, vmss.Name));
+                if (v != null)
+                {
+                    WriteVerboseWithTimestamp(string.Format(ServiceFabricProperties.Resources.VmssVerbose, v.Name,
+                        v.ProvisioningState));
+                }
+
+                Thread.Sleep(TimeSpan.FromSeconds(WriteVerboseIntervalInSec));
+            }
+
+            if (updateTask.IsFaulted)
+            {
+                PrintDetailIfThrow(() => { throw updateTask.Exception; });
+            }
 
             cluster = SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name);
             var nodeType = cluster.NodeTypes.Single(

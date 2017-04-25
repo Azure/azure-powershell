@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
@@ -29,6 +30,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
     [Cmdlet(VerbsData.Update, CmdletNoun.AzureRmServiceFabricDurability, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class UpdateAzureRmServiceFabricDurability : ServiceFabricClusterCmdlet
     {
+        private HashSet<string> skusSupportGoldDurability = 
+            new HashSet<string>(StringComparer.OrdinalIgnoreCase) {"Standard_D15_v2", "Standard_G5"};
+
         /// <summary>
         /// Resource group name
         /// </summary>
@@ -162,8 +166,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 var targetSkuName = string.IsNullOrEmpty(this.Sku) ? currentSkuName : this.Sku;
 
-                if (targetSkuName.ToLower().Contains("D15_V2".ToLower()))
+                if (!skusSupportGoldDurability.Contains(targetSkuName))
                 {
+                    WriteWarning("Only Standard_D15_v2 and Standard_G5 supports Gold durability");
                     return false;
                 }
             }
