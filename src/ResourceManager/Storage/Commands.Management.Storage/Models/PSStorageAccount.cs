@@ -47,6 +47,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.StatusOfPrimary = storageAccount.StatusOfPrimary;
             this.StatusOfSecondary = storageAccount.StatusOfSecondary;
             this.Tags = storageAccount.Tags;
+            this.EnableHttpsTrafficOnly = storageAccount.EnableHttpsTrafficOnly;
         }
 
         public string ResourceGroupName { get; set; }
@@ -83,6 +84,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public AccountStatus? StatusOfSecondary { get; set; }
 
         public IDictionary<string, string> Tags { get; set; }
+
+        public bool? EnableHttpsTrafficOnly { get; set; }
 
         public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client)
         {
