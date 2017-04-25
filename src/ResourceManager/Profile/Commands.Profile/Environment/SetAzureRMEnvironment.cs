@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using System;
 using System.Globalization;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile
@@ -118,13 +119,10 @@ namespace Microsoft.Azure.Commands.Profile
                 {
                     var profileClient = new RMProfileClient(DefaultProfile as AzureRmProfile);
 
-                    foreach (var key in AzureEnvironment.PublicEnvironments.Keys)
+                    if (AzureEnvironment.PublicEnvironments.Keys.Any((k) => string.Equals(k, Name, StringComparison.CurrentCultureIgnoreCase)))
                     {
-                        if (string.Equals(Name, key, StringComparison.CurrentCultureIgnoreCase))
-                        {
                             throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture,
-                                "Cannot change built-in environment {0}.", key));
-                        }
+                                "Cannot change built-in environment {0}.", Name));
                     }
 
                     IAzureEnvironment newEnvironment = new AzureEnvironment { Name = Name, OnPremise = EnableAdfsAuthentication };
@@ -169,7 +167,6 @@ namespace Microsoft.Azure.Commands.Profile
                     SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.GraphEndpointResourceId,
                         GraphAudience);
                     profileClient.AddOrSetEnvironment(newEnvironment);
-
                     WriteObject(new PSAzureEnvironment(newEnvironment));
                 });
         }

@@ -285,19 +285,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
             SetupConfirmation(commandRuntimeMock);
 
-            foreach (string name in AzureEnvironment.PublicEnvironments.Keys)
+            foreach (var env in AzureEnvironment.PublicEnvironments)
             {
-                var cmdlet = new SetAzureRMEnvironmentCommand()
+                var profile = new AzureRmProfile();
+                var cmdlet = new SetAzureRMEnvironmentCommand
                 {
                     CommandRuntime = commandRuntimeMock.Object,
-                    Name = name,
+                    Name = env.Key,
                     PublishSettingsFileUrl = "http://microsoft.com",
-                    DefaultProfile = new AzureRmProfile()
+                    DefaultProfile = profile
                 };
-                var savedValue = AzureEnvironment.PublicEnvironments[name].GetEndpoint(AzureEnvironment.Endpoint.PublishSettingsFileUrl);
+                var savedValue =env.Value.PublishSettingsFileUrl;
                 cmdlet.InvokeBeginProcessing();
                 Assert.Throws<InvalidOperationException>(() => cmdlet.ExecuteCmdlet());
-                var newValue = cmdlet.DefaultProfile.GetEnvironment(name).GetEndpoint(AzureEnvironment.Endpoint.PublishSettingsFileUrl);
+                var newValue = profile.GetEnvironment(env.Key).PublishSettingsFileUrl;
                 Assert.Equal(savedValue, newValue);
                 Assert.NotEqual(cmdlet.PublishSettingsFileUrl, newValue);
             }
