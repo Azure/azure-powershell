@@ -25,16 +25,6 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
     public abstract class AzureSqlFailoverGroupCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlFailoverGroupModel>, AzureSqlFailoverGroupAdapter>
     {
         /// <summary>
-        /// Gets or sets the name of the server to use.
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "The name of the Azure SQL Server the Failover Group is in.")]
-        [ValidateNotNullOrEmpty]
-        public string ServerName { get; set; }
-
-        /// <summary>
         /// Initializes the Azure Sql Failover Group Adapter
         /// </summary>
         /// <param name="subscription"></param>
@@ -42,6 +32,42 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         protected override AzureSqlFailoverGroupAdapter InitModelAdapter(AzureSubscription subscription)
         {
             return new AzureSqlFailoverGroupAdapter(DefaultProfile.Context);
+        }
+
+        /// <summary>
+        /// Interprets and returns the lossy automatic failover grace period provided by the user.
+        /// </summary>
+        /// <returns>The grace period</returns>
+        protected int? ComputeEffectiveGracePeriod(FailoverPolicy policy, int? originalGracePeriod)
+        {
+            int? gracePeriod = null;
+
+            // Respect both parameters, but the non-obselete one takes precedence.
+            foreach (var parameterName in new[] { "GracePeriodWithDataLossHours", "GracePeriodWithDataLossHour" })
+            {
+                object parameterValue;
+                if (MyInvocation.BoundParameters.TryGetValue(parameterName, out parameterValue))
+                {
+                    gracePeriod = (int)parameterValue;
+                    break;
+                }
+            }
+
+            if (!gracePeriod.HasValue && policy == FailoverPolicy.Automatic)
+            {
+                // If the policy is Automatic, the grace period must be non-null. If this is an update and the grace
+                // period was non-null, use the existing grace period. Otherwise, use a default of 1.
+                gracePeriod = originalGracePeriod ?? 1;
+            }
+
+            if (gracePeriod.HasValue && gracePeriod == 0)
+            {
+                // Use 1 if 0 is provided. They are equivalent from the service's perspective, but 1 is more
+                // representative of what a user will see.
+                gracePeriod = 1;
+            }
+
+            return gracePeriod;
         }
     }
 }

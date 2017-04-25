@@ -32,6 +32,16 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
     public class RemoveAzureSqlDatabaseFromFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
         /// <summary>
+        /// Gets or sets the name of the server to use.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 1,
+            HelpMessage = "The name of the primary Azure SQL Database Server of the Failover Group.")]
+        [ValidateNotNullOrEmpty]
+        public string ServerName { get; set; }
+
+        /// <summary>
         /// The name of the Azure SQL Database FailoverGroup
         /// </summary>
         [Parameter(Mandatory = true,
@@ -46,18 +56,9 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The Azure SQL Database to be removed from the secondary server.")]
+            HelpMessage = "The Azure SQL Database to be removed from the Failover Group.")]
         [ValidateNotNullOrEmpty]
         public List<AzureSqlDatabaseModel> Database { get; set; }
-
-        /// <summary>
-        /// Gets or sets the tags associated with the Azure SQL Database Failover Group
-        /// </summary>
-        /// 
-        [Obsolete("This parameter will be deprecated in the next release.")]
-        [Parameter(Mandatory = false,
-            HelpMessage = "The tag to associate with the Azure SQL Database Failover Group")]
-        public Hashtable Tag { get; set; }
 
         /// <summary>
         /// Defines whether it is ok to skip the requesting of rule removal confirmation
