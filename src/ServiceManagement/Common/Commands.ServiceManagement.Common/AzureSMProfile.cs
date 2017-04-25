@@ -191,9 +191,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             AccountTable = new Dictionary<string, IAzureAccount>(StringComparer.InvariantCultureIgnoreCase);
 
             // Adding predefined environments
-            foreach (AzureEnvironment env in AzureEnvironment.PublicEnvironments.Values)
+            foreach (var env in AzureEnvironment.PublicEnvironments)
             {
-                EnvironmentTable[env.Name] = env;
+                EnvironmentTable[env.Key] = env.Value;
             }
         }
 
@@ -256,15 +256,18 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 return;
             }
 
+            AzureSMProfile other = new AzureSMProfile();
+            other.CopyFrom(this);
+
             // Removing predefined environments
             foreach (string env in AzureEnvironment.PublicEnvironments.Keys)
             {
-                EnvironmentTable.Remove(env);
+                other.EnvironmentTable.Remove(env);
             }
 
             try
             {
-                string contents = ToString();
+                string contents = other.ToString();
                 string diskContents = string.Empty;
                 if (AzureSession.Instance.DataStore.FileExists(path))
                 {
@@ -298,6 +301,29 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             EnvironmentTable.Clear();
             SubscriptionTable.Clear();
             AccountTable.Clear();
+        }
+
+        private void CopyFrom(AzureSMProfile other)
+        {
+            this.ProfilePath = other.ProfilePath;
+            this.EnvironmentTable.Clear();
+            foreach (var environment in other.EnvironmentTable)
+            {
+                this.EnvironmentTable[environment.Key] = environment.Value;
+            }
+
+            this.AccountTable.Clear();
+            foreach (var account in other.AccountTable)
+            {
+                this.AccountTable[account.Key] = account.Value;
+            }
+
+            this.SubscriptionTable.Clear();
+            foreach (var subscription in other.SubscriptionTable)
+            {
+                this.SubscriptionTable[subscription.Key] = subscription.Value;
+            }
+            this.CopyPropertiesFrom(other);
         }
     }
 }
