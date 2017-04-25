@@ -57,9 +57,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         /// <summary>
         /// Initialize the resource manager profile
         /// </summary>
-        public static void InitializeResourceManagerProfile()
+        public static void InitializeResourceManagerProfile(bool overwrite=false)
         {
-            SetInstance(() => new ResourceManagerProfileProvider());
+            SetInstance(() => new ResourceManagerProfileProvider(), overwrite);
         }
 
     }
