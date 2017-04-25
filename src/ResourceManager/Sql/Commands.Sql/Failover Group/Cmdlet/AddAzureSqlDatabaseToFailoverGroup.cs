@@ -30,6 +30,16 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
     public class AddAzureSqlDatabaseToFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
         /// <summary>
+        /// Gets or sets the name of the server to use.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 1,
+            HelpMessage = "The name of the primary Azure SQL Database Server of the Failover Group.")]
+        [ValidateNotNullOrEmpty]
+        public string ServerName { get; set; }
+
+        /// <summary>
         /// The name of the Azure SQL Database FailoverGroup
         /// </summary>
         [Parameter(Mandatory = true,
@@ -44,17 +54,9 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The Azure SQL Database to be added to the secondary server.")]
+            HelpMessage = "The Azure SQL Database to be added to the Failover Group.")]
         [ValidateNotNullOrEmpty]
         public List<AzureSqlDatabaseModel> Database { get; set; }
-
-        /// <summary>
-        /// Gets or sets the tags associated with the Azure SQL Database Failover Group
-        /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = "The tags to associate with the Azure SQL Database Failover Group")]
-        [Obsolete("This parameter will be deprecated in the next release.")]
-        public Hashtable Tag { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -103,7 +105,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         protected override IEnumerable<AzureSqlFailoverGroupModel> PersistChanges(IEnumerable<AzureSqlFailoverGroupModel> entity)
         {
             return new List<AzureSqlFailoverGroupModel>() {
-                ModelAdapter.AddOrRemoveDatabaseToFailoverGroup(this.ResourceGroupName, this.ServerName, this.FailoverGroupName,entity.First())
+                ModelAdapter.AddOrRemoveDatabaseToFailoverGroup(this.ResourceGroupName, this.ServerName, this.FailoverGroupName, entity.First())
             };
         }
 
@@ -148,9 +150,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
                 }
                 else
                 {
-                    throw new PSArgumentException(
-                        string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.FailoverGroupAddDatabaseAlreadyExists, db, this.FailoverGroupName, this.ServerName),
-                        "FailoverGroupName");
+                    throw new PSArgumentException(string.Format(Properties.Resources.FailoverGroupAddDatabaseAlreadyExists, db, this.FailoverGroupName, this.ServerName), "Database");
                 }
             }
 
