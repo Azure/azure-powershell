@@ -381,4 +381,38 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="FileOverwriteMessage" xml:space="preserve">
     <value>Overwrite existing file at '{0}' ?</value>
   </data>
+  <data name="RecoverKey" xml:space="preserve">
+    <value>Recover key</value>
+  </data>
+  <data name="RecoverSecret" xml:space="preserve">
+    <value>Recover secret</value>
+  </data>
+  <data name="RemoveDeletedKeyWarning" xml:space="preserve">
+    <value>Are you sure you want to purge key '{0}'.</value>
+  </data>
+  <data name="RemoveDeletedKeyWhatIfMessage" xml:space="preserve">
+    <value>Purge key</value>
+  </data>
+  <data name="RemoveDeletedSecretWarning" xml:space="preserve">
+    <value>Are you sure you want to purge secret '{0}'.</value>
+  </data>
+  <data name="RemoveDeletedSecretWhatIfMessage" xml:space="preserve">
+    <value>Purge secret</value>
+  </data>
+  <data name="AllPermissionExpansionWarning" xml:space="preserve">
+    <value>The 'all' permission is being deprecated and does not include the 'purge' permission. 'Purge' permission must be explicitly set.</value>
+  </data>
+  <data name="RecoverVault" xml:space="preserve">
+    <value>Recover vault</value>
+  </data>
+  <data name="PurgeVaultWarning" xml:space="preserve">
+    <value>Are you sure you want to remove vault '{0}' forever.</value>
+  </data>
+  <data name="PurgeVaultWhatIfMessage" xml:space="preserve">
+    <value>Purge vault</value>
+  </data>
+  <data name="DeletedVaultNotFound" xml:space="preserve">
+    <value>Cannot find deleted vault '{0}' in location '{1}'</value>
+>>>>>>> be40276d6... Key Vault soft-delete for Keys, Secrets and Vaults
+  </data>
 </root>

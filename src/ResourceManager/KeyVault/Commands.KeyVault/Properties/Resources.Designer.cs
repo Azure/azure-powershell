@@ -277,6 +277,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
             }
         }
         
+        ///<summary>
+        ///   Looks up a localized string similar to Cannot find deleted vault &apos;{0}&apos; in location &apos;{1}&apos;.
+        /// </summary>
+        internal static string DeletedVaultNotFound {
+            get {
+                return ResourceManager.GetString("DeletedVaultNotFound", resourceCulture);
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to BYOK key can not be imported as software key.
         /// </summary>
