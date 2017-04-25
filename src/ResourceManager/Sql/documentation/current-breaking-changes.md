@@ -39,3 +39,61 @@
 -->
 
 ## Current Breaking Changes
+
+The following cmdlets were affected this release:
+
+**New-AzureRmSqlDatabaseFailoverGroup**
+- Tag parameter was removed
+
+```powershell
+# Old
+New-AzureRmSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName server1 -FailoverGroupName fg -PartnerServerName server2 -Tag @{ Environment="Test" }
+
+# New
+New-AzureRmSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName server1 -FailoverGroupName fg -PartnerServerName server2
+```
+
+**Set-AzureRmSqlDatabaseFailoverGroup**
+- Tag parameter was removed
+
+```powershell
+# Old
+Set-AzureRmSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName server1 -FailoverGroupName fg -FailoverPolicy Automatic -Tag @{ Environment="Test" }
+
+# New
+Set-AzureRmSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName server1 -FailoverGroupName fg -FailoverPolicy Automatic
+```
+
+**Add-AzureRmSqlDatabaseToFailoverGroup**
+- Tag parameter was removed
+
+```powershell
+# Old
+Add-AzureRmSqlDatabaseToFailoverGroup -ResourceGroupName rg -ServerName server1 -FailoverGroupName fg -Database $db1 -Tag @{ Environment="Test" }
+
+# New
+Add-AzureRmSqlDatabaseToFailoverGroup -ResourceGroupName rg -ServerName server1 -FailoverGroupName fg -Database $db1
+```
+
+**Remove-AzureRmSqlDatabaseFromFailoverGroup**
+- Tag parameter was removed
+
+```powershell
+# Old
+Remove-AzureRmSqlDatabaseFromFailoverGroup -ResourceGroupName rg -ServerName server1 -FailoverGroupName fg -Database $db1 -Tag @{ Environment="Test" }
+
+# New
+Remove-AzureRmSqlDatabaseFromFailoverGroup -ResourceGroupName rg -ServerName server1 -FailoverGroupName fg -Database $db1
+```
+
+**Remove-AzureRmSqlDatabaseFailoverGroup**
+- PartnerResourceGroupName parameter was removed
+- PartnerServerName parameter was removed
+
+```powershell
+# Old
+Remove-AzureRmSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName server1 -FailoverGroupName fg -PartnerServerName server2 -PartnerResourceGroupName rg
+
+# New
+Remove-AzureRmSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName server1 -FailoverGroupName fg
+```
