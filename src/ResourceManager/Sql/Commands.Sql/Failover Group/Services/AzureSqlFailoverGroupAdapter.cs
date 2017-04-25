@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
 
             if (model.FailoverWithDataLossGracePeriodHours.HasValue)
             {
-                readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = model.FailoverWithDataLossGracePeriodHours * 60;
+                readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = checked(model.FailoverWithDataLossGracePeriodHours * 60);
             }
 
             var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.FailoverGroupName, Util.GenerateTracingId(), new FailoverGroupCreateOrUpdateParameters()
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
 
             if (model.FailoverWithDataLossGracePeriodHours.HasValue)
             {
-                readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = model.FailoverWithDataLossGracePeriodHours * 60;
+                readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = checked(model.FailoverWithDataLossGracePeriodHours * 60);
             }
 
             var resp = Communicator.PatchUpdate(model.ResourceGroupName, model.ServerName, model.FailoverGroupName, Util.GenerateTracingId(), new FailoverGroupPatchUpdateParameters()

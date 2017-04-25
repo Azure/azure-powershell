@@ -77,6 +77,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The grace period before automatic failover with data loss is triggered during an outage.")]
         [ValidateNotNullOrEmpty]
+        [ValidateRange(0, int.MaxValue)]
         public int GracePeriodWithDataLossHours { get; set; }
 
         /// <summary>
@@ -85,6 +86,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         [Parameter(Mandatory = false, DontShow = true,
             HelpMessage = "The grace period before automatic failover with data loss is triggered during an outage.")]
         [ValidateNotNullOrEmpty]
+        [ValidateRange(0, int.MaxValue)]
         [Obsolete("This parameter will be deprecated in the next release.")]
         public int GracePeriodWithDataLossHour { get; set; }
 
