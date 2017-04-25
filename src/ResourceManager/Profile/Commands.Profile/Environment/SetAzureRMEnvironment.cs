@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.Profile
                     }
 
                     IAzureEnvironment newEnvironment = new AzureEnvironment { Name = Name, OnPremise = EnableAdfsAuthentication };
-                    var profile = AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>();
+                    var profile = DefaultProfile as AzureRmProfile;
                     if (profile.EnvironmentTable.ContainsKey(Name))
                     {
                         newEnvironment = profile.EnvironmentTable[Name];
