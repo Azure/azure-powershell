@@ -43,7 +43,8 @@ function InitializeReceivedControlNumberSession([Object] $resourceGroup, [String
 {
     "ControlNumber":  $controlNumberValue,
     "ControlNumberChangedTime":  "\/Date(1487793941363)\/",
-    "DecodeReceivedMessageFailure":  "false"
+    "DecodeReceivedMessageFailure":  "false",
+    "MessageType": "X12"
 }
 "@
 		}
@@ -101,6 +102,7 @@ function Test-GetIntegrationAccountReceivedIcn
 	$result =  Get-AzureRmIntegrationAccountReceivedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountX12AgreementName -ControlNumberValue "1000"
 	Assert-AreEqual "1000" $result.ControlNumber
 	Assert-AreEqual "02/22/2017 20:05:41" $result.ControlNumberChangedTime
+	Assert-AreEqual "X12" $result.MessageType
 
 	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -Force
 }

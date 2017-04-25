@@ -74,17 +74,19 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            var integrationAccountGeneratedIcn = this.IntegrationAccountClient.GetIntegrationAccountReceivedControlNumber(
+            var integrationAccountReceivedIcn = this.IntegrationAccountClient.GetIntegrationAccountReceivedControlNumber(
                 resourceGroupName: this.ResourceGroupName,
                 integrationAccountName: this.Name,
                 integrationAccountAgreementName: this.AgreementName,
+                agreementType: Management.Logic.Models.AgreementType.X12,
                 controlNumber: this.ControlNumberValue);
 
-            integrationAccountGeneratedIcn.ControlNumber = this.ControlNumberValue;
-            integrationAccountGeneratedIcn.IsMessageProcessingFailed = this.IsMessageProcessingFailed;
-            integrationAccountGeneratedIcn.ControlNumberChangedTime = DateTime.UtcNow > integrationAccountGeneratedIcn.ControlNumberChangedTime ?
+            integrationAccountReceivedIcn.MessageType = MessageType.X12;
+            integrationAccountReceivedIcn.ControlNumber = this.ControlNumberValue;
+            integrationAccountReceivedIcn.IsMessageProcessingFailed = this.IsMessageProcessingFailed;
+            integrationAccountReceivedIcn.ControlNumberChangedTime = DateTime.UtcNow > integrationAccountReceivedIcn.ControlNumberChangedTime ?
                 DateTime.UtcNow :
-                integrationAccountGeneratedIcn.ControlNumberChangedTime.AddTicks(1);
+                integrationAccountReceivedIcn.ControlNumberChangedTime.AddTicks(1);
 
             this.ConfirmAction(
                 processMessage: string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateReceivedControlNumberMessage, this.ControlNumberValue, "Microsoft.Logic/integrationAccounts/agreements", this.Name),
@@ -96,7 +98,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                             resourceGroupName: this.ResourceGroupName,
                             integrationAccountName: this.Name,
                             integrationAccountAgreementName: this.AgreementName,
-                            integrationAccountControlNumber: integrationAccountGeneratedIcn),
+                            agreementType: Management.Logic.Models.AgreementType.X12,
+                            integrationAccountControlNumber: integrationAccountReceivedIcn),
                         enumerateCollection: true);
                 });
         }

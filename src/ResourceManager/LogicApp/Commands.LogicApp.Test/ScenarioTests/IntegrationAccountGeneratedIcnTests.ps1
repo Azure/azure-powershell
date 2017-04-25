@@ -42,7 +42,8 @@ function InitializeGeneratedControlNumberSession([Object] $resourceGroup, [Strin
 			$content = ConvertFrom-Json @"
 {
     "ControlNumber":  "1000",
-    "ControlNumberChangedTime":  "\/Date(1487793941363)\/"
+    "ControlNumberChangedTime":  "\/Date(1487793941363)\/",
+    "MessageType": "X12"
 }
 "@
 		}
@@ -100,6 +101,7 @@ function Test-GetIntegrationAccountGeneratedControlNumber
 	$result =  Get-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountX12AgreementName
 	Assert-AreEqual "1000" $result.ControlNumber
 	Assert-AreEqual "02/22/2017 20:05:41" $result.ControlNumberChangedTime
+  Assert-AreEqual "X12" $result.MessageType
 
 	$result1 =  Get-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName
 	Assert-True { $result1.Count -gt 0 }

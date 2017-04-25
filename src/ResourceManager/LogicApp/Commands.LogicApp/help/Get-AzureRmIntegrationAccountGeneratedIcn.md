@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmIntegrationAccountGeneratedIcn
 
 ## SYNOPSIS
-This cmdlet retrieves the current value of the generated interchange control number per agreement.
+This cmdlet retrieves the current value of the generated X12 interchange control number per agreement.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Get-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName <String> -Name <Str
 ```
 
 ## DESCRIPTION
-This cmdlet is meant to be used in disaster recovery scenarios to retrieve the current value of the generated interchange control number so to write back an increased value with Set-AzureRmIntegrationAccountGeneratedIcn.
+This cmdlet is meant to be used in disaster recovery scenarios to retrieve the current value of the generated X12 interchange control number so to write back an increased value with Set-AzureRmIntegrationAccountGeneratedIcn.
 The interchange control number should be increased to avoid duplicate interchange control numbers for the numbers that could not yet be replicated to the passive region when the disaster happened in the active region.
 
 ## EXAMPLES
@@ -27,6 +27,7 @@ The interchange control number should be increased to avoid duplicate interchang
 PS C:\> Get-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName "ResourceGroup1" -Name "IntegrationAccount1" -AgreementName "IntegrationAccountAgreement1"
 ControlNumber            : 1000
 ControlNumberChangedTime : 2/15/2017 12:36:00 AM
+IsMessageProcessingFailed:
 ```
 
 This command gets the integration account generated interchange control number by agreement name.
@@ -37,14 +38,17 @@ PS C:\> Get-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName "ResourceGr
 ControlNumber            : 1000
 ControlNumberChangedTime : 2/22/2017 8:05:41 PM
 AgreementName            : onesdk4351
+IsMessageProcessingFailed:
 
 ControlNumber            : 1000
 ControlNumberChangedTime : 2/22/2017 8:05:41 PM
 AgreementName            : onesdk4619
+IsMessageProcessingFailed:
 
 ControlNumber            : No generated control number was found for this agreement.
 ControlNumberChangedTime : 1/1/0001 12:00:00 AM
 AgreementName            : onesdk6720
+IsMessageProcessingFailed:
 ```
 
 This command gets all the generated interchange control numbers by integration account name.
