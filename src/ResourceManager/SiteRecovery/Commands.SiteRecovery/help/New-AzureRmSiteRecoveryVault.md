@@ -23,6 +23,21 @@ The **New-AzureRmSiteRecoveryVault** cmdlet creates an Azure Site Recovery servi
 
 ## PARAMETERS
 
+### -Location
+Specifies the geographical location name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the vault.
 
@@ -40,21 +55,6 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 Specifies the name of a resource group.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-Specifies the geographical location name.
 
 ```yaml
 Type: String

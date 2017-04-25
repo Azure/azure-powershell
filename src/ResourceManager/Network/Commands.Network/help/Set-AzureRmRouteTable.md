@@ -13,8 +13,7 @@ Sets the goal state for a route table.
 ## SYNTAX
 
 ```
-Set-AzureRmRouteTable -RouteTable <PSRouteTable> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+Set-AzureRmRouteTable -RouteTable <PSRouteTable> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,45 +71,6 @@ The command passes that table to the Add-AzureRmRouteConfig cmdlet by using the 
 **Add-AzureRmRouteConfig** adds the route named Route07, and then passes the result to the current cmdlet, which updates the table to reflect your changes.
 
 ## PARAMETERS
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -RouteTable
 Specifies a route table object that represents the goal state to which this cmdlet sets the route table.

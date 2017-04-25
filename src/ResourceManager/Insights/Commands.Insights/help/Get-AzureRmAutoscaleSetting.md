@@ -200,15 +200,15 @@ This command gets the Autoscale setting named DefaultServerFarm-Default-Web-East
 
 ## PARAMETERS
 
-### -ResourceGroup
-Specifies the name of the resource group.
+### -DetailedOutput
+Indicates that this operation displays full details in the output.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -230,15 +230,15 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -DetailedOutput
-Indicates that this operation displays full details in the output.
+### -ResourceGroup
+Specifies the name of the resource group.
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-ms.assetid: 004F9302-CB5B-45CA-B11C-13E99DE93840
+ms.assetid: 2BA76B02-B786-4A77-86E0-E7D4191120B5
 online version: 
 schema: 2.0.0
 ---
@@ -15,15 +15,13 @@ Exports an API to a file.
 ### Export to pipeline (Default)
 ```
 Export-AzureRmApiManagementApi -Context <PsApiManagementContext> -ApiId <String>
- -SpecificationFormat <PsApiManagementApiFormat> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SpecificationFormat <PsApiManagementApiFormat> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Export to File
 ```
 Export-AzureRmApiManagementApi -Context <PsApiManagementContext> -ApiId <String>
- -SpecificationFormat <PsApiManagementApiFormat> -SaveAs <String> [-Force] [-PassThru]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
+ -SpecificationFormat <PsApiManagementApiFormat> -SaveAs <String> [-Force] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -41,21 +39,6 @@ This command exports an API to a WADL file.
 
 ## PARAMETERS
 
-### -Context
-Specifies a **PsApiManagementContext** object.
-
-```yaml
-Type: PsApiManagementContext
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ApiId
 Specifies the ID of the API to export.
 
@@ -71,28 +54,12 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -SpecificationFormat
-Specifies the API format.
-The acceptable values for this parameter are: Wadl and Swagger.
+### -Context
+Specifies a **PsApiManagementContext** object.
 
 ```yaml
-Type: PsApiManagementApiFormat
+Type: PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SaveAs
-Specifies the file path to which to save the exported API.
-
-```yaml
-Type: String
-Parameter Sets: Export to File
 Aliases: 
 
 Required: True
@@ -132,41 +99,49 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -SaveAs
+Specifies the file path to which to save the exported API.
 
 ```yaml
 Type: String
+Parameter Sets: Export to File
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SpecificationFormat
+Specifies the API format.
+psdx_paramvalues Wadl and Swagger.
+
+```yaml
+Type: PsApiManagementApiFormat
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
+Accepted values: Wadl, Swagger, Wsdl
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -179,21 +154,6 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named

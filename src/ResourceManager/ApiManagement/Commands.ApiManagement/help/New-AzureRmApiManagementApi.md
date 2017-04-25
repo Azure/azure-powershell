@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-ms.assetid: 74D1057B-1753-4B2D-A6C1-22F923A39FBC
+ms.assetid: 664CF009-FC52-4F1B-933B-3DEBD05AC8C5
 online version: 
 schema: 2.0.0
 ---
@@ -16,8 +16,7 @@ Creates an API.
 New-AzureRmApiManagementApi -Context <PsApiManagementContext> [-ApiId <String>] -Name <String>
  [-Description <String>] -ServiceUrl <String> -Path <String> -Protocols <PsApiManagementSchema[]>
  [-AuthorizationServerId <String>] [-AuthorizationScope <String>] [-SubscriptionKeyHeaderName <String>]
- [-SubscriptionKeyQueryParamName <String>] [-ProductIds <String[]>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ [-SubscriptionKeyQueryParamName <String>] [-ProductIds <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,21 +32,6 @@ PS C:\>New-AzureRmApiManagementApi -Context $ApiMgmtContext -Name "Echo api" -Se
 This command creates an API named EchoApi with the specified URL.
 
 ## PARAMETERS
-
-### -Context
-Specifies a **PsApiManagementContext** object.
-
-```yaml
-Type: PsApiManagementContext
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -ApiId
 Specifies the ID of the API to create.
@@ -65,12 +49,44 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Name
-Specifies the name of the web API.
-This is the public name of the API as it appears on the developer and admin portals.
+### -AuthorizationScope
+Specifies the OAuth operations scope.
+The default value is $Null.
 
 ```yaml
 Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AuthorizationServerId
+Specifies the OAuth authorization server ID.
+The default value is $Null.
+You must specify this parameter if *AuthorizationScope* is specified.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Context
+Specifies a **PsApiManagementContext** object.
+
+```yaml
+Type: PsApiManagementContext
 Parameter Sets: (All)
 Aliases: 
 
@@ -96,10 +112,9 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ServiceUrl
-Specifies the URL of the web service that exposes the API.
-This URL is used only by Azure API Management, and is not made public.
-The URL must be one to 2000 characters long.
+### -Name
+Specifies the name of the web API.
+This is the public name of the API as it appears on the developer and admin portals.
 
 ```yaml
 Type: String
@@ -130,6 +145,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ProductIds
+Specifies an array of product IDs to which to add the new API.
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Protocols
 Specifies an array of web API protocols.
 Valid values are http, https.
@@ -140,6 +170,7 @@ The default value is $Null.
 Type: PsApiManagementSchema[]
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Http, Https
 
 Required: True
 Position: Named
@@ -148,33 +179,17 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -AuthorizationServerId
-Specifies the OAuth authorization server ID.
-The default value is $Null.
-You must specify this parameter if *AuthorizationScope* is specified.
+### -ServiceUrl
+Specifies the URL of the web service that exposes the API.
+This URL is used only by Azure API Management, and is not made public.
+The URL must be one to 2000 characters long.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -AuthorizationScope
-Specifies the OAuth operations scope.
-The default value is $Null.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -210,60 +225,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProductIds
-Specifies an array of product IDs to which to add the new API.
-
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

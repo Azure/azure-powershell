@@ -116,6 +116,7 @@ This cmdlet then returns all record sets in the zone (of all names and types).
 Type: RecordType
 Parameter Sets: (All)
 Aliases: 
+Accepted values: A, AAAA, CNAME, MX, NS, PTR, SOA, SRV, TXT
 
 Required: False
 Position: Named
