@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specify the name of the cluster")]
         [ValidateNotNullOrEmpty()]
+        [Alias("ClusterName")]
         public override string Name { get; set; }
 
         public override void ExecuteCmdlet()
@@ -86,7 +87,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             if (ShouldProcess(target: this.NodeType, action: string.Format("Remove a nodetype {0} from {0} ", this.NodeType, this.Name)))
             {
-                ComputeClient.VirtualMachineScaleSets.Delete(this.ResourceGroupName, this.NodeType);
+                this.ComputeClient.VirtualMachineScaleSets.Delete(this.ResourceGroupName, this.NodeType);
 
                 cluster = RemoveNodeTypeFromSfrp();
 

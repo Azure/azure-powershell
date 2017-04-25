@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Security.Cryptography.X509Certificates;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Models
 {
@@ -20,17 +20,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
     {
         public string VmUserName { get; set; }
 
-        public X509Certificate2 Certificate { get; set; }
-
-        public string Thumbprint { get; set; }
-
-        public string KeyVaultName { get; set; }
-
-        public string KeyVaultCertificateName { get; set; }
-
-        public string KeyVaultSecretName { get; set; }
-
-        public string KeyVaultSecretVersion { get; set; }
+        public List<PSKeyVault> CertificateInformation { get; set; }
 
         public PSDeploymentExtended DeploymentDetail { get; set; }
 
@@ -44,22 +34,13 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
             PSDeploymentExtended deployment, 
             PSCluster cluster,
             string vmUserName,
-            X509Certificate2 certificate,
-            string thumbprint,
-            string keyVaultName,
-            string keyVaultCertificateName,
-            string keyVaultSecretName,
-            string keyVaultSecretVersion)
+            List<PSKeyVault> certificateInformations
+        )
         {
             this.DeploymentDetail = deployment;
             this.ClusterDetail = cluster;
             this.VmUserName = vmUserName;
-            this.KeyVaultName = keyVaultName;
-            this.Certificate = certificate;
-            this.KeyVaultCertificateName = keyVaultCertificateName;
-            this.KeyVaultSecretName = keyVaultSecretName;
-            this.KeyVaultSecretVersion = keyVaultSecretVersion;
-            this.Thumbprint = thumbprint;
+            this.CertificateInformation = certificateInformations;
         }
     }
 }

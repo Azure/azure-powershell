@@ -34,5 +34,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
         internal string Version { get; set; }
 
         internal string Thumbprint { get; set; }
+
+        internal string PfxFileOutputPath { get; set; }
     }
 }

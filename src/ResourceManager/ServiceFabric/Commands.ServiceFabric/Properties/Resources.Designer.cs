@@ -189,9 +189,54 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Can not update Sku while durability is Bronze , please update durability to Silver or above first.
         /// </summary>
-        internal static string CannotUpdateSkuWithDurabilityWithBronze {
+        internal static string CannotUpdateSkuWithBronzeDurability {
             get {
-                return ResourceManager.GetString("CannotUpdateSkuWithDurabilityWithBronze", resourceCulture);
+                return ResourceManager.GetString("CannotUpdateSkuWithBronzeDurability", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Checking deployment status in {0} seconds.
+        /// </summary>
+        internal static string CheckingDeploymentStatus {
+            get {
+                return ResourceManager.GetString("CheckingDeploymentStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The state of the cluster is : {0}.
+        /// </summary>
+        internal static string ClusterStateVerbose {
+            get {
+                return ResourceManager.GetString("ClusterStateVerbose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create self signed certificate failed with Status: {0}, StatusDetails: {1}, Code: {2}, Message: {3}.
+        /// </summary>
+        internal static string CreateSelfSignedCertificateFailedWithErrorDetail {
+            get {
+                return ResourceManager.GetString("CreateSelfSignedCertificateFailedWithErrorDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create self signed certificate failed with Status: {0}, StatusDetails: {1}.
+        /// </summary>
+        internal static string CreateSelfSignedCertificateFailedWithoutErrorDetail {
+            get {
+                return ResourceManager.GetString("CreateSelfSignedCertificateFailedWithoutErrorDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating self signed certificate timeout.
+        /// </summary>
+        internal static string CreateSelfSignedCertificateTimeout {
+            get {
+                return ResourceManager.GetString("CreateSelfSignedCertificateTimeout", resourceCulture);
             }
         }
         
@@ -214,6 +259,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deployment is running.
+        /// </summary>
+        internal static string DeploymentVerbose {
+            get {
+                return ResourceManager.GetString("DeploymentVerbose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contains duplicate fabric setting {0}.
         /// </summary>
         internal static string DuplicatedFabricSetting {
@@ -223,7 +277,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Durability level mismatches between node type and Service Fabric cluster setting.
+        ///   Looks up a localized string similar to The durability level is mismatched between the cluster and the VM extension..
         /// </summary>
         internal static string DurabilityLevelMismatches {
             get {
@@ -286,6 +340,42 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid directory {0}.
+        /// </summary>
+        internal static string InvalidDirectory {
+            get {
+                return ResourceManager.GetString("InvalidDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File name {0} contains invalid characters.
+        /// </summary>
+        internal static string InvalidFileName {
+            get {
+                return ResourceManager.GetString("InvalidFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invaild input.
+        /// </summary>
+        internal static string InvalidInput {
+            get {
+                return ResourceManager.GetString("InvalidInput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The supplied password must be between 12-123 characters long and must satisfy at least 3 of password complexity requirements from the following: \r\n1) Contains an uppercase character\r\n2) Contains a lowercase character\r\n3) Contains a numeric digit\r\n4) Contains a special character.
+        /// </summary>
+        internal static string InvalidPassword {
+            get {
+                return ResourceManager.GetString("InvalidPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid template file.
         /// </summary>
         internal static string InvalidTemplateFile {
@@ -318,6 +408,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         internal static string NewExistingCluster {
             get {
                 return ResourceManager.GetString("NewExistingCluster", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No CertificateOperation returned when creating self signed certificate in Azure key vault.
+        /// </summary>
+        internal static string NoCertificateOperationReturned {
+            get {
+                return ResourceManager.GetString("NoCertificateOperationReturned", resourceCulture);
             }
         }
         
@@ -367,6 +466,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The capacity of the node type is null.
+        /// </summary>
+        internal static string SkuCapacityIsNull {
+            get {
+                return ResourceManager.GetString("SkuCapacityIsNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Primay node count is {0} which is less than the node count {1} that target reliability level requires, Please use &apos;AutoAddNodes&apos; switch to automatically increase nodes count.
         /// </summary>
         internal static string UseAutoToIncreaseNodesCount {
@@ -381,6 +489,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         internal static string VaultCreatedWithOutAccessPolicy {
             get {
                 return ResourceManager.GetString("VaultCreatedWithOutAccessPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Virtual machine scale sets : {0}, state is {1}.
+        /// </summary>
+        internal static string VmssVerbose {
+            get {
+                return ResourceManager.GetString("VmssVerbose", resourceCulture);
             }
         }
     }

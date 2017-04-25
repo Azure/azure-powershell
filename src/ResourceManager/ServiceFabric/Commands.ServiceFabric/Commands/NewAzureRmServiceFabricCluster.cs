@@ -17,8 +17,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
+using System.Management.Automation.Language;
 using System.Reflection;
 using System.Security;
+using System.Threading;
+using System.Threading.Tasks;
 using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
 using Newtonsoft.Json.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
@@ -28,6 +31,7 @@ using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.Azure.Management.ServiceFabric;
+using Microsoft.PowerShell.Commands;
 using Microsoft.WindowsAzure.Commands.Common;
 using Newtonsoft.Json;
 
@@ -36,17 +40,17 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
     [Cmdlet(VerbsCommon.New, CmdletNoun.AzureRmServiceFabricCluster, SupportsShouldProcess = true), OutputType(typeof(PSDeploymentResult))]
     public class NewAzureRmServiceFabricCluster : ServiceFabricClusterCertificateCmdlet
     {
-        public override string Name { get; set; }
+        public override string Name { get; set; } 
 
         public const string WindowsTemplateRelativePath = @"Template\Windows";
         public const string LinuxTemplateRelativePath = @"Template\Linux";
         public const string ParameterFileName = @"parameter.json";
         public const string TemplateFileName = @"template.json";
-
+        
         public const string DefaultPublicDnsFormat = "{0}.{1}.cloudapp.azure.com";
+        private readonly string DefaultDurability = DurabilityLevel.Bronze.ToString();
 
-        private string adminUserName = string.Empty;
-        private string durability = DurabilityLevel.Bronze.ToString();
+        private string adminUserName = string.Empty; 
         private string reliabilityLevel = ReliabilityLevel.Bronze.ToString();
         private string domainNameLabel = string.Empty;
 
@@ -57,9 +61,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         private string adminPasswordParameter = string.Empty;
         private string adminUserParameter = string.Empty;
         private string locationParameter = string.Empty;
+        private string skuParameter = string.Empty;
+
         private string thumbprintParameter = string.Empty;
         private string keyVaultParameter = string.Empty;
         private string certificateUrlParameter = string.Empty;
+
         private string domainNameLabelParameter = string.Empty;
 
         /// <summary>
@@ -107,10 +114,65 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [ValidateNotNullOrEmpty]
         public string ParameterFile { get; set; }
 
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultId,
+                   HelpMessage = "Azure key vault resource id")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultId,
+                   HelpMessage = "Azure key vault resource id")]
+        [ValidateNotNullOrEmpty]
+        public override string KeyVaultResouceId { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultId,
+                HelpMessage = "The existing Pfx file path for the primary cluster certificate")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
+                HelpMessage = "The existing Pfx file path for the primary cluster certificate")]
+        [ValidateNotNullOrEmpty]
+        [Alias("Source")]
+        public override string PfxSourceFile { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultId,
+           HelpMessage = "The folder of the new Pfx file to be created")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultName,
-                   HelpMessage = "Azure key vault resource group name")]
+           HelpMessage = "The folder of the new Pfx file to be created")]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByDefaultArmTemplate,
+           HelpMessage = "The folder of the new Pfx file to be created")]
+        [ValidateNotNullOrEmpty]
+        [Alias("Destination")]
+        public override string PfxOutputFolder { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultId,
+                  HelpMessage = "The password of the pfx file")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
-                   HelpMessage = "Azure key vault resource group name")]
+                  HelpMessage = "The password of the pfx file")]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultId,
+                  HelpMessage = "The password of the pfx file")]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultName,
+                  HelpMessage = "The password of the pfx file")]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByDefaultArmTemplate,
+                  HelpMessage = "The password of the pfx file")]
+        [ValidateNotNullOrEmpty]
+        [Alias("CertPassword")]
+        public override SecureString CertificatePassword { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultId,
+                HelpMessage = "The existing Pfx file path for the secondary cluster certificate")]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
+                HelpMessage = "The existing Pfx file path for the secondary cluster certificate")]
+        [ValidateNotNullOrEmpty]
+        [Alias("SecSource")]
+        public string SecondaryPfxSourceFile { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultId,
+                 HelpMessage = "The password of the pfx file")]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
+                 HelpMessage = "The password of the pfx file")]
+        [ValidateNotNullOrEmpty]
+        [Alias("SecCertPassword")]
+        public virtual SecureString SecondaryCertificatePassword { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultName,
+              HelpMessage = "Azure key vault resource group name")]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
+              HelpMessage = "Azure key vault resource group name")]
         [ValidateNotNullOrEmpty]
         public override string KeyVaultResouceGroupName { get; set; }
 
@@ -120,13 +182,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 HelpMessage = "Azure key vault name")]
         [ValidateNotNullOrEmpty]
         public override string KeyVaultName { get; set; }
-
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultId,
-                   HelpMessage = "Azure key vault resource id")]
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultId,
-                   HelpMessage = "Azure key vault resource id")]
-        [ValidateNotNullOrEmpty]
-        public override string KeyVaultResouceId { get; set; }
 
         #region ByDefaultArmTemplate
 
@@ -149,7 +204,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         private int clusterSize = 5;
         [Parameter(Mandatory = false, ParameterSetName = ByDefaultArmTemplate, ValueFromPipeline = true,
                    HelpMessage = "The number of nodes in the cluster. Default is 5 nodes")]
-        [ValidateRange(1, 2147483647)]
+        [ValidateRange(1, 99)]
         public int ClusterSize
         {
             get { return this.clusterSize; }
@@ -195,15 +250,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             set { this.vmImage = value; }
         }
 
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultId,
-          HelpMessage = "The destination path of the new Pfx file to be created")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultName,
-          HelpMessage = "The destination path of the new Pfx file to be created")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByDefaultArmTemplate,
-          HelpMessage = "The destination path of the new Pfx file to be created")]
-        [ValidateNotNullOrEmpty]
-        [Alias("Destination")]
-        public override string PfxDestinationFile { get; set; }
+        [Parameter(Mandatory = false, ParameterSetName = ByDefaultArmTemplate, ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "The Vm Sku")]
+        public string Sku { get; set; }
+
         #endregion
 
         private string resourceLocation;
@@ -220,7 +270,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(target: this.Name, action: string.Format("Create an new cluster {0} ", this.Name)))
+            base.ExecuteCmdlet();
+
+            if (ShouldProcess(target:  this.ResourceGroupName, action: string.Format("Create an new cluster {0} ", this.Name ??this.ResourceGroupName)))
             {
                 switch (ParameterSetName)
                 {
@@ -234,12 +286,85 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
         }
 
+        protected override List<string> GetPfxSrcFiles()
+        {
+            return new List<string>() { this.PfxSourceFile, this.SecondaryPfxSourceFile };
+        }
+
+        protected override SecureString GetPfxPassword(string pfxFilePath)
+        {
+            if (this.PfxSourceFile != null)
+            {
+                if (this.PfxSourceFile.Equals(pfxFilePath, StringComparison.OrdinalIgnoreCase))
+                {
+                    return this.CertificatePassword;
+                }
+            }
+
+            if (this.SecondaryPfxSourceFile != null)
+            {
+                if (this.SecondaryPfxSourceFile.Equals(pfxFilePath, StringComparison.OrdinalIgnoreCase))
+                {
+                    return this.SecondaryCertificatePassword;
+                }
+            }
+
+            throw new PSArgumentException("pfxFilePath");
+        }
+
+
+        protected override void Validate()
+        {
+            base.Validate();
+
+            if (ParameterSetName.Equals(ByDefaultArmTemplate))
+            {
+                if (this.VmPassword == null)
+                {
+                    throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidPassword);
+                }
+
+                var plainPassword = this.VmPassword.ConvertToString();
+                if (plainPassword.Length < 12 || plainPassword.Length > 123)
+                {
+                    throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidPassword);
+                }
+
+                int requirements = 0;
+
+                if (plainPassword.Any(char.IsUpper))
+                {
+                    ++requirements;
+                }
+
+                if (plainPassword.Any(char.IsLower))
+                {
+                    ++requirements;
+                }
+
+                if (plainPassword.Any(char.IsDigit))
+                {
+                    ++requirements;
+                }
+
+                if (plainPassword.Any(char.IsLetterOrDigit))
+                {
+                    ++requirements;
+                }
+
+                if (requirements < 3)
+                {
+                    throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidPassword);
+                }
+            }
+        }
+
         private void DeployWithoutDefaultTemplate()
         {
-            var deploymentName = GenerateDeploymentName();
             var deployment = CreateBasicDeployment(DeploymentMode.Incremental, null);
 
-            ParseTemplate();
+            ParseTemplate(true);
+            TranslateParameters(true);
             ExtractParametersWithoutDefaultTemplate((JObject)deployment.Properties.Parameters);
 
             ResourceManagerClient.ResourceGroups.CreateOrUpdate(
@@ -253,16 +378,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             SetCertSubjectNameIfApplicable(resourceGroup.Location);
 
-            var certInformation = GetOrCreateCertificateInformation();
+            List<CertificateInformation> certificateInformations;
+            deployment.Properties.Parameters =
+                FillCertificateInformationInParameters((JObject) deployment.Properties.Parameters, out certificateInformations);
 
-            deployment.Properties.Parameters = SetParameters(
-                (JObject)deployment.Properties.Parameters,
-                certInformation.KeyVault.Id,
-                certInformation.SecretUrl,
-                certInformation.Thumbprint,
-                this.durability,
-                this.reliabilityLevel);
-
+            WriteVerboseWithTimestamp("Begin to validate deployment");
             var validateResult = ResourceManagerClient.Deployments.Validate(
               ResourceGroupName,
               GenerateDeploymentName(),
@@ -271,45 +391,32 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             CheckValidationResult(validateResult);
 
-            DeploymentExtended deploymentDetail = null;
+            WriteVerboseWithTimestamp("Template is valid");
 
-            PrintDetailIfThrow(() =>
-                 deploymentDetail = ResourceManagerClient.Deployments.CreateOrUpdate(
-                     ResourceGroupName,
-                     deploymentName,
-                     deployment));
-
-            var cluster = SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name);
-
-            WriteObject(
-                new PSDeploymentResult(
-                    deploymentDetail== null ? null : new PSDeploymentExtended(deploymentDetail),
-                    new PSCluster(cluster),
-                    this.adminUserParameter,
-                    certInformation.Certificate,
-                    certInformation.Thumbprint,
-                    certInformation.KeyVault.Name,
-                    certInformation.CertificateName,
-                    certInformation.SecretName,
-                    certInformation.Version),
-                true);
+            WaitForDeployment(deployment, certificateInformations);
         }
 
         private void DeployWithDefaultTemplate()
         {
             this.Name = this.ResourceGroupName;
-            var existingCluster = SafeGetResource(
-                 () => SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name));
-
-            SetReliabilityLevel();
+            var existingCluster = SafeGetResource(() => SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name));
 
             if (existingCluster != null)
             {
-                throw new PSInvalidOperationException(
-                    string.Format(
-                        ServiceFabricProperties.Resources.NewExistingCluster,
-                        this.ResourceGroupName));
+                if (!existingCluster.ClusterState.Equals("WaitingForNodes", StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new PSInvalidOperationException(
+                        string.Format(
+                            ServiceFabricProperties.Resources.NewExistingCluster,
+                            this.ResourceGroupName));
+                }
+                else
+                {
+                    WriteVerbose(string.Format("Found existing cluster {0} which's status is waiting for nodes", this.Name));
+                }
             }
+
+            SetReliabilityLevel();
 
             var assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             var templateFilePath = string.Empty;
@@ -344,29 +451,34 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 });
 
             var deployment = CreateBasicDeployment(DeploymentMode.Incremental, null);
-            ParseTemplate();
 
+            ParseTemplate(false);
+            TranslateParameters(false);
             var parameters = (JObject)deployment.Properties.Parameters;
+
             SetParameter(ref parameters, this.clusterNameParameter, this.Name);
 
             ExtractParametersWithDefaultTemplate((JObject)deployment.Properties.Parameters);
 
             var resourceGroup = this.ResourceManagerClient.ResourceGroups.Get(this.ResourceGroupName);
             SetCertSubjectNameIfApplicable(resourceGroup.Location);
-            var certInformation = GetOrCreateCertificateInformation();
+            var certInformation = GetOrCreateCertificateInformation()[0];
 
             deployment.Properties.Parameters = SetParameters(
                (JObject)deployment.Properties.Parameters,
                certInformation.KeyVault.Id,
                certInformation.SecretUrl,
                certInformation.Thumbprint,
-               this.durability,
+               this.DefaultDurability,
                this.reliabilityLevel,
                this.Location,
                this.Name,
                this.VmPassword.ConvertToString(),
+               this.Sku,
                (int)this.clusterSize
               );
+
+            WriteVerboseWithTimestamp("Begin to validate deployment");
 
             var validateResult = ResourceManagerClient.Deployments.Validate(
                 ResourceGroupName,
@@ -376,15 +488,101 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             CheckValidationResult(validateResult);
 
+            WriteVerboseWithTimestamp("Template is valid");
+
+            WaitForDeployment(deployment, new List<CertificateInformation>() { certInformation});
+        }
+
+        private JObject FillCertificateInformationInParameters(JObject parameters, out List<CertificateInformation> certificateInformations)
+        {
+            certificateInformations = new List<CertificateInformation>();
+            var sourceVaultValue = TryGetParameter(parameters, Constants.SourceVaultValue);
+            var certificateThumbprint = TryGetParameter(parameters, Constants.CertificateThumbprint);
+            var certificateUrlValue = TryGetParameter(parameters, Constants.CertificateUrlValue);
+
+            var secSourceVaultValue = TryGetParameter(parameters, Constants.SecSourceVaultValue);
+            var secCertificateThumbprint = TryGetParameter(parameters, Constants.SecCertificateThumbprint);
+            var secCertificateUrlValue = TryGetParameter(parameters, Constants.SecCertificateUrlValue);
+
+            if (sourceVaultValue != null && certificateThumbprint != null && certificateUrlValue != null)
+            {
+                WriteVerboseWithTimestamp("Found primary certificate parameters in parameters file");
+            }
+            else
+            {
+                throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidTemplateParameterFile);
+            }
+
+            if (secSourceVaultValue != null && secCertificateThumbprint != null && secCertificateUrlValue != null)
+            {
+                WriteVerboseWithTimestamp("Found secondary certificate parameters in parameters file");
+            }
+            else if (secSourceVaultValue == null && secCertificateThumbprint == null && secCertificateUrlValue == null)
+            {
+                WriteVerboseWithTimestamp("There is no secondary certificate parameters in parameters file");
+            }
+            else
+            {
+                throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidTemplateParameterFile);
+            }
+
+            var firstCert = GetOrCreateCertificateInformation()[0];
+            certificateInformations.Add(firstCert);
+
+            SetParameter(ref parameters, Constants.SourceVaultValue, firstCert.KeyVault.Id);
+            SetParameter(ref parameters, Constants.CertificateThumbprint, firstCert.Thumbprint);
+            SetParameter(ref parameters, Constants.CertificateUrlValue, firstCert.SecretUrl);
+
+            if (secSourceVaultValue != null)
+            {
+                var secCert = GetOrCreateCertificateInformation()[0];
+                certificateInformations.Add(firstCert);
+
+                SetParameter(ref parameters, Constants.SecSourceVaultValue, secCert.KeyVault.Id);
+                SetParameter(ref parameters, Constants.SecCertificateThumbprint, secCert.Thumbprint);
+                SetParameter(ref parameters, Constants.SecCertificateUrlValue, secCert.SecretUrl);
+            }
+
+            return parameters;
+        }
+
+        private void WaitForDeployment(Deployment deployment, List<CertificateInformation> certInformations)
+        {
+            var token = new CancellationTokenSource();
             var deploymentName = GenerateDeploymentName();
-
             DeploymentExtended deploymentDetail = null;
+            var deploymentTask = Task.Factory.StartNew(() =>
+            {
+                try
+                {
+                    deploymentDetail = ResourceManagerClient.Deployments.CreateOrUpdate(
+                        this.ResourceGroupName,
+                        deploymentName,
+                        deployment);
+                }
+                finally
+                {
+                    token.Cancel();
+                }
+            });
 
-            PrintDetailIfThrow(() =>
-                deploymentDetail = ResourceManagerClient.Deployments.CreateOrUpdate(
-                    ResourceGroupName,
-                    deploymentName,
-                    deployment));
+            while (!token.IsCancellationRequested)
+            {
+                WriteVerboseWithTimestamp(ServiceFabricProperties.Resources.DeploymentVerbose);
+
+                var c = SafeGetResource(() => this.SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name));
+                if (c != null)
+                {
+                    WriteVerboseWithTimestamp(string.Format(ServiceFabricProperties.Resources.ClusterStateVerbose, c.ClusterState));
+                }
+
+                Thread.Sleep(TimeSpan.FromSeconds(WriteVerboseIntervalInSec));
+            }
+
+            if (deploymentTask.IsFaulted)
+            {
+                PrintDetailIfThrow(() => { throw deploymentTask.Exception; });
+            }
 
             var cluster = SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name);
 
@@ -392,13 +590,16 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 new PSDeploymentResult(
                     deploymentDetail == null ? null : new PSDeploymentExtended(deploymentDetail),
                     new PSCluster(cluster),
-                    this.adminUserParameter,
-                    certInformation.Certificate,
-                    certInformation.Thumbprint,
-                    certInformation.KeyVault.Name,
-                    certInformation.CertificateName,
-                    certInformation.SecretName,
-                    certInformation.Version),
+                    this.adminUserName,
+                    certInformations.Select(c => new PSKeyVault()
+                    {
+                        Certificate = c.Certificate,
+                        Thumbprint = c.Thumbprint,
+                        KeyVaultCertificateName = c.CertificateName,
+                        KeyVaultName = c.KeyVault.Name,
+                        KeyVaultSecretName = c.SecretName,
+                        KeyVaultSecretVersion = c.Version
+                    }).ToList()),
                 true);
         }
 
@@ -488,13 +689,16 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             string location = null,
             string clusterName = null,
             string adminPassword = null,
+            string sku = null,
             int vmSize = -1)
         {
             SetParameter(ref parameters, this.thumbprintParameter, thumbprint);
             SetParameter(ref parameters, this.keyVaultParameter, keyVault);
             SetParameter(ref parameters, this.certificateUrlParameter, certificateUrl);
+
             SetParameter(ref parameters, this.durabilityLevelParameter, durabilityLevel);
             SetParameter(ref parameters, this.reliabilityLevelParameter, reliability);
+            SetParameter(ref parameters, this.Sku, sku);
 
             if (location != null)
             {
@@ -547,25 +751,29 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private void SetParameter(ref JObject parameters, string parameterName, string value)
         {
+            if (value != null) { 
             var token = parameters.Children().SingleOrDefault(
                     j => ((JProperty)j).Name.Equals(parameterName, StringComparison.OrdinalIgnoreCase));
 
-            if (token != null)
+            if (token != null && token.Any())
             {
                 token.First()["value"] = value;
-            }
+            }}
         }
 
         private string TryGetParameter(JObject parameters, string parameterName)
         {
-            var value = parameters.GetValue(
-                parameterName,
-                StringComparison.OrdinalIgnoreCase)["value"];
+            var value = parameters.GetValue(parameterName, StringComparison.OrdinalIgnoreCase);
+            if (value == null)
+            {
+                return null;
+            }
 
-            return value?.ToString();
+            value = value["value"];
+            return value == null ? null : value.ToString();
         }
 
-        private void ParseTemplate()
+        private void ParseTemplate(bool customize)
         {
             var templateString = FileUtilities.DataStore.ReadFileAsText(this.TemplateFile);
 
@@ -589,32 +797,42 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             foreach (var resource in resources)
             {
-                if (resource["type"].ToString()
-                    .Equals(Constants.VirtualMachineScaleSetsType, StringComparison.OrdinalIgnoreCase))
+                if (resource["type"] == null)
+                {
+                    throw new InvalidOperationException(ServiceFabricProperties.Resources.InvalidTemplateFile);
+                }
+
+                var resourceType = resource["type"];
+
+                if (resourceType.ToString().Equals(Constants.VirtualMachineScaleSetsType, StringComparison.OrdinalIgnoreCase))
                 {
                     this.locationParameter = ((JValue)resource.SelectToken("location", true)).ToString();
                     var resourceObject = (JObject)resource;
                     this.vmInstanceParameter = ((JValue)resourceObject.SelectToken("sku.capacity", true)).ToString();
+                    this.skuParameter = ((JValue) resourceObject.SelectToken("sku.name", true)).ToString();
 
                     resourceObject = (JObject)resourceObject.SelectToken("properties.virtualMachineProfile", true);
                     var vmssProfile = resourceObject.ToObject<VirtualMachineScaleSetVMProfile>(serializer);
                     this.adminUserParameter = vmssProfile.OsProfile.AdminUsername;
                     this.adminPasswordParameter = vmssProfile.OsProfile.AdminPassword;
 
-                    foreach (var secret in vmssProfile.OsProfile.Secrets)
+                    if (!customize)
                     {
-                        if (
-                            !secret.SourceVault.Id.Equals(TranslateToParameterName(secret.SourceVault.Id),
-                                StringComparison.OrdinalIgnoreCase))
+                        foreach (var secret in vmssProfile.OsProfile.Secrets)
                         {
-                            this.keyVaultParameter = secret.SourceVault.Id;
-                            foreach (var cert in secret.VaultCertificates)
+                            if (
+                                !secret.SourceVault.Id.Equals(TranslateToParameterName(secret.SourceVault.Id),
+                                    StringComparison.OrdinalIgnoreCase))
                             {
-                                if (
-                                    !cert.CertificateUrl.Equals(TranslateToParameterName(cert.CertificateUrl),
-                                        StringComparison.OrdinalIgnoreCase))
+                                this.keyVaultParameter = secret.SourceVault.Id;
+                                foreach (var cert in secret.VaultCertificates)
                                 {
-                                    this.certificateUrlParameter = cert.CertificateUrl;
+                                    if (
+                                        !cert.CertificateUrl.Equals(TranslateToParameterName(cert.CertificateUrl),
+                                            StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        this.certificateUrlParameter = cert.CertificateUrl;
+                                    }
                                 }
                             }
                         }
@@ -630,45 +848,65 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
                         if (publisher.ToString().Equals(Constants.ServiceFabricPublisher, StringComparison.OrdinalIgnoreCase))
                         {
-                            var extSetting = (JObject)extProperty.SelectToken("settings", true);
+                            var extSetting = (JObject) extProperty.SelectToken("settings", true);
                             if (extSetting["durabilityLevel"] == null ||
                                 extSetting["certificate"] == null ||
                                 extSetting["certificate"]["thumbprint"] == null)
                             {
-                                throw new InvalidOperationException(ServiceFabricProperties.Resources.InvalidTemplateFile);
+                                throw new InvalidOperationException(
+                                    ServiceFabricProperties.Resources.InvalidTemplateFile);
                             }
 
-                            this.durabilityLevelParameter = extSetting["durabilityLevel"].ToString();
-                            this.thumbprintParameter = extSetting["certificate"]["thumbprint"].ToString();
+                            if (!customize)
+                            {
+                                this.durabilityLevelParameter = extSetting["durabilityLevel"].ToString();
+                                this.thumbprintParameter = extSetting["certificate"]["thumbprint"].ToString();
+                            }
                         }
                     }
                 }
 
-                if (resource["type"].ToString().Equals(Constants.ServiceFabricType, StringComparison.OrdinalIgnoreCase))
+                if (resourceType.ToString().Equals(Constants.ServiceFabricType, StringComparison.OrdinalIgnoreCase))
                 {
                     this.clusterNameParameter = ((JValue)resource.SelectToken("name", true)).ToString();
-                    this.reliabilityLevelParameter =
-                        ((JValue)resource.SelectToken("properties.reliabilityLevel", true)).ToString();
+
+                    if (!customize)
+                    {
+                        this.reliabilityLevelParameter =
+                            ((JValue) resource.SelectToken("properties.reliabilityLevel", true)).ToString();
+                    }
                 }
 
-                if (resource["type"].ToString().Equals(Constants.PublicIpAddressesType, StringComparison.OrdinalIgnoreCase))
+                if (resourceType.ToString().Equals(Constants.PublicIpAddressesType, StringComparison.OrdinalIgnoreCase))
                 {
-                    this.domainNameLabelParameter =
-                        ((JValue)resource.SelectToken("properties.dnsSettings.domainNameLabel", true)).ToString();
+                    var value = ((JValue)resource.SelectToken("properties.dnsSettings.domainNameLabel", true)).ToString();
+                    if (this.domainNameLabelParameter == string.Empty ||
+                        value.Length < this.domainNameLabelParameter.Length)
+                    {
+                        this.domainNameLabelParameter = value;
+                    }
                 }
             }
+        }
 
+        void TranslateParameters(bool customize)
+        {
             this.adminUserParameter = TranslateToParameterName(this.adminUserParameter);
             this.locationParameter = TranslateToParameterName(this.locationParameter);
-            this.thumbprintParameter = TranslateToParameterName(this.thumbprintParameter);
-            this.keyVaultParameter = TranslateToParameterName(this.keyVaultParameter);
-            this.certificateUrlParameter = TranslateToParameterName(this.certificateUrlParameter);
             this.clusterNameParameter = TranslateToParameterName(this.clusterNameParameter);
-            this.adminPasswordParameter = TranslateToParameterName(this.adminPasswordParameter);
-            this.vmInstanceParameter = TranslateToParameterName(this.vmInstanceParameter);
-            this.durabilityLevelParameter = TranslateToParameterName(this.durabilityLevelParameter);
-            this.reliabilityLevelParameter = TranslateToParameterName(this.reliabilityLevelParameter);
             this.domainNameLabelParameter = TranslateToParameterName(this.domainNameLabelParameter);
+
+            if (!customize)
+            {
+                this.adminPasswordParameter = TranslateToParameterName(this.adminPasswordParameter);
+                this.vmInstanceParameter = TranslateToParameterName(this.vmInstanceParameter);
+                this.durabilityLevelParameter = TranslateToParameterName(this.durabilityLevelParameter);
+                this.reliabilityLevelParameter = TranslateToParameterName(this.reliabilityLevelParameter);
+                this.thumbprintParameter = TranslateToParameterName(this.thumbprintParameter);
+                this.keyVaultParameter = TranslateToParameterName(this.keyVaultParameter);
+                this.certificateUrlParameter = TranslateToParameterName(this.certificateUrlParameter);
+                this.skuParameter = TranslateToParameterName(this.skuParameter);
+            }
         }
 
         private string TranslateToParameterName(string parameter)
@@ -677,7 +915,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 new char[] { '[', ']', '(', ')', '\'' },
                 StringSplitOptions.RemoveEmptyEntries);
 
-            if (parameterArray.Count() == 1)
+            if (parameterArray.Count() <= 1)
             {
                 return parameter;
             }
@@ -692,7 +930,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidTemplateFile);
                 }
 
-                var variables = jObject.SelectToken("variables");
+                var variables = jObject.SelectToken("variables", true);
                 return TranslateToParameterName(variables[parameterArray[1]].ToString());
             }
             else
@@ -740,7 +978,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 jObject = JObject.Parse(content);
                 return true;
             }
-            catch (Exception)
+            catch (JsonReaderException)
             {
                 jObject = null;
                 return false;
@@ -805,11 +1043,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 }
 
                 throw new PSInvalidOperationException(ServiceFabricProperties.Resources.DeploymentFailed);
-            }
-            else
-            {
-                WriteVerbose(ServiceFabricProperties.Resources.DeploymentSucceeded);
-            }
-        }
+            } 
+        }        
     }
 }

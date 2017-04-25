@@ -16,6 +16,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
@@ -35,12 +37,51 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         #region SFRP
 
-        protected PSCluster SendPatchRequest(ClusterUpdateParameters request)
+        protected PSCluster SendPatchRequest(ClusterUpdateParameters request, bool runOnSameThread = true)
         {
-            Cluster cluster;
+            if (runOnSameThread)
+            {
+                WriteVerboseWithTimestamp("Begin to update the cluster");
+            }
+
+            Cluster cluster = null;
+            var tokenSource = new CancellationTokenSource();
             try
             {
-                cluster = SFRPClient.Clusters.Update(ResourceGroupName, Name, request);
+                var patchRequest = Task.Factory.StartNew(() =>
+                {
+                    try
+                    {
+                        cluster = this.SFRPClient.Clusters.Update(this.ResourceGroupName, this.Name, request);
+                    }
+                    finally
+                    {
+                        tokenSource.Cancel();
+                    }
+                });
+
+                while (!tokenSource.IsCancellationRequested)
+                {
+                    if (runOnSameThread)
+                    {
+                        var c = SafeGetResource(() => this.SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name));
+                        if (c != null)
+                        {
+                            WriteVerboseWithTimestamp(
+                                string.Format(
+                                    ServiceFabricProperties.Resources.ClusterStateVerbose, 
+                                    c.ClusterState));
+                        }
+                    }
+
+                    Thread.Sleep(TimeSpan.FromSeconds(WriteVerboseIntervalInSec));
+                }
+
+                if (patchRequest.IsFaulted)
+                {
+                    throw patchRequest.Exception;
+                }
+
             }
             catch (Exception e)
             {
@@ -62,7 +103,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         protected Task<PSCluster> PatchAsync(ClusterUpdateParameters request)
         {
-            return Task.Run(() => SendPatchRequest(request));
+            return Task.Factory.StartNew(() => SendPatchRequest(request,false));
         }
 
         protected Cluster GetCurrentCluster()

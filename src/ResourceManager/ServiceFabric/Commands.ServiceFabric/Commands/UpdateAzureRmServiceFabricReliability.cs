@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specify the name of the cluster")]
         [ValidateNotNullOrEmpty()]
+        [Alias("ClusterName")]
         public override string Name { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true,
@@ -47,7 +48,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public ReliabilityLevel Level { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true,
-                   HelpMessage = "Adjust nodes number automatically when changing reliability")]
+                   HelpMessage = "Add node count automatically when changing reliability")]
         [Alias("Auto")]
         public SwitchParameter AutoAddNodes
         {
@@ -80,7 +81,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             if (primaryVmss.Sku.Capacity == null)
             {
-                throw new PSInvalidOperationException("invalid vmss");
+                throw new PSInvalidOperationException(ServiceFabricProperties.Resources.SkuCapacityIsNull);
             }
 
             if (ShouldProcess(target: this.Name, action: string.Format("Update fabric reliability level to {0} of {1}", this.Level, this.Name)))
@@ -100,10 +101,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     if (primaryVmss.Sku.Capacity < instanceNumber)
                     {
                         primaryVmss.Sku.Capacity = instanceNumber;
-                        ComputeClient.VirtualMachineScaleSets.CreateOrUpdate(
-                            this.ResourceGroupName,
-                            primaryVmss.Name,   
-                            primaryVmss);
+
+                        PrintDetailIfThrow(() =>
+                            ComputeClient.VirtualMachineScaleSets.CreateOrUpdate(
+                                this.ResourceGroupName,
+                                primaryVmss.Name,
+                                primaryVmss));
                     }
                 }   
 
