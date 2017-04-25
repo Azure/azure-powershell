@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest
         public static void SetUpSessionAndProfile()
         {
             AzureSessionInitializer.InitializeAzureSession();
-            ResourceManagerProfileProvider.InitializeResourceManagerProfile(true);
+            ResourceManagerProfileProvider.InitializeResourceManagerProfile();
         }
     }
 }

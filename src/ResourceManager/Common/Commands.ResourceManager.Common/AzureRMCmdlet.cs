@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
     public abstract class AzureRMCmdlet : AzurePSCmdlet
     {
         protected ServiceClientTracingInterceptor _serviceClientTracingInterceptor;
+        IAzureContextContainer _profile;
 
         /// <summary>
         /// Creates new instance from AzureRMCmdlet and add the RPRegistration handler.
@@ -52,6 +53,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             get
             {
+                if (_profile != null)
+                {
+                    return _profile;
+                }
                 if (AzureRmProfileProvider.Instance == null)
                 {
                     throw new InvalidOperationException(Resources.ProfileNotInitialized);
@@ -61,12 +66,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
             set
             {
-                if (AzureRmProfileProvider.Instance == null)
-                {
-                    throw new InvalidOperationException(Resources.ProfileNotInitialized);
-                }
-
-                AzureRmProfileProvider.Instance.Profile = value;
+                _profile = value;
             }
         }
 

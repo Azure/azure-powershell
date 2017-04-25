@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
@@ -237,6 +238,12 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                     var realClient = realClientFactory.CreateCustomArmClient<TClient>(newParameters);
                     return realClient;
                 }
+            }
+
+            IAzureClient azureClient = client as IAzureClient;
+            if (azureClient != null)
+            {
+                azureClient.LongRunningOperationRetryTimeout = 0;
             }
 
             return client;

@@ -80,61 +80,64 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         public static bool TryGetEndpointString(this IAzureEnvironment environment, string endpointName, out string propertyValue)
         {
             propertyValue = null;
-            switch (endpointName)
+            if (environment != null)
             {
-                case AzureEnvironment.Endpoint.AdTenant:
-                    propertyValue = environment.AdTenant;
-                    break;
-                case AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId:
-                    propertyValue = environment.ActiveDirectoryServiceEndpointResourceId;
-                    break;
-                case AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix:
-                    propertyValue = environment.AzureKeyVaultDnsSuffix;
-                    break;
-                case AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId:
-                    propertyValue = environment.AzureKeyVaultServiceEndpointResourceId;
-                    break;
-                case AzureEnvironment.Endpoint.GraphEndpointResourceId:
-                    propertyValue = environment.GraphEndpointResourceId;
-                    break;
-                case AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix:
-                    propertyValue = environment.SqlDatabaseDnsSuffix;
-                    break;
-                case AzureEnvironment.Endpoint.StorageEndpointSuffix:
-                    propertyValue = environment.StorageEndpointSuffix;
-                    break;
-                case AzureEnvironment.Endpoint.TrafficManagerDnsSuffix:
-                    propertyValue = environment.TrafficManagerDnsSuffix;
-                    break;
-                case AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix:
-                    propertyValue = environment.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix;
-                    break;
-                case AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix:
-                    propertyValue = environment.AzureDataLakeStoreFileSystemEndpointSuffix;
-                    break;
-                case AzureEnvironment.Endpoint.ActiveDirectory:
-                    propertyValue = environment.ActiveDirectoryAuthority;
-                    break;
-                case AzureEnvironment.Endpoint.Gallery:
-                    propertyValue = environment.GalleryUrl;
-                    break;
-                case AzureEnvironment.Endpoint.Graph:
-                    propertyValue = environment.GraphUrl;
-                    break;
-                case AzureEnvironment.Endpoint.ManagementPortalUrl:
-                    propertyValue = environment.ManagementPortalUrl;
-                    break;
-                case AzureEnvironment.Endpoint.PublishSettingsFileUrl:
-                    propertyValue = environment.PublishSettingsFileUrl;
-                    break;
-                case AzureEnvironment.Endpoint.ResourceManager:
-                    propertyValue = environment.ResourceManagerUrl;
-                    break;
-                case AzureEnvironment.Endpoint.ServiceManagement:
-                    propertyValue = environment.ServiceManagementUrl;
-                    break;
-                default:
-                    break;
+                switch (endpointName)
+                {
+                    case AzureEnvironment.Endpoint.AdTenant:
+                        propertyValue = environment.AdTenant;
+                        break;
+                    case AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId:
+                        propertyValue = environment.ActiveDirectoryServiceEndpointResourceId;
+                        break;
+                    case AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix:
+                        propertyValue = environment.AzureKeyVaultDnsSuffix;
+                        break;
+                    case AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId:
+                        propertyValue = environment.AzureKeyVaultServiceEndpointResourceId;
+                        break;
+                    case AzureEnvironment.Endpoint.GraphEndpointResourceId:
+                        propertyValue = environment.GraphEndpointResourceId;
+                        break;
+                    case AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix:
+                        propertyValue = environment.SqlDatabaseDnsSuffix;
+                        break;
+                    case AzureEnvironment.Endpoint.StorageEndpointSuffix:
+                        propertyValue = environment.StorageEndpointSuffix;
+                        break;
+                    case AzureEnvironment.Endpoint.TrafficManagerDnsSuffix:
+                        propertyValue = environment.TrafficManagerDnsSuffix;
+                        break;
+                    case AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix:
+                        propertyValue = environment.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix;
+                        break;
+                    case AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix:
+                        propertyValue = environment.AzureDataLakeStoreFileSystemEndpointSuffix;
+                        break;
+                    case AzureEnvironment.Endpoint.ActiveDirectory:
+                        propertyValue = environment.ActiveDirectoryAuthority;
+                        break;
+                    case AzureEnvironment.Endpoint.Gallery:
+                        propertyValue = environment.GalleryUrl;
+                        break;
+                    case AzureEnvironment.Endpoint.Graph:
+                        propertyValue = environment.GraphUrl;
+                        break;
+                    case AzureEnvironment.Endpoint.ManagementPortalUrl:
+                        propertyValue = environment.ManagementPortalUrl;
+                        break;
+                    case AzureEnvironment.Endpoint.PublishSettingsFileUrl:
+                        propertyValue = environment.PublishSettingsFileUrl;
+                        break;
+                    case AzureEnvironment.Endpoint.ResourceManager:
+                        propertyValue = environment.ResourceManagerUrl;
+                        break;
+                    case AzureEnvironment.Endpoint.ServiceManagement:
+                        propertyValue = environment.ServiceManagementUrl;
+                        break;
+                    default:
+                        break;
+                }
             }
 
             return propertyValue != null;

@@ -291,12 +291,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 {
                     CommandRuntime = commandRuntimeMock.Object,
                     Name = name,
-                    PublishSettingsFileUrl = "http://microsoft.com"
+                    PublishSettingsFileUrl = "http://microsoft.com",
+                    DefaultProfile = new AzureRmProfile()
                 };
                 var savedValue = AzureEnvironment.PublicEnvironments[name].GetEndpoint(AzureEnvironment.Endpoint.PublishSettingsFileUrl);
                 cmdlet.InvokeBeginProcessing();
                 Assert.Throws<InvalidOperationException>(() => cmdlet.ExecuteCmdlet());
-                var newValue = AzureRmProfileProvider.Instance.Profile.GetEnvironment(name).GetEndpoint(AzureEnvironment.Endpoint.PublishSettingsFileUrl);
+                var newValue = cmdlet.DefaultProfile.GetEnvironment(name).GetEndpoint(AzureEnvironment.Endpoint.PublishSettingsFileUrl);
                 Assert.Equal(savedValue, newValue);
                 Assert.NotEqual(cmdlet.PublishSettingsFileUrl, newValue);
             }
