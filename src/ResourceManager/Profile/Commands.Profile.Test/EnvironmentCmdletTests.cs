@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                     PublishSettingsFileUrl = "http://microsoft.com",
                     DefaultProfile = profile
                 };
-                var savedValue =env.Value.PublishSettingsFileUrl;
+                var savedValue = env.Value.PublishSettingsFileUrl;
                 cmdlet.InvokeBeginProcessing();
                 Assert.Throws<InvalidOperationException>(() => cmdlet.ExecuteCmdlet());
                 var newValue = profile.GetEnvironment(env.Key).PublishSettingsFileUrl;

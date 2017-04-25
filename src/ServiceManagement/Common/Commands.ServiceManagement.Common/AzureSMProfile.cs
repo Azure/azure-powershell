@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Common.Properties;
+using System.Collections.Concurrent;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
@@ -29,17 +30,17 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
     [Serializable]
     public sealed class AzureSMProfile : IAzureContextContainer
     {
-        Dictionary<string, IAzureContext> _contexts = new Dictionary<string, IAzureContext>(StringComparer.OrdinalIgnoreCase);
+        IDictionary<string, IAzureContext> _contexts = new ConcurrentDictionary<string, IAzureContext>(StringComparer.OrdinalIgnoreCase);
         /// <summary>
         /// Gets Azure Accounts
         /// </summary>
-        public Dictionary<string, IAzureAccount> AccountTable { get; set; }
+        public IDictionary<string, IAzureAccount> AccountTable { get; set; }
 
         [JsonProperty(PropertyName="Subscriptions")]
         /// <summary>
         /// Gets Azure Subscriptions
         /// </summary>
-        public Dictionary<Guid, IAzureSubscription> SubscriptionTable { get; set; }
+        public IDictionary<Guid, IAzureSubscription> SubscriptionTable { get; set; }
 
         [JsonIgnore]
         public IEnumerable<IAzureSubscription> Subscriptions
@@ -90,7 +91,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// Gets Azure Environments
         /// </summary>
         [JsonProperty(PropertyName ="Environments")]
-        public Dictionary<string, IAzureEnvironment> EnvironmentTable { get; set; }
+        public IDictionary<string, IAzureEnvironment> EnvironmentTable { get; set; }
 
         /// <summary>
         /// Gets the default azure context object.
@@ -165,7 +166,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             get
             {
-                return EnvironmentTable.Values;
+                return EnvironmentTable.Values.ToList();
             }
         }
 
@@ -179,16 +180,16 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         }
 
         [JsonIgnore]
-        public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        public IDictionary<string, string> ExtendedProperties { get; } = new ConcurrentDictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
         /// <summary>
         /// Initializes a new instance of AzureSMProfile
         /// </summary>
         public AzureSMProfile()
         {
-            EnvironmentTable = new Dictionary<string, IAzureEnvironment>(StringComparer.InvariantCultureIgnoreCase);
-            SubscriptionTable = new Dictionary<Guid, IAzureSubscription>();
-            AccountTable = new Dictionary<string, IAzureAccount>(StringComparer.InvariantCultureIgnoreCase);
+            EnvironmentTable = new ConcurrentDictionary<string, IAzureEnvironment>(StringComparer.InvariantCultureIgnoreCase);
+            SubscriptionTable = new ConcurrentDictionary<Guid, IAzureSubscription>();
+            AccountTable = new ConcurrentDictionary<string, IAzureAccount>(StringComparer.InvariantCultureIgnoreCase);
 
             // Adding predefined environments
             foreach (var env in AzureEnvironment.PublicEnvironments)

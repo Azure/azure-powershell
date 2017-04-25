@@ -22,6 +22,7 @@ using System.Collections;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using System.Xml.Serialization;
 using Microsoft.Azure.Commands.ResourceManager.Common.Serialization;
+using System.Collections.Concurrent;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
@@ -35,9 +36,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// <summary>
         /// Gets or sets Azure environments.
         /// </summary>
-        public Dictionary<string, IAzureEnvironment> EnvironmentTable { get; set; } = new Dictionary<string, IAzureEnvironment>(StringComparer.CurrentCultureIgnoreCase);
+        public IDictionary<string, IAzureEnvironment> EnvironmentTable { get; set; } = new ConcurrentDictionary<string, IAzureEnvironment>(StringComparer.CurrentCultureIgnoreCase);
 
-        public Dictionary<string, IAzureContext> Contexts { get; set; } = new Dictionary<string, IAzureContext>(StringComparer.CurrentCultureIgnoreCase);
+        public IDictionary<string, IAzureContext> Contexts { get; set; } = new ConcurrentDictionary<string, IAzureContext>(StringComparer.CurrentCultureIgnoreCase);
 
         /// <summary>
         /// Gets the path of the profile file. 
@@ -75,7 +76,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         {
             get
             {
-                return EnvironmentTable.Values;
+                return EnvironmentTable.Values.ToList();
             }
         }
 
@@ -97,7 +98,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             }
         }
 
-        public IDictionary<string, string> ExtendedProperties { get; set;} = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        public IDictionary<string, string> ExtendedProperties { get; set;} = new ConcurrentDictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
         private void Load(string path)
         {

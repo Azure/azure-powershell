@@ -722,8 +722,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         ""State"": ""Enabled"",
         ""ExtendedProperties"": {
           ""Account"": ""me@contoso.com"",
-          ""Environment"": ""testCloud"",
-          ""Tenants"": ""3c0ff8a7-e8bb-40e8-ae66-271343379af6""
+          ""Tenants"": ""3c0ff8a7-e8bb-40e8-ae66-271343379af6"",
+          ""Environment"": ""testCloud""
         }
       },
       ""Environment"": {
