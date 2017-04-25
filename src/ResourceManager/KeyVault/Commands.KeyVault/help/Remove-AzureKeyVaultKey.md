@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xm
+external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 ms.assetid: 817BF177-519F-47BA-86CF-4591FB402E2Dl
 online version: http://go.microsoft.com/fwlink/?LinkId=690299
 schema: 2.0.0
@@ -74,7 +74,7 @@ Parameter Sets: (All)
 Aliases: KeyName
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -106,7 +106,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
