@@ -13,8 +13,7 @@ Creates a new VPN client root certificate.
 ## SYNTAX
 
 ```
-New-AzureRmVpnClientRootCertificate -Name <String> -PublicCertData <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+New-AzureRmVpnClientRootCertificate -Name <String> -PublicCertData <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,45 +49,6 @@ The second command then uses a for loop to extract all the text except for the f
 The third command uses the **New-AzureRmVpnClientRootCertificate** cmdlet to create the certificate, storing the created object in a variable named $Certificate.
 
 ## PARAMETERS
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Name
 Specifies a name for the new client root certificate.

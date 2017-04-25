@@ -13,8 +13,7 @@ Sets the goal state for a virtual network.
 ## SYNTAX
 
 ```
-Set-AzureRmVirtualNetwork -VirtualNetwork <PSVirtualNetwork> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+Set-AzureRmVirtualNetwork -VirtualNetwork <PSVirtualNetwork> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,45 +41,6 @@ This example creates a virtual network with two subnets. Then it removes one sub
     is then used to write the modified virtual network state on the service side.
 
 ## PARAMETERS
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -VirtualNetwork
 Specifies a **VirtualNetwork** object that represents the goal state.

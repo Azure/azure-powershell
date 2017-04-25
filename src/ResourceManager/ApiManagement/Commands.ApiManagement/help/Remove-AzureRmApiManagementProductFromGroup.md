@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-ms.assetid: 606A85C2-094F-4BDC-83FB-22E66B26A0AA
+ms.assetid: 2FD2C5C0-5A5A-4CF0-9260-21B9E3DE52B9
 online version: 
 schema: 2.0.0
 ---
@@ -14,8 +14,7 @@ Removes a product from a group.
 
 ```
 Remove-AzureRmApiManagementProductFromGroup -Context <PsApiManagementContext> -GroupId <String>
- -ProductId <String> [-PassThru] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ -ProductId <String> [-PassThru] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,22 +64,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ProductId
-Specifies the product ID.
-This parameter is required.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -PassThru
 Indicates that this cmdlet returns a value of $True, if it succeeds, or $False, otherwise.
 
@@ -96,42 +79,19 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -ProductId
+Specifies the product ID.
+This parameter is required.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

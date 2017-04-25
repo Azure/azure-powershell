@@ -24,21 +24,6 @@ The **Remove-AzureRmSiteRecoveryProtectionContainerMapping** cmdlet removes an A
 
 ## PARAMETERS
 
-### -ProtectionContainerMapping
-Specifies the Azure Site Recovery Protection Container mapping object.
-
-```yaml
-Type: ASRProtectionContainerMapping
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Force
 Forces the command to run without asking for user confirmation.
 
@@ -51,6 +36,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProtectionContainerMapping
+Specifies the Azure Site Recovery Protection Container mapping object.
+
+```yaml
+Type: ASRProtectionContainerMapping
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
