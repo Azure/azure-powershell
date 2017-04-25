@@ -35,9 +35,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// <summary>
         /// Gets or sets Azure environments.
         /// </summary>
-        public Dictionary<string, IAzureEnvironment> EnvironmentTable { get; set; } = new Dictionary<string, IAzureEnvironment>(StringComparer.OrdinalIgnoreCase);
+        public Dictionary<string, IAzureEnvironment> EnvironmentTable { get; set; } = new Dictionary<string, IAzureEnvironment>(StringComparer.CurrentCultureIgnoreCase);
 
-        public Dictionary<string, IAzureContext> Contexts { get; set; } = new Dictionary<string, IAzureContext>(StringComparer.OrdinalIgnoreCase);
+        public Dictionary<string, IAzureContext> Contexts { get; set; } = new Dictionary<string, IAzureContext>(StringComparer.CurrentCultureIgnoreCase);
 
         /// <summary>
         /// Gets the path of the profile file. 
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// </summary>
         public AzureRmProfile()
         {
-            EnvironmentTable = new Dictionary<string, IAzureEnvironment>(StringComparer.InvariantCultureIgnoreCase);
+            EnvironmentTable = new Dictionary<string, IAzureEnvironment>(StringComparer.CurrentCultureIgnoreCase);
 
             // Adding predefined environments
             foreach (var env in AzureEnvironment.PublicEnvironments)

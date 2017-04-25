@@ -116,11 +116,11 @@ namespace Microsoft.Azure.Commands.Profile
             ConfirmAction("updating environment", Name,
                 () =>
                 {
-                    var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>());
+                    var profileClient = new RMProfileClient(DefaultProfile as AzureRmProfile);
 
                     foreach (var key in AzureEnvironment.PublicEnvironments.Keys)
                     {
-                        if (string.Equals(Name, key, StringComparison.OrdinalIgnoreCase))
+                        if (string.Equals(Name, key, StringComparison.CurrentCultureIgnoreCase))
                         {
                             throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture,
                                 "Cannot change built-in environment {0}.", key));
