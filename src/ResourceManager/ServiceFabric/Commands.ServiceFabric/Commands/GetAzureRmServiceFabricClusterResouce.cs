@@ -18,6 +18,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.ServiceFabric;
+using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -32,13 +33,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, Position = 1, ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specify the name of the cluster")]
         [ValidateNotNullOrEmpty()]
-        public override string ClusterName { get; set; }
+        [Alias("ClusterName")]
+        public override string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (ResourceGroupName != null && ClusterName != null)
+            if (ResourceGroupName != null && Name != null)
             {
-                var cluster = SFRPClient.Clusters.Get(ResourceGroupName, ClusterName);
+                var cluster = SFRPClient.Clusters.Get(ResourceGroupName, Name);
                 WriteObject(new List<PSCluster>() { new PSCluster(cluster) }, true);
             }
             else if (ResourceGroupName != null)
@@ -49,10 +51,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
                 WriteObject(clusters, true);
             }
-            else if (ResourceGroupName == null && ClusterName == null)
+            else if (ResourceGroupName == null && Name == null)
             {
                 var clusters = SFRPClient.Clusters.List().Select(c => new PSCluster(c)).ToList();
                 WriteObject(clusters, true);
+            }
+            else
+            {
+                throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidInput);
             }
         }
     }

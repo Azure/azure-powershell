@@ -18,8 +18,8 @@ using Microsoft.Azure.Commands.ServiceFabric.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Add, CmdletNoun.AzureRmServiceFabricNodes), OutputType(typeof(PSCluster))]
-    public class AddAzureRmServiceFabricNodes : UpdateAzureRmServiceFabricVmssBase
+    [Cmdlet(VerbsCommon.Add, CmdletNoun.AzureRmServiceFabricNodes, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
+    public class AddAzureRmServiceFabricNodes : UpdateAzureRmServiceFabricNodesBase
     {
         public override void ExecuteCmdlet()
         {
@@ -28,7 +28,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 throw new PSArgumentException(this.Number.ToString());
             }
 
-            base.ExecuteCmdlet();
+            if (ShouldProcess(target: this.NodeType,
+                action: string.Format("Add nodes to {0}", this.NodeType)))
+            {
+                base.ExecuteCmdlet();
+            }
         }
     }
 }

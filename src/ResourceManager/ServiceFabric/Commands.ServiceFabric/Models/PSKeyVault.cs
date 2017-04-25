@@ -12,35 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Models
 {
-    public class PSDeploymentResult
+    public class PSKeyVault
     {
-        public string VmUserName { get; set; }
+        public X509Certificate2 Certificate { get; set; }
 
-        public List<PSKeyVault> CertificateInformation { get; set; }
+        public string Thumbprint { get; set; }
 
-        public PSDeploymentExtended DeploymentDetail { get; set; }
+        public string KeyVaultName { get; set; }
 
-        public PSCluster ClusterDetail { get; set; } 
+        public string KeyVaultCertificateName { get; set; }
 
-        public PSDeploymentResult()
-        {
-        }
+        public string KeyVaultSecretName { get; set; }
 
-        public PSDeploymentResult(
-            PSDeploymentExtended deployment, 
-            PSCluster cluster,
-            string vmUserName,
-            List<PSKeyVault> certificateInformations
-        )
-        {
-            this.DeploymentDetail = deployment;
-            this.ClusterDetail = cluster;
-            this.VmUserName = vmUserName;
-            this.CertificateInformation = certificateInformations;
-        }
+        public string KeyVaultSecretVersion { get; set; }
+
     }
 }

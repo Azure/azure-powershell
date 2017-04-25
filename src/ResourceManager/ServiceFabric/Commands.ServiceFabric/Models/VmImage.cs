@@ -12,35 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-
 namespace Microsoft.Azure.Commands.ServiceFabric.Models
 {
-    public class PSDeploymentResult
+    public enum VmImage
     {
-        public string VmUserName { get; set; }
-
-        public List<PSKeyVault> CertificateInformation { get; set; }
-
-        public PSDeploymentExtended DeploymentDetail { get; set; }
-
-        public PSCluster ClusterDetail { get; set; } 
-
-        public PSDeploymentResult()
-        {
-        }
-
-        public PSDeploymentResult(
-            PSDeploymentExtended deployment, 
-            PSCluster cluster,
-            string vmUserName,
-            List<PSKeyVault> certificateInformations
-        )
-        {
-            this.DeploymentDetail = deployment;
-            this.ClusterDetail = cluster;
-            this.VmUserName = vmUserName;
-            this.CertificateInformation = certificateInformations;
-        }
+        Windows,
+        Linux
     }
 }

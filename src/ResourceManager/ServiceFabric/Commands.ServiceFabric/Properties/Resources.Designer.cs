@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Insecure cluster {0} is not allowed to add Certificate.
+        ///   Looks up a localized string similar to Insecure cluster {0} is not allowed to add certificate.
         /// </summary>
         internal static string AddCertToUnsecureCluster {
             get {
@@ -70,146 +70,173 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can&apos;t find the certificate {0} in the cluster.
-        /// </summary>
-        internal static string CanNodFindCertificateInCluster {
-            get {
-                return ResourceManager.GetString("CanNodFindCertificateInCluster", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Can&apos;t find the common name {0} and issuer {1} in the cluster.
-        /// </summary>
-        internal static string CanNodFindCommonNameAndIssuer {
-            get {
-                return ResourceManager.GetString("CanNodFindCommonNameAndIssuer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Can&apos;t change durability from {0} {1}.
         /// </summary>
-        internal static string CanNotChangeDurabilityFrom {
+        internal static string CannotChangeDurabilityFrom {
             get {
-                return ResourceManager.GetString("CanNotChangeDurabilityFrom", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Can&apos;t change reliability level with durability with bronze,please change durability to Silver or above.
-        /// </summary>
-        internal static string CanNotChangeReliabilityLevelWithDurabilityWithBronze {
-            get {
-                return ResourceManager.GetString("CanNotChangeReliabilityLevelWithDurabilityWithBronze", resourceCulture);
+                return ResourceManager.GetString("CannotChangeDurabilityFrom", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Can not delete primay node type {0}.
         /// </summary>
-        internal static string CanNotDeletePrimayNodeType {
+        internal static string CannotDeletePrimayNodeType {
             get {
-                return ResourceManager.GetString("CanNotDeletePrimayNodeType", resourceCulture);
+                return ResourceManager.GetString("CannotDeletePrimayNodeType", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not find tenant Id.
+        ///   Looks up a localized string similar to Can&apos;t find the certificate {0} in the cluster.
         /// </summary>
-        internal static string CanNotFindTenantId {
+        internal static string CannotFindCertificateInCluster {
             get {
-                return ResourceManager.GetString("CanNotFindTenantId", resourceCulture);
+                return ResourceManager.GetString("CannotFindCertificateInCluster", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Can&apos;t find the common name {0} and issuer {1} in the cluster.
+        /// </summary>
+        internal static string CannotFindCommonNameAndIssuer {
+            get {
+                return ResourceManager.GetString("CannotFindCommonNameAndIssuer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Can&apos;t find durability level setting.
+        /// </summary>
+        internal static string CannotFindDurabilityLevelSetting {
+            get {
+                return ResourceManager.GetString("CannotFindDurabilityLevelSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Can&apos;t find tenant Id.
+        /// </summary>
+        internal static string CannotFindTenantId {
+            get {
+                return ResourceManager.GetString("CannotFindTenantId", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Can&apos;t find the node type {0}.
         /// </summary>
-        internal static string CanNotFindTheNodeType {
+        internal static string CannotFindTheNodeType {
             get {
-                return ResourceManager.GetString("CanNotFindTheNodeType", resourceCulture);
+                return ResourceManager.GetString("CannotFindTheNodeType", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not find the thumbprint {0} in the cluster.
+        ///   Looks up a localized string similar to Can&apos;t find the thumbprint {0} in the cluster.
         /// </summary>
-        internal static string CanNotFindThumbprintInTheCluster {
+        internal static string CannotFindThumbprintInTheCluster {
             get {
-                return ResourceManager.GetString("CanNotFindThumbprintInTheCluster", resourceCulture);
+                return ResourceManager.GetString("CannotFindThumbprintInTheCluster", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Can not find key vault {0}.
         /// </summary>
-        internal static string CanNotFindVault {
+        internal static string CannotFindVault {
             get {
-                return ResourceManager.GetString("CanNotFindVault", resourceCulture);
+                return ResourceManager.GetString("CannotFindVault", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Can&apos;t get reliability level.
         /// </summary>
-        internal static string CanNotGetReliabilityLevel {
+        internal static string CannotGetReliabilityLevel {
             get {
-                return ResourceManager.GetString("CanNotGetReliabilityLevel", resourceCulture);
+                return ResourceManager.GetString("CannotGetReliabilityLevel", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Can not parse reliability level {0}.
         /// </summary>
-        internal static string CanNotParseReliabilityLevel {
+        internal static string CannotParseReliabilityLevel {
             get {
-                return ResourceManager.GetString("CanNotParseReliabilityLevel", resourceCulture);
+                return ResourceManager.GetString("CannotParseReliabilityLevel", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not parse CommonNameIssuersAndFlags.
+        ///   Looks up a localized string similar to Can&apos;t not update node type which durability is bronze,please update it to Silver or above first.
         /// </summary>
-        internal static string CanNotParseValueInNameIssuersAndFlags {
+        internal static string CannotUpdateBronzeNodeType {
             get {
-                return ResourceManager.GetString("CanNotParseValueInNameIssuersAndFlags", resourceCulture);
+                return ResourceManager.GetString("CannotUpdateBronzeNodeType", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not parse ThumbprintsAndFlags.
+        ///   Looks up a localized string similar to Can&apos;t update nodes count {0} to less than the reliability level {1}.
         /// </summary>
-        internal static string CanNotParseValueInThumbprintAndFlags {
+        internal static string CannotUpdateNodeCountLessThenReliabilityLevel {
             get {
-                return ResourceManager.GetString("CanNotParseValueInThumbprintAndFlags", resourceCulture);
+                return ResourceManager.GetString("CannotUpdateNodeCountLessThenReliabilityLevel", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can&apos;t not update bronze node type,please update it to Silver or above.
+        ///   Looks up a localized string similar to Can not update Sku while durability is Bronze , please update durability to Silver or above first.
         /// </summary>
-        internal static string CanNotUpdateBronzeNodeType {
+        internal static string CannotUpdateSkuWithBronzeDurability {
             get {
-                return ResourceManager.GetString("CanNotUpdateBronzeNodeType", resourceCulture);
+                return ResourceManager.GetString("CannotUpdateSkuWithBronzeDurability", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can&apos;t update nodes count {0} to less then reliability level {1}.
+        ///   Looks up a localized string similar to Checking deployment status in {0} seconds.
         /// </summary>
-        internal static string CanNotUpdateNodeCountLessThenReliabilityLevel {
+        internal static string CheckingDeploymentStatus {
             get {
-                return ResourceManager.GetString("CanNotUpdateNodeCountLessThenReliabilityLevel", resourceCulture);
+                return ResourceManager.GetString("CheckingDeploymentStatus", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not update Sku with durability with Bronze , please change durability to Silver or above.
+        ///   Looks up a localized string similar to The state of the cluster is : {0}.
         /// </summary>
-        internal static string CanNotUpdateSkuWithDurabilityWithBronze {
+        internal static string ClusterStateVerbose {
             get {
-                return ResourceManager.GetString("CanNotUpdateSkuWithDurabilityWithBronze", resourceCulture);
+                return ResourceManager.GetString("ClusterStateVerbose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create self signed certificate failed with Status: {0}, StatusDetails: {1}, Code: {2}, Message: {3}.
+        /// </summary>
+        internal static string CreateSelfSignedCertificateFailedWithErrorDetail {
+            get {
+                return ResourceManager.GetString("CreateSelfSignedCertificateFailedWithErrorDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create self signed certificate failed with Status: {0}, StatusDetails: {1}.
+        /// </summary>
+        internal static string CreateSelfSignedCertificateFailedWithoutErrorDetail {
+            get {
+                return ResourceManager.GetString("CreateSelfSignedCertificateFailedWithoutErrorDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating self signed certificate timeout.
+        /// </summary>
+        internal static string CreateSelfSignedCertificateTimeout {
+            get {
+                return ResourceManager.GetString("CreateSelfSignedCertificateTimeout", resourceCulture);
             }
         }
         
@@ -232,7 +259,25 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Durability level mismatches between node type and ServiceFabric resource provider.
+        ///   Looks up a localized string similar to Deployment is running.
+        /// </summary>
+        internal static string DeploymentVerbose {
+            get {
+                return ResourceManager.GetString("DeploymentVerbose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contains duplicate fabric setting {0}.
+        /// </summary>
+        internal static string DuplicatedFabricSetting {
+            get {
+                return ResourceManager.GetString("DuplicatedFabricSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The durability level is mismatched between the cluster and the VM extension..
         /// </summary>
         internal static string DurabilityLevelMismatches {
             get {
@@ -286,11 +331,74 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to File {0} doesnt exist.
+        ///   Looks up a localized string similar to File {0} doesn&apos;t exist.
         /// </summary>
         internal static string FileNotExist {
             get {
                 return ResourceManager.GetString("FileNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid directory {0}.
+        /// </summary>
+        internal static string InvalidDirectory {
+            get {
+                return ResourceManager.GetString("InvalidDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File name {0} contains invalid characters.
+        /// </summary>
+        internal static string InvalidFileName {
+            get {
+                return ResourceManager.GetString("InvalidFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invaild input.
+        /// </summary>
+        internal static string InvalidInput {
+            get {
+                return ResourceManager.GetString("InvalidInput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The supplied password must be between 12-123 characters long and must satisfy at least 3 of password complexity requirements from the following: \r\n1) Contains an uppercase character\r\n2) Contains a lowercase character\r\n3) Contains a numeric digit\r\n4) Contains a special character.
+        /// </summary>
+        internal static string InvalidPassword {
+            get {
+                return ResourceManager.GetString("InvalidPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid template file.
+        /// </summary>
+        internal static string InvalidTemplateFile {
+            get {
+                return ResourceManager.GetString("InvalidTemplateFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid template parameter file.
+        /// </summary>
+        internal static string InvalidTemplateParameterFile {
+            get {
+                return ResourceManager.GetString("InvalidTemplateParameterFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid existing VMSS configuration.
+        /// </summary>
+        internal static string InvalidVmssConfiguration {
+            get {
+                return ResourceManager.GetString("InvalidVmssConfiguration", resourceCulture);
             }
         }
         
@@ -304,7 +412,16 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} already exists in the cluster.
+        ///   Looks up a localized string similar to No CertificateOperation returned when creating self signed certificate in Azure key vault.
+        /// </summary>
+        internal static string NoCertificateOperationReturned {
+            get {
+                return ResourceManager.GetString("NoCertificateOperationReturned", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Node type {0} already exists in the cluster.
         /// </summary>
         internal static string NodeTypeAlreadyExist {
             get {
@@ -340,7 +457,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Insecure cluster {0} is not allowed to removeCertificate.
+        ///   Looks up a localized string similar to Insecure cluster {0} is not allowed to remove certificate.
         /// </summary>
         internal static string RemoveCertFromUnsecureCluster {
             get {
@@ -349,7 +466,16 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use &apos;AutoAddNodes&apos; switch to automatically increase nodes count.
+        ///   Looks up a localized string similar to The capacity of the node type is null.
+        /// </summary>
+        internal static string SkuCapacityIsNull {
+            get {
+                return ResourceManager.GetString("SkuCapacityIsNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Primay node count is {0} which is less than the node count {1} that target reliability level requires, Please use &apos;AutoAddNodes&apos; switch to automatically increase nodes count.
         /// </summary>
         internal static string UseAutoToIncreaseNodesCount {
             get {
@@ -363,6 +489,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         internal static string VaultCreatedWithOutAccessPolicy {
             get {
                 return ResourceManager.GetString("VaultCreatedWithOutAccessPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Virtual machine scale sets : {0}, state is {1}.
+        /// </summary>
+        internal static string VmssVerbose {
+            get {
+                return ResourceManager.GetString("VmssVerbose", resourceCulture);
             }
         }
     }

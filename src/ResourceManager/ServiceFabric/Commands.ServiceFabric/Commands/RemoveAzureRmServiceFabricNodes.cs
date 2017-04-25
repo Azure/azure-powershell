@@ -18,28 +18,51 @@ using Microsoft.Azure.Commands.ServiceFabric.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureRmServiceFabricNodes), OutputType(typeof(PSCluster))]
-    public class RemoveAzureRmServiceFabricNodes : UpdateAzureRmServiceFabricVmssBase
+    [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureRmServiceFabricNodes, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
+    public class RemoveAzureRmServiceFabricNodes : UpdateAzureRmServiceFabricNodesBase
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
-                  HelpMessage = "Number of nodes to remove")]
+        private int toRemoveNode;
+
+        /// <summary>
+        /// Resource group name
+        /// </summary>
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify the name of the resource group.")]
         [ValidateNotNullOrEmpty()]
+        public override string ResourceGroupName { get; set; }
+
+        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Specify the name of the cluster")]
+        [ValidateNotNullOrEmpty()]
+        [Alias("ClusterName")]
+        public override string Name { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true,
+           HelpMessage = "Node type name")]
+        public override string NodeType { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true,
+                  HelpMessage = "Number of nodes to remove")]
+        [ValidateRange(1, 2147483647)]
         [Alias("NumberOfNodesToRemove")]
         public override int Number
         {
-            get { return this.number; }
-            set { number = -value; }
-        } 
-        private int number;
+            get
+            {
+                return this.toRemoveNode;
+            }
+            set
+            {
+                toRemoveNode = -value;
+            }
+        }      
 
         public override void ExecuteCmdlet()
         {
-            if (this.Number < 0)
+            if (ShouldProcess(target: this.NodeType, action: string.Format("Remove nodes from {0}", this.NodeType)))
             {
-                throw new PSArgumentException(this.Number.ToString());
+                base.ExecuteCmdlet();
             }
-
-            base.ExecuteCmdlet();
         }
     }
 }

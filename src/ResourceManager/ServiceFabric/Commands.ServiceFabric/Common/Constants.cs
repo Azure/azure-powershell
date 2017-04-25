@@ -32,11 +32,13 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Common
         public const int DefaultFrontendPortRangeEnd = 4500;
         public const int DefaultBackendPort = 3389;
 
+        public const string PublicIpAddressesType = "Microsoft.Network/publicIPAddresses";
         public const string VirtualMachineScaleSetsType = "Microsoft.Compute/virtualMachineScaleSets";
         public const string KeyVaultType = "Microsoft.KeyVault/vaults";
         public const string ServiceFabricType = "Microsoft.ServiceFabric/clusters";
         public const string ServieFabricTag = "Service Fabric";
         public const string ServiceFabricPublisher = "Microsoft.Azure.ServiceFabric";
+        public const string IaaSDiagnostics = "IaaSDiagnostics";
 
         public const string ServiceFabricWindowsNodeExtName = "ServiceFabricNode";
         public const string ServiceFabricLinuxNodeExtName = "ServiceFabricLinuxNode";
@@ -44,5 +46,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Common
         public const string SecretContentType = "application/x-pkcs12";
 
         public const string SelfSignedIssuerName = "Self";
+
+        public const string SourceVaultValue = "sourceVaultValue";
+        public const string CertificateThumbprint = "certificateThumbprint";
+        public const string CertificateUrlValue = "certificateUrlValue";
+
+        public const string SecSourceVaultValue = "secSourceVaultValue";
+        public const string SecCertificateThumbprint = "secCertificateThumbprint";
+        public const string SecCertificateUrlValue = "secCertificateUrlValue";
+
+
     }
 }

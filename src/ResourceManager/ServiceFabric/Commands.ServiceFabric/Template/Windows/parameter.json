@@ -17,6 +17,9 @@
         "vmImagePublisher": {
             "value": "MicrosoftWindowsServer"
         },
+        "vmSku": {
+            "value": "Standard_D2"
+        },
         "vmImageOffer": {
             "value": "WindowsServer"
         },

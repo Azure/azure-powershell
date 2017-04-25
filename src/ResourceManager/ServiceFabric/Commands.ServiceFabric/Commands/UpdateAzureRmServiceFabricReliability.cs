@@ -24,23 +24,38 @@ using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Propertie
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsData.Update, CmdletNoun.AzureRmServiceFabricReliability), OutputType(typeof(PSCluster))]
+    [Cmdlet(VerbsData.Update, CmdletNoun.AzureRmServiceFabricReliability, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class UpdateAzureRmServiceFabricReliability : ServiceFabricClusterCmdlet
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
+        /// <summary>
+        /// Resource group name
+        /// </summary>
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify the name of the resource group.")]
+        [ValidateNotNullOrEmpty()]
+        public override string ResourceGroupName { get; set; }
+
+        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Specify the name of the cluster")]
+        [ValidateNotNullOrEmpty()]
+        [Alias("ClusterName")]
+        public override string Name { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true,
                    HelpMessage = "VM instance number")]
         [ValidateNotNullOrEmpty()]
-        public ReliabilityLevel ReliabilityLevel { get; set; }
+        [Alias("ReliabilityLevel")]
+        public ReliabilityLevel Level { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Adjust nodes number automatically when changing reliability")]
-        [Alias("AutoAdjustNodes")]
+        [Parameter(Mandatory = false, ValueFromPipeline = true,
+                   HelpMessage = "Add node count automatically when changing reliability")]
+        [Alias("Auto")]
         public SwitchParameter AutoAddNodes
         {
-            get { return autoAdjustNodes; }
-            set { autoAdjustNodes = value; }
+            get { return autoAddNodes; }
+            set { autoAddNodes = value; }
         }
-        private bool autoAdjustNodes;
+        private bool autoAddNodes;
 
         public override void ExecuteCmdlet()
         {
@@ -51,60 +66,66 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 throw new InvalidOperationException(
                     string.Format(
-                        ServiceFabricProperties.Resources.CanNotParseReliabilityLevel,
+                        ServiceFabricProperties.Resources.CannotParseReliabilityLevel,
                         oldReliabilityLevelStr));
             }
 
+            if (this.Level == oldReliabilityLevel)
+            {
+                WriteObject(cluster, true);
+                return;
+            }
+
             var primaryVmss = GetPrimaryVmss();
-            var instanceNumber = (int)ReliabilityLevel;
+            var instanceNumber = (int)Level;
 
-            if ((int)ReliabilityLevel > (int)oldReliabilityLevel)
+            if (primaryVmss.Sku.Capacity == null)
             {
-                if (instanceNumber > primaryVmss.Sku.Capacity && !this.AutoAddNodes.IsPresent)
-                {
-                    throw new InvalidOperationException(
-                        ServiceFabricProperties.Resources.UseAutoToIncreaseNodesCount);
-                }
-                
-                primaryVmss.Sku.Capacity = instanceNumber;
-                ComputeClient.VirtualMachineScaleSets.CreateOrUpdate(
-                    ResourceGroupName,
-                    primaryVmss.Name,
-                    primaryVmss);
-            }
-            else if (this.AutoAddNodes.IsPresent)
-            {
-                DurabilityLevel durabilityLevel;
-                var missMatch = false;
-
-                //ignore mismatch
-                GetDurabilityLevel(
-                    out durabilityLevel,
-                    out missMatch,
-                    primaryVmss.Name);
-
-                if (durabilityLevel == DurabilityLevel.Bronze)
-                {
-                    throw new PSInvalidOperationException(
-                        ServiceFabricProperties.Resources.CanNotChangeReliabilityLevelWithDurabilityWithBronze);
-                }
+                throw new PSInvalidOperationException(ServiceFabricProperties.Resources.SkuCapacityIsNull);
             }
 
-            var request = new ClusterUpdateParameters
+            if (ShouldProcess(target: this.Name, action: string.Format("Update fabric reliability level to {0} of {1}", this.Level, this.Name)))
             {
-                ReliabilityLevel = ReliabilityLevel.ToString()
-            };
+                if ((int)this.Level >= (int)oldReliabilityLevel)
+                {
+                    if (instanceNumber > primaryVmss.Sku.Capacity && !this.AutoAddNodes.IsPresent)
+                    {
+                        throw new InvalidOperationException(
+                            string.Format(     
+                                ServiceFabricProperties.Resources.UseAutoToIncreaseNodesCount,
+                                primaryVmss.Sku.Capacity,
+                                instanceNumber
+                            ));
+                    }
 
-            var psCluster = SendPatchRequest(request, true);           
+                    if (primaryVmss.Sku.Capacity < instanceNumber)
+                    {
+                        primaryVmss.Sku.Capacity = instanceNumber;
 
-            WriteObject(psCluster,true);
+                        PrintDetailIfThrow(() =>
+                            ComputeClient.VirtualMachineScaleSets.CreateOrUpdate(
+                                this.ResourceGroupName,
+                                primaryVmss.Name,
+                                primaryVmss));
+                    }
+                }   
+
+                var request = new ClusterUpdateParameters
+                {
+                    ReliabilityLevel = this.Level.ToString()
+                };
+
+                var psCluster = SendPatchRequest(request);
+
+                WriteObject(psCluster, true);
+            }
         }
 
         protected VirtualMachineScaleSet GetPrimaryVmss()
         {
             var clusterRes = GetCurrentCluster();
             var nodeTypes = clusterRes.NodeTypes;
-            var primaryNodeType = nodeTypes.First(nt => nt.IsPrimary);
+            var primaryNodeType = nodeTypes.Single(nt => nt.IsPrimary);
             var vmss = GetVmss(primaryNodeType.Name);
             return vmss;
         }
