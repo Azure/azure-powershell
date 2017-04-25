@@ -128,10 +128,6 @@
     <None Include="Microsoft.Azure.Commands.Management.CognitiveServices.dll-Help.psd1">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-    <Content Include="Microsoft.Azure.Commands.Management.CognitiveServices.dll-Help.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
-    </Content>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -156,4 +152,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="AfterBuild">
+    <ItemGroup>
+      <MarkdownFiles Include="$(ProjectDir)help\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
+  </Target>
 </Project>

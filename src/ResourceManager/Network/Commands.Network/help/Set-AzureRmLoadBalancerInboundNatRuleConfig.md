@@ -16,16 +16,14 @@ Sets an inbound NAT rule configuration for a load balancer.
 ```
 Set-AzureRmLoadBalancerInboundNatRuleConfig -Name <String> -LoadBalancer <PSLoadBalancer>
  [-FrontendIpConfigurationId <String>] [-Protocol <String>] [-FrontendPort <Int32>] [-BackendPort <Int32>]
- [-IdleTimeoutInMinutes <Int32>] [-EnableFloatingIP] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ [-IdleTimeoutInMinutes <Int32>] [-EnableFloatingIP] [<CommonParameters>]
 ```
 
 ### SetByResource
 ```
 Set-AzureRmLoadBalancerInboundNatRuleConfig -Name <String> -LoadBalancer <PSLoadBalancer>
  [-FrontendIpConfiguration <PSFrontendIPConfiguration>] [-Protocol <String>] [-FrontendPort <Int32>]
- [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>] [-EnableFloatingIP]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>] [-EnableFloatingIP] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -139,45 +137,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -LoadBalancer
 Specifies a load balancer.
 This cmdlet sets an inbound NAT rule configuration for the load balancer that this parameter specifies.
@@ -217,6 +176,7 @@ The acceptable values for this parameter are: Tcp or Udp.
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Tcp, Udp
 
 Required: False
 Position: Named

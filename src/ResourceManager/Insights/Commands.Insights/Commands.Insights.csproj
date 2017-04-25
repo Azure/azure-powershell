@@ -262,11 +262,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Microsoft.Azure.Commands.Insights.dll-Help.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Properties\ResourcesForAlertCmdlets.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourcesForAlertCmdlets.Designer.cs</LastGenOutput>
@@ -296,4 +291,10 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="AfterBuild">
+    <ItemGroup>
+      <MarkdownFiles Include="$(ProjectDir)help\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
+  </Target>
 </Project>

@@ -16,8 +16,7 @@ Creates a request routing rule for an application gateway.
 ```
 New-AzureRmApplicationGatewayRequestRoutingRule -Name <String> -RuleType <String>
  [-BackendHttpSettingsId <String>] [-HttpListenerId <String>] [-BackendAddressPoolId <String>]
- [-UrlPathMapId <String>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ [-UrlPathMapId <String>] [<CommonParameters>]
 ```
 
 ### SetByResource
@@ -26,7 +25,7 @@ New-AzureRmApplicationGatewayRequestRoutingRule -Name <String> -RuleType <String
  [-BackendHttpSettings <PSApplicationGatewayBackendHttpSettings>]
  [-HttpListener <PSApplicationGatewayHttpListener>]
  [-BackendAddressPool <PSApplicationGatewayBackendAddressPool>] [-UrlPathMap <PSApplicationGatewayUrlPathMap>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -133,45 +132,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 Specifies the name of the request routing rule that this cmdlet creates.
 
@@ -194,6 +154,7 @@ Specifies type of the request routing rule.
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Basic, PathBasedRouting
 
 Required: True
 Position: Named

@@ -28,9 +28,34 @@ namespace Microsoft.Azure.Commands.Profile
     [OutputType(typeof(PSAzureContext))]
     public class GetAzureRMContextCommand : AzureRMCmdlet
     {
+        /// <summary>
+        /// Gets the current default context.
+        /// </summary>
+        protected override AzureContext DefaultContext
+        {
+            get
+            {
+                if (DefaultProfile == null || DefaultProfile.Context == null)
+                {
+                    return null;
+                }
+
+                return DefaultProfile.Context;
+            }
+        }
+
         public override void ExecuteCmdlet()
         {
-            WriteObject(new PSAzureContext(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().DefaultContext));
+            WriteObject((PSAzureContext)AzureRmProfileProvider.Instance.Profile.Context);
+            if (DefaultContext == null)
+            {
+                WriteError(new ErrorRecord(
+                        new PSInvalidOperationException("Run Login-AzureRmAccount to login."),
+                        string.Empty,
+                        ErrorCategory.AuthenticationError,
+                        null));
+            }
+            WriteObject(new PSAzureContext(context));
         }
     }
 }

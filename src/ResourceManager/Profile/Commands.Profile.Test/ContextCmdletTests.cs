@@ -74,6 +74,38 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetAzureContextNoLogin()
+        {
+            var cmdlt = new GetAzureRMContextCommand();
+
+            // Setup
+            cmdlt.CommandRuntime = commandRuntimeMock;
+            var profile = AzureRmProfileProvider.Instance.Profile;
+            AzureRmProfileProvider.Instance.Profile = new AzureRMProfile();
+
+            try
+            {
+                // Act
+                cmdlt.InvokeBeginProcessing();
+                cmdlt.ExecuteCmdlet();
+                cmdlt.InvokeEndProcessing();
+            }
+            finally
+            {
+                AzureRmProfileProvider.Instance.Profile = profile;
+            }
+
+            // Verify
+            Assert.True(commandRuntimeMock.OutputPipeline.Count == 1);
+            var context = (PSAzureContext)commandRuntimeMock.OutputPipeline[0];
+            Assert.Null(context);
+            Assert.True(commandRuntimeMock.ErrorStream.Count == 1);
+            var error = commandRuntimeMock.ErrorStream[0];
+            Assert.Equal("Run Login-AzureRmAccount to login.", error.Exception.Message);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SelectAzureContextWithNoSubscriptionAndTenant()
         {
             var cmdlt = new SetAzureRMContextCommand();

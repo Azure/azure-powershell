@@ -14,7 +14,7 @@ Sets the logs and metrics settings for the resource.
 
 ```
 Set-AzureRmDiagnosticSetting -ResourceId <String> [-StorageAccountId <String>] [-ServiceBusRuleId <String>]
- -Enabled <Boolean> [-Categories <System.Collections.Generic.List`1[System.String]>]
+ [-Enabled <Boolean>] [-Categories <System.Collections.Generic.List`1[System.String]>]
  [-Timegrains <System.Collections.Generic.List`1[System.String]>] [-RetentionEnabled <Boolean>]
  [-WorkspaceId <String>] [-RetentionInDays <Int32>] [<CommonParameters>]
 ```
@@ -74,6 +74,38 @@ All other time grains and categories are unchanged.
 
 ## PARAMETERS
 
+### -Categories
+Specifies the list of log categories to enable or disable, according to the value of *Enabled*.
+If you do not specify a category, this command operates on all categories.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Enabled
+Indicates whether to enable diagnostics.
+Specify $True to enable diagnostics, or $False to disable diagnostics.
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ResourceId
 Specifies the ID of the resource.
 
@@ -89,11 +121,26 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -StorageAccountId
-Specifies the ID of the Storage account in which to save the data.
+### -RetentionEnabled
+Indicates whether retention of diagnostic information is enabled.
 
 ```yaml
-Type: String
+Type: Boolean
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RetentionInDays
+Specifies the retention policy, in days.
+
+```yaml
+Type: Int32
 Parameter Sets: (All)
 Aliases: 
 
@@ -117,28 +164,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Enabled
-Indicates whether to enable diagnostics.
-Specify $True to enable diagnostics, or $False to disable diagnostics.
+### -StorageAccountId
+Specifies the ID of the Storage account in which to save the data.
 
 ```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Categories
-Specifies the list of log categories to enable or disable, according to the value of *Enabled*.
-If you do not specify a category, this command operates on all categories.
-
-```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: String
 Parameter Sets: (All)
 Aliases: 
 
@@ -165,41 +195,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -RetentionEnabled
-Indicates whether retention of diagnostic information is enabled.
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -WorkspaceId
 The Id of the workspace
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -RetentionInDays
-Specifies the retention policy, in days.
-
-```yaml
-Type: Int32
 Parameter Sets: (All)
 Aliases: 
 

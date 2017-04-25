@@ -203,10 +203,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Microsoft.Azure.Commands.ApiManagement.dll-help.xml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="..\AzureRM.ApiManagement.psd1">
       <Link>AzureRM.ApiManagement.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -217,4 +213,10 @@
     <None Include="MSSharedLibKey.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="AfterBuild">
+    <ItemGroup>
+      <MarkdownFiles Include="$(ProjectDir)help\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
+  </Target>
 </Project>
