@@ -42,6 +42,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = true, Position = 1, ParameterSetName = BatchSettings, ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specify the name of the cluster")]
         [ValidateNotNullOrEmpty()]
+        [Alias("ClusterName")]
         public override string Name { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = OneSetting,

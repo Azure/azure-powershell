@@ -40,12 +40,13 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specify the name of the cluster")]
         [ValidateNotNullOrEmpty()]
+        [Alias("ClusterName")]
         public override string Name { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true,
            HelpMessage = "Specify Service Fabric node type name")]
         [ValidateNotNullOrEmpty()]
-        public string NodeTypeName { get; set; } 
+        public string NodeType { get; set; } 
 
         [Parameter(Mandatory = true, ValueFromPipeline = true,
                    HelpMessage = "Specify durability Level")]
@@ -60,59 +61,63 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         public override void ExecuteCmdlet()
         {
-            var vmss = GetVmss(NodeTypeName);
+            var vmss = GetVmss(this.NodeType);
             var ext = FindFabricVmExt(vmss.VirtualMachineProfile.ExtensionProfile.Extensions);
             var cluster = GetCurrentCluster();
             var nodeType = cluster.NodeTypes.SingleOrDefault(
-                n => n.Name.Equals(NodeTypeName, StringComparison.OrdinalIgnoreCase));
+                n => n.Name.Equals(this.NodeType, StringComparison.OrdinalIgnoreCase));
 
             if (nodeType == null)
             {
                 throw new PSArgumentException(
                     string.Format(
                         ServiceFabricProperties.Resources.CannotFindTheNodeType,
-                        this.NodeTypeName));
+                        this.NodeType));
             }
 
-            DurabilityLevel oldurabilityLevel;
+            DurabilityLevel oldDurabilityLevel;
             var isMismatched = false;
-            GetDurabilityLevel(this.NodeTypeName, out oldurabilityLevel, out isMismatched);
+            GetDurabilityLevel(this.NodeType, out oldDurabilityLevel, out isMismatched);
 
-            var curDurabilityLevel = this.Level;
+            var currentDurabilityLevel = this.Level;
+
+            if (currentDurabilityLevel == oldDurabilityLevel && !isMismatched)
+            {
+                WriteObject(cluster, true);
+                return;
+            }
 
             if (isMismatched)
             {
-                WriteWarning("The durability level is mismatched between nodetype and cluster");
+                WriteWarning(ServiceFabricProperties.Resources.DurabilityLevelMismatches);
             }
 
-            if (curDurabilityLevel == oldurabilityLevel && !isMismatched)
-            {
-                WriteObject(cluster, true);
-            }
-
-            if (!CheckState(oldurabilityLevel, curDurabilityLevel, vmss.Sku.Name))
+            if (!CheckState(oldDurabilityLevel, currentDurabilityLevel, vmss.Sku.Name))
             {
                 throw new PSInvalidOperationException(
                     string.Format(
                         ServiceFabricProperties.Resources.CannotChangeDurabilityFrom,
-                        oldurabilityLevel,
-                        curDurabilityLevel));
+                        oldDurabilityLevel,
+                        currentDurabilityLevel));
+            }
+
+            if (currentDurabilityLevel == DurabilityLevel.Bronze &&
+                !string.IsNullOrEmpty(this.Sku) &&
+                !this.Sku.Equals(vmss.Sku.Name))
+            {
+                throw new PSInvalidOperationException(
+                    ServiceFabricProperties.Resources.CannotUpdateSkuWithBronzeDurability);
             }
 
             if (!string.IsNullOrEmpty(Sku))
             {
-                vmss.Sku = new Sku(Sku, Constants.DefaultTier, vmss.Sku.Capacity);
-            }
-
-            if (curDurabilityLevel == DurabilityLevel.Bronze && !string.IsNullOrEmpty(this.Sku))
-            {
-                throw new PSInvalidOperationException(
-                    ServiceFabricProperties.Resources.CannotUpdateSkuWithDurabilityWithBronze);
+                vmss.Sku = new Sku(this.Sku, Constants.DefaultTier, vmss.Sku.Capacity);
             }
 
             ((JObject)ext.Settings)["durabilityLevel"] = this.Level.ToString();
+            ((JObject) ext.Settings)["enableParallelJobs"] = true;
 
-            if (ShouldProcess(target: this.NodeTypeName, action: string.Format("Update fabric durability level to {0} of {1}", this.Level, this.Name)))
+            if (ShouldProcess(target: this.NodeType, action: string.Format("Update fabric durability level to {0} of {1}", this.Level, this.Name)))
             {
                 var vmssTask = ComputeClient.VirtualMachineScaleSets.CreateOrUpdateAsync(
                     ResourceGroupName,

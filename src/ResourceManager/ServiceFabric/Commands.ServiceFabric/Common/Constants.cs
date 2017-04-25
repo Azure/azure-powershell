@@ -47,6 +47,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Common
 
         public const string SelfSignedIssuerName = "Self";
 
-      
+        public const string SourceVaultValue = "sourceVaultValue";
+        public const string CertificateThumbprint = "certificateThumbprint";
+        public const string CertificateUrlValue = "certificateUrlValue";
+
+        public const string SecSourceVaultValue = "secSourceVaultValue";
+        public const string SecCertificateThumbprint = "secCertificateThumbprint";
+        public const string SecCertificateUrlValue = "secCertificateUrlValue";
+
+
     }
 }

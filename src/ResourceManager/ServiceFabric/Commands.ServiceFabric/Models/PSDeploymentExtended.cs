@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Text;
 using Microsoft.Azure.Management.ResourceManager.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Models
@@ -21,6 +22,24 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
         public PSDeploymentExtended(DeploymentExtended deploymentExtended) :
             base(name: deploymentExtended.Name, id: deploymentExtended.Id, properties: deploymentExtended.Properties)
         { 
-        } 
+        }
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            sb.Append(string.Format("Id : {0}", this.Id));
+            sb.Append(string.Format("CorrelationId : {0}", this.Properties.CorrelationId));
+            sb.Append(string.Format("DebugSetting : {0}", this.Properties.DebugSetting));
+            sb.Append(string.Format("Dependencies : {0}", this.Properties.Dependencies));
+            sb.Append(string.Format("Mode : {0}", this.Properties.Mode));
+            sb.Append(string.Format("Outputs : {0}", this.Properties.Outputs));
+            sb.Append(string.Format("Parameters : {0}", this.Properties.Parameters));
+            sb.Append(string.Format("Providers : {0}", this.Properties.Providers));
+            sb.Append(string.Format("ProvisioningState : {0}", this.Properties.ProvisioningState));
+            sb.Append(string.Format("Template : {0}", this.Properties.Template));
+            sb.Append(string.Format("TemplateLink  : {0}", this.Properties.TemplateLink));
+            sb.Append(string.Format("Timestamp  : {0}", this.Properties.Timestamp));
+            return sb.ToString();
+        }
     }
 }

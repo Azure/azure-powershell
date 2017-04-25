@@ -31,6 +31,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
     {
         public override void ExecuteCmdlet()
         {
+            base.ExecuteCmdlet();
+
             var clusterResource = GetCurrentCluster();
             var clusterType = GetClusterType(clusterResource);
 
@@ -44,7 +46,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             if (ShouldProcess(target: this.Name, action: string.Format("Add cluster certificate to {0}", this.Name)))
             {
-                var certInformation = base.GetOrCreateCertificateInformation();
+                var certInformations = base.GetOrCreateCertificateInformation();
+                var certInformation = certInformations[0];
                 var allTasks = new List<Task>();
                 var vmssPages = ComputeClient.VirtualMachineScaleSets.List(this.ResourceGroupName);
 
@@ -78,7 +81,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                             extension =>
                             extension.Name.Equals(ext.Name, StringComparison.OrdinalIgnoreCase)).Settings = extConfig;
 
-                        allTasks.Add(AddCertToVmss(vmss, certInformation));
+                        allTasks.Add(AddCertToVmssTask(vmss, certInformation));
                     }
                 } while (!string.IsNullOrEmpty(vmssPages.NextPageLink) &&
                         (vmssPages = ComputeClient.VirtualMachineScaleSets.ListNext(vmssPages.NextPageLink)) != null);

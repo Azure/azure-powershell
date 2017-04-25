@@ -16,11 +16,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.ServiceFabric;
 using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
@@ -30,12 +31,17 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
     {
         public override void ExecuteCmdlet()
         {
-            var certInformation = base.GetOrCreateCertificateInformation();
+            base.ExecuteCmdlet();
+
+            var certInformations = base.GetOrCreateCertificateInformation();
+
+            var certInformation = certInformations[0];
 
             if (ShouldProcess(target: this.Name, action: string.Format("Add application certificate to {0}", this.Name)))
             {
+                var token = new CancellationTokenSource();
                 var allTasks = new List<Task>();
-                var vmssPages = ComputeClient.VirtualMachineScaleSets.List(this.ResourceGroupName);
+                var vmssPages = this.ComputeClient.VirtualMachineScaleSets.List(this.ResourceGroupName);
 
                 if (vmssPages == null || !vmssPages.Any())
                 {
@@ -51,12 +57,37 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         break;
                     }
 
-                    allTasks.AddRange(vmssPages.Select(vmss => AddCertToVmss(vmss, certInformation)));
+                    allTasks.AddRange(vmssPages.Select(vmss => AddCertToVmssTask(vmss, certInformation)));
 
                 } while (!string.IsNullOrEmpty(vmssPages.NextPageLink) &&
-                         (vmssPages = ComputeClient.VirtualMachineScaleSets.ListNext(vmssPages.NextPageLink)) != null);
+                         (vmssPages = this.ComputeClient.VirtualMachineScaleSets.ListNext(vmssPages.NextPageLink)) != null);
 
-                Task.WaitAll(allTasks.ToArray());
+                Task.Factory.ContinueWhenAll(allTasks.ToArray(), _ => { token.Cancel(); }, CancellationToken.None);
+
+                while (!token.IsCancellationRequested)
+                {
+                    var c = SafeGetResource(() => this.SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name));
+                    if (c != null)
+                    {
+                        WriteVerboseWithTimestamp(string.Format(ServiceFabricProperties.Resources.ClusterStateVerbose, c.ClusterState));
+                    }
+
+                    var vmsss = this.ComputeClient.VirtualMachineScaleSets.List(this.ResourceGroupName);
+
+                    do
+                    {
+                        if (vmsss.Any())
+                        {
+                            foreach (var vmss in vmsss)
+                            {
+                                WriteVerboseWithTimestamp(string.Format(ServiceFabricProperties.Resources.VmssVerbose, vmss.Name, vmss.ProvisioningState));
+                            }
+                        }
+                    } while (!string.IsNullOrEmpty(vmsss.NextPageLink) &&
+                            (vmsss = this.ComputeClient.VirtualMachineScaleSets.ListNext(vmsss.NextPageLink)) != null);
+
+                    Thread.Sleep(TimeSpan.FromSeconds(WriteVerboseIntervalInSec));
+                }
             }
 
             WriteObject(new PSKeyVault()
@@ -66,8 +97,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 KeyVaultCertificateName = certInformation.KeyVault.Name,
                 KeyVaultSecretName = certInformation.SecretName,
                 KeyVaultSecretVersion = certInformation.Version
-            });
-
+            }); 
         }
     }
 }

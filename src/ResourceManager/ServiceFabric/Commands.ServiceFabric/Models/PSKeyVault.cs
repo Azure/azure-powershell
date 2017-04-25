@@ -13,12 +13,15 @@
 // ----------------------------------------------------------------------------------
 
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Models
 {
     public class PSKeyVault
     {
         public X509Certificate2 Certificate { get; set; }
+
+        public string Thumbprint { get; set; }
 
         public string KeyVaultName { get; set; }
 
@@ -27,5 +30,18 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
         public string KeyVaultSecretName { get; set; }
 
         public string KeyVaultSecretVersion { get; set; }
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            sb.Append(string.Format("Certificate : {0}", this.Certificate));
+            sb.Append(string.Format("Thumbprint : {0}", this.Thumbprint));
+            sb.Append(string.Format("KeyVaultName : {0}", this.KeyVaultName));
+            sb.Append(string.Format("KeyVaultCertificateName : {0}", this.KeyVaultCertificateName));
+            sb.Append(string.Format("KeyVaultSecretName : {0}", this.KeyVaultSecretName));
+            sb.Append(string.Format("KeyVaultSecretVersion : {0}", this.KeyVaultSecretVersion));
+
+            return sb.ToString();
+        }
     }
 }

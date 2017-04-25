@@ -59,6 +59,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specify the name of the cluster")]
         [ValidateNotNullOrEmpty()]
+        [Alias("ClusterName")]
         public override string Name { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true,
@@ -538,9 +539,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 }
             }
 
-            var publicAddressName = string.Format("LBIP-{0}-{1}{2}", this.Name, this.NodeType, index);
-            var dnsLable = string.Format("{0}-{1}{2}", this.Name, this.NodeType.ToLower(), index);
-            var lbName = string.Format("LB-{0}-{1}{2}", this.Name, this.NodeType, index);
+            var publicAddressName = string.Format("LBIP-{0}-{1}{2}", this.Name.ToLower(), this.NodeType.ToLower(), index);
+            var dnsLable = string.Format("{0}-{1}{2}", this.Name.ToLower(), this.NodeType.ToLower(), index);
+            var lbName = string.Format("LB-{0}-{1}{2}", this.Name.ToLower(), this.NodeType.ToLower(), index);
 
             var publicIp = NetworkManagementClient.PublicIPAddresses.CreateOrUpdate(
                 this.ResourceGroupName,

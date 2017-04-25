@@ -48,6 +48,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
     {
         private const int NewCreatedKeyVaultWaitTimeInSec = 15;
 
+        internal const int WriteVerboseIntervalInSec = 20;
+
         /// <summary>
         /// Resource group name
         /// </summary>
@@ -243,7 +245,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             var localResourcesClient = new PSResourceManagerModels.ResourcesClient(DefaultContext)
             {
                 VerboseLogger = WriteVerboseWithTimestamp,
-                ErrorLogger = WriteErrorWithTimestamp,
+                ErrorLogger = WriteVerboseWithTimestamp,
                 WarningLogger = WriteWarningWithTimestamp
             };
 
@@ -412,6 +414,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             var fileContentEncoded = Convert.ToBase64String(clearBytes);
 
+            WriteVerbose(string.Format("Importing certificate to Azure KeyVault {0}", certificateName));
             var certificateBundle = this.KeyVaultClient.ImportCertificateAsync(
                 CreateVaultUri(keyVaultName).ToString(),
                 certificateName,
@@ -425,6 +428,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     }
                 }
                 ).GetAwaiter().GetResult();
+
+            WriteVerbose(string.Format("Certificate imported Azure KeyVault {0}", certificateBundle.CertificateIdentifier));
 
             return certificateBundle;
         }
@@ -555,14 +560,23 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 action();
             }
-            catch (CloudException cloudException)
+            catch (Exception exception)
             {
-                if (cloudException.Body != null)
+                while (!(exception is CloudException) && exception.InnerException != null)
                 {
-                    var cloudErrorMessage = GetCloudErrorMessage(cloudException.Body);
-                    var ex = new Exception(cloudErrorMessage);
-                    WriteError(
-                        new ErrorRecord(ex, string.Empty, ErrorCategory.NotSpecified, null));
+                    exception = exception.InnerException;
+                }
+
+                if (exception is CloudException)
+                {
+                    var cloudException = (CloudException) exception;
+                    if (cloudException.Body != null)
+                    {
+                        var cloudErrorMessage = GetCloudErrorMessage(cloudException.Body);
+                        var ex = new Exception(cloudErrorMessage);
+                        WriteError(
+                            new ErrorRecord(ex, string.Empty, ErrorCategory.NotSpecified, null));
+                    }
                 }
 
                 throw;

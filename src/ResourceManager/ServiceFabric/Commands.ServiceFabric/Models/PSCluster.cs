@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Text;
 using Microsoft.Azure.Management.ServiceFabric.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Models
@@ -45,6 +46,35 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
                   upgradeDescription: cluster.UpgradeDescription
                 )
         {
+        }
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            sb.Append(string.Format("Cluster name : {0}", this.Name));
+            sb.Append(string.Format("id : {0}", this.Id));
+            sb.Append(string.Format("clusterId : {0}", this.ClusterId));
+            sb.Append(string.Format("location : {0}", this.Location));
+            sb.Append(string.Format("type : {0}", this.Type));
+            sb.Append(string.Format("clusterId : {0}", this.ClusterId));
+            sb.Append(string.Format("clusterState : {0}", this.ClusterState));
+            sb.Append(string.Format("clusterEndpoint : {0}", this.ClusterEndpoint));
+            sb.Append(string.Format("clusterCodeVersion : {0}", this.ClusterCodeVersion));
+            sb.Append(string.Format("certificate : {0}", this.Certificate));
+            sb.Append(string.Format("reliabilityLevel : {0}", this.ReliabilityLevel));
+            sb.Append(string.Format("upgradeMode : {0}", this.UpgradeMode));
+            sb.Append(string.Format("clientCertificateThumbprints : {0}", this.ClientCertificateThumbprints));
+            sb.Append(string.Format("clientCertificateCommonNames : {0}", this.ClientCertificateCommonNames));
+            sb.Append(string.Format("fabricSettings : {0}", this.FabricSettings));
+            sb.Append(string.Format("reverseProxyCertificate : {0}", this.ReverseProxyCertificate));
+            sb.Append(string.Format("managementEndpoint : {0}", this.ManagementEndpoint));
+            sb.Append(string.Format("nodeTypes : {0}", this.NodeTypes));
+            sb.Append(string.Format("provisioningState : {0}", this.ProvisioningState));
+            sb.Append(string.Format("vmImage : {0}", this.VmImage));
+            sb.Append(string.Format("diagnosticsStorageAccountConfig : {0}", this.DiagnosticsStorageAccountConfig));
+            sb.Append(string.Format("upgradeDescription : {0}", this.UpgradeDescription));
+
+            return sb.ToString(); 
         }
     }
 }

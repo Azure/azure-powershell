@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specify the name of the cluster")]
         [ValidateNotNullOrEmpty()]
+        [Alias("ClusterName")]
         public override string Name { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true,
@@ -87,8 +88,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             cluster = SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name);
             var nodeType = cluster.NodeTypes.Single(
-                n => string.Equals( 
-                    this.NodeType,
+                n => this.NodeType.Equals(
                     n.Name,
                     StringComparison.OrdinalIgnoreCase));
 
