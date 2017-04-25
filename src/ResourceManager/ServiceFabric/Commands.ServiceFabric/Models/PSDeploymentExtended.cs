@@ -12,35 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using System.Text;
+using Microsoft.Azure.Management.ResourceManager.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Models
 {
-    public class PSDeploymentResult
+    public class PSDeploymentExtended : DeploymentExtended
     {
-        public string VmUserName { get; set; }
-
-        public List<PSKeyVault> CertificateInformation { get; set; }
-
-        public PSDeploymentExtended DeploymentDetail { get; set; }
-
-        public PSCluster ClusterDetail { get; set; } 
-
-        public PSDeploymentResult()
-        {
-        }
-
-        public PSDeploymentResult(
-            PSDeploymentExtended deployment, 
-            PSCluster cluster,
-            string vmUserName,
-            List<PSKeyVault> certificateInformations
-        )
-        {
-            this.DeploymentDetail = deployment;
-            this.ClusterDetail = cluster;
-            this.VmUserName = vmUserName;
-            this.CertificateInformation = certificateInformations;
+        public PSDeploymentExtended(DeploymentExtended deploymentExtended) :
+            base(name: deploymentExtended.Name, id: deploymentExtended.Id, properties: deploymentExtended.Properties)
+        { 
         }
     }
 }

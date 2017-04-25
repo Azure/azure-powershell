@@ -21,15 +21,15 @@ using Microsoft.Azure.Management.ServiceFabric.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Set, CmdletNoun.AzureRmServiceFabricSettings), OutputType(typeof(PSCluster))]
+    [Cmdlet(VerbsCommon.Set, CmdletNoun.AzureRmServiceFabricSettings, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class SetAzureRmServiceFabricSettings : ServiceFabricSettingsCmdletBase
     {            
         public override void ExecuteCmdlet()
         {
-            var cluster = SFRPClient.Clusters.Get(this.ResourceGroupName, this.ClusterName);
+            var cluster = SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name);
             var settings = FabricSettingsToDictionary(cluster.FabricSettings);
 
-            foreach (var setting in this.ChangedSettingsSectionDescriptions)
+            foreach (var setting in this.UpdatedSettingsSectionDescriptionListList)
             {
                 if (!settings.ContainsKey(setting.Name))
                 {
@@ -44,12 +44,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             var fabricSettings = DictionaryToFabricSettings(settings);
 
-            cluster = SendPatchRequest(new ClusterUpdateParameters()
+            if (ShouldProcess(target: this.Name, action: string.Format("Set fabric settings of {0} ", this.Name)))
             {
-                FabricSettings = fabricSettings
-            });
+                cluster = SendPatchRequest(new ClusterUpdateParameters()
+                {
+                    FabricSettings = fabricSettings
+                });
 
-            WriteObject((PSCluster)cluster,true);
+                WriteObject((PSCluster) cluster, true);
+            }
         }               
     }
 }

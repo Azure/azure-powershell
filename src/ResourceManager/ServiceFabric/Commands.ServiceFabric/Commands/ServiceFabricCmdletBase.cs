@@ -21,6 +21,7 @@ using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using Action = System.Action;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -46,6 +47,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
     public class ServiceFabricCmdletBase : AzureRMCmdlet
     {
         private const int NewCreatedKeyVaultWaitTimeInSec = 15;
+
+        internal const int WriteVerboseIntervalInSec = 20;
 
         /// <summary>
         /// Resource group name
@@ -84,38 +87,37 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         private Lazy<GraphRbacManagementClient> graphClient;
         private Lazy<IKeyVaultClient> keyVaultClient;
 
-        //TODO change all those from public to internal of the clients
-        public IServiceFabricManagementClient SFRPClient
+        internal IServiceFabricManagementClient SFRPClient
         {
             get { return sfrpClient.Value; }
             set { sfrpClient = new Lazy<IServiceFabricManagementClient>(() => value); }
         }
 
-        public IComputeManagementClient ComputeClient
+        internal IComputeManagementClient ComputeClient
         {
             get { return computeClient.Value; }
             set { computeClient = new Lazy<IComputeManagementClient>(() => value); }
         }
 
-        public IKeyVaultManagementClient KeyVaultManageClient
+        internal IKeyVaultManagementClient KeyVaultManageClient
         {
             get { return keyVaultManageClient.Value; }
             set { keyVaultManageClient = new Lazy<IKeyVaultManagementClient>(() => value); }
         }
 
-        public IResourceManagementClient ResourcesClient
+        internal IResourceManagementClient ResourcesClient
         {
             get { return resourcesClient.Value; }
             set { resourcesClient = new Lazy<IResourceManagementClient>(() => value); }
         }
 
-        public GraphRbacManagementClient GraphClient
+        internal GraphRbacManagementClient GraphClient
         {
             get { return graphClient.Value; }
             set { graphClient = new Lazy<GraphRbacManagementClient>(() => value); }
         }
 
-        public IKeyVaultClient KeyVaultClient
+        internal IKeyVaultClient KeyVaultClient
         {
             get { return keyVaultClient.Value; }
             set { keyVaultClient = new Lazy<IKeyVaultClient>(() => value); }
@@ -166,6 +168,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         protected VirtualMachineScaleSet GetVmss(string name)
         {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new PSArgumentNullException("Invalid vmss name");
+            }
+
             var result = ComputeClient.VirtualMachineScaleSets.List(ResourceGroupName);
             if (result == null || !result.Any())
             {
@@ -174,43 +181,31 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     this.ResourceGroupName));
             }
 
-            if (!string.IsNullOrEmpty(name))
-            {
-                var vmss = result.Where(
-                    vm => string.Compare(vm.Name, name, StringComparison.OrdinalIgnoreCase) == 0
-                    );
+            var vmss = result.FirstOrDefault(
+                vm => vm.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
 
-                if (vmss == null || !vmss.Any())
-                {
-                    throw new PSInvalidOperationException(
-                        string.Format(
-                            ServiceFabricProperties.Resources.CanNotFindTheNodeType, name));
-                }
-
-                return vmss.First();
-            }
-            else
+            if (vmss == null)
             {
-                return result.First();
+                throw new PSInvalidOperationException(
+                    string.Format(
+                        ServiceFabricProperties.Resources.CannotFindTheNodeType, name));
             }
+
+            return vmss;
         }
 
-        public VirtualMachineScaleSetExtension FindFabricVmExt(
-            IList<VirtualMachineScaleSetExtension> extensions)
+        public VirtualMachineScaleSetExtension FindFabricVmExt(IList<VirtualMachineScaleSetExtension> extensions)
         {
             var extConfigs = extensions.Where(
-                    e => string.Compare(
-                        e.Type,
-                        "ServiceFabricNode", StringComparison.OrdinalIgnoreCase) == 0);
+                    e =>e.Type.Equals(
+                       Constants.ServiceFabricWindowsNodeExtName, StringComparison.OrdinalIgnoreCase));
 
-            if (extConfigs == null || extConfigs.Count() != 1)
+            if (!extConfigs.Any())
             {
                 extConfigs = extensions.Where(
-                   e => string.Compare(
-                       e.Type,
-                       "ServiceFabricLinuxNode", StringComparison.OrdinalIgnoreCase) == 0);
+                   e => e.Type.Equals(Constants.ServiceFabricLinuxNodeExtName, StringComparison.OrdinalIgnoreCase));
 
-                if (extConfigs == null || extConfigs.Count() != 1)
+                if (!extConfigs.Any())
                 {
                     throw new PSInvalidOperationException(extConfigs.Count().ToString());
                 }
@@ -223,12 +218,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         #region Key Vault 
 
-        protected Vault GetKeyVault(string keyVaultResouceGroupName, string vaultName)
+        protected Vault TryGetKeyVault(string keyVaultResouceGroupName, string vaultName)
         {
             if (!string.IsNullOrWhiteSpace(vaultName))
             {
-                return SafeGetResource(() =>
-                 KeyVaultManageClient.Vaults.Get(
+                return SafeGetResource(() => KeyVaultManageClient.Vaults.Get(
                     keyVaultResouceGroupName,
                     vaultName));
             }
@@ -238,34 +232,25 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
         }
 
-        protected Vault GetKeyVault(string secretIdentifier)
+        protected Vault TryGetKeyVault(string secretIdentifier)
         {
             var host = new Uri(secretIdentifier).Host;
             var vaultName = host.Split('.')[0];
             var keyVaultRgName = GetResourceGroupName(vaultName);
-            var vault = KeyVaultManageClient.Vaults.Get(keyVaultRgName, vaultName);
-
-            if (vault == null)
-            {
-                throw new PSInvalidOperationException(
-                    string.Format(
-                        ServiceFabricProperties.Resources.CanNotFindVault,
-                        vaultName));
-            }
-
-            return new Vault(vault.Name, vault.Location, null, vault.Id);
+            return TryGetKeyVault(keyVaultRgName, vaultName);
         }
 
         protected string GetResourceGroupName(string vaultName)
         {
-            var resourcesClient = new PSResourceManagerModels.ResourcesClient(DefaultContext)
+            var localResourcesClient = new PSResourceManagerModels.ResourcesClient(DefaultContext)
             {
                 VerboseLogger = WriteVerboseWithTimestamp,
-                ErrorLogger = WriteErrorWithTimestamp,
+                ErrorLogger = WriteVerboseWithTimestamp,
                 WarningLogger = WriteWarningWithTimestamp
             };
+
             string rg = null;
-            var resourcesByName = resourcesClient.FilterResources(
+            var resourcesByName = localResourcesClient.FilterResources(
                 new PSResourceManagerModels.FilterResourcesOptions()
                 {
                     ResourceType = Constants.KeyVaultType
@@ -276,13 +261,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 var vault = resourcesByName.FirstOrDefault(
                     r => r.Name.Equals(vaultName, StringComparison.OrdinalIgnoreCase));
                 if (vault != null)
+                {
                     rg = new PSResourceManagerModels.ResourceIdentifier(vault.Id).ResourceGroupName;
+                }
             }
 
             return rg;
         }
 
-        protected Vault CreateKeyVault(string vaultName, string vaultLocation, string resouceGroupName)
+        protected Vault CreateKeyVault(string clusterName, string vaultName, string vaultLocation, string resouceGroupName)
         {
             var userObjectId = string.Empty;
             AccessPolicyEntry accessPolicy = null;
@@ -325,6 +312,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     AccessPolicies = accessPolicy == null ?
                         new AccessPolicyEntry[] { } :
                         new[] { accessPolicy }
+                },
+                Tags = new Dictionary<string, string>()
+                {
+                    { "clusterName",clusterName },
+                    { "resourceType" ,Constants.ServieFabricTag }
                 }
             };
 
@@ -347,24 +339,31 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         {
             var tenantId = string.Empty;
             if (context.Account == null)
+            {
                 throw new PSArgumentException("ARM account not found");
+            }
 
             if (context.Account.Type != AzureAccount.AccountType.User &&
                 context.Account.Type != AzureAccount.AccountType.ServicePrincipal)
-                throw new ArgumentException("Unsupported account type");
+            {
+                throw new PSArgumentException("Unsupported account type");
+            }
 
             if (context.Subscription != null && context.Account != null)
+            {
                 tenantId = context.Subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants)
-                       .Intersect(context.Account.GetPropertyAsArray(AzureAccount.Property.Tenants))
-                       .FirstOrDefault();
+                    .Intersect(context.Account.GetPropertyAsArray(AzureAccount.Property.Tenants))
+                    .FirstOrDefault();
+            }
 
             if (string.IsNullOrWhiteSpace(tenantId) && context.Tenant != null && context.Tenant.Id != Guid.Empty)
+            {
                 tenantId = context.Tenant.Id.ToString();
+            }
 
             if (string.IsNullOrEmpty(tenantId))
             {
-                throw new PSInvalidOperationException(
-                    ServiceFabricProperties.Resources.CanNotFindTenantId);
+                throw new PSInvalidOperationException(ServiceFabricProperties.Resources.CannotFindTenantId);
             }
 
             var tenant = Guid.Parse(tenantId);
@@ -373,7 +372,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         protected Vault EnableKeyVaultForDeployment(string keyVaultResouceGroupName, string vaultName)
         {
-            var keyVault = GetKeyVault(keyVaultResouceGroupName, vaultName);
+            var keyVault = TryGetKeyVault(keyVaultResouceGroupName, vaultName);
             keyVault.Properties.EnabledForDeployment = true;
 
             var vault = KeyVaultManageClient.Vaults.CreateOrUpdate(
@@ -389,7 +388,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             return vault;
         }
 
-        protected SecretBundle SetAzureKeyVaultSecret(string keyVaultName, string secretName, string pfxFilePath, SecureString password , out string thumbprint)
+        protected CertificateBundle ImportCertificateToAzureKeyVault(string keyVaultName, string certificateName, string pfxFilePath, SecureString password, out string thumbprint)
         {
             var keyFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(pfxFilePath));
             if (!keyFile.Exists)
@@ -402,29 +401,37 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             var collection = new X509Certificate2Collection();
             var flag = X509KeyStorageFlags.Exportable;
-            var contentType = X509ContentType.Pkcs12;
+            var contentType = X509ContentType.Pfx;
 
-            collection.Import(
-                pfxFilePath,
-                password.ConvertToString(),
-                flag);
+            var clearPassword = password == null ? string.Empty : password.ConvertToString();
+            collection.Import(pfxFilePath, clearPassword, flag);
 
-            var clearBytes = collection.Export(contentType);
-            var fileContentEncoded = Convert.ToBase64String(clearBytes);
-            var secureStr = new SecureString();
-            foreach (var c in fileContentEncoded)
+            var clearBytes = collection.Export(contentType, clearPassword);
+            if (clearBytes == null || clearBytes.Count() == 0)
             {
-                secureStr.AppendChar(c);
+                throw new PSArgumentException("Invalid pfx");
             }
 
-            var secretContentType = Constants.SecretContentType;
-            var secret = KeyVaultClient.SetSecretAsync(
-                CreateVaultUri(keyVaultName).ToString(),
-                secretName,
-                secureStr.ConvertToString(),
-                contentType: secretContentType).GetAwaiter().GetResult();
+            var fileContentEncoded = Convert.ToBase64String(clearBytes);
 
-            return secret;
+            WriteVerbose(string.Format("Importing certificate to Azure KeyVault {0}", certificateName));
+            var certificateBundle = this.KeyVaultClient.ImportCertificateAsync(
+                CreateVaultUri(keyVaultName).ToString(),
+                certificateName,
+                fileContentEncoded,
+                clearPassword,
+                new CertificatePolicy
+                {
+                    SecretProperties = new SecretProperties
+                    {
+                        ContentType = Constants.SecretContentType
+                    }
+                }
+                ).GetAwaiter().GetResult();
+
+            WriteVerbose(string.Format("Certificate imported Azure KeyVault {0}", certificateBundle.CertificateIdentifier));
+
+            return certificateBundle;
         }
 
         protected string GetCurrentUserObjectId()
@@ -439,6 +446,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         string.Format("$filter=userPrincipalName eq '{0}'", DefaultContext.Account.Id)
                         )).FirstOrDefault();
 
+                if (user == null)
+                {
+                    return null;
+                }
+
                 objectId = user.ObjectId;
             }
             catch (GraphErrorException e)
@@ -449,6 +461,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         new Rest.Azure.OData.ODataQuery<ServicePrincipal>(
                             string.Format("$filter=servicePrincipalNames/any(c: c eq '{0}')", DefaultContext.Account.Id))
                         ).FirstOrDefault();
+
+                    if (user == null)
+                    {
+                        return null;
+                    }
 
                     objectId = user.ObjectId;
                 }
@@ -507,14 +524,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         #endregion
 
-        #region Helper
+        #region Helper     
+
         protected T SafeGetResource<T>(Func<T> action)
         {
             try
             {
                 return action();
             }
-            catch (Rest.Azure.CloudException ce)
+            catch (CloudException ce)
             {
                 if (ce.Response != null && ce.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
@@ -536,20 +554,29 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
         }
 
-        protected void PrintDetailIfThrow(System.Action action)
+        protected void PrintDetailIfThrow(Action action)
         {
             try
             {
                 action();
             }
-            catch (CloudException cloudException)
+            catch (Exception exception)
             {
-                if (cloudException.Body != null)
+                while (!(exception is CloudException) && exception.InnerException != null)
                 {
-                    var cloudErrorMessage = GetCloudErrorMessage(cloudException.Body);
-                    var ex = new Exception(cloudErrorMessage);
-                    WriteError(
-                        new ErrorRecord(ex, string.Empty, ErrorCategory.NotSpecified, null));
+                    exception = exception.InnerException;
+                }
+
+                if (exception is CloudException)
+                {
+                    var cloudException = (CloudException) exception;
+                    if (cloudException.Body != null)
+                    {
+                        var cloudErrorMessage = GetCloudErrorMessage(cloudException.Body);
+                        var ex = new Exception(cloudErrorMessage);
+                        WriteError(
+                            new ErrorRecord(ex, string.Empty, ErrorCategory.NotSpecified, null));
+                    }
                 }
 
                 throw;
@@ -573,7 +600,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
 
             var message = string.Format(
-                "Code:{0},Message:{1} {2} Details {3}",  
+                "Code:{0}, Message:{1} ,Details: {3}{2}",  
                 error.Code,                      
                 error.Message,         
                 Environment.NewLine,  

@@ -21,10 +21,10 @@ using Microsoft.Azure.Management.ServiceFabric.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureRmServiceFabricClusterCertificate), OutputType(typeof(PSCluster))]
+    [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureRmServiceFabricClusterCertificate, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class RemoveAzureRmServiceFabricClusterCertificate : ServiceFabricClusterCmdlet
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, ValueFromPipeline = true,
                    HelpMessage = "Specify the cluster thumbprint which to be removed")]
         [ValidateNotNullOrEmpty()]
         public string Thumbprint { get; set; }
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 throw new PSInvalidOperationException(
                     string.Format(
                         ServiceFabricProperties.Resources.RemoveCertFromUnsecureCluster,
-                        this.ClusterName));
+                        this.Name));
             }
 
             if (clusterResource.Certificate.ThumbprintSecondary == null)
@@ -53,17 +53,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 Certificate = clusterResource.Certificate
             };
 
-            if (string.Compare(
-                this.Thumbprint,
+            if (this.Thumbprint.Equals(
                 clusterResource.Certificate.ThumbprintSecondary,
-                StringComparison.OrdinalIgnoreCase) == 0)
+                StringComparison.OrdinalIgnoreCase))
             {
                 patchRequest.Certificate.ThumbprintSecondary = null;
             }
-            else if (string.Compare(
-                this.Thumbprint,
+            else if (this.Thumbprint.Equals( 
                 clusterResource.Certificate.Thumbprint,
-                StringComparison.OrdinalIgnoreCase) == 0)
+                StringComparison.OrdinalIgnoreCase))
             {
                 patchRequest.Certificate.Thumbprint =
                    clusterResource.Certificate.ThumbprintSecondary;
@@ -73,12 +71,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 throw new InvalidOperationException(
                     string.Format(
-                        ServiceFabricProperties.Resources.CanNotFindThumbprintInTheCluster,
+                        ServiceFabricProperties.Resources.CannotFindThumbprintInTheCluster,
                         this.Thumbprint));
             }
 
-            var cluster = SendPatchRequest(patchRequest, true);
-            WriteObject(cluster,true);
+            if (ShouldProcess(target: this.Name, action: string.Format("Remove a cluster certificate from {0} ", this.Name)))
+            {
+                var cluster = SendPatchRequest(patchRequest);
+                WriteObject(cluster, true);
+            }
         }
     }
 }

@@ -23,40 +23,41 @@ using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Propertie
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureRmServiceFabricClientCertificate), OutputType(typeof(PSCluster))]
-    public class RemoveAzureRmServiceFabricClientCertificate : AddAzureRmServiceFabricClientCertificate
+    [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureRmServiceFabricClientCertificate, SupportsShouldProcess = true),
+     OutputType(typeof (PSCluster))]
+    public class RemoveAzureRmServiceFabricClientCertificate : ServiceFabricClientCertificateBase
     {
-        public override bool IsAdmin { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            var cluster = SFRPClient.Clusters.Get(
+            var cluster = SFRPClient.Clusters.Get(  
                 ResourceGroupName,
-                ClusterName);
+                Name);
 
-            switch (ParameterSetName)
+            if (ShouldProcess(target: this.Name, action: string.Format("Remove a client certificate from {0} ", this.Name)))
             {
-                case SingleUpdateWithThumbprintSet:
-                case MultipleUpdatesWithThumbprintSet:
+                switch (ParameterSetName)
+                {
+                    case SingleUpdateWithThumbprintSet:
+                    case MultipleUpdatesWithThumbprintSet:
                     {
                         var oldCertThumbprints = cluster.ClientCertificateThumbprints.Select(
                             c => c.CertificateThumbprint).ToDictionary(
                                 c => c,
-                                StringComparer.InvariantCultureIgnoreCase);
+                                StringComparer.OrdinalIgnoreCase);
 
                         var toRemoveThumbprints = ParseArgumentsForThumbprint();
 
-                        if (oldCertThumbprints != null)
+                        if (oldCertThumbprints.Any())
                         {
                             var notExist = toRemoveThumbprints.SingleOrDefault(
                                 c => !oldCertThumbprints.ContainsKey(
-                                      c.CertificateThumbprint));
+                                    c.CertificateThumbprint));
 
                             if (notExist != null)
                             {
                                 throw new PSArgumentException(
                                     string.Format(
-                                        ServiceFabricProperties.Resources.CanNodFindCertificateInCluster,
+                                        ServiceFabricProperties.Resources.CannotFindCertificateInCluster,
                                         notExist.CertificateThumbprint));
                             }
                         }
@@ -82,20 +83,20 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         };
 
                         var psCluster = SendPatchRequest(patchRequest);
-                        WriteObject(psCluster,true);
+                        WriteObject(psCluster, true);
                         break;
                     }
 
-                case SingleUpdateWithCommonNameSet:
-                case MultipleUpdatesWithCommonNameSet:
+                    case SingleUpdateWithCommonNameSet:
+                    case MultipleUpdatesWithCommonNameSet:
                     {
                         var oldCommonNames = cluster.ClientCertificateCommonNames.Select(
-                           c => c.CertificateCommonName + c.CertificateIssuerThumbprint).
-                           ToDictionary(c => c, StringComparer.InvariantCultureIgnoreCase);
+                            c => c.CertificateCommonName + c.CertificateIssuerThumbprint).
+                            ToDictionary(c => c, StringComparer.OrdinalIgnoreCase);
 
                         var toRemoveCommonName = ParseArgumentsForCommonName(true);
 
-                        if (oldCommonNames != null)
+                        if (oldCommonNames.Any())
                         {
                             var notExist = toRemoveCommonName.SingleOrDefault(
                                 c => !oldCommonNames.ContainsKey(
@@ -105,7 +106,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                             {
                                 throw new PSArgumentException(
                                     string.Format(
-                                        ServiceFabricProperties.Resources.CanNodFindCommonNameAndIssuer,
+                                        ServiceFabricProperties.Resources.CannotFindCommonNameAndIssuer,
                                         notExist.CertificateCommonName,
                                         notExist.CertificateIssuerThumbprint));
                             }
@@ -113,7 +114,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         else
                         {
                             throw new PSArgumentException(string.Format(
-                                    ServiceFabricProperties.Resources.NoneCertificateFound));
+                                ServiceFabricProperties.Resources.NoneCertificateFound));
                         }
 
                         var commonNames = cluster.ClientCertificateCommonNames.ToList();
@@ -122,7 +123,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                             commonNames.RemoveAll(c => string.Equals(
                                 commonName.CertificateCommonName + commonName.CertificateIssuerThumbprint,
                                 c.CertificateCommonName + c.CertificateIssuerThumbprint,
-                                StringComparison.InvariantCultureIgnoreCase));
+                                StringComparison.OrdinalIgnoreCase));
                         }
 
                         var patchRequest = new ClusterUpdateParameters
@@ -131,9 +132,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         };
 
                         var psCluster = SendPatchRequest(patchRequest);
-                        WriteObject(psCluster,true);
+                        WriteObject(psCluster, true);
                         break;
                     }
+                }
             }
         }
     }

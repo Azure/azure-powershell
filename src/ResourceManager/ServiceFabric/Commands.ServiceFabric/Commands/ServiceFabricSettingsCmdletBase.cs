@@ -17,45 +17,63 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.ServiceFabric.Models;
+using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     public class ServiceFabricSettingsCmdletBase : ServiceFabricClusterCmdlet
     {
-        private List<PSSettingsSectionDescription> changedSettingsSectionDescriptions =
-            new List<PSSettingsSectionDescription>();
-        protected const string OneCertSet = "OneSetting";
-        protected const string GroupCertSet = "BatchSettings";
+        private readonly List<PSSettingsSectionDescription> updatedSettingsSectionDescriptionList = new List<PSSettingsSectionDescription>();
+        protected const string OneSetting = "OneSetting";
+        protected const string BatchSettings = "BatchSettings";
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = OneCertSet,
-                   HelpMessage = "Section")]
+        /// <summary>
+        /// Resource group name
+        /// </summary>
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = OneSetting, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify the name of the resource group.")]
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = BatchSettings, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify the name of the resource group.")]
+        [ValidateNotNullOrEmpty()]
+        public override string ResourceGroupName { get; set; }
+
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = OneSetting, ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Specify the name of the cluster")]
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = BatchSettings, ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Specify the name of the cluster")]
+        [ValidateNotNullOrEmpty()]
+        [Alias("ClusterName")]
+        public override string Name { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = OneSetting,
+                   HelpMessage = "Section name of the fabric setting")]
         [ValidateNotNullOrEmpty()]
         public string Section { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = OneCertSet,
-                   HelpMessage = "Parameter")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = OneSetting,
+                   HelpMessage = "Parameter name of the fabric setting")]
         [ValidateNotNullOrEmpty()]
         public string Parameter { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = OneCertSet,
-                   HelpMessage = "Value")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = OneSetting,
+                   HelpMessage = "Parameter value of the fabric setting")]
         [ValidateNotNullOrEmpty()]
         public virtual string Value { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = GroupCertSet,
-                   HelpMessage = "Client authentication type")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = BatchSettings,
+                   HelpMessage = "An array of fabric settings")]
         [ValidateNotNullOrEmpty()]
         public PSSettingsSectionDescription[] SettingsSectionDescriptions { get; set; }
 
-        protected List<PSSettingsSectionDescription> ChangedSettingsSectionDescriptions
+        protected List<PSSettingsSectionDescription> UpdatedSettingsSectionDescriptionListList
         {
             get
             {
                 switch (ParameterSetName)
                 {
-                    case OneCertSet:
+                    case OneSetting:
                         {
-                            changedSettingsSectionDescriptions.Add(new PSSettingsSectionDescription()
+                            updatedSettingsSectionDescriptionList.Add(new PSSettingsSectionDescription()
                             {
                                 Name = this.Section,
                                 Parameters = new List<PSSettingsParameterDescription>()
@@ -69,36 +87,40 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                             });
                             break;
                         }
-                    case GroupCertSet:
+                    case BatchSettings:
                         {
                             if (this.SettingsSectionDescriptions != null)
                             {
-                                changedSettingsSectionDescriptions.AddRange(this.SettingsSectionDescriptions);
+                                updatedSettingsSectionDescriptionList.AddRange(this.SettingsSectionDescriptions);
                             }
 
                             break;
                         }
-                    default:
-                        break;
                 }
 
-                return this.changedSettingsSectionDescriptions;
+                return this.updatedSettingsSectionDescriptionList;
             }
         }
 
-        protected Dictionary<string, Dictionary<string, string>> FabricSettingsToDictionary(
-            IList<SettingsSectionDescription> fabricSettings)
+        protected Dictionary<string, Dictionary<string, string>> FabricSettingsToDictionary(IList<SettingsSectionDescription> fabricSettings)
         {
-            Dictionary<string, Dictionary<string, string>> settings =
-                new Dictionary<string, Dictionary<string, string>>(StringComparer.InvariantCultureIgnoreCase);
+            var settings = new Dictionary<string, Dictionary<string, string>>(StringComparer.OrdinalIgnoreCase);
 
             if (fabricSettings != null)
             {
                 foreach (var setting in fabricSettings)
                 {
-                    settings[setting.Name] = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
+                    settings[setting.Name] = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
                     foreach (var ps in setting.Parameters)
                     {
+                        if (settings[setting.Name].ContainsKey(ps.Name))
+                        {
+                            throw new PSInvalidOperationException(
+                                string.Format(  
+                                    ServiceFabricProperties.Resources.DuplicatedFabricSetting, 
+                                    ps.Name));
+                        }
+
                         settings[setting.Name][ps.Name] = ps.Value;
                     }
                 }
@@ -107,11 +129,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             return settings;
         }
 
-        protected IList<SettingsSectionDescription> DictionaryToFabricSettings(
-            Dictionary<string, Dictionary<string, string>> settings)
+        protected IList<SettingsSectionDescription> DictionaryToFabricSettings(Dictionary<string, Dictionary<string, string>> settings)
         {
-            List<SettingsSectionDescription> fabricSettings =
-                new List<SettingsSectionDescription>();
+            var fabricSettings = new List<SettingsSectionDescription>();
 
             if (settings != null)
             {

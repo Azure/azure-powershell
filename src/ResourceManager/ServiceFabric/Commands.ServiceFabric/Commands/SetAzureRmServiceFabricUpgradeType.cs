@@ -19,7 +19,7 @@ using Microsoft.Azure.Management.ServiceFabric.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Set, CmdletNoun.AzureRmServiceFabricUpgradeType), OutputType(typeof(PSCluster))]
+    [Cmdlet(VerbsCommon.Set, CmdletNoun.AzureRmServiceFabricUpgradeType, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class SetAzureRmServiceFabricUpgradeType : ServiceFabricClusterCmdlet
     {
         private const string AutomaticSet = "Automatic";
@@ -37,16 +37,17 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = true, Position = 1, ParameterSetName = ManualSet, ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specify the name of the cluster")]
         [ValidateNotNullOrEmpty()]
-        public override string ClusterName { get; set; }
+        [Alias("ClusterName")]
+        public override string Name { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = AutomaticSet,
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = AutomaticSet,
                    HelpMessage = "ClusterUpgradeMode")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ManualSet,
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ManualSet,
                    HelpMessage = "Cluster upgrade mode, e.g. Automatic or Manual")]
         [ValidateNotNullOrEmpty()]
         public ClusterUpgradeMode UpgradeMode { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ManualSet,
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ManualSet,
                    HelpMessage = "Cluster code version")]
         [ValidateNotNullOrEmpty()]
         [Alias("ClusterCodeVersion")]
@@ -62,8 +63,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
 
             patchRequest.UpgradeMode = UpgradeMode.ToString();
-            var cluster = SendPatchRequest(patchRequest, true);
-            WriteObject(cluster, true);
+
+            if (ShouldProcess(target: this.Name, action: string.Format("Set fabric upgrade type to {0} ", this.UpgradeMode)))
+            {
+                var cluster = SendPatchRequest(patchRequest);
+                WriteObject(cluster, true);
+            }
         }
     }
 }

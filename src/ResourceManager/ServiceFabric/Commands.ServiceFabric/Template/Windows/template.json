@@ -59,6 +59,12 @@
                 "description": "VM image SKU"
             }
         },
+        "vmSku": {
+            "type": "string",
+            "metadata": {
+                "description": "VM SKU"
+            }
+        },
         "vmImageVersion": {
             "type": "string",
             "defaultValue": "latest",
@@ -200,7 +206,7 @@
         "lbHttpProbeID0": "[concat(variables('lbID0'),'/probes/FabricHttpGatewayProbe')]",
         "lbNatPoolID0": "[concat(variables('lbID0'),'/inboundNatPools/LoadBalancerBEAddressNatPool')]",
         "vmNodeType0Name": "[toLower(concat('NT1', variables('vmName')))]",
-        "vmNodeType0Size": "Standard_D2",
+        "vmNodeType0Size": "[parameters('vmSku')]",
         "vmStorageAccountName0": "[toLower(concat(uniqueString(resourceGroup().id), '1', '0' ))]",
         "uniqueStringArray0": [
             "[concat(variables('vmStorageAccountName0'), '0')]",

@@ -12,60 +12,109 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
+using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.ServiceFabric;
 using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Add, CmdletNoun.AzureRmServiceFabricApplicationCertificate)]
+    [Cmdlet(VerbsCommon.Add, CmdletNoun.AzureRmServiceFabricApplicationCertificate, SupportsShouldProcess = true), OutputType(typeof(PSKeyVault))]
     public class AddAzureRmServiceFabricApplicationCertificate : ServiceFabricClusterCertificateCmdlet
     {
         public override void ExecuteCmdlet()
         {
-            var certInformation = base.GetOrCreateCertificateInformation();
-            var allVmss = ComputeClient.VirtualMachineScaleSets.List(this.ResourceGroupName);
+            base.ExecuteCmdlet();
 
-            if (allVmss == null || !allVmss.Any())
-            {                
-                throw new PSArgumentException(string.Format(
-                    ServiceFabricProperties.Resources.NoneNodeTypeFound,
-                    this.ResourceGroupName));
-            }
+            var certInformations = base.GetOrCreateCertificateInformation();
 
-            var allTasks = new List<Task>();
-            foreach (var vmss in allVmss)
+            var certInformation = certInformations[0];
+
+            if (ShouldProcess(target: this.Name, action: string.Format("Add application certificate to {0}", this.Name)))
             {
-                vmss.VirtualMachineProfile.OsProfile.Secrets.Add(
-                    new VaultSecretGroup()
+                var token = new CancellationTokenSource();
+                var allTasks = new List<Task>();
+                var vmssPages = this.ComputeClient.VirtualMachineScaleSets.List(this.ResourceGroupName);
+
+                if (vmssPages == null || !vmssPages.Any())
+                {
+                    throw new PSArgumentException(string.Format(
+                        ServiceFabricProperties.Resources.NoneNodeTypeFound,
+                        this.ResourceGroupName));
+                }
+
+                do
+                {
+                    if (!vmssPages.Any())
                     {
-                        SourceVault = new SubResource()
+                        break;
+                    }
+
+                    allTasks.AddRange(vmssPages.Select(vmss => AddCertToVmssTask(vmss, certInformation)));
+
+                } while (!string.IsNullOrEmpty(vmssPages.NextPageLink) &&
+                         (vmssPages = this.ComputeClient.VirtualMachineScaleSets.ListNext(vmssPages.NextPageLink)) != null);
+
+                var task = Task.Factory.ContinueWhenAll(
+                    allTasks.ToArray(),
+                    tasks =>
+                    {
+                        token.Cancel();
+                        if (tasks.Any(t => t.IsFaulted && t.Exception != null))
                         {
-                            Id = certInformation.KeyVault.Id
-                        },
-                        VaultCertificates = new List<VaultCertificate>()
+                            var aggregateException = tasks.First(t => t.IsFaulted).Exception;
+                            if (aggregateException != null)
+                                throw aggregateException;
+                        }
+                    },
+                    CancellationToken.None);
+
+                while (!token.IsCancellationRequested)
+                {
+                    var c = SafeGetResource(() => this.SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name));
+                    if (c != null)
+                    {
+                        WriteVerboseWithTimestamp(string.Format(ServiceFabricProperties.Resources.ClusterStateVerbose, c.ClusterState));
+                    }
+
+                    var vmsss = this.ComputeClient.VirtualMachineScaleSets.List(this.ResourceGroupName);
+
+                    do
+                    {
+                        if (vmsss.Any())
                         {
-                            new VaultCertificate()
+                            foreach (var vmss in vmsss)
                             {
-                                CertificateStore = Constants.DefaultCertificateStore,
-                                CertificateUrl = certInformation.SecretUrl
+                                WriteVerboseWithTimestamp(string.Format(ServiceFabricProperties.Resources.VmssVerbose, vmss.Name, vmss.ProvisioningState));
                             }
                         }
-                    });
+                    } while (!string.IsNullOrEmpty(vmsss.NextPageLink) &&
+                            (vmsss = this.ComputeClient.VirtualMachineScaleSets.ListNext(vmsss.NextPageLink)) != null);
 
-                allTasks.Add(
-                    ComputeClient.VirtualMachineScaleSets.CreateOrUpdateAsync(
-                        this.ResourceGroupName,
-                        vmss.Name,
-                        vmss));
+                    Thread.Sleep(TimeSpan.FromSeconds(WriteVerboseIntervalInSec));
+                }
+
+                if (task.IsFaulted)
+                {
+                    PrintDetailIfThrow(() => { throw task.Exception; });
+                }
             }
 
-            Task.WaitAll(allTasks.ToArray());
+            WriteObject(new PSKeyVault()
+            {
+                Certificate = certInformation.Certificate,
+                KeyVaultName = certInformation.KeyVault.Name,
+                KeyVaultCertificateName = certInformation.KeyVault.Name,
+                KeyVaultSecretName = certInformation.SecretName,
+                KeyVaultSecretVersion = certInformation.Version
+            });
         }
     }
 }
