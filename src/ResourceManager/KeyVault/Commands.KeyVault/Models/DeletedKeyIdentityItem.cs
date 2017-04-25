@@ -12,26 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.KeyVault.Models;
 using System;
-using System.Collections;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class VaultCreationParameters
+    public class DeletedKeyIdentityItem : KeyIdentityItem
     {
-        public string VaultName { get; set; }
-        public string ResourceGroupName { get; set; }
-        public string Location { get; set; }
-        public Hashtable Tags { get; set; }
-        public SkuName SkuName { get; set; }
-        public string SkuFamilyName { get; set; }
-        public bool EnabledForDeployment { get; set; }
-        public bool EnabledForTemplateDeployment { get; set; }
-        public bool EnabledForDiskEncryption { get; set; }
-        public bool EnableSoftDelete { get; set; }
-        public Guid TenantId { get; set; }
-        public AccessPolicyEntry AccessPolicy { get; set; }
-        public CreateMode? CreateMode { get; set; }
+        internal DeletedKeyIdentityItem(Azure.KeyVault.Models.DeletedKeyItem keyItem, VaultUriHelper vaultUriHelper) : base(keyItem, vaultUriHelper)
+        {
+            ScheduledPurgeDate = keyItem.ScheduledPurgeDate;
+            DeletedDate = keyItem.DeletedDate;
+        }
+
+        internal DeletedKeyIdentityItem(DeletedKeyBundle keyBundle) : base(keyBundle)
+        {
+            ScheduledPurgeDate = keyBundle.ScheduledPurgeDate;
+            DeletedDate = keyBundle.DeletedDate;
+        }
+
+        public DateTime? ScheduledPurgeDate { get; set; }
+
+        public DateTime? DeletedDate { get; set; }
+
     }
 }

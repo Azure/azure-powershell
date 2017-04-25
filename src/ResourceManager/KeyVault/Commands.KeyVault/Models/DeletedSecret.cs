@@ -12,26 +12,30 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.KeyVault.Models;
 using System;
-using System.Collections;
+using System.Security;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class VaultCreationParameters
+    public class DeletedSecret : Secret
     {
-        public string VaultName { get; set; }
-        public string ResourceGroupName { get; set; }
-        public string Location { get; set; }
-        public Hashtable Tags { get; set; }
-        public SkuName SkuName { get; set; }
-        public string SkuFamilyName { get; set; }
-        public bool EnabledForDeployment { get; set; }
-        public bool EnabledForTemplateDeployment { get; set; }
-        public bool EnabledForDiskEncryption { get; set; }
-        public bool EnableSoftDelete { get; set; }
-        public Guid TenantId { get; set; }
-        public AccessPolicyEntry AccessPolicy { get; set; }
-        public CreateMode? CreateMode { get; set; }
+        public DeletedSecret()
+        { }
+
+        /// <summary>
+        /// Internal constructor used by KeyVaultDataServiceClient
+        /// </summary>
+        /// <param name="deletedSecret">secret returned from service</param>
+        /// <param name="vaultUriHelper">helper class</param>
+        internal DeletedSecret(Azure.KeyVault.Models.DeletedSecretBundle deletedSecret, VaultUriHelper vaultUriHelper) : base(deletedSecret, vaultUriHelper)
+        {
+            ScheduledPurgeDate = deletedSecret.ScheduledPurgeDate;
+            DeletedDate = deletedSecret.DeletedDate;
+        }
+
+        public DateTime? ScheduledPurgeDate { get; set; }
+
+        public DateTime? DeletedDate { get; set; }
+
     }
 }
