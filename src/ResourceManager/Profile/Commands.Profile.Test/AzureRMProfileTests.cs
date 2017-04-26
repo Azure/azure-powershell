@@ -495,7 +495,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var commandRuntimeMock = new MockCommandRuntime();
             AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
             var profile = new AzureRmProfile();
-            profile.EnvironmentTable.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
+            profile.EnvironmentTable.Add("foo", new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault()));
             profile.DefaultContext = Context;
             var cmdlt = new GetAzureRMSubscriptionCommand();
             // Setup
@@ -541,7 +541,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var commandRuntimeMock = new MockCommandRuntime();
             AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
             var profile = new AzureRmProfile();
-            profile.EnvironmentTable.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
+            profile.EnvironmentTable.Add("foo", new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault()));
             profile.DefaultContext = Context;
             var cmdlt = new GetAzureRMSubscriptionCommand();
             // Setup
@@ -591,7 +591,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var commandRuntimeMock = new MockCommandRuntime();
             AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
             var profile = new AzureRmProfile();
-            profile.EnvironmentTable.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
+            profile.EnvironmentTable.Add("foo", new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault()));
             profile.DefaultContext = Context;
             var cmdlt = new GetAzureRMSubscriptionCommand();
             // Setup

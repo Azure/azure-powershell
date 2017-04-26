@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         public void SelectAzureProfileInMemory()
         {
             var profile = new AzureRmProfile { DefaultContext = new AzureContext() };
-            profile.EnvironmentTable.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
+            profile.EnvironmentTable.Add("foo", new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault()));
             ImportAzureRMContextCommand cmdlt = new ImportAzureRMContextCommand();
             // Setup
             cmdlt.AzureContext = profile;
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         public void SelectAzureProfileFromDisk()
         {
             var profile = new AzureRmProfile();
-            profile.EnvironmentTable.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
+            profile.EnvironmentTable.Add("foo", new AzureEnvironment(new AzureEnvironment( AzureEnvironment.PublicEnvironments.Values.FirstOrDefault())));
             profile.EnvironmentTable["foo"].Name = "foo";
             profile.Save("X:\\foo.json");
             ImportAzureRMContextCommand cmdlt = new ImportAzureRMContextCommand();
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         public void SaveAzureProfileInMemory()
         {
             var profile = new AzureRmProfile();
-            profile.EnvironmentTable.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
+            profile.EnvironmentTable.Add("foo", new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault()));
             profile.EnvironmentTable["foo"].Name = "foo";
             SaveAzureRMContextCommand cmdlt = new SaveAzureRMContextCommand();
             // Setup
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         public void SaveAzureProfileFromDefault()
         {
             var profile = new AzureRmProfile();
-            profile.EnvironmentTable.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
+            profile.EnvironmentTable.Add("foo", new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault()));
             profile.DefaultContext = new AzureContext(new AzureSubscription(), new AzureAccount(), profile.EnvironmentTable["foo"]);
             AzureRmProfileProvider.Instance.Profile = profile;
             SaveAzureRMContextCommand cmdlt = new SaveAzureRMContextCommand();

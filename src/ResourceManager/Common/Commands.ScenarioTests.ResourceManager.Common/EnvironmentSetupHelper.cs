@@ -64,7 +64,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             AzureSession.Instance.DataStore = datastore;
             var profile = new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
             var rmprofile = new AzureRmProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
-            rmprofile.EnvironmentTable.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
+            rmprofile.EnvironmentTable.Add("foo", new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault()));
             rmprofile.DefaultContext = new AzureContext(new AzureSubscription(), new AzureAccount(), rmprofile.EnvironmentTable["foo"], new AzureTenant());
             rmprofile.DefaultContext.Subscription.SetEnvironment("foo");
             if (AzureRmProfileProvider.Instance.Profile == null)

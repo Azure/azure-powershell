@@ -25,9 +25,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
     [Serializable]
     public class AzureEnvironment : IAzureEnvironment
     {
-        static KeyValuePair<string, AzureEnvironment>[] _builtinEnvironments =
+        /// <summary>
+        /// Predefined Microsoft Azure environments
+        /// </summary>
+        public static IDictionary<string, AzureEnvironment> PublicEnvironments { get; } =
+        new Dictionary<string, AzureEnvironment>(StringComparer.InvariantCultureIgnoreCase)
         {
-            new KeyValuePair<string, AzureEnvironment>(
+            {
                 EnvironmentName.AzureCloud,
                 new AzureEnvironment
                 {
@@ -50,8 +54,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     GraphEndpointResourceId = AzureEnvironmentConstants.AzureGraphEndpoint,
                     AdTenant = "Common"
                 }
-            ),
-            new KeyValuePair<string, AzureEnvironment>(
+            },
+            {
                 EnvironmentName.AzureChinaCloud,
                 new AzureEnvironment
                 {
@@ -74,8 +78,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     GraphEndpointResourceId = AzureEnvironmentConstants.ChinaGraphEndpoint,
                     AdTenant = "Common"
                 }
-            ),
-            new KeyValuePair<string, AzureEnvironment>(
+            },
+            {
                 EnvironmentName.AzureUSGovernment,
                  new AzureEnvironment
                 {
@@ -98,8 +102,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     GraphEndpointResourceId = AzureEnvironmentConstants.USGovernmentGraphEndpoint,
                     AdTenant = "Common"
                 }
-            ),
-            new KeyValuePair<string, AzureEnvironment>(
+            },
+            {
                 EnvironmentName.AzureGermanCloud,
                  new AzureEnvironment
                 {
@@ -122,13 +126,21 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     GraphEndpointResourceId = AzureEnvironmentConstants.GermanGraphEndpoint,
                     AdTenant = "Common"
                 }
-            )
+            }
         };
+
+        public AzureEnvironment()
+        {
+        }
+
         /// <summary>
-        /// Predefined Microsoft Azure environments
+        /// Copy constructor
         /// </summary>
-        public static IDictionary<string, AzureEnvironment> PublicEnvironments { get; } =
-        new ConcurrentDictionary<string, AzureEnvironment>(_builtinEnvironments, StringComparer.InvariantCultureIgnoreCase);
+        /// <param name="other"></param>
+        public AzureEnvironment(IAzureEnvironment other)
+        {
+            this.CopyFrom(other);
+        }
 
         /// <summary>
         /// The name of the environment
@@ -223,7 +235,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <summary>
         /// The name of the default AdTenant in this environment
         /// </summary>
-        public string AdTenant { get; set; } 
+        public string AdTenant { get; set; }
 
         /// <summary>
         /// The set of Azure Version Profiles supported in this environment
