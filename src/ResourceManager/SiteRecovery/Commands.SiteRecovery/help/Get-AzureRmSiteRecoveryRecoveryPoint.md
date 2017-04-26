@@ -31,21 +31,6 @@ The **Get-AzureRmSiteRecoveryRecoveryPoint** cmdlet gets the list of available r
 
 ## PARAMETERS
 
-### -ReplicationProtectedItem
-Specifies the Azure Site Recovery Replication Protected Item object.
-
-```yaml
-Type: ASRReplicationProtectedItem
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 Specifies the name of the recovery point this cmdlet gets.
 
@@ -58,6 +43,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReplicationProtectedItem
+Specifies the Azure Site Recovery Replication Protected Item object.
+
+```yaml
+Type: ASRReplicationProtectedItem
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

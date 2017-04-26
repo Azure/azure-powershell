@@ -13,15 +13,13 @@ Get the identity provider configuration details.
 
 ### AllIdentityProviders (Default)
 ```
-Get-AzureRmApiManagementIdentityProvider -Context <PsApiManagementContext>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>]
+Get-AzureRmApiManagementIdentityProvider -Context <PsApiManagementContext> [<CommonParameters>]
 ```
 
 ### IdentityProviderByType
 ```
 Get-AzureRmApiManagementIdentityProvider -Context <PsApiManagementContext>
- -Type <PsApiManagementIdentityProviderType> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>]
+ -Type <PsApiManagementIdentityProviderType> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +30,8 @@ Get the identity provider configuration details.
 ### --------------------------  Example 1  --------------------------
 @{paragraph=PS C:\\\>}
 
+
+
 ```
 Get-AzureRmApiManagementIdentityProvider -Context $context
 ```
@@ -40,6 +40,8 @@ Get all the identity provider Configuration on the service.
 
 ### --------------------------  Example 2  --------------------------
 @{paragraph=PS C:\\\>}
+
+
 
 ```
 Get-AzureRmApiManagementIdentityProvider -Context $context -Type Aad
@@ -65,45 +67,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Type
 Identifier of a Identity Provider.
 If specified will try to find identity provider configuration by the identifier.
@@ -113,6 +76,7 @@ This parameter is optional.
 Type: PsApiManagementIdentityProviderType
 Parameter Sets: IdentityProviderByType
 Aliases: 
+Accepted values: Facebook, Google, Microsoft, Twitter, Aad
 
 Required: True
 Position: Named
@@ -120,6 +84,9 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

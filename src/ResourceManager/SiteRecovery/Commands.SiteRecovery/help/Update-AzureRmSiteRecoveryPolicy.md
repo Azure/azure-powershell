@@ -25,6 +25,61 @@ Update-AzureRmSiteRecoveryPolicy -Policy <ASRPolicy> [-ReplicationMethod <String
 
 ## PARAMETERS
 
+### -ApplicationConsistentSnapshotFrequencyInHours
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Authentication
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Certificate, Kerberos
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Compression
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Enable, Disable
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Encryption
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Enable, Disable
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Policy
 ```yaml
 Type: ASRPolicy
@@ -38,7 +93,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ReplicationFrequencyInSeconds
+### -RecoveryAzureStorageAccountId
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -64,37 +119,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ApplicationConsistentSnapshotFrequencyInHours
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ReplicationStartTime
-```yaml
-Type: TimeSpan
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RecoveryAzureStorageAccountId
+### -ReplicaDeletion
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Required, NotRequired
 
 Required: False
 Position: Named
@@ -103,11 +133,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Encryption
+### -ReplicationFrequencyInSeconds
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: 30, 300, 900
 
 Required: False
 Position: Named
@@ -121,19 +152,7 @@ Accept wildcard characters: False
 Type: String
 Parameter Sets: (All)
 Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Compression
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
+Accepted values: Online, Offline
 
 Required: False
 Position: Named
@@ -155,22 +174,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Authentication
+### -ReplicationStartTime
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ReplicaDeletion
-```yaml
-Type: String
+Type: TimeSpan
 Parameter Sets: (All)
 Aliases: 
 

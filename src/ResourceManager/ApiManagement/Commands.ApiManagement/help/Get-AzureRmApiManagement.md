@@ -14,20 +14,17 @@ Gets a list or a particular API Management Service description.
 
 ### All In Subscription (Default)
 ```
-Get-AzureRmApiManagement [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
-```
-
-### Specific API Management Service
-```
-Get-AzureRmApiManagement -ResourceGroupName <String> -Name <String> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmApiManagement [<CommonParameters>]
 ```
 
 ### All In Resource Group
 ```
-Get-AzureRmApiManagement -ResourceGroupName <String> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmApiManagement -ResourceGroupName <String> [<CommonParameters>]
+```
+
+### Specific API Management Service
+```
+Get-AzureRmApiManagement -ResourceGroupName <String> -Name <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,21 +48,6 @@ This command gets all API Management service by name.
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the name of the resource group under in which this cmdlet gets the API Management service.
-
-```yaml
-Type: String
-Parameter Sets: Specific API Management Service, All In Resource Group
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Name
 Specifies the name of API Management service.
 
@@ -81,42 +63,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -ResourceGroupName
+Specifies the name of the resource group under in which this cmdlet gets the API Management service.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: iv
+Parameter Sets: All In Resource Group, Specific API Management Service
+Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

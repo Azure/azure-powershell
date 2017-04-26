@@ -13,7 +13,7 @@ Gets the Batch service quotas for your subscription at the given location.
 ## SYNTAX
 
 ```
-Get-AzureRmBatchLocationQuotas [-Location] <String>
+Get-AzureRmBatchLocationQuotas [-Location] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -21,8 +21,7 @@ Gets the Batch service quotas for the specified subscription at the given locati
 
 ## EXAMPLES
 
-### Example 1: Get the Batch service quotas for the subscription in the West US region 
-
+### Example 1: Get the Batch service quotas for the subscription in the West US region
 ```
 PS C:\>Get-AzureRmBatchLocationQuotas -Location "westus"
           AccountQuota Location
@@ -51,6 +50,9 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ## OUTPUTS
@@ -60,5 +62,4 @@ Accept wildcard characters: False
 ## NOTES
 
 ## RELATED LINKS
-
 

@@ -29,21 +29,6 @@ The **Resume-AzureRmSiteRecoveryJob** cmdlet resumes a suspended Azure Site Reco
 
 ## PARAMETERS
 
-### -Job
-Specifies the Site Recovery job object.
-
-```yaml
-Type: ASRJob
-Parameter Sets: ByObject
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Comments
 Specifies the comments for the job log.
 
@@ -56,6 +41,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Job
+Specifies the Site Recovery job object.
+
+```yaml
+Type: ASRJob
+Parameter Sets: ByObject
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

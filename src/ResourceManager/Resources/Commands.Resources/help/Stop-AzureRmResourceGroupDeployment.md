@@ -48,19 +48,34 @@ If the cmdlet finds more than one running deployment, the command fails.
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the name of the resource group.
-This cmdlet stops the deployment of the resource group that this parameter specifies.
+### -ApiVersion
+Specifies the API version that is supported by the resource Provider.
+You can specify a different version than the default version.
 
 ```yaml
 Type: String
-Parameter Sets: The deployment name parameter set.
+Parameter Sets: (All)
 Aliases: 
 
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Id
+Specifies the ID of the resource group deployment to stop.
+
+```yaml
+Type: String
+Parameter Sets: The deployment Id parameter set.
+Aliases: DeploymentId, ResourceId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -83,12 +98,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ApiVersion
-Specifies the API version that is supported by the resource Provider.
-You can specify a different version than the default version.
+### -Pre
+Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 
@@ -96,6 +110,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the name of the resource group.
+This cmdlet stops the deployment of the resource group that this parameter specifies.
+
+```yaml
+Type: String
+Parameter Sets: The deployment name parameter set.
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -110,36 +140,6 @@ Aliases: cf
 Required: False
 Position: Named
 Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Id
-Specifies the ID of the resource group deployment to stop.
-
-```yaml
-Type: String
-Parameter Sets: The deployment Id parameter set.
-Aliases: DeploymentId, ResourceId
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Pre
-Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

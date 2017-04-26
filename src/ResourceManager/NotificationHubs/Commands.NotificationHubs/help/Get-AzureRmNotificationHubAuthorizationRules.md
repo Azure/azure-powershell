@@ -49,17 +49,17 @@ The command uses the *AuthorizationRule* parameter to limit the returned data to
 
 ## PARAMETERS
 
-### -ResourceGroup
-Specifies the resource group to which the notification hub is assigned.
-Resource groups organize items such as namespaces, notification hubs, and authorization rules in ways that help simplify inventory management and Azure administration.
+### -AuthorizationRule
+Specifies the name of an SAS authentication rule.
+These rules determine the type of access that users have to the notification hub.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
-Position: 0
+Required: False
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -97,17 +97,17 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -AuthorizationRule
-Specifies the name of an SAS authentication rule.
-These rules determine the type of access that users have to the notification hub.
+### -ResourceGroup
+Specifies the resource group to which the notification hub is assigned.
+Resource groups organize items such as namespaces, notification hubs, and authorization rules in ways that help simplify inventory management and Azure administration.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: False
-Position: 3
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

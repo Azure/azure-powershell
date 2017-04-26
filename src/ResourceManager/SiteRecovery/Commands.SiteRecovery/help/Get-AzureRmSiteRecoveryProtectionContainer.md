@@ -51,21 +51,6 @@ Protection policies define replication settings for protected items and can be a
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the protection container.
-
-```yaml
-Type: String
-Parameter Sets: ByObjectWithName, ByObjectWithNameLegacy
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Fabric
 ```yaml
 Type: ASRFabric
@@ -85,6 +70,21 @@ Specifies the friendly name of the protection container.
 ```yaml
 Type: String
 Parameter Sets: ByObjectWithFriendlyName, ByObjectWithFriendlyNameLegacy
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the name of the protection container.
+
+```yaml
+Type: String
+Parameter Sets: ByObjectWithName, ByObjectWithNameLegacy
 Aliases: 
 
 Required: True
