@@ -160,10 +160,34 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests.SiteRecoveryTests\FabricTests.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests.SiteRecoveryTests\NewModelE2ETest.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests.SiteRecoveryTests\TestCreatePolicy.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests.SiteRecoveryTests\TestCreateProtectionContainerMapping.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests.SiteRecoveryTests\TestCreateRP.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests.SiteRecoveryTests\TestDisableDR.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests.SiteRecoveryTests\TestEnableDR.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests.SiteRecoveryTests\TestEnumerateRP.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests.SiteRecoveryTests\TestRemovePolicy.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests.SiteRecoveryTests\TestRemoveProtectionContainerMapping.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests.SiteRecoveryTests\TestRemoveRP.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests.SiteRecoveryTests\VaultCRUDTests.json">

@@ -15,22 +15,22 @@
 ########################## Site Recovery Tests #############################
 
 $JobQueryWaitTimeInSeconds = 30
-$StorageAccountID = "/subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryprod1/providers/Microsoft.Storage/storageAccounts/storavrai"
-$AzureNetworkID = "/subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.Network/virtualNetworks/vnetavrai"
-$RecoveryResourceGroupID = "/subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryprod1"
 $ResourceGroupName = "siterecoveryprod1"
 $VaultNameToBeCreated = "tempVault"
 $VaultLocationToBeCreated = "westus"
 $VaultName = "b2aRSvaultprod17012017"
 $FabricNameToBeCreated = "ReleaseFabric"
-$PrimaryFabricName = "CP-B3L30108-01.ntdev.corp.microsoft.com"
-$PolicyName = "Policy1"
-$PrimaryProtectionContainerName = "E2AClP25"
-$ProtectionContainerMappingName = "E2AClP25mapping"
+$PrimaryFabricName = "CP-B3L30107-23.ntdev.corp.microsoft.com"
+$RecoveryFabricName = "CP-B3L40104-01.ntdev.corp.microsoft.com"
+$PolicyName = "E2EPolicy1"
+$PrimaryProtectionContainerName = "E2EClP26"
+$RecoveryProtectionContainerName = "E2EClR26"
+$ProtectionContainerMappingName = "E2AClP26mapping"
 $PrimaryNetworkFriendlyName = "corp"
-$NetworkMappingName = "corpmap"
-$VMName = "E2AVMP25"
-$RecoveryPlanName = "RPSwag1"
+$RecoveryNetworkFriendlyName = "corp"
+$NetworkMappingName = "corp26map"
+$VMName = "E2EVMP26"
+$RecoveryPlanName = "RPSwag26"
 
 # Enumerate vaults and set Azure Recovery Services Vault Settings
 $vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $ResourceGroupName -Name $VaultName
@@ -38,7 +38,7 @@ Assert-NotNull($vault)
 Assert-True { $vault.Count -eq 1 }
 Assert-NotNull($vault.Name)
 Assert-NotNull($vault.ID)
-Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
+Set-AzureRmSiteRecoveryVaultSettings -Vault $vault
 
 <#
 .SYNOPSIS
@@ -82,7 +82,7 @@ Usage:
 	WaitForJobCompletion -VM $VM
 	WaitForJobCompletion -VM $VM -NumOfSecondsToWait 10
 #>
-function WaitForIRCompletion
+Function WaitForIRCompletion
 { 
 	param(
         [PSObject] $VM,
@@ -93,8 +93,8 @@ function WaitForIRCompletion
 
         do
         {
-            $IRjobs = Get-AzureRMSiteRecoveryJob -TargetObjectId $VM.Name | Sort-Object StartTime -Descending | select -First 5 | Where-Object{$_.JobType -eq "IrCompletion"}
-            if($IRjobs -eq $null -or $IRjobs.Count -ne 1)
+            $IRjobs = Get-AzureRMSiteRecoveryJob -TargetObjectId $VM.Name | Sort-Object StartTime -Descending | select -First 4 | Where-Object{$_.JobType -eq "PrimaryIrCompletion" -or $_.JobType -eq "SecondaryIrCompletion"}
+            if($IRjobs -eq $null -or $IRjobs.Count -lt 2)
             {
 	            $isProcessingLeft = $true
             }
@@ -111,7 +111,9 @@ function WaitForIRCompletion
 
         $IRjobs
         WaitForJobCompletion -JobId $IRjobs[0].Name -JobQueryWaitTimeInSeconds $JobQueryWaitTimeInSeconds
+        WaitForJobCompletion -JobId $IRjobs[1].Name -JobQueryWaitTimeInSeconds $JobQueryWaitTimeInSeconds
 }
+
 <#
 .SYNOPSIS
 Site Recovery Enumeration Tests
@@ -119,7 +121,7 @@ Site Recovery Enumeration Tests
 function Test-SiteRecoveryEnumerationTests
 {
 	# Enumerate Vaults
-	$vaults = Get-AzureRmSiteRecoveryVault
+	$vaults = Get-AzureRmRecoveryServicesVault
 	Assert-True { $vaults.Count -gt 0 }
 	Assert-NotNull($vaults)
 	foreach($vault in $vaults)
@@ -156,8 +158,8 @@ Site Recovery Create Policy Test
 function Test-SiteRecoveryCreatePolicy
 {
 	# Create profile
-	$Job = New-AzureRMSiteRecoveryPolicy -Name $PolicyName -ReplicationProvider HyperVReplicaAzure -ReplicationFrequencyInSeconds 30 -RecoveryPoints 1 -ApplicationConsistentSnapshotFrequencyInHours 0 -Encryption Disable -RecoveryAzureStorageAccountId $StorageAccountID 
-	# WaitForJobCompletion -JobId $Job.Name -JobQueryWaitTimeInSeconds $JobQueryWaitTimeInSeconds
+	$Job = New-AzureRmSiteRecoveryPolicy -Name $PolicyName -ReplicationProvider HyperVReplica2012R2 -ReplicationMethod Online -ReplicationFrequencyInSeconds 30 -RecoveryPoints 1 -ApplicationConsistentSnapshotFrequencyInHours 0 -ReplicationPort 8083 -Authentication Kerberos -ReplicaDeletion Required 
+	#WaitForJobCompletion -JobId $Job.Name -JobQueryWaitTimeInSeconds $JobQueryWaitTimeInSeconds
 
 	# Get a profile created (with name ppAzure)
 	$Policy = Get-AzureRmSiteRecoveryPolicy -Name $PolicyName
@@ -178,7 +180,7 @@ function Test-SiteRecoveryRemovePolicy
 
 	# Delete the profile
 	$Job = Remove-AzureRmSiteRecoveryPolicy -Policy $Policy
-	# WaitForJobCompletion -JobId $Job.Name
+	#WaitForJobCompletion -JobId $Job.Name
 }
 
 <#
@@ -187,13 +189,14 @@ Site Recovery new protection container mapping test
 #>
 function Test-CreateProtectionContainerMapping
 {
-	# Get the primary container and policy
+	# Get the containers and policy
 	$Policy = Get-AzureRmSiteRecoveryPolicy -Name $PolicyName;
 	$PrimaryProtectionContainer = Get-AzureRmSiteRecoveryFabric | Get-AzureRMSiteRecoveryProtectionContainer | where { $_.FriendlyName -eq $PrimaryProtectionContainerName }
+	$RecoveryProtectionContainer = Get-AzureRmSiteRecoveryFabric | Get-AzureRMSiteRecoveryProtectionContainer | where { $_.FriendlyName -eq $RecoveryProtectionContainerName }
 
 	# Associate the profile
-	$Job = New-AzureRmSiteRecoveryProtectionContainerMapping -Name $ProtectionContainerMappingName -Policy $Policy -PrimaryProtectionContainer $PrimaryProtectionContainer
-	WaitForJobCompletion -JobId $Job.Name
+	$Job = New-AzureRmSiteRecoveryProtectionContainerMapping -Name $ProtectionContainerMappingName -Policy $Policy -PrimaryProtectionContainer $PrimaryProtectionContainer -RecoveryProtectionContainer $RecoveryProtectionContainer
+	#WaitForJobCompletion -JobId $Job.Name
 
 	# Get protection conatiner mapping
 	$ProtectionContainerMapping = Get-AzureRmSiteRecoveryProtectionContainerMapping -Name $ProtectionContainerMappingName -ProtectionContainer $PrimaryProtectionContainer
@@ -215,7 +218,7 @@ function Test-RemoveProtectionContainerMapping
 
 	# Remove protection conatiner mapping
 	$Job = Remove-AzureRmSiteRecoveryProtectionContainerMapping -ProtectionContainerMapping $ProtectionContainerMapping
-	WaitForJobCompletion -JobId $Job.Name
+	#WaitForJobCompletion -JobId $Job.Name
 }
 
 <#
@@ -234,9 +237,9 @@ function Test-SiteRecoveryEnableDR
 	$VM = Get-AzureRmSiteRecoveryProtectableItem -FriendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer  
 
 	# EnableDR
-	$Job = New-AzureRmSiteRecoveryReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $ProtectionContainerMapping -RecoveryAzureStorageAccountId $StorageAccountID -RecoveryResourceGroupId $RecoveryResourceGroupID
-	WaitForJobCompletion -JobId $Job.Name
-	WaitForIRCompletion -VM $VM 
+	$Job = New-AzureRmSiteRecoveryReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $ProtectionContainerMapping
+	#WaitForJobCompletion -JobId $Job.Name
+	#WaitForIRCompletion -VM $VM 
 }
 
 <#
@@ -253,7 +256,7 @@ function Test-SiteRecoveryDisableDR
 
 	# DisableDR
 	$Job = Remove-AzureRmSiteRecoveryReplicationProtectedItem -ReplicationProtectedItem $VM
-	WaitForJobCompletion -JobId $Job.Name
+	#WaitForJobCompletion -JobId $Job.Name
 }
 
 <#
@@ -262,13 +265,14 @@ Site Recovery Create Recovery Plan Test
 #>
 function Test-SiteRecoveryCreateRecoveryPlan
 {
-	# Get the primary fabric and container
+	# Get the fabric and container
 	$PrimaryFabric = Get-AzureRmSiteRecoveryFabric -FriendlyName $PrimaryFabricName
+	$RecoveryFabric = Get-AzureRmSiteRecoveryFabric -FriendlyName $RecoveryFabricName
 	$PrimaryProtectionContainer = Get-AzureRMSiteRecoveryProtectionContainer -FriendlyName $PrimaryProtectionContainerName -Fabric $PrimaryFabric
 	$VM = Get-AzureRmSiteRecoveryReplicationProtectedItem -FriendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer
 
-	$Job = New-AzureRmSiteRecoveryRecoveryPlan -Name $RecoveryPlanName -PrimaryFabric $PrimaryFabric -Azure -FailoverDeploymentModel ResourceManager -ReplicationProtectedItem $VM
-	WaitForJobCompletion -JobId $Job.Name
+	$Job = New-AzureRmSiteRecoveryRecoveryPlan -Name $RecoveryPlanName -PrimaryFabric $PrimaryFabric -RecoveryFabric $RecoveryFabric -ReplicationProtectedItem $VM
+	#WaitForJobCompletion -JobId $Job.Name
 }
 
 <#
@@ -290,7 +294,7 @@ function Test-SiteRecoveryRemoveRecoveryPlan
 {
 	$RP = Get-AzureRmSiteRecoveryRecoveryPlan -Name $RecoveryPlanName
 	$Job = Remove-AzureRmSiteRecoveryRecoveryPlan -RecoveryPlan $RP
-	WaitForJobCompletion -JobId $Job.Name
+	#WaitForJobCompletion -JobId $Job.Name
 }
 
 <#
@@ -337,6 +341,7 @@ function Test-SiteRecoveryFabricTest
 {
 	# Create Fabric
 	$Job = New-AzureRmSiteRecoveryFabric -Name $FabricNameToBeCreated -Type HyperVSite
+	#WaitForJobCompletion -JobId $Job.Name -JobQueryWaitTimeInSeconds $JobQueryWaitTimeInSeconds
 	Assert-NotNull($Job)
 
 	# Enumerate Fabrics
@@ -358,7 +363,7 @@ function Test-SiteRecoveryFabricTest
 	# Remove specific fabric
 	$Job = Remove-AzureRmSiteRecoveryFabric -Fabric $fabric
 	Assert-NotNull($Job)
-	# WaitForJobCompletion -JobId $Job.Name -JobQueryWaitTimeInSeconds $JobQueryWaitTimeInSeconds
+	#WaitForJobCompletion -JobId $Job.Name -JobQueryWaitTimeInSeconds $JobQueryWaitTimeInSeconds
 	$fabric =  Get-AzureRmSiteRecoveryFabric | Where-Object {$_.Name -eq $FabricNameToBeCreated }
 	Assert-Null($fabric)
 }
@@ -371,7 +376,7 @@ Site Recovery New model End to End
 function Test-SiteRecoveryNewModelE2ETest
 {
 	# Enumerate Fabrics
-	$fabrics =  Get-AzureRmSiteRecoveryFabric 
+	$Fabrics =  Get-AzureRmSiteRecoveryFabric 
 	Assert-True { $fabrics.Count -gt 0 }
 	Assert-NotNull($fabrics)
 	foreach($fabric in $fabrics)
@@ -379,6 +384,8 @@ function Test-SiteRecoveryNewModelE2ETest
 		Assert-NotNull($fabrics.Name)
 		Assert-NotNull($fabrics.ID)
 	}
+	$PrimaryFabric = $Fabrics | Where-Object { $_.FriendlyName -eq $PrimaryFabricName}
+	$RecoveryFabric = $Fabrics | Where-Object { $_.FriendlyName -eq $RecoveryFabricName}
 
 	# Enumerate RSPs
 	$rsps = Get-AzureRmSiteRecoveryFabric | Get-AzureRmSiteRecoveryServicesProvider
@@ -390,8 +397,8 @@ function Test-SiteRecoveryNewModelE2ETest
 	}
 
 	# Create Policy
-	$Job = New-AzureRMSiteRecoveryPolicy -Name $PolicyName -ReplicationProvider HyperVReplicaAzure -ReplicationFrequencyInSeconds 30 -RecoveryPoints 1 -ApplicationConsistentSnapshotFrequencyInHours 0 -Encryption Disable -RecoveryAzureStorageAccountId $StorageAccountID 
-	WaitForJobCompletion -JobId $Job.Name
+	$Job = New-AzureRMSiteRecoveryPolicy -Name $PolicyName -ReplicationProvider HyperVReplica2012R2 -ReplicationMethod Online -ReplicationFrequencyInSeconds 30 -RecoveryPoints 1 -ApplicationConsistentSnapshotFrequencyInHours 0 -ReplicationPort 8083 -Authentication Kerberos -ReplicaDeletion Required
+	#WaitForJobCompletion -JobId $Job.Name
 
     $Policy = Get-AzureRMSiteRecoveryPolicy -Name $PolicyName
 	Assert-NotNull($Policy)
@@ -401,10 +408,13 @@ function Test-SiteRecoveryNewModelE2ETest
 	$PrimaryProtectionContainer = Get-AzureRmSiteRecoveryFabric | Get-AzureRMSiteRecoveryProtectionContainer | where { $_.FriendlyName -eq $PrimaryProtectionContainerName }
 	Assert-NotNull($PrimaryProtectionContainer)
 	Assert-NotNull($PrimaryProtectionContainer.Name)
+	$RecoveryProtectionContainer = Get-AzureRmSiteRecoveryFabric | Get-AzureRMSiteRecoveryProtectionContainer | where { $_.FriendlyName -eq $RecoveryProtectionContainerName }
+	Assert-NotNull($RecoveryProtectionContainer)
+	Assert-NotNull($RecoveryProtectionContainer.Name)
 
 	# Create new Conatiner mapping 
-	$Job = New-AzureRmSiteRecoveryProtectionContainerMapping -Name $ProtectionContainerMappingName -Policy $Policy -PrimaryProtectionContainer $PrimaryProtectionContainer
-	WaitForJobCompletion -JobId $Job.Name
+	$Job = New-AzureRmSiteRecoveryProtectionContainerMapping -Name $ProtectionContainerMappingName -Policy $Policy -PrimaryProtectionContainer $PrimaryProtectionContainer -RecoveryProtectionContainer $RecoveryProtectionContainer
+	#WaitForJobCompletion -JobId $Job.Name
 
 	# Get container mapping
 	$ProtectionContainerMapping = Get-AzureRmSiteRecoveryProtectionContainerMapping -Name $ProtectionContainerMappingName -ProtectionContainer $PrimaryProtectionContainer
@@ -412,14 +422,15 @@ function Test-SiteRecoveryNewModelE2ETest
 	Assert-NotNull($ProtectionContainerMapping.Name)
 
 	# Get primary network
-	$PrimaryNetwork = Get-AzureRmSiteRecoveryNetwork -Fabric $PrimaryFabric | where { $_.FriendlyName -eq "$PrimaryNetworkFriendlyName"}
+	$PrimaryNetwork = Get-AzureRmSiteRecoveryNetwork -Fabric $PrimaryFabric | where { $_.FriendlyName -eq $PrimaryNetworkFriendlyName}
+	$RecoveryNetwork = Get-AzureRmSiteRecoveryNetwork -Fabric $RecoveryFabric | where { $_.FriendlyName -eq $RecoveryNetworkFriendlyName}
 
 	# Create network mapping
-    $Job = New-AzureRmSiteRecoveryNetworkMapping -Name $NetworkMappingName -PrimaryNetwork $PrimaryNetwork -AzureVMNetworkId $AzureNetworkID
-	WaitForJobCompletion -JobId $Job.Name
+    $Job = New-AzureRmSiteRecoveryNetworkMapping -Name $NetworkMappingName -PrimaryNetwork $PrimaryNetwork -RecoveryNetwork $RecoveryNetwork
+	#WaitForJobCompletion -JobId $Job.Name
 
 	# Get network mapping
-	$NetworkMapping = Get-AzureRmSiteRecoveryNetworkMapping -PrimaryFabric $PrimaryFabric -Azure | where { $_.Name -eq $NetworkMappingName }
+	$NetworkMapping = Get-AzureRmSiteRecoveryNetworkMapping -PrimaryFabric $PrimaryFabric -RecoveryFabric $RecoveryFabric | where { $_.Name -eq $NetworkMappingName }
 
 	# Get protectable item
 	$protectable = Get-AzureRmSiteRecoveryProtectableItem -ProtectionContainer $PrimaryProtectionContainer -FriendlyName $VMName
@@ -427,9 +438,9 @@ function Test-SiteRecoveryNewModelE2ETest
 	Assert-NotNull($protectable.Name)
 
 	# New replication protected item
-	$Job = New-AzureRmSiteRecoveryReplicationProtectedItem -ProtectableItem $protectable -Name $protectable.Name -ProtectionContainerMapping $ProtectionContainerMapping -RecoveryAzureStorageAccountId $StorageAccountID -RecoveryResourceGroupId $RecoveryResourceGroupID
-	WaitForJobCompletion -JobId $Job.Name
-	WaitForIRCompletion -VM $protectable 
+	$Job = New-AzureRmSiteRecoveryReplicationProtectedItem -ProtectableItem $protectable -Name $protectable.Name -ProtectionContainerMapping $ProtectionContainerMapping
+	#WaitForJobCompletion -JobId $Job.Name
+	#WaitForIRCompletion -VM $protectable 
 	Assert-NotNull($Job)
 
 	# Get replication protected item
@@ -439,22 +450,23 @@ function Test-SiteRecoveryNewModelE2ETest
 
 	# Remove protected item
 	$Job = Remove-AzureRmSiteRecoveryReplicationProtectedItem -ReplicationProtectedItem $protected
-	WaitForJobCompletion -JobId $Job.Name
+	#WaitForJobCompletion -JobId $Job.Name
 	$protected = Get-AzureRmSiteRecoveryReplicationProtectedItem -ProtectionContainer $PrimaryProtectionContainer | Where-Object {$_.Name -eq $protectable.Name} 
 	Assert-Null($protected)
 
 	# Remove network mapping
 	$Job = Remove-AzureRmSiteRecoveryNetworkMapping -NetworkMapping $NetworkMapping
-	WaitForJobCompletion -JobId $Job.Name
+	#WaitForJobCompletion -JobId $Job.Name
 
 	# Remove conatiner mapping
 	$Job = Remove-AzureRmSiteRecoveryProtectionContainerMapping -ProtectionContainerMapping $ProtectionContainerMapping
-	WaitForJobCompletion -JobId $Job.Name
+	#WaitForJobCompletion -JobId $Job.Name
 	$ProtectionContainerMapping = Get-AzureRmSiteRecoveryProtectionContainerMapping -ProtectionContainer $PrimaryProtectionContainer | Where-Object {$_.Name -eq $ProtectionContainerMappingName}
 	Assert-Null($ProtectionContainerMapping)
 
 	# Remove Policy
 	$Job = Remove-AzureRMSiteRecoveryPolicy -Policy $Policy
+	#WaitForJobCompletion -JobId $Job.Name
 	$Policy = Get-AzureRMSiteRecoveryPolicy | Where-Object {$_.Name -eq $PolicyName}
 	Assert-Null($Policy)
 }

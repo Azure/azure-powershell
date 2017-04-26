@@ -3053,9 +3053,6 @@
                         <Component Id="cmp72AE80528D2FBC4F0CA6DDBE5F9B10C6" Guid="*">
                             <File Id="fil40D3425DB30E5F39B4515DFF375C95E8" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.SiteRecovery\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.dll" />
                         </Component>
-                        <Component Id="cmp2F2D87277541559BE2814CD1BDFE6602" Guid="*">
-                            <File Id="fil901CCBBA285B6CA89AA1139C8234A093" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.SiteRecovery\Microsoft.Azure.Management.SiteRecovery.dll" />
-                        </Component>
                         <Component Id="cmpD7239422EFCCBDB1157557C3F8DC97BE" Guid="*">
                             <File Id="fil020B9427D976887857582CD4A7BC71ED" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.SiteRecovery\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
                         </Component>
@@ -6438,7 +6435,6 @@
             <ComponentRef Id="cmpDD973C16A81F8EFF2DD6D01131132870" />
             <ComponentRef Id="cmpC06C4276E750A97B2875E0C017033BAD" />
             <ComponentRef Id="cmp72AE80528D2FBC4F0CA6DDBE5F9B10C6" />
-            <ComponentRef Id="cmp2F2D87277541559BE2814CD1BDFE6602" />
             <ComponentRef Id="cmpD7239422EFCCBDB1157557C3F8DC97BE" />
             <ComponentRef Id="cmpFA0D75D8CA8A655DF7355F8982D6D1E1" />
             <ComponentRef Id="cmp6EEC16C6468A4F3D696B0B42A3B398D5" />
