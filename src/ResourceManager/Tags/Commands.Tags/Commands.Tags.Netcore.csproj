@@ -8,11 +8,11 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureRM.Tags\</OutputPath>
+    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureRM.Tags.Netcore\</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureRM.Tags\</OutputPath>
+    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureRM.Tags.Netcore\</OutputPath>
     <DocumentationFile></DocumentationFile>
     <SignAssembly>True</SignAssembly>
     <DelaySign>True</DelaySign>
@@ -24,7 +24,6 @@
     <PackageReference Include="Hyak.Common" Version="1.1.3" />
     <PackageReference Include="Microsoft.Azure.Common" Version="2.1.3" />
     <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.2.12" />
-    <PackageReference Include="NETStandard.Library" Version="1.6.1" />
     <PackageReference Include="System.Collections.Specialized" Version="4.3.0" />
     <PackageReference Include="System.Reflection" Version="4.3.0" />
     <PackageReference Include="System.Security.SecureString" Version="4.3.0" />
@@ -35,12 +34,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\AzureRM.Tags.psd1" Link="AzureRM.Tags.psd1">
+    <None Include="..\AzureRM.Tags.Netcore.psd1" Link="AzureRM.Tags.Netcore.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Authentication.NetCore.csproj" />
     <ProjectReference Include="..\..\..\Common\Commands.Common\Common.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Common.ResourceManager.Netcore.csproj" />
   </ItemGroup>
