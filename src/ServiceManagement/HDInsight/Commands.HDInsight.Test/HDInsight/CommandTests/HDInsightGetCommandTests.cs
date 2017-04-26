@@ -112,7 +112,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CommandTests
 
             Assert.IsInstanceOfType(subscriptionCreds, typeof(HDInsightCertificateCredential));
             var asCertificateCreds = subscriptionCreds as HDInsightCertificateCredential;
-            Assert.AreEqual(waSubscription.Id, asCertificateCreds.SubscriptionId);
+            Assert.AreEqual(waSubscription.GetId(), asCertificateCreds.SubscriptionId);
             Assert.IsNotNull(asCertificateCreds.Certificate);
         }
 
@@ -140,7 +140,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CommandTests
             Assert.IsInstanceOfType(accessTokenCreds, typeof(HDInsightAccessTokenCredential));
             var asAccessTokenCreds = accessTokenCreds as HDInsightAccessTokenCredential;
             Assert.AreEqual("abc", asAccessTokenCreds.AccessToken);
-            Assert.AreEqual(waSubscription.Id, asAccessTokenCreds.SubscriptionId);
+            Assert.AreEqual(waSubscription.GetId(), asAccessTokenCreds.SubscriptionId);
         }
 
         [TestMethod]
@@ -159,7 +159,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CommandTests
 
             Assert.IsInstanceOfType(subscriptionCreds, typeof(JobSubmissionCertificateCredential));
             var asCertificateCreds = subscriptionCreds as JobSubmissionCertificateCredential;
-            Assert.AreEqual(waSubscription.Id, asCertificateCreds.SubscriptionId);
+            Assert.AreEqual(waSubscription.GetId(), asCertificateCreds.SubscriptionId);
             Assert.AreEqual(IntegrationTestBase.TestCredentials.WellKnownCluster.DnsName, asCertificateCreds.Cluster);
         }
 

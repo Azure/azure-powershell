@@ -58,6 +58,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob
         [TestInitialize]
         public void InitMock()
         {
+            AzureSessionInitializer.InitializeAzureSession();
             BlobMock = new MockStorageBlobManagement();
             MockCmdRunTime = new MockCommandRuntime();
             AzureSession.Instance.DataStore = new MemoryDataStore();
