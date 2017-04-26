@@ -54,23 +54,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Gets or sets switch parameter. On passing, command sets target as Azure.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzureLegacy, Mandatory = true)]
         public SwitchParameter Azure { get; set; }
-
-        /// <summary>
-        /// Gets or sets Primary Server object.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterpriseLegacy, Mandatory = true, ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzureLegacy, Mandatory = true, ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public ASRServer PrimaryServer { get; set; }
-
-        /// <summary>
-        /// Gets or sets Recovery Server object.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterpriseLegacy, Mandatory = true)]
-        [ValidateNotNullOrEmpty]
-        public ASRServer RecoveryServer { get; set; }
 
         #endregion Parameters
 
@@ -87,14 +71,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             switch (this.ParameterSetName)
             {
-                case ASRParameterSets.EnterpriseToEnterpriseLegacy:
-                    this.WriteWarningWithTimestamp(Properties.Resources.ParameterSetWillBeDeprecatedSoon);
-                    this.FilterE2EMappingsLegacy();
-                    break;
-                case ASRParameterSets.EnterpriseToAzureLegacy:
-                    this.WriteWarningWithTimestamp(Properties.Resources.ParameterSetWillBeDeprecatedSoon);
-                    this.FilterE2AMappingsLegacy();
-                    break;
                 case ASRParameterSets.EnterpriseToEnterprise:
                     this.FilterE2EMappings();
                     break;
@@ -104,57 +80,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 case ASRParameterSets.Default:
                     WriteNetworkMappings(networkMappingsListResponse);
                     break;
-            }
-        }
-
-        /// <summary>
-        /// Filter Enterprise to Enterprise Network mappings Legacy.
-        /// </summary>
-        private void FilterE2EMappingsLegacy()
-        {
-            primaryServerName =
-                Utilities.GetValueFromArmId(this.PrimaryServer.ID, ARMResourceTypeConstants.ReplicationFabrics);
-            recoveryServerName =
-                Utilities.GetValueFromArmId(this.RecoveryServer.ID, ARMResourceTypeConstants.ReplicationFabrics);
-
-            foreach (NetworkMapping networkMapping in networkMappingsListResponse)
-            {
-                string primaryFabricName =
-                    Utilities.GetValueFromArmId(networkMapping.Id, ARMResourceTypeConstants.ReplicationFabrics);
-
-                // Skip azure cases 
-                if (!networkMapping.Properties.RecoveryNetworkId.ToLower().Contains(ARMResourceTypeConstants.ReplicationFabrics.ToLower()))
-                    continue;
-
-                string recoveryFabricName =
-                    Utilities.GetValueFromArmId(networkMapping.Properties.RecoveryNetworkId, ARMResourceTypeConstants.ReplicationFabrics);
-
-                if (0 == string.Compare(primaryFabricName, this.primaryServerName, true) &&
-                    0 == string.Compare(recoveryFabricName, this.recoveryServerName, true))
-                {
-                    this.WriteNetworkMapping(networkMapping);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Filter Enterprise to Azure Network mappings Legacy.
-        /// </summary>
-        private void FilterE2AMappingsLegacy()
-        {
-            primaryServerName =
-                Utilities.GetValueFromArmId(this.PrimaryServer.ID, ARMResourceTypeConstants.ReplicationFabrics);
-
-            foreach (NetworkMapping networkMapping in networkMappingsListResponse)
-            {
-                string primaryFabricName =
-                    Utilities.GetValueFromArmId(networkMapping.Id, ARMResourceTypeConstants.ReplicationFabrics);
-
-                if (0 == string.Compare(primaryFabricName, this.primaryServerName, true) &&
-                    !networkMapping.Properties.RecoveryNetworkId.Contains(ARMResourceTypeConstants.ReplicationFabrics))
-                {
-                    this.WriteNetworkMapping(networkMapping);
-                }
             }
         }
 

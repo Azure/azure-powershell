@@ -49,13 +49,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public ASRRecoveryPlan RecoveryPlan { get; set; }
 
         /// <summary>
-        /// Gets or sets Protection Entity object.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = true, ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public ASRProtectionEntity ProtectionEntity { get; set; }
-
-        /// <summary>
         /// Gets or sets Replication Protected Item.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByRPIObject, Mandatory = true, ValueFromPipeline = true)]
@@ -72,14 +65,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             base.ExecuteSiteRecoveryCmdlet();
             switch (this.ParameterSetName)
             {
-                case ASRParameterSets.ByPEObject:
-                    this.WriteWarningWithTimestamp(Properties.Resources.ParameterSetWillBeDeprecatedSoon);
-                    this.protectionEntityName = this.ProtectionEntity.Name;
-                    this.protectionContainerName = this.ProtectionEntity.ProtectionContainerId;
-                    this.fabricName = Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationFabrics);
-                    this.SetPECommit();
-                    break;
-
                 case ASRParameterSets.ByRPIObject:
                     this.protectionContainerName = 
                         Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationProtectionContainers);
@@ -90,36 +75,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     this.StartRpCommit();
                     break;
             }
-        }
-
-        /// <summary>
-        /// Start PE Commit.
-        /// </summary>
-        private void SetPECommit()
-        {
-            // fetch the latest PE object
-            var protectableItemResponse =
-                                        RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(this.fabricName,
-                                        this.ProtectionEntity.ProtectionContainerId, this.ProtectionEntity.Name);
-
-            var replicationProtectedItemResponse =
-                        RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(this.fabricName,
-                        this.ProtectionEntity.ProtectionContainerId, Utilities.GetValueFromArmId(protectableItemResponse.Properties.ReplicationProtectedItemId, ARMResourceTypeConstants.ReplicationProtectedItems));
-
-            var policyResponse = RecoveryServicesClient.GetAzureSiteRecoveryPolicy(Utilities.GetValueFromArmId(replicationProtectedItemResponse.Properties.PolicyId, ARMResourceTypeConstants.ReplicationPolicies));
-
-            this.ProtectionEntity = new ASRProtectionEntity(protectableItemResponse, replicationProtectedItemResponse);
-
-            PSSiteRecoveryLongRunningOperation response = RecoveryServicesClient.StartAzureSiteRecoveryCommitFailover(
-                this.fabricName,
-                this.protectionContainerName,
-                Utilities.GetValueFromArmId(replicationProtectedItemResponse.Id, ARMResourceTypeConstants.ReplicationProtectedItems));
-
-            var jobResponse =
-                RecoveryServicesClient
-                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
-
-            WriteObject(new ASRJob(jobResponse));
         }
 
         /// <summary>

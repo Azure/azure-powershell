@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery;
-using Microsoft.Azure.Management.SiteRecoveryVault;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.Authentication;
@@ -41,7 +40,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
         CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
 
-        public SiteRecoveryVaultManagementClient SiteRecoveryVaultMgmtClient { get; private set; }
         public SiteRecoveryManagementClient SiteRecoveryMgmtClient { get; private set; }
         public RecoveryServicesManagementClient RecoveryServicesMgmtClient { get; private set; }
 
@@ -52,10 +50,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
 
         protected void SetupManagementClients(String scenario, RestTestFramework.MockContext context)
         {
-            SiteRecoveryVaultMgmtClient = GetSiteRecoveryVaultManagementClient(scenario);
             RecoveryServicesMgmtClient = GetRecoveryServicesManagementClient(scenario);
             SiteRecoveryMgmtClient = GetSiteRecoveryManagementClient(scenario, context);
-            helper.SetupManagementClients(SiteRecoveryMgmtClient, RecoveryServicesMgmtClient, SiteRecoveryVaultMgmtClient);
+            helper.SetupManagementClients(SiteRecoveryMgmtClient, RecoveryServicesMgmtClient);
         }
 
         public void RunPowerShellTest(String scenario, params string[] scripts)
@@ -156,11 +153,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
             }
         }
 
-        private SiteRecoveryVaultManagementClient GetSiteRecoveryVaultManagementClient(String scenario)
-        {
-            return GetServiceClient<SiteRecoveryVaultManagementClient>(scenario);
-        }
-
         private RecoveryServicesManagementClient GetRecoveryServicesManagementClient(String scenario)
         {
             return GetServiceClient<RecoveryServicesManagementClient>(scenario);
@@ -243,74 +235,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
 
                 return GetRSMServiceClient<T>(factory, client);
             }
-            else if(typeof(T) == typeof(SiteRecoveryVaultManagementClient))
-            {
-                SiteRecoveryVaultManagementClient client = null;
-
-                if (testEnvironment.UsesCustomUri())
-                {
-                    client = new SiteRecoveryVaultManagementClient(
-                        resourceNamespace,
-                        resourceType,
-                        credentials,
-                        testEnvironment.BaseUri);
-                }
-
-                else
-                {
-                    client = new SiteRecoveryVaultManagementClient(
-                        resourceNamespace,
-                        resourceType,
-                        credentials);
-                }
-
-                return GetSRVMServiceClient<T>(factory, client);
-            }
 
             return null;
         }
 
         public static T GetRSMServiceClient<T>(TestEnvironmentFactory factory, RecoveryServicesManagementClient client) where T : class
-        {
-            TestEnvironment testEnvironment = factory.GetTestEnvironment();
-
-            HttpMockServer instance;
-            try
-            {
-                instance = HttpMockServer.CreateInstance();
-            }
-            catch (ApplicationException)
-            {
-                HttpMockServer.Initialize("TestEnvironment", "InitialCreation");
-                instance = HttpMockServer.CreateInstance();
-            }
-            T obj2 = typeof(T).GetMethod("WithHandler", new Type[1]
-            {
-                typeof (DelegatingHandler)
-            }).Invoke((object)client, new object[1]
-            {
-                (object) instance
-            }) as T;
-
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
-            {
-                HttpMockServer.Variables[TestEnvironment.SubscriptionIdKey] = testEnvironment.SubscriptionId;
-            }
-
-            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
-            {
-                PropertyInfo property1 = typeof(T).GetProperty("LongRunningOperationInitialTimeout", typeof(int));
-                PropertyInfo property2 = typeof(T).GetProperty("LongRunningOperationRetryTimeout", typeof(int));
-                if (property1 != (PropertyInfo)null && property2 != (PropertyInfo)null)
-                {
-                    property1.SetValue((object)obj2, (object)0);
-                    property2.SetValue((object)obj2, (object)0);
-                }
-            }
-            return obj2;
-        }
-
-        public static T GetSRVMServiceClient<T>(TestEnvironmentFactory factory, SiteRecoveryVaultManagementClient client) where T : class
         {
             TestEnvironment testEnvironment = factory.GetTestEnvironment();
 

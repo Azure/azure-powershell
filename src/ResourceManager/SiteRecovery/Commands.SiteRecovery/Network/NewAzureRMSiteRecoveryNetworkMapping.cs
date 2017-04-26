@@ -30,8 +30,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Gets or sets Azure VM Network Id.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = false)]
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = false)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -82,11 +82,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void EnterpriseToEnterpriseNetworkMapping()
         {
-            string mappingName = string.IsNullOrEmpty(this.Name) ? 
-                this.PrimaryNetwork.FriendlyName.Replace(" ", "") + "-" +
-                this.RecoveryNetwork.FriendlyName.Replace(" ", "") + "-" +
-                Guid.NewGuid().ToString() :
-                this.Name;
+            string mappingName = this.Name;
 
             CreateNetworkMappingInput input = new CreateNetworkMappingInput
             {
@@ -123,9 +119,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             // Verify whether the subscription is associated with the account or not.
             // Check if the Azure VM Network is associated with the Subscription or not.
 
-            string mappingName = String.IsNullOrEmpty(this.Name) ?
-                this.PrimaryNetwork.FriendlyName.Replace(" ", "") + "-" + Utilities.GetValueFromArmId(this.AzureVMNetworkId, ARMResourceTypeConstants.VirtualNetworks).Replace(" ", "") + "-" + Guid.NewGuid().ToString() :
-                this.Name;
+            string mappingName = this.Name;
 
             CreateNetworkMappingInput input = new CreateNetworkMappingInput
             {

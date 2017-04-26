@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     public class RestartAzureSiteRecoveryJob : SiteRecoveryCmdletBase
     {
         #region Parameters
+
         /// <summary>
         /// Gets or sets Job ID.
         /// </summary>
@@ -38,6 +39,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         [Parameter(ParameterSetName = ASRParameterSets.ByObject, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRJob Job { get; set; }
+
         #endregion Parameters
 
         /// <summary>

@@ -17,7 +17,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
-using Microsoft.Azure.Management.SiteRecoveryVault;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using System;
 using System.Collections.Generic;
@@ -71,10 +70,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
         public static string idPrefixtillvaultName = string.Empty;
 
-        /// <summary>
-        /// Site recovery vault management client.
-        /// </summary>
-        private Management.SiteRecoveryVault.SiteRecoveryVaultManagementClient siteRecoveryVaultClient;
 
         /// <summary>
         /// Recovery services vault management client.

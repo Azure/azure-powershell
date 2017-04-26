@@ -50,8 +50,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Gets or sets group
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.AddProtectedEntities, Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.RemoveProtectedEntities, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.AddReplicationProtectedItems, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.RemoveReplicationProtectedItems, Mandatory = true)]
         public ASRRecoveryPlanGroup Group { get; set; }
@@ -67,18 +65,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.RemoveReplicationProtectedItems, Mandatory = true)]
         public ASRReplicationProtectedItem [] RemoveProtectedItems { get; set; }
-
-        /// <summary>
-        /// Gets or sets switch parameter
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.AddProtectedEntities, Mandatory = true)]
-        public ASRProtectionEntity[] AddProtectedEntities { get; set; }
-
-        /// <summary>
-        /// Gets or sets switch parameter
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.RemoveProtectedEntities, Mandatory = true)]
-        public ASRProtectionEntity[] RemoveProtectedEntities { get; set; }
 
         #endregion Parameters
 
@@ -173,80 +159,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                             else
                             {
                                 throw new PSArgumentException(string.Format(Properties.Resources.VMNotFoundInGroup, rpi.FriendlyName, this.Group.Name, this.RecoveryPlan.FriendlyName));
-                            }
-                        }
-                        else
-                        {
-                            throw new PSArgumentException(string.Format(Properties.Resources.GroupNotFoundInRecoveryPlan, this.Group.Name, this.RecoveryPlan.FriendlyName));
-                        }
-                    }
-                    break;
-                case ASRParameterSets.AddProtectedEntities:
-                    this.WriteWarningWithTimestamp(Properties.Resources.ParameterSetWillBeDeprecatedSoon);
-                    foreach (ASRProtectionEntity pe in AddProtectedEntities)
-                    {
-                        string fabricName = Utilities.GetValueFromArmId(pe.ID, ARMResourceTypeConstants.ReplicationFabrics);
-                        // fetch the latest PE object
-                        var protectableItemResponse =
-                        RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(fabricName,
-                        pe.ProtectionContainerId, pe.Name);
-
-                        var replicationProtectedItemResponse =
-                        RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(fabricName,
-                        pe.ProtectionContainerId, Utilities.GetValueFromArmId(protectableItemResponse.Properties.ReplicationProtectedItemId,
-                        ARMResourceTypeConstants.ReplicationProtectedItems));
-
-                        tempGroup = this.RecoveryPlan.Groups.FirstOrDefault(g => String.Compare(g.Name, Group.Name, StringComparison.OrdinalIgnoreCase) == 0);
-
-                        if (tempGroup != null)
-                        {
-                            foreach (ASRRecoveryPlanGroup gp in this.RecoveryPlan.Groups)
-                            {
-                                if (gp.ReplicationProtectedItems == null)
-                                    continue;
-
-                                if (gp.ReplicationProtectedItems.Any(pi => String.Compare(pi.Id, replicationProtectedItemResponse.Id, StringComparison.OrdinalIgnoreCase) == 0))
-                                {
-                                    throw new PSArgumentException(string.Format(Properties.Resources.VMAlreadyPartOfGroup, pe.FriendlyName, gp.Name, this.RecoveryPlan.FriendlyName));
-                                }
-                            }
-
-                            this.RecoveryPlan.Groups[RecoveryPlan.Groups.IndexOf(tempGroup)].ReplicationProtectedItems.Add(replicationProtectedItemResponse);
-                        }
-                        else
-                        {
-                            throw new PSArgumentException(string.Format(Properties.Resources.GroupNotFoundInRecoveryPlan, this.Group.Name, this.RecoveryPlan.FriendlyName));
-                        }
-                    }
-                    break;
-                case ASRParameterSets.RemoveProtectedEntities:
-                    this.WriteWarningWithTimestamp(Properties.Resources.ParameterSetWillBeDeprecatedSoon);
-                    foreach (ASRProtectionEntity pe in RemoveProtectedEntities)
-                    {
-                        string fabricName = Utilities.GetValueFromArmId(pe.ID, ARMResourceTypeConstants.ReplicationFabrics);
-                        // fetch the latest PE object
-                        var protectableItemResponse =
-                        RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(fabricName,
-                        pe.ProtectionContainerId, pe.Name);
-
-                        tempGroup = this.RecoveryPlan.Groups.FirstOrDefault(g => String.Compare(g.Name, Group.Name, StringComparison.OrdinalIgnoreCase) == 0);
-
-                        if (tempGroup != null)
-                        {
-                            var ReplicationProtectedItem =
-                                this.RecoveryPlan.Groups[RecoveryPlan.Groups.IndexOf(tempGroup)].
-                                ReplicationProtectedItems.
-                                FirstOrDefault(pi => String.Compare(pi.Id,
-                                protectableItemResponse.Properties.ReplicationProtectedItemId,
-                                StringComparison.OrdinalIgnoreCase) == 0);
-
-                            if (ReplicationProtectedItem != null)
-                            {
-                                this.RecoveryPlan.Groups[RecoveryPlan.Groups.IndexOf(tempGroup)].ReplicationProtectedItems.Remove(ReplicationProtectedItem);
-                            }
-                            else
-                            {
-                                throw new PSArgumentException(string.Format(Properties.Resources.VMNotFoundInGroup, pe.FriendlyName, this.Group.Name, this.RecoveryPlan.FriendlyName));
                             }
                         }
                         else

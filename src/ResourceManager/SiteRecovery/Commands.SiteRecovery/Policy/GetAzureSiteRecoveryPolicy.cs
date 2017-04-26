@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     public class GetAzureSiteRecoveryPolicy : SiteRecoveryCmdletBase
     {
         #region Parameters
+
         /// <summary>
         /// Gets or sets name of the Policy.
         /// </summary>
@@ -44,6 +45,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         [Parameter(ParameterSetName = ASRParameterSets.ByFriendlyName, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string FriendlyName { get; set; }
+
         #endregion Parameters
 
         /// <summary>

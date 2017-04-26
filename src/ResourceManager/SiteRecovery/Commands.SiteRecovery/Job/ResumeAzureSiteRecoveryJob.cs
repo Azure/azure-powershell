@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     public class ResumeAzureSiteRecoveryJob : SiteRecoveryCmdletBase
     {
         #region Parameters
+
         /// <summary>
         /// Gets or sets Job ID.
         /// </summary>
@@ -45,6 +46,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         [Parameter(Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string Comments { get; set; }
+
         #endregion Parameters
 
         /// <summary>

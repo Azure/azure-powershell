@@ -655,17 +655,6 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
     public class AcsNamespace
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AcsNamespace"/> class.
-        /// </summary>
-        /// <param name="acsDetails">authenticating service Details name</param>
-        public AcsNamespace(Management.SiteRecovery.Models.UploadCertificateResponse acsDetails)
-        {
-            this.HostName = acsDetails.Properties.GlobalAcsHostName;
-            this.Namespace = acsDetails.Properties.GlobalAcsNamespace;
-            this.ResourceProviderRealm = acsDetails.Properties.GlobalAcsRPRealm;
-        }
-
-        /// <summary>
         /// Gets or sets Host name
         /// </summary>
         [DataMember(Order = 0)]
@@ -816,26 +805,6 @@ namespace Microsoft.Azure.Portal.HybridServicesCore
         #endregion
 
         #region Public methods
-
-        /// <summary>
-        /// Returns the Xml representation of this object.
-        /// </summary>
-        /// <returns>the xml as string</returns>
-        public Management.SiteRecovery.Models.ResourceExtendedInformationArgs Translate()
-        {
-            if (string.IsNullOrEmpty(this.Etag))
-            {
-                this.Etag = Guid.NewGuid().ToString();
-            }
-
-            string serializedInfo = Utilities.Serialize<ResourceExtendedInfo>(this);
-            Management.SiteRecovery.Models.ResourceExtendedInformationArgs extendedInfoArgs = new Management.SiteRecovery.Models.ResourceExtendedInformationArgs(
-                Constants.VaultExtendedInfoContractVersion,
-                serializedInfo,
-                this.Etag);
-
-            return extendedInfoArgs;
-        }
 
         /// <summary>
         /// Method to generate security information
