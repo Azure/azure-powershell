@@ -150,6 +150,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Utilities
 
         public static void TestRunSetup()
         {
+            AzureSessionInitializer.InitializeAzureSession();
             // This is to ensure that all key assemblies are loaded before IOC registration is required.
             // This is only necessary for the test system as load order is correct for a production run.
             // types.Add(typeof(GetAzureHDInsightClusterCmdlet));
