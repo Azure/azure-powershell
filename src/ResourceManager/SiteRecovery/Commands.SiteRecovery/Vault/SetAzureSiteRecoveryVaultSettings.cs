@@ -26,22 +26,14 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     [OutputType(typeof(ASRVaultSettings))]
     public class SetAzureSiteRecoveryVaultSettings : SiteRecoveryCmdletBase
     {
-        #region Parameters
-        
-        /// <summary>
-        /// Gets or sets ASR vault Object.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ASRVault, Mandatory = true, ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public ASRVault ASRVault { get; set; }
-        
+        #region Parameters               
 
         /// <summary>
         /// Gets or sets ARS vault Object.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ARSVault, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ARSVault ARSVault { get; set; }
+        public ARSVault Vault { get; set; }
 
         #endregion Parameters
 
@@ -54,31 +46,12 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             switch (this.ParameterSetName)
             {
-                case ASRParameterSets.ASRVault:
-                    this.SetASRVaultContext(this.ASRVault);
-                    break;
                 case ASRParameterSets.ARSVault:
-                    this.SetARSVaultContext(this.ARSVault);
+                    this.SetARSVaultContext(this.Vault);
                     break;
                 default:
                     throw new PSInvalidOperationException(Properties.Resources.InvalidParameterSet);
             }
-        }
-
-        /// <summary>
-        /// Set Azure Site Recovery Vault context.
-        /// </summary>
-        private void SetASRVaultContext(ASRVault asrVault)
-        {
-            // Change the vault context
-            RecoveryServicesClient.ChangeVaultContext(asrVault);
-
-            // Validate the Vault
-            RecoveryServicesClient.ValidateVaultSettings(
-                asrVault.Name,
-                asrVault.ResourceGroupName);
-
-            this.WriteObject(new ASRVaultSettings(PSRecoveryServicesClient.asrVaultCreds));
         }
 
         /// <summary>

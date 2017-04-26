@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using Microsoft.Rest.Azure;
-//using Microsoft.Azure.Management.RecoveryServices.SiteRecoveryVault.Models;
 using Newtonsoft.Json;
 using System;
 using System.Runtime.Serialization;
@@ -250,29 +249,5 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     paramName));
             }
         }
-
-        /// <summary>
-        /// Gets the current vault location.
-        /// </summary>
-        /// <returns>The current vault location.</returns>
-        protected string GetCurrentVaultLocation()
-        {
-            string location = string.Empty;
-
-            Management.SiteRecoveryVault.Models.VaultListResponse vaultListResponse =
-                RecoveryServicesClient.GetVaultsInResouceGroup(PSRecoveryServicesClient.asrVaultCreds.ResourceGroupName);
-
-            foreach (Management.SiteRecoveryVault.Models.Vault vault in vaultListResponse.Vaults)
-            {
-                if (0 == string.Compare(PSRecoveryServicesClient.asrVaultCreds.ResourceName, vault.Name, true))
-                {
-                    location = vault.Location;
-                    break;
-                }
-            }
-
-            return location;
-        }
-
     }
 }

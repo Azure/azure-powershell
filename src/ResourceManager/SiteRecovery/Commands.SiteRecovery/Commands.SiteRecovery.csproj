@@ -139,9 +139,6 @@
     <Compile Include="Common\PSSiteRecoveryRecoveryServicesProviderClient.cs" />
     <Compile Include="Common\PSSiteRecoveryFabricClient.cs" />
     <Compile Include="Common\PSSiteRecoveryStorageClassificationClient.cs" />
-    <Compile Include="Common\PSSiteRecoveryVaultClient.cs" />
-    <Compile Include="Common\PSSiteRecoveryVaultExtendedInfoClient.cs" />
-    <Compile Include="Common\PSSiteRecoveryVMClient.cs" />
     <Compile Include="Common\SiteRecoveryCmdletBase.cs" />
     <Compile Include="Fabrics\GetAzureRmSiteRecoveryFabric.cs" />
     <Compile Include="Fabrics\NewAzureRmSiteRecoveryFabric.cs" />
@@ -213,13 +210,9 @@
     <Compile Include="Utilities\CertUtils.cs" />
     <Compile Include="Utilities\SiteRecoveryAutoMapperProfile.cs" />
     <Compile Include="Utilities\Utilities.cs" />
-    <Compile Include="Vault\RemoveAzureSiteRecoveryVault.cs" />
     <Compile Include="Vault\SetAzureSiteRecoveryVaultSettings.cs" />
-    <Compile Include="Vault\GetAzureSiteRecoveryVault.cs" />
     <Compile Include="Vault\GetAzureSiteRecoveryVaultSettings.cs" />
-    <Compile Include="Vault\GetAzureSiteRecoveryVaultSettingsFile.cs" />
     <Compile Include="Vault\ImportAzureSiteRecoveryVaultSettingsFile.cs" />
-    <Compile Include="Vault\NewAzureSiteRecoveryVault.cs" />
     <Compile Include="VM\GetAzureSiteRecoveryVM.cs" />
     <Compile Include="VM\SetAzureSiteRecoveryVM.cs" />
   </ItemGroup>

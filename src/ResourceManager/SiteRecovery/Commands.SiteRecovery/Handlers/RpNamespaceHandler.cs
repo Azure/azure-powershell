@@ -35,15 +35,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         protected override Task<HttpResponseMessage> SendAsync(
             HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            string rpType = null;
-            if(rpNamespace.Contains(ARMResourceTypeConstants.RecoveryServicesResourceProviderNameSpace))
-            {
-                rpType = ARMResourceTypeConstants.RecoveryServicesVault;
-            }
-            else
-            {
-                rpType = ARMResourceTypeConstants.SiteRecoveryVault;
-            }
+            string rpType = ARMResourceTypeConstants.RecoveryServicesVault; ;
 
             request.RequestUri = new Uri(request.RequestUri.AbsoluteUri.Replace(
                 request.RequestUri.AbsoluteUri.GetProviderNameSpaceFromArmId(), rpNamespace).Replace(ARMResourceTypeConstants.RecoveryServicesVault, rpType));

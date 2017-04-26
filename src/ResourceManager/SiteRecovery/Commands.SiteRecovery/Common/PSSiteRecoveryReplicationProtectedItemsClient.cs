@@ -350,5 +350,22 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             }
         }
 
+        /// <summary>
+        /// Update Azure VM Properties
+        /// </summary>
+        /// <param name="fabricName">Fabric Name</param>
+        /// <param name="protectionContainerName">Protection Container Name</param>
+        /// <param name="replicationProtectedItemName">Replication Protected Item</param>
+        /// <param name="input">Update Replication Protected Item Input</param>
+        /// <returns></returns>
+        public PSSiteRecoveryLongRunningOperation UpdateVmProperties(string fabricName,
+            string protectionContainerName,
+            string replicationProtectedItemName,
+            UpdateReplicationProtectedItemInput input)
+        {
+            var op = this.GetSiteRecoveryClient().ReplicationProtectedItems.BeginUpdateWithHttpMessagesAsync(fabricName, protectionContainerName, replicationProtectedItemName, input, this.GetRequestHeaders(true)).GetAwaiter().GetResult();
+            var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
+        }
     }
 }

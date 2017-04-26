@@ -45,17 +45,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public string ClientRequestId { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of site recovery vault management client.
-        /// </summary>
-        public Management.SiteRecoveryVault.SiteRecoveryVaultManagementClient GetSiteRecoveryVaultClient
-        {
-            get
-            {
-                return this.siteRecoveryVaultClient;
-            }
-        }
-
-        /// <summary>
         /// Gets the value of recovery services vault management client.
         /// </summary>
         public RecoveryServicesManagementClient GetRecoveryServicesVaultClient
@@ -190,13 +179,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             }
 
             cloudCredentials = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(azureProfile.Context);
-            
-            this.siteRecoveryVaultClient =
-                AzureSession.ClientFactory.CreateCustomClient<Management.SiteRecoveryVault.SiteRecoveryVaultManagementClient>(
-                    asrVaultCreds.ResourceNamespace,
-                    asrVaultCreds.ARMResourceType,
-                    cloudCredentials,
-                    azureProfile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager));
 
             this.recoveryServicesVaultClient =
                  AzureSession.ClientFactory.CreateCustomClient<RecoveryServicesManagementClient>(
@@ -327,24 +309,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             cikTokenDetails.HashFunction = CikSupportedHashFunctions.HMACSHA256.ToString();
 
             return new JavaScriptSerializer().Serialize(cikTokenDetails);
-        }
-
-        /// <summary>
-        /// Gets request headers.
-        /// </summary>
-        /// <param name="shouldSignRequest">specifies whether to sign the request or not</param>
-        /// <returns>Custom request headers</returns>
-        public Management.SiteRecovery.Models.CustomRequestHeaders GetSiteRecoveryVaultRequestHeaders(bool shouldSignRequest = true)
-        {
-            this.ClientRequestId = Guid.NewGuid().ToString() + "-" + DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ssZ") + "-P";
-
-            return new Management.SiteRecovery.Models.CustomRequestHeaders()
-            {
-                // ClientRequestId is a unique ID for every request to Azure Site Recovery.
-                // It is useful when diagnosing failures in API calls.
-                ClientRequestId = this.ClientRequestId,
-                AgentAuthenticationHeader = shouldSignRequest ? this.GenerateAgentAuthenticationHeader(this.ClientRequestId) : ""
-            };
         }
 
         /// <summary>
