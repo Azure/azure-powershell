@@ -42,69 +42,6 @@ You can check whether the job succeeds by using the Get-AzureRmSiteRecoveryJob c
 
 ## PARAMETERS
 
-### -ProtectionEntity
-Specifies the Site Recovery protection entity object.
-
-```yaml
-Type: ASRProtectionEntity
-Parameter Sets: ByPEObject
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Direction
-Specifies the direction of the failover.
-The acceptable values for this parameter are:
-
-- PrimaryToRecovery
-- RecoveryToPrimary
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Optimize
-Specifies what to optimize for.
-This parameter applies when failover is done from an Azure site to an on-premise site which requires a substantial data synchronization.
-Valid values are:
-
-- ForDowntime
-- ForSynchronization
-
-When **ForDowntime** is specified, this indicates that data is synchronized before failover to minimize downtime.
-Synchronization is performed without shutting down the virtual machine.
-After synchronization is complete, the job is suspended.
-Resume the job to do an additional synchronization operation that shuts down the virtual machine.
-
-When **ForSynchronization** is specified, this indicates that data is synchronized during failover only so data synchronization is minimized.
-With this setting enabled, the virtual machine is shut down immediately.
-Synchronization starts after shutdown to complete the failover operation.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -CreateVmIfNotFound
 The acceptable values for this parameter are:
 
@@ -115,32 +52,7 @@ The acceptable values for this parameter are:
 Type: String
 Parameter Sets: (All)
 Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Server
-```yaml
-Type: ASRServer
-Parameter Sets: ByPEObject
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ServicesProvider
-```yaml
-Type: ASRRecoveryServicesProvider
-Parameter Sets: ByRPIObject
-Aliases: 
+Accepted values: Yes, No
 
 Required: False
 Position: Named
@@ -179,6 +91,71 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Direction
+Specifies the direction of the failover.
+The acceptable values for this parameter are:
+
+- PrimaryToRecovery
+- RecoveryToPrimary
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: PrimaryToRecovery, RecoveryToPrimary
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Optimize
+Specifies what to optimize for.
+This parameter applies when failover is done from an Azure site to an on-premise site which requires a substantial data synchronization.
+Valid values are:
+
+- ForDowntime
+- ForSynchronization
+
+When **ForDowntime** is specified, this indicates that data is synchronized before failover to minimize downtime.
+Synchronization is performed without shutting down the virtual machine.
+After synchronization is complete, the job is suspended.
+Resume the job to do an additional synchronization operation that shuts down the virtual machine.
+
+When **ForSynchronization** is specified, this indicates that data is synchronized during failover only so data synchronization is minimized.
+With this setting enabled, the virtual machine is shut down immediately.
+Synchronization starts after shutdown to complete the failover operation.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: ForDownTime, ForSynchronization
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProtectionEntity
+Specifies the Site Recovery protection entity object.
+
+```yaml
+Type: ASRProtectionEntity
+Parameter Sets: ByPEObject
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -RecoveryPlan
 Specifies a recovery plan object.
 
@@ -204,6 +181,32 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Server
+```yaml
+Type: ASRServer
+Parameter Sets: ByPEObject
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServicesProvider
+```yaml
+Type: ASRRecoveryServicesProvider
+Parameter Sets: ByRPIObject
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

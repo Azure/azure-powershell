@@ -73,6 +73,7 @@ The acceptable values for this parameter are:
 Type: PathType
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Any, File, Folder
 
 Required: False
 Position: 2

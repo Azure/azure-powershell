@@ -38,6 +38,21 @@ This command removes the Azure App Service plan named ContosoASP that belongs to
 
 ## PARAMETERS
 
+### -AppServicePlan
+App Service Plan Object
+
+```yaml
+Type: ServerFarmWithRichSku
+Parameter Sets: S2
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Force
 Forcefully Remove Option
 
@@ -48,21 +63,6 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Resource Group Name
-
-```yaml
-Type: String
-Parameter Sets: S1
-Aliases: 
-
-Required: True
-Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -83,18 +83,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AppServicePlan
-App Service Plan Object
+### -ResourceGroupName
+Resource Group Name
 
 ```yaml
-Type: ServerFarmWithRichSku
-Parameter Sets: S2
+Type: String
+Parameter Sets: S1
 Aliases: 
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
