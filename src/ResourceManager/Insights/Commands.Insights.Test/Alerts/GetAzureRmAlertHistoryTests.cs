@@ -26,6 +26,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 using Xunit.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.Insights.Test.Alerts
 {
@@ -41,6 +44,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
 
         public GetAzureRmAlertHistoryTests(ITestOutputHelper output)
         {
+            TestExecutionHelpers.SetUpSessionAndProfile();
             //XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             insightsEventOperationsMock = new Mock<IEventsOperations>();
             insightsClientMock = new Mock<InsightsClient>();

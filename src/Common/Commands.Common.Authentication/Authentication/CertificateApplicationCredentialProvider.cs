@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             var task = new Task<X509Certificate2>(() =>
             {
-                return AzureSession.DataStore.GetCertificate(this._certificateThumbprint);
+                return AzureSession.Instance.DataStore.GetCertificate(this._certificateThumbprint);
             });
             task.Start();
             var certificate = await task.ConfigureAwait(false);

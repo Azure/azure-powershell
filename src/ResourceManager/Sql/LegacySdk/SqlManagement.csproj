@@ -14,7 +14,7 @@
     <TargetFrameworkProfile />
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
-<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -42,10 +42,6 @@
   <ItemGroup>
     <Compile Include="Generated\**\*.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Microsoft.Azure.Management.Sql.nuget.proj" />
-    <None Include="Microsoft.Azure.Management.Sql.nuspec" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

@@ -83,6 +83,10 @@
       <Project>{cff09e81-1e31-444e-b4d4-a21e946c29e2}</Project>
       <Name>Commands.ServiceManagement.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Services\Commands.Test.Utilities\Commands.Test.Utilities.csproj">
+      <Project>{bc420543-c04e-4bf3-96e1-cd81b823bdd7}</Project>
+      <Name>Commands.Test.Utilities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Services\Commands.Test\Commands.Test.csproj">
       <Project>{b7fd03f6-98bc-4f54-9a14-0455e579fcd4}</Project>
       <Name>Commands.Test</Name>

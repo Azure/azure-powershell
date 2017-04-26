@@ -12,7 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Insights.LogProfiles;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Management.Insights;
 using Microsoft.Azure.Management.Insights.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -38,6 +42,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.LogProfiles
 
         public AddAzureRmLogProfileTests(ITestOutputHelper output)
         {
+            TestExecutionHelpers.SetUpSessionAndProfile();
             // XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             insightsLogProfileOperationsMock = new Mock<ILogProfilesOperations>();
             insightsManagementClientMock = new Mock<InsightsManagementClient>();

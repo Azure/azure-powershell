@@ -204,6 +204,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\RDFE.Storage\CloudStorageService.cs">
+      <Link>Common\CloudStorageService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\RDFE.Storage\RDFEStorageProvider.cs">
+      <Link>Common\RDFEStorageProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\AzureContextAdapterExtensions.cs">
+      <Link>Common\AzureContextAdapterExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\AzureStorageContext.cs">
+      <Link>Common\AzureStorageContext.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\LazyAzureStorageContext.cs">
+      <Link>Common\LazyAzureStorageContext.cs</Link>
+    </Compile>
     <Compile Include="CloudService\AddRole.cs" />
     <Compile Include="CloudService\CloudServiceClient.cs" />
     <Compile Include="CloudService\ICloudServiceClient.cs" />
@@ -251,6 +266,7 @@
     <Compile Include="Common\ServiceSettings.cs" />
     <Compile Include="Common\ServiceManagementBaseCmdlet.cs" />
     <Compile Include="Common\AzureBlob.cs" />
+    <Compile Include="Common\StorageUtilities.cs" />
     <Compile Include="Common\VisualStudioProjectPathInfo.cs" />
     <Compile Include="Common\WebRoleInfo.cs" />
     <Compile Include="Common\WorkerRoleInfo.cs" />
@@ -685,6 +701,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
+      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
+      <Name>Commands.Common.Authentication.Abstractions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
       <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
       <Name>Commands.Common.Authentication</Name>

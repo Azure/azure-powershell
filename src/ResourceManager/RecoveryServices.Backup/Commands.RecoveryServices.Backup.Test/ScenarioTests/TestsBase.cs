@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 
             if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
-                HttpMockServer.Variables[TestEnvironment.SubscriptionIdKey] = testEnvironment.SubscriptionId;
+                HttpMockServer.Variables[ConnectionStringKeys.SubscriptionIdKey] = testEnvironment.SubscriptionId;
             }
 
             if (HttpMockServer.Mode == HttpRecorderMode.Playback)
