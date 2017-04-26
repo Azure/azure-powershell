@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using System;
 using System.Management.Automation;
 
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 string.Format("StrgMap_{0}_{1}_{2}", PrimaryStorageClassification.Name, RecoveryStorageClassification.Name, Guid.NewGuid()) :
                 this.Name;
 
-            var props = new StorageClassificationMappingInputProperties()
+            var props = new StorageMappingInputProperties()
             {
                 TargetStorageClassificationId = RecoveryStorageClassification.Id
             };
@@ -70,17 +70,17 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 Properties = props
             };
 
-            LongRunningOperationResponse operationResponse =
+            PSSiteRecoveryLongRunningOperation operationResponse =
                 RecoveryServicesClient.MapStorageClassification(
                 PrimaryStorageClassification,
                 input,
                 mappingName);
 
-            JobResponse jobResponse =
+            var jobResponse =
                 RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
                 PSRecoveryServicesClient.GetJobIdFromReponseLocation(operationResponse.Location));
 
-            base.WriteObject(new ASRJob(jobResponse.Job));
+            base.WriteObject(new ASRJob(jobResponse));
         }
     }
 }

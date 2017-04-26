@@ -12,8 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery;
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using AutoMapper;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -26,9 +28,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Gets all Azure Site Recovery Networks.
         /// </summary>
         /// <returns>Network list response</returns>
-        public NetworksListResponse GetAzureSiteRecoveryNetworks()
+        public List<Network> GetAzureSiteRecoveryNetworks()
         {
-            return this.GetSiteRecoveryClient().Network.GetAll(this.GetRequestHeaders());
+            var firstPage = this.GetSiteRecoveryClient().ReplicationNetworks.ListWithHttpMessagesAsync(this.GetRequestHeaders(true)).GetAwaiter().GetResult().Body;
+            var pages = Utilities.GetAllFurtherPages(this.GetSiteRecoveryClient().ReplicationNetworks.ListNextWithHttpMessagesAsync, firstPage.NextPageLink, this.GetRequestHeaders(true));
+            pages.Insert(0, firstPage);
+
+            return Utilities.IpageToList(pages);
         }
 
         /// <summary>
@@ -36,9 +42,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         /// <param name="serverId">Server ID</param>
         /// <returns>Network list response</returns>
-        public NetworksListResponse GetAzureSiteRecoveryNetworks(string fabricName)
+        public List<Network> GetAzureSiteRecoveryNetworks(string fabricName)
         {
-            return this.GetSiteRecoveryClient().Network.List(fabricName, this.GetRequestHeaders());
+            var firstPage = this.GetSiteRecoveryClient().ReplicationNetworks.ListByReplicationFabricsWithHttpMessagesAsync(fabricName, this.GetRequestHeaders(true)).GetAwaiter().GetResult().Body;
+            var pages = Utilities.GetAllFurtherPages(this.GetSiteRecoveryClient().ReplicationNetworks.ListByReplicationFabricsNextWithHttpMessagesAsync, firstPage.NextPageLink, this.GetRequestHeaders(true));
+            pages.Insert(0, firstPage);
+
+            return Utilities.IpageToList(pages);
         }
 
         /// <summary>
@@ -47,9 +57,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <param name="fabricName">Fabric name</param>
         /// <param name="networkName">Network name</param>
         /// <returns>Network response</returns>
-        public NetworkResponse GetAzureSiteRecoveryNetwork(string fabricName, string networkName)
+        public Network GetAzureSiteRecoveryNetwork(string fabricName, string networkName)
         {
-            return this.GetSiteRecoveryClient().Network.Get(fabricName, networkName, this.GetRequestHeaders());
+            return this.GetSiteRecoveryClient().ReplicationNetworks.GetWithHttpMessagesAsync(fabricName, networkName, this.GetRequestHeaders(true)).GetAwaiter().GetResult().Body;
         }
     }
 }

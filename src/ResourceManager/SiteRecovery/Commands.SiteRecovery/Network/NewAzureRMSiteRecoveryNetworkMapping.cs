@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using System;
 using System.Management.Automation;
 
@@ -82,24 +82,36 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void EnterpriseToEnterpriseNetworkMapping()
         {
-            string mappingName = String.IsNullOrEmpty(this.Name) ?
-                this.PrimaryNetwork.FriendlyName.Replace(" ", "") + "-" + this.RecoveryNetwork.FriendlyName.Replace(" ", "") + "-" + Guid.NewGuid().ToString() :
+            string mappingName = string.IsNullOrEmpty(this.Name) ? 
+                this.PrimaryNetwork.FriendlyName.Replace(" ", "") + "-" +
+                this.RecoveryNetwork.FriendlyName.Replace(" ", "") + "-" +
+                Guid.NewGuid().ToString() :
                 this.Name;
 
-            LongRunningOperationResponse response =
+            CreateNetworkMappingInput input = new CreateNetworkMappingInput
+            {
+                Properties = new CreateNetworkMappingInputProperties
+                {
+                    RecoveryFabricName =
+                        Utilities.GetValueFromArmId(this.RecoveryNetwork.ID, ARMResourceTypeConstants.ReplicationFabrics),
+                    RecoveryNetworkId = this.RecoveryNetwork.ID,
+                    FabricSpecificDetails = new VmmToVmmCreateNetworkMappingInput()
+                }
+            };
+
+            var response =
                 RecoveryServicesClient
                 .NewAzureSiteRecoveryNetworkMapping(
-                Utilities.GetValueFromArmId(this.PrimaryNetwork.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                Utilities.GetValueFromArmId(this.PrimaryNetwork.ID, ARMResourceTypeConstants.ReplicationNetworks),
-                mappingName,
-                Utilities.GetValueFromArmId(this.RecoveryNetwork.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                this.RecoveryNetwork.ID);
+                    Utilities.GetValueFromArmId(this.PrimaryNetwork.ID, ARMResourceTypeConstants.ReplicationFabrics),
+                    Utilities.GetValueFromArmId(this.PrimaryNetwork.ID, ARMResourceTypeConstants.ReplicationNetworks),
+                    mappingName,
+                    input);
 
-            JobResponse jobResponse =
+            var jobResponse =
                 RecoveryServicesClient
                 .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            WriteObject(new ASRJob(jobResponse.Job));
+            WriteObject(new ASRJob(jobResponse));
         }
 
         /// <summary>
@@ -107,24 +119,37 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void EnterpriseToAzureNetworkMapping()
         {
+            // Add following checks if needed:
+            // Verify whether the subscription is associated with the account or not.
+            // Check if the Azure VM Network is associated with the Subscription or not.
+
             string mappingName = String.IsNullOrEmpty(this.Name) ?
                 this.PrimaryNetwork.FriendlyName.Replace(" ", "") + "-" + Utilities.GetValueFromArmId(this.AzureVMNetworkId, ARMResourceTypeConstants.VirtualNetworks).Replace(" ", "") + "-" + Guid.NewGuid().ToString() :
                 this.Name;
 
-            LongRunningOperationResponse response =
+            CreateNetworkMappingInput input = new CreateNetworkMappingInput
+            {
+                Properties = new CreateNetworkMappingInputProperties
+                {
+                    RecoveryFabricName = "Microsoft Azure",
+                    RecoveryNetworkId = this.AzureVMNetworkId,
+                    FabricSpecificDetails = new VmmToAzureCreateNetworkMappingInput()
+                }
+            };
+
+            var response =
                 RecoveryServicesClient
                 .NewAzureSiteRecoveryNetworkMapping(
-                Utilities.GetValueFromArmId(this.PrimaryNetwork.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                Utilities.GetValueFromArmId(this.PrimaryNetwork.ID, ARMResourceTypeConstants.ReplicationNetworks),
-                mappingName,
-                "Microsoft Azure",
-                this.AzureVMNetworkId);
+                    Utilities.GetValueFromArmId(this.PrimaryNetwork.ID, ARMResourceTypeConstants.ReplicationFabrics),
+                    Utilities.GetValueFromArmId(this.PrimaryNetwork.ID, ARMResourceTypeConstants.ReplicationNetworks),
+                    mappingName,
+                    input);
 
-            JobResponse jobResponse =
+            var jobResponse =
                 RecoveryServicesClient
                 .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            WriteObject(new ASRJob(jobResponse.Job));
+            WriteObject(new ASRJob(jobResponse));
         }
     }
 }

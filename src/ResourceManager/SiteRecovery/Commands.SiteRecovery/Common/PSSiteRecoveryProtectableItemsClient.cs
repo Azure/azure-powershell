@@ -12,9 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery;
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -28,25 +29,14 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         /// <param name="protectionContainerName">Protection Container Name</param>
         /// <returns>Protection entity list response</returns>
-        public ProtectableItemListResponse GetAzureSiteRecoveryProtectableItem(string fabricName,
+        public List<ProtectableItem> GetAzureSiteRecoveryProtectableItem(string fabricName,
             string protectionContainerName)
         {
-            ProtectableItemListResponse output = new ProtectableItemListResponse();
-            List<ProtectableItem> protectableItems = new List<ProtectableItem>();
-            ProtectableItemListResponse response = this
-                .GetSiteRecoveryClient()
-                .ProtectableItem.List(fabricName, protectionContainerName, null, null, null, this.GetRequestHeaders());
-            protectableItems.AddRange(response.ProtectableItems);
-            while (response.NextLink != null)
-            {
-                response = this
-                    .GetSiteRecoveryClient()
-                    .ProtectableItem.ListNext(response.NextLink, this.GetRequestHeaders());
-                protectableItems.AddRange(response.ProtectableItems);
-            }
+            var firstPage = this.GetSiteRecoveryClient().ReplicationProtectableItems.ListByReplicationProtectionContainersWithHttpMessagesAsync(fabricName, protectionContainerName, this.GetRequestHeaders(true)).GetAwaiter().GetResult().Body;
+            var pages = Utilities.GetAllFurtherPages(this.GetSiteRecoveryClient().ReplicationProtectableItems.ListByReplicationProtectionContainersNextWithHttpMessagesAsync, firstPage.NextPageLink, this.GetRequestHeaders(true));
+            pages.Insert(0, firstPage);
 
-            output.ProtectableItems = protectableItems;
-            return output;
+            return Utilities.IpageToList(pages);
         }
 
         /// <summary>
@@ -55,14 +45,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <param name="protectionContainerName">Protection Container Name</param>
         /// <param name="replicatedProtectedItemName">Virtual Machine Name</param>
         /// <returns>Replicated Protected Item response</returns>
-        public ProtectableItemResponse GetAzureSiteRecoveryProtectableItem(string fabricName,
+        public ProtectableItem GetAzureSiteRecoveryProtectableItem(string fabricName,
             string protectionContainerName,
             string replicatedProtectedItemName)
         {
-            return
-                this
-                .GetSiteRecoveryClient().
-                ProtectableItem.Get(fabricName, protectionContainerName, replicatedProtectedItemName, this.GetRequestHeaders());
+            return this.GetSiteRecoveryClient().ReplicationProtectableItems.GetWithHttpMessagesAsync(fabricName, protectionContainerName, replicatedProtectedItemName, this.GetRequestHeaders(true)).GetAwaiter().GetResult().Body;
         }
     }
 }

@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -73,19 +73,19 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void GetByFriendlyName()
         {
-            FabricListResponse fabricListResponse =
+            var fabricListResponse =
                 RecoveryServicesClient.GetAzureSiteRecoveryFabric();
 
             bool found = false;
-            foreach (Fabric fabric in fabricListResponse.Fabrics)
+            foreach (Fabric fabric in fabricListResponse)
             {
                 // Do not process for fabrictype other than HyperVSite 
-                if (String.Compare(fabric.Properties.CustomDetails.InstanceType, Constants.HyperVSite) != 0)
+                if (!(fabric.Properties.CustomDetails is FabricSpecificDetails))
                     continue;
 
                 if (0 == string.Compare(this.FriendlyName, fabric.Properties.FriendlyName, StringComparison.OrdinalIgnoreCase))
                 {
-                    var fabricByName = RecoveryServicesClient.GetAzureSiteRecoveryFabric(fabric.Name).Fabric;
+                    var fabricByName = RecoveryServicesClient.GetAzureSiteRecoveryFabric(fabric.Name);
                     this.WriteSite(fabricByName);
 
                     found = true;
@@ -107,19 +107,19 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void GetByName()
         {
-            FabricListResponse fabricListResponse =
+            var fabricListResponse =
                 RecoveryServicesClient.GetAzureSiteRecoveryFabric();
 
             bool found = false;
-            foreach (Fabric fabric in fabricListResponse.Fabrics)
+            foreach (Fabric fabric in fabricListResponse)
             {
                 // Do not process for fabrictype other than HyperVSite 
-                if (String.Compare(fabric.Properties.CustomDetails.InstanceType, Constants.HyperVSite) != 0)
+                if (!(fabric.Properties.CustomDetails is HyperVSiteDetails))
                     continue;
 
                 if (0 == string.Compare(this.Name, fabric.Name, StringComparison.OrdinalIgnoreCase))
                 {
-                    var fabricByName = RecoveryServicesClient.GetAzureSiteRecoveryFabric(fabric.Name).Fabric;
+                    var fabricByName = RecoveryServicesClient.GetAzureSiteRecoveryFabric(fabric.Name);
                     this.WriteSite(fabricByName);
 
                     found = true;
@@ -141,13 +141,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void GetAll()
         {
-            FabricListResponse fabricListResponse =
+            var fabricListResponse =
                 RecoveryServicesClient.GetAzureSiteRecoveryFabric();
 
-            foreach (Fabric fabric in fabricListResponse.Fabrics)
+            foreach (Fabric fabric in fabricListResponse)
             {
                 // Do not process for fabrictype other than HyperVSite 
-                if (String.Compare(fabric.Properties.CustomDetails.InstanceType, Constants.HyperVSite) != 0)
+                if (!(fabric.Properties.CustomDetails is HyperVSiteDetails))
                     continue;
 
                 this.WriteSite(fabric);

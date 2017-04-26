@@ -12,8 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery;
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using AutoMapper;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -30,17 +31,14 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <param name="replicationProtectedItemName">Replication Protected Item</param>
         /// <param name="input">Update Replication Protected Item Input</param>
         /// <returns></returns>
-        public LongRunningOperationResponse UpdateVmProperties(string fabricName,
+        public PSSiteRecoveryLongRunningOperation UpdateVmProperties(string fabricName,
             string protectionContainerName,
             string replicationProtectedItemName,
             UpdateReplicationProtectedItemInput input)
         {
-            return this.GetSiteRecoveryClient().ReplicationProtectedItem.BeginUpdateProtection(
-                fabricName,
-                protectionContainerName,
-                replicationProtectedItemName,
-                input,
-                this.GetRequestHeaders());
+            var op = this.GetSiteRecoveryClient().ReplicationProtectedItems.BeginUpdateWithHttpMessagesAsync(fabricName, protectionContainerName, replicationProtectedItemName, input, this.GetRequestHeaders(true)).GetAwaiter().GetResult();
+            var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
         }
     }
 }

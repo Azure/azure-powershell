@@ -1,4 +1,4 @@
-﻿using Microsoft.Azure.Management.SiteRecovery.Models;
+﻿using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,14 +36,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     this.MyInvocation.MyCommand.Name,
                     ""));
 
-            List<StorageClassificationMapping> mappings = new List<StorageClassificationMapping>();
-            Task mappingTask =
-                RecoveryServicesClient.EnumerateStorageClassificationMappingsAsync((entities) =>
-                {
-                    mappings.AddRange(entities);
-                });
-
-            Task.WaitAll(mappingTask);
+            List<StorageClassificationMapping> mappings = RecoveryServicesClient.GetAzureSiteRecoveryStorageClassificationMapping();
 
             switch (this.ParameterSetName)
             {

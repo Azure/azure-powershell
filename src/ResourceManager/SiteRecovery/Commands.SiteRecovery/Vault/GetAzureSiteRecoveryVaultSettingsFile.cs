@@ -107,10 +107,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             }
 
             // Generate file.
-            ASRVaultCreds vaultCreds = RecoveryServicesClient.GenerateVaultCredential(
+            ASRVaultCreds vaultCreds = null;
+
+             vaultCreds = RecoveryServicesClient.GenerateVaultCredential(
                                             cert,
                                             this.Vault,
-                                            site);
+                                            site); 
+
 
             string filePath = string.IsNullOrEmpty(this.Path) ? Utilities.GetDefaultPath() : this.Path;
             string fileName = this.GenerateFileName();

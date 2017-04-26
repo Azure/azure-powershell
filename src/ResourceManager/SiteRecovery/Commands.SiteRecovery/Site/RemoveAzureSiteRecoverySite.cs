@@ -12,7 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
@@ -55,17 +56,17 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                   this.MyInvocation.MyCommand.Name,
                   "Remove-AzureRmSiteRecoveryFabric"));
 
-                RecoveryServicesProviderListResponse recoveryServicesProviderListResponse =
+                List<RecoveryServicesProvider> recoveryServicesProviderListResponse =
                     RecoveryServicesClient.GetAzureSiteRecoveryProvider(
                         this.Site.Name);
 
-                if (recoveryServicesProviderListResponse.RecoveryServicesProviders.Count != 0)
+                if (recoveryServicesProviderListResponse.Count != 0)
                 {
                     throw new PSInvalidOperationException(
                         Properties.Resources.SiteRemovalWithRegisteredHyperVHostsError);
                 }
 
-                LongRunningOperationResponse response;
+                PSSiteRecoveryLongRunningOperation response;
 
                 if (!this.Force.IsPresent)
                 {
@@ -78,12 +79,12 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                         RecoveryServicesClient.PurgeAzureSiteRecoveryFabric(this.Site.Name);
                 }
 
-                JobResponse jobResponse =
+                var jobResponse =
                     RecoveryServicesClient
                         .GetAzureSiteRecoveryJobDetails(
                             PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-                WriteObject(new ASRJob(jobResponse.Job));
+                WriteObject(new ASRJob(jobResponse));
             }
         }
     }

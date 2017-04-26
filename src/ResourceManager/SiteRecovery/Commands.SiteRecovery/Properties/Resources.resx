@@ -373,4 +373,10 @@ Please provide a storage account with the same location as that of the vault.</v
   <data name="ParameterSetWillBeDeprecatedSoon" xml:space="preserve">
     <value>This parameter set will be deprecated soon. Please use other suitable parameter set.</value>
   </data>
+  <data name="InvalidNetworkMappingDetails" xml:space="preserve">
+    <value>Invalid netwok mapping details.</value>
+  </data>
+  <data name="NetworkMappingNotFound" xml:space="preserve">
+    <value>Network mapping details not found.</value>
+  </data>
 </root>

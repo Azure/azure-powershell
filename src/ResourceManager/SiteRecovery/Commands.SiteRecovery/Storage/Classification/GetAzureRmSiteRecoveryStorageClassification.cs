@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,15 +63,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            List<StorageClassification> storageClassifications = new List<StorageClassification>();
-
-            Task storageClassificationTask =
-                RecoveryServicesClient.EnumerateStorageClassificationsAsync((entities) =>
-                {
-                    storageClassifications.AddRange(entities);
-                });
-
-            Task.WaitAll(storageClassificationTask);
+            List<StorageClassification> storageClassifications = RecoveryServicesClient.GetAzureSiteRecoveryStorageClassification();
 
             switch (this.ParameterSetName)
             {

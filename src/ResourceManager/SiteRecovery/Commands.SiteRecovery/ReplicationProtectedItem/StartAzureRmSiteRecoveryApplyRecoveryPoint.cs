@@ -16,7 +16,7 @@ using System;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using System.Collections.Generic;
 using System.IO;
 
@@ -140,23 +140,23 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 {
                     PrimaryKekCertificatePfx = primaryKekCertpfx,
                     SecondaryKekCertificatePfx = secondaryKekCertpfx,
-                    VaultLocation = this.GetCurrentVaultLocation()
+                    VaultLocation = ""
                 };
                 input.Properties.ProviderSpecificDetails = hyperVReplicaAzureApplyRecoveryPointInput;
             }
 
-            LongRunningOperationResponse response =
+            PSSiteRecoveryLongRunningOperation response =
                 RecoveryServicesClient.StartAzureSiteRecoveryApplyRecoveryPoint(
                 this.fabricName,
                 this.protectionContainerName,
                 this.ReplicationProtectedItem.Name,
                 input);
 
-            JobResponse jobResponse =
+            var jobResponse =
                 RecoveryServicesClient
                 .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            WriteObject(new ASRJob(jobResponse.Job));
+            WriteObject(new ASRJob(jobResponse));
         }      
     }
 }

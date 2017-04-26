@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using System;
 using System.ComponentModel;
 using System.Management.Automation;
@@ -196,7 +196,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             if (string.Compare(this.ReplicationProvider, Constants.HyperVReplica2012, StringComparison.OrdinalIgnoreCase) == 0)
             {
-                createPolicyInputProperties.ProviderSpecificInput = new HyperVReplica2012PolicyInput()
+
+                createPolicyInputProperties.ProviderSpecificInput = new HyperVReplicaPolicyInput()
                 {
                     AllowedAuthenticationType =
                         (ushort)((string.Compare(this.Authentication, Constants.AuthenticationTypeKerberos, StringComparison.OrdinalIgnoreCase) == 0) ? 1 : 2),
@@ -206,18 +207,20 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                          Constants.Disable,
                     InitialReplicationMethod =
                      (string.Compare(this.ReplicationMethod, Constants.OnlineReplicationMethod, StringComparison.OrdinalIgnoreCase) == 0) ? "OverNetwork" : "Offline",
-                    OnlineReplicationStartTime = this.ReplicationStartTime,
+                    OnlineReplicationStartTime = this.ReplicationStartTime.ToString(),
                     RecoveryPoints = this.RecoveryPoints,
                     ReplicaDeletion = this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.ReplicaDeletion)) ?
                          this.ReplicaDeletion :
                          Constants.NotRequired,
                     ReplicationPort = this.ReplicationPort
                 };
+                
 
             }
             else
             {
-                createPolicyInputProperties.ProviderSpecificInput = new HyperVReplica2012R2PolicyInput()
+
+                createPolicyInputProperties.ProviderSpecificInput = new HyperVReplicaBluePolicyInput()
                 {
                     AllowedAuthenticationType =
                         (ushort)((string.Compare(this.Authentication, Constants.AuthenticationTypeKerberos, StringComparison.OrdinalIgnoreCase) == 0) ? 1 : 2),
@@ -227,7 +230,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                          Constants.Disable,
                     InitialReplicationMethod =
                      (string.Compare(this.ReplicationMethod, Constants.OnlineReplicationMethod, StringComparison.OrdinalIgnoreCase) == 0) ? "OverNetwork" : "Offline",
-                    OnlineReplicationStartTime = this.ReplicationStartTime,
+                    OnlineReplicationStartTime = this.ReplicationStartTime.ToString(),
                     RecoveryPoints = this.RecoveryPoints,
                     ReplicaDeletion = this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.ReplicaDeletion)) ?
                          this.ReplicaDeletion :
@@ -235,6 +238,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     ReplicationFrequencyInSeconds = replicationFrequencyInSeconds,
                     ReplicationPort = this.ReplicationPort
                 };
+                
             }
 
             var createPolicyInput = new CreatePolicyInput()
@@ -242,14 +246,14 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 Properties = createPolicyInputProperties
             };
 
-            LongRunningOperationResponse responseBlue =
+            PSSiteRecoveryLongRunningOperation responseBlue =
                 RecoveryServicesClient.CreatePolicy(this.Name, createPolicyInput);
 
-            JobResponse jobResponseBlue =
+            var jobResponseBlue =
                 RecoveryServicesClient
                 .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(responseBlue.Location));
 
-            WriteObject(new ASRJob(jobResponseBlue.Job));
+            WriteObject(new ASRJob(jobResponseBlue));
         }
 
         /// <summary>
@@ -277,7 +281,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 Encryption = this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.Encryption)) ?
                      this.Encryption :
                      Constants.Disable,
-                OnlineIrStartTime = this.ReplicationStartTime,
+                OnlineReplicationStartTime = this.ReplicationStartTime == null ? null : this.ReplicationStartTime.ToString(),
                 RecoveryPointHistoryDuration = this.RecoveryPoints,
                 ReplicationInterval = replicationFrequencyInSeconds
             };
@@ -301,14 +305,14 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 Properties = createPolicyInputProperties
             };
 
-            LongRunningOperationResponse response =
+            PSSiteRecoveryLongRunningOperation response =
                 RecoveryServicesClient.CreatePolicy(this.Name, createPolicyInput);
 
-            JobResponse jobResponse =
+            var jobResponse =
                 RecoveryServicesClient
                 .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            WriteObject(new ASRJob(jobResponse.Job));
+            WriteObject(new ASRJob(jobResponse));
         }
     }
 }

@@ -35,17 +35,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Hyak.Common">
-      <HintPath>..\..\..\packages\Hyak.Common.1.0.3\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
+    <Reference Include="Hyak.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Hyak.Common.1.1.2\lib\net45\Hyak.Common.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Common">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Common, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.2\lib\net45\Microsoft.Azure.Common.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Common.NetFramework">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.RecoveryServices, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.3.0.1-preview\lib\net40\Microsoft.Azure.Management.RecoveryServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Management.RecoveryServices.SiteRecovery, Version=18.0.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.18.0.9-prerelease\lib\net45\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.SiteRecovery, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.SiteRecovery.2.0.0-preview\lib\net40\Microsoft.Azure.Management.SiteRecovery.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.SiteRecovery.2.0.2-preview\lib\net45\Microsoft.Azure.Management.SiteRecovery.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -55,8 +62,9 @@
     <Reference Include="Microsoft.Azure.Test.Framework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Test.Framework.1.0.6179.26854-prerelease\lib\net45\Microsoft.Azure.Test.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Test.HttpRecorder">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Test.HttpRecorder.1.6.7-preview\lib\net45\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Test.HttpRecorder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Test.HttpRecorder.1.7.0\lib\net45\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.3.860, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -70,8 +78,16 @@
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.5\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.5\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.9-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.12\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework, Version=1.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.TestFramework.1.6.0\lib\net45\Microsoft.Rest.ClientRuntime.Azure.TestFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks">
@@ -106,6 +122,7 @@
     </Reference>
     <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -135,11 +152,10 @@
     <Compile Include="ScenarioTests\SiteRecoveryTestsBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-    <None Include="ScenarioTests\SiteRecoveryTests.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
     </None>
-    <None Include="ScenarioTests\vaultSettings.VaultCredentials">
+    <None Include="ScenarioTests\SiteRecoveryTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests.SiteRecoveryTests\EnumerationTests.json">
@@ -148,34 +164,10 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests.SiteRecoveryTests\FabricTests.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests.SiteRecoveryTests\NewModelE2ETest.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests.SiteRecoveryTests\TestCreatePolicy.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests.SiteRecoveryTests\TestAssociateProfile.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests.SiteRecoveryTests\TestCreateProfile.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests.SiteRecoveryTests\TestCreateRP.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests.SiteRecoveryTests\TestDeleteProfile.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests.SiteRecoveryTests\TestDisableDR.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests.SiteRecoveryTests\TestDissociateProfile.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests.SiteRecoveryTests\TestEnableDR.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests.SiteRecoveryTests\TestEnumerateRP.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests.SiteRecoveryTests\TestRemoveRP.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests.SiteRecoveryTests\TestRemovePolicy.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests.SiteRecoveryTests\VaultCRUDTests.json">
@@ -207,5 +199,6 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

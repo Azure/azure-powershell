@@ -51,6 +51,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             };
 
             this.WriteObject(output, true);
+
         }
     }
 }

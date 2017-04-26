@@ -14,7 +14,7 @@
 
 using Hyak.Common;
 using Microsoft.Azure.Commands.SiteRecovery.Properties;
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.SiteRecoveryVault.Models;
 using Microsoft.Azure.Management.SiteRecoveryVault;
 using Microsoft.Azure.Portal.HybridServicesCore;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
@@ -24,7 +24,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using rpError = Microsoft.Azure.Commands.SiteRecovery.RestApiInfra;
-
+using Microsoft.Azure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -40,10 +40,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public async Task<ResourceExtendedInformation> GetExtendedInfo()
         {
             ResourceExtendedInformationResponse response =
-                await this.recoveryServicesClient.VaultExtendedInfo.GetExtendedInfoAsync(
+                await this.siteRecoveryVaultClient.VaultExtendedInfo.GetExtendedInfoAsync(
                 asrVaultCreds.ResourceGroupName,
                 asrVaultCreds.ResourceName,
-                this.GetRequestHeaders(false));
+                this.GetSiteRecoveryVaultRequestHeaders(false));
 
             return response.ResourceExtendedInformation;
         }
@@ -55,11 +55,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <returns>Vault Extended Information</returns>
         public AzureOperationResponse CreateExtendedInfo(ResourceExtendedInformationArgs extendedInfoArgs)
         {
-            return this.recoveryServicesClient.VaultExtendedInfo.CreateExtendedInfo(
+            return this.siteRecoveryVaultClient.VaultExtendedInfo.CreateExtendedInfo(
                 asrVaultCreds.ResourceGroupName,
                 asrVaultCreds.ResourceName,
                 extendedInfoArgs,
-                this.GetRequestHeaders(false));
+                this.GetSiteRecoveryVaultRequestHeaders(false));
         }
 
         /// <summary>
@@ -69,11 +69,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <returns>Upload Certificate Response</returns>
         public async Task<UploadCertificateResponse> UpdateVaultCertificate(CertificateArgs args, string certFriendlyName)
         {
-            return await this.recoveryServicesClient.VaultExtendedInfo.UploadCertificateAsync(
+            return await this.siteRecoveryVaultClient.VaultExtendedInfo.UploadCertificateAsync(
                 asrVaultCreds.ResourceGroupName,
                 asrVaultCreds.ResourceName,
                 args, certFriendlyName,
-                this.GetRequestHeaders(false));
+                this.GetSiteRecoveryVaultRequestHeaders(false));
         }
 
         /// <summary>

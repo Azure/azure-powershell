@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d7a25cba-01c2-48f1-8680-83b83df593fe-2017-04-25 11:40:12Z-P"
+          "efd0bca9-cab3-4d4c-bceb-4dd6dad43734-2017-04-25 11:35:37Z-P"
         ],
         "x-ms-version": [
           "2015-01-01"
@@ -31,28 +31,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "41dbd8aa-9e40-4321-88e6-797bce58b5f6"
+          "10b4cbb3-ee42-4d1a-994d-13c75ffdcc2a"
         ],
         "x-ms-client-request-id": [
-          "d7a25cba-01c2-48f1-8680-83b83df593fe-2017-04-25 11:40:12Z-P"
+          "efd0bca9-cab3-4d4c-bceb-4dd6dad43734-2017-04-25 11:35:37Z-P"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14805"
+          "14817"
         ],
         "x-ms-correlation-request-id": [
-          "41dbd8aa-9e40-4321-88e6-797bce58b5f6"
+          "10b4cbb3-ee42-4d1a-994d-13c75ffdcc2a"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20170425T114014Z:41dbd8aa-9e40-4321-88e6-797bce58b5f6"
+          "SOUTHINDIA:20170425T113540Z:10b4cbb3-ee42-4d1a-994d-13c75ffdcc2a"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 25 Apr 2017 11:40:14 GMT"
+          "Tue, 25 Apr 2017 11:35:40 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -67,7 +67,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "fe045fdc-55e4-4d2c-9ac6-5fcd49c16f4d-2017-04-25 11:40:16Z-P"
+          "9a93723d-8f60-4021-9fc1-3806fd26584c-2017-04-25 11:35:41Z-P"
         ],
         "x-ms-version": [
           "2015-01-01"
@@ -91,28 +91,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "8d1a0355-ca71-4d17-a8da-b817d79670ac"
+          "f2fe2ae2-fcaf-43e3-a938-d32773cdc238"
         ],
         "x-ms-client-request-id": [
-          "fe045fdc-55e4-4d2c-9ac6-5fcd49c16f4d-2017-04-25 11:40:16Z-P"
+          "9a93723d-8f60-4021-9fc1-3806fd26584c-2017-04-25 11:35:41Z-P"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14804"
+          "14816"
         ],
         "x-ms-correlation-request-id": [
-          "8d1a0355-ca71-4d17-a8da-b817d79670ac"
+          "f2fe2ae2-fcaf-43e3-a938-d32773cdc238"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20170425T114017Z:8d1a0355-ca71-4d17-a8da-b817d79670ac"
+          "SOUTHINDIA:20170425T113542Z:f2fe2ae2-fcaf-43e3-a938-d32773cdc238"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 25 Apr 2017 11:40:16 GMT"
+          "Tue, 25 Apr 2017 11:35:42 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -124,7 +124,7 @@
       "RequestUri": "/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.RecoveryServices/vaults/b2aRSvaultprod17012017/certificates/b2aRSvaultprod17012017c183865e-6077-46f2-a3b1-deb0f4f4650a-4-25-2017-vaultcredentials?api-version=2016-05-01",
       "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvYzE4Mzg2NWUtNjA3Ny00NmYyLWEzYjEtZGViMGY0ZjQ2NTBhL3Jlc291cmNlR3JvdXBzL3NpdGVyZWNvdmVyeVByb2QxL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvYjJhUlN2YXVsdHByb2QxNzAxMjAxNy9jZXJ0aWZpY2F0ZXMvYjJhUlN2YXVsdHByb2QxNzAxMjAxN2MxODM4NjVlLTYwNzctNDZmMi1hM2IxLWRlYjBmNGY0NjUwYS00LTI1LTIwMTctdmF1bHRjcmVkZW50aWFscz9hcGktdmVyc2lvbj0yMDE2LTA1LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"certificate\": \"MIIC3TCCAcWgAwIBAgIQZj17XScG845DallC1b60tDANBgkqhkiG9w0BAQUFADAeMRwwGgYDVQQDExNXaW5kb3dzIEF6dXJlIFRvb2xzMB4XDTE3MDQyNTExMzAxNVoXDTE3MDQzMDExNDAxNVowHjEcMBoGA1UEAxMTV2luZG93cyBBenVyZSBUb29sczCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKZAKggvfb7AckErcbz9WSD+cZ1bH40QMUqx4FZRpZUlP7EW5J8WHG6zJQY2Mzep00RI3R2zf7X3ygFVWHgcDBUxT0pcd+PPseHr+j2Vq1fJs4bezhR5lZ2cuGODXhppj4WKn44zt24wTYAaNFr9vC753qqP9s4CIi8Em5CCFZ5IBOVZl1GwklDorJpRoKtD7Xn3QmDkhjKQrFWEf3X10n7gkN89IL30Fh9C79pglnah4KkxPQhGM458xDZJGg46zAvc50PTR7VnfnVGEVZbRxGCJZxp3N2b5ugyS1UVN37bOQSn5CGnRq5Gjh0Ia/rLpD1IZAJbiA8pBy20LUbLLh0CAwEAAaMXMBUwEwYDVR0lBAwwCgYIKwYBBQUHAwIwDQYJKoZIhvcNAQEFBQADggEBAKEHPG7F3EPX62iNJ3lIeM33Nx0zd0VdjuG27q4w+cSo+sAuikrK5erl38xAMVwVXK54MWiiMxwVMW6Bs5aZnUpa6NJkTE0Oz3km5KhDo0SVULWItNC/aZ9QgamAhnZJFyCQBj+klY3oVDUq3yQCF6cwRffqve9SzJLYk6T81NTvi7trALbOJiTg7QD+qAd72JOCQA5GGZNxm8scqzGQNLCS0cTJQMBzHqsXWEYSx91zAYUwfobizA1wDyUd4mqlRVm0IJbtCvne7WUPLB+XX+6NmN2J33Y7u0kbFAGM0ej2knMo6Qg7uhnD3cjJqKe+QQr4vVb9Top6UCn57yBch7k=\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"certificate\": \"MIIC3TCCAcWgAwIBAgIQZ1nworTqJ5BHFggG8cD6CzANBgkqhkiG9w0BAQUFADAeMRwwGgYDVQQDExNXaW5kb3dzIEF6dXJlIFRvb2xzMB4XDTE3MDQyNTExMjU0MVoXDTE3MDQzMDExMzU0MVowHjEcMBoGA1UEAxMTV2luZG93cyBBenVyZSBUb29sczCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJ422byfLMHdhQri92Nw9fP7hwOYg5m7YN6yXL8e9W4Md3Hp0BSj94Ugo5kWmyhki6btdrJt3G+v9IltMzndUwlb1WSUYBDqr7Zrv4+0kHMFuQxhKlfEwblKFf18dBRQMAiJflyoaZeIZlnOSX3Mk2HAP6hLsDrDXP5RQD637ErWMA6GzCPLkZY0Ljsh3LVB9qGfKLMjY2laTdY7OmzgrRf6edKqMB9+zSoNCf5vRURmnSm8tMEm4zKmUQCSFpUDIhDVHZojAej26GJ7/WeV6QBZh4r6eY33WzNGl36Mc1f5vXezGCAvKNyAuAKaJxi1l1O9pXDldoU9ZKgmPn6BlDsCAwEAAaMXMBUwEwYDVR0lBAwwCgYIKwYBBQUHAwIwDQYJKoZIhvcNAQEFBQADggEBABBm10B3fljvlbOveNPCTbXeXh8H3uAhYu8N/5XjPi/QLxyOBYQK46egl2DRRb4iOPizVdHZHosWXS4WuTbhGcxqJq4eUU3ZTnmG9Ld2iddScriL4YF/eqFapspENcBwLHAxIH0x4TKrQYov9sfeJ0CQq/U8/y0YLaWHXjMcVopghPYKJ5fusqXOy3jtzc8G3Gah1qzdijBOQjQFV3oR5oGGGm+sAeVRHlwOwhsjqPsmeVTrQ8PdDVmE9DV1elAjjnDIK5U7PQ8WEFYa5hpd+2lgJ6yzeZXCIVTLTYkOJDl3fQ9w7Qodzn6J+xq22oD9LNj1Xh0nY43OJCiQRTAcIuA=\"\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -133,13 +133,13 @@
           "1035"
         ],
         "x-ms-client-request-id": [
-          "fa2de8ae-b86c-40f2-97a0-4146f00845bc-2017-04-25 11:40:16Z-P"
+          "58e461b9-c852-43fd-9d81-25abcea9895b-2017-04-25 11:35:42Z-P"
         ],
         "User-Agent": [
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"b2aRSvaultprod17012017c183865e-6077-46f2-a3b1-deb0f4f4650a-4-25-2017-vaultcredentials\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/certificates\",\r\n  \"id\": \"/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.RecoveryServices/vaults/b2aRSvaultprod17012017/certificates/b2aRSvaultprod17012017c183865e-6077-46f2-a3b1-deb0f4f4650a-4-25-2017-vaultcredentials\",\r\n  \"properties\": {\r\n    \"authType\": \"ACS\",\r\n    \"certificate\": \"MIIC3TCCAcWgAwIBAgIQZj17XScG845DallC1b60tDANBgkqhkiG9w0BAQUFADAeMRwwGgYDVQQDExNXaW5kb3dzIEF6dXJlIFRvb2xzMB4XDTE3MDQyNTExMzAxNVoXDTE3MDQzMDExNDAxNVowHjEcMBoGA1UEAxMTV2luZG93cyBBenVyZSBUb29sczCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKZAKggvfb7AckErcbz9WSD+cZ1bH40QMUqx4FZRpZUlP7EW5J8WHG6zJQY2Mzep00RI3R2zf7X3ygFVWHgcDBUxT0pcd+PPseHr+j2Vq1fJs4bezhR5lZ2cuGODXhppj4WKn44zt24wTYAaNFr9vC753qqP9s4CIi8Em5CCFZ5IBOVZl1GwklDorJpRoKtD7Xn3QmDkhjKQrFWEf3X10n7gkN89IL30Fh9C79pglnah4KkxPQhGM458xDZJGg46zAvc50PTR7VnfnVGEVZbRxGCJZxp3N2b5ugyS1UVN37bOQSn5CGnRq5Gjh0Ia/rLpD1IZAJbiA8pBy20LUbLLh0CAwEAAaMXMBUwEwYDVR0lBAwwCgYIKwYBBQUHAwIwDQYJKoZIhvcNAQEFBQADggEBAKEHPG7F3EPX62iNJ3lIeM33Nx0zd0VdjuG27q4w+cSo+sAuikrK5erl38xAMVwVXK54MWiiMxwVMW6Bs5aZnUpa6NJkTE0Oz3km5KhDo0SVULWItNC/aZ9QgamAhnZJFyCQBj+klY3oVDUq3yQCF6cwRffqve9SzJLYk6T81NTvi7trALbOJiTg7QD+qAd72JOCQA5GGZNxm8scqzGQNLCS0cTJQMBzHqsXWEYSx91zAYUwfobizA1wDyUd4mqlRVm0IJbtCvne7WUPLB+XX+6NmN2J33Y7u0kbFAGM0ej2knMo6Qg7uhnD3cjJqKe+QQr4vVb9Top6UCn57yBch7k=\",\r\n    \"resourceId\": 7195322612403878316,\r\n    \"globalAcsNamespace\": \"wuspod01rrp1users\",\r\n    \"globalAcsHostName\": \"accesscontrol.windows.net\",\r\n    \"globalAcsRPRealm\": \"http://windowscloudbackup/m3\",\r\n    \"subject\": \"CN=Windows Azure Tools\",\r\n    \"validFrom\": \"2017-04-25T17:00:15+05:30\",\r\n    \"validTo\": \"2017-04-30T17:10:15+05:30\",\r\n    \"thumbprint\": \"5E49F7E42242B6F1E36B2899971C10472D31E19B\",\r\n    \"friendlyName\": \"\",\r\n    \"issuer\": \"CN=Windows Azure Tools\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"b2aRSvaultprod17012017c183865e-6077-46f2-a3b1-deb0f4f4650a-4-25-2017-vaultcredentials\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/certificates\",\r\n  \"id\": \"/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.RecoveryServices/vaults/b2aRSvaultprod17012017/certificates/b2aRSvaultprod17012017c183865e-6077-46f2-a3b1-deb0f4f4650a-4-25-2017-vaultcredentials\",\r\n  \"properties\": {\r\n    \"authType\": \"ACS\",\r\n    \"certificate\": \"MIIC3TCCAcWgAwIBAgIQZ1nworTqJ5BHFggG8cD6CzANBgkqhkiG9w0BAQUFADAeMRwwGgYDVQQDExNXaW5kb3dzIEF6dXJlIFRvb2xzMB4XDTE3MDQyNTExMjU0MVoXDTE3MDQzMDExMzU0MVowHjEcMBoGA1UEAxMTV2luZG93cyBBenVyZSBUb29sczCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJ422byfLMHdhQri92Nw9fP7hwOYg5m7YN6yXL8e9W4Md3Hp0BSj94Ugo5kWmyhki6btdrJt3G+v9IltMzndUwlb1WSUYBDqr7Zrv4+0kHMFuQxhKlfEwblKFf18dBRQMAiJflyoaZeIZlnOSX3Mk2HAP6hLsDrDXP5RQD637ErWMA6GzCPLkZY0Ljsh3LVB9qGfKLMjY2laTdY7OmzgrRf6edKqMB9+zSoNCf5vRURmnSm8tMEm4zKmUQCSFpUDIhDVHZojAej26GJ7/WeV6QBZh4r6eY33WzNGl36Mc1f5vXezGCAvKNyAuAKaJxi1l1O9pXDldoU9ZKgmPn6BlDsCAwEAAaMXMBUwEwYDVR0lBAwwCgYIKwYBBQUHAwIwDQYJKoZIhvcNAQEFBQADggEBABBm10B3fljvlbOveNPCTbXeXh8H3uAhYu8N/5XjPi/QLxyOBYQK46egl2DRRb4iOPizVdHZHosWXS4WuTbhGcxqJq4eUU3ZTnmG9Ld2iddScriL4YF/eqFapspENcBwLHAxIH0x4TKrQYov9sfeJ0CQq/U8/y0YLaWHXjMcVopghPYKJ5fusqXOy3jtzc8G3Gah1qzdijBOQjQFV3oR5oGGGm+sAeVRHlwOwhsjqPsmeVTrQ8PdDVmE9DV1elAjjnDIK5U7PQ8WEFYa5hpd+2lgJ6yzeZXCIVTLTYkOJDl3fQ9w7Qodzn6J+xq22oD9LNj1Xh0nY43OJCiQRTAcIuA=\",\r\n    \"resourceId\": 7195322612403878316,\r\n    \"globalAcsNamespace\": \"wuspod01rrp1users\",\r\n    \"globalAcsHostName\": \"accesscontrol.windows.net\",\r\n    \"globalAcsRPRealm\": \"http://windowscloudbackup/m3\",\r\n    \"subject\": \"CN=Windows Azure Tools\",\r\n    \"validFrom\": \"2017-04-25T16:55:41+05:30\",\r\n    \"validTo\": \"2017-04-30T17:05:41+05:30\",\r\n    \"thumbprint\": \"E648B6492AC0D137E8E36B2058B0A20534E913F2\",\r\n    \"friendlyName\": \"\",\r\n    \"issuer\": \"CN=Windows Azure Tools\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "1836"
@@ -154,11 +154,11 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "38b65bb9-bae0-455d-8fa8-f56e77936945"
+          "50ee480d-b51c-42b7-b5f5-3f8a3c10b792"
         ],
         "x-ms-client-request-id": [
-          "fa2de8ae-b86c-40f2-97a0-4146f00845bc-2017-04-25 11:40:16Z-P",
-          "fa2de8ae-b86c-40f2-97a0-4146f00845bc-2017-04-25 11:40:16Z-P"
+          "58e461b9-c852-43fd-9d81-25abcea9895b-2017-04-25 11:35:42Z-P",
+          "58e461b9-c852-43fd-9d81-25abcea9895b-2017-04-25 11:35:42Z-P"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -167,16 +167,16 @@
           "1198"
         ],
         "x-ms-correlation-request-id": [
-          "38b65bb9-bae0-455d-8fa8-f56e77936945"
+          "50ee480d-b51c-42b7-b5f5-3f8a3c10b792"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20170425T114019Z:38b65bb9-bae0-455d-8fa8-f56e77936945"
+          "SOUTHINDIA:20170425T113545Z:50ee480d-b51c-42b7-b5f5-3f8a3c10b792"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 25 Apr 2017 11:40:19 GMT"
+          "Tue, 25 Apr 2017 11:35:44 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -212,16 +212,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14802"
+          "14815"
         ],
         "x-ms-request-id": [
-          "55933f8e-6998-4407-ac8b-c702463dd7ef"
+          "72af732f-8af3-440a-930c-e9c4909aef15"
         ],
         "x-ms-correlation-request-id": [
-          "55933f8e-6998-4407-ac8b-c702463dd7ef"
+          "72af732f-8af3-440a-930c-e9c4909aef15"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20170425T114020Z:55933f8e-6998-4407-ac8b-c702463dd7ef"
+          "SOUTHINDIA:20170425T113545Z:72af732f-8af3-440a-930c-e9c4909aef15"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -230,7 +230,7 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 25 Apr 2017 11:40:20 GMT"
+          "Tue, 25 Apr 2017 11:35:45 GMT"
         ]
       },
       "StatusCode": 200
@@ -242,7 +242,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "af555820-3bce-4094-b0c7-2dd752451b07-2017-04-25 11:40:20Z-P"
+          "f58caa46-8dce-42d3-98d6-ff76d13bfae6-2017-04-25 11:35:45Z-P"
         ],
         "x-ms-version": [
           "2015-01-01"
@@ -266,28 +266,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "48a6a803-57c2-4c73-91c5-9befa82566ff"
+          "6f264129-fe72-4816-918b-41af5781947a"
         ],
         "x-ms-client-request-id": [
-          "af555820-3bce-4094-b0c7-2dd752451b07-2017-04-25 11:40:20Z-P"
+          "f58caa46-8dce-42d3-98d6-ff76d13bfae6-2017-04-25 11:35:45Z-P"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14801"
+          "14814"
         ],
         "x-ms-correlation-request-id": [
-          "48a6a803-57c2-4c73-91c5-9befa82566ff"
+          "6f264129-fe72-4816-918b-41af5781947a"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20170425T114020Z:48a6a803-57c2-4c73-91c5-9befa82566ff"
+          "SOUTHINDIA:20170425T113546Z:6f264129-fe72-4816-918b-41af5781947a"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 25 Apr 2017 11:40:20 GMT"
+          "Tue, 25 Apr 2017 11:35:45 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -296,25 +296,92 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.RecoveryServices/vaults/b2aRSvaultprod17012017/replicationFabrics/ReleaseFabric?api-version=2016-08-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvYzE4Mzg2NWUtNjA3Ny00NmYyLWEzYjEtZGViMGY0ZjQ2NTBhL3Jlc291cmNlR3JvdXBzL3NpdGVyZWNvdmVyeVByb2QxL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvYjJhUlN2YXVsdHByb2QxNzAxMjAxNy9yZXBsaWNhdGlvbkZhYnJpY3MvUmVsZWFzZUZhYnJpYz9hcGktdmVyc2lvbj0yMDE2LTA4LTEw",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"customDetails\": {\r\n      \"instanceType\": \"FabricSpecificCreationInput\"\r\n    }\r\n  }\r\n}",
+      "RequestUri": "/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.RecoveryServices/vaults/b2aRSvaultprod17012017/replicationPolicies/Policy1?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvYzE4Mzg2NWUtNjA3Ny00NmYyLWEzYjEtZGViMGY0ZjQ2NTBhL3Jlc291cmNlR3JvdXBzL3NpdGVyZWNvdmVyeVByb2QxL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvYjJhUlN2YXVsdHByb2QxNzAxMjAxNy9yZXBsaWNhdGlvblBvbGljaWVzL1BvbGljeTE/YXBpLXZlcnNpb249MjAxNi0wOC0xMA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
       "RequestHeaders": {
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "112"
-        ],
         "x-ms-client-request-id": [
-          "a78ff8d6-6bbe-4b99-a629-8068e0d9d51c-2017-04-25 11:40:20Z-P"
+          "11d6d247-dc99-4559-a8b1-074cf1326fdf-2017-04-25 11:35:46Z-P"
         ],
         "accept-language": [
           "en-US"
         ],
         "Agent-Authentication": [
-          "{\"NotBeforeTimestamp\":\"\\/Date(1493116820740)\\/\",\"NotAfterTimestamp\":\"\\/Date(1493721620740)\\/\",\"ClientRequestId\":\"a78ff8d6-6bbe-4b99-a629-8068e0d9d51c-2017-04-25 11:40:20Z-P\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"H5rNPrxtNg6ak3ft+DTbiR8UJe6LiC/u530Y1MGmeyQ=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+          "{\"NotBeforeTimestamp\":\"\\/Date(1493116546012)\\/\",\"NotAfterTimestamp\":\"\\/Date(1493721346012)\\/\",\"ClientRequestId\":\"11d6d247-dc99-4559-a8b1-074cf1326fdf-2017-04-25 11:35:46Z-P\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"U/28or02XR8snJNWSUR1OrgdvQxbkXi+d6r35Lsw7ps=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1087.0",
+          "OSName/Windows_Server_2012_R2_Datacenter",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/18.0.9-prerelease"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.RecoveryServices/vaults/b2aRSvaultprod17012017/replicationPolicies/Policy1\",\r\n  \"name\": \"Policy1\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"Policy1\",\r\n    \"providerSpecificDetails\": {\r\n      \"instanceType\": \"HyperVReplicaAzure\",\r\n      \"recoveryPointHistoryDurationInHours\": 1,\r\n      \"applicationConsistentSnapshotFrequencyInHours\": 0,\r\n      \"replicationInterval\": 30,\r\n      \"encryption\": \"Disabled\",\r\n      \"activeStorageAccountId\": \"/subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryprod1/providers/Microsoft.Storage/storageAccounts/storavrai\"\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "677"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "11d6d247-dc99-4559-a8b1-074cf1326fdf-2017-04-25 11:35:46Z-P 4/25/2017 11:35:48 AM"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0",
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-client-request-id": [
+          "11d6d247-dc99-4559-a8b1-074cf1326fdf-2017-04-25 11:35:46Z-P"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14808"
+        ],
+        "x-ms-correlation-request-id": [
+          "9dce580a-0a25-4b7f-805b-19ba82548df4"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20170425T113548Z:9dce580a-0a25-4b7f-805b-19ba82548df4"
+        ],
+        "Date": [
+          "Tue, 25 Apr 2017 11:35:48 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.RecoveryServices/vaults/b2aRSvaultprod17012017/replicationPolicies/Policy1?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvYzE4Mzg2NWUtNjA3Ny00NmYyLWEzYjEtZGViMGY0ZjQ2NTBhL3Jlc291cmNlR3JvdXBzL3NpdGVyZWNvdmVyeVByb2QxL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvYjJhUlN2YXVsdHByb2QxNzAxMjAxNy9yZXBsaWNhdGlvblBvbGljaWVzL1BvbGljeTE/YXBpLXZlcnNpb249MjAxNi0wOC0xMA==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "225e7337-462d-418e-8b7c-8d1601cd3f30-2017-04-25 11:35:47Z-P"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1493116547947)\\/\",\"NotAfterTimestamp\":\"\\/Date(1493721347947)\\/\",\"ClientRequestId\":\"225e7337-462d-418e-8b7c-8d1601cd3f30-2017-04-25 11:35:47Z-P\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"5HbZIxJX6zc84fQmI9N2e3n+b6lsNiTYgPKPfbjxWjA=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
         ],
         "User-Agent": [
           "FxVersion/4.6.1087.0",
@@ -337,36 +404,35 @@
         "Retry-After": [
           "30"
         ],
-        "x-ms-request-id": [
-          "0666b5cc-1417-4a7a-b1b8-f621a062f065",
-          "a78ff8d6-6bbe-4b99-a629-8068e0d9d51c-2017-04-25 11:40:20Z-P 4/25/2017 11:40:24 AM"
-        ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.RecoveryServices/vaults/b2aRSvaultprod17012017/replicationJobs/0666b5cc-1417-4a7a-b1b8-f621a062f065?api-version=2016-08-10"
+          "https://management.azure.com/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.RecoveryServices/vaults/b2aRSvaultprod17012017/replicationJobs/e3762372-da51-43ed-b8d9-251a0c77d70b?api-version=2016-08-10"
+        ],
+        "x-ms-request-id": [
+          "225e7337-462d-418e-8b7c-8d1601cd3f30-2017-04-25 11:35:47Z-P 4/25/2017 11:35:49 AM"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-client-request-id": [
-          "a78ff8d6-6bbe-4b99-a629-8068e0d9d51c-2017-04-25 11:40:20Z-P"
+          "225e7337-462d-418e-8b7c-8d1601cd3f30-2017-04-25 11:35:47Z-P"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
-          "12491e1d-a47b-46e9-b542-4751816558b0"
+          "441df052-35e4-451d-988f-d2cc35de654b"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20170425T114024Z:12491e1d-a47b-46e9-b542-4751816558b0"
+          "SOUTHINDIA:20170425T113549Z:441df052-35e4-451d-988f-d2cc35de654b"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 25 Apr 2017 11:40:23 GMT"
+          "Tue, 25 Apr 2017 11:35:48 GMT"
         ],
         "Location": [
-          "https://management.azure.com/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.RecoveryServices/vaults/b2aRSvaultprod17012017/replicationFabrics/ReleaseFabric/operationresults/0666b5cc-1417-4a7a-b1b8-f621a062f065?api-version=2016-08-10"
+          "https://management.azure.com/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.RecoveryServices/vaults/b2aRSvaultprod17012017/replicationPolicies/Policy1/operationresults/e3762372-da51-43ed-b8d9-251a0c77d70b?api-version=2016-08-10"
         ],
         "X-Powered-By": [
           "ASP.NET"
@@ -375,19 +441,19 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.RecoveryServices/vaults/b2aRSvaultprod17012017/replicationJobs/0666b5cc-1417-4a7a-b1b8-f621a062f065?api-version=2016-08-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvYzE4Mzg2NWUtNjA3Ny00NmYyLWEzYjEtZGViMGY0ZjQ2NTBhL3Jlc291cmNlR3JvdXBzL3NpdGVyZWNvdmVyeVByb2QxL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvYjJhUlN2YXVsdHByb2QxNzAxMjAxNy9yZXBsaWNhdGlvbkpvYnMvMDY2NmI1Y2MtMTQxNy00YTdhLWIxYjgtZjYyMWEwNjJmMDY1P2FwaS12ZXJzaW9uPTIwMTYtMDgtMTA=",
+      "RequestUri": "/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.RecoveryServices/vaults/b2aRSvaultprod17012017/replicationJobs/e3762372-da51-43ed-b8d9-251a0c77d70b?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvYzE4Mzg2NWUtNjA3Ny00NmYyLWEzYjEtZGViMGY0ZjQ2NTBhL3Jlc291cmNlR3JvdXBzL3NpdGVyZWNvdmVyeVByb2QxL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvYjJhUlN2YXVsdHByb2QxNzAxMjAxNy9yZXBsaWNhdGlvbkpvYnMvZTM3NjIzNzItZGE1MS00M2VkLWI4ZDktMjUxYTBjNzdkNzBiP2FwaS12ZXJzaW9uPTIwMTYtMDgtMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0abeed3e-e842-4dba-813d-1352f2bad162-2017-04-25 11:40:23Z-P"
+          "947ac8b7-a94f-454f-94a8-512e1ac0379a-2017-04-25 11:35:48Z-P"
         ],
         "accept-language": [
           "en-US"
         ],
         "Agent-Authentication": [
-          "{\"NotBeforeTimestamp\":\"\\/Date(1493116823730)\\/\",\"NotAfterTimestamp\":\"\\/Date(1493721623730)\\/\",\"ClientRequestId\":\"0abeed3e-e842-4dba-813d-1352f2bad162-2017-04-25 11:40:23Z-P\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"CL0PcUAGhXK/4PAL3NeMRcVq1BNSoPVasJFBRggkrdo=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+          "{\"NotBeforeTimestamp\":\"\\/Date(1493116548753)\\/\",\"NotAfterTimestamp\":\"\\/Date(1493721348753)\\/\",\"ClientRequestId\":\"947ac8b7-a94f-454f-94a8-512e1ac0379a-2017-04-25 11:35:48Z-P\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"VN/X5QhkhfkbcTKXplyMghjuKDcBtGALbyFeMH56g1M=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
         ],
         "User-Agent": [
           "FxVersion/4.6.1087.0",
@@ -396,10 +462,10 @@
           "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/18.0.9-prerelease"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.RecoveryServices/vaults/b2aRSvaultprod17012017/replicationJobs/0666b5cc-1417-4a7a-b1b8-f621a062f065\",\r\n  \"name\": \"0666b5cc-1417-4a7a-b1b8-f621a062f065\",\r\n  \"properties\": {\r\n    \"activityId\": \"a78ff8d6-6bbe-4b99-a629-8068e0d9d51c-2017-04-25 11:40:20Z-P ActivityId: 12491e1d-a47b-46e9-b542-4751816558b0\",\r\n    \"scenarioName\": \"CreateSite\",\r\n    \"friendlyName\": \"Create a site\",\r\n    \"state\": \"InProgress\",\r\n    \"stateDescription\": \"InProgress\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"RegisterVMMTask\",\r\n        \"name\": \"RegisterVmmTask\",\r\n        \"startTime\": \"2017-04-25T11:40:25.2211551Z\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Registering the server\",\r\n        \"state\": \"InProgress\",\r\n        \"stateDescription\": \"InProgress\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2017-04-25T11:40:24.2448725Z\",\r\n    \"allowedActions\": [],\r\n    \"targetObjectId\": \"b21856f5-9690-58b3-be0d-4c7227f9a10e\",\r\n    \"targetObjectName\": \"ReleaseFabric\",\r\n    \"targetInstanceType\": \"Server\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {\r\n        \"PrimaryVmmId\": \"b21856f5-9690-58b3-be0d-4c7227f9a10e\",\r\n        \"PrimaryVmmName\": \"ReleaseFabric\",\r\n        \"PrimaryFabricProviderId\": \"HyperVSite\"\r\n      }\r\n    }\r\n  },\r\n  \"status\": \"InProgress\",\r\n  \"error\": null,\r\n  \"startTime\": \"2017-04-25T11:40:24.2448725Z\",\r\n  \"endTime\": null\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.RecoveryServices/vaults/b2aRSvaultprod17012017/replicationJobs/e3762372-da51-43ed-b8d9-251a0c77d70b\",\r\n  \"name\": \"e3762372-da51-43ed-b8d9-251a0c77d70b\",\r\n  \"properties\": {\r\n    \"activityId\": \"225e7337-462d-418e-8b7c-8d1601cd3f30-2017-04-25 11:35:47Z-P ActivityId: 441df052-35e4-451d-988f-d2cc35de654b\",\r\n    \"scenarioName\": \"RemoveProtectionProfile\",\r\n    \"friendlyName\": \"Remove the replication policy\",\r\n    \"state\": \"InProgress\",\r\n    \"stateDescription\": \"InProgress\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"RemoveProtectionProfilePreflightsCheckTask\",\r\n        \"name\": \"RemoveProtectionProfilePreflightsCheckTask\",\r\n        \"startTime\": \"2017-04-25T11:35:50.1420409Z\",\r\n        \"endTime\": \"2017-04-25T11:35:50.188916Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Checking prerequisites for replication policy removal\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"RemoveProtectionProfileTask\",\r\n        \"name\": \"RemoveProtectionProfileTask\",\r\n        \"startTime\": \"2017-04-25T11:35:50.188916Z\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Removing the replication policy\",\r\n        \"state\": \"InProgress\",\r\n        \"stateDescription\": \"InProgress\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2017-04-25T11:35:49.5880382Z\",\r\n    \"allowedActions\": [\r\n      \"Cancel\"\r\n    ],\r\n    \"targetObjectId\": \"bc7018fb-b54e-5e17-833e-1350d59e9b52\",\r\n    \"targetObjectName\": \"Policy1\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  },\r\n  \"status\": \"InProgress\",\r\n  \"error\": null,\r\n  \"startTime\": \"2017-04-25T11:35:49.5880382Z\",\r\n  \"endTime\": null\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "1366"
+          "1762"
         ],
         "Content-Type": [
           "application/json"
@@ -411,8 +477,8 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "0666b5cc-1417-4a7a-b1b8-f621a062f065",
-          "0abeed3e-e842-4dba-813d-1352f2bad162-2017-04-25 11:40:23Z-P 4/25/2017 11:40:24 AM"
+          "e3762372-da51-43ed-b8d9-251a0c77d70b",
+          "947ac8b7-a94f-454f-94a8-512e1ac0379a-2017-04-25 11:35:48Z-P 4/25/2017 11:35:50 AM"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -431,37 +497,37 @@
           "ASP.NET"
         ],
         "x-ms-client-request-id": [
-          "0abeed3e-e842-4dba-813d-1352f2bad162-2017-04-25 11:40:23Z-P"
+          "947ac8b7-a94f-454f-94a8-512e1ac0379a-2017-04-25 11:35:48Z-P"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14832"
+          "14807"
         ],
         "x-ms-correlation-request-id": [
-          "3481a8cf-c5d0-42c9-8bb2-15d01cd7a097"
+          "208eea58-c08d-465b-ba8f-86a21e033348"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20170425T114024Z:3481a8cf-c5d0-42c9-8bb2-15d01cd7a097"
+          "SOUTHINDIA:20170425T113549Z:208eea58-c08d-465b-ba8f-86a21e033348"
         ],
         "Date": [
-          "Tue, 25 Apr 2017 11:40:24 GMT"
+          "Tue, 25 Apr 2017 11:35:49 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.RecoveryServices/vaults/b2aRSvaultprod17012017/replicationFabrics?api-version=2016-08-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvYzE4Mzg2NWUtNjA3Ny00NmYyLWEzYjEtZGViMGY0ZjQ2NTBhL3Jlc291cmNlR3JvdXBzL3NpdGVyZWNvdmVyeVByb2QxL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvYjJhUlN2YXVsdHByb2QxNzAxMjAxNy9yZXBsaWNhdGlvbkZhYnJpY3M/YXBpLXZlcnNpb249MjAxNi0wOC0xMA==",
+      "RequestUri": "/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.RecoveryServices/vaults/b2aRSvaultprod17012017/replicationJobs/e3762372-da51-43ed-b8d9-251a0c77d70b?api-version=2016-08-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvYzE4Mzg2NWUtNjA3Ny00NmYyLWEzYjEtZGViMGY0ZjQ2NTBhL3Jlc291cmNlR3JvdXBzL3NpdGVyZWNvdmVyeVByb2QxL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvYjJhUlN2YXVsdHByb2QxNzAxMjAxNy9yZXBsaWNhdGlvbkpvYnMvZTM3NjIzNzItZGE1MS00M2VkLWI4ZDktMjUxYTBjNzdkNzBiP2FwaS12ZXJzaW9uPTIwMTYtMDgtMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3b59e948-15e2-4071-bf96-fa05a49515c7-2017-04-25 11:40:24Z-P"
+          "134d92fb-bb67-48e4-b948-326ff043c90a-2017-04-25 11:35:49Z-P"
         ],
         "accept-language": [
           "en-US"
         ],
         "Agent-Authentication": [
-          "{\"NotBeforeTimestamp\":\"\\/Date(1493116824262)\\/\",\"NotAfterTimestamp\":\"\\/Date(1493721624262)\\/\",\"ClientRequestId\":\"3b59e948-15e2-4071-bf96-fa05a49515c7-2017-04-25 11:40:24Z-P\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"hCDdOJqKOFcBlNPz6vXNt77gpCUVEQkKcmKCr19ecJg=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+          "{\"NotBeforeTimestamp\":\"\\/Date(1493116549220)\\/\",\"NotAfterTimestamp\":\"\\/Date(1493721349220)\\/\",\"ClientRequestId\":\"134d92fb-bb67-48e4-b948-326ff043c90a-2017-04-25 11:35:49Z-P\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"pGCsVTT9pT2yUJB6zmhEghSKQHWCwuLJYArdgSladV0=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
         ],
         "User-Agent": [
           "FxVersion/4.6.1087.0",
@@ -470,10 +536,10 @@
           "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/18.0.9-prerelease"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"B2ASiteIM128\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics\",\r\n      \"id\": \"/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.RecoveryServices/vaults/b2aRSvaultprod17012017/replicationFabrics/B2ASiteIM128\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"B2ASiteIM128\",\r\n        \"encryptionDetails\": {\r\n          \"kekState\": \"None\",\r\n          \"kekCertThumbprint\": null\r\n        },\r\n        \"rolloverEncryptionDetails\": {\r\n          \"kekState\": \"None\",\r\n          \"kekCertThumbprint\": null\r\n        },\r\n        \"internalIdentifier\": \"0f403e28-9201-5060-95ed-cde256b5ab5f\",\r\n        \"bcdrState\": \"Valid\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"HyperVSite\"\r\n        },\r\n        \"healthErrorDetails\": [],\r\n        \"health\": \"Normal\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"ReleaseFabric\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics\",\r\n      \"id\": \"/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.RecoveryServices/vaults/b2aRSvaultprod17012017/replicationFabrics/ReleaseFabric\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"ReleaseFabric\",\r\n        \"encryptionDetails\": {\r\n          \"kekState\": \"None\",\r\n          \"kekCertThumbprint\": null\r\n        },\r\n        \"rolloverEncryptionDetails\": {\r\n          \"kekState\": \"None\",\r\n          \"kekCertThumbprint\": null\r\n        },\r\n        \"internalIdentifier\": \"b21856f5-9690-58b3-be0d-4c7227f9a10e\",\r\n        \"bcdrState\": \"Valid\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"HyperVSite\"\r\n        },\r\n        \"healthErrorDetails\": [],\r\n        \"health\": \"Normal\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.RecoveryServices/vaults/b2aRSvaultprod17012017/replicationJobs/e3762372-da51-43ed-b8d9-251a0c77d70b\",\r\n  \"name\": \"e3762372-da51-43ed-b8d9-251a0c77d70b\",\r\n  \"properties\": {\r\n    \"activityId\": \"225e7337-462d-418e-8b7c-8d1601cd3f30-2017-04-25 11:35:47Z-P ActivityId: 441df052-35e4-451d-988f-d2cc35de654b\",\r\n    \"scenarioName\": \"RemoveProtectionProfile\",\r\n    \"friendlyName\": \"Remove the replication policy\",\r\n    \"state\": \"Succeeded\",\r\n    \"stateDescription\": \"Completed\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"RemoveProtectionProfilePreflightsCheckTask\",\r\n        \"name\": \"RemoveProtectionProfilePreflightsCheckTask\",\r\n        \"startTime\": \"2017-04-25T11:35:50.1420409Z\",\r\n        \"endTime\": \"2017-04-25T11:35:50.2514281Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Checking prerequisites for replication policy removal\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"RemoveProtectionProfileTask\",\r\n        \"name\": \"RemoveProtectionProfileTask\",\r\n        \"startTime\": \"2017-04-25T11:35:50.2514281Z\",\r\n        \"endTime\": \"2017-04-25T11:35:50.2514281Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Removing the replication policy\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2017-04-25T11:35:49.5880382Z\",\r\n    \"endTime\": \"2017-04-25T11:35:49Z\",\r\n    \"allowedActions\": [],\r\n    \"targetObjectId\": \"bc7018fb-b54e-5e17-833e-1350d59e9b52\",\r\n    \"targetObjectName\": \"Policy1\",\r\n    \"targetInstanceType\": \"ProtectionProfile\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {}\r\n    }\r\n  },\r\n  \"status\": \"Succeeded\",\r\n  \"error\": null,\r\n  \"startTime\": \"2017-04-25T11:35:49.5880382Z\",\r\n  \"endTime\": \"2017-04-25T11:35:49Z\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "1286"
+          "1819"
         ],
         "Content-Type": [
           "application/json"
@@ -485,7 +551,8 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "3b59e948-15e2-4071-bf96-fa05a49515c7-2017-04-25 11:40:24Z-P 4/25/2017 11:40:25 AM"
+          "e3762372-da51-43ed-b8d9-251a0c77d70b",
+          "134d92fb-bb67-48e4-b948-326ff043c90a-2017-04-25 11:35:49Z-P 4/25/2017 11:35:50 AM"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -504,460 +571,19 @@
           "ASP.NET"
         ],
         "x-ms-client-request-id": [
-          "3b59e948-15e2-4071-bf96-fa05a49515c7-2017-04-25 11:40:24Z-P"
+          "134d92fb-bb67-48e4-b948-326ff043c90a-2017-04-25 11:35:49Z-P"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14831"
+          "14806"
         ],
         "x-ms-correlation-request-id": [
-          "1b5913cc-8314-4239-b54c-3128ca2aa2aa"
+          "f385e03c-4797-4523-a843-350c51877289"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20170425T114025Z:1b5913cc-8314-4239-b54c-3128ca2aa2aa"
+          "SOUTHINDIA:20170425T113549Z:f385e03c-4797-4523-a843-350c51877289"
         ],
         "Date": [
-          "Tue, 25 Apr 2017 11:40:24 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.RecoveryServices/vaults/b2aRSvaultprod17012017/replicationFabrics?api-version=2016-08-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvYzE4Mzg2NWUtNjA3Ny00NmYyLWEzYjEtZGViMGY0ZjQ2NTBhL3Jlc291cmNlR3JvdXBzL3NpdGVyZWNvdmVyeVByb2QxL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvYjJhUlN2YXVsdHByb2QxNzAxMjAxNy9yZXBsaWNhdGlvbkZhYnJpY3M/YXBpLXZlcnNpb249MjAxNi0wOC0xMA==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "5da1012f-53b0-489d-8d1e-ca0224966391-2017-04-25 11:40:58Z-P"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "Agent-Authentication": [
-          "{\"NotBeforeTimestamp\":\"\\/Date(1493116858442)\\/\",\"NotAfterTimestamp\":\"\\/Date(1493721658442)\\/\",\"ClientRequestId\":\"5da1012f-53b0-489d-8d1e-ca0224966391-2017-04-25 11:40:58Z-P\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"i6RMHfBUHE1GR2OV15afXaiM5Wm9ZkVcDZ+pfHGbpvs=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.1087.0",
-          "OSName/Windows_Server_2012_R2_Datacenter",
-          "OSVersion/6.3.9600",
-          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/18.0.9-prerelease"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"B2ASiteIM128\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics\",\r\n      \"id\": \"/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.RecoveryServices/vaults/b2aRSvaultprod17012017/replicationFabrics/B2ASiteIM128\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"B2ASiteIM128\",\r\n        \"encryptionDetails\": {\r\n          \"kekState\": \"None\",\r\n          \"kekCertThumbprint\": null\r\n        },\r\n        \"rolloverEncryptionDetails\": {\r\n          \"kekState\": \"None\",\r\n          \"kekCertThumbprint\": null\r\n        },\r\n        \"internalIdentifier\": \"0f403e28-9201-5060-95ed-cde256b5ab5f\",\r\n        \"bcdrState\": \"Valid\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"HyperVSite\"\r\n        },\r\n        \"healthErrorDetails\": [],\r\n        \"health\": \"Normal\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "655"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "5da1012f-53b0-489d-8d1e-ca0224966391-2017-04-25 11:40:58Z-P 4/25/2017 11:40:59 AM"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.0",
-          "Microsoft-IIS/8.5"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-client-request-id": [
-          "5da1012f-53b0-489d-8d1e-ca0224966391-2017-04-25 11:40:58Z-P"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14826"
-        ],
-        "x-ms-correlation-request-id": [
-          "7b0e190f-b77d-4ab0-a43f-3367f0798362"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20170425T114059Z:7b0e190f-b77d-4ab0-a43f-3367f0798362"
-        ],
-        "Date": [
-          "Tue, 25 Apr 2017 11:40:58 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.RecoveryServices/vaults/b2aRSvaultprod17012017/replicationFabrics/ReleaseFabric?api-version=2016-08-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvYzE4Mzg2NWUtNjA3Ny00NmYyLWEzYjEtZGViMGY0ZjQ2NTBhL3Jlc291cmNlR3JvdXBzL3NpdGVyZWNvdmVyeVByb2QxL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvYjJhUlN2YXVsdHByb2QxNzAxMjAxNy9yZXBsaWNhdGlvbkZhYnJpY3MvUmVsZWFzZUZhYnJpYz9hcGktdmVyc2lvbj0yMDE2LTA4LTEw",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "95bb63cf-b62c-41a0-9097-35c68d0fca83-2017-04-25 11:40:24Z-P"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "Agent-Authentication": [
-          "{\"NotBeforeTimestamp\":\"\\/Date(1493116824826)\\/\",\"NotAfterTimestamp\":\"\\/Date(1493721624826)\\/\",\"ClientRequestId\":\"95bb63cf-b62c-41a0-9097-35c68d0fca83-2017-04-25 11:40:24Z-P\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"OEHsJDj6zhiwwKwJuQiXXfFzXQM/6/PE2G/HP9VZ3SU=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.1087.0",
-          "OSName/Windows_Server_2012_R2_Datacenter",
-          "OSVersion/6.3.9600",
-          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/18.0.9-prerelease"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"ReleaseFabric\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics\",\r\n  \"id\": \"/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.RecoveryServices/vaults/b2aRSvaultprod17012017/replicationFabrics/ReleaseFabric\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"ReleaseFabric\",\r\n    \"encryptionDetails\": {\r\n      \"kekState\": \"None\",\r\n      \"kekCertThumbprint\": null\r\n    },\r\n    \"rolloverEncryptionDetails\": {\r\n      \"kekState\": \"None\",\r\n      \"kekCertThumbprint\": null\r\n    },\r\n    \"internalIdentifier\": \"b21856f5-9690-58b3-be0d-4c7227f9a10e\",\r\n    \"bcdrState\": \"Valid\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"HyperVSite\"\r\n    },\r\n    \"healthErrorDetails\": [],\r\n    \"health\": \"Normal\"\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "630"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "95bb63cf-b62c-41a0-9097-35c68d0fca83-2017-04-25 11:40:24Z-P 4/25/2017 11:40:26 AM"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.0",
-          "Microsoft-IIS/8.5"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-client-request-id": [
-          "95bb63cf-b62c-41a0-9097-35c68d0fca83-2017-04-25 11:40:24Z-P"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14830"
-        ],
-        "x-ms-correlation-request-id": [
-          "2a11603a-003e-4b0c-83e1-4d453a75e050"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20170425T114025Z:2a11603a-003e-4b0c-83e1-4d453a75e050"
-        ],
-        "Date": [
-          "Tue, 25 Apr 2017 11:40:25 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.RecoveryServices/vaults/b2aRSvaultprod17012017/replicationFabrics/ReleaseFabric/remove?api-version=2016-08-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvYzE4Mzg2NWUtNjA3Ny00NmYyLWEzYjEtZGViMGY0ZjQ2NTBhL3Jlc291cmNlR3JvdXBzL3NpdGVyZWNvdmVyeVByb2QxL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvYjJhUlN2YXVsdHByb2QxNzAxMjAxNy9yZXBsaWNhdGlvbkZhYnJpY3MvUmVsZWFzZUZhYnJpYy9yZW1vdmU/YXBpLXZlcnNpb249MjAxNi0wOC0xMA==",
-      "RequestMethod": "POST",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "f23a6ef8-81da-4e3d-9a0e-43d72a130717-2017-04-25 11:40:25Z-P"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "Agent-Authentication": [
-          "{\"NotBeforeTimestamp\":\"\\/Date(1493116825306)\\/\",\"NotAfterTimestamp\":\"\\/Date(1493721625306)\\/\",\"ClientRequestId\":\"f23a6ef8-81da-4e3d-9a0e-43d72a130717-2017-04-25 11:40:25Z-P\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"ARYUy2wkkq5fXTVjRy5OsXeB36O73Sx6GU+Ton0yf0k=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.1087.0",
-          "OSName/Windows_Server_2012_R2_Datacenter",
-          "OSVersion/6.3.9600",
-          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/18.0.9-prerelease"
-        ]
-      },
-      "ResponseBody": "",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "0"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Retry-After": [
-          "30"
-        ],
-        "x-ms-request-id": [
-          "2c86e28f-cee0-42b3-a69d-28491b0ed0cc",
-          "f23a6ef8-81da-4e3d-9a0e-43d72a130717-2017-04-25 11:40:25Z-P 4/25/2017 11:40:27 AM"
-        ],
-        "Azure-AsyncOperation": [
-          "https://management.azure.com/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.RecoveryServices/vaults/b2aRSvaultprod17012017/replicationJobs/2c86e28f-cee0-42b3-a69d-28491b0ed0cc?api-version=2016-08-10"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-client-request-id": [
-          "f23a6ef8-81da-4e3d-9a0e-43d72a130717-2017-04-25 11:40:25Z-P"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
-        ],
-        "x-ms-correlation-request-id": [
-          "945df381-e858-4015-ad4d-5993cc1f1f5e"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20170425T114027Z:945df381-e858-4015-ad4d-5993cc1f1f5e"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 25 Apr 2017 11:40:26 GMT"
-        ],
-        "Location": [
-          "https://management.azure.com/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.RecoveryServices/vaults/b2aRSvaultprod17012017/replicationFabrics/ReleaseFabric/operationresults/2c86e28f-cee0-42b3-a69d-28491b0ed0cc?api-version=2016-08-10"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.RecoveryServices/vaults/b2aRSvaultprod17012017/replicationJobs/2c86e28f-cee0-42b3-a69d-28491b0ed0cc?api-version=2016-08-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvYzE4Mzg2NWUtNjA3Ny00NmYyLWEzYjEtZGViMGY0ZjQ2NTBhL3Jlc291cmNlR3JvdXBzL3NpdGVyZWNvdmVyeVByb2QxL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvYjJhUlN2YXVsdHByb2QxNzAxMjAxNy9yZXBsaWNhdGlvbkpvYnMvMmM4NmUyOGYtY2VlMC00MmIzLWE2OWQtMjg0OTFiMGVkMGNjP2FwaS12ZXJzaW9uPTIwMTYtMDgtMTA=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "7746982a-ae86-4e6d-bc7f-de6c48585edb-2017-04-25 11:40:26Z-P"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "Agent-Authentication": [
-          "{\"NotBeforeTimestamp\":\"\\/Date(1493116826904)\\/\",\"NotAfterTimestamp\":\"\\/Date(1493721626904)\\/\",\"ClientRequestId\":\"7746982a-ae86-4e6d-bc7f-de6c48585edb-2017-04-25 11:40:26Z-P\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"7zqkqvgcV9b4x/jTS+vpkjNKGLU2pQN4tvK0dAwYmD0=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.1087.0",
-          "OSName/Windows_Server_2012_R2_Datacenter",
-          "OSVersion/6.3.9600",
-          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/18.0.9-prerelease"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.RecoveryServices/vaults/b2aRSvaultprod17012017/replicationJobs/2c86e28f-cee0-42b3-a69d-28491b0ed0cc\",\r\n  \"name\": \"2c86e28f-cee0-42b3-a69d-28491b0ed0cc\",\r\n  \"properties\": {\r\n    \"activityId\": \"f23a6ef8-81da-4e3d-9a0e-43d72a130717-2017-04-25 11:40:25Z-P ActivityId: 945df381-e858-4015-ad4d-5993cc1f1f5e\",\r\n    \"scenarioName\": \"UnregisterFabric\",\r\n    \"friendlyName\": \"Delete server\",\r\n    \"state\": \"InProgress\",\r\n    \"stateDescription\": \"InProgress\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"UnregisterFabricPreflightChecksTask\",\r\n        \"name\": \"UnregisterFabricPreflightCheckTask\",\r\n        \"startTime\": \"2017-04-25T11:40:27.6990277Z\",\r\n        \"endTime\": \"2017-04-25T11:40:27.8087728Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for deleting the server\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"CleanupFabricTask\",\r\n        \"name\": \"CleanupFabricTask\",\r\n        \"startTime\": \"2017-04-25T11:40:27.8087728Z\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Cleaning up the provider settings\",\r\n        \"state\": \"InProgress\",\r\n        \"stateDescription\": \"InProgress\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"UnregisterFabricTask\",\r\n        \"name\": \"UnregisterFabricTask\",\r\n        \"startTime\": \"0001-01-01T00:00:00\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Deleting the server\",\r\n        \"state\": \"NotStarted\",\r\n        \"stateDescription\": \"NotStarted\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2017-04-25T11:40:27.4792033Z\",\r\n    \"allowedActions\": [\r\n      \"Cancel\"\r\n    ],\r\n    \"targetObjectId\": \"b21856f5-9690-58b3-be0d-4c7227f9a10e\",\r\n    \"targetObjectName\": \"ReleaseFabric\",\r\n    \"targetInstanceType\": \"Server\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {\r\n        \"PrimaryVmmId\": \"b21856f5-9690-58b3-be0d-4c7227f9a10e\",\r\n        \"PrimaryVmmName\": \"ReleaseFabric\",\r\n        \"PrimaryFabricProviderId\": \"HyperVSite\"\r\n      }\r\n    }\r\n  },\r\n  \"status\": \"InProgress\",\r\n  \"error\": null,\r\n  \"startTime\": \"2017-04-25T11:40:27.4792033Z\",\r\n  \"endTime\": null\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "2172"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "2c86e28f-cee0-42b3-a69d-28491b0ed0cc",
-          "7746982a-ae86-4e6d-bc7f-de6c48585edb-2017-04-25 11:40:26Z-P 4/25/2017 11:40:28 AM"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.0",
-          "Microsoft-IIS/8.5"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-client-request-id": [
-          "7746982a-ae86-4e6d-bc7f-de6c48585edb-2017-04-25 11:40:26Z-P"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14829"
-        ],
-        "x-ms-correlation-request-id": [
-          "6fbfa3e4-fe6e-4be6-8345-b390a944b17c"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20170425T114027Z:6fbfa3e4-fe6e-4be6-8345-b390a944b17c"
-        ],
-        "Date": [
-          "Tue, 25 Apr 2017 11:40:27 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.RecoveryServices/vaults/b2aRSvaultprod17012017/replicationJobs/2c86e28f-cee0-42b3-a69d-28491b0ed0cc?api-version=2016-08-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvYzE4Mzg2NWUtNjA3Ny00NmYyLWEzYjEtZGViMGY0ZjQ2NTBhL3Jlc291cmNlR3JvdXBzL3NpdGVyZWNvdmVyeVByb2QxL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvYjJhUlN2YXVsdHByb2QxNzAxMjAxNy9yZXBsaWNhdGlvbkpvYnMvMmM4NmUyOGYtY2VlMC00MmIzLWE2OWQtMjg0OTFiMGVkMGNjP2FwaS12ZXJzaW9uPTIwMTYtMDgtMTA=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "f8f2fb7d-1efa-4482-bf20-c680caf05bc2-2017-04-25 11:40:27Z-P"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "Agent-Authentication": [
-          "{\"NotBeforeTimestamp\":\"\\/Date(1493116827426)\\/\",\"NotAfterTimestamp\":\"\\/Date(1493721627426)\\/\",\"ClientRequestId\":\"f8f2fb7d-1efa-4482-bf20-c680caf05bc2-2017-04-25 11:40:27Z-P\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"QIliH3fCQDgZ89blDinSMrId5KxGC3CCTC7ZQ2koXZw=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.1087.0",
-          "OSName/Windows_Server_2012_R2_Datacenter",
-          "OSVersion/6.3.9600",
-          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/18.0.9-prerelease"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.RecoveryServices/vaults/b2aRSvaultprod17012017/replicationJobs/2c86e28f-cee0-42b3-a69d-28491b0ed0cc\",\r\n  \"name\": \"2c86e28f-cee0-42b3-a69d-28491b0ed0cc\",\r\n  \"properties\": {\r\n    \"activityId\": \"f23a6ef8-81da-4e3d-9a0e-43d72a130717-2017-04-25 11:40:25Z-P ActivityId: 945df381-e858-4015-ad4d-5993cc1f1f5e\",\r\n    \"scenarioName\": \"UnregisterFabric\",\r\n    \"friendlyName\": \"Delete server\",\r\n    \"state\": \"InProgress\",\r\n    \"stateDescription\": \"InProgress\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"UnregisterFabricPreflightChecksTask\",\r\n        \"name\": \"UnregisterFabricPreflightCheckTask\",\r\n        \"startTime\": \"2017-04-25T11:40:27.6990277Z\",\r\n        \"endTime\": \"2017-04-25T11:40:27.8865167Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for deleting the server\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"CleanupFabricTask\",\r\n        \"name\": \"CleanupFabricTask\",\r\n        \"startTime\": \"2017-04-25T11:40:27.8865167Z\",\r\n        \"endTime\": \"2017-04-25T11:40:27.9490055Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Cleaning up the provider settings\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"UnregisterFabricTask\",\r\n        \"name\": \"UnregisterFabricTask\",\r\n        \"startTime\": \"2017-04-25T11:40:27.9490055Z\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Deleting the server\",\r\n        \"state\": \"InProgress\",\r\n        \"stateDescription\": \"InProgress\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2017-04-25T11:40:27.4792033Z\",\r\n    \"allowedActions\": [\r\n      \"Cancel\"\r\n    ],\r\n    \"targetObjectId\": \"b21856f5-9690-58b3-be0d-4c7227f9a10e\",\r\n    \"targetObjectName\": \"ReleaseFabric\",\r\n    \"targetInstanceType\": \"Server\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {\r\n        \"PrimaryVmmId\": \"b21856f5-9690-58b3-be0d-4c7227f9a10e\",\r\n        \"PrimaryVmmName\": \"ReleaseFabric\",\r\n        \"PrimaryFabricProviderId\": \"HyperVSite\"\r\n      }\r\n    }\r\n  },\r\n  \"status\": \"InProgress\",\r\n  \"error\": null,\r\n  \"startTime\": \"2017-04-25T11:40:27.4792033Z\",\r\n  \"endTime\": null\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "2188"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "2c86e28f-cee0-42b3-a69d-28491b0ed0cc",
-          "f8f2fb7d-1efa-4482-bf20-c680caf05bc2-2017-04-25 11:40:27Z-P 4/25/2017 11:40:28 AM"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.0",
-          "Microsoft-IIS/8.5"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-client-request-id": [
-          "f8f2fb7d-1efa-4482-bf20-c680caf05bc2-2017-04-25 11:40:27Z-P"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14828"
-        ],
-        "x-ms-correlation-request-id": [
-          "64f6ec58-e824-492b-8f8a-262417130899"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20170425T114028Z:64f6ec58-e824-492b-8f8a-262417130899"
-        ],
-        "Date": [
-          "Tue, 25 Apr 2017 11:40:27 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.RecoveryServices/vaults/b2aRSvaultprod17012017/replicationJobs/2c86e28f-cee0-42b3-a69d-28491b0ed0cc?api-version=2016-08-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvYzE4Mzg2NWUtNjA3Ny00NmYyLWEzYjEtZGViMGY0ZjQ2NTBhL3Jlc291cmNlR3JvdXBzL3NpdGVyZWNvdmVyeVByb2QxL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvYjJhUlN2YXVsdHByb2QxNzAxMjAxNy9yZXBsaWNhdGlvbkpvYnMvMmM4NmUyOGYtY2VlMC00MmIzLWE2OWQtMjg0OTFiMGVkMGNjP2FwaS12ZXJzaW9uPTIwMTYtMDgtMTA=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "b9525aaa-9678-40ec-86f4-79f99b522441-2017-04-25 11:40:57Z-P"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "Agent-Authentication": [
-          "{\"NotBeforeTimestamp\":\"\\/Date(1493116857941)\\/\",\"NotAfterTimestamp\":\"\\/Date(1493721657941)\\/\",\"ClientRequestId\":\"b9525aaa-9678-40ec-86f4-79f99b522441-2017-04-25 11:40:57Z-P\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"OLzcmrZ3/trS8MGpyh7P8PPHkKgOa7I9yp5Md5GrvAw=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.1087.0",
-          "OSName/Windows_Server_2012_R2_Datacenter",
-          "OSVersion/6.3.9600",
-          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/18.0.9-prerelease"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.RecoveryServices/vaults/b2aRSvaultprod17012017/replicationJobs/2c86e28f-cee0-42b3-a69d-28491b0ed0cc\",\r\n  \"name\": \"2c86e28f-cee0-42b3-a69d-28491b0ed0cc\",\r\n  \"properties\": {\r\n    \"activityId\": \"f23a6ef8-81da-4e3d-9a0e-43d72a130717-2017-04-25 11:40:25Z-P ActivityId: 945df381-e858-4015-ad4d-5993cc1f1f5e\",\r\n    \"scenarioName\": \"UnregisterFabric\",\r\n    \"friendlyName\": \"Delete server\",\r\n    \"state\": \"Succeeded\",\r\n    \"stateDescription\": \"Completed\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"UnregisterFabricPreflightChecksTask\",\r\n        \"name\": \"UnregisterFabricPreflightCheckTask\",\r\n        \"startTime\": \"2017-04-25T11:40:27.6990277Z\",\r\n        \"endTime\": \"2017-04-25T11:40:27.8865167Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for deleting the server\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"CleanupFabricTask\",\r\n        \"name\": \"CleanupFabricTask\",\r\n        \"startTime\": \"2017-04-25T11:40:27.8865167Z\",\r\n        \"endTime\": \"2017-04-25T11:40:28.9021448Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Cleaning up the provider settings\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"UnregisterFabricTask\",\r\n        \"name\": \"UnregisterFabricTask\",\r\n        \"startTime\": \"2017-04-25T11:40:28.9021448Z\",\r\n        \"endTime\": \"2017-04-25T11:40:28.9646593Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Deleting the server\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2017-04-25T11:40:27.4792033Z\",\r\n    \"endTime\": \"2017-04-25T11:40:28Z\",\r\n    \"allowedActions\": [],\r\n    \"targetObjectId\": \"b21856f5-9690-58b3-be0d-4c7227f9a10e\",\r\n    \"targetObjectName\": \"ReleaseFabric\",\r\n    \"targetInstanceType\": \"Server\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"AsrJobDetails\",\r\n      \"affectedObjectDetails\": {\r\n        \"PrimaryVmmId\": \"b21856f5-9690-58b3-be0d-4c7227f9a10e\",\r\n        \"PrimaryVmmName\": \"ReleaseFabric\",\r\n        \"PrimaryFabricProviderId\": \"HyperVSite\"\r\n      }\r\n    }\r\n  },\r\n  \"status\": \"Succeeded\",\r\n  \"error\": null,\r\n  \"startTime\": \"2017-04-25T11:40:27.4792033Z\",\r\n  \"endTime\": \"2017-04-25T11:40:28Z\"\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "2243"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "2c86e28f-cee0-42b3-a69d-28491b0ed0cc",
-          "b9525aaa-9678-40ec-86f4-79f99b522441-2017-04-25 11:40:57Z-P 4/25/2017 11:40:59 AM"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.0",
-          "Microsoft-IIS/8.5"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-client-request-id": [
-          "b9525aaa-9678-40ec-86f4-79f99b522441-2017-04-25 11:40:57Z-P"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14827"
-        ],
-        "x-ms-correlation-request-id": [
-          "7d4c5f1e-75a2-4272-bd0a-5137e4c95ffd"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20170425T114058Z:7d4c5f1e-75a2-4272-bd0a-5137e4c95ffd"
-        ],
-        "Date": [
-          "Tue, 25 Apr 2017 11:40:58 GMT"
+          "Tue, 25 Apr 2017 11:35:49 GMT"
         ]
       },
       "StatusCode": 200

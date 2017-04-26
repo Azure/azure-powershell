@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using System;
 using System.Management.Automation;
 using System.Security.Cryptography;
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             CreateProtectionContainerMappingInputProperties inputProperties = new CreateProtectionContainerMappingInputProperties()
             {
                 PolicyId = this.Policy.ID,
-                ProviderSpecificInput = new ReplicationProviderContainerMappingInput(),
+                ProviderSpecificInput = new ReplicationProviderSpecificContainerMappingInput(),
                 TargetProtectionContainerId = targetProtectionContainerId
             };
 
@@ -151,15 +151,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             string hashedCloudNames = BitConverter.ToString(hashedBytes).ToLower().Replace("-", string.Empty);
 
             string mappingName = string.Format("ContainerMapping_{0}_{1}", this.Policy.Name.ToLower(), hashedCloudNames);
-            LongRunningOperationResponse response = RecoveryServicesClient.ConfigureProtection(
+            PSSiteRecoveryLongRunningOperation response = RecoveryServicesClient.ConfigureProtection(
                 Utilities.GetValueFromArmId(this.PrimaryProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics),
                 this.PrimaryProtectionContainer.Name, mappingName, input);
 
-            JobResponse jobResponse =
+            var jobResponse =
                 RecoveryServicesClient
                 .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            this.WriteObject(new ASRJob(jobResponse.Job));
+            this.WriteObject(new ASRJob(jobResponse));
         }
 
     }

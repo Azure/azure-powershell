@@ -16,7 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void RemoveServiceProvider()
         {
-            LongRunningOperationResponse response;
+            PSSiteRecoveryLongRunningOperation response;
 
             if (!this.Force.IsPresent)
             {
@@ -78,11 +78,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                         Utilities.GetValueFromArmId(this.ServicesProvider.ID, ARMResourceTypeConstants.ReplicationFabrics), this.ServicesProvider.Name);
             }
 
-            JobResponse jobResponse =
+            var jobResponse =
                 RecoveryServicesClient
                 .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            WriteObject(new ASRJob(jobResponse.Job));
+            WriteObject(new ASRJob(jobResponse));
         }
     }
 }

@@ -13,7 +13,7 @@
 //// ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.SiteRecovery;
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -23,6 +23,27 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
+    public class PSSiteRecoveryLongRunningOperation
+    {
+        public string ClientRequestId { get; set; }
+
+        public string CorrelationRequestId { get; set; }
+
+        public string Date { get; set; }
+
+        public string ContentType { get; set; }
+
+        public string Location { get; set; }
+
+        public string RetryAfter { get; set; }
+
+        public string AsyncOperation { get; set; }
+
+        public OperationStatus Status { get; set; }
+
+        public string Culture { get; set; }
+    }
+
     /// <summary>
     /// Hash functions which can be used to calculate CIK HMAC.
     /// </summary>
@@ -353,7 +374,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Gets or sets Data contract version.
         /// </summary>
         [DataMember(Name = "Version")]
-        public Version Version { get; set; }
+        public System.Version Version { get; set; }
 
         /// <summary>
         /// Gets or sets property bag. This property bag is introduced to support addition of any 
@@ -637,7 +658,7 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// Initializes a new instance of the <see cref="AcsNamespace"/> class.
         /// </summary>
         /// <param name="acsDetails">authenticating service Details name</param>
-        public AcsNamespace(UploadCertificateResponse acsDetails)
+        public AcsNamespace(Management.SiteRecovery.Models.UploadCertificateResponse acsDetails)
         {
             this.HostName = acsDetails.Properties.GlobalAcsHostName;
             this.Namespace = acsDetails.Properties.GlobalAcsNamespace;
@@ -800,7 +821,7 @@ namespace Microsoft.Azure.Portal.HybridServicesCore
         /// Returns the Xml representation of this object.
         /// </summary>
         /// <returns>the xml as string</returns>
-        public ResourceExtendedInformationArgs Translate()
+        public Management.SiteRecovery.Models.ResourceExtendedInformationArgs Translate()
         {
             if (string.IsNullOrEmpty(this.Etag))
             {
@@ -808,7 +829,7 @@ namespace Microsoft.Azure.Portal.HybridServicesCore
             }
 
             string serializedInfo = Utilities.Serialize<ResourceExtendedInfo>(this);
-            ResourceExtendedInformationArgs extendedInfoArgs = new ResourceExtendedInformationArgs(
+            Management.SiteRecovery.Models.ResourceExtendedInformationArgs extendedInfoArgs = new Management.SiteRecovery.Models.ResourceExtendedInformationArgs(
                 Constants.VaultExtendedInfoContractVersion,
                 serializedInfo,
                 this.Etag);

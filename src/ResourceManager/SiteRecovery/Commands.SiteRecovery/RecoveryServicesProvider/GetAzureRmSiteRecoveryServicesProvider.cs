@@ -17,7 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Hyak.Common;
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
@@ -83,11 +83,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             bool found = false;
 
-            RecoveryServicesProviderListResponse recoveryServicesProviderListResponse =
+            var recoveryServicesProviderListResponse =
                     RecoveryServicesClient.GetAzureSiteRecoveryProvider(
                     Fabric.Name);
 
-            foreach (RecoveryServicesProvider recoveryServicesProvider in recoveryServicesProviderListResponse.RecoveryServicesProviders)
+            foreach (RecoveryServicesProvider recoveryServicesProvider in recoveryServicesProviderListResponse)
             {
                 if (0 == string.Compare(this.FriendlyName, recoveryServicesProvider.Properties.FriendlyName, true))
                 {
@@ -117,9 +117,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                         Fabric.Name,
                         this.Name);
 
-                if (recoveryServicesProviderResponse.RecoveryServicesProvider != null)
+                if (recoveryServicesProviderResponse != null)
                 {
-                    this.WriteServicesProvider(recoveryServicesProviderResponse.RecoveryServicesProvider);
+                    this.WriteServicesProvider(recoveryServicesProviderResponse);
                 }
             }
             catch (CloudException ex)
@@ -144,11 +144,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void GetAll()
         {
-            RecoveryServicesProviderListResponse recoveryServicesProviderListResponse =
+            var recoveryServicesProviderListResponse =
                     RecoveryServicesClient.GetAzureSiteRecoveryProvider(
                     Fabric.Name);
 
-            foreach (RecoveryServicesProvider recoveryServicesProvider in recoveryServicesProviderListResponse.RecoveryServicesProviders)
+            foreach (RecoveryServicesProvider recoveryServicesProvider in recoveryServicesProviderListResponse)
             {
                 this.WriteServicesProvider(recoveryServicesProvider);
             }

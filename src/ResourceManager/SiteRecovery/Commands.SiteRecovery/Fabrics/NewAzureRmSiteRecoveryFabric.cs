@@ -15,7 +15,7 @@
 using System;
 using System.ComponentModel;
 using System.Management.Automation;
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
@@ -47,6 +47,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             Constants.HyperVSite)]
         public string Type { get; set; }
 
+        /// <summary>
+        /// Gets or Sets the location
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
+
         #endregion Parameters
 
         /// <summary>
@@ -56,16 +63,33 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            string fabricType = string.IsNullOrEmpty(this.Type)? FabricProviders.HyperVSite : this.Type;
+            string fabricType = string.IsNullOrEmpty(this.Type) ? FabricProviders.HyperVSite : this.Type;
 
-            LongRunningOperationResponse response =
-             RecoveryServicesClient.CreateAzureSiteRecoveryFabric(this.Name, fabricType);
+            FabricCreationInput input = new FabricCreationInput();
+            input.Properties = new FabricCreationInputProperties();
 
-            JobResponse jobResponse =
+            if (string.IsNullOrEmpty(this.Location))
+            {
+                input.Properties.CustomDetails = new FabricSpecificCreationInput();
+            }
+            else
+            {
+                input.Properties.CustomDetails = new AzureFabricCreationInput()
+                {
+                    Location = this.Location
+                };
+            }
+
+            PSSiteRecoveryLongRunningOperation response =
+                RecoveryServicesClient.CreateAzureSiteRecoveryFabric(this.Name, input);
+
+            WriteObject(response);
+
+            var jobResponse =
                 RecoveryServicesClient
                 .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            WriteObject(new ASRJob(jobResponse.Job));
+            WriteObject(new ASRJob(jobResponse));
         }
     }
 }

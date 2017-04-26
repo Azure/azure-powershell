@@ -79,7 +79,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     RecoveryServicesClient.GetVaultsInResouceGroup(resourceGroup.Name);
 
                 this.WriteVaults(vaultListResponse.Vaults);
-            }
+              
+            }  
         }
 
         /// <summary>
@@ -101,7 +102,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                         this.WriteObject(new ASRVault(vault));
                     }
                 }
-            }
+            }   
         }
     }
 }

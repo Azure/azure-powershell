@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 case ASRParameterSets.AppendGroup:
                     RecoveryPlanGroup recoveryPlanGroup = new RecoveryPlanGroup()
                     {
-                        GroupType = Constants.Boot,
+                        GroupType = RecoveryPlanGroupType.Boot,
                         ReplicationProtectedItems = new List<RecoveryPlanProtectedItem>(),
                         StartGroupActions = new List<RecoveryPlanAction>(),
                         EndGroupActions = new List<RecoveryPlanAction>()
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     {
                         string fabricName = Utilities.GetValueFromArmId(rpi.ID, ARMResourceTypeConstants.ReplicationFabrics);
 
-                        ReplicationProtectedItemResponse replicationProtectedItemResponse =
+                        var replicationProtectedItemResponse =
                         RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(fabricName,
                         Utilities.GetValueFromArmId(rpi.ID, ARMResourceTypeConstants.ReplicationProtectionContainers), 
                         rpi.Name);
@@ -138,13 +138,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                                     continue;
 
                                 if (gp.ReplicationProtectedItems.Any(pi => 
-                                    String.Compare(pi.Id, replicationProtectedItemResponse.ReplicationProtectedItem.Id, StringComparison.OrdinalIgnoreCase) == 0))
+                                    String.Compare(pi.Id, replicationProtectedItemResponse.Id, StringComparison.OrdinalIgnoreCase) == 0))
                                 {
                                     throw new PSArgumentException(string.Format(Properties.Resources.VMAlreadyPartOfGroup, rpi.FriendlyName, gp.Name, this.RecoveryPlan.FriendlyName));
                                 }
                             }
 
-                            this.RecoveryPlan.Groups[RecoveryPlan.Groups.IndexOf(tempGroup)].ReplicationProtectedItems.Add(replicationProtectedItemResponse.ReplicationProtectedItem);
+                            this.RecoveryPlan.Groups[RecoveryPlan.Groups.IndexOf(tempGroup)].ReplicationProtectedItems.Add(replicationProtectedItemResponse);
                         }
                         else
                         {
@@ -187,13 +187,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     {
                         string fabricName = Utilities.GetValueFromArmId(pe.ID, ARMResourceTypeConstants.ReplicationFabrics);
                         // fetch the latest PE object
-                        ProtectableItemResponse protectableItemResponse =
+                        var protectableItemResponse =
                         RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(fabricName,
                         pe.ProtectionContainerId, pe.Name);
 
-                        ReplicationProtectedItemResponse replicationProtectedItemResponse =
+                        var replicationProtectedItemResponse =
                         RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(fabricName,
-                        pe.ProtectionContainerId, Utilities.GetValueFromArmId(protectableItemResponse.ProtectableItem.Properties.ReplicationProtectedItemId,
+                        pe.ProtectionContainerId, Utilities.GetValueFromArmId(protectableItemResponse.Properties.ReplicationProtectedItemId,
                         ARMResourceTypeConstants.ReplicationProtectedItems));
 
                         tempGroup = this.RecoveryPlan.Groups.FirstOrDefault(g => String.Compare(g.Name, Group.Name, StringComparison.OrdinalIgnoreCase) == 0);
@@ -205,13 +205,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                                 if (gp.ReplicationProtectedItems == null)
                                     continue;
 
-                                if (gp.ReplicationProtectedItems.Any(pi => String.Compare(pi.Id, replicationProtectedItemResponse.ReplicationProtectedItem.Id, StringComparison.OrdinalIgnoreCase) == 0))
+                                if (gp.ReplicationProtectedItems.Any(pi => String.Compare(pi.Id, replicationProtectedItemResponse.Id, StringComparison.OrdinalIgnoreCase) == 0))
                                 {
                                     throw new PSArgumentException(string.Format(Properties.Resources.VMAlreadyPartOfGroup, pe.FriendlyName, gp.Name, this.RecoveryPlan.FriendlyName));
                                 }
                             }
 
-                            this.RecoveryPlan.Groups[RecoveryPlan.Groups.IndexOf(tempGroup)].ReplicationProtectedItems.Add(replicationProtectedItemResponse.ReplicationProtectedItem);
+                            this.RecoveryPlan.Groups[RecoveryPlan.Groups.IndexOf(tempGroup)].ReplicationProtectedItems.Add(replicationProtectedItemResponse);
                         }
                         else
                         {
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     {
                         string fabricName = Utilities.GetValueFromArmId(pe.ID, ARMResourceTypeConstants.ReplicationFabrics);
                         // fetch the latest PE object
-                        ProtectableItemResponse protectableItemResponse =
+                        var protectableItemResponse =
                         RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(fabricName,
                         pe.ProtectionContainerId, pe.Name);
 
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                                 this.RecoveryPlan.Groups[RecoveryPlan.Groups.IndexOf(tempGroup)].
                                 ReplicationProtectedItems.
                                 FirstOrDefault(pi => String.Compare(pi.Id,
-                                protectableItemResponse.ProtectableItem.Properties.ReplicationProtectedItemId,
+                                protectableItemResponse.Properties.ReplicationProtectedItemId,
                                 StringComparison.OrdinalIgnoreCase) == 0);
 
                             if (ReplicationProtectedItem != null)

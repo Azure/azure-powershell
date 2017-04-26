@@ -15,7 +15,7 @@
 using System;
 using System.ComponentModel;
 using System.Management.Automation;
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
 using System.Collections.Generic;
@@ -213,17 +213,17 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 this.ReplicaDeletion :
                 replicationProviderSettings.ReplicaDeletionOption;
                 
-            var updatePolicyProperties = new UpdatePolicyProperties();
+            var updatePolicyProperties = new UpdatePolicyInputProperties();
 
             if (string.Compare(this.Policy.ReplicationProvider, Constants.HyperVReplica2012, StringComparison.OrdinalIgnoreCase) == 0)
             {
-                updatePolicyProperties.ReplicationProviderSettings = new HyperVReplica2012PolicyInput()
+                updatePolicyProperties.ReplicationProviderSettings = new HyperVReplicaPolicyInput()
                 {
                     AllowedAuthenticationType = this.authentication,
                     ApplicationConsistentSnapshotFrequencyInHours = this.applicationConsistentSnapshotFrequencyInHours,
                     Compression = this.compression,
                     InitialReplicationMethod = this.replicationMethod,
-                    OnlineReplicationStartTime = this.replicationStartTime,
+                    OnlineReplicationStartTime = this.replicationStartTime.ToString(),
                     RecoveryPoints = this.recoveryPoints,
                     ReplicaDeletion = this.replicaDeletion,
                     ReplicationPort = this.replicationPort
@@ -232,13 +232,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             }
             else
             {
-                updatePolicyProperties.ReplicationProviderSettings = new HyperVReplica2012R2PolicyInput()
+                updatePolicyProperties.ReplicationProviderSettings = new HyperVReplicaBluePolicyInput()
                 {
                     AllowedAuthenticationType = this.authentication,
                     ApplicationConsistentSnapshotFrequencyInHours = this.applicationConsistentSnapshotFrequencyInHours,
                     Compression = this.compression,
                     InitialReplicationMethod = this.replicationMethod,
-                    OnlineReplicationStartTime = this.replicationStartTime,
+                    OnlineReplicationStartTime = this.replicationStartTime.ToString(),
                     RecoveryPoints = this.recoveryPoints,
                     ReplicaDeletion = this.replicaDeletion,                    
                     ReplicationPort = this.replicationPort,
@@ -251,14 +251,14 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 Properties = updatePolicyProperties
             };
 
-            LongRunningOperationResponse responseBlue =
+            PSSiteRecoveryLongRunningOperation responseBlue =
                 RecoveryServicesClient.UpdatePolicy(this.Policy.Name, updatePolicyInput);
 
-            JobResponse jobResponseBlue =
+            var jobResponseBlue =
                 RecoveryServicesClient
                 .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(responseBlue.Location));
 
-            WriteObject(new ASRJob(jobResponseBlue.Job));
+            WriteObject(new ASRJob(jobResponseBlue));
         }
 
         /// <summary>
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             {
                 ApplicationConsistentSnapshotFrequencyInHours = this.applicationConsistentSnapshotFrequencyInHours,
                 Encryption = this.encryption,
-                OnlineIrStartTime = this.replicationStartTime,
+                OnlineReplicationStartTime = this.replicationStartTime.ToString(),
                 RecoveryPointHistoryDuration = this.recoveryPoints,
                 ReplicationInterval = this.replicationFrequencyInSeconds
             };
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 hyperVReplicaAzurePolicyInput.StorageAccounts.Add(storageAccount);
             }
 
-            var updatePolicyProperties = new UpdatePolicyProperties()
+            var updatePolicyProperties = new UpdatePolicyInputProperties()
             {
                 ReplicationProviderSettings = hyperVReplicaAzurePolicyInput
             };
@@ -323,14 +323,14 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 Properties = updatePolicyProperties
             };
 
-            LongRunningOperationResponse response =
+            PSSiteRecoveryLongRunningOperation response =
                 RecoveryServicesClient.UpdatePolicy(this.Policy.Name, updatePolicyInput);
 
-            JobResponse jobResponse =
+            var jobResponse =
                 RecoveryServicesClient
                 .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            WriteObject(new ASRJob(jobResponse.Job));
+            WriteObject(new ASRJob(jobResponse));
         }
     }
 }

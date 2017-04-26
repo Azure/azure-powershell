@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
@@ -127,21 +127,21 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 Properties = inputProperties
             };
 
-            ProtectionContainerMappingListResponse protectionContainerMappingListResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainerMapping(Utilities.GetValueFromArmId(PrimaryProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics), PrimaryProtectionContainer.Name);
-            ProtectionContainerMapping protectionContainerMapping = protectionContainerMappingListResponse.ProtectionContainerMappings.SingleOrDefault(t => (t.Properties.PolicyId.CompareTo(this.Policy.ID) == 0 && t.Properties.TargetProtectionContainerId.CompareTo(targetProtectionContainerId) == 0));
+            var protectionContainerMappingListResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainerMapping(Utilities.GetValueFromArmId(PrimaryProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics), PrimaryProtectionContainer.Name);
+            ProtectionContainerMapping protectionContainerMapping = protectionContainerMappingListResponse.SingleOrDefault(t => (t.Properties.PolicyId.CompareTo(this.Policy.ID) == 0 && t.Properties.TargetProtectionContainerId.CompareTo(targetProtectionContainerId) == 0));
 
             if (protectionContainerMapping == null)
             {
                 throw new Exception("Cloud is not paired");
             }
 
-            LongRunningOperationResponse response = RecoveryServicesClient.UnConfigureProtection(Utilities.GetValueFromArmId(this.PrimaryProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics), this.PrimaryProtectionContainer.Name, protectionContainerMapping.Name, input);
+            PSSiteRecoveryLongRunningOperation response = RecoveryServicesClient.UnConfigureProtection(Utilities.GetValueFromArmId(this.PrimaryProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics), this.PrimaryProtectionContainer.Name, protectionContainerMapping.Name, input);
 
-            JobResponse jobResponse =
+            var jobResponse =
                 RecoveryServicesClient
                 .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            this.WriteObject(new ASRJob(jobResponse.Job));
+            this.WriteObject(new ASRJob(jobResponse));
         }
     }
 }

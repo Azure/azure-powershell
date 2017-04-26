@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -102,25 +102,22 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     this.MyInvocation.MyCommand.Name,
                     "Set-AzureRmSiteRecoveryReplicationProtectedItem"));
 
-            ProtectableItemResponse protectableItemResponse =
+            var protectableItemResponse =
                                                 RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(Utilities.GetValueFromArmId(this.VirtualMachine.ID, ARMResourceTypeConstants.ReplicationFabrics),
                                                 this.VirtualMachine.ProtectionContainerId, this.VirtualMachine.Name);
 
-            if (protectableItemResponse.ProtectableItem.Properties.ReplicationProtectedItemId == null)
+            if (protectableItemResponse.Properties.ReplicationProtectedItemId == null)
             {
                 this.WriteWarning(Properties.Resources.ProtectionIsNotEnabledForVM.ToString());
                 return;
             }
 
-            ReplicationProtectedItemResponse replicationProtectedItemResponse =
+            var replicationProtectedItemResponse =
                         RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(Utilities.GetValueFromArmId(this.VirtualMachine.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                        this.VirtualMachine.ProtectionContainerId, Utilities.GetValueFromArmId(protectableItemResponse.ProtectableItem.Properties.ReplicationProtectedItemId, ARMResourceTypeConstants.ReplicationProtectedItems));
+                        this.VirtualMachine.ProtectionContainerId, Utilities.GetValueFromArmId(protectableItemResponse.Properties.ReplicationProtectedItemId, ARMResourceTypeConstants.ReplicationProtectedItems));
 
             // Check for Replication Provider type HyperVReplicaAzure
-            if (0 != string.Compare(
-                    replicationProtectedItemResponse.ReplicationProtectedItem.Properties.ProviderSpecificDetails.InstanceType,
-                    Constants.HyperVReplicaAzure,
-                    StringComparison.OrdinalIgnoreCase))
+            if (!(replicationProtectedItemResponse.Properties.ProviderSpecificDetails is HyperVReplicaAzureReplicationDetails))
             {
                 this.WriteWarning(Properties.Resources.UnsupportedReplicationProvidedForUpdateVmProperties.ToString());
                 return;
@@ -149,11 +146,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             if (!string.IsNullOrEmpty(this.PrimaryNic))
             {
                 HyperVReplicaAzureReplicationDetails providerSpecificDetails =
-                            (HyperVReplicaAzureReplicationDetails)replicationProtectedItemResponse.ReplicationProtectedItem.Properties.ProviderSpecificDetails;
+                            (HyperVReplicaAzureReplicationDetails)replicationProtectedItemResponse.Properties.ProviderSpecificDetails;
 
-                if (providerSpecificDetails.VMNics != null)
+                if (providerSpecificDetails.VmNics != null)
                 {
-                    vMNicDetailsToBeUpdated = providerSpecificDetails.VMNics.SingleOrDefault(n => string.Compare(n.NicId, this.PrimaryNic, StringComparison.OrdinalIgnoreCase) == 0);
+                    vMNicDetailsToBeUpdated = providerSpecificDetails.VmNics.SingleOrDefault(n => string.Compare(n.NicId, this.PrimaryNic, StringComparison.OrdinalIgnoreCase) == 0);
                     if (vMNicDetailsToBeUpdated != null)
                     {
                         VMNicInputDetails vMNicInputDetails = new VMNicInputDetails();
@@ -164,7 +161,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                         vMNicInputDetails.SelectionType = string.IsNullOrEmpty(this.NicSelectionType) ? Constants.SelectedByUser : this.NicSelectionType;
                         vMNicInputDetailsList.Add(vMNicInputDetails);
 
-                        IEnumerable<VMNicDetails> vMNicDetailsListRemaining = providerSpecificDetails.VMNics.Where(n => string.Compare(n.NicId, this.PrimaryNic, StringComparison.OrdinalIgnoreCase) != 0);
+                        IEnumerable<VMNicDetails> vMNicDetailsListRemaining = providerSpecificDetails.VmNics.Where(n => string.Compare(n.NicId, this.PrimaryNic, StringComparison.OrdinalIgnoreCase) != 0);
                         foreach (VMNicDetails nDetails in vMNicDetailsListRemaining)
                         {
                             vMNicInputDetails = new VMNicInputDetails();
@@ -196,17 +193,17 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 Properties = updateReplicationProtectedItemInputProperties
             };
 
-            LongRunningOperationResponse response = RecoveryServicesClient.UpdateVmProperties(
+            PSSiteRecoveryLongRunningOperation response = RecoveryServicesClient.UpdateVmProperties(
                 Utilities.GetValueFromArmId(this.VirtualMachine.ID, ARMResourceTypeConstants.ReplicationFabrics),
                 Utilities.GetValueFromArmId(this.VirtualMachine.ID, ARMResourceTypeConstants.ReplicationProtectionContainers),
-                replicationProtectedItemResponse.ReplicationProtectedItem.Name,
+                replicationProtectedItemResponse.Name,
                 input);
 
-            JobResponse jobResponse =
+            var jobResponse =
                 RecoveryServicesClient
                 .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            WriteObject(new ASRJob(jobResponse.Job));
+            WriteObject(new ASRJob(jobResponse));
         }
     }
 }

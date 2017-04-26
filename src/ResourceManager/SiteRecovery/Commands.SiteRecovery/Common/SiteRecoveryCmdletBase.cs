@@ -12,10 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Management.SiteRecovery.Models;
-using Microsoft.Azure.Management.SiteRecoveryVault.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
+using Microsoft.Rest.Azure;
+//using Microsoft.Azure.Management.RecoveryServices.SiteRecoveryVault.Models;
 using Newtonsoft.Json;
 using System;
 using System.Runtime.Serialization;
@@ -57,10 +58,23 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         }
 
         /// <summary>
+        /// Adds delegating handlers to the client pipeline:
+        /// 1. RpNamespaceHandler - modified the RP namespace "Microsoft.RecoveryServices" based 
+        ///    on the value provided in the dll config file.
+        /// </summary>
+        protected override void SetupHttpClientPipeline()
+        {
+            base.SetupHttpClientPipeline();
+            AzureSession.ClientFactory.AddHandler(
+                new RpNamespaceHandler(PSRecoveryServicesClient.asrVaultCreds.ResourceNamespace != null ? PSRecoveryServicesClient.asrVaultCreds.ResourceNamespace : ARMResourceTypeConstants.RecoveryServicesResourceProviderNameSpace));
+        }
+
+        /// <summary>
         /// Virtual method to be implemented by Site Recovery cmdlets.
         /// </summary>
         public virtual void ExecuteSiteRecoveryCmdlet()
         {
+            SiteRecoveryAutoMapperProfile.Initialize();
             // Do Nothing
         }
 
@@ -93,16 +107,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             }
 
             CloudException cloudException = ex as CloudException;
-            if (cloudException != null)
-            {
-                ARMError error = null;
+            if (cloudException != null && cloudException.Body != null && cloudException.Response != null)
+            {               
                 try
                 {
                     if (cloudException.Message != null)
                     {
-                        string originalMessage = cloudException.Error.OriginalMessage;
-                        error = JsonConvert.DeserializeObject<ARMError>(originalMessage);
-
+                        ARMError error = Rest.Serialization.SafeJsonConvert.DeserializeObject<ARMError>(cloudException.Response.Content); ;
                         StringBuilder exceptionMessage = new StringBuilder();
                         exceptionMessage.Append(Properties.Resources.CloudExceptionDetails);
 
@@ -161,6 +172,14 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                         clientRequestIdMsg + cloudException.Message),
                         cloudException);
                 }
+                catch (JsonReaderException)
+                {
+                    throw new JsonReaderException(
+                        string.Format(
+                        Properties.Resources.InvalidCloudExceptionErrorMessage,
+                        clientRequestIdMsg + cloudException.Message),
+                        cloudException);
+                }
             }
             else if (ex.Message != null)
             {
@@ -177,26 +196,27 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         /// <param name="jobId">Id of the job to wait for.</param>
         /// <returns>Final job response</returns>
-        public JobResponse WaitForJobCompletion(string jobId)
+        public Job WaitForJobCompletion(string jobId)
         {
-            JobResponse jobResponse = null;
+            Job job = null;
             do
             {
                 Thread.Sleep(PSRecoveryServicesClient.TimeToSleepBeforeFetchingJobDetailsAgain);
-                jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(jobId);
+                job = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(jobId);
                 this.WriteProgress(
                     new System.Management.Automation.ProgressRecord(
                         0,
                         Properties.Resources.WaitingForCompletion,
-                        jobResponse.Job.Properties.State));
+                        job.Properties.State));
             }
-            while (!(jobResponse.Job.Properties.State == JobStatus.Cancelled ||
-                            jobResponse.Job.Properties.State == JobStatus.Failed ||
-                            jobResponse.Job.Properties.State == JobStatus.Suspended ||
-                            jobResponse.Job.Properties.State == JobStatus.Succeeded ||
+            while (!(job.Properties.State == JobStatus.Cancelled ||
+                            job.Properties.State == JobStatus.Failed ||
+                            job.Properties.State == JobStatus.Suspended ||
+                            job.Properties.State == JobStatus.Succeeded ||
                         this.StopProcessingFlag));
-            return jobResponse;
+            return job;
         }
+
 
         /// <summary>
         /// Handles interrupts.
@@ -239,10 +259,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             string location = string.Empty;
 
-            VaultListResponse vaultListResponse =
+            Management.SiteRecoveryVault.Models.VaultListResponse vaultListResponse =
                 RecoveryServicesClient.GetVaultsInResouceGroup(PSRecoveryServicesClient.asrVaultCreds.ResourceGroupName);
 
-            foreach (Vault vault in vaultListResponse.Vaults)
+            foreach (Management.SiteRecoveryVault.Models.Vault vault in vaultListResponse.Vaults)
             {
                 if (0 == string.Compare(PSRecoveryServicesClient.asrVaultCreds.ResourceName, vault.Name, true))
                 {
@@ -253,5 +273,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             return location;
         }
+
     }
 }

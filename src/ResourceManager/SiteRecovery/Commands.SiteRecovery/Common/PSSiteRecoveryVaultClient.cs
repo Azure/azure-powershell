@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Threading.Tasks;
 using Microsoft.Azure.Management.SiteRecoveryVault;
 using Microsoft.Azure.Management.SiteRecoveryVault.Models;
 
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <returns>vault list response object.</returns>
         public VaultListResponse GetVaultsInResouceGroup(string resouceGroupName)
         {
-            return this.GetRecoveryServicesClient.Vaults.Get(resouceGroupName, this.GetRequestHeaders(false));
+            return this.GetSiteRecoveryVaultClient.Vaults.Get(resouceGroupName, this.GetSiteRecoveryVaultRequestHeaders(false));
         }
 
         /// <summary>
@@ -41,7 +42,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <returns>creation response object.</returns>
         public VaultCreateResponse CreateVault(string resouceGroupName, string vaultName, VaultCreateArgs vaultCreateInput)
         {
-            return this.recoveryServicesClient.Vaults.BeginCreating(resouceGroupName, vaultName, vaultCreateInput);
+            return this.siteRecoveryVaultClient.Vaults.BeginCreating(resouceGroupName, vaultName, vaultCreateInput);
         }
 
         /// <summary>
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <returns>creation response object.</returns>
         public RecoveryServicesOperationStatusResponse DeleteVault(string resouceGroupName, string vaultName)
         {
-            return this.recoveryServicesClient.Vaults.BeginDeleting(resouceGroupName, vaultName);
+            return this.siteRecoveryVaultClient.Vaults.BeginDeleting(resouceGroupName, vaultName);
         }
 
         /// <summary>
@@ -61,7 +62,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <returns>resource group list response object.</returns>
         public ResourceGroupListResponse GetResouceGroups()
         {
-            return this.GetRecoveryServicesClient.ResourceGroup.List();
+            return this.GetSiteRecoveryVaultClient.ResourceGroup.List();
         }
     }
 }

@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -149,13 +149,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 case ASRParameterSets.EnterpriseToEnterpriseLegacy:
                     this.WriteWarningWithTimestamp(Properties.Resources.ParameterSetWillBeDeprecatedSoon);
                     failoverDeploymentModel = Constants.NotApplicable;
-                    this.primaryserver = RecoveryServicesClient.GetAzureSiteRecoveryFabric(Utilities.GetValueFromArmId(this.PrimaryServer.ID, ARMResourceTypeConstants.ReplicationFabrics)).Fabric.Id;
-                    this.recoveryserver = RecoveryServicesClient.GetAzureSiteRecoveryFabric(Utilities.GetValueFromArmId(this.RecoveryServer.ID, ARMResourceTypeConstants.ReplicationFabrics)).Fabric.Id;
+                    this.primaryserver = RecoveryServicesClient.GetAzureSiteRecoveryFabric(Utilities.GetValueFromArmId(this.PrimaryServer.ID, ARMResourceTypeConstants.ReplicationFabrics)).Id;
+                    this.recoveryserver = RecoveryServicesClient.GetAzureSiteRecoveryFabric(Utilities.GetValueFromArmId(this.RecoveryServer.ID, ARMResourceTypeConstants.ReplicationFabrics)).Id;
                     break;
                 case ASRParameterSets.EnterpriseToAzureLegacy:
                     this.WriteWarningWithTimestamp(Properties.Resources.ParameterSetWillBeDeprecatedSoon);
                     failoverDeploymentModel = this.FailoverDeploymentModel;
-                    this.primaryserver = RecoveryServicesClient.GetAzureSiteRecoveryFabric(Utilities.GetValueFromArmId(this.PrimaryServer.ID, ARMResourceTypeConstants.ReplicationFabrics)).Fabric.Id;
+                    this.primaryserver = RecoveryServicesClient.GetAzureSiteRecoveryFabric(Utilities.GetValueFromArmId(this.PrimaryServer.ID, ARMResourceTypeConstants.ReplicationFabrics)).Id;
                     this.recoveryserver = Constants.AzureContainer;
                     break;
                 case ASRParameterSets.HyperVSiteToAzureLegacy:
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             CreateRecoveryPlanInputProperties createRecoveryPlanInputProperties = new CreateRecoveryPlanInputProperties()
             {
-                FailoverDeploymentModel = failoverDeploymentModel,
+                FailoverDeploymentModel = (FailoverDeploymentModel)Enum.Parse(typeof(FailoverDeploymentModel), failoverDeploymentModel),
                 Groups = new List<RecoveryPlanGroup>(),
                 PrimaryFabricId = this.primaryserver,
                 RecoveryFabricId = this.recoveryserver
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             RecoveryPlanGroup recoveryPlanGroup = new RecoveryPlanGroup()
             {
-                GroupType = Constants.Boot,
+                GroupType = RecoveryPlanGroupType.Boot,
                 ReplicationProtectedItems = new List<RecoveryPlanProtectedItem>(),
                 StartGroupActions = new List<RecoveryPlanAction>(),
                 EndGroupActions = new List<RecoveryPlanAction>()
@@ -233,27 +233,31 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             {
                 string fabricName = Utilities.GetValueFromArmId(pe.ID, ARMResourceTypeConstants.ReplicationFabrics);
                 // fetch the latest PE object
-                ProtectableItemResponse protectableItemResponse =
+                var protectableItemResponse =
                                             RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(fabricName,
                                             pe.ProtectionContainerId, pe.Name);
 
-                ReplicationProtectedItemResponse replicationProtectedItemResponse =
+                var replicationProtectedItemResponse =
                             RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(fabricName,
-                            pe.ProtectionContainerId, Utilities.GetValueFromArmId(protectableItemResponse.ProtectableItem.Properties.ReplicationProtectedItemId, ARMResourceTypeConstants.ReplicationProtectedItems));
+                            pe.ProtectionContainerId, Utilities.GetValueFromArmId(protectableItemResponse.Properties.ReplicationProtectedItemId, ARMResourceTypeConstants.ReplicationProtectedItems));
 
                 string VmId = null;
 
-                if (replicationProtectedItemResponse.ReplicationProtectedItem.Properties.ProviderSpecificDetails.GetType() == typeof(HyperVReplicaAzureReplicationDetails))
+                if (replicationProtectedItemResponse.Properties.ProviderSpecificDetails.GetType() == typeof(HyperVReplicaAzureReplicationDetails))
                 {
-                    VmId = ((HyperVReplicaAzureReplicationDetails)replicationProtectedItemResponse.ReplicationProtectedItem.Properties.ProviderSpecificDetails).VmId;
+                    VmId = ((HyperVReplicaAzureReplicationDetails)replicationProtectedItemResponse.Properties.ProviderSpecificDetails).VmId;
                 }
-                else if (replicationProtectedItemResponse.ReplicationProtectedItem.Properties.ProviderSpecificDetails.GetType() == typeof(HyperVReplica2012ReplicationDetails))
+                else if (replicationProtectedItemResponse.Properties.ProviderSpecificDetails.GetType() == typeof(HyperVReplicaReplicationDetails))
                 {
-                    VmId = ((HyperVReplica2012ReplicationDetails)replicationProtectedItemResponse.ReplicationProtectedItem.Properties.ProviderSpecificDetails).VmId;
+                    VmId = ((HyperVReplicaReplicationDetails)replicationProtectedItemResponse.Properties.ProviderSpecificDetails).VmId;
+                }
+                else if (replicationProtectedItemResponse.Properties.ProviderSpecificDetails.GetType() == typeof(HyperVReplicaBlueReplicationDetails))
+                {
+                    VmId = ((HyperVReplicaBlueReplicationDetails)replicationProtectedItemResponse.Properties.ProviderSpecificDetails).VmId;
                 }
 
                 RecoveryPlanProtectedItem recoveryPlanProtectedItem = new RecoveryPlanProtectedItem();
-                recoveryPlanProtectedItem.Id = replicationProtectedItemResponse.ReplicationProtectedItem.Id;
+                recoveryPlanProtectedItem.Id = replicationProtectedItemResponse.Id;
                 recoveryPlanProtectedItem.VirtualMachineId = VmId;
                 recoveryPlanGroup.ReplicationProtectedItems.Add(recoveryPlanProtectedItem);
             }
@@ -275,7 +279,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             CreateRecoveryPlanInputProperties createRecoveryPlanInputProperties = new CreateRecoveryPlanInputProperties()
             {
-                FailoverDeploymentModel = failoverDeploymentModel,
+                FailoverDeploymentModel = (FailoverDeploymentModel)Enum.Parse(typeof(FailoverDeploymentModel), failoverDeploymentModel),
                 Groups = new List<RecoveryPlanGroup>(),
                 PrimaryFabricId = this.primaryserver,
                 RecoveryFabricId = this.recoveryserver
@@ -283,7 +287,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             RecoveryPlanGroup recoveryPlanGroup = new RecoveryPlanGroup()
             {
-                GroupType = Constants.Boot,
+                GroupType = RecoveryPlanGroupType.Boot,
                 ReplicationProtectedItems = new List<RecoveryPlanProtectedItem>(),
                 StartGroupActions = new List<RecoveryPlanAction>(),
                 EndGroupActions = new List<RecoveryPlanAction>()
@@ -293,24 +297,28 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             {
                 string fabricName = Utilities.GetValueFromArmId(rpi.ID, ARMResourceTypeConstants.ReplicationFabrics);
 
-                ReplicationProtectedItemResponse replicationProtectedItemResponse =
+                var replicationProtectedItemResponse =
                             RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(fabricName,
                             Utilities.GetValueFromArmId(rpi.ID, ARMResourceTypeConstants.ReplicationProtectionContainers), 
                             rpi.Name);
 
                 string VmId = null;
 
-                if (replicationProtectedItemResponse.ReplicationProtectedItem.Properties.ProviderSpecificDetails.GetType() == typeof(HyperVReplicaAzureReplicationDetails))
+                if (replicationProtectedItemResponse.Properties.ProviderSpecificDetails.GetType() == typeof(HyperVReplicaAzureReplicationDetails))
                 {
-                    VmId = ((HyperVReplicaAzureReplicationDetails)replicationProtectedItemResponse.ReplicationProtectedItem.Properties.ProviderSpecificDetails).VmId;
+                    VmId = ((HyperVReplicaAzureReplicationDetails)replicationProtectedItemResponse.Properties.ProviderSpecificDetails).VmId;
                 }
-                else if (replicationProtectedItemResponse.ReplicationProtectedItem.Properties.ProviderSpecificDetails.GetType() == typeof(HyperVReplica2012ReplicationDetails))
+                else if (replicationProtectedItemResponse.Properties.ProviderSpecificDetails.GetType() == typeof(HyperVReplicaReplicationDetails))
                 {
-                    VmId = ((HyperVReplica2012ReplicationDetails)replicationProtectedItemResponse.ReplicationProtectedItem.Properties.ProviderSpecificDetails).VmId;
+                    VmId = ((HyperVReplicaReplicationDetails)replicationProtectedItemResponse.Properties.ProviderSpecificDetails).VmId;
+                }
+                else if (replicationProtectedItemResponse.Properties.ProviderSpecificDetails.GetType() == typeof(HyperVReplicaBlueReplicationDetails))
+                {
+                    VmId = ((HyperVReplicaBlueReplicationDetails)replicationProtectedItemResponse.Properties.ProviderSpecificDetails).VmId;
                 }
 
                 RecoveryPlanProtectedItem recoveryPlanProtectedItem = new RecoveryPlanProtectedItem();
-                recoveryPlanProtectedItem.Id = replicationProtectedItemResponse.ReplicationProtectedItem.Id;
+                recoveryPlanProtectedItem.Id = replicationProtectedItemResponse.Id;
                 recoveryPlanProtectedItem.VirtualMachineId = VmId;
                 recoveryPlanGroup.ReplicationProtectedItems.Add(recoveryPlanProtectedItem);
             }
@@ -332,7 +340,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             CreateRecoveryPlanInputProperties createRecoveryPlanInputProperties = new CreateRecoveryPlanInputProperties()
             {
-                FailoverDeploymentModel = recoveryPlan.Properties.FailoverDeploymentModel,
+                FailoverDeploymentModel = (FailoverDeploymentModel)Enum.Parse(typeof(FailoverDeploymentModel), recoveryPlan.Properties.FailoverDeploymentModel),
                 Groups = recoveryPlan.Properties.Groups,
                 PrimaryFabricId = recoveryPlan.Properties.PrimaryFabricId,
                 RecoveryFabricId = recoveryPlan.Properties.RecoveryFabricId
@@ -351,14 +359,14 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void CreateRecoveryPlan(string recoveryPlanName, CreateRecoveryPlanInput createRecoveryPlanInput)
         {
-            LongRunningOperationResponse response =
+            PSSiteRecoveryLongRunningOperation response =
                 RecoveryServicesClient.CreateAzureSiteRecoveryRecoveryPlan(recoveryPlanName, createRecoveryPlanInput);
 
-            JobResponse jobResponse =
+            var jobResponse =
                 RecoveryServicesClient
                 .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            WriteObject(new ASRJob(jobResponse.Job));
+            WriteObject(new ASRJob(jobResponse));
         }
     }
 }

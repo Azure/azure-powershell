@@ -12,8 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery;
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using AutoMapper;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
+using Microsoft.Rest.Azure.OData;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -27,18 +30,23 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         /// <param name="jobName">Job ID</param>
         /// <returns>Job response</returns>
-        public JobResponse GetAzureSiteRecoveryJobDetails(string jobName)
+        public Job GetAzureSiteRecoveryJobDetails(string jobName)
         {
-            return this.GetSiteRecoveryClient().Jobs.Get(jobName, this.GetRequestHeaders(false));
+            return this.GetSiteRecoveryClient().ReplicationJobs.GetWithHttpMessagesAsync(jobName, this.GetRequestHeaders(true)).GetAwaiter().GetResult().Body;
         }
 
         /// <summary>
         /// Get Azure Site Recovery Job.
         /// </summary>
         /// <returns>Job list response</returns>
-        public JobListResponse GetAzureSiteRecoveryJob(JobQueryParameter jqp)
+        public List<Job> GetAzureSiteRecoveryJob(JobQueryParameter jqp)
         {
-            return this.GetSiteRecoveryClient().Jobs.List(jqp, this.GetRequestHeaders(false));
+            ODataQuery<JobQueryParameter> odataQuery = new ODataQuery<JobQueryParameter>(jqp.ToQueryString().ToString());
+            var firstPage = this.GetSiteRecoveryClient().ReplicationJobs.ListWithHttpMessagesAsync(odataQuery, this.GetRequestHeaders(true)).GetAwaiter().GetResult().Body;
+            var pages = Utilities.GetAllFurtherPages(this.GetSiteRecoveryClient().ReplicationJobs.ListNextWithHttpMessagesAsync, firstPage.NextPageLink, this.GetRequestHeaders(true));
+            pages.Insert(0, firstPage);
+
+            return Utilities.IpageToList(pages);
         }
 
         /// <summary>
@@ -47,11 +55,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <param name="jobName">Job ID</param>
         /// <param name="resumeJobParams">Resume Job parameters</param>
         /// <returns>Long running operation response</returns>
-        public LongRunningOperationResponse ResumeAzureSiteRecoveryJob(
+        public PSSiteRecoveryLongRunningOperation ResumeAzureSiteRecoveryJob(
             string jobName,
             ResumeJobParams resumeJobParams)
         {
-            return this.GetSiteRecoveryClient().Jobs.BeginResuming(jobName, resumeJobParams, this.GetRequestHeaders());
+            var op = this.GetSiteRecoveryClient().ReplicationJobs.BeginResumeWithHttpMessagesAsync(jobName, resumeJobParams, this.GetRequestHeaders(true)).GetAwaiter().GetResult();
+            var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
         }
 
         /// <summary>
@@ -59,10 +69,12 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         /// <param name="jobName">Job Name</param>
         /// <returns>Long running operation response</returns>
-        public LongRunningOperationResponse RestartAzureSiteRecoveryJob(
+        public PSSiteRecoveryLongRunningOperation RestartAzureSiteRecoveryJob(
             string jobName)
         {
-            return this.GetSiteRecoveryClient().Jobs.BeginRestarting(jobName, this.GetRequestHeaders());
+            var op = this.GetSiteRecoveryClient().ReplicationJobs.BeginRestartWithHttpMessagesAsync(jobName, this.GetRequestHeaders(true)).GetAwaiter().GetResult();
+            var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
         }
 
         /// <summary>
@@ -70,10 +82,12 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         /// <param name="jobName">Job Name</param>
         /// <returns>Long running operation response</returns>
-        public LongRunningOperationResponse CancelAzureSiteRecoveryJob(
+        public PSSiteRecoveryLongRunningOperation CancelAzureSiteRecoveryJob(
             string jobName)
         {
-            return this.GetSiteRecoveryClient().Jobs.BeginCancelling(jobName, this.GetRequestHeaders());
+            var op = this.GetSiteRecoveryClient().ReplicationJobs.BeginCancelWithHttpMessagesAsync(jobName, this.GetRequestHeaders(true)).GetAwaiter().GetResult();
+            var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
         }
     }
 }

@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -166,17 +166,17 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             };
 
             // fetch the latest PE object
-            ProtectableItemResponse protectableItemResponse =
+            var protectableItemResponse =
                                         RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(this.fabricName,
                                         this.ProtectionEntity.ProtectionContainerId, this.ProtectionEntity.Name);
 
-            ReplicationProtectedItemResponse replicationProtectedItemResponse =
+            var replicationProtectedItemResponse =
                         RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(this.fabricName,
-                        this.ProtectionEntity.ProtectionContainerId, Utilities.GetValueFromArmId(protectableItemResponse.ProtectableItem.Properties.ReplicationProtectedItemId, ARMResourceTypeConstants.ReplicationProtectedItems));
+                        this.ProtectionEntity.ProtectionContainerId, Utilities.GetValueFromArmId(protectableItemResponse.Properties.ReplicationProtectedItemId, ARMResourceTypeConstants.ReplicationProtectedItems));
 
-            PolicyResponse policyResponse = RecoveryServicesClient.GetAzureSiteRecoveryPolicy(Utilities.GetValueFromArmId(replicationProtectedItemResponse.ReplicationProtectedItem.Properties.PolicyID, ARMResourceTypeConstants.ReplicationPolicies));
+            var policyResponse = RecoveryServicesClient.GetAzureSiteRecoveryPolicy(Utilities.GetValueFromArmId(replicationProtectedItemResponse.Properties.PolicyId, ARMResourceTypeConstants.ReplicationPolicies));
 
-            this.ProtectionEntity = new ASRProtectionEntity(protectableItemResponse.ProtectableItem, replicationProtectedItemResponse.ReplicationProtectedItem);
+            this.ProtectionEntity = new ASRProtectionEntity(protectableItemResponse, replicationProtectedItemResponse);
 
             if (0 == string.Compare(
                 this.ProtectionEntity.ReplicationProvider,
@@ -189,24 +189,24 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     {
                         PrimaryKekCertificatePfx = primaryKekCertpfx,
                         SecondaryKekCertificatePfx = secondaryKekCertpfx,
-                        VaultLocation = this.GetCurrentVaultLocation()
+                        VaultLocation = ""
                     };
                     input.Properties.ProviderSpecificDetails = failoverInput;
                 }
             }
 
-            LongRunningOperationResponse response =
+            PSSiteRecoveryLongRunningOperation response =
                 RecoveryServicesClient.StartAzureSiteRecoveryUnplannedFailover(
                 this.fabricName,
                 this.protectionContainerName,
-                Utilities.GetValueFromArmId(replicationProtectedItemResponse.ReplicationProtectedItem.Id, ARMResourceTypeConstants.ReplicationProtectedItems),
+                Utilities.GetValueFromArmId(replicationProtectedItemResponse.Id, ARMResourceTypeConstants.ReplicationProtectedItems),
                 input);
 
-            JobResponse jobResponse =
+            var jobResponse =
                 RecoveryServicesClient
                 .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            WriteObject(new ASRJob(jobResponse.Job));
+            WriteObject(new ASRJob(jobResponse));
         }
 
         /// <summary>
@@ -237,24 +237,24 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     {
                         PrimaryKekCertificatePfx = primaryKekCertpfx,
                         SecondaryKekCertificatePfx = secondaryKekCertpfx,
-                        VaultLocation = this.GetCurrentVaultLocation()
+                        VaultLocation = ""
                     };
                     input.Properties.ProviderSpecificDetails = failoverInput;
                 }
             }
 
-            LongRunningOperationResponse response =
+            PSSiteRecoveryLongRunningOperation response =
                 RecoveryServicesClient.StartAzureSiteRecoveryUnplannedFailover(
                 this.fabricName,
                 this.protectionContainerName,
                 this.ReplicationProtectedItem.Name,
                 input);
 
-            JobResponse jobResponse =
+            var jobResponse =
                 RecoveryServicesClient
                 .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            WriteObject(new ASRJob(jobResponse.Job));
+            WriteObject(new ASRJob(jobResponse));
         }
 
         /// <summary>
@@ -267,12 +267,12 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             var recoveryPlanUnplannedFailoverInputProperties = new RecoveryPlanUnplannedFailoverInputProperties()
             {
-                FailoverDirection = this.Direction,
-                SourceSiteOperations = this.PerformSourceSideActions ? "Required" : "NotRequired", //Required|NotRequired
+                FailoverDirection = this.Direction == PossibleOperationsDirections.PrimaryToRecovery.ToString()? PossibleOperationsDirections.PrimaryToRecovery : PossibleOperationsDirections.RecoveryToPrimary,
+                SourceSiteOperations = this.PerformSourceSideActions ? SourceSiteOperations.Required : SourceSiteOperations.NotRequired, //Required|NotRequired
                 ProviderSpecificDetails = new List<RecoveryPlanProviderSpecificFailoverInput>()
             };
 
-            foreach (string replicationProvider in rp.RecoveryPlan.Properties.ReplicationProviders)
+            foreach (string replicationProvider in rp.Properties.ReplicationProviders)
             {
                 if (0 == string.Compare(
                     replicationProvider,
@@ -283,10 +283,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     {
                         var recoveryPlanHyperVReplicaAzureFailoverInput = new RecoveryPlanHyperVReplicaAzureFailoverInput()
                         {
-                            InstanceType = replicationProvider,
                             PrimaryKekCertificatePfx = primaryKekCertpfx,
                             SecondaryKekCertificatePfx = secondaryKekCertpfx,
-                            VaultLocation = this.GetCurrentVaultLocation()
+                            VaultLocation = "dummy"
                         };
                         recoveryPlanUnplannedFailoverInputProperties.ProviderSpecificDetails.Add(recoveryPlanHyperVReplicaAzureFailoverInput);
                     }
@@ -298,15 +297,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 Properties = recoveryPlanUnplannedFailoverInputProperties
             };
 
-            LongRunningOperationResponse response = RecoveryServicesClient.StartAzureSiteRecoveryUnplannedFailover(
+            PSSiteRecoveryLongRunningOperation response = RecoveryServicesClient.StartAzureSiteRecoveryUnplannedFailover(
                 this.RecoveryPlan.Name,
                 recoveryPlanUnplannedFailoverInput);
 
-            JobResponse jobResponse =
+            var jobResponse =
                 RecoveryServicesClient
                 .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            WriteObject(new ASRJob(jobResponse.Job));
+            WriteObject(new ASRJob(jobResponse));
         }
     }
 }

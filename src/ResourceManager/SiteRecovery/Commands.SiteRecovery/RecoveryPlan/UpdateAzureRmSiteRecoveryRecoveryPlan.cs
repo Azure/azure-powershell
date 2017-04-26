@@ -12,8 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -91,8 +92,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             {
                 RecoveryPlanGroup recoveryPlanGroup = new RecoveryPlanGroup()
                 {
-                    GroupType = asrRecoveryPlanGroup.GroupType,
-
+                    GroupType = (RecoveryPlanGroupType)Enum.Parse(typeof(RecoveryPlanGroupType), asrRecoveryPlanGroup.GroupType),
+                    
                     // Initialize ReplicationProtectedItems with empty List if asrRecoveryPlanGroup.ReplicationProtectedItems is null
                     // otherwise assign respective values
                     ReplicationProtectedItems = asrRecoveryPlanGroup.ReplicationProtectedItems == null ? new List<RecoveryPlanProtectedItem>() :
@@ -106,10 +107,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                             {
                                 VmId = ((HyperVReplicaAzureReplicationDetails)item.Properties.ProviderSpecificDetails).VmId;
                             }
-                            else if (item.Properties.ProviderSpecificDetails.GetType() == typeof(HyperVReplica2012ReplicationDetails))
+                            else if (item.Properties.ProviderSpecificDetails.GetType() == typeof(HyperVReplicaReplicationDetails))
                             {
-                                VmId = ((HyperVReplica2012ReplicationDetails)item.Properties.ProviderSpecificDetails).VmId;
+                                VmId = ((HyperVReplicaReplicationDetails)item.Properties.ProviderSpecificDetails).VmId;
                             }
+                            else if (item.Properties.ProviderSpecificDetails.GetType() == typeof(HyperVReplicaBlueReplicationDetails))
+                            {
+                                VmId = ((HyperVReplicaBlueReplicationDetails)item.Properties.ProviderSpecificDetails).VmId;
+                            }
+
 
                             newItem.VirtualMachineId = VmId;
 
@@ -154,14 +160,14 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void UpdateRecoveryPlan(string recoveryPlanName, UpdateRecoveryPlanInput updateRecoveryPlanInput)
         {
-            LongRunningOperationResponse response =
+            PSSiteRecoveryLongRunningOperation response =
             RecoveryServicesClient.UpdateAzureSiteRecoveryRecoveryPlan(recoveryPlanName, updateRecoveryPlanInput);
 
-            JobResponse jobResponse =
+            var jobResponse =
                 RecoveryServicesClient
                 .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            WriteObject(new ASRJob(jobResponse.Job));
+            WriteObject(new ASRJob(jobResponse));
         }
 
     }

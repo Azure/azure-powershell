@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -106,11 +106,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void GetByServer()
         {
-            NetworksListResponse networkListResponse =
+            var networkListResponse =
                 RecoveryServicesClient.GetAzureSiteRecoveryNetworks(
                 Utilities.GetValueFromArmId(this.Server.ID, ARMResourceTypeConstants.ReplicationFabrics));
 
-            this.WriteNetworks(networkListResponse.NetworksList);
+            this.WriteNetworks(networkListResponse);
         }
 
         /// <summary>
@@ -118,12 +118,12 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void GetByNameLegacy()
         {
-            NetworkResponse networkResponse =
+            var networkResponse =
                 RecoveryServicesClient.GetAzureSiteRecoveryNetwork(
                 Utilities.GetValueFromArmId(this.Server.ID, ARMResourceTypeConstants.ReplicationFabrics),
                 this.Name);
 
-            this.WriteNetwork(networkResponse.Network);
+            this.WriteNetwork(networkResponse);
         }
 
         /// <summary>
@@ -131,11 +131,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void GetByFriendlyLegacy()
         {
-            NetworksListResponse networkListResponse =
+            var networkListResponse =
                 RecoveryServicesClient.GetAzureSiteRecoveryNetworks(
                 Utilities.GetValueFromArmId(this.Server.ID, ARMResourceTypeConstants.ReplicationFabrics));
 
-            foreach (Network network in networkListResponse.NetworksList)
+            foreach (Network network in networkListResponse)
             {
                 if (0 == string.Compare(this.FriendlyName, network.Properties.FriendlyName, true))
                 {
@@ -149,10 +149,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void GetAllNetworks()
         {
-            NetworksListResponse networkListResponse =
+            var networkListResponse =
                 RecoveryServicesClient.GetAzureSiteRecoveryNetworks();
 
-            this.WriteNetworks(networkListResponse.NetworksList);
+            this.WriteNetworks(networkListResponse);
         }
 
         /// <summary>
@@ -160,11 +160,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void GetByFabric()
         {
-            NetworksListResponse networkListResponse =
+            var networkListResponse =
                 RecoveryServicesClient.GetAzureSiteRecoveryNetworks(
                 this.Fabric.Name);
 
-            this.WriteNetworks(networkListResponse.NetworksList);
+            this.WriteNetworks(networkListResponse);
         }
 
         /// <summary>
@@ -172,12 +172,12 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void GetByName()
         {
-            NetworkResponse networkResponse =
+            var networkResponse =
                 RecoveryServicesClient.GetAzureSiteRecoveryNetwork(
                 this.Fabric.Name,
                 this.Name);
 
-            this.WriteNetwork(networkResponse.Network);
+            this.WriteNetwork(networkResponse);
         }
 
         /// <summary>
@@ -185,11 +185,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void GetByFriendlyName()
         {
-            NetworksListResponse networkListResponse =
+            var networkListResponse =
                 RecoveryServicesClient.GetAzureSiteRecoveryNetworks(
                 this.Fabric.Name);
 
-            foreach (Network network in networkListResponse.NetworksList)
+            foreach (Network network in networkListResponse)
             {
                 if (0 == string.Compare(this.FriendlyName, network.Properties.FriendlyName, true))
                 {

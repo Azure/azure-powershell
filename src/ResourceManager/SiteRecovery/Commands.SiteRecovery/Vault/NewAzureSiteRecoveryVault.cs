@@ -68,6 +68,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             VaultCreateResponse response = RecoveryServicesClient.CreateVault(this.ResourceGroupName, this.Name, vaultCreateArgs);
 
             this.WriteObject(new ASRVault(response));
+
         }
     }
 }

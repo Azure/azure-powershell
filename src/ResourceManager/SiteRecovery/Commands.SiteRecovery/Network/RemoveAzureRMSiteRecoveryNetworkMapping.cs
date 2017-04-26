@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
@@ -40,18 +40,18 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            LongRunningOperationResponse response =
+            PSSiteRecoveryLongRunningOperation response =
                 RecoveryServicesClient
                 .RemoveAzureSiteRecoveryNetworkMapping(
                 Utilities.GetValueFromArmId(this.NetworkMapping.ID, ARMResourceTypeConstants.ReplicationFabrics),
                 Utilities.GetValueFromArmId(this.NetworkMapping.ID, "replicationNetworks"),
                 Utilities.GetValueFromArmId(this.NetworkMapping.ID, "replicationNetworkMappings"));
 
-            JobResponse jobResponse =
+            var jobResponse =
                 RecoveryServicesClient
                 .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            WriteObject(new ASRJob(jobResponse.Job));
+            WriteObject(new ASRJob(jobResponse));
         }
     }
 }

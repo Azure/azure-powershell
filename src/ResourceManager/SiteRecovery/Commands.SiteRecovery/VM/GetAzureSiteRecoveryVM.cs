@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -85,18 +85,18 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             bool found = false;
 
-            ProtectableItemListResponse protectableItemListResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(
+            var protectableItemListResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(
                 Utilities.GetValueFromArmId(this.ProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics),
                 this.ProtectionContainer.Name);
-            ProtectableItem protectableItem = protectableItemListResponse.ProtectableItems.SingleOrDefault(t => string.Compare(t.Properties.FriendlyName, this.FriendlyName, StringComparison.OrdinalIgnoreCase) == 0);
+            ProtectableItem protectableItem = protectableItemListResponse.SingleOrDefault(t => string.Compare(t.Properties.FriendlyName, this.FriendlyName, StringComparison.OrdinalIgnoreCase) == 0);
 
             if (protectableItem != null)
             {
-                ProtectableItemResponse protectableItemResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(
+                var protectableItemResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(
                     Utilities.GetValueFromArmId(this.ProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics),
                     this.ProtectionContainer.Name,
                     protectableItem.Name);
-                WriteProtectionEntity(protectableItemResponse.ProtectableItem);
+                WriteProtectionEntity(protectableItemResponse);
 
                 found = true;
             }
@@ -118,18 +118,18 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             bool found = false;
 
-            ProtectableItemListResponse protectableItemListResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(
+            var protectableItemListResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(
                 Utilities.GetValueFromArmId(this.ProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics),
                 this.ProtectionContainer.Name);
-            ProtectableItem protectableItem = protectableItemListResponse.ProtectableItems.SingleOrDefault(t => string.Compare(t.Name, this.Name, StringComparison.OrdinalIgnoreCase) == 0);
+            ProtectableItem protectableItem = protectableItemListResponse.SingleOrDefault(t => string.Compare(t.Name, this.Name, StringComparison.OrdinalIgnoreCase) == 0);
 
             if (protectableItem != null)
             {
-                ProtectableItemResponse protectableItemResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(
+                var protectableItemResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(
                     Utilities.GetValueFromArmId(this.ProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics),
                     this.ProtectionContainer.Name,
                     protectableItem.Name);
-                WriteProtectionEntity(protectableItemResponse.ProtectableItem);
+                WriteProtectionEntity(protectableItemResponse);
 
                 found = true;
             }
@@ -149,11 +149,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void GetAll()
         {
-            ProtectableItemListResponse protectableItemListResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(
+            var protectableItemListResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(
                 Utilities.GetValueFromArmId(this.ProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics),
                 this.ProtectionContainer.Name);
 
-            WriteProtectionEntities(protectableItemListResponse.ProtectableItems);
+            WriteProtectionEntities(protectableItemListResponse);
         }
 
         /// <summary>
