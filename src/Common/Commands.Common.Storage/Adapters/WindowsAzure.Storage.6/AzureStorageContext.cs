@@ -14,14 +14,16 @@
 
 namespace Microsoft.WindowsAzure.Commands.Common.Storage
 {
+    using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.WindowsAzure.Commands.Common.Storage.Properties;
     using Microsoft.WindowsAzure.Storage;
     using System;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Storage context
     /// </summary>
-    public class AzureStorageContext
+    public class AzureStorageContext : IStorageContext
     {
         private static AzureStorageContext emptyContextInstance = new AzureStorageContext();
 
@@ -53,7 +55,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
         /// <summary>
         /// Self reference, it could enable New-AzureStorageContext can be used in pipeline 
         /// </summary>
-        public AzureStorageContext Context { get; protected set; }
+        public IStorageContext Context { get; protected set; }
 
         /// <summary>
         /// Name place holder, and force pipeline to ignore this property
@@ -104,6 +106,27 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
         }
 
         /// <summary>
+        /// Get the connection string for this storage account
+        /// </summary>
+        public string ConnectionString {
+            get
+            {
+                string returnValue = null;
+                if (this.StorageAccount != null)
+                {
+                    returnValue = this.StorageAccount.ToString(true);
+                }
+
+                return returnValue;
+            }
+        }
+
+        /// <summary>
+        /// Custom propeties for the storage context
+        /// </summary>
+        public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+
+        /// <summary>
         /// Create a storage context usign cloud storage account
         /// </summary>
         /// <param name="account">cloud storage account</param>
@@ -139,11 +162,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
             {
                 if (account.Credentials.IsSAS)
                 {
-                    StorageAccountName = Resources.SasTokenAccountName;
+                    StorageAccountName = "[SasToken]";
                 }
                 else
                 {
-                    StorageAccountName = Resources.AnonymousAccountName;
+                    StorageAccountName = "[Anonymous]";
                 }
             }
         }
