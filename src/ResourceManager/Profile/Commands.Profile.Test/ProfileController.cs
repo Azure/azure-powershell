@@ -96,8 +96,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 SetupManagementClients(context);
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                var oldFactory = AzureSession.AuthenticationFactory as MockTokenAuthenticationFactory;
-                AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory(oldFactory.Token.UserId, oldFactory.Token.AccessToken, tenant);
+                var oldFactory = AzureSession.Instance.AuthenticationFactory as MockTokenAuthenticationFactory;
+                AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory(oldFactory.Token.UserId, oldFactory.Token.AccessToken, tenant);
 
                 var callingClassName = callingClassType
                     .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)

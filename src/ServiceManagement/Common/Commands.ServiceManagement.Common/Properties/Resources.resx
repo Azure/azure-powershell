@@ -117,76 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ContextCannotBeNull" xml:space="preserve">
-    <value>Context cannot be null.  Please log in using Add-AzureRmAccount.</value>
+  <data name="BadProfileTypeArgument" xml:space="preserve">
+    <value>[ServiceManagement]: Type argument to GetProfile must be AzureSMProfile</value>
   </data>
-  <data name="DataCollectionActivity" xml:space="preserve">
-    <value>Microsoft Azure PowerShell Data Collection Confirmation</value>
+  <data name="NoAccountInContext" xml:space="preserve">
+    <value>[ServiceManagement]: No matching account record for account {0} in subscription {1}</value>
   </data>
-  <data name="DataCollectionConfirmNo" xml:space="preserve">
-    <value>You choose not to participate in Microsoft Azure PowerShell data collection.</value>
-  </data>
-  <data name="DataCollectionConfirmTime" xml:space="preserve">
-    <value>This confirmation message will be dismissed in '{0}' second(s)...</value>
-  </data>
-  <data name="DataCollectionConfirmYes" xml:space="preserve">
-    <value>You choose to participate in Microsoft Azure PowerShell data collection.</value>
-  </data>
-  <data name="DataCollectionPrompt" xml:space="preserve">
-    <value>Microsoft Azure PowerShell collects data about how users use PowerShell cmdlets and some problems they encounter.  Microsoft uses this information to improve our PowerShell cmdlets.  Participation is voluntary and when you choose to participate your device automatically sends information to Microsoft about how you use Azure PowerShell. 
- 
-If you choose to participate, you can stop at any time by using Azure PowerShell as follows:
-1.	Use the Disable-AzureDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the AzureRM.Profile module
-To disable data collection: PS &gt; Disable-AzureDataCollection
-
-If you choose to not participate, you can enable at any time by using Azure PowerShell as follows:
-1.	Use the Enable-AzureDataCollection cmdlet to turn the feature On. The cmdlet can be found in the AzureRM.Profile module
-To enable data collection: PS &gt; Enable-AzureDataCollection
- 
-Select Y to enable data collection [Y/N]:</value>
-  </data>
-  <data name="DataCollectionSaveFileInformation" xml:space="preserve">
-    <value>The setting profile has been saved to the following path '{0}'.</value>
-  </data>
-  <data name="InvalidDefaultSubscription" xml:space="preserve">
-    <value>No default subscription has been designated. Use Select-AzureSubscription -Default &lt;subscriptionName&gt; to set the default subscription.</value>
-  </data>
-  <data name="InvalidTagFormat" xml:space="preserve">
-    <value>Invalid tag format. Expect @{tagName = $null} or @{tagName = "tagValue"}</value>
-  </data>
-  <data name="NoSubscriptionFound" xml:space="preserve">
-    <value>The provided account {0} does not have access to any subscriptions. Please try logging in with different credentials.</value>
-  </data>
-  <data name="ProfileCannotBeNull" xml:space="preserve">
-    <value>Profile cannot be null.  Please run Add-AzureRmAccount.</value>
-  </data>
-  <data name="ProfileNotInitialized" xml:space="preserve">
-    <value>The Azure PowerShell context has not been properly initialized.  Please import the module and try again.</value>
-  </data>
-  <data name="ResourceConfirmTarget" xml:space="preserve">
-    <value>the '{0}' resource named '{1}' in resource group '{2}'</value>
-    <comment>{0} is resource type name, {1} is resource name, {2} is resource group name</comment>
-  </data>
-  <data name="ResourceIdConfirmTarget" xml:space="preserve">
-    <value>the resource with identity '{0}'</value>
-    <comment>{0} is resource identity</comment>
-  </data>
-  <data name="ResourceProviderRegisterAttempt" xml:space="preserve">
-    <value>Attempting to register resource provider '{0}'</value>
-  </data>
-  <data name="ResourceProviderRegisterFailure" xml:space="preserve">
-    <value>Failed to register resource provider '{0}'.Details: '{1}'</value>
-  </data>
-  <data name="ResourceProviderRegisterSuccessful" xml:space="preserve">
-    <value>Succeeded to register resource provider '{0}'</value>
-  </data>
-  <data name="SubscriptionIdNotFound" xml:space="preserve">
-    <value>The provided account {0} does not have access to subscription ID "{1}". Please try logging in with different credentials or a different subscription ID.</value>
-  </data>
-  <data name="SubscriptionNameNotFound" xml:space="preserve">
-    <value>The provided account {0} does not have access to subscription name "{1}". Please try logging in with different credentials or a different subscription name.</value>
-  </data>
-  <data name="TenantNotFound" xml:space="preserve">
-    <value>Tenant '{0}' was not found. Please verify that your account has access to this tenant.</value>
+  <data name="NoEnvironmentInContext" xml:space="preserve">
+    <value>[ServiceManagement]: No matching environment record for environment {0} in subscription {1}, using AzureCloud environment instead</value>
   </data>
 </root>

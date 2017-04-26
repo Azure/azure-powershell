@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -20,7 +22,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace Microsoft.Azure.Commands.Common.Authentication.Models
+namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
     public class XmlProfileSerializer : IProfileSerializer
     {
@@ -45,7 +47,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             {
                 contents = contents.Replace(
                     "http://schemas.datacontract.org/2004/07/Microsoft.Azure.Common.Authentication",
-                    "http://schemas.datacontract.org/2004/07/Microsoft.Azure.Commands.Common.Authentication");
+                    "http://schemas.datacontract.org/2004/07/Microsoft.WindowsAzure.Commands.Utilities.Common");
             }
 
             using (MemoryStream s = new MemoryStream(Encoding.UTF8.GetBytes(contents ?? "")))
@@ -57,16 +59,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             {
                 foreach (AzureEnvironmentData oldEnv in data.Environments)
                 {
-                    profile.Environments[oldEnv.Name] = oldEnv.ToAzureEnvironment();
+                    profile.EnvironmentTable[oldEnv.Name] = oldEnv.ToAzureEnvironment();
                 }
 
-                List<AzureEnvironment> envs = profile.Environments.Values.ToList();
+                List<IAzureEnvironment> envs = profile.EnvironmentTable.Values.ToList();
                 foreach (AzureSubscriptionData oldSubscription in data.Subscriptions)
                 {
                     try
                     {
                         var newSubscription = oldSubscription.ToAzureSubscription(envs);
-                        if (newSubscription.Account == null)
+                        if (newSubscription.GetAccount() == null)
                         {
                             continue;
                         }
@@ -74,20 +76,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                         var newAccounts = oldSubscription.ToAzureAccounts();
                         foreach (var account in newAccounts)
                         {
-                            if (profile.Accounts.ContainsKey(account.Id))
+                            if (profile.AccountTable.ContainsKey(account.Id))
                             {
-                                profile.Accounts[account.Id].SetOrAppendProperty(AzureAccount.Property.Tenants,
+                                profile.AccountTable[account.Id].SetOrAppendProperty(AzureAccount.Property.Tenants,
                                     account.GetPropertyAsArray(AzureAccount.Property.Tenants));
-                                profile.Accounts[account.Id].SetOrAppendProperty(AzureAccount.Property.Subscriptions,
+                                profile.AccountTable[account.Id].SetOrAppendProperty(AzureAccount.Property.Subscriptions,
                                     account.GetPropertyAsArray(AzureAccount.Property.Subscriptions));
                             }
                             else
                             {
-                                profile.Accounts[account.Id] = account;
+                                profile.AccountTable[account.Id] = account;
                             }
                         }
 
-                        profile.Subscriptions[newSubscription.Id] = newSubscription;
+                        profile.SubscriptionTable[newSubscription.GetId()] = newSubscription;
                     }
                     catch (Exception ex)
                     {

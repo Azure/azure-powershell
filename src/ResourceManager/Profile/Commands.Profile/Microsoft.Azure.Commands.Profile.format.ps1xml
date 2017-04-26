@@ -85,10 +85,10 @@
           <ListEntry>
             <ListItems>
               <ListItem>
-                <PropertyName>SubscriptionName</PropertyName>
+                <PropertyName>Name</PropertyName>
               </ListItem>
               <ListItem>
-                <PropertyName>SubscriptionId</PropertyName>
+                <PropertyName>Id</PropertyName>
               </ListItem>
               <ListItem>
                 <PropertyName>TenantId</PropertyName>
