@@ -12,10 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Common.Authentication
+namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
     public interface IProfileSerializer
     {

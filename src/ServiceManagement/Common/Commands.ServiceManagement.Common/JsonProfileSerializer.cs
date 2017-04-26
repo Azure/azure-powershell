@@ -12,13 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Microsoft.Azure.Commands.Common.Authentication.Models
+namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
     public class JsonProfileSerializer : IProfileSerializer
     {
@@ -26,9 +28,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         {
             return JsonConvert.SerializeObject(new
             {
-                Environments = profile.Environments.Values.ToList(),
-                Subscriptions = profile.Subscriptions.Values.ToList(),
-                Accounts = profile.Accounts.Values.ToList()
+                Environments = profile.EnvironmentTable.Values.ToList(),
+                Subscriptions = profile.SubscriptionTable.Values.ToList(),
+                Accounts = profile.AccountTable.Values.ToList()
             }, Formatting.Indented);
         }
 
@@ -44,7 +46,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 {
                     try
                     {
-                        profile.Environments[(string)env["Name"]] =
+                        profile.EnvironmentTable[(string)env["Name"]] =
                             JsonConvert.DeserializeObject<AzureEnvironment>(env.ToString());
                     }
                     catch (Exception ex)
@@ -57,7 +59,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 {
                     try
                     {
-                        profile.Subscriptions[new Guid((string)subscription["Id"])] =
+                        profile.SubscriptionTable[new Guid((string)subscription["Id"])] =
                             JsonConvert.DeserializeObject<AzureSubscription>(subscription.ToString());
                     }
                     catch (Exception ex)
@@ -70,7 +72,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 {
                     try
                     {
-                        profile.Accounts[(string)account["Id"]] =
+                        profile.AccountTable[(string)account["Id"]] =
                             JsonConvert.DeserializeObject<AzureAccount>(account.ToString());
                     }
                     catch (Exception ex)

@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace Microsoft.Azure.Commands.Common.Authentication
-{
+namespace Microsoft.WindowsAzure.Commands.Utilities.Common
+{ 
     /// <summary>
     /// This class provides the representation of data loaded and saved into data files
     /// for AzureSMProfile.
@@ -50,20 +50,17 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return new AzureEnvironment
             {
                 Name = this.Name,
-                Endpoints = new Dictionary<AzureEnvironment.Endpoint, string>
-                {
-                    { AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId, this.ActiveDirectoryServiceEndpointResourceId },
-                    { AzureEnvironment.Endpoint.AdTenant, this.AdTenantUrl },
-                    { AzureEnvironment.Endpoint.Gallery, this.GalleryEndpoint },
-                    { AzureEnvironment.Endpoint.ManagementPortalUrl, this.ManagementPortalUrl },
-                    { AzureEnvironment.Endpoint.PublishSettingsFileUrl, this.PublishSettingsFileUrl },
-                    { AzureEnvironment.Endpoint.ResourceManager, this.ResourceManagerEndpoint },
-                    { AzureEnvironment.Endpoint.ServiceManagement, this.ServiceEndpoint },
-                    { AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix, this.SqlDatabaseDnsSuffix },
-                    { AzureEnvironment.Endpoint.StorageEndpointSuffix, this.StorageEndpointSuffix },
-                    { AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix, this.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix },
-                    { AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix, this.AzureDataLakeStoreFileSystemEndpointSuffix },
-                }
+                ActiveDirectoryServiceEndpointResourceId = this.ActiveDirectoryServiceEndpointResourceId,
+                AdTenant = this.AdTenantUrl,
+                GalleryUrl = this.GalleryEndpoint,
+                ManagementPortalUrl = this.ManagementPortalUrl,
+                PublishSettingsFileUrl = this.PublishSettingsFileUrl,
+                ResourceManagerUrl = this.ResourceManagerEndpoint,
+                ServiceManagementUrl = this.ServiceEndpoint, 
+                SqlDatabaseDnsSuffix = this.SqlDatabaseDnsSuffix,
+                StorageEndpointSuffix = this.StorageEndpointSuffix,
+                AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = this.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix,
+                AzureDataLakeStoreFileSystemEndpointSuffix = this.AzureDataLakeStoreFileSystemEndpointSuffix
             };
         }
 
@@ -124,12 +121,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
         }
 
-        public AzureSubscription ToAzureSubscription(List<AzureEnvironment> envs)
+        public IAzureSubscription ToAzureSubscription(List<IAzureEnvironment> envs)
         {
             AzureSubscription subscription = new AzureSubscription();
             try
             {
-                subscription.Id = new Guid(this.SubscriptionId);
+                subscription.Id = new Guid(this.SubscriptionId).ToString();
             }
             catch (Exception ex)
             {
@@ -138,26 +135,31 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             subscription.Name = Name;
 
             // Logic to detect what is the subscription environment relies on having ManagementEndpoint (i.e. RDFE endpoint) set already on the subscription
-            List<AzureEnvironment> allEnvs = envs.Union(AzureEnvironment.PublicEnvironments.Values).ToList();
-            AzureEnvironment env = allEnvs.FirstOrDefault(e => e.IsEndpointSetToValue(AzureEnvironment.Endpoint.ServiceManagement, this.ManagementEndpoint));
+            if (null == envs)
+            {
+                envs = new List<IAzureEnvironment>();
+            }
+
+            List<IAzureEnvironment> allEnvs = envs.Union(AzureEnvironment.PublicEnvironments.Values).ToList();
+            IAzureEnvironment env = allEnvs.FirstOrDefault(e => e.IsEndpointSetToValue(AzureEnvironment.Endpoint.ServiceManagement, this.ManagementEndpoint));
 
             if (env != null)
             {
-                subscription.Environment = env.Name;
+                subscription.SetEnvironment(env.Name);
             }
             else
             {
-                subscription.Environment = EnvironmentName.AzureCloud;
+                subscription.SetEnvironment(EnvironmentName.AzureCloud);
             }
 
             if (!string.IsNullOrEmpty(this.ManagementCertificate))
             {
-                subscription.Account = this.ManagementCertificate;
+                subscription.SetAccount(this.ManagementCertificate);
             }
 
             if (!string.IsNullOrEmpty(this.ActiveDirectoryUserId))
             {
-                subscription.Account = this.ActiveDirectoryUserId;
+                subscription.SetAccount(this.ActiveDirectoryUserId);
             }
 
             if (!string.IsNullOrEmpty(this.ActiveDirectoryTenantId))
@@ -172,13 +174,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
             if (!string.IsNullOrEmpty(this.CloudStorageAccount))
             {
-                subscription.Properties.Add(AzureSubscription.Property.StorageAccount, this.CloudStorageAccount);
+                subscription.SetStorageAccount(this.CloudStorageAccount);
             }
 
             if (this.RegisteredResourceProviders.Count() > 0)
             {
                 StringBuilder providers = new StringBuilder();
-                subscription.Properties.Add(AzureSubscription.Property.RegisteredResourceProviders,
+                subscription.SetProperty(AzureSubscription.Property.RegisteredResourceProviders,
                     string.Join(",", RegisteredResourceProviders));
             }
 
