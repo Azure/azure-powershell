@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.RecoveryServices.Properties;
 using Microsoft.Azure.Management.RecoveryServices.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -23,7 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// <summary>
     /// Sets Azure Recovery Services Vault Backup Properties.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmRecoveryServicesBackupProperties")]
+    [Cmdlet(VerbsCommon.Set, "AzureRmRecoveryServicesBackupProperties", SupportsShouldProcess = true)]
     public class SetAzureRmRecoveryServicesBackupProperties : RecoveryServicesCmdletBase
     {
         #region Parameters
@@ -46,23 +47,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            try
+            if (ShouldProcess(Resources.VaultTarget, "set"))
             {
-                if (this.BackupStorageRedundancy.HasValue)
+                try
                 {
-                    BackupStorageConfig vaultStorageRequest = new BackupStorageConfig();
-                    vaultStorageRequest.StorageModelType = BackupStorageRedundancy.ToString();
-                    RecoveryServicesClient.UpdateVaultStorageType(
-                        this.Vault.ResourceGroupName, this.Vault.Name, vaultStorageRequest);
+                    if (this.BackupStorageRedundancy.HasValue)
+                    {
+                        BackupStorageConfig vaultStorageRequest = new BackupStorageConfig();
+                        vaultStorageRequest.StorageModelType = BackupStorageRedundancy.ToString();
+                        RecoveryServicesClient.UpdateVaultStorageType(
+                            this.Vault.ResourceGroupName, this.Vault.Name, vaultStorageRequest);
+                    }
+                    else
+                    {
+                        throw new Exception(Properties.Resources.NoBackupPropertiesProvided);
+                    }
                 }
-                else
+                catch (Exception exception)
                 {
-                    throw new Exception(Properties.Resources.NoBackupPropertiesProvided);
+                    this.HandleException(exception);
                 }
-            }
-            catch (Exception exception)
-            {
-                this.HandleException(exception);
             }
         }
     }
