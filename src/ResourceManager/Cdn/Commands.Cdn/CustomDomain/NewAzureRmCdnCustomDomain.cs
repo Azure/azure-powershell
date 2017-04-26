@@ -26,6 +26,7 @@ using Microsoft.Azure.Management.Cdn;
 using Microsoft.Azure.Management.Cdn.Models;
 using Microsoft.Azure.Commands.Cdn.Models.Endpoint;
 using System.Linq;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 {

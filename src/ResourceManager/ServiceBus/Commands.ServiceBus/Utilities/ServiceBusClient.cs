@@ -23,6 +23,7 @@ using System.Linq;
 using System.Net;
 using System.Xml.Linq;
 using System.Security.Cryptography;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Servicebus
 {
@@ -38,9 +39,9 @@ namespace Microsoft.Azure.Commands.Servicebus
 
         public Action<string> WarningLogger { get; set; }
 
-        public ServiceBusClient(AzureContext context)
+        public ServiceBusClient(IAzureContext context)
         {
-            this.Client = AzureSession.ClientFactory.CreateArmClient<ServiceBusManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            this.Client = AzureSession.Instance.ClientFactory.CreateArmClient<ServiceBusManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
 
         }
         public ServiceBusManagementClient Client

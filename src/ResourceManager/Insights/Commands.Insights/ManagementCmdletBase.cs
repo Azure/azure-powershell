@@ -16,6 +16,7 @@ using System;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.Insights;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Insights
 {
@@ -41,7 +42,7 @@ namespace Microsoft.Azure.Commands.Insights
             {
                 if (this.insightsManagementClient == null)
                 {
-                    this.insightsManagementClient = AzureSession.ClientFactory.CreateArmClient<InsightsManagementClient>(DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
+                    this.insightsManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<InsightsManagementClient>(DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
                 }
 
                 return this.insightsManagementClient;
