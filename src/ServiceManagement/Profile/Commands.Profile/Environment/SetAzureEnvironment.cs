@@ -131,7 +131,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
             ProfileClient.AddOrSetEnvironment(newEnvironment);
 
-            WriteObject((PSAzureEnvironment)newEnvironment);
+            WriteObject( new PSAzureEnvironment(newEnvironment));
         }
 
         private void SetEndpointIfProvided(IAzureEnvironment newEnvironment, string endpoint, string property)
