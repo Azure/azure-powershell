@@ -21,6 +21,7 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {
@@ -153,7 +154,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 
         protected void ValidateParameters()
         {
-            AzureSubscription currentSubscription = Profile.Context.Subscription;
+            IAzureSubscription currentSubscription = Profile.Context.Subscription;
             if ((currentSubscription == null || string.IsNullOrEmpty(currentSubscription.GetProperty(AzureSubscription.Property.StorageAccount))) && string.IsNullOrEmpty(MediaLocation))
             {
                 throw new ArgumentException(Resources.MustSpecifyMediaLocationOrHaveCurrentStorageAccount);

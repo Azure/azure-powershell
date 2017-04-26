@@ -21,6 +21,7 @@ using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.ImportExport;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server;
 using Microsoft.WindowsAzure.Management.Sql;
 using Microsoft.WindowsAzure.Management.Sql.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
 {

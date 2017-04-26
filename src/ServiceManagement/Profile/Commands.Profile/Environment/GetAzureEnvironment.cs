@@ -38,7 +38,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            List<PSAzureEnvironment> environments = ProfileClient.ListEnvironments(Name).Select((e) => (PSAzureEnvironment)e).ToList();
+            List<PSAzureEnvironment> environments = ProfileClient.ListEnvironments(Name).Select((e) => new PSAzureEnvironment(e)).ToList();
             WriteObject(environments, true);
         }
     }
