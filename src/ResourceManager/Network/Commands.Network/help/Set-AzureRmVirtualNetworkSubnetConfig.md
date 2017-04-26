@@ -15,21 +15,17 @@ Configures the goal state for a subnet configuration in a virtual network.
 ### SetByResource (Default)
 ```
 Set-AzureRmVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork> -AddressPrefix <String>
- [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
 Set-AzureRmVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork> -AddressPrefix <String>
- [-NetworkSecurityGroupId <String>] [-RouteTableId <String>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ [-NetworkSecurityGroupId <String>] [-RouteTableId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Set-AzureRmVirtualNetworkSubnetConfig** cmdlet configures the goal state for a subnet configuration in an Azure virtual network.
-
-## EXAMPLES
 
 ## EXAMPLES
 
@@ -45,8 +41,8 @@ $virtualNetwork = New-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGrou
 Set-AzureRmVirtualNetworkSubnetConfig -Name frontendSubnet -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.3.0/23"
 
 $virtualNetwork | Set-AzureRmVirtualNetwork
-    
 ```
+
 This example creates a virtual network with one subnet. Then is calls 
     Set-AzureRmVirtualNetworkSubnetConfig to modify the AddressPrefix of the subnet. This 
     only impacts the in-memory representation of the virtual network. 
@@ -80,11 +76,10 @@ This example creates a resource group with one virtual network containing just o
     security group. The Set-AzureRmVirtualNetwork cmdlet is then called to write the modified 
     state back to the service.
 
-
 ## PARAMETERS
 
-### -Name
-Specifies the name of a subnet configuration that this cmdlet configures.
+### -AddressPrefix
+Specifies a range of IP addresses for a subnet configuration.
 
 ```yaml
 Type: String
@@ -98,23 +93,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VirtualNetwork
-Specifies the **VirtualNetwork** object that contains the subnet configuration.
-
-```yaml
-Type: PSVirtualNetwork
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -AddressPrefix
-Specifies a range of IP addresses for a subnet configuration.
+### -Name
+Specifies the name of a subnet configuration that this cmdlet configures.
 
 ```yaml
 Type: String
@@ -143,12 +123,12 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -RouteTable
-Specifies the route table object that is associated with the network security group.
+### -NetworkSecurityGroupId
+Specifies the ID of a network security group.
 
 ```yaml
-Type: PSRouteTable
-Parameter Sets: SetByResource
+Type: String
+Parameter Sets: SetByResourceId
 Aliases: 
 
 Required: False
@@ -158,51 +138,12 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -RouteTable
+Specifies the route table object that is associated with the network security group.
 
 ```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NetworkSecurityGroupId
-Specifies the ID of a network security group.
-
-```yaml
-Type: String
-Parameter Sets: SetByResourceId
+Type: PSRouteTable
+Parameter Sets: SetByResource
 Aliases: 
 
 Required: False
@@ -224,6 +165,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -VirtualNetwork
+Specifies the **VirtualNetwork** object that contains the subnet configuration.
+
+```yaml
+Type: PSVirtualNetwork
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

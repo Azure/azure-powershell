@@ -33,7 +33,7 @@ The Set-AzureRmDataLakeAnalyticsCatalogCredential cmdlet modifies a credential p
 
 ### Example 1: Modify a credential's password associated with an account
 ```
-PS C:\> Set-AzureRmDataLakeAnalyticsCatalogSecret -AccountName "ContosoAdlAccount" `
+PS C:\> Set-AzureRmDataLakeAnalyticsCatalogCredential -AccountName "ContosoAdlAccount" `
                   -DatabaseName "databaseName" `
                   -CredentialName "credName" `
                   -Credential (Get-Credential) `
@@ -106,7 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseName
-Specifies the name of the database holding the secret.
+Specifies the name of the database in the Data Lake Analytics account holding the credential.
 
 ```yaml
 Type: String

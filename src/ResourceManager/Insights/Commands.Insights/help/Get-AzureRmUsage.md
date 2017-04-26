@@ -31,43 +31,11 @@ This command gets the usage metrics for the specified website.
 
 ## PARAMETERS
 
-### -ResourceId
-Specifies the ID of the resource for the metric.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ApiVersion
 Specifies an API version string, for example, 2014-04-01, which is accepted by the resource provider.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -StartTime
-Specifies the earliest time and date to search.
-
-You can use the Get-Date cmdlet to get a **DateTime** object.
-
-```yaml
-Type: DateTime
 Parameter Sets: (All)
 Aliases: 
 
@@ -100,6 +68,38 @@ Specifies an array of names of metrics.
 
 ```yaml
 Type: String[]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Specifies the ID of the resource for the metric.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -StartTime
+Specifies the earliest time and date to search.
+
+You can use the Get-Date cmdlet to get a **DateTime** object.
+
+```yaml
+Type: DateTime
 Parameter Sets: (All)
 Aliases: 
 

@@ -12,15 +12,15 @@ Gets an .rdp file.
 
 ## SYNTAX
 
-### Launch
-```
-Get-AzureRmRemoteDesktopFile [-ResourceGroupName] <String> [-Name] <String> [[-LocalPath] <String>] [-Launch]
- [<CommonParameters>]
-```
-
 ### Download
 ```
 Get-AzureRmRemoteDesktopFile [-ResourceGroupName] <String> [-Name] <String> [-LocalPath] <String>
+ [<CommonParameters>]
+```
+
+### Launch
+```
+Get-AzureRmRemoteDesktopFile [-ResourceGroupName] <String> [-Name] <String> [[-LocalPath] <String>] [-Launch]
  [<CommonParameters>]
 ```
 
@@ -48,7 +48,7 @@ Parameter Sets: Launch
 Aliases: 
 
 Required: True
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -59,11 +59,11 @@ Specifies the local full path where this cmdlet stores the .rdp file.
 
 ```yaml
 Type: String
-Parameter Sets: Launch
+Parameter Sets: Download
 Aliases: 
 
-Required: False
-Position: 3
+Required: True
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -71,11 +71,11 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: Download
+Parameter Sets: Launch
 Aliases: 
 
-Required: True
-Position: 3
+Required: False
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -90,7 +90,7 @@ Parameter Sets: (All)
 Aliases: ResourceName, VMName
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -105,7 +105,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

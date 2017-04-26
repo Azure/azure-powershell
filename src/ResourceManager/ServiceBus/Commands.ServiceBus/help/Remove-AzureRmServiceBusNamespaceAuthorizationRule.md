@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmServiceBusNamespaceAuthorizationRule
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes the authorization rule of a Service Bus namespace from the specified resource group.
 
 ## SYNTAX
 
@@ -17,21 +17,21 @@ Remove-AzureRmServiceBusNamespaceAuthorizationRule [-ResourceGroup] <String> [-N
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzureRmServiceBusNamespaceAuthorizationRule** cmdlet removes the authorization rule of a Service Bus namespace for the specified resource group.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmServiceBusNamespaceAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -AuthorizationRuleName AuthoRule1
 ```
 
-{{ Add example description here }}
+Removes the authorization rule `SBAuthoRule1` of namespace `SB-Example1` from the specified resource group.
 
 ## PARAMETERS
 
 ### -AuthorizationRuleName
-Namespace AuthorizationRule Name.
+The namespace authorization rule name.
 
 ```yaml
 Type: String
@@ -40,6 +40,36 @@ Aliases:
 
 Required: True
 Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -NamespaceName
+The Service Bus namespace name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroup
+The name of the resource group.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -57,36 +87,6 @@ Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NamespaceName
-Namespace Name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroup
-The name of the resource group
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -111,11 +111,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### -ResourceGroup
+ System.String
+
+### -NamespaceName
+ System.String
+
+### -AuthorizationRuleName
+ System.String
 
 ## OUTPUTS
-
-### System.Boolean
 
 ## NOTES
 

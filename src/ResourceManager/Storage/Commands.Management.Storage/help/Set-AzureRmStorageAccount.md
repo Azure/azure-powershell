@@ -17,8 +17,8 @@ Set-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force
  [[-AccessTier] <String>] [[-CustomDomainName] <String>] [[-UseSubDomain] <Boolean>]
  [[-EnableEncryptionService] <EncryptionSupportServiceEnum>]
  [[-DisableEncryptionService] <EncryptionSupportServiceEnum>] [[-Tag] <Hashtable>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-EnableHttpsTrafficOnly <Boolean>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,13 +41,19 @@ PS C:\>Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountNa
 
 This command sets a custom domain for a Storage account.
 
-### Example 3: Enable encryption and set the access tier value
+### Example 3: Enable encryption on Blob and File Services
 ```
-PS C:\>Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -EnableEncryptionService Blob -AccessTier Cool
+PS C:\>Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -EnableEncryptionService "Blob,File"
 ```
 
-This command enables Storage Service encryption for a Storage account.
-The command also sets the Access Tier type to be cool.
+This command enables Storage Service encryption on Blob and File for a Storage account.
+
+### Example 4: Set the access tier value
+```
+PS C:\>Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -AccessTier Cool
+```
+
+The command sets the Access Tier value to be cool.
 
 ## PARAMETERS
 
@@ -180,7 +186,7 @@ Accept wildcard characters: False
 
 ### -EnableEncryptionService
 Indicates whether this cmdlet enables Storage Service encryption on the Storage Service.
-Currently, only the Blob Service is supported.
+Azure Blob and Azure File Services are supported.
 
 ```yaml
 Type: EncryptionSupportServiceEnum
@@ -196,7 +202,7 @@ Accept wildcard characters: False
 
 ### -DisableEncryptionService
 Indicates whether this cmdlet disables Storage Service encryption on the Storage Service.
-Currently, only the Blob Service is supported.
+Azure Blob and Azure File Services are supported.
 
 ```yaml
 Type: EncryptionSupportServiceEnum
@@ -222,6 +228,19 @@ Aliases: Tags
 
 Required: False
 Position: 8
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EnableHttpsTrafficOnly
+Indicates whether or not the Storage Account only enable https traffic.```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

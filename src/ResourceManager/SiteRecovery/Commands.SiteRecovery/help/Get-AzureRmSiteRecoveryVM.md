@@ -35,6 +35,36 @@ The **Get-AzureRmSiteRecoveryVM** cmdlet gets information about virtual machines
 
 ## PARAMETERS
 
+### -FriendlyName
+Specifies the friendly name of the virtual machine.
+
+```yaml
+Type: String
+Parameter Sets: ByObjectWithFriendlyName
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the name of the virtual machine.
+
+```yaml
+Type: String
+Parameter Sets: ByObjectWithName
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProtectionContainer
 Specifies the Site Recovery protection container object.
 
@@ -59,36 +89,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-Specifies the name of the virtual machine.
-
-```yaml
-Type: String
-Parameter Sets: ByObjectWithName
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FriendlyName
-Specifies the friendly name of the virtual machine.
-
-```yaml
-Type: String
-Parameter Sets: ByObjectWithFriendlyName
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

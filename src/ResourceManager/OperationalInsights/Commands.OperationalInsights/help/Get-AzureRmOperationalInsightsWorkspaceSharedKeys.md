@@ -14,7 +14,7 @@ Gets the shared keys for a workspace.
 
 ```
 Get-AzureRmOperationalInsightsWorkspaceSharedKeys [-ResourceGroupName] <String> [-Name] <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,21 +40,6 @@ The command gets the shared keys for that workspace.
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the name of an Azure resource group.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Name
 Specifies the workspace name.
 
@@ -70,42 +55,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -ResourceGroupName
+Specifies the name of an Azure resource group.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

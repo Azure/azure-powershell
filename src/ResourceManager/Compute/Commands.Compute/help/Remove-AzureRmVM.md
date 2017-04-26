@@ -46,37 +46,33 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Id
-Specifies the Resource ID of the virtual machine.
-
-```yaml
+The resource group name.```yaml
 Type: String
 Parameter Sets: IdParameterSetName
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the virtual machine to remove.
-
-```yaml
+The resource name.```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: ResourceName, VMName
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -91,7 +87,7 @@ Parameter Sets: ResourceGroupNameParameterSetName
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

@@ -14,8 +14,7 @@ Gets the history of triggers in a logic app.
 
 ```
 Get-AzureRmLogicAppTriggerHistory -ResourceGroupName <String> -Name <String> -TriggerName <String>
- [-HistoryName <String>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ [-HistoryName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +37,7 @@ EndTime     : 1/13/2016 2:42:26 PM
 Error       : {code, message}
 Fired       : False
 InputsLink  : https://flowprodcu02by01.blob.core.windows.net/flow3ea9ffd11c684c9f9f258b1a6ea5cb6020160113t000000zcontent/A7392_d1e831de68ac4ef89d19a40f05e663
-              cb_httpTrigger:5Finputs:2Ejson?sv=2014-02-14&sr=b&sig=rASa1yg14P71ioIStAji5HJfTFCbSjD3LNt2Ypn%2Byg4%3D&se=2016-01-14T16%3A15%3A16Z&sp=r
+              cb_httpTrigger:5Finputs:2Ejson?sv=2014-02-14&sr=b&sig=&se=2016-01-14T16%3A15%3A16Z&sp=r
 Name        : 08587489107387695768
 OutputsLink : 
 Run         : 
@@ -58,7 +57,7 @@ EndTime     : 1/13/2016 2:43:33 PM
 Error       : {code, message}
 Fired       : False
 InputsLink  : https://flowprodcu02by01.blob.core.windows.net/flow3ea9ffd11c684c9f9f258b1a6ea5cb6020160113t000000zcontent/CAB46_60e2ad0f0e1947e8b5798716914c5d
-              b6_httpTrigger:5Finputs:2Ejson?sv=2014-02-14&sr=b&sig=aoyjajRfk5tQucYE%2BW6h9Is%2BAHSE7AcojY%2FOag6DWRA%3D&se=2016-01-14T16%3A18%3A27Z&sp=r
+              b6_httpTrigger:5Finputs:2Ejson?sv=2014-02-14&sr=b&sig=&se=2016-01-14T16%3A18%3A27Z&sp=r
 Name        : 08587489106716457817
 OutputsLink : 
 Run         : 
@@ -72,7 +71,7 @@ EndTime     : 1/13/2016 2:42:26 PM
 Error       : {code, message}
 Fired       : False
 InputsLink  : https://flowprodcu02by01.blob.core.windows.net/flow3ea9ffd11c684c9f9f258b1a6ea5cb6020160113t000000zcontent/A7392_d1e831de68ac4ef89d19a40f05e663
-              cb_httpTrigger:5Finputs:2Ejson?sv=2014-02-14&sr=b&sig=XNBbA0FkBQmGPDd%2Be03J0Vsdj4aFRG9YK5YBJwzBbO0%3D&se=2016-01-14T16%3A18%3A27Z&sp=r
+              cb_httpTrigger:5Finputs:2Ejson?sv=2014-02-14&sr=b&sig=&se=2016-01-14T16%3A18%3A27Z&sp=r
 Name        : 08587489107387695768
 OutputsLink : 
 Run         : 
@@ -86,18 +85,18 @@ This command gets the workflow trigger histories for a trigger in the logic app 
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the name of the resource group in which this cmdlet gets history.
+### -HistoryName
+Specifies the name of the history that this cmdlet gets.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -108,6 +107,21 @@ Specifies the name of the logic app for which this cmdlet gets trigger history.
 Type: String
 Parameter Sets: (All)
 Aliases: ResourceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the name of the resource group in which this cmdlet gets history.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
 
 Required: True
 Position: Named
@@ -128,60 +142,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -HistoryName
-Specifies the name of the history that this cmdlet gets.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

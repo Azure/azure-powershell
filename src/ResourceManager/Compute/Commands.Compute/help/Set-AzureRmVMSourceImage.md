@@ -12,9 +12,15 @@ Specifies the platform image for a virtual machine.
 
 ## SYNTAX
 
+### ImageReferenceSkuParameterSet (Default)
 ```
 Set-AzureRmVMSourceImage [-VM] <PSVirtualMachine> [-PublisherName] <String> [-Offer] <String> [-Skus] <String>
  [-Version] <String> [<CommonParameters>]
+```
+
+### ImageReferenceIdParameterSet
+```
+Set-AzureRmVMSourceImage [-VM] <PSVirtualMachine> [-Id] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,17 +46,32 @@ The **Get-AzureRmVMImagePublisher**, **Get-AzureRmVMImageOffer**, **Get-AzureRmV
 
 ## PARAMETERS
 
+### -Id
+Specifies the ID.
+
+```yaml
+Type: String
+Parameter Sets: ImageReferenceIdParameterSet
+Aliases: 
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Offer
 Specifies the type of VMImage offer.
 To obtain an image offer, use the Get-AzureRmVMImageOffer cmdlet.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ImageReferenceSkuParameterSet
 Aliases: 
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -62,11 +83,11 @@ To obtain a publisher, use the Get-AzureRmVMImagePublisher cmdlet.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ImageReferenceSkuParameterSet
 Aliases: 
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -78,11 +99,11 @@ To obtain SKUs, use the Get-AzureRmVMImageSku cmdlet.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ImageReferenceSkuParameterSet
 Aliases: 
 
 Required: True
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -94,11 +115,11 @@ To use the latest version, specify a value of latest instead of a particular ver
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ImageReferenceSkuParameterSet
 Aliases: 
 
 Required: True
-Position: 5
+Position: 4
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -113,7 +134,7 @@ Parameter Sets: (All)
 Aliases: VMProfile
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False

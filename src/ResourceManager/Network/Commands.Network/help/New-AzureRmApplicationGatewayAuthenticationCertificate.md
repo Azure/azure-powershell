@@ -13,9 +13,8 @@ Creates an authentication certificate for an application gateway.
 ## SYNTAX
 
 ```
-New-AzureRmApplicationGatewayAuthenticationCertificate -Name <String> -CertificateFile <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzureRmApplicationGatewayAuthenticationCertificate -Name <String> -CertificateFile <String> [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,21 +28,6 @@ The **New-AzureRmApplicationGatewayAuthenticationCertificate** cmdlet creates an
 ```
 
 ## PARAMETERS
-
-### -Name
-Specifies a name for the authentication certificate.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -CertificateFile
 Specifies the path of the authentication certificate.
@@ -60,41 +44,32 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -Name
+Specifies a name for the authentication certificate.
 
 ```yaml
-Type: ActionPreference
+Type: String
 Parameter Sets: (All)
-Aliases: infa
+Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: iv
+Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -107,21 +82,6 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named

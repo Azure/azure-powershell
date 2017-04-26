@@ -14,8 +14,7 @@ Removes a diagnostics extension from the VMSS.
 
 ```
 Remove-AzureRmVmssDiagnosticsExtension [-VirtualMachineScaleSet] <VirtualMachineScaleSet> [[-Name] <String>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,21 +31,6 @@ This command removes diagnostics extension from the VMSS.
 
 ## PARAMETERS
 
-### -VirtualMachineScaleSet
-Specifies the VMSS from which to remove the extension.
-
-```yaml
-Type: VirtualMachineScaleSet
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 Specifies the name of the extension that this cmdlet removes from the VMSS.
 
@@ -62,42 +46,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -VirtualMachineScaleSet
+Specifies the VMSS from which to remove the extension.
 
 ```yaml
-Type: ActionPreference
+Type: VirtualMachineScaleSet
 Parameter Sets: (All)
-Aliases: infa
+Aliases: 
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 

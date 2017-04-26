@@ -20,6 +20,12 @@
 -->
 ## Current Release
 
+## Version 0.2.0
+
+## Version 0.1.0
+
+## Version 0.0.3
+
 ## Version 0.0.2
 * Add SkuCapacity parameter to Set-AzureRmServiceBusNamespace
     - User will be able to update the SkuCapacity(Messaging units in case of a premium namespace) of the SeriveBus NameSpace

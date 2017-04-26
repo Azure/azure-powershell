@@ -15,15 +15,13 @@ Adds a subnet configuration to a virtual network.
 ### SetByResource (Default)
 ```
 Add-AzureRmVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork> -AddressPrefix <String>
- [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
 Add-AzureRmVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork> -AddressPrefix <String>
- [-NetworkSecurityGroupId <String>] [-RouteTableId <String>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ [-NetworkSecurityGroupId <String>] [-RouteTableId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,14 +37,15 @@ New-AzureRmResourceGroup -Name TestResourceGroup -Location centralus
     Add-AzureRmVirtualNetworkSubnetConfig -Name backendSubnet -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.2.0/24"
     $virtualNetwork | Set-AzureRmVirtualNetwork
 ```
+
   This example first creates a resource group as a container of the resources to be created. It then creates a subnet configuration and uses it to create a virtual network. The 
     Add-AzureRmVirtualNetworkSubnetConfig is then used to add a subnet to the in-memory representation of the virtual network. The Set-AzureRmVirtualNetwork command updates the existing virtual 
     network with the new subnet.
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the subnet configuration to add.
+### -AddressPrefix
+Specifies a range of IP addresses for a subnet configuration.
 
 ```yaml
 Type: String
@@ -60,23 +59,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VirtualNetwork
-Specifies the **VirtualNetwork** object in which to add a subnet configuration.
-
-```yaml
-Type: PSVirtualNetwork
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -AddressPrefix
-Specifies a range of IP addresses for a subnet configuration.
+### -Name
+Specifies the name of the subnet configuration to add.
 
 ```yaml
 Type: String
@@ -106,10 +90,12 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -RouteTable
+### -NetworkSecurityGroupId
+Specifies the ID of a network security group.
+
 ```yaml
-Type: PSRouteTable
-Parameter Sets: SetByResource
+Type: String
+Parameter Sets: SetByResourceId
 Aliases: 
 
 Required: False
@@ -119,51 +105,10 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
+### -RouteTable
 ```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NetworkSecurityGroupId
-Specifies the ID of a network security group.
-
-```yaml
-Type: String
-Parameter Sets: SetByResourceId
+Type: PSRouteTable
+Parameter Sets: SetByResource
 Aliases: 
 
 Required: False
@@ -183,6 +128,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -VirtualNetwork
+Specifies the **VirtualNetwork** object in which to add a subnet configuration.
+
+```yaml
+Type: PSVirtualNetwork
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

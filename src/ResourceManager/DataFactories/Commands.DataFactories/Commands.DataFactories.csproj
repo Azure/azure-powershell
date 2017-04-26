@@ -63,7 +63,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.DataFactories, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataFactories.4.7.0\lib\net45\Microsoft.Azure.Management.DataFactories.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataFactories.4.11.1\lib\net45\Microsoft.Azure.Management.DataFactories.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -95,7 +95,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.4\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.5\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -259,12 +259,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Microsoft.Azure.Commands.DataFactories.dll-Help.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
       <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
       <Name>Commands.Common.Authentication</Name>
@@ -279,4 +273,10 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="AfterBuild">
+    <ItemGroup>
+      <MarkdownFiles Include="$(ProjectDir)help\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
+  </Target>
 </Project>

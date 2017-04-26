@@ -13,8 +13,8 @@ Removes the VMSS or a virtual machine that is within the VMSS.
 ## SYNTAX
 
 ```
-Remove-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String> [[-InstanceId] <String[]>]
- [<CommonParameters>]
+Remove-AzureRmVmss [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-VMScaleSetName] <String>
+ [[-InstanceId] <String[]>] [-Force] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,6 +40,21 @@ This command removes the virtual machine with instance ID 3 from the VMSS named 
 
 ## PARAMETERS
 
+### -Force
+Forces the command to run without asking for user confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InstanceId
 Specifies, as a string array, the ID of the instances that need to be started.
 For instance: `-InstanceId "0", "3"`
@@ -50,7 +65,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -65,7 +80,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -81,9 +96,37 @@ Parameter Sets: (All)
 Aliases: Name
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

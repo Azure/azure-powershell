@@ -1,4 +1,4 @@
-﻿// Licensed under the Apache License, Version 2.0 (the "License");
+// Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 // http://www.apache.org/licenses/LICENSE-2.0
@@ -14,7 +14,7 @@ using Microsoft.Azure.Commands.Sql.Database.Services;
 using Microsoft.Azure.Commands.Sql.ImportExport.Model;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 
 namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
 {

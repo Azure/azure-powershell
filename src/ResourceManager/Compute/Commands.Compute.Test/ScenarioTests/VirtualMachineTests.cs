@@ -33,6 +33,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachine_Managed()
+        {
+            ComputeTestController.NewInstance.RunPsTest(@"Test-VirtualMachine $null $true");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachinePiping()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachinePiping");
@@ -150,7 +157,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-GetVMSizeFromAllLocations");
         }
 
-        [Fact(Skip = "TODO: OOM issue when writing the result")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineListWithPaging()
         {
@@ -197,6 +204,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVirtualMachineGetStatus()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineGetStatus");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineManagedDiskConversion()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineManagedDiskConversion");
         }
     }
 }

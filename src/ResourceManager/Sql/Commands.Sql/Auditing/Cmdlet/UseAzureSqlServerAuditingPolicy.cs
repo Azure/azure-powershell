@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -44,8 +44,14 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         protected override AuditingPolicyModel ApplyUserInputToModel(AuditingPolicyModel baseModel)
         {
             base.ApplyUserInputToModel(baseModel);
-            AuditType = AuditType.Table;
-            ApplyUserInputToTableAuditingModel(baseModel as DatabaseAuditingPolicyModel);
+            if (AuditType == AuditType.Table)
+            {
+                ApplyUserInputToTableAuditingModel(baseModel as DatabaseAuditingPolicyModel);
+            }
+            else
+            {
+                ApplyUserInputToBlobAuditingModel(baseModel as DatabaseBlobAuditingPolicyModel);
+            }
             return baseModel;
         }
 
@@ -64,15 +70,26 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             model.StorageAccountName = GetStorageAccountName();
         }
 
+        /// <summary>
+        /// If the user has table and blob auditing policies, the change will be applied for both.  
+        /// </summary>
+        /// <param name="model">A model object</param>
         protected override AuditingPolicyModel PersistChanges(AuditingPolicyModel model)
         {
             base.PersistChanges(model);
             Action swapAuditType = () => { AuditType = AuditType == AuditType.Blob ? AuditType.Table : AuditType.Blob; };
             swapAuditType();
             var otherAuditingTypePolicyModel = GetEntity();
-            if ((otherAuditingTypePolicyModel != null) && (otherAuditingTypePolicyModel.AuditType == AuditType.Blob))
+            if (otherAuditingTypePolicyModel != null)
             {
-                ApplyUserInputToBlobAuditingModel(otherAuditingTypePolicyModel as DatabaseBlobAuditingPolicyModel);
+                if (otherAuditingTypePolicyModel.AuditType == AuditType.Table)
+                {
+                    ApplyUserInputToTableAuditingModel(otherAuditingTypePolicyModel as DatabaseAuditingPolicyModel);
+                }
+                else
+                {
+                    ApplyUserInputToBlobAuditingModel(otherAuditingTypePolicyModel as DatabaseBlobAuditingPolicyModel);
+                }
                 base.PersistChanges(otherAuditingTypePolicyModel);
             }
             swapAuditType();

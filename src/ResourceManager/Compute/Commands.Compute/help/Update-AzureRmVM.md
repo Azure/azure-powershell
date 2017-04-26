@@ -31,11 +31,11 @@ The **Update-AzureRmVM** cmdlet updates the state of an Azure virtual machine to
 
 ### Example 1: Update a virtual machine
 ```
-PS C:\>Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -VM $VirtualMachine
+PS C:\>Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachine
 ```
 
-This command updates the virtual machine named VirtualMachine07 in ResourceGroup11.
-The command updates it by using another virtual machine object, stored in the $VirtualMachine variable.
+This command updates the virtual machine, $VirtualMachine, in ResourceGroup11.
+The command updates it by using the virtual machine object stored in the $VirtualMachine variable.
 To obtain a virtual machine object, use the **Get-AzureRmVM** cmdlet.
 
 ## PARAMETERS
@@ -49,7 +49,7 @@ Parameter Sets: IdParameterSetName
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -64,7 +64,7 @@ Parameter Sets: ResourceGroupNameParameterSetName
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

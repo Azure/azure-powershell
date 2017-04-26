@@ -16,7 +16,8 @@ Creates a Storage account.
 New-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <String>
  [-Location] <String> [[-Kind] <String>] [[-AccessTier] <String>] [[-CustomDomainName] <String>]
  [[-UseSubDomain] <Boolean>] [[-EnableEncryptionService] <EncryptionSupportServiceEnum>] [[-Tag] <Hashtable>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-EnableHttpsTrafficOnly <Boolean>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +38,14 @@ PS C:\>New-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountNa
 ```
 
 This command creates a Blob Storage account that uses the hot access type.
-The account has enabled Storage Service encryption.
+The account has enabled Storage Service encryption on Blob Service.
+
+### Example 3: Create a Storage account that Enable Storage Service encryption on Blob and File Services
+```
+PS C:\>New-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -Location "US West" -SkuName "Standard_GRS" -EnableEncryptionService "Blob,File"
+```
+
+This command creates a Storage account that enabled Storage Service encryption on Blob and File Services.
 
 ## PARAMETERS
 
@@ -191,7 +199,7 @@ Accept wildcard characters: False
 
 ### -EnableEncryptionService
 Indicates whether this cmdlet enables Storage Service encryption on the Storage Service.
-Currently, only the Blob Service is supported.
+Azure Blob and Azure File Services are supported.
 
 ```yaml
 Type: EncryptionSupportServiceEnum
@@ -219,6 +227,19 @@ Required: False
 Position: 9
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableHttpsTrafficOnly
+Indicates whether or not the Storage Account only enable https traffic.```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

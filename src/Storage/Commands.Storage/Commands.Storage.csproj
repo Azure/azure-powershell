@@ -82,7 +82,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Rest.ClientRuntime.2.3.4\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.Rest.ClientRuntime.2.3.5\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -283,12 +283,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="..\Azure.Storage.psd1">
       <Link>Azure.Storage.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -315,5 +309,11 @@
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="AfterBuild">
+    <ItemGroup>
+      <MarkdownFiles Include="$(ProjectDir)help\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
+  </Target>
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
 </Project>

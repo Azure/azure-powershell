@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
@@ -20,7 +22,7 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Parameter(
                Mandatory = true,
-               HelpMessage = "Whether web application firewall functionality is enabled")]
+               HelpMessage = "Whether web application firewall functionality is enabled or not.")]
         [ValidateNotNullOrEmpty]
         public bool Enabled { get; set; }
 
@@ -31,9 +33,37 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string FirewallMode { get; set; }
 
+
+        [Parameter(
+               Mandatory = false,
+               HelpMessage = "The type of the web application firewall rule set.")]
+        [ValidateSet("OWASP")]
+        public string RuleSetType { get; set; }
+
+        [Parameter(
+               Mandatory = false,
+               HelpMessage = "The version of the rule set type.")]
+        [ValidateSet("3.0", "2.2.9")]
+        public string RuleSetVersion { get; set; }
+
+        [Parameter(
+               Mandatory = false,
+               HelpMessage = "The disabled rule groups.")]
+        [ValidateNotNullOrEmpty]
+        public List<PSApplicationGatewayFirewallDisabledRuleGroup> DisabledRuleGroups { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+            
+            if (!this.MyInvocation.BoundParameters.ContainsKey("RuleSetType"))
+            {
+                this.RuleSetType = "OWASP";
+            }
+            if (!this.MyInvocation.BoundParameters.ContainsKey("RuleSetVersion"))
+            {
+                this.RuleSetVersion = "3.0";
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -39,6 +39,20 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestDatabaseTransparentDataEncryptionGet()
         {
             RunPowerShellTest("Test-GetTransparentDataEncryption");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerTransparentDataEncryptionProtectorGet()
+        {
+            RunPowerShellTest("Test-GetTransparentDataEncryptionProtector");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerTransparentDataEncryptionProtectorSet()
+        {
+            RunPowerShellTest("Test-SetTransparentDataEncryptionProtector");
         }
     }
 }

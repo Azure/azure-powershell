@@ -15,21 +15,21 @@ Adds a Chef extension to a virtual machine.
 ### Linux
 ```
 Set-AzureRmVMChefExtension [-ResourceGroupName] <String> [-VMName] <String> [[-TypeHandlerVersion] <String>]
- -ValidationPem <String> [-ClientRb <String>] [-BootstrapOptions <String>] [-RunList <String>]
- [-ChefServerUrl <String>] [-ValidationClientName <String>] [-OrganizationName <String>]
+ -ValidationPem <String> [-ClientRb <String>] [-BootstrapOptions <String>] [-JsonAttribute <String>]
+ [-ChefServiceInterval <String>] [-Daemon <String>] [-Secret <String>] [-SecretFile <String>]
+ [-RunList <String>] [-ChefServerUrl <String>] [-ValidationClientName <String>] [-OrganizationName <String>]
  [-BootstrapVersion <String>] [-Linux] [[-Location] <String>] [[-Name] <String>]
  [[-AutoUpgradeMinorVersion] <Boolean>] [-WhatIf] [-Confirm] [<CommonParameters>]
- [-Secret <String>]
 ```
 
 ### Windows
 ```
 Set-AzureRmVMChefExtension [-ResourceGroupName] <String> [-VMName] <String> [[-TypeHandlerVersion] <String>]
- -ValidationPem <String> [-ClientRb <String>] [-BootstrapOptions <String>] [-RunList <String>]
- [-ChefServerUrl <String>] [-ValidationClientName <String>] [-OrganizationName <String>]
+ -ValidationPem <String> [-ClientRb <String>] [-BootstrapOptions <String>] [-JsonAttribute <String>]
+ [-ChefServiceInterval <String>] [-Daemon <String>] [-Secret <String>] [-SecretFile <String>]
+ [-RunList <String>] [-ChefServerUrl <String>] [-ValidationClientName <String>] [-OrganizationName <String>]
  [-BootstrapVersion <String>] [-Windows] [[-Location] <String>] [[-Name] <String>]
  [[-AutoUpgradeMinorVersion] <Boolean>] [-WhatIf] [-Confirm] [<CommonParameters>]
- [-Daemon <String>] [-SecretFile <String>]
 ```
 
 ## DESCRIPTION
@@ -71,7 +71,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 11
+Position: 10
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -122,10 +122,56 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ChefServiceInterval
+Specifies the frequency (in minutes) at which the chef-service runs. If in case you don't want the chef-service to be installed on the Azure VM then set value as 0 in this field.```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ClientRb
 Specifies the full path of the Chef client.rb.
 
 ```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Daemon
+Configures the chef-client service for unattended execution. The node platform should be Windows.
+Allowed options: 'none','service' and 'task'.
+none - Currently prevents the chef-client service from being configured as a service.
+service - Configures the chef-client to run automatically in the background as a service.
+task - Configures the chef-client to run automatically in the background as a secheduled task.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: none, service, task
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -JsonAttribute
+A JSON string to be added to the first run of chef-client. e.g. -JsonAttribute '{"foo" : "bar"}'```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -161,7 +207,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 8
+Position: 7
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -176,7 +222,7 @@ Parameter Sets: (All)
 Aliases: ExtensionName
 
 Required: False
-Position: 9
+Position: 8
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -206,7 +252,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -214,6 +260,36 @@ Accept wildcard characters: False
 
 ### -RunList
 Specifies the Chef node run list.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Secret
+The encryption key used to encrypt and decrypt the data bag item values.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SecretFile
+The path to the file that contains the encryption key used to encrypt and decrypt the data bag item values.
 
 ```yaml
 Type: String
@@ -236,7 +312,7 @@ Parameter Sets: (All)
 Aliases: HandlerVersion, Version
 
 Required: False
-Position: 10
+Position: 9
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -280,55 +356,7 @@ Parameter Sets: (All)
 Aliases: ResourceName
 
 Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Daemon
-Configures the chef-client service for unattended execution. The node platform should be Windows.
-Options: 'none' or 'service'
-none - Currently prevents the chef-client service from being configured as a service.
-service - Configures the chef-client to run automatically in the background as a service.
-
-```yaml
-Type: String
-Parameter Sets: Windows
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Secret
-The encryption key used to encrypt and decrypt the data bag item values.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SecretFile
-The path to the file that contains the encryption key used to encrypt and decrypt the data bag item values.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

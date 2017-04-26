@@ -56,8 +56,8 @@
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.CognitiveServices, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.CognitiveServices.0.1.1-preview\lib\net45\Microsoft.Azure.Management.CognitiveServices.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.CognitiveServices, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.CognitiveServices.0.2.1-preview\lib\net45\Microsoft.Azure.Management.CognitiveServices.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.3.860, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -69,11 +69,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.4\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.5\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.4\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.5\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -140,10 +140,6 @@
     <None Include="Microsoft.Azure.Commands.Management.CognitiveServices.dll-Help.psd1">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-    <Content Include="Microsoft.Azure.Commands.Management.CognitiveServices.dll-Help.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
-    </Content>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -168,4 +164,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="AfterBuild">
+    <ItemGroup>
+      <MarkdownFiles Include="$(ProjectDir)help\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
+  </Target>
 </Project>

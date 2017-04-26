@@ -22,14 +22,14 @@ Set-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-Generalized] [<Co
 Set-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-Redeploy] [<CommonParameters>]
 ```
 
-### RedeployIdParameterSetName
-```
-Set-AzureRmVM [-Id] <String> [-Name] <String> [-Redeploy] [<CommonParameters>]
-```
-
 ### GeneralizeIdParameterSetName
 ```
 Set-AzureRmVM [-Id] <String> [-Name] <String> [-Generalized] [<CommonParameters>]
+```
+
+### RedeployIdParameterSetName
+```
+Set-AzureRmVM [-Id] <String> [-Name] <String> [-Redeploy] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,7 +56,7 @@ Parameter Sets: GeneralizeResourceGroupNameParameterSetName, GeneralizeIdParamet
 Aliases: 
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -67,11 +67,11 @@ Specifies the Resource ID of the virtual machine.
 
 ```yaml
 Type: String
-Parameter Sets: RedeployIdParameterSetName, GeneralizeIdParameterSetName
+Parameter Sets: GeneralizeIdParameterSetName, RedeployIdParameterSetName
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -86,7 +86,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -103,7 +103,7 @@ Parameter Sets: RedeployResourceGroupNameParameterSetName, RedeployIdParameterSe
 Aliases: 
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -118,7 +118,7 @@ Parameter Sets: GeneralizeResourceGroupNameParameterSetName, RedeployResourceGro
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

@@ -90,20 +90,42 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             else if (!string.IsNullOrEmpty(resourceGroupName))
             {
                 var result = VirtualMachineScaleSetsClient.List(resourceGroupName);
-                var psObject = new List<PSVirtualMachineScaleSetList>();
-                foreach (var r in result)
+                var resultList = result.ToList();
+                var nextPageLink = result.NextPageLink;
+                while (!string.IsNullOrEmpty(nextPageLink))
                 {
-                     psObject.Add(Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSetList>(r));
+                    var pageResult = VirtualMachineScaleSetsClient.ListNext(nextPageLink);
+                    foreach (var pageItem in pageResult)
+                    {
+                        resultList.Add(pageItem);
+                    }
+                    nextPageLink = pageResult.NextPageLink;
+                }
+                var psObject = new List<PSVirtualMachineScaleSetList>();
+                foreach (var r in resultList)
+                {
+                    psObject.Add(Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSetList>(r));
                 }
                 WriteObject(psObject);
             }
             else
             {
                 var result = VirtualMachineScaleSetsClient.ListAll();
-                var psObject = new List<PSVirtualMachineScaleSetList>();
-                foreach (var r in result)
+                var resultList = result.ToList();
+                var nextPageLink = result.NextPageLink;
+                while (!string.IsNullOrEmpty(nextPageLink))
                 {
-                     psObject.Add(Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSetList>(r));
+                    var pageResult = VirtualMachineScaleSetsClient.ListAllNext(nextPageLink);
+                    foreach (var pageItem in pageResult)
+                    {
+                        resultList.Add(pageItem);
+                    }
+                    nextPageLink = pageResult.NextPageLink;
+                }
+                var psObject = new List<PSVirtualMachineScaleSetList>();
+                foreach (var r in resultList)
+                {
+                    psObject.Add(Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSetList>(r));
                 }
                 WriteObject(psObject);
             }
@@ -197,12 +219,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 ParameterSetName = "InvokeByDynamicParametersForFriendMethod",
                 Position = 3,
-                Mandatory = true
-            });
-            pInstanceView.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByStaticParametersForFriendMethod",
-                Position = 4,
                 Mandatory = true
             });
             pInstanceView.Attributes.Add(new AllowNullAttribute());

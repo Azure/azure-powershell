@@ -18,6 +18,19 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Upgrade SRP SDK to 6.3.0
+* New/Set-AzureRmStorageAccount:Add a new parameter to support EnableHttpsTrafficOnly
+* New/Set/Get-AzureRmStorageAccount: Returned Storage Account contains a new attribute EnableHttpsTrafficOnly
+## Version 2.8.0
+
+## Version 2.7.0
+
+## Version 2.6.0
+* Upgrade Microsoft.Azure.Management.Storage to version 6.1.0-preview
+* Add File Encryption features support to resource mode storage account cmdlets
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
+
 
 ## Version 2.5.0
 

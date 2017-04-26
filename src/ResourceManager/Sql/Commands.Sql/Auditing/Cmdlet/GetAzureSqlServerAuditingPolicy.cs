@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// <summary>
     /// Returns the auditing policy of a specific database server.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerAuditingPolicy", SupportsShouldProcess = true), OutputType(typeof(AuditingPolicyModel))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerAuditingPolicy", SupportsShouldProcess = true), OutputType(typeof (AuditingPolicyModel))]
     [Alias("Get-AzureRmSqlDatabaseServerAuditingPolicy")]
     public class GetAzureSqlServerAuditingPolicy : SqlDatabaseServerAuditingCmdletBase
     {
@@ -31,28 +31,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         protected override AuditingPolicyModel PersistChanges(AuditingPolicyModel model)
         {
             return null;
-        }
-
-        /// <summary>
-        /// Provides the model element that this cmdlet operates on
-        /// </summary>
-        /// <returns>A model object</returns>
-        protected override AuditingPolicyModel GetEntity()
-        {
-            AuditType = AuditType.Table;
-            var tablePolicy = base.GetEntity();
-            AuditType = AuditType.Blob;
-            var blobPolicy = base.GetEntity();
-
-            // If the user has blob auditing on on the resource we return that policy no mateer what is his table auditing policy
-            if ((blobPolicy != null) && (blobPolicy.AuditState == AuditStateType.Enabled))
-            {
-                return blobPolicy;
-            }
-            else
-            {
-                return tablePolicy;
-            }
         }
     }
 }

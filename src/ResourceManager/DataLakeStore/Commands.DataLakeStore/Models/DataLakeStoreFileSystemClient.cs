@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Management.DataLake.Store;
 using Microsoft.Azure.Management.DataLake.Store.Models;
-using Microsoft.Azure.Management.DataLake.StoreUploader;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -134,7 +133,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public AclStatus GetAclStatus(string filePath, string accountName)
         {
-            return _client.FileSystem.GetAclStatus(accountName, filePath).AclStatus;
+            return GetFullAcl(_client.FileSystem.GetAclStatus(accountName, filePath)).AclStatus;
         }
 
         public bool CheckAccess(string path, string accountName, string permissionsToCheck)
@@ -194,62 +193,117 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             return boolean != null && boolean.Value;
         }
 
-        public void DownloadFile(string filePath, string accountName, string destinationFilePath,
-            CancellationToken cmdletCancellationToken, bool overwrite = false, Cmdlet cmdletRunningRequest = null)
+        public IEnumerable<string> GetStreamRows(string streamPath, string accountName, int numRows, Encoding encoding, bool reverse=false)
         {
-            if (File.Exists(destinationFilePath) && overwrite)
+            // read data 4MB at a time
+            // when reading backwards, this may change to ensure that we don't re-read data as we approach the beginning of the file.
+            var dataPerRead = 4 * 1024 * 1024;
+            var fileLength = _client.FileSystem.GetFileStatus(accountName, streamPath).FileStatus.Length.GetValueOrDefault();
+            bool doneAfterRead = false;
+            var toReturn = new List<string>();
+            long initialOffset = 0;
+            if (fileLength <= dataPerRead)
             {
-                File.Delete(destinationFilePath);
+                doneAfterRead = true;
             }
 
-            if (File.Exists(destinationFilePath) && !overwrite)
+            if (reverse)
             {
-                throw new IOException(string.Format(Properties.Resources.LocalFileAlreadyExists, destinationFilePath));
-            }
-            // create all of the directories along the way.
-            if (!Directory.Exists(Path.GetDirectoryName(destinationFilePath)))
-            {
-                Directory.CreateDirectory(Path.GetDirectoryName(destinationFilePath));
+                initialOffset = fileLength - dataPerRead;
             }
 
-            var lengthToUse = GetFileStatus(filePath, accountName).Length.Value;
-            var numRequests = Math.Ceiling(lengthToUse / MaximumBytesPerDownloadRequest);
-
-            using (var fileStream = new FileStream(destinationFilePath, FileMode.CreateNew))
+            // while we haven't finished loading all the rows, keep grabbing content
+            var readRows = 0;
+            while (readRows < numRows)
             {
-                var progress = new ProgressRecord(
-                    0,
-                    "Download from DataLakeStore Store",
-                    string.Format("Downloading File in DataLakeStore Store Location: {0} to destination path: {1}",
-                        filePath, destinationFilePath));
-                long currentOffset = 0;
-                var bytesToRequest = (long)MaximumBytesPerDownloadRequest;
-
-                //TODO: defect: 4259238 (located here: http://vstfrd:8080/Azure/RD/_workitems/edit/4259238) needs to be resolved or the tracingadapter work around needs to be put back in
-                for (long i = 0; i < numRequests; i++)
+                if (initialOffset < 0)
                 {
-                    cmdletCancellationToken.ThrowIfCancellationRequested();
-                    progress.PercentComplete = (int)Math.Ceiling((i / numRequests) * 100);
-                    UpdateProgress(progress, cmdletRunningRequest);
-                    var responseStream =
-                        ReadFromFile(
-                            filePath,
-                            accountName,
-                            currentOffset,
-                            bytesToRequest);
-
-                    responseStream.CopyTo(fileStream);
-                    currentOffset += bytesToRequest;
+                    initialOffset = 0;
+                    doneAfterRead = true;
                 }
 
-                // final update to 100% completion
-                if (cmdletRunningRequest != null && !cmdletCancellationToken.IsCancellationRequested)
+                if (!reverse && initialOffset + dataPerRead >= fileLength)
                 {
-                    progress.PercentComplete = 100;
-                    progress.RecordType = ProgressRecordType.Completed;
-                    cmdletRunningRequest.WriteProgress(progress);
+                    doneAfterRead = true;
+                }
+
+                using (var streamReader = new StreamReader(_client.FileSystem.Open(accountName, streamPath, dataPerRead, initialOffset), encoding))
+                {
+                    // convert the entire stream into a string
+                    var streamAsString = streamReader.ReadToEnd();
+                    if (!streamAsString.Contains("\r") && !streamAsString.Contains("\n"))
+                    {
+                        // if there are any rows that we have already found, return those. Otherwise, return the full string
+                        if (toReturn.Count > 0)
+                        {
+                            return toReturn;
+                        }
+
+                        toReturn.Add(streamAsString);
+                        return toReturn;
+                    }
+
+                    StringReader reader = new StringReader(streamAsString);
+                    
+                    while(reader.Peek() >= 0)
+                    {
+                        toReturn.Add(reader.ReadLine());
+                        readRows++;
+                    }
+
+                    var streamAsBytes = encoding.GetBytes(streamAsString);
+                    // now find either the last (for head) or first (for tail) index of a new line in the stream.
+                    // set the offset to the character immediately after (for head) or before (for tail)
+                    // Then, for tail, subtract the amount of data that we want to read from that location (so read up to where the new line would be).
+                    var newOffset = StringExtensions.FindNewline(
+                        streamAsBytes,
+                        !reverse ? streamAsBytes.Length - 1 : 0,  // depending on if we are searching from the back or the front, the start index is either the front or back of the array
+                        streamAsBytes.Length,
+                        !reverse,
+                        encoding);
+
+                    if (reverse)
+                    {
+                        // subtract one from the new offset since we are not going to include the new lines
+                        // TODO:change to support multi-byte encodings
+                        newOffset -= 1;
+
+                        // if the new line was \r\n then we need to go back one more
+                        if ((char)streamAsBytes[newOffset] == '\r')
+                        {
+                            newOffset -= 1;
+                        }
+
+                        initialOffset += newOffset;
+                        initialOffset -= dataPerRead;
+
+                        if (initialOffset < 0)
+                        {
+                            dataPerRead = newOffset;
+                        }
+                    }
+                    else
+                    {
+                        // because we are searching from the back of the buffer for the last index, we can start the new offset
+                        // one character passed that new line character without fear.
+                        initialOffset += newOffset + 1;
+                    }
+                }
+
+                // this denotes that we did not get as many rows as desired but we ran out of file.
+                if (doneAfterRead)
+                {
+                    break;
                 }
             }
+            if (toReturn.LongCount() > numRows)
+            {
+                // we could end up with, at most, ~4mb of extra data worth of rows.
+                // this ensures that we only return either the top or tail number of
+                // rows the caller wants.
+                return toReturn.GetRange((int)(reverse ? toReturn.LongCount() - numRows : 0), numRows);
+            }
+            return toReturn;
         }
 
         public Stream PreviewFile(string filePath, string accountName, long bytesToPreview, long offset,
@@ -384,7 +438,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         }
 
         public void CopyFile(string destinationPath, string accountName, string sourcePath,
-            CancellationToken cmdletCancellationToken, int threadCount = 10, bool overwrite = false, bool resume = false,
+            CancellationToken cmdletCancellationToken, int threadCount = -1, bool overwrite = false, bool resume = false,
             bool isBinary = false, bool isDownload = false, Cmdlet cmdletRunningRequest = null, ProgressRecord parentProgress = null)
         {
             // Service client tracing is enabled, however issue: https://github.com/Azure/azure-powershell/issues/2499 is not yet resolved, so debug functionality can still potentially affect performance negatively.
@@ -419,12 +473,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             }
 
             // On update from the Data Lake store uploader, capture the progress.
-            var progressTracker = new System.Progress<UploadProgress>();
+            var progressTracker = new System.Progress<TransferProgress>();
             progressTracker.ProgressChanged += (s, e) =>
             {
                 lock (ConsoleOutputLock)
                 {
-                    var toSet = (int)(1.0 * e.UploadedByteCount / e.TotalFileLength * 100);
+                    var toSet = (int)(1.0 * e.TransferredByteCount / e.TotalFileLength * 100);
                     // powershell defect protection. If, through some defect in
                     // our progress tracking, the number is outside of 0 - 100,
                     // powershell will crash if it is set to that value. Instead
@@ -440,27 +494,50 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 }
             };
 
-            var uploadParameters = new UploadParameters(sourcePath, destinationPath, accountName, threadCount,
-                isOverwrite: overwrite, isResume: resume, isBinary: isBinary, isDownload: isDownload);
-            var uploader = new DataLakeStoreUploader(uploadParameters,
-                new DataLakeStoreFrontEndAdapter(accountName, _client, cmdletCancellationToken),
-                cmdletCancellationToken,
-                progressTracker);
-
+            Task transferTask;
             var previousExpect100 = ServicePointManager.Expect100Continue;
             try
             {
                 ServicePointManager.Expect100Continue = false;
-
-                // Execute the uploader.
-                var uploadTask = Task.Run(() =>
+                if (isDownload)
                 {
-                    cmdletCancellationToken.ThrowIfCancellationRequested();
-                    uploader.Execute();
-                    cmdletCancellationToken.ThrowIfCancellationRequested();
-                }, cmdletCancellationToken);
-
-                TrackUploadProgress(uploadTask, progress, cmdletRunningRequest, cmdletCancellationToken);
+                    transferTask = Task.Run(() =>
+                   {
+                       cmdletCancellationToken.ThrowIfCancellationRequested();
+                       _client.FileSystem.DownloadFile(
+                         accountName,
+                         sourcePath,
+                         destinationPath,
+                         threadCount,
+                         resume,
+                         overwrite,
+                         progressTracker,
+                         cmdletCancellationToken);
+                       cmdletCancellationToken.ThrowIfCancellationRequested();
+                   },
+                    cmdletCancellationToken);
+                }
+                else
+                {
+                    transferTask = Task.Run(() =>
+                    {
+                        cmdletCancellationToken.ThrowIfCancellationRequested();
+                        _client.FileSystem.UploadFile(
+                          accountName,
+                          sourcePath,
+                          destinationPath,
+                          threadCount,
+                          resume,
+                          overwrite,
+                          isBinary,
+                          progressTracker,
+                          cmdletCancellationToken);
+                        cmdletCancellationToken.ThrowIfCancellationRequested();
+                    },
+                    cmdletCancellationToken);
+                }
+                
+                TrackUploadProgress(transferTask, progress, cmdletRunningRequest, cmdletCancellationToken);
             }
             catch (Exception e)
             {
@@ -477,8 +554,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             string accountName,
             string sourceFolderPath,
             CancellationToken cmdletCancellationToken,
-            int concurrentFileCount = 5,
-            int perFileThreadCount = 10,
+            int concurrentFileCount = -1,
+            int perFileThreadCount = -1,
             bool recursive = false,
             bool overwrite = false,
             bool resume = false,
@@ -487,8 +564,19 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             bool isDownload = false,
             Cmdlet cmdletRunningRequest = null)
         {
-            var totalBytes = GetByteCountInDirectory(sourceFolderPath, recursive, isDownload, accountName);
-            var totalFiles = GetFileCountInDirectory(sourceFolderPath, recursive, isDownload, accountName);
+            long totalBytes;
+            long totalFiles;
+            if (isDownload)
+            {
+                var summary = _client.FileSystem.GetContentSummary(accountName, sourceFolderPath);
+                totalBytes = summary.ContentSummary.SpaceConsumed.GetValueOrDefault();
+                totalFiles = summary.ContentSummary.FileCount.GetValueOrDefault();
+            }
+            else
+            {
+                totalBytes = GetByteCountInDirectory(sourceFolderPath, recursive, accountName);
+                totalFiles = GetFileCountInDirectory(sourceFolderPath, recursive, accountName);
+            }
 
             var progress = new ProgressRecord(
                 uniqueActivityIdGenerator.Next(0, 10000000),
@@ -499,27 +587,19 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
             UpdateProgress(progress, cmdletRunningRequest);
 
-            var internalFolderThreads = concurrentFileCount <= 0 ? 5 : concurrentFileCount;
-            var internalFileThreads = perFileThreadCount <= 0 ? 10 : perFileThreadCount;
-
-            // we need to override the default .NET value for max connections to a host to our number of threads, if necessary (otherwise we won't achieve the parallelism we want)
-            var previousDefaultConnectionLimit = ServicePointManager.DefaultConnectionLimit;
             var previousExpect100 = ServicePointManager.Expect100Continue;
             try
             {
                 // Service client tracing is enabled, however issue: https://github.com/Azure/azure-powershell/issues/2499 is not yet resolved, so debug functionality can still potentially affect performance negatively.
-                ServicePointManager.DefaultConnectionLimit =
-                    Math.Max((internalFolderThreads * internalFileThreads) + internalFolderThreads,
-                        ServicePointManager.DefaultConnectionLimit);
                 ServicePointManager.Expect100Continue = false;
 
                 // On update from the Data Lake store uploader, capture the progress.
-                var progressTracker = new System.Progress<UploadFolderProgress>();
+                var progressTracker = new System.Progress<TransferFolderProgress>();
                 progressTracker.ProgressChanged += (s, e) =>
                 {
                     lock (ConsoleOutputLock)
                     {
-                        var toSet = (int)(1.0 * e.UploadedByteCount / e.TotalFileLength * 100);
+                        var toSet = (int)(1.0 * e.TransferredByteCount / e.TotalFileLength * 100);
                         // powershell defect protection. If, through some defect in
                         // our progress tracking, the number is outside of 0 - 100,
                         // powershell will crash if it is set to that value. Instead
@@ -533,29 +613,52 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                             progress.PercentComplete = toSet;
                         }
                         progress.Activity = string.Format("Copying Folder: {0}{1}. Total bytes remaining: {2}. Total files remaining: {3}",
-                            sourceFolderPath, recursive ? " recursively" : string.Empty, e.TotalFileLength - e.UploadedByteCount, e.TotalFileCount - e.UploadedFileCount);
+                            sourceFolderPath, recursive ? " recursively" : string.Empty, e.TotalFileLength - e.TransferredByteCount, e.TotalFileCount - e.TransferredFileCount);
                     }
                 };
 
-                var uploadParameters = new UploadParameters(sourceFolderPath, destinationFolderPath, accountName, internalFileThreads, internalFolderThreads,
-                    isOverwrite: overwrite, isResume: resume, isBinary: isBinary, isRecursive: recursive, isDownload: isDownload);
-                var uploader = new DataLakeStoreUploader(uploadParameters,
-                    new DataLakeStoreFrontEndAdapter(accountName, _client, cmdletCancellationToken),
-                    cmdletCancellationToken,
-                    folderProgressTracker: progressTracker);
-
-
-                    // Execute the uploader.
-                    var uploadTask = Task.Run(() =>
+                Task transferTask;
+                if (isDownload)
+                {
+                    transferTask = Task.Run(() =>
                     {
                         cmdletCancellationToken.ThrowIfCancellationRequested();
-                        uploader.Execute();
+                        _client.FileSystem.DownloadFolder(
+                            accountName,
+                            sourceFolderPath,
+                            destinationFolderPath,
+                            perFileThreadCount,
+                            concurrentFileCount,
+                            resume,
+                            overwrite,
+                            recursive,
+                            progressTracker,
+                            cmdletCancellationToken);
                         cmdletCancellationToken.ThrowIfCancellationRequested();
                     }, cmdletCancellationToken);
+                }
+                else
+                {
+                    transferTask = Task.Run(() =>
+                    {
+                        cmdletCancellationToken.ThrowIfCancellationRequested();
+                        _client.FileSystem.UploadFolder(
+                            accountName,
+                            sourceFolderPath,
+                            destinationFolderPath,
+                            perFileThreadCount,
+                            concurrentFileCount,
+                            resume,
+                            overwrite,
+                            isBinary,
+                            recursive,
+                            progressTracker,
+                            cmdletCancellationToken);
+                        cmdletCancellationToken.ThrowIfCancellationRequested();
+                    }, cmdletCancellationToken);
+                }
 
-                    TrackUploadProgress(uploadTask, progress, cmdletRunningRequest, cmdletCancellationToken);
-                
-                
+                TrackUploadProgress(transferTask, progress, cmdletRunningRequest, cmdletCancellationToken);
 
                 if (!cmdletCancellationToken.IsCancellationRequested)
                 {
@@ -570,7 +673,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             }
             finally
             {
-                ServicePointManager.DefaultConnectionLimit = previousDefaultConnectionLimit;
                 ServicePointManager.Expect100Continue = previousExpect100;
             }
         }
@@ -585,48 +687,27 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// <param name="directory">The directory.</param>
         /// <param name="recursive">if set to <c>true</c> gets the count of all files underneath a directory and all
         /// subdirectories.</param>
-        /// <param name="isDownload">if set to <c>true</c> [is download].</param>
         /// <param name="accountName">Name of the account.</param>
         /// <returns>
         /// the total number of files in a directory
         /// </returns>
-        private int GetFileCountInDirectory(string directory, bool recursive, bool isDownload, string accountName)
+        private int GetFileCountInDirectory(string directory, bool recursive, string accountName)
         {
             var count = 0;
-            if (!isDownload)
+            directory = directory.TrimEnd('\\');
+            directory += "\\";
+            foreach (var entry in Directory.GetFileSystemEntries(directory))
             {
-                directory = directory.TrimEnd('\\');
-                directory += "\\";
-                foreach (var entry in Directory.GetFileSystemEntries(directory))
+                if (Directory.Exists(entry))
                 {
-                    if (Directory.Exists(entry))
+                    if (recursive)
                     {
-                        if (recursive)
-                        {
-                            count += GetFileCountInDirectory(entry, true, false, accountName);
-                        }
-                    }
-                    else
-                    {
-                        count++;
+                        count += GetFileCountInDirectory(entry, true, accountName);
                     }
                 }
-            }
-            else
-            {
-                foreach (var entry in GetFileStatuses(directory, accountName).FileStatus)
+                else
                 {
-                    if (entry.Type == FileType.DIRECTORY)
-                    {
-                        if (recursive)
-                        {
-                            count += GetFileCountInDirectory(string.Format("{0}/{1}", directory, entry.PathSuffix), true, true, accountName);
-                        }
-                    }
-                    else
-                    {
-                        count ++;
-                    }
+                    count++;
                 }
             }
 
@@ -638,46 +719,26 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// </summary>
         /// <param name="directory">The directory.</param>
         /// <param name="recursive">if set to <c>true</c> [recursive].</param>
-        /// <param name="isDownload">if set to <c>true</c> [is download].</param>
         /// <param name="accountName">Name of the account.</param>
         /// <returns>The total byte count of the directory</returns>
-        private long GetByteCountInDirectory(string directory, bool recursive, bool isDownload, string accountName)
+        private long GetByteCountInDirectory(string directory, bool recursive, string accountName)
         {
             long count = 0;
-            if (!isDownload)
+            
+            directory = directory.TrimEnd('\\');
+            directory += "\\";
+            foreach (var entry in Directory.GetFileSystemEntries(directory))
             {
-                directory = directory.TrimEnd('\\');
-                directory += "\\";
-                foreach (var entry in Directory.GetFileSystemEntries(directory))
+                if (Directory.Exists(entry))
                 {
-                    if (Directory.Exists(entry))
+                    if (recursive)
                     {
-                        if (recursive)
-                        {
-                            count += GetByteCountInDirectory(entry, true, false, accountName);
-                        }
-                    }
-                    else
-                    {
-                        count += new FileInfo(entry).Length;
+                        count += GetByteCountInDirectory(entry, true, accountName);
                     }
                 }
-            }
-            else
-            {
-                foreach (var entry in GetFileStatuses(directory, accountName).FileStatus)
+                else
                 {
-                    if (entry.Type == FileType.DIRECTORY)
-                    {
-                        if (recursive)
-                        {
-                            count += GetByteCountInDirectory(string.Format("{0}/{1}", directory, entry.PathSuffix), true, true, accountName);
-                        }
-                    }
-                    else
-                    {
-                        count += entry.Length.GetValueOrDefault();
-                    }
+                    count += new FileInfo(entry).Length;
                 }
             }
 
@@ -807,6 +868,39 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             return (long)(date.UtcDateTime - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds;
         }
 
+        private AclStatusResult GetFullAcl(AclStatusResult acl)
+        {
+            if (acl.AclStatus.Entries != null && acl.AclStatus.Permission.HasValue && acl.AclStatus.Permission.Value.ToString().Length >= 3)
+            {
+                var permissionString = acl.AclStatus.Permission.Value.ToString();
+                var permissionLength = permissionString.Length;
+                var ownerOctal = permissionString.ElementAt(permissionLength - 3).ToString();
+                var groupOctal = permissionString.ElementAt(permissionLength - 2).ToString();
+                var otherOctal = permissionString.ElementAt(permissionLength - 1).ToString();
+
+                acl.AclStatus.Entries.Add(string.Format("user::{0}", octalToPermission(int.Parse(ownerOctal))));
+                acl.AclStatus.Entries.Add(string.Format("other::{0}", octalToPermission(int.Parse(otherOctal))));
+
+                if (!string.IsNullOrEmpty(acl.AclStatus.Entries.FirstOrDefault(e => e.StartsWith("group::"))))
+                {
+                    acl.AclStatus.Entries.Add(string.Format("mask::{0}", octalToPermission(int.Parse(groupOctal))));
+                }
+                else
+                {
+                    acl.AclStatus.Entries.Add(string.Format("group::{0}", octalToPermission(int.Parse(groupOctal))));
+                }
+            }
+
+            return acl;
+        }
+
+        private string octalToPermission(int octal)
+        {
+            return string.Format("{0}{1}{2}",
+                (octal & 4) > 0 ? "r" : "-",
+                (octal & 2) > 0 ? "w" : "-",
+                (octal & 1) > 0 ? "x" : "-");
+        }
         #endregion
     }
 }

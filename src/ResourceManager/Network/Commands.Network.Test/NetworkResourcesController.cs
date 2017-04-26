@@ -15,10 +15,12 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
+using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Insights;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Redis;
 using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
@@ -46,6 +48,10 @@ namespace Commands.Network.Test
 
         public NetworkManagementClient NetworkManagementClient { get; private set; }
 
+        public ComputeManagementClient ComputeManagementClient { get; private set; }
+
+        public StorageManagementClient StorageManagementClient { get; private set; }
+
         public InsightsManagementClient InsightsManagementClient { get; private set; }
 
         public RedisManagementClient RedisManagementClient { get; private set; }
@@ -69,6 +75,7 @@ namespace Commands.Network.Test
             d.Add("Microsoft.Resources", null);
             d.Add("Microsoft.Features", null);
             d.Add("Microsoft.Authorization", null);
+            d.Add("Microsoft.Storage", null);
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
@@ -118,6 +125,9 @@ namespace Commands.Network.Test
                     helper.GetRMModulePath("AzureRM.Insights.psd1"),
                     helper.GetRMModulePath("AzureRM.RedisCache.psd1"),
                     helper.GetRMModulePath("AzureRM.Network.psd1"),
+                    helper.GetRMModulePath("AzureRM.Compute.psd1"),
+                    helper.RMStorageDataPlaneModule,
+                    "AzureRM.Storage.ps1",
                     "AzureRM.Resources.ps1");
 
                 try
@@ -142,22 +152,43 @@ namespace Commands.Network.Test
             }
         }
 
+        private Microsoft.Azure.Management.Resources.ResourceManagementClient GetLegacyResourceManagementClient()
+        {
+            return Microsoft.Azure.Test.TestBase.GetServiceClient<Microsoft.Azure.Management.Resources.ResourceManagementClient>(this.csmTestFactory);
+        }
+        
+        private Microsoft.Azure.Subscriptions.SubscriptionClient GetLegacySubscriptionClient()
+        {
+            return Microsoft.Azure.Test.TestBase.GetServiceClient<Microsoft.Azure.Subscriptions.SubscriptionClient>(this.csmTestFactory);
+        }
+
+        private Microsoft.Azure.Management.ResourceManager.ResourceManagementClient GetResourceManagerResourceManagementClient(RestTestFramework.MockContext context)
+        {
+            return context.GetServiceClient<Microsoft.Azure.Management.ResourceManager.ResourceManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+
         private void SetupManagementClients(RestTestFramework.MockContext context)
         {
+            Microsoft.Azure.Management.ResourceManager.ResourceManagementClient ResourceManagerResourceManagementClient = GetResourceManagerResourceManagementClient(context);
             this.ResourceManagementClient = this.GetResourceManagementClient();
             this.SubscriptionClient = this.GetSubscriptionClient();
             this.GalleryClient = this.GetGalleryClient();
             this.NetworkManagementClient = this.GetNetworkManagementClient(context);
+            this.ComputeManagementClient = this.GetComputeManagementClient(context);
+            this.StorageManagementClient = this.GetStorageManagementClient(context);
             this.AuthorizationManagementClient = this.GetAuthorizationManagementClient();
             this.InsightsManagementClient = this.GetInsightsManagementClient();
             this.RedisManagementClient = this.GetRedisManagementClient(context);
 
             helper.SetupManagementClients(
+                ResourceManagerResourceManagementClient,
                 ResourceManagementClient,
                 SubscriptionClient,
                 GalleryClient,
-                AuthorizationManagementClient,
                 this.NetworkManagementClient,
+                this.ComputeManagementClient,
+                this.StorageManagementClient,
+                this.AuthorizationManagementClient,
                 this.InsightsManagementClient,
                 this.RedisManagementClient);
         }
@@ -182,6 +213,11 @@ namespace Commands.Network.Test
             return context.GetServiceClient<NetworkManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
+        private StorageManagementClient GetStorageManagementClient(RestTestFramework.MockContext context)
+        {
+            return context.GetServiceClient<StorageManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+
         private GalleryClient GetGalleryClient()
         {
             return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
@@ -195,6 +231,11 @@ namespace Commands.Network.Test
         private RedisManagementClient GetRedisManagementClient(RestTestFramework.MockContext context)
         {
             return context.GetServiceClient<RedisManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private ComputeManagementClient GetComputeManagementClient(RestTestFramework.MockContext context)
+        {
+            return context.GetServiceClient<ComputeManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

@@ -13,18 +13,19 @@ Modifies an ExpressRoute circuit.
 ## SYNTAX
 
 ```
-Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit <PSExpressRouteCircuit>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit <PSExpressRouteCircuit> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmExpressRouteCircuit** cmdlet modifies an ExpressRoute circuit.
+The **Set-AzureRmExpressRouteCircuit** cmdlet saves the modified ExpressRoute circuit to Azure.
 
 ## EXAMPLES
 
-### 1:
+### Example 1: Change the ServiceKey of an ExpressRoute circuit
 ```
-
+$ckt = Get-AzureRmExpressRouteCircuit -Name $CircuitName -ResourceGroupName $rg
+$ckt.ServiceKey = '64ce99dd-ee70-4e74-b6b8-91c6307433a0'
+Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 ## PARAMETERS
@@ -41,45 +42,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -101,5 +63,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzureRmExpressRouteCircuit](./New-AzureRmExpressRouteCircuit.md)
 
 [Remove-AzureRmExpressRouteCircuit](./Remove-AzureRmExpressRouteCircuit.md)
-
-

@@ -4,7 +4,6 @@ Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 Download Help Link: {{Please enter FwLink manually}}
 Help Version: {{Please enter version of help manually (X.X.X.X) format}}
 Locale: en-US
-ms.assetid: 98527FA7-7364-42DC-BC2B-EE75E8EC02A2
 ---
 
 # AzureRM.StreamAnalytics Module

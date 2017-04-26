@@ -25,10 +25,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
 {
     public class HDInsightTestBase : RMTestBase
     {
-        protected const string ClusterType = "Hadoop";
         protected const string ClusterName = "hdicluster";
         protected const string ResourceGroupName = "hdi-rg1";
         protected const string Location = "west us";
+
+        protected string ClusterType = "Hadoop";
+        protected string HdiVersion = "3.1";
 
         protected Mock<AzureHdInsightManagementClient> hdinsightManagementMock;
         protected Mock<AzureHdInsightJobManagementClient> hdinsightJobManagementMock;

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -62,10 +62,21 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         {
             ModelAdapter.IgnoreStorage = true;
             base.PersistChanges(model);
-            AuditType = AuditType.Blob;
-            var blobModel = GetEntity();
-            blobModel.AuditState = AuditStateType.Disabled;
-            base.PersistChanges(blobModel);
+            //if another server auditing policy exists, remove it
+            if (AuditType == AuditType.Blob)
+            {
+                AuditType = AuditType.Table;
+            }
+            else
+            {
+                AuditType = AuditType.Blob;
+            }
+            var otherAuditingTypePolicyModel = GetEntity();
+            if (otherAuditingTypePolicyModel != null)
+            {
+                otherAuditingTypePolicyModel.AuditState = AuditStateType.Disabled;
+                base.PersistChanges(otherAuditingTypePolicyModel);
+            }
             return null;
         }
     }

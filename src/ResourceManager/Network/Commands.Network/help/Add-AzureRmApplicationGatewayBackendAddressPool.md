@@ -15,8 +15,7 @@ Adds a back-end address pool to an application gateway.
 ```
 Add-AzureRmApplicationGatewayBackendAddressPool -ApplicationGateway <PSApplicationGateway> -Name <String>
  [-BackendIPAddresses <System.Collections.Generic.List`1[System.String]>]
- [-BackendFqdns <System.Collections.Generic.List`1[System.String]>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-BackendFqdns <System.Collections.Generic.List`1[System.String]>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,15 +67,15 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Specifies the name of the back-end server pool that this cmdlet adds.
+### -BackendFqdns
+Specifies a list of backend FQDNs which this cmdlet adds as a back-end server pool.
 
 ```yaml
-Type: String
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -98,56 +97,32 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BackendFqdns
-Specifies a list of backend FQDNs which this cmdlet adds as a back-end server pool.
-
-```yaml
-Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -Name
+Specifies the name of the back-end server pool that this cmdlet adds.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -160,21 +135,6 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named

@@ -13,7 +13,7 @@ Enables support for monitoring for SAP systems.
 ## SYNTAX
 
 ```
-Set-AzureRmVMAEMExtension [-ResourceGroupName] <String> [-VMName] <String> [-DisableWAD]
+Set-AzureRmVMAEMExtension [-ResourceGroupName] <String> [-VMName] <String> [-DisableWAD] [-EnableWAD]
  [[-WADStorageAccountName] <String>] [[-OSType] <String>] [-SkipStorage] [<CommonParameters>]
 ```
 
@@ -42,8 +42,21 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 3
+Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableWAD
+If this parameter is provided, the commandlet will enable Windows Azure Diagnostics for this virtual machine.```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -59,7 +72,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 5
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -74,7 +87,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -89,7 +102,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 6
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -105,7 +118,7 @@ Parameter Sets: (All)
 Aliases: ResourceName
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -121,7 +134,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 4
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

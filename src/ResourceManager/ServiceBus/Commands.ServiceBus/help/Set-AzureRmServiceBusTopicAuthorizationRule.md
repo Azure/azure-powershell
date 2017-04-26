@@ -7,7 +7,7 @@ schema: 2.0.0
 # Set-AzureRmServiceBusTopicAuthorizationRule
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Updates the specified authorization rule description for the given Service Bus topic.
 
 ## SYNTAX
 
@@ -18,21 +18,40 @@ Set-AzureRmServiceBusTopicAuthorizationRule [-ResourceGroup] <String> [-Namespac
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzureRmServiceBusTopicAuthorizationRule** cmdlet updates the description for the specified authorization rule of the given Service Bus topic.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $authRuleObj = Get-AzureRmServiceBusTopicAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -AuthorizationRuleName SBTopicAuthoRule1
+
+PS C:\> $authRuleObj.Rights.Add("Manage")
+
+PS C:\> Set-AzureRmServiceBusTopicAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -AuthRuleObj $authRuleObj
 ```
 
-{{ Add example description here }}
+Adds **Manage** to the access rights of the authorization rule `SBTopicAuthoRule1` on topic `SB-Topic_exampl1`.
 
 ## PARAMETERS
 
+### -AuthorizationRuleName
+The authorization rule name. Required if **-AuthruleObj** is not specified.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -AuthRuleObj
-ServiceBus Topic AuthorizationRule Object.
+The Service Bus topic authorization rule object.
 
 ```yaml
 Type: SharedAccessAuthorizationRuleAttributes
@@ -46,16 +65,62 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -AuthorizationRuleName
-AuthorizationRule Name - Required if 'AuthruleObj' not specified.
+### -NamespaceName
+The Service Bus namespace name.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroup
+The name of the resource group.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Rights
+Rights; for example, 
+@("Listen","Send","Manage"). Required if **-AuthruleObj** is not specified.
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases: 
+
 Required: False
-Position: 3
+Position: 4
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TopicName
+The Service Bus topic name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -73,68 +138,6 @@ Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NamespaceName
-Namespace Name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroup
-The name of the resource group
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Rights
-Required if 'AuthruleObj' not specified.
-Rights - e.g. 
-@("Listen","Send","Manage")
-
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -TopicName
-Topic Name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -159,12 +162,28 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-Microsoft.Azure.Commands.ServiceBus.Models.SharedAccessAuthorizationRuleAttributes System.String\[\]
+### -ResourceGroup
+ System.String
+
+### -NamespaceName
+ System.String
+
+### -TopicName
+ System.String
+
+### -AuthRuleObj
+ Microsoft.Azure.Commands.ServiceBus.Models.SharedAccessAuthorizationRuleAttributes
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.SharedAccessAuthorizationRuleAttributes
+Id       : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/topics/SB-Topic_exampl1/authorization
+           Rules/SBTopicAuthoRule1
+Type     : Microsoft.ServiceBus/AuthorizationRules
+Name     : SBTopicAuthoRule1
+Location : West US
+Tags     : 
+Rights   : {Listen, Send, Manage}
 
 ## NOTES
 

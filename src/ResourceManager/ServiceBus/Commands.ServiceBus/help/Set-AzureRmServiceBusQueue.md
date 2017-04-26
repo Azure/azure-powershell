@@ -7,7 +7,7 @@ schema: 2.0.0
 # Set-AzureRmServiceBusQueue
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Updates the description of a Service Bus queue in the specified Service Bus namespace.
 
 ## SYNTAX
 
@@ -17,36 +17,26 @@ Set-AzureRmServiceBusQueue [-ResourceGroup] <String> [-NamespaceName] <String> [
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzureRmServiceBusQueue** cmdlet updates the description for the Service Bus queue in the specified Service Bus namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $QueueObj = Get-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1
+
+PS C:\> $QueueObj.DeadLetteringOnMessageExpiration = $True
+PS C:\> $QueueObj.SupportOrdering = $True
+
+PS C:\> Set-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -QueueObj $QueueObj
 ```
 
-{{ Add example description here }}
+Updates the specified queue with a new description in the specified namespace. This example updates the **DeadLetteringOnMessageExpiration** property to **true** and **SupportOrdering** to **true**.
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NamespaceName
-Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -61,7 +51,7 @@ Accept wildcard characters: False
 ```
 
 ### -QueueName
-Queue Name.
+The Service Bus queue name.
 
 ```yaml
 Type: String
@@ -76,7 +66,7 @@ Accept wildcard characters: False
 ```
 
 ### -QueueObj
-ServiceBus definition.
+The Service Bus queue definition.
 
 ```yaml
 Type: QueueAttributes
@@ -91,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String
@@ -102,6 +92,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -126,12 +131,45 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-Microsoft.Azure.Commands.ServiceBus.Models.QueueAttributes
+### -ResourceGroup
+ System.String
+
+### -NamespaceName
+ System.String
+
+### -QueueName
+ System.String
+
+### -QueueObj
+ Microsoft.Azure.Commands.ServiceBus.Models.QueueAttributes
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.QueueAttributes
+Name                                : SB-Queue_exampl1
+Location                            : West US
+LockDuration                        : 
+AccessedAt                          : 1/1/0001 12:00:00 AM
+AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
+EntityAvailabilityStatus            : 
+CreatedAt                           : 1/20/2017 2:51:34 AM
+DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
+DuplicateDetectionHistoryTimeWindow : 
+EnableBatchedOperations             : True
+DeadLetteringOnMessageExpiration    : False
+EnableExpress                       : False
+EnablePartitioning                  : True
+IsAnonymousAccessible               : False
+MaxDeliveryCount                    : 
+MaxSizeInMegabytes                  : 16384
+MessageCount                        : 
+CountDetails                        : Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails
+RequiresDuplicateDetection          : False
+RequiresSession                     : False
+SizeInBytes                         : 
+Status                              : Active
+SupportOrdering                     : False
+UpdatedAt                           : 1/20/2017 6:16:18 PM
 
 ## NOTES
 

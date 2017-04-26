@@ -14,15 +14,13 @@ Deletes a Backup protection policy from a vault.
 
 ### PolicyName (Default)
 ```
-Remove-AzureRmRecoveryServicesBackupProtectionPolicy [-Name] <String> [-Force]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
+Remove-AzureRmRecoveryServicesBackupProtectionPolicy [-Name] <String> [-Force] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### PolicyObject
 ```
-Remove-AzureRmRecoveryServicesBackupProtectionPolicy [-Policy] <PolicyBase> [-Force]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
+Remove-AzureRmRecoveryServicesBackupProtectionPolicy [-Policy] <PolicyBase> [-Force] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -49,21 +47,6 @@ The second command removes the policy object in $Pol.
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the Backup protection policy to remove.
-
-```yaml
-Type: String
-Parameter Sets: PolicyName
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Force
 Forces the command to run without asking for user confirmation.
 
@@ -79,40 +62,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -Name
+Specifies the name of the Backup protection policy to remove.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: iv
+Parameter Sets: PolicyName
+Aliases: 
 
-Required: False
-Position: Named
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -14,39 +14,44 @@ Sets the operating system disk properties on a virtual machine.
 
 ### DefaultParamSet (Default)
 ```
-Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [-Name] <String> [-VhdUri] <String> [[-Caching] <CachingTypes>]
- [[-SourceImageUri] <String>] [-CreateOption] <DiskCreateOptionTypes> [-DiskSizeInGB <Int32>]
+Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>]
+ [[-Caching] <CachingTypes>] [[-SourceImageUri] <String>] [-CreateOption] <DiskCreateOptionTypes>
+ [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>] [-StorageAccountType <StorageAccountTypes>]
  [<CommonParameters>]
 ```
 
 ### WindowsParamSet
 ```
-Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [-Name] <String> [-VhdUri] <String> [[-Caching] <CachingTypes>]
- [[-SourceImageUri] <String>] [-CreateOption] <DiskCreateOptionTypes> [-Windows] [-DiskSizeInGB <Int32>]
+Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>]
+ [[-Caching] <CachingTypes>] [[-SourceImageUri] <String>] [-CreateOption] <DiskCreateOptionTypes> [-Windows]
+ [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>] [-StorageAccountType <StorageAccountTypes>]
  [<CommonParameters>]
 ```
 
 ### WindowsDiskEncryptionParameterSet
 ```
-Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [-Name] <String> [-VhdUri] <String> [[-Caching] <CachingTypes>]
- [[-SourceImageUri] <String>] [-CreateOption] <DiskCreateOptionTypes> [-Windows]
+Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>]
+ [[-Caching] <CachingTypes>] [[-SourceImageUri] <String>] [-CreateOption] <DiskCreateOptionTypes> [-Windows]
  [-DiskEncryptionKeyUrl] <String> [-DiskEncryptionKeyVaultId] <String> [[-KeyEncryptionKeyUrl] <String>]
- [[-KeyEncryptionKeyVaultId] <String>] [-DiskSizeInGB <Int32>] [<CommonParameters>]
+ [[-KeyEncryptionKeyVaultId] <String>] [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>]
+ [-StorageAccountType <StorageAccountTypes>] [<CommonParameters>]
 ```
 
 ### LinuxParamSet
 ```
-Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [-Name] <String> [-VhdUri] <String> [[-Caching] <CachingTypes>]
- [[-SourceImageUri] <String>] [-CreateOption] <DiskCreateOptionTypes> [-Linux] [-DiskSizeInGB <Int32>]
+Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>]
+ [[-Caching] <CachingTypes>] [[-SourceImageUri] <String>] [-CreateOption] <DiskCreateOptionTypes> [-Linux]
+ [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>] [-StorageAccountType <StorageAccountTypes>]
  [<CommonParameters>]
 ```
 
 ### LinuxDiskEncryptionParameterSet
 ```
-Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [-Name] <String> [-VhdUri] <String> [[-Caching] <CachingTypes>]
- [[-SourceImageUri] <String>] [-CreateOption] <DiskCreateOptionTypes> [-Linux] [-DiskEncryptionKeyUrl] <String>
- [-DiskEncryptionKeyVaultId] <String> [[-KeyEncryptionKeyUrl] <String>] [[-KeyEncryptionKeyVaultId] <String>]
- [-DiskSizeInGB <Int32>] [<CommonParameters>]
+Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>]
+ [[-Caching] <CachingTypes>] [[-SourceImageUri] <String>] [-CreateOption] <DiskCreateOptionTypes> [-Linux]
+ [-DiskEncryptionKeyUrl] <String> [-DiskEncryptionKeyVaultId] <String> [[-KeyEncryptionKeyUrl] <String>]
+ [[-KeyEncryptionKeyVaultId] <String>] [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>]
+ [-StorageAccountType <StorageAccountTypes>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -127,9 +132,10 @@ This setting affects the performance of the disk.
 Type: CachingTypes
 Parameter Sets: (All)
 Aliases: 
+Accepted values: None, ReadOnly, ReadWrite
 
 Required: False
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -158,7 +164,7 @@ Aliases:
 Accepted values: FromImage, Empty, Attach
 
 Required: True
-Position: 6
+Position: 5
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -173,7 +179,7 @@ Parameter Sets: WindowsDiskEncryptionParameterSet, LinuxDiskEncryptionParameterS
 Aliases: 
 
 Required: True
-Position: 8
+Position: 7
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -188,7 +194,7 @@ Parameter Sets: WindowsDiskEncryptionParameterSet, LinuxDiskEncryptionParameterS
 Aliases: 
 
 Required: True
-Position: 9
+Position: 8
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -218,7 +224,7 @@ Parameter Sets: WindowsDiskEncryptionParameterSet, LinuxDiskEncryptionParameterS
 Aliases: 
 
 Required: False
-Position: 10
+Position: 9
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -233,7 +239,7 @@ Parameter Sets: WindowsDiskEncryptionParameterSet, LinuxDiskEncryptionParameterS
 Aliases: 
 
 Required: False
-Position: 11
+Position: 10
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -249,7 +255,22 @@ Parameter Sets: LinuxParamSet, LinuxDiskEncryptionParameterSet
 Aliases: 
 
 Required: False
-Position: 7
+Position: 6
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ManagedDiskId
+Specifies the ID of a managed disk.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -263,8 +284,8 @@ Type: String
 Parameter Sets: (All)
 Aliases: OSDiskName, DiskName
 
-Required: True
-Position: 2
+Required: False
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -279,7 +300,23 @@ Parameter Sets: (All)
 Aliases: SourceImage
 
 Required: False
-Position: 5
+Position: 4
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -StorageAccountType
+Specifies the storage account type of managed disk.
+
+```yaml
+Type: StorageAccountTypes
+Parameter Sets: (All)
+Aliases: 
+Accepted values: StandardLRS, PremiumLRS
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -298,8 +335,8 @@ Type: String
 Parameter Sets: (All)
 Aliases: OSDiskVhdUri, DiskVhdUri
 
-Required: True
-Position: 3
+Required: False
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -315,7 +352,7 @@ Parameter Sets: (All)
 Aliases: VMProfile
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
@@ -330,7 +367,7 @@ Parameter Sets: WindowsParamSet, WindowsDiskEncryptionParameterSet
 Aliases: 
 
 Required: False
-Position: 7
+Position: 6
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

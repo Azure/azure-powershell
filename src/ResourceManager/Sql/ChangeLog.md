@@ -19,6 +19,38 @@
 -->
 ## Current Release
 
+## Version 2.8.0
+* Bug fixes on Azure Failover Group Cmdlets
+	- Fix for operation polling
+	- Fix GracePeriodWithDataLossHour value when setting FailoverPolicy to Manual
+	- Adding obsolete warnings to upcoming parameter changes.
+## Version 2.7.0
+* Bug fix - Auditing and Threat Detection cmdlets now return a meangfull error instead of null refernce error. 
+* Updating Transparent Data Encryption (TDE) with Bring Your Own Key (BYOK) support cmdlets for updated API.
+
+## Version 2.6.0
+* Adding new cmdlets for support for Azure SQL feature Transparent Data Encryption (TDE) with Bring Your Own Key (BYOK) Support
+	- TDE with BYOK support is a new feature in Azure SQL, which allows users to encrypt their database with a key from Azure Key Vault. This feature is currently in private preview.
+	- Get-AzureRmSqlServerKeyVaultKey : This cmdlet returns a list of Azure Key Vault keys added to a Sql Server.
+	- Add-AzureRmSqlServerKeyVaultKey : This cmdlet adds an Azure Key Vault key to a Sql Server.
+	- Remove-AzureRmSqlServerKeyVaultKey : This cmdlet removes an Azure Key Vault key from a Sql Server.
+	- Get-AzureRmSqlServerTransparentDataEncryptionProtector : This cmdlet returns the current encryption protector for a Sql Server.
+	- Set-AzureRmSqlServerTransparentDataEncryptionProtector : This cmdlet sets the encryption protector for a Sql Server. The encryption protector can be set to a key from Azure Key Vault or a key that is managed by Azure Sql.
+* New feature: Set--AzureRmSqlDatabaseAuditing  and Set-AzureRmSqlDatabaseServerAuditingPolicy supports setting secondary storage key for AuditType Blob 
+* Bug fix: Remove-AzureRmSqlDatabaseAuditing should set the UseServerDefault value to disabled 
+* Bug fix: Fixing an issue of selecting classic storage account when creating / updating Auditing or Threat Detection policies
+* Bug fix: Set-AzureRmSqlDatabaseAuditing and Set-AzureRmSqlDatabaseServerAuditingPolicy commands use the AuditType value that was previously defined in case it has not been configured by the user.
+* Bug fix: In case Blob Auditing is defined, Remove-AzureRmSqlDatabaseAuditing and Remove-AzureRmSqlDatabaseServerAuditingPolicy commands disable the Auditing settings.
+* Adding new cmdlets for support for Azure SQL feature AutoDR:
+	-This is a new feature in Azure SQL that supports failover of multiple Azure Sql Databases to the partner server at the same time during disaster and allows automatic failover
+	- Add-AzureRmSqlDatabaseToFailoverGroup add Azure Sql Databases into a Failover Group
+	- Get-AzureRmSqlDatabaseFailoverGroup get the Failover Group entity
+	- New-AzureRmSqlDatabaseFailoverGroup creates a new Failover Group
+	- Remove-AzureRmSqlDatabaseFromFailoverGroup removes Azure Sql Databases from a Failover Group
+	- Remove-AzureRmSqlDatabaseFailoverGroup Failover Group deletes the Failover Group
+	- Set-AzureRmSqlDatabaseFailoverGroup set Azure Sql Database Failover Policy and Grace Period entities of the Failover Group
+	- Switch-AzureRmSqlDatabaseFailoverGroup issues the failover operation with data loss or without data loss	
+
 ## Version 2.5.0
 * Added new return parameter "AuditType" to Get-AzureRmSqlDatabaseAuditingPolicy and Get-AzureRmSqlServerAuditingPolicy returned object
     - This parameter value indicates the returned auditing policy type - Table or Blob.
