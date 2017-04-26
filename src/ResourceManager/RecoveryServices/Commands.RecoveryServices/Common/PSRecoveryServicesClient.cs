@@ -13,15 +13,15 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics.CodeAnalysis;
+using System.Net.Security;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.RecoveryServices;
-using Microsoft.Azure.Management.RecoveryServices.Models;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using System.Configuration;
-using System.Net.Security;
-using Microsoft.Azure.Management.Resources;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -56,14 +56,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
         }
 
-        public string RpNamespace
-        {
-            get
-            {
-                return rpNamespace;
-            }
-        }
-
         /// Azure profile
         /// </summary>
         public IAzureProfile Profile { get; set; }
@@ -92,8 +84,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
         private ResourceManagementClient resourceManagementClient;
 
-        private string rpNamespace;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="PSRecoveryServicesClient" /> class with 
         /// required current subscription.
@@ -104,39 +94,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             System.Configuration.Configuration recoveryServicesConfig = ConfigurationManager.OpenExeConfiguration(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
             System.Configuration.AppSettingsSection appSettings = (System.Configuration.AppSettingsSection)recoveryServicesConfig.GetSection("appSettings");
-
-            var resourceProviderNamespace = string.Empty;
-            string resourceType = string.Empty;
             
+            string resourceType = string.Empty;
+
             // Get Resource provider namespace from config if needed to communicate with internal deployments
             if (string.IsNullOrEmpty(arsVaultCreds.ResourceNamespace))
             {
-                if (appSettings.Settings.Count == 0)
-                {
-                    resourceProviderNamespace = ProductionRpNamespace;
-                }
-                else
-                {
-                    resourceProviderNamespace =
-                        null == appSettings.Settings["ProviderNamespace"]
-                        ? ProductionRpNamespace
-                        : appSettings.Settings["ProviderNamespace"].Value;
-                }
-
                 Utilities.UpdateCurrentVaultContext(new ASRVaultCreds()
                 {
-                    ResourceNamespace = resourceProviderNamespace,
+                    ResourceNamespace = ProductionRpNamespace,
                     ARMResourceType = resourceType
                 });
             }
 
-            rpNamespace = string.Copy(resourceProviderNamespace);
-
-            this.recoveryServicesClient =                
+            this.recoveryServicesClient =
             AzureSession.ClientFactory.CreateArmClient<RecoveryServicesClient>(
                 defaultContext, AzureEnvironment.Endpoint.ResourceManager);
 
-            resourceManagementClient = AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(defaultContext, AzureEnvironment.Endpoint.ResourceManager);
+            resourceManagementClient = AzureSession.ClientFactory.CreateArmClient<ResourceManagementClient>(defaultContext, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         private static bool IgnoreCertificateErrorHandler
@@ -168,22 +143,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             return resourceId.Substring(startIndex, endIndex - startIndex);
         }
 
-        ///// <summary>
-        ///// Gets request headers.
-        ///// </summary>
-        ///// <param name="shouldSignRequest">specifies whether to sign the request or not</param>
-        ///// <returns>Custom request headers</returns>
-        //public CustomRequestHeaders GetRequestHeaders()
-        //{
-        //    this.ClientRequestId = Guid.NewGuid().ToString() + "-" + DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ssZ") + "-P";
+        /// <summary>
+        /// Gets request headers.
+        /// </summary>
+        /// <param name="shouldSignRequest">specifies whether to sign the request or not</param>
+        /// <returns>Custom request headers</returns>
+        public Dictionary<string, List<string>> GetRequestHeaders()
+        {
+            this.ClientRequestId = Guid.NewGuid().ToString() + "-" + DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ssZ") + "-P";
 
-        //    return new CustomRequestHeaders()
-        //    {
-        //        // ClientRequestId is a unique ID for every request.
-        //        // It is useful when diagnosing failures in API calls.
-        //        ClientRequestId = this.ClientRequestId,
-        //        AgentAuthenticationHeader = ""
-        //    };
-        //}
+            var dict = new Dictionary<string, List<string>>();
+            dict["x-ms-client-request-id"] = new List<string>() { ClientRequestId };
+
+            return dict;
+        }
     }
 }

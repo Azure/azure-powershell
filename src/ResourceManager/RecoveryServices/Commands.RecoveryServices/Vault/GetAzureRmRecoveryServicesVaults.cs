@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         private void GetVaultsUnderAllResourceGroups()
         {
             
-            foreach (var resourceGroup in RecoveryServicesClient.GetResouceGroups().ResourceGroups)
+            foreach (var resourceGroup in RecoveryServicesClient.GetResouceGroups())
             {
                 try
                 {

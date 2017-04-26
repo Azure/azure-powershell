@@ -12,28 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.IO;
-using System.Net;
-using System.Net.Security;
-using System.Runtime.Serialization;
-using System.Xml;
-using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.Azure.Management.RecoveryServices;
-using Microsoft.Azure.Test;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System;
 using System.Collections.Generic;
-using System.Net.Http;
-using System.Reflection;
-using Microsoft.Azure.Test.Authentication;
-using Microsoft.Rest;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using System.IO;
 using System.Linq;
-using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.RecoveryServices;
+using Microsoft.Azure.Test;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
 {
@@ -62,17 +52,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
         protected void SetupManagementClients(MockContext context)
         {
             RsClient = GetRsClient(context);
-            RmClient = GetRmClient();
+            RmClient = GetRmClient(context);
 
             helper.SetupManagementClients(
                 RsClient,
                 RmClient);
         }
 
-        private ResourceManagementClient GetRmClient()
+        private ResourceManagementClient GetRmClient(RestTestFramework.MockContext context)
         {
-            return Azure.Test.TestBase.GetServiceClient<ResourceManagementClient>(
-                this.csmTestFactory);
+            return context.GetServiceClient<ResourceManagementClient>(
+                RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
         public void RunPsTest(params string[] scripts)

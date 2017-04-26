@@ -14,12 +14,11 @@
 
 using System;
 using System.Runtime.Serialization;
+using System.Text;
 using System.Xml;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Newtonsoft.Json;
-using System.Text;
 using Microsoft.Rest.Azure;
-using Microsoft.Azure.Commands.Common.Authentication;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -57,14 +56,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         protected void Initialize()
         {
             Logger.Instance = new Logger(WriteWarning, WriteDebug, WriteVerbose, ThrowTerminatingError);
-        }
-
-        protected override void SetupHttpClientPipeline()
-        {
-            base.SetupHttpClientPipeline();
-            AzureSession.ClientFactory.AddHandler(
-                new RpNamespaceHandler(RecoveryServicesClient.RpNamespace));
-            AzureSession.ClientFactory.AddHandler(new ClientRequestIdHandler());
         }
 
         /// <summary>
