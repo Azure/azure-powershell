@@ -66,7 +66,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 
         static Data()
         {
-            AzureAppDir = AzureSession.ProfileDirectory;
+            AzureAppDir = AzureSession.Instance.ProfileDirectory;
             AzureSdkAppDir = Path.Combine(Directory.GetCurrentDirectory(), "Microsoft Azure PowerShell");
             TestResultDirectory = FileUtilities.GetAssemblyDirectory();
 
