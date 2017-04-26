@@ -47,6 +47,29 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         private AzureSubscription _subscription { get; set; }
 
         /// <summary>
+        /// Dummy URI used in parsing server ID.
+        /// </summary>
+        private readonly Uri _dummyUri = new Uri("https://localhost");
+
+        /// <summary>
+        /// SQL server URI template used for parsing.
+        /// </summary>
+        private readonly UriTemplate _serverUriTemplate =
+            new UriTemplate("subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}");
+
+        /// <summary>
+        /// SQL database URI template used for parsing.
+        /// </summary>
+        private readonly UriTemplate _databaseUriTemplate =
+            new UriTemplate("subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}");
+
+        /// <summary>
+        /// Failover group URI template used for parsing.
+        /// </summary>
+        private readonly UriTemplate _failoverGroupUriTemplate =
+            new UriTemplate("subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/failoverGroups/{failoverGroupName}");
+
+        /// <summary>
         /// Constructs a database adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
@@ -69,7 +92,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         {
             var resp = Communicator.Get(resourceGroupName, serverName, failoverGroupName, Util.GenerateTracingId());
 
-            return CreateFailoverGroupModelFromResponse(resourceGroupName, serverName, resp);
+            return CreateFailoverGroupModelFromResponse(resp);
         }
 
         /// <summary>
@@ -84,7 +107,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
 
             return resp.Select((db) =>
             {
-                return CreateFailoverGroupModelFromResponse(resourceGroupName, serverName, db);
+                return CreateFailoverGroupModelFromResponse(db);
             }).ToList();
         }
 
@@ -111,19 +134,14 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
             ReadWriteEndpoint readWriteEndpoint = new ReadWriteEndpoint();
             readWriteEndpoint.FailoverPolicy = model.ReadWriteFailoverPolicy;
 
-            if (model.FailoverWithDataLossGracePeriodHours.HasValue && !string.Equals(model.ReadWriteFailoverPolicy, FailoverPolicy.Manual.ToString()))
+            if (model.FailoverWithDataLossGracePeriodHours.HasValue)
             {
-                readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = model.FailoverWithDataLossGracePeriodHours * 60;
-            }
-            else
-            {
-                readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = null;
+                readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = checked(model.FailoverWithDataLossGracePeriodHours * 60);
             }
 
             var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.FailoverGroupName, Util.GenerateTracingId(), new FailoverGroupCreateOrUpdateParameters()
             {
                 Location = model.Location,
-                Tags = model.Tags,
                 Properties = new FailoverGroupCreateOrUpdateProperties()
                 {
                     PartnerServers = partnerServers,
@@ -132,7 +150,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
                 }
             });
 
-            return CreateFailoverGroupModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
+            return CreateFailoverGroupModelFromResponse(resp);
         }
 
         /// <summary>
@@ -150,20 +168,14 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
             ReadWriteEndpoint readWriteEndpoint = new ReadWriteEndpoint();
             readWriteEndpoint.FailoverPolicy = model.ReadWriteFailoverPolicy;
 
-            if (!string.Equals(model.ReadWriteFailoverPolicy, FailoverPolicy.Manual.ToString()))
+            if (model.FailoverWithDataLossGracePeriodHours.HasValue)
             {
-                readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = model.FailoverWithDataLossGracePeriodHours * 60;
+                readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = checked(model.FailoverWithDataLossGracePeriodHours * 60);
             }
-            else
-            {
-                readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = null;
-            }
-
 
             var resp = Communicator.PatchUpdate(model.ResourceGroupName, model.ServerName, model.FailoverGroupName, Util.GenerateTracingId(), new FailoverGroupPatchUpdateParameters()
             {
                 Location = model.Location,
-                Tags = model.Tags,
                 Properties = new FailoverGroupPatchUpdateProperties()
                 {
                     ReadOnlyEndpoint = readOnlyEndpoint,
@@ -171,7 +183,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
                 }
             });
 
-            return CreateFailoverGroupModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
+            return CreateFailoverGroupModelFromResponse(resp);
         }
         /// <summary>
         /// Deletes a failvoer group
@@ -213,14 +225,13 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
             var resp = Communicator.PatchUpdate(resourceGroupName, serverName, failoverGroupName, Util.GenerateTracingId(), new FailoverGroupPatchUpdateParameters()
             {
                 Location = model.Location,
-                Tags = model.Tags,
                 Properties = new FailoverGroupPatchUpdateProperties()
                 {
                     Databases = model.Databases,
                 }
             });
 
-            return CreateFailoverGroupModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
+            return CreateFailoverGroupModelFromResponse(resp);
         }
 
         /// <summary>
@@ -235,7 +246,6 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// <returns>The Azure SQL Database ReplicationLink object</returns>
         internal AzureSqlFailoverGroupModel Failover(string resourceGroupName, string serverName, string failoverGroupName, bool allowDataLoss)
         {
-
             if (!allowDataLoss)
             {
                 Communicator.Failover(resourceGroupName, serverName, failoverGroupName, Util.GenerateTracingId());
@@ -268,12 +278,10 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// <param name="serverName">The name of the Azure Sql Database Server</param>
         /// <param name="pool">The service response</param>
         /// <returns>The converted model</returns>
-        private AzureSqlFailoverGroupModel CreateFailoverGroupModelFromResponse(string resourceGroup, string serverName, Management.Sql.LegacySdk.Models.FailoverGroup failoverGroup)
+        private AzureSqlFailoverGroupModel CreateFailoverGroupModelFromResponse(Management.Sql.LegacySdk.Models.FailoverGroup failoverGroup)
         {
             AzureSqlFailoverGroupModel model = new AzureSqlFailoverGroupModel();
 
-            model.ResourceGroupName = resourceGroup;
-            model.ServerName = serverName;
             model.FailoverGroupName = failoverGroup.Name;
             model.Databases = failoverGroup.Properties.Databases;
             model.ReadOnlyFailoverPolicy = failoverGroup.Properties.ReadOnlyEndpoint.FailoverPolicy;
@@ -284,10 +292,46 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
             model.FailoverWithDataLossGracePeriodHours = failoverGroup.Properties.ReadWriteEndpoint.FailoverWithDataLossGracePeriodMinutes == null ?
                                                         null : failoverGroup.Properties.ReadWriteEndpoint.FailoverWithDataLossGracePeriodMinutes / 60;
 
-            model.Tags = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(failoverGroup.Tags), false);
-            model.Location = failoverGroup.Location;;
+            model.Id = failoverGroup.Id;
+            model.Location = failoverGroup.Location;
+            model.DatabaseNames = RetrieveDatabaseNames(failoverGroup);
+
+            UriTemplateMatch match = _failoverGroupUriTemplate.Match(_dummyUri, new Uri(_dummyUri, failoverGroup.Id));
+            if (match != null)
+            {
+                model.ResourceGroupName = match.BoundVariables[1];
+                model.ServerName = match.BoundVariables[2];
+            }
+
+            FailoverGroupPartnerServer partnerServer = failoverGroup.Properties.PartnerServers.FirstOrDefault();
+            if (partnerServer != null)
+            {
+                match = _serverUriTemplate.Match(_dummyUri, new Uri(_dummyUri, partnerServer.Id));
+                if (match != null)
+                {
+                    model.PartnerResourceGroupName = match.BoundVariables[1];
+                    model.PartnerServerName = match.BoundVariables[2];
+                }
+
+                model.PartnerLocation = partnerServer.Location;
+            }
 
             return model;
+        }
+
+        private List<string> RetrieveDatabaseNames(Management.Sql.LegacySdk.Models.FailoverGroup failoverGroup)
+        {
+            var databaseNames = new List<string>();
+            foreach (var databaseId in failoverGroup.Properties.Databases)
+            {
+                UriTemplateMatch match = _databaseUriTemplate.Match(_dummyUri, new Uri(_dummyUri, databaseId));
+                if (match != null)
+                {
+                    databaseNames.Add(match.BoundVariables[3]);
+                }
+            }
+
+            return databaseNames;
         }
     }
 }
