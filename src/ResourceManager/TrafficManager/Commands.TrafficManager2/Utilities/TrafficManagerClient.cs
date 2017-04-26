@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                     Endpoint = new Endpoint
                     {
                         Name = endpointName,
-                        Type = TrafficManagerEndpoint.ToSDKEndpointType(endpointType),
+                        Type = TrafficManagerEndpoint.ToFullEndpointType(endpointType),
                         Properties = new EndpointProperties
                         {
                             EndpointLocation = endpointLocation,
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                 endpoint.Name,
                 parameters);
 
-            return response.StatusCode.Equals(HttpStatusCode.Created);
+            return true;
         }
 
         private static TrafficManagerProfile GetPowershellTrafficManagerProfile(string resourceGroupName, string profileName, Profile mamlProfile)
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                 ResourceGroupName = resourceGroupName,
                 ProfileName = profileName,
                 Name = endpointName,
-                Type = endpointType,
+                Type = TrafficManagerEndpoint.ToShortEndpointType(endpointType),
 
                 EndpointStatus = mamlEndpointProperties.EndpointStatus,
                 EndpointMonitorStatus = mamlEndpointProperties.EndpointMonitorStatus,
