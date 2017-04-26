@@ -123,7 +123,6 @@ namespace Microsoft.Azure.Commands.Profile
                         throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture,
                             "Cannot change built-in environment {0}.", Name));
                     }
-
                     else
                     {
                         IAzureEnvironment newEnvironment = new AzureEnvironment { Name = Name, OnPremise = EnableAdfsAuthentication };
