@@ -18,6 +18,18 @@
         - Additional information about change #1
 -->
 ## Current Release
+* New cmdlets for X12 Interchange Control Number disaster recovery:
+    - Get-AzureRmIntegrationAccountGeneratedX12Icn
+    - Get-AzureRmIntegrationAccountReceivedX12Icn
+    - Remove-AzureRmIntegrationAccountReceivedX12Icn
+    - Set-AzureRmIntegrationAccountGeneratedX12Icn
+    - Set-AzureRmIntegrationAccountReceivedX12Icn
+* New cmdlets for Edifact Interchange Control Number disaster recovery:
+    - Get-AzureRmIntegrationAccountGeneratedEdifactIcn
+    - Get-AzureRmIntegrationAccountReceivedEdifactIcn
+    - Remove-AzureRmIntegrationAccountReceivedEdifactIcn
+    - Set-AzureRmIntegrationAccountGeneratedEdfiactIcn
+    - Set-AzureRmIntegrationAccountReceivedEdifactIcn
 
 ## Version 2.8.0
 * Set-AzureRmIntegrationAccountSchema and Set-AzureRmIntegrationAccountMap cmdlets are fixed for the contentlink issue(Both content and contentlink were set resulting in update failure). 
