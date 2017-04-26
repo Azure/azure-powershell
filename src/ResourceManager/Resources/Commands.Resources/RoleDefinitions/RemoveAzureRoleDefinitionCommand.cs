@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Resources
                 Scope = Scope,
                 ResourceIdentifier = new ResourceIdentifier
                 {
-                    Subscription = DefaultProfile.Context.Subscription.Id.ToString()
+                    Subscription = DefaultProfile.DefaultContext.Subscription.Id.ToString()
                 }
             };
 

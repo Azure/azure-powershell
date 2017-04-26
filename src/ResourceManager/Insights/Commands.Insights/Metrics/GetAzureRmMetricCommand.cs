@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
             bool fullDetails = this.DetailedOutput.IsPresent;
 
             // Try first with the old API for metrics
-            using (var insightsClientTemp = AzureSession.ClientFactory.CreateClient<InsightsClient>(DefaultProfile.Context, Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment.Endpoint.ResourceManager))
+            using (var insightsClientTemp = AzureSession.Instance.ClientFactory.CreateClient<InsightsClient>(DefaultProfile.DefaultContext, Common.Authentication.Abstractions.AzureEnvironment.Endpoint.ResourceManager))
             {
                 // Call the proper API methods to return a list of raw records.
                 var response = insightsClientTemp.MetricOperations.GetMetricsAsync(resourceUri: this.ResourceId, filterString: queryFilter, cancellationToken: CancellationToken.None).Result;
