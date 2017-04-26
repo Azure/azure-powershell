@@ -72,108 +72,24 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     var oldTypeMetadata = _oldTypeDictionary[oldPropertyType];
                     var newTypeMetadata = _newTypeDictionary[newPropertyType];
 
-                    // Check if the type is an array
-                    if (oldTypeMetadata.ElementType != null && newTypeMetadata.ElementType != null)
+                    // Define variables for logging
+                    int problemId = ProblemIds.BreakingChangeProblemId.ChangedElementType;
+                    string description = string.Format(Properties.Resources.ChangedElementTypeDescription,
+                                            oldProperty, oldTypeMetadata.ElementType, newTypeMetadata.ElementType);
+                    string remediation = string.Format(Properties.Resources.ChangedElementTypeRemediation,
+                                            oldProperty, oldTypeMetadata.ElementType);
+                    
+                    // If the type is an array, check for any breaking changes
+                    if (IsElementType(cmdlet, oldTypeMetadata, newTypeMetadata, problemId, description, remediation, issueLogger))
                     {
-                        // Check if the element of the array is the same in the old and new metadata
-                        if (oldTypeMetadata.ElementType.Equals(newTypeMetadata.ElementType, StringComparison.OrdinalIgnoreCase))
-                        {
-                            // If we have not previously seen this element type,
-                            // run this method on the type
-                            if (!_typeSet.Contains(oldTypeMetadata.ElementType))
-                            {
-                                _typeSet.Add(oldTypeMetadata.ElementType);
-
-                                var oldElementType = _oldTypeDictionary[oldTypeMetadata.ElementType];
-                                var newElementType = _newTypeDictionary[newTypeMetadata.ElementType];
-
-                                CompareTypeMetadata(cmdlet, oldElementType, newElementType, issueLogger);
-                            }
-                        }
-                        // If the element type has changed, log an issue
-                        else
-                        {
-                            issueLogger.LogBreakingChangeIssue(
-                                cmdlet: cmdlet,
-                                severity: 0,
-                                problemId: ProblemIds.BreakingChangeProblemId.ChangedElementType,
-                                description: string.Format(Properties.Resources.ChangedElementTypeDescription,
-                                    oldProperty, oldTypeMetadata.ElementType, newTypeMetadata.ElementType),
-                                remediation: string.Format(Properties.Resources.ChangedElementTypeRemediation,
-                                    oldProperty, oldTypeMetadata.ElementType));
-                        }
-
                         continue;
                     }
 
-                    // Check if the type is a generic
-                    if (oldTypeMetadata.GenericTypeArguments.Count > 0 && newTypeMetadata.GenericTypeArguments.Count > 0)
+                    string target = string.Format("property {0}", oldProperty);
+
+                    // If the type is a generic, check for any breaking changes
+                    if (IsGenericType(cmdlet, oldTypeMetadata, newTypeMetadata, target, issueLogger))
                     {
-                        // Check if the generic type has changed
-                        if (oldTypeMetadata.Name.Equals(newTypeMetadata.Name, StringComparison.OrdinalIgnoreCase))
-                        {
-                            // Check if the number of generic type arguments is the same
-                            if (oldTypeMetadata.GenericTypeArguments.Count == newTypeMetadata.GenericTypeArguments.Count)
-                            {
-                                // For each element in the generic type arguments list, make sure that the types
-                                // are the same
-                                for (int idx = 0; idx < oldTypeMetadata.GenericTypeArguments.Count; idx++)
-                                {
-                                    if (oldTypeMetadata.GenericTypeArguments[idx].Equals(newTypeMetadata.GenericTypeArguments[idx], StringComparison.OrdinalIgnoreCase))
-                                    {
-                                        // If we have not previously seen this generic type argument,
-                                        // run this method on the type
-                                        if (!_typeSet.Contains(oldTypeMetadata.GenericTypeArguments[idx]))
-                                        {
-                                            _typeSet.Add(oldTypeMetadata.GenericTypeArguments[idx]);
-
-                                            var oldElementType = _oldTypeDictionary[oldTypeMetadata.GenericTypeArguments[idx]];
-                                            var newElementType = _newTypeDictionary[newTypeMetadata.GenericTypeArguments[idx]];
-
-                                            CompareTypeMetadata(cmdlet, oldElementType, newElementType, issueLogger);
-                                        }
-                                    }
-                                    // If the generic type arguments aren't the same, log an issue
-                                    else
-                                    {
-                                        issueLogger.LogBreakingChangeIssue(
-                                            cmdlet: cmdlet,
-                                            severity: 0,
-                                            problemId: ProblemIds.BreakingChangeProblemId.ChangedGenericTypeArgument,
-                                            description: string.Format(Properties.Resources.ChangedGenericTypeArgumentDescription,
-                                                oldProperty,oldTypeMetadata.GenericTypeArguments[idx], newTypeMetadata.GenericTypeArguments[idx]),
-                                            remediation: string.Format(Properties.Resources.ChangedGenericTypeArgumentRemediation,
-                                                oldProperty, oldTypeMetadata.GenericTypeArguments[idx]));
-                                    }
-                                }
-                            }
-                            // If the number of generic type arguments is different, log an issue
-                            else
-                            {
-                                issueLogger.LogBreakingChangeIssue(
-                                    cmdlet: cmdlet,
-                                    severity: 0,
-                                    problemId: ProblemIds.BreakingChangeProblemId.DifferentGenericTypeArgumentSize,
-                                    description: string.Format(Properties.Resources.DifferentGenericTypeArgumentSizeDescription,
-                                        oldTypeMetadata.Name, oldProperty,
-                                        oldTypeMetadata.GenericTypeArguments.Count, newTypeMetadata.GenericTypeArguments.Count),
-                                    remediation: string.Format(Properties.Resources.DifferentGenericTypeArgumentSizeRemediation,
-                                        oldTypeMetadata.Name, oldTypeMetadata.GenericTypeArguments.Count));
-                            }
-                        }
-                        // If the generic type has changed, log an issue
-                        else
-                        {
-                            issueLogger.LogBreakingChangeIssue(
-                                cmdlet: cmdlet,
-                                severity: 0,
-                                problemId: ProblemIds.BreakingChangeProblemId.ChangedGenericType,
-                                description: string.Format(Properties.Resources.ChangedGenericTypeDescription,
-                                    oldProperty, oldTypeMetadata.Name, newTypeMetadata.Name),
-                                remediation: string.Format(Properties.Resources.ChangedGenericTypeRemediation,
-                                    oldProperty, oldTypeMetadata.Name));
-                        }
-
                         continue;
                     }
 
@@ -233,110 +149,25 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             TypeMetadata newTypeMetadata,
             ReportLogger<BreakingChangeIssue> issueLogger)
         {
-            // Check if the type is an array
-            if (oldTypeMetadata.ElementType != null && newTypeMetadata.ElementType != null)
+            int problemId = ProblemIds.BreakingChangeProblemId.ChangedParameterElementType;
+            string description = string.Format(Properties.Resources.ChangedParameterElementTypeDescription,
+                                    parameter.Name, oldTypeMetadata.ElementType, newTypeMetadata.ElementType);
+            string remediation = string.Format(Properties.Resources.ChangedParameterElementTypeRemediation,
+                                    parameter.Name, oldTypeMetadata.ElementType);
+
+            // If the type is an array, check for any breaking changes
+            if (IsElementType(cmdlet, oldTypeMetadata, newTypeMetadata, problemId, description, remediation, issueLogger))
             {
-                // Check if the element of the array is the same in the old and new metadata
-                if (oldTypeMetadata.ElementType.Equals(newTypeMetadata.ElementType, StringComparison.OrdinalIgnoreCase))
-                {
-                    // If we have not previously seen this element type,
-                    // run this method on the type
-                    if (!_typeSet.Contains(oldTypeMetadata.ElementType))
-                    {
-                        _typeSet.Add(oldTypeMetadata.ElementType);
-
-                        var oldElementType = _oldTypeDictionary[oldTypeMetadata.ElementType];
-                        var newElementType = _newTypeDictionary[newTypeMetadata.ElementType];
-
-                        CompareTypeMetadata(cmdlet, oldElementType, newElementType, issueLogger);
-                    }
-                }
-                // If the element type has changed, log an issue
-                else
-                {
-                    issueLogger.LogBreakingChangeIssue(
-                        cmdlet: cmdlet,
-                        severity: 0,
-                        problemId: ProblemIds.BreakingChangeProblemId.ChangedParameterElementType,
-                        description: string.Format(Properties.Resources.ChangedParameterElementTypeDescription,
-                            parameter.Name, oldTypeMetadata.ElementType, newTypeMetadata.ElementType),
-                        remediation: string.Format(Properties.Resources.ChangedParameterElementTypeRemediation,
-                            parameter.Name, oldTypeMetadata.ElementType));
-                }
-
                 return;
             }
 
-            // Check if the type is a generic
-            if (oldTypeMetadata.GenericTypeArguments.Count > 0 && newTypeMetadata.GenericTypeArguments.Count > 0)
+            string target = string.Format("parameter {0}", parameter.Name);
+            
+            // If the type is a generic, check for any breaking changes
+            if (IsGenericType(cmdlet, oldTypeMetadata, newTypeMetadata, target, issueLogger))
             {
-                // Check if the generic type has changed
-                if (oldTypeMetadata.Name.Equals(newTypeMetadata.Name, StringComparison.OrdinalIgnoreCase))
-                {
-                    // Check if the number of generic type arguments is the same
-                    if (oldTypeMetadata.GenericTypeArguments.Count == newTypeMetadata.GenericTypeArguments.Count)
-                    {
-                        // For each element in the generic type arguments list, make sure that the types
-                        // are the same
-                        for (int idx = 0; idx < oldTypeMetadata.GenericTypeArguments.Count; idx++)
-                        {
-                            if (oldTypeMetadata.GenericTypeArguments[idx].Equals(newTypeMetadata.GenericTypeArguments[idx], StringComparison.OrdinalIgnoreCase))
-                            {
-                                // If we have not previously seen this generic type argument,
-                                // run this method on the type
-                                if (!_typeSet.Contains(oldTypeMetadata.GenericTypeArguments[idx]))
-                                {
-                                    _typeSet.Add(oldTypeMetadata.GenericTypeArguments[idx]);
-
-                                    var oldElementType = _oldTypeDictionary[oldTypeMetadata.GenericTypeArguments[idx]];
-                                    var newElementType = _newTypeDictionary[newTypeMetadata.GenericTypeArguments[idx]];
-
-                                    CompareTypeMetadata(cmdlet, oldElementType, newElementType, issueLogger);
-                                }
-                            }
-                            // If the generic type arguments aren't the same, log an issue
-                            else
-                            {
-                                issueLogger.LogBreakingChangeIssue(
-                                    cmdlet: cmdlet,
-                                    severity: 0,
-                                    problemId: ProblemIds.BreakingChangeProblemId.ChangedParameterGenericTypeArgument,
-                                    description: string.Format(Properties.Resources.ChangedParameterGenericTypeArgumentDescription,
-                                        parameter.Name, oldTypeMetadata.GenericTypeArguments[idx], newTypeMetadata.GenericTypeArguments[idx]),
-                                    remediation: string.Format(Properties.Resources.ChangedParameterGenericTypeArgumentRemediation,
-                                        parameter.Name, oldTypeMetadata.GenericTypeArguments[idx]));
-                            }
-                        }
-                    }
-                    // If the number of generic type arguments is different, log an issue
-                    else
-                    {
-                        issueLogger.LogBreakingChangeIssue(
-                            cmdlet: cmdlet,
-                            severity: 0,
-                            problemId: ProblemIds.BreakingChangeProblemId.DifferentParameterGenericTypeArgumentSize,
-                            description: string.Format(Properties.Resources.DifferentParameterGenericTypeArgumentSizeDescription,
-                                oldTypeMetadata.Name, parameter.Name,
-                                oldTypeMetadata.GenericTypeArguments.Count, newTypeMetadata.GenericTypeArguments.Count),
-                            remediation: string.Format(Properties.Resources.DifferentParameterGenericTypeArgumentSizeRemediation,
-                                oldTypeMetadata.Name, oldTypeMetadata.GenericTypeArguments.Count));
-                    }
-                }
-                // If the generic type has changed, log an issue
-                else
-                {
-                    issueLogger.LogBreakingChangeIssue(
-                        cmdlet: cmdlet,
-                        severity: 0,
-                        problemId: ProblemIds.BreakingChangeProblemId.ChangedParameterGenericType,
-                        description: string.Format(Properties.Resources.ChangedParameterGenericTypeDescription,
-                            parameter.Name, oldTypeMetadata.Name, newTypeMetadata.Name),
-                        remediation: string.Format(Properties.Resources.ChangedParameterGenericTypeRemediation,
-                            parameter.Name, oldTypeMetadata.Name));
-                }
-
                 return;
-            }
+            }            
 
             // If the types are different, log an issue
             if (!oldTypeMetadata.Name.Equals(newTypeMetadata.Name, StringComparison.OrdinalIgnoreCase))
@@ -370,6 +201,48 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             TypeMetadata newTypeMetadata,
             ReportLogger<BreakingChangeIssue> issueLogger)
         {
+            int problemId = ProblemIds.BreakingChangeProblemId.ChangedOutputElementType;
+            string description = string.Format(Properties.Resources.ChangedOutputElementTypeDescription,
+                                    oldTypeMetadata.ElementType, newTypeMetadata.ElementType);
+            string remediation = string.Format(Properties.Resources.ChangedOutputElementTypeRemediation,
+                                    oldTypeMetadata.ElementType);
+
+            // If the type is an array, check for any breaking changes 
+            if (IsElementType(cmdlet, oldTypeMetadata, newTypeMetadata, problemId, description, remediation, issueLogger))
+            {
+                return;
+            }
+
+            string target = "output type";
+
+            if (IsGenericType(cmdlet, oldTypeMetadata, newTypeMetadata, target, issueLogger))
+            {
+                return;
+            }            
+
+            CompareTypeMetadata(cmdlet, oldTypeMetadata, newTypeMetadata, issueLogger);
+        }
+
+
+        /// <summary>
+        /// Check if the given types are arrays, and if so, see if their element types are the same. If not, log an issue.
+        /// </summary>
+        /// <param name="cmdlet">The cmdlet metadata currently being checked.</param>
+        /// <param name="oldTypeMetadata">The type metadata from the old (serialized) assembly.</param>
+        /// <param name="newTypeMetadata">The type metadata from the new assembly.</param>
+        /// <param name="problemId">The problemId used for logging if there is an issue.</param>
+        /// <param name="description">The description used for logging if there is an issue.</param>
+        /// <param name="remediation">The remediation used for logging if there is an issue.</param>
+        /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
+        private bool IsElementType(
+            CmdletBreakingChangeMetadata cmdlet,
+            TypeMetadata oldTypeMetadata,
+            TypeMetadata newTypeMetadata,
+            int problemId,
+            string description,
+            string remediation,
+            ReportLogger<BreakingChangeIssue> issueLogger)
+        {
             // Check if the type is an array
             if (oldTypeMetadata.ElementType != null && newTypeMetadata.ElementType != null)
             {
@@ -394,88 +267,176 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     issueLogger.LogBreakingChangeIssue(
                         cmdlet: cmdlet,
                         severity: 0,
-                        problemId: ProblemIds.BreakingChangeProblemId.ChangedOutputElementType,
-                        description: string.Format(Properties.Resources.ChangedOutputElementTypeDescription,
-                            oldTypeMetadata.ElementType, newTypeMetadata.ElementType),
-                        remediation: string.Format(Properties.Resources.ChangedOutputElementTypeRemediation,
-                            oldTypeMetadata.ElementType));
+                        problemId: problemId,
+                        description: description,
+                        remediation: remediation);
                 }
 
-                return;
+                return true;
             }
 
-            // Check if the type is a generic
+            return false;
+        }
+
+        /// <summary>
+        /// Check if the given types are generics, and if so, see if their generic properties are the same. If not, log an issue.
+        /// </summary>
+        /// <param name="cmdlet">The cmdlet metadata currently being checked.</param>
+        /// <param name="oldTypeMetadata">The type metadata from the old (serialized) assembly.</param>
+        /// <param name="newTypeMetadata">The type metadata from the new assembly.</param>
+        /// <param name="target">Target of the generic type breaking change.</param>
+        /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
+        /// <returns></returns>
+        private bool IsGenericType(
+            CmdletBreakingChangeMetadata cmdlet,
+            TypeMetadata oldTypeMetadata,
+            TypeMetadata newTypeMetadata,
+            string target,
+            ReportLogger<BreakingChangeIssue> issueLogger)
+        {
+            // If the type is a generic, check for any breaking changes
             if (oldTypeMetadata.GenericTypeArguments.Count > 0 && newTypeMetadata.GenericTypeArguments.Count > 0)
             {
                 // Check if the generic type has changed
-                if (oldTypeMetadata.Name.Equals(newTypeMetadata.Name, StringComparison.OrdinalIgnoreCase))
+                if (HasSameGenericType(cmdlet, oldTypeMetadata, newTypeMetadata, target, issueLogger))
                 {
                     // Check if the number of generic type arguments is the same
-                    if (oldTypeMetadata.GenericTypeArguments.Count == newTypeMetadata.GenericTypeArguments.Count)
+                    if (HasSameGenericArgumentSize(cmdlet, oldTypeMetadata, newTypeMetadata, target, issueLogger))
                     {
-                        // For each element in the generic type arguments list, make sure that the types
-                        // are the same
+                        // For each element in the generic type arguments list,
+                        // make sure that the types are the same
                         for (int idx = 0; idx < oldTypeMetadata.GenericTypeArguments.Count; idx++)
                         {
-                            if (oldTypeMetadata.GenericTypeArguments[idx].Equals(newTypeMetadata.GenericTypeArguments[idx], StringComparison.OrdinalIgnoreCase))
+                            var oldArgument = oldTypeMetadata.GenericTypeArguments[idx];
+                            var newArgument = newTypeMetadata.GenericTypeArguments[idx];
+
+                            if (CheckGenericTypeArguments(cmdlet, oldArgument, newArgument, target, issueLogger))
                             {
                                 // If we have not previously seen this generic type argument,
                                 // run this method on the type
-                                if (!_typeSet.Contains(oldTypeMetadata.GenericTypeArguments[idx]))
+                                if (!_typeSet.Contains(oldArgument))
                                 {
-                                    _typeSet.Add(oldTypeMetadata.GenericTypeArguments[idx]);
+                                    _typeSet.Add(oldArgument);
 
-                                    var oldElementType = _oldTypeDictionary[oldTypeMetadata.GenericTypeArguments[idx]];
-                                    var newElementType = _newTypeDictionary[newTypeMetadata.GenericTypeArguments[idx]];
+                                    var oldElementType = _oldTypeDictionary[oldArgument];
+                                    var newElementType = _newTypeDictionary[newArgument];
 
                                     CompareTypeMetadata(cmdlet, oldElementType, newElementType, issueLogger);
                                 }
                             }
-                            // If the generic type arguments aren't the same, log an issue
-                            else
-                            {
-                                issueLogger.LogBreakingChangeIssue(
-                                    cmdlet: cmdlet,
-                                    severity: 0,
-                                    problemId: ProblemIds.BreakingChangeProblemId.ChangedOutputGenericTypeArgument,
-                                    description: string.Format(Properties.Resources.ChangedOutputGenericTypeArgumentDescription,
-                                        oldTypeMetadata.GenericTypeArguments[idx], newTypeMetadata.GenericTypeArguments[idx]),
-                                    remediation: string.Format(Properties.Resources.ChangedOutputGenericTypeArgumentRemediation,
-                                        oldTypeMetadata.GenericTypeArguments[idx]));
-                            }
                         }
                     }
-                    // If the number of generic type arguments is different, log an issue
-                    else
-                    {
-                        issueLogger.LogBreakingChangeIssue(
-                            cmdlet: cmdlet,
-                            severity: 0,
-                            problemId: ProblemIds.BreakingChangeProblemId.DifferentOutputGenericTypeArgumentSize,
-                            description: string.Format(Properties.Resources.DifferentOutputGenericTypeArgumentSizeDescription,
-                                oldTypeMetadata.Name,
-                                oldTypeMetadata.GenericTypeArguments.Count, newTypeMetadata.GenericTypeArguments.Count),
-                            remediation: string.Format(Properties.Resources.DifferentOutputGenericTypeArgumentSizeRemediation,
-                                oldTypeMetadata.Name, oldTypeMetadata.GenericTypeArguments.Count));
-                    }
-                }
-                // If the generic type has changed, log an issue
-                else
-                {
-                    issueLogger.LogBreakingChangeIssue(
-                        cmdlet: cmdlet,
-                        severity: 0,
-                        problemId: ProblemIds.BreakingChangeProblemId.ChangedOutputGenericType,
-                        description: string.Format(Properties.Resources.ChangedOutputGenericTypeDescription,
-                            oldTypeMetadata.Name, newTypeMetadata.Name),
-                        remediation: string.Format(Properties.Resources.ChangedOutputGenericTypeRemediation,
-                            oldTypeMetadata.Name));
                 }
 
-                return;
+                return true;
             }
 
-            CompareTypeMetadata(cmdlet, oldTypeMetadata, newTypeMetadata, issueLogger);
+
+
+            return false;
+        }
+
+        /// <summary>
+        /// Check if the type of the generic is the same for two generics. If not, log an issue.
+        /// </summary>
+        /// <param name="cmdlet">The cmdlet metadata currently being checked.</param>
+        /// <param name="oldTypeMetadata">The type metadata from the old (serialized) assembly.</param>
+        /// <param name="newTypeMetadata">The type metadata from the new assembly.</param>
+        /// <param name="target">Target of the generic type breaking change..</param>
+        /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
+        private bool HasSameGenericType(
+            CmdletBreakingChangeMetadata cmdlet,
+            TypeMetadata oldTypeMetadata,
+            TypeMetadata newTypeMetadata,
+            string target,
+            ReportLogger<BreakingChangeIssue> issueLogger)
+        {
+            // If the type of the generics are the same, return true
+            if (oldTypeMetadata.Name.Equals(newTypeMetadata.Name, StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+            
+            // Otherwise, log an issue and return false
+            issueLogger.LogBreakingChangeIssue(
+                cmdlet: cmdlet,
+                severity: 0,
+                problemId: ProblemIds.BreakingChangeProblemId.ChangedGenericType,
+                description: string.Format(Properties.Resources.ChangedGenericTypeDescription, 
+                    target, oldTypeMetadata.Name, newTypeMetadata.Name),
+                remediation: string.Format(Properties.Resources.ChangedGenericTypeRemediation, 
+                    target, oldTypeMetadata.Name));
+
+            return false;
+        }
+
+        /// <summary>
+        /// Check if the argument size for the generics are the same. If they are not, log an issue.
+        /// </summary>
+        /// <param name="cmdlet">The cmdlet metadata currently being checked.</param>
+        /// <param name="oldTypeMetadata">The type metadata from the old (serialized) assembly.</param>
+        /// <param name="newTypeMetadata">The type metadata from the new assembly.</param>
+        /// <param name="target">Target of the generic type breaking change.</param>
+        /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
+        /// <returns></returns>
+        private bool HasSameGenericArgumentSize(
+            CmdletBreakingChangeMetadata cmdlet,
+            TypeMetadata oldTypeMetadata,
+            TypeMetadata newTypeMetadata,
+            string target,
+            ReportLogger<BreakingChangeIssue> issueLogger)
+        {
+            // If the arguments are the same size, return true
+            if (oldTypeMetadata.GenericTypeArguments.Count == newTypeMetadata.GenericTypeArguments.Count)
+            {
+                return true;
+            }
+            
+            // Otherwise, log an issue and return false
+            issueLogger.LogBreakingChangeIssue(
+                cmdlet: cmdlet,
+                severity: 0,
+                problemId: ProblemIds.BreakingChangeProblemId.DifferentGenericTypeArgumentSize,
+                description: string.Format(Properties.Resources.DifferentGenericTypeArgumentSizeDescription,
+                    oldTypeMetadata.Name, target, oldTypeMetadata.GenericTypeArguments.Count,
+                    newTypeMetadata.GenericTypeArguments.Count),
+                remediation: string.Format(Properties.Resources.DifferentGenericTypeArgumentSizeRemediation,
+                    oldTypeMetadata.Name, oldTypeMetadata.GenericTypeArguments.Count));
+
+            return false;
+        }
+
+        /// <summary>
+        /// Check if the arguments of a generic type are the same. If they are not, log an issue.
+        /// </summary>
+        /// <param name="cmdlet">The cmdlet metadata currently being checked.</param>
+        /// <param name="oldArgument">The old argument from the generic.</param>
+        /// <param name="newArgument">The new argument from the generic</param>
+        /// <param name="target">Target of the generic type breaking change.</param>
+        /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
+        private bool CheckGenericTypeArguments(
+            CmdletBreakingChangeMetadata cmdlet,
+            string oldArgument,
+            string newArgument,
+            string target,
+            ReportLogger<BreakingChangeIssue> issueLogger)
+        {
+            if (oldArgument.Equals(newArgument, StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+            
+            // If the generic type arguments aren't the same, log an issue
+            issueLogger.LogBreakingChangeIssue(
+                cmdlet: cmdlet,
+                severity: 0,
+                problemId: ProblemIds.BreakingChangeProblemId.ChangedGenericTypeArgument,
+                description: string.Format(Properties.Resources.ChangedGenericTypeArgumentDescription,
+                    target, oldArgument, newArgument),
+                remediation: string.Format(Properties.Resources.ChangedGenericTypeArgumentRemediation,
+                    target, oldArgument));
+
+            return false;
         }
     }
 }

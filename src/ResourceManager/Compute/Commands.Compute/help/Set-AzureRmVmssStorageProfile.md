@@ -17,7 +17,8 @@ Set-AzureRmVmssStorageProfile [-VirtualMachineScaleSet] <VirtualMachineScaleSet>
  [[-ImageReferencePublisher] <String>] [[-ImageReferenceOffer] <String>] [[-ImageReferenceSku] <String>]
  [[-ImageReferenceVersion] <String>] [[-Name] <String>] [[-OsDiskCaching] <CachingTypes>]
  [[-OsDiskCreateOption] <DiskCreateOptionTypes>] [[-OsDiskOsType] <OperatingSystemTypes>] [[-Image] <String>]
- [[-VhdContainer] <String[]>] [<CommonParameters>]
+ [[-VhdContainer] <String[]>] [-ImageReferenceId <String>] [-ManagedDisk <StorageAccountTypes>]
+ [-DataDisk <VirtualMachineScaleSetDataDisk[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,6 +37,21 @@ This command sets the storage profile properties for the VMSS named ContosoVMSS.
 
 ## PARAMETERS
 
+### -DataDisk
+Specifies the data disk object.
+
+```yaml
+Type: VirtualMachineScaleSetDataDisk[]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Image
 Specifies the blob URI for the user image.
 VMSS creates an operating system disk in the same container of the user image.
@@ -46,7 +62,22 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 10
+Position: 9
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ImageReferenceId
+Specifies the image reference ID.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -62,7 +93,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -78,7 +109,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -94,7 +125,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -110,7 +141,23 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 5
+Position: 4
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ManagedDisk
+Specifies the managed disk.
+
+```yaml
+Type: StorageAccountTypes
+Parameter Sets: (All)
+Aliases: 
+Accepted values: StandardLRS, PremiumLRS
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -125,7 +172,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 6
+Position: 5
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -147,9 +194,10 @@ This setting affects the consistency and performance of the disk.
 Type: CachingTypes
 Parameter Sets: (All)
 Aliases: 
+Accepted values: None, ReadOnly, ReadWrite
 
 Required: False
-Position: 7
+Position: 6
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -171,7 +219,7 @@ Aliases:
 Accepted values: FromImage, Empty, Attach
 
 Required: False
-Position: 8
+Position: 7
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -185,9 +233,10 @@ This is only needed for user image scenarios and not for a platform image.
 Type: OperatingSystemTypes
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Windows, Linux
 
 Required: False
-Position: 9
+Position: 8
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -202,7 +251,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 11
+Position: 10
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -218,9 +267,39 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -18,6 +18,37 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 3.8.0
+* Restart-AzureVM: Added InitiateMaintenance parameter for performing maintenance during VM restart.
+
+* Get-AzureVM: Added Maintenance Status field.
+
+* Added new cmdlets to support Recovery Services vault upgrade
+    - Test-AzureRecoveryServicesVaultUpgrade
+    - Invoke-AzureRecoveryServicesVaultUpgrade
+
+## Version 3.7.0
+* Update the output object of migration cmdlets (Move-AzureService, Move-AzureStorageAccount, Move-AzureVirtualNetwork, Move-AzureNetworkSecurityGroup, Move-AzureReservedIP, Move-AzureRouteTable):
+    - ValidationMessages contain "Information" and "Warning" messages in addition to "Error" messages.
+    - Result output is changed according to ValidationMessages.
+
+* Removed ManagedCache cmdlets.  These cmdlets were non-functional and have been deeprecated for more than a year
+    - Get-AzureManagedCacheLocation
+    - Get-AzureManagedCache
+    - Get-AzureManagedCacheAccessKey
+    - Get-AzureManagedCacheNamedCache
+    - New-AzureManagedCache
+    - New-AzureManagedCacheAccessKey
+    - New-AzureManagedCacheNamedCache
+    - Remove-AzureManagedCache
+    - Remove-AzureManagedCacheNamedCache
+    - Set-AzureManagedCache
+    - Set-AzureManagedCacheNamedCache
+
+## Version 3.5.0
+* Updated Set-AzureVMDscExtension cmdlet WmfVersion parameter to support "5.1"
+
 * Updated Set-AzureVMChefExtension cmdlet to add following new options :
     - Daemon: Configures the chef-client service for unattended execution. e.g. -Daemon 'none' or e.g. -Daemon 'service'."
     - Secret: The encryption key used to encrypt and decrypt the data bag item values.

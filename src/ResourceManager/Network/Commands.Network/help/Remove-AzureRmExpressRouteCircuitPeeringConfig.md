@@ -14,35 +14,27 @@ Removes an ExpressRoute circuit peering configuration.
 
 ```
 Remove-AzureRmExpressRouteCircuitPeeringConfig [-Name <String>] -ExpressRouteCircuit <PSExpressRouteCircuit>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmExpressRouteCircuitPeeringConfig** cmdlet removes an ExpressRoute circuit peering configuration.
+The **Remove-AzureRmExpressRouteCircuitPeeringConfig** cmdlet removes an ExpressRoute circuit
+peering configuration.
 
 ## EXAMPLES
 
-### 1:
+### Example 1: Remove a peering configuration from an ExpressRoute circuit
 ```
-
+$circuit = Get-AzureRmExpressRouteCircuit -Name $CircuitName -ResourceGroupName $rg
+Remove-AzureRmExpressRouteCircuitPeeringConfig -Name 'AzurePrivatePeering' -ExpressRouteCircuit $circuit
+Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit
 ```
 
 ## PARAMETERS
 
-### -Name
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ExpressRouteCircuit
+The ExpressRoute circuit containing the peering configuration to be removed.
+
 ```yaml
 Type: PSExpressRouteCircuit
 Parameter Sets: (All)
@@ -55,37 +47,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -Name
+The name of the peering configuration to be removed.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
 
 Required: False
 Position: Named
@@ -105,3 +73,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+[Add-AzureRmExpressRouteCircuitPeeringConfig](Add-AzureRmExpressRouteCircuitPeeringConfig.md)
+
+[Get-AzureRmExpressRouteCircuit](Get-AzureRmExpressRouteCircuit.md)
+
+[New-AzureRmExpressRouteCircuitPeeringConfig](New-AzureRmExpressRouteCircuitPeeringConfig.md)
+
+[Set-AzureRmExpressRouteCircuit](Set-AzureRmExpressRouteCircuit.md)

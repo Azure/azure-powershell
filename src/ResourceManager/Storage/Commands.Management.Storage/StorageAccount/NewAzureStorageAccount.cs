@@ -103,6 +103,24 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Alias(TagsAlias)]
         public Hashtable Tag { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Storage Account EnableHttpsTrafficOnly.")]
+        public bool EnableHttpsTrafficOnly
+        {
+            get
+            {
+                return enableHttpsTrafficOnly.Value;
+            }
+            set
+            {
+                enableHttpsTrafficOnly = value;
+            }
+        }
+
+        private bool? enableHttpsTrafficOnly = null;
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -116,7 +134,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
             StorageAccountCreateParameters createParameters = new StorageAccountCreateParameters()
             {
                 Location = this.Location,
-                Kind = ParseAccountKind(Kind),
                 Sku = new Sku(ParseSkuName(this.SkuName)),
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
             };
@@ -134,6 +151,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 throw new System.ArgumentException(string.Format("UseSubDomain must be set together with CustomDomainName."));
             }
 
+            if (Kind != null)
+            {
+                createParameters.Kind = ParseAccountKind(Kind);
+            }
+
             if (this.EnableEncryptionService != null)
             {
                 createParameters.Encryption = ParseEncryption(EnableEncryptionService);
@@ -142,6 +164,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (this.AccessTier != null)
             {
                 createParameters.AccessTier = ParseAccessTier(AccessTier);
+            }
+            if (enableHttpsTrafficOnly != null)
+            {
+                createParameters.EnableHttpsTrafficOnly = enableHttpsTrafficOnly;
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(

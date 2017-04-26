@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Advisor.Model
 {
@@ -44,12 +44,12 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Model
         }
 
         /// <summary>
-        /// Construct AzureSqlDatabaseAdvisorModel from Management.Sql.Models.Advisor object
+        /// Construct AzureSqlDatabaseAdvisorModel from Management.Sql.LegacySdk.Models.Advisor object
         /// </summary>
         /// <param name="resourceGroupName">Resource group</param>
         /// <param name="serverName">Server name</param>
         /// <param name="advisor">Advisor object</param>
-        public AzureSqlServerAdvisorModel(string resourceGroupName, string serverName, Management.Sql.Models.Advisor advisor) 
+        public AzureSqlServerAdvisorModel(string resourceGroupName, string serverName, Management.Sql.LegacySdk.Models.Advisor advisor) 
         {
             ResourceGroupName = resourceGroupName;
             ServerName = serverName;

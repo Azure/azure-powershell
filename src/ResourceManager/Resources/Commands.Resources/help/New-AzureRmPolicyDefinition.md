@@ -14,8 +14,8 @@ Creates a policy definition.
 
 ```
 New-AzureRmPolicyDefinition -Name <String> [-DisplayName <String>] [-Description <String>] -Policy <String>
- [-ApiVersion <String>] [-Pre] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ [-Parameter <String>] [-ApiVersion <String>] [-Pre] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,23 +40,9 @@ The command specifies the policy as a string in valid JSON format.
 
 ## PARAMETERS
 
-### -Name
-Specifies a name for the policy definition.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DisplayName
-Specifies a display name for the policy definition.
+### -ApiVersion
+Specifies the version of the resource provider API to use.
+If you do not specify a version, this cmdlet uses the latest available version.
 
 ```yaml
 Type: String
@@ -66,7 +52,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -85,50 +71,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Policy
-Specifies a policy rule for the policy definition.
-You can specify the path of a .json file or a string that contains the policy in JSON format.
+### -DisplayName
+Specifies a display name for the policy definition.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ApiVersion
-Specifies the version of the resource provider API to use.
-If you do not specify a version, this cmdlet uses the latest available version.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Pre
-Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -163,6 +117,67 @@ Specifies an information variable.
 Type: String
 Parameter Sets: (All)
 Aliases: iv
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies a name for the policy definition.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Parameter
+The parameters declaration for policy definition. This can either be a path to a file name containing the parameters declaration, or the parameters declaration as string.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Policy
+Specifies a policy rule for the policy definition.
+You can specify the path of a .json file or a string that contains the policy in JSON format.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Pre
+Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
 Position: Named

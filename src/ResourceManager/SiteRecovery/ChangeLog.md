@@ -19,6 +19,12 @@
 -->
 ## Current Release
 
+## Version 3.7.0
+
+## Version 3.6.0
+
+## Version 3.5.0
+
 ## Version 3.4.0
 
 ## Version 3.3.0

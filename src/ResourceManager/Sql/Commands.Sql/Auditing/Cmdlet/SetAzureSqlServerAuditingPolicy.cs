@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 model.StorageAccountName = StorageAccountName;
                 ModelAdapter.ClearStorageDetailsCache();
             }
-            if (!string.IsNullOrEmpty(StorageKeyType)) // the user enter a key type - we use it (and running over the previously defined key type)
+            if (MyInvocation.BoundParameters.ContainsKey(SecurityConstants.StorageKeyType)) // the user enter a key type - we use it (and running over the previously defined key type)
             {
                 model.StorageKeyType = (StorageKeyType == SecurityConstants.Primary) ? StorageKeyKind.Primary : StorageKeyKind.Secondary;
             }
@@ -160,9 +160,15 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             {
                 model.RetentionInDays = RetentionInDays;
             }
+
             if (StorageAccountName != null)
             {
                 model.StorageAccountName = StorageAccountName;
+            }
+
+            if (MyInvocation.BoundParameters.ContainsKey(SecurityConstants.StorageKeyType)) // the user enter a key type - we use it (and running over the previously defined key type)
+            {
+                model.StorageKeyType = (StorageKeyType == SecurityConstants.Primary) ? StorageKeyKind.Primary : StorageKeyKind.Secondary;
             }
 
             if (AuditActionGroup != null && AuditActionGroup.Length != 0)

@@ -179,45 +179,58 @@ namespace Microsoft.Azure.Commands.Compute
 
                 // Get Disks
                 var accounts = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
-                var accountName = this._Helper.GetStorageAccountFromUri(osdisk.Vhd.Uri);
-                var storageKey = this._Helper.GetAzureStorageKeyFromCache(accountName);
-                accounts.Add(accountName, storageKey);
-
-                this._Helper.WriteHost("[INFO] Adding configuration for OS disk");
-
-                var caching = osdisk.Caching;
-                sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.name", Value = this._Helper.GetDiskName(osdisk.Vhd.Uri) });
-                sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.caching", Value = caching });
-                sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.account", Value = accountName });
-                if (this._Helper.IsPremiumStorageAccount(accountName))
+                if (osdisk.ManagedDisk == null)
                 {
-                    WriteVerbose("OS Disk Storage Account is a premium account - adding SLAs for OS disk");
-                    var sla = this._Helper.GetDiskSLA(osdisk);
-                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.type", Value = AEMExtensionConstants.DISK_TYPE_PREMIUM });
-                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.sla.throughput", Value = sla.TP });
-                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.sla.iops", Value = sla.IOPS });
+                    var accountName = this._Helper.GetStorageAccountFromUri(osdisk.Vhd.Uri);
+                    var storageKey = this._Helper.GetAzureStorageKeyFromCache(accountName);
+                    accounts.Add(accountName, storageKey);
+
+                    this._Helper.WriteHost("[INFO] Adding configuration for OS disk");
+
+                    var caching = osdisk.Caching;
+                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.name", Value = this._Helper.GetDiskName(osdisk.Vhd.Uri) });
+                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.caching", Value = caching });
+                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.account", Value = accountName });
+                    if (this._Helper.IsPremiumStorageAccount(accountName))
+                    {
+                        WriteVerbose("OS Disk Storage Account is a premium account - adding SLAs for OS disk");
+                        var sla = this._Helper.GetDiskSLA(osdisk);
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.type", Value = AEMExtensionConstants.DISK_TYPE_PREMIUM });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.sla.throughput", Value = sla.TP });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.sla.iops", Value = sla.IOPS });
+                    }
+                    else
+                    {
+                        WriteVerbose("OS Disk Storage Account is a standard account");
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.type", Value = AEMExtensionConstants.DISK_TYPE_STANDARD });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.connminute", Value = (accountName + ".minute") });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.connhour", Value = (accountName + ".hour") });
+                    }
                 }
                 else
                 {
-                    WriteVerbose("OS Disk Storage Account is a standard account");
-                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.type", Value = AEMExtensionConstants.DISK_TYPE_STANDARD });
-                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.connminute", Value = (accountName + ".minute") });
-                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.connhour", Value = (accountName + ".hour") });
+                    this._Helper.WriteWarning("[WARN] Managed Disks are not yet supported. Extension will be installed but no disk metrics will be available.");
                 }
 
                 // Get Storage accounts from disks
                 var diskNumber = 1;
                 foreach (var disk in disks)
                 {
-                    accountName = this._Helper.GetStorageAccountFromUri(disk.Vhd.Uri);
+                    if (disk.ManagedDisk != null)
+                    {
+                        this._Helper.WriteWarning("[WARN] Managed Disks are not yet supported. Extension will be installed but no disk metrics will be available.");
+                        continue;
+                    }
+
+                    var accountName = this._Helper.GetStorageAccountFromUri(disk.Vhd.Uri);
                     if (!accounts.ContainsKey(accountName))
                     {
-                        storageKey = this._Helper.GetAzureStorageKeyFromCache(accountName);
+                        var storageKey = this._Helper.GetAzureStorageKeyFromCache(accountName);
                         accounts.Add(accountName, storageKey);
                     }
 
                     this._Helper.WriteHost("[INFO] Adding configuration for data disk {0}", disk.Name);
-                    caching = disk.Caching;
+                    var caching = disk.Caching;
                     sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.lun." + diskNumber, Value = disk.Lun });
                     sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.name." + diskNumber, Value = this._Helper.GetDiskName(disk.Vhd.Uri) });
                     sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.caching." + diskNumber, Value = caching });

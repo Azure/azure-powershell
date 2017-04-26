@@ -14,12 +14,12 @@ Restarts an Azure virtual machine.
 
 ### ResourceGroupNameParameterSetName (Default)
 ```
-Restart-AzureRmVM [-Name] <String> [-ResourceGroupName] <String> [<CommonParameters>]
+Restart-AzureRmVM [-Name] <String> [-ResourceGroupName] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IdParameterSetName
 ```
-Restart-AzureRmVM [-Name] <String> [-Id] <String> [<CommonParameters>]
+Restart-AzureRmVM [-Name] <String> [-Id] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,30 +37,26 @@ This command restarts the virtual machine named VirtualMachine07 in ResourceGrou
 ## PARAMETERS
 
 ### -Id
-Specifies an ID.
-
-```yaml
+The resource group name.```yaml
 Type: String
 Parameter Sets: IdParameterSetName
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the virtual machine to restart.
-
-```yaml
+The virtual machine name.```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -75,9 +71,39 @@ Parameter Sets: ResourceGroupNameParameterSetName
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -28,7 +28,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Add", "AzureRmVmssSecret")]
+    [Cmdlet("Add", "AzureRmVmssSecret", SupportsShouldProcess = true)]
     [OutputType(typeof(VirtualMachineScaleSet))]
     public class AddAzureRmVmssSecretCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -53,6 +53,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         protected override void ProcessRecord()
         {
+            if (ShouldProcess("VirtualMachineScaleSet", "Add"))
+            {
+                Run();
+            }
+        }
+
+        private void Run()
+        {
             // VirtualMachineProfile
             if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
             {
@@ -73,10 +81,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var vSecrets = new Microsoft.Azure.Management.Compute.Models.VaultSecretGroup();
 
-            // SourceVault
-            vSecrets.SourceVault = new Microsoft.Azure.Management.Compute.Models.SubResource();
-
-            vSecrets.SourceVault.Id = this.SourceVaultId;
+            if (this.SourceVaultId != null)
+            {
+                // SourceVault
+                vSecrets.SourceVault = new Microsoft.Azure.Management.Compute.Models.SubResource();
+                vSecrets.SourceVault.Id = this.SourceVaultId;
+            }
             vSecrets.VaultCertificates = this.VaultCertificate;
             this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.Secrets.Add(vSecrets);
             WriteObject(this.VirtualMachineScaleSet);

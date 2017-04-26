@@ -15,8 +15,7 @@ Modifies an integration account map.
 ```
 Set-AzureRmIntegrationAccountMap -ResourceGroupName <String> -Name <String> -MapName <String>
  [-MapFilePath <String>] [-MapDefinition <String>] [-MapType <String>] [-ContentType <String>]
- [-Metadata <Object>] [-Force] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Metadata <Object>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,118 +50,12 @@ The command specifies a map definition stored in the $MapContent variable by a p
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the name of the resource group.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Name
-Specifies the name of the integration account.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: ResourceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -MapName
-Specifies the name of an integration account map.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -MapFilePath
-Specifies the file path of a definition for the integration account map.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MapDefinition
-Specifies a definition object for integration account map.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MapType
-Specifies the type for the integration account map.
-This cmdlet supports Xslt as a map type.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ContentType
 Specifies a content type for the integration account map.
 This cmdlet supports application/xml as a map content type.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Metadata
-Specifies a metadata object for the map.
-
-```yaml
-Type: Object
 Parameter Sets: (All)
 Aliases: 
 
@@ -188,22 +81,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -MapDefinition
+Specifies a definition object for integration account map.
 
 ```yaml
-Type: ActionPreference
+Type: String
 Parameter Sets: (All)
-Aliases: infa
+Aliases: 
 
 Required: False
 Position: Named
@@ -212,17 +96,109 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
+### -MapFilePath
+Specifies the file path of a definition for the integration account map.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MapName
+Specifies the name of an integration account map.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MapType
+Specifies the type for the integration account map.
+This cmdlet supports Xslt as a map type.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Xslt
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Metadata
+Specifies a metadata object for the map.
+
+```yaml
+Type: Object
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the name of the integration account.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: IntegrationAccountName, ResourceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the name of the resource group.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -235,21 +211,6 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named

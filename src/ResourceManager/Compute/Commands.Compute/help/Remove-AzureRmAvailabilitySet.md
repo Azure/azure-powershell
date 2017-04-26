@@ -40,22 +40,20 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the availability set to remove.
-
-```yaml
+The availability set name.```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: ResourceName, AvailabilitySetName
 
 Required: False
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -70,7 +68,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

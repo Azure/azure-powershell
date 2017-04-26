@@ -44,7 +44,7 @@ function Get-Location
 		}
 	}
 
-	return "WestUS"
+	return "West US"
 }
 
 <#
@@ -68,5 +68,5 @@ function Get-SecondaryLocation
 		}
 	}
 
-	return "EastUS"
+	return "East US"
 }

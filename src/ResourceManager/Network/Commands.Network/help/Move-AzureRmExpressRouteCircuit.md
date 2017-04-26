@@ -8,90 +8,30 @@ schema: 2.0.0
 # Move-AzureRmExpressRouteCircuit
 
 ## SYNOPSIS
+Moves an ExpressRoute circuit from the classic deployment model to the Resource Manager deployment model.
 
 ## SYNTAX
 
 ```
 Move-AzureRmExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Location <String>
- -ServiceKey <String> [-Tag <Hashtable>] [-Force] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ServiceKey <String> [-Tag <Hashtable>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+The **Move-AzureRmExpressRouteCircuit** cmdlet moves an ExpressRoute circuit from the classic
+deployment model to the Resource Manager deployment model. After the move, the ExpressRoute circuit
+behaves and performs like any other ExpressRoute circuit that is created in the Resource Manager
+deployment model. Circuit links, virtual networks, and VPN gateways are not moved through this
+operation. Those resources need to be reconfigured after the move.
 
 ## EXAMPLES
 
-### 1:
+### Example 1: Move an ExpressRoute circuit to the Resource Manager deployment model
 ```
-
+Move-AzureRmExpressRouteCircuit -Name $CircuitName -ResourceGroupName $RG -Location $Location -ServiceKey $ServiceKey
 ```
 
 ## PARAMETERS
-
-### -Name
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: ResourceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Location
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ServiceKey
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Tag
-```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -Force
 Forces the command to run without asking for user confirmation.
@@ -108,41 +48,92 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -Location
+The name of the Azure location where the ExpressRoute circuit resides.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the ExpressRoute circuit to be moved.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: ResourceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group that will contain the ExpressRoute circuit being moved.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServiceKey
+The Service Key used by the ExpressRoute circuit in the classic deployment model.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Tag
+A hashtable of resource tags to be assigned to the circuit.
+
+```yaml
+Type: Hashtable
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -155,21 +146,6 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named
@@ -196,5 +172,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzureRmExpressRouteCircuit](./Remove-AzureRmExpressRouteCircuit.md)
 
 [Set-AzureRmExpressRouteCircuit](./Set-AzureRmExpressRouteCircuit.md)
-
-

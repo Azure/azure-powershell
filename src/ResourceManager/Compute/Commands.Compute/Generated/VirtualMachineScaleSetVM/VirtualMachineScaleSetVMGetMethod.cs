@@ -103,10 +103,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             else if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(vmScaleSetName))
             {
                 var result = VirtualMachineScaleSetVMsClient.List(resourceGroupName, vmScaleSetName);
-                var psObject = new List<PSVirtualMachineScaleSetVMList>();
-                foreach (var r in result)
+                var resultList = result.ToList();
+                var nextPageLink = result.NextPageLink;
+                while (!string.IsNullOrEmpty(nextPageLink))
                 {
-                     psObject.Add(Mapper.Map<VirtualMachineScaleSetVM, PSVirtualMachineScaleSetVMList>(r));
+                    var pageResult = VirtualMachineScaleSetVMsClient.ListNext(nextPageLink);
+                    foreach (var pageItem in pageResult)
+                    {
+                        resultList.Add(pageItem);
+                    }
+                    nextPageLink = pageResult.NextPageLink;
+                }
+                var psObject = new List<PSVirtualMachineScaleSetVMList>();
+                foreach (var r in resultList)
+                {
+                    psObject.Add(Mapper.Map<VirtualMachineScaleSetVM, PSVirtualMachineScaleSetVMList>(r));
                 }
                 WriteObject(psObject);
             }
@@ -223,12 +234,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 ParameterSetName = "InvokeByDynamicParametersForFriendMethod",
                 Position = 4,
-                Mandatory = true
-            });
-            pInstanceView.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByStaticParametersForFriendMethod",
-                Position = 5,
                 Mandatory = true
             });
             pInstanceView.Attributes.Add(new AllowNullAttribute());

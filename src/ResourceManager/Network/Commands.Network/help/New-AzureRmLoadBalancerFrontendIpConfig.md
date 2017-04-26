@@ -12,28 +12,27 @@ Creates a front-end IP configuration for a load balancer.
 
 ## SYNTAX
 
-### SetByResourceIdSubnet
-```
-New-AzureRmLoadBalancerFrontendIpConfig -Name <String> [-PrivateIpAddress <String>] -SubnetId <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
-```
-
 ### SetByResourceSubnet
 ```
 New-AzureRmLoadBalancerFrontendIpConfig -Name <String> [-PrivateIpAddress <String>] -Subnet <PSSubnet>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [<CommonParameters>]
+```
+
+### SetByResourceIdSubnet
+```
+New-AzureRmLoadBalancerFrontendIpConfig -Name <String> [-PrivateIpAddress <String>] -SubnetId <String>
+ [<CommonParameters>]
 ```
 
 ### SetByResourceIdPublicIpAddress
 ```
-New-AzureRmLoadBalancerFrontendIpConfig -Name <String> -PublicIpAddressId <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+New-AzureRmLoadBalancerFrontendIpConfig -Name <String> -PublicIpAddressId <String> [<CommonParameters>]
 ```
 
 ### SetByResourcePublicIpAddress
 ```
 New-AzureRmLoadBalancerFrontendIpConfig -Name <String> -PublicIpAddress <PSPublicIpAddress>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,7 +73,7 @@ Specify this parameter only if you also specify the *Subnet* parameter.
 
 ```yaml
 Type: String
-Parameter Sets: SetByResourceIdSubnet, SetByResourceSubnet
+Parameter Sets: SetByResourceSubnet, SetByResourceIdSubnet
 Aliases: 
 
 Required: False
@@ -84,66 +83,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Subnet
-Specifies the **Subnet** object in which to create a front-end IP configuration.
+### -PublicIpAddress
+Specifies the **PublicIpAddress** object to associate with a front-end IP configuration.
 
 ```yaml
-Type: PSSubnet
-Parameter Sets: SetByResourceSubnet
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubnetId
-Specifies the ID of the subnet in which to create a front-end IP configuration.
-
-```yaml
-Type: String
-Parameter Sets: SetByResourceIdSubnet
+Type: PSPublicIpAddress
+Parameter Sets: SetByResourcePublicIpAddress
 Aliases: 
 
 Required: True
@@ -168,12 +113,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicIpAddress
-Specifies the **PublicIpAddress** object to associate with a front-end IP configuration.
+### -Subnet
+Specifies the **Subnet** object in which to create a front-end IP configuration.
 
 ```yaml
-Type: PSPublicIpAddress
-Parameter Sets: SetByResourcePublicIpAddress
+Type: PSSubnet
+Parameter Sets: SetByResourceSubnet
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubnetId
+Specifies the ID of the subnet in which to create a front-end IP configuration.
+
+```yaml
+Type: String
+Parameter Sets: SetByResourceIdSubnet
 Aliases: 
 
 Required: True

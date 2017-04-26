@@ -17,14 +17,15 @@ Gets the properties of a virtual machine.
 Get-AzureRmVM [-Status] [<CommonParameters>]
 ```
 
-### GetVirtualMachineInResourceGroupParamSet
-```
-Get-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-Status] [<CommonParameters>]
-```
-
 ### ListVirtualMachineInResourceGroupParamSet
 ```
 Get-AzureRmVM [-ResourceGroupName] <String> [-Status] [<CommonParameters>]
+```
+
+### GetVirtualMachineInResourceGroupParamSet
+```
+Get-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-Status] [-DisplayHint <DisplayHintType>]
+ [<CommonParameters>]
 ```
 
 ### ListNextLinkVirtualMachinesParamSet
@@ -72,6 +73,27 @@ This command gets all the virtual machines in your subscription.
 
 ## PARAMETERS
 
+### -DisplayHint
+Determines how the virtual machine object is displayed.
+
+Valid values are:
+
+-- Compact: displays only top level properties
+
+-- Expand: displays all properties in all levels
+```yaml
+Type: DisplayHintType
+Parameter Sets: GetVirtualMachineInResourceGroupParamSet
+Aliases: 
+Accepted values: Compact, Expand
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the virtual machine to get.
 
@@ -81,7 +103,7 @@ Parameter Sets: GetVirtualMachineInResourceGroupParamSet
 Aliases: ResourceName, VMName
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -96,7 +118,7 @@ Parameter Sets: ListNextLinkVirtualMachinesParamSet
 Aliases: 
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -107,11 +129,11 @@ Specifies the name of a resource group.
 
 ```yaml
 Type: String
-Parameter Sets: GetVirtualMachineInResourceGroupParamSet, ListVirtualMachineInResourceGroupParamSet
+Parameter Sets: ListVirtualMachineInResourceGroupParamSet, GetVirtualMachineInResourceGroupParamSet
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -126,7 +148,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

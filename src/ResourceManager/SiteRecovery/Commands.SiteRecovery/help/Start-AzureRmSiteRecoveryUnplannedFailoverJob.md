@@ -46,55 +46,6 @@ You can check whether the job succeeds by using the Get-AzureRmSiteRecoveryJob c
 
 ## PARAMETERS
 
-### -ProtectionEntity
-Specifies the Site Recovery protection entity object.
-
-```yaml
-Type: ASRProtectionEntity
-Parameter Sets: ByPEObject
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Direction
-Specifies the direction of the failover.
-The acceptable values for this parameter are:
-
-- PrimaryToRecovery
-- RecoveryToPrimary
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PerformSourceSideActions
-Indicates that the action can perform source site operations.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DataEncryptionPrimaryCertFile
 Specifies the primary certificate file.
 
@@ -122,6 +73,56 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Direction
+Specifies the direction of the failover.
+The acceptable values for this parameter are:
+
+- PrimaryToRecovery
+- RecoveryToPrimary
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: PrimaryToRecovery, RecoveryToPrimary
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PerformSourceSideActions
+Indicates that the action can perform source site operations.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProtectionEntity
+Specifies the Site Recovery protection entity object.
+
+```yaml
+Type: ASRProtectionEntity
+Parameter Sets: ByPEObject
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

@@ -19,6 +19,16 @@
 -->
 ## Current Release
 
+## Version 0.2.0
+
+## Version 0.1.0
+
+## Version 0.0.4
+* Added State property in additional to ProvisioningState
+    - All the cmdlet returning AnalysisService would have a new property 'State' used outside of provisioing.
+    - The 'State' is intended to check status outside of provisioning, while 'ProvisioningState' is intended to check status related to Provisioning.
+    - ProvisioningState and State are same in service side at this moment, the service side would differenciate ProvisioningState and State in future
+
 ## Version 0.0.3
 * Added two new dataplane APIs in a separate module Azure.AnalysisServices.psd1
     - This introduces two new APIs that enable customers to login to Azure Analysis Services servers and issue a restart command.

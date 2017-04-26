@@ -15,15 +15,13 @@ Modifies an IP configuration for an application gateway.
 ### SetByResourceId
 ```
 Set-AzureRmApplicationGatewayIPConfiguration -ApplicationGateway <PSApplicationGateway> -Name <String>
- [-SubnetId <String>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ [-SubnetId <String>] [<CommonParameters>]
 ```
 
 ### SetByResource
 ```
 Set-AzureRmApplicationGatewayIPConfiguration -ApplicationGateway <PSApplicationGateway> -Name <String>
- [-Subnet <PSSubnet>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ [-Subnet <PSSubnet>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,13 +78,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubnetId
-Specifies the subnet ID.
+### -Subnet
+Specifies the subnet.
 This is the subnet in which the application gateway is deployed.
 
 ```yaml
-Type: String
-Parameter Sets: SetByResourceId
+Type: PSSubnet
+Parameter Sets: SetByResource
 Aliases: 
 
 Required: False
@@ -96,52 +94,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Subnet
-Specifies the subnet.
+### -SubnetId
+Specifies the subnet ID.
 This is the subnet in which the application gateway is deployed.
 
 ```yaml
-Type: PSSubnet
-Parameter Sets: SetByResource
+Type: String
+Parameter Sets: SetByResourceId
 Aliases: 
 
 Required: False

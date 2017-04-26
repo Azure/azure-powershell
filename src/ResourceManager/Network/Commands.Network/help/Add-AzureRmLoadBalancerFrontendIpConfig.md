@@ -12,32 +12,28 @@ Adds a front-end IP configuration to a load balancer.
 
 ## SYNTAX
 
-### SetByResourceIdSubnet
-```
-Add-AzureRmLoadBalancerFrontendIpConfig -Name <String> -LoadBalancer <PSLoadBalancer>
- [-PrivateIpAddress <String>] -SubnetId <String> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
-```
-
 ### SetByResourceSubnet
 ```
 Add-AzureRmLoadBalancerFrontendIpConfig -Name <String> -LoadBalancer <PSLoadBalancer>
- [-PrivateIpAddress <String>] -Subnet <PSSubnet> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ [-PrivateIpAddress <String>] -Subnet <PSSubnet> [<CommonParameters>]
+```
+
+### SetByResourceIdSubnet
+```
+Add-AzureRmLoadBalancerFrontendIpConfig -Name <String> -LoadBalancer <PSLoadBalancer>
+ [-PrivateIpAddress <String>] -SubnetId <String> [<CommonParameters>]
 ```
 
 ### SetByResourceIdPublicIpAddress
 ```
 Add-AzureRmLoadBalancerFrontendIpConfig -Name <String> -LoadBalancer <PSLoadBalancer>
- -PublicIpAddressId <String> [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ -PublicIpAddressId <String> [<CommonParameters>]
 ```
 
 ### SetByResourcePublicIpAddress
 ```
 Add-AzureRmLoadBalancerFrontendIpConfig -Name <String> -LoadBalancer <PSLoadBalancer>
- -PublicIpAddress <PSPublicIpAddress> [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ -PublicIpAddress <PSPublicIpAddress> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,21 +72,6 @@ The second command gets the load balancer named MyLB and passes the result to th
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the front-end IP configuration to add.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -LoadBalancer
 Specifies a **LoadBalancer** object.
 This cmdlet adds a front-end IP configuration to the load balancer that this parameter specifies.
@@ -107,27 +88,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PrivateIpAddress
-Specifies the private IP address to associate with a front-end IP configuration.
+### -Name
+Specifies the name of the front-end IP configuration to add.
 
 ```yaml
 Type: String
-Parameter Sets: SetByResourceIdSubnet, SetByResourceSubnet
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Subnet
-Specifies the subnet object in which to add a front-end IP configuration.
-
-```yaml
-Type: PSSubnet
-Parameter Sets: SetByResourceSubnet
+Parameter Sets: (All)
 Aliases: 
 
 Required: True
@@ -137,22 +103,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -PrivateIpAddress
+Specifies the private IP address to associate with a front-end IP configuration.
 
 ```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
+Type: String
+Parameter Sets: SetByResourceSubnet, SetByResourceIdSubnet
+Aliases: 
 
 Required: False
 Position: Named
@@ -161,27 +118,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
+### -PublicIpAddress
+Specifies the public IP address to associate with a front-end IP configuration.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubnetId
-Specifies the ID of the subnet in which to add a front-end IP configuration.
-
-```yaml
-Type: String
-Parameter Sets: SetByResourceIdSubnet
+Type: PSPublicIpAddress
+Parameter Sets: SetByResourcePublicIpAddress
 Aliases: 
 
 Required: True
@@ -206,12 +148,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicIpAddress
-Specifies the public IP address to associate with a front-end IP configuration.
+### -Subnet
+Specifies the subnet object in which to add a front-end IP configuration.
 
 ```yaml
-Type: PSPublicIpAddress
-Parameter Sets: SetByResourcePublicIpAddress
+Type: PSSubnet
+Parameter Sets: SetByResourceSubnet
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubnetId
+Specifies the ID of the subnet in which to add a front-end IP configuration.
+
+```yaml
+Type: String
+Parameter Sets: SetByResourceIdSubnet
 Aliases: 
 
 Required: True

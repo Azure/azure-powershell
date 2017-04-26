@@ -33,6 +33,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSet_ManagedDisks()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineScaleSet-ManagedDisks");
+        }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSetReimageUpdate()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineScaleSetReimageUpdate");
@@ -45,5 +51,11 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineScaleSetLB");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetNextLink()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineScaleSetNextLink");
+        }
     }
 }

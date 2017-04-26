@@ -361,6 +361,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Storage account names provided in public and private configs do not match..
+        /// </summary>
+        public static string DiagnosticsExtensionMismatchStorageAccountName {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionMismatchStorageAccountName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No diagnostics extension found under resource group &apos;{0}&apos;, virtual machine &apos;{1}&apos;..
         /// </summary>
         public static string DiagnosticsExtensionNotFound {
@@ -1082,6 +1091,24 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string RemoveVmssDiagnosticsExtensionAction {
             get {
                 return ResourceManager.GetString("RemoveVmssDiagnosticsExtensionAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This cmdlet will remove the specified resource.  Do you want to continue?.
+        /// </summary>
+        public static string ResourceRemovalConfirmation {
+            get {
+                return ResourceManager.GetString("ResourceRemovalConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This cmdlet will stop the specified resource.  Do you want to continue?.
+        /// </summary>
+        public static string ResourceStoppingConfirmation {
+            get {
+                return ResourceManager.GetString("ResourceStoppingConfirmation", resourceCulture);
             }
         }
         

@@ -599,6 +599,63 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.DifferentParameterGeneri
     }
 }
 
+namespace StaticAnalysis.Test.CmdletTest.BreakingChange.AddedValidateRange
+{
+    using System.Management.Automation;
+
+    [Cmdlet(VerbsDiagnostic.Test, "AddedValidateRange")]
+    public class TestAddedValidateRange : Cmdlet
+    {
+        [Parameter(Mandatory = false)]
+        [ValidateRange(1, 100)]
+        public int Foo { get; set; }
+
+        protected override void BeginProcessing()
+        {
+            WriteObject("Test-AddedValidateRange BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
+namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangedValidateRangeMinimum
+{
+    using System.Management.Automation;
+
+    [Cmdlet(VerbsDiagnostic.Test, "ChangedValidateRangeMinimum")]
+    public class TestChangedValidateRangeMinimum : Cmdlet
+    {
+        [Parameter(Mandatory = false)]
+        [ValidateRange(10, 100)]
+        public int Foo { get; set; }
+
+        protected override void BeginProcessing()
+        {
+            WriteObject("Test-ChangedValidateRangeMinimum BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
+namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangedValidateRangeMaximum
+{
+    using System.Management.Automation;
+
+    [Cmdlet(VerbsDiagnostic.Test, "ChangedValidateRangeMaximum")]
+    public class TestChangedValidateRangeMaximum : Cmdlet
+    {
+        [Parameter(Mandatory = false)]
+        [ValidateRange(1, 10)]
+        public int Foo { get; set; }
+
+        protected override void BeginProcessing()
+        {
+            WriteObject("Test-ChangedValidateRangeMaximum BeginProcessing()");
+            WriteInformation("Info", null);
+        }
+    }
+}
+
 namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeElementType
 {
     using System.Collections.Generic;

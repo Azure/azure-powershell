@@ -19,6 +19,13 @@
 -->
 ## Current Release
 
+## Version 2.8.0
+
+## Version 2.7.0
+
+## Version 2.6.0
+* Allow users to unselect data sinks for Set-AzureRmDiagnosticSettings
+
 ## Version 2.5.0
 
 ## Version 2.4.0

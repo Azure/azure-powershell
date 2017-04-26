@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-ms.assetid: B0A1EBD0-DA3C-4BB4-ADE1-49340E961ACD
+ms.assetid: 288EF15B-FE5C-44AE-ABD5-2B92F408B9EB
 online version: 
 schema: 2.0.0
 ---
@@ -13,8 +13,7 @@ Gets the status of the most recent synchronization between the configuration dat
 ## SYNTAX
 
 ```
-Get-AzureRmApiManagementTenantSyncState -Context <PsApiManagementContext>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmApiManagementTenantSyncState -Context <PsApiManagementContext> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,45 +42,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

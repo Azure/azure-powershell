@@ -13,7 +13,8 @@ Removes a container service.
 ## SYNTAX
 
 ```
-Remove-AzureRmContainerService [-ResourceGroupName] <String> [-Name] <String> [<CommonParameters>]
+Remove-AzureRmContainerService [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-Name] <String> [-Force]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +31,21 @@ This command removes the container service named CSResourceGroup17.
 
 ## PARAMETERS
 
+### -Force
+Forces the command to run without asking for user confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the container service that this cmdlet removes.
 
@@ -39,7 +55,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -54,9 +70,37 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

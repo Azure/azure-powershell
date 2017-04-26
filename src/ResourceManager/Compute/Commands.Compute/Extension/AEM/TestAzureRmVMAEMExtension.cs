@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.Compute.Extension.AEM;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.Storage.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -182,13 +183,27 @@ namespace Microsoft.Azure.Commands.Compute
                 var accounts = new List<string>();
                 //var osdisk = selectedVM.StorageProfile.OsDisk;
 
+                var osaccountName = String.Empty;
+                if (osdisk.ManagedDisk == null)
+                {
+                    var accountName = this._Helper.GetStorageAccountFromUri(osdisk.Vhd.Uri);
+                    osaccountName = accountName;
+                    accounts.Add(accountName);
+                }
+                else
+                {
+                    this._Helper.WriteWarning("[WARN] Managed Disks are not yet supported. Extension will be installed but no disk metrics will be available.");
+                }
+
                 var dataDisks = selectedVM.StorageProfile.DataDisks;
-                var accountName = this._Helper.GetStorageAccountFromUri(osdisk.Vhd.Uri);
-                var osaccountName = accountName;
-                accounts.Add(accountName);
                 foreach (var disk in dataDisks)
                 {
-                    accountName = this._Helper.GetStorageAccountFromUri(disk.Vhd.Uri);
+                    if (disk.ManagedDisk != null)
+                    {
+                        this._Helper.WriteWarning("[WARN] Managed Disks are not yet supported. Extension will be installed but no disk metrics will be available.");
+                        continue;
+                    }
+                    var accountName = this._Helper.GetStorageAccountFromUri(disk.Vhd.Uri);
                     if (!accounts.Contains(accountName))
                     {
                         accounts.Add(accountName);
@@ -277,8 +292,13 @@ namespace Microsoft.Azure.Commands.Compute
 
                     sapmonPublicConfig = JsonConvert.DeserializeObject(monPublicConfig) as JObject;
 
-                    var storage = this._Helper.GetStorageAccountFromCache(osaccountName);
-                    var osaccountIsPremium = this._Helper.IsPremiumStorageAccount(osaccountName);
+                    StorageAccount storage = null;
+                    var osaccountIsPremium = false;
+                    if (!String.IsNullOrEmpty(osaccountName))
+                    {
+                        storage = this._Helper.GetStorageAccountFromCache(osaccountName);
+                        osaccountIsPremium = this._Helper.IsPremiumStorageAccount(osaccountName);
+                    }
 
                     var vmSize = selectedVM.HardwareProfile.VmSize;
                     this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Size", "vmsize", sapmonPublicConfig, vmSize, aemConfigResult);
@@ -315,7 +335,7 @@ namespace Microsoft.Azure.Commands.Compute
                         this._Helper.WriteHost("NOT OK ", ConsoleColor.Red);
                     }
 
-                    if (!osaccountIsPremium)
+                    if (!osaccountIsPremium && storage != null)
                     {
                         var endpoint = this._Helper.GetAzureSAPTableEndpoint(storage);
                         var minuteUri = endpoint + "$MetricsMinutePrimaryTransactionsBlob";
@@ -327,7 +347,7 @@ namespace Microsoft.Azure.Commands.Compute
                         this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM OS Disk Type", "osdisk.type", sapmonPublicConfig, AEMExtensionConstants.DISK_TYPE_STANDARD, aemConfigResult);
 
                     }
-                    else
+                    else if (storage != null)
                     {
                         var sla = this._Helper.GetDiskSLA(osdisk);
 
@@ -335,14 +355,27 @@ namespace Microsoft.Azure.Commands.Compute
                         this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM OS Disk SLA IOPS", "osdisk.sla.throughput", sapmonPublicConfig, sla.TP, aemConfigResult);
                         this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM OS Disk SLA Throughput", "osdisk.sla.iops", sapmonPublicConfig, sla.IOPS, aemConfigResult);
 
+                    } else
+                    {
+                        this._Helper.WriteWarning("[WARN] Managed Disks are not yet supported. Extension will be installed but no disk metrics will be available.");
                     }
-                    this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM OS disk name", "osdisk.name", sapmonPublicConfig, this._Helper.GetDiskName(osdisk.Vhd.Uri), aemConfigResult);
+
+                    if (osdisk.ManagedDisk == null)
+                    {
+                        this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM OS disk name", "osdisk.name", sapmonPublicConfig, this._Helper.GetDiskName(osdisk.Vhd.Uri), aemConfigResult);
+                    }
 
 
                     var diskNumber = 1;
                     foreach (var disk in dataDisks)
                     {
-                        accountName = this._Helper.GetStorageAccountFromUri(disk.Vhd.Uri);
+                        if (disk.ManagedDisk != null)
+                        {
+                            this._Helper.WriteWarning("[WARN] Managed Disks are not yet supported. Extension will be installed but no disk metrics will be available.");
+                            continue;
+                        }
+
+                        var accountName = this._Helper.GetStorageAccountFromUri(disk.Vhd.Uri);
                         storage = this._Helper.GetStorageAccountFromCache(accountName);
                         var accountIsPremium = this._Helper.IsPremiumStorageAccount(storage);
 

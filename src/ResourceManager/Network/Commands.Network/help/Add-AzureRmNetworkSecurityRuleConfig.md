@@ -16,8 +16,7 @@ Adds a network security rule configuration to a network security group.
 Add-AzureRmNetworkSecurityRuleConfig -Name <String> -NetworkSecurityGroup <PSNetworkSecurityGroup>
  [-Description <String>] [-Protocol <String>] [-SourcePortRange <String>] [-DestinationPortRange <String>]
  [-SourceAddressPrefix <String>] [-DestinationAddressPrefix <String>] [-Access <String>] [-Priority <Int32>]
- [-Direction <String>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ [-Direction <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,121 +32,30 @@ Add-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Ac
     -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 | 
     Set-AzureRmNetworkSecurityGroup
 ```
+
 The first command retrieves an Azure network security group named "nsg1" from resource group "rg1". The second command dds a network security rule named "rdp-rule" that allows traffic from internet on port 3389 to the retrieved network security group object. Persists the modified Azure network security group.
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of a network security rule configuration.
+### -Access
+Specifies whether network traffic is allowed or denied.
+The acceptable values for this parameter are: Allow and Deny.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Allow, Deny
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NetworkSecurityGroup
-Specifies a **NetworkSecurityGroup** object.
-This cmdlet adds a network security rule configuration to the object that this parameter specifies.
-
-```yaml
-Type: PSNetworkSecurityGroup
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -Description
 Specifies a description of a network security rule configuration.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Protocol
-Specifies the network protocol that a rule configuration applies to.
-The acceptable values for this parameter are:
-
-- Tcp
-- Udp
-- Wildcard character (*) to match both
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SourcePortRange
-Specifies a source port or range.
-This value is expressed as an integer, as a range between 0 and 65535, or as a wildcard character (*) to match any source port.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DestinationPortRange
-Specifies a destination port or range.
-The acceptable values for this parameter are:
-
-- An integer
-- A range of integers between 0 and 65535
-- A wildcard character (*) to match any port
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SourceAddressPrefix
-Specifies a source address prefix.
-The acceptable values for this parameter are:
-
-- A CIDR
-- A source IP range
-- A wildcard character (*) to match any IP address.
-
-You can also use tags such as VirtualNetwork, AzureLoadBalancer and Internet.
 
 ```yaml
 Type: String
@@ -183,9 +91,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Access
-Specifies whether network traffic is allowed or denied.
-The acceptable values for this parameter are: Allow and Deny.
+### -DestinationPortRange
+Specifies a destination port or range.
+The acceptable values for this parameter are:
+
+- An integer
+- A range of integers between 0 and 65535
+- A wildcard character (*) to match any port
 
 ```yaml
 Type: String
@@ -196,6 +108,54 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Direction
+Specifies whether a rule is evaluated on incoming or outgoing traffic.
+The acceptable values for this parameter are: Inbound and Outbound.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Inbound, Outbound
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the name of a network security rule configuration.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkSecurityGroup
+Specifies a **NetworkSecurityGroup** object.
+This cmdlet adds a network security rule configuration to the object that this parameter specifies.
+
+```yaml
+Type: PSNetworkSecurityGroup
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -218,9 +178,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Direction
-Specifies whether a rule is evaluated on incoming or outgoing traffic.
-The acceptable values for this parameter are: Inbound and Outbound.
+### -Protocol
+Specifies the network protocol that a rule configuration applies to.
+The acceptable values for this parameter are:
+
+- Tcp
+- Udp
+- Wildcard character (*) to match both
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Tcp, Udp, *
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceAddressPrefix
+Specifies a source address prefix.
+The acceptable values for this parameter are:
+
+- A CIDR
+- A source IP range
+- A wildcard character (*) to match any IP address.
+
+You can also use tags such as VirtualNetwork, AzureLoadBalancer and Internet.
 
 ```yaml
 Type: String
@@ -234,37 +221,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -SourcePortRange
+Specifies a source port or range.
+This value is expressed as an integer, as a range between 0 and 65535, or as a wildcard character (*) to match any source port.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
 
 Required: False
 Position: Named

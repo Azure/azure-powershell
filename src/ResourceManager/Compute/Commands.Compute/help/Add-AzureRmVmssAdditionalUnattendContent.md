@@ -15,7 +15,7 @@ Adds information to the unattended Windows Setup answer file.
 ```
 Add-AzureRmVmssAdditionalUnattendContent [-VirtualMachineScaleSet] <VirtualMachineScaleSet>
  [[-PassName] <PassNames>] [[-ComponentName] <ComponentNames>] [[-SettingName] <SettingNames>]
- [[-Content] <String>] [<CommonParameters>]
+ [[-Content] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,9 +40,10 @@ The only allowable value is Microsoft-Windows-Shell-Setup.
 Type: ComponentNames
 Parameter Sets: (All)
 Aliases: 
+Accepted values: MicrosoftWindowsShellSetup
 
 Required: False
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -57,7 +58,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 5
+Position: 4
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -71,9 +72,10 @@ The only allowable value is oobeSystem.
 Type: PassNames
 Parameter Sets: (All)
 Aliases: 
+Accepted values: OobeSystem
 
 Required: False
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -90,9 +92,10 @@ The acceptable values for this parameter are::
 Type: SettingNames
 Parameter Sets: (All)
 Aliases: 
+Accepted values: AutoLogon, FirstLogonCommands
 
 Required: False
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -108,9 +111,39 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

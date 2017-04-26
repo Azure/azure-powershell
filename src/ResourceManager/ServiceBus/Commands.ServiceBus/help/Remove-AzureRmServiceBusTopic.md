@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmServiceBusTopic
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes the topic from the specified Service Bus namespace.
 
 ## SYNTAX
 
@@ -17,36 +17,21 @@ Remove-AzureRmServiceBusTopic [-ResourceGroup] <String> [-NamespaceName] <String
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzureRmServiceBusTopic** cmdlet removes the topic from the specified Service Bus namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1
 ```
 
-{{ Add example description here }}
+Removes the topic `SB-Topic_exampl1` from the namespace `SB-Example1`.
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NamespaceName
-Namespace Name.
+The Service Bus namespace name.
 
 ```yaml
 Type: String
@@ -61,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroup
-The name of the resource group
+The name of the resource group.
 
 ```yaml
 Type: String
@@ -76,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -TopicName
-Topic Name.
+The Service Bus topic name.
 
 ```yaml
 Type: String
@@ -87,6 +72,21 @@ Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -111,7 +111,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### -ResourceGroup
+ System.String
+
+### -NamespaceName
+ System.String
+
+### -TopicName
+ System.String
 
 ## OUTPUTS
 

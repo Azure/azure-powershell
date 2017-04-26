@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmServiceBusNamespaceKey
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Regenerates the primary or secondary connection strings for the Service Bus namespace.
 
 ## SYNTAX
 
@@ -17,21 +17,21 @@ New-AzureRmServiceBusNamespaceKey [-ResourceGroup] <String> [-NamespaceName] <St
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzureRmServiceBusNamespace** cmdlet generates new primary or secondary connection strings for the specified namespace and authorization rule.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmServiceBusNamespaceKey -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -AuthorizationRuleName AuthoRule1 -RegenerateKeys PrimaryKey
 ```
 
-{{ Add example description here }}
+Regenerates the primary or secondary connection strings for the namespace.
 
 ## PARAMETERS
 
 ### -AuthorizationRuleName
-Authorization Rule Name.
+The authorization rule name.
 
 ```yaml
 Type: String
@@ -40,6 +40,52 @@ Aliases:
 
 Required: True
 Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -NamespaceName
+The Service Bus namespace name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RegenerateKeys
+Regenerate Keys: PrimaryKey/SecondaryKey.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: PrimaryKey, SecondaryKey
+
+Required: True
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroup
+The name of the resource group.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -57,52 +103,6 @@ Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NamespaceName
-Namespace Name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -RegenerateKeys
-Regenerate Keys - PrimaryKey/SecondaryKey.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-Accepted values: PrimaryKey, SecondaryKey
-
-Required: True
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroup
-The name of the resource group
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -127,11 +127,29 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### -ResourceGroup
+ System.String
+ 
+
+### -NamespaceName
+ System.String
+ 
+
+### -AuthorizationRuleName
+ System.String
+ 
+
+### -RegenerateKeys
+ System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Management.ServiceBus.Models.ResourceListKeys
+PrimaryConnectionString   : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey={SharedAccessKey-value}
+SecondaryConnectionString : Endpoint=sb://sb-example1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey={SharedAccessKey-value}
+PrimaryKey                : {PrimaryKey value}
+SecondaryKey              : {SecondaryKey value}
+KeyName                   : AuthoRule1
 
 ## NOTES
 

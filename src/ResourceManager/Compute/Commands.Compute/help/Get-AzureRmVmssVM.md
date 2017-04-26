@@ -24,11 +24,6 @@ Get-AzureRmVmssVM [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>] [
  [-InstanceView] [<CommonParameters>]
 ```
 
-### InvokeByStaticParametersForFriendMethod
-```
-Get-AzureRmVmssVM [-InstanceView] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 The **Get-AzureRmVmssVM** cmdlet gets the model view and instance view of a Virtual Machine Scale Set (VMSS) virtual machine.
 The model view is the user specified properties of the virtual machine.
@@ -69,11 +64,11 @@ Specifies the instance ID for which to get the model view.
 
 ```yaml
 Type: String
-Parameter Sets: InvokeByDynamicParameters, InvokeByDynamicParametersForFriendMethod
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -84,11 +79,11 @@ Indicates that this cmdlet gets only the instance view of the virtual machine.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: InvokeByDynamicParametersForFriendMethod, InvokeByStaticParametersForFriendMethod
+Parameter Sets: InvokeByDynamicParametersForFriendMethod
 Aliases: 
 
 Required: True
-Position: 5
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -99,11 +94,11 @@ Specifies the name of the Resource Group of the VMSS.
 
 ```yaml
 Type: String
-Parameter Sets: InvokeByDynamicParameters, InvokeByDynamicParametersForFriendMethod
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -114,11 +109,11 @@ Species the name of the VMSS.
 
 ```yaml
 Type: String
-Parameter Sets: InvokeByDynamicParameters, InvokeByDynamicParametersForFriendMethod
+Parameter Sets: (All)
 Aliases: Name
 
 Required: False
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

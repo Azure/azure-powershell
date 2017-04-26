@@ -9,7 +9,7 @@
 @{  
   
 # Version number of this module.  
-ModuleVersion = '0.0.1'
+ModuleVersion = '0.2.0'
   
 # ID used to uniquely identify this module  
 GUID = 'c717b5a4-1f1b-4a2f-8aa1-bfd09934626e'  
@@ -65,7 +65,8 @@ NestedModules = @(
 FunctionsToExport = '*'  
   
 # Cmdlets to export from this module  
-CmdletsToExport = '*'  
+CmdletsToExport = 'Add-AzureAnalysisServicesAccount',
+                'Restart-AzureAnalysisServicesInstance'
   
 # Variables to export from this module  
 VariablesToExport = '*'  

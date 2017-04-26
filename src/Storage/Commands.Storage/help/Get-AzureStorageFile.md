@@ -16,22 +16,19 @@ Lists directories and files for a path.
 ```
 Get-AzureStorageFile [-ShareName] <String> [[-Path] <String>] [-Context <AzureStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-PipelineVariable <String>]
  [<CommonParameters>]
 ```
 
 ### Share
 ```
 Get-AzureStorageFile [-Share] <CloudFileShare> [[-Path] <String>] [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [-PipelineVariable <String>] [<CommonParameters>]
+ [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ### Directory
 ```
 Get-AzureStorageFile [-Directory] <CloudFileDirectory> [[-Path] <String>] [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [-PipelineVariable <String>] [<CommonParameters>]
+ [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,72 +57,6 @@ This command lists the files and folders in the directory ContosoWorkingFolder u
 It first gets the directory instance, and then pipelines it to the **Get-AzureStorageFile** cmdlet to list the directory.
 
 ## PARAMETERS
-
-### -ShareName
-Specifies the name of the file share.
-This cmdlet gets a file or directory from the file share that this parameter specifies.
-
-```yaml
-Type: String
-Parameter Sets: ShareName
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Path
-Specifies the path of a folder.
-
-If you omit the *Path* parameter, **Get-AzureStorageFile** lists the directories and files in the specified file share or directory.
-If you include the *Path* parameter, **Get-AzureStorageFile** returns an instance of a directory or file in the specified path.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Context
-Specifies an Azure Storage context.
-To obtain a Storage context, use the New-AzureStorageContext cmdlet.
-
-```yaml
-Type: AzureStorageContext
-Parameter Sets: ShareName
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -ServerTimeoutPerRequest
-Specifies the service-side timeout interval, in seconds, for a request.
-If the specified interval elapses before the service processes the request, the Storage service returns an error.
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ClientTimeoutPerRequest
 Specifies the client side time-out interval, in seconds, for one service request.
@@ -163,37 +94,66 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -Context
+Specifies an Azure Storage context.
+To obtain a Storage context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
+Type: AzureStorageContext
+Parameter Sets: ShareName
+Aliases: 
 
 Required: False
 Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -Directory
+Specifies a folder as a **CloudFileDirectory** object.
+This cmdlet gets the folder that this parameter specifies.
+To obtain a directory, use the New-AzureStorageDirectory cmdlet.
+You can also use the **Get-AzureStorageFile** cmdlet to obtain a directory.
+
+```yaml
+Type: CloudFileDirectory
+Parameter Sets: Directory
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Path
+Specifies the path of a folder.
+
+If you omit the *Path* parameter, **Get-AzureStorageFile** lists the directories and files in the specified file share or directory.
+If you include the *Path* parameter, **Get-AzureStorageFile** returns an instance of a directory or file in the specified path.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
+### -ServerTimeoutPerRequest
+Specifies the service-side timeout interval, in seconds, for a request.
+If the specified interval elapses before the service processes the request, the Storage service returns an error.
 
 ```yaml
-Type: String
+Type: Int32
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
 
 Required: False
 Position: Named
@@ -221,34 +181,17 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Directory
-Specifies a folder as a **CloudFileDirectory** object.
-This cmdlet gets the folder that this parameter specifies.
-To obtain a directory, use the New-AzureStorageDirectory cmdlet.
-You can also use the **Get-AzureStorageFile** cmdlet to obtain a directory.
+### -ShareName
+Specifies the name of the file share.
+This cmdlet gets a file or directory from the file share that this parameter specifies.
 
 ```yaml
-Type: CloudFileDirectory
-Parameter Sets: Directory
+Type: String
+Parameter Sets: ShareName
 Aliases: 
 
 Required: True
 Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -PipelineVariable
-Stores the value of the current pipeline element as a variable, for any named command as it flows through the pipeline.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: pv
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

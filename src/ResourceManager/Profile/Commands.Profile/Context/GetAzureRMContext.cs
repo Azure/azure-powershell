@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -26,9 +27,34 @@ namespace Microsoft.Azure.Commands.Profile
     [OutputType(typeof(PSAzureContext))]
     public class GetAzureRMContextCommand : AzureRMCmdlet
     {
+        /// <summary>
+        /// Gets the current default context.
+        /// </summary>
+        protected override AzureContext DefaultContext
+        {
+            get
+            {
+                if (DefaultProfile == null || DefaultProfile.Context == null)
+                {
+                    return null;
+                }
+
+                return DefaultProfile.Context;
+            }
+        }
+
         public override void ExecuteCmdlet()
         {
-            WriteObject((PSAzureContext)AzureRmProfileProvider.Instance.Profile.Context);
+            var context = (PSAzureContext)DefaultContext;
+            if (context == null)
+            {
+                WriteError(new ErrorRecord(
+                        new PSInvalidOperationException("Run Login-AzureRmAccount to login."),
+                        string.Empty,
+                        ErrorCategory.AuthenticationError,
+                        null));
+            }
+            WriteObject(context);
         }
     }
 }

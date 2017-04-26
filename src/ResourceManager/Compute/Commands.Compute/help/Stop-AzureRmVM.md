@@ -54,30 +54,26 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-Specifies the Resource ID of the virtual machine.
-
-```yaml
+The resource group name.```yaml
 Type: String
 Parameter Sets: IdParameterSetName
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the virtual machine to stop.
-
-```yaml
+The virtual machine name.```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -92,7 +88,7 @@ Parameter Sets: ResourceGroupNameParameterSetName
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -123,15 +119,13 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-
-The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter
@@ -140,7 +134,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

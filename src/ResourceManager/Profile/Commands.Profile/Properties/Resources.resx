@@ -175,6 +175,9 @@
     <value>Overwrite existing file at '{0}'?</value>
     <comment>{0} is file path</comment>
   </data>
+  <data name="ImportContextTarget" xml:space="preserve">
+    <value>Current context</value>
+  </data>
   <data name="InvalidSubscriptionId" xml:space="preserve">
     <value>The provided subscription ID "{0}" is not a valid Guid.</value>
   </data>
@@ -186,6 +189,13 @@
   </data>
   <data name="NoValidTenant" xml:space="preserve">
     <value>Please provide a valid tenant Id on the command line or execute Login-AzureRmAccount.</value>
+  </data>
+  <data name="ProcessImportContextFromFile" xml:space="preserve">
+    <value>Set the target account, tenant, and subscription of cmdlets executed in this session to the context stored in {0}</value>
+    <comment>{0} is file path</comment>
+  </data>
+  <data name="ProcessImportContextFromObject" xml:space="preserve">
+    <value>Set the target account, tenant, and subscription of cmdlets executed in this session to the provided context</value>
   </data>
   <data name="ProfileArgumentSaved" xml:space="preserve">
     <value>The profile argument was saved to the file system at '{0}'. This file may include personally identifiable information and secrets.  Please ensure that the saved file is assigned appropriate access controls.</value>

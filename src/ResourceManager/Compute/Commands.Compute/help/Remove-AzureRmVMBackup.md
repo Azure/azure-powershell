@@ -8,6 +8,7 @@ schema: 2.0.0
 # Remove-AzureRmVMBackup
 
 ## SYNOPSIS
+Removes the backup from a virtual machine.
 
 ## SYNTAX
 
@@ -33,7 +34,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -46,7 +47,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -59,7 +60,7 @@ Parameter Sets: (All)
 Aliases: ResourceName
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

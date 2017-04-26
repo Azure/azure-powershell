@@ -49,12 +49,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Specifies the name of the Azure Site Recovery Provider that this cmdlet gets.
+### -FriendlyName
+Specifies the friendly name of the Azure Site Recovery Provider that this cmdlet gets.
 
 ```yaml
 Type: String
-Parameter Sets: ByName
+Parameter Sets: ByFriendlyName
 Aliases: 
 
 Required: True
@@ -64,12 +64,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FriendlyName
-Specifies the friendly name of the Azure Site Recovery Provider that this cmdlet gets.
+### -Name
+Specifies the name of the Azure Site Recovery Provider that this cmdlet gets.
 
 ```yaml
 Type: String
-Parameter Sets: ByFriendlyName
+Parameter Sets: ByName
 Aliases: 
 
 Required: True

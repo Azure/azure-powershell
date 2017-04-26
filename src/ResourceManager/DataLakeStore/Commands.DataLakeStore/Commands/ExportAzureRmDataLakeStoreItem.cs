@@ -18,6 +18,7 @@ using Microsoft.Azure.Management.DataLake.Store.Models;
 using Microsoft.Rest.Azure;
 using System.Management.Automation;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Rest;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
@@ -30,8 +31,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         internal const string DiagnosticParameterSetName = "Include diagnostic logging";
 
         // default number of threads
-        private int numThreadsPerFile = 10;
-        private int fileCount = 5;
+        private int numThreadsPerFile = -1;
+        private int fileCount = -1;
         private LogLevel logLevel = LogLevel.Error;
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -82,10 +83,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         public SwitchParameter Resume { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
-            HelpMessage = "Indicates the maximum number of threads to use per file. Default is 10",
+            HelpMessage = "Indicates the maximum number of threads to use per file. Default will be computed as a best effort based on folder and file size",
             ParameterSetName = BaseParameterSetName)]
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
-            HelpMessage = "Indicates the maximum number of threads to use per file. Default is 10",
+            HelpMessage = "Indicates the maximum number of threads to use per file. Default will be computed as a best effort based on folder and file size",
             ParameterSetName = DiagnosticParameterSetName)]
         public int PerFileThreadCount
         {
@@ -94,10 +95,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 6, Mandatory = false,
-            HelpMessage = "Indicates the maximum number of files to download in parallel for a folder download. Default is 5",
+            HelpMessage = "Indicates the maximum number of files to download in parallel for a folder download.  Default will be computed as a best effort based on folder and file size",
             ParameterSetName = BaseParameterSetName)]
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 6, Mandatory = false,
-            HelpMessage = "Indicates the maximum number of files to download in parallel for a folder download. Default is 5",
+            HelpMessage = "Indicates the maximum number of files to download in parallel for a folder download.  Default will be computed as a best effort based on folder and file size",
             ParameterSetName = DiagnosticParameterSetName)]
         public int ConcurrentFileCount
         {
@@ -148,12 +149,20 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                     DataLakeStoreTraceLogger logger = null;
                     var originalLevel = AdalTrace.TraceSource.Switch.Level;
                     var originalLegacyLevel = AdalTrace.LegacyTraceSwitch.Level;
+                    var previousTracing = ServiceClientTracing.IsEnabled;
                     try
                     {
                         if (ParameterSetName.Equals(DiagnosticParameterSetName) && DiagnosticLogLevel != LogLevel.None)
                         {
                             var diagnosticPath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(DiagnosticLogPath);
                             logger = new DataLakeStoreTraceLogger(this, diagnosticPath, DiagnosticLogLevel);
+                        }
+
+                        if (logger == null)
+                        {
+                            // if the caller does not explicitly want logging, we will explicitly turn it off
+                            // for performance reasons
+                            ServiceClientTracing.IsEnabled = false;
                         }
 
                         if (type == FileType.FILE)
@@ -173,6 +182,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                     }
                     finally
                     {
+                        // set service client tracing back always
+                        ServiceClientTracing.IsEnabled = previousTracing;
                         if (logger != null)
                         {
                             // dispose and free the logger.

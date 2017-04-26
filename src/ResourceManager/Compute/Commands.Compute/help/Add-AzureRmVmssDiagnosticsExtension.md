@@ -15,8 +15,7 @@ Adds a diagnostics extension to the VMSS.
 ```
 Add-AzureRmVmssDiagnosticsExtension [-VirtualMachineScaleSet] <VirtualMachineScaleSet>
  [-SettingFilePath] <String> [[-ProtectedSettingFilePath] <String>] [[-Name] <String>]
- [[-TypeHandlerVersion] <String>] [[-AutoUpgradeMinorVersion] <Boolean>] [-Force]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
+ [[-TypeHandlerVersion] <String>] [[-AutoUpgradeMinorVersion] <Boolean>] [-Force] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -33,83 +32,6 @@ PS C:\>Add-AzureRmVmssDiagnosticsExtension -VirtualMachineScaleSet $VMSS -Settin
 This command adds a diagnostics extension to the VMSS.
 
 ## PARAMETERS
-
-### -VirtualMachineScaleSet
-Specify the VMSS object.
-You can use the New-AzureRmVmssConfig cmdlet to create the object.
-
-```yaml
-Type: VirtualMachineScaleSet
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -SettingFilePath
-Specifies the path of the public configuration file.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProtectedSettingFilePath
-Specifies the path of the private configuration file.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Name
-Specifies the name of an extension.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: ExtensionName
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -TypeHandlerVersion
-Specifies the version of the extension to use for this VMSS.
-To obtain the version, run the Get-AzureRmVMExtensionImage cmdlet with a value of Microsoft.Azure.Diagnostics for the *PublisherName* parameter and IaaSDiagnostics for the *Type* parameter.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: HandlerVersion, Version
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -AutoUpgradeMinorVersion
 Indicates whether this cmdlet allows the Azure guest agent to automatically update the extension to a newer minor version.
@@ -141,42 +63,80 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -Name
+Specifies the name of an extension.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
+Aliases: ExtensionName
 
 Required: False
-Position: Named
+Position: 3
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProtectedSettingFilePath
+Specifies the path of the private configuration file.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SettingFilePath
+Specifies the path of the public configuration file.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TypeHandlerVersion
+Specifies the version of the extension to use for this VMSS.
+To obtain the version, run the Get-AzureRmVMExtensionImage cmdlet with a value of Microsoft.Azure.Diagnostics for the *PublisherName* parameter and IaaSDiagnostics for the *Type* parameter.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: HandlerVersion, Version
+
+Required: False
+Position: 4
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -VirtualMachineScaleSet
+Specify the VMSS object.
+You can use the New-AzureRmVmssConfig cmdlet to create the object.
+
+```yaml
+Type: VirtualMachineScaleSet
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 

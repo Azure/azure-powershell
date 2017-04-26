@@ -14,8 +14,7 @@ Creates a health probe.
 
 ```
 New-AzureRmApplicationGatewayProbeConfig -Name <String> -Protocol <String> -HostName <String> -Path <String>
- -Interval <UInt32> -Timeout <UInt32> -UnhealthyThreshold <UInt32> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ -Interval <UInt32> -Timeout <UInt32> -UnhealthyThreshold <UInt32> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,39 +31,40 @@ This command creates a health probe named Probe03, with HTTP protocol, a 30 seco
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the probe.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Protocol
-Specifies the protocol used to send probe.
-This cmdlet supports HTTP only.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -HostName
 Specifies the host name that this cmdlet sends the probe.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Interval
+Specifies the probe interval in seconds.
+This is the time interval between two consecutive probes.
+This value is between 1 second and 86400 seconds.
+
+```yaml
+Type: UInt32
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the name of the probe.
 
 ```yaml
 Type: String
@@ -95,15 +95,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Interval
-Specifies the probe interval in seconds.
-This is the time interval between two consecutive probes.
-This value is between 1 second and 86400 seconds.
+### -Protocol
+Specifies the protocol used to send probe.
 
 ```yaml
-Type: UInt32
+Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Http, Https
 
 Required: True
 Position: Named
@@ -140,45 +139,6 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -25,7 +25,7 @@ Add-AzureRmDataLakeAnalyticsDataSource [-Account] <String> [-Blob] <String> [-Ac
 ```
 
 ## DESCRIPTION
-The **AzureRmDataLackAnalyticsDataSource** cmdlet adds a data source to an Azure Data Lake Analytics account.
+The **Add-AzureRmDataLakeAnalyticsDataSource** cmdlet adds a data source to an Azure Data Lake Analytics account.
 
 ## EXAMPLES
 

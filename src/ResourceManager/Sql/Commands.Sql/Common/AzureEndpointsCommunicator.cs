@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
-using Microsoft.Azure.Management.Sql;
+using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.WindowsAzure.Management.Storage;
 using Newtonsoft.Json.Linq;
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         {
             SqlManagementClient client = GetCurrentSqlClient("none");
 
-            string url = Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement).ToString();
+            string url = Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager).ToString();
             if (!url.EndsWith("/"))
             {
                 url = url + "/";

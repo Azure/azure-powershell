@@ -14,8 +14,7 @@ Gets information about a VPN client package.
 
 ```
 Get-AzureRmVpnClientPackage -ResourceGroupName <String> -VirtualNetworkGatewayName <String>
- -ProcessorArchitecture <String> [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ -ProcessorArchitecture <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,6 +34,23 @@ This command gets information about the AMD64 VPN client packages stored on the 
 To get information about the x86 client packages, set the value of the *ProcessorArchitecture* parameter to x86.
 
 ## PARAMETERS
+
+### -ProcessorArchitecture
+Specifies the type of CPU architecture that the client package is designed for.
+Valid values are Amd64 and X86.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Amd64, X86
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -ResourceGroupName
 Specifies the name of the resource group that the virtual network gateway is assigned to.
@@ -65,61 +81,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProcessorArchitecture
-Specifies the type of CPU architecture that the client package is designed for.
-Valid values are Amd64 and X86.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

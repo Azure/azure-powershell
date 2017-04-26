@@ -76,17 +76,14 @@ function ConsumerGroupsTests
     Assert-True {$createdNamespace.Count -eq 1}
 
     $found = 0
-    for ($i = 0; $i -lt $createdNamespace.Count; $i++)
-    {
-        if ($createdNamespace[$i].Name -eq $namespaceName)
+    
+        if ($createdNamespace.Name -eq $namespaceName)
         {
             $found = 1
-            Assert-AreEqual $location $createdNamespace[$i].Location
-            Assert-AreEqual $resourceGroupName $createdNamespace[$i].ResourceGroupName
-            Assert-AreEqual "EventHub" $createdNamespace[$i].NamespaceType
+            Assert-AreEqual $location $createdNamespace.Location            
             break
         }
-    }
+    
 
     Assert-True {$found -eq 0} "Namespace created earlier is not found."
 

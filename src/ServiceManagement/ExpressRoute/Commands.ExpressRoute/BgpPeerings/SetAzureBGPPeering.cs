@@ -68,7 +68,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
                 var updatedRoute = ExpressRouteClient.UpdateAzureBGPPeering(ServiceKey, AccessType, CustomerAsn,
                     PeerAsn.HasValue ? PeerAsn.Value : route.PeerAsn, PrimaryPeerSubnet ?? route.PrimaryPeerSubnet, RoutingRegistryName,
                     SecondaryPeerSubnet ?? route.SecondaryPeerSubnet, VlanId.HasValue ? VlanId.Value : route.VlanId,
-                    SharedKey);
+                    SharedKey.Trim());
                 WriteObject(updatedRoute, false);
             }
             catch
