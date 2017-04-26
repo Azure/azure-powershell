@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
         /// <summary>
-        /// Writes verbose message.
+        /// Writes verbose message. Must be executed on the same thread as the invoking cmdlet.
         /// </summary>
         /// <param name="text"></param>
         public void WriteVerbose(string text)
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
         /// <summary>
-        /// Writes debug message.
+        /// Writes debug message. Must be executed on the same thread as the invoking cmdlet.
         /// </summary>
         /// <param name="text"></param>
         public void WriteDebug(string text)
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
         /// <summary>
-        /// Writes warning message.
+        /// Writes warning message. Must be executed on the same thread as the invoking cmdlet.
         /// </summary>
         /// <param name="text"></param>
         public void WriteWarning(string text)
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
         /// <summary>
-        /// Throws a terminating error.
+        /// Throws a terminating error. Must be executed on the same thread as the invoking cmdlet.
         /// </summary>
         /// <param name="errorRecord"></param>
         public void ThrowTerminatingError(ErrorRecord errorRecord)

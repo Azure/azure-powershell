@@ -13,12 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
-using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using Microsoft.Azure.Commands.RecoveryServices.Properties;
-using Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Management.RecoveryServices.Models;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.Rest.Azure;
@@ -37,9 +34,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <returns>Vault Extended Information Response</returns>
         public VaultExtendedInfoResource GetExtendedInfo()
         {
-            return GetRecoveryServicesClient.VaultExtendedInfo.Get(
+            return GetRecoveryServicesClient.VaultExtendedInfo.GetWithHttpMessagesAsync(
                 arsVaultCreds.ResourceGroupName,
-                arsVaultCreds.ResourceName);
+                arsVaultCreds.ResourceName,
+                GetRequestHeaders()).Result.Body;
         }
 
         /// <summary>
@@ -49,10 +47,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <returns>Vault Extended Information</returns>
         public VaultExtendedInfoResource CreateExtendedInfo(VaultExtendedInfoResource vaultExtendedInfoResource)
         {
-            return GetRecoveryServicesClient.VaultExtendedInfo.CreateOrUpdate(
+            return GetRecoveryServicesClient.VaultExtendedInfo.CreateOrUpdateWithHttpMessagesAsync(
                 arsVaultCreds.ResourceGroupName,
                 arsVaultCreds.ResourceName,
-                vaultExtendedInfoResource);
+                vaultExtendedInfoResource,
+                GetRequestHeaders()).Result.Body;
         }
 
         /// <summary>
@@ -62,7 +61,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <returns>Upload Certificate Response</returns>
         public VaultCertificateResponse UpdateVaultCertificate(CertificateRequest certificateRequest, string certificateName)
         {
-            return GetRecoveryServicesClient.VaultCertificates.Create(arsVaultCreds.ResourceGroupName, arsVaultCreds.ResourceName, certificateName, certificateRequest);
+            return GetRecoveryServicesClient.VaultCertificates.CreateWithHttpMessagesAsync(
+                arsVaultCreds.ResourceGroupName, 
+                arsVaultCreds.ResourceName, 
+                certificateName, 
+                certificateRequest,
+                GetRequestHeaders()).Result.Body;
         }
 
         /// <summary>
@@ -131,7 +135,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             certificateArgs.Properties.Certificate = managementCert.GetRawCertData();
             certificateArgs.Properties.AuthType = AuthType.ACS;
 
-            return GetRecoveryServicesClient.VaultCertificates.Create(vault.ResourceGroupName, vault.Name, managementCert.FriendlyName, certificateArgs);
+            return GetRecoveryServicesClient.VaultCertificates.CreateWithHttpMessagesAsync(
+                vault.ResourceGroupName, 
+                vault.Name, 
+                managementCert.FriendlyName, 
+                certificateArgs,
+                GetRequestHeaders()).Result.Body;
         }
 
         /// <summary>
