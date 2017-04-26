@@ -96,14 +96,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             var resourceIdsToUse = this.resourceIds
                 .Concat(this.ResourceId)
-                .DistinctArray(StringComparer.InvariantCultureIgnoreCase);
+                .DistinctArray(Microsoft.Azure.Common.StringExtensions.CaselessComparer);
 
             this.DestinationSubscriptionId = this.DestinationSubscriptionId ?? DefaultContext.Subscription.Id;
 
             var sourceResourceGroups = resourceIdsToUse
                 .Select(resourceId => ResourceIdUtility.GetResourceGroupId(resourceId))
                 .Where(resourceGroupId => !string.IsNullOrWhiteSpace(resourceGroupId))
-                .DistinctArray(StringComparer.InvariantCultureIgnoreCase);
+                .DistinctArray(Microsoft.Azure.Common.StringExtensions.CaselessComparer);
 
             var count = sourceResourceGroups.Count();
             if (count == 0)

@@ -14,6 +14,7 @@
 // ----------------------------------------------------------------------------------
 
 
+using Commands.Websites.Netcore.Properties;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
@@ -42,8 +43,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
             base.ExecuteCmdlet();
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Properties.Resources.RemoveWebappSlotWarning, Name, Slot),
-                Properties.Resources.RemoveWebappSlotMessage,
+                string.Format(Messages.RemoveWebappSlotWarning, Name, Slot),
+                Messages.RemoveWebappSlotMessage,
                 Name,
                 () => WebsitesClient.RemoveWebApp(ResourceGroupName, Name, Slot, deleteEmptyServerFarmByDefault, deleteMetricsByDefault, deleteSlotsByDefault));
         }

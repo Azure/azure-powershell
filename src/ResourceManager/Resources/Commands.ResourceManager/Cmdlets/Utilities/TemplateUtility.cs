@@ -16,7 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
-using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
+using ProjectResources = Commands.Resources.Rest.Netcore.Properties.Messages;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -154,7 +154,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
                     {
                         foreach (string key in templateParameterObject.Keys)
                         {
-                            if (key.Equals(dynamicParameter.Key, StringComparison.InvariantCultureIgnoreCase))
+                            if (key.Equals(dynamicParameter.Key,
+#if !NETSTANDARD1_6
+                                StringComparison.InvariantCultureIgnoreCase))
+#else
+                                StringComparison.CurrentCultureIgnoreCase))
+#endif
                             {
                                 if (templateParameterObject[key] is TemplateFileParameterV1)
                                 {

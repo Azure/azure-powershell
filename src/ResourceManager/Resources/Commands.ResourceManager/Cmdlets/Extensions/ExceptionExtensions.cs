@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
 {
+    using Microsoft.PowerShell.CoreClr.Stubs;
     using System;
     using System.Linq;
     using System.Runtime.InteropServices;
@@ -44,11 +45,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
             return
                 ex is TypeInitializationException ||
                 ex is AppDomainUnloadedException ||
+#if !NETSTANDARD1_6
                 ex is ThreadInterruptedException ||
+                ex is StackOverflowException ||
+#endif
                 ex is AccessViolationException ||
                 ex is InvalidProgramException ||
                 ex is BadImageFormatException ||
-                ex is StackOverflowException ||
                 ex is ThreadAbortException ||
                 ex is OutOfMemoryException ||
                 ex is SecurityException ||

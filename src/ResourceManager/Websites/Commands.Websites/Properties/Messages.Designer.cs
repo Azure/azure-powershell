@@ -8,10 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Tags.Properties {
+namespace Commands.Websites.Netcore.Properties {
     using System;
-    
-    
+    using System.Reflection;
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -22,14 +23,14 @@ namespace Microsoft.Azure.Commands.Tags.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    internal class Messages {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal Messages() {
         }
         
         /// <summary>
@@ -39,7 +40,7 @@ namespace Microsoft.Azure.Commands.Tags.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Tags.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Commands.Websites.Netcore.Properties.Messages", typeof(Messages).GetTypeInfo().Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,38 +62,74 @@ namespace Microsoft.Azure.Commands.Tags.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not remove tag/tag value because it&apos;s being referenced by other resources..
+        ///   Looks up a localized string similar to Removing web app slot.
         /// </summary>
-        internal static string CanNotDeleteTag {
+        internal static string RemoveWebappSlotMessage {
             get {
-                return ResourceManager.GetString("CanNotDeleteTag", resourceCulture);
+                return ResourceManager.GetString("RemoveWebappSlotMessage", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removing tag .....
+        ///   Looks up a localized string similar to Are you sure you want to remove the web app slot &quot;{0}({1})&quot;.
         /// </summary>
-        internal static string RemoveTagMessage {
+        internal static string RemoveWebappSlotWarning {
             get {
-                return ResourceManager.GetString("RemoveTagMessage", resourceCulture);
+                return ResourceManager.GetString("RemoveWebappSlotWarning", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove tag &apos;{0}&apos;.
+        ///   Looks up a localized string similar to Removing web app ssl binding.
         /// </summary>
-        internal static string RemovingTag {
+        internal static string RemoveWebAppSSLBinding {
             get {
-                return ResourceManager.GetString("RemovingTag", resourceCulture);
+                return ResourceManager.GetString("RemoveWebAppSSLBinding", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tag &apos;{0}&apos; not found.
+        ///   Looks up a localized string similar to Removing web app.
         /// </summary>
-        internal static string TagNotFoundMessage {
+        internal static string RemoveWebsiteMessage {
             get {
-                return ResourceManager.GetString("TagNotFoundMessage", resourceCulture);
+                return ResourceManager.GetString("RemoveWebsiteMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the web app &quot;{0}&quot;.
+        /// </summary>
+        internal static string RemoveWebsiteWarning {
+            get {
+                return ResourceManager.GetString("RemoveWebsiteWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove app service plan &apos;{0}&apos;.
+        /// </summary>
+        internal static string RemovingAppServicePlan {
+            get {
+                return ResourceManager.GetString("RemovingAppServicePlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the web app ssl binding for hostname &apos;{0}&apos;.
+        /// </summary>
+        internal static string RemovingWebAppSSLBinding {
+            get {
+                return ResourceManager.GetString("RemovingWebAppSSLBinding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove web app &apos;{0}&apos;.
+        /// </summary>
+        internal static string RemovingWebsite {
+            get {
+                return ResourceManager.GetString("RemovingWebsite", resourceCulture);
             }
         }
     }

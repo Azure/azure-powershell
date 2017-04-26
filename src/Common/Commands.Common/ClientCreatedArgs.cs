@@ -14,6 +14,7 @@
 
 using System;
 using System.Net.Http;
+using System.Reflection;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
@@ -25,7 +26,11 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public void AddHandlerToClient(DelegatingHandler handler)
         {
+#if !NETSTANDARD1_6
             var withHandlerMethod = ClientType.GetMethod("WithHandler", new[] { typeof(DelegatingHandler) });
+#else
+            var withHandlerMethod = ClientType.GetTypeInfo().GetMethod("WithHandler", new[] { typeof(DelegatingHandler) });
+#endif
             CreatedClient = withHandlerMethod.Invoke(CreatedClient, new object[] { handler });
         }
     }

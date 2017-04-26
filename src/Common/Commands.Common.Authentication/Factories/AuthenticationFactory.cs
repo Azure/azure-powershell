@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Authentication.NetCore.Properties;
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure.Authentication;
@@ -40,7 +40,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             AzureEnvironment environment,
             string tenant,
             SecureString password,
+#if !NETSTANDARD1_6
             ShowDialog promptBehavior,
+#else
+            Action<string> promptAction,
+#endif
             TokenCache tokenCache,
             AzureEnvironment.Endpoint resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
@@ -48,7 +52,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             var configuration = GetAdalConfiguration(environment, tenant, resourceId, tokenCache);
 
             TracingAdapter.Information(
-                Resources.AdalAuthConfigurationTrace,
+                Messages.AdalAuthConfigurationTrace,
                 configuration.AdDomain,
                 configuration.AdEndpoint,
                 configuration.ClientId,
@@ -58,11 +62,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             if (account.IsPropertySet(AzureAccount.Property.CertificateThumbprint))
             {
                 var thumbprint = account.GetProperty(AzureAccount.Property.CertificateThumbprint);
+#if !NETSTANDARD1_6
                 token = TokenProvider.GetAccessTokenWithCertificate(configuration, account.Id, thumbprint, account.Type);
+#else
+                throw new NotSupportedException("Certificate based authentication is not supported in netcore version.");
+#endif
             }
             else
             {
+#if !NETSTANDARD1_6
                 token = TokenProvider.GetAccessToken(configuration, promptBehavior, account.Id, password, account.Type);
+#else
+                token = TokenProvider.GetAccessToken(configuration, promptAction, account.Id, password, account.Type);
+#endif
             }
 
             account.Id = token.UserId;
@@ -74,10 +86,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             AzureEnvironment environment,
             string tenant,
             SecureString password,
+#if !NETSTANDARD1_6
             ShowDialog promptBehavior,
+#else
+            Action<string> promptAction,
+#endif
             AzureEnvironment.Endpoint resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
+#if !NETSTANDARD1_6
             return Authenticate(account, environment, tenant, password, promptBehavior, AzureSession.TokenCache, resourceId);
+#else
+            return Authenticate(account, environment, tenant, password, promptAction, AzureSession.TokenCache, resourceId);
+#endif
         }
 
         public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context)
@@ -90,16 +110,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             if (context.Subscription == null)
             {
                 var exceptionMessage = targetEndpoint == AzureEnvironment.Endpoint.ServiceManagement
-                    ? Resources.InvalidDefaultSubscription
-                    : Resources.NoSubscriptionInContext;
-                throw new ApplicationException(exceptionMessage);
+                    ? Messages.InvalidDefaultSubscription
+                    : Messages.NoSubscriptionInContext;
+                throw new InvalidOperationException(exceptionMessage);
             }
 
             if (context.Account == null)
             {
                 var exceptionMessage = targetEndpoint == AzureEnvironment.Endpoint.ServiceManagement
-                    ? Resources.AccountNotFound
-                    : Resources.ArmAccountNotFound;
+                    ? Messages.AccountNotFound
+                    : Messages.ArmAccountNotFound;
                 throw new ArgumentException(exceptionMessage);
             }
 
@@ -131,8 +151,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             if (tenant == null)
             {
                 var exceptionMessage = targetEndpoint == AzureEnvironment.Endpoint.ServiceManagement
-                    ? Resources.TenantNotFound
-                    : Resources.NoTenantInContext;
+                    ? Messages.TenantNotFound
+                    : Messages.NoTenantInContext;
                 throw new ArgumentException(exceptionMessage);
             }
 
@@ -140,7 +160,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             {
                 var tokenCache = AzureSession.TokenCache;
                 TracingAdapter.Information(
-                    Resources.UPNAuthenticationTrace,
+                    Messages.UPNAuthenticationTrace,
                     context.Account.Id,
                     context.Environment.Name,
                     tenant);
@@ -154,7 +174,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                                 context.Environment,
                                 tenant,
                                 null,
+#if !NETSTANDARD1_6
                                 ShowDialog.Never,
+#else
+                                (s) => { },
+#endif
                                 tokenCache,
                                 context.Environment.GetTokenAudience(targetEndpoint));
 
@@ -164,7 +188,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 }
 
                 TracingAdapter.Information(
-                    Resources.UPNAuthenticationTokenTrace,
+                    Messages.UPNAuthenticationTokenTrace,
                     token.LoginType,
                     token.TenantId,
                     token.UserId);
@@ -173,10 +197,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
             catch (Exception ex)
             {
-                TracingAdapter.Information(Resources.AdalAuthException, ex.Message);
+                TracingAdapter.Information(Messages.AdalAuthException, ex.Message);
                 var exceptionMessage = targetEndpoint == AzureEnvironment.Endpoint.ServiceManagement
-                    ? Resources.InvalidSubscriptionState
-                    : Resources.InvalidArmContext;
+                    ? Messages.InvalidSubscriptionState
+                    : Messages.InvalidArmContext;
                 throw new ArgumentException(exceptionMessage, ex);
             }
         }
@@ -191,7 +215,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         {
             if (context.Account == null)
             {
-                throw new ArgumentException(Resources.ArmAccountNotFound);
+                throw new ArgumentException(Messages.ArmAccountNotFound);
             }
 
             if (context.Account.Type == AzureAccount.AccountType.Certificate)
@@ -220,12 +244,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
             if (tenant == null)
             {
-                throw new ArgumentException(Resources.NoTenantInContext);
+                throw new ArgumentException(Messages.NoTenantInContext);
             }
 
             try
             {
-                TracingAdapter.Information(Resources.UPNAuthenticationTrace,
+                TracingAdapter.Information(Messages.UPNAuthenticationTrace,
                     context.Account.Id, context.Environment.Name, tenant);
 
                 // TODO: When we will refactor the code, need to add tracing
@@ -293,8 +317,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
             catch (Exception ex)
             {
-                TracingAdapter.Information(Resources.AdalAuthException, ex.Message);
-                throw new ArgumentException(Resources.InvalidArmContext, ex);
+                TracingAdapter.Information(Messages.AdalAuthException, ex.Message);
+                throw new ArgumentException(Messages.InvalidArmContext, ex);
             }
         }
 
@@ -317,10 +341,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             var audience = environment.Endpoints[resourceId];
             if (string.IsNullOrWhiteSpace(audience))
             {
-                string message = Resources.InvalidManagementTokenAudience;
+                string message = Messages.InvalidManagementTokenAudience;
                 if (resourceId == AzureEnvironment.Endpoint.GraphEndpointResourceId)
                 {
-                    message = Resources.InvalidGraphTokenAudience;
+                    message = Messages.InvalidGraphTokenAudience;
                 }
 
                 throw new ArgumentOutOfRangeException("environment", string.Format(message, environment.Name));

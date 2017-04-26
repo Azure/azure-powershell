@@ -11,7 +11,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-
+#if !NETSTANDARD1_6
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
@@ -323,4 +323,4 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         }
     }
 }
-
+#endif

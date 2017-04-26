@@ -29,11 +29,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         TClient CreateCustomArmClient<TClient>(params object[] parameters) where TClient : Microsoft.Rest.ServiceClient<TClient>;
 
         TClient CreateClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>;
-
+#if !NETSTANDARD1_6	
         TClient CreateClient<TClient>(AzureSMProfile profile, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>;
 
         TClient CreateClient<TClient>(AzureSMProfile profile, AzureSubscription subscription, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>;
-
+#endif
         TClient CreateCustomClient<TClient>(params object[] parameters) where TClient : ServiceClient<TClient>;
 
         HttpClient CreateHttpClient(string endpoint, ICredentials credentials);
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         void RemoveAction(Type actionType);
 
-        void AddHandler<T>(T handler) where T : DelegatingHandler, ICloneable;
+        void AddHandler(DelegatingHandler handler);
 
         void RemoveHandler(Type handlerType);
 

@@ -197,6 +197,37 @@
     <Exec Command="$(PowerShellCommand) -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\CleanupBuild.ps1 -BuildConfig $(Configuration) &quot;"/>
   </Target>
   
+  <!-- Build .Net Core Cmdlets -->
+  <Target Name="BuildNetCore" DependsOnTargets="RestoreNugetPackages;BuildMsBuildTask">
+    <Message Importance="high" Text="Building Cmdlets..." />
+
+    <!-- Build and create package content -->
+    <Exec Command="dotnet restore Azure.PowerShell.NetCore.sln"/>
+    <Exec Command="dotnet build Azure.PowerShell.NetCore.sln -c Release"/>
+    <Exec Command="dotnet publish Azure.PowerShell.NetCore.sln -c Release"/>
+
+    <!-- Copy content of the publish folder two folders up -->
+    <ItemGroup>
+      <PackageContent Include="$(PackageDirectory)\**\netstandard1.6\publish\*.*" />
+      <SourceFile Include="@(PackageContent)">
+        <DestinationFolder>$([System.IO.Path]::Combine('%(RelativeDir)', '..', '..', '%(FileName)%(Extension)'))</DestinationFolder>
+      </SourceFile>
+    </ItemGroup>
+
+    <Copy SourceFiles="@(SourceFile->'%(FullPath)')" DestinationFiles="@(SourceFile->'%(DestinationFolder)')" />
+
+    <!-- Delete build artifacts -->
+    <ItemGroup>
+      <GetAllFiles Include="$(PackageDirectory)\**\netstandard1.6\*.*" />
+      <Artifacts Include="@(GetAllFiles->'%(RootDir)%(Directory)'->Distinct())" />
+    </ItemGroup>
+
+    <RemoveDir Directories="%(Artifacts.Identity)" ContinueOnError="true" />
+
+    <CallTarget Targets="BuildSetupTest"/>
+    <CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " /> 
+  </Target>
+
   <!-- Do everything possible -->
   <Target
     Name="Full"
@@ -251,12 +282,12 @@
     <ItemGroup>
       <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\Microsoft*Azure*Commands*.dll" />
       <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\Microsoft.Azure.Common.Extensions.dll" />
-	  <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\Microsoft.Azure.Management.Sql.Legacy.dll" />
-	  <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\PowerShellSetup.Test.dll" />
+	    <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\Microsoft.Azure.Management.Sql.Legacy.dll" />
+	    <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\PowerShellSetup.Test.dll" />
       <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.ps1" />
       <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.psm1" />
       <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.ps1xml" />
-	  <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.js" />
+	    <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.js" />
       <ScriptsToSign Include="$(LibraryRoot)setup\Setup\*.ps1" />
     </ItemGroup>
 

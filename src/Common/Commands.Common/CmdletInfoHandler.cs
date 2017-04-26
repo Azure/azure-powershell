@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.PowerShell.CoreClr.Stubs;
 using System;
 using System.Net.Http;
 using System.Threading;

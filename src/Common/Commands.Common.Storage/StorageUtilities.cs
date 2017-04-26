@@ -14,8 +14,8 @@
 
 namespace Microsoft.WindowsAzure.Commands.Common.Storage
 {
+    using Microsoft.Azure.Management.Storage;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using Microsoft.WindowsAzure.Management.Storage;
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Auth;
     using Microsoft.WindowsAzure.Storage.Blob;
@@ -74,7 +74,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
                     new Uri(string.Format("https://{0}.file.core.windows.net", accountName)));
             }
         }
-
+#if !NETSTANDARD1_6
         /// <summary>
         /// Create a cloud storage account using a service management storage client
         /// </summary>
@@ -134,7 +134,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
                     new Uri(string.Format("https://{0}.file.core.windows.net", accountName)));
             }
         }
-
+#endif
         /// <summary>
         /// Create storage credentials for the given account
         /// </summary>
@@ -156,7 +156,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
                     Convert.ToBase64String(Encoding.UTF8.GetBytes(Guid.NewGuid().ToString())));
             }
         }
-
+#if !NETSTANDARD1_6
         /// <summary>
         /// Create storage credentials for the given account
         /// </summary>
@@ -178,13 +178,17 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
                     Convert.ToBase64String(Encoding.UTF8.GetBytes(Guid.NewGuid().ToString())));
             }
         }
-
+#endif
         public static string GenerateTableStorageSasUrl(string connectionString, string tableName, DateTime expiryTime, SharedAccessTablePermissions permissions)
         {
             CloudStorageAccount storageAccount = CloudStorageAccount.Parse(connectionString);
             CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
             CloudTable tableReference = tableClient.GetTableReference(tableName);
+#if !NETSTANDARD1_6
             tableReference.CreateIfNotExists();
+#else
+            tableReference.CreateIfNotExistsAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+#endif
             var sasToken = tableReference.GetSharedAccessSignature(
                 new SharedAccessTablePolicy()
                 {
@@ -200,7 +204,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
             CloudStorageAccount storageAccount = CloudStorageAccount.Parse(connectionString);
             CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
             CloudBlobContainer blobContainer = blobClient.GetContainerReference(blobContainerName);
+#if !NETSTANDARD1_6
             blobContainer.CreateIfNotExists();
+#else
+            blobContainer.CreateIfNotExistsAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+#endif
             var sasToken = blobContainer.GetSharedAccessSignature(
                 new SharedAccessBlobPolicy()
                 {

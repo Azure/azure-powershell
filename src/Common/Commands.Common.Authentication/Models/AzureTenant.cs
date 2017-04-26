@@ -19,7 +19,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
     /// <summary>
     /// Represents an AD tenant.
     /// </summary>
+#if !NETSTANDARD1_6
     [Serializable]
+#endif
     public class AzureTenant
     {
         /// <summary>

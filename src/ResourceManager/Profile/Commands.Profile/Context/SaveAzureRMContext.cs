@@ -14,12 +14,13 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
-using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Commands.Profile.Netcore;
+using Commands.Profile.Netcore.Properties;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -44,35 +45,35 @@ namespace Microsoft.Azure.Commands.Profile
         {
             if (Profile != null)
             {
-                if (ShouldProcess(string.Format(Resources.ProfileArgumentWrite, Path),
-                    string.Format(Resources.ProfileWriteWarning, Path),
+                if (ShouldProcess(string.Format(Messages.ProfileArgumentWrite, Path),
+                    string.Format(Messages.ProfileWriteWarning, Path),
                     string.Empty))
                 {
                     if (!AzureSession.DataStore.FileExists(Path) || Force ||
-                        ShouldContinue(string.Format(Resources.FileOverwriteMessage, Path), 
-                        Resources.FileOverwriteCaption))
+                        ShouldContinue(string.Format(Messages.FileOverwriteMessage, Path),
+                        Messages.FileOverwriteCaption))
                     {
                         Profile.Save(Path);
-                        WriteVerbose(string.Format(Resources.ProfileArgumentSaved, Path));
+                        WriteVerbose(string.Format(Messages.ProfileArgumentSaved, Path));
                     }
                 }
             }
             else
             {
-                if (ShouldProcess(string.Format(Resources.ProfileCurrentWrite, Path),
-                    string.Format(Resources.ProfileWriteWarning, Path), string.Empty))
+                if (ShouldProcess(string.Format(Messages.ProfileCurrentWrite, Path),
+                    string.Format(Messages.ProfileWriteWarning, Path), string.Empty))
                 {
                     if (AzureRmProfileProvider.Instance.Profile == null)
                     {
-                        throw new ArgumentException(Resources.AzureProfileMustNotBeNull);
+                        throw new ArgumentException(Messages.AzureProfileMustNotBeNull);
                     }
 
                     if (!AzureSession.DataStore.FileExists(Path) || Force.IsPresent ||
-                        ShouldContinue(string.Format(Resources.FileOverwriteMessage, Path), 
-                        Resources.FileOverwriteCaption))
+                        ShouldContinue(string.Format(Messages.FileOverwriteMessage, Path),
+                        Messages.FileOverwriteCaption))
                     {
                         AzureRmProfileProvider.Instance.Profile.Save(Path);
-                        WriteVerbose(string.Format(Resources.ProfileCurrentSaved, Path));
+                        WriteVerbose(string.Format(Messages.ProfileCurrentSaved, Path));
                     }
                 }
             }

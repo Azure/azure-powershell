@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Authentication.NetCore.Properties;
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -23,6 +23,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Reflection;
 using System.Threading;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Factories
@@ -49,7 +50,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         {
             if (context == null)
             {
-                throw new ApplicationException(Resources.NoSubscriptionInContext);
+                throw new InvalidOperationException(Messages.NoSubscriptionInContext);
             }
 
             var creds = AzureSession.AuthenticationFactory.GetServiceClientCredentials(context, endpoint);
@@ -57,8 +58,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             TClient client = (newHandlers == null || newHandlers.Length == 0)
                 ? CreateCustomArmClient<TClient>(context.Environment.GetEndpointAsUri(endpoint), creds)
                 : CreateCustomArmClient<TClient>(context.Environment.GetEndpointAsUri(endpoint), creds, GetCustomHandlers());
-
+#if !NETSTANDARD1_6
             var subscriptionId = typeof(TClient).GetProperty("SubscriptionId");
+#else
+            var subscriptionId = typeof(TClient).GetTypeInfo().GetProperty("SubscriptionId");
+#endif
             if (subscriptionId != null && context.Subscription != null)
             {
                 subscriptionId.SetValue(client, context.Subscription.Id.ToString());
@@ -75,11 +79,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 types.Add(obj.GetType());
             }
 
+#if !NETSTANDARD1_6
             var constructor = typeof(TClient).GetConstructor(types.ToArray());
-
+#else
+            var constructor = typeof(TClient).GetTypeInfo().GetConstructor(types.ToArray());
+#endif
             if (constructor == null)
             {
-                throw new InvalidOperationException(string.Format(Resources.InvalidManagementClientType, typeof(TClient).Name));
+                throw new InvalidOperationException(string.Format(Messages.InvalidManagementClientType, typeof(TClient).Name));
             }
 
             TClient client = (TClient)constructor.Invoke(parameters);
@@ -97,9 +104,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             if (context == null)
             {
                 var exceptionMessage = endpoint == AzureEnvironment.Endpoint.ServiceManagement
-                    ? Resources.InvalidDefaultSubscription
-                    : Resources.NoSubscriptionInContext;
-                throw new ApplicationException(exceptionMessage);
+                    ? Messages.InvalidDefaultSubscription
+                    : Messages.NoSubscriptionInContext;
+                throw new InvalidOperationException(exceptionMessage);
             }
 
             SubscriptionCloudCredentials creds = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context, endpoint);
@@ -111,7 +118,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
             return client;
         }
-
+#if !NETSTANDARD1_6
         public virtual TClient CreateClient<TClient>(AzureSMProfile profile, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
         {
             TClient client = CreateClient<TClient>(profile.Context, endpoint);
@@ -141,7 +148,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         {
             if (subscription == null)
             {
-                throw new ApplicationException(Resources.InvalidDefaultSubscription);
+                throw new InvalidOperationException(Resources.InvalidDefaultSubscription);
             }
 
             if (!profile.Accounts.ContainsKey(subscription.Account))
@@ -167,7 +174,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
             return client;
         }
-
+#endif
         public virtual TClient CreateCustomClient<TClient>(params object[] parameters) where TClient : ServiceClient<TClient>
         {
             List<Type> types = new List<Type>();
@@ -175,12 +182,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             {
                 types.Add(obj.GetType());
             }
-
+#if !NETSTANDARD1_6
             var constructor = typeof(TClient).GetConstructor(types.ToArray());
-
+#else
+            var constructor = typeof(TClient).GetTypeInfo().GetConstructor(types.ToArray());
+#endif
             if (constructor == null)
             {
-                throw new InvalidOperationException(string.Format(Resources.InvalidManagementClientType, typeof(TClient).Name));
+                throw new InvalidOperationException(string.Format(Messages.InvalidManagementClientType, typeof(TClient).Name));
             }
 
             TClient client = (TClient)constructor.Invoke(parameters);
@@ -233,7 +242,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 CredentialCache credentialCache = new CredentialCache();
 
                 // Get base address without terminating slash
-                string credentialAddress = new Uri(endpoint).GetLeftPart(UriPartial.Authority).TrimEnd(uriPathSeparator);
+                string credentialAddress = new Uri(endpoint).Authority.TrimEnd(uriPathSeparator);
 
                 // Add credentials to cache and associate with handler
                 NetworkCredential networkCredentials = credentials.GetCredential(new Uri(credentialAddress), "Basic");
@@ -295,7 +304,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             return result;
         }
 
-        public void AddHandler<T>(T handler) where T : DelegatingHandler, ICloneable
+        public void AddHandler(DelegatingHandler handler)
         {
             _handlersLock.EnterWriteLock();
             try
@@ -358,10 +367,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 while (enumerator.MoveNext())
                 {
                     var handler = enumerator.Value;
-                    ICloneable cloneableHandler = handler as ICloneable;
-                    if (cloneableHandler != null)
+#if !NETSTANDARD1_6
+                    var cloneMethod = handler.GetType().GetMethod("Clone");
+#else
+                    var cloneMethod = handler.GetType().GetTypeInfo().GetMethod("Clone");
+#endif
+                    if (cloneMethod != null)
                     {
-                        var newHandler = cloneableHandler.Clone();
+                        var newHandler = cloneMethod.Invoke(handler, null);
                         DelegatingHandler convertedHandler = newHandler as DelegatingHandler;
                         if (convertedHandler != null)
                         {

@@ -20,7 +20,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
     /// <summary>
     /// Represents current Azure session context.
     /// </summary>
+#if !NETSTANDARD1_6
     [Serializable]
+#endif
     public class AzureContext
     {
         /// <summary>

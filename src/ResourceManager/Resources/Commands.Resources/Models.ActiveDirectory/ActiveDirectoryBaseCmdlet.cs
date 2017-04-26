@@ -18,7 +18,7 @@ using Microsoft.Azure.Graph.RBAC.Models;
 using System;
 using System.Management.Automation;
 using System.Net;
-using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
+using ProjectResources = Commands.Resources.Netcore.Properties.Messages;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory.Models
 {

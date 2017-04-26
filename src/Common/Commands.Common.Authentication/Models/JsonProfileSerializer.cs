@@ -11,7 +11,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-
+#if !NETSTANDARD1_6	
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -89,3 +89,4 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         public IList<string> DeserializeErrors { get; private set; }
     }
 }
+#endif

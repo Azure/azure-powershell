@@ -12,11 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Authentication.NetCore.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using System;
 using System.Security;
+#if !NETSTANDARD1_6
 using System.Windows.Forms;
+#endif
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -28,7 +30,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     {
         private readonly ITokenProvider userTokenProvider;
         private readonly ITokenProvider servicePrincipalTokenProvider;
-
+#if !NETSTANDARD1_6
         public AdalTokenProvider()
             : this(new ConsoleParentWindow())
         {
@@ -39,7 +41,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             this.userTokenProvider = new UserTokenProvider(parentWindow);
             this.servicePrincipalTokenProvider = new ServicePrincipalTokenProvider();
         }
-
+		
         public IAccessToken GetAccessToken(
             AdalConfiguration config,
             ShowDialog promptBehavior,
@@ -56,8 +58,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 default:
                     throw new ArgumentException(Resources.UnknownCredentialType, "credentialType");
             }
-        }
-
+        }	
+		
         public IAccessToken GetAccessTokenWithCertificate(
             AdalConfiguration config,
             string clientId,
@@ -71,6 +73,32 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 default:
                     throw new ArgumentException(string.Format(Resources.UnsupportedCredentialType, credentialType), "credentialType");
             }
+        }			
+#else
+        public AdalTokenProvider()
+        {
+            this.userTokenProvider = new UserTokenProvider();
+            this.servicePrincipalTokenProvider = new ServicePrincipalTokenProvider();
         }
+		
+		public IAccessToken GetAccessToken(
+            AdalConfiguration config,
+            Action<string> promptAction,
+            string userId,
+            SecureString password,
+            AzureAccount.AccountType credentialType)
+        {
+            switch (credentialType)
+            {
+                case AzureAccount.AccountType.User:
+                    return userTokenProvider.GetAccessToken(config, promptAction, userId, password, credentialType);
+                case AzureAccount.AccountType.ServicePrincipal:
+                    return servicePrincipalTokenProvider.GetAccessToken(config, promptAction, userId, password, credentialType);
+                default:
+                    throw new ArgumentException(Messages.UnknownCredentialType, "credentialType");
+            }
+        }
+#endif
+
     }
 }

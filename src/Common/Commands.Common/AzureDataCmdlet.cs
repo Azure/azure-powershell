@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using System;
@@ -34,26 +33,29 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 {
                     return RMProfile.Context;
                 }
-
+#if !NETSTANDARD1_6
                 if (SMProfile == null || SMProfile.Context == null)
                 {
                     throw new InvalidOperationException(Resources.NoCurrentContextForDataCmdlet);
                 }
 
                 return SMProfile.Context;
+#else
+                return null;
+#endif
             }
         }
-
+#if !NETSTANDARD1_6
         public AzureSMProfile SMProfile
         {
             get { return AzureSMProfileProvider.Instance.Profile; }
         }
-
+#endif
         public AzureRMProfile RMProfile
         {
             get { return AzureRmProfileProvider.Instance.Profile; }
         }
-
+#if !NETSTANDARD1_6
         protected override void SaveDataCollectionProfile()
         {
             if (_dataCollectionProfile == null)
@@ -117,7 +119,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
         protected override void InitializeQosEvent()
         {
         }
-
+#endif
         /// <summary>
         /// Guards execution of the given action using ShouldProcess and ShouldContinue.  The optional 
         /// useSHouldContinue predicate determines whether SHouldContinue should be called for this 

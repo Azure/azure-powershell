@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Utilities;
+using Microsoft.Azure.Common;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -51,7 +52,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         {
             return Properties.IsPropertySet(property);
         }
-
+		
+#if !NETSTANDARD1_6
         public List<AzureSubscription> GetSubscriptions(AzureSMProfile profile)
         {
             string subscriptions = string.Empty;
@@ -77,6 +79,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
             return subscriptionsList;
         }
+#endif
 
         public bool HasSubscription(Guid subscriptionId)
         {
@@ -133,7 +136,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             }
             else
             {
+#if !NETSTANDARD1_6
                 return string.Equals(anotherAccount.Id, Id, StringComparison.InvariantCultureIgnoreCase);
+#else
+                return string.Equals(anotherAccount.Id, Id, StringExtensions.CaselessComparison);
+#endif
             }
         }
 

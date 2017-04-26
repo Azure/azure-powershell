@@ -18,9 +18,9 @@ using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Commands.Tags.Properties;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Commands.Tags.Netcore.Properties;
 
 namespace Microsoft.Azure.Commands.Tags.Model
 {
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Tags.Model
             List<PSTag> tags = ListTags();
             if (!tags.Exists(t => t.Name.Equals(tag, StringComparison.OrdinalIgnoreCase)))
             {
-                throw new Exception(string.Format(Resources.TagNotFoundMessage, tag));
+                throw new Exception(string.Format(Messages.TagNotFoundMessage, tag));
             }
 
             return tags.First(t => t.Name.Equals(tag, StringComparison.OrdinalIgnoreCase));
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Tags.Model
                 tagObject = GetTag(tag);
                 if (int.Parse(tagObject.Count) > 0)
                 {
-                    throw new Exception(Resources.CanNotDeleteTag);
+                    throw new Exception(Messages.CanNotDeleteTag);
                 }
             }
 

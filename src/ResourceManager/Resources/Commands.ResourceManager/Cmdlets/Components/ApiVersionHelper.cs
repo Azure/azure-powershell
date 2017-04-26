@@ -23,7 +23,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
-    using System.Runtime.Caching;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -190,7 +189,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             /// <param name="cacheKey">The cache key.</param>
             private string[] GetCacheItem(string cacheKey)
             {
+#if !NETSTANDARD1_6
                 return MemoryCache.Default[cacheKey].Cast<string[]>();
+#else
+                return null;
+#endif
             }
 
             /// <summary>
@@ -201,7 +204,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             /// <param name="absoluteExpirationTime">The absolute expiration time.</param>
             private void SetCacheItem(string cacheKey, string[] data, DateTimeOffset absoluteExpirationTime)
             {
+#if !NETSTANDARD1_6
                 MemoryCache.Default.Set(key: cacheKey, value: data, absoluteExpiration: absoluteExpirationTime);
+#endif
             }
 
             /// <summary>

@@ -12,7 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Profile.Properties;
+using Commands.Profile.Netcore;
+using Commands.Profile.Netcore.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using System.Management.Automation;
 
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Resources.EnableDataCollection, Resources.DataCollectionEnabledWarning, 
+            if (ShouldProcess(Messages.EnableDataCollection, Messages.DataCollectionEnabledWarning, 
                 string.Empty))
             {
 
@@ -39,9 +40,11 @@ namespace Microsoft.Azure.Commands.Profile
 
         protected void SetDataCollectionProfile(bool enable)
         {
+#if !NETSTANDARD1_6		
             var profile = GetDataCollectionProfile();
             profile.EnableAzureDataCollection = enable;
             SaveDataCollectionProfile();
+#endif			
         }
     }
 }

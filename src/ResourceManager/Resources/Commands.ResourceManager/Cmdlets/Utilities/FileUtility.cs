@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using ProjectResources = Commands.Resources.Rest.Netcore.Properties.Messages;
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 {
     using Microsoft.Azure.Commands.Common.Authentication;
     using System;
     using System.IO;
     using System.Text;
-    using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
     /// <summary>
     /// The file utility.

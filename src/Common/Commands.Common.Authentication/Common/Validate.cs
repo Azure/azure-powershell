@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Authentication.NetCore.Properties;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
@@ -35,10 +35,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             INTERNET_CONNECTION_OFFLINE = 0x20,
             INTERNET_CONNECTION_CONFIGURED = 0x40
         }
-
+#if !NETSTANDARD1_6
         [SuppressMessage("Microsoft.Design", "CA1060:MovePInvokesToNativeMethodsClass", Justification = "Not necessary for a single p-invoke")]
         [DllImport("WININET", CharSet = CharSet.Auto)]
         static extern bool InternetGetConnectedState(ref InternetConnectionState lpdwFlags, int dwReserved);
+#endif
 
         /// <summary>
         /// Validates against given string if null or empty.
@@ -54,7 +55,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 // In this case use messageData parameter as name for null/empty string.
                 if (useDefaultMessage)
                 {
-                    throw new ArgumentException(string.Format(Resources.InvalidOrEmptyArgumentMessage, messageData));
+                    throw new ArgumentException(string.Format(Messages.InvalidOrEmptyArgumentMessage, messageData));
                 }
                 else
                 {
@@ -99,7 +100,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public static void ValidateDirectoryExists(string directory, string exceptionMessage = null)
         {
-            string msg = string.Format(Resources.PathDoesNotExist, directory);
+            string msg = string.Format(Messages.PathDoesNotExist, directory);
 
             if (!FileUtilities.DataStore.DirectoryExists(directory))
             {
@@ -126,7 +127,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
             if (invalidExtension)
             {
-                throw new ArgumentException(string.Format(Resources.InvalidFileExtension, filePath, desiredExtention));
+                throw new ArgumentException(string.Format(Messages.InvalidFileExtension, filePath, desiredExtention));
             }
         }
 
@@ -134,12 +135,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             if (Uri.CheckHostName(dnsName) != UriHostNameType.Dns || dnsName.EndsWith("-"))
             {
-                throw new ArgumentException(string.Format(Resources.InvalidDnsName, dnsName, parameterName));
+                throw new ArgumentException(string.Format(Messages.InvalidDnsName, dnsName, parameterName));
             }
         }
 
         public static void ValidateDnsDoesNotExist(string dnsName)
         {
+#if !NETSTANDARD1_6
             try
             {
                 Dns.GetHostEntry(dnsName);
@@ -151,16 +153,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             {
                 // Dns doesn't exist
             }
+#endif
         }
 
         public static void ValidateInternetConnection()
         {
+#if !NETSTANDARD1_6
             InternetConnectionState flags = 0;
 
             if (!InternetGetConnectedState(ref flags, 0))
             {
                 throw new Exception(Resources.NoInternetConnection);
             }
+#endif
         }
 
         public static void HasWhiteCharacter(string text, string exceptionMessage = null)
@@ -190,17 +195,17 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public static void ValidateDirectoryFull(string directoryNameOnDisk, string directoryName)
         {
             BasicFileAndDirectoryValidation(directoryNameOnDisk, directoryName);
-            ValidateDirectoryExists(directoryNameOnDisk, string.Format(Resources.PathDoesNotExistForElement, directoryName, directoryNameOnDisk));
+            ValidateDirectoryExists(directoryNameOnDisk, string.Format(Messages.PathDoesNotExistForElement, directoryName, directoryNameOnDisk));
         }
 
         private static void BasicFileAndDirectoryValidation(string fullPath, string name)
         {
             ValidateStringIsNullOrEmpty(fullPath, name);
-            ValidateFileName(fullPath, Resources.IllegalPath);
+            ValidateFileName(fullPath, Messages.IllegalPath);
             string directoryPath = Path.GetDirectoryName(fullPath);
             if (!string.IsNullOrEmpty(directoryPath))
             {
-                ValidatePath(fullPath, Resources.IllegalPath);
+                ValidatePath(fullPath, Messages.IllegalPath);
             }
         }
 
@@ -212,7 +217,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public static void ValidateFileFull(string fileNameOnDisk, string fileName)
         {
             BasicFileAndDirectoryValidation(fileNameOnDisk, fileName);
-            ValidateFileExists(fileNameOnDisk, string.Format(Resources.PathDoesNotExistForElement, fileName, fileNameOnDisk));
+            ValidateFileExists(fileNameOnDisk, string.Format(Messages.PathDoesNotExistForElement, fileName, fileNameOnDisk));
         }
     }
 }

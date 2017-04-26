@@ -12,10 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Authentication.NetCore.Properties;
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Rest.Azure.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Security;
@@ -28,14 +29,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public IAccessToken GetAccessToken(
             AdalConfiguration config,
+#if !NETSTANDARD1_6				
             ShowDialog promptBehavior,
+#else
+			Action<string> promptAction,
+#endif			
             string userId,
             SecureString password,
             AzureAccount.AccountType credentialType)
         {
             if (credentialType == AzureAccount.AccountType.User)
             {
-                throw new ArgumentException(string.Format(Resources.InvalidCredentialType, "User"), "credentialType");
+                throw new ArgumentException(string.Format(Messages.InvalidCredentialType, "User"), "credentialType");
             }
             return new ServicePrincipalAccessToken(config, AcquireTokenWithSecret(config, userId, password), this.RenewWithSecret, userId);
         }
@@ -48,7 +53,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             if (credentialType == AzureAccount.AccountType.User)
             {
-                throw new ArgumentException(string.Format(Resources.InvalidCredentialType, "User"), "credentialType");
+                throw new ArgumentException(string.Format(Messages.InvalidCredentialType, "User"), "credentialType");
             }
             return new ServicePrincipalAccessToken(
                 config,
@@ -70,10 +75,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
 
             StoreAppKey(appId, config.AdDomain, appKey);
-            var credential = new ClientCredential(appId, appKey);
             var context = GetContext(config);
+#if !NETSTANDARD1_6
+            var credential = new ClientCredential(appId, appKey);
             return context.AcquireToken(config.ResourceClientUri, credential);
-        }
+#else
+            var credential = new ClientCredential(appId, SecureClientSecret.SecureStringToString(appKey));
+            return context.AcquireTokenAsync(context.Authority, credential)
+						  .ConfigureAwait(false).GetAwaiter().GetResult();
+#endif        
+		}
 
         private AuthenticationResult AcquireTokenWithCertificate(
             AdalConfiguration config,
@@ -83,22 +94,27 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             var certificate = AzureSession.DataStore.GetCertificate(thumbprint);
             if (certificate == null)
             {
-                throw new ArgumentException(string.Format(Resources.CertificateNotFoundInStore, thumbprint));
+                throw new ArgumentException(string.Format(Messages.CertificateNotFoundInStore, thumbprint));
             }
 
             var context = GetContext(config);
+#if !NETSTANDARD1_6
             return context.AcquireToken(config.ResourceClientUri, new ClientAssertionCertificate(appId, certificate));
+#else
+            return context.AcquireTokenAsync(config.ResourceClientUri, new ClientAssertionCertificate(appId, certificate))
+                          .ConfigureAwait(false).GetAwaiter().GetResult();
+#endif
         }
 
         private AuthenticationResult RenewWithSecret(AdalConfiguration config, string appId)
         {
-            TracingAdapter.Information(Resources.SPNRenewTokenTrace, appId, config.AdDomain, config.AdEndpoint,
+            TracingAdapter.Information(Messages.SPNRenewTokenTrace, appId, config.AdDomain, config.AdEndpoint,
                 config.ClientId, config.ClientRedirectUri);
             using (SecureString appKey = LoadAppKey(appId, config.AdDomain))
             {
                 if (appKey == null)
                 {
-                    throw new KeyNotFoundException(string.Format(Resources.ServiceKeyNotFound, appId));
+                    throw new KeyNotFoundException(string.Format(Messages.ServiceKeyNotFound, appId));
                 }
                 return AcquireTokenWithSecret(config, appId, appKey);
             }
@@ -110,7 +126,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             string thumbprint)
         {
             TracingAdapter.Information(
-                Resources.SPNRenewTokenTrace,
+                Messages.SPNRenewTokenTrace,
                 appId,
                 config.AdDomain,
                 config.AdEndpoint,
@@ -181,7 +197,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     var currentTime = DateTimeOffset.UtcNow;
                     var timeUntilExpiration = expiration - currentTime;
                     TracingAdapter.Information(
-                        Resources.SPNTokenExpirationCheckTrace,
+                        Messages.SPNTokenExpirationCheckTrace,
                         expiration,
                         currentTime,
                         expirationThreshold,

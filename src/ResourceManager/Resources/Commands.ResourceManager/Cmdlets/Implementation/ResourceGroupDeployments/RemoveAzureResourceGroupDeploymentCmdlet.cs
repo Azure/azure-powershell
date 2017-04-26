@@ -15,7 +15,7 @@
 using System;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using System.Management.Automation;
-using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
+using ProjectResources = Commands.Resources.Rest.Netcore.Properties.Messages;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {

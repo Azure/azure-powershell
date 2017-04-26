@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Common.ResourceManager.Netcore.Properties;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         protected void ConfirmResourceAction(string resourceType, string resourceName, string resourceGroupName,
             string processMessage, Action action)
         {
-            ConfirmAction(processMessage, string.Format(Resources.ResourceConfirmTarget,
+            ConfirmAction(processMessage, string.Format(Messages.ResourceConfirmTarget,
                 resourceType, resourceName, resourceGroupName), action);
         }
 
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         protected void ConfirmResourceAction(string resourceType, string resourceName, string resourceGroupName,
             bool force, string continueMessage, string processMessage, Action action, Func<bool> promptForContinuation = null )
         {
-            ConfirmAction(force, continueMessage, processMessage, string.Format(Resources.ResourceConfirmTarget,
+            ConfirmAction(force, continueMessage, processMessage, string.Format(Messages.ResourceConfirmTarget,
                 resourceType, resourceName, resourceGroupName), action, promptForContinuation);
         }
 
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         /// <param name="action">The code action to perform if confirmation is successful</param>
         protected void ConfirmResourceAction(string resourceId, string actionName, Action action)
         {
-            ConfirmAction(actionName, string.Format(Resources.ResourceIdConfirmTarget,
+            ConfirmAction(actionName, string.Format(Messages.ResourceIdConfirmTarget,
                 resourceId), action);
         }
 
@@ -160,10 +160,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         protected void ConfirmResourceAction(string resourceId, bool force, string continueMessage, string actionName, 
             Action action, Func<bool> promptForContinuation = null)
         {
-            ConfirmAction(force, continueMessage, actionName, string.Format(Resources.ResourceIdConfirmTarget,
+            ConfirmAction(force, continueMessage, actionName, string.Format(Messages.ResourceIdConfirmTarget,
                 resourceId), action, promptForContinuation);
         }
-
+#if !NETSTANDARD1_6
         protected override void SaveDataCollectionProfile()
         {
             if (_dataCollectionProfile == null)
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 _qosEvent.Uid = "defaultid";
             }
         }
-
+#endif
         protected override void LogCmdletStartInvocationInfo()
         {
             base.LogCmdletStartInvocationInfo();

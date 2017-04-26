@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         /// <param name="otherString">The other string.</param>
         public static bool EqualsInsensitively(this string original, string otherString)
         {
-            return string.Equals(original, otherString, StringComparison.InvariantCultureIgnoreCase);
+            return string.Equals(original, otherString, Microsoft.Azure.Common.StringExtensions.CaselessComparison);
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         /// <param name="otherString">The other string.</param>
         public static bool StartsWithInsensitively(this string original, string otherString)
         {
-            return original.CoalesceString().StartsWith(otherString.CoalesceString(), StringComparison.InvariantCultureIgnoreCase);
+            return original.CoalesceString().StartsWith(otherString.CoalesceString(), Microsoft.Azure.Common.StringExtensions.CaselessComparison);
         }
 
         /// <summary>

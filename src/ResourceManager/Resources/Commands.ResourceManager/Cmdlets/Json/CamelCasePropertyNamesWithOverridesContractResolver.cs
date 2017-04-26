@@ -55,7 +55,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json
         {
             var contract = base.CreateDictionaryContract(objectType);
 
-            var attributes = objectType.GetCustomAttributes(attributeType: typeof(JsonPreserveCaseDictionaryAttribute), inherit: true);
+            var attributes = objectType
+#if NETSTANDARD1_6
+                .GetTypeInfo()
+#endif
+                .GetCustomAttributes(attributeType: typeof(JsonPreserveCaseDictionaryAttribute), inherit: true);
             if (attributes.Any())
             {
                 contract.PropertyNameResolver = propertyName => propertyName;

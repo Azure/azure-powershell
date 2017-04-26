@@ -12,15 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using ProjectResources = Commands.Resources.Netcore.Properties.Messages;
+
 namespace Microsoft.Azure.Commands.Resources
 {
     using Microsoft.Azure.Commands.Resources.Models;
-    using Microsoft.Azure.Management.Resources.Models;
+    using Microsoft.Azure.Management.Authorization.Models;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
-    using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
     /// <summary>
     /// Get an existing resource.
@@ -113,7 +114,7 @@ namespace Microsoft.Azure.Commands.Resources
         {
             string providerFullName = operationString.Split(Separator).First();
 
-            ProviderOperationsMetadata providerOperations = this.ResourcesClient.GetProviderOperationsMetadata(providerFullName);
+            var providerOperations = this.ResourcesClient.GetProviderOperationsMetadata(providerFullName);
             IEnumerable<PSResourceProviderOperation> flattenedProviderOperations = GetAzureProviderOperationCommand.GetPSOperationsFromProviderOperationsMetadata(providerOperations);
             return flattenedProviderOperations.Where(op => string.Equals(op.Operation, operationString, StringComparison.OrdinalIgnoreCase)).ToList();
         }
@@ -131,12 +132,19 @@ namespace Microsoft.Azure.Commands.Resources
             return operations;
         }
 
+#if !NETSTANDARD1_6
         private static bool IsUserOperation(Operation operation)
+#else
+        private static bool IsUserOperation(ProviderOperation operation)
+#endif
         {
             return operation.Origin == null || operation.Origin.Contains("user");
         }
-
+#if !NETSTANDARD1_6
         private static PSResourceProviderOperation ToPSResourceProviderOperation(Operation operation, string provider, string resource = null)
+#else
+        private static PSResourceProviderOperation ToPSResourceProviderOperation(ProviderOperation operation, string provider, string resource = null)
+#endif
         {
             PSResourceProviderOperation psOperation = new PSResourceProviderOperation();
             psOperation.Operation = operation.Name;

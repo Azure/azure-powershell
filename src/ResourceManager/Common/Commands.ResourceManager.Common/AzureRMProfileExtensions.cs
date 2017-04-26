@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Common.ResourceManager.Netcore.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
 
@@ -30,12 +30,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             if (profile == null)
             {
-                throw new ArgumentNullException("profile", Resources.ProfileCannotBeNull);
+                throw new ArgumentNullException("profile", Messages.ProfileCannotBeNull);
             }
 
             if (newContext == null)
             {
-                throw new ArgumentNullException("newContext", Resources.ContextCannotBeNull);
+                throw new ArgumentNullException("newContext", Messages.ContextCannotBeNull);
             }
 
             newContext.TokenCache = TokenCache.DefaultShared.Serialize();

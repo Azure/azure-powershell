@@ -18,6 +18,27 @@ using System.Diagnostics;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
+#if NETSTANDARD1_6
+    public class AdalLogger : IAdalLogCallback
+    {
+        TraceListener _listener;
+        public static void Enable(DebugStreamTraceListener listener)
+        {
+            var logger = new AdalLogger();
+            logger._listener = listener;
+            Microsoft.IdentityModel.Clients.ActiveDirectory.LoggerCallbackHandler.Callback = logger;
+        }
+
+        public static void Disable()
+        {
+            Microsoft.IdentityModel.Clients.ActiveDirectory.LoggerCallbackHandler.Callback = null;
+        }
+        public void Log(LogLevel level, string message)
+        {
+            _listener.WriteLine($"[AdalTrace ({level}]: {message}");
+        }
+    }
+#endif
     public class DebugStreamTraceListener : TraceListener
     {
         public DebugStreamTraceListener(ConcurrentQueue<string> queue)
@@ -27,8 +48,12 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public static void AddAdalTracing(DebugStreamTraceListener listener)
         {
+#if !NETSTANDARD1_6
             AdalTrace.TraceSource.Listeners.Add(listener);
             AdalTrace.TraceSource.Switch.Level = SourceLevels.All;
+#else
+            AdalLogger.Enable(listener);
+#endif
         }
 
         public ConcurrentQueue<string> Messages;
@@ -44,7 +69,11 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public static void RemoveAdalTracing(DebugStreamTraceListener listener)
         {
+#if !NETSTANDARD1_6
             AdalTrace.TraceSource.Listeners.Remove(listener);
+#else
+            AdalLogger.Disable();
+#endif
         }
     }
 }

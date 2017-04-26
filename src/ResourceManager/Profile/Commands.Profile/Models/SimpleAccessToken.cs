@@ -12,9 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Commands.Profile.Netcore;
+using Commands.Profile.Netcore.Properties;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Profile.Properties;
 using System;
 
 namespace Microsoft.Azure.Commands.Profile.Models
@@ -41,12 +42,12 @@ namespace Microsoft.Azure.Commands.Profile.Models
             }
             if (string.IsNullOrWhiteSpace(account.Id))
             {
-                throw new ArgumentOutOfRangeException("account", Resources.AccessTokenRequiresAccount);
+                throw new ArgumentOutOfRangeException("account", Messages.AccessTokenRequiresAccount);
             }
             if (account.Type != AzureAccount.AccountType.AccessToken ||
                 !account.IsPropertySet(AzureAccount.Property.AccessToken))
             {
-                throw new ArgumentException(Resources.TypeNotAccessToken);
+                throw new ArgumentException(Messages.TypeNotAccessToken);
             }
             this.UserId = account.Id;
             this._tokenType = tokenType;

@@ -11,7 +11,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-
+#if !NETSTANDARD1_6
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Newtonsoft.Json;
@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
     /// <summary>
     /// Represents Azure profile structure with multiple environments, subscriptions, and accounts.
     /// </summary>
+
     [Serializable]
     public sealed class AzureSMProfile : IAzureProfile
     {
@@ -238,3 +239,4 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         }
     }
 }
+#endif

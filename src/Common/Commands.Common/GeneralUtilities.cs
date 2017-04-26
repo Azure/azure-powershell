@@ -34,8 +34,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
     public static class GeneralUtilities
     {
+#if !NETSTANDARD1_6
         private static Assembly assembly = Assembly.GetExecutingAssembly();
-
+#else
+        private static Assembly assembly = Assembly.GetEntryAssembly();
+#endif
         private static List<string> AuthorizationHeaderNames = new List<string>() { "Authorization" };
 
         // this is only used to determine cutoff for streams (not xml or json).
@@ -44,11 +47,13 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         private static bool TryFindCertificatesInStore(string thumbprint,
             System.Security.Cryptography.X509Certificates.StoreLocation location, out X509Certificate2Collection certificates)
         {
-            X509Store store = new X509Store(StoreName.My, location);
-            store.Open(OpenFlags.ReadOnly);
-            certificates = store.Certificates.Find(X509FindType.FindByThumbprint, thumbprint, false);
-            store.Close();
-
+            X509Certificate2Collection found = null;
+            DiskDataStore.X509StoreWrapper(StoreName.My, location, (store) =>
+            {
+                store.Open(OpenFlags.ReadOnly);
+                found = store.Certificates.Find(X509FindType.FindByThumbprint, thumbprint, false);
+            });
+            certificates = found;
             return certificates != null && certificates.Count > 0;
         }
 
@@ -248,8 +253,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
             return address.Uri.AbsoluteUri;
         }
-
+#if !NETSTANDARD1_6
         public static string GetHttpResponseLog(string statusCode, WebHeaderCollection headers, string body)
+#else
+        public static string GetHttpResponseLog(string statusCode, IDictionary<string, IEnumerable<string>> headers, string body)
+#endif
         {
             StringBuilder httpResponseLog = new StringBuilder();
             httpResponseLog.AppendLine(string.Format("============================ HTTP RESPONSE ============================{0}", Environment.NewLine));
@@ -268,7 +276,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         public static string GetHttpRequestLog(
             string method,
             string requestUri,
+#if !NETSTANDARD1_6
             WebHeaderCollection headers,
+#else
+            IDictionary<string, IEnumerable<string>> headers,
+#endif
             string body)
         {
             StringBuilder httpRequestLog = new StringBuilder();
@@ -354,7 +366,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 return content;
             }
         }
-
+#if !NETSTANDARD1_6
         private static WebHeaderCollection ConvertHttpHeadersToWebHeaderCollection(HttpHeaders headers)
         {
             WebHeaderCollection webHeaders = new WebHeaderCollection();
@@ -387,7 +399,40 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             return result.ToString();
         }
+#else
+        private static IDictionary<string, IEnumerable<string>> ConvertHttpHeadersToWebHeaderCollection(HttpHeaders headers)
+        {
+            IDictionary<string, IEnumerable<string>> webHeaders = new Dictionary<string, IEnumerable<string>>();
+            foreach (KeyValuePair<string, IEnumerable<string>> pair in headers)
+            {
+                if (AuthorizationHeaderNames.Any(h => h.Equals(pair.Key, StringComparison.OrdinalIgnoreCase)))
+                {
+                    // Skip adding the authorization header
+                    continue;
+                }
 
+                webHeaders.Add(pair.Key, pair.Value);
+            }
+
+            return webHeaders;
+        }
+
+        private static string MessageHeadersToString(IDictionary<string, IEnumerable<string>> headers)
+        {
+            string[] keys = headers.Keys.ToArray();
+            StringBuilder result = new StringBuilder();
+
+            foreach (string key in keys)
+            {
+                result.AppendLine(string.Format(
+                    "{0,-30}: {1}",
+                    key,
+                    ConversionUtilities.ArrayToString(headers[key].ToArray(), ",")));
+            }
+
+            return result.ToString();
+        }
+#endif
         /// <summary>
         /// Creates https endpoint from the given endpoint.
         /// </summary>
@@ -402,7 +447,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             return new Uri(endpoint);
         }
-
+#if !NETSTANDARD1_6
         public static string DownloadFile(string uri)
         {
             string contents = null;
@@ -421,7 +466,26 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             return contents;
         }
+#else
+        public static string DownloadFile(string uri)
+        {
+            HttpClient client = new HttpClient();
+            var stream = client.GetStreamAsync(uri).GetAwaiter().GetResult();
+            StringBuilder result = new StringBuilder();
+            byte[] buffer = new byte[1024];
+            int offset = 0, readBytes = 0;
+            do
+            {
+                readBytes = stream.Read(buffer, 0, buffer.Length);
+                if (readBytes > 0)
+                {
+                    result.Append(Encoding.UTF8.GetString(buffer, 0, readBytes));
+                }
+            } while (readBytes >= buffer.Length);
 
+            return result.ToString();
+        }
+#endif
         /// <summary>
         /// Pad a string using the given separator string
         /// </summary>
@@ -459,7 +523,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             {
                 RMProfile.Context.Subscription.SetProperty(AzureSubscription.Property.StorageAccount, null);
             }
-
+#if !NETSTANDARD1_6
             if (clearSMContext)
             {
                 var SMProfile = AzureSMProfileProvider.Instance.Profile;
@@ -469,6 +533,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                     SMProfile.Context.Subscription.SetProperty(AzureSubscription.Property.StorageAccount, null);
                 }
             }
+#endif
         }
     }
 }

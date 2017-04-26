@@ -18,7 +18,7 @@
 //using System.Linq;
 //using Microsoft.Azure.Management.Resources;
 //using Microsoft.Azure.Management.Resources.Models;
-//using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
+//using ProjectResources = Commands.Resources.Netcore.Properties.Messages;
 //using Microsoft.Azure.Insights.Models;
 //using Microsoft.Azure.Insights;
 

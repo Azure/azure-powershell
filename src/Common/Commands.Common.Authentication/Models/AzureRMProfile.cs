@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Common;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
     /// <summary>
     /// Represents Azure Resource Manager profile structure with default context, environments and token cache.
     /// </summary>
+#if !NETSTANDARD1_6
     [Serializable]
+#endif
     public sealed class AzureRMProfile : IAzureProfile
     {
         /// <summary>
@@ -65,8 +68,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// </summary>
         public AzureRMProfile()
         {
-            Environments = new Dictionary<string, AzureEnvironment>(StringComparer.InvariantCultureIgnoreCase);
-
+            Environments = new Dictionary<string, AzureEnvironment>(StringExtensions.CaselessComparer);
             // Adding predefined environments
             foreach (AzureEnvironment env in AzureEnvironment.PublicEnvironments.Values)
             {

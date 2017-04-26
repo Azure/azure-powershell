@@ -11,10 +11,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Commands.Profile.Netcore;
+using Commands.Profile.Netcore.Properties;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
-using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
@@ -108,12 +109,12 @@ namespace Microsoft.Azure.Commands.Profile
 
         private void ThrowSubscriptionNotFoundError(string tenant, string subscription)
         {
-            throw new PSArgumentException(string.Format(Resources.SubscriptionNotFoundError, subscription, tenant));
+            throw new PSArgumentException(string.Format(Messages.SubscriptionNotFoundError, subscription, tenant));
         }
 
         private void ThrowTenantAuthenticationError(string tenant, AadAuthenticationException exception)
         {
-            throw new PSArgumentException(string.Format(Resources.TenantAuthFailed, tenant), exception);
+            throw new PSArgumentException(string.Format(Messages.TenantAuthFailed, tenant), exception);
         }
     }
 }

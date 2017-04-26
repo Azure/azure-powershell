@@ -20,13 +20,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
+#if NETSTANDARD1_6
+using ServerFarmWithRichSku = Microsoft.Azure.Management.WebSites.Models.AppServicePlan;
+#endif
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
 {
     /// <summary>
     /// this commandlet will let you Get an Azure App Service Plan using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmAppServicePlan"), OutputType(typeof(ServerFarmWithRichSku), typeof(ServerFarmCollection))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmAppServicePlan"), OutputType(typeof(ServerFarmWithRichSku), typeof(IList<ServerFarmWithRichSku>))]
     public class GetAppServicePlanCmdlet : WebAppBaseClientCmdLet
     {
         private const string ParameterSet1 = "S1";
@@ -117,7 +120,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
 
         private void GetByResourceGroup()
         {
-            WriteObject(WebsitesClient.ListAppServicePlans(ResourceGroupName).Value, true);
+            WriteObject(WebsitesClient.ListAppServicePlans(ResourceGroupName)
+#if !NETSTANDARD1_6
+                .Value
+#endif
+                , true);
         }
 
         private void GetBySubscription()
@@ -145,10 +152,17 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                 try
                 {
                     var result = WebsitesClient.ListAppServicePlans(rg);
+#if !NETSTANDARD1_6
                     if (result != null && result.Value != null)
                     {
                         list.AddRange(result.Value);
                     }
+#else
+                    if (result != null)
+                    {
+                        list.AddRange(result);
+                    }
+#endif
                 }
                 catch (Exception e)
                 {

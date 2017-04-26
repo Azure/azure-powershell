@@ -57,7 +57,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '2.8.0'; }
 # RequiredAssemblies = @()
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-# ScriptsToProcess = @()
+ScriptsToProcess = @('ResourceManagerStartup.ps1') 
 
 # Type files (.ps1xml) to be loaded when importing this module
 TypesToProcess = 'Microsoft.Azure.Commands.ResourceManager.Cmdlets.Types.ps1xml'

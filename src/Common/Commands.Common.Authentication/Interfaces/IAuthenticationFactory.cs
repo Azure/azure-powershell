@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
+using System;
 using System.Security;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
@@ -37,7 +38,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             AzureEnvironment environment,
             string tenant,
             SecureString password,
+#if !NETSTANDARD1_6
             ShowDialog promptBehavior,
+#else
+            Action<string> promptAction,
+#endif
             TokenCache tokenCache,
             AzureEnvironment.Endpoint resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId);
 
@@ -56,7 +61,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             AzureEnvironment environment,
             string tenant,
             SecureString password,
+#if !NETSTANDARD1_6
             ShowDialog promptBehavior,
+#else
+            Action<string> promptAction,
+#endif
             AzureEnvironment.Endpoint resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId);
 
         SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context);

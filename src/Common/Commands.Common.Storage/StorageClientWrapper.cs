@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+#if !NETSTANDARD1_6
 namespace Microsoft.WindowsAzure.Commands.Common.Storage
 {
     using Microsoft.WindowsAzure.Management.Storage;
@@ -130,3 +131,4 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
         }
     }
 }
+#endif

@@ -1,0 +1,76 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.NetCore", "src\Common\Commands.Common.Authentication\Authentication.NetCore.csproj", "{D12674F6-CB92-438F-A68D-21CE12F8611B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Netcore", "src\Common\Commands.Common\Common.Netcore.csproj", "{998E17F1-A0D4-48CE-8EE5-3B60E7841D8D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.ResourceManager.Netcore", "src\ResourceManager\Common\Commands.ResourceManager.Common\Common.ResourceManager.Netcore.csproj", "{35A7AFAB-9F76-4CC8-AD83-6BE14DAEE597}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Profile.Netcore", "src\ResourceManager\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{31044C50-5F29-4CB4-9E7C-8E0123FA6B77}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Tags.Netcore", "src\ResourceManager\Tags\Commands.Tags\Commands.Tags.Netcore.csproj", "{4D14DBA3-26A1-4102-8012-196CF2C31C56}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Resources.Rest.Netcore", "src\ResourceManager\Resources\Commands.ResourceManager\Cmdlets\Commands.Resources.Rest.Netcore.csproj", "{0E33B20F-5AC6-43BE-B91F-203DDB5981DC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Resources.Netcore", "src\ResourceManager\Resources\Commands.Resources\Commands.Resources.Netcore.csproj", "{B270ACDB-0E27-42CD-BB84-B9A6E47543B0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage.Netcore", "src\Common\Commands.Common.Storage\Storage.Netcore.csproj", "{6B91BCDC-5031-4A7A-A566-83308FF997C6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Storage.Netcore", "src\ResourceManager\Storage\Commands.Management.Storage\Commands.Storage.Netcore.csproj", "{6878D60B-AD5B-4D37-8B84-5D529090FBAC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Websites.Netcore", "src\ResourceManager\Websites\Commands.Websites\Commands.Websites.Netcore.csproj", "{59581DCA-1726-4EE2-A665-0112E681C35C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D12674F6-CB92-438F-A68D-21CE12F8611B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D12674F6-CB92-438F-A68D-21CE12F8611B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D12674F6-CB92-438F-A68D-21CE12F8611B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D12674F6-CB92-438F-A68D-21CE12F8611B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{998E17F1-A0D4-48CE-8EE5-3B60E7841D8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{998E17F1-A0D4-48CE-8EE5-3B60E7841D8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{998E17F1-A0D4-48CE-8EE5-3B60E7841D8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{998E17F1-A0D4-48CE-8EE5-3B60E7841D8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35A7AFAB-9F76-4CC8-AD83-6BE14DAEE597}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35A7AFAB-9F76-4CC8-AD83-6BE14DAEE597}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35A7AFAB-9F76-4CC8-AD83-6BE14DAEE597}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35A7AFAB-9F76-4CC8-AD83-6BE14DAEE597}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31044C50-5F29-4CB4-9E7C-8E0123FA6B77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31044C50-5F29-4CB4-9E7C-8E0123FA6B77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31044C50-5F29-4CB4-9E7C-8E0123FA6B77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31044C50-5F29-4CB4-9E7C-8E0123FA6B77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D14DBA3-26A1-4102-8012-196CF2C31C56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D14DBA3-26A1-4102-8012-196CF2C31C56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D14DBA3-26A1-4102-8012-196CF2C31C56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D14DBA3-26A1-4102-8012-196CF2C31C56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E33B20F-5AC6-43BE-B91F-203DDB5981DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E33B20F-5AC6-43BE-B91F-203DDB5981DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E33B20F-5AC6-43BE-B91F-203DDB5981DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E33B20F-5AC6-43BE-B91F-203DDB5981DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B270ACDB-0E27-42CD-BB84-B9A6E47543B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B270ACDB-0E27-42CD-BB84-B9A6E47543B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B270ACDB-0E27-42CD-BB84-B9A6E47543B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B270ACDB-0E27-42CD-BB84-B9A6E47543B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B91BCDC-5031-4A7A-A566-83308FF997C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B91BCDC-5031-4A7A-A566-83308FF997C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B91BCDC-5031-4A7A-A566-83308FF997C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B91BCDC-5031-4A7A-A566-83308FF997C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6878D60B-AD5B-4D37-8B84-5D529090FBAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6878D60B-AD5B-4D37-8B84-5D529090FBAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6878D60B-AD5B-4D37-8B84-5D529090FBAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6878D60B-AD5B-4D37-8B84-5D529090FBAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59581DCA-1726-4EE2-A665-0112E681C35C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59581DCA-1726-4EE2-A665-0112E681C35C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59581DCA-1726-4EE2-A665-0112E681C35C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59581DCA-1726-4EE2-A665-0112E681C35C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

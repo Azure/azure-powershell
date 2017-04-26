@@ -14,11 +14,11 @@
 
 using System;
 
+using ProjectResources = Commands.Resources.Rest.Netcore.Properties.Messages;
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using System.Collections.Generic;
     using System.Management.Automation;
-    using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 
     /// <summary>

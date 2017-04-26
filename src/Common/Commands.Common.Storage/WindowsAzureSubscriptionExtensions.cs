@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+#if !NETSTANDARD1_6
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
@@ -58,3 +59,4 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         }
     }
 }
+#endif

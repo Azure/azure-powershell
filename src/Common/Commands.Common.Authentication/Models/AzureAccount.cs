@@ -17,7 +17,9 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
+#if !NETSTANDARD1_6
     [Serializable]
+#endif
     public partial class AzureAccount
     {
         public string Id { get; set; }

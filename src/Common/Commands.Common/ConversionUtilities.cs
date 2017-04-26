@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -49,7 +50,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
                         if (entry.Value is SecureString)
                         {
-                            value = SecureStringToString(entry.Value as SecureString);
+                            value = SecureClientSecret.SecureStringToString(entry.Value as SecureString);
                         }
 
                         if (addValueLayer)
@@ -90,20 +91,6 @@ namespace Microsoft.WindowsAzure.Commands.Common
             return (array == null) ? null : (array.Length == 0) ? String.Empty
                 : array.Skip(1).Aggregate(new StringBuilder(array[0].ToString()),
                 (s, i) => s.Append(delimiter).Append(i), s => s.ToString());
-        }
-
-        public static string SecureStringToString(SecureString secureString)
-        {
-            IntPtr valuePtr = IntPtr.Zero;
-            try
-            {
-                valuePtr = Marshal.SecureStringToGlobalAllocUnicode(secureString);
-                return Marshal.PtrToStringUni(valuePtr);
-            }
-            finally
-            {
-                Marshal.ZeroFreeGlobalAllocUnicode(valuePtr);
-            }
         }
     }
 }
