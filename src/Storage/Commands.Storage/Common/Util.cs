@@ -61,9 +61,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             string blobName,
             AccessCondition accessCondition = null,
             BlobRequestOptions options = null,
-            OperationContext operationContext = null)
+            OperationContext operationContext = null,
+            DateTimeOffset? snapshotTime = null)
         {
-            CloudBlob blob = container.GetBlobReference(blobName);
+            CloudBlob blob = container.GetBlobReference(blobName, snapshotTime);
             return GetBlobReferenceFromServer(blob, accessCondition, options, operationContext);
         }
 
@@ -77,7 +78,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             CloudBlob blob,
             AccessCondition accessCondition = null,
             BlobRequestOptions options = null,
-            OperationContext operationContext = null)
+            OperationContext operationContext = null,
+            DateTimeOffset? snapshotTime = null)
         {
             try
             {
