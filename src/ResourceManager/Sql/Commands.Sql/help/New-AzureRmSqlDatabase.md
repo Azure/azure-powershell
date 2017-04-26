@@ -163,23 +163,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-<<<<<<< HEAD
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -MaxSizeBytes
+Specifies the maximum size of the database in bytes.
 
 ```yaml
-Type: ActionPreference
+Type: Int64
 Parameter Sets: (All)
-Aliases: infa
+Aliases:
 
 Required: False
 Position: Named
@@ -188,41 +178,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
-=======
-### -MaxSizeBytes
-Specifies the maximum size of the database in bytes.
->>>>>>> azure/preview
-
-```yaml
-Type: Int64
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-<<<<<<< HEAD
-### -MaxSizeBytes
-Specifies the maximum size of the database in bytes.
-
-```yaml
-Type: Int64
-Parameter Sets: (All)
-Aliases: 
-=======
 ### -ReadScale
 The read scale option to assign to the Azure SQL Database.(Enabled/Disabled)```yaml
 Type: DatabaseReadScale
 Parameter Sets: (All)
 Aliases: 
 Accepted values: Disabled, Enabled
->>>>>>> azure/preview
 
 Required: False
 Position: Named
@@ -231,22 +192,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-<<<<<<< HEAD
-### -ReadScale
-The read scale option to assign to the Azure SQL Database.(Enabled/Disabled)```yaml
-Type: DatabaseReadScale
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-=======
->>>>>>> azure/preview
 ### -RequestedServiceObjectiveName
 Specifies the name of the service objective to assign to the database.
 
