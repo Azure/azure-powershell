@@ -19,6 +19,9 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 {
@@ -31,6 +34,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 
         public SMTestBase()
         {
+            AzureSessionInitializer.InitializeAzureSession();
+            ServiceManagementProfileProvider.InitializeServiceManagementProfile();
             System.Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
             BaseSetup();
         }
@@ -41,9 +46,11 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
         [TestInitialize]
         public void BaseSetup()
         {
-            if (AzureSession.DataStore != null && !(AzureSession.DataStore is MemoryDataStore))
+            AzureSessionInitializer.InitializeAzureSession();
+            ServiceManagementProfileProvider.InitializeServiceManagementProfile();
+            if (AzureSession.Instance.DataStore == null || ( AzureSession.Instance.DataStore != null && !(AzureSession.Instance.DataStore is MemoryDataStore)))
             {
-                AzureSession.DataStore = new MemoryDataStore();
+                AzureSession.Instance.DataStore = new MemoryDataStore();
             }
             currentProfile = new AzureSMProfile();
 
@@ -51,19 +58,20 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
             {
                 var newGuid = Guid.NewGuid();
                 var client = new ProfileClient(currentProfile);
-                client.AddOrSetAccount(new AzureAccount
+                var account = new AzureAccount
                     {
                         Id = "test",
                         Type = AzureAccount.AccountType.User,
-                        Properties = new Dictionary<AzureAccount.Property, string>
-                        {
-                            {AzureAccount.Property.Subscriptions, newGuid.ToString()}
-                        }
-                    });
-               client.AddOrSetSubscription( new AzureSubscription { Id = newGuid, Name = "test", Environment = EnvironmentName.AzureCloud, Account = "test" });
+                    };
+                account.SetSubscriptions(newGuid.ToString());
+                client.AddOrSetAccount(account);
+                var sub = new AzureSubscription { Id = newGuid.ToString(), Name = "test" };
+                sub.SetEnvironment(EnvironmentName.AzureCloud);
+                sub.SetAccount("test");
+                client.AddOrSetSubscription(sub);
                client.SetSubscriptionAsDefault(newGuid, "test");
            }
-            AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
+            AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
         }
 
         /// <summary>
