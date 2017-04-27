@@ -171,7 +171,7 @@ function Test-VirtualNetworkGatewayConnectionWithIpsecPoliciesCRUD
 	  $ipsecPolicy = New-AzureRmIpsecPolicy -SALifeTimeSeconds 300 -SADataSizeKilobytes 1024 -IpsecEncryption "GCMAES256" -IpsecIntegrity "GCMAES256" -IkeEncryption "AES256" -IkeIntegrity "SHA256" -DhGroup "DHGroup14" -PfsGroup "PFS2048"
 
       # Create & Get VirtualNetworkGatewayConnection w/ policy based TS
-      $actual = New-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -EnableBgp false -UsePolicyBasedTrafficSelectors -IpsecPolicies $ipsecPolicy
+      $actual = New-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -EnableBgp false -UsePolicyBasedTrafficSelectors true -IpsecPolicies $ipsecPolicy
       $connection = Get-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
       
 	  # Verify IpsecPolicies and policy-based TS
@@ -186,6 +186,14 @@ function Test-VirtualNetworkGatewayConnectionWithIpsecPoliciesCRUD
 	  Assert-AreEqual $connection.IpsecPolicies[0].DhGroup $actual.IpsecPolicies[0].DhGroup
 	  Assert-AreEqual $connection.IpsecPolicies[0].PfsGroup $actual.IpsecPolicies[0].PfsGroup
     
+	  # Set & Get VirtualNetworkGatewayConnection with policy cleared
+      $actual = Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection -UsePolicyBasedTrafficSelectors false -IpsecPolicies @() -Force
+	  $connection = Get-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
+
+	  # Verify cleared policies
+	  Assert-AreEqual false $connection.UsePolicyBasedTrafficSelectors
+	  Assert-AreEqual 0 $connection.IpsecPolicies.Count
+
       # Delete VirtualNetworkGatewayConnection
       $delete = Remove-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName -name $vnetConnectionName -PassThru -Force
       Assert-AreEqual true $delete
