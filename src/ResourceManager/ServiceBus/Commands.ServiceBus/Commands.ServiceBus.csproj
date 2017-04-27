@@ -195,10 +195,11 @@
       <Name>Commands.ResourceManager.Common</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Microsoft.Azure.Commands.ServiceBus.dll-Help.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
+  <Target Name="AfterBuild"> 
+     <ItemGroup> 
+       <MarkdownFiles Include="$(ProjectDir)help\*.*" /> 
+     </ItemGroup> 
+     <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" /> 
+   </Target>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

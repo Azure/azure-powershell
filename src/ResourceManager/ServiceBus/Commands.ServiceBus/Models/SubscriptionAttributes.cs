@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                 UpdatedAt = subscriptionResource.UpdatedAt;
                 LockDuration = subscriptionResource.LockDuration;
                 Name = subscriptionResource.Name;
+                Location = subscriptionResource.Location;
             }
         }
 
