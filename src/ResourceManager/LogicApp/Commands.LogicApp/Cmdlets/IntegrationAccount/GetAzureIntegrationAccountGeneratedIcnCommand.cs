@@ -14,9 +14,11 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
+    using System;
     using System.Collections.Generic;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
+    using Microsoft.Azure.Management.Logic.Models;
 
     /// <summary>
     /// Gets the integration account generated interchange control number by agreement name
@@ -50,6 +52,14 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public string AgreementName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the agreement type.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The integration account agreement type.")]
+        [Alias("MessageType")]
+        [ValidateSet("X12", "Edifact", IgnoreCase = true)]
+        public string AgreementType { get; set; }
+
         #endregion Input Parameters
 
         /// <summary>
@@ -59,12 +69,17 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
+            if (string.IsNullOrEmpty(AgreementType))
+            {
+                this.WriteWarning("By default, you are using the X12 agreement. Please provide a value for AgreementType if you would like to specify the agreement type. Possible values are X12 and Edifact.");
+            }
+
             this.WriteObject(
                 sendToPipeline: string.IsNullOrEmpty(this.AgreementName) ?
                     this.IntegrationAccountClient.ListIntegrationAccountGeneratedIcns(
                         resourceGroupName: this.ResourceGroupName,
                         integrationAccountName: this.Name,
-                        agreementType: Management.Logic.Models.AgreementType.X12) as object :
+                        agreementType: (AgreementType)Enum.Parse(typeof(AgreementType), AgreementType, true)) as object :
                     this.IntegrationAccountClient.GetIntegrationAccountGeneratedIcn(
                         resourceGroupName: this.ResourceGroupName,
                         integrationAccountName: this.Name,
