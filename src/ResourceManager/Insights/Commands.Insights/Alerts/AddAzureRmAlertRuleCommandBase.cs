@@ -14,8 +14,8 @@
 
 using System.Net;
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.Insights;
-using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.Management.Monitor.Management;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            WriteWarning("This output of this cmdlet will change in the next release to return a single object, not a list, that incldes the updated or newly created object.");
+            WriteWarning("The output of this cmdlet will change in the next release to return a single object, not a list, that includes the updated or newly created object.");
             AlertRuleResource parameters = this.CreateSdkCallParameters();
 
             // Part of the result of this operation is operation (result.Body ==> a AutoscaleSettingResource) is being discarded for backwards compatibility

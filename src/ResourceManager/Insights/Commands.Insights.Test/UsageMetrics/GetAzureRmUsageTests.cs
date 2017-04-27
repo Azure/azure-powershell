@@ -14,8 +14,8 @@
 
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Insights.UsageMetrics;
-using Microsoft.Azure.Insights;
-using Microsoft.Azure.Insights.Models;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Models;
 using Microsoft.Rest.Azure.OData;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
         private readonly Mock<MonitorClient> MonitorClientMock;
         private readonly Mock<IUsageMetricsOperations> insightsUsageMetricOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
-        private Microsoft.Rest.Azure.AzureOperationResponse<IEnumerable<Microsoft.Azure.Insights.Models.UsageMetric>> response;
+        private Microsoft.Rest.Azure.AzureOperationResponse<IEnumerable<Microsoft.Azure.Management.Monitor.Models.UsageMetric>> response;
         private string resourceId;
         private ODataQuery<UsageMetric> filter;
         private string apiVersion;

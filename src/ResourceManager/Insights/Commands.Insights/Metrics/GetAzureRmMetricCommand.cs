@@ -19,8 +19,8 @@ using System.Text;
 using System.Threading;
 using System.Xml;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Insights;
-using Microsoft.Azure.Insights.Models;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Models;
 using Microsoft.Rest.Azure.OData;
 
 namespace Microsoft.Azure.Commands.Insights.Metrics

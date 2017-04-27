@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
@@ -24,6 +24,6 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <summary>
         /// Gets or sets the DiagnosticSettingsResource
         /// </summary>
-        public DiagnosticSettingsResource DiagnosticSettingsResource { get; set; }
+        public ServiceDiagnosticSettingsResource DiagnosticSettingsResource { get; set; }
     }
 }

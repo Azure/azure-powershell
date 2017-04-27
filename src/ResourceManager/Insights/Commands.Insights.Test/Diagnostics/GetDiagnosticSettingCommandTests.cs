@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Insights.Diagnostics;
-using Microsoft.Azure.Management.Insights;
-using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.Management.Monitor.Management;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
@@ -31,16 +31,16 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
     {
         private readonly GetAzureRmDiagnosticSettingCommand cmdlet;
         private readonly Mock<MonitorManagementClient> insightsManagementClientMock;
-        private readonly Mock<IDiagnosticSettingsOperations> insightsDiagnosticsOperationsMock;
+        private readonly Mock<IServiceDiagnosticSettingsOperations> insightsDiagnosticsOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
-        private Microsoft.Rest.Azure.AzureOperationResponse<DiagnosticSettingsResource> response;
+        private Microsoft.Rest.Azure.AzureOperationResponse<ServiceDiagnosticSettingsResource> response;
         private const string resourceId = "/subscriptions/123/resourcegroups/rg/providers/rp/resource/myresource";
         private string calledResourceId;
 
         public GetDiagnosticSettingCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
-            insightsDiagnosticsOperationsMock = new Mock<IDiagnosticSettingsOperations>();
+            insightsDiagnosticsOperationsMock = new Mock<IServiceDiagnosticSettingsOperations>();
             insightsManagementClientMock = new Mock<MonitorManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetAzureRmDiagnosticSettingCommand()
@@ -49,9 +49,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
                 MonitorManagementClient = insightsManagementClientMock.Object
             };
 
-            response = new Microsoft.Rest.Azure.AzureOperationResponse<DiagnosticSettingsResource>()
+            response = new Microsoft.Rest.Azure.AzureOperationResponse<ServiceDiagnosticSettingsResource>()
             {
-                Body = new DiagnosticSettingsResource
+                Body = new ServiceDiagnosticSettingsResource
                 {
                     Location = "some",
                     ServiceBusRuleId = "",
@@ -105,14 +105,14 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
                 }
             };
 
-            insightsDiagnosticsOperationsMock.Setup(f => f.GetWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
-                .Returns(Task.FromResult<Microsoft.Rest.Azure.AzureOperationResponse<DiagnosticSettingsResource>>(response))
-                .Callback((string resourceId, string name, Dictionary<string, List<string>> headers, CancellationToken cancellationToken) =>
+            insightsDiagnosticsOperationsMock.Setup(f => f.GetWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
+                .Returns(Task.FromResult<Microsoft.Rest.Azure.AzureOperationResponse<ServiceDiagnosticSettingsResource>>(response))
+                .Callback((string resourceId, Dictionary<string, List<string>> headers, CancellationToken cancellationToken) =>
                 {
                     this.calledResourceId = resourceId;
                 });
 
-            insightsManagementClientMock.SetupGet(f => f.DiagnosticSettings).Returns(this.insightsDiagnosticsOperationsMock.Object);
+            insightsManagementClientMock.SetupGet(f => f.ServiceDiagnosticSettings).Returns(this.insightsDiagnosticsOperationsMock.Object);
         }
 
         [Fact]

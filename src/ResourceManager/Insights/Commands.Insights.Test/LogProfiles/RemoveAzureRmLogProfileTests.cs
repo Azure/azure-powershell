@@ -14,7 +14,7 @@
 
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Insights.LogProfiles;
-using Microsoft.Azure.Management.Insights;
+using Microsoft.Azure.Management.Monitor.Management;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Management.Automation;

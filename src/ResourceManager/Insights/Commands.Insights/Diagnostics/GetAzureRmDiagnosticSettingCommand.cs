@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Management.Insights;
-using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.Management.Monitor.Management;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 using System.Management.Automation;
 using System.Threading;
 
@@ -36,23 +36,11 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        /// <summary>
-        /// Gets or sets the name of the service
-        /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the service. Defaults to 'service'")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
         #endregion
 
         protected override void ProcessRecordInternal()
         {
-            if (string.IsNullOrWhiteSpace(this.Name))
-            {
-                this.Name = "service";
-            }
-
-            DiagnosticSettingsResource result = this.MonitorManagementClient.DiagnosticSettings.GetAsync(resourceUri: this.ResourceId, name: this.Name, cancellationToken: CancellationToken.None).Result;
+            ServiceDiagnosticSettingsResource result = this.MonitorManagementClient.ServiceDiagnosticSettings.GetAsync(resourceUri: this.ResourceId, cancellationToken: CancellationToken.None).Result;
 
             var psResult = new PSServiceDiagnosticSettings(result);
             WriteObject(psResult);

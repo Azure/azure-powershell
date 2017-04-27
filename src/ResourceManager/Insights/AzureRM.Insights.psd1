@@ -83,8 +83,7 @@ CmdletsToExport = 'Get-AzureRmUsage', 'Get-AzureRmMetricDefinition',
                'Add-AzureRmMetricAlertRule', 'Add-AzureRmLogAlertRule', 
                'Add-AzureRmWebtestAlertRule', 'Get-AzureRmAlertHistory', 
                'Get-AzureRmAlertRule', 'New-AzureRmAlertRuleEmail', 
-               'New-AzureRmAlertRuleWebhook', 'Remove-AzureRmAlertRule',
-               'Remove-AzureRmDiagnosticSetting'
+               'New-AzureRmAlertRuleWebhook', 'Remove-AzureRmAlertRule'
 
 # Variables to export from this module
 # VariablesToExport = @()

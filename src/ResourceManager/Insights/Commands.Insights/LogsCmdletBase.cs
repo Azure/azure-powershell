@@ -14,8 +14,8 @@
 
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.Insights.Properties;
-using Microsoft.Azure.Insights;
-using Microsoft.Azure.Insights.Models;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -170,9 +170,10 @@ namespace Microsoft.Azure.Commands.Insights
         /// <returns>The final query filter to be used by the cmdlet</returns>
         protected string ProcessParameters()
         {
-            WriteWarning("Deprecation: The field EventChannels from the EventData object is being deprecated. The servers do not assign any meaning to it. It is kept in the responses for backwards compatibility, but it contains a fixed value.");
             string queryFilter = this.ProcessGeneralParameters();
-            return this.ProcessParticularParameters(queryFilter);
+            var result = this.ProcessParticularParameters(queryFilter);
+            WriteWarning("Deprecation: The field EventChannels from the EventData object is being deprecated since it is meaningless now. The value currently returned is constant.");
+            return result;
         }
 
         /// <summary>

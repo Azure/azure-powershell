@@ -20,8 +20,8 @@ using System.Management.Automation;
 using System.Threading;
 using System.Xml;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Management.Insights;
-using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.Management.Monitor.Management;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 
 namespace Microsoft.Azure.Commands.Insights.Diagnostics
 {
@@ -45,13 +45,6 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the service
-        /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the service. Defaults to 'service'")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the storage account parameter of the cmdlet
@@ -142,14 +135,9 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 throw new ArgumentException("No operation is specified");
             }
 
-            if (string.IsNullOrWhiteSpace(this.Name))
-            {
-                this.Name = "service";
-            }
+            ServiceDiagnosticSettingsResource getResponse = this.MonitorManagementClient.ServiceDiagnosticSettings.GetAsync(resourceUri: this.ResourceId, cancellationToken: CancellationToken.None).Result;
 
-            DiagnosticSettingsResource getResponse = this.MonitorManagementClient.DiagnosticSettings.GetAsync(resourceUri: this.ResourceId, name: this.Name, cancellationToken: CancellationToken.None).Result;
-
-            DiagnosticSettingsResource properties = getResponse;
+            ServiceDiagnosticSettingsResource properties = getResponse;
 
             SetStorage(properties);
 
@@ -183,14 +171,14 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
             var putParameters = CopySettings(properties);
 
-            DiagnosticSettingsResource result = this.MonitorManagementClient.DiagnosticSettings.CreateOrUpdateAsync(resourceUri: this.ResourceId, name: properties.Name, parameters: putParameters, cancellationToken: CancellationToken.None).Result;
+            ServiceDiagnosticSettingsResource result = this.MonitorManagementClient.ServiceDiagnosticSettings.CreateOrUpdateAsync(resourceUri: this.ResourceId, parameters: putParameters, cancellationToken: CancellationToken.None).Result;
             WriteObject(new PSServiceDiagnosticSettings(result));
         }
 
-        private static DiagnosticSettingsResource CopySettings(DiagnosticSettingsResource properties)
+        private static ServiceDiagnosticSettingsResource CopySettings(ServiceDiagnosticSettingsResource properties)
         {
             // Location is marked as required, but the get operation returns Location as null. So use an empty string instead of null to avoid validation errors
-            var putParameters = new DiagnosticSettingsResource(location: properties.Location ?? string.Empty, name: properties.Name, id: properties.Id, type: properties.Type)
+            var putParameters = new ServiceDiagnosticSettingsResource(location: properties.Location ?? string.Empty, name: properties.Name, id: properties.Id, type: properties.Type)
             {
                 Logs = properties.Logs,
                 Metrics = properties.Metrics,
@@ -203,7 +191,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
             return putParameters;
         }
 
-        private void SetRetention(DiagnosticSettingsResource properties)
+        private void SetRetention(ServiceDiagnosticSettingsResource properties)
         {
             var retentionPolicy = new RetentionPolicy
             {
@@ -228,7 +216,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
             }
         }
 
-        private void SetSelectedTimegrains(DiagnosticSettingsResource properties)
+        private void SetSelectedTimegrains(ServiceDiagnosticSettingsResource properties)
         {
             if (!this.isEnbledParameterPresent)
             {
@@ -248,7 +236,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
             }
         }
 
-        private void SetSelectedCategories(DiagnosticSettingsResource properties)
+        private void SetSelectedCategories(ServiceDiagnosticSettingsResource properties)
         {
             if (!this.isEnbledParameterPresent)
             {
@@ -268,7 +256,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
             }
         }
 
-        private void SetAllCategoriesAndTimegrains(DiagnosticSettingsResource properties)
+        private void SetAllCategoriesAndTimegrains(ServiceDiagnosticSettingsResource properties)
         {
             if (!this.isEnbledParameterPresent)
             {
@@ -286,7 +274,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
             }
         }
 
-        private void SetWorkspace(DiagnosticSettingsResource properties)
+        private void SetWorkspace(ServiceDiagnosticSettingsResource properties)
         {
             if (this.isWorkspaceParamPresent)
             {
@@ -294,7 +282,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
             }
         }
 
-        private void SetServiceBus(DiagnosticSettingsResource properties)
+        private void SetServiceBus(ServiceDiagnosticSettingsResource properties)
         {
             if (this.isServiceBusParamPresent)
             {
@@ -302,7 +290,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
             }
         }
 
-        private void SetEventHubRule(DiagnosticSettingsResource properties)
+        private void SetEventHubRule(ServiceDiagnosticSettingsResource properties)
         {
             if (this.isEventHubRuleParamPresent)
             {
@@ -311,7 +299,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         }
 
 
-        private void SetStorage(DiagnosticSettingsResource properties)
+        private void SetStorage(ServiceDiagnosticSettingsResource properties)
         {
             if (this.isStorageParamPresent)
             {

@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
@@ -20,12 +20,12 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     /// <summary>
     /// Wrapps around the ServiceDiagnosticSettings
     /// </summary>
-    public class PSServiceDiagnosticSettings : DiagnosticSettingsResource
+    public class PSServiceDiagnosticSettings : ServiceDiagnosticSettingsResource
     {
         /// <summary>
         /// Initializes a new instance of the PSServiceDiagnosticSettings class.
         /// </summary>
-        public PSServiceDiagnosticSettings(DiagnosticSettingsResource serviceDiagnosticSettings)
+        public PSServiceDiagnosticSettings(ServiceDiagnosticSettingsResource serviceDiagnosticSettings)
             : base(
                 name: serviceDiagnosticSettings.Name,
                 id: serviceDiagnosticSettings.Id, 

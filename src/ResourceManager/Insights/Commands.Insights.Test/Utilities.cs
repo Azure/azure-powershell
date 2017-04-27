@@ -14,9 +14,9 @@
 
 using Microsoft.Azure.Commands.Insights.Alerts;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Insights;
-using Microsoft.Azure.Insights.Models;
-using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Models;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Rest.Azure.OData;
 using Moq;
@@ -28,7 +28,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Xunit;
-using LocalizableString = Microsoft.Azure.Insights.Models.LocalizableString;
+using LocalizableString = Microsoft.Azure.Management.Monitor.Models.LocalizableString;
 
 namespace Microsoft.Azure.Commands.Insights.Test
 {
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
 
             return new AzureOperationResponse<IPage<EventData>>()
             {
-                Body = JsonConvert.DeserializeObject<Azure.Insights.Models.Page<EventData>>(x)
+                Body = JsonConvert.DeserializeObject<Azure.Management.Monitor.Models.Page<EventData>>(x)
             };
         }
 

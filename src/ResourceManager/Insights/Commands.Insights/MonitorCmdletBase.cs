@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Insights
                     else
                     {
                         // New model to report errors (from Swagger Spec)
-                        var errorResponse = exTemp as Microsoft.Azure.Insights.Models.ErrorResponseException;
+                        var errorResponse = exTemp as Microsoft.Azure.Management.Monitor.Models.ErrorResponseException;
                         if (errorResponse != null)
                         {
                             message = errorResponse.Body.Message;
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Insights
                         else
                         {
                             // New model to report errors (from Swagger Spec)
-                            var errorResponse2 = exTemp as Microsoft.Azure.Management.Insights.Models.ErrorResponseException;
+                            var errorResponse2 = exTemp as Microsoft.Azure.Management.Monitor.Management.Models.ErrorResponseException;
                             if (errorResponse2 != null)
                             {
                                 message = errorResponse2.Body.Message;
