@@ -90,13 +90,13 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         /// Resource group name
         /// </summary>
         /// 
-        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ExistingKeyVault, ValueFromPipeline = true,
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ExistingKeyVault, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the resource group.")]
-        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByNewPfxAndVaultName, ValueFromPipeline = true,
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByNewPfxAndVaultName, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the resource group.")]
-        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByExistingPfxAndVaultName, ValueFromPipeline = true,
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByExistingPfxAndVaultName, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the resource group.")]
-        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByDefaultArmTemplate, ValueFromPipeline = true,
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByDefaultArmTemplate, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the resource group.")]
         [ValidateNotNullOrEmpty()]
         public override string ResourceGroupName { get; set; }
