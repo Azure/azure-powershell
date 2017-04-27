@@ -94,12 +94,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public string CreateVmIfNotFound { get; set; }
 
         /// <summary>
-        /// Gets or sets hyper-V server to create vm on.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = false, ValueFromPipeline = false)]
-        public ASRServer Server { get; set; }
-
-        /// <summary>
         /// Gets or sets hyper-V recovery services provider to create vm on.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByRPIObject, Mandatory = false, ValueFromPipeline = false)]

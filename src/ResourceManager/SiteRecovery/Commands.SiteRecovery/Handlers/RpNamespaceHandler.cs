@@ -35,10 +35,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         protected override Task<HttpResponseMessage> SendAsync(
             HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            string rpType = ARMResourceTypeConstants.RecoveryServicesVault; ;
-
             request.RequestUri = new Uri(request.RequestUri.AbsoluteUri.Replace(
-                request.RequestUri.AbsoluteUri.GetProviderNameSpaceFromArmId(), rpNamespace).Replace(ARMResourceTypeConstants.RecoveryServicesVault, rpType));
+                request.RequestUri.AbsoluteUri.GetProviderNameSpaceFromArmId(), rpNamespace));
             return base.SendAsync(request, cancellationToken);
         }
 
