@@ -52,6 +52,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                 Name = topicResource.Name;
                 Id = topicResource.Id;
                 Type = topicResource.Type;
+                Location = topicResource.Location;
                 
             }
         }
