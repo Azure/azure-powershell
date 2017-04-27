@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (string.IsNullOrEmpty(AgreementType))
             {
-                this.WriteWarning("By default, you are using the X12 agreement. Please provide a value for AgreementType if you would like to specify the agreement type. Possible values are X12 and Edifact.");
+                this.WriteWarning(Constants.NoAgreementTypeParameterWarningMessage);
             }
 
             this.WriteObject(
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                     this.IntegrationAccountClient.ListIntegrationAccountGeneratedIcns(
                         resourceGroupName: this.ResourceGroupName,
                         integrationAccountName: this.Name,
-                        agreementType: (AgreementType)Enum.Parse(typeof(AgreementType), AgreementType, true)) as object :
+                        agreementType: (AgreementType)Enum.Parse(enumType: typeof(AgreementType), value: AgreementType, ignoreCase: true)) as object :
                     this.IntegrationAccountClient.GetIntegrationAccountGeneratedIcn(
                         resourceGroupName: this.ResourceGroupName,
                         integrationAccountName: this.Name,

@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (string.IsNullOrEmpty(AgreementType))
             {
-                this.WriteWarning("By default, you are using the X12 agreement. Please provide a value for AgreementType if you would like to specify the agreement type. Possible values are X12 and Edifact.");
+                this.WriteWarning(Constants.NoAgreementTypeParameterWarningMessage);
             }
 
             var integrationAccountGeneratedIcn = this.IntegrationAccountClient.GetIntegrationAccountGeneratedIcn(
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 integrationAccountName: this.Name,
                 integrationAccountAgreementName: this.AgreementName);
 
-            integrationAccountGeneratedIcn.MessageType = (MessageType)Enum.Parse(typeof(MessageType), AgreementType, true);
+            integrationAccountGeneratedIcn.MessageType = (MessageType)Enum.Parse(enumType: typeof(MessageType), value: AgreementType, ignoreCase: true);
             integrationAccountGeneratedIcn.ControlNumber = this.ControlNumber;
             integrationAccountGeneratedIcn.ControlNumberChangedTime = DateTime.UtcNow > integrationAccountGeneratedIcn.ControlNumberChangedTime ?
                 DateTime.UtcNow :
