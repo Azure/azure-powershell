@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Commands.Profile
                     SubscriptionName, 
                     password
 #if NETSTANDARD1_6
-                    , (s) => WriteVerbose(s)
+                    , (s) => WriteWarning(s)
 #endif
                     ));
             }

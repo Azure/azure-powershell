@@ -14,41 +14,49 @@
 
 param(
     [Parameter(Mandatory = $false, Position = 0)]
-    [string] $buildConfig,
+    [string] $isNetCore,
     [Parameter(Mandatory = $false, Position = 1)]
-    [string] $scope,
+    [string] $buildConfig,
     [Parameter(Mandatory = $false, Position = 2)]
-    [string] $apiKey,
+    [string] $scope,
     [Parameter(Mandatory = $false, Position = 3)]
-    [string] $repositoryLocation,
+    [string] $apiKey,
     [Parameter(Mandatory = $false, Position = 4)]
+    [string] $repositoryLocation,
+    [Parameter(Mandatory = $false, Position = 5)]
     [string] $nugetExe
 )
 
 function Get-TargetModules
 {
-	[CmdletBinding()]
-	param
-	(
+    [CmdletBinding()]
+    param
+    (
       [string]$buildConfig,
-	  [string]$Scope,
-	  [bool]$PublishLocal
-	)
+      [string]$Scope,
+      [bool]$PublishLocal
+    )
 
-	PROCESS 
-	{
-		$targets = @()
-		$packageFolder = "$PSScriptRoot\..\src\Package"
-        $resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager\AzureResourceManager"
-		if (($Scope -eq 'All') -or $PublishLocal ) {
+    PROCESS 
+    {
+        $targets = @()
+        $packageFolder = "$PSScriptRoot\..\src\Package"
+    
+        if($isNetCore -eq "true") {
+            $resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager"
+        } else {
+            $resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager\AzureResourceManager"
+        }
+    
+        if ((($Scope -eq 'All') -or $PublishLocal) -and ($isNetCore -eq "false")) {
           $targets += "$resourceManagerRootFolder\AzureRM.Profile" 
         }
 
-        if (($Scope -eq 'All') -or ($Scope -eq 'AzureStorage')) {
+        if ((($Scope -eq 'All') -or ($Scope -eq 'AzureStorage')) -and ($isNetCore -eq "false")) {
           $targets += "$packageFolder\$buildConfig\Storage\Azure.Storage"
         } 
 
-        if (($Scope -eq 'All') -or ($Scope -eq 'ServiceManagement')) {
+        if ((($Scope -eq 'All') -or ($Scope -eq 'ServiceManagement')) -and ($isNetCore -eq "false")) {
           $targets += "$packageFolder\$buildConfig\ServiceManagement\Azure"
         } 
 
@@ -61,7 +69,7 @@ function Get-TargetModules
               $targets += $module.FullName
             }
           }
-		  
+          
         } elseif (($Scope -ne 'AzureRM') -and ($Scope -ne "ServiceManagement") -and ($Scope -ne "AzureStorage")) {
           $modulePath = Join-Path $resourceManagerRootFolder "AzureRM.$scope"
           if (Test-Path $modulePath) {
@@ -72,12 +80,17 @@ function Get-TargetModules
         }
 
         if (($Scope -eq 'All') -or ($Scope -eq 'AzureRM')) {
-            # Publish AzureRM module    
-            $targets += "$PSScriptRoot\AzureRM"
+            if($isNetCore -eq "false") {
+                # Publish AzureRM module    
+                $targets += "$PSScriptRoot\AzureRM"
+            } else {
+                # For .NetCore publish AzureRM.Netcore
+                $targets += "$PSScriptRoot\AzureRM.Netcore"
+            }
         } 
 
-		Write-Output -InputObject $targets
-	}
+        Write-Output -InputObject $targets
+    }
 }
 
 function Make-StrictModuleDependencies
@@ -95,8 +108,8 @@ function Make-StrictModuleDependencies
        $newModules += (@{ModuleName = $module.Name; RequiredVersion= $module.Version})
     }
 
-	  if ($newModules.Count -gt 0)
-	  {
+      if ($newModules.Count -gt 0)
+      {
         Update-ModuleManifest -Path $Path -RequiredModules $newModules
       }
     
@@ -112,11 +125,13 @@ function Add-PSM1Dependency
 
   PROCESS 
   {
-	$file = Get-Item -Path $Path
+    $file = Get-Item -Path $Path
     $manifestFile = $file.Name
-	$psm1file = $manifestFile -replace ".psd1", ".psm1"
+    $psm1file = $manifestFile -replace ".psd1", ".psm1"
     $manifest = Test-ModuleManifest -Path $Path
-    Update-ModuleManifest -Path $Path -RootModule $psm1file
+    if($isNetCore -eq "false") {
+      Update-ModuleManifest -Path $Path -RootModule $psm1file
+    }
   }
 
 }
@@ -130,9 +145,9 @@ function Remove-ModuleDependencies
 
   PROCESS 
   {
-	$regex = New-Object System.Text.RegularExpressions.Regex "RequiredModules\s*=\s*@\([^\)]+\)"
-	$content = (Get-Content -Path $Path) -join "`r`n"
-	$text = $regex.Replace($content, "RequiredModules = @()")
+    $regex = New-Object System.Text.RegularExpressions.Regex "RequiredModules\s*=\s*@\([^\)]+\)"
+    $content = (Get-Content -Path $Path) -join "`r`n"
+    $text = $regex.Replace($content, "RequiredModules = @()")
     $text | Out-File -FilePath $Path
     
   }
@@ -141,112 +156,112 @@ function Remove-ModuleDependencies
 
 function Update-NugetPackage
 {
-	[CmdletBinding()]
-	param(
-	    [string]$BasePath,
-	    [string]$ModuleName,
-		[string]$DirPath,
-		[string]$NugetExe
-	)
+    [CmdletBinding()]
+    param(
+        [string]$BasePath,
+        [string]$ModuleName,
+        [string]$DirPath,
+        [string]$NugetExe
+    )
 
-	PROCESS
-	{
+    PROCESS
+    {
         $regex = New-Object -Type System.Text.RegularExpressions.Regex -ArgumentList  "([0-9\.]+)nupkg$"
-		$regex2 = "<requireLicenseAcceptance>false</requireLicenseAcceptance>"
-		
-		$relDir = Join-Path $DirPath -ChildPath "_rels"
-		$contentPath = Join-Path $DirPath -ChildPath '`[Content_Types`].xml'
-		$packPath = Join-Path $DirPath -ChildPath "package"
-		$modulePath = Join-Path $DirPath -ChildPath ($ModuleName + ".nuspec")
-		Remove-Item -Recurse -Path $relDir -Force
-		Remove-Item -Recurse -Path $packPath -Force
-		Remove-Item -Path $contentPath -Force
-		$content = (Get-Content -Path $modulePath) -join "`r`n"
-		$content = $content -replace $regex2, ("<licenseUrl>https://raw.githubusercontent.com/Azure/azure-powershell/dev/LICENSE.txt</licenseUrl>`r`n    <projectUrl>https://github.com/Azure/azure-powershell</projectUrl>`r`n    <requireLicenseAcceptance>true</requireLicenseAcceptance>")
-		$content | Out-File -FilePath $modulePath -Force
-		&$NugetExe pack $modulePath -OutputDirectory $BasePath
-	}
+        $regex2 = "<requireLicenseAcceptance>false</requireLicenseAcceptance>"
+        
+        $relDir = Join-Path $DirPath -ChildPath "_rels"
+        $contentPath = Join-Path $DirPath -ChildPath '`[Content_Types`].xml'
+        $packPath = Join-Path $DirPath -ChildPath "package"
+        $modulePath = Join-Path $DirPath -ChildPath ($ModuleName + ".nuspec")
+        Remove-Item -Recurse -Path $relDir -Force
+        Remove-Item -Recurse -Path $packPath -Force
+        Remove-Item -Path $contentPath -Force
+        $content = (Get-Content -Path $modulePath) -join "`r`n"
+        $content = $content -replace $regex2, ("<licenseUrl>https://raw.githubusercontent.com/Azure/azure-powershell/dev/LICENSE.txt</licenseUrl>`r`n    <projectUrl>https://github.com/Azure/azure-powershell</projectUrl>`r`n    <requireLicenseAcceptance>true</requireLicenseAcceptance>")
+        $content | Out-File -FilePath $modulePath -Force
+        &$NugetExe pack $modulePath -OutputDirectory $BasePath
+    }
 }
 
 function Change-RMModule 
 {
-	[CmdletBinding()]
-	param(
-		[string]$Path,
-		[string]$RepoLocation,
-		[string]$TempRepo,
-		[string]$TempRepoPath,
-		[string]$NugetExe
-	)
+    [CmdletBinding()]
+    param(
+        [string]$Path,
+        [string]$RepoLocation,
+        [string]$TempRepo,
+        [string]$TempRepoPath,
+        [string]$NugetExe
+    )
 
-	PROCESS
-	{
-		$moduleName = (Get-Item -Path $Path).Name
-		$moduleManifest = $moduleName + ".psd1"
-		$moduleSourcePath = Join-Path -Path $Path -ChildPath $moduleManifest
-		$manifest = Make-StrictModuleDependencies $moduleSourcePath
-		$manifest = Test-ModuleManifest -Path $moduleSourcePath
-		$toss = Publish-Module -Path $Path -Repository $TempRepo
-	    Write-Output "Changing to directory for module modifications $TempRepoPath"
-		pushd $TempRepoPath
-		try
-		{
-		  $nupkgPath = Join-Path -Path . -ChildPath ($moduleName + "." + $manifest.Version.ToString() + ".nupkg")
-		  $zipPath = Join-Path -Path . -ChildPath ($moduleName + "." + $manifest.Version.ToString() + ".zip")
-		  $dirPath = Join-Path -Path . -ChildPath $moduleName
-		  $unzippedManifest = Join-Path -Path $dirPath -ChildPath ($moduleName + ".psd1")
+    PROCESS
+    {
+        $moduleName = (Get-Item -Path $Path).Name
+        $moduleManifest = $moduleName + ".psd1"
+        $moduleSourcePath = Join-Path -Path $Path -ChildPath $moduleManifest
+        $manifest = Make-StrictModuleDependencies $moduleSourcePath
+        $manifest = Test-ModuleManifest -Path $moduleSourcePath
+        $toss = Publish-Module -Path $Path -Repository $TempRepo -Force
+        Write-Output "Changing to directory for module modifications $TempRepoPath"
+        pushd $TempRepoPath
+        try
+        {
+          $nupkgPath = Join-Path -Path . -ChildPath ($moduleName + "." + $manifest.Version.ToString() + ".nupkg")
+          $zipPath = Join-Path -Path . -ChildPath ($moduleName + "." + $manifest.Version.ToString() + ".zip")
+          $dirPath = Join-Path -Path . -ChildPath $moduleName
+          $unzippedManifest = Join-Path -Path $dirPath -ChildPath ($moduleName + ".psd1")
 
-		  if (!(Test-Path -Path $nupkgPath))
-		  {
-			  throw "Module at $nupkgPath in $TempRepoPath does not exist"
-		  }
-		  Write-Output "Renaming package $nupkgPath to zip archive $zipPath"
-		  ren $nupkgPath $zipPath
-		  Write-Output "Expanding $zipPath"
-		  Expand-Archive $zipPath -DestinationPath $dirPath
-		  Write-Output "Adding PSM1 dependency to $unzippedManifest"
-		  Add-PSM1Dependency -Path $unzippedManifest
-		  Write-Output "Removing module manifest dependencies for $unzippedManifest"
-		  Remove-ModuleDependencies -Path $unzippedManifest
+          if (!(Test-Path -Path $nupkgPath))
+          {
+              throw "Module at $nupkgPath in $TempRepoPath does not exist"
+          }
+          Write-Output "Renaming package $nupkgPath to zip archive $zipPath"
+          ren $nupkgPath $zipPath
+          Write-Output "Expanding $zipPath"
+          Expand-Archive $zipPath -DestinationPath $dirPath
+          Write-Output "Adding PSM1 dependency to $unzippedManifest"
+          Add-PSM1Dependency -Path $unzippedManifest
+          Write-Output "Removing module manifest dependencies for $unzippedManifest"
+          Remove-ModuleDependencies -Path $unzippedManifest
 
-		  Remove-Item -Path $zipPath -Force
-		  Write-Output "Repackaging $dirPath"
-		  Update-NugetPackage -BasePath $TempRepoPath -ModuleName $moduleName -DirPath $dirPath -NugetExe $NugetExe
-	    }
-		finally 
-		{
-			popd
-		}
-	}
+          Remove-Item -Path $zipPath -Force
+          Write-Output "Repackaging $dirPath"
+          Update-NugetPackage -BasePath $TempRepoPath -ModuleName $moduleName -DirPath $dirPath -NugetExe $NugetExe
+        }
+        finally 
+        {
+            popd
+        }
+    }
 }
 
 function Publish-RMModule 
 {
-	[CmdletBinding()]
-	param(
-		[string]$Path,
-		[string]$ApiKey,
-		[string]$TempRepoPath,
-		[string]$RepoLocation,
-		[string]$nugetExe
-	)
+    [CmdletBinding()]
+    param(
+        [string]$Path,
+        [string]$ApiKey,
+        [string]$TempRepoPath,
+        [string]$RepoLocation,
+        [string]$nugetExe
+    )
 
-	PROCESS
-	{
-		$moduleName = (Get-Item -Path $Path).Name
-		$moduleManifest = $moduleName + ".psd1"
-		$moduleSourcePath = Join-Path -Path $Path -ChildPath $moduleManifest
-		$manifest = Test-ModuleManifest -Path $moduleSourcePath
-		$nupkgPath = Join-Path -Path $TempRepoPath -ChildPath ($moduleName + "." + $manifest.Version.ToString() + ".nupkg")
-		if (!(Test-Path -Path $nupkgPath))
-		{
-			throw "Module at $nupkgPath in $TempRepoPath does not exist"
-		}
+    PROCESS
+    {
+        $moduleName = (Get-Item -Path $Path).Name
+        $moduleManifest = $moduleName + ".psd1"
+        $moduleSourcePath = Join-Path -Path $Path -ChildPath $moduleManifest
+        $manifest = Test-ModuleManifest -Path $moduleSourcePath
+        $nupkgPath = Join-Path -Path $TempRepoPath -ChildPath ($moduleName + "." + $manifest.Version.ToString() + ".nupkg")
+        if (!(Test-Path -Path $nupkgPath))
+        {
+            throw "Module at $nupkgPath in $TempRepoPath does not exist"
+        }
 
-		Write-Output "Pushing package $moduleName to nuget source $RepoLocation"
-		&$nugetExe push $nupkgPath $ApiKey -s $RepoLocation
-	    Write-Output "Pushed package $moduleName to nuget source $RepoLocation"		  
-	}
+        Write-Output "Pushing package $moduleName to nuget source $RepoLocation"
+        &$nugetExe push $nupkgPath $ApiKey -s $RepoLocation
+        Write-Output "Pushed package $moduleName to nuget source $RepoLocation"          
+    }
 }
 
 
@@ -276,6 +291,7 @@ if ([string]::IsNullOrEmpty($nugetExe))
 }
 
 Write-Host "Publishing $scope package(and its dependencies)" 
+Get-PackageProvider -Name NuGet -Force
 
 $packageFolder = "$PSScriptRoot\..\src\Package"
 
@@ -291,36 +307,37 @@ $publishToLocal = test-path $repositoryLocation
 [string]$tempRepoPath = "$PSScriptRoot\..\src\package"
 if ($publishToLocal)
 {
-	$tempRepoPath = (Join-Path $repositoryLocation -ChildPath "package")
+    $tempRepoPath = (Join-Path $repositoryLocation -ChildPath "package")
 }
 $tempRepoName = ([System.Guid]::NewGuid()).ToString()
 Register-PSRepository -Name $tempRepoName -SourceLocation $tempRepoPath -PublishLocation $tempRepoPath -InstallationPolicy Trusted -PackageManagementProvider NuGet
+$env:PSModulePath="$env:PSModulePath;$tempRepoPath"
 
 try {
-	$modulesInScope = Get-TargetModules -buildConfig $buildConfig -Scope $scope -PublishLocal $publishToLocal
+    $modulesInScope = Get-TargetModules -buildConfig $buildConfig -Scope $scope -PublishLocal $publishToLocal
     foreach ($modulePath in $modulesInScope) {
         # filter out AzureRM.Profile which always gets published first 
         # And "Azure.Storage" which is built out as test dependencies  
-		$module = Get-Item -Path $modulePath
+        $module = Get-Item -Path $modulePath
         Write-Host "Changing $module module from $modulePath"
         Change-RMModule -Path $modulePath -RepoLocation $repositoryLocation -TempRepo $tempRepoName -TempRepoPath $tempRepoPath -nugetExe $nugetExe
         Write-Host "Changed $module module"
-	}
+    }
 
-	if (!$publishToLocal)
-	{
+    if (!$publishToLocal)
+    {
       foreach ($modulePath in $modulesInScope) {
         # filter out AzureRM.Profile which always gets published first 
         # And "Azure.Storage" which is built out as test dependencies  
-		$module = Get-Item -Path $modulePath
+        $module = Get-Item -Path $modulePath
         Write-Host "Pushing $module module from $modulePath"
         Publish-RMModule -Path $modulePath -ApiKey $apiKey -TempRepoPath $tempRepoPath -RepoLocation $repositoryLocation -nugetExe $nugetExe
         Write-Host "Pushed $module module"
-	  }
-	}
+      }
+    }
 
 }
 finally 
 {
-	Unregister-PSRepository -Name $tempRepoName
+    Unregister-PSRepository -Name $tempRepoName
 }
