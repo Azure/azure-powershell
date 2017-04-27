@@ -4,7 +4,6 @@ Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 Download Help Link: ./Azure.Storage.md
 Help Version: 
 Locale: en-US
-ms.assetid: 6487B14D-5ADD-400E-9989-BA8DDB2D9D49
 ---
 
 # Azure.Storage Module
@@ -185,6 +184,9 @@ Sets the stored access policy for an Azure storage table.
 
 ### [Start-AzureStorageBlobCopy](Start-AzureStorageBlobCopy.md)
 Starts to copy a blob.
+
+### [Start-AzureStorageBlobIncrementalCopy](Start-AzureStorageBlobIncrementalCopy.md)
+Start an Incremental copy operation from a Page blob snapshot to the specified destination Page blob.
 
 ### [Start-AzureStorageFileCopy](Start-AzureStorageFileCopy.md)
 Starts to copy a source file.

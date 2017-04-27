@@ -13,7 +13,7 @@ Creates a new consumer group for the specified Event Hub.
 
 ```
 New-AzureRmEventHubConsumerGroup [-ResourceGroupName] <String> [-NamespaceName] <String>
- [-EventHubName] <String> [-ConsumerGroupName] <String> [-UserMetadata <String>] [-WhatIf] [-Confirm]
+ [-EventHubName] <String> [-ConsumerGroupName] <String> [[-UserMetadata] <String>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -30,21 +30,6 @@ PS C:\> New-AzureRmEventHubConsumerGroup -ResourceGroupName MyResourceGroupName 
 Creates the consumer group `MyConsumerGroupName` in the Event Hub `MyEventHubName`, scoped to the namespace `MyNamespaceName`, with resource group `MyResourceGroupName`.
 
 ## PARAMETERS
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ConsumerGroupName
 Consumer group name.
@@ -106,6 +91,36 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -UserMetadata
+User metadata for the consumer group.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 4
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
@@ -119,21 +134,6 @@ Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UserMetadata
-User metadata for the consumer group.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

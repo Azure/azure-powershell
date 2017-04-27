@@ -13,7 +13,7 @@ Creates an Event Hubs namespace.
 
 ```
 New-AzureRmEventHubNamespace [-ResourceGroupName] <String> [-NamespaceName] <String> [-Location] <String>
- [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-Tag] <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SkuName <String>] [-SkuCapacity <Int32>] [-Tag <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,21 +29,6 @@ PS C:\> New-AzureRmEventHubNamespace -ResourceGroupName MyResourceGroupName -Nam
 Creates an Event Hubs namespace `MyNamespaceName` in the specified geographic location `MyLocation`, in resource group `MyResourceGroupName`.
 
 ## PARAMETERS
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Location
 Event Hubs namespace geo-location.
@@ -99,7 +84,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -115,7 +100,7 @@ Aliases:
 Accepted values: Basic, Standard, Premium
 
 Required: False
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -130,9 +115,24 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 6
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

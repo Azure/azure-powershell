@@ -18,7 +18,7 @@ New-AzureRmApplicationGatewayBackendHttpSettings -Name <String> -Port <Int32> -P
  [-ConnectionDraining <PSApplicationGatewayConnectionDraining>] [-ProbeId <String>]
  [-Probe <PSApplicationGatewayProbe>]
  [-AuthenticationCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate]>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,47 +72,9 @@ Specifies whether cookie-based affinity should be enabled or disabled for the ba
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Enabled, Disabled
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -187,6 +149,7 @@ The acceptable values for this parameter are: Http and Https.
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Http, Https
 
 Required: True
 Position: Named

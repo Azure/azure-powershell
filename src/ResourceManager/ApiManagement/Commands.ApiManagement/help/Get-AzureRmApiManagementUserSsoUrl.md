@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-ms.assetid: 05D39DA8-BBDB-44E9-B9DC-0D963A2CB439
+ms.assetid: 27FF1B7D-E103-4504-AD09-8D3A8BCA8B75
 online version: 
 schema: 2.0.0
 ---
@@ -13,8 +13,7 @@ Generates an SSO URL for a user.
 ## SYNTAX
 
 ```
-Get-AzureRmApiManagementUserSsoUrl -Context <PsApiManagementContext> -UserId <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmApiManagementUserSsoUrl -Context <PsApiManagementContext> -UserId <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,45 +59,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

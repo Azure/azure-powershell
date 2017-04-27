@@ -27,22 +27,22 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common
     {
         private AssertFailedException assertException = null;
 
-        public virtual Task DownloadAsync(CloudFile sourceFile, string destPath, DownloadOptions options, TransferContext context, CancellationToken cancellationToken)
+        public virtual Task DownloadAsync(CloudFile sourceFile, string destPath, DownloadOptions options, SingleTransferContext context, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
 
-        public virtual Task DownloadAsync(CloudBlob sourceBlob, string destPath, DownloadOptions options, TransferContext context, CancellationToken cancellationToken)
+        public virtual Task DownloadAsync(CloudBlob sourceBlob, string destPath, DownloadOptions options, SingleTransferContext context, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
 
-        public virtual Task UploadAsync(string sourcePath, CloudFile destFile, UploadOptions options, TransferContext context, CancellationToken cancellationToken)
+        public virtual Task UploadAsync(string sourcePath, CloudFile destFile, UploadOptions options, SingleTransferContext context, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
 
-        public virtual Task UploadAsync(string sourcePath, CloudBlob destBlob, UploadOptions options, TransferContext context, CancellationToken cancellationToken)
+        public virtual Task UploadAsync(string sourcePath, CloudBlob destBlob, UploadOptions options, SingleTransferContext context, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }

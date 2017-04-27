@@ -46,18 +46,18 @@ Note that all the configuration information for the rule, including the rule nam
 
 ## PARAMETERS
 
-### -ResourceGroup
-Specifies the resource group that the notification hub is assigned to.
+### -InputFile
+Specifies the input file for the authorization rule that this cmdlet creates.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: InputFileParameterSet
 Aliases: 
 
 Required: True
-Position: 0
+Position: 3
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -96,27 +96,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ResourceGroup
+Specifies the resource group that the notification hub is assigned to.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -SASRule
 Specifies the **SharedAccessAuthorizationRuleAttributes** object containing configuration information for the new rules.
 
 ```yaml
 Type: SharedAccessAuthorizationRuleAttributes
 Parameter Sets: SASRuleParameterSet
-Aliases: 
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputFile
-Specifies the input file for the authorization rule that this cmdlet creates.
-
-```yaml
-Type: String
-Parameter Sets: InputFileParameterSet
 Aliases: 
 
 Required: True

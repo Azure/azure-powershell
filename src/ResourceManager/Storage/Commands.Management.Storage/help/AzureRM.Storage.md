@@ -4,7 +4,6 @@ Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 Download Help Link: {{Please enter FwLink manually}}
 Help Version: {{Please enter version of help manually (X.X.X.X) format}}
 Locale: en-US
-ms.assetid: 5AE37139-695A-417C-95D8-102A9ED55851
 ---
 
 # AzureRM.Storage Module

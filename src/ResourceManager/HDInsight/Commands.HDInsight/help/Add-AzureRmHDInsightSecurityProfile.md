@@ -15,7 +15,7 @@ Adds a security profileto a cluster configuration object.
 ```
 Add-AzureRmHDInsightSecurityProfile [-Config] <AzureHDInsightConfig> -Domain <String>
  -DomainUserCredential <PSCredential> -OrganizationalUnitDN <String> -LdapsUrls <String[]>
- [-ClusterUsersGroupDNs <String[]>] [-WhatIf] [-Confirm]
+ [-ClusterUsersGroupDNs <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +32,21 @@ PS C:\> {{ Add example code here }}
 {{ Add example description here }}
 
 ## PARAMETERS
+
+### -ClusterUsersGroupDNs
+Distinguished names of the Active Directory groups that will be available in Ambari and Ranger
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Config
 Specifies the HDInsight cluster configuration object that this cmdlet modifies.
@@ -80,21 +95,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OrganizationalUnitDN
-Distinguished name of the organizational unit in the Active directory where user and computer accounts will be created
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -LdapsUrls
 Urls of one or multiple LDAPS servers for the Active Directory
 
@@ -110,30 +110,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ClusterUsersGroupDNs
-Distinguished names of the Active Directory groups that will be available in Ambari and Ranger
+### -OrganizationalUnitDN
+Distinguished name of the organizational unit in the Active directory where user and computer accounts will be created
 
 ```yaml
-Type: String[]
+Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -154,6 +139,22 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### -WhatIf
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
