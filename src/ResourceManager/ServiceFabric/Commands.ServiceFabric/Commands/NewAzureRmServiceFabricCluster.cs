@@ -36,7 +36,8 @@ using OperatingSystem = Microsoft.Azure.Commands.ServiceFabric.Models.OperatingS
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.New, CmdletNoun.AzureRmServiceFabricCluster, SupportsShouldProcess = true), OutputType(typeof(PSDeploymentResult))]
+    [Cmdlet(VerbsCommon.New, CmdletNoun.AzureRmServiceFabricCluster, SupportsShouldProcess = true, DefaultParameterSetName = ByDefaultArmTemplate),
+     OutputType(typeof(PSDeploymentResult))]
     public class NewAzureRmServiceFabricCluster : ServiceFabricClusterCertificateCmdlet
     {
         public const string WindowsTemplateRelativePath = @"Template\Windows";

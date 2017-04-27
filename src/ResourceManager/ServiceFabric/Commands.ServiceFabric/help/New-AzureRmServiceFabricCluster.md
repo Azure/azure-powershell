@@ -11,6 +11,14 @@ Create an new ServiceFabric cluster
 
 ## SYNTAX
 
+### ByDefaultArmTemplate (Default)
+```
+New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> [-PfxOutputFolder <String>]
+ [-CertificatePassword <SecureString>] [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>]
+ -Location <String> [-Name <String>] [-ClusterSize <Int32>] [-CertificateSubjectName <String>]
+ -VmPassword <SecureString> [-OS <OperatingSystem>] [-VmSku <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ByExistingKeyVault
 ```
 New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> -ParameterFile <String>
@@ -30,14 +38,6 @@ New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <Str
  -PfxSourceFile <String> [-CertificatePassword <SecureString>] [-SecondaryPfxSourceFile <String>]
  [-SecondaryCertificatePassword <SecureString>] [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByDefaultArmTemplate
-```
-New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> [-PfxOutputFolder <String>]
- [-CertificatePassword <SecureString>] [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>]
- -Location <String> [-Name <String>] [-ClusterSize <Int32>] [-CertificateSubjectName <String>]
- -VmPassword <SecureString> [-OS <OperatingSystem>] [-VmSku <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,7 +90,7 @@ The password of the pfx file
 
 ```yaml
 Type: SecureString
-Parameter Sets: ByNewPfxAndVaultName, ByExistingPfxAndVaultName, ByDefaultArmTemplate
+Parameter Sets: ByDefaultArmTemplate, ByNewPfxAndVaultName, ByExistingPfxAndVaultName
 Aliases: CertPassword
 
 Required: False
@@ -105,7 +105,7 @@ The Dns name of the certificate to be created
 
 ```yaml
 Type: String
-Parameter Sets: ByNewPfxAndVaultName, ByDefaultArmTemplate
+Parameter Sets: ByDefaultArmTemplate, ByNewPfxAndVaultName
 Aliases: Subject
 
 Required: False
@@ -165,7 +165,7 @@ Azure key vault name
 
 ```yaml
 Type: String
-Parameter Sets: ByNewPfxAndVaultName, ByExistingPfxAndVaultName, ByDefaultArmTemplate
+Parameter Sets: ByDefaultArmTemplate, ByNewPfxAndVaultName, ByExistingPfxAndVaultName
 Aliases: 
 
 Required: False
@@ -180,7 +180,7 @@ Azure key vault resource group name
 
 ```yaml
 Type: String
-Parameter Sets: ByNewPfxAndVaultName, ByExistingPfxAndVaultName, ByDefaultArmTemplate
+Parameter Sets: ByDefaultArmTemplate, ByNewPfxAndVaultName, ByExistingPfxAndVaultName
 Aliases: 
 
 Required: False
@@ -252,7 +252,7 @@ Accept wildcard characters: False
 ### -PfxOutputFolder
 The folder of the new Pfx file to be created```yaml
 Type: String
-Parameter Sets: ByNewPfxAndVaultName, ByDefaultArmTemplate
+Parameter Sets: ByDefaultArmTemplate, ByNewPfxAndVaultName
 Aliases: Destination
 
 Required: False
@@ -288,7 +288,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

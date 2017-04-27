@@ -21,8 +21,8 @@ using Microsoft.Azure.Management.ServiceFabric.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Set, CmdletNoun.AzureRmServiceFabricSettings, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
-    public class SetAzureRmServiceFabricSettings : ServiceFabricSettingsCmdletBase
+    [Cmdlet(VerbsCommon.Set, CmdletNoun.AzureRmServiceFabricSetting, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
+    public class SetAzureRmServiceFabricSetting : ServiceFabricSettingsCmdletBase
     {            
         public override void ExecuteCmdlet()
         {

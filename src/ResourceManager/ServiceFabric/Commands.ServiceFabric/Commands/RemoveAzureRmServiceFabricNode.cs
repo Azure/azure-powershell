@@ -18,8 +18,8 @@ using Microsoft.Azure.Commands.ServiceFabric.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureRmServiceFabricNodes, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
-    public class RemoveAzureRmServiceFabricNodes : UpdateAzureRmServiceFabricNodesBase
+    [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureRmServiceFabricNode, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
+    public class RemoveAzureRmServiceFabricNode : UpdateAzureRmServiceFabricNodeBase
     {
         private int toRemoveNode;
 

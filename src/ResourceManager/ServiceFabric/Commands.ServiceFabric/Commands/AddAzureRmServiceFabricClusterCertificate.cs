@@ -26,7 +26,7 @@ using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Propertie
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Add, CmdletNoun.AzureRmServiceFabricClusterCertificate), OutputType(typeof(PSCluster))]
+    [Cmdlet(VerbsCommon.Add, CmdletNoun.AzureRmServiceFabricClusterCertificate, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class AddAzureRmServiceFabricClusterCertificate : ServiceFabricClusterCertificateCmdlet
     {
         public override void ExecuteCmdlet()

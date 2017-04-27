@@ -26,7 +26,7 @@ using Microsoft.Azure.Management.ServiceFabric.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    public class UpdateAzureRmServiceFabricNodesBase : ServiceFabricClusterCmdlet
+    public class UpdateAzureRmServiceFabricNodeBase : ServiceFabricClusterCmdlet
     {
         /// <summary>
         /// Resource group name
