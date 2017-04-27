@@ -13,26 +13,27 @@ Remove client certificate from the cluster
 
 ### SingleUpdateWithCommonName
 ```
-Remove-AzureRmServiceFabricClientCertificate [-ResourceGroupName] <String> [-ClusterName] <String>
- -CommonName <String> -IssuerThumbprint <String> [<CommonParameters>]
+Remove-AzureRmServiceFabricClientCertificate [-ResourceGroupName] <String> [-Name] <String>
+ -CommonName <String> -IssuerThumbprint <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SingleUpdateWithThumbprint
 ```
-Remove-AzureRmServiceFabricClientCertificate [-ResourceGroupName] <String> [-ClusterName] <String>
- -Thumbprint <String> [<CommonParameters>]
+Remove-AzureRmServiceFabricClientCertificate [-ResourceGroupName] <String> [-Name] <String>
+ -Thumbprint <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MultipleUpdatesWithCommonName
 ```
-Remove-AzureRmServiceFabricClientCertificate [-ResourceGroupName] <String> [-ClusterName] <String>
- -CommonNames <PSClientCertificateCommonName[]> [<CommonParameters>]
+Remove-AzureRmServiceFabricClientCertificate [-ResourceGroupName] <String> [-Name] <String>
+ -CommonNames <PSClientCertificateCommonName[]> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MultipleUpdatesWithThumbprint
 ```
-Remove-AzureRmServiceFabricClientCertificate [-ResourceGroupName] <String> [-ClusterName] <String>
- -ThumbprintsAndTypes <Hashtable> [<CommonParameters>]
+Remove-AzureRmServiceFabricClientCertificate [-ResourceGroupName] <String> [-Name] <String>
+ [-AdminClientThumbprints <String[]>] [-ReadonlyClientThumbprints <String[]>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,18 +58,16 @@ This command will remove common name with abc.com and issue thumbprint with 5F36
 
 ## PARAMETERS
 
-### -ClusterName
-Specifies the name of the cluster
-
-```yaml
-Type: String
-Parameter Sets: (All)
+### -AdminClientThumbprints
+Specify client certificate thumbprint which only has admin permission```yaml
+Type: String[]
+Parameter Sets: MultipleUpdatesWithThumbprint
 Aliases: 
 
-Required: True
-Position: 1
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -83,7 +82,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -98,7 +97,22 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -113,7 +127,33 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Specify the name of the cluster```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: ClusterName
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ReadonlyClientThumbprints
+Specify client certificate thumbprint which only has read only permission```yaml
+Type: String[]
+Parameter Sets: MultipleUpdatesWithThumbprint
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -128,7 +168,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -143,22 +183,22 @@ Aliases: ClientCertificateThumbprint
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ThumbprintsAndTypes
-Specify client certificate thumbprint and authentication type
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: Hashtable
-Parameter Sets: MultipleUpdatesWithThumbprint
-Aliases: ThumbprintsAndAuthenticationTypes
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

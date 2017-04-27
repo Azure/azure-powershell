@@ -13,14 +13,14 @@ Remove one or multiple ServiceFabric settings from the cluster
 
 ### OneSetting
 ```
-Remove-AzureRmServiceFabricSettings -Section <String> -Parameter <String> [-ClusterName] <String>
- [-ResourceGroupName] <String> [<CommonParameters>]
+Remove-AzureRmServiceFabricSettings [-ResourceGroupName] <String> [-Name] <String> -Section <String>
+ -Parameter <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BatchSettings
 ```
-Remove-AzureRmServiceFabricSettings -SettingsSectionDescriptions <PSSettingsSectionDescription[]>
- [-ClusterName] <String> [-ResourceGroupName] <String> [<CommonParameters>]
+Remove-AzureRmServiceFabricSettings [-ResourceGroupName] <String> [-Name] <String>
+ -SettingsSectionDescriptions <PSSettingsSectionDescription[]> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,13 +37,26 @@ This command will remove parameter Maxcursors under section EseStore
 
 ## PARAMETERS
 
-### -ClusterName
-Specifies the name of the cluster
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specify the name of the cluster```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: ClusterName
 
 Required: True
 Position: 1
@@ -63,7 +76,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -93,7 +106,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -108,7 +121,22 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

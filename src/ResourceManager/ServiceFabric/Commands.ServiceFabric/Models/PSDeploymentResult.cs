@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Models
 {
@@ -20,27 +21,63 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
     {
         public string VmUserName { get; set; }
 
-        public List<PSKeyVault> CertificateInformation { get; set; }
+        public List<PSKeyVault> Certificates { get; set; }
 
-        public PSDeploymentExtended DeploymentDetail { get; set; }
+        public PSDeploymentExtended Deployment { get; set; }
 
-        public PSCluster ClusterDetail { get; set; } 
+        public PSCluster Cluster { get; set; }
+
+        public string DeploymentString { get { return Deployment == null ? null : Deployment.ToString(); } }
+        public string ClusterString { get { return Cluster == null ? null : Cluster.ToString(); } }
+        public string CertificatesString { get { return Certificates == null ? null : FormatCertificatesString(Certificates); } }
 
         public PSDeploymentResult()
         {
         }
 
         public PSDeploymentResult(
-            PSDeploymentExtended deployment, 
+            PSDeploymentExtended deployment,
             PSCluster cluster,
             string vmUserName,
-            List<PSKeyVault> certificateInformations
+            List<PSKeyVault> certificates
         )
         {
-            this.DeploymentDetail = deployment;
-            this.ClusterDetail = cluster;
+            this.Deployment = deployment;
+            this.Cluster = cluster;
             this.VmUserName = vmUserName;
-            this.CertificateInformation = certificateInformations;
+            this.Certificates = certificates;
+        }
+
+        private string FormatCertificatesString(List<PSKeyVault> certificates)
+        {
+            if (certificates == null || certificates.Count == 0)
+            {
+                return null;
+            }
+
+            int i = 0;
+            var sb = new StringBuilder();
+            foreach (var certificate in certificates)
+            {
+                if (i == 0)
+                {
+                    sb.AppendLine("Primary key vault and certificate detail:");
+                }
+                else if(i == 1)
+                {
+                    sb.AppendLine("Secondary key vault and certificate detail:");
+                }
+                else
+                {
+                    sb.AppendLine(string.Format("The {0} key vault and certificate detail:", i));
+                }
+
+                sb.Append(string.Format("    {0}", certificate));
+
+                i++;
+            }
+
+            return sb.ToString();
         }
     }
 }

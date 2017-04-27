@@ -193,6 +193,16 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 }
 
             }
+
+            if (this.CertificatePassword != null && this.PfxSourceFile == null && this.PfxOutputFolder == null)
+            {
+                throw new PSArgumentException("PfxOutputFolder must be given if CertificatePassword is specified");
+            }
+
+            if (this.PfxOutputFolder != null && this.CertificatePassword == null)
+            {
+                throw new PSArgumentException("CertificatePassword must be given for the Pfx downloaded from Azure KeyVault");
+            }
         }
 
         private void CreateSelfSignedCertificate(string subjectName, string keyVaultUrl, out string thumbprint, out CertificateBundle certificateBundle, out string outputFilePath)

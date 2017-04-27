@@ -13,8 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Threading.Tasks;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -84,14 +86,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 throw new PSInvalidOperationException(ServiceFabricProperties.Resources.SkuCapacityIsNull);
             }
 
-            if (ShouldProcess(target: this.Name, action: string.Format("Update fabric reliability level to {0} of {1}", this.Level, this.Name)))
+            if (ShouldProcess(target: this.Name, action: string.Format("Update fabric reliability level to {0}", this.Level)))
             {
                 if ((int)this.Level >= (int)oldReliabilityLevel)
                 {
                     if (instanceNumber > primaryVmss.Sku.Capacity && !this.AutoAddNodes.IsPresent)
                     {
                         throw new InvalidOperationException(
-                            string.Format(     
+                            string.Format(
                                 ServiceFabricProperties.Resources.UseAutoToIncreaseNodesCount,
                                 primaryVmss.Sku.Capacity,
                                 instanceNumber
@@ -102,13 +104,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     {
                         primaryVmss.Sku.Capacity = instanceNumber;
 
-                        PrintDetailIfThrow(() =>
-                            ComputeClient.VirtualMachineScaleSets.CreateOrUpdate(
-                                this.ResourceGroupName,
-                                primaryVmss.Name,
-                                primaryVmss));
+                        var updateVmssTask = ComputeClient.VirtualMachineScaleSets.CreateOrUpdateAsync(
+                               this.ResourceGroupName,
+                               primaryVmss.Name,
+                               primaryVmss);
+
+                        WriteClusterAndVmssVerboseWhenUpdate(new List<Task>() { updateVmssTask }, false);
                     }
-                }   
+                }
 
                 var request = new ClusterUpdateParameters
                 {

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading;
@@ -91,38 +92,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         cluster.ReliabilityLevel));
             }
 
-            var tokenSource = new CancellationTokenSource();
-
             WriteVerboseWithTimestamp("Begin to add nodes to the node type");
 
-            var updateTask = Task.Factory.StartNew(() =>
-            {
-                try
-                {
-                    this.ComputeClient.VirtualMachineScaleSets.CreateOrUpdate(this.ResourceGroupName, vmss.Name, vmss);
-                }
-                finally
-                {
-                    tokenSource.Cancel();
-                }
-            });
+            var updateTask = this.ComputeClient.VirtualMachineScaleSets.CreateOrUpdateAsync(this.ResourceGroupName, vmss.Name, vmss);
 
-            while (!tokenSource.IsCancellationRequested)
-            {
-                var v =  SafeGetResource(()=> this.ComputeClient.VirtualMachineScaleSets.Get(this.ResourceGroupName, vmss.Name));
-                if (v != null)
-                {
-                    WriteVerboseWithTimestamp(string.Format(ServiceFabricProperties.Resources.VmssVerbose, v.Name,
-                        v.ProvisioningState));
-                }
-
-                Thread.Sleep(TimeSpan.FromSeconds(WriteVerboseIntervalInSec));
-            }
-
-            if (updateTask.IsFaulted)
-            {
-                PrintDetailIfThrow(() => { throw updateTask.Exception; });
-            }
+            WriteClusterAndVmssVerboseWhenUpdate(new List<Task>() { updateTask }, false);
 
             cluster = SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name);
             var nodeType = cluster.NodeTypes.Single(

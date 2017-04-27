@@ -12,7 +12,7 @@ Get the cluster resource
 ## SYNTAX
 
 ```
-Get-AzureRmServiceFabricCluster [[-ResourceGroupName] <String>] [[-ClusterName] <String>] [<CommonParameters>]
+Get-AzureRmServiceFabricCluster [[-ResourceGroupName] <String>] [[-Name] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,13 +29,11 @@ This command will get the cluster resource with the name myCluster
 
 ## PARAMETERS
 
-### -ClusterName
-Specifies the name of the cluster
-
-```yaml
+### -Name
+Specify the name of the cluster```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: ClusterName
 
 Required: False
 Position: 1

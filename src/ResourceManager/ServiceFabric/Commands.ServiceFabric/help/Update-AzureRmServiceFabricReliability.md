@@ -12,8 +12,8 @@ Update reliability of the cluster
 ## SYNTAX
 
 ```
-Update-AzureRmServiceFabricReliability -ReliabilityLevel <ReliabilityLevel> [-AutoAddNodes]
- [-ClusterName] <String> [-ResourceGroupName] <String> [<CommonParameters>]
+Update-AzureRmServiceFabricReliability [-ResourceGroupName] <String> [-Name] <String> -Level <ReliabilityLevel>
+ [-AutoAddNodes] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,41 +36,52 @@ Automatic adjust nodes number when changing reliability
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: AutoAdjustNodes
+Aliases: Auto
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ClusterName
-Specifies the name of the cluster
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: cf
 
-Required: True
-Position: 1
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ReliabilityLevel
-VM instance number
-
-```yaml
+### -Level
+VM instance number```yaml
 Type: ReliabilityLevel
 Parameter Sets: (All)
-Aliases: 
-Accepted values: Bronze, Silver, Gold
+Aliases: ReliabilityLevel
+Accepted values: None, Bronze, Silver, Gold, Platinum
 
 Required: True
 Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Specify the name of the cluster```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: ClusterName
+
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -91,8 +102,23 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

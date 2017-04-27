@@ -30,24 +30,24 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         /// <summary>
         /// Resource group name
         /// </summary>
-        [Parameter(Mandatory = true, Position = 0, ParameterSetName = SingleUpdateWithCommonNameSet, ValueFromPipeline = true,
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = SingleUpdateWithCommonNameSet, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the resource group.")]
-        [Parameter(Mandatory = true, Position = 0, ParameterSetName = SingleUpdateWithThumbprintSet, ValueFromPipeline = true,
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = SingleUpdateWithThumbprintSet, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the resource group.")]
-        [Parameter(Mandatory = true, Position = 0, ParameterSetName = MultipleUpdatesWithCommonNameSet, ValueFromPipeline = true,
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = MultipleUpdatesWithCommonNameSet, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the resource group.")]
-        [Parameter(Mandatory = true, Position = 0, ParameterSetName = MultipleUpdatesWithThumbprintSet, ValueFromPipeline = true,
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = MultipleUpdatesWithThumbprintSet, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the resource group.")]
         [ValidateNotNullOrEmpty()]
         public override string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, Position = 1, ParameterSetName = SingleUpdateWithCommonNameSet, ValueFromPipeline = true,
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = SingleUpdateWithCommonNameSet, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the cluster")]
-        [Parameter(Mandatory = true, Position = 1, ParameterSetName = SingleUpdateWithThumbprintSet, ValueFromPipeline = true,
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = SingleUpdateWithThumbprintSet, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the cluster")]
-        [Parameter(Mandatory = true, Position = 1, ParameterSetName = MultipleUpdatesWithCommonNameSet, ValueFromPipeline = true,
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = MultipleUpdatesWithCommonNameSet, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the cluster")]
-        [Parameter(Mandatory = true, Position = 1, ParameterSetName = MultipleUpdatesWithThumbprintSet, ValueFromPipeline = true,
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = MultipleUpdatesWithThumbprintSet, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the cluster")]
         [ValidateNotNullOrEmpty()]
         [Alias("ClusterName")]

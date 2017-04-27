@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 ResourceGroupName,
                 Name);
 
-            if (ShouldProcess(target: this.Name, action: string.Format("Remove a client certificate from {0} ", this.Name)))
+            if (ShouldProcess(target: this.Name, action: string.Format("Remove a client certificate")))
             {
                 switch (ParameterSetName)
                 {

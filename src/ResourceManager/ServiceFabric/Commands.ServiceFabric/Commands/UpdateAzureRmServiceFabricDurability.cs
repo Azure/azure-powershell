@@ -119,9 +119,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
 
             ((JObject)ext.Settings)["durabilityLevel"] = this.Level.ToString();
-            ((JObject) ext.Settings)["enableParallelJobs"] = true;
+            ((JObject)ext.Settings)["enableParallelJobs"] = true;
 
-            if (ShouldProcess(target: this.NodeType, action: string.Format("Update fabric durability level to {0} of {1}", this.Level, this.Name)))
+            if (ShouldProcess(target: this.Name, action: string.Format("Update fabric durability level to {0} of {1}", this.Level, this.NodeType)))
             {
                 var vmssTask = ComputeClient.VirtualMachineScaleSets.CreateOrUpdateAsync(
                     ResourceGroupName,
@@ -137,9 +137,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
                 var patchTask = PatchAsync(patchArg);
 
-                Task.WaitAll(vmssTask, patchTask);
+                WriteClusterAndVmssVerboseWhenUpdate(new List<Task>() { vmssTask, patchTask }, true);
 
-                var psCluster = patchTask.Result;
+                var psCluster = new PSCluster(patchTask.Result);
                 WriteObject(psCluster, true);
             }
         }
