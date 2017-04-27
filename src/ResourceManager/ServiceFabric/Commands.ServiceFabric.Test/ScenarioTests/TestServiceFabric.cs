@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
         {
             TestController.NewInstance.RunPsTest("Test-RemoveAzureRmServiceFabricSettings");
         }
-        
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzureRmServiceFabricClusterCertificate()
@@ -102,14 +102,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
         public void TestAddAzureRmServiceFabricNodeType()
         {
             TestController.NewInstance.RunPsTest("Test-AddAzureRmServiceFabricNodeType");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewAzureRmServiceFabricCluster()
-        {
-            var id = AzureRmProfileProvider.Instance.Profile.Context.Account.Id;
-            TestController.NewInstance.RunPsTest("Test-NewAzureRmServiceFabricCluster");
         }
     }
 }
