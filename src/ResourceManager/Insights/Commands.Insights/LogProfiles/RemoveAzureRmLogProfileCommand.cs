@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
 
         protected override void ProcessRecordInternal()
         {
-            WriteWarning("The type of the output of this cmdlet will change to follow the pattern from other similar operations.");
+            WriteWarning("The type of the output will change to follow the pattern from other similar operations.");
             Rest.Azure.AzureOperationResponse result = this.MonitorManagementClient.LogProfiles.DeleteWithHttpMessagesAsync(logProfileName: this.Name, cancellationToken: CancellationToken.None).Result;
 
             /*

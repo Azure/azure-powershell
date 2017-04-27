@@ -15,8 +15,8 @@
 using System.Collections.Generic;
 using System.IO;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Insights;
-using Microsoft.Azure.Management.Insights;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Management;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;

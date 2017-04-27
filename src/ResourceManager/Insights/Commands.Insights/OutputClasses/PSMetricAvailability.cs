@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Insights.Models
+namespace Microsoft.Azure.Management.Monitor.Models
 {
     /// <summary>
     /// Wraps around MetricAvailability

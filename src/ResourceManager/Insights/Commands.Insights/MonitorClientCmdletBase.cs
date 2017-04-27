@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Insights;
+using Microsoft.Azure.Management.Monitor;
 using System;
 
 namespace Microsoft.Azure.Commands.Insights

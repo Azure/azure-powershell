@@ -17,7 +17,7 @@ using System.Management.Automation;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Insights.Diagnostics;
-using Microsoft.Azure.Management.Insights;
+using Microsoft.Azure.Management.Monitor.Management;
 
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;

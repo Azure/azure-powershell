@@ -18,8 +18,8 @@ using System.Management.Automation;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Insights.Diagnostics;
-using Microsoft.Azure.Management.Insights;
-using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.Management.Monitor.Management;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
     {
         private readonly SetAzureRmDiagnosticSettingCommand cmdlet;
         private readonly Mock<MonitorManagementClient> insightsManagementClientMock;
-        private readonly Mock<IDiagnosticSettingsOperations> insightsDiagnosticsOperationsMock;
+        private readonly Mock<IServiceDiagnosticSettingsOperations> insightsDiagnosticsOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
         private const string resourceId = "/subscriptions/123/resourcegroups/rg/providers/rp/resource/myresource";
         private const string storageAccountId = "/subscriptions/123/resourcegroups/rg/providers/microsoft.storage/accounts/myaccount";
@@ -39,12 +39,12 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
         private const string workspaceId = "/subscriptions/123/resourcegroups/rg/providers/microsoft.operationalinsights/workspaces/wp";
         private const string eventHubAuthRuleId = "/subscriptions/123/resourcegroups/rg/providers/microsoft.eventhub/namespaces/ns/authorizationrules";
 
-        DiagnosticSettingsResource ExistingSetting;
-        DiagnosticSettingsResource calledSettings = null;
+        ServiceDiagnosticSettingsResource ExistingSetting;
+        ServiceDiagnosticSettingsResource calledSettings = null;
 
         public SetDiagnosticSettingCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            this.insightsDiagnosticsOperationsMock = new Mock<IDiagnosticSettingsOperations>();
+            this.insightsDiagnosticsOperationsMock = new Mock<IServiceDiagnosticSettingsOperations>();
             this.insightsManagementClientMock = new Mock<MonitorManagementClient>();
             this.commandRuntimeMock = new Mock<ICommandRuntime>();
             this.cmdlet = new SetAzureRmDiagnosticSettingCommand()
@@ -57,30 +57,28 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
 
             insightsDiagnosticsOperationsMock.Setup(f => f.GetWithHttpMessagesAsync(
                 It.IsAny<string>(),
-                It.IsAny<string>(),
                 It.IsAny<Dictionary<string, List<string>>>(),
                 It.IsAny<CancellationToken>()))
-                   .Returns(Task.FromResult<AzureOperationResponse<DiagnosticSettingsResource>>(new AzureOperationResponse<DiagnosticSettingsResource>
+                   .Returns(Task.FromResult<AzureOperationResponse<ServiceDiagnosticSettingsResource>>(new AzureOperationResponse<ServiceDiagnosticSettingsResource>
                    {
                        Body = this.ExistingSetting
                    }));
 
             insightsDiagnosticsOperationsMock.Setup(f => f.CreateOrUpdateWithHttpMessagesAsync(
                 It.IsAny<string>(),
-                It.IsAny<DiagnosticSettingsResource>(),
-                It.IsAny<string>(),
+                It.IsAny<ServiceDiagnosticSettingsResource>(),
                 It.IsAny<Dictionary<string, List<string>>>(),
                 It.IsAny<CancellationToken>()))
-                    .Returns((string a, DiagnosticSettingsResource x, string na, Dictionary<string, List<string>> b, CancellationToken c) =>
+                    .Returns((string a, ServiceDiagnosticSettingsResource x, Dictionary<string, List<string>> b, CancellationToken c) =>
                     {
                         calledSettings = x;
-                        return Task.FromResult(new AzureOperationResponse<DiagnosticSettingsResource>
+                        return Task.FromResult(new AzureOperationResponse<ServiceDiagnosticSettingsResource>
                         {
                             Body = x
                         });
                     });
 
-            insightsManagementClientMock.SetupGet(f => f.DiagnosticSettings).Returns(this.insightsDiagnosticsOperationsMock.Object);
+            insightsManagementClientMock.SetupGet(f => f.ServiceDiagnosticSettings).Returns(this.insightsDiagnosticsOperationsMock.Object);
 
             cmdlet.ResourceId = resourceId;
         }
@@ -92,7 +90,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
             cmdlet.MyInvocation.BoundParameters["StorageAccountId"] = null;
             cmdlet.ExecuteCmdlet();
 
-            DiagnosticSettingsResource expectedSettings = GetDefaultSetting();
+            ServiceDiagnosticSettingsResource expectedSettings = GetDefaultSetting();
             expectedSettings.StorageAccountId = null;
 
             VerifyCalledOnce();
@@ -108,7 +106,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
             cmdlet.MyInvocation.BoundParameters[SetAzureRmDiagnosticSettingCommand.StorageAccountIdParamName] = newStorageId;
             cmdlet.ExecuteCmdlet();
 
-            DiagnosticSettingsResource expectedSettings = GetDefaultSetting();
+            ServiceDiagnosticSettingsResource expectedSettings = GetDefaultSetting();
             expectedSettings.StorageAccountId = newStorageId;
 
             VerifyCalledOnce();
@@ -124,7 +122,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
             cmdlet.MyInvocation.BoundParameters[SetAzureRmDiagnosticSettingCommand.ServiceBusRuleIdParamName] = newServiceBusId;
             cmdlet.ExecuteCmdlet();
 
-            DiagnosticSettingsResource expectedSettings = GetDefaultSetting();
+            ServiceDiagnosticSettingsResource expectedSettings = GetDefaultSetting();
             expectedSettings.ServiceBusRuleId = newServiceBusId;
 
             VerifyCalledOnce();
@@ -140,7 +138,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
             cmdlet.MyInvocation.BoundParameters[SetAzureRmDiagnosticSettingCommand.WorkspacetIdParamName] = newWorkspaceId;
             cmdlet.ExecuteCmdlet();
 
-            DiagnosticSettingsResource expectedSettings = GetDefaultSetting();
+            ServiceDiagnosticSettingsResource expectedSettings = GetDefaultSetting();
             expectedSettings.WorkspaceId = newWorkspaceId;
 
             VerifyCalledOnce();
@@ -156,7 +154,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
             cmdlet.MyInvocation.BoundParameters[SetAzureRmDiagnosticSettingCommand.EnabledParamName] = false;
             cmdlet.ExecuteCmdlet();
 
-            DiagnosticSettingsResource expectedSettings = GetDefaultSetting();
+            ServiceDiagnosticSettingsResource expectedSettings = GetDefaultSetting();
             expectedSettings.Logs[0].Enabled = false;
 
             VerifyCalledOnce();
@@ -172,7 +170,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
             cmdlet.MyInvocation.BoundParameters[SetAzureRmDiagnosticSettingCommand.EnabledParamName] = false;
             cmdlet.ExecuteCmdlet();
 
-            DiagnosticSettingsResource expectedSettings = GetDefaultSetting();
+            ServiceDiagnosticSettingsResource expectedSettings = GetDefaultSetting();
             expectedSettings.Metrics[1].Enabled = false;
 
             VerifyCalledOnce();
@@ -186,7 +184,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
             cmdlet.MyInvocation.BoundParameters[SetAzureRmDiagnosticSettingCommand.ServiceBusRuleIdParamName] = null;
             cmdlet.ExecuteCmdlet();
 
-            DiagnosticSettingsResource expectedSettings = GetDefaultSetting();
+            ServiceDiagnosticSettingsResource expectedSettings = GetDefaultSetting();
             expectedSettings.ServiceBusRuleId = null;
 
             VerifyCalledOnce();
@@ -200,7 +198,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
             cmdlet.MyInvocation.BoundParameters["WorkspaceId"] = null;
             cmdlet.ExecuteCmdlet();
 
-            DiagnosticSettingsResource expectedSettings = GetDefaultSetting();
+            ServiceDiagnosticSettingsResource expectedSettings = GetDefaultSetting();
             expectedSettings.WorkspaceId = null;
 
             VerifyCalledOnce();
@@ -211,16 +209,15 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
         {
             insightsDiagnosticsOperationsMock.Verify(x => x.CreateOrUpdateWithHttpMessagesAsync(
                 resourceId,
-                It.IsAny<DiagnosticSettingsResource>(),
-                It.IsAny<string>(),
+                It.IsAny<ServiceDiagnosticSettingsResource>(),
                 It.IsAny<Dictionary<string, List<string>>>(),
                 It.IsAny<CancellationToken>()),
                     Times.Once);
         }
 
         private void VerifySettings(
-            DiagnosticSettingsResource expectedSettings,
-            DiagnosticSettingsResource actualSettings)
+            ServiceDiagnosticSettingsResource expectedSettings,
+            ServiceDiagnosticSettingsResource actualSettings)
         {
             Assert.Equal(expectedSettings.StorageAccountId, actualSettings.StorageAccountId);
             Assert.Equal(expectedSettings.ServiceBusRuleId, actualSettings.ServiceBusRuleId);
@@ -273,9 +270,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
             }
         }
 
-        private DiagnosticSettingsResource GetDefaultSetting()
+        private ServiceDiagnosticSettingsResource GetDefaultSetting()
         {
-            return new DiagnosticSettingsResource
+            return new ServiceDiagnosticSettingsResource
             {
                 StorageAccountId = storageAccountId,
                 ServiceBusRuleId = serviceBusRuleId,

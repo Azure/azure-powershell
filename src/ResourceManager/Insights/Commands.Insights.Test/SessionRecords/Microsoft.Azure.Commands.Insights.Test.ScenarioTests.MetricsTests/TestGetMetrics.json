@@ -7,7 +7,7 @@
             "RequestBody": "",
             "RequestHeaders": {
                 "Accept": [ "application/json" ],
-                "User-Agent": [ "Microsoft.Azure.Monitor.InsightsClient/0.16.0.0 AzurePowershell/v0.8.15" ],
+                "User-Agent": [ "Microsoft.Azure.Management.Monitor.MonitorClient/0.16.0.0 AzurePowershell/v0.8.15" ],
                 "x-ms-version": [ "2016-03-01" ],
                 "Connection": [ "Keep-Alive" ]
             },
@@ -34,7 +34,7 @@
             "RequestBody": "",
             "RequestHeaders": {
                 "Accept": [ "application/json" ],
-                "User-Agent": [ "Microsoft.Azure.Monitor.InsightsClient/0.16.0.0 AzurePowershell/v0.8.15" ],
+                "User-Agent": [ "Microsoft.Azure.Management.Monitor.MonitorClient/0.16.0.0 AzurePowershell/v0.8.15" ],
                 "x-ms-version": [ "2016-09-01" ]
             },
             "ResponseBody": "{\"value\":[{\"data\":[{\"timeStamp\":\"2016-11-23T19:14:00Z\",\"total\":1.0},{\"timeStamp\":\"2016-11-23T19:15:00Z\"},{\"timeStamp\":\"2016-11-23T19:16:00Z\"},{\"timeStamp\":\"2016-11-23T19:17:00Z\"},{\"timeStamp\":\"2016-11-23T19:18:00Z\"},{\"timeStamp\":\"2016-11-23T19:19:00Z\",\"total\":1.0},{\"timeStamp\":\"2016-11-23T19:20:00Z\"},{\"timeStamp\":\"2016-11-23T19:21:00Z\"},{\"timeStamp\":\"2016-11-23T19:22:00Z\"},{\"timeStamp\":\"2016-11-23T19:23:00Z\"},{\"timeStamp\":\"2016-11-23T19:24:00Z\",\"total\":1.0}],\"id\":\"/subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/andy0802australia/providers/Microsoft.Logic/workflows/andy0803australia/providers/Microsoft.Insights/metrics/Requests\",\"name\": {\"value\":\"Requests\",\"localizedValue\":\"Requests\"},\"type\":\"Microsoft.Insights/metrics\",\"unit\":\"Count\"}]}",
