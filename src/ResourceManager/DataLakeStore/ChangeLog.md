@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* For `Import-AzureRMDataLakeStoreItem` and `Export-AzureRMDataLakeStoreItem` trace logging has been disabled by default to improve performance. If trace logging is desired please use the `-DiagnosticLogLevel` and `-DiagnosticLogPath` parameters
+
+## Version 3.6.0
+* Add support for head and tail to the `Get-AzureRMDataLakeStoreItemContent` cmdlet. This enables returning the top N or last N new line delimited rows to be displayed.
 
 ## Version 3.5.0
 

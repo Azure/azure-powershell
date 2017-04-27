@@ -75,6 +75,7 @@ The acceptable values for this parameter are:
 Type: ExtendedJobData
 Parameter Sets: Specific JobInformation
 Aliases: 
+Accepted values: None, All, DebugInfo, Statistics
 
 Required: False
 Position: 2
@@ -132,6 +133,7 @@ The acceptable values for this parameter are:
 Type: JobResult[]
 Parameter Sets: All In Resource Group and Account
 Aliases: 
+Accepted values: None, Succeeded, Cancelled, Failed
 
 Required: False
 Position: 6
@@ -158,6 +160,7 @@ The acceptable values for this parameter are:
 Type: JobState[]
 Parameter Sets: All In Resource Group and Account
 Aliases: 
+Accepted values: Accepted, Compiling, Ended, New, Queued, Running, Scheduling, Starting, Paused, WaitingForCapacity
 
 Required: False
 Position: 5
@@ -215,7 +218,9 @@ Accept wildcard characters: False
 ```
 
 ### -Top
-An optional value which indicates the number of jobs to return. Default value is 500```yaml
+An optional value which indicates the number of jobs to return. Default value is 500
+
+```yaml
 Type: Int32
 Parameter Sets: All In Resource Group and Account
 Aliases: 

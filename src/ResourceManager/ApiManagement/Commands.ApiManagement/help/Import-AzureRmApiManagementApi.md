@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-ms.assetid: 9A97726A-1C8C-47AD-A265-926E20DD5560
+ms.assetid: 48C143BE-3BF6-43E3-99B0-1A1D12A0A3F3
 online version: 
 schema: 2.0.0
 ---
@@ -16,16 +16,16 @@ Imports an API from a file or a URL.
 ```
 Import-AzureRmApiManagementApi -Context <PsApiManagementContext> [-ApiId <String>]
  -SpecificationFormat <PsApiManagementApiFormat> -SpecificationPath <String> [-Path <String>]
- [-WsdlServiceName <String>] [-WsdlEndpointName <String>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ [-WsdlServiceName <String>] [-WsdlEndpointName <String>] [-ApiType <PsApiManagementApiType>]
+ [<CommonParameters>]
 ```
 
 ### From URL
 ```
 Import-AzureRmApiManagementApi -Context <PsApiManagementContext> [-ApiId <String>]
  -SpecificationFormat <PsApiManagementApiFormat> -SpecificationUrl <String> [-Path <String>]
- [-WsdlServiceName <String>] [-WsdlEndpointName <String>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ [-WsdlServiceName <String>] [-WsdlEndpointName <String>] [-ApiType <PsApiManagementApiType>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,21 +56,6 @@ This command imports an API from the specified WADL link.
 
 ## PARAMETERS
 
-### -Context
-Specifies a **PsApiManagementContext** object.
-
-```yaml
-Type: PsApiManagementContext
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ApiId
 Specifies an ID for the API to import.
 If you do not specify this parameter, an ID is generated for you.
@@ -87,28 +72,28 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -SpecificationFormat
-Specifies the specification format.
-The acceptable values for this parameter are: Wadl, Wsdl, and Swagger.
+### -ApiType
+This parameter is optional with a default value of Http. The Soap option is only applicable when importing WSDL and will create a SOAP Passthrough API.
 
 ```yaml
-Type: PsApiManagementApiFormat
+Type: PsApiManagementApiType
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Http, Soap
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -SpecificationPath
-Specifies the specification file path.
+### -Context
+Specifies a **PsApiManagementContext** object.
 
 ```yaml
-Type: String
-Parameter Sets: From Local File
+Type: PsApiManagementContext
+Parameter Sets: (All)
 Aliases: 
 
 Required: True
@@ -136,6 +121,38 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -SpecificationFormat
+Specifies the specification format.
+psdx_paramvalues Wadl, Wsdl, and Swagger.
+
+```yaml
+Type: PsApiManagementApiFormat
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Wadl, Swagger, Wsdl
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SpecificationPath
+Specifies the specification file path.
+
+```yaml
+Type: String
+Parameter Sets: From Local File
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -SpecificationUrl
 Specifies the specification URL.
 
@@ -151,48 +168,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WsdlServiceName
-Specifies the local name of WSDL Service that this cmdlet imports.
-Specify this parameter if you specify Wsdl for *SpecificationFormat*.
+### -WsdlEndpointName
+Local name of WSDL Endpoint (port) to be imported. Must be 1 to 400 characters long. This parameter is optional and only required for importing Wsdl. Default value is $null.
 
 ```yaml
 Type: String
@@ -206,9 +183,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -WsdlEndpointName
-Specifies the local name of WSDL Endpoint, or port, that this cmdlet imports.
-Specify this parameter if you specify Wsdl for the *SpecificationFormat* parameter.
+### -WsdlServiceName
+Local name of WSDL Service to be imported. Must be 1 to 400 characters long. This parameter is optional and only required for importing Wsdl . Default value is $null.
 
 ```yaml
 Type: String

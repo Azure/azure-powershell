@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
+using System.Threading.Tasks;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.Compute;
@@ -108,12 +109,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 throw new PSArgumentException(string.Format("{0} exists", this.NodeType));
             }
 
-            if (ShouldProcess(target: this.NodeType, action: string.Format("Add an new node type {0} to {1}", this.NodeType, this.Name)))
+            if (ShouldProcess(target: this.NodeType, action: string.Format("Add an new node type {0}", this.NodeType)))
             {
                 var cluster = AddNodeTypeToSfrp();
                 try
                 {
-                    PrintDetailIfThrow(CreateVmss);
+                    CreateVmss();
                 }
                 catch (Exception)
                 {
@@ -197,21 +198,23 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             virtualMachineScaleSetProfile.Validate();
 
-            ComputeClient.VirtualMachineScaleSets.CreateOrUpdate(
-                this.ResourceGroupName,
-                this.NodeType,
-                new VirtualMachineScaleSet()
-                {
-                    Location = GetLocation(),
-                    Sku = new Management.Compute.Models.Sku(this.Sku, this.Tier, this.Capacity),
-                    Overprovision = false,
-                    Tags = GetServiceFabricTags(),
-                    UpgradePolicy = new UpgradePolicy()
-                    {
-                        Mode = UpgradeMode.Automatic
-                    },
-                    VirtualMachineProfile = virtualMachineScaleSetProfile
-                });
+            var vmssTask = ComputeClient.VirtualMachineScaleSets.CreateOrUpdateAsync(
+                 this.ResourceGroupName,
+                 this.NodeType,
+                 new VirtualMachineScaleSet()
+                 {
+                     Location = GetLocation(),
+                     Sku = new Management.Compute.Models.Sku(this.Sku, this.Tier, this.Capacity),
+                     Overprovision = false,
+                     Tags = GetServiceFabricTags(),
+                     UpgradePolicy = new UpgradePolicy()
+                     {
+                         Mode = UpgradeMode.Automatic
+                     },
+                     VirtualMachineProfile = virtualMachineScaleSetProfile
+                 });
+
+            WriteClusterAndVmssVerboseWhenUpdate(new List<Task>() { vmssTask }, false);
         }
 
         private string GetLocation()

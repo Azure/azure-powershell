@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             var fabricSettings = DictionaryToFabricSettings(settings);
 
-            if (ShouldProcess(target: this.Name, action: string.Format("Remove fabric settings from {0} ", this.Name)))
+            if (ShouldProcess(target: this.Name, action: string.Format("Remove fabric settings from")))
             {
                 cluster = SendPatchRequest(new ClusterUpdateParameters()
                 {

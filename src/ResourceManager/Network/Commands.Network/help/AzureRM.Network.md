@@ -44,8 +44,8 @@ Adds an SSL certificate to an application gateway.
 ### [Add-AzureRmApplicationGatewayUrlPathMapConfig](Add-AzureRmApplicationGatewayUrlPathMapConfig.md)
 Adds an array of URL path mappings to a backend server pool.
 
-### [Add-AzureRmApplicationGatewayUrlPathMapConfig](Add-AzureRmApplicationGatewayUrlPathMapConfig.md)
-Adds an array of URL path mappings to a backend server pool.
+### [Add-AzureRmExpressRouteCircuitAuthorization](Add-AzureRmExpressRouteCircuitAuthorization.md)
+Adds an ExpressRoute circuit authorization.
 
 ### [Add-AzureRmExpressRouteCircuitPeeringConfig](Add-AzureRmExpressRouteCircuitPeeringConfig.md)
 Adds a peering configuration to an ExpressRoute circuit.
@@ -100,6 +100,9 @@ Gets an application gateway.
 
 ### [Get-AzureRmApplicationGatewayAuthenticationCertificate](Get-AzureRmApplicationGatewayAuthenticationCertificate.md)
 Gets an authentication certificate for an application gateway.
+
+### [Get-AzureRmApplicationGatewayAvailableWafRuleSets](Get-AzureRmApplicationGatewayAvailableWafRuleSets.md)
+Gets all available web application firewall rule sets.
 
 ### [Get-AzureRmApplicationGatewayBackendAddressPool](Get-AzureRmApplicationGatewayBackendAddressPool.md)
 Gets a back-end address pool for an application gateway.
@@ -161,8 +164,8 @@ Gets an Azure ExpressRoute circuit from Azure.
 ### [Get-AzureRmExpressRouteCircuitARPTable](Get-AzureRmExpressRouteCircuitARPTable.md)
 Gets the ARP table from an ExpressRoute circuit.
 
-### [Get-AzureRmExpressRouteCircuitARPTable](Get-AzureRmExpressRouteCircuitARPTable.md)
-Gets the ARP table from an ExpressRoute circuit.
+### [Get-AzureRmExpressRouteCircuitAuthorization](Get-AzureRmExpressRouteCircuitAuthorization.md)
+Gets information about ExpressRoute circuit authorizations.
 
 ### [Get-AzureRmExpressRouteCircuitPeeringConfig](Get-AzureRmExpressRouteCircuitPeeringConfig.md)
 Gets an ExpressRoute circuit peering configuration.
@@ -201,7 +204,7 @@ Gets a probe configuration for a load balancer.
 Gets the rule configuration for a load balancer.
 
 ### [Get-AzureRmLocalNetworkGateway](Get-AzureRmLocalNetworkGateway.md)
-{{Manually Enter Get-AzureRmLocalNetworkGateway Description Here}}
+Gets a Local Network Gateway
 
 ### [Get-AzureRmNetworkInterface](Get-AzureRmNetworkInterface.md)
 Gets a network interface.
@@ -255,13 +258,22 @@ Gets route tables.
 Gets a virtual network in a resource group.
 
 ### [Get-AzureRmVirtualNetworkGateway](Get-AzureRmVirtualNetworkGateway.md)
-{{Manually Enter Get-AzureRmVirtualNetworkGateway Description Here}}
+Gets a Virtual Network Gateway
+
+### [Get-AzureRmVirtualNetworkGatewayAdvertisedRoute](Get-AzureRmVirtualNetworkGatewayAdvertisedRoute.md)
+Lists routes being advertised by an Azure virtual network gateway
+
+### [Get-AzureRmVirtualNetworkGatewayBGPPeerStatus](Get-AzureRmVirtualNetworkGatewayBGPPeerStatus.md)
+Lists an Azure virtual network gateway's BGP peers
 
 ### [Get-AzureRmVirtualNetworkGatewayConnection](Get-AzureRmVirtualNetworkGatewayConnection.md)
-{{Manually Enter Get-AzureRmVirtualNetworkGatewayConnection Description Here}}
+Gets a Virtual Network Gateway Connection
 
 ### [Get-AzureRmVirtualNetworkGatewayConnectionSharedKey](Get-AzureRmVirtualNetworkGatewayConnectionSharedKey.md)
 {{Manually Enter Get-AzureRmVirtualNetworkGatewayConnectionSharedKey Description Here}}
+
+### [Get-AzureRmVirtualNetworkGatewayLearnedRoute](Get-AzureRmVirtualNetworkGatewayLearnedRoute.md)
+Lists routes learned by an Azure virtual network gateway
 
 ### [Get-AzureRmVirtualNetworkPeering](Get-AzureRmVirtualNetworkPeering.md)
 Gets the virtual network peering.
@@ -295,6 +307,9 @@ Creates back-end HTTP settings for an application gateway.
 
 ### [New-AzureRmApplicationGatewayConnectionDraining](New-AzureRmApplicationGatewayConnectionDraining.md)
 Creates a new connection draining configuration for back-end HTTP settings.
+
+### [New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig](New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig.md)
+Creates a new disabled rule group configuration.
 
 ### [New-AzureRmApplicationGatewayFrontendIPConfig](New-AzureRmApplicationGatewayFrontendIPConfig.md)
 Creates a front-end IP configuration for an application gateway.
@@ -335,11 +350,14 @@ Creates a WAF configuration for an application gateway.
 ### [New-AzureRmExpressRouteCircuit](New-AzureRmExpressRouteCircuit.md)
 Creates an Azure express route circuit.
 
-### [New-AzureRmExpressRouteCircuit](New-AzureRmExpressRouteCircuit.md)
-Creates an Azure express route circuit.
+### [New-AzureRmExpressRouteCircuitAuthorization](New-AzureRmExpressRouteCircuitAuthorization.md)
+Creates an ExpressRoute circuit authorization.
 
 ### [New-AzureRmExpressRouteCircuitPeeringConfig](New-AzureRmExpressRouteCircuitPeeringConfig.md)
 Creates a new peering configuration to be added to an ExpressRoute circuit.
+
+### [New-AzureRmIpsecPolicy](New-AzureRmIpsecPolicy.md)
+Creates an IPSec Policy.
 
 ### [New-AzureRmLoadBalancer](New-AzureRmLoadBalancer.md)
 Creates a load balancer.
@@ -363,7 +381,7 @@ Creates a probe configuration for a load balancer.
 Creates a rule configuration for a load balancer.
 
 ### [New-AzureRmLocalNetworkGateway](New-AzureRmLocalNetworkGateway.md)
-{{Manually Enter New-AzureRmLocalNetworkGateway Description Here}}
+Creates a Local Network Gateway
 
 ### [New-AzureRmNetworkInterface](New-AzureRmNetworkInterface.md)
 Creates a network interface.
@@ -405,13 +423,13 @@ Creates a route table.
 Creates a virtual network.
 
 ### [New-AzureRmVirtualNetworkGateway](New-AzureRmVirtualNetworkGateway.md)
-{{Manually Enter New-AzureRmVirtualNetworkGateway Description Here}}
+Creates a Virtual Network Gateway
 
 ### [New-AzureRmVirtualNetworkGatewayConnection](New-AzureRmVirtualNetworkGatewayConnection.md)
 {{Manually Enter New-AzureRmVirtualNetworkGatewayConnection Description Here}}
 
 ### [New-AzureRmVirtualNetworkGatewayIpConfig](New-AzureRmVirtualNetworkGatewayIpConfig.md)
-{{Manually Enter New-AzureRmVirtualNetworkGatewayIpConfig Description Here}}
+Creates an IP Configuration for a Virtual Network Gateway
 
 ### [New-AzureRmVirtualNetworkSubnetConfig](New-AzureRmVirtualNetworkSubnetConfig.md)
 Creates a virtual network subnet configuration.
@@ -467,8 +485,8 @@ Removes URL path mappings to a backend server pool.
 ### [Remove-AzureRmExpressRouteCircuit](Remove-AzureRmExpressRouteCircuit.md)
 Removes an ExpressRoute circuit.
 
-### [Remove-AzureRmExpressRouteCircuit](Remove-AzureRmExpressRouteCircuit.md)
-Removes an ExpressRoute circuit.
+### [Remove-AzureRmExpressRouteCircuitAuthorization](Remove-AzureRmExpressRouteCircuitAuthorization.md)
+Removes an existing ExpressRoute configuration authorization.
 
 ### [Remove-AzureRmExpressRouteCircuitPeeringConfig](Remove-AzureRmExpressRouteCircuitPeeringConfig.md)
 Removes an ExpressRoute circuit peering configuration.
@@ -495,7 +513,7 @@ Removes a probe configuration from a load balancer.
 Removes a rule configuration for a load balancer.
 
 ### [Remove-AzureRmLocalNetworkGateway](Remove-AzureRmLocalNetworkGateway.md)
-Removes a local network gateway.
+Deletes a Local Network Gateway
 
 ### [Remove-AzureRmNetworkInterface](Remove-AzureRmNetworkInterface.md)
 Removes a network interface.
@@ -534,10 +552,10 @@ Removes a route table.
 Removes a virtual network.
 
 ### [Remove-AzureRmVirtualNetworkGateway](Remove-AzureRmVirtualNetworkGateway.md)
-Removes a virtual network gateway.
+Deletes a Virtual Network Gateway
 
 ### [Remove-AzureRmVirtualNetworkGatewayConnection](Remove-AzureRmVirtualNetworkGatewayConnection.md)
-Removes a virtual network gateway connection.
+Deletes a Virtual Network Gateway Connection
 
 ### [Remove-AzureRmVirtualNetworkGatewayDefaultSite](Remove-AzureRmVirtualNetworkGatewayDefaultSite.md)
 Removes the default site from a virtual network gateway.

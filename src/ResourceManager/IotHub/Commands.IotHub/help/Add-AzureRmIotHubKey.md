@@ -12,8 +12,8 @@ Creates an IotHub Key.
 ## SYNTAX
 
 ```
-Add-AzureRmIotHubKey [-ResourceGroupName] <String> [-Name] <String> [-KeyName] <String> [-PrimaryKey] <String>
- [-SecondaryKey] <String> [-Rights] <PSAccessRights> [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzureRmIotHubKey [-ResourceGroupName] <String> [-Name] <String> [-KeyName] <String> -PrimaryKey <String>
+ -SecondaryKey <String> -Rights <PSAccessRights> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,7 +69,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -100,7 +100,7 @@ Aliases:
 Accepted values: RegistryRead, RegistryWrite, ServiceConnect, DeviceConnect
 
 Required: True
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -115,7 +115,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

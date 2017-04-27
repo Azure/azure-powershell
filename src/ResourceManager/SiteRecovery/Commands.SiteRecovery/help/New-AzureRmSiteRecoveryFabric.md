@@ -45,6 +45,7 @@ Specifies the Azure Site Recovery Fabric Type.
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: HyperVSite
 
 Required: False
 Position: Named

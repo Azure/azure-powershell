@@ -12,6 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections;
+using System.ComponentModel;
 using System.Text;
 using Microsoft.Azure.Management.ServiceFabric.Models;
 
@@ -19,6 +22,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
 {
     public class PSCluster : Cluster
     {
+        public string PSClusterString { get { return this.ToString(); } }
+
         public PSCluster(Cluster cluster)
             : base(
                   location: cluster.Location,
@@ -46,6 +51,61 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
                   upgradeDescription: cluster.UpgradeDescription
                 )
         {
+        }
+
+        public override string ToString()
+        {
+            return this.ToString(this, "");
+        }
+
+        private string ToString(object objects, string space)
+        {
+            const string Tab = "    ";
+            var sb = new StringBuilder();
+
+            foreach (PropertyDescriptor descriptor in TypeDescriptor.GetProperties(objects))
+            {
+                var name = descriptor.Name;
+                if (name.Equals("PSClusterString", StringComparison.OrdinalIgnoreCase))
+                {
+                    continue;
+                }
+
+                var value = descriptor.GetValue(objects);
+                if (value is IList)
+                {
+                    sb.AppendLine(string.Format("{0}{1} :", space, name));
+                    var list = value as IList;
+                    foreach (var item in list)
+                    {
+                        var innerString = ToString(item, space + Tab);
+                        sb.Append(innerString);
+                    }
+                }
+                else if (value is IDictionary)
+                {
+                    sb.AppendLine(string.Format("{0}{1} :", space, name));
+                    var dic = value as IDictionary;
+                    foreach (var k in dic.Keys)
+                    {
+                        sb.AppendLine(string.Format("{0}{1} : {2}", space + Tab, k, dic[k]));
+                    }
+                }
+                else if (value is CertificateDescription ||
+                         value is AzureActiveDirectory ||
+                         value is DiagnosticsStorageAccountConfig ||
+                         value is ClusterUpgradePolicy)
+                {
+                    var innerString = ToString(value, space + Tab);
+                    sb.Append(innerString);
+                }
+                else
+                {
+                    sb.AppendLine(string.Format("{0}{1} : {2}", space, name, value));
+                }
+            }
+
+            return sb.ToString();
         }
     }
 }

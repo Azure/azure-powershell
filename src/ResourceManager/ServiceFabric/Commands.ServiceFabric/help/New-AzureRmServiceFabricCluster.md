@@ -14,40 +14,30 @@ Create an new ServiceFabric cluster
 ### ByExistingKeyVault
 ```
 New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> -ParameterFile <String>
- -SecretIdentifier <String> [-CertificateThumprint <String>] [<CommonParameters>]
+ -SecretIdentifier <String> [-CertificateThumprint <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByNewPfxAndVaultName
 ```
 New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> -ParameterFile <String>
- -CertificateSubjectName <String> [-KeyVaultName <String>] [-KeyVaultResouceGroupName <String>]
- [-PfxDestinationFile <String>] [<CommonParameters>]
+ [-PfxOutputFolder <String>] [-CertificatePassword <SecureString>] [-KeyVaultResouceGroupName <String>]
+ [-KeyVaultName <String>] [-CertificateSubjectName <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByExistingPfxAndVaultName
 ```
 New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> -ParameterFile <String>
- -KeyVaultName <String> -KeyVaultResouceGroupName <String> -PfxSourceFile <String>
- -CertificatePassword <SecureString> [<CommonParameters>]
-```
-
-### ByExistingPfxSetAndVaultId
-```
-New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> -ParameterFile <String>
- -KeyVaultResouceId <String> -PfxSourceFile <String> -CertificatePassword <SecureString> [<CommonParameters>]
+ -PfxSourceFile <String> [-CertificatePassword <SecureString>] [-SecondaryPfxSourceFile <String>]
+ [-SecondaryCertificatePassword <SecureString>] [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByDefaultArmTemplate
 ```
-New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> -Location <String> [-ClusterSize <Int32>]
- -CertificateSubjectName <String> -VmPassword <SecureString> [-OS <OS>] [-PfxDestinationFile <String>]
- [<CommonParameters>]
-```
-
-### ByNewPfxAndVaultId
-```
-New-AzureRmServiceFabricCluster -TemplateFile <String> -ParameterFile <String> -CertificateSubjectName <String>
- -KeyVaultResouceId <String> [-PfxDestinationFile <String>] [<CommonParameters>]
+New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> [-PfxOutputFolder <String>]
+ [-CertificatePassword <SecureString>] [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>]
+ -Location <String> [-Name <String>] [-ClusterSize <Int32>] [-CertificateSubjectName <String>]
+ -VmPassword <SecureString> [-OS <OperatingSystem>] [-VmSku <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,13 +90,13 @@ The password of the pfx file
 
 ```yaml
 Type: SecureString
-Parameter Sets: ByExistingPfxAndVaultName, ByExistingPfxSetAndVaultId
-Aliases: Password
+Parameter Sets: ByNewPfxAndVaultName, ByExistingPfxAndVaultName, ByDefaultArmTemplate
+Aliases: CertPassword
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -115,13 +105,13 @@ The Dns name of the certificate to be created
 
 ```yaml
 Type: String
-Parameter Sets: ByNewPfxAndVaultName, ByDefaultArmTemplate, ByNewPfxAndVaultId
+Parameter Sets: ByNewPfxAndVaultName, ByDefaultArmTemplate
 Aliases: Subject
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -136,7 +126,7 @@ Aliases: Thumbprint
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -151,7 +141,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -160,25 +165,13 @@ Azure key vault name
 
 ```yaml
 Type: String
-Parameter Sets: ByNewPfxAndVaultName
+Parameter Sets: ByNewPfxAndVaultName, ByExistingPfxAndVaultName, ByDefaultArmTemplate
 Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: ByExistingPfxAndVaultName
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -187,40 +180,13 @@ Azure key vault resource group name
 
 ```yaml
 Type: String
-Parameter Sets: ByNewPfxAndVaultName
+Parameter Sets: ByNewPfxAndVaultName, ByExistingPfxAndVaultName, ByDefaultArmTemplate
 Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: ByExistingPfxAndVaultName
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -KeyVaultResouceId
-Azure key vault resource id
-
-```yaml
-Type: String
-Parameter Sets: ByExistingPfxSetAndVaultId, ByNewPfxAndVaultId
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -235,7 +201,20 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Specify the name of the cluster, if not given it will be same as resource group name```yaml
+Type: String
+Parameter Sets: ByDefaultArmTemplate
+Aliases: ClusterName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -243,10 +222,10 @@ Accept wildcard characters: False
 The OS of the cluster
 
 ```yaml
-Type: OS
+Type: OperatingSystem
 Parameter Sets: ByDefaultArmTemplate
-Aliases: OperatingSystem
-Accepted values: Windows, Linux
+Aliases: 
+Accepted values: WindowsServer2012R2Datacenter, WindowsServer2016Datacenter, WindowsServer2016DatacenterwithContainers, UbuntuServer1604
 
 Required: False
 Position: Named
@@ -260,28 +239,26 @@ The path of the template parameter file.
 
 ```yaml
 Type: String
-Parameter Sets: ByExistingKeyVault, ByNewPfxAndVaultName, ByExistingPfxAndVaultName, ByExistingPfxSetAndVaultId, ByNewPfxAndVaultId
+Parameter Sets: ByExistingKeyVault, ByNewPfxAndVaultName, ByExistingPfxAndVaultName
 Aliases: 
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PfxDestinationFile
-The destination path of the new Pfx file to be created
-
-```yaml
+### -PfxOutputFolder
+The folder of the new Pfx file to be created```yaml
 Type: String
-Parameter Sets: ByNewPfxAndVaultName, ByDefaultArmTemplate, ByNewPfxAndVaultId
+Parameter Sets: ByNewPfxAndVaultName, ByDefaultArmTemplate
 Aliases: Destination
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -290,13 +267,13 @@ The existing Pfx file path
 
 ```yaml
 Type: String
-Parameter Sets: ByExistingPfxAndVaultName, ByExistingPfxSetAndVaultId
+Parameter Sets: ByExistingPfxAndVaultName
 Aliases: Source
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -305,13 +282,39 @@ Specifies the name of the resource group.
 
 ```yaml
 Type: String
-Parameter Sets: ByExistingKeyVault, ByNewPfxAndVaultName, ByExistingPfxAndVaultName, ByExistingPfxSetAndVaultId, ByDefaultArmTemplate
+Parameter Sets: (All)
 Aliases: 
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -SecondaryCertificatePassword
+The password of the pfx file```yaml
+Type: SecureString
+Parameter Sets: ByExistingPfxAndVaultName
+Aliases: SecCertPassword
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -SecondaryPfxSourceFile
+The existing Pfx file path for the secondary cluster certificate```yaml
+Type: String
+Parameter Sets: ByExistingPfxAndVaultName
+Aliases: SecSource
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -326,7 +329,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -335,13 +338,13 @@ The path of the template file.
 
 ```yaml
 Type: String
-Parameter Sets: ByExistingKeyVault, ByNewPfxAndVaultName, ByExistingPfxAndVaultName, ByExistingPfxSetAndVaultId, ByNewPfxAndVaultId
+Parameter Sets: ByExistingKeyVault, ByNewPfxAndVaultName, ByExistingPfxAndVaultName
 Aliases: 
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -360,8 +363,36 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -VmSku
+The Vm Sku```yaml
+Type: String
+Parameter Sets: ByDefaultArmTemplate
+Aliases: Sku
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -375,7 +406,5 @@ Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode
 ## RELATED LINKS
 
 [Get-AzureRmServiceFabricCluster](./Get-AzureRmServiceFabricCluster.md)
-
 [Add-AzureRmServiceFabricClusterCertificate](./Add-AzureRmServiceFabricClusterCertificate.md)
-
 [Add-AzureRmServiceFabricApplicationCertificate](./Add-AzureRmServiceFabricApplicationCertificate.md)

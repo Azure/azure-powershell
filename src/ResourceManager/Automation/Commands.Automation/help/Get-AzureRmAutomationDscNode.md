@@ -24,16 +24,16 @@ Get-AzureRmAutomationDscNode -Id <Guid> [-ResourceGroupName] <String> [-Automati
  [<CommonParameters>]
 ```
 
-### ByNodeConfiguration
-```
-Get-AzureRmAutomationDscNode [-Status <DscNodeStatus>] -NodeConfigurationName <String>
- [-ResourceGroupName] <String> [-AutomationAccountName] <String> [<CommonParameters>]
-```
-
 ### ByName
 ```
 Get-AzureRmAutomationDscNode [-Status <DscNodeStatus>] -Name <String> [-ResourceGroupName] <String>
  [-AutomationAccountName] <String> [<CommonParameters>]
+```
+
+### ByNodeConfiguration
+```
+Get-AzureRmAutomationDscNode [-Status <DscNodeStatus>] -NodeConfigurationName <String>
+ [-ResourceGroupName] <String> [-AutomationAccountName] <String> [<CommonParameters>]
 ```
 
 ### ByConfiguration
@@ -93,7 +93,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -169,7 +169,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -188,7 +188,7 @@ Valid values are:
 
 ```yaml
 Type: DscNodeStatus
-Parameter Sets: ByAll, ByNodeConfiguration, ByName
+Parameter Sets: ByAll, ByName, ByNodeConfiguration
 Aliases: 
 Accepted values: Compliant, NotCompliant, Failed, Pending, Received, Unresponsive
 

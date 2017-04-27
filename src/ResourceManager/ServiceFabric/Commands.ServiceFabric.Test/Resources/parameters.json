@@ -6,7 +6,7 @@
       "value": "southcentralus"
     },
     "clusterName": {
-      "value": "[replaceclusterName]"
+      "value": "newcreatedps1cluster"
     },
     "adminUserName": {
       "value": "username"

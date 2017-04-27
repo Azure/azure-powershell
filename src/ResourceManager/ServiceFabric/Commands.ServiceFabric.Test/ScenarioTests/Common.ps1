@@ -13,8 +13,8 @@
 # ----------------------------------------------------------------------------------
 
 $global:time = Get-Date
-$global:suffix = $time.ToString("yyyyMMdd")
-$global:prefix = 'ps'
+$global:suffix = 'cluster'
+$global:prefix = 'ps1'
 
 function WaitClusterReady
 {
@@ -52,11 +52,6 @@ function Get-ResourceGroupName
     return $global:prefix + $global:suffix;
 }
 
-function Get-ResourceGroupLocation
-{
-    return "South Central US";
-}
-
 function Get-ClusterName
 {
     return $global:prefix + $global:suffix;
@@ -64,12 +59,12 @@ function Get-ClusterName
 
 function Get-NewClusterName
 {
-	return 'new' + $global:prefix + $global:suffix;
+	return 'newcreated' + $global:prefix + $global:suffix;
 }
 
 function Get-NewResourceGroupName
 {
-    return 'new' + $global:prefix + $global:suffix
+    return 'newcreated' + $global:prefix + $global:suffix
 }
 
 function Get-NodeTypeName
@@ -84,7 +79,7 @@ function Get-Cert
 
 function Get-Pwd
 {
-    return "User@123";
+    return "123";
 }
 
 function Get-KeyVaultName
@@ -117,12 +112,12 @@ function Get-ThumbprintByFile
 
 function Get-DurabilityLevel
 {
-	return "silver"
+	return "Bronze"
 }
 
 function Get-ReliabilityLevel
 {
-	return "silver"
+	return "None"
 }
 
 function Get-NewNodeTypeName
@@ -143,4 +138,9 @@ function Get-ParameterName
 function Get-ValueName
 {
 	return '5000'
+}
+
+function Get-VmPassword
+{
+    return  "User@12345123"
 }

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
 ms.assetid: E37ADC54-A37B-41BF-BE94-9E4052C234BB
-online version:
+online version: 
 schema: 2.0.0
 ---
 
@@ -65,7 +65,7 @@ Specifies the name of the DNS zone to update.
 ```yaml
 Type: String
 Parameter Sets: Fields
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -82,7 +82,7 @@ You can suppress this behavior with the *Overwrite* parameter, which updates the
 ```yaml
 Type: SwitchParameter
 Parameter Sets: Object
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -100,7 +100,7 @@ Alternatively, you can specify the zone using a DnsZone object with the *Zone* p
 ```yaml
 Type: String
 Parameter Sets: Fields
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -133,7 +133,7 @@ Alternatively, you can specify the zone using the *ZoneName* and *ResourceGroupN
 ```yaml
 Type: DnsZone
 Parameter Sets: Object
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -191,7 +191,6 @@ By default, the cmdlet prompts you for confirmation if the $ConfirmPreference Wi
 
 If you specify *Confirm* or *Confirm:$True*, this cmdlet prompts you for confirmation before it runs.
 If you specify *Confirm:$False*, the cmdlet does not prompt you for confirmation. 
-
 
 ## RELATED LINKS
 

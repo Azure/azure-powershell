@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         this.Name));
             }
 
-            if (ShouldProcess(target: this.Name, action: string.Format("Add cluster certificate to {0}", this.Name)))
+            if (ShouldProcess(target: this.Name, action: string.Format("Add cluster certificate")))
             {
                 var certInformations = base.GetOrCreateCertificateInformation();
                 var certInformation = certInformations[0];
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 } while (!string.IsNullOrEmpty(vmssPages.NextPageLink) &&
                         (vmssPages = ComputeClient.VirtualMachineScaleSets.ListNext(vmssPages.NextPageLink)) != null);
 
-                Task.WaitAll(allTasks.ToArray());
+                WriteClusterAndVmssVerboseWhenUpdate(allTasks,false);
 
                 var patchRequest = new ClusterUpdateParameters
                 {

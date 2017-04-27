@@ -28,8 +28,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 throw new PSArgumentException(this.Number.ToString());
             }
 
-            if (ShouldProcess(target: this.NodeType,
-                action: string.Format("Add nodes to {0}", this.NodeType)))
+            if (ShouldProcess(target: this.Name, action: string.Format("Add {0} nodes to {1}", this.Number, this.NodeType)))
             {
                 base.ExecuteCmdlet();
             }

@@ -83,7 +83,7 @@ Parameter Sets: ByFactoryObject
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -96,6 +96,22 @@ This cmdlet gets runs for slices that belong to the data factory that this param
 ```yaml
 Type: String
 Parameter Sets: ByFactoryName
+Aliases: 
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DatasetName
+Specifies the name of the dataset.
+This cmdlet gets runs for slices that belong to the dataset that this parameter specifies.
+
+```yaml
+Type: String
+Parameter Sets: (All)
 Aliases: 
 
 Required: True
@@ -115,7 +131,7 @@ Parameter Sets: ByFactoryName
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -140,25 +156,9 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DatasetName
-Specifies the name of the dataset.
-This cmdlet gets runs for slices that belong to the dataset that this parameter specifies.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
 Position: 3
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

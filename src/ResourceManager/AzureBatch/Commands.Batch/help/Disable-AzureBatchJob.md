@@ -64,6 +64,7 @@ Valid values are:
 Type: DisableJobOption
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Requeue, Terminate, Wait
 
 Required: True
 Position: 1

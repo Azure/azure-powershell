@@ -18,13 +18,13 @@
             "value": "MicrosoftWindowsServer"
         },
         "vmSku": {
-            "value": "Standard_D2"
+            "value": "Standard_D2_V2"
         },
         "vmImageOffer": {
             "value": "WindowsServer"
         },
         "vmImageSku": {
-            "value": "2012-R2-Datacenter"
+            "value": "2016-Datacenter"
         },
         "vmImageVersion": {
             "value": "latest"

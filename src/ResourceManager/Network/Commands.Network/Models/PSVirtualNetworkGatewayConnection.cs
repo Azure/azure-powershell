@@ -46,6 +46,10 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string ProvisioningState { get; set; }
 
+        public bool UsePolicyBasedTrafficSelectors { get; set; }
+
+        public List<PSIpsecPolicy> IpsecPolicies { get; set; }
+
         [JsonIgnore]
         public string VirtualNetworkGateway1Text
         {

@@ -48,7 +48,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
     {
         private const int NewCreatedKeyVaultWaitTimeInSec = 15;
 
-        internal const int WriteVerboseIntervalInSec = 20;
+        internal static int WriteVerboseIntervalInSec = 20;
+        internal static bool RunningTest = false;
 
         /// <summary>
         /// Resource group name
@@ -562,24 +563,34 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
             catch (Exception exception)
             {
-                while (!(exception is CloudException) && exception.InnerException != null)
-                {
-                    exception = exception.InnerException;
-                }
-
-                if (exception is CloudException)
-                {
-                    var cloudException = (CloudException) exception;
-                    if (cloudException.Body != null)
-                    {
-                        var cloudErrorMessage = GetCloudErrorMessage(cloudException.Body);
-                        var ex = new Exception(cloudErrorMessage);
-                        WriteError(
-                            new ErrorRecord(ex, string.Empty, ErrorCategory.NotSpecified, null));
-                    }
-                }
+                PrintCloudExceptionDetail(exception);
 
                 throw;
+            }
+        }
+
+        protected void PrintCloudExceptionDetail(Exception exception)
+        {
+            if (exception == null)
+            {
+                return;
+            }
+
+            while (!(exception is CloudException) && exception.InnerException != null)
+            {
+                exception = exception.InnerException;
+            }
+
+            if (exception is CloudException)
+            {
+                var cloudException = (CloudException)exception;
+                if (cloudException.Body != null)
+                {
+                    var cloudErrorMessage = GetCloudErrorMessage(cloudException.Body);
+                    var ex = new Exception(cloudErrorMessage);
+                    WriteError(
+                        new ErrorRecord(ex, string.Empty, ErrorCategory.NotSpecified, null));
+                }
             }
         }
 

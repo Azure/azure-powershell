@@ -4,7 +4,6 @@ Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 Download Help Link: {{Please enter FwLink manually}}
 Help Version: {{Please enter version of help manually (X.X.X.X) format}}
 Locale: en-US
-ms.assetid: 578BD1DC-DC86-44A0-A38A-599B9C9F98B0
 ---
 
 # AzureRM.OperationalInsights Module
@@ -37,7 +36,7 @@ Starts collection of performance counters from Linux computers.
 Starts collection of syslog data from Linux computers.
 
 ### [Get-AzureRmOperationalInsightsDataSource](Get-AzureRmOperationalInsightsDataSource.md)
-Gets data sources.
+Get datasources under Azure Log Analytics workspace.
 
 ### [Get-AzureRmOperationalInsightsIntelligencePacks](Get-AzureRmOperationalInsightsIntelligencePacks.md)
 Gets the available Intelligence Packs.

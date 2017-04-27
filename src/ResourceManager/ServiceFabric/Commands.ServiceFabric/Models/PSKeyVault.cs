@@ -31,5 +31,21 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
 
         public string KeyVaultSecretVersion { get; set; }
 
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+
+            const string spaces = "    ";
+            sb.AppendLine(string.Format("{0} {1} : {2}", "", "KeyVaultName", this.KeyVaultName));
+            sb.AppendLine(string.Format("{0} {1} :", "    ", "Certificate:"));
+            sb.AppendLine(string.Format("{0} {1}", spaces, this.Certificate));
+            sb.AppendLine(string.Format("{0} {1} : {2}", spaces, "KeyVaultCertificateName", this.KeyVaultCertificateName));
+            sb.AppendLine(string.Format("{0} {1} : {2}", spaces, "KeyVaultSecretName", this.KeyVaultSecretName));
+            sb.AppendLine(string.Format("{0} {1} : {2}", spaces, "KeyVaultSecretVersion", this.KeyVaultSecretVersion));
+            sb.AppendLine(string.Format("{0} {1} : {2}", spaces, "Thumbprint", this.Thumbprint));
+
+            return sb.ToString();
+        }
     }
 }
