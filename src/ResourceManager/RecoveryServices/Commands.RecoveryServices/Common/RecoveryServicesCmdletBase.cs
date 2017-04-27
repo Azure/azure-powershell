@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             {
                 if (this.recoveryServicesClient == null)
                 {
-                    this.recoveryServicesClient = new PSRecoveryServicesClient(DefaultProfile, DefaultContext);
+                    this.recoveryServicesClient = new PSRecoveryServicesClient(DefaultContext);
                 }
 
                 return this.recoveryServicesClient;

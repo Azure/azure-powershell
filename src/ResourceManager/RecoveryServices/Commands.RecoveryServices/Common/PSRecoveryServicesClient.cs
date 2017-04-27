@@ -56,10 +56,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
         }
 
-        /// Azure profile
-        /// </summary>
-        public IAzureProfile Profile { get; set; }
-
         /// <summary>
         /// Resource credentials holds vault, cloud service name, vault key and other details.
         /// </summary>
@@ -89,7 +85,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// required current subscription.
         /// </summary>
         /// <param name="azureSubscription">Azure Subscription</param>
-        public PSRecoveryServicesClient(IAzureProfile azureProfile, AzureContext defaultContext)
+        public PSRecoveryServicesClient(AzureContext defaultContext)
         {
             System.Configuration.Configuration recoveryServicesConfig = ConfigurationManager.OpenExeConfiguration(System.Reflection.Assembly.GetExecutingAssembly().Location);
 

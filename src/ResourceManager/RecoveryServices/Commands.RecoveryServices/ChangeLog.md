@@ -18,7 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Moved client from Hydra to Swagger
+* Underlying client upgrade
+* Shouldprocess support in selected cmdlets
 * Bug fixes
     - Bug 11079283:[Livesite] Powershell Sending AuthType = Invalid to AddResourceCertificate call => fixed; always sends AuthType=ACS
 
