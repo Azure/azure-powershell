@@ -21,11 +21,7 @@ Removes a backend specified by the Identifier from the Api Management.
 
 ## EXAMPLES
 
-### --------------------------  Example 1  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
+### Example 1: Remove the Backend 123
 ```
 Remove-AzureRmApiManagementBackend -Context $apimContext -BackendId 123 -PassThru
 ```
@@ -124,3 +120,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+[Get-AzureRmApiManagementBackend](./Get-AzureRmApiManagementBackend)
+
+[New-AzureRmApiManagementBackend](./New-AzureRmApiManagementBackend.md)
+
+[New-AzureRmApiManagementBackendCredential](./New-AzureRmApiManagementBackendCredential.md)
+
+[New-AzureRmApiManagementBackendProxy](./New-AzureRmApiManagementBackendProxy.md)
+
+[Set-AzureRmApiManagementBackend](./Set-AzureRmApiManagementBackend.md)

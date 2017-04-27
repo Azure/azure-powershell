@@ -12,28 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
     using Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Common.Storage;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
-    using Microsoft.WindowsAzure.Commands.Storage.File;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
-    using Microsoft.WindowsAzure.Storage.File;
     using System;
-    using System.IO;
     using System.Management.Automation;
-    using System.Reflection;
     using System.Security.Permissions;
     using System.Threading.Tasks;
 
-    [Cmdlet(VerbsLifecycle.Start, StorageNouns.CopyBlob, SupportsShouldProcess = true, DefaultParameterSetName = ContainerNameParameterSet),
+    /// <summary>
+    /// Start an Incremental copy operation from a Page blob snapshot to the specified destination Page blob.
+    /// </summary>
+    [Cmdlet(VerbsLifecycle.Start, StorageNouns.IncrementalCopyBlob, SupportsShouldProcess = true, DefaultParameterSetName = ContainerParameterSet),
        OutputType(typeof(AzureStorageBlob))]
-    public class StartAzureStorageBlobCopy : StorageDataMovementCmdletBase, IModuleAssemblyInitializer
+    public class StartAzureStorageBlobIncrementalCopy : StorageCloudBlobCmdletBase
     {
         private const string BlobTypeMismatch = "Blob type of the blob reference doesn't match blob type of the blob.";
 
@@ -58,31 +56,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private const string ContainerNameParameterSet = "ContainerName";
 
         /// <summary>
-        /// To copy from file with share name and file path to a blob represent with container name and blob name.
-        /// </summary>
-        private const string ShareNameParameterSet = "ShareName";
-
-        /// <summary>
-        /// To copy from file with share instance and file path to a blob represent with container name and blob name.
-        /// </summary>
-        private const string ShareParameterSet = "ShareInstance";
-
-        /// <summary>
-        /// To copy from file with file directory instance and file path to a blob with container name and blob name.
-        /// </summary>
-        private const string DirParameterSet = "DirInstance";
-
-        /// <summary>
-        /// To copy from file with file instance to a blob with container name and blob name.
-        /// </summary>
-        private const string FileParameterSet = "FileInstance";
-
-        /// <summary>
-        /// To copy from file with file instance to a blob with blob instance.
-        /// </summary>
-        private const string FileToBlobParameterSet = "FileInstanceToBlobInstance";
-
-        /// <summary>
         /// Source uri parameter set
         /// </summary>
         private const string UriParameterSet = "UriPipeline";
@@ -90,15 +63,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Alias("SrcICloudBlob", "SrcCloudBlob", "ICloudBlob", "SourceICloudBlob", "SourceCloudBlob")]
         [Parameter(HelpMessage = "CloudBlob Object", Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobParameterSet)]
         [Parameter(HelpMessage = "CloudBlob Object", Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobToBlobParameterSet)]
-        public CloudBlob CloudBlob { get; set; }
+        public CloudPageBlob CloudBlob { get; set; }
 
         [Alias("SourceCloudBlobContainer")]
         [Parameter(HelpMessage = "CloudBlobContainer Object", Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerParameterSet)]
         public CloudBlobContainer CloudBlobContainer { get; set; }
 
         [Alias("SourceBlob")]
-        [Parameter(HelpMessage = "Blob name", ParameterSetName = ContainerParameterSet, Mandatory = true, Position = 0)]
-        [Parameter(HelpMessage = "Blob name", ParameterSetName = ContainerNameParameterSet, Mandatory = true, Position = 0)]
+        [Parameter(HelpMessage = "Blob name", ParameterSetName = ContainerParameterSet, Mandatory = true)]
+        [Parameter(HelpMessage = "Blob name", ParameterSetName = ContainerNameParameterSet, Mandatory = true)]
         public string SrcBlob
         {
             get { return BlobName; }
@@ -116,33 +89,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
         private string ContainerName = String.Empty;
 
-        [Alias("SourceShareName")]
-        [Parameter(HelpMessage = "Source share name", Mandatory = true, ParameterSetName = ShareNameParameterSet)]
+        [Alias("SourceBlobSnapshotTime")]
+        [Parameter(HelpMessage = "Source Blob Snapshot Time", ParameterSetName = ContainerParameterSet, Mandatory = true)]
+        [Parameter(HelpMessage = "Source Blob Snapshot Time", ParameterSetName = ContainerNameParameterSet, Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public string SrcShareName { get; set; }
-
-        [Alias("SourceShare")]
-        [Parameter(HelpMessage = "Source share", Mandatory = true, ParameterSetName = ShareParameterSet)]
-        [ValidateNotNull]
-        public CloudFileShare SrcShare { get; set; }
-
-        [Alias("SourceDir")]
-        [Parameter(HelpMessage = "Source file directory", Mandatory = true, ParameterSetName = DirParameterSet)]
-        [ValidateNotNull]
-        public CloudFileDirectory SrcDir { get; set; }
-
-        [Alias("SourceFilePath")]
-        [Parameter(HelpMessage = "Source file path", Mandatory = true, ParameterSetName = ShareNameParameterSet)]
-        [Parameter(HelpMessage = "Source file path", Mandatory = true, ParameterSetName = ShareParameterSet)]
-        [Parameter(HelpMessage = "Source file path", Mandatory = true, ParameterSetName = DirParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public string SrcFilePath { get; set; }
-
-        [Alias("SourceFile")]
-        [Parameter(HelpMessage = "Source file", Mandatory = true, ValueFromPipeline = true, ParameterSetName = FileParameterSet)]
-        [Parameter(HelpMessage = "Source file", Mandatory = true, ValueFromPipeline = true, ParameterSetName = FileToBlobParameterSet)]
-        [ValidateNotNull]
-        public CloudFile SrcFile { get; set; }
+        public DateTimeOffset? SrcBlobSnapshotTime { get; set; }
 
         [Alias("SrcUri", "SourceUri")]
         [Parameter(HelpMessage = "Source blob uri", Mandatory = true,
@@ -154,10 +105,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(HelpMessage = "Destination container name", Mandatory = true, ParameterSetName = UriParameterSet)]
         [Parameter(HelpMessage = "Destination container name", Mandatory = true, ParameterSetName = BlobParameterSet)]
         [Parameter(HelpMessage = "Destination container name", Mandatory = true, ParameterSetName = ContainerParameterSet)]
-        [Parameter(HelpMessage = "Destination container name", Mandatory = true, ParameterSetName = ShareNameParameterSet)]
-        [Parameter(HelpMessage = "Destination container name", Mandatory = true, ParameterSetName = ShareParameterSet)]
-        [Parameter(HelpMessage = "Destination container name", Mandatory = true, ParameterSetName = DirParameterSet)]
-        [Parameter(HelpMessage = "Destination container name", Mandatory = true, ParameterSetName = FileParameterSet)]
         public string DestContainer { get; set; }
 
         [Alias("DestinationBlob")]
@@ -165,27 +112,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ParameterSetName = ContainerNameParameterSet)]
         [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ParameterSetName = BlobParameterSet)]
         [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ParameterSetName = ContainerParameterSet)]
-        [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ParameterSetName = ShareNameParameterSet)]
-        [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ParameterSetName = ShareParameterSet)]
-        [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ParameterSetName = DirParameterSet)]
-        [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ParameterSetName = FileParameterSet)]
         public string DestBlob { get; set; }
 
         [Alias("DestICloudBlob", "DestinationCloudBlob", "DestinationICloudBlob")]
         [Parameter(HelpMessage = "Destination CloudBlob object", Mandatory = true, ParameterSetName = BlobToBlobParameterSet)]
-        [Parameter(HelpMessage = "Destination CloudBlob object", Mandatory = true, ParameterSetName = FileToBlobParameterSet)]
-        public CloudBlob DestCloudBlob { get; set; }
+        public CloudPageBlob DestCloudBlob { get; set; }
 
         [Alias("SrcContext", "SourceContext")]
         [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerNameParameterSet)]
         [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobParameterSet)]
         [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobToBlobParameterSet)]
         [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerParameterSet)]
-        [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ShareNameParameterSet)]
-        [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ShareParameterSet)]
-        [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = DirParameterSet)]
-        [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = FileParameterSet)]
-        [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = FileToBlobParameterSet)]
         [Parameter(HelpMessage = "Source Azure Storage Context Object", ParameterSetName = UriParameterSet)]
         public override AzureStorageContext Context { get; set; }
 
@@ -223,11 +160,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             }
 
             base.BeginProcessing();
-        }
-
-        private IStorageFileManagement GetFileChannel()
-        {
-            return new StorageFileManagement(GetCmdletStorageContext());
         }
 
         /// <summary>
@@ -277,7 +209,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             switch (ParameterSetName)
             {
                 case ContainerNameParameterSet:
-                    copyAction = () => StartCopyBlob(srcChannel, destChannel, SrcContainer, SrcBlob, DestContainer, DestBlob);
+                    copyAction = () => StartCopyBlob(srcChannel, destChannel, SrcContainer, SrcBlob, SrcBlobSnapshotTime, DestContainer, DestBlob);
                     target = SrcBlob;
                     break;
 
@@ -292,56 +224,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     break;
 
                 case ContainerParameterSet:
-                    copyAction = () => StartCopyBlob(srcChannel, destChannel, CloudBlobContainer.Name, SrcBlob, DestContainer, DestBlob);
+                    copyAction = () => StartCopyBlob(srcChannel, destChannel, CloudBlobContainer.Name, SrcBlob, SrcBlobSnapshotTime, DestContainer, DestBlob);
                     target = SrcBlob;
                     break;
 
                 case BlobToBlobParameterSet:
                     copyAction = () => StartCopyBlob(destChannel, CloudBlob, DestCloudBlob);
                     target = CloudBlob.Name;
-                    break;
-                case ShareNameParameterSet:
-                    copyAction = () => StartCopyFromFile(
-                        this.GetFileChannel(),
-                        destChannel,
-                        this.SrcShareName,
-                        this.SrcFilePath,
-                        this.DestContainer,
-                        this.DestBlob);
-                    target = SrcFilePath;
-                    break;
-                case ShareParameterSet:
-                    copyAction = () => StartCopyFromFile(
-                        destChannel,
-                        this.SrcShare.GetRootDirectoryReference(),
-                        this.SrcFilePath,
-                        this.DestContainer,
-                        this.DestBlob);
-                    target = SrcFilePath;
-                    break;
-                case DirParameterSet:
-                    copyAction = () => StartCopyFromFile(
-                        destChannel,
-                        this.SrcDir,
-                        this.SrcFilePath,
-                        this.DestContainer,
-                        this.DestBlob);
-                    target = SrcFilePath;
-                    break;
-                case FileParameterSet:
-                    copyAction = () => StartCopyFromFile(
-                        destChannel,
-                        this.SrcFile,
-                        this.DestContainer,
-                        this.DestBlob);
-                    target = SrcFile.Name;
-                    break;
-                case FileToBlobParameterSet:
-                    copyAction = () => StartCopyFromFile(
-                        destChannel,
-                        this.SrcFile,
-                        this.DestCloudBlob);
-                    target = SrcFile.Name;
                     break;
             }
 
@@ -357,9 +246,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <param name="srcCloudBlob">Source CloudBlob object</param>
         /// <param name="destCloudBlob">Destination CloudBlob object</param>
         /// <returns>Destination CloudBlob object</returns>
-        private void StartCopyBlob(IStorageBlobManagement destChannel, CloudBlob srcCloudBlob, CloudBlob destCloudBlob)
+        private void StartCopyBlob(IStorageBlobManagement destChannel, CloudPageBlob srcCloudBlob, CloudPageBlob destCloudBlob)
         {
-            ValidateBlobType(srcCloudBlob);
+            VerifyIncrementalCopySourceBlob(srcCloudBlob);
 
             Func<long, Task> taskGenerator = (taskId) => StartCopyAsync(taskId, destChannel, srcCloudBlob, destCloudBlob);
             RunTask(taskGenerator);
@@ -372,14 +261,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <param name="destContainer">Destinaion container name</param>
         /// <param name="destBlobName">Destination blob name</param>
         /// <returns>Destination CloudBlob object</returns>
-        private void StartCopyBlob(IStorageBlobManagement destChannel, CloudBlob srcCloudBlob, string destContainer, string destBlobName)
+        private void StartCopyBlob(IStorageBlobManagement destChannel, CloudPageBlob srcCloudBlob, string destContainer, string destBlobName)
         {
             if (string.IsNullOrEmpty(destBlobName))
             {
                 destBlobName = srcCloudBlob.Name;
             }
 
-            CloudBlob destBlob = this.GetDestBlob(destChannel, destContainer, destBlobName, srcCloudBlob.BlobType);
+            CloudPageBlob destBlob = this.GetDestBlob(destChannel, destContainer, destBlobName);
 
             this.StartCopyBlob(destChannel, srcCloudBlob, destBlob);
         }
@@ -417,7 +306,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                         throw new ResourceNotFoundException(String.Format(Resources.BlobUriNotFound, sourceUri.ToString()));
                     }
 
-                    StartCopyBlob(destChannel, blobReference, destContainer, destBlobName);
+                    StartCopyBlob(destChannel, VerifyIncrementalCopySourceBlob(blobReference), destContainer, destBlobName);
                 }
                 else
                 {
@@ -440,7 +329,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <param name="destContainer">Destinaion container name</param>
         /// <param name="destBlobName">Destination blob name</param>
         /// <returns>Destination CloudBlob object</returns>
-        private void StartCopyBlob(IStorageBlobManagement SrcChannel, IStorageBlobManagement destChannel, string srcContainerName, string srcBlobName, string destContainerName, string destBlobName)
+        private void StartCopyBlob(IStorageBlobManagement SrcChannel, IStorageBlobManagement destChannel, string srcContainerName, string srcBlobName, DateTimeOffset? SrcBlobSnapshotTime, string destContainerName, string destBlobName)
         {
             NameUtil.ValidateBlobName(srcBlobName);
             NameUtil.ValidateContainerName(srcContainerName);
@@ -453,53 +342,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             AccessCondition accessCondition = null;
             BlobRequestOptions options = RequestOptions;
             CloudBlobContainer container = SrcChannel.GetContainerReference(srcContainerName);
-            CloudBlob blob = GetBlobReferenceFromServerWithContainer(SrcChannel, container, srcBlobName, accessCondition, options, OperationContext);
+            CloudBlob blob = GetBlobReferenceFromServerWithContainer(SrcChannel, container, srcBlobName, accessCondition, options, OperationContext, SrcBlobSnapshotTime);
 
-            this.StartCopyBlob(destChannel, blob, destContainerName, destBlobName);
+            this.StartCopyBlob(destChannel, VerifyIncrementalCopySourceBlob(blob), destContainerName, destBlobName);
         }
 
-        private void StartCopyFromFile(IStorageFileManagement srcChannel, IStorageBlobManagement destChannel, string srcShareName, string srcFilePath, string destContainerName, string destBlobName)
-        {
-            NamingUtil.ValidateShareName(srcShareName, false);
-            CloudFileShare share = srcChannel.GetShareReference(srcShareName);
-
-            this.StartCopyFromFile(destChannel, share.GetRootDirectoryReference(), srcFilePath, destContainerName, destBlobName);
-        }
-
-        private void StartCopyFromFile(IStorageBlobManagement destChannel, CloudFileDirectory srcDir, string srcFilePath, string destContainerName, string destBlobName)
-        {
-            string[] path = NamingUtil.ValidatePath(srcFilePath, true);
-            CloudFile file = srcDir.GetFileReferenceByPath(path);
-
-            this.StartCopyFromFile(destChannel, file, destContainerName, destBlobName);
-        }
-
-        private void StartCopyFromFile(IStorageBlobManagement destChannel, CloudFile srcFile, string destContainerName, string destBlobName)
-        {
-            if (string.IsNullOrEmpty(destBlobName))
-            {
-                destBlobName = srcFile.GetFullPath();
-            }
-
-            CloudBlob destBlob = this.GetDestBlob(destChannel, destContainerName, destBlobName, BlobType.BlockBlob);
-
-            this.StartCopyFromFile(destChannel, srcFile, destBlob);
-        }
-
-        private void StartCopyFromFile(IStorageBlobManagement destChannel, CloudFile srcFile, CloudBlob destBlob)
-        {
-            CloudBlockBlob destBlockBlob = destBlob as CloudBlockBlob;
-
-            if (null == destBlockBlob)
-            {
-                throw new InvalidOperationException(Resources.OnlyCopyFromBlockBlobToAzureFile);
-            }
-
-            Func<long, Task> taskGenerator = (taskId) => this.StartCopyFromFile(taskId, destChannel, srcFile, destBlockBlob); ;
-            RunTask(taskGenerator);
-        }
-
-        private async Task StartCopyFromBlob(long taskId, IStorageBlobManagement destChannel, CloudBlob srcBlob, CloudBlob destBlob)
+        private async Task StartCopyFromBlob(long taskId, IStorageBlobManagement destChannel, CloudPageBlob srcBlob, CloudPageBlob destBlob)
         {
             try
             {
@@ -521,62 +369,21 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             }
         }
 
-        private async Task StartCopyFromUri(long taskId, IStorageBlobManagement destChannel, Uri srcUri, CloudBlob destBlob)
+        private async Task StartCopyFromUri(long taskId, IStorageBlobManagement destChannel, Uri srcUri, CloudPageBlob destBlob)
         {
-
-            bool destExist = true;
-            try
-            {
-                await destBlob.FetchAttributesAsync(null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
-            }
-            catch (StorageException ex)
-            {
-                if (ex.IsNotFoundException())
-                {
-                    destExist = false;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            if (!destExist || this.ConfirmOverwrite(srcUri.AbsoluteUri.ToString(), destBlob.Uri.ToString()))
-            {
-                string copyId = await destChannel.StartCopyAsync(destBlob, srcUri, null, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
-                this.OutputStream.WriteVerbose(taskId, String.Format(Resources.CopyDestinationBlobPending, destBlob.Name, destBlob.Container.Name, copyId));
-                this.WriteCloudBlobObject(taskId, destChannel, destBlob);
-            }
+            //Don't need to verify the Dest Exist and warn user for overwrite, since incremental Copy won't overwrite the dest blob, but will create a new snapshot for it.
+            string copyId = await destChannel.StartIncrementalCopyAsync(destBlob, new CloudPageBlob(srcUri), null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
+            this.OutputStream.WriteVerbose(taskId, String.Format(Resources.CopyDestinationBlobPending, destBlob.Name, destBlob.Container.Name, copyId));
+            this.WriteCloudBlobObject(taskId, destChannel, destBlob);
         }
 
-        private async Task StartCopyFromFile(long taskId, IStorageBlobManagement destChannel, CloudFile srcFile, CloudBlockBlob destBlob)
-        {
-            await this.StartCopyFromUri(taskId, destChannel, srcFile.GenerateUriWithCredentials(), destBlob).ConfigureAwait(false);
-        }
-
-        private CloudBlob GetDestBlob(IStorageBlobManagement destChannel, string destContainerName, string destBlobName, BlobType blobType)
+        private CloudPageBlob GetDestBlob(IStorageBlobManagement destChannel, string destContainerName, string destBlobName)
         {
             NameUtil.ValidateContainerName(destContainerName);
             NameUtil.ValidateBlobName(destBlobName);
 
             CloudBlobContainer container = destChannel.GetContainerReference(destContainerName);
-            CloudBlob destBlob = null;
-            if (BlobType.PageBlob == blobType)
-            {
-                destBlob = container.GetPageBlobReference(destBlobName);
-            }
-            else if (BlobType.BlockBlob == blobType)
-            {
-                destBlob = container.GetBlockBlobReference(destBlobName);
-            }
-            else if (BlobType.AppendBlob == blobType)
-            {
-                destBlob = container.GetAppendBlobReference(destBlobName);
-            }
-            else
-            {
-                throw new ArgumentException(String.Format(Resources.InvalidBlobType, blobType, destBlobName));
-            }
+            CloudPageBlob destBlob = container.GetPageBlobReference(destBlobName);
 
             return destBlob;
         }
@@ -588,7 +395,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <param name="destContainer">Destination CloudBlobContainer object</param>
         /// <param name="destBlobName">Destination blob name</param>
         /// <returns>Destination CloudBlob object</returns>
-        private async Task StartCopyAsync(long taskId, IStorageBlobManagement destChannel, CloudBlob sourceBlob, CloudBlob destBlob)
+        private async Task StartCopyAsync(long taskId, IStorageBlobManagement destChannel, CloudPageBlob sourceBlob, CloudPageBlob destBlob)
         {
             NameUtil.ValidateBlobName(sourceBlob.Name);
             NameUtil.ValidateContainerName(destBlob.Container.Name);
@@ -609,22 +416,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             NameUtil.ValidateContainerName(destContainer.Name);
             NameUtil.ValidateBlobName(destBlobName);
 
-            CloudBlob sourceBlob = new CloudBlob(uri);
-            BlobType destBlobType = BlobType.BlockBlob;
-            try
-            {
-                await sourceBlob.FetchAttributesAsync(null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken);
+            CloudPageBlob sourceBlob = new CloudPageBlob(uri);
+            //try
+            //{
+            await sourceBlob.FetchAttributesAsync(null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken);
+            VerifyIncrementalCopySourceBlob(sourceBlob);
 
-                //When the source Uri is a file Uri, will get BlobType.Unspecified, and should use block blob in destination
-                if (sourceBlob.BlobType != BlobType.Unspecified)
-                    destBlobType = sourceBlob.BlobType;
-            }
-            catch (StorageException)
-            {
-                //use block blob by default
-                destBlobType = BlobType.BlockBlob;
-            }
-            CloudBlob destBlob = GetDestBlob(destChannel, destContainer.Name, destBlobName, destBlobType);
+            //}
+            //catch (StorageException) 
+            //{
+            //    //The source blob don't have read permission
+            //    //We should no block the copy in this case, 
+            //}
+            CloudPageBlob destBlob = GetDestBlob(destChannel, destContainer.Name, destBlobName);
 
             await this.StartCopyFromUri(taskId, destChannel, uri, destBlob);
         }
@@ -636,30 +440,26 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <param name="blobName">Blob name</param>
         /// <param name="copyId">Current CopyId</param>
         /// <returns>Destination CloudBlob object</returns>
-        private CloudBlob GetDestinationBlobWithCopyId(IStorageBlobManagement destChannel, CloudBlobContainer container, string blobName)
+        private CloudPageBlob GetDestinationBlobWithCopyId(IStorageBlobManagement destChannel, CloudBlobContainer container, string blobName)
         {
             AccessCondition accessCondition = null;
             BlobRequestOptions options = RequestOptions;
-            CloudBlob blob = destChannel.GetBlobReferenceFromServer(container, blobName, accessCondition, options, OperationContext);
+            CloudPageBlob blob = (CloudPageBlob)destChannel.GetBlobReferenceFromServer(container, blobName, accessCondition, options, OperationContext);
             return blob;
         }
 
-        public void OnImport()
+        /// <summary>
+        /// Check if the Source Blob is a Page Blob Snapshot
+        /// </summary>
+        /// <param name="blob">Source Blob</param>
+        /// <returns>Source Blob</returns>
+        private CloudPageBlob VerifyIncrementalCopySourceBlob(CloudBlob blob)
         {
-            try
+            if (blob.Properties.BlobType != BlobType.PageBlob && blob.IsSnapshot == true)
             {
-                PowerShell invoker = null;
-                invoker = PowerShell.Create(RunspaceMode.CurrentRunspace);
-                invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
-                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                    "AzureStorageStartup.ps1")));
-                invoker.Invoke();
+                throw new ArgumentException(String.Format("Blob {0} with Type {1} is not supported as incremental copy source, only page blob snapshot is supported as incremental copy source.", blob.Name, blob.Properties.BlobType));
             }
-            catch
-            {
-                // Ignore exception.
-            }
+            return (CloudPageBlob)blob;
         }
-
     }
 }
