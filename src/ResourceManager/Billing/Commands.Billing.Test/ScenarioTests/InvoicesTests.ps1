@@ -89,7 +89,7 @@ Get invoice with specified name
 #>
 function Test-GetInvoiceWithName
 {
-	$invoiceName = "2017-02-09-117646100066812"
+	$invoiceName = "201705-217994100075389"
     $invoice = Get-AzureRmBillingInvoice -Name $invoiceName
 
 	Assert-AreEqual $invoiceName $invoice.Name
@@ -99,4 +99,30 @@ function Test-GetInvoiceWithName
 	Assert-NotNull $invoice.InvoicePeriodEndDate
 	Assert-NotNull $invoice.DownloadUrl
 	Assert-NotNull $invoice.DownloadUrlExpiry
+	Assert-NotNull $invoice.BillingPeriodNames
+	Assert-AreEqual 1 $invoice.BillingPeriodNames.Count
+	Assert-AreEqual "201705-1" $invoice.BillingPeriodNames
+}
+
+<#
+.SYNOPSIS
+Get invoice with specified names
+#>
+function Test-GetInvoiceWithNames
+{
+	$invoiceNames = "201705-217994100075389", "201704-117049130068772", "201703-117646100066812"
+    $billingInvoices = Get-AzureRmBillingInvoice -Name $invoiceNames
+
+    Assert-True {$billingInvoices.Count -eq 3}
+	Foreach($invoice in $billingInvoices)
+	{
+		Assert-NotNull $invoice.Id
+		Assert-NotNull $invoice.Type
+		Assert-NotNull $invoice.InvoicePeriodStartDate
+		Assert-NotNull $invoice.InvoicePeriodEndDate
+		Assert-NotNull $invoice.DownloadUrl
+		Assert-NotNull $invoice.DownloadUrlExpiry	
+		Assert-NotNull $invoice.BillingPeriodNames
+		Assert-AreEqual 1 $invoice.BillingPeriodNames.Count
+	}
 }

@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.Invoices
 
         [Parameter(Mandatory = true, HelpMessage = "Name of a specific invoice to get.", ParameterSetName = Constants.ParameterSetNames.SingleItemParameterSet)]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public List<string> Name { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of records to return.", ParameterSetName = Constants.ParameterSetNames.ListParameterSet)]
         [ValidateNotNull]
@@ -44,31 +44,46 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.Invoices
 
         public override void ExecuteCmdlet()
         {
-            if (ParameterSetName.Equals(Constants.ParameterSetNames.ListParameterSet))
+            try
             {
-                string expand = this.GenerateDownloadUrl.IsPresent ? DownloadUrlExpand : null;
-
-                if (MaxCount.HasValue && (MaxCount.Value > 100 || MaxCount.Value < 1))
+                if (ParameterSetName.Equals(Constants.ParameterSetNames.ListParameterSet))
                 {
-                    throw new PSArgumentException(Resources.MaxCountExceedRangeError);
+                    string expand = this.GenerateDownloadUrl.IsPresent ? DownloadUrlExpand : null;
+
+                    if (MaxCount.HasValue && (MaxCount.Value > 100 || MaxCount.Value < 1))
+                    {
+                        throw new PSArgumentException(Resources.MaxCountExceedRangeError);
+                    }
+
+                    WriteObject(BillingManagementClient.Invoices.List(expand, null, null, MaxCount).Select(x => new PSInvoice(x)), true);
+                    return;
                 }
 
-                WriteObject(BillingManagementClient.Invoices.List(expand, null, null, MaxCount).Select(x => new PSInvoice(x)));
-                return;
+                if (ParameterSetName.Equals(Constants.ParameterSetNames.LatestItemParameterSet))
+                {
+                    Invoice invoice = BillingManagementClient.Invoices.GetLatest();
+                    WriteObject(new PSInvoice(invoice));
+                }
+                else if (ParameterSetName.Equals(Constants.ParameterSetNames.SingleItemParameterSet))
+                {
+                    foreach (var invoiceName in Name)
+                    {
+                        try
+                        {
+                            var invoice = new PSInvoice(BillingManagementClient.Invoices.Get(invoiceName));
+                            WriteObject(invoice);
+                        }
+                        catch (ErrorResponseException error)
+                        {
+                            WriteWarning(invoiceName + ": " + error.Body.Error.Message);
+                            // continue with the next
+                        }
+                    }
+                }
             }
-
-            Invoice invoice = null;
-            if (ParameterSetName.Equals(Constants.ParameterSetNames.LatestItemParameterSet))
+            catch (ErrorResponseException e)
             {
-                invoice = BillingManagementClient.Invoices.GetLatest();
-            }
-            else if (ParameterSetName.Equals(Constants.ParameterSetNames.SingleItemParameterSet))
-            {
-                invoice = BillingManagementClient.Invoices.Get(this.Name);
-            }
-            if (invoice != null)
-            {
-                WriteObject(new PSInvoice(invoice));
+                WriteWarning(e.Body.Error.Message);
             }
         }
     }
