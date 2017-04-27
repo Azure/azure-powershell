@@ -317,12 +317,14 @@ function Test-AEMExtensionAdvancedLinuxMD
 
     try
     {
-        Write-Verbose "Start the test Test-AEMExtensionAdvancedLinuxMD"
+        Write-Host "Start the test Test-AEMExtensionAdvancedLinuxMD"
         # Setup
         $vm = Create-AdvancedVM -rgname $rgname -loc $loc -vmsize 'Standard_DS2' -stotype 'Premium_LRS' -nicCount 2 -useMD -linux
+		$vmname = $vm.Name
+		$vm = Get-AzureRmVM -ResourceGroupName $rgname -Name $vmname
 		Add-AzureRmVMDataDisk -VM $vm -StorageAccountType StandardLRS -Lun (($vm.StorageProfile.DataDisks | select -ExpandProperty Lun | Measure-Object -Maximum).Maximum + 1) -CreateOption Empty -DiskSizeInGB 10 | Update-AzureRmVM
 		
-        $vmname = $vm.Name
+        
         Write-Verbose "Test-AEMExtensionAdvancedLinuxMD: VM created"
 
         # Get with not extension
@@ -348,9 +350,9 @@ function Test-AEMExtensionAdvancedLinuxMD
         
 
         Assert-NotNull $extension
-        Assert-AreEqual $extension.Publisher 'Microsoft.AzureCAT.AzureEnhancedMonitoring'
-        Assert-AreEqual $extension.ExtensionType 'AzureCATExtensionHandler'
-        Assert-AreEqual $extension.Name 'AzureCATExtensionHandler'
+        Assert-AreEqual $extension.Publisher 'Microsoft.OSTCExtensions'
+        Assert-AreEqual $extension.ExtensionType 'AzureEnhancedMonitorForLinux'
+        Assert-AreEqual $extension.Name 'AzureEnhancedMonitorForLinux'
         $settings = $extension.PublicSettings | ConvertFrom-Json
         Assert-NotNull $settings.cfg
         Write-Verbose "Test-AEMExtensionAdvancedLinuxMD: Get done"
