@@ -182,7 +182,14 @@ namespace Commands.Storage.ScenarioTest.Functional.Blob
             }
             
             Test.Info(String.Format("Copy Big file to blob '{0}'", blob.Name));
-            blob.StartCopyFromBlob(new Uri(uri));
+
+            if (blob.BlobType == Microsoft.WindowsAzure.Storage.Blob.BlobType.BlockBlob)
+                ((CloudBlockBlob)blob).StartCopy(new Uri(uri));
+            else if (blob.BlobType == Microsoft.WindowsAzure.Storage.Blob.BlobType.PageBlob)
+                ((CloudPageBlob)blob).StartCopy(new Uri(uri));
+            else
+                ((CloudAppendBlob)blob).StartCopy(new Uri(uri));
+
             Test.Assert(blob.CopyState.Status == CopyStatus.Pending, String.Format("The copy status should be pending, actually it's {0}", blob.CopyState.Status));
         }
     }
