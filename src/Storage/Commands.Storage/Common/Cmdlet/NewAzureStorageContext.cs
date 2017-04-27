@@ -341,7 +341,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 
             if (null != SMProfile)
             {
-                if (DefaultContext != null && string.IsNullOrEmpty(azureEnvironmentName))
+                if (DefaultContext != null && DefaultContext.Environment != null && string.IsNullOrEmpty(azureEnvironmentName))
                 {
                     azureEnvironment = DefaultContext.Environment;
 

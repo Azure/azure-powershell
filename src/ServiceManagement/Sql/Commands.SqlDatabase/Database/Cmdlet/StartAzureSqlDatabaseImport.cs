@@ -22,6 +22,7 @@ using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server;
 using Microsoft.WindowsAzure.Management.Sql;
 using Microsoft.WindowsAzure.Management.Sql.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Storage.Adapters;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
 {
@@ -74,7 +75,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
             ParameterSetName = ByContainerNameParameterSet,
             HelpMessage = "The storage connection context")]
         [ValidateNotNull]
-        public AzureStorageContext StorageContext { get; set; }
+        public IStorageContext StorageContext { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the storage container to use.
@@ -208,7 +209,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
                     case ByContainerNameParameterSet:
                         accessKey =
                             System.Convert.ToBase64String(
-                                this.StorageContext.StorageAccount.Credentials.ExportKey());
+                                this.StorageContext.GetCloudStorageAccount().Credentials.ExportKey());
 
                         blobUri =
                             this.StorageContext.BlobEndPoint +

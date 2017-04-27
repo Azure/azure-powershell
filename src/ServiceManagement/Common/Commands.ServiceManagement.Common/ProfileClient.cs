@@ -667,6 +667,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
 
                 Profile.DefaultSubscription = subscription;
                 Profile.DefaultSubscription.SetAccount(accountName);
+                subscription.SetDefault();
             }
 
             return subscription;
@@ -953,11 +954,11 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             }
             if (!string.Equals(account1.Id, account2.Id, StringComparison.InvariantCultureIgnoreCase))
             {
-                throw new ArgumentException("Account Ids do not match.");
+                throw new ArgumentException(string.Format("Account Ids '{0}', '{1}' do not match.", account1.Id, account2.Id));
             }
             if (!string.Equals(account1.Type, account2.Type, StringComparison.InvariantCultureIgnoreCase))
             {
-                throw new ArgumentException("Account1 types do not match.");
+                throw new ArgumentException(string.Format("Account1 types '{0}', '{1}' do not match for account id {2}", account1.Type, account2.Type, account1.Id));
             }
             AzureAccount mergeAccount = new AzureAccount
             {

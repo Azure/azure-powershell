@@ -50,6 +50,11 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
         [TestMethod]
         public void ImportExportAzureSqlDatabaseTests()
         {
+            if (AzureRmProfileProvider.Instance != null)
+            {
+                AzureRmProfileProvider.Instance.Profile = null;
+            }
+
             using (System.Management.Automation.PowerShell powershell = System.Management.Automation.PowerShell.Create())
             {
                 // Setup the subscription used for the test
