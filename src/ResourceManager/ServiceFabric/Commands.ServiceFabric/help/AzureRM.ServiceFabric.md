@@ -8,53 +8,53 @@ Locale: en-US
 
 # AzureRM.ServiceFabric Module
 ## Description
-Azure Service Fabric Module
+Azure Service Fabric Module that you can use to automate the end-2-end operations like creating a secure cluster, rolling over cluster certificates, adding or removed nodes from the cluster etc. the complete list of all operations are listed below.
 
 ## AzureRM.ServiceFabric Cmdlets
 ### [Add-AzureRmServiceFabricApplicationCertificate](Add-AzureRmServiceFabricApplicationCertificate.md)
 Add an certificate which will be used as application certificate
 
 ### [Add-AzureRmServiceFabricClientCertificate](Add-AzureRmServiceFabricClientCertificate.md)
-Add common name or thumbprint to the cluster for client authentication
+Add common name or thumbprint to the cluster settings for client authentication
 
 ### [Add-AzureRmServiceFabricClusterCertificate](Add-AzureRmServiceFabricClusterCertificate.md)
-Add a secondary cluster certificate to the cluster 
+Add a secondary cluster certificate to the cluster for rolling over the existing certificate 
 
 ### [Add-AzureRmServiceFabricNodes](Add-AzureRmServiceFabricNodes.md)
-Add nodes to the specific node type
+Add nodes/VMs to a specific node type to a cluster
 
 ### [Add-AzureRmServiceFabricNodeType](Add-AzureRmServiceFabricNodeType.md)
-Add a node type to the existing cluster
+Add a node type/VMs to an existing cluster
 
 ### [Get-AzureRmServiceFabricCluster](Get-AzureRmServiceFabricCluster.md)
-Get the cluster resource 
+Get the details of the cluster resource 
 
 ### [New-AzureRmServiceFabricCluster](New-AzureRmServiceFabricCluster.md)
-Create an new ServiceFabric cluster
+Create an new ServiceFabric cluster. This command has many overloads to cover various scenarios
 
 ### [Remove-AzureRmServiceFabricClientCertificate](Remove-AzureRmServiceFabricClientCertificate.md)
-Remove client certificate from the cluster
+Remove client certificate from being used to access the cluster
 
 ### [Remove-AzureRmServiceFabricClusterCertificate](Remove-AzureRmServiceFabricClusterCertificate.md)
-Remove cluster certificate
+Remove cluster certificate from being used for cluster security
 
 ### [Remove-AzureRmServiceFabricNodes](Remove-AzureRmServiceFabricNodes.md)
-Remove nodes from the specific node type
+Remove nodes from the specific node type from a cluster
 
 ### [Remove-AzureRmServiceFabricNodeType](Remove-AzureRmServiceFabricNodeType.md)
-Remove a node type from the cluster
+Remove a node type from a cluster
 
 ### [Remove-AzureRmServiceFabricSettings](Remove-AzureRmServiceFabricSettings.md)
-Remove one or multiple ServiceFabric settings from the cluster
+Remove one or more ServiceFabric settings from the cluster
 
 ### [Set-AzureRmServiceFabricSettings](Set-AzureRmServiceFabricSettings.md)
-Add or update one or multiple ServiceFabric settings to the cluster
+Add or update one or more ServiceFabric settings to the cluster
 
 ### [Set-AzureRmServiceFabricUpgradeType](Set-AzureRmServiceFabricUpgradeType.md)
-Set ServiceFabric upgrade type of the cluster
+Change the ServiceFabric upgrade type of a cluster
 
 ### [Update-AzureRmServiceFabricDurability](Update-AzureRmServiceFabricDurability.md)
-Update durability of the cluster
+Change the durability tier of a cluster
 
 ### [Update-AzureRmServiceFabricReliability](Update-AzureRmServiceFabricReliability.md)
-Update reliability of the cluster
+Change the reliability tier of a cluster
