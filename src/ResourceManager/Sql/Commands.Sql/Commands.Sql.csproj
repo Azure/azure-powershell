@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Advisor\Cmdlet\AdvisorAutoExecuteStatus.cs" />
     <Compile Include="Database\Model\DatabaseReadScale.cs" />
+    <Compile Include="Database\Model\AzureSqlDatabaseCreateOrUpdateModel.cs" />
     <Compile Include="Failover Group\Cmdlet\AddAzureSqlDatabaseToFailoverGroup.cs" />
     <Compile Include="Failover Group\Cmdlet\AzureSqlFailoverGroupCmdletBase.cs" />
     <Compile Include="Failover Group\Cmdlet\GetAzureSqlFailoverGroup.cs" />
@@ -502,12 +503,12 @@
       <Aliases>MicrosoftAzureCommandsResources</Aliases>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Microsoft.Azure.Commands.Sql.dll-Help.xml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="AfterBuild">
+    <ItemGroup>
+      <MarkdownFiles Include="$(ProjectDir)help\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
+  </Target>
 </Project>

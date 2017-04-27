@@ -17,18 +17,18 @@ Enables replication for a protectable item by creating a protected item
 New-AzureRmSiteRecoveryReplicationProtectedItem [-WaitForCompletion] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### EnterpriseToAzure
-```
-New-AzureRmSiteRecoveryReplicationProtectedItem -ProtectableItem <ASRProtectableItem> -Name <String>
- -ProtectionContainerMapping <ASRProtectionContainerMapping> -RecoveryAzureStorageAccountId <String>
- [-WaitForCompletion] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### EnterpriseToEnterprise
 ```
 New-AzureRmSiteRecoveryReplicationProtectedItem -ProtectableItem <ASRProtectableItem> -Name <String>
  -ProtectionContainerMapping <ASRProtectionContainerMapping> [-WaitForCompletion] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### EnterpriseToAzure
+```
+New-AzureRmSiteRecoveryReplicationProtectedItem -ProtectableItem <ASRProtectableItem> -Name <String>
+ -ProtectionContainerMapping <ASRProtectionContainerMapping> -RecoveryAzureStorageAccountId <String>
+ [-WaitForCompletion] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### HyperVSiteToAzure
@@ -46,49 +46,49 @@ Use this cmdlet to enable replication for a protectable item.
 
 ## PARAMETERS
 
-### -WaitForCompletion
-Indicates that the cmdlet waits for completion.
+### -Name
+Specifies the name of the Azure Site Recovery Replication Protected Item.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
+Type: String
+Parameter Sets: EnterpriseToEnterprise, EnterpriseToAzure, HyperVSiteToAzure
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-
-The cmdlet is not run.
+### -OS
+Specifies the operating system family.
+The acceptable values for this parameter are: Windows or Linux.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
+Type: String
+Parameter Sets: HyperVSiteToAzure
+Aliases: 
+Accepted values: Windows, Linux
 
-Required: False
+Required: True
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -OSDiskName
+Specifies the name of the operating system disk.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
+Type: String
+Parameter Sets: HyperVSiteToAzure
+Aliases: 
 
-Required: False
+Required: True
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -98,7 +98,7 @@ Specifies the Azure Site Recovery Protectable Item.
 
 ```yaml
 Type: ASRProtectableItem
-Parameter Sets: EnterpriseToAzure, EnterpriseToEnterprise, HyperVSiteToAzure
+Parameter Sets: EnterpriseToEnterprise, EnterpriseToAzure, HyperVSiteToAzure
 Aliases: 
 
 Required: True
@@ -108,27 +108,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Specifies the name of the Azure Site Recovery Replication Protected Item.
-
-```yaml
-Type: String
-Parameter Sets: EnterpriseToAzure, EnterpriseToEnterprise, HyperVSiteToAzure
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ProtectionContainerMapping
 Specifies the Azure Site Recovery Protection Container mapping object to use for replication.
 
 ```yaml
 Type: ASRProtectionContainerMapping
-Parameter Sets: EnterpriseToAzure, EnterpriseToEnterprise, HyperVSiteToAzure
+Parameter Sets: EnterpriseToEnterprise, EnterpriseToAzure, HyperVSiteToAzure
 Aliases: 
 
 Required: True
@@ -153,33 +138,49 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OSDiskName
-Specifies the name of the operating system disk.
+### -WaitForCompletion
+Indicates that the cmdlet waits for completion.
 
 ```yaml
-Type: String
-Parameter Sets: HyperVSiteToAzure
+Type: SwitchParameter
+Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OS
-Specifies the operating system family.
-The acceptable values for this parameter are: Windows or Linux.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: String
-Parameter Sets: HyperVSiteToAzure
-Aliases: 
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

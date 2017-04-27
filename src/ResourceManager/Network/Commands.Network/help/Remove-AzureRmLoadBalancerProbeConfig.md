@@ -13,8 +13,7 @@ Removes a probe configuration from a load balancer.
 ## SYNTAX
 
 ```
-Remove-AzureRmLoadBalancerProbeConfig [-Name <String>] -LoadBalancer <PSLoadBalancer>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+Remove-AzureRmLoadBalancerProbeConfig [-Name <String>] -LoadBalancer <PSLoadBalancer> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,45 +32,6 @@ The first command gets the load balancer named MyLoadBalancer, and then stores i
 The second command deletes the configuration named MyProbe from the load balancer in $loadbalancer.
 
 ## PARAMETERS
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -LoadBalancer
 Specifies the load balancer that contains the probe configuration that this cmdlet removes.

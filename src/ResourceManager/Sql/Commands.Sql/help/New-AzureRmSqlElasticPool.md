@@ -109,15 +109,9 @@ Accept wildcard characters: False
 ```
 
 ### -StorageMB
-Specifies the storage limit, in megabytes, for the elastic pool.
-You cannot specify a value for this parameter for the Premium edition.
+Specifies the storage limit, in megabytes, for the elastic pool. If you do not specify this parameter, this cmdlet calculates a value that depends on the value of the *Dtu* parameter.
 
-If you do not specify this parameter, this cmdlet calculates a value that depends on the value of the *Dtu* parameter.
-We recommend that you do not specify the *StorageMB* parameter.
-
-If you specify *StorageMB*, but do not specify *Dtu*, the cmdlet calculates a value for *Dtu*.
-If you specify values for both, the values must be consistent.
-For more information about the relationship between storage and DTUs, see https://azure.microsoft.com/en-us/documentation/articles/sql-database-elastic-pool-reference/https://azure.microsoft.com/en-us/documentation/articles/sql-database-elastic-pool-reference/.
+See [eDTU and storage limits](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool#edtu-and-storage-limits-for-elastic-pools) for possible values.
 
 ```yaml
 Type: Int32

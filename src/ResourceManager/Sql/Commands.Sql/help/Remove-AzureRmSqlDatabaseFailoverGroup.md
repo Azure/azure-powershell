@@ -20,15 +20,12 @@ Remove-AzureRmSqlDatabaseFailoverGroup [-FailoverGroupName] <String> [-PartnerRe
 ## DESCRIPTION
 This command deletes all secondary databases included the FG and removes the FG object with the specified name from each participating server. The primary databases will become regular read-write databases. The listener endpoint will be unregistered from DNS.  
 
-
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> PS C:\> Remove-AzureRmSqlDatabaseFailoverGroup -PrimaryResourceGroupName "myFG" -ServerName "myserver" –FailoverGroupName "myFG"  
-
+PS C:\> PS C:\> Remove-AzureRmSqlDatabaseFailoverGroup -PrimaryResourceGroupName "myFG" -ServerName "myserver" -FailoverGroupName "myFG"
 ```
-
 
 ## PARAMETERS
 

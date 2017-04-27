@@ -1,6 +1,7 @@
 ---
 Module Name: AzureRM.MachineLearning
 Module Guid: bb030259-49f9-46ef-806f-2a3f5a2e018e
+Download Help Link: 
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -38,7 +39,7 @@ Moves a commitment association from one commitment plan to another.
 Creates a new commitment plan.
 
 ### [New-AzureRmMlWebService](New-AzureRmMlWebService.md)
-Exports the web service definition object as a JSON formatted string.
+Creates a new web service.
 
 ### [Remove-AzureRmMlCommitmentPlan](Remove-AzureRmMlCommitmentPlan.md)
 Deletes a commitment plan.
