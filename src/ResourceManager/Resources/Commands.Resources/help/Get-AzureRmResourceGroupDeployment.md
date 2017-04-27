@@ -67,40 +67,6 @@ The current cmdlet gets all deployments of all resource groups in the subscripti
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the name of a resource group.
-The cmdlet gets the deployments for the resource group that this parameter specifies.
-Wildcard characters are not permitted.
-This parameter is required and you can specify only one resource group in each command.
-
-```yaml
-Type: String
-Parameter Sets: The deployment name parameter set.
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Name
-Specifies the name of the deployment to get.
-Wildcard characters are not permitted.
-
-```yaml
-Type: String
-Parameter Sets: The deployment name parameter set.
-Aliases: DeploymentName
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ApiVersion
 Specifies the API version that is supported by the resource Provider.
 You can specify a different version than the default version.
@@ -132,6 +98,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+Specifies the name of the deployment to get.
+Wildcard characters are not permitted.
+
+```yaml
+Type: String
+Parameter Sets: The deployment name parameter set.
+Aliases: DeploymentName
+
+Required: False
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Pre
 Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
 
@@ -144,6 +126,24 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the name of a resource group.
+The cmdlet gets the deployments for the resource group that this parameter specifies.
+Wildcard characters are not permitted.
+This parameter is required and you can specify only one resource group in each command.
+
+```yaml
+Type: String
+Parameter Sets: The deployment name parameter set.
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

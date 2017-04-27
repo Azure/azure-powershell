@@ -124,6 +124,7 @@ Specifies whether important updates should be included.
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Important
 
 Required: False
 Position: Named

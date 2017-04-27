@@ -12,7 +12,7 @@ Gets tenants that are authorized for the current user.
 ## SYNTAX
 
 ```
-Get-AzureRmTenant [-TenantId <String>] [<CommonParameters>]
+Get-AzureRmTenant [[-TenantId] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,7 +56,7 @@ Parameter Sets: (All)
 Aliases: Domain, Tenant
 
 Required: False
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

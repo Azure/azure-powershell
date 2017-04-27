@@ -44,25 +44,6 @@ This command finds all resource groups that have a tag named testtag and the val
 
 ## PARAMETERS
 
-### -Tag
-Specifies tag information, as a hash table, to filter your results.
-Use the following formats: 
-
-`@{Name = '`tagName`'}`
-`@{Name = '`tagName`'; Value = '`tagValue`'}`
-
-```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ApiVersion
 Specifies the version of the resource provider API to use.
 If you do not specify a version, this cmdlet uses the latest available version.
@@ -91,6 +72,25 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Specifies tag information, as a hash table, to filter your results.
+Use the following formats: 
+
+`@{Name = '`tagName`'}`
+`@{Name = '`tagName`'; Value = '`tagValue`'}`
+
+```yaml
+Type: Hashtable
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

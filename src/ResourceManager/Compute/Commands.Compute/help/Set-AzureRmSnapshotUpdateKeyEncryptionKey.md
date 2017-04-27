@@ -13,7 +13,7 @@ Sets the key encryption key properties on a snapshot update object.
 
 ```
 Set-AzureRmSnapshotUpdateKeyEncryptionKey [-SnapshotUpdate] <SnapshotUpdate> [[-KeyUrl] <String>]
- [-SourceVaultId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-SourceVaultId] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -78,7 +78,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

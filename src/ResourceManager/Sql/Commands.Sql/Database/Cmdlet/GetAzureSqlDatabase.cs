@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabase", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.None)]
-    public class GetAzureSqlDatabase : AzureSqlDatabaseCmdletBase
+    public class GetAzureSqlDatabase : AzureSqlDatabaseCmdletBase<IEnumerable<AzureSqlDatabaseModel>>
     {
         /// <summary>
         /// Gets or sets the name of the database to use.

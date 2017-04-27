@@ -19,23 +19,19 @@ Switch-AzureRmSqlDatabaseFailoverGroup [[-FailoverGroupName] <String>] [-AllowDa
 ## DESCRIPTION
 This command must be executed on a secondary server of a specific FG. The FG is identified by the listener name. The command switches all secondary databases to the primary role. All active TDS sessions will be disconnected. All new TDS sessions will be automatically re-routed to the secondary server, which now becomes primary server. When the original primary server is back online it will automatically become the secondary server and all formerly primary databases in it will switch to the secondary role. 
 
-
 ## EXAMPLES
 
 ### Example 1
 ```
 Issue failover operation with data loss
-PS C:\> C:\> $ag | Switch-AzureRMSqlDatabaseFailoverGroup -AllowDataLoss 
-
+PS C:\> C:\> $ag | Switch-AzureRMSqlDatabaseFailoverGroup -AllowDataLoss
 ```
 
 ### Example 1
 ```
 Issue failover operation without data loss
-PS C:\> C:\> $ag | Switch-AzureRMSqlDatabaseFailoverGroup 
-
+PS C:\> C:\> $ag | Switch-AzureRMSqlDatabaseFailoverGroup
 ```
-
 
 ## PARAMETERS
 

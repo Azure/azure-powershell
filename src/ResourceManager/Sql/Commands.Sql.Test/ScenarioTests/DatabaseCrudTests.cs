@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ScenarioTest.Mocks;
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
+using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
@@ -22,9 +24,17 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class DatabaseCrudTests : SqlTestsBase
     {
-        public DatabaseCrudTests(ITestOutputHelper output)
+        public DatabaseCrudTests(ITestOutputHelper output) : base(output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
+        protected override void SetupManagementClients(Rest.ClientRuntime.Azure.TestFramework.MockContext context)
+        {
+            // Only SqlClient is needed.
+            var sqlClient = GetSqlClient(context);
+            var resourcesClient = GetResourcesClient();
+            var authorizationClient = GetAuthorizationManagementClient();
+            helper.SetupSomeOfManagementClients(sqlClient, resourcesClient, authorizationClient);
         }
 
         [Fact]
@@ -32,6 +42,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestDatabaseCreate()
         {
             RunPowerShellTest("Test-CreateDatabase");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseCreateWithSampleName()
+        {
+            RunPowerShellTest("Test-CreateDatabaseWithSampleName");
         }
 
         [Fact]

@@ -30,12 +30,12 @@ This does not apply to recovery services vaults.
 
 ## PARAMETERS
 
-### -ASRVault
-Specifies an **ASRVault** object.
+### -ARSVault
+Specifies an **ARSVault** object.
 
 ```yaml
-Type: ASRVault
-Parameter Sets: AzureSiteRecoveryVault
+Type: ARSVault
+Parameter Sets: AzureRecoveryServicesVault
 Aliases: 
 
 Required: True
@@ -45,12 +45,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ARSVault
-Specifies an **ARSVault** object.
+### -ASRVault
+Specifies an **ASRVault** object.
 
 ```yaml
-Type: ARSVault
-Parameter Sets: AzureRecoveryServicesVault
+Type: ASRVault
+Parameter Sets: AzureSiteRecoveryVault
 Aliases: 
 
 Required: True
