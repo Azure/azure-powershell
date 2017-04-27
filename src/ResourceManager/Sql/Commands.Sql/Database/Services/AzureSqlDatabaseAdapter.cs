@@ -22,6 +22,8 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using Microsoft.Azure.Management.Sql.Models;
+using DatabaseEdition = Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Services
 {
@@ -128,25 +130,53 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <param name="serverName">The name of the Azure Sql Database Server</param>
         /// <param name="model">The input parameters for the create/update operation</param>
         /// <returns>The upserted Azure Sql Database</returns>
-        internal AzureSqlDatabaseModel UpsertDatabase(string resourceGroup, string serverName, AzureSqlDatabaseModel model)
+        internal AzureSqlDatabaseModel UpsertDatabase(string resourceGroup, string serverName, AzureSqlDatabaseCreateOrUpdateModel model)
         {
-            var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, model.DatabaseName, Util.GenerateTracingId(), new DatabaseCreateOrUpdateParameters()
+            // Use AutoRest or Hyak SDK depending on model parameters.
+            // This is done because we want to add support for -SampleName, which is only supported by AutoRest SDK.
+            // Why not always use AutoRest SDK? Because it uses Azure-AsyncOperation polling, while Hyak uses
+            // Location polling. This means that switching to AutoRest requires re-recording almost all scenario tests,
+            // which currently is quite difficult.
+            if (!string.IsNullOrEmpty(model.SampleName))
             {
-                Location = model.Location,
-                Tags = model.Tags,
-                Properties = new DatabaseCreateOrUpdateProperties()
+                // Use AutoRest SDK
+                var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, model.Database.DatabaseName, Util.GenerateTracingId(), new Management.Sql.Models.Database
                 {
-                    Collation = model.CollationName,
-                    Edition = model.Edition == DatabaseEdition.None ? null : model.Edition.ToString(),
-                    MaxSizeBytes = model.MaxSizeBytes,
-                    RequestedServiceObjectiveId = model.RequestedServiceObjectiveId,
-                    ElasticPoolName = model.ElasticPoolName,
-                    RequestedServiceObjectiveName = model.RequestedServiceObjectiveName,
-                    ReadScale = model.ReadScale.ToString(),
-                }
-            });
+                    Location = model.Database.Location,
+                    Tags = model.Database.Tags,
+                    Collation = model.Database.CollationName,
+                    Edition = model.Database.Edition == DatabaseEdition.None ? null : model.Database.Edition.ToString(),
+                    MaxSizeBytes = model.Database.MaxSizeBytes.ToString(),
+                    RequestedServiceObjectiveId = model.Database.RequestedServiceObjectiveId,
+                    ElasticPoolName = model.Database.ElasticPoolName,
+                    RequestedServiceObjectiveName = model.Database.RequestedServiceObjectiveName,
+                    ReadScale = (ReadScale)Enum.Parse(typeof(ReadScale), model.Database.ReadScale.ToString()),
+                    SampleName = model.SampleName
+                });
 
-            return CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);
+                return CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);
+            }
+            else
+            {
+                // Use Hyak SDK
+                var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, model.Database.DatabaseName, Util.GenerateTracingId(), new DatabaseCreateOrUpdateParameters
+                {
+                    Location = model.Database.Location,
+                    Tags = model.Database.Tags,
+                    Properties = new DatabaseCreateOrUpdateProperties()
+                    {
+                        Collation = model.Database.CollationName,
+                        Edition = model.Database.Edition == DatabaseEdition.None ? null : model.Database.Edition.ToString(),
+                        MaxSizeBytes = model.Database.MaxSizeBytes,
+                        RequestedServiceObjectiveId = model.Database.RequestedServiceObjectiveId,
+                        ElasticPoolName = model.Database.ElasticPoolName,
+                        RequestedServiceObjectiveName = model.Database.RequestedServiceObjectiveName,
+                        ReadScale = model.Database.ReadScale.ToString(),
+                    }
+                });
+
+                return CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);
+            }
         }
 
         /// <summary>
@@ -171,6 +201,18 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             AzureSqlServerAdapter serverAdapter = new AzureSqlServerAdapter(Context);
             var server = serverAdapter.GetServer(resourceGroupName, serverName);
             return server.Location;
+        }
+
+        /// <summary>
+        /// Converts the response from the service to a powershell database object
+        /// </summary>
+        /// <param name="resourceGroup">The resource group the server is in</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <param name="database">The service response</param>
+        /// <returns>The converted model</returns>
+        public static AzureSqlDatabaseModel CreateDatabaseModelFromResponse(string resourceGroup, string serverName, Management.Sql.Models.Database database)
+        {
+            return new AzureSqlDatabaseModel(resourceGroup, serverName, database);
         }
 
         /// <summary>
