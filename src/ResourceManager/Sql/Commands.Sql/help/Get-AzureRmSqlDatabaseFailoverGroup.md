@@ -23,8 +23,7 @@ Cmdlet to get the Azure SQL Failover Group Object
 
 ### Example 1
 ```
-PS C:\> $myFG = Get-AzureRMSqlDatabaseFailoverGroup -ResourceGroupName "myrg" -ServerName "myserver"  
-
+PS C:\> $myFG = Get-AzureRMSqlDatabaseFailoverGroup -ResourceGroupName "myrg" -ServerName "myserver"
 ```
 
 {{ Add example description here }}

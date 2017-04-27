@@ -36,12 +36,13 @@ The **Get-AzureRmResourceProvider** cmdlet gets an Azure resource provider.
 
 ## PARAMETERS
 
-### -ListAvailable
-Indicates that this operation gets all available resource providers.
+### -ApiVersion
+Specifies the API version that is supported by the resource Provider.
+You can specify a different version than the default version.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: ListAvailable
+Type: String
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -51,28 +52,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProviderNamespace
-Specifies the namespace of the resource provider.
+### -ListAvailable
+Indicates that this operation gets all available resource providers.
 
 ```yaml
-Type: String
-Parameter Sets: IndividualProvider
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ApiVersion
-Specifies the API version that is supported by the resource Provider.
-You can specify a different version than the default version.
-
-```yaml
-Type: String
-Parameter Sets: (All)
+Type: SwitchParameter
+Parameter Sets: ListAvailable
 Aliases: 
 
 Required: False
@@ -109,6 +94,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProviderNamespace
+Specifies the namespace of the resource provider.
+
+```yaml
+Type: String
+Parameter Sets: IndividualProvider
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

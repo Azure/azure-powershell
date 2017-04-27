@@ -36,22 +36,6 @@ You can use this cmdlet to view the operation information for the current Site R
 
 ## PARAMETERS
 
-### -StartTime
-Specifies the start time for the jobs.
-This cmdlet gets all jobs that started after the specified time.
-
-```yaml
-Type: DateTime
-Parameter Sets: ByParam
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -EndTime
 Specifies the end time for the jobs.
 This cmdlet gets all jobs that started before the specified time.
@@ -70,11 +54,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TargetObjectId
-Specifies the ID of the object targeted by the job.
+### -Job
+Specifies the Site Recovery job.
+
+```yaml
+Type: ASRJob
+Parameter Sets: ByObject
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies a unique name that identifies the job.
 
 ```yaml
 Type: String
+Parameter Sets: ByName
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StartTime
+Specifies the start time for the jobs.
+This cmdlet gets all jobs that started after the specified time.
+
+```yaml
+Type: DateTime
 Parameter Sets: ByParam
 Aliases: 
 
@@ -102,6 +117,7 @@ The acceptable values for this parameter are:
 Type: String
 Parameter Sets: ByParam
 Aliases: 
+Accepted values: NotStarted, InProgress, Succeeded, Other, Failed, Cancelled, Suspended
 
 Required: False
 Position: Named
@@ -110,33 +126,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Specifies a unique name that identifies the job.
+### -TargetObjectId
+Specifies the ID of the object targeted by the job.
 
 ```yaml
 Type: String
-Parameter Sets: ByName
+Parameter Sets: ByParam
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Job
-Specifies the Site Recovery job.
-
-```yaml
-Type: ASRJob
-Parameter Sets: ByObject
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

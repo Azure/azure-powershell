@@ -18,13 +18,12 @@ Update-AzureRmApiManagementDeployment -ResourceGroupName <String> -Name <String>
  -Sku <PsApiManagementSku> -Capacity <Int32> [-VirtualNetwork <PsApiManagementVirtualNetwork>]
  [-VpnType <PsApiManagementVpnType>]
  [-AdditionalRegions <System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]>]
- [-PassThru] [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-PassThru] [<CommonParameters>]
 ```
 
 ### Update from PsApiManagement instance
 ```
-Update-AzureRmApiManagementDeployment -ApiManagement <PsApiManagement> [-PassThru]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+Update-AzureRmApiManagementDeployment -ApiManagement <PsApiManagement> [-PassThru] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,40 +50,59 @@ PS C:\> Update-AzureRmApiManagementDeployment -ApiManagement $ApiManagement
 This example gets an Api Management instance, scales it to five premium units and then adds an additional three units to the premium region.
 
 ### Example 3: Update deployment (external VNET)
-```PowerShell
+```
 PS C:\> $virtualNetwork = New-AzureRmApiManagementVirtualNetwork -Location "East US" -SubnetResourceId "/subscriptions/a8ff56dc-3bc7-4174-a1e8-3726ab15d0e2/resourceGroups/Api-Default-West-US/providers/Microsoft.ClassicNetwork/virtualNetworks/dfVirtualNetwork/subnets/backendSubnet"
 PS C:\> Update-AzureRmApiManagementDeployment -ResourceGroupName "ContosoGroup" -Name "ContosoApi" -VirtualNetwork $virtualNetwork -VpnType "External"
 ```
+
 This command updates an existing API Management deployment and joins to an external *VpnType*.
 
 ### Example 4: Update deployment (internal VNET)
-```PowerShell
+```
 PS C:\> $virtualNetwork = New-AzureRmApiManagementVirtualNetwork -Location "East US" -SubnetResourceId "/subscriptions/a8ff56dc-3bc7-4174-a1e8-3726ab15d0e2/resourceGroups/Api-Default-West-US/providers/Microsoft.ClassicNetwork/virtualNetworks/dfVirtualNetwork/subnets/backendSubnet"
 PS C:\> Update-AzureRmApiManagementDeployment -ResourceGroupName "ContosoGroup" -Name "ContosoApi" -VirtualNetwork $virtualNetwork -VpnType "Internal"
 ```
+
 This command updates an existing API Management deployment and joins to an internal *VpnType*.
+
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the name of resource group under which API Management exists.
+### -AdditionalRegions
+Specifies additional deployment regions of Azure API Management.
 
 ```yaml
-Type: String
+Type: System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]
 Parameter Sets: Specific API Management service
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Name
-Specifies the name of API Management that this cmdlet updates.
+### -ApiManagement
+Specifies the **PsApiManagement** instance to get deployment configuration from.
+Use this parameter if the instance already has all the required changes.
 
 ```yaml
-Type: String
+Type: PsApiManagement
+Parameter Sets: Update from PsApiManagement instance
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Capacity
+Specifies the SKU capacity of the master Azure API Management deployment region.
+
+```yaml
+Type: Int32
 Parameter Sets: Specific API Management service
 Aliases: 
 
@@ -128,6 +146,52 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Name
+Specifies the name of API Management that this cmdlet updates.
+
+```yaml
+Type: String
+Parameter Sets: Specific API Management service
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns an object representing the item with which you are working.
+By default, this cmdlet does not generate any output.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the name of resource group under which API Management exists.
+
+```yaml
+Type: String
+Parameter Sets: Specific API Management service
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Sku
 Specifies the tier of the master Azure API Management deployment region.
 
@@ -141,21 +205,7 @@ The acceptable values for this parameter are:
 Type: PsApiManagementSku
 Parameter Sets: Specific API Management service
 Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Capacity
-Specifies the SKU capacity of the master Azure API Management deployment region.
-
-```yaml
-Type: Int32
-Parameter Sets: Specific API Management service
-Aliases: 
+Accepted values: Developer, Standard, Premium
 
 Required: True
 Position: Named
@@ -179,53 +229,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -AdditionalRegions
-Specifies additional deployment regions of Azure API Management.
-
-```yaml
-Type: System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]
-Parameter Sets: Specific API Management service
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns an object representing the item with which you are working.
-By default, this cmdlet does not generate any output.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ApiManagement
-Specifies the **PsApiManagement** instance to get deployment configuration from.
-Use this parameter if the instance already has all the required changes.
-
-```yaml
-Type: PsApiManagement
-Parameter Sets: Update from PsApiManagement instance
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -VpnType
 Specifies the virtual network Type of the API Management deployment.
 The acceptable values for this parameter are:
@@ -242,50 +245,12 @@ The API Management deployment has an intranet facing virtual address.
 Type: PsApiManagementVpnType
 Parameter Sets: Specific API Management service
 Aliases: 
+Accepted values: None, External, Internal
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

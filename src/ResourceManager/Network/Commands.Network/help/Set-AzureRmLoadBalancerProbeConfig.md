@@ -14,8 +14,7 @@ Sets the goal state for a probe configuration.
 
 ```
 Set-AzureRmLoadBalancerProbeConfig -Name <String> -LoadBalancer <PSLoadBalancer> [-RequestPath <String>]
- [-Protocol <String>] -Port <Int32> -IntervalInSeconds <Int32> -ProbeCount <Int32>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-Protocol <String>] -Port <Int32> -IntervalInSeconds <Int32> -ProbeCount <Int32> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,45 +37,6 @@ The third command passes the load balancer to **Set-AzureRmLoadBalancerProbeConf
 Note that it is necessary to specify several of the same parameters that were specified in the previous command because they are required by the current cmdlet.
 
 ## PARAMETERS
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -IntervalInSeconds
 Specifies the interval, in seconds, between probes to each instance of the load-balanced service.
@@ -162,6 +122,7 @@ The acceptable values for this parameter are: Tcp or Http.
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Tcp, Http
 
 Required: False
 Position: Named

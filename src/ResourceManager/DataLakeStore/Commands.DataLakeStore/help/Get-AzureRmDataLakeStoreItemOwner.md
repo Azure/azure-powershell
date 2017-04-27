@@ -69,6 +69,7 @@ The acceptable values for this parameter are: User and Group.
 Type: Owner
 Parameter Sets: (All)
 Aliases: 
+Accepted values: User, Group
 
 Required: True
 Position: 2

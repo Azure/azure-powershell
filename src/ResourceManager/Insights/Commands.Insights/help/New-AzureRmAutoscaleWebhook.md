@@ -28,21 +28,6 @@ The **New-AzureRmAutoscaleWebhook** cmdlet creates an Autoscale webhook.
 
 ## PARAMETERS
 
-### -ServiceUri
-Specifies the service URI.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Properties
 Specifies the list of properties in the format @(property1 = 'value1',....).
 
@@ -53,6 +38,21 @@ Aliases:
 
 Required: False
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServiceUri
+Specifies the service URI.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

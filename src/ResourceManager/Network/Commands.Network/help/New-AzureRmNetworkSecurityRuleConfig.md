@@ -16,7 +16,7 @@ Creates a network security rule configuration.
 New-AzureRmNetworkSecurityRuleConfig -Name <String> [-Description <String>] [-Protocol <String>]
  [-SourcePortRange <String>] [-DestinationPortRange <String>] [-SourceAddressPrefix <String>]
  [-DestinationAddressPrefix <String>] [-Access <String>] [-Priority <Int32>] [-Direction <String>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,6 +52,7 @@ The acceptable values for this parameter are: Allow and Deny.
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Allow, Deny
 
 Required: False
 Position: Named
@@ -125,45 +126,7 @@ The acceptable values for this parameter are: Inbound and Outbound.
 Type: String
 Parameter Sets: (All)
 Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
+Accepted values: Inbound, Outbound
 
 Required: False
 Position: Named
@@ -218,6 +181,7 @@ The acceptable values for this parameter are:
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Tcp, Udp, *
 
 Required: False
 Position: Named

@@ -4,7 +4,6 @@ Module Guid: D48CF693-4125-4D2D-8790-1514F44CE325
 Download Help Link: http://go.microsoft.com/fwlink/?linkid=390762
 Help Version: 4.0.0.0
 Locale: en-US
-ms.assetid: 9D720291-A837-43D5-8EC1-9DD7FF432B34
 ---
 
 # AzureRM.KeyVault Module
@@ -94,7 +93,7 @@ Creates a key in a key vault from a backed-up key.
 Modifies editable attributes of a certificate.
 
 ### [Set-AzureKeyVaultCertificateIssuer](Set-AzureKeyVaultCertificateIssuer.md)
-Updates a certificate issuer in a key vault.
+Sets a certificate issuer in a key vault.
 
 ### [Set-AzureKeyVaultCertificatePolicy](Set-AzureKeyVaultCertificatePolicy.md)
 Creates or updates the policy for a certificate in a key vault.
