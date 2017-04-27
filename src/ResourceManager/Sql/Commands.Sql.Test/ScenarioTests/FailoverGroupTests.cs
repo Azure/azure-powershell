@@ -22,9 +22,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class FailoverGroupTests : SqlTestsBase
     {
-        public FailoverGroupTests(ITestOutputHelper output)
+        public FailoverGroupTests(ITestOutputHelper output) : base(output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
         // Currently the test runs too long to be marked as a check-in test.
