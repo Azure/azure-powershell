@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Management.Sql;
+using Microsoft.Azure.Management.Sql.LegacySdk;
 using System;
 using System.Collections.Generic;
 
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Services
         /// <param name="expand">Expanded properties</param>
         /// <param name="clientRequestId">Request id</param>
         /// <returns>IList of RecommendedElasticPool</returns>
-        public IList<Management.Sql.Models.RecommendedElasticPool> ListExpanded(string resourceGroupName, string serverName, string expand, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.RecommendedElasticPool> ListExpanded(string resourceGroupName, string serverName, string expand, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).RecommendedElasticPools.ListExpanded(resourceGroupName, serverName, expand).RecommendedElasticPools;
         }

@@ -13,25 +13,25 @@ Adds an authenticated account to use for Azure Resource Manager cmdlet requests.
 
 ### UserWithSubscriptionId (Default)
 ```
-Add-AzureRmAccount [-Environment <AzureEnvironment>] [-EnvironmentName <String>] [-Credential <PSCredential>]
+Add-AzureRmAccount [-Environment <AzureEnvironment>] [-EnvironmentName <String>] [[-Credential] <PSCredential>]
  [-TenantId <String>] [-SubscriptionId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UserWithSubscriptionName
 ```
-Add-AzureRmAccount [-Environment <AzureEnvironment>] [-EnvironmentName <String>] [-Credential <PSCredential>]
+Add-AzureRmAccount [-Environment <AzureEnvironment>] [-EnvironmentName <String>] [[-Credential] <PSCredential>]
  [-TenantId <String>] -SubscriptionName <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServicePrincipalWithSubscriptionId
 ```
-Add-AzureRmAccount [-Environment <AzureEnvironment>] [-EnvironmentName <String>] -Credential <PSCredential>
+Add-AzureRmAccount [-Environment <AzureEnvironment>] [-EnvironmentName <String>] [-Credential] <PSCredential>
  [-ServicePrincipal] -TenantId <String> [-SubscriptionId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServicePrincipalWithSubscriptionName
 ```
-Add-AzureRmAccount [-Environment <AzureEnvironment>] [-EnvironmentName <String>] -Credential <PSCredential>
+Add-AzureRmAccount [-Environment <AzureEnvironment>] [-EnvironmentName <String>] [-Credential] <PSCredential>
  [-ServicePrincipal] -TenantId <String> -SubscriptionName <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -201,7 +201,7 @@ Parameter Sets: UserWithSubscriptionId, UserWithSubscriptionName
 Aliases: 
 
 Required: False
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -213,7 +213,7 @@ Parameter Sets: ServicePrincipalWithSubscriptionId, ServicePrincipalWithSubscrip
 Aliases: 
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

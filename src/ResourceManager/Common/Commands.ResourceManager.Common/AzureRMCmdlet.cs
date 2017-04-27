@@ -55,8 +55,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             AzureSession.ClientFactory.RemoveHandler(typeof(RPRegistrationDelegatingHandler));
             AzureSession.ClientFactory.AddHandler(new RPRegistrationDelegatingHandler(
                 () => new ResourceManagementClient(
-                    AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(DefaultContext, AzureEnvironment.Endpoint.ResourceManager),
-                    DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)),
+                    DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
+                    AzureSession.AuthenticationFactory.GetServiceClientCredentials(DefaultContext, AzureEnvironment.Endpoint.ResourceManager)),
                 s => DebugMessages.Enqueue(s)));
         }
 
