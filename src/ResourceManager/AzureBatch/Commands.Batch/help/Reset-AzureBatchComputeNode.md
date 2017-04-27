@@ -115,6 +115,7 @@ The default is Requeue.
 Type: ComputeNodeReimageOption
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Requeue, Terminate, TaskCompletion, RetainedData
 
 Required: False
 Position: Named

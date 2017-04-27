@@ -14,14 +14,12 @@ Gets information about a media service.
 
 ### ResourceGroupParameterSet
 ```
-Get-AzureRmMediaService [-ResourceGroupName] <String> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmMediaService [-ResourceGroupName] <String> [<CommonParameters>]
 ```
 
 ### AccountNameParameterSet
 ```
-Get-AzureRmMediaService [-ResourceGroupName] <String> [-AccountName] <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmMediaService [-ResourceGroupName] <String> [-AccountName] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,60 +43,6 @@ This command gets the properties of the media service named MediaService1 that b
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the name of the resource group that contains the media service.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -AccountName
 Specifies the name of the media service that this cmdlet gets.
 
@@ -109,6 +53,21 @@ Aliases: Name, ResourceName
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the name of the resource group that contains the media service.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

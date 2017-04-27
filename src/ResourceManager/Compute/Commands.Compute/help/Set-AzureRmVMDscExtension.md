@@ -65,7 +65,7 @@ Parameter Sets: (All)
 Aliases: ConfigurationArchiveBlob
 
 Required: True
-Position: 6
+Position: 5
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -111,7 +111,7 @@ Parameter Sets: (All)
 Aliases: StorageAccountName
 
 Required: True
-Position: 5
+Position: 4
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -266,7 +266,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -281,7 +281,7 @@ Parameter Sets: (All)
 Aliases: HandlerVersion
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -296,7 +296,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -309,7 +309,7 @@ Specifies the WMF version.
 Type: String
 Parameter Sets: (All)
 Aliases: 
-Accepted values: 4.0, 5.0, 5.1PP, latest
+Accepted values: 4.0, 5.0, 5.1, latest
 
 Required: False
 Position: Named
