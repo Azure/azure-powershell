@@ -134,7 +134,7 @@
     <NuGetRestoreConfigSwitch>-ConfigFile &quot;$(NuGetRestoreConfigFile)&quot;</NuGetRestoreConfigSwitch>
     <NuGetRestorePackageSetting>-PackagesDirectory $(LibraryNugetPackageFolder)</NuGetRestorePackageSetting>
 
-    <PowerShellCommand>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</PowerShellCommand>
+    <PowerShellCommand Condition=" '$(PowerShellCommand)' == '' ">C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</PowerShellCommand>
   </PropertyGroup>
 
   <!--
@@ -177,7 +177,7 @@
   <Target Name="Build" DependsOnTargets="RestoreNugetPackages;BuildMsBuildTask">
     <Message Importance="high" Text="Building Cmdlets..." />
 
-    <Exec ContinueOnError="false" Command="$(PowerShellCommand) -NonInteractive -NoLogo -NoProfile -Command &quot; . $(LibraryToolsFolder)\CreateMappings.ps1 -RootPath $(LibrarySourceFolder) -OutputFile $(PackageDirectory)\groupMapping.json -WarningFile $(PackageDirectory)\groupMappingWarnings.json -RulesFile $(LibraryToolsFolder)\CreateMappings_rules.json &quot;"/>
+    <Exec ContinueOnError="false" Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot; . $(LibraryToolsFolder)\CreateMappings.ps1 -RootPath $(LibrarySourceFolder) -OutputFile $(PackageDirectory)\groupMapping.json -WarningFile $(PackageDirectory)\groupMappingWarnings.json -RulesFile $(LibraryToolsFolder)\CreateMappings_rules.json &quot;"/>
 	
     <MSBuild
       Projects="@(CmdletSolutionsToBuild)"
@@ -186,7 +186,7 @@
       BuildInParallel="$(BuildInParallel)"
       ContinueOnError="false" />   	
 
-    <Exec Command="$(PowerShellCommand) -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration) &quot;" ContinueOnError="false"/>
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration) &quot;" ContinueOnError="false"/>
     <CallTarget Targets="BuildSetupTest"/>
 	<CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />	
 	<CallTarget Targets="BuildSetup"/>
@@ -194,7 +194,7 @@
                 Condition=" '$(CodeSign)' == 'true' and '$(Scope)' == 'all'" />
 	<Message Importance="high" Text="Running Static Analyser" />
     <CallTarget targets="DependencyAnalysis" />
-    <Exec Command="$(PowerShellCommand) -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\CleanupBuild.ps1 -BuildConfig $(Configuration) &quot;"/>
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\CleanupBuild.ps1 -BuildConfig $(Configuration) &quot;"/>
   </Target>
   
   <!-- Build .Net Core Cmdlets -->
@@ -298,7 +298,7 @@
     <GetFrameworkSdkPath>
       <Output TaskParameter="Path" PropertyName="WindowsSdkPath"/>
     </GetFrameworkSdkPath>
-    <Exec Command="$(PowerShellCommand) -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 $(Configuration) $(Scope) &quot;"/>
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 $(Configuration) $(Scope) &quot;"/>
     <!-- Copying shortcut to be signed -->
     <Copy SourceFiles="$(LibraryRoot)tools\AzureRM\AzureRM.psd1"
       DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
@@ -364,7 +364,7 @@
       <Output TaskParameter="AuthCodeSignTaskErrorsDetected" PropertyName="AuthTaskFailed" />
     </VerifyAuthenticodeSignatureTask>
 
-    <Exec Command="$(PowerShellCommand) -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\CheckStrongNameSignature.ps1 &quot;"/>
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\CheckStrongNameSignature.ps1 &quot;"/>
 
     <!-- Copying signed shortcut back -->
     <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.psd1"
@@ -420,7 +420,7 @@
   <Target Name="Publish">
     <Error Condition=" '$(NuGetKey)' == '' " Text="You must provide the NuGetKey parameter to the build: /p:NuGetKey=YOUR_PUBLISHING_KEY" />
     <Message Importance="high" Text="Publishing Cmdlets..." />
-    <Exec Command="$(PowerShellCommand) -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\PublishModules.ps1 $(Configuration) $(Scope) $(NuGetKey) \&quot;$(NuGetPublishingSource)\&quot; &quot;"/>
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\PublishModules.ps1 $(Configuration) $(Scope) $(NuGetKey) \&quot;$(NuGetPublishingSource)\&quot; &quot;"/>
   </Target>
 
   <PropertyGroup>
