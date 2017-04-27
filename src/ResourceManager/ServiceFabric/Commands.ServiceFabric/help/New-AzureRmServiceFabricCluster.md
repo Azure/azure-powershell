@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmServiceFabricCluster
 
 ## SYNOPSIS
-Create an new ServiceFabric cluster
+This command uses certificates that you provide or system generated self signed certificates to setup a new service fabric cluster. The template used can be a default template or a custom template that you provide. You have the option of specifying a folder to export the self signed certificates or fetching it later from the keyvault. 
 
 ## SYNTAX
 
@@ -41,20 +41,41 @@ New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> [-PfxOutputFolder 
 ```
 
 ## DESCRIPTION
-The **New-AzureRmServiceFabricCluster** can deploy an new cluster or update the cluster using Azure resource template
-The template file can only be secure cluster template.
-You don't need to input the certificate information in the parameter file, it will place the information from parameters into the template file directly
+The **New-AzureRmServiceFabricCluster** command uses certificates that you provide or system generated self signed certificates to setup a new service fabric cluster. The template used can be a default template or a custom template that you provide. You have the option of specifying a folder to export the self signed certificates or fetching it later from the keyvault.
+
+If you are specifing a custom tempalte and parmater file, ou don't need to provide the certificate information in the parameter file, the system will popualte these paramters.
+
+The four options are detailed below. Scroll down for explainatins of each of the paramters.
 
 ## EXAMPLES
 
 ### Example 1
+### Specify only the cluster size, the OS to deploy a cluster
+
+In addition to creating a new self signed cert, the commands also uploads the certificate to a new or existing keyvault and uses it to deploy a secure service fabric cluster and Azure resource templdate to deploy a ServiceFabric cluster
 ```
-PS c:\> $pwd = ConvertTo-SecureString -String "123" -AsPlainText -Force
-PS c:\> New-AzureRmServiceFabricCluster -ResourceGroupName 'Group1' -KeyVaultName 'Contoso01Vault' -KeyVaultResouceGroupName 'Contoso01VaultRg' 
--Source c:\existingPfx.pfx -Password $pwd -TemplateFile c:\template.json -TemplateParameterFile c:\parameters.json
+New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> [-PfxOutputFolder <String>]
+ [-CertificatePassword <SecureString>] [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>]
+ -Location <String> [-Name <String>] [-ClusterSize <Int32>] [-CertificateSubjectName <String>]
+ -VmPassword <SecureString> [-OS <OperatingSystem>] [-VmSku <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-This command will upload an existing certificate to Azure key vault, and uses it and Azure resource templdate to deploy a ServiceFabric cluster
+Here is a filled out example.
+
+```
+$pwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force
+$RGname="chacko09"
+$clusterloc="SouthCentralUS"
+$subname="$RGname.$clusterloc.cloudapp.azure.com"
+$pfxfolder="c:\Mycertificates\"
+
+Write-Output "create cluster in " $clusterloc "subject name for cert " $subname "and output the cert into " $pfxfolder
+
+New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -Location $clusterloc -ClusterSize 3 -VmPassword $pwd -CertificateSubjectName $subname -PfxOutputFolder $pfxfolder -CertificatePassword $pwd
+
+```
+
+
 
 ### Example 2
 ```
