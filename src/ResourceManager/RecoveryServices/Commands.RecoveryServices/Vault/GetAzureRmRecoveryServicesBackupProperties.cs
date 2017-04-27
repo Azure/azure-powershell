@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// <summary>
     /// Gets Azure Recovery Services Vault Backup Properties.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupProperties")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupProperty")]
     [OutputType(typeof(ASRVaultBackupProperties))]
     public class GetAzureRmRecoveryServicesBackupProperties : RecoveryServicesCmdletBase
     {
