@@ -54,7 +54,6 @@
         },
         "vmImageSku": {
             "type": "string",
-            "defaultValue": "2012-R2-Datacenter",
             "metadata": {
                 "description": "VM image SKU"
             }

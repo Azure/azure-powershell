@@ -13,14 +13,14 @@ Set ServiceFabric upgrade type of the cluster
 
 ### Automatic
 ```
-Set-AzureRmServiceFabricUpgradeType [-ResourceGroupName] <String> [-ClusterName] <String>
- -UpgradeMode <ClusterUpgradeMode> [<CommonParameters>]
+Set-AzureRmServiceFabricUpgradeType [-ResourceGroupName] <String> [-Name] <String>
+ -UpgradeMode <ClusterUpgradeMode> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Manual
 ```
-Set-AzureRmServiceFabricUpgradeType [-ResourceGroupName] <String> [-ClusterName] <String>
- -UpgradeMode <ClusterUpgradeMode> -Version <String> [<CommonParameters>]
+Set-AzureRmServiceFabricUpgradeType [-ResourceGroupName] <String> [-Name] <String>
+ -UpgradeMode <ClusterUpgradeMode> -Version <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,13 +37,26 @@ This command will set the cluster upgrade mode to automatic
 
 ## PARAMETERS
 
-### -ClusterName
-Specifies the name of the cluster
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specify the name of the cluster```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: ClusterName
 
 Required: True
 Position: 1
@@ -79,7 +92,7 @@ Accepted values: Automatic, Manual
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -94,12 +107,27 @@ Aliases: ClusterCodeVersion
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

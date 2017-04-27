@@ -21,6 +21,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
+using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.ServiceFabric;
 using Microsoft.Azure.Management.ServiceFabric.Models;
 using Newtonsoft.Json.Linq;
@@ -33,6 +34,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specify the name of the cluster")]
         [ValidateNotNullOrEmpty()]
+        [Alias("ClusterName")]
         public virtual string Name { get; set; }
 
         #region SFRP
@@ -64,13 +66,17 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 {
                     if (runOnSameThread)
                     {
-                        var c = SafeGetResource(() => this.SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name));
-                        if (c != null)
+                        if (!RunningTest)
                         {
-                            WriteVerboseWithTimestamp(
-                                string.Format(
-                                    ServiceFabricProperties.Resources.ClusterStateVerbose, 
-                                    c.ClusterState));
+                            var c =
+                                SafeGetResource(() => this.SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name));
+                            if (c != null)
+                            {
+                                WriteVerboseWithTimestamp(
+                                    string.Format(
+                                        ServiceFabricProperties.Resources.ClusterStateVerbose,
+                                        c.ClusterState));
+                            }
                         }
                     }
 
@@ -101,9 +107,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             return new PSCluster(cluster);
         }
 
-        protected Task<PSCluster> PatchAsync(ClusterUpdateParameters request)
+        protected Task<Cluster> PatchAsync(ClusterUpdateParameters request)
         {
-            return Task.Factory.StartNew(() => SendPatchRequest(request,false));
+            return this.SFRPClient.Clusters.UpdateAsync(this.ResourceGroupName, this.Name, request);
         }
 
         protected Cluster GetCurrentCluster()
@@ -150,7 +156,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             var durabilityLevelFromVmss = (DurabilityLevel)Enum.Parse(typeof(DurabilityLevel), durabilityLevelStr);
 
-            if(durabilityLevelFromVmss != durabilityLevelFromNodeType)
+            if (durabilityLevelFromVmss != durabilityLevelFromNodeType)
             {
                 WriteWarning(ServiceFabricProperties.Resources.DurabilityLevelMismatches);
                 durabilityLevel = durabilityLevelFromNodeType;
@@ -172,7 +178,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             else
             {
                 return ClusterType.Secure;
-            } 
+            }
         }
 
         #endregion
@@ -184,6 +190,63 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 { "clusterName",this.Name },
                 { "resourceType" ,Constants.ServieFabricTag }
             };
+        }
+
+        protected void WriteClusterAndVmssVerboseWhenUpdate(List<Task> allTasks, bool printClusterStatus)
+        {
+            var token = new CancellationTokenSource();
+            var exceptions = new List<Exception>();
+            var task = Task.Factory.ContinueWhenAll(
+                    allTasks.ToArray(),
+                    tasks =>
+                    {
+                        token.Cancel();
+                        exceptions.AddRange((from t in tasks where t.IsFaulted select t.Exception).Cast<Exception>());
+
+                        if (exceptions.Count > 0)
+                        {
+                            throw new AggregateException(exceptions);
+                        }
+                    },
+                    CancellationToken.None);
+
+            while (!token.IsCancellationRequested)
+            {
+                if (!RunningTest)
+                {
+                    if (printClusterStatus)
+                    {
+                        var c = SafeGetResource(() => this.SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name));
+                        if (c != null)
+                        {
+                            WriteVerboseWithTimestamp(
+                                string.Format(ServiceFabricProperties.Resources.ClusterStateVerbose, c.ClusterState));
+                        }
+                    }
+
+                    var vmsss = this.ComputeClient.VirtualMachineScaleSets.List(this.ResourceGroupName);
+
+                    do
+                    {
+                        if (vmsss.Any())
+                        {
+                            foreach (var vmss in vmsss)
+                            {
+                                WriteVerboseWithTimestamp(
+                                    string.Format(ServiceFabricProperties.Resources.VmssVerbose, vmss.Name,
+                                        vmss.ProvisioningState));
+                            }
+                        }
+                    } while (!string.IsNullOrEmpty(vmsss.NextPageLink) &&
+                             (vmsss = this.ComputeClient.VirtualMachineScaleSets.ListNext(vmsss.NextPageLink)) !=
+                             null);
+                }
+
+                Thread.Sleep(TimeSpan.FromSeconds(WriteVerboseIntervalInSec));
+            }
+
+            exceptions.ForEach(PrintCloudExceptionDetail);
+            task.Wait();
         }
     }
 }

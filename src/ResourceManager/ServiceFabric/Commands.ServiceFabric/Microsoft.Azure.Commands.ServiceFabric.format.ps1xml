@@ -11,16 +11,38 @@
                     <ListEntry>
                         <ListItems>
                             <ListItem>
+                                <Label>VmUserName</Label>
                                 <PropertyName>VmUserName</PropertyName>
                             </ListItem>
                             <ListItem>
-                                <PropertyName>CertificateInformation</PropertyName>
+                                <Label>Certificates</Label>
+                                <PropertyName>CertificatesString</PropertyName>
                             </ListItem>
                             <ListItem>
-                                <PropertyName>DeploymentDetail</PropertyName>
+                                <Label>Deployment</Label>
+                                <PropertyName>DeploymentString</PropertyName>
                             </ListItem>
                             <ListItem>
-                                <PropertyName>ClusterDetail</PropertyName>
+                                <Label>Cluster</Label>
+                                <PropertyName>ClusterString</PropertyName>
+                            </ListItem>
+                        </ListItems>
+                    </ListEntry>
+                </ListEntries>
+            </ListControl>
+        </View>
+        <View>
+            <Name>Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster</Name>
+            <ViewSelectedBy>
+                <TypeName>Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster</TypeName>
+            </ViewSelectedBy>
+            <ListControl>
+                <ListEntries>
+                    <ListEntry>
+                        <ListItems>
+                            <ListItem>
+                                <Label>Cluster</Label>
+                                <PropertyName>PSClusterString</PropertyName>
                             </ListItem>
                         </ListItems>
                     </ListEntry>

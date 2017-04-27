@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         this.Thumbprint));
             }
 
-            if (ShouldProcess(target: this.Name, action: string.Format("Remove a cluster certificate from {0} ", this.Name)))
+            if (ShouldProcess(target: this.Name, action: string.Format("Remove a cluster certificate")))
             {
                 var cluster = SendPatchRequest(patchRequest);
                 WriteObject(cluster, true);

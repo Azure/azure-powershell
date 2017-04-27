@@ -72,7 +72,7 @@
     <None Include="help\Update-AzureRmServiceFabricDurability.md" />
     <None Include="help\Update-AzureRmServiceFabricReliability.md" />
     <None Include="Microsoft.Azure.Commands.ServiceFabric.format.ps1xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
@@ -112,7 +112,7 @@
     <Compile Include="Models\JsonBlob.cs" />
     <Compile Include="Models\PSDeploymentExtended.cs" />
     <Compile Include="Models\PSKeyVault.cs" />
-    <Compile Include="Models\VmImage.cs" />
+    <Compile Include="Models\OperatingSystem.cs" />
     <Compile Include="Models\PSClientCertificateCommonName.cs" />
     <Compile Include="Models\PSCluster.cs" />
     <Compile Include="Models\PSDeploymentResult.cs" />
@@ -129,8 +129,12 @@
       <Link>AzureRM.ServiceFabric.psd1</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Template\Linux\parameter.json" />
-    <None Include="Template\Linux\template.json" />
+    <None Include="Template\Linux\parameter.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Template\Linux\template.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Template\Windows\parameter.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -171,10 +175,9 @@
     <Reference Include="Microsoft.Azure.Management.ResourceManager">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.ResourceManager.1.2.0-preview\lib\net45\Microsoft.Azure.Management.ResourceManager.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ServiceFabric.1.0.0-preview\lib\net45\Microsoft.Azure.Management.ServiceFabric.dll</HintPath>
-    </Reference>
+   <Reference Include="Microsoft.Azure.Management.ServiceFabric">
+       <HintPath>..\..\..\packages\Microsoft.Azure.Management.ServiceFabric.1.0.0-preview\lib\net45\Microsoft.Azure.Management.ServiceFabric.dll</HintPath>
+     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.6.2.0-preview\lib\net45\Microsoft.Azure.Management.Storage.dll</HintPath>
     </Reference>

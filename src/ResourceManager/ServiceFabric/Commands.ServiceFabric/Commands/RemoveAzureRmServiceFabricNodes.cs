@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(target: this.NodeType, action: string.Format("Remove nodes from {0}", this.NodeType)))
+            if (ShouldProcess(target: this.NodeType, action: string.Format("Remove {0} nodes", -toRemoveNode)))
             {
                 base.ExecuteCmdlet();
             }

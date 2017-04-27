@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Common
     public static class Constants
     {
         public const string DefaultCertificateStore = "my";
-        public const string DefaultSku = "Standard_D1_v2";
+        public const string DefaultSku = "Standard_D2_v2";
         public const string DefaultTier = "Standard";
         public const string DefaultDurabilityLevel = "Bronze";
         public const int DefaultApplicationStartPort = 20000;
