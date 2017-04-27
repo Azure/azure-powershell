@@ -30,7 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
         {
             get
             {
-                if (RMProfile != null && RMProfile.DefaultContext != null)
+                if (RMProfile != null && RMProfile.DefaultContext != null && RMProfile.DefaultContext.Environment != null)
                 {
                     return RMProfile.DefaultContext;
                 }
