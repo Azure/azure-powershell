@@ -104,10 +104,7 @@ function Get-SecretUrl
 
 function Get-ThumbprintByFile
 {
-    $CertPath = Get-Cert
-    $CertPass = Get-Pwd
-    $Cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($CertPath, $CertPass)
-	return $Cert.Thumbprint
+    return "2394f562bf05258059fe32c0d7c63024ead13096"
 }
 
 function Get-DurabilityLevel
