@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         {
             var cluster = SFRPClient.Clusters.Get(ResourceGroupName, Name);
 
-            if (ShouldProcess(target: this.Name, action: string.Format("Add client certificate to {0}", this.Name)))
+            if (ShouldProcess(target: this.Name, action: string.Format("Add client certificate")))
             {
                 switch (ParameterSetName)
                 {

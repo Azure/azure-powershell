@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,14 +31,15 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         /// </summary>
         protected override void SetupManagementClients(RestTestFramework.MockContext context)
         {
-            var sqlCSMClient = GetSqlClient();
+            var sqlClient = GetSqlClient(context);
+            var sqlLegacyClient = GetLegacySqlClient();
             var storageClient = GetStorageV2Client();
 
             // TODO, Remove the MockDeploymentFactory call when the test is re-recorded
             //
             var resourcesClient = MockDeploymentClientFactory.GetResourceClient(GetResourcesClient());
             var authorizationClient = GetAuthorizationManagementClient();
-            helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, resourcesClient,
+            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, storageClient, resourcesClient,
                 authorizationClient);
         }
 

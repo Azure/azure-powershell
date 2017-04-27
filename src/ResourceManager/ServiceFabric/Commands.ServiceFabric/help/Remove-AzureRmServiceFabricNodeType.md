@@ -12,8 +12,8 @@ Remove a node type from the cluster
 ## SYNTAX
 
 ```
-Remove-AzureRmServiceFabricNodeType -NodeTypeName <String> [-ClusterName] <String>
- [-ResourceGroupName] <String> [<CommonParameters>]
+Remove-AzureRmServiceFabricNodeType [-ResourceGroupName] <String> [-Name] <String> -NodeType <String> [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,13 +30,26 @@ This command will remove node type n1 from the cluster
 
 ## PARAMETERS
 
-### -ClusterName
-Specifies the name of the cluster
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specify the name of the cluster```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: ClusterName
 
 Required: True
 Position: 1
@@ -45,10 +58,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -NodeTypeName
-The node type name
-
-```yaml
+### -NodeType
+The node type name```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -56,7 +67,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -75,8 +86,23 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

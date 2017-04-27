@@ -1472,11 +1472,11 @@ The file needs to be a PowerShell script (.ps1 or .psm1).</value>
     <value>Microsoft Azure PowerShell collects data about how users use PowerShell cmdlets and some problems they encounter.  Microsoft uses this information to improve our PowerShell cmdlets.  Participation is voluntary and when you choose to participate your device automatically sends information to Microsoft about how you use Azure PowerShell. 
  
 If you choose to participate, you can stop at any time by using Azure PowerShell as follows:
-1.	Use the Disable-AzureDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the AzureResourceManager module
+1.	Use the Disable-AzureDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the AzureRM.Profile module
 To disable data collection: PS &gt; Disable-AzureDataCollection
 
 If you choose to not participate, you can enable at any time by using Azure PowerShell as follows:
-1.	Use the Enable-AzureDataCollection cmdlet to turn the feature On. The cmdlet can be found in the AzureResourceManager module
+1.	Use the Enable-AzureDataCollection cmdlet to turn the feature On. The cmdlet can be found in the AzureRM.Profile module
 To enable data collection: PS &gt; Enable-AzureDataCollection
  
 Select Y to enable data collection [Y/N]:</value>

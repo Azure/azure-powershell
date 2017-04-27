@@ -12,8 +12,8 @@ Update durability of the cluster
 ## SYNTAX
 
 ```
-Update-AzureRmServiceFabricDurability -Level <DurabilityLevel> -NodeTypeName <String> [-SkuName <String>]
- [-ClusterName] <String> [-ResourceGroupName] <String> [<CommonParameters>]
+Update-AzureRmServiceFabricDurability [-ResourceGroupName] <String> [-Name] <String> -NodeType <String>
+ -Level <DurabilityLevel> [-Sku <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,18 +30,18 @@ This command will change durability level of the node type 'nt1' to silver
 
 ## PARAMETERS
 
-### -ClusterName
-Specifies the name of the cluster
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: cf
 
-Required: True
-Position: 1
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -57,14 +57,25 @@ Accepted values: Bronze, Silver, Gold
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Specify the name of the cluster```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: ClusterName
+
+Required: True
+Position: 1
+Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -NodeTypeName
-NodeTypeName
-
-```yaml
+### -NodeType
+Specify Service Fabric node type name```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -72,7 +83,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -91,10 +102,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -SkuName
-SkuName
-
-```yaml
+### -Sku
+Specify the SKU of the node type```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -102,7 +111,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

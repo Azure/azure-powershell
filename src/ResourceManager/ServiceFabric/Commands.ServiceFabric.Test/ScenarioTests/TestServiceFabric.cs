@@ -12,9 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
-using System.Management.Automation.Runspaces;
 using Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests;
 using Microsoft.Azure.Commands.ServiceFabric.Commands;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
@@ -33,6 +30,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
 
             AddAzureRmServiceFabricNodeType.dontRandom = true;
+            ServiceFabricCmdletBase.WriteVerboseIntervalInSec = 3;
+            ServiceFabricCmdletBase.RunningTest = true;
         }
 
         [Fact]
@@ -105,13 +104,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
             TestController.NewInstance.RunPsTest("Test-AddAzureRmServiceFabricNodeType");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveAzureRmServiceFabricNodeType()
-        {
-            TestController.NewInstance.RunPsTest("Test-RemoveAzureRmServiceFabricNodeType");
-        }
-        
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAzureRmServiceFabricCluster()

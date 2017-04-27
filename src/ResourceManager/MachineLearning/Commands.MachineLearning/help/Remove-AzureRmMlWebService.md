@@ -14,11 +14,12 @@ Deletes a web service.
 ### Remove an Azure ML web service resouce by name and resource group.
 ```
 Remove-AzureRmMlWebService -ResourceGroupName <String> -Name <String> [-Force] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Remove an Azure ML web service specified as an object.
 ```
-Remove-AzureRmMlWebService -MlWebService <WebService> [-Force] [-WhatIf] [-Confirm]
+Remove-AzureRmMlWebService -MlWebService <WebService> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,6 +29,8 @@ Deletes a Azure Machine Learning web service referenced by resource group and na
 
 ### --------------------------  Example 1  --------------------------
 @{paragraph=PS C:\\\>}
+
+
 
 ```
 Remove-AzureRmMlWebService -ResourceGroupName "myresourcegroup" -Name "mywebservicename"
@@ -125,6 +128,9 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -111,6 +111,34 @@ function Test-CrudWithEndpoint
 
 <#
 .SYNOPSIS
+Full cycle to create an Endpoint in a Profile
+#>
+function Test-CrudWithEndpointGeo
+{
+	$profileName = getAssetName
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$relativeName = getAssetName
+	$createdProfile = New-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Geographic" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
+
+	$profileWithEndpoint = Add-AzureRmTrafficManagerEndpointConfig -GeoMapping "RE","RO","RU","RW" -EndpointName "MyExternalEndpoint" -TrafficManagerProfile $createdProfile -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Enabled" 
+
+	$updatedProfile = Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profileWithEndpoint
+
+	Assert-AreEqual 1 $updatedProfile.Endpoints.Count
+
+	$retrievedProfile = Get-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+
+	Assert-AreEqual "Geographic" $retrievedProfile.TrafficRoutingMethod
+	Assert-AreEqual 1 $retrievedProfile.Endpoints.Count
+	Assert-AreEqual 4 $retrievedProfile.Endpoints[0].GeoMapping.Count
+	Assert-AreEqual "RE" $retrievedProfile.Endpoints[0].GeoMapping[0]
+	Assert-AreEqual "RO" $retrievedProfile.Endpoints[0].GeoMapping[1]
+	Assert-AreEqual "RU" $retrievedProfile.Endpoints[0].GeoMapping[2]
+	Assert-AreEqual "RW" $retrievedProfile.Endpoints[0].GeoMapping[3]
+}
+
+<#
+.SYNOPSIS
 List profiles in resource group
 #>
 function Test-ListProfilesInResourceGroup
@@ -139,6 +167,32 @@ function Test-ListProfilesInSubscription
 	$profiles = Get-AzureRmTrafficManagerProfile
 
 	Assert-NotNull $profiles
+}
+
+<#
+.SYNOPSIS
+List profiles in resource group and pipe results to where-object. VSO#942574
+Also assert on the return type to prevent silent change
+#>
+function Test-ListProfilesWhereObject
+{
+	$resourceGroup = TestSetup-CreateResourceGroup
+
+	$profileName1 = getAssetName
+	$relativeName1 = getAssetName
+	$profileName2 = getAssetName
+	$relativeName2 = getAssetName
+		
+	$createdProfile = New-AzureRmTrafficManagerProfile -Name $profileName1 -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName1 -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
+	$createdProfile = New-AzureRmTrafficManagerProfile -Name $profileName2 -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName2 -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
+
+	$profiles = Get-AzureRmTrafficManagerProfile -ResourceGroupName $resourceGroup.ResourceGroupName
+	Assert-AreEqual System.Object[] $profiles.GetType()
+
+	$profile2 = $profiles | where-object {$_.Name -eq $profileName2}
+
+	Assert-AreEqual $profileName2 $profile2.Name
+	Assert-AreEqual $relativeName2 $profile2.RelativeDnsName
 }
 
 <#

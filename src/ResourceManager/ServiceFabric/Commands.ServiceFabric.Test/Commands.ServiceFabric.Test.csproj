@@ -83,7 +83,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.ResourceManager.1.2.0-preview\lib\net45\Microsoft.Azure.Management.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.ServiceFabric">
-      <HintPath>..\..\..\..\..\packages\Microsoft.Azure.Management.ServiceFabric.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ServiceFabric.1.0.0-preview\lib\net45\Microsoft.Azure.Management.ServiceFabric.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.6.2.0-preview\lib\net45\Microsoft.Azure.Management.Storage.dll</HintPath>
@@ -275,18 +275,42 @@
     <None Include="ScenarioTests\TestServiceFabric.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests.TestServiceFabric\TestAddAzureRmServiceFabricClientCertificate.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests.TestServiceFabric\TestAddAzureRmServiceFabricClusterCertificate.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests.TestServiceFabric\TestAddAzureRmServiceFabricNodeType.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests.TestServiceFabric\TestNewAzureRmServiceFabricCluster.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests.TestServiceFabric\TestRemoveAzureRmServiceFabricClientCertificate.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests.TestServiceFabric\TestRemoveAzureRmServiceFabricClusterCertificate.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests.TestServiceFabric\TestRemoveAzureRmServiceFabricNodeType.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests.TestServiceFabric\TestSetAzureRmServiceFabricSettings.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests.TestServiceFabric\TestSetAzureRmServiceFabricUpgradeType.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests.TestServiceFabric\TestUpdateAzureRmServiceFabricClusterResouce.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests.TestServiceFabric\TestUpdateAzureRmServiceFabricDurability.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests.TestServiceFabric\TestUpdateAzureRmServiceFabricReliability.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests.TestServiceFabric\TestAddAzureRmServiceFabricClientCertificate.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests.TestServiceFabric\TestAddAzureRmServiceFabricClusterCertificate.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests.TestServiceFabric\TestAddAzureRmServiceFabricNodeType.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests.TestServiceFabric\TestNewAzureRmServiceFabricCluster.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests.TestServiceFabric\TestRemoveAzureRmServiceFabricClientCertificate.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests.TestServiceFabric\TestRemoveAzureRmServiceFabricClusterCertificate.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests.TestServiceFabric\TestRemoveAzureRmServiceFabricNodeType.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests.TestServiceFabric\TestRemoveAzureRmServiceFabricSettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests.TestServiceFabric\TestSetAzureRmServiceFabricSettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests.TestServiceFabric\TestSetAzureRmServiceFabricUpgradeType.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests.TestServiceFabric\TestUpdateAzureRmServiceFabricDurability.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests.TestServiceFabric\TestUpdateAzureRmServiceFabricReliability.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">

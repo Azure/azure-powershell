@@ -60,6 +60,7 @@ Name of the EventHub endpoint. The possible values for this are events, operatio
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: events, operationsMonitoringEvents
 
 Required: True
 Position: 2

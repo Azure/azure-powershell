@@ -13,9 +13,8 @@ Gets usage statistics of an ExpressRoute circuit.
 ## SYNTAX
 
 ```
-Get-AzureRmExpressRouteCircuitStats [-Name <String>] -ResourceGroupName <String>
- -ExpressRouteCircuitName <String> [-PeeringType <String>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmExpressRouteCircuitStats -ResourceGroupName <String> -ExpressRouteCircuitName <String>
+ [-PeeringType <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,61 +37,9 @@ The name of the ExpressRoute circuit being examined.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: Name, ResourceName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The resource name.```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: ResourceName
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -107,6 +54,7 @@ The acceptable values for this parameter are: `AzurePrivatePeering`, `AzurePubli
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: AzurePrivatePeering, AzurePublicPeering, MicrosoftPeering
 
 Required: False
 Position: Named

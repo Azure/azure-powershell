@@ -17,7 +17,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
-using System.Management.Automation.Language;
 using System.Reflection;
 using System.Security;
 using System.Threading;
@@ -31,23 +30,40 @@ using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.Azure.Management.ServiceFabric;
-using Microsoft.PowerShell.Commands;
 using Microsoft.WindowsAzure.Commands.Common;
 using Newtonsoft.Json;
+using OperatingSystem = Microsoft.Azure.Commands.ServiceFabric.Models.OperatingSystem;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     [Cmdlet(VerbsCommon.New, CmdletNoun.AzureRmServiceFabricCluster, SupportsShouldProcess = true), OutputType(typeof(PSDeploymentResult))]
     public class NewAzureRmServiceFabricCluster : ServiceFabricClusterCertificateCmdlet
     {
-        public override string Name { get; set; } 
-
         public const string WindowsTemplateRelativePath = @"Template\Windows";
         public const string LinuxTemplateRelativePath = @"Template\Linux";
         public const string ParameterFileName = @"parameter.json";
         public const string TemplateFileName = @"template.json";
-        
+
+        public readonly Dictionary<OperatingSystem, string> OsToVmSkuString = new Dictionary<OperatingSystem, string>()
+        {
+            {OperatingSystem.WindowsServer2012R2Datacenter, "2012-R2-Datacenter"},
+            {OperatingSystem.UbuntuServer1604, "16.04"},
+            {OperatingSystem.WindowsServer2016DatacenterwithContainers, "2016-Datacenter-with-Containers"},
+            {OperatingSystem.WindowsServer2016Datacenter, "2016-Datacenter"}
+        };
+
+        private string resourceLocation;
+        public override string KeyVaultResouceGroupLocation
+        {
+            get
+            {
+                return this.resourceLocation;
+            }
+        }
+
+        public const string ErrorFormat = "Error: Code={0}; Message={1}\r\n";
         public const string DefaultPublicDnsFormat = "{0}.{1}.cloudapp.azure.com";
+
         private readonly string DefaultDurability = DurabilityLevel.Bronze.ToString();
 
         private string adminUserName = string.Empty; 
@@ -62,6 +78,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         private string adminUserParameter = string.Empty;
         private string locationParameter = string.Empty;
         private string skuParameter = string.Empty;
+        private string vmImageSkuParameter = string.Empty;
 
         private string thumbprintParameter = string.Empty;
         private string keyVaultParameter = string.Empty;
@@ -139,16 +156,20 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public virtual SecureString SecondaryCertificatePassword { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultName,
-              HelpMessage = "Azure key vault resource group name")]
+              HelpMessage = "Azure key vault resource group name, it not given it will be same as resource group name")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
-              HelpMessage = "Azure key vault resource group name")]
+              HelpMessage = "Azure key vault resource group name, it not given it will be same as resource group name")]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByDefaultArmTemplate,
+              HelpMessage = "Azure key vault resource group name, it not given it will be same as resource group name")]
         [ValidateNotNullOrEmpty]
         public override string KeyVaultResouceGroupName { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultName,
-                HelpMessage = "Azure key vault name")]
+                HelpMessage = "Azure key vault name, it not given it will be same as resource group name")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
-                HelpMessage = "Azure key vault name")]
+                HelpMessage = "Azure key vault name, it not given it will be same as resource group name")]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByDefaultArmTemplate,
+                HelpMessage = "Azure key vault name, it not given it will be same as resource group name")]
         [ValidateNotNullOrEmpty]
         public override string KeyVaultName { get; set; }
 
@@ -158,10 +179,16 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                    HelpMessage = "The resource group location")]
         public string Location { get; set; }
 
+        [Parameter(Mandatory = false, ParameterSetName = ByDefaultArmTemplate, ValueFromPipeline = true,
+                   HelpMessage = "Specify the name of the cluster, if not given it will be same as resource group name")]
+        [ValidateNotNullOrEmpty()]
+        [Alias("ClusterName")]
+        public override string Name { get; set; }
+
         private int clusterSize = 5;
         [Parameter(Mandatory = false, ParameterSetName = ByDefaultArmTemplate, ValueFromPipeline = true,
-                   HelpMessage = "The number of nodes in the cluster. Default is 5 nodes")]
-        [ValidateRange(1, 99)]
+                   HelpMessage = "The number of nodes in the cluster. Default are 5 nodes")]
+        [ValidateRange(1, 100)]
         public int ClusterSize
         {
             get { return this.clusterSize; }
@@ -197,32 +224,21 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [ValidateNotNullOrEmpty]
         public SecureString VmPassword { get; set; }
 
-        private VmImage vmImage = VmImage.Windows;
+        private OperatingSystem os = OperatingSystem.WindowsServer2016Datacenter;
         [Parameter(Mandatory = false, ParameterSetName = ByDefaultArmTemplate, ValueFromPipelineByPropertyName = true,
                    HelpMessage = "The OS type of the cluster")]
-        public VmImage VmImage
+        public OperatingSystem OS
         {
-            get { return this.vmImage; }
-            set { this.vmImage = value; }
+            get { return this.os; }
+            set { this.os = value; }
         }
 
         [Parameter(Mandatory = false, ParameterSetName = ByDefaultArmTemplate, ValueFromPipelineByPropertyName = true,
                    HelpMessage = "The Vm Sku")]
-        public string Sku { get; set; }
+        [Alias("Sku")]
+        public string VmSku { get; set; }
 
         #endregion
-
-        private string resourceLocation;
-
-        public override string KeyVaultResouceGroupLocation
-        {
-            get
-            {
-                return this.resourceLocation;
-            }
-        }
-
-        public const string ErrorFormat = "Error: Code={0}; Message={1}\r\n";
 
         public override void ExecuteCmdlet()
         {
@@ -267,8 +283,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             throw new PSArgumentException("pfxFilePath");
         }
-
-
+         
         protected override void Validate()
         {
             base.Validate();
@@ -339,6 +354,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 FillCertificateInformationInParameters((JObject) deployment.Properties.Parameters, out certificateInformations);
 
             WriteVerboseWithTimestamp("Begin to validate deployment");
+
             var validateResult = ResourceManagerClient.Deployments.Validate(
               ResourceGroupName,
               GenerateDeploymentName(),
@@ -354,7 +370,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private void DeployWithDefaultTemplate()
         {
-            this.Name = this.ResourceGroupName;
+            this.Name = this.Name ?? this.ResourceGroupName;
             var existingCluster = SafeGetResource(() => SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name));
 
             if (existingCluster != null)
@@ -377,7 +393,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             var assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             var templateFilePath = string.Empty;
             var parameterFilePath = string.Empty;
-            if (VmImage == VmImage.Windows)
+            if (this.OS != OperatingSystem.UbuntuServer1604)
             {
                 templateFilePath = Path.Combine(assemblyFolder, WindowsTemplateRelativePath, TemplateFileName);
                 parameterFilePath = Path.Combine(assemblyFolder, WindowsTemplateRelativePath, ParameterFileName);
@@ -390,14 +406,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             if (!File.Exists(templateFilePath) || !File.Exists(parameterFilePath))
             {
-                throw new PSInvalidOperationException("Can't find the template and parameter file");
+                throw new PSInvalidOperationException("Can't find the template or parameter file");
             }
 
             this.resourceLocation = this.Location;
             this.TemplateFile = templateFilePath;
             this.ParameterFile = parameterFilePath;
-
-            this.Name = this.ResourceGroupName;
 
             this.ResourceManagerClient.ResourceGroups.CreateOrUpdate(
                 this.ResourceGroupName,
@@ -430,7 +444,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                this.Location,
                this.Name,
                this.VmPassword.ConvertToString(),
-               this.Sku,
+               this.VmSku,
                (int)this.clusterSize
               );
 
@@ -524,21 +538,22 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             while (!token.IsCancellationRequested)
             {
-                WriteVerboseWithTimestamp(ServiceFabricProperties.Resources.DeploymentVerbose);
-
-                var c = SafeGetResource(() => this.SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name));
-                if (c != null)
+                if (!RunningTest)
                 {
-                    WriteVerboseWithTimestamp(string.Format(ServiceFabricProperties.Resources.ClusterStateVerbose, c.ClusterState));
+                    WriteVerboseWithTimestamp(ServiceFabricProperties.Resources.DeploymentVerbose);
+
+                    var c = SafeGetResource(() => this.SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name));
+                    if (c != null)
+                    {
+                        WriteVerboseWithTimestamp(string.Format(ServiceFabricProperties.Resources.ClusterStateVerbose,
+                            c.ClusterState));
+                    }
                 }
 
                 Thread.Sleep(TimeSpan.FromSeconds(WriteVerboseIntervalInSec));
             }
 
-            if (deploymentTask.IsFaulted)
-            {
-                PrintDetailIfThrow(() => { throw deploymentTask.Exception; });
-            }
+            PrintDetailIfThrow(() => deploymentTask.Wait());
 
             var cluster = SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name);
 
@@ -561,13 +576,13 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private string GenerateDeploymentName()
         {
-            if (!string.IsNullOrEmpty(TemplateFile))
+            if (!string.IsNullOrEmpty(TemplateFile) && !ParameterSetName.Equals(ByDefaultArmTemplate))
             {
                 return Path.GetFileNameWithoutExtension(TemplateFile);
             }
             else
             {
-                return string.Format("AzureSDKDeployment-{0}", DateTime.Now.ToString("MMddHHmmss"));
+                return string.Format("AzurePSDeployment-{0}", DateTime.Now.ToString("MMddHHmmss"));
             }
         }
 
@@ -655,6 +670,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             SetParameter(ref parameters, this.durabilityLevelParameter, durabilityLevel);
             SetParameter(ref parameters, this.reliabilityLevelParameter, reliability);
             SetParameter(ref parameters, this.skuParameter, sku);
+            SetParameter(ref parameters, this.vmImageSkuParameter, OsToVmSkuString[this.OS]);
 
             if (location != null)
             {
@@ -772,6 +788,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     var vmssProfile = resourceObject.ToObject<VirtualMachineScaleSetVMProfile>(serializer);
                     this.adminUserParameter = vmssProfile.OsProfile.AdminUsername;
                     this.adminPasswordParameter = vmssProfile.OsProfile.AdminPassword;
+                    this.vmImageSkuParameter = vmssProfile.StorageProfile.ImageReference.Sku;
 
                     if (!customize)
                     {
@@ -846,7 +863,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
         }
 
-        void TranslateParameters(bool customize)
+        private void TranslateParameters(bool customize)
         {
             this.adminUserParameter = TranslateToParameterName(this.adminUserParameter);
             this.locationParameter = TranslateToParameterName(this.locationParameter);
@@ -863,6 +880,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 this.keyVaultParameter = TranslateToParameterName(this.keyVaultParameter);
                 this.certificateUrlParameter = TranslateToParameterName(this.certificateUrlParameter);
                 this.skuParameter = TranslateToParameterName(this.skuParameter);
+                this.vmImageSkuParameter = TranslateToParameterName(this.vmImageSkuParameter);
             }
         }
 

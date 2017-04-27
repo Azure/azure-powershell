@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
                 TrafficManagerProfile[] profiles = this.TrafficManagerClient.ListTrafficManagerProfiles(this.ResourceGroupName);
 
                 this.WriteVerbose(ProjectResources.Success);
-                this.WriteObject(profiles);
+                this.WriteObject(profiles, enumerateCollection: true);
             }
         }
     }

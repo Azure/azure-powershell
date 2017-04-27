@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     ServiceFabricProperties.Resources.CannotUpdateBronzeNodeType);
             }
 
-            if (ShouldProcess(target: this.NodeType, action: string.Format("Remove a nodetype {0} from {0} ", this.NodeType, this.Name)))
+            if (ShouldProcess(target: this.NodeType, action: string.Format("Remove a nodetype {0} ", this.NodeType)))
             {
                 this.ComputeClient.VirtualMachineScaleSets.Delete(this.ResourceGroupName, this.NodeType);
 
