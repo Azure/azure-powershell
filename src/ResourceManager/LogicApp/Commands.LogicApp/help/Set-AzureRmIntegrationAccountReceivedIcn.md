@@ -13,7 +13,8 @@ Updates the integration account received interchange control number (ICN) in the
 
 ```
 Set-AzureRmIntegrationAccountReceivedIcn -ResourceGroupName <String> -Name <String> -AgreementName <String>
- -ControlNumberValue <String> -IsMessageProcessingFailed <Boolean> [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ControlNumberValue <String> -IsMessageProcessingFailed <Boolean> [-AgreementType <String>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,18 +25,29 @@ You cannot create a new integration account received interchange control number 
 To use the dynamic parameters, just type them in the command, or type a hyphen sign(-) to indicate a parameter name and then press the TAB key repeatedly to cycle through the available parameters.
 If you miss a required template parameter, the cmdlet prompts you for the value.
 Template parameter file values that you specify at the command line take precedence over template parameter values in a template parameter object.
+Please do provide the "-AgreementType" parameter to specify whether X12 or Edifact control numbers to return
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Set-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName "ResourceGroup1" -Name "IntegrationAccount1" -AgreementName "IntegrationAccountAgreement1" -ControlNumber "123" -IsMessageProcessingFailed $true
+PS C:\> Set-AzureRmIntegrationAccountGeneratedIcn -AgreementType "X12" -ResourceGroupName "ResourceGroup1" -Name "IntegrationAccount1" -AgreementName "X12IntegrationAccountAgreement" -ControlNumber "123" -IsMessageProcessingFailed $true
 ControlNumber             : 1100
 ControlNumberChangedTime  : 2/15/2017 12:36:00 AM
 IsMessageProcessingFailed : True
 ```
 
-This command updates the integration account received interchange control number for a specific integration account agreement and value with message processing status failed.
+This command updates the integration account received X12 interchange control number for a specific integration account agreement and value with message processing status failed.
+
+### Example 2
+```
+PS C:\> Set-AzureRmIntegrationAccountGeneratedIcn -AgreementType "Edifact" -ResourceGroupName "ResourceGroup1" -Name "IntegrationAccount1" -AgreementName "EdifactIntegrationAccountAgreement" -ControlNumber "123" -IsMessageProcessingFailed $true
+ControlNumber             : 1100
+ControlNumberChangedTime  : 2/15/2017 12:36:00 AM
+IsMessageProcessingFailed : True
+```
+
+This command updates the integration account received Edifact interchange control number for a specific integration account agreement and value with message processing status failed.
 
 ## PARAMETERS
 
@@ -141,6 +153,21 @@ Aliases: wi
 Required: False
 Position: Named
 Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AgreementType
+The integration account agreement type (X12 or Edifact).
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: MessageType
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

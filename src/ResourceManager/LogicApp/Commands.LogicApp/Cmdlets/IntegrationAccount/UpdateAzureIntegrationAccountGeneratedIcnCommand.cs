@@ -58,6 +58,14 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public string ControlNumber { get; set; }
 
+        /// <summary>
+        /// Gets or sets the agreement type.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The integration account agreement type.")]
+        [Alias("MessageType")]
+        [ValidateSet("X12", "Edifact", IgnoreCase = true)]
+        public string AgreementType { get; set; }
+
         #endregion Input Parameters
 
         /// <summary>
@@ -67,12 +75,17 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
+            if (string.IsNullOrEmpty(AgreementType))
+            {
+                this.WriteWarning("By default, you are using the X12 agreement. Please provide a value for AgreementType if you would like to specify the agreement type. Possible values are X12 and Edifact.");
+            }
+
             var integrationAccountGeneratedIcn = this.IntegrationAccountClient.GetIntegrationAccountGeneratedIcn(
                 resourceGroupName: this.ResourceGroupName,
                 integrationAccountName: this.Name,
                 integrationAccountAgreementName: this.AgreementName);
 
-            integrationAccountGeneratedIcn.MessageType = MessageType.X12;
+            integrationAccountGeneratedIcn.MessageType = (MessageType)Enum.Parse(typeof(MessageType), AgreementType, true);
             integrationAccountGeneratedIcn.ControlNumber = this.ControlNumber;
             integrationAccountGeneratedIcn.ControlNumberChangedTime = DateTime.UtcNow > integrationAccountGeneratedIcn.ControlNumberChangedTime ?
                 DateTime.UtcNow :
