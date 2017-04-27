@@ -26,13 +26,13 @@ Add-AzureRmServiceFabricClientCertificate [-Admin] [-ResourceGroupName] <String>
 ### MultipleUpdatesWithCommonName
 ```
 Add-AzureRmServiceFabricClientCertificate [-ResourceGroupName] <String> [-Name] <String>
- -CommonNames <PSClientCertificateCommonName[]> [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ClientCertificateCommonName <PSClientCertificateCommonName[]> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MultipleUpdatesWithThumbprint
 ```
 Add-AzureRmServiceFabricClientCertificate [-ResourceGroupName] <String> [-Name] <String>
- [-AdminClientThumbprints <String[]>] [-ReadonlyClientThumbprints <String[]>] [-WhatIf] [-Confirm]
+ [-AdminClientThumbprint <String[]>] [-ReadonlyClientThumbprint <String[]>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -71,40 +71,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -AdminClientThumbprints
-Specify client certificate thumbprint which only has admin permission```yaml
-Type: String[]
-Parameter Sets: MultipleUpdatesWithThumbprint
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -CommonName
 Specify client certificate common name
 
 ```yaml
 Type: String
 Parameter Sets: SingleUpdateWithCommonName
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -CommonNames
-Specify client common name , issuer thumbprint and authentication type
-
-```yaml
-Type: PSClientCertificateCommonName[]
-Parameter Sets: MultipleUpdatesWithCommonName
 Aliases: 
 
 Required: True
@@ -153,20 +125,7 @@ Aliases: ClusterName
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ReadonlyClientThumbprints
-Specify client certificate thumbprint which only has read only permission```yaml
-Type: String[]
-Parameter Sets: MultipleUpdatesWithThumbprint
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -181,7 +140,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -212,6 +171,45 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AdminClientThumbprint
+Specify client certificate thumbprint which only has admin permission```yaml
+Type: String[]
+Parameter Sets: MultipleUpdatesWithThumbprint
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ClientCertificateCommonName
+Specify client common name , issuer thumbprint and authentication type```yaml
+Type: PSClientCertificateCommonName[]
+Parameter Sets: MultipleUpdatesWithCommonName
+Aliases: CertCommonName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ReadonlyClientThumbprint
+Specify client certificate thumbprint which only has read only permission```yaml
+Type: String[]
+Parameter Sets: MultipleUpdatesWithThumbprint
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

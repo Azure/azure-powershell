@@ -19,10 +19,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Common
         public const string AzureRmServiceFabricApplicationCertificate = "AzureRmServiceFabricApplicationCertificate";
         public const string AzureRmServiceFabricClientCertificate = "AzureRmServiceFabricClientCertificate";
         public const string AzureRmServiceFabricClusterCertificate = "AzureRmServiceFabricClusterCertificate";
-        public const string AzureRmServiceFabricNodes = "AzureRmServiceFabricNodes";
+        public const string AzureRmServiceFabricNode = "AzureRmServiceFabricNode";
         public const string AzureRmServiceFabricNodeType = "AzureRmServiceFabricNodeType";
         public const string AzureRmServiceFabricCluster = "AzureRmServiceFabricCluster";
-        public const string AzureRmServiceFabricSettings = "AzureRmServiceFabricSettings";
+        public const string AzureRmServiceFabricSetting = "AzureRmServiceFabricSetting";
         public const string AzureRmServiceFabricUpgradeType = "AzureRmServiceFabricUpgradeType";
         public const string AzureRmServiceFabricDurability = "AzureRmServiceFabricDurability";
         public const string AzureRmServiceFabricReliability = "AzureRmServiceFabricReliability";

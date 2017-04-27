@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = BatchSettings,
                    HelpMessage = "An array of fabric settings")]
         [ValidateNotNullOrEmpty()]
-        public PSSettingsSectionDescription[] SettingsSectionDescriptions { get; set; }
+        public PSSettingsSectionDescription[] SettingsSectionDescription { get; set; }
 
         protected List<PSSettingsSectionDescription> UpdatedSettingsSectionDescriptionListList
         {
@@ -89,9 +89,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         }
                     case BatchSettings:
                         {
-                            if (this.SettingsSectionDescriptions != null)
+                            if (this.SettingsSectionDescription != null)
                             {
-                                updatedSettingsSectionDescriptionList.AddRange(this.SettingsSectionDescriptions);
+                                updatedSettingsSectionDescriptionList.AddRange(this.SettingsSectionDescription);
                             }
 
                             break;

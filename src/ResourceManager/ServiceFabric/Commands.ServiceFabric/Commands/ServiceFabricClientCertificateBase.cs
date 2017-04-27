@@ -56,17 +56,18 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = MultipleUpdatesWithThumbprintSet,
                    HelpMessage = "Specify client certificate thumbprint which only has admin permission")]
         [ValidateNotNullOrEmpty()]
-        public string[] AdminClientThumbprints { get; set; }
+        public string[] AdminClientThumbprint { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = MultipleUpdatesWithThumbprintSet,
                   HelpMessage = "Specify client certificate thumbprint which only has read only permission")]
         [ValidateNotNullOrEmpty()]
-        public string[] ReadonlyClientThumbprints { get; set; }
+        public string[] ReadonlyClientThumbprint { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = MultipleUpdatesWithCommonNameSet,
                    HelpMessage = "Specify client common name , issuer thumbprint and authentication type")]
         [ValidateNotNullOrEmpty()]
-        public PSClientCertificateCommonName[] CommonNames { get; set; }
+        [Alias("CertCommonName")]
+        public PSClientCertificateCommonName[] ClientCertificateCommonName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = SingleUpdateWithThumbprintSet,
                    HelpMessage = "Specify client certificate thumbprint")]
@@ -94,27 +95,27 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 case MultipleUpdatesWithThumbprintSet:
                     {
 
-                        if ((this.AdminClientThumbprints == null || !this.AdminClientThumbprints.Any()) &&
-                            (this.ReadonlyClientThumbprints == null) || !this.ReadonlyClientThumbprints.Any())
+                        if ((this.AdminClientThumbprint == null || !this.AdminClientThumbprint.Any()) &&
+                            (this.ReadonlyClientThumbprint == null) || !this.ReadonlyClientThumbprint.Any())
                         {
                             throw new PSArgumentException(
                                 "Both AdminClientThumbprints and ReadonlyClientThumbprints are empty");
                         }
 
-                        if (this.AdminClientThumbprints != null && this.AdminClientThumbprints.Any())
+                        if (this.AdminClientThumbprint != null && this.AdminClientThumbprint.Any())
                         {
                             allCertThumbprints.AddRange(
-                                this.AdminClientThumbprints.Select(t => new ClientCertificateThumbprint()
+                                this.AdminClientThumbprint.Select(t => new ClientCertificateThumbprint()
                                 {
                                     CertificateThumbprint = t,
                                     IsAdmin = true
                                 }));
                         }
 
-                        if (this.ReadonlyClientThumbprints != null && this.ReadonlyClientThumbprints.Any())
+                        if (this.ReadonlyClientThumbprint != null && this.ReadonlyClientThumbprint.Any())
                         {
                             allCertThumbprints.AddRange(
-                                this.ReadonlyClientThumbprints.Select(t => new ClientCertificateThumbprint()
+                                this.ReadonlyClientThumbprint.Select(t => new ClientCertificateThumbprint()
                                 {
                                     CertificateThumbprint = t,
                                     IsAdmin = false
@@ -147,7 +148,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 case MultipleUpdatesWithCommonNameSet:
                     {
-                        allCommonNames = this.CommonNames.Select(
+                        allCommonNames = this.ClientCertificateCommonName.Select(
                             c => new ClientCertificateCommonName(
                                 c.IsAdmin,
                                 c.CertificateCommonName,

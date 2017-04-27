@@ -52,12 +52,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, ValueFromPipeline = true,
                    HelpMessage = "Add node count automatically when changing reliability")]
         [Alias("Auto")]
-        public SwitchParameter AutoAddNodes
+        public SwitchParameter AutoAddNode
         {
-            get { return autoAddNodes; }
-            set { autoAddNodes = value; }
+            get { return autoAddNode; }
+            set { autoAddNode = value; }
         }
-        private bool autoAddNodes;
+        private bool autoAddNode;
 
         public override void ExecuteCmdlet()
         {
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 if ((int)this.Level >= (int)oldReliabilityLevel)
                 {
-                    if (instanceNumber > primaryVmss.Sku.Capacity && !this.AutoAddNodes.IsPresent)
+                    if (instanceNumber > primaryVmss.Sku.Capacity && !this.AutoAddNode.IsPresent)
                     {
                         throw new InvalidOperationException(
                             string.Format(

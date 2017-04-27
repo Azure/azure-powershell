@@ -13,7 +13,7 @@ Update reliability of the cluster
 
 ```
 Update-AzureRmServiceFabricReliability [-ResourceGroupName] <String> [-Name] <String> -Level <ReliabilityLevel>
- [-AutoAddNodes] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AutoAddNode] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,21 +29,6 @@ PS c:> Add-AzureRmServiceFabricReliability -ResourceGroupName myResourceGroup -C
 This command will change reliability level of the cluster to silver
 
 ## PARAMETERS
-
-### -AutoAddNodes
-Automatic adjust nodes number when changing reliability
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: Auto
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
@@ -117,8 +102,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AutoAddNode
+Add node count automatically when changing reliability```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: Auto
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

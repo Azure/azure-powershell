@@ -14,21 +14,21 @@ Add a secondary cluster certificate to the cluster
 ### ByExistingKeyVault
 ```
 Add-AzureRmServiceFabricClusterCertificate [-ResourceGroupName] <String> [-Name] <String>
- -SecretIdentifier <String> [-CertificateThumprint <String>] [<CommonParameters>]
+ -SecretIdentifier <String> [-CertificateThumprint <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByNewPfxAndVaultName
 ```
 Add-AzureRmServiceFabricClusterCertificate [-ResourceGroupName] <String> [-Name] <String>
  [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>] [-PfxOutputFolder <String>]
- -CertificateSubjectName <String> [<CommonParameters>]
+ -CertificateSubjectName <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByExistingPfxAndVaultName
 ```
 Add-AzureRmServiceFabricClusterCertificate [-ResourceGroupName] <String> [-Name] <String>
  [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>] -PfxSourceFile <String>
- [-CertificatePassword <SecureString>] [<CommonParameters>]
+ [-CertificatePassword <SecureString>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -200,6 +200,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
