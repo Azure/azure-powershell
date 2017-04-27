@@ -20,7 +20,7 @@ Add common name or thumbprint to the cluster for client authentication
 ### [Add-AzureRmServiceFabricClusterCertificate](Add-AzureRmServiceFabricClusterCertificate.md)
 Add a secondary cluster certificate to the cluster 
 
-### [Add-AzureRmServiceFabricNodes](Add-AzureRmServiceFabricNodes.md)
+### [Add-AzureRmServiceFabricNode](Add-AzureRmServiceFabricNode.md)
 Add nodes to the specific node type
 
 ### [Add-AzureRmServiceFabricNodeType](Add-AzureRmServiceFabricNodeType.md)
@@ -38,16 +38,16 @@ Remove client certificate from the cluster
 ### [Remove-AzureRmServiceFabricClusterCertificate](Remove-AzureRmServiceFabricClusterCertificate.md)
 Remove cluster certificate
 
-### [Remove-AzureRmServiceFabricNodes](Remove-AzureRmServiceFabricNodes.md)
+### [Remove-AzureRmServiceFabricNode](Remove-AzureRmServiceFabricNode.md)
 Remove nodes from the specific node type
 
 ### [Remove-AzureRmServiceFabricNodeType](Remove-AzureRmServiceFabricNodeType.md)
 Remove a node type from the cluster
 
-### [Remove-AzureRmServiceFabricSettings](Remove-AzureRmServiceFabricSettings.md)
+### [Remove-AzureRmServiceFabricSetting](Remove-AzureRmServiceFabricSetting.md)
 Remove one or multiple ServiceFabric settings from the cluster
 
-### [Set-AzureRmServiceFabricSettings](Set-AzureRmServiceFabricSettings.md)
+### [Set-AzureRmServiceFabricSetting](Set-AzureRmServiceFabricSetting.md)
 Add or update one or multiple ServiceFabric settings to the cluster
 
 ### [Set-AzureRmServiceFabricUpgradeType](Set-AzureRmServiceFabricUpgradeType.md)

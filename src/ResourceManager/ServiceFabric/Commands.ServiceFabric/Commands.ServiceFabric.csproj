@@ -57,17 +57,17 @@
     <None Include="help\Add-AzureRmServiceFabricApplicationCertificate.md" />
     <None Include="help\Add-AzureRmServiceFabricClientCertificate.md" />
     <None Include="help\Add-AzureRmServiceFabricClusterCertificate.md" />
-    <None Include="help\Add-AzureRmServiceFabricNodes.md" />
+    <None Include="help\Add-AzureRmServiceFabricNode.md" />
     <None Include="help\Add-AzureRmServiceFabricNodeType.md" />
     <None Include="help\AzureRM.ServiceFabric.md" />
     <None Include="help\Get-AzureRmServiceFabricCluster.md" />
     <None Include="help\New-AzureRmServiceFabricCluster.md" />
     <None Include="help\Remove-AzureRmServiceFabricClientCertificate.md" />
     <None Include="help\Remove-AzureRmServiceFabricClusterCertificate.md" />
-    <None Include="help\Remove-AzureRmServiceFabricNodes.md" />
+    <None Include="help\Remove-AzureRmServiceFabricNode.md" />
     <None Include="help\Remove-AzureRmServiceFabricNodeType.md" />
-    <None Include="help\Remove-AzureRmServiceFabricSettings.md" />
-    <None Include="help\Set-AzureRmServiceFabricSettings.md" />
+    <None Include="help\Remove-AzureRmServiceFabricSetting.md" />
+    <None Include="help\Set-AzureRmServiceFabricSetting.md" />
     <None Include="help\Set-AzureRmServiceFabricUpgradeType.md" />
     <None Include="help\Update-AzureRmServiceFabricDurability.md" />
     <None Include="help\Update-AzureRmServiceFabricReliability.md" />
@@ -165,7 +165,7 @@
     <Reference Include="Microsoft.Azure.Graph.RBAC">
       <HintPath>..\..\..\packages\Microsoft.Azure.Graph.RBAC.3.2.0-preview\lib\net45\Microsoft.Azure.Graph.RBAC.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Compute, Version=14.0.0.0">
+    <Reference Include="Microsoft.Azure.Management.Compute">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.14.0.0-prerelease\lib\net45\Microsoft.Azure.Management.Compute.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.KeyVault">
@@ -180,7 +180,7 @@
     <Reference Include="Microsoft.Azure.Management.ServiceFabric">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.ServiceFabric.1.0.0-preview\lib\net45\Microsoft.Azure.Management.ServiceFabric.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Storage, Version=6.0.0.0">
+    <Reference Include="Microsoft.Azure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.6.3.0-preview\lib\net452\Microsoft.Azure.Management.Storage.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0">

@@ -126,12 +126,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
         }
 
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ExistingKeyVault,
-                  HelpMessage = "The thumbprint for the Azure key vault secret")]
-        [ValidateNotNullOrEmpty]
-        [Alias("Thumbprint")]
-        public string CertificateThumprint { get; set; }
-
         public Lazy<IResourceManagementClient> resourceManagerClient;
 
         public IResourceManagementClient ResourceManagerClient
@@ -503,11 +497,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private string GetThumbprintFromSecret(string secretUrl)
         {
-            if (!string.IsNullOrWhiteSpace(this.CertificateThumprint))
-            {
-                return this.CertificateThumprint;
-            }
-
             if (string.IsNullOrWhiteSpace(secretUrl))
             {
                 throw new PSArgumentException("secretUrl");
@@ -554,7 +543,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 throw;
             }
 
-            throw new PSInvalidOperationException(string.Format("Failed to find the thumbprint from {0} , please specify thumbprint explicitly using -CertificateThumprint", secretUrl));
+            throw new PSInvalidOperationException(string.Format("Failed to find the thumbprint from {0}", secretUrl));
         }
 
         private void ExtractSecretNameFromSecretIdentifier(string secretIdentifier, out string vaultSecretName, out string version)

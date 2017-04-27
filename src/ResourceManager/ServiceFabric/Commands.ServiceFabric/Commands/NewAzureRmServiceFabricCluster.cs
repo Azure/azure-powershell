@@ -228,6 +228,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         private OperatingSystem os = OperatingSystem.WindowsServer2016Datacenter;
         [Parameter(Mandatory = false, ParameterSetName = ByDefaultArmTemplate, ValueFromPipelineByPropertyName = true,
                    HelpMessage = "The OS type of the cluster")]
+        [Alias("VmImage")]
         public OperatingSystem OS
         {
             get { return this.os; }

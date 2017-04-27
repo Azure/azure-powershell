@@ -7,33 +7,33 @@ schema: 2.0.0
 # Remove-AzureRmServiceFabricSetting
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Remove one or multiple ServiceFabric setting from the cluster
 
 ## SYNTAX
 
 ### OneSetting
 ```
 Remove-AzureRmServiceFabricSetting [-ResourceGroupName] <String> [-Name] <String> -Section <String>
- -Parameter <String> [-WhatIf] [-Confirm]
+ -Parameter <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BatchSettings
 ```
 Remove-AzureRmServiceFabricSetting [-ResourceGroupName] <String> [-Name] <String>
- -SettingsSectionDescription <PSSettingsSectionDescription[]> [-WhatIf] [-Confirm]
+ -SettingsSectionDescription <PSSettingsSectionDescription[]> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzureRmServiceFabricSetting** can remove ServiceFabric settings from the cluster
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS c:> Remove-AzureRmServiceFabricSetting -ResourceGroupName myResourceGroup -ClusterName myCluster -Section EseStore -Parameter Maxcursors
 ```
 
-{{ Add example description here }}
+This command will remove parameter Maxcursors under section EseStore
 
 ## PARAMETERS
 
@@ -54,7 +54,6 @@ Accept wildcard characters: False
 
 ### -Name
 Specify the name of the cluster
-
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -68,7 +67,7 @@ Accept wildcard characters: False
 ```
 
 ### -Parameter
-Parameter name of the fabric setting
+Parameter
 
 ```yaml
 Type: String
@@ -83,7 +82,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specify the name of the resource group.
+Specifies the name of the resource group.
 
 ```yaml
 Type: String
@@ -98,7 +97,7 @@ Accept wildcard characters: False
 ```
 
 ### -Section
-Section name of the fabric setting
+Section
 
 ```yaml
 Type: String
@@ -113,7 +112,7 @@ Accept wildcard characters: False
 ```
 
 ### -SettingsSectionDescription
-An array of fabric settings
+Client authentication type
 
 ```yaml
 Type: PSSettingsSectionDescription[]
@@ -128,8 +127,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter
@@ -143,16 +141,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription[]
 
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster
-
+### Microsoft.Azure.Commands.ServiceFabric.Models.PsCluster
 
 ## NOTES
 

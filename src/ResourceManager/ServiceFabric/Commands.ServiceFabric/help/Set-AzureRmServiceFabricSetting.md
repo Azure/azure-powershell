@@ -7,33 +7,66 @@ schema: 2.0.0
 # Set-AzureRmServiceFabricSetting
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Add or update one or multiple ServiceFabric settings to the cluster
 
 ## SYNTAX
 
 ### OneSetting
 ```
 Set-AzureRmServiceFabricSetting [-ResourceGroupName] <String> [-Name] <String> -Section <String>
- -Parameter <String> -Value <String> [-WhatIf] [-Confirm]
+ -Parameter <String> -Value <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BatchSettings
 ```
 Set-AzureRmServiceFabricSetting [-ResourceGroupName] <String> [-Name] <String>
- -SettingsSectionDescription <PSSettingsSectionDescription[]> [-WhatIf] [-Confirm]
+ -SettingsSectionDescription <PSSettingsSectionDescription[]> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzureRmServiceFabricSetting** can add ServiceFabric settings to the cluster
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS c:\> Set-AzureRmServiceFabricSetting -ResourceGroupName myResourceGroup -ClusterName myCluster -Section EseStore -Parameter Maxcursors -Value 1000
 ```
 
-{{ Add example description here }}
+This command will Set 'Maxcursors' to value '1000' under the section 'EseStore'
+
+### Example 2
+```
+PS c:\>$settingsSectionDescription1 = New-Object Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription
+PS c:\> $settingsSectionDescription1.Name = 'NamingService'
+PS c:\>$settingsSectionDescription1.Parameters = New-Object "System.Collections.Generic.List[Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsParameterDescription]"
+
+PS c:\>$parameter1 = New-Object Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsParameterDescription
+PS c:\>$parameter1.Name = 'MaxOperationTimeout'
+PS c:\>$parameter1.Value = '1000'
+
+PS c:\>$parameter2 = New-Object Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsParameterDescription
+PS c:\>$parameter2.Name = 'MaxFileOperationTimeout'
+PS c:\>$parameter2.Value = '900'
+
+PS c:\>$settingsSectionDescription1.Parameters.Add($parameter1)
+PS c:\>$settingsSectionDescription1.Parameters.Add($parameter2)
+
+PS c:\>$settingsSectionDescription2 = New-Object Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription
+PS c:\>$settingsSectionDescription2.Name = 'EseStore'
+PS c:\>$settingsSectionDescription2.Parameters =  New-Object "System.Collections.Generic.List[Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsParameterDescription]"
+
+PS c:\>$parameter3 = New-Object Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsParameterDescription
+PS c:\>$parameter3.Name = 'MaxCursors'
+PS c:\>$parameter3.Value = '1000'
+
+PS c:\>$settingsSectionDescription2.Parameters.Add($parameter3)
+PS c:\>$arry=$settingsSectionDescription1 , $settingsSectionDescription2
+
+PS c:\> Set-AzureRmServiceFabricSetting -SettingsSectionDescription $arry -ClusterName myclustername -ResourceGroupName clusterresourcegroup
+```
+
+This example will batch update fabric settings
 
 ## PARAMETERS
 
@@ -68,7 +101,7 @@ Accept wildcard characters: False
 ```
 
 ### -Parameter
-Parameter name of the fabric setting
+Parameter
 
 ```yaml
 Type: String
@@ -83,7 +116,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specify the name of the resource group.
+Specifies the name of the resource group.
 
 ```yaml
 Type: String
@@ -98,7 +131,7 @@ Accept wildcard characters: False
 ```
 
 ### -Section
-Section name of the fabric setting
+Section
 
 ```yaml
 Type: String
@@ -113,7 +146,7 @@ Accept wildcard characters: False
 ```
 
 ### -SettingsSectionDescription
-An array of fabric settings
+Client authentication type
 
 ```yaml
 Type: PSSettingsSectionDescription[]
@@ -128,7 +161,7 @@ Accept wildcard characters: False
 ```
 
 ### -Value
-Parameter value of the fabric setting
+Value
 
 ```yaml
 Type: String
@@ -143,8 +176,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter
@@ -158,16 +190,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription[]
 
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster
-
+### Microsoft.Azure.Commands.ServiceFabric.Models.PsCluster
 
 ## NOTES
 

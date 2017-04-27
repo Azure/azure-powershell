@@ -7,26 +7,26 @@ schema: 2.0.0
 # Remove-AzureRmServiceFabricNode
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Remove nodes from the specific node type
 
 ## SYNTAX
 
 ```
 Remove-AzureRmServiceFabricNode [-ResourceGroupName] <String> [-Name] <String> -NodeType <String>
- -Number <Int32> [-WhatIf] [-Confirm]
+ -Number <Int32> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzureRmServiceFabricNode** can remove nodes from specific node type 
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS c:> Remove-AzureRmServiceFabricNode -ResourceGroupName myResourceGroup -ClusterName myCluster -NumberOfNodesToRemove 2	-NodeTypeName n1
 ```
 
-{{ Add example description here }}
+This command will remove 2 nodes from the node type n1
 
 ## PARAMETERS
 
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specify the name of the resource group.
+Specifies the name of the resource group.
 
 ```yaml
 Type: String
@@ -106,8 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter
@@ -121,16 +120,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
-### System.String
-System.Int32
-
+### System.Int32
+System.String
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster
-
+### System.Object
 
 ## NOTES
 
