@@ -138,7 +138,7 @@ function Test-SetAzureRmServiceFabricSettings
 
 	$clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName
 	$count = $clusters[0].FabricSettings.Count
-	$cluster = Set-AzureRmServiceFabricSettings -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Section $sectionName `
+	$cluster = Set-AzureRmServiceFabricSetting -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Section $sectionName `
 	-Parameter $parameterName -Value $valueName
 	$clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName 
 	Assert-Null  ($clusters[0].FabricSettings[$sectionName])  
@@ -155,7 +155,7 @@ function Test-RemoveAzureRmServiceFabricSettings
 
 	$clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName
 	$preSettings = $clusters[0].FabricSettings
-	$cluster = Remove-AzureRmServiceFabricSettings -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Section $sectionName `
+	$cluster = Remove-AzureRmServiceFabricSetting -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Section $sectionName `
 	-Parameter $parameterName
 	$clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName 
 	

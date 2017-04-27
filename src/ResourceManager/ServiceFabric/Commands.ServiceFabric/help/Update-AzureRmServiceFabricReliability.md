@@ -46,7 +46,9 @@ Accept wildcard characters: False
 ```
 
 ### -Level
-VM instance number```yaml
+VM instance number
+
+```yaml
 Type: ReliabilityLevel
 Parameter Sets: (All)
 Aliases: ReliabilityLevel
@@ -60,7 +62,9 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specify the name of the cluster```yaml
+Specify the name of the cluster
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: ClusterName
@@ -103,7 +107,9 @@ Accept wildcard characters: False
 ```
 
 ### -AutoAddNode
-Add node count automatically when changing reliability```yaml
+Add node count automatically when changing reliability
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: Auto
