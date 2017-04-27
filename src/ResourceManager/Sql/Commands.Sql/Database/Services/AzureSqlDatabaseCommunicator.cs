@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using Microsoft.WindowsAzure.Management.Storage;
@@ -33,7 +34,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <summary>
         /// The Sql client to be used by this end points communicator
         /// </summary>
-        private static SqlManagementClient SqlClient { get; set; }
+        private static Management.Sql.LegacySdk.SqlManagementClient LegacySqlClient { get; set; }
 
         /// <summary>
         /// Gets or set the Azure subscription
@@ -61,7 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             if (context.Subscription != Subscription)
             {
                 Subscription = context.Subscription;
-                SqlClient = null;
+                LegacySqlClient = null;
             }
         }
 
@@ -70,7 +71,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// </summary>
         public Management.Sql.LegacySdk.Models.Database Get(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).Databases.Get(resourceGroupName, serverName, databaseName).Database;
+            return GetLegacySqlClient(clientRequestId).Databases.Get(resourceGroupName, serverName, databaseName).Database;
         }
 
         /// <summary>
@@ -78,7 +79,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// </summary>
         public Management.Sql.LegacySdk.Models.Database GetExpanded(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).Databases.GetExpanded(resourceGroupName, serverName, databaseName, ExpandDatabase).Database;
+            return GetLegacySqlClient(clientRequestId).Databases.GetExpanded(resourceGroupName, serverName, databaseName, ExpandDatabase).Database;
         }
 
         /// <summary>
@@ -86,7 +87,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// </summary>
         public IList<Management.Sql.LegacySdk.Models.Database> List(string resourceGroupName, string serverName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).Databases.List(resourceGroupName, serverName).Databases;
+            return GetLegacySqlClient(clientRequestId).Databases.List(resourceGroupName, serverName).Databases;
         }
 
         /// <summary>
@@ -94,7 +95,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// </summary>
         public IList<Management.Sql.LegacySdk.Models.Database> ListExpanded(string resourceGroupName, string serverName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).Databases.ListExpanded(resourceGroupName, serverName, ExpandDatabase).Databases;
+            return GetLegacySqlClient(clientRequestId).Databases.ListExpanded(resourceGroupName, serverName, ExpandDatabase).Databases;
         }
 
         /// <summary>
@@ -102,7 +103,15 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// </summary>
         public Management.Sql.LegacySdk.Models.Database CreateOrUpdate(string resourceGroupName, string serverName, string databaseName, string clientRequestId, DatabaseCreateOrUpdateParameters parameters)
         {
-            return GetCurrentSqlClient(clientRequestId).Databases.CreateOrUpdate(resourceGroupName, serverName, databaseName, parameters).Database;
+            return GetLegacySqlClient(clientRequestId).Databases.CreateOrUpdate(resourceGroupName, serverName, databaseName, parameters).Database;
+        }
+
+        /// <summary>
+        /// Creates or updates a database
+        /// </summary>
+        public Management.Sql.Models.Database CreateOrUpdate(string resourceGroupName, string serverName, string databaseName, string clientRequestId, Management.Sql.Models.Database parameters)
+        {
+            return GetCurrentSqlClient(clientRequestId).Databases.CreateOrUpdate(resourceGroupName, serverName, databaseName, parameters);
         }
 
         /// <summary>
@@ -110,7 +119,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// </summary>
         public void Remove(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
         {
-            GetCurrentSqlClient(clientRequestId).Databases.Delete(resourceGroupName, serverName, databaseName);
+            GetLegacySqlClient(clientRequestId).Databases.Delete(resourceGroupName, serverName, databaseName);
         }
 
         /// <summary>
@@ -118,16 +127,31 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        private SqlManagementClient GetCurrentSqlClient(String clientRequestId)
+        private Management.Sql.SqlManagementClient GetCurrentSqlClient(String clientRequestId)
         {
             // Get the SQL management client for the current subscription
-            if (SqlClient == null)
+            // Note: client is not cached in static field because that causes ObjectDisposedException in functional tests.
+            var sqlClient = AzureSession.Instance.ClientFactory.CreateArmClient<Management.Sql.SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+            sqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
+            sqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
+            return sqlClient;
+        }
+
+        /// <summary>
+        /// Retrieve the SQL Management client for the currently selected subscription, adding the session and request
+        /// id tracing headers for the current cmdlet invocation.
+        /// </summary>
+        /// <returns>The SQL Management client for the currently selected subscription.</returns>
+        private Management.Sql.LegacySdk.SqlManagementClient GetLegacySqlClient(String clientRequestId)
+        {
+            // Get the SQL management client for the current subscription
+            if (LegacySqlClient == null)
             {
-                SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+                LegacySqlClient = AzureSession.Instance.ClientFactory.CreateClient<Management.Sql.LegacySdk.SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
-            SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-            SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
-            return SqlClient;
+            LegacySqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
+            LegacySqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
+            return LegacySqlClient;
         }
     }
 }
