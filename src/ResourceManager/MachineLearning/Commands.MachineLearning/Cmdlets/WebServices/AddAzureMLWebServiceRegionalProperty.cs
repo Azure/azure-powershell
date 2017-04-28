@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
         VerbsCommon.Add,
         "AzureRmMlWebServiceRegionalProperty",
         SupportsShouldProcess = true)]
-    [OutputType(typeof(void))]
+    [OutputType(typeof(WebService))]
     public class AddAzureMLWebServiceRegionalProperty : WebServicesCmdletBase
     {
         [Parameter(
