@@ -105,6 +105,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
                    HelpMessage = "The password of the pfx file")]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultName,
+                   HelpMessage = "The password of the pfx file")]
         [ValidateNotNullOrEmpty]
         [Alias("CertPassword")]
         public virtual SecureString CertificatePassword { get; set; }
