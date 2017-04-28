@@ -121,37 +121,37 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public string ParameterFile { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
-                HelpMessage = "The existing Pfx file path for the primary cluster certificate")]
+                HelpMessage = "The existing certificate file path for the primary cluster certificate")]
         [ValidateNotNullOrEmpty]
         [Alias("Source")]
-        public override string PfxSourceFile { get; set; }
+        public override string CertificateFile { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultName,
-           HelpMessage = "The folder of the new Pfx file to be created")]
+           HelpMessage = "The folder of the new certificate file to be created")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByDefaultArmTemplate,
-           HelpMessage = "The folder of the new Pfx file to be created")]
+           HelpMessage = "The folder of the new certificate file to be created")]
         [ValidateNotNullOrEmpty]
         [Alias("Destination")]
-        public override string PfxOutputFolder { get; set; }
+        public override string CertificateOutputFolder { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
-                  HelpMessage = "The password of the pfx file")]
+                  HelpMessage = "The password of the certificate file")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultName,
-                  HelpMessage = "The password of the pfx file")]
+                  HelpMessage = "The password of the certificate file")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByDefaultArmTemplate,
-                  HelpMessage = "The password of the pfx file")]
+                  HelpMessage = "The password of the certificate file")]
         [ValidateNotNullOrEmpty]
         [Alias("CertPassword")]
         public override SecureString CertificatePassword { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
-                HelpMessage = "The existing Pfx file path for the secondary cluster certificate")]
+                HelpMessage = "The existing certificate file path for the secondary cluster certificate")]
         [ValidateNotNullOrEmpty]
         [Alias("SecSource")]
-        public string SecondaryPfxSourceFile { get; set; }
+        public string SecondaryCertificateFile { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
-                 HelpMessage = "The password of the pfx file")]
+                 HelpMessage = "The password of the certificate file")]
         [ValidateNotNullOrEmpty]
         [Alias("SecCertPassword")]
         public virtual SecureString SecondaryCertificatePassword { get; set; }
@@ -269,22 +269,22 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         protected override List<string> GetPfxSrcFiles()
         {
-            return new List<string>() { this.PfxSourceFile, this.SecondaryPfxSourceFile };
+            return new List<string>() { this.CertificateFile, this.SecondaryCertificateFile };
         }
 
         protected override SecureString GetPfxPassword(string pfxFilePath)
         {
-            if (this.PfxSourceFile != null)
+            if (this.CertificateFile != null)
             {
-                if (this.PfxSourceFile.Equals(pfxFilePath, StringComparison.OrdinalIgnoreCase))
+                if (this.CertificateFile.Equals(pfxFilePath, StringComparison.OrdinalIgnoreCase))
                 {
                     return this.CertificatePassword;
                 }
             }
 
-            if (this.SecondaryPfxSourceFile != null)
+            if (this.SecondaryCertificateFile != null)
             {
-                if (this.SecondaryPfxSourceFile.Equals(pfxFilePath, StringComparison.OrdinalIgnoreCase))
+                if (this.SecondaryCertificateFile.Equals(pfxFilePath, StringComparison.OrdinalIgnoreCase))
                 {
                     return this.SecondaryCertificatePassword;
                 }
@@ -447,7 +447,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                (JObject)deployment.Properties.Parameters,
                certInformation.KeyVault.Id,
                certInformation.SecretUrl,
-               certInformation.Thumbprint,
+               certInformation.CertificateThumbprint,
                this.DefaultDurability,
                this.reliabilityLevel,
                this.Location,
@@ -510,7 +510,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             certificateInformations.Add(firstCert);
 
             SetParameter(ref parameters, Constants.SourceVaultValue, firstCert.KeyVault.Id);
-            SetParameter(ref parameters, Constants.CertificateThumbprint, firstCert.Thumbprint);
+            SetParameter(ref parameters, Constants.CertificateThumbprint, firstCert.CertificateThumbprint);
             SetParameter(ref parameters, Constants.CertificateUrlValue, firstCert.SecretUrl);
 
             if (secSourceVaultValue != null)
@@ -519,7 +519,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 certificateInformations.Add(firstCert);
 
                 SetParameter(ref parameters, Constants.SecSourceVaultValue, secCert.KeyVault.Id);
-                SetParameter(ref parameters, Constants.SecCertificateThumbprint, secCert.Thumbprint);
+                SetParameter(ref parameters, Constants.SecCertificateThumbprint, secCert.CertificateThumbprint);
                 SetParameter(ref parameters, Constants.SecCertificateUrlValue, secCert.SecretUrl);
             }
 
@@ -574,12 +574,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     this.adminUserName,
                     certInformations.Select(c => new PSKeyVault()
                     {
-                        Certificate = c.Certificate,
-                        Thumbprint = c.Thumbprint,
-                        KeyVaultCertificateName = c.CertificateName,
                         KeyVaultName = c.KeyVault.Name,
-                        KeyVaultSecretName = c.SecretName,
-                        KeyVaultSecretVersion = c.Version
+                        KeyVaultId = c.KeyVault.Id,
+                        KeyVaultCertificateName = c.CertificateName,
+                        KeyVaultCertificateId = c.CertificateUrl,
+                        CertificateThumbprint = c.CertificateThumbprint,
+                        Certificate = c.Certificate,
+                        CertificateSavedLocalPath = c.CertificateOutputPath,
+                        SecretIdentifier = c.SecretUrl
                     }).ToList()),
                 true);
         }

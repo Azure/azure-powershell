@@ -65,11 +65,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             WriteObject(new PSKeyVault()
             {
-                Certificate = certInformation.Certificate,
                 KeyVaultName = certInformation.KeyVault.Name,
-                KeyVaultCertificateName = certInformation.KeyVault.Name,
-                KeyVaultSecretName = certInformation.SecretName,
-                KeyVaultSecretVersion = certInformation.Version
+                KeyVaultId = certInformation.KeyVault.Id,
+                KeyVaultCertificateName = certInformation.CertificateName,
+                KeyVaultCertificateId = certInformation.CertificateUrl,
+                CertificateThumbprint = certInformation.CertificateThumbprint,
+                Certificate = certInformation.Certificate,
+                CertificateSavedLocalPath = certInformation.CertificateOutputPath,
+                SecretIdentifier = certInformation.SecretUrl
             });
         }
     }

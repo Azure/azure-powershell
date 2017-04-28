@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         var extConfig = (JObject)ext.Settings;
                         var input = string.Format(
                             @"{{""thumbprint"":""{0}"",""x509StoreName"":""{1}""}}",
-                            certInformation.Thumbprint,
+                            certInformation.CertificateThumbprint,
                             Constants.DefaultCertificateStore);
 
                         extConfig["certificateSecondary"] = JObject.Parse(input);
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     Certificate = clusterResource.Certificate
                 };
 
-                patchRequest.Certificate.ThumbprintSecondary = certInformation.Thumbprint;
+                patchRequest.Certificate.ThumbprintSecondary = certInformation.CertificateThumbprint;
                 var cluster = SendPatchRequest(patchRequest);
                 WriteObject(cluster);
             }
