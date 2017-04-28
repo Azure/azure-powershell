@@ -37,31 +37,21 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.UsageDetails
         [ValidateNotNullOrEmpty]
         public string BillingPeriodName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of records to return.", ParameterSetName = Constants.ParameterSetNames.SubscriptionItemParameterSet)]
-        [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of records to return.", ParameterSetName = Constants.ParameterSetNames.InvoiceItemParameterSet)]
-        [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of records to return.", ParameterSetName = Constants.ParameterSetNames.BillingPeriodItemParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of records to return.")]
         [ValidateNotNull]
         public int? MaxCount { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Include meter details in the usages.", ParameterSetName = Constants.ParameterSetNames.SubscriptionItemParameterSet)]
-        [Parameter(Mandatory = false, HelpMessage = "Include meter details in the usages.", ParameterSetName = Constants.ParameterSetNames.InvoiceItemParameterSet)]
-        [Parameter(Mandatory = false, HelpMessage = "Include meter details in the usages.", ParameterSetName = Constants.ParameterSetNames.BillingPeriodItemParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Include meter details in the usages.")]
         public SwitchParameter IncludeMeterDetails { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Include additional properties in the usages.", ParameterSetName = Constants.ParameterSetNames.SubscriptionItemParameterSet)]
-        [Parameter(Mandatory = false, HelpMessage = "Include additional properties in the usages.", ParameterSetName = Constants.ParameterSetNames.InvoiceItemParameterSet)]
-        [Parameter(Mandatory = false, HelpMessage = "Include additional properties in the usages.", ParameterSetName = Constants.ParameterSetNames.BillingPeriodItemParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Include additional properties in the usages.")]
         public SwitchParameter IncludeAdditionalProperties { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The start date (in UTC) of the usages.", ParameterSetName = Constants.ParameterSetNames.SubscriptionItemParameterSet)]
-        [Parameter(Mandatory = false, HelpMessage = "The start date (in UTC) of the usages.", ParameterSetName = Constants.ParameterSetNames.InvoiceItemParameterSet)]
-        [Parameter(Mandatory = false, HelpMessage = "The start date (in UTC) of the usages.", ParameterSetName = Constants.ParameterSetNames.BillingPeriodItemParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "The start date (in UTC) of the usages.")]
         [ValidateNotNull]
         public DateTime? StartDate { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The end date (in UTC) of the usages.", ParameterSetName = Constants.ParameterSetNames.SubscriptionItemParameterSet)]
-        [Parameter(Mandatory = false, HelpMessage = "The end date (in UTC) of the usages.", ParameterSetName = Constants.ParameterSetNames.InvoiceItemParameterSet)]
-        [Parameter(Mandatory = false, HelpMessage = "The end date (in UTC) of the usages.", ParameterSetName = Constants.ParameterSetNames.BillingPeriodItemParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "The end date (in UTC) of the usages.")]
         [ValidateNotNull]
         public DateTime? EndDate { get; set; }
 

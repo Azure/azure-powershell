@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Billing.Common;
 using Microsoft.Azure.Commands.Billing.Models;
-using Microsoft.Azure.Commands.Billing.Properties;
 using Microsoft.Azure.Management.Billing;
 using Microsoft.Azure.Management.Billing.Models;
 using System.Collections.Generic;
@@ -37,6 +36,7 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.Invoices
 
         [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of records to return.", ParameterSetName = Constants.ParameterSetNames.ListParameterSet)]
         [ValidateNotNull]
+        [ValidateRange(1, 100)]
         public int? MaxCount { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Generate the download url of the invoices.", ParameterSetName = Constants.ParameterSetNames.ListParameterSet)]
@@ -49,11 +49,6 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.Invoices
                 if (ParameterSetName.Equals(Constants.ParameterSetNames.ListParameterSet))
                 {
                     string expand = this.GenerateDownloadUrl.IsPresent ? DownloadUrlExpand : null;
-
-                    if (MaxCount.HasValue && (MaxCount.Value > 100 || MaxCount.Value < 1))
-                    {
-                        throw new PSArgumentException(Resources.MaxCountExceedRangeError);
-                    }
 
                     WriteObject(BillingManagementClient.Invoices.List(expand, null, null, MaxCount).Select(x => new PSInvoice(x)), true);
                     return;

@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Billing.Common;
 using Microsoft.Azure.Commands.Billing.Models;
-using Microsoft.Azure.Commands.Billing.Properties;
 using Microsoft.Azure.Management.Billing;
 using Microsoft.Azure.Management.Billing.Models;
 using System.Collections.Generic;
@@ -32,17 +31,13 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.BillingPeriods
 
         [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of records to return.", ParameterSetName = Constants.ParameterSetNames.ListParameterSet)]
         [ValidateNotNull]
+        [ValidateRange(1, 100)]
         public int? MaxCount { get; set; }
 
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName.Equals(Constants.ParameterSetNames.ListParameterSet))
             {
-                if (MaxCount.HasValue && (MaxCount.Value > 100 || MaxCount.Value < 1))
-                {
-                    throw new PSArgumentException(Resources.MaxCountExceedRangeError);
-                }
-
                 try
                 {
                     WriteObject(BillingManagementClient.BillingPeriods.List(top: MaxCount).Select(x => new PSBillingPeriod(x)), true);
