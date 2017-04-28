@@ -55,6 +55,13 @@ PS C:\>Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountNa
 
 The command sets the Access Tier value to be cool.
 
+### Example 4: Set the custom domain and tags
+```
+PS C:\>Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -CustomDomainName "www.domainname.com" –UseSubDomain $true -Tag @{tag0="value0";tag1="value1";tag2="value2"}
+```
+
+The command sets the Access Tier value to be cool.
+
 ## PARAMETERS
 
 ### -ResourceGroupName

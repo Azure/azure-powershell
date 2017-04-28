@@ -23,9 +23,9 @@ The **Set-AzureStorageQueueStoredAccessPolicy** cmdlet sets a stored access poli
 
 ## EXAMPLES
 
-### Example 1: Set a stored access policy in the queue
+### Example 1: Set a stored access policy in the queue with full permission
 ```
-PS C:\> Set-AzureStorageQueueStoredAccessPolicy -Queue "MyQueue" -Policy "Policy07"
+PS C:\> Set-AzureStorageQueueStoredAccessPolicy -Queue "MyQueue" -Policy "Policy07" -Permission arup
 ```
 
 This command sets an access policy named Policy07 for storage queue named MyQueue.
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 ```
 
 ### -Permission
-Specifies the level of public access to this storage queue.
+Specifies permissions in the stored access policy to access the storage queue.
 
 ```yaml
 Type: String
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 ```
 
 ### -Policy
-Specifies a stored access policy, which includes the permissions for this SAS token.
+Specifies the name for the stored access policy.
 
 ```yaml
 Type: String
