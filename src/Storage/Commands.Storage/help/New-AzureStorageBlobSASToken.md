@@ -16,32 +16,28 @@ Generates an SAS token for an Azure storage blob.
 ```
 New-AzureStorageBlobSASToken [-Container] <String> [-Blob] <String> [-Permission <String>]
  [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
- [-ExpiryTime <DateTime>] [-FullUri] [-Context <AzureStorageContext>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [-PipelineVariable <String>] [<CommonParameters>]
-```
-
-### BlobPipelineWithPermission
-```
-New-AzureStorageBlobSASToken -CloudBlob <CloudBlob> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
- [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <AzureStorageContext>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [-PipelineVariable <String>] [<CommonParameters>]
+ [-ExpiryTime <DateTime>] [-FullUri] [-Context <AzureStorageContext>] [<CommonParameters>]
 ```
 
 ### BlobPipelineWithPolicy
 ```
 New-AzureStorageBlobSASToken -CloudBlob <CloudBlob> -Policy <String> [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <AzureStorageContext>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [-PipelineVariable <String>] [<CommonParameters>]
+ [-Context <AzureStorageContext>] [<CommonParameters>]
+```
+
+### BlobPipelineWithPermission
+```
+New-AzureStorageBlobSASToken -CloudBlob <CloudBlob> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
+ [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
+ [-Context <AzureStorageContext>] [<CommonParameters>]
 ```
 
 ### BlobNameWithPolicy
 ```
 New-AzureStorageBlobSASToken [-Container] <String> [-Blob] <String> -Policy <String>
  [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
- [-ExpiryTime <DateTime>] [-FullUri] [-Context <AzureStorageContext>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [-PipelineVariable <String>] [<CommonParameters>]
+ [-ExpiryTime <DateTime>] [-FullUri] [-Context <AzureStorageContext>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,21 +63,6 @@ This example generates a blob SAS token with life time.
 
 ## PARAMETERS
 
-### -Container
-Specifies the storage container name.
-
-```yaml
-Type: String
-Parameter Sets: BlobNameWithPermission, BlobNameWithPolicy
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Blob
 Specifies the storage blob name.
 
@@ -97,69 +78,49 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Permission
-Specifies the permissions for a storage blob.
+### -CloudBlob
+Specifies the **CloudBlob** object.
+To obtain a **CloudBlob** object, use the [Get-AzureStorageBlob](./Get-AzureStorageBlob.md) cmdlet.
+
+```yaml
+Type: CloudBlob
+Parameter Sets: BlobPipelineWithPolicy, BlobPipelineWithPermission
+Aliases: ICloudBlob
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Container
+Specifies the storage container name.
 
 ```yaml
 Type: String
-Parameter Sets: BlobNameWithPermission, BlobPipelineWithPermission
+Parameter Sets: BlobNameWithPermission, BlobNameWithPolicy
 Aliases: 
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Protocol
-Specifies the protocol permitted for a request.
-The acceptable values for this parameter are:
-* HttpsOnly
-* HttpsOrHttp
-
-The default value is HttpsOrHttp.
+### -Context
+Specifies the storage context.
 
 ```yaml
-Type: SharedAccessProtocol
+Type: AzureStorageContext
 Parameter Sets: (All)
 Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IPAddressOrRange
-Specifies the IP address or range of IP addresses from which to accept requests, such as 168.1.5.65 or 168.1.5.60-168.1.5.70.
-The range is inclusive.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StartTime
-Specifies the time at which the shared access signature becomes valid.
-
-```yaml
-Type: DateTime
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -193,73 +154,34 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Context
-Specifies the storage context.
+### -IPAddressOrRange
+Specifies the IP address or range of IP addresses from which to accept requests, such as 168.1.5.65 or 168.1.5.60-168.1.5.70.
+The range is inclusive.
 
 ```yaml
-Type: AzureStorageContext
+Type: String
 Parameter Sets: (All)
 Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
+### -Permission
+Specifies the permissions for a storage blob.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: iv
+Parameter Sets: BlobNameWithPermission, BlobPipelineWithPermission
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CloudBlob
-Specifies the **CloudBlob** object.
-To obtain a **CloudBlob** object, use the [Get-AzureStorageBlob](./Get-AzureStorageBlob.md) cmdlet.
-
-```yaml
-Type: CloudBlob
-Parameter Sets: BlobPipelineWithPermission, BlobPipelineWithPolicy
-Aliases: ICloudBlob
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -278,13 +200,34 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PipelineVariable
-Stores the value of the current pipeline element as a variable, for any named command as it flows through the pipeline.
+### -Protocol
+Specifies the protocol permitted for a request.
+The acceptable values for this parameter are:
+* HttpsOnly
+* HttpsOrHttp
+
+The default value is HttpsOrHttp.
 
 ```yaml
-Type: String
+Type: SharedAccessProtocol
 Parameter Sets: (All)
-Aliases: pv
+Aliases: 
+Accepted values: HttpsOnly, HttpsOrHttp
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StartTime
+Specifies the time at which the shared access signature becomes valid.
+
+```yaml
+Type: DateTime
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
 Position: Named

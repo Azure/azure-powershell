@@ -15,8 +15,7 @@ Creates a copy of a SQL Database that uses the snapshot at the current time.
 ```
 New-AzureRmSqlDatabaseCopy [-DatabaseName] <String> [-ServiceObjectiveName <String>]
  [-ElasticPoolName <String>] [-Tags <Hashtable>] [-CopyResourceGroupName <String>] [-CopyServerName <String>]
- -CopyDatabaseName <String> [-ServerName] <String> [-ResourceGroupName] <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
+ -CopyDatabaseName <String> [-ServerName] <String> [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -38,8 +37,8 @@ This cmdlet is also supported by the SQL Server Stretch Database service on Azur
 
 ## PARAMETERS
 
-### -DatabaseName
-Specifies the name of the SQL Database to copy.
+### -CopyDatabaseName
+Specifies the name of the SQL Database copy.
 
 ```yaml
 Type: String
@@ -47,51 +46,6 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ServiceObjectiveName
-Specifies the name of the service objective to assign to the copy.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ElasticPoolName
-Specifies the name of the elastic pool in which to assign the copy.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tags
-Specifies the tags to associate with the Azure SQL Database copy.
-
-```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases: Tag
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -128,8 +82,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CopyDatabaseName
-Specifies the name of the SQL Database copy.
+### -DatabaseName
+Specifies the name of the SQL Database to copy.
 
 ```yaml
 Type: String
@@ -137,24 +91,24 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ServerName
-Specifies the name of the  SQL Server that contains the database to copy.
+### -ElasticPoolName
+Specifies the name of the elastic pool in which to assign the copy.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
-Position: 1
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -173,22 +127,28 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -ServerName
+Specifies the name of the  SQL Server that contains the database to copy.
 
 ```yaml
-Type: ActionPreference
+Type: String
 Parameter Sets: (All)
-Aliases: infa
+Aliases: 
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServiceObjectiveName
+Specifies the name of the service objective to assign to the copy.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
 Position: Named
@@ -197,13 +157,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
+### -Tags
+Specifies the tags to associate with the Azure SQL Database copy.
 
 ```yaml
-Type: String
+Type: Hashtable
 Parameter Sets: (All)
-Aliases: iv
+Aliases: Tag
 
 Required: False
 Position: Named

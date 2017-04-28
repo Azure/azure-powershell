@@ -38,14 +38,14 @@ Get subscriptions that the current account can access.
 ### [Get-AzureRmTenant](Get-AzureRmTenant.md)
 Gets tenants that are authorized for the current user.
 
+### [Import-AzureRmContext](Import-AzureRmContext.md)
+Loads Azure authentication information from a file.
+
 ### [Remove-AzureRmEnvironment](Remove-AzureRmEnvironment.md)
 Removes endpoints and metadata for connecting to a given Azure instance.
 
-### [Save-AzureRmProfile](Save-AzureRmProfile.md)
+### [Save-AzureRmContext](Save-AzureRmContext.md)
 Saves the current authentication information for use in other PowerShell sessions.
-
-### [Select-AzureRmProfile](Select-AzureRmProfile.md)
-Loads Azure authentication information from a file.
 
 ### [Set-AzureRmContext](Set-AzureRmContext.md)
 Sets the tenant, subscription, and environment for cmdlets to use in the current session.

@@ -36,18 +36,18 @@ The **Get-AzureRmSiteRecoveryProtectionEntity** cmdlet gets a list of protectabl
 
 ## PARAMETERS
 
-### -ProtectionContainer
-Specifies the protection container object.
+### -FriendlyName
+Specifies the friendly name of the protection entity.
 
 ```yaml
-Type: ASRProtectionContainer
-Parameter Sets: (All)
+Type: String
+Parameter Sets: ByObjectWithFriendlyName
 Aliases: 
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -66,18 +66,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FriendlyName
-Specifies the friendly name of the protection entity.
+### -ProtectionContainer
+Specifies the protection container object.
 
 ```yaml
-Type: String
-Parameter Sets: ByObjectWithFriendlyName
+Type: ASRProtectionContainer
+Parameter Sets: (All)
 Aliases: 
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
