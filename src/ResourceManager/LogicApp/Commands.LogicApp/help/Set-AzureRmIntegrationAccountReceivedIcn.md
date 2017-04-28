@@ -54,6 +54,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ControlNumberValue
+The integration account control number value.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IsMessageProcessingFailed
 The received message processing status.
 
@@ -126,21 +141,6 @@ Aliases: wi
 Required: False
 Position: Named
 Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ControlNumberValue
-The integration account control number value.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

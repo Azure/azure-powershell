@@ -53,7 +53,7 @@ Parameter Sets: ByFactoryObject
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -66,6 +66,21 @@ This cmdlet modifies the status of slices that belong to the data factory that t
 ```yaml
 Type: String
 Parameter Sets: ByFactoryName
+Aliases: 
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DatasetName
+Specifies the name of the dataset for which this cmdlet modifies slices.
+
+```yaml
+Type: String
+Parameter Sets: (All)
 Aliases: 
 
 Required: True
@@ -95,7 +110,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 5
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -111,7 +126,7 @@ Parameter Sets: ByFactoryName
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -127,7 +142,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -152,26 +167,12 @@ Skipped processing the data slice.
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Failed, InProgress, Ready, Skipped, Waiting
 
 Required: True
-Position: 6
+Position: 5
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DatasetName
-Specifies the name of the dataset for which this cmdlet modifies slices.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -188,9 +189,10 @@ Sets the status of each slice for the dataset and all the dependent datasets, wh
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Individual, UpstreamInPipeline
 
 Required: False
-Position: 7
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

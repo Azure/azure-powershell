@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-ms.assetid: 2E06C0D0-38CF-4280-BACB-8C6C46ABB7A8
+ms.assetid: 67EE6EFB-3297-4D21-A6EC-B03F5FE82F84
 online version: 
 schema: 2.0.0
 ---
@@ -16,8 +16,7 @@ Sets API operation details.
 Set-AzureRmApiManagementOperation -Context <PsApiManagementContext> -ApiId <String> -OperationId <String>
  -Name <String> -Method <String> -UrlTemplate <String> [-Description <String>]
  [-TemplateParameters <PsApiManagementParameter[]>] [-Request <PsApiManagementRequest>]
- [-Responses <PsApiManagementResponse[]>] [-PassThru] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ [-Responses <PsApiManagementResponse[]>] [-PassThru] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,21 +33,6 @@ This command sets the operation details for API management.
 
 ## PARAMETERS
 
-### -Context
-Specifies an instance of **PsApiManagementContext**.
-
-```yaml
-Type: PsApiManagementContext
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ApiId
 Specifies the identifier of the API.
 
@@ -64,8 +48,38 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -OperationId
-Specifies the identifier of the existing operation.
+### -Context
+Specifies an instance of **PsApiManagementContext**.
+
+```yaml
+Type: PsApiManagementContext
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Description
+Specifies the description of the new operation.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Method
+Specifies the HTTP method of the new operation.
 
 ```yaml
 Type: String
@@ -94,8 +108,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Method
-Specifies the HTTP method of the new operation.
+### -OperationId
+Specifies the identifier of the existing operation.
 
 ```yaml
 Type: String
@@ -109,44 +123,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -UrlTemplate
-Specifies the URL template.
-For instance: customers/{cid}/orders/{oid}/?date={date}.
+### -PassThru
+passthru
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Description
-Specifies the description of the new operation.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -TemplateParameters
-Specifies an array or parameters defined in parameter *UrlTemplate*.
-If you do not specify a value, a default value will be generated based on the UrlTemplate.
-Use the parameter to give more details on parameters such as description, type, and other possible values.
-
-```yaml
-Type: PsApiManagementParameter[]
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 
@@ -187,12 +168,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns an object representing the item with which you are working.
-By default, this cmdlet does not generate any output.
+### -TemplateParameters
+Specifies an array or parameters defined in parameter *UrlTemplate*.
+If you do not specify a value, a default value will be generated based on the UrlTemplate.
+Use the parameter to give more details on parameters such as description, type, and other possible values.
 
 ```yaml
-Type: SwitchParameter
+Type: PsApiManagementParameter[]
 Parameter Sets: (All)
 Aliases: 
 
@@ -203,42 +185,19 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -UrlTemplate
+Specifies the URL template.
+For instance: customers/{cid}/orders/{oid}/?date={date}.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
