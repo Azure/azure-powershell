@@ -129,7 +129,7 @@
     <Compile Include="Utilities\CertUtils.cs" />
     <Compile Include="Utilities\Logger.cs" />
     <Compile Include="Utilities\Utilities.cs" />
-    <Compile Include="Vault\GetAzureRmRecoveryServicesBackupProperties.cs" />
+    <Compile Include="Vault\GetAzureRmRecoveryServicesBackupProperty.cs" />
     <Compile Include="Vault\GetAzureRmRecoveryServicesVaults.cs" />
     <Compile Include="Vault\GetAzureRmRecoveryServicesVaultSettingsFile.cs" />
     <Compile Include="Vault\NewAzureRmRecoveryServicesVault.cs" />
@@ -147,6 +147,9 @@
   <ItemGroup>
     <None Include="..\AzureRM.RecoveryServices.psd1">
       <Link>AzureRM.RecoveryServices.psd1</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AzureRmRecoveryServicesStartup.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="MSSharedLibKey.snk" />
