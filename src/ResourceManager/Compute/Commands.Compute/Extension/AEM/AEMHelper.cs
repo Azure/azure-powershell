@@ -97,6 +97,18 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
             return result.Groups[2].Value;
         }
 
+        internal string GetResourceNameFromId(string id)
+        {
+            var matcher = new Regex("/subscriptions/([^/]+)/resourceGroups/([^/]+)/providers/([^/]+)/([^/]+)/([^/]+)(/\\w+)?");
+            var result = matcher.Match(id);
+            if (!result.Success || result.Groups == null || result.Groups.Count < 3)
+            {
+                throw new InvalidOperationException(string.Format("Cannot find resource group name and storage account name from resource identity {0}", id));
+            }
+
+            return result.Groups[5].Value;
+        }
+
         internal bool IsPremiumStorageAccount(string accountName)
         {
             return IsPremiumStorageAccount(this.GetStorageAccountFromCache(accountName));
