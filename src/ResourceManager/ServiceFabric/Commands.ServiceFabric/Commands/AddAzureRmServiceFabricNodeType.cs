@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         [Parameter(Mandatory = true, ValueFromPipeline = true,
                    HelpMessage = "Capacity")]
-        [ValidateRange(1, 2147483647)]  
+        [ValidateRange(1, 99)]  
         public int Capacity { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true,
