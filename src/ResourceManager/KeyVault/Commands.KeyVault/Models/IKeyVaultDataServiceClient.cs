@@ -80,7 +80,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         CertificateBundle GetCertificate(string vaultName, string certName, string certificateVersion);
 
+        DeletedCertificateBundle GetDeletedCertificate( string vaultName, string certName );
+
         IEnumerable<CertificateIdentityItem> GetCertificates(KeyVaultObjectFilterOptions options);
+
+        IEnumerable<DeletedCertificateIdentityItem> GetDeletedCertificates( KeyVaultObjectFilterOptions options );
 
         IEnumerable<CertificateIdentityItem> GetCertificateVersions(KeyVaultObjectFilterOptions options);
 
@@ -90,7 +94,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         CertificateBundle ImportCertificate(string vaultName, string certName, X509Certificate2Collection certificateCollection, IDictionary<string, string> tags);
 
-        CertificateBundle DeleteCertificate(string vaultName, string certName);
+        DeletedCertificateBundle DeleteCertificate(string vaultName, string certName);
+
+        void PurgeCertificate( string vaultName, string certName );
+
+        CertificateBundle RecoverCertificate( string vaultName, string certName );
 
         CertificateOperation EnrollCertificate(string vaultName, string certificateName, CertificatePolicy certificatePolicy, IDictionary<string, string> tags);
 

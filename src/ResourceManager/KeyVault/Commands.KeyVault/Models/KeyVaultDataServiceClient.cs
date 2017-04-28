@@ -676,7 +676,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return certificateBundle;
         }
 
-        public CertificateBundle DeleteCertificate(string vaultName, string certName)
+        public DeletedCertificateBundle DeleteCertificate(string vaultName, string certName)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -685,7 +685,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
-            CertificateBundle certBundle;
+            DeletedCertificateBundle certBundle;
 
             try
             {
@@ -697,6 +697,25 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
 
             return certBundle;
+        }
+
+        public void PurgeCertificate(string vaultName, string certName)
+        {
+            if ( string.IsNullOrEmpty( vaultName ) )
+                throw new ArgumentNullException( "vaultName" );
+            if ( string.IsNullOrEmpty( certName ) )
+                throw new ArgumentNullException( "certName" );
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+
+            try
+            {
+                this.keyVaultClient.PurgeDeletedCertificateAsync( vaultAddress, certName ).GetAwaiter( ).GetResult( );
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException( ex );
+            }
         }
 
         public CertificateOperation GetCertificateOperation(string vaultName, string certificateName)

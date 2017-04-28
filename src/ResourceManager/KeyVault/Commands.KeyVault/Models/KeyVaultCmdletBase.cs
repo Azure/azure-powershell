@@ -16,8 +16,6 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using System.Collections.Generic;
-using System.Net.Http;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {

@@ -75,6 +75,8 @@
     <Compile Include="Commands\UndoAzureKeyVaultRemoval.cs" />
     <Compile Include="Commands\UndoAzureKeyVaultKeyRemoval.cs" />
     <Compile Include="Commands\UndoAzureKeyVaultSecretRemoval.cs" />
+    <Compile Include="Models\DeletedCertificateIdentityItem.cs" />
+    <Compile Include="Models\DeletedKeyVaultCertificate.cs" />
     <Compile Include="Models\PSDeletedVault.cs" />
     <Compile Include="Models\CertificateIdentityItem.cs" />
     <Compile Include="Commands\Constants.cs" />
