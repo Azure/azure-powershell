@@ -24,9 +24,9 @@ The **Set-AzureStorageContainerStoredAccessPolicy** cmdlet sets a stored access 
 
 ## EXAMPLES
 
-### Example 1: Set a stored access policy in a storage container
+### Example 1: Set a stored access policy in a storage container with full permission
 ```
-PS C:\>Set-AzureStorageContainerStoredAccessPolicy -Container "MyContainer" -Policy "Policy06"
+PS C:\>Set-AzureStorageContainerStoredAccessPolicy -Container "MyContainer" -Policy "Policy06" -Permission rwdl
 ```
 
 This command sets an access policy named Policy06 for storage container named MyContainer.
@@ -146,7 +146,7 @@ Accept wildcard characters: False
 ```
 
 ### -Permission
-Specifies the level of public access to this container.
+Specifies permissions in the stored access policy to access the storage container.
 
 ```yaml
 Type: String
@@ -161,7 +161,7 @@ Accept wildcard characters: False
 ```
 
 ### -Policy
-Specifies a stored access policy, which includes the permissions for this Shared Access Signature (SAS) token.
+Specifies the name for the stored access policy.
 
 ```yaml
 Type: String
