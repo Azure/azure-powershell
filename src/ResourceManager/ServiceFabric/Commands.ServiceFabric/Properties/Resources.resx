@@ -255,6 +255,9 @@
   <data name="RemoveCertFromUnsecureCluster" xml:space="preserve">
     <value>Insecure cluster {0} is not allowed to remove certificate</value>
   </data>
+  <data name="ResourceGroupNotFound" xml:space="preserve">
+    <value>The resource group {0} is not found</value>
+  </data>
   <data name="SkuCapacityIsNull" xml:space="preserve">
     <value>The capacity of the node type is null</value>
   </data>
