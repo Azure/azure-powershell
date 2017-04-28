@@ -304,7 +304,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 var resourceGroup = SafeGetResource(
                     () => this.ResourceManagerClient.ResourceGroups.Get(
-                        this.KeyVaultResouceGroupName));
+                        this.KeyVaultResouceGroupName),
+                        true);
 
                 if (resourceGroup == null)
                 {
