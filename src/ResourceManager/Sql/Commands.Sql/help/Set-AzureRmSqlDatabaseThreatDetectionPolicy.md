@@ -75,14 +75,13 @@ The acceptable values for this parameter are:
 - Sql_Injection 
 - Sql_Injection_Vulnerability 
 - Access_Anomaly 
-- Usage_Anomaly 
 - None
 
 ```yaml
 Type: DetectionType[]
 Parameter Sets: (All)
 Aliases: 
-Accepted values: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Usage_Anomaly, None
+Accepted values: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, None
 
 Required: False
 Position: Named
