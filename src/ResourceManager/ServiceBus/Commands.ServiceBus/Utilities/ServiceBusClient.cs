@@ -136,17 +136,7 @@ namespace Microsoft.Azure.Commands.Servicebus
         {
             Client.Namespaces.Delete(resourceGroupName, namespaceName);
 
-        }
-
-        //internal NamespaceLongRunningOperation GetLongRunningOperationStatus(NamespaceLongRunningOperation longRunningOperation)
-        //{
-        //    var response = Client.Namespaces.l(longRunningOperation.OperationLink);
-
-        //    RetryAfter(response, Client.LongRunningOperationRetryTimeout);
-        //    var result = NamespaceLongRunningOperation.CreateLongRunningOperation(longRunningOperation.OperationName, response as NamespaceLongRunningResponse);
-
-        //    return result;
-        //}
+        }        
 
         private static void RetryAfter(NamespaceLongRunningOperation longrunningResponse, int longRunningOperationInitialTimeout)
         {
@@ -220,7 +210,6 @@ namespace Microsoft.Azure.Commands.Servicebus
                 Name = queue.Name,
                 Location = queue.Location,
                 LockDuration = queue.LockDuration,
-                //AccessedAt = queue.AccessedAt,
                 AutoDeleteOnIdle = queue.AutoDeleteOnIdle,
                 EntityAvailabilityStatus = queue.EntityAvailabilityStatus,
                 DefaultMessageTimeToLive = queue.DefaultMessageTimeToLive,
@@ -232,11 +221,8 @@ namespace Microsoft.Azure.Commands.Servicebus
                 IsAnonymousAccessible = queue.IsAnonymousAccessible,
                 MaxDeliveryCount = queue.MaxDeliveryCount,
                 MaxSizeInMegabytes = queue.MaxSizeInMegabytes,
-                //MessageCount = queue.MessageCount,
-                //CountDetails = queue.CountDetails,
                 RequiresDuplicateDetection = queue.RequiresDuplicateDetection,
                 RequiresSession = queue.RequiresSession,
-               // SizeInBytes = queue.SizeInBytes,
                 Status = queue.Status,
                 SupportOrdering = queue.SupportOrdering,
         };
@@ -490,9 +476,7 @@ namespace Microsoft.Azure.Commands.Servicebus
         {
             SubscriptionCreateOrUpdateParameters parameters = new SubscriptionCreateOrUpdateParameters()
             {
-                Location = location,
-                //EnableExpress = enableExpress,
-                //IsAnonymousAccessible = isAnonymousAccessible
+                Location = location
             };
 
             var response = Client.Subscriptions.CreateOrUpdate(resourceGroupName, namespaceName, topicName, subscriptionName, parameters);
@@ -502,7 +486,6 @@ namespace Microsoft.Azure.Commands.Servicebus
         public IEnumerable<SubscriptionAttributes> ListSubscriptions(string resourceGroupName, string namespaceName, string topicName)
         {
             Rest.Azure.IPage<SubscriptionResource> response = Client.Subscriptions.ListAll(resourceGroupName, namespaceName,topicName);
-            //IEnumerable<NamespaceAttributes> resourceList = response.Select(resource => new NamespaceAttributes(resourceGroupName, resource));
             IEnumerable<SubscriptionAttributes> resourceList = response.Select(resource => new SubscriptionAttributes(resource));
             return resourceList;
         }
@@ -514,117 +497,6 @@ namespace Microsoft.Azure.Commands.Servicebus
         }
 
         #endregion Subscription
-
-        //#region EventHub
-        //public EventHubResource GetEventnHub(string resourceGroupName, string namespaceName, string eventHubName)
-        //{
-        //    EventHubResource response = Client.ServiceBus.Get(resourceGroupName, namespaceName, eventHubName);
-        //    return response;
-        //}
-
-        ////public EventHubAttributes GetEventHubPNSCredentials(string resourceGroupName, string namespaceName, string eventHubName)
-        ////{
-        ////    IPage<EventHubResource> response = Client.ServiceBus.GetPnsCredentials(resourceGroupName, namespaceName, eventHubName);
-        ////    return new EventHubAttributes(response);
-        ////}
-
-        //public IEnumerable<EventHubAttributes> ListServiceBus(string resourceGroupName, string namespaceName)
-        //{
-        //    Rest.Azure.IPage<EventHubResource> response = Client.ServiceBus.ListAll(resourceGroupName, namespaceName);
-        //    IEnumerable<EventHubAttributes> resourceList = response.Select(resource => new EventHubAttributes(resource));
-        //    return resourceList;
-        //}
-
-        //public EventHubAttributes CreateEventHub(string resourceGroupName, string namespaceName, string eventHubName, EventHubCreateOrUpdateParameters parameters)
-        //{
-        //    var parameter = new EventHubCreateOrUpdateParameters()
-        //    {
-        //        //Location = location
-        //    };
-
-        //    var response = Client.ServiceBus.CreateOrUpdate(resourceGroupName, namespaceName, eventHubName, parameter);
-        //    return new EventHubAttributes(response);
-        //}
-
-        //public EventHubAttributes UpdateEventHub(string resourceGroupName, string namespaceName, string eventHubName, EventHubCreateOrUpdateParameters parameters)
-        //{
-        //    var parameter = new EventHubCreateOrUpdateParameters()
-        //    {
-        //       // Location = location,
-        //        Name = eventHubName
-        //    };
-
-        //    var response = Client.ServiceBus.CreateOrUpdate(resourceGroupName, namespaceName, eventHubName, parameter);
-        //    return new EventHubAttributes(response);
-        //}
-
-        //public bool DeleteEventHub(string resourceGroupName, string namespaceName, string eventHubName)
-        //{
-        //    Client.ServiceBus.Delete(resourceGroupName, namespaceName, eventHubName);
-        //    return true;
-        //}
-
-        //public SharedAccessAuthorizationRuleAttributes GetEventHubAuthorizationRules(string resourceGroupName, string namespaceName, string eventHubName, string authRuleName)
-        //{
-        //    SharedAccessAuthorizationRuleResource response = Client.ServiceBus.GetAuthorizationRule(resourceGroupName, namespaceName,
-        //                                eventHubName, authRuleName);
-
-        //    return new SharedAccessAuthorizationRuleAttributes(response);
-        //}
-
-        //public IEnumerable<SharedAccessAuthorizationRuleAttributes> ListEventHubAuthorizationRules(string resourceGroupName, string namespaceName,
-        //                                            string eventHubName)
-        //{
-        //    Rest.Azure.IPage<SharedAccessAuthorizationRuleResource> response = Client.ServiceBus.ListAuthorizationRules(resourceGroupName, namespaceName, eventHubName);
-        //    IEnumerable<SharedAccessAuthorizationRuleAttributes> resourceList = response.Select(resource => new SharedAccessAuthorizationRuleAttributes(resource));
-
-        //    return resourceList;
-        //}
-
-
-        //public SharedAccessAuthorizationRuleAttributes CreateOrUpdateEventHubAuthorizationRules(string resourceGroupName, string namespaceName, string eventHubName, string authorizationRuleName, SharedAccessAuthorizationRuleCreateOrUpdateParameters parameters)
-        //{
-        //    var parameter = new SharedAccessAuthorizationRuleCreateOrUpdateParameters()
-        //    {
-        //        //Name = authRuleName,
-        //        //Properties = new SharedAccessAuthorizationRuleProperties()
-        //        //{
-        //        //    KeyName = authRuleName,
-        //        //    Rights = new List<AccessRights>(rights),
-        //        //    PrimaryKey = primarykey,
-        //        //    ClaimType = SharedAccessAuthorizationRuleAttributes.DefaultClaimType,
-        //        //    ClaimValue = SharedAccessAuthorizationRuleAttributes.DefaultClaimValue
-        //        //}
-        //        Rights = parameters.Rights
-        //    };
-
-        //    //parameter.Properties.SecondaryKey = string.IsNullOrEmpty(secondaryKey) ? GenerateRandomKey() : secondaryKey;
-
-        //    var response = Client.ServiceBus.CreateOrUpdateAuthorizationRule(resourceGroupName, namespaceName, eventHubName, authorizationRuleName, parameters);
-        //    return new SharedAccessAuthorizationRuleAttributes(response);
-        //}
-
-        //public bool DeleteEventHubAuthorizationRules(string resourceGroupName, string namespaceName, string eventHubName, string authRuleName)
-        //{
-        //    if (string.Equals(SharedAccessAuthorizationRuleAttributes.DefaultNamespaceAuthorizationRule, authRuleName, StringComparison.InvariantCultureIgnoreCase))
-        //    {
-        //        return false;
-        //    }
-
-        //    //var response = Client.ServiceBus.DeleteAuthorizationRule(resourceGroupName, namespaceName, eventHubName, authRuleName);
-        //    return true;
-        //}
-
-        //public ResourceListKeys GetEventHubListKeys(string resourceGroupName, string namespaceName, string eventHubName, string authRuleName)
-        //{
-        //    ResourceListKeys listKeys = Client.ServiceBus.ListKeys(resourceGroupName, namespaceName,
-        //                                eventHubName, authRuleName);
-
-        //    return listKeys;
-        //}
-
-        //#endregion
-
         public static string GenerateRandomKey()
         {
             byte[] key256 = new byte[32];

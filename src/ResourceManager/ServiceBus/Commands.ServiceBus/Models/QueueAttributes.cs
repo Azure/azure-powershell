@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
             if (quResource != null)
             {
                 Name = quResource.Name;
+                Location = quResource.Location;
                 LockDuration = quResource.LockDuration;
                 AccessedAt = quResource.AccessedAt;
                 AutoDeleteOnIdle = quResource.AutoDeleteOnIdle;
@@ -51,7 +52,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                 Status = quResource.Status;
                 SupportOrdering = quResource.SupportOrdering;
                 UpdatedAt = quResource.UpdatedAt;
-
             }
         }
 
