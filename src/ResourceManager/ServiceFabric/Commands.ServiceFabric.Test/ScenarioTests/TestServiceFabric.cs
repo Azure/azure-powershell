@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
             AddAzureRmServiceFabricNodeType.dontRandom = true;
             ServiceFabricCmdletBase.WriteVerboseIntervalInSec = 3;
             ServiceFabricCmdletBase.RunningTest = true;
+            ServiceFabricCmdletBase.TestThumbprint = "2394f562bf05258059fe32c0d7c63024ead13096";
         }
 
         [Fact]

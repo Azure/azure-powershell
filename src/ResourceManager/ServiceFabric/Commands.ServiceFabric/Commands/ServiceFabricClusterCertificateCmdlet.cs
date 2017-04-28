@@ -497,6 +497,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private string GetThumbprintFromSecret(string secretUrl)
         {
+            if (RunningTest)
+            {
+                if (!string.IsNullOrWhiteSpace(TestThumbprint))
+                {
+                    return TestThumbprint;
+                }  
+            }
+
             if (string.IsNullOrWhiteSpace(secretUrl))
             {
                 throw new PSArgumentException("secretUrl");
