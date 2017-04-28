@@ -85,7 +85,7 @@
     <Reference Include="Microsoft.Azure.Management.ServiceFabric">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.ServiceFabric.1.0.0-preview\lib\net45\Microsoft.Azure.Management.ServiceFabric.dll</HintPath>
     </Reference>
-      <Reference Include="Microsoft.Azure.Management.Storage">
+    <Reference Include="Microsoft.Azure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.6.3.0-preview\lib\net452\Microsoft.Azure.Management.Storage.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
