@@ -172,7 +172,7 @@
     </None>
     <Content Include="Microsoft.Azure.Commands.ServiceBus.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>    
+    </Content>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
