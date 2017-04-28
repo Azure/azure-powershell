@@ -2416,6 +2416,9 @@
                         <Component Id="cmpC96DAF4A31F86D19246E39394F496F83" Guid="*">
                             <File Id="fil2D7BE7247B4B446F4AF0DD4322F0D374" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RecoveryServices\AzureRM.RecoveryServices.psd1" />
                         </Component>
+                        <Component Id="cmp7A8115D2255F0900831161BE617E2A5A" Guid="*">
+                            <File Id="filBB4373900A2C246987CB865B56CFD54B" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RecoveryServices\AzureRmRecoveryServicesStartup.ps1" />
+                        </Component>
                         <Component Id="cmpA77D5875EABE5151973A245C04E3858E" Guid="*">
                             <File Id="fil1D8C96CE85AC990C98123BA88257BC6F" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RecoveryServices\Hyak.Common.dll" />
                         </Component>
@@ -2486,6 +2489,9 @@
                     <Directory Id="dir4B5D5A50B55B6D96C02DC2573A68955C" Name="AzureRM.RecoveryServices.Backup">
                         <Component Id="cmp131A9DE83A67006D51F1314A42E399CA" Guid="*">
                             <File Id="filA2C0D97A8033046D96249BA12C24D9D4" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RecoveryServices.Backup\AzureRM.RecoveryServices.Backup.psd1" />
+                        </Component>
+                        <Component Id="cmp9AB7E755A85924AED823C3670C6E05B3" Guid="*">
+                            <File Id="filE0505D28A989DD68C6146F1034E7869C" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RecoveryServices.Backup\AzureRmRecoveryServicesStartup.ps1" />
                         </Component>
                         <Component Id="cmpB35FF47D728C871816F14A3529260DE9" Guid="*">
                             <File Id="fil4BCDE7803B14A0BC88A83E82379716A7" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RecoveryServices.Backup\Hyak.Common.dll" />
@@ -3011,6 +3017,9 @@
                         </Component>
                         <Component Id="cmpE1FBC775E0C4E8ECA1EB6C0F338FEDFA" Guid="*">
                             <File Id="fil23111926C8CD47148FFAC879CF352381" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.SiteRecovery\AzureRM.SiteRecovery.psd1" />
+                        </Component>
+                        <Component Id="cmpBDBB5E1FC6460AE7D2909CE3E22E2C5D" Guid="*">
+                            <File Id="fil4E4B7B2FA97548E66C51482D181847ED" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.SiteRecovery\AzureRmRecoveryServicesStartup.ps1" />
                         </Component>
                         <Component Id="cmp02DCD4998B3C2CF365F95C5A38848DB3" Guid="*">
                             <File Id="filE4201A82491CB56C78D5CD69110836F3" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.SiteRecovery\Hyak.Common.dll" />
@@ -6220,6 +6229,7 @@
             <ComponentRef Id="cmpAB89DA9A645E197D78DE69AEF963C260" />
             <ComponentRef Id="cmp103ACA9079CDD574094214F46E76D71B" />
             <ComponentRef Id="cmpC96DAF4A31F86D19246E39394F496F83" />
+            <ComponentRef Id="cmp7A8115D2255F0900831161BE617E2A5A" />
             <ComponentRef Id="cmpA77D5875EABE5151973A245C04E3858E" />
             <ComponentRef Id="cmpEDB84317615898A496C0FF620B372C87" />
             <ComponentRef Id="cmp91C07F114413AEF46868515C7011816D" />
@@ -6243,6 +6253,7 @@
             <ComponentRef Id="cmpC00974919B90C9055BED1F2A9DA95441" />
             <ComponentRef Id="cmpE300D8B185C427E05E95BA97413F6CC8" />
             <ComponentRef Id="cmp131A9DE83A67006D51F1314A42E399CA" />
+            <ComponentRef Id="cmp9AB7E755A85924AED823C3670C6E05B3" />
             <ComponentRef Id="cmpB35FF47D728C871816F14A3529260DE9" />
             <ComponentRef Id="cmp99A277F4A4EF20D7BFBB171691A4B7E7" />
             <ComponentRef Id="cmp1675F88279F58B72A180AF1411111337" />
@@ -6414,6 +6425,7 @@
             <ComponentRef Id="cmp33536B404D22FAC69D5E34A7CF0063D4" />
             <ComponentRef Id="cmpF9C7E5E1065CAC726499F6E0E92B2FBF" />
             <ComponentRef Id="cmpE1FBC775E0C4E8ECA1EB6C0F338FEDFA" />
+            <ComponentRef Id="cmpBDBB5E1FC6460AE7D2909CE3E22E2C5D" />
             <ComponentRef Id="cmp02DCD4998B3C2CF365F95C5A38848DB3" />
             <ComponentRef Id="cmpCF891519A685521085AC294E4B891DD2" />
             <ComponentRef Id="cmp12478F787751D3B92FA94F4344630D35" />
