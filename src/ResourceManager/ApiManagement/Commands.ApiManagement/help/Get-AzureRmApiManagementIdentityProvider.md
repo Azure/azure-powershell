@@ -32,6 +32,8 @@ Get the identity provider configuration details.
 
 
 
+
+
 ```
 Get-AzureRmApiManagementIdentityProvider -Context $context
 ```
@@ -40,6 +42,8 @@ Get all the identity provider Configuration on the service.
 
 ### --------------------------  Example 2  --------------------------
 @{paragraph=PS C:\\\>}
+
+
 
 
 

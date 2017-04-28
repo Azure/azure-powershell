@@ -1060,12 +1060,32 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         #endregion
 
         #region Groups
-        public PsApiManagementGroup GroupCreate(PsApiManagementContext context, string groupId, string name, string description)
+        public PsApiManagementGroup GroupCreate(
+            PsApiManagementContext context,
+            string groupId,
+            string name, 
+            string description,
+            PsApiManagementGroupType? type,
+            string externalId)
         {
             var groupCreateParameters = new GroupCreateParameters(name)
             {
                 Description = description
             };
+
+            if (type.HasValue)
+            {
+                groupCreateParameters.Type = Mapper.Map<GroupTypeContract>(type.Value);
+            }
+            else
+            {
+                groupCreateParameters.Type = Mapper.Map<GroupTypeContract>(PsApiManagementGroupType.Custom);
+            }
+
+            if (!string.IsNullOrEmpty(externalId))
+            {
+                groupCreateParameters.ExternalId = externalId;
+            }
 
             Client.Groups.Create(context.ResourceGroupName, context.ServiceName, groupId, groupCreateParameters);
 
@@ -1119,17 +1139,23 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             Client.Groups.Delete(context.ResourceGroupName, context.ServiceName, groupId, "*");
         }
 
-        public void GroupSet(PsApiManagementContext context, string groupId, string name, string description)
+        public void GroupSet(
+            PsApiManagementContext context,
+            string groupId,
+            string name,
+            string description)
         {
+            var groupUpdate = new GroupUpdateParameters
+            {
+                Name = name,
+                Description = description
+            };
+
             Client.Groups.Update(
                 context.ResourceGroupName,
                 context.ServiceName,
                 groupId,
-                new GroupUpdateParameters
-                {
-                    Name = name,
-                    Description = description
-                },
+                groupUpdate,
                 "*");
         }
         #endregion

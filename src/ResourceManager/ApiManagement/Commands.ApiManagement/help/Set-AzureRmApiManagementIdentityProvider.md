@@ -170,3 +170,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+[New-AzureRmApiManagementIdentityProvider](./New-AzureRmApiManagementIdentityProvider.md)
+
+[Get-AzureRmApiManagementIdentityProvider](./Get-AzureRmApiManagementIdentityProvider.md)
+
+[Remove-AzureRmApiManagementIdentityProvider](./Remove-AzureRmApiManagementIdentityProvider.md)
