@@ -13,7 +13,7 @@ Adds a data disk to an image obejct.
 
 ```
 Add-AzureRmImageDataDisk [-Image] <Image> [[-Lun] <Int32>] [[-BlobUri] <String>] [[-Caching] <CachingTypes>]
- [[-DiskSizeGB] <Int32>] [[-SnapshotId] <String>] [[-ManagedDiskId] <String>] [-WhatIf] [-Confirm]
+ [-DiskSizeGB <Int32>] [-SnapshotId <String>] [-ManagedDiskId <String>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -86,7 +86,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -131,7 +131,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 6
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -146,7 +146,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

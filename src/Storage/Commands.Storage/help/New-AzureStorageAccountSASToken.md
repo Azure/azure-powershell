@@ -16,7 +16,7 @@ Creates an SAS token.
 New-AzureStorageAccountSASToken -Service <SharedAccessAccountServices>
  -ResourceType <SharedAccessAccountResourceTypes> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-Context <AzureStorageContext>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,43 +42,47 @@ This command creates an SAS token for HTTPS-only requests from the specified ran
 
 ## PARAMETERS
 
-### -Service
-Specifies the service.
-The acceptable values for this parameter are:
-
-- None
-- Blob
-- File
-- Queue
-- Table
+### -Context
+Specifies the Azure storage context.
+You can use the New-AzureStorageContext cmdlet to get an **AzureStorageContext** object.
 
 ```yaml
-Type: SharedAccessAccountServices
+Type: AzureStorageContext
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -ExpiryTime
+Specifies the time at which the shared access signature becomes invalid.
+
+```yaml
+Type: DateTime
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceType
-Specifies the resource types that are available with the SAS token.
-The acceptable values for this parameter are:
-
-- None
-- Service
-- Container
-- Object
+### -IPAddressOrRange
+Specifies the IP address or range of IP addresses from which to accept requests, such as 168.1.5.65 or 168.1.5.60-168.1.5.70.
+The range is inclusive.
 
 ```yaml
-Type: SharedAccessAccountResourceTypes
+Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -115,6 +119,7 @@ The default value is HttpsOrHttp.
 Type: SharedAccessProtocol
 Parameter Sets: (All)
 Aliases: 
+Accepted values: HttpsOnly, HttpsOrHttp
 
 Required: False
 Position: Named
@@ -123,16 +128,45 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IPAddressOrRange
-Specifies the IP address or range of IP addresses from which to accept requests, such as 168.1.5.65 or 168.1.5.60-168.1.5.70.
-The range is inclusive.
+### -ResourceType
+Specifies the resource types that are available with the SAS token.
+The acceptable values for this parameter are:
+
+- None
+- Service
+- Container
+- Object
 
 ```yaml
-Type: String
+Type: SharedAccessAccountResourceTypes
 Parameter Sets: (All)
 Aliases: 
+Accepted values: None, Service, Container, Object
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Service
+Specifies the service.
+The acceptable values for this parameter are:
+
+- None
+- Blob
+- File
+- Queue
+- Table
+
+```yaml
+Type: SharedAccessAccountServices
+Parameter Sets: (All)
+Aliases: 
+Accepted values: None, Blob, File, Queue, Table
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -147,76 +181,6 @@ To get a **DateTime** object, use the Get-Date cmdlet.
 Type: DateTime
 Parameter Sets: (All)
 Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ExpiryTime
-Specifies the time at which the shared access signature becomes invalid.
-
-```yaml
-Type: DateTime
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Context
-Specifies the Azure storage context.
-You can use the New-AzureStorageContext cmdlet to get an **AzureStorageContext** object.
-
-```yaml
-Type: AzureStorageContext
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
 
 Required: False
 Position: Named

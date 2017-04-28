@@ -80,10 +80,12 @@ Valid values are:
 
 -- Compact: displays only top level properties
 
--- Expand: displays all properties in all levels```yaml
+-- Expand: displays all properties in all levels
+```yaml
 Type: DisplayHintType
 Parameter Sets: GetVirtualMachineInResourceGroupParamSet
 Aliases: 
+Accepted values: Compact, Expand
 
 Required: False
 Position: Named
@@ -101,7 +103,7 @@ Parameter Sets: GetVirtualMachineInResourceGroupParamSet
 Aliases: ResourceName, VMName
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -116,7 +118,7 @@ Parameter Sets: ListNextLinkVirtualMachinesParamSet
 Aliases: 
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -131,7 +133,7 @@ Parameter Sets: ListVirtualMachineInResourceGroupParamSet, GetVirtualMachineInRe
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -146,7 +148,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

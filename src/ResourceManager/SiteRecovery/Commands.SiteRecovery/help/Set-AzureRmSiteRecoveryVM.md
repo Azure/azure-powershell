@@ -25,21 +25,6 @@ The **Set-AzureRmSiteRecoveryVM** cmdlet sets the recovery-side protection optio
 
 ## PARAMETERS
 
-### -VirtualMachine
-Specifies the Site Recovery virtual machine object.
-
-```yaml
-Type: ASRVirtualMachine
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 Specifies the name of the target virtual machine.
 
@@ -55,13 +40,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Size
-Specifies the target virtual machine size.
+### -NicSelectionType
+Specifies the network adapter selection properties.
+The acceptable values for this parameter are:
+
+- NotSelected
+- SelectedByUser
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: NotSelected, SelectedByUser
 
 Required: False
 Position: Named
@@ -100,21 +90,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RecoveryNicSubnetName
-Specifies the Azure virtual network subnet name with which to attach the primary network adapter controller on recovery.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -RecoveryNicStaticIPAddress
 Specifies the static IP address that is assigned to primary network adapter controller on recovery.
 
@@ -130,12 +105,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NicSelectionType
-Specifies the network adapter selection properties.
-The acceptable values for this parameter are:
-
-- NotSelected
-- SelectedByUser
+### -RecoveryNicSubnetName
+Specifies the Azure virtual network subnet name with which to attach the primary network adapter controller on recovery.
 
 ```yaml
 Type: String
@@ -146,6 +117,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Size
+Specifies the target virtual machine size.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VirtualMachine
+Specifies the Site Recovery virtual machine object.
+
+```yaml
+Type: ASRVirtualMachine
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

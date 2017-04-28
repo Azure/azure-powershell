@@ -80,6 +80,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         public const string CopyBlob = "AzureStorageBlobCopy";
 
         /// <summary>
+        /// IncrementalCopy azure storage blob
+        /// </summary>
+        public const string IncrementalCopyBlob = "AzureStorageBlobIncrementalCopy";        
+
+        /// <summary>
         /// Copy azure storage blob deprecated name
         /// </summary>
         public const string CopyBlobDeprecatedName = "CopyAzureStorageBlob";

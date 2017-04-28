@@ -411,13 +411,13 @@ namespace Commands.Storage.ScenarioTest.BVT
             if (blobUtil.Blob.BlobType == StorageBlob.BlobType.BlockBlob)
             {
                 StorageBlob.CloudBlockBlob blockBlob = blobUtil.Container.GetBlockBlobReference(destBlobName);
-                blockBlob.StartCopyFromBlob((StorageBlob.CloudBlockBlob)blobUtil.Blob);
+                ((StorageBlob.CloudBlockBlob)blockBlob).StartCopy((StorageBlob.CloudBlockBlob)blobUtil.Blob);
                 destBlob = blockBlob;
             }
             else
             {
                 StorageBlob.CloudPageBlob pageBlob = blobUtil.Container.GetPageBlobReference(destBlobName);
-                pageBlob.StartCopyFromBlob((StorageBlob.CloudPageBlob)blobUtil.Blob);
+                ((StorageBlob.CloudPageBlob)pageBlob).StartCopy((StorageBlob.CloudPageBlob)blobUtil.Blob);
                 destBlob = pageBlob;
             }
 
