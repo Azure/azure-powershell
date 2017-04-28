@@ -92,21 +92,21 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public string SecretIdentifier { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
-                   HelpMessage = "The existing Pfx file path")]
+                   HelpMessage = "The existing certificate file path")]
         [ValidateNotNullOrEmpty]
         [Alias("Source")]
-        public virtual string PfxSourceFile { get; set; }
+        public virtual string CertificateFile { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultName,
-                   HelpMessage = "The folder path of the new Pfx file to be created")]
+                   HelpMessage = "The folder path of the new certificate to be created")]
         [ValidateNotNullOrEmpty]
         [Alias("Destination")]
-        public virtual string PfxOutputFolder { get; set; }
+        public virtual string CertificateOutputFolder { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
-                   HelpMessage = "The password of the pfx file")]
+                   HelpMessage = "The password of the certificate file")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultName,
-                   HelpMessage = "The password of the pfx file")]
+                   HelpMessage = "The password of the certificate file")]
         [ValidateNotNullOrEmpty]
         [Alias("CertPassword")]
         public virtual SecureString CertificatePassword { get; set; }
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         protected virtual List<string> GetPfxSrcFiles()
         {
-            return new List<string>() {this.PfxSourceFile};
+            return new List<string>() {this.CertificateFile};
         }
 
         protected virtual SecureString GetPfxPassword(string pfxFilePath)
@@ -169,11 +169,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         protected virtual void Validate()
         {
-            if (!string.IsNullOrWhiteSpace(this.PfxOutputFolder))
+            if (!string.IsNullOrWhiteSpace(this.CertificateOutputFolder))
             {
-                if (!Directory.Exists(this.PfxOutputFolder))
+                if (!Directory.Exists(this.CertificateOutputFolder))
                 {
-                    throw new PSArgumentException(string.Format(ServiceFabricProperties.Resources.InvalidDirectory, this.PfxOutputFolder));
+                    throw new PSArgumentException(string.Format(ServiceFabricProperties.Resources.InvalidDirectory, this.CertificateOutputFolder));
                 }
             }
 
@@ -190,12 +190,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             }
 
-            if (this.CertificatePassword != null && this.PfxSourceFile == null && this.PfxOutputFolder == null)
+            if (this.CertificatePassword != null && this.CertificateFile == null && this.CertificateOutputFolder == null)
             {
                 throw new PSArgumentException("PfxOutputFolder must be given if CertificatePassword is specified");
             }
 
-            if (this.PfxOutputFolder != null && this.CertificatePassword == null)
+            if (this.CertificateOutputFolder != null && this.CertificatePassword == null)
             {
                 throw new PSArgumentException("CertificatePassword must be given for the Pfx downloaded from Azure KeyVault");
             }
@@ -256,9 +256,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             WriteVerboseWithTimestamp(string.Format("Self signed certificate created: {0}", certificateBundle.CertificateIdentifier));
 
-            if (!string.IsNullOrEmpty(this.PfxOutputFolder))
+            if (!string.IsNullOrEmpty(this.CertificateOutputFolder))
             {
-                outputFilePath = GeneratePfxName(this.PfxOutputFolder);
+                outputFilePath = GeneratePfxName(this.CertificateOutputFolder);
                 var secretBundle = this.KeyVaultClient.GetSecretAsync(keyVaultUrl, this.keyVaultCertificateName).Result;
                 var kvSecretBytes = Convert.FromBase64String(secretBundle.Value);
                 var certCollection = new X509Certificate2Collection();
@@ -336,10 +336,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                             SecretUrl = certificateBundle.SecretIdentifier.Identifier,
                             CertificateUrl = certificateBundle.CertificateIdentifier.Identifier,
                             CertificateName = certificateBundle.CertificateIdentifier.Name,
-                            Thumbprint = thumbprint,
+                            CertificateThumbprint = thumbprint,
                             SecretName = certificateBundle.SecretIdentifier.Name,
                             Version = certificateBundle.SecretIdentifier.Version,
-                            PfxFileOutputPath = pfxOutputPath
+                            CertificateOutputPath = pfxOutputPath
                         });
 
                         return certificateInformations;
@@ -366,7 +366,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                                 CertificateUrl = certificateBundle.CertificateIdentifier.Identifier,
                                 CertificateName = certificateBundle.CertificateIdentifier.Name,
                                 SecretUrl = certificateBundle.SecretIdentifier.Identifier,
-                                Thumbprint = thumbprint,
+                                CertificateThumbprint = thumbprint,
                                 SecretName = certificateBundle.SecretIdentifier.Name,
                                 Version = certificateBundle.SecretIdentifier.Version
                         });
@@ -385,7 +385,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         {
                             KeyVault = vault,
                             SecretUrl = this.SecretIdentifier,
-                            Thumbprint = GetThumbprintFromSecret(this.SecretIdentifier),
+                            CertificateThumbprint = GetThumbprintFromSecret(this.SecretIdentifier),
                             SecretName = vaultSecretName,
                             Version = version
                         });

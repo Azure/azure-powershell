@@ -44,10 +44,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public override string Name { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true,
-                   HelpMessage = "VM instance number")]
+                   HelpMessage = "Reliability tier")]
         [ValidateNotNullOrEmpty()]
-        [Alias("ReliabilityLevel")]
-        public ReliabilityLevel Level { get; set; }
+        [Alias("Level")]
+        public ReliabilityLevel ReliabilityLevel { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true,
                    HelpMessage = "Add node count automatically when changing reliability")]
@@ -72,23 +72,23 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         oldReliabilityLevelStr));
             }
 
-            if (this.Level == oldReliabilityLevel)
+            if (this.ReliabilityLevel == oldReliabilityLevel)
             {
                 WriteObject(cluster, true);
                 return;
             }
 
             var primaryVmss = GetPrimaryVmss();
-            var instanceNumber = (int)Level;
+            var instanceNumber = (int)ReliabilityLevel;
 
             if (primaryVmss.Sku.Capacity == null)
             {
                 throw new PSInvalidOperationException(ServiceFabricProperties.Resources.SkuCapacityIsNull);
             }
 
-            if (ShouldProcess(target: this.Name, action: string.Format("Update fabric reliability level to {0}", this.Level)))
+            if (ShouldProcess(target: this.Name, action: string.Format("Update fabric reliability level to {0}", this.ReliabilityLevel)))
             {
-                if ((int)this.Level >= (int)oldReliabilityLevel)
+                if ((int)this.ReliabilityLevel >= (int)oldReliabilityLevel)
                 {
                     if (instanceNumber > primaryVmss.Sku.Capacity && !this.AutoAddNode.IsPresent)
                     {
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
                 var request = new ClusterUpdateParameters
                 {
-                    ReliabilityLevel = this.Level.ToString()
+                    ReliabilityLevel = this.ReliabilityLevel.ToString()
                 };
 
                 var psCluster = SendPatchRequest(request);

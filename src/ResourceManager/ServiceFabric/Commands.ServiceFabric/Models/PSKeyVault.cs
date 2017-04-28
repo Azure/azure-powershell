@@ -19,31 +19,44 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
 {
     public class PSKeyVault
     {
-        public X509Certificate2 Certificate { get; set; }
-
-        public string Thumbprint { get; set; }
+        public string KeyVaultId { get; set; }
 
         public string KeyVaultName { get; set; }
 
+        public string KeyVaultCertificateId { get; set; }
+
         public string KeyVaultCertificateName { get; set; }
 
-        public string KeyVaultSecretName { get; set; }
+        public string SecretIdentifier { get; set; }
 
-        public string KeyVaultSecretVersion { get; set; }
+        public X509Certificate2 Certificate { get; set; }
 
+        public string CertificateThumbprint { get; set; }
+
+        public string CertificateSavedLocalPath { get; set; }
 
         public override string ToString()
         {
             var sb = new StringBuilder();
 
             const string spaces = "    ";
+            sb.AppendLine(string.Format("{0} {1} : {2}", "", "KeyVaultId", this.KeyVaultId));
             sb.AppendLine(string.Format("{0} {1} : {2}", "", "KeyVaultName", this.KeyVaultName));
-            sb.AppendLine(string.Format("{0} {1} :", "    ", "Certificate:"));
-            sb.AppendLine(string.Format("{0} {1}", spaces, this.Certificate));
-            sb.AppendLine(string.Format("{0} {1} : {2}", spaces, "KeyVaultCertificateName", this.KeyVaultCertificateName));
-            sb.AppendLine(string.Format("{0} {1} : {2}", spaces, "KeyVaultSecretName", this.KeyVaultSecretName));
-            sb.AppendLine(string.Format("{0} {1} : {2}", spaces, "KeyVaultSecretVersion", this.KeyVaultSecretVersion));
-            sb.AppendLine(string.Format("{0} {1} : {2}", spaces, "Thumbprint", this.Thumbprint));
+            sb.AppendLine(string.Format("{0} {1} : {2}", "", "KeyVaultCertificateId", this.KeyVaultCertificateId));
+            sb.AppendLine(string.Format("{0} {1} : {2}", "", "KeyVaultCertificateName", this.KeyVaultCertificateName));
+            sb.AppendLine(string.Format("{0} {1} : {2}", "", "SecretIdentifier", this.SecretIdentifier));
+
+            sb.AppendLine(string.Format("{0} {1} :", "", "Certificate:"));
+            if (Certificate != null)
+            {
+                sb.AppendLine(string.Format("{0} {1} : {2}", spaces, "SubjectName", Certificate.SubjectName));
+                sb.AppendLine(string.Format("{0} {1} : {2}", spaces, "IssuerName", Certificate.IssuerName));
+                sb.AppendLine(string.Format("{0} {1} : {2}", spaces, "NotBefore", Certificate.NotBefore));
+                sb.AppendLine(string.Format("{0} {1} : {2}", spaces, "NotAfter", Certificate.NotAfter));
+            }
+
+            sb.AppendLine(string.Format("{0} {1} : {2}", "", "CertificateThumbprint", this.CertificateThumbprint));
+            sb.AppendLine(string.Format("{0} {1} : {2}", "", "CertificateSavedLocalPath", this.CertificateSavedLocalPath));
 
             return sb.ToString();
         }

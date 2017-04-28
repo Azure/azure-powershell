@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
     [Cmdlet(VerbsData.Update, CmdletNoun.AzureRmServiceFabricDurability, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class UpdateAzureRmServiceFabricDurability : ServiceFabricClusterCmdlet
     {
-        private HashSet<string> skusSupportGoldDurability = 
+        private readonly HashSet<string> skusSupportGoldDurability = 
             new HashSet<string>(StringComparer.OrdinalIgnoreCase) {"Standard_D15_v2", "Standard_G5"};
 
         /// <summary>
@@ -55,8 +55,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = true, ValueFromPipeline = true,
                    HelpMessage = "Specify durability Level")]
         [ValidateNotNullOrEmpty()]
-        [Alias("DurabilityLevel")]
-        public DurabilityLevel Level { get; set; } 
+        [Alias("Level")]
+        public DurabilityLevel DurabilityLevel { get; set; } 
 
         [Parameter(Mandatory = false, ValueFromPipeline = true,
                    HelpMessage = "Specify the SKU of the node type")]
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             var isMismatched = false;
             GetDurabilityLevel(this.NodeType, out oldDurabilityLevel, out isMismatched);
 
-            var currentDurabilityLevel = this.Level;
+            var currentDurabilityLevel = this.DurabilityLevel;
 
             if (currentDurabilityLevel == oldDurabilityLevel && !isMismatched)
             {
@@ -118,17 +118,17 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 vmss.Sku = new Sku(this.Sku, Constants.DefaultTier, vmss.Sku.Capacity);
             }
 
-            ((JObject)ext.Settings)["durabilityLevel"] = this.Level.ToString();
+            ((JObject)ext.Settings)["durabilityLevel"] = this.DurabilityLevel.ToString();
             ((JObject)ext.Settings)["enableParallelJobs"] = true;
 
-            if (ShouldProcess(target: this.Name, action: string.Format("Update fabric durability level to {0} of {1}", this.Level, this.NodeType)))
+            if (ShouldProcess(target: this.Name, action: string.Format("Update fabric durability level to {0} of {1}", this.DurabilityLevel, this.NodeType)))
             {
                 var vmssTask = ComputeClient.VirtualMachineScaleSets.CreateOrUpdateAsync(
                     ResourceGroupName,
                     vmss.Name,
                     vmss);
 
-                nodeType.DurabilityLevel = this.Level.ToString();
+                nodeType.DurabilityLevel = this.DurabilityLevel.ToString();
 
                 var patchArg = new ClusterUpdateParameters
                 {
