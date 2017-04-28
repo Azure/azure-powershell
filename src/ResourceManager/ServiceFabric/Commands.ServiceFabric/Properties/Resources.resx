@@ -211,7 +211,7 @@
     <value>File {0} doesn't exist</value>
   </data>
   <data name="InvalidDirectory" xml:space="preserve">
-    <value>Invalid directory {0}</value>
+    <value>Directory {0} doesn't exist</value>
   </data>
   <data name="InvalidFileName" xml:space="preserve">
     <value>File name {0} contains invalid characters</value>
