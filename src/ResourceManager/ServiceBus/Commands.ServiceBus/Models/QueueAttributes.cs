@@ -52,6 +52,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                 Status = quResource.Status;
                 SupportOrdering = quResource.SupportOrdering;
                 UpdatedAt = quResource.UpdatedAt;
+
             }
         }
 

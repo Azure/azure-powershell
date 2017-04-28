@@ -20,7 +20,8 @@
 -->
 ## Current Release
 
-* Bug fix : some properties were not updated beacuse of the space inserted in swagger spec. 
+* Bug fix : some properties of Queue object were not updated beacuse of the space inserted in there name in swagger spec. 
+		- e.g. not able to set value for MaxDeliveryCount, lockDuration, entityAvailabilityStatus, duplicateDetectionHistoryTimeWindow, maxDeliveryCount, messageCount,entityAvailabilityStatus and duplicateDetectionHistoryTimeWindow properties of Queue object.
 
 ## Version 0.2.0
 

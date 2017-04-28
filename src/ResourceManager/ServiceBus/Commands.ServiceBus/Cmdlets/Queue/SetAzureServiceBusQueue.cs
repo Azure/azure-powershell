@@ -56,10 +56,13 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
         {
             QueueAttributes queueAttributes = new QueueAttributes();
 
-            NamespaceAttributes getNamespaceLoc = Client.GetNamespace(ResourceGroup, NamespaceName);
-            QueueObj.Location = getNamespaceLoc.Location;
-            queueAttributes = QueueObj;
-            
+            if (QueueObj != null)
+               {
+                NamespaceAttributes getNamespaceLoc = Client.GetNamespace(ResourceGroup, NamespaceName);
+                QueueObj.Location = getNamespaceLoc.Location;
+                queueAttributes = QueueObj;
+               }
+
             if (ShouldProcess(target: QueueName, action: string.Format("Updating Queue:{0} of the NameSpace:{1}", QueueName, NamespaceName)))
             {
                 WriteObject(Client.CreateUpdateQueue(ResourceGroup, NamespaceName, queueAttributes.Name, queueAttributes));
