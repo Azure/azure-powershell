@@ -185,6 +185,9 @@ Sets the stored access policy for an Azure storage table.
 ### [Start-AzureStorageBlobCopy](Start-AzureStorageBlobCopy.md)
 Starts to copy a blob.
 
+### [Start-AzureStorageBlobIncrementalCopy](Start-AzureStorageBlobIncrementalCopy.md)
+Start an Incremental copy operation from a Page blob snapshot to the specified destination Page blob.
+
 ### [Start-AzureStorageFileCopy](Start-AzureStorageFileCopy.md)
 Starts to copy a source file.
 
