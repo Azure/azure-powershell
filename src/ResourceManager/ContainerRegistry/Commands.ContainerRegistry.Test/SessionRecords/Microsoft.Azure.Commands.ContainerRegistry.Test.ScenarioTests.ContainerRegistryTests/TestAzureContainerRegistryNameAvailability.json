@@ -4,7 +4,7 @@
       "RequestUri": "/subscriptions/3eb31d8d-2879-4706-89b4-4dc4047726c6/providers/Microsoft.ContainerRegistry/checkNameAvailability?api-version=2017-03-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2ViMzFkOGQtMjg3OS00NzA2LTg5YjQtNGRjNDA0NzcyNmM2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29udGFpbmVyUmVnaXN0cnkvY2hlY2tOYW1lQXZhaWxhYmlsaXR5P2FwaS12ZXJzaW9uPTIwMTctMDMtMDE=",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"name\": \"onesdk4721\",\r\n  \"type\": \"Microsoft.ContainerRegistry/registries\"\r\n}",
+      "RequestBody": "{\r\n  \"name\": \"onesdk1123\",\r\n  \"type\": \"Microsoft.ContainerRegistry/registries\"\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -13,7 +13,7 @@
           "81"
         ],
         "x-ms-client-request-id": [
-          "65f1464f-d8b2-4ffc-a597-aca5a82fe557"
+          "24862aaa-c95b-43ee-917b-79ee4fef7072"
         ],
         "accept-language": [
           "en-US"
@@ -43,22 +43,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14958"
+          "14996"
         ],
         "x-ms-request-id": [
-          "721ecec7-7dd1-4771-8f61-86b858c3d8e2"
+          "494371ee-2d83-430d-afeb-88884b6b457b"
         ],
         "x-ms-correlation-request-id": [
-          "721ecec7-7dd1-4771-8f61-86b858c3d8e2"
+          "494371ee-2d83-430d-afeb-88884b6b457b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20170413T210510Z:721ecec7-7dd1-4771-8f61-86b858c3d8e2"
+          "WESTUS2:20170428T160212Z:494371ee-2d83-430d-afeb-88884b6b457b"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 13 Apr 2017 21:05:09 GMT"
+          "Fri, 28 Apr 2017 16:02:11 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -79,7 +79,7 @@
           "80"
         ],
         "x-ms-client-request-id": [
-          "e07c54de-3ce0-4c05-8346-633c72d9b2e8"
+          "6993fc1d-f619-404b-a721-7452b35a3144"
         ],
         "accept-language": [
           "en-US"
@@ -109,22 +109,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14957"
+          "14995"
         ],
         "x-ms-request-id": [
-          "91a85f0a-c589-494a-84a7-ce43616661fd"
+          "bb0f4b3e-7fa5-4676-a704-ef7d8b3e8540"
         ],
         "x-ms-correlation-request-id": [
-          "91a85f0a-c589-494a-84a7-ce43616661fd"
+          "bb0f4b3e-7fa5-4676-a704-ef7d8b3e8540"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20170413T210510Z:91a85f0a-c589-494a-84a7-ce43616661fd"
+          "WESTUS2:20170428T160212Z:bb0f4b3e-7fa5-4676-a704-ef7d8b3e8540"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 13 Apr 2017 21:05:09 GMT"
+          "Fri, 28 Apr 2017 16:02:12 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -135,7 +135,7 @@
   ],
   "Names": {
     "Test-AzureContainerRegistryNameAvailability": [
-      "onesdk4721"
+      "onesdk1123"
     ]
   },
   "Variables": {

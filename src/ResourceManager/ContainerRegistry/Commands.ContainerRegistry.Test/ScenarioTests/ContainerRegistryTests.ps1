@@ -21,7 +21,7 @@ function Test-AzureContainerRegistry
     # Setup
     $resourceGroupName = Get-RandomResourceGroupName
     $registryName = Get-RandomRegistryName
-    $location = "southcentralus"
+    $location = Get-ProviderLocation "Microsoft.ContainerRegistry/registries"
     $sku = "Basic"
 
     New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
@@ -31,7 +31,6 @@ function Test-AzureContainerRegistry
     Assert-AreEqual $registry.ResourceGroupName $resourceGroupName
     Assert-AreEqual $registry.Name $registryName
     Assert-AreEqual $registry.Type "Microsoft.ContainerRegistry/registries"
-    Assert-AreEqual $registry.Location $location
     Assert-AreEqual $registry.SkuName $sku
     Assert-AreEqual $registry.SkuTier $sku
     Assert-AreEqual $registry.LoginServer "$($registryName.ToLower()).azurecr.io"
@@ -51,7 +50,6 @@ function Test-AzureContainerRegistry
     Assert-AreEqual $registry.ResourceGroupName $resourceGroupName
     Assert-AreEqual $registry.Name $registryName
     Assert-AreEqual $registry.Type "Microsoft.ContainerRegistry/registries"
-    Assert-AreEqual $registry.Location $location
     Assert-AreEqual $registry.SkuName $sku
     Assert-AreEqual $registry.SkuTier $sku
     Assert-AreEqual $registry.LoginServer "$($registryName.ToLower()).azurecr.io"
@@ -63,7 +61,6 @@ function Test-AzureContainerRegistry
     Assert-AreEqual $registry[0].ResourceGroupName $resourceGroupName
     Assert-AreEqual $registry[0].Name $registryName
     Assert-AreEqual $registry[0].Type "Microsoft.ContainerRegistry/registries"
-    Assert-AreEqual $registry[0].Location $location
     Assert-AreEqual $registry[0].SkuName $sku
     Assert-AreEqual $registry[0].SkuTier $sku
     Assert-AreEqual $registry[0].LoginServer "$($registryName.ToLower()).azurecr.io"
@@ -79,7 +76,6 @@ function Test-AzureContainerRegistry
     Assert-AreEqual $registry.ResourceGroupName $resourceGroupName
     Assert-AreEqual $registry.Name $registryName
     Assert-AreEqual $registry.Type "Microsoft.ContainerRegistry/registries"
-    Assert-AreEqual $registry.Location $location
     Assert-AreEqual $registry.SkuName $sku
     Assert-AreEqual $registry.SkuTier $sku
     Assert-AreEqual $registry.LoginServer "$($registryName.ToLower()).azurecr.io"
@@ -87,11 +83,10 @@ function Test-AzureContainerRegistry
     Assert-AreEqual $registry.AdminUserEnabled $false
     Assert-AreEqual $registry.StorageAccountName $storageAccountName
 
-    $registry = Update-AzureRmContainerRegistry -ResourceGroupName $resourceGroupName -Name $registryName -AdminUserEnabled $true -StorageAccountName $registry.StorageAccountName
+    $registry = Update-AzureRmContainerRegistry -ResourceGroupName $resourceGroupName -Name $registryName -EnableAdminUser -StorageAccountName $registry.StorageAccountName
     Assert-AreEqual $registry.ResourceGroupName $resourceGroupName
     Assert-AreEqual $registry.Name $registryName
     Assert-AreEqual $registry.Type "Microsoft.ContainerRegistry/registries"
-    Assert-AreEqual $registry.Location $location
     Assert-AreEqual $registry.SkuName $sku
     Assert-AreEqual $registry.SkuTier $sku
     Assert-AreEqual $registry.LoginServer "$($registryName.ToLower()).azurecr.io"
@@ -112,17 +107,16 @@ function Test-AzureContainerRegistryCredential
     # Setup
     $resourceGroupName = Get-RandomResourceGroupName
     $registryName = Get-RandomRegistryName
-    $location = "southcentralus"
+    $location = Get-ProviderLocation "Microsoft.ContainerRegistry/registries"
     $sku = "Basic"
 
     New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
     # Creating a container registry with a default new storage account
-    $registry = New-AzureRmContainerRegistry -ResourceGroupName $resourceGroupName -Name $registryName -Sku $sku -AdminUserEnabled $true
+    $registry = New-AzureRmContainerRegistry -ResourceGroupName $resourceGroupName -Name $registryName -Sku $sku -EnableAdminUser
     Assert-AreEqual $registry.ResourceGroupName $resourceGroupName
     Assert-AreEqual $registry.Name $registryName
     Assert-AreEqual $registry.Type "Microsoft.ContainerRegistry/registries"
-    Assert-AreEqual $registry.Location $location
     Assert-AreEqual $registry.SkuName $sku
     Assert-AreEqual $registry.SkuTier $sku
     Assert-AreEqual $registry.LoginServer "$($registryName.ToLower()).azurecr.io"

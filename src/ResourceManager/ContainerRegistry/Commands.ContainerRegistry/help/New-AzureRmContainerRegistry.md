@@ -13,8 +13,8 @@ Creates a container registry.
 
 ```
 New-AzureRmContainerRegistry [-ResourceGroupName] <String> [-Name] <String> [-Sku] <String>
- [-Location <String>] [-AdminUserEnabled <Boolean>] [-Tag <Hashtable>] [-StorageAccountName <String>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Location <String>] [-EnableAdminUser] [-Tag <Hashtable>] [-StorageAccountName <String>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,7 +45,7 @@ This command creates a container registry with a new storage account in the reso
 
 ### Example 2: Create a container registry with admin user enabled.
 ```
-PS C:\>New-AzureRmContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -Sku "Basic" -AdminUserEnabled $true
+PS C:\>New-AzureRmContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -Sku "Basic" -EnableAdminUser
 
 Id                 : /subscriptions/3eb31d8d-2879-4706-89b4-4dc4047726c6/resourceGroups/MyResourceGroup/providers/Microsoft.ContainerRegistry/registries/MyRegistry
 ResourceGroupName  : MyResourceGroup
@@ -87,13 +87,13 @@ This command creates a container registry with an existing storage account `myst
 
 ## PARAMETERS
 
-### -AdminUserEnabled
-Indicates whether the admin user is enabled.
+### -EnableAdminUser
+Enable admin user for the container registry.
 
 ```yaml
-Type: Boolean
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: AdminEnabled
+Aliases: EnableAdmin
 
 Required: False
 Position: Named

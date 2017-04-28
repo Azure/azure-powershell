@@ -21,9 +21,6 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
     [Cmdlet(VerbsCommon.Get, ContainerRegistryNoun), OutputType(typeof(PSContainerRegistry))]
     public class GetAzureContainerRegistry : ContainerRegistryCmdletBase
     {
-        internal const string ResourceGroupParameterSet = "ResourceGroupParameterSet";
-        internal const string RegistryNameParameterSet = "RegistryNameParameterSet";
-
         [Parameter(
             Position = 0,
             Mandatory = false,
@@ -42,8 +39,8 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         [Parameter(
             Position = 1,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = RegistryNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Container Registry Name.")]
         [Alias(ContainerRegistryNameAlias, RegistryNameAlias, ResourceNameAlias)]
         [ValidateNotNullOrEmpty]

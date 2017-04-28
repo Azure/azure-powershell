@@ -61,10 +61,10 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Indicates whether the admin user is enabled.")]
+            HelpMessage = "Enable admin user for the container registry.")]
         [ValidateNotNull]
-        [Alias(AdminEnabledAlias)]
-        public bool? AdminUserEnabled { get; set; }
+        [Alias(EnableAdminAlias)]
+        public SwitchParameter EnableAdminUser { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                 }
 
                 DeploymentExtended result = ResourceManagerClient.CreateRegistry(
-                    ResourceGroupName, Name, Location, Sku, AdminUserEnabled, StorageAccountName, tags);
+                    ResourceGroupName, Name, Location, Sku, EnableAdminUser, StorageAccountName, tags);
 
                 if (result.Properties.ProvisioningState == DeploymentState.Succeeded.ToString())
                 {

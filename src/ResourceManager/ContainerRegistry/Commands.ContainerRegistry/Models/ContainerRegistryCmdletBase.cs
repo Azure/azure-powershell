@@ -30,13 +30,18 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         protected const string RegistrySkuAlias = "RegistrySku";
 
         protected const string TagsAlias = "Tags";
-        protected const string AdminEnabledAlias = "AdminEnabled";
+        protected const string EnableAdminAlias = "EnableAdmin";
+        protected const string DisableAdminAlias = "DisableAdmin";
 
         protected const string AllowedSkuNames = "Allowed values: Basic.";
         protected const string AllowedPasswordNames = "Allowed values: password, password2.";
 
+        protected const string ResourceGroupParameterSet = "ResourceGroupParameterSet";
+        protected const string RegistryNameParameterSet = "RegistryNameParameterSet";
         protected const string NameResourceGroupParameterSet = "NameResourceGroupParameterSet";
         protected const string RegistryObjectParameterSet = "RegistryObjectParameterSet";
+        protected const string EnableAdminUserParameterSet = "EnableAdminUserParameterSet";
+        protected const string DisableAdminUserParameterSet = "DisableAdminUserParameterSet";
 
         protected struct PasswordNameStrings
         {
