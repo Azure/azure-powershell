@@ -380,7 +380,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         private void DeployWithDefaultTemplate()
         {
             this.Name = this.Name ?? this.ResourceGroupName;
-            var existingCluster = SafeGetResource(() => SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name));
+            var existingCluster = SafeGetResource(() => SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name), true);
 
             if (existingCluster != null)
             {
@@ -552,7 +552,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 {
                     WriteVerboseWithTimestamp(ServiceFabricProperties.Resources.DeploymentVerbose);
 
-                    var c = SafeGetResource(() => this.SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name));
+                    var c = SafeGetResource(() => this.SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name), true);
                     if (c != null)
                     {
                         WriteVerboseWithTimestamp(string.Format(ServiceFabricProperties.Resources.ClusterStateVerbose,

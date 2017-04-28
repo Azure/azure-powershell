@@ -65,7 +65,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 () =>
                 ComputeClient.VirtualMachineScaleSets.Get( 
                     this.ResourceGroupName,     
-                    this.NodeType));
+                    this.NodeType),
+                false);
 
             return vmss != null;
         }

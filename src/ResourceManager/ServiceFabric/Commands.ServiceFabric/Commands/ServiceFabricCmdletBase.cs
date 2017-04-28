@@ -230,7 +230,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 return SafeGetResource(() => KeyVaultManageClient.Vaults.Get(
                     keyVaultResouceGroupName,
-                    vaultName));
+                    vaultName),
+                    false);
             }
             else
             {
@@ -532,7 +533,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         #region Helper     
 
-        protected T SafeGetResource<T>(Func<T> action)
+        protected T SafeGetResource<T>(Func<T> action, bool ingoreAllError)
         {
             try
             {
@@ -545,14 +546,36 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     return default(T);
                 }
 
+                if (ingoreAllError)
+                {
+                    WriteWarning(ce.ToString());
+                    return default(T);
+                }
+
                 throw;
             }
-            catch (Management.ServiceFabric.Models.ErrorModelException e)
+            catch (ErrorModelException e)
             {
                 if (e.Body?.Error != null &&
-                   (e.Body.Error.Code == "ResourceGroupNotFound" ||
-                    e.Body.Error.Code == "ResourceNotFound"))
+                    (e.Body.Error.Code.Equals("ResourceGroupNotFound", StringComparison.OrdinalIgnoreCase) ||
+                     e.Body.Error.Code.Equals("ResourceNotFound", StringComparison.OrdinalIgnoreCase)))
                 {
+                    return default(T);
+                }
+
+                if (ingoreAllError)
+                {
+                    WriteWarning(e.ToString());
+                    return default(T);
+                }
+
+                throw;
+            }
+            catch (Exception e)
+            {
+                if (ingoreAllError)
+                {
+                    WriteWarning(e.ToString());
                     return default(T);
                 }
 

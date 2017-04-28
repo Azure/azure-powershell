@@ -68,8 +68,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     {
                         if (!RunningTest)
                         {
-                            var c =
-                                SafeGetResource(() => this.SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name));
+                            var c = SafeGetResource(() => this.SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name), true);
                             if (c != null)
                             {
                                 WriteVerboseWithTimestamp(
@@ -218,7 +217,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 {
                     if (printClusterStatus)
                     {
-                        var c = SafeGetResource(() => this.SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name));
+                        var c = SafeGetResource(() => this.SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name),true);
                         if (c != null)
                         {
                             WriteVerboseWithTimestamp(
