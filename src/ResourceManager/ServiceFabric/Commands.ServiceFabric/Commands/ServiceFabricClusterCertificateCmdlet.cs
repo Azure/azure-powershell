@@ -377,11 +377,17 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     {
                         var vault = TryGetKeyVault(this.SecretIdentifier);
 
-                        // we must ensure the resource group is created before this
-                        var resourceGroup = SafeGetResource(() => this.ResourceManagerClient.ResourceGroups.Get(this.ResourceGroupName));
-                        if (!vault.Location.Equals(resourceGroup.Location, StringComparison.OrdinalIgnoreCase))
+                        if (!RunningTest)
                         {
-                            throw new PSInvalidOperationException(ServiceFabricProperties.Resources.KeyVaultAndResourceGroupNotSameRegion);
+                            // we must ensure the resource group is created before this
+                            var resourceGroup =
+                                SafeGetResource(
+                                    () => this.ResourceManagerClient.ResourceGroups.Get(this.ResourceGroupName));
+                            if (!vault.Location.Equals(resourceGroup.Location, StringComparison.OrdinalIgnoreCase))
+                            {
+                                throw new PSInvalidOperationException(
+                                    ServiceFabricProperties.Resources.KeyVaultAndResourceGroupNotSameRegion);
+                            }
                         }
 
                         string vaultSecretName;
