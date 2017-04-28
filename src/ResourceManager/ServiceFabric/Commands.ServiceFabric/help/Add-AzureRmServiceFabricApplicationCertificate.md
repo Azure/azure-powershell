@@ -7,49 +7,48 @@ schema: 2.0.0
 # Add-AzureRmServiceFabricApplicationCertificate
 
 ## SYNOPSIS
-Add an certificate which will be used as application certificate
+Add a new certificate to the Virtual Machine Scale Set(s) that make up the cluster. The certificate is intended to be used as an application certificate.
 
 ## SYNTAX
 
 ### ByExistingKeyVault
 ```
 Add-AzureRmServiceFabricApplicationCertificate [-ResourceGroupName] <String> [-Name] <String>
- -SecretIdentifier <String> [-CertificateThumprint <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SecretIdentifier <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByNewPfxAndVaultName
 ```
 Add-AzureRmServiceFabricApplicationCertificate [-ResourceGroupName] <String> [-Name] <String>
- [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>] [-PfxOutputFolder <String>]
- -CertificateSubjectName <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>] [-CertificateOutputFolder <String>]
+ [-CertificatePassword <SecureString>] -CertificateSubjectName <String> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByExistingPfxAndVaultName
 ```
 Add-AzureRmServiceFabricApplicationCertificate [-ResourceGroupName] <String> [-Name] <String>
- [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>] -PfxSourceFile <String>
+ [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>] -CertificateFile <String>
  [-CertificatePassword <SecureString>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmServiceFabricApplicationCertificate** installs the certificate to the all nodetypes in the cluster, either from existing Azure key vault 
-or creating an new Azure key vault using existing certificate provided or from an new self signed certificate created
+Use  **Add-AzureRmServiceFabricApplicationCertificate**  to install a certificate to all nodes in the cluster. 
+You can specify a certificate you already have or have the system generate an new one for you, and upload it to an new or existing Azure key vault.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS c:> Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName 'Group1' -ClusterName 'Contoso01SFCluster' -SecretUrl 'https://contoso03vault.vault.azure.net/secrets/contoso03vaultrg/7f7de9131c034172b9df37ccc549524f'
--CertificateThumprint 5F3660C715EBBDA31DB1FFDCF508302348DE8E7A
+PS c:> Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName 'Group1' -ClusterName 'Contoso01SFCluster' -SecretIdentifier 'https://contoso03vault.vault.azure.net/secrets/contoso03vaultrg/7f7de9131c034172b9df37ccc549524f'
 ```
 
-This command will add a certificate from existing Azure key vault to all node types of the cluster named myCluster
+This command will add a certificate from existing Azure key vault to all node types of the cluster named Contoso01SFCluster
 
 ### Example 2
 ```
 PS c:\> $pwd = ConvertTo-SecureString -String "123" -AsPlainText -Force
-PS C:\> Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName 'Group2' -ClusterName 'Contoso02SFCluster' -KeyVaultName 'Contoso02Vault' -KeyVaultResouceGroupName 'Contoso02VaultRg' 
--PfxDestinationFile 'c:\newcert.pfx' -Password  $pwd  -CertificateDnsName 'Contoso.com''
+PS C:\> Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName 'Group2' -ClusterName 'Contoso02SFCluster' -KeyVaultName 'Contoso02Vault' -KeyVaultResouceGroupName 'Contoso02VaultRg'
 ```
 
 This command will add certificate by creating an new self signed certificate and uploading to Azure key vault, then installs to all node types of the cluster
@@ -61,7 +60,7 @@ The password of the pfx file
 
 ```yaml
 Type: SecureString
-Parameter Sets: ByExistingPfxAndVaultName
+Parameter Sets: ByNewPfxAndVaultName, ByExistingPfxAndVaultName
 Aliases: CertPassword
 
 Required: False
@@ -80,21 +79,6 @@ Parameter Sets: ByNewPfxAndVaultName
 Aliases: Subject
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -CertificateThumprint
-The thumprint for the Azure key vault secret
-
-```yaml
-Type: String
-Parameter Sets: ByExistingKeyVault
-Aliases: Thumbprint
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -159,34 +143,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PfxOutputFolder
-The folder path of the new Pfx file to be created```yaml
-Type: String
-Parameter Sets: ByNewPfxAndVaultName
-Aliases: Destination
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -PfxSourceFile
-The existing Pfx file path
-
-```yaml
-Type: String
-Parameter Sets: ByExistingPfxAndVaultName
-Aliases: Source
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Specifies the name of the resource group.
 
@@ -229,6 +185,32 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CertificateFile
+The existing certificate file path```yaml
+Type: String
+Parameter Sets: ByExistingPfxAndVaultName
+Aliases: Source
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -CertificateOutputFolder
+The folder path of the new certificate to be created```yaml
+Type: String
+Parameter Sets: ByNewPfxAndVaultName
+Aliases: Destination
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

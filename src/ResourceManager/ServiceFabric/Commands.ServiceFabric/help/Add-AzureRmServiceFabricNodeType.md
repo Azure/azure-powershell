@@ -13,7 +13,7 @@ Add a node type to the existing cluster
 
 ```
 Add-AzureRmServiceFabricNodeType [-ResourceGroupName] <String> [-Name] <String> -NodeType <String>
- -Capacity <Int32> -VmUserName <String> -VmPassword <SecureString> [-Sku <String>] [-Tier <String>] [-WhatIf]
+ -Capacity <Int32> -VmUserName <String> -VmPassword <SecureString> [-VmSku <String>] [-Tier <String>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -102,21 +102,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Sku
-The sku name
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Tier
 Tier
 
@@ -174,6 +159,19 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VmSku
+The sku name```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

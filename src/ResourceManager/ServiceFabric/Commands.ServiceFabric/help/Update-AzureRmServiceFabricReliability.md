@@ -12,8 +12,8 @@ Update reliability of the cluster
 ## SYNTAX
 
 ```
-Update-AzureRmServiceFabricReliability [-ResourceGroupName] <String> [-Name] <String> -Level <ReliabilityLevel>
- [-AutoAddNode] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzureRmServiceFabricReliability [-ResourceGroupName] <String> [-Name] <String>
+ -ReliabilityLevel <ReliabilityLevel> [-AutoAddNode] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,22 +42,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Level
-VM instance number
-
-```yaml
-Type: ReliabilityLevel
-Parameter Sets: (All)
-Aliases: ReliabilityLevel
-Accepted values: None, Bronze, Silver, Gold, Platinum
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -115,6 +99,19 @@ Parameter Sets: (All)
 Aliases: Auto
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ReliabilityLevel
+Reliability tier```yaml
+Type: ReliabilityLevel
+Parameter Sets: (All)
+Aliases: Level
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
