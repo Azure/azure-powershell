@@ -135,7 +135,10 @@ function Get-ValueName
 	return '5000'
 }
 
-function Get-VmPassword
+function Get-VmPwd
 {
-    return  "User@12345123"
+    $length = 10
+    $allowedCharacters = "abcdefghijklmnopqrstuvwxyz0123456789".ToCharArray()
+    $myRandomString = -join (Get-Random -Count $length -InputObject $allowedCharacters)
+    return  "$myRandomString"
 }

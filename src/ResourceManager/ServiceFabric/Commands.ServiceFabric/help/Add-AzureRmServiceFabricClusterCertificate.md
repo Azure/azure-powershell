@@ -14,20 +14,21 @@ Add a secondary cluster certificate to the cluster
 ### ByExistingKeyVault
 ```
 Add-AzureRmServiceFabricClusterCertificate [-ResourceGroupName] <String> [-Name] <String>
- -SecretIdentifier <String> [-CertificateThumprint <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SecretIdentifier <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByNewPfxAndVaultName
 ```
 Add-AzureRmServiceFabricClusterCertificate [-ResourceGroupName] <String> [-Name] <String>
- [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>] [-PfxOutputFolder <String>]
- -CertificateSubjectName <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>] [-CertificateOutputFolder <String>]
+ [-CertificatePassword <SecureString>] -CertificateSubjectName <String> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByExistingPfxAndVaultName
 ```
 Add-AzureRmServiceFabricClusterCertificate [-ResourceGroupName] <String> [-Name] <String>
- [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>] -PfxSourceFile <String>
+ [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>] -CertificateFile <String>
  [-CertificatePassword <SecureString>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -62,7 +63,7 @@ The password of the pfx file
 
 ```yaml
 Type: SecureString
-Parameter Sets: ByExistingPfxAndVaultName
+Parameter Sets: ByNewPfxAndVaultName, ByExistingPfxAndVaultName
 Aliases: CertPassword
 
 Required: False
@@ -81,21 +82,6 @@ Parameter Sets: ByNewPfxAndVaultName
 Aliases: Subject
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -CertificateThumprint
-The thumprint for the Azure key vault secret
-
-```yaml
-Type: String
-Parameter Sets: ByExistingKeyVault
-Aliases: Thumbprint
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -142,34 +128,6 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -PfxOutputFolder
-The folder path of the new Pfx file to be created```yaml
-Type: String
-Parameter Sets: ByNewPfxAndVaultName
-Aliases: Destination
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -PfxSourceFile
-The existing Pfx file path
-
-```yaml
-Type: String
-Parameter Sets: ByExistingPfxAndVaultName
-Aliases: Source
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -230,6 +188,32 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CertificateFile
+The existing certificate file path```yaml
+Type: String
+Parameter Sets: ByExistingPfxAndVaultName
+Aliases: Source
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -CertificateOutputFolder
+The folder path of the new certificate to be created```yaml
+Type: String
+Parameter Sets: ByNewPfxAndVaultName
+Aliases: Destination
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

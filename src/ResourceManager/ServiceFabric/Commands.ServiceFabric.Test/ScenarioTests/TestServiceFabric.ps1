@@ -104,7 +104,7 @@ function Test-AddAzureRmServiceFabricNodeType
 
 	$clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName
 	$count = $clusters[0].NodeTypes.Count
-    $vmPassword = ConvertTo-SecureString -Force -AsPlainText -String Get-VmPassword
+    $vmPassword = ConvertTo-SecureString -Force -AsPlainText -String Get-VmPwd
 	$cluster = Add-AzureRmServiceFabricNodeType -Capacity 1 -VmUserName username -VmPassword $vmPassword -NodeType $newNodeTypeName `
 	           -ClusterName $clusterName -ResourceGroupName $resourceGroupName
 	$clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName 

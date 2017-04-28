@@ -13,7 +13,7 @@ Update durability of the cluster
 
 ```
 Update-AzureRmServiceFabricDurability [-ResourceGroupName] <String> [-Name] <String> -NodeType <String>
- -Level <DurabilityLevel> [-Sku <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -DurabilityLevel <DurabilityLevel> [-Sku <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,22 +42,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Level
-DurabilityLevel
-
-```yaml
-Type: DurabilityLevel
-Parameter Sets: (All)
-Aliases: DurabilityLevel
-Accepted values: Bronze, Silver, Gold
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -127,6 +111,19 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DurabilityLevel
+Specify durability Level```yaml
+Type: DurabilityLevel
+Parameter Sets: (All)
+Aliases: Level
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
