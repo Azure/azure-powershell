@@ -403,6 +403,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Key vault and the resource group are not in same region.
+        /// </summary>
+        internal static string KeyVaultAndResourceGroupNotSameRegion {
+            get {
+                return ResourceManager.GetString("KeyVaultAndResourceGroupNotSameRegion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The cluster {0} exists , please remove the resource group, and try again..
         /// </summary>
         internal static string NewExistingCluster {

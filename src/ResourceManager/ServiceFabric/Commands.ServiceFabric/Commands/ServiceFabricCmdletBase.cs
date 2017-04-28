@@ -36,6 +36,7 @@ using Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.Management.KeyVault.Models;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.ServiceFabric;
+using Microsoft.Azure.Management.ServiceFabric.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -567,30 +568,42 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
             catch (Exception exception)
             {
-                PrintCloudExceptionDetail(exception);
+                PrintSdkExceptionDetail(exception);
 
                 throw;
             }
         }
 
-        protected void PrintCloudExceptionDetail(Exception exception)
+        protected void PrintSdkExceptionDetail(Exception exception)
         {
             if (exception == null)
             {
                 return;
             }
 
-            while (!(exception is CloudException) && exception.InnerException != null)
+            while (!(exception is CloudException || exception is ErrorModelException) && exception.InnerException != null)
             {
                 exception = exception.InnerException;
             }
-
+          
             if (exception is CloudException)
             {
                 var cloudException = (CloudException)exception;
                 if (cloudException.Body != null)
                 {
                     var cloudErrorMessage = GetCloudErrorMessage(cloudException.Body);
+                    var ex = new Exception(cloudErrorMessage);
+                    WriteError(
+                        new ErrorRecord(ex, string.Empty, ErrorCategory.NotSpecified, null));
+                }
+            }
+
+            if (exception is ErrorModelException)
+            {
+                var errorModelException = (ErrorModelException)exception;
+                if (errorModelException.Body != null)
+                {
+                    var cloudErrorMessage = GetErrorModelErrorMessage(errorModelException.Body);
                     var ex = new Exception(cloudErrorMessage);
                     WriteError(
                         new ErrorRecord(ex, string.Empty, ErrorCategory.NotSpecified, null));
@@ -620,6 +633,22 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 error.Message,         
                 Environment.NewLine,  
                 sb);
+
+            return message;
+        }
+
+        private string GetErrorModelErrorMessage(ErrorModel error)
+        {
+            if (error == null || error.Error == null)
+            {
+                return string.Empty;
+            }
+
+            var message = string.Format(
+                "Code:{0}, Message:{1}{2}",
+                error.Error.Code,
+                error.Error.Message,
+                Environment.NewLine);
 
             return message;
         }

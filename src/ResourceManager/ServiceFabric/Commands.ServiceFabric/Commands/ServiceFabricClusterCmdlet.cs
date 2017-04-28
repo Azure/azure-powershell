@@ -91,6 +91,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
             catch (Exception e)
             {
+                PrintSdkExceptionDetail(e);
+
                 if (e.InnerException != null)
                 {
                     while (e.InnerException != null)
@@ -245,7 +247,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 Thread.Sleep(TimeSpan.FromSeconds(WriteVerboseIntervalInSec));
             }
 
-            exceptions.ForEach(PrintCloudExceptionDetail);
+            exceptions.ForEach(PrintSdkExceptionDetail);
             task.Wait();
         }
     }

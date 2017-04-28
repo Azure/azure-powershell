@@ -231,6 +231,9 @@
   <data name="InvalidVmssConfiguration" xml:space="preserve">
     <value>Invalid existing VMSS configuration</value>
   </data>
+  <data name="KeyVaultAndResourceGroupNotSameRegion" xml:space="preserve">
+    <value>The Key vault and the resource group are not in same region</value>
+  </data>
   <data name="NewExistingCluster" xml:space="preserve">
     <value>The cluster {0} exists , please remove the resource group, and try again.</value>
   </data>

@@ -40,7 +40,6 @@ function Test-AddAzureRmServiceFabricClusterCertificate
 	$clusterName = Get-ClusterName
 	$resourceGroupName = Get-ResourceGroupName
 	$keyvaultName = Get-KeyVaultName
-	$keyVaultResouceGroupName = Get-KeyVaultResourceGroupLocation
 	$thumbprint = Get-ThumbprintByFile
 	$keyvaulturi = Get-SecretUrl    
 	$cluster = 	Add-AzureRmServiceFabricClusterCertificate -ResourceGroupName $resourceGroupName  -ClusterName $clusterName `
@@ -90,7 +89,6 @@ function Test-NewAzureRmServiceFabricCluster
 	$resourceGroupName = Get-NewResourceGroupName
 	$vaultName = Get-KeyVaultName
 	$keyvaulturi = Get-SecretUrl
-	$keyvaultRg = Get-KeyVaultResourceGroup
 
 	$cluster = New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -TemplateFile .\Resources\template.json `
 	          -ParameterFile .\Resources\parameters.json  -SecretIdentifier $keyvaulturi -CertificateThumprint $thumbprint

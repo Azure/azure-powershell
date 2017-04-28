@@ -95,16 +95,6 @@ function Get-KeyVaultName
     return "kvps";
 }
 
-function Get-KeyVaultResourceGroup
-{
-    return "kvps";
-}
-
-function Get-KeyVaultResourceGroupLocation
-{
-    return "South Central US";
-}
-
 function Get-SecretUrl
 {
 	return 'https://kvps.vault.azure.net:443/secrets/kvpsrg/6202d05ec08c4767911ddf0613c2b1e8'
