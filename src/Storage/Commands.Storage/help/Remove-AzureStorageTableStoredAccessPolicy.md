@@ -64,7 +64,7 @@ Accept wildcard characters: False
 ```
 
 ### -Policy
-Specifies the stored access policy, which includes the permissions for this SAS token.
+Specifies the name of the stored access policy that this cmdlet removes.
 
 ```yaml
 Type: String
