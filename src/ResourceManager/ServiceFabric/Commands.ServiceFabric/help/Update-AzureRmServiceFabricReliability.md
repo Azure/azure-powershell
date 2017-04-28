@@ -7,7 +7,7 @@ schema: 2.0.0
 # Update-AzureRmServiceFabricReliability
 
 ## SYNOPSIS
-Update reliability of the cluster
+Update the reliability tier of the primary node type in a cluster.
 
 ## SYNTAX
 
@@ -17,18 +17,33 @@ Update-AzureRmServiceFabricReliability [-ResourceGroupName] <String> [-Name] <St
 ```
 
 ## DESCRIPTION
-The **Update-AzureRmServiceFabricReliability** can update reliability of the cluster
+Use **Update-AzureRmServiceFabricReliability** to update reliability of the primary node type in a cluster.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS c:> Add-AzureRmServiceFabricReliability -ResourceGroupName myResourceGroup -ClusterName myCluster -ReliabilityLevel Silver
+PS c:> Add-AzureRmServiceFabricReliability -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -ReliabilityLevel Silver
 ```
 
-This command will change reliability level of the cluster to silver
+This command changes the reliability tier of the primary nodetype to silver.
 
 ## PARAMETERS
+
+### -AutoAddNode
+Add node count automatically when changing reliability
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: Auto
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
@@ -60,6 +75,20 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ReliabilityLevel
+Reliability tier```yaml
+Type: ReliabilityLevel
+Parameter Sets: (All)
+Aliases: Level
+Accepted values: None, Bronze, Silver, Gold, Platinum
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specifies the name of the resource group.
 
@@ -87,34 +116,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AutoAddNode
-Add node count automatically when changing reliability
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: Auto
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ReliabilityLevel
-Reliability tier```yaml
-Type: ReliabilityLevel
-Parameter Sets: (All)
-Aliases: Level
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

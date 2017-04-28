@@ -7,7 +7,7 @@ schema: 2.0.0
 # Add-AzureRmServiceFabricNode
 
 ## SYNOPSIS
-Add nodes to the specific node type
+Add nodes to the specific node type in the cluster
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ Add-AzureRmServiceFabricNode [-ResourceGroupName] <String> [-Name] <String> -Nod
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmServiceFabricNode** can add nodes to the specific node type
+User **Add-AzureRmServiceFabricNode** to add nodes to the specific node type. You just need to specify the number of nodes you want to add to a Node Type.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS c:> Add-AzureRmServiceFabricNode -ResourceGroupName myResourceGroup -ClusterName myCluster -NumberOfNodesToAdd 2 -NodeTypeName n1
+PS c:> Add-AzureRmServiceFabricNode -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -Number 2 -NodeTypeName 'nt1''
 ```
 
-This command will add 2 nodes to the node type of n1
+This command will add 2 nodes to the node type n1
 
 ## PARAMETERS
 

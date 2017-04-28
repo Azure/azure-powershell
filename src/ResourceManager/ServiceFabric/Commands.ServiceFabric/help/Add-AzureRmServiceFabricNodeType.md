@@ -7,7 +7,7 @@ schema: 2.0.0
 # Add-AzureRmServiceFabricNodeType
 
 ## SYNOPSIS
-Add a node type to the existing cluster
+Add a new node type to the existing cluster
 
 ## SYNTAX
 
@@ -18,16 +18,17 @@ Add-AzureRmServiceFabricNodeType [-ResourceGroupName] <String> [-Name] <String> 
 ```
 
 ## DESCRIPTION
-Add a new node type to the cluster 
+Add a new node type to a existing cluster 
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Add-AzureRmServiceFabricNodeType -ResourceGroupName myResourceGroup -ClusterName myCluster -NodeTypeName n2 -Capacity 5 -VmUserName adminName -VmPassword User@123
+PS c:\> $pwd = ConvertTo-SecureString -String 'Password$123456' -AsPlainText -Force
+PS C:\> Add-AzureRmServiceFabricNodeType -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NodeType 'n2' -Capacity 5 -VmUserName 'adminName' -VmPassword $pwd
 ```
 
-This command will add a new node type n2 with capacity with 5, and the vm admin username is adminName password is User@123
+This command will add a new NodeType 'n2' with capacity with 5, and the vm admin or login user name is 'adminName'.
 
 ## PARAMETERS
 
@@ -62,7 +63,9 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specify the name of the cluster```yaml
+Specify the name of the cluster
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: ClusterName
@@ -75,7 +78,9 @@ Accept wildcard characters: False
 ```
 
 ### -NodeType
-The node type name```yaml
+The node type name
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -88,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group.
+Specify the name of the resource group.
 
 ```yaml
 Type: String
@@ -132,6 +137,19 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -VmSku
+The sku name```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -VmUserName
 The user name for login to Vm
 
@@ -159,19 +177,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VmSku
-The sku name```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

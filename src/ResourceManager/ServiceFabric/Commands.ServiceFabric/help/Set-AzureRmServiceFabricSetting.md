@@ -24,49 +24,16 @@ Set-AzureRmServiceFabricSetting [-ResourceGroupName] <String> [-Name] <String>
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmServiceFabricSetting** can add ServiceFabric settings to the cluster
+Use **Set-AzureRmServiceFabricSetting** to add or update ServiceFabric settings in a cluster.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS c:\> Set-AzureRmServiceFabricSetting -ResourceGroupName myResourceGroup -ClusterName myCluster -Section EseStore -Parameter Maxcursors -Value 1000
+PS c:\> Set-AzureRmServiceFabricSetting -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster'  -Section 'NamingService' -Parameter 'MaxFileOperationTimeout' -Value 5000
 ```
 
-This command will Set 'Maxcursors' to value '1000' under the section 'EseStore'
-
-### Example 2
-```
-PS c:\>$settingsSectionDescription1 = New-Object Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription
-PS c:\> $settingsSectionDescription1.Name = 'NamingService'
-PS c:\>$settingsSectionDescription1.Parameters = New-Object "System.Collections.Generic.List[Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsParameterDescription]"
-
-PS c:\>$parameter1 = New-Object Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsParameterDescription
-PS c:\>$parameter1.Name = 'MaxOperationTimeout'
-PS c:\>$parameter1.Value = '1000'
-
-PS c:\>$parameter2 = New-Object Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsParameterDescription
-PS c:\>$parameter2.Name = 'MaxFileOperationTimeout'
-PS c:\>$parameter2.Value = '900'
-
-PS c:\>$settingsSectionDescription1.Parameters.Add($parameter1)
-PS c:\>$settingsSectionDescription1.Parameters.Add($parameter2)
-
-PS c:\>$settingsSectionDescription2 = New-Object Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription
-PS c:\>$settingsSectionDescription2.Name = 'EseStore'
-PS c:\>$settingsSectionDescription2.Parameters =  New-Object "System.Collections.Generic.List[Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsParameterDescription]"
-
-PS c:\>$parameter3 = New-Object Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsParameterDescription
-PS c:\>$parameter3.Name = 'MaxCursors'
-PS c:\>$parameter3.Value = '1000'
-
-PS c:\>$settingsSectionDescription2.Parameters.Add($parameter3)
-PS c:\>$arry=$settingsSectionDescription1 , $settingsSectionDescription2
-
-PS c:\> Set-AzureRmServiceFabricSetting -SettingsSectionDescription $arry -ClusterName myclustername -ResourceGroupName clusterresourcegroup
-```
-
-This example will batch update fabric settings
+This command will Set 'MaxFileOperationTimeout' to value '5000' under the section 'NamingService'
 
 ## PARAMETERS
 

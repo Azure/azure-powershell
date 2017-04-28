@@ -40,20 +40,49 @@ You can specify a certificate you already have or have the system generate an ne
 
 ### Example 1
 ```
-PS c:> Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName 'Group1' -ClusterName 'Contoso01SFCluster' -SecretIdentifier 'https://contoso03vault.vault.azure.net/secrets/contoso03vaultrg/7f7de9131c034172b9df37ccc549524f'
+PS c:> Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -SecretIdentifier 'https://contoso03vault.vault.azure.net/secrets/contoso03vaultrg/7f7de9131c034172b9df37ccc549524f'
 ```
 
 This command will add a certificate from existing Azure key vault to all node types of the cluster named Contoso01SFCluster
 
 ### Example 2
 ```
-PS c:\> $pwd = ConvertTo-SecureString -String "123" -AsPlainText -Force
-PS C:\> Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName 'Group2' -ClusterName 'Contoso02SFCluster' -KeyVaultName 'Contoso02Vault' -KeyVaultResouceGroupName 'Contoso02VaultRg'
+PS c:\> $pwd = ConvertTo-SecureString -String '123' -AsPlainText -Force
+PS C:\> Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName 'Group2' -Name 'Contoso02SFCluster' -KeyVaultName 'Contoso02Vault' -KeyVaultResouceGroupName 'Contoso02VaultRg'
+        -CertificateSubjectName 'cn=Contoso.com' -CertificateOutputFolder 'c:\test' -CertificatePassword $pwd
 ```
 
-This command will add certificate by creating an new self signed certificate and uploading to Azure key vault, then installs to all node types of the cluster
+This command will create certificate in Azure key vault, then installs to all node types of the cluster, and download the certificate to c:\test
 
 ## PARAMETERS
+
+### -CertificateFile
+The existing certificate file path
+
+```yaml
+Type: String
+Parameter Sets: ByExistingPfxAndVaultName
+Aliases: Source
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -CertificateOutputFolder
+The folder path of the new certificate to be created```yaml
+Type: String
+Parameter Sets: ByNewPfxAndVaultName
+Aliases: Destination
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -CertificatePassword
 The password of the pfx file
@@ -144,7 +173,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group.
+Specify the name of the resource group.
 
 ```yaml
 Type: String
@@ -185,32 +214,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CertificateFile
-The existing certificate file path```yaml
-Type: String
-Parameter Sets: ByExistingPfxAndVaultName
-Aliases: Source
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -CertificateOutputFolder
-The folder path of the new certificate to be created```yaml
-Type: String
-Parameter Sets: ByNewPfxAndVaultName
-Aliases: Destination
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

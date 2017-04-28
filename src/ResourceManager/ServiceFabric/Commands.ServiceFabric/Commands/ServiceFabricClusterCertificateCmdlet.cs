@@ -73,47 +73,47 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public override string Name { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultName,
-            HelpMessage = "Azure key vault resource group name")]
+            HelpMessage = "Azure key vault resource group name, it not given it will be defaulted to resource group name")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
-            HelpMessage = "Azure key vault resource group name")]
+            HelpMessage = "Azure key vault resource group name, it not given it will be defaulted to resource group name")]
         [ValidateNotNullOrEmpty]
         public virtual string KeyVaultResouceGroupName { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultName,
-                   HelpMessage = "Azure key vault name")]
+                   HelpMessage = "Azure key vault name, it not given it will be defaulted to the resource group name")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
-                   HelpMessage = "Azure key vault name")]
+                   HelpMessage = "Azure key vault name, it not given it will be defaulted to the resource group name")]
         [ValidateNotNullOrEmpty]
         public virtual string KeyVaultName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ExistingKeyVault,
-                   HelpMessage = "The existing Azure key vault secret URL")]
+                   HelpMessage = "The existing Azure key vault secret URL, for example 'https://mykv.vault.azure.net:443/secrets/mysecrets/55ec7c4dc61a462bbc645ffc9b4b225f'")]
         [ValidateNotNullOrEmpty]
         public string SecretIdentifier { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
-                   HelpMessage = "The existing certificate file path")]
+                   HelpMessage = "The path to the existing certificate")]
         [ValidateNotNullOrEmpty]
         [Alias("Source")]
         public virtual string CertificateFile { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultName,
-                   HelpMessage = "The folder path of the new certificate to be created")]
+                   HelpMessage = "The folder where the new certificate needs to be downloaded.")]
         [ValidateNotNullOrEmpty]
         [Alias("Destination")]
         public virtual string CertificateOutputFolder { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
-                   HelpMessage = "The password of the certificate file")]
+                   HelpMessage = "The password of the certificate")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultName,
-                   HelpMessage = "The password of the certificate file")]
+                   HelpMessage = "The password of the certificate")]
         [ValidateNotNullOrEmpty]
         [Alias("CertPassword")]
         public virtual SecureString CertificatePassword { get; set; }
 
         private string certificateSubjectName;
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultName,
-            HelpMessage = "The subject name of the certificate to be created")]
+            HelpMessage = "The subject name of the certificate")]
         [ValidateNotNullOrEmpty]
         [Alias("Subject")]
         public virtual string CertificateSubjectName

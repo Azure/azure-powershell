@@ -157,20 +157,20 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public virtual SecureString SecondaryCertificatePassword { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultName,
-              HelpMessage = "Azure key vault resource group name, it not given it will be same as resource group name")]
+              HelpMessage = "Azure key vault resource group name, it not given it will be defaulted to resource group name")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
-              HelpMessage = "Azure key vault resource group name, it not given it will be same as resource group name")]
+              HelpMessage = "Azure key vault resource group name, it not given it will be defaulted to resource group name")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByDefaultArmTemplate,
-              HelpMessage = "Azure key vault resource group name, it not given it will be same as resource group name")]
+              HelpMessage = "Azure key vault resource group name, it not given it will be defaulted to resource group name")]
         [ValidateNotNullOrEmpty]
         public override string KeyVaultResouceGroupName { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultName,
-                HelpMessage = "Azure key vault name, it not given it will be same as resource group name")]
+                HelpMessage = "Azure key vault name, it not given it will be defaulted to the resource group name")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
-                HelpMessage = "Azure key vault name, it not given it will be same as resource group name")]
+                HelpMessage = "Azure key vault name, it not given it will be defaulted to the resource group name")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByDefaultArmTemplate,
-                HelpMessage = "Azure key vault name, it not given it will be same as resource group name")]
+                HelpMessage = "Azure key vault name, it not given it will be defaulted to the resource group name")]
         [ValidateNotNullOrEmpty]
         public override string KeyVaultName { get; set; }
 
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private OperatingSystem os = OperatingSystem.WindowsServer2016Datacenter;
         [Parameter(Mandatory = false, ParameterSetName = ByDefaultArmTemplate, ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "The OS type of the cluster")]
+                   HelpMessage = "The Operating System of the VMs that make up the cluster.")]
         [Alias("VmImage")]
         public OperatingSystem OS
         {

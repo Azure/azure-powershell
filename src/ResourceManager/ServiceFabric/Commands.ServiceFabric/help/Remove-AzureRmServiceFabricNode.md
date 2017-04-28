@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmServiceFabricNode
 
 ## SYNOPSIS
-Remove nodes from the specific node type
+Remove nodes from the specific node type from a cluster
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ Remove-AzureRmServiceFabricNode [-ResourceGroupName] <String> [-Name] <String> -
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmServiceFabricNode** can remove nodes from specific node type 
+Use **Remove-AzureRmServiceFabricNode** to remove nodes from a specific node type from a cluster. The removal proceeds only if it meets cluster health metrics.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS c:> Remove-AzureRmServiceFabricNode -ResourceGroupName myResourceGroup -ClusterName myCluster -NumberOfNodesToRemove 2	-NodeTypeName n1
+PS c:> Remove-AzureRmServiceFabricNode -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NodeTypeName 'nt1' -Number 2
 ```
 
-This command will remove 2 nodes from the node type n1
+This command will remove 2 nodes from the node type nt1
 
 ## PARAMETERS
 
