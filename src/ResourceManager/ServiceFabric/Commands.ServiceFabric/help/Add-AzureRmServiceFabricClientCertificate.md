@@ -7,7 +7,7 @@ schema: 2.0.0
 # Add-AzureRmServiceFabricClientCertificate
 
 ## SYNOPSIS
-Add common name or thumbprint to the cluster for client authentication
+Add common name or thumbprint to the cluster for client authentication purposes.
 
 ## SYNTAX
 
@@ -37,34 +37,62 @@ Add-AzureRmServiceFabricClientCertificate [-ResourceGroupName] <String> [-Name] 
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmServiceFabricClientCertificate** can add common name and issuer thumbprint or certificate thumbprint to the cluster, so that the client can use it for authentication
+Use **Add-AzureRmServiceFabricClientCertificate** to add a common name and issuer thumbprint or certificate thumbprint to the cluster, 
+so that the client can use it for authentication
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS c:> Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName myResourceGroup -ClusterName myCluster -Thumbprint 5F3660C715EBBDA31DB1FFDCF508302348DE8E7A -IsAdmin true
+PS c:> Add-AzureRmServiceFabricClientCertificate -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -Thumbprint 5F3660C715EBBDA31DB1FFDCF508302348DE8E7A -IsAdmin
 ```
 
 This command will add thumbprint with 5F3660C715EBBDA31DB1FFDCF508302348DE8E7A to the cluster, and its role is admin, so the client use the certificate to communicate with the cluster
 
-### Example 1
+### Example 2
 ```
-PS C:\> $table=@{"abc.com;AF06E4BFCBA05DCB59C42720136EC19DBA0A8E9F"="true";"testdomain.com;5F3660C715EBBDA31DB1FFDCF508302348DE8E7A"="false"}
-PS C:\> Add-AzureRmServiceFabricClientCertificate -CommonNameIssuersAndFlags $table -ClusterName testclusterpowershell2 -ResourceGroupName newsftestrg2
+PS c:> Add-AzureRmServiceFabricClientCertificate -ResourceGroupName 'Group2' -Name 'Contoso02SFCluster' -CommonName 'Contoso.com' -IssuerThumbprint 5F3660C715EBBDA31DB1FFDCF508302348DE8E7A
 ```
 
-This command will add two client certificates one with admin access , the other one with readyonly acess by common name and issuer thumbprint to the cluster
+This command will add a read only client certificate which's common name is 'Contoso.com' , and the issuer thumbprint is '5F3660C715EBBDA31DB1FFDCF508302348DE8E7A' to the cluster
 
 ## PARAMETERS
 
 ### -Admin
-Client authentication type```yaml
+Client authentication type
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: SingleUpdateWithThumbprint, SingleUpdateWithCommonName
 Aliases: 
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -AdminClientThumbprint
+Specify client certificate thumbprint which only has admin permission```yaml
+Type: String[]
+Parameter Sets: MultipleUpdatesWithThumbprint
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ClientCertificateCommonName
+Specify client common name , issuer thumbprint and authentication type```yaml
+Type: PSClientCertificateCommonName[]
+Parameter Sets: MultipleUpdatesWithCommonName
+Aliases: CertCommonName
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -117,7 +145,9 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specify the name of the cluster```yaml
+Specify the name of the cluster
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: ClusterName
@@ -126,6 +156,19 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ReadonlyClientThumbprint
+Specify client certificate thumbprint which only has read only permission```yaml
+Type: String[]
+Parameter Sets: MultipleUpdatesWithThumbprint
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -171,45 +214,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AdminClientThumbprint
-Specify client certificate thumbprint which only has admin permission```yaml
-Type: String[]
-Parameter Sets: MultipleUpdatesWithThumbprint
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ClientCertificateCommonName
-Specify client common name , issuer thumbprint and authentication type```yaml
-Type: PSClientCertificateCommonName[]
-Parameter Sets: MultipleUpdatesWithCommonName
-Aliases: CertCommonName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ReadonlyClientThumbprint
-Specify client certificate thumbprint which only has read only permission```yaml
-Type: String[]
-Parameter Sets: MultipleUpdatesWithThumbprint
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

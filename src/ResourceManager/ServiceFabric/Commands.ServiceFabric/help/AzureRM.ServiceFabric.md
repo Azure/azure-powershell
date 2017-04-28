@@ -12,7 +12,7 @@ Azure Service Fabric Module that you can use to automate the end-2-end operation
 
 ## AzureRM.ServiceFabric Cmdlets
 ### [Add-AzureRmServiceFabricApplicationCertificate](Add-AzureRmServiceFabricApplicationCertificate.md)
-Add an certificate which will be used as application certificate
+Add a certificate which will be used as application certificate
 
 ### [Add-AzureRmServiceFabricClientCertificate](Add-AzureRmServiceFabricClientCertificate.md)
 Add common name or thumbprint to the cluster settings for client authentication

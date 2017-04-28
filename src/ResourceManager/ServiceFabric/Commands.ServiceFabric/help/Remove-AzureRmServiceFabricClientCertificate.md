@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmServiceFabricClientCertificate
 
 ## SYNOPSIS
-Remove client certificate from the cluster
+Remove a client certificate(s) or certificate subject(s) name(s) from being used for client authenticaton to the cluster.
 
 ## SYNTAX
 
@@ -37,26 +37,46 @@ Remove-AzureRmServiceFabricClientCertificate [-ResourceGroupName] <String> [-Nam
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmServiceFabricClientCertificate** can remove the certificate either by common name and issuer thumbprint or certificate thumbprint
+Use **Remove-AzureRmServiceFabricClientCertificate** to remove a client certificate(s) or certificate subject(s) name(s) from being used for client authenticaton to the cluster.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS c:> Remove-AzureRmServiceFabricApplicationCertificate -ResourceGroupName myResourceGroup -ClusterName myCluster -Thumbprint 5F3660C715EBBDA31DB1FFDCF508302348DE8E7A
+PS c:> Remove-AzureRmServiceFabricClientCertificate -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -Thumbprint 5F3660C715EBBDA31DB1FFDCF508302348DE8E7A
 ```
 
-This command will remove thumbprint 5F3660C715EBBDA31DB1FFDCF508302348DE8E7A from the cluster
-
-### Example 2
-```
-PS c:> $table = @{"abc.com;AF06E4BFCBA05DCB59C42720136EC19DBA0A8E9F"=$true}
-PS c:>Remove-AzureRmServiceFabricClientCertificate -CommonNameIssuersAndFlags $table -ClusterName myclustername -ResourceGroupName myresourcegroup
-```
-
-This command will remove common name with abc.com and issue thumbprint with 5F3660C715EBBDA31DB1FFDCF508302348DE8E7A from the cluster
+This command will remove client certificate with thumbprint '5F3660C715EBBDA31DB1FFDCF508302348DE8E7A' from the cluster
 
 ## PARAMETERS
+
+### -AdminClientThumbprint
+Specify client certificate thumbprint which only has admin permission
+
+```yaml
+Type: String[]
+Parameter Sets: MultipleUpdatesWithThumbprint
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ClientCertificateCommonName
+Specify client common name , issuer thumbprint and authentication type```yaml
+Type: PSClientCertificateCommonName[]
+Parameter Sets: MultipleUpdatesWithCommonName
+Aliases: CertCommonName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -CommonName
 Specify client certificate common name
@@ -116,6 +136,19 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ReadonlyClientThumbprint
+Specify client certificate thumbprint which only has read only permission```yaml
+Type: String[]
+Parameter Sets: MultipleUpdatesWithThumbprint
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specifies the name of the resource group.
 
@@ -158,45 +191,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AdminClientThumbprint
-Specify client certificate thumbprint which only has admin permission```yaml
-Type: String[]
-Parameter Sets: MultipleUpdatesWithThumbprint
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ClientCertificateCommonName
-Specify client common name , issuer thumbprint and authentication type```yaml
-Type: PSClientCertificateCommonName[]
-Parameter Sets: MultipleUpdatesWithCommonName
-Aliases: CertCommonName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ReadonlyClientThumbprint
-Specify client certificate thumbprint which only has read only permission```yaml
-Type: String[]
-Parameter Sets: MultipleUpdatesWithThumbprint
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

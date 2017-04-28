@@ -24,16 +24,16 @@ Remove-AzureRmServiceFabricSetting [-ResourceGroupName] <String> [-Name] <String
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmServiceFabricSetting** can remove ServiceFabric settings from the cluster
+Use **Remove-AzureRmServiceFabricSetting** to remove Service Fabric settings from the cluster
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS c:> Remove-AzureRmServiceFabricSetting -ResourceGroupName myResourceGroup -ClusterName myCluster -Section EseStore -Parameter Maxcursors
+PS c:> Remove-AzureRmServiceFabricSetting -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -Section 'EseStore' -Parameter 'MaxCursors'
 ```
 
-This command will remove parameter Maxcursors under section EseStore
+This command will remove settings 'MaxCursors' under 'EseStore' section
 
 ## PARAMETERS
 

@@ -7,7 +7,7 @@ schema: 2.0.0
 # Update-AzureRmServiceFabricDurability
 
 ## SYNOPSIS
-Update durability of the cluster
+Update the durability tier or VmSku of a nodetype in the cluster.
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ Update-AzureRmServiceFabricDurability [-ResourceGroupName] <String> [-Name] <Str
 ```
 
 ## DESCRIPTION
-The **Update-AzureRmServiceFabricDurability** can update durability and SKU of the cluter 
+Use **Update-AzureRmServiceFabricDurability** to update durability or SKU of the cluter 
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS c:> Update-AzureRmServiceFabricDurability -ResourceGroupName clusterresourcegroup -ClusterName mycluster -Level Silver -NodeTypeName nt1
+PS c:> Update-AzureRmServiceFabricDurability -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -DurabilityLevel Silver -NodeType nt1
 ```
 
-This command will change durability level of the node type 'nt1' to silver
+This command changes durability tier of the node type 'nt1' to silver.
 
 ## PARAMETERS
 
@@ -45,8 +45,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DurabilityLevel
+Specify durability Level
+
+```yaml
+Type: DurabilityLevel
+Parameter Sets: (All)
+Aliases: Level
+Accepted values: Bronze, Silver, Gold
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
-Specify the name of the cluster```yaml
+Specify the name of the cluster
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: ClusterName
@@ -59,7 +77,9 @@ Accept wildcard characters: False
 ```
 
 ### -NodeType
-Specify Service Fabric node type name```yaml
+Specify Service Fabric node type name
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -111,19 +131,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DurabilityLevel
-Specify durability Level```yaml
-Type: DurabilityLevel
-Parameter Sets: (All)
-Aliases: Level
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
