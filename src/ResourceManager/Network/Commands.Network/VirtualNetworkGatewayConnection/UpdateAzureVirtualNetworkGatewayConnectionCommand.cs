@@ -75,18 +75,10 @@ namespace Microsoft.Azure.Commands.Network
                     {
                         this.VirtualNetworkGatewayConnection.EnableBgp = bool.Parse(this.EnableBgp);
                     }
-                    else
-                    {
-                        this.VirtualNetworkGatewayConnection.EnableBgp = false;
-                    }
 
                     if (!string.IsNullOrEmpty(this.UsePolicyBasedTrafficSelectors))
                     {
                         this.VirtualNetworkGatewayConnection.UsePolicyBasedTrafficSelectors = bool.Parse(this.UsePolicyBasedTrafficSelectors);
-                    }
-                    else
-                    {
-                        this.VirtualNetworkGatewayConnection.UsePolicyBasedTrafficSelectors = false;
                     }
 
                     if (this.IpsecPolicies != null)
