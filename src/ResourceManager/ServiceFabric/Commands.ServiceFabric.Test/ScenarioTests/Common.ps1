@@ -12,6 +12,14 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+#####
+# For some reason we can use this command create a cluster first before we can run it on cloud
+# New-AzureRmServiceFabricCluster -ResourceGroupName ps1cluster -Location "South Central US" `
+#  -VmPassword $certPwd -Verbose -OS WindowsServer2012R2Datacenter -PfxOutputFolder c:\test `
+#  -CertificatePassword $certPwd
+# It will print key vault , thumbprint for the test
+#####
+
 $global:time = Get-Date
 $global:suffix = 'cluster'
 $global:prefix = 'ps1'
