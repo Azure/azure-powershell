@@ -49,7 +49,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -82,7 +82,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -103,21 +103,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ScheduleName
-Specifies the name of the schedule to which this cmdlet associates a runbook.
-
-```yaml
-Type: String
-Parameter Sets: ByRunbookNameAndScheduleName
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -RunOn
 The name of the hybrid runbook worker group.
 
@@ -127,6 +112,21 @@ Parameter Sets: ByRunbookNameAndScheduleName
 Aliases: HybridWorker
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ScheduleName
+Specifies the name of the schedule to which this cmdlet associates a runbook.
+
+```yaml
+Type: String
+Parameter Sets: ByRunbookNameAndScheduleName
+Aliases: 
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

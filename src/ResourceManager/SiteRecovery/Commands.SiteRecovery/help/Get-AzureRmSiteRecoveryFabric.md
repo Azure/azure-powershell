@@ -34,12 +34,12 @@ The **Get-AzureRmSiteRecoveryFabric** cmdlet gets the properties of a specified 
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the Azure Site Recovery Fabric.
+### -FriendlyName
+Specifies the friendly name of the Azure Site Recovery Fabric.
 
 ```yaml
 Type: String
-Parameter Sets: ByName
+Parameter Sets: ByFriendlyName
 Aliases: 
 
 Required: True
@@ -49,12 +49,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FriendlyName
-Specifies the friendly name of the Azure Site Recovery Fabric.
+### -Name
+Specifies the name of the Azure Site Recovery Fabric.
 
 ```yaml
 Type: String
-Parameter Sets: ByFriendlyName
+Parameter Sets: ByName
 Aliases: 
 
 Required: True

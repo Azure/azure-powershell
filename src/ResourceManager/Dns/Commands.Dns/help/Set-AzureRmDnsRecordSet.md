@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
 ms.assetid: 99E6C4DD-11AF-4DC0-848B-39811240BE06
-online version:
+online version: 
 schema: 2.0.0
 ---
 
@@ -72,7 +72,7 @@ To suppress this behavior, you can use the *Overwrite* parameter, which results 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -87,7 +87,7 @@ Specifies the **RecordSet** to update.
 ```yaml
 Type: DnsRecordSet
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named

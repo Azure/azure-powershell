@@ -156,23 +156,8 @@ This command gets the recommended action named IR_\[test_schema\]_\[test_table_0
 
 ## PARAMETERS
 
-### -RecommendedActionName
-Specifies the name of the recommended action that this cmdlet gets.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ServerName
-Specifies the name of the server the elastic pool is in.
+### -AdvisorName
+Specifies the name of the advisor for which this cmdlet requests recommended actions.
 
 ```yaml
 Type: String
@@ -201,15 +186,15 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -AdvisorName
-Specifies the name of the advisor for which this cmdlet requests recommended actions.
+### -RecommendedActionName
+Specifies the name of the recommended action that this cmdlet gets.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -226,6 +211,21 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServerName
+Specifies the name of the server the elastic pool is in.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

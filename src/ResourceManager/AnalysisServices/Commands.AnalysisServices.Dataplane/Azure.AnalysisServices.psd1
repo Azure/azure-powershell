@@ -65,7 +65,8 @@ NestedModules = @(
 FunctionsToExport = '*'  
   
 # Cmdlets to export from this module  
-CmdletsToExport = '*'  
+CmdletsToExport = 'Add-AzureAnalysisServicesAccount',
+                'Restart-AzureAnalysisServicesInstance'
   
 # Variables to export from this module  
 VariablesToExport = '*'  

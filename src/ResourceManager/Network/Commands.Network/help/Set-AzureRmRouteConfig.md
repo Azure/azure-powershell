@@ -14,8 +14,7 @@ Sets the goal state for a route.
 
 ```
 Set-AzureRmRouteConfig -Name <String> -RouteTable <PSRouteTable> [-AddressPrefix <String>]
- -NextHopType <String> [-NextHopIpAddress <String>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ -NextHopType <String> [-NextHopIpAddress <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,45 +79,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 Specifies the name of the route that this cmdlet modifies.
 
@@ -171,6 +131,7 @@ If you have two subnets, 10.1.0.0/16 and 10.2.0.0/16 in the same virtual network
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Internet, None, VirtualAppliance, VirtualNetworkGateway, VnetLocal
 
 Required: True
 Position: Named
