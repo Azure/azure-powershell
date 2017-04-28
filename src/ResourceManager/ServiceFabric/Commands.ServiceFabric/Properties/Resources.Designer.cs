@@ -475,6 +475,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The resource group {0} is not found.
+        /// </summary>
+        internal static string ResourceGroupNotFound {
+            get {
+                return ResourceManager.GetString("ResourceGroupNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The capacity of the node type is null.
         /// </summary>
         internal static string SkuCapacityIsNull {

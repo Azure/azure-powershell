@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public int Capacity { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true,
-                   HelpMessage = "The user name for login to Vm")]
+                   HelpMessage = "The user name for logging to Vm")]
         [ValidateNotNullOrEmpty()]
         public string VmUserName { get; set; }
 
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, ValueFromPipeline = true,
                    HelpMessage = "The sku name")]
         [ValidateNotNullOrEmpty()]
-        public string Sku
+        public string VmSku
         {
             get { return string.IsNullOrWhiteSpace(this.sku) ? Constants.DefaultSku : this.sku; }
             set { this.sku = value; }
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                  new VirtualMachineScaleSet()
                  {
                      Location = GetLocation(),
-                     Sku = new Management.Compute.Models.Sku(this.Sku, this.Tier, this.Capacity),
+                     Sku = new Management.Compute.Models.Sku(this.VmSku, this.Tier, this.Capacity),
                      Overprovision = false,
                      Tags = GetServiceFabricTags(),
                      UpgradePolicy = new UpgradePolicy()

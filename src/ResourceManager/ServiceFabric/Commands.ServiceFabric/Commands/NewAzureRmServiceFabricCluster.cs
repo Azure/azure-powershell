@@ -183,8 +183,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, ParameterSetName = ByDefaultArmTemplate, ValueFromPipeline = true,
                    HelpMessage = "Specify the name of the cluster, if not given it will be same as resource group name")]
         [ValidateNotNullOrEmpty()]
+        [ValidatePattern("^[a-z][a-z0-9-]{4,23}[a-z0-9]$")]
         [Alias("ClusterName")]
         public override string Name { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipeline = true,
+                 HelpMessage = "The user name for logging to Vm")]
+        [ValidateNotNullOrEmpty()]
+        [ValidatePattern("^[a-z][a-z0-9]{1,15}$")]
+        public string VmUserName { get; set; }
 
         private int clusterSize = 5;
         [Parameter(Mandatory = false, ParameterSetName = ByDefaultArmTemplate, ValueFromPipeline = true,
@@ -445,6 +452,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                this.reliabilityLevel,
                this.Location,
                this.Name,
+               this.VmUserName,
                this.VmPassword.ConvertToString(),
                this.VmSku,
                (int)this.clusterSize
@@ -661,6 +669,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             string reliability,
             string location = null,
             string clusterName = null,
+            string vmUserName = null,
             string adminPassword = null,
             string sku = null,
             int vmSize = -1)
@@ -682,6 +691,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             if (clusterName != null)
             {
                 SetParameter(ref parameters, this.clusterNameParameter, clusterName);
+            }
+
+            if (vmUserName != null)
+            {
+                SetParameter(ref parameters, this.adminUserParameter, vmUserName);
             }
 
             if (adminPassword != null)
