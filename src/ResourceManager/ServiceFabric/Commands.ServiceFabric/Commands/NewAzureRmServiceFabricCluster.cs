@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         private int clusterSize = 5;
         [Parameter(Mandatory = false, ParameterSetName = ByDefaultArmTemplate, ValueFromPipeline = true,
                    HelpMessage = "The number of nodes in the cluster. Default are 5 nodes")]
-        [ValidateRange(1, 100)]
+        [ValidateRange(1, 99)]
         public int ClusterSize
         {
             get { return this.clusterSize; }
