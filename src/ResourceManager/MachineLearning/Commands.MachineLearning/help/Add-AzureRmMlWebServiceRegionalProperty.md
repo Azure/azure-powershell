@@ -20,6 +20,7 @@ Creates Azure Machine Learning regional properties for an existing web service.
 
 ## EXAMPLES
 
+### --------------------------  Example 1: Add new regional properties for West Central US  --------------------------
 
 @{paragraph=PS C:\\\>}
 
