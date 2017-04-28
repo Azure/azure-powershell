@@ -558,7 +558,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 if (e.Body?.Error != null &&
                     (e.Body.Error.Code.Equals("ResourceGroupNotFound", StringComparison.OrdinalIgnoreCase) ||
-                     e.Body.Error.Code.Equals("ResourceNotFound", StringComparison.OrdinalIgnoreCase)))
+                     e.Body.Error.Code.Equals("ResourceNotFound", StringComparison.OrdinalIgnoreCase)||
+                     e.Body.Error.Code.Equals("NotFound", StringComparison.OrdinalIgnoreCase)))
                 {
                     return default(T);
                 }
