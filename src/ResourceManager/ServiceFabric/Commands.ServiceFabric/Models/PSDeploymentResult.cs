@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
                     sb.AppendLine(string.Format("The {0} key vault and certificate detail:", i));
                 }
 
-                sb.Append(string.Format("    {0}", certificate));
+                sb.Append(string.Format("{0}", certificate));
 
                 i++;
             }

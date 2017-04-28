@@ -27,14 +27,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
 
         public override string ToString()
         {
-            const string spaces = "    ";
+            const string spaces = "";
             var sb = new StringBuilder();
-            sb.AppendLine(string.Format("{0} {1} : {2}", spaces, "Name",this.Name));
-            sb.AppendLine(string.Format("{0} {1} : {2}", spaces, "Id", this.Id));
-            sb.AppendLine(string.Format("{0} {1} : {2}", spaces, "CorrelationId", this.Properties.CorrelationId));
-            sb.AppendLine(string.Format("{0} {1} : {2}", spaces, "Mode", this.Properties.Mode));
-            sb.AppendLine(string.Format("{0} {1} : {2}", spaces, "ProvisioningState", this.Properties.ProvisioningState));
-            sb.AppendLine(string.Format("{0} {1} : {2}", spaces, "Timestamp", this.Properties.Timestamp));
+            sb.AppendLine(string.Format("{0}{1} : {2}", spaces, "Name",this.Name));
+            sb.AppendLine(string.Format("{0}{1} : {2}", spaces, "Id", this.Id));
+            sb.AppendLine(string.Format("{0}{1} : {2}", spaces, "CorrelationId", this.Properties.CorrelationId));
+            sb.AppendLine(string.Format("{0}{1} : {2}", spaces, "Mode", this.Properties.Mode));
+            sb.AppendLine(string.Format("{0}{1} : {2}", spaces, "ProvisioningState", this.Properties.ProvisioningState));
+            sb.AppendLine(string.Format("{0}{1} : {2}", spaces, "Timestamp", this.Properties.Timestamp));
             return sb.ToString();
 
         }

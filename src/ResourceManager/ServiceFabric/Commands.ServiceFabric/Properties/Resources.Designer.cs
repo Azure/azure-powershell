@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid directory {0}.
+        ///   Looks up a localized string similar to Directory {0} doesn&apos;t exist.
         /// </summary>
         internal static string InvalidDirectory {
             get {
