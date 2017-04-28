@@ -11,9 +11,24 @@ Updates a container registry.
 
 ## SYNTAX
 
+### Empty (Default)
 ```
-Update-AzureRmContainerRegistry [-ResourceGroupName] <String> [-Name] <String> [-AdminUserEnabled <Boolean>]
- [-Tag <Hashtable>] [-StorageAccountName <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzureRmContainerRegistry [-ResourceGroupName] <String> [-Name] <String> [-Tag <Hashtable>]
+ [-StorageAccountName <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### EnableAdminUserParameterSet
+```
+Update-AzureRmContainerRegistry [-ResourceGroupName] <String> [-Name] <String> [-EnableAdminUser]
+ [-DisableAdminUser] [-Tag <Hashtable>] [-StorageAccountName <String>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### DisableAdminUserParameterSet
+```
+Update-AzureRmContainerRegistry [-ResourceGroupName] <String> [-Name] <String> [-EnableAdminUser]
+ [-DisableAdminUser] [-Tag <Hashtable>] [-StorageAccountName <String>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,7 +38,7 @@ The **Update-AzureRmContainerRegistry** cmdlet updates a container registry.
 
 ### Example 1: Enable admin user for a specified container registry
 ```
-PS C:\>Update-AzureRmContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -AdminUserEnabled $true
+PS C:\>Update-AzureRmContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -EnableAdminUser
 
 Id                 : /subscriptions/3eb31d8d-2879-4706-89b4-4dc4047726c6/resourceGroups/MyResourceGroup/providers/Microsoft.ContainerRegistry/registries/MyRegistry
 ResourceGroupName  : MyResourceGroup
@@ -65,13 +80,52 @@ This command sets the specified container registry to use an existing storage ac
 
 ## PARAMETERS
 
-### -AdminUserEnabled
-Indicates whether the admin user is enabled.
+### -DisableAdminUser
+Enable admin user for the container registry.
 
 ```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases: AdminEnabled
+Type: SwitchParameter
+Parameter Sets: EnableAdminUserParameterSet
+Aliases: DisableAdmin
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: DisableAdminUserParameterSet
+Aliases: DisableAdmin
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableAdminUser
+Enable admin user for the container registry.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: EnableAdminUserParameterSet
+Aliases: EnableAdmin
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: DisableAdminUserParameterSet
+Aliases: EnableAdmin
 
 Required: False
 Position: Named

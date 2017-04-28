@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsData.Update, ContainerRegistryNoun, SupportsShouldProcess = true),
+    [Cmdlet(VerbsData.Update, ContainerRegistryNoun, DefaultParameterSetName = "Empty", SupportsShouldProcess = true),
         OutputType(typeof(PSContainerRegistry))]
     public class UpdateAzureContainerRegistry : ContainerRegistryCmdletBase
     {
@@ -40,11 +40,28 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         public string Name { get; set; }
 
         [Parameter(
+            Mandatory = true,
+            ParameterSetName = EnableAdminUserParameterSet,
+            HelpMessage = "Enable admin user for the container registry.")]
+        [Parameter(
             Mandatory = false,
-            HelpMessage = "Indicates whether the admin user is enabled.")]
+            ParameterSetName = DisableAdminUserParameterSet,
+            HelpMessage = "Disable admin user for the container registry.")]
         [ValidateNotNull]
-        [Alias(AdminEnabledAlias)]
-        public bool? AdminUserEnabled { get; set; }
+        [Alias(EnableAdminAlias)]
+        public SwitchParameter EnableAdminUser { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = EnableAdminUserParameterSet,
+            HelpMessage = "Enable admin user for the container registry.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = DisableAdminUserParameterSet,
+            HelpMessage = "Disable admin user for the container registry.")]
+        [ValidateNotNull]
+        [Alias(DisableAdminAlias)]
+        public SwitchParameter DisableAdminUser { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -63,6 +80,14 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             if (ShouldProcess(Name, "Remove Container Registry"))
             {
                 var tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
+
+                bool? adminUserEnabled = null;
+
+                if (EnableAdminUser || DisableAdminUser)
+                {
+                    adminUserEnabled = EnableAdminUser || !DisableAdminUser;
+                }
+
                 string storageAccountResourceGroup = null;
 
                 if (StorageAccountName != null)
@@ -71,7 +96,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                 }
 
                 var registry = RegistryClient.UpdateRegistry(
-                    ResourceGroupName, Name, AdminUserEnabled, StorageAccountName, storageAccountResourceGroup, tags);
+                    ResourceGroupName, Name, adminUserEnabled, StorageAccountName, storageAccountResourceGroup, tags);
                 WriteObject(new PSContainerRegistry(registry));
             }
         }
