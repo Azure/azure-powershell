@@ -74,6 +74,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         [ValidateNotNullOrEmpty]
         public string JsonAttribute { get; set; }
 
+        [Alias("ChefServiceInterval")]
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the frequency (in minutes) at which the chef-service runs. If in case you don't want the chef-service to be installed on the Azure VM then set value as 0 in this field.")]
