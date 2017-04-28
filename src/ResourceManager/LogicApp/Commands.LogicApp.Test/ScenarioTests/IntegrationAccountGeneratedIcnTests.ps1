@@ -26,11 +26,11 @@ function IsRecordMode()
 .SYNOPSIS
 Writes a session containing a control number
 #>
-function InitializeGeneratedControlNumberSession([Object] $resourceGroup, [String] $integrationAccountName, [String] $integrationAccountX12AgreementName, [bool] $oldformat)
+function InitializeGeneratedControlNumberSession([Object] $resourceGroup, [String] $integrationAccountName, [String] $integrationAccountAgreementName, [String] $agreementType, [bool] $oldformat)
 {
 	if (IsRecordMode)
 	{
-		$resourceId = "/subscriptions/" + $(getVariable "SubscriptionId") + "/resourceGroups/" + $resourceGroup.ResourceGroupName + "/providers/Microsoft.Logic/integrationAccounts/" + $integrationAccountName + "/sessions/" + $integrationAccountX12AgreementName + "-ICN"
+		$resourceId = "/subscriptions/" + $(getVariable "SubscriptionId") + "/resourceGroups/" + $resourceGroup.ResourceGroupName + "/providers/Microsoft.Logic/integrationAccounts/" + $integrationAccountName + "/sessions/" + $integrationAccountAgreementName + "-ICN"
 
 		if ($oldformat -eq $true)
 		{
@@ -42,7 +42,8 @@ function InitializeGeneratedControlNumberSession([Object] $resourceGroup, [Strin
 			$content = ConvertFrom-Json @"
 {
     "ControlNumber":  "1000",
-    "ControlNumberChangedTime":  "\/Date(1487793941363)\/"
+    "ControlNumberChangedTime":  "\/Date(1487793941363)\/",
+    "MessageType": "$agreementType"
 }
 "@
 		}
@@ -50,23 +51,34 @@ function InitializeGeneratedControlNumberSession([Object] $resourceGroup, [Strin
 	}
 }
 
+
 <#
 .SYNOPSIS
 Test Get-AzureRmIntegrationAccountGeneratedIcn command
 #>
 function Test-GetIntegrationAccountGeneratedControlNumber
 {
-	$agreementX12FilePath = "$TestOutputRoot\Resources\IntegrationAccountX12AgreementContent.json"
-	$agreementX12Content = [IO.File]::ReadAllText($agreementX12FilePath)
+  Test-GetIntegrationAccountGeneratedControlNumberInternal -agreementType "X12"
+  Test-GetIntegrationAccountGeneratedControlNumberInternal -agreementType "Edifact"
+}
+
+<#
+.SYNOPSIS
+Test Get-AzureRmIntegrationAccountGeneratedIcn command
+#>
+function Test-GetIntegrationAccountGeneratedControlNumberInternal([String] $agreementType)
+{
+	$agreementFilePath = "$TestOutputRoot\Resources\IntegrationAccount" + $agreementType + "AgreementContent.json"
+	$agreementContent = [IO.File]::ReadAllText($agreementFilePath)
 
 	# This error string is less than ideal due to AutoRest bug https://github.com/Azure/autorest/issues/2022
-	Assert-ThrowsContains { Get-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName "Random83da135" -Name "DoesNotMatter" -AgreementName "DoesNotMatter" } "Operation returned an invalid status code 'NotFound'"
+	Assert-ThrowsContains { Get-AzureRmIntegrationAccountGeneratedIcn -AgreementType $agreementType -ResourceGroupName "Random83da135" -Name "DoesNotMatter" -AgreementName "DoesNotMatter" } "Operation returned an invalid status code 'NotFound'"
 
 	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
 	$integrationAccountName = getAssetname
-	$integrationAccountX12AgreementName = getAssetname
+	$integrationAccountAgreementName = getAssetname + $agreementType
 
-	Assert-ThrowsContains { Get-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name "Random83da135" -AgreementName "DoesNotMatter" } "Operation returned an invalid status code 'NotFound'"
+	Assert-ThrowsContains { Get-AzureRmIntegrationAccountGeneratedIcn -AgreementType $agreementType -ResourceGroupName $resourceGroup.ResourceGroupName -Name "Random83da135" -AgreementName "DoesNotMatter" } "Operation returned an invalid status code 'NotFound'"
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 	
@@ -77,10 +89,10 @@ function Test-GetIntegrationAccountGeneratedControlNumber
 	$hostPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -PartnerName $hostPartnerName -BusinessIdentities $hostBusinessIdentities
 	$guestPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -PartnerName $guestPartnerName -BusinessIdentities $guestBusinessIdentities
 
-	$integrationAccountAgreement0 =  New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountX12AgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -GuestIdentityQualifierValue "ZZ" -HostIdentityQualifierValue "AA" -AgreementContent $agreementX12Content
+	$integrationAccountAgreement0 =  New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType $agreementType -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -GuestIdentityQualifierValue "ZZ" -HostIdentityQualifierValue "AA" -AgreementContent $agreementContent
 
-	$result =  Get-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountX12AgreementName
-	Assert-AreEqual $integrationAccountX12AgreementName $result.Name
+	$result =  Get-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName
+	Assert-AreEqual $integrationAccountAgreementName $result.Name
 
 	$result1 =  Get-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName
 	Assert-True { $result1.Count -gt 0 }
@@ -90,18 +102,19 @@ function Test-GetIntegrationAccountGeneratedControlNumber
 	# So working this around by using ARM resource cmdlet to create a dummy entry.
 
 	# Before the workaround the control number containing session ressource cannot be found in the integration account.
-	Assert-ThrowsContains { Get-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountX12AgreementName } "Operation returned an invalid status code 'NotFound'"
+	Assert-ThrowsContains { Get-AzureRmIntegrationAccountGeneratedIcn -AgreementType $agreementType -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName } "Operation returned an invalid status code 'NotFound'"
 
 	# Now we create one with the legacy raw control number content. This cmdlet will intentionally fail to deserialize: it is meant only to operate on new control numbers that have been replicated for the purpose of disaster recovery.
-	InitializeGeneratedControlNumberSession -resourceGroup $resourceGroup -integrationAccountName $integrationAccountName -integrationAccountX12AgreementName $integrationAccountX12AgreementName -oldformat $true
-	Assert-ThrowsContains { Get-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountX12AgreementName } "is not in a valid format."
+	InitializeGeneratedControlNumberSession -agreementType $agreementType -resourceGroup $resourceGroup -integrationAccountName $integrationAccountName -integrationAccountAgreementName $integrationAccountAgreementName -oldformat $true
+	Assert-ThrowsContains { Get-AzureRmIntegrationAccountGeneratedIcn -AgreementType $agreementType -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName } "is not in a valid format."
 
-	InitializeGeneratedControlNumberSession -resourceGroup $resourceGroup -integrationAccountName $integrationAccountName -integrationAccountX12AgreementName $integrationAccountX12AgreementName -oldformat $false
-	$result =  Get-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountX12AgreementName
+	InitializeGeneratedControlNumberSession -agreementType $agreementType -resourceGroup $resourceGroup -integrationAccountName $integrationAccountName -integrationAccountAgreementName $integrationAccountAgreementName -oldformat $false
+	$result =  Get-AzureRmIntegrationAccountGeneratedIcn -AgreementType $agreementType -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName
 	Assert-AreEqual "1000" $result.ControlNumber
 	Assert-AreEqual "02/22/2017 20:05:41" $result.ControlNumberChangedTime
+  Assert-AreEqual $agreementType $result.MessageType
 
-	$result1 =  Get-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName
+	$result1 =  Get-AzureRmIntegrationAccountGeneratedIcn -AgreementType $agreementType -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName
 	Assert-True { $result1.Count -gt 0 }
 
 	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -Force
@@ -113,13 +126,23 @@ Test Set-AzureRmIntegrationAccountGeneratedIcn command
 #>
 function Test-UpdateIntegrationAccountGenCN
 {
-	$agreementX12FilePath = "$TestOutputRoot\Resources\IntegrationAccountX12AgreementContent.json"
-	$agreementX12Content = [IO.File]::ReadAllText($agreementX12FilePath)
+  Test-UpdateIntegrationAccountGenCNInternal -agreementType "X12"
+  Test-UpdateIntegrationAccountGenCNInternal -agreementType "Edifact"
+}
+
+<#
+.SYNOPSIS
+Test Set-AzureRmIntegrationAccountGeneratedIcn command
+#>
+function Test-UpdateIntegrationAccountGenCNInternal([String] $agreementType)
+{
+	$agreementFilePath = "$TestOutputRoot\Resources\IntegrationAccount" + $agreementType + "AgreementContent.json"
+	$agreementContent = [IO.File]::ReadAllText($agreementFilePath)
 
 	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
 	$integrationAccountName = getAssetname
 	
-	$integrationAccountAgreementName = getAssetname
+	$integrationAccountAgreementName = getAssetname + $agreementType
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 
@@ -130,28 +153,28 @@ function Test-UpdateIntegrationAccountGenCN
 	$hostPartner = New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -PartnerName $hostPartnerName -BusinessIdentities $hostBusinessIdentities
 	$guestPartner = New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -PartnerName $guestPartnerName -BusinessIdentities $guestBusinessIdentities
 
-	$integrationAccountAgreement = New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -GuestIdentityQualifierValue "ZZ" -HostIdentityQualifierValue "AA" -AgreementContent $agreementX12Content
+	$integrationAccountAgreement = New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType $agreementType -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -GuestIdentityQualifierValue "ZZ" -HostIdentityQualifierValue "AA" -AgreementContent $agreementContent
 	Assert-AreEqual $integrationAccountAgreementName $integrationAccountAgreement.Name
-	Assert-AreEqual "X12" $integrationAccountAgreement.AgreementType
+	Assert-AreEqual $agreementType $integrationAccountAgreement.AgreementType
 
 	# Verify inserting new control number records is not allowed
-	Assert-ThrowsContains { Set-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -ControlNumber "789" } "Operation returned an invalid status code 'NotFound'"
+	Assert-ThrowsContains { Set-AzureRmIntegrationAccountGeneratedIcn -AgreementType $agreementType -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -ControlNumber "789" } "Operation returned an invalid status code 'NotFound'"
 
-	InitializeGeneratedControlNumberSession -resourceGroup $resourceGroup -integrationAccountName $integrationAccountName -integrationAccountX12AgreementName $integrationAccountAgreementName -oldformat $false
-	$initialControlNumber = Get-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName
+	InitializeGeneratedControlNumberSession -agreementType $agreementType -resourceGroup $resourceGroup -integrationAccountName $integrationAccountName -integrationAccountAgreementName $integrationAccountAgreementName -oldformat $false
+	$initialControlNumber = Get-AzureRmIntegrationAccountGeneratedIcn -AgreementType $agreementType -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName
 	Assert-AreEqual "1000" $initialControlNumber.ControlNumber
 
 	# Tests the conversion and value incrementation as shown in the cmdlet help.
 	$incrementedControlNumberValue = [convert]::ToString([convert]::ToInt32($initialControlNumber.ControlNumber, 10) + 100, 10)
 	Assert-AreEqual "1100" $incrementedControlNumberValue
 
-	$updatedControlNumber = Set-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -ControlNumber $incrementedControlNumberValue
+	$updatedControlNumber = Set-AzureRmIntegrationAccountGeneratedIcn -AgreementType $agreementType -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -ControlNumber $incrementedControlNumberValue
 	Assert-AreEqual $incrementedControlNumberValue $updatedControlNumber.ControlNumber
 
 	# PowerShell fails to distinguish tick-level differences, hence using -ge instead of -gt
 	Assert-True { return ($updatedControlNumber.ControlNumberChangedTime -ge $initialControlNumber.ControlNumberChangedTime) }
 
-	Assert-ThrowsContains { Set-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName } "Cannot process command because of one or more missing mandatory parameters: ControlNumber."
+	Assert-ThrowsContains { Set-AzureRmIntegrationAccountGeneratedIcn -AgreementType $agreementType -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName } "Cannot process command because of one or more missing mandatory parameters: ControlNumber."
 
 	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -Force
 }
@@ -162,8 +185,18 @@ Test Get-AzureRmIntegrationAccountGeneratedIcn command : paging test
 #>
 function Test-ListIntegrationAccountGenCN
 {
-	$agreementX12FilePath = "$TestOutputRoot\Resources\IntegrationAccountX12AgreementContent.json"
-	$agreementX12Content = [IO.File]::ReadAllText($agreementX12FilePath)
+  Test-ListIntegrationAccountGenCNInternal -agreementType "X12"
+  Test-ListIntegrationAccountGenCNInternal -agreementType "Edifact"
+}
+
+<#
+.SYNOPSIS
+Test Get-AzureRmIntegrationAccountGeneratedIcn command : paging test
+#>
+function Test-ListIntegrationAccountGenCNInternal([String] $agreementType)
+{
+	$agreementFilePath = "$TestOutputRoot\Resources\IntegrationAccount" + $agreementType + "AgreementContent.json"
+	$agreementContent = [IO.File]::ReadAllText($agreementFilePath)
 
 	$agreementAS2FilePath = "$TestOutputRoot\Resources\IntegrationAccountAS2AgreementContent.json"
 	$agreementAS2Content = [IO.File]::ReadAllText($agreementAS2FilePath)
@@ -189,20 +222,20 @@ function Test-ListIntegrationAccountGenCN
 	while($val -ne 2)
 	{
 		$val++ ;
-		$integrationAccountX12AgreementName = getAssetname
-		New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountX12AgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -GuestIdentityQualifierValue "ZZ" -HostIdentityQualifierValue "AA" -AgreementContent $agreementX12Content
+		$integrationAccountAgreementName = getAssetname + $agreementType
+		New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType $agreementType -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -GuestIdentityQualifierValue "ZZ" -HostIdentityQualifierValue "AA" -AgreementContent $agreementContent
 
-		InitializeGeneratedControlNumberSession -resourceGroup $resourceGroup -integrationAccountName $integrationAccountName -integrationAccountX12AgreementName $integrationAccountX12AgreementName -oldformat $false
+		InitializeGeneratedControlNumberSession -agreementType $agreementType -resourceGroup $resourceGroup -integrationAccountName $integrationAccountName -integrationAccountAgreementName $integrationAccountAgreementName -oldformat $false
 	}
 
-	# Add one more X12 agreement with no generated ICN for which the ICN listing should catch and handle not found exception.
-	$integrationAccountX12AgreementName = getAssetname
-	New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountX12AgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -GuestIdentityQualifierValue "ZZ" -HostIdentityQualifierValue "AA" -AgreementContent $agreementX12Content
+	# Add one more X12/Edifact agreement with no generated ICN for which the ICN listing should catch and handle not found exception.
+	$integrationAccountAgreementName = getAssetname + $agreementType
+	New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType $agreementType -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -GuestIdentityQualifierValue "ZZ" -HostIdentityQualifierValue "AA" -AgreementContent $agreementContent
 
 	$result =  Get-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName
 	Assert-True { $result.Count -eq 4 }
 
-	$result1 =  Get-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName
+	$result1 =  Get-AzureRmIntegrationAccountGeneratedIcn -AgreementType $agreementType -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName
 	Assert-True { $result1.Count -eq 3 }
 
 	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -Force
