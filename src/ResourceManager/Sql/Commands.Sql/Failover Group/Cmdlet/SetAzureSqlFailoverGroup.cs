@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// Gets or sets the grace period with data loss for the Sql Azure Failover Group.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The grace period during outage before automatic failover with data loss of the Failover Group is triggered.")]
+            HelpMessage = "Interval before automatic failover is initiated if an outage occurs on the primary server and failover cannot be completed without data loss.")]
         [ValidateNotNullOrEmpty]
         [ValidateRange(0, int.MaxValue)]
         public int GracePeriodWithDataLossHours { get; set; }
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// Gets or sets the grace period with data loss for the Sql Azure Failover Group.
         /// </summary>
         [Parameter(Mandatory = false, DontShow = true,
-            HelpMessage = "The grace period during outage before automatic failover with data loss of the Failover Group is triggered.")]
+            HelpMessage = "Interval before automatic failover is initiated if an outage occurs on the primary server and failover cannot be completed without data loss.")]
         [ValidateNotNullOrEmpty]
         [ValidateRange(0, int.MaxValue)]
         [Obsolete("This parameter will be deprecated in the next release.")]

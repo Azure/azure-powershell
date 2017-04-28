@@ -19,10 +19,8 @@ using Microsoft.Azure.Commands.Sql.FailoverGroup.Model;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
 {
@@ -45,29 +43,6 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// Gets or sets the Azure Subscription
         /// </summary>
         private AzureSubscription _subscription { get; set; }
-
-        /// <summary>
-        /// Dummy URI used in parsing server ID.
-        /// </summary>
-        private readonly Uri _dummyUri = new Uri("https://localhost");
-
-        /// <summary>
-        /// SQL server URI template used for parsing.
-        /// </summary>
-        private readonly UriTemplate _serverUriTemplate =
-            new UriTemplate("subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}");
-
-        /// <summary>
-        /// SQL database URI template used for parsing.
-        /// </summary>
-        private readonly UriTemplate _databaseUriTemplate =
-            new UriTemplate("subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}");
-
-        /// <summary>
-        /// Failover group URI template used for parsing.
-        /// </summary>
-        private readonly UriTemplate _failoverGroupUriTemplate =
-            new UriTemplate("subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/failoverGroups/{failoverGroupName}");
 
         /// <summary>
         /// Constructs a database adapter
@@ -294,44 +269,38 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
 
             model.Id = failoverGroup.Id;
             model.Location = failoverGroup.Location;
-            model.DatabaseNames = RetrieveDatabaseNames(failoverGroup);
 
-            UriTemplateMatch match = _failoverGroupUriTemplate.Match(_dummyUri, new Uri(_dummyUri, failoverGroup.Id));
-            if (match != null)
-            {
-                model.ResourceGroupName = match.BoundVariables[1];
-                model.ServerName = match.BoundVariables[2];
-            }
+            model.DatabaseNames = failoverGroup.Properties.Databases
+                .Select(dbId => GetUriSegment(dbId, 10))
+                .ToList();
+
+            model.ResourceGroupName = GetUriSegment(failoverGroup.Id, 4);
+            model.ServerName = GetUriSegment(failoverGroup.Id, 8);
 
             FailoverGroupPartnerServer partnerServer = failoverGroup.Properties.PartnerServers.FirstOrDefault();
             if (partnerServer != null)
             {
-                match = _serverUriTemplate.Match(_dummyUri, new Uri(_dummyUri, partnerServer.Id));
-                if (match != null)
-                {
-                    model.PartnerResourceGroupName = match.BoundVariables[1];
-                    model.PartnerServerName = match.BoundVariables[2];
-                }
-
+                model.PartnerResourceGroupName = GetUriSegment(partnerServer.Id, 4);
+                model.PartnerServerName = GetUriSegment(partnerServer.Id, 8);
                 model.PartnerLocation = partnerServer.Location;
             }
 
             return model;
         }
 
-        private List<string> RetrieveDatabaseNames(Management.Sql.LegacySdk.Models.FailoverGroup failoverGroup)
+        private string GetUriSegment(string uri, int segmentNum)
         {
-            var databaseNames = new List<string>();
-            foreach (var databaseId in failoverGroup.Properties.Databases)
+            if (uri != null)
             {
-                UriTemplateMatch match = _databaseUriTemplate.Match(_dummyUri, new Uri(_dummyUri, databaseId));
-                if (match != null)
+                var segments = uri.Split('/');
+
+                if (segments.Length > segmentNum)
                 {
-                    databaseNames.Add(match.BoundVariables[3]);
+                    return segments[segmentNum];
                 }
             }
 
-            return databaseNames;
+            return null;
         }
     }
 }
