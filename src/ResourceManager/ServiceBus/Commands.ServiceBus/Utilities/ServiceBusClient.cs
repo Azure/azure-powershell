@@ -59,7 +59,6 @@ namespace Microsoft.Azure.Commands.Servicebus
         public IEnumerable<NamespaceAttributes> ListNamespaces(string resourceGroupName)
         {
             Rest.Azure.IPage<NamespaceResource> response = Client.Namespaces.ListByResourceGroup(resourceGroupName);
-            //IEnumerable<NamespaceAttributes> resourceList = response.Select(resource => new NamespaceAttributes(resourceGroupName, resource));
             IEnumerable<NamespaceAttributes> resourceList = response.Select(resource => new NamespaceAttributes(resource));
             return resourceList;
         }
@@ -67,8 +66,6 @@ namespace Microsoft.Azure.Commands.Servicebus
         public IEnumerable<NamespaceAttributes> ListAllNamespaces()
         {
             Rest.Azure.IPage<NamespaceResource> response = Client.Namespaces.ListBySubscription();
-
-            //var resourceList = response.Select(resource => new NamespaceAttributes(null, resource));
             var resourceList = response.Select(resource => new NamespaceAttributes(resource));
             return resourceList;
         }
@@ -253,7 +250,6 @@ namespace Microsoft.Azure.Commands.Servicebus
         public IEnumerable<QueueAttributes> ListQueues(string resourceGroupName, string namespaceName)
         {
             Rest.Azure.IPage<QueueResource> response = Client.Queues.ListAll(resourceGroupName, namespaceName);
-            //IEnumerable<NamespaceAttributes> resourceList = response.Select(resource => new NamespaceAttributes(resourceGroupName, resource));
             IEnumerable<QueueAttributes> resourceList = response.Select(resource => new QueueAttributes(resource));
             return resourceList;
         }
@@ -374,7 +370,6 @@ namespace Microsoft.Azure.Commands.Servicebus
         public IEnumerable<TopicAttributes> ListTopics(string resourceGroupName, string namespaceName)
         {
             Rest.Azure.IPage<TopicResource> response = Client.Topics.ListAll(resourceGroupName, namespaceName);
-            //IEnumerable<NamespaceAttributes> resourceList = response.Select(resource => new NamespaceAttributes(resourceGroupName, resource));
             IEnumerable<TopicAttributes> resourceList = response.Select(resource => new TopicAttributes(resource));
             return resourceList;
         }
