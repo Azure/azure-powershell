@@ -17,10 +17,11 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Sql.LegacySdk;
+using Microsoft.Azure.Management.Sql;
 using Microsoft.WindowsAzure.Management.Storage;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Services
 {
@@ -62,17 +63,17 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Services
         /// <summary>
         /// Gets the Azure Sql Database Server ServiceObjective
         /// </summary>
-        public Management.Sql.LegacySdk.Models.ServiceObjective Get(string resourceGroupName, string serverName, string serviceObjectiveName, string clientRequestId)
+        public Management.Sql.Models.ServiceObjective Get(string resourceGroupName, string serverName, string serviceObjectiveName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).ServiceObjectives.Get(resourceGroupName, serverName, serviceObjectiveName).ServiceObjective;
+            return GetCurrentSqlClient(clientRequestId).Servers.GetServiceObjective(resourceGroupName, serverName, serviceObjectiveName);
         }
 
         /// <summary>
         /// Lists Azure Sql Databases Server ServiceObjective
         /// </summary>
-        public IList<Management.Sql.LegacySdk.Models.ServiceObjective> List(string resourceGroupName, string serverName, string clientRequestId)
+        public IList<Management.Sql.Models.ServiceObjective> List(string resourceGroupName, string serverName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).ServiceObjectives.List(resourceGroupName, serverName).ServiceObjectives;
+            return GetCurrentSqlClient(clientRequestId).Servers.ListServiceObjectives(resourceGroupName, serverName).ToList();
         }
 
         /// <summary>
@@ -85,8 +86,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Services
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
-                SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
-            }
+                SqlClient = AzureSession.Instance.ClientFactory.CreateArmClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);            }
             SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
             SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
             return SqlClient;

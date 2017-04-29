@@ -15,8 +15,8 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Management.Sql.LegacySdk;
-using Microsoft.Azure.Management.Sql.LegacySdk.Models;
+using Microsoft.Azure.Management.Sql;
+using Microsoft.Azure.Management.Sql.Models;
 using System;
 
 namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
@@ -62,9 +62,9 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         /// <param name="locationName">The name of the region for which to get the location capabilities</param>
         /// <param name="clientRequestId">The client request ID to use</param>
         /// <returns>The location capabilities for the region</returns>
-        public LocationCapability Get(string locationName, string clientRequestId)
+        public LocationCapabilities Get(string locationName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).Capabilities.Get(locationName).Capabilities;
+            return GetCurrentSqlClient(clientRequestId).Capabilities.ListByLocation(locationName);
         }
 
         /// <summary>
@@ -77,8 +77,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
-                SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
-            }
+                SqlClient = AzureSession.Instance.ClientFactory.CreateArmClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);            }
 
             SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
             SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
