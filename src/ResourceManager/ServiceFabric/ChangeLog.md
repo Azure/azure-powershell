@@ -19,7 +19,6 @@
 -->
 ## Current Release
 
-## Version 0.1.0
 * Added cmdlets for service fabric
 * New cmdlet
     - Add-AzureRmServiceFabricApplicationCertificate
