@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Commands.Insights
         {
             string queryFilter = this.ProcessGeneralParameters();
             var result = this.ProcessParticularParameters(queryFilter);
-            WriteWarning("Deprecation: The field EventChannels from the EventData object is being deprecated since it is meaningless now. The value currently returned is constant.");
+            WriteWarning("Deprecation: The field EventChannels from the EventData object is being deprecated since it now returns a constant value (Admin,Operation)");
             return result;
         }
 

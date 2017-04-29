@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
 
         protected override AlertRuleResource CreateSdkCallParameters()
         {
-            WriteWarning("*** Add-AzureRMLogAlertRule cmdlet will be deprecated in future releases.");
+            WriteWarning("*** Add-AzureRMLogAlertRule cmdlet will be deprecated in a future release.");
 
             RuleCondition condition = this.CreateRuleCondition();
 

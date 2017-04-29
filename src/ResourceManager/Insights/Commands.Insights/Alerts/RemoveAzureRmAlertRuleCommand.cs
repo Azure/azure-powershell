@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            WriteWarning("The type of the output will change in future releases to become a single object, not a list.");
+            WriteWarning("The type of the output will change in a future release to become a single object, not a list.");
             var result = this.MonitorManagementClient.AlertRules.DeleteWithHttpMessagesAsync(resourceGroupName: this.ResourceGroup, ruleName: this.Name).Result;
 
             // Keep this response for backwards compatibility.
