@@ -30,16 +30,20 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
     {
         [Parameter(
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the resource group for the Azure ML web service.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the web service")]
+        [Parameter(
+            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true, 
+            HelpMessage = "The name of the web service")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The name of region")]
         [ValidateNotNullOrEmpty]
         public string Region { get; set; }
