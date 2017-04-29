@@ -19,7 +19,6 @@ namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet(VerbsCommon.Undo, "AzureKeyVaultSecretRemoval",
     SupportsShouldProcess = true,
-    ConfirmImpact = ConfirmImpact.Low,
     HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(Secret))]
     public class UndoAzureKeyVaultSecretRemoval : KeyVaultCmdletBase
