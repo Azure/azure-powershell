@@ -3,16 +3,16 @@ using System;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
-    internal class TransferProgressHandler : IProgress<TransferProgress>
+    internal class TransferProgressHandler : IProgress<TransferStatus>
     {
-        private Action<TransferProgress> progressHandler;
+        private Action<TransferStatus> progressHandler;
 
-        public TransferProgressHandler(Action<TransferProgress> progressHandler)
+        public TransferProgressHandler(Action<TransferStatus> progressHandler)
         {
             this.progressHandler = progressHandler;
         }
 
-        public void Report(TransferProgress value)
+        public void Report(TransferStatus value)
         {
             this.progressHandler(value);
         }
