@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+* Remove duplicated DataDiskNames and NetworkInterfaceIDs properties from PS VM object.
+  - Make DataDiskNames and NetworkInterfaceIDs parameters optional in Remove-AzureRmVMDataDisk and Remove-AzureRmVMNetworkInterface, respectively.
+* Fix the piping issue of Get cmdlets when the Get cmdlets return a list object.
+
 ## Version 2.9.0
 
 * Fix bug in Get-* cmdlets, to allow retrieving multiple pages of data (more than 120 items)
