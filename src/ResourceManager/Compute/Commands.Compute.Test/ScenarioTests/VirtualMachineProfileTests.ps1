@@ -66,7 +66,7 @@ function Test-VirtualMachineProfile
     $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB $null -Lun 2 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
     Assert-Null $p.StorageProfile.DataDisks[2].DiskSizeGB;
     $p = Remove-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3';
-        
+
     Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
     Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
     Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
