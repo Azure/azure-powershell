@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
                 // EndTime defaults to Now
                 if (this.EndTime == default(DateTime))
                 {
-                    this.EndTime = DateTime.Now;
+                    this.EndTime = DateTime.UtcNow;
                 }
 
                 // StartTime defaults to EndTime - DefaultTimeRange  (NOTE: EndTime defaults to Now)
@@ -122,9 +122,9 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
                 }
 
                 buffer.Append(" and startTime eq ");
-                buffer.Append(this.StartTime.ToString("O"));
+                buffer.Append(this.StartTime.ToUniversalTime().ToString("O"));
                 buffer.Append(" and endTime eq ");
-                buffer.Append(this.EndTime.ToString("O"));
+                buffer.Append(this.EndTime.ToUniversalTime().ToString("O"));
 
                 if (this.AggregationType != null)
                 {
@@ -148,8 +148,6 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            WriteWarning("**** This cmdlet has changed from the previous release: the call pattern and the output are different.");
- 
             string queryFilter = this.ProcessParameters();
             bool fullDetails = this.DetailedOutput.IsPresent;
 

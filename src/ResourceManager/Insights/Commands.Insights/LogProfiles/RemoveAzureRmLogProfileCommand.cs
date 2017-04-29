@@ -33,11 +33,14 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false)] 
+        public SwitchParameter PassThru { get; set; }
+
         #endregion
 
         protected override void ProcessRecordInternal()
         {
-            WriteWarning("The type of the output will change to follow the pattern from other similar operations.");
+            WriteWarning("The type of the output will change to return a single object containing the request Id and the status code.");
             Rest.Azure.AzureOperationResponse result = this.MonitorManagementClient.LogProfiles.DeleteWithHttpMessagesAsync(logProfileName: this.Name, cancellationToken: CancellationToken.None).Result;
 
             /*
@@ -49,7 +52,10 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
             };
 			*/
 
-            WriteObject(true);
+            if (this.PassThru)
+            {
+                WriteObject(true);
+            }
         }
     }
 }

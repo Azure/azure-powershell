@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            WriteWarning("The output of this cmdlet will be flattened, i.e. elimination of the properties field, in future releases to improve the user experience.");
+            WriteWarning("The output of this cmdlet will be flattened, i.e. elimination of the properties field, in a future release to improve the user experience.");
             if (string.IsNullOrWhiteSpace(this.Name))
             {
                 // Retrieve all the AlertRules for a ResourceGroup
