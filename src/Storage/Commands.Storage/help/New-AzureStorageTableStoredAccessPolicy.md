@@ -63,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -Permission
-Specifies the level of public access to this storage table.
+Specifies permissions in the stored access policy to access the storage table.
 
 ```yaml
 Type: String
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -Policy
-Specifies a stored access policy, which includes the permissions for this Shared Access Signature (SAS) token.
+Specifies a name for the stored access policy.
 
 ```yaml
 Type: String

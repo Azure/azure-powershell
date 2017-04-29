@@ -116,7 +116,7 @@ Accept wildcard characters: False
 ```
 
 ### -Permission
-Specifies the level of public access to this container.
+Specifies permissions in the stored access policy to access the container.
 
 ```yaml
 Type: String

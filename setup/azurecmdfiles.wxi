@@ -5582,6 +5582,9 @@
                     <Component Id="cmpF16F05791511515D1EDED9CD9871A270" Guid="*">
                         <File Id="fil0E2DE426019E02A4B3DA0FA157E8EE8F" KeyPath="yes" Source="$(var.sourceDir)\Storage\Azure.Storage\Microsoft.WindowsAzure.Commands.Storage.types.ps1xml" />
                     </Component>
+                    <Component Id="cmp5C553F43C13AF3486D63AA57CA520BB3" Guid="*">
+                        <File Id="fil722FD0E85A7D13F52966D6523BC39BA2" KeyPath="yes" Source="$(var.sourceDir)\Storage\Azure.Storage\Microsoft.WindowsAzure.Configuration.dll" />
+                    </Component>
                     <Component Id="cmpC98CE45CC73A0A544B5BF52559069BD9" Guid="*">
                         <File Id="fil3E03E1D346134CFF92D6A2AFA66DD184" KeyPath="yes" Source="$(var.sourceDir)\Storage\Azure.Storage\Microsoft.WindowsAzure.Management.dll" />
                     </Component>
@@ -7423,6 +7426,7 @@
             <ComponentRef Id="cmpC4F475EF1B04109793D0176DBAAF71C9" />
             <ComponentRef Id="cmpF8E19B713525002D6C0A6D1AE52711E0" />
             <ComponentRef Id="cmpF16F05791511515D1EDED9CD9871A270" />
+            <ComponentRef Id="cmp5C553F43C13AF3486D63AA57CA520BB3" />
             <ComponentRef Id="cmpC98CE45CC73A0A544B5BF52559069BD9" />
             <ComponentRef Id="cmpDF4F2AE71669B4516296111AA83D8973" />
             <ComponentRef Id="cmpA010F76325D67AFBB924716EC6B0158F" />
