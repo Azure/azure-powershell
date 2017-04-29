@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     psObject.Add(Mapper.Map<VirtualMachine, PSVirtualMachineList>(r));
                 }
-                WriteObject(psObject);
+                WriteObject(psObject, true);
             }
             else
             {
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     psObject.Add(Mapper.Map<VirtualMachine, PSVirtualMachineList>(r));
                 }
-                WriteObject(psObject);
+                WriteObject(psObject, true);
             }
         }
 

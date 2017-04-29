@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     psObject.Add(Mapper.Map<Disk, PSDiskList>(r));
                 }
-                WriteObject(psObject);
+                WriteObject(psObject, true);
             }
             else
             {
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     psObject.Add(Mapper.Map<Disk, PSDiskList>(r));
                 }
-                WriteObject(psObject);
+                WriteObject(psObject, true);
             }
         }
 
