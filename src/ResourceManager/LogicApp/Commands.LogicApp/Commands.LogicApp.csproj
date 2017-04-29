@@ -168,6 +168,7 @@
     <Compile Include="Utilities\LogicAppClient.cs" />
     <Compile Include="Utilities\LogicAppClientRunOperations.cs" />
     <Compile Include="Utilities\LogicAppClientTriggerOperations.cs" />
+    <Compile Include="Utilities\MessageType.cs" />
     <Compile Include="Utilities\ParameterSet.cs" />
     <Compile Include="Utilities\QualifiedIntegrationAccountControlNumber.cs" />
     <Compile Include="Utilities\WebsitesClient.cs" />

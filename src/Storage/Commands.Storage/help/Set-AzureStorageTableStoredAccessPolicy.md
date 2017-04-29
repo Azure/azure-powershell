@@ -25,7 +25,7 @@ The **Set-AzureStorageTableStoredAccessPolicy** cmdlet set the stored access pol
 
 ### Example 1: Set a stored access policy in table with full permission
 ```
-PS C:\>Set-AzureStorageTableStoredAccessPolicy -Table "MyTable" -Policy "Policy08"
+PS C:\>Set-AzureStorageTableStoredAccessPolicy -Table "MyTable" -Policy "Policy08" -Permission raud
 ```
 
 This command sets an access policy named Policy08 for storage table named MyTable.
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 ```
 
 ### -Permission
-Specifies the level of public access to this storage table.
+Specifies permissions in the stored access policy to access the storage table.
 
 ```yaml
 Type: String
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 ```
 
 ### -Policy
-Specifies a stored access policy, which includes the permissions for this SAS token.
+Specifies the name for the stored access policy.
 
 ```yaml
 Type: String
