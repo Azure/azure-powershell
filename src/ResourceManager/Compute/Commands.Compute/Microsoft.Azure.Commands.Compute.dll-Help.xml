@@ -13630,7 +13630,7 @@ PS C:\&gt; Remove-AzureRmContainerServiceAgentPoolProfile -ContainerService $Con
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="Name"><maml:name>DataDiskNames</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="Name"><maml:name>DataDiskNames</maml:name>
 <maml:Description><maml:para>Specifies the names of one or more data disks that this cmdlet removes.
 </maml:para>
 </maml:Description>
@@ -13657,7 +13657,7 @@ PS C:\&gt; Remove-AzureRmContainerServiceAgentPoolProfile -ContainerService $Con
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="Name"><maml:name>DataDiskNames</maml:name>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="Name"><maml:name>DataDiskNames</maml:name>
 <maml:Description><maml:para>Specifies the names of one or more data disks that this cmdlet removes.
 </maml:para>
 </maml:Description>
@@ -14271,7 +14271,7 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMac
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="Id, NicIds"><maml:name>NetworkInterfaceIDs</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="Id, NicIds"><maml:name>NetworkInterfaceIDs</maml:name>
 <maml:Description><maml:para>Specifies an array of network interface IDs that this cmdlet removes.
 </maml:para>
 </maml:Description>
@@ -14298,7 +14298,7 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMac
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="Id, NicIds"><maml:name>NetworkInterfaceIDs</maml:name>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="Id, NicIds"><maml:name>NetworkInterfaceIDs</maml:name>
 <maml:Description><maml:para>Specifies an array of network interface IDs that this cmdlet removes.
 </maml:para>
 </maml:Description>
