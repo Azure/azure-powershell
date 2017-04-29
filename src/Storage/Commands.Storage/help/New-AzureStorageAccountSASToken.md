@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzureStorageAccountSASToken
 
 ## SYNOPSIS
-Creates an SAS token.
+Creates an account-level SAS token.
 
 ## SYNTAX
 
@@ -26,19 +26,19 @@ You can use the SAS token to delegate permissions for multiple services, or to d
 
 ## EXAMPLES
 
-### Example 1: Create an SAS token
+### Example 1: Create an account-level SAS token with full permission
 ```
 PS C:\> New-AzureStorageAccountSASToken -Service Blob,File,Table,Queue -ResourceType Service,Container,Object -Permission "racwdlup"
 ```
 
 This command creates an account-level SAS token with full permission.
 
-### Example 2: Create an SAS token for a range of IP addresses
+### Example 2: Create an account-level SAS token for a range of IP addresses
 ```
 PS C:\> New-AzureStorageAccountSASToken -Service Blob,File,Table,Queue -ResourceType Service,Container,Object -Permission "racwdlup" -Protocol HttpsOnly -IPAddressOrRange 168.1.5.60-168.1.5.70
 ```
 
-This command creates an SAS token for HTTPS-only requests from the specified range of IP addresses.
+This command creates an account-level SAS token for HTTPS-only requests from the specified range of IP addresses.
 
 ## PARAMETERS
 

@@ -474,7 +474,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                                     null));
                         }
 
-                        configurationDataBlobReference.UploadFromFile(ConfigurationData, FileMode.Open);
+                        configurationDataBlobReference.UploadFromFile(ConfigurationData);
 
                         var configurationDataBlobSasToken =
                             configurationDataBlobReference.GetSharedAccessSignature(blobAccessPolicy);

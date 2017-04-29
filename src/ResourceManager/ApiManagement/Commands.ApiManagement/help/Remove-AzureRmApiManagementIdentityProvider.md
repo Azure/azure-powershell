@@ -21,10 +21,7 @@ Removes an existing Identity Provider Configuration.
 
 ## EXAMPLES
 
-### --------------------------  Example 1  --------------------------
-@{paragraph=PS C:\\\>}
-
-
+### Removes the Facebook identity provider settings from ApiManagement service
 
 ```
 Remove-AzureRmApiManagementIdentityProvider -Context $apimContext -Type 'Facebook' -PassThru
@@ -125,4 +122,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[New-AzureRmApiManagementIdentityProvider](./New-AzureRmApiManagementIdentityProvider.md)
+
+[Get-AzureRmApiManagementIdentityProvider](./Get-AzureRmApiManagementIdentityProvider.md)
+
+[Set-AzureRmApiManagementIdentityProvider](./Set-AzureRmApiManagementIdentityProvider.md)
 
