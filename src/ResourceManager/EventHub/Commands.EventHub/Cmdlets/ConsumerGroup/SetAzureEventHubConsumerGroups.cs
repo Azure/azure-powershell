@@ -63,10 +63,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
         {
             ConsumerGroupAttributes consumerGroup = new ConsumerGroupAttributes();
 
-            EventHubAttributes getEventHub = Client.GetEventHub(ResourceGroupName, NamespaceName, EventHubName);
+            var getnamespace = Client.GetNamespace(ResourceGroupName, NamespaceName);
 
             consumerGroup.Name = ConsumerGroupName;
-            consumerGroup.Location = getEventHub.Location;
+            consumerGroup.Location = getnamespace.Location;
 
             if (!string.IsNullOrEmpty(UserMetadata))
                 consumerGroup.UserMetadata = UserMetadata;

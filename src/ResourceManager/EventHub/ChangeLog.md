@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+* Bug fix : 
+	Fix for Set-AzureRmEventHubNamespace cmdlet error  - 'Tier' cannot be null, where it should be 'SkuName' 
+    Set-AzureRmEventHub - Fix 'Object reference not set to an instance of an object' error while updating EventHub  
+
 ## Version 0.2.0
 
 ## Version 0.1.0
