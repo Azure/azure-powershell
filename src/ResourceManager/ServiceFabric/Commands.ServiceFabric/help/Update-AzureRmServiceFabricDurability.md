@@ -107,7 +107,9 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
-Specify the SKU of the node type```yaml
+Specify the SKU of the node type
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 

@@ -72,7 +72,9 @@ Accept wildcard characters: False
 ```
 
 ### -CertificateOutputFolder
-The folder path of the new certificate to be created```yaml
+The folder path of the new certificate to be created
+
+```yaml
 Type: String
 Parameter Sets: ByNewPfxAndVaultName
 Aliases: Destination

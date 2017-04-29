@@ -111,7 +111,7 @@ $templateFile="C:\Users\chackdan\Documents\GitHub\azure-quickstart-templates\ser
 New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -TemplateFile $templateFile -ParameterFile $templateParmfile -CertificateSourceFile $pfxsourcefile -CertificatePassword $certpwd -KeyVaultResouceGroupName $keyVaultRG -KeyVaultName $keyVault
 ```
 
-his command will let you bring your own Certificate and custom template and create a new cluster
+This command will let you bring your own Certificate and custom template and create a new cluster
 
 ## PARAMETERS
 
