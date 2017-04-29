@@ -13,22 +13,34 @@ This cmdlet retrieves a specific received interchange control number per agreeme
 
 ```
 Get-AzureRmIntegrationAccountReceivedIcn -ResourceGroupName <String> -Name <String> -AgreementName <String>
- -ControlNumberValue <String> [<CommonParameters>]
+ -ControlNumberValue <String> [-AgreementType <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 This cmdlet is meant to be used in disaster recovery scenarios to validate the presence of a received interchange control number and optionally to remove that entity with Remove-AzureRmIntegrationAccountReceivedIcn.
+Please do provide the "-AgreementType" parameter to specify whether X12 or Edifact control numbers to return
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmIntegrationAccountReceivedIcn -ResourceGroupName "groupName" -Name "accountName" -AgreementName "X12AgreementName" -ControlNumberValue "000000641"
+PS C:\> Get-AzureRmIntegrationAccountReceivedIcn -AgreementType "X12" -ResourceGroupName "groupName" -Name "accountName" -AgreementName "X12AgreementName" -ControlNumberValue "000000641"
 ControlNumber            : 000000641
 ControlNumberChangedTime : 2/15/2017 12:36:00 AM
+IsMessageProcessingFailed: False
 ```
 
-This command gets the integration account received interchange control number by agreement name and control number value.
+This command gets the X12 integration account received interchange control number by agreement name and control number value.
+
+### Example 2
+```
+PS C:\> Get-AzureRmIntegrationAccountReceivedIcn -AgreementType "Edifact" -ResourceGroupName "groupName" -Name "accountName" -AgreementName "EdifactAgreementName" -ControlNumberValue "000000641"
+ControlNumber            : 000000641
+ControlNumberChangedTime : 2/15/2017 12:36:00 AM
+IsMessageProcessingFailed: False
+```
+
+This command gets the Edifact integration account received interchange control number by agreement name and control number value.
 
 ## PARAMETERS
 
@@ -92,6 +104,19 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -AgreementType
+The integration account agreement type.```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: MessageType
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -107,5 +132,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Set-AzureRmIntegrationAccountReceivedIcn](./Set-AzureRmIntegrationAccountReceivedIcn.md)
-[Remove-AzureRmIntegrationAccountReceivedIcn](./Remove-AzureRmIntegrationAccountReceivedIcn.md)
+[Set-AzureRmIntegrationAccountReceivedIcn]()
+
+[Remove-AzureRmIntegrationAccountReceivedIcn]()
