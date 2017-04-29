@@ -32,9 +32,10 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             // Only SqlClient is needed.
             var sqlClient = GetSqlClient(context);
+            var sqlLegacyClient = GetLegacySqlClient();
             var resourcesClient = GetResourcesClient();
             var authorizationClient = GetAuthorizationManagementClient();
-            helper.SetupSomeOfManagementClients(sqlClient, resourcesClient, authorizationClient);
+            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, resourcesClient, authorizationClient);
         }
 
         [Fact]
