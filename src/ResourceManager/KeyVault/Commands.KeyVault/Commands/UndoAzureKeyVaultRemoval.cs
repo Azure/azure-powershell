@@ -21,7 +21,6 @@ namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet(VerbsCommon.Undo, "AzureRmKeyVaultRemoval",
         SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.Low,
         HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(PSKeyVaultModels.PSVault))]
     public class UndoAzureKeyVaultRemoval : KeyVaultManagementCmdletBase

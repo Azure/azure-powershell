@@ -52,6 +52,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
+        [Alias(Constants.Name)]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
