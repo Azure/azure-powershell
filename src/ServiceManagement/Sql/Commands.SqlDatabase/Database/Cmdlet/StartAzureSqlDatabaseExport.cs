@@ -13,8 +13,6 @@
 
 using System;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Common;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.ImportExport;
@@ -22,7 +20,6 @@ using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server;
 using Microsoft.WindowsAzure.Management.Sql;
 using Microsoft.WindowsAzure.Management.Sql.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.WindowsAzure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Storage.Adapters;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet

@@ -46,9 +46,16 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 
         public void TestCleanup()
         {
-            if (Directory.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, serviceName)))
+            try
             {
-                Directory.Delete(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, serviceName), true);
+                if (Directory.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, serviceName)))
+                {
+                    Directory.Delete(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, serviceName), true);
+                }
+            }
+            catch
+            {
+                // do not fail for file system issues
             }
         }
 
