@@ -113,7 +113,9 @@ CmdletsToExport = 'Get-AzureStorageTable', 'New-AzureStorageTableSASToken',
                'Remove-AzureStorageContainer', 
                'Remove-AzureStorageContainerStoredAccessPolicy', 
                'Set-AzureStorageContainerStoredAccessPolicy', 
-               'Start-AzureStorageBlobCopy', 'Stop-AzureStorageBlobCopy'
+               'Start-AzureStorageBlobCopy', 
+               'Start-AzureStorageBlobIncrementalCopy', 
+               'Stop-AzureStorageBlobCopy'
 
 # Variables to export from this module
 # VariablesToExport = @()

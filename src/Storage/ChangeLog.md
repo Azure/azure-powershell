@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
-
+* Upgrade to Azure Storage Client Library 8.1.1 and Azure Storage DataMovement Library 0.5.1
+* Add a new cmdlet to support blob Incremental Copy feature
+    - Start-AzureStorageBlobIncrementalCopy
 ## Version 2.8.0
 
 ## Version 2.7.0

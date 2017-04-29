@@ -1,3 +1,4 @@
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,26 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Model
+namespace Microsoft.Azure.Commands.LogicApp.Utilities
 {
     /// <summary>
-    /// Represents a supported Azure SQL Database Maximum size
+    /// Enumeration to specify the control number types
     /// </summary>
-    public class MaxSizeCapabilityModel
+    public enum MessageType
     {
         /// <summary>
-        /// Gets or sets the max size limit 
+        /// X12 message type
         /// </summary>
-        public long Limit { get; set; }
+        X12,
 
         /// <summary>
-        /// Gets or sets the units for the max size limit
+        /// Edifact message type
         /// </summary>
-        public string Unit { get; set; }
-
-        /// <summary>
-        /// Gets or sets the status for this max size for the given: Subscription, Server Version, Edition, Service Level Objective combination.
-        /// </summary>
-        public string Status { get; set; }
+        Edifact
     }
 }

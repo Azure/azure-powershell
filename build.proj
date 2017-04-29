@@ -24,6 +24,9 @@
       'AzureStorage': storage data plane cmdlets
       'Subfolder under src\ResourceManager': An individual cmdlet module
       By default, it builds all
+
+    /p:SkipHelp=True
+      Skips help generation and installer creation, mainly for local builds to save time.
   -->
 
   <!-- Define build properties -->
@@ -45,6 +48,7 @@
     <NuGetPublishingSource Condition=" '$(NuGetPublishingSource)' == '' ">http://psget/PSGallery/api/v2/</NuGetPublishingSource>
     <Scope Condition=" $(Scope) == '' " >all</Scope>
     <NetCore Condition=" $(NetCore) == '' " >false</NetCore>
+    <SkipHelp Condition =" '$(SkipHelp)' == '' ">false</SkipHelp>
   </PropertyGroup>
   <ItemGroup>
     <CmdletSolutionsToBuild Include=".\src\Storage\Storage.sln;.\src\ResourceManager\**\*.sln;.\src\ServiceManagement\ServiceManagement.sln;"
@@ -187,15 +191,17 @@
       BuildInParallel="$(BuildInParallel)"
       ContinueOnError="false" />     
 
-    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration) &quot;" ContinueOnError="false"/>
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration) &quot;"
+    	ContinueOnError="false"
+    	Condition=" '$(SkipHelp)' == 'false' "/>
     <CallTarget Targets="BuildSetupTest"/>
   <CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />  
-  <CallTarget Targets="BuildSetup"/>
+	<CallTarget Targets="BuildSetup" Condition=" '$(SkipHelp)' == 'false' "/>
   <CallTarget Targets="CodeSignInstaller"
                 Condition=" '$(CodeSign)' == 'true' and '$(Scope)' == 'all'" />
   <Message Importance="high" Text="Running Static Analyser" />
-    <CallTarget targets="DependencyAnalysis" />
-    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\CleanupBuild.ps1 -BuildConfig $(Configuration) &quot;"/>
+    <CallTarget targets="DependencyAnalysis" ContinueOnError="ErrorAndContinue" />
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\CleanupBuild.ps1 -BuildConfig $(Configuration) &quot;" />
   </Target>
   
   <!-- Build .Net Core Cmdlets -->
