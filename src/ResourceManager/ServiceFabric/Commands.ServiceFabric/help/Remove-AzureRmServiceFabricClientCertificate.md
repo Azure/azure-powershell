@@ -66,7 +66,9 @@ Accept wildcard characters: False
 ```
 
 ### -ClientCertificateCommonName
-Specify client common name , issuer thumbprint and authentication type```yaml
+Specify client common name , issuer thumbprint and authentication type
+
+```yaml
 Type: PSClientCertificateCommonName[]
 Parameter Sets: MultipleUpdatesWithCommonName
 Aliases: CertCommonName
@@ -137,7 +139,9 @@ Accept wildcard characters: False
 ```
 
 ### -ReadonlyClientThumbprint
-Specify client certificate thumbprint which only has read only permission```yaml
+Specify client certificate thumbprint which only has read only permission
+
+```yaml
 Type: String[]
 Parameter Sets: MultipleUpdatesWithThumbprint
 Aliases: 
