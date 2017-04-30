@@ -21,6 +21,7 @@ using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Common.Properties;
 using System.Collections.Concurrent;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Common.Serialization;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
@@ -80,8 +81,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                             subscription.SetProperty(AzureSubscription.Property.Default, null);
                         }
 
-                        SubscriptionTable[subscriptionGuid].ExtendedProperties[AzureSubscription.Property.Default] = "True";
-                        value.ExtendedProperties[AzureSubscription.Property.Default] = "True";
+                        SubscriptionTable[subscriptionGuid].SetDefault();
+                        value.SetDefault();
                     }
                 }
             }
@@ -229,10 +230,25 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 }
                 else if (CloudException.IsJson(contents))
                 {
-                    serializer = new JsonProfileSerializer();
-                    if (!serializer.Deserialize(contents, this))
+                    bool converted = false;
+                    // first try legacy conversion
+                    try
                     {
-                        ProfileLoadErrors.AddRange(serializer.DeserializeErrors);
+                        var legacyProfile = JsonConvert.DeserializeObject<LegacyAzureSMProfile>(contents);
+                        converted = legacyProfile.TryConvert(this);
+                    }
+                    catch
+                    {
+
+                    }
+
+                    if (!converted)
+                    {
+                        serializer = new JsonProfileSerializer();
+                        if (!serializer.Deserialize(contents, this))
+                        {
+                            ProfileLoadErrors.AddRange(serializer.DeserializeErrors);
+                        }
                     }
                 }
             }

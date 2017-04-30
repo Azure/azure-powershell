@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Serialization;
+
 namespace Microsoft.Azure.Commands.ResourceManager.Common.Serialization
 {
     public class LegacyAzureContext

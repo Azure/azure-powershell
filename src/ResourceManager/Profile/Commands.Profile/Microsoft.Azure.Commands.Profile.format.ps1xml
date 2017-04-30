@@ -28,7 +28,7 @@
               </ListItem>
               <ListItem>
                 <Label>SubscriptionName</Label>
-                <ScriptBlock>$_.Context.Subscription.SubscriptionName.ToString()</ScriptBlock>
+                <ScriptBlock>$_.Context.Subscription.Name</ScriptBlock>
               </ListItem>
               <ListItem>
                 <Label>CurrentStorageAccount</Label>
