@@ -12,20 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.ResourceManager.Common.Serialization
+namespace Microsoft.Azure.Commands.Common.Serialization
 {
-    public class LegacyAzureEnvironment
+    public class LegacyAzureAccount
     {
-        public string Name { get; set; }
+        public string Id { get; set; }
 
-        public bool OnPremise { get; set; }
+        public int Type { get; set; }
 
-        public Dictionary<string, string> Endpoints { get; set; }
+        public Dictionary<string, string> Properties { get; set; }
+
     }
 }

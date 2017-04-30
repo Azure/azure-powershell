@@ -37,6 +37,7 @@ namespace Common.Authentication.Test
     public class ProfileClientTests
     {
         private string oldProfileData;
+        private string oldProfileJsonData;
         private string oldProfileDataBadSubscription;
         private string oldProfileDataCorruptedFile;
         private string oldProfileDataPath;
@@ -80,6 +81,61 @@ namespace Common.Authentication.Test
 
             Assert.False(dataStore.FileExists(oldProfileDataPath));
             Assert.True(dataStore.FileExists(newProfileDataPath));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ProfileMigratesOldJsonData()
+        {
+            MemoryDataStore dataStore = new MemoryDataStore();
+            dataStore.VirtualStore[oldProfileDataPath] = oldProfileJsonData;
+            AzureSession.Instance.DataStore = dataStore;
+            currentProfile = new AzureSMProfile(oldProfileDataPath);
+
+            Assert.Collection(currentProfile.Accounts.OrderBy((a) => a.Id),
+                  (e) => CheckAccount(e, id: "0123456789", type: AzureAccount.AccountType.Certificate, tenants: new string[0], subscriptions: new[] { "90d2b4aa-1640-43d4-98c2-790aab234a4d" }),
+                  (e) => CheckAccount(e, id: "1234567890", type: AzureAccount.AccountType.Certificate, tenants: new string[0], subscriptions: new[] { "f7de4568-57fb-40fe-8186-3419a2f2f522" }),
+                  (e) => CheckAccount(e, id: "someuser@contoso.cn", type: AzureAccount.AccountType.User, tenants: new[] { "17859926-0a62-42e5-bbf2-71ffbc7e7ad2" }, subscriptions: new[] { "8d9bbf24-8d3a-40c9-b6ad-3aa54f768e15" }),
+                  (e) => CheckAccount(e, id: "someuser@contoso.com", type: AzureAccount.AccountType.User, tenants: new[] { "594b5a60-8d1a-4f27-9367-6bd92c72ee82", "20623033-0e48-4521-bb84-01f3e316969d" }, subscriptions: new[] { "f7de4568-57fb-40fe-8186-3419a2f2f522", "90d2b4aa-1640-43d4-98c2-790aab234a4d", "da7902f9-7072-4a86-aead-5a1c8b768a1a" })
+               );
+            Assert.Collection(currentProfile.Subscriptions.OrderBy((s) => s.Name),
+                (s) => CheckSubscription(s, id: "8d9bbf24-8d3a-40c9-b6ad-3aa54f768e15", name: "Azure Contoso China", tenant: "17859926-0a62-42e5-bbf2-71ffbc7e7ad2", account: "someuser@contoso.cn", environment: "AzureChinaCloudMirror", isDefault: false),
+                (s) => CheckSubscription(s, id: "f7de4568-57fb-40fe-8186-3419a2f2f522", name: "Azure Contoso CI", tenant: "594b5a60-8d1a-4f27-9367-6bd92c72ee82", account: "someuser@contoso.com", environment: "AzureCloud", isDefault: false),
+                (s) => CheckSubscription(s, id: "90d2b4aa-1640-43d4-98c2-790aab234a4d", name: "Azure Contoso Infrastructure", tenant: "594b5a60-8d1a-4f27-9367-6bd92c72ee82", account: "someuser@contoso.com", environment: "AzureCloud", isDefault: true),
+                (s) => CheckSubscription(s, id: "da7902f9-7072-4a86-aead-5a1c8b768a1a", name: "Azure Contoso Subscription2", tenant: "20623033-0e48-4521-bb84-01f3e316969d", account: "someuser@contoso.com", environment: "AzureCloud", isDefault: false)
+                );
+            CheckEnvironment(currentProfile.EnvironmentTable["AzureChinaCloudMirror"], name: "AzureChinaCloudMirror", serviceEndpoint: "https://management.core.chinacloudapi.cn/");
+        }
+
+        static void CheckAccount(IAzureAccount account, string id, string type, string[] tenants, string[] subscriptions)
+        {
+            Assert.Equal(id, account.Id);
+            Assert.Equal(type, account.Type);
+            foreach (var tenant in tenants)
+            {
+                Assert.Contains(tenant, account.GetTenants(), StringComparer.OrdinalIgnoreCase);
+            }
+
+            foreach (var subscription in subscriptions)
+            {
+                Assert.Contains(subscription, account.GetSubscriptions(), StringComparer.OrdinalIgnoreCase);
+            }
+        }
+
+        static void CheckSubscription(IAzureSubscription subscription, string id, string name, string tenant, string account, string environment, bool isDefault)
+        {
+            Assert.Equal(id, subscription.Id);
+            Assert.Equal(name, subscription.Name);
+            Assert.Equal(tenant, subscription.GetTenant());
+            Assert.Equal(account, subscription.GetAccount());
+            Assert.Equal(environment, subscription.GetEnvironment());
+            Assert.Equal(isDefault, subscription.IsDefault());
+        }
+
+        static void CheckEnvironment(IAzureEnvironment environment, string name, string serviceEndpoint)
+        {
+            Assert.Equal(name, environment.Name);
+            Assert.Equal(serviceEndpoint, environment.ServiceManagementUrl);
         }
 
         [Fact]
@@ -370,7 +426,7 @@ namespace Common.Authentication.Test
                 SubscriptionStatus = Microsoft.WindowsAzure.Subscriptions.Models.SubscriptionStatus.Disabled,
                 ActiveDirectoryTenantId = "B59BE059-5E3F-463B-8C1A-831A29819B52"
             };
-            
+
             var deletedTenantIdrdfeSubscription = new RDFESubscription
             {
                 SubscriptionId = "16E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1E",
@@ -388,7 +444,7 @@ namespace Common.Authentication.Test
             };
 
             SetMocks(
-                new[] { rdfeSubscription1, emptyTenantIdrdfeSubscription, disabledTenantIdrdfeSubscription, deletedTenantIdrdfeSubscription, deletingTenantIdrdfeSubscription }.ToList(), 
+                new[] { rdfeSubscription1, emptyTenantIdrdfeSubscription, disabledTenantIdrdfeSubscription, deletedTenantIdrdfeSubscription, deletingTenantIdrdfeSubscription }.ToList(),
                 new[] { csmSubscription1 }.ToList());
             MemoryDataStore dataStore = new MemoryDataStore();
             dataStore.VirtualStore[oldProfileDataPath] = oldProfileData;
@@ -397,8 +453,8 @@ namespace Common.Authentication.Test
             ProfileClient client = new ProfileClient(currentProfile);
 
             var account = client.AddAccountAndLoadSubscriptions(
-                new AzureAccount { Id = "test", Type = AzureAccount.AccountType.User }, 
-                AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud], 
+                new AzureAccount { Id = "test", Type = AzureAccount.AccountType.User },
+                AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud],
                 null);
 
             Assert.Equal("test", account.Id);
@@ -1733,6 +1789,105 @@ namespace Common.Authentication.Test
                   <Subscriptions>                    
                   </Subscriptions>
                 </ProfileData>";
+            oldProfileJsonData = @"{
+  ""Environments"": [
+    {
+                ""Name"": ""AzureChinaCloudMirror"",
+      ""OnPremise"": true,
+      ""Endpoints"": {
+                    ""PublishSettingsFileUrl"": ""http://go.microsoft.com/fwlink/?LinkID=301776"",
+        ""ServiceManagement"": ""https://management.core.chinacloudapi.cn/"",
+        ""ResourceManager"": ""https://management.chinacloudapi.cn/"",
+        ""ManagementPortalUrl"": ""http://go.microsoft.com/fwlink/?LinkId=301902"",
+        ""StorageEndpointSuffix"": ""core.chinacloudapi.cn"",
+        ""ActiveDirectory"": ""https://login.chinacloudapi.cn/"",
+        ""ActiveDirectoryServiceEndpointResourceId"": ""https://management.core.chinacloudapi.cn/"",
+        ""Gallery"": ""True"",
+        ""Graph"": ""https://graph.chinacloudapi.cn/"",
+        ""AzureKeyVaultDnsSuffix"": null,
+        ""AzureKeyVaultServiceEndpointResourceId"": null,
+        ""TrafficManagerDnsSuffix"": null,
+        ""SqlDatabaseDnsSuffix"": null,
+        ""AdTenant"": ""Common""
+      }
+            }
+  ],
+  ""Subscriptions"": [
+    {
+      ""Id"": ""90d2b4aa-1640-43d4-98c2-790aab234a4d"",
+      ""Name"": ""Azure Contoso Infrastructure"",
+      ""Environment"": ""AzureCloud"",
+      ""Account"": ""someuser@contoso.com"",
+      ""State"": null,
+      ""Properties"": {
+        ""Tenants"": ""594b5a60-8d1a-4f27-9367-6bd92c72ee82"",
+        ""Default"": ""True""
+      }
+},
+    {
+      ""Id"": ""f7de4568-57fb-40fe-8186-3419a2f2f522"",
+      ""Name"": ""Azure Contoso CI"",
+      ""Environment"": ""AzureCloud"",
+      ""Account"": ""someuser@contoso.com"",
+      ""State"": null,
+      ""Properties"": {
+        ""Tenants"": ""594b5a60-8d1a-4f27-9367-6bd92c72ee82""
+      }
+    },
+    {
+      ""Id"": ""da7902f9-7072-4a86-aead-5a1c8b768a1a"",
+      ""Name"": ""Azure Contoso Subscription2"",
+      ""Environment"": ""AzureCloud"",
+      ""Account"": ""someuser@contoso.com"",
+      ""State"": null,
+      ""Properties"": {
+        ""Tenants"": ""20623033-0e48-4521-bb84-01f3e316969d""
+      }
+    },
+    {
+      ""Id"": ""8d9bbf24-8d3a-40c9-b6ad-3aa54f768e15"",
+      ""Name"": ""Azure Contoso China"",
+      ""Environment"": ""AzureChinaCloudMirror"",
+      ""Account"": ""someuser@contoso.cn"",
+      ""State"": null,
+      ""Properties"": {
+        ""Tenants"": ""17859926-0a62-42e5-bbf2-71ffbc7e7ad2""
+      }
+    }
+  ],
+  ""Accounts"": [
+    {
+      ""Id"": ""0123456789"",
+      ""Type"": 0,
+      ""Properties"": {
+        ""Subscriptions"": ""90d2b4aa-1640-43d4-98c2-790aab234a4d""
+      }
+    },
+    {
+      ""Id"": ""1234567890"",
+      ""Type"": 0,
+      ""Properties"": {
+        ""Subscriptions"": ""f7de4568-57fb-40fe-8186-3419a2f2f522""
+      }
+    },
+    {
+      ""Id"": ""someuser@contoso.com"",
+      ""Type"": 1,
+      ""Properties"": {
+        ""Subscriptions"": "",f7de4568-57fb-40fe-8186-3419a2f2f522,90d2b4aa-1640-43d4-98c2-790aab234a4d,da7902f9-7072-4a86-aead-5a1c8b768a1a"",
+        ""Tenants"": ""594b5a60-8d1a-4f27-9367-6bd92c72ee82,20623033-0e48-4521-bb84-01f3e316969d""
+      }
+    },
+    {
+      ""Id"": ""someuser@contoso.cn"",
+      ""Type"": 1,
+      ""Properties"": {
+        ""Subscriptions"": ""8d9bbf24-8d3a-40c9-b6ad-3aa54f768e15"",
+        ""Tenants"": ""17859926-0a62-42e5-bbf2-71ffbc7e7ad2""
+      }
+    }
+  ]
+}";
         }
     }
 }

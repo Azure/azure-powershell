@@ -15,7 +15,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.ResourceManager.Common.Serialization
+namespace Microsoft.Azure.Commands.Common.Serialization
 {
     public class LegacyAzureSubscription
     {

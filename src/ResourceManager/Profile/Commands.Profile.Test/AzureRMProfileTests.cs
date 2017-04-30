@@ -852,6 +852,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.Equal("00000000-0000-0000-0000-000000000000", profile.DefaultContext.Subscription.Id.ToString());
             Assert.Equal("testCloud", profile.DefaultContext.Environment.Name);
             Assert.Equal("me@contoso.com", profile.DefaultContext.Account.Id);
+            Assert.Equal(AzureAccount.AccountType.User, profile.DefaultContext.Account.Type);
             Assert.Equal(new byte[] { 1, 2, 3, 4, 5, 6, 8, 9, 0 }, profile.DefaultContext.TokenCache.CacheData);
             Assert.Equal(path, profile.ProfilePath);
         }

@@ -15,59 +15,17 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Azure.Commands.Common.Serialization;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common.Serialization
 {
-    public static class ProfileConverter
+    public static class ModelConversionExtensions
     {
-        public static IAzureAccount Convert(this LegacyAzureAccount account)
-        {
-            var result = new AzureAccount();
-            result.Id = account.Id;
-            result.Type = account.Type;
-
-            foreach (var property in account.Properties)
-            {
-                result.SetProperty(property.Key, property.Value);
-            }
-
-            return result;
-        }
-
-        public static IAzureEnvironment Convert(this LegacyAzureEnvironment environment)
-        {
-            var result = new AzureEnvironment();
-            result.Name = environment.Name;
-            result.OnPremise = environment.OnPremise;
-            foreach (var endpoint in environment.Endpoints)
-            {
-                result.SetEndpoint(endpoint.Key, endpoint.Value);
-            }
-
-            return result;
-        }
-
-        public static IAzureSubscription Convert(this LegacyAzureSubscription subscription)
-        {
-            var result = new AzureSubscription();
-            result.Id = subscription.Id.ToString();
-            result.Name = subscription.Name;
-            result.State = subscription.State;
-            result.SetAccount(subscription.Account);
-            result.SetEnvironment(subscription.Environment);
-            foreach (var property in subscription.Properties)
-            {
-                result.SetProperty(property.Key, property.Value);
-            }
-
-            return result;
-        }
-
+        /// <summary>
+        /// Convert the legacy representation of a tenant to the new one
+        /// </summary>
+        /// <param name="tenant">The legacy tenant to convert</param>
+        /// <returns>A new tenant with data copied from the old tenant</returns>
         public static IAzureTenant Convert(this LegacyAzureTenant tenant)
         {
             var result = new AzureTenant();
@@ -76,6 +34,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Serialization
             return result;
         }
 
+        /// <summary>
+        /// Convert the legacy representation fo a context to the new one
+        /// </summary>
+        /// <param name="context">The Context to convert</param>
+        /// <returns>A new context, with data copied from the old context</returns>
         public static IAzureContext Convert(this LegacyAzureContext context)
         {
             var result = new AzureContext();
@@ -87,6 +50,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Serialization
             return result;
         }
 
+        /// <summary>
+        /// Try to convert a legacy profile
+        /// </summary>
+        /// <param name="profile">The legacy profile to convert</param>
+        /// <param name="result">The new profile, with data copied form the old</param>
+        /// <returns>True if the conversion was successful, false if not</returns>
         public static bool TryConvert(this LegacyAzureRmProfile profile, out AzureRmProfile result)
         {
             result = new AzureRmProfile();

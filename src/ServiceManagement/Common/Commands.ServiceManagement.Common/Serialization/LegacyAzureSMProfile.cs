@@ -11,18 +11,29 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-
+using Microsoft.Azure.Commands.Common.Serialization;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.ResourceManager.Common.Serialization
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common.Serialization
 {
-    public class LegacyAzureAccount
+    /// <summary>
+    /// Serialization class for legacy SM profiles
+    /// </summary>
+    public class LegacyAzureSMProfile
     {
-        public string Id { get; set; }
+        /// <summary>
+        /// Environments in the profile
+        /// </summary>
+        public IList<LegacyAzureEnvironment> Environments { get; set; }
 
-        public string Type { get; set; }
+        /// <summary>
+        /// Subscriptions in the profile
+        /// </summary>
+        public IList<LegacyAzureSubscription> Subscriptions { get; set; }
 
-        public Dictionary<string, string> Properties { get; set; }
-
+        /// <summary>
+        /// Accounts in the profile
+        /// </summary>
+        public IList<LegacyAzureAccount> Accounts { get; set; }
     }
 }

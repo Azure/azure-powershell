@@ -12,21 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Serialization;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.ResourceManager.Common.Serialization
+namespace Microsoft.Azure.Commands.Common.Serialization
 {
-    public class LegacyAzureRmProfile
+    public class LegacyAzureEnvironment
     {
-        /// <summary>
-        /// Gets or sets Azure environments.
-        /// </summary>
-        public Dictionary<string, LegacyAzureEnvironment> Environments { get; set; }
+        public string Name { get; set; }
 
-        /// <summary>
-        /// Gets or sets the default azure context object.
-        /// </summary>
-        public LegacyAzureContext Context { get; set; }
+        public bool OnPremise { get; set; }
+
+        public Dictionary<string, string> Endpoints { get; set; }
     }
 }
