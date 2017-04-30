@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzureStorageBlobSASToken
 
 ## SYNOPSIS
-Generates an SAS token for an Azure storage blob.
+Generates a SAS token for an Azure storage blob.
 
 ## SYNTAX
 

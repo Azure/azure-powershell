@@ -83,18 +83,18 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Adapter
         /// <param name="serverName">The name of the server</param>
         /// <param name="resp">The management client ServiceObjective response to convert</param>
         /// <returns>The converted ServiceObjective model</returns>
-        private static AzureSqlServerServiceObjectiveModel CreateServiceObjectiveModelFromResponse(string resourceGroupName, string serverName, Management.Sql.LegacySdk.Models.ServiceObjective resp)
+        private static AzureSqlServerServiceObjectiveModel CreateServiceObjectiveModelFromResponse(string resourceGroupName, string serverName, Management.Sql.Models.ServiceObjective resp)
         {
-            AzureSqlServerServiceObjectiveModel slo = new AzureSqlServerServiceObjectiveModel();
-
-            slo.ResourceGroupName = resourceGroupName;
-            slo.ServerName = serverName;
-            slo.ServiceObjectiveName = resp.Properties.ServiceObjectiveName;
-            slo.IsDefault = resp.Properties.IsDefault;
-            slo.IsSystem = resp.Properties.IsSystem;
-            slo.Description = resp.Properties.Description;
-            slo.Enabled = resp.Properties.Enabled;
-
+            AzureSqlServerServiceObjectiveModel slo = new AzureSqlServerServiceObjectiveModel()
+            {
+                ResourceGroupName = resourceGroupName,
+                ServerName = serverName,
+                ServiceObjectiveName = resp.ServiceObjectiveName,
+                IsDefault = resp.IsDefault,
+                IsSystem = resp.IsSystem,
+                Description = resp.Description,
+                Enabled = resp.Enabled
+            };
             return slo;
         }
     }
