@@ -13,12 +13,13 @@ Deletes a key in a key vault.
 ## SYNTAX
 
 ```
-Remove-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> [-Force] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> [-Force] [-PassThru] [-InRemovedState] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The Remove-AzureKeyVaultKey cmdlet deletes a key in a key vault.
+If the key was accidentally deleted the key can be recovered using Undo-AzureKeyVaultKeyRemoval by a user with special 'recover' permissions.
 This cmdlet has a value of high for the **ConfirmImpact** property.
 
 ## EXAMPLES
@@ -38,7 +39,15 @@ PS C:\>Remove-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Force -C
 This command removes the key named ITSoftware from the key vault named Contoso.
 The command specifies the *Force* and *Confirm* parameters, and, therefore, the cmdlet does not prompt you for confirmation.
 
-### Example 3: Remove keys by using the pipeline operator
+### Example 3: Purge a deleted key from the key vault permanently
+```
+PS C:\>Remove-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -InRemovedState
+```
+
+This command removes the key named ITSoftware from the key vault named Contoso permanently.
+This flag requires the user to have special 'purge' persmissions on the key vault.
+
+### Example 4: Remove keys by using the pipeline operator
 ```
 PS C:\>Get-AzureKeyVaultKey -VaultName 'Contoso' | Where-Object {$_.Attributes.Enabled -eq $False} | Remove-AzureKeyVaultKey
 ```
@@ -53,6 +62,19 @@ That cmdlet removes those keys.
 Forces the command to run without asking for user confirmation.
 
 ```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InRemovedState
+Remove the previously deleted key permanently.```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
@@ -153,7 +175,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.KeyBundle
+### Microsoft.Azure.Commands.KeyVault.Models.DeletedKeyBundle
 This cmdlet returns a value only if you specify the *PassThru* parameter.
 
 ## NOTES
@@ -165,4 +187,6 @@ This cmdlet returns a value only if you specify the *PassThru* parameter.
 [Get-AzureKeyVaultKey](./Get-AzureKeyVaultKey.md)
 
 [Set-AzureKeyVaultKeyAttribute](./Set-AzureKeyVaultKeyAttribute.md)
+
+[Undo-AzureKeyVaultKeyRemoval](./Undo-AzureKeyVaultKeyRemoval.md)
 
