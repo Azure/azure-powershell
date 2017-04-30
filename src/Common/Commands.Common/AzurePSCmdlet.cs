@@ -224,7 +224,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 }
             }
 
-            if (!interactive && !_dataCollectionProfile.EnableAzureDataCollection.HasValue)
+            if (!interactive && _dataCollectionProfile != null && !_dataCollectionProfile.EnableAzureDataCollection.HasValue)
             {
                 _dataCollectionProfile.EnableAzureDataCollection = false;
             }
