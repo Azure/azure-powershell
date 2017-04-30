@@ -60,7 +60,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '2.8.0'; }
 # ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = '.\Microsoft.Azure.Commands.Insights.Types.ps1xml'
+# TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = '.\Microsoft.Azure.Commands.Insights.format.ps1xml'
