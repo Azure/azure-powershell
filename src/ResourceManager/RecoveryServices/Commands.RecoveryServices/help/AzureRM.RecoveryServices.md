@@ -11,7 +11,7 @@ Locale: en-US
 This topic displays help topics for the Azure Recovery Services cmdlets.
 
 ## AzureRM.RecoveryServices Cmdlets
-### [Get-AzureRmRecoveryServicesBackupProperties](Get-AzureRmRecoveryServicesBackupProperties.md)
+### [Get-AzureRmRecoveryServicesBackupProperty](Get-AzureRmRecoveryServicesBackupProperty.md)
 Gets Backup properties.
 
 ### [Get-AzureRmRecoveryServicesVault](Get-AzureRmRecoveryServicesVault.md)
