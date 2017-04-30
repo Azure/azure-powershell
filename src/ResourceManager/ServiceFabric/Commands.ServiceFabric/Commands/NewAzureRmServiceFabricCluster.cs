@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             get { return this.certificateSubjectName; }
             set
             {
-                if (!value.StartsWith("cn=", StringComparison.OrdinalIgnoreCase))
+                if (value.IndexOf("cn=", StringComparison.OrdinalIgnoreCase) == -1)
                 {
                     this.certificateSubjectName = string.Concat("cn=", value);
                 }
