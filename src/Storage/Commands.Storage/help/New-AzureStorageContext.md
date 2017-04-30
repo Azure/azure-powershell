@@ -236,13 +236,7 @@ Accept wildcard characters: False
 ```
 
 ### -Protocol
-Specifies the protocol permitted for a request made with the account SAS.
-The acceptable values for this parameter are:
-
-- HttpsOnly
-- HttpsOrHttp
-
-The default value is HttpsOrHttp.
+Transfer Protocol (https/http).
 
 ```yaml
 Type: String
