@@ -29,9 +29,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
-    <DelaySign>true</DelaySign>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -143,7 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ScenarioTests\OperationsListTest.cs" />
-    <Compile Include="ScenarioTests\CheckNameAvailabilityTests.cs" />
+    <Compile Include="ScenarioTests\TestAzureRmRelayNameTests.cs" />
     <Compile Include="ScenarioTests\Namespace.cs" />
     <Compile Include="ScenarioTests\RelayController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -159,11 +157,10 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="ScenarioTests\Common.ps1" />
     <None Include="ScenarioTests\OperationsListTest.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\CheckNameAvailabilityTests.ps1">
+    <None Include="ScenarioTests\TestAzureRmRelayNameTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\RelayNamespaceTests.ps1">
@@ -176,9 +173,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\WcfRelayTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Relay.Test.ScenarioTests.CheckNameAvailabilityTests\CheckNameAvailability.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Relay.Test.ScenarioTests.HybridConnectionsTests\HybridConnectionsAuthorizationRulesCRUD.json">
@@ -197,6 +191,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Relay.Test.ScenarioTests.RelayNamespaceTests\RelayNamespaceCRUD.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Relay.Test.ScenarioTests.TestAzureRmRelayNameTests\CheckNameAvailability.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Relay.Test.ScenarioTests.WcfRelayTests\WcfRelayAuthorizationRulesCRUD.json">

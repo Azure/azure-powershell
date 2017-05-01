@@ -53,7 +53,7 @@ function Get-AuthorizationRuleName
 .SYNOPSIS
 Tests Relay Namespace CheckNameAvailability operations.
 #>
-function CheckNameAvailabilityTests 
+function TestAzureRmRelayNameTests 
 {
 	# Setup    
 	$location = "West US"

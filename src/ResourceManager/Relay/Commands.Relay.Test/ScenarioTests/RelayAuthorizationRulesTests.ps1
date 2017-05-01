@@ -360,13 +360,13 @@ function RelayAuthTests
 
 	# Cleanup
 	Write-Debug "Delete the created Namespace AuthorizationRule"
-    $result = Remove-AzureRmRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName
+    $result = Remove-AzureRmRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName -Force
 
 	Write-Debug "Delete the created WcfRelay AuthorizationRule"
-    $result = Remove-AzureRmRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -WcfRelay $wcfRelayName -Name $WcfRelayAuthRuleName
+    $result = Remove-AzureRmRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -WcfRelay $wcfRelayName -Name $WcfRelayAuthRuleName -Force
 
     Write-Debug "Delete the created HybridConnection AuthorizationRule"
-    $result = Remove-AzureRmRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -HybridConnection $HybridConnectionsName -Name $HybirdConnectionAuthRuleName
+    $result = Remove-AzureRmRelayAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -HybridConnection $HybridConnectionsName -Name $HybirdConnectionAuthRuleName -Force
     
 
 	Write-Debug "Delete the WcfRelay"

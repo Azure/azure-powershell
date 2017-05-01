@@ -4,7 +4,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Test-AzureRmCheckNameAvailability
+# Test-AzureRmRelayName
 
 ## SYNOPSIS
 Checks the Availability of the given NameSpace Name
@@ -12,27 +12,27 @@ Checks the Availability of the given NameSpace Name
 ## SYNTAX
 
 ```
-Test-AzureRmCheckNameAvailability [-Namespace] <String>
+Test-AzureRmRelayName [-Namespace] <String>
 ```
 
 ## DESCRIPTION
-The **Test-AzureRmCheckNameAvailability** Cmdlet Check Availability of the NameSpace Name
+The **Test-AzureRmRelayName** Cmdlet Check Availability of the NameSpace Name
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Test-AzureRmCheckNameAvailability -Namespace TestingtheAvailability
+PS C:\> Test-AzureRmRelayName -Namespace TestingtheAvailability
 ```
 
 ### Example 2
 ```
-PS C:\> Test-AzureRmCheckNameAvailability -Namespace Testi
+PS C:\> Test-AzureRmRelayName -Namespace Testi
 ```
 
 ### Example 3
 ```
-PS C:\> Test-AzureRmCheckNameAvailability -Namespace Test123
+PS C:\> Test-AzureRmRelayName -Namespace Test123
 ```
 
 Returns the status on availability of the namespace name
