@@ -186,7 +186,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// <param name="database">Database object</param>
         public AzureSqlDatabaseModel(string resourceGroup, string serverName, Management.Sql.Models.Database database)
         {
-            Guid id = Guid.Empty;
             DatabaseEdition edition = DatabaseEdition.None;
             DatabaseReadScale readScale = DatabaseReadScale.Enabled;
 
@@ -207,8 +206,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
 
             CurrentServiceObjectiveId = database.CurrentServiceObjectiveId.Value;
 
-            Guid.TryParse(database.DatabaseId, out id);
-            DatabaseId = id;
+            DatabaseId = database.DatabaseId.Value;
 
             Enum.TryParse<DatabaseEdition>(database.Edition, true, out edition);
             Edition = edition;
