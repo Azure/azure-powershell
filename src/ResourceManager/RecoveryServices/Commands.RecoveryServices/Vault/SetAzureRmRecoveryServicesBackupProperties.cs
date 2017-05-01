@@ -16,7 +16,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.RecoveryServices.Properties;
 using Microsoft.Azure.Management.RecoveryServices.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -24,7 +23,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// <summary>
     /// Sets Azure Recovery Services Vault Backup Properties.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmRecoveryServicesBackupProperties", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Set, "AzureRmRecoveryServicesBackupProperties")]
     public class SetAzureRmRecoveryServicesBackupProperties : RecoveryServicesCmdletBase
     {
         #region Parameters
@@ -47,26 +46,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Resources.VaultTarget, "set"))
+            try
             {
-                try
+                if (this.BackupStorageRedundancy.HasValue)
                 {
-                    if (this.BackupStorageRedundancy.HasValue)
-                    {
-                        BackupStorageConfig vaultStorageRequest = new BackupStorageConfig();
-                        vaultStorageRequest.StorageModelType = BackupStorageRedundancy.ToString();
+                    UpdateVaultStorageTypeRequest vaultStorageRequest = new UpdateVaultStorageTypeRequest();
+                    vaultStorageRequest.Properties = new StorageTypeProperties();
+                    vaultStorageRequest.Properties.StorageModelType = BackupStorageRedundancy.ToString();
+                    AzureOperationResponse storageResponse = 
                         RecoveryServicesClient.UpdateVaultStorageType(
-                            this.Vault.ResourceGroupName, this.Vault.Name, vaultStorageRequest);
-                    }
-                    else
-                    {
-                        throw new Exception(Properties.Resources.NoBackupPropertiesProvided);
-                    }
+                        this.Vault.ResourceGroupName, this.Vault.Name, vaultStorageRequest);
                 }
-                catch (Exception exception)
+                else
                 {
-                    this.HandleException(exception);
+                    throw new Exception(Properties.Resources.NoBackupPropertiesProvided);
                 }
+            }
+            catch (Exception exception)
+            {
+                this.HandleException(exception);
             }
         }
     }

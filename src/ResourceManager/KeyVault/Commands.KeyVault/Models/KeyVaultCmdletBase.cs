@@ -14,8 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using System;
-using System.Collections.Generic;
 using System.Net.Http;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
@@ -43,21 +41,5 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
 
         private IKeyVaultDataServiceClient dataServiceClient;
-
-        /// <summary>
-        /// Utility function that will continually iterate over the updated KeyVaultObjectFilterOptions until the options
-        /// NextLink is null, and writes all the retrieved objects.
-        /// </summary>
-        /// <typeparam name="TObject">The object type to write.</typeparam>
-        /// <param name="options">The KeyVaultObjectFilterOptions</param>
-        /// <param name="getObjects">Function that takes the options and returns a list of objects.</param>
-        protected void GetAndWriteObjects<TObject>(KeyVaultObjectFilterOptions options, Func<KeyVaultObjectFilterOptions, IEnumerable<TObject>> getObjects)
-        {
-            do
-            {
-                var pageResults = getObjects(options);
-                WriteObject(pageResults, true);
-            } while (!string.IsNullOrEmpty(options.NextLink));
-        }
     }
 }

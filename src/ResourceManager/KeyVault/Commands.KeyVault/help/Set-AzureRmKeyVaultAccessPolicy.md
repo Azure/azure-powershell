@@ -65,8 +65,8 @@ Note that although specifying the resource group is optional for this cmdlet, yo
 
 ### Example 1: Grant permissions to a user for a key vault Key Vault and modify the permissionskey vault
 ```
-PS C:\>Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToKeys create,import,delete,list -PermissionsToSecrets 'set,delete'
-PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToSecrets 'set,delete,get' -PassThru
+PS C:\>Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToKeys create,import,delete,list -PermissionsToSecrets 'Set,Delete'
+PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToSecrets 'Set,Delete,Get' -PassThru
 PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToKeys @() -PassThru
 ```
 
@@ -253,20 +253,6 @@ Accept wildcard characters: False
 
 ### -PermissionsToCertificates
 Specifies an array of certificate permissions to grant to a user or service principal.
-The acceptable values for this parameter are:
-
-- Get
-- List
-- Delete
-- Create
-- Import
-- Update
-- Managecontacts
-- Getissuers
-- Listissuers
-- Setissuers
-- Deleteissuers
-- Manageissuers
 
 ```yaml
 Type: String[]
@@ -299,8 +285,7 @@ The acceptable values for this parameter are:
 - Delete
 - Backup
 - Restore
-- Recover
-- Purge
+- All
 
 ```yaml
 Type: String[]
@@ -323,10 +308,7 @@ The acceptable values for this parameter are:
 - List
 - Set
 - Delete
-- Backup
-- Restore
-- Recover
-- Purge
+- All
 
 ```yaml
 Type: String[]

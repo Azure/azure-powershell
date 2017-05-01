@@ -261,9 +261,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <returns>acs namespace of the uploaded cert</returns>
         private AcsNamespace UploadCert(X509Certificate2 cert)
         {
-            VaultCertificateResponse response = RecoveryServicesClient.UploadCertificate(cert, this.Vault);
+            UploadCertificateResponse response = RecoveryServicesClient.UploadCertificate(cert, this.Vault);
 
-            return new AcsNamespace(response.Properties as ResourceCertificateAndAcsDetails);
+            return new AcsNamespace(response);
         }
 
         /// <summary>

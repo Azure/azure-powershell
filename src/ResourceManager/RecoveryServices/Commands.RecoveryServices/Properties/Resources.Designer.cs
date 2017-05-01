@@ -578,15 +578,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Azure Recovery Services Vault.
-        /// </summary>
-        internal static string VaultTarget {
-            get {
-                return ResourceManager.GetString("VaultTarget", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Virtual Machine Group {0} is not associated with Protection Container {1}.
         /// </summary>
         internal static string VirtualMachineGroupNotFound {

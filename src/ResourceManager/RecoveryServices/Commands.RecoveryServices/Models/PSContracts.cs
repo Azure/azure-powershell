@@ -529,11 +529,11 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// Initializes a new instance of the <see cref="AcsNamespace"/> class.
         /// </summary>
         /// <param name="acsDetails">authenticating service Details name</param>
-        public AcsNamespace(ResourceCertificateAndAcsDetails acsDetails)
+        public AcsNamespace(UploadCertificateResponse acsDetails)
         {
-            this.HostName = acsDetails.GlobalAcsHostName;
-            this.Namespace = acsDetails.GlobalAcsNamespace;
-            this.ResourceProviderRealm = acsDetails.GlobalAcsRPRealm;
+            this.HostName = acsDetails.Properties.GlobalAcsHostName;
+            this.Namespace = acsDetails.Properties.GlobalAcsNamespace;
+            this.ResourceProviderRealm = acsDetails.Properties.GlobalAcsRPRealm;
         }
 
         /// <summary>

@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         }
 
         internal KeyAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, string keyType, 
-            string[] keyOps, DateTime? created, DateTime? updated, bool purgeDisabled, IDictionary<string, string> tags)
+            string[] keyOps, DateTime? created, DateTime? updated, IDictionary<string, string> tags)
         {
             this.Enabled = enabled;
             this.Expires = expires;
@@ -47,7 +47,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             this.KeyOps = keyOps;
             this.Created = created;
             this.Updated = updated;
-            this.PurgeDisabled = purgeDisabled;
             this.Tags = (tags == null) ? null : tags.ConvertToHashtable();
         }
 
@@ -64,8 +63,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public DateTime? Created { get; private set; }
 
         public DateTime? Updated { get; private set; }
-
-        public bool PurgeDisabled { get; private set; }
 
         public Hashtable Tags { get; set; }
         public string TagsTable

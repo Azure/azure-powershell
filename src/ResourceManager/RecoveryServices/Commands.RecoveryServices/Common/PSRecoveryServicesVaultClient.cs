@@ -12,12 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Azure.Management.Internal.Resources.Models;
+using Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Management.RecoveryServices.Models;
-using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -31,10 +27,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         /// <param name="resouceGroupName">Name of the resouce group</param>
         /// <returns>vault list response object.</returns>
-        public List<Vault> GetVaultsInResouceGroup(string resouceGroupName)
+        public VaultListResponse GetVaultsInResouceGroup(string resouceGroupName)
         {
-            return GetRecoveryServicesClient.Vaults.ListByResourceGroupWithHttpMessagesAsync(
-                resouceGroupName, GetRequestHeaders()).Result.Body.ToList();
+            return this.GetRecoveryServicesClient.Vaults.List(resouceGroupName, this.GetRequestHeaders());
         }
 
         /// <summary>
@@ -43,10 +38,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <param name="resouceGroupName">Name of the resouce group</param>
         /// <param name="resourceName">Name of the resource</param>
         /// <returns>vault response object.</returns>
-        public Vault GetVault(string resouceGroupName, string resourceName)
+        public VaultResponse GetVault(string resouceGroupName, string resourceName)
         {
-            return GetRecoveryServicesClient.Vaults.GetWithHttpMessagesAsync(
-                resouceGroupName, resourceName, GetRequestHeaders()).Result.Body;
+            return this.GetRecoveryServicesClient.Vaults.Get(resouceGroupName, resourceName, this.GetRequestHeaders());
         }
 
         /// <summary>
@@ -54,12 +48,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         /// <param name="resouceGroupName">Name of the resouce group</param>
         /// <param name="vaultName">Name of the vault</param>
-        /// <param name="vault">Vault creation input object</param>
+        /// <param name="vaultCreateInput">Vault creation input object</param>
         /// <returns>Create response object.</returns>
-        public Vault CreateVault(string resouceGroupName, string vaultName, Vault vault)
+        public VaultCreateResponse CreateVault(string resouceGroupName, string vaultName, VaultCreateArgs vaultCreateInput)
         {
-            return GetRecoveryServicesClient.Vaults.CreateOrUpdateWithHttpMessagesAsync(
-                resouceGroupName, vaultName, vault, GetRequestHeaders()).Result.Body;
+            return this.recoveryServicesClient.Vaults.BeginCreating(resouceGroupName, vaultName, vaultCreateInput);
         }
 
         /// <summary>
@@ -67,27 +60,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         /// <param name="resouceGroupName">Name of the resouce group</param>
         /// <param name="vaultName">Name of the vault</param>
-        public Rest.Azure.AzureOperationResponse DeleteVault(string resouceGroupName, string vaultName)
+        /// <returns>Delete response object.</returns>
+        public RecoveryServicesOperationStatusResponse DeleteVault(string resouceGroupName, string vaultName)
         {
-            return GetRecoveryServicesClient.Vaults.DeleteWithHttpMessagesAsync(
-                resouceGroupName, vaultName, GetRequestHeaders()).Result;
+            return this.recoveryServicesClient.Vaults.BeginDeleting(resouceGroupName, vaultName);
         }
 
-        ///// <summary>
-        ///// Method to list Azure resouce groups
-        ///// </summary>
-        ///// <returns>resource group list response object.</returns>
-        public List<ResourceGroup> GetResouceGroups()
+        /// <summary>
+        /// Method to list Azure resouce groups
+        /// </summary>
+        /// <returns>resource group list response object.</returns>
+        public ResourceGroupListResponse GetResouceGroups()
         {
-            Func<IPage<ResourceGroup>> listAsync =
-                () => RmClient.ResourceGroups.ListWithHttpMessagesAsync(
-                    customHeaders: GetRequestHeaders()).Result.Body;
-
-            Func<string, IPage<ResourceGroup>> listNextAsync =
-                nextLink => RmClient.ResourceGroups.ListNextWithHttpMessagesAsync(
-                    nextLink, GetRequestHeaders()).Result.Body;
-
-            return Utilities.GetPagedList(listAsync, listNextAsync);
+            return this.GetRecoveryServicesClient.ResourceGroup.List();
         }
 
 
@@ -98,11 +83,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <param name="vaultName">Name of the vault</param>  
         /// <param name="vaultStorageUpdateRequest">Backup Properties Update</param>  
         /// <returns>Azure Operation response object.</returns>  
-        public void UpdateVaultStorageType(string resouceGroupName, string vaultName,
-            BackupStorageConfig backupStorageConfig)
+        public AzureOperationResponse UpdateVaultStorageType(string resouceGroupName, string vaultName, 
+            UpdateVaultStorageTypeRequest vaultStorageUpdateRequest)
         {
-            GetRecoveryServicesClient.BackupStorageConfigs.UpdateWithHttpMessagesAsync(
-                resouceGroupName, vaultName, backupStorageConfig, GetRequestHeaders());
+            return this.recoveryServicesClient.Vaults.UpdateStorageType(resouceGroupName, vaultName,
+                vaultStorageUpdateRequest, this.GetRequestHeaders());
         }
 
         /// <summary>  
@@ -111,10 +96,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <param name="resouceGroupName">Name of the resouce group</param>  
         /// <param name="vaultName">Name of the vault</param>  
         /// <returns>Azure Resource Storage response object.</returns>  
-        public BackupStorageConfig GetVaultStorageType(string resouceGroupName, string vaultName)
+        public GetResourceStorageConfigResponse GetVaultStorageType(string resouceGroupName, string vaultName)
         {
-            return GetRecoveryServicesClient.BackupStorageConfigs.GetWithHttpMessagesAsync(
-                resouceGroupName, vaultName, GetRequestHeaders()).Result.Body;
+            return this.recoveryServicesClient.Vaults.GetResourceStorageConfig(resouceGroupName, 
+                vaultName, this.GetRequestHeaders());
         }
     }
 }

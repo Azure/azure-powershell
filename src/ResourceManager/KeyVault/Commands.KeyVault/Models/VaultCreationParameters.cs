@@ -29,9 +29,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public bool EnabledForDeployment { get; set; }
         public bool EnabledForTemplateDeployment { get; set; }
         public bool EnabledForDiskEncryption { get; set; }
-        public bool EnableSoftDelete { get; set; }
         public Guid TenantId { get; set; }
         public AccessPolicyEntry AccessPolicy { get; set; }
-        public CreateMode? CreateMode { get; set; }
     }
 }

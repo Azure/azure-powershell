@@ -36,7 +36,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             NotBefore = keyItem.Attributes.NotBefore;
             Created = keyItem.Attributes.Created;
             Updated = keyItem.Attributes.Updated;
-            PurgeDisabled = keyItem.Attributes.PurgeDisabled;
             Tags = (keyItem.Tags == null) ? null : keyItem.Tags.ConvertToHashtable();
         }
 
@@ -54,7 +53,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             NotBefore = keyBundle.Attributes.NotBefore;
             Created = keyBundle.Attributes.Created;
             Updated = keyBundle.Attributes.Updated;
-            PurgeDisabled = keyBundle.Attributes.PurgeDisabled;
             Tags = keyBundle.Attributes.Tags;
         }
 
@@ -67,8 +65,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public DateTime? Created { get; private set; }
 
         public DateTime? Updated { get; private set; }
-
-        public bool PurgeDisabled { get; private set; }
 
         public Hashtable Tags { get; set; }
 

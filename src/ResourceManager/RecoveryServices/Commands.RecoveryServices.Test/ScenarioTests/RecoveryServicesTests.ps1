@@ -37,7 +37,7 @@ function Test-RecoveryServicesVaultCRUDTests
 		Assert-NotNull($vault.Type)
 	}
 
-	$vaultBackupProperties = Get-AzureRmRecoveryServicesBackupProperty -Vault $vaultCreationResponse
+	$vaultBackupProperties = Get-AzureRmRecoveryServicesBackupProperties -Vault $vaultCreationResponse
 	Assert-NotNull($vaultBackupProperties.BackupStorageRedundancy)
 
 	Set-AzureRmRecoveryServicesBackupProperties -Vault $vaultCreationResponse -BackupStorageRedundancy "LocallyRedundant"

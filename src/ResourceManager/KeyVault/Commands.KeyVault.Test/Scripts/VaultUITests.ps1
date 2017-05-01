@@ -34,8 +34,7 @@ function Test_RemoveKeyWithTwoConfirmations
     Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname
     $global:ConfirmPreference=$cr
     
-    $key = Get-AzureKeyVaultKey  -VaultName $keyVault -Name $keyname
-    Assert-Null $key
+    Assert-Throws { Get-AzureKeyVaultKey  -VaultName $keyVault -Name $keyname}    
 }
 
 <#
@@ -56,8 +55,7 @@ function Test_RemoveKeyWithOneConfirmations
     Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Force
     $global:ConfirmPreference=$cr
 
-    $key = Get-AzureKeyVaultKey  -VaultName $keyVault -Name $keyname
-    Assert-Null $key
+    Assert-Throws { Get-AzureKeyVaultKey  -VaultName $keyVault -Name $keyname}    
 }
 
 <#
@@ -123,9 +121,8 @@ function Test_RemoveSecretWithTwoConfirmations
     $global:ConfirmPreference="High"    
     Remove-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname 
     $global:ConfirmPreference=$cr
-	
-    $secret = Get-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname
-    Assert-Null $secret
+
+    Assert-Throws { Get-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname }    
 }
 
 <#
@@ -146,8 +143,7 @@ function Test_RemoveSecretWithOneConfirmations
     Remove-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname  -Force
     $global:ConfirmPreference=$cr
 
-    $secret = Get-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname
-    Assert-Null $secret
+    Assert-Throws { Get-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname }    
 }
 
 <#
@@ -211,9 +207,8 @@ function Test_RemoveCertificateWithTwoConfirmations
     $global:ConfirmPreference="High"
     Remove-AzureKeyVaultCertificate -VaultName $keyVault -Name $certificateName
     $global:ConfirmPreference=$cr
-	
-    $cert = Get-AzureKeyVaultCertificate -VaultName $keyVault -Name $certificateName
-    Assert-Null $cert
+
+    Assert-Throws { Get-AzureKeyVaultCertificate -VaultName $keyVault -Name $certificateName }
 }
 
 <#
@@ -234,8 +229,7 @@ function Test_RemoveCertificateWithOneConfirmations
     Remove-AzureKeyVaultCertificate -VaultName $keyVault -Name $certificateName -Force
     $global:ConfirmPreference=$cr
 
-    $cert = Get-AzureKeyVaultCertificate -VaultName $keyVault -Name $certificateName
-    Assert-Null $cert
+    Assert-Throws { Get-AzureKeyVaultCertificate -VaultName $keyVault -Name $certificateName }
 }
 
 <#

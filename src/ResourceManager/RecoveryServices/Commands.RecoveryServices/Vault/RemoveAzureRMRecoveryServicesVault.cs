@@ -23,8 +23,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// <summary>
     /// Used to initiate a vault delete operation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmRecoveryServicesVault", SupportsShouldProcess = true),
-        OutputType(typeof(VaultOperationOutput))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmRecoveryServicesVault")]
     public class RemoveAzureRmRecoveryServicesVault : RecoveryServicesCmdletBase
     {
         #region Parameters
@@ -43,23 +42,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Resources.VaultTarget, "remove"))
+            try
             {
-                try
-                {
-                    var response = RecoveryServicesClient.DeleteVault(this.Vault.ResourceGroupName, this.Vault.Name);
+                RecoveryServicesOperationStatusResponse response = RecoveryServicesClient.DeleteVault(this.Vault.ResourceGroupName, this.Vault.Name);
 
-                    VaultOperationOutput output = new VaultOperationOutput()
-                    {
-                        Response = response.Response.StatusCode == HttpStatusCode.OK ? Resources.VaultDeletionSuccessMessage : response.Response.StatusCode.ToString()
-                    };
-
-                    this.WriteObject(output, true);
-                }
-                catch (Exception exception)
+                VaultOperationOutput output = new VaultOperationOutput()
                 {
-                    this.HandleException(exception);
-                }
+                    Response = response.StatusCode == HttpStatusCode.OK ? Resources.VaultDeletionSuccessMessage : response.StatusCode.ToString()
+                };
+
+                this.WriteObject(output, true);
+            }
+            catch (Exception exception)
+            {
+                this.HandleException(exception);
             }
         }
     }

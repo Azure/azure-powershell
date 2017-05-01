@@ -75,8 +75,8 @@
 			<XUnitTests Include=".\src\ResourceManager\Billing\Commands.Billing.Test\bin\Debug\Microsoft.Azure.Commands.Billing.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\Cdn\Commands.Cdn.Test\bin\Debug\Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\CognitiveServices\CognitiveServices.Test\bin\Debug\Microsoft.Azure.Commands.Management.CognitiveServices.Test.dll"/>
-			<XUnitTests Include=".\src\ResourceManager\ContainerRegistry\Commands.ContainerRegistry.Test\bin\Debug\Microsoft.Azure.Commands.ContainerRegistry.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\Microsoft.Azure.Commands.Compute.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\Consumption\Commands.Consumption.Test\bin\Debug\Microsoft.Azure.Commands.Consumption.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\DataFactories\Commands.DataFactories.Test\bin\Debug\Microsoft.Azure.Commands.DataFactories.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\DataLakeAnalytics\Commands.DataLakeAnalytics.Test\bin\Debug\Microsoft.Azure.Commands.DataLakeAnalytics.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\DataLakeStore\Commands.DataLakeStore.Test\bin\Debug\Microsoft.Azure.Commands.DataLake.Test.dll"/>

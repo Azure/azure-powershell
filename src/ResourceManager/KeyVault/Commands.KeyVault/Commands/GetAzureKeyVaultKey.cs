@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     [Cmdlet(VerbsCommon.Get, "AzureKeyVaultKey",        
         DefaultParameterSetName = ByVaultNameParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(List<KeyIdentityItem>), typeof(KeyBundle), typeof(List<DeletedKeyIdentityItem>), typeof(DeletedKeyBundle))]
+    [OutputType(typeof(List<KeyIdentityItem>), typeof(KeyBundle))]
     public class GetAzureKeyVaultKey : KeyVaultCmdletBase
     {
 
@@ -33,7 +33,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         private const string ByKeyNameParameterSet = "ByKeyName";
         private const string ByVaultNameParameterSet = "ByVaultName";
         private const string ByKeyVersionsParameterSet = "ByKeyVersions";
-        private const string ByDeletedKeyParameterSet = "ByDeletedKey";
 
         #endregion
 
@@ -57,11 +56,6 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = ByKeyVersionsParameterSet,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
-        [Parameter(Mandatory = true,
-            Position = 0,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ByDeletedKeyParameterSet,
-            HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
 
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
@@ -76,11 +70,6 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
         [Parameter(Mandatory = true,
             ParameterSetName = ByKeyVersionsParameterSet,
-            Position = 1,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
-        [Parameter(Mandatory = false,
-            ParameterSetName = ByDeletedKeyParameterSet,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
@@ -104,11 +93,6 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Specifies whether to include the versions of the key in the output.")]
         public SwitchParameter IncludeVersions { get; set; }
 
-        [Parameter(Mandatory = true,
-            ParameterSetName = ByDeletedKeyParameterSet,
-            HelpMessage = "Specifies whether to show the previously deleted keys in the output.")]
-        public SwitchParameter InRemovedState { get; set; }
-
         #endregion
 
         public override void ExecuteCmdlet()
@@ -131,44 +115,41 @@ namespace Microsoft.Azure.Commands.KeyVault
                 case ByVaultNameParameterSet:
                     GetAndWriteKeys(VaultName);
                     break;
-                case ByDeletedKeyParameterSet:
-                    if(Name == null)
-                    {
-                        GetAndWriteDeletedKeys(VaultName);
-                        break;
-                    }
-                    DeletedKeyBundle deletedKeyBundle = DataServiceClient.GetDeletedKey(VaultName, Name);
-                    WriteObject(deletedKeyBundle);
-                    break;
 
                 default:
                     throw new ArgumentException(KeyVaultProperties.Resources.BadParameterSetName);
             }
         }
 
-        private void GetAndWriteKeys(string vaultName) =>
-            GetAndWriteObjects(new KeyVaultObjectFilterOptions
-                {
-                    VaultName = vaultName,
-                    NextLink = null
-                },
-                (options) => DataServiceClient.GetKeys(options));
+        private void GetAndWriteKeys(string vaultName)
+        {
+            KeyVaultObjectFilterOptions options = new KeyVaultObjectFilterOptions
+            {
+                VaultName = vaultName,
+                NextLink = null
+            };
 
-        private void GetAndWriteDeletedKeys(string vaultName) =>
-            GetAndWriteObjects(new KeyVaultObjectFilterOptions
-                {
-                    VaultName = vaultName,
-                    NextLink = null
-                },
-                (options) => DataServiceClient.GetDeletedKeys(options));
+            do
+            {
+                var pageResults = DataServiceClient.GetKeys(options);
+                WriteObject(pageResults, true);
+            } while (!string.IsNullOrEmpty(options.NextLink));
+        }
 
-        private void GetAndWriteKeyVersions(string vaultName, string name, string currentKeyVersion) =>
-            GetAndWriteObjects(new KeyVaultObjectFilterOptions
-                {
-                    VaultName = vaultName,
-                    NextLink = null,
-                    Name = name
-                }, 
-                (options) => DataServiceClient.GetKeyVersions(options).Where(k => k.Version != currentKeyVersion));
+        private void GetAndWriteKeyVersions(string vaultName, string name, string currentKeyVersion)
+        {
+            KeyVaultObjectFilterOptions options = new KeyVaultObjectFilterOptions
+            {
+                VaultName = vaultName,
+                NextLink = null,
+                Name = name
+            };
+
+            do
+            {
+                var pageResults = DataServiceClient.GetKeyVersions(options).Where(k => k.Version != currentKeyVersion);
+                WriteObject(pageResults, true);
+            } while (!string.IsNullOrEmpty(options.NextLink));
+        }
     }
 }

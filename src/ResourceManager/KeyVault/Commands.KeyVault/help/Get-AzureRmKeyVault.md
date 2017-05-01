@@ -17,19 +17,9 @@ Gets key vaults.
 Get-AzureRmKeyVault [-VaultName] <String> [[-ResourceGroupName] <String>] [<CommonParameters>]
 ```
 
-### ByDeletedVault
-```
-Get-AzureRmKeyVault [-VaultName] <String> -Location <String> [-InRemovedState] [<CommonParameters>]
-```
-
 ### ListVaultsByResourceGroup
 ```
 Get-AzureRmKeyVault [-ResourceGroupName] <String> [<CommonParameters>]
-```
-
-### ListAllDeletedVaultsInSubscription
-```
-Get-AzureRmKeyVault [-InRemovedState] [<CommonParameters>]
 ```
 
 ### ListAllVaultsInSubscription
@@ -62,52 +52,12 @@ You can inspect the properties of $MyVault to get details about the key vault.
 
 ### Example 3: Get key vaults in a resource group
 ```
-PS C:\>Get-AzureRmKeyVault -ResourceGroupName 'ContosoPayRollResourceGroup'
+PS C:\>Get-AzureRMKeyVault -ResourceGroupName 'ContosoPayRollResourceGroup'
 ```
 
 This command gets all the key vaults in the resource group named ContosoPayRollResourceGroup.
 
-### Example 4: Get all deleted key vaults in your current subscription
-```
-PS C:\>Get-AzureRmKeyVault -InRemovedState
-```
-
-This command gets all the deleted key vaults in your current subscription.
-
-### Example 5: Get a deleted key vault
-```
-PS C:\>Get-AzureRMKeyVault -VaultName 'Contoso03Vault'  -Location 'eastus2' -InRemovedState
-```
-
-This command gets the deleted key vault information named Contoso03Vault in your current subscription and in eastus2 region.
-
 ## PARAMETERS
-
-### -InRemovedState
-Specifies whether to show the previously deleted vaults in the output.```yaml
-Type: SwitchParameter
-Parameter Sets: ByDeletedVault, ListAllDeletedVaultsInSubscription
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-The location of the deleted vault.```yaml
-Type: String
-Parameter Sets: ByDeletedVault
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -ResourceGroupName
 Specifies the name of the resource group associated with the key vault or key vaults being queried.
@@ -156,7 +106,7 @@ Specifies the name of the key vault.
 
 ```yaml
 Type: String
-Parameter Sets: GetVaultByName, ByDeletedVault
+Parameter Sets: GetVaultByName
 Aliases: 
 
 Required: True

@@ -15,6 +15,7 @@
 using Microsoft.Azure.KeyVault.WebKey;
 using System;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.KeyVault.Models;
 using System.Linq;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
@@ -42,7 +43,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 keyBundle.Key.KeyOps.ToArray(),
                 keyBundle.Attributes.Created,
                 keyBundle.Attributes.Updated,
-                keyBundle.Attributes.PurgeDisabled,
                 keyBundle.Tags);
         }
 

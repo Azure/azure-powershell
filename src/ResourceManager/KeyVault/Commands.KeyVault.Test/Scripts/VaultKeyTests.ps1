@@ -32,7 +32,6 @@ function Assert-KeyAttributes($keyAttr, $keytype, $keyenable, $keyexp, $keynbf, 
          Assert-True { Equal-OperationList  $keyops $keyAttr.KeyOps} "Expect $keyops. Get $keyAttr.KeyOps"
     } 
     Assert-True { Equal-Hashtable $tags $keyAttr.Tags} "Expected $tags. Get $keyAttr.Tags"
-	Assert-NotNull $keyAttr.PurgeDisabled, "Purge Disabled is null."
 }
 
 function BulkCreateSoftKeys ($vault, $prefix, $total)
@@ -715,8 +714,7 @@ function Test_GetNonExistKey
 {
     $keyVault = Get-KeyVault
     $keyname = 'notexist'
-    $key = Get-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname
-    Assert-Null $key
+    Assert-Throws {Get-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname}
 }
 
 <#
@@ -745,8 +743,7 @@ function Test_RemoveKeyWithoutPrompt
     $key=Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Force -Confirm:$false -PassThru
     Assert-NotNull $key
     
-    $key = Get-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname
-    Assert-Null $key
+    Assert-Throws { Get-AzureKeyVaultKey  -VaultName $keyVault -Name $keyname}    
 }
 
 <#
@@ -781,8 +778,7 @@ function Test_RemoveKeyPositionalParameter
 
     Remove-AzureKeyVaultKey $keyVault $keyname -Force -Confirm:$false      
     
-    $key = Get-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname
-    Assert-Null $key                 
+    Assert-Throws { Get-AzureKeyVaultKey  -VaultName $keyVault -Name $keyname}                    
 }
 
 <#
@@ -798,9 +794,8 @@ function Test_RemoveKeyAliasParameter
     $global:createdKeys += $keyname    
 
     Remove-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname  -Force -Confirm:$false                
-	
-    $key = Get-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname
-    Assert-Null $key
+
+    Assert-Throws { Get-AzureKeyVaultKey  -VaultName $keyVault -Name $keyname} 
 }
 
 <#
@@ -849,9 +844,7 @@ function Test_BackupRestoreKey
     $global:createdKeys += $keyname
 
     $backupblob = Backup-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname       
-    # Remove the key
-    Cleanup-Key $keyname
-	Wait-Seconds 30 # Wait for slm to purge the key..
+    Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Force -Confirm:$false
     $restoredKey = Restore-AzureKeyVaultKey -VaultName $keyVault -InputFile $backupblob
     Assert-KeyAttributes $restoredKey.Attributes 'RSA' $true $null $null $null
 }
@@ -882,10 +875,8 @@ function Test_BackupToANamedFile
   
     $backupfile='.\backup' + ([GUID]::NewGuid()).GUID.ToString() + '.blob'
  
-    Backup-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname -OutputFile $backupfile
-	# Remove the key
-    Cleanup-Key $keyname
-	Wait-Seconds 30 # Wait for slm to purge the key..
+    Backup-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname -OutputFile $backupfile    
+    Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Force -Confirm:$false
     $restoredKey = Restore-AzureKeyVaultKey -VaultName $keyVault -InputFile $backupfile
     Assert-KeyAttributes $restoredKey.Attributes 'RSA' $true $null $null $null
 }
@@ -973,132 +964,4 @@ function Test_PipelineRemoveKeys
 
     $keys = Get-AzureKeyVaultKey $keyVault |  Where-Object {$_.KeyName -like $keypartialname+'*'} 
     Assert-AreEqual $keys.Count 0     
-}
-
-<#
-.SYNOPSIS
-Tests getting a previously deleted key
-#>
-
-function Test_GetDeletedKey
-{
-	# Create a software key for updating
-    $keyVault = Get-KeyVault
-    $keyname=Get-KeyName 'GetDeletedKey'
-    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software' -Expires $expires -NotBefore $nbf -KeyOps $ops -Disable -Tag $tags
-    Assert-NotNull $key
-    $global:createdKeys += $keyname
-
-	$key | Remove-AzureKeyVaultKey -Force -Confirm:$false
-
-	Wait-ForDeletedKey $keyVault $keyname
-
-	$deletedKey = Get-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -InRemovedState
-	Assert-NotNull $deletedKey
-	Assert-NotNull $deletedKey.DeletedDate
-	Assert-NotNull $deletedKey.ScheduledPurgeDate
-
-}
-
-<#
-.SYNOPSIS
-Tests listing all previously deleted keys
-#>
-function Test_GetDeletedKeys
-{
-	$keyVault = Get-KeyVault
-    $keyname=Get-KeyName 'GetDeletedKeys'
-    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software' -Expires $expires -NotBefore $nbf -KeyOps $ops -Disable -Tag $tags
-    Assert-NotNull $key
-    $global:createdKeys += $keyname
-
-	$key | Remove-AzureKeyVaultKey -Force -Confirm:$false
-
-	Wait-ForDeletedKey $keyVault $keyname
-
-	$deletedKeys = Get-AzureKeyVaultKey -VaultName $keyVault -InRemovedState
-	Assert-True {$deletedKeys.Count -ge 1}
-    Assert-True {$deletedKeys.Name -contains $key.Name}
-}
-
-<#
-.SYNOPSIS
-Tests recovering a previously deleted key.
-#>
-
-function Test_UndoRemoveKey
-{
-	# Create a software key for updating
-    $keyVault = Get-KeyVault
-    $keyname=Get-KeyName 'UndoRemoveKey'
-    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software' -Expires $expires -NotBefore $nbf -KeyOps $ops -Disable -Tag $tags
-    Assert-NotNull $key
-    $global:createdKeys += $keyname
-
-	$key | Remove-AzureKeyVaultKey -Force -Confirm:$false
-
-	Wait-ForDeletedKey $keyVault $keyname
-
-	$recoveredKey = Undo-AzureKeyVaultKeyRemoval -VaultName $keyVault -Name $keyname
-
-	Assert-NotNull $recoveredKey
-	Assert-AreEqual $recoveredKey.Name $key.Name
-	Assert-AreEqual $recoveredKey.Version $key.Version
-	Assert-KeyAttributes $recoveredKey.Attributes 'RSA' $false $expires $nbf $ops $tags 
-}
-
-<#
-.SYNOPSIS
-Tests purging a deleted key for good.
-#>
-
-function Test_RemoveDeletedKey
-{
-	# Create a software key for updating
-    $keyVault = Get-KeyVault
-    $keyname=Get-KeyName 'RemoveDeletedKey'
-    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software' -Expires $expires -NotBefore $nbf -KeyOps $ops -Disable -Tag $tags
-    Assert-NotNull $key
-    $global:createdKeys += $keyname
-
-	$key | Remove-AzureKeyVaultKey -Force -Confirm:$false
-
-	Wait-ForDeletedKey $keyVault $keyname
-	
-	Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -InRemovedState -Force -Confirm:$false
-}
-
-<#
-.SYNOPSIS
-Tests purge a key that has not been deleted yet
-#>
-function Test_RemoveNonExistDeletedKey
-{
-	$keyVault = Get-KeyVault
-    $keyname=Get-KeyName 'RemoveNonExistKey'
-    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software' -Expires $expires -NotBefore $nbf -KeyOps $ops -Disable -Tag $tags
-    Assert-NotNull $key
-    $global:createdKeys += $keyname
-
-    Assert-Throws {Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -InRemovedState -Force -Confirm:$false}
-}
-
-<#
-.SYNOPSIS
-Tests pipeline commands to remove multiple deleted keys  
-#>
-
-function Test_PipelineRemoveDeletedKeys
-{
-    $keyVault = Get-KeyVault
-    $keypartialname=Get-KeyName 'piperemove'
-    $total=2
-    BulkCreateSoftKeys $keyVault $keypartialname $total   
-
-    Get-AzureKeyVaultKey $keyVault |  Where-Object {$_.KeyName -like $keypartialname+'*'}  | Remove-AzureKeyVaultKey -Force -Confirm:$false
-	Wait-Seconds 30
-	Get-AzureKeyVaultKey $keyVault -InRemovedState |  Where-Object {$_.KeyName -like $keypartialname+'*'}  | Remove-AzureKeyVaultKey -Force -Confirm:$false -InRemovedState
-
-    $keys = Get-AzureKeyVaultKey $keyVault -InRemovedState |  Where-Object {$_.KeyName -like $keypartialname+'*'} 
-    Assert-AreEqual $keys.Count 0
 }

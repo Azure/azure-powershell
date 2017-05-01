@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             var rp = RecoveryPointConversions.GetPSAzureRecoveryPoints(rpResponse, item) as AzureVmRecoveryPoint;
 
-            if (rp.EncryptionEnabled && rp.KeyAndSecretDetails != null)
+            if (rp.EncryptionEnabled)
             {
                 string keyFileDownloadLocation =
                     (string)ProviderData[RecoveryPointParams.KeyFileDownloadLocation];

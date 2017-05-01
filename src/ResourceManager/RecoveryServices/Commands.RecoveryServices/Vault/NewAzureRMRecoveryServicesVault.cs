@@ -14,7 +14,6 @@
 
 using System;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.RecoveryServices.Properties;
 using Microsoft.Azure.Management.RecoveryServices.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -22,8 +21,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// <summary>
     /// Used to initiate a vault create operation.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmRecoveryServicesVault", SupportsShouldProcess = true),
-        OutputType(typeof(ARSVault))]
+    [Cmdlet(VerbsCommon.New, "AzureRmRecoveryServicesVault")]
     public class NewAzureRmRecoveryServicesVault : RecoveryServicesCmdletBase
     {
         #region Parameters
@@ -56,24 +54,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Resources.VaultTarget, "new"))
+            try
             {
-                try
-                {
-                    Vault vaultCreateArgs = new Vault();
-                    vaultCreateArgs.Location = this.Location;
-                    vaultCreateArgs.Properties = new VaultProperties();
-                    vaultCreateArgs.Sku = new Sku();
-                    vaultCreateArgs.Sku.Name = SkuName.Standard;
+                VaultCreateArgs vaultCreateArgs = new VaultCreateArgs();
+                vaultCreateArgs.Location = this.Location;
+                vaultCreateArgs.Properties = new VaultProperties();
+                vaultCreateArgs.Sku = new VaultSku();
+                vaultCreateArgs.Sku.Name = "standard";
 
-                    Vault response = RecoveryServicesClient.CreateVault(this.ResourceGroupName, this.Name, vaultCreateArgs);
+                VaultCreateResponse response = RecoveryServicesClient.CreateVault(this.ResourceGroupName, this.Name, vaultCreateArgs);
 
-                    this.WriteObject(new ARSVault(response));
-                }
-                catch (Exception exception)
-                {
-                    this.HandleException(exception);
-                }
+                this.WriteObject(new ARSVault(response));
+            }
+            catch (Exception exception)
+            {
+                this.HandleException(exception);
             }
         }
     }

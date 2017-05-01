@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         SupportsShouldProcess = true,
          ConfirmImpact = ConfirmImpact.High,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(DeletedKeyBundle))]
+    [OutputType(typeof(KeyBundle))]
     public class RemoveAzureKeyVaultKey : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions
@@ -60,34 +60,10 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Cmdlet does not return an object by default. If this switch is specified, the cmdlet returns the key object that was deleted.")]
         public SwitchParameter PassThru { get; set; }
 
-        /// <summary>
-        /// If present, operate on the deleted key entity.
-        /// </summary>
-        [Parameter(Mandatory = false,
-           HelpMessage = "Remove the previously deleted key permanently.")]
-        public SwitchParameter InRemovedState { get; set; }
-
         #endregion
         public override void ExecuteCmdlet()
         {
-            if(InRemovedState.IsPresent)
-            {
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        KeyVaultProperties.Resources.RemoveDeletedKeyWarning,
-                        Name),
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        KeyVaultProperties.Resources.RemoveDeletedKeyWhatIfMessage,
-                        Name),
-                    Name,
-                    () => { DataServiceClient.PurgeKey(VaultName, Name); });
-                return;
-            }
-
-            DeletedKeyBundle deletedKeyBundle = null;
+            KeyBundle keyBundle = null;
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(
@@ -99,11 +75,11 @@ namespace Microsoft.Azure.Commands.KeyVault
                     KeyVaultProperties.Resources.RemoveKeyWhatIfMessage,
                     Name),
                 Name,
-                () => { deletedKeyBundle = DataServiceClient.DeleteKey(VaultName, Name); });
+                () => { keyBundle = DataServiceClient.DeleteKey(VaultName, Name); });
 
             if (PassThru)
             {
-                WriteObject(deletedKeyBundle);
+                WriteObject(keyBundle);
             }
         }
     }

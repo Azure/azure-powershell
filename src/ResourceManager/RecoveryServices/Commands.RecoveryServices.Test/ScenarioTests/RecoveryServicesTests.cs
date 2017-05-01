@@ -14,13 +14,12 @@
 
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
 {
-    public class RecoveryServicesTests : RMTestBase
+    public class RecoveryServicesTests : RecoveryServicesTestsBase
     {
         public RecoveryServicesTests(ITestOutputHelper output)
         {
@@ -31,7 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void VaultCRUDTests()
         {
-            TestController.NewInstance.RunPsTest("Test-RecoveryServicesVaultCRUDTests");
+            this.RunPowerShellTest("Test-RecoveryServicesVaultCRUDTests");
         }
     }
 }

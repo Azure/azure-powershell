@@ -14,11 +14,11 @@
 
 using System;
 using System.Runtime.Serialization;
-using System.Text;
 using System.Xml;
+using Hyak.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Rest.Azure;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -46,16 +46,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             {
                 if (this.recoveryServicesClient == null)
                 {
-                    this.recoveryServicesClient = new PSRecoveryServicesClient(DefaultContext);
+                    this.recoveryServicesClient = new PSRecoveryServicesClient(DefaultProfile);
                 }
 
                 return this.recoveryServicesClient;
             }
-        }
-
-        protected void Initialize()
-        {
-            Logger.Instance = new Logger(WriteWarning, WriteDebug, WriteVerbose, ThrowTerminatingError);
         }
 
         /// <summary>
@@ -78,7 +73,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 {
                     if (cloudException.Message != null)
                     {
-                        string originalMessage = cloudException.Message;
+                        string originalMessage = cloudException.Error.OriginalMessage;
                         error = JsonConvert.DeserializeObject<ARMError>(originalMessage);
 
                         StringBuilder exceptionMessage = new StringBuilder();
@@ -140,13 +135,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     clientRequestIdMsg + ex.Message),
                     ex);
             }
-        }
-
-        protected override void BeginProcessing()
-        {
-            base.BeginProcessing();
-
-            Initialize();
         }
 
         /// <summary>

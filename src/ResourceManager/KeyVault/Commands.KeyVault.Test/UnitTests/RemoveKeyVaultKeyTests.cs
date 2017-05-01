@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         private RemoveAzureKeyVaultKey cmdlet;
         private KeyAttributes keyAttributes;
         private WebKey.JsonWebKey webKey;
-        private DeletedKeyBundle keyBundle;
+        private KeyBundle keyBundle;
 
         public RemoveKeyVaultKeyTests()
         {
@@ -41,14 +41,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
 
             keyAttributes = new KeyAttributes(true, DateTime.Now, DateTime.Now, "HSM", new string[] { "All" }, null);
             webKey = new WebKey.JsonWebKey();
-            keyBundle = new DeletedKeyBundle() { Attributes = keyAttributes, Key = webKey, Name = KeyName, VaultName = VaultName };
+            keyBundle = new KeyBundle() { Attributes = keyAttributes, Key = webKey, Name = KeyName, VaultName = VaultName };
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CanRemoveKeyWithPassThruTest()
+        public void CanRemvoeKeyWithPassThruTest()
         {
-            DeletedKeyBundle expected = keyBundle;
+            KeyBundle expected = keyBundle;
             keyVaultClientMock.Setup(kv => kv.DeleteKey(VaultName, KeyName)).Returns(expected).Verifiable();
 
             // Mock the should process to return true
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanRemoveKeyWithNoPassThruTest()
         {
-            DeletedKeyBundle expected = keyBundle;
+            KeyBundle expected = keyBundle;
             keyVaultClientMock.Setup(kv => kv.DeleteKey(VaultName, KeyName)).Returns(expected).Verifiable();
 
             // Mock the should process to return true
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ErrorRemoveKeyWithPassThruTest()
+        public void ErrorRemvoeKeyWithPassThruTest()
         {
             keyVaultClientMock.Setup(kv => kv.DeleteKey(VaultName, KeyName)).Throws(new Exception()).Verifiable();
 

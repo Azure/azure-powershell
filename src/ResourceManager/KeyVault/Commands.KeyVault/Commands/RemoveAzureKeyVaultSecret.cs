@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         SupportsShouldProcess = true,
          ConfirmImpact = ConfirmImpact.High,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(DeletedSecret))]
+    [OutputType(typeof(Secret))]
     public class RemoveAzureKeyVaultSecret : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions
@@ -60,35 +60,11 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Cmdlet does not return an object by default. If this switch is specified, cmdlet returns the secret that was deleted.")]
         public SwitchParameter PassThru { get; set; }
 
-        /// <summary>
-        /// If present, operate on the deleted secret entity.
-        /// </summary>
-        [Parameter(Mandatory = false,
-           HelpMessage = "If present, removes the previously deleted secret permanently.")]
-        public SwitchParameter InRemovedState { get; set; }
-
         #endregion
 
         public override void ExecuteCmdlet()
         {
-            if(InRemovedState.IsPresent)
-            {
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        KeyVaultProperties.Resources.RemoveDeletedSecretWarning,
-                        Name),
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        KeyVaultProperties.Resources.RemoveDeletedSecretWhatIfMessage,
-                        Name),
-                    Name,
-                   () => { DataServiceClient.PurgeSecret(VaultName, Name); });
-                return;
-            }
-
-            DeletedSecret deletedSecret = null;
+            Secret secret = null;
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(
@@ -100,11 +76,11 @@ namespace Microsoft.Azure.Commands.KeyVault
                     KeyVaultProperties.Resources.RemoveSecretWhatIfMessage,
                     Name),
                 Name,
-               () => { deletedSecret = DataServiceClient.DeleteSecret(VaultName, Name); });
+               () => { secret = DataServiceClient.DeleteSecret(VaultName, Name); });
 
             if (PassThru)
             {
-                WriteObject(deletedSecret);
+                WriteObject(secret);
             }
         }
     }
