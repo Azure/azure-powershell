@@ -13,17 +13,17 @@ Updates the specified authorization rule description for the given Relay entitie
 
 ### NamespaceAuthorizationRuleSet (Default)
 ```
-Set-AzureRmRelayAuthorizationRule [-ResourceGroup] <String> [-Namespace] <String> [-Name] <String> -Rights <String[]> [-WhatIf] [-Confirm]
+Set-AzureRmRelayAuthorizationRule [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> -Rights <String[]> [-WhatIf] [-Confirm]
 ```
 
 ### WcfRelayAuthorizationRuleSet
 ```
-Set-AzureRmRelayAuthorizationRule [-ResourceGroup] <String> [[-Namespace] <String>] [-WcfRelay] <String> [-Name] <String> -Rights <String[]> [-WhatIf] [-Confirm]
+Set-AzureRmRelayAuthorizationRule [-ResourceGroupName] <String> [[-Namespace] <String>] [-WcfRelay] <String> [-Name] <String> -Rights <String[]> [-WhatIf] [-Confirm]
 ```
 
 ### HybridConnectionAuthorizationRuleSet
 ```
-Set-AzureRmRelayAuthorizationRule [-ResourceGroup] <String> [[-Namespace] <String>] [-HybridConnection] <String> [-Name] <String> -Rights <String[]> [-WhatIf] [-Confirm]
+Set-AzureRmRelayAuthorizationRule [-ResourceGroupName] <String> [[-Namespace] <String>] [-HybridConnection] <String> [-Name] <String> -Rights <String[]> [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
@@ -37,14 +37,14 @@ PS C:\>
 PS C:\> $getAutoRule = Get-AzureRmRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -AuthorizationRuleName
  AuthoRule1
 PS C:\> $getAutoRule.Rights.Add("Send")
-PS C:\> Set-AzureRmRelayAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -AuthorizationRule AuthoRule1 -InputObject $getAutoRule
+PS C:\> Set-AzureRmRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -AuthorizationRule AuthoRule1 -InputObject $getAutoRule
 ```
 
 Adds **Send** from the access rights of the authorization rule `AuthoRule1` in namespace `TestNameSpace-Relay1`.
 
 ### Example 1.2 - Namespace with Rights parameter
 ```
-PS C:\> Set-AzureRmRelayAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -AuthorizationRule AuthoRule1 -Rights "Send"
+PS C:\> Set-AzureRmRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -AuthorizationRule AuthoRule1 -Rights "Send"
 ```
 
 Adds **Send** from the access rights of the authorization rule `AuthoRule1` in namespace `TestNameSpace-Relay1`.
@@ -52,32 +52,32 @@ Adds **Send** from the access rights of the authorization rule `AuthoRule1` in n
 
 ### Example 2.1 - WcfRelay with InputObject
 ```
-PS C:\> $getWcfRelayAutho = Get-AzureRmRelayAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWCFRelay1 -Name AuthoRule1
+PS C:\> $getWcfRelayAutho = Get-AzureRmRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWCFRelay1 -Name AuthoRule1
 PS C:\> $getWcfRelayAutho.Rights.Add("Send")
-PS C:\> Set-AzureRmRelayAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWCFRelay1 -Name AuthoRule1 -InputObject $getWcfRelayAutho
+PS C:\> Set-AzureRmRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWCFRelay1 -Name AuthoRule1 -InputObject $getWcfRelayAutho
 ```
 
 Adds **Send** to the access rights of the authorization rule `AuthoRule1` of the WcfRelay `TestWCFRelay1`.
 
 ### Example 2.2 - WcfRelay with Rights parameter
 ```
-PS C:\> Set-AzureRmRelayAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWCFRelay1 -Name AuthoRule1 -Rights "Send"
+PS C:\> Set-AzureRmRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWCFRelay1 -Name AuthoRule1 -Rights "Send"
 ```
 
 Adds **Send** to the access rights of the authorization rule `AuthoRule1` of the WcfRelay `TestWCFRelay1`.
 
 ### Example 3.1 - HybridConnection with InputObject
 ```
-PS C:\> $GetHybirdAutho = Get-AzureRmRelayAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnection TestHybridConnection -Name AuthoRule1
+PS C:\> $GetHybirdAutho = Get-AzureRmRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnection TestHybridConnection -Name AuthoRule1
 PS C:\> $GetHybirdAutho.Rights.Add("Send")
-PS C:\> Set-AzureRmRelayAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnection TestHybridConnection -Name AuthoRule1 -InputObject $GetHybirdAutho
+PS C:\> Set-AzureRmRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnection TestHybridConnection -Name AuthoRule1 -InputObject $GetHybirdAutho
 ```
 
 Adds **Send** to the access rights of the authorization rule `AuthoRule1` of the HybridConnection `TestHybridConnection`.
 
 ### Example 3.2 - HybridConnection with Rights parameter
 ```
-PS C:\> Set-AzureRmRelayAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnection TestHybridConnection -Name AuthoRule1 -Rights "Send"
+PS C:\> Set-AzureRmRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnection TestHybridConnection -Name AuthoRule1 -Rights "Send"
 ```
 
 Adds **Send** to the access rights of the authorization rule `AuthoRule1` of the HybridConnection `TestHybridConnection`.
@@ -157,7 +157,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 Resource Group Name.
 
 ```yaml
@@ -223,7 +223,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -ResourceGroup
+### -ResourceGroupName
  System.String 
 
 ### -Namespace

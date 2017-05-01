@@ -13,19 +13,19 @@ Regenerates the primary or secondary connection strings for the given Relay enti
 
 ### NamespaceAuthorizationRuleSet (Default)
 ```
-New-AzureRmRelayKey [-ResourceGroup] <String> [-Namespace] <String> [-Name] <String> -RegenerateKey <String>
+New-AzureRmRelayKey [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> -RegenerateKey <String>
  [-WhatIf] [-Confirm]
 ```
 
 ### WcfRelayAuthorizationRuleSet
 ```
-New-AzureRmRelayKey [-ResourceGroup] <String> [[-Namespace] <String>] [-WcfRelay] <String> [-Name] <String>
+New-AzureRmRelayKey [-ResourceGroupName] <String> [[-Namespace] <String>] [-WcfRelay] <String> [-Name] <String>
  -RegenerateKey <String> [-WhatIf] [-Confirm]
 ```
 
 ### HybridConnectionAuthorizationRuleSet
 ```
-New-AzureRmRelayKey [-ResourceGroup] <String> [[-Namespace] <String>] [-HybridConnection] <String>
+New-AzureRmRelayKey [-ResourceGroupName] <String> [[-Namespace] <String>] [-HybridConnection] <String>
  [-Name] <String> -RegenerateKey <String> [-WhatIf] [-Confirm]
 ```
 
@@ -36,23 +36,23 @@ The **New-AzureRmRelayKey** cmdlet generates the primary and secondary connectio
 
 ### Example 1 - Namespace
 ```
-PS C:\> New-AzureRmRelayKey -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1 -RegenerateKeys PrimaryKey
+PS C:\> New-AzureRmRelayKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1 -RegenerateKeys PrimaryKey
 
-PS C:\> New-AzureRmRelayKey -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1 -RegenerateKeys SecondaryKey
+PS C:\> New-AzureRmRelayKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1 -RegenerateKeys SecondaryKey
 ```
 
 ### Example 2 - WcfRelay
 ```
-PS C:\> New-AzureRmRelayKey -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1 -WcfRelay TestWCFRelay1 -RegenerateKeys PrimaryKey
+PS C:\> New-AzureRmRelayKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1 -WcfRelay TestWCFRelay1 -RegenerateKeys PrimaryKey
 
-PS C:\> New-AzureRmRelayKey -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1 -WcfRelay TestWCFRelay1 -RegenerateKeys SecondaryKey
+PS C:\> New-AzureRmRelayKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1 -WcfRelay TestWCFRelay1 -RegenerateKeys SecondaryKey
 ```
 
 ### Example 3 - HybridConnection
 ```
-PS C:\> New-AzureRmRelayKey -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1 -HybridConnection TestHybridConnection -RegenerateKeys PrimaryKey
+PS C:\> New-AzureRmRelayKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1 -HybridConnection TestHybridConnection -RegenerateKeys PrimaryKey
 
-PS C:\> New-AzureRmRelayKey -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1 -HybridConnection TestHybridConnection -RegenerateKeys SecondaryKey
+PS C:\> New-AzureRmRelayKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1 -HybridConnection TestHybridConnection -RegenerateKeys SecondaryKey
 ```
 
 Regenerates the primary or secondary connection strings for the given Relay entities (Namespace/WcfRelay/HybridConnection).
@@ -147,7 +147,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 Resource Group Name.
 
 ```yaml
@@ -195,7 +195,7 @@ Accept wildcard characters: False
 
 ## INPUTS
 
-### -ResourceGroupName
+### -ResourceGroupNameName
  System.String 
 
 ### -NamespaceName

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnections
             Position = 0,
             HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
-         public string ResourceGroup { get; set; }
+         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -44,11 +44,14 @@ namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnections
 
         public override void ExecuteCmdlet()
         {
-            // delete a HybridConnections 
-            if (ShouldProcess(target: Name, action:string.Format("Deleting HybridConnections: {0} of NnameSpace{1}", Name, Namespace)))
+            // Remove a HybridConnections             
+            ConfirmAction(
+            string.Format(Resources.RemoveHybirdconnection, Name, Namespace),
+            Name,
+            () =>
             {
-                WriteObject(Client.DeleteHybridConnections(ResourceGroup, Namespace, Name));
-            }            
+                Client.DeleteHybridConnections(ResourceGroupName, Namespace, Name);                    
+            });
         }
     }
 }

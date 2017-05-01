@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.WcfRelay
             Position = 0,
             HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
-         public string ResourceGroup { get; set; }
+         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.WcfRelay
 
             if(ShouldProcess(target: Name, action:string.Format("Creating new WcfRelay:{0} under NameSpace:{1} ", Name, Namespace)))
             {
-                WriteObject(Client.CreateOrUpdateWcfRelay(ResourceGroup, Namespace, Name, wcfRelay));
+                WriteObject(Client.CreateOrUpdateWcfRelay(ResourceGroupName, Namespace, Name, wcfRelay));
             }
                         
         }

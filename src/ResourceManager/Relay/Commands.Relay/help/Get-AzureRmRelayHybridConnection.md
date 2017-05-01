@@ -12,7 +12,7 @@ Gets a description for the specified HybridConnection within the Relay namespace
 ## SYNTAX
 
 ```
-Get-AzureRmRelayHybridConnection [-ResourceGroup] <String> [-Namespace] <String> [-Name <String>]
+Get-AzureRmRelayHybridConnection [-ResourceGroupName] <String> [-Namespace] <String> [-Name <String>]
 ```
 
 ## DESCRIPTION
@@ -22,7 +22,7 @@ The **Get-AzureRmRelayHybridConnection** cmdlet gets a description for the speci
 
 ### Example 1
 ```
-PS C:\>Get-AzureRmRelayHybridConnection -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestHybridConnection
+PS C:\>Get-AzureRmRelayHybridConnection -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestHybridConnection
 ```
 
 Returns the description of the HybridConnection. 
@@ -59,7 +59,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 Resource Group Name.
 
 ```yaml
@@ -78,7 +78,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -ResourceGroup
+### -ResourceGroupName
 	System.String
 
 ### -Namespace

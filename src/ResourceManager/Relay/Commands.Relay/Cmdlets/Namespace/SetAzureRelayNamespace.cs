@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
             Position = 0,
             HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
-         public string ResourceGroup { get; set; }
+         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
         public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false,
-           ValueFromPipelineByPropertyName = true,
+           ValueFromPipeline = true,
            HelpMessage = "Relay Namespace object.")]
         [ValidateNotNullOrEmpty]
         public RelayNamespaceAttirbutesUpdateParameter InputObject { get; set; }
@@ -65,9 +65,9 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
 
                 relayNamespace.Tags = tagDictionary;
             }
-            if (ShouldProcess(target: Name, action: string.Format("Update NameSpace:{0} from ResourceGroup:{1}", Name, ResourceGroup)))
+            if (ShouldProcess(target: Name, action: string.Format(Resources.UpdateRelayNamespace, Name, ResourceGroupName)))
             {
-                WriteObject(Client.UpdateNamespace(ResourceGroup, Name, relayNamespace));
+                WriteObject(Client.UpdateNamespace(ResourceGroupName, Name, relayNamespace));
             }
         }
     }

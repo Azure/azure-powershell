@@ -13,17 +13,17 @@ Gets the primary and secondary connection strings for the given Relay entities (
 
 ### NamespaceAuthorizationRuleSet (Default)
 ```
-Get-AzureRmRelayKey [-ResourceGroup] <String> [-Namespace] <String> [-Name] <String>
+Get-AzureRmRelayKey [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
 ```
 
 ### WcfRelayAuthorizationRuleSet
 ```
-Get-AzureRmRelayKey [-ResourceGroup] <String> [[-Namespace] <String>] [-WcfRelay] <String> [-Name] <String>
+Get-AzureRmRelayKey [-ResourceGroupName] <String> [[-Namespace] <String>] [-WcfRelay] <String> [-Name] <String>
 ```
 
 ### HybridConnectionAuthorizationRuleSet
 ```
-Get-AzureRmRelayKey [-ResourceGroup] <String> [[-Namespace] <String>] [-HybridConnection] <String>
+Get-AzureRmRelayKey [-ResourceGroupName] <String> [[-Namespace] <String>] [-HybridConnection] <String>
  [-Name] <String>
 ```
 
@@ -34,17 +34,17 @@ The **Get-AzureRmRelayKey** cmdlet returns the primary and secondary connection 
 
 ### Example 1 - Namespace
 ```
-PS C:\> Get-AzureRmRelayKey -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1
+PS C:\> Get-AzureRmRelayKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1
 ```
 
 ### Example 2 - WcfRelay
 ```
-PS C:\> Get-AzureRmRelayKey -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1  -WcfRelay TestWCFRelay1 -Name AuthoRule1
+PS C:\> Get-AzureRmRelayKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1  -WcfRelay TestWCFRelay1 -Name AuthoRule1
 ```
 
 ### Example 3 - HybridConnection
 ```
-PS C:\> Get-AzureRmRelayKey -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnection TestHybridConnection -Name AuthoRule1
+PS C:\> Get-AzureRmRelayKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnection TestHybridConnection -Name AuthoRule1
 ```
 
 Primary and secondary connection string to the specified Relay entities (Namespace/WcfRelay/HybridConnection).
@@ -108,7 +108,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 Resource Group Name.
 
 ```yaml

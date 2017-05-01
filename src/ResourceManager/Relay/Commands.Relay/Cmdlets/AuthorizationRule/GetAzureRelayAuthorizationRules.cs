@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands
             Position = 0,
             HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
-         public string ResourceGroup { get; set; }
+         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -68,49 +68,49 @@ namespace Microsoft.Azure.Commands.Relay.Commands
         {
 
             //Get Namespace Authorization Rule
-            if (Namespace != null && WcfRelay == null && HybridConnection == null)
+            if (ParameterSetName == NamespaceAuthoRuleParameterSet)
                 if (!string.IsNullOrEmpty(Name))
                 {
                     // Get a Namespace AuthorizationRule
-                    AuthorizationRuleAttributes authRule = Client.GetNamespaceAuthorizationRule(ResourceGroup, Namespace, Name);
+                    AuthorizationRuleAttributes authRule = Client.GetNamespaceAuthorizationRule(ResourceGroupName, Namespace, Name);
                     WriteObject(authRule);
                 }
                 else
                 {
                     // Get all Namespace AuthorizationRules
-                    IEnumerable<AuthorizationRuleAttributes> authRuleList = Client.ListNamespaceAuthorizationRules(ResourceGroup, Namespace);
-                    WriteObject(authRuleList.ToList(), true);
+                    IEnumerable<AuthorizationRuleAttributes> authRuleList = Client.ListNamespaceAuthorizationRules(ResourceGroupName, Namespace);
+                    WriteObject(authRuleList, true);
                 }
 
 
             // Get WcfRelay authorizationRule
-            if (Namespace != null && WcfRelay != null && HybridConnection == null)
+            if (ParameterSetName == WcfRelayAuthoRuleParameterSet)
                     if (!string.IsNullOrEmpty(Name))
                     {
                         // Get a WcfRelay AuthorizationRule
-                        AuthorizationRuleAttributes authRule = Client.GetWcfRelayAuthorizationRules(ResourceGroup, Namespace, WcfRelay, Name);
+                        AuthorizationRuleAttributes authRule = Client.GetWcfRelayAuthorizationRules(ResourceGroupName, Namespace, WcfRelay, Name);
                         WriteObject(authRule);
                     }
                     else
                     {
                         // Get all WcfRelay AuthorizationRules
-                        IEnumerable<AuthorizationRuleAttributes> authRuleList = Client.ListWcfRelayAuthorizationRules(ResourceGroup, Namespace, WcfRelay);
-                        WriteObject(authRuleList.ToList(), true);
+                        IEnumerable<AuthorizationRuleAttributes> authRuleList = Client.ListWcfRelayAuthorizationRules(ResourceGroupName, Namespace, WcfRelay);
+                        WriteObject(authRuleList, true);
                     }
 
             // Get HybridConnection authorizationRule
-            if (Namespace != null && WcfRelay == null && HybridConnection != null)
+            if (ParameterSetName == HybridConnectionAuthoRuleParameterSet)
                 if (!string.IsNullOrEmpty(Name))
                 {
                     // Get a HybridConnection AuthorizationRule
-                    AuthorizationRuleAttributes authRule = Client.GetHybridConnectionsAuthorizationRules(ResourceGroup, Namespace, HybridConnection, Name);
+                    AuthorizationRuleAttributes authRule = Client.GetHybridConnectionsAuthorizationRules(ResourceGroupName, Namespace, HybridConnection, Name);
                     WriteObject(authRule);
                 }
                 else
                 {
                     // Get all HybridConnection AuthorizationRules
-                    IEnumerable<AuthorizationRuleAttributes> authRuleList = Client.ListHybridConnectionsAuthorizationRules(ResourceGroup, Namespace, HybridConnection);
-                    WriteObject(authRuleList.ToList(), true);
+                    IEnumerable<AuthorizationRuleAttributes> authRuleList = Client.ListHybridConnectionsAuthorizationRules(ResourceGroupName, Namespace, HybridConnection);
+                    WriteObject(authRuleList, true);
                 }
             
         }

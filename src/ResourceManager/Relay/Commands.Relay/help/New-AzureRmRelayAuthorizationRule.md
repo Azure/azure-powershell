@@ -13,19 +13,19 @@ Creates a new authorization rule for the specified Relay entities (Namespace/Wcf
 
 ### NamespaceAuthorizationRuleSet (Default)
 ```
-New-AzureRmRelayAuthorizationRule [-ResourceGroup] <String> [-Namespace] <String> [-Name] <String>
+New-AzureRmRelayAuthorizationRule [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
  -Rights <String[]> [-WhatIf] [-Confirm]
 ```
 
 ### WcfRelayAuthorizationRuleSet
 ```
-New-AzureRmRelayAuthorizationRule [-ResourceGroup] <String> [[-Namespace] <String>] [-WcfRelay] <String>
+New-AzureRmRelayAuthorizationRule [-ResourceGroupName] <String> [[-Namespace] <String>] [-WcfRelay] <String>
  [-Name] <String> -Rights <String[]> [-WhatIf] [-Confirm]
 ```
 
 ### HybridConnectionAuthorizationRuleSet
 ```
-New-AzureRmRelayAuthorizationRule [-ResourceGroup] <String> [[-Namespace] <String>]
+New-AzureRmRelayAuthorizationRule [-ResourceGroupName] <String> [[-Namespace] <String>]
  [-HybridConnection] <String> [-Name] <String> -Rights <String[]> [-WhatIf] [-Confirm]
 ```
 
@@ -36,19 +36,19 @@ The **New-AzureRmRelayAuthorizationRule** cmdlet creates a new authorization rul
 
 ### Example 1 - Namespace
 ```
-PS C:\>New-AzureRmRelayAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1 -Rights "Listen"
+PS C:\>New-AzureRmRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1 -Rights "Listen"
 ```
 Creates `AuthoRule1` with **Listen** rights for the namespace `TestNameSpace-Relay1`.
 
 ### Example 2 - WcfRelay
 ```
-PS C:\>New-AzureRmRelayAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWCFRelay1 -Name AuthoRule1 -Rights "Listen"
+PS C:\>New-AzureRmRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWCFRelay1 -Name AuthoRule1 -Rights "Listen"
 ```
 Creates authorization rule `AuthoRule1` with **Listen** rights for the WcfRelay `TestWCFRelay1`.
 
 ### Example 3 - HybridConnection
 ```
-PS C:\>New-AzureRmRelayAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnection TestHybridConnection -Name AuthoRule1 -Rights "Listen"
+PS C:\>New-AzureRmRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnection TestHybridConnection -Name AuthoRule1 -Rights "Listen"
 ```
 Creates `AuthoRule1` with **Listen** rights for the namespace `TestNameSpace-Relay1`.
 
@@ -126,7 +126,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 Resource Group Name.
 
 ```yaml
@@ -192,7 +192,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -ResourceGroup
+### -ResourceGroupName
  System.String 
 
 ### -Namespace

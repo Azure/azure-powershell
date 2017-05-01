@@ -88,28 +88,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands
 
         protected static TimeSpan LongRunningOperationDefaultTimeout = TimeSpan.FromMinutes(1);
         private RelayClient  _client;
-
-        //protected static Policykey ParsePolicyKey(string policyKeyName)
-        //{
-        //    Policykey returnPolicyKey;
-        //    if (!Enum.TryParse<Policykey>(policyKeyName, true, out returnPolicyKey))
-        //    {
-        //        throw new ArgumentOutOfRangeException("PolicyKey");
-        //    }
-        //    return returnPolicyKey;
-        //}
-
-        //protected static AccessRights ParseAccessRights(string rightsName)
-        //{
-        //    AccessRights returnAccessRights;
-        //    if (!Enum.TryParse<AccessRights>(rightsName, true, out returnAccessRights))
-        //    {
-        //        throw new ArgumentOutOfRangeException("AccessRights");
-        //    }
-        //    return returnAccessRights;
-        //}
-
-
+        
         public RelayClient Client
         {
             get
@@ -135,7 +114,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands
                 string fileName = this.TryResolvePath(InputFile);
                 if (!(new FileInfo(fileName)).Exists)
                 {
-                    throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture,Properties.Resources.FileDoesNotExist, fileName));
+                    throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture,Resources.FileDoesNotExist, fileName));
                 }
 
                 try

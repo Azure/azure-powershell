@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands
             Position = 0,
             HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroup { get; set; }
+        public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -59,28 +59,61 @@ namespace Microsoft.Azure.Commands.Relay.Commands
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             // Delete Namespace authorizationRule
-            if (Namespace != null && WcfRelay == null && HybridConnection == null)
-                if (ShouldProcess(target: Name, action: string.Format("Deleting AtuhorizationRule:{0} of Namespace: {1}", Name, Namespace)))
+            if (ParameterSetName == NamespaceAuthoRuleParameterSet)
+                ConfirmAction(
+                Force.IsPresent,
+                string.Format(Resources.RemovingNamespaceAuthorizationRule, Name, Namespace),
+                string.Format(Resources.RemoveNamespaceAuthorizationRule, Name, Namespace),
+                Name,
+                () =>
                 {
-                    WriteObject(Client.DeleteNamespaceAuthorizationRules(ResourceGroup, Namespace, Name));
-                }
+                    Client.DeleteNamespaceAuthorizationRules(ResourceGroupName, Namespace, Name);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                });
 
             // Delete WcfRelay authorizationRule
-            if (Namespace != null && WcfRelay != null && HybridConnection == null)
-                if (ShouldProcess(target: Name, action: string.Format("Deleting AtuhorizationRule:{0} from WcfRelay:{1} of Namespace: {2}", Name, WcfRelay, Namespace)))
+            if (ParameterSetName == WcfRelayAuthoRuleParameterSet)
+                ConfirmAction(
+                Force.IsPresent,
+                string.Format(Resources.RemovingWcfRelayAuthorizationRule, Namespace, WcfRelay, Name),
+                string.Format(Resources.RemoveWcfRelayAuthorizationRule, Namespace, WcfRelay, Name),
+                Name,
+                () =>
                 {
-                    WriteObject(Client.DeleteWcfRelayAuthorizationRules(ResourceGroup, Namespace, WcfRelay, Name));
-                }
+                    Client.DeleteWcfRelayAuthorizationRules(ResourceGroupName, Namespace, WcfRelay, Name);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                });
 
             // Delete Hybird authorizationRule
-            if (Namespace != null && WcfRelay == null && HybridConnection != null)
-                if (ShouldProcess(target: Name, action: string.Format("Deleting AtuhorizationRule:{0} from HybridConnection:{1} of Namespace: {2}", Name, HybridConnection, Namespace)))
+            if (ParameterSetName == HybridConnectionAuthoRuleParameterSet)
+                ConfirmAction(
+                Force.IsPresent,
+                string.Format(Resources.RemovingHybirdconnectionAuthorizationrule, Namespace, HybridConnection, Name),
+                string.Format(Resources.RemovingHybirdconnectionAuthorizationrule, Namespace, HybridConnection, Name),
+                Name,
+                () =>
                 {
-                    WriteObject(Client.DeleteHybridConnectionsAuthorizationRules(ResourceGroup, Namespace, HybridConnection, Name));
-                }
+                    Client.DeleteHybridConnectionsAuthorizationRules(ResourceGroupName, Namespace, HybridConnection, Name);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                });
         }
     }
 }

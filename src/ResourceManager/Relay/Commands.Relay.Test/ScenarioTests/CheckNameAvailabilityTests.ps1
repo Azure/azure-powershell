@@ -56,7 +56,7 @@ Tests Relay Namespace CheckNameAvailability operations.
 function CheckNameAvailabilityTests 
 {
 	# Setup    
-	$location = Get-Location
+	$location = "West US"
 	$namespaceName = Get-NamespaceName
 	$namespaceName2 = Get-NamespaceName
 	$resourceGroupName = Get-ResourceGroupName
@@ -70,22 +70,22 @@ function CheckNameAvailabilityTests
 	Write-Debug "ResourceGroup name : $secondResourceGroup"
 	New-AzureRmResourceGroup -Name $secondResourceGroup -Location $location -Force 
 	
-	$ResultCheckNameAvailability = Test-AzureRmCheckNameAvailability -Namespace $namespaceName
+	$ResultCheckNameAvailability = Test-AzureRmRelayName -Namespace $namespaceName
 	Assert-True {$ResultCheckNameAvailability.NameAvailable} "The Namespace Name not Available"
 	
 	Write-Debug " Create new Relay namespace"
 	Write-Debug "NamespaceName : $namespaceName" 
-	$result = New-AzureRmRelayNamespace -ResourceGroup $resourceGroupName -Name $namespaceName -Location $location
+	$result = New-AzureRmRelayNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName -Location $location
 	Wait-Seconds 15
 
 	# Assert 
 	Assert-True {$result.ProvisioningState -eq "Succeeded"}
 
-	$ReCheckNameAvailability = Test-AzureRmCheckNameAvailability -Namespace $namespaceName
+	$ReCheckNameAvailability = Test-AzureRmRelayName -Namespace $namespaceName
 	Assert-False {$ReCheckNameAvailability.NameAvailable} "The Namespace Name Available failed"  
 	
 	Write-Debug " Delete namespaces"
-	Remove-AzureRmRelayNamespace -ResourceGroup $resourceGroupName -Name $namespaceName
+	Remove-AzureRmRelayNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
 
 	Write-Debug " Delete resourcegroup"
 	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force

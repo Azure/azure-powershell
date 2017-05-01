@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnections
             Position = 0,
             HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
-         public string ResourceGroup { get; set; }
+         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
            ValueFromPipelineByPropertyName = true,
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnections
 
         [Parameter(Mandatory = false,
            ParameterSetName = HybridConnectionInputObjectParameterSet,
-           ValueFromPipelineByPropertyName = true,
+           ValueFromPipeline = true,
            HelpMessage = "HybridConnections object.")]
         [ValidateNotNullOrEmpty]
         public HybridConnectionAttibutes InputObject { get; set; }
@@ -72,9 +72,9 @@ namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnections
                     hybridConnections.UserMetadata = UserMetadata;
             }
             
-            if(ShouldProcess(target: Name, action: string.Format("Updating HybridConnections:{0} of NameSpace:{1}", Name,Namespace)))
+            if(ShouldProcess(target: Name, action: string.Format(Resources.UpdateHybirdconnection, Name,Namespace)))
             {
-                WriteObject(Client.UpdateHybridConnections(ResourceGroup, Namespace, Name, hybridConnections));
+                WriteObject(Client.UpdateHybridConnections(ResourceGroupName, Namespace, Name, hybridConnections));
             }
         }
     }

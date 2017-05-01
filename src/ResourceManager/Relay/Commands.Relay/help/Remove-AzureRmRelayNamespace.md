@@ -12,7 +12,7 @@ Removes the namespace from the specified resource group.
 ## SYNTAX
 
 ```
-Remove-AzureRmRelayNamespace [-ResourceGroup] <String> [-Name] <String> [-WhatIf] [-Confirm]
+Remove-AzureRmRelayNamespace [-ResourceGroupName] <String> [-Name] <String> [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
@@ -23,7 +23,7 @@ The **Remove-AzureRmRelayNamespace** cmdlet removes the namespace from the speci
 
 ### Example 1
 ```
-PS C:\> Remove-AzureRmRelayNamespace -ResourceGroup Default-ServiceBus-WestUS -Name TestNameSpace-Relay1
+PS C:\> Remove-AzureRmRelayNamespace -ResourceGroupName Default-ServiceBus-WestUS -Name TestNameSpace-Relay1
 ```
 
 Removes the Relay namespace `TestNameSpace-Relay1` from the specified resource group `Default-ServiceBus-WestUS`.
@@ -45,7 +45,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 Resource Group Name.
 
 ```yaml
@@ -96,7 +96,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -ResourceGroup
+### -ResourceGroupName
  System.String
 
 ### -Name

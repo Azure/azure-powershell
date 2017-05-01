@@ -12,7 +12,7 @@ Returns a description for the specified WcfRelay.
 ## SYNTAX
 
 ```
-Get-AzureRmWcfRelay [-ResourceGroup] <String> [-Namespace] <String> [[-Name] <String>]
+Get-AzureRmWcfRelay [-ResourceGroupName] <String> [-Namespace] <String> [[-Name] <String>]
 ```
 
 ## DESCRIPTION
@@ -22,7 +22,7 @@ The **Get-AzureRmWcfRelay** cmdlet returns a description of the specified WcfRel
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmWcfRelay -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay1
+PS C:\> Get-AzureRmWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay1
 ```
 
 Returns the description of the WcfRelay. 
@@ -44,7 +44,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 Resource Group Name.
 
 ```yaml
@@ -78,7 +78,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -ResourceGroup
+### -ResourceGroupName
  System.String
  
 

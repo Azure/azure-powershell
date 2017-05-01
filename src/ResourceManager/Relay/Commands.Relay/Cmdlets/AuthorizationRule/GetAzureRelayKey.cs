@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands
             Position = 0,
             HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroup { get; set; }
+        public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -65,24 +65,24 @@ namespace Microsoft.Azure.Commands.Relay.Commands
         {
 
             // Get a Namespace List Keys for the specified AuthorizationRule
-            if (Namespace != null && WcfRelay == null && HybridConnection == null)
+            if (ParameterSetName == NamespaceAuthoRuleParameterSet)
             {
-                AuthorizationRuleKeysAttributes keys = Client.GetNamespaceListKeys(ResourceGroup, Namespace, Name);
-                WriteObject(keys);
+                AuthorizationRuleKeysAttributes keys = Client.GetNamespaceListKeys(ResourceGroupName, Namespace, Name);
+                WriteObject(keys,true);
             }
 
             // Get a WcfRelay List Keys for the specified AuthorizationRule
-            if (Namespace != null && WcfRelay != null && HybridConnection == null)              
+            if (ParameterSetName == WcfRelayAuthoRuleParameterSet)              
             {
-                AuthorizationRuleKeysAttributes keys = Client.GetWcfRelayListKeys(ResourceGroup, Namespace, WcfRelay, Name);
-                WriteObject(keys);
+                AuthorizationRuleKeysAttributes keys = Client.GetWcfRelayListKeys(ResourceGroupName, Namespace, WcfRelay, Name);
+                WriteObject(keys,true);
             }
 
             // Get a HybridConnection List Keys for the specified AuthorizationRule
-            if (Namespace != null && WcfRelay == null && HybridConnection != null)                
+            if (ParameterSetName == HybridConnectionAuthoRuleParameterSet)                
             {
-                AuthorizationRuleKeysAttributes keys = Client.GethybridConnectionsListKeys(ResourceGroup, Namespace, HybridConnection, Name);
-                WriteObject(keys);
+                AuthorizationRuleKeysAttributes keys = Client.GethybridConnectionsListKeys(ResourceGroupName, Namespace, HybridConnection, Name);
+                WriteObject(keys,true);
             }           
             
         }

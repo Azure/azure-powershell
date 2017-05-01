@@ -31,13 +31,6 @@ namespace Microsoft.Azure.Commands.Relay.Test.ScenarioTests
         public void WcfRelayCRUD()
         {
             RelayController.NewInstance.RunPsTest("WcfRelayTests");
-        }
-
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
-        //public void WcfRelayAuthorizationRulesCRUD()
-        //{
-        //    RelayController.NewInstance.RunPsTest("WcfRelayAuthTests");
-        //}
+        }        
     }
 }

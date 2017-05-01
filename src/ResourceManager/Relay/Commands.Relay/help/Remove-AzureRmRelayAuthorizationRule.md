@@ -13,19 +13,19 @@ Removes the authorization rule of a HybridConnection from the given Relay entiti
 
 ### NamespaceAuthorizationRuleSet (Default)
 ```
-Remove-AzureRmRelayAuthorizationRule [-ResourceGroup] <String> [-Namespace] <String> [-Name] <String> [-WhatIf]
+Remove-AzureRmRelayAuthorizationRule [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-WhatIf]
  [-Confirm]
 ```
 
 ### WcfRelayAuthorizationRuleSet
 ```
-Remove-AzureRmRelayAuthorizationRule [-ResourceGroup] <String> [[-Namespace] <String>] [-WcfRelay] <String>
+Remove-AzureRmRelayAuthorizationRule [-ResourceGroupName] <String> [[-Namespace] <String>] [-WcfRelay] <String>
  [-Name] <String> [-WhatIf] [-Confirm]
 ```
 
 ### HybridConnectionAuthorizationRuleSet
 ```
-Remove-AzureRmRelayAuthorizationRule [-ResourceGroup] <String> [[-Namespace] <String>]
+Remove-AzureRmRelayAuthorizationRule [-ResourceGroupName] <String> [[-Namespace] <String>]
  [-HybridConnection] <String> [-Name] <String> [-WhatIf] [-Confirm]
 ```
 
@@ -36,21 +36,21 @@ The **Remove-AzureRmRelayAuthorizationRule** cmdlet removes the authorization ru
 
 ### Example 1
 ```
-PS C:\> Remove-AzureRmRelayAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1
+PS C:\> Remove-AzureRmRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1
 ```
 
 Removes the authorization rule `AuthoRule1` of the namespace `TestNameSpace-Relay1`.
 
 ### Example 2
 ```
-PS C:\> Remove-AzureRmRelayAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWcfRelay -Name AuthoRule1
+PS C:\> Remove-AzureRmRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWcfRelay -Name AuthoRule1
 ```
 
 Removes the authorization rule `AuthoRule1` of the WcfRelay `TestWcfRelay` from the namespace `TestNameSpace-Relay1`.
 
 ### Example 3
 ```
-PS C:\> Remove-AzureRmRelayAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnection TestHybridConnection -Name AuthoRule1
+PS C:\> Remove-AzureRmRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnection TestHybridConnection -Name AuthoRule1
 ```
 
 Removes the authorization rule `AuthoRule1` of the HybridConnection `TestHybridConnection` from the namespace `TestNameSpace-Relay1`.
@@ -129,7 +129,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 Resource Group Name.
 
 ```yaml

@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
             Position = 0,
             HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
-         public string ResourceGroup { get; set; }
+         public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Relay Namespace Name.
@@ -76,9 +76,9 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
         {
             // Create a new Relay namespaces
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
-            if (ShouldProcess(target: Name, action: string.Format("Create a new Relay-Namespace:{0} under Resource Group:{1}", Name, ResourceGroup)))
+            if (ShouldProcess(target: Name, action: string.Format("Create a new Relay-Namespace:{0} under Resource Group:{1}", Name, ResourceGroupName)))
             {
-                WriteObject(Client.BeginCreateNamespace(ResourceGroup, Name, Location, tagDictionary));
+                WriteObject(Client.BeginCreateNamespace(ResourceGroupName, Name, Location, tagDictionary));
             }
         }
     }

@@ -13,13 +13,13 @@ Creates a HybridConnection in the specified Relay namespace.
 
 ### HybridConnectionInputObjectSet
 ```
-New-AzureRmRelayHybridConnection -ResourceGroup <String> -Namespace <String> -Name <String>
+New-AzureRmRelayHybridConnection -ResourceGroupName <String> -Namespace <String> -Name <String>
  [-InputObject <HybridConnectionAttibutes>] [-WhatIf] [-Confirm]
 ```
 
 ### HybridConnectionPropertiesSet
 ```
-New-AzureRmRelayHybridConnection -ResourceGroup <String> -Namespace <String> -Name <String>
+New-AzureRmRelayHybridConnection -ResourceGroupName <String> -Namespace <String> -Name <String>
  [-RequiresClientAuthorization <Boolean>] [-UserMetadata <String>] [-WhatIf] [-Confirm]
 ```
 
@@ -30,10 +30,10 @@ The New-AzureRmRelayHybridConnection cmdlet creates a HybridConnection in the sp
 
 ### Example 1 - InputObject
 ```
-PS C:\> $getHybirdConnection = Get-AzureRmRelayHybridConnection -ResourceGroup Default-ServiceBus-WestUS -NamespaceName TestNameSpace-HybirdConnection -Name TestHybirdConnection1
+PS C:\> $getHybirdConnection = Get-AzureRmRelayHybridConnection -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-HybirdConnection -Name TestHybirdConnection1
 PS C:\> $getHybirdConnection.UserMetadata = "TestHybirdConnection2"
 PS C:\> $getHybirdConnection.RequiresClientAuthorization = $False
-PS C:\> New-AzureRmRelayHybridConnection -ResourceGroup Default-Storage-WestUS -Namespace TestNameSpace-HybirdConnection -Name TestHybirdConnection2 -InputObject $getHybirdConnection
+PS C:\> New-AzureRmRelayHybridConnection -ResourceGroupName Default-Storage-WestUS -Namespace TestNameSpace-HybirdConnection -Name TestHybirdConnection2 -InputObject $getHybirdConnection
 
 ```
 
@@ -41,7 +41,7 @@ Creates a new HybirdConnection \`TestHybirdConnection2\` in the specified Relay 
 
 ### Example 2 - Properties
 ```
-PS C:\> New-AzureRmWcfRelay -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-HybirdConnection -Name TestHybirdConnection1 -RequiresClientAuthorization $True -UserMetadata "User Meta data"
+PS C:\> New-AzureRmWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-HybirdConnection -Name TestHybirdConnection1 -RequiresClientAuthorization $True -UserMetadata "User Meta data"
 ```
 
 Creates a new HybirdConnection \`TestHybirdConnection1\` in the specified Relay namespace \`TestNameSpace-HybirdConnection\`.
@@ -155,7 +155,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 Resource Group Name.
 
 ```yaml
@@ -172,7 +172,7 @@ Accept wildcard characters: False
 
 ## INPUTS
 
-### -ResourceGroup
+### -ResourceGroupName
 System.String
 
 ### -NamespaceName

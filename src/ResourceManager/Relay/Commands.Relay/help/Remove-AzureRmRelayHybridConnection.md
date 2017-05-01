@@ -12,7 +12,7 @@ Removes the HybridConnection from the specified HybridConnection namespace.
 ## SYNTAX
 
 ```
-Remove-AzureRmRelayHybridConnection [-ResourceGroup] <String> [-Namespace] <String> [-Name] <String> [-WhatIf] [-Confirm]
+Remove-AzureRmRelayHybridConnection [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
@@ -22,7 +22,7 @@ The **Remove-AzureRmRelayHybridConnection** cmdlet removes the HybridConnection 
 
 ### Example 1
 ```
-PS C:\> Remove-AzureRmRelayHybridConnection -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestHybridConnection
+PS C:\> Remove-AzureRmRelayHybridConnection -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestHybridConnection
 ```
 
 Removes the HybridConnection `TestHybridConnection` from the namespace `TestNameSpace-Relay1`.
@@ -59,7 +59,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 Resource Group Name.
 
 ```yaml
@@ -109,7 +109,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -ResourceGroup
+### -ResourceGroupName
 	System.String
 
 ### -Namespace
