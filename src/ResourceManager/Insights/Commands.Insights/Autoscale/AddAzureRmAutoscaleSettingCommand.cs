@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
     /// <summary>
     /// Create or update an Autoscale setting
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureRmAutoscaleSetting"), OutputType(typeof(AzureOperationResponse))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmAutoscaleSetting"), OutputType(typeof(PSAddAutoscaleSettingOperationResponse))]
     public class AddAzureRmAutoscaleSettingCommand : ManagementCmdletBase
     {
         internal const string AddAzureRmAutoscaleSettingCreateParamGroup = "Parameters for Add-AzureRmAutoscaleSetting cmdlet in the create semantics";
@@ -102,21 +102,15 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            WriteWarning("This output of this cmdlet will change in the next release to return a single object that includes the newly created object.");
             AutoscaleSettingResource parameters = this.CreateAutoscaleSettingResource();
 
             // The result of this operation is operation (AutoscaleSettingResource) is being discarded for backwards compatibility
             var result = this.MonitorManagementClient.AutoscaleSettings.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name, parameters: parameters).Result;
-
-            // Keep this response for backwards compatibility.
-            // Note: Create operations return the newly created object in the new specification, i.e. need to use result.Body
-            var response = new List<AzureOperationResponse>
+            var response = new PSAddAutoscaleSettingOperationResponse()
             {
-                new AzureOperationResponse()
-                {
-                    RequestId = result.RequestId,
-                    StatusCode = result.Response != null ? result.Response.StatusCode : HttpStatusCode.OK
-                }
+                RequestId = result.RequestId,
+                StatusCode = result.Response != null ? result.Response.StatusCode : HttpStatusCode.OK,
+                SettingSpec = result.Body    
             };
 
             WriteObject(response);
