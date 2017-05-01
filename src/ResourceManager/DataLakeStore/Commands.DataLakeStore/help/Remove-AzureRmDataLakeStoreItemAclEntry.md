@@ -66,6 +66,7 @@ The acceptable values for this parameter are:
 Type: AceType
 Parameter Sets: Remove specific ACE
 Aliases: 
+Accepted values: User, Group, Mask, Other
 
 Required: True
 Position: 2

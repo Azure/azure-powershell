@@ -14,8 +14,7 @@ Removes a VPN client-revocation certificate.
 
 ```
 Remove-AzureRmVpnClientRevokedCertificate -VpnClientRevokedCertificateName <String>
- -VirtualNetworkGatewayName <String> -ResourceGroupName <String> -Thumbprint <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ -VirtualNetworkGatewayName <String> -ResourceGroupName <String> -Thumbprint <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,45 +33,6 @@ This command removes a client-revocation certificate from a virtual network gate
 In order to remove a client-revocation certificate, you must specify both the certificate name and the certificate thumbprint.
 
 ## PARAMETERS
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ResourceGroupName
 Specifies the name of the resource group that the virtual network gateway is assigned to.

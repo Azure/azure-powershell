@@ -73,18 +73,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Pre
-Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
+### -Id
+Specifies the fully qualified resource ID for the policy assignment that this cmdlet gets.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
+Type: String
+Parameter Sets: The policy assignment Id parameter set.
+Aliases: ResourceId
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -142,21 +142,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Scope
-Specifies the scope at which the policy is applied for the assignment that this cmdlet gets.
-
-```yaml
-Type: String
-Parameter Sets: The policy assignment name parameter set.
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -PolicyDefinitionId
 Specifies the ID of the policy definition of the policy assignments that this cmdlet gets.
 
@@ -172,13 +157,28 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Id
-Specifies the fully qualified resource ID for the policy assignment that this cmdlet gets.
+### -Pre
+Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Scope
+Specifies the scope at which the policy is applied for the assignment that this cmdlet gets.
 
 ```yaml
 Type: String
-Parameter Sets: The policy assignment Id parameter set.
-Aliases: ResourceId
+Parameter Sets: The policy assignment name parameter set.
+Aliases: 
 
 Required: True
 Position: Named

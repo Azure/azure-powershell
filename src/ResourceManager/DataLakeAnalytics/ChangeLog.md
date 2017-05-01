@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,7 +18,12 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Fix help for some commands to have the proper verbage and examples.
+* Add support for catalog package get and list
+* Add support for listing the following catalog items from deeper ancestors:
+  * Table
+  * TVF
+  * View
+  * Statistics
 
 ## Version 2.8.0
 * Fix help for some commands to have the proper verbage and examples.

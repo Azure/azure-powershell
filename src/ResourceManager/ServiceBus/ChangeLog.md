@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -19,6 +19,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+* Bug fix : some properties of Queue object were not updated beacuse of the space inserted in there name in swagger spec. 
+		- e.g. not able to set value for MaxDeliveryCount, lockDuration, entityAvailabilityStatus, duplicateDetectionHistoryTimeWindow, maxDeliveryCount, messageCount,entityAvailabilityStatus and duplicateDetectionHistoryTimeWindow properties of Queue object.
 
 ## Version 0.2.0
 

@@ -16,14 +16,13 @@ Executes a Windows PowerShell script block on a node.
 ```
 Invoke-AzureRmServerManagementPowerShellCommand [-ResourceGroupName] <String> [-NodeName] <String>
  [-SessionName] <String> [-Command] <ScriptBlock> [-PowerShellSessionName <String>] [-RawOutput]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### BySession
 ```
 Invoke-AzureRmServerManagementPowerShellCommand [-Session] <Session> [-Command] <ScriptBlock>
- [-PowerShellSessionName <String>] [-RawOutput] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ [-PowerShellSessionName <String>] [-RawOutput] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,18 +37,18 @@ The **Invoke-AzureRmServerManagementPowerShellCommand** cmdlet executes a Window
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the name of the resource group that the node belongs to.
+### -Command
+Specifies the script block to run on the target node.
 
 ```yaml
-Type: String
-Parameter Sets: ByName
+Type: ScriptBlock
+Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 0
+Position: 3
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -65,36 +64,6 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SessionName
-Specifies the name of the session to manage the node.
-
-```yaml
-Type: String
-Parameter Sets: ByName
-Aliases: 
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Command
-Specifies the script block to run on the target node.
-
-```yaml
-Type: ScriptBlock
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -128,42 +97,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -ResourceGroupName
+Specifies the name of the resource group that the node belongs to.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: iv
+Parameter Sets: ByName
+Aliases: 
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -181,6 +126,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -SessionName
+Specifies the name of the session to manage the node.
+
+```yaml
+Type: String
+Parameter Sets: ByName
+Aliases: 
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

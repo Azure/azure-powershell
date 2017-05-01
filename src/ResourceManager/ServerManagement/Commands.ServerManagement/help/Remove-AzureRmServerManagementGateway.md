@@ -15,13 +15,12 @@ Removes a Server Management gateway.
 ### ByName
 ```
 Remove-AzureRmServerManagementGateway [-ResourceGroupName] <String> [-GatewayName] <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ByObject
 ```
-Remove-AzureRmServerManagementGateway [-Gateway] <Gateway> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+Remove-AzureRmServerManagementGateway [-Gateway] <Gateway> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,18 +35,20 @@ The **Remove-AzureRmServerManagementGateway** cmdlet removes an Azure Server Man
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the name of the resource group in that the gateway belongs to.
+### -Gateway
+Specifies the gateway that this cmdlet removes.
+
+This parameter may be used instead of the *ResourceGroupName* and the *GatewayName* parameters.
 
 ```yaml
-Type: String
-Parameter Sets: ByName
+Type: Gateway
+Parameter Sets: ByObject
 Aliases: 
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -66,59 +67,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -ResourceGroupName
+Specifies the name of the resource group in that the gateway belongs to.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Gateway
-Specifies the gateway that this cmdlet removes.
-
-This parameter may be used instead of the *ResourceGroupName* and the *GatewayName* parameters.
-
-```yaml
-Type: Gateway
-Parameter Sets: ByObject
+Parameter Sets: ByName
 Aliases: 
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

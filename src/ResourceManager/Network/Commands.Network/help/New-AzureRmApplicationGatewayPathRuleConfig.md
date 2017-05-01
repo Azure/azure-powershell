@@ -16,8 +16,7 @@ Creates an application gateway path rule.
 ```
 New-AzureRmApplicationGatewayPathRuleConfig -Name <String>
  -Paths <System.Collections.Generic.List`1[System.String]> [-BackendAddressPoolId <String>]
- [-BackendHttpSettingsId <String>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ [-BackendHttpSettingsId <String>] [<CommonParameters>]
 ```
 
 ### SetByResource
@@ -25,8 +24,7 @@ New-AzureRmApplicationGatewayPathRuleConfig -Name <String>
 New-AzureRmApplicationGatewayPathRuleConfig -Name <String>
  -Paths <System.Collections.Generic.List`1[System.String]>
  [-BackendAddressPool <PSApplicationGatewayBackendAddressPool>]
- [-BackendHttpSettings <PSApplicationGatewayBackendHttpSettings>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ [-BackendHttpSettings <PSApplicationGatewayBackendHttpSettings>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -148,45 +146,6 @@ If you use this parameter you cannot use the *DefaultBackendHttpSettings* parame
 Type: String
 Parameter Sets: SetByResourceId
 Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
 
 Required: False
 Position: Named

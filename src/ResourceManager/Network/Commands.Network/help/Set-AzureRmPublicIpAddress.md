@@ -13,8 +13,7 @@ Sets the goal state for a public IP address.
 ## SYNTAX
 
 ```
-Set-AzureRmPublicIpAddress -PublicIpAddress <PSPublicIpAddress> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+Set-AzureRmPublicIpAddress -PublicIpAddress <PSPublicIpAddress> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,45 +57,6 @@ First command gets the public IP address resource with name $publicIPName in the
     updated object. DomainNameLabel & Fqdn are modified as expected.
 
 ## PARAMETERS
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -PublicIpAddress
 Specifies a **PublicIpAddress** object that represents the goal state to which the public IP address should be set.

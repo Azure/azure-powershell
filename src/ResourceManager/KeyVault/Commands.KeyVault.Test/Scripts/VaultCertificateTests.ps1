@@ -255,7 +255,8 @@ function Test_GetCertificateNonExistant
 {
     $keyVault = Get-KeyVault
     $certificateName = Get-CertificateName 'getcertificatenonexistant'
-    Assert-Throws { $cert = Get-AzureKeyVaultCertificate $keyVault $certificateName }
+    $cert = Get-AzureKeyVaultCertificate $keyVault $certificateName
+    Assert-Null $cert
 }
 
 
@@ -362,6 +363,15 @@ function Test_NewCertificatePolicy
     Assert-NotNull $policy
     $policy = New-AzureKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus "1.0","2.0" -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self -EmailAtNumberOfDaysBeforeExpiry 15
     Assert-NotNull $policy
+
+    $customEkus = @("1.0", "2.0")
+    $customKeyUsage = @("DecipherOnly", "KeyCertSign")
+    $policy = New-AzureKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus $customEkus -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self -KeyUsage $customKeyUsage
+    Assert-NotNull $policy
+    Assert-NotNull $policy.KeyUsage
+    Assert-True { Equal-OperationList $policy.KeyUsage $customKeyUsage }
+    Assert-NotNull $policy.Ekus
+    Assert-True { Equal-OperationList $policy.Ekus $customEkus }
 }
 
 <#
@@ -444,7 +454,8 @@ function Test_CreateAndGetTestIssuer
     $issuerGotten = Get-AzureKeyVaultCertificateIssuer $keyVault $issuer01Name
     Assert-AreEqual $issuerAdded.Name $issuerGotten.Name
 
-    Assert-Throws { Get-AzureKeyVaultCertificateIssuer $keyVault $nonExistingIssuerName }
+    $noneexisting = Get-AzureKeyVaultCertificateIssuer $keyVault $nonExistingIssuerName
+	Assert-Null $noneexisting
 
     $issuers = Get-AzureKeyVaultCertificateIssuer $keyVault
     Assert-True { $issuers.Count -ge 1 }
@@ -506,7 +517,8 @@ function Test_Add_AzureKeyVaultCertificate
     Assert-NotNull $certificateOperation
 
     # it does not exist anymore
-    Assert-Throws { Get-AzureKeyVaultCertificateOperation $keyVault $certificateName }
+    $certop = Get-AzureKeyVaultCertificateOperation $keyVault $certificateName
+    Assert-Null $certop
     Assert-Throws { Remove-AzureKeyVaultCertificateOperation $keyVault $certificateName -Force }
 }
 

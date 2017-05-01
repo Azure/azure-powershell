@@ -41,7 +41,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Format of the policy. This parameter is optional. Default value is 'application/vnd.ms-azure-apim.policy+xml'.")]
+            HelpMessage = "Format of the policy. This parameter is optional." +
+                          "When using application/vnd.ms-azure-apim.policy+xml, expressions contained within the policy must be XML-escaped." +
+                          "When using application/vnd.ms-azure-apim.policy.raw+xml no escaping is necessary." +
+                          "Default value is 'application/vnd.ms-azure-apim.policy+xml'.")]
         public String Format { get; set; }
 
         [Parameter(
