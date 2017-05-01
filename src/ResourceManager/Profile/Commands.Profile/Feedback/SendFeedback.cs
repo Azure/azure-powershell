@@ -37,7 +37,8 @@ namespace Microsoft.Azure.Commands.Profile
         public override void ExecuteCmdlet()
         {
             this.WriteQuestion(Resources.SendFeedbackRecommendationQuestion);
-            if (!int.TryParse(this.Host.UI.ReadLine(), out var recommendation) || recommendation < 0 || recommendation > 10)
+            int recommendation;
+            if (!int.TryParse(this.Host.UI.ReadLine(), out recommendation) || recommendation < 0 || recommendation > 10)
                 throw new PSArgumentOutOfRangeException(Resources.SendFeedbackOutOfRangeMessage);
 
             this.WriteQuestion(Resources.SendFeedbackPositiveCommentsQuestion);
