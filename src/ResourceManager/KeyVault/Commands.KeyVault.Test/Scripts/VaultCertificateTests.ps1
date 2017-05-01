@@ -255,7 +255,8 @@ function Test_GetCertificateNonExistant
 {
     $keyVault = Get-KeyVault
     $certificateName = Get-CertificateName 'getcertificatenonexistant'
-    Assert-Throws { $cert = Get-AzureKeyVaultCertificate $keyVault $certificateName }
+    $cert = Get-AzureKeyVaultCertificate $keyVault $certificateName
+    Assert-Null $cert
 }
 
 
@@ -453,7 +454,8 @@ function Test_CreateAndGetTestIssuer
     $issuerGotten = Get-AzureKeyVaultCertificateIssuer $keyVault $issuer01Name
     Assert-AreEqual $issuerAdded.Name $issuerGotten.Name
 
-    Assert-Throws { Get-AzureKeyVaultCertificateIssuer $keyVault $nonExistingIssuerName }
+    $noneexisting = Get-AzureKeyVaultCertificateIssuer $keyVault $nonExistingIssuerName
+	Assert-Null $noneexisting
 
     $issuers = Get-AzureKeyVaultCertificateIssuer $keyVault
     Assert-True { $issuers.Count -ge 1 }
@@ -515,7 +517,8 @@ function Test_Add_AzureKeyVaultCertificate
     Assert-NotNull $certificateOperation
 
     # it does not exist anymore
-    Assert-Throws { Get-AzureKeyVaultCertificateOperation $keyVault $certificateName }
+    $certop = Get-AzureKeyVaultCertificateOperation $keyVault $certificateName
+    Assert-Null $certop
     Assert-Throws { Remove-AzureKeyVaultCertificateOperation $keyVault $certificateName -Force }
 }
 

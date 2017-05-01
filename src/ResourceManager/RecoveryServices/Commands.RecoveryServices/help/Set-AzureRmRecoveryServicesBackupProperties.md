@@ -14,7 +14,8 @@ Sets the properties for backup management.
 
 ```
 Set-AzureRmRecoveryServicesBackupProperties -Vault <ARSVault>
- [-BackupStorageRedundancy <AzureRmRecoveryServicesBackupStorageRedundancyType>] [<CommonParameters>]
+ [-BackupStorageRedundancy <AzureRmRecoveryServicesBackupStorageRedundancyType>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,6 +35,22 @@ The second command sets the backup storage redundancy for $Vault01 to GeoRedunda
 
 ## PARAMETERS
 
+### -BackupStorageRedundancy
+Specifies the backup storage redundancy type.
+
+```yaml
+Type: AzureRmRecoveryServicesBackupStorageRedundancyType
+Parameter Sets: (All)
+Aliases: 
+Accepted values: GeoRedundant, LocallyRedundant
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Vault
 Specifies the name of the vault.
 The vault must be an **AzureRmRecoveryServicesVault** object.
@@ -50,13 +67,28 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -BackupStorageRedundancy
-Specifies the backup storage redundancy type.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: AzureRmRecoveryServicesBackupStorageRedundancyType
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named

@@ -15,8 +15,7 @@ Modifies properties of an elastic database pool in a SQL Database.
 ```
 Set-AzureRmSqlElasticPool [-ElasticPoolName] <String> [-Edition <DatabaseEdition>] [-Dtu <Int32>]
  [-StorageMB <Int32>] [-DatabaseDtuMin <Int32>] [-DatabaseDtuMax <Int32>] [-Tags <Hashtable>]
- [-ServerName] <String> [-ResourceGroupName] <String> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ServerName] <String> [-ResourceGroupName] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,35 +68,35 @@ The command sets the max storage for an elastic pool to 2 TB.
 
 ## PARAMETERS
 
-### -ElasticPoolName
-Specifies the name of the elastic pool.
+### -DatabaseDtuMax
+Specifies the maximum number of DTUs that any single database in the pool can consume.
+The default values for different editions are as follows: 
+
+- Basic.
+5 DTUs 
+- Standard.
+100 DTUs
+- Premium.
+125 DTUs
 
 ```yaml
-Type: String
+Type: Int32
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
-Position: 2
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Edition
-Specifies the edition of the Azure SQL Database for the elastic pool.
-You cannot change the edition.
-The acceptable values for this parameter are:
-
-- None
-- Premium
-- Basic
-- Standard
-- DataWarehouse
-- Free
+### -DatabaseDtuMin
+Specifies the minimum number of DTUs that the elastic pool guarantees to all the databases in the pool.
+The default value is zero (0).
 
 ```yaml
-Type: DatabaseEdition
+Type: Int32
 Parameter Sets: (All)
 Aliases: 
 
@@ -131,14 +130,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageMB
-Specifies the storage limit, in megabytes, for the elastic pool.
-For more information, see the New-AzureRmSqlElasticPool cmdlet.
+### -Edition
+Specifies the edition of the Azure SQL Database for the elastic pool.
+You cannot change the edition.
+The acceptable values for this parameter are:
+
+- None
+- Premium
+- Basic
+- Standard
+- DataWarehouse
+- Free
 
 ```yaml
-Type: Int32
+Type: DatabaseEdition
 Parameter Sets: (All)
 Aliases: 
+Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch, Free, PremiumRS
 
 Required: False
 Position: Named
@@ -147,62 +155,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DatabaseDtuMin
-Specifies the minimum number of DTUs that the elastic pool guarantees to all the databases in the pool.
-The default value is zero (0).
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DatabaseDtuMax
-Specifies the maximum number of DTUs that any single database in the pool can consume.
-The default values for different editions are as follows: 
-
-- Basic.
-5 DTUs 
-- Standard.
-100 DTUs
-- Premium.
-125 DTUs
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tags
-Specifies a dictionary of tags that this cmdlet associates with the elastic pool.
-
-```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases: Tag
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ServerName
-Specifies the name of the server that hosts the elastic pool.
+### -ElasticPoolName
+Specifies the name of the elastic pool.
 
 ```yaml
 Type: String
@@ -210,7 +164,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -231,22 +185,29 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -ServerName
+Specifies the name of the server that hosts the elastic pool.
 
 ```yaml
-Type: ActionPreference
+Type: String
 Parameter Sets: (All)
-Aliases: infa
+Aliases: 
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -StorageMB
+Specifies the storage limit, in megabytes, for the elastic pool.
+For more information, see the New-AzureRmSqlElasticPool cmdlet.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
 Position: Named
@@ -255,13 +216,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
+### -Tags
+Specifies a dictionary of tags that this cmdlet associates with the elastic pool.
 
 ```yaml
-Type: String
+Type: Hashtable
 Parameter Sets: (All)
-Aliases: iv
+Aliases: Tag
 
 Required: False
 Position: Named

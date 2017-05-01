@@ -24,16 +24,16 @@ Get-AzureRmLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] 
  [-DetailedOutput] [-ResourceId] <String> [-MaxEvents <Int32>] [<CommonParameters>]
 ```
 
-### Query on ResourceProvider
-```
-Get-AzureRmLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
- [-DetailedOutput] [-ResourceProvider] <String> [-MaxEvents <Int32>] [<CommonParameters>]
-```
-
 ### Query on ResourceGroupProvider
 ```
 Get-AzureRmLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
  [-DetailedOutput] [-ResourceGroup] <String> [-MaxEvents <Int32>] [<CommonParameters>]
+```
+
+### Query on ResourceProvider
+```
+Get-AzureRmLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
+ [-DetailedOutput] [-ResourceProvider] <String> [-MaxEvents <Int32>] [<CommonParameters>]
 ```
 
 ### Query at subscription level
@@ -190,14 +190,43 @@ This command lists all the events associated with the specified resource provide
 
 ## PARAMETERS
 
-### -StartTime
-Specifies the start time of the query in local time.
-The default value is *EndTime* minus one hour.
-
-You can use the Get-Date cmdlet to get a **DateTime** object.
+### -Caller
+Specifies a caller.
 
 ```yaml
-Type: DateTime
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -CorrelationId
+Specifies the correlation ID.
+This parameter is required.
+
+```yaml
+Type: String
+Parameter Sets: Query on CorrelationId
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DetailedOutput
+Indicates that this cmdlet displays detailed output.
+By default, output is summarized.
+
+```yaml
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 
@@ -227,67 +256,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Status
-Specifies the status.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Caller
-Specifies a caller.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DetailedOutput
-Indicates that this cmdlet displays detailed output.
-By default, output is summarized.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceProvider
-Specifies a filter by resource provider.
-
-```yaml
-Type: String
-Parameter Sets: Query on ResourceProvider
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -MaxEvents
 Specifies the total number of events to fetch for the specified filter.
 The default value is 1000.
@@ -299,21 +267,6 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Specifies the resource ID.
-
-```yaml
-Type: String
-Parameter Sets: Query on ResourceIdName
-Aliases: 
-
-Required: True
-Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -334,17 +287,64 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -CorrelationId
-Specifies the correlation ID.
-This parameter is required.
+### -ResourceId
+Specifies the resource ID.
 
 ```yaml
 Type: String
-Parameter Sets: Query on CorrelationId
+Parameter Sets: Query on ResourceIdName
 Aliases: 
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceProvider
+Specifies a filter by resource provider.
+
+```yaml
+Type: String
+Parameter Sets: Query on ResourceProvider
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -StartTime
+Specifies the start time of the query in local time.
+The default value is *EndTime* minus one hour.
+
+You can use the Get-Date cmdlet to get a **DateTime** object.
+
+```yaml
+Type: DateTime
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Status
+Specifies the status.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

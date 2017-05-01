@@ -972,11 +972,13 @@ Param($resourceGroupName, $serviceName)
 
     # create group with default parameters
     $groupId = getAssetName
+	$externalgroupId = getAssetName	
     try
     {
         $newGroupName = getAssetName
         $newGroupDescription = getAssetName
 
+		# create a custom group
         $group = New-AzureRmApiManagementGroup -GroupId $groupId -Context $context -Name $newGroupName -Description $newGroupDescription
 
         Assert-AreEqual $groupId $group.GroupId
@@ -996,7 +998,7 @@ Param($resourceGroupName, $serviceName)
         Assert-AreEqual $newGroupDescription $group.Description
         Assert-AreEqual $false $group.System
         Assert-AreEqual 'Custom' $group.Type
-
+		
         # add Product to Group
         $product = Get-AzureRmApiManagementProduct -Context $context | Select -First 1
         Add-AzureRmApiManagementProductToGroup -Context $context -GroupId $groupId -ProductId $product.ProductId
@@ -1023,14 +1025,25 @@ Param($resourceGroupName, $serviceName)
         Remove-AzureRmApiManagementUserFromGroup -Context $context -GroupId $groupId -UserId $user.UserId
         $groups = Get-AzureRmApiManagementGroup -Context $context -UserId $user.UserId
         Assert-AreEqual 2 $groups.Count
+		
+		# create an external group
+		$externalgroupname = getAssetName
+		$externalgroupdescription = getAssetName
+		$externalgroup = New-AzureRmApiManagementGroup -GroupId $externalgroupId -Context $context -Name $externalgroupname -Type 'External' -Description $externalgroupdescription
+
+        Assert-AreEqual $externalgroupId $externalgroup.GroupId
+        Assert-AreEqual $externalgroupname $externalgroup.Name
+        Assert-AreEqual $externalgroupdescription $externalgroup.Description
+        Assert-AreEqual $false $externalgroup.System
+        Assert-AreEqual 'External' $externalgroup.Type
     }
     finally
     {
         # remove created group
-        $removed = Remove-AzureRmApiManagementGroup -Context $context -GroupId $groupId  -PassThru
+        $removed = Remove-AzureRmApiManagementGroup -Context $context -GroupId $groupId -PassThru
         Assert-True {$removed}
-
-        $group = $null
+		
+		$group = $null
         try
         {
             # check it was removed
@@ -1039,8 +1052,23 @@ Param($resourceGroupName, $serviceName)
         catch
         {
         }
+		
+		Assert-Null $group
 
-        Assert-Null $group
+		# remove created external group
+        $removed = Remove-AzureRmApiManagementGroup -Context $context -GroupId $externalgroupId -PassThru
+        Assert-True {$removed}
+		$group = $null
+        try
+        {
+            # check it was removed
+            $group = Get-AzureRmApiManagementGroup -Context $context -GroupId $externalgroupId
+        }
+        catch
+        {
+        }
+		
+		Assert-Null $group
     }
 }
 

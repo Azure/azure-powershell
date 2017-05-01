@@ -13,7 +13,7 @@ Creates a configurable image object.
 
 ```
 New-AzureRmImageConfig [[-Location] <String>] [[-Tag] <Hashtable>] [[-SourceVirtualMachineId] <String>]
- [[-OsDisk] <ImageOSDisk>] [[-DataDisk] <ImageDataDisk[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-OsDisk] <ImageOSDisk>] [-DataDisk <ImageDataDisk[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,7 +54,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

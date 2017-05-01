@@ -374,7 +374,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                                     null));
                         }
 
-                        configurationDataBlobReference.UploadFromFile(ConfigurationDataPath, FileMode.Open);
+                        configurationDataBlobReference.UploadFromFile(ConfigurationDataPath);
 
                         var configurationDataBlobSasToken =
                             configurationDataBlobReference.GetSharedAccessSignature(blobAccessPolicy);

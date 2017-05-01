@@ -52,16 +52,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Resource Group Name
+### -Databases
+Databases of type DatabaseBackupSetting[]
 
 ```yaml
-Type: String
-Parameter Sets: FromResourceName
+Type: DatabaseBackupSetting[]
+Parameter Sets: (All)
 Aliases: 
 
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -77,6 +77,21 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Resource Group Name
+
+```yaml
+Type: String
+Parameter Sets: FromResourceName
+Aliases: 
+
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -107,21 +122,6 @@ Aliases:
 
 Required: True
 Position: 3
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Databases
-Databases of type DatabaseBackupSetting[]
-
-```yaml
-Type: DatabaseBackupSetting[]
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

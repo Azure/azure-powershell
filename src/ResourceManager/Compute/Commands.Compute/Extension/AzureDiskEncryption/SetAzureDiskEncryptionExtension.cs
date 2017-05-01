@@ -282,6 +282,14 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                                                       null));
             }
 
+            DiskEncryptionSettings encryptionSettingsBackup = vmParameters.StorageProfile.OsDisk.EncryptionSettings;
+
+            if (encryptionSettingsBackup == null)
+            {
+                encryptionSettingsBackup = new DiskEncryptionSettings();
+                encryptionSettingsBackup.Enabled = false;
+            }
+
             DiskEncryptionSettings encryptionSettings = new DiskEncryptionSettings();
             encryptionSettings.Enabled = true;
             encryptionSettings.DiskEncryptionKey = new KeyVaultSecretReference();
@@ -306,10 +314,25 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 Location = vmParameters.Location,
                 Tags = vmParameters.Tags
             };
-            return this.ComputeClient.ComputeManagementClient.VirtualMachines.CreateOrUpdateWithHttpMessagesAsync(
+
+            AzureOperationResponse<VirtualMachine> updateResult = this.ComputeClient.ComputeManagementClient.VirtualMachines.CreateOrUpdateWithHttpMessagesAsync(
                 this.ResourceGroupName,
                 vmParameters.Name,
                 parameters).GetAwaiter().GetResult();
+
+            if(!updateResult.Response.IsSuccessStatusCode)
+            {
+                vmParameters = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(
+                   this.ResourceGroupName, this.VMName));
+                vmParameters.StorageProfile.OsDisk.EncryptionSettings = encryptionSettingsBackup;
+
+                this.ComputeClient.ComputeManagementClient.VirtualMachines.CreateOrUpdateWithHttpMessagesAsync(
+                    this.ResourceGroupName,
+                    vmParameters.Name,
+                    parameters).GetAwaiter().GetResult();
+            }
+
+            return updateResult;
         }
 
         private Hashtable GetExtensionPublicSettings()
@@ -444,11 +467,22 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
                     VirtualMachineExtension parameters = GetVmExtensionParameters(virtualMachineResponse);
 
-                    this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                    AzureOperationResponse<VirtualMachineExtension> extensionPushResult = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
                         this.ResourceGroupName,
                         this.VMName,
                         this.Name,
                         parameters).GetAwaiter().GetResult();
+
+                    if (!extensionPushResult.Response.IsSuccessStatusCode)
+                    {
+                        ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture,
+                                                                                       "Installation failed for extension {0} with error {1}",
+                                                                                       parameters.VirtualMachineExtensionType,
+                                                                                       extensionPushResult.Response.Content.ReadAsStringAsync().GetAwaiter().GetResult())),
+                                                              "InvalidResult",
+                                                              ErrorCategory.InvalidResult,
+                                                              null));
+                    }
 
                     var op = UpdateVmEncryptionSettings();
                     var result = Mapper.Map<PSAzureOperationResponse>(op);

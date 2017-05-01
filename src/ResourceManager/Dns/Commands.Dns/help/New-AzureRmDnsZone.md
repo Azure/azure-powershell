@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
 ms.assetid: B78F3E8B-C7D2-458C-AB23-06F584FE97E0
-online version:
+online version: 
 schema: 2.0.0
 ---
 
@@ -41,7 +41,7 @@ Specifies the name of the DNS zone to create.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -56,7 +56,7 @@ Specifies the resource group in which to create the zone.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named

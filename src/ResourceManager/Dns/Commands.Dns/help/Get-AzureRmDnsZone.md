@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
 ms.assetid: B831ABE6-348C-4DD6-9295-18D23A1FDF63
-online version:
+online version: 
 schema: 2.0.0
 ---
 
@@ -62,7 +62,7 @@ If you also omit the *ResourceGroupName* parameter, this cmdlet gets all DNS zon
 ```yaml
 Type: String
 Parameter Sets: ResourceGroup
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -80,7 +80,7 @@ In this case, this cmdlet gets all DNS zones in the current Azure subscription.
 ```yaml
 Type: String
 Parameter Sets: ResourceGroup
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named

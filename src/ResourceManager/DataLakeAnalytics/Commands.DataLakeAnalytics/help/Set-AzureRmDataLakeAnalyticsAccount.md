@@ -33,10 +33,13 @@ This command changes the default data source and the Tags property of the accoun
 ## PARAMETERS
 
 ### -AllowAzureIpState
-Optionally allow/block Azure originating IPs through the firewall.```yaml
+Optionally allow/block Azure originating IPs through the firewall.
+
+```yaml
 Type: FirewallAllowAzureIpsState
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Enabled, Disabled
 
 Required: False
 Position: Named
@@ -46,10 +49,13 @@ Accept wildcard characters: False
 ```
 
 ### -FirewallState
-Optionally enable/disable existing firewall rules.```yaml
+Optionally enable/disable existing firewall rules.
+
+```yaml
 Type: FirewallState
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Enabled, Disabled
 
 Required: False
 Position: Named
@@ -59,7 +65,9 @@ Accept wildcard characters: False
 ```
 
 ### -MaxDegreeOfParallelism
-The optional maximum supported degree of parallelism to update the account with.```yaml
+The optional maximum supported degree of parallelism to update the account with.
+
+```yaml
 Type: Int32
 Parameter Sets: (All)
 Aliases: 
@@ -72,7 +80,9 @@ Accept wildcard characters: False
 ```
 
 ### -MaxJobCount
-The optional maximum supported jobs running under the account at the same time to set.```yaml
+The optional maximum supported jobs running under the account at the same time to set.
+
+```yaml
 Type: Int32
 Parameter Sets: (All)
 Aliases: 
@@ -100,7 +110,9 @@ Accept wildcard characters: False
 ```
 
 ### -QueryStoreRetention
-The optional number of days that job metadata is retained to set in the account.```yaml
+The optional number of days that job metadata is retained to set in the account.
+
+```yaml
 Type: Int32
 Parameter Sets: (All)
 Aliases: 
@@ -143,10 +155,13 @@ Accept wildcard characters: False
 ```
 
 ### -Tier
-The desired commitment tier for this account to use.```yaml
+The desired commitment tier for this account to use.
+
+```yaml
 Type: TierType
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Consumption, Commitment100AUHours, Commitment500AUHours, Commitment1000AUHours, Commitment5000AUHours, Commitment10000AUHours, Commitment50000AUHours, Commitment100000AUHours, Commitment500000AUHours
 
 Required: False
 Position: Named

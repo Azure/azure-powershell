@@ -14,8 +14,8 @@ Sets property values for a notification hub namespace.
 
 ```
 Set-AzureRmNotificationHubsNamespace [-ResourceGroup] <String> [-Namespace] <String> [-Location] <String>
- [[-State] <NamespaceState>] [[-Critical] <Boolean>] [[-Tags] <Hashtable>] [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [[-State] <NamespaceState>] [[-Critical] <Boolean>] [[-Tags] <Hashtable>] [[-SkuTier] <String>] [-Force]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,10 +51,45 @@ This command enables the namespace named ContosoPartners located in the West US 
 
 ## PARAMETERS
 
-### -ResourceGroup
-Specifies the resource group to which the namespace is assigned.
+### -Critical
+Indicates whether the namespace is a critical namespace.
+Critical namespaces cannot be deleted.
+To delete a critical namespace, you must set the value of this property to False in order to mark the namespace as non-critical.
 
-Resource groups organize items such as namespaces, notification hubs, and authorization rules in ways that help simply inventory management and Azure administration.
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 4
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Force
+Do not ask for confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Specifies the display name of the datacenter that hosts the namespace.
+Although you can set this parameter to any valid Azure location, for optimal performance you should use a datacenter located near the majority of your users.
+
+To get an up-to-date list of Azure locations run the following command:
+
+`Get-AzureLocation | Select-Object DisplayName`
 
 ```yaml
 Type: String
@@ -62,7 +97,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 0
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -85,29 +120,26 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -State
-Specifies the current state of the namespace.
-The acceptable values for this parameter are: Active and Disabled.
+### -ResourceGroup
+Specifies the resource group to which the namespace is assigned.
+
+Resource groups organize items such as namespaces, notification hubs, and authorization rules in ways that help simply inventory management and Azure administration.
 
 ```yaml
-Type: NamespaceState
+Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: False
-Position: 3
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Critical
-Indicates whether the namespace is a critical namespace.
-Critical namespaces cannot be deleted.
-To delete a critical namespace, you must set the value of this property to False in order to mark the namespace as non-critical.
-
-```yaml
-Type: Boolean
+### -SkuTier
+Sku tier of the namespace```yaml
+Type: String
 Parameter Sets: (All)
 Aliases: 
 
@@ -118,21 +150,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Location
-Specifies the display name of the datacenter that hosts the namespace.
-Although you can set this parameter to any valid Azure location, for optimal performance you should use a datacenter located near the majority of your users.
-
-To get an up-to-date list of Azure locations run the following command:
-
-`Get-AzureLocation | Select-Object DisplayName`
+### -State
+Specifies the current state of the namespace.
+The acceptable values for this parameter are: Active and Disabled.
 
 ```yaml
-Type: String
+Type: NamespaceState
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Unknown, Active, Disabled
 
-Required: True
-Position: 2
+Required: False
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -172,21 +201,6 @@ Prompts you for confirmation before running the cmdlet.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Force
-Do not ask for confirmation.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
 
 Required: False
 Position: Named

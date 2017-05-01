@@ -14,8 +14,7 @@ Creates a SQL Database server.
 
 ```
 New-AzureRmSqlServer -ServerName <String> -SqlAdministratorCredentials <PSCredential> -Location <String>
- [-Tags <Hashtable>] [-ServerVersion <String>] [-ResourceGroupName] <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
+ [-Tags <Hashtable>] [-ServerVersion <String>] [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -40,38 +39,6 @@ This command creates a version 12 Azure SQL Database server.
 
 ## PARAMETERS
 
-### -ServerName
-Specifies the name of the new server.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SqlAdministratorCredentials
-Specifies the SQL Database server administrator credentials for the new server.
-To obtain a **PSCredential** object, use the Get-Credential cmdlet.
-For more information, type `Get-Help Get-Credential`.
-
-```yaml
-Type: PSCredential
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Location
 Specifies the location of the data center where this cmdlet creates the server.
 
@@ -87,15 +54,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
-Specifies a dictionary of tags that this cmdlet associates with the new server.
+### -ResourceGroupName
+Specifies the name of the resource group to which this cmdlet assigns the server.
 
 ```yaml
-Type: Hashtable
+Type: String
 Parameter Sets: (All)
-Aliases: Tag
+Aliases: 
 
-Required: False
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServerName
+Specifies the name of the new server.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -120,52 +102,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Specifies the name of the resource group to which this cmdlet assigns the server.
+### -SqlAdministratorCredentials
+Specifies the SQL Database server administrator credentials for the new server.
+To obtain a **PSCredential** object, use the Get-Credential cmdlet.
+For more information, type `Get-Help Get-Credential`.
 
 ```yaml
-Type: String
+Type: PSCredential
 Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
+### -Tags
+Specifies a dictionary of tags that this cmdlet associates with the new server.
 
 ```yaml
-Type: String
+Type: Hashtable
 Parameter Sets: (All)
-Aliases: iv
+Aliases: Tag
 
 Required: False
 Position: Named
