@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add support for catalog package get and list
+* Add support for listing the following catalog items from deeper ancestors:
+  * Table
+  * TVF
+  * View
+  * Statistics
 
 ## Version 2.8.0
 * Fix help for some commands to have the proper verbage and examples.

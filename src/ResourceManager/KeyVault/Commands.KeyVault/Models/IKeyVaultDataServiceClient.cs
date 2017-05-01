@@ -30,11 +30,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         KeyBundle GetKey(string vaultName, string keyName, string keyVersion);
 
+        DeletedKeyBundle GetDeletedKey(string vaultName, string name);
+
         IEnumerable<KeyIdentityItem> GetKeys(KeyVaultObjectFilterOptions options);
 
         IEnumerable<KeyIdentityItem> GetKeyVersions(KeyVaultObjectFilterOptions options);
 
-        KeyBundle DeleteKey(string vaultName, string keyName);
+        IEnumerable<DeletedKeyIdentityItem> GetDeletedKeys(KeyVaultObjectFilterOptions options);
+
+        DeletedKeyBundle DeleteKey(string vaultName, string keyName);
+
+        void PurgeKey(string vaultName, string name);
+
+        KeyBundle RecoverKey(string vaultName, string keyName);
 
         Secret SetSecret(string vaultName, string secretName, SecureString secretValue, SecretAttributes secretAttributes);
 
@@ -42,11 +50,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         Secret GetSecret(string vaultName, string secretName, string secretVersion);
 
+        DeletedSecret GetDeletedSecret(string vaultName, string name);
+
         IEnumerable<SecretIdentityItem> GetSecrets(KeyVaultObjectFilterOptions options);
 
         IEnumerable<SecretIdentityItem> GetSecretVersions(KeyVaultObjectFilterOptions options);
 
-        Secret DeleteSecret(string vaultName, string secretName);
+        IEnumerable<DeletedSecretIdentityItem> GetDeletedSecrets(KeyVaultObjectFilterOptions options);
+
+        DeletedSecret DeleteSecret(string vaultName, string secretName);
+
+        void PurgeSecret(string vaultName, string secretName);
+
+        Secret RecoverSecret(string vaultName, string secretName);
 
         string BackupKey(string vaultName, string keyName, string outputBlobPath);
 
