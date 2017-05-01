@@ -54,7 +54,7 @@ PowerShellVersion = '5.1'
 # RequiredModules = @()
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\netstandard1.6\Newtonsoft.Json.dll', '.\netstandard1.6\System.Runtime.Serialization.Json.dll'
+# RequiredAssemblies = @()
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @('.\netstandard1.6\AzureRmProfileStartup.ps1')
@@ -63,10 +63,10 @@ RequiredAssemblies = '.\netstandard1.6\Newtonsoft.Json.dll', '.\netstandard1.6\S
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = '.\netstandard1.6\Microsoft.Azure.Commands.Profile.format.ps1xml'
+FormatsToProcess = 'netstandard1.6\Microsoft.Azure.Commands.Profile.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\netstandard1.6\Microsoft.Azure.Commands.Profile.dll')
+NestedModules = @('netstandard1.6\Microsoft.Azure.Commands.Profile.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
