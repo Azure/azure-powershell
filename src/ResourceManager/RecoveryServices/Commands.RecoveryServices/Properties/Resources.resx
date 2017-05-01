@@ -301,4 +301,7 @@ Please provide a storage account with the same location as that of the vault.</v
   <data name="NoBackupPropertiesProvided" xml:space="preserve">
     <value>BackupStorageRedundancy is either null or empty.</value>
   </data>
+  <data name="VaultTarget" xml:space="preserve">
+    <value>Azure Recovery Services Vault</value>
+  </data>
 </root>
