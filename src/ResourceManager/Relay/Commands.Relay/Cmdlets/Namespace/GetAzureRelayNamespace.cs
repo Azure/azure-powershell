@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "Resource Group Name.")]
-        public string ResourceGroup { get; set; }
+        public string ResourceGroupName { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -44,16 +44,16 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
 
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(ResourceGroup) && !string.IsNullOrEmpty(Name))
+            if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(Name))
             {
                 // Get Relay namespace
-                RelayNamespaceAttributes attributes = Client.GetNamespace(ResourceGroup, Name);
+                RelayNamespaceAttributes attributes = Client.GetNamespace(ResourceGroupName, Name);
                 WriteObject(attributes);
             }
-            else if (!string.IsNullOrEmpty(ResourceGroup) && string.IsNullOrEmpty(Name))
+            else if (!string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Name))
             {
                 // List all Relay namespace in given resource group 
-                IEnumerable<RelayNamespaceAttributes> namespaceList = Client.ListNamespacesByResourceGroup(ResourceGroup);
+                IEnumerable<RelayNamespaceAttributes> namespaceList = Client.ListNamespacesByResourceGroup(ResourceGroupName);
                 WriteObject(namespaceList.ToList(), true);
             }
             else

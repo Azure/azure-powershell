@@ -32,12 +32,5 @@ namespace Microsoft.Azure.Commands.Relay.Test.ScenarioTests
         {
             RelayController.NewInstance.RunPsTest("HybridConnectionsTests");
         }
-
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
-        //public void HybridConnectionsAuthorizationRulesCRUD()
-        //{
-        //    RelayController.NewInstance.RunPsTest("HybridConnectionsAuthTests");
-        //}
     }
 }

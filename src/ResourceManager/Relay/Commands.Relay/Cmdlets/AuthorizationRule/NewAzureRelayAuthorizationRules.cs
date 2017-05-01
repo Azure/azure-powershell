@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands
             Position = 0,
             HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
-         public string ResourceGroup { get; set; }
+         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -63,7 +63,8 @@ namespace Microsoft.Azure.Commands.Relay.Commands
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Rights, e.g.  \"Listen\",\"Send\",\"Manage\"")]
-        [ValidateNotNullOrEmpty]
+        [ValidateSet("Listen","Send","Manage",
+            IgnoreCase = true)]
         public string[] Rights { get; set; }
 
         public override void ExecuteCmdlet()
@@ -77,25 +78,24 @@ namespace Microsoft.Azure.Commands.Relay.Commands
             }
 
             //Create a new Namespace Authorization Rule
-            if (Namespace != null && WcfRelay == null && HybridConnection == null)
-                if (ShouldProcess(target: sasRule.Name, action: string.Format("Creating new AuthorizationRule named:{0} for Namespace: {1}", Name, Namespace)))
+            if (ParameterSetName == NamespaceAuthoRuleParameterSet)
+                if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.CreateNamespaceAuthorizationrule, Name, Namespace)))
                 {
-                    WriteObject(Client.CreateOrUpdateNamespaceAuthorizationRules(ResourceGroup, Namespace, Name, sasRule));
+                    WriteObject(Client.CreateOrUpdateNamespaceAuthorizationRules(ResourceGroupName, Namespace, Name, sasRule));
                 }
 
-
             // Create a new WcfRelay authorizationRule
-            if (Namespace != null && WcfRelay != null && HybridConnection == null)
-                if (ShouldProcess(target: sasRule.Name, action: string.Format("Creating new AuthorizationRule named:{0} for WcfRelay: {1}", Name, WcfRelay)))
+            if (ParameterSetName == WcfRelayAuthoRuleParameterSet)
+                if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.CreateWcfRelayAuthorizationrule, Name, WcfRelay)))
             {
-                WriteObject(Client.CreateOrUpdateWcfRelayAuthorizationRules(ResourceGroup, Namespace, WcfRelay, Name, sasRule));
+                WriteObject(Client.CreateOrUpdateWcfRelayAuthorizationRules(ResourceGroupName, Namespace, WcfRelay, Name, sasRule));
             }
 
             // Create a new HybridConnection authorizationRule
-            if (Namespace != null && WcfRelay == null && HybridConnection != null)
-                if (ShouldProcess(target: sasRule.Name, action: string.Format("Creating new AuthorizationRule named:{0} for HybridConnection: {1}", Name, HybridConnection)))
+            if (ParameterSetName == HybridConnectionAuthoRuleParameterSet)
+                if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.CreateHybirdconnectionAuthorizationrule, Name, HybridConnection)))
                 {
-                    WriteObject(Client.CreateOrUpdateHybridConnectionsAuthorizationRules(ResourceGroup, Namespace, HybridConnection, Name, sasRule));
+                    WriteObject(Client.CreateOrUpdateHybridConnectionsAuthorizationRules(ResourceGroupName, Namespace, HybridConnection, Name, sasRule));
                 }
 
         }

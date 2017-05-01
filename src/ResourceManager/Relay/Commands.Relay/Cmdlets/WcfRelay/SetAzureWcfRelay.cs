@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.WcfRelay
             Position = 0,
             HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
-         public string ResourceGroup { get; set; }
+         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
            ValueFromPipelineByPropertyName = true,
@@ -72,9 +72,9 @@ namespace Microsoft.Azure.Commands.Relay.Commands.WcfRelay
                     wcfRelay.UserMetadata = UserMetadata;
             }
             
-            if(ShouldProcess(target: Name, action: string.Format("Updating WcfRelay:{0} of NameSpace:{1}", Name,Namespace)))
+            if(ShouldProcess(target: Name, action: string.Format(Resources.UpdateWcfRelay, Name,Namespace)))
             {
-                WriteObject(Client.UpdateWcfRelay(ResourceGroup, Namespace, Name, wcfRelay));
+                WriteObject(Client.UpdateWcfRelay(ResourceGroupName, Namespace, Name, wcfRelay));
             }
         }
     }

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.WcfRelay
             Position = 0,
             HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
-         public string ResourceGroup { get; set; }
+         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -44,11 +44,15 @@ namespace Microsoft.Azure.Commands.Relay.Commands.WcfRelay
 
         public override void ExecuteCmdlet()
         {
-            // delete a WcfRelay 
-            if(ShouldProcess(target:Name, action:string.Format("Deleting WcfRelay: {0} of NnameSpace{1}",Name,Namespace)))
+            // Remove a HybridConnections             
+            ConfirmAction(
+            string.Format(Resources.RemoveWcfRelay, Name, Namespace),
+            Name,
+            () =>
             {
-                WriteObject(Client.DeleteWcfRelay(ResourceGroup, Namespace, Name));
-            }            
+                Client.DeleteWcfRelay(ResourceGroupName, Namespace, Name);
+            });
+
         }
     }
 }

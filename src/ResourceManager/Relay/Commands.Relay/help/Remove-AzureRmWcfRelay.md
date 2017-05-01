@@ -12,7 +12,7 @@ Removes the WcfRelay from the specified Relay namespace.
 ## SYNTAX
 
 ```
-Remove-AzureRmWcfRelay [-ResourceGroup] <String> [-Namespace] <String> [-Name] <String>
+Remove-AzureRmWcfRelay [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
  [-WhatIf] [-Confirm]
 ```
 
@@ -23,7 +23,7 @@ The **Remove-AzureRmWcfRelay** cmdlet removes the WcfRelay from the specified Re
 
 ### Example 1
 ```
-PS C:\> Remove-AzureRmWcfRelay -ResourceGroup Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -Name TestWCFRelay1
+PS C:\> Remove-AzureRmWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -Name TestWCFRelay1
 ```
 
 Removes the WcfRelay `TestWCFRelay1` from the namespace `TestNameSpace-Relay1`.
@@ -45,7 +45,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 Resource Group Name.
 
 ```yaml
@@ -110,7 +110,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -ResourceGroup
+### -ResourceGroupName
  System.String
  
 

@@ -138,15 +138,9 @@ namespace Microsoft.Azure.Commands.Relay
             return new AuthorizationRuleAttributes(response);
         }
 
-        public bool DeleteNamespaceAuthorizationRules(string resourceGroupName, string namespaceName, string authRuleName)
+        public void DeleteNamespaceAuthorizationRules(string resourceGroupName, string namespaceName, string authRuleName)
         {
-            if (string.Equals(AuthorizationRuleAttributes.DefaultNamespaceAuthorizationRule, authRuleName, StringComparison.InvariantCultureIgnoreCase))
-            {
-                return false;
-            }
-
-            Client.Namespaces.DeleteAuthorizationRule(resourceGroupName, namespaceName, authRuleName);
-            return true;
+            Client.Namespaces.DeleteAuthorizationRule(resourceGroupName, namespaceName, authRuleName);            
         }
 
         public AuthorizationRuleKeysAttributes GetNamespaceListKeys(string resourceGroupName, string namespaceName, string authRuleName)
@@ -216,10 +210,9 @@ namespace Microsoft.Azure.Commands.Relay
         }
 
 
-        public bool DeleteWcfRelay(string resourceGroupName, string namespaceName, string wcfRelayName)
+        public void DeleteWcfRelay(string resourceGroupName, string namespaceName, string wcfRelayName)
         {
             Client.WCFRelays.Delete(resourceGroupName, namespaceName, wcfRelayName);
-            return true;
         }
 
         public AuthorizationRuleAttributes GetWcfRelayAuthorizationRules(string resourceGroupName, string namespaceName, string wcfRelayName, string authRuleName)
@@ -246,15 +239,9 @@ namespace Microsoft.Azure.Commands.Relay
             return new AuthorizationRuleAttributes(response);
         }
 
-        public bool DeleteWcfRelayAuthorizationRules(string resourceGroupName, string namespaceName, string wcfRelayName, string authRuleName)
+        public void DeleteWcfRelayAuthorizationRules(string resourceGroupName, string namespaceName, string wcfRelayName, string authRuleName)
         {
-            if (string.Equals(AuthorizationRuleAttributes.DefaultNamespaceAuthorizationRule, authRuleName, StringComparison.InvariantCultureIgnoreCase))
-            {
-                return false;
-            }
-
-            Client.WCFRelays.DeleteAuthorizationRule(resourceGroupName, namespaceName, wcfRelayName, authRuleName);
-            return true;
+            Client.WCFRelays.DeleteAuthorizationRule(resourceGroupName, namespaceName, wcfRelayName, authRuleName);            
         }
 
         public AuthorizationRuleKeysAttributes GetWcfRelayListKeys(string resourceGroupName, string namespaceName, string wcfRelayName, string authRuleName)
@@ -318,10 +305,9 @@ namespace Microsoft.Azure.Commands.Relay
             return new HybridConnectionAttibutes(response);
         }
 
-        public bool DeleteHybridConnections(string resourceGroupName, string namespaceName, string hybridConnectionsName)
+        public void DeleteHybridConnections(string resourceGroupName, string namespaceName, string hybridConnectionsName)
         {
             Client.HybridConnections.Delete(resourceGroupName, namespaceName, hybridConnectionsName);
-            return true;
         }
 
         public AuthorizationRuleAttributes GetHybridConnectionsAuthorizationRules(string resourceGroupName, string namespaceName, string hybridConnectionsName, string authRuleName)
@@ -348,15 +334,9 @@ namespace Microsoft.Azure.Commands.Relay
             return new AuthorizationRuleAttributes(response);
         }
 
-        public bool DeleteHybridConnectionsAuthorizationRules(string resourceGroupName, string namespaceName, string hybridConnectionsName, string authRuleName)
+        public void DeleteHybridConnectionsAuthorizationRules(string resourceGroupName, string namespaceName, string hybridConnectionsName, string authRuleName)
         {
-            if (string.Equals(AuthorizationRuleAttributes.DefaultNamespaceAuthorizationRule, authRuleName, StringComparison.InvariantCultureIgnoreCase))
-            {
-                return false;
-            }
-
-            Client.HybridConnections.DeleteAuthorizationRule(resourceGroupName, namespaceName, hybridConnectionsName, authRuleName);
-            return true;
+            Client.HybridConnections.DeleteAuthorizationRule(resourceGroupName, namespaceName, hybridConnectionsName, authRuleName);            
         }
 
         public AuthorizationRuleKeysAttributes GethybridConnectionsListKeys(string resourceGroupName, string namespaceName, string hybridConnectionsName, string authRuleName)

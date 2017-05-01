@@ -31,13 +31,6 @@ namespace Microsoft.Azure.Commands.Relay.Test.ScenarioTests
         public void RelayNamespaceCRUD()
         {
             RelayController.NewInstance.RunPsTest("RelayNamespaceTests");
-        }
-
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
-        //public void RelayNamespaceAuthorizationRulesCRUD()
-        //{
-        //    RelayController.NewInstance.RunPsTest("RelayNamespaceAuthTests");
-        //}
+        }        
     }
 }

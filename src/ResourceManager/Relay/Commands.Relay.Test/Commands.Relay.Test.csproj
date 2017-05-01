@@ -159,14 +159,12 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="ScenarioTests\Common.ps1" />
     <None Include="ScenarioTests\OperationsListTest.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\CheckNameAvailabilityTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\Common.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\RelayNamespaceTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

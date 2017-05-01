@@ -13,12 +13,12 @@ Updates the description of a HybridConnection in the specified Relay namespace.
 
 ### HybridConnectionInputObjectSet
 ```
-Set-AzureRmRelayHybridConnection -ResourceGroup <String> -Namespace <String> -Name <String> [-InputObject <HybridConnectionAttibutes>] [-WhatIf] [-Confirm]
+Set-AzureRmRelayHybridConnection -ResourceGroupName <String> -Namespace <String> -Name <String> [-InputObject <HybridConnectionAttibutes>] [-WhatIf] [-Confirm]
 ```
 
 ### HybridConnectionPropertiesSet
 ```
-Set-AzureRmRelayHybridConnection -ResourceGroup <String> -Namespace <String> -Name <String> [-UserMetadata <String>] [-WhatIf] [-Confirm]
+Set-AzureRmRelayHybridConnection -ResourceGroupName <String> -Namespace <String> -Name <String> [-UserMetadata <String>] [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
@@ -29,14 +29,14 @@ The Set-AzureRmRelayHybridConnection cmdlet updates the description for the Hybr
 ### Example 1
 ```
 PS C:\>
-PS C:\> $GetHybrid = Get-AzureRmRelayHybridConnection -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestHybridConnection
+PS C:\> $GetHybrid = Get-AzureRmRelayHybridConnection -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestHybridConnection
 PS C:\> $GetHybrid.UserMetadata = "Test UserMetadata"
-PS C:\> Set-AzureRmRelayHybridConnection -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestHybridConnection -InputObject $GetHybrid
+PS C:\> Set-AzureRmRelayHybridConnection -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestHybridConnection -InputObject $GetHybrid
 ```
 
 ### Example 2
 ```
-PS C:\> Set-AzureRmRelayHybridConnection -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestHybridConnection -UserMetadata = "Test UserMetadata updated"
+PS C:\> Set-AzureRmRelayHybridConnection -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestHybridConnection -UserMetadata = "Test UserMetadata updated"
 ```
 
 Updates the specified HybridConnection with a new description in the specified namespace.
@@ -151,7 +151,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 Resource Group Name.
 
 ```yaml
@@ -168,7 +168,7 @@ Accept wildcard characters: False
 
 ## INPUTS
 
-### -ResourceGroup
+### -ResourceGroupName
 System.String
 
 ### -NamespaceName

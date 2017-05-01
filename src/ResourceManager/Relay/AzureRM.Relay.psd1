@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '2.7.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '2.8.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
@@ -75,7 +75,7 @@ FunctionsToExport = @()
 CmdletsToExport =  'New-AzureRmRelayNamespace', 'Get-AzureRmRelayNamespace','Set-AzureRmRelayNamespace', 'Remove-AzureRmRelayNamespace',
 				   'New-AzureRmWcfRelay', 'Get-AzureRmWcfRelay','Set-AzureRmWcfRelay','Remove-AzureRmWcfRelay',
 				   'New-AzureRmRelayHybridConnection', 'Get-AzureRmRelayHybridConnection','Set-AzureRmRelayHybridConnection','Remove-AzureRmRelayHybridConnection',
-				   'Test-AzureRmCheckNameAvailability','Get-AzureRmRelayOperation',
+				   'Test-AzureRmRelayName','Get-AzureRmRelayOperation',
 				   'New-AzureRmRelayKey', 'Get-AzureRmRelayKey',
 				   'New-AzureRmRelayAuthorizationRule', 'Get-AzureRmRelayAuthorizationRule','Set-AzureRmRelayAuthorizationRule', 'Remove-AzureRmRelayAuthorizationRule'
 
@@ -101,7 +101,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','ResourceManager','ARM','Relay'
+        Tags = 'Azure','ResourceManager','ARM','Relay', 'ServiceBus'
 
         # A URL to the license for this module.
         LicenseUri = 'https://raw.githubusercontent.com/Azure/azure-powershell/dev/LICENSE.txt'

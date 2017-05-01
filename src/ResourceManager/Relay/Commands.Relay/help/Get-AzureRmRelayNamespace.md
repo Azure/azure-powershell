@@ -12,7 +12,7 @@ Gets a description for the specified Relay namespace within the resource group.
 ## SYNTAX
 
 ```
-Get-AzureRmRelayNamespace [[-ResourceGroup] <String>] [[-Name] <String>]
+Get-AzureRmRelayNamespace [[-ResourceGroupName] <String>] [[-Name] <String>]
 ```
 
 ## DESCRIPTION
@@ -22,7 +22,7 @@ The **Get-AzureRmRelayNamespace** cmdlet gets a description for the specified Re
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmRelayNamespace -ResourceGroup Default-ServiceBus-WestUS -Name TestNameSpace-Relay1
+PS C:\> Get-AzureRmRelayNamespace -ResourceGroupName Default-ServiceBus-WestUS -Name TestNameSpace-Relay1
 ```
 
 Returns a description of the specified Relay namespace.
@@ -44,7 +44,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 Resource Group Name.
 
 ```yaml
@@ -63,7 +63,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -ResourceGroup
+### -ResourceGroupName
 System.String
 
 ### -Name

@@ -13,12 +13,12 @@ Creates a WcfRelay in the specified Relay namespace.
 
 ### WcfRelayInputObjectSet
 ```
-New-AzureRmWcfRelay -ResourceGroup <String> -Namespace <String> -Name <String> [-InputObject <WcfRelayAttributes>] [-WhatIf] [-Confirm]
+New-AzureRmWcfRelay -ResourceGroupName <String> -Namespace <String> -Name <String> [-InputObject <WcfRelayAttributes>] [-WhatIf] [-Confirm]
 ```
 
 ### WcfRelayPropertiesSet
 ```
-New-AzureRmWcfRelay -ResourceGroup <String> -Namespace <String> -Name <String> [-WcfRelayType <String>] [-RequiresClientAuthorization <Boolean>] [-RequiresTransportSecurity <Boolean>] [-UserMetadata <String>]
+New-AzureRmWcfRelay -ResourceGroupName <String> -Namespace <String> -Name <String> [-WcfRelayType <String>] [-RequiresClientAuthorization <Boolean>] [-RequiresTransportSecurity <Boolean>] [-UserMetadata <String>]
  [-WhatIf] [-Confirm]
 ```
 
@@ -29,11 +29,11 @@ The New-AzureRmWcfRelay cmdlet creates a WcfRelay in the specified Relay namespa
 
 ### Example 1 - InputObject
 ```
-PS C:\> $getWcfRelay = Get-AzureRmWcfRelay -ResourceGroup Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -WcfRelayName TestWCFRelay1
+PS C:\> $getWcfRelay = Get-AzureRmWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -WcfRelayName TestWCFRelay1
 PS C:\> $GetWcfRelay.UserMetadata = "TestWCFRelay2"
 PS C:\> $GetWcfRelay.RequiresClientAuthorization = $False
 PS C:\> $GetWcfRelay.RelayType = "Http"
-PS C:\> New-AzureRmWcfRelay -ResourceGroup Default-Storage-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay2 -InputObject
+PS C:\> New-AzureRmWcfRelay -ResourceGroupName Default-Storage-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay2 -InputObject
 
 ```
 
@@ -41,7 +41,7 @@ Creates a new WcfRelay \`TestWCFRelay2\` in the specified Relay namespace \`Test
 
 ### Example 2 - Properties
 ```
-PS C:\> New-AzureRmWcfRelay -ResourceGroup Default-Storage-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay -WcfRelayType "NetTcp"  -RequiresClientAuthorization $True -RequiresTransportSecurity $True -UserMetadata "User Meta data"
+PS C:\> New-AzureRmWcfRelay -ResourceGroupName Default-Storage-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay -WcfRelayType "NetTcp"  -RequiresClientAuthorization $True -RequiresTransportSecurity $True -UserMetadata "User Meta data"
 ```
 
 Creates a new WcfRelay \`TestWCFRelay\` in the specified Relay namespace \`TestNameSpace-Relay1\`.
@@ -187,7 +187,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 Resource Group Name.
 
 ```yaml
@@ -206,7 +206,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -ResourceGroup
+### -ResourceGroupName
 System.String
 
 ### -NamespaceName

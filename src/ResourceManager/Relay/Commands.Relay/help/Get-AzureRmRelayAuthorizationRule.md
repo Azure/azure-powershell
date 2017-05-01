@@ -13,17 +13,17 @@ Gets the description of a specified authorization rule for a given Relay entitie
 
 ### NamespaceAuthorizationRuleSet (Default)
 ```
-Get-AzureRmRelayAuthorizationRule [-ResourceGroup] <String> [-Namespace] <String> [[-Name] <String>]
+Get-AzureRmRelayAuthorizationRule [-ResourceGroupName] <String> [-Namespace] <String> [[-Name] <String>]
 ```
 
 ### WcfRelayAuthorizationRuleSet
 ```
-Get-AzureRmRelayAuthorizationRule [-ResourceGroup] <String> [[-Namespace] <String>] [-WcfRelay] <String> [[-Name] <String>]
+Get-AzureRmRelayAuthorizationRule [-ResourceGroupName] <String> [[-Namespace] <String>] [-WcfRelay] <String> [[-Name] <String>]
 ```
 
 ### HybridConnectionAuthorizationRuleSet
 ```
-Get-AzureRmRelayAuthorizationRule [-ResourceGroup] <String> [[-Namespace] <String>] [-HybridConnection] <String> [[-Name] <String>]
+Get-AzureRmRelayAuthorizationRule [-ResourceGroupName] <String> [[-Namespace] <String>] [-HybridConnection] <String> [[-Name] <String>]
 ```
 
 ## DESCRIPTION
@@ -33,21 +33,21 @@ The **Get-AzureRmRelayAuthorizationRule** cmdlet gets the description of the spe
 
 ### Example 1 - Namespace
 ```
-PS C:\> Get-AzureRmRelayNamespaceAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1
+PS C:\> Get-AzureRmRelayNamespaceAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1
 ```
 
 Returns the specified authorization rule description for a specified namespace.
 
 ### Example 2 - WcfRelay
 ```
-PS C:\>Get-AzureRmWcfRelayAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWCFRelay1 -Name AuthoRule1
+PS C:\>Get-AzureRmWcfRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWCFRelay1 -Name AuthoRule1
 ```
 
 Returns the specified authorization rule description for a given WcfRelay.
 
 ### Example 3 - HybridConnection
 ```
-PS C:\> Get-AzureRmRelayHybridConnectionAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnections TestHybridConnection -Name AuthoRule1
+PS C:\> Get-AzureRmRelayHybridConnectionAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnections TestHybridConnection -Name AuthoRule1
 ```
 
 Returns the specified authorization rule description for a given HybridConnection.
@@ -110,7 +110,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 Resource Group Name.
 
 ```yaml

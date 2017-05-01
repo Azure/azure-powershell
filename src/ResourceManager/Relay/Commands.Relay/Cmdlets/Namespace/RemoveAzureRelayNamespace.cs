@@ -34,15 +34,18 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
             Position = 1,
             HelpMessage = "Relay Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        public string Name { get; set; }
 
         public override void ExecuteCmdlet()
-        {
-            // delete a Relay namespace 
-            if (ShouldProcess(target:NamespaceName,action:string.Format("Delete NameSpace:{0} from ResourceGroup:{1}",NamespaceName,ResourceGroupName)))
+        { 
+            // Remove a Relay namespace             
+            ConfirmAction(
+            string.Format(Resources.RemoveRelayNamespace, Name, ResourceGroupName),
+            Name,
+            () =>
             {
-                Client.BeginDeleteNamespace(ResourceGroupName, NamespaceName);
-            }            
+                Client.BeginDeleteNamespace(ResourceGroupName, Name);
+            });
         }
     }
 }

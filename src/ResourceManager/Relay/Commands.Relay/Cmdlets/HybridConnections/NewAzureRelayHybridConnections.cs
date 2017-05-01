@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnection
             Position = 0,
             HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
-         public string ResourceGroup { get; set; }
+         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnection
 
             if(ShouldProcess(target: Name, action:string.Format("Creating new HybridConnections:{0} under NameSpace:{1} ", Name, Namespace)))
             {
-                WriteObject(Client.CreateOrUpdateHybridConnections(ResourceGroup, Namespace, Name, hybridConnections));
+                WriteObject(Client.CreateOrUpdateHybridConnections(ResourceGroupName, Namespace, Name, hybridConnections));
             }
                         
         }

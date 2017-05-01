@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnections
             Position = 0,
             HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
-         public string ResourceGroup { get; set; }
+         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -52,13 +52,13 @@ namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnections
             if (!string.IsNullOrEmpty(Name))
             {
                 // Get a HybridConnections
-                HybridConnectionAttibutes hybridConnections = Client.GetHybridConnections(ResourceGroup, Namespace, Name);
+                HybridConnectionAttibutes hybridConnections = Client.GetHybridConnections(ResourceGroupName, Namespace, Name);
                 WriteObject(hybridConnections);
             }
             else
             {
                 // Get all HybridConnections
-                IEnumerable<HybridConnectionAttibutes> hybridConnectionsList = Client.ListAllHybridConnections(ResourceGroup, Namespace);
+                IEnumerable<HybridConnectionAttibutes> hybridConnectionsList = Client.ListAllHybridConnections(ResourceGroupName, Namespace);
                 WriteObject(hybridConnectionsList.ToList(), true);
             }
         }

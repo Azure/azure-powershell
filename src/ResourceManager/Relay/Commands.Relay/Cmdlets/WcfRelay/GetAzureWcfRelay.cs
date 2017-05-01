@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.WcfRelay
             Position = 0,
             HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
-         public string ResourceGroup { get; set; }
+         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -53,13 +53,13 @@ namespace Microsoft.Azure.Commands.Relay.Commands.WcfRelay
             if (!string.IsNullOrEmpty(Name))
             {
                 // Get a WcfRelay
-                WcfRelayAttributes wcfRelay = Client.GetWcfRelay(ResourceGroup, Namespace, Name);
+                WcfRelayAttributes wcfRelay = Client.GetWcfRelay(ResourceGroupName, Namespace, Name);
                 WriteObject(wcfRelay);
             }
             else
             {
                 // Get all WcfRelay
-                IEnumerable<WcfRelayAttributes> wcfRelayList = Client.ListAllWcfRelay(ResourceGroup, Namespace);
+                IEnumerable<WcfRelayAttributes> wcfRelayList = Client.ListAllWcfRelay(ResourceGroupName, Namespace);
                 WriteObject(wcfRelayList.ToList(), true);
             }
         }

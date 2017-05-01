@@ -13,12 +13,12 @@ Updates the description of a WcfRelay in the specified Relay namespace.
 
 ### WcfRelayInputObjectSet
 ```
-Set-AzureRmWcfRelay -ResourceGroup <String> -Namespace <String> -Name <String> [-InputObject <WcfRelayAttributes>] [-WhatIf] [-Confirm]
+Set-AzureRmWcfRelay -ResourceGroupName <String> -Namespace <String> -Name <String> [-InputObject <WcfRelayAttributes>] [-WhatIf] [-Confirm]
 ```
 
 ### WcfRelayPropertiesSet
 ```
-Set-AzureRmWcfRelay -ResourceGroup <String> -Namespace <String> -Name <String> [-UserMetadata <String>]
+Set-AzureRmWcfRelay -ResourceGroupName <String> -Namespace <String> -Name <String> [-UserMetadata <String>]
  [-WhatIf] [-Confirm]
 ```
 
@@ -30,15 +30,15 @@ The Set-AzureRmWcfRelay cmdlet updates the description for the WcfRelay in the s
 ### Example 1 - InputObject
 ```
 PS C:\>
-PS C:\> $getWcfRelay = Get-AzureRmWcfRelay -ResourceGroup Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -WcfRelayName TestWCFRelay
+PS C:\> $getWcfRelay = Get-AzureRmWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -WcfRelayName TestWCFRelay
 PS C:\> $getWcfRelay.UserMetadata = "usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g. it can be used to store  desc
 riptive data, such as list of teams and their contact information also user-defined configuration settings can be stored."
-PS C:\> Set-AzureRmWcfRelay -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay1 -InputObject $getWcfRelay
+PS C:\> Set-AzureRmWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay1 -InputObject $getWcfRelay
 ```
 
 ### Example 2 - Properties
 ```
-PS C:\> Set-AzureRmWcfRelay -ResourceGroup Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay1 -UserMetadata "User Meta data"
+PS C:\> Set-AzureRmWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay1 -UserMetadata "User Meta data"
 ```
 
 Updates the specified WcfRelay with a new description in the specified namespace.
@@ -153,7 +153,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 Resource Group Name.
 
 ```yaml
@@ -172,7 +172,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -ResourceGroup
+### -ResourceGroupName
 System.String
 
 ### -NamespaceName

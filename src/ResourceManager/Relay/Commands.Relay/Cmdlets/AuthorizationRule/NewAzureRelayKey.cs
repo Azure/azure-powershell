@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands
             Position = 0,
             HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroup { get; set; }
+        public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -74,29 +74,29 @@ namespace Microsoft.Azure.Commands.Relay.Commands
 
 
             // Generate new Namespace List Keys for the specified AuthorizationRule
-            if (Namespace != null && WcfRelay == null && HybridConnection == null)
+            if (ParameterSetName == NamespaceAuthoRuleParameterSet)
             {
-                if (ShouldProcess(target: RegenerateKey, action: string.Format("Generating PrimaryKey/SecondaryKey for AuthorizationRule: {0} of Namespace:{1}", Name, Namespace)))
+                if (ShouldProcess(target: RegenerateKey, action: string.Format(Resources.RegenerateKeyNamesapce, Name, Namespace)))
                 {
-                    WriteObject(Client.NamespaceRegenerateKeys(ResourceGroup, Namespace, Name, RegenerateKey));
+                    WriteObject(Client.NamespaceRegenerateKeys(ResourceGroupName, Namespace, Name, RegenerateKey));
                 }
             }
 
             // Generate new WcfRelay List Keys for the specified AuthorizationRule
-            if (Namespace != null && WcfRelay != null && HybridConnection == null)
+            if (ParameterSetName == WcfRelayAuthoRuleParameterSet)
             {
-                if (ShouldProcess(target: RegenerateKey, action: string.Format("Generating PrimaryKey/SecondaryKey for AuthorizationRule: {0} of WcfRelay:{1}", Name, WcfRelay)))
+                if (ShouldProcess(target: RegenerateKey, action: string.Format(Resources.RegenerateKeyWcfRelay, Name, WcfRelay)))
                 {
-                    WriteObject(Client.WcfRelayRegenerateKeys(ResourceGroup, Namespace, WcfRelay, Name, RegenerateKey));
+                    WriteObject(Client.WcfRelayRegenerateKeys(ResourceGroupName, Namespace, WcfRelay, Name, RegenerateKey));
                 }
             }
 
             // Generate new WcfRelayHybridConnection List Keys for the specified AuthorizationRule
-            if (Namespace != null && WcfRelay == null && HybridConnection != null)
+            if (ParameterSetName == HybridConnectionAuthoRuleParameterSet)
             {
-                if (ShouldProcess(target: RegenerateKey, action: string.Format("Generating PrimaryKey/SecondaryKey for AuthorizationRule: {0} of HybirdConnection:{1}", Name, HybridConnection)))
+                if (ShouldProcess(target: RegenerateKey, action: string.Format(Resources.RegenerateKeyHybirdconnection, Name, HybridConnection)))
                 {
-                    WriteObject(Client.HybridConnectionsRegenerateKeys(ResourceGroup, Namespace, HybridConnection, Name, RegenerateKey));
+                    WriteObject(Client.HybridConnectionsRegenerateKeys(ResourceGroupName, Namespace, HybridConnection, Name, RegenerateKey));
                 }
             }
         }
