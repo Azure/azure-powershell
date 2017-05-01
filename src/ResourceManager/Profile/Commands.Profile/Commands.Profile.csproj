@@ -131,10 +131,12 @@
     <Compile Include="Environment\GetAzureRMEnvironment.cs" />
     <Compile Include="Environment\SetAzureRMEnvironment.cs" />
     <Compile Include="Environment\AddAzureRMEnvironment.cs" />
+    <Compile Include="Feedback\SendFeedback.cs" />
     <Compile Include="Models\AzureRmProfileExtensions.cs" />
     <Compile Include="Models\ModelExtensions.cs" />
     <Compile Include="Models\PSAzureContext.cs" />
     <Compile Include="Models\PSAzureEnvironment.cs" />
+    <Compile Include="Models\PSAzureFeedback.cs" />
     <Compile Include="Models\PSAzureProfile.cs" />
     <Compile Include="Models\PSAzureRmAccount.cs" />
     <Compile Include="Models\PSAzureSubscription.cs" />
