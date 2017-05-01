@@ -40,7 +40,7 @@ Issue a best effort failover operation that will either succeed without losing d
 ## PARAMETERS
 
 ### -AllowDataLoss
-Whether this failover operation will allow data loss.
+Complete the failover even if doing so may result in data loss. This will allow the failover to proceed even if a primary database is unavailable.
 
 ```yaml
 Type: SwitchParameter
@@ -55,7 +55,7 @@ Accept wildcard characters: False
 ```
 
 ### -FailoverGroupName
-The name of the Azure SQL Database Failover Group to retrieve.
+The name of the Azure SQL Database Failover Group.
 
 ```yaml
 Type: String
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-The name of the Azure SQL Server the Failover Group is in.
+The name of the secondary Azure SQL Database Server of the Failover Group.
 
 ```yaml
 Type: String

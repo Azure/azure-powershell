@@ -48,7 +48,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Skip confirmation message for performing the action
+Skip confirmation message for performing the action.
 
 ```yaml
 Type: SwitchParameter
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-The name of the Azure SQL Server the Failover Group is in.
+The name of the primary Azure SQL Database Server of the Failover Group.
 
 ```yaml
 Type: String

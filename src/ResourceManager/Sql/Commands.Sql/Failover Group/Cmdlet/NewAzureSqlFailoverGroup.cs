@@ -69,6 +69,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The failover policy of the Azure SQL Database Failover Group.")]
         [ValidateNotNullOrEmpty]
+        [PSDefaultValue(Help = "Automatic")]
         public FailoverPolicy FailoverPolicy { get; set; }
 
         /// <summary>
@@ -78,6 +79,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             HelpMessage = "Interval before automatic failover is initiated if an outage occurs on the primary server and failover cannot be completed without data loss.")]
         [ValidateNotNullOrEmpty]
         [ValidateRange(0, int.MaxValue)]
+        [PSDefaultValue(Help = "1")]
         public int GracePeriodWithDataLossHours { get; set; }
 
         /// <summary>
@@ -87,6 +89,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             HelpMessage = "Interval before automatic failover is initiated if an outage occurs on the primary server and failover cannot be completed without data loss.")]
         [ValidateNotNullOrEmpty]
         [ValidateRange(0, int.MaxValue)]
+        [PSDefaultValue(Help = "1")]
         [Obsolete("This parameter will be deprecated in the next release.")]
         public int GracePeriodWithDataLossHour { get; set; }
 
