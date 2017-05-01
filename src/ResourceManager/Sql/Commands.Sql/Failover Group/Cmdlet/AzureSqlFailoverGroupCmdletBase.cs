@@ -42,15 +42,10 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         {
             int? gracePeriod = null;
 
-            // Respect both parameters, but the non-obselete one takes precedence.
-            foreach (var parameterName in new[] { "GracePeriodWithDataLossHours", "GracePeriodWithDataLossHour" })
+            object parameterValue;
+            if (MyInvocation.BoundParameters.TryGetValue("GracePeriodWithDataLossHours", out parameterValue))
             {
-                object parameterValue;
-                if (MyInvocation.BoundParameters.TryGetValue(parameterName, out parameterValue))
-                {
-                    gracePeriod = (int)parameterValue;
-                    break;
-                }
+                gracePeriod = (int)parameterValue;
             }
 
             if (!gracePeriod.HasValue && policy == FailoverPolicy.Automatic)

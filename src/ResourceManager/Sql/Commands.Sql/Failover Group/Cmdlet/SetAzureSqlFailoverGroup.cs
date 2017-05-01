@@ -70,17 +70,6 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         public int GracePeriodWithDataLossHours { get; set; }
 
         /// <summary>
-        /// Gets or sets the grace period with data loss for the Sql Azure Failover Group.
-        /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = "Interval before automatic failover is initiated if an outage occurs on the primary server and failover cannot be completed without data loss.")]
-        [ValidateNotNullOrEmpty]
-        [ValidateRange(0, int.MaxValue)]
-        [PSDefaultValue(Help = "1")]
-        [Obsolete("This parameter will be deprecated in the next release.")]
-        public int GracePeriodWithDataLossHour { get; set; }
-
-        /// <summary>
         /// Gets or sets the failover policy for read only endpoint of the Sql Azure Failover Group.
         /// </summary>
         [Parameter(Mandatory = false,
