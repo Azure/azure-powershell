@@ -44,6 +44,10 @@ Get test key name
 #>
 function Get-KeyName([string]$suffix)
 {
+	if($suffix -ne '*'){
+		 $suffix += Get-Random
+	}
+
     return 'pshtk-' + $global:testns+ '-' + $suffix
 }
 
@@ -53,6 +57,10 @@ Get test secret name
 #>
 function Get-SecretName([string]$suffix)
 {
+	if($suffix -ne '*'){
+		 $suffix += Get-Random
+	}
+
     return 'pshts-' + $global:testns + '-' + $suffix
 }
 
@@ -185,8 +193,17 @@ function Cleanup-OldKeys
     $keyVault = Get-KeyVault
     $keyPattern = Get-KeyName '*'
     Get-AzureKeyVaultKey $keyVault |
-        Where-Object {$_.KeyName -like $keyPattern} |
-        Remove-AzureKeyVaultKey -Force -Confirm:$false
+        Where-Object {$_.Name -like $keyPattern} |
+		Cleanup-Key $_.Name
+
+	if($global:softDeleteEnabled -eq $true) 
+	{
+		Get-AzureKeyVaultKey $keyVault -InRemovedState |
+			Where-Object {$_.Name -like $keyPattern} | %{
+				Remove-AzureKeyVaultKey -Name $_.Name -VaultName $_.VaultName -InRemovedState -Force -Confirm:$false
+				Wait-Seconds 5;
+			}
+	}
 }
 
 <#
@@ -200,8 +217,17 @@ function Cleanup-OldSecrets
     $keyVault = Get-KeyVault
     $secretPattern = Get-SecretName '*'
     Get-AzureKeyVaultSecret $keyVault |
-        Where-Object {$_.SecretName -like $secretPattern} |
-        Remove-AzureKeyVaultSecret -Force -Confirm:$false
+        Where-Object {$_.Name -like $secretPattern} | 
+		Cleanup-Secret $_.Name
+	
+	if($global:softDeleteEnabled -eq $true) 
+	{
+		Get-AzureKeyVaultSecret $keyVault -InRemovedState |
+			Where-Object {$_.Name -like $secretPattern} |  %{
+				Remove-AzureKeyVaultSecret -Name $_.Name -VaultName $_.VaultName -Force -Confirm:$false -InRemovedState
+				Wait-Seconds 5
+			}
+	}
 }
 
 
@@ -225,19 +251,59 @@ function Cleanup-SingleKeyTest
     $global:createdKeys | % {
        if ($_ -ne $null)
        {
-         try
-         {
-            $keyVault = Get-KeyVault
-            Write-Debug "Removing key with name $_ in vault $keyVault"
-            $catch = Remove-AzureKeyVaultKey $keyVault $_ -Force -Confirm:$false
-         }
-         catch 
-         {
-         }
+         Cleanup-Key $_
       }
     }
 
     $global:createdKeys.Clear()    
+}
+
+function Cleanup-Key ([string]$keyName)
+{
+	$oldPref = $ErrorActionPreference	 
+	$ErrorActionPreference = "Stop"
+	try
+    {
+		$keyVault = Get-KeyVault
+		Write-Debug "Removing key with name $_ in vault $keyVault"
+		$catch = Remove-AzureKeyVaultKey $keyVault $keyName -Force -Confirm:$false
+		if($global:softDeleteEnabled -eq $true)
+		{
+			Wait-ForDeletedKey $keyVault $keyName
+			Remove-AzureKeyVaultKey $keyVault $keyName -Force -Confirm:$false -InRemovedState
+		}
+    }
+	catch {
+
+	}
+	finally 
+	{
+		$ErrorActionPreference = $oldPref	 
+	}
+}
+
+function Cleanup-Secret ([string]$secretName)
+{
+	$oldPref = $ErrorActionPreference	 
+	$ErrorActionPreference = "Stop"
+	try
+    {
+		$keyVault = Get-KeyVault
+		Write-Debug "Removing secret with name $_ in vault $keyVault"
+		$catch = Remove-AzureKeyVaultSecret $keyVault $secretName -Force -Confirm:$false
+		if($global:softDeleteEnabled -eq $true)
+		{
+			Wait-ForDeletedSecret $keyVault $secretName
+			Remove-AzureKeyVaultSecret $keyVault $secretName -Force -Confirm:$false -InRemovedState
+		}
+    }
+	catch {
+
+	}
+    finally 
+    {
+		$ErrorActionPreference = $oldPref
+    }
 }
 
 <#
@@ -249,15 +315,7 @@ function Cleanup-SingleSecretTest
     $global:createdSecrets | % {
        if ($_ -ne $null)
        {
-         try
-         {
-            $keyVault = Get-KeyVault
-            Write-Debug "Removing secret with name $_ in vault $keyVault"
-            $catch = Remove-AzureKeyVaultSecret $keyVault $_ -Force -Confirm:$false
-         }
-         catch 
-         {
-         }
+         Cleanup-Secret $_
       }
     }
 
@@ -286,6 +344,59 @@ function Cleanup-SingleCertificateTest
     }
 
     $global:createdCertificates.Clear()    
+}
+
+<#
+.SYNOPSIS
+Waits for a deleted key to show up.
+#>
+function Wait-ForDeletedKey ([string] $vault, [string] $keyName)
+{
+	$key = $null
+	do {
+		$oldPref = $ErrorActionPreference	 
+		$ErrorActionPreference = "Stop"
+		try
+		{
+			$key = Get-AzureKeyVaultKey -VaultName $vault -Name $keyName -InRemovedState
+		}
+		catch
+		{
+			# Key is not found.
+			$key = $null
+			Write-Host "Sleeping for 5 seconds to wait for deleted key $keyName"
+			Wait-Seconds 5
+		}
+		finally {
+			$ErrorActionPreference = $oldPref
+		}
+	} while($key -eq $null)
+
+	return $key
+}
+
+<#
+.SYNOPSIS
+Waits for a deleted secret to show up.
+#>
+function Wait-ForDeletedSecret ([string] $vault, [string] $secretName)
+{
+	$secret = $null
+	do {
+		try
+		{
+			$secret = Get-AzureKeyVaultSecret -VaultName $vault -Name $secretName -InRemovedState
+		}
+		catch
+		{
+			# Secret is not found.
+			$secret = $null
+			Write-Host "Sleeping for 5 seconds to wait for deleted key $secretName"
+			Wait-Seconds 5
+		}
+	} while($secret -ne $null)
+
+	return $secret
 }
 
 <#
