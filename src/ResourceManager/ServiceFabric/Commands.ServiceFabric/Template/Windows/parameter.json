@@ -1,0 +1,72 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "clusterLocation": {
+            "value": ""
+        },
+        "clusterName": {
+            "value": ""
+        },
+        "adminUserName": {
+            "value": "adminuser"
+        },
+        "adminPassword": {
+            "value": ""
+        },
+        "vmImagePublisher": {
+            "value": "MicrosoftWindowsServer"
+        },
+        "vmSku": {
+            "value": "Standard_D2_V2"
+        },
+        "vmImageOffer": {
+            "value": "WindowsServer"
+        },
+        "vmImageSku": {
+            "value": "2016-Datacenter"
+        },
+        "vmImageVersion": {
+            "value": "latest"
+        },
+        "loadBalancedAppPort1": {
+            "value": 80
+        },
+        "loadBalancedAppPort2": {
+            "value": 8081
+        },
+        "certificateStorevalue": {
+            "value": "My"
+        },
+        "certificateThumbprint": {
+            "value": ""
+        },
+        "sourceVaultvalue": {
+            "value": "/subscriptions/<Sub ID>/resourceGroups/<Resource group name>/providers/Microsoft.KeyVault/vaults/<vault name>"
+        },
+        "certificateUrlvalue": {
+            "value": "https://<name of the vault>.vault.azure.net:443/secrets/<exact location>"
+        },
+        "clusterProtectionLevel": {
+            "value": "EncryptAndSign"
+        },
+        "storageAccountType": {
+            "value": "Standard_LRS"
+        },
+        "supportLogStorageAccountType": {
+            "value": "Standard_LRS"
+        },
+        "applicationDiagnosticsStorageAccountType": {
+            "value": "Standard_LRS"
+        },
+        "nt0InstanceCount": {
+            "value": "vmCount"
+        },
+        "durabilityLevel": {
+            "value": "Bronze"
+        },
+        "reliabilityLevel": {
+            "value": "Silver"
+        }
+    }
+}

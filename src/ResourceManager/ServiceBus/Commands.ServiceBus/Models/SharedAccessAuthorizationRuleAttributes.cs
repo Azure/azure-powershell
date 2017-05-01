@@ -39,10 +39,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                     Name = authRuleResource.Name;
                 if (authRuleResource.Type != null)
                     Type = authRuleResource.Type;
-                if (authRuleResource.Location != null)
-                    Location = authRuleResource.Location;
-                if (authRuleResource.Tags != null)
-                    Tags = new Dictionary<string, string>(authRuleResource.Tags);
                 if (authRuleResource.Rights!= null)
                     Rights = authRuleResource.Rights;
             }
