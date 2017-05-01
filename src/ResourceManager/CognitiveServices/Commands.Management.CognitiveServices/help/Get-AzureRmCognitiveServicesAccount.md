@@ -12,16 +12,14 @@ Gets an account.
 
 ## SYNTAX
 
-### AccountNameParameterSet
-```
-Get-AzureRmCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
-```
-
 ### ResourceGroupParameterSet
 ```
-Get-AzureRmCognitiveServicesAccount [[-ResourceGroupName] <String>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmCognitiveServicesAccount [[-ResourceGroupName] <String>] [<CommonParameters>]
+```
+
+### AccountNameParameterSet
+```
+Get-AzureRmCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,20 +36,23 @@ If you do not specify the *ResoureGroupName* parameter, this cmdlet gets all Cog
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the name of the resource group the Cognitive Services account is assigned to.
+### -Name
+Specifies the name of the Cognitive Services account to get.
 
 ```yaml
 Type: String
 Parameter Sets: AccountNameParameterSet
-Aliases: 
+Aliases: CognitiveServicesAccountName, AccountName
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+
+### -ResourceGroupName
+Specifies the name of the resource group the Cognitive Services account is assigned to.
 
 ```yaml
 Type: String
@@ -65,55 +66,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Specifies the name of the Cognitive Services account to get.
-
 ```yaml
 Type: String
 Parameter Sets: AccountNameParameterSet
-Aliases: CognitiveServicesAccountName, AccountName
+Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

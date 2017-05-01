@@ -15,14 +15,12 @@ Gets a CDN origin server.
 ### Parameter Set for fields parameters (Default)
 ```
 Get-AzureRmCdnOrigin [-OriginName <String>] -EndpointName <String> -ProfileName <String>
- -ResourceGroupName <String> [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ -ResourceGroupName <String> [<CommonParameters>]
 ```
 
 ### Parameter Set for object parameters
 ```
-Get-AzureRmCdnOrigin [-OriginName <String>] -CdnEndpoint <PSEndpoint> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmCdnOrigin [-OriginName <String>] -CdnEndpoint <PSEndpoint> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,18 +35,18 @@ The **Get-AzureRmCdnOrigin** cmdlet gets an Azure Content Delivery Network (CDN)
 
 ## PARAMETERS
 
-### -OriginName
-Specifies the name of the origin server.
+### -CdnEndpoint
+Specifies the CDN endpoint object to which the origin belongs.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: PSEndpoint
+Parameter Sets: Parameter Set for object parameters
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -61,6 +59,21 @@ Parameter Sets: Parameter Set for fields parameters
 Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OriginName
+Specifies the name of the origin server.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -94,60 +107,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CdnEndpoint
-Specifies the CDN endpoint object to which the origin belongs.
-
-```yaml
-Type: PSEndpoint
-Parameter Sets: Parameter Set for object parameters
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

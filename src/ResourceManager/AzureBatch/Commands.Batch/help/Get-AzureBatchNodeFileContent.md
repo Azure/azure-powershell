@@ -14,25 +14,25 @@ Gets a Batch node file.
 
 ### Task_Id_Path
 ```
-Get-AzureBatchNodeFileContent -JobId <String> -TaskId <String> -Name <String> -DestinationPath <String>
+Get-AzureBatchNodeFileContent -JobId <String> -TaskId <String> [-Name] <String> -DestinationPath <String>
  -BatchContext <BatchAccountContext> [<CommonParameters>]
 ```
 
 ### Task_Id_Stream
 ```
-Get-AzureBatchNodeFileContent -JobId <String> -TaskId <String> -Name <String> -DestinationStream <Stream>
+Get-AzureBatchNodeFileContent -JobId <String> -TaskId <String> [-Name] <String> -DestinationStream <Stream>
  -BatchContext <BatchAccountContext> [<CommonParameters>]
 ```
 
 ### ComputeNode_Id_Path
 ```
-Get-AzureBatchNodeFileContent [-PoolId] <String> [-ComputeNodeId] <String> -Name <String>
+Get-AzureBatchNodeFileContent [-PoolId] <String> [-ComputeNodeId] <String> [-Name] <String>
  -DestinationPath <String> -BatchContext <BatchAccountContext> [<CommonParameters>]
 ```
 
 ### ComputeNode_Id_Stream
 ```
-Get-AzureBatchNodeFileContent [-PoolId] <String> [-ComputeNodeId] <String> -Name <String>
+Get-AzureBatchNodeFileContent [-PoolId] <String> [-ComputeNodeId] <String> [-Name] <String>
  -DestinationStream <Stream> -BatchContext <BatchAccountContext> [<CommonParameters>]
 ```
 
@@ -217,7 +217,7 @@ Parameter Sets: Task_Id_Path, Task_Id_Stream, ComputeNode_Id_Path, ComputeNode_I
 Aliases: 
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

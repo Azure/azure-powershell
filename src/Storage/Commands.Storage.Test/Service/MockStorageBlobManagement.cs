@@ -232,7 +232,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Service
         /// <param name="options">Blob request options</param>
         /// <param name="operationContext">Operation context</param>
         /// <returns>Return an CloudBlob if the specific blob exists on azure, otherwise return null</returns>
-        public CloudBlob GetBlobReferenceFromServer(CloudBlobContainer container, string blobName, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
+        public CloudBlob GetBlobReferenceFromServer(CloudBlobContainer container, string blobName, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, DateTimeOffset? snapshotTime = null)
         {
             string containerName = container.Name;
 
@@ -691,6 +691,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Service
         /// <param name="sharedAccessAccountPolicy">Shared access policy to generate the SAS token.</param>
         /// <returns>Account SAS token.</returns>
         public string GetStorageAccountSASToken(SharedAccessAccountPolicy sharedAccessAccountPolicy)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<string> StartIncrementalCopyAsync(CloudPageBlob blob, CloudPageBlob source, AccessCondition destAccessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }

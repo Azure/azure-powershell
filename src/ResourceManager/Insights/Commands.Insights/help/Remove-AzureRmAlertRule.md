@@ -34,8 +34,8 @@ This command removes the alert rule named myalert-7da64548-214d-42ca-b12b-b245bb
 
 ## PARAMETERS
 
-### -ResourceGroup
-Specifies the name of the resource group for the alert rule.
+### -Name
+Specifies the name of the alert rule to remove.
 
 ```yaml
 Type: String
@@ -49,8 +49,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Name
-Specifies the name of the alert rule to remove.
+### -ResourceGroup
+Specifies the name of the resource group for the alert rule.
 
 ```yaml
 Type: String

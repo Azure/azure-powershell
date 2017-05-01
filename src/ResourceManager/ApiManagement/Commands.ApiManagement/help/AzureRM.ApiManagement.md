@@ -4,7 +4,6 @@ Module Guid: f875725d-8ce4-423f-a6af-ea880bc63f13
 Download Help Link: None
 Help Version: 4.0.0.0
 Locale: en-US
-ms.assetid: B24D0651-01BA-4DD6-9816-EC960880A605
 ---
 
 # AzureRM.ApiManagement Module
@@ -39,11 +38,17 @@ Gets an API.
 ### [Get-AzureRmApiManagementAuthorizationServer](Get-AzureRmApiManagementAuthorizationServer.md)
 Gets an API Management authorization server.
 
+### [Get-AzureRmApiManagementBackend](Get-AzureRmApiManagementBackend.md)
+Get the details of the Backend.
+
 ### [Get-AzureRmApiManagementCertificate](Get-AzureRmApiManagementCertificate.md)
 Gets API Management certificates.
 
 ### [Get-AzureRmApiManagementGroup](Get-AzureRmApiManagementGroup.md)
 Gets all or specific API management groups.
+
+### [Get-AzureRmApiManagementIdentityProvider](Get-AzureRmApiManagementIdentityProvider.md)
+Get the identity provider configuration details.
 
 ### [Get-AzureRmApiManagementLogger](Get-AzureRmApiManagementLogger.md)
 Gets API Management Logger objects.
@@ -61,7 +66,7 @@ Gets the specified scope policy.
 Gets a list or a particular product.
 
 ### [Get-AzureRmApiManagementProperty](Get-AzureRmApiManagementProperty.md)
-
+{{Manually Enter Get-AzureRmApiManagementProperty Description Here}}
 
 ### [Get-AzureRmApiManagementSsoToken](Get-AzureRmApiManagementSsoToken.md)
 Gets a link with an SSO token to a deployed management portal of an API Management service.
@@ -99,6 +104,15 @@ Creates an API.
 ### [New-AzureRmApiManagementAuthorizationServer](New-AzureRmApiManagementAuthorizationServer.md)
 Creates an authorization server.
 
+### [New-AzureRmApiManagementBackend](New-AzureRmApiManagementBackend.md)
+Creates a new backend entity.
+
+### [New-AzureRmApiManagementBackendCredential](New-AzureRmApiManagementBackendCredential.md)
+Creates a new Backend Credential contract.
+
+### [New-AzureRmApiManagementBackendProxy](New-AzureRmApiManagementBackendProxy.md)
+Creates a new Backend Proxy Object.
+
 ### [New-AzureRmApiManagementCertificate](New-AzureRmApiManagementCertificate.md)
 Creates an API Management certificate.
 
@@ -110,6 +124,9 @@ Creates an API management group.
 
 ### [New-AzureRmApiManagementHostnameConfiguration](New-AzureRmApiManagementHostnameConfiguration.md)
 Creates an instance of PsApiManagementHostnameConfiguration.
+
+### [New-AzureRmApiManagementIdentityProvider](New-AzureRmApiManagementIdentityProvider.md)
+Creates a new Identity Provider configuration.
 
 ### [New-AzureRmApiManagementLogger](New-AzureRmApiManagementLogger.md)
 Creates an API Management Logger.
@@ -153,11 +170,17 @@ Removes an API from a product.
 ### [Remove-AzureRmApiManagementAuthorizationServer](Remove-AzureRmApiManagementAuthorizationServer.md)
 Removes an authorization server.
 
+### [Remove-AzureRmApiManagementBackend](Remove-AzureRmApiManagementBackend.md)
+Removes a Backend.
+
 ### [Remove-AzureRmApiManagementCertificate](Remove-AzureRmApiManagementCertificate.md)
 Removes an API Management certificate.
 
 ### [Remove-AzureRmApiManagementGroup](Remove-AzureRmApiManagementGroup.md)
 Removes an existing API management group.
+
+### [Remove-AzureRmApiManagementIdentityProvider](Remove-AzureRmApiManagementIdentityProvider.md)
+Removes an existing Identity Provider Configuration.
 
 ### [Remove-AzureRmApiManagementLogger](Remove-AzureRmApiManagementLogger.md)
 Removes an API Management Logger.
@@ -204,6 +227,9 @@ Modifies an API.
 ### [Set-AzureRmApiManagementAuthorizationServer](Set-AzureRmApiManagementAuthorizationServer.md)
 Modifies an authorization server.
 
+### [Set-AzureRmApiManagementBackend](Set-AzureRmApiManagementBackend.md)
+Updates a Backend.
+
 ### [Set-AzureRmApiManagementCertificate](Set-AzureRmApiManagementCertificate.md)
 Modifies an API Management certificate.
 
@@ -212,6 +238,9 @@ Configures an API management group.
 
 ### [Set-AzureRmApiManagementHostnames](Set-AzureRmApiManagementHostnames.md)
 Sets a custom hostname configuration for an API Management service proxy or portal.
+
+### [Set-AzureRmApiManagementIdentityProvider](Set-AzureRmApiManagementIdentityProvider.md)
+Updates the Configuration of an existing Identity Provider.
 
 ### [Set-AzureRmApiManagementLogger](Set-AzureRmApiManagementLogger.md)
 Modifies an API Management Logger.
