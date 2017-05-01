@@ -44,6 +44,21 @@ Sets a Failover Group's failover policy to 'Manual' by piping in the Failover Gr
 
 ## PARAMETERS
 
+### -AllowReadOnlyFailoverToPrimary
+Whether outages on the secondary server should trigger automatic failover of the read-only endpoint. This feature is not yet supported.
+
+```yaml
+Type: AllowReadOnlyFailoverToPrimary
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -FailoverGroupName
 The name of the Azure SQL Database Failover Group.
 

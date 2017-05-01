@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// <summary>
         /// Gets or sets the grace period with data loss for the Sql Azure Failover Group.
         /// </summary>
-        [Parameter(Mandatory = false, DontShow = true,
+        [Parameter(Mandatory = false,
             HelpMessage = "Interval before automatic failover is initiated if an outage occurs on the primary server and failover cannot be completed without data loss.")]
         [ValidateNotNullOrEmpty]
         [ValidateRange(0, int.MaxValue)]
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// <summary>
         /// Gets or sets the failover policy for read only endpoint of the Sql Azure Failover Group.
         /// </summary>
-        [Parameter(Mandatory = false, DontShow = true,
+        [Parameter(Mandatory = false,
             HelpMessage = "Whether an outage on the secondary server should trigger automatic failover of the read-only endpoint. This feature is not yet supported.")]
         [ValidateNotNullOrEmpty]
         public AllowReadOnlyFailoverToPrimary AllowReadOnlyFailoverToPrimary { get; set; }
