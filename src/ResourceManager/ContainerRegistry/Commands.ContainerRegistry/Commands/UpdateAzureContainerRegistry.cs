@@ -18,7 +18,9 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsData.Update, ContainerRegistryNoun, DefaultParameterSetName = "Empty", SupportsShouldProcess = true),
+    [Cmdlet(VerbsData.Update, ContainerRegistryNoun,
+        DefaultParameterSetName = "Empty",
+        SupportsShouldProcess = true),
         OutputType(typeof(PSContainerRegistry))]
     public class UpdateAzureContainerRegistry : ContainerRegistryCmdletBase
     {
@@ -77,7 +79,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Name, "Remove Container Registry"))
+            if (ShouldProcess(Name, "Update Container Registry"))
             {
                 var tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
 
