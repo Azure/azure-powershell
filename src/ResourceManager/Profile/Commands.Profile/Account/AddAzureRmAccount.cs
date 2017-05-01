@@ -23,6 +23,7 @@ using System.Reflection;
 using System.Security;
 using Commands.Profile.Netcore;
 using Commands.Profile.Netcore.Properties;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -280,6 +281,37 @@ namespace Microsoft.Azure.Commands.Profile
                 // This will throw exception for tests, ignore.
             }
         }
+#else
+        private readonly string[] AdditionalAssemblies = new[]
+        {
+            "Newtonsoft.Json.dll",
+            "System.Runtime.Serialization.Json.dll"
+        };
+
+        /// <summary>
+        /// Load global aliases for ARM
+        /// </summary>
+        public void OnImport()
+        {
+            try
+            {
+                var invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
+                
+                invoker = invoker.AddScript("$PSModuleRoot = $ExecutionContext.SessionState.Module.ModuleBase");
+                foreach (var assembly in AdditionalAssemblies)
+                {
+                    invoker = invoker.AddScript($"$module = Join-Path -Path $PSModuleRoot -ChildPath {assembly}");
+                    invoker = invoker.AddScript("Add-Type -Path $module");
+                }
+
+                invoker = invoker.AddScript("$VerbosePreference=\"Continue\"");
+                invoker.Invoke();
+            }
+            catch(Exception) when (TestMockSupport.RunningMocked)
+            {
+                // This will throw exception for tests, ignore.
+            }
+        }        
 #endif
     }
 }

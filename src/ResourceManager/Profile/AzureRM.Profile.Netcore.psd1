@@ -54,7 +54,7 @@ PowerShellVersion = '5.1'
 # RequiredModules = @()
 
 # Assemblies that must be loaded prior to importing this module
-# RequiredAssemblies = @()
+RequiredAssemblies = '.\netstandard1.6\Newtonsoft.Json.dll', '.\netstandard1.6\System.Runtime.Serialization.Json.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @('.\netstandard1.6\AzureRmProfileStartup.ps1')

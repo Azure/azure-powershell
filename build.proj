@@ -216,7 +216,11 @@
     <!-- Delete powershell runtime files -->
     <ItemGroup>
       <RedundantDlls Include="$(PackageDirectory)\**\netstandard1.6\publish\Microsoft.Powershell.*.dll" />
-      <RedundantDlls Include="$(PackageDirectory)\**\netstandard1.6\publish\System.Management.Automation.dll" />
+      <RedundantDlls Include="$(PackageDirectory)\**\netstandard1.6\publish\System*.dll" />
+      <RedundantDlls Include="$(PackageDirectory)\**\netstandard1.6\publish\Microsoft.VisualBasic.dll" />
+      <RedundantDlls Include="$(PackageDirectory)\**\netstandard1.6\publish\Microsoft.CSharp.dll" />
+      <RedundantDlls Include="$(PackageDirectory)\**\netstandard1.6\publish\Microsoft.CodeAnalysis.dll" />
+      <RedundantDlls Include="$(PackageDirectory)\**\netstandard1.6\publish\Microsoft.CodeAnalysis.CSharp.dll" />
     </ItemGroup>
 
     <Delete Files="@(RedundantDlls->'%(FullPath)')"/>
