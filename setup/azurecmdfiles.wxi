@@ -5865,9 +5865,6 @@
                             <Component Id="cmpED570591394BBA534A51803EC95401FF" Guid="*">
                                 <File Id="fil96E2AA65296B01BBFBD1504B3F6FD1E3" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RecoveryServices\help\AzureRM.RecoveryServices.md" />
                             </Component>
-                            <Component Id="cmp12A80262D9CD2E9B80EC61CD790BCBC5" Guid="*">
-                                <File Id="fil1C74D2D8CE726A440337BE7F3C622B79" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RecoveryServices\help\Get-AzureRmRecoveryServicesBackupProperties.md" />
-                            </Component>
                             <Component Id="cmp1FA698B489DE33EA5513A290B8734CEA" Guid="*">
                                 <File Id="filC30C4EF7A27E9A28288AC543D21C47CC" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RecoveryServices\help\Get-AzureRmRecoveryServicesBackupProperty.md" />
                             </Component>
@@ -12493,7 +12490,6 @@
             <ComponentRef Id="cmpC00974919B90C9055BED1F2A9DA95441" />
             <ComponentRef Id="cmpE300D8B185C427E05E95BA97413F6CC8" />
             <ComponentRef Id="cmpED570591394BBA534A51803EC95401FF" />
-            <ComponentRef Id="cmp12A80262D9CD2E9B80EC61CD790BCBC5" />
             <ComponentRef Id="cmp1FA698B489DE33EA5513A290B8734CEA" />
             <ComponentRef Id="cmpAB72BFF56A2F77FD1219CDDA8A5861BD" />
             <ComponentRef Id="cmp749A539CA174E28889B24CCAD5CD549E" />
