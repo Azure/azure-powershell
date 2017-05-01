@@ -30,16 +30,16 @@ Test-AzureRmResourceGroupDeployment -ResourceGroupName <String> [-Mode <Deployme
  -TemplateParameterObject <Hashtable> -TemplateUri <String> [-ApiVersion <String>] [-Pre] [<CommonParameters>]
 ```
 
-### Deployment via template uri and template parameters file
-```
-Test-AzureRmResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>]
- -TemplateParameterFile <String> -TemplateUri <String> [-ApiVersion <String>] [-Pre] [<CommonParameters>]
-```
-
 ### Deployment via template file and template parameters file
 ```
 Test-AzureRmResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>]
  -TemplateParameterFile <String> -TemplateFile <String> [-ApiVersion <String>] [-Pre] [<CommonParameters>]
+```
+
+### Deployment via template uri and template parameters file
+```
+Test-AzureRmResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>]
+ -TemplateParameterFile <String> -TemplateUri <String> [-ApiVersion <String>] [-Pre] [<CommonParameters>]
 ```
 
 ### Deployment via template file template parameters uri
@@ -71,81 +71,6 @@ The **Test-AzureRmResourceGroupDeployment** cmdlet determines whether an Azure r
 ```
 
 ## PARAMETERS
-
-### -ResourceGroupName
-Specifies the name of the resource group to test.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -TemplateFile
-Specifies the full path of a JSON template file.
-
-```yaml
-Type: String
-Parameter Sets: Deployment via template file without parameters, Deployment via template file and template parameters object, Deployment via template file and template parameters file, Deployment via template file template parameters uri
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -TemplateParameterObject
-Specifies a hash table of template parameter names and values.
-
-```yaml
-Type: Hashtable
-Parameter Sets: Deployment via template file and template parameters object, Deployment via template uri and template parameters object
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -TemplateUri
-Specifies the URI of a JSON template file.
-
-```yaml
-Type: String
-Parameter Sets: Deployment via template uri and template parameters object, Deployment via template uri and template parameters file, Deployment via template uri and template parameters uri, Deployment via template uri without parameters
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -TemplateParameterFile
-Specifies the full path of a JSON file that contains the names and values of the template parameters.
-
-```yaml
-Type: String
-Parameter Sets: Deployment via template uri and template parameters file, Deployment via template file and template parameters file
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -ApiVersion
 Specifies the API version that is supported by the resource Provider.
@@ -197,12 +122,87 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceGroupName
+Specifies the name of the resource group to test.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TemplateFile
+Specifies the full path of a JSON template file.
+
+```yaml
+Type: String
+Parameter Sets: Deployment via template file without parameters, Deployment via template file and template parameters object, Deployment via template file and template parameters file, Deployment via template file template parameters uri
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TemplateParameterFile
+Specifies the full path of a JSON file that contains the names and values of the template parameters.
+
+```yaml
+Type: String
+Parameter Sets: Deployment via template file and template parameters file, Deployment via template uri and template parameters file
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TemplateParameterObject
+Specifies a hash table of template parameter names and values.
+
+```yaml
+Type: Hashtable
+Parameter Sets: Deployment via template file and template parameters object, Deployment via template uri and template parameters object
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -TemplateParameterUri
 Specifies the URI of a template parameters file.
 
 ```yaml
 Type: String
 Parameter Sets: Deployment via template file template parameters uri, Deployment via template uri and template parameters uri
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TemplateUri
+Specifies the URI of a JSON template file.
+
+```yaml
+Type: String
+Parameter Sets: Deployment via template uri and template parameters object, Deployment via template uri and template parameters file, Deployment via template uri and template parameters uri, Deployment via template uri without parameters
 Aliases: 
 
 Required: True

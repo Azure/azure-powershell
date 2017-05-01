@@ -108,6 +108,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProfileStatus
+Specifies the status of the profile.
+Valid values are: Enabled and Disabled.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Enabled, Disabled
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RelativeDnsName
 Specifies the relative DNS name that this Traffic Manager profile provides.
 Traffic Manager combines this value and the DNS domain name that Azure Traffic Manager uses to form the fully qualified domain name (FQDN) of the profile.
@@ -134,6 +151,21 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Specifies tags as an array of hash tables.
+
+```yaml
+Type: Hashtable
+Parameter Sets: (All)
+Aliases: Tags
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -171,37 +203,6 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProfileStatus
-Specifies the status of the profile.
-Valid values are: Enabled and Disabled.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Specifies tags as an array of hash tables.
-
-```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases: Tags
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

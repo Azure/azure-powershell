@@ -13,7 +13,7 @@ Gets the primary key details of the specified Event Hubs authorization rule.
 
 ```
 Get-AzureRmEventHubKey [-ResourceGroupName] <String> [-NamespaceName] <String> [-EventHubName] <String>
- -AuthorizationRuleName <String> [<CommonParameters>]
+ [-AuthorizationRuleName] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,6 +29,21 @@ PS C:\> Get-AzureRmEventHubKey -ResourceGroupName MyResourceGroupName -Namespace
 Gets details of the primary key for the authorization rule `MyAuthRuleName`.
 
 ## PARAMETERS
+
+### -AuthorizationRuleName
+Event Hubs authorization rule name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -EventHubName
 The Event Hub name.
@@ -70,21 +85,6 @@ Aliases:
 
 Required: True
 Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -AuthorizationRuleName
-Event Hubs authorization rule name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

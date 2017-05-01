@@ -14,8 +14,7 @@ Sets a previously executed script action to be a persisted script action.
 
 ```
 Set-AzureRmHDInsightPersistedScriptAction [-ClusterName] <String> [-ScriptExecutionId] <Int64>
- [-ResourceGroupName <String>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ [-ResourceGroupName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,23 +50,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ScriptExecutionId
-Specifies the execution ID of the script action to promote to persisted.
-This script action must have succeeded in order to be promoted.
-You can find the script action execution ID using Get-AzureRmHDInsightScriptActionHistory.
-
-```yaml
-Type: Int64
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Specifies the name of the resource group.
 
@@ -83,40 +65,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -ScriptExecutionId
+Specifies the execution ID of the script action to promote to persisted.
+This script action must have succeeded in order to be promoted.
+You can find the script action execution ID using Get-AzureRmHDInsightScriptActionHistory.
 
 ```yaml
-Type: ActionPreference
+Type: Int64
 Parameter Sets: (All)
-Aliases: infa
+Aliases: 
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -70,6 +70,7 @@ Specifies a deallocation option for the resizing operation that this cmdlet star
 Type: ComputeNodeDeallocationOption
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Requeue, Terminate, TaskCompletion, RetainedData
 
 Required: False
 Position: Named
