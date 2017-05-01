@@ -45,7 +45,7 @@ This command creates a new Failover Group with failover policy 'Manual' for two 
 ## PARAMETERS
 
 ### -FailoverGroupName
-The name of the Azure SQL FailoverGroup to create.
+The name of the Azure SQL Database Failover Group to create.
 
 ```yaml
 Type: String
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 ```
 
 ### -FailoverPolicy
-The failover policy without data loss for the failover group.
+The failover policy of the Azure SQL Database Failover Group.
 
 ```yaml
 Type: FailoverPolicy
@@ -70,13 +70,13 @@ Accepted values: Automatic, Manual
 
 Required: False
 Position: Named
-Default value: None
+Default value: Automatic
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -GracePeriodWithDataLossHours
-The grace period for failover with data loss of the failover group.
+Interval before automatic failover is initiated if an outage occurs on the primary server and failover cannot be completed without data loss.
 
 ```yaml
 Type: Int32
@@ -85,13 +85,13 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 1
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PartnerResourceGroupName
-The partner resource group name for Azure SQL Database Failover Group.
+The name of the secondary resource group of the Azure SQL Database Failover Group.
 
 ```yaml
 Type: String
@@ -106,7 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### -PartnerServerName
-The partner server name for Azure SQL Database Failover Group.
+The name of the secondary server of the Azure SQL Database Failover Group.
 
 ```yaml
 Type: String
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-The name of the Azure SQL Server the Failover Group is in.
+The name of the primary Azure SQL Database Server of the Failover Group.
 
 ```yaml
 Type: String

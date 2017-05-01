@@ -27,8 +27,6 @@ The Failover Group's primary server must be used to execute the command.
 ## EXAMPLES
 
 ### Example 1
-Remove one database from the Failover Group
-
 ```
 PS C:\> $failoverGroup = Get-AzureRmSqlDatabase -ResourceGroupName rg -ServerName primaryserver -DatabaseName db1 | Remove-AzureRmSqlDatabaseFromFailoverGroup -ResourceGroupName rg -ServerName primaryserver -FailoverGroupName fg
 ```
@@ -55,7 +53,7 @@ This command removes all databases in an Elastic Pool from a Failover Group.
 ## PARAMETERS
 
 ### -Database
-The Azure SQL Database to be removed from the Failover Group.
+One or more Azure SQL Databases on the Failover Group's primary server to be removed from the Failover Group.
 
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel]
@@ -85,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Skip confirmation message for performing the action
+Skip confirmation message for performing the action.
 
 ```yaml
 Type: SwitchParameter
@@ -95,12 +93,29 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -ServerName
-The name of the Azure SQL Server the Failover Group is in.```yaml
+The name of the primary Azure SQL Database Server of the Failover Group.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 

@@ -70,7 +70,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-The name of the Azure SQL Server the Failover Group is in.
+The name of the Azure SQL Database Server from which to retrieve the Failover Group.
 
 ```yaml
 Type: String

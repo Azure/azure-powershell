@@ -53,7 +53,7 @@ This command adds all databases in an Elastic Pool to a Failover Group.
 ## PARAMETERS
 
 ### -Database
-The Azure SQL Database to be added to the Failover Group.
+One or more Azure SQL Databases on the Failover Group's primary server to be added to the Failover Group.
 
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel]
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-The name of the Azure SQL Server the Failover Group is in.
+The name of the primary Azure SQL Database Server of the Failover Group.
 
 ```yaml
 Type: String
