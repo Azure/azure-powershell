@@ -44,24 +44,26 @@ The following cmdlets were affected this release:
 
 **New-AzureRmSqlDatabaseFailoverGroup**
 - Tag parameter was removed
+- 'GracePeriodWithDataLossHour' parameter was renamed to 'GracePeriodWithDataLossHours'
 
 ```powershell
 # Old
-New-AzureRmSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName server1 -FailoverGroupName fg -PartnerServerName server2 -Tag @{ Environment="Test" }
+New-AzureRmSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName server1 -FailoverGroupName fg -PartnerServerName server2 -FailoverPolicy Automatic -GracePeriodWithDataLossHour 1 -Tag @{ Environment="Test" }
 
 # New
-New-AzureRmSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName server1 -FailoverGroupName fg -PartnerServerName server2
+New-AzureRmSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName server1 -FailoverGroupName fg -PartnerServerName server2 -FailoverPolicy Automatic -GracePeriodWithDataLossHours 1
 ```
 
 **Set-AzureRmSqlDatabaseFailoverGroup**
 - Tag parameter was removed
+- 'GracePeriodWithDataLossHour' parameter was renamed to 'GracePeriodWithDataLossHours'
 
 ```powershell
 # Old
-Set-AzureRmSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName server1 -FailoverGroupName fg -FailoverPolicy Automatic -Tag @{ Environment="Test" }
+Set-AzureRmSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName server1 -FailoverGroupName fg -FailoverPolicy Automatic -GracePeriodWithDataLossHour 1 -Tag @{ Environment="Test" }
 
 # New
-Set-AzureRmSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName server1 -FailoverGroupName fg -FailoverPolicy Automatic
+Set-AzureRmSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName server1 -FailoverGroupName fg -FailoverPolicy Automatic -GracePeriodWithDataLossHours 1
 ```
 
 **Add-AzureRmSqlDatabaseToFailoverGroup**

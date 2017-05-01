@@ -122,7 +122,7 @@ function Test-FailoverGroup()
 
 		# Create with default values
 		$fgName = Get-FailoverGroupName
-		$fg = New-AzureRmSqlDatabaseFailoverGroup -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -PartnerServerName $partnerServer.ServerName -FailoverGroupName $fgName -FailoverPolicy Automatic -GracePeriodWithDataLossHour 1 -AllowReadOnlyFailoverToPrimary Enabled
+		$fg = New-AzureRmSqlDatabaseFailoverGroup -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -PartnerServerName $partnerServer.ServerName -FailoverGroupName $fgName -FailoverPolicy Automatic -GracePeriodWithDataLossHours 1 -AllowReadOnlyFailoverToPrimary Enabled
 		Validate-FailoverGroup $server $partnerServer $fgName Primary Automatic 1 Enabled @() $fg
 
 		# Alter all properties
@@ -284,7 +284,7 @@ function Test-SetFailoverGroup-AutomaticWithGracePeriodZero()
 	Handle-FailoverGroupTestWithFailoverGroup {
 		Param($fg)
 
-		$newFg = $fg | Set-AzureRmSqlDatabaseFailoverGroup -FailoverPolicy Automatic -GracePeriodWithDataLossHour 0 -AllowReadOnlyFailoverToPrimary Disabled
+		$newFg = $fg | Set-AzureRmSqlDatabaseFailoverGroup -FailoverPolicy Automatic -GracePeriodWithDataLossHours 0 -AllowReadOnlyFailoverToPrimary Disabled
 		Assert-FailoverGroupsEqual $fg $newFg -failoverPolicy Automatic -gracePeriod 1 -readOnlyFailoverPolicy Disabled
 		Validate-FailoverGroupWithGet $newFg
 	} -failoverPolicy Manual
