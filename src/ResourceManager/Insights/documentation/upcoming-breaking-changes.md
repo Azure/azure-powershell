@@ -38,28 +38,6 @@
     
     **Get-AzureRmUsage**
     - This cmdlet will be deprecated.
-    
-    **Add-AzureRmMetricAlert**
-    **Add-AzureRmWebtestAlert**
-    - The output of these cmdlets will change from List<PObject> to a single object, not a list, that includes the requestId, status code, and the updated or newly created resource.
-    
-    ```powershell
-    # Old
-  
-    $s1 = Add-AzureRmMetricAlertRule -Name chiricutin -Location "West US" -ResourceGroup $resourceGroup -TargetResourceId $resourceId -Operator GreaterThan -Threshold 2 -WindowSize 00:05:00 -MetricName Requests -Description "Pura Vida" -TimeAggre Total -Actions $eMailAction -disab
-    if ($s1 -ne $null)
-    {
-      $r = $s1(0).RequestId
-      $s = $s1(0).StatusCode
-    }
-
-    # New
-    $s1 = Add-AzureRmMetricAlertRule -Name chiricutin -Location "West US" -ResourceGroup $resourceGroup -TargetResourceId $resourceId -Operator GreaterThan -Threshold 2 -WindowSize 00:05:00 -MetricName Requests -Description "Pura Vida" -TimeAggre Total -Actions $eMailAction -disab
-    $r = $s1.RequestId
-    $s = $s1.StatusCode
-    $a = $s1.NewResource
-    
-    ```
 
     **Remove-AzureRmAlertRule**
     - The output of these cmdlets will change from list with a single object to a single object, not a list, that includes the requestId, and status code.
