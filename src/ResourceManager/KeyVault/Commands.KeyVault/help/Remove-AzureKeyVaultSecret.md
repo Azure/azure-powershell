@@ -12,12 +12,13 @@ Deletes a secret in a key vault.
 ## SYNTAX
 
 ```
-Remove-AzureKeyVaultSecret [-VaultName] <String> [-Name] <String> [-Force] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureKeyVaultSecret [-VaultName] <String> [-Name] <String> [-Force] [-PassThru] [-InRemovedState]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The Remove-AzureKeyVaultSecret cmdlet deletes a secret in a key vault.
+If the secret was accidentally deleted the secret can be recovered using Undo-AzureKeyVaultSecretRemoval by a user with special 'recover' permissions.
 This cmdlet has a value of high for the **ConfirmImpact** property.
 
 ## EXAMPLES
@@ -37,12 +38,33 @@ PS C:\>Remove-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret' -Fo
 This command removes the secret named FinanceSecret from the key vault named Contoso.
 The command specifies the *Force* and *Confirm* parameters, and, therefore, the cmdlet does not prompt you for confirmation.
 
+### Example 3: Purge deleted secret from the key vault permanently
+```
+PS C:\>Remove-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret' -InRemovedState
+```
+
+This command removes the secret named FinanceSecret from the key vault named Contoso permanently.
+This flag requires the user to have special 'purge' persmissions on the key vault.
+
 ## PARAMETERS
 
 ### -Force
 Forces the command to run without asking for user confirmation.
 
 ```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InRemovedState
+If present, removes the previously deleted secret permanently.```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
@@ -143,7 +165,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.Secret
+### Microsoft.Azure.Commands.KeyVault.Models.DeletedSecret
 This cmdlet returns a value only if you specify the *PassThru* parameter.
 
 ## NOTES
@@ -153,4 +175,6 @@ This cmdlet returns a value only if you specify the *PassThru* parameter.
 [Get-AzureKeyVaultSecret](./Get-AzureKeyVaultSecret.md)
 
 [Set-AzureKeyVaultSecret](./Set-AzureKeyVaultSecret.md)
+
+[Undo-AzureKeyVaultSecretRemoval](./Undo-AzureKeyVaultSecretRemoval.md)
 
