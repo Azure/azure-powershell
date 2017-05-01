@@ -19,9 +19,9 @@ namespace Microsoft.Azure.Commands.Relay.Test.ScenarioTests
     using ServiceManagemenet.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
-    public class CheckNameAvailabilityTests : RMTestBase
+    public class TestAzureRmRelayNameTests : RMTestBase
     {
-        public CheckNameAvailabilityTests(ITestOutputHelper output)
+        public TestAzureRmRelayNameTests(ITestOutputHelper output)
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Relay.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CheckNameAvailability()
         {
-            RelayController.NewInstance.RunPsTest("CheckNameAvailabilityTests");
+            RelayController.NewInstance.RunPsTest("TestAzureRmRelayNameTests");
         }
     }
 }

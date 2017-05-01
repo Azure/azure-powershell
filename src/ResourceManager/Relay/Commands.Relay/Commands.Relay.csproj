@@ -165,6 +165,27 @@
     <None Include="..\AzureRM.Relay.psd1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="help\AzureRM.Relay.md" />
+    <None Include="help\Get-AzureRmRelayAuthorizationRule.md" />
+    <None Include="help\Get-AzureRmRelayHybridConnection.md" />
+    <None Include="help\Get-AzureRmRelayKey.md" />
+    <None Include="help\Get-AzureRmRelayNamespace.md" />
+    <None Include="help\Get-AzureRmRelayOperation.md" />
+    <None Include="help\Get-AzureRmWcfRelay.md" />
+    <None Include="help\New-AzureRmRelayAuthorizationRule.md" />
+    <None Include="help\New-AzureRmRelayHybridConnection.md" />
+    <None Include="help\New-AzureRmRelayKey.md" />
+    <None Include="help\New-AzureRmRelayNamespace.md" />
+    <None Include="help\New-AzureRmWcfRelay.md" />
+    <None Include="help\Remove-AzureRmRelayAuthorizationRule.md" />
+    <None Include="help\Remove-AzureRmRelayHybridConnection.md" />
+    <None Include="help\Remove-AzureRmRelayNamespace.md" />
+    <None Include="help\Remove-AzureRmWcfRelay.md" />
+    <None Include="help\Set-AzureRmRelayAuthorizationRule.md" />
+    <None Include="help\Set-AzureRmRelayHybridConnection.md" />
+    <None Include="help\Set-AzureRmRelayNamespace.md" />
+    <None Include="help\Set-AzureRmWcfRelay.md" />
+    <None Include="help\Test-AzureRmRelayName.md" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
