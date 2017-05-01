@@ -14,8 +14,7 @@ Gets information about a VPN client package.
 
 ```
 Get-AzureRmVpnClientPackage -ResourceGroupName <String> -VirtualNetworkGatewayName <String>
- -ProcessorArchitecture <String> [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ -ProcessorArchitecture <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,45 +35,6 @@ To get information about the x86 client packages, set the value of the *Processo
 
 ## PARAMETERS
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ProcessorArchitecture
 Specifies the type of CPU architecture that the client package is designed for.
 Valid values are Amd64 and X86.
@@ -83,6 +43,7 @@ Valid values are Amd64 and X86.
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Amd64, X86
 
 Required: True
 Position: Named

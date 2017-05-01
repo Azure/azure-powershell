@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ParameterSetName = ImportParameterSet,
             HelpMessage = "Specifies whether to add the key as a software-protected key or an HSM-protected key in the Key Vault service. Valid values are: HSM and Software. ")]
-        [ValidateSetAttribute(HsmDestination, SoftwareDestination)]
+        [ValidateSet(HsmDestination, SoftwareDestination)]
         public string Destination { get; set; }
 
         /// <summary>

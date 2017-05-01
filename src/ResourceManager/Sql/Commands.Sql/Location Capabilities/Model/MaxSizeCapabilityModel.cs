@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Model
         /// <summary>
         /// Gets or sets the max size limit 
         /// </summary>
-        public int Limit { get; set; }
+        public long Limit { get; set; }
 
         /// <summary>
         /// Gets or sets the units for the max size limit

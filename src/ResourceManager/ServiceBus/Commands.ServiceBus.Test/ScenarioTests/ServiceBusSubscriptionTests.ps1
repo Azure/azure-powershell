@@ -111,31 +111,14 @@ function ServiceBusSubscriptionTests
 
 	# Get Created Subscritpiton Name 
 	$resultGetSub = Get-AzureRmServiceBusSubscription -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -TopicName $resultGetTopic.Name -SubscriptionName $subName
-
-	#$Subfound = 0
-    
-        if ($resultGetSub.Name -eq $subName)
-        {
-            $Subfound = 1
-           Assert-True {$location.Replace(' ','') -eq $resultGetSub.Location.Replace(' ','')} "ServiceBus Subcription Get-AzureRmServiceBusSubscription - Location didnt Matched "
-            break
-        }    
-
- #   Assert-True {$Subfound -eq 0} "Subscription created earlier is not found."
+		
+    Assert-True {$resultGetSub.Name -eq $subName} "Subscription created earlier is not found."
 
 	# Update the subscription.
 	$resultGetSub.IsReadOnly = $True
 	$resultSetSub = Set-AzureRmServiceBusSubscription -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -TopicName $resultGetTopic.Name -SubscriptionObj $resultGetSub
-	
-	#$Subfound1 = 0
-	#if ($resultSetSub.Name -eq $resultGetSub.Name)
- #       {
- #           $Subfound1 = 1
- #           Assert-AreEqual $location $resultSetSub.Location    
-#		Assert-AreEqual $resultGetSub.IsReadOnly $resultSetSub.IsReadOnly         
- #           break
- #       }
-	#Assert-True {$Subfound1 -eq 0} "Subscription Updated earlier is not found."
+		
+	Assert-True {$resultSetSub.Name -eq $resultGetSub.Name} "Subscription Updated earlier is not found."
 
 	# Delete the created/Updated Subscription
 	$ResultDeleteTopic = Remove-AzureRmServiceBusSubscription -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -TopicName $ResulListTopic[0].Name -SubscriptionName $resultSetSub.Name

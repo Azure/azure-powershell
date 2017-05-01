@@ -44,5 +44,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// Suffix in session id to represent is acknowledgement message
         /// </summary>
         public const string IsAcknowledgementSessionIdSuffix = "-ACK";
+
+        public const string NoAgreementTypeParameterWarningMessage = "By default, you are using the X12 agreement type. Please provide a value for AgreementType if you would like to specify the agreement type. Possible values are X12 and Edifact.";
     }
 }

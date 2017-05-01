@@ -72,6 +72,7 @@ Valid values are:
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Primary, Secondary
 
 Required: True
 Position: Named

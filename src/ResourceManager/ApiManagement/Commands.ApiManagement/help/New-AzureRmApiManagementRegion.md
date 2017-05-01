@@ -14,8 +14,7 @@ Creates an instance of PsApiManagementRegion.
 
 ```
 New-AzureRmApiManagementRegion -Location <String> [-Capacity <Int32>]
- [-VirtualNetwork <PsApiManagementVirtualNetwork>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>]
+ [-VirtualNetwork <PsApiManagementVirtualNetwork>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,8 +24,6 @@ This command is to be used with New-AzureRmApiManagement command.
 ## EXAMPLES
 
 ### --------------------------  Example 1  --------------------------
-@{paragraph=PS C:\\\>}
-
 ```
 $apimRegion = New-AzureRmApiManagementRegion -Location "Central US" 
 
@@ -36,8 +33,6 @@ New-AzureRmApiManagement -ResourceGroupName ContosoGroup -Location "West US" -Na
 ```
 
 ### --------------------------  Example 2  --------------------------
-@{paragraph=PS C:\\\>}
-
 ```
 $apimRegionVirtualNetwork = New-AzureRmApiManagementVirtualNetwork -Location "Central US" -SubnetResourceId "/subscriptions/a8ff56dc-3bc7-4174-a1e8-3726ab15d0e2/resourceGroups/ContosoGroup/providers/Microsoft.Network/virtualNetworks/centralusvirtualNetwork/subnets/backendSubnet"
 
@@ -54,21 +49,6 @@ Creates an ApiManagement service of External VpnType in West US Region, with an 
 
 ## PARAMETERS
 
-### -Location
-Location of the additional deployment region.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Capacity
 Sku capacity of the Azure API Management service additional region.
 Default value is 1.
@@ -79,6 +59,21 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Location of the additional deployment region.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -101,44 +96,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

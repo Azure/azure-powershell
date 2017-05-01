@@ -4,7 +4,6 @@ Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 Download Help Link: {{Please enter FwLink manually}}
 Help Version: {{Please enter version of help manually (X.X.X.X) format}}
 Locale: en-US
-ms.assetid: DC5E0ECC-BFFA-4030-8BCB-BD180CAD77B8
 ---
 
 # AzureRM.RecoveryServices Module
@@ -12,7 +11,7 @@ ms.assetid: DC5E0ECC-BFFA-4030-8BCB-BD180CAD77B8
 This topic displays help topics for the Azure Recovery Services cmdlets.
 
 ## AzureRM.RecoveryServices Cmdlets
-### [Get-AzureRmRecoveryServicesBackupProperties](Get-AzureRmRecoveryServicesBackupProperties.md)
+### [Get-AzureRmRecoveryServicesBackupProperty](Get-AzureRmRecoveryServicesBackupProperty.md)
 Gets Backup properties.
 
 ### [Get-AzureRmRecoveryServicesVault](Get-AzureRmRecoveryServicesVault.md)
