@@ -13,8 +13,8 @@ Adds a data disk to the VMSS.
 
 ```
 Add-AzureRmVmssDataDisk [-VirtualMachineScaleSet] <VirtualMachineScaleSet> [[-Name] <String>] [[-Lun] <Int32>]
- [[-Caching] <CachingTypes>] [[-CreateOption] <DiskCreateOptionTypes>] [[-DiskSizeGB] <Int32>]
- [[-StorageAccountType] <StorageAccountTypes>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-Caching] <CachingTypes>] [-CreateOption <DiskCreateOptionTypes>] [-DiskSizeGB <Int32>]
+ [-StorageAccountType <StorageAccountTypes>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,7 +58,7 @@ Aliases:
 Accepted values: FromImage, Empty, Attach
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -73,7 +73,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -119,7 +119,7 @@ Aliases:
 Accepted values: StandardLRS, PremiumLRS
 
 Required: False
-Position: 6
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

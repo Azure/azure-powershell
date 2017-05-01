@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* New parameters for Interchange Control Number disaster recovery cmdlets:
+    - Optional -AgreementType parameter ("X12", or "Edifact") to specify the relevant control numbers
 
 ## Version 2.8.0
 * Set-AzureRmIntegrationAccountSchema and Set-AzureRmIntegrationAccountMap cmdlets are fixed for the contentlink issue(Both content and contentlink were set resulting in update failure). 

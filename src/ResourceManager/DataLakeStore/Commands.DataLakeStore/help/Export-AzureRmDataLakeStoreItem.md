@@ -91,6 +91,7 @@ Optionally indicates the diagnostic log level to use to record events during the
 Type: LogLevel
 Parameter Sets: Include diagnostic logging
 Aliases: 
+Accepted values: Debug, Information, Error, None
 
 Required: False
 Position: Named

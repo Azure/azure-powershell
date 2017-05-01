@@ -14,7 +14,7 @@ Creates or updates outputs for a Stream Analytics job.
 
 ```
 New-AzureRmStreamAnalyticsOutput [-JobName] <String> [[-Name] <String>] [-File] <String> [-Force]
- [-ResourceGroupName] <String> [-PipelineVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceGroupName] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,36 +44,6 @@ PS C:\>New-AzureRmStreamAnalyticsOutput -ResourceGroupName "StreamAnalytics-Defa
 This command replaces the definition for Output in the job called StreamingJob without confirmation.
 
 ## PARAMETERS
-
-### -JobName
-Specifies the name of the Azure Stream Analytics job under which to create the Azure Stream Analytics output.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Name
-Specifies the name of the Azure Stream Analytics output to create.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -File
 Specifies the path to a JSON file that contains the JSON representation of the Azure Stream Analytics output to create.
@@ -105,6 +75,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JobName
+Specifies the name of the Azure Stream Analytics job under which to create the Azure Stream Analytics output.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the name of the Azure Stream Analytics output to create.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specifies the name of the resource group under which to create the Azure Stream Analytics output.
 
@@ -117,21 +117,6 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -PipelineVariable
-Not Specified
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: pv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

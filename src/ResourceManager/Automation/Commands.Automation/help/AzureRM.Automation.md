@@ -4,7 +4,6 @@ Module Guid: bcea1c70-a32b-48c3-a05c-323e1c02f4d3
 Download Help Link: None_Azure
 Help Version: 4.0.0.0
 Locale: en-US
-ms.assetid: D67A0BFC-CC6A-4935-BF34-70F1BD28FE7B
 ---
 
 # AzureRM.Automation Module
@@ -18,19 +17,19 @@ Exports a DSC configuration from Automation to a local file.
 ### [Export-AzureRmAutomationDscNodeReportContent](Export-AzureRmAutomationDscNodeReportContent.md)
 Exports the raw content of a DSC report sent from a DSC node to Automation.
 
-### [Export-AzureRMAutomationRunbook](Export-AzureRMAutomationRunbook.md)
+### [Export-AzureRmAutomationRunbook](Export-AzureRmAutomationRunbook.md)
 Exports an Automation runbook.
 
 ### [Get-AzureRmAutomationAccount](Get-AzureRmAutomationAccount.md)
 Gets Automation accounts in a resource group.
 
-### [Get-AzureRMAutomationCertificate](Get-AzureRMAutomationCertificate.md)
+### [Get-AzureRmAutomationCertificate](Get-AzureRmAutomationCertificate.md)
 Gets Automation certificates.
 
-### [Get-AzureRMAutomationConnection](Get-AzureRMAutomationConnection.md)
+### [Get-AzureRmAutomationConnection](Get-AzureRmAutomationConnection.md)
 Gets an Automation connection.
 
-### [Get-AzureRMAutomationCredential](Get-AzureRMAutomationCredential.md)
+### [Get-AzureRmAutomationCredential](Get-AzureRmAutomationCredential.md)
 Gets Automation credentials.
 
 ### [Get-AzureRmAutomationDscCompilationJob](Get-AzureRmAutomationDscCompilationJob.md)
@@ -57,10 +56,10 @@ Creates meta-configuration .mof files.
 ### [Get-AzureRMAutomationHybridWorkerGroup](Get-AzureRMAutomationHybridWorkerGroup.md)
 Gets hybrid runbook worker groups.
 
-### [Get-AzureRMAutomationJob](Get-AzureRMAutomationJob.md)
+### [Get-AzureRmAutomationJob](Get-AzureRmAutomationJob.md)
 Gets Automation runbook jobs.
 
-### [Get-AzureRMAutomationJobOutput](Get-AzureRMAutomationJobOutput.md)
+### [Get-AzureRmAutomationJobOutput](Get-AzureRmAutomationJobOutput.md)
 Gets the output of an Automation job.
 
 ### [Get-AzureRmAutomationJobOutputRecord](Get-AzureRmAutomationJobOutputRecord.md)
@@ -72,19 +71,19 @@ Gets metadata for modules from Automation.
 ### [Get-AzureRmAutomationRegistrationInfo](Get-AzureRmAutomationRegistrationInfo.md)
 Gets registration information for onboarding a DSC node or hybrid worker to Automation.
 
-### [Get-AzureRMAutomationRunbook](Get-AzureRMAutomationRunbook.md)
+### [Get-AzureRmAutomationRunbook](Get-AzureRmAutomationRunbook.md)
 Gets a runbook.
 
-### [Get-AzureRMAutomationSchedule](Get-AzureRMAutomationSchedule.md)
+### [Get-AzureRmAutomationSchedule](Get-AzureRmAutomationSchedule.md)
 Gets an Automation schedule.
 
-### [Get-AzureRMAutomationScheduledRunbook](Get-AzureRMAutomationScheduledRunbook.md)
+### [Get-AzureRmAutomationScheduledRunbook](Get-AzureRmAutomationScheduledRunbook.md)
 Gets Automation runbooks and associated schedules.
 
-### [Get-AzureRMAutomationVariable](Get-AzureRMAutomationVariable.md)
+### [Get-AzureRmAutomationVariable](Get-AzureRmAutomationVariable.md)
 Gets an Automation variable.
 
-### [Get-AzureRMAutomationWebhook](Get-AzureRMAutomationWebhook.md)
+### [Get-AzureRmAutomationWebhook](Get-AzureRmAutomationWebhook.md)
 Gets webhooks from Automation.
 
 ### [Import-AzureRmAutomationDscConfiguration](Import-AzureRmAutomationDscConfiguration.md)
@@ -93,19 +92,19 @@ Imports a DSC configuration into Automation.
 ### [Import-AzureRmAutomationDscNodeConfiguration](Import-AzureRmAutomationDscNodeConfiguration.md)
 Imports a MOF document as a DSC node configuration in Automation.
 
-### [Import-AzureRMAutomationRunbook](Import-AzureRMAutomationRunbook.md)
+### [Import-AzureRmAutomationRunbook](Import-AzureRmAutomationRunbook.md)
 Imports an Automation runbook.
 
 ### [New-AzureRmAutomationAccount](New-AzureRmAutomationAccount.md)
 Creates an Automation account.
 
-### [New-AzureRMAutomationCertificate](New-AzureRMAutomationCertificate.md)
+### [New-AzureRmAutomationCertificate](New-AzureRmAutomationCertificate.md)
 Creates an Automation certificate.
 
-### [New-AzureRMAutomationConnection](New-AzureRMAutomationConnection.md)
+### [New-AzureRmAutomationConnection](New-AzureRmAutomationConnection.md)
 Creates an Automation connection.
 
-### [New-AzureRMAutomationCredential](New-AzureRMAutomationCredential.md)
+### [New-AzureRmAutomationCredential](New-AzureRmAutomationCredential.md)
 Creates an Automation credential.
 
 ### [New-AzureRmAutomationKey](New-AzureRmAutomationKey.md)
@@ -114,40 +113,40 @@ Regenerates registration keys for an Automation account.
 ### [New-AzureRmAutomationModule](New-AzureRmAutomationModule.md)
 Imports a module into Automation.
 
-### [New-AzureRMAutomationRunbook](New-AzureRMAutomationRunbook.md)
+### [New-AzureRmAutomationRunbook](New-AzureRmAutomationRunbook.md)
 Creates an Automation runbook.
 
-### [New-AzureRMAutomationSchedule](New-AzureRMAutomationSchedule.md)
+### [New-AzureRmAutomationSchedule](New-AzureRmAutomationSchedule.md)
 Creates an Automation schedule.
 
-### [New-AzureRMAutomationVariable](New-AzureRMAutomationVariable.md)
+### [New-AzureRmAutomationVariable](New-AzureRmAutomationVariable.md)
 Creates an Automation variable.
 
-### [New-AzureRMAutomationWebhook](New-AzureRMAutomationWebhook.md)
+### [New-AzureRmAutomationWebhook](New-AzureRmAutomationWebhook.md)
 Creates a webhook for an Automation runbook.
 
-### [Publish-AzureRMAutomationRunbook](Publish-AzureRMAutomationRunbook.md)
+### [Publish-AzureRmAutomationRunbook](Publish-AzureRmAutomationRunbook.md)
 Publishes a runbook.
 
 ### [Register-AzureRmAutomationDscNode](Register-AzureRmAutomationDscNode.md)
 Registers an Azure virtual machine as a DSC node for an Automation account.
 
-### [Register-AzureRMAutomationScheduledRunbook](Register-AzureRMAutomationScheduledRunbook.md)
+### [Register-AzureRmAutomationScheduledRunbook](Register-AzureRmAutomationScheduledRunbook.md)
 Associates a runbook to a schedule.
 
 ### [Remove-AzureRmAutomationAccount](Remove-AzureRmAutomationAccount.md)
 Removes an Automation account.
 
-### [Remove-AzureRMAutomationCertificate](Remove-AzureRMAutomationCertificate.md)
+### [Remove-AzureRmAutomationCertificate](Remove-AzureRmAutomationCertificate.md)
 Removes an Automation certificate.
 
-### [Remove-AzureRMAutomationConnection](Remove-AzureRMAutomationConnection.md)
+### [Remove-AzureRmAutomationConnection](Remove-AzureRmAutomationConnection.md)
 Removes an Automation connection.
 
 ### [Remove-AzureRmAutomationConnectionType](Remove-AzureRmAutomationConnectionType.md)
 Removes an Automation connection type.
 
-### [Remove-AzureRMAutomationCredential](Remove-AzureRMAutomationCredential.md)
+### [Remove-AzureRmAutomationCredential](Remove-AzureRmAutomationCredential.md)
 Removes an Automation credential.
 
 ### [Remove-AzureRmAutomationDscConfiguration](Remove-AzureRmAutomationDscConfiguration.md)
@@ -159,31 +158,31 @@ Removes metadata from DSC node configurations in Automation.
 ### [Remove-AzureRmAutomationModule](Remove-AzureRmAutomationModule.md)
 Removes a module from Automation.
 
-### [Remove-AzureRMAutomationRunbook](Remove-AzureRMAutomationRunbook.md)
+### [Remove-AzureRmAutomationRunbook](Remove-AzureRmAutomationRunbook.md)
 Removes a runbook.
 
-### [Remove-AzureRMAutomationSchedule](Remove-AzureRMAutomationSchedule.md)
+### [Remove-AzureRmAutomationSchedule](Remove-AzureRmAutomationSchedule.md)
 Deletes an Automation schedule.
 
-### [Remove-AzureRMAutomationVariable](Remove-AzureRMAutomationVariable.md)
+### [Remove-AzureRmAutomationVariable](Remove-AzureRmAutomationVariable.md)
 Removes an Automation variable.
 
-### [Remove-AzureRMAutomationWebhook](Remove-AzureRMAutomationWebhook.md)
+### [Remove-AzureRmAutomationWebhook](Remove-AzureRmAutomationWebhook.md)
 Removes a webhook from an Automation runbook.
 
-### [Resume-AzureRMAutomationJob](Resume-AzureRMAutomationJob.md)
+### [Resume-AzureRmAutomationJob](Resume-AzureRmAutomationJob.md)
 Resumes a suspended Automation job.
 
 ### [Set-AzureRmAutomationAccount](Set-AzureRmAutomationAccount.md)
 Modifies an Automation account.
 
-### [Set-AzureRMAutomationCertificate](Set-AzureRMAutomationCertificate.md)
+### [Set-AzureRmAutomationCertificate](Set-AzureRmAutomationCertificate.md)
 Modifies the configuration of an Automation certificate.
 
-### [Set-AzureRMAutomationConnectionFieldValue](Set-AzureRMAutomationConnectionFieldValue.md)
+### [Set-AzureRmAutomationConnectionFieldValue](Set-AzureRmAutomationConnectionFieldValue.md)
 Modifies the value of a field in an Automation connection.
 
-### [Set-AzureRMAutomationCredential](Set-AzureRMAutomationCredential.md)
+### [Set-AzureRmAutomationCredential](Set-AzureRmAutomationCredential.md)
 Modifies an Automation credential.
 
 ### [Set-AzureRmAutomationDscNode](Set-AzureRmAutomationDscNode.md)
@@ -192,33 +191,33 @@ Modifies the node configuration that a DSC node is mapped to.
 ### [Set-AzureRmAutomationModule](Set-AzureRmAutomationModule.md)
 Updates a module in Automation.
 
-### [Set-AzureRMAutomationRunbook](Set-AzureRMAutomationRunbook.md)
+### [Set-AzureRmAutomationRunbook](Set-AzureRmAutomationRunbook.md)
 Modifies a runbook.
 
-### [Set-AzureRMAutomationSchedule](Set-AzureRMAutomationSchedule.md)
+### [Set-AzureRmAutomationSchedule](Set-AzureRmAutomationSchedule.md)
 Modifies an Automation schedule.
 
-### [Set-AzureRMAutomationVariable](Set-AzureRMAutomationVariable.md)
+### [Set-AzureRmAutomationVariable](Set-AzureRmAutomationVariable.md)
 Modifies an Automation variable.
 
-### [Set-AzureRMAutomationWebhook](Set-AzureRMAutomationWebhook.md)
+### [Set-AzureRmAutomationWebhook](Set-AzureRmAutomationWebhook.md)
 Modifies a webhook for an Automation runbook.
 
 ### [Start-AzureRmAutomationDscCompilationJob](Start-AzureRmAutomationDscCompilationJob.md)
 Compiles a DSC configuration in Automation.
 
-### [Start-AzureRMAutomationRunbook](Start-AzureRMAutomationRunbook.md)
+### [Start-AzureRmAutomationRunbook](Start-AzureRmAutomationRunbook.md)
 Starts a runbook job.
 
-### [Stop-AzureRMAutomationJob](Stop-AzureRMAutomationJob.md)
+### [Stop-AzureRmAutomationJob](Stop-AzureRmAutomationJob.md)
 Stops an Automation job.
 
-### [Suspend-AzureRMAutomationJob](Suspend-AzureRMAutomationJob.md)
+### [Suspend-AzureRmAutomationJob](Suspend-AzureRmAutomationJob.md)
 Suspends an Automation job.
 
 ### [Unregister-AzureRmAutomationDscNode](Unregister-AzureRmAutomationDscNode.md)
 Removes a DSC node from management by an Automation account.
 
-### [Unregister-AzureRMAutomationScheduledRunbook](Unregister-AzureRMAutomationScheduledRunbook.md)
+### [Unregister-AzureRmAutomationScheduledRunbook](Unregister-AzureRmAutomationScheduledRunbook.md)
 Removes an association between a runbook and a schedule.
 

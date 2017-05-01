@@ -15,15 +15,13 @@ Removes a Storage Insight.
 ### ByWorkspaceName (Default)
 ```
 Remove-AzureRmOperationalInsightsStorageInsight [-ResourceGroupName] <String> [-WorkspaceName] <String>
- [-Name] <String> [-Force] [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Name] <String> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByWorkspaceObject
 ```
-Remove-AzureRmOperationalInsightsStorageInsight [-Workspace] <PSWorkspace> [-Name] <String> [-Force]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmOperationalInsightsStorageInsight [-Workspace] <PSWorkspace> [-Name] <String> [-Force] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,33 +48,18 @@ The first command uses the Get-AzureRmOperationalInsightsWorkspace cmdlet to get
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the name of an Azure resource group.
+### -Force
+Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: String
-Parameter Sets: ByWorkspaceName
+Type: SwitchParameter
+Parameter Sets: (All)
 Aliases: 
 
-Required: True
-Position: 1
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -WorkspaceName
-Specifies the name of the workspace that contains the Storage Insight.
-
-```yaml
-Type: String
-Parameter Sets: ByWorkspaceName
-Aliases: 
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -95,73 +78,48 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Force
-Forces the command to run without asking for user confirmation.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -ResourceGroupName
+Specifies the name of an Azure resource group.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: iv
+Parameter Sets: ByWorkspaceName
+Aliases: 
 
-Required: False
-Position: Named
+Required: True
+Position: 1
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+### -Workspace
+Specifies the workspace that contains the Storage Insight.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
+Type: PSWorkspace
+Parameter Sets: ByWorkspaceObject
+Aliases: 
 
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -WorkspaceName
+Specifies the name of the workspace that contains the Storage Insight.
+
+```yaml
+Type: String
+Parameter Sets: ByWorkspaceName
+Aliases: 
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -180,18 +138,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Workspace
-Specifies the workspace that contains the Storage Insight.
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
-Type: PSWorkspace
-Parameter Sets: ByWorkspaceObject
-Aliases: 
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

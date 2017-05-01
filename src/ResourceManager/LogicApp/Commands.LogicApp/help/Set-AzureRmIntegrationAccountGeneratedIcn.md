@@ -13,7 +13,7 @@ Updates the integration account generated interchange control number (ICN) in th
 
 ```
 Set-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName <String> -Name <String> -AgreementName <String>
- -ControlNumber <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ControlNumber <String> [-AgreementType <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,6 +24,7 @@ You cannot create a new integration account generated interchange control number
 To use the dynamic parameters, just type them in the command, or type a hyphen sign(-) to indicate a parameter name and then press the TAB key repeatedly to cycle through the available parameters.
 If you miss a required template parameter, the cmdlet prompts you for the value.
 Template parameter file values that you specify at the command line take precedence over template parameter values in a template parameter object.
+Please do provide the "-AgreementType" parameter to specify whether X12 or Edifact control numbers to return
 
 ## EXAMPLES
 
@@ -31,15 +32,31 @@ Template parameter file values that you specify at the command line take precede
 ```
 PS C:\> $resourceGroup.ResourceGroupName = "ResourceGroup1"
 PS C:\> $integrationAccountName = "IntegrationAccount1"
-PS C:\> $integrationAccountAgreementName = "IntegrationAccountAgreement1"
-PS C:\> $initialControlNumber = Get-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName
+PS C:\> $integrationAccountAgreementName = "X12IntegrationAccountAgreement"
+PS C:\> $initialControlNumber = Get-AzureRmIntegrationAccountGeneratedIcn -AgreementType X12 -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName
 PS C:\> $incrementedControlNumberValue = [convert]::ToString([convert]::ToInt32($initialControlNumber.ControlNumber, 10) + 100, 10)
 PS C:\> Set-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -ControlNumber $incrementedControlNumberValue
 ControlNumber            : 1100
 ControlNumberChangedTime : 2/15/2017 12:36:00 AM
+IsMessageProcessingFailed:
 ```
 
-This command gets the integration account  generated interchange control number for a specific integration account agreement, increase its value by 100 then writes back the updated value.
+This command gets the integration account generated X12 interchange control number for a specific integration account agreement, increase its value by 100 then writes back the updated value.
+
+### Example 2
+```
+PS C:\> $resourceGroup.ResourceGroupName = "ResourceGroup1"
+PS C:\> $integrationAccountName = "IntegrationAccount1"
+PS C:\> $integrationAccountAgreementName = "EdifactIntegrationAccountAgreement"
+PS C:\> $initialControlNumber = Get-AzureRmIntegrationAccountGeneratedIcn -AgreementType EdifactIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName
+PS C:\> $incrementedControlNumberValue = [convert]::ToString([convert]::ToInt32($initialControlNumber.ControlNumber, 10) + 100, 10)
+PS C:\> Set-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -ControlNumber $incrementedControlNumberValue
+ControlNumber            : 1100
+ControlNumberChangedTime : 2/15/2017 12:36:00 AM
+IsMessageProcessingFailed:
+```
+
+This command gets the integration account generated EdifactIntegrationAccountAgreement interchange control number for a specific integration account agreement, increase its value by 100 then writes back the updated value.
 
 ## PARAMETERS
 
@@ -54,21 +71,6 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -118,6 +120,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
@@ -130,6 +147,19 @@ Aliases: wi
 Required: False
 Position: Named
 Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AgreementType
+The integration account agreement type.```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: MessageType
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
