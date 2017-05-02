@@ -18,8 +18,8 @@ using System.Management.Automation;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Insights.Diagnostics;
-using Microsoft.Azure.Management.Insights;
-using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.Management.Monitor.Management;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
@@ -30,13 +30,14 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
     public class SetDiagnosticSettingCommandTests
     {
         private readonly SetAzureRmDiagnosticSettingCommand cmdlet;
-        private readonly Mock<InsightsManagementClient> insightsManagementClientMock;
+        private readonly Mock<MonitorManagementClient> insightsManagementClientMock;
         private readonly Mock<IServiceDiagnosticSettingsOperations> insightsDiagnosticsOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
         private const string resourceId = "/subscriptions/123/resourcegroups/rg/providers/rp/resource/myresource";
         private const string storageAccountId = "/subscriptions/123/resourcegroups/rg/providers/microsoft.storage/accounts/myaccount";
         private const string serviceBusRuleId = "/subscriptions/123/resourcegroups/rg/providers/microsoft.eventhub/namespaces/ns/authorizationrules/ar";
         private const string workspaceId = "/subscriptions/123/resourcegroups/rg/providers/microsoft.operationalinsights/workspaces/wp";
+        private const string eventHubAuthRuleId = "/subscriptions/123/resourcegroups/rg/providers/microsoft.eventhub/namespaces/ns/authorizationrules";
 
         ServiceDiagnosticSettingsResource ExistingSetting;
         ServiceDiagnosticSettingsResource calledSettings = null;
@@ -44,12 +45,12 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
         public SetDiagnosticSettingCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             this.insightsDiagnosticsOperationsMock = new Mock<IServiceDiagnosticSettingsOperations>();
-            this.insightsManagementClientMock = new Mock<InsightsManagementClient>();
+            this.insightsManagementClientMock = new Mock<MonitorManagementClient>();
             this.commandRuntimeMock = new Mock<ICommandRuntime>();
             this.cmdlet = new SetAzureRmDiagnosticSettingCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                InsightsManagementClient = insightsManagementClientMock.Object
+                MonitorManagementClient = insightsManagementClientMock.Object
             };
             
             this.ExistingSetting = GetDefaultSetting();
@@ -301,7 +302,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
                         TimeGrain = TimeSpan.FromHours(1),
                         Enabled = true
                     }
-                }
+                },
+                EventHubAuthorizationRuleId = eventHubAuthRuleId
             };
         }
     }
