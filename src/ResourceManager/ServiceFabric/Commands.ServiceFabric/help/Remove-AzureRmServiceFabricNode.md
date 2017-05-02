@@ -26,7 +26,7 @@ Use **Remove-AzureRmServiceFabricNode** to remove nodes from a specific node typ
 PS c:> Remove-AzureRmServiceFabricNode -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NodeTypeName 'nt1' -Number 2
 ```
 
-This command will remove 2 nodes from the node type nt1
+This command will remove 2 nodes from the nodetype 'nt1''
 
 ## PARAMETERS
 
@@ -135,4 +135,4 @@ System.String
 ## NOTES
 
 ## RELATED LINKS
-
+[Add-AzureRmServiceFabricNode](./Add-AzureRmServiceFabricNode.md) 
