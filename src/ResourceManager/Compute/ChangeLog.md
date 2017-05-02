@@ -20,6 +20,7 @@
 ## Current Release
 
 * Backup encryption settings for IaaS VMs and restore on failure
+* ChefServiceInterval option is renamed to ChefDaemonInterval now. Old one will continue to work however.
 * Remove duplicated DataDiskNames and NetworkInterfaceIDs properties from PS VM object.
   - Make DataDiskNames and NetworkInterfaceIDs parameters optional in Remove-AzureRmVMDataDisk and Remove-AzureRmVMNetworkInterface, respectively.
 * Fix the piping issue of Get cmdlets when the Get cmdlets return a list object.
