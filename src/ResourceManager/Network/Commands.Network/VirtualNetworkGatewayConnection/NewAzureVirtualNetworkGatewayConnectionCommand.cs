@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Whether to establish a BGP session over a S2S VPN tunnel")]
-        public string EnableBgp { get; set; }
+        public bool EnableBgp { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -130,11 +130,11 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
-
+        
         [Parameter(
             Mandatory = false,
             HelpMessage = "Use policy-based traffic selectors for a S2S connection")]
-        public string UsePolicyBasedTrafficSelectors { get; set; }
+        public bool UsePolicyBasedTrafficSelectors { get; set; }
 
         [Parameter(
              Mandatory = false,
@@ -172,22 +172,14 @@ namespace Microsoft.Azure.Commands.Network
             vnetGatewayConnection.ConnectionType = this.ConnectionType;
             vnetGatewayConnection.RoutingWeight = this.RoutingWeight;
             vnetGatewayConnection.SharedKey = this.SharedKey;
-            
-            if (!string.IsNullOrEmpty(this.EnableBgp))
-            {
-                vnetGatewayConnection.EnableBgp = bool.Parse(this.EnableBgp);
-            }
-            else
-            {
-                vnetGatewayConnection.EnableBgp = false;
-            }
+
+            vnetGatewayConnection.EnableBgp = this.EnableBgp;
 
             if (!string.IsNullOrEmpty(this.AuthorizationKey))
             {
                 vnetGatewayConnection.AuthorizationKey = this.AuthorizationKey;
             }
-
-
+            
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {
                 if (this.Peer != null)
@@ -202,14 +194,7 @@ namespace Microsoft.Azure.Commands.Network
                 vnetGatewayConnection.Peer.Id = this.PeerId;
             }
 
-            if (!string.IsNullOrEmpty(this.UsePolicyBasedTrafficSelectors))
-            {
-                vnetGatewayConnection.UsePolicyBasedTrafficSelectors = bool.Parse(this.UsePolicyBasedTrafficSelectors);
-            }
-            else
-            {
-                vnetGatewayConnection.UsePolicyBasedTrafficSelectors = false;
-            }
+            vnetGatewayConnection.UsePolicyBasedTrafficSelectors = this.UsePolicyBasedTrafficSelectors;
 
             if (this.IpsecPolicies != null)
             {

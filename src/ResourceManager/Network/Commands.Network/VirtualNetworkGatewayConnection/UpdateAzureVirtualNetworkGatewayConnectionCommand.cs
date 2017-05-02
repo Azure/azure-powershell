@@ -36,13 +36,24 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Whether to establish a BGP session over a S2S VPN tunnel")]
-        public string EnableBgp { get; set; }
+            HelpMessage = "Enable a BGP session over a S2S VPN tunnel")]
+        public SwitchParameter EnableBgp { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Use policy-based traffic selectors for a S2S connection")]
-        public string UsePolicyBasedTrafficSelectors { get; set; }
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Disable a BGP session over a S2S VPN tunnel")]
+        public SwitchParameter DisableBgp { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enable policy-based traffic selectors for a S2S connection")]
+        public SwitchParameter EnablePolicyBasedTrafficSelectors { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enable policy-based traffic selectors for a S2S connection")]
+        public SwitchParameter DisablePolicyBasedTrafficSelectors { get; set; }
 
         [Parameter(
              Mandatory = false,
@@ -71,14 +82,22 @@ namespace Microsoft.Azure.Commands.Network
                         throw new ArgumentException(Properties.Resources.ResourceNotFound);
                     }
 
-                    if (!string.IsNullOrEmpty(this.EnableBgp))
+                    if (this.EnableBgp.IsPresent)
                     {
-                        this.VirtualNetworkGatewayConnection.EnableBgp = bool.Parse(this.EnableBgp);
+                        this.VirtualNetworkGatewayConnection.EnableBgp = true;
+                    }
+                    else if (this.DisableBgp.IsPresent)
+                    {
+                        this.VirtualNetworkGatewayConnection.EnableBgp = false;
                     }
 
-                    if (!string.IsNullOrEmpty(this.UsePolicyBasedTrafficSelectors))
+                    if (this.EnablePolicyBasedTrafficSelectors.IsPresent)
                     {
-                        this.VirtualNetworkGatewayConnection.UsePolicyBasedTrafficSelectors = bool.Parse(this.UsePolicyBasedTrafficSelectors);
+                        this.VirtualNetworkGatewayConnection.UsePolicyBasedTrafficSelectors = true;
+                    }
+                    else if (this.DisablePolicyBasedTrafficSelectors.IsPresent)
+                    {
+                        this.VirtualNetworkGatewayConnection.UsePolicyBasedTrafficSelectors = false;
                     }
 
                     if (this.IpsecPolicies != null)
