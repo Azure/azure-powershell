@@ -32,6 +32,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Common
         public const int DefaultFrontendPortRangeEnd = 4500;
         public const int DefaultBackendPort = 3389;
 
+        public const int MaxStorageAccountsPerNodeType = 5;
+
         public const string PublicIpAddressesType = "Microsoft.Network/publicIPAddresses";
         public const string VirtualMachineScaleSetsType = "Microsoft.Compute/virtualMachineScaleSets";
         public const string KeyVaultType = "Microsoft.KeyVault/vaults";
