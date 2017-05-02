@@ -9,10 +9,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Azure.Commands.Insights</RootNamespace>
     <AssemblyName>Microsoft.Azure.Commands.Insights</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -46,28 +47,16 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Hyak.Common.1.0.3\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Threading.Tasks">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\portable-net45+win8+wpa81\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Azure.Common">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Common.NetFramework">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Insights">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Insights.0.14.1-preview\lib\net45\Microsoft.Azure.Insights.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Data.Edm">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Data.Edm.5.6.4\lib\net40\Microsoft.Data.Edm.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.OData">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Data.OData.5.6.4\lib\net40\Microsoft.Data.OData.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.Services.Client">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.6.4\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Monitor">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Monitor.0.16.0-preview\lib\net452\Microsoft.Azure.Management.Monitor.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.3.860, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
@@ -85,39 +74,13 @@
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.9-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Threading.Tasks">
-      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Threading.Tasks.Extensions">
-      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop">
-      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Storage">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\WindowsAzure.Storage.6.0.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.KeyVault.Core">
-      <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Collections" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Spatial, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\System.Spatial.5.6.4\lib\net40\System.Spatial.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml" />
-    <Reference Include="System.ServiceModel" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Alerts\AddAzureRmAlertRuleCommandBase.cs" />
@@ -138,74 +101,31 @@
     <Compile Include="Autoscale\GetAzureRmAutoscaleSettingCommand.cs" />
     <Compile Include="Autoscale\NewAzureRmAutoscaleWebhookCommand.cs" />
     <Compile Include="Autoscale\RemoveAzureRmAutoscaleSettingCommand.cs" />
-    <Compile Include="Customizations\IMetricOperations.Customization.cs" />
-    <Compile Include="Customizations\InsightsClient.Customization.cs" />
-    <Compile Include="Customizations\MetricDefinitionOperations.Customization.cs" />
-    <Compile Include="Customizations\MetricOperations.Customization.cs" />
-    <Compile Include="Customizations\MetricOperationsExtensions.Customization.cs" />
-    <Compile Include="Customizations\Shoebox\BlobShoeboxMetricRetriever.cs" />
-    <Compile Include="Customizations\Shoebox\EmptyMetricRetriever.cs" />
-    <Compile Include="Customizations\Shoebox\IMetricRetriever.cs" />
-    <Compile Include="Customizations\Shoebox\MetricDefinitionFilterParser.cs" />
-    <Compile Include="Customizations\Shoebox\MetricDimension.cs" />
-    <Compile Include="Customizations\Shoebox\MetricFilter.cs" />
-    <Compile Include="Customizations\Shoebox\MetricFilterDimension.cs" />
-    <Compile Include="Customizations\Shoebox\MetricFilterExpressionParser.cs" />
-    <Compile Include="Customizations\Shoebox\MetricFilterRegexParser.cs" />
-    <Compile Include="Customizations\Shoebox\MetricWrap.cs" />
-    <Compile Include="Customizations\Shoebox\ProxyMetricRetriever.cs" />
-    <Compile Include="Customizations\Shoebox\SasMetricRetriever.cs" />
-    <Compile Include="Customizations\Shoebox\ShoeboxClient.cs" />
-    <Compile Include="Customizations\Shoebox\ShoeboxHelper.cs" />
-    <Compile Include="Customizations\Shoebox\ShoeboxMetricRetriever.cs" />
-    <Compile Include="Customizations\Shoebox\SizeBoundedCache.cs" />
-    <Compile Include="Customizations\Shoebox\StorageConstants.cs" />
-    <Compile Include="Customizations\Shoebox\StorageMetricRetriever.cs" />
-    <Compile Include="Customizations\Shoebox\TableOperationContextLogger.cs" />
-    <Compile Include="Customizations\Util.cs" />
     <Compile Include="Diagnostics\SetAzureRmDiagnosticSettingCommand.cs" />
     <Compile Include="Diagnostics\GetAzureRmDiagnosticSettingCommand.cs" />
-    <Compile Include="EventCmdletBase.cs" />
-    <Compile Include="Events\GetAzureRmLogCommand.cs" />
-    <Compile Include="Generated\Insights\IInsightsClient.cs" />
-    <Compile Include="Generated\Insights\IMetricDefinitionOperations.cs" />
-    <Compile Include="Generated\Insights\IMetricOperations.cs" />
-    <Compile Include="Generated\Insights\InsightsClient.cs" />
-    <Compile Include="Generated\Insights\InsightsClientExtensions.cs" />
-    <Compile Include="Generated\Insights\MetricDefinitionOperationsExtensions.cs" />
-    <Compile Include="Generated\Insights\MetricOperationsExtensions.cs" />
-    <Compile Include="Generated\Insights\Models\AggregationType.cs" />
-    <Compile Include="Generated\Insights\Models\BlobInfo.cs" />
-    <Compile Include="Generated\Insights\Models\BlobLocation.cs" />
-    <Compile Include="Generated\Insights\Models\Dimension.cs" />
-    <Compile Include="Generated\Insights\Models\LocalizableString.cs" />
-    <Compile Include="Generated\Insights\Models\Metric.cs" />
-    <Compile Include="Generated\Insights\Models\MetricAvailability.cs" />
-    <Compile Include="Generated\Insights\Models\MetricCollection.cs" />
-    <Compile Include="Generated\Insights\Models\MetricDefinition.cs" />
-    <Compile Include="Generated\Insights\Models\MetricDefinitionCollection.cs" />
-    <Compile Include="Generated\Insights\Models\MetricDefinitionListResponse.cs" />
-    <Compile Include="Generated\Insights\Models\MetricListResponse.cs" />
-    <Compile Include="Generated\Insights\Models\MetricLocation.cs" />
-    <Compile Include="Generated\Insights\Models\MetricTableInfo.cs" />
-    <Compile Include="Generated\Insights\Models\MetricValue.cs" />
-    <Compile Include="Generated\Insights\Models\Unit.cs" />
-    <Compile Include="InsightsClientCmdletBase.cs" />
-    <Compile Include="InsightsCmdletBase.cs" />
+    <Compile Include="LogsCmdletBase.cs" />
+    <Compile Include="ActivityLogs\GetAzureRmLogCommand.cs" />
+    <Compile Include="MonitorClientCmdletBase.cs" />
+    <Compile Include="MonitorCmdletBase.cs" />
     <Compile Include="LogProfiles\RemoveAzureRmLogProfileCommand.cs" />
     <Compile Include="LogProfiles\GetAzureRmLogProfileCommand.cs" />
     <Compile Include="LogProfiles\AddAzureRmLogProfileCommand.cs" />
     <Compile Include="ManagementCmdletBase.cs" />
     <Compile Include="Metrics\GetAzureRmMetricDefinitionCommand.cs" />
     <Compile Include="Metrics\GetAzureRmMetricCommand.cs" />
-    <Compile Include="OnetimeGenerated\Insights\MetricDefinitionOperations.cs" />
-    <Compile Include="OnetimeGenerated\Insights\MetricOperations.cs" />
     <Compile Include="OutputClasses\CustomPrinter.cs" />
     <Compile Include="OutputClasses\IPSEventData.cs" />
     <Compile Include="OutputClasses\IPSRuleCondition.cs" />
+    <Compile Include="OutputClasses\PSAddAlertRuleOperationResponse.cs" />
+    <Compile Include="OutputClasses\PSAddAutoscaleSettingOperationResponse.cs" />
+    <Compile Include="OutputClasses\PSAlertRuleResource.cs" />
+    <Compile Include="OutputClasses\PSAutoscaleSettingNoDetails.cs" />
+    <Compile Include="OutputClasses\PSDiagnosticSettingOperationResponse.cs" />
     <Compile Include="OutputClasses\PSLocalizableString.cs" />
+    <Compile Include="OutputClasses\PSLocalizableStringNoDetails.cs" />
     <Compile Include="OutputClasses\PSLogProfileCollection.cs" />
     <Compile Include="OutputClasses\PSLogSettings.cs" />
+    <Compile Include="OutputClasses\PSMetricAvailability.cs" />
     <Compile Include="OutputClasses\PSMetricSettings.cs" />
     <Compile Include="OutputClasses\PSLogProfile.cs" />
     <Compile Include="OutputClasses\PSAutoscaleProfilesList.cs" />
@@ -215,7 +135,7 @@
     <Compile Include="OutputClasses\PSAlertRuleNoDetails.cs" />
     <Compile Include="OutputClasses\PSAlertRuleProperty.cs" />
     <Compile Include="OutputClasses\PSAutoscaleSetting.cs" />
-    <Compile Include="OutputClasses\PSAvailabilityCollection.cs" />
+    <Compile Include="OutputClasses\PSMetricAvailabilityCollection.cs" />
     <Compile Include="OutputClasses\PSDictionaryElement.cs" />
     <Compile Include="OutputClasses\PSEventData.cs" />
     <Compile Include="OutputClasses\PSEventDataAuthorization.cs" />
