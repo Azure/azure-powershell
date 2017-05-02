@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public const string LinuxTemplateRelativePath = @"Template\Linux";
         public const string ParameterFileName = @"parameter.json";
         public const string TemplateFileName = @"template.json";
-
+        
         public readonly Dictionary<OperatingSystem, string> OsToVmSkuString = new Dictionary<OperatingSystem, string>()
         {
             {OperatingSystem.WindowsServer2012R2Datacenter, "2012-R2-Datacenter"},
@@ -1044,6 +1044,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private JObject ModifyDefaultTemplateStorageAccount(ref JObject templateJObject)
         {
+            var maxStorageCounts = Math.Max(this.clusterSize, Constants.MaxStorageAccountsPerNodeType);
             var storageNameArray = templateJObject.SelectToken("variables.uniqueStringArray0", true) as JArray;
             if (storageNameArray == null)
             {
@@ -1051,7 +1052,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
 
             storageNameArray.Clear();
-            for (int i = 0; i < this.clusterSize; i++)
+            for (int i = 0; i < maxStorageCounts; i++)
             {
                 storageNameArray.Add(string.Format("[concat(variables('vmStorageAccountName0'), '{0}')]", i));
             }
@@ -1075,14 +1076,20 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         throw new InvalidOperationException(ServiceFabricProperties.Resources.InvalidTemplateFile);
                     }
 
-                    for (int i = 1; i < this.clusterSize; i++)
+                    for (var i = 1; i < maxStorageCounts; i++)
                     {
                         dependsOn.Add(string.Format("[concat('Microsoft.Storage/storageAccounts/', variables('uniqueStringArray0')[{0}])]", i));
                     }
 
                     var osDisks = resource.SelectToken("properties.virtualMachineProfile.storageProfile.osDisk.vhdContainers", true) as JArray;
+
+                    if (osDisks == null)
+                    {
+                        throw new InvalidOperationException(ServiceFabricProperties.Resources.InvalidTemplateFile);
+                    }
+
                     osDisks.Clear();
-                    for (int i = 0; i < this.clusterSize; i++)
+                    for (var i = 0; i < maxStorageCounts; i++)
                     {
                         osDisks.Add(string.Format(
                             "[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('uniqueStringArray0')[{0}]), variables('storageApiVersion')).primaryEndpoints.blob, variables('vmStorageAccountContainerName'))]", i));
