@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Insights.Models;
+using Microsoft.Azure.Management.Monitor.Models;
 using System;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
@@ -22,6 +22,17 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     /// </summary>
     public class PSEventData : IPSEventData
     {
+        /// <summary>
+        /// NOTICE: this type has not been used in the servers for a long time. It will be deprecated from this cmdlet soon.
+        /// </summary>
+        [Flags]
+        public enum EventChannelsDeprecated
+        {
+            None,
+            Operation,
+            Admin
+        };
+
         /// <summary>
         /// Gets or sets the authorization. This is the authorization used by the user who has performed the operation that led to this event.
         /// </summary>
@@ -49,8 +60,9 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
 
         /// <summary>
         /// Gets or sets the event channels. The regular event logs, that you see in the Azure Management Portals, flow through the 'Operation' channel.
+        /// NOTICE: this field has not been used in the servers for a long time. It will be deprecated from this cmdlet soon.
         /// </summary>
-        public EventChannels EventChannels { get; set; }
+        public EventChannelsDeprecated EventChannels { get; set; }
 
         /// <summary>
         /// Gets or sets the event data Id. This is a unique identifier for an event.
@@ -155,7 +167,9 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             this.Claims = new PSDictionaryElement(eventData.Claims);
             this.CorrelationId = eventData.CorrelationId;
             this.Description = eventData.Description;
-            this.EventChannels = eventData.Channels;
+
+            // To be deprecated, kept here for backwards compatibility
+            this.EventChannels = EventChannelsDeprecated.Admin | EventChannelsDeprecated.Operation;
             this.EventDataId = eventData.EventDataId;
             this.EventName = eventData.EventName.Value;
             this.Category = eventData.Category.Value;
