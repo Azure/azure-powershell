@@ -14,10 +14,9 @@
 
 using Microsoft.Azure.Commands.Insights.Alerts;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Insights;
-using Microsoft.Azure.Insights.Models;
-using Microsoft.Azure.Insights.Legacy.Models;
-using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Models;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Rest.Azure.OData;
 using Moq;
@@ -29,7 +28,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Xunit;
-using LocalizableString = Microsoft.Azure.Insights.Models.LocalizableString;
+using LocalizableString = Microsoft.Azure.Management.Monitor.Models.LocalizableString;
 
 namespace Microsoft.Azure.Commands.Insights.Test
 {
@@ -69,7 +68,6 @@ namespace Microsoft.Azure.Commands.Insights.Test
                 },
                 correlationId: Correlation,
                 description: "fake event",
-                channels: EventChannels.Operation,
                 level: EventLevel.Informational,
                 eventTimestamp: DateTime.Now,
                 operationId: "c0f2e85f-efb0-47d0-bf90-f983ec8be91d",
@@ -104,7 +102,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
 
             return new AzureOperationResponse<IPage<EventData>>()
             {
-                Body = JsonConvert.DeserializeObject<Azure.Insights.Models.Page<EventData>>(x)
+                Body = JsonConvert.DeserializeObject<Azure.Management.Monitor.Models.Page<EventData>>(x)
             };
         }
 
@@ -116,48 +114,33 @@ namespace Microsoft.Azure.Commands.Insights.Test
 
             return new AzureOperationResponse<LogProfileResource>()
             {
-                Body = new LogProfileResource(location: "East US", id: "MyLogProfileId", locations: new string[] { "EastUs" })
+                Body = new LogProfileResource(
+                    name:Utilities.Name,
+                    location: "East US", 
+                    id: "MyLogProfileId", 
+                    locations: new string[] { "EastUs" }, 
+                    categories: new List<string>() { "cat2" },
+                    retentionPolicy: new RetentionPolicy(enabled: true, days: 10))
 
                 {
-                    Categories = new List<string>() { "cat2" },
                     ServiceBusRuleId = "myBusId",
                     StorageAccountId = "myStorageAccId",
-                    Name = Utilities.Name,
-                    RetentionPolicy = new RetentionPolicy(enabled: true, days: 10),
                     Tags = null
                 }
             };
         }
 
-        public static MetricListResponse InitializeMetricResponse()
+        public static IEnumerable<Metric> InitializeMetricResponse()
         {
-            // This is effectively testing the conversion EventData -> PSEventData internally in the execution of the cmdlet
-            return new MetricListResponse
-            {
-                MetricCollection = new MetricCollection
-                {
-                    Value = new List<Microsoft.Azure.Insights.Legacy.Models.Metric>()
-                },
-                RequestId = Guid.NewGuid().ToString(),
-                StatusCode = HttpStatusCode.OK
-            };
+            return new List<Metric>();
         }
 
-        public static MetricDefinitionListResponse InitializeMetricDefinitionResponse()
+        public static IEnumerable<MetricDefinition> InitializeMetricDefinitionResponse()
         {
-            // This is effectively testing the conversion EventData -> PSEventData internally in the execution of the cmdlet
-            return new MetricDefinitionListResponse
-            {
-                MetricDefinitionCollection = new MetricDefinitionCollection
-                {
-                    Value = new Microsoft.Azure.Insights.Legacy.Models.MetricDefinition[] { }
-                },
-                RequestId = Guid.NewGuid().ToString(),
-                StatusCode = HttpStatusCode.OK
-            };
+            return new List<MetricDefinition>();
         }
 
-        public static void VerifyDetailedOutput(EventCmdletBase cmdlet, ref string selected)
+        public static void VerifyDetailedOutput(LogsCmdletBase cmdlet, ref string selected)
         {
             // Calling with detailed output
             cmdlet.DetailedOutput = true;
@@ -165,7 +148,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
             Assert.Null(selected); // Incorrect nameOrTargetUri clause with detailed output on
         }
 
-        public static void VerifyContinuationToken(AzureOperationResponse<IPage<EventData>> response, Mock<IEventsOperations> insinsightsEventOperationsMockightsClientMock, EventCmdletBase cmdlet)
+        public static void VerifyContinuationToken(AzureOperationResponse<IPage<EventData>> response, Mock<IActivityLogsOperations> insinsightsEventOperationsMockightsClientMock, LogsCmdletBase cmdlet)
         {
             // Make sure calls to Next work also
             string nextToken = ContinuationToken;
@@ -222,7 +205,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
             VerifyConditionInFilter(filter: filter, field: "status", value: Utilities.Status);
         }
 
-        public static void ExecuteVerifications(EventCmdletBase cmdlet, Mock<IEventsOperations> insinsightsEventOperationsMockightsClientMock, string requiredFieldName, string requiredFieldValue, ref ODataQuery<EventData> filter, ref string selected, DateTime startDate, AzureOperationResponse<IPage<EventData>> response)
+        public static void ExecuteVerifications(LogsCmdletBase cmdlet, Mock<IActivityLogsOperations> insinsightsEventOperationsMockightsClientMock, string requiredFieldName, string requiredFieldValue, ref ODataQuery<EventData> filter, ref string selected, DateTime startDate, AzureOperationResponse<IPage<EventData>> response)
         {
             // Calling without optional parameters
             cmdlet.ExecuteCmdlet();
@@ -284,27 +267,29 @@ namespace Microsoft.Azure.Commands.Insights.Test
 
         public static AlertRuleResource CreateFakeRuleResource()
         {
+            var condition = new ThresholdRuleCondition()
+            {
+                DataSource = new RuleMetricDataSource()
+                {
+                    MetricName = "CpuTime",
+                    ResourceUri = ResourceUri,
+                },
+                OperatorProperty = ConditionOperator.GreaterThan,
+                Threshold = 3,
+                TimeAggregation = TimeAggregationOperator.Total,
+                WindowSize = TimeSpan.FromMinutes(5),
+            };
+
             return new AlertRuleResource(
                 id: "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d",
                 location: "East US",
                 alertRuleResourceName: Name,
-                isEnabled: true)
+                isEnabled: true,
+                condition: condition)
             {
                 Actions = new BindingList<RuleAction>()
                 {
                     new RuleEmailAction(),
-                },
-                Condition = new ThresholdRuleCondition()
-                {
-                    DataSource = new RuleMetricDataSource()
-                    {
-                        MetricName = "CpuTime",
-                        ResourceUri = ResourceUri,
-                    },
-                    OperatorProperty = ConditionOperator.GreaterThan,
-                    Threshold = 3,
-                    TimeAggregation = TimeAggregationOperator.Total,
-                    WindowSize = TimeSpan.FromMinutes(5),
                 },
                 Description = null,
                 Tags = new Dictionary<string, string>()

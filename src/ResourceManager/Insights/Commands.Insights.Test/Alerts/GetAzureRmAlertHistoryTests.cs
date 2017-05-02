@@ -14,8 +14,8 @@
 
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Insights.Alerts;
-using Microsoft.Azure.Insights;
-using Microsoft.Azure.Insights.Models;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Rest.Azure.OData;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -32,8 +32,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
     public class GetAzureRmAlertHistoryTests
     {
         private readonly GetAzureRmAlertHistoryCommand cmdlet;
-        private readonly Mock<InsightsClient> insightsClientMock;
-        private readonly Mock<IEventsOperations> insightsEventOperationsMock;
+        private readonly Mock<MonitorClient> MonitorClientMock;
+        private readonly Mock<IActivityLogsOperations> insightsEventOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
         private AzureOperationResponse<IPage<EventData>> response;
         private ODataQuery<EventData> filter;
@@ -42,13 +42,13 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
         public GetAzureRmAlertHistoryTests(ITestOutputHelper output)
         {
             //XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
-            insightsEventOperationsMock = new Mock<IEventsOperations>();
-            insightsClientMock = new Mock<InsightsClient>();
+            insightsEventOperationsMock = new Mock<IActivityLogsOperations>();
+            MonitorClientMock = new Mock<MonitorClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetAzureRmAlertHistoryCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                InsightsClient = insightsClientMock.Object
+                MonitorClient = MonitorClientMock.Object
             };
 
             response = Test.Utilities.InitializeResponse();
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
                     selected = s;
                 });
 
-            insightsClientMock.SetupGet(f => f.Events).Returns(this.insightsEventOperationsMock.Object);
+            MonitorClientMock.SetupGet(f => f.ActivityLogs).Returns(this.insightsEventOperationsMock.Object);
         }
 
         [Fact]

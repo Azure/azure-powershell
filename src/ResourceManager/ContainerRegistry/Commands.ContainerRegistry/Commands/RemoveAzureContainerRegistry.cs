@@ -48,14 +48,14 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
         public override void ExecuteCmdlet()
         {
+            if (string.Equals(ParameterSetName, RegistryObjectParameterSet))
+            {
+                ResourceGroupName = Registry.ResourceGroupName;
+                Name = Registry.Name;
+            }
+
             if (ShouldProcess(Name, "Remove Container Registry"))
             {
-                if (string.Equals(ParameterSetName, RegistryObjectParameterSet))
-                {
-                    ResourceGroupName = Registry.ResourceGroupName;
-                    Name = Registry.Name;
-                }
-
                 RegistryClient.DeleteRegistry(ResourceGroupName, Name);
             }
         }
