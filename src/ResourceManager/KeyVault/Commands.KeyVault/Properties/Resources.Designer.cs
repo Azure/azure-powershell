@@ -260,33 +260,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Overwrite File ?.
-        /// </summary>
-        internal static string FileOverwriteCaption {
-            get {
-                return ResourceManager.GetString("FileOverwriteCaption", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Overwrite existing file at &apos;{0}&apos; ?.
-        /// </summary>
-        internal static string FileOverwriteMessage {
-            get {
-                return ResourceManager.GetString("FileOverwriteMessage", resourceCulture);
-            }
-        }
-        
-        ///<summary>
-        ///   Looks up a localized string similar to Cannot find deleted vault &apos;{0}&apos; in location &apos;{1}&apos;.
-        /// </summary>
-        internal static string DeletedVaultNotFound {
-            get {
-                return ResourceManager.GetString("DeletedVaultNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to BYOK key can not be imported as software key.
         /// </summary>
         internal static string ImportByokAsSoftkeyError {

@@ -1109,9 +1109,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public DeletedKeyBundle GetDeletedKey(string vaultName, string keyName)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
             if (string.IsNullOrEmpty(keyName))
-                throw new ArgumentNullException("keyName");
+                throw new ArgumentNullException(nameof(keyName));
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
@@ -1138,7 +1138,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public IEnumerable<DeletedKeyIdentityItem> GetDeletedKeys(KeyVaultObjectFilterOptions options)
         {
             if (options == null)
-                throw new ArgumentNullException("options");
+                throw new ArgumentNullException(nameof(options));
 
             if (string.IsNullOrEmpty(options.VaultName))
                 throw new ArgumentException(KeyVaultProperties.Resources.InvalidVaultName);
@@ -1167,9 +1167,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public DeletedSecret GetDeletedSecret(string vaultName, string secretName)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
             if (string.IsNullOrEmpty(secretName))
-                throw new ArgumentNullException("secretName");
+                throw new ArgumentNullException(nameof(secretName));
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
@@ -1196,7 +1196,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public IEnumerable<DeletedSecretIdentityItem> GetDeletedSecrets(KeyVaultObjectFilterOptions options)
         {
             if (options == null)
-                throw new ArgumentNullException("options");
+                throw new ArgumentNullException(nameof(options));
             if (string.IsNullOrEmpty(options.VaultName))
                 throw new ArgumentException(KeyVaultProperties.Resources.InvalidVaultName);
 
@@ -1224,9 +1224,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public void PurgeKey(string vaultName, string keyName)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
             if (string.IsNullOrEmpty(keyName))
-                throw new ArgumentNullException("keyName");
+                throw new ArgumentNullException(nameof(keyName));
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
@@ -1243,9 +1243,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public void PurgeSecret(string vaultName, string secretName)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
             if (string.IsNullOrEmpty(secretName))
-                throw new ArgumentNullException("secretName");
+                throw new ArgumentNullException(nameof(secretName));
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
@@ -1262,9 +1262,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public KeyBundle RecoverKey(string vaultName, string keyName)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
             if (string.IsNullOrEmpty(keyName))
-                throw new ArgumentNullException("keyName");
+                throw new ArgumentNullException(nameof(keyName));
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
@@ -1284,9 +1284,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public Secret RecoverSecret(string vaultName, string secretName)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
             if (string.IsNullOrEmpty(secretName))
-                throw new ArgumentNullException("secretName");
+                throw new ArgumentNullException(nameof(secretName));
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
@@ -1301,6 +1301,121 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
 
             return new Secret(recoveredSecret, this.vaultUriHelper);
+        }
+
+        public DeletedCertificateBundle GetDeletedCertificate( string vaultName, string certName )
+        {
+            if ( string.IsNullOrEmpty( vaultName ) )
+                throw new ArgumentNullException( nameof(vaultName) );
+            if ( string.IsNullOrEmpty( certName ) )
+                throw new ArgumentNullException( nameof(certName) );
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+
+            DeletedCertificateBundle deletedCertificate;
+            try
+            {
+                deletedCertificate = this.keyVaultClient.GetDeletedCertificateAsync( vaultAddress, certName ).GetAwaiter( ).GetResult( );
+            }
+            catch ( KeyVaultErrorException ex )
+            {
+                if ( ex.Response.StatusCode == HttpStatusCode.NotFound )
+                    return null;
+                else
+                    throw;
+            }
+            catch ( Exception ex )
+            {
+                throw GetInnerException( ex );
+            }
+
+            return deletedCertificate;
+        }
+
+        public IEnumerable<DeletedCertificateIdentityItem> GetDeletedCertificates( KeyVaultObjectFilterOptions options )
+        {
+            /// TODO [dragosav]: the type handling of certificates in the KV PSh client is
+            /// inconsistent with the other entity types, as well as inconsisten within itself.
+            /// For keys and secrets, the wrapper of the data plane client consumes KV models
+            /// and returns PSH models - i.e. type translation occurs in the wrapper. For
+            /// certificates, individual objects are passed through as KV models to the caller
+            /// (which is the cmdlet implementation, and which performs the type translation),
+            /// but collections are translated in the wrapper - i.e. the wrapper returns 
+            /// CertificateBundle (a KV type) but also CertificateIdentityItem (a PSh type).
+            /// Changing this constitutes a breaking change in the IKVDataServiceClient iface,
+            /// which, although unlikely to be used outside of this code, is however public.
+            if ( options == null )
+                throw new ArgumentNullException( nameof( options ) );
+            if ( string.IsNullOrEmpty( options.VaultName ) )
+                throw new ArgumentException( KeyVaultProperties.Resources.InvalidVaultName );
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(options.VaultName);
+
+            try
+            {
+                IPage<DeletedSecretItem> result;
+
+                if ( string.IsNullOrEmpty( options.NextLink ) )
+                    result = this.keyVaultClient.GetDeletedSecretsAsync( vaultAddress ).GetAwaiter( ).GetResult( );
+                else
+                    result = this.keyVaultClient.GetDeletedSecretsNextAsync( options.NextLink ).GetAwaiter( ).GetResult( );
+
+                options.NextLink = result.NextPageLink;
+                return ( result == null ) ? new List<DeletedSecretIdentityItem>( ) :
+                    result.Select( ( deletedSecretItem ) => new DeletedSecretIdentityItem( deletedSecretItem, this.vaultUriHelper ) );
+            }
+            catch ( Exception ex )
+            {
+                throw GetInnerException( ex );
+            }
+
+
+            if ( options == null )
+                throw new ArgumentNullException( nameof( options ) );
+            if ( string.IsNullOrEmpty( options.VaultName ) )
+                throw new ArgumentException( KeyVaultProperties.Resources.InvalidVaultName );
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(options.VaultName);
+
+            try
+            {
+                IPage<DeletedCertificateItem> result;
+
+                if ( string.IsNullOrEmpty( options.NextLink ) )
+                    result = this.keyVaultClient.GetDeletedSecretsAsync( vaultAddress ).GetAwaiter( ).GetResult( );
+                else
+                    result = this.keyVaultClient.GetDeletedSecretsNextAsync( options.NextLink ).GetAwaiter( ).GetResult( );
+
+                options.NextLink = result.NextPageLink;
+                return ( result == null ) ? new List<DeletedSecretIdentityItem>( ) :
+                    result.Select( ( deletedSecretItem ) => new DeletedSecretIdentityItem( deletedSecretItem, this.vaultUriHelper ) );
+            }
+            catch ( Exception ex )
+            {
+                throw GetInnerException( ex );
+            }
+        }
+
+        public CertificateBundle RecoverCertificate( string vaultName, string certName )
+        {
+            if ( string.IsNullOrEmpty( vaultName ) )
+                throw new ArgumentNullException( nameof( vaultName ) );
+            if ( string.IsNullOrEmpty( certName ) )
+                throw new ArgumentNullException( nameof( certName ) );
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+
+            CertificateBundle recoveredCertificate;
+            try
+            {
+                recoveredCertificate = this.keyVaultClient.RecoverDeletedCertificateAsync( vaultAddress, certName ).GetAwaiter( ).GetResult( );
+            }
+            catch ( Exception ex )
+            {
+                throw GetInnerException( ex );
+            }
+
+            return recoveredCertificate;
         }
 
         private VaultUriHelper vaultUriHelper;
