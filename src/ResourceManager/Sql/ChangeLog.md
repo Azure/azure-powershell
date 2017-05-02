@@ -18,7 +18,17 @@
         - Additional information about change #1
 -->
 ## Current Release
- * Added -SampleName parameter to New-AzureRmSqlDatabase
+* Added -SampleName parameter to New-AzureRmSqlDatabase
+* Updates to Failover Group cmdlets
+	- Remove 'Tag' parameters
+	- Remove 'PartnerResourceGroupName' and 'PartnerServerName' parameters from Remove-AzureRmSqlDatabaseFailoverGroup cmdlet
+	- Add 'GracePeriodWithDataLossHours' parameter to New- and Set- cmdlets, which shall eventually replace 'GracePeriodWithDataLossHour'
+	- Documentation has been fleshed out and updated
+	- Change formatting of returned objects and fix some bugs where fields were not always populated
+	- Add 'DatabaseNames' and 'PartnerLocation' properties to Failover Group object
+	- Fix bug causing Switch- cmdlet to return immediately rather than waiting for operation to complete
+	- Fix integer overflow bug when high grace period values are used
+	- Adjust grace period to a minimum of 1 hour if a lower one is provided
 
 ## Version 2.8.0
 * Bug fixes on Azure Failover Group Cmdlets

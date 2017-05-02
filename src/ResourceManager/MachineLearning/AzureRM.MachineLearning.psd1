@@ -80,7 +80,7 @@ CmdletsToExport = 'Move-AzureRmMlCommitmentAssociation',
                'Get-AzureRmMlWebService', 'Update-AzureRmMlWebService', 
                'Export-AzureRmMlWebService', 'Get-AzureRmMlWebServiceKeys', 
                'Import-AzureRmMlWebService', 'New-AzureRmMlCommitmentPlan', 
-               'New-AzureRmMlWebService'
+               'New-AzureRmMlWebService', 'Add-AzureRmMlWebServiceRegionalProperty'
 
 # Variables to export from this module
 # VariablesToExport = @()
