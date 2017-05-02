@@ -44,6 +44,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact]
+        public void TestCrossResourceGroupDeploymentFromTemplateFile()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-CrossResourceGroupDeploymentFromTemplateFile");
+        }
+
+        [Fact]
         public void TestSaveDeploymentTemplateFile()
         {
             ResourcesController.NewInstance.RunPsTest("Test-SaveDeploymentTemplateFile");
