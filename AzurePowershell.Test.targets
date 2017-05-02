@@ -77,6 +77,7 @@
 			<XUnitTests Include=".\src\ResourceManager\CognitiveServices\CognitiveServices.Test\bin\Debug\Microsoft.Azure.Commands.Management.CognitiveServices.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\ContainerRegistry\Commands.ContainerRegistry.Test\bin\Debug\Microsoft.Azure.Commands.ContainerRegistry.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\Microsoft.Azure.Commands.Compute.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\Consumption\Commands.Consumption.Test\bin\Debug\Microsoft.Azure.Commands.Consumption.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\DataFactories\Commands.DataFactories.Test\bin\Debug\Microsoft.Azure.Commands.DataFactories.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\DataLakeAnalytics\Commands.DataLakeAnalytics.Test\bin\Debug\Microsoft.Azure.Commands.DataLakeAnalytics.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\DataLakeStore\Commands.DataLakeStore.Test\bin\Debug\Microsoft.Azure.Commands.DataLake.Test.dll"/>
@@ -109,6 +110,7 @@
 			<XUnitTests Include=".\src\Common\Commands.Common.Authentication.Test\bin\Debug\Microsoft.Azure.Commands.Common.Authentication.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\ServiceBus\Commands.ServiceBus.Test\bin\Debug\Microsoft.Azure.Commands.ServiceBus.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\EventHub\Commands.EventHub.Test\bin\Debug\Microsoft.Azure.Commands.EventHubs.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\Relay\Commands.Relay.Test\bin\Debug\Microsoft.Azure.Commands.Relay.Test.dll"/>
 			<XUnitTests Include="@(AsmXUnitTests)"/>
 		</ItemGroup>
 		<ItemGroup Condition=" '$(scope)' == 'ServiceManagement' ">

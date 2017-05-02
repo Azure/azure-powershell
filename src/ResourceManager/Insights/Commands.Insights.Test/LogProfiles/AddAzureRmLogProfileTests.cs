@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Insights.LogProfiles;
-using Microsoft.Azure.Management.Insights;
-using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.Management.Monitor.Management;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.LogProfiles
     public class AddAzureRmLogProfileTests
     {
         private readonly AddAzureRmLogProfileCommand cmdlet;
-        private readonly Mock<InsightsManagementClient> insightsManagementClientMock;
+        private readonly Mock<MonitorManagementClient> insightsManagementClientMock;
         private readonly Mock<ILogProfilesOperations> insightsLogProfileOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
         private Rest.Azure.AzureOperationResponse<LogProfileResource> response;
@@ -40,12 +40,12 @@ namespace Microsoft.Azure.Commands.Insights.Test.LogProfiles
         {
             // XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             insightsLogProfileOperationsMock = new Mock<ILogProfilesOperations>();
-            insightsManagementClientMock = new Mock<InsightsManagementClient>();
+            insightsManagementClientMock = new Mock<MonitorManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new AddAzureRmLogProfileCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                InsightsManagementClient = insightsManagementClientMock.Object
+                MonitorManagementClient = insightsManagementClientMock.Object
             };
 
             response = Utilities.InitializeLogProfileResponse();

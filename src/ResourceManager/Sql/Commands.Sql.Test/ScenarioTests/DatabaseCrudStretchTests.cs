@@ -43,9 +43,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
                 authorizationClient);
         }
 
-        public DatabaseCrudStretchTests(ITestOutputHelper output)
+        public DatabaseCrudStretchTests(ITestOutputHelper output) : base(output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
         [Fact]
