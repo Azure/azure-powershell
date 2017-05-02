@@ -54,8 +54,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.ResourceManager">
-      <HintPath>..\..\..\..\packages\Microsoft.Azure.Management.ResourceManager.2.0.0-preview\lib\net452\Microsoft.Azure.Management.ResourceManager.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\packages\Microsoft.Azure.Management.ResourceManager.1.6.0-preview\lib\net452\Microsoft.Azure.Management.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.3.860, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
