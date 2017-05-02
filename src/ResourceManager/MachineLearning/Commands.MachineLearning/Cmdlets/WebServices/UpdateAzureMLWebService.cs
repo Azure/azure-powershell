@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
                                         this.Parameters.Cast<DictionaryEntry>()
                                                 .ToDictionary(
                                                     kvp => kvp.Key as string,
-                                                    kvp => kvp.Value as string)
+                                                    kvp => kvp.Value as WebServiceParameter)
                                         : null,
                         Package = this.Package
                     }

@@ -26,6 +26,8 @@ using Microsoft.WindowsAzure.Management.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Xunit.Abstractions;
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
@@ -41,9 +43,13 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
         public string UserDomain { get; private set; }
 
-        protected SqlTestsBase()
+        protected SqlTestsBase(ITestOutputHelper output)
         {
             helper = new SqlEvnSetupHelper();
+
+            XunitTracingInterceptor tracer = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(tracer);
+            helper.TracingInterceptor = tracer;
         }
 
         protected virtual void SetupManagementClients(RestTestFramework.MockContext context)

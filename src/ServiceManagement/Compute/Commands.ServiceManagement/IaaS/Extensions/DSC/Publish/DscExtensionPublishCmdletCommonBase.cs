@@ -425,7 +425,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                                 null));
                     }
 
-                    modulesBlob.UploadFromFile(archivePath, FileMode.Open);
+                    modulesBlob.UploadFromFile(archivePath);
 
                     WriteVerbose(string.Format(
                         CultureInfo.CurrentUICulture, 

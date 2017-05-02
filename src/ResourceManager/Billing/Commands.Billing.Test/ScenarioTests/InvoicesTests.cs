@@ -62,5 +62,12 @@ namespace Microsoft.Azure.Commands.Billing.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetInvoiceWithName");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetInvoiceWithNames()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetInvoiceWithNames");
+        }
     }
 }

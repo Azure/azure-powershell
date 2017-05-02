@@ -31,119 +31,130 @@
 
     The following cmdlets were affected this release:
 
-    **Get-AzureRmMetricDefinition**
-    - The metric definitions are now retrieved from MDM. In this case, the records returned by this cmdlet are different even though the call remains the same.
+    **Get-AzureRmLogs**
+    **Get-AzureRmAlertHistory**
+    **Get-AzureRmAutoscaleHistory**
+    - The field EventChannels from the EventData object is being deprecated since it is meaningless now. The value currently returned is constant.
+    
+    **Get-AzureRmUsage**
+    - This cmdlet will be deprecated.
+
+    **Remove-AzureRmAlertRule**
+    - The output of these cmdlets will change from list with a single object to a single object, not a list, that includes the requestId, and status code.
+    
+    ```powershell
+    # Old
+  
+    $s1 = Remove-AzureRmAlertRule -res $resourceGroup -name chiricutin
+    if ($s1 -ne $null)
+    {
+      $r = $s1(0).RequestId
+      $s = $s1(0).StatusCode
+    }
+
+    # New
+    $s1 = Remove-AzureRmAlertRule -res $resourceGroup -name chiricutin
+    $r = $s1.RequestId
+    $s = $s1.StatusCode
+    
+    ```
+    
+    **Add-AzureRmLogAlertRule**
+    - This cmdlet will be deprecated.
+    
+    **Get-AzureRmAlertRule**
+    - Each element of the the output (a list of objects) of this cmdlet will be flattened, i.e. instead of returning objects with the following structure { Id, Location, Name, Tags, Properties } it will return objects with the structure { Id, Location, Name, Tags, Type, Description, IsEnabled, Condition, Actions, LastUpdatedTime, ...} so all the attributes of an Azure Resource plus all the attributes of an AlertRuleResource at the top level.
+    
+    ```powershell
+    # Old
+  
+    $rules = Get-AzureRmAlertRule -Res $resourceGroup
+	  if ($rules -and $rules.count -ge 1) {
+		  write-host -fore red "Error updating alert rule"
+      
+      Write-host $rules(0).Id
+      Write-host $rules(0).Properties.IsEnabled
+      Write-host $rules(0).Properties.Condition
+	  }
+
+    # New
+    $rules = Get-AzureRmAlertRule -Res $resourceGroup
+	  if ($rules -and $rules.count -ge 1) {
+		  write-host -fore red "Error updating alert rule"
+      
+      Write-host $rules(0).Id
+      
+      # Properties will remain for a while
+      Write-host $rules(0).Properties.IsEnabled
+      
+      # But the properties will be at the top level too. Later Properties will be removed
+      Write-host $rules(0).IsEnabled
+      Write-host $rules(0).Condition
+	  }
+    
+    ```
+    
+    **Get-AzureRMAutoscaleSetting**
+    - The AutoscaleSettingResourceName field will be deprecated in future versions since it always equals the Name field. In this version is optional.
 
     ```powershell
     # Old
   
-    $s1 = Get-AzureRmMetricDefinition -res $resourceIdMetric -det
-    write-host "Values: $s1"
-    $s11 = $s1[0]
-    write-host "First value: $s11"
-    $metricName = $s11.Name
-    
-    $s2 = Get-AzureRmMetricDefinition -res $resourceIdMetric -met $metricName -det
-    $s21 = $s2[0]
-    write-host "Availabilities: $s21.MetricAvailabilities"
-    
-    write-host "Unit: $s21.Unit"
-    write-host "ResourceId: $s21.ResourceId"
-    write-host "Name: $s21.Name"
-    write-host "PrimaryAggregationType: $s21.PrimaryAggregationType"
-    write-host "Properties: $s21.Properties"
-    
-    $s22 = $s21.MetricAvailabilities[0]
-    write-host "BlobLocation: $s22.BlobLocation"
-    write-host "Location: $s22.Location"
-    write-host "Retention: $s22.Retention"
-    write-host "Timegrain: $s22.TimeGrain"
+    $s1 = Get-AzureRmAutoscaleSetting -ResourceGroup $resourceGroup -Name MySetting
+    if ($s1.AutoscaleSettingResourceName -ne $s1.Name)
+    {
+      write-host "There is something wrong with the name"
+    }
 
     # New
-
-    # The call remains the same, but the returned values changed    
-    $s1 = Get-AzureRmMetricDefinition -res $resourceIdMetric -det
-    write-host "Values: $s1"
-    $s11 = $s1[0]
-    write-host "First value: $s11"
+    $s1 = Get-AzureRmAutoscaleSetting -ResourceGroup $resourceGroup -Name MySetting
     
-    # Notice name is now a LocalizableString
-    $metricName = $s11.Name.Value
-    
-    $s2 = Get-AzureRmMetricDefinition -res $resourceIdMetric -met $metricName -det
-    $s21 = $s2[0]
-    write-host "Availabilities: $s21.MetricAvailabilities"
-    
-    # Notice there are no properties and name is now a LocalizableString
-    write-host "Unit: $s21.Unit"
-    write-host "ResourceId: $s21.ResourceId"
-    write-host "Name: $s21.Name.Value"
-    write-host "PrimaryAggregationType: $s21.PrimaryAggregationType"
-    
-    # Notice there are no BlobLocation or Location
-    $s22 = $s21.MetricAvailabilities[0]
-    write-host "Retention: $s22.Retention"
-    write-host "Timegrain: $s22.TimeGrain"
+    # there won't be a AutoscaleSettingResourceName
+    write-host $s1.Name
     
     ```
-  
-  **Get-AzureRmMetric**
-    - The metrics are now retrieved from MDM. The call and the returned records are different now.
+    
+    **Remove-AzureRMLogProfile**
+    - The output of this cmdlet will change from Boolean to and object containing RequestId and StatusCode.
 
     ```powershell
     # Old
-    
-    # The old syntax can be described this way: Get-AzureRmMEtric [-resourceid] string [-timeGrain] string [-detailedOutput] [-starttime string] [-endtime string] [-metricNames string [, string]*]
-    # ResourceId and timeGrain are mandatory and positional
-    # Other parameters are: StartTime (DateTime), EndTime (DateTime), MetricNames (array of strings), DetailedOutput (SwitchParameter).
-    #   All of them are optional.
-    $s1 = Get-AzureRmMetric $resourceIdMetric $timeGrain -det
-    
-    write-host "Values: $s1"
-    
-    $s11 = $s1[0]
-    
-    write-host "Dimension name: $s11.DimensionName"
-    write-host "Dimension value: $s11.DimensionValue"
-    write-host "End time: $s11.EndTime"
-    write-host "Start time: $s11.StartTime"
-    write-host "ResourceId: $s11.ResourceId"
-    write-host "TimeGrain: $s11.TimeGrain"
-    write-host "Unit: $s11.Unit"
-    write-host "Metric values: $s11.MetricValues"
+  
+    $s1 = Remove-AzureRMLogProfile --Name myLogProfile
+    if ($s1 eq $true)
+    {
+      write-host "Removed"
+    }
+    else
+    {
+      write-host "Failed"
+    }
 
     # New
-    
-    # The new syntax can be described as follows: Get-AzureRmMetric [-resourceId] string [[-metricNames] string [, string]* [-timeGrain string] [-starttime string] [-endtime string] [-aggregationType string]] [-detailedOutput]
-    # ResourceId remians mandatory and positional (position 0)
-    # All the other parameters are now optional, including timeGrain (hence this is a breaking change)
-    # There is a new parameter AggregationType with this values (None (default), Average, Count, Minimum, Maximum, Total)
-    # MetricNames, when given, is positional (position 1) and enables the other parameters: TimeGrain, StartTime, EndTime, AggregationType
-    #
-    # The following two calls are now valid since resourceId remains mandatory and positional
-    $s1 = Get-AzureRmMetric $resourceIdMetric -det
-    $s1 = Get-AzureRmMetric -res $resourceIdMetric -det
-  
-    write-host "Values: $s1"
-  
-    # This calls now requires the argument -MetricNames to succeed. MetricName is also positional (position 1). TimeGrain becomes optional and it is only accepted if MetricNames is given.
-    # If metricName is not given, no other parameter is accepted (except resourceId)
-    $s2 = Get-AzureRmMetric $resourceIdMetric $metricName -time $timeGrain -det
-    $s2 = Get-AzureRmMetric $resourceIdMetric $metricName -time $timeGrain -det -aggreg Maximum
-    
-    write-host "Values: $s2"
-    
-    $s21 = $s2[0]
-    
-    # The output shows a different structure: the name is a localizable string, and metric values is now called Data.
-    # The contents of Data depend on the value of AggregationType (if given). If not given Data will contain the values for the default aggregation type which depends on the metric and how it was defined.
-    write-host "Name: $s21.Name.Value"
-    write-host "Unit: $s21.Unit"
-    write-host "Data: $s21.Data"
+    $s1 = Remove-AzureRMLogProfile --Name myLogProfile
+    $r = $s1.RequestId
+    $s = $s1.StatusCode
     
     ```
+    
+    **Add-LogProfile**
+    - The output of this cmdlet will change from an object that includes the requestId, status code, and the updated or newly created resource.
+    
+    ```powershell
+    # Old
+  
+    $s1 = Add-AzureRmLogProfile -Name default -StorageAccountId /subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/JohnKemTest/providers/Microsoft.Storage/storageAccounts/johnkemtest8162 -Locations Global -categ Delete, Write, Action -retention 3
+    $r = $s1.ServiceBusRuleId
 
-  **Set-AzureRmDiagnosticSettings**
+    # New
+    $s1 = Add-AzureRmLogProfile -Name default -StorageAccountId /subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/JohnKemTest/providers/Microsoft.Storage/storageAccounts/johnkemtest8162 -Locations Global -categ Delete, Write, Action -retention 3
+    $r = $s1.RequestId
+    $s = $s1.StatusCode
+    $a = $s1.NewResource.ServiceBusRuleId
+    
+    ```
+    
+    **Set-AzureRmDiagnosticSettings**
     - The command is going to be renamed to Update-AzureRmDiagnsoticSettings
 
     ```powershell
