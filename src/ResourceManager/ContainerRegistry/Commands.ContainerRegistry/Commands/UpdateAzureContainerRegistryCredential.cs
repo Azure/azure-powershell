@@ -57,14 +57,14 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
         public override void ExecuteCmdlet()
         {
+            if (string.Equals(ParameterSetName, RegistryObjectParameterSet))
+            {
+                ResourceGroupName = Registry.ResourceGroupName;
+                Name = Registry.Name;
+            }
+
             if (ShouldProcess(Name, string.Format("Update Container Registry Credential '{0}'", PasswordName)))
             {
-                if (string.Equals(ParameterSetName, RegistryObjectParameterSet))
-                {
-                    ResourceGroupName = Registry.ResourceGroupName;
-                    Name = Registry.Name;
-                }
-
                 var credentials = RegistryClient.RegenerateRegistryCredential(ResourceGroupName, Name, PasswordName);
                 WriteObject(new PSContainerRegistryCredential(credentials));
             }
