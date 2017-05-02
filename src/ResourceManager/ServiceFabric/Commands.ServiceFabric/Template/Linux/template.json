@@ -466,7 +466,7 @@
             "properties": {},
             "copy": {
                 "name": "storageLoop",
-                "count": "5"
+                "count": 5
             },
             "kind": "Storage",
             "sku": {
