@@ -296,6 +296,15 @@ function Get-ElasticPoolName
 
 <#
 .SYNOPSIS
+Gets valid failover group name
+#>
+function Get-FailoverGroupName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
 Gets the location for a provider, if not found return East US
 #>
 function Get-ProviderLocation($provider)
