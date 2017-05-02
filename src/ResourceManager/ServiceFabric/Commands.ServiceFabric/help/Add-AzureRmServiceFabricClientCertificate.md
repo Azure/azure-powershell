@@ -47,14 +47,14 @@ so that the client can use it for authentication
 PS c:> Add-AzureRmServiceFabricClientCertificate -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -Thumbprint 5F3660C715EBBDA31DB1FFDCF508302348DE8E7A -IsAdmin
 ```
 
-This command will add thumbprint with 5F3660C715EBBDA31DB1FFDCF508302348DE8E7A to the cluster, and its role is admin, so the client use the certificate to communicate with the cluster
+This command will add the certificate with thumbprint '5F3660C715EBBDA31DB1FFDCF508302348DE8E7A' to the cluster, so the client use the certificate as admin to communicate with the cluster
 
 ### Example 2
 ```
 PS c:> Add-AzureRmServiceFabricClientCertificate -ResourceGroupName 'Group2' -Name 'Contoso02SFCluster' -CommonName 'Contoso.com' -IssuerThumbprint 5F3660C715EBBDA31DB1FFDCF508302348DE8E7A
 ```
 
-This command will add a read only client certificate which's common name is 'Contoso.com' , and the issuer thumbprint is '5F3660C715EBBDA31DB1FFDCF508302348DE8E7A' to the cluster
+This command will add a read only client certificate which's common name is 'Contoso.com' and issuer thumbprint is '5F3660C715EBBDA31DB1FFDCF508302348DE8E7A' to the cluster
 
 ## PARAMETERS
 
