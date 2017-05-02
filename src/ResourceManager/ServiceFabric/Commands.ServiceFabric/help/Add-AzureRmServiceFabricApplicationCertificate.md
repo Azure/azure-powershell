@@ -52,7 +52,7 @@ PS C:\> Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName 'Group
         -CertificateSubjectName 'cn=Contoso.com' -CertificateOutputFolder 'c:\test' -CertificatePassword $pwd
 ```
 
-This command will create self signed certificate in Azure key vault, then installs to all node types of the cluster, and downloads the certificate to c:\test, the name of the certificate downloaded 
+This command will create self signed certificate in Azure key vault with the key vault resource group name and key vault Name, then installs to all node types of the cluster, and downloads the certificate under fold 'c:\test', the name of the certificate downloaded 
 is same as the name of key vault certificate
 
 ## PARAMETERS
@@ -163,7 +163,9 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specify the name of the cluster```yaml
+Specify the name of the cluster
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: ClusterName
@@ -229,7 +231,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.ServiceFabric.Models.PSKeyVault
 
 ## NOTES
 

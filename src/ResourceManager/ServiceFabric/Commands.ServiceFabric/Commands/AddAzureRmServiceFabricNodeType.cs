@@ -374,10 +374,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private List<StorageAccount> CreateStorageAccount()
         {
-            var maxStorageCounts = Math.Max(this.Capacity, Constants.MaxStorageAccountsPerNodeType);
             var randomName = GetStorageRandomName();
             var accounts = new List<StorageAccount>();
-            for (int i = 0, start = 0; i < maxStorageCounts; i++)
+            for (int i = 0, start = 0; i < Constants.StorageAccountsPerNodeType; i++)
             {
                 string accountName = string.Empty;
                 int retry = 10;
