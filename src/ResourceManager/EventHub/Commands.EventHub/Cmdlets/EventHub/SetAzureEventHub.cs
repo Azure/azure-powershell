@@ -82,8 +82,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
                 if (partitionCount.HasValue)
                     eventHub.PartitionCount = partitionCount;
             }
-            
-            if(ShouldProcess(target:EventHubName, action: string.Format("Updating EventHub:{0} of NameSpace:{1}",EventHubName,NamespaceName)))
+
+            eventHub.Location = Client.GetNamespace(ResourceGroupName, NamespaceName).Location;
+
+            if (ShouldProcess(target:EventHubName, action: string.Format("Updating EventHub:{0} of NameSpace:{1}",EventHubName,NamespaceName)))
             {
                 WriteObject(Client.CreateOrUpdateEventHub(ResourceGroupName, NamespaceName, eventHub.Name, eventHub));
             }
