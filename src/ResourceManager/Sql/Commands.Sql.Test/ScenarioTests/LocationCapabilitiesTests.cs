@@ -22,9 +22,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class LocationCapabilitiesTests : SqlTestsBase
     {
-        public LocationCapabilitiesTests(ITestOutputHelper output)
+        public LocationCapabilitiesTests(ITestOutputHelper output) : base(output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
         [Fact]

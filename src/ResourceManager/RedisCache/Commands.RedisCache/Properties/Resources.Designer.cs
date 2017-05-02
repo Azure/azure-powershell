@@ -203,5 +203,14 @@ namespace Microsoft.Azure.Commands.RedisCache.Properties {
                 return ResourceManager.GetString("StorageAccountIdException", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string test {
+            get {
+                return ResourceManager.GetString("test", resourceCulture);
+            }
+        }
     }
 }
