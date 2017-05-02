@@ -14,8 +14,8 @@ Creates a key vault.
 
 ```
 New-AzureRmKeyVault [-VaultName] <String> [-ResourceGroupName] <String> [-Location] <String>
- [-EnabledForDeployment] [-EnabledForTemplateDeployment] [-EnabledForDiskEncryption] [-Sku <SkuName>]
- [-Tag <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnabledForDeployment] [-EnabledForTemplateDeployment] [-EnabledForDiskEncryption] [-EnableSoftDelete]
+ [-Sku <SkuName>] [-Tag <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,6 +80,19 @@ Accept wildcard characters: False
 Enables Azure Resource Manager to get secrets from this key vault when this key vault is referenced in a template deployment.
 
 ```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EnableSoftDelete
+If specified, 'soft delete' functionality is enabled for this key vault.```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
