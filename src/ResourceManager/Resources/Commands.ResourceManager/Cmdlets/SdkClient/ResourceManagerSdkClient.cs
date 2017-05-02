@@ -97,7 +97,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         public ResourceManagerSdkClient(
             IResourceManagementClient resourceManagementClient)
         {
-            resourceManagementClient.BaseUri = new Uri("https://centraluseuap.management.azure.com");
             this.ResourceManagementClient = resourceManagementClient;
         }
 
