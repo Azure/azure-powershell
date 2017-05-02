@@ -459,7 +459,7 @@
             "properties": {},
             "copy": {
                 "name": "storageLoop",
-                "count": "[parameters('nt0InstanceCount')]"
+                "count": "5"
             },
             "kind": "Storage",
             "sku": {
