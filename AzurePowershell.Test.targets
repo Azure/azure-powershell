@@ -109,6 +109,7 @@
 			<XUnitTests Include=".\src\Common\Commands.Common.Authentication.Test\bin\Debug\Microsoft.Azure.Commands.Common.Authentication.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\ServiceBus\Commands.ServiceBus.Test\bin\Debug\Microsoft.Azure.Commands.ServiceBus.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\EventHub\Commands.EventHub.Test\bin\Debug\Microsoft.Azure.Commands.EventHubs.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\Relay\Commands.Relay.Test\bin\Debug\Microsoft.Azure.Commands.Relay.Test.dll"/>
 			<XUnitTests Include="@(AsmXUnitTests)"/>
 		</ItemGroup>
 		<ItemGroup Condition=" '$(scope)' == 'ServiceManagement' ">
