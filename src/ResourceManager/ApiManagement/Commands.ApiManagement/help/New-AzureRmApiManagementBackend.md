@@ -24,11 +24,7 @@ Creates a new backend entity in Api Management.
 
 ## EXAMPLES
 
-### --------------------------  Example 1  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
+### Create Backend 123 with a Basic Authorization Scheme
 ```
 $credential = New-AzureRmApiManagementBackendCredential -AuthorizationHeaderScheme basic -AuthorizationHeaderParameter opensesame -Query @{"sv" = @('xx', 'bb'); "sr" = @('cc')} -Header @{"x-my-1" = @('val1', 'val2')}
 
@@ -261,4 +257,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzureRmApiManagementBackend](./Get-AzureRmApiManagementBackend)
+
+[New-AzureRmApiManagementBackendCredential](./New-AzureRmApiManagementBackendCredential.md)
+
+[New-AzureRmApiManagementBackendProxy](./New-AzureRmApiManagementBackendProxy.md)
+
+[Set-AzureRmApiManagementBackend](./Set-AzureRmApiManagementBackend.md)
+
+[Remove-AzureRmApiManagementBackend](./Remove-AzureRmApiManagementBackend.md)
 
