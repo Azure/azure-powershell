@@ -21,6 +21,20 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
     [Cmdlet(VerbsCommon.Add, CmdletNoun.AzureRmServiceFabricNode, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class AddAzureRmServiceFabricNode : UpdateAzureRmServiceFabricNodeBase
     {
+        protected override int Number
+        {
+            get { return this.NumberOfNodesToAdd; }
+        }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true,
+          HelpMessage = "The number of nodes to add")]
+        [ValidateRange(1, 2147483647)]
+        [Alias("Number")]
+        public int NumberOfNodesToAdd
+        {
+            get; set;
+        }
+
         public override void ExecuteCmdlet()
         {
             if (this.Number < 0)
