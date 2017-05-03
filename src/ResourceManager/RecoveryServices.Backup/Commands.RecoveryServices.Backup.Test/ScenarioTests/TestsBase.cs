@@ -208,7 +208,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        }
         private static bool IgnoreCertificateErrorHandler
            (object sender,
            System.Security.Cryptography.X509Certificates.X509Certificate certificate,

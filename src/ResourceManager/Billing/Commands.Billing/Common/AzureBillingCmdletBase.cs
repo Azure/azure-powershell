@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Billing.Common
             {
                 return _billingManagementClient ??
                        (_billingManagementClient =
-                           AzureSession.Instance.ClientFactory.CreateArmClient<BillingManagementClient>(DefaultProfile.Context,
+                           AzureSession.Instance.ClientFactory.CreateArmClient<BillingManagementClient>(DefaultProfile.DefaultContext,
                                AzureEnvironment.Endpoint.ResourceManager));
             }
             set { _billingManagementClient = value; }

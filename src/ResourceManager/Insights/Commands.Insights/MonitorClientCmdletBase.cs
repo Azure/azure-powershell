@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Insights
                 if (this.monitorClient == null)
                 {
                     // The premise is that a command to establish a context (like Add-AzureRmAccount) has been called before this command in order to have a correct CurrentContext
-                    this.monitorClient = AzureSession.Instance.ClientFactory.CreateArmClient<MonitorClient>(DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
+                    this.monitorClient = AzureSession.Instance.ClientFactory.CreateArmClient<MonitorClient>(DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
                 }
 
                 return this.monitorClient;

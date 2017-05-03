@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Consumption;
@@ -38,7 +39,7 @@ namespace Microsoft.Azure.Commands.Consumption.Common
             {
                 return _consumptionManagementClient ??
                        (_consumptionManagementClient =
-                           AzureSession.ClientFactory.CreateArmClient<ConsumptionManagementClient>(DefaultProfile.Context,
+                           AzureSession.Instance.ClientFactory.CreateArmClient<ConsumptionManagementClient>(DefaultContext,
                                AzureEnvironment.Endpoint.ResourceManager));
             }
             set { _consumptionManagementClient = value; }
