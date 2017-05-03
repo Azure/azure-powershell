@@ -135,6 +135,12 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="BackupKeyFileNotFound" xml:space="preserve">
     <value>Cannot find backup key file '{0}'</value>
   </data>
+  <data name="BackupSecretFileAlreadyExists" xml:space="preserve">
+    <value>The backup secret file '{0}' already exists.</value>
+  </data>
+  <data name="BackupSecretFileNotFound" xml:space="preserve">
+    <value>Cannot find backup secret file '{0}'</value>
+  </data>
   <data name="BadParameterSetName" xml:space="preserve">
     <value>Bad Parameter Set Name</value>
   </data>
@@ -276,6 +282,9 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="BackupKey" xml:space="preserve">
     <value>Backup key</value>
   </data>
+  <data name="BackupSecret" xml:space="preserve">
+    <value>Backup secret</value>
+  </data>
   <data name="CreateCertificateAdministrator" xml:space="preserve">
     <value>Create certificate administrator</value>
   </data>
@@ -324,6 +333,9 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="RestoreKey" xml:space="preserve">
     <value>Restore key</value>
   </data>
+  <data name="RestoreSecret" xml:space="preserve">
+    <value>Restore secret</value>
+  </data>
   <data name="SetVaultAccessPolicy" xml:space="preserve">
     <value>Set vault access policy</value>
   </data>
@@ -362,5 +374,11 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   </data>
   <data name="DeletedVaultNotFound" xml:space="preserve">
     <value>Cannot find deleted vault '{0}' in location '{1}'</value>
+  </data>
+  <data name="FileOverwriteCaption" xml:space="preserve">
+    <value>Overwrite File ?</value>
+  </data>
+  <data name="FileOverwriteMessage" xml:space="preserve">
+    <value>Overwrite existing file at '{0}' ?</value>
   </data>
 </root>
