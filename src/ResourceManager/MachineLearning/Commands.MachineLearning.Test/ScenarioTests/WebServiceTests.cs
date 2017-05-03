@@ -57,5 +57,12 @@ namespace Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests
         {
             WebServicesTestController.NewInstance.RunPsTest(this.interceptor, "Test-ListWebServices");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateAndGetRegionalProperties()
+        {
+            WebServicesTestController.NewInstance.RunPsTest(this.interceptor, "Test-CreateAndGetRegionalProperties");
+        }
     }
 }

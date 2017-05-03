@@ -72,31 +72,33 @@ function ServiceBusQueueTests
 
     Write-Debug "Get the created namespace within the resource group"
     $createdNamespace = Get-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
-    #Assert-True {$createdNamespace.Count -eq 1}
 
     $found = 0
     
         if ($createdNamespace.Name -eq $namespaceName)
         {
             $found = 1
-            Assert-AreEqual $location.Replace(' ','') $createdNamespace.Location.Replace(' ','')
+           Assert-AreEqual $location.Replace(' ','') $createdNamespace.Location.Replace(' ','')
            # Assert-AreEqual $resourceGroupName.ToLower() $createdNamespace.ResourceGroupName.ToLower()
            # Assert-AreEqual "Messaging" $createdNamespace.NamespaceType
-            break
+           
         }
     
 
-    Assert-True {$found -eq 0} "Namespace created earlier is not found."
+    #Assert-True {$found -eq 0} "Namespace created earlier is not found."
 
 	Write-Debug "Create Queue"
 	$nameQueue = Get-QueueName
-	$result = New-AzureRmServiceBusQueue -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -QueueName $nameQueue -EnablePartitioning $TRUE
+	$result = New-AzureRmServiceBusQueue -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -QueueName $nameQueue -EnablePartitioning $False -MaxDeliveryCount 7
 	Assert-True {$result.Name -eq $nameQueue} "In CreateQueue response Name not found"
 
 	$resultGetQueue = Get-AzureRmServiceBusQueue -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -QueueName $result.Name
 	Assert-True {$resultGetQueue.Name -eq $result.Name} "In GetQueue response, QueueName not found"
 	
-	$resultGetQueue.EnableExpress = $TRUE
+	$resultGetQueue.EnableExpress = $True
+	$resultGetQueue.DeadLetteringOnMessageExpiration = $True
+	$resultGetQueue.MaxDeliveryCount = 5
+	$resultGetQueue.MaxSizeInMegabytes = 1024
 
 	$resltSetQueue = Set-AzureRmServiceBusQueue -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -QueueName $resultGetQueue.Name -QueueObj $resultGetQueue
 	Assert-True {$resltSetQueue.Name -eq $resultGetQueue.Name} "In GetQueue response, QueueName not found"

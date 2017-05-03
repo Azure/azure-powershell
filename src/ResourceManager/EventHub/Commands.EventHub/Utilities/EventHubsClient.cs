@@ -206,27 +206,17 @@ namespace Microsoft.Azure.Commands.Eventhub
             var Parameter1 = new EventHubCreateOrUpdateParameters()
             {
                 Name = parameter.Name,
-                Location = parameter.Location,
-                Properties = new EventHubProperties()
+                Location = parameter.Location
             };
 
-            if (parameter.CreatedAt.HasValue)
-                Parameter1.Properties.CreatedAt = parameter.CreatedAt;
-
             if (parameter.MessageRetentionInDays.HasValue)
-                Parameter1.Properties.MessageRetentionInDays = parameter.MessageRetentionInDays;
+                Parameter1.MessageRetentionInDays = parameter.MessageRetentionInDays;
 
             if (parameter.PartitionCount.HasValue)
-                Parameter1.Properties.PartitionCount = parameter.PartitionCount;
-
-            if (parameter.PartitionIds != null)
-                Parameter1.Properties.PartitionIds = parameter.PartitionIds;
+                Parameter1.PartitionCount = parameter.PartitionCount;            
 
             if (parameter.Status.HasValue)
-                Parameter1.Properties.Status = parameter.Status;
-
-            if (parameter.UpdatedAt.HasValue)
-                Parameter1.Properties.UpdatedAt = parameter.UpdatedAt;
+                Parameter1.Status = parameter.Status;
             
             var response = Client.EventHubs.CreateOrUpdate(resourceGroupName, namespaceName, eventHubName, Parameter1);
             return new EventHubAttributes(response);
@@ -301,9 +291,6 @@ namespace Microsoft.Azure.Commands.Eventhub
             {
                 Name = parameter.Name,
                 Location = parameter.Location,
-                CreatedAt = parameter.CreatedAt,
-                UpdatedAt = parameter.UpdatedAt,
-                EventHubPath = parameter.EventHubPath,
                 UserMetadata = parameter.UserMetadata
             };
             var response = Client.ConsumerGroups.CreateOrUpdate(resourceGroupName, namespaceName, eventHubName, Parameter1.Name, Parameter1);

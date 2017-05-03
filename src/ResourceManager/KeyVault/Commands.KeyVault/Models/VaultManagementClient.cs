@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
 using Microsoft.Azure.ActiveDirectory.GraphClient;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
@@ -25,6 +24,7 @@ using System.Net;
 using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Management.KeyVault.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -63,11 +63,32 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw new ArgumentNullException("parameters.ResourceGroupName");
             if (string.IsNullOrWhiteSpace(parameters.Location))
                 throw new ArgumentNullException("parameters.Location");
-            if (string.IsNullOrWhiteSpace(parameters.SkuFamilyName))
-                throw new ArgumentNullException("parameters.SkuFamilyName");
-            if (parameters.TenantId == null || parameters.TenantId == Guid.Empty)
-                throw new ArgumentException("parameters.TenantId");
 
+            var properties = new VaultProperties();
+
+            if (parameters.CreateMode != CreateMode.Recover)
+            {
+                if (string.IsNullOrWhiteSpace(parameters.SkuFamilyName))
+                    throw new ArgumentNullException("parameters.SkuFamilyName");
+                if (parameters.TenantId == null || parameters.TenantId == Guid.Empty)
+                    throw new ArgumentException("parameters.TenantId");
+
+                properties.Sku = new Sku
+                {
+                    Name = parameters.SkuName,
+                };
+                properties.EnabledForDeployment = parameters.EnabledForDeployment;
+                properties.EnabledForTemplateDeployment = parameters.EnabledForTemplateDeployment;
+                properties.EnabledForDiskEncryption = parameters.EnabledForDiskEncryption;
+                properties.EnableSoftDelete = parameters.EnableSoftDelete ? true : (bool?) null;
+                properties.TenantId = parameters.TenantId;
+                properties.VaultUri = "";
+                properties.AccessPolicies = (parameters.AccessPolicy != null) ? new[] { parameters.AccessPolicy } : new AccessPolicyEntry[] { };
+            }
+            else
+            {
+                properties.CreateMode = CreateMode.Recover;
+            }
             var response = this.KeyVaultManagementClient.Vaults.CreateOrUpdate(
                 resourceGroupName: parameters.ResourceGroupName,
                 vaultName: parameters.VaultName,
@@ -76,19 +97,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 {
                     Location = parameters.Location,
                     Tags = TagsConversionHelper.CreateTagDictionary(parameters.Tags, validate: true),
-                    Properties = new VaultProperties
-                    {
-                        Sku = new Sku
-                        {
-                            Name = parameters.SkuName,
-                        },
-                        EnabledForDeployment = parameters.EnabledForDeployment,
-                        EnabledForTemplateDeployment = parameters.EnabledForTemplateDeployment,
-                        EnabledForDiskEncryption = parameters.EnabledForDiskEncryption,
-                        TenantId = parameters.TenantId,
-                        VaultUri = "",
-                        AccessPolicies = (parameters.AccessPolicy != null) ? new[] { parameters.AccessPolicy } : new AccessPolicyEntry[] { }
-                    }
+                    Properties = properties
                 });
 
             return new PSVault(response, adClient);
@@ -180,7 +189,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// </summary>
         /// <param name="vaultName"></param>
         /// <param name="resourceGroupName"></param>
-        public void DeletVault(string vaultName, string resourceGroupName)
+        public void DeleteVault(string vaultName, string resourceGroupName)
         {
             if (string.IsNullOrWhiteSpace(vaultName))
                 throw new ArgumentNullException("vaultName");
@@ -193,10 +202,90 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
             catch (CloudException ce)
             {
-                if (ce.Response.StatusCode == HttpStatusCode.NoContent)
+                if (ce.Response.StatusCode == HttpStatusCode.NoContent || ce.Response.StatusCode == HttpStatusCode.NotFound)
                     throw new ArgumentException(string.Format(PSKeyVaultProperties.Resources.VaultNotFound, vaultName, resourceGroupName));
                 throw;
             }
+        }
+
+        /// <summary>
+        /// Purge a deleted vault. Throws if vault is not found.
+        /// </summary>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
+        public void PurgeVault(string vaultName, string location)
+        {
+            if (string.IsNullOrWhiteSpace(vaultName))
+                throw new ArgumentNullException(nameof(vaultName));
+            if (string.IsNullOrWhiteSpace(location))
+                throw new ArgumentNullException(nameof(location));
+
+            try
+            {
+                this.KeyVaultManagementClient.Vaults.PurgeDeleted(vaultName, location);
+            }
+            catch (CloudException ce)
+            {
+                if (ce.Response.StatusCode == HttpStatusCode.NoContent || ce.Response.StatusCode == HttpStatusCode.NotFound)
+                    throw new ArgumentException(string.Format(PSKeyVaultProperties.Resources.DeletedVaultNotFound, vaultName, location));
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Gets a deleted vault.
+        /// </summary>
+        /// <param name="vaultName">vault name</param>
+        /// <param name="location">resource group name</param>
+        /// <returns>the retrieved deleted vault. Null if vault is not found.</returns>
+        public PSDeletedVault GetDeletedVault(string vaultName, string location)
+        {
+            if (string.IsNullOrWhiteSpace(vaultName))
+                throw new ArgumentNullException(nameof(vaultName));
+            if (string.IsNullOrWhiteSpace(location))
+                throw new ArgumentNullException(nameof(location));
+
+            try
+            {
+                var response = this.KeyVaultManagementClient.Vaults.GetDeleted(vaultName, location);
+
+                return new PSDeletedVault(response);
+            }
+            catch (CloudException ce)
+            {
+                if (ce.Response.StatusCode == HttpStatusCode.NotFound)
+                    return null;
+                else
+                    throw;
+            }
+        }
+
+        /// <summary>
+        /// Lists deleted vault in a subscription.
+        /// </summary>
+        /// <returns>the retrieved deleted vault</returns>
+        public List<PSDeletedVault> ListDeletedVaults()
+        {
+            List<PSDeletedVault> deletedVaults = new List<PSDeletedVault>();
+
+            var response = this.KeyVaultManagementClient.Vaults.ListDeleted();
+
+            foreach (var deletedVault in response)
+            {
+                deletedVaults.Add(new PSDeletedVault(deletedVault));
+            }
+
+            while (response?.NextPageLink != null)
+            {
+                response = this.KeyVaultManagementClient.Vaults.ListDeletedNext(response.NextPageLink);
+
+                foreach (var deletedVault in response)
+                {
+                    deletedVaults.Add(new PSDeletedVault(deletedVault));
+                }
+            }
+
+            return deletedVaults;
         }
 
         public readonly string VaultsResourceType = "Microsoft.KeyVault/vaults";

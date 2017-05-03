@@ -30,6 +30,9 @@ using System.Threading.Tasks;
 using PSKeyVaultModels = Microsoft.Azure.Commands.KeyVault.Models;
 using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
+using KeyPerms = Microsoft.Azure.Management.KeyVault.Models.KeyPermissions;
+using SecretPerms = Microsoft.Azure.Management.KeyVault.Models.SecretPermissions;
+using CertPerms = Microsoft.Azure.Management.KeyVault.Models.CertificatePermissions;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -261,18 +264,43 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         protected readonly string[] DefaultPermissionsToKeys =
         {
-            "get",
-            "create",
-            "delete",
-            "list",
-            "update",
-            "import",
-            "backup",
-            "restore"
+            KeyPerms.Get,
+            KeyPerms.Create,
+            KeyPerms.Delete,
+            KeyPerms.List,
+            KeyPerms.Update,
+            KeyPerms.Import,
+            KeyPerms.Backup,
+            KeyPerms.Restore,
+            KeyPerms.Recover
         };
 
-        protected readonly string[] DefaultPermissionsToSecrets = { "all" };
-        protected readonly string[] DefaultPermissionsToCertificates = { "all" };
+        protected readonly string[] DefaultPermissionsToSecrets = 
+        {
+            SecretPerms.Get,
+            SecretPerms.List,
+            SecretPerms.Set,
+            SecretPerms.Delete,
+            SecretPerms.Backup,
+            SecretPerms.Restore,
+            SecretPerms.Recover
+        };
+
+        protected readonly string[] DefaultPermissionsToCertificates = 
+        {
+            CertPerms.Get,
+            CertPerms.Delete,
+            CertPerms.List,
+            CertPerms.Create,
+            CertPerms.Import,
+            CertPerms.Update,
+            CertPerms.Deleteissuers,
+            CertPerms.Getissuers,
+            CertPerms.Listissuers,
+            CertPerms.Managecontacts,
+            CertPerms.Manageissuers,
+            CertPerms.Setissuers
+        };
         protected readonly string DefaultSkuFamily = "A";
         protected readonly string DefaultSkuName = "Standard";
     }

@@ -7,31 +7,40 @@ schema: 2.0.0
 # Get-AzureRmSqlDatabaseFailoverGroup
 
 ## SYNOPSIS
-Cmdlet to get the Azure SQL Failover Group Object
+Gets or lists Azure SQL Database Failover Groups.
 
 ## SYNTAX
 
 ```
-Get-AzureRmSqlDatabaseFailoverGroup [[-FailoverGroupName] <String>] [-ServerName] <String>
+Get-AzureRmSqlDatabaseFailoverGroup [-ServerName] <String> [[-FailoverGroupName] <String>]
  [-ResourceGroupName] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Cmdlet to get the Azure SQL Failover Group Object
+Gets a specific Azure SQL Database Failover Group or lists the Failover Groups on a server.
+
+Either server in the Failover Group may be used to execute the command. The returned values will reflect the state of the specified server with respect to the Failover Group.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> $myFG = Get-AzureRMSqlDatabaseFailoverGroup -ResourceGroupName "myrg" -ServerName "myserver"
+PS C:\> $failoverGroups = Get-AzureRMSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName server
 ```
 
-{{ Add example description here }}
+Lists all Failover Groups on a server.
+
+### Example 2
+```
+PS C:\> $failoverGroup = Get-AzureRMSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName server -FailoverGroupName fg
+```
+
+Get a specific Failover Group.
 
 ## PARAMETERS
 
 ### -FailoverGroupName
-The name of the Azure SQL Failover Group to retrieve.
+The name of the Azure SQL Database Failover Group to retrieve.
 
 ```yaml
 Type: String
@@ -61,7 +70,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-The name of the Azure SQL Server the Failover Group is in.
+The name of the Azure SQL Database Server from which to retrieve the Failover Group.
 
 ```yaml
 Type: String
@@ -90,3 +99,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+[New-AzureRmSqlDatabaseFailoverGroup](./New-AzureRmSqlDatabaseFailoverGroup.md)
+
+[Set-AzureRmSqlDatabaseFailoverGroup](./Set-AzureRmSqlDatabaseFailoverGroup.md)
+
+[Add-AzureRmSqlDatabaseToFailoverGroup](./Add-AzureRmSqlDatabaseToFailoverGroup.md)
+
+[Remove-AzureRmSqlDatabaseFromFailoverGroup](./Remove-AzureRmSqlDatabaseFromFailoverGroup.md)
+
+[Switch-AzureRmSqlDatabaseFailoverGroup](./Switch-AzureRmSqlDatabaseFailoverGroup.md)
+
+[Remove-AzureRmSqlDatabaseFailoverGroup](./Remove-AzureRmSqlDatabaseFailoverGroup.md)

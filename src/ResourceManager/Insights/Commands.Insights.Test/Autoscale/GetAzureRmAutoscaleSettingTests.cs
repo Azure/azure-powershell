@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Insights.Autoscale;
-using Microsoft.Azure.Management.Insights;
-using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.Management.Monitor.Management;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Rest.Azure.OData;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
     public class GetAzureRmAutoscaleSettingTests
     {
         private readonly GetAzureRmAutoscaleSettingCommand cmdlet;
-        private readonly Mock<InsightsManagementClient> insightsManagementClientMock;
+        private readonly Mock<MonitorManagementClient> insightsManagementClientMock;
         private readonly Mock<IAutoscaleSettingsOperations> insightsAutoscaleOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
         private Microsoft.Rest.Azure.AzureOperationResponse<AutoscaleSettingResource> responseSimple;
@@ -48,17 +48,16 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             TestExecutionHelpers.SetUpSessionAndProfile();
             //ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             insightsAutoscaleOperationsMock = new Mock<IAutoscaleSettingsOperations>();
-            insightsManagementClientMock = new Mock<InsightsManagementClient>();
+            insightsManagementClientMock = new Mock<MonitorManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetAzureRmAutoscaleSettingCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                InsightsManagementClient = insightsManagementClientMock.Object
+                MonitorManagementClient = insightsManagementClientMock.Object
             };
 
-            var responseObject = new AutoscaleSettingResource(id: "", location: "", profiles: null, autoscaleSettingResourceName: "")
+            var responseObject = new AutoscaleSettingResource(id: "", location: "", profiles: null, autoscaleSettingResourceName: "", name: "")
                 {
-                    Name = "",
                     Tags = null,
                 };
 
@@ -69,7 +68,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
 
             responsePage = new AzureOperationResponse<IPage<AutoscaleSettingResource>>()
             {
-                Body = JsonConvert.DeserializeObject<Microsoft.Azure.Management.Insights.Models.Page<AutoscaleSettingResource>>(JsonConvert.SerializeObject(responseObject))
+                Body = JsonConvert.DeserializeObject<Microsoft.Azure.Management.Monitor.Management.Models.Page<AutoscaleSettingResource>>(JsonConvert.SerializeObject(responseObject))
             };
 
             insightsAutoscaleOperationsMock.Setup(f => f.GetWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
@@ -80,12 +79,11 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
                     settingName = settingNm;
                 });
 
-            insightsAutoscaleOperationsMock.Setup(f => f.ListByResourceGroupWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<ODataQuery<AutoscaleSettingResource>>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
+            insightsAutoscaleOperationsMock.Setup(f => f.ListByResourceGroupWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
                 .Returns(Task.FromResult<Microsoft.Rest.Azure.AzureOperationResponse<IPage<AutoscaleSettingResource>>>(responsePage))
-                .Callback((string resourceGrp, ODataQuery<AutoscaleSettingResource> qry, Dictionary<string, List<string>> headers, CancellationToken t) =>
+                .Callback((string resourceGrp, Dictionary<string, List<string>> headers, CancellationToken t) =>
                 {
                     resourceGroup = resourceGrp;
-                    query = qry;
                 });
 
             insightsManagementClientMock.SetupGet(f => f.AutoscaleSettings).Returns(this.insightsAutoscaleOperationsMock.Object);
