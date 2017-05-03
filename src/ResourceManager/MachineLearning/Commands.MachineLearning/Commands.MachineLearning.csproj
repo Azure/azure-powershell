@@ -58,8 +58,8 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.MachineLearning.0.9.6-preview\lib\net45\Microsoft.Azure.Management.MachineLearning.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.MachineLearning">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.MachineLearning.1.0.0\lib\net45\Microsoft.Azure.Management.MachineLearning.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -124,6 +124,7 @@
     <Compile Include="Cmdlets\WebServices\ImportWebServiceDefinition.cs" />
     <Compile Include="Cmdlets\MachineLearningCmdletBase.cs" />
     <Compile Include="Cmdlets\CommitmentPlans\NewAzureMLCommitmentPlan.cs" />
+    <Compile Include="Cmdlets\WebServices\AddAzureMLWebServiceRegionalProperty.cs" />
     <Compile Include="Cmdlets\WebServices\RemoveAzureMLWebService.cs" />
     <Compile Include="Cmdlets\WebServices\GetAzureMLWebService.cs" />
     <Compile Include="Cmdlets\WebServices\NewAzureMLWebService.cs" />
@@ -157,6 +158,7 @@
     <EmbeddedResource Include="Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
