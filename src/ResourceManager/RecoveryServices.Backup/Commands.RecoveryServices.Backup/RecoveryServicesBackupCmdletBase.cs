@@ -26,6 +26,7 @@ using AzureRestNS = Microsoft.Rest.Azure;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using ResourcesNS = Microsoft.Azure.Management.Resources;
 using SystemNet = System.Net;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             ServiceClientAdapter = new ServiceClientAdapter(DefaultContext);
 
             WriteDebug("InsideRestore. going to create ResourceManager Client");
-            RmClient = AzureSession.ClientFactory.CreateClient<ResourcesNS.ResourceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+            RmClient = AzureSession.Instance.ClientFactory.CreateClient<ResourcesNS.ResourceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
 
             WriteDebug("Client Created successfully");
 
@@ -68,9 +69,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         protected override void SetupHttpClientPipeline()
         {
             base.SetupHttpClientPipeline();
-            AzureSession.ClientFactory.AddHandler(
+            AzureSession.Instance.ClientFactory.AddHandler(
                 new RpNamespaceHandler(ServiceClientAdapter.ResourceProviderNamespace));
-            AzureSession.ClientFactory.AddHandler(new ClientRequestIdHandler());
+            AzureSession.Instance.ClientFactory.AddHandler(new ClientRequestIdHandler());
         }
 
         /// <summary>

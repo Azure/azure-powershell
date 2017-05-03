@@ -24,6 +24,8 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 {
@@ -44,9 +46,16 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 
         public void TestCleanup()
         {
-            if (Directory.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, serviceName)))
+            try
             {
-                Directory.Delete(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, serviceName), true);
+                if (Directory.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, serviceName)))
+                {
+                    Directory.Delete(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, serviceName), true);
+                }
+            }
+            catch
+            {
+                // do not fail for file system issues
             }
         }
 

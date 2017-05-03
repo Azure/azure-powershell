@@ -217,6 +217,9 @@
     <value>Personally identifiable information and secrets may be written to the file at '{0}'.  Please ensure that the saved file is assigned appropriate access controls</value>
     <comment>{0} is file path</comment>
   </data>
+  <data name="RmProfileNull" xml:space="preserve">
+    <value>The Resource Manager context was not properly initialized.  Please load the module again.</value>
+  </data>
   <data name="SelectedSubscriptionNotActive" xml:space="preserve">
     <value>Selected subscription is in '{0}' state. </value>
   </data>

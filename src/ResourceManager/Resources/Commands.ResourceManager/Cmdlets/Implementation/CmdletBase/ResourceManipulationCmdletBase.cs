@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using System;
     using System.Management.Automation;
@@ -117,7 +118,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             if (string.IsNullOrEmpty(this.ResourceId))
             {
-                this.SubscriptionId = DefaultContext.Subscription.Id;
+                this.SubscriptionId = DefaultContext.Subscription.GetId();
             }
         }
 

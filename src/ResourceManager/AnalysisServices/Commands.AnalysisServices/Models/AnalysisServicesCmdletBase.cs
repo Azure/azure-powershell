@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.AnalysisServices.Properties;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Rest;
 using System;
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
             {
                 if (analysisServicesClient == null)
                 {
-                    analysisServicesClient = new AnalysisServicesClient(DefaultProfile.Context);
+                    analysisServicesClient = new AnalysisServicesClient(DefaultProfile.DefaultContext);
                 }
                 return analysisServicesClient;
             }
@@ -46,14 +46,14 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
             set { analysisServicesClient = value; }
         }
 
-        internal static TClient CreateAsClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint, bool parameterizedBaseUri = false) where TClient : ServiceClient<TClient>
+        internal static TClient CreateAsClient<TClient>(IAzureContext context, string endpoint, bool parameterizedBaseUri = false) where TClient : ServiceClient<TClient>
         {
             if (context == null)
             {
                 throw new ApplicationException(Resources.NoSubscriptionInContext);
             }
 
-            TClient client = AzureSession.ClientFactory.CreateArmClient<TClient>(context, endpoint);
+            TClient client = AzureSession.Instance.ClientFactory.CreateArmClient<TClient>(context, endpoint);
             return client;
         }
     }

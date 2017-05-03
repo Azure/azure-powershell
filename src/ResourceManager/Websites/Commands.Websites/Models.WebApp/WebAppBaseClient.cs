@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.WebApps.Models
             {
                 if (_resourcesClient == null)
                 {
-                    _resourcesClient = new PSResourceManagerModels.ResourcesClient(DefaultProfile.Context)
+                    _resourcesClient = new PSResourceManagerModels.ResourcesClient(DefaultProfile.DefaultContext)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp,
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.WebApps.Models
             {
                 if (_websitesClient == null)
                 {
-                    _websitesClient = new WebsitesClient(DefaultProfile.Context)
+                    _websitesClient = new WebsitesClient(DefaultProfile.DefaultContext)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp,
