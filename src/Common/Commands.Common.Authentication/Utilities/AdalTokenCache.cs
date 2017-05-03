@@ -11,7 +11,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-
+#if !NETSTANDARD1_6
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,3 +38,4 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
         }
     }
 }
+#endif

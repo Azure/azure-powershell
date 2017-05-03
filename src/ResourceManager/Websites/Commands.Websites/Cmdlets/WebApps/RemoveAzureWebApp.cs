@@ -13,6 +13,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Commands.Websites.Netcore.Properties;
 using System.Management.Automation;
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
@@ -40,8 +41,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             base.ExecuteCmdlet();
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Properties.Resources.RemoveWebsiteWarning, Name),
-                Properties.Resources.RemoveWebsiteMessage,
+                string.Format(Messages.RemoveWebsiteWarning, Name),
+                Messages.RemoveWebsiteMessage,
                 Name,
                 () =>
                 {

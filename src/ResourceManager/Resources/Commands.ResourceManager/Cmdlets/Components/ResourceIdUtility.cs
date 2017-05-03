@@ -367,8 +367,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             var segment = string.Format("/{0}/", segmentName.Trim('/').ToUpperInvariant());
 
             var index = selectLastSegment
-                ? resourceId.LastIndexOf(segment, StringComparison.InvariantCultureIgnoreCase)
-                : resourceId.IndexOf(segment, StringComparison.InvariantCultureIgnoreCase);
+                ? resourceId.LastIndexOf(segment, Microsoft.Azure.Common.StringExtensions.CaselessComparison)
+                : resourceId.IndexOf(segment, Microsoft.Azure.Common.StringExtensions.CaselessComparison);
 
             return index < 0
                 ? null

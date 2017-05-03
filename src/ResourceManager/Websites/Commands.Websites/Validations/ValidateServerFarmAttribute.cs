@@ -17,6 +17,10 @@ using System;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
 
+#if NETSTANDARD1_6
+using ServerFarmWithRichSku = Microsoft.Azure.Management.WebSites.Models.AppServicePlan;
+#endif
+
 namespace Microsoft.Azure.Commands.WebApps.Validations
 {
     public class ValidateServerFarmAttribute : ValidateArgumentsAttribute

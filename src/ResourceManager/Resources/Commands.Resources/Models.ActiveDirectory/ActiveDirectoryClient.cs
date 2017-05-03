@@ -24,7 +24,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
+using ProjectResources = Commands.Resources.Netcore.Properties.Messages;
 
 namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
 {
@@ -423,7 +423,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                 if (ce.Response.StatusCode == HttpStatusCode.Forbidden)
                 {
                     AADObject currentUser = GraphClient.Objects.GetCurrentUser();
-                    if (currentUser != null && string.Equals(currentUser.UserType, "Guest", StringComparison.InvariantCultureIgnoreCase))
+                    if (currentUser != null && string.Equals(currentUser.UserType, "Guest", 
+                        Microsoft.Azure.Common.StringExtensions.CaselessComparison))
                     {
                         throw new InvalidOperationException(ProjectResources.CreateApplicationNotAllowedGuestUser);
                     }
@@ -721,7 +722,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                 if (ce.Response.StatusCode == HttpStatusCode.Forbidden)
                 {
                     AADObject currentUser = GraphClient.Objects.GetCurrentUser();
-                    if (currentUser != null && string.Equals(currentUser.UserType, "Guest", StringComparison.InvariantCultureIgnoreCase))
+                    if (currentUser != null && string.Equals(currentUser.UserType, "Guest",
+                        Microsoft.Azure.Common.StringExtensions.CaselessComparison))
                     {
                         throw new InvalidOperationException(ProjectResources.CreateServicePrincipalNotAllowedGuestUser);
                     }

@@ -12,8 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Commands.Profile.Netcore;
+using Commands.Profile.Netcore.Properties;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Profile.Properties;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -23,7 +24,7 @@ namespace Microsoft.Azure.Commands.Profile
     {
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Resources.DisableDataCollection, Resources.DataCollectionDisabledWarning, string.Empty))
+            if (ShouldProcess(Messages.DisableDataCollection, Messages.DataCollectionDisabledWarning, string.Empty))
             {
                 SetDataCollectionProfile(false);
             }

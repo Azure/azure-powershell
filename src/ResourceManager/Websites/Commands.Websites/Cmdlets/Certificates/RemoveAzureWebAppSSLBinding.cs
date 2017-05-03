@@ -7,6 +7,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Commands.Websites.Netcore.Properties;
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.Rest.Azure;
@@ -38,8 +39,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             base.ProcessRecord();
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Properties.Resources.RemovingWebAppSSLBinding, Name),
-                Properties.Resources.RemoveWebAppSSLBinding,
+                string.Format(Messages.RemovingWebAppSSLBinding, Name),
+                Messages.RemoveWebAppSSLBinding,
                 Name,
                 () =>
                 {

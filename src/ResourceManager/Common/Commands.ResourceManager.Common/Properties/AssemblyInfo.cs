@@ -15,14 +15,15 @@
 using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
-
+#if !NETSTANDARD1_6
 [assembly: AssemblyTitle("Microsoft Azure PowerShell - Resource Manager Common Library")]
 [assembly: AssemblyCompany("Microsoft")]
 [assembly: AssemblyProduct("Microsoft Azure PowerShell")]
 [assembly: AssemblyCopyright("Copyright © Microsoft")]
+[assembly: AssemblyVersion("3.8.0")]
+[assembly: AssemblyFileVersion("3.8.0")]
 
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]
 [assembly: Guid("3819d8a7-c62c-4c47-8ddd-0332d9ce1252")]
-[assembly: AssemblyVersion("3.8.0")]
-[assembly: AssemblyFileVersion("3.8.0")]
+#endif

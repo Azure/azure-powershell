@@ -20,7 +20,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     /// Base class representing an exception that occurs when
     /// authenticating against Azure Active Directory
     /// </summary>
+#if !NETSTANDARD1_6
     [Serializable]
+#endif
     public abstract class AadAuthenticationException : Exception
     {
         protected AadAuthenticationException()
@@ -40,7 +42,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     /// Exception that gets thrown when the user explicitly
     /// cancels an authentication operation.
     /// </summary>
+#if !NETSTANDARD1_6
     [Serializable]
+#endif
     public class AadAuthenticationCanceledException : AadAuthenticationException
     {
         public AadAuthenticationCanceledException(string message, Exception innerException) : base(message, innerException)
@@ -52,7 +56,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     /// Exception that gets thrown when the ADAL library
     /// is unable to authenticate without a popup dialog.
     /// </summary>
+#if !NETSTANDARD1_6
     [Serializable]
+#endif
     public class AadAuthenticationFailedWithoutPopupException : AadAuthenticationException
     {
         public AadAuthenticationFailedWithoutPopupException(string message, Exception innerException)
@@ -65,7 +71,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     /// Exception that gets thrown if an authentication operation
     /// fails on the server.
     /// </summary>
+#if !NETSTANDARD1_6
     [Serializable]
+#endif
     public class AadAuthenticationFailedException : AadAuthenticationException
     {
         public AadAuthenticationFailedException(string message, Exception innerException) : base(message, innerException)
@@ -76,7 +84,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     /// <summary>
     /// Exception thrown if a refresh token has expired.
     /// </summary>
+#if !NETSTANDARD1_6
     [Serializable]
+#endif
     public class AadAuthenticationCantRenewException : AadAuthenticationException
     {
         public AadAuthenticationCantRenewException()

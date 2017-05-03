@@ -8,8 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.WindowsAzure.Commands.Common.Properties {
+namespace Common.Netcore.Properties {
     using System;
+    using System.Reflection;
     
     
     /// <summary>
@@ -22,24 +23,24 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
+    internal class Messages {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal Messages() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.WindowsAzure.Commands.Common.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Common.Netcore.Properties.Messages", typeof(Messages).GetTypeInfo().Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +52,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +64,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The remote server returned an error: (401) Unauthorized..
         /// </summary>
-        public static string AccessDeniedExceptionMessage {
+        internal static string AccessDeniedExceptionMessage {
             get {
                 return ResourceManager.GetString("AccessDeniedExceptionMessage", resourceCulture);
             }
@@ -72,7 +73,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Account id doesn&apos;t match one in subscription..
         /// </summary>
-        public static string AccountIdDoesntMatchSubscription {
+        internal static string AccountIdDoesntMatchSubscription {
             get {
                 return ResourceManager.GetString("AccountIdDoesntMatchSubscription", resourceCulture);
             }
@@ -81,7 +82,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Account needs to be specified.
         /// </summary>
-        public static string AccountNeedsToBeSpecified {
+        internal static string AccountNeedsToBeSpecified {
             get {
                 return ResourceManager.GetString("AccountNeedsToBeSpecified", resourceCulture);
             }
@@ -90,7 +91,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Account &quot;{0}&quot; has been added..
         /// </summary>
-        public static string AddAccountAdded {
+        internal static string AddAccountAdded {
             get {
                 return ResourceManager.GetString("AddAccountAdded", resourceCulture);
             }
@@ -99,7 +100,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to To switch to a different subscription, please use Select-AzureSubscription..
         /// </summary>
-        public static string AddAccountChangeSubscription {
+        internal static string AddAccountChangeSubscription {
             get {
                 return ResourceManager.GetString("AddAccountChangeSubscription", resourceCulture);
             }
@@ -108,7 +109,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Skipping external tenant {0}, because you are using a guest or a foreign principal object identity. In order to access this tenant, please run Add-AzureAccount without &quot;-Credential&quot;..
         /// </summary>
-        public static string AddAccountNonInteractiveGuestOrFpo {
+        internal static string AddAccountNonInteractiveGuestOrFpo {
             get {
                 return ResourceManager.GetString("AddAccountNonInteractiveGuestOrFpo", resourceCulture);
             }
@@ -117,7 +118,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Subscription &quot;{0}&quot; is selected as the default subscription..
         /// </summary>
-        public static string AddAccountShowDefaultSubscription {
+        internal static string AddAccountShowDefaultSubscription {
             get {
                 return ResourceManager.GetString("AddAccountShowDefaultSubscription", resourceCulture);
             }
@@ -126,7 +127,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to To view all the subscriptions, please use Get-AzureSubscription..
         /// </summary>
-        public static string AddAccountViewSubscriptions {
+        internal static string AddAccountViewSubscriptions {
             get {
                 return ResourceManager.GetString("AddAccountViewSubscriptions", resourceCulture);
             }
@@ -135,7 +136,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Add-On {0} is created successfully..
         /// </summary>
-        public static string AddOnCreatedMessage {
+        internal static string AddOnCreatedMessage {
             get {
                 return ResourceManager.GetString("AddOnCreatedMessage", resourceCulture);
             }
@@ -144,7 +145,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Add-on name {0} is already used..
         /// </summary>
-        public static string AddOnNameAlreadyUsed {
+        internal static string AddOnNameAlreadyUsed {
             get {
                 return ResourceManager.GetString("AddOnNameAlreadyUsed", resourceCulture);
             }
@@ -153,7 +154,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Add-On {0} not found..
         /// </summary>
-        public static string AddOnNotFound {
+        internal static string AddOnNotFound {
             get {
                 return ResourceManager.GetString("AddOnNotFound", resourceCulture);
             }
@@ -162,7 +163,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Add-on {0} is removed successfully..
         /// </summary>
-        public static string AddOnRemovedMessage {
+        internal static string AddOnRemovedMessage {
             get {
                 return ResourceManager.GetString("AddOnRemovedMessage", resourceCulture);
             }
@@ -171,7 +172,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Add-On {0} is updated successfully..
         /// </summary>
-        public static string AddOnUpdatedMessage {
+        internal static string AddOnUpdatedMessage {
             get {
                 return ResourceManager.GetString("AddOnUpdatedMessage", resourceCulture);
             }
@@ -180,7 +181,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Role has been created at {0}\{1}..
         /// </summary>
-        public static string AddRoleMessageCreate {
+        internal static string AddRoleMessageCreate {
             get {
                 return ResourceManager.GetString("AddRoleMessageCreate", resourceCulture);
             }
@@ -189,7 +190,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Role has been created at {0}\{1}. For easy access to Microsoft Azure services from your application code, install the Microsoft Azure client library for Node.js by running ‘npm install azure’..
         /// </summary>
-        public static string AddRoleMessageCreateNode {
+        internal static string AddRoleMessageCreateNode {
             get {
                 return ResourceManager.GetString("AddRoleMessageCreateNode", resourceCulture);
             }
@@ -198,7 +199,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Role has been created at {0}\{1}. For easy access to Microsoft Azure services from your application code, install the Microsoft Azure client library for PHP by running &quot;pear WindowsAzure/WindowsAzure&quot;..
         /// </summary>
-        public static string AddRoleMessageCreatePHP {
+        internal static string AddRoleMessageCreatePHP {
             get {
                 return ResourceManager.GetString("AddRoleMessageCreatePHP", resourceCulture);
             }
@@ -207,7 +208,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Unable to set role permissions. Please give the &apos;Network Service&apos; user &apos;Read &amp; execute&apos; and &apos;Modify&apos; permissions to the role folder, or run PowerShell as an Administrator.
         /// </summary>
-        public static string AddRoleMessageInsufficientPermissions {
+        internal static string AddRoleMessageInsufficientPermissions {
             get {
                 return ResourceManager.GetString("AddRoleMessageInsufficientPermissions", resourceCulture);
             }
@@ -216,7 +217,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to A role name &apos;{0}&apos; already exists.
         /// </summary>
-        public static string AddRoleMessageRoleExists {
+        internal static string AddRoleMessageRoleExists {
             get {
                 return ResourceManager.GetString("AddRoleMessageRoleExists", resourceCulture);
             }
@@ -225,7 +226,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Profile {0} already has an endpoint with name {1}.
         /// </summary>
-        public static string AddTrafficManagerEndpointFailed {
+        internal static string AddTrafficManagerEndpointFailed {
             get {
                 return ResourceManager.GetString("AddTrafficManagerEndpointFailed", resourceCulture);
             }
@@ -234,7 +235,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to [Common.Authentication]: Authenticating for account {0} with single tenant {1}..
         /// </summary>
-        public static string AuthenticatingForSingleTenant {
+        internal static string AuthenticatingForSingleTenant {
             get {
                 return ResourceManager.GetString("AuthenticatingForSingleTenant", resourceCulture);
             }
@@ -243,7 +244,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Windows Azure Powershell\.
         /// </summary>
-        public static string AzureDirectory {
+        internal static string AzureDirectory {
             get {
                 return ResourceManager.GetString("AzureDirectory", resourceCulture);
             }
@@ -252,7 +253,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to https://manage.windowsazure.com.
         /// </summary>
-        public static string AzurePortalUrl {
+        internal static string AzurePortalUrl {
             get {
                 return ResourceManager.GetString("AzurePortalUrl", resourceCulture);
             }
@@ -261,7 +262,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to AZURE_PORTAL_URL.
         /// </summary>
-        public static string AzurePortalUrlEnv {
+        internal static string AzurePortalUrlEnv {
             get {
                 return ResourceManager.GetString("AzurePortalUrlEnv", resourceCulture);
             }
@@ -270,7 +271,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Selected profile must not be null..
         /// </summary>
-        public static string AzureProfileMustNotBeNull {
+        internal static string AzureProfileMustNotBeNull {
             get {
                 return ResourceManager.GetString("AzureProfileMustNotBeNull", resourceCulture);
             }
@@ -279,7 +280,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Azure SDK\{0}\.
         /// </summary>
-        public static string AzureSdkDirectory {
+        internal static string AzureSdkDirectory {
             get {
                 return ResourceManager.GetString("AzureSdkDirectory", resourceCulture);
             }
@@ -288,7 +289,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to File &apos;{0}&apos; already exists. Use the -Force parameter to overwrite it..
         /// </summary>
-        public static string AzureVMDscArchiveAlreadyExists {
+        internal static string AzureVMDscArchiveAlreadyExists {
             get {
                 return ResourceManager.GetString("AzureVMDscArchiveAlreadyExists", resourceCulture);
             }
@@ -297,7 +298,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Cannot find configuration data file: {0}.
         /// </summary>
-        public static string AzureVMDscCannotFindConfigurationDataFile {
+        internal static string AzureVMDscCannotFindConfigurationDataFile {
             get {
                 return ResourceManager.GetString("AzureVMDscCannotFindConfigurationDataFile", resourceCulture);
             }
@@ -306,7 +307,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Create Archive.
         /// </summary>
-        public static string AzureVMDscCreateArchiveAction {
+        internal static string AzureVMDscCreateArchiveAction {
             get {
                 return ResourceManager.GetString("AzureVMDscCreateArchiveAction", resourceCulture);
             }
@@ -315,7 +316,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The configuration data must be a .psd1 file.
         /// </summary>
-        public static string AzureVMDscInvalidConfigurationDataFile {
+        internal static string AzureVMDscInvalidConfigurationDataFile {
             get {
                 return ResourceManager.GetString("AzureVMDscInvalidConfigurationDataFile", resourceCulture);
             }
@@ -324,7 +325,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Parsing configuration script: {0}.
         /// </summary>
-        public static string AzureVMDscParsingConfiguration {
+        internal static string AzureVMDscParsingConfiguration {
             get {
                 return ResourceManager.GetString("AzureVMDscParsingConfiguration", resourceCulture);
             }
@@ -333,7 +334,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Storage Blob &apos;{0}&apos; already exists. Use the -Force parameter to overwrite it..
         /// </summary>
-        public static string AzureVMDscStorageBlobAlreadyExists {
+        internal static string AzureVMDscStorageBlobAlreadyExists {
             get {
                 return ResourceManager.GetString("AzureVMDscStorageBlobAlreadyExists", resourceCulture);
             }
@@ -342,7 +343,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Upload &apos;{0}&apos;.
         /// </summary>
-        public static string AzureVMDscUploadToBlobStorageAction {
+        internal static string AzureVMDscUploadToBlobStorageAction {
             get {
                 return ResourceManager.GetString("AzureVMDscUploadToBlobStorageAction", resourceCulture);
             }
@@ -351,7 +352,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Base Uri was empty..
         /// </summary>
-        public static string BaseUriEmpty {
+        internal static string BaseUriEmpty {
             get {
                 return ResourceManager.GetString("BaseUriEmpty", resourceCulture);
             }
@@ -360,7 +361,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {0} begin processing without ParameterSet..
         /// </summary>
-        public static string BeginProcessingWithoutParameterSetLog {
+        internal static string BeginProcessingWithoutParameterSetLog {
             get {
                 return ResourceManager.GetString("BeginProcessingWithoutParameterSetLog", resourceCulture);
             }
@@ -369,7 +370,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {0} begin processing with ParameterSet &apos;{1}&apos;..
         /// </summary>
-        public static string BeginProcessingWithParameterSetLog {
+        internal static string BeginProcessingWithParameterSetLog {
             get {
                 return ResourceManager.GetString("BeginProcessingWithParameterSetLog", resourceCulture);
             }
@@ -378,7 +379,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Blob with the name {0} already exists in the account..
         /// </summary>
-        public static string BlobAlreadyExistsInTheAccount {
+        internal static string BlobAlreadyExistsInTheAccount {
             get {
                 return ResourceManager.GetString("BlobAlreadyExistsInTheAccount", resourceCulture);
             }
@@ -387,7 +388,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to https://{0}.blob.core.windows.net/.
         /// </summary>
-        public static string BlobEndpointUri {
+        internal static string BlobEndpointUri {
             get {
                 return ResourceManager.GetString("BlobEndpointUri", resourceCulture);
             }
@@ -396,7 +397,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to AZURE_BLOBSTORAGE_TEMPLATE.
         /// </summary>
-        public static string BlobEndpointUriEnv {
+        internal static string BlobEndpointUriEnv {
             get {
                 return ResourceManager.GetString("BlobEndpointUriEnv", resourceCulture);
             }
@@ -405,7 +406,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to CACHERUNTIMEURL.
         /// </summary>
-        public static string CacheRuntimeUrl {
+        internal static string CacheRuntimeUrl {
             get {
                 return ResourceManager.GetString("CacheRuntimeUrl", resourceCulture);
             }
@@ -414,7 +415,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to cache.
         /// </summary>
-        public static string CacheRuntimeValue {
+        internal static string CacheRuntimeValue {
             get {
                 return ResourceManager.GetString("CacheRuntimeValue", resourceCulture);
             }
@@ -423,7 +424,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to CacheRuntimeVersion.
         /// </summary>
-        public static string CacheRuntimeVersionKey {
+        internal static string CacheRuntimeVersionKey {
             get {
                 return ResourceManager.GetString("CacheRuntimeVersionKey", resourceCulture);
             }
@@ -432,7 +433,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Installing caching version {0} for Role &apos;{1}&apos; (the caching version locally installed is: {2}).
         /// </summary>
-        public static string CacheVersionWarningText {
+        internal static string CacheVersionWarningText {
             get {
                 return ResourceManager.GetString("CacheVersionWarningText", resourceCulture);
             }
@@ -441,7 +442,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Cannot change built-in environment {0}..
         /// </summary>
-        public static string CannotChangeBuiltinEnvironment {
+        internal static string CannotChangeBuiltinEnvironment {
             get {
                 return ResourceManager.GetString("CannotChangeBuiltinEnvironment", resourceCulture);
             }
@@ -450,7 +451,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Cannot find {0} with name {1}..
         /// </summary>
-        public static string CannotFind {
+        internal static string CannotFind {
             get {
                 return ResourceManager.GetString("CannotFind", resourceCulture);
             }
@@ -459,7 +460,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Deployment for service {0} with {1} slot doesn&apos;t exist.
         /// </summary>
-        public static string CannotFindDeployment {
+        internal static string CannotFindDeployment {
             get {
                 return ResourceManager.GetString("CannotFindDeployment", resourceCulture);
             }
@@ -468,7 +469,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Can&apos;t find valid Microsoft Azure role in current directory {0}.
         /// </summary>
-        public static string CannotFindRole {
+        internal static string CannotFindRole {
             get {
                 return ResourceManager.GetString("CannotFindRole", resourceCulture);
             }
@@ -477,7 +478,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to service {0} configuration file (ServiceConfiguration.Cloud.cscfg) is either null or doesn&apos;t exist.
         /// </summary>
-        public static string CannotFindServiceConfigurationFile {
+        internal static string CannotFindServiceConfigurationFile {
             get {
                 return ResourceManager.GetString("CannotFindServiceConfigurationFile", resourceCulture);
             }
@@ -486,7 +487,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Invalid service path! Cannot locate ServiceDefinition.csdef in current folder or parent folders..
         /// </summary>
-        public static string CannotFindServiceRoot {
+        internal static string CannotFindServiceRoot {
             get {
                 return ResourceManager.GetString("CannotFindServiceRoot", resourceCulture);
             }
@@ -495,7 +496,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The subscription named {0} with id {1} is not currently imported. You must import this subscription before it can be updated..
         /// </summary>
-        public static string CannotUpdateUnknownSubscription {
+        internal static string CannotUpdateUnknownSubscription {
             get {
                 return ResourceManager.GetString("CannotUpdateUnknownSubscription", resourceCulture);
             }
@@ -504,7 +505,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to ManagementCertificate.
         /// </summary>
-        public static string CertificateElementName {
+        internal static string CertificateElementName {
             get {
                 return ResourceManager.GetString("CertificateElementName", resourceCulture);
             }
@@ -513,7 +514,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to certificate.pfx.
         /// </summary>
-        public static string CertificateFileName {
+        internal static string CertificateFileName {
             get {
                 return ResourceManager.GetString("CertificateFileName", resourceCulture);
             }
@@ -522,7 +523,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Certificate imported into CurrentUser\My\{0}.
         /// </summary>
-        public static string CertificateImportedMessage {
+        internal static string CertificateImportedMessage {
             get {
                 return ResourceManager.GetString("CertificateImportedMessage", resourceCulture);
             }
@@ -531,7 +532,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Your account does not have access to the private key for certificate {0}.
         /// </summary>
-        public static string CertificatePrivateKeyAccessError {
+        internal static string CertificatePrivateKeyAccessError {
             get {
                 return ResourceManager.GetString("CertificatePrivateKeyAccessError", resourceCulture);
             }
@@ -540,7 +541,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {0} {1} deployment for {2} service.
         /// </summary>
-        public static string ChangeDeploymentStateWaitMessage {
+        internal static string ChangeDeploymentStateWaitMessage {
             get {
                 return ResourceManager.GetString("ChangeDeploymentStateWaitMessage", resourceCulture);
             }
@@ -549,7 +550,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Cloud service {0} is in {1} state..
         /// </summary>
-        public static string ChangeDeploymentStatusCompleteMessage {
+        internal static string ChangeDeploymentStatusCompleteMessage {
             get {
                 return ResourceManager.GetString("ChangeDeploymentStatusCompleteMessage", resourceCulture);
             }
@@ -558,7 +559,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Changing/Removing public environment &apos;{0}&apos; is not allowed..
         /// </summary>
-        public static string ChangePublicEnvironmentMessage {
+        internal static string ChangePublicEnvironmentMessage {
             get {
                 return ResourceManager.GetString("ChangePublicEnvironmentMessage", resourceCulture);
             }
@@ -567,7 +568,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Service {0} is set to value {1}.
         /// </summary>
-        public static string ChangeSettingsElementMessage {
+        internal static string ChangeSettingsElementMessage {
             get {
                 return ResourceManager.GetString("ChangeSettingsElementMessage", resourceCulture);
             }
@@ -576,7 +577,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Changing public environment is not supported..
         /// </summary>
-        public static string ChangingDefaultEnvironmentNotSupported {
+        internal static string ChangingDefaultEnvironmentNotSupported {
             get {
                 return ResourceManager.GetString("ChangingDefaultEnvironmentNotSupported", resourceCulture);
             }
@@ -585,7 +586,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Choose which publish settings file to use:.
         /// </summary>
-        public static string ChoosePublishSettingsFile {
+        internal static string ChoosePublishSettingsFile {
             get {
                 return ResourceManager.GetString("ChoosePublishSettingsFile", resourceCulture);
             }
@@ -594,7 +595,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Microsoft.WindowsAzure.Plugins.Caching.ClientDiagnosticLevel.
         /// </summary>
-        public static string ClientDiagnosticLevelName {
+        internal static string ClientDiagnosticLevelName {
             get {
                 return ResourceManager.GetString("ClientDiagnosticLevelName", resourceCulture);
             }
@@ -603,7 +604,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to 1.
         /// </summary>
-        public static string ClientDiagnosticLevelValue {
+        internal static string ClientDiagnosticLevelValue {
             get {
                 return ResourceManager.GetString("ClientDiagnosticLevelValue", resourceCulture);
             }
@@ -612,7 +613,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to cloud_package.cspkg.
         /// </summary>
-        public static string CloudPackageFileName {
+        internal static string CloudPackageFileName {
             get {
                 return ResourceManager.GetString("CloudPackageFileName", resourceCulture);
             }
@@ -621,7 +622,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to ServiceConfiguration.Cloud.cscfg.
         /// </summary>
-        public static string CloudServiceConfigurationFileName {
+        internal static string CloudServiceConfigurationFileName {
             get {
                 return ResourceManager.GetString("CloudServiceConfigurationFileName", resourceCulture);
             }
@@ -630,7 +631,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Add-ons for {0}.
         /// </summary>
-        public static string CloudServiceDescription {
+        internal static string CloudServiceDescription {
             get {
                 return ResourceManager.GetString("CloudServiceDescription", resourceCulture);
             }
@@ -639,7 +640,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Communication could not be established. This could be due to an invalid subscription ID. Note that subscription IDs are case sensitive..
         /// </summary>
-        public static string CommunicationCouldNotBeEstablished {
+        internal static string CommunicationCouldNotBeEstablished {
             get {
                 return ResourceManager.GetString("CommunicationCouldNotBeEstablished", resourceCulture);
             }
@@ -648,7 +649,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Complete.
         /// </summary>
-        public static string CompleteMessage {
+        internal static string CompleteMessage {
             get {
                 return ResourceManager.GetString("CompleteMessage", resourceCulture);
             }
@@ -657,7 +658,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to OperationID : &apos;{0}&apos;.
         /// </summary>
-        public static string ComputeCloudExceptionOperationIdMessage {
+        internal static string ComputeCloudExceptionOperationIdMessage {
             get {
                 return ResourceManager.GetString("ComputeCloudExceptionOperationIdMessage", resourceCulture);
             }
@@ -666,7 +667,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to config.json.
         /// </summary>
-        public static string ConfigurationFileName {
+        internal static string ConfigurationFileName {
             get {
                 return ResourceManager.GetString("ConfigurationFileName", resourceCulture);
             }
@@ -675,7 +676,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to VirtualMachine creation failed..
         /// </summary>
-        public static string CreateFailedErrorMessage {
+        internal static string CreateFailedErrorMessage {
             get {
                 return ResourceManager.GetString("CreateFailedErrorMessage", resourceCulture);
             }
@@ -684,7 +685,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Creating the website failed. If this is the first website for this subscription, please create it using the management portal instead..
         /// </summary>
-        public static string CreateWebsiteFailed {
+        internal static string CreateWebsiteFailed {
             get {
                 return ResourceManager.GetString("CreateWebsiteFailed", resourceCulture);
             }
@@ -693,7 +694,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Microsoft.ApplicationServer.Caching.DataCacheClientsSection, Microsoft.ApplicationServer.Caching.Core.
         /// </summary>
-        public static string DataCacheClientsType {
+        internal static string DataCacheClientsType {
             get {
                 return ResourceManager.GetString("DataCacheClientsType", resourceCulture);
             }
@@ -702,7 +703,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to //blobcontainer[@datacenter=&apos;{0}&apos;].
         /// </summary>
-        public static string DatacenterBlobQuery {
+        internal static string DatacenterBlobQuery {
             get {
                 return ResourceManager.GetString("DatacenterBlobQuery", resourceCulture);
             }
@@ -711,7 +712,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Microsoft Azure PowerShell Data Collection Confirmation.
         /// </summary>
-        public static string DataCollectionActivity {
+        internal static string DataCollectionActivity {
             get {
                 return ResourceManager.GetString("DataCollectionActivity", resourceCulture);
             }
@@ -720,7 +721,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to You choose not to participate in Microsoft Azure PowerShell data collection..
         /// </summary>
-        public static string DataCollectionConfirmNo {
+        internal static string DataCollectionConfirmNo {
             get {
                 return ResourceManager.GetString("DataCollectionConfirmNo", resourceCulture);
             }
@@ -729,7 +730,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to This confirmation message will be dismissed in &apos;{0}&apos; second(s)....
         /// </summary>
-        public static string DataCollectionConfirmTime {
+        internal static string DataCollectionConfirmTime {
             get {
                 return ResourceManager.GetString("DataCollectionConfirmTime", resourceCulture);
             }
@@ -738,7 +739,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to You choose to participate in Microsoft Azure PowerShell data collection..
         /// </summary>
-        public static string DataCollectionConfirmYes {
+        internal static string DataCollectionConfirmYes {
             get {
                 return ResourceManager.GetString("DataCollectionConfirmYes", resourceCulture);
             }
@@ -750,7 +751,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         ///If you choose to participate, you can stop at any time by using Azure PowerShell as follows:
         ///1.	Use the Disable-AzureDataCollection cmdlet to turn the feature Off. The  [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string DataCollectionPrompt {
+        internal static string DataCollectionPrompt {
             get {
                 return ResourceManager.GetString("DataCollectionPrompt", resourceCulture);
             }
@@ -759,7 +760,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The setting profile has been saved to the following path &apos;{0}&apos;..
         /// </summary>
-        public static string DataCollectionSaveFileInformation {
+        internal static string DataCollectionSaveFileInformation {
             get {
                 return ResourceManager.GetString("DataCollectionSaveFileInformation", resourceCulture);
             }
@@ -768,7 +769,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Setting: {0} as the default and current subscription. To view other subscriptions use Get-AzureSubscription.
         /// </summary>
-        public static string DefaultAndCurrentSubscription {
+        internal static string DefaultAndCurrentSubscription {
             get {
                 return ResourceManager.GetString("DefaultAndCurrentSubscription", resourceCulture);
             }
@@ -777,7 +778,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to none.
         /// </summary>
-        public static string DefaultFileVersion {
+        internal static string DefaultFileVersion {
             get {
                 return ResourceManager.GetString("DefaultFileVersion", resourceCulture);
             }
@@ -786,7 +787,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to There are no hostnames which could be used for validation..
         /// </summary>
-        public static string DefaultHostnamesValidation {
+        internal static string DefaultHostnamesValidation {
             get {
                 return ResourceManager.GetString("DefaultHostnamesValidation", resourceCulture);
             }
@@ -795,7 +796,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to 8080.
         /// </summary>
-        public static string DefaultPort {
+        internal static string DefaultPort {
             get {
                 return ResourceManager.GetString("DefaultPort", resourceCulture);
             }
@@ -804,7 +805,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to 1000.
         /// </summary>
-        public static string DefaultRoleCachingInMB {
+        internal static string DefaultRoleCachingInMB {
             get {
                 return ResourceManager.GetString("DefaultRoleCachingInMB", resourceCulture);
             }
@@ -813,7 +814,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Auto.
         /// </summary>
-        public static string DefaultUpgradeMode {
+        internal static string DefaultUpgradeMode {
             get {
                 return ResourceManager.GetString("DefaultUpgradeMode", resourceCulture);
             }
@@ -822,7 +823,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to 80.
         /// </summary>
-        public static string DefaultWebPort {
+        internal static string DefaultWebPort {
             get {
                 return ResourceManager.GetString("DefaultWebPort", resourceCulture);
             }
@@ -831,7 +832,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Delete.
         /// </summary>
-        public static string Delete {
+        internal static string Delete {
             get {
                 return ResourceManager.GetString("Delete", resourceCulture);
             }
@@ -840,7 +841,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The {0} slot for service {1} is already in {2} state.
         /// </summary>
-        public static string DeploymentAlreadyInState {
+        internal static string DeploymentAlreadyInState {
             get {
                 return ResourceManager.GetString("DeploymentAlreadyInState", resourceCulture);
             }
@@ -849,7 +850,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The deployment in {0} slot for service {1} is removed.
         /// </summary>
-        public static string DeploymentRemovedMessage {
+        internal static string DeploymentRemovedMessage {
             get {
                 return ResourceManager.GetString("DeploymentRemovedMessage", resourceCulture);
             }
@@ -858,7 +859,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Microsoft.WindowsAzure.Plugins.Caching.DiagnosticLevel.
         /// </summary>
-        public static string DiagnosticLevelName {
+        internal static string DiagnosticLevelName {
             get {
                 return ResourceManager.GetString("DiagnosticLevelName", resourceCulture);
             }
@@ -867,7 +868,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to 1.
         /// </summary>
-        public static string DiagnosticLevelValue {
+        internal static string DiagnosticLevelValue {
             get {
                 return ResourceManager.GetString("DiagnosticLevelValue", resourceCulture);
             }
@@ -876,7 +877,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The key to add already exists in the dictionary..
         /// </summary>
-        public static string DictionaryAddAlreadyContainsKey {
+        internal static string DictionaryAddAlreadyContainsKey {
             get {
                 return ResourceManager.GetString("DictionaryAddAlreadyContainsKey", resourceCulture);
             }
@@ -885,7 +886,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The array index cannot be less than zero..
         /// </summary>
-        public static string DictionaryCopyToArrayIndexLessThanZero {
+        internal static string DictionaryCopyToArrayIndexLessThanZero {
             get {
                 return ResourceManager.GetString("DictionaryCopyToArrayIndexLessThanZero", resourceCulture);
             }
@@ -894,7 +895,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The supplied array does not have enough room to contain the copied elements..
         /// </summary>
-        public static string DictionaryCopyToArrayTooShort {
+        internal static string DictionaryCopyToArrayTooShort {
             get {
                 return ResourceManager.GetString("DictionaryCopyToArrayTooShort", resourceCulture);
             }
@@ -903,7 +904,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The provided dns {0} doesn&apos;t exist.
         /// </summary>
-        public static string DnsDoesNotExist {
+        internal static string DnsDoesNotExist {
             get {
                 return ResourceManager.GetString("DnsDoesNotExist", resourceCulture);
             }
@@ -912,7 +913,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Microsoft Azure Certificate.
         /// </summary>
-        public static string EnableRemoteDesktop_FriendlyCertificateName {
+        internal static string EnableRemoteDesktop_FriendlyCertificateName {
             get {
                 return ResourceManager.GetString("EnableRemoteDesktop_FriendlyCertificateName", resourceCulture);
             }
@@ -921,7 +922,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Endpoint can&apos;t be retrieved for storage account.
         /// </summary>
-        public static string EndPointNotFoundForBlobStorage {
+        internal static string EndPointNotFoundForBlobStorage {
             get {
                 return ResourceManager.GetString("EndPointNotFoundForBlobStorage", resourceCulture);
             }
@@ -930,7 +931,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {0} end processing..
         /// </summary>
-        public static string EndProcessingLog {
+        internal static string EndProcessingLog {
             get {
                 return ResourceManager.GetString("EndProcessingLog", resourceCulture);
             }
@@ -939,7 +940,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to To use Active Directory authentication, you must configure the ActiveDirectoryEndpoint, ActiveDirectoryTenantId, and ActiveDirectorServiceEndpointResourceId for environment of &apos;{0}&apos;. You can configure these properties for this environment using the Set-AzureEnvironment cmdlet..
         /// </summary>
-        public static string EnvironmentDoesNotSupportActiveDirectory {
+        internal static string EnvironmentDoesNotSupportActiveDirectory {
             get {
                 return ResourceManager.GetString("EnvironmentDoesNotSupportActiveDirectory", resourceCulture);
             }
@@ -948,7 +949,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The environment &apos;{0}&apos; already exists..
         /// </summary>
-        public static string EnvironmentExists {
+        internal static string EnvironmentExists {
             get {
                 return ResourceManager.GetString("EnvironmentExists", resourceCulture);
             }
@@ -957,7 +958,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Environment name doesn&apos;t match one in subscription..
         /// </summary>
-        public static string EnvironmentNameDoesntMatchSubscription {
+        internal static string EnvironmentNameDoesntMatchSubscription {
             get {
                 return ResourceManager.GetString("EnvironmentNameDoesntMatchSubscription", resourceCulture);
             }
@@ -966,7 +967,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Environment name needs to be specified..
         /// </summary>
-        public static string EnvironmentNameNeedsToBeSpecified {
+        internal static string EnvironmentNameNeedsToBeSpecified {
             get {
                 return ResourceManager.GetString("EnvironmentNameNeedsToBeSpecified", resourceCulture);
             }
@@ -975,7 +976,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Environment needs to be specified..
         /// </summary>
-        public static string EnvironmentNeedsToBeSpecified {
+        internal static string EnvironmentNeedsToBeSpecified {
             get {
                 return ResourceManager.GetString("EnvironmentNeedsToBeSpecified", resourceCulture);
             }
@@ -984,7 +985,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The environment name &apos;{0}&apos; is not found..
         /// </summary>
-        public static string EnvironmentNotFound {
+        internal static string EnvironmentNotFound {
             get {
                 return ResourceManager.GetString("EnvironmentNotFound", resourceCulture);
             }
@@ -993,7 +994,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to environments.xml.
         /// </summary>
-        public static string EnvironmentsFileName {
+        internal static string EnvironmentsFileName {
             get {
                 return ResourceManager.GetString("EnvironmentsFileName", resourceCulture);
             }
@@ -1002,7 +1003,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Error creating VirtualMachine.
         /// </summary>
-        public static string ErrorCreatingVirtualMachine {
+        internal static string ErrorCreatingVirtualMachine {
             get {
                 return ResourceManager.GetString("ErrorCreatingVirtualMachine", resourceCulture);
             }
@@ -1011,7 +1012,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Unable to download available runtimes for location &apos;{0}&apos;.
         /// </summary>
-        public static string ErrorRetrievingRuntimesForLocation {
+        internal static string ErrorRetrievingRuntimesForLocation {
             get {
                 return ResourceManager.GetString("ErrorRetrievingRuntimesForLocation", resourceCulture);
             }
@@ -1020,7 +1021,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Error updating VirtualMachine.
         /// </summary>
-        public static string ErrorUpdatingVirtualMachine {
+        internal static string ErrorUpdatingVirtualMachine {
             get {
                 return ResourceManager.GetString("ErrorUpdatingVirtualMachine", resourceCulture);
             }
@@ -1029,7 +1030,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Job Id {0} failed. Error: {1}, ExceptionDetails: {2}.
         /// </summary>
-        public static string FailedJobErrorMessage {
+        internal static string FailedJobErrorMessage {
             get {
                 return ResourceManager.GetString("FailedJobErrorMessage", resourceCulture);
             }
@@ -1038,7 +1039,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to File path is not valid..
         /// </summary>
-        public static string FilePathIsNotValid {
+        internal static string FilePathIsNotValid {
             get {
                 return ResourceManager.GetString("FilePathIsNotValid", resourceCulture);
             }
@@ -1047,7 +1048,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The HTTP request was forbidden with client authentication scheme &apos;Anonymous&apos;..
         /// </summary>
-        public static string FirstPurchaseErrorMessage {
+        internal static string FirstPurchaseErrorMessage {
             get {
                 return ResourceManager.GetString("FirstPurchaseErrorMessage", resourceCulture);
             }
@@ -1056,7 +1057,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to This add-on requires you to purchase the first instance through the Microsoft Azure Portal. Subsequent purchases can be performed through PowerShell..
         /// </summary>
-        public static string FirstPurchaseMessage {
+        internal static string FirstPurchaseMessage {
             get {
                 return ResourceManager.GetString("FirstPurchaseMessage", resourceCulture);
             }
@@ -1065,7 +1066,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Operation Status:.
         /// </summary>
-        public static string GatewayOperationStatus {
+        internal static string GatewayOperationStatus {
             get {
                 return ResourceManager.GetString("GatewayOperationStatus", resourceCulture);
             }
@@ -1074,7 +1075,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Resources\Scaffolding\General.
         /// </summary>
-        public static string GeneralScaffolding {
+        internal static string GeneralScaffolding {
             get {
                 return ResourceManager.GetString("GeneralScaffolding", resourceCulture);
             }
@@ -1083,7 +1084,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Getting all available Microsoft Azure Add-Ons, this may take few minutes....
         /// </summary>
-        public static string GetAllAddOnsWaitMessage {
+        internal static string GetAllAddOnsWaitMessage {
             get {
                 return ResourceManager.GetString("GetAllAddOnsWaitMessage", resourceCulture);
             }
@@ -1092,7 +1093,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Name{0}Primary Key{0}Seconday Key.
         /// </summary>
-        public static string GetStorageKeysHeader {
+        internal static string GetStorageKeysHeader {
             get {
                 return ResourceManager.GetString("GetStorageKeysHeader", resourceCulture);
             }
@@ -1101,7 +1102,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Git not found. Please install git and place it in your command line path..
         /// </summary>
-        public static string GitNotFound {
+        internal static string GitNotFound {
             get {
                 return ResourceManager.GetString("GitNotFound", resourceCulture);
             }
@@ -1110,7 +1111,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Could not find publish settings. Please run Import-AzurePublishSettingsFile..
         /// </summary>
-        public static string GlobalSettingsManager_Load_PublishSettingsNotFound {
+        internal static string GlobalSettingsManager_Load_PublishSettingsNotFound {
             get {
                 return ResourceManager.GetString("GlobalSettingsManager_Load_PublishSettingsNotFound", resourceCulture);
             }
@@ -1119,7 +1120,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Cannot find the WadCfg end element in the config..
         /// </summary>
-        public static string IaasDiagnosticsBadConfigNoEndWadCfg {
+        internal static string IaasDiagnosticsBadConfigNoEndWadCfg {
             get {
                 return ResourceManager.GetString("IaasDiagnosticsBadConfigNoEndWadCfg", resourceCulture);
             }
@@ -1128,7 +1129,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to WadCfg start element in the config is not matching the end element..
         /// </summary>
-        public static string IaasDiagnosticsBadConfigNoMatchingWadCfg {
+        internal static string IaasDiagnosticsBadConfigNoMatchingWadCfg {
             get {
                 return ResourceManager.GetString("IaasDiagnosticsBadConfigNoMatchingWadCfg", resourceCulture);
             }
@@ -1137,7 +1138,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Cannot find the WadCfg element in the config..
         /// </summary>
-        public static string IaasDiagnosticsBadConfigNoWadCfg {
+        internal static string IaasDiagnosticsBadConfigNoWadCfg {
             get {
                 return ResourceManager.GetString("IaasDiagnosticsBadConfigNoWadCfg", resourceCulture);
             }
@@ -1146,7 +1147,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to iisnode.dll.
         /// </summary>
-        public static string IISNodeDll {
+        internal static string IISNodeDll {
             get {
                 return ResourceManager.GetString("IISNodeDll", resourceCulture);
             }
@@ -1155,7 +1156,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to iisnode.
         /// </summary>
-        public static string IISNodeEngineKey {
+        internal static string IISNodeEngineKey {
             get {
                 return ResourceManager.GetString("IISNodeEngineKey", resourceCulture);
             }
@@ -1164,7 +1165,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to iisnode-dev\\release\\x64.
         /// </summary>
-        public static string IISNodePath {
+        internal static string IISNodePath {
             get {
                 return ResourceManager.GetString("IISNodePath", resourceCulture);
             }
@@ -1173,7 +1174,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to iisnode.
         /// </summary>
-        public static string IISNodeRuntimeValue {
+        internal static string IISNodeRuntimeValue {
             get {
                 return ResourceManager.GetString("IISNodeRuntimeValue", resourceCulture);
             }
@@ -1182,7 +1183,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Installing IISNode version {0} in Azure for WebRole &apos;{1}&apos; (the version locally installed is: {2}).
         /// </summary>
-        public static string IISNodeVersionWarningText {
+        internal static string IISNodeVersionWarningText {
             get {
                 return ResourceManager.GetString("IISNodeVersionWarningText", resourceCulture);
             }
@@ -1191,7 +1192,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Internal Server Error.
         /// </summary>
-        public static string InternalServerErrorMessage {
+        internal static string InternalServerErrorMessage {
             get {
                 return ResourceManager.GetString("InternalServerErrorMessage", resourceCulture);
             }
@@ -1200,7 +1201,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Cannot enable memcach protocol on a cache worker role {0}..
         /// </summary>
-        public static string InvalidCacheRoleName {
+        internal static string InvalidCacheRoleName {
             get {
                 return ResourceManager.GetString("InvalidCacheRoleName", resourceCulture);
             }
@@ -1209,7 +1210,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Invalid certificate format..
         /// </summary>
-        public static string InvalidCertificateSingle {
+        internal static string InvalidCertificateSingle {
             get {
                 return ResourceManager.GetString("InvalidCertificateSingle", resourceCulture);
             }
@@ -1218,7 +1219,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The provided configuration path is invalid or doesn&apos;t exist.
         /// </summary>
-        public static string InvalidConfigPath {
+        internal static string InvalidConfigPath {
             get {
                 return ResourceManager.GetString("InvalidConfigPath", resourceCulture);
             }
@@ -1227,7 +1228,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The country name is invalid, please use a valid two character country code, as described in ISO 3166-1 alpha-2..
         /// </summary>
-        public static string InvalidCountryNameMessage {
+        internal static string InvalidCountryNameMessage {
             get {
                 return ResourceManager.GetString("InvalidCountryNameMessage", resourceCulture);
             }
@@ -1236,7 +1237,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No default subscription has been designated. Use Select-AzureSubscription -Default &lt;subscriptionName&gt; to set the default subscription..
         /// </summary>
-        public static string InvalidDefaultSubscription {
+        internal static string InvalidDefaultSubscription {
             get {
                 return ResourceManager.GetString("InvalidDefaultSubscription", resourceCulture);
             }
@@ -1245,7 +1246,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Deployment with {0} does not exist.
         /// </summary>
-        public static string InvalidDeployment {
+        internal static string InvalidDeployment {
             get {
                 return ResourceManager.GetString("InvalidDeployment", resourceCulture);
             }
@@ -1254,7 +1255,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The deployment slot name {0} is invalid. Slot name must be either &quot;Staging&quot; or &quot;Production&quot;..
         /// </summary>
-        public static string InvalidDeploymentSlot {
+        internal static string InvalidDeploymentSlot {
             get {
                 return ResourceManager.GetString("InvalidDeploymentSlot", resourceCulture);
             }
@@ -1263,7 +1264,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Invalid service endpoint..
         /// </summary>
-        public static string InvalidEndpoint {
+        internal static string InvalidEndpoint {
             get {
                 return ResourceManager.GetString("InvalidEndpoint", resourceCulture);
             }
@@ -1272,7 +1273,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to File {0} has invalid characters.
         /// </summary>
-        public static string InvalidFileName {
+        internal static string InvalidFileName {
             get {
                 return ResourceManager.GetString("InvalidFileName", resourceCulture);
             }
@@ -1286,7 +1287,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         ///3. Choose &quot;Setup Git Publishing&quot; or &quot;Reset deployment credentials&quot;
         ///4. Back in the PowerShell window, rerun this command by typing &quot;New-AzureWebSite {site name} -Git -PublishingUsername {username}.
         /// </summary>
-        public static string InvalidGitCredentials {
+        internal static string InvalidGitCredentials {
             get {
                 return ResourceManager.GetString("InvalidGitCredentials", resourceCulture);
             }
@@ -1295,7 +1296,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The value {0} provided is not a valid GUID. Please provide a valid GUID..
         /// </summary>
-        public static string InvalidGuid {
+        internal static string InvalidGuid {
             get {
                 return ResourceManager.GetString("InvalidGuid", resourceCulture);
             }
@@ -1304,7 +1305,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The specified hostname does not exist. Please specify a valid hostname for the site..
         /// </summary>
-        public static string InvalidHostnameValidation {
+        internal static string InvalidHostnameValidation {
             get {
                 return ResourceManager.GetString("InvalidHostnameValidation", resourceCulture);
             }
@@ -1313,7 +1314,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Role {0} instances must be greater than or equal 0 and less than or equal 20.
         /// </summary>
-        public static string InvalidInstancesCount {
+        internal static string InvalidInstancesCount {
             get {
                 return ResourceManager.GetString("InvalidInstancesCount", resourceCulture);
             }
@@ -1322,7 +1323,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to There was an error creating your webjob. Please make sure that the script is in the root folder of the zip file..
         /// </summary>
-        public static string InvalidJobFile {
+        internal static string InvalidJobFile {
             get {
                 return ResourceManager.GetString("InvalidJobFile", resourceCulture);
             }
@@ -1331,7 +1332,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Could not download a valid runtime manifest, Please check your internet connection and try again..
         /// </summary>
-        public static string InvalidManifestError {
+        internal static string InvalidManifestError {
             get {
                 return ResourceManager.GetString("InvalidManifestError", resourceCulture);
             }
@@ -1340,7 +1341,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The account {0} was not found. Please specify a valid account name..
         /// </summary>
-        public static string InvalidMediaServicesAccount {
+        internal static string InvalidMediaServicesAccount {
             get {
                 return ResourceManager.GetString("InvalidMediaServicesAccount", resourceCulture);
             }
@@ -1349,7 +1350,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The provided name &quot;{0}&quot; does not match the service bus namespace naming rules..
         /// </summary>
-        public static string InvalidNamespaceName {
+        internal static string InvalidNamespaceName {
             get {
                 return ResourceManager.GetString("InvalidNamespaceName", resourceCulture);
             }
@@ -1358,7 +1359,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Path must specify a valid path to an Azure profile..
         /// </summary>
-        public static string InvalidNewProfilePath {
+        internal static string InvalidNewProfilePath {
             get {
                 return ResourceManager.GetString("InvalidNewProfilePath", resourceCulture);
             }
@@ -1367,7 +1368,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Value cannot be null. Parameter name: &apos;{0}&apos;.
         /// </summary>
-        public static string InvalidNullArgument {
+        internal static string InvalidNullArgument {
             get {
                 return ResourceManager.GetString("InvalidNullArgument", resourceCulture);
             }
@@ -1376,7 +1377,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The provided package path is invalid or doesn&apos;t exist.
         /// </summary>
-        public static string InvalidPackagePath {
+        internal static string InvalidPackagePath {
             get {
                 return ResourceManager.GetString("InvalidPackagePath", resourceCulture);
             }
@@ -1385,7 +1386,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to &apos;{0}&apos; is an invalid parameter set name..
         /// </summary>
-        public static string InvalidParameterSetName {
+        internal static string InvalidParameterSetName {
             get {
                 return ResourceManager.GetString("InvalidParameterSetName", resourceCulture);
             }
@@ -1394,7 +1395,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {0} doesn&apos;t exist in {1} or you&apos;ve not passed valid value for it.
         /// </summary>
-        public static string InvalidPath {
+        internal static string InvalidPath {
             get {
                 return ResourceManager.GetString("InvalidPath", resourceCulture);
             }
@@ -1403,7 +1404,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Path {0} has invalid characters.
         /// </summary>
-        public static string InvalidPathName {
+        internal static string InvalidPathName {
             get {
                 return ResourceManager.GetString("InvalidPathName", resourceCulture);
             }
@@ -1412,7 +1413,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Property bag Hashtable must contain one of the following sets of properties: {SubscriptionId, Certificate}, {SubscriptionId, Username, Password}, {SubscriptionId, ServicePrincipal, Password, Tenant},  {SubscriptionId, AccountId, Token}.
         /// </summary>
-        public static string InvalidProfileProperties {
+        internal static string InvalidProfileProperties {
             get {
                 return ResourceManager.GetString("InvalidProfileProperties", resourceCulture);
             }
@@ -1421,7 +1422,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The provided publish settings file {0} has invalid content. Please get valid by running cmdlet Get-AzurePublishSettingsFile.
         /// </summary>
-        public static string InvalidPublishSettingsSchema {
+        internal static string InvalidPublishSettingsSchema {
             get {
                 return ResourceManager.GetString("InvalidPublishSettingsSchema", resourceCulture);
             }
@@ -1430,7 +1431,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The provided role name &quot;{0}&quot; has invalid characters.
         /// </summary>
-        public static string InvalidRoleNameMessage {
+        internal static string InvalidRoleNameMessage {
             get {
                 return ResourceManager.GetString("InvalidRoleNameMessage", resourceCulture);
             }
@@ -1439,7 +1440,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to A valid name for the service root folder is required.
         /// </summary>
-        public static string InvalidRootNameMessage {
+        internal static string InvalidRootNameMessage {
             get {
                 return ResourceManager.GetString("InvalidRootNameMessage", resourceCulture);
             }
@@ -1448,7 +1449,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {0} is not a recognized runtime type.
         /// </summary>
-        public static string InvalidRuntimeError {
+        internal static string InvalidRuntimeError {
             get {
                 return ResourceManager.GetString("InvalidRuntimeError", resourceCulture);
             }
@@ -1457,7 +1458,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to A valid language is required.
         /// </summary>
-        public static string InvalidScaffoldingLanguageArg {
+        internal static string InvalidScaffoldingLanguageArg {
             get {
                 return ResourceManager.GetString("InvalidScaffoldingLanguageArg", resourceCulture);
             }
@@ -1466,7 +1467,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No subscription is currently selected. Use Select-Subscription to activate a subscription..
         /// </summary>
-        public static string InvalidSelectedSubscription {
+        internal static string InvalidSelectedSubscription {
             get {
                 return ResourceManager.GetString("InvalidSelectedSubscription", resourceCulture);
             }
@@ -1475,7 +1476,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The provided location &quot;{0}&quot; does not exist in the available locations use Get-AzureSBLocation for listing available locations..
         /// </summary>
-        public static string InvalidServiceBusLocation {
+        internal static string InvalidServiceBusLocation {
             get {
                 return ResourceManager.GetString("InvalidServiceBusLocation", resourceCulture);
             }
@@ -1484,7 +1485,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Please provide a service name or run this command from inside a service project directory..
         /// </summary>
-        public static string InvalidServiceName {
+        internal static string InvalidServiceName {
             get {
                 return ResourceManager.GetString("InvalidServiceName", resourceCulture);
             }
@@ -1493,7 +1494,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to You must provide valid value for {0}.
         /// </summary>
-        public static string InvalidServiceSettingElement {
+        internal static string InvalidServiceSettingElement {
             get {
                 return ResourceManager.GetString("InvalidServiceSettingElement", resourceCulture);
             }
@@ -1502,7 +1503,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to settings.json is invalid or doesn&apos;t exist.
         /// </summary>
-        public static string InvalidServiceSettingMessage {
+        internal static string InvalidServiceSettingMessage {
             get {
                 return ResourceManager.GetString("InvalidServiceSettingMessage", resourceCulture);
             }
@@ -1511,7 +1512,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The subscription named &apos;{0}&apos; cannot be found. Use Set-AzureSubscription to initialize the subscription data..
         /// </summary>
-        public static string InvalidSubscription {
+        internal static string InvalidSubscription {
             get {
                 return ResourceManager.GetString("InvalidSubscription", resourceCulture);
             }
@@ -1520,7 +1521,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The provided subscription id {0} is not valid.
         /// </summary>
-        public static string InvalidSubscriptionId {
+        internal static string InvalidSubscriptionId {
             get {
                 return ResourceManager.GetString("InvalidSubscriptionId", resourceCulture);
             }
@@ -1529,7 +1530,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Must specify a non-null subscription name..
         /// </summary>
-        public static string InvalidSubscriptionName {
+        internal static string InvalidSubscriptionName {
             get {
                 return ResourceManager.GetString("InvalidSubscriptionName", resourceCulture);
             }
@@ -1538,7 +1539,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to A valid subscription name is required. This can be provided using the  -Subscription parameter or by setting the subscription via the Set-AzureSubscription cmdlet.
         /// </summary>
-        public static string InvalidSubscriptionNameMessage {
+        internal static string InvalidSubscriptionNameMessage {
             get {
                 return ResourceManager.GetString("InvalidSubscriptionNameMessage", resourceCulture);
             }
@@ -1547,7 +1548,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The provided subscriptions file {0} has invalid content..
         /// </summary>
-        public static string InvalidSubscriptionsDataSchema {
+        internal static string InvalidSubscriptionsDataSchema {
             get {
                 return ResourceManager.GetString("InvalidSubscriptionsDataSchema", resourceCulture);
             }
@@ -1556,7 +1557,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Role {0} VM size should be ExtraSmall, Small, Medium, Large or ExtraLarge..
         /// </summary>
-        public static string InvalidVMSize {
+        internal static string InvalidVMSize {
             get {
                 return ResourceManager.GetString("InvalidVMSize", resourceCulture);
             }
@@ -1565,7 +1566,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The web job file must have *.zip extension.
         /// </summary>
-        public static string InvalidWebJobFile {
+        internal static string InvalidWebJobFile {
             get {
                 return ResourceManager.GetString("InvalidWebJobFile", resourceCulture);
             }
@@ -1574,7 +1575,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Singleton option works for continuous jobs only..
         /// </summary>
-        public static string InvalidWebJobSingleton {
+        internal static string InvalidWebJobSingleton {
             get {
                 return ResourceManager.GetString("InvalidWebJobSingleton", resourceCulture);
             }
@@ -1583,7 +1584,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The website {0} was not found. Please specify a valid website name..
         /// </summary>
-        public static string InvalidWebsite {
+        internal static string InvalidWebsite {
             get {
                 return ResourceManager.GetString("InvalidWebsite", resourceCulture);
             }
@@ -1592,7 +1593,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No job for id: {0} was found..
         /// </summary>
-        public static string JobNotFound {
+        internal static string JobNotFound {
             get {
                 return ResourceManager.GetString("JobNotFound", resourceCulture);
             }
@@ -1601,7 +1602,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to engines.
         /// </summary>
-        public static string JsonEnginesSectionName {
+        internal static string JsonEnginesSectionName {
             get {
                 return ResourceManager.GetString("JsonEnginesSectionName", resourceCulture);
             }
@@ -1610,7 +1611,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Scaffolding for this language is not yet supported.
         /// </summary>
-        public static string LanguageScaffoldingIsNotSupported {
+        internal static string LanguageScaffoldingIsNotSupported {
             get {
                 return ResourceManager.GetString("LanguageScaffoldingIsNotSupported", resourceCulture);
             }
@@ -1619,7 +1620,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Link already established.
         /// </summary>
-        public static string LinkAlreadyEstablished {
+        internal static string LinkAlreadyEstablished {
             get {
                 return ResourceManager.GetString("LinkAlreadyEstablished", resourceCulture);
             }
@@ -1628,7 +1629,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to local_package.csx.
         /// </summary>
-        public static string LocalPackageFileName {
+        internal static string LocalPackageFileName {
             get {
                 return ResourceManager.GetString("LocalPackageFileName", resourceCulture);
             }
@@ -1637,7 +1638,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to ServiceConfiguration.Local.cscfg.
         /// </summary>
-        public static string LocalServiceConfigurationFileName {
+        internal static string LocalServiceConfigurationFileName {
             get {
                 return ResourceManager.GetString("LocalServiceConfigurationFileName", resourceCulture);
             }
@@ -1646,7 +1647,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Looking for {0} deployment for {1} cloud service....
         /// </summary>
-        public static string LookingForDeploymentMessage {
+        internal static string LookingForDeploymentMessage {
             get {
                 return ResourceManager.GetString("LookingForDeploymentMessage", resourceCulture);
             }
@@ -1655,7 +1656,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Looking for cloud service {0}....
         /// </summary>
-        public static string LookingForServiceMessage {
+        internal static string LookingForServiceMessage {
             get {
                 return ResourceManager.GetString("LookingForServiceMessage", resourceCulture);
             }
@@ -1664,7 +1665,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to managementCertificate.pem.
         /// </summary>
-        public static string ManagementCertificateFileName {
+        internal static string ManagementCertificateFileName {
             get {
                 return ResourceManager.GetString("ManagementCertificateFileName", resourceCulture);
             }
@@ -1673,7 +1674,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to ?whr={0}.
         /// </summary>
-        public static string ManagementPortalRealmFormat {
+        internal static string ManagementPortalRealmFormat {
             get {
                 return ResourceManager.GetString("ManagementPortalRealmFormat", resourceCulture);
             }
@@ -1682,7 +1683,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to //baseuri.
         /// </summary>
-        public static string ManifestBaseUriQuery {
+        internal static string ManifestBaseUriQuery {
             get {
                 return ResourceManager.GetString("ManifestBaseUriQuery", resourceCulture);
             }
@@ -1691,7 +1692,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to uri.
         /// </summary>
-        public static string ManifestBlobUriKey {
+        internal static string ManifestBlobUriKey {
             get {
                 return ResourceManager.GetString("ManifestBlobUriKey", resourceCulture);
             }
@@ -1700,7 +1701,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to http://az413943.vo.msecnd.net/node/runtimemanifest_0.7.5.2.xml.
         /// </summary>
-        public static string ManifestUri {
+        internal static string ManifestUri {
             get {
                 return ResourceManager.GetString("ManifestUri", resourceCulture);
             }
@@ -1709,7 +1710,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Property bag Hashtable must contain a &apos;Certificate&apos; of type &apos;X509Certificate2&apos;..
         /// </summary>
-        public static string MissingCertificateInProfileProperties {
+        internal static string MissingCertificateInProfileProperties {
             get {
                 return ResourceManager.GetString("MissingCertificateInProfileProperties", resourceCulture);
             }
@@ -1718,7 +1719,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Property bag Hashtable must contain a &apos;Password&apos; with an associated &apos;Username&apos; or &apos;ServicePrincipal&apos;..
         /// </summary>
-        public static string MissingPasswordInProfileProperties {
+        internal static string MissingPasswordInProfileProperties {
             get {
                 return ResourceManager.GetString("MissingPasswordInProfileProperties", resourceCulture);
             }
@@ -1727,7 +1728,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Property bag Hashtable must contain a &apos;SubscriptionId&apos;..
         /// </summary>
-        public static string MissingSubscriptionInProfileProperties {
+        internal static string MissingSubscriptionInProfileProperties {
             get {
                 return ResourceManager.GetString("MissingSubscriptionInProfileProperties", resourceCulture);
             }
@@ -1736,7 +1737,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Multiple Add-Ons found holding name {0}.
         /// </summary>
-        public static string MultipleAddOnsFoundMessage {
+        internal static string MultipleAddOnsFoundMessage {
             get {
                 return ResourceManager.GetString("MultipleAddOnsFoundMessage", resourceCulture);
             }
@@ -1745,7 +1746,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Multiple possible publishing users. Please go to the Portal and use the listed deployment user, or click &apos;set/reset deployment credentials&apos; to set up a new user account, then reurn this cmdlet and specify PublishingUsername..
         /// </summary>
-        public static string MultiplePublishingUsernames {
+        internal static string MultiplePublishingUsernames {
             get {
                 return ResourceManager.GetString("MultiplePublishingUsernames", resourceCulture);
             }
@@ -1754,7 +1755,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The first publish settings file &quot;{0}&quot; is used. If you want to use another file specify the file name..
         /// </summary>
-        public static string MultiplePublishSettingsFilesFoundMessage {
+        internal static string MultiplePublishSettingsFilesFoundMessage {
             get {
                 return ResourceManager.GetString("MultiplePublishSettingsFilesFoundMessage", resourceCulture);
             }
@@ -1763,7 +1764,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Microsoft.WindowsAzure.Plugins.Caching.NamedCaches.
         /// </summary>
-        public static string NamedCacheSettingName {
+        internal static string NamedCacheSettingName {
             get {
                 return ResourceManager.GetString("NamedCacheSettingName", resourceCulture);
             }
@@ -1772,7 +1773,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {&quot;caches&quot;:[{&quot;name&quot;:&quot;default&quot;,&quot;policy&quot;:{&quot;eviction&quot;:{&quot;type&quot;:0},&quot;expiration&quot;:{&quot;defaultTTL&quot;:10,&quot;isExpirable&quot;:true,&quot;type&quot;:1},&quot;serverNotification&quot;:{&quot;isEnabled&quot;:false}},&quot;secondaries&quot;:0}]}.
         /// </summary>
-        public static string NamedCacheSettingValue {
+        internal static string NamedCacheSettingValue {
             get {
                 return ResourceManager.GetString("NamedCacheSettingValue", resourceCulture);
             }
@@ -1781,7 +1782,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to A publishing username is required. Please specify one using the argument PublishingUsername..
         /// </summary>
-        public static string NeedPublishingUsernames {
+        internal static string NeedPublishingUsernames {
             get {
                 return ResourceManager.GetString("NeedPublishingUsernames", resourceCulture);
             }
@@ -1790,7 +1791,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to New Add-On Confirmation.
         /// </summary>
-        public static string NewAddOnConformation {
+        internal static string NewAddOnConformation {
             get {
                 return ResourceManager.GetString("NewAddOnConformation", resourceCulture);
             }
@@ -1802,7 +1803,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         ///agree to the {2}&apos;s terms of user and privacy statement at {0} and (c) agree to sharing my 
         ///contact information with {2}..
         /// </summary>
-        public static string NewMicrosoftAddOnMessage {
+        internal static string NewMicrosoftAddOnMessage {
             get {
                 return ResourceManager.GetString("NewMicrosoftAddOnMessage", resourceCulture);
             }
@@ -1811,7 +1812,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Internal Server Error. This could happen because the namespace name is already used or due to an incorrect location name. Use Get-AzureSBLocation cmdlet to list valid names..
         /// </summary>
-        public static string NewNamespaceErrorMessage {
+        internal static string NewNamespaceErrorMessage {
             get {
                 return ResourceManager.GetString("NewNamespaceErrorMessage", resourceCulture);
             }
@@ -1823,7 +1824,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         ///acknowledge the offering is provided by {2}, not Microsoft, and agree to {2}&apos;s terms of 
         ///use and privacy statement at {0} and (c) agree to sharing my contact information with {2}..
         /// </summary>
-        public static string NewNonMicrosoftAddOnMessage {
+        internal static string NewNonMicrosoftAddOnMessage {
             get {
                 return ResourceManager.GetString("NewNonMicrosoftAddOnMessage", resourceCulture);
             }
@@ -1832,7 +1833,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Service has been created at {0}.
         /// </summary>
-        public static string NewServiceCreatedMessage {
+        internal static string NewServiceCreatedMessage {
             get {
                 return ResourceManager.GetString("NewServiceCreatedMessage", resourceCulture);
             }
@@ -1841,7 +1842,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No.
         /// </summary>
-        public static string No {
+        internal static string No {
             get {
                 return ResourceManager.GetString("No", resourceCulture);
             }
@@ -1850,7 +1851,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to There is no access token cached for subscription {0}, user id {1}. Use the Add-AzureAccount cmdlet to log in again and get a token for this subscription..
         /// </summary>
-        public static string NoCachedToken {
+        internal static string NoCachedToken {
             get {
                 return ResourceManager.GetString("NoCachedToken", resourceCulture);
             }
@@ -1859,7 +1860,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The service does not have any cache worker roles, add one first by running cmdlet Add-AzureCacheWorkerRole..
         /// </summary>
-        public static string NoCacheWorkerRoles {
+        internal static string NoCacheWorkerRoles {
             get {
                 return ResourceManager.GetString("NoCacheWorkerRoles", resourceCulture);
             }
@@ -1868,7 +1869,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No clouds available.
         /// </summary>
-        public static string NoCloudsAvailable {
+        internal static string NoCloudsAvailable {
             get {
                 return ResourceManager.GetString("NoCloudsAvailable", resourceCulture);
             }
@@ -1877,7 +1878,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to &quot;There is no current context, please log in using Login-AzureRmAccount for Azure Resource Manager or Add-AzureAccount for Azure Service Management.&quot;.
         /// </summary>
-        public static string NoCurrentContextForDataCmdlet {
+        internal static string NoCurrentContextForDataCmdlet {
             get {
                 return ResourceManager.GetString("NoCurrentContextForDataCmdlet", resourceCulture);
             }
@@ -1886,7 +1887,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to nodejs.
         /// </summary>
-        public static string NodeDirectory {
+        internal static string NodeDirectory {
             get {
                 return ResourceManager.GetString("NodeDirectory", resourceCulture);
             }
@@ -1895,7 +1896,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to node.
         /// </summary>
-        public static string NodeEngineKey {
+        internal static string NodeEngineKey {
             get {
                 return ResourceManager.GetString("NodeEngineKey", resourceCulture);
             }
@@ -1904,7 +1905,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to node.exe.
         /// </summary>
-        public static string NodeExe {
+        internal static string NodeExe {
             get {
                 return ResourceManager.GetString("NodeExe", resourceCulture);
             }
@@ -1913,7 +1914,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to There is no default subscription set, please set a default subscription by running Set-AzureSubscription -Default &lt;subscription name&gt;.
         /// </summary>
-        public static string NoDefaultSubscriptionMessage {
+        internal static string NoDefaultSubscriptionMessage {
             get {
                 return ResourceManager.GetString("NoDefaultSubscriptionMessage", resourceCulture);
             }
@@ -1922,7 +1923,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Microsoft SDKs\Azure\Nodejs\Nov2011.
         /// </summary>
-        public static string NodeModulesPath {
+        internal static string NodeModulesPath {
             get {
                 return ResourceManager.GetString("NodeModulesPath", resourceCulture);
             }
@@ -1931,7 +1932,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to nodejs.
         /// </summary>
-        public static string NodeProgramFilesFolderName {
+        internal static string NodeProgramFilesFolderName {
             get {
                 return ResourceManager.GetString("NodeProgramFilesFolderName", resourceCulture);
             }
@@ -1940,7 +1941,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to node.
         /// </summary>
-        public static string NodeRuntimeValue {
+        internal static string NodeRuntimeValue {
             get {
                 return ResourceManager.GetString("NodeRuntimeValue", resourceCulture);
             }
@@ -1949,7 +1950,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Resources\Scaffolding\Node.
         /// </summary>
-        public static string NodeScaffolding {
+        internal static string NodeScaffolding {
             get {
                 return ResourceManager.GetString("NodeScaffolding", resourceCulture);
             }
@@ -1958,7 +1959,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Microsoft.WindowsAzure.Commands.CloudService.ScaffoldingResources.Node.
         /// </summary>
-        public static string NodeScaffoldingResources {
+        internal static string NodeScaffoldingResources {
             get {
                 return ResourceManager.GetString("NodeScaffoldingResources", resourceCulture);
             }
@@ -1967,7 +1968,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Installing Node version {0} in Azure for Role &apos;{1}&apos; (the Node version locally installed is: {2}).
         /// </summary>
-        public static string NodeVersionWarningText {
+        internal static string NodeVersionWarningText {
             get {
                 return ResourceManager.GetString("NodeVersionWarningText", resourceCulture);
             }
@@ -1976,7 +1977,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No, I do not agree.
         /// </summary>
-        public static string NoHint {
+        internal static string NoHint {
             get {
                 return ResourceManager.GetString("NoHint", resourceCulture);
             }
@@ -1985,7 +1986,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to &lt;NONE&gt;.
         /// </summary>
-        public static string None {
+        internal static string None {
             get {
                 return ResourceManager.GetString("None", resourceCulture);
             }
@@ -1994,7 +1995,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No publish settings files with extension *.publishsettings are found in the directory &quot;{0}&quot;..
         /// </summary>
-        public static string NoPublishSettingsFilesFoundMessage {
+        internal static string NoPublishSettingsFilesFoundMessage {
             get {
                 return ResourceManager.GetString("NoPublishSettingsFilesFoundMessage", resourceCulture);
             }
@@ -2003,7 +2004,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to There is no subscription associated with account {0}..
         /// </summary>
-        public static string NoSubscriptionAddedMessage {
+        internal static string NoSubscriptionAddedMessage {
             get {
                 return ResourceManager.GetString("NoSubscriptionAddedMessage", resourceCulture);
             }
@@ -2012,7 +2013,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No subscriptions are associated with the logged in account in Azure Service Management (RDFE). This means that the logged in user is not an administrator or co-administrator for any account.\r\nDid you mean to execute Login-AzureRmAccount?.
         /// </summary>
-        public static string NoSubscriptionFoundForTenant {
+        internal static string NoSubscriptionFoundForTenant {
             get {
                 return ResourceManager.GetString("NoSubscriptionFoundForTenant", resourceCulture);
             }
@@ -2021,7 +2022,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to &apos;{0}&apos; must be a cache worker role. Verify that it has proper cache worker role configuration..
         /// </summary>
-        public static string NotCacheWorkerRole {
+        internal static string NotCacheWorkerRole {
             get {
                 return ResourceManager.GetString("NotCacheWorkerRole", resourceCulture);
             }
@@ -2030,7 +2031,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Certificate can&apos;t be null..
         /// </summary>
-        public static string NullCertificateMessage {
+        internal static string NullCertificateMessage {
             get {
                 return ResourceManager.GetString("NullCertificateMessage", resourceCulture);
             }
@@ -2039,7 +2040,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {0} could not be null or empty.
         /// </summary>
-        public static string NullObjectMessage {
+        internal static string NullObjectMessage {
             get {
                 return ResourceManager.GetString("NullObjectMessage", resourceCulture);
             }
@@ -2048,7 +2049,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Unable to add a null RoleSettings to {0}.
         /// </summary>
-        public static string NullRoleSettingsMessage {
+        internal static string NullRoleSettingsMessage {
             get {
                 return ResourceManager.GetString("NullRoleSettingsMessage", resourceCulture);
             }
@@ -2057,7 +2058,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Unable to add new role to null service definition.
         /// </summary>
-        public static string NullServiceDefinitionMessage {
+        internal static string NullServiceDefinitionMessage {
             get {
                 return ResourceManager.GetString("NullServiceDefinitionMessage", resourceCulture);
             }
@@ -2066,7 +2067,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The request offer &apos;{0}&apos; is not found..
         /// </summary>
-        public static string OfferNotFoundMessage {
+        internal static string OfferNotFoundMessage {
             get {
                 return ResourceManager.GetString("OfferNotFoundMessage", resourceCulture);
             }
@@ -2075,7 +2076,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Operation &quot;{0}&quot; failed on VM with ID: {1}.
         /// </summary>
-        public static string OperationFailedErrorMessage {
+        internal static string OperationFailedErrorMessage {
             get {
                 return ResourceManager.GetString("OperationFailedErrorMessage", resourceCulture);
             }
@@ -2084,7 +2085,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The REST operation failed with message &apos;{0}&apos; and error code &apos;{1}&apos;.
         /// </summary>
-        public static string OperationFailedMessage {
+        internal static string OperationFailedMessage {
             get {
                 return ResourceManager.GetString("OperationFailedMessage", resourceCulture);
             }
@@ -2093,7 +2094,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Job Id {0} did not complete within expected time or it is in Failed/Canceled/Invalid state..
         /// </summary>
-        public static string OperationTimedOutOrError {
+        internal static string OperationTimedOutOrError {
             get {
                 return ResourceManager.GetString("OperationTimedOutOrError", resourceCulture);
             }
@@ -2102,7 +2103,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to package.
         /// </summary>
-        public static string Package {
+        internal static string Package {
             get {
                 return ResourceManager.GetString("Package", resourceCulture);
             }
@@ -2111,7 +2112,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Package is created at service root path {0}..
         /// </summary>
-        public static string PackageCreated {
+        internal static string PackageCreated {
             get {
                 return ResourceManager.GetString("PackageCreated", resourceCulture);
             }
@@ -2134,7 +2135,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         ///}}
         ///.
         /// </summary>
-        public static string PackageJsonDefaultFile {
+        internal static string PackageJsonDefaultFile {
             get {
                 return ResourceManager.GetString("PackageJsonDefaultFile", resourceCulture);
             }
@@ -2143,7 +2144,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to package.json.
         /// </summary>
-        public static string PackageJsonFileName {
+        internal static string PackageJsonFileName {
             get {
                 return ResourceManager.GetString("PackageJsonFileName", resourceCulture);
             }
@@ -2152,7 +2153,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to A value for the  Peer Asn has to be provided..
         /// </summary>
-        public static string PeerAsnRequired {
+        internal static string PeerAsnRequired {
             get {
                 return ResourceManager.GetString("PeerAsnRequired", resourceCulture);
             }
@@ -2161,7 +2162,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to 5.4.0.
         /// </summary>
-        public static string PHPDefaultRuntimeVersion {
+        internal static string PHPDefaultRuntimeVersion {
             get {
                 return ResourceManager.GetString("PHPDefaultRuntimeVersion", resourceCulture);
             }
@@ -2170,7 +2171,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to php.
         /// </summary>
-        public static string PhpRuntimeValue {
+        internal static string PhpRuntimeValue {
             get {
                 return ResourceManager.GetString("PhpRuntimeValue", resourceCulture);
             }
@@ -2179,7 +2180,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Resources\Scaffolding\PHP.
         /// </summary>
-        public static string PHPScaffolding {
+        internal static string PHPScaffolding {
             get {
                 return ResourceManager.GetString("PHPScaffolding", resourceCulture);
             }
@@ -2188,7 +2189,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Microsoft.WindowsAzure.Commands.CloudService.ScaffoldingResources.PHP.
         /// </summary>
-        public static string PHPScaffoldingResources {
+        internal static string PHPScaffoldingResources {
             get {
                 return ResourceManager.GetString("PHPScaffoldingResources", resourceCulture);
             }
@@ -2197,7 +2198,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Installing PHP version {0} for Role &apos;{1}&apos; (the PHP version locally installed is: {2}).
         /// </summary>
-        public static string PHPVersionWarningText {
+        internal static string PHPVersionWarningText {
             get {
                 return ResourceManager.GetString("PHPVersionWarningText", resourceCulture);
             }
@@ -2212,7 +2213,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         ///4. Once the site has been created, click on the site name
         ///5. Click on &quot;Set up Git publishing&quot; or &quot;Reset deployment credentials&quot; and setup a publishing username and password. Use those credentials for all new websites you create..
         /// </summary>
-        public static string PortalInstructions {
+        internal static string PortalInstructions {
             get {
                 return ResourceManager.GetString("PortalInstructions", resourceCulture);
             }
@@ -2221,7 +2222,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to 6. Back in the console window, rerun this command by typing &quot;New-AzureWebsite &lt;site name&gt; -Git&quot;.
         /// </summary>
-        public static string PortalInstructionsGit {
+        internal static string PortalInstructionsGit {
             get {
                 return ResourceManager.GetString("PortalInstructionsGit", resourceCulture);
             }
@@ -2230,7 +2231,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to A value for the Primary Peer Subnet has to be provided..
         /// </summary>
-        public static string PrimaryPeerSubnetRequired {
+        internal static string PrimaryPeerSubnetRequired {
             get {
                 return ResourceManager.GetString("PrimaryPeerSubnetRequired", resourceCulture);
             }
@@ -2239,7 +2240,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Promotion code can be used only when updating to a new plan..
         /// </summary>
-        public static string PromotionCodeWithCurrentPlanMessage {
+        internal static string PromotionCodeWithCurrentPlanMessage {
             get {
                 return ResourceManager.GetString("PromotionCodeWithCurrentPlanMessage", resourceCulture);
             }
@@ -2248,7 +2249,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Service not published at user request..
         /// </summary>
-        public static string PublishAbortedAtUserRequest {
+        internal static string PublishAbortedAtUserRequest {
             get {
                 return ResourceManager.GetString("PublishAbortedAtUserRequest", resourceCulture);
             }
@@ -2257,7 +2258,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Complete..
         /// </summary>
-        public static string PublishCompleteMessage {
+        internal static string PublishCompleteMessage {
             get {
                 return ResourceManager.GetString("PublishCompleteMessage", resourceCulture);
             }
@@ -2266,7 +2267,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Connecting....
         /// </summary>
-        public static string PublishConnectingMessage {
+        internal static string PublishConnectingMessage {
             get {
                 return ResourceManager.GetString("PublishConnectingMessage", resourceCulture);
             }
@@ -2275,7 +2276,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Created Deployment ID: {0}..
         /// </summary>
-        public static string PublishCreatedDeploymentMessage {
+        internal static string PublishCreatedDeploymentMessage {
             get {
                 return ResourceManager.GetString("PublishCreatedDeploymentMessage", resourceCulture);
             }
@@ -2284,7 +2285,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Created hosted service &apos;{0}&apos;..
         /// </summary>
-        public static string PublishCreatedServiceMessage {
+        internal static string PublishCreatedServiceMessage {
             get {
                 return ResourceManager.GetString("PublishCreatedServiceMessage", resourceCulture);
             }
@@ -2293,7 +2294,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Created Website URL: {0}..
         /// </summary>
-        public static string PublishCreatedWebsiteMessage {
+        internal static string PublishCreatedWebsiteMessage {
             get {
                 return ResourceManager.GetString("PublishCreatedWebsiteMessage", resourceCulture);
             }
@@ -2302,7 +2303,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Creating....
         /// </summary>
-        public static string PublishCreatingServiceMessage {
+        internal static string PublishCreatingServiceMessage {
             get {
                 return ResourceManager.GetString("PublishCreatingServiceMessage", resourceCulture);
             }
@@ -2311,7 +2312,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Initializing....
         /// </summary>
-        public static string PublishInitializingMessage {
+        internal static string PublishInitializingMessage {
             get {
                 return ResourceManager.GetString("PublishInitializingMessage", resourceCulture);
             }
@@ -2320,7 +2321,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to busy.
         /// </summary>
-        public static string PublishInstanceStatusBusy {
+        internal static string PublishInstanceStatusBusy {
             get {
                 return ResourceManager.GetString("PublishInstanceStatusBusy", resourceCulture);
             }
@@ -2329,7 +2330,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to creating the virtual machine.
         /// </summary>
-        public static string PublishInstanceStatusCreating {
+        internal static string PublishInstanceStatusCreating {
             get {
                 return ResourceManager.GetString("PublishInstanceStatusCreating", resourceCulture);
             }
@@ -2338,7 +2339,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Instance {0} of role {1} is {2}..
         /// </summary>
-        public static string PublishInstanceStatusMessage {
+        internal static string PublishInstanceStatusMessage {
             get {
                 return ResourceManager.GetString("PublishInstanceStatusMessage", resourceCulture);
             }
@@ -2347,7 +2348,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to ready.
         /// </summary>
-        public static string PublishInstanceStatusReady {
+        internal static string PublishInstanceStatusReady {
             get {
                 return ResourceManager.GetString("PublishInstanceStatusReady", resourceCulture);
             }
@@ -2356,7 +2357,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Preparing deployment for {0} with Subscription ID: {1}....
         /// </summary>
-        public static string PublishPreparingDeploymentMessage {
+        internal static string PublishPreparingDeploymentMessage {
             get {
                 return ResourceManager.GetString("PublishPreparingDeploymentMessage", resourceCulture);
             }
@@ -2365,7 +2366,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Publishing {0} to Microsoft Azure. This may take several minutes....
         /// </summary>
-        public static string PublishServiceStartMessage {
+        internal static string PublishServiceStartMessage {
             get {
                 return ResourceManager.GetString("PublishServiceStartMessage", resourceCulture);
             }
@@ -2374,7 +2375,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to publish settings.
         /// </summary>
-        public static string PublishSettings {
+        internal static string PublishSettings {
             get {
                 return ResourceManager.GetString("PublishSettings", resourceCulture);
             }
@@ -2383,7 +2384,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Azure.
         /// </summary>
-        public static string PublishSettingsElementName {
+        internal static string PublishSettingsElementName {
             get {
                 return ResourceManager.GetString("PublishSettingsElementName", resourceCulture);
             }
@@ -2392,7 +2393,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to .PublishSettings.
         /// </summary>
-        public static string PublishSettingsFileExtention {
+        internal static string PublishSettingsFileExtention {
             get {
                 return ResourceManager.GetString("PublishSettingsFileExtention", resourceCulture);
             }
@@ -2401,7 +2402,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to publishSettings.xml.
         /// </summary>
-        public static string PublishSettingsFileName {
+        internal static string PublishSettingsFileName {
             get {
                 return ResourceManager.GetString("PublishSettingsFileName", resourceCulture);
             }
@@ -2410,7 +2411,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Publish settings imported.
         /// </summary>
-        public static string PublishSettingsSetSuccessfully {
+        internal static string PublishSettingsSetSuccessfully {
             get {
                 return ResourceManager.GetString("PublishSettingsSetSuccessfully", resourceCulture);
             }
@@ -2419,7 +2420,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to AZURE_PUBLISHINGPROFILE_URL.
         /// </summary>
-        public static string PublishSettingsUrlEnv {
+        internal static string PublishSettingsUrlEnv {
             get {
                 return ResourceManager.GetString("PublishSettingsUrlEnv", resourceCulture);
             }
@@ -2428,7 +2429,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Starting....
         /// </summary>
-        public static string PublishStartingMessage {
+        internal static string PublishStartingMessage {
             get {
                 return ResourceManager.GetString("PublishStartingMessage", resourceCulture);
             }
@@ -2437,7 +2438,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Upgrading....
         /// </summary>
-        public static string PublishUpgradingMessage {
+        internal static string PublishUpgradingMessage {
             get {
                 return ResourceManager.GetString("PublishUpgradingMessage", resourceCulture);
             }
@@ -2446,7 +2447,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Uploading Package to storage service {0}....
         /// </summary>
-        public static string PublishUploadingPackageMessage {
+        internal static string PublishUploadingPackageMessage {
             get {
                 return ResourceManager.GetString("PublishUploadingPackageMessage", resourceCulture);
             }
@@ -2455,7 +2456,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Verifying storage account &apos;{0}&apos;....
         /// </summary>
-        public static string PublishVerifyingStorageMessage {
+        internal static string PublishVerifyingStorageMessage {
             get {
                 return ResourceManager.GetString("PublishVerifyingStorageMessage", resourceCulture);
             }
@@ -2464,7 +2465,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Path &apos;{0}&apos; not found..
         /// </summary>
-        public static string PublishVMDscExtensionAdditionalContentPathNotExist {
+        internal static string PublishVMDscExtensionAdditionalContentPathNotExist {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionAdditionalContentPathNotExist", resourceCulture);
             }
@@ -2473,7 +2474,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Configuration published to {0}.
         /// </summary>
-        public static string PublishVMDscExtensionArchiveUploadedMessage {
+        internal static string PublishVMDscExtensionArchiveUploadedMessage {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionArchiveUploadedMessage", resourceCulture);
             }
@@ -2482,7 +2483,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Copy &apos;{0}&apos; to &apos;{1}&apos;..
         /// </summary>
-        public static string PublishVMDscExtensionCopyFileVerbose {
+        internal static string PublishVMDscExtensionCopyFileVerbose {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionCopyFileVerbose", resourceCulture);
             }
@@ -2491,7 +2492,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Copy the module &apos;{0}&apos; to &apos;{1}&apos;..
         /// </summary>
-        public static string PublishVMDscExtensionCopyModuleVerbose {
+        internal static string PublishVMDscExtensionCopyModuleVerbose {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionCopyModuleVerbose", resourceCulture);
             }
@@ -2501,7 +2502,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         ///   Looks up a localized string similar to Invalid configuration file: {0}.
         ///The file needs to be a PowerShell script (.ps1 or .psm1)..
         /// </summary>
-        public static string PublishVMDscExtensionCreateArchiveConfigFileInvalidExtension {
+        internal static string PublishVMDscExtensionCreateArchiveConfigFileInvalidExtension {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionCreateArchiveConfigFileInvalidExtension", resourceCulture);
             }
@@ -2510,7 +2511,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Deleted &apos;{0}&apos;.
         /// </summary>
-        public static string PublishVMDscExtensionDeletedFileMessage {
+        internal static string PublishVMDscExtensionDeletedFileMessage {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionDeletedFileMessage", resourceCulture);
             }
@@ -2519,7 +2520,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Cannot delete &apos;{0}&apos;: {1}.
         /// </summary>
-        public static string PublishVMDscExtensionDeleteErrorMessage {
+        internal static string PublishVMDscExtensionDeleteErrorMessage {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionDeleteErrorMessage", resourceCulture);
             }
@@ -2528,7 +2529,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Path &apos;{0}&apos; not found..
         /// </summary>
-        public static string PublishVMDscExtensionDirectoryNotExist {
+        internal static string PublishVMDscExtensionDirectoryNotExist {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionDirectoryNotExist", resourceCulture);
             }
@@ -2541,7 +2542,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         ///3) Move Import-DscResource inside Node block.
         ///.
         /// </summary>
-        public static string PublishVMDscExtensionGetDscResourceFailed {
+        internal static string PublishVMDscExtensionGetDscResourceFailed {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionGetDscResourceFailed", resourceCulture);
             }
@@ -2550,7 +2551,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to List of required modules: [{0}]..
         /// </summary>
-        public static string PublishVMDscExtensionRequiredModulesVerbose {
+        internal static string PublishVMDscExtensionRequiredModulesVerbose {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionRequiredModulesVerbose", resourceCulture);
             }
@@ -2559,7 +2560,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Your current PowerShell version {1} is less then required by this cmdlet {0}. Consider download and install latest PowerShell version..
         /// </summary>
-        public static string PublishVMDscExtensionRequiredPsVersion {
+        internal static string PublishVMDscExtensionRequiredPsVersion {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionRequiredPsVersion", resourceCulture);
             }
@@ -2569,7 +2570,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         ///   Looks up a localized string similar to Configuration script &apos;{0}&apos; contained parse errors:
         ///{1}.
         /// </summary>
-        public static string PublishVMDscExtensionStorageParserErrors {
+        internal static string PublishVMDscExtensionStorageParserErrors {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionStorageParserErrors", resourceCulture);
             }
@@ -2578,7 +2579,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Temp folder &apos;{0}&apos; created..
         /// </summary>
-        public static string PublishVMDscExtensionTempFolderVerbose {
+        internal static string PublishVMDscExtensionTempFolderVerbose {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionTempFolderVerbose", resourceCulture);
             }
@@ -2588,7 +2589,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         ///   Looks up a localized string similar to Invalid configuration file: {0}.
         ///The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)..
         /// </summary>
-        public static string PublishVMDscExtensionUploadArchiveConfigFileInvalidExtension {
+        internal static string PublishVMDscExtensionUploadArchiveConfigFileInvalidExtension {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionUploadArchiveConfigFileInvalidExtension", resourceCulture);
             }
@@ -2597,7 +2598,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Configuration file &apos;{0}&apos; not found..
         /// </summary>
-        public static string PublishVMDscExtensionUploadArchiveConfigFileNotExist {
+        internal static string PublishVMDscExtensionUploadArchiveConfigFileNotExist {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionUploadArchiveConfigFileNotExist", resourceCulture);
             }
@@ -2606,7 +2607,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Replace current deployment with &apos;{0}&apos; Id ?.
         /// </summary>
-        public static string RedeployCommit {
+        internal static string RedeployCommit {
             get {
                 return ResourceManager.GetString("RedeployCommit", resourceCulture);
             }
@@ -2615,7 +2616,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to regenerate key?.
         /// </summary>
-        public static string RegenerateKeyWarning {
+        internal static string RegenerateKeyWarning {
             get {
                 return ResourceManager.GetString("RegenerateKeyWarning", resourceCulture);
             }
@@ -2624,7 +2625,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Generate new key..
         /// </summary>
-        public static string RegenerateKeyWhatIfMessage {
+        internal static string RegenerateKeyWhatIfMessage {
             get {
                 return ResourceManager.GetString("RegenerateKeyWhatIfMessage", resourceCulture);
             }
@@ -2633,7 +2634,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove account &apos;{0}&apos;?.
         /// </summary>
-        public static string RemoveAccountConfirmation {
+        internal static string RemoveAccountConfirmation {
             get {
                 return ResourceManager.GetString("RemoveAccountConfirmation", resourceCulture);
             }
@@ -2642,7 +2643,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Removing account.
         /// </summary>
-        public static string RemoveAccountMessage {
+        internal static string RemoveAccountMessage {
             get {
                 return ResourceManager.GetString("RemoveAccountMessage", resourceCulture);
             }
@@ -2651,7 +2652,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Remove Add-On Confirmation.
         /// </summary>
-        public static string RemoveAddOnConformation {
+        internal static string RemoveAddOnConformation {
             get {
                 return ResourceManager.GetString("RemoveAddOnConformation", resourceCulture);
             }
@@ -2660,7 +2661,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to If you delete this add-on, your data may be deleted and the operation may not be undone.  You may have to purchase it again from the Microsoft Azure Store to use it. The price of the add-on  may not be refunded. Are you sure you want to delete this add-on? Enter “Yes” to confirm..
         /// </summary>
-        public static string RemoveAddOnMessage {
+        internal static string RemoveAddOnMessage {
             get {
                 return ResourceManager.GetString("RemoveAddOnMessage", resourceCulture);
             }
@@ -2669,7 +2670,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Remove-AzureBGPPeering Operation failed..
         /// </summary>
-        public static string RemoveAzureBGPPeeringFailed {
+        internal static string RemoveAzureBGPPeeringFailed {
             get {
                 return ResourceManager.GetString("RemoveAzureBGPPeeringFailed", resourceCulture);
             }
@@ -2678,7 +2679,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Removing Bgp Peering.
         /// </summary>
-        public static string RemoveAzureBGPPeeringMessage {
+        internal static string RemoveAzureBGPPeeringMessage {
             get {
                 return ResourceManager.GetString("RemoveAzureBGPPeeringMessage", resourceCulture);
             }
@@ -2687,7 +2688,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Successfully removed Azure Bgp Peering with Service Key {0}..
         /// </summary>
-        public static string RemoveAzureBGPPeeringSucceeded {
+        internal static string RemoveAzureBGPPeeringSucceeded {
             get {
                 return ResourceManager.GetString("RemoveAzureBGPPeeringSucceeded", resourceCulture);
             }
@@ -2696,7 +2697,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Bgp Peering with service key &apos;{0}&apos;?.
         /// </summary>
-        public static string RemoveAzureBGPPeeringWarning {
+        internal static string RemoveAzureBGPPeeringWarning {
             get {
                 return ResourceManager.GetString("RemoveAzureBGPPeeringWarning", resourceCulture);
             }
@@ -2705,7 +2706,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Dedicated Circuit with service key &apos;{0}&apos;?.
         /// </summary>
-        public static string RemoveAzureDedicatdCircuitWarning {
+        internal static string RemoveAzureDedicatdCircuitWarning {
             get {
                 return ResourceManager.GetString("RemoveAzureDedicatdCircuitWarning", resourceCulture);
             }
@@ -2714,7 +2715,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Remove-AzureDedicatedCircuit Operation failed..
         /// </summary>
-        public static string RemoveAzureDedicatedCircuitFailed {
+        internal static string RemoveAzureDedicatedCircuitFailed {
             get {
                 return ResourceManager.GetString("RemoveAzureDedicatedCircuitFailed", resourceCulture);
             }
@@ -2723,7 +2724,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Remove-AzureDedicatedCircuitLink Operation failed..
         /// </summary>
-        public static string RemoveAzureDedicatedCircuitLinkFailed {
+        internal static string RemoveAzureDedicatedCircuitLinkFailed {
             get {
                 return ResourceManager.GetString("RemoveAzureDedicatedCircuitLinkFailed", resourceCulture);
             }
@@ -2732,7 +2733,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Removing Dedicated Circui Link.
         /// </summary>
-        public static string RemoveAzureDedicatedCircuitLinkMessage {
+        internal static string RemoveAzureDedicatedCircuitLinkMessage {
             get {
                 return ResourceManager.GetString("RemoveAzureDedicatedCircuitLinkMessage", resourceCulture);
             }
@@ -2741,7 +2742,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Successfully removed Azure Dedicated Circuit Link with Service Key {0} and Vnet Name {1}.
         /// </summary>
-        public static string RemoveAzureDedicatedCircuitLinkSucceeded {
+        internal static string RemoveAzureDedicatedCircuitLinkSucceeded {
             get {
                 return ResourceManager.GetString("RemoveAzureDedicatedCircuitLinkSucceeded", resourceCulture);
             }
@@ -2750,7 +2751,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Dedicated Circuit Link with service key &apos;{0}&apos; and virtual network name &apos;{1}&apos;?.
         /// </summary>
-        public static string RemoveAzureDedicatedCircuitLinkWarning {
+        internal static string RemoveAzureDedicatedCircuitLinkWarning {
             get {
                 return ResourceManager.GetString("RemoveAzureDedicatedCircuitLinkWarning", resourceCulture);
             }
@@ -2759,7 +2760,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Removing Dedicated Circuit.
         /// </summary>
-        public static string RemoveAzureDedicatedCircuitMessage {
+        internal static string RemoveAzureDedicatedCircuitMessage {
             get {
                 return ResourceManager.GetString("RemoveAzureDedicatedCircuitMessage", resourceCulture);
             }
@@ -2768,7 +2769,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Successfully removed Azure Dedicated Circuit with Service Key {0}..
         /// </summary>
-        public static string RemoveAzureDedicatedCircuitSucceeded {
+        internal static string RemoveAzureDedicatedCircuitSucceeded {
             get {
                 return ResourceManager.GetString("RemoveAzureDedicatedCircuitSucceeded", resourceCulture);
             }
@@ -2777,7 +2778,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Removing cloud service {0}....
         /// </summary>
-        public static string RemoveAzureServiceWaitMessage {
+        internal static string RemoveAzureServiceWaitMessage {
             get {
                 return ResourceManager.GetString("RemoveAzureServiceWaitMessage", resourceCulture);
             }
@@ -2786,7 +2787,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The default subscription is being removed. Use Select-AzureSubscription -Default &lt;subscriptionName&gt; to select a new default subscription..
         /// </summary>
-        public static string RemoveDefaultSubscription {
+        internal static string RemoveDefaultSubscription {
             get {
                 return ResourceManager.GetString("RemoveDefaultSubscription", resourceCulture);
             }
@@ -2795,7 +2796,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Removing {0} deployment for {1} service.
         /// </summary>
-        public static string RemoveDeploymentWaitMessage {
+        internal static string RemoveDeploymentWaitMessage {
             get {
                 return ResourceManager.GetString("RemoveDeploymentWaitMessage", resourceCulture);
             }
@@ -2804,7 +2805,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Removing an environment will remove all associated subscriptions and accounts. Are you sure you want to remove an environment &apos;{0}&apos;?.
         /// </summary>
-        public static string RemoveEnvironmentConfirmation {
+        internal static string RemoveEnvironmentConfirmation {
             get {
                 return ResourceManager.GetString("RemoveEnvironmentConfirmation", resourceCulture);
             }
@@ -2813,7 +2814,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Removing environment.
         /// </summary>
-        public static string RemoveEnvironmentMessage {
+        internal static string RemoveEnvironmentMessage {
             get {
                 return ResourceManager.GetString("RemoveEnvironmentMessage", resourceCulture);
             }
@@ -2822,7 +2823,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Removing job collection.
         /// </summary>
-        public static string RemoveJobCollectionMessage {
+        internal static string RemoveJobCollectionMessage {
             get {
                 return ResourceManager.GetString("RemoveJobCollectionMessage", resourceCulture);
             }
@@ -2831,7 +2832,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the job collection &quot;{0}&quot;.
         /// </summary>
-        public static string RemoveJobCollectionWarning {
+        internal static string RemoveJobCollectionWarning {
             get {
                 return ResourceManager.GetString("RemoveJobCollectionWarning", resourceCulture);
             }
@@ -2840,7 +2841,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Removing job.
         /// </summary>
-        public static string RemoveJobMessage {
+        internal static string RemoveJobMessage {
             get {
                 return ResourceManager.GetString("RemoveJobMessage", resourceCulture);
             }
@@ -2849,7 +2850,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the job &quot;{0}&quot;.
         /// </summary>
-        public static string RemoveJobWarning {
+        internal static string RemoveJobWarning {
             get {
                 return ResourceManager.GetString("RemoveJobWarning", resourceCulture);
             }
@@ -2858,7 +2859,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the account?.
         /// </summary>
-        public static string RemoveMediaAccountWarning {
+        internal static string RemoveMediaAccountWarning {
             get {
                 return ResourceManager.GetString("RemoveMediaAccountWarning", resourceCulture);
             }
@@ -2867,7 +2868,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Account removed..
         /// </summary>
-        public static string RemoveMediaAccountWhatIfMessage {
+        internal static string RemoveMediaAccountWhatIfMessage {
             get {
                 return ResourceManager.GetString("RemoveMediaAccountWhatIfMessage", resourceCulture);
             }
@@ -2876,7 +2877,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Internal Server Error. This could happen because the namespace does not exist or it does not exist under your subscription..
         /// </summary>
-        public static string RemoveNamespaceErrorMessage {
+        internal static string RemoveNamespaceErrorMessage {
             get {
                 return ResourceManager.GetString("RemoveNamespaceErrorMessage", resourceCulture);
             }
@@ -2885,7 +2886,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Removing old package {0}....
         /// </summary>
-        public static string RemovePackage {
+        internal static string RemovePackage {
             get {
                 return ResourceManager.GetString("RemovePackage", resourceCulture);
             }
@@ -2894,7 +2895,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Removing the Azure profile will remove all associated environments, subscriptions, and accounts. Are you sure you want to remove the Azure profile?.
         /// </summary>
-        public static string RemoveProfileConfirmation {
+        internal static string RemoveProfileConfirmation {
             get {
                 return ResourceManager.GetString("RemoveProfileConfirmation", resourceCulture);
             }
@@ -2903,7 +2904,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Removing the Azure profile.
         /// </summary>
-        public static string RemoveProfileMessage {
+        internal static string RemoveProfileMessage {
             get {
                 return ResourceManager.GetString("RemoveProfileMessage", resourceCulture);
             }
@@ -2912,7 +2913,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to delete the namespace &apos;{0}&apos;?.
         /// </summary>
-        public static string RemoveServiceBusNamespaceConfirmation {
+        internal static string RemoveServiceBusNamespaceConfirmation {
             get {
                 return ResourceManager.GetString("RemoveServiceBusNamespaceConfirmation", resourceCulture);
             }
@@ -2921,7 +2922,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove cloud service?.
         /// </summary>
-        public static string RemoveServiceWarning {
+        internal static string RemoveServiceWarning {
             get {
                 return ResourceManager.GetString("RemoveServiceWarning", resourceCulture);
             }
@@ -2930,7 +2931,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Remove cloud service and all it&apos;s deployments.
         /// </summary>
-        public static string RemoveServiceWhatIfMessage {
+        internal static string RemoveServiceWhatIfMessage {
             get {
                 return ResourceManager.GetString("RemoveServiceWhatIfMessage", resourceCulture);
             }
@@ -2939,7 +2940,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove subscription &apos;{0}&apos;?.
         /// </summary>
-        public static string RemoveSubscriptionConfirmation {
+        internal static string RemoveSubscriptionConfirmation {
             get {
                 return ResourceManager.GetString("RemoveSubscriptionConfirmation", resourceCulture);
             }
@@ -2948,7 +2949,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Removing subscription.
         /// </summary>
-        public static string RemoveSubscriptionMessage {
+        internal static string RemoveSubscriptionMessage {
             get {
                 return ResourceManager.GetString("RemoveSubscriptionMessage", resourceCulture);
             }
@@ -2957,7 +2958,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The endpoint {0} cannot be removed from profile {1} because it&apos;s not in the profile..
         /// </summary>
-        public static string RemoveTrafficManagerEndpointMissing {
+        internal static string RemoveTrafficManagerEndpointMissing {
             get {
                 return ResourceManager.GetString("RemoveTrafficManagerEndpointMissing", resourceCulture);
             }
@@ -2966,7 +2967,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Remove-AzureTrafficManagerProfile Operation failed..
         /// </summary>
-        public static string RemoveTrafficManagerProfileFailed {
+        internal static string RemoveTrafficManagerProfileFailed {
             get {
                 return ResourceManager.GetString("RemoveTrafficManagerProfileFailed", resourceCulture);
             }
@@ -2975,7 +2976,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Successfully removed Traffic Manager profile with name {0}..
         /// </summary>
-        public static string RemoveTrafficManagerProfileSucceeded {
+        internal static string RemoveTrafficManagerProfileSucceeded {
             get {
                 return ResourceManager.GetString("RemoveTrafficManagerProfileSucceeded", resourceCulture);
             }
@@ -2984,7 +2985,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Traffic Manager profile &quot;{0}&quot;?.
         /// </summary>
-        public static string RemoveTrafficManagerProfileWarning {
+        internal static string RemoveTrafficManagerProfileWarning {
             get {
                 return ResourceManager.GetString("RemoveTrafficManagerProfileWarning", resourceCulture);
             }
@@ -2993,7 +2994,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to delete the VM &apos;{0}&apos;?.
         /// </summary>
-        public static string RemoveVMConfirmationMessage {
+        internal static string RemoveVMConfirmationMessage {
             get {
                 return ResourceManager.GetString("RemoveVMConfirmationMessage", resourceCulture);
             }
@@ -3002,7 +3003,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Deleting VM..
         /// </summary>
-        public static string RemoveVMMessage {
+        internal static string RemoveVMMessage {
             get {
                 return ResourceManager.GetString("RemoveVMMessage", resourceCulture);
             }
@@ -3011,7 +3012,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Removing WebJob....
         /// </summary>
-        public static string RemoveWebJobMessage {
+        internal static string RemoveWebJobMessage {
             get {
                 return ResourceManager.GetString("RemoveWebJobMessage", resourceCulture);
             }
@@ -3020,7 +3021,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove job &apos;{0}&apos;?.
         /// </summary>
-        public static string RemoveWebJobWarning {
+        internal static string RemoveWebJobWarning {
             get {
                 return ResourceManager.GetString("RemoveWebJobWarning", resourceCulture);
             }
@@ -3029,7 +3030,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Removing website.
         /// </summary>
-        public static string RemoveWebsiteMessage {
+        internal static string RemoveWebsiteMessage {
             get {
                 return ResourceManager.GetString("RemoveWebsiteMessage", resourceCulture);
             }
@@ -3038,7 +3039,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the website &quot;{0}&quot;.
         /// </summary>
-        public static string RemoveWebsiteWarning {
+        internal static string RemoveWebsiteWarning {
             get {
                 return ResourceManager.GetString("RemoveWebsiteWarning", resourceCulture);
             }
@@ -3047,7 +3048,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Removing public environment is not supported..
         /// </summary>
-        public static string RemovingDefaultEnvironmentsNotSupported {
+        internal static string RemovingDefaultEnvironmentsNotSupported {
             get {
                 return ResourceManager.GetString("RemovingDefaultEnvironmentsNotSupported", resourceCulture);
             }
@@ -3056,7 +3057,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Deleting namespace.
         /// </summary>
-        public static string RemovingNamespaceMessage {
+        internal static string RemovingNamespaceMessage {
             get {
                 return ResourceManager.GetString("RemovingNamespaceMessage", resourceCulture);
             }
@@ -3065,7 +3066,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Repository is not setup. You need to pass a valid site name..
         /// </summary>
-        public static string RepositoryNotSetup {
+        internal static string RepositoryNotSetup {
             get {
                 return ResourceManager.GetString("RepositoryNotSetup", resourceCulture);
             }
@@ -3074,7 +3075,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Reserved IP with the Name:&apos;{0}&apos; will no longer be in use after the deployment is deleted, and it is still reserved for later use..
         /// </summary>
-        public static string ReservedIPNameNoLongerInUseButStillBeingReserved {
+        internal static string ReservedIPNameNoLongerInUseButStillBeingReserved {
             get {
                 return ResourceManager.GetString("ReservedIPNameNoLongerInUseButStillBeingReserved", resourceCulture);
             }
@@ -3083,7 +3084,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Resource with ID : {0} does not exist..
         /// </summary>
-        public static string ResourceNotFound {
+        internal static string ResourceNotFound {
             get {
                 return ResourceManager.GetString("ResourceNotFound", resourceCulture);
             }
@@ -3092,7 +3093,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Restart.
         /// </summary>
-        public static string Restart {
+        internal static string Restart {
             get {
                 return ResourceManager.GetString("Restart", resourceCulture);
             }
@@ -3101,7 +3102,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Resume.
         /// </summary>
-        public static string Resume {
+        internal static string Resume {
             get {
                 return ResourceManager.GetString("Resume", resourceCulture);
             }
@@ -3110,7 +3111,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to /role:{0};&quot;{1}/{0}&quot; .
         /// </summary>
-        public static string RoleArgTemplate {
+        internal static string RoleArgTemplate {
             get {
                 return ResourceManager.GetString("RoleArgTemplate", resourceCulture);
             }
@@ -3119,7 +3120,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to bin.
         /// </summary>
-        public static string RoleBinFolderName {
+        internal static string RoleBinFolderName {
             get {
                 return ResourceManager.GetString("RoleBinFolderName", resourceCulture);
             }
@@ -3128,7 +3129,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Role {0} is {1}.
         /// </summary>
-        public static string RoleInstanceWaitMsg {
+        internal static string RoleInstanceWaitMsg {
             get {
                 return ResourceManager.GetString("RoleInstanceWaitMsg", resourceCulture);
             }
@@ -3137,7 +3138,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to 20.
         /// </summary>
-        public static string RoleMaxInstances {
+        internal static string RoleMaxInstances {
             get {
                 return ResourceManager.GetString("RoleMaxInstances", resourceCulture);
             }
@@ -3146,7 +3147,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to role name.
         /// </summary>
-        public static string RoleName {
+        internal static string RoleName {
             get {
                 return ResourceManager.GetString("RoleName", resourceCulture);
             }
@@ -3155,7 +3156,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The provided role name {0} doesn&apos;t exist.
         /// </summary>
-        public static string RoleNotFoundMessage {
+        internal static string RoleNotFoundMessage {
             get {
                 return ResourceManager.GetString("RoleNotFoundMessage", resourceCulture);
             }
@@ -3164,7 +3165,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to RoleSettings.xml.
         /// </summary>
-        public static string RoleSettingsTemplateFileName {
+        internal static string RoleSettingsTemplateFileName {
             get {
                 return ResourceManager.GetString("RoleSettingsTemplateFileName", resourceCulture);
             }
@@ -3173,7 +3174,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Role type {0} doesn&apos;t exist.
         /// </summary>
-        public static string RoleTypeDoesNotExist {
+        internal static string RoleTypeDoesNotExist {
             get {
                 return ResourceManager.GetString("RoleTypeDoesNotExist", resourceCulture);
             }
@@ -3182,7 +3183,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to public static Dictionary&lt;string, Location&gt; ReverseLocations { get; private set; }.
         /// </summary>
-        public static string RuntimeDeploymentLocationError {
+        internal static string RuntimeDeploymentLocationError {
             get {
                 return ResourceManager.GetString("RuntimeDeploymentLocationError", resourceCulture);
             }
@@ -3191,7 +3192,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Preparing runtime deployment for service &apos;{0}&apos;.
         /// </summary>
-        public static string RuntimeDeploymentStart {
+        internal static string RuntimeDeploymentStart {
             get {
                 return ResourceManager.GetString("RuntimeDeploymentStart", resourceCulture);
             }
@@ -3200,7 +3201,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to WARNING Runtime Mismatch: Are you sure that you want to publish service &apos;{0}&apos; using an Azure runtime version that does not match your local runtime version?.
         /// </summary>
-        public static string RuntimeMismatchWarning {
+        internal static string RuntimeMismatchWarning {
             get {
                 return ResourceManager.GetString("RuntimeMismatchWarning", resourceCulture);
             }
@@ -3209,7 +3210,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to RUNTIMEOVERRIDEURL.
         /// </summary>
-        public static string RuntimeOverrideKey {
+        internal static string RuntimeOverrideKey {
             get {
                 return ResourceManager.GetString("RuntimeOverrideKey", resourceCulture);
             }
@@ -3218,7 +3219,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to /runtimemanifest/runtimes/runtime.
         /// </summary>
-        public static string RuntimeQuery {
+        internal static string RuntimeQuery {
             get {
                 return ResourceManager.GetString("RuntimeQuery", resourceCulture);
             }
@@ -3227,7 +3228,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to RUNTIMEID.
         /// </summary>
-        public static string RuntimeTypeKey {
+        internal static string RuntimeTypeKey {
             get {
                 return ResourceManager.GetString("RuntimeTypeKey", resourceCulture);
             }
@@ -3236,7 +3237,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to RUNTIMEURL.
         /// </summary>
-        public static string RuntimeUrlKey {
+        internal static string RuntimeUrlKey {
             get {
                 return ResourceManager.GetString("RuntimeUrlKey", resourceCulture);
             }
@@ -3245,7 +3246,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to RUNTIMEVERSIONPRIMARYKEY.
         /// </summary>
-        public static string RuntimeVersionPrimaryKey {
+        internal static string RuntimeVersionPrimaryKey {
             get {
                 return ResourceManager.GetString("RuntimeVersionPrimaryKey", resourceCulture);
             }
@@ -3254,7 +3255,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to scaffold.xml.
         /// </summary>
-        public static string ScaffoldXml {
+        internal static string ScaffoldXml {
             get {
                 return ResourceManager.GetString("ScaffoldXml", resourceCulture);
             }
@@ -3263,7 +3264,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Invalid location entered. Pick one of the locations from Get-AzureSchedulerLocation.
         /// </summary>
-        public static string SchedulerInvalidLocation {
+        internal static string SchedulerInvalidLocation {
             get {
                 return ResourceManager.GetString("SchedulerInvalidLocation", resourceCulture);
             }
@@ -3272,7 +3273,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to A value for the Secondary Peer Subnet has to be provided..
         /// </summary>
-        public static string SecondaryPeerSubnetRequired {
+        internal static string SecondaryPeerSubnetRequired {
             get {
                 return ResourceManager.GetString("SecondaryPeerSubnetRequired", resourceCulture);
             }
@@ -3281,7 +3282,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Service {0} already exists on disk in location {1}.
         /// </summary>
-        public static string ServiceAlreadyExistsOnDisk {
+        internal static string ServiceAlreadyExistsOnDisk {
             get {
                 return ResourceManager.GetString("ServiceAlreadyExistsOnDisk", resourceCulture);
             }
@@ -3290,7 +3291,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No ServiceBus authorization rule with the given characteristics was found.
         /// </summary>
-        public static string ServiceBusAuthorizationRuleNotFound {
+        internal static string ServiceBusAuthorizationRuleNotFound {
             get {
                 return ResourceManager.GetString("ServiceBusAuthorizationRuleNotFound", resourceCulture);
             }
@@ -3299,7 +3300,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The service bus entity &apos;{0}&apos; is not found..
         /// </summary>
-        public static string ServiceBusEntityTypeNotFound {
+        internal static string ServiceBusEntityTypeNotFound {
             get {
                 return ResourceManager.GetString("ServiceBusEntityTypeNotFound", resourceCulture);
             }
@@ -3308,7 +3309,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Internal Server Error. This could happen due to an incorrect/missing namespace.
         /// </summary>
-        public static string ServiceBusNamespaceMissingMessage {
+        internal static string ServiceBusNamespaceMissingMessage {
             get {
                 return ResourceManager.GetString("ServiceBusNamespaceMissingMessage", resourceCulture);
             }
@@ -3317,7 +3318,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to service configuration.
         /// </summary>
-        public static string ServiceConfiguration {
+        internal static string ServiceConfiguration {
             get {
                 return ResourceManager.GetString("ServiceConfiguration", resourceCulture);
             }
@@ -3326,7 +3327,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to service definition.
         /// </summary>
-        public static string ServiceDefinition {
+        internal static string ServiceDefinition {
             get {
                 return ResourceManager.GetString("ServiceDefinition", resourceCulture);
             }
@@ -3335,7 +3336,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to ServiceDefinition.csdef.
         /// </summary>
-        public static string ServiceDefinitionFileName {
+        internal static string ServiceDefinitionFileName {
             get {
                 return ResourceManager.GetString("ServiceDefinitionFileName", resourceCulture);
             }
@@ -3344,7 +3345,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {0}Deploy.
         /// </summary>
-        public static string ServiceDeploymentName {
+        internal static string ServiceDeploymentName {
             get {
                 return ResourceManager.GetString("ServiceDeploymentName", resourceCulture);
             }
@@ -3353,7 +3354,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The specified cloud service &quot;{0}&quot; does not exist..
         /// </summary>
-        public static string ServiceDoesNotExist {
+        internal static string ServiceDoesNotExist {
             get {
                 return ResourceManager.GetString("ServiceDoesNotExist", resourceCulture);
             }
@@ -3362,7 +3363,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {0} slot for service {1} is in {2} state, please wait until it finish and update it&apos;s status.
         /// </summary>
-        public static string ServiceIsInTransitionState {
+        internal static string ServiceIsInTransitionState {
             get {
                 return ResourceManager.GetString("ServiceIsInTransitionState", resourceCulture);
             }
@@ -3371,7 +3372,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to &quot;An exception occurred when calling the ServiceManagement API. HTTP Status Code: {0}. Service Management Error Code: {1}. Message: {2}. Operation Tracking ID: {3}.&quot;.
         /// </summary>
-        public static string ServiceManagementClientExceptionStringFormat {
+        internal static string ServiceManagementClientExceptionStringFormat {
             get {
                 return ResourceManager.GetString("ServiceManagementClientExceptionStringFormat", resourceCulture);
             }
@@ -3380,7 +3381,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Begin Operation: {0}.
         /// </summary>
-        public static string ServiceManagementExecuteClientActionBeginOperation {
+        internal static string ServiceManagementExecuteClientActionBeginOperation {
             get {
                 return ResourceManager.GetString("ServiceManagementExecuteClientActionBeginOperation", resourceCulture);
             }
@@ -3389,7 +3390,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Completed Operation: {0}.
         /// </summary>
-        public static string ServiceManagementExecuteClientActionCompletedOperation {
+        internal static string ServiceManagementExecuteClientActionCompletedOperation {
             get {
                 return ResourceManager.GetString("ServiceManagementExecuteClientActionCompletedOperation", resourceCulture);
             }
@@ -3398,7 +3399,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Begin Operation: {0}.
         /// </summary>
-        public static string ServiceManagementExecuteClientActionInOCSBeginOperation {
+        internal static string ServiceManagementExecuteClientActionInOCSBeginOperation {
             get {
                 return ResourceManager.GetString("ServiceManagementExecuteClientActionInOCSBeginOperation", resourceCulture);
             }
@@ -3407,7 +3408,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Completed Operation: {0}.
         /// </summary>
-        public static string ServiceManagementExecuteClientActionInOCSCompletedOperation {
+        internal static string ServiceManagementExecuteClientActionInOCSCompletedOperation {
             get {
                 return ResourceManager.GetString("ServiceManagementExecuteClientActionInOCSCompletedOperation", resourceCulture);
             }
@@ -3416,7 +3417,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to service name.
         /// </summary>
-        public static string ServiceName {
+        internal static string ServiceName {
             get {
                 return ResourceManager.GetString("ServiceName", resourceCulture);
             }
@@ -3425,7 +3426,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Please provide name for the hosted service.
         /// </summary>
-        public static string ServiceNameMissingMessage {
+        internal static string ServiceNameMissingMessage {
             get {
                 return ResourceManager.GetString("ServiceNameMissingMessage", resourceCulture);
             }
@@ -3434,7 +3435,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to service parent directory.
         /// </summary>
-        public static string ServiceParentDirectory {
+        internal static string ServiceParentDirectory {
             get {
                 return ResourceManager.GetString("ServiceParentDirectory", resourceCulture);
             }
@@ -3443,7 +3444,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Service {0} removed successfully.
         /// </summary>
-        public static string ServiceRemovedMessage {
+        internal static string ServiceRemovedMessage {
             get {
                 return ResourceManager.GetString("ServiceRemovedMessage", resourceCulture);
             }
@@ -3452,7 +3453,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to service directory.
         /// </summary>
-        public static string ServiceRoot {
+        internal static string ServiceRoot {
             get {
                 return ResourceManager.GetString("ServiceRoot", resourceCulture);
             }
@@ -3461,7 +3462,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to service settings.
         /// </summary>
-        public static string ServiceSettings {
+        internal static string ServiceSettings {
             get {
                 return ResourceManager.GetString("ServiceSettings", resourceCulture);
             }
@@ -3470,7 +3471,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The storage account name &apos;{0}&apos; is invalid.  Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only..
         /// </summary>
-        public static string ServiceSettings_ValidateStorageAccountName_InvalidName {
+        internal static string ServiceSettings_ValidateStorageAccountName_InvalidName {
             get {
                 return ResourceManager.GetString("ServiceSettings_ValidateStorageAccountName_InvalidName", resourceCulture);
             }
@@ -3479,7 +3480,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The {0} slot for cloud service {1} doesn&apos;t exist..
         /// </summary>
-        public static string ServiceSlotDoesNotExist {
+        internal static string ServiceSlotDoesNotExist {
             get {
                 return ResourceManager.GetString("ServiceSlotDoesNotExist", resourceCulture);
             }
@@ -3488,7 +3489,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {0} slot for service {1} is {2}.
         /// </summary>
-        public static string ServiceStatusChanged {
+        internal static string ServiceStatusChanged {
             get {
                 return ResourceManager.GetString("ServiceStatusChanged", resourceCulture);
             }
@@ -3497,7 +3498,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Set Add-On Confirmation.
         /// </summary>
-        public static string SetAddOnConformation {
+        internal static string SetAddOnConformation {
             get {
                 return ResourceManager.GetString("SetAddOnConformation", resourceCulture);
             }
@@ -3506,7 +3507,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Profile {0} does not contain endpoint {1}. Adding it..
         /// </summary>
-        public static string SetInexistentTrafficManagerEndpointMessage {
+        internal static string SetInexistentTrafficManagerEndpointMessage {
             get {
                 return ResourceManager.GetString("SetInexistentTrafficManagerEndpointMessage", resourceCulture);
             }
@@ -3520,7 +3521,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         ///agree to the {2}&apos;s terms of user and privacy statement at {0} and (c) agree to sharing my 
         ///contact information with {2}..
         /// </summary>
-        public static string SetMicrosoftAddOnMessage {
+        internal static string SetMicrosoftAddOnMessage {
             get {
                 return ResourceManager.GetString("SetMicrosoftAddOnMessage", resourceCulture);
             }
@@ -3534,7 +3535,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         ///acknowledge the offering is provided by {2}, not Microsoft, and agree to {2}&apos;s terms of 
         ///use and privacy statement at &lt;url&gt; and (c) agree to sharing my contact information with {2}..
         /// </summary>
-        public static string SetNonMicrosoftAddOnMessage {
+        internal static string SetNonMicrosoftAddOnMessage {
             get {
                 return ResourceManager.GetString("SetNonMicrosoftAddOnMessage", resourceCulture);
             }
@@ -3543,7 +3544,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Role {0} instances are set to {1}.
         /// </summary>
-        public static string SetRoleInstancesMessage {
+        internal static string SetRoleInstancesMessage {
             get {
                 return ResourceManager.GetString("SetRoleInstancesMessage", resourceCulture);
             }
@@ -3552,7 +3553,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {&quot;Slot&quot;:&quot;&quot;,&quot;Location&quot;:&quot;&quot;,&quot;Subscription&quot;:&quot;&quot;,&quot;StorageAccountName&quot;:&quot;&quot;}.
         /// </summary>
-        public static string SettingsFileEmptyContent {
+        internal static string SettingsFileEmptyContent {
             get {
                 return ResourceManager.GetString("SettingsFileEmptyContent", resourceCulture);
             }
@@ -3561,7 +3562,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to deploymentSettings.json.
         /// </summary>
-        public static string SettingsFileName {
+        internal static string SettingsFileName {
             get {
                 return ResourceManager.GetString("SettingsFileName", resourceCulture);
             }
@@ -3570,7 +3571,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Insufficient parameters passed to create a new endpoint..
         /// </summary>
-        public static string SetTrafficManagerEndpointNeedsParameters {
+        internal static string SetTrafficManagerEndpointNeedsParameters {
             get {
                 return ResourceManager.GetString("SetTrafficManagerEndpointNeedsParameters", resourceCulture);
             }
@@ -3579,7 +3580,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Ambiguous operation: the profile name specified doesn&apos;t match the name of the profile object..
         /// </summary>
-        public static string SetTrafficManagerProfileAmbiguous {
+        internal static string SetTrafficManagerProfileAmbiguous {
             get {
                 return ResourceManager.GetString("SetTrafficManagerProfileAmbiguous", resourceCulture);
             }
@@ -3588,7 +3589,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Confirm.
         /// </summary>
-        public static string ShouldProcessCaption {
+        internal static string ShouldProcessCaption {
             get {
                 return ResourceManager.GetString("ShouldProcessCaption", resourceCulture);
             }
@@ -3597,7 +3598,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Shutdown.
         /// </summary>
-        public static string Shutdown {
+        internal static string Shutdown {
             get {
                 return ResourceManager.GetString("Shutdown", resourceCulture);
             }
@@ -3606,7 +3607,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to /sites:{0};{1};&quot;{2}/{0}&quot; .
         /// </summary>
-        public static string SitesArgTemplate {
+        internal static string SitesArgTemplate {
             get {
                 return ResourceManager.GetString("SitesArgTemplate", resourceCulture);
             }
@@ -3615,7 +3616,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to 1000.
         /// </summary>
-        public static string StandardRetryDelayInMs {
+        internal static string StandardRetryDelayInMs {
             get {
                 return ResourceManager.GetString("StandardRetryDelayInMs", resourceCulture);
             }
@@ -3624,7 +3625,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Start.
         /// </summary>
-        public static string Start {
+        internal static string Start {
             get {
                 return ResourceManager.GetString("Start", resourceCulture);
             }
@@ -3633,7 +3634,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Started.
         /// </summary>
-        public static string StartedEmulator {
+        internal static string StartedEmulator {
             get {
                 return ResourceManager.GetString("StartedEmulator", resourceCulture);
             }
@@ -3642,7 +3643,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Starting Emulator....
         /// </summary>
-        public static string StartingEmulator {
+        internal static string StartingEmulator {
             get {
                 return ResourceManager.GetString("StartingEmulator", resourceCulture);
             }
@@ -3651,7 +3652,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to start.
         /// </summary>
-        public static string StartStorageEmulatorCommandArgument {
+        internal static string StartStorageEmulatorCommandArgument {
             get {
                 return ResourceManager.GetString("StartStorageEmulatorCommandArgument", resourceCulture);
             }
@@ -3660,7 +3661,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Stop.
         /// </summary>
-        public static string Stop {
+        internal static string Stop {
             get {
                 return ResourceManager.GetString("Stop", resourceCulture);
             }
@@ -3669,7 +3670,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Stopping emulator....
         /// </summary>
-        public static string StopEmulatorMessage {
+        internal static string StopEmulatorMessage {
             get {
                 return ResourceManager.GetString("StopEmulatorMessage", resourceCulture);
             }
@@ -3678,7 +3679,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Stopped.
         /// </summary>
-        public static string StoppedEmulatorMessage {
+        internal static string StoppedEmulatorMessage {
             get {
                 return ResourceManager.GetString("StoppedEmulatorMessage", resourceCulture);
             }
@@ -3687,7 +3688,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to stop.
         /// </summary>
-        public static string StopStorageEmulatorCommandArgument {
+        internal static string StopStorageEmulatorCommandArgument {
             get {
                 return ResourceManager.GetString("StopStorageEmulatorCommandArgument", resourceCulture);
             }
@@ -3696,7 +3697,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Account Name:.
         /// </summary>
-        public static string StorageAccountName {
+        internal static string StorageAccountName {
             get {
                 return ResourceManager.GetString("StorageAccountName", resourceCulture);
             }
@@ -3705,7 +3706,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Cannot find storage account &apos;{0}&apos; please type the name of an existing storage account..
         /// </summary>
-        public static string StorageAccountNotFound {
+        internal static string StorageAccountNotFound {
             get {
                 return ResourceManager.GetString("StorageAccountNotFound", resourceCulture);
             }
@@ -3714,7 +3715,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to AzureStorageEmulator.exe.
         /// </summary>
-        public static string StorageEmulatorExe {
+        internal static string StorageEmulatorExe {
             get {
                 return ResourceManager.GetString("StorageEmulatorExe", resourceCulture);
             }
@@ -3723,7 +3724,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to InstallPath.
         /// </summary>
-        public static string StorageEmulatorInstallPathRegistryKeyValue {
+        internal static string StorageEmulatorInstallPathRegistryKeyValue {
             get {
                 return ResourceManager.GetString("StorageEmulatorInstallPathRegistryKeyValue", resourceCulture);
             }
@@ -3732,7 +3733,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to SOFTWARE\Microsoft\Windows Azure Storage Emulator.
         /// </summary>
-        public static string StorageEmulatorRegistryKey {
+        internal static string StorageEmulatorRegistryKey {
             get {
                 return ResourceManager.GetString("StorageEmulatorRegistryKey", resourceCulture);
             }
@@ -3741,7 +3742,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Primary Key:.
         /// </summary>
-        public static string StoragePrimaryKey {
+        internal static string StoragePrimaryKey {
             get {
                 return ResourceManager.GetString("StoragePrimaryKey", resourceCulture);
             }
@@ -3750,7 +3751,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Secondary Key:.
         /// </summary>
-        public static string StorageSecondaryKey {
+        internal static string StorageSecondaryKey {
             get {
                 return ResourceManager.GetString("StorageSecondaryKey", resourceCulture);
             }
@@ -3759,7 +3760,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The subscription named {0} already exists..
         /// </summary>
-        public static string SubscriptionAlreadyExists {
+        internal static string SubscriptionAlreadyExists {
             get {
                 return ResourceManager.GetString("SubscriptionAlreadyExists", resourceCulture);
             }
@@ -3768,7 +3769,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The SubscriptionDataFile parameter is deprecated.  This parameter will be removed in a future release. See https://github.com/Azure/azure-powershell/wiki/Proposed-Design-Stateless-Azure-Profile for a description of the upcoming mechanism for providing alternate sources of subscription information..
         /// </summary>
-        public static string SubscriptionDataFileDeprecated {
+        internal static string SubscriptionDataFileDeprecated {
             get {
                 return ResourceManager.GetString("SubscriptionDataFileDeprecated", resourceCulture);
             }
@@ -3777,7 +3778,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to DefaultSubscriptionData.xml.
         /// </summary>
-        public static string SubscriptionDataFileName {
+        internal static string SubscriptionDataFileName {
             get {
                 return ResourceManager.GetString("SubscriptionDataFileName", resourceCulture);
             }
@@ -3786,7 +3787,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The subscription data file {0} does not exist..
         /// </summary>
-        public static string SubscriptionDataFileNotFound {
+        internal static string SubscriptionDataFileNotFound {
             get {
                 return ResourceManager.GetString("SubscriptionDataFileNotFound", resourceCulture);
             }
@@ -3795,7 +3796,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The subscription id {0} doesn&apos;t exist..
         /// </summary>
-        public static string SubscriptionIdNotFoundMessage {
+        internal static string SubscriptionIdNotFoundMessage {
             get {
                 return ResourceManager.GetString("SubscriptionIdNotFoundMessage", resourceCulture);
             }
@@ -3804,7 +3805,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Subscription must not be null.
         /// </summary>
-        public static string SubscriptionMustNotBeNull {
+        internal static string SubscriptionMustNotBeNull {
             get {
                 return ResourceManager.GetString("SubscriptionMustNotBeNull", resourceCulture);
             }
@@ -3813,7 +3814,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Subscription name needs to be specified..
         /// </summary>
-        public static string SubscriptionNameNeedsToBeSpecified {
+        internal static string SubscriptionNameNeedsToBeSpecified {
             get {
                 return ResourceManager.GetString("SubscriptionNameNeedsToBeSpecified", resourceCulture);
             }
@@ -3822,7 +3823,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The subscription name {0} doesn&apos;t exist..
         /// </summary>
-        public static string SubscriptionNameNotFoundMessage {
+        internal static string SubscriptionNameNotFoundMessage {
             get {
                 return ResourceManager.GetString("SubscriptionNameNotFoundMessage", resourceCulture);
             }
@@ -3831,7 +3832,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Subscription needs to be specified..
         /// </summary>
-        public static string SubscriptionNeedsToBeSpecified {
+        internal static string SubscriptionNeedsToBeSpecified {
             get {
                 return ResourceManager.GetString("SubscriptionNeedsToBeSpecified", resourceCulture);
             }
@@ -3840,7 +3841,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Suspend.
         /// </summary>
-        public static string Suspend {
+        internal static string Suspend {
             get {
                 return ResourceManager.GetString("Suspend", resourceCulture);
             }
@@ -3849,7 +3850,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Swapping website production slot ....
         /// </summary>
-        public static string SwappingWebsite {
+        internal static string SwappingWebsite {
             get {
                 return ResourceManager.GetString("SwappingWebsite", resourceCulture);
             }
@@ -3858,7 +3859,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to swap the website &apos;{0}&apos; production slot with slot &apos;{1}&apos;?.
         /// </summary>
-        public static string SwapWebsiteSlotWarning {
+        internal static string SwapWebsiteSlotWarning {
             get {
                 return ResourceManager.GetString("SwapWebsiteSlotWarning", resourceCulture);
             }
@@ -3867,7 +3868,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The Switch-AzureMode cmdlet is deprecated and will be removed in a future release..
         /// </summary>
-        public static string SwitchAzureModeDeprecated {
+        internal static string SwitchAzureModeDeprecated {
             get {
                 return ResourceManager.GetString("SwitchAzureModeDeprecated", resourceCulture);
             }
@@ -3876,7 +3877,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Unable to decode string from base 64. Please make sure the string is correctly encoded: {0}..
         /// </summary>
-        public static string UnableToDecodeBase64String {
+        internal static string UnableToDecodeBase64String {
             get {
                 return ResourceManager.GetString("UnableToDecodeBase64String", resourceCulture);
             }
@@ -3885,7 +3886,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The provider {0} is unknown..
         /// </summary>
-        public static string UnknownProviderMessage {
+        internal static string UnknownProviderMessage {
             get {
                 return ResourceManager.GetString("UnknownProviderMessage", resourceCulture);
             }
@@ -3894,7 +3895,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Update.
         /// </summary>
-        public static string Update {
+        internal static string Update {
             get {
                 return ResourceManager.GetString("Update", resourceCulture);
             }
@@ -3903,7 +3904,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Updated settings for subscription &apos;{0}&apos;. Current subscription is &apos;{1}&apos;..
         /// </summary>
-        public static string UpdatedSettings {
+        internal static string UpdatedSettings {
             get {
                 return ResourceManager.GetString("UpdatedSettings", resourceCulture);
             }
@@ -3912,7 +3913,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to User name is not valid..
         /// </summary>
-        public static string UserNameIsNotValid {
+        internal static string UserNameIsNotValid {
             get {
                 return ResourceManager.GetString("UserNameIsNotValid", resourceCulture);
             }
@@ -3921,7 +3922,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to User name needs to be specified..
         /// </summary>
-        public static string UserNameNeedsToBeSpecified {
+        internal static string UserNameNeedsToBeSpecified {
             get {
                 return ResourceManager.GetString("UserNameNeedsToBeSpecified", resourceCulture);
             }
@@ -3930,7 +3931,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to A value for the VLan Id has to be provided..
         /// </summary>
-        public static string VlanIdRequired {
+        internal static string VlanIdRequired {
             get {
                 return ResourceManager.GetString("VlanIdRequired", resourceCulture);
             }
@@ -3939,7 +3940,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Please wait....
         /// </summary>
-        public static string WaitMessage {
+        internal static string WaitMessage {
             get {
                 return ResourceManager.GetString("WaitMessage", resourceCulture);
             }
@@ -3948,7 +3949,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The azure storage emulator is not installed, skip launching....
         /// </summary>
-        public static string WarningWhenStorageEmulatorIsMissing {
+        internal static string WarningWhenStorageEmulatorIsMissing {
             get {
                 return ResourceManager.GetString("WarningWhenStorageEmulatorIsMissing", resourceCulture);
             }
@@ -3957,7 +3958,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Web.cloud.config.
         /// </summary>
-        public static string WebCloudConfig {
+        internal static string WebCloudConfig {
             get {
                 return ResourceManager.GetString("WebCloudConfig", resourceCulture);
             }
@@ -3966,7 +3967,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to web.config.
         /// </summary>
-        public static string WebConfigTemplateFileName {
+        internal static string WebConfigTemplateFileName {
             get {
                 return ResourceManager.GetString("WebConfigTemplateFileName", resourceCulture);
             }
@@ -3975,7 +3976,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to MSDeploy.
         /// </summary>
-        public static string WebDeployKeywordInWebSitePublishProfile {
+        internal static string WebDeployKeywordInWebSitePublishProfile {
             get {
                 return ResourceManager.GetString("WebDeployKeywordInWebSitePublishProfile", resourceCulture);
             }
@@ -3984,7 +3985,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Cannot build the project successfully. Please see logs in {0}..
         /// </summary>
-        public static string WebProjectBuildFailTemplate {
+        internal static string WebProjectBuildFailTemplate {
             get {
                 return ResourceManager.GetString("WebProjectBuildFailTemplate", resourceCulture);
             }
@@ -3993,7 +3994,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to WebRole.
         /// </summary>
-        public static string WebRole {
+        internal static string WebRole {
             get {
                 return ResourceManager.GetString("WebRole", resourceCulture);
             }
@@ -4002,7 +4003,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to setup_web.cmd &gt; log.txt.
         /// </summary>
-        public static string WebRoleStartupTaskCommandLine {
+        internal static string WebRoleStartupTaskCommandLine {
             get {
                 return ResourceManager.GetString("WebRoleStartupTaskCommandLine", resourceCulture);
             }
@@ -4011,7 +4012,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to WebRole.xml.
         /// </summary>
-        public static string WebRoleTemplateFileName {
+        internal static string WebRoleTemplateFileName {
             get {
                 return ResourceManager.GetString("WebRoleTemplateFileName", resourceCulture);
             }
@@ -4020,7 +4021,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to WebSite with given name {0} already exists in the specified Subscription and Webspace..
         /// </summary>
-        public static string WebsiteAlreadyExists {
+        internal static string WebsiteAlreadyExists {
             get {
                 return ResourceManager.GetString("WebsiteAlreadyExists", resourceCulture);
             }
@@ -4029,7 +4030,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to WebSite with given name {0} already exists in the specified Subscription and Location..
         /// </summary>
-        public static string WebsiteAlreadyExistsReplacement {
+        internal static string WebsiteAlreadyExistsReplacement {
             get {
                 return ResourceManager.GetString("WebsiteAlreadyExistsReplacement", resourceCulture);
             }
@@ -4038,7 +4039,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Site {0} already has repository created for it..
         /// </summary>
-        public static string WebsiteRepositoryAlreadyExists {
+        internal static string WebsiteRepositoryAlreadyExists {
             get {
                 return ResourceManager.GetString("WebsiteRepositoryAlreadyExists", resourceCulture);
             }
@@ -4047,7 +4048,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Workspaces/WebsiteExtension/Website/{0}/dashboard/.
         /// </summary>
-        public static string WebsiteSufixUrl {
+        internal static string WebsiteSufixUrl {
             get {
                 return ResourceManager.GetString("WebsiteSufixUrl", resourceCulture);
             }
@@ -4056,7 +4057,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to https://{0}/msdeploy.axd?site={1}.
         /// </summary>
-        public static string WebSiteWebDeployUriTemplate {
+        internal static string WebSiteWebDeployUriTemplate {
             get {
                 return ResourceManager.GetString("WebSiteWebDeployUriTemplate", resourceCulture);
             }
@@ -4065,7 +4066,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to WorkerRole.
         /// </summary>
-        public static string WorkerRole {
+        internal static string WorkerRole {
             get {
                 return ResourceManager.GetString("WorkerRole", resourceCulture);
             }
@@ -4074,7 +4075,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to setup_worker.cmd &gt; log.txt.
         /// </summary>
-        public static string WorkerRoleStartupTaskCommandLine {
+        internal static string WorkerRoleStartupTaskCommandLine {
             get {
                 return ResourceManager.GetString("WorkerRoleStartupTaskCommandLine", resourceCulture);
             }
@@ -4083,7 +4084,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to WorkerRole.xml.
         /// </summary>
-        public static string WorkerRoleTemplateFileName {
+        internal static string WorkerRoleTemplateFileName {
             get {
                 return ResourceManager.GetString("WorkerRoleTemplateFileName", resourceCulture);
             }
@@ -4092,7 +4093,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Yes.
         /// </summary>
-        public static string Yes {
+        internal static string Yes {
             get {
                 return ResourceManager.GetString("Yes", resourceCulture);
             }
@@ -4101,7 +4102,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Yes, I agree.
         /// </summary>
-        public static string YesHint {
+        internal static string YesHint {
             get {
                 return ResourceManager.GetString("YesHint", resourceCulture);
             }

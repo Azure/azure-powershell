@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using ProjectResources = Commands.Resources.Rest.Netcore.Properties.Messages;
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
@@ -20,7 +21,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System;
     using System.Linq;
     using System.Management.Automation;
-    using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
     /// <summary>
     /// Get an existing resource.
@@ -121,14 +121,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             var allRPLocations = allProviders
                 .SelectMany(provider => provider.ResourceTypes.CoalesceEnumerable().SelectMany(type => type.Locations))
-                .Distinct(StringComparer.InvariantCultureIgnoreCase);
+                .Distinct(Microsoft.Azure.Common.StringExtensions.CaselessComparer);
 
             var validLocations = this
                 .SubscriptionSdkClient
                 .ListLocations(DefaultContext.Subscription.Id.ToString())
                 .Select(location => location.DisplayName)
                 .Concat(allRPLocations)
-                .Distinct(StringComparer.InvariantCultureIgnoreCase);
+                .Distinct(Microsoft.Azure.Common.StringExtensions.CaselessComparer);
 
             if (!validLocations.Any(loc => loc.EqualsAsLocation(this.Location)))
             {

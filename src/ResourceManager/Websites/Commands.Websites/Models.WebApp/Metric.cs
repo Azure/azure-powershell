@@ -17,7 +17,9 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.WebApps.Models.WebApp
 {
+#if !NETSTANDARD1_6
     [Serializable]
+#endif
     public class Metric
     {
         public DateTime EndTime { get; set; }
@@ -33,7 +35,9 @@ namespace Microsoft.Azure.Commands.WebApps.Models.WebApp
         public int[] Values { get; set; }
     }
 
+#if !NETSTANDARD1_6
     [Serializable]
+#endif
     public class MetricName
     {
         public string Value { get; set; }

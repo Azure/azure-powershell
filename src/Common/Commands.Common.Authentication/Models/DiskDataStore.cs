@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Authentication.NetCore.Properties;
 using System;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 }
                 else
                 {
-                    throw new ArgumentException(string.Format(Resources.CertificateNotFoundInStore, thumbprint));
+                    throw new ArgumentException(string.Format(Messages.CertificateNotFoundInStore, thumbprint));
                 }
             }
         }
@@ -125,21 +125,24 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         private static bool TryFindCertificatesInStore(string thumbprint,
             StoreLocation location, out X509Certificate2Collection certificates)
         {
-            X509Store store = new X509Store(StoreName.My, location);
-            store.Open(OpenFlags.ReadOnly);
-            certificates = store.Certificates.Find(X509FindType.FindByThumbprint, thumbprint, false);
-            store.Close();
-
+            X509Certificate2Collection found = null;
+            X509StoreWrapper(StoreName.My, StoreLocation.CurrentUser, (store) =>
+            {
+                store.Open(OpenFlags.ReadOnly);
+                found = store.Certificates.Find(X509FindType.FindByThumbprint, thumbprint, false);
+            });
+            certificates = found;
             return certificates.Count > 0;
         }
 
         public void AddCertificate(X509Certificate2 certificate)
         {
-            Validate.ValidateNullArgument(certificate, Resources.InvalidCertificate);
-            X509Store store = new X509Store(StoreName.My, StoreLocation.CurrentUser);
-            store.Open(OpenFlags.ReadWrite);
-            store.Add(certificate);
-            store.Close();
+            Validate.ValidateNullArgument(certificate, Messages.InvalidCertificate);
+            X509StoreWrapper(StoreName.My, StoreLocation.CurrentUser, (store) =>
+            {
+                store.Open(OpenFlags.ReadWrite);
+                store.Add(certificate);
+            });
         }
 
         public void RemoveCertificate(string thumbprint)
@@ -149,10 +152,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 var certificate = GetCertificate(thumbprint);
                 if (certificate != null)
                 {
-                    X509Store store = new X509Store(StoreName.My, StoreLocation.CurrentUser);
-                    store.Open(OpenFlags.ReadWrite);
-                    store.Remove(certificate);
-                    store.Close();
+                    X509StoreWrapper(StoreName.My, StoreLocation.CurrentUser, (store) =>
+                    {
+                        store.Open(OpenFlags.ReadWrite);
+                        store.Remove(certificate);
+                    });
                 }
             }
         }
@@ -175,6 +179,21 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         public string[] GetDirectories(string startDirectory, string filePattern, SearchOption options)
         {
             return Directory.GetDirectories(startDirectory, filePattern, options);
+        }
+
+        public static void X509StoreWrapper(StoreName storeName, StoreLocation storeLocation, Action<X509Store> action)
+        {
+#if !NETSTANDARD1_6
+            X509Store store = new X509Store(storeName, storeLocation);
+            store.Open(OpenFlags.ReadWrite);
+            store.Remove(certificate);
+            store.Close();
+#else
+            using (X509Store store = new X509Store(storeName, storeLocation))
+            {
+                action(store);
+            }
+#endif
         }
     }
 }

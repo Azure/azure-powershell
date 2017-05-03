@@ -22,16 +22,20 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.Azure.Commands.Tags.Model;
-using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization.Models;
-using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
+using Microsoft.Azure.Management.ResourceManager.Models;
+using Newtonsoft.Json.Linq;
+#if !NETSTANDARD1_6
+using Microsoft.Azure.Gallery;
+#endif
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
     public static class ResourcesExtensions
     {
+#if !NETSTANDARD1_6
         public static PSGalleryItem ToPSGalleryItem(this GalleryItem gallery)
         {
             PSGalleryItem psGalleryItem = new PSGalleryItem();
@@ -60,6 +64,25 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 ResourceId = identifier.ToString()
             };
         }
+#else
+        public static PSResource ToPSResource(this GenericResource resource, ResourcesClient client, bool minimal)
+        {
+            ResourceIdentifier identifier = new ResourceIdentifier(resource.Id);
+            return new PSResource
+            {
+                Name = identifier.ResourceName,
+                Location = resource.Location,
+                ResourceType = identifier.ResourceType,
+                ResourceGroupName = identifier.ResourceGroupName,
+                ParentResource = identifier.ParentResource,
+                Properties = JsonUtilities.DeserializeJson(resource.Properties?.ToString()),
+                PropertiesText = resource.Properties?.ToString(),
+                Tags = TagsConversionHelper.CreateTagHashtable(resource.Tags),
+                Permissions = minimal ? null : client.GetResourcePermissions(identifier),
+                ResourceId = identifier.ToString()
+            };
+        }
+#endif
 
         public static PSPermission ToPSPermission(this Permission permission)
         {
@@ -220,12 +243,12 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
             if (properties != null)
             {
-                deploymentObject.Mode = properties.Mode;
+                deploymentObject.Mode = properties.Mode.GetValueOrDefault();
                 deploymentObject.ProvisioningState = properties.ProvisioningState;
                 deploymentObject.TemplateLink = properties.TemplateLink;
-                deploymentObject.Timestamp = properties.Timestamp;
+                deploymentObject.Timestamp = properties.Timestamp.GetValueOrDefault();
                 deploymentObject.CorrelationId = properties.CorrelationId;
-
+#if !NETSTANDARD1_6
                 if (properties.DebugSettingResponse != null && !string.IsNullOrEmpty(properties.DebugSettingResponse.DeploymentDebugDetailLevel))
                 {
                     deploymentObject.DeploymentDebugLogLevel = properties.DebugSettingResponse.DeploymentDebugDetailLevel;
@@ -242,7 +265,29 @@ namespace Microsoft.Azure.Commands.Resources.Models
                     Dictionary<string, DeploymentVariable> parameters = JsonConvert.DeserializeObject<Dictionary<string, DeploymentVariable>>(properties.Parameters);
                     deploymentObject.Parameters = parameters;
                 }
+#else
 
+                if (properties.DebugSetting != null && !string.IsNullOrEmpty(properties.DebugSetting.DetailLevel))
+                {
+                    deploymentObject.DeploymentDebugLogLevel = properties.DebugSetting.DetailLevel;
+                }
+
+                if (null != properties.Outputs && properties.Outputs is JToken)
+                {
+                    var jOutputs = properties.Outputs as JToken;
+
+                    Dictionary<string, DeploymentVariable> outputs = jOutputs.ToObject<Dictionary<string, DeploymentVariable>>();
+                    deploymentObject.Outputs = outputs;
+                }
+
+                if (null != properties.Parameters && properties.Parameters is JToken)
+                {
+                    var jParams = properties.Parameters as JToken;
+
+                    Dictionary<string, DeploymentVariable> parameters = jParams.ToObject<Dictionary<string, DeploymentVariable>>();
+                    deploymentObject.Parameters = parameters;
+                }
+#endif
                 if (properties.TemplateLink != null)
                 {
                     deploymentObject.TemplateLinkString = ConstructTemplateLinkView(properties.TemplateLink);

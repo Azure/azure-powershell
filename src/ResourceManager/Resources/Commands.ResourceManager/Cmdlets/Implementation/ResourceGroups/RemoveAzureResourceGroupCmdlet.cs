@@ -16,9 +16,9 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using System.Management.Automation;
-using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
+using ProjectResources = Commands.Resources.Rest.Netcore.Properties.Messages;
 
-namespace Microsoft.Azure.Commands.Resources
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     /// <summary>
     /// Removes a resource group.

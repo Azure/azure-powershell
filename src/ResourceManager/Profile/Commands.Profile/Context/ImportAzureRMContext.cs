@@ -12,9 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Commands.Profile.Netcore;
+using Commands.Profile.Netcore.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
-using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
@@ -52,12 +53,12 @@ namespace Microsoft.Azure.Commands.Profile
             bool executionComplete = false;
             if (MyInvocation.BoundParameters.ContainsKey("Path"))
             {
-                ConfirmAction(string.Format(Resources.ProcessImportContextFromFile, Path), Resources.ImportContextTarget, () =>
+                ConfirmAction(string.Format(Messages.ProcessImportContextFromFile, Path), Messages.ImportContextTarget, () =>
                 {
                     if (!Common.Authentication.AzureSession.DataStore.FileExists(Path))
                     {
                         throw new PSArgumentException(string.Format(
-                            Microsoft.Azure.Commands.Profile.Properties.Resources.FileNotFound,
+                            Messages.FileNotFound,
                             Path));
                     }
 
@@ -67,7 +68,7 @@ namespace Microsoft.Azure.Commands.Profile
             }
             else
             {
-                ConfirmAction(Resources.ProcessImportContextFromObject, Resources.ImportContextTarget, () =>
+                ConfirmAction(Messages.ProcessImportContextFromObject, Messages.ImportContextTarget, () =>
                 {
                     AzureRmProfileProvider.Instance.Profile = AzureContext;
                     executionComplete = true;
@@ -78,7 +79,7 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 if (AzureRmProfileProvider.Instance.Profile == null)
                 {
-                    WriteExceptionError( new ArgumentException(Resources.AzureProfileMustNotBeNull));
+                    WriteExceptionError( new ArgumentException(Messages.AzureProfileMustNotBeNull));
                 }
 
                 if (AzureRmProfileProvider.Instance.Profile.Context != null &&
@@ -89,8 +90,8 @@ namespace Microsoft.Azure.Commands.Profile
                     StringComparison.OrdinalIgnoreCase))
                 {
                     WriteWarning(string.Format(
-                                   Microsoft.Azure.Commands.Profile.Properties.Resources.SelectedSubscriptionNotActive,
-                                   AzureRmProfileProvider.Instance.Profile.Context.Subscription.State));
+                        Messages.SelectedSubscriptionNotActive,
+                        AzureRmProfileProvider.Instance.Profile.Context.Subscription.State));
                 }
 
                 WriteObject((PSAzureProfile)AzureRmProfileProvider.Instance.Profile);

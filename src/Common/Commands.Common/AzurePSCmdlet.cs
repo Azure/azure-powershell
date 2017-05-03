@@ -46,8 +46,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         protected static string _sessionId = Guid.NewGuid().ToString();
         protected const string _fileTimeStampSuffixFormat = "yyyy-MM-dd-THH-mm-ss-fff";
         protected string _clientRequestId = Guid.NewGuid().ToString();
+#if !NETSTANDARD1_6
         protected MetricHelper _metricHelper;
         protected AzurePSQoSEvent _qosEvent;
+#endif
         protected DebugStreamTraceListener _adalListener;
 
         protected virtual bool IsUsageMetricEnabled
@@ -98,8 +100,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// <summary>
         /// Gets PowerShell module version used for user agent header.
         /// </summary>
+#if !NETSTANDARD1_6
         protected string ModuleVersion { get { return Assembly.GetCallingAssembly().GetName().Version.ToString(); } }
-
+#else
+        protected string ModuleVersion { get { return Assembly.GetEntryAssembly().GetName().Version.ToString(); } }
+#endif
         /// <summary>
         /// The context for management cmdlet requests - includes account, tenant, subscription, 
         /// and credential information for targeting and authorizing management calls.
@@ -113,17 +118,20 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             DebugMessages = new ConcurrentQueue<string>();
 
+#if !NETSTANDARD1_6
             //TODO: Inject from CI server
             _metricHelper = new MetricHelper();
             _metricHelper.AddTelemetryClient(new TelemetryClient
             {
                 InstrumentationKey = "7df6ff70-8353-4672-80d6-568517fed090"
             });
+#endif
         }
 
         /// <summary>
         /// Initialize the data collection profile
         /// </summary>
+#if !NETSTANDARD1_6
         protected static void InitializeDataCollectionProfile()
         {
             if (_dataCollectionProfile != null && _dataCollectionProfile.EnableAzureDataCollection.HasValue)
@@ -235,7 +243,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// Prompt for the current data collection profile
         /// </summary>
         protected abstract void PromptForDataCollectionProfileIfNotExists();
-
+#endif
         protected virtual void LogCmdletStartInvocationInfo()
         {
             if (string.IsNullOrEmpty(ParameterSetName))
@@ -294,8 +302,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// </summary>
         protected override void BeginProcessing()
         {
+#if !NETSTANDARD1_6
             PromptForDataCollectionProfileIfNotExists();
             InitializeQosEvent();
+#endif
             LogCmdletStartInvocationInfo();
             SetupDebuggingTraces();
             SetupHttpClientPipeline();
@@ -307,7 +317,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// </summary>
         protected override void EndProcessing()
         {
+#if !NETSTANDARD1_6
             LogQosEvent();
+#endif
             LogCmdletEndInvocationInfo();
             TearDownDebuggingTraces();
             TearDownHttpClientPipeline();
@@ -332,19 +344,26 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected new void WriteError(ErrorRecord errorRecord)
         {
+#if !NETSTANDARD1_6
             FlushDebugMessages(IsDataCollectionAllowed());
             if (_qosEvent != null && errorRecord != null)
             {
                 _qosEvent.Exception = errorRecord.Exception;
                 _qosEvent.IsSuccess = false;
             }
-
+#else
+            FlushDebugMessages();
+#endif
             base.WriteError(errorRecord);
         }
 
         protected new void ThrowTerminatingError(ErrorRecord errorRecord)
         {
+#if !NETSTANDARD1_6
             FlushDebugMessages(IsDataCollectionAllowed());
+#else
+            FlushDebugMessages();
+#endif
             base.ThrowTerminatingError(errorRecord);
         }
 
@@ -447,18 +466,19 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         private void FlushDebugMessages(bool record = false)
         {
+#if !NETSTANDARD1_6
             if (record)
             {
                 RecordDebugMessages();
             }
-
+#endif
             string message;
             while (DebugMessages.TryDequeue(out message))
             {
                 base.WriteDebug(message);
             }
         }
-
+#if !NETSTANDARD1_6
         protected abstract void InitializeQosEvent();
 
         private void RecordDebugMessages()
@@ -536,7 +556,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 WriteWarning(e.ToString());
             }
         }
-
+#endif
         /// <summary>
         /// Guards execution of the given action using ShouldProcess and ShouldContinue.  This is a legacy 
         /// version forcompatibility with older RDFE cmdlets.
@@ -549,19 +569,22 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         protected virtual void ConfirmAction(bool force, string continueMessage, string processMessage, string target,
             Action action)
         {
+#if !NETSTANDARD1_6
             if (_qosEvent != null)
             {
                 _qosEvent.PauseQoSTimer();
             }
-
+#endif
             if (force || ShouldContinue(continueMessage, ""))
             {
                 if (ShouldProcess(target, processMessage))
                 {
+#if !NETSTANDARD1_6
                     if (_qosEvent != null)
                     {
                         _qosEvent.ResumeQosTimer();
                     }
+#endif
                     action();
                 }
             }
@@ -586,19 +609,22 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             {
                 useShouldContinue = () => true;
             }
+#if !NETSTANDARD1_6
             if (_qosEvent != null)
             {
                 _qosEvent.PauseQoSTimer();
             }
-
+#endif
             if (ShouldProcess(target, processMessage))
             {
                 if (force || !useShouldContinue() || ShouldContinue(continueMessage, ""))
                 {
+#if !NETSTANDARD1_6
                     if (_qosEvent != null)
                     {
                         _qosEvent.ResumeQosTimer();
                     }
+#endif
                     action();
                 }
             }
@@ -614,17 +640,20 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// <param name="action">The action to perform if confirmed</param>
         protected virtual void ConfirmAction(string processMessage, string target, Action action)
         {
+#if !NETSTANDARD1_6
             if (_qosEvent != null)
             {
                 _qosEvent.PauseQoSTimer();
             }
-
+#endif
             if (ShouldProcess(target, processMessage))
             {
+#if !NETSTANDARD1_6
                 if (_qosEvent != null)
                 {
                     _qosEvent.ResumeQosTimer();
                 }
+#endif
                 action();
             }
         }

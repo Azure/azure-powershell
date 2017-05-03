@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Authentication.NetCore.Properties;
 using System;
 using System.IO;
 using System.Text;
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public static void SerializeXmlFile<T>(T obj, string fileName)
         {
-            Validate.ValidatePathName(fileName, String.Format(Resources.PathDoesNotExistForElement, String.Empty, fileName));
+            Validate.ValidatePathName(fileName, String.Format(Messages.PathDoesNotExistForElement, String.Empty, fileName));
             Validate.ValidateStringIsNullOrEmpty(fileName, String.Empty);
 
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));

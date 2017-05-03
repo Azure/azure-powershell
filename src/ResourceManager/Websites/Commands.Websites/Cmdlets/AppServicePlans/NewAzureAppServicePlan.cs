@@ -12,11 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
 using System.Management.Automation;
 
+#if NETSTANDARD1_6
+using ServerFarmWithRichSku = Microsoft.Azure.Management.WebSites.Models.AppServicePlan;
+#endif
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
 {
     /// <summary>

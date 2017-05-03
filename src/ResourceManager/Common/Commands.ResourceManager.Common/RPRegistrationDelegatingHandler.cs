@@ -12,9 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
+using Common.ResourceManager.Netcore.Properties;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
+using Microsoft.PowerShell.CoreClr.Stubs;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
@@ -60,7 +61,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                     try
                     {
                         ResourceManagementClient = createClient();
-                        writeDebug(string.Format(Resources.ResourceProviderRegisterAttempt, providerName));
+                        writeDebug(string.Format(Messages.ResourceProviderRegisterAttempt, providerName));
                         ResourceManagementClient.Providers.Register(providerName);
                         Provider provider = null;
                         short retryCount = 0;
@@ -73,11 +74,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                             provider = ResourceManagementClient.Providers.Register(providerName);
                             TestMockSupport.Delay(1000);
                         } while (provider.RegistrationState != RegistrationState.Registered.ToString());
-                        writeDebug(string.Format(Resources.ResourceProviderRegisterSuccessful, providerName));
+                        writeDebug(string.Format(Messages.ResourceProviderRegisterSuccessful, providerName));
                     }
                     catch (Exception e)
                     {
-                        writeDebug(string.Format(Resources.ResourceProviderRegisterFailure, providerName, e.Message));
+                        writeDebug(string.Format(Messages.ResourceProviderRegisterFailure, providerName, e.Message));
                         // Ignore RP registration errors.
                     }
 

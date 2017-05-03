@@ -11,7 +11,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-
+#if !NETSTANDARD1_6
 using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -33,3 +33,4 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         }
     }
 }
+#endif

@@ -12,8 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Authentication.NetCore.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Utilities;
+using Microsoft.Azure.Common;
 using System;
 using System.Collections.Generic;
 
@@ -76,7 +77,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         }
 
         private static readonly Dictionary<string, AzureEnvironment> environments =
-            new Dictionary<string, AzureEnvironment>(StringComparer.InvariantCultureIgnoreCase)
+            new Dictionary<string, AzureEnvironment>(StringExtensions.CaselessComparer)
         {
             {
                 EnvironmentName.AzureCloud,
@@ -226,7 +227,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             {
                 return GetEndpoint(endpoint)
                     .Trim(new[] { '/' })
-                    .Equals(url.Trim(new[] { '/' }), StringComparison.InvariantCultureIgnoreCase);
+                    .Equals(url.Trim(new[] { '/' }),
+                    StringExtensions.CaselessComparison);
             }
             return false;
         }
@@ -294,7 +296,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         {
             if (realm != null)
             {
-                realm = string.Format(Resources.PublishSettingsFileRealmFormat, realm);
+                realm = string.Format(Messages.PublishSettingsFileRealmFormat, realm);
             }
             else
             {
@@ -312,7 +314,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         {
             if (realm != null)
             {
-                realm = string.Format(Resources.PublishSettingsFileRealmFormat, realm);
+                realm = string.Format(Messages.PublishSettingsFileRealmFormat, realm);
             }
             else
             {

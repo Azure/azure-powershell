@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 
+using Commands.Websites.Netcore.Properties;
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using System.Management.Automation;
 
@@ -33,8 +34,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
 
             ConfirmAction(
                     Force.IsPresent,
-                    string.Format(Properties.Resources.RemovingAppServicePlan, Name),
-                    Properties.Resources.RemovingAppServicePlan,
+                    string.Format(Messages.RemovingAppServicePlan, Name),
+                    Messages.RemovingAppServicePlan,
                     Name,
                     () => WebsitesClient.RemoveAppServicePlan(ResourceGroupName, Name));
         }

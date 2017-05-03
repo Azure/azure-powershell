@@ -50,7 +50,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 StorageAccountUrl = backup.StorageAccountUrl,
                 BlobName = backup.BlobName,
                 Databases = dbs,
+#if !NETSTANDARD1_6
                 BackupId = backup.BackupItemId,
+#else
+                BackupId = backup.BackupId,
+#endif
                 BackupName = backup.BackupItemName,
                 BackupStatus = status,
                 Scheduled = backup.Scheduled,

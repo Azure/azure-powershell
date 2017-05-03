@@ -12,9 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Globalization;
 
-namespace Microsoft.WindowsAzure.Commands.Common
+namespace Microsoft.Azure.Common
 {
     /// <summary>
     /// Extension methods for strings.
@@ -30,5 +31,29 @@ namespace Microsoft.WindowsAzure.Commands.Common
         {
             return string.Format(CultureInfo.InvariantCulture, s, args);
         }
+
+        public static StringComparison CaselessComparison
+        {
+            get
+            {
+#if !NETSTANDARD1_6
+                return StringComparison.InvariantCultureIgnoreCase;
+#else
+                return StringComparison.CurrentCultureIgnoreCase;
+#endif
+            }
+        }
+        public static StringComparer CaselessComparer
+        {
+            get
+            {
+#if !NETSTANDARD1_6
+                return StringComparer.InvariantCultureIgnoreCase;
+#else
+                return StringComparer.CurrentCultureIgnoreCase;
+#endif
+            }
+        }
+        
     }
 }

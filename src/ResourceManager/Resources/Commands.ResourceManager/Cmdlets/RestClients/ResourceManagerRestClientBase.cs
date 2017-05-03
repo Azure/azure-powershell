@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using ProjectResources = Commands.Resources.Rest.Netcore.Properties.Messages;
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients
 {
     using System;
@@ -25,7 +26,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
-    using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
     /// <summary>
     /// A base class for Azure clients.

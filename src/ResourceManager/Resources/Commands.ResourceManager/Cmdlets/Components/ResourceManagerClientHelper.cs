@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 
             if (string.IsNullOrWhiteSpace(endpoint))
             {
-                throw new ApplicationException(
+                throw new InvalidOperationException(
                     "The endpoint for the Azure Resource Manager service is not set. Please report this issue via GitHub or contact Microsoft customer support.");
             }
 

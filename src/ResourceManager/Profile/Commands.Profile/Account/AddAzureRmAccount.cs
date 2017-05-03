@@ -12,10 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
-using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
@@ -23,6 +21,8 @@ using System.IO;
 using System.Management.Automation;
 using System.Reflection;
 using System.Security;
+using Commands.Profile.Netcore;
+using Commands.Profile.Netcore.Properties;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -32,7 +32,10 @@ namespace Microsoft.Azure.Commands.Profile
     [Cmdlet("Add", "AzureRmAccount", DefaultParameterSetName = "UserWithSubscriptionId", SupportsShouldProcess=true)]
     [Alias("Login-AzureRmAccount")]
     [OutputType(typeof(PSAzureProfile))]
-    public class AddAzureRMAccountCommand : AzureRMCmdlet, IModuleAssemblyInitializer
+    public class AddAzureRMAccountCommand : AzureRMCmdlet
+#if !NETSTANDARD1_6
+        , IModuleAssemblyInitializer
+#endif
     {
         private const string UserParameterSetWithSubscriptionId = "UserWithSubscriptionId";
         private const string UserParameterSetWithSubscriptionName = "UserWithSubscriptionName";
@@ -167,7 +170,7 @@ namespace Microsoft.Azure.Commands.Profile
                 else
                 {
                     throw new PSInvalidOperationException(
-                        string.Format(Resources.UnknownEnvironment, EnvironmentName));
+                        string.Format(Messages.UnknownEnvironment, EnvironmentName));
                 }
             }
 #pragma warning restore 0618
@@ -178,7 +181,7 @@ namespace Microsoft.Azure.Commands.Profile
             if (!string.IsNullOrWhiteSpace(SubscriptionId) &&
                 !string.IsNullOrWhiteSpace(SubscriptionName))
             {
-                throw new PSInvalidOperationException(Resources.BothSubscriptionIdAndNameProvided);
+                throw new PSInvalidOperationException(Messages.BothSubscriptionIdAndNameProvided);
             }
 
             Guid subscrptionIdGuid;
@@ -186,7 +189,7 @@ namespace Microsoft.Azure.Commands.Profile
                 !Guid.TryParse(SubscriptionId, out subscrptionIdGuid))
             {
                 throw new PSInvalidOperationException(
-                    string.Format(Resources.InvalidSubscriptionId, SubscriptionId));
+                    string.Format(Messages.InvalidSubscriptionId, SubscriptionId));
             }
 
             AzureAccount azureAccount = new AzureAccount();
@@ -195,7 +198,7 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 if (string.IsNullOrWhiteSpace(AccountId))
                 {
-                    throw new PSInvalidOperationException(Resources.AccountIdRequired);
+                    throw new PSInvalidOperationException(Messages.AccountIdRequired);
                 }
 
                 azureAccount.Type = AzureAccount.AccountType.AccessToken;
@@ -233,7 +236,7 @@ namespace Microsoft.Azure.Commands.Profile
                 azureAccount.SetProperty(AzureAccount.Property.Tenants, new[] { TenantId });
             }
 #pragma warning disable 0618
-            if (ShouldProcess(string.Format(Resources.LoginTarget, azureAccount.Type, Environment.Name), "log in"))
+            if (ShouldProcess(string.Format(Messages.LoginTarget, azureAccount.Type, Environment.Name), "log in"))
             {
                 if (AzureRmProfileProvider.Instance.Profile == null)
                 {
@@ -242,8 +245,17 @@ namespace Microsoft.Azure.Commands.Profile
 
                 var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
 
-                WriteObject((PSAzureProfile) profileClient.Login(azureAccount, Environment, TenantId, SubscriptionId,
-                    SubscriptionName, password));
+                WriteObject((PSAzureProfile) profileClient.Login(
+                    azureAccount, 
+                    Environment, 
+                    TenantId, 
+                    SubscriptionId,
+                    SubscriptionName, 
+                    password
+#if NETSTANDARD1_6
+                    , (s) => WriteWarning(s)
+#endif
+                    ));
             }
 #pragma warning restore 0618
         }
@@ -251,6 +263,7 @@ namespace Microsoft.Azure.Commands.Profile
         /// <summary>
         /// Load global aliases for ARM
         /// </summary>
+#if !NETSTANDARD1_6
         public void OnImport()
         {
             try
@@ -262,11 +275,11 @@ namespace Microsoft.Azure.Commands.Profile
                     "AzureRmProfileStartup.ps1")));
                 invoker.Invoke();
             }
-            catch
+            catch(Exception) when (TestMockSupport.RunningMocked)
             {
                 // This will throw exception for tests, ignore.
             }
         }
-
+#endif
     }
 }

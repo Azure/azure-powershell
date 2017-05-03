@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
 using System.IO;
@@ -77,11 +76,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             AuthenticationFactory = new AuthenticationFactory();
             DataStore = new MemoryDataStore();
             TokenCache = new TokenCache();
+#if !NETSTANDARD1_6
             OldProfileFile = "WindowsAzureProfile.xml";
             OldProfileFileBackup = "WindowsAzureProfile.xml.bak";
             ProfileDirectory = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                 Resources.AzureDirectoryName); ;
+#endif
             ProfileFile = "AzureProfile.json";
             TokenCacheFile = "TokenCache.dat";
         }

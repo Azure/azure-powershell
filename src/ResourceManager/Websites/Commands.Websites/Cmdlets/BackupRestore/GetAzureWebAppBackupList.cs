@@ -14,6 +14,7 @@
 
 
 using System.Management.Automation;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
@@ -26,11 +27,16 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            var list = WebsitesClient.ListSiteBackups(ResourceGroupName, Name, Slot).Value;
-            AzureWebAppBackup[] backups = new AzureWebAppBackup[list.Count];
+            var list = WebsitesClient.ListSiteBackups(ResourceGroupName, Name, Slot)
+#if !NETSTANDARD1_6
+                .Value;
+#else
+                ;
+#endif
+            AzureWebAppBackup[] backups = new AzureWebAppBackup[list.Count()];
             for (int i = 0; i < backups.Length; i++)
             {
-                backups[i] = BackupRestoreUtils.BackupItemToAppBackup(list[i], ResourceGroupName, Name, Slot);
+                backups[i] = BackupRestoreUtils.BackupItemToAppBackup(list.ElementAt(i), ResourceGroupName, Name, Slot);
             }
             WriteObject(backups, true);
         }

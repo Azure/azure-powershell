@@ -15,7 +15,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
+using ProjectResources = Commands.Resources.Rest.Netcore.Properties.Messages;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {

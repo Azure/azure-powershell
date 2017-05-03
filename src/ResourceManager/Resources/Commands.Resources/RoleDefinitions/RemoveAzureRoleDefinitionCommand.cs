@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Management.Automation;
-using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
+using ProjectResources = Commands.Resources.Netcore.Properties.Messages;
 
 namespace Microsoft.Azure.Commands.Resources
 {

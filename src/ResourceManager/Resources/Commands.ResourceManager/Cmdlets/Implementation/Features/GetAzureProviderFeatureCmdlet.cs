@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     break;
 
                 default:
-                    throw new ApplicationException(string.Format("Unknown parameter set encountered: '{0}'", this.ParameterSetName));
+                    throw new InvalidOperationException(string.Format("Unknown parameter set encountered: '{0}'", this.ParameterSetName));
             }
         }
     }

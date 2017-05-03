@@ -11,10 +11,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+using Resources = Storage.Netcore.Properties.Messages;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Storage
 {
-    using Microsoft.WindowsAzure.Commands.Common.Storage.Properties;
     using Microsoft.WindowsAzure.Storage;
     using System;
 

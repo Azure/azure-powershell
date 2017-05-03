@@ -24,8 +24,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
     public class MemoryDataStore : IDataStore
     {
+#if !NETSTANDARD1_6
         private Dictionary<string, string> virtualStore = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
         private Dictionary<string, X509Certificate2> certStore = new Dictionary<string, X509Certificate2>(StringComparer.InvariantCultureIgnoreCase);
+#else
+        private Dictionary<string, string> virtualStore = new Dictionary<string, string>(StringComparer.CurrentCulture);
+        private Dictionary<string, X509Certificate2> certStore = new Dictionary<string, X509Certificate2>(StringComparer.CurrentCulture);
+#endif
         private const string FolderKey = "Folder";
 
         public Dictionary<string, string> VirtualStore
@@ -46,7 +51,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
         public void WriteFile(string path, byte[] contents)
         {
+#if !NETSTANDARD1_6
             VirtualStore[path] = Encoding.Default.GetString(contents);
+#else
+            VirtualStore[path] = Encoding.UTF8.GetString(contents);
+#endif
         }
 
         public string ReadFileAsText(string path)
@@ -82,7 +91,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         {
             if (VirtualStore.ContainsKey(path))
             {
+#if !NETSTANDARD1_6
                 return Encoding.Default.GetBytes(VirtualStore[path]);
+#else
+                return Encoding.UTF8.GetBytes(VirtualStore[path]);
+#endif
             }
             else
             {

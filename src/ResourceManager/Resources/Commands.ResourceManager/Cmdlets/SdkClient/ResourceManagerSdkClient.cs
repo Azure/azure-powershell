@@ -35,7 +35,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
+using ProjectResources = Commands.Resources.Rest.Netcore.Properties.Messages;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 {
@@ -499,7 +499,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return string.Equals(
                 ResourceManagerSdkClient.RegisteredStateName,
                 provider.RegistrationState,
-                StringComparison.InvariantCultureIgnoreCase);
+                Microsoft.Azure.Common.StringExtensions.CaselessComparison);
         }
 
         public PSResourceProvider RegisterProvider(string providerName)
@@ -526,15 +526,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
             if (splitResourceIds.Any(splitResourceId => splitResourceId.Length % 2 != 0 ||
                 splitResourceId.Length < 8 ||
-                !string.Equals("subscriptions", splitResourceId[0], StringComparison.InvariantCultureIgnoreCase) ||
-                !string.Equals("resourceGroups", splitResourceId[2], StringComparison.InvariantCultureIgnoreCase) ||
-                !string.Equals("providers", splitResourceId[4], StringComparison.InvariantCultureIgnoreCase)))
+                !string.Equals("subscriptions", splitResourceId[0], Microsoft.Azure.Common.StringExtensions.CaselessComparison) ||
+                !string.Equals("resourceGroups", splitResourceId[2], Microsoft.Azure.Common.StringExtensions.CaselessComparison) ||
+                !string.Equals("providers", splitResourceId[4], Microsoft.Azure.Common.StringExtensions.CaselessComparison)))
             {
                 throw new System.Management.Automation.PSArgumentException(ProjectResources.InvalidFormatOfResourceId);
             }
 
             return resourceIds
-                .Distinct(StringComparer.InvariantCultureIgnoreCase)
+                .Distinct(Microsoft.Azure.Common.StringExtensions.CaselessComparer)
                 .Select(resourceId => new ResourceIdentifier(resourceId))
                 .ToArray();
         }

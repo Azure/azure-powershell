@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,7 +64,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
                 oldValueString = dictionary[property];
             }
             var oldValues = oldValueString.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-            var newValues = oldValues.Union(values, StringComparer.CurrentCultureIgnoreCase).Where(s => !string.IsNullOrEmpty(s)).ToArray();
+            var newValues = oldValues.Union(values, StringExtensions.CaselessComparer).Where(s => !string.IsNullOrEmpty(s)).ToArray();
             if (newValues.Any())
             {
                 dictionary[property] = string.Join(",", newValues);

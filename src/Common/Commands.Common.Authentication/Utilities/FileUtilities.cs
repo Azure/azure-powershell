@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Authentication.NetCore.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -34,7 +34,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public static string GetAssemblyDirectory()
         {
+#if !NETSTANDARD1_6
             var assemblyPath = Uri.UnescapeDataString(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
+#else
+            var assemblyPath = Uri.UnescapeDataString(new Uri(Assembly.GetEntryAssembly().CodeBase).AbsolutePath);
+#endif            
             return Path.GetDirectoryName(assemblyPath);
         }
 
@@ -67,7 +71,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
             return path;
         }
-
+#if !NETSTANDARD1_6
         public static string GetWithProgramFilesPath(string directoryName, bool throwIfNotFound)
         {
             string programFilesPath = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
@@ -97,7 +101,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 }
             }
         }
-
+#endif
         /// <summary>
         /// Copies a directory.
         /// </summary>
@@ -110,7 +114,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
             if (!DataStore.DirectoryExists(sourceDirName))
             {
-                throw new DirectoryNotFoundException(String.Format(Resources.PathDoesNotExist, sourceDirName));
+                throw new DirectoryNotFoundException(String.Format(Messages.PathDoesNotExist, sourceDirName));
             }
 
             DataStore.CreateDirectory(destDirName);
@@ -206,7 +210,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
             else
             {
+#if !NETSTANDARD1_6
                 encoding = Encoding.Default;
+#else
+				encoding = Encoding.UTF8;	
+#endif
             }
 
             return encoding;

@@ -23,7 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
     public static class PowerShellUtilities
     {
         public const string PSModulePathName = "PSModulePath";
-
+#if !NETSTANDARD1_6
         private static void EditPSModulePath(Func<IEnumerable<string>, IEnumerable<string>> job, EnvironmentVariableTarget target)
         {
             ChangeForTargetEnvironment(job, target);
@@ -49,7 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 Environment.SetEnvironmentVariable(PSModulePathName, psModulePath, target);
             }
         }
-
+#endif
         public static PSObject ConstructPSObject(string typeName, params object[] args)
         {
             Debug.Assert(args.Length % 2 == 0, "The parameter args length must be even number");
@@ -68,7 +68,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             return outputObject;
         }
-
+#if !NETSTANDARD1_6
         public static void RemoveModuleFromPSModulePath(string modulePath)
         {
             EditPSModulePath(list => list.Where(p => !p.Equals(modulePath, StringComparison.OrdinalIgnoreCase)), EnvironmentVariableTarget.Process);
@@ -88,7 +88,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             EditPSModulePath(list => new List<string>(list) { modulePath }, target);
         }
-
+#endif
         public static IEnumerable<RuntimeDefinedParameter> GetUsedDynamicParameters(RuntimeDefinedParameterDictionary dynamicParameters, InvocationInfo MyInvocation)
         {
             return dynamicParameters.Values.Where(dp => MyInvocation.BoundParameters.Keys.Any(bp => bp.Equals(dp.Name)));

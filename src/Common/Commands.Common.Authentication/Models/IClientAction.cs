@@ -19,9 +19,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
     public interface IClientAction
     {
         IClientFactory ClientFactory { get; set; }
-
+#if !NETSTANDARD1_6
         void Apply<TClient>(TClient client, AzureSMProfile profile, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>;
-
+#endif
         void ApplyArm<TClient>(TClient client, AzureRMProfile profile, AzureEnvironment.Endpoint endpoint) where TClient : Microsoft.Rest.ServiceClient<TClient>;
     }
 }

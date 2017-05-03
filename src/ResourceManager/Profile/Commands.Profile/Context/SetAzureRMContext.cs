@@ -12,9 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Commands.Profile.Netcore;
+using Commands.Profile.Netcore.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
-using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
@@ -59,8 +60,8 @@ namespace Microsoft.Azure.Commands.Profile
         {
             if (ParameterSetName == ContextParameterSet)
             {
-                if (ShouldProcess(string.Format(Resources.ChangingContextUsingPipeline, Context.Tenant, Context.Subscription), 
-                    Resources.ContextChangeWarning, string.Empty))
+                if (ShouldProcess(string.Format(Messages.ChangingContextUsingPipeline, Context.Tenant, Context.Subscription),
+                    Messages.ContextChangeWarning, string.Empty))
                 {
                     AzureRmProfileProvider.Instance.Profile.SetContextWithCache(new AzureContext(Context.Subscription,
                         Context.Account,
@@ -74,15 +75,15 @@ namespace Microsoft.Azure.Commands.Profile
                     && string.IsNullOrWhiteSpace(SubscriptionName)
                     && string.IsNullOrWhiteSpace(TenantId))
                 {
-                    throw new PSInvalidOperationException(Resources.SetAzureRmContextNoParameterSet);
+                    throw new PSInvalidOperationException(Messages.SetAzureRmContextNoParameterSet);
                 }
 
                     var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
                     if (!string.IsNullOrWhiteSpace(SubscriptionId) || !string.IsNullOrWhiteSpace(SubscriptionName))
                     {
-                        if (ShouldProcess(string.Format(Resources.ChangingContextSubscription, 
-                            SubscriptionName ?? SubscriptionId), 
-                            Resources.SubscriptionChangeWarning , string.Empty))
+                        if (ShouldProcess(string.Format(Messages.ChangingContextSubscription, 
+                            SubscriptionName ?? SubscriptionId),
+                            Messages.SubscriptionChangeWarning , string.Empty))
                         {
                             profileClient.SetCurrentContext(SubscriptionId, SubscriptionName, TenantId);
                             CompleteContextProcessing();
@@ -90,8 +91,8 @@ namespace Microsoft.Azure.Commands.Profile
                     }
                     else
                     {
-                        if (ShouldProcess(string.Format(Resources.ChangingContextTenant, TenantId),
-                            Resources.TenantChangeWarning, string.Empty))
+                        if (ShouldProcess(string.Format(Messages.ChangingContextTenant, TenantId),
+                            Messages.TenantChangeWarning, string.Empty))
                         {
                             profileClient.SetCurrentContext(TenantId);
                             CompleteContextProcessing();
@@ -115,8 +116,8 @@ namespace Microsoft.Azure.Commands.Profile
                 StringComparison.OrdinalIgnoreCase))
             {
                 WriteWarning(string.Format(
-                               Microsoft.Azure.Commands.Profile.Properties.Resources.SelectedSubscriptionNotActive,
-                               AzureRmProfileProvider.Instance.Profile.Context.Subscription.State));
+                    Messages.SelectedSubscriptionNotActive,
+                    AzureRmProfileProvider.Instance.Profile.Context.Subscription.State));
             }
             WriteObject((PSAzureContext)AzureRmProfileProvider.Instance.Profile.Context);
         }

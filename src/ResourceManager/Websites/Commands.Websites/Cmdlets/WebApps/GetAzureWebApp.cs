@@ -21,6 +21,9 @@ using System.Linq;
 using System.Management.Automation;
 using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 
+#if NETSTANDARD1_6
+using ServerFarmWithRichSku = Microsoft.Azure.Management.WebSites.Models.AppServicePlan;
+#endif
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
     /// <summary>
@@ -212,7 +215,12 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         private void GetByAppServicePlan()
         {
             WriteObject(WebsitesClient.ListWebAppsForAppServicePlan(AppServicePlan.ResourceGroup,
-                AppServicePlan.ServerFarmWithRichSkuName).ToList());
+#if !NETSTANDARD1_6
+                AppServicePlan.ServerFarmWithRichSkuName
+#else
+                AppServicePlan.Name
+#endif
+                ).ToList());
         }
     }
 }

@@ -11,7 +11,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-
+#if !NETSTANDARD1_6
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
@@ -30,7 +30,7 @@ using System.Management.Automation;
 using System.Security;
 using System.Text;
 using System.Text.RegularExpressions;
-using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
+using ProjectResources = Commands.Resources.Netcore.Properties.Messages;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
@@ -58,3 +58,4 @@ namespace Microsoft.Azure.Commands.Resources.Models
         }
     }
 }
+#endif

@@ -51,7 +51,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     {
                         try
                         {
+#if !NETSTANDARD1_6
                             Deserialize(ProtectedData.Unprotect(existingData, null, DataProtectionScope.CurrentUser));
+#else
+                            Deserialize(existingData);
+#endif
                         }
                         catch (CryptographicException)
                         {
@@ -90,7 +94,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     {
                         try
                         {
+#if !NETSTANDARD1_6
                             Deserialize(ProtectedData.Unprotect(existingData, null, DataProtectionScope.CurrentUser));
+#else
+                            Deserialize(existingData);
+#endif
                         }
                         catch (CryptographicException)
                         {
@@ -111,7 +119,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 {
                     // reflect changes in the persistent store
                     AzureSession.DataStore.WriteFile(CacheFileName,
+#if !NETSTANDARD1_6
                         ProtectedData.Protect(Serialize(), null, DataProtectionScope.CurrentUser));
+#else
+                        Serialize());
+#endif
                     // once the write operation took place, restore the HasStateChanged bit to false
                     HasStateChanged = false;
                 }

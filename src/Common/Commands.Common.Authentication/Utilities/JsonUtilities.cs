@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Authentication.NetCore.Properties;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
             else
             {
-                throw new ArgumentException(string.Format(Resources.UnableToPatchJson, originalJson, patchJson));
+                throw new ArgumentException(string.Format(Messages.UnableToPatchJson, originalJson, patchJson));
             }
 
             return originalJson.ToString(Formatting.None);
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     }
                     else
                     {
-                        throw new ArgumentException(string.Format(Resources.UnableToPatchJson, originalJson, patchJson));
+                        throw new ArgumentException(string.Format(Messages.UnableToPatchJson, originalJson, patchJson));
                     }
                 }
                 else
