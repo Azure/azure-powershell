@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 var resolvedFilePath = this.GetUnresolvedProviderPathFromPSPath( InputFile );
 
-                if ( !AzureSession.DataStore.FileExists( resolvedFilePath ) )
+                if ( !AzureSession.Instance.DataStore.FileExists( resolvedFilePath ) )
                 { 
                     throw new FileNotFoundException( string.Format( KeyVaultProperties.Resources.BackupSecretFileNotFound, resolvedFilePath ) );
                 }

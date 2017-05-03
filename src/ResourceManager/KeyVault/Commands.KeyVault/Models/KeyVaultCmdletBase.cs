@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 if (dataServiceClient == null)
                 {
                     this.dataServiceClient = new KeyVaultDataServiceClient(
-                        AzureSession.AuthenticationFactory,
+                        AzureSession.Instance.AuthenticationFactory,
                         DefaultContext);
                 }
 

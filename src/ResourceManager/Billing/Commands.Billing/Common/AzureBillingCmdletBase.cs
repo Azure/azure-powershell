@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Billing;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Billing.Common
 {
@@ -39,7 +40,7 @@ namespace Microsoft.Azure.Commands.Billing.Common
             {
                 return _billingManagementClient ??
                        (_billingManagementClient =
-                           AzureSession.ClientFactory.CreateArmClient<BillingManagementClient>(DefaultProfile.Context,
+                           AzureSession.Instance.ClientFactory.CreateArmClient<BillingManagementClient>(DefaultProfile.DefaultContext,
                                AzureEnvironment.Endpoint.ResourceManager));
             }
             set { _billingManagementClient = value; }
