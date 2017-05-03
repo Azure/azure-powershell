@@ -47,6 +47,9 @@ Removes endpoints and metadata for connecting to a given Azure instance.
 ### [Save-AzureRmContext](Save-AzureRmContext.md)
 Saves the current authentication information for use in other PowerShell sessions.
 
+### [Send-Feedback](Send-Feedback.md)
+Sends feedback to the Azure PowerShell team via a set of guided prompts.
+
 ### [Set-AzureRmContext](Set-AzureRmContext.md)
 Sets the tenant, subscription, and environment for cmdlets to use in the current session.
 
