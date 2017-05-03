@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// </summary>
         /// <param name="profile">The profile to convert.</param>
         /// <returns>The converted profile.</returns>
-        public static implicit operator PSAzureProfile(AzureRMProfile profile)
+        public static implicit operator PSAzureProfile(AzureRmProfile profile)
         {
             if (profile == null)
             {
@@ -39,11 +40,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
 
             var result = new PSAzureProfile
             {
-                Context = profile.Context
+                Context = new PSAzureContext(profile.DefaultContext)
             };
 
-            profile.Environments
-                .ForEach((e) => result.Environments[e.Key] = (PSAzureEnvironment)e.Value);
+            profile.EnvironmentTable
+                .ForEach((e) => result.Environments[e.Key] = new PSAzureEnvironment(e.Value));
             return result;
         }
 
@@ -52,18 +53,18 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// </summary>
         /// <param name="profile">The profile to convert.</param>
         /// <returns>The converted profile.</returns>
-        public static implicit operator AzureRMProfile(PSAzureProfile profile)
+        public static implicit operator AzureRmProfile(PSAzureProfile profile)
         {
             if (profile == null)
             {
                 return null;
             }
 
-            var result = new AzureRMProfile
+            var result = new AzureRmProfile
             {
-                Context = profile.Context
+                DefaultContext = profile.Context
             };
-            profile.Environments.ForEach((e) => result.Environments[e.Key] = (AzureEnvironment)e.Value);
+            profile.Environments.ForEach((e) => result.EnvironmentTable[e.Key] = (IAzureEnvironment)e.Value);
             return result;
         }
 

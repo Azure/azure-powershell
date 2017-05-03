@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using System;
 
 namespace Microsoft.Azure.Commands.ScenarioTest
@@ -42,6 +44,15 @@ namespace Microsoft.Azure.Commands.ScenarioTest
                     }
                 }
             } while (!succeeded);
+        }
+
+        /// <summary>
+        /// Set up the session and profile for a test
+        /// </summary>
+        public static void SetUpSessionAndProfile()
+        {
+            AzureSessionInitializer.InitializeAzureSession();
+            ResourceManagerProfileProvider.InitializeResourceManagerProfile();
         }
     }
 }

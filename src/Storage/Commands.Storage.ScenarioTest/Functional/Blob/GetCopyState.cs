@@ -154,11 +154,11 @@ namespace Commands.Storage.ScenarioTest.Functional.Blob
 
             if (destBlob.BlobType == StorageBlob.BlobType.BlockBlob)
             {
-                ((StorageBlob.CloudBlockBlob)destBlob).StartCopyFromBlob((StorageBlob.CloudBlockBlob)srcBlob);
+                ((StorageBlob.CloudBlockBlob)destBlob).StartCopy((StorageBlob.CloudBlockBlob)srcBlob);
             }
             else
             {
-                ((StorageBlob.CloudPageBlob)destBlob).StartCopyFromBlob((StorageBlob.CloudPageBlob)srcBlob);
+                ((StorageBlob.CloudPageBlob)destBlob).StartCopy((StorageBlob.CloudPageBlob)srcBlob);
             }
 
             Test.Assert(agent.GetAzureStorageBlobCopyState("$root", destBlob.Name, true), "Get copy state in $root container should be successed.");
@@ -250,8 +250,8 @@ namespace Commands.Storage.ScenarioTest.Functional.Blob
             StorageBlob.CloudBlobContainer Container = blobUtil.CreateContainer();
             string ContainerName = Container.Name;
             string BlobName = Utility.GenNameString("blockblob");
-            StorageBlob.ICloudBlob Blob = blobUtil.CreateBlockBlob(Container, BlobName);
-            
+            StorageBlob.CloudBlockBlob Blob = (StorageBlob.CloudBlockBlob)blobUtil.CreateBlockBlob(Container, BlobName);
+
             string uri = Test.Data.Get("BigFileUri");
             Test.Assert(!String.IsNullOrEmpty(uri), string.Format("Big file uri should be not empty, actually it's {0}", uri));
 
@@ -260,7 +260,7 @@ namespace Commands.Storage.ScenarioTest.Functional.Blob
                 return;
             }
 
-            Blob.StartCopyFromBlob(new Uri(uri));
+            Blob.StartCopy(new Uri(uri));
 
             int maxMonitorTime = 30; //seconds
             int checkCount = 0;

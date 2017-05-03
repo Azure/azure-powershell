@@ -23,6 +23,9 @@ Creates a key in a key vault or imports a key into a key vault.
 ### [Backup-AzureKeyVaultKey](Backup-AzureKeyVaultKey.md)
 Backs up a key in a key vault.
 
+### [Backup-AzureKeyVaultSecret](Backup-AzureKeyVaultSecret.md)
+Backs up a secret in a key vault.
+
 ### [Get-AzureKeyVaultCertificate](Get-AzureKeyVaultCertificate.md)
 Gets a certificate from a key vault.
 
@@ -89,6 +92,9 @@ Removes all permissions for a user or application from a key vault.
 ### [Restore-AzureKeyVaultKey](Restore-AzureKeyVaultKey.md)
 Creates a key in a key vault from a backed-up key.
 
+### [Restore-AzureKeyVaultSecret](Restore-AzureKeyVaultSecret.md)
+Creates a secret in a key vault from a backed-up secret.
+
 ### [Set-AzureKeyVaultCertificateAttribute](Set-AzureKeyVaultCertificateAttribute.md)
 Modifies editable attributes of a certificate.
 
@@ -112,4 +118,13 @@ Grants or modifies existing permissions for a user, application, or security gro
 
 ### [Stop-AzureKeyVaultCertificateOperation](Stop-AzureKeyVaultCertificateOperation.md)
 Cancels a certificate operation in key vault.
+
+### [Undo-AzureKeyVaultKeyRemoval](Undo-AzureKeyVaultKeyRemoval.md)
+Recovers a deleted key in a key vault into an active state.
+
+### [Undo-AzureKeyVaultSecretRemoval](Undo-AzureKeyVaultSecretRemoval.md)
+Recovers a deleted secret in a key vault into an active state.
+
+### [Undo-AzureRmKeyVaultRemoval](Undo-AzureRmKeyVaultRemoval.md)
+Recovers a deleted key vault into an active state.
 

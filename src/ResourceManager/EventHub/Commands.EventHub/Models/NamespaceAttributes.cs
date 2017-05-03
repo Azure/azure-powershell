@@ -56,13 +56,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
                 
             }
         }
-
-        /// <summary>
-        /// Gets or sets the name of the resource group the Namespace is in
-        /// </summary>
-        [ObsoleteAttribute("ResourceGroupName property is obsolete.", false)]
-        public string ResourceGroupName { get; set; }
-
+                
         /// <summary>
         /// Gets or sets the Id of the Namespace
         /// </summary>

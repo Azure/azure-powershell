@@ -53,6 +53,13 @@ PS C:\>Get-AzureStorageFileContent -ShareName "ContosoShare06" -Path "ContosoWor
 
 This command downloads a file that is named CurrentDataFile in the folder ContosoWorkingFolder from the file share ContosoShare06 to current folder.
 
+### Example 2: Downloads the files under sample file share
+```
+PS C:\>Get-AzureStorageFile -ShareName sample | ? {$_.GetType().Name -eq "CloudFile"} | Get-AzureStorageFileContent
+```
+
+This example downloads the files under sample file share
+
 ## PARAMETERS
 
 ### -CheckMd5

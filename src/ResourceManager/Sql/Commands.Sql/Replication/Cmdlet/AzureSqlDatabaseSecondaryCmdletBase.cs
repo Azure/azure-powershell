@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Replication.Model;
@@ -38,9 +39,9 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// </summary>
         /// <param name="subscription"></param>
         /// <returns>A replication Adapter object</returns>
-        protected override AzureSqlDatabaseReplicationAdapter InitModelAdapter(AzureSubscription subscription)
+        protected override AzureSqlDatabaseReplicationAdapter InitModelAdapter(IAzureSubscription subscription)
         {
-            return new AzureSqlDatabaseReplicationAdapter(DefaultProfile.Context);
+            return new AzureSqlDatabaseReplicationAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

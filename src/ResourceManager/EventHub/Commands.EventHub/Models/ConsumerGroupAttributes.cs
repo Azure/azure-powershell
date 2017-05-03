@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Commands.EventHub.Models
             if (consumerGroupResourceResource != null)
             {
                 Name = consumerGroupResourceResource.Name;
-                Location = consumerGroupResourceResource.Location;
                 CreatedAt = consumerGroupResourceResource.CreatedAt;
                 EventHubPath = consumerGroupResourceResource.EventHubPath;
                 UpdatedAt = consumerGroupResourceResource.UpdatedAt;

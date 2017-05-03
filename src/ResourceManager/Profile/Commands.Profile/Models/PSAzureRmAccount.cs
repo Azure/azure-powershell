@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
     /// <summary>
     /// Azure account details.
     /// </summary>
-    public class PSAzureRmAccount
+    public class PSAzureRmAccount : IAzureAccount
     {
         /// <summary>
         /// Convert between implementation of Azure Account metadata
@@ -36,28 +36,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
                 return null;
             }
 
-            var result = new PSAzureRmAccount
-            {
-                Id = account.Id,
-                AccountType = account.Type.ToString()
-            };
-
-            if (account.IsPropertySet(AzureAccount.Property.AccessToken))
-            {
-                result.AccessToken = account.GetProperty(AzureAccount.Property.AccessToken);
-            }
-
-            if (account.IsPropertySet(AzureAccount.Property.Tenants))
-            {
-                result.Tenants = new List<string>(account.GetPropertyAsArray(AzureAccount.Property.Tenants));
-            }
-
-            if (account.IsPropertySet(AzureAccount.Property.CertificateThumbprint))
-            {
-                result.CertificateThumbprint = account.GetProperty(AzureAccount.Property.CertificateThumbprint);
-            }
-
-            return result;
+            return new PSAzureRmAccount(account);
         }
 
         /// <summary>
@@ -72,34 +51,22 @@ namespace Microsoft.Azure.Commands.Profile.Models
                 return null;
             }
 
-            var result = new AzureAccount
-            {
-                Id = account.Id,
-            };
-            AzureAccount.AccountType accountType;
-            if (Enum.TryParse(account.AccountType, out accountType))
-            {
-                result.Type = accountType;
-            }
-
-            if (!string.IsNullOrWhiteSpace(account.AccessToken))
-            {
-                result.SetProperty(AzureAccount.Property.AccessToken, account.AccessToken);
-            }
-
-            if (account.Tenants != null &&
-                account.Tenants.Any(s => !string.IsNullOrWhiteSpace(s)))
-            {
-                result.SetProperty(
-                    AzureAccount.Property.Tenants,
-                    account.Tenants.Where(s => !string.IsNullOrWhiteSpace(s)).ToArray());
-            }
-
-            if (!string.IsNullOrWhiteSpace(account.CertificateThumbprint))
-            {
-                result.SetProperty(AzureAccount.Property.CertificateThumbprint, account.CertificateThumbprint);
-            }
+            var result = new AzureAccount();
+            result.CopyFrom(account);
             return result;
+        }
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public PSAzureRmAccount()
+        {
+
+        }
+
+        public PSAzureRmAccount(IAzureAccount other)
+        {
+            this.CopyFrom(other);
         }
 
         /// <summary>
@@ -109,22 +76,52 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <summary>
         /// The type of the account
         /// </summary>
-        public string AccountType { get; set; }
+        public string Type { get; set; }
 
         /// <summary>
         /// The tenant ids for the account
         /// </summary>
-        public List<string> Tenants { get; set; }
+        public List<string> Tenants
+        {
+            get
+            {
+                return this.GetTenants().ToList();
+            }
+            set
+            {
+                this.SetTenants(value.ToArray());
+            }
+        }
 
         /// <summary>
         /// The access token for the account (if any)
         /// </summary>
-        public string AccessToken { get; set; }
+        public string AccessToken
+        {
+            get { return this.GetAccessToken(); }
+            set { this.SetAccessToken(value); }
+        }
+
+        public string Credential { get; set; }
+
+        public IDictionary<string, string> TenantMap { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
         /// <summary>
         /// Gets or sets Thumbprint for associated certificate
         /// </summary>
-        public string CertificateThumbprint { get; set; }
+        public string CertificateThumbprint
+        {
+            get
+            {
+                return this.GetThumbprint();
+            }
+            set
+            {
+                this.SetThumbprint(value);
+            }
+        }
+
+        public IDictionary<string, string> ExtendedProperties { get; set; } = new Dictionary<string, string>();
 
         public override string ToString()
         {

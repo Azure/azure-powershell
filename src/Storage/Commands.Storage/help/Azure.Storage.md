@@ -63,10 +63,10 @@ Lists the storage tables.
 Gets the stored access policy or policies for an Azure storage table.
 
 ### [New-AzureStorageAccountSASToken](New-AzureStorageAccountSASToken.md)
-Creates an SAS token.
+Creates an account-level SAS token.
 
 ### [New-AzureStorageBlobSASToken](New-AzureStorageBlobSASToken.md)
-Generates an SAS token for an Azure storage blob.
+Generates a SAS token for an Azure storage blob.
 
 ### [New-AzureStorageContainer](New-AzureStorageContainer.md)
 Creates an Azure storage container.
@@ -184,6 +184,9 @@ Sets the stored access policy for an Azure storage table.
 
 ### [Start-AzureStorageBlobCopy](Start-AzureStorageBlobCopy.md)
 Starts to copy a blob.
+
+### [Start-AzureStorageBlobIncrementalCopy](Start-AzureStorageBlobIncrementalCopy.md)
+Start an Incremental copy operation from a Page blob snapshot to the specified destination Page blob.
 
 ### [Start-AzureStorageFileCopy](Start-AzureStorageFileCopy.md)
 Starts to copy a source file.

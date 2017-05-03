@@ -23,8 +23,14 @@ Gets an integration account callback URL.
 ### [Get-AzureRmIntegrationAccountCertificate](Get-AzureRmIntegrationAccountCertificate.md)
 Gets integration account certificates from a resource group.
 
+### [Get-AzureRmIntegrationAccountGeneratedEdifactIcn](Get-AzureRmIntegrationAccountGeneratedEdifactIcn.md)
+Gets integration account generated Edifact interchange control number per agreement.
+
 ### [Get-AzureRmIntegrationAccountGeneratedIcn](Get-AzureRmIntegrationAccountGeneratedIcn.md)
-This cmdlet retrieves the current value of the generated interchange control number per agreement.
+Gets integration account generated X12 interchange control number per agreement.
+
+### [Get-AzureRmIntegrationAccountGeneratedX12Icn](Get-AzureRmIntegrationAccountGeneratedX12Icn.md)
+Gets integration account generated X12 interchange control number per agreement.
 
 ### [Get-AzureRmIntegrationAccountMap](Get-AzureRmIntegrationAccountMap.md)
 Gets an integration account map.
@@ -32,8 +38,14 @@ Gets an integration account map.
 ### [Get-AzureRmIntegrationAccountPartner](Get-AzureRmIntegrationAccountPartner.md)
 Gets integration account partners.
 
+### [Get-AzureRmIntegrationAccountReceivedEdifactIcn](Get-AzureRmIntegrationAccountReceivedEdifactIcn.md)
+Gets integration account received Edifact interchange control number per agreement.
+
 ### [Get-AzureRmIntegrationAccountReceivedIcn](Get-AzureRmIntegrationAccountReceivedIcn.md)
-This cmdlet retrieves a specific received interchange control number per agreement and control number value.
+Gets integration account received X12 interchange control number per agreement.
+
+### [Get-AzureRmIntegrationAccountReceivedX12Icn](Get-AzureRmIntegrationAccountReceivedX12Icn.md)
+Gets integration account received X12 interchange control number per agreement.
 
 ### [Get-AzureRmIntegrationAccountSchema](Get-AzureRmIntegrationAccountSchema.md)
 Gets integration account schemas.
@@ -95,8 +107,14 @@ Removes an integration account map.
 ### [Remove-AzureRmIntegrationAccountPartner](Remove-AzureRmIntegrationAccountPartner.md)
 Removes an integration account partner.
 
+### [Remove-AzureRmIntegrationAccountReceivedEdifactIcn](Remove-AzureRmIntegrationAccountReceivedEdifactIcn.md)
+Removes an integration account received Edifact interchange control number.
+
 ### [Remove-AzureRmIntegrationAccountReceivedIcn](Remove-AzureRmIntegrationAccountReceivedIcn.md)
-This cmdlet removes a specific received interchange control number per agreement and control number value.
+Removes an integration account received X12 interchange control number.
+
+### [Remove-AzureRmIntegrationAccountReceivedX12Icn](Remove-AzureRmIntegrationAccountReceivedX12Icn.md)
+Removes an integration account received X12 interchange control number.
 
 ### [Remove-AzureRmIntegrationAccountSchema](Remove-AzureRmIntegrationAccountSchema.md)
 Removes an integration account schema.
@@ -113,8 +131,14 @@ Modifies an integration account agreement.
 ### [Set-AzureRmIntegrationAccountCertificate](Set-AzureRmIntegrationAccountCertificate.md)
 Modifies an integration account certificate.
 
+### [Set-AzureRmIntegrationAccountGeneratedEdifactIcn](Set-AzureRmIntegrationAccountGeneratedEdifactIcn.md)
+Modifies an integration account generated Edifact interchange control number.
+
 ### [Set-AzureRmIntegrationAccountGeneratedIcn](Set-AzureRmIntegrationAccountGeneratedIcn.md)
-Updates the integration account generated interchange control number (ICN) in the Azure resource group.
+Modifies an integration account generated X12 interchange control number.
+
+### [Set-AzureRmIntegrationAccountGeneratedX12Icn](Set-AzureRmIntegrationAccountGeneratedX12Icn.md)
+Modifies an integration account generated X12 interchange control number.
 
 ### [Set-AzureRmIntegrationAccountMap](Set-AzureRmIntegrationAccountMap.md)
 Modifies an integration account map.
@@ -122,8 +146,14 @@ Modifies an integration account map.
 ### [Set-AzureRmIntegrationAccountPartner](Set-AzureRmIntegrationAccountPartner.md)
 Modifies an integration account partner.
 
+### [Set-AzureRmIntegrationAccountReceivedEdifactIcn](Set-AzureRmIntegrationAccountReceivedEdifactIcn.md)
+Modifies an integration account received Edifact interchange control number.
+
 ### [Set-AzureRmIntegrationAccountReceivedIcn](Set-AzureRmIntegrationAccountReceivedIcn.md)
-Updates the integration account received interchange control number (ICN) in the Azure resource group.
+Modifies an integration account received X12 interchange control number.
+
+### [Set-AzureRmIntegrationAccountReceivedX12Icn](Set-AzureRmIntegrationAccountReceivedX12Icn.md)
+Modifies an integration account received X12 interchange control number.
 
 ### [Set-AzureRmIntegrationAccountSchema](Set-AzureRmIntegrationAccountSchema.md)
 Modifies an integration account schema.

@@ -533,7 +533,8 @@ function Test_GetNonExistSecret
     $keyVault = Get-KeyVault
     $secretname= Get-SecretName 'notexistvault'
       
-    Assert-Throws {Get-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname}
+    $secret = Get-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname
+    Assert-Null $secret
 }
 
 <#
@@ -561,7 +562,8 @@ function Test_RemoveSecretWithoutPrompt
     $sec=Remove-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname -Force -Confirm:$false -PassThru
     Assert-NotNull $sec
     
-    Assert-Throws { Get-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname }    
+    $secret = Get-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname
+    Assert-Null $secret
 }
 
 <#
@@ -597,7 +599,8 @@ function Test_RemoveSecretPositionalParameter
 
     Remove-AzureKeyVaultSecret $keyVault $secretname  -Force -Confirm:$false 
     
-    Assert-Throws {Get-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname}    
+    $secret = Get-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname
+    Assert-Null $secret
 }
 
 <#
@@ -615,7 +618,8 @@ function Test_RemoveSecretAliasParameter
 
     Remove-AzureKeyVaultSecret -VaultName $keyVault  -SecretName $secretname  -Force -Confirm:$false 
     
-    Assert-Throws {Get-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname}               
+    $secret = Get-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname
+    Assert-Null $secret            
 }
 
 <#
@@ -650,6 +654,109 @@ function Test_RemoveSecretInNoPermissionVault
     $keyVault = Get-KeyVault $false
     $secretname= Get-SecretName 'nopermission'
     Assert-Throws {Remove-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname -Force -Confirm:$false}
+}
+
+<#
+.SYNOPSIS
+Tests backup and restoring of a secret by name
+#>
+function Test_BackupRestoreSecretByName
+{
+    $keyVault = Get-KeyVault
+    $name=Get-SecretName 'backuprestore'   
+    $secret=Set-AzureKeyVaultSecret -VaultName $keyVault -Name $name -SecretValue $securedata
+    Assert-NotNull $secret                 
+    $global:createdSecrets += $name
+
+    $backupblob = Backup-AzureKeyVaultSecret -VaultName $keyVault -SecretName $name       
+    Remove-AzureKeyVaultSecret -VaultName $keyVault -Name $name -Force -Confirm:$false
+    $restoredSecret = Restore-AzureKeyVaultSecret -VaultName $keyVault -InputFile $backupblob
+    
+    $retrievedSecret = Get-AzureKeyVaultSecret -VaultName $keyVault -SecretName $name
+    Assert-AreEqual $retrievedSecret.SecretValueText $data
+}
+
+<#
+.SYNOPSIS
+Tests backup and restoring of a secret by object
+#>
+function Test_BackupRestoreSecretByRef
+{
+    $keyVault = Get-KeyVault
+    $name=Get-SecretName 'backuprestore'   
+    $secret=Set-AzureKeyVaultSecret -VaultName $keyVault -Name $name -SecretValue $securedata
+    Assert-NotNull $secret                 
+    $global:createdSecrets += $name
+
+    $backupblob = Backup-AzureKeyVaultSecret -Secret $secret
+    Remove-AzureKeyVaultSecret -VaultName $keyVault -Name $name -Force -Confirm:$false
+    $restoredSecret = Restore-AzureKeyVaultSecret -VaultName $keyVault -InputFile $backupblob
+    
+    $retrievedSecret = Get-AzureKeyVaultSecret -VaultName $keyVault -SecretName $name
+    Assert-AreEqual $retrievedSecret.SecretValueText $data
+}
+
+<#
+.SYNOPSIS
+Tests backup of a non-existing secret
+#>
+function Test_BackupNonExistingSecret
+{
+    $keyVault = Get-KeyVault
+    $name=Get-SecretName 'backupnonexisting'
+
+    Assert-Throws { Backup-AzureKeyVaultSecret -VaultName $keyVault -SecretName $name }
+}
+
+<#
+.SYNOPSIS
+Tests backup of a secret to a specific file and ability to restore
+#>
+function Test_BackupSecretToANamedFile
+{
+    $keyVault = Get-KeyVault
+    $name=Get-SecretName 'backupnamedfile'
+    $secret=Set-AzureKeyVaultSecret -VaultName $keyVault -Name $name -SecretValue $securedata
+    Assert-NotNull $secret                 
+    $global:createdSecrets += $name
+  
+    $backupfile='.\backup' + ([GUID]::NewGuid()).GUID.ToString() + '.blob'
+ 
+    Backup-AzureKeyVaultSecret -VaultName $keyVault -SecretName $name -OutputFile $backupfile    
+    Remove-AzureKeyVaultSecret -VaultName $keyVault -Name $name -Force -Confirm:$false
+    $restoredSecret = Restore-AzureKeyVaultSecret -VaultName $keyVault -InputFile $backupfile
+
+    $retrievedSecret = Get-AzureKeyVaultSecret -VaultName $keyVault -SecretName $name
+    Assert-AreEqual $retrievedSecret.SecretValueText $data
+}
+
+<#
+.SYNOPSIS
+Tests backup of a key to a specific, existing file 
+#>
+function Test_BackupSecretToExistingFile
+{
+    $keyVault = Get-KeyVault
+    $name=Get-SecretName 'backupexistingfile'
+    $secret=Set-AzureKeyVaultSecret -VaultName $keyVault -Name $name -SecretValue $securedata
+    Assert-NotNull $secret                 
+    $global:createdSecrets += $name
+  
+    $backupfile='.\backup' + ([GUID]::NewGuid()).GUID.ToString() + '.blob'
+    Backup-AzureKeyVaultSecret -VaultName $keyVault -SecretName $name -OutputFile $backupfile 
+    Backup-AzureKeyVaultSecret -VaultName $keyVault -SecretName $name -OutputFile $backupfile -Force -Confirm:$false
+}
+
+
+<#
+.SYNOPSIS
+Tests restoring a secret from a non-existing file
+#>
+function Test_RestoreSecretFromNonExistingFile
+{
+    $keyVault = Get-KeyVault
+
+    Assert-Throws { Restore-AzureKeyVaultSecret -VaultName $keyVault -InputFile c:\nonexisting.blob }
 }
 
 <#
@@ -718,4 +825,131 @@ function Test_PipelineRemoveSecrets
 
     $secs = Get-AzureKeyVaultSecret $keyVault |  Where-Object {$_.SecretName -like $secretpartialname+'*'}  
     Assert-AreEqual $secs.Count 0     
+}
+
+<#
+.SYNOPSIS
+Tests getting a previously deleted secret
+#>
+
+function Test_GetDeletedSecret
+{
+	# Create a software secret for deleting
+    $keyVault = Get-KeyVault
+    $secretname=Get-SecretName 'GetDeletedSecret'
+    $sec=Set-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname  -SecretValue $securedata
+    Assert-NotNull $sec
+    $global:createdSecrets += $secretname   
+
+	$sec | Remove-AzureKeyVaultSecret -Force -Confirm:$false
+
+	Wait-ForDeletedSecret $keyVault $secretname
+
+	$deletedSecret = Get-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname -InRemovedState
+	Assert-NotNull $deletedSecret
+	Assert-NotNull $deletedSecret.DeletedDate
+	Assert-NotNull $deletedSecret.ScheduledPurgeDate
+
+}
+
+<#
+.SYNOPSIS
+Tests listing all previously deleted secrets
+#>
+
+function Test_GetDeletedSecrets
+{
+	$keyVault = Get-KeyVault
+    $secretname=Get-SecretName 'GetDeletedSecrets'
+    $sec=Set-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname  -SecretValue $securedata
+    Assert-NotNull $sec
+    $global:createdSecrets += $secretname   
+
+	$sec | Remove-AzureKeyVaultSecret -Force -Confirm:$false
+
+	Wait-ForDeletedSecret $keyVault $secretname
+
+	$deletedSecrets = Get-AzureKeyVaultSecret -VaultName $keyVault -InRemovedState
+	Assert-True {$deletedSecrets.Count -ge 1}
+    Assert-True {$deletedSecrets.Name -contains $key.Name}
+}
+
+<#
+.SYNOPSIS
+Tests recovering a previously deleted secret.
+#>
+
+function Test_UndoRemoveSecret
+{
+	# Create a software secret for updating
+    $keyVault = Get-KeyVault
+    $secretname=Get-SecretName 'UndoRemoveSecret'
+    $sec=Set-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname  -SecretValue $securedata
+    Assert-NotNull $sec
+    $global:createdSecrets += $secretname   
+
+	$sec | Remove-AzureKeyVaultSecret -Force -Confirm:$false
+
+	Wait-ForDeletedSecret $keyVault $secretname
+
+	$recoveredSecret = Undo-AzureKeyVaultSecretRemoval -VaultName $keyVault -Name $secretname
+
+	Assert-NotNull $recoveredSecret
+	Assert-AreEqual $recoveredSecret.Name $sec.Name
+	Assert-AreEqual $recoveredSecret.Version $sec.Version
+}
+
+<#
+.SYNOPSIS
+Tests purging a deleted secret for good.
+#>
+
+function Test_RemoveDeletedSecret
+{
+	# Create a software key for updating
+    $keyVault = Get-KeyVault
+    $secretname=Get-SecretName 'RemoveDeletedSecret'
+    $sec=Set-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname  -SecretValue $securedata
+    Assert-NotNull $sec
+    $global:createdSecrets += $secretname   
+
+	$sec | Remove-AzureKeyVaultSecret -Force -Confirm:$false
+
+	Wait-ForDeletedSecret $keyVault $secretname
+	
+	Remove-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname -InRemovedState -Force -Confirm:$false
+}
+
+<#
+.SYNOPSIS
+Tests purge a secret that has not been deleted yet
+#>
+function Test_RemoveNonExistDeletedSecret
+{
+	$keyVault = Get-KeyVault
+    $secretname= Get-SecretName 'RemoveNonExistSecret'
+	$sec= Set-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname  -SecretValue $securedata
+	Assert-NotNull $sec
+    $global:createdSecrets += $secretname   
+
+    Assert-Throws {Remove-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname -InRemovedState -Force -Confirm:$false}
+}
+
+<#
+.SYNOPSIS
+Tests pipeline commands to remove multiple deleted secrets 
+#>
+
+function Test_PipelineRemoveDeletedSecrets
+{
+    $keyVault = Get-KeyVault
+    $secretpartialname=Get-SecretName 'piperemove'
+    $total=2
+    BulkCreateSecrets $keyVault $secretpartialname $total 
+    Get-AzureKeyVaultSecret $keyVault |  Where-Object {$_.SecretName -like $secretpartialname+'*'}  | Remove-AzureKeyVaultSecret -Force -Confirm:$false	
+	Wait-Seconds 30 # wait for slm to delete keys
+    Get-AzureKeyVaultSecret $keyVault -InRemovedState |  Where-Object {$_.SecretName -like $secretpartialname+'*'}  | Remove-AzureKeyVaultSecret -Force -Confirm:$false	-InRemovedState
+
+	$secs = Get-AzureKeyVaultSecret $keyVault -InRemovedState |  Where-Object {$_.SecretName -like $secretpartialname+'*'}
+	Assert-AreEqual $secs.Count 0   
 }
