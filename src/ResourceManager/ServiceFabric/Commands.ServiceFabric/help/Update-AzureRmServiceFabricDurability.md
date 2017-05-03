@@ -26,7 +26,7 @@ Use **Update-AzureRmServiceFabricDurability** to update durability or SKU of the
 PS c:> Update-AzureRmServiceFabricDurability -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -DurabilityLevel Silver -NodeType nt1
 ```
 
-This command changes durability tier of the node type 'nt1' to silver.
+This command changes durability tier of the nodetype 'nt1' to silver.
 
 ## PARAMETERS
 
