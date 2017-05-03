@@ -18,11 +18,10 @@ using System.Configuration;
 using System.Diagnostics.CodeAnalysis;
 using System.Net.Security;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -49,9 +48,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
         }
 
-        /// Azure profile
-        /// </summary>
-        public IAzureContextContainer Profile { get; set; }
+        public ResourceManagementClient RmClient
+        {
+            get
+            {
+                return resourceManagementClient;
+            }
+        }
+
         /// <summary>
         /// Resource credentials holds vault, cloud service name, vault key and other details.
         /// </summary>
@@ -81,12 +85,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// required current subscription.
         /// </summary>
         /// <param name="azureSubscription">Azure Subscription</param>
-        public PSRecoveryServicesClient(IAzureContextContainer azureProfile)
+        public PSRecoveryServicesClient(IAzureContext defaultContext)
         {
             System.Configuration.Configuration recoveryServicesConfig = ConfigurationManager.OpenExeConfiguration(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
             System.Configuration.AppSettingsSection appSettings = (System.Configuration.AppSettingsSection)recoveryServicesConfig.GetSection("appSettings");
-            
+
             string resourceType = string.Empty;
 
             // Get Resource provider namespace from config if needed to communicate with internal deployments

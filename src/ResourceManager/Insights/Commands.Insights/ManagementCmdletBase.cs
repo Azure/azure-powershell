@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Insights
             {
                 if (this.monitorManagementClient == null)
                 {
-                    this.monitorManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<MonitorManagementClient>(DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
+                    this.monitorManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<MonitorManagementClient>(DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
                 }
 
                 return this.monitorManagementClient;
