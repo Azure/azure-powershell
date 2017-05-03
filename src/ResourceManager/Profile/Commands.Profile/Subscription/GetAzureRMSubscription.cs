@@ -47,7 +47,13 @@ namespace Microsoft.Azure.Commands.Profile
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
-            _client = new RMProfileClient(DefaultProfile as AzureRmProfile);
+            var profile = DefaultProfile as AzureRmProfile;
+            if (profile == null)
+            {
+                throw new InvalidOperationException(Resources.RmProfileNull);
+            }
+
+            _client = new RMProfileClient(profile);
             _client.WarningLog = (s) => WriteWarning(s);
         }
 

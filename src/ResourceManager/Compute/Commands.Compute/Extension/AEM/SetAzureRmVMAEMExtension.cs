@@ -210,7 +210,20 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 else
                 {
-                    this._Helper.WriteWarning("[WARN] Managed Disks are not yet supported. Extension will be installed but no disk metrics will be available.");
+                    var osDiskMD = ComputeClient.ComputeManagementClient.Disks.Get(this._Helper.GetResourceGroupFromId(osdisk.ManagedDisk.Id), 
+                        this._Helper.GetResourceNameFromId(osdisk.ManagedDisk.Id));
+                    if (osDiskMD.AccountType == StorageAccountTypes.PremiumLRS)
+                    {
+                        WriteVerbose("OS Disk Storage Account is a premium account - adding SLAs for OS disk");
+                        var sla = this._Helper.GetDiskSLA(osDiskMD.DiskSizeGB, null);
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.type", Value = AEMExtensionConstants.DISK_TYPE_PREMIUM_MD });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.sla.throughput", Value = sla.TP });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.sla.iops", Value = sla.IOPS });
+                    }
+                    else
+                    {
+                        this._Helper.WriteWarning("[WARN] Standard Managed Disks are not supported. Extension will be installed but no disk metrics will be available.");
+                    }
                 }
 
                 // Get Storage accounts from disks
@@ -219,7 +232,23 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     if (disk.ManagedDisk != null)
                     {
-                        this._Helper.WriteWarning("[WARN] Managed Disks are not yet supported. Extension will be installed but no disk metrics will be available.");
+                        var diskMD = ComputeClient.ComputeManagementClient.Disks.Get(this._Helper.GetResourceGroupFromId(disk.ManagedDisk.Id),
+                            this._Helper.GetResourceNameFromId(disk.ManagedDisk.Id));
+
+                        if (diskMD.AccountType == StorageAccountTypes.PremiumLRS)
+                        {
+                            this._Helper.WriteVerbose("Data Disk {0} is a Premium Managed Disk - adding SLAs for disk", diskNumber.ToString());
+                            var sla = this._Helper.GetDiskSLA(diskMD.DiskSizeGB, null);
+                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.type." + diskNumber, Value = AEMExtensionConstants.DISK_TYPE_PREMIUM_MD });
+                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.sla.throughput." + diskNumber, Value = sla.TP });
+                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.sla.iops." + diskNumber, Value = sla.IOPS });
+                            this._Helper.WriteVerbose("Done - Data Disk {0} is a Premium Managed Disk - adding SLAs for disk", diskNumber.ToString());
+                        }
+                        else
+                        {
+                            this._Helper.WriteWarning("[WARN] Standard Managed Disks are not supported. Extension will be installed but no disk metrics will be available.");
+                            
+                        }
                         continue;
                     }
 

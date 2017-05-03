@@ -98,6 +98,18 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
             return result.Groups[2].Value;
         }
 
+        internal string GetResourceNameFromId(string id)
+        {
+            var matcher = new Regex("/subscriptions/([^/]+)/resourceGroups/([^/]+)/providers/([^/]+)/([^/]+)/([^/]+)(/\\w+)?");
+            var result = matcher.Match(id);
+            if (!result.Success || result.Groups == null || result.Groups.Count < 3)
+            {
+                throw new InvalidOperationException(string.Format("Cannot find resource group name and storage account name from resource identity {0}", id));
+            }
+
+            return result.Groups[5].Value;
+        }
+
         internal bool IsPremiumStorageAccount(string accountName)
         {
             return IsPremiumStorageAccount(this.GetStorageAccountFromCache(accountName));
@@ -105,6 +117,11 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
 
         internal int? GetDiskSizeGbFromBlobUri(string sBlobUri)
         {
+            if (String.IsNullOrEmpty(sBlobUri))
+            {
+                return null;
+            }
+
             var blobMatch = Regex.Match(sBlobUri, "https?://(\\S*?)\\..*?/(.*)");
             if (!blobMatch.Success)
             {
@@ -322,7 +339,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
         {
             if (account.AccountType.HasValue)
             {
-                return (account.AccountType.Value.ToString().StartsWith("Premium"));
+                return (account.AccountType.Value == AccountType.PremiumLRS);
             }
 
             WriteError("No AccountType for storage account {0} found", account.Name);
@@ -331,19 +348,19 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
 
         internal AzureSLA GetDiskSLA(OSDisk osdisk)
         {
-            return this.GetDiskSLA(osdisk.DiskSizeGB, osdisk.Vhd.Uri);
+            return this.GetDiskSLA(osdisk.DiskSizeGB, osdisk.Vhd);
         }
 
         internal AzureSLA GetDiskSLA(DataDisk datadisk)
         {
-            return this.GetDiskSLA(datadisk.DiskSizeGB, datadisk.Vhd.Uri);
+            return this.GetDiskSLA(datadisk.DiskSizeGB, datadisk.Vhd);
         }
 
-        internal AzureSLA GetDiskSLA(int? diskSize, string vhdUri)
+        internal AzureSLA GetDiskSLA(int? diskSize, VirtualHardDisk vhd)
         {
-            if (!diskSize.HasValue)
+            if (!diskSize.HasValue && vhd != null)
             {
-                diskSize = this.GetDiskSizeGbFromBlobUri(vhdUri);
+                diskSize = this.GetDiskSizeGbFromBlobUri(vhd.Uri);
             }
             if (!diskSize.HasValue)
             {
@@ -364,7 +381,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
                 sla.IOPS = 2300;
                 sla.TP = 150;
             }
-            else if (diskSize > 0 && diskSize < 1025)
+            else if (diskSize > 0 && diskSize < 1024)
             {
                 // P30
                 sla.IOPS = 5000;

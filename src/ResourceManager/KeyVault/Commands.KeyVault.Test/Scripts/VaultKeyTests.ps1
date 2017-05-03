@@ -838,9 +838,9 @@ function Test_RemoveKeyInNoPermissionVault
 
 <#
 .SYNOPSIS
-Tests backup and restore a key
+Tests backup and restore a key by name
 #>
-function Test_BackupRestoreKey
+function Test_BackupRestoreKeyByName
 {
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'backuprestore'   
@@ -858,9 +858,27 @@ function Test_BackupRestoreKey
 
 <#
 .SYNOPSIS
-Tests backup a none existing key
+Tests backup and restore a key by object
 #>
-function Test_BackupNonExisitingKey
+function Test_BackupRestoreKeyByRef
+{
+    $keyVault = Get-KeyVault
+    $keyname=Get-KeyName 'backuprestore'   
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
+    Assert-NotNull $key                 
+    $global:createdKeys += $keyname
+
+    $backupblob = Backup-AzureKeyVaultKey -Key $key
+    Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Force -Confirm:$false
+    $restoredKey = Restore-AzureKeyVaultKey -VaultName $keyVault -InputFile $backupblob
+    Assert-KeyAttributes $restoredKey.Attributes 'RSA' $true $null $null $null
+}
+
+<#
+.SYNOPSIS
+Tests backup a non-existing key
+#>
+function Test_BackupNonExistingKey
 {
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'backupnonexisting'
@@ -872,7 +890,7 @@ function Test_BackupNonExisitingKey
 .SYNOPSIS
 Tests backup a key to a specific file and be able to restore
 #>
-function Test_BackupToANamedFile
+function Test_BackupKeyToANamedFile
 {
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'backupnamedfile'
@@ -894,7 +912,7 @@ function Test_BackupToANamedFile
 .SYNOPSIS
 Tests backup a key to a specific file which exists 
 #>
-function Test_BackupToExistingFile
+function Test_BackupKeyToExistingFile
 {
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'backupexistingfile'
@@ -905,7 +923,7 @@ function Test_BackupToExistingFile
     $backupfile='.\backup' + ([GUID]::NewGuid()).GUID.ToString() + '.blob'
  
     Backup-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname -OutputFile $backupfile        
-    Assert-Throws { Backup-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname -OutputFile $backupfile }
+    Backup-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname -OutputFile $backupfile -Force -Confirm:$false
 }
 
 
@@ -913,7 +931,7 @@ function Test_BackupToExistingFile
 .SYNOPSIS
 Tests restore a key from a none existing file
 #>
-function Test_RestoreFromNonExistingFile
+function Test_RestoreKeyFromNonExistingFile
 {
     $keyVault = Get-KeyVault
 
@@ -935,7 +953,7 @@ function Test_PipelineUpdateKeys
     Get-AzureKeyVaultKey $keyVault |  Where-Object {$_.KeyName -like $keypartialname+'*'}  | Set-AzureKeyVaultKeyAttribute -Enable $false	
 
     Get-AzureKeyVaultKey $keyVault |  Where-Object {$_.KeyName -like $keypartialname+'*'}  |  ForEach-Object {  Assert-False { return $_.Enabled } }
- }
+}
  
  <#
 .SYNOPSIS

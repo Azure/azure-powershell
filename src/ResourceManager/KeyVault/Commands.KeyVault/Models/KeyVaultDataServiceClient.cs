@@ -35,9 +35,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public KeyVaultDataServiceClient(IAuthenticationFactory authFactory, IAzureContext context)
         {
             if (authFactory == null)
-                throw new ArgumentNullException("authFactory");
+                throw new ArgumentNullException(nameof(authFactory));
             if (context == null)
-                throw new ArgumentNullException("context");
+                throw new ArgumentNullException(nameof(context));
             if (context.Environment == null)
                 throw new ArgumentException(KeyVaultProperties.Resources.InvalidAzureEnvironment);
 
@@ -59,11 +59,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public KeyBundle CreateKey(string vaultName, string keyName, KeyAttributes keyAttributes)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
             if (string.IsNullOrEmpty(keyName))
-                throw new ArgumentNullException("keyName");
+                throw new ArgumentNullException(nameof(keyName));
             if (keyAttributes == null)
-                throw new ArgumentNullException("keyAttributes");
+                throw new ArgumentNullException(nameof(keyAttributes));
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
             var attributes = (Azure.KeyVault.Models.KeyAttributes)keyAttributes;
@@ -90,11 +90,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public CertificateBundle MergeCertificate(string vaultName, string certName, X509Certificate2Collection certs, IDictionary<string, string> tags)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
             if (string.IsNullOrEmpty(certName))
-                throw new ArgumentNullException("certName");
+                throw new ArgumentNullException(nameof(certName));
             if (null == certs)
-                throw new ArgumentNullException("certs");
+                throw new ArgumentNullException(nameof(certs));
 
             CertificateBundle certBundle;
 
@@ -116,11 +116,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public CertificateBundle ImportCertificate(string vaultName, string certName, string base64CertColl, SecureString certPassword, IDictionary<string, string> tags)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
             if (string.IsNullOrEmpty(certName))
-                throw new ArgumentNullException("certName");
+                throw new ArgumentNullException(nameof(certName));
             if (string.IsNullOrEmpty(base64CertColl))
-                throw new ArgumentNullException("base64CertColl");
+                throw new ArgumentNullException(nameof(base64CertColl));
 
             CertificateBundle certBundle;
 
@@ -150,11 +150,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public CertificateBundle ImportCertificate(string vaultName, string certName, X509Certificate2Collection certificateCollection, IDictionary<string, string> tags)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
             if (string.IsNullOrEmpty(certName))
-                throw new ArgumentNullException("certName");
+                throw new ArgumentNullException(nameof(certName));
             if (null == certificateCollection)
-                throw new ArgumentNullException("certificateCollection");
+                throw new ArgumentNullException(nameof(certificateCollection));
 
             CertificateBundle certBundle;
             var vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
@@ -180,13 +180,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public KeyBundle ImportKey(string vaultName, string keyName, KeyAttributes keyAttributes, JsonWebKey webKey, bool? importToHsm)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
             if (string.IsNullOrEmpty(keyName))
-                throw new ArgumentNullException("keyName");
+                throw new ArgumentNullException(nameof(keyName));
             if (keyAttributes == null)
-                throw new ArgumentNullException("keyAttributes");
+                throw new ArgumentNullException(nameof(keyAttributes));
             if (webKey == null)
-                throw new ArgumentNullException("webKey");
+                throw new ArgumentNullException(nameof(webKey));
             if (webKey.Kty == JsonWebKeyType.RsaHsm && (importToHsm.HasValue && !importToHsm.Value))
                 throw new ArgumentException(KeyVaultProperties.Resources.ImportByokAsSoftkeyError);
 
@@ -215,11 +215,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public KeyBundle UpdateKey(string vaultName, string keyName, string keyVersion, KeyAttributes keyAttributes)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
             if (string.IsNullOrEmpty(keyName))
-                throw new ArgumentNullException("keyName");
+                throw new ArgumentNullException(nameof(keyName));
             if (keyAttributes == null)
-                throw new ArgumentNullException("keyAttributes");
+                throw new ArgumentNullException(nameof(keyAttributes));
             
             var attributes = (Azure.KeyVault.Models.KeyAttributes)keyAttributes;
             var keyIdentifier = new KeyIdentifier(this.vaultUriHelper.CreateVaultAddress(vaultName), keyName, keyVersion);
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public Contacts GetCertificateContacts(string vaultName)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
@@ -269,9 +269,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public CertificateBundle GetCertificate(string vaultName, string certName, string certificateVersion)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
             if (string.IsNullOrEmpty(certName))
-                throw new ArgumentNullException("certName");
+                throw new ArgumentNullException(nameof(certName));
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
@@ -299,9 +299,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public KeyBundle GetKey(string vaultName, string keyName, string keyVersion)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
             if (string.IsNullOrEmpty(keyName))
-                throw new ArgumentNullException("keyName");
+                throw new ArgumentNullException(nameof(keyName));
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
@@ -328,7 +328,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public IEnumerable<CertificateIdentityItem> GetCertificates(KeyVaultObjectFilterOptions options)
         {
             if (options == null)
-                throw new ArgumentNullException("options");
+                throw new ArgumentNullException(nameof(options));
 
             if (string.IsNullOrEmpty(options.VaultName))
                 throw new ArgumentException(KeyVaultProperties.Resources.InvalidVaultName);
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public IEnumerable<CertificateIdentityItem> GetCertificateVersions(KeyVaultObjectFilterOptions options)
         {
             if (options == null)
-                throw new ArgumentNullException("options");
+                throw new ArgumentNullException(nameof(options));
 
             if (string.IsNullOrEmpty(options.VaultName))
                 throw new ArgumentException(KeyVaultProperties.Resources.InvalidVaultName);
@@ -388,7 +388,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public IEnumerable<KeyIdentityItem> GetKeys(KeyVaultObjectFilterOptions options)
         {
             if (options == null)
-                throw new ArgumentNullException("options");
+                throw new ArgumentNullException(nameof(options));
 
             if (string.IsNullOrEmpty(options.VaultName))
                 throw new ArgumentException(KeyVaultProperties.Resources.InvalidVaultName);
@@ -417,7 +417,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public IEnumerable<KeyIdentityItem> GetKeyVersions(KeyVaultObjectFilterOptions options)
         {
             if (options == null)
-                throw new ArgumentNullException("options");
+                throw new ArgumentNullException(nameof(options));
 
             if (string.IsNullOrEmpty(options.VaultName))
                 throw new ArgumentException(KeyVaultProperties.Resources.InvalidVaultName);
@@ -448,9 +448,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public DeletedKeyBundle DeleteKey(string vaultName, string keyName)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
             if (string.IsNullOrEmpty(keyName))
-                throw new ArgumentNullException("keyName");
+                throw new ArgumentNullException(nameof(keyName));
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
@@ -470,9 +470,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public Contacts SetCertificateContacts(string vaultName, Contacts contacts)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
             if (null == contacts)
-                throw new ArgumentNullException("contacts");
+                throw new ArgumentNullException(nameof(contacts));
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
@@ -493,13 +493,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public Secret SetSecret(string vaultName, string secretName, SecureString secretValue, SecretAttributes secretAttributes)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
             if (string.IsNullOrEmpty(secretName))
-                throw new ArgumentNullException("secretName");
+                throw new ArgumentNullException(nameof(secretName));
             if (secretValue == null)
-                throw new ArgumentNullException("secretValue");
+                throw new ArgumentNullException(nameof(secretValue));
             if (secretAttributes == null)
-                throw new ArgumentNullException("secretAttributes");
+                throw new ArgumentNullException(nameof(secretAttributes));
 
             string value = secretValue.ConvertToString();
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
@@ -522,11 +522,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public Secret UpdateSecret(string vaultName, string secretName, string secretVersion, SecretAttributes secretAttributes)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
             if (string.IsNullOrEmpty(secretName))
-                throw new ArgumentNullException("secretName");
+                throw new ArgumentNullException(nameof(secretName));
             if (secretAttributes == null)
-                throw new ArgumentNullException("secretAttributes");
+                throw new ArgumentNullException(nameof(secretAttributes));
 
             var secretIdentifier = new SecretIdentifier(this.vaultUriHelper.CreateVaultAddress(vaultName), secretName, secretVersion);
 
@@ -549,9 +549,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public Secret GetSecret(string vaultName, string secretName, string secretVersion)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
             if (string.IsNullOrEmpty(secretName))
-                throw new ArgumentNullException("secretName");
+                throw new ArgumentNullException(nameof(secretName));
 
             var secretIdentifier = new SecretIdentifier(this.vaultUriHelper.CreateVaultAddress(vaultName), secretName, secretVersion);
             SecretBundle secret;
@@ -577,7 +577,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public IEnumerable<SecretIdentityItem> GetSecrets(KeyVaultObjectFilterOptions options)
         {
             if (options == null)
-                throw new ArgumentNullException("options");
+                throw new ArgumentNullException(nameof(options));
             if (string.IsNullOrEmpty(options.VaultName))
                 throw new ArgumentException(KeyVaultProperties.Resources.InvalidVaultName);
 
@@ -605,7 +605,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public IEnumerable<SecretIdentityItem> GetSecretVersions(KeyVaultObjectFilterOptions options)
         {
             if (options == null)
-                throw new ArgumentNullException("options");
+                throw new ArgumentNullException(nameof(options));
             if (string.IsNullOrEmpty(options.VaultName))
                 throw new ArgumentException(KeyVaultProperties.Resources.InvalidVaultName);
             if (string.IsNullOrEmpty(options.Name))
@@ -634,9 +634,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public CertificateOperation EnrollCertificate(string vaultName, string certificateName, CertificatePolicy certificatePolicy, IDictionary<string, string> tags)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
             if (string.IsNullOrEmpty(certificateName))
-                throw new ArgumentNullException("certificateName");
+                throw new ArgumentNullException(nameof(certificateName));
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
@@ -657,9 +657,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public CertificateBundle UpdateCertificate(string vaultName, string certificateName, string certificateVersion, CertificateAttributes certificateAttributes, IDictionary<string, string> tags)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
             if (string.IsNullOrEmpty(certificateName))
-                throw new ArgumentNullException("certificateName");
+                throw new ArgumentNullException(nameof(certificateName));
 
             var certificateIdentifier = new CertificateIdentifier(this.vaultUriHelper.CreateVaultAddress(vaultName), certificateName, certificateVersion);
 
@@ -680,9 +680,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public CertificateBundle DeleteCertificate(string vaultName, string certName)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
             if (string.IsNullOrEmpty(certName))
-                throw new ArgumentNullException("certName");
+                throw new ArgumentNullException(nameof(certName));
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
@@ -703,9 +703,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public CertificateOperation GetCertificateOperation(string vaultName, string certificateName)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
             if (string.IsNullOrEmpty(certificateName))
-                throw new ArgumentNullException("certificateName");
+                throw new ArgumentNullException(nameof(certificateName));
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
@@ -733,9 +733,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public CertificateOperation CancelCertificateOperation(string vaultName, string certificateName)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
             if (string.IsNullOrEmpty(certificateName))
-                throw new ArgumentNullException("certificateName");
+                throw new ArgumentNullException(nameof(certificateName));
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
@@ -756,9 +756,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public CertificateOperation DeleteCertificateOperation(string vaultName, string certificateName)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
             if (string.IsNullOrEmpty(certificateName))
-                throw new ArgumentNullException("certificateName");
+                throw new ArgumentNullException(nameof(certificateName));
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
@@ -779,9 +779,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public DeletedSecret DeleteSecret(string vaultName, string secretName)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
             if (string.IsNullOrEmpty(secretName))
-                throw new ArgumentNullException("secretName");
+                throw new ArgumentNullException(nameof(secretName));
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
@@ -801,11 +801,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public string BackupKey(string vaultName, string keyName, string outputBlobPath)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
             if (string.IsNullOrEmpty(keyName))
-                throw new ArgumentNullException("keyName");
+                throw new ArgumentNullException(nameof(keyName));
             if (string.IsNullOrEmpty(outputBlobPath))
-                throw new ArgumentNullException("outputBlobPath");
+                throw new ArgumentNullException(nameof(outputBlobPath));
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
@@ -827,9 +827,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public KeyBundle RestoreKey(string vaultName, string inputBlobPath)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
             if (string.IsNullOrEmpty(inputBlobPath))
-                throw new ArgumentNullException("inputBlobPath");
+                throw new ArgumentNullException(nameof(inputBlobPath));
 
             var backupBlob = File.ReadAllBytes(inputBlobPath);
 
@@ -848,12 +848,62 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return new KeyBundle(keyBundle, this.vaultUriHelper);
         }
 
+        public string BackupSecret( string vaultName, string secretName, string outputBlobPath )
+        {
+            if ( string.IsNullOrEmpty( vaultName ) )
+                throw new ArgumentNullException(nameof(vaultName));
+            if ( string.IsNullOrEmpty( secretName ) )
+                throw new ArgumentNullException(nameof(secretName));
+            if ( string.IsNullOrEmpty( outputBlobPath ) )
+                throw new ArgumentNullException(nameof(outputBlobPath));
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+
+            BackupSecretResult backupSecretResult;
+            try
+            {
+                backupSecretResult = this.keyVaultClient.BackupSecretAsync( vaultAddress, secretName ).GetAwaiter( ).GetResult( );
+            }
+            catch ( Exception ex )
+            {
+                throw GetInnerException( ex );
+            }
+
+            File.WriteAllBytes( outputBlobPath, backupSecretResult.Value );
+
+            return outputBlobPath;
+        }
+
+        public Secret RestoreSecret( string vaultName, string inputBlobPath )
+        {
+            if ( string.IsNullOrEmpty( vaultName ) )
+                throw new ArgumentNullException(nameof(vaultName));
+            if ( string.IsNullOrEmpty( inputBlobPath ) )
+                throw new ArgumentNullException(nameof(inputBlobPath));
+
+            var backupBlob = File.ReadAllBytes(inputBlobPath);
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+
+            Azure.KeyVault.Models.SecretBundle secretBundle;
+            try
+            {
+                secretBundle = this.keyVaultClient.RestoreSecretAsync( vaultAddress, backupBlob ).GetAwaiter( ).GetResult( );
+            }
+            catch ( Exception ex )
+            {
+                throw GetInnerException( ex );
+            }
+
+            return new Secret( secretBundle, this.vaultUriHelper );
+        }
+
         public CertificatePolicy GetCertificatePolicy(string vaultName, string certificateName)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
             if (string.IsNullOrEmpty(certificateName))
-                throw new ArgumentNullException("certificateName");
+                throw new ArgumentNullException(nameof(certificateName));
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
@@ -880,11 +930,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public CertificatePolicy UpdateCertificatePolicy(string vaultName, string certificateName, CertificatePolicy certificatePolicy)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
             if (string.IsNullOrEmpty(certificateName))
-                throw new ArgumentNullException("certificateName");
+                throw new ArgumentNullException(nameof(certificateName));
             if (certificatePolicy == null)
-                throw new ArgumentNullException("certificatePolicy");
+                throw new ArgumentNullException(nameof(certificatePolicy));
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
             CertificatePolicy resultantCertificatePolicy;
@@ -904,9 +954,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public IssuerBundle GetCertificateIssuer(string vaultName, string issuerName)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
             if (string.IsNullOrEmpty(issuerName))
-                throw new ArgumentNullException("issuerName");
+                throw new ArgumentNullException(nameof(issuerName));
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
@@ -933,7 +983,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public IEnumerable<CertificateIssuerIdentityItem> GetCertificateIssuers(KeyVaultObjectFilterOptions options)
         {
             if (options == null)
-                throw new ArgumentNullException("options");
+                throw new ArgumentNullException(nameof(options));
 
             if (string.IsNullOrEmpty(options.VaultName))
                 throw new ArgumentException(KeyVaultProperties.Resources.InvalidVaultName);
@@ -968,11 +1018,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             KeyVaultCertificateOrganizationDetails organizationDetails)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
             if (string.IsNullOrEmpty(issuerName))
-                throw new ArgumentNullException("issuerName");
+                throw new ArgumentNullException(nameof(issuerName));
             if (string.IsNullOrEmpty(issuerProvider))
-                throw new ArgumentNullException("issuerProvider");
+                throw new ArgumentNullException(nameof(issuerProvider));
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
             var issuer = new IssuerBundle
@@ -1012,9 +1062,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public IssuerBundle DeleteCertificateIssuer(string vaultName, string issuerName)
         {
             if (string.IsNullOrEmpty(vaultName))
-                throw new ArgumentNullException("vaultName");
+                throw new ArgumentNullException(nameof(vaultName));
             if (string.IsNullOrEmpty(issuerName))
-                throw new ArgumentNullException("issuerName");
+                throw new ArgumentNullException(nameof(issuerName));
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 

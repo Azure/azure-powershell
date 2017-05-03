@@ -19,6 +19,7 @@
 -->
 ## Current Release
 
+* Updated Set-AzureRmVMAEMExtension and Test-AzureRmVMAEMExtension cmdlets to support Premium managed disks
 * Backup encryption settings for IaaS VMs and restore on failure
 * ChefServiceInterval option is renamed to ChefDaemonInterval now. Old one will continue to work however.
 

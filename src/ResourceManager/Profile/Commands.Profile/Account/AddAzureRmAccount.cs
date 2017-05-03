@@ -245,26 +245,33 @@ namespace Microsoft.Azure.Commands.Profile
         /// </summary>
         public void OnImport()
         {
+#if DEBUG
             try
             {
+#endif
                 AzureSessionInitializer.InitializeAzureSession();
                 ResourceManagerProfileProvider.InitializeResourceManagerProfile();
+#if DEBUG
                 if (!TestMockSupport.RunningMocked)
                 {
+#endif
                     AzureSession.Instance.DataStore = new DiskDataStore();
+#if DEBUG
                 }
+#endif
                 System.Management.Automation.PowerShell invoker = null;
                 invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
                 invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
                     Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
                     "AzureRmProfileStartup.ps1")));
                 invoker.Invoke();
+#if DEBUG
             }
             catch
             {
                 // This will throw exception for tests, ignore.
             }
+#endif
         }
-
     }
 }
