@@ -27,20 +27,20 @@ namespace Microsoft.Azure.Commands.Billing.Common
     /// </summary>
     public abstract class AzureBillingCmdletBase : AzureRMCmdlet
     {
-        private IBillingClient _billingManagementClient;
+        private IBillingManagementClient _billingManagementClient;
 
         private Dictionary<string, List<string>> _defaultRequestHeaders;
 
         /// <summary>
         /// Gets or sets the Billing management client.
         /// </summary>
-        public IBillingClient BillingManagementClient
+        public IBillingManagementClient BillingManagementClient
         {
             get
             {
                 return _billingManagementClient ??
                        (_billingManagementClient =
-                           AzureSession.Instance.ClientFactory.CreateArmClient<BillingClient>(DefaultProfile.DefaultContext,
+                           AzureSession.Instance.ClientFactory.CreateArmClient<BillingManagementClient>(DefaultProfile.Context,
                                AzureEnvironment.Endpoint.ResourceManager));
             }
             set { _billingManagementClient = value; }

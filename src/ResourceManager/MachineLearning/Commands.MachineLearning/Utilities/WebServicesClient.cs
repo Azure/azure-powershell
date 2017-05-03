@@ -44,13 +44,9 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
 
         public WebService CreateAzureMlWebService(
                             string resourceGroupName,
-                            string location,
                             string webServiceName,
                             WebService serviceDefinition)
         {
-            serviceDefinition.Name = webServiceName;
-            serviceDefinition.Location = location;
-
             return this.apiClient.WebServices.CreateOrUpdateWithRequestId(
                                                 serviceDefinition,
                                                 resourceGroupName,
@@ -77,9 +73,10 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
 
         public WebService GetAzureMlWebService(
                             string resourceGroupName,
-                            string webServiceName)
+                            string webServiceName,
+                            string region)
         {
-            return this.apiClient.WebServices.Get(resourceGroupName, webServiceName);
+            return this.apiClient.WebServices.Get(resourceGroupName, webServiceName, region);
         }
 
         public WebServiceKeys GetAzureMlWebServiceKeys(
@@ -118,7 +115,7 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
             var cancellationTokenParam = cancellationToken ?? CancellationToken.None;
 
             var paginatedResponse =
-                    await this.apiClient.WebServices.ListWithHttpMessagesAsync(
+                    await this.apiClient.WebServices.ListBySubscriptionIdWithHttpMessagesAsync(
                                                         skipToken,
                                                         null,
                                                         cancellationTokenParam).ConfigureAwait(false);
@@ -128,6 +125,15 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
                 Value = paginatedResponse.Body.ToArray(),
                 NextLink = paginatedResponse.Body.NextPageLink
             };
+        }
+
+        public void CreateRegionalProperties(
+                        string resourceGroupName,
+                        string webServiceName,
+                        string region
+                        )
+        {
+            this.apiClient.WebServices.CreateRegionalPropertiesWithRequestId(resourceGroupName, webServiceName, region);
         }
     }
 }
