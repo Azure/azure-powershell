@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
+    using Commands.Common.Authentication.Abstractions;
     using Entities.Providers;
     using Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -39,7 +40,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <param name="resourceId">The resource Id.</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <param name="pre">When specified, indicates if pre-release API versions should be considered.</param>
-        internal static Task<string> DetermineApiVersion(AzureContext context, string resourceId, CancellationToken cancellationToken, bool? pre = null, Dictionary<string, string> cmdletHeaderValues = null)
+        internal static Task<string> DetermineApiVersion(IAzureContext context, string resourceId, CancellationToken cancellationToken, bool? pre = null, Dictionary<string, string> cmdletHeaderValues = null)
         {
             var providerNamespace = ResourceIdUtility.GetExtensionProviderNamespace(resourceId)
                 ?? ResourceIdUtility.GetProviderNamespace(resourceId);
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <param name="resourceType">The resource type.</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <param name="pre">When specified, indicates if pre-release API versions should be considered.</param>
-        internal static Task<string> DetermineApiVersion(AzureContext context, string providerNamespace, string resourceType, CancellationToken cancellationToken, bool? pre = null, Dictionary<string, string> cmdletHeaderValues = null)
+        internal static Task<string> DetermineApiVersion(IAzureContext context, string providerNamespace, string resourceType, CancellationToken cancellationToken, bool? pre = null, Dictionary<string, string> cmdletHeaderValues = null)
         {
             var cacheKey = ApiVersionCache.GetCacheKey(context.Environment.Name, providerNamespace: providerNamespace, resourceType: resourceType);
             var apiVersions = ApiVersionCache.Instance
@@ -99,7 +100,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <param name="providerNamespace">The provider namespace.</param>
         /// <param name="resourceType">The resource type.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
-        private static string[] GetApiVersionsForResourceType(AzureContext context, string providerNamespace, string resourceType, CancellationToken cancellationToken, Dictionary<string, string> cmdletHeaderValues = null)
+        private static string[] GetApiVersionsForResourceType(IAzureContext context, string providerNamespace, string resourceType, CancellationToken cancellationToken, Dictionary<string, string> cmdletHeaderValues = null)
         {
             var resourceManagerClient = ResourceManagerClientHelper.GetResourceManagerClient(context, cmdletHeaderValues);
 

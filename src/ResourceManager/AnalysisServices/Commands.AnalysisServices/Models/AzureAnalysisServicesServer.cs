@@ -12,16 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.Analysis;
 using Microsoft.Azure.Management.Analysis.Models;
-using Microsoft.Rest.Azure;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Net;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Models
 {

@@ -16,10 +16,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Management.EventHub;
 using Microsoft.Azure.Management.EventHub.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Eventhub
 {
@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Commands.Eventhub
 
         public Action<string> WarningLogger { get; set; }
 
-        public EventHubsClient(AzureContext context)
+        public EventHubsClient(IAzureContext context)
         {
-            this.Client = AzureSession.ClientFactory.CreateArmClient<EventHubManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            this.Client = AzureSession.Instance.ClientFactory.CreateArmClient<EventHubManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
 
         }
         public EventHubManagementClient Client

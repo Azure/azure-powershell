@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest;
+using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -26,6 +27,7 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests
         {
             _logger = new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output);
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
+            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
