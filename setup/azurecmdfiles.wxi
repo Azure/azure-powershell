@@ -2,12 +2,6 @@
 <Include xmlns="http://schemas.microsoft.com/wix/2006/wi">
     <Fragment>
         <DirectoryRef Id="PowerShellFolder">
-            <Component Id="cmp7644830B39E03269093EB0A018EAEA56" Guid="*">
-                <File Id="filA689C596FD6AEDE8B73DA7689B7B648A" KeyPath="yes" Source="$(var.sourceDir)\groupMapping.json" />
-            </Component>
-            <Component Id="cmp71EF63E6562FCAAE6D951C41F608AA1A" Guid="*">
-                <File Id="fil0A6EB11F5E2D319D5EE18C60D0AB2BE1" KeyPath="yes" Source="$(var.sourceDir)\groupMappingWarnings.json" />
-            </Component>
             <Component Id="cmpDC507D3B034FD0F9887EC67302B6F5A0" Guid="*">
                 <File Id="filBF2E03D229851ADE6748EBFCE4288A27" KeyPath="yes" Source="$(var.sourceDir)\PowerShellSetup.Test.dll" />
             </Component>
