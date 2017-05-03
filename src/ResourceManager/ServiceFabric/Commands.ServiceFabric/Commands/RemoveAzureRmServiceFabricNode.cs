@@ -42,10 +42,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public override string NodeType { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true,
-                  HelpMessage = "Number of nodes to remove")]
+         HelpMessage = "The number of nodes to add")]
         [ValidateRange(1, 2147483647)]
-        [Alias("NumberOfNodesToRemove")]
-        public override int Number
+        [Alias("Number")]
+        public int NumberOfNodesToRemove
         {
             get
             {
@@ -55,6 +55,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 toRemoveNode = -value;
             }
+        }
+
+        protected override int Number
+        {
+             get { return this.NumberOfNodesToRemove; }
         }      
 
         public override void ExecuteCmdlet()
