@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 var filePath = this.GetUnresolvedProviderPathFromPSPath(OutputFile);
 
                 // deny request if the file exists and overwrite is not authorized
-                if ( !AzureSession.DataStore.FileExists( filePath )
+                if ( !AzureSession.Instance.DataStore.FileExists( filePath )
                     || Force.IsPresent
                     || ShouldContinue( string.Format( KeyVaultProperties.Resources.FileOverwriteMessage, filePath ), KeyVaultProperties.Resources.FileOverwriteCaption ) )
                 {

@@ -16,6 +16,7 @@ using AutoMapper;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Network;
+using Microsoft.WindowsAzure.Commands.Common;
 using System.IO;
 using System.Management.Automation;
 using System.Reflection;

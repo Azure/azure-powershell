@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.DataMasking.Model;
@@ -32,7 +33,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// <summary>
         /// Gets or sets the Azure subscription
         /// </summary>
-        private AzureSubscription Subscription { get; set; }
+        private IAzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// The communicator that this adapter uses
@@ -42,9 +43,9 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
-        public SqlDataMaskingAdapter(AzureContext context)
+        public SqlDataMaskingAdapter(IAzureContext context)
         {
             Context = context;
             Subscription = context.Subscription;

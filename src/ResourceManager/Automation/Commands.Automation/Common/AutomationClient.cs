@@ -43,7 +43,7 @@ using Runbook = Microsoft.Azure.Commands.Automation.Model.Runbook;
 using Schedule = Microsoft.Azure.Commands.Automation.Model.Schedule;
 using Variable = Microsoft.Azure.Commands.Automation.Model.Variable;
 using HybridRunbookWorkerGroup = Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorkerGroup;
-
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
@@ -60,14 +60,14 @@ namespace Microsoft.Azure.Commands.Automation.Common
         /// 
         /// </summary>
         /// <param name="context"></param>
-        public AutomationClient(AzureContext context)
+        public AutomationClient(IAzureContext context)
             : this(context.Subscription,
-                AzureSession.ClientFactory.CreateClient<AutomationManagement.AutomationManagementClient>(context,
+                AzureSession.Instance.ClientFactory.CreateClient<AutomationManagement.AutomationManagementClient>(context,
                     AzureEnvironment.Endpoint.ResourceManager))
         {
         }
 
-        public AutomationClient(AzureSubscription subscription,
+        public AutomationClient(IAzureSubscription subscription,
             AutomationManagement.IAutomationManagementClient automationManagementClient)
         {
             Requires.Argument("automationManagementClient", automationManagementClient).NotNull();
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             client.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
         }
 
-        public AzureSubscription Subscription { get; private set; }
+        public IAzureSubscription Subscription { get; private set; }
 
         #region Account Operations
 

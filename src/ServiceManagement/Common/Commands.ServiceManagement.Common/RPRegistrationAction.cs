@@ -14,8 +14,10 @@
 
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.Resources;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -30,19 +32,19 @@ namespace Microsoft.Azure.ServiceManagemenet.Common.Models
         /// Registers resource providers for Sparta.
         /// </summary>
         /// <typeparam name="T">The client type</typeparam>
-        private void RegisterResourceManagerProviders<T>(IAzureProfile profile)
+        private void RegisterResourceManagerProviders<T>(IAzureContextContainer profile)
         {
             var providersToRegister = RequiredResourceLookup.RequiredProvidersForResourceManager<T>();
-            var registeredProviders = profile.Context.Subscription.GetPropertyAsArray(AzureSubscription.Property.RegisteredResourceProviders);
+            var registeredProviders = profile.DefaultContext.Subscription.GetPropertyAsArray(AzureSubscription.Property.RegisteredResourceProviders);
             var unregisteredProviders = providersToRegister.Where(p => !registeredProviders.Contains(p)).ToList();
             var successfullyRegisteredProvider = new List<string>();
-            SubscriptionCloudCredentials creds = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(profile.Context);
+            SubscriptionCloudCredentials creds = AzureSession.Instance.AuthenticationFactory.GetSubscriptionCloudCredentials(profile.DefaultContext);
 
             if (unregisteredProviders.Count > 0)
             {
                 using (var client = ClientFactory.CreateCustomClient<ResourceManagementClient>(
                                                         creds,
-                                                        profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)))
+                                                        profile.DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)))
                 {
                     foreach (string provider in unregisteredProviders)
                     {
@@ -66,9 +68,9 @@ namespace Microsoft.Azure.ServiceManagemenet.Common.Models
         /// <typeparam name="T">The client type</typeparam>
         private void RegisterServiceManagementProviders<T>(AzureSMProfile profile)
         {
-            var credentials = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(profile.Context);
+            var credentials = AzureSession.Instance.AuthenticationFactory.GetSubscriptionCloudCredentials(profile.DefaultContext);
             var providersToRegister = RequiredResourceLookup.RequiredProvidersForServiceManagement<T>();
-            var registeredProviders = profile.Context.Subscription.GetPropertyAsArray(AzureSubscription.Property.RegisteredResourceProviders);
+            var registeredProviders = profile.DefaultContext.Subscription.GetPropertyAsArray(AzureSubscription.Property.RegisteredResourceProviders);
             var unregisteredProviders = providersToRegister.Where(p => !registeredProviders.Contains(p)).ToList();
             var successfullyRegisteredProvider = new List<string>();
 
@@ -76,7 +78,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common.Models
             {
                 using (var client = new ManagementClient(
                                             credentials,
-                                            profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement)))
+                                            profile.DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement)))
                 {
                     foreach (var provider in unregisteredProviders)
                     {
@@ -99,11 +101,11 @@ namespace Microsoft.Azure.ServiceManagemenet.Common.Models
                 }
 
                 Debug.Assert(profile is AzureSMProfile);
-                UpdateSubscriptionRegisteredProviders((AzureSMProfile)profile, profile.Context.Subscription, successfullyRegisteredProvider);
+                UpdateSubscriptionRegisteredProviders((AzureSMProfile)profile, profile.DefaultContext.Subscription, successfullyRegisteredProvider);
             }
         }
 
-        private void UpdateSubscriptionRegisteredProviders(AzureSMProfile profile, AzureSubscription subscription, List<string> providers)
+        private void UpdateSubscriptionRegisteredProviders(AzureSMProfile profile, IAzureSubscription subscription, List<string> providers)
         {
             if (providers != null && providers.Count > 0)
             {
@@ -123,8 +125,9 @@ namespace Microsoft.Azure.ServiceManagemenet.Common.Models
             }
         }
 
-        public void Apply<TClient>(TClient client, AzureSMProfile profile, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
+        public void Apply<TClient>(TClient client, IAzureContextContainer container, string endpoint) where TClient : ServiceClient<TClient>
         {
+            var profile = container as AzureSMProfile;
             Debug.Assert(ClientFactory != null);
 
             if (endpoint == AzureEnvironment.Endpoint.ServiceManagement)
@@ -140,13 +143,13 @@ namespace Microsoft.Azure.ServiceManagemenet.Common.Models
         public IClientFactory ClientFactory { get; set; }
 
 
-        public void ApplyArm<TClient>(TClient client, AzureRMProfile profile, AzureEnvironment.Endpoint endpoint) where TClient : Rest.ServiceClient<TClient>
+        public void ApplyArm<TClient>(TClient client, IAzureContextContainer container, string endpoint) where TClient : Rest.ServiceClient<TClient>
         {
             Debug.Assert(ClientFactory != null);
 
             if (endpoint == AzureEnvironment.Endpoint.ResourceManager)
             {
-                RegisterResourceManagerProviders<TClient>(profile);
+                RegisterResourceManagerProviders<TClient>(container);
             }
         }
     }

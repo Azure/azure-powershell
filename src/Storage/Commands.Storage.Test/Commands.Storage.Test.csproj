@@ -248,6 +248,10 @@
     <Compile Include="Table\StorageTableStorageTestBase.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
+      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
+      <Name>Commands.Common.Authentication.Abstractions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\ServiceManagement\Common\Commands.Common.Test\Commands.Common.Test.csproj">
       <Project>{3b48a77b-5956-4a62-9081-92ba04b02b27}</Project>
       <Name>Commands.Common.Test</Name>

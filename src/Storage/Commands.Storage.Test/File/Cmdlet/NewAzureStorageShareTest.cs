@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,6 +22,7 @@ using Microsoft.WindowsAzure.Commands.Storage.File;
 using Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet;
 using Microsoft.WindowsAzure.Management.Storage.Test.Common;
 using Microsoft.WindowsAzure.Storage.File;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
 {
@@ -88,6 +89,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
         {
             try
             {
+                AzureSessionInitializer.InitializeAzureSession();
                 this.CmdletInstance.RunCmdlet(
                     Constants.ShareNameParameterSetName,
                     new KeyValuePair<string, object>("Name", name));
