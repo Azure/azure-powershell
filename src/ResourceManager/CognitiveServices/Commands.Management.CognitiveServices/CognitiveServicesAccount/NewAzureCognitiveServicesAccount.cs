@@ -15,9 +15,12 @@
 using Microsoft.Azure.Commands.Management.CognitiveServices.Properties;
 using Microsoft.Azure.Management.CognitiveServices;
 using Microsoft.Azure.Management.CognitiveServices.Models;
+using System;
 using System.Collections;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Management.Automation;
+using System.Management.Automation.Host;
 using CognitiveServicesModels = Microsoft.Azure.Commands.Management.CognitiveServices.Models;
 
 namespace Microsoft.Azure.Commands.Management.CognitiveServices
@@ -73,14 +76,14 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         [Parameter(
             Mandatory = false,
             HelpMessage = "Cognitive Services Account Tags.")]
-        [Alias (TagsAlias)]
+        [Alias(TagsAlias)]
         [ValidateNotNull]
         [AllowEmptyCollection]
         public Hashtable[] Tag { get; set; }
-        
+
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
-        
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -101,6 +104,16 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                     ||
                     Force.IsPresent)
                 {
+                    ShowAccountCreationNotice(); // always show notice no matter -Force or -Confirm:$false present or not.
+                    if (!Force.IsPresent  // as long as -Force does not present
+                    && Host.UI.PromptForChoice(string.Empty, // ask user to consent.
+                                               string.Empty,
+                                               new Collection<ChoiceDescription>() {
+                                                    new ChoiceDescription("&Yes"),
+                                                    new ChoiceDescription("&No") }, 1) == 1) // and default to No. If it is No, return immediately.
+                    {
+                        return;
+                    }
 
                     var createAccountResponse = this.CognitiveServicesClient.CognitiveServicesAccounts.Create(
                                     this.ResourceGroupName,
@@ -112,6 +125,30 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                     this.WriteCognitiveServicesAccount(cognitiveServicesAccount);
                 }
             });
+        }
+
+        private void ShowAccountCreationNotice()
+        {
+            ConsoleColor originColor = ConsoleColor.White;
+            try // try..catch..swallow here because in UT context RawUI.ForegroundColor throws exception.
+            {
+                originColor = Host.UI.RawUI.ForegroundColor;
+                Host.UI.RawUI.ForegroundColor = ConsoleColor.Yellow;
+            }
+            catch
+            { }
+
+            WriteObject(string.Empty);
+            WriteObject("Notice");
+            WriteObject(Resources.NewAccount_ConsentMessage);
+            WriteObject(string.Empty);
+
+            try
+            {
+                Host.UI.RawUI.ForegroundColor = originColor;
+            }
+            catch
+            { }
         }
     }
 }
