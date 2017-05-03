@@ -33,8 +33,10 @@ if ($ValidateMarkdownHelp)
         $Exceptions | ft
         throw "A markdown file containing the help for a cmdlet is incomplete. Please check the exceptions provided for more details."
     }
-
-    Remove-Item -Path "$NewExceptionsPath\ValidateHelpIssues.csv" -Force
+    else
+    {
+        Remove-Item -Path "$NewExceptionsPath\ValidateHelpIssues.csv" -Force   
+    }
 }
 
 if ($GenerateMamlHelp)
