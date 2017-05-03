@@ -51,7 +51,7 @@ The four options are detailed below. Scroll down for explanations of each of the
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Specify only the cluster size, the cert subject name and the OS to deploy a cluster.
 ```
 $pwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force
 $RGname="chacko09"
@@ -66,7 +66,7 @@ New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -Location $clusterloc
 
 This command specifies only the cluster size, the cert subject name and the OS to deploy a cluster.
 
-### Example 2
+### Example 2: Specify an existing Certificate resource in a key vault and a custom template to deploy a cluster
 ```
 $RGname="chacko20"
 $templateParmfile="C:\service-fabric-secure-nsg-cluster-65-node-3-nodetype\azuredeploytest.parameters.json"
@@ -78,7 +78,7 @@ New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -TemplateFile $templa
 
 This command specifies an existing Certificate resource in a key vault and a custom template to deploy a cluster 
 
-### Example 3
+### Example 3: Create a new cluster using a custom template, Specify the different RG name for the key vault and have the system upload the certificate to it
 ```
 $pwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force
 $RGname="chacko20"
@@ -97,7 +97,7 @@ New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -TemplateFile $templa
 
 This command creates a new cluster using a custom template, Specify the different RG name for the key vault and have the system upload the certificate to it 
 
-### Example 4
+### Example 4: Bring your own Certificate and custom template and create a new cluster
 ```
 $certPwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force
 $RGname="chacko20"

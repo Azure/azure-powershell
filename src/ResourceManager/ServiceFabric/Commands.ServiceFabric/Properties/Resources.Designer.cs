@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not delete primay node type {0}.
+        ///   Looks up a localized string similar to Can&apos;t delete primay node type {0}.
         /// </summary>
         internal static string CannotDeletePrimayNodeType {
             get {
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not find key vault {0}.
+        ///   Looks up a localized string similar to Can&apos;t find key vault {0}.
         /// </summary>
         internal static string CannotFindVault {
             get {
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not parse reliability level {0}.
+        ///   Looks up a localized string similar to Can&apos;t parse reliability level {0}.
         /// </summary>
         internal static string CannotParseReliabilityLevel {
             get {
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can&apos;t not update node type which durability is bronze,please update it to Silver or above first.
+        ///   Looks up a localized string similar to Can&apos;t update node type which durability is bronze,please update it to Silver or above first.
         /// </summary>
         internal static string CannotUpdateBronzeNodeType {
             get {
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not update Sku while durability is Bronze , please update durability to Silver or above first.
+        ///   Looks up a localized string similar to Can&apos;t update Sku while durability is Bronze , please update durability to Silver or above first.
         /// </summary>
         internal static string CannotUpdateSkuWithBronzeDurability {
             get {
@@ -403,7 +403,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Key vault and the resource group are not in same region.
+        ///   Looks up a localized string similar to The key vault and the resource group are not in same region.
         /// </summary>
         internal static string KeyVaultAndResourceGroupNotSameRegion {
             get {
@@ -421,7 +421,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No CertificateOperation returned when creating self signed certificate in Azure key vault.
+        ///   Looks up a localized string similar to No certificateOperation returned when creating self signed certificate in Azure key vault.
         /// </summary>
         internal static string NoCertificateOperationReturned {
             get {
