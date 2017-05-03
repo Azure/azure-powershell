@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Remove "Usage_Anomaly" from the accepted values for "ExcludedDetectionType" parameter of Set-AzureRmSqlDatabaseThreatDetectionPolicy cmdlet and Set-AzureRmSqlServerThreatDetectionPolicy cmdlet.
 
 ## Version 2.8.0
 * Bug fixes on Azure Failover Group Cmdlets
