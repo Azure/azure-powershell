@@ -12,7 +12,7 @@ Add nodes to the specific node type in the cluster
 ## SYNTAX
 
 ```
-Add-AzureRmServiceFabricNode [-ResourceGroupName] <String> [-Name] <String> -NodeType <String> -Number <Int32>
+Add-AzureRmServiceFabricNode [-ResourceGroupName] <String> [-Name] <String> -NodeType <String> -NumberOfNodesToAdd <Int32>
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -23,10 +23,10 @@ User **Add-AzureRmServiceFabricNode** to add nodes to the specific node type. Yo
 
 ### Example 1
 ```
-PS c:> Add-AzureRmServiceFabricNode -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -Number 2 -NodeTypeName 'nt1''
+PS c:> Add-AzureRmServiceFabricNode -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NumberOfNodesToAdd 2 -NodeTypeName 'nt1''
 ```
 
-This command will add 2 nodes to the node type n1
+This command will add 2 nodes to the nodetype 'n1'
 
 ## PARAMETERS
 
@@ -75,13 +75,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Number
+### -NumberOfNodesToAdd
 VM instance number
 
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: NumberOfNodesToAdd
+Aliases: Number
 
 Required: True
 Position: Named
@@ -134,4 +134,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
+[Remove-AzureRmServiceFabricNode](./Remove-AzureRmServiceFabricNode.md)
