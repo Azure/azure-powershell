@@ -22,9 +22,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class ServerKeyVaultKeyTests : SqlTestsBase
     {
-        public ServerKeyVaultKeyTests(ITestOutputHelper output)
+        public ServerKeyVaultKeyTests(ITestOutputHelper output) : base(output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
         [Fact]

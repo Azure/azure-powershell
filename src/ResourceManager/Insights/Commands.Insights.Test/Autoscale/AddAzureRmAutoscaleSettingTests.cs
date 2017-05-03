@@ -12,10 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Insights.Autoscale;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Management.Insights;
-using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ScenarioTest;
+using Microsoft.Azure.Management.Monitor.Management;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
@@ -31,7 +34,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
     public class AddAzureRmAutoscaleSettingTests
     {
         private readonly AddAzureRmAutoscaleSettingCommand cmdlet;
-        private readonly Mock<InsightsManagementClient> insightsManagementClientMock;
+        private readonly Mock<MonitorManagementClient> insightsManagementClientMock;
         private readonly Mock<IAutoscaleSettingsOperations> insightsAutoscaleOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
         private Microsoft.Rest.Azure.AzureOperationResponse<AutoscaleSettingResource> response;
@@ -41,14 +44,15 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
 
         public AddAzureRmAutoscaleSettingTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            TestExecutionHelpers.SetUpSessionAndProfile();
             //ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             insightsAutoscaleOperationsMock = new Mock<IAutoscaleSettingsOperations>();
-            insightsManagementClientMock = new Mock<InsightsManagementClient>();
+            insightsManagementClientMock = new Mock<MonitorManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new AddAzureRmAutoscaleSettingCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                InsightsManagementClient = insightsManagementClientMock.Object
+                MonitorManagementClient = insightsManagementClientMock.Object
             };
 
             response = new AzureOperationResponse<AutoscaleSettingResource>()
@@ -168,12 +172,12 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
                 profiles = new List<AutoscaleProfile>() { this.CreateAutoscaleProfile() };
             }
 
-            var setting = new AutoscaleSettingResource
+            var setting = new AutoscaleSettingResource(
+                location: location,
+                profiles: profiles,
+                name: name)
             {
-                Location = location,
-                Name = name,
                 Enabled = true,
-                Profiles = profiles,
                 TargetResourceUri = Utilities.ResourceUri,
                 Tags = new Dictionary<string, string>()
             };

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Model;
 using Microsoft.Azure.Commands.Sql.Services;
@@ -37,14 +38,14 @@ namespace Microsoft.Azure.Commands.Sql.Service
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Constructs adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlDatabaseIndexRecommendationAdapter(AzureContext context)
+        public AzureSqlDatabaseIndexRecommendationAdapter(IAzureContext context)
         {
             Context = context;
             Communicator = new AzureSqlDatabaseIndexRecommendationCommunicator(Context);

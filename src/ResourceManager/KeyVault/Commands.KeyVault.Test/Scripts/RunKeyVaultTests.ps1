@@ -57,8 +57,10 @@ param(
     [Parameter(Mandatory=$false, Position=5)]
     [bool] $StandardVaultOnly = $false,
     [Parameter(Mandatory=$false, Position=6)]
-    [Guid] $UserObjectId,
+    [bool] $SoftDeleteEnabled = $false,
     [Parameter(Mandatory=$false, Position=7)]
+    [Guid] $UserObjectId,
+    [Parameter(Mandatory=$false, Position=8)]
     [Nullable[bool]] $NoADCmdLetMode = $null
 )
 
@@ -83,6 +85,7 @@ $global:location = $Location
 $global:testVault = $Vault
 $global:resourceGroupName = $ResourceGroup
 $global:standardVaultOnly = $StandardVaultOnly
+$global:softDeleteEnabled = $SoftDeleteEnabled
 $global:objectId = $UserObjectId
 $global:noADCmdLetMode = $NoADCmdLetMode
 
@@ -180,6 +183,12 @@ function Run-AllControlPlaneTests
     Run-TestProtected { Run-VaultTest { Test_RecreateVaultFails } "Test_RecreateVaultFails" } "Test_RecreateVaultFails"
     Run-TestProtected { Run-VaultTest { Test_CreateVaultInUnknownResGrpFails } "Test_CreateVaultInUnknownResGrpFails" } "Test_CreateVaultInUnknownResGrpFails"
     Run-TestProtected { Run-VaultTest { Test_CreateVaultPositionalParams } "Test_CreateVaultPositionalParams" } "Test_CreateVaultPositionalParams"
+    Run-TestProtected { Run-VaultTest { Test_CreateNewStandardVaultEnableSoftDelete } "Test_CreateNewStandardVaultEnableSoftDelete" } "Test_CreateNewStandardVaultEnableSoftDelete"
+
+    # soft-delete tests.
+    Run-TestProtected { Run-VaultTest { Test_RecoverDeletedVault } "Test_RecoverDeletedVault" } "Test_RecoverDeletedVault"
+    Run-TestProtected { Run-VaultTest { Test_GetNoneexistingDeletedVault } "Test_GetNoneexistingDeletedVault" } "Test_GetNoneexistingDeletedVault"
+    Run-TestProtected { Run-VaultTest { Test_PurgeDeletedVault } "Test_PurgeDeletedVault" } "Test_PurgeDeletedVault"
 
     # Get-AzureRmKeyVault tests.
     Run-TestProtected { Run-VaultTest { Test_GetVaultByNameAndResourceGroup } "Test_GetVaultByNameAndResourceGroup" } "Test_GetVaultByNameAndResourceGroup"
@@ -208,6 +217,8 @@ function Run-AllControlPlaneTests
     Run-TestProtected { Run-VaultTest { Test_ModifyAccessPolicyEnabledForDeployment } "Test_ModifyAccessPolicyEnabledForDeployment" } "Test_ModifyAccessPolicyEnabledForDeployment"
     Run-TestProtected { Run-VaultTest { Test_ModifyAccessPolicyNegativeCases } "Test_ModifyAccessPolicyNegativeCases" } "Test_ModifyAccessPolicyNegativeCases"
     Run-TestProtected { Run-VaultTest { Test_RemoveNonExistentAccessPolicyDoesNotThrow } "Test_RemoveNonExistentAccessPolicyDoesNotThrow" } "Test_RemoveNonExistentAccessPolicyDoesNotThrow"
+    Run-TestProtected { Run-VaultTest { Test_AllPermissionExpansion } "Test_AllPermissionExpansion" } "Test_AllPermissionExpansion"
+    
 
     # Piping tests.
     Run-TestProtected { Run-VaultTest { Test_CreateDeleteVaultWithPiping } "Test_CreateDeleteVaultWithPiping" } "Test_CreateDeleteVaultWithPiping"
@@ -220,6 +231,26 @@ Run all of the data plane tests.
 function Run-AllDataPlaneTests
 {
     Write-Host "Starting the data plane tests..."
+
+    # All operations that invlove soft delete
+    if($global:softDeleteEnabled -eq $true) 
+    {
+        # Key soft delete tests
+        Run-TestProtected { Run-KeyTest {Test_GetDeletedKey} "Test_GetDeletedKey" } "Test_GetDeletedKey"
+        Run-TestProtected { Run-KeyTest {Test_GetDeletedKeys} "Test_GetDeletedKeys" } "Test_GetDeletedKeys"
+        Run-TestProtected { Run-KeyTest {Test_UndoRemoveKey} "Test_UndoRemoveKey" } "Test_UndoRemoveKey"
+        Run-TestProtected { Run-KeyTest {Test_RemoveDeletedKey} "Test_RemoveDeletedKey" } "Test_RemoveDeletedKey"
+        Run-TestProtected { Run-KeyTest {Test_RemoveNonExistKey} "Test_RemoveNonExistDeletedKey" } "Test_RemoveNonExistDeletedKey"
+        Run-TestProtected { Run-KeyTest {Test_PipelineRemoveDeletedKeys} "Test_PipelineRemoveDeletedKeys" } "Test_PipelineRemoveDeletedKeys"
+
+        # Secret soft delete tests
+        Run-TestProtected { Run-KeyTest {Test_GetDeletedKey} "Test_GetDeletedSecret" } "Test_GetDeletedKey"
+        Run-TestProtected { Run-KeyTest {Test_GetDeletedKeys} "Test_GetDeletedSecrets" } "Test_GetDeletedSecrets"
+        Run-TestProtected { Run-KeyTest {Test_UndoRemoveKey} "Test_UndoRemoveSecret" } "Test_UndoRemoveSecret"
+        Run-TestProtected { Run-KeyTest {Test_RemoveDeletedKey} "Test_RemoveDeletedSecret" } "Test_RemoveDeletedSecret"
+        Run-TestProtected { Run-KeyTest {Test_RemoveNonExistKey} "Test_RemoveNonExistDeletedSecret" } "Test_RemoveNonExistDeletedSecret"
+        Run-TestProtected { Run-KeyTest {Test_PipelineRemoveDeletedKeys} "Test_PipelineRemoveDeletedSecrets" } "Test_PipelineRemoveDeletedSecrets"
+    }
 
     # Add-AzureKeyVaultKey tests.
     Run-TestProtected { Run-KeyTest {Test_CreateSoftwareKeyWithDefaultAttributes} "Test_CreateSoftwareKeyWithDefaultAttributes" } "Test_CreateSoftwareKeyWithDefaultAttributes"
@@ -292,11 +323,12 @@ function Run-AllDataPlaneTests
     Run-TestProtected { Run-KeyTest {Test_RemoveKeyInNoPermissionVault} "Test_RemoveKeyInNoPermissionVault" } "Test_RemoveKeyInNoPermissionVault"
 
     # Backup-AzureKeyVaultKey and Restore-AzureKeyVaultKey tests.
-    Run-TestProtected { Run-KeyTest {Test_BackupRestoreKey} "Test_BackupRestoreKey" } "Test_BackupRestoreKey"
-    Run-TestProtected { Run-KeyTest {Test_BackupNonExisitingKey} "Test_BackupNonExisitingKey" } "Test_BackupNonExisitingKey"
-    Run-TestProtected { Run-KeyTest {Test_BackupToANamedFile} "Test_BackupToANamedFile" } "Test_BackupToANamedFile"
-    Run-TestProtected { Run-KeyTest {Test_BackupToExistingFile} "Test_BackupToExistingFile" } "Test_BackupToExistingFile"
-    Run-TestProtected { Run-KeyTest {Test_RestoreFromNonExistingFile} "Test_RestoreFromNonExistingFile" } "Test_RestoreFromNonExistingFile"
+    Run-TestProtected { Run-KeyTest {Test_BackupRestoreKeyByName} "Test_BackupRestoreKeyByName" } "Test_BackupRestoreKeyByName"
+    Run-TestProtected { Run-KeyTest {Test_BackupRestoreKeyByRef} "Test_BackupRestoreKeyByRef" } "Test_BackupRestoreKeyByRef"
+    Run-TestProtected { Run-KeyTest {Test_BackupNonExistingKey} "Test_BackupNonExistingKey" } "Test_BackupNonExistingKey"
+    Run-TestProtected { Run-KeyTest {Test_BackupKeyToANamedFile} "Test_BackupKeyToANamedFile" } "Test_BackupKeyToANamedFile"
+    Run-TestProtected { Run-KeyTest {Test_BackupKeyToExistingFile} "Test_BackupKeyToExistingFile" } "Test_BackupKeyToExistingFile"
+    Run-TestProtected { Run-KeyTest {Test_RestoreKeyFromNonExistingFile} "Test_RestoreKeyFromNonExistingFile" } "Test_RestoreKeyFromNonExistingFile"
 
     # *-AzureRmKeyVaultKey pipeline tests.
     Run-TestProtected { Run-KeyTest {Test_PipelineUpdateKeys} "Test_PipelineUpdateKeys" } "Test_PipelineUpdateKeys"
@@ -345,13 +377,21 @@ function Run-AllDataPlaneTests
     Run-TestProtected { Run-SecretTest {Test_RemoveNonExistSecret} "Test_RemoveNonExistSecret" } "Test_RemoveNonExistSecret"
     Run-TestProtected { Run-SecretTest {Test_RemoveSecretInNoPermissionVault} "Test_RemoveSecretInNoPermissionVault" } "Test_RemoveSecretInNoPermissionVault"
 
-    # *-AzureRmKeyVaultKey pipeline tests.
+    # Backup-AzureKeyVaultSecret and Restore-AzureKeyVaultSecret tests.
+    Run-TestProtected { Run-SecretTest {Test_BackupRestoreSecretByName} "Test_BackupRestoreSecretByName" } "Test_BackupRestoreSecretByName"
+    Run-TestProtected { Run-SecretTest {Test_BackupRestoreSecretByRef} "Test_BackupRestoreSecretByRef" } "Test_BackupRestoreSecretByRef"
+    Run-TestProtected { Run-SecretTest {Test_BackupNonExistingSecret} "Test_BackupNonExistingSecret" } "Test_BackupNonExistingSecret"
+    Run-TestProtected { Run-SecretTest {Test_BackupSecretToANamedFile} "Test_BackupSecretToANamedFile" } "Test_BackupSecretToANamedFile"
+    Run-TestProtected { Run-SecretTest {Test_BackupSecretToExistingFile} "Test_BackupSecretToExistingFile" } "Test_BackupSecretToExistingFile"
+    Run-TestProtected { Run-SecretTest {Test_RestoreSecretFromNonExistingFile} "Test_RestoreSecretFromNonExistingFile" } "Test_RestoreSecretFromNonExistingFile"
+
+    # *-AzureRmKeyVaultSecret pipeline tests.
     Run-TestProtected { Run-SecretTest {Test_PipelineUpdateSecrets} "Test_PipelineUpdateSecrets" } "Test_PipelineUpdateSecrets"
     Run-TestProtected { Run-SecretTest {Test_PipelineUpdateSecretAttributes} "Test_PipelineUpdateSecretAttributes" } "Test_PipelineUpdateSecretAttributes"
     Run-TestProtected { Run-SecretTest {Test_PipelineUpdateSecretVersions} "Test_PipelineUpdateSecretVersions" } "Test_PipelineUpdateSecretVersions"
     Run-TestProtected { Run-SecretTest {Test_PipelineRemoveSecrets} "Test_PipelineRemoveSecrets" } "Test_PipelineRemoveSecrets"
 
-	    # Import scenario : Add-AzureKeyVaultCertificate tests
+    # Import scenario : Add-AzureKeyVaultCertificate tests
     Run-TestProtected { Run-CertificateTest {Test_ImportPfxAsCertificate} "Test_ImportPfxAsCertificate" } "Test_ImportPfxAsCertificate"
     Run-TestProtected { Run-CertificateTest {Test_ImportPfxAsCertificateNonSecurePassword} "Test_ImportPfxAsCertificateNonSecurePassword" } "Test_ImportPfxAsCertificateNonSecurePassword"
     Run-TestProtected { Run-CertificateTest {Test_ImportPfxAsCertificateWithoutPassword} "Test_ImportPfxAsCertificateWithoutPassword" } "Test_ImportPfxAsCertificateWithoutPassword"

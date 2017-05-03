@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Websites
 {
@@ -54,14 +55,14 @@ namespace Microsoft.WindowsAzure.Commands.Websites
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            AzureEnvironment environment;
+            IAzureEnvironment environment;
             if (string.IsNullOrEmpty(Environment))
             {
                 environment = Profile.Context.Environment;
             }
             else
             {
-                environment = Profile.Environments[Environment];
+                environment = Profile.EnvironmentTable[Environment];
             }
 
             string managementPortalUrl = environment.GetManagementPortalUrlWithRealm(Realm);

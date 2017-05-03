@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
     using Microsoft.Azure.Commands.Common.Authentication.Models;
     using Microsoft.Azure.Management.WebSites;
     using Microsoft.Azure.Management.WebSites.Models;
+    using Common.Authentication.Abstractions;
 
     /// <summary>
     /// Website client to perform operation on AppServicePlan
@@ -45,9 +46,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// Initializes the client instance
         /// </summary>
         /// <param name="context"></param>
-        public WebsitesClient(AzureContext context)
+        public WebsitesClient(IAzureContext context)
         {
-            this.WrappedWebsitesClient = AzureSession.ClientFactory.CreateArmClient<WebSiteManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            this.WrappedWebsitesClient = AzureSession.Instance.ClientFactory.CreateArmClient<WebSiteManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         /// <summary>

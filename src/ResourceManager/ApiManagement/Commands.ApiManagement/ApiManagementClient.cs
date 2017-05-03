@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 namespace Microsoft.Azure.Commands.ApiManagement
 {
     using AutoMapper;
+    using Common.Authentication.Abstractions;
     using Management.ApiManagement;
     using Management.ApiManagement.Models;
     using Models;
@@ -28,10 +29,10 @@ namespace Microsoft.Azure.Commands.ApiManagement
 
     public class ApiManagementClient
     {
-        private readonly AzureContext _context;
+        private readonly IAzureContext _context;
         private Management.ApiManagement.ApiManagementClient _client;
 
-        public ApiManagementClient(AzureContext context)
+        public ApiManagementClient(IAzureContext context)
         {
             if (context == null)
             {
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Commands.ApiManagement
                 if (_client == null)
                 {
                     _client =
-                        AzureSession.ClientFactory.CreateClient<Management.ApiManagement.ApiManagementClient>(
+                        AzureSession.Instance.ClientFactory.CreateClient<Management.ApiManagement.ApiManagementClient>(
                             _context,
                             AzureEnvironment.Endpoint.ResourceManager);
                 }

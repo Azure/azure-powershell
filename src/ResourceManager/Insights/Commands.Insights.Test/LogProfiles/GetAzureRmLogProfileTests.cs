@@ -14,8 +14,8 @@
 
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Insights.LogProfiles;
-using Microsoft.Azure.Management.Insights;
-using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.Management.Monitor.Management;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.LogProfiles
     public class GetAzureRmLogProfileTests
     {
         private readonly GetAzureRmLogProfileCommand cmdlet;
-        private readonly Mock<InsightsManagementClient> insightsClientMock;
+        private readonly Mock<MonitorManagementClient> MonitorClientMock;
         private readonly Mock<ILogProfilesOperations> insightsLogProfileOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
         private AzureOperationResponse<LogProfileResource> response;
@@ -41,12 +41,12 @@ namespace Microsoft.Azure.Commands.Insights.Test.LogProfiles
         {
             //XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             insightsLogProfileOperationsMock = new Mock<ILogProfilesOperations>();
-            insightsClientMock = new Mock<InsightsManagementClient>();
+            MonitorClientMock = new Mock<MonitorManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetAzureRmLogProfileCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                InsightsManagementClient = insightsClientMock.Object
+                MonitorManagementClient = MonitorClientMock.Object
             };
 
             response = Test.Utilities.InitializeLogProfileResponse();
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.LogProfiles
                 .Returns(Task.FromResult<AzureOperationResponse<IEnumerable<LogProfileResource>>>(responseList))
                 .Callback((Dictionary<string, List<string>> headers, CancellationToken t) => {});
 
-            insightsClientMock.SetupGet(f => f.LogProfiles).Returns(this.insightsLogProfileOperationsMock.Object);
+            MonitorClientMock.SetupGet(f => f.LogProfiles).Returns(this.insightsLogProfileOperationsMock.Object);
         }
 
         [Fact]

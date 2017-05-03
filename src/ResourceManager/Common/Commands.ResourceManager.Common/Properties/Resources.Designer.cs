@@ -163,6 +163,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Azure PowerShell context has not been properly initialized.  Please import the module and try again..
+        /// </summary>
+        public static string ProfileNotInitialized {
+            get {
+                return ResourceManager.GetString("ProfileNotInitialized", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to the &apos;{0}&apos; resource named &apos;{1}&apos; in resource group &apos;{2}&apos;.
         /// </summary>
         public static string ResourceConfirmTarget {

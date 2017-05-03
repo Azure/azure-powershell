@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Automation.Model;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System;
 using System.Collections;
@@ -24,7 +25,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 {
     public interface IAutomationClient
     {
-        AzureSubscription Subscription { get; }
+        IAzureSubscription Subscription { get; }
 
         #region Accounts
 

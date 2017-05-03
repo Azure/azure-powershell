@@ -32,6 +32,7 @@ using Microsoft.WindowsAzure.Management.RecoveryServices;
 using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
 using Microsoft.WindowsAzure.Management.SiteRecovery;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Management.RecoveryServicesVaultUpgrade;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 
@@ -86,11 +87,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// required current subscription.
         /// </summary>
         /// <param name="azureSubscription">Azure Subscription</param>
-        public PSRecoveryServicesClient(AzureSMProfile AzureSMProfile, AzureSubscription azureSubscription)
+        public PSRecoveryServicesClient(AzureSMProfile AzureSMProfile, IAzureSubscription azureSubscription)
         {
             this.Profile = AzureSMProfile;
             this.recoveryServicesClient =
-                AzureSession.ClientFactory.CreateClient<RecoveryServicesManagementClient>(AzureSMProfile, azureSubscription, AzureEnvironment.Endpoint.ServiceManagement);
+                AzureSession.Instance.ClientFactory.CreateClient<RecoveryServicesManagementClient>(AzureSMProfile, azureSubscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
         /// <summary>
@@ -250,8 +251,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
 
             SiteRecoveryManagementClient siteRecoveryClient =
-                AzureSession.ClientFactory.CreateCustomClient<SiteRecoveryManagementClient>(asrVaultCreds.CloudServiceName,
-                asrVaultCreds.ResourceName, recoveryServicesClient.Credentials,
+                AzureSession.Instance.ClientFactory.CreateCustomClient<SiteRecoveryManagementClient>(asrVaultCreds.CloudServiceName, 
+                asrVaultCreds.ResourceName, recoveryServicesClient.Credentials, 
                 Profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement));
 
             if (null == siteRecoveryClient)
@@ -280,7 +281,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     Constants.BackupNamespace;
 
             RecoveryServicesVaultUpgradeManagementClient VaultUpgradeClient =
-                AzureSession.ClientFactory.CreateCustomClient<RecoveryServicesVaultUpgradeManagementClient>(
+                AzureSession.Instance.ClientFactory.CreateCustomClient<RecoveryServicesVaultUpgradeManagementClient>(
                     this.GetCloudServiceName(resourceName, location, resourceType),
                     resourceNamespace,
                     resourceType,
