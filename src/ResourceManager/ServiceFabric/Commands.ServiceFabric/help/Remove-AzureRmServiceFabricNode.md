@@ -13,7 +13,7 @@ Remove nodes from the specific node type from a cluster
 
 ```
 Remove-AzureRmServiceFabricNode [-ResourceGroupName] <String> [-Name] <String> -NodeType <String>
- -Number <Int32> [-WhatIf] [-Confirm] [<CommonParameters>]
+ -NumberOfNodesToRemove <Int32> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,7 +23,7 @@ Use **Remove-AzureRmServiceFabricNode** to remove nodes from a specific node typ
 
 ### Example 1
 ```
-PS c:> Remove-AzureRmServiceFabricNode -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NodeTypeName 'nt1' -Number 2
+PS c:> Remove-AzureRmServiceFabricNode -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NodeTypeName 'nt1' -NumberOfNodesToRemove 2
 ```
 
 This command will remove 2 nodes from the nodetype 'nt1''
@@ -75,13 +75,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Number
+### -NumberOfNodesToRemove
 Number of nodes to remove
 
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: NumberOfNodesToRemove
+Aliases: Number
 
 Required: True
 Position: Named
