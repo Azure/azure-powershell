@@ -33,7 +33,7 @@ Use **Set-AzureRmServiceFabricSetting** to add or update ServiceFabric settings 
 PS c:\> Set-AzureRmServiceFabricSetting -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster'  -Section 'NamingService' -Parameter 'MaxFileOperationTimeout' -Value 5000
 ```
 
-This command will Set 'MaxFileOperationTimeout' to value '5000' under the section 'NamingService'
+This command will set 'MaxFileOperationTimeout' to value '5000' under the section 'NamingService'
 
 ## PARAMETERS
 
