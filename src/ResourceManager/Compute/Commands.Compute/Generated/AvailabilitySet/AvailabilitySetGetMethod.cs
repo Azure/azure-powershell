@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     psObject.Add(Mapper.Map<AvailabilitySet, PSAvailabilitySetList>(r));
                 }
-                WriteObject(psObject);
+                WriteObject(psObject, true);
             }
         }
 
