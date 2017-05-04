@@ -26,6 +26,7 @@ using Sdk = Microsoft.Azure.Management.Dns.Models;
 
 namespace Microsoft.Azure.Commands.Dns.Models
 {
+    using Common.Authentication.Abstractions;
     using Rest.Azure;
 
     public class DnsClient
@@ -49,8 +50,8 @@ namespace Microsoft.Azure.Commands.Dns.Models
             {RecordType.TXT, typeof (TxtRecord)}
         };
 
-        public DnsClient(AzureContext context)
-            : this(AzureSession.ClientFactory.CreateArmClient<DnsManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+        public DnsClient(IAzureContext context)
+            : this(AzureSession.Instance.ClientFactory.CreateArmClient<DnsManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
         }
 

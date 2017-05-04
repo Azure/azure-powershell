@@ -27,7 +27,7 @@ This command cannot be used to delete the primary node type
 PS c:> Remove-AzureRmServiceFabricNodeType -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NodeTypeName 'nt1'
 ```
 
-This command will remove node type 'nt1' from the cluster
+This command will remove nodetype 'nt1' from the cluster
 
 ## PARAMETERS
 

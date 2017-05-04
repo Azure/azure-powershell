@@ -331,6 +331,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Resource Manager context was not properly initialized.  Please load the module again..
+        /// </summary>
+        internal static string RmProfileNull {
+            get {
+                return ResourceManager.GetString("RmProfileNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Selected subscription is in &apos;{0}&apos; state. .
         /// </summary>
         internal static string SelectedSubscriptionNotActive {

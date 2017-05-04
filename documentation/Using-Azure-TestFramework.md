@@ -120,7 +120,7 @@ In order to debug test set the following environment variables before starting V
 	* Password
 	* ServicePrincipal
 	* ServicePrincipalSecret
-	* Environment={Prod | DogFood | Next | Current | Custom}
+	* Environment={Prod | Dogfood | Next | Current | Custom}
 	* RawToken
 	* RawGraphToken
 	* HttpRecorderMode={Record | Playback}
