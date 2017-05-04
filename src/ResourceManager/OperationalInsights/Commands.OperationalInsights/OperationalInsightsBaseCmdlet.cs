@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
 using Microsoft.Azure.Commands.OperationalInsights.Client;
 using System;
 
@@ -47,7 +46,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         protected override void WriteExceptionError(Exception exception)
         {
             // Override the default error message into a formatted message which contains Request Id
-            CloudException cloudException = exception as CloudException;
+            Rest.Azure.CloudException cloudException = exception as Rest.Azure.CloudException;
             if (cloudException != null)
             {
                 exception = cloudException.CreateFormattedException();

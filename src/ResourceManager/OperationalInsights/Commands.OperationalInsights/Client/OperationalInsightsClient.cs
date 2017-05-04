@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
 
         public OperationalInsightsClient(AzureContext context)
         {
-            OperationalInsightsManagementClient = AzureSession.ClientFactory.CreateClient<OperationalInsightsManagementClient>(
+            OperationalInsightsManagementClient = AzureSession.ClientFactory.CreateArmClient<OperationalInsightsManagementClient>(
                 context,
                 AzureEnvironment.Endpoint.ResourceManager);
         }
