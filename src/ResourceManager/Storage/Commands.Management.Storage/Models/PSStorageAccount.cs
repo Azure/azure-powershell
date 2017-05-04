@@ -80,13 +80,10 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         {
             var result = new PSStorageAccount(storageAccount);
              result.Context = new LazyAzureStorageContext((s) => 
-             { 
-                var credentials = StorageUtilities.GenerateStorageCredentials(new ARMStorageProvider(client), result.ResourceGroupName, s); 
-                 return new CloudStorageAccount(credentials, 
-                     ARMStorageService.GetUri(storageAccount.PrimaryEndpoints.Blob), 
-                     ARMStorageService.GetUri(storageAccount.PrimaryEndpoints.Queue), 
-                     ARMStorageService.GetUri(storageAccount.PrimaryEndpoints.Table), 
-                     ARMStorageService.GetUri(storageAccount.PrimaryEndpoints.File)); 
+             {
+                 var credentials = StorageUtilities.GenerateStorageCredentials(client, result.ResourceGroupName, result.StorageAccountName);
+                 return new CloudStorageAccount(credentials,
+                     storageAccount.PrimaryEndpoints.Blob, storageAccount.PrimaryEndpoints.Queue, storageAccount.PrimaryEndpoints.Table, null);
              }, result.StorageAccountName) as AzureStorageContext; 
 
             return result;
