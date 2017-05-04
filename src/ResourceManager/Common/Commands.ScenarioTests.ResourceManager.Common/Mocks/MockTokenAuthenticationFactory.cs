@@ -14,6 +14,7 @@
 
 using Microsoft.Azure;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Rest;
 using System;
@@ -21,11 +22,11 @@ using System.Security;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 {
-    public class MockTokenAuthenticationFactory : IAuthenticationFactory
+    public class MockTokenAuthenticationFactory : IAuthenticationFactory, IHyakAuthenticationFactory
     {
         public IAccessToken Token { get; set; }
 
-        public Func<AzureAccount, AzureEnvironment, string, IAccessToken> TokenProvider { get; set; }
+        public Func<IAzureAccount, IAzureEnvironment, string, IAccessToken> TokenProvider { get; set; }
 
         public MockTokenAuthenticationFactory()
         {
@@ -71,13 +72,13 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
 
         public IAccessToken Authenticate(
-            AzureAccount account,
-            AzureEnvironment environment,
+            IAzureAccount account,
+            IAzureEnvironment environment,
             string tenant,
             SecureString password,
-            ShowDialog promptBehavior,
-            IdentityModel.Clients.ActiveDirectory.TokenCache tokenCache,
-            AzureEnvironment.Endpoint resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
+            string promptBehavior,
+            IAzureTokenCache tokenCache,
+            string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
             if (account.Id == null)
             {
@@ -95,39 +96,39 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             }
             else
             {
-                return TokenProvider(account, environment, tenant);
+                return TokenProvider(account, environment as AzureEnvironment, tenant);
             }
         }
 
         public IAccessToken Authenticate(
-            AzureAccount account,
-            AzureEnvironment environment,
+            IAzureAccount account,
+            IAzureEnvironment environment,
             string tenant,
             SecureString password,
-            ShowDialog promptBehavior,
-            AzureEnvironment.Endpoint resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
+            string promptBehavior,
+            string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
-            return Authenticate(account, environment, tenant, password, promptBehavior, AzureSession.TokenCache, resourceId);
+            return Authenticate(account, environment, tenant, password, promptBehavior, AzureSession.Instance.TokenCache, resourceId);
         }
 
-        public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context)
+        public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(IAzureContext context)
         {
-            return new AccessTokenCredential(context.Subscription.Id, Token);
+            return new AccessTokenCredential(context.Subscription.GetId(), Token);
         }
 
-        public Microsoft.Rest.ServiceClientCredentials GetServiceClientCredentials(AzureContext context)
+        public Microsoft.Rest.ServiceClientCredentials GetServiceClientCredentials(IAzureContext context)
         {
             return new Microsoft.Rest.TokenCredentials(Token.AccessToken);
         }
 
 
-        public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context, AzureEnvironment.Endpoint targetEndpoint)
+        public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(IAzureContext context, string targetEndpoint)
         {
-            return new AccessTokenCredential(context.Subscription.Id, Token);
+            return new AccessTokenCredential(context.Subscription.GetId(), Token);
         }
 
 
-        public ServiceClientCredentials GetServiceClientCredentials(AzureContext context, AzureEnvironment.Endpoint targetEndpoint)
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint)
         {
             return new Microsoft.Rest.TokenCredentials(Token.AccessToken);
         }

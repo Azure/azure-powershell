@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -30,23 +31,22 @@ namespace Microsoft.Azure.Commands.Profile
         /// <summary>
         /// Gets the current default context.
         /// </summary>
-        protected override AzureContext DefaultContext
+        protected override IAzureContext DefaultContext
         {
             get
             {
-                if (DefaultProfile == null || DefaultProfile.Context == null)
+                if (DefaultProfile == null || DefaultProfile.DefaultContext == null)
                 {
                     return null;
                 }
 
-                return DefaultProfile.Context;
+                return DefaultProfile.DefaultContext;
             }
         }
 
         public override void ExecuteCmdlet()
         {
-            var context = (PSAzureContext)DefaultContext;
-            if (context == null)
+            if (DefaultContext == null)
             {
                 WriteError(new ErrorRecord(
                         new PSInvalidOperationException("Run Login-AzureRmAccount to login."),
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Profile
                         ErrorCategory.AuthenticationError,
                         null));
             }
-            WriteObject(context);
+            WriteObject(new PSAzureContext(DefaultContext));
         }
     }
 }

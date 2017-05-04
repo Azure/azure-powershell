@@ -408,7 +408,8 @@ function Test-PipingToSetAzureRmCurrentStorageAccount
         Retry-IfException { $global:sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname  -Name $stoname }
 		$global:sto | Set-AzureRmCurrentStorageAccount
 		$context = Get-AzureRmContext
-		Assert-AreEqual $stoname $context.Subscription.CurrentStorageAccountName
+		$sub = New-Object -TypeName Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription -ArgumentList $context.Subscription
+		Assert-AreEqual $stoname $sub.CurrentStorageAccountName
 		$global:sto | Remove-AzureRmStorageAccount -Force
     }
     finally

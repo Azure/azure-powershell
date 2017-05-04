@@ -21,7 +21,6 @@ using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
@@ -49,7 +48,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
             this.helper = new EnvironmentSetupHelper();
         }
 
-        protected void SetupManagementClients(MockContext context)
+        protected void SetupManagementClients(RestTestFramework.MockContext context)
         {
             RsClient = GetRsClient(context);
             RmClient = GetRmClient(context);
@@ -99,8 +98,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
             HttpMockServer.RecordsDirectory =
                 Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
-            using (MockContext context =
-                MockContext.Start(callingClassType, mockName))
+            using (RestTestFramework.MockContext context =
+                RestTestFramework.MockContext.Start(callingClassType, mockName))
             {
                 csmTestFactory = new CSMTestEnvironmentFactory();
 
@@ -151,7 +150,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
             }
         }
 
-        private RecoveryServicesClient GetRsClient(MockContext context)
+        private RecoveryServicesClient GetRsClient(RestTestFramework.MockContext context)
         {
             return context.GetServiceClient<RecoveryServicesClient>(
                 Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());

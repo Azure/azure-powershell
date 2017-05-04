@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Service
         /// <summary>
         /// Creates a communicator for Azure Sql Database Advisors
         /// </summary>
-        public AzureSqlDatabaseAdvisorCommunicator(AzureContext context) : base(context)
+        public AzureSqlDatabaseAdvisorCommunicator(IAzureContext context) : base(context)
         {
         }
 

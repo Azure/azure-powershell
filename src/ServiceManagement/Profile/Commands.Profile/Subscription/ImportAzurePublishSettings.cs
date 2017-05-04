@@ -24,6 +24,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Profile;
 using Microsoft.WindowsAzure.Commands.Common;
 using System.Diagnostics;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
 {
@@ -53,7 +54,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                 ImportFile();
             }
 
-            AzureSubscription defaultSubscription = ProfileClient.Profile.DefaultSubscription;
+            IAzureSubscription defaultSubscription = ProfileClient.Profile.DefaultSubscription;
             Debug.Assert(Profile.Context != null);
         }
 

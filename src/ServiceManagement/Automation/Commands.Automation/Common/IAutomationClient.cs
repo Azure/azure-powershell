@@ -18,12 +18,13 @@ using System.Collections.Generic;
 using System.Security;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
     public interface IAutomationClient
     {
-        AzureSubscription Subscription { get; }
+        IAzureSubscription Subscription { get; }
 
         #region JobStreams
 
