@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added `Send-Feedback' cmdlet: allows a user to initiate a set of prompts which sends feedback to the Azure PowerShell team.
 
 ## Version 2.8.0
 * *Obsolete*: Save-AzureRmProfile is renamed to Save-AzureRmContext, there is an alias to the old cmdlet name, the alias will be removed in the next release.
