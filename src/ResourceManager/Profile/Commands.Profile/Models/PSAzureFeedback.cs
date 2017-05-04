@@ -23,8 +23,8 @@ namespace Microsoft.Azure.Commands.Profile.Models
     {
         public string ModuleName { get; set; }
         public string ModuleVersion { get; set; }
-        public Guid SubscriptionId { get; set; }
-        public Guid TenantId { get; set; }
+        public string SubscriptionId { get; set; }
+        public string TenantId { get; set; }
         public string Environment { get; set; }
         public int Recommendation { get; set; }
         public string PositiveComments { get; set; }

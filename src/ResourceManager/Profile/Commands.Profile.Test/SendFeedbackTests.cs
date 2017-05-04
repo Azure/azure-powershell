@@ -13,8 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
+using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
@@ -33,11 +35,12 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
         public SendFeedbackTests(ITestOutputHelper output)
         {
+            TestExecutionHelpers.SetUpSessionAndProfile();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             dataStore = new MemoryDataStore();
-            AzureSession.DataStore = dataStore;
+            AzureSession.Instance.DataStore = dataStore;
             commandRuntimeMock = new MockCommandRuntime();
-            AzureRmProfileProvider.Instance.Profile = new AzureRMProfile();
+            AzureRmProfileProvider.Instance.Profile = new AzureRmProfile();
         }
 
         [Fact]
@@ -64,8 +67,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             {
                 ModuleName = "Module",
                 ModuleVersion = "1.0.0",
-                SubscriptionId = Guid.NewGuid(),
-                TenantId = Guid.NewGuid(),
+                SubscriptionId = Guid.NewGuid().ToString(),
+                TenantId = Guid.NewGuid().ToString(),
                 Environment = "AzureCloud",
                 Recommendation = 10,
                 PositiveComments = "Positive",
