@@ -155,7 +155,7 @@ Specifies the absolute URI of a file to copy to an Azure Storage blob.
 ```yaml
 Type: String
 Parameter Sets: UriPipeline
-Aliases: SrcUri
+Aliases: SrcUri, SourceUri
 
 Required: True
 Position: Named
@@ -188,7 +188,7 @@ To obtain a **CloudBlob** object, use the Get-AzureStorageBlob cmdlet.
 ```yaml
 Type: CloudBlob
 Parameter Sets: BlobInstance, BlobInstanceToBlobInstance
-Aliases: SrcICloudBlob, SrcCloudBlob, ICloudBlob
+Aliases: SrcICloudBlob, SrcCloudBlob, ICloudBlob, SourceICloudBlob, SourceCloudBlob
 
 Required: True
 Position: Named
@@ -205,7 +205,7 @@ To obtain a **CloudBlobContainer** object, use the Get-AzureStorageContainer cmd
 ```yaml
 Type: CloudBlobContainer
 Parameter Sets: ContainerInstance
-Aliases: 
+Aliases: SourceCloudBlobContainer
 
 Required: True
 Position: Named
@@ -240,7 +240,7 @@ To obtain a storage context, use the New-AzureStorageContext cmdlet.
 ```yaml
 Type: AzureStorageContext
 Parameter Sets: ContainerName, BlobInstance, BlobInstanceToBlobInstance, ContainerInstance, ShareName, ShareInstance, DirInstance, FileInstance, FileInstanceToBlobInstance
-Aliases: SrcContext
+Aliases: SrcContext, SourceContext
 
 Required: False
 Position: Named
@@ -252,7 +252,7 @@ Accept wildcard characters: False
 ```yaml
 Type: AzureStorageContext
 Parameter Sets: UriPipeline
-Aliases: SrcContext
+Aliases: SrcContext, SourceContext
 
 Required: False
 Position: Named
@@ -267,7 +267,7 @@ Specifies the name of the destination blob.
 ```yaml
 Type: String
 Parameter Sets: ContainerName, BlobInstance, ContainerInstance, ShareName, ShareInstance, DirInstance, FileInstance
-Aliases: 
+Aliases: DestinationBlob
 
 Required: False
 Position: Named
@@ -279,7 +279,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: UriPipeline
-Aliases: 
+Aliases: DestinationBlob
 
 Required: True
 Position: Named
@@ -294,7 +294,7 @@ Specifies a destination **CloudBlob** object
 ```yaml
 Type: CloudBlob
 Parameter Sets: BlobInstanceToBlobInstance, FileInstanceToBlobInstance
-Aliases: DestICloudBlob
+Aliases: DestICloudBlob, DestinationCloudBlob, DestinationICloudBlob
 
 Required: True
 Position: Named
@@ -309,7 +309,7 @@ Specifies the name of the destination container.
 ```yaml
 Type: String
 Parameter Sets: ContainerName, BlobInstance, ContainerInstance, ShareName, ShareInstance, DirInstance, FileInstance, UriPipeline
-Aliases: 
+Aliases: DestinationContainer
 
 Required: True
 Position: Named
@@ -325,7 +325,7 @@ To obtain a storage context, use the New-AzureStorageContext cmdlet.
 ```yaml
 Type: AzureStorageContext
 Parameter Sets: (All)
-Aliases: 
+Aliases: DestinationContext
 
 Required: False
 Position: Named
@@ -371,7 +371,7 @@ Specifies the name of the source blob.
 ```yaml
 Type: String
 Parameter Sets: ContainerName, ContainerInstance
-Aliases: 
+Aliases: SourceBlob
 
 Required: True
 Position: 0
@@ -386,7 +386,7 @@ Specifies the name of the source container.
 ```yaml
 Type: String
 Parameter Sets: ContainerName
-Aliases: 
+Aliases: SourceContainer
 
 Required: True
 Position: Named
@@ -401,7 +401,7 @@ Specifies a **CloudFileDirectory** object from Azure Storage Client library.
 ```yaml
 Type: CloudFileDirectory
 Parameter Sets: DirInstance
-Aliases: 
+Aliases: SourceDir
 
 Required: True
 Position: Named
@@ -417,7 +417,7 @@ You can create it or use Get-AzureStorageFile cmdlet.
 ```yaml
 Type: CloudFile
 Parameter Sets: FileInstance, FileInstanceToBlobInstance
-Aliases: 
+Aliases: SourceFile
 
 Required: True
 Position: Named
@@ -432,7 +432,7 @@ Specifies the source file relative path of source directory or source share.
 ```yaml
 Type: String
 Parameter Sets: ShareName, ShareInstance, DirInstance
-Aliases: 
+Aliases: SourceFilePath
 
 Required: True
 Position: Named
@@ -448,7 +448,7 @@ You can create it or use Get-AzureStorageShare cmdlet.
 ```yaml
 Type: CloudFileShare
 Parameter Sets: ShareInstance
-Aliases: 
+Aliases: SourceShare
 
 Required: True
 Position: Named
@@ -463,7 +463,7 @@ Specifies the source share name.
 ```yaml
 Type: String
 Parameter Sets: ShareName
-Aliases: 
+Aliases: SourceShareName
 
 Required: True
 Position: Named

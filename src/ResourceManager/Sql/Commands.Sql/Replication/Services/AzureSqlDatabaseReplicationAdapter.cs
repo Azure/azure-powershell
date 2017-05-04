@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.Database.Services;
@@ -45,19 +46,19 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure Subscription
         /// </summary>
-        private AzureSubscription _subscription { get; set; }
+        private IAzureSubscription _subscription { get; set; }
 
         /// <summary>
         /// Constructs a database adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlDatabaseReplicationAdapter(AzureContext context)
+        public AzureSqlDatabaseReplicationAdapter(IAzureContext context)
         {
             Context = context;
             _subscription = context.Subscription;

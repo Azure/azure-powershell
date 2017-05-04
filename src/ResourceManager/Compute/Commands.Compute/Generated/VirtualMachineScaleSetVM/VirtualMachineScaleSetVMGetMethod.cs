@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     psObject.Add(Mapper.Map<VirtualMachineScaleSetVM, PSVirtualMachineScaleSetVMList>(r));
                 }
-                WriteObject(psObject);
+                WriteObject(psObject, true);
             }
         }
 
