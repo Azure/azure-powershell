@@ -86,6 +86,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             if (string.IsNullOrEmpty(AgreementType))
             {
                 this.WriteWarning(Constants.NoAgreementTypeParameterWarningMessage);
+                AgreementType = "X12";
             }
 
             var integrationAccountReceivedIcn = this.IntegrationAccountClient.GetIntegrationAccountReceivedControlNumber(
