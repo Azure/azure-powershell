@@ -258,7 +258,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 }
                 else
                 {
-                    destChannel = CreateChannel(DestContext);
+                    destChannel = CreateChannel(this.GetCmdletStorageContext(DestContext));
                 }
             }
 
