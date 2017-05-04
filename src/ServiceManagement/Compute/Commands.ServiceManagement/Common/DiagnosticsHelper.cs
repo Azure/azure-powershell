@@ -22,7 +22,6 @@ using System.Text;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.WindowsAzure.Management.Storage.Models;
@@ -30,6 +29,9 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
 {
@@ -104,7 +106,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
                 case ConfigFileType.Json:
                     return GetPublicConfigFromJsonFile(configurationPath, storageAccountName, resourceId, cmdlet);
                 default:
-                    throw new ArgumentException(Properties.Resources.DiagnosticsExtensionInvalidConfigFileFormat);
+                    throw new ArgumentException(Resources.DiagnosticsExtensionInvalidConfigFileFormat);
             }
         }
 
@@ -115,7 +117,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
             var wadCfgBlobElement = doc.Descendants().FirstOrDefault(d => d.Name.LocalName == WadCfgBlob);
             if (wadCfgElement == null && wadCfgBlobElement == null)
             {
-                throw new ArgumentException(Properties.Resources.DiagnosticsExtensionIaaSConfigElementNotDefinedInXml);
+                throw new ArgumentException(Resources.DiagnosticsExtensionIaaSConfigElementNotDefinedInXml);
             }
 
             if (wadCfgElement != null)
@@ -165,7 +167,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
             var configurationElem = wadCfgElement.Elements().FirstOrDefault(d => d.Name.LocalName == DiagnosticMonitorConfigurationElemStr);
             if (configurationElem == null)
             {
-                throw new ArgumentException(Properties.Resources.DiagnosticsExtensionDiagnosticMonitorConfigurationElementNotDefined);
+                throw new ArgumentException(Resources.DiagnosticsExtensionDiagnosticMonitorConfigurationElementNotDefined);
             }
 
             var metricsElement = configurationElem.Elements().FirstOrDefault(d => d.Name.LocalName == MetricsElemStr);
@@ -181,7 +183,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
                 var resourceIdAttr = metricsElement.Attribute(MetricsResourceIdAttr);
                 if (resourceIdAttr != null && !resourceIdAttr.Value.Equals(resourceId))
                 {
-                    cmdlet.WriteWarning(Properties.Resources.DiagnosticsExtensionMetricsResourceIdNotMatch);
+                    cmdlet.WriteWarning(Resources.DiagnosticsExtensionMetricsResourceIdNotMatch);
                 }
                 metricsElement.SetAttributeValue(MetricsResourceIdAttr, resourceId);
             }
@@ -214,7 +216,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
             }
             else
             {
-                throw new ArgumentException(Properties.Resources.DiagnosticsExtensionIaaSConfigElementNotDefinedInJson);
+                throw new ArgumentException(Resources.DiagnosticsExtensionIaaSConfigElementNotDefinedInJson);
             }
 
             return hashTable;
@@ -230,7 +232,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
             var configObject = wadCfgObject[DiagnosticMonitorConfigurationElemStr] as JObject;
             if (configObject == null)
             {
-                throw new ArgumentException(Properties.Resources.DiagnosticsExtensionDiagnosticMonitorConfigurationElementNotDefined);
+                throw new ArgumentException(Resources.DiagnosticsExtensionDiagnosticMonitorConfigurationElementNotDefined);
             }
 
             var metricsObject = configObject[MetricsElemStr] as JObject;
@@ -245,7 +247,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
                 var resourceIdValue = metricsObject[MetricsResourceIdAttr] as JValue;
                 if (resourceIdValue != null && !resourceIdValue.Value.Equals(resourceId))
                 {
-                    cmdlet.WriteWarning(Properties.Resources.DiagnosticsExtensionMetricsResourceIdNotMatch);
+                    cmdlet.WriteWarning(Resources.DiagnosticsExtensionMetricsResourceIdNotMatch);
                 }
                 metricsObject[MetricsResourceIdAttr] = resourceId;
             }
@@ -498,7 +500,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
         /// 4. The one get from current Azure Environment
         /// </summary>
         public static string InitializeStorageAccountEndpoint(string storageAccountName, string storageAccountKey, IStorageManagementClient storageClient,
-            AzureStorageContext storageContext = null, string configurationPath = null, AzureContext defaultContext = null)
+            AzureStorageContext storageContext = null, string configurationPath = null, IAzureContext defaultContext = null)
         {
             string storageAccountEndpoint = null;
             StorageAccount storageAccount = null;

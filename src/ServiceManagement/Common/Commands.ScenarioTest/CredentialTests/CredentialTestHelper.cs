@@ -31,7 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.CredentialTests
 
         public CredentialTestHelper()
         {
-            AzureSession.DataStore = new MemoryDataStore();
+            AzureSession.Instance.DataStore = new MemoryDataStore();
             // Ignore SSL errors
             System.Net.ServicePointManager.ServerCertificateValidationCallback += (se, cert, chain, sslerror) => true;
         }

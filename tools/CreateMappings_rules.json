@@ -87,7 +87,7 @@
 
     { "regex": "Billing", "alias": "Billing" }, 
 
-    { "regex": "Insights", "alias": "Insights" }, 
+    { "regex": "Insights", "alias": "Monitoring" }, 
 
     { "regex": "Dtl", "group": "DevTest Labs", "alias": "DevTest Labs" }, 
     { "regex": "DevTestLabs", "group": "DevTest Labs", "alias": "DevTest Labs" }, 

@@ -12,14 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.ServiceManagemenet.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using System;
 using System.Globalization;
+using System.Linq;
 using System.Management.Automation;
 using System.Security.Permissions;
 
@@ -335,11 +337,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         internal CloudStorageAccount GetStorageAccountWithAzureEnvironment(StorageCredentials credential,
             string storageAccountName, bool useHttps, string azureEnvironmentName = "")
         {
-            AzureEnvironment azureEnvironment = null;
+            IAzureEnvironment azureEnvironment = null;
 
             if (null != SMProfile)
             {
-                if (DefaultContext != null && string.IsNullOrEmpty(azureEnvironmentName))
+                if (DefaultContext != null && DefaultContext.Environment != null && string.IsNullOrEmpty(azureEnvironmentName))
                 {
                     azureEnvironment = DefaultContext.Environment;
 
@@ -353,8 +355,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                 {
                     try
                     {
-                        var profileClient = new ProfileClient(SMProfile);
-                        azureEnvironment = profileClient.GetEnvironmentOrDefault(azureEnvironmentName);
+                        azureEnvironment = SMProfile.Environments.First((s) => string.Equals(s.Name, environmentName, StringComparison.OrdinalIgnoreCase));
                     }
                     catch (ArgumentException e)
                     {

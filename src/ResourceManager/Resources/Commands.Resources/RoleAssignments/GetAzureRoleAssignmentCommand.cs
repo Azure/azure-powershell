@@ -230,14 +230,14 @@ namespace Microsoft.Azure.Commands.Resources
                     ResourceGroupName = ResourceGroupName,
                     ResourceName = ResourceName,
                     ResourceType = ResourceType,
-                    Subscription = string.IsNullOrEmpty(ResourceGroupName) ? null : DefaultProfile.Context.Subscription.Id.ToString()
+                    Subscription = string.IsNullOrEmpty(ResourceGroupName) ? null : DefaultProfile.DefaultContext.Subscription.Id.ToString()
                 },
                 ExpandPrincipalGroups = ExpandPrincipalGroups.IsPresent,
                 IncludeClassicAdministrators = IncludeClassicAdministrators.IsPresent,
                 ExcludeAssignmentsForDeletedPrincipals = true
             };
 
-            List<PSRoleAssignment> ra = PoliciesClient.FilterRoleAssignments(options, DefaultProfile.Context.Subscription.Id.ToString());
+            List<PSRoleAssignment> ra = PoliciesClient.FilterRoleAssignments(options, DefaultProfile.DefaultContext.Subscription.Id.ToString());
 
             WriteObject(ra, enumerateCollection: true);
         }

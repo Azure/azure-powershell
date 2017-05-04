@@ -129,8 +129,14 @@
   <data name="FailedToDiscoverResourceGroup" xml:space="preserve">
     <value>Could not find server: '{0}' in any resource group in the currently selected subscription: {1}. Please ensure this server exists and that the current user has access to it.</value>
   </data>
+  <data name="InvalidDefaultSubscription" xml:space="preserve">
+    <value>No default subscription has been designated. Use Select-AzureSubscription -Default &lt;subscriptionName&gt; to set the default subscription.</value>
+  </data>
   <data name="LongRunningOperationFailed" xml:space="preserve">
     <value>AnalysisServices server operation failed with the following error code: {0} and message: {1}</value>
+  </data>
+  <data name="NoSubscriptionInContext" xml:space="preserve">
+    <value>No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Login-AzureRMAccount to login.</value>
   </data>
   <data name="RemoveAnalysisServicesServer" xml:space="preserve">
     <value>Are you sure you want to remove Analysis Services server: '{0}'?</value>

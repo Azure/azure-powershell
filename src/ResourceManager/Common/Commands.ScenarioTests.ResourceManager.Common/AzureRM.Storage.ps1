@@ -172,14 +172,7 @@ function Remove-AzureRmStorageAccount
 
 function Get-Context
 {
-    [Microsoft.Azure.Commands.Common.Authentication.Models.AzureContext]$context = $null
-    $profile = [Microsoft.WindowsAzure.Commands.Common.AzureRmProfileProvider]::Instance.Profile
-    if ($profile -ne $null)
-    {
-      $context = $profile.Context
-    }
-
-    return $context
+      return [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext
 }
 
  function Parse-Type
@@ -199,9 +192,9 @@ function Get-Context
 
 function Get-StorageClient
 {
-  param([Microsoft.Azure.Commands.Common.Authentication.Models.AzureContext] $context)
-    $factory = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::ClientFactory
-    [System.Type[]]$types = [Microsoft.Azure.Commands.Common.Authentication.Models.AzureContext], [Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint]
+  param([Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext] $context)
+    $factory = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.ClientFactory
+    [System.Type[]]$types = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext], [string]
     $storageClient = [Microsoft.Azure.Management.Storage.StorageManagementClient]
     $storageVersion = [System.Reflection.Assembly]::GetAssembly($storageClient).GetName().Version
     if ($storageVersion.Major -gt 3)
@@ -210,10 +203,10 @@ function Get-StorageClient
     }
     else
     {
-      $method = [Microsoft.Azure.Commands.Common.Authentication.IClientFactory].GetMethod("CreateClient", $types)
+      $method = [Microsoft.Azure.Commands.Common.Authentication.IHyakClientFactory].GetMethod("CreateClient", $types)
     }
     $closedMethod = $method.MakeGenericMethod([Microsoft.Azure.Management.Storage.StorageManagementClient])
-    $arguments = $context, [Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint]::ResourceManager
+    $arguments = $context, [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment+Endpoint]::ResourceManager
     $client = $closedMethod.Invoke($factory, $arguments)
     return $client
 }

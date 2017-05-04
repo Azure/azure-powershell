@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzureRmApiManagementCertificate
 
 ## SYNOPSIS
-Creates an API Management certificate.
+Creates an API Management certificate to be used during Authentication with Backend.
 
 ## SYNTAX
 
