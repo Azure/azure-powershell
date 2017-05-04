@@ -130,7 +130,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         [Alias("DestinationContext")]
         [Parameter(HelpMessage = "Destination Storage context object", Mandatory = false)]
-        public AzureStorageContext DestContext { get; set; }
+        public IStorageContext DestContext { get; set; }
 
         private bool skipSourceChannelInit;
 
@@ -190,7 +190,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 }
                 else
                 {
-                    destChannel = CreateChannel(DestContext);
+                    destChannel = CreateChannel(this.GetCmdletStorageContext(DestContext));
                 }
             }
 
