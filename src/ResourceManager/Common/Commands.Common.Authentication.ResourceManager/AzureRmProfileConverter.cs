@@ -69,7 +69,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             else if (objectType == typeof(IAzureTokenCache))
             {
                 var tempResult = serializer.Deserialize<CacheBuffer>(reader);
-                return new AzureTokenCache { CacheData = tempResult.CacheData };
+                var cache = AzureSession.Instance.TokenCache;
+                if (tempResult != null && tempResult.CacheData != null && tempResult.CacheData.Length > 0)
+                {
+                    cache.CacheData = tempResult.CacheData;
+                }
+
+                return cache;
             }
             else if (objectType == typeof(Dictionary<string, IAzureEnvironment>))
             {

@@ -46,7 +46,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Serialization
             result.Subscription = context.Subscription.Convert();
             result.Tenant = context.Tenant.Convert();
             result.Environment = context.Environment.Convert();
-            result.TokenCache = new AuthenticationStoreTokenCache(new AzureTokenCache { CacheData = context.TokenCache });
+            var cache = AzureSession.Instance.TokenCache;
+            if ( context.TokenCache != null && context.TokenCache.Length > 0)
+            {
+                cache.CacheData = context.TokenCache;
+            }
+
+            result.TokenCache = cache;
             return result;
         }
 

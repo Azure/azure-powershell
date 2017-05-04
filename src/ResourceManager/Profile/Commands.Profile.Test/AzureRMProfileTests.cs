@@ -457,7 +457,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             profile = new AzureRmProfile();
             Assert.Throws<ArgumentNullException>(() => profile.SetContextWithCache(null));
             profile.SetContextWithCache(context);
-            Assert.Equal(TokenCache.DefaultShared.Serialize(), profile.DefaultContext.TokenCache.CacheData);
+            Assert.Equal(AzureSession.Instance.TokenCache.CacheData, profile.DefaultContext.TokenCache.CacheData);
         }
 
         [Fact]
@@ -811,7 +811,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
     }
   },
   ""Context"": {
-    ""TokenCache"": ""AQIDBAUGCAkA"",
+    ""TokenCache"": ""AgAAAAAAAAA="",
     ""Account"": {
       ""Id"": ""me@contoso.com"",
       ""Type"": 1,
@@ -853,7 +853,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.Equal("testCloud", profile.DefaultContext.Environment.Name);
             Assert.Equal("me@contoso.com", profile.DefaultContext.Account.Id);
             Assert.Equal(AzureAccount.AccountType.User, profile.DefaultContext.Account.Type);
-            Assert.Equal(new byte[] { 1, 2, 3, 4, 5, 6, 8, 9, 0 }, profile.DefaultContext.TokenCache.CacheData);
+            Assert.Equal(new byte[] { 2, 0, 0, 0, 0, 0, 0, 0 }, profile.DefaultContext.TokenCache.CacheData);
             Assert.Equal(path, profile.ProfilePath);
         }
 
