@@ -378,6 +378,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ActiveDirectoryTests\TestNewADServicePrincipalWithoutApp.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.DeploymentTests\TestCrossResourceGroupDeploymentFromTemplateFile.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.DeploymentTests\TestNestedDeploymentFromTemplateFile.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
