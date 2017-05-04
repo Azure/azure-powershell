@@ -203,17 +203,17 @@ System.Int32
 Keywords: azure, azurerm, arm, resource, connectivity, management, manager, network, networking, network watcher
 
 ## RELATED LINKS
-[New-AzureRmNetworkWatcher]()
-[Get-AzureRmNetworkWatcher]()
+[New-AzureRmNetworkWatcher](./New-AzureRmNetworkWatcher.md)
+[Get-AzureRmNetworkWatcher](./Get-AzureRmNetworkWatcher.md)
+[Remove-AzureRmNetworkWatcher](./Remove-AzureRmNetworkWatcher.md)
 
-[Get-AzureRmNetworkWatcherIPFlowVerify]()
-[Get-AzureRmNetworkWatcherNextHop]()
-[Get-AzureRmNetworkWatcherSecurityGroupView]()
-[Get-AzureRmNetworkWatcherTopology]()
-[Get-AzureRmNetworkWatcherTroubleshoot]()
+[Get-AzureRmNetworkWatcherNextHop](./Get-AzureRmNetworkWatcherNextHop.md)
+[Get-AzureRmNetworkWatcherSecurityGroupView](./Get-AzureRmNetworkWatcherSecurityGroupView.md)
+[Get-AzureRmNetworkWatcherTopology](./Get-AzureRmNetworkWatcherTopology.md)
+[Get-AzureRmNetworkWatcherTroubleshootingResult](./Get-AzureRmNetworkWatcherTroubleshootingResult.md)
 
-[New-AzureRmNetworkWatcherPacketCapture]()
-[New-AzureRmPacketCaptureFilter]()
-[Get-AzureRmNetworkWatcherPacketCapture]()
-[Remove-AzureRmNetworkWatcherPacketCapture]()
-[Stop-AzureRmNetworkWatcherPacketCapture]()
+[New-AzureRmNetworkWatcherPacketCapture](./New-AzureRmNetworkWatcherPacketCapture.md)
+[New-AzureRmPacketCaptureFilterConfig](./New-AzureRmPacketCaptureFilterConfig.md)
+[Get-AzureRmNetworkWatcherPacketCapture](./Get-AzureRmNetworkWatcherPacketCapture.md)
+[Remove-AzureRmNetworkWatcherPacketCapture](./Remove-AzureRmNetworkWatcherPacketCapture.md)
+[Stop-AzureRmNetworkWatcherPacketCapture](./Stop-AzureRmNetworkWatcherPacketCapture.md)
