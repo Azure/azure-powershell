@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         {
         }
 
-        public PSSearchGetSearchResultsResponse(SearchGetSearchResultsResponse response)
+        public PSSearchGetSearchResultsResponse(SearchResultsResponse response)
         {
             if (response != null)
             {

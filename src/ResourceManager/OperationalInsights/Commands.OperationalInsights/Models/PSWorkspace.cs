@@ -37,12 +37,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             this.Location = workspace.Location;
             this.Tags = workspace.Tags;
 
-            if (workspace.Properties != null)
+            if (workspace!= null)
             {
-                this.Sku = workspace.Properties.Sku != null ? workspace.Properties.Sku.Name : null;
-                this.CustomerId = workspace.Properties.CustomerId;
-                this.PortalUrl = workspace.Properties.PortalUrl;
-                this.ProvisioningState = workspace.Properties.ProvisioningState;
+                this.Sku = workspace.Sku != null ? workspace.Sku.Name : null;
+                this.CustomerId = new Guid(workspace.CustomerId);
+                this.PortalUrl = workspace.PortalUrl;
+                this.ProvisioningState = workspace.ProvisioningState;
             }
         }
 
