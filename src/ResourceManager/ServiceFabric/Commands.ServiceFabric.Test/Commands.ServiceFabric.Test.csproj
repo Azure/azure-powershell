@@ -6,7 +6,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{080B0477-7E52-4455-90AB-23BD13D1B1CE}</ProjectGuid>
+    <ProjectGuid>{762E87F5-5EF3-4A04-962A-00CFE4702BC9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Azure.Commands.ServiceFabric.Test</RootNamespace>
@@ -77,7 +77,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.14.0.0-prerelease\lib\net45\Microsoft.Azure.Management.Compute.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Graph.RBAC">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Graph.RBAC.3.2.0-preview\lib\net45\Microsoft.Azure.Graph.RBAC.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Graph.RBAC.3.4.0-preview\lib\net452\Microsoft.Azure.Graph.RBAC.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.KeyVault, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.KeyVault.2.2.0-preview\lib\net452\Microsoft.Azure.Management.KeyVault.dll</HintPath>
@@ -88,7 +88,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.8.1.0-preview\lib\net45\Microsoft.Azure.Management.Network.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.ResourceManager">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ResourceManager.1.2.0-preview\lib\net45\Microsoft.Azure.Management.ResourceManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ResourceManager.1.6.0-preview\lib\net452\Microsoft.Azure.Management.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.ServiceFabric">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.ServiceFabric.1.0.0-preview\lib\net45\Microsoft.Azure.Management.ServiceFabric.dll</HintPath>
@@ -306,6 +306,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
+      <Project>{70527617-7598-4AEF-B5BD-DB9186B8184B}</Project>
+      <Name>Commands.Common.Authentication.Abstractions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
       <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
       <Name>Commands.Common.Authentication</Name>
@@ -333,6 +337,10 @@
     <ProjectReference Include="..\Commands.ServiceFabric\Commands.ServiceFabric.csproj">
       <Project>{9ffc40cc-a341-4d0c-a25d-dc6b78ef6c94}</Project>
       <Name>Commands.KeyVault</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Commands.ServiceFabric\Commands.ServiceFabric.csproj">
+      <Project>{C1A0C9B1-9CC3-49EB-9765-A0AB1E695AF9}</Project>
+      <Name>Commands.ServiceFabric</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.KeyVault.Models;
 using System;
-using System.IO;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.KeyVault.Models;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
@@ -23,33 +23,59 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Requests that a backup of the specified key be downloaded and stored to a file
     /// </summary>
+    /// <remarks>
+    /// The cmdlet returns the path of the newly created backup file.
+    /// </remarks>
     [Cmdlet(VerbsData.Backup, "AzureKeyVaultKey",
-        SupportsShouldProcess = true, 
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = ByKeyNameParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(String))]
     public class BackupAzureKeyVaultKey : KeyVaultCmdletBase
     {
-        public static readonly DateTime EpochDate = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        #region parameter sets
+
+        private const string ByKeyNameParameterSet = "ByKeyName";
+        private const string ByKeyObjectParameterSet = "ByKey";
+
+        #endregion
 
         #region Input Parameter Definitions
 
         /// <summary>
         /// Vault name
         /// </summary>
-        [Parameter(Mandatory = true,
-                   Position = 0,
-                   ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
+        [Parameter( Mandatory = true,
+                    Position = 0,
+                    ValueFromPipelineByPropertyName = true,
+                    ParameterSetName = ByKeyNameParameterSet,
+                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]        
         public string VaultName { get; set; }
 
         /// <summary>
+        /// KeyBundle object to be backed up.
+        /// </summary>
+        /// <remarks>
+        /// Note that the backup applies to the entire family of a key (current and all its versions); 
+        /// since a key bundle represents a single version, the intent of this parameter is to allow pipelining.
+        /// The backup cmdlet will use the Name and VaultName properties of the KeyBundle parameter.
+        /// </remarks>
+        [Parameter( Mandatory = true,
+                    Position = 0,
+                    ValueFromPipelineByPropertyName = true,
+                    ParameterSetName = ByKeyObjectParameterSet,
+                    HelpMessage = "Key bundle to back up, pipelined in from the output of a retrieval call." )]
+        public KeyBundle Key { get; set; }
+
+        /// <summary>
         /// Key name
         /// </summary>
-        [Parameter(Mandatory = true,
-                   Position = 1,
-                   ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
+        [Parameter( Mandatory = true,
+                    Position = 1,
+                    ValueFromPipelineByPropertyName = true,
+                    ParameterSetName = ByKeyNameParameterSet,
+                    HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
         [ValidateNotNullOrEmpty]        
         [Alias(Constants.KeyName)]
         public string Name { get; set; }
@@ -57,47 +83,59 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// The output file in which the backup blob is to be stored
         /// </summary>
-        [Parameter(Mandatory = false,
-                   Position = 2,
-                   ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Output file. The output file to store the backed up key blob in. If not present, a default filename is chosen.")]
+        [Parameter( Mandatory = false,
+                    Position = 2,
+                    ValueFromPipelineByPropertyName = true,
+                    HelpMessage = "Output file. The output file to store the backed up key blob in. If not present, a default filename is chosen.")]
         [ValidateNotNullOrEmpty]
         public string OutputFile { get; set; }
+
+        /// <summary>
+        /// Instructs the cmdlet to overwrite the destination file, if it exists.
+        /// </summary>
+        [Parameter( Mandatory = false,
+                    Position = 3,
+                    ValueFromPipelineByPropertyName = true,
+                    HelpMessage = "Overwrite the given file if it exists" )]
+        public SwitchParameter Force { get; set; }
 
         #endregion Input Parameter Definition
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Name, Properties.Resources.BackupKey))
+            switch ( ParameterSetName )
+            {
+                case ByKeyNameParameterSet:
+                    //  no op
+                    break;
+
+                case ByKeyObjectParameterSet:
+                    Name = Key.Name;
+                    VaultName = Key.VaultName;
+                    break;
+
+                default:
+                    throw new ArgumentException( KeyVaultProperties.Resources.BadParameterSetName );
+            }
+
+            if ( ShouldProcess(Name, Properties.Resources.BackupKey))
             {
                 if (string.IsNullOrEmpty(OutputFile))
                 {
-                    OutputFile = GetDefaultFile();
+                    OutputFile = GetDefaultFileForOperation("backup", VaultName, Name);
                 }
 
-                var filePath = ResolvePath(OutputFile);
+                var filePath = this.GetUnresolvedProviderPathFromPSPath(OutputFile);
 
-                var backupBlobPath = this.DataServiceClient.BackupKey(VaultName, Name, filePath);
-
-                this.WriteObject(backupBlobPath);
+                // deny request if the file exists and overwrite is not authorized
+                if ( !AzureSession.Instance.DataStore.FileExists( filePath )
+                    || Force.IsPresent
+                    || ShouldContinue( string.Format( KeyVaultProperties.Resources.FileOverwriteMessage, filePath ), KeyVaultProperties.Resources.FileOverwriteCaption ) )
+                {
+                    var backupBlobPath = this.DataServiceClient.BackupKey(VaultName, Name, filePath);
+                    this.WriteObject( backupBlobPath );
+                }
             }
-        }
-
-        private string GetDefaultFile()
-        {
-            var currentPath = CurrentPath();            
-            var filename = string.Format("{0}\\backup-{1}-{2}-{3}", currentPath, VaultName, Name, DateTime.UtcNow.Subtract(EpochDate).TotalSeconds);
-            return filename;
-        }
-
-        private string ResolvePath(string filePath)
-        {
-            FileInfo keyFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(filePath));
-            if (keyFile.Exists)
-            {
-                throw new IOException(string.Format(KeyVaultProperties.Resources.BackupKeyFileAlreadyExists, filePath));
-            }
-            return keyFile.FullName;
         }
     }
 }

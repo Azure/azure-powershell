@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System.IO;
     using System.Management.Automation;
     using System.Threading.Tasks;
+    using WindowsAzure.Commands.Common;
 
     /// <summary>
     /// Sets the policy definition.

@@ -28,7 +28,7 @@ PS c:\> $pwd = ConvertTo-SecureString -String 'Password$123456' -AsPlainText -Fo
 PS C:\> Add-AzureRmServiceFabricNodeType -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NodeType 'n2' -Capacity 5 -VmUserName 'adminName' -VmPassword $pwd
 ```
 
-This command will add a new NodeType 'n2' with capacity with 5, and the vm admin or login user name is 'adminName'.
+This command will add a new NodeType 'n2' with capacity of 5, and the vm admin name is 'adminName'.
 
 ## PARAMETERS
 

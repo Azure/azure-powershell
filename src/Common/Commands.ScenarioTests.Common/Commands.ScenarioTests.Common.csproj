@@ -11,7 +11,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.WindowsAzure.Commands.ScenarioTest</RootNamespace>
     <AssemblyName>Microsoft.WindowsAzure.Commands.ScenarioTest.Common</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
@@ -148,7 +148,6 @@
     <Compile Include="PermissiveRecordMatcherWithApiExclusion.cs" />
     <Compile Include="PowerShellExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SMTestBase.cs" />
     <Compile Include="XunitTracingInterceptor.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -164,6 +163,10 @@
     <ProjectReference Include="..\..\ServiceManagement\Common\Commands.ServiceManagement.Common\Commands.ServiceManagement.Common.csproj">
       <Project>{cff09e81-1e31-444e-b4d4-a21e946c29e2}</Project>
       <Name>Commands.ServiceManagement.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
+      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
+      <Name>Commands.Common.Authentication.Abstractions</Name>
     </ProjectReference>
     <ProjectReference Include="..\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
       <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>

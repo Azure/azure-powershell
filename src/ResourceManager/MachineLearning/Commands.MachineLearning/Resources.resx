@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CreateNewRegionalProperties" xml:space="preserve">
+    <value>Are you sure you want to create new regional properties for the machine learning web service "{0}" in region "{1}"?</value>
+  </data>
   <data name="InvalidWebServiceIdOnObject" xml:space="preserve">
     <value>The passed in machine learning web service object does not have a valid ARM resource id. </value>
   </data>

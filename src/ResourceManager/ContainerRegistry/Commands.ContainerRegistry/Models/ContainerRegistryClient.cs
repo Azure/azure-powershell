@@ -21,6 +21,7 @@ using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
@@ -33,10 +34,10 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         public Action<string> ErrorLogger { get; set; }
         public Action<string> WarningLogger { get; set; }
 
-        public ContainerRegistryClient(AzureContext context)
+        public ContainerRegistryClient(IAzureContext context)
         {
-            _client = AzureSession.ClientFactory.CreateArmClient<ContainerRegistryManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
-            _storageClient = AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            _client = AzureSession.Instance.ClientFactory.CreateArmClient<ContainerRegistryManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            _storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         public string GetStorageAccountAccessKey(string resourceGroupName, string accountName)

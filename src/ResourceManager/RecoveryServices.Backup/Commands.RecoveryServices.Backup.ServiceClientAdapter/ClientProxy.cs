@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using AutoRestNS = Microsoft.Rest;
 
@@ -39,7 +40,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             {
                 if (client == null)
                 {
-                    client = AzureSession.ClientFactory.CreateArmClient<TClient>(
+                    client = AzureSession.Instance.ClientFactory.CreateArmClient<TClient>(
                         Context, AzureEnvironment.Endpoint.ResourceManager);
                 }
 
@@ -51,7 +52,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// AzureContext based ctor
         /// </summary>
         /// <param name="context"></param>
-        public ClientProxy(AzureContext context)
+        public ClientProxy(IAzureContext context)
             : base(context)
         {
         }

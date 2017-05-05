@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             {
                 if (_RegistryClient == null)
                 {
-                    _RegistryClient = new ContainerRegistryClient(DefaultProfile.Context)
+                    _RegistryClient = new ContainerRegistryClient(DefaultContext)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp,
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             {
                 if (_ResourceManagerClient == null)
                 {
-                    _ResourceManagerClient = new ResourceManagerClient(DefaultProfile.Context)
+                    _ResourceManagerClient = new ResourceManagerClient(DefaultContext)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp,

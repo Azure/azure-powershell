@@ -728,6 +728,9 @@ Stops a running packet capture session
 ### [Test-AzureRmDnsAvailability](Test-AzureRmDnsAvailability.md)
 {{Manually Enter Test-AzureRmDnsAvailability Description Here}}
 
+### [Test-AzureRmNetworkWatcherConnectivity](Test-AzureRmNetworkWatcherConnectivity.md)
+Returns connectivity information for a specified source VM and a destination.
+
 ### [Test-AzureRmNetworkWatcherIPFlow](Test-AzureRmNetworkWatcherIPFlow.md)
 Returns whether the packet is allowed or denied to or from a particular destination.
 
