@@ -21,6 +21,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.IO;
 using System.Diagnostics;
+using System.Security.Cryptography;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -61,6 +62,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 if (session.DataStore.FileExists(cacheFile))
                 {
                     contents = session.DataStore.ReadFileAsBytes(cacheFile);
+                }
+
+                if (contents != null  && contents.Length > 0)
+                {
+                    contents = ProtectedData.Unprotect(contents, null, DataProtectionScope.CurrentUser);
                 }
 
                 session.TokenCache = new ProtectedFileTokenCache(contents);
