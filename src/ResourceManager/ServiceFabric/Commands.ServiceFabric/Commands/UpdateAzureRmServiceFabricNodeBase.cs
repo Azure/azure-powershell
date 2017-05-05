@@ -46,13 +46,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 HelpMessage = "Node type name")]
         public virtual string NodeType { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true,
-            HelpMessage = "The number of nodes to add")]
-        [ValidateRange(1, 2147483647)]
-        [Alias("NumberOfNodesToAdd")]
-        public virtual int Number
+        protected virtual int Number
         {
-            get; set;
+            get;
         }  
 
         public override void ExecuteCmdlet()

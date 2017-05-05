@@ -323,11 +323,12 @@ function Run-AllDataPlaneTests
     Run-TestProtected { Run-KeyTest {Test_RemoveKeyInNoPermissionVault} "Test_RemoveKeyInNoPermissionVault" } "Test_RemoveKeyInNoPermissionVault"
 
     # Backup-AzureKeyVaultKey and Restore-AzureKeyVaultKey tests.
-    Run-TestProtected { Run-KeyTest {Test_BackupRestoreKey} "Test_BackupRestoreKey" } "Test_BackupRestoreKey"
-    Run-TestProtected { Run-KeyTest {Test_BackupNonExisitingKey} "Test_BackupNonExisitingKey" } "Test_BackupNonExisitingKey"
-    Run-TestProtected { Run-KeyTest {Test_BackupToANamedFile} "Test_BackupToANamedFile" } "Test_BackupToANamedFile"
-    Run-TestProtected { Run-KeyTest {Test_BackupToExistingFile} "Test_BackupToExistingFile" } "Test_BackupToExistingFile"
-    Run-TestProtected { Run-KeyTest {Test_RestoreFromNonExistingFile} "Test_RestoreFromNonExistingFile" } "Test_RestoreFromNonExistingFile"
+    Run-TestProtected { Run-KeyTest {Test_BackupRestoreKeyByName} "Test_BackupRestoreKeyByName" } "Test_BackupRestoreKeyByName"
+    Run-TestProtected { Run-KeyTest {Test_BackupRestoreKeyByRef} "Test_BackupRestoreKeyByRef" } "Test_BackupRestoreKeyByRef"
+    Run-TestProtected { Run-KeyTest {Test_BackupNonExistingKey} "Test_BackupNonExistingKey" } "Test_BackupNonExistingKey"
+    Run-TestProtected { Run-KeyTest {Test_BackupKeyToANamedFile} "Test_BackupKeyToANamedFile" } "Test_BackupKeyToANamedFile"
+    Run-TestProtected { Run-KeyTest {Test_BackupKeyToExistingFile} "Test_BackupKeyToExistingFile" } "Test_BackupKeyToExistingFile"
+    Run-TestProtected { Run-KeyTest {Test_RestoreKeyFromNonExistingFile} "Test_RestoreKeyFromNonExistingFile" } "Test_RestoreKeyFromNonExistingFile"
 
     # *-AzureRmKeyVaultKey pipeline tests.
     Run-TestProtected { Run-KeyTest {Test_PipelineUpdateKeys} "Test_PipelineUpdateKeys" } "Test_PipelineUpdateKeys"
@@ -376,7 +377,15 @@ function Run-AllDataPlaneTests
     Run-TestProtected { Run-SecretTest {Test_RemoveNonExistSecret} "Test_RemoveNonExistSecret" } "Test_RemoveNonExistSecret"
     Run-TestProtected { Run-SecretTest {Test_RemoveSecretInNoPermissionVault} "Test_RemoveSecretInNoPermissionVault" } "Test_RemoveSecretInNoPermissionVault"
 
-    # *-AzureRmKeyVaultKey pipeline tests.
+    # Backup-AzureKeyVaultSecret and Restore-AzureKeyVaultSecret tests.
+    Run-TestProtected { Run-SecretTest {Test_BackupRestoreSecretByName} "Test_BackupRestoreSecretByName" } "Test_BackupRestoreSecretByName"
+    Run-TestProtected { Run-SecretTest {Test_BackupRestoreSecretByRef} "Test_BackupRestoreSecretByRef" } "Test_BackupRestoreSecretByRef"
+    Run-TestProtected { Run-SecretTest {Test_BackupNonExistingSecret} "Test_BackupNonExistingSecret" } "Test_BackupNonExistingSecret"
+    Run-TestProtected { Run-SecretTest {Test_BackupSecretToANamedFile} "Test_BackupSecretToANamedFile" } "Test_BackupSecretToANamedFile"
+    Run-TestProtected { Run-SecretTest {Test_BackupSecretToExistingFile} "Test_BackupSecretToExistingFile" } "Test_BackupSecretToExistingFile"
+    Run-TestProtected { Run-SecretTest {Test_RestoreSecretFromNonExistingFile} "Test_RestoreSecretFromNonExistingFile" } "Test_RestoreSecretFromNonExistingFile"
+
+    # *-AzureRmKeyVaultSecret pipeline tests.
     Run-TestProtected { Run-SecretTest {Test_PipelineUpdateSecrets} "Test_PipelineUpdateSecrets" } "Test_PipelineUpdateSecrets"
     Run-TestProtected { Run-SecretTest {Test_PipelineUpdateSecretAttributes} "Test_PipelineUpdateSecretAttributes" } "Test_PipelineUpdateSecretAttributes"
     Run-TestProtected { Run-SecretTest {Test_PipelineUpdateSecretVersions} "Test_PipelineUpdateSecretVersions" } "Test_PipelineUpdateSecretVersions"
