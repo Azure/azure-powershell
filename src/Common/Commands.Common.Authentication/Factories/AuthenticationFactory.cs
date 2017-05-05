@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 cache = TokenCache.DefaultShared;
             }
 
-            var configuration = GetAdalConfiguration(environment, tenant, resourceId, tokenCache as TokenCache);
+            var configuration = GetAdalConfiguration(environment, tenant, resourceId, cache);
 
             TracingAdapter.Information(
                 Resources.AdalAuthConfigurationTrace,
