@@ -285,7 +285,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     break;
 
                 case UriParameterSet:
-                    copyAction = () => StartCopyBlob(destChannel, AbsoluteUri, DestContainer, DestBlob, GetCmdletStorageContext(Context));
+                    copyAction = () => StartCopyBlob(destChannel, AbsoluteUri, DestContainer, DestBlob, (Context != null? GetCmdletStorageContext(Context) : null));
                     target = AbsoluteUri;
                     break;
 
