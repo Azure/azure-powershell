@@ -227,16 +227,14 @@ Describe "Get-AzureProfileMap" {
 Describe "RetrieveProfileMap" {
     InModuleScope AzureRM.Bootstrapper {
         Context "WebResponse content has extra line breaks" {
-            $WebResponse = New-Object -TypeName PSObject
-            $WebResponse | Add-Member NoteProperty -Name "Content" -Value "{`n`"Profile1`":`t { `"Module1`": [`"1.0`"], `n`"Module2`": [`"1.0`"] }, `"Profile2`": `n{ `"Module1`": [`"2.0`", `"1.0`"],`n `r`"Module2`": `t[`"2.0`"] }}" 
+            $WebResponse = "{`n`"Profile1`":`t { `"Module1`": [`"1.0`"], `n`"Module2`": [`"1.0`"] }, `"Profile2`": `n{ `"Module1`": [`"2.0`", `"1.0`"],`n `r`"Module2`": `t[`"2.0`"] }}" 
             It "Should return proper profile map" {
                 (RetrieveProfileMap -WebResponse $WebResponse) -like ($global:testProfileMap | ConvertFrom-Json) | Should Be $true
             }
         }
 
         Context "WebResponse content has no extra line breaks" {
-            $WebResponse = New-Object -TypeName PSObject
-            $WebResponse | Add-Member NoteProperty -Name "Content" -Value $global:testProfileMap
+            $WebResponse = $global:testProfileMap
             It "Should return proper profile map" {
                 (RetrieveProfileMap -WebResponse $WebResponse) -like ($global:testProfileMap | ConvertFrom-Json) | Should Be $true
             }
@@ -291,24 +289,6 @@ Describe Get-AzProfile {
             It "Should throw FileNotFound Exception" {
                 { Get-AzProfile } | Should Throw
                 Assert-VerifiableMocks
-            }
-        }
-    }
-}
-
-Describe "Get-ProfilesAvailable" {
-    InModuleScope AzureRM.Bootstrapper {
-        Context "Valid ProfilMap" {
-            It "Should return array of profiles and module versions" {
-                $result = Get-ProfilesAvailable ($global:testProfileMap | ConvertFrom-Json)
-                $result.contains("Profile: Profile1") | Should Be $true
-                $result.contains("Module1 : {1.0}") | Should Be $true
-            }
-        }
-
-        Context "Null ProfileMap" {
-            It "Should throw exception" {
-                { Get-ProfilesAvailable -ProfileMap $null } | Should throw
             }
         }
     }
@@ -492,6 +472,90 @@ Describe "Uninstall-ModuleHelper" {
                 Assert-MockCalled Uninstall-Module -Exactly 0
             }
         }
+
+        Context "Uninstall-Module threw error" {
+            # Arrange
+            $VersionObj = New-Object -TypeName System.Version -ArgumentList "1.0" 
+            $moduleObj = New-Object -TypeName PSObject 
+            $moduleObj | Add-Member NoteProperty -Name "Path" -Value "TestPath"
+            $moduleObj | Add-Member NoteProperty Version($VersionObj)
+            $Script:mockCalled = 0
+            $mockTestPath = {
+                $Script:mockCalled++
+                if ($Script:mockCalled -eq 1)
+                {
+                    return $moduleObj
+                }
+                else {
+                    return $null
+                }
+            }   
+
+            Mock -CommandName Get-Module -MockWith $mockTestPath
+            Mock Uninstall-Module -Verifiable { throw "No match was found for the specified search criteria and module names" }
+            It "Should write error 'custom directory' to error pipeline" {
+                Uninstall-ModuleHelper -Module 'Module1' -Version '1.0' -Profile 'Profile1' -RemovePreviousVersions -ErrorVariable ev -ea SilentlyContinue 
+                ($null -ne ($ev -match "If you installed the module to a custom directory in your path")) | Should be $true
+                $Script:mockCalled | Should Be 1
+                Assert-VerifiableMocks
+            }
+        }
+
+        Context "Uninstall-Module threw error MSI Install" {
+            # Arrange
+            $VersionObj = New-Object -TypeName System.Version -ArgumentList "1.0" 
+            $moduleObj = New-Object -TypeName PSObject 
+            $moduleObj | Add-Member NoteProperty -Name "Path" -Value "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\PowerShell\"
+            $moduleObj | Add-Member NoteProperty Version($VersionObj)
+            $Script:mockCalled = 0
+            $mockTestPath = {
+                $Script:mockCalled++
+                if ($Script:mockCalled -eq 1)
+                {
+                    return $moduleObj
+                }
+                else {
+                    return $null
+                }
+            }   
+
+            Mock -CommandName Get-Module -MockWith $mockTestPath
+            Mock Uninstall-Module -Verifiable { throw "No match was found for the specified search criteria and module names" }
+            It "Should write error 'msi' to error pipeline" {
+                Uninstall-ModuleHelper -Module 'Module1' -Version '1.0' -Profile 'Profile1' -RemovePreviousVersions -ErrorVariable ev -ea SilentlyContinue 
+                ($ev -match "If you installed via an MSI") | Should not be $null
+                $Script:mockCalled | Should Be 1
+                Assert-VerifiableMocks
+            } 
+        }
+
+        Context "Uninstall-Module threw error In Use" {
+            # Arrange
+            $VersionObj = New-Object -TypeName System.Version -ArgumentList "1.0" 
+            $moduleObj = New-Object -TypeName PSObject 
+            $moduleObj | Add-Member NoteProperty -Name "Path" -Value "TestPath"
+            $moduleObj | Add-Member NoteProperty Version($VersionObj)
+            $Script:mockCalled = 0
+            $mockTestPath = {
+                $Script:mockCalled++
+                if ($Script:mockCalled -eq 1)
+                {
+                    return $moduleObj
+                }
+                else {
+                    return $null
+                }
+            }   
+
+            Mock -CommandName Get-Module -MockWith $mockTestPath
+            Mock Uninstall-Module -Verifiable { throw "The module is currently in use" }
+            It "Should write error 'in use' to error pipeline" {
+                Uninstall-ModuleHelper -Module 'Module1' -Version '1.0' -Profile 'Profile1' -RemovePreviousVersions -ErrorVariable ev -ea SilentlyContinue 
+                ($ev -match "The module is currently in use") | Should not be $null
+                $Script:mockCalled | Should Be 1
+                Assert-VerifiableMocks
+            } 
+        }
     }
 }
 
@@ -627,6 +691,7 @@ Describe "Get-AllProfilesInstalled" {
         
         Context "Cache is empty" {
             Mock Get-ChildItem {}
+            Mock Get-Item -Verifiable {}
             Mock Get-ProfilesInstalled {}
             It "Should return empty" {
                 $result = (Get-AllProfilesInstalled)
@@ -885,8 +950,9 @@ Describe "Get-AzureRmProfile" {
         Context "With ListAvailable Switch" {
             It "Should return available profiles" {
                 $Result = (Get-AzureRmProfile -ListAvailable)
-                $Result.Contains("Profile: Profile1") | Should Be $true
-                $Result.Contains("Profile: Profile2") | Should Be $true
+                $Result.Count | Should be 2
+                $Result.ProfileName | Should Not Be $null
+                $Result.Module1 | Should Not Be $null
                 Assert-VerifiableMocks
             }
         }
@@ -894,8 +960,9 @@ Describe "Get-AzureRmProfile" {
         Context "With ListAvailable and update Switches" {
             It "Should return available profiles" {
                 $Result = (Get-AzureRmProfile -ListAvailable -Update)
-                $Result.Contains("Profile: Profile1") | Should Be $true
-                $Result.Contains("Profile: Profile2") | Should Be $true
+                $Result.Count | Should be 2
+                $Result.ProfileName | Should Not Be $null
+                $Result.Module1 | Should Not Be $null
                 Assert-VerifiableMocks
             }
         }
@@ -905,7 +972,8 @@ Describe "Get-AzureRmProfile" {
             Mock Get-ProfilesInstalled -Verifiable -ParameterFilter {[REF]$IncompleteProfiles} { @{'Profile1'= @{'Module1' = @('1.0') ;'Module2'= @('1.0')}} } 
             It "Returns installed Profile" {
                 $Result = (Get-AzureRmProfile)
-                $result[0] | Should be "Profile : Profile1"
+                $Result.ProfileName | Should Not Be $null
+                $Result.Module1 | Should Not Be $null
                 Assert-VerifiableMocks
             }
         }
@@ -1017,14 +1085,28 @@ Describe "Use-AzureRmProfile" {
 
         Context "Other versions of the same module found imported" {
             Mock Get-AzureRmModule -Verifiable { "1.0" } 
-            Mock Find-PotentialConflict -Verifiable { $false }
             $VersionObj = New-Object -TypeName System.Version -ArgumentList "2.0" 
             $moduleObj = New-Object -TypeName PSObject 
+            $moduleObj | Add-Member NoteProperty -Name "Name" -Value "Module1"
             $moduleObj | Add-Member NoteProperty Version($VersionObj)
             Mock Get-Module -Verifiable { $moduleObj }
             It "Should skip importing module" {
                 $result = Use-AzureRmProfile -Profile 'Profile1' -ErrorVariable useError -ErrorAction SilentlyContinue
-                $useError.exception.message.contains("A different version of module") | Should Be $true
+                $useError.exception.message.contains("A different profile version of module") | Should Be $true
+            }
+        }
+
+        # User tries to execute Use-AzureRmProfile with different profiles & different modules
+        Context "A different profile's module was previously imported" {
+            Mock Get-AzureRmModule -Verifiable { "1.0" } 
+            $VersionObj = New-Object -TypeName System.Version -ArgumentList "2.0" 
+            $moduleObj = New-Object -TypeName PSObject 
+            $moduleObj | Add-Member NoteProperty -Name "Name" -Value "Module1"
+            $moduleObj | Add-Member NoteProperty Version($VersionObj)
+            Mock Get-Module -Verifiable { $moduleObj }
+            It "Should skip importing module" {
+                $result = Use-AzureRmProfile -Profile 'Profile1' -Module 'Module1' -ErrorVariable useError -ErrorAction SilentlyContinue
+                $useError.exception.message.contains("A different profile version of module") | Should Be $true
             }
         }
     }

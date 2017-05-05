@@ -19,12 +19,14 @@ $Script:IsCoreEdition = ($PSVersionTable.PSEdition -eq 'Core')
 $script:IsAdmin = $false
 if ((-not $Script:IsCoreEdition) -or ($IsWindows))
 {
+  $script:ProgramFilesPSPath = $env:ProgramFiles
   If (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator"))
   {
     $script:IsAdmin = $true
   }
 }
 else {
+  $script:ProgramFilesPSPath = $PSHOME
   # on Linux, tests run via sudo will generally report "root" for whoami
   if ( (whoami) -match "root" ) 
   {
@@ -184,7 +186,7 @@ function Get-AzureProfileMap
 function RetrieveProfileMap
 {
   param($WebResponse)
-  $OnlineProfileMap = ($WebResponse.Content -replace "`n|`r|`t") | ConvertFrom-Json
+  $OnlineProfileMap = $WebResponse | ConvertFrom-Json
   return $OnlineProfileMap
 }
 
@@ -223,29 +225,11 @@ function Get-AzProfile
   return $ProfileMap
 }
 
-
-# Lists the profiles available for install from gallery
-function Get-ProfilesAvailable
-{
-  param([parameter(Mandatory = $true)] [PSCustomObject] $ProfileMap)
-  $ProfileList = ""
-  foreach ($Profile in $ProfileMap) 
-  {
-    foreach ($Module in ($Profile | get-member -MemberType NoteProperty).Name)
-    {
-      $ProfileList += "Profile: $Module`n"
-      $ProfileList += "----------------`n"
-      $ProfileList += ($Profile.$Module | Format-List | Out-String)
-    } 
-  }
-  return $ProfileList
-}
-
 # Lists the profiles that are installed on the machine
 function Get-ProfilesInstalled
 {
   param([parameter(Mandatory = $true)] [PSCustomObject] $ProfileMap, [REF]$IncompleteProfiles)
-  $result = @{}
+  $result = @{} 
   $AllProfiles = ($ProfileMap | Get-Member -MemberType NoteProperty).Name
   foreach ($key in $AllProfiles)
   {
@@ -364,7 +348,7 @@ function Uninstall-ModuleHelper
     $moduleInstalled = Get-Module -Name $Module -ListAvailable | Where-Object { $_.Version -eq $version} 
     if ($PSCmdlet.ShouldProcess("$module version $version", "Remove module")) 
     {
-      if (($null -ne $moduleInstalled) -and ($Remove.IsPresent -or $PSCmdlet.ShouldContinue("Remove module $Module version $version", "Removing Modules for profile $Profile"))) 
+      if (($null -ne $moduleInstalled) -and ($Remove.IsPresent -or $PSCmdlet.ShouldContinue("Uninstall module $Module version $version", "Uninstall Modules for profile $Profile"))) 
       {
         Write-Verbose "Removing module from session"
         Remove-Module -Name $module -Force -ErrorAction "SilentlyContinue"
@@ -375,7 +359,24 @@ function Uninstall-ModuleHelper
         }
         catch
         {
-          Write-Error $_.Exception.Message
+          if ($_.Exception.Message -match "No match was found")
+          {
+            # Check for msi installation (Install folder: C:\ProgramFiles(x86)\Microsoft SDKs\Azure\PowerShell) Only in windows
+            if ((-not $Script:IsCoreEdition) -or ($IsWindows))
+            {
+              $sdkPath1 = (join-path ${env:ProgramFiles(x86)} -childpath "\Microsoft SDKs\Azure\PowerShell\")
+              $sdkPath2 = (join-path $script:ProgramFilesPSPath -childpath "\Microsoft SDKs\Azure\PowerShell\")
+              if (($null -ne $moduleInstalled.Path) -and (($moduleInstalled.Path.Contains($sdkPath1) -or $moduleInstalled.Path.Contains($sdkPath2))))
+              {
+                Write-Error "Unable to uninstall module $module because it was installed in a different scope than expected. If you installed via an MSI, please uninstall the MSI before proceeding." -Category InvalidOperation
+                break 
+              }
+            }
+            Write-Error "Unable to uninstall module $module because it was installed in a different scope than expected. If you installed the module to a custom directory in your path, please remove the module manually, by using Uninstall-Module, or removing the module directory." -Category InvalidOperation
+          }
+          else {
+            Write-Error $_.Exception.Message
+          }
           break
         }
       }
@@ -507,6 +508,14 @@ function Get-AllProfilesInstalled
   $AllProfilesInstalled = @{}
   $ProfileCache = Get-ProfileCachePath
   $ProfileMapHashes = Get-ChildItem $ProfileCache 
+
+  # If Cache is empty, use embedded source
+  if ($null -eq $ProfileMapHashes)
+  {
+    $ModulePath = [System.IO.Path]::GetDirectoryName($PSCommandPath)
+    $ProfileMapHashes = Get-Item -Path (Join-Path -Path $ModulePath -ChildPath "ProfileMap.json")
+  }
+
   foreach ($ProfileMapHash in $ProfileMapHashes)
   {
     $ProfileMap = RetryGetContent -FilePath (Join-Path $ProfileCache $ProfileMapHash.Name) 
@@ -547,6 +556,7 @@ function Update-ProfileHelper
   $ProfileCache = Get-ProfileCachePath
   $ProfileMapHashes = Get-ChildItem $ProfileCache
 
+  # Cache was updated before calling this function, so latestprofilemap will not be null. 
   $LatestProfileMap = RetryGetContent -FilePath $script:LatestProfileMapPath.FullName 
 
   # Get-Profiles installed across all hashes. 
@@ -611,12 +621,13 @@ function Find-PotentialConflict
   # If Admin, check CurrentUser Module folder path and vice versa
   if ($script:IsAdmin)
   {
-    $availableModules | ForEach-Object { if (($null -ne $_.Path) -and $_.Path.Contains($env:HOMEPATH)) { $IsPotentialConflict = $true } }
+    $availableModules | ForEach-Object { if (($null -ne $_.Path) -and $_.Path.Contains($HOME)) { $IsPotentialConflict = $true } }
   }
-  else {
-    $availableModules | ForEach-Object { if (($null -ne $_.Path) -and $_.Path.Contains($env:ProgramFiles)) { $IsPotentialConflict = $true } }
+  else { 
+    $availableModules | ForEach-Object { if (($null -ne $_.Path) -and $_.Path.Contains($script:ProgramFilesPSPath)) { $IsPotentialConflict = $true } }
   }
 
+  # If potential conflict found, confirm with user for continuing with module installation if 'force' was not used
   if ($IsPotentialConflict)
   {
     if (($Force.IsPresent) -or ($PSCmdlet.ShouldContinue(`
@@ -629,7 +640,9 @@ function Find-PotentialConflict
       return $true
     }
   }
-  return $false
+
+  # False if no conflict was found
+  return $false 
 }
 
 # Helper function to invoke install-module
@@ -838,7 +851,14 @@ function Get-AzureRmProfile
     if ($ListAvailable.IsPresent)
     {
       Write-Verbose "Getting all the profiles available for install"
-      Get-ProfilesAvailable $ProfileMap
+      foreach ($profile in ($ProfileMap | get-member -MemberType NoteProperty).Name)
+      {
+        $profileObj = $ProfileMap.$profile
+        $profileObj | Add-Member -MemberType NoteProperty -Name "ProfileName" -Value $profile
+        $profileObj | Add-Member -TypeName ProfileMapData 
+        $profileObj
+      }
+      return
     }
     else
     {
@@ -846,18 +866,18 @@ function Get-AzureRmProfile
       Write-Verbose "Getting profiles installed on the machine and available for import"
       $IncompleteProfiles = @()
       $profilesInstalled = Get-ProfilesInstalled -ProfileMap $ProfileMap ([REF]$IncompleteProfiles)
-      $Output = @()
       foreach ($key in $profilesInstalled.Keys)
-      {
-        $Output += "Profile : $key"
-        $Output += "-----------------"
-        $Output += ($profilesInstalled.$key | Format-Table -HideTableHeaders | Out-String)
+      {      
+        $profileObj = New-Object -TypeName psobject -property $profilesinstalled.$key
+        $profileObj.PSObject.TypeNames.Insert(0,'ProfileMapData')
+        $profileObj | Add-Member -MemberType NoteProperty -Name "ProfileName" -Value $key
+        $profileObj
       }
       if ($IncompleteProfiles.Count -gt 0)
       {
         Write-Warning "Some modules from profile(s) $(@($IncompleteProfiles) -join ', ') were not installed. Use Install-AzureRmProfile to install missing modules."
       }
-      $Output
+      return
     }
   }
 }
@@ -910,17 +930,16 @@ function Use-AzureRmProfile
     foreach ($Module in $Modules)
     {
       $ModuleCount = $ModuleCount + 1
-      if (Find-PotentialConflict -Module $Module @PSBoundParameters) 
-      {
-        continue
-      }
-
       $version = Get-AzureRmModule -Profile $Profile -Module $Module
       if (($null -eq $version) -and $PSCmdlet.ShouldProcess($module, "Installing module for profile $profile in the current scope"))
       {
         Write-Verbose "$module was not found on the machine. Trying to install..."
         if (($Force.IsPresent -or $PSCmdlet.ShouldContinue("Install Module $module for Profile $Profile from the gallery?", "Installing Modules for Profile $Profile")))
         {
+          if (Find-PotentialConflict -Module $Module @PSBoundParameters) 
+          {
+            continue
+          }
           $versions = $ProfileMap.$Profile.$Module
           $versionEnum = $versions.GetEnumerator()
           $toss = $versionEnum.MoveNext()
@@ -931,11 +950,23 @@ function Use-AzureRmProfile
         }
       }
 
-      # Block user if they try to import a module to the session where a different version of the same module is already imported
-      if ($null -ne (Get-Module -Name $Module | Where-Object { $_.Version -ne $version} ))
+      # If a different profile's Azure Module was imported, block user
+      $importedModules = Get-Module "Azure*"
+      foreach ($importedModule in $importedModules) 
       {
-        Write-Error "A different version of module $module is already imported in this session. Start a new PowerShell session and retry the operation."
-        return
+        $versions = $ProfileMap.$Profile.$($importedModule.Name)
+        if ($null -ne $versions)
+        {
+          # We need the latest version in that profile to be imported. If old version was imported, block user and ask to import in a new session
+          $versionEnum = $versions.GetEnumerator()
+          $toss = $versionEnum.MoveNext()
+          $version = $versionEnum.Current
+          if ([system.version]$version -ne $importedModule.Version)
+          {
+            Write-Error "A different profile version of module $importedModule is imported in this session. Start a new PowerShell session and retry the operation." -Category  InvalidOperation 
+            return
+          }
+        }
       }
 
       if ($PSCmdlet.ShouldProcess($module, "Importing module for profile $profile in the current scope"))
