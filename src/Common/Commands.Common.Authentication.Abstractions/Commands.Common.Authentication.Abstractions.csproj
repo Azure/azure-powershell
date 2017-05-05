@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Azure.Commands.Common.Authentication.Abstractions</RootNamespace>
-    <AssemblyName>Microoft.Azure.Commands.CommonAuthentication.Abstractions</AssemblyName>
+    <AssemblyName>Microsoft.Azure.Commands.Common.Authentication.Abstractions</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
