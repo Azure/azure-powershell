@@ -19,7 +19,6 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Profile
 {
     [Cmdlet(VerbsLifecycle.Enable, "AzureRmDataCollection", SupportsShouldProcess = true)]
-    [Alias("Enable-AzureDataCollection")]
     public class EnableAzureRmDataCollectionCommand : AzureRMCmdlet
     {
         protected override void BeginProcessing()

@@ -44,6 +44,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
     using Microsoft.Azure.Commands.Common.Authentication.Models;
     using Microsoft.Azure.Commands.Common.Authentication;
     using Hyak.Common;
+    using Azure.Commands.Common.Authentication.Abstractions;
 
     public class CloudServiceClient : ICloudServiceClient
     {
@@ -55,7 +56,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
 
         internal ComputeManagementClient ComputeClient { get; set; }
 
-        public AzureSubscription Subscription { get; set; }
+        public IAzureSubscription Subscription { get; set; }
 
         public Action<string> DebugStream { get; set; }
 
@@ -545,7 +546,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
         /// <param name="warningStream">Action used to log warning messages</param>
         public CloudServiceClient(
             AzureSMProfile profile, 
-            AzureSubscription subscription,
+            IAzureSubscription subscription,
             string currentLocation = null,
             Action<string> debugStream = null,
             Action<string> verboseStream = null,
@@ -555,9 +556,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
             Subscription = subscription;
             CloudBlobUtility = new CloudBlobUtility();
 
-            ManagementClient = AzureSession.ClientFactory.CreateClient<ManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
-            StorageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
-            ComputeClient = AzureSession.ClientFactory.CreateClient<ComputeManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            ManagementClient = AzureSession.Instance.ClientFactory.CreateClient<ManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            StorageClient = AzureSession.Instance.ClientFactory.CreateClient<StorageManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            ComputeClient = AzureSession.Instance.ClientFactory.CreateClient<ComputeManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
         private CloudServiceClient(string currentLocation, Action<string> debugStream, Action<string> verboseStream,

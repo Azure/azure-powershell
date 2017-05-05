@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.Scheduler.Utilities
     using Microsoft.Azure.Commands.Common.Authentication.Models;
     using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Management.Scheduler;
+    using Common.Authentication.Abstractions;
 
     /// <summary>
     /// Scheduler client class.
@@ -58,10 +59,10 @@ namespace Microsoft.Azure.Commands.Scheduler.Utilities
         /// Initializes new instance of the <see cref="SchedulerClient"/> class.
         /// </summary>
         /// <param name="context">The Azure context reference.</param>
-        public SchedulerClient(AzureContext context)
+        public SchedulerClient(IAzureContext context)
         {
-            this.SchedulerManagementClient = AzureSession.ClientFactory.CreateArmClient<SchedulerManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
-            this._resourceManagementClient = AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            this.SchedulerManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<SchedulerManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            this._resourceManagementClient = AzureSession.Instance.ClientFactory.CreateClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
 
             ProviderResourceType providerResourceType= _resourceManagementClient.Providers.Get(Constants.ProviderNamespace).Provider.ResourceTypes.First((resourceType) => resourceType.Name.Equals(Constants.ResourceType, StringComparison.InvariantCultureIgnoreCase));
 

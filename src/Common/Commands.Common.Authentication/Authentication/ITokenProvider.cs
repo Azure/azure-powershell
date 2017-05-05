@@ -35,10 +35,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// <returns>An access token.</returns>
         IAccessToken GetAccessToken(
             AdalConfiguration config,
-            ShowDialog promptBehavior,
+            string promptBehavior,
             string userId,
             SecureString password,
-            AzureAccount.AccountType credentialType);
+            string credentialType);
 
         /// <summary>
         /// Get a new authentication token for the given environment
@@ -52,6 +52,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             AdalConfiguration config,
             string principalId,
             string certificateThumbprint,
-            AzureAccount.AccountType credentialType);
+            string credentialType);
     }
 }

@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Billing.Test.ScenarioTests.ScenarioTest
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
-        public BillingClient BillingManagementClient { get; private set; }
+        public BillingManagementClient BillingManagementClient { get; private set; }
 
         public static TestController NewInstance
         {
@@ -177,9 +177,9 @@ namespace Microsoft.Azure.Commands.Billing.Test.ScenarioTests.ScenarioTest
             return TestBase.GetServiceClient<GalleryClient>(_csmTestFactory);
         }
 
-        private BillingClient GetBillingManagementClient(MockContext context)
+        private BillingManagementClient GetBillingManagementClient(MockContext context)
         {
-            return context.GetServiceClient<BillingClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<BillingManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

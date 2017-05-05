@@ -14,8 +14,6 @@
 
 using System.Management.Automation;
 using System.Threading;
-using Microsoft.Azure.Management.Insights;
-using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Insights.LogProfiles
 {
@@ -35,13 +33,29 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false)] 
+        public SwitchParameter PassThru { get; set; }
+
         #endregion
 
         protected override void ProcessRecordInternal()
         {
-            WriteWarning("The output of this cmdlet will change. The cmdlet will not return anything in future releases.");
-            this.InsightsManagementClient.LogProfiles.DeleteAsync(logProfileName: this.Name, cancellationToken: CancellationToken.None).Wait();
-            WriteObject(true);
+            WriteWarning("The type of the output will change to return a single object containing the request Id and the status code.");
+            Rest.Azure.AzureOperationResponse result = this.MonitorManagementClient.LogProfiles.DeleteWithHttpMessagesAsync(logProfileName: this.Name, cancellationToken: CancellationToken.None).Result;
+
+            /*
+             * This object will be returned in future releases
+            var response = new AzureOperationResponse
+            {
+                RequestId = result.RequestId,
+                StatusCode = result.Response != null ? result.Response.StatusCode : HttpStatusCode.OK
+            };
+			*/
+
+            if (this.PassThru)
+            {
+                WriteObject(true);
+            }
         }
     }
 }

@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Azure.Commands.Common.Authentication;
 using System.Collections.Concurrent;
 using System.Diagnostics;
 
@@ -27,8 +27,8 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public static void AddAdalTracing(DebugStreamTraceListener listener)
         {
-            AdalTrace.TraceSource.Listeners.Add(listener);
-            AdalTrace.TraceSource.Switch.Level = SourceLevels.All;
+            AzureSession.Instance.AuthenticationTraceListeners.Add(listener);
+            AzureSession.Instance.AuthenticationTraceSourceLevel = SourceLevels.All;
         }
 
         public ConcurrentQueue<string> Messages;
@@ -44,7 +44,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public static void RemoveAdalTracing(DebugStreamTraceListener listener)
         {
-            AdalTrace.TraceSource.Listeners.Remove(listener);
+            AzureSession.Instance.AuthenticationTraceListeners.Remove(listener);
         }
     }
 }
