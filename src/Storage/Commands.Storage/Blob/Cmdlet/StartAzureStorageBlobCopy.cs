@@ -193,7 +193,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         [Alias("DestinationContext")]
         [Parameter(HelpMessage = "Destination Storage context object", Mandatory = false)]
-        public AzureStorageContext DestContext { get; set; }
+        public IStorageContext DestContext { get; set; }
 
         private bool skipSourceChannelInit;
 
@@ -284,7 +284,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     break;
 
                 case UriParameterSet:
-                    copyAction = () => StartCopyBlob(destChannel, AbsoluteUri, DestContainer, DestBlob, GetCmdletStorageContext(Context));
+                    copyAction = () => StartCopyBlob(destChannel, AbsoluteUri, DestContainer, DestBlob, Context == null ? null : GetCmdletStorageContext(Context));
                     target = AbsoluteUri;
                     break;
 
