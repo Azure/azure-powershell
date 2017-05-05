@@ -22,9 +22,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class ServerActiveDirectoryAdministratorTest : SqlTestsBase
     {
-        public ServerActiveDirectoryAdministratorTest(ITestOutputHelper output)
+        public ServerActiveDirectoryAdministratorTest(ITestOutputHelper output) : base(output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
         [Fact(Skip = "SQL team hould re-record this test.")]

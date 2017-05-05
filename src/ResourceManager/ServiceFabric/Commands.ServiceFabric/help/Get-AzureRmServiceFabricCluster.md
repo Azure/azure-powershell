@@ -25,7 +25,7 @@ The **Add-AzureRmServiceFabricCluster** will get the cluster resource details
 PS C:\> Get-AzureRmServiceFabricCluster -ResourceGroupName 'Group1' -ClusterName 'Contoso01SFCluster'
 ```
 
-This command will get the cluster resource with the name myCluster
+This command will get the cluster resource details for cluster 'myCluster'
 
 ## PARAMETERS
 
