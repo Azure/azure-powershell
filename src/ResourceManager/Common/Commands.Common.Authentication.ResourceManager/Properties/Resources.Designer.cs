@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microoft.Azure.Commands.Common.Authentication.ResourceManager.Properties {
+namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Properties {
     using System;
     
     
@@ -39,8 +39,8 @@ namespace Microoft.Azure.Commands.Common.Authentication.ResourceManager.Properti
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microoft.Azure.Commands.Common.Authentication.ResourceManager.Properties.Resource" +
-                            "s", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Properties.Resourc" +
+                            "es", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
