@@ -160,6 +160,9 @@ Select Y to enable data collection [Y/N]:</value>
   <data name="ProfileCannotBeNull" xml:space="preserve">
     <value>Profile cannot be null.  Please run Add-AzureRmAccount.</value>
   </data>
+  <data name="ProfileNotInitialized" xml:space="preserve">
+    <value>The Azure PowerShell context has not been properly initialized.  Please import the module and try again.</value>
+  </data>
   <data name="ResourceConfirmTarget" xml:space="preserve">
     <value>the '{0}' resource named '{1}' in resource group '{2}'</value>
     <comment>{0} is resource type name, {1} is resource name, {2} is resource group name</comment>

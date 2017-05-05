@@ -89,6 +89,8 @@
 			<XUnitTests Include=".\src\ResourceManager\KeyVault\Commands.KeyVault.Test\bin\Debug\Microsoft.Azure.Commands.KeyVault.Test.dll"/>
             <XUnitTests Include=".\src\ResourceManager\ServiceFabric\Commands.ServiceFabric.Test\bin\Debug\Microsoft.Azure.Commands.ServiceFabric.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\LogicApp\Commands.LogicApp.Test\bin\Debug\Microsoft.Azure.Commands.LogicApp.Test.dll"/>
+			<!-- <XUnitTests Include=".\src\ResourceManager\MachineLearning\Commands.MachineLearning.Test\bin\Debug\Microsoft.Azure.Commands.MachineLearning.Test.dll"/> -->
+			<!-- <XUnitTests Include=".\src\ResourceManager\Media\Commands.Media.Test\bin\Debug\Microsoft.Azure.Commands.Media.Test.dll"/> -->
 			<XUnitTests Include=".\src\ResourceManager\Network\Commands.Network.Test\bin\Debug\Microsoft.Azure.Commands.Network.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\NotificationHubs\Commands.NotificationHubs.Test\bin\Debug\Microsoft.Azure.Commands.NotificationHubs.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\OperationalInsights\Commands.OperationalInsights.Test\bin\Debug\Microsoft.Azure.Commands.OperationalInsights.Test.dll"/>
@@ -100,6 +102,7 @@
 			<XUnitTests Include=".\src\ResourceManager\Resources\Commands.Resources.Test\bin\Debug\Microsoft.Azure.Commands.Resources.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\Scheduler\Commands.Scheduler.Test\bin\Debug\Microsoft.Azure.Commands.Scheduler.Test.dll"/>
 			<!-- <XUnitTests Include=".\src\ResourceManager\ServerManagement\Commands.ServerManagement.Test\bin\Debug\Microsoft.Azure.Commands.ServerManagement.Test.dll"/> -->
+			<!-- <XUnitTests Include=".\src\ResourceManager\ServiceFabric\Commands.ServiceFabric.Test\bin\Debug\Microsoft.Azure.Commands.ServiceFabric.Test.dll"/> -->
 			<XUnitTests Include=".\src\ResourceManager\SiteRecovery\Commands.SiteRecovery.Test\bin\Debug\Microsoft.Azure.Commands.SiteRecovery.Test.dll"/> 
 			<XUnitTests Include=".\src\ResourceManager\Sql\Commands.Sql.Test\bin\Debug\Microsoft.Azure.Commands.Sql.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\Storage\Commands.Management.Storage.Test\bin\Debug\Microsoft.Azure.Commands.Management.Storage.Test.dll"/>

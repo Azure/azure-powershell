@@ -14,8 +14,8 @@
 // limitations under the License.
 // 
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
 using System;
 using System.Diagnostics;
@@ -86,14 +86,14 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             Trace.AutoFlush = true;
             SdkTracingInterceptor = new DataLakeStoreTracingInterceptor(this);
 
-            PreviousAdalSourceLevel = AdalTrace.TraceSource.Switch.Level;
-            PreviousAdalTraceLevel = AdalTrace.LegacyTraceSwitch.Level;
+            PreviousAdalSourceLevel = AzureSession.Instance.AuthenticationTraceSourceLevel;
+            PreviousAdalTraceLevel = AzureSession.Instance.AuthenticationLegacyTraceLevel;
 
             // Ignore ADAL trace logs if debug logging isn't selected.
             if (LogLevel != LogLevel.Debug)
             {
-                AdalTrace.TraceSource.Switch.Level = SourceLevels.Warning;
-                AdalTrace.LegacyTraceSwitch.Level = TraceLevel.Warning;
+                AzureSession.Instance.AuthenticationTraceSourceLevel = SourceLevels.Warning;
+                AzureSession.Instance.AuthenticationLegacyTraceLevel = TraceLevel.Warning;
             }
 
             if (SdkTracingInterceptor != null)
@@ -172,8 +172,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             }
 
             Trace.AutoFlush = PreviousAutoFlush;
-            AdalTrace.TraceSource.Switch.Level = PreviousAdalSourceLevel;
-            AdalTrace.LegacyTraceSwitch.Level = PreviousAdalTraceLevel;
+            AzureSession.Instance.AuthenticationTraceSourceLevel = PreviousAdalSourceLevel;
+            AzureSession.Instance.AuthenticationLegacyTraceLevel = PreviousAdalTraceLevel;
         }
     }
 }

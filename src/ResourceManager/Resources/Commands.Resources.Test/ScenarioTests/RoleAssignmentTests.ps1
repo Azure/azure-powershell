@@ -23,7 +23,7 @@ function Test-RaClassicAdmins
 	$subscription = Get-AzureRmSubscription
 
 	# Test
-	$classic =  Get-AzureRmRoleAssignment -IncludeClassicAdministrators  | Where-Object { $_.Scope -ieq ('/subscriptions/' + $subscription[0].SubscriptionId) -and $_.RoleDefinitionName.ToLower().Contains('administrator')}	
+	$classic =  Get-AzureRmRoleAssignment -IncludeClassicAdministrators  | Where-Object { $_.Scope -ieq ('/subscriptions/' + $subscription[0].Id) -and $_.RoleDefinitionName.ToLower().Contains('administrator')}	
 	
 	# Assert
 	Assert-NotNull $classic
@@ -59,7 +59,7 @@ function Test-RaNegativeScenarios
     Assert-Throws { Get-AzureRmRoleAssignment -ServicePrincipalName $badSpn } $badObjectResult
     
     # Bad Scope
-    $badScope = '/subscriptions/'+ $subscription[0].SubscriptionId +'/providers/nonexistent'
+    $badScope = '/subscriptions/'+ $subscription[0].Id +'/providers/nonexistent'
     $badScopeException = "InvalidResourceNamespace: The resource namespace 'nonexistent' is invalid."
     Assert-Throws { Get-AzureRmRoleAssignment -Scope $badScope } $badScopeException
 }
@@ -77,7 +77,7 @@ function Test-RaByScope
     $users = Get-AzureRmADUser | Select-Object -First 1 -Wait
     $subscription = Get-AzureRmSubscription
     $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
-    $scope = '/subscriptions/'+ $subscription[0].SubscriptionId +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
+    $scope = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
     Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
     
     # Test
@@ -182,7 +182,7 @@ function Test-RaByServicePrincipal
     $servicePrincipals = Get-AzureRmADServicePrincipal | Select-Object -Last 1 -Wait
     $subscription = Get-AzureRmSubscription
     $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
-    $scope = '/subscriptions/'+ $subscription[0].SubscriptionId +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
+    $scope = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
     Assert-AreEqual 1 $servicePrincipals.Count "No service principals found. Unable to run the test."
 
     # Test

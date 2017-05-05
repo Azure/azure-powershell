@@ -25,6 +25,7 @@ using Moq;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Environment
 {
@@ -35,7 +36,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
         public GetAzureEnvironmentTests()
         {
             dataStore = new MemoryDataStore();
-            AzureSession.DataStore = dataStore;
+            AzureSession.Instance.DataStore = dataStore;
         }
 
         [Fact]

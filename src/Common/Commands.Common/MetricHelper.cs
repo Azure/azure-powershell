@@ -16,6 +16,8 @@ using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -101,6 +103,19 @@ namespace Microsoft.WindowsAzure.Commands.Common
             if (isErrorMetricEnabled && qos.Exception != null)
             {
                 LogExceptionEvent(qos);
+            }
+        }
+
+        public void LogCustomEvent<T>(string eventName, T payload, bool force = false)
+        {
+            if (!force && !IsMetricTermAccepted())
+            {
+                return;
+            }
+
+            foreach (TelemetryClient client in TelemetryClients)
+            {
+                client.TrackEvent(eventName, SerializeCustomEventPayload(payload));
             }
         }
 
@@ -217,6 +232,21 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 var bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(originInput));
                 return BitConverter.ToString(bytes);
             }
+        }
+
+        /// <summary>
+        /// Generate a serialized payload for custom events.
+        /// </summary>
+        /// <param name="payload">The payload object for the custom event.</param>
+        /// <returns>The serialized payload.</returns>
+        public static Dictionary<string, string> SerializeCustomEventPayload<T>(T payload)
+        {
+            var payloadAsJson = JsonConvert.SerializeObject(payload, new JsonSerializerSettings
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver()
+            });
+
+            return JsonConvert.DeserializeObject<Dictionary<string, string>>(payloadAsJson);
         }
     }
 }
