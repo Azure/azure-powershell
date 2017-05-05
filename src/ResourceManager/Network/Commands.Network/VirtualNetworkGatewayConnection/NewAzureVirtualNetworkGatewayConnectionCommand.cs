@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.Network
         
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Use policy-based traffic selectors for a S2S connection")]
+            HelpMessage = "Whether to use policy-based traffic selectors for a S2S connection")]
         public bool UsePolicyBasedTrafficSelectors { get; set; }
 
         [Parameter(
@@ -172,8 +172,8 @@ namespace Microsoft.Azure.Commands.Network
             vnetGatewayConnection.ConnectionType = this.ConnectionType;
             vnetGatewayConnection.RoutingWeight = this.RoutingWeight;
             vnetGatewayConnection.SharedKey = this.SharedKey;
-
             vnetGatewayConnection.EnableBgp = this.EnableBgp;
+            vnetGatewayConnection.UsePolicyBasedTrafficSelectors = this.UsePolicyBasedTrafficSelectors;
 
             if (!string.IsNullOrEmpty(this.AuthorizationKey))
             {
@@ -193,9 +193,7 @@ namespace Microsoft.Azure.Commands.Network
                 vnetGatewayConnection.Peer = new PSResourceId();
                 vnetGatewayConnection.Peer.Id = this.PeerId;
             }
-
-            vnetGatewayConnection.UsePolicyBasedTrafficSelectors = this.UsePolicyBasedTrafficSelectors;
-
+            
             if (this.IpsecPolicies != null)
             {
                 vnetGatewayConnection.IpsecPolicies = this.IpsecPolicies;
