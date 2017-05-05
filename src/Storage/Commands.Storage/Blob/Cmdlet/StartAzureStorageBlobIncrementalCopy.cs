@@ -216,7 +216,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     break;
 
                 case UriParameterSet:
-                    copyAction = () => StartCopyBlob(destChannel, AbsoluteUri, DestContainer, DestBlob, new AzureStorageContext(Context.GetCloudStorageAccount()));
+                    copyAction = () => StartCopyBlob(destChannel, AbsoluteUri, DestContainer, DestBlob, Context == null ? null : GetCmdletStorageContext(Context));
                     target = AbsoluteUri;
                     break;
 
