@@ -29,7 +29,7 @@ Uninstall all modules associated with the '2017-03-09-profile' profile on the ma
 ## PARAMETERS
 
 ### -Confirm
-Request confrimation for any change made by the cmdlet
+Request confirmation for any change made by the cmdlet
 
 ```yaml
 Type: SwitchParameter

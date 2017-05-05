@@ -611,6 +611,63 @@ function Invoke-InstallModule
   }
 }
 
+# Invoke any script block with a retry logic
+function Invoke-CommandWithRetry
+{
+  [CmdletBinding()]
+  [OutputType([PSObject])]
+  Param
+  (
+    # Param1 help description
+    [Parameter(Mandatory=$true,
+      ValueFromPipelineByPropertyName=$true,
+      Position=0)]
+      [System.Management.Automation.ScriptBlock]
+      $ScriptBlock,
+
+    # Number of retries. Default is 10.
+    [Parameter(Position=1)]
+      [ValidateNotNullOrEmpty()]
+      [int]$MaxRetries=3,
+
+    # Number of seconds delay in retrying. Default is 10 seconds.
+      [Parameter(Position=2)]
+      [ValidateNotNullOrEmpty()]
+      [int]$RetryDelay=3
+  )
+
+  Begin
+  {
+    $currentRetry = 1
+    $Success = $False
+  }
+  Process
+  {
+    do {
+      try
+      {
+        # invoke the script block
+        $result = & $ScriptBlock 
+        $success = $true
+        return $result
+      }
+      catch
+      {
+        $currentRetry = $currentRetry + 1              
+        if ($currentRetry -gt $MaxRetries) {         
+          # If the current try count has exceeded maximum retries, throw a terminating error and come out. In place to avoid an infinite loop 
+          Write-Warning -Message "Could not execute -. $($ScriptBlock).`n Error: -> $($_.Exception)"
+          $PSCmdlet.ThrowTerminatingError($PSitem) # Raise the exception back for caller. This is a terminating error as the retries have exceeded MaxRetries allowed.
+        }
+        else {
+          Write-verbose -Message "Waiting $RetryDelay second(s) before attempting again"
+          Start-Sleep -seconds $RetryDelay
+        }
+      }
+    } while(-not $Success) # Do until you succeed
+  }
+}
+
 # Add Scope parameter to the cmdlet
 function Add-ScopeParam
 {
@@ -620,7 +677,7 @@ function Add-ScopeParam
   $scopeAttribute = New-Object -Type System.Management.Automation.ParameterAttribute
   $scopeAttribute.ParameterSetName = 
   $scopeAttribute.Mandatory = $false
-  $scopeAttribute.Position = 1
+  $scopeAttribute.Position = 2
   $scopeCollection = New-object -Type System.Collections.ObjectModel.Collection[System.Attribute]
   $scopeCollection.Add($scopeValid)
   $scopeCollection.Add($scopeAttribute)
@@ -638,6 +695,7 @@ function Add-ProfileParam
   $profileAttribute.ParameterSetName = $set
   $profileAttribute.Mandatory = $true
   $profileAttribute.Position = 0
+  $profileAttribute.ValueFromPipeline = $true
   $validateProfileAttribute = New-Object -Type System.Management.Automation.ValidateSetAttribute($AllProfiles)
   $profileCollection = New-object -Type System.Collections.ObjectModel.Collection[System.Attribute]
   $profileCollection.Add($profileAttribute)
@@ -830,7 +888,10 @@ function Use-AzureRmProfile
   [CmdletBinding(SupportsShouldProcess=$true)] 
   [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "")]
   [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidShouldContinueWithoutForce", "")]
-  param()
+  param(
+    [parameter(valuefrompipeline=$true)]
+    [psobject]$profileObject
+    )
   DynamicParam
   {
     $params = New-Object -Type System.Management.Automation.RuntimeDefinedParameterDictionary
@@ -1046,4 +1107,88 @@ function Set-BootstrapRepo
   [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
 	param([string]$Repo)
 	$script:BootStrapRepo = $Repo
+}
+
+<#
+.ExternalHelp help\AzureRM.Bootstrapper-help.xml 
+#>
+function Set-AzureRmDefaultProfile
+{
+  [CmdletBinding(SupportsShouldProcess = $true)]
+  param()
+  DynamicParam
+  {
+    $params = New-Object -Type System.Management.Automation.RuntimeDefinedParameterDictionary
+    Add-ProfileParam $params
+    Add-ForceParam $params
+    Add-ScopeParam $params
+    return $params
+  }
+  PROCESS {
+    $armProfile = $PSBoundParameters.Profile
+
+    $defaultProfile = $PSDefaultParameterValues["*-AzureRmProfile:Profile"]
+    if ($defaultProfile -ne $armProfile)
+    {
+      # Set DefaultProfile for this session
+      $PSDefaultParameterValues["*-AzureRmProfile:Profile"]="$armProfile"
+
+      # Edit the profile content
+      $profileContent = @"
+          `$PSDefaultParameterValues["*-AzureRmProfile:Profile"]="$armProfile"
+"@
+
+      if ($PSCmdlet.ShouldProcess("$armProfile", "Set Default Profile")) 
+      {
+        if (($Force.IsPresent -or $PSCmdlet.ShouldContinue("Are you sure you would like to set $armProfile as Default Profile?", "Setting $armProfile as Default profile")))
+        {
+          # Remove previous setting if exists
+          Write-Verbose "Updating default profile value to $armProfile"
+          $RemoveSettingScriptBlock = {
+            (Get-Content -Path $profile) -notmatch 'PSDefaultParameterValues' | Set-Content -path $profile
+          }
+          Invoke-CommandWithRetry -ScriptBlock $RemoveSettingScriptBlock
+
+          # Check scope $isadmin and add-content to proper profile
+          $AddContentScriptBlock = {
+            Add-Content -Value $profileContent -Path $profile
+          }  
+          Invoke-CommandWithRetry -ScriptBlock $AddContentScriptBlock
+        }
+      }
+    }
+  }
+}
+
+<#
+.ExternalHelp help\AzureRM.Bootstrapper-help.xml 
+#>
+function Remove-AzureRmDefaultProfile
+{
+  [CmdletBinding(SupportsShouldProcess = $true)]
+  param()
+  DynamicParam
+  {
+    $params = New-Object -Type System.Management.Automation.RuntimeDefinedParameterDictionary
+    Add-ProfileParam $params
+    Add-ForceParam $params
+    Add-ScopeParam $params
+    return $params
+  }
+  PROCESS {
+    $armProfile = $PSBoundParameters.Profile
+    $PSDefaultParameterValues.Remove("*-AzureRmProfile:Profile")
+    if ($PSCmdlet.ShouldProcess("$armProfile", "Remove Default Profile")) 
+    {
+      if (($Force.IsPresent -or $PSCmdlet.ShouldContinue("Are you sure you would like to remove $armProfile as Default Profile?", "Remove $armProfile as Default profile")))
+      {
+        # Remove content from $profile
+        Write-Verbose "Removing default profile value $armProfile"
+        $RemoveSettingScriptBlock = {
+          (Get-Content -Path $profile) -notmatch 'PSDefaultParameterValues' | Set-Content -path $profile
+        }
+        Invoke-CommandWithRetry -ScriptBlock $RemoveSettingScriptBlock
+      }
+    }
+  }
 }
