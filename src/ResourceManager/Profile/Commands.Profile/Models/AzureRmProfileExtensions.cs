@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -38,7 +39,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 throw new ArgumentNullException("newContext", Resources.ContextCannotBeNull);
             }
 
-            newContext.TokenCache = new AzureTokenCache { CacheData = TokenCache.DefaultShared.Serialize() };
+            if (newContext.TokenCache != null && newContext.TokenCache.CacheData != null && newContext.TokenCache.CacheData.Length > 0)
+            {
+                AzureSession.Instance.TokenCache.CacheData = newContext.TokenCache.CacheData;
+            }
+
+            newContext.TokenCache = AzureSession.Instance.TokenCache;
             profile.DefaultContext = newContext;
         }
     }

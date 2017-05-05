@@ -45,7 +45,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
             IAccessToken token;
-            var configuration = GetAdalConfiguration(environment, tenant, resourceId, tokenCache as TokenCache);
+            var cache = tokenCache as TokenCache;
+            if (cache == null)
+            {
+                cache = TokenCache.DefaultShared;
+            }
+
+            var configuration = GetAdalConfiguration(environment, tenant, resourceId, cache);
 
             TracingAdapter.Information(
                 Resources.AdalAuthConfigurationTrace,
