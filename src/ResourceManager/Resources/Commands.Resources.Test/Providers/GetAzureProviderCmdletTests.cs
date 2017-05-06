@@ -102,31 +102,35 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
             const string ResourceTypeName = "TestResource1";
 
-            var unregisteredProvider = new Provider(
-                namespaceProperty: UnregisteredProviderNamespace,
-                registrationState: "Unregistered",
-                resourceTypes: new[]
+            var unregisteredProvider = new Provider
+            {
+                NamespaceProperty = UnregisteredProviderNamespace,
+                RegistrationState = "Unregistered",
+                ResourceTypes = new[]
                 {
                     new ProviderResourceType
                     {
                         Locations = new[] {"West US", "East US", "South US"},
                         ResourceType = "TestResource2"
                     }
-                });
+                }
+            };
 
             var listResult = new List<Provider>()
             {
-                new Provider(
-                    namespaceProperty: RegisteredProviderNamespace,
-                    registrationState: ResourceManagerSdkClient.RegisteredStateName,
-                    resourceTypes: new[]
+                new Provider
+                {
+                    NamespaceProperty = RegisteredProviderNamespace,
+                    RegistrationState = ResourceManagerSdkClient.RegisteredStateName,
+                    ResourceTypes = new[]
                     {
                         new ProviderResourceType
                         {
                             Locations = new[] { "West US", "East US" },
                             //Name = ResourceTypeName,
                         }
-                    }),
+                    }
+                },
                 unregisteredProvider,
             };
             var pagableResult = new Page<Provider>();

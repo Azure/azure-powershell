@@ -136,15 +136,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 return new PSResourceProvider[] { };
             }
 
-            var providerWithResourceTypes = providers.ToDictionary(
-                provider => provider, 
-                provider => provider.ResourceTypes
+            foreach (var provider in providers)
+            {
+                provider.ResourceTypes = provider.ResourceTypes
                     .Where(type => !type.Locations.Any() || type.Locations.Any(loc => loc.EqualsAsLocation(this.Location)))
-                    .ToList());
+                    .ToList();
+            }
 
-            return providerWithResourceTypes
-                .Where(kvp => kvp.Value.Any())
-                .Select(kvp => kvp.Key.ToPSResourceProvider())
+            return providers
+                .Where(provider => provider.ResourceTypes.Any())
+                .Select(provider => provider.ToPSResourceProvider())
                 .ToArray();
         }
     }
