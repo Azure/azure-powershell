@@ -37,8 +37,7 @@ Add-AzureRmServiceFabricClientCertificate [-ResourceGroupName] <String> [-Name] 
 ```
 
 ## DESCRIPTION
-Use **Add-AzureRmServiceFabricClientCertificate** to add a common name and issuer thumbprint or certificate thumbprint to the cluster, 
-so that the client can use it for authentication
+Use **Add-AzureRmServiceFabricClientCertificate** to add a common name and issuer thumbprint or certificate thumbprint to the cluster, so the client can use it for authentication.
 
 ## EXAMPLES
 
@@ -47,19 +46,19 @@ so that the client can use it for authentication
 PS c:> Add-AzureRmServiceFabricClientCertificate -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -Thumbprint 5F3660C715EBBDA31DB1FFDCF508302348DE8E7A -IsAdmin
 ```
 
-This command will add the certificate with thumbprint '5F3660C715EBBDA31DB1FFDCF508302348DE8E7A' to the cluster, so the client use the certificate as admin to communicate with the cluster
+This command will add the certificate with thumbprint '5F3660C715EBBDA31DB1FFDCF508302348DE8E7A' to the cluster, so the client can use the certificate as admin to communicate with the cluster.
 
 ### Example 2
 ```
 PS c:> Add-AzureRmServiceFabricClientCertificate -ResourceGroupName 'Group2' -Name 'Contoso02SFCluster' -CommonName 'Contoso.com' -IssuerThumbprint 5F3660C715EBBDA31DB1FFDCF508302348DE8E7A
 ```
 
-This command will add a read only client certificate which's common name is 'Contoso.com' and issuer thumbprint is '5F3660C715EBBDA31DB1FFDCF508302348DE8E7A' to the cluster
+This command will add a read only client certificate that's common name is 'Contoso.com' and issuer thumbprint is '5F3660C715EBBDA31DB1FFDCF508302348DE8E7A' to the cluster.
 
 ## PARAMETERS
 
 ### -Admin
-Client authentication type
+Client authentication type.
 
 ```yaml
 Type: SwitchParameter
@@ -74,7 +73,7 @@ Accept wildcard characters: False
 ```
 
 ### -AdminClientThumbprint
-Specify client certificate thumbprint which only has admin permission
+Specify client certificate thumbprint that only has admin permission.
 
 ```yaml
 Type: String[]
@@ -89,7 +88,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClientCertificateCommonName
-Specify client common name , issuer thumbprint and authentication type
+Specify client common name, issuer thumbprint, and authentication type.
 
 ```yaml
 Type: PSClientCertificateCommonName[]
@@ -104,7 +103,7 @@ Accept wildcard characters: False
 ```
 
 ### -CommonName
-Specify client certificate common name
+Specify client certificate common name.
 
 ```yaml
 Type: String
@@ -134,7 +133,7 @@ Accept wildcard characters: False
 ```
 
 ### -IssuerThumbprint
-Specify client certificate issuer thumbprint
+Specify client certificate issuer thumbprint.
 
 ```yaml
 Type: String
@@ -149,7 +148,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specify the name of the cluster
+Specify the name of the cluster.
 
 ```yaml
 Type: String
@@ -164,7 +163,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReadonlyClientThumbprint
-Specify client certificate thumbprint which only has read only permission
+Specify client certificate thumbprint that has read only permission.
 
 ```yaml
 Type: String[]
@@ -194,7 +193,7 @@ Accept wildcard characters: False
 ```
 
 ### -Thumbprint
-Specify client certificate thumbprint
+Specify client certificate thumbprint.
 
 ```yaml
 Type: String
@@ -224,7 +223,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
