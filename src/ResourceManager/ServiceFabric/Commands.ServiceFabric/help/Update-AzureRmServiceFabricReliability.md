@@ -26,12 +26,12 @@ Use **Update-AzureRmServiceFabricReliability** to update reliability of the prim
 PS c:> Add-AzureRmServiceFabricReliability -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -ReliabilityLevel Silver
 ```
 
-This command changes the reliability tier of the primary nodetype to silver.
+This command changes the reliability tier of the primary node type to silver.
 
 ## PARAMETERS
 
 ### -AutoAddNode
-Add node count automatically when changing reliability
+Add node count automatically when changing reliability.
 
 ```yaml
 Type: SwitchParameter
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specify the name of the cluster
+Specify the name of the cluster.
 
 ```yaml
 Type: String
@@ -76,7 +76,9 @@ Accept wildcard characters: False
 ```
 
 ### -ReliabilityLevel
-Reliability tier```yaml
+Reliability tier.
+
+```yaml
 Type: ReliabilityLevel
 Parameter Sets: (All)
 Aliases: Level
@@ -126,6 +128,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.ServiceFabric.Models.ReliabilityLevel
 System.Management.Automation.SwitchParameter
+
 System.String
 
 ## OUTPUTS
