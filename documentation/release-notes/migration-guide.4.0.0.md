@@ -16,25 +16,24 @@ This document serves as both a breaking change notification and migration guide 
 The following output types were affected this release:
 
 ### PSVirtualMachine
-- Properties `DataDiskNames` and `NetworkInterfaceIDs` have been removed from the output type `PSVirtualMachine`
+- Top level properties `DataDiskNames` and `NetworkInterfaceIDs` of nthe `PSVirtualMachine` object have been removed from the output type. These properties have always been available in the `StorageProfile` and `NetworkProfile` properties of the `PSVirtualMachine` object and will be the way they will need to be accessed going forward.
 - This change affects the following cmdlets:
-    - `Add-AzureRmVMAdditionalUnattendContent`
     - `Add-AzureRmVMDataDisk`
     - `Add-AzureRmVMNetworkInterface`
-    - `Add-AzureRmVMSecret`
-    - `Add-AzureRmVMSshPublicKey`
     - `Get-AzureRmVM`
-    - `Get-AzureRmVMBootDiagnosticsData`
-    - `New-AzureRmVMConfig`
     - `Remove-AzureRmVMDataDisk`
     - `Remove-AzureRmVMNetworkInterface`
-    - `Remove-AzureRmVMSecret`
-    - `Set-AzureRmVMBootDiagnostics`
     - `Set-AzureRmVMDataDisk`
-    - `Set-AzureRmVMOperatingSystem`
-    - `Set-AzureRmVMOSDisk`
-    - `Set-AzureRmVMPlan`
-    - `Set-AzureRmVMSourceImage`
+
+```powershell
+# Old
+$vm.DataDiskNames
+$vm.NetworkInterfaceIDs
+
+# New
+$vm.StorageProfile.DataDisks | Select -Property Name
+$vm.NetworkProfile.NetworkInterfaces | Select -Property Id
+```
 
 ## Breaking changes to EventHub cmdlets
 
@@ -244,6 +243,12 @@ Remove-AzureRmSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName server1
 # New
 Remove-AzureRmSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName server1 -FailoverGroupName fg
 ```
+
+### Set-AzureRmSqlDatabaseThreatDetectionPolicy
+- The value `Usage_Anomaly` is no longer valid for the parameter `ExcludedDetectionType`
+
+### Set-AzureRmSqlServerThreatDetectionPolicy
+- The value `Usage_Anomaly` is no longer valid for the parameter `ExcludedDetectionType`
 
 ## Breaking changes to Storage cmdlets
 
