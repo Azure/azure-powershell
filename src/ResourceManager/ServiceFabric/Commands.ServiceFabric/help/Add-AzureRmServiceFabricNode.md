@@ -7,7 +7,7 @@ schema: 2.0.0
 # Add-AzureRmServiceFabricNode
 
 ## SYNOPSIS
-Add nodes to the specific node type in the cluster
+Add nodes to the specific node type in the cluster.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Add-AzureRmServiceFabricNode [-ResourceGroupName] <String> [-Name] <String> -Nod
 ```
 
 ## DESCRIPTION
-User **Add-AzureRmServiceFabricNode** to add nodes to the specific node type. You just need to specify the number of nodes you want to add to a Node Type.
+User **Add-AzureRmServiceFabricNode** to add nodes to the specific node type. You just need to specify the number of nodes you want to add to a node type.
 
 ## EXAMPLES
 
@@ -26,7 +26,7 @@ User **Add-AzureRmServiceFabricNode** to add nodes to the specific node type. Yo
 PS c:> Add-AzureRmServiceFabricNode -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NumberOfNodesToAdd 2 -NodeTypeName 'nt1''
 ```
 
-This command will add 2 nodes to the nodetype 'n1'
+This command will add 2 nodes to the node type 'n1'.
 
 ## PARAMETERS
 
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specify the name of the cluster
+Specify the name of the cluster.
 
 ```yaml
 Type: String
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -NodeType
-Node type name
+Node type name.
 
 ```yaml
 Type: String
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -NumberOfNodesToAdd
-VM instance number
+VM instance number.
 
 ```yaml
 Type: Int32
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
