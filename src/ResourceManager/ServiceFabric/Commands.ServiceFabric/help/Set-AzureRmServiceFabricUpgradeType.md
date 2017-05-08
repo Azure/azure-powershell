@@ -7,7 +7,7 @@ schema: 2.0.0
 # Set-AzureRmServiceFabricUpgradeType
 
 ## SYNOPSIS
-Change the ServiceFabric upgrade type of the cluster.
+Change the Service Fabric upgrade type of the cluster.
 
 ## SYNTAX
 
@@ -24,7 +24,7 @@ Set-AzureRmServiceFabricUpgradeType [-ResourceGroupName] <String> [-Name] <Strin
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmServiceFabricUpgradeType** set upgrade type to automatic or manual with specific ServiceFabric code version
+Use **Set-AzureRmServiceFabricUpgradeType** to set upgrade type to automatic or manual with specific Service Fabric code version.
 
 ## EXAMPLES
 
@@ -33,7 +33,7 @@ The **Set-AzureRmServiceFabricUpgradeType** set upgrade type to automatic or man
 PS c:> Set-AzureRmServiceFabricUpgradeType -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster'  -UpgradeMode Automatic
 ```
 
-This command will set the cluster upgrade mode to automatic
+This command will set the cluster upgrade mode to automatic.
 
 ## PARAMETERS
 
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specify the name of the cluster
+Specify the name of the cluster.
 
 ```yaml
 Type: String
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 ```
 
 ### -Version
-Cluster code version
+Cluster code version.
 
 ```yaml
 Type: String

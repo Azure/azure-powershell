@@ -7,7 +7,7 @@ schema: 2.0.0
 # Add-AzureRmServiceFabricNodeType
 
 ## SYNOPSIS
-Add a new node type to the existing cluster
+Add a new node type to the existing cluster.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Add-AzureRmServiceFabricNodeType [-ResourceGroupName] <String> [-Name] <String> 
 ```
 
 ## DESCRIPTION
-Add a new node type to a existing cluster 
+Add a new node type to a existing cluster.
 
 ## EXAMPLES
 
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specify the name of the cluster
+Specify the name of the cluster.
 
 ```yaml
 Type: String
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -NodeType
-The node type name
+The node type name.
 
 ```yaml
 Type: String
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tier
-Tier
+Tier.
 
 ```yaml
 Type: String
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 ```
 
 ### -VmPassword
-The password of login to the Vm
+The password of login to the Vm.
 
 ```yaml
 Type: SecureString
@@ -138,7 +138,9 @@ Accept wildcard characters: False
 ```
 
 ### -VmSku
-The sku name```yaml
+The sku name.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -151,7 +153,7 @@ Accept wildcard characters: False
 ```
 
 ### -VmUserName
-The user name for login to Vm
+The user name for login to Vm.
 
 ```yaml
 Type: String

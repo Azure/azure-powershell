@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specify the name of the cluster
+Specify the name of the cluster.
 
 ```yaml
 Type: String
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -Thumbprint
-Specify the cluster thumbprint which to be removed
+Specify the cluster thumbprint which to be removed.
 
 ```yaml
 Type: String
