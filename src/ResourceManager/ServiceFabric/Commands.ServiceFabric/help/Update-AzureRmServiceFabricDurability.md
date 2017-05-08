@@ -7,7 +7,7 @@ schema: 2.0.0
 # Update-AzureRmServiceFabricDurability
 
 ## SYNOPSIS
-Update the durability tier or VmSku of a nodetype in the cluster.
+Update the durability tier or VmSku of a node type in the cluster.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Update-AzureRmServiceFabricDurability [-ResourceGroupName] <String> [-Name] <Str
 ```
 
 ## DESCRIPTION
-Use **Update-AzureRmServiceFabricDurability** to update durability or SKU of the cluter 
+Use **Update-AzureRmServiceFabricDurability** to update durability or SKU of the cluster.
 
 ## EXAMPLES
 
@@ -26,7 +26,7 @@ Use **Update-AzureRmServiceFabricDurability** to update durability or SKU of the
 PS c:> Update-AzureRmServiceFabricDurability -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -DurabilityLevel Silver -NodeType nt1
 ```
 
-This command changes durability tier of the nodetype 'nt1' to silver.
+This command changes durability tier of the NodeType 'nt1' to silver.
 
 ## PARAMETERS
 
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -DurabilityLevel
-Specify durability Level
+Specify durability level.
 
 ```yaml
 Type: DurabilityLevel
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specify the name of the cluster
+Specify the name of the cluster.
 
 ```yaml
 Type: String
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -NodeType
-Specify Service Fabric node type name
+Specify Service Fabric node type name.
 
 ```yaml
 Type: String
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
-Specify the SKU of the node type
+Specify the SKU of the node type.
 
 ```yaml
 Type: String
@@ -137,7 +137,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
