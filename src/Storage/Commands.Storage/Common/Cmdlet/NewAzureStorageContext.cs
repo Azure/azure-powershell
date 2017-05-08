@@ -361,6 +361,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                     {
                         throw new ArgumentException(e.Message + " " + string.Format(CultureInfo.CurrentCulture, Resources.ValidEnvironmentName, EnvironmentName.AzureCloud, EnvironmentName.AzureChinaCloud));
                     }
+                    catch (InvalidOperationException)
+                    {
+                        //environmentName is null or not in SMProfile, will use DefaultDomain for endpoints
+                        azureEnvironment = null;
+                    }
                 }
 
             }
