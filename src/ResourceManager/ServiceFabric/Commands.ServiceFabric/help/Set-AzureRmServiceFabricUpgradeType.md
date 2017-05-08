@@ -24,7 +24,7 @@ Set-AzureRmServiceFabricUpgradeType [-ResourceGroupName] <String> [-Name] <Strin
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmServiceFabricUpgradeType** set upgrade type to automatic or manual with specific Service Fabric code version.
+Use **Set-AzureRmServiceFabricUpgradeType** to set upgrade type to automatic or manual with specific Service Fabric code version.
 
 ## EXAMPLES
 
