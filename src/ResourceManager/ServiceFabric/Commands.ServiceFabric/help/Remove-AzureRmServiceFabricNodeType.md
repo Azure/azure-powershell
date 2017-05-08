@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmServiceFabricNodeType
 
 ## SYNOPSIS
-Remove a complete node type from a cluster
+Remove a complete node type from a cluster.
 
 ## SYNTAX
 
@@ -17,8 +17,7 @@ Remove-AzureRmServiceFabricNodeType [-ResourceGroupName] <String> [-Name] <Strin
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmServiceFabricNodeType** to remove all nodes from a specific node type and the node type from a cluster.
-This command cannot be used to delete the primary node type
+Use the **Remove-AzureRmServiceFabricNodeType** to remove all nodes from a specific node type and the node type from a cluster. This command cannot be used to delete the primary node type.
 
 ## EXAMPLES
 
@@ -27,7 +26,7 @@ This command cannot be used to delete the primary node type
 PS c:> Remove-AzureRmServiceFabricNodeType -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NodeTypeName 'nt1'
 ```
 
-This command will remove nodetype 'nt1' from the cluster
+This command will remove NodeType 'nt1' from the cluster.
 
 ## PARAMETERS
 
@@ -47,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specify the name of the cluster
+Specify the name of the cluster.
 
 ```yaml
 Type: String
@@ -62,7 +61,9 @@ Accept wildcard characters: False
 ```
 
 ### -NodeType
-The node type name```yaml
+The node type name.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -105,7 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
