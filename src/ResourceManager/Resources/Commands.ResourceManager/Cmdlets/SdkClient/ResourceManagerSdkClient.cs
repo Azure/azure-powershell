@@ -546,7 +546,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// <param name="parameters">The create parameters</param>
         public virtual PSResourceGroup CreatePSResourceGroup(PSCreateResourceGroupParameters parameters)
         {
-            bool resourceExists = ResourceManagementClient.ResourceGroups.CheckExistence(parameters.ResourceGroupName);
+            bool resourceExists = ResourceManagementClient.ResourceGroups.CheckExistence(parameters.ResourceGroupName).Value;
 
             ResourceGroup resourceGroup = null;
             parameters.ConfirmAction(parameters.Force,
@@ -569,7 +569,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// <param name="parameters">The create parameters</param>
         public virtual PSResourceGroup UpdatePSResourceGroup(PSUpdateResourceGroupParameters parameters)
         {
-            if (!ResourceManagementClient.ResourceGroups.CheckExistence(parameters.ResourceGroupName))
+            if (!ResourceManagementClient.ResourceGroups.CheckExistence(parameters.ResourceGroupName).Value)
             {
                 WriteError(ProjectResources.ResourceGroupDoesntExists);
                 return null;
@@ -661,7 +661,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// <param name="name">The resource group name</param>
         public virtual void DeleteResourceGroup(string name)
         {
-            if (!ResourceManagementClient.ResourceGroups.CheckExistence(name))
+            if (!ResourceManagementClient.ResourceGroups.CheckExistence(name).Value)
             {
                 WriteError(ProjectResources.ResourceGroupDoesntExists);
             }
@@ -689,13 +689,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
             else if (!string.IsNullOrEmpty(resourceGroup))
             {
-                var result = ResourceManagementClient.Deployments.ListByResourceGroup(resourceGroup, null);
+                var result = ResourceManagementClient.Deployments.List(resourceGroup, null);
 
                 deployments.AddRange(result.Select(d => d.ToPSResourceGroupDeployment(options.ResourceGroupName)));
 
                 while (!string.IsNullOrEmpty(result.NextPageLink))
                 {
-                    result = ResourceManagementClient.Deployments.ListByResourceGroupNext(result.NextPageLink);
+                    result = ResourceManagementClient.Deployments.ListNext(result.NextPageLink);
                     deployments.AddRange(result.Select(d => d.ToPSResourceGroupDeployment(options.ResourceGroupName)));
                 }
             }
@@ -784,7 +784,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// <param name="deploymentName">Deployment name</param>
         public virtual void DeleteDeployment(string resourceGroup, string deploymentName)
         {
-            if (!ResourceManagementClient.Deployments.CheckExistence(resourceGroup, deploymentName))
+            if (!ResourceManagementClient.Deployments.CheckExistence(resourceGroup, deploymentName).Value)
             {
                 throw new ArgumentException(string.Format(ProjectResources.DeploymentDoesntExist, deploymentName, resourceGroup));
             }
