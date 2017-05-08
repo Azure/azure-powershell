@@ -229,6 +229,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Collections.Hashtable
 System.String
+
 System.Boolean
 
 ## OUTPUTS
