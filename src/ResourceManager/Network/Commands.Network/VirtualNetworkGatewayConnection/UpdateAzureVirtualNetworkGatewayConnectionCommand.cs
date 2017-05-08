@@ -17,6 +17,8 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -31,6 +33,23 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true,
             HelpMessage = "The VirtualNetworkGatewayConnection")]
         public PSVirtualNetworkGatewayConnection VirtualNetworkGatewayConnection { get; set; }
+        
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Whether to use a BGP session over a S2S VPN tunnel")]
+        public bool? EnableBgp { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Whether to use policy-based traffic selectors for a S2S connection")]
+        public bool? UsePolicyBasedTrafficSelectors { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "A list of IPSec policies.")]
+        public List<PSIpsecPolicy> IpsecPolicies { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -39,7 +58,9 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            base.Execute();            ConfirmAction(
+            base.Execute();
+
+            ConfirmAction(
                 Force.IsPresent,
                 string.Format(Properties.Resources.OverwritingResource, VirtualNetworkGatewayConnection.Name),
                 Properties.Resources.SettingResourceMessage,
@@ -49,6 +70,21 @@ namespace Microsoft.Azure.Commands.Network
                     if (!this.IsVirtualNetworkGatewayConnectionPresent(this.VirtualNetworkGatewayConnection.ResourceGroupName, this.VirtualNetworkGatewayConnection.Name))
                     {
                         throw new ArgumentException(Properties.Resources.ResourceNotFound);
+                    }
+
+                    if (this.EnableBgp.HasValue)
+                    {
+                        this.VirtualNetworkGatewayConnection.EnableBgp = this.EnableBgp.Value;
+                    }
+
+                    if (this.UsePolicyBasedTrafficSelectors.HasValue)
+                    {
+                        this.VirtualNetworkGatewayConnection.UsePolicyBasedTrafficSelectors = this.UsePolicyBasedTrafficSelectors.Value;
+                    }
+
+                    if (this.IpsecPolicies != null)
+                    {
+                        this.VirtualNetworkGatewayConnection.IpsecPolicies = this.IpsecPolicies;
                     }
 
                     var vnetGatewayConnectionModel = Mapper.Map<MNM.VirtualNetworkGatewayConnection>(this.VirtualNetworkGatewayConnection);
