@@ -38,12 +38,17 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The service tier of the workspace.")]
-        [ValidateSet("free", "standard", "premium", IgnoreCase = true)]
+        [ValidateSet("free", "standard", "premium", "pernode", "standalone", IgnoreCase = true)]
         public string Sku { get; set; }
 
         [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource tags for the workspace.")]
         public Hashtable Tags { get; set; }
+
+        [Parameter(Position = 5, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The workspace data retention in days. 730 days is the maximum allowed for all other Skus.")]
+        [ValidateNotNullOrEmpty]
+        public int? RetentionInDays { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -58,7 +63,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 ResourceGroupName = ResourceGroupName,
                 WorkspaceName = Name,
                 Sku = Sku,
-                Tags = Tags
+                Tags = Tags,
+                RetentionInDays = RetentionInDays
             };
 
             WriteObject(OperationalInsightsClient.UpdatePSWorkspace(parameters));
