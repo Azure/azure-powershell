@@ -17,7 +17,7 @@ Add-AzureRmServiceFabricNode [-ResourceGroupName] <String> [-Name] <String> -Nod
 ```
 
 ## DESCRIPTION
-User **Add-AzureRmServiceFabricNode** to add nodes to the specific node type. You just need to specify the number of nodes you want to add to a node type.
+Use **Add-AzureRmServiceFabricNode** to add nodes to the specific node type. You just need to specify the number of nodes you want to add to a node type.
 
 ## EXAMPLES
 
@@ -29,21 +29,6 @@ PS c:> Add-AzureRmServiceFabricNode -ResourceGroupName 'Group1' -Name 'Contoso01
 This command will add 2 nodes to the node type 'n1'.
 
 ## PARAMETERS
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Name
 Specify the name of the cluster.
@@ -102,6 +87,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
