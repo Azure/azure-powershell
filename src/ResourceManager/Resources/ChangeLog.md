@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.0.0
 * Support cross-resource-group deployments for New-AzureRmResourceGroupDeployment
     - Users can now use nested deployments to deploy to different resource groups.
 
