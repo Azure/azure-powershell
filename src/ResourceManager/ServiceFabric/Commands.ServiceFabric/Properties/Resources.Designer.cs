@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can&apos;t delete primay node type {0}.
+        ///   Looks up a localized string similar to Can&apos;t delete primary node type {0}.
         /// </summary>
         internal static string CannotDeletePrimayNodeType {
             get {
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Did not find the primay node type in cluster {0}.
+        ///   Looks up a localized string similar to Did not find the primary node type in cluster {0}.
         /// </summary>
         internal static string FailedToFindPrimaryNodeTypeError {
             get {
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to parse Parameter file.
+        ///   Looks up a localized string similar to Failed to parse parameter file.
         /// </summary>
         internal static string FailedToParseParameterFile {
             get {
@@ -340,6 +340,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The primary certificate parameters names in the parameters file should be specified with &apos;sourceVaultValue&apos;,&apos;certificateThumbprint&apos;,&apos;certificateUrlValue&apos;, if the secondary certificate parameters are specified in the parameters file, the parameters names should be specified with &apos;secSourceVaultValue&apos;,&apos;secCertificateThumbprint&apos;,&apos;secCertificateUrlValue&apos;..
+        /// </summary>
+        internal static string InvalidCertificateInformationInParameterFile {
+            get {
+                return ResourceManager.GetString("InvalidCertificateInformationInParameterFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Directory {0} doesn&apos;t exist.
         /// </summary>
         internal static string InvalidDirectory {
@@ -358,7 +367,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invaild input.
+        ///   Looks up a localized string similar to Invalid input.
         /// </summary>
         internal static string InvalidInput {
             get {
@@ -493,7 +502,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Primay node count is {0} which is less than the node count {1} that target reliability level requires, Please use &apos;AutoAddNodes&apos; switch to automatically increase nodes count.
+        ///   Looks up a localized string similar to Primary node count is {0} which is less than the node count {1} that target reliability level requires, Please use &apos;AutoAddNode&apos; switch to automatically increase nodes count.
         /// </summary>
         internal static string UseAutoToIncreaseNodesCount {
             get {
