@@ -421,7 +421,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             var fileContentEncoded = Convert.ToBase64String(clearBytes);
 
-            WriteVerbose(string.Format("Importing certificate to Azure KeyVault {0}", certificateName));
+            WriteVerboseWithTimestamp(string.Format("Importing certificate to Azure KeyVault {0}", certificateName));
             var certificateBundle = this.KeyVaultClient.ImportCertificateAsync(
                 CreateVaultUri(keyVaultName).ToString(),
                 certificateName,
@@ -436,7 +436,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 }
                 ).GetAwaiter().GetResult();
 
-            WriteVerbose(string.Format("Certificate imported Azure KeyVault {0}", certificateBundle.CertificateIdentifier));
+            WriteVerboseWithTimestamp(string.Format("Certificate imported Azure KeyVault {0}", certificateBundle.CertificateIdentifier));
 
             return certificateBundle;
         }
