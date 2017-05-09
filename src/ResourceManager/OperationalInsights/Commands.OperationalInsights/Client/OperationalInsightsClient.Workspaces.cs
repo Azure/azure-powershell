@@ -122,7 +122,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             string location,
             string sku,
             Guid? customerId,
-            IDictionary<string, string> tags)
+            IDictionary<string, string> tags, 
+            int? retentionInDays)
         {
             Workspace properties = new Workspace()
             {
@@ -138,6 +139,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             if (customerId.HasValue)
             {
                 properties.CustomerId = customerId.Value.ToString();
+            }
+
+            if (retentionInDays.HasValue)
+            {
+                properties.RetentionInDays = retentionInDays.Value;
             }
 
             var response = OperationalInsightsManagementClient.Workspaces.CreateOrUpdate(
@@ -160,7 +166,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 workspace.Location,
                 string.IsNullOrWhiteSpace(parameters.Sku) ? workspace.Sku : parameters.Sku,
                 workspace.CustomerId,
-                parameters.Tags == null ? workspace.Tags : ToDictionary(parameters.Tags));
+                parameters.Tags == null ? workspace.Tags : ToDictionary(parameters.Tags),
+                parameters.RetentionInDays);
 
             return new PSWorkspace(updatedWorkspace, parameters.ResourceGroupName);
         }
@@ -184,7 +191,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                             parameters.Location,
                             parameters.Sku,
                             parameters.CustomerId,
-                            tags),
+                            tags,
+                            parameters.RetentionInDays),
                         parameters.ResourceGroupName);
                 if (!string.Equals(workspace.ProvisioningState, OperationStatus.Succeeded.ToString(), StringComparison.OrdinalIgnoreCase))
                 {

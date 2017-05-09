@@ -30,6 +30,8 @@ function Test-WorkspaceCreateUpdateDelete
     Assert-AreEqual $wsname $workspace.Name
     Assert-AreEqual $wslocation $workspace.Location
     Assert-AreEqual "STANDARD" $workspace.Sku
+    # if no value for RetentionInDays is specified, use the default value for the sku. For standard, the default is 30.
+    Assert-AreEqual 30 $workspace.RetentionInDays
     Assert-NotNull $workspace.ResourceId
     Assert-AreEqual 1 $workspace.Tags.Count
     Assert-NotNull $workspace.CustomerId
@@ -40,6 +42,7 @@ function Test-WorkspaceCreateUpdateDelete
     Assert-AreEqual $wsname $workspace.Name
     Assert-AreEqual $wslocation $workspace.Location
     Assert-AreEqual "STANDARD" $workspace.Sku
+    Assert-AreEqual 30 $workspace.RetentionInDays
     Assert-NotNull $workspace.ResourceId
     Assert-AreEqual 1 $workspace.Tags.Count
     Assert-NotNull $workspace.CustomerId
@@ -47,8 +50,11 @@ function Test-WorkspaceCreateUpdateDelete
 
     # Create a second workspace for list testing
     $wstwoname = Get-ResourceName
-    $workspacetwo = New-AzureRmOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wstwoname -Location $wslocation -Sku "STANDARD" -Force
-    
+    $workspacetwo = New-AzureRmOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wstwoname -Location $wslocation -Sku "PerNode" -RetentionInDays 60 -Force
+
+    $workspacetwo = Get-AzureRmOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wstwoname
+    Assert-AreEqual 60 $workspacetwo.RetentionInDays
+
     # List the workspaces in the subscription
     $workspaces = Get-AzureRmOperationalInsightsWorkspace
     Assert-AreEqual 1 ($workspaces | Where {$_.Name -eq $wsname}).Count
@@ -73,11 +79,12 @@ function Test-WorkspaceCreateUpdateDelete
     $workspace = $workspace | New-AzureRmOperationalInsightsWorkspace -Tags @{"foo" = "bar"} -Force
     Assert-AreEqual 1 $workspace.Tags.Count
 
-    # Clear the tags and update the sku via piping
-    $workspace | Set-AzureRmOperationalInsightsWorkspace -Tags @{} -Sku standard
+    # Clear the tags and update the sku, RetentionInDays via piping
+    $workspace | Set-AzureRmOperationalInsightsWorkspace -Tags @{} -Sku standalone -RetentionInDays 123
     $workspace = Get-AzureRmOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname
     Assert-AreEqual 0 $workspace.Tags.Count
-    Assert-AreEqual standard $workspace.Sku
+    Assert-AreEqual standalone $workspace.Sku
+    Assert-AreEqual 123 $workspace.RetentionInDays
 
     # Delete the original workspace via piping
     $workspace | Remove-AzureRmOperationalInsightsWorkspace -Force
