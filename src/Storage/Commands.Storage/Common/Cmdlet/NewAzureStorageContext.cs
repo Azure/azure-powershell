@@ -338,8 +338,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             string storageAccountName, bool useHttps, string azureEnvironmentName = "")
         {
             IAzureEnvironment azureEnvironment = null;
-
-            if (null != SMProfile)
+            var profile = SMProfile??RMProfile;
+            if (null != profile)
             {
                 if (DefaultContext != null && DefaultContext.Environment != null && string.IsNullOrEmpty(azureEnvironmentName))
                 {
@@ -355,7 +355,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                 {
                     try
                     {
-                        azureEnvironment = SMProfile.Environments.First((s) => string.Equals(s.Name, environmentName, StringComparison.OrdinalIgnoreCase));
+                        azureEnvironment = profile.Environments.FirstOrDefault((s) => string.Equals(s.Name, azureEnvironmentName, StringComparison.OrdinalIgnoreCase));
+                        if (azureEnvironment == null)
+                        {
+                            azureEnvironment = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
+                        }
                     }
                     catch (ArgumentException e)
                     {
