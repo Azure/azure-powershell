@@ -341,14 +341,21 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             var profile = SMProfile??RMProfile;
             if (null != profile)
             {
-                if (DefaultContext != null && DefaultContext.Environment != null && string.IsNullOrEmpty(azureEnvironmentName))
+                try
                 {
-                    azureEnvironment = DefaultContext.Environment;
-
-                    if (null == azureEnvironment)
+                    if (DefaultContext != null && DefaultContext.Environment != null && string.IsNullOrEmpty(azureEnvironmentName))
                     {
-                        azureEnvironmentName = EnvironmentName.AzureCloud;
+                        azureEnvironment = DefaultContext.Environment;
+
+                        if (null == azureEnvironment)
+                        {
+                            azureEnvironmentName = EnvironmentName.AzureCloud;
+                        }
                     }
+                }
+                catch (InvalidOperationException)
+                {
+                    //When can't get DefaultContext will use other ways to get AzureEnvironment
                 }
 
                 if (null == azureEnvironment)
