@@ -10,7 +10,7 @@ This document serves as both a breaking change notification and migration guide 
 - [Breaking changes to ServiceBus cmdlets](#breaking-changes-to-servicebus-cmdlets)
 - [Breaking changes to Sql cmdlets](#breaking-changes-to-sql-cmdlets)
 - [Breaking changes to Storage cmdlets](#breaking-changes-to-storage-cmdlets)
-
+- [Breaking Changes to Profile Cmdlets](#breaking-changes-to-profile-cmdlets)
 ## Breaking changes to Compute cmdlets
 
 The following output types were affected this release:
@@ -314,4 +314,105 @@ $LocationMode = (Get-AzureStorageBlob -Container $containername)[0].ICloudBlob.S
 $ParallelOperationThreadCount = (Get-AzureStorageContainer -Container $containername).CloudBlobContainer.ServiceClient.DefaultRequestOptions.ParallelOperationThreadCount
 $PayloadFormat = (Get-AzureStorageTable -Name $tablename).CloudTable.ServiceClient.DefaultRequestOptions.PayloadFormat
 $RetryPolicy = (Get-AzureStorageQueue -Name $queuename).CloudQueue.ServiceClient.DefaultRequestOptions.RetryPolicy
+```
+
+## Breaking Changes to Profile Cmdlets
+
+The following cmdlets were changed in this release.
+
+### Add-AzureRmAccount breaking changes
+
+- ```EnvironmentName``` parameter has been removed and replaced with ```Environment```, the ```Environment``` now takes a string and not an ```AzureEnvironment``` object
+
+```powershell
+#Old
+Add-AzureRmAccount -EnvironmentName AzureChinaCloud
+
+#New
+Add-AzureRmAccount -Environment AzureChinaCloud
+```
+
+### Select-AzureRmProfile was renamed to Import-AzureRmContext
+
+```Select-AzureRmProfile``` was renamed to ```Import-AzureRmContext```
+
+```powershell
+#Old
+Select-AzureRmProfile -Path c:\mydir\myprofile.json
+
+#New
+Import-AzureRmContext -Path c:\mydir\mypforile.json
+```
+
+### Save-AzureRmProfile was renamed to Save-AzureRmContext
+
+```Save-AzureRmProfile``` was renamed to ```Save-AzureRmContext```
+
+```powershell
+#Old
+Save-AzureRmProfile -Path c:\mydir\myprofile.json
+
+#New
+Save-AzureRmContext -Path c:\mydir\mypforile.json
+```
+
+### Breaking Changes to the output Subscription type
+- The ```SubscriptionId``` property was changed to ```Id```
+
+```powershell
+#old
+$id =(Get-AzureRmSubscription -SubscriptionId xxxx-xxxx-xxxx-xxxx).SubscriptionId
+$id =(Add-AzureRmAccount -SubscriptionId xxxx-xxxx-xxxx-xxxx).DefaultContext.Subscription.SubscriptionId
+$id =(Get-AzureRmContext -SubscriptionId xxxx-xxxx-xxxx-xxxx).Subscription.SubscriptionId
+$id =(Set-AzureRmContext -SubscriptionId xxxx-xxxx-xxxx-xxxx).Subscription.SubscriptionId
+
+#new
+$id =(Get-AzureRmSubscription -SubscriptionId xxxx-xxxx-xxxx-xxxx).Id
+$id =(Add-AzureRmAccount -SubscriptionId xxxx-xxxx-xxxx-xxxx).DefaultContext.Subscription.Id
+$id =(Get-AzureRmContext -SubscriptionId xxxx-xxxx-xxxx-xxxx).Subscription.Id
+$id =(Set-AzureRmContext -SubscriptionId xxxx-xxxx-xxxx-xxxx).Subscription.Id
+```
+
+- The ```SubscriptionName``` property was changed to ```Name```
+
+```powershell
+#old
+$name =(Get-AzureRmSubscription -SubscriptionId xxxx-xxxx-xxxx-xxxx).SubscriptionName
+$name =(Add-AzureRmAccount -SubscriptionId xxxx-xxxx-xxxx-xxxx).DefaultContext.Subscription.SubscriptionName
+$name =(Get-AzureRmContext -SubscriptionId xxxx-xxxx-xxxx-xxxx).Subscription.SubscriptionName
+$name =(Set-AzureRmContext -SubscriptionId xxxx-xxxx-xxxx-xxxx).Subscription.SubscriptionName
+
+#new
+$name =(Get-AzureRmSubscription -SubscriptionId xxxx-xxxx-xxxx-xxxx).Name
+$name =(Add-AzureRmAccount -SubscriptionId xxxx-xxxx-xxxx-xxxx).DefaultContext.Subscription.Name
+$name =(Get-AzureRmContext -SubscriptionId xxxx-xxxx-xxxx-xxxx).Subscription.Name
+$name =(Set-AzureRmContext -SubscriptionId xxxx-xxxx-xxxx-xxxx).Subscription.Name
+```
+
+### Breaking Changes to the output Tenant type
+
+- The ```TenantId``` property was changed to ```Id```
+
+```powershell
+#old
+$id =(Get-AzureRmTenant -TenantId xxxx-xxxx-xxxx-xxxx).TenantId
+$id =(Add-AzureRmAccount -SubscriptionId xxxx-xxxx-xxxx-xxxx).DefaultContext.Tenant.TenantId
+$id =(Get-AzureRmContext -SubscriptionId xxxx-xxxx-xxxx-xxxx).Tenant.TenantId
+$id =(Set-AzureRmContext -SubscriptionId xxxx-xxxx-xxxx-xxxx).Tenant.TenantId
+
+#new
+$id =(Get-AzureRmTenant -TenantId xxxx-xxxx-xxxx-xxxx).Id
+$id =(Add-AzureRmAccount -SubscriptionId xxxx-xxxx-xxxx-xxxx).DefaultContext.Tenant.Id
+$id =(Get-AzureRmContext -SubscriptionId xxxx-xxxx-xxxx-xxxx).Tenant.Id
+$id =(Set-AzureRmContext -SubscriptionId xxxx-xxxx-xxxx-xxxx).Tenant.Id
+```
+
+- The ```Domain`` property was changed to ```Directory```
+
+```powershell
+#old
+$tenantName =(Get-AzureRmTenant -TenantId xxxx-xxxx-xxxx-xxxx).Domain
+
+#new
+$tenantName =(Get-AzureRmTenant -TenantId xxxx-xxxx-xxxx-xxxx).Directory
 ```
