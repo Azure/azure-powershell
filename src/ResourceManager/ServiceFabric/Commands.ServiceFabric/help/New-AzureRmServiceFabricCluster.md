@@ -23,14 +23,14 @@ New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> [-CertificateOutpu
 ### ByExistingKeyVault
 ```
 New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> -ParameterFile <String>
- [-VmUserName <String>] -SecretIdentifier <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+-SecretIdentifier <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByNewPfxAndVaultName
 ```
 New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> -ParameterFile <String>
  [-CertificateOutputFolder <String>] [-CertificatePassword <SecureString>] [-KeyVaultResouceGroupName <String>]
- [-KeyVaultName <String>] [-VmUserName <String>] [-CertificateSubjectName <String>] [-WhatIf] [-Confirm]
+ [-KeyVaultName <String>] [-CertificateSubjectName <String>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -39,7 +39,7 @@ New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <Str
 New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> -ParameterFile <String>
  -CertificateFile <String> [-CertificatePassword <SecureString>] [-SecondaryCertificateFile <String>]
  [-SecondaryCertificatePassword <SecureString>] [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>]
- [-VmUserName <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -187,21 +187,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -406,13 +391,28 @@ The user name for logging to Vm.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByDefaultArmTemplate
 Aliases: 
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
