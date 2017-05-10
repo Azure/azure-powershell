@@ -27,8 +27,7 @@ using System.Windows.Forms;
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
     /// <summary>
-    /// A token provider that uses ADAL to retrieve
-    /// tokens from Azure Active Directory for user
+    /// A token provider that uses ADAL to retrieve tokens from Azure Active Directory for user
     /// credentials.
     /// </summary>
     internal class UserTokenProvider : ITokenProvider
@@ -52,12 +51,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 throw new ArgumentException(string.Format(Resources.InvalidCredentialType, "User"), "credentialType");
             }
 
-            return new AdalAccessToken(AcquireToken(config, promptBehavior, userId, password), this, config);
+            return new UserAccessToken(AcquireToken(config, promptBehavior, userId, password), this, config);
         }
 
         private readonly static TimeSpan expirationThreshold = TimeSpan.FromMinutes(5);
 
-        private bool IsExpired(AdalAccessToken token)
+        private bool IsExpired(UserAccessToken token)
         {
 #if DEBUG
             if (Environment.GetEnvironmentVariable("FORCE_EXPIRED_ACCESS_TOKEN") != null)
@@ -73,7 +72,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return timeUntilExpiration < expirationThreshold;
         }
 
-        private void Renew(AdalAccessToken token)
+        private void Renew(UserAccessToken token)
         {
             TracingAdapter.Information(
                 Resources.UPNRenewTokenTrace,
@@ -250,7 +249,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                         config.ClientId,
                         config.ClientRedirectUri,
                         promptBehavior,
-                        new UserIdentifier(userId, UserIdentifierType.RequiredDisplayableId),
+                        new UserIdentifier(userId, config.UserIdentifier),
                         AdalConfiguration.EnableEbdMagicCookie);
                 }
                 else
@@ -275,13 +274,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// <summary>
         /// Implementation of <see cref="IAccessToken"/> using data from ADAL
         /// </summary>
-        private class AdalAccessToken : IAccessToken
+        private class UserAccessToken : IAccessToken
         {
             internal readonly AdalConfiguration Configuration;
             internal AuthenticationResult AuthResult;
             private readonly UserTokenProvider tokenProvider;
 
-            public AdalAccessToken(AuthenticationResult authResult, UserTokenProvider tokenProvider, AdalConfiguration configuration)
+            public UserAccessToken(AuthenticationResult authResult, UserTokenProvider tokenProvider, AdalConfiguration configuration)
             {
                 AuthResult = authResult;
                 this.tokenProvider = tokenProvider;
@@ -297,6 +296,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             public string AccessToken { get { return AuthResult.AccessToken; } }
 
             public string UserId { get { return AuthResult.UserInfo.DisplayableId; } }
+            
+            public string UniqueId { get { return AuthResult.UserInfo.UniqueId; } }
 
             public string TenantId { get { return AuthResult.TenantId; } }
 

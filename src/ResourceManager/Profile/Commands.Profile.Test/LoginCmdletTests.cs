@@ -148,6 +148,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.InvokeEndProcessing();
 
             Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context);
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context.Account);
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context.Account.GetTenantUniqueId("72f988bf-86f1-41af-91ab-2d7cd011db47"));
             Assert.Equal("microsoft.com", AzureRmProfileProvider.Instance.Profile.Context.Tenant.Domain);
         }
 

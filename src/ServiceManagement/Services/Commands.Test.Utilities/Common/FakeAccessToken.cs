@@ -27,7 +27,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
         public string AccessToken { get; set; }
         
         public string UserId { get; set; }
-        
+        public string UniqueId { get { return this.UserId; } }
+
         public LoginType LoginType { get; set; }
 
         public string TenantId { get; set; }

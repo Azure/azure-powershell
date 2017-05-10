@@ -26,6 +26,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
         public Dictionary<Property, string> Properties { get; set; }
 
+        private Dictionary<string,string> TenantToUniqueId { get; set; }
+
         public enum AccountType
         {
             Certificate,

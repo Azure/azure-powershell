@@ -14,6 +14,7 @@
 
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile;
 using Microsoft.Azure.Commands.Profile.Models;
@@ -24,11 +25,13 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Moq;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Security;
 using System.Threading.Tasks;
 using Xunit;
 using Xunit.Abstractions;
@@ -103,7 +106,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 null,
                 null);
         }
-
+        
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SubscriptionIdNotExist()
@@ -457,8 +460,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
             Assert.Equal(500, queue.Count);
         }
-
-
+        
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureRmSubscriptionPaginatedResult()
@@ -491,6 +493,70 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.True(commandRuntimeMock.OutputPipeline.Count == 7);
             Assert.Equal("Disabled", ((PSAzureSubscription)commandRuntimeMock.OutputPipeline[2]).State);
             Assert.Equal("LinkToNextPage", ((PSAzureSubscription)commandRuntimeMock.OutputPipeline[2]).SubscriptionName);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void VerifyAdalUniqueIdUsage()
+        {
+            var tenants = new List<string> { DefaultTenant.ToString(), Guid.NewGuid().ToString() };
+            var firstList = new List<string> { DefaultSubscription.ToString(), Guid.NewGuid().ToString() };
+            var secondList = new List<string> { Guid.NewGuid().ToString() };
+            var client = SetupTestEnvironment(tenants, firstList, secondList);
+
+            var authFactory = new AuthenticationFactory();
+            var tokenProvider = new Mock<ITokenProvider>();
+            int iterator = 0;
+            tokenProvider.Setup(m =>
+                    m.GetAccessToken(
+                        It.IsAny<AdalConfiguration>(),
+                        It.IsAny<ShowDialog>(),
+                        It.IsAny<string>(),
+                        null,
+                        AzureAccount.AccountType.User))
+                    .Returns(
+                        (AdalConfiguration config,
+                         ShowDialog dialog,
+                         string userId,
+                         SecureString password,
+                         AzureAccount.AccountType credentialType) =>
+                        {
+                            var accessToken = new MockAccessToken()
+                            {
+                                AccessToken = Guid.NewGuid().ToString(),
+                                UserId = DefaultAccount,
+                            };
+
+                            if (tenants.Contains(config.AdDomain) &&
+                                userId != DefaultAccount)
+                            {
+                                Assert.Equal(UserIdentifierType.UniqueId, config.UserIdentifier);
+                                accessToken.TenantId = config.AdDomain;
+                                accessToken.UniqueId = "uniqueID_" + config.AdDomain;
+                            }
+                            else
+                            {
+                                accessToken.TenantId = tenants[iterator];
+                                accessToken.UniqueId = "uniqueID_" + tenants[iterator++];
+                                Assert.Equal(UserIdentifierType.OptionalDisplayableId, config.UserIdentifier);
+                            }
+                            return accessToken;
+                        });
+
+
+            authFactory.TokenProvider = tokenProvider.Object;
+            AzureSession.AuthenticationFactory = authFactory;
+
+            var azureRmProfile = client.Login(
+                Context.Account,
+                Context.Environment,
+                null,
+                null,
+                null,
+                null);
+
+            Assert.Equal("uniqueID_" + tenants[0], azureRmProfile.Context.Account.GetTenantUniqueId(tenants[0]));
+            Assert.Equal("uniqueID_" + tenants[1], azureRmProfile.Context.Account.GetTenantUniqueId(tenants[1]));
         }
     }
 }

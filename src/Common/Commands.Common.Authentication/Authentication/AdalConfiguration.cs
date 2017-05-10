@@ -49,6 +49,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public string ResourceClientUri { get; set; }
 
+        public UserIdentifierType UserIdentifier { get; set; }
+
         public TokenCache TokenCache { get; set; }
 
         public AdalConfiguration()
@@ -58,6 +60,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             ValidateAuthority = true;
             AdEndpoint = string.Empty;
             ResourceClientUri = "https://management.core.windows.net/";
+            UserIdentifier = UserIdentifierType.OptionalDisplayableId;
         }
     }
 }

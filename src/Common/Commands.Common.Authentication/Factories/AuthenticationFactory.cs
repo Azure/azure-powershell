@@ -46,6 +46,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         {
             IAccessToken token;
             var configuration = GetAdalConfiguration(environment, tenant, resourceId, tokenCache);
+            if(account.GetTenantUniqueId(tenant) != null)
+            {
+                configuration.UserIdentifier = UserIdentifierType.UniqueId;
+            }
 
             TracingAdapter.Information(
                 Resources.AdalAuthConfigurationTrace,
@@ -58,14 +62,24 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             if (account.IsPropertySet(AzureAccount.Property.CertificateThumbprint))
             {
                 var thumbprint = account.GetProperty(AzureAccount.Property.CertificateThumbprint);
-                token = TokenProvider.GetAccessTokenWithCertificate(configuration, account.Id, thumbprint, account.Type);
+                token = TokenProvider.GetAccessTokenWithCertificate(
+                    configuration, 
+                    account.GetTenantUniqueId(tenant) ?? account.Id, 
+                    thumbprint, 
+                    account.Type);
             }
             else
             {
-                token = TokenProvider.GetAccessToken(configuration, promptBehavior, account.Id, password, account.Type);
+                token = TokenProvider.GetAccessToken(
+                    configuration, 
+                    promptBehavior, 
+                    account.GetTenantUniqueId(tenant) ?? account.Id, 
+                    password, 
+                    account.Type);
             }
 
             account.Id = token.UserId;
+            account.SetTenantUniqueId(token.TenantId, token.UniqueId);
             return token;
         }
 
@@ -298,8 +312,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
         }
 
-        private AdalConfiguration GetAdalConfiguration(AzureEnvironment environment, string tenantId,
-            AzureEnvironment.Endpoint resourceId, TokenCache tokenCache)
+        private AdalConfiguration GetAdalConfiguration(
+            AzureEnvironment environment, 
+            string tenantId,
+            AzureEnvironment.Endpoint resourceId, 
+            TokenCache tokenCache)
         {
             if (environment == null)
             {

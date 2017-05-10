@@ -20,13 +20,18 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
     public class MockAccessToken : IAccessToken
     {
         private string _tenantId = String.Empty;
+
         public void AuthorizeRequest(Action<string, string> authTokenSetter)
         {
             authTokenSetter("Bearer", AccessToken);
         }
 
         public string AccessToken { get; set; }
+
         public string UserId { get; set; }
+
+        public string UniqueId { get; set; }
+
         public LoginType LoginType { get; set; }
 
         public string TenantId

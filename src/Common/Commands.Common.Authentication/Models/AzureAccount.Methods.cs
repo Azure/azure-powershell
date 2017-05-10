@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Utilities;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
     {
         public AzureAccount()
         {
+            TenantToUniqueId = new Dictionary<string, string>();
             Properties = new Dictionary<Property, string>();
         }
 
@@ -121,6 +123,24 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 {
                     Properties.Remove(Property.Subscriptions);
                 }
+            }
+        }
+
+        public string GetTenantUniqueId(string tenantId)
+        {
+            if (TenantToUniqueId.ContainsKey(tenantId))
+            {
+                return TenantToUniqueId[tenantId];
+            }
+
+            return null;
+        }
+
+        public void SetTenantUniqueId(string tenantId, string uniqueId)
+        {
+            if (!string.IsNullOrWhiteSpace(tenantId))
+            {
+                TenantToUniqueId[tenantId] = uniqueId;
             }
         }
 

@@ -86,5 +86,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// The User Id associated with this token.
         /// </summary>
         public string UserId { get; private set; }
+
+        public string UniqueId { get { return this.UserId; } }
     }
 }

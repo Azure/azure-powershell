@@ -368,11 +368,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
         }
 
-        public IAccessToken AcquireAccessToken(string tenantId)
-        {
-            return AcquireAccessToken(_profile.Context.Account, _profile.Context.Environment, tenantId, null, ShowDialog.Auto);
-        }
-
         /// <summary>
         /// List all tenants for the account in the profile context
         /// </summary>
@@ -463,7 +458,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             return mergedEnvironment;
         }
 
-        private IAccessToken AcquireAccessToken(AzureAccount account,
+        private IAccessToken AcquireAccessToken(
+            AzureAccount account,
             AzureEnvironment environment,
             string tenantId,
             SecureString password,
@@ -671,11 +667,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 if (subscriptions != null && subscriptions.Subscriptions != null)
                 {
                     listNextLink = subscriptions.NextLink;
-                    return
-                        subscriptions.Subscriptions.Select(
-                            (s) =>
-                                s.ToAzureSubscription(new AzureContext(_profile.Context.Subscription, account,
-                                    environment, CreateTenantFromString(tenantId, accessToken.TenantId))));
+                    return subscriptions.Subscriptions.Select(
+                            (s) => s.ToAzureSubscription(new AzureContext(
+                                                            _profile.Context.Subscription, 
+                                                            account,
+                                                            environment,
+                                                            CreateTenantFromString(tenantId, accessToken.TenantId))));
                 }
 
                 return new List<AzureSubscription>();
