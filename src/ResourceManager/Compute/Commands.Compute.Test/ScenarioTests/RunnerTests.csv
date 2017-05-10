@@ -1,1 +1,1 @@
-﻿Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VMDynamicTests;RunVMDynamicTests
+﻿Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineTests;TestLinuxVirtualMachine
