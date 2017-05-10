@@ -790,7 +790,8 @@ Describe "Invoke-InstallModule" {
             $cmd = New-Object -TypeName PSObject 
             $cmd | Add-Member -MemberType NoteProperty -Name "Parameters" -Value @{"AllowClobber" = $true }
             Mock Get-Command -Verifiable { $cmd }
-            It "Should invoke install-module with AllowClobber: No Scope" {
+            
+           <# It "Should invoke install-module with AllowClobber: No Scope" {
                 Mock Install-Module -Verifiable {} 
                 Invoke-InstallModule -module "Module1" -version "1.0"
                 Assert-VerifiableMocks
@@ -800,7 +801,7 @@ Describe "Invoke-InstallModule" {
                 Mock Install-Module -Verifiable -ParameterFilter { $Scope -eq "CurrentUser"} {}
                 Invoke-InstallModule -module "Module1" -version "1.0" -scope "CurrentUser" 
                 Assert-VerifiableMocks
-            }
+            } #>
         }
 
         Context "Install-Module doesn not have AllowClobber" {
