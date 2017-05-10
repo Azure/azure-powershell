@@ -955,10 +955,18 @@ function Use-AzureRmProfile
       $importedModules = Get-Module "Azure*"
       foreach ($importedModule in $importedModules) 
       {
-        if (($null -ne $ProfileMap.$Profile.$($importedModule.Name)) -and ($ProfileMap.$Profile.$($importedModule.Name)[0] -ne $importedModule.Version))
+        $versions = $ProfileMap.$Profile.$($importedModule.Name)
+        if ($null -ne $versions) 
         {
-          Write-Error "A different profile version of module $importedModule is imported in this session. Start a new PowerShell session and retry the operation." -Category  InvalidOperation 
-          return
+          # We need the latest version in that profile to be imported. If old version was imported, block user and ask to import in a new session
+          $versionEnum = $versions.GetEnumerator()
+          $toss = $versionEnum.MoveNext()
+          $version = $versionEnum.Current
+          if ([system.version]$version -ne $importedModule.Version)
+          {
+            Write-Error "A different profile version of module $importedModule is imported in this session. Start a new PowerShell session and retry the operation." -Category  InvalidOperation 
+            return
+          }
         }
       }
 
