@@ -130,7 +130,6 @@
     <Compile Include="Container\StopContainerMigration.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="Farm\AddFarm.cs" />
     <Compile Include="Farm\ClearDeletedAccounts.cs" />
     <Compile Include="Farm\GetFarm.cs" />
     <Compile Include="Farm\GetFarmMetricDefinitions.cs" />
