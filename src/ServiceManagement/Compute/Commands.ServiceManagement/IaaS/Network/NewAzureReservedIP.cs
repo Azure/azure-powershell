@@ -20,6 +20,7 @@ using Microsoft.WindowsAzure.Management.Network;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using System;
+using System.Collections.Generic;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {
@@ -84,6 +85,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
             set;
         }
 
+        [Parameter(Mandatory = false, Position = 5, ValueFromPipelineByPropertyName = true, ParameterSetName = ReserveInUseIPParamSet, HelpMessage = "IP Tags.")]
+        [ValidateNotNullOrEmpty]
+        public IList<IPTag> IPTags
+        {
+            get;
+            set;
+        }
+
         [Parameter(Position = 5, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ReserveInUseIPParamSet, HelpMessage = "Deployment slot [Staging | Production].")]
         [ValidateSet(Microsoft.WindowsAzure.Commands.ServiceManagement.Model.DeploymentSlotType.Staging, Microsoft.WindowsAzure.Commands.ServiceManagement.Model.DeploymentSlotType.Production, IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
@@ -122,7 +131,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                         Location       = this.Location,
                         ServiceName    = this.ServiceName,
                         DeploymentName = deploymentName,
-                        VirtualIPName = this.VirtualIPName
+                        VirtualIPName = this.VirtualIPName,
+                        IPTags = this.IPTags
                     };
 
                     return this.NetworkClient.ReservedIPs.Create(parameters);
