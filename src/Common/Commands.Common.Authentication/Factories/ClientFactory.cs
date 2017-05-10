@@ -32,17 +32,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         private static readonly char[] uriPathSeparator = { '/' };
 
         private Dictionary<Type, IClientAction> _actions;
+        private HashSet<ProductInfoHeaderValue> _headers;
         private OrderedDictionary _handlers;
         private ReaderWriterLockSlim _actionsLock;
         private ReaderWriterLockSlim _handlersLock;
+        private ReaderWriterLockSlim _headersLock;
 
         public ClientFactory()
         {
             _actions = new Dictionary<Type, IClientAction>();
             _actionsLock = new ReaderWriterLockSlim();
-            UserAgents = new HashSet<ProductInfoHeaderValue>();
             _handlers = new OrderedDictionary();
             _handlersLock = new ReaderWriterLockSlim();
+            _headers = new HashSet<ProductInfoHeaderValue>();
+            _headersLock = new ReaderWriterLockSlim();
         }
 
         public virtual TClient CreateArmClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint) where TClient : Microsoft.Rest.ServiceClient<TClient>
@@ -334,7 +337,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         /// <param name="productVersion">Product version.</param>
         public void AddUserAgent(string productName, string productVersion)
         {
-            UserAgents.Add(new ProductInfoHeaderValue(productName, productVersion));
+            _headersLock.EnterWriteLock();
+            try
+            {
+                _headers.Add(new ProductInfoHeaderValue(productName, productVersion));
+            }
+            finally
+            {
+                _headersLock.ExitWriteLock();
+            }
         }
 
         /// <summary>
@@ -346,7 +357,33 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             AddUserAgent(productName, "");
         }
 
-        public HashSet<ProductInfoHeaderValue> UserAgents { get; set; }
+        public HashSet<ProductInfoHeaderValue> UserAgents
+        {
+            get
+            {
+                _headersLock.EnterReadLock();
+                try
+                {
+                    return new HashSet<ProductInfoHeaderValue>(_headers);
+                }
+                finally
+                {
+                    _headersLock.ExitReadLock();
+                }
+            }
+            set
+            {
+                _headersLock.EnterWriteLock();
+                try
+                {
+                    _headers = value;
+                }
+                finally
+                {
+                    _headersLock.ExitWriteLock();
+                }
+            }
+        }
 
         public DelegatingHandler[] GetCustomHandlers()
         {
