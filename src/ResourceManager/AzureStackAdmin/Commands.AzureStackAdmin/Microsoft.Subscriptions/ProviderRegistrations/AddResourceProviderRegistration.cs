@@ -121,8 +121,10 @@ namespace Microsoft.AzureStack.Commands
             using (var client = this.GetAzureStackClient())
             {
                 ProviderRegistrationCreateOrUpdateParameters registrationParams = null;
+                // Todo: Remove the parameter sets in the next release
                 if( this.ParameterSetName.Equals("SingleExtension", StringComparison.OrdinalIgnoreCase) )
-                { 
+                {
+                    WriteWarning("ExtensionName and ExtensionUri parameters will be deprecated in a future release, Instead please use Extensions parameter to pass it as a json");
                     registrationParams = new ProviderRegistrationCreateOrUpdateParameters()
                     {
                         ProviderRegistration = new ProviderRegistrationModel()
@@ -136,8 +138,19 @@ namespace Microsoft.AzureStack.Commands
                                 RoutingResourceManagerType = this.ResourceManagerType,
                                 Enabled = true,
                                 ProviderLocation = this.ProviderLocation,
-                                ExtensionName = this.ExtensionName,
-                                ExtensionUri = this.ExtensionUri.AbsoluteUri,
+                                // Todo: Remove this HACK, hardcoded versions to have backward compatibility 
+                                ExtensionCollection = new ExtensionCollectionDefinition()
+                                                      {
+                                                          Version = "0.1.0.0",
+                                                          Extensions = new ExtensionDefinition[]
+                                                                       {
+                                                                           new ExtensionDefinition()
+                                                                           {
+                                                                               Name = this.ExtensionName,
+                                                                               Uri = (this.ExtensionUri == null) ? null : this.ExtensionUri.AbsoluteUri
+                                                                           }
+                                                                       }
+                                                      },
                                 ResourceTypes = this.ResourceTypes.FromJson<List<ResourceType>>()
                             }
                         }
@@ -160,7 +173,7 @@ namespace Microsoft.AzureStack.Commands
                                 RoutingResourceManagerType = this.ResourceManagerType,
                                 Enabled = true,
                                 ProviderLocation = this.ProviderLocation,
-                                Extensions = (this.Extensions == null) ? null : this.Extensions.FromJson<List<Extension>>(),
+                                ExtensionCollection = (this.Extensions == null) ? null : this.Extensions.FromJson<ExtensionCollectionDefinition>(),
                                 ResourceTypes = this.ResourceTypes.FromJson<List<ResourceType>>()
                             }
                         }
