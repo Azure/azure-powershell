@@ -38,6 +38,18 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact]
+        public void TestNewDeploymentFromNonexistentTemplateFile()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentFromNonexistentTemplateFile");
+        }
+
+        [Fact]
+        public void TestNewDeploymentFromNonexistentTemplateParameterFile()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentFromNonexistentTemplateParameterFile");
+        }
+
+        [Fact]
         public void TestNestedDeploymentFromTemplateFile()
         {
             ResourcesController.NewInstance.RunPsTest("Test-NestedDeploymentFromTemplateFile");
