@@ -346,10 +346,20 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 }
             };
 
-            var scheduleCreateResponse = this.automationManagementClient.Schedules.CreateOrUpdate(
-                resourceGroupName,
-                automationAccountName,
-                scheduleCreateOrUpdateParameters);
+            if (!string.IsNullOrEmpty(schedule.TimeZone))
+            {
+                this.automationManagementClient.Schedules.CreateOrUpdateWithTimeConversion(
+                    resourceGroupName,
+                    automationAccountName,
+                    scheduleCreateOrUpdateParameters);
+            }
+            else
+            {
+                this.automationManagementClient.Schedules.CreateOrUpdate(
+                    resourceGroupName,
+                    automationAccountName,
+                    scheduleCreateOrUpdateParameters);
+            }
 
             return this.GetSchedule(resourceGroupName, automationAccountName, schedule.Name);
         }
