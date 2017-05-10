@@ -791,13 +791,13 @@ Describe "Invoke-InstallModule" {
             $cmd | Add-Member -MemberType NoteProperty -Name "Parameters" -Value @{"AllowClobber" = $true }
             Mock Get-Command -Verifiable { $cmd }
             It "Should invoke install-module with AllowClobber: No Scope" {
-                Mock Install-Module -Verifiable -ParameterFilter { $AllowClobber -eq $true} {}
+                Mock Install-Module -Verifiable {} 
                 Invoke-InstallModule -module "Module1" -version "1.0"
                 Assert-VerifiableMocks
             }
 
             It "Should invoke install-module with AllowClobber: CurrentUser Scope" {
-                Mock Install-Module -Verifiable -ParameterFilter { ($AllowClobber -eq $true) -and ($Scope -eq "CurrentUser")} {}
+                Mock Install-Module -Verifiable -ParameterFilter { $Scope -eq "CurrentUser"} {}
                 Invoke-InstallModule -module "Module1" -version "1.0" -scope "CurrentUser" 
                 Assert-VerifiableMocks
             }
