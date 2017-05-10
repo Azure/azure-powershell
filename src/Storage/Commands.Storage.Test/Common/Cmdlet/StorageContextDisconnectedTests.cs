@@ -14,16 +14,14 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Storage;
 using Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Collections.Generic;
 using System.Linq;
 using Xunit;
-using System;
-using System.Collections.Generic;
 
 namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
 {
@@ -85,7 +83,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CanCreateStorageContext()
+        public void CanCreateStorageContextNameAndKey()
         {
             AzureSessionInitializer.InitializeAzureSession();
             var smProvider = AzureSMProfileProvider.Instance;
@@ -112,6 +110,36 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
                 var storageContext = output.First() as AzureStorageContext;
                 Assert.NotNull(storageContext);
                 Assert.Equal(cmdlet.StorageAccountName, storageContext.StorageAccountName);
+
+                cmdlet = new NewAzureStorageContext
+                {
+                    CommandRuntime = mock,
+                    StorageAccountName = "contosostorage",
+                    Anonymous = true,
+                };
+
+                cmdlet.SetParameterSet("AnonymousAccount");
+                cmdlet.ExecuteCmdlet();
+                output = mock.OutputPipeline;
+                Assert.NotNull(output);
+                storageContext = output.First() as AzureStorageContext;
+                Assert.NotNull(storageContext);
+                Assert.Equal(cmdlet.StorageAccountName, storageContext.StorageAccountName);
+
+                cmdlet = new NewAzureStorageContext
+                {
+                    CommandRuntime = mock,
+                    StorageAccountName = "contosostorage",
+                    SasToken = "AAAAAAAA",
+                };
+
+                cmdlet.SetParameterSet("SasToken");
+                cmdlet.ExecuteCmdlet();
+                output = mock.OutputPipeline;
+                Assert.NotNull(output);
+                storageContext = output.First() as AzureStorageContext;
+                Assert.NotNull(storageContext);
+                Assert.Equal(cmdlet.StorageAccountName, storageContext.StorageAccountName);
             }
             finally
             {
@@ -119,5 +147,80 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
                 AzureRmProfileProvider.SetInstance(() => rmProvider, true);
             }
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanCreateStorageContextSASToken()
+        {
+            AzureSessionInitializer.InitializeAzureSession();
+            var smProvider = AzureSMProfileProvider.Instance;
+            var rmProvider = AzureRmProfileProvider.Instance;
+            AzureRmProfileProvider.SetInstance(() => new TestProfileProvider(), true);
+            AzureSMProfileProvider.SetInstance(() => new TestSMProfileProvider(), true);
+            try
+            {
+                var mock = new MockCommandRuntime();
+
+                AzureSMProfileProvider.Instance.Profile = null;
+                AzureRmProfileProvider.Instance.Profile = new TestContextContainer();
+                var cmdlet = new NewAzureStorageContext
+                {
+                    CommandRuntime = mock,
+                    StorageAccountName = "contosostorage",
+                    SasToken = "AAAAAAAA",
+                };
+
+                cmdlet.SetParameterSet("SasToken");
+                cmdlet.ExecuteCmdlet();
+                var output = mock.OutputPipeline;
+                Assert.NotNull(output);
+                var storageContext = output.First() as AzureStorageContext;
+                Assert.NotNull(storageContext);
+                Assert.Equal("[SasToken]", storageContext.StorageAccountName);
+            }
+            finally
+            {
+                AzureSMProfileProvider.SetInstance(() => smProvider, true);
+                AzureRmProfileProvider.SetInstance(() => rmProvider, true);
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanCreateStorageContextAnonymous()
+        {
+            AzureSessionInitializer.InitializeAzureSession();
+            var smProvider = AzureSMProfileProvider.Instance;
+            var rmProvider = AzureRmProfileProvider.Instance;
+            AzureRmProfileProvider.SetInstance(() => new TestProfileProvider(), true);
+            AzureSMProfileProvider.SetInstance(() => new TestSMProfileProvider(), true);
+            try
+            {
+                var mock = new MockCommandRuntime();
+
+                AzureSMProfileProvider.Instance.Profile = null;
+                AzureRmProfileProvider.Instance.Profile = new TestContextContainer();
+                var cmdlet = new NewAzureStorageContext
+                {
+                    CommandRuntime = mock,
+                    StorageAccountName = "contosostorage",
+                    Anonymous = true,
+                };
+
+                cmdlet.SetParameterSet("AnonymousAccount");
+                cmdlet.ExecuteCmdlet();
+                var output = mock.OutputPipeline;
+                Assert.NotNull(output);
+                var storageContext = output.First() as AzureStorageContext;
+                Assert.NotNull(storageContext);
+                Assert.Equal("[Anonymous]", storageContext.StorageAccountName);
+            }
+            finally
+            {
+                AzureSMProfileProvider.SetInstance(() => smProvider, true);
+                AzureRmProfileProvider.SetInstance(() => rmProvider, true);
+            }
+        }
+
     }
 }
