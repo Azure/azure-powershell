@@ -203,6 +203,7 @@
     <Compile Include="Common\Cmdlet\NewAzureStorageContextTest.cs" />
     <Compile Include="Common\Cmdlet\SetAzureStorageServiceLoggingTest.cs" />
     <Compile Include="Common\Cmdlet\SetAzureStorageServiceHourMetricsTest.cs" />
+    <Compile Include="Common\Cmdlet\StorageContextDisconnectedTests.cs" />
     <Compile Include="Common\CommunicationExceptionUtilTest.cs" />
     <Compile Include="Common\FileNamingGenerator.cs" />
     <Compile Include="Common\IStorageManagement.cs" />
