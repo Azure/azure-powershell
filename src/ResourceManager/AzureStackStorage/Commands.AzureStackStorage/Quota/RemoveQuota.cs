@@ -33,14 +33,14 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         /// <summary>
         /// Location
         /// </summary>
-        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public string Location { get; set; }
 
         /// <summary>
         ///  Quota Name
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 4)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public string Name { get; set; }
 

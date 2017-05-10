@@ -36,33 +36,33 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         /// <summary>
         /// Resource group name
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 3)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Farm Identifier
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 4)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public string FarmName { get; set; }
 
         /// <summary>
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 5)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ShareName { get; set;}
 
         /// <summary>
         /// Storage Account Name
         /// </summary>
-        [Parameter(Mandatory = false, Position = 6 )]
+        [Parameter(Mandatory = false )]
         public ContainerGetIntent? Intent { get; set; }
 
         /// <summary>
         /// Storage Account Status
         /// </summary>
-        [Parameter(Mandatory = false, Position = 7)]
+        [Parameter(Mandatory = false)]
         public uint? Count { get; set; }
 
         protected override void Execute()

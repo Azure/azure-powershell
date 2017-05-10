@@ -31,48 +31,48 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         /// <summary>
         /// Resource group name
         /// </summary>
-        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Storage Account Name
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 4)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public string TenantAccountName { get; set; }
 
         /// <summary>
         /// Tenant Subscription Id
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 5)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public string TenantSubscriptionId { get; set; }
 
         /// <summary>
         /// Resource Location
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 6)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public string Location { get; set; }
 
         /// <summary>
         /// Tenant Resource Group
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 7)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public string TenantResourceGroup { get; set; }
 
         /// <summary>
         /// Specify storage account api version whic resource was created with
         /// </summary>
-        [Parameter(Mandatory = false, Position = 8)]
+        [Parameter(Mandatory = false)]
         public string StorageAccountApiVersion { get; set; }
 
         /// <summary>
         /// Specifies the Microsoft.Resource.Admin apiVersion
         /// </summary>
-        [Parameter(Mandatory = false, Position = 9)]
+        [Parameter(Mandatory = false)]
         public string ResourceAdminApiVersion { get; set; }
 
         internal static string DefaultStorageAccountApiVersion = "2015-06-15";

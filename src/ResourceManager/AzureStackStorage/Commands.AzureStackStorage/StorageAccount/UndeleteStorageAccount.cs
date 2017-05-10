@@ -32,39 +32,39 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         /// <summary>
         /// Resource group name
         /// </summary>
-        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Farm Identifier
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 4)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public string FarmName { get; set; }
 
         /// <summary>
         /// Storage Account Name
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 5)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         public string AccountId { get; set; }
 
         /// <summary>
         /// Storage Account Name
         /// </summary>
-        [Parameter(Mandatory = false, Position = 6)]
+        [Parameter(Mandatory = false)]
         public string NewAccountName { get; set; }
 
         /// <summary>
         /// Specify storage account api version whic resource was created with
         /// </summary>
-        [Parameter(Mandatory = false, Position = 7)]
+        [Parameter(Mandatory = false)]
         public string StorageAccountApiVersion { get; set; }
 
         /// <summary>
         /// Specifies the Microsoft.Resource.Admin apiVersion
         /// </summary>
-        [Parameter(Mandatory = false, Position = 8)]
+        [Parameter(Mandatory = false)]
         public string ResourceAdminApiVersion { get; set; }
 
         protected override void Execute()

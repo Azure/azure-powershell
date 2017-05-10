@@ -38,45 +38,45 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         /// <summary>
         /// Resource group name
         /// </summary>
-        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Farm Identifier
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 4)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public string FarmName { get; set; }
 
         /// <summary>
         /// Tenant Subscription Id
         /// </summary>
-        [Parameter(Mandatory = false, Position = 5, ParameterSetName = ListAccountsParamSet)]
+        [Parameter(Mandatory = false, ParameterSetName = ListAccountsParamSet)]
         public string TenantSubscriptionId { get; set; }
 
         /// <summary>
         /// Storage Account Name
         /// </summary>
-        [Parameter(Mandatory = false, Position = 6, ParameterSetName = ListAccountsParamSet)]
+        [Parameter(Mandatory = false, ParameterSetName = ListAccountsParamSet)]
         public string PartialAccountName { get; set; }
 
         /// <summary>
         /// Storage Account Status
         /// </summary>
-        [Parameter(Mandatory = false, Position = 7, ParameterSetName = ListAccountsParamSet)]
+        [Parameter(Mandatory = false, ParameterSetName = ListAccountsParamSet)]
         public int? StorageAccountStatus { get; set; }
 
         /// <summary>
         /// Storage Account AccountId
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 8, ParameterSetName = GetSingleAccountParamSet)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = GetSingleAccountParamSet)]
         public string AccountId { get; set; }
 
         /// <summary>
         /// Only need return summary information if not specified
         /// </summary>
-        [Parameter(Mandatory = false, Position = 9)]
+        [Parameter(Mandatory = false)]
         public SwitchParameter Detail { get; set; }
 
         protected override void Execute()

@@ -28,7 +28,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         /// <summary>
         ///     Farm Identifier
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 4)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public string FarmName { get; set; }
 
