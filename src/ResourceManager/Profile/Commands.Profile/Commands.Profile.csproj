@@ -131,6 +131,13 @@
     <Compile Include="Environment\GetAzureRMEnvironment.cs" />
     <Compile Include="Environment\SetAzureRMEnvironment.cs" />
     <Compile Include="Environment\AddAzureRMEnvironment.cs" />
+    <Compile Include="Errors\AzureRestExceptionErrorRecord.cs" />
+    <Compile Include="Errors\AzureExceptionErrorRecord.cs" />
+    <Compile Include="Errors\AzureErrorRecord.cs" />
+    <Compile Include="Errors\HttpRequestInfo.cs" />
+    <Compile Include="Errors\HttpResponseInfo.cs" />
+    <Compile Include="Errors\HttpMessageInfo.cs" />
+    <Compile Include="Errors\ResolveError.cs" />
     <Compile Include="Feedback\SendFeedback.cs" />
     <Compile Include="Models\AzureRmProfileExtensions.cs" />
     <Compile Include="Models\ModelExtensions.cs" />
