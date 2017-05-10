@@ -129,7 +129,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The virtual network gateway's ASN for BGP over VPN")]
+            HelpMessage = "The virtual network gateway's ASN for BGP over VPN. Must be between 0 and 65535.")]
+            [ValidateRange(0,65535)]
         public uint Asn { get; set; }
 
         [Parameter(
