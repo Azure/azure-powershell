@@ -50,6 +50,14 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
 
         class TestContextContainer : IAzureContextContainer
         {
+            List<IAzureEnvironment> _environments = new List<IAzureEnvironment>();
+            public TestContextContainer()
+            {
+                foreach(var environment in AzureEnvironment.PublicEnvironments)
+                {
+                    _environments.Add(environment.Value);
+                }
+            }
             public IEnumerable<IAzureAccount> Accounts
             {
                 get;
@@ -62,8 +70,8 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
 
             public IEnumerable<IAzureEnvironment> Environments
             {
-                get;
-            } = new List<IAzureEnvironment>();
+                get { return _environments; }
+            } 
 
             public IDictionary<string, string> ExtendedProperties
             {
@@ -111,35 +119,6 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
                 Assert.NotNull(storageContext);
                 Assert.Equal(cmdlet.StorageAccountName, storageContext.StorageAccountName);
 
-                cmdlet = new NewAzureStorageContext
-                {
-                    CommandRuntime = mock,
-                    StorageAccountName = "contosostorage",
-                    Anonymous = true,
-                };
-
-                cmdlet.SetParameterSet("AnonymousAccount");
-                cmdlet.ExecuteCmdlet();
-                output = mock.OutputPipeline;
-                Assert.NotNull(output);
-                storageContext = output.First() as AzureStorageContext;
-                Assert.NotNull(storageContext);
-                Assert.Equal(cmdlet.StorageAccountName, storageContext.StorageAccountName);
-
-                cmdlet = new NewAzureStorageContext
-                {
-                    CommandRuntime = mock,
-                    StorageAccountName = "contosostorage",
-                    SasToken = "AAAAAAAA",
-                };
-
-                cmdlet.SetParameterSet("SasToken");
-                cmdlet.ExecuteCmdlet();
-                output = mock.OutputPipeline;
-                Assert.NotNull(output);
-                storageContext = output.First() as AzureStorageContext;
-                Assert.NotNull(storageContext);
-                Assert.Equal(cmdlet.StorageAccountName, storageContext.StorageAccountName);
             }
             finally
             {
@@ -147,6 +126,47 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
                 AzureRmProfileProvider.SetInstance(() => rmProvider, true);
             }
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanCreateStorageContextInChinaCloud()
+        {
+            AzureSessionInitializer.InitializeAzureSession();
+            var smProvider = AzureSMProfileProvider.Instance;
+            var rmProvider = AzureRmProfileProvider.Instance;
+            AzureRmProfileProvider.SetInstance(() => new TestProfileProvider(), true);
+            AzureSMProfileProvider.SetInstance(() => new TestSMProfileProvider(), true);
+            try
+            {
+                var mock = new MockCommandRuntime();
+
+                AzureSMProfileProvider.Instance.Profile = null;
+                AzureRmProfileProvider.Instance.Profile = new TestContextContainer();
+                var cmdlet = new NewAzureStorageContext
+                {
+                    CommandRuntime = mock,
+                    StorageAccountName = "contosostorage",
+                    StorageAccountKey = "AAAAAAAA",
+                    Environment = EnvironmentName.AzureChinaCloud
+                };
+
+                cmdlet.SetParameterSet("AccountNameAndKeyEnvironment");
+                cmdlet.ExecuteCmdlet();
+                var output = mock.OutputPipeline;
+                Assert.NotNull(output);
+                var storageContext = output.First() as AzureStorageContext;
+                Assert.NotNull(storageContext);
+                Assert.Equal(cmdlet.StorageAccountName, storageContext.StorageAccountName);
+                Assert.True(storageContext.BlobEndPoint.Contains(".cn"));
+
+            }
+            finally
+            {
+                AzureSMProfileProvider.SetInstance(() => smProvider, true);
+                AzureRmProfileProvider.SetInstance(() => rmProvider, true);
+            }
+        }
+
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
