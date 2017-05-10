@@ -7,40 +7,40 @@ schema: 2.0.0
 # Switch-AzureRmSqlDatabaseFailoverGroup
 
 ## SYNOPSIS
-The Cmdlet that issues failover operation on Azure SQL Failover Group
+Executes a failover of an Azure SQL Database Failover Group.
 
 ## SYNTAX
 
 ```
-Switch-AzureRmSqlDatabaseFailoverGroup [[-FailoverGroupName] <String>] [-AllowDataLoss] [-ServerName] <String>
+Switch-AzureRmSqlDatabaseFailoverGroup [-ServerName] <String> [[-FailoverGroupName] <String>] [-AllowDataLoss]
  [-ResourceGroupName] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This command must be executed on a secondary server of a specific FG. The FG is identified by the listener name. The command switches all secondary databases to the primary role. All active TDS sessions will be disconnected. All new TDS sessions will be automatically re-routed to the secondary server, which now becomes primary server. When the original primary server is back online it will automatically become the secondary server and all formerly primary databases in it will switch to the secondary role. 
+This command swaps the roles of the servers in a Failover Group and switches all secondary databases to the primary role. All new TDS sessions are automatically re-routed to the secondary server after the DNS client cache is refreshed. When the original primary server is back online, all formerly primary databases in it will switch to the secondary role.
 
+The Failover Group's secondary server must be used to execute this command.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-Issue failover operation with data loss
-PS C:\> C:\> $ag | Switch-AzureRMSqlDatabaseFailoverGroup -AllowDataLoss 
-
+C:\> Get-AzureRmSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName secondaryserver -FailoverGroupName fg | Switch-AzureRmSqlDatabaseFailoverGroup -AllowDataLoss
 ```
 
-### Example 1
-```
-Issue failover operation without data loss
-PS C:\> C:\> $ag | Switch-AzureRMSqlDatabaseFailoverGroup 
+Issue a failover operation allowing data loss by piping in the Failover Group.
 
+### Example 2
+```
+C:\> Switch-AzureRmSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName secondaryserver -FailoverGroupName fg
 ```
 
+Issue a best effort failover operation that will either succeed without losing data or fail and roll back.
 
 ## PARAMETERS
 
 ### -AllowDataLoss
-Whether this failover operation will allow data loss.
+Complete the failover even if doing so may result in data loss. This will allow the failover to proceed even if a primary database is unavailable.
 
 ```yaml
 Type: SwitchParameter
@@ -49,13 +49,13 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -FailoverGroupName
-The name of the Azure SQL Failover Group to retrieve.
+The name of the Azure SQL Database Failover Group.
 
 ```yaml
 Type: String
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-The name of the Azure SQL Server the Failover Group is in.
+The name of the secondary Azure SQL Database Server of the Failover Group.
 
 ```yaml
 Type: String
@@ -109,7 +109,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -125,7 +125,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -145,3 +145,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+[New-AzureRmSqlDatabaseFailoverGroup](./New-AzureRmSqlDatabaseFailoverGroup.md)
+
+[Set-AzureRmSqlDatabaseFailoverGroup](./Set-AzureRmSqlDatabaseFailoverGroup.md)
+
+[Get-AzureRmSqlDatabaseFailoverGroup](./Get-AzureRmSqlDatabaseFailoverGroup.md)
+
+[Add-AzureRmSqlDatabaseToFailoverGroup](./Add-AzureRmSqlDatabaseToFailoverGroup.md)
+
+[Remove-AzureRmSqlDatabaseFromFailoverGroup](./Remove-AzureRmSqlDatabaseFromFailoverGroup.md)
+
+[Remove-AzureRmSqlDatabaseFailoverGroup](./Remove-AzureRmSqlDatabaseFailoverGroup.md)

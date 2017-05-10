@@ -37,6 +37,21 @@ The last command then creates a WAF configuration with firewall rules disabled a
 
 ## PARAMETERS
 
+### -DisabledRuleGroups
+The disabled rule groups.
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallDisabledRuleGroup]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Enabled
 Indicates whether the WAF is enabled.
 
@@ -63,10 +78,48 @@ The acceptable values for this parameter are:
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Detection, Prevention
 
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RuleSetType
+The type of the web application firewall rule set. 
+The acceptable values for this parameter are: 
+
+- OWASP
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: OWASP
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RuleSetVersion
+The version of the rule set type.
+The acceptable values for this parameter are: 
+
+- 3.0
+- 2.2.9
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: 3.0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// <summary>
         /// A mock of the ISubscriptionsOperations
         /// </summary>
-        private readonly Mock<ISubscriptionsOperations> subscriptionsOperationsMock;
+        private readonly Mock<Internal.Subscriptions.ISubscriptionsOperations> subscriptionsOperationsMock;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAzureProviderCmdletTests"/> class.
@@ -64,10 +64,10 @@ namespace Microsoft.Azure.Commands.Resources.Test
         public GetAzureProviderCmdletTests(ITestOutputHelper output)
         {
             this.providerOperationsMock = new Mock<IProvidersOperations>();
-            this.subscriptionsOperationsMock = new Mock<ISubscriptionsOperations>();
+            this.subscriptionsOperationsMock = new Mock<Internal.Subscriptions.ISubscriptionsOperations>();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             var resourceManagementClient = new Mock<Microsoft.Azure.Management.ResourceManager.IResourceManagementClient>();
-            var subscriptionClient = new Mock<Microsoft.Azure.Management.ResourceManager.ISubscriptionClient>();
+            var subscriptionClient = new Mock<Internal.Subscriptions.ISubscriptionClient>();
 
             resourceManagementClient
                 .SetupGet(client => client.Providers)
@@ -102,35 +102,31 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
             const string ResourceTypeName = "TestResource1";
 
-            var unregisteredProvider = new Provider
-            {
-                NamespaceProperty = UnregisteredProviderNamespace,
-                RegistrationState = "Unregistered",
-                ResourceTypes = new[]
+            var unregisteredProvider = new Provider(
+                namespaceProperty: UnregisteredProviderNamespace,
+                registrationState: "Unregistered",
+                resourceTypes: new[]
                 {
                     new ProviderResourceType
                     {
                         Locations = new[] {"West US", "East US", "South US"},
                         ResourceType = "TestResource2"
                     }
-                }
-            };
+                });
 
             var listResult = new List<Provider>()
             {
-                new Provider
-                {
-                    NamespaceProperty = RegisteredProviderNamespace,
-                    RegistrationState = ResourceManagerSdkClient.RegisteredStateName,
-                    ResourceTypes = new[]
+                new Provider(
+                    namespaceProperty: RegisteredProviderNamespace,
+                    registrationState: ResourceManagerSdkClient.RegisteredStateName,
+                    resourceTypes: new[]
                     {
                         new ProviderResourceType
                         {
                             Locations = new[] { "West US", "East US" },
                             //Name = ResourceTypeName,
                         }
-                    }
-                },
+                    }),
                 unregisteredProvider,
             };
             var pagableResult = new Page<Provider>();
@@ -143,17 +139,13 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 .Setup(f => f.ListWithHttpMessagesAsync(null, null, null, It.IsAny<CancellationToken>()))
                 .Returns(() => Task.FromResult(result));
 
-            var locationList = new List<Location>
+            var locationList = new List<Internal.Subscriptions.Models.Location>
             {
-                new Location
-                {
-                    Name = "southus",
-                    DisplayName = "South US",
-                }
+                new Internal.Subscriptions.Models.Location(name: "southus", displayName: "South US")
             };
-            var pagableLocations = new Page<Location>();
-            pagableLocations.SetItemValue<Location>(locationList);
-            var locationsResult = new AzureOperationResponse<IEnumerable<Location>>()
+            var pagableLocations = new Page<Internal.Subscriptions.Models.Location>();
+            pagableLocations.SetItemValue<Internal.Subscriptions.Models.Location>(locationList);
+            var locationsResult = new AzureOperationResponse<IEnumerable<Internal.Subscriptions.Models.Location>>()
             {
                 Body = pagableLocations
             };

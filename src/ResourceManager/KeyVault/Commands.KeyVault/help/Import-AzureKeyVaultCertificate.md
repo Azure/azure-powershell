@@ -138,7 +138,7 @@ Parameter Sets: (All)
 Aliases: CertificateName
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -159,6 +159,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Tag
+Specifies a hash table that contains certificate tags.
+
+```yaml
+Type: Hashtable
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -VaultName
 Specifies the key vault name into which this cmdlet imports certificates.
 This cmdlet constructs the fully qualified domain name (FQDN) of a key vault based on the name and currently selected environment.
@@ -169,7 +184,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -187,21 +202,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Specifies a hash table that contains certificate tags.
-
-```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

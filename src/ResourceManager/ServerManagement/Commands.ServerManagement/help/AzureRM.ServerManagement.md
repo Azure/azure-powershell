@@ -4,7 +4,6 @@ Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 Download Help Link: {{Please enter FwLink manually}}
 Help Version: {{Please enter version of help manually (X.X.X.X) format}}
 Locale: en-US
-ms.assetid: 6E941B4F-6D9B-43BE-BC2A-D87F1D7AABAC
 ---
 
 # AzureRM.ServerManagement Module

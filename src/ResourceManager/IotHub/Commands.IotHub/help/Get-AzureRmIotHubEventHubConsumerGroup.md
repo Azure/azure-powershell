@@ -44,6 +44,7 @@ Name of the Event Hub endpoint. The possible values are events, operationsMonito
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: events, operationsMonitoringEvents
 
 Required: True
 Position: 2

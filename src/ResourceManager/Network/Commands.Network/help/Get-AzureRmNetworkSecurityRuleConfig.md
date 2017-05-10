@@ -14,7 +14,7 @@ Get a network security rule configuration for a network security group.
 
 ```
 Get-AzureRmNetworkSecurityRuleConfig [-Name <String>] -NetworkSecurityGroup <PSNetworkSecurityGroup>
- [-DefaultRules] [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-DefaultRules] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,22 +55,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -Name
+Specifies the name of the network security rule configuration to get.
 
 ```yaml
-Type: ActionPreference
+Type: String
 Parameter Sets: (All)
-Aliases: infa
+Aliases: 
 
 Required: False
 Position: Named
@@ -79,18 +70,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
+### -NetworkSecurityGroup
+Specifies a **NetworkSecurityGroup** object that contains the network security rule configuration to get.
 
 ```yaml
-Type: String
+Type: PSNetworkSecurityGroup
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

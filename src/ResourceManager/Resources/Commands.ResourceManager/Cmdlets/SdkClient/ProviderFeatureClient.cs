@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
     using System.Linq;
     using System.Collections.Generic;
     using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
+    using Commands.Common.Authentication.Abstractions;
 
     /// <summary>
     /// Helper client for performing operations on features
@@ -47,9 +48,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// Initializes a new instance of the <see cref="ProviderFeatureClient"/> class.
         /// </summary>
         /// <param name="context">The azure context</param>
-        public ProviderFeatureClient(AzureContext context)
+        public ProviderFeatureClient(IAzureContext context)
         {
-            this.FeaturesManagementClient = AzureSession.ClientFactory.CreateArmClient<FeatureClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            this.FeaturesManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<FeatureClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         /// <summary>

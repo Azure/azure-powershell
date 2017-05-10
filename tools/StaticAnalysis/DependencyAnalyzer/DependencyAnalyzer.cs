@@ -39,7 +39,8 @@ namespace StaticAnalysis.DependencyAnalyzer
             "Microsoft.CSharp",
             "Microsoft.Management.Infrastructure",
             "Microsoft.Build",
-            "Microsoft.Build.Framework"
+            "Microsoft.Build.Framework",
+            "WindowsBase"
         };
 
         private Dictionary<string, AssemblyRecord> _assemblies =

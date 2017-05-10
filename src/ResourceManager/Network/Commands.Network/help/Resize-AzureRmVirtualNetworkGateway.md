@@ -14,7 +14,7 @@ Resizes an existing virtual network gateway.
 
 ```
 Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> -GatewaySku <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,6 +54,7 @@ The acceptable values for this parameter are:
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Basic, Standard, HighPerformance, UltraPerformance
 
 Required: True
 Position: Named
@@ -62,42 +63,19 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -VirtualNetworkGateway
+Specifies an object reference to the virtual network gateway to be resized.
+You can create this object reference by using the Get-AzureRmVirtualNetworkGateway and specifying the name of the gateway.
 
 ```yaml
-Type: ActionPreference
+Type: PSVirtualNetworkGateway
 Parameter Sets: (All)
-Aliases: infa
+Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

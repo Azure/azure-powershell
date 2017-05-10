@@ -196,6 +196,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Value {0} is too large for the &apos;GracePeriodWithDataLossHours&apos; parameter. Using the largest supported value, {1}..
+        /// </summary>
+        internal static string FailoverGroupDataLossHoursOverflow {
+            get {
+                return ResourceManager.GetString("FailoverGroupDataLossHoursOverflow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A value of {0} is not yet supported for the &apos;GracePeriodWithDataLossHours&apos; parameter. Using the smallest supported value, {1}..
+        /// </summary>
+        internal static string FailoverGroupDataLossHoursUnsupportedLowValue {
+            get {
+                return ResourceManager.GetString("FailoverGroupDataLossHoursUnsupportedLowValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failover Group with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;..
         /// </summary>
         internal static string FailoverGroupNameExists {

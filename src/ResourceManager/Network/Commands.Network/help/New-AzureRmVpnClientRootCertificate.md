@@ -13,8 +13,7 @@ Creates a new VPN client root certificate.
 ## SYNTAX
 
 ```
-New-AzureRmVpnClientRootCertificate -Name <String> -PublicCertData <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+New-AzureRmVpnClientRootCertificate -Name <String> -PublicCertData <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION

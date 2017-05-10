@@ -187,6 +187,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No default subscription has been designated. Use Select-AzureSubscription -Default &lt;subscriptionName&gt; to set the default subscription..
+        /// </summary>
+        internal static string InvalidDefaultSubscription {
+            get {
+                return ResourceManager.GetString("InvalidDefaultSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid JobType selected. Please select -USql when submitting a job.
         /// </summary>
         internal static string InvalidJobType {
@@ -246,6 +255,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         internal static string NoPortSpecified {
             get {
                 return ResourceManager.GetString("NoPortSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Login-AzureRMAccount to login..
+        /// </summary>
+        internal static string NoSubscriptionInContext {
+            get {
+                return ResourceManager.GetString("NoSubscriptionInContext", resourceCulture);
             }
         }
         

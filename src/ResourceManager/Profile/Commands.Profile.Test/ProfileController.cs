@@ -13,21 +13,23 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Internal.Subscriptions;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Subscriptions;
-using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using LegacyTest = Microsoft.Azure.Test;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
     public sealed class ProfileController
     {
-        private CSMTestEnvironmentFactory csmTestFactory;
+        private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
         private const string TenantIdKey = "TenantId";
         private const string DomainKey = "Domain";
@@ -68,7 +70,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         private void RunPsTestWorkflow(
             Func<string[]> scriptBuilder,
-            Action<CSMTestEnvironmentFactory> initialize,
+            Action<LegacyTest.CSMTestEnvironmentFactory> initialize,
             Action cleanup,
             string callingClassType,
             string mockName, string tenant)
@@ -80,30 +82,33 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
-            using (UndoContext context = UndoContext.Current)
+            using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
-                context.Start(callingClassType, mockName);
-
-                this.csmTestFactory = new CSMTestEnvironmentFactory();
+                this.csmTestFactory = new LegacyTest.CSMTestEnvironmentFactory();
 
                 if (initialize != null)
                 {
                     initialize(this.csmTestFactory);
                 }
 
-                SetupManagementClients();
+                SetupManagementClients(context);
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                var oldFactory = AzureSession.AuthenticationFactory as MockTokenAuthenticationFactory;
-                AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory(oldFactory.Token.UserId, oldFactory.Token.AccessToken, tenant);
+                var oldFactory = AzureSession.Instance.AuthenticationFactory as MockTokenAuthenticationFactory;
+                AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory(oldFactory.Token.UserId, oldFactory.Token.AccessToken, tenant);
 
                 var callingClassName = callingClassType
                     .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                     .Last();
                 helper.SetupModules(AzureModule.AzureResourceManager,
+                    "Common.ps1",
                     callingClassName + ".ps1",
-                    helper.RMProfileModule);
+                    helper.RMProfileModule,
+                    helper.RMResourceModule,
+                    helper.RMResourceManagerStartup,
+                    helper.RMInsightsModule);
 
                 try
                 {
@@ -127,16 +132,16 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             }
         }
 
-        private void SetupManagementClients()
+        private void SetupManagementClients(MockContext context)
         {
-            SubscriptionClient = GetSubscriptionClient();
+            SubscriptionClient = GetSubscriptionClient(context);
 
             helper.SetupManagementClients(SubscriptionClient);
         }
 
-        private SubscriptionClient GetSubscriptionClient()
+        private SubscriptionClient GetSubscriptionClient(MockContext context)
         {
-            return TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
+            return context.GetServiceClient<SubscriptionClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

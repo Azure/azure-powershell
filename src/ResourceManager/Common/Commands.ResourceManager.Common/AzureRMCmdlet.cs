@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
 using Microsoft.Azure.Management.Internal.Resources;
@@ -36,52 +37,52 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
     public abstract class AzureRMCmdlet : AzurePSCmdlet
     {
         protected ServiceClientTracingInterceptor _serviceClientTracingInterceptor;
-        /// <summary>
-        /// Static constructor for AzureRMCmdlet.
-        /// </summary>
-        static AzureRMCmdlet()
-        {
-            if (!TestMockSupport.RunningMocked)
-            {
-                AzureSession.DataStore = new DiskDataStore();
-            }
-        }
+        IAzureContextContainer _profile;
 
         /// <summary>
         /// Creates new instance from AzureRMCmdlet and add the RPRegistration handler.
         /// </summary>
         public AzureRMCmdlet()
         {
-            AzureSession.ClientFactory.RemoveHandler(typeof(RPRegistrationDelegatingHandler));
-            AzureSession.ClientFactory.AddHandler(new RPRegistrationDelegatingHandler(
-                () => new ResourceManagementClient(
-                    AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(DefaultContext, AzureEnvironment.Endpoint.ResourceManager),
-                    DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)),
-                s => DebugMessages.Enqueue(s)));
         }
 
         /// <summary>
         /// Gets or sets the global profile for ARM cmdlets.
         /// </summary>
-        public AzureRMProfile DefaultProfile
+        public IAzureContextContainer DefaultProfile
         {
-            get { return AzureRmProfileProvider.Instance.Profile; }
-            set { AzureRmProfileProvider.Instance.Profile = value; }
+            get
+            {
+                if (_profile != null)
+                {
+                    return _profile;
+                }
+                if (AzureRmProfileProvider.Instance == null)
+                {
+                    throw new InvalidOperationException(Resources.ProfileNotInitialized);
+                }
+
+                return AzureRmProfileProvider.Instance.Profile;
+            }
+            set
+            {
+                _profile = value;
+            }
         }
 
         /// <summary>
         /// Gets the current default context.
         /// </summary>
-        protected override AzureContext DefaultContext
+        protected override IAzureContext DefaultContext
         {
             get
             {
-                if (DefaultProfile == null || DefaultProfile.Context == null)
+                if (DefaultProfile == null || DefaultProfile.DefaultContext == null || DefaultProfile.DefaultContext.Account == null)
                 {
                     throw new PSInvalidOperationException("Run Login-AzureRmAccount to login.");
                 }
 
-                return DefaultProfile.Context;
+                return DefaultProfile.DefaultContext;
             }
         }
 
@@ -171,13 +172,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 InitializeDataCollectionProfile();
             }
 
-            string fileFullPath = Path.Combine(AzureSession.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
+            string fileFullPath = Path.Combine(AzureSession.Instance.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
             var contents = JsonConvert.SerializeObject(_dataCollectionProfile);
-            if (!AzureSession.DataStore.DirectoryExists(AzureSession.ProfileDirectory))
+            if (!AzureSession.Instance.DataStore.DirectoryExists(AzureSession.Instance.ProfileDirectory))
             {
-                AzureSession.DataStore.CreateDirectory(AzureSession.ProfileDirectory);
+                AzureSession.Instance.DataStore.CreateDirectory(AzureSession.Instance.ProfileDirectory);
             }
-            AzureSession.DataStore.WriteFile(fileFullPath, contents);
+            AzureSession.Instance.DataStore.WriteFile(fileFullPath, contents);
             WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
         }
 
@@ -249,12 +250,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
 
             if (this.DefaultProfile != null &&
-                this.DefaultProfile.Context != null &&
-                this.DefaultProfile.Context.Account != null &&
-                this.DefaultProfile.Context.Account.Id != null)
+                this.DefaultProfile.DefaultContext != null &&
+                this.DefaultProfile.DefaultContext.Account != null &&
+                this.DefaultProfile.DefaultContext.Account.Id != null)
             {
                 _qosEvent.Uid = MetricHelper.GenerateSha256HashString(
-                    this.DefaultProfile.Context.Account.Id.ToString());
+                    this.DefaultProfile.DefaultContext.Account.Id.ToString());
             }
             else
             {
@@ -303,8 +304,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 ServiceClientTracingInterceptor.RemoveTracingInterceptor(_serviceClientTracingInterceptor);
                 _serviceClientTracingInterceptor = null;
-                AzureSession.ClientFactory.RemoveHandler(typeof(RPRegistrationDelegatingHandler));
+                AzureSession.Instance.ClientFactory.RemoveHandler(typeof(RPRegistrationDelegatingHandler));
             }
+        }
+
+        protected override void BeginProcessing()
+        {
+            AzureSession.Instance.ClientFactory.RemoveHandler(typeof(RPRegistrationDelegatingHandler));
+            AzureSession.Instance.ClientFactory.AddHandler(new RPRegistrationDelegatingHandler(
+                () => new ResourceManagementClient(
+                    DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
+                    AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(DefaultContext, AzureEnvironment.Endpoint.ResourceManager)),
+                s => DebugMessages.Enqueue(s)));
+
+            base.BeginProcessing();
         }
     }
 }

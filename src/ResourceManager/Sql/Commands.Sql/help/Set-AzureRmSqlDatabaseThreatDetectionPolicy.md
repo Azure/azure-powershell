@@ -76,7 +76,6 @@ The acceptable values for this parameter are:
 - Sql_Injection 
 - Sql_Injection_Vulnerability 
 - Access_Anomaly 
-- Usage_Anomaly 
 - None
 
 ```yaml
@@ -97,12 +96,16 @@ Specifies how this cmdlet responds to an information event.
 The acceptable values for this parameter are:
 
 - Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
 
+- Ignore
+
+- Inquire
+
+- SilentlyContinue
+
+- Stop
+
+- Suspend
 ```yaml
 Type: ActionPreference
 Parameter Sets: (All)
@@ -116,9 +119,7 @@ Accept wildcard characters: False
 ```
 
 ### -InformationVariable
-Specifies an information variable.
-
-```yaml
+Specifies an information variable.```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: iv

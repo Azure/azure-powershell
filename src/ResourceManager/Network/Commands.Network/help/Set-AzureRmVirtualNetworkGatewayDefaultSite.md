@@ -14,8 +14,7 @@ Sets the default site for a virtual network gateway.
 
 ```
 Set-AzureRmVirtualNetworkGatewayDefaultSite -VirtualNetworkGateway <PSVirtualNetworkGateway>
- -GatewayDefaultSite <PSLocalNetworkGateway> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ -GatewayDefaultSite <PSLocalNetworkGateway> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,42 +60,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
+### -VirtualNetworkGateway
+Specifies an object reference to the virtual network gateway where the default site will be assigned.
+You can create an object reference to a virtual network gateway by using the **Get-AzureRmVirtualNetworkGateway** and specifying the name of the gateway.
 
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+The variable $VirtualGateway can then be used as the parameter value for the *VirtualNetworkGateway* parameter:
 
 ```yaml
-Type: ActionPreference
+Type: PSVirtualNetworkGateway
 Parameter Sets: (All)
-Aliases: infa
+Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

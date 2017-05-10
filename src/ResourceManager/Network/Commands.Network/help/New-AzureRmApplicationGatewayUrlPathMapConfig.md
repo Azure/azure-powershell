@@ -16,8 +16,7 @@ Creates an array of URL path mappings to a backend server pool.
 ```
 New-AzureRmApplicationGatewayUrlPathMapConfig -Name <String>
  -PathRules <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule]>
- [-DefaultBackendAddressPoolId <String>] [-DefaultBackendHttpSettingsId <String>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-DefaultBackendAddressPoolId <String>] [-DefaultBackendHttpSettingsId <String>] [<CommonParameters>]
 ```
 
 ### SetByResource
@@ -25,8 +24,7 @@ New-AzureRmApplicationGatewayUrlPathMapConfig -Name <String>
 New-AzureRmApplicationGatewayUrlPathMapConfig -Name <String>
  -PathRules <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule]>
  [-DefaultBackendAddressPool <PSApplicationGatewayBackendAddressPool>]
- [-DefaultBackendHttpSettings <PSApplicationGatewayBackendHttpSettings>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-DefaultBackendHttpSettings <PSApplicationGatewayBackendHttpSettings>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,45 +93,6 @@ Specifies the default backend HTTP settings ID.
 Type: String
 Parameter Sets: SetByResourceId
 Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
 
 Required: False
 Position: Named

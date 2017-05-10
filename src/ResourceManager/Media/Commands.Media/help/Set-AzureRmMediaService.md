@@ -14,8 +14,7 @@ Modifies specified properties of an existing media service.
 
 ```
 Set-AzureRmMediaService [-ResourceGroupName] <String> [-AccountName] <String> [-Tags <Hashtable>]
- [-StorageAccounts <PSStorageAccount[]>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-StorageAccounts <PSStorageAccount[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,21 +35,6 @@ The command also uses an array of storage configuration objects stored in $Stora
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the name of the resource group that contains the media service.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -AccountName
 Specifies the name of the media service that this cmdlet modifies.
 
@@ -66,16 +50,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tags
-Specifies tags for the media service.
+### -ResourceGroupName
+Specifies the name of the resource group that contains the media service.
 
 ```yaml
-Type: Hashtable
+Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -96,41 +80,32 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -Tags
+Specifies tags for the media service.
 
 ```yaml
-Type: ActionPreference
+Type: Hashtable
 Parameter Sets: (All)
-Aliases: infa
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: iv
+Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -143,21 +118,6 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named

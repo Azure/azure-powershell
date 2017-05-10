@@ -12,6 +12,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Sql.LegacySdk;
@@ -33,19 +34,19 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         /// <summary>
         /// Gets or set the Azure subscription
         /// </summary>
-        private static AzureSubscription Subscription { get; set; }
+        private static IAzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Creates a communicator for Azure Sql Databases FirewallRules
         /// </summary>
         /// <param name="profile"></param>
         /// <param name="subscription"></param>
-        public AzureSqlCapabilitiesCommunicator(AzureContext context)
+        public AzureSqlCapabilitiesCommunicator(IAzureContext context)
         {
             Context = context;
             if (context.Subscription != Subscription)
@@ -61,9 +62,9 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         /// <param name="locationName">The name of the region for which to get the location capabilities</param>
         /// <param name="clientRequestId">The client request ID to use</param>
         /// <returns>The location capabilities for the region</returns>
-        public LocationCapability Get(string locationName, string clientRequestId)
+        public LocationCapabilities Get(string locationName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).Capabilities.Get(locationName).Capabilities;
+            return GetCurrentSqlClient(clientRequestId).Capabilities.ListByLocation(locationName);
         }
 
         /// <summary>
@@ -76,8 +77,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
-                SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
-            }
+                SqlClient = AzureSession.Instance.ClientFactory.CreateArmClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);            }
 
             SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
             SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);

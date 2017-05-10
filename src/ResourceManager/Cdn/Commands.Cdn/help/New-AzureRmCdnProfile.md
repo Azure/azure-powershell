@@ -14,8 +14,7 @@ Creates a CDN profile.
 
 ```
 New-AzureRmCdnProfile -ProfileName <String> -Location <String> -Sku <PSSkuName> -ResourceGroupName <String>
- [-Tags <Hashtable>] [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Tags <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,21 +28,6 @@ The **New-AzureRmCdnProfile** cmdlet creates an Azure Content Delivery Network (
 ```
 
 ## PARAMETERS
-
-### -ProfileName
-Specifies the name of the profile.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -Location
 Specifies the resource location of the profile.
@@ -60,18 +44,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Sku
-Specifies the SKU of the profile.
+### -ProfileName
+Specifies the name of the profile.
 
 ```yaml
-Type: PSSkuName
+Type: String
 Parameter Sets: (All)
 Aliases: 
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -90,6 +74,22 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Sku
+Specifies the SKU of the profile.
+
+```yaml
+Type: PSSkuName
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Standard_Verizon, Premium_Verizon, Custom_Verizon, Standard_Akamai, Standard_ChinaCdn
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Tags
 Sepcifies a hash table of tags that are associated with this profile.
 
@@ -97,45 +97,6 @@ Sepcifies a hash table of tags that are associated with this profile.
 Type: Hashtable
 Parameter Sets: (All)
 Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
 
 Required: False
 Position: Named
