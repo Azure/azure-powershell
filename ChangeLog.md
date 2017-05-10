@@ -739,7 +739,7 @@
 
 ## 2016.09.08 version 2.1.0
 * Compute
-  * Add support for querying encryption status from the AzureDiskEncryptionForLinux extension
+  * Added support for querying encryption status from the AzureDiskEncryptionForLinux extension
 * DataFactory
   * Added new cmdlet for listing activity windows
     - Get-AzureRmDataFactoryActivityWindow
