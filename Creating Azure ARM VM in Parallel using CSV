@@ -1,0 +1,171 @@
+<#
+#***Script Name: Create_AzureRMCustomVMUsingCSVFile_Parallel_v1.PS1                            				  
+#***Author: Ranjith Paul                				  
+#*** Description:                                                                				  
+#***    - This script creates Azure ARM VM using the custom SysPreped Image     				  
+#***Stored in the same Storage account where the VM to be created      							  
+#***Requirements:                                                               				  
+#*** Following Variables to be passed through a CSV file delimited by "," in the order as below   
+#*** VmRg,SARg,vmname,VMSAAccount,DataDiskSA,Vnet,Subnet,AvSet,VmSize,Location,IPAddress,SrcImage 
+#*** At the end, all the VMs will be provisioned in parallel.  																							  
+#*** Version 1.0																				 
+#*** Last Updated: 20/08/2016	                                                  				 
+#>
+
+# Copy the complete Invoke-Parallel function from "https://github.com/RamblingCookieMonster/Invoke-Parallel"
+function Invoke-Parallel {..}
+
+
+$strtime       = Get-Date -format "dd-MM-yyyy HH:mm:ss"
+write-host "#################Importing Paramters from CSV File started at $strtime#################"
+$ParamfilePath = Split-Path $MyInvocation.MyCommand.Path
+$Scriptstrtime = Get-Date -format "dd-MM-yyyy_HHmmss"
+$LogFile       = $ParamfilePath+"\LogFile-" + $Scriptstrtime + ".log"
+New-Item $LogFile -ItemType File -Force
+$info            = (import-csv "$ParamfilePath\VMParam.csv")
+$VmRgs           = @($info.VmRg)
+$SARgs           = @($info.StorageAcRg)
+$NWRGs           = @($info.NetworkRG)
+$VMnames         = @($info.vmname)
+$VMSAAccounts    = @($info.VMOSStorageAccount)
+$DataDiskSAs     = @($info.VMDataDiskSA)
+$VNets           = @($info.VNet)
+$Subnets         = @($info.Subnet)
+$avsets          = @($info.AvSet)
+$VmSizes         = @($info.VmSize)
+$VMLocations     = @($info.Location)
+$PvtIPaddress    = @($info.IPAddress)
+$CustomImages    = @($info.SrcImage)
+$VMsdatadisksize = @($info.VMdataDiskSize)
+$count           = $VMnames.count
+$VMConfig        = @()
+
+for($i=0;$i -lt $count;$i++)
+{
+    $VmRg        = $VmRgs[$i]
+    $VMNWRG      = $NWRGs[$i]
+    $SARg        = $SARgs[$i]
+    $VMName      = $VMnames[$i]
+    $VMSAAcc     = $VMSAAccounts[$i]
+    $VMDataDisk  = $DataDiskSAs[$i] 
+    $VNetName    = $VNets[$i]
+    $VmSubnet    = $Subnets[$i]
+    $Avset       = $avsets[$i]
+    $Vmsize      = $VmSizes[$i]
+    $VMIPAddress = $PvtIPaddress[$i]
+    $Location    = $VMLocations[$i]
+    $ImageName   = $CustomImages[$i]
+    $datadisksize= $VMsdatadisksize[$i]    
+
+    
+         Write-host "Variables Initialized: $VmRg ; $SARg ; $VMName ; $VMSAAcc ; $VMDataDisk ; $VNetName ; $VmSubnet ; $Avset ; $Vmsize ; $VMIPAddress ; $Location ; $ImageName " 
+         Write-output (Get-Date -UFormat "[%d-%m-%Y %H:%M:%S] ") "$VMName VM Variables Initialized: $VmRg ; $SARg ; $VMName ; $VMSAAcc ; $VMDataDisk ; $VNetName ; $VmSubnet ; $Avset ; $Vmsize ; $VMIPAddress ; $Location ; $ImageName." | Out-File -Append $logfile
+
+            $VNet = Get-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $VmRg -ErrorAction Stop
+
+            Write-host (Get-Date -UFormat "[%d-%m-%Y %H:%M:%S] ") "- $VNetName  Get-Virtual Network Initialized"
+            Write-output (Get-Date -UFormat "[%d-%m-%Y %H:%M:%S] ") "$VNetName  Get-Virtual Network Initialized" | Out-File -Append $logfile
+
+			$VmSA = Get-AzureRmStorageAccount -ResourceGroupName $SARg -Name $VMSAAcc
+
+            Write-host (Get-Date -UFormat "[%d-%m-%Y %H:%M:%S] ") "- $VMSAAcc Get Storage Account Info Initialized"
+            Write-output (Get-Date -UFormat "[%d-%m-%Y %H:%M:%S] ") "$VMSAAcc Get Storage Account Info Initialized" | Out-File -Append $logfile
+
+            $imageUri = $VmSA.PrimaryEndpoints.Blob.ToString() + "vhds/" + $ImageName 
+
+            Write-host (Get-Date -UFormat "[%d-%m-%Y %H:%M:%S] ") "- $ImageName VM Source Image URI Initialized - $imageUri"
+            Write-output (Get-Date -UFormat "[%d-%m-%Y %H:%M:%S] ") "$ImageName VM Source Image URI Initialized - $imageUri" | Out-File -Append $logfile
+
+            $avSetName = Get-AzureRmAvailabilitySet –Name $Avset –ResourceGroupName $VmRg
+
+            Write-host (Get-Date -UFormat "[%d-%m-%Y %H:%M:%S] ") "- VM Availability Set Initialized"
+            Write-output (Get-Date -UFormat "[%d-%m-%Y %H:%M:%S] ") "VM Availability Set Initialized" | Out-File -Append $logfile
+
+            $VMSubnetID = (Get-AzureRmVirtualNetworkSubnetConfig -Name $VmSubnet -VirtualNetwork $VNet).Id
+
+            Write-host (Get-Date -UFormat "[%d-%m-%Y %H:%M:%S] ") "- VM $VmSubnet Subnet ID Initialized"
+            Write-output (Get-Date -UFormat "[%d-%m-%Y %H:%M:%S] ") "VM $VmSubnet Subnet ID Initialized" | Out-File -Append $logfile
+
+            $nicName = $VmName + "-NIC01" 
+
+            $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $VmRg -Location $Location -SubnetId $VMSubnetID -PrivateIpAddress $VMIPAddress -ErrorAction Stop
+
+            Write-host (Get-Date -UFormat "[%d-%m-%Y %H:%M:%S] ") "- $nicName - New VM Network Interface Created"
+            Write-output (Get-Date -UFormat "[%d-%m-%Y %H:%M:%S] ") "$nicName - New VM Network Interface Created" | Out-File -Append $logfile
+
+            $VMLocalAdmin = "CloudAdmin"
+
+            $EncyptPassword = Get-Content "$ParamfilePath\encrypted_password1.txt" | ConvertTo-SecureString
+
+            $credential = New-Object System.Management.Automation.PsCredential($VMLocalAdmin, $EncyptPassword)
+
+            Write-host (Get-Date -UFormat "[%d-%m-%Y %H:%M:%S] ") "- VM Local Admin Account 'CloudAdmin' and Password Set completed"
+            Write-output (Get-Date -UFormat "[%d-%m-%Y %H:%M:%S] ") "VM Local Admin Account 'CloudAdmin' and Password Set completed" | Out-File -Append $logfile
+
+            $vm=New-AzureRmVMConfig -VMName $VMName -VMSize $VmSize -AvailabilitySetId $avSetName.Id -ErrorAction Stop
+
+            Write-host (Get-Date -UFormat "[%d-%m-%Y %H:%M:%S] ") "- New VM Configuration with VM size and Availability Set Initialized"
+            Write-output (Get-Date -UFormat "[%d-%m-%Y %H:%M:%S] ") "New VM Configuration with VM size and Availability Set Initialized" | Out-File -Append $logfile
+
+            $vm = Set-AzureRmVMOperatingSystem -VM $vm -Windows -ComputerName $VMName -Credential $credential -ProvisionVMAgent -EnableAutoUpdate
+
+            Write-host (Get-Date -UFormat "[%d-%m-%Y %H:%M:%S] ") "VM Operating System details initialization completed"
+            Write-output (Get-Date -UFormat "[%d-%m-%Y %H:%M:%S] ") "VM Operating System details initialization completed" | Out-File -Append $logfile
+
+            $vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
+
+            Write-host (Get-Date -UFormat "[%d-%m-%Y %H:%M:%S] ") "- Network Interface Added to VM Config"
+            Write-output (Get-Date -UFormat "[%d-%m-%Y %H:%M:%S] ") "Network Interface Added to VM Config" | Out-File -Append $logfile
+
+            If($VMDataDisk -eq "NODISK")
+
+            {
+            
+                Write-host (Get-Date -UFormat "[%d-%m-%Y %H:%M:%S] ") "- No DataDisk Specified"
+                Write-output (Get-Date -UFormat "[%d-%m-%Y %H:%M:%S] ") "No DataDisk Specified" | Out-File -Append $logfile            
+            }
+
+            Else
+
+            {
+            
+                $dataDiskName = $VMName + "-" + "DataDisk" + "-1"   
+
+                $VmDataDiskSA = Get-AzureRmStorageAccount -ResourceGroupName $SARg -Name $VMDataDisk
+             
+                $dataVhdUri = $VmDataDiskSA.PrimaryEndpoints.Blob.ToString() + "vhds/" + $dataDiskName + ".vhd"
+
+                $vm = Add-AzureRmVMDataDisk -VM $vm -Name $dataDiskName -DiskSizeInGB $datadisksize -VhdUri $dataVhdUri -CreateOption empty -Lun 0 -Caching ReadWrite
+
+                Write-host (Get-Date -UFormat "[%d-%m-%Y %H:%M:%S] ") "- $datadisksize GM Data Disk Attached and stored in the Storage account $VMDataDisk"
+                Write-output (Get-Date -UFormat "[%d-%m-%Y %H:%M:%S] ") "$datadisksize GM Data Disk Attached and stored in the Storage account $VMDataDisk" | Out-File -Append $logfile
+            }
+
+            $OSDiskName= $VMName + "-OS-Disk"
+
+            Write-host (Get-Date -UFormat "[%d-%m-%Y %H:%M:%S] ") "- VM OS Disk Name set $osDiskname"
+            Write-output (Get-Date -UFormat "[%d-%m-%Y %H:%M:%S] ") "VM OS Disk Name set $osDiskname" | Out-File -Append $logfile
+
+            $destOSDiskUri = $VmSA.PrimaryEndpoints.Blob.ToString() + "vhds/$OSDiskName" + ".vhd"
+
+            Write-host (Get-Date -UFormat "[%d-%m-%Y %H:%M:%S] ") "- OS Disk Stored in Blob: $destOSDiskUri"
+            Write-output (Get-Date -UFormat "[%d-%m-%Y %H:%M:%S] ") "OS Disk Stored in Blob: $destOSDiskUri" | Out-File -Append $logfile
+
+            $vm = Set-AzureRmVMOSDisk -VM $vm -Name $osDiskName -VhdUri $destosDiskUri -CreateOption fromImage -SourceImageUri $imageUri -Windows
+
+            Write-host (Get-Date -UFormat "[%d-%m-%Y %H:%M:%S] ") "- VM Creation Option from Image Initialized"
+            Write-output (Get-Date -UFormat "[%d-%m-%Y %H:%M:%S] ") "VM Creation Option from Image Initialized" | Out-File -Append $logfile
+
+            Write-host (Get-Date -UFormat "[%d-%m-%Y %H:%M:%S] ") "- New VM $VMName Creation from Image Started"
+            Write-output (Get-Date -UFormat "[%d-%m-%Y %H:%M:%S] ") "New VM $VMName Creation from Image Started" | Out-File -Append $logfile
+
+            $ParallelVMconfig += ,($vm)
+
+    }
+
+           
+    # In Parallel Create all the VM's
+
+            $ParallelVMConfig | Invoke-Parallel -ImportVariables -ScriptBlock  {$NewVMs = New-AzureRmVM -ResourceGroupName $VmRg -Location $Location -VM $_ -LicenseType Windows_Server -Verbose}
+           
+   
