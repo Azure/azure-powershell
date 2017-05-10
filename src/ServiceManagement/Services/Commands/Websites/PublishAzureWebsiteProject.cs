@@ -90,6 +90,8 @@ namespace Microsoft.WindowsAzure.Commands.Websites
 
             if (!string.IsNullOrEmpty(fullSetParametersFile) && !File.Exists(fullSetParametersFile))
             {
+                WriteVerbose(string.Format("Specified file does not exist: {0}", fullSetParametersFile));
+                WriteVerbose(string.Format("Full Package Dir: {0}", Path.GetDirectoryName(fullPackage)));
                 if (File.Exists(Path.Combine(Path.GetDirectoryName(fullPackage), fullSetParametersFile)))
                 {
                     WriteVerbose("Setting path for Parameters file to local one to package: " + Path.Combine(Path.GetDirectoryName(fullPackage), fullSetParametersFile));
