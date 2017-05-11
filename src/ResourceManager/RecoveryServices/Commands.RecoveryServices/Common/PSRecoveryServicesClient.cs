@@ -18,7 +18,7 @@ using System.Configuration;
 using System.Diagnostics.CodeAnalysis;
 using System.Net.Security;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
@@ -85,12 +85,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// required current subscription.
         /// </summary>
         /// <param name="azureSubscription">Azure Subscription</param>
-        public PSRecoveryServicesClient(AzureContext defaultContext)
+        public PSRecoveryServicesClient(IAzureContext defaultContext)
         {
             System.Configuration.Configuration recoveryServicesConfig = ConfigurationManager.OpenExeConfiguration(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
             System.Configuration.AppSettingsSection appSettings = (System.Configuration.AppSettingsSection)recoveryServicesConfig.GetSection("appSettings");
-            
+
             string resourceType = string.Empty;
 
             // Get Resource provider namespace from config if needed to communicate with internal deployments
@@ -104,10 +104,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
 
             this.recoveryServicesClient =
-            AzureSession.ClientFactory.CreateArmClient<RecoveryServicesClient>(
+            AzureSession.Instance.ClientFactory.CreateArmClient<RecoveryServicesClient>(
                 defaultContext, AzureEnvironment.Endpoint.ResourceManager);
 
-            resourceManagementClient = AzureSession.ClientFactory.CreateArmClient<ResourceManagementClient>(defaultContext, AzureEnvironment.Endpoint.ResourceManager);
+            resourceManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(defaultContext, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         private static bool IgnoreCertificateErrorHandler

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
@@ -30,6 +31,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
     {
         public ClientFactoryTests(ITestOutputHelper output)
         {
+            AzureSessionInitializer.InitializeAzureSession();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
@@ -37,15 +39,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void VerifyUserAgentValuesAreTransmitted()
         {
-            var storedClientFactory = AzureSession.ClientFactory;
-            var storedAuthFactory = AzureSession.AuthenticationFactory;
+            var storedClientFactory = AzureSession.Instance.ClientFactory;
+            var storedAuthFactory = AzureSession.Instance.AuthenticationFactory;
             try
             {
                 var authFactory = new AuthenticationFactory();
                 authFactory.TokenProvider = new MockAccessTokenProvider(Guid.NewGuid().ToString(), "user@contoso.com");
-                AzureSession.AuthenticationFactory = authFactory;
+                AzureSession.Instance.AuthenticationFactory = authFactory;
                 var factory = new ClientFactory();
-                AzureSession.ClientFactory = factory;
+                AzureSession.Instance.ClientFactory = factory;
                 factory.UserAgents.Clear();
                 factory.AddUserAgent("agent1");
                 factory.AddUserAgent("agent1", "1.0.0");
@@ -53,24 +55,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 factory.AddUserAgent("agent1", "1.9.8");
                 factory.AddUserAgent("agent2");
                 Assert.Equal(4, factory.UserAgents.Count);
+                var sub = new AzureSubscription
+                {
+                    Id = Guid.NewGuid().ToString(),
+                };
+                sub.SetTenant("123");
+                var account = new AzureAccount
+                {
+                    Id = "user@contoso.com",
+                    Type = AzureAccount.AccountType.User,
+                };
+                account.SetTenants("123");
                 var client = factory.CreateClient<NullClient>(new AzureContext(
-                    new AzureSubscription
-                    {
-                        Id = Guid.NewGuid(),
-                        Properties = new Dictionary<AzureSubscription.Property, string>
-                        {
-                            {AzureSubscription.Property.Tenants, "123"}
-                        }
-                    },
-                    new AzureAccount
-                    {
-                        Id = "user@contoso.com",
-                        Type = AzureAccount.AccountType.User,
-                        Properties = new Dictionary<AzureAccount.Property, string>
-                        {
-                            {AzureAccount.Property.Tenants, "123"}
-                        }
-                    },
+                    sub,
+                    account,
                     AzureEnvironment.PublicEnvironments["AzureCloud"]
 
                     ), AzureEnvironment.Endpoint.ResourceManager);
@@ -82,8 +80,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             }
             finally
             {
-                AzureSession.ClientFactory = storedClientFactory;
-                AzureSession.AuthenticationFactory = storedAuthFactory;
+                AzureSession.Instance.ClientFactory = storedClientFactory;
+                AzureSession.Instance.AuthenticationFactory = storedAuthFactory;
             }
         }
     }

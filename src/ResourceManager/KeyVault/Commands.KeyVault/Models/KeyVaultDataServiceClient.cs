@@ -25,13 +25,14 @@ using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.KeyVault.Models;
 using Microsoft.Azure.KeyVault;
 using Microsoft.Rest.Azure;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System.Net;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     internal class KeyVaultDataServiceClient : IKeyVaultDataServiceClient
     {
-        public KeyVaultDataServiceClient(IAuthenticationFactory authFactory, AzureContext context)
+        public KeyVaultDataServiceClient(IAuthenticationFactory authFactory, IAzureContext context)
         {
             if (authFactory == null)
                 throw new ArgumentNullException(nameof(authFactory));
@@ -45,7 +46,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
 
             this.vaultUriHelper = new VaultUriHelper(
-                context.Environment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix]);
+                context.Environment.GetEndpoint(AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix));
         }
 
         /// <summary>

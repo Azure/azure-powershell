@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Commands.Resources
                     ResourceGroupName = ResourceGroupName,
                     ResourceName = ResourceName,
                     ResourceType = ResourceType,
-                    Subscription = DefaultProfile.Context.Subscription.Id.ToString()
+                    Subscription = DefaultProfile.DefaultContext.Subscription.Id.ToString()
                 },
                 ExcludeAssignmentsForDeletedPrincipals = false,
                 // we should never expand principal groups in the Delete scenario
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Commands.Resources
                 () =>
                 {
                     roleAssignments = PoliciesClient.RemoveRoleAssignment(options,
-                        DefaultProfile.Context.Subscription.Id.ToString());
+                        DefaultProfile.DefaultContext.Subscription.Id.ToString());
                     if (PassThru)
                     {
                         WriteObject(roleAssignments, enumerateCollection: true);

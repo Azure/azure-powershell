@@ -17,7 +17,6 @@ using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using Microsoft.Azure.Management.DataLake.Store.Models;
 using Microsoft.Rest.Azure;
 using System.Management.Automation;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
@@ -147,8 +146,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                     }
 
                     DataLakeStoreTraceLogger logger = null;
-                    var originalLevel = AdalTrace.TraceSource.Switch.Level;
-                    var originalLegacyLevel = AdalTrace.LegacyTraceSwitch.Level;
                     var previousTracing = ServiceClientTracing.IsEnabled;
                     try
                     {

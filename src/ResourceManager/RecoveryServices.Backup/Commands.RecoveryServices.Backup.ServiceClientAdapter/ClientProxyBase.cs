@@ -17,6 +17,7 @@ using System.Net;
 using System.Threading;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
@@ -25,7 +26,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
     /// </summary>
     public class ClientProxyBase
     {
-        protected AzureContext Context;
+        protected IAzureContext Context;
 
         /// <summary>
         /// Client request id.
@@ -42,7 +43,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// AzureContext based ctor
         /// </summary>
         /// <param name="context">Azure Context</param>
-        public ClientProxyBase(AzureContext context)
+        public ClientProxyBase(IAzureContext context)
         {
             Context = context;
 
