@@ -18,11 +18,6 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Added support for new web application firewall features to Application Gateways
-    - Added New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig
-    - Added Get-AzureRmApplicationGatewayAvailableWafRuleSets (Alias: List-AzureRmApplicationGatewayAvailableWafRuleSets)
-    - Updated New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration: Added parameter -RuleSetType -RuleSetVersion and -DisabledRuleGroups
-    - Updated Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration: Added parameter -RuleSetType -RuleSetVersion and -DisabledRuleGroups
 
 ## Version 3.7.0
 * Added support for new web application firewall features to Application Gateways

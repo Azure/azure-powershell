@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,12 +18,24 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added -SampleName parameter to New-AzureRmSqlDatabase
+* Updates to Failover Group cmdlets
+	- Remove 'Tag' parameters
+	- Remove 'PartnerResourceGroupName' and 'PartnerServerName' parameters from Remove-AzureRmSqlDatabaseFailoverGroup cmdlet
+	- Add 'GracePeriodWithDataLossHours' parameter to New- and Set- cmdlets, which shall eventually replace 'GracePeriodWithDataLossHour'
+	- Documentation has been fleshed out and updated
+	- Change formatting of returned objects and fix some bugs where fields were not always populated
+	- Add 'DatabaseNames' and 'PartnerLocation' properties to Failover Group object
+	- Fix bug causing Switch- cmdlet to return immediately rather than waiting for operation to complete
+	- Fix integer overflow bug when high grace period values are used
+	- Adjust grace period to a minimum of 1 hour if a lower one is provided
 
 ## Version 2.8.0
 * Bug fixes on Azure Failover Group Cmdlets
 	- Fix for operation polling
 	- Fix GracePeriodWithDataLossHour value when setting FailoverPolicy to Manual
 	- Adding obsolete warnings to upcoming parameter changes.
+
 ## Version 2.7.0
 * Bug fix - Auditing and Threat Detection cmdlets now return a meangfull error instead of null refernce error. 
 * Updating Transparent Data Encryption (TDE) with Bring Your Own Key (BYOK) support cmdlets for updated API.

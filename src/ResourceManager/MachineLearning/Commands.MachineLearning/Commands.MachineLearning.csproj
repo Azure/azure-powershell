@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Azure.Commands.MachineLearning</RootNamespace>
     <AssemblyName>Microsoft.Azure.Commands.MachineLearning</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
@@ -58,8 +58,8 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.MachineLearning.0.9.6-preview\lib\net45\Microsoft.Azure.Management.MachineLearning.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.MachineLearning">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.MachineLearning.1.0.0\lib\net45\Microsoft.Azure.Management.MachineLearning.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -74,6 +74,15 @@
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.9-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks">
+      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions">
+      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop">
+      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -115,6 +124,7 @@
     <Compile Include="Cmdlets\WebServices\ImportWebServiceDefinition.cs" />
     <Compile Include="Cmdlets\MachineLearningCmdletBase.cs" />
     <Compile Include="Cmdlets\CommitmentPlans\NewAzureMLCommitmentPlan.cs" />
+    <Compile Include="Cmdlets\WebServices\AddAzureMLWebServiceRegionalProperty.cs" />
     <Compile Include="Cmdlets\WebServices\RemoveAzureMLWebService.cs" />
     <Compile Include="Cmdlets\WebServices\GetAzureMLWebService.cs" />
     <Compile Include="Cmdlets\WebServices\NewAzureMLWebService.cs" />
@@ -139,21 +149,6 @@
       <Link>AzureRM.MachineLearning.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="help\AzureRM.MachineLearning.md" />
-    <None Include="help\Export-AzureRmMlWebService.md" />
-    <None Include="help\Get-AzureRmMlCommitmentAssociation.md" />
-    <None Include="help\Get-AzureRmMlCommitmentPlan.md" />
-    <None Include="help\Get-AzureRmMlCommitmentPlanUsageHistory.md" />
-    <None Include="help\Get-AzureRmMlWebService.md" />
-    <None Include="help\Get-AzureRmMlWebServiceKeys.md" />
-    <None Include="help\Import-AzureRmMlWebService.md" />
-    <None Include="help\Move-AzureRmMlCommitmentAssociation.md" />
-    <None Include="help\New-AzureRmMlCommitmentPlan.md" />
-    <None Include="help\New-AzureRmMlWebService.md" />
-    <None Include="help\Remove-AzureRmMlCommitmentPlan.md" />
-    <None Include="help\Remove-AzureRmMlWebService.md" />
-    <None Include="help\Update-AzureRmMlCommitmentPlan.md" />
-    <None Include="help\Update-AzureRmMlWebService.md" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
@@ -163,13 +158,14 @@
     <EmbeddedResource Include="Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Microsoft.Azure.Commands.MachineLearning.dll-help.xml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="AfterBuild">
+    <ItemGroup>
+      <MarkdownFiles Include="$(ProjectDir)help\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
+  </Target>
 </Project>

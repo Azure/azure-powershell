@@ -47,9 +47,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// </summary>
         /// <param name="msg">Confirmation message</param>
         /// <returns>True if the opeation is confirmed, otherwise return false</returns>
-        protected bool ConfirmOverwrite(string sourcePath, string destinationPath)
+        protected bool ConfirmOverwrite(object source, object destination)
         {
-            string overwriteMessage = string.Format(CultureInfo.CurrentCulture, Resources.OverwriteConfirmation, destinationPath);
+            string overwriteMessage = string.Format(CultureInfo.CurrentCulture, Resources.OverwriteConfirmation, Util.ConvertToString(destination));
             return overwrite || OutputStream.ConfirmAsync(overwriteMessage).Result;
         }
 
@@ -72,11 +72,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             this.TransferManager = TransferManagerFactory.CreateTransferManager(this.GetCmdletConcurrency());
         }
 
-        protected TransferContext GetTransferContext(DataMovementUserData userData)
+        protected SingleTransferContext GetTransferContext(DataMovementUserData userData)
         {
-            TransferContext transferContext = new TransferContext();
+            SingleTransferContext transferContext = new SingleTransferContext();
             transferContext.ClientRequestId = CmdletOperationContext.ClientRequestId;
-            transferContext.OverwriteCallback = ConfirmOverwrite;
+            transferContext.ShouldOverwriteCallback = ConfirmOverwrite;
 
             transferContext.ProgressHandler = new TransferProgressHandler((transferProgress) =>
                 {

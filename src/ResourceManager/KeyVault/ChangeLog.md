@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,7 +18,15 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Adding backup/restore support for KeyVault secrets
+    - Secrets can be backed up and restored, matching the functionality currently supported for Keys
 
+* Backup cmdlets for Keys and Secrets now accept a corresponding object as an input parameter
+    - The caller may chain retrieval and backup operations: Get-AzureKeyVaultKey -VaultName myVault -Name myKey | Backup-AzureKeyVaultKey
+    
+* Backup cmdlets now support a -Force switch to overwrite an existing file
+    - Note that attempting to overwrite an existing file will no longer throw, and will instead prompt the user for a choice on how to proceed.
+      
 ## Version 2.8.0
 
 ## Version 2.7.0

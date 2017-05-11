@@ -12,9 +12,15 @@ Backs up a key in a key vault.
 
 ## SYNTAX
 
+### ByKeyName
 ```
 Backup-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> [[-OutputFile] <String>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### ByKey
+```
+Backup-AzureKeyVaultKey -Key <KeyBundle> [[-OutputFile] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,18 +52,41 @@ PS C:\>Backup-AzureKeyVaultKey -VaultName 'MyKeyVault' -Name 'MyKey' -OutputFile
 
 This command retrieves the key named MyKey from the key vaultnamed MyKeyVault and saves a backup of that key to a file named Backup.blob.
 
+### Example 3: Back up a previously retrieved key to a specified file name, overwriting the destination file without prompting.
+```
+PS C:\>$key = Get-AzureKeyVaultKey -VaultName 'MyKeyVault' -Name 'MyKey'
+PS C:\>Backup-AzureKeyVaultKey -Key $key -OutputFile 'C:\Backup.blob' -Force
+```
+
+This command creates a backup of the key named $key.Name in the vault named $key.VaultName to a file named Backup.blob, silently overwriting the file if it exists already.
+
 ## PARAMETERS
+
+### -Key
+Specifies a previously retrieved key which is to be backed up.
+
+```yaml
+Type: KeyBundle
+Parameter Sets: ByKey
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of the key to back up.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByKeyName
 Aliases: KeyName
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -74,7 +103,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -85,11 +114,11 @@ Specifies the name of the key vault that contains the key to back up.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByKeyName
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -132,6 +161,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### String
+The cmdlet returns the path of the output file containing the backup of the key.
 
 ## NOTES
 

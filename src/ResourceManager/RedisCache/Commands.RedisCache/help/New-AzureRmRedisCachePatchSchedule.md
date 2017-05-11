@@ -32,6 +32,22 @@ The Entries parameter takes as its value a command that uses **New-AzureRmRedisC
 
 ## PARAMETERS
 
+### -Entries
+Specifies an array of schedules that this cmdlet sets on a cache. 
+To obtain a **PSScheduleEntry** object, use the New-AzureRmRedisCacheScheduleEntry cmdlet.
+
+```yaml
+Type: PSScheduleEntry[]
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the cache.
 
@@ -52,22 +68,6 @@ Specifies the name of the resource group which contains the cache.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Entries
-Specifies an array of schedules that this cmdlet sets on a cache. 
-To obtain a **PSScheduleEntry** object, use the New-AzureRmRedisCacheScheduleEntry cmdlet.
-
-```yaml
-Type: PSScheduleEntry[]
 Parameter Sets: (All)
 Aliases: 
 

@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+* Bug fix : 
+	Fix for Set-AzureRmEventHubNamespace cmdlet error  - 'Tier' cannot be null, where it should be 'SkuName' 
+    Set-AzureRmEventHub - Fix 'Object reference not set to an instance of an object' error while updating EventHub  
 
 ## Version 0.2.0
 

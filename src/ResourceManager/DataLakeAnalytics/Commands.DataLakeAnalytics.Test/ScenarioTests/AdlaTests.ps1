@@ -358,9 +358,6 @@ function Test-DataLakeAnalyticsJob
 			Assert-False {$i -eq 60} "dataLakeAnalytics accounts not in succeeded state even after 30 min."
 		}
 
-		# For now, all Job related tests just ensure that they have a valid response and do not throw.
-		# Wait for two minutes and 30 seconds prior to attempting to submit the job in the freshly created account.
-		[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(150000)
 		# submit a job
 		$guidForJob = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::GenerateGuid("jobTest01")
 		[Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsClient]::JobIdQueue.Enqueue($guidForJob)
@@ -601,10 +598,6 @@ function Test-DataLakeAnalyticsCatalog
 			Assert-False {$i -eq 60} "dataLakeAnalytics accounts not in succeeded state even after 30 min."
 		}
 	
-		# For now, all Job related tests just ensure that they have a valid response and do not throw.
-		# Wait for two minutes prior to attempting to submit the job in the freshly created account.
-		[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(120000)
-	
 		# Run a job to create the catalog items (except secret and credential)
 		$scriptTemplate = @"
 	DROP DATABASE IF EXISTS {0}; CREATE DATABASE {0};
@@ -748,6 +741,24 @@ function Test-DataLakeAnalyticsCatalog
 
 		Assert-True {$found} "Could not find the table $tableName in the table list"
 	
+		# retrieve tables from the db (no schema)
+		$itemList = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Table -Path "$databaseName"
+
+		Assert-NotNull $itemList "The table list is null"
+
+		Assert-True {$itemList.count -gt 0} "The table list is empty"
+		$found = $false
+		foreach($item in $itemList)
+		{
+			if($item.Name -eq $tableName)
+			{
+				$found = $true
+				break
+			}
+		}
+
+		Assert-True {$found} "Could not find the table $tableName in the table list"
+
 		# retrieve the specific table
 		$specificItem = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Table -Path "$databaseName.dbo.$tableName"
 		Assert-NotNull $specificItem "Could not retrieve the table by name"
@@ -785,6 +796,24 @@ function Test-DataLakeAnalyticsCatalog
 
 		Assert-True {$found} "Could not find the TVF $tvfName in the TVF list"
 	
+		# retrieve the TVF list from the db (no schema)
+		$itemList = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType TableValuedFunction -Path "$databaseName"
+
+		Assert-NotNull $itemList "The TVF list is null"
+
+		Assert-True {$itemList.count -gt 0} "The TVF list is empty"
+		$found = $false
+		foreach($item in $itemList)
+		{
+			if($item.Name -eq $tvfName)
+			{
+				$found = $true
+				break
+			}
+		}
+
+		Assert-True {$found} "Could not find the TVF $tvfName in the TVF list"
+
 		# retrieve the specific TVF
 		$specificItem = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType TableValuedFunction -Path "$databaseName.dbo.$tvfName"
 		Assert-NotNull $specificItem "Could not retrieve the TVF by name"
@@ -830,6 +859,25 @@ function Test-DataLakeAnalyticsCatalog
 		}
 	
 		Assert-True {$found} "Could not find the view $viewName in the view list"
+
+		# get the views from the db only (no schema)
+		$itemList = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType View -Path "$databaseName"
+
+		Assert-NotNull $itemList "The view list is null"
+
+		Assert-True {$itemList.count -gt 0} "The view list is empty"
+		$found = $false
+		foreach($item in $itemList)
+		{
+			if($item.Name -eq $viewName)
+			{
+				$found = $true
+				break
+			}
+		}
+	
+		Assert-True {$found} "Could not find the view $viewName in the view list"
+
 
 		# retrieve the specific view
 		$specificItem = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType View -Path "$databaseName.dbo.$viewName"

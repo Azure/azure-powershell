@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Consume new version of Azure Machine Learning .Net SDK and add a new cmdlet
+    - Add-AzureRmMlWebServiceRegionalProperty 
+* Minor wording fixes in help text.
 
 ## Version 0.13.0
 

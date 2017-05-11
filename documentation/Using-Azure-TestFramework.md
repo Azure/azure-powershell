@@ -10,10 +10,11 @@
 4. Record/Playback tests
 5. Change Test Environment settings at run-time
 6. Troubleshooting
-7. Environment Variable Reference
+7. Supported Key=Value pairs in ConnectionString
+8. Environment Variable Reference
 
 ## 1. Getting Started
-1. Launch .\tools\PS-VSPrompt shortcut
+1. Double click .\tools\PS-VSPrompt shortcut
 	1. This starts VS Dev command prompt in PowerShell
 2. Import module that helps in performing basic repository tasks
 	1. Import-Module Repo-Tasks.psd1
@@ -105,9 +106,13 @@ Changing the above properties at run-time has the potential to hard code few thi
 
 Ensure that the `HttpRecorderMode` in the `TEST_CSM_ORGID_AUTHENTICATION` environment variable is consistent with the value in `AZURE_TEST_MODE` environment variable.
 
-## 7. Environment Variable Reference
+##7. Connection string
+Connection string is provided to Test Framework using following environment variables.
+In order to debug test set the following environment variables before starting Visual Studio:
 
-#### 7.1.  Supported Keys in connection string
+	TEST_CSM_ORGID_AUTHENTICATION=SubscriptionId={SubId};UserId={orgId};AADTenant={tenantId};Environment={env};HttpRecorderMode=Record;
+
+#### 7.1 Supported Key=Value pairs in Connectionstring
 	* ManagementCertificate
 	* SubscriptionId
 	* AADTenant
@@ -115,7 +120,7 @@ Ensure that the `HttpRecorderMode` in the `TEST_CSM_ORGID_AUTHENTICATION` enviro
 	* Password
 	* ServicePrincipal
 	* ServicePrincipalSecret
-	* Environment={Prod | DogFood | Next | Current}
+	* Environment={Prod | DogFood | Next | Current | Custom}
 	* RawToken
 	* RawGraphToken
 	* HttpRecorderMode={Record | Playback}
@@ -129,10 +134,9 @@ Ensure that the `HttpRecorderMode` in the `TEST_CSM_ORGID_AUTHENTICATION` enviro
 	* AADAuthEndpoint
 	* GraphTokenAudienceUri
 
+## 8. Supported Environment in Test framework (Azure environments)
 
-#### 7.2 Environment Defaults
-
-Setting `Environment` in the connection string will result in the following default values:
+#### 8.1 Default Environments and associated Uri
 
 ##### Environment = Prod
 
@@ -189,3 +193,11 @@ Setting `Environment` in the connection string will result in the following defa
         GraphTokenAudienceUri = "https://graph.ppe.windows.net/"
         DataLakeStoreServiceUri = "https://caboaccountdogfood.net"
         DataLakeAnalyticsJoAbndCatalogServiceUri = "https://konaaccountdogfood.net"
+
+##### Environment = Custom
+When specified, test framework expect all Uri's to be provided by the user as part of the connection string.
+
+What is also supported is as below (connections string example)
+>SubscriptionId=subId;Environment=Prod;AADAuthUri=customAuthUri;ResourceManagementUri=CustomR>esourceMgmtUri
+
+Which translates to, all Uri from pre-defined Prod environment will be used, but AADAuthUri and ResourceManagementUri will be overridden by the one provided in the connection string

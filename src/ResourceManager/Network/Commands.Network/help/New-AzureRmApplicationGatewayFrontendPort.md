@@ -13,8 +13,7 @@ Creates a front-end port for an application gateway.
 ## SYNTAX
 
 ```
-New-AzureRmApplicationGatewayFrontendPort -Name <String> -Port <Int32> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+New-AzureRmApplicationGatewayFrontendPort -Name <String> -Port <Int32> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,45 +29,6 @@ PS C:\>$FrontEndPort = New-AzureRmApplicationGatewayFrontendPort -Name "FrontEnd
 This command creates a front-end port named FrontEndPort01 on port 80 and stores the result in the variable named $FrontEndPort.
 
 ## PARAMETERS
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Name
 Specifies the name of the front-end port that this cmdlet creates.
