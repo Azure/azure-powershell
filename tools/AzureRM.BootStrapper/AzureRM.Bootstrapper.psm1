@@ -956,7 +956,7 @@ function Use-AzureRmProfile
       foreach ($importedModule in $importedModules) 
       {
         $versions = $ProfileMap.$Profile.$($importedModule.Name)
-        if ($null -ne $versions) 
+        if ($null -ne $versions)
         {
           # We need the latest version in that profile to be imported. If old version was imported, block user and ask to import in a new session
           $versionEnum = $versions.GetEnumerator()
