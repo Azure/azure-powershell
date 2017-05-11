@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,14 +23,14 @@ namespace Microsoft.Azure.Commands.Profile.Errors
 {
     public class AzureRestExceptionRecord : AzureExceptionRecord
     {
-        public AzureRestExceptionRecord(Hyak.Common.CloudException exception, bool inner = false) : base(exception, inner)
+        public AzureRestExceptionRecord(Hyak.Common.CloudException exception, ErrorRecord record, bool inner = false) : base(exception, record, inner)
         {
             ServerMessage = string.Format($"{exception.Error.Code}: {exception.Error.Message} ({exception.Error.OriginalMessage})");
             ServerResponse = new HttpResponseInfo(exception.Response);
             RequestMessage = new HttpRequestInfo(exception.Request);
         }
 
-        public AzureRestExceptionRecord(Microsoft.Rest.Azure.CloudException exception, bool inner = false) : base(exception, inner)
+        public AzureRestExceptionRecord(Microsoft.Rest.Azure.CloudException exception, ErrorRecord record, bool inner = false) : base(exception, record, inner)
         {
             ServerMessage = string.Format($"{exception.Body.Code}: {exception.Body.Message} ({exception.Body.Details})");
             ServerResponse = new HttpResponseInfo(exception.Response);

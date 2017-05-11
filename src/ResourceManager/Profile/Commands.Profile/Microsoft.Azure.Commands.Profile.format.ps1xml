@@ -136,6 +136,10 @@
       <ViewSelectedBy>
         <SelectionSetName>AzureErrorRecords</SelectionSetName>
       </ViewSelectedBy>
+      <GroupBy>
+        <ScriptBlock>$_.InvocationInfo.HistoryId</ScriptBlock>
+        <Label>HistoryId</Label>
+      </GroupBy>
       <ListControl>
         <ListEntries>
           <ListEntry>
@@ -168,7 +172,7 @@
               </ListItem>
               <ListItem>
                 <Label>HistoryId</Label>
-                <ScriptBlock>$_.InvocationInfo.HistoryId </ScriptBlock>
+                <ScriptBlock>$_.InvocationInfo.HistoryId</ScriptBlock>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -190,13 +194,29 @@
                 <PropertyName>ServerMessage</PropertyName>
               </ListItem>
               <ListItem>
-                <PropertyName>StackTrace</PropertyName>
-              </ListItem>
-              <ListItem>
                 <PropertyName>ServerResponse</PropertyName>
               </ListItem>
               <ListItem>
                 <PropertyName>RequestMessage</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>InvocationInfo</Label>
+                <ScriptBlock>"{" + $_.InvocationInfo.MyCommand + "}"</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Line</Label>
+                <ScriptBlock>$_.InvocationInfo.Line</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Position</Label>
+                <ScriptBlock>$_.InvocationInfo.PositionMessage</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <PropertyName>StackTrace</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>HistoryId</Label>
+                <ScriptBlock>$_.InvocationInfo.HistoryId</ScriptBlock>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -217,6 +237,25 @@
               <ListItem>
                 <Label>Exception</Label>
                 <ScriptBlock>$_.Exception.GetType()</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>InvocationInfo</Label>
+                <ScriptBlock>"{" + $_.InvocationInfo.MyCommand + "}"</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Line</Label>
+                <ScriptBlock>$_.InvocationInfo.Line</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Position</Label>
+                <ScriptBlock>$_.InvocationInfo.PositionMessage</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <PropertyName>StackTrace</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>HistoryId</Label>
+                <ScriptBlock>$_.InvocationInfo.HistoryId</ScriptBlock>
               </ListItem>
             </ListItems>
           </ListEntry>

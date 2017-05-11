@@ -13,12 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Errors
 {
-    public class AzureExceptionRecord
+    public class AzureExceptionRecord : AzureErrorRecord
     {
-        public AzureExceptionRecord(Exception exception, bool inner = false)
+        public AzureExceptionRecord(Exception exception, ErrorRecord record, bool inner = false) : base(record)
         {
             Message = exception.Message;
             HelpLink = exception.HelpLink;
