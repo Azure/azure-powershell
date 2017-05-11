@@ -20,15 +20,17 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using System.Collections;
 
 namespace Microsoft.Azure.Commands.Profile.Errors
 {
     [Cmdlet(VerbsDiagnostic.Resolve, "AzureRmError")]
-    [OutputType(typeof(string[]))]
+    [OutputType(typeof(AzureErrorRecord))]
+    [OutputType(typeof(AzureExceptionRecord))]
+    [OutputType(typeof(AzureRestExceptionRecord))]
     public class ResolveError : AzurePSCmdlet
     {
         [Parameter(Mandatory =false, Position =0, HelpMessage ="The error records to resolve")]
-
         public ErrorRecord[] Error { get; set; }
         protected override IAzureContext DefaultContext
         {
@@ -57,22 +59,32 @@ namespace Microsoft.Azure.Commands.Profile.Errors
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
-            if (Error == null)
+            IEnumerable<ErrorRecord> records = Error;
+            if (records == null)
             {
-                Error = GetVariableValue("global:Error") as ErrorRecord[];
+                var errors = GetVariableValue("global:Error") as IEnumerable;
+                records = errors?.OfType<ErrorRecord>();
+
             }
-            foreach (var error in Error)
+            if (records != null)
             {
-                HandleError(error);
+                foreach (var error in records)
+                {
+                    ErrorRecord record = error as ErrorRecord;
+                    HandleError(record);
+                }
             }
         }
 
         void HandleError(ErrorRecord record)
         {
-            WriteObject(new AzureErrorRecord(record));
             if (record.Exception != null)
             {
                 HandleException(record.Exception);
+            }
+            else
+            {
+                WriteObject(new AzureErrorRecord(record));
             }
         }
 

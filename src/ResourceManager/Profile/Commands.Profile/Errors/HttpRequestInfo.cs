@@ -38,5 +38,10 @@ namespace Microsoft.Azure.Commands.Profile.Errors
 
         public Uri Uri { get; set; }
         public string Verb { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("{{{0} {1}}}", Verb, Uri);
+        }
     }
 }
