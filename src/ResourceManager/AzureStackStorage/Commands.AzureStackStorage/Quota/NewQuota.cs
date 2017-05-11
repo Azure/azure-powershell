@@ -62,10 +62,17 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         {
             if (!string.IsNullOrEmpty(Name))
             {
-                QuotaGetResponse response = Client.Quotas.Get(Location, Name);
-                if (response != null && response.Quota != null)
+                try
                 {
-                    throw new AdminException(string.Format(CultureInfo.InvariantCulture, Resources.QuotaAlreadyExistsErrorMessage));
+                    QuotaGetResponse response = Client.Quotas.Get(Location, Name);
+                    if (response != null && response.Quota != null)
+                    {
+                        throw new AdminException(string.Format(CultureInfo.InvariantCulture, Resources.QuotaAlreadyExistsErrorMessage));
+                    }
+                }
+                catch (Hyak.Common.CloudException)
+                {
+                    // ignore this exception as the quota may not exist at all
                 }
             }
             if (ShouldProcess(string.Format(CultureInfo.InvariantCulture, ShouldProcessTargetFormat, Name)))
