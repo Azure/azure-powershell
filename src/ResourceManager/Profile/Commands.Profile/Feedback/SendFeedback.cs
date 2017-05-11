@@ -54,7 +54,8 @@ namespace Microsoft.Azure.Commands.Profile
                 && this.DefaultProfile.DefaultContext != null
                 && DefaultProfile.DefaultContext.Account != null
                 && DefaultProfile.DefaultContext.Tenant != null
-                && DefaultProfile.DefaultContext.Subscription != null;
+                && DefaultProfile.DefaultContext.Subscription != null
+                && DefaultProfile.DefaultContext.Environment != null;
 
             var feedbackPayload = new PSAzureFeedback
             {
