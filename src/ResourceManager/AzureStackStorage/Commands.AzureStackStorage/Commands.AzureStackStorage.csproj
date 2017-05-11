@@ -173,7 +173,6 @@
     <Compile Include="Share\GetShareMetricDefinitions.cs" />
     <Compile Include="Share\GetShareMetrics.cs" />
     <Compile Include="StorageAccount\GetStorageAccountsWithAdminInfo.cs" />
-    <Compile Include="StorageAccount\SyncStorageAccount.cs" />
     <Compile Include="StorageAccount\UndeleteStorageAccount.cs" />
     <Compile Include="Tools.cs" />
     <Compile Include="Validation\ValidateAbsoluteUri.cs" />
