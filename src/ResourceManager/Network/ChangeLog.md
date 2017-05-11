@@ -19,6 +19,11 @@
 -->
 ## Current Release
 
+## Version 4.0.0
+* Added Test-AzureRmNetworkWatcherConnectivity cmdlet
+    - Returns connectivity information for a specified source VM and a destination
+    - If connectivity between the source and destination cannot be established, the cmdlet returns details about the issue
+
 ## Version 3.7.0
 * Added support for new web application firewall features to Application Gateways
     - Added New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig

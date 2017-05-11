@@ -12,17 +12,17 @@ Creates an SSL certificate binding for an Azure Web App.
 
 ## SYNTAX
 
-### S2
-```
-New-AzureRmWebAppSSLBinding [-ResourceGroupName] <String> [-WebAppName] <String> [[-Slot] <String>]
- [-Name] <String> [[-SslState] <SslState>] [-Thumbprint] <String> [<CommonParameters>]
-```
-
 ### S1
 ```
 New-AzureRmWebAppSSLBinding [-ResourceGroupName] <String> [-WebAppName] <String> [[-Slot] <String>]
  [-Name] <String> [[-SslState] <SslState>] [-CertificateFilePath] <String> [-CertificatePassword] <String>
  [<CommonParameters>]
+```
+
+### S2
+```
+New-AzureRmWebAppSSLBinding [-ResourceGroupName] <String> [-WebAppName] <String> [[-Slot] <String>]
+ [-Name] <String> [[-SslState] <SslState>] [-Thumbprint] <String> [<CommonParameters>]
 ```
 
 ### S3
@@ -75,105 +75,6 @@ This certificate will be uploaded to Azure and then the new SSL bindings will be
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the name of the resource group that the certificate is assigned to.
-
-You cannot use the *ResourceGroupName* parameter and the *WebApp* parameter in the same command.
-
-```yaml
-Type: String
-Parameter Sets: S2, S1
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WebAppName
-Specifies the name of the Web App for which the new SSL binding is being created.
-
-You cannot use the *WebAppName* parameter and the *WebApp* parameter in the same command.
-
-```yaml
-Type: String
-Parameter Sets: S2, S1
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Slot
-Specifies the name of the Web App deployment slot.
-You can use the Get-AzureRMWebAppSlot cmdlet to get a slot.
-
-Deployment slots provide a way for you to stage and validate web apps without those apps being accessible over the Internet.
-Typically you will deploy your changes to a staging site, validate those changes, and then deploy to the production (Internet-accessible) site.
-
-```yaml
-Type: String
-Parameter Sets: S2, S1
-Aliases: 
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Specifies the name of the Web App.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SslState
-Specifies whether the certificate is enabled.
-Set the *SSLState* parameter to 1 to enable the certificate, or set *SSLState* to 0 to disable the certificate.
-
-```yaml
-Type: SslState
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Thumbprint
-Specifies the unique identifier for the certificate.
-
-```yaml
-Type: String
-Parameter Sets: S2, S4
-Aliases: 
-
-Required: True
-Position: 6
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -CertificateFilePath
 Specifies the file path for the certificate to be uploaded.
 
@@ -206,6 +107,89 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+Specifies the name of the Web App.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the name of the resource group that the certificate is assigned to.
+
+You cannot use the *ResourceGroupName* parameter and the *WebApp* parameter in the same command.
+
+```yaml
+Type: String
+Parameter Sets: S1, S2
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Slot
+Specifies the name of the Web App deployment slot.
+You can use the Get-AzureRMWebAppSlot cmdlet to get a slot.
+
+Deployment slots provide a way for you to stage and validate web apps without those apps being accessible over the Internet.
+Typically you will deploy your changes to a staging site, validate those changes, and then deploy to the production (Internet-accessible) site.
+
+```yaml
+Type: String
+Parameter Sets: S1, S2
+Aliases: 
+
+Required: False
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SslState
+Specifies whether the certificate is enabled.
+Set the *SSLState* parameter to 1 to enable the certificate, or set *SSLState* to 0 to disable the certificate.
+
+```yaml
+Type: SslState
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Disabled, SniEnabled, IpBasedEnabled
+
+Required: False
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Thumbprint
+Specifies the unique identifier for the certificate.
+
+```yaml
+Type: String
+Parameter Sets: S2, S4
+Aliases: 
+
+Required: True
+Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WebApp
 Specifies a Web App.
 To get a Web App, use the Get-AzureRmWebApp cmdlet.
@@ -221,6 +205,23 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -WebAppName
+Specifies the name of the Web App for which the new SSL binding is being created.
+
+You cannot use the *WebAppName* parameter and the *WebApp* parameter in the same command.
+
+```yaml
+Type: String
+Parameter Sets: S1, S2
+Aliases: 
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -20,6 +20,7 @@ using Microsoft.Azure.Commerce.UsageAggregates;
 namespace Microsoft.Azure.Commands.UsageAggregates
 {
     using Commerce.UsageAggregates.Models;
+    using Common.Authentication.Abstractions;
     using ResourceManager.Common;
     using System;
     using System.Management.Automation;
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.Commands.UsageAggregates
         {
             if (_theClient == null)
             {
-                _theClient = AzureSession.ClientFactory.CreateClient<UsageAggregationManagementClient>(DefaultProfile.Context,
+                _theClient = AzureSession.Instance.ClientFactory.CreateClient<UsageAggregationManagementClient>(DefaultProfile.DefaultContext,
                     AzureEnvironment.Endpoint.ResourceManager);
             }
 

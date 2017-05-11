@@ -23,6 +23,7 @@ using System.Linq;
 using System.Net;
 using System.Xml.Linq;
 using System.Security.Cryptography;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Servicebus
 {
@@ -38,9 +39,9 @@ namespace Microsoft.Azure.Commands.Servicebus
 
         public Action<string> WarningLogger { get; set; }
 
-        public ServiceBusClient(AzureContext context)
+        public ServiceBusClient(IAzureContext context)
         {
-            this.Client = AzureSession.ClientFactory.CreateArmClient<ServiceBusManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            this.Client = AzureSession.Instance.ClientFactory.CreateArmClient<ServiceBusManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
 
         }
         public ServiceBusManagementClient Client
@@ -59,7 +60,6 @@ namespace Microsoft.Azure.Commands.Servicebus
         public IEnumerable<NamespaceAttributes> ListNamespaces(string resourceGroupName)
         {
             Rest.Azure.IPage<NamespaceResource> response = Client.Namespaces.ListByResourceGroup(resourceGroupName);
-            //IEnumerable<NamespaceAttributes> resourceList = response.Select(resource => new NamespaceAttributes(resourceGroupName, resource));
             IEnumerable<NamespaceAttributes> resourceList = response.Select(resource => new NamespaceAttributes(resource));
             return resourceList;
         }
@@ -67,8 +67,6 @@ namespace Microsoft.Azure.Commands.Servicebus
         public IEnumerable<NamespaceAttributes> ListAllNamespaces()
         {
             Rest.Azure.IPage<NamespaceResource> response = Client.Namespaces.ListBySubscription();
-
-            //var resourceList = response.Select(resource => new NamespaceAttributes(null, resource));
             var resourceList = response.Select(resource => new NamespaceAttributes(resource));
             return resourceList;
         }
@@ -136,17 +134,7 @@ namespace Microsoft.Azure.Commands.Servicebus
         {
             Client.Namespaces.Delete(resourceGroupName, namespaceName);
 
-        }
-
-        //internal NamespaceLongRunningOperation GetLongRunningOperationStatus(NamespaceLongRunningOperation longRunningOperation)
-        //{
-        //    var response = Client.Namespaces.l(longRunningOperation.OperationLink);
-
-        //    RetryAfter(response, Client.LongRunningOperationRetryTimeout);
-        //    var result = NamespaceLongRunningOperation.CreateLongRunningOperation(longRunningOperation.OperationName, response as NamespaceLongRunningResponse);
-
-        //    return result;
-        //}
+        }        
 
         private static void RetryAfter(NamespaceLongRunningOperation longrunningResponse, int longRunningOperationInitialTimeout)
         {
@@ -215,15 +203,13 @@ namespace Microsoft.Azure.Commands.Servicebus
 
         public QueueAttributes CreateUpdateQueue(string resourceGroupName, string namespaceName, string queueName, QueueAttributes queue)
         {
-            var parameters = new QueueCreateOrUpdateParameters()
+            QueueCreateOrUpdateParameters parameters = new QueueCreateOrUpdateParameters()
             {
                 Name = queue.Name,
                 Location = queue.Location,
                 LockDuration = queue.LockDuration,
-                AccessedAt = queue.AccessedAt,
                 AutoDeleteOnIdle = queue.AutoDeleteOnIdle,
                 EntityAvailabilityStatus = queue.EntityAvailabilityStatus,
-                CreatedAt = queue.CreatedAt, 
                 DefaultMessageTimeToLive = queue.DefaultMessageTimeToLive,
                 DuplicateDetectionHistoryTimeWindow = queue.DuplicateDetectionHistoryTimeWindow,
                 EnableBatchedOperations = queue.EnableBatchedOperations,
@@ -233,17 +219,13 @@ namespace Microsoft.Azure.Commands.Servicebus
                 IsAnonymousAccessible = queue.IsAnonymousAccessible,
                 MaxDeliveryCount = queue.MaxDeliveryCount,
                 MaxSizeInMegabytes = queue.MaxSizeInMegabytes,
-                MessageCount = queue.MessageCount,
-                CountDetails = queue.CountDetails,
                 RequiresDuplicateDetection = queue.RequiresDuplicateDetection,
                 RequiresSession = queue.RequiresSession,
-                SizeInBytes = queue.SizeInBytes,
                 Status = queue.Status,
                 SupportOrdering = queue.SupportOrdering,
-                UpdatedAt = queue.UpdatedAt,
         };
 
-        var response = Client.Queues.CreateOrUpdate(resourceGroupName, namespaceName, queueName, parameters);
+        QueueResource response = Client.Queues.CreateOrUpdate(resourceGroupName, namespaceName, queueName, parameters);
             return new QueueAttributes(response);
         }
 
@@ -269,7 +251,6 @@ namespace Microsoft.Azure.Commands.Servicebus
         public IEnumerable<QueueAttributes> ListQueues(string resourceGroupName, string namespaceName)
         {
             Rest.Azure.IPage<QueueResource> response = Client.Queues.ListAll(resourceGroupName, namespaceName);
-            //IEnumerable<NamespaceAttributes> resourceList = response.Select(resource => new NamespaceAttributes(resourceGroupName, resource));
             IEnumerable<QueueAttributes> resourceList = response.Select(resource => new QueueAttributes(resource));
             return resourceList;
         }
@@ -345,11 +326,8 @@ namespace Microsoft.Azure.Commands.Servicebus
         {
             var parameters = new TopicCreateOrUpdateParameters()
             {
-                AccessedAt = topic.AccessedAt,
                 AutoDeleteOnIdle = topic.AutoDeleteOnIdle,
                 EntityAvailabilityStatus = topic.EntityAvailabilityStatus,
-                CreatedAt = topic.CreatedAt,
-                CountDetails = topic.CountDetails,
                 DefaultMessageTimeToLive = topic.DefaultMessageTimeToLive,
                 DuplicateDetectionHistoryTimeWindow = topic.DuplicateDetectionHistoryTimeWindow,
                 EnableBatchedOperations = topic.EnableBatchedOperations,
@@ -361,11 +339,8 @@ namespace Microsoft.Azure.Commands.Servicebus
                 IsExpress = topic.IsExpress,
                 MaxSizeInMegabytes = topic.MaxSizeInMegabytes,
                 RequiresDuplicateDetection = topic.RequiresDuplicateDetection,
-                SizeInBytes = topic.SizeInBytes,
                 Status = topic.Status,
-                SubscriptionCount = topic.SubscriptionCount,
                 SupportOrdering = topic.SupportOrdering,
-                UpdatedAt = topic.UpdatedAt,
                 Location = topic.Location
                 
         };
@@ -396,7 +371,6 @@ namespace Microsoft.Azure.Commands.Servicebus
         public IEnumerable<TopicAttributes> ListTopics(string resourceGroupName, string namespaceName)
         {
             Rest.Azure.IPage<TopicResource> response = Client.Topics.ListAll(resourceGroupName, namespaceName);
-            //IEnumerable<NamespaceAttributes> resourceList = response.Select(resource => new NamespaceAttributes(resourceGroupName, resource));
             IEnumerable<TopicAttributes> resourceList = response.Select(resource => new TopicAttributes(resource));
             return resourceList;
         }
@@ -470,10 +444,7 @@ namespace Microsoft.Azure.Commands.Servicebus
         {
             var parameters = new SubscriptionCreateOrUpdateParameters()
             {
-                AccessedAt = subscription.AccessedAt,
                 AutoDeleteOnIdle = subscription.AutoDeleteOnIdle,
-                CountDetails = subscription.CountDetails,
-                CreatedAt = subscription.CreatedAt,
                 DefaultMessageTimeToLive = subscription.DefaultMessageTimeToLive,
                 DeadLetteringOnFilterEvaluationExceptions = subscription.DeadLetteringOnFilterEvaluationExceptions,
                 DeadLetteringOnMessageExpiration = subscription.DeadLetteringOnMessageExpiration,
@@ -482,10 +453,8 @@ namespace Microsoft.Azure.Commands.Servicebus
                 IsReadOnly = subscription.IsReadOnly,
                 LockDuration = subscription.LockDuration,
                 MaxDeliveryCount = subscription.MaxDeliveryCount,
-                MessageCount = subscription.MessageCount,
                 RequiresSession = subscription.RequiresSession,
                 Status = subscription.Status,
-                UpdatedAt = subscription.UpdatedAt,
                 Location = subscription.Location
         };
 
@@ -503,9 +472,7 @@ namespace Microsoft.Azure.Commands.Servicebus
         {
             SubscriptionCreateOrUpdateParameters parameters = new SubscriptionCreateOrUpdateParameters()
             {
-                Location = location,
-                //EnableExpress = enableExpress,
-                //IsAnonymousAccessible = isAnonymousAccessible
+                Location = location
             };
 
             var response = Client.Subscriptions.CreateOrUpdate(resourceGroupName, namespaceName, topicName, subscriptionName, parameters);
@@ -515,7 +482,6 @@ namespace Microsoft.Azure.Commands.Servicebus
         public IEnumerable<SubscriptionAttributes> ListSubscriptions(string resourceGroupName, string namespaceName, string topicName)
         {
             Rest.Azure.IPage<SubscriptionResource> response = Client.Subscriptions.ListAll(resourceGroupName, namespaceName,topicName);
-            //IEnumerable<NamespaceAttributes> resourceList = response.Select(resource => new NamespaceAttributes(resourceGroupName, resource));
             IEnumerable<SubscriptionAttributes> resourceList = response.Select(resource => new SubscriptionAttributes(resource));
             return resourceList;
         }
@@ -527,117 +493,6 @@ namespace Microsoft.Azure.Commands.Servicebus
         }
 
         #endregion Subscription
-
-        //#region EventHub
-        //public EventHubResource GetEventnHub(string resourceGroupName, string namespaceName, string eventHubName)
-        //{
-        //    EventHubResource response = Client.ServiceBus.Get(resourceGroupName, namespaceName, eventHubName);
-        //    return response;
-        //}
-
-        ////public EventHubAttributes GetEventHubPNSCredentials(string resourceGroupName, string namespaceName, string eventHubName)
-        ////{
-        ////    IPage<EventHubResource> response = Client.ServiceBus.GetPnsCredentials(resourceGroupName, namespaceName, eventHubName);
-        ////    return new EventHubAttributes(response);
-        ////}
-
-        //public IEnumerable<EventHubAttributes> ListServiceBus(string resourceGroupName, string namespaceName)
-        //{
-        //    Rest.Azure.IPage<EventHubResource> response = Client.ServiceBus.ListAll(resourceGroupName, namespaceName);
-        //    IEnumerable<EventHubAttributes> resourceList = response.Select(resource => new EventHubAttributes(resource));
-        //    return resourceList;
-        //}
-
-        //public EventHubAttributes CreateEventHub(string resourceGroupName, string namespaceName, string eventHubName, EventHubCreateOrUpdateParameters parameters)
-        //{
-        //    var parameter = new EventHubCreateOrUpdateParameters()
-        //    {
-        //        //Location = location
-        //    };
-
-        //    var response = Client.ServiceBus.CreateOrUpdate(resourceGroupName, namespaceName, eventHubName, parameter);
-        //    return new EventHubAttributes(response);
-        //}
-
-        //public EventHubAttributes UpdateEventHub(string resourceGroupName, string namespaceName, string eventHubName, EventHubCreateOrUpdateParameters parameters)
-        //{
-        //    var parameter = new EventHubCreateOrUpdateParameters()
-        //    {
-        //       // Location = location,
-        //        Name = eventHubName
-        //    };
-
-        //    var response = Client.ServiceBus.CreateOrUpdate(resourceGroupName, namespaceName, eventHubName, parameter);
-        //    return new EventHubAttributes(response);
-        //}
-
-        //public bool DeleteEventHub(string resourceGroupName, string namespaceName, string eventHubName)
-        //{
-        //    Client.ServiceBus.Delete(resourceGroupName, namespaceName, eventHubName);
-        //    return true;
-        //}
-
-        //public SharedAccessAuthorizationRuleAttributes GetEventHubAuthorizationRules(string resourceGroupName, string namespaceName, string eventHubName, string authRuleName)
-        //{
-        //    SharedAccessAuthorizationRuleResource response = Client.ServiceBus.GetAuthorizationRule(resourceGroupName, namespaceName,
-        //                                eventHubName, authRuleName);
-
-        //    return new SharedAccessAuthorizationRuleAttributes(response);
-        //}
-
-        //public IEnumerable<SharedAccessAuthorizationRuleAttributes> ListEventHubAuthorizationRules(string resourceGroupName, string namespaceName,
-        //                                            string eventHubName)
-        //{
-        //    Rest.Azure.IPage<SharedAccessAuthorizationRuleResource> response = Client.ServiceBus.ListAuthorizationRules(resourceGroupName, namespaceName, eventHubName);
-        //    IEnumerable<SharedAccessAuthorizationRuleAttributes> resourceList = response.Select(resource => new SharedAccessAuthorizationRuleAttributes(resource));
-
-        //    return resourceList;
-        //}
-
-
-        //public SharedAccessAuthorizationRuleAttributes CreateOrUpdateEventHubAuthorizationRules(string resourceGroupName, string namespaceName, string eventHubName, string authorizationRuleName, SharedAccessAuthorizationRuleCreateOrUpdateParameters parameters)
-        //{
-        //    var parameter = new SharedAccessAuthorizationRuleCreateOrUpdateParameters()
-        //    {
-        //        //Name = authRuleName,
-        //        //Properties = new SharedAccessAuthorizationRuleProperties()
-        //        //{
-        //        //    KeyName = authRuleName,
-        //        //    Rights = new List<AccessRights>(rights),
-        //        //    PrimaryKey = primarykey,
-        //        //    ClaimType = SharedAccessAuthorizationRuleAttributes.DefaultClaimType,
-        //        //    ClaimValue = SharedAccessAuthorizationRuleAttributes.DefaultClaimValue
-        //        //}
-        //        Rights = parameters.Rights
-        //    };
-
-        //    //parameter.Properties.SecondaryKey = string.IsNullOrEmpty(secondaryKey) ? GenerateRandomKey() : secondaryKey;
-
-        //    var response = Client.ServiceBus.CreateOrUpdateAuthorizationRule(resourceGroupName, namespaceName, eventHubName, authorizationRuleName, parameters);
-        //    return new SharedAccessAuthorizationRuleAttributes(response);
-        //}
-
-        //public bool DeleteEventHubAuthorizationRules(string resourceGroupName, string namespaceName, string eventHubName, string authRuleName)
-        //{
-        //    if (string.Equals(SharedAccessAuthorizationRuleAttributes.DefaultNamespaceAuthorizationRule, authRuleName, StringComparison.InvariantCultureIgnoreCase))
-        //    {
-        //        return false;
-        //    }
-
-        //    //var response = Client.ServiceBus.DeleteAuthorizationRule(resourceGroupName, namespaceName, eventHubName, authRuleName);
-        //    return true;
-        //}
-
-        //public ResourceListKeys GetEventHubListKeys(string resourceGroupName, string namespaceName, string eventHubName, string authRuleName)
-        //{
-        //    ResourceListKeys listKeys = Client.ServiceBus.ListKeys(resourceGroupName, namespaceName,
-        //                                eventHubName, authRuleName);
-
-        //    return listKeys;
-        //}
-
-        //#endregion
-
         public static string GenerateRandomKey()
         {
             byte[] key256 = new byte[32];

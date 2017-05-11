@@ -19,10 +19,12 @@
 -->
 ## Current Release
 
-## Version 3.8.0
-* Add initiate maintenance PowerShell cmdlet.
+## Version 4.0.0
 
-* Add Maintenance Status field to Get-AzureVM response.
+## Version 3.8.0
+* Restart-AzureVM: Added InitiateMaintenance parameter for performing maintenance during VM restart.
+
+* Get-AzureVM: Added Maintenance Status field.
 
 * Added new cmdlets to support Recovery Services vault upgrade
     - Test-AzureRecoveryServicesVaultUpgrade

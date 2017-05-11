@@ -9,7 +9,7 @@
 @{  
   
 # Version number of this module.  
-ModuleVersion = '0.2.0'
+ModuleVersion = '0.3.0'
   
 # ID used to uniquely identify this module  
 GUID = 'c717b5a4-1f1b-4a2f-8aa1-bfd09934626e'  
@@ -36,7 +36,7 @@ PowerShellHostName = ''
 PowerShellHostVersion = ''  
   
 # Minimum version of the .NET Framework required by this module  
-DotNetFrameworkVersion = '4.0'  
+DotNetFrameworkVersion = '4.5.2'  
   
 # Minimum version of the common language runtime (CLR) required by this module  
 CLRVersion='4.0'  
@@ -65,7 +65,8 @@ NestedModules = @(
 FunctionsToExport = '*'  
   
 # Cmdlets to export from this module  
-CmdletsToExport = '*'  
+CmdletsToExport = 'Add-AzureAnalysisServicesAccount',
+                'Restart-AzureAnalysisServicesInstance'
   
 # Variables to export from this module  
 VariablesToExport = '*'  

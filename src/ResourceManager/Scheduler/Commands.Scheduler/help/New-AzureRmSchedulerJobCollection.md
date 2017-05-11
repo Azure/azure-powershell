@@ -14,8 +14,7 @@ Creates a job collection.
 
 ```
 New-AzureRmSchedulerJobCollection -ResourceGroupName <String> -JobCollectionName <String> -Location <String>
- [-Plan <String>] [-MaxJobCount <Int32>] [-Frequency <String>] [-Interval <Int32>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
+ [-Plan <String>] [-MaxJobCount <Int32>] [-Frequency <String>] [-Interval <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -31,18 +30,41 @@ The **New-AzureRmSchedulerJobCollection** cmdlet creates a job collection in Azu
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the resource group for the job collection.
+### -Frequency
+Specifies the maximum frequency that you can specify on any job in the job collection.
+The acceptable values for this parameter are:
+
+- Minute 
+- Hour 
+- Day 
+- Week 
+- Month
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Minute, Hour, Day, Week, Month
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Interval
+Specifies an interval of recurrence.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -76,27 +98,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Plan
-Specifies the job collection plan.
-The acceptable values for this parameter are:
-
-- Free 
-- Standard 
-- P10Premium 
-- P20Premium
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -MaxJobCount
 Specifies the maximum number of jobs that you can create in the job collection.
 The maximum depends on the plan that the *Plan* parameter specifies.
@@ -113,78 +114,54 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Frequency
-Specifies the maximum frequency that you can specify on any job in the job collection.
+### -Plan
+Specifies the job collection plan.
 The acceptable values for this parameter are:
 
-- Minute 
-- Hour 
-- Day 
-- Week 
-- Month
+- Free 
+- Standard 
+- P10Premium 
+- P20Premium
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Free, Standard, P10Premium, P20Premium
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the resource group for the job collection.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Interval
-Specifies an interval of recurrence.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: Int32
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -197,21 +174,6 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named

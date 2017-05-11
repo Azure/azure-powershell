@@ -16,14 +16,13 @@ Updates a Storage Insight.
 ```
 Set-AzureRmOperationalInsightsStorageInsight [-ResourceGroupName] <String> [-WorkspaceName] <String>
  [-Name] <String> [[-StorageAccountKey] <String>] [[-Tables] <String[]>] [[-Containers] <String[]>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ByWorkspaceObject
 ```
 Set-AzureRmOperationalInsightsStorageInsight [-Workspace] <PSWorkspace> [-Name] <String>
- [[-StorageAccountKey] <String>] [[-Tables] <String[]>] [[-Containers] <String[]>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [[-StorageAccountKey] <String>] [[-Tables] <String[]>] [[-Containers] <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,31 +50,16 @@ The second command modifies the containers from which the Storage Insight named 
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the name of an Azure resource group that contains a workspace.
+### -Containers
+Specifies the list of containers that provide the data.
 
 ```yaml
-Type: String
-Parameter Sets: ByWorkspaceName
+Type: String[]
+Parameter Sets: (All)
 Aliases: 
 
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -WorkspaceName
-Specifies the name of a workspace.
-
-```yaml
-Type: String
-Parameter Sets: ByWorkspaceName
-Aliases: 
-
-Required: True
-Position: 2
+Required: False
+Position: 6
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -91,6 +75,21 @@ Aliases:
 
 Required: True
 Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the name of an Azure resource group that contains a workspace.
+
+```yaml
+Type: String
+Parameter Sets: ByWorkspaceName
+Aliases: 
+
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -126,60 +125,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Containers
-Specifies the list of containers that provide the data.
-
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 6
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Workspace
 Specifies the workspace that contains the Storage Insight.
 
@@ -192,6 +137,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -WorkspaceName
+Specifies the name of a workspace.
+
+```yaml
+Type: String
+Parameter Sets: ByWorkspaceName
+Aliases: 
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

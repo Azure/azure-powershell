@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             this.WriteObject(providerLocations, enumerateCollection: true);
         }
 
-        private List<PSResourceProviderLocation> ConstructResourceProviderLocations(List<Location> locations, List<Provider> providers)
+        private List<PSResourceProviderLocation> ConstructResourceProviderLocations(List<Internal.Subscriptions.Models.Location> locations, List<Provider> providers)
         {
             var locationProviderMap = GetLocationProviderMap(providers);
 

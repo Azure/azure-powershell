@@ -15,8 +15,8 @@
 using System.Collections.Generic;
 using System.IO;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Insights;
-using Microsoft.Azure.Management.Insights;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Management;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -33,8 +33,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
         private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
 
-        public IInsightsClient InsightsClient { get; private set; }
-        public IInsightsManagementClient InsightsManagementClient { get; private set; }
+        public IMonitorClient MonitorClient { get; private set; }
+        public IMonitorManagementClient MonitorManagementClient { get; private set; }
 
         public string UserDomain { get; private set; }
 
@@ -143,22 +143,22 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 
         private void SetupManagementClients(MockContext context)
         {
-            this.InsightsClient = this.GetInsightsClient(context);
-            this.InsightsManagementClient = this.GetInsightsManagementClient(context);
+            this.MonitorClient = this.GetMonitorClient(context);
+            this.MonitorManagementClient = this.GetInsightsManagementClient(context);
 
-            helper.SetupManagementClients(this.InsightsClient, this.InsightsManagementClient);
+            helper.SetupManagementClients(this.MonitorClient, this.MonitorManagementClient);
         }
 
-        private IInsightsClient GetInsightsClient(MockContext context)
+        private IMonitorClient GetMonitorClient(MockContext context)
         {
-            // return TestBase.GetServiceClient<InsightsClient>(RestTestFramework.  this.csmTestFactory);
-            return context.GetServiceClient<InsightsClient>(TestEnvironmentFactory.GetTestEnvironment());
+            // return TestBase.GetServiceClient<MonitorClient>(RestTestFramework.  this.csmTestFactory);
+            return context.GetServiceClient<MonitorClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private IInsightsManagementClient GetInsightsManagementClient(MockContext context)
+        private IMonitorManagementClient GetInsightsManagementClient(MockContext context)
         {
-            //return TestBase.GetServiceClient<InsightsManagementClient>(this.csmTestFactory);
-            return context.GetServiceClient<InsightsManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            //return TestBase.GetServiceClient<MonitorManagementClient>(this.csmTestFactory);
+            return context.GetServiceClient<MonitorManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

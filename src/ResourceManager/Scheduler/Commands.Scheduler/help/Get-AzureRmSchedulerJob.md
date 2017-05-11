@@ -14,8 +14,7 @@ Gets Scheduler jobs.
 
 ```
 Get-AzureRmSchedulerJob -ResourceGroupName <String> -JobCollectionName <String> [-JobName <String>]
- [-JobState <String>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ [-JobState <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,21 +28,6 @@ The **Get-AzureRmSchedulerJob** cmdlet gets Azure Scheduler jobs.
 ```
 
 ## PARAMETERS
-
-### -ResourceGroupName
-Specifies the resource group of the jobs to get.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -JobCollectionName
 Specifies the name of a job collection that contains jobs to get.
@@ -88,6 +72,7 @@ The acceptable values for this parameter are:
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Enabled, Disabled, Faulted, Completed
 
 Required: False
 Position: Named
@@ -96,42 +81,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -ResourceGroupName
+Specifies the resource group of the jobs to get.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
