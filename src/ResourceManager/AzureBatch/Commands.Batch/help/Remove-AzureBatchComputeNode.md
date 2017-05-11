@@ -100,6 +100,7 @@ The default value is Requeue.
 Type: ComputeNodeDeallocationOption
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Requeue, Terminate, TaskCompletion, RetainedData
 
 Required: False
 Position: Named

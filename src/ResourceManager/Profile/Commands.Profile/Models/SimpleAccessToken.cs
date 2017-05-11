@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Profile.Properties;
 using System;
 
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <param name="account">The account, containing user id, access token information</param>
         /// <param name="tenantId">The tenant id for the given access token</param>
         /// <param name="tokenType">The token type for the given token.</param>
-        public SimpleAccessToken(AzureAccount account, string tenantId, string tokenType = _defaultTokenType)
+        public SimpleAccessToken(IAzureAccount account, string tenantId, string tokenType = _defaultTokenType)
         {
             if (account == null)
             {
@@ -72,9 +72,9 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <summary>
         /// The login type for this token
         /// </summary>
-        public LoginType LoginType
+        public string LoginType
         {
-            get { return LoginType.OrgId; }
+            get { return Common.Authentication.LoginType.OrgId; }
         }
 
         /// <summary>

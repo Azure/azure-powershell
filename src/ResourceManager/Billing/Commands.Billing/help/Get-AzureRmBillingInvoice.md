@@ -23,7 +23,7 @@ Get-AzureRmBillingInvoice [-Latest] [<CommonParameters>]
 
 ### Single
 ```
-Get-AzureRmBillingInvoice -Name <String> [<CommonParameters>]
+Get-AzureRmBillingInvoice -Name <System.Collections.Generic.List`1[System.String]> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,7 +62,9 @@ Get most recent 10 invoices of the subscription and include the download Url in 
 ## PARAMETERS
 
 ### -GenerateDownloadUrl
-Generate the download url of the invoices.```yaml
+Generate the download url of the invoices.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: List
 Aliases: 
@@ -75,7 +77,9 @@ Accept wildcard characters: False
 ```
 
 ### -Latest
-Get the latest invoice.```yaml
+Get the latest invoice.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: Latest
 Aliases: 
@@ -103,8 +107,10 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of a specific invoice to get or the most recent if not specified.```yaml
-Type: String
+Name of a specific invoice to get or the most recent if not specified.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: Single
 Aliases: 
 

@@ -77,22 +77,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             this.Properties.ProvisioningState = vault.Properties.ProvisioningState;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ARSVault" /> class.
-        /// </summary>
-        /// <param name="vault">vault object</param>
-        public ARSVault(VaultCreateResponse vault)
-        {
-            this.ID = vault.Id;
-            this.Name = vault.Name;
-            this.Type = vault.Type;
-            this.Location = vault.Location;
-            this.ResourceGroupName = PSRecoveryServicesClient.GetResourceGroup(vault.Id);
-            this.SubscriptionId = PSRecoveryServicesClient.GetSubscriptionId(vault.Id);
-            this.Properties = new ARSVaultProperties();
-            this.Properties.ProvisioningState = vault.Properties.ProvisioningState;
-        }
-
         #endregion
 
         #region Properties

@@ -11,6 +11,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Location_Capabilities.Model;
 using Microsoft.Azure.Commands.Sql.Services;
@@ -28,14 +30,14 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Constructs a firewall rule adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlCapabilitiesAdapter(AzureContext context)
+        public AzureSqlCapabilitiesAdapter(IAzureContext context)
         {
             Context = context;
             _communicator = new AzureSqlCapabilitiesCommunicator(Context);
@@ -57,12 +59,12 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         /// </summary>
         /// <param name="resp">The object to transform</param>
         /// <returns>The converted location capability model</returns>
-        private LocationCapabilityModel CreateLocationCapabilityModel(Management.Sql.LegacySdk.Models.LocationCapability resp)
+        private LocationCapabilityModel CreateLocationCapabilityModel(Management.Sql.Models.LocationCapabilities resp)
         {
             LocationCapabilityModel model = new LocationCapabilityModel();
             model.LocationName = resp.Name;
-            model.Status = resp.Status;
-            model.SupportedServerVersions = resp.SupportedServerVersions.Select(v => { return CreateSupportedVersionsModel(v); }).ToList();
+            model.Status = resp.Status.ToString();
+            model.SupportedServerVersions = resp.SupportedServerVersions.Select(CreateSupportedVersionsModel).ToList();
             return model;
         }
 
@@ -71,12 +73,12 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         /// </summary>
         /// <param name="v">The object to transform</param>
         /// <returns>The converted server version capability model</returns>
-        private ServerVersionCapabilityModel CreateSupportedVersionsModel(Management.Sql.LegacySdk.Models.ServerVersionCapability v)
+        private ServerVersionCapabilityModel CreateSupportedVersionsModel(Management.Sql.Models.ServerVersionCapability v)
         {
             ServerVersionCapabilityModel version = new ServerVersionCapabilityModel();
             version.ServerVersionName = v.Name;
-            version.Status = v.Status;
-            version.SupportedEditions = v.SupportedEditions.Select(e => { return CreateSupportedEditionModel(e); }).ToList();
+            version.Status = v.Status.ToString();
+            version.SupportedEditions = v.SupportedEditions.Select(CreateSupportedEditionModel).ToList();
             return version;
         }
 
@@ -85,12 +87,12 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         /// </summary>
         /// <param name="e">The object to transform</param>
         /// <returns>The converted database edition capability model</returns>
-        private EditionCapabilityModel CreateSupportedEditionModel(Management.Sql.LegacySdk.Models.EditionCapability e)
+        private EditionCapabilityModel CreateSupportedEditionModel(Management.Sql.Models.EditionCapability e)
         {
             EditionCapabilityModel edition = new EditionCapabilityModel();
             edition.EditionName = e.Name;
-            edition.Status = e.Status;
-            edition.SupportedServiceObjectives = e.SupportedServiceObjectives.Select(slo => { return CreateSupportedSLOModel(slo); }).ToList();
+            edition.Status = e.Status.ToString();
+            edition.SupportedServiceObjectives = e.SupportedServiceLevelObjectives.Select(CreateSupportedSLOModel).ToList();
             return edition;
         }
 
@@ -99,14 +101,14 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         /// </summary>
         /// <param name="s">The object to transform</param>
         /// <returns>The converted edition Service Level Objective capability model</returns>
-        private ServiceObjectiveCapabilityModel CreateSupportedSLOModel(Management.Sql.LegacySdk.Models.ServiceObjectiveCapability s)
+        private ServiceObjectiveCapabilityModel CreateSupportedSLOModel(Management.Sql.Models.ServiceObjectiveCapability s)
         {
             ServiceObjectiveCapabilityModel slo = new ServiceObjectiveCapabilityModel();
 
             slo.Id = s.Id;
             slo.ServiceObjectiveName = s.Name;
-            slo.Status = s.Status;
-            slo.SupportedMaxSizes = s.SupportedMaxSizes.Select(m => { return CreateSupportedMaxSizeModel(m); }).ToList();
+            slo.Status = s.Status.ToString();
+            slo.SupportedMaxSizes = s.SupportedMaxSizes.Select(CreateSupportedMaxSizeModel).ToList();
 
             return slo;
         }
@@ -116,13 +118,13 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         /// </summary>
         /// <param name="e">The object to transform</param>
         /// <returns>The converted database max size capability model</returns>
-        private MaxSizeCapabilityModel CreateSupportedMaxSizeModel(Management.Sql.LegacySdk.Models.MaxSizeCapability m)
+        private MaxSizeCapabilityModel CreateSupportedMaxSizeModel(Management.Sql.Models.MaxSizeCapability m)
         {
             MaxSizeCapabilityModel maxSize = new MaxSizeCapabilityModel();
 
             maxSize.Limit = m.Limit;
-            maxSize.Status = m.Status;
-            maxSize.Unit = m.Unit;
+            maxSize.Status = m.Status.ToString();
+            maxSize.Unit = m.Unit.ToString();
 
             return maxSize;
         }

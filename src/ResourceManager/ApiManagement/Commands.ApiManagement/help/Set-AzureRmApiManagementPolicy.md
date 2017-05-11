@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-ms.assetid: 26EEDFA0-8A21-42A1-B447-7082EA16E9CE
+ms.assetid: 6CD1C2B8-0416-4FF3-81B0-0C9E59AE6CF9
 online version: 
 schema: 2.0.0
 ---
@@ -15,29 +15,25 @@ Sets the specified scope policy for API Management.
 ### Tenant level (Default)
 ```
 Set-AzureRmApiManagementPolicy -Context <PsApiManagementContext> [-Format <String>] [-Policy <String>]
- [-PolicyFilePath <String>] [-PassThru] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ [-PolicyFilePath <String>] [-PassThru] [<CommonParameters>]
 ```
 
 ### Product level
 ```
 Set-AzureRmApiManagementPolicy -Context <PsApiManagementContext> [-Format <String>] -ProductId <String>
- [-Policy <String>] [-PolicyFilePath <String>] [-PassThru] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
-```
-
-### Operation level
-```
-Set-AzureRmApiManagementPolicy -Context <PsApiManagementContext> [-Format <String>] -ApiId <String>
- -OperationId <String> [-Policy <String>] [-PolicyFilePath <String>] [-PassThru]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-Policy <String>] [-PolicyFilePath <String>] [-PassThru] [<CommonParameters>]
 ```
 
 ### API level
 ```
 Set-AzureRmApiManagementPolicy -Context <PsApiManagementContext> [-Format <String>] -ApiId <String>
- [-Policy <String>] [-PolicyFilePath <String>] [-PassThru] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ [-Policy <String>] [-PolicyFilePath <String>] [-PassThru] [<CommonParameters>]
+```
+
+### Operation level
+```
+Set-AzureRmApiManagementPolicy -Context <PsApiManagementContext> [-Format <String>] -ApiId <String>
+ -OperationId <String> [-Policy <String>] [-PolicyFilePath <String>] [-PassThru] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,6 +71,22 @@ This command sets operation-scope policy for API Management.
 
 ## PARAMETERS
 
+### -ApiId
+Specifies the identifier of the existing API.
+If you specify this parameter, the cmdlet sets the API-scope policy.
+
+```yaml
+Type: String
+Parameter Sets: API level, Operation level
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Context
 Specifies the instance of **PsApiManagementContext**.
 
@@ -96,6 +108,38 @@ The default value is "application/vnd.ms-azure-apim.policy+xml".
 
 ```yaml
 Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -OperationId
+Specifies the identifier of the existing operation.
+If specified with ApiId will set operation-scope policy.
+This parameters is required.
+
+```yaml
+Type: String
+Parameter Sets: Operation level
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PassThru
+passthru
+
+```yaml
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 
@@ -138,22 +182,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns an object representing the item with which you are working.
-By default, this cmdlet does not generate any output.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ProductId
 Specifies the identifier of the existing product.
 If this parameter is specified, the cmdlet sets the product-scope policy.
@@ -167,78 +195,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ApiId
-Specifies the identifier of the existing API.
-If you specify this parameter, the cmdlet sets the API-scope policy.
-
-```yaml
-Type: String
-Parameter Sets: Operation level, API level
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -OperationId
-Specifies the identifier of the existing operation.
-If specified with ApiId will set operation-scope policy.
-This parameters is required.
-
-```yaml
-Type: String
-Parameter Sets: Operation level
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

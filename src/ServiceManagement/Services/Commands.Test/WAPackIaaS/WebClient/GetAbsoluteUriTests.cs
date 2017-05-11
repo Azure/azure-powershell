@@ -18,6 +18,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.WAPackIaaS.WebClient;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.WebClient
 {
@@ -29,7 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.WebClient
         public GetAbsoluteUriTests()
         {
             var azureSub = new AzureSubscription();
-            azureSub.Id = Guid.NewGuid();
+            azureSub.Id = Guid.NewGuid().ToString();
             this.subscription = new Subscription(azureSub);
         }
 

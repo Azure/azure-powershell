@@ -22,6 +22,7 @@ using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 using Xunit;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
@@ -47,6 +48,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         protected void RunPowerShellTest(params string[] scripts)
         {
+            AzureSessionInitializer.InitializeAzureSession();
+            ServiceManagementProfileProvider.InitializeServiceManagementProfile();
             using (UndoContext context = UndoContext.Current)
             {
                 context.Start(TestUtilities.GetCallingClass(1), TestUtilities.GetCurrentMethodName(2));

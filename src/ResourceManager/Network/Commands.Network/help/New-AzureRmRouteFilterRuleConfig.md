@@ -13,8 +13,7 @@ Creates a route filter rule for a route filter.
 
 ```
 New-AzureRmRouteFilterRuleConfig [-Force] -Name <String> -Access <String> -RouteFilterRuleType <String>
- -CommunityList <System.Collections.Generic.List`1[System.String]> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -CommunityList <System.Collections.Generic.List`1[System.String]> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,6 +38,7 @@ Valid values are Allow or Deny.
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Allow, Deny
 
 Required: True
 Position: Named
@@ -73,36 +73,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-@{Text=}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-@{Text=}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 Specifies a name for the route filter rule.
 
@@ -126,6 +96,7 @@ Valid values are: Community
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Community
 
 Required: True
 Position: Named

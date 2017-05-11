@@ -12,14 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Profile.Models
 {
     /// <summary>
     /// The context for connecting cmdlets in the current session to Azure.
     /// </summary>
-    public class PSAzureContext
+    public class PSAzureContext : IAzureContext
     {
         /// <summary>
         /// Convert between implementations of the current connection context for Azure.
@@ -32,14 +34,8 @@ namespace Microsoft.Azure.Commands.Profile.Models
             {
                 return null;
             }
-            return new PSAzureContext
-            {
-                Account = context.Account,
-                Environment = context.Environment,
-                Subscription = context.Subscription,
-                Tenant = context.Tenant,
-                TokenCache = context.TokenCache
-            };
+
+            return new PSAzureContext(context);
         }
 
         /// <summary>
@@ -70,30 +66,62 @@ namespace Microsoft.Azure.Commands.Profile.Models
                       context.Environment,
                       context.Tenant);
             }
+
             result.TokenCache = context.TokenCache;
+            result.VersionProfile = context.VersionProfile;
+            result.CopyPropertiesFrom(context);
             return result;
+        }
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public PSAzureContext()
+        {
+        }
+
+        /// <summary>
+        /// Copy Constructor
+        /// </summary>
+        /// <param name="context"></param>
+        public PSAzureContext(IAzureContext context)
+        {
+            if (context != null)
+            {
+                Account = context.Account == null ? null : new PSAzureRmAccount(context.Account);
+                Environment = context.Environment == null ? null : new PSAzureEnvironment(context.Environment);
+                Subscription = context.Subscription == null ? null : new PSAzureSubscription(context.Subscription);
+                Tenant = context.Tenant == null ? null : new PSAzureTenant(context.Tenant);
+                TokenCache = context.TokenCache;
+                this.VersionProfile = context.VersionProfile;
+                this.CopyPropertiesFrom(context);
+            }
         }
 
         /// <summary>
         /// The account used to connect to Azure.
         /// </summary>
-        public PSAzureRmAccount Account { get; set; }
+        public IAzureAccount Account { get; set; }
 
         /// <summary>
         /// The endpoint and connection metadata for the targeted instance of the Azure cloud.
         /// </summary>
-        public PSAzureEnvironment Environment { get; set; }
+        public IAzureEnvironment Environment { get; set; }
 
         /// <summary>
         /// The subscription targeted in Azure.
         /// </summary>
-        public PSAzureSubscription Subscription { get; set; }
+        public IAzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// The targeted tenant in Azure.
         /// </summary>
-        public PSAzureTenant Tenant { get; set; }
+        public IAzureTenant Tenant { get; set; }
 
-        private byte[] TokenCache { get; set; }
+        public IAzureTokenCache TokenCache { get; set; }
+
+        public string VersionProfile { get; set; }
+
+        public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
     }
 }

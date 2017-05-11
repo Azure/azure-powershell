@@ -14,8 +14,8 @@ Creates a Cognitive Services account.
 
 ```
 New-AzureRmCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-Type] <String>
- [-SkuName] <String> [-Location] <String> [-Tag <Hashtable[]>] [-Force] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SkuName] <String> [-Location] <String> [-Tag <Hashtable[]>] [-Force] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,9 +30,23 @@ The **New-AzureRmCognitiveServicesAccount** cmdlet creates a Cognitive Services 
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the name of the resource group to which to assign the account.
-The resource group must already exist.
+### -Force
+Forces the command to run without asking for user confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Specifies the location in which to create the account.
 
 ```yaml
 Type: String
@@ -40,7 +54,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 0
+Position: 4
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -61,25 +75,17 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Type
-Specifies the type of account to create.The acceptable values for this parameter are:
-
-- ComputerVision
-- Emotion
-- Face
-- LUIS
-- Recommendations
-- Speech
-- TextAnalytics
-- WebLM
+### -ResourceGroupName
+Specifies the name of the resource group to which to assign the account.
+The resource group must already exist.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: CognitiveServicesAccountType, AccountType, Kind
+Aliases: 
 
 Required: True
-Position: 2
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -110,57 +116,42 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Location
-Specifies the location in which to create the account.
+### -Tag
+Specifies a tag as a name/value pair.
+
+```yaml
+Type: Hashtable[]
+Parameter Sets: (All)
+Aliases: Tags
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Type
+Specifies the type of account to create.The acceptable values for this parameter are:
+
+- ComputerVision
+- Emotion
+- Face
+- LUIS
+- Recommendations
+- Speech
+- TextAnalytics
+- WebLM
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: CognitiveServicesAccountType, AccountType, Kind
 
 Required: True
-Position: 4
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -175,36 +166,6 @@ Aliases: cf
 Required: False
 Position: Named
 Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Force
-Forces the command to run without asking for user confirmation.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Specifies a tag as a name/value pair.
-
-```yaml
-Type: Hashtable[]
-Parameter Sets: (All)
-Aliases: Tags
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

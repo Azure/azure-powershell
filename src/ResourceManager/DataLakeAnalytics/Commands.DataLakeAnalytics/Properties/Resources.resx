@@ -252,4 +252,10 @@
   <data name="SetDataLakeFirewallRule" xml:space="preserve">
     <value>Setting the Data Lake Analytics firewall rule: '{0}' ...</value>
   </data>
+  <data name="InvalidDefaultSubscription" xml:space="preserve">
+    <value>No default subscription has been designated. Use Select-AzureSubscription -Default &lt;subscriptionName&gt; to set the default subscription.</value>
+  </data>
+  <data name="NoSubscriptionInContext" xml:space="preserve">
+    <value>No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Login-AzureRMAccount to login.</value>
+  </data>
 </root>
