@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Profile.Errors
         {
             if (record.Exception != null)
             {
-                HandleException(record.Exception);
+                HandleException(record.Exception, record);
             }
             else
             {
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Profile.Errors
             }
         }
 
-        void HandleException(Exception exception, bool inner = false)
+        void HandleException(Exception exception, ErrorRecord record, bool inner = false)
         {
             var aggregate = exception as AggregateException;
             var hyakException = exception as Hyak.Common.CloudException;
@@ -97,23 +97,23 @@ namespace Microsoft.Azure.Commands.Profile.Errors
             {
                 foreach (var innerException in aggregate.InnerExceptions)
                 {
-                    HandleException(innerException, true);
+                    HandleException(innerException, record, true);
                 }
             }
             else if (hyakException != null)
             {
-                WriteObject(new AzureRestExceptionRecord(hyakException, inner));
+                WriteObject(new AzureRestExceptionRecord(hyakException, record, inner));
             }
             else if (restException != null)
             {
-                WriteObject(new AzureRestExceptionRecord(restException, inner));
+                WriteObject(new AzureRestExceptionRecord(restException, record, inner));
             }
             else
             {
-                WriteObject(new AzureExceptionRecord(exception, inner));
+                WriteObject(new AzureExceptionRecord(exception, record, inner));
                 if (exception.InnerException != null)
                 {
-                    HandleException(exception.InnerException, true);
+                    HandleException(exception.InnerException, record, true);
                 }
             }
         }
