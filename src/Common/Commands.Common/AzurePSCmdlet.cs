@@ -14,7 +14,7 @@
 
 using Microsoft.ApplicationInsights;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Newtonsoft.Json;
@@ -104,7 +104,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// The context for management cmdlet requests - includes account, tenant, subscription, 
         /// and credential information for targeting and authorizing management calls.
         /// </summary>
-        protected abstract AzureContext DefaultContext { get; }
+        protected abstract IAzureContext DefaultContext { get; }
 
         /// <summary>
         /// Initializes AzurePSCmdlet properties.
@@ -224,7 +224,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 }
             }
 
-            if (!interactive && !_dataCollectionProfile.EnableAzureDataCollection.HasValue)
+            if (!interactive && _dataCollectionProfile != null && !_dataCollectionProfile.EnableAzureDataCollection.HasValue)
             {
                 _dataCollectionProfile.EnableAzureDataCollection = false;
             }
@@ -275,10 +275,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected virtual void SetupHttpClientPipeline()
         {
-            AzureSession.ClientFactory.UserAgents.Add(new ProductInfoHeaderValue(ModuleName, string.Format("v{0}", ModuleVersion)));            
-            AzureSession.ClientFactory.UserAgents.Add(new ProductInfoHeaderValue(PSVERSION, string.Format("v{0}", PSVersion)));
+            AzureSession.Instance.ClientFactory.UserAgents.Add(new ProductInfoHeaderValue(ModuleName, string.Format("v{0}", ModuleVersion)));            
+            AzureSession.Instance.ClientFactory.UserAgents.Add(new ProductInfoHeaderValue(PSVERSION, string.Format("v{0}", PSVersion)));
 
-            AzureSession.ClientFactory.AddHandler(
+            AzureSession.Instance.ClientFactory.AddHandler(
                 new CmdletInfoHandler(this.CommandRuntime.ToString(),
                     this.ParameterSetName, this._clientRequestId));
 
@@ -286,8 +286,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected virtual void TearDownHttpClientPipeline()
         {
-            AzureSession.ClientFactory.UserAgents.RemoveWhere(u => u.Product.Name == ModuleName);
-            AzureSession.ClientFactory.RemoveHandler(typeof(CmdletInfoHandler));
+            AzureSession.Instance.ClientFactory.UserAgents.RemoveWhere(u => u.Product.Name == ModuleName);
+            AzureSession.Instance.ClientFactory.RemoveHandler(typeof(CmdletInfoHandler));
         }
         /// <summary>
         /// Cmdlet begin process. Write to logs, setup Http Tracing and initialize profile
@@ -497,7 +497,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 sb.AppendLine(content);
             }
 
-            AzureSession.DataStore.WriteFile(filePath, sb.ToString());
+            AzureSession.Instance.DataStore.WriteFile(filePath, sb.ToString());
         }
 
         /// <summary>

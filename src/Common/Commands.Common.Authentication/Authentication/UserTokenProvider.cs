@@ -13,12 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Utilities;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
-using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Authentication;
 using System.Threading;
@@ -42,10 +42,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public IAccessToken GetAccessToken(
             AdalConfiguration config,
-            ShowDialog promptBehavior,
+            string promptBehavior,
             string userId,
             SecureString password,
-            AzureAccount.AccountType credentialType)
+            string credentialType)
         {
             if (credentialType != AzureAccount.AccountType.User)
             {
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         // We have to run this in a separate thread to guarantee that it's STA. This method
         // handles the threading details.
-        private AuthenticationResult AcquireToken(AdalConfiguration config, ShowDialog promptBehavior, string userId,
+        private AuthenticationResult AcquireToken(AdalConfiguration config, string promptBehavior, string userId,
             SecureString password)
         {
             AuthenticationResult result = null;
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         private AuthenticationResult SafeAquireToken(
             AdalConfiguration config,
-            ShowDialog showDialog,
+            string showDialog,
             string userId,
             SecureString password,
             out Exception ex)
@@ -300,15 +300,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
             public string TenantId { get { return AuthResult.TenantId; } }
 
-            public LoginType LoginType
+            public string LoginType
             {
                 get
                 {
                     if (AuthResult.UserInfo.IdentityProvider != null)
                     {
-                        return LoginType.LiveId;
+                        return Authentication.LoginType.LiveId;
                     }
-                    return LoginType.OrgId;
+                    return Authentication.LoginType.OrgId;
                 }
             }
         }
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             AdalConfiguration config,
             string clientId,
             string certificate,
-            AzureAccount.AccountType credentialType)
+            string credentialType)
         {
             throw new NotImplementedException();
         }

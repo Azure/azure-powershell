@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
@@ -78,6 +79,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File
 
         public static void RunCmdlet(this PSCmdlet cmdlet, string parameterSet, KeyValuePair<string, object[]>[] incomingValues)
         {
+            AzureSessionInitializer.InitializeAzureSession();
             var cmdletType = cmdlet.GetType();
             parameterSetFieldInfo.SetValue(cmdlet, parameterSet);
             beginProcessingMethodInfo.Invoke(cmdlet, emptyParameters);

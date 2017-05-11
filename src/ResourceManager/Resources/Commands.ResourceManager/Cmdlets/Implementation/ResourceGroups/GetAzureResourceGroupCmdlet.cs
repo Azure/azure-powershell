@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System.IO;
     using System.Management.Automation;
     using System.Reflection;
+    using WindowsAzure.Commands.Common;
 
     /// <summary>
     /// Filters resource groups.

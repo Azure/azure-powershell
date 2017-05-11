@@ -131,9 +131,12 @@
     <Compile Include="Environment\GetAzureRMEnvironment.cs" />
     <Compile Include="Environment\SetAzureRMEnvironment.cs" />
     <Compile Include="Environment\AddAzureRMEnvironment.cs" />
+    <Compile Include="Feedback\SendFeedback.cs" />
+    <Compile Include="Models\AzureRmProfileExtensions.cs" />
     <Compile Include="Models\ModelExtensions.cs" />
     <Compile Include="Models\PSAzureContext.cs" />
     <Compile Include="Models\PSAzureEnvironment.cs" />
+    <Compile Include="Models\PSAzureFeedback.cs" />
     <Compile Include="Models\PSAzureProfile.cs" />
     <Compile Include="Models\PSAzureRmAccount.cs" />
     <Compile Include="Models\PSAzureSubscription.cs" />
@@ -170,6 +173,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
+      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
+      <Name>Commands.Common.Authentication.Abstractions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
       <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
       <Name>Commands.Common.Authentication</Name>
@@ -177,6 +184,10 @@
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Commands.Common.Authentication.ResourceManager\Commands.Common.Authentication.ResourceManager.csproj">
+      <Project>{69c2eb6b-cd63-480a-89a0-c489706e9299}</Project>
+      <Name>Commands.Common.Authentication.ResourceManager</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>

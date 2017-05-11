@@ -77,13 +77,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         ///// Method to list Azure resouce groups
         ///// </summary>
         ///// <returns>resource group list response object.</returns>
-        public List<ResourceGroup> GetResouceGroups()
+        public List<Microsoft.Azure.Management.Internal.Resources.Models.ResourceGroup> GetResouceGroups()
         {
-            Func<IPage<ResourceGroup>> listAsync =
+            Func<IPage<Microsoft.Azure.Management.Internal.Resources.Models.ResourceGroup>> listAsync =
                 () => RmClient.ResourceGroups.ListWithHttpMessagesAsync(
                     customHeaders: GetRequestHeaders()).Result.Body;
 
-            Func<string, IPage<ResourceGroup>> listNextAsync =
+            Func<string, IPage<Microsoft.Azure.Management.Internal.Resources.Models.ResourceGroup>> listNextAsync =
                 nextLink => RmClient.ResourceGroups.ListNextWithHttpMessagesAsync(
                     nextLink, GetRequestHeaders()).Result.Body;
 

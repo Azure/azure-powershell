@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
             {
                 if (this.azureBackupVaultClient == null)
                 {
-                    this.azureBackupVaultClient = AzureSession.ClientFactory.CreateCustomClient<BackupVaultServicesManagementClient>(cloudCreds, baseURI);
+                    this.azureBackupVaultClient = AzureSession.Instance.ClientFactory.CreateCustomClient<BackupVaultServicesManagementClient>(cloudCreds, baseURI);
                 }
 
                 return this.azureBackupVaultClient;
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
             {
                 if (this.azureBackupClient == null)
                 {
-                    this.azureBackupClient = AzureSession.ClientFactory.CreateCustomClient<BackupServicesManagementClient>(cloudCreds, baseURI);
+                    this.azureBackupClient = AzureSession.Instance.ClientFactory.CreateCustomClient<BackupServicesManagementClient>(cloudCreds, baseURI);
                 }
 
                 return this.azureBackupClient;

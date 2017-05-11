@@ -8,11 +8,11 @@ Locale: en-US
 
 # AzureRM.ServiceFabric Module
 ## Description
-Azure Service Fabric Module that you can use to automate the end-2-end operations like creating a secure cluster, rolling over cluster certificates, adding or removed nodes from the cluster etc. the complete list of all operations are listed below.
+Azure Service Fabric Module that you can use to automate the end-2-end operations like creating a secure cluster, rolling over cluster certificates, adding or removed nodes from the cluster, etc. The complete list of all operations are listed below.
 
 ## AzureRM.ServiceFabric Cmdlets
 ### [Add-AzureRmServiceFabricApplicationCertificate](Add-AzureRmServiceFabricApplicationCertificate.md)
-Add a certificate which will be used as application certificate
+Add a certificate that will be used as application certificate
 
 ### [Add-AzureRmServiceFabricClientCertificate](Add-AzureRmServiceFabricClientCertificate.md)
 Add common name or thumbprint to the cluster settings for client authentication
