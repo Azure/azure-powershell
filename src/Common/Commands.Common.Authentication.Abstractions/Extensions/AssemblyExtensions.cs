@@ -1,4 +1,4 @@
-﻿ // ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,25 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
- using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Common.Authentication;
+using System.Reflection;
 
-namespace Microsoft.WindowsAzure.Commands.Common
+namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
-    public class FileSystemAdapter : IFileSystem
+    public static class AssemblyExtensions
     {
-        public string ReadFile(string path)
+        public static Assembly GetExecutingAssembly()
         {
-            return AzureSession.DataStore.ReadFileAsText(path);
+#if !NETSTANDARD
+            return Assembly.GetExecutingAssembly();
+#else
+            return Assembly.GetEntryAssembly();
+#endif
         }
 
-        public void WriteFile(string path, string contents)
+        public static Assembly GetCallingAssembly()
         {
-            AzureSession.DataStore.WriteFile(path, contents);
+#if !NETSTANDARD
+            return Assembly.GetCallingAssembly();
+#else
+            return Assembly.GetEntryAssembly();
+#endif
         }
     }
 }

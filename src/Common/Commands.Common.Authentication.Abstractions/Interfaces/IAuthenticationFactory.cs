@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Rest;
+using System;
 using System.Security;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
@@ -38,7 +39,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             IAzureEnvironment environment,
             string tenant,
             SecureString password,
+#if !NETSTANDARD
             string promptBehavior,
+#else
+            Action<string> promptAction,
+#endif
             IAzureTokenCache tokenCache,
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId);
 
@@ -57,7 +62,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             IAzureEnvironment environment,
             string tenant,
             SecureString password,
+#if !NETSTANDARD
             string promptBehavior,
+#else
+            Action<string> promptAction,
+#endif
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId);
 
         /// <summary>

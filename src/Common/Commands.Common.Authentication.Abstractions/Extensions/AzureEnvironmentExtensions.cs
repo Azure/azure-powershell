@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Properties;
 using System;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Properties;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             {
                 return environment.GetEndpoint(endpoint)
                     .Trim(new[] { '/' })
-                    .Equals(url.Trim(new[] { '/' }), StringComparison.InvariantCultureIgnoreCase);
+                    .Equals(url.Trim(new[] { '/' }), StringExtensions.CaselessComparison);
             }
 
             return false;

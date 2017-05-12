@@ -11,19 +11,28 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 
-namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
+namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.Linq;
-
     /// <summary>
-    /// String extension methods
+    /// Extension methods for strings.
     /// </summary>
     public static class StringExtensions
     {
+        /// <summary>
+        /// Formats the string with parameters and invariant culture.
+        /// </summary>
+        /// <param name="s">The string</param>
+        /// <param name="args">The arguments</param>
+        public static string FormatInvariant(this string s, params object[] args)
+        {
+            return string.Format(CultureInfo.InvariantCulture, s, args);
+        }
+
         /// <summary>
         /// Coalesces a string. 
         /// </summary>
@@ -40,7 +49,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         /// <param name="otherString">The other string.</param>
         public static bool EqualsInsensitively(this string original, string otherString)
         {
-            return string.Equals(original, otherString, StringComparison.InvariantCultureIgnoreCase);
+            return string.Equals(original, otherString, StringExtensions.CaselessComparison);
         }
 
         /// <summary>
@@ -50,7 +59,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         /// <param name="otherString">The other string.</param>
         public static bool StartsWithInsensitively(this string original, string otherString)
         {
-            return original.CoalesceString().StartsWith(otherString.CoalesceString(), StringComparison.InvariantCultureIgnoreCase);
+            return original.CoalesceString().StartsWith(otherString.CoalesceString(), StringExtensions.CaselessComparison);
         }
 
         /// <summary>
@@ -113,6 +122,30 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         public static bool EqualsAsLocation(this string location1, string location2)
         {
             return location1.ToNormalizedLocation().EqualsInsensitively(location2.ToNormalizedLocation());
+        }
+
+        public static StringComparison CaselessComparison
+        {
+            get
+            {
+#if !NETSTANDARD
+                return StringComparison.InvariantCultureIgnoreCase;
+#else
+                return StringComparison.CurrentCultureIgnoreCase;
+#endif
+            }
+        }
+
+        public static StringComparer CaselessComparer
+        {
+            get
+            {
+#if !NETSTANDARD
+                return StringComparer.InvariantCultureIgnoreCase;
+#else
+                return StringComparer.CurrentCultureIgnoreCase;
+#endif
+            }
         }
     }
 }

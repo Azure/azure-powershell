@@ -34,6 +34,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// <param name="client">The client to apply this action to</param>
         /// <param name="profile">The current container for credentials and target account, subscription, and tenant information</param>
         /// <param name="endpoint">The named endpoint the client targets</param>
-        void ApplyArm<TClient>(TClient client, IAzureContextContainer profile, string endpoint) where TClient :ServiceClient<TClient>;
+        void ApplyArm<TClient>(TClient client, IAzureContextContainer profile, string endpoint) where TClient : ServiceClient<TClient>;
     }
 }

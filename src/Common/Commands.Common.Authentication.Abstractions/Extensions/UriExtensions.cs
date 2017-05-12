@@ -11,24 +11,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+using System;
+using System.Collections.Generic;
+using System.Text;
 
-using System.Globalization;
-
-namespace Microsoft.WindowsAzure.Commands.Common
+namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
-    /// <summary>
-    /// Extension methods for strings.
-    /// </summary>
-    public static class StringExtensions
+    public static class UriExtensions
     {
-        /// <summary>
-        /// Formats the string with parameters and invariant culture.
-        /// </summary>
-        /// <param name="s">The string</param>
-        /// <param name="args">The arguments</param>
-        public static string FormatInvariant(this string s, params object[] args)
+        public static string GetBaseAddress(this Uri uri)
         {
-            return string.Format(CultureInfo.InvariantCulture, s, args);
+#if !NETSTANDARD
+            return uri.GetLeftPart(UriPartial.Authority);
+#else
+            return uri.Authority;
+#endif
         }
     }
 }

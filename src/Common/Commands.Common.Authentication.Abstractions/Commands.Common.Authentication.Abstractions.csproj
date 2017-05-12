@@ -103,6 +103,7 @@
     <Compile Include="AzureAccount.cs" />
     <Compile Include="AzureRmProfileProvider.cs" />
     <Compile Include="AzureSMProfileProvider.cs" />
+    <Compile Include="Extensions\AssemblyExtensions.cs" />
     <Compile Include="Extensions\AzureAccountExtensions.cs" />
     <Compile Include="AzureEnvironmentConstants.cs" />
     <Compile Include="Extensions\AzureContextExtensions.cs" />
@@ -112,8 +113,13 @@
     <Compile Include="Extensions\AzureSubscriptionExtensions.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />
     <Compile Include="EnvironmentName.cs" />
+    <Compile Include="Extensions\EncodingExtensions.cs" />
+    <Compile Include="Extensions\EnvironmentExtensions.cs" />
     <Compile Include="Extensions\ModelExtensions.cs" />
     <Compile Include="Extensions\AzureTenantExtensions.cs" />
+    <Compile Include="Extensions\NetcoreExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\UriExtensions.cs" />
     <Compile Include="Interfaces\IAccessToken.cs" />
     <Compile Include="Interfaces\IExtensibleSettings.cs" />
     <Compile Include="Interfaces\IExtensibleModel.cs" />
