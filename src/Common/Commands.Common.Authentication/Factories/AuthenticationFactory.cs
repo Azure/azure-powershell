@@ -14,13 +14,13 @@
 
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure.Authentication;
 using System;
 using System.Linq;
 using System.Security;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 {
@@ -40,7 +40,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             IAzureEnvironment environment,
             string tenant,
             SecureString password,
+#if !NETSTANDARD
             string promptBehavior,
+#else
+            Action<string> promptAction,
+#endif
             IAzureTokenCache tokenCache,
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
@@ -64,11 +68,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             if (account.IsPropertySet(AzureAccount.Property.CertificateThumbprint))
             {
                 var thumbprint = account.GetProperty(AzureAccount.Property.CertificateThumbprint);
+#if !NETSTANDARD
                 token = TokenProvider.GetAccessTokenWithCertificate(configuration, account.Id, thumbprint, account.Type);
+#else
+                throw new NotSupportedException("Certificate based authentication is not supported in netcore version.");
+#endif
             }
             else
             {
+#if !NETSTANDARD
                 token = TokenProvider.GetAccessToken(configuration, promptBehavior, account.Id, password, account.Type);
+#else
+                token = TokenProvider.GetAccessToken(configuration, promptAction, account.Id, password, account.Type);
+#endif
             }
 
             account.Id = token.UserId;
@@ -80,10 +92,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             IAzureEnvironment environment,
             string tenant,
             SecureString password,
+#if !NETSTANDARD
             string promptBehavior,
+#else
+            Action<string> promptAction,
+#endif
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
+#if !NETSTANDARD
             return Authenticate(account, environment, tenant, password, promptBehavior, AzureSession.Instance.TokenCache, resourceId);
+#else
+            return Authenticate(account, environment, tenant, password, promptAction, AzureSession.Instance.TokenCache, resourceId);
+#endif
         }
 
         public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(IAzureContext context)
@@ -160,7 +180,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                                 context.Environment,
                                 tenant,
                                 null,
+#if !NETSTANDARD
                                 ShowDialog.Never,
+#else
+                                (s) => { },
+#endif
                                 tokenCache,
                                 context.Environment.GetTokenAudience(targetEndpoint));
 

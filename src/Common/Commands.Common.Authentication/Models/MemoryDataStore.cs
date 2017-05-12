@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,8 +26,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
     public class MemoryDataStore : IDataStore
     {
-        private Dictionary<string, string> virtualStore = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
-        private Dictionary<string, X509Certificate2> certStore = new Dictionary<string, X509Certificate2>(StringComparer.InvariantCultureIgnoreCase);
+        private Dictionary<string, string> virtualStore = new Dictionary<string, string>(StringExtensions.CaselessComparer);
+        private Dictionary<string, X509Certificate2> certStore = new Dictionary<string, X509Certificate2>(StringExtensions.CaselessComparer);
         private const string FolderKey = "Folder";
 
         public Dictionary<string, string> VirtualStore
@@ -46,7 +48,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
         public void WriteFile(string path, byte[] contents)
         {
-            VirtualStore[path] = Encoding.Default.GetString(contents);
+            VirtualStore[path] = EncodingExtensions.GetDefaultEncoding().GetString(contents);
         }
 
         public string ReadFileAsText(string path)
@@ -82,7 +84,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         {
             if (VirtualStore.ContainsKey(path))
             {
-                return Encoding.Default.GetBytes(VirtualStore[path]);
+                return EncodingExtensions.GetDefaultEncoding().GetBytes(VirtualStore[path]);
             }
             else
             {

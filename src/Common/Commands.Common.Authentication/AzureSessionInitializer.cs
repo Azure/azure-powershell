@@ -15,13 +15,13 @@
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.IO;
 using System.Diagnostics;
 using System.Security.Cryptography;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -45,11 +45,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 ClientFactory = new ClientFactory(),
                 AuthenticationFactory = new AuthenticationFactory(),
                 DataStore = new DiskDataStore(),
+#if !NETSTANDARD
                 OldProfileFile = "WindowsAzureProfile.xml",
                 OldProfileFileBackup = "WindowsAzureProfile.xml.bak",
                 ProfileDirectory = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                 Resources.AzureDirectoryName),
+#endif
                 ProfileFile = "AzureProfile.json",
                 TokenCacheFile = "TokenCache.dat"
             };
@@ -81,6 +83,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public class AdalSession : AzureSession
         {
+#if !NETSTANDARD
             public override TraceLevel AuthenticationLegacyTraceLevel
             {
                 get
@@ -114,6 +117,38 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     AdalTrace.TraceSource.Switch.Level = value;
                 }
             }
+#else
+            public AdalSession()
+                : base()
+            {
+            }
+
+            public override TraceLevel AuthenticationLegacyTraceLevel
+            {
+                get
+                {
+                    return TraceLevel.Off;
+                }
+                set
+                {
+
+                }
+            }
+
+            public override TraceListenerCollection AuthenticationTraceListeners { get => Trace.Listeners; }
+
+            public override SourceLevels AuthenticationTraceSourceLevel
+            {
+                get
+                {
+                    return SourceLevels.Off;
+                }
+                set
+                {
+
+                }
+            }
+#endif
         }
     }
 }

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using System;
 using System.Security;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
@@ -35,11 +36,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// <returns>An access token.</returns>
         IAccessToken GetAccessToken(
             AdalConfiguration config,
+#if !NETSTANDARD
             string promptBehavior,
+#else		
+			Action<string> promptAction,
+#endif
             string userId,
             SecureString password,
             string credentialType);
-
+			
+#if !NETSTANDARD
         /// <summary>
         /// Get a new authentication token for the given environment
         /// </summary>
@@ -53,5 +59,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             string principalId,
             string certificateThumbprint,
             string credentialType);
+#endif	
     }
 }

@@ -15,7 +15,6 @@
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -25,6 +24,11 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
+
+#if NETSTANDARD
+using Microsoft.PowerShell.CoreClr.Stubs;
+#endif
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 {
@@ -236,7 +240,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 CredentialCache credentialCache = new CredentialCache();
 
                 // Get base address without terminating slash
-                string credentialAddress = new Uri(endpoint).GetLeftPart(UriPartial.Authority).TrimEnd(uriPathSeparator);
+                string credentialAddress = new Uri(endpoint).GetBaseAddress().TrimEnd(uriPathSeparator);
 
                 // Add credentials to cache and associate with handler
                 NetworkCredential networkCredentials = credentials.GetCredential(new Uri(credentialAddress), "Basic");

@@ -14,11 +14,14 @@
 
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Rest.Azure.Authentication;
+using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections.Generic;
 using System.Security;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
+
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -28,7 +31,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public IAccessToken GetAccessToken(
             AdalConfiguration config,
+#if !NETSTANDARD	
             string promptBehavior,
+#else
+			Action<string> promptAction,
+#endif		
             string userId,
             SecureString password,
             string credentialType)
@@ -70,10 +77,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
 
             StoreAppKey(appId, config.AdDomain, appKey);
-            var credential = new ClientCredential(appId, appKey);
             var context = GetContext(config);
+#if !NETSTANDARD
+            var credential = new ClientCredential(appId, appKey);
             return context.AcquireToken(config.ResourceClientUri, credential);
-        }
+#else
+            var credential = new ClientCredential(appId, ConversionUtilities.SecureStringToString(appKey));
+            return context.AcquireTokenAsync(context.Authority, credential)
+						  .ConfigureAwait(false).GetAwaiter().GetResult();
+#endif        
+		}
 
         private AuthenticationResult AcquireTokenWithCertificate(
             AdalConfiguration config,
@@ -87,7 +100,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
 
             var context = GetContext(config);
+#if !NETSTANDARD
             return context.AcquireToken(config.ResourceClientUri, new ClientAssertionCertificate(appId, certificate));
+#else
+            return context.AcquireTokenAsync(config.ResourceClientUri, new ClientAssertionCertificate(appId, certificate))
+                          .ConfigureAwait(false).GetAwaiter().GetResult();
+#endif
         }
 
         private AuthenticationResult RenewWithSecret(AdalConfiguration config, string appId)
