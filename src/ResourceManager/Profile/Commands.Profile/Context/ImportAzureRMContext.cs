@@ -15,11 +15,11 @@
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
-using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Profile.Properties;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -55,8 +55,7 @@ namespace Microsoft.Azure.Commands.Profile
                 {
                     if (!Common.Authentication.AzureSession.Instance.DataStore.FileExists(Path))
                     {
-                        throw new PSArgumentException(string.Format(
-                            Microsoft.Azure.Commands.Profile.Properties.Resources.FileNotFound,
+                        throw new PSArgumentException(string.Format(Resources.FileNotFound,
                             Path));
                     }
 
@@ -88,8 +87,8 @@ namespace Microsoft.Azure.Commands.Profile
                     StringComparison.OrdinalIgnoreCase))
                 {
                     WriteWarning(string.Format(
-                                   Microsoft.Azure.Commands.Profile.Properties.Resources.SelectedSubscriptionNotActive,
-                                   AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.State));
+                        Resources.SelectedSubscriptionNotActive,
+                        AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.State));
                 }
 
                 WriteObject((PSAzureProfile)AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>());

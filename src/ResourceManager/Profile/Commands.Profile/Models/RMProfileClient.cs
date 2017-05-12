@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Internal.Subscriptions;
 using Microsoft.Azure.Internal.Subscriptions.Models;
@@ -28,6 +27,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
+
+using AuthenticationMessages = Microsoft.Azure.Commands.Common.Authentication.Properties.Resources;
+using ProfileMessages = Microsoft.Azure.Commands.Profile.Properties.Resources;
+using ResourceMessages = Microsoft.Azure.Commands.ResourceManager.Common.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
@@ -54,16 +57,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             string tenantId,
             string subscriptionId,
             string subscriptionName,
-            SecureString password)
+            SecureString password
+#if NETSTANDARD
+            , Action<string> promptBehavior
+#endif
+            )
         {
             IAzureSubscription newSubscription = null;
             IAzureTenant newTenant = null;
+#if !NETSTANDARD
             string promptBehavior =
                 (password == null &&
                  account.Type != AzureAccount.AccountType.AccessToken &&
                  !account.IsPropertySet(AzureAccount.Property.CertificateThumbprint))
                 ? ShowDialog.Always : ShowDialog.Never;
-
+#endif
             // (tenant and subscription are present) OR
             // (tenant is present and subscription is not provided)
             if (!string.IsNullOrEmpty(tenantId))
@@ -93,7 +101,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
                     try
                     {
-                        token = AcquireAccessToken(account, environment, tenant, password, ShowDialog.Auto);
+                        token = AcquireAccessToken(account, environment, tenant, password,
+#if !NETSTANDARD
+                            ShowDialog.Auto);
+#else
+                            null);
+#endif
 
                         if (accountId == null)
                         {
@@ -107,7 +120,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                         else
                         {   // if account ID is different from the first tenant account id we need to ignore current tenant
                             WriteWarningMessage(string.Format(
-                                Microsoft.Azure.Commands.Profile.Properties.Resources.AccountIdMismatch,
+                                ProfileMessages.AccountIdMismatch,
                                 account.Id,
                                 tenant,
                                 accountId));
@@ -117,7 +130,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     }
                     catch
                     {
-                        WriteWarningMessage(string.Format(Microsoft.Azure.Commands.Profile.Properties.Resources.UnableToAqcuireToken, tenant));
+                        WriteWarningMessage(string.Format(ProfileMessages.UnableToAqcuireToken, tenant));
                     }
 
                     if (token != null &&
@@ -139,11 +152,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 if (subscriptionId != null)
                 {
-                    throw new PSInvalidOperationException(String.Format(Properties.Resources.SubscriptionIdNotFound, account.Id, subscriptionId));
+                    throw new PSInvalidOperationException(String.Format(ResourceMessages.SubscriptionIdNotFound, account.Id, subscriptionId));
                 }
                 else if (subscriptionName != null)
                 {
-                    throw new PSInvalidOperationException(String.Format(Properties.Resources.SubscriptionNameNotFound, account.Id, subscriptionName));
+                    throw new PSInvalidOperationException(String.Format(ResourceMessages.SubscriptionNameNotFound, account.Id, subscriptionName));
                 }
 
                 _profile.DefaultContext = new AzureContext(account, environment, newTenant);
@@ -154,7 +167,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 if (!newSubscription.State.Equals("Enabled", StringComparison.OrdinalIgnoreCase))
                 {
                     WriteWarningMessage(string.Format(
-                                   Microsoft.Azure.Commands.Profile.Properties.Resources.SelectedSubscriptionNotActive,
+                                   ProfileMessages.SelectedSubscriptionNotActive,
                                    newSubscription.State));
                 }
             }
@@ -248,7 +261,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         public List<AzureTenant> ListTenants(string tenant = "")
         {
-            List<AzureTenant> tenants = ListAccountTenants(_profile.DefaultContext.Account, _profile.DefaultContext.Environment, null, ShowDialog.Never);
+            List<AzureTenant> tenants = ListAccountTenants(_profile.DefaultContext.Account, _profile.DefaultContext.Environment, null, 
+#if !NETSTANDARD
+                ShowDialog.Never);
+#else
+                null);
+#endif
             if (!string.IsNullOrWhiteSpace(tenant))
             {
                 tenants = tenants.Where(t => tenant == null ||
@@ -290,13 +308,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             if (environment == null)
             {
-                throw new ArgumentNullException("environment", Resources.EnvironmentNeedsToBeSpecified);
+                throw new ArgumentNullException("environment", AuthenticationMessages.EnvironmentNeedsToBeSpecified);
             }
 
             if (AzureEnvironment.PublicEnvironments.ContainsKey(environment.Name))
             {
                 throw new InvalidOperationException(
-                    string.Format(Resources.ChangingDefaultEnvironmentNotSupported, "environment"));
+                    string.Format(AuthenticationMessages.ChangingDefaultEnvironmentNotSupported, "environment"));
             }
 
             if (_profile.EnvironmentTable.ContainsKey(environment.Name))
@@ -332,11 +350,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             if (string.IsNullOrEmpty(name))
             {
-                throw new ArgumentNullException("name", Resources.EnvironmentNameNeedsToBeSpecified);
+                throw new ArgumentNullException("name", AuthenticationMessages.EnvironmentNameNeedsToBeSpecified);
             }
             if (AzureEnvironment.PublicEnvironments.ContainsKey(name))
             {
-                throw new ArgumentException(Resources.RemovingDefaultEnvironmentsNotSupported, "name");
+                throw new ArgumentException(AuthenticationMessages.RemovingDefaultEnvironmentsNotSupported, "name");
             }
 
             if (_profile.EnvironmentTable.ContainsKey(name))
@@ -347,13 +365,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
             else
             {
-                throw new ArgumentException(string.Format(Resources.EnvironmentNotFound, name), "name");
+                throw new ArgumentException(string.Format(AuthenticationMessages.EnvironmentNotFound, name), "name");
             }
         }
 
-        public IAccessToken AcquireAccessToken(string tenantId)
+        public IAccessToken AcquireAccessToken(string tenantId, Action<string> promptAction = null)
         {
-            return AcquireAccessToken(_profile.DefaultContext.Account, _profile.DefaultContext.Environment, tenantId, null, ShowDialog.Auto);
+            return AcquireAccessToken(_profile.DefaultContext.Account, _profile.DefaultContext.Environment, tenantId, null, 
+#if !NETSTANDARD
+                ShowDialog.Auto);
+#else
+                 promptAction);
+#endif
         }
 
         public IEnumerable<IAzureSubscription> ListSubscriptions(string tenantIdOrDomain = "")
@@ -371,7 +394,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 catch (AadAuthenticationException)
                 {
                     WriteWarningMessage(string.Format(
-                        Microsoft.Azure.Commands.Profile.Properties.Resources.UnableToLogin,
+                        ProfileMessages.UnableToLogin,
                         _profile.DefaultContext.Account,
                         tenant));
                 }
@@ -402,7 +425,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 throw new ArgumentNullException("environment1");
             }
-            if (!string.Equals(environment1.Name, environment2.Name, StringComparison.InvariantCultureIgnoreCase))
+            if (!string.Equals(environment1.Name, environment2.Name, StringExtensions.CaselessComparison))
             {
                 throw new ArgumentException("Environment names do not match.");
             }
@@ -444,7 +467,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             IAzureEnvironment environment,
             string tenantId,
             SecureString password,
+#if !NETSTANDARD
             string promptBehavior)
+#else
+            Action<string> promptBehavior)
+#endif			
         {
             if (account.Type == AzureAccount.AccountType.AccessToken)
             {
@@ -559,7 +586,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
         }
 
-        private List<AzureTenant> ListAccountTenants(IAzureAccount account, IAzureEnvironment environment, SecureString password, string promptBehavior)
+        private List<AzureTenant> ListAccountTenants(
+			IAzureAccount account, 
+			IAzureEnvironment environment, 
+			SecureString password, 
+#if !NETSTANDARD			
+			string promptBehavior)
+#else		
+			Action<string> promptBehavior)
+#endif			
         {
             List<AzureTenant> result = new List<AzureTenant>();
             try
@@ -589,7 +624,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
             catch
             {
-                WriteWarningMessage(string.Format(Microsoft.Azure.Commands.Profile.Properties.Resources.UnableToAqcuireToken, AuthenticationFactory.CommonAdTenant));
+                WriteWarningMessage(string.Format(ProfileMessages.UnableToAqcuireToken, AuthenticationFactory.CommonAdTenant));
                 if (account.IsPropertySet(AzureAccount.Property.Tenants))
                 {
                     result =
@@ -632,12 +667,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             IAccessToken accessToken = null;
             try
             {
+#if !NETSTANDARD
                 accessToken = AcquireAccessToken(account, environment, tenantId, password, promptBehavior);
-
+#else
+                accessToken = AcquireAccessToken(account, environment, tenantId, password, null);
+#endif
             }
             catch
             {
-                WriteWarningMessage(string.Format(Microsoft.Azure.Commands.Profile.Properties.Resources.UnableToAqcuireToken, tenantId));
+                WriteWarningMessage(string.Format(ProfileMessages.UnableToAqcuireToken, tenantId));
                 return new List<AzureSubscription>();
             }
 
