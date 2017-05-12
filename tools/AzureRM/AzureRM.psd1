@@ -300,6 +300,7 @@ PrivateData = @{
     	- Adjust grace period to a minimum of 1 hour if a lower one is provided
     * Remove "Usage_Anomaly" from the accepted values for "ExcludedDetectionType" parameter of Set-AzureRmSqlDatabaseThreatDetectionPolicy cmdlet and Set-AzureRmSqlServerThreatDetectionPolicy cmdlet. 
 * Storage
+    * Fix issue with New-AzureStorageContext in offline scenarios: https://github.com/Azure/azure-powershell/issues/3939
     * Upgrade SRP SDK to 6.3.0
     * New/Set-AzureRmStorageAccount:Add a new parameter to support EnableHttpsTrafficOnly
     * New/Set/Get-AzureRmStorageAccount: Returned Storage Account contains a new attribute EnableHttpsTrafficOnly'
