@@ -154,9 +154,10 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
         public VhdParsingException(string message, Exception innerException) : base(message, innerException)
         {
         }
-
+#if !NETSTANDARD
         protected VhdParsingException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }
+#endif
     }
 }

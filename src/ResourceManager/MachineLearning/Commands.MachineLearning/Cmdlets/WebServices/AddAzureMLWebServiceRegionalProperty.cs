@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.MachineLearning.Utilities;
 using Microsoft.Azure.Management.MachineLearning.WebServices.Models;
 using Microsoft.Azure.Management.MachineLearning.WebServices.Util;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
 {
