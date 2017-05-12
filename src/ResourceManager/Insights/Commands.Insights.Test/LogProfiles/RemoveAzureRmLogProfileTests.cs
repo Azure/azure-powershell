@@ -14,7 +14,7 @@
 
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Insights.LogProfiles;
-using Microsoft.Azure.Management.Insights;
+using Microsoft.Azure.Management.Monitor.Management;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Management.Automation;
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.LogProfiles
     public class RemoveAzureRmLogProfileTest
     {
         private readonly RemoveAzureRmLogProfileCommand cmdlet;
-        private readonly Mock<InsightsManagementClient> insightsManagementClientMock;
+        private readonly Mock<MonitorManagementClient> insightsManagementClientMock;
         private readonly Mock<ILogProfilesOperations> insightsLogProfilesOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
         private string logProfileName;
@@ -36,12 +36,12 @@ namespace Microsoft.Azure.Commands.Insights.Test.LogProfiles
         {
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             insightsLogProfilesOperationsMock = new Mock<ILogProfilesOperations>();
-            insightsManagementClientMock = new Mock<InsightsManagementClient>();
+            insightsManagementClientMock = new Mock<MonitorManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new RemoveAzureRmLogProfileCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                InsightsManagementClient = insightsManagementClientMock.Object
+                MonitorManagementClient = insightsManagementClientMock.Object
             };
 
             insightsLogProfilesOperationsMock.Setup(f => f.DeleteWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))

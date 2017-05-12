@@ -12,14 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.ServiceManagemenet.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using System;
 using System.Globalization;
+using System.Linq;
 using System.Management.Automation;
 using System.Security.Permissions;
 
@@ -335,11 +337,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         internal CloudStorageAccount GetStorageAccountWithAzureEnvironment(StorageCredentials credential,
             string storageAccountName, bool useHttps, string azureEnvironmentName = "")
         {
-            AzureEnvironment azureEnvironment = null;
-
-            if (null != SMProfile)
+            IAzureEnvironment azureEnvironment = null;
+            var profile = SMProfile??RMProfile;
+            if (null != profile)
             {
-                if (DefaultContext != null && string.IsNullOrEmpty(azureEnvironmentName))
+                if (DefaultContext != null && DefaultContext.Environment != null && string.IsNullOrEmpty(azureEnvironmentName))
                 {
                     azureEnvironment = DefaultContext.Environment;
 
@@ -353,8 +355,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                 {
                     try
                     {
-                        var profileClient = new ProfileClient(SMProfile);
-                        azureEnvironment = profileClient.GetEnvironmentOrDefault(azureEnvironmentName);
+                        azureEnvironment = profile.Environments.FirstOrDefault((s) => string.Equals(s.Name, azureEnvironmentName, StringComparison.OrdinalIgnoreCase));
+                        if (azureEnvironment == null)
+                        {
+                            azureEnvironment = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
+                        }
                     }
                     catch (ArgumentException e)
                     {

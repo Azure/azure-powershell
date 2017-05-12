@@ -34,9 +34,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, storageClient, storageV2Client, resourcesClient, authorizationClient);
         }
 
-        public AuditingTests(ITestOutputHelper output)
+        public AuditingTests(ITestOutputHelper output) : base(output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
      
         [Fact]

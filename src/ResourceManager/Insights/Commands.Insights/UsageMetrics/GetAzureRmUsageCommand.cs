@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Insights;
-using Microsoft.Azure.Insights.Models;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Commands.Insights.UsageMetrics
     /// Get the list of usage metrics for a resource.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmUsage"), OutputType(typeof(PSUsageMetric[]))]
-    public class GetAzureRmUsageCommand : InsightsClientCmdletBase
+    public class GetAzureRmUsageCommand : MonitorClientCmdletBase
     {
         /// <summary>
         /// Default value of the timerange to search for usage metrics
@@ -137,18 +136,20 @@ namespace Microsoft.Azure.Commands.Insights.UsageMetrics
         /// </summary>
         protected override void ProcessRecordInternal()
         {
+            WriteWarning("Get-AzureRmUsage will be deprecated in a future release.");
+
             var queryFilter = new ODataQuery<UsageMetric>(this.ProcessParameters());
             string apiVersion = this.ApiVersion ?? DefaultApiVersion;
 
             // Call the proper API methods to return a list of raw records.
             // If fullDetails is present full details of the records displayed, otherwise only a summary of the values is displayed
-            IEnumerable<UsageMetric> response = this.InsightsClient.UsageMetrics
+            IEnumerable<UsageMetric> response = this.MonitorClient.UsageMetrics
                 .ListAsync(resourceUri: this.ResourceId, apiVersion: apiVersion, odataQuery: queryFilter, cancellationToken: CancellationToken.None)
                 .Result;
 
             var records = ExtractCollectionFromResult(response.GetEnumerator()).ToArray();
 
-            WriteObject(sendToPipeline: records);
+            WriteObject(sendToPipeline: records, enumerateCollection: true);
         }
     }
 }

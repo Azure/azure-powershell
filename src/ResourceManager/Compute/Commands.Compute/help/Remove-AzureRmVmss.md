@@ -49,7 +49,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -65,7 +65,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -80,7 +80,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -96,14 +96,15 @@ Parameter Sets: (All)
 Aliases: Name
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.```yaml
+Prompts you for confirmation before running the cmdlet.
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
@@ -116,7 +117,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.```yaml
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi

@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-ms.assetid: 39208999-AE31-47CD-87B3-A6005B42CEE7
+ms.assetid: 15B6EAE2-56ED-4A01-B8EA-52B9FCDC1F66
 online version: 
 schema: 2.0.0
 ---
@@ -14,21 +14,19 @@ Gets OpenID Connect providers.
 
 ### Get all OpenID Connect Providers (Default)
 ```
-Get-AzureRmApiManagementOpenIdConnectProvider -Context <PsApiManagementContext>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmApiManagementOpenIdConnectProvider -Context <PsApiManagementContext> [<CommonParameters>]
 ```
 
 ### Get by OpenID Connect Provider ID
 ```
 Get-AzureRmApiManagementOpenIdConnectProvider -Context <PsApiManagementContext>
- [-OpenIdConnectProviderId <String>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ [-OpenIdConnectProviderId <String>] [<CommonParameters>]
 ```
 
 ### Find by OpenID Connect Provider friendly Name
 ```
 Get-AzureRmApiManagementOpenIdConnectProvider -Context <PsApiManagementContext> [-Name <String>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,42 +72,19 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -Name
+Specifies a friendly name of a provider.
+If you specify a name, this cmdlet gets that provider.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: iv
+Parameter Sets: Find by OpenID Connect Provider friendly Name
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -120,22 +95,6 @@ If you specify an ID, this cmdlet gets that provider.
 ```yaml
 Type: String
 Parameter Sets: Get by OpenID Connect Provider ID
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Name
-Specifies a friendly name of a provider.
-If you specify a name, this cmdlet gets that provider.
-
-```yaml
-Type: String
-Parameter Sets: Find by OpenID Connect Provider friendly Name
 Aliases: 
 
 Required: False

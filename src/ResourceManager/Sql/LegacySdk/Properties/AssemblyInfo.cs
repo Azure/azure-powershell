@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) Microsoft.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Microsoft Azure SQL Server Management Library")]
 [assembly: AssemblyDescription("Provides management functionality for Microsoft Azure SQL.")]
 
-[assembly: AssemblyVersion("2.8.0")]
-[assembly: AssemblyFileVersion("2.8.0")]
+[assembly: AssemblyVersion("3.0.0")]
+[assembly: AssemblyFileVersion("3.0.0")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
 [assembly: AssemblyProduct("Azure .NET SDK")]

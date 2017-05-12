@@ -16,14 +16,12 @@ Sets a custom hostname configuration for an API Management service proxy or port
 ```
 Set-AzureRmApiManagementHostnames -ResourceGroupName <String> -Name <String>
  [-PortalHostnameConfiguration <PsApiManagementHostnameConfiguration>]
- [-ProxyHostnameConfiguration <PsApiManagementHostnameConfiguration>] [-PassThru]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-ProxyHostnameConfiguration <PsApiManagementHostnameConfiguration>] [-PassThru] [<CommonParameters>]
 ```
 
 ### Set from provided PsApiManagement instance
 ```
-Set-AzureRmApiManagementHostnames -ApiManagement <PsApiManagement> [-PassThru]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+Set-AzureRmApiManagementHostnames -ApiManagement <PsApiManagement> [-PassThru] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,18 +50,18 @@ You need to import corresponding certificates and then apply the custom hostname
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the name of the resource group under which the API Management instance exists.
+### -ApiManagement
+Specifies the **PsApiManagement** instance that this cmdlet gets the *PortalHostnameConfiguration* and *ProxyHostnameConfiguration* parameters from.
 
 ```yaml
-Type: String
-Parameter Sets: Specific API Management service
+Type: PsApiManagement
+Parameter Sets: Set from provided PsApiManagement instance
 Aliases: 
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -79,6 +77,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns an object representing the item with which you are working.
+By default, this cmdlet does not generate any output.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -114,73 +128,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns an object representing the item with which you are working.
-By default, this cmdlet does not generate any output.
+### -ResourceGroupName
+Specifies the name of the resource group under which the API Management instance exists.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ApiManagement
-Specifies the **PsApiManagement** instance that this cmdlet gets the *PortalHostnameConfiguration* and *ProxyHostnameConfiguration* parameters from.
-
-```yaml
-Type: PsApiManagement
-Parameter Sets: Set from provided PsApiManagement instance
+Type: String
+Parameter Sets: Specific API Management service
 Aliases: 
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Graph.RBAC.Models;
@@ -36,9 +37,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
         /// Creates new ActiveDirectoryClient using WindowsAzureSubscription.
         /// </summary>
         /// <param name="context"></param>
-        public ActiveDirectoryClient(AzureContext context)
+        public ActiveDirectoryClient(IAzureContext context)
         {
-            GraphClient = AzureSession.ClientFactory.CreateArmClient<GraphRbacManagementClient>(
+            GraphClient = AzureSession.Instance.ClientFactory.CreateArmClient<GraphRbacManagementClient>(
                 context, AzureEnvironment.Endpoint.Graph);
 
             GraphClient.TenantID = context.Tenant.Id.ToString();

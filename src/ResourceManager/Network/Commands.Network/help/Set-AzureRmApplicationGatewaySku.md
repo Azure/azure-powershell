@@ -14,7 +14,7 @@ Modifies the SKU of an application gateway.
 
 ```
 Set-AzureRmApplicationGatewaySku -ApplicationGateway <PSApplicationGateway> -Name <String> -Tier <String>
- -Capacity <Int32> [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ -Capacity <Int32> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,45 +64,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 Specifies the name of the application gateway.
 The acceptable values for this parameter are:
@@ -117,6 +78,7 @@ The acceptable values for this parameter are:
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Standard_Small, Standard_Medium, Standard_Large, WAF_Medium, WAF_Large
 
 Required: True
 Position: Named
@@ -136,6 +98,7 @@ The acceptable values for this parameter are:
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Standard, WAF
 
 Required: True
 Position: Named

@@ -82,6 +82,28 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -MetricStatistic
+Specifies the metric statistic.
+The acceptable values for this parameter are:
+
+- Average
+- Min
+- Max
+- Sum
+
+```yaml
+Type: MetricStatisticType
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Average, Min, Max, Sum
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Operator
 Specifies the operator.
 The acceptable values for this parameter are:
@@ -97,6 +119,7 @@ The acceptable values for this parameter are:
 Type: ComparisonOperationType
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Equals, NotEquals, GreaterThan, GreaterThanOrEqual, LessThan, LessThanOrEqual
 
 Required: True
 Position: Named
@@ -105,17 +128,69 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -MetricStatistic
-Specifies the metric statistic.
-The acceptable values for this parameter are:
-
-- Average
-- Min
-- Max
-- Sum
+### -ScaleActionCooldown
+Specifies the Autoscale action cooldown time.
 
 ```yaml
-Type: MetricStatisticType
+Type: TimeSpan
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ScaleActionDirection
+Specifies the scale action direction.
+The acceptable values for this parameter are:
+
+- None
+- Increase
+- Decrease
+
+```yaml
+Type: ScaleDirection
+Parameter Sets: (All)
+Aliases: 
+Accepted values: None, Increase, Decrease
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ScaleActionScaleType
+Specifies the scale type.
+The acceptable values for this parameter are:
+
+- ChangeSize
+- ChangeCount
+- PercentChangeCount
+- ExactCount
+
+```yaml
+Type: ScaleType
+Parameter Sets: (All)
+Aliases: 
+Accepted values: ChangeCount, PercentChangeCount, ExactCount
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ScaleActionValue
+Specifies the action value.
+
+```yaml
+Type: String
 Parameter Sets: (All)
 Aliases: 
 
@@ -155,6 +230,7 @@ The acceptable values for this parameter are:
 Type: TimeAggregationType
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Average, Minimum, Maximum, Total, Count
 
 Required: False
 Position: Named
@@ -187,77 +263,6 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ScaleActionCooldown
-Specifies the Autoscale action cooldown time.
-
-```yaml
-Type: TimeSpan
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ScaleActionDirection
-Specifies the scale action direction.
-The acceptable values for this parameter are:
-
-- None
-- Increase
-- Decrease
-
-```yaml
-Type: ScaleDirection
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ScaleActionScaleType
-Specifies the scale type.
-The acceptable values for this parameter are:
-
-- ChangeSize
-- ChangeCount
-- PercentChangeCount
-- ExactCount
-
-```yaml
-Type: ScaleType
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ScaleActionValue
-Specifies the action value.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

@@ -63,19 +63,44 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             string blobName,
             AccessCondition accessCondition = null,
             BlobRequestOptions requestOptions = null,
-            OperationContext operationContext = null)
+            OperationContext operationContext = null,
+            DateTimeOffset? snapshotTime = null)
         {
             return GetBlobReferenceWrapper(() =>
                 {
                     try
                     {
-                        return localChannel.GetBlobReferenceFromServer(container, blobName, accessCondition, requestOptions, operationContext);
+                        return localChannel.GetBlobReferenceFromServer(container, blobName, accessCondition, requestOptions, operationContext, snapshotTime);
                     }
                     catch (InvalidOperationException)
                     {
                         return null;
                     }
                 },
+                blobName,
+                container.Name);
+        }
+
+        protected static CloudBlob GetBlobSnapshotReferenceFromServerWithContainer(
+            IStorageBlobManagement localChannel,
+            CloudBlobContainer container,
+            string blobName,
+            DateTime SrcBlobSnapshotTime,
+            AccessCondition accessCondition = null,
+            BlobRequestOptions requestOptions = null,
+            OperationContext operationContext = null)
+        {
+            return GetBlobReferenceWrapper(() =>
+            {
+                try
+                {
+                    return localChannel.GetBlobReferenceFromServer(container, blobName, accessCondition, requestOptions, operationContext);
+                }
+                catch (InvalidOperationException)
+                {
+                    return null;
+                }
+            },
                 blobName,
                 container.Name);
         }

@@ -12,10 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.DataLake.Analytics;
+using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
 using Microsoft.Azure.Management.DataLake.Analytics.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Rest.Azure.OData;
@@ -25,6 +24,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Net;
+using Microsoft.Azure.Management.DataLake.Analytics;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 {
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             set { jobIdQueue = value; }
         }
 
-        public DataLakeAnalyticsClient(AzureContext context)
+        public DataLakeAnalyticsClient(IAzureContext context)
         {
             if (context == null)
             {
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             
             _accountClient = DataLakeAnalyticsCmdletBase.CreateAdlaClient<DataLakeAnalyticsAccountManagementClient>(context,
                 AzureEnvironment.Endpoint.ResourceManager);
-            _subscriptionId = context.Subscription.Id;
+            _subscriptionId = context.Subscription.GetId();
 
             _jobClient = DataLakeAnalyticsCmdletBase.CreateAdlaClient<DataLakeAnalyticsJobManagementClient>(context,
                 AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix, true);
@@ -724,6 +724,20 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
                     break;
 
+                case DataLakeAnalyticsEnums.CatalogItemType.Package:
+                    if (isList)
+                    {
+                        toReturn.AddRange(GetPackages(accountName, path.DatabaseName,
+                            path.SchemaAssemblyOrExternalDataSourceName));
+                    }
+                    else
+                    {
+                        toReturn.Add(GetPackage(accountName, path.DatabaseName,
+                            path.SchemaAssemblyOrExternalDataSourceName, path.TableOrTableValuedFunctionName));
+                    }
+
+                    break;
+
                 case DataLakeAnalyticsEnums.CatalogItemType.Procedure:
                     if (isList)
                     {
@@ -883,14 +897,26 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             string schemaName)
         {
             List<USqlTable> toReturn = new List<USqlTable>();
-            var response = _catalogClient.Catalog.ListTables(accountName, databaseName, schemaName);
-            toReturn.AddRange(response);
-            while (!string.IsNullOrEmpty(response.NextPageLink))
+            if (string.IsNullOrEmpty(schemaName))
             {
-                response = _catalogClient.Catalog.ListTablesNext(response.NextPageLink);
+                var response = _catalogClient.Catalog.ListTablesByDatabase(accountName, databaseName);
                 toReturn.AddRange(response);
+                while (!string.IsNullOrEmpty(response.NextPageLink))
+                {
+                    response = _catalogClient.Catalog.ListTablesByDatabaseNext(response.NextPageLink);
+                    toReturn.AddRange(response);
+                }
             }
-
+            else
+            {
+                var response = _catalogClient.Catalog.ListTables(accountName, databaseName, schemaName);
+                toReturn.AddRange(response);
+                while (!string.IsNullOrEmpty(response.NextPageLink))
+                {
+                    response = _catalogClient.Catalog.ListTablesNext(response.NextPageLink);
+                    toReturn.AddRange(response);
+                }
+            }
             return toReturn;
         }
 
@@ -928,14 +954,26 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             string databaseName, string schemaName)
         {
             List<USqlTableValuedFunction> toReturn = new List<USqlTableValuedFunction>();
-            var response = _catalogClient.Catalog.ListTableValuedFunctions(accountName, databaseName, schemaName);
-            toReturn.AddRange(response);
-            while (!string.IsNullOrEmpty(response.NextPageLink))
+            if (string.IsNullOrEmpty(schemaName))
             {
-                response = _catalogClient.Catalog.ListTableValuedFunctionsNext(response.NextPageLink);
+                var response = _catalogClient.Catalog.ListTableValuedFunctionsByDatabase(accountName, databaseName);
                 toReturn.AddRange(response);
+                while (!string.IsNullOrEmpty(response.NextPageLink))
+                {
+                    response = _catalogClient.Catalog.ListTableValuedFunctionsByDatabaseNext(response.NextPageLink);
+                    toReturn.AddRange(response);
+                }
             }
-
+            else
+            {
+                var response = _catalogClient.Catalog.ListTableValuedFunctions(accountName, databaseName, schemaName);
+                toReturn.AddRange(response);
+                while (!string.IsNullOrEmpty(response.NextPageLink))
+                {
+                    response = _catalogClient.Catalog.ListTableValuedFunctionsNext(response.NextPageLink);
+                    toReturn.AddRange(response);
+                }
+            }
             return toReturn;
         }
 
@@ -951,14 +989,36 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             string databaseName, string schemaName, string tableName)
         {
             List<USqlTableStatistics> toReturn = new List<USqlTableStatistics>();
-            var response = _catalogClient.Catalog.ListTableStatistics(accountName, databaseName, schemaName, tableName);
-            toReturn.AddRange(response);
-            while (!string.IsNullOrEmpty(response.NextPageLink))
+            if (string.IsNullOrEmpty(schemaName) && string.IsNullOrEmpty(tableName))
             {
-                response = _catalogClient.Catalog.ListTableStatisticsNext(response.NextPageLink);
+                var response = _catalogClient.Catalog.ListTableStatisticsByDatabase(accountName, databaseName);
                 toReturn.AddRange(response);
+                while (!string.IsNullOrEmpty(response.NextPageLink))
+                {
+                    response = _catalogClient.Catalog.ListTableStatisticsByDatabaseNext(response.NextPageLink);
+                    toReturn.AddRange(response);
+                }
             }
-
+            else if (!string.IsNullOrEmpty(schemaName) && string.IsNullOrEmpty(tableName))
+            {
+                var response = _catalogClient.Catalog.ListTableStatisticsByDatabaseAndSchema(accountName, databaseName, schemaName);
+                toReturn.AddRange(response);
+                while (!string.IsNullOrEmpty(response.NextPageLink))
+                {
+                    response = _catalogClient.Catalog.ListTableStatisticsByDatabaseAndSchemaNext(response.NextPageLink);
+                    toReturn.AddRange(response);
+                }
+            }
+            else
+            {
+                var response = _catalogClient.Catalog.ListTableStatistics(accountName, databaseName, schemaName, tableName);
+                toReturn.AddRange(response);
+                while (!string.IsNullOrEmpty(response.NextPageLink))
+                {
+                    response = _catalogClient.Catalog.ListTableStatisticsNext(response.NextPageLink);
+                    toReturn.AddRange(response);
+                }
+            }
             return toReturn;
         }
 
@@ -973,12 +1033,25 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             string schemaName)
         {
             List<USqlView> toReturn = new List<USqlView>();
-            var response = _catalogClient.Catalog.ListViews(accountName, databaseName, schemaName);
-            toReturn.AddRange(response);
-            while (!string.IsNullOrEmpty(response.NextPageLink))
+            if (string.IsNullOrEmpty(schemaName))
             {
-                response = _catalogClient.Catalog.ListViewsNext(response.NextPageLink);
+                var response = _catalogClient.Catalog.ListViewsByDatabase(accountName, databaseName);
                 toReturn.AddRange(response);
+                while (!string.IsNullOrEmpty(response.NextPageLink))
+                {
+                    response = _catalogClient.Catalog.ListViewsByDatabaseNext(response.NextPageLink);
+                    toReturn.AddRange(response);
+                }
+            }
+            else
+            {
+                var response = _catalogClient.Catalog.ListViews(accountName, databaseName, schemaName);
+                toReturn.AddRange(response);
+                while (!string.IsNullOrEmpty(response.NextPageLink))
+                {
+                    response = _catalogClient.Catalog.ListViewsNext(response.NextPageLink);
+                    toReturn.AddRange(response);
+                }
             }
 
             return toReturn;
@@ -1000,6 +1073,28 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             while (!string.IsNullOrEmpty(response.NextPageLink))
             {
                 response = _catalogClient.Catalog.ListProceduresNext(response.NextPageLink);
+                toReturn.AddRange(response);
+            }
+
+            return toReturn;
+        }
+
+        private USqlPackage GetPackage(string accountName, string databaseName, string schemaName,
+            string packageName)
+        {
+            return
+                _catalogClient.Catalog.GetPackage(accountName, databaseName, schemaName, packageName);
+        }
+
+        private IList<USqlPackage> GetPackages(string accountName, string databaseName,
+            string schemaName)
+        {
+            List<USqlPackage> toReturn = new List<USqlPackage>();
+            var response = _catalogClient.Catalog.ListPackages(accountName, databaseName, schemaName);
+            toReturn.AddRange(response);
+            while (!string.IsNullOrEmpty(response.NextPageLink))
+            {
+                response = _catalogClient.Catalog.ListPackagesNext(response.NextPageLink);
                 toReturn.AddRange(response);
             }
 
@@ -1200,11 +1295,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                     }
 
                     break;
-                case DataLakeAnalyticsEnums.CatalogItemType.Table:
-                case DataLakeAnalyticsEnums.CatalogItemType.TableValuedFunction:
-                case DataLakeAnalyticsEnums.CatalogItemType.View:
                 case DataLakeAnalyticsEnums.CatalogItemType.Procedure:
                 case DataLakeAnalyticsEnums.CatalogItemType.Types:
+                case DataLakeAnalyticsEnums.CatalogItemType.Package:
                     if (string.IsNullOrEmpty(path.DatabaseName) ||
                         string.IsNullOrEmpty(path.SchemaAssemblyOrExternalDataSourceName))
                     {
@@ -1218,7 +1311,24 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                     }
 
                     break;
-                case DataLakeAnalyticsEnums.CatalogItemType.TableStatistics:
+
+                case DataLakeAnalyticsEnums.CatalogItemType.Table:
+                case DataLakeAnalyticsEnums.CatalogItemType.TableValuedFunction:
+                case DataLakeAnalyticsEnums.CatalogItemType.View:
+                    if (string.IsNullOrEmpty(path.DatabaseName))
+                    {
+                        throw new CloudException(string.Format(Properties.Resources.InvalidCatalogPath,
+                            path.FullCatalogItemPath));
+                    }
+
+                    if (string.IsNullOrEmpty(path.TableOrTableValuedFunctionName) ||
+                        string.IsNullOrEmpty(path.SchemaAssemblyOrExternalDataSourceName))
+                    {
+                        isList = true;
+                    }
+
+                    break;
+
                 case DataLakeAnalyticsEnums.CatalogItemType.TablePartition:
                     if (string.IsNullOrEmpty(path.DatabaseName) ||
                         string.IsNullOrEmpty(path.SchemaAssemblyOrExternalDataSourceName) ||
@@ -1229,6 +1339,20 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                     }
 
                     if (string.IsNullOrEmpty(path.TableStatisticsOrPartitionName))
+                    {
+                        isList = true;
+                    }
+                    break;
+
+                case DataLakeAnalyticsEnums.CatalogItemType.TableStatistics:
+                    if (string.IsNullOrEmpty(path.DatabaseName))
+                    {
+                        throw new CloudException(string.Format(Properties.Resources.InvalidCatalogPath,
+                            path.FullCatalogItemPath));
+                    }
+
+                    if (string.IsNullOrEmpty(path.TableStatisticsOrPartitionName) ||
+                        string.IsNullOrEmpty(path.SchemaAssemblyOrExternalDataSourceName))
                     {
                         isList = true;
                     }

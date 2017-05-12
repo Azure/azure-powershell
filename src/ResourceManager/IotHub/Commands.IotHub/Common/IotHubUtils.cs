@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
     {
         const string TotalDeviceCountMetricName = "TotalDeviceCount";
         const string UnlimitedString = "Unlimited";
-        const string IotHubConnectionStringTemplate = "HostName={0};ShareAccessKeyName={1};SharedAccessKey={2}";
+        const string IotHubConnectionStringTemplate = "HostName={0};SharedAccessKeyName={1};SharedAccessKey={2}";
 
         public static T2 ConvertObject<T1, T2>(T1 iotHubObject)
         {

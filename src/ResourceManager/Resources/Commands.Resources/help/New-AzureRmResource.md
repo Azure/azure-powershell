@@ -19,20 +19,20 @@ New-AzureRmResource [-Location <String>] [-Kind <String>] [-Properties <PSObject
  [-ApiVersion <String>] [-Pre] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Resource that resides at the tenant level.
-```
-New-AzureRmResource [-Location <String>] [-Kind <String>] [-Properties <PSObject>] [-Plan <Hashtable>]
- [-Sku <Hashtable>] [-Tag <Hashtable>] [-IsFullObject] -ResourceName <String> -ResourceType <String>
- [-ExtensionResourceName <String>] [-ExtensionResourceType <String>] [-ODataQuery <String>] [-TenantLevel]
- [-Force] [-ApiVersion <String>] [-Pre] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### Resource that resides at the subscription level.
 ```
 New-AzureRmResource [-Location <String>] [-Kind <String>] [-Properties <PSObject>] [-Plan <Hashtable>]
  [-Sku <Hashtable>] [-Tag <Hashtable>] [-IsFullObject] -ResourceName <String> -ResourceType <String>
  [-ExtensionResourceName <String>] [-ExtensionResourceType <String>] [-ODataQuery <String>]
  [-ResourceGroupName <String>] [-Force] [-ApiVersion <String>] [-Pre] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Resource that resides at the tenant level.
+```
+New-AzureRmResource [-Location <String>] [-Kind <String>] [-Properties <PSObject>] [-Plan <Hashtable>]
+ [-Sku <Hashtable>] [-Tag <Hashtable>] [-IsFullObject] -ResourceName <String> -ResourceType <String>
+ [-ExtensionResourceName <String>] [-ExtensionResourceType <String>] [-ODataQuery <String>] [-TenantLevel]
+ [-Force] [-ApiVersion <String>] [-Pre] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,26 +48,6 @@ PS C:\>New-AzureRmResource -Location "West US" -Properties @{"test"="test"} -Res
 This command creates a resource that is a website in ResourceGroup11.
 
 ## PARAMETERS
-
-### -Location
-Specifies the location of the resource.
-Specify data center location, such as Central US or Southeast Asia.
-
-You can place a resource in any location that supports resources of that type.
-Resource groups can contain resources from different locations.
-To determine which locations support each resource type, use the Get-AzureLocation cmdlet.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ApiVersion
 Specifies the version of the resource provider API to use.
@@ -85,84 +65,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-Specifies resource tags as an array of hash tables.
-
-```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases: Tags
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Force
-Forces the command to run without asking for user confirmation.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specifies the name of the resource group where this cmdlet creates the resource.
-
-```yaml
-Type: String
-Parameter Sets: Resource that resides at the subscription level.
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceType
-Specifies the type of the resource.
-For instance, for a database, the resource type is as follows: 
-
-`Microsoft.Sql/Servers/Databases`
-
-```yaml
-Type: String
-Parameter Sets: Resource that resides at the tenant level., Resource that resides at the subscription level.
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ExtensionResourceName
 Specifies the name of an extension resource for the resource.
 For instance, to specify a database, use the following format: 
@@ -171,7 +73,7 @@ server name`/`database name
 
 ```yaml
 Type: String
-Parameter Sets: Resource that resides at the tenant level., Resource that resides at the subscription level.
+Parameter Sets: Resource that resides at the subscription level., Resource that resides at the tenant level.
 Aliases: 
 
 Required: False
@@ -189,13 +91,28 @@ For instance, if the extension resource is a database, specify the following typ
 
 ```yaml
 Type: String
-Parameter Sets: Resource that resides at the tenant level., Resource that resides at the subscription level.
+Parameter Sets: Resource that resides at the subscription level., Resource that resides at the tenant level.
 Aliases: 
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Force
+Forces the command to run without asking for user confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -216,6 +133,26 @@ Accept wildcard characters: False
 
 ### -Kind
 Specifies the resource kind for the resource.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Specifies the location of the resource.
+Specify data center location, such as Central US or Southeast Asia.
+
+You can place a resource in any location that supports resources of that type.
+Resource groups can contain resources from different locations.
+To determine which locations support each resource type, use the Get-AzureLocation cmdlet.
 
 ```yaml
 Type: String
@@ -291,6 +228,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceGroupName
+Specifies the name of the resource group where this cmdlet creates the resource.
+
+```yaml
+Type: String
+Parameter Sets: Resource that resides at the subscription level.
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ResourceId
 Specifies the fully qualified resource ID, including the subscription, as in the following example: 
 
@@ -316,8 +268,26 @@ For instance, to specify a database, use the following format:
 
 ```yaml
 Type: String
-Parameter Sets: Resource that resides at the tenant level., Resource that resides at the subscription level.
+Parameter Sets: Resource that resides at the subscription level., Resource that resides at the tenant level.
 Aliases: Name
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceType
+Specifies the type of the resource.
+For instance, for a database, the resource type is as follows: 
+
+`Microsoft.Sql/Servers/Databases`
+
+```yaml
+Type: String
+Parameter Sets: Resource that resides at the subscription level., Resource that resides at the tenant level.
+Aliases: 
 
 Required: True
 Position: Named
@@ -341,6 +311,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Tag
+Specifies resource tags as an array of hash tables.
+
+```yaml
+Type: Hashtable
+Parameter Sets: (All)
+Aliases: Tags
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -TenantLevel
 Indicates that this cmdlet operates at the tenant level.
 
@@ -352,6 +337,21 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

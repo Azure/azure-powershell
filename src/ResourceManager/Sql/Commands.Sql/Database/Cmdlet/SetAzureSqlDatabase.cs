@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabase", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.Medium)]
-    public class SetAzureSqlDatabase : AzureSqlDatabaseCmdletBase
+    public class SetAzureSqlDatabase : AzureSqlDatabaseCmdletBase<IEnumerable<AzureSqlDatabaseModel>>
     {
         /// <summary>
         /// Gets or sets the name of the Azure SQL Database
@@ -136,8 +136,15 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <returns>The input entity</returns>
         protected override IEnumerable<AzureSqlDatabaseModel> PersistChanges(IEnumerable<AzureSqlDatabaseModel> entity)
         {
-            return new List<AzureSqlDatabaseModel>() {
-                ModelAdapter.UpsertDatabase(this.ResourceGroupName, this.ServerName, entity.First())
+            return new List<AzureSqlDatabaseModel>
+            {
+                ModelAdapter.UpsertDatabase(
+                    this.ResourceGroupName,
+                    this.ServerName,
+                    new AzureSqlDatabaseCreateOrUpdateModel
+                    {
+                        Database = entity.First()
+                    })
             };
         }
     }
