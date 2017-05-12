@@ -34,7 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
     public static class GeneralUtilities
     {
-        private static Assembly assembly = Assembly.GetExecutingAssembly();
+        private static Assembly assembly = Azure.Commands.Common.Authentication.Abstractions.AssemblyExtensions.GetExecutingAssembly();
 
         private static List<string> AuthorizationHeaderNames = new List<string>() { "Authorization" };
 
@@ -44,11 +44,13 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         private static bool TryFindCertificatesInStore(string thumbprint,
             System.Security.Cryptography.X509Certificates.StoreLocation location, out X509Certificate2Collection certificates)
         {
-            X509Store store = new X509Store(StoreName.My, location);
-            store.Open(OpenFlags.ReadOnly);
-            certificates = store.Certificates.Find(X509FindType.FindByThumbprint, thumbprint, false);
-            store.Close();
-
+            X509Certificate2Collection found = null;
+            DiskDataStore.X509StoreWrapper(StoreName.My, location, (store) =>
+            {
+                store.Open(OpenFlags.ReadOnly);
+                found = store.Certificates.Find(X509FindType.FindByThumbprint, thumbprint, false);
+            });
+            certificates = found;
             return certificates != null && certificates.Count > 0;
         }
 
@@ -249,7 +251,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             return address.Uri.AbsoluteUri;
         }
 
-        public static string GetHttpResponseLog(string statusCode, WebHeaderCollection headers, string body)
+        public static string GetHttpResponseLog(string statusCode, IDictionary<string, IEnumerable<string>> headers, string body)
         {
             StringBuilder httpResponseLog = new StringBuilder();
             httpResponseLog.AppendLine(string.Format("============================ HTTP RESPONSE ============================{0}", Environment.NewLine));
@@ -268,7 +270,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         public static string GetHttpRequestLog(
             string method,
             string requestUri,
-            WebHeaderCollection headers,
+            IDictionary<string, IEnumerable<string>> headers,
             string body)
         {
             StringBuilder httpRequestLog = new StringBuilder();
@@ -355,9 +357,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
         }
 
-        private static WebHeaderCollection ConvertHttpHeadersToWebHeaderCollection(HttpHeaders headers)
+        private static IDictionary<string, IEnumerable<string>> ConvertHttpHeadersToWebHeaderCollection(HttpHeaders headers)
         {
-            WebHeaderCollection webHeaders = new WebHeaderCollection();
+            IDictionary<string, IEnumerable<string>> webHeaders = new Dictionary<string, IEnumerable<string>>();
             foreach (KeyValuePair<string, IEnumerable<string>> pair in headers)
             {
                 if (AuthorizationHeaderNames.Any(h => h.Equals(pair.Key, StringComparison.OrdinalIgnoreCase)))
@@ -366,15 +368,15 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                     continue;
                 }
 
-                pair.Value.ForEach<string>(v => webHeaders.Add(pair.Key, v));
+                webHeaders.Add(pair.Key, pair.Value);
             }
 
             return webHeaders;
         }
 
-        private static string MessageHeadersToString(WebHeaderCollection headers)
+        private static string MessageHeadersToString(IDictionary<string, IEnumerable<string>> headers)
         {
-            string[] keys = headers.AllKeys;
+            string[] keys = headers.Keys.ToArray();
             StringBuilder result = new StringBuilder();
 
             foreach (string key in keys)
@@ -382,12 +384,12 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 result.AppendLine(string.Format(
                     "{0,-30}: {1}",
                     key,
-                    ConversionUtilities.ArrayToString(headers.GetValues(key), ",")));
+                    ConversionUtilities.ArrayToString(headers[key].ToArray(), ",")));
             }
 
             return result.ToString();
         }
-
+		
         /// <summary>
         /// Creates https endpoint from the given endpoint.
         /// </summary>
@@ -403,24 +405,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             return new Uri(endpoint);
         }
 
-        public static string DownloadFile(string uri)
-        {
-            string contents = null;
-
-            using (WebClient webClient = new WebClient())
-            {
-                try
-                {
-                    contents = webClient.DownloadString(new Uri(uri));
-                }
-                catch
-                {
-                    // Ignore the exception and return empty contents
-                }
-            }
-
-            return contents;
-        }
 
         /// <summary>
         /// Pad a string using the given separator string
@@ -462,7 +446,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                     RMProfile.DefaultContext.Subscription.SetProperty(AzureSubscription.Property.StorageAccount, null);
                 }
             }
-
+#if !NETSTANDARD
             if (clearSMContext && AzureSMProfileProvider.Instance != null)
             {
                 var SMProfile = AzureSMProfileProvider.Instance.Profile;
@@ -472,6 +456,47 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                     SMProfile.DefaultContext.Subscription.SetProperty(AzureSubscription.Property.StorageAccount, null);
                 }
             }
+#endif
         }
+		
+#if !NETSTANDARD
+        public static string DownloadFile(string uri)
+        {
+            string contents = null;
+
+            using (WebClient webClient = new WebClient())
+            {
+                try
+                {
+                    contents = webClient.DownloadString(new Uri(uri));
+                }
+                catch
+                {
+                    // Ignore the exception and return empty contents
+                }
+            }
+
+            return contents;
+        }
+#else
+        public static string DownloadFile(string uri)
+        {
+            HttpClient client = new HttpClient();
+            var stream = client.GetStreamAsync(uri).GetAwaiter().GetResult();
+            StringBuilder result = new StringBuilder();
+            byte[] buffer = new byte[1024];
+            int offset = 0, readBytes = 0;
+            do
+            {
+                readBytes = stream.Read(buffer, 0, buffer.Length);
+                if (readBytes > 0)
+                {
+                    result.Append(Encoding.UTF8.GetString(buffer, 0, readBytes));
+                }
+            } while (readBytes >= buffer.Length);
+
+            return result.ToString();
+        }
+#endif		
     }
 }

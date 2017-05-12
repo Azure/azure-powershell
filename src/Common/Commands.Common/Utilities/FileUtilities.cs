@@ -15,13 +15,13 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Common.Properties;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
@@ -46,7 +46,10 @@ namespace Microsoft.WindowsAzure.Commands.Common
         /// <returns></returns>
         public static string GetAssemblyDirectory()
         {
-            var assemblyPath = Uri.UnescapeDataString(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
+            var assemblyPath = Uri.UnescapeDataString(
+                new Uri(
+                    Azure.Commands.Common.Authentication.Abstractions.AssemblyExtensions.GetExecutingAssembly().CodeBase)
+                    .AbsolutePath);
             return Path.GetDirectoryName(assemblyPath);
         }
 
@@ -89,42 +92,6 @@ namespace Microsoft.WindowsAzure.Commands.Common
             }
 
             return path;
-        }
-
-        /// <summary>
-        /// Get the directory path to the given directory in the paltform-appropriate program files path
-        /// </summary>
-        /// <param name="directoryName">The name fo the directory</param>
-        /// <param name="throwIfNotFound">Whether to throw if the directory is not found</param>
-        /// <returns>The full directory path</returns>
-        public static string GetWithProgramFilesPath(string directoryName, bool throwIfNotFound)
-        {
-            string programFilesPath = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
-            if (DataStore.DirectoryExists(Path.Combine(programFilesPath, directoryName)))
-            {
-                return Path.Combine(programFilesPath, directoryName);
-            }
-            else
-            {
-                if (programFilesPath.IndexOf(Resources.x86InProgramFiles, StringComparison.InvariantCultureIgnoreCase) == -1)
-                {
-                    programFilesPath += Resources.x86InProgramFiles;
-                    if (throwIfNotFound)
-                    {
-                        Validate.ValidateDirectoryExists(Path.Combine(programFilesPath, directoryName));
-                    }
-                    return Path.Combine(programFilesPath, directoryName);
-                }
-                else
-                {
-                    programFilesPath = programFilesPath.Replace(Resources.x86InProgramFiles, String.Empty);
-                    if (throwIfNotFound)
-                    {
-                        Validate.ValidateDirectoryExists(Path.Combine(programFilesPath, directoryName));
-                    }
-                    return Path.Combine(programFilesPath, directoryName);
-                }
-            }
         }
 
         /// <summary>
@@ -238,7 +205,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
             }
             else
             {
-                encoding = Encoding.Default;
+                encoding = EncodingExtensions.GetDefaultEncoding();
             }
 
             return encoding;
@@ -368,5 +335,43 @@ namespace Microsoft.WindowsAzure.Commands.Common
         {
             return module.ToString().Replace("Azure", "");
         }
+		
+#if !NETSTANDARD
+        /// <summary>
+        /// Get the directory path to the given directory in the paltform-appropriate program files path
+        /// </summary>
+        /// <param name="directoryName">The name fo the directory</param>
+        /// <param name="throwIfNotFound">Whether to throw if the directory is not found</param>
+        /// <returns>The full directory path</returns>
+        public static string GetWithProgramFilesPath(string directoryName, bool throwIfNotFound)
+        {
+            string programFilesPath = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+            if (DataStore.DirectoryExists(Path.Combine(programFilesPath, directoryName)))
+            {
+                return Path.Combine(programFilesPath, directoryName);
+            }
+            else
+            {
+                if (programFilesPath.IndexOf(Resources.x86InProgramFiles, StringComparison.InvariantCultureIgnoreCase) == -1)
+                {
+                    programFilesPath += Resources.x86InProgramFiles;
+                    if (throwIfNotFound)
+                    {
+                        Validate.ValidateDirectoryExists(Path.Combine(programFilesPath, directoryName));
+                    }
+                    return Path.Combine(programFilesPath, directoryName);
+                }
+                else
+                {
+                    programFilesPath = programFilesPath.Replace(Resources.x86InProgramFiles, String.Empty);
+                    if (throwIfNotFound)
+                    {
+                        Validate.ValidateDirectoryExists(Path.Combine(programFilesPath, directoryName));
+                    }
+                    return Path.Combine(programFilesPath, directoryName);
+                }
+            }
+        }
+#endif		
     }
 }

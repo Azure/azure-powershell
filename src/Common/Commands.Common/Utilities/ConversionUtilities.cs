@@ -91,7 +91,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 : array.Skip(1).Aggregate(new StringBuilder(array[0].ToString()),
                 (s, i) => s.Append(delimiter).Append(i), s => s.ToString());
         }
-
+#if !NETSTANDARD
         public static string SecureStringToString(SecureString secureString)
         {
             IntPtr valuePtr = IntPtr.Zero;
@@ -105,5 +105,20 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 Marshal.ZeroFreeGlobalAllocUnicode(valuePtr);
             }
         }
+#else
+        public static string SecureStringToString(SecureString value)
+        {
+            string passwordValueToAdd = String.Empty;
+
+            if (value != null)
+            {
+                IntPtr ptr = SecureStringMarshal.SecureStringToCoTaskMemUnicode(value);
+                passwordValueToAdd = Marshal.PtrToStringUni(ptr);
+                Marshal.ZeroFreeCoTaskMemUnicode(ptr);
+            }
+
+            return passwordValueToAdd;
+        }		
+#endif
     }
 }

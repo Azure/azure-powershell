@@ -16,6 +16,9 @@ using System;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+#if NETSTANDARD
+using Microsoft.PowerShell.CoreClr.Stubs;
+#endif
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {

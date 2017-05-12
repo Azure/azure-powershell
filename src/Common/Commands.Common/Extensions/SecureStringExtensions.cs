@@ -11,7 +11,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-
+#if !NETSTANDARD
 using System;
 using System.Runtime.InteropServices;
 using System.Security;
@@ -72,3 +72,4 @@ namespace Microsoft.WindowsAzure.Commands.Common
         }
     }
 }
+#endif
