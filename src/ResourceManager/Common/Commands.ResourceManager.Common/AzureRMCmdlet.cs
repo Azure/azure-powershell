@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -28,6 +27,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Host;
 using System.Threading;
+using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             ConfirmAction(force, continueMessage, actionName, string.Format(Resources.ResourceIdConfirmTarget,
                 resourceId), action, promptForContinuation);
         }
-
+#if !NETSTANDARD
         protected override void SaveDataCollectionProfile()
         {
             if (_dataCollectionProfile == null)
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 _qosEvent.Uid = "defaultid";
             }
         }
-
+#endif
         protected override void LogCmdletStartInvocationInfo()
         {
             base.LogCmdletStartInvocationInfo();
