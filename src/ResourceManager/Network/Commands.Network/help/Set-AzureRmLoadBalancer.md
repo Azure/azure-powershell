@@ -13,8 +13,7 @@ Sets the goal state for a load balancer.
 ## SYNTAX
 
 ```
-Set-AzureRmLoadBalancer -LoadBalancer <PSLoadBalancer> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+Set-AzureRmLoadBalancer -LoadBalancer <PSLoadBalancer> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,45 +35,6 @@ The second command uses the pipeline operator to pass the load balancer in $slb 
 The third command passes the load balancer to **Set-AzureRmLoadBalancer**, which updates the load balancer configuration and saves it.
 
 ## PARAMETERS
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -LoadBalancer
 Specifies a load balancer.

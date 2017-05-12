@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.Scheduler.Test.ScenarioTests
     using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using LegacyTest = Microsoft.Azure.Test;
+    using ResourceManager.Common;
 
     public class SchedulerController
     {

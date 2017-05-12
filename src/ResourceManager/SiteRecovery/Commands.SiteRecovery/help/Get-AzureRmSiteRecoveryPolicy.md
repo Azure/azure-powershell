@@ -34,12 +34,12 @@ The **Get-AzureRmSiteRecoveryPolicy** cmdlet gets the list of configured Azure S
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the Site Recovery replication policy.
+### -FriendlyName
+Specifies the friendly name of the Site Recovery replication policy.
 
 ```yaml
 Type: String
-Parameter Sets: ByName
+Parameter Sets: ByFriendlyName
 Aliases: 
 
 Required: True
@@ -49,12 +49,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FriendlyName
-Specifies the friendly name of the Site Recovery replication policy.
+### -Name
+Specifies the name of the Site Recovery replication policy.
 
 ```yaml
 Type: String
-Parameter Sets: ByFriendlyName
+Parameter Sets: ByName
 Aliases: 
 
 Required: True

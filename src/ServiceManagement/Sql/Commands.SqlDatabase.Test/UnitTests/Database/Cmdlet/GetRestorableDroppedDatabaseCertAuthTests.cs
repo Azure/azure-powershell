@@ -28,6 +28,8 @@ using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Server.Cmdlet;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.Utilities;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cmdlet
 {
@@ -40,21 +42,18 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
 
         private static string serverName;
 
-        [ClassInitialize]
-        public static void InitializeClass(TestContext context)
+        [TestInitialize]
+        public void InitializeTest()
         {
+            AzureSessionInitializer.InitializeAzureSession();
+            ServiceManagementProfileProvider.InitializeServiceManagementProfile();
             powershell = System.Management.Automation.PowerShell.Create();
-
             MockHttpServer.SetupCertificates();
-
             UnitTestHelper.SetupUnitTestSubscription(powershell);
-
             serverName = SqlDatabaseTestSettings.Instance.ServerName;
             powershell.Runspace.SessionStateProxy.SetVariable("serverName", serverName);
-
             // Create atleast two test databases
             NewAzureSqlDatabaseTests.CreateTestDatabasesWithCertAuth(powershell);
-
             // Remove the test databases
             NewAzureSqlDatabaseTests.RemoveTestDatabasesWithCertAuth(powershell);
         }

@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 3.0.0
+* Upgrade to Azure Storage Client Library 8.1.1 and Azure Storage DataMovement Library 0.5.1
+* Add a new cmdlet to support blob Incremental Copy feature
+    - Start-AzureStorageBlobIncrementalCopy
 ## Version 2.8.0
 
 ## Version 2.7.0

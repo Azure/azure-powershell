@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
             {
                 if (this.webServicesClient == null)
                 {
-                    this.webServicesClient = new WebServicesClient(DefaultProfile.Context)
+                    this.webServicesClient = new WebServicesClient(DefaultProfile.DefaultContext)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp,

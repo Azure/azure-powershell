@@ -34,12 +34,12 @@ The **Get-AzureRmSiteRecoverySite** cmdlet gets the Hyper-V sites in the Azure S
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the site.
+### -FriendlyName
+Specifies the friendly name of the site.
 
 ```yaml
 Type: String
-Parameter Sets: ByName
+Parameter Sets: ByFriendlyName
 Aliases: 
 
 Required: True
@@ -49,12 +49,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FriendlyName
-Specifies the friendly name of the site.
+### -Name
+Specifies the name of the site.
 
 ```yaml
 Type: String
-Parameter Sets: ByFriendlyName
+Parameter Sets: ByName
 Aliases: 
 
 Required: True

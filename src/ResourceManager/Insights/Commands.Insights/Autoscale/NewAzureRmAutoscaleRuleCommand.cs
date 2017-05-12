@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.Insights.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 using System;
 using System.Management.Automation;
 
@@ -114,7 +114,6 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            WriteWarning("The parameter ScaleActionType has been extended, it receives the following values now: ChangeCount (previous only value and current default), PercentChangeCount, ExactCount. The parameter could become mandatory in future versions.");
             ScaleRule rule = this.CreateSettingRule();
             WriteObject(rule);
         }

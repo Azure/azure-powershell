@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-ms.assetid: 4C620766-C27D-4CCB-8F55-5799F58258C8
+ms.assetid: 6221C40F-63FC-4D66-B6BD-01024AFF3B65
 online version: 
 schema: 2.0.0
 ---
@@ -14,8 +14,7 @@ Saves changes by creating a commit for current configuration.
 
 ```
 Save-AzureRmApiManagementTenantGitConfiguration -Context <PsApiManagementContext> -Branch <String> [-Force]
- [-PassThru] [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,11 +31,11 @@ This command saves the changes by creating a commit with the current configurati
 
 ## PARAMETERS
 
-### -Context
-Specifies a **PsApiManagementContext** object.
+### -Branch
+Specifies the name of the Git branch in which to commit the current configuration snapshot.
 
 ```yaml
-Type: PsApiManagementContext
+Type: String
 Parameter Sets: (All)
 Aliases: 
 
@@ -47,11 +46,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Branch
-Specifies the name of the Git branch in which to commit the current configuration snapshot.
+### -Context
+Specifies a **PsApiManagementContext** object.
 
 ```yaml
-Type: String
+Type: PsApiManagementContext
 Parameter Sets: (All)
 Aliases: 
 
@@ -92,41 +91,17 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: ActionPreference
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: infa
+Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -139,21 +114,6 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named

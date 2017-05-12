@@ -29,8 +29,8 @@ You must specify the name of the setting and the name of the resource group to w
 
 ## PARAMETERS
 
-### -ResourceGroup
-Specifies the name of the resource group.
+### -Name
+Specifies the name of the Autoscale setting to remove.
 
 ```yaml
 Type: String
@@ -44,8 +44,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Name
-Specifies the name of the Autoscale setting to remove.
+### -ResourceGroup
+Specifies the name of the resource group.
 
 ```yaml
 Type: String

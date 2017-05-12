@@ -13,12 +13,12 @@ Imports a JSON object into a web service definition.
 
 ### Import from JSON file.
 ```
-Import-AzureRmMlWebService -InputFile <String>
+Import-AzureRmMlWebService -InputFile <String> [<CommonParameters>]
 ```
 
 ### Import from JSON string.
 ```
-Import-AzureRmMlWebService -JsonString <String>
+Import-AzureRmMlWebService -JsonString <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,12 +29,16 @@ The Import-AzureRmMlWebService cmdlet imports , specified either directly or in 
 ### --------------------------  Example 1: Import from string  --------------------------
 @{paragraph=PS C:\\\>}
 
+
+
 ```
 Import-AzureRmMlWebService -JsonString $jsonDefinition
 ```
 
 ### --------------------------  Example 2: Import from file path  --------------------------
 @{paragraph=PS C:\\\>}
+
+
 
 ```
 Import-AzureRmMlWebService -InputFile "C:\mlservice.json"
@@ -71,6 +75,9 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Commands.EventHub.Models
             if (ehResource != null)
             {
                 Name = ehResource.Name;
-                Location = ehResource.Location;
                 CreatedAt = ehResource.CreatedAt;
                 MessageRetentionInDays = ehResource.MessageRetentionInDays;
                 PartitionCount = ehResource.PartitionCount;
@@ -61,7 +60,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// <summary>
         /// Current number of shards on the Event Hub.
         /// </summary>
-        public IList<int?> PartitionIds { get; set; }
+        public IList<string> PartitionIds { get; set; }
 
         /// <summary>
         /// Enumerates the possible values for the status of the EventHub.

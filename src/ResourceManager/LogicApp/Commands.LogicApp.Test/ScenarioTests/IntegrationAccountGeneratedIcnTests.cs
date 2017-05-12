@@ -28,6 +28,16 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetIntegrationAccountGeneratedIcnWithoutAgreementType()
+        {
+            WorkflowController.NewInstance.RunPowerShellTest("Test-GetIntegrationAccountGeneratedControlNumber-NoAgreementType");
+        }
+
+        /// <summary>
+        /// Test Get-AzureRmIntegrationAccountGeneratedIcn command to get the integration account generated interchange control number.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetIntegrationAccountGeneratedIcn()
         {
             WorkflowController.NewInstance.RunPowerShellTest("Test-GetIntegrationAccountGeneratedControlNumber");
