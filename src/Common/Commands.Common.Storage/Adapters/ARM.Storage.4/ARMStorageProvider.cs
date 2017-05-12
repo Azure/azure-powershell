@@ -29,8 +29,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         {
             var account = _client.StorageAccounts.GetProperties(resourceGroupName, name);
             var keys = _client.StorageAccounts.ListKeys(resourceGroupName, name);
-            return new ARMStorageService(account, keys.Key1,
-                keys.Key2);
+            return new ARMStorageService(account, keys.Key1, keys.Key2);
         }
     }
 }
