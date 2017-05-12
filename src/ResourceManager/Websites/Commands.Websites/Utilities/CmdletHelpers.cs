@@ -59,7 +59,11 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 kvp => kvp.Key.ToString(), kvp =>
                 {
                     var typeValuePair = new Hashtable((Hashtable)kvp.Value, StringComparer.OrdinalIgnoreCase);
+#if !NETSTANDARD
                     var type = (DatabaseServerType?)Enum.Parse(typeof(DatabaseServerType), typeValuePair["Type"].ToString(), true);
+#else
+                    var type = (ConnectionStringType)Enum.Parse(typeof(ConnectionStringType), typeValuePair["Type"].ToString(), true);
+#endif
                     return new ConnStringValueTypePair
                     {
                         Type = type,
@@ -86,12 +90,10 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         {
             var rg = string.IsNullOrEmpty(aseResourceGroupName) ? resourceGroupName : aseResourceGroupName;
             var aseResourceId = CmdletHelpers.GetApplicationServiceEnvironmentResourceId(subscriptionId, rg, aseName);
-            return new HostingEnvironmentProfile
-            {
-                Id = aseResourceId,
-                Type = CmdletHelpers.ApplicationServiceEnvironmentResourcesName,
-                Name = aseName
-            };
+            return new HostingEnvironmentProfile(
+                aseResourceId,
+                CmdletHelpers.ApplicationServiceEnvironmentResourcesName,
+                aseName);
         }
 
         internal static string BuildMetricFilter(DateTime? startTime, DateTime? endTime, string timeGrain, IReadOnlyList<string> metricNames)
@@ -269,7 +271,14 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             resourceGroupName = GetResourceGroupFromResourceId(webapp.Id);
 
             string webAppNameTemp, slotNameTemp;
-            if (TryParseAppAndSlotNames(webapp.SiteName, out webAppNameTemp, out slotNameTemp))
+            if (TryParseAppAndSlotNames(
+#if !NETSTANDARD
+                webapp.SiteName, 
+#else
+                webapp.Name,
+#endif
+                out webAppNameTemp, 
+                out slotNameTemp))
             {
                 webAppName = webAppNameTemp;
                 slot = slotNameTemp;
