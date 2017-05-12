@@ -12,7 +12,7 @@
 RootModule = '.\AzureRM.psm1'
 
 # Version number of this module.
-ModuleVersion = '4.0.0'
+ModuleVersion = '4.0.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -52,7 +52,7 @@ CLRVersion = '4.0'
 
 # Modules that must be imported into the global environment prior to importing this module
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '3.0.0'; }, 
-               @{ModuleName = 'Azure.Storage'; RequiredVersion = '3.0.0'; }, 
+               @{ModuleName = 'Azure.Storage'; RequiredVersion = '3.0.1'; }, 
                @{ModuleName = 'AzureRM.AnalysisServices'; RequiredVersion = '0.3.0'; }, 
                @{ModuleName = 'Azure.AnalysisServices'; RequiredVersion = '0.3.0'; }, 
                @{ModuleName = 'AzureRM.ApiManagement'; RequiredVersion = '4.0.0'; }, 
