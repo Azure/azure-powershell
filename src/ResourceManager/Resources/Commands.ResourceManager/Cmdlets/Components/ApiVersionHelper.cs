@@ -24,7 +24,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
+#if !NETSTANDARD	
     using System.Runtime.Caching;
+#else
+    using Microsoft.Extensions.Caching.Memory;
+#endif	
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -137,6 +141,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1001:TypesThatOwnDisposableFieldsShouldBeDisposable", Justification = "Instances of this type are meant to be singletons.")]
         private class ApiVersionCache
         {
+            private static MemoryCache _cache;
+
+            static ApiVersionCache()
+            {
+#if !NETSTANDARD
+                _cache = MemoryCache.Default;
+#else
+                _cache = new MemoryCache(new MemoryCacheOptions());
+#endif
+            }
             /// <summary>
             /// The API version cache
             /// </summary>
@@ -191,7 +205,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             /// <param name="cacheKey">The cache key.</param>
             private string[] GetCacheItem(string cacheKey)
             {
-                return MemoryCache.Default[cacheKey].Cast<string[]>();
+                return _cache.Get(cacheKey).Cast<string[]>();
             }
 
             /// <summary>
@@ -202,7 +216,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             /// <param name="absoluteExpirationTime">The absolute expiration time.</param>
             private void SetCacheItem(string cacheKey, string[] data, DateTimeOffset absoluteExpirationTime)
             {
-                MemoryCache.Default.Set(key: cacheKey, value: data, absoluteExpiration: absoluteExpirationTime);
+                _cache.Set(key: cacheKey, value: data, absoluteExpiration: absoluteExpirationTime);
             }
 
             /// <summary>

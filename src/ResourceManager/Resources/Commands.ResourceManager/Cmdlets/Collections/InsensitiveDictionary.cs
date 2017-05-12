@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json;
     using System;
     using System.Collections.Generic;
+    using Commands.Common.Authentication.Abstractions;
 
     /// <summary>
     /// The insensitive version of dictionary.
@@ -34,7 +35,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections
         /// Initializes a new instance of the <see cref="InsensitiveDictionary{TValue}"/> class.
         /// </summary>
         public InsensitiveDictionary()
-            : base(StringComparer.InvariantCultureIgnoreCase)
+            : base(StringExtensions.CaselessComparer)
         {
         }
 
@@ -43,7 +44,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections
         /// </summary>
         /// <param name="capacity">The initial number of elements that the <see cref="T:System.Collections.Generic.Dictionary`2" /> can contain.</param>
         public InsensitiveDictionary(int capacity)
-            : base(capacity, StringComparer.InvariantCultureIgnoreCase)
+            : base(capacity, StringExtensions.CaselessComparer)
         {
         }
 
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections
         /// </summary>
         /// <param name="dictionary">The dictionary.</param>
         public InsensitiveDictionary(IDictionary<string, TValue> dictionary)
-            : base(dictionary, StringComparer.InvariantCultureIgnoreCase)
+            : base(dictionary, StringExtensions.CaselessComparer)
         {
         }
     }

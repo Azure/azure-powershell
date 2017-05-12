@@ -139,6 +139,7 @@
     <Compile Include="ActiveDirectory\SetAzureADApplicationCommand.cs" />
     <Compile Include="ActiveDirectory\SetAzureADServicePrincipalCommand.cs" />
     <Compile Include="ActiveDirectory\SetAzureADUserCommand.cs" />
+    <Compile Include="Extensions\ResourceExtensions.cs" />
     <Compile Include="Models.ActiveDirectory\PSADCredential.cs" />
     <Compile Include="Models.Authorization\AuthorizationHelper.cs" />
     <Compile Include="Models.Authorization\FilterRoleDefinitionOptions.cs" />

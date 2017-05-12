@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             {
                 return this.ResourceTypes
                     .SelectMany(type => type.Locations)
-                    .Distinct(StringComparer.InvariantCultureIgnoreCase)
+                    .Distinct(Commands.Common.Authentication.Abstractions.StringExtensions.CaselessComparer)
                     .ToArray();
             }
         }

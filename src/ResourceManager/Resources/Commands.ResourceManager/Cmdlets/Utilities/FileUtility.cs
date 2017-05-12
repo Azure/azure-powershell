@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
+
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 {
     using Microsoft.Azure.Commands.Common.Authentication;
@@ -19,7 +21,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
     using System.IO;
     using System.Text;
     using WindowsAzure.Commands.Common;
-    using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
     /// <summary>
     /// The file utility.

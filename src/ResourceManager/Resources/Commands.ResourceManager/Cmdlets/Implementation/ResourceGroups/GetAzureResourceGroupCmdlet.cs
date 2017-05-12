@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System.Management.Automation;
     using System.Reflection;
     using WindowsAzure.Commands.Common;
-
+    using WindowsAzure.Commands.Utilities.Common;
     /// <summary>
     /// Filters resource groups.
     /// </summary>
@@ -66,8 +66,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Load global aliases and script cmdlets for ARM
         /// </summary>
+
         public void OnImport()
         {
+#if !NETSTANDARD
             try
             {
                 System.Management.Automation.PowerShell invoker = null;
@@ -77,11 +79,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     "ResourceManagerStartup.ps1")));
                 invoker.Invoke();
             }
-            catch
+            catch(Exception) when(TestMockSupport.RunningMocked)
             {
                 // need to fix exception in WriteDebug
                 // this.WriteDebug("Exception on importing ResourceManagerStartup.ps1: " + e.Message);
             }
+#endif
         }
     }
 }

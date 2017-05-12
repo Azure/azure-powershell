@@ -35,8 +35,8 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 {
@@ -130,7 +130,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             Dictionary<string, object> parametersDictionary = templateParameterObject.ToDictionary(addValueLayer);
             return JsonConvert.SerializeObject(parametersDictionary, new JsonSerializerSettings
             {
-                TypeNameAssemblyFormat = FormatterAssemblyStyle.Simple,
                 TypeNameHandling = TypeNameHandling.None,
                 Formatting = Formatting.Indented
             });
@@ -500,7 +499,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return string.Equals(
                 ResourceManagerSdkClient.RegisteredStateName,
                 provider.RegistrationState,
-                StringComparison.InvariantCultureIgnoreCase);
+                StringExtensions.CaselessComparison);
         }
 
         public PSResourceProvider RegisterProvider(string providerName)
@@ -527,15 +526,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
             if (splitResourceIds.Any(splitResourceId => splitResourceId.Length % 2 != 0 ||
                 splitResourceId.Length < 8 ||
-                !string.Equals("subscriptions", splitResourceId[0], StringComparison.InvariantCultureIgnoreCase) ||
-                !string.Equals("resourceGroups", splitResourceId[2], StringComparison.InvariantCultureIgnoreCase) ||
-                !string.Equals("providers", splitResourceId[4], StringComparison.InvariantCultureIgnoreCase)))
+                !string.Equals("subscriptions", splitResourceId[0], StringExtensions.CaselessComparison) ||
+                !string.Equals("resourceGroups", splitResourceId[2], StringExtensions.CaselessComparison) ||
+                !string.Equals("providers", splitResourceId[4], StringExtensions.CaselessComparison)))
             {
                 throw new System.Management.Automation.PSArgumentException(ProjectResources.InvalidFormatOfResourceId);
             }
 
             return resourceIds
-                .Distinct(StringComparer.InvariantCultureIgnoreCase)
+                .Distinct(StringExtensions.CaselessComparer)
                 .Select(resourceId => new ResourceIdentifier(resourceId))
                 .ToArray();
         }

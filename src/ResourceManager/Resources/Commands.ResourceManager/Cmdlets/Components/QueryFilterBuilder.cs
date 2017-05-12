@@ -14,7 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using System;
     using System.Linq;
     using System.Text;
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             {
                 filter = filter.Trim().TrimStart('?').TrimStart('&');
 
-                if (filter.StartsWith("$filter", StringComparison.InvariantCultureIgnoreCase))
+                if (filter.StartsWith("$filter", Commands.Common.Authentication.Abstractions.StringExtensions.CaselessComparison))
                 {
                     var indexOfEqual = filter.IndexOf("=", StringComparison.Ordinal);
 

@@ -424,7 +424,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                 if (ce.Response.StatusCode == HttpStatusCode.Forbidden)
                 {
                     AADObject currentUser = GraphClient.Objects.GetCurrentUser();
-                    if (currentUser != null && string.Equals(currentUser.UserType, "Guest", StringComparison.InvariantCultureIgnoreCase))
+                    if (currentUser != null && string.Equals(currentUser.UserType, "Guest", 
+                        StringExtensions.CaselessComparison))
                     {
                         throw new InvalidOperationException(ProjectResources.CreateApplicationNotAllowedGuestUser);
                     }
@@ -722,7 +723,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                 if (ce.Response.StatusCode == HttpStatusCode.Forbidden)
                 {
                     AADObject currentUser = GraphClient.Objects.GetCurrentUser();
-                    if (currentUser != null && string.Equals(currentUser.UserType, "Guest", StringComparison.InvariantCultureIgnoreCase))
+                    if (currentUser != null && string.Equals(currentUser.UserType, "Guest",
+                        StringExtensions.CaselessComparison))
                     {
                         throw new InvalidOperationException(ProjectResources.CreateServicePrincipalNotAllowedGuestUser);
                     }

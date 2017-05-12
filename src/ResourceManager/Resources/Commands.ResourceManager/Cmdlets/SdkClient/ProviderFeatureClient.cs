@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
+
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 {
     using Microsoft.Azure.Commands.Common.Authentication;
@@ -24,7 +26,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
     using System;
     using System.Linq;
     using System.Collections.Generic;
-    using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
     using Commands.Common.Authentication.Abstractions;
 
     /// <summary>
@@ -151,7 +152,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// <param name="feature">The feature</param>
         private bool IsFeatureRegistered(FeatureResult feature)
         {
-            return string.Equals(feature.Properties.State, ProviderFeatureClient.RegisteredStateName, StringComparison.InvariantCultureIgnoreCase);
+            return string.Equals(feature.Properties.State, 
+                ProviderFeatureClient.RegisteredStateName,
+                StringExtensions.CaselessComparison);
         }
     }
 }

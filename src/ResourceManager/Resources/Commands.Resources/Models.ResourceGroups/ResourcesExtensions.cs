@@ -22,17 +22,22 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.Azure.Commands.Tags.Model;
-using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization.Models;
-using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using Microsoft.WindowsAzure.Commands.Common;
+#if !NETSTANDARD
+using Microsoft.Azure.Gallery;
+using Microsoft.Azure.Management.Resources.Models;
+#else
+using Microsoft.Azure.Management.ResourceManager.Models;
+#endif
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
     public static class ResourcesExtensions
     {
+#if !NETSTANDARD
         public static PSGalleryItem ToPSGalleryItem(this GalleryItem gallery)
         {
             PSGalleryItem psGalleryItem = new PSGalleryItem();
@@ -61,6 +66,25 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 ResourceId = identifier.ToString()
             };
         }
+#else
+        public static PSResource ToPSResource(this GenericResource resource, ResourcesClient client, bool minimal)
+        {
+            ResourceIdentifier identifier = new ResourceIdentifier(resource.Id);
+            return new PSResource
+            {
+                Name = identifier.ResourceName,
+                Location = resource.Location,
+                ResourceType = identifier.ResourceType,
+                ResourceGroupName = identifier.ResourceGroupName,
+                ParentResource = identifier.ParentResource,
+                Properties = JsonUtilities.DeserializeJson(resource.Properties?.ToString()),
+                PropertiesText = resource.Properties?.ToString(),
+                Tags = TagsConversionHelper.CreateTagHashtable(resource.Tags),
+                Permissions = minimal ? null : client.GetResourcePermissions(identifier),
+                ResourceId = identifier.ToString()
+            };
+        }
+#endif
 
         public static PSPermission ToPSPermission(this Permission permission)
         {
@@ -221,26 +245,26 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
             if (properties != null)
             {
-                deploymentObject.Mode = properties.Mode;
+                deploymentObject.Mode = properties.Mode();
+                deploymentObject.Timestamp = properties.Timestamp();
                 deploymentObject.ProvisioningState = properties.ProvisioningState;
                 deploymentObject.TemplateLink = properties.TemplateLink;
-                deploymentObject.Timestamp = properties.Timestamp;
                 deploymentObject.CorrelationId = properties.CorrelationId;
 
-                if (properties.DebugSettingResponse != null && !string.IsNullOrEmpty(properties.DebugSettingResponse.DeploymentDebugDetailLevel))
+                if (properties.DebugSetting() != null && !string.IsNullOrEmpty(properties.DebugSetting().DetailLevel()))
                 {
-                    deploymentObject.DeploymentDebugLogLevel = properties.DebugSettingResponse.DeploymentDebugDetailLevel;
+                    deploymentObject.DeploymentDebugLogLevel = properties.DebugSetting().DetailLevel();
                 }
 
-                if (!string.IsNullOrEmpty(properties.Outputs))
+                if (!string.IsNullOrEmpty(properties.Outputs.ToString()))
                 {
-                    Dictionary<string, DeploymentVariable> outputs = JsonConvert.DeserializeObject<Dictionary<string, DeploymentVariable>>(properties.Outputs);
+                    Dictionary<string, DeploymentVariable> outputs = JsonConvert.DeserializeObject<Dictionary<string, DeploymentVariable>>(properties.Outputs.ToString());
                     deploymentObject.Outputs = outputs;
                 }
 
-                if (!string.IsNullOrEmpty(properties.Parameters))
+                if (!string.IsNullOrEmpty(properties.Parameters.ToString()))
                 {
-                    Dictionary<string, DeploymentVariable> parameters = JsonConvert.DeserializeObject<Dictionary<string, DeploymentVariable>>(properties.Parameters);
+                    Dictionary<string, DeploymentVariable> parameters = JsonConvert.DeserializeObject<Dictionary<string, DeploymentVariable>>(properties.Parameters.ToString());
                     deploymentObject.Parameters = parameters;
                 }
 

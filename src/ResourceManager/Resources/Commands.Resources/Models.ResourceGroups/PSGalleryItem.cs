@@ -11,7 +11,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-
+#if !NETSTANDARD
 using Microsoft.Azure.Gallery;
 
 namespace Microsoft.Azure.Commands.Resources.Models
@@ -36,3 +36,4 @@ namespace Microsoft.Azure.Commands.Resources.Models
         }
     }
 }
+#endif

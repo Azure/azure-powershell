@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
             return
                 ex is TypeInitializationException ||
                 ex is AppDomainUnloadedException ||
-                ex is ThreadInterruptedException ||
+                ex is System.Threading.ThreadInterruptedException ||
                 ex is AccessViolationException ||
                 ex is InvalidProgramException ||
                 ex is BadImageFormatException ||

@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
+    using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using System;
     using System.Linq;
@@ -367,8 +368,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             var segment = string.Format("/{0}/", segmentName.Trim('/').ToUpperInvariant());
 
             var index = selectLastSegment
-                ? resourceId.LastIndexOf(segment, StringComparison.InvariantCultureIgnoreCase)
-                : resourceId.IndexOf(segment, StringComparison.InvariantCultureIgnoreCase);
+                ? resourceId.LastIndexOf(segment, StringExtensions.CaselessComparison)
+                : resourceId.IndexOf(segment, StringExtensions.CaselessComparison);
 
             return index < 0
                 ? null
