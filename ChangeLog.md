@@ -1,4 +1,7 @@
-﻿## 2017.05.10 - Version 4.0.0
+﻿## 2017.05.12 - Version 4.0.1
+ * Fix issue with New-AzureStorageContext in offline scenarios: https://github.com/Azure/azure-powershell/issues/3939
+ 
+ ## 2017.05.10 - Version 4.0.0
 * This release contains breaking changes. Please see [the migration guide](https://aka.ms/azps-migration-guide) for change details and the impact on existing scripts.
 * ApiManagement
     * Added support for configuring external groups in New-AzureRmApiManagementGroup.
