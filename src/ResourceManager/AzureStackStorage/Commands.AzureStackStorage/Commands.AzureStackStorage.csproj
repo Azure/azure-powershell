@@ -117,7 +117,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Acquisition\DeleteAcquisition.cs" />
     <Compile Include="Acquisition\GetAcquisition.cs" />
     <Compile Include="AdminCmdlet.cs" />
     <Compile Include="AdminException.cs" />

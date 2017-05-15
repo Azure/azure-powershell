@@ -28,7 +28,6 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     [Cmdlet(VerbsCommon.Get, Nouns.AdminAcquisition)]
     public sealed class GetAdminAcquisition : AdminCmdlet
     {
-        const string GetAcquisitionSet = "GetAcquisitionSet";
         const string ListAcquisitionSet = "ListAcquisitionSet";
 
         /// <summary>
@@ -44,12 +43,6 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public string FarmName { get; set; }
-
-        /// <summary>
-        ///     AcquisitionId
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = GetAcquisitionSet)]
-        public string AcquisitionId { get; set; }
 
         /// <summary>
         ///     AcquisitionId
@@ -73,12 +66,6 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         {
             switch (ParameterSetName)
             {
-                case GetAcquisitionSet:
-                {
-                    AcquisitionGetResponse result = Client.Acquisitions.Get(ResourceGroupName, FarmName, AcquisitionId);
-                    WriteObject(new AcquisitionResponse(result.Acquisition));
-                    break;
-                }
                 case ListAcquisitionSet:
                 {
                     string filter = Tools.GenerateAcquisitionQueryFilterString(TenantSubscriptionId, StorageAccountName,
