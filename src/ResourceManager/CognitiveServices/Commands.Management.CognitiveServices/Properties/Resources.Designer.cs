@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Microsoft will use data you send to the Cognitive Services to improve Microsoft products and services. For example we will use content that you provide to the Cognitive Services to improve our underlying algorithms and models over time. Where you send personal data to the Cognitive Services, you are responsible for obtaining sufficient consent from the data subjects. The General Privacy and Security Terms in the Online Services Terms (https://www.microsoft.com/en-us/Licensing/product-licensing/products.aspx [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string NewAccount_ConsentMessage {
+            get {
+                return ResourceManager.GetString("NewAccount_ConsentMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creating new Cognitive Services account {0} of type {1}, Sku {2} at location {3}..
         /// </summary>
         internal static string NewAccount_ProcessMessage {

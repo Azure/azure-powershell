@@ -120,6 +120,11 @@
   <data name="NewAccountKey_ProcessMessage" xml:space="preserve">
     <value>Regenerating Key {0} for account {1}.</value>
   </data>
+  <data name="NewAccount_ConsentMessage" xml:space="preserve">
+    <value>Microsoft will use data you send to the Cognitive Services to improve Microsoft products and services. For example we will use content that you provide to the Cognitive Services to improve our underlying algorithms and models over time. Where you send personal data to the Cognitive Services, you are responsible for obtaining sufficient consent from the data subjects. The General Privacy and Security Terms in the Online Services Terms (https://www.microsoft.com/en-us/Licensing/product-licensing/products.aspx) do not apply to the Cognitive Services. You must comply with use and display requirements for the Bing Search APIs. 
+ 
+Please refer to the Microsoft Cognitive Services section in the Online Services Terms for details.</value>
+  </data>
   <data name="NewAccount_ProcessMessage" xml:space="preserve">
     <value>Creating new Cognitive Services account {0} of type {1}, Sku {2} at location {3}.</value>
   </data>
