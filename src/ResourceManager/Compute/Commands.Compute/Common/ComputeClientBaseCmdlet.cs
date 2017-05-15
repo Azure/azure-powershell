@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Compute
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            ComputeAutoMapperProfile.Instance.Initialize();
+            ComputeAutoMapperProfile.Initialize();
         }
 
         protected void ExecuteClientAction(Action action)

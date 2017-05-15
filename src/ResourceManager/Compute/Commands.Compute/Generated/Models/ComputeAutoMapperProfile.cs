@@ -28,69 +28,60 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
     public class ComputeAutomationAutoMapperProfile : AutoMapper.Profile
     {
-        public static ComputeAutomationAutoMapperProfile Instance = new ComputeAutomationAutoMapperProfile();
-        private readonly Lazy<bool> initialize;
-
-        private ComputeAutomationAutoMapperProfile()
-        {
-            initialize = new Lazy<bool>(() =>
-            {
-                CreateMap<FROM.AvailabilitySet, TO.PSAvailabilitySet>();
-                CreateMap<FROM.AvailabilitySet, TO.PSAvailabilitySetList>();
-                CreateMap<TO.PSAvailabilitySetList, TO.PSAvailabilitySet>();
-                CreateMap<TO.PSAvailabilitySet, TO.PSAvailabilitySetList>();
-                CreateMap<FROM.ContainerService, TO.PSContainerService>();
-                CreateMap<FROM.ContainerService, TO.PSContainerServiceList>();
-                CreateMap<TO.PSContainerServiceList, TO.PSContainerService>();
-                CreateMap<TO.PSContainerService, TO.PSContainerServiceList>();
-                CreateMap<FROM.Disk, TO.PSDisk>();
-                CreateMap<FROM.Disk, TO.PSDiskList>();
-                CreateMap<TO.PSDiskList, TO.PSDisk>();
-                CreateMap<TO.PSDisk, TO.PSDiskList>();
-                CreateMap<FROM.Image, TO.PSImage>();
-                CreateMap<FROM.Image, TO.PSImageList>();
-                CreateMap<TO.PSImageList, TO.PSImage>();
-                CreateMap<TO.PSImage, TO.PSImageList>();
-                CreateMap<FROM.Snapshot, TO.PSSnapshot>();
-                CreateMap<FROM.Snapshot, TO.PSSnapshotList>();
-                CreateMap<TO.PSSnapshotList, TO.PSSnapshot>();
-                CreateMap<TO.PSSnapshot, TO.PSSnapshotList>();
-                CreateMap<FROM.VirtualMachineScaleSet, TO.PSVirtualMachineScaleSet>();
-                CreateMap<FROM.VirtualMachineScaleSet, TO.PSVirtualMachineScaleSetList>();
-                CreateMap<TO.PSVirtualMachineScaleSetList, TO.PSVirtualMachineScaleSet>();
-                CreateMap<TO.PSVirtualMachineScaleSet, TO.PSVirtualMachineScaleSetList>();
-                CreateMap<FROM.VirtualMachineScaleSet, TO.PSVirtualMachineScaleSet>();
-                CreateMap<FROM.VirtualMachineScaleSet, TO.PSVirtualMachineScaleSetList>();
-                CreateMap<TO.PSVirtualMachineScaleSetList, TO.PSVirtualMachineScaleSet>();
-                CreateMap<TO.PSVirtualMachineScaleSet, TO.PSVirtualMachineScaleSetList>();
-                CreateMap<FROM.VirtualMachineScaleSetVM, TO.PSVirtualMachineScaleSetVM>();
-                CreateMap<FROM.VirtualMachineScaleSetVM, TO.PSVirtualMachineScaleSetVMList>();
-                CreateMap<TO.PSVirtualMachineScaleSetVMList, TO.PSVirtualMachineScaleSetVM>();
-                CreateMap<TO.PSVirtualMachineScaleSetVM, TO.PSVirtualMachineScaleSetVMList>();
-                CreateMap<FROM.VirtualMachine, TO.PSVirtualMachine>();
-                CreateMap<FROM.VirtualMachine, TO.PSVirtualMachineList>();
-                CreateMap<TO.PSVirtualMachineList, TO.PSVirtualMachine>();
-                CreateMap<TO.PSVirtualMachine, TO.PSVirtualMachineList>();
-                CreateMap<FROM.VirtualMachine, TO.PSVirtualMachine>();
-                CreateMap<FROM.VirtualMachine, TO.PSVirtualMachineList>();
-                CreateMap<TO.PSVirtualMachineList, TO.PSVirtualMachine>();
-                CreateMap<TO.PSVirtualMachine, TO.PSVirtualMachineList>();
-                CreateMap<FROM.Disk, FROM.DiskUpdate>();
-                CreateMap<FROM.DiskUpdate, FROM.Disk>();
-                CreateMap<FROM.Snapshot, FROM.SnapshotUpdate>();
-                CreateMap<FROM.SnapshotUpdate, FROM.Snapshot>();
-                return true;
-            });
-        }
-
         public override string ProfileName
         {
             get { return "ComputeAutomationAutoMapperProfile"; }
         }
 
-        public bool Initialize()
+        public static void Initialize()
         {
-            return initialize.Value;
+            Mapper.Initialize(cfg => {
+                cfg.AddProfile<ComputeAutomationAutoMapperProfile>();
+                cfg.CreateMap<FROM.AvailabilitySet, TO.PSAvailabilitySet>();
+                cfg.CreateMap<FROM.AvailabilitySet, TO.PSAvailabilitySetList>();
+                cfg.CreateMap<TO.PSAvailabilitySetList, TO.PSAvailabilitySet>();
+                cfg.CreateMap<TO.PSAvailabilitySet, TO.PSAvailabilitySetList>();
+                cfg.CreateMap<FROM.ContainerService, TO.PSContainerService>();
+                cfg.CreateMap<FROM.ContainerService, TO.PSContainerServiceList>();
+                cfg.CreateMap<TO.PSContainerServiceList, TO.PSContainerService>();
+                cfg.CreateMap<TO.PSContainerService, TO.PSContainerServiceList>();
+                cfg.CreateMap<FROM.Disk, TO.PSDisk>();
+                cfg.CreateMap<FROM.Disk, TO.PSDiskList>();
+                cfg.CreateMap<TO.PSDiskList, TO.PSDisk>();
+                cfg.CreateMap<TO.PSDisk, TO.PSDiskList>();
+                cfg.CreateMap<FROM.Image, TO.PSImage>();
+                cfg.CreateMap<FROM.Image, TO.PSImageList>();
+                cfg.CreateMap<TO.PSImageList, TO.PSImage>();
+                cfg.CreateMap<TO.PSImage, TO.PSImageList>();
+                cfg.CreateMap<FROM.Snapshot, TO.PSSnapshot>();
+                cfg.CreateMap<FROM.Snapshot, TO.PSSnapshotList>();
+                cfg.CreateMap<TO.PSSnapshotList, TO.PSSnapshot>();
+                cfg.CreateMap<TO.PSSnapshot, TO.PSSnapshotList>();
+                cfg.CreateMap<FROM.VirtualMachineScaleSet, TO.PSVirtualMachineScaleSet>();
+                cfg.CreateMap<FROM.VirtualMachineScaleSet, TO.PSVirtualMachineScaleSetList>();
+                cfg.CreateMap<TO.PSVirtualMachineScaleSetList, TO.PSVirtualMachineScaleSet>();
+                cfg.CreateMap<TO.PSVirtualMachineScaleSet, TO.PSVirtualMachineScaleSetList>();
+                cfg.CreateMap<FROM.VirtualMachineScaleSet, TO.PSVirtualMachineScaleSet>();
+                cfg.CreateMap<FROM.VirtualMachineScaleSet, TO.PSVirtualMachineScaleSetList>();
+                cfg.CreateMap<TO.PSVirtualMachineScaleSetList, TO.PSVirtualMachineScaleSet>();
+                cfg.CreateMap<TO.PSVirtualMachineScaleSet, TO.PSVirtualMachineScaleSetList>();
+                cfg.CreateMap<FROM.VirtualMachineScaleSetVM, TO.PSVirtualMachineScaleSetVM>();
+                cfg.CreateMap<FROM.VirtualMachineScaleSetVM, TO.PSVirtualMachineScaleSetVMList>();
+                cfg.CreateMap<TO.PSVirtualMachineScaleSetVMList, TO.PSVirtualMachineScaleSetVM>();
+                cfg.CreateMap<TO.PSVirtualMachineScaleSetVM, TO.PSVirtualMachineScaleSetVMList>();
+                cfg.CreateMap<FROM.VirtualMachine, TO.PSVirtualMachine>();
+                cfg.CreateMap<FROM.VirtualMachine, TO.PSVirtualMachineList>();
+                cfg.CreateMap<TO.PSVirtualMachineList, TO.PSVirtualMachine>();
+                cfg.CreateMap<TO.PSVirtualMachine, TO.PSVirtualMachineList>();
+                cfg.CreateMap<FROM.VirtualMachine, TO.PSVirtualMachine>();
+                cfg.CreateMap<FROM.VirtualMachine, TO.PSVirtualMachineList>();
+                cfg.CreateMap<TO.PSVirtualMachineList, TO.PSVirtualMachine>();
+                cfg.CreateMap<TO.PSVirtualMachine, TO.PSVirtualMachineList>();
+                cfg.CreateMap<FROM.Disk, FROM.DiskUpdate>();
+                cfg.CreateMap<FROM.DiskUpdate, FROM.Disk>();
+                cfg.CreateMap<FROM.Snapshot, FROM.SnapshotUpdate>();
+                cfg.CreateMap<FROM.SnapshotUpdate, FROM.Snapshot>();
+            });
         }
     }
 }

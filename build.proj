@@ -217,19 +217,19 @@
 
     <!-- Delete powershell runtime files -->
     <ItemGroup>
-      <RedundantDlls Include="$(PackageDirectory)\**\netstandard1.6\publish\Microsoft.Powershell.*.dll" />
-      <RedundantDlls Include="$(PackageDirectory)\**\netstandard1.6\publish\System*.dll" />
-      <RedundantDlls Include="$(PackageDirectory)\**\netstandard1.6\publish\Microsoft.VisualBasic.dll" />
-      <RedundantDlls Include="$(PackageDirectory)\**\netstandard1.6\publish\Microsoft.CSharp.dll" />
-      <RedundantDlls Include="$(PackageDirectory)\**\netstandard1.6\publish\Microsoft.CodeAnalysis.dll" />
-      <RedundantDlls Include="$(PackageDirectory)\**\netstandard1.6\publish\Microsoft.CodeAnalysis.CSharp.dll" />
+      <RedundantDlls Include="$(PackageDirectory)\**\netcoreapp2.0\publish\Microsoft.Powershell.*.dll" />
+      <RedundantDlls Include="$(PackageDirectory)\**\netcoreapp2.0\publish\System*.dll" />
+      <RedundantDlls Include="$(PackageDirectory)\**\netcoreapp2.0\publish\Microsoft.VisualBasic.dll" />
+      <RedundantDlls Include="$(PackageDirectory)\**\netcoreapp2.0\publish\Microsoft.CSharp.dll" />
+      <RedundantDlls Include="$(PackageDirectory)\**\netcoreapp2.0\publish\Microsoft.CodeAnalysis.dll" />
+      <RedundantDlls Include="$(PackageDirectory)\**\netcoreapp2.0\publish\Microsoft.CodeAnalysis.CSharp.dll" />
     </ItemGroup>
 
     <Delete Files="@(RedundantDlls->'%(FullPath)')"/>
 
     <!-- Copy content of the publish folder one folders up -->
     <ItemGroup>
-      <PackageContent Include="$(PackageDirectory)\**\netstandard1.6\publish\*.*" />
+      <PackageContent Include="$(PackageDirectory)\**\netcoreapp2.0\publish\*.*" />
       <SourceFile Include="@(PackageContent)">
         <DestinationFolder>$([System.IO.Path]::Combine('%(RelativeDir)', '..', '%(FileName)%(Extension)'))</DestinationFolder>
       </SourceFile>
@@ -239,7 +239,7 @@
 
     <!-- Move PSD1 files one folders up -->
     <ItemGroup>
-      <psdFiles Include="$(PackageDirectory)\**\netstandard1.6\*.psd1" />
+      <psdFiles Include="$(PackageDirectory)\**\netcoreapp2.0\*.psd1" />
       <psdFilesTarget Include="@(psdFiles)">
         <DestinationFolder>$([System.IO.Path]::Combine('%(RelativeDir)', '..', '%(FileName)%(Extension)'))</DestinationFolder>
       </psdFilesTarget>
@@ -249,7 +249,7 @@
 
     <!-- Delete build artifacts -->
     <ItemGroup>
-      <GetAllFiles Include="$(PackageDirectory)\**\netstandard1.6\publish\*.*" />
+      <GetAllFiles Include="$(PackageDirectory)\**\netcoreapp2.0\publish\*.*" />
       <Artifacts Include="@(GetAllFiles->'%(RootDir)%(Directory)'->Distinct())" />
     </ItemGroup>
 
@@ -259,6 +259,8 @@
       <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureRM.Resources.Netcore\AzureRM.Tags.Netcore.psd1" />
       <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureRM.Websites.Netcore\AzureRM.Resources.Netcore.psd1" />
       <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureRM.Websites.Netcore\AzureRM.Tags.Netcore.psd1" />
+      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureRM.Network.Netcore\AzureRM.Resources.Netcore.psd1" />
+      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureRM.Network.Netcore\AzureRM.Tags.Netcore.psd1" />
     </ItemGroup>
 
     <Delete Files="@(ExtraPsdFiles->'%(FullPath)')"/>
