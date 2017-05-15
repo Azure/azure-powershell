@@ -77,6 +77,17 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         /// </summary>
         protected override void Execute()
         {
+            // Set the default start time and end time to last 24hours
+            if (EndTimeInUtc == null) 
+            {
+                EndTimeInUtc = DateTime.UtcNow;
+            }
+
+            if (StartTimeInUtc == null )
+            {
+                StartTimeInUtc = EndTimeInUtc.AddDays(-1);
+            }
+
             string filter = Tools.GenerateFilter(MetricNames, StartTimeInUtc, EndTimeInUtc, TimeGrain);
             bool fullDetails = this.DetailedOutput.IsPresent;
 
