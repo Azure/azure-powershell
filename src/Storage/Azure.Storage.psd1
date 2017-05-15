@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '3.0.0'
+ModuleVersion = '3.0.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -151,9 +151,10 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Upgrade to Azure Storage Client Library 8.1.1 and Azure Storage DataMovement Library 0.5.1
-* Add a new cmdlet to support blob Incremental Copy feature
-    - Start-AzureStorageBlobIncrementalCopy'
+        ReleaseNotes = '* Fix issue with New-AzureStorageContext in offline scenarios: https://github.com/Azure/azure-powershell/issues/3939
+        * Upgrade to Azure Storage Client Library 8.1.1 and Azure Storage DataMovement Library 0.5.1
+        * Add a new cmdlet to support blob Incremental Copy feature
+          - Start-AzureStorageBlobIncrementalCopy'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
