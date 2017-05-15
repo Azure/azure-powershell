@@ -88,4 +88,15 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     {
         ContainerMigration
     }
+    /// <summary>
+    /// Storage account status
+    /// </summary>
+    public enum StorageAccountStatus
+    {
+
+        Active = 0,
+        Deleted = 1,
+        OutOfRetentionPeriod = 2,
+        Recycled = 3
+    }
 }

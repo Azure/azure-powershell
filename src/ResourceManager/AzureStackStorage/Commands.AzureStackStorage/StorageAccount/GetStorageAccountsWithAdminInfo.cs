@@ -65,7 +65,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         /// Storage Account Status
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = ListAccountsParamSet)]
-        public int? StorageAccountStatus { get; set; }
+        public StorageAccountStatus? StorageAccountStatus { get; set; }
 
         /// <summary>
         /// Storage Account AccountId
@@ -93,8 +93,10 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
                         filters.Add(new KeyValuePair<StorageAccountSearchFilterParameter, string>(StorageAccountSearchFilterParameter.TenantSubscriptionId, TenantSubscriptionId));
                     if (PartialAccountName != null)
                         filters.Add(new KeyValuePair<StorageAccountSearchFilterParameter, string>(StorageAccountSearchFilterParameter.PartialAccountName, PartialAccountName));
-                    if (StorageAccountStatus.HasValue == true)
-                        filters.Add(new KeyValuePair<StorageAccountSearchFilterParameter, string>(StorageAccountSearchFilterParameter.StorageAccountStatus, StorageAccountStatus.Value.ToString(CultureInfo.InvariantCulture)));
+                    if (StorageAccountStatus.HasValue == true) {
+                        int accountStatus = (int)StorageAccountStatus;
+                        filters.Add(new KeyValuePair<StorageAccountSearchFilterParameter, string>(StorageAccountSearchFilterParameter.StorageAccountStatus, accountStatus.ToString(CultureInfo.InvariantCulture)));
+                    }
                     break;
             }
             string filter = Tools.GenerateStorageAccountsSearchFilter(filters);
