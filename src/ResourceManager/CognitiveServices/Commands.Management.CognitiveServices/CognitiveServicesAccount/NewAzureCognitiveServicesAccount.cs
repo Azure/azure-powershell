@@ -73,14 +73,14 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         [Parameter(
             Mandatory = false,
             HelpMessage = "Cognitive Services Account Tags.")]
-        [Alias (TagsAlias)]
+        [Alias(TagsAlias)]
         [ValidateNotNull]
         [AllowEmptyCollection]
         public Hashtable[] Tag { get; set; }
-        
+
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
-        
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -101,6 +101,18 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                     ||
                     Force.IsPresent)
                 {
+                    if (Force.IsPresent)
+                    {
+                        WriteWarning(Resources.NewAccount_Notice);
+                    }
+                    else
+                    {
+                        bool yesToAll = false, noToAll = false;
+                        if (!ShouldContinue(Resources.NewAccount_Notice, "Notice", true, ref yesToAll, ref noToAll))
+                        {
+                            return;
+                        }
+                    }
 
                     var createAccountResponse = this.CognitiveServicesClient.CognitiveServicesAccounts.Create(
                                     this.ResourceGroupName,
