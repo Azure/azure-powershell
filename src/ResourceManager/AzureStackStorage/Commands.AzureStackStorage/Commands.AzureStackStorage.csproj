@@ -124,7 +124,6 @@
     <Compile Include="AdminMetricDefinitionCmdlet.cs" />
     <Compile Include="Container\GetContainer.cs" />
     <Compile Include="Container\GetContainerMigrationStatus.cs" />
-    <Compile Include="Container\GetDestinationSharesForContainerMigration.cs" />
     <Compile Include="Container\StartContainerMigration.cs" />
     <Compile Include="Container\StopContainerMigration.cs" />
     <Compile Include="Enums.cs" />

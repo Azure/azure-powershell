@@ -83,4 +83,9 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     {
         Migration
     }
+
+    public enum FileShareGetIntent
+    {
+        ContainerMigration
+    }
 }
