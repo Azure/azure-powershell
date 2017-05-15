@@ -57,17 +57,14 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
                 Id = this.Id,
                 Name = this.Name,
                 Type = TrafficManagerEndpoint.ToSDKEndpointType(this.Type),
-                Properties = new EndpointProperties
-                {
-                    EndpointLocation = this.Location,
-                    EndpointStatus = this.EndpointStatus,
-                    GeoMapping = this.GeoMapping,
-                    MinChildEndpoints = this.MinChildEndpoints,
-                    Priority = this.Priority,
-                    Target = this.Target,
-                    TargetResourceId = this.TargetResourceId,                   
-                    Weight = this.Weight,
-                }
+                EndpointLocation = this.Location,
+                EndpointStatus = this.EndpointStatus,
+                GeoMapping = this.GeoMapping,
+                MinChildEndpoints = this.MinChildEndpoints,
+                Priority = this.Priority,
+                Target = this.Target,
+                TargetResourceId = this.TargetResourceId,                   
+                Weight = this.Weight,
             };
         }
 
@@ -78,9 +75,6 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
                 Id = this.Id,
                 Name = this.Name,
                 Type = TrafficManagerEndpoint.ToSDKEndpointType(this.Type),
-                Properties = new EndpointProperties
-                {                    
-                }
             };
         }
 
