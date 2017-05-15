@@ -251,9 +251,7 @@ namespace Microsoft.Azure.Commands.Compute
 
                     if (keys != null)
                     {
-                        storageKey = !string.IsNullOrEmpty(keys.Key1) ?
-                            keys.Key1 :
-                            keys.Key2;
+                        storageKey = keys.GetFirstAvailableKey();
                     }
                 }
             }

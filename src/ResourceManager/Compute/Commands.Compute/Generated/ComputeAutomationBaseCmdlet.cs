@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            ComputeAutomationAutoMapperProfile.Initialize();
+            ComputeAutomationAutoMapperProfile.Instance.Initialize();
         }
 
         protected static PSArgument[] ConvertFromObjectsToArguments(string[] names, object[] objects)

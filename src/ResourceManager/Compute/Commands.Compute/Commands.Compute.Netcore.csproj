@@ -46,6 +46,12 @@
     <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\ARM.Storage.4\ARMStorageService.cs" Link="Common\ARMStorageService.cs" />
     <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\AzureContextAdapterExtensions.cs" Link="Common\AzureContextAdapterExtensions.cs" />
     <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\AzureStorageContext.cs" Link="Common\AzureStorageContext.cs" />
+    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionCmdletConstants.cs" Link="Extension\DSC\DscExtensionCmdletConstants.cs" />
+    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionPrivateSettings.cs" Link="Extension\DSC\DscExtensionPrivateSettings.cs" />
+    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionPublicSettings.cs" Link="Extension\DSC\DscExtensionPublicSettings.cs" />
+    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionSettingsSerializer.cs" Link="Extension\DSC\DscExtensionSettingsSerializer.cs" />
+    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\Publish\ConfigurationParseResult.cs" Link="Extension\DSC\ConfigurationParseResult.cs" />
+    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\Publish\ConfigurationParsingHelper.cs" Link="Extension\DSC\ConfigurationParsingHelper.cs" />
     <Compile Include="..\..\..\ServiceManagement\Compute\Sync\ComputeStats.cs" Link="Sync\ComputeStats.cs" />
     <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Download\BlobHandle.cs" Link="Sync\Download\BlobHandle.cs" />
     <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Download\BlobUri.cs" Link="Sync\Download\BlobUri.cs" />
