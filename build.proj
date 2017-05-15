@@ -211,6 +211,7 @@
     <Message Importance="high" Text="Building Cmdlets..." />
 
     <!-- Build and create package content -->
+    <Exec Command="dotnet --version"/>
     <Exec Command="dotnet restore Azure.PowerShell.NetCore.sln"/>
     <Exec Command="dotnet build Azure.PowerShell.NetCore.sln -c $(Configuration)"/>
     <Exec Command="dotnet publish Azure.PowerShell.NetCore.sln -c $(Configuration)"/>

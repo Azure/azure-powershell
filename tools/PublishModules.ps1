@@ -48,8 +48,12 @@ function Get-TargetModules
             $resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager\AzureResourceManager"
         }
     
-        if ((($Scope -eq 'All') -or $PublishLocal) -and ($isNetCore -eq "false")) {
-          $targets += "$resourceManagerRootFolder\AzureRM.Profile" 
+        if ((($Scope -eq 'All') -or $PublishLocal)) {
+          if($isNetCore -eq "false") {
+            $targets += "$resourceManagerRootFolder\AzureRM.Profile" 
+          } else {
+            $targets += "$resourceManagerRootFolder\AzureRM.Profile.Netcore" 
+          }
         }
 
         if ((($Scope -eq 'All') -or ($Scope -eq 'AzureStorage')) -and ($isNetCore -eq "false")) {
@@ -65,7 +69,7 @@ function Get-TargetModules
           foreach ($module in $resourceManagerModules) {
             # filter out AzureRM.Profile which always gets published first 
             # And "Azure.Storage" which is built out as test dependencies  
-            if (($module.Name -ne "AzureRM.Profile") -and ($module.Name -ne "Azure.Storage")) {
+            if (($module.Name -ne "AzureRM.Profile") -and ($module.Name -ne "Azure.Storage") -and ($module.Name -ne "AzureRM.Profile.Netcore")) {
               $targets += $module.FullName
             }
           }
