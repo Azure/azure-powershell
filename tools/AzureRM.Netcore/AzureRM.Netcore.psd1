@@ -53,6 +53,7 @@ PowerShellVersion = '5.1'
 # Modules that must be imported into the global environment prior to importing this module
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; RequiredVersion = '1.0.0'; }, 
                @{ModuleName = 'AzureRM.Compute.Netcore'; RequiredVersion = '1.0.0'; }, 
+               @{ModuleName = 'AzureRM.Network.Netcore'; RequiredVersion = '1.0.0'; }, 
                @{ModuleName = 'AzureRM.Resources.Netcore'; RequiredVersion = '1.0.0'; }, 
                @{ModuleName = 'AzureRM.Storage.Netcore'; RequiredVersion = '1.0.0'; }, 
                @{ModuleName = 'AzureRM.Tags.Netcore'; RequiredVersion = '1.0.0'; }, 

@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.ResourceManager.Auth
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Compute.Netcore", "src\ResourceManager\Compute\Commands.Compute\Commands.Compute.Netcore.csproj", "{7B61AB3B-9F62-4B96-BCED-13920B56CD3C}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Network.Netcore", "src\ResourceManager\Network\Commands.Network\Commands.Network.Netcore.csproj", "{40ACDC82-5A87-4D52-83B5-ED21274363A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{7B61AB3B-9F62-4B96-BCED-13920B56CD3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B61AB3B-9F62-4B96-BCED-13920B56CD3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B61AB3B-9F62-4B96-BCED-13920B56CD3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40ACDC82-5A87-4D52-83B5-ED21274363A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40ACDC82-5A87-4D52-83B5-ED21274363A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40ACDC82-5A87-4D52-83B5-ED21274363A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40ACDC82-5A87-4D52-83B5-ED21274363A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

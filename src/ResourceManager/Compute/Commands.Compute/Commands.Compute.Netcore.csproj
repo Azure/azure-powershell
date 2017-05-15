@@ -30,7 +30,7 @@
     <PackageReference Include="Microsoft.Azure.Management.Authorization" Version="2.5.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Compute" Version="14.1.0-prerelease" />
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="10.1.0-preview" />
-    <PackageReference Include="AutoMapper" Version="5.2.0" />
+    <PackageReference Include="AutoMapper" Version="6.0.2" />
     <PackageReference Include="System.Collections.Specialized" Version="4.3.0" />
     <PackageReference Include="System.Reflection" Version="4.3.0" />
     <PackageReference Include="System.Security.SecureString" Version="4.3.0" />
