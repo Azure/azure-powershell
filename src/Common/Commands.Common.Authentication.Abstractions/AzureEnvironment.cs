@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// Predefined Microsoft Azure environments
         /// </summary>
         public static IDictionary<string, AzureEnvironment> PublicEnvironments { get; } =
-        new Dictionary<string, AzureEnvironment>(StringExtensions.CaselessComparer)
+        new Dictionary<string, AzureEnvironment>(StringComparer.InvariantCultureIgnoreCase)
         {
             {
                 EnvironmentName.AzureCloud,

@@ -47,8 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
         public static string GetAssemblyDirectory()
         {
             var assemblyPath = Uri.UnescapeDataString(
-                new Uri(
-                    Azure.Commands.Common.Authentication.Abstractions.AssemblyExtensions.GetExecutingAssembly().CodeBase)
+                new Uri(Assembly.GetExecutingAssembly().CodeBase)
                     .AbsolutePath);
             return Path.GetDirectoryName(assemblyPath);
         }
@@ -205,7 +204,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
             }
             else
             {
-                encoding = EncodingExtensions.GetDefaultEncoding();
+                encoding = Encoding.Default;
             }
 
             return encoding;

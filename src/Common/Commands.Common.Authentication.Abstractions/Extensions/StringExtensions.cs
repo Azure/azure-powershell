@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <param name="otherString">The other string.</param>
         public static bool EqualsInsensitively(this string original, string otherString)
         {
-            return string.Equals(original, otherString, StringExtensions.CaselessComparison);
+            return string.Equals(original, otherString, StringComparison.InvariantCultureIgnoreCase);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <param name="otherString">The other string.</param>
         public static bool StartsWithInsensitively(this string original, string otherString)
         {
-            return original.CoalesceString().StartsWith(otherString.CoalesceString(), StringExtensions.CaselessComparison);
+            return original.CoalesceString().StartsWith(otherString.CoalesceString(), StringComparison.InvariantCultureIgnoreCase);
         }
 
         /// <summary>
@@ -122,30 +122,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         public static bool EqualsAsLocation(this string location1, string location2)
         {
             return location1.ToNormalizedLocation().EqualsInsensitively(location2.ToNormalizedLocation());
-        }
-
-        public static StringComparison CaselessComparison
-        {
-            get
-            {
-#if !NETSTANDARD
-                return StringComparison.InvariantCultureIgnoreCase;
-#else
-                return StringComparison.CurrentCultureIgnoreCase;
-#endif
-            }
-        }
-
-        public static StringComparer CaselessComparer
-        {
-            get
-            {
-#if !NETSTANDARD
-                return StringComparer.InvariantCultureIgnoreCase;
-#else
-                return StringComparer.CurrentCultureIgnoreCase;
-#endif
-            }
         }
     }
 }

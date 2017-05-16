@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             {
                 filter = filter.Trim().TrimStart('?').TrimStart('&');
 
-                if (filter.StartsWith("$filter", Commands.Common.Authentication.Abstractions.StringExtensions.CaselessComparison))
+                if (filter.StartsWith("$filter", StringComparison.InvariantCultureIgnoreCase))
                 {
                     var indexOfEqual = filter.IndexOf("=", StringComparison.Ordinal);
 

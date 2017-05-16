@@ -58,14 +58,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     DisplayName = location.DisplayName,
                     Providers = mapEntry.Value
                 },
-                Commands.Common.Authentication.Abstractions.StringExtensions.CaselessComparer);
+                StringComparer.InvariantCultureIgnoreCase);
 
             return joinResult.ToList();
         }
 
         private Dictionary<string, List<string>> GetLocationProviderMap(List<Provider> providers)
         {
-            var locationMap = new Dictionary<string, List<string>>(Commands.Common.Authentication.Abstractions.StringExtensions.CaselessComparer);
+            var locationMap = new Dictionary<string, List<string>>(StringComparer.InvariantCultureIgnoreCase);
             providers.CoalesceEnumerable()
                 .ForEach(provider => AddResourceProvider(provider, locationMap));
 
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var providersLocations = provider.ResourceTypes
                 .CoalesceEnumerable()
                 .SelectMany(type => type.Locations)
-                .Distinct(Commands.Common.Authentication.Abstractions.StringExtensions.CaselessComparer);
+                .Distinct(StringComparer.InvariantCultureIgnoreCase);
 
             providersLocations.ForEach(location =>
             {

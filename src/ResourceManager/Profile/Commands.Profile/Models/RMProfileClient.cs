@@ -425,7 +425,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 throw new ArgumentNullException("environment1");
             }
-            if (!string.Equals(environment1.Name, environment2.Name, StringExtensions.CaselessComparison))
+            if (!string.Equals(environment1.Name, environment2.Name, StringComparison.InvariantCultureIgnoreCase))
             {
                 throw new ArgumentException("Environment names do not match.");
             }

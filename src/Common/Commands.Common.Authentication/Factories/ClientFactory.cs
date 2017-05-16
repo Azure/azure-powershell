@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 CredentialCache credentialCache = new CredentialCache();
 
                 // Get base address without terminating slash
-                string credentialAddress = new Uri(endpoint).GetBaseAddress().TrimEnd(uriPathSeparator);
+                string credentialAddress = new Uri(endpoint).GetLeftPart(UriPartial.Authority).TrimEnd(uriPathSeparator);
 
                 // Add credentials to cache and associate with handler
                 NetworkCredential networkCredentials = credentials.GetCredential(new Uri(credentialAddress), "Basic");

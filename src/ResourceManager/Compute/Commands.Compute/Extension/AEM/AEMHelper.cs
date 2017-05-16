@@ -42,8 +42,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
         private Action<string> _VerboseAction = null;
         private Action<string> _WarningAction = null;
         private PSHostUserInterface _UI = null;
-        private Dictionary<string, StorageAccount> _StorageCache = new Dictionary<string, StorageAccount>(StringExtensions.CaselessComparer);
-        private Dictionary<string, string> _StorageKeyCache = new Dictionary<string, string>(StringExtensions.CaselessComparer);
+        private Dictionary<string, StorageAccount> _StorageCache = new Dictionary<string, StorageAccount>(StringComparer.InvariantCultureIgnoreCase);
+        private Dictionary<string, string> _StorageKeyCache = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
         private StorageManagementClient _StorageClient;
         private IAzureSubscription _Subscription;
 
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
             }
 
             var listResponse = this._StorageClient.StorageAccounts.List();
-            var account = listResponse.First(accTemp => accTemp.Name.Equals(accountName, StringExtensions.CaselessComparison));
+            var account = listResponse.First(accTemp => accTemp.Name.Equals(accountName, StringComparison.InvariantCultureIgnoreCase));
 
             _StorageCache.Add(account.Name, account);
 
@@ -511,13 +511,13 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
         internal Version GetExtensionVersion(VirtualMachine vm, VirtualMachineInstanceView vmStatus, string osType, string type, string publisher)
         {
             Version version = new Version();
-            if (AEMExtensionConstants.AEMExtensionPublisher[osType].Equals(publisher, StringExtensions.CaselessComparison)
-                && AEMExtensionConstants.AEMExtensionType[osType].Equals(type, StringExtensions.CaselessComparison))
+            if (AEMExtensionConstants.AEMExtensionPublisher[osType].Equals(publisher, StringComparison.InvariantCultureIgnoreCase)
+                && AEMExtensionConstants.AEMExtensionType[osType].Equals(type, StringComparison.InvariantCultureIgnoreCase))
             {
                 version = AEMExtensionConstants.AEMExtensionVersion[osType];
             }
-            else if (AEMExtensionConstants.WADExtensionPublisher[osType].Equals(publisher, StringExtensions.CaselessComparison)
-                && AEMExtensionConstants.WADExtensionType[osType].Equals(type, StringExtensions.CaselessComparison))
+            else if (AEMExtensionConstants.WADExtensionPublisher[osType].Equals(publisher, StringComparison.InvariantCultureIgnoreCase)
+                && AEMExtensionConstants.WADExtensionType[osType].Equals(type, StringComparison.InvariantCultureIgnoreCase))
             {
                 version = AEMExtensionConstants.WADExtensionVersion[osType];
             }

@@ -45,13 +45,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 ClientFactory = new ClientFactory(),
                 AuthenticationFactory = new AuthenticationFactory(),
                 DataStore = new DiskDataStore(),
-#if !NETSTANDARD
                 OldProfileFile = "WindowsAzureProfile.xml",
                 OldProfileFileBackup = "WindowsAzureProfile.xml.bak",
                 ProfileDirectory = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                 Resources.AzureDirectoryName),
-#endif
                 ProfileFile = "AzureProfile.json",
                 TokenCacheFile = "TokenCache.dat"
             };

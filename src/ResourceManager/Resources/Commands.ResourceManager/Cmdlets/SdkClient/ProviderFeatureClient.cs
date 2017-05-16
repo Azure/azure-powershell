@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         {
             return string.Equals(feature.Properties.State, 
                 ProviderFeatureClient.RegisteredStateName,
-                StringExtensions.CaselessComparison);
+                StringComparison.InvariantCultureIgnoreCase);
         }
     }
 }

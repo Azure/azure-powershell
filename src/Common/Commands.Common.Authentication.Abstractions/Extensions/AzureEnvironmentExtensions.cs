@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             {
                 return environment.GetEndpoint(endpoint)
                     .Trim(new[] { '/' })
-                    .Equals(url.Trim(new[] { '/' }), StringExtensions.CaselessComparison);
+                    .Equals(url.Trim(new[] { '/' }), StringComparison.InvariantCultureIgnoreCase);
             }
 
             return false;

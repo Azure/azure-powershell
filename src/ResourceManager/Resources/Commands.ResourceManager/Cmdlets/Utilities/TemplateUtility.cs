@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
                     {
                         foreach (string key in templateParameterObject.Keys)
                         {
-                            if (key.Equals(dynamicParameter.Key, Commands.Common.Authentication.Abstractions.StringExtensions.CaselessComparison))
+                            if (key.Equals(dynamicParameter.Key, StringComparison.InvariantCultureIgnoreCase))
                             {
                                 if (templateParameterObject[key] is TemplateFileParameterV1)
                                 {

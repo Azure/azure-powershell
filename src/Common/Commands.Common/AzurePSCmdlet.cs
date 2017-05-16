@@ -104,7 +104,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             get
             {
-                return Azure.Commands.Common.Authentication.Abstractions.AssemblyExtensions.GetCallingAssembly()
+                return Assembly.GetCallingAssembly()
                         .GetName().Version.ToString();
             }
         }

@@ -34,7 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
     public static class GeneralUtilities
     {
-        private static Assembly assembly = Azure.Commands.Common.Authentication.Abstractions.AssemblyExtensions.GetExecutingAssembly();
+        private static Assembly assembly = Assembly.GetExecutingAssembly();
 
         private static List<string> AuthorizationHeaderNames = new List<string>() { "Authorization" };
 

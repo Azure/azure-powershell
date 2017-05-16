@@ -123,14 +123,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             var allRPLocations = allProviders
                 .SelectMany(provider => provider.ResourceTypes.CoalesceEnumerable().SelectMany(type => type.Locations))
-                .Distinct(Commands.Common.Authentication.Abstractions.StringExtensions.CaselessComparer);
+                .Distinct(StringComparer.InvariantCultureIgnoreCase);
 
             var validLocations = this
                 .SubscriptionSdkClient
                 .ListLocations(DefaultContext.Subscription.Id.ToString())
                 .Select(location => location.DisplayName)
                 .Concat(allRPLocations)
-                .Distinct(Commands.Common.Authentication.Abstractions.StringExtensions.CaselessComparer);
+                .Distinct(StringComparer.InvariantCultureIgnoreCase);
 
             if (!validLocations.Any(loc => loc.EqualsAsLocation(this.Location)))
             {

@@ -425,7 +425,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                 {
                     AADObject currentUser = GraphClient.Objects.GetCurrentUser();
                     if (currentUser != null && string.Equals(currentUser.UserType, "Guest", 
-                        StringExtensions.CaselessComparison))
+                        StringComparison.InvariantCultureIgnoreCase))
                     {
                         throw new InvalidOperationException(ProjectResources.CreateApplicationNotAllowedGuestUser);
                     }
@@ -724,7 +724,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                 {
                     AADObject currentUser = GraphClient.Objects.GetCurrentUser();
                     if (currentUser != null && string.Equals(currentUser.UserType, "Guest",
-                        StringExtensions.CaselessComparison))
+                        StringComparison.InvariantCultureIgnoreCase))
                     {
                         throw new InvalidOperationException(ProjectResources.CreateServicePrincipalNotAllowedGuestUser);
                     }

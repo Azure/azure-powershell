@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Commands.Compute
             autoBackupSettings.BackupScheduleType = BackupScheduleType;
 
             // Set other Backup schedule settings only if BackUpSchedule type is Manual.
-            if (!string.IsNullOrEmpty(BackupScheduleType) && string.Equals(BackupScheduleType, ValidateSetValues.Manual, StringExtensions.CaselessComparison))
+            if (!string.IsNullOrEmpty(BackupScheduleType) && string.Equals(BackupScheduleType, ValidateSetValues.Manual, StringComparison.InvariantCultureIgnoreCase))
             {
                 ValidateBackupScheduleSettings();
 
