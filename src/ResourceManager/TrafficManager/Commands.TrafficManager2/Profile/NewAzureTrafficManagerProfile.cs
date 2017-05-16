@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         public string TrafficRoutingMethod { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The protocol of the monitor.")]
-        [ValidateSet(Constants.HTTP, Constants.HTTPS, IgnoreCase = false)]
+        [ValidateSet(Constants.HTTP, Constants.HTTPS, Constants.TCP, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
         public string MonitorProtocol { get; set; }
 
@@ -61,9 +61,21 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateNotNullOrEmpty]
         public uint MonitorPort { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The path of the monitor.")]
+        [Parameter(Mandatory = false, HelpMessage = "The path of the monitor.")]
         [ValidateNotNullOrEmpty]
         public string MonitorPath { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The interval (in seconds) at which Traffic Manager will check the health of each endpoint in this profile. The default is 30.")]
+        [ValidateNotNullOrEmpty]
+        public uint? MonitorInterval { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The time (in seconds) that Traffic Manager allows endpoints in this profile to respond to the health check. The default is 10.")]
+        [ValidateNotNullOrEmpty]
+        public uint? MonitorTimeout { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The number of consecutive failed health checks that Traffic Manager tolerates before declaring an endpoint in this profile Degraded after the next consecutive failed health check. The default is 3.")]
+        [ValidateNotNullOrEmpty]
+        public uint? MonitorToleratedNumberOfFailures { get; set; }
 
         [Alias("Tags")]
         [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource tags.")]
@@ -94,6 +106,9 @@ namespace Microsoft.Azure.Commands.TrafficManager
                     this.MonitorProtocol,
                     this.MonitorPort,
                     this.MonitorPath,
+                    this.MonitorInterval,
+                    this.MonitorTimeout,
+                    this.MonitorToleratedNumberOfFailures,
                     this.Tag);
 
                     this.WriteVerbose(ProjectResources.Success);

@@ -331,3 +331,118 @@ function Test-ProfileDisableNonExisting
 
     Assert-Throws { Disable-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Force } 
 }
+
+<#
+.SYNOPSIS
+Create profile without specifying optional Monitor settings
+#>
+function Test-ProfileMonitorDefaults
+{
+	$profileName = getAssetName
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$relativeName = getAssetName
+	$createdProfile = New-AzureRmTrafficManagerProfile -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" -Ttl 30 -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -TrafficRoutingMethod "Weighted"  
+
+	Assert-NotNull $createdProfile
+	Assert-AreEqual 30 $createdProfile.MonitorInterval 
+	Assert-AreEqual 10 $createdProfile.MonitorTimeout 
+	Assert-AreEqual 3 $createdProfile.MonitorToleratedNumberOfFailures
+
+	$retrievedProfile = Get-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+
+	Assert-NotNull $retrievedProfile
+	Assert-AreEqual 30 $retrievedProfile.MonitorInterval 
+	Assert-AreEqual 10 $retrievedProfile.MonitorTimeout 
+	Assert-AreEqual 3 $retrievedProfile.MonitorToleratedNumberOfFailures
+
+	Remove-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Create profile specifying optional Monitor settings
+#>
+function Test-ProfileMonitorCustom
+{
+	$profileName = getAssetName
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$relativeName = getAssetName
+	$createdProfile = New-AzureRmTrafficManagerProfile -MonitorInterval 10 -MonitorTimeout 7 -MonitorToleratedNumberOfFailures 1 -Ttl 0 -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -TrafficRoutingMethod "Weighted"  
+
+	Assert-NotNull $createdProfile
+	Assert-AreEqual 10 $createdProfile.MonitorInterval 
+	Assert-AreEqual 7 $createdProfile.MonitorTimeout 
+	Assert-AreEqual 1 $createdProfile.MonitorToleratedNumberOfFailures
+	Assert-AreEqual 0 $createdProfile.Ttl
+
+	$retrievedProfile = Get-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+
+	Assert-NotNull $retrievedProfile
+	Assert-AreEqual 10 $retrievedProfile.MonitorInterval 
+	Assert-AreEqual 7 $retrievedProfile.MonitorTimeout 
+	Assert-AreEqual 1 $retrievedProfile.MonitorToleratedNumberOfFailures
+	Assert-AreEqual 0 $retrievedProfile.Ttl 
+
+    $retrievedProfile.MonitorInterval = 30
+	$retrievedProfile.MonitorTimeout = 8
+	$retrievedProfile.MonitorToleratedNumberOfFailures = 0
+	$retrievedProfile.Ttl = 5
+
+	$updatedProfile = Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $retrievedProfile
+
+	Assert-NotNull $updatedProfile
+	Assert-AreEqual 30 $updatedProfile.MonitorInterval 
+	Assert-AreEqual 8 $updatedProfile.MonitorTimeout 
+	Assert-AreEqual 0 $updatedProfile.MonitorToleratedNumberOfFailures
+	Assert-AreEqual 5 $updatedProfile.Ttl 
+
+	Remove-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Create profile specifying TCP Monitor Protocol
+#>
+function Test-ProfileMonitorProtocol
+{
+	$profileName = getAssetName
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$relativeName = getAssetName
+	$createdProfile = New-AzureRmTrafficManagerProfile -MonitorProtocol "TCP" -MonitorPort 8080 -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -TrafficRoutingMethod "Weighted"
+
+	Assert-NotNull $createdProfile
+	Assert-AreEqual "TCP" $createdProfile.MonitorProtocol 
+	Assert-AreEqual 8080 $createdProfile.MonitorPort 
+	Assert-Null $createdProfile.MonitorPath
+
+	$retrievedProfile = Get-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+
+	Assert-NotNull $retrievedProfile
+	Assert-AreEqual "TCP" $retrievedProfile.MonitorProtocol 
+	Assert-AreEqual 8080 $retrievedProfile.MonitorPort 
+	Assert-Null $retrievedProfile.MonitorPath
+
+    $retrievedProfile.MonitorPort = 81
+	$retrievedProfile.MonitorProtocol = HTTP
+	$retrievedProfile.MonitorPath = "/health.htm"
+
+	$updatedProfile = Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $retrievedProfile
+
+	Assert-NotNull $updatedProfile
+	Assert-AreEqual "HTTP" $updatedProfile.MonitorProtocol 
+	Assert-AreEqual 81 $updatedProfile.MonitorPort 
+	Assert-AreEqual "/health.htm" $retrievedProfile.MonitorPath
+
+    $updatedProfile.MonitorPort = 8086
+	$updatedProfile.MonitorProtocol = TCP
+	$updatedProfile.MonitorPath = $null
+
+	$revertedProfile = Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $updatedProfile
+
+	Assert-NotNull $revertedProfile
+	Assert-AreEqual "TCP" $revertedProfile.MonitorProtocol 
+	Assert-AreEqual 8086 $revertedProfile.MonitorPort 
+	Assert-Null $revertedProfile.MonitorPath
+
+	Remove-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Force
+}

@@ -41,6 +41,12 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
 
         public string MonitorPath { get; set; }
 
+        public uint? MonitorInterval { get; set; }
+
+        public uint? MonitorTimeout { get; set; }
+
+        public uint? MonitorToleratedNumberOfFailures { get; set; }
+
         public List<TrafficManagerEndpoint> Endpoints { get; set; }
 
         public Profile ToSDKProfile()
@@ -58,7 +64,10 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
                 {
                     Protocol = this.MonitorProtocol,
                     Port = this.MonitorPort,
-                    Path = this.MonitorPath
+                    Path = this.MonitorPath,
+                    IntervalInSeconds = this.MonitorInterval,
+                    TimeoutInSeconds = this.MonitorTimeout,
+                    ToleratedNumberOfFailures = this.MonitorToleratedNumberOfFailures,
                 }
             };
 

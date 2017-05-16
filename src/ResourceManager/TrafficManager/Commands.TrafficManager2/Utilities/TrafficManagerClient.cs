@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 
         public ITrafficManagerManagementClient TrafficManagerManagementClient { get; set; }
 
-        public TrafficManagerProfile CreateTrafficManagerProfile(string resourceGroupName, string profileName, string profileStatus, string trafficRoutingMethod, string relativeDnsName, uint ttl, string monitorProtocol, uint monitorPort, string monitorPath, Hashtable tag)
+        public TrafficManagerProfile CreateTrafficManagerProfile(string resourceGroupName, string profileName, string profileStatus, string trafficRoutingMethod, string relativeDnsName, uint ttl, string monitorProtocol, uint monitorPort, string monitorPath, uint? monitorInterval, uint? monitorTimeout, uint? monitorToleratedNumberOfFailures, Hashtable tag)
         {
             Profile response = this.TrafficManagerManagementClient.Profiles.CreateOrUpdate(
                 resourceGroupName,
@@ -66,7 +66,10 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                     {
                         Protocol = monitorProtocol,
                         Port = monitorPort,
-                        Path = monitorPath
+                        Path = monitorPath,
+                        IntervalInSeconds = monitorInterval,
+                        TimeoutInSeconds = monitorTimeout,
+                        ToleratedNumberOfFailures = monitorToleratedNumberOfFailures,
                     },
                     Tags = TagsConversionHelper.CreateTagDictionary(tag, validate: true),
                 });
@@ -229,7 +232,10 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                 TrafficRoutingMethod = sdkProfile.TrafficRoutingMethod,
                 MonitorProtocol = sdkProfile.MonitorConfig.Protocol,
                 MonitorPort = (uint)sdkProfile.MonitorConfig.Port,
-                MonitorPath = sdkProfile.MonitorConfig.Path
+                MonitorPath = sdkProfile.MonitorConfig.Path,
+                MonitorInterval = (uint?)sdkProfile.MonitorConfig.IntervalInSeconds,
+                MonitorTimeout = (uint?)sdkProfile.MonitorConfig.TimeoutInSeconds,
+                MonitorToleratedNumberOfFailures = (uint?)sdkProfile.MonitorConfig.ToleratedNumberOfFailures,
             };
 
             if (sdkProfile.Endpoints != null)
