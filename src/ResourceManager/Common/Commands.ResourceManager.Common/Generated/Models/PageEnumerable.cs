@@ -13,18 +13,45 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace Microsoft.Azure.Internal.Subscriptions.Models
 {
-    public class PageEnumerable : IEnumerable<Subscription>
+    public class PageEnumerable : IEnumerable<Subscription>, IDisposable
     {
         private ISubscriptionClient _client;
 
         public PageEnumerable(ISubscriptionClient client)
         {
             _client = client;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+        }
+
+        public virtual void Dispose(bool disposing)
+        {
+            if (disposing )
+            {
+                ISubscriptionClient client = Interlocked.Exchange(ref _client, null);
+                if (client!= null)
+                {
+#if DEBUG
+                    if (!TestMockSupport.RunningMocked)
+                    {
+#endif
+                        client.Dispose();
+#if DEBUG
+                    }
+#endif
+                }
+            }
         }
 
         public IEnumerator<Subscription> GetEnumerator()

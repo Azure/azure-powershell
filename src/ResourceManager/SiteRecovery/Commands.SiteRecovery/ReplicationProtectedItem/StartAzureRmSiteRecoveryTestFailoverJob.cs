@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                         {
                             PrimaryKekCertificatePfx = primaryKekCertpfx,
                             SecondaryKekCertificatePfx = secondaryKekCertpfx,
-                            VaultLocation = "dummy"
+                            VaultLocation = ""
                         };
                         recoveryPlanTestFailoverInputProperties.ProviderSpecificDetails.Add(recoveryPlanHyperVReplicaAzureFailoverInput);
                     }

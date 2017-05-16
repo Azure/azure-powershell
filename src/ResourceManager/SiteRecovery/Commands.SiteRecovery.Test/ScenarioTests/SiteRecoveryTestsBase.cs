@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
         CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
 
+        public RecoveryServicesClient RecoveryServicesMgmtClient { get; private set; }
         public SiteRecoveryManagementClient SiteRecoveryMgmtClient { get; private set; }
-        public RecoveryServicesManagementClient RecoveryServicesMgmtClient { get; private set; }
 
         protected SiteRecoveryTestsBase()
         {
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
 
         protected void SetupManagementClients(String scenario, RestTestFramework.MockContext context)
         {
-            RecoveryServicesMgmtClient = GetRecoveryServicesManagementClient(scenario);
+            RecoveryServicesMgmtClient = GetRecoveryServicesManagementClient(context);
             SiteRecoveryMgmtClient = GetSiteRecoveryManagementClient(scenario, context);
             helper.SetupManagementClients(SiteRecoveryMgmtClient, RecoveryServicesMgmtClient);
         }
@@ -153,11 +153,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
             }
         }
 
-        private RecoveryServicesManagementClient GetRecoveryServicesManagementClient(String scenario)
-        {
-            return GetServiceClient<RecoveryServicesManagementClient>(scenario);
-        }
-
         private SiteRecoveryManagementClient GetSiteRecoveryManagementClient(String scenario, RestTestFramework.MockContext context)
         {
             var resourceGroupName = "";
@@ -182,103 +177,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
             return client;
         }
 
-        public T GetServiceClient<T>(String scenario) where T : class
-        {
-            var factory = (TestEnvironmentFactory)new CSMTestEnvironmentFactory();
-            var testEnvironment = factory.GetTestEnvironment();
-
-            ServicePointManager.ServerCertificateValidationCallback = IgnoreCertificateErrorHandler;
-
-            var credentials = new SubscriptionCredentialsAdapter(
-                testEnvironment.AuthorizationContext.TokenCredentials[TokenAudience.Management],
-                testEnvironment.SubscriptionId);
-            var resourceNamespace = "";
-            var resourceType = "";
-            var resourceName = "";
-            var resourceGroupName = "";
-
-            switch (scenario)
-            {
-                case Constants.NewModel:
-                    resourceNamespace = "Microsoft.RecoveryServices";
-                    resourceType = "vaults";
-                    resourceName = "b2aRSvaultprod17012017";
-                    resourceGroupName = "siterecoveryprod1";
-                    break;
-
-                default:
-                    resourceNamespace = "Microsoft.RecoveryServices";
-                    resourceType = "vaults";
-                    resourceName = "";
-                    resourceGroupName = "";
-                    break;
-            };
-
-            if (typeof(T) == typeof(RecoveryServicesManagementClient))
-            {
-                RecoveryServicesManagementClient client = null;
-
-                if (testEnvironment.UsesCustomUri())
-                {
-                    client = new RecoveryServicesManagementClient(
-                        resourceNamespace,
-                        credentials,
-                        testEnvironment.BaseUri);
-                }
-
-                else
-                {
-                    client = new RecoveryServicesManagementClient(
-                        resourceNamespace,
-                        credentials);
-                }
-
-                return GetRSMServiceClient<T>(factory, client);
-            }
-
-            return null;
-        }
-
-        public static T GetRSMServiceClient<T>(TestEnvironmentFactory factory, RecoveryServicesManagementClient client) where T : class
-        {
-            TestEnvironment testEnvironment = factory.GetTestEnvironment();
-
-            HttpMockServer instance;
-            try
-            {
-                instance = HttpMockServer.CreateInstance();
-            }
-            catch (ApplicationException)
-            {
-                HttpMockServer.Initialize("TestEnvironment", "InitialCreation");
-                instance = HttpMockServer.CreateInstance();
-            }
-            T obj2 = typeof(T).GetMethod("WithHandler", new Type[1]
-            {
-                typeof (DelegatingHandler)
-            }).Invoke((object)client, new object[1]
-            {
-                (object) instance
-            }) as T;
-
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
-            {
-                HttpMockServer.Variables[TestEnvironment.SubscriptionIdKey] = testEnvironment.SubscriptionId;
-            }
-
-            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
-            {
-                PropertyInfo property1 = typeof(T).GetProperty("LongRunningOperationInitialTimeout", typeof(int));
-                PropertyInfo property2 = typeof(T).GetProperty("LongRunningOperationRetryTimeout", typeof(int));
-                if (property1 != (PropertyInfo)null && property2 != (PropertyInfo)null)
-                {
-                    property1.SetValue((object)obj2, (object)0);
-                    property2.SetValue((object)obj2, (object)0);
-                }
-            }
-            return obj2;
-        }
-
         private static bool IgnoreCertificateErrorHandler
            (object sender,
            System.Security.Cryptography.X509Certificates.X509Certificate certificate,
@@ -286,6 +184,12 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
            SslPolicyErrors sslPolicyErrors)
         {
             return true;
+        }
+
+        private RecoveryServicesClient GetRecoveryServicesManagementClient(
+            RestTestFramework.MockContext context)
+        {
+            return context.GetServiceClient<RecoveryServicesClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private SiteRecoveryManagementClient GetSiteRecoveryManagementClient(

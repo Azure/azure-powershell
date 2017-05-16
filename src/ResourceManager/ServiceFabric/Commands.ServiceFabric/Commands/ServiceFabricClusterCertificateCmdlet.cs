@@ -24,7 +24,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.KeyVault.Models;
 using Microsoft.Azure.Management.KeyVault.Models;
 using Microsoft.Azure.Management.ResourceManager;
@@ -36,6 +36,7 @@ using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -146,8 +147,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public ServiceFabricClusterCertificateCmdlet()
         {
             resourceManagerClient = new Lazy<IResourceManagementClient>(() =>
-            AzureSession.ClientFactory.CreateArmClient<ResourceManagementClient>(
-                DefaultProfile.Context,
+            AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
+                DefaultContext,
                 AzureEnvironment.Endpoint.ResourceManager));
         }
 

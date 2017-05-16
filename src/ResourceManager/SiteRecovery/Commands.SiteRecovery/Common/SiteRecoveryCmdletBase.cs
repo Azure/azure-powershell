@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         protected override void SetupHttpClientPipeline()
         {
             base.SetupHttpClientPipeline();
-            AzureSession.ClientFactory.AddHandler(
+            AzureSession.Instance.ClientFactory.AddHandler(
                 new RpNamespaceHandler(PSRecoveryServicesClient.asrVaultCreds.ResourceNamespace != null ? PSRecoveryServicesClient.asrVaultCreds.ResourceNamespace : ARMResourceTypeConstants.RecoveryServicesResourceProviderNameSpace));
         }
 

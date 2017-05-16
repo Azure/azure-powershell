@@ -18,9 +18,12 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 3.0.0
 * Upgrade SRP SDK to 6.3.0
 * New/Set-AzureRmStorageAccount:Add a new parameter to support EnableHttpsTrafficOnly
 * New/Set/Get-AzureRmStorageAccount: Returned Storage Account contains a new attribute EnableHttpsTrafficOnly
+
 ## Version 2.8.0
 
 ## Version 2.7.0

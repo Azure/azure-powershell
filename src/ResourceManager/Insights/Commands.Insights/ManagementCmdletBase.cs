@@ -16,6 +16,7 @@ using System;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.Monitor.Management;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Insights
 {
@@ -41,7 +42,7 @@ namespace Microsoft.Azure.Commands.Insights
             {
                 if (this.monitorManagementClient == null)
                 {
-                    this.monitorManagementClient = AzureSession.ClientFactory.CreateArmClient<MonitorManagementClient>(DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
+                    this.monitorManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<MonitorManagementClient>(DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
                 }
 
                 return this.monitorManagementClient;

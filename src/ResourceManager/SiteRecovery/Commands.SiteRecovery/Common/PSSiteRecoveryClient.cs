@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery;
@@ -46,7 +47,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Gets the value of recovery services vault management client.
         /// </summary>
-        public RecoveryServicesManagementClient GetRecoveryServicesVaultClient
+        public RecoveryServicesClient GetRecoveryServicesVaultClient
         {
             get
             {
@@ -74,7 +75,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Recovery services vault management client.
         /// </summary>
-        private RecoveryServicesManagementClient recoveryServicesVaultClient;
+        private RecoveryServicesClient recoveryServicesVaultClient;
 
         /// <summary>
         /// End point Uri
@@ -93,9 +94,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// required current subscription.
         /// </summary>
         /// <param name="azureSubscription">Azure Subscription</param>
-        public PSRecoveryServicesClient(IAzureProfile azureProfile)
+        public PSRecoveryServicesClient(IAzureContextContainer azureProfile)
         {
-            AzureContext = azureProfile.Context;
+            AzureContext = (AzureContext)azureProfile.DefaultContext;
 
             System.Configuration.Configuration siteRecoveryConfig = ConfigurationManager.OpenExeConfiguration(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
@@ -150,13 +151,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             {
                 if (appSettings.Settings.Count == 0)
                 {
-                    endPointUri = azureProfile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager);
+                    endPointUri = azureProfile.DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager);
                 }
                 else
                 {
                     if (null == appSettings.Settings["RDFEProxy"])
                     {
-                        endPointUri = azureProfile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager);
+                        endPointUri = azureProfile.DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager);
 
                     }
                     else
@@ -173,14 +174,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 }
             }
 
-            cloudCredentials = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(azureProfile.Context);
-
             this.recoveryServicesVaultClient =
-                 AzureSession.ClientFactory.CreateCustomClient<RecoveryServicesManagementClient>(
-                    asrVaultCreds.ResourceNamespace,
-                    cloudCredentials,
-                    azureProfile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager));
-
+                AzureSession.Instance.ClientFactory.CreateArmClient<RecoveryServicesClient>(AzureContext, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         private static bool IgnoreCertificateErrorHandler
@@ -210,21 +205,21 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             bool validResourceGroup = false;
             bool validResource = false;
 
-            foreach (Management.RecoveryServices.Models.ResourceGroup resourceGroup in this.GetRecoveryServicesVaultClient.ResourceGroup.List())
-            {
-                if (string.Compare(resourceGroup.Name, resourceGroupName, StringComparison.OrdinalIgnoreCase) == 0)
-                {
-                    validResourceGroup = true;
-                    break;
-                }
-            }
+            //foreach (Management.RecoveryServices.Models.ResourceGroup resourceGroup in this.GetRecoveryServicesVaultClient.ResourceGroup.List())
+            //{
+            //    if (string.Compare(resourceGroup.Name, resourceGroupName, StringComparison.OrdinalIgnoreCase) == 0)
+            //    {
+            //        validResourceGroup = true;
+            //        break;
+            //    }
+            //}
 
             if (!validResourceGroup)
             {
                 throw new ArgumentException(Properties.Resources.InvalidResourceGroup);
             }
 
-            foreach (Management.RecoveryServices.Models.Vault vault in this.GetRecoveryServicesVaultClient.Vaults.List(resourceGroupName, this.GetRecoveryServicesVaultRequestHeaders(false)))
+            foreach (Management.RecoveryServices.Models.Vault vault in this.GetRecoveryServicesVaultClient.Vaults.ListByResourceGroup(resourceGroupName))
             {
                 if (string.Compare(vault.Name, resourceName, StringComparison.OrdinalIgnoreCase) == 0)
                 {
@@ -311,24 +306,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         /// <param name="shouldSignRequest">specifies whether to sign the request or not</param>
         /// <returns>Custom request headers</returns>
-        public Management.RecoveryServices.Models.CustomRequestHeaders GetRecoveryServicesVaultRequestHeaders(bool shouldSignRequest = true)
-        {
-            this.ClientRequestId = Guid.NewGuid().ToString() + "-" + DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ssZ") + "-P";
-
-            return new Management.RecoveryServices.Models.CustomRequestHeaders()
-            {
-                // ClientRequestId is a unique ID for every request to Azure Site Recovery.
-                // It is useful when diagnosing failures in API calls.
-                ClientRequestId = this.ClientRequestId,
-                AgentAuthenticationHeader = shouldSignRequest ? this.GenerateAgentAuthenticationHeader(this.ClientRequestId) : ""
-            };
-        }
-
-        /// <summary>
-        /// Gets request headers.
-        /// </summary>
-        /// <param name="shouldSignRequest">specifies whether to sign the request or not</param>
-        /// <returns>Custom request headers</returns>
         public Dictionary<string, List<string>> GetRequestHeaders(bool shouldSignRequest = true)
         {
             Dictionary<string, List<string>> customHeaders = new Dictionary<string, List<string>>();
@@ -362,10 +339,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 throw new InvalidOperationException(Properties.Resources.MissingVaultSettings);
             }
 
-            var creds = AzureSession.AuthenticationFactory.GetServiceClientCredentials(AzureContext);
+            var creds = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(AzureContext);
 
             SiteRecoveryManagementClient siteRecoveryClient =
-                AzureSession.ClientFactory.CreateArmClient<SiteRecoveryManagementClient>(AzureContext, AzureEnvironment.Endpoint.ResourceManager);
+                AzureSession.Instance.ClientFactory.CreateArmClient<SiteRecoveryManagementClient>(AzureContext, AzureEnvironment.Endpoint.ResourceManager);
 
             siteRecoveryClient.ResourceGroupName = asrVaultCreds.ResourceGroupName;
             siteRecoveryClient.ResourceName = asrVaultCreds.ResourceName;
