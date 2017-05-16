@@ -256,13 +256,13 @@ namespace Microsoft.Azure.Commands.Resources.Models
                     deploymentObject.DeploymentDebugLogLevel = properties.DebugSetting().DetailLevel();
                 }
 
-                if (!string.IsNullOrEmpty(properties.Outputs.ToString()))
+                if (properties.Outputs != null && !string.IsNullOrEmpty(properties.Outputs.ToString()))
                 {
                     Dictionary<string, DeploymentVariable> outputs = JsonConvert.DeserializeObject<Dictionary<string, DeploymentVariable>>(properties.Outputs.ToString());
                     deploymentObject.Outputs = outputs;
                 }
 
-                if (!string.IsNullOrEmpty(properties.Parameters.ToString()))
+                if (properties.Parameters != null && !string.IsNullOrEmpty(properties.Parameters.ToString()))
                 {
                     Dictionary<string, DeploymentVariable> parameters = JsonConvert.DeserializeObject<Dictionary<string, DeploymentVariable>>(properties.Parameters.ToString());
                     deploymentObject.Parameters = parameters;
