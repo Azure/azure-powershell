@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '3.0.0'
+ModuleVersion = '3.0.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -52,7 +52,7 @@ CLRVersion = '4.0'
 
 # Modules that must be imported into the global environment prior to importing this module
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '3.0.0'; }, 
-               @{ModuleName = 'Azure.Storage'; ModuleVersion = '3.0.0'; })
+               @{ModuleName = 'Azure.Storage'; ModuleVersion = '3.0.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
