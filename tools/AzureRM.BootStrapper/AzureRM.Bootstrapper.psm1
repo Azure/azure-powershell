@@ -177,8 +177,18 @@ function Get-AzureProfileMap
   $OnlineProfileMap = RetrieveProfileMap -WebResponse $WebResponse
   $OnlineProfileMap | ConvertTo-Json -Compress | Out-File -FilePath $CacheFilePath
    
+  # Store old profile map's path before Updating
+  $oldProfileMap = $script:LatestProfileMapPath
+
   # Update $script:LatestProfileMapPath
   $script:LatestProfileMapPath = Get-ChildItem $ProfileCache | Where-Object { $_.FullName.equals($CacheFilePath)}
+  
+  # Remove old profile map if it exists
+  if (($null -ne $oldProfileMap) -and (Test-Path $oldProfileMap.FullName))
+  {
+    RemoveWithRetry -Path $oldProfileMap.FullName -Force
+  }
+  
   return $OnlineProfileMap
 }
 
@@ -244,11 +254,18 @@ function Get-ProfilesInstalled
         {
           if ($result.ContainsKey($key))
           {
-            $result[$key] += @{$module = $ProfileMap.$Key.$module}
+            if ($result[$key].Containskey($module))
+            {
+              $result[$key].$module += $version
+            }
+            else
+            {
+              $result[$key] += @{$module = @($version)}
+            }
           }
           else
           {
-            $result.Add($key, @{$module = $ProfileMap.$Key.$module})
+            $result.Add($key, @{$module = @($version)})
           }
         }
       }
@@ -270,19 +287,6 @@ function Get-ProfilesInstalled
     }
   }
   return $result
-}
-
-# Function to remove Previous profile map
-function Remove-ProfileMapFile
-{
-  [CmdletBinding()]
-  [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
-	param([string]$ProfileMapPath)
-
-  if (Test-Path -Path $ProfileMapPath)
-  {
-    RemoveWithRetry -Path $ProfileMapPath -Force
-  }
 }
 
 # Remove-Item command with Retry
@@ -320,17 +324,13 @@ function RemoveWithRetry
 # Get profiles installed associated with the module version
 function Test-ProfilesInstalled
 {
-  param([String]$Module, [String]$Profile, [PSObject]$PMap, [hashtable]$AllProfilesInstalled)
+  param([System.Version]$version, [String]$Module, [String]$Profile, [PSObject]$PMap, [hashtable]$AllProfilesInstalled)
 
   # Profiles associated with the particular module version - installed?
   $profilesAssociated = @()
-  $versionList = $PMap.$Profile.$Module
-  foreach ($version in $versionList)
+  foreach ($profileInAllProfiles in $AllProfilesInstalled[$Module + $version])
   {
-    foreach ($profileInAllProfiles in $AllProfilesInstalled[$Module + $version])
-    {
-      $profilesAssociated += $profileInAllProfiles
-    }
+    $profilesAssociated += $profileInAllProfiles
   }
   return $profilesAssociated
 }
@@ -403,12 +403,16 @@ function Uninstall-ProfileHelper
 
   foreach ($module in $modules)
   {
-    if ($Force.IsPresent)
+    $versionList = $PMap.$Profile.$module
+    foreach ($version in $versionList)
     {
-      Invoke-UninstallModule -PMap $PMap -Profile $Profile -Module $module -AllProfilesInstalled $AllProfilesInstalled -RemovePreviousVersions
-    }
-    else {
-      Invoke-UninstallModule -PMap $PMap -Profile $Profile -Module $module -AllProfilesInstalled $AllProfilesInstalled 
+      if ($Force.IsPresent)
+      {
+        Invoke-UninstallModule -PMap $PMap -Profile $Profile -Module $module -version $version -AllProfilesInstalled $AllProfilesInstalled -RemovePreviousVersions
+      }
+      else {
+        Invoke-UninstallModule -PMap $PMap -Profile $Profile -Module $module -version $version -AllProfilesInstalled $AllProfilesInstalled 
+      }
     }
   }
 }
@@ -417,11 +421,11 @@ function Uninstall-ProfileHelper
 function Invoke-UninstallModule
 {
   [CmdletBinding()]
-  param([PSObject]$PMap, [String]$Profile, $Module, [hashtable]$AllProfilesInstalled, [Switch]$RemovePreviousVersions)
+  param([PSObject]$PMap, [String]$Profile, $Module, [System.Version]$version, [hashtable]$AllProfilesInstalled, [Switch]$RemovePreviousVersions)
 
   # Check if the profiles associated with the module version are installed.
   Write-Verbose "Checking module dependency to any other profile installed"
-  $profilesAssociated = Test-ProfilesInstalled -Module $Module -Profile $Profile -PMap $PMap -AllProfilesInstalled $AllProfilesInstalled
+  $profilesAssociated = Test-ProfilesInstalled -version $version -Module $Module -Profile $Profile -PMap $PMap -AllProfilesInstalled $AllProfilesInstalled
       
   # If more than one profile is installed for the same version of the module, do not uninstall
   if ($profilesAssociated.Count -gt 1) 
@@ -432,12 +436,7 @@ function Invoke-UninstallModule
   $PSBoundParameters.Remove('AllProfilesInstalled') | Out-Null
   $PSBoundParameters.Remove('PMap') | Out-Null
 
-  # Uninstall module
-  $versionList = $PMap.$Profile.$module
-  foreach ($version in $versionList)
-  {
-    Uninstall-ModuleHelper -version $version @PSBoundParameters
-  }  
+  Uninstall-ModuleHelper @PSBoundParameters
 }
 
 # Helps to uninstall previous versions of modules in the profile
@@ -446,50 +445,38 @@ function Remove-PreviousVersion
   [CmdletBinding()]
   [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "")]
   [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
-  param([PSObject]$PreviousMap, [PSObject]$LatestMap, [hashtable]$AllProfilesInstalled, [String]$Profile, [Array]$Module, [Switch]$RemovePreviousVersions)
+  param([PSObject]$LatestMap, [hashtable]$AllProfilesInstalled, [String]$Profile, [Array]$Module, [Switch]$RemovePreviousVersions)
 
   $Remove = $PSBoundParameters.RemovePreviousVersions
   $Modules = $PSBoundParameters.Module
 
-  $PreviousProfiles = ($PreviousMap | Get-Member -MemberType NoteProperty).Name
-  
   Write-Verbose "Checking if previous versions of modules are installed"
-  # If the profile was not in $PreviousProfiles, return
-  if($Profile -notin $PreviousProfiles)
-  {
-    return
-  }
 
   if ($null -eq $Modules)
   {
-    $Modules = ($PreviousMap.$Profile | Get-Member -MemberType NoteProperty).Name
+    $Modules = ($LatestMap.$Profile | Get-Member -MemberType NoteProperty).Name
   }
 
   foreach ($module in $Modules)
-  {
-    # If the latest version is same as the previous version, do not uninstall.
-    if (($PreviousMap.$Profile.$module | Out-String) -eq ($LatestMap.$Profile.$module | Out-String))
-    {
-      continue
-    }
-      
-    # Is that module installed? If not skip
-    $versionList = $PreviousMap.$Profile.$module
+  {   
+    # Skip the latest version; first element will be the latest version
+    $versionList = $LatestMap.$Profile.$module
+    $versionList = $versionList | Where-Object { $_ -ne $versionList[0] }
     foreach ($version in $versionList)
     {
+      # Is that module version installed? If not skip; 
       if ($null -eq (Get-Module -Name $Module -ListAvailable | Where-Object { $_.Version -eq $version} ))
       {
         continue
       }
 
       Write-Verbose "Previous versions of modules were found. Trying to uninstall..."
-      # Modules are different. Uninstall previous version.
       if ($Remove.IsPresent)
       {
-        Invoke-UninstallModule -PMap $PreviousMap -Profile $Profile -Module $module -AllProfilesInstalled $AllProfilesInstalled -RemovePreviousVersions
+        Invoke-UninstallModule -PMap $LatestMap -Profile $Profile -Module $module -version $version -AllProfilesInstalled $AllProfilesInstalled -RemovePreviousVersions
       }
       else {
-        Invoke-UninstallModule -PMap $PreviousMap -Profile $Profile -Module $module -AllProfilesInstalled $AllProfilesInstalled         
+        Invoke-UninstallModule -PMap $LatestMap -Profile $Profile -Module $module -version $version -AllProfilesInstalled $AllProfilesInstalled         
       }
     }
       
@@ -502,41 +489,35 @@ function Remove-PreviousVersion
   }
 }
 
-# Gets profiles installed from all the profilemaps from cache
+# Gets profiles installed as @{Module+Version = @(profile)} for checking module dependency during uninstall
 function Get-AllProfilesInstalled
 {
   $AllProfilesInstalled = @{}
-  $ProfileCache = Get-ProfileCachePath
-  $ProfileMapHashes = Get-ChildItem $ProfileCache 
-
   # If Cache is empty, use embedded source
-  if ($null -eq $ProfileMapHashes)
+  if ($null -eq $script:LatestProfileMapPath)
   {
     $ModulePath = [System.IO.Path]::GetDirectoryName($PSCommandPath)
-    $ProfileMapHashes = Get-Item -Path (Join-Path -Path $ModulePath -ChildPath "ProfileMap.json")
+    $script:LatestProfileMapPath = Get-Item -Path (Join-Path -Path $ModulePath -ChildPath "ProfileMap.json")
   }
 
-  foreach ($ProfileMapHash in $ProfileMapHashes)
-  {
-    $ProfileMap = RetryGetContent -FilePath (Join-Path $ProfileCache $ProfileMapHash.Name) 
-    $profilesInstalled = (Get-ProfilesInstalled -ProfileMap $ProfileMap)
-    foreach ($Profile in $profilesInstalled.Keys)
+  $ProfileMap = RetryGetContent -FilePath $script:LatestProfileMapPath.FullName 
+  $profilesInstalled = (Get-ProfilesInstalled -ProfileMap $ProfileMap)
+  foreach ($Profile in $profilesInstalled.Keys)
+  { 
+    foreach ($module in ($profilesinstalled.$profile.Keys)) 
     {
-      foreach ($Module in ($ProfileMap.$Profile | Get-Member -MemberType NoteProperty).Name)
+      $versionList = $profilesinstalled.$Profile.$Module
+      foreach ($version in $versionList)
       {
-        $versionList = $ProfileMap.$Profile.$Module
-        foreach ($version in $versionList)
+        if ($AllProfilesInstalled.ContainsKey(($Module + $version)))
         {
-          if ($AllProfilesInstalled.ContainsKey(($Module + $version)))
+          if ($Profile -notin $AllProfilesInstalled[($Module + $version)])
           {
-            if ($Profile -notin $AllProfilesInstalled[($Module + $version)])
-            {
-              $AllProfilesInstalled[($Module + $version)] += $Profile
-            }
+            $AllProfilesInstalled[($Module + $version)] += $Profile
           }
-          else {
-            $AllProfilesInstalled.Add(($Module + $version), @($Profile))
-          }
+        }
+        else {
+          $AllProfilesInstalled.Add(($Module + $version), @($Profile))
         }
       }
     }
@@ -544,7 +525,7 @@ function Get-AllProfilesInstalled
   return $AllProfilesInstalled
 }
 
-# Helps to remove-previous versions of the update-profile and clean up cache, if none of the old hash profiles are installed
+# Helps to remove-previous versions of the update-profile and clean up cache
 function Update-ProfileHelper
 {
   [CmdletBinding()]
@@ -552,52 +533,12 @@ function Update-ProfileHelper
   param([String]$Profile, [Array]$Module, [Switch]$RemovePreviousVersions)
 
   Write-Verbose "Attempting to clean up previous versions"
-  # Get all the hash files (ProfileMaps) from cache
-  $ProfileCache = Get-ProfileCachePath
-  $ProfileMapHashes = Get-ChildItem $ProfileCache
 
   # Cache was updated before calling this function, so latestprofilemap will not be null. 
   $LatestProfileMap = RetryGetContent -FilePath $script:LatestProfileMapPath.FullName 
 
-  # Get-Profiles installed across all hashes. 
   $AllProfilesInstalled = Get-AllProfilesInstalled
-
-  foreach ($ProfileMapHash in $ProfileMapHashes)
-  {
-    # Set flag to delete hash
-    $deleteHash = $true
-    
-    # Do not process the latest hash; we don't want to remove the latest hash
-    if ($ProfileMapHash.Name -eq $script:LatestProfileMapPath.Name)
-    {
-      continue
-    }
-
-    # Compare previous & latest map for the update profile. Uninstall previous if they are different
-    $previousProfileMap = RetryGetContent -FilePath (Join-Path $profilecache $ProfileMapHash) 
-    Remove-PreviousVersion -PreviousMap $previousProfileMap -LatestMap $LatestProfileMap -AllProfilesInstalled $AllProfilesInstalled @PSBoundParameters
-
-    # If the previous map has profiles installed, do not delete it.
-    $profilesInstalled = (Get-ProfilesInstalled -ProfileMap $previousProfileMap)
-    foreach ($PreviousProfile in $profilesInstalled.Keys)
-    {
-      # Map can be deleted if the only profile installed is the updated one.
-      if ($PreviousProfile -eq $Profile)
-      {
-        continue
-      }
-      else {
-        $deleteHash = $false
-      }
-    }
-
-    # If none were installed, remove the hash
-    if ($deleteHash -ne $false)
-    {
-      Write-Verbose "Cleaning up cache"
-      Remove-ProfileMapFile -ProfileMapPath (Join-Path $profilecache $ProfileMapHash)
-    }
-  }
+  Remove-PreviousVersion -LatestMap $LatestProfileMap -AllProfilesInstalled $AllProfilesInstalled @PSBoundParameters
 }
 
 # If cmdlets were installed at a different scope, warn users of the potential conflict
