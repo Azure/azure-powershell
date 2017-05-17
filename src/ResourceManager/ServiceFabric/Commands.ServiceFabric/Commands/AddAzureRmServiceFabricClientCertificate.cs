@@ -55,7 +55,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
                             var patchRequest = new ClusterUpdateParameters
                             {
-                                ClientCertificateThumbprints = allCertThumbprints
+                                ClientCertificateThumbprints = allCertThumbprints,
+                                ClientCertificateCommonNames = cluster.ClientCertificateCommonNames
                             };
 
                             var psCluster = SendPatchRequest(patchRequest);
@@ -76,7 +77,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
                             var patchRequest = new ClusterUpdateParameters
                             {
-                                ClientCertificateCommonNames = allNewCommonNames
+                                ClientCertificateCommonNames = allNewCommonNames,
+                                ClientCertificateThumbprints = cluster.ClientCertificateThumbprints
                             };
 
                             var psCluster = SendPatchRequest(patchRequest);
