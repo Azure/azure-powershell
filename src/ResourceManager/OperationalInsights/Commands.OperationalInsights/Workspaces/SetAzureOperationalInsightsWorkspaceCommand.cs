@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             HelpMessage = "The resource tags for the workspace.")]
         public Hashtable Tags { get; set; }
 
-        [Parameter(Position = 5, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The workspace data retention in days. 730 days is the maximum allowed for all other Skus.")]
         [ValidateNotNullOrEmpty]
         public int? RetentionInDays { get; set; }
