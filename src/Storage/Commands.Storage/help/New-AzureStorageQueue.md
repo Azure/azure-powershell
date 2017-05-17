@@ -13,7 +13,7 @@ Creates a storage queue.
 ## SYNTAX
 
 ```
-New-AzureStorageQueue [-Name] <String> [-Context <AzureStorageContext>] [<CommonParameters>]
+New-AzureStorageQueue [-Name] <String> [-Context <IStorageContext>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,7 +43,7 @@ Specifies the Azure storage context.
 You can create it by using the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: AzureStorageContext
+Type: IStorageContext
 Parameter Sets: (All)
 Aliases: 
 
