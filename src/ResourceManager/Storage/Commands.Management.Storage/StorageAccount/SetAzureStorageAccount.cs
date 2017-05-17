@@ -105,6 +105,24 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Alias(TagsAlias)]
         public Hashtable Tag { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Storage Account EnableHttpsTrafficOnly.")]
+        public bool EnableHttpsTrafficOnly
+        {
+            get
+            {
+                return enableHttpsTrafficOnly.Value;
+            }
+            set
+            {
+                enableHttpsTrafficOnly = value;
+            }
+        }
+
+        private bool? enableHttpsTrafficOnly = null;
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -146,6 +164,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     if (this.AccessTier != null)
                     {
                         updateParameters.AccessTier = ParseAccessTier(AccessTier);
+                    }
+                    if(enableHttpsTrafficOnly != null)
+                    {
+                        updateParameters.EnableHttpsTrafficOnly = enableHttpsTrafficOnly;
                     }
 
                     var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(

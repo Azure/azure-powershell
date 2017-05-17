@@ -15,7 +15,7 @@ Gets Backup jobs.
 ```
 Get-AzureRmRecoveryServicesBackupJob [[-Status] <JobStatus>] [[-Operation] <JobOperation>] [[-From] <DateTime>]
  [[-To] <DateTime>] [[-JobId] <String>] [[-Job] <JobBase>] [-BackupManagementType <BackupManagementType>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,48 +70,18 @@ This script polls the first job that is currently in progress until the job has 
 
 ## PARAMETERS
 
-### -Status
-Specifies a status of the jobs that this cmdlet gets.
-The acceptable values for this parameter are:
-
-- InProgress
-- Failed
-- Cancelled
-- Cancelling
-- Completed
-- CompletedWithWarnings
+### -BackupManagementType
+Specifies the Backup management type.
+Currently, only AzureVM is supported.
 
 ```yaml
-Type: JobStatus
+Type: BackupManagementType
 Parameter Sets: (All)
 Aliases: 
+Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL
 
 Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Operation
-Specifies an operation of the jobs that this cmdlet gets.
-The acceptable values for this parameter are:
-
-- Backup
-- ConfigureBackup
-- DeleteBackupData
-- Register
-- Restore
-- UnProtect
-- Unregister
-
-```yaml
-Type: JobOperation
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -135,19 +105,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -To
-Specifies the end, as a **DateTime** object, of a time range for the jobs that this cmdlet gets.
-The default value is the current system time.
-If you specify this parameter, you must also specify the *From* parameter.
-Use UTC format for dates.
+### -Job
+Specifies the name of the Backup job to get.
 
 ```yaml
-Type: DateTime
+Type: JobBase
 Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 4
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -170,71 +137,68 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BackupManagementType
-Specifies the Backup management type.
-Currently, only AzureVM is supported.
-
-```yaml
-Type: BackupManagementType
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
+### -Operation
+Specifies an operation of the jobs that this cmdlet gets.
 The acceptable values for this parameter are:
 
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+- Backup
+- ConfigureBackup
+- DeleteBackupData
+- Register
+- Restore
+- UnProtect
+- Unregister
 
 ```yaml
-Type: ActionPreference
+Type: JobOperation
 Parameter Sets: (All)
-Aliases: infa
+Aliases: 
+Accepted values: Backup, Restore, ConfigureBackup, DisableBackup, DeleteBackupData
 
 Required: False
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
+### -Status
+Specifies a status of the jobs that this cmdlet gets.
+The acceptable values for this parameter are:
+
+- InProgress
+- Failed
+- Cancelled
+- Cancelling
+- Completed
+- CompletedWithWarnings
 
 ```yaml
-Type: String
+Type: JobStatus
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
+Accepted values: InProgress, Cancelling, Cancelled, Completed, CompletedWithWarnings, Failed
 
 Required: False
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Job
-Specifies the name of the Backup job to get.
+### -To
+Specifies the end, as a **DateTime** object, of a time range for the jobs that this cmdlet gets.
+The default value is the current system time.
+If you specify this parameter, you must also specify the *From* parameter.
+Use UTC format for dates.
 
 ```yaml
-Type: JobBase
+Type: DateTime
 Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 6
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

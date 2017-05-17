@@ -14,7 +14,7 @@ Adds a version for a service running in a cluster to a cluster configuration obj
 
 ```
 Add-AzureRmHDInsightComponentVersion [-Config] <AzureHDInsightConfig> [-ComponentName] <String>
- [-ComponentVersion] <String> [-WhatIf] [-Confirm]
+ [-ComponentVersion] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,6 +24,10 @@ The Add-AzureRmHDInsightComponentVersion cmdlet adds a version for a service run
 
 ### --------------------------  Example 1: Add a version for Spark to the cluster configuration object.  --------------------------
 @{paragraph=PS C:\\\>}
+
+
+
+
 
 ```
 PS C:\> # Primary storage account info
@@ -68,24 +72,7 @@ This command adds the version of Spark to the HDInsight cluster named 'your-spar
 
 ## PARAMETERS
 
-### -Config
-
-
-```yaml
-Type: AzureHDInsightConfig
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ComponentName
-
-
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -99,8 +86,6 @@ Accept wildcard characters: False
 ```
 
 ### -ComponentVersion
-
-
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -113,18 +98,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-
-
+### -Config
 ```yaml
-Type: SwitchParameter
+Type: AzureHDInsightConfig
 Parameter Sets: (All)
-Aliases: wi
+Aliases: 
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -142,6 +125,22 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### -WhatIf
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

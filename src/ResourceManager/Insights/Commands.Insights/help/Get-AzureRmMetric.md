@@ -152,42 +152,12 @@ This command gets detailed output for the Requests metric.
 
 ## PARAMETERS
 
-### -ResourceId
-Specifies the resource ID of the metric.
+### -DetailedOutput
+Indicates that this cmdlet displays detailed output.
+By default, output is summarized.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -TimeGrain
-Specifies the time grain of the metric as a **TimeSpan** object in the format hh:mm:ss.
-
-```yaml
-Type: TimeSpan
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -StartTime
-Specifies the start time of the query in local time.
-The default is the current local time minus one hour.
-
-```yaml
-Type: DateTime
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 
@@ -229,17 +199,47 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -DetailedOutput
-Indicates that this cmdlet displays detailed output.
-By default, output is summarized.
+### -ResourceId
+Specifies the resource ID of the metric.
 
 ```yaml
-Type: SwitchParameter
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -StartTime
+Specifies the start time of the query in local time.
+The default is the current local time minus one hour.
+
+```yaml
+Type: DateTime
 Parameter Sets: (All)
 Aliases: 
 
 Required: False
 Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TimeGrain
+Specifies the time grain of the metric as a **TimeSpan** object in the format hh:mm:ss.
+
+```yaml
+Type: TimeSpan
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
