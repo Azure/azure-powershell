@@ -7,7 +7,7 @@ schema: 2.0.0
 # Set-AzureRmServiceFabricSetting
 
 ## SYNOPSIS
-Add or update one or multiple ServiceFabric settings to the cluster
+Add or update one or multiple Service Fabric settings to the cluster.
 
 ## SYNTAX
 
@@ -24,7 +24,7 @@ Set-AzureRmServiceFabricSetting [-ResourceGroupName] <String> [-Name] <String>
 ```
 
 ## DESCRIPTION
-Use **Set-AzureRmServiceFabricSetting** to add or update ServiceFabric settings in a cluster.
+Use **Set-AzureRmServiceFabricSetting** to add or update Service Fabric settings in a cluster.
 
 ## EXAMPLES
 
@@ -33,27 +33,12 @@ Use **Set-AzureRmServiceFabricSetting** to add or update ServiceFabric settings 
 PS c:\> Set-AzureRmServiceFabricSetting -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster'  -Section 'NamingService' -Parameter 'MaxFileOperationTimeout' -Value 5000
 ```
 
-This command will Set 'MaxFileOperationTimeout' to value '5000' under the section 'NamingService'
+This command will set 'MaxFileOperationTimeout' to value '5000' under the section 'NamingService'.
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
-Specify the name of the cluster
+Specify the name of the cluster.
 
 ```yaml
 Type: String
@@ -68,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -Parameter
-Parameter
+Parameter.
 
 ```yaml
 Type: String
@@ -98,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -Section
-Section
+Section.
 
 ```yaml
 Type: String
@@ -113,7 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -SettingsSectionDescription
-Client authentication type
+Client authentication type.
 
 ```yaml
 Type: PSSettingsSectionDescription[]
@@ -128,7 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -Value
-Value
+Value.
 
 ```yaml
 Type: String
@@ -139,6 +124,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

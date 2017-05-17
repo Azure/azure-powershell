@@ -14,6 +14,7 @@
 
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using Microsoft.Azure.Management.Authorization;
@@ -55,10 +56,10 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// Creates PoliciesClient using AzureContext instance.
         /// </summary>
         /// <param name="context">The AzureContext instance</param>
-        public AuthorizationClient(AzureContext context)
+        public AuthorizationClient(IAzureContext context)
         {
             ActiveDirectoryClient = new ActiveDirectoryClient(context);
-            AuthorizationManagementClient = AzureSession.ClientFactory.CreateClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            AuthorizationManagementClient = AzureSession.Instance.ClientFactory.CreateClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         /// <summary>

@@ -19,6 +19,7 @@ using Microsoft.WindowsAzure.Commands.Profile.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Profile;
 using System.Collections.Generic;
 using System;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
 {
@@ -103,20 +104,20 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                 Name = Name,
                 OnPremise = EnableAdfsAuthentication
             };
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl] = PublishSettingsFileUrl;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.ServiceManagement] = ServiceEndpoint;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.ResourceManager] = ResourceManagerEndpoint;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.ManagementPortalUrl] = ManagementPortalUrl;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix] = StorageEndpoint;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.ActiveDirectory] = ActiveDirectoryEndpoint;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId] = ActiveDirectoryServiceEndpointResourceId;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.Gallery] = GalleryEndpoint;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.Graph] = GraphEndpoint;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix] = AzureKeyVaultDnsSuffix;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId] = AzureKeyVaultServiceEndpointResourceId;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.TrafficManagerDnsSuffix] = TrafficManagerDnsSuffix;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix] = SqlDatabaseDnsSuffix;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.AdTenant] = AdTenant;
+            newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.PublishSettingsFileUrl, PublishSettingsFileUrl);
+            newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.ServiceManagement, ServiceEndpoint);
+            newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.ResourceManager, ResourceManagerEndpoint);
+            newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.ManagementPortalUrl, ManagementPortalUrl);
+            newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix, StorageEndpoint);
+            newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.ActiveDirectory, ActiveDirectoryEndpoint);
+            newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId, ActiveDirectoryServiceEndpointResourceId);
+            newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.Gallery, GalleryEndpoint);
+            newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.Graph, GraphEndpoint);
+            newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix, AzureKeyVaultDnsSuffix);
+            newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId, AzureKeyVaultServiceEndpointResourceId);
+            newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.TrafficManagerDnsSuffix, TrafficManagerDnsSuffix);
+            newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix, SqlDatabaseDnsSuffix);
+            newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.AdTenant, AdTenant);
             ProfileClient.AddOrSetEnvironment(newEnvironment);
             WriteObject((PSAzureEnvironment)newEnvironment);
         }

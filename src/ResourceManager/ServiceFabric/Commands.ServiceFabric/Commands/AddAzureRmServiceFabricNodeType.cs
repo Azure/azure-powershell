@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         {
             var randomName = GetStorageRandomName();
             var accounts = new List<StorageAccount>();
-            for (int i = 0, start = 0; i < this.Capacity; i++)
+            for (int i = 0, start = 0; i < Constants.StorageAccountsPerNodeType; i++)
             {
                 string accountName = string.Empty;
                 int retry = 10;

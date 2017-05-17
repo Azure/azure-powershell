@@ -145,4 +145,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzureRmSqlDatabase](./Get-AzureRmSqlDatabase.md)
 
-
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)

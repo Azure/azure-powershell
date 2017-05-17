@@ -1202,6 +1202,48 @@
       </ListControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSConnectivityInformation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSConnectivityInformation</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>ConnectionStatus</Label>
+                <PropertyName>ConnectionStatus</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>AvgLatencyInMs</Label>
+                <PropertyName>AvgLatencyInMs</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>MinLatencyInMs</Label>
+                <PropertyName>MinLatencyInMs</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>MaxLatencyInMs</Label>
+                <PropertyName>MaxLatencyInMs</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProbesSent</Label>
+                <PropertyName>ProbesSent</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProbesFailed</Label>
+                <PropertyName>ProbesFailed</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Hops</Label>
+                <PropertyName>HopsText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSLoadBalancer</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSLoadBalancer</TypeName>

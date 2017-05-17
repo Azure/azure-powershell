@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.OperationalInsights;
 
@@ -22,9 +23,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
     {
         public IOperationalInsightsManagementClient OperationalInsightsManagementClient { get; private set; }
 
-        public OperationalInsightsClient(AzureContext context)
+        public OperationalInsightsClient(IAzureContext context)
         {
-            OperationalInsightsManagementClient = AzureSession.ClientFactory.CreateClient<OperationalInsightsManagementClient>(
+            OperationalInsightsManagementClient = AzureSession.Instance.ClientFactory.CreateClient<OperationalInsightsManagementClient>(
                 context,
                 AzureEnvironment.Endpoint.ResourceManager);
         }

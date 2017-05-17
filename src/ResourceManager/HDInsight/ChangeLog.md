@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 3.0.0
+
 ## Version 2.8.0
 * Added support for RServer cluster type
     - Edgenode VM size can be specified for RServer cluster in New-AzureRmHDInsightCluster or New-AzureRmHDInsightClusterConfig

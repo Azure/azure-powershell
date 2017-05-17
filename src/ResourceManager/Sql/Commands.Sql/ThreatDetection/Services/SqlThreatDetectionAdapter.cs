@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Commands.Sql.Auditing.Services;
@@ -32,7 +33,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// <summary>
         /// Gets or sets the Azure subscription
         /// </summary>
-        private AzureSubscription Subscription { get; set; }
+        private IAzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// The Threat Detection endpoints communicator used by this adapter
@@ -52,9 +53,9 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
-        public SqlThreatDetectionAdapter(AzureContext context)
+        public SqlThreatDetectionAdapter(IAzureContext context)
         {
             Context = context;
             Subscription = context.Subscription;
