@@ -97,9 +97,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                 };
 
                 if (ShouldProcess(
-                    this.Name, string.Format(CultureInfo.CurrentCulture, Resources.NewAccount_ProcessMessage, this.Name, this.Type, this.SkuName, this.Location))
-                    ||
-                    Force.IsPresent)
+                    this.Name, string.Format(CultureInfo.CurrentCulture, Resources.NewAccount_ProcessMessage, this.Name, this.Type, this.SkuName, this.Location)))
                 {
                     if (Force.IsPresent)
                     {
