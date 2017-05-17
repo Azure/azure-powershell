@@ -184,3 +184,5 @@ System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Sql.Database.Model.A
 [Switch-AzureRmSqlDatabaseFailoverGroup](./Switch-AzureRmSqlDatabaseFailoverGroup.md)
 
 [Remove-AzureRmSqlDatabaseFailoverGroup](./Remove-AzureRmSqlDatabaseFailoverGroup.md)
+
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
