@@ -179,7 +179,9 @@ Accept wildcard characters: False
 ```
 
 ### -ReadScale
-The read scale option to assign to the Azure SQL Database.(Enabled/Disabled)```yaml
+The read scale option to assign to the Azure SQL Database.(Enabled/Disabled)
+
+```yaml
 Type: DatabaseReadScale
 Parameter Sets: (All)
 Aliases: 
@@ -284,7 +286,9 @@ Accept wildcard characters: False
 ```
 
 ### -SampleName
-The name of the sample schema to apply when creating this database.```yaml
+The name of the sample schema to apply when creating this database.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -297,7 +301,8 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -323,6 +328,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Suspend-AzureRmSqlDatabase](./Suspend-AzureRmSqlDatabase.md)
 
-[Azure SQL Database Cmdlets](./AzureRM.Sql.md)
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 
 
