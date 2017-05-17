@@ -14367,28 +14367,6 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "PolicyDefinition",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
                 "Name": "ApiVersion",
                 "AliasList": [],
                 "Type": {
@@ -14548,28 +14526,6 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "PolicyDefinition",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
                 "Name": "ApiVersion",
                 "AliasList": [],
                 "Type": {
@@ -14723,28 +14679,6 @@
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "PolicyDefinition",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
