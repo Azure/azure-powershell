@@ -12,26 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System.Collections;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.Profile.Errors
 {
-    [Cmdlet(VerbsDiagnostic.Resolve, "AzureRmError")]
+    [Cmdlet(VerbsDiagnostic.Resolve, "AzureRmError", DefaultParameterSetName = ResolveError.AnyErrorParameterSet)]
     [OutputType(typeof(AzureErrorRecord))]
     [OutputType(typeof(AzureExceptionRecord))]
     [OutputType(typeof(AzureRestExceptionRecord))]
-    public class ResolveError : AzurePSCmdlet
+    public class ResolveError : AzureRMCmdlet
     {
-        [Parameter(Mandatory =false, Position =0, HelpMessage ="The error records to resolve")]
+        public const string AnyErrorParameterSet = "AnyErrorParameterSet";
+        public const string LastErrorParameterSet = "LastErrorParameterSet";
+        [Parameter(Mandatory =false, Position =0, HelpMessage ="The error records to resolve", ValueFromPipeline =true, ParameterSetName = AnyErrorParameterSet)]
         public ErrorRecord[] Error { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "The last error", ParameterSetName = LastErrorParameterSet)]
+        public SwitchParameter Last { get; set; }
         protected override IAzureContext DefaultContext
         {
             get
@@ -40,32 +43,29 @@ namespace Microsoft.Azure.Commands.Profile.Errors
             }
         }
 
-        protected override void InitializeQosEvent()
-        {
-            
-        }
 
-        protected override void PromptForDataCollectionProfileIfNotExists()
+        public override void ExecuteCmdlet()
         {
-            
-        }
-
-        protected override void SaveDataCollectionProfile()
-        {
-           
-        }
-
-
-        protected override void ProcessRecord()
-        {
-            base.ProcessRecord();
-            IEnumerable<ErrorRecord> records = Error;
-            if (records == null)
+            IEnumerable<ErrorRecord> records = null;
+            base.ExecuteCmdlet();
+            switch(ParameterSetName)
             {
-                var errors = GetVariableValue("global:Error") as IEnumerable;
-                records = errors?.OfType<ErrorRecord>();
-
+                case LastErrorParameterSet:
+                    var errors = GetErrorVariable();
+                    if (errors != null)
+                    {
+                        var error = errors.FirstOrDefault();
+                        if (error != null)
+                        {
+                            records = new ErrorRecord[] { error };
+                        }
+                    }
+                    break;
+                default:
+                    records = Error ?? GetErrorVariable();
+                    break;
             }
+
             if (records != null)
             {
                 foreach (var error in records)
@@ -74,6 +74,18 @@ namespace Microsoft.Azure.Commands.Profile.Errors
                     HandleError(record);
                 }
             }
+        }
+
+        IEnumerable<ErrorRecord> GetErrorVariable()
+        {
+            IEnumerable<ErrorRecord> result = null;
+            var errors = GetVariableValue("global:Error", null) as IEnumerable;
+            if (errors != null)
+            {
+                result = errors.OfType<ErrorRecord>();
+            }
+
+            return result;
         }
 
         void HandleError(ErrorRecord record)
