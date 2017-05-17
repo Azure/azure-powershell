@@ -215,6 +215,9 @@ namespace Microsoft.Azure.Commands.Compute
                     {
                         WriteVerbose("OS Disk Storage Account is a premium account - adding SLAs for OS disk");
                         var sla = this._Helper.GetDiskSLA(osDiskMD.DiskSizeGB, null);
+                        var caching = osdisk.Caching;
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.name", Value = this._Helper.GetResourceNameFromId(osdisk.ManagedDisk.Id) });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.caching", Value = caching });
                         sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.type", Value = AEMExtensionConstants.DISK_TYPE_PREMIUM_MD });
                         sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.sla.throughput", Value = sla.TP });
                         sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.sla.iops", Value = sla.IOPS });
@@ -238,6 +241,10 @@ namespace Microsoft.Azure.Commands.Compute
                         {
                             this._Helper.WriteVerbose("Data Disk {0} is a Premium Managed Disk - adding SLAs for disk", diskNumber.ToString());
                             var sla = this._Helper.GetDiskSLA(diskMD.DiskSizeGB, null);
+                            var cachingMD = disk.Caching;
+                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.lun." + diskNumber, Value = disk.Lun });
+                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.name." + diskNumber, Value = this._Helper.GetResourceNameFromId(disk.ManagedDisk.Id) });
+                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.caching." + diskNumber, Value = cachingMD });
                             sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.type." + diskNumber, Value = AEMExtensionConstants.DISK_TYPE_PREMIUM_MD });
                             sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.sla.throughput." + diskNumber, Value = sla.TP });
                             sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.sla.iops." + diskNumber, Value = sla.IOPS });
