@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.Profile.Errors
         public ErrorDetails ErrorDetails { get; set; }
 
         public ErrorCategoryInfo ErrorCategory { get; set; }
+
         public InvocationInfo InvocationInfo { get; set; }
 
         public string ScriptStackTrace { get; set; }
