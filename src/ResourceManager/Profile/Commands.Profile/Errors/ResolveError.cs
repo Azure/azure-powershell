@@ -22,6 +22,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.Profile.Errors
 {
+    [Alias("Resolve-Error")]
     [Cmdlet(VerbsDiagnostic.Resolve, "AzureRmError", DefaultParameterSetName = ResolveError.AnyErrorParameterSet)]
     [OutputType(typeof(AzureErrorRecord))]
     [OutputType(typeof(AzureExceptionRecord))]
@@ -30,11 +31,13 @@ namespace Microsoft.Azure.Commands.Profile.Errors
     {
         public const string AnyErrorParameterSet = "AnyErrorParameterSet";
         public const string LastErrorParameterSet = "LastErrorParameterSet";
+
         [Parameter(Mandatory =false, Position =0, HelpMessage ="The error records to resolve", ValueFromPipeline =true, ParameterSetName = AnyErrorParameterSet)]
         public ErrorRecord[] Error { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The last error", ParameterSetName = LastErrorParameterSet)]
         public SwitchParameter Last { get; set; }
+
         protected override IAzureContext DefaultContext
         {
             get
@@ -76,7 +79,7 @@ namespace Microsoft.Azure.Commands.Profile.Errors
             }
         }
 
-        IEnumerable<ErrorRecord> GetErrorVariable()
+        private IEnumerable<ErrorRecord> GetErrorVariable()
         {
             IEnumerable<ErrorRecord> result = null;
             var errors = GetVariableValue("global:Error", null) as IEnumerable;
@@ -88,7 +91,7 @@ namespace Microsoft.Azure.Commands.Profile.Errors
             return result;
         }
 
-        void HandleError(ErrorRecord record)
+        private void HandleError(ErrorRecord record)
         {
             if (record.Exception != null)
             {
@@ -100,7 +103,7 @@ namespace Microsoft.Azure.Commands.Profile.Errors
             }
         }
 
-        void HandleException(Exception exception, ErrorRecord record, bool inner = false)
+        private void HandleException(Exception exception, ErrorRecord record, bool inner = false)
         {
             var aggregate = exception as AggregateException;
             var hyakException = exception as Hyak.Common.CloudException;

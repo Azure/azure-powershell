@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.Profile.Errors
         }
 
         public Uri Uri { get; set; }
+
         public string Verb { get; set; }
 
         public override string ToString()

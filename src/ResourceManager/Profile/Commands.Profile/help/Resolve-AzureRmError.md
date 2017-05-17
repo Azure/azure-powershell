@@ -8,7 +8,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 
-Display detailed information about Azure PowerShell errors.
+Display detailed information about PowerShell errors, with extended details for Azure PowerShell errors.
 
 ## SYNTAX
 
