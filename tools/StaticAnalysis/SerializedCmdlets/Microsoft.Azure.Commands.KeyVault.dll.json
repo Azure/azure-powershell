@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificateOperation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOperation, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOperation, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CancellationRequested": "System.Nullable`1[System.Boolean]",
               "CertificateSigningRequest": "System.String",
@@ -76,7 +76,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificatePolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CertificateType": "System.String",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -182,7 +182,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
                   "Name": "KeyVaultCertificatePolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CertificateType": "System.String",
                     "Created": "System.Nullable`1[System.DateTime]",
@@ -247,6 +247,468 @@
       "AliasList": []
     },
     {
+      "VerbName": "Backup",
+      "NounName": "AzureKeyVaultSecret",
+      "Name": "Backup-AzureKeyVaultSecret",
+      "ClassName": "Microsoft.Azure.Commands.KeyVault.BackupAzureKeyVaultSecret",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "BySecretName",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "VaultName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Secret",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
+            "Name": "Secret",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.Secret, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Attributes": "Microsoft.Azure.Commands.KeyVault.Models.SecretAttributes",
+              "Id": "System.String",
+              "Name": "System.String",
+              "SecretValue": "System.Security.SecureString",
+              "SecretValueText": "System.String",
+              "VaultName": "System.String",
+              "Version": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Name",
+          "AliasList": [
+            "SecretName"
+          ],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "OutputFile",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Force",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "BySecretName",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "VaultName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [
+                  "SecretName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "OutputFile",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": 3,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        },
+        {
+          "Name": "BySecret",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Secret",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
+                  "Name": "Secret",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.Secret, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "Attributes": "Microsoft.Azure.Commands.KeyVault.Models.SecretAttributes",
+                    "Id": "System.String",
+                    "Name": "System.String",
+                    "SecretValue": "System.Security.SecureString",
+                    "SecretValueText": "System.String",
+                    "VaultName": "System.String",
+                    "Version": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "OutputFile",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": 3,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        },
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "OutputFile",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": 3,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Restore",
+      "NounName": "AzureKeyVaultSecret",
+      "Name": "Restore-AzureKeyVaultSecret",
+      "ClassName": "Microsoft.Azure.Commands.KeyVault.RestoreAzureKeyVaultSecret",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
+            "Name": "Secret",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.Secret, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Attributes": "Microsoft.Azure.Commands.KeyVault.Models.SecretAttributes",
+              "Id": "System.String",
+              "Name": "System.String",
+              "SecretValue": "System.Security.SecureString",
+              "SecretValueText": "System.String",
+              "VaultName": "System.String",
+              "Version": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "VaultName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "InputFile",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "VaultName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "InputFile",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
       "VerbName": "Set",
       "NounName": "AzureKeyVaultCertificateAttribute",
       "Name": "Set-AzureKeyVaultCertificateAttribute",
@@ -260,7 +722,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificate",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificate, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificate, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Certificate": "System.Security.Cryptography.X509Certificates.X509Certificate2",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -546,7 +1008,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificateOperation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOperation, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOperation, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CancellationRequested": "System.Nullable`1[System.Boolean]",
               "CertificateSigningRequest": "System.String",
@@ -710,7 +1172,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificateOperation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOperation, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOperation, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CancellationRequested": "System.Nullable`1[System.Boolean]",
               "CertificateSigningRequest": "System.String",
@@ -836,7 +1298,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificate",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificate, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificate, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Certificate": "System.Security.Cryptography.X509Certificates.X509Certificate2",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -1488,7 +1950,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateContact, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateContact, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -1666,7 +2128,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.CertificateIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.CertificateIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -1681,7 +2143,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificate",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificate, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificate, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Certificate": "System.Security.Cryptography.X509Certificates.X509Certificate2",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -1965,7 +2427,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateContact, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateContact, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -2040,7 +2502,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.CertificateIssuerIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.CertificateIssuerIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -2055,7 +2517,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificateIssuer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateIssuer, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateIssuer, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AccountId": "System.String",
               "ApiKey": "System.Security.SecureString",
@@ -2203,7 +2665,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificatePolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CertificateType": "System.String",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -2910,7 +3372,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificate",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificate, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificate, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Certificate": "System.Security.Cryptography.X509Certificates.X509Certificate2",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -3108,7 +3570,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateContact, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateContact, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -3308,7 +3770,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificateIssuer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateIssuer, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateIssuer, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AccountId": "System.String",
               "ApiKey": "System.Security.SecureString",
@@ -3505,7 +3967,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificateOperation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOperation, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOperation, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CancellationRequested": "System.Nullable`1[System.Boolean]",
               "CertificateSigningRequest": "System.String",
@@ -3707,7 +4169,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificatePolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CertificateType": "System.String",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -3826,7 +4288,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificateOrganizationDetails",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOrganizationDetails, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOrganizationDetails, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AdministratorDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails]",
               "Id": "System.String"
@@ -3845,7 +4307,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificateIssuer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateIssuer, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateIssuer, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AccountId": "System.String",
               "ApiKey": "System.Security.SecureString",
@@ -4028,7 +4490,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
                   "Name": "KeyVaultCertificateOrganizationDetails",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOrganizationDetails, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOrganizationDetails, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AdministratorDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails]",
                     "Id": "System.String"
@@ -4126,7 +4588,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
                   "Name": "KeyVaultCertificateIssuer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateIssuer, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateIssuer, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AccountId": "System.String",
                     "ApiKey": "System.Security.SecureString",
@@ -4234,7 +4696,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificatePolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CertificateType": "System.String",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -4585,7 +5047,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificatePolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CertificateType": "System.String",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -5238,7 +5700,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
                   "Name": "KeyVaultCertificatePolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CertificateType": "System.String",
                     "Created": "System.Nullable`1[System.DateTime]",
@@ -5420,11 +5882,11 @@
       "AliasList": []
     },
     {
-      "VerbName": "Get",
-      "NounName": "AzureRmKeyVault",
-      "Name": "Get-AzureRmKeyVault",
-      "ClassName": "Microsoft.Azure.Commands.KeyVault.GetAzureKeyVault",
-      "SupportsShouldProcess": false,
+      "VerbName": "Undo",
+      "NounName": "AzureRmKeyVaultRemoval",
+      "Name": "Undo-AzureRmKeyVaultRemoval",
+      "ClassName": "Microsoft.Azure.Commands.KeyVault.UndoAzureKeyVaultRemoval",
+      "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
@@ -5433,13 +5895,14 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "PSVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSVault, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSVault, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AccessPolicies": "Microsoft.Azure.Commands.KeyVault.Models.PSVaultAccessPolicy[]",
               "AccessPoliciesText": "System.String",
               "EnabledForDeployment": "System.Boolean",
               "EnabledForDiskEncryption": "System.Nullable`1[System.Boolean]",
               "EnabledForTemplateDeployment": "System.Nullable`1[System.Boolean]",
+              "EnableSoftDelete": "System.Nullable`1[System.Boolean]",
               "Location": "System.String",
               "OriginalVault": "Microsoft.Azure.Management.KeyVault.Models.Vault",
               "ResourceGroupName": "System.String",
@@ -5454,21 +5917,6 @@
             },
             "ElementType": null,
             "GenericTypeArguments": []
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
-        },
-        {
-          "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.PSVaultIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.KeyVault.Models.PSVaultIdentityItem"
-            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -5509,6 +5957,554 @@
           "ValidateNotNullOrEmpty": true
         },
         {
+          "Name": "Location",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Tag",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Collections",
+            "Name": "Hashtable",
+            "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "VaultName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Location",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Tag",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Collections",
+                  "Name": "Hashtable",
+                  "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Undo",
+      "NounName": "AzureKeyVaultKeyRemoval",
+      "Name": "Undo-AzureKeyVaultKeyRemoval",
+      "ClassName": "Microsoft.Azure.Commands.KeyVault.UndoAzureKeyVaultKeyRemoval",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
+            "Name": "KeyBundle",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyBundle, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Attributes": "Microsoft.Azure.Commands.KeyVault.Models.KeyAttributes",
+              "Id": "System.String",
+              "Key": "Microsoft.Azure.KeyVault.WebKey.JsonWebKey",
+              "Name": "System.String",
+              "VaultName": "System.String",
+              "Version": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "VaultName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Name",
+          "AliasList": [
+            "KeyName"
+          ],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "VaultName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [
+                  "KeyName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Undo",
+      "NounName": "AzureKeyVaultSecretRemoval",
+      "Name": "Undo-AzureKeyVaultSecretRemoval",
+      "ClassName": "Microsoft.Azure.Commands.KeyVault.UndoAzureKeyVaultSecretRemoval",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
+            "Name": "Secret",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.Secret, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Attributes": "Microsoft.Azure.Commands.KeyVault.Models.SecretAttributes",
+              "Id": "System.String",
+              "Name": "System.String",
+              "SecretValue": "System.Security.SecureString",
+              "SecretValueText": "System.String",
+              "VaultName": "System.String",
+              "Version": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "VaultName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Name",
+          "AliasList": [
+            "SecretName"
+          ],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "VaultName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [
+                  "SecretName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Get",
+      "NounName": "AzureRmKeyVault",
+      "Name": "Get-AzureRmKeyVault",
+      "ClassName": "Microsoft.Azure.Commands.KeyVault.GetAzureKeyVault",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
+            "Name": "PSVault",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSVault, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "AccessPolicies": "Microsoft.Azure.Commands.KeyVault.Models.PSVaultAccessPolicy[]",
+              "AccessPoliciesText": "System.String",
+              "EnabledForDeployment": "System.Boolean",
+              "EnabledForDiskEncryption": "System.Nullable`1[System.Boolean]",
+              "EnabledForTemplateDeployment": "System.Nullable`1[System.Boolean]",
+              "EnableSoftDelete": "System.Nullable`1[System.Boolean]",
+              "Location": "System.String",
+              "OriginalVault": "Microsoft.Azure.Management.KeyVault.Models.Vault",
+              "ResourceGroupName": "System.String",
+              "ResourceId": "System.String",
+              "Sku": "System.String",
+              "Tags": "System.Collections.Hashtable",
+              "TagsTable": "System.String",
+              "TenantId": "System.Guid",
+              "TenantName": "System.String",
+              "VaultName": "System.String",
+              "VaultUri": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        },
+        {
+          "Type": {
+            "Namespace": "System.Collections.Generic",
+            "Name": "List",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.PSVaultIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "Microsoft.Azure.Commands.KeyVault.Models.PSVaultIdentityItem"
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        },
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
+            "Name": "PSDeletedVault",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSDeletedVault, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "AccessPolicies": "Microsoft.Azure.Commands.KeyVault.Models.PSVaultAccessPolicy[]",
+              "AccessPoliciesText": "System.String",
+              "DeletionDate": "System.Nullable`1[System.DateTime]",
+              "EnabledForDeployment": "System.Boolean",
+              "EnabledForDiskEncryption": "System.Nullable`1[System.Boolean]",
+              "EnabledForTemplateDeployment": "System.Nullable`1[System.Boolean]",
+              "EnableSoftDelete": "System.Nullable`1[System.Boolean]",
+              "Id": "System.String",
+              "Location": "System.String",
+              "OriginalVault": "Microsoft.Azure.Management.KeyVault.Models.Vault",
+              "ResourceGroupName": "System.String",
+              "ResourceId": "System.String",
+              "ScheduledPurgeDate": "System.Nullable`1[System.DateTime]",
+              "Sku": "System.String",
+              "Tags": "System.Collections.Hashtable",
+              "TagsTable": "System.String",
+              "TenantId": "System.Guid",
+              "TenantName": "System.String",
+              "VaultName": "System.String",
+              "VaultUri": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        },
+        {
+          "Type": {
+            "Namespace": "System.Collections.Generic",
+            "Name": "List",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.PSDeletedVault, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "Microsoft.Azure.Commands.KeyVault.Models.PSDeletedVault"
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "VaultName",
+          "AliasList": [
+            "Name"
+          ],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Location",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "InRemovedState",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "Tag",
           "AliasList": [],
           "Type": {
@@ -5532,7 +6528,9 @@
             {
               "ParameterMetadata": {
                 "Name": "VaultName",
-                "AliasList": [],
+                "AliasList": [
+                  "Name"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "String",
@@ -5576,6 +6574,79 @@
           ]
         },
         {
+          "Name": "ByDeletedVault",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "VaultName",
+                "AliasList": [
+                  "Name"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Location",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "InRemovedState",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
           "Name": "ListVaultsByResourceGroup",
           "Parameters": [
             {
@@ -5599,6 +6670,33 @@
               "Position": 1,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        },
+        {
+          "Name": "ListAllDeletedVaultsInSubscription",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "InRemovedState",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             }
           ]
         },
@@ -5646,13 +6744,14 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "PSVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSVault, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSVault, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AccessPolicies": "Microsoft.Azure.Commands.KeyVault.Models.PSVaultAccessPolicy[]",
               "AccessPoliciesText": "System.String",
               "EnabledForDeployment": "System.Boolean",
               "EnabledForDiskEncryption": "System.Nullable`1[System.Boolean]",
               "EnabledForTemplateDeployment": "System.Nullable`1[System.Boolean]",
+              "EnableSoftDelete": "System.Nullable`1[System.Boolean]",
               "Location": "System.String",
               "OriginalVault": "Microsoft.Azure.Management.KeyVault.Models.Vault",
               "ResourceGroupName": "System.String",
@@ -5756,6 +6855,22 @@
         },
         {
           "Name": "EnabledForDiskEncryption",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "EnableSoftDelete",
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
@@ -5943,6 +7058,28 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "EnableSoftDelete",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "Sku",
                 "AliasList": [],
                 "Type": {
@@ -6036,7 +7173,39 @@
           "ValidateNotNullOrEmpty": true
         },
         {
+          "Name": "Location",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
           "Name": "Force",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "InRemovedState",
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
@@ -6080,6 +7249,33 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ByAvailableVault",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
                 "Name": "ResourceGroupName",
                 "AliasList": [],
                 "Type": {
@@ -6097,6 +7293,143 @@
               },
               "Mandatory": false,
               "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Location",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "VaultName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ByDeletedVault",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Location",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "InRemovedState",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "VaultName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
             },
@@ -6141,13 +7474,14 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "PSVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSVault, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSVault, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AccessPolicies": "Microsoft.Azure.Commands.KeyVault.Models.PSVaultAccessPolicy[]",
               "AccessPoliciesText": "System.String",
               "EnabledForDeployment": "System.Boolean",
               "EnabledForDiskEncryption": "System.Nullable`1[System.Boolean]",
               "EnabledForTemplateDeployment": "System.Nullable`1[System.Boolean]",
+              "EnableSoftDelete": "System.Nullable`1[System.Boolean]",
               "Location": "System.String",
               "OriginalVault": "Microsoft.Azure.Management.KeyVault.Models.Vault",
               "ResourceGroupName": "System.String",
@@ -6869,13 +8203,14 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "PSVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSVault, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSVault, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AccessPolicies": "Microsoft.Azure.Commands.KeyVault.Models.PSVaultAccessPolicy[]",
               "AccessPoliciesText": "System.String",
               "EnabledForDeployment": "System.Boolean",
               "EnabledForDiskEncryption": "System.Nullable`1[System.Boolean]",
               "EnabledForTemplateDeployment": "System.Nullable`1[System.Boolean]",
+              "EnableSoftDelete": "System.Nullable`1[System.Boolean]",
               "Location": "System.String",
               "OriginalVault": "Microsoft.Azure.Management.KeyVault.Models.Vault",
               "ResourceGroupName": "System.String",
@@ -7025,6 +8360,8 @@
             "delete",
             "backup",
             "restore",
+            "recover",
+            "purge",
             "all"
           ],
           "ValidateRangeMin": null,
@@ -7047,6 +8384,10 @@
             "list",
             "set",
             "delete",
+            "backup",
+            "restore",
+            "recover",
+            "purge",
             "all"
           ],
           "ValidateRangeMin": null,
@@ -7076,6 +8417,7 @@
             "listissuers",
             "setissuers",
             "deleteissuers",
+            "manageissuers",
             "all"
           ],
           "ValidateRangeMin": null,
@@ -7289,6 +8631,8 @@
                   "delete",
                   "backup",
                   "restore",
+                  "recover",
+                  "purge",
                   "all"
                 ],
                 "ValidateRangeMin": null,
@@ -7317,6 +8661,10 @@
                   "list",
                   "set",
                   "delete",
+                  "backup",
+                  "restore",
+                  "recover",
+                  "purge",
                   "all"
                 ],
                 "ValidateRangeMin": null,
@@ -7352,6 +8700,7 @@
                   "listissuers",
                   "setissuers",
                   "deleteissuers",
+                  "manageissuers",
                   "all"
                 ],
                 "ValidateRangeMin": null,
@@ -7485,6 +8834,8 @@
                   "delete",
                   "backup",
                   "restore",
+                  "recover",
+                  "purge",
                   "all"
                 ],
                 "ValidateRangeMin": null,
@@ -7513,6 +8864,10 @@
                   "list",
                   "set",
                   "delete",
+                  "backup",
+                  "restore",
+                  "recover",
+                  "purge",
                   "all"
                 ],
                 "ValidateRangeMin": null,
@@ -7548,6 +8903,7 @@
                   "listissuers",
                   "setissuers",
                   "deleteissuers",
+                  "manageissuers",
                   "all"
                 ],
                 "ValidateRangeMin": null,
@@ -7703,6 +9059,8 @@
                   "delete",
                   "backup",
                   "restore",
+                  "recover",
+                  "purge",
                   "all"
                 ],
                 "ValidateRangeMin": null,
@@ -7731,6 +9089,10 @@
                   "list",
                   "set",
                   "delete",
+                  "backup",
+                  "restore",
+                  "recover",
+                  "purge",
                   "all"
                 ],
                 "ValidateRangeMin": null,
@@ -7766,6 +9128,7 @@
                   "listissuers",
                   "setissuers",
                   "deleteissuers",
+                  "manageissuers",
                   "all"
                 ],
                 "ValidateRangeMin": null,
@@ -8015,7 +9378,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "__AllParameterSets",
+      "DefaultParameterSetName": "ByKeyName",
       "OutputTypes": [
         {
           "Type": {
@@ -8047,6 +9410,29 @@
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Key",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
+            "Name": "KeyBundle",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyBundle, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Attributes": "Microsoft.Azure.Commands.KeyVault.Models.KeyAttributes",
+              "Id": "System.String",
+              "Key": "Microsoft.Azure.KeyVault.WebKey.JsonWebKey",
+              "Name": "System.String",
+              "VaultName": "System.String",
+              "Version": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
         },
         {
           "Name": "Name",
@@ -8081,11 +9467,27 @@
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Force",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
         }
       ],
       "ParameterSets": [
         {
-          "Name": "__AllParameterSets",
+          "Name": "ByKeyName",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -8154,6 +9556,155 @@
               "Position": 2,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": 3,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        },
+        {
+          "Name": "ByKey",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Key",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
+                  "Name": "KeyBundle",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyBundle, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "Attributes": "Microsoft.Azure.Commands.KeyVault.Models.KeyAttributes",
+                    "Id": "System.String",
+                    "Key": "Microsoft.Azure.KeyVault.WebKey.JsonWebKey",
+                    "Name": "System.String",
+                    "VaultName": "System.String",
+                    "Version": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "OutputFile",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": 3,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        },
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "OutputFile",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": 3,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
             }
           ]
         }
@@ -8174,7 +9725,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.KeyIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.KeyIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -8189,12 +9740,49 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyBundle",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyBundle, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyBundle, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Attributes": "Microsoft.Azure.Commands.KeyVault.Models.KeyAttributes",
               "Id": "System.String",
               "Key": "Microsoft.Azure.KeyVault.WebKey.JsonWebKey",
               "Name": "System.String",
+              "VaultName": "System.String",
+              "Version": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        },
+        {
+          "Type": {
+            "Namespace": "System.Collections.Generic",
+            "Name": "List",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.DeletedKeyIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "Microsoft.Azure.Commands.KeyVault.Models.DeletedKeyIdentityItem"
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        },
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
+            "Name": "DeletedKeyBundle",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.DeletedKeyBundle, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Attributes": "Microsoft.Azure.Commands.KeyVault.Models.KeyAttributes",
+              "DeletedDate": "System.Nullable`1[System.DateTime]",
+              "Id": "System.String",
+              "Key": "Microsoft.Azure.KeyVault.WebKey.JsonWebKey",
+              "Name": "System.String",
+              "ScheduledPurgeDate": "System.Nullable`1[System.DateTime]",
               "VaultName": "System.String",
               "Version": "System.String"
             },
@@ -8261,6 +9849,22 @@
         },
         {
           "Name": "IncludeVersions",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "InRemovedState",
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
@@ -8451,6 +10055,79 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "ByDeletedKey",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "VaultName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [
+                  "KeyName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "InRemovedState",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
         }
       ],
       "AliasList": []
@@ -8469,7 +10146,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.SecretIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.SecretIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -8484,11 +10161,49 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "Secret",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.Secret, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.Secret, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Attributes": "Microsoft.Azure.Commands.KeyVault.Models.SecretAttributes",
               "Id": "System.String",
               "Name": "System.String",
+              "SecretValue": "System.Security.SecureString",
+              "SecretValueText": "System.String",
+              "VaultName": "System.String",
+              "Version": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        },
+        {
+          "Type": {
+            "Namespace": "System.Collections.Generic",
+            "Name": "List",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.DeletedSecretIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "Microsoft.Azure.Commands.KeyVault.Models.DeletedSecretIdentityItem"
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        },
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
+            "Name": "DeletedSecret",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.DeletedSecret, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Attributes": "Microsoft.Azure.Commands.KeyVault.Models.SecretAttributes",
+              "DeletedDate": "System.Nullable`1[System.DateTime]",
+              "Id": "System.String",
+              "Name": "System.String",
+              "ScheduledPurgeDate": "System.Nullable`1[System.DateTime]",
               "SecretValue": "System.Security.SecureString",
               "SecretValueText": "System.String",
               "VaultName": "System.String",
@@ -8557,6 +10272,22 @@
         },
         {
           "Name": "IncludeVersions",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "InRemovedState",
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
@@ -8747,6 +10478,79 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "ByDeletedSecrets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "VaultName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [
+                  "SecretName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "InRemovedState",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
         }
       ],
       "AliasList": []
@@ -8765,7 +10569,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyBundle",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyBundle, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyBundle, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Attributes": "Microsoft.Azure.Commands.KeyVault.Models.KeyAttributes",
               "Id": "System.String",
@@ -9400,13 +11204,15 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
-            "Name": "KeyBundle",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyBundle, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "DeletedKeyBundle",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.DeletedKeyBundle, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Attributes": "Microsoft.Azure.Commands.KeyVault.Models.KeyAttributes",
+              "DeletedDate": "System.Nullable`1[System.DateTime]",
               "Id": "System.String",
               "Key": "Microsoft.Azure.KeyVault.WebKey.JsonWebKey",
               "Name": "System.String",
+              "ScheduledPurgeDate": "System.Nullable`1[System.DateTime]",
               "VaultName": "System.String",
               "Version": "System.String"
             },
@@ -9471,6 +11277,22 @@
         },
         {
           "Name": "PassThru",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "InRemovedState",
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
@@ -9579,6 +11401,28 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "InRemovedState",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             }
           ]
         }
@@ -9598,12 +11442,14 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
-            "Name": "Secret",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.Secret, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "DeletedSecret",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.DeletedSecret, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Attributes": "Microsoft.Azure.Commands.KeyVault.Models.SecretAttributes",
+              "DeletedDate": "System.Nullable`1[System.DateTime]",
               "Id": "System.String",
               "Name": "System.String",
+              "ScheduledPurgeDate": "System.Nullable`1[System.DateTime]",
               "SecretValue": "System.Security.SecureString",
               "SecretValueText": "System.String",
               "VaultName": "System.String",
@@ -9670,6 +11516,22 @@
         },
         {
           "Name": "PassThru",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "InRemovedState",
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
@@ -9778,6 +11640,28 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "InRemovedState",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             }
           ]
         }
@@ -9798,7 +11682,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyBundle",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyBundle, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyBundle, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Attributes": "Microsoft.Azure.Commands.KeyVault.Models.KeyAttributes",
               "Id": "System.String",
@@ -9916,7 +11800,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyBundle",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyBundle, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyBundle, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Attributes": "Microsoft.Azure.Commands.KeyVault.Models.KeyAttributes",
               "Id": "System.String",
@@ -10326,7 +12210,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "Secret",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.Secret, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.Secret, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Attributes": "Microsoft.Azure.Commands.KeyVault.Models.SecretAttributes",
               "Id": "System.String",
@@ -10689,7 +12573,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "Secret",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.Secret, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.Secret, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Attributes": "Microsoft.Azure.Commands.KeyVault.Models.SecretAttributes",
               "Id": "System.String",
@@ -11098,7 +12982,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificatePolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CertificateType": "System.String",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -11233,7 +13117,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificateAdministratorDetails",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EmailAddress": "System.String",
               "FirstName": "System.String",
@@ -11425,7 +13309,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
             "Name": "KeyVaultCertificateOrganizationDetails",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOrganizationDetails, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOrganizationDetails, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AdministratorDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails]",
               "Id": "System.String"
@@ -11461,7 +13345,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -11507,7 +13391,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "List",
-                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -11691,6 +13575,51 @@
         "System.Int32"
       ]
     },
+    "Microsoft.Azure.Commands.KeyVault.Models.SecretAttributes": {
+      "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
+      "Name": "SecretAttributes",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.SecretAttributes, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "ContentType": "System.String",
+        "Created": "System.Nullable`1[System.DateTime]",
+        "Enabled": "System.Nullable`1[System.Boolean]",
+        "Expires": "System.Nullable`1[System.DateTime]",
+        "NotBefore": "System.Nullable`1[System.DateTime]",
+        "Tags": "System.Collections.Hashtable",
+        "TagsDictionary": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
+        "TagsTable": "System.String",
+        "Updated": "System.Nullable`1[System.DateTime]"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Hashtable": {
+      "Namespace": "System.Collections",
+      "Name": "Hashtable",
+      "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Generic.Dictionary`2[System.String,System.String]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "Dictionary",
+      "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.String",
+        "System.String"
+      ]
+    },
+    "System.Security.SecureString": {
+      "Namespace": "System.Security",
+      "Name": "SecureString",
+      "AssemblyQualifiedName": "System.Security.SecureString, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
     "System.Security.Cryptography.X509Certificates.X509Certificate2": {
       "Namespace": "System.Security.Cryptography.X509Certificates",
       "Name": "X509Certificate2",
@@ -11713,7 +13642,7 @@
     "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateContact": {
       "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
       "Name": "KeyVaultCertificateContact",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateContact, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateContact, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Email": "System.String"
       },
@@ -11723,7 +13652,7 @@
     "Microsoft.Azure.Commands.KeyVault.Models.CertificateIdentityItem": {
       "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
       "Name": "CertificateIdentityItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.CertificateIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.CertificateIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Created": "System.Nullable`1[System.DateTime]",
         "Enabled": "System.Nullable`1[System.Boolean]",
@@ -11739,18 +13668,10 @@
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "System.Collections.Hashtable": {
-      "Namespace": "System.Collections",
-      "Name": "Hashtable",
-      "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
     "Microsoft.Azure.Commands.KeyVault.Models.CertificateIssuerIdentityItem": {
       "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
       "Name": "CertificateIssuerIdentityItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.CertificateIssuerIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.CertificateIssuerIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "IssuerProvider": "System.String",
         "Name": "System.String"
@@ -11758,18 +13679,10 @@
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "System.Security.SecureString": {
-      "Namespace": "System.Security",
-      "Name": "SecureString",
-      "AssemblyQualifiedName": "System.Security.SecureString, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
     "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOrganizationDetails": {
       "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
       "Name": "KeyVaultCertificateOrganizationDetails",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOrganizationDetails, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOrganizationDetails, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "AdministratorDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails]",
         "Id": "System.String"
@@ -11780,7 +13693,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails]": {
       "Namespace": "System.Collections.Generic",
       "Name": "List",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11790,7 +13703,7 @@
     "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails": {
       "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
       "Name": "KeyVaultCertificateAdministratorDetails",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "EmailAddress": "System.String",
         "FirstName": "System.String",
@@ -11803,7 +13716,7 @@
     "Microsoft.Azure.Commands.KeyVault.Models.PSVaultAccessPolicy[]": {
       "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
       "Name": "PSVaultAccessPolicy[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSVaultAccessPolicy[], Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSVaultAccessPolicy[], Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.Commands.KeyVault.Models.PSVaultAccessPolicy",
       "GenericTypeArguments": []
@@ -11811,7 +13724,7 @@
     "Microsoft.Azure.Commands.KeyVault.Models.PSVaultAccessPolicy": {
       "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
       "Name": "PSVaultAccessPolicy",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSVaultAccessPolicy, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSVaultAccessPolicy, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ApplicationId": "System.Nullable`1[System.Guid]",
         "ApplicationIdDisplayName": "System.String",
@@ -11868,9 +13781,11 @@
       "AssemblyQualifiedName": "Microsoft.Azure.Management.KeyVault.Models.VaultProperties, Microsoft.Azure.Management.KeyVault, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AccessPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.KeyVault.Models.AccessPolicyEntry]",
+        "CreateMode": "System.Nullable`1[Microsoft.Azure.Management.KeyVault.Models.CreateMode]",
         "EnabledForDeployment": "System.Nullable`1[System.Boolean]",
         "EnabledForDiskEncryption": "System.Nullable`1[System.Boolean]",
         "EnabledForTemplateDeployment": "System.Nullable`1[System.Boolean]",
+        "EnableSoftDelete": "System.Nullable`1[System.Boolean]",
         "Sku": "Microsoft.Azure.Management.KeyVault.Models.Sku",
         "TenantId": "System.Guid",
         "VaultUri": "System.String"
@@ -11923,6 +13838,24 @@
         "System.String"
       ]
     },
+    "System.Nullable`1[Microsoft.Azure.Management.KeyVault.Models.CreateMode]": {
+      "Namespace": "System",
+      "Name": "Nullable",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.KeyVault.Models.CreateMode, Microsoft.Azure.Management.KeyVault, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.KeyVault.Models.CreateMode"
+      ]
+    },
+    "Microsoft.Azure.Management.KeyVault.Models.CreateMode": {
+      "Namespace": "Microsoft.Azure.Management.KeyVault.Models",
+      "Name": "CreateMode",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.KeyVault.Models.CreateMode, Microsoft.Azure.Management.KeyVault, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
     "Microsoft.Azure.Management.KeyVault.Models.Sku": {
       "Namespace": "Microsoft.Azure.Management.KeyVault.Models",
       "Name": "Sku",
@@ -11942,45 +13875,10 @@
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "Microsoft.Azure.Commands.KeyVault.Models.PSVaultIdentityItem": {
-      "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
-      "Name": "PSVaultIdentityItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSVaultIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Location": "System.String",
-        "ResourceGroupName": "System.String",
-        "ResourceId": "System.String",
-        "Tags": "System.Collections.Hashtable",
-        "TagsTable": "System.String",
-        "VaultName": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "Microsoft.Azure.Commands.KeyVault.Models.KeyIdentityItem": {
-      "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
-      "Name": "KeyIdentityItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Created": "System.Nullable`1[System.DateTime]",
-        "Enabled": "System.Nullable`1[System.Boolean]",
-        "Expires": "System.Nullable`1[System.DateTime]",
-        "Id": "System.String",
-        "Name": "System.String",
-        "NotBefore": "System.Nullable`1[System.DateTime]",
-        "Tags": "System.Collections.Hashtable",
-        "TagsTable": "System.String",
-        "Updated": "System.Nullable`1[System.DateTime]",
-        "VaultName": "System.String",
-        "Version": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
     "Microsoft.Azure.Commands.KeyVault.Models.KeyAttributes": {
       "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
       "Name": "KeyAttributes",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyAttributes, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyAttributes, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Created": "System.Nullable`1[System.DateTime]",
         "Enabled": "System.Nullable`1[System.Boolean]",
@@ -11988,6 +13886,7 @@
         "KeyOps": "System.String[]",
         "KeyType": "System.String",
         "NotBefore": "System.Nullable`1[System.DateTime]",
+        "PurgeDisabled": "System.Boolean",
         "Tags": "System.Collections.Hashtable",
         "TagsDirectionary": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
         "TagsTable": "System.String",
@@ -12003,17 +13902,6 @@
       "Properties": {},
       "ElementType": "System.String",
       "GenericTypeArguments": []
-    },
-    "System.Collections.Generic.Dictionary`2[System.String,System.String]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "Dictionary",
-      "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "System.String",
-        "System.String"
-      ]
     },
     "Microsoft.Azure.KeyVault.WebKey.JsonWebKey": {
       "Namespace": "Microsoft.Azure.KeyVault.WebKey",
@@ -12045,10 +13933,98 @@
       "ElementType": "System.Byte",
       "GenericTypeArguments": []
     },
+    "Microsoft.Azure.Commands.KeyVault.Models.PSVaultIdentityItem": {
+      "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
+      "Name": "PSVaultIdentityItem",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSVaultIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "Location": "System.String",
+        "ResourceGroupName": "System.String",
+        "ResourceId": "System.String",
+        "Tags": "System.Collections.Hashtable",
+        "TagsTable": "System.String",
+        "VaultName": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Commands.KeyVault.Models.PSDeletedVault": {
+      "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
+      "Name": "PSDeletedVault",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSDeletedVault, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "AccessPolicies": "Microsoft.Azure.Commands.KeyVault.Models.PSVaultAccessPolicy[]",
+        "AccessPoliciesText": "System.String",
+        "DeletionDate": "System.Nullable`1[System.DateTime]",
+        "EnabledForDeployment": "System.Boolean",
+        "EnabledForDiskEncryption": "System.Nullable`1[System.Boolean]",
+        "EnabledForTemplateDeployment": "System.Nullable`1[System.Boolean]",
+        "EnableSoftDelete": "System.Nullable`1[System.Boolean]",
+        "Id": "System.String",
+        "Location": "System.String",
+        "OriginalVault": "Microsoft.Azure.Management.KeyVault.Models.Vault",
+        "ResourceGroupName": "System.String",
+        "ResourceId": "System.String",
+        "ScheduledPurgeDate": "System.Nullable`1[System.DateTime]",
+        "Sku": "System.String",
+        "Tags": "System.Collections.Hashtable",
+        "TagsTable": "System.String",
+        "TenantId": "System.Guid",
+        "TenantName": "System.String",
+        "VaultName": "System.String",
+        "VaultUri": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Commands.KeyVault.Models.KeyIdentityItem": {
+      "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
+      "Name": "KeyIdentityItem",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.KeyIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "Created": "System.Nullable`1[System.DateTime]",
+        "Enabled": "System.Nullable`1[System.Boolean]",
+        "Expires": "System.Nullable`1[System.DateTime]",
+        "Id": "System.String",
+        "Name": "System.String",
+        "NotBefore": "System.Nullable`1[System.DateTime]",
+        "PurgeDisabled": "System.Boolean",
+        "Tags": "System.Collections.Hashtable",
+        "TagsTable": "System.String",
+        "Updated": "System.Nullable`1[System.DateTime]",
+        "VaultName": "System.String",
+        "Version": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Commands.KeyVault.Models.DeletedKeyIdentityItem": {
+      "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
+      "Name": "DeletedKeyIdentityItem",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.DeletedKeyIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "Created": "System.Nullable`1[System.DateTime]",
+        "DeletedDate": "System.Nullable`1[System.DateTime]",
+        "Enabled": "System.Nullable`1[System.Boolean]",
+        "Expires": "System.Nullable`1[System.DateTime]",
+        "Id": "System.String",
+        "Name": "System.String",
+        "NotBefore": "System.Nullable`1[System.DateTime]",
+        "PurgeDisabled": "System.Boolean",
+        "ScheduledPurgeDate": "System.Nullable`1[System.DateTime]",
+        "Tags": "System.Collections.Hashtable",
+        "TagsTable": "System.String",
+        "Updated": "System.Nullable`1[System.DateTime]",
+        "VaultName": "System.String",
+        "Version": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
     "Microsoft.Azure.Commands.KeyVault.Models.SecretIdentityItem": {
       "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
       "Name": "SecretIdentityItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.SecretIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.SecretIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ContentType": "System.String",
         "Created": "System.Nullable`1[System.DateTime]",
@@ -12066,20 +14042,25 @@
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "Microsoft.Azure.Commands.KeyVault.Models.SecretAttributes": {
+    "Microsoft.Azure.Commands.KeyVault.Models.DeletedSecretIdentityItem": {
       "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
-      "Name": "SecretAttributes",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.SecretAttributes, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "DeletedSecretIdentityItem",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.DeletedSecretIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ContentType": "System.String",
         "Created": "System.Nullable`1[System.DateTime]",
+        "DeletedDate": "System.Nullable`1[System.DateTime]",
         "Enabled": "System.Nullable`1[System.Boolean]",
         "Expires": "System.Nullable`1[System.DateTime]",
+        "Id": "System.String",
+        "Name": "System.String",
         "NotBefore": "System.Nullable`1[System.DateTime]",
+        "ScheduledPurgeDate": "System.Nullable`1[System.DateTime]",
         "Tags": "System.Collections.Hashtable",
-        "TagsDictionary": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
         "TagsTable": "System.String",
-        "Updated": "System.Nullable`1[System.DateTime]"
+        "Updated": "System.Nullable`1[System.DateTime]",
+        "VaultName": "System.String",
+        "Version": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []

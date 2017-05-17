@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupJob",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Duration": "System.TimeSpan",
               "EndTime": "System.Nullable`1[System.DateTime]",
@@ -46,7 +46,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupItem",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ContainerType": "System.String",
               "ContainerUniqueName": "System.String",
@@ -82,7 +82,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupItem",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ContainerType": "System.String",
                     "ContainerUniqueName": "System.String",
@@ -133,7 +133,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ContainerType": "System.String",
               "ContainerUniqueName": "System.String",
@@ -164,7 +164,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ContainerType": "System.String",
                     "ContainerUniqueName": "System.String",
@@ -207,7 +207,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -242,7 +242,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureBackupContainerType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupContainerType, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupContainerType, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -274,7 +274,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureBackupContainerRegistrationStatus",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupContainerRegistrationStatus, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupContainerRegistrationStatus, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -290,7 +290,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Name": "System.String",
               "Region": "System.String",
@@ -340,7 +340,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureBackupContainerType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupContainerType, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupContainerType, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -384,7 +384,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureBackupContainerRegistrationStatus",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupContainerRegistrationStatus, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupContainerRegistrationStatus, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -406,7 +406,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Name": "System.String",
                     "Region": "System.String",
@@ -446,7 +446,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupJob",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Duration": "System.TimeSpan",
               "EndTime": "System.Nullable`1[System.DateTime]",
@@ -526,7 +526,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Name": "System.String",
               "Region": "System.String",
@@ -598,7 +598,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Name": "System.String",
                     "Region": "System.String",
@@ -675,7 +675,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Name": "System.String",
                     "Region": "System.String",
@@ -708,7 +708,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Name": "System.String",
                     "Region": "System.String",
@@ -767,7 +767,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ContainerType": "System.String",
               "ContainerUniqueName": "System.String",
@@ -820,7 +820,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ContainerType": "System.String",
                     "ContainerUniqueName": "System.String",
@@ -863,7 +863,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupJob",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Duration": "System.TimeSpan",
               "EndTime": "System.Nullable`1[System.DateTime]",
@@ -895,7 +895,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupProtectionPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BackupTime": "System.DateTime",
               "DaysOfWeek": "System.Collections.Generic.List`1[System.String]",
@@ -922,7 +922,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupContainerContextObject",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainerContextObject, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainerContextObject, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ContainerType": "System.String",
               "ContainerUniqueName": "System.String",
@@ -950,7 +950,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupProtectionPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BackupTime": "System.DateTime",
                     "DaysOfWeek": "System.Collections.Generic.List`1[System.String]",
@@ -983,7 +983,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupContainerContextObject",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainerContextObject, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainerContextObject, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ContainerType": "System.String",
                     "ContainerUniqueName": "System.String",
@@ -1023,7 +1023,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupItem",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ContainerType": "System.String",
               "ContainerUniqueName": "System.String",
@@ -1050,7 +1050,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -1128,7 +1128,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ContainerType": "System.String",
               "ContainerUniqueName": "System.String",
@@ -1236,7 +1236,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ContainerType": "System.String",
                     "ContainerUniqueName": "System.String",
@@ -1279,7 +1279,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -1294,7 +1294,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupJob",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Duration": "System.TimeSpan",
               "EndTime": "System.Nullable`1[System.DateTime]",
@@ -1326,7 +1326,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Name": "System.String",
               "Region": "System.String",
@@ -1364,7 +1364,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupJob",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Duration": "System.TimeSpan",
               "EndTime": "System.Nullable`1[System.DateTime]",
@@ -1502,7 +1502,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Name": "System.String",
                     "Region": "System.String",
@@ -1688,7 +1688,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupJob",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Duration": "System.TimeSpan",
                     "EndTime": "System.Nullable`1[System.DateTime]",
@@ -1737,7 +1737,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupJobDetails",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJobDetails, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJobDetails, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Duration": "System.TimeSpan",
               "EndTime": "System.Nullable`1[System.DateTime]",
@@ -1771,7 +1771,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Name": "System.String",
               "Region": "System.String",
@@ -1809,7 +1809,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupJob",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Duration": "System.TimeSpan",
               "EndTime": "System.Nullable`1[System.DateTime]",
@@ -1846,7 +1846,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Name": "System.String",
                     "Region": "System.String",
@@ -1901,7 +1901,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupJob",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Duration": "System.TimeSpan",
                     "EndTime": "System.Nullable`1[System.DateTime]",
@@ -1953,7 +1953,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Name": "System.String",
               "Region": "System.String",
@@ -1991,7 +1991,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupJob",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Duration": "System.TimeSpan",
               "EndTime": "System.Nullable`1[System.DateTime]",
@@ -2028,7 +2028,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Name": "System.String",
                     "Region": "System.String",
@@ -2083,7 +2083,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupJob",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Duration": "System.TimeSpan",
                     "EndTime": "System.Nullable`1[System.DateTime]",
@@ -2132,7 +2132,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -2147,7 +2147,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupJob",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Duration": "System.TimeSpan",
               "EndTime": "System.Nullable`1[System.DateTime]",
@@ -2277,7 +2277,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupProtectionPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BackupTime": "System.DateTime",
               "DaysOfWeek": "System.Collections.Generic.List`1[System.String]",
@@ -2301,7 +2301,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -2336,7 +2336,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Name": "System.String",
               "Region": "System.String",
@@ -2386,7 +2386,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Name": "System.String",
                     "Region": "System.String",
@@ -2426,7 +2426,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupProtectionPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BackupTime": "System.DateTime",
               "DaysOfWeek": "System.Collections.Generic.List`1[System.String]",
@@ -2560,7 +2560,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupRetentionPolicy[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy[], Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy[], Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy",
             "GenericTypeArguments": []
@@ -2576,7 +2576,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Name": "System.String",
               "Region": "System.String",
@@ -2672,7 +2672,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupRetentionPolicy[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy[], Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy[], Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy",
                   "GenericTypeArguments": []
@@ -2694,7 +2694,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Name": "System.String",
                     "Region": "System.String",
@@ -2817,7 +2817,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupRetentionPolicy[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy[], Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy[], Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy",
                   "GenericTypeArguments": []
@@ -2839,7 +2839,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Name": "System.String",
                     "Region": "System.String",
@@ -2992,7 +2992,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupRetentionPolicy[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy[], Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy[], Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy",
                   "GenericTypeArguments": []
@@ -3014,7 +3014,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Name": "System.String",
                     "Region": "System.String",
@@ -3145,7 +3145,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupRetentionPolicy[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy[], Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy[], Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy",
                   "GenericTypeArguments": []
@@ -3167,7 +3167,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Name": "System.String",
                     "Region": "System.String",
@@ -3207,7 +3207,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupRetentionPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Retention": "System.Int32",
               "RetentionTimes": "System.Collections.Generic.IList`1[System.DateTime]",
@@ -3224,7 +3224,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -4155,7 +4155,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupProtectionPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BackupTime": "System.DateTime",
               "DaysOfWeek": "System.Collections.Generic.List`1[System.String]",
@@ -4210,7 +4210,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupProtectionPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BackupTime": "System.DateTime",
                     "DaysOfWeek": "System.Collections.Generic.List`1[System.String]",
@@ -4255,7 +4255,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupJob",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Duration": "System.TimeSpan",
               "EndTime": "System.Nullable`1[System.DateTime]",
@@ -4283,7 +4283,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "IList",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -4366,7 +4366,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupRetentionPolicy[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy[], Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy[], Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy",
             "GenericTypeArguments": []
@@ -4406,7 +4406,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupProtectionPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BackupTime": "System.DateTime",
               "DaysOfWeek": "System.Collections.Generic.List`1[System.String]",
@@ -4483,7 +4483,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupRetentionPolicy[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy[], Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy[], Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy",
                   "GenericTypeArguments": []
@@ -4505,7 +4505,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupProtectionPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BackupTime": "System.DateTime",
                     "DaysOfWeek": "System.Collections.Generic.List`1[System.String]",
@@ -4609,7 +4609,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupRetentionPolicy[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy[], Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy[], Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy",
                   "GenericTypeArguments": []
@@ -4631,7 +4631,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupProtectionPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BackupTime": "System.DateTime",
                     "DaysOfWeek": "System.Collections.Generic.List`1[System.String]",
@@ -4765,7 +4765,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupRetentionPolicy[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy[], Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy[], Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy",
                   "GenericTypeArguments": []
@@ -4787,7 +4787,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupProtectionPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BackupTime": "System.DateTime",
                     "DaysOfWeek": "System.Collections.Generic.List`1[System.String]",
@@ -4832,7 +4832,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupRecoveryPoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRecoveryPoint, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRecoveryPoint, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ContainerType": "System.String",
               "ContainerUniqueName": "System.String",
@@ -4855,7 +4855,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRecoveryPoint, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRecoveryPoint, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -4890,7 +4890,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupItem",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ContainerType": "System.String",
               "ContainerUniqueName": "System.String",
@@ -4948,7 +4948,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupItem",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ContainerType": "System.String",
                     "ContainerUniqueName": "System.String",
@@ -4996,7 +4996,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupJob",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Duration": "System.TimeSpan",
               "EndTime": "System.Nullable`1[System.DateTime]",
@@ -5044,7 +5044,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupRecoveryPoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRecoveryPoint, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRecoveryPoint, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ContainerType": "System.String",
               "ContainerUniqueName": "System.String",
@@ -5098,7 +5098,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupRecoveryPoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRecoveryPoint, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRecoveryPoint, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ContainerType": "System.String",
                     "ContainerUniqueName": "System.String",
@@ -5175,7 +5175,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Name": "System.String",
               "Region": "System.String",
@@ -5225,7 +5225,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Name": "System.String",
                     "Region": "System.String",
@@ -5265,7 +5265,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Name": "System.String",
               "Region": "System.String",
@@ -5284,7 +5284,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -5397,7 +5397,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Name": "System.String",
               "Region": "System.String",
@@ -5468,7 +5468,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureBackupVaultStorageType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupVaultStorageType, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupVaultStorageType, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -5556,7 +5556,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureBackupVaultStorageType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupVaultStorageType, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupVaultStorageType, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -5609,7 +5609,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Name": "System.String",
               "Region": "System.String",
@@ -5659,7 +5659,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Name": "System.String",
                     "Region": "System.String",
@@ -5699,7 +5699,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Name": "System.String",
               "Region": "System.String",
@@ -5722,7 +5722,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureBackupVaultStorageType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupVaultStorageType, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupVaultStorageType, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -5738,7 +5738,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Name": "System.String",
               "Region": "System.String",
@@ -5766,7 +5766,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureBackupVaultStorageType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupVaultStorageType, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupVaultStorageType, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -5788,7 +5788,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Name": "System.String",
                     "Region": "System.String",
@@ -5828,7 +5828,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupJob",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Duration": "System.TimeSpan",
               "EndTime": "System.Nullable`1[System.DateTime]",
@@ -5892,7 +5892,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "AzureRMBackupItem",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ContainerType": "System.String",
               "ContainerUniqueName": "System.String",
@@ -5972,7 +5972,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
                   "Name": "AzureRMBackupItem",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ContainerType": "System.String",
                     "ContainerUniqueName": "System.String",
@@ -6149,7 +6149,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]": {
       "Namespace": "System.Collections.Generic",
       "Name": "List",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -6159,7 +6159,7 @@
     "Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo": {
       "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
       "Name": "ErrorInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ErrorCode": "System.Int32",
         "ErrorMessage": "System.String",
@@ -6181,7 +6181,7 @@
     "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer": {
       "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
       "Name": "AzureRMBackupContainer",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ContainerType": "System.String",
         "ContainerUniqueName": "System.String",
@@ -6198,7 +6198,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]": {
       "Namespace": "System.Collections.Generic",
       "Name": "IList",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -6208,7 +6208,7 @@
     "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy": {
       "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
       "Name": "AzureRMBackupRetentionPolicy",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Retention": "System.Int32",
         "RetentionTimes": "System.Collections.Generic.IList`1[System.DateTime]",
@@ -6230,7 +6230,7 @@
     "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem": {
       "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
       "Name": "AzureRMBackupItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ContainerType": "System.String",
         "ContainerUniqueName": "System.String",
@@ -6252,7 +6252,7 @@
     "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob": {
       "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
       "Name": "AzureRMBackupJob",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Duration": "System.TimeSpan",
         "EndTime": "System.Nullable`1[System.DateTime]",
@@ -6286,7 +6286,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupJobSubTask]": {
       "Namespace": "System.Collections.Generic",
       "Name": "List",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupJobSubTask, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupJobSubTask, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -6296,7 +6296,7 @@
     "Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupJobSubTask": {
       "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
       "Name": "AzureBackupJobSubTask",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupJobSubTask, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupJobSubTask, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Name": "System.String",
         "Status": "System.String"
@@ -6307,7 +6307,7 @@
     "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy": {
       "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
       "Name": "AzureRMBackupProtectionPolicy",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "BackupTime": "System.DateTime",
         "DaysOfWeek": "System.Collections.Generic.List`1[System.String]",
@@ -6326,7 +6326,7 @@
     "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRecoveryPoint": {
       "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
       "Name": "AzureRMBackupRecoveryPoint",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRecoveryPoint, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRecoveryPoint, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ContainerType": "System.String",
         "ContainerUniqueName": "System.String",
@@ -6344,7 +6344,7 @@
     "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault": {
       "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
       "Name": "AzureRMBackupVault",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Name": "System.String",
         "Region": "System.String",

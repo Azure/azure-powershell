@@ -14,13 +14,15 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "PSStorageAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AccessTier": "System.Nullable`1[Microsoft.Azure.Management.Storage.Models.AccessTier]",
-              "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
+              "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
               "CreationTime": "System.Nullable`1[System.DateTime]",
               "CustomDomain": "Microsoft.Azure.Management.Storage.Models.CustomDomain",
+              "EnableHttpsTrafficOnly": "System.Nullable`1[System.Boolean]",
               "Encryption": "Microsoft.Azure.Management.Storage.Models.Encryption",
+              "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Id": "System.String",
               "Kind": "System.Nullable`1[Microsoft.Azure.Management.Storage.Models.Kind]",
               "LastGeoFailoverTime": "System.Nullable`1[System.DateTime]",
@@ -179,7 +181,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.Storage.Models",
             "Name": "StorageAccountKey",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.StorageAccountKey, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.StorageAccountKey, Microsoft.Azure.Management.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "KeyName": "System.String",
               "Permissions": "System.Nullable`1[Microsoft.Azure.Management.Storage.Models.KeyPermission]",
@@ -300,11 +302,12 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.Storage.Models",
             "Name": "StorageAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.StorageAccount, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.StorageAccount, Microsoft.Azure.Management.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AccessTier": "System.Nullable`1[Microsoft.Azure.Management.Storage.Models.AccessTier]",
               "CreationTime": "System.Nullable`1[System.DateTime]",
               "CustomDomain": "Microsoft.Azure.Management.Storage.Models.CustomDomain",
+              "EnableHttpsTrafficOnly": "System.Nullable`1[System.Boolean]",
               "Encryption": "Microsoft.Azure.Management.Storage.Models.Encryption",
               "Id": "System.String",
               "Kind": "System.Nullable`1[Microsoft.Azure.Management.Storage.Models.Kind]",
@@ -486,7 +489,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "Nullable",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Storage.StorageAccountBaseCmdlet+EncryptionSupportServiceEnum, Microsoft.Azure.Commands.Management.Storage, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Storage.StorageAccountBaseCmdlet+EncryptionSupportServiceEnum, Microsoft.Azure.Commands.Management.Storage, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -507,6 +510,22 @@
             "Namespace": "System.Collections",
             "Name": "Hashtable",
             "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "EnableHttpsTrafficOnly",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "Boolean",
+            "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -725,7 +744,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "Nullable",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Storage.StorageAccountBaseCmdlet+EncryptionSupportServiceEnum, Microsoft.Azure.Commands.Management.Storage, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Storage.StorageAccountBaseCmdlet+EncryptionSupportServiceEnum, Microsoft.Azure.Commands.Management.Storage, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -765,6 +784,28 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EnableHttpsTrafficOnly",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "Boolean",
+                  "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
             }
           ]
         }
@@ -785,7 +826,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.Storage.Models",
             "Name": "StorageAccountKey",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.StorageAccountKey, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.StorageAccountKey, Microsoft.Azure.Management.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "KeyName": "System.String",
               "Permissions": "System.Nullable`1[Microsoft.Azure.Management.Storage.Models.KeyPermission]",
@@ -1106,18 +1147,17 @@
           "Name": "Context",
           "AliasList": [],
           "Type": {
-            "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
-            "Name": "AzureStorageContext",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+            "Name": "IStorageContext",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BlobEndPoint": "System.String",
-              "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
-              "EmptyContextInstance": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
+              "ConnectionString": "System.String",
+              "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
               "EndPointSuffix": "System.String",
               "FileEndPoint": "System.String",
               "Name": "System.String",
               "QueueEndPoint": "System.String",
-              "StorageAccount": "Microsoft.WindowsAzure.Storage.CloudStorageAccount",
               "StorageAccountName": "System.String",
               "TableEndPoint": "System.String"
             },
@@ -1174,18 +1214,17 @@
                 "Name": "Context",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
-                  "Name": "AzureStorageContext",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+                  "Name": "IStorageContext",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BlobEndPoint": "System.String",
-                    "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
-                    "EmptyContextInstance": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
+                    "ConnectionString": "System.String",
+                    "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
                     "EndPointSuffix": "System.String",
                     "FileEndPoint": "System.String",
                     "Name": "System.String",
                     "QueueEndPoint": "System.String",
-                    "StorageAccount": "Microsoft.WindowsAzure.Storage.CloudStorageAccount",
                     "StorageAccountName": "System.String",
                     "TableEndPoint": "System.String"
                   },
@@ -1273,11 +1312,12 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.Storage.Models",
             "Name": "StorageAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.StorageAccount, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.StorageAccount, Microsoft.Azure.Management.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AccessTier": "System.Nullable`1[Microsoft.Azure.Management.Storage.Models.AccessTier]",
               "CreationTime": "System.Nullable`1[System.DateTime]",
               "CustomDomain": "Microsoft.Azure.Management.Storage.Models.CustomDomain",
+              "EnableHttpsTrafficOnly": "System.Nullable`1[System.Boolean]",
               "Encryption": "Microsoft.Azure.Management.Storage.Models.Encryption",
               "Id": "System.String",
               "Kind": "System.Nullable`1[Microsoft.Azure.Management.Storage.Models.Kind]",
@@ -1440,7 +1480,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "Nullable",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Storage.StorageAccountBaseCmdlet+EncryptionSupportServiceEnum, Microsoft.Azure.Commands.Management.Storage, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Storage.StorageAccountBaseCmdlet+EncryptionSupportServiceEnum, Microsoft.Azure.Commands.Management.Storage, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -1458,7 +1498,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "Nullable",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Storage.StorageAccountBaseCmdlet+EncryptionSupportServiceEnum, Microsoft.Azure.Commands.Management.Storage, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Storage.StorageAccountBaseCmdlet+EncryptionSupportServiceEnum, Microsoft.Azure.Commands.Management.Storage, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -1479,6 +1519,22 @@
             "Namespace": "System.Collections",
             "Name": "Hashtable",
             "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "EnableHttpsTrafficOnly",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "Boolean",
+            "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1672,7 +1728,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "Nullable",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Storage.StorageAccountBaseCmdlet+EncryptionSupportServiceEnum, Microsoft.Azure.Commands.Management.Storage, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Storage.StorageAccountBaseCmdlet+EncryptionSupportServiceEnum, Microsoft.Azure.Commands.Management.Storage, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -1696,7 +1752,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "Nullable",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Storage.StorageAccountBaseCmdlet+EncryptionSupportServiceEnum, Microsoft.Azure.Commands.Management.Storage, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Storage.StorageAccountBaseCmdlet+EncryptionSupportServiceEnum, Microsoft.Azure.Commands.Management.Storage, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -1736,6 +1792,28 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EnableHttpsTrafficOnly",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "Boolean",
+                  "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
             }
           ]
         }
@@ -1756,7 +1834,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.Storage.Models",
             "Name": "CheckNameAvailabilityResult",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.CheckNameAvailabilityResult, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.CheckNameAvailabilityResult, Microsoft.Azure.Management.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Message": "System.String",
               "NameAvailable": "System.Nullable`1[System.Boolean]",
@@ -1839,7 +1917,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "PSUsage",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSUsage, Microsoft.Azure.Commands.Management.Storage, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSUsage, Microsoft.Azure.Commands.Management.Storage, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CurrentValue": "System.Nullable`1[System.Int32]",
               "Limit": "System.Nullable`1[System.Int32]",
@@ -1976,7 +2054,7 @@
     "System.Nullable`1[Microsoft.Azure.Management.Storage.Models.AccessTier]": {
       "Namespace": "System",
       "Name": "Nullable",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.AccessTier, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.AccessTier, Microsoft.Azure.Management.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -1986,81 +2064,25 @@
     "Microsoft.Azure.Management.Storage.Models.AccessTier": {
       "Namespace": "Microsoft.Azure.Management.Storage.Models",
       "Name": "AccessTier",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.AccessTier, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.AccessTier, Microsoft.Azure.Management.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext": {
-      "Namespace": "Microsoft.WindowsAzure.Commands.Common.Storage",
-      "Name": "AzureStorageContext",
-      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext, Microsoft.WindowsAzure.Commands.Common.Storage, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+    "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext": {
+      "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+      "Name": "IStorageContext",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "BlobEndPoint": "System.String",
-        "Context": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
-        "EmptyContextInstance": "Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext",
+        "ConnectionString": "System.String",
+        "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
         "EndPointSuffix": "System.String",
         "FileEndPoint": "System.String",
         "Name": "System.String",
         "QueueEndPoint": "System.String",
-        "StorageAccount": "Microsoft.WindowsAzure.Storage.CloudStorageAccount",
         "StorageAccountName": "System.String",
         "TableEndPoint": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "Microsoft.WindowsAzure.Storage.CloudStorageAccount": {
-      "Namespace": "Microsoft.WindowsAzure.Storage",
-      "Name": "CloudStorageAccount",
-      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Storage.CloudStorageAccount, Microsoft.WindowsAzure.Storage, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "BlobEndpoint": "System.Uri",
-        "BlobStorageUri": "Microsoft.WindowsAzure.Storage.StorageUri",
-        "Credentials": "Microsoft.WindowsAzure.Storage.Auth.StorageCredentials",
-        "DevelopmentStorageAccount": "Microsoft.WindowsAzure.Storage.CloudStorageAccount",
-        "FileEndpoint": "System.Uri",
-        "FileStorageUri": "Microsoft.WindowsAzure.Storage.StorageUri",
-        "QueueEndpoint": "System.Uri",
-        "QueueStorageUri": "Microsoft.WindowsAzure.Storage.StorageUri",
-        "TableEndpoint": "System.Uri",
-        "TableStorageUri": "Microsoft.WindowsAzure.Storage.StorageUri",
-        "UseV1MD5": "System.Boolean"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "System.Uri": {
-      "Namespace": "System",
-      "Name": "Uri",
-      "AssemblyQualifiedName": "System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "Microsoft.WindowsAzure.Storage.StorageUri": {
-      "Namespace": "Microsoft.WindowsAzure.Storage",
-      "Name": "StorageUri",
-      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Storage.StorageUri, Microsoft.WindowsAzure.Storage, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "PrimaryUri": "System.Uri",
-        "SecondaryUri": "System.Uri"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "Microsoft.WindowsAzure.Storage.Auth.StorageCredentials": {
-      "Namespace": "Microsoft.WindowsAzure.Storage.Auth",
-      "Name": "StorageCredentials",
-      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Storage.Auth.StorageCredentials, Microsoft.WindowsAzure.Storage, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "AccountName": "System.String",
-        "IsAnonymous": "System.Boolean",
-        "IsSAS": "System.Boolean",
-        "IsSharedKey": "System.Boolean",
-        "KeyName": "System.String",
-        "SASSignature": "System.String",
-        "SASToken": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -2086,7 +2108,7 @@
     "Microsoft.Azure.Management.Storage.Models.CustomDomain": {
       "Namespace": "Microsoft.Azure.Management.Storage.Models",
       "Name": "CustomDomain",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.CustomDomain, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.CustomDomain, Microsoft.Azure.Management.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Name": "System.String",
         "UseSubDomain": "System.Nullable`1[System.Boolean]"
@@ -2107,7 +2129,7 @@
     "Microsoft.Azure.Management.Storage.Models.Encryption": {
       "Namespace": "Microsoft.Azure.Management.Storage.Models",
       "Name": "Encryption",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.Encryption, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.Encryption, Microsoft.Azure.Management.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "KeySource": "System.String",
         "Services": "Microsoft.Azure.Management.Storage.Models.EncryptionServices"
@@ -2118,9 +2140,12 @@
     "Microsoft.Azure.Management.Storage.Models.EncryptionServices": {
       "Namespace": "Microsoft.Azure.Management.Storage.Models",
       "Name": "EncryptionServices",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.EncryptionServices, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.EncryptionServices, Microsoft.Azure.Management.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Blob": "Microsoft.Azure.Management.Storage.Models.EncryptionService"
+        "Blob": "Microsoft.Azure.Management.Storage.Models.EncryptionService",
+        "File": "Microsoft.Azure.Management.Storage.Models.EncryptionService",
+        "Queue": "Microsoft.Azure.Management.Storage.Models.EncryptionService",
+        "Table": "Microsoft.Azure.Management.Storage.Models.EncryptionService"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -2128,115 +2153,11 @@
     "Microsoft.Azure.Management.Storage.Models.EncryptionService": {
       "Namespace": "Microsoft.Azure.Management.Storage.Models",
       "Name": "EncryptionService",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.EncryptionService, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.EncryptionService, Microsoft.Azure.Management.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Enabled": "System.Nullable`1[System.Boolean]",
         "LastEnabledTime": "System.Nullable`1[System.DateTime]"
       },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "System.Nullable`1[Microsoft.Azure.Management.Storage.Models.Kind]": {
-      "Namespace": "System",
-      "Name": "Nullable",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.Kind, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Management.Storage.Models.Kind"
-      ]
-    },
-    "Microsoft.Azure.Management.Storage.Models.Kind": {
-      "Namespace": "Microsoft.Azure.Management.Storage.Models",
-      "Name": "Kind",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.Kind, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "Microsoft.Azure.Management.Storage.Models.Endpoints": {
-      "Namespace": "Microsoft.Azure.Management.Storage.Models",
-      "Name": "Endpoints",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.Endpoints, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "Blob": "System.String",
-        "File": "System.String",
-        "Queue": "System.String",
-        "Table": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "System.Nullable`1[Microsoft.Azure.Management.Storage.Models.ProvisioningState]": {
-      "Namespace": "System",
-      "Name": "Nullable",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.ProvisioningState, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Management.Storage.Models.ProvisioningState"
-      ]
-    },
-    "Microsoft.Azure.Management.Storage.Models.ProvisioningState": {
-      "Namespace": "Microsoft.Azure.Management.Storage.Models",
-      "Name": "ProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.ProvisioningState, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "Microsoft.Azure.Management.Storage.Models.Sku": {
-      "Namespace": "Microsoft.Azure.Management.Storage.Models",
-      "Name": "Sku",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.Sku, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "Name": "Microsoft.Azure.Management.Storage.Models.SkuName",
-        "Tier": "System.Nullable`1[Microsoft.Azure.Management.Storage.Models.SkuTier]"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "Microsoft.Azure.Management.Storage.Models.SkuName": {
-      "Namespace": "Microsoft.Azure.Management.Storage.Models",
-      "Name": "SkuName",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.SkuName, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "System.Nullable`1[Microsoft.Azure.Management.Storage.Models.SkuTier]": {
-      "Namespace": "System",
-      "Name": "Nullable",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.SkuTier, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Management.Storage.Models.SkuTier"
-      ]
-    },
-    "Microsoft.Azure.Management.Storage.Models.SkuTier": {
-      "Namespace": "Microsoft.Azure.Management.Storage.Models",
-      "Name": "SkuTier",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.SkuTier, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "System.Nullable`1[Microsoft.Azure.Management.Storage.Models.AccountStatus]": {
-      "Namespace": "System",
-      "Name": "Nullable",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.AccountStatus, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Management.Storage.Models.AccountStatus"
-      ]
-    },
-    "Microsoft.Azure.Management.Storage.Models.AccountStatus": {
-      "Namespace": "Microsoft.Azure.Management.Storage.Models",
-      "Name": "AccountStatus",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.AccountStatus, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
     },
@@ -2251,10 +2172,114 @@
         "System.String"
       ]
     },
+    "System.Nullable`1[Microsoft.Azure.Management.Storage.Models.Kind]": {
+      "Namespace": "System",
+      "Name": "Nullable",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.Kind, Microsoft.Azure.Management.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.Storage.Models.Kind"
+      ]
+    },
+    "Microsoft.Azure.Management.Storage.Models.Kind": {
+      "Namespace": "Microsoft.Azure.Management.Storage.Models",
+      "Name": "Kind",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.Kind, Microsoft.Azure.Management.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Management.Storage.Models.Endpoints": {
+      "Namespace": "Microsoft.Azure.Management.Storage.Models",
+      "Name": "Endpoints",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.Endpoints, Microsoft.Azure.Management.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Blob": "System.String",
+        "File": "System.String",
+        "Queue": "System.String",
+        "Table": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Nullable`1[Microsoft.Azure.Management.Storage.Models.ProvisioningState]": {
+      "Namespace": "System",
+      "Name": "Nullable",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.ProvisioningState, Microsoft.Azure.Management.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.Storage.Models.ProvisioningState"
+      ]
+    },
+    "Microsoft.Azure.Management.Storage.Models.ProvisioningState": {
+      "Namespace": "Microsoft.Azure.Management.Storage.Models",
+      "Name": "ProvisioningState",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.ProvisioningState, Microsoft.Azure.Management.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Management.Storage.Models.Sku": {
+      "Namespace": "Microsoft.Azure.Management.Storage.Models",
+      "Name": "Sku",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.Sku, Microsoft.Azure.Management.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Name": "Microsoft.Azure.Management.Storage.Models.SkuName",
+        "Tier": "System.Nullable`1[Microsoft.Azure.Management.Storage.Models.SkuTier]"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Management.Storage.Models.SkuName": {
+      "Namespace": "Microsoft.Azure.Management.Storage.Models",
+      "Name": "SkuName",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.SkuName, Microsoft.Azure.Management.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Nullable`1[Microsoft.Azure.Management.Storage.Models.SkuTier]": {
+      "Namespace": "System",
+      "Name": "Nullable",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.SkuTier, Microsoft.Azure.Management.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.Storage.Models.SkuTier"
+      ]
+    },
+    "Microsoft.Azure.Management.Storage.Models.SkuTier": {
+      "Namespace": "Microsoft.Azure.Management.Storage.Models",
+      "Name": "SkuTier",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.SkuTier, Microsoft.Azure.Management.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Nullable`1[Microsoft.Azure.Management.Storage.Models.AccountStatus]": {
+      "Namespace": "System",
+      "Name": "Nullable",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.AccountStatus, Microsoft.Azure.Management.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.Storage.Models.AccountStatus"
+      ]
+    },
+    "Microsoft.Azure.Management.Storage.Models.AccountStatus": {
+      "Namespace": "Microsoft.Azure.Management.Storage.Models",
+      "Name": "AccountStatus",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.AccountStatus, Microsoft.Azure.Management.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
     "System.Nullable`1[Microsoft.Azure.Management.Storage.Models.KeyPermission]": {
       "Namespace": "System",
       "Name": "Nullable",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.KeyPermission, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.KeyPermission, Microsoft.Azure.Management.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -2264,7 +2289,7 @@
     "Microsoft.Azure.Management.Storage.Models.KeyPermission": {
       "Namespace": "Microsoft.Azure.Management.Storage.Models",
       "Name": "KeyPermission",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.KeyPermission, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.KeyPermission, Microsoft.Azure.Management.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -2272,7 +2297,7 @@
     "Microsoft.Azure.Commands.Management.Storage.StorageAccountBaseCmdlet+EncryptionSupportServiceEnum": {
       "Namespace": "Microsoft.Azure.Commands.Management.Storage",
       "Name": "EncryptionSupportServiceEnum",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.StorageAccountBaseCmdlet+EncryptionSupportServiceEnum, Microsoft.Azure.Commands.Management.Storage, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.StorageAccountBaseCmdlet+EncryptionSupportServiceEnum, Microsoft.Azure.Commands.Management.Storage, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -2280,7 +2305,7 @@
     "System.Nullable`1[Microsoft.Azure.Management.Storage.Models.Reason]": {
       "Namespace": "System",
       "Name": "Nullable",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.Reason, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.Reason, Microsoft.Azure.Management.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -2290,7 +2315,7 @@
     "Microsoft.Azure.Management.Storage.Models.Reason": {
       "Namespace": "Microsoft.Azure.Management.Storage.Models",
       "Name": "Reason",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.Reason, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.Reason, Microsoft.Azure.Management.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -2308,7 +2333,7 @@
     "System.Nullable`1[Microsoft.Azure.Management.Storage.Models.UsageUnit]": {
       "Namespace": "System",
       "Name": "Nullable",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.UsageUnit, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Storage.Models.UsageUnit, Microsoft.Azure.Management.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -2318,7 +2343,7 @@
     "Microsoft.Azure.Management.Storage.Models.UsageUnit": {
       "Namespace": "Microsoft.Azure.Management.Storage.Models",
       "Name": "UsageUnit",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.UsageUnit, Microsoft.Azure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Storage.Models.UsageUnit, Microsoft.Azure.Management.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
