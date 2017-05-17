@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.Profile.Errors
         }
 
         public bool InnerException { get; set; }
+
         public Exception Exception { get; }
 
         public string Message { get; set; }
