@@ -251,9 +251,6 @@
                 <ScriptBlock>$_.InvocationInfo.PositionMessage</ScriptBlock>
               </ListItem>
               <ListItem>
-                <PropertyName>StackTrace</PropertyName>
-              </ListItem>
-              <ListItem>
                 <Label>HistoryId</Label>
                 <ScriptBlock>$_.InvocationInfo.HistoryId</ScriptBlock>
               </ListItem>
