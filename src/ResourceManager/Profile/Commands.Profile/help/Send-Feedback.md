@@ -19,7 +19,7 @@ Send-Feedback [<CommonParameters>]
 The Send-Feedback cmdlet sends feedback to the Azure PowerShell team.
 
 ## EXAMPLES
-
+### Example 1:
 ```
 PS C:\> Send-Feedback
 
