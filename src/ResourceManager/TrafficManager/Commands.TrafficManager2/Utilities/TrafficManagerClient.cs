@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                 profileName,
                 endpointType,
                 endpointName,
-                new Endpoint(name: endpointName, type: TrafficManagerEndpoint.ToSDKEndpointType(endpointType))
+                new Endpoint(name: endpointName, type: TrafficManagerEndpoint.ToFullEndpointType(endpointType))
                 {
                     EndpointLocation = endpointLocation,
                     EndpointStatus = endpointStatus,
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                 ResourceGroupName = resourceGroupName,
                 ProfileName = profileName,
                 Name = endpointName,
-                Type = endpointType,
+                Type = TrafficManagerEndpoint.ToShortEndpointType(endpointType),
 
                 EndpointStatus = sdkEndpoint.EndpointStatus,
                 EndpointMonitorStatus = sdkEndpoint.EndpointMonitorStatus,
