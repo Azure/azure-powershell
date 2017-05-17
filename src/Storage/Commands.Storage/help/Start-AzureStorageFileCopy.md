@@ -15,7 +15,7 @@ Starts to copy a source file.
 ### ContainerName
 ```
 Start-AzureStorageFileCopy -SrcBlobName <String> -SrcContainerName <String> -DestShareName <String>
- -DestFilePath <String> [-Context <AzureStorageContext>] [-DestContext <AzureStorageContext>] [-Force]
+ -DestFilePath <String> [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -23,14 +23,14 @@ Start-AzureStorageFileCopy -SrcBlobName <String> -SrcContainerName <String> -Des
 ### ContainerInstance
 ```
 Start-AzureStorageFileCopy -SrcBlobName <String> -SrcContainer <CloudBlobContainer> -DestShareName <String>
- -DestFilePath <String> [-DestContext <AzureStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
+ -DestFilePath <String> [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BlobInstanceFilePath
 ```
 Start-AzureStorageFileCopy -SrcBlob <CloudBlob> -DestShareName <String> -DestFilePath <String>
- [-DestContext <AzureStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
+ [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -44,7 +44,7 @@ Start-AzureStorageFileCopy -SrcBlob <CloudBlob> -DestFile <CloudFile> [-Force]
 ### ShareName
 ```
 Start-AzureStorageFileCopy -SrcFilePath <String> -SrcShareName <String> -DestShareName <String>
- -DestFilePath <String> [-Context <AzureStorageContext>] [-DestContext <AzureStorageContext>] [-Force]
+ -DestFilePath <String> [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -52,14 +52,14 @@ Start-AzureStorageFileCopy -SrcFilePath <String> -SrcShareName <String> -DestSha
 ### ShareInstance
 ```
 Start-AzureStorageFileCopy -SrcFilePath <String> -SrcShare <CloudFileShare> -DestShareName <String>
- -DestFilePath <String> [-DestContext <AzureStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
+ -DestFilePath <String> [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FileInstanceToFilePath
 ```
 Start-AzureStorageFileCopy -SrcFile <CloudFile> -DestShareName <String> -DestFilePath <String>
- [-DestContext <AzureStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
+ [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -73,7 +73,7 @@ Start-AzureStorageFileCopy -SrcFile <CloudFile> -DestFile <CloudFile> [-Force]
 ### UriToFilePath
 ```
 Start-AzureStorageFileCopy -AbsoluteUri <String> -DestShareName <String> -DestFilePath <String>
- [-DestContext <AzureStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
+ [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -164,7 +164,7 @@ Specifies an Azure Storage context.
 To obtain a context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: AzureStorageContext
+Type: IStorageContext
 Parameter Sets: ContainerName, ShareName
 Aliases: SrcContext
 
@@ -180,7 +180,7 @@ Specifies the Azure Storage context of the destination.
 To obtain a context, use **New-AzureStorageContext**.
 
 ```yaml
-Type: AzureStorageContext
+Type: IStorageContext
 Parameter Sets: ContainerName, ContainerInstance, BlobInstanceFilePath, ShareName, ShareInstance, FileInstanceToFilePath, UriToFilePath
 Aliases: 
 

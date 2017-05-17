@@ -14,7 +14,7 @@ Sets the CORS rules for a type of Storage service.
 
 ```
 Set-AzureStorageCORSRule [-ServiceType] <StorageServiceType> -CorsRules <PSCorsRule[]> [-PassThru]
- [-Context <AzureStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
@@ -106,7 +106,7 @@ Specifies an Azure Storage context.
 To obtain a context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: AzureStorageContext
+Type: IStorageContext
 Parameter Sets: (All)
 Aliases: 
 

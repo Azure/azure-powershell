@@ -13,7 +13,7 @@ Removes a storage queue.
 ## SYNTAX
 
 ```
-Remove-AzureStorageQueue [-Name] <String> [-Force] [-PassThru] [-Context <AzureStorageContext>] [-WhatIf]
+Remove-AzureStorageQueue [-Name] <String> [-Force] [-PassThru] [-Context <IStorageContext>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -43,7 +43,7 @@ Specifies the Azure storage context.
 To obtain the storage context, the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: AzureStorageContext
+Type: IStorageContext
 Parameter Sets: (All)
 Aliases: 
 
