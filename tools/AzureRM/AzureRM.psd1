@@ -12,7 +12,7 @@
 RootModule = '.\AzureRM.psm1'
 
 # Version number of this module.
-ModuleVersion = '4.0.0'
+ModuleVersion = '4.0.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -52,7 +52,7 @@ CLRVersion = '4.0'
 
 # Modules that must be imported into the global environment prior to importing this module
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '3.0.0'; }, 
-               @{ModuleName = 'Azure.Storage'; RequiredVersion = '3.0.0'; }, 
+               @{ModuleName = 'Azure.Storage'; RequiredVersion = '3.0.1'; }, 
                @{ModuleName = 'AzureRM.AnalysisServices'; RequiredVersion = '0.3.0'; }, 
                @{ModuleName = 'Azure.AnalysisServices'; RequiredVersion = '0.3.0'; }, 
                @{ModuleName = 'AzureRM.ApiManagement'; RequiredVersion = '4.0.0'; }, 
@@ -93,7 +93,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '3.0.0';
                @{ModuleName = 'AzureRM.ServiceFabric'; RequiredVersion = '0.1.0'; }, 
                @{ModuleName = 'AzureRM.SiteRecovery'; RequiredVersion = '4.0.0'; }, 
                @{ModuleName = 'AzureRM.Sql'; RequiredVersion = '3.0.0'; }, 
-               @{ModuleName = 'AzureRM.Storage'; RequiredVersion = '3.0.0'; }, 
+               @{ModuleName = 'AzureRM.Storage'; RequiredVersion = '3.0.1'; }, 
                @{ModuleName = 'AzureRM.StreamAnalytics'; RequiredVersion = '3.0.0'; }, 
                @{ModuleName = 'AzureRM.Tags'; RequiredVersion = '3.0.0'; }, 
                @{ModuleName = 'AzureRM.TrafficManager'; RequiredVersion = '3.0.0'; }, 
@@ -300,6 +300,7 @@ PrivateData = @{
     	- Adjust grace period to a minimum of 1 hour if a lower one is provided
     * Remove "Usage_Anomaly" from the accepted values for "ExcludedDetectionType" parameter of Set-AzureRmSqlDatabaseThreatDetectionPolicy cmdlet and Set-AzureRmSqlServerThreatDetectionPolicy cmdlet. 
 * Storage
+    * Fix issue with New-AzureStorageContext in offline scenarios: https://github.com/Azure/azure-powershell/issues/3939
     * Upgrade SRP SDK to 6.3.0
     * New/Set-AzureRmStorageAccount:Add a new parameter to support EnableHttpsTrafficOnly
     * New/Set/Get-AzureRmStorageAccount: Returned Storage Account contains a new attribute EnableHttpsTrafficOnly'
