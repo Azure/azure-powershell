@@ -12,16 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using System;
 using System.Collections.Generic;
-using System.Net.Http;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public class KeyVaultCmdletBase : AzureRMCmdlet
     {
+        public static readonly DateTime EpochDate = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+
         internal IKeyVaultDataServiceClient DataServiceClient
         {
             get
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 if (dataServiceClient == null)
                 {
                     this.dataServiceClient = new KeyVaultDataServiceClient(
-                        AzureSession.AuthenticationFactory,
+                        AzureSession.Instance.AuthenticationFactory,
                         DefaultContext);
                 }
 
@@ -41,6 +42,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
         }
 
+        protected string GetDefaultFileForOperation( string operationName, string vaultName, string entityName )
+        {
+            // caller is responsible for parameter validation
+            var currentPath = CurrentPath();
+            var filename = string.Format("{0}\\{1}-{2}-{3}", currentPath, vaultName, entityName, DateTime.UtcNow.Subtract(EpochDate).TotalSeconds);
+
+            return filename;
+        }
 
         private IKeyVaultDataServiceClient dataServiceClient;
 

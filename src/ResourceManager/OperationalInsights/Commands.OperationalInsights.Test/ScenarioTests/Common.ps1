@@ -36,7 +36,7 @@ Gets a valid storage account resource id
 #>
 function Get-StorageResourceId($rgname, $resourcename)
 {
-    $subscription = (Get-AzureRmContext).Subscription.SubscriptionId
+    $subscription = (Get-AzureRmContext).Subscription.Id
     return "/subscriptions/$subscription/resourcegroups/$rgname/providers/microsoft.storage/storageaccounts/$resourcename"
 }
 

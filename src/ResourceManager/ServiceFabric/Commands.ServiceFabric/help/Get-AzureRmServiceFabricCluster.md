@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmServiceFabricCluster
 
 ## SYNOPSIS
-Get the cluster resource details
+Get the cluster resource details.
 
 ## SYNTAX
 
@@ -16,7 +16,7 @@ Get-AzureRmServiceFabricCluster [[-ResourceGroupName] <String>] [[-Name] <String
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmServiceFabricCluster** will get the cluster resource details
+The **Add-AzureRmServiceFabricCluster** will get the cluster resource details.
 
 ## EXAMPLES
 
@@ -25,12 +25,12 @@ The **Add-AzureRmServiceFabricCluster** will get the cluster resource details
 PS C:\> Get-AzureRmServiceFabricCluster -ResourceGroupName 'Group1' -ClusterName 'Contoso01SFCluster'
 ```
 
-This command will get the cluster resource with the name myCluster
+This command will get the cluster resource details for cluster 'myCluster'.
 
 ## PARAMETERS
 
 ### -Name
-Specify the name of the cluster
+Specify the name of the cluster.
 
 ```yaml
 Type: String

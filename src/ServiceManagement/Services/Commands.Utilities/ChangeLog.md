@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 4.0.0
+
 ## Version 3.8.0
 * Restart-AzureVM: Added InitiateMaintenance parameter for performing maintenance during VM restart.
 

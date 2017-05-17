@@ -20,6 +20,8 @@ using System.Reflection;
 using System.Security;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
@@ -39,7 +41,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
         protected AsAzureEnvironment AsEnvironment;
            
-        protected override AzureContext DefaultContext
+        protected override IAzureContext DefaultContext
         {
             get
             {

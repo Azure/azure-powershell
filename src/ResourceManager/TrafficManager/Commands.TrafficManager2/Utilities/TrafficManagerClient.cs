@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 {
+    using Common.Authentication.Abstractions;
     using Management.TrafficManager;
     using Management.TrafficManager.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
@@ -35,8 +36,8 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 
         public Action<string> ErrorLogger { get; set; }
 
-        public TrafficManagerClient(AzureContext context)
-            : this(AzureSession.ClientFactory.CreateClient<TrafficManagerManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+        public TrafficManagerClient(IAzureContext context)
+            : this(AzureSession.Instance.ClientFactory.CreateClient<TrafficManagerManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
         }
 

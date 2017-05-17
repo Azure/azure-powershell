@@ -14,8 +14,8 @@
 
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Management.Insights;
-using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.Management.Monitor.Management;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading;
@@ -45,17 +45,17 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
             var result = new PSLogProfileCollection();
             if (string.IsNullOrWhiteSpace(this.Name))
             {
-                IEnumerable<LogProfileResource> resultList = this.InsightsManagementClient.LogProfiles.ListAsync(cancellationToken: CancellationToken.None).Result;
+                IEnumerable<LogProfileResource> resultList = this.MonitorManagementClient.LogProfiles.ListAsync(cancellationToken: CancellationToken.None).Result;
 
                 result.AddRange(resultList.Select(x => new PSLogProfile(logProfile: x)));
             }
             else
             {
-                LogProfileResource logProfile = this.InsightsManagementClient.LogProfiles.GetAsync(logProfileName: this.Name, cancellationToken: CancellationToken.None).Result;
+                LogProfileResource logProfile = this.MonitorManagementClient.LogProfiles.GetAsync(logProfileName: this.Name, cancellationToken: CancellationToken.None).Result;
                 result.Add(new PSLogProfile(logProfile: logProfile));
             }
 
-            WriteObject(result);
+            WriteObject(result, enumerateCollection: true);
         }
     }
 }

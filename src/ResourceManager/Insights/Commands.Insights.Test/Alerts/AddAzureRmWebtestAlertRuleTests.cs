@@ -12,9 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Insights.Alerts;
-using Microsoft.Azure.Management.Insights;
-using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ScenarioTest;
+using Microsoft.Azure.Management.Monitor.Management;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
@@ -31,7 +34,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
     public class AddAzureRmWebtestAlertRuleTests
     {
         private readonly AddAzureRmWebtestAlertRuleCommand cmdlet;
-        private readonly Mock<InsightsManagementClient> insightsManagementClientMock;
+        private readonly Mock<MonitorManagementClient> insightsManagementClientMock;
         private readonly Mock<IAlertRulesOperations> insightsAlertRuleOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
         private Rest.Azure.AzureOperationResponse<AlertRuleResource> response;
@@ -40,17 +43,24 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
 
         public AddAzureRmWebtestAlertRuleTests(ITestOutputHelper output)
         {
+            TestExecutionHelpers.SetUpSessionAndProfile();
             //XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             insightsAlertRuleOperationsMock = new Mock<IAlertRulesOperations>();
-            insightsManagementClientMock = new Mock<InsightsManagementClient>();
+            insightsManagementClientMock = new Mock<MonitorManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new AddAzureRmWebtestAlertRuleCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                InsightsManagementClient = insightsManagementClientMock.Object
+                MonitorManagementClient = insightsManagementClientMock.Object
             };
 
-            AlertRuleResource alertRuleResourceInput = new AlertRuleResource(location: null, isEnabled: true, alertRuleResourceName: "a name");
+            AlertRuleResource alertRuleResourceInput = new AlertRuleResource()
+            {
+                Location = null, 
+                IsEnabled = true, 
+                AlertRuleResourceName = "a name"
+            };
+
             response = new Rest.Azure.AzureOperationResponse<AlertRuleResource>()
             {
                 Body = alertRuleResourceInput

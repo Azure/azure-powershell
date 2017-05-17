@@ -20,12 +20,13 @@ using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
     public class ResourceManagerClient : ResourceManagerSdkClient
     {
-        public ResourceManagerClient(AzureContext context) : base(context)
+        public ResourceManagerClient(IAzureContext context) : base(context)
         {
         }
 
