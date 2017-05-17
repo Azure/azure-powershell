@@ -253,42 +253,43 @@ namespace Microsoft.Azure.Commands.Compute
                         else
                         {
                             this._Helper.WriteWarning("[WARN] Standard Managed Disks are not supported. Extension will be installed but no disk metrics will be available.");
-                            
+
                         }
-                        continue;
-                    }
-
-                    var accountName = this._Helper.GetStorageAccountFromUri(disk.Vhd.Uri);
-                    if (!accounts.ContainsKey(accountName))
-                    {
-                        var storageKey = this._Helper.GetAzureStorageKeyFromCache(accountName);
-                        accounts.Add(accountName, storageKey);
-                    }
-
-                    this._Helper.WriteHost("[INFO] Adding configuration for data disk {0}", disk.Name);
-                    var caching = disk.Caching;
-                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.lun." + diskNumber, Value = disk.Lun });
-                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.name." + diskNumber, Value = this._Helper.GetDiskName(disk.Vhd.Uri) });
-                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.caching." + diskNumber, Value = caching });
-                    sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.account." + diskNumber, Value = accountName });
-
-                    if (this._Helper.IsPremiumStorageAccount(accountName))
-                    {
-                        this._Helper.WriteVerbose("Data Disk {0} Storage Account is a premium account - adding SLAs for disk", diskNumber.ToString());
-                        var sla = this._Helper.GetDiskSLA(disk);
-                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.type." + diskNumber, Value = AEMExtensionConstants.DISK_TYPE_PREMIUM });
-                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.sla.throughput." + diskNumber, Value = sla.TP });
-                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.sla.iops." + diskNumber, Value = sla.IOPS });
-                        this._Helper.WriteVerbose("Done - Data Disk {0} Storage Account is a premium account - adding SLAs for disk", diskNumber.ToString());
-
                     }
                     else
                     {
-                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.type." + diskNumber, Value = AEMExtensionConstants.DISK_TYPE_STANDARD });
-                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.connminute." + diskNumber, Value = (accountName + ".minute") });
-                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.connhour." + diskNumber, Value = (accountName + ".hour") });
-                    }
 
+                        var accountName = this._Helper.GetStorageAccountFromUri(disk.Vhd.Uri);
+                        if (!accounts.ContainsKey(accountName))
+                        {
+                            var storageKey = this._Helper.GetAzureStorageKeyFromCache(accountName);
+                            accounts.Add(accountName, storageKey);
+                        }
+
+                        this._Helper.WriteHost("[INFO] Adding configuration for data disk {0}", disk.Name);
+                        var caching = disk.Caching;
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.lun." + diskNumber, Value = disk.Lun });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.name." + diskNumber, Value = this._Helper.GetDiskName(disk.Vhd.Uri) });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.caching." + diskNumber, Value = caching });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.account." + diskNumber, Value = accountName });
+
+                        if (this._Helper.IsPremiumStorageAccount(accountName))
+                        {
+                            this._Helper.WriteVerbose("Data Disk {0} Storage Account is a premium account - adding SLAs for disk", diskNumber.ToString());
+                            var sla = this._Helper.GetDiskSLA(disk);
+                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.type." + diskNumber, Value = AEMExtensionConstants.DISK_TYPE_PREMIUM });
+                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.sla.throughput." + diskNumber, Value = sla.TP });
+                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.sla.iops." + diskNumber, Value = sla.IOPS });
+                            this._Helper.WriteVerbose("Done - Data Disk {0} Storage Account is a premium account - adding SLAs for disk", diskNumber.ToString());
+
+                        }
+                        else
+                        {
+                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.type." + diskNumber, Value = AEMExtensionConstants.DISK_TYPE_STANDARD });
+                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.connminute." + diskNumber, Value = (accountName + ".minute") });
+                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.connhour." + diskNumber, Value = (accountName + ".hour") });
+                        }
+                    }
                     diskNumber += 1;
                 }
 
