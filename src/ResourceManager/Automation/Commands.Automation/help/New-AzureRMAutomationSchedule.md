@@ -94,7 +94,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -110,6 +110,82 @@ Parameter Sets: ByDaily
 Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DayOfWeek
+Specifies a list of days of the week for the weekly schedule.
+
+```yaml
+Type: DayOfWeek
+Parameter Sets: ByMonthlyDayOfWeek
+Aliases: 
+Accepted values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DayOfWeekOccurrence
+Specifies the occurrence of the week within the month that the schedule runs.
+psdx_paramvalues
+
+- 1
+- 2
+- 3
+- 4
+- -1
+- First
+- Second
+- Third
+- Fourth
+- LastDay
+
+```yaml
+Type: DayOfWeekOccurrence
+Parameter Sets: ByMonthlyDayOfWeek
+Aliases: 
+Accepted values: First, Second, Third, Fourth, Last
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DaysOfMonth
+Specifies a list of days of the month for the monthly schedule.
+
+```yaml
+Type: DaysOfMonth[]
+Parameter Sets: ByMonthlyDaysOfMonth
+Aliases: 
+Accepted values: One, Two, Three, Four, Five, Six, Seventh, Eighth, Ninth, Tenth, Eleventh, Twelfth, Thirteenth, Fourteenth, Fifteenth, Sixteenth, Seventeenth, Eighteenth, Nineteenth, Twentieth, TwentyFirst, TwentySecond, TwentyThird, TwentyFourth, TwentyFifth, TwentySixth, TwentySeventh, TwentyEighth, TwentyNinth, Thirtieth, ThirtyFirst, LastDay
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DaysOfWeek
+Specifies a list of days of the week for the weekly schedule.
+
+```yaml
+Type: DayOfWeek[]
+Parameter Sets: ByWeekly
+Aliases: 
+Accepted values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -162,6 +238,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MonthInterval
+Specifies an interval, in Months, for the schedule.
+
+```yaml
+Type: Byte
+Parameter Sets: ByMonthlyDaysOfMonth, ByMonthlyDayOfWeek
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies a name for the schedule.
 
@@ -171,7 +262,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -201,7 +292,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -218,96 +309,9 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -WeekInterval
-Specifies an interval, in weeks, for the schedule.
-
-```yaml
-Type: Byte
-Parameter Sets: ByWeekly
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MonthInterval
-Specifies an interval, in Months, for the schedule.
-
-```yaml
-Type: Byte
-Parameter Sets: ByMonthlyDaysOfMonth, ByMonthlyDayOfWeek
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DaysOfWeek
-Specifies a list of days of the week for the weekly schedule.
-
-```yaml
-Type: DayOfWeek[]
-Parameter Sets: ByWeekly
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DayOfWeek
-Specifies a list of days of the week for the weekly schedule.
-
-```yaml
-Type: DayOfWeek
-Parameter Sets: ByMonthlyDayOfWeek
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DayOfWeekOccurrence
-Specifies the occurrence of the week within the month that the schedule runs.
-psdx_paramvalues
-
-- 1
-- 2
-- 3
-- 4
-- -1
-- First
-- Second
-- Third
-- Fourth
-- LastDay
-
-```yaml
-Type: DayOfWeekOccurrence
-Parameter Sets: ByMonthlyDayOfWeek
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -327,15 +331,15 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -DaysOfMonth
-Specifies a list of days of the month for the monthly schedule.
+### -WeekInterval
+Specifies an interval, in weeks, for the schedule.
 
 ```yaml
-Type: DaysOfMonth[]
-Parameter Sets: ByMonthlyDaysOfMonth
+Type: Byte
+Parameter Sets: ByWeekly
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

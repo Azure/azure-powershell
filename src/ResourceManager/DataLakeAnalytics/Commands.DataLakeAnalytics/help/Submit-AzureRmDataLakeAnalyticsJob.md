@@ -67,6 +67,7 @@ The acceptable values for this parameter are:
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Semantic, Full, SingleBox
 
 Required: False
 Position: 4

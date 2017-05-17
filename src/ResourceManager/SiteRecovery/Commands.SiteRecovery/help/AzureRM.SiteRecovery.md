@@ -4,7 +4,6 @@ Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 Download Help Link: {{Please enter FwLink manually}}
 Help Version: {{Please enter version of help manually (X.X.X.X) format}}
 Locale: en-US
-ms.assetid: 899E85FD-2163-4088-B806-CCF165B8FAF7
 ---
 
 # AzureRM.SiteRecovery Module
@@ -184,7 +183,7 @@ Starts the unplanned failover for a Site Recovery protection entity or recovery 
 Stops a Site Recovery job.
 
 ### [Update-AzureRmSiteRecoveryPolicy](Update-AzureRmSiteRecoveryPolicy.md)
-
+{{Manually Enter Update-AzureRmSiteRecoveryPolicy Description Here}}
 
 ### [Update-AzureRmSiteRecoveryProtectionDirection](Update-AzureRmSiteRecoveryProtectionDirection.md)
 Updates the source and target server for the protection of a Site Recovery object.

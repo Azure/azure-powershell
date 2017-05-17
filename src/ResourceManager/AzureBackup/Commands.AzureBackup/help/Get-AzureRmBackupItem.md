@@ -78,7 +78,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -131,6 +131,7 @@ Currently, the only supported value is AzureVM.
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: AzureVM
 
 Required: False
 Position: Named

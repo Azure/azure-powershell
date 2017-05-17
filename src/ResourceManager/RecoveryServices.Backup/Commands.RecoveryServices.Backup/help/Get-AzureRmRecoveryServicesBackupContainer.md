@@ -14,9 +14,8 @@ Gets Backup containers.
 
 ```
 Get-AzureRmRecoveryServicesBackupContainer [-ContainerType] <ContainerType> [[-BackupManagementType] <String>]
- [[-Name] <String>] [-FriendlyName <String>] [[-ResourceGroupName] <String>]
- [[-Status] <ContainerRegistrationStatus>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ [[-Name] <String>] [[-FriendlyName] <String>] [[-ResourceGroupName] <String>]
+ [[-Status] <ContainerRegistrationStatus>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,26 +43,6 @@ The *BackupManagementType* parameter is only required for Windows containers.
 
 ## PARAMETERS
 
-### -ContainerType
-Specifies the backup container type.
-The acceptable values for this parameter are:
-
-- AzureVM 
-- Windows
-- AzureSQL
-
-```yaml
-Type: ContainerType
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -BackupManagementType
 Specifies the backup management type.
 The acceptable values for this parameter are:
@@ -78,9 +57,46 @@ This parameter is used to differentiate Windows machines that are backed up usin
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: AzureVM, MARS, AzureSQL
 
 Required: False
 Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContainerType
+Specifies the backup container type.
+The acceptable values for this parameter are:
+
+- AzureVM 
+- Windows
+- AzureSQL
+
+```yaml
+Type: ContainerType
+Parameter Sets: (All)
+Aliases: 
+Accepted values: AzureVM, Windows, AzureSQL
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FriendlyName
+Specifies the friendly name of the container to get.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -127,63 +143,10 @@ The acceptable values for this parameter are:
 Type: ContainerRegistrationStatus
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Registered
 
 Required: False
 Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FriendlyName
-Specifies the friendly name of the container to get.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -39,21 +39,6 @@ The second command removes the recovery plan in $RecoveryPlan.
 
 ## PARAMETERS
 
-### -RecoveryPlan
-Specifies the recovery plan that this cmdlet removes.
-
-```yaml
-Type: ASRRecoveryPlan
-Parameter Sets: ByObject
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 Specifies the name of the recovery plan that this cmdlet removes.
 
@@ -66,6 +51,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryPlan
+Specifies the recovery plan that this cmdlet removes.
+
+```yaml
+Type: ASRRecoveryPlan
+Parameter Sets: ByObject
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
