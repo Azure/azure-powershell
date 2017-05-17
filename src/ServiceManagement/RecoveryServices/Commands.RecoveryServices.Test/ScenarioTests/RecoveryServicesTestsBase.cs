@@ -20,15 +20,11 @@ using System.Runtime.Serialization;
 using System.Xml;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.RecoveryServices;
 using Microsoft.WindowsAzure.Management.SiteRecovery;
 using Microsoft.WindowsAzure.Management.RecoveryServicesVaultUpgrade;
 using Microsoft.Azure.Test;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests

@@ -1,28 +1,28 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/0347d63a-421a-43a7-836a-5f389c79cd07/providers/Microsoft.Billing/invoices/2017-02-09-117646100066812?api-version=2017-02-27-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDM0N2Q2M2EtNDIxYS00M2E3LTgzNmEtNWYzODljNzljZDA3L3Byb3ZpZGVycy9NaWNyb3NvZnQuQmlsbGluZy9pbnZvaWNlcy8yMDE3LTAyLTA5LTExNzY0NjEwMDA2NjgxMj9hcGktdmVyc2lvbj0yMDE3LTAyLTI3LXByZXZpZXc=",
+      "RequestUri": "/subscriptions/0347d63a-421a-43a7-836a-5f389c79cd07/providers/Microsoft.Billing/invoices/201705-217994100075389?api-version=2017-04-24-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDM0N2Q2M2EtNDIxYS00M2E3LTgzNmEtNWYzODljNzljZDA3L3Byb3ZpZGVycy9NaWNyb3NvZnQuQmlsbGluZy9pbnZvaWNlcy8yMDE3MDUtMjE3OTk0MTAwMDc1Mzg5P2FwaS12ZXJzaW9uPTIwMTctMDQtMjQtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "cb6512b5-0079-4ee4-b096-03a408af12e5"
+          "e301334b-fc34-4c40-bb63-6be581fdfd22"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.1586.0",
+          "FxVersion/4.6.1637.0",
           "OSName/Windows_10_Enterprise",
           "OSVersion/6.3.14393",
-          "Microsoft.Azure.Management.Billing.BillingClient/1.0.0.0"
+          "Microsoft.Azure.Management.Billing.BillingManagementClient/2.0.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0347d63a-421a-43a7-836a-5f389c79cd07/providers/Microsoft.Billing/invoices/2017-02-09-117646100066812\",\r\n  \"type\": \"Microsoft.Billing/invoices\",\r\n  \"name\": \"2017-02-09-117646100066812\",\r\n  \"properties\": {\r\n    \"downloadUrl\": {\r\n      \"expiryTime\": \"2017-02-23T20:26:22Z\",\r\n      \"url\": \"https://billinsstorev2test.blob.core.windows.net/invoices/00610927-9fb1-4ead-bae8-a86995eb88af-2017-02-09-117646100066812.pdf?sv=2014-02-14&sr=b&sig=aLlDBrVAWZDl4TXYrqbRFwD4BLMZx4X%2FMFT09J8h1VI%3D&se=2017-02-23T20%3A26%3A22Z&sp=r\"\r\n    },\r\n    \"invoicePeriodEndDate\": \"2017-02-09\",\r\n    \"invoicePeriodStartDate\": \"2017-01-10\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0347d63a-421a-43a7-836a-5f389c79cd07/providers/Microsoft.Billing/invoices/201705-217994100075389\",\r\n  \"type\": \"Microsoft.Billing/invoices\",\r\n  \"name\": \"201705-217994100075389\",\r\n  \"properties\": {\r\n    \"downloadUrl\": {\r\n      \"expiryTime\": \"2017-04-25T02:21:39Z\",\r\n      \"url\": \"https://billinginsightsstoretest.blob.core.windows.net/invoices/0347d63a-421a-43a7-836a-5f389c79cd07-201705-217994100075389.pdf?sv=2014-02-14&sr=b&sig=UOFsACpS5v0X2S%2F4f7aRu0%2FsLlGGfkkmmYuMlMoUc5Q%3D&se=2017-04-25T02%3A21%3A39Z&sp=r\"\r\n    },\r\n    \"invoicePeriodEndDate\": \"2017-04-09\",\r\n    \"invoicePeriodStartDate\": \"2017-03-10\",\r\n    \"billingPeriodIds\": [\r\n      \"/subscriptions/0347d63a-421a-43a7-836a-5f389c79cd07/providers/Microsoft.Billing/billingPeriods/201705-1\"\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "576"
+          "699"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -37,22 +37,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14998"
+          "14991"
         ],
         "x-ms-request-id": [
-          "eef19481-e37f-43ec-b171-562c135822af"
+          "1a5a5f91-d784-483e-aa62-e4b71061d9f7"
         ],
         "x-ms-correlation-request-id": [
-          "eef19481-e37f-43ec-b171-562c135822af"
+          "1a5a5f91-d784-483e-aa62-e4b71061d9f7"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20170223T192623Z:eef19481-e37f-43ec-b171-562c135822af"
+          "CENTRALUS:20170425T012139Z:1a5a5f91-d784-483e-aa62-e4b71061d9f7"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 23 Feb 2017 19:26:23 GMT"
+          "Tue, 25 Apr 2017 01:21:39 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"

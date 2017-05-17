@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Properties;
 using Microsoft.Azure.Management.RecoveryServices.Models;
@@ -138,7 +139,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void GetVaultSettingsFile()
         {
-            AzureSubscription subscription = DefaultProfile.Context.Subscription;
+            IAzureSubscription subscription = DefaultProfile.DefaultContext.Subscription;
 
             // Generate certificate
             X509Certificate2 cert = CertUtils.CreateSelfSignedCertificate(VaultCertificateExpiryInHoursForHRM, subscription.Id.ToString(), this.Vault.Name);

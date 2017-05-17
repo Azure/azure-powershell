@@ -15,6 +15,7 @@ using Microsoft.WindowsAzure.Management.Storage;
 using Moq;
 using Hyak.Common;
 using Microsoft.Azure;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Test.MediaServices
 {
@@ -272,7 +273,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.MediaServices
         {
             AzureSubscription windowsAzureSubscription = new AzureSubscription
             {
-                Id = new Guid(SubscriptionId),
+                Id = SubscriptionId,
             };
             return windowsAzureSubscription;
         }

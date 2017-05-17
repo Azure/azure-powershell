@@ -14,6 +14,8 @@ Configures a virtual network gateway connection.
 
 ```
 Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection <PSVirtualNetworkGatewayConnection>
+ [-EnableBgp <Boolean>] [-UsePolicyBasedTrafficSelectors <Boolean>]
+ [-IpsecPolicies <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy]>]
  [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -29,11 +31,50 @@ The **Set-AzureRmVirtualNetworkGatewayConnection** cmdlet configures a virtual n
 
 ## PARAMETERS
 
+### -EnableBgp
+Whether to use a BGP session over a S2S VPN tunnel```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Force
 Forces the command to run without asking for user confirmation.
 
 ```yaml
 Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IpsecPolicies
+A list of IPSec policies.```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -UsePolicyBasedTrafficSelectors
+Whether to use policy-based traffic selectors for a S2S connection```yaml
+Type: Boolean
 Parameter Sets: (All)
 Aliases: 
 

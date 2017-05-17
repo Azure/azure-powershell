@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 3.0.0
 * Add support for catalog package get and list
 * Add support for listing the following catalog items from deeper ancestors:
   * Table
