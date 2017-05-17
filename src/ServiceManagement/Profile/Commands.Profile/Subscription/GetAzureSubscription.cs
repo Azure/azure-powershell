@@ -24,6 +24,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Profile;
 using Microsoft.WindowsAzure.Management;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
 {
@@ -65,7 +66,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             switch (ParameterSetName)
             {
                 case "ByName":
-                    IEnumerable<AzureSubscription> subscriptions = new AzureSubscription[0];
+                    IEnumerable<IAzureSubscription> subscriptions = new AzureSubscription[0];
                     if (Profile.Context != null && Profile.Context.Environment != null)
                     {
                         subscriptions = ProfileClient.RefreshSubscriptions(Profile.Context.Environment)
@@ -126,18 +127,18 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             }
         }
 
-        private void WriteSubscriptions(params AzureSubscription[] subscriptions)
+        private void WriteSubscriptions(params IAzureSubscription[] subscriptions)
         {
-            WriteSubscriptions((IEnumerable<AzureSubscription>)subscriptions);
+            WriteSubscriptions((IEnumerable<IAzureSubscription>)subscriptions);
         }
 
-        private void WriteSubscriptions(IEnumerable<AzureSubscription> subscriptions)
+        private void WriteSubscriptions(IEnumerable<IAzureSubscription> subscriptions)
         {
             IEnumerable<PSAzureSubscription> subscriptionOutput;
 
             if (ExtendedDetails.IsPresent)
             {
-                subscriptionOutput = subscriptions.Select(s => ConstructPsAzureSubscriptionExtended(s, AzureSession.ClientFactory));
+                subscriptionOutput = subscriptions.Select(s => ConstructPsAzureSubscriptionExtended(s, AzureSession.Instance.ClientFactory));
             }
             else
             {
@@ -147,19 +148,19 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             WriteObject(subscriptionOutput, true);
         }
 
-        private PSAzureSubscriptionExtended ConstructPsAzureSubscriptionExtended(AzureSubscription subscription, IClientFactory clientFactory)
+        private PSAzureSubscriptionExtended ConstructPsAzureSubscriptionExtended(IAzureSubscription subscription, IClientFactory clientFactory)
         {
             using (var client = clientFactory.CreateClient<ManagementClient>(Profile, subscription, AzureEnvironment.Endpoint.ServiceManagement))
             {
                 var response = client.Subscriptions.Get();
-                var environment = ProfileClient.GetEnvironmentOrDefault(subscription.Environment);
-                var account = ProfileClient.Profile.Accounts[subscription.Account];
+                var environment = ProfileClient.GetEnvironmentOrDefault(subscription.GetEnvironment());
+                var account = ProfileClient.Profile.AccountTable[subscription.GetAccount()];
                 bool isCert = account.Type == AzureAccount.AccountType.Certificate;
                 var psAzureSubscription = new PSAzureSubscription(subscription, ProfileClient.Profile);
                 PSAzureSubscriptionExtended result = new PSAzureSubscriptionExtended(psAzureSubscription)
                 {
                     AccountAdminLiveEmailId = response.AccountAdminLiveEmailId,
-                    ActiveDirectoryUserId = subscription.Account,
+                    ActiveDirectoryUserId = subscription.GetAccount(),
                     CurrentCoreCount = response.CurrentCoreCount,
                     CurrentHostedServices = response.CurrentHostedServices,
                     CurrentDnsServers = response.CurrentDnsServers,
@@ -179,7 +180,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                     ResourceManagerEndpoint = environment.GetEndpoint(AzureEnvironment.Endpoint.ResourceManager),
                     IsDefault = subscription.GetProperty(AzureSubscription.Property.Default) != null,
                     Account = account,
-                    Certificate = isCert ? AzureSession.DataStore.GetCertificate(subscription.Account) : null,
+                    Certificate = isCert ? AzureSession.Instance.DataStore.GetCertificate(subscription.GetAccount()) : null,
                     CurrentStorageAccountName = subscription.GetProperty(AzureSubscription.Property.StorageAccount)
                 };
 

@@ -52,8 +52,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
             {
                 Id = authRuleResource.Id;
                 Name = authRuleResource.Name;
-                Type = authRuleResource.Type;
-                Location = authRuleResource.Location;               
+                Type = authRuleResource.Type;             
                 Rights = authRuleResource.Rights.ToList();
             }
         }

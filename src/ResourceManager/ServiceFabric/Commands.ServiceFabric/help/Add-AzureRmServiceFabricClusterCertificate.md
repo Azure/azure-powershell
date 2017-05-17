@@ -7,7 +7,7 @@ schema: 2.0.0
 # Add-AzureRmServiceFabricClusterCertificate
 
 ## SYNOPSIS
-Add a secondary cluster certificate to the cluster  
+Add a secondary cluster certificate to the cluster.
 
 ## SYNTAX
 
@@ -33,8 +33,7 @@ Add-AzureRmServiceFabricClusterCertificate [-ResourceGroupName] <String> [-Name]
 ```
 
 ## DESCRIPTION
-User **Add-AzureRmServiceFabricClusterCertificate** to add a secondary cluster certificate, either from existing Azure key vault 
-or creating an new Azure key vault using existing certificate provided or from an new self signed certificate created 
+Use **Add-AzureRmServiceFabricClusterCertificate** to add a secondary cluster certificate, either from an existing Azure key vault or creating a new Azure key vault using an existing certificate provided or from a new self-signed certificate created. 
 It will override the secondary cluster if there is any.
 
 ## EXAMPLES
@@ -45,7 +44,7 @@ Add-AzureRmServiceFabricClusterCertificate -ResourceGroupName 'Group1' -Name 'Co
 -SecretIdentifier 'https://contoso03vault.vault.azure.net/secrets/contoso03vaultrg/7f7de9131c034172b9df37ccc549524f'
 ```
 
-This command will add a certificate in the existing Azure key vault as secondary cluster certificate
+This command will add a certificate in the existing Azure key vault as a secondary cluster certificate.
 
 ### Example 2
 ```
@@ -54,12 +53,12 @@ PS c:\> add-AzureRmServiceFabricClusterCertificate -ResourceGroupName 'Group2' -
 -CertificateOutputFolder 'c:\test' -CertificatePassword $pwd
 ```
 
-This command will create a self signed certificate in Azure key vault, and upgrade the cluster to use it as secondary cluster certificate
+This command will create a self-signed certificate in the Azure key vault and upgrade the cluster to use it as a secondary cluster certificate.
 
 ## PARAMETERS
 
 ### -CertificateFile
-The existing certificate file path
+The existing certificate file path.
 
 ```yaml
 Type: String
@@ -74,7 +73,7 @@ Accept wildcard characters: False
 ```
 
 ### -CertificateOutputFolder
-The folder of the new certificate to be created
+The folder of the new certificate to be created.
 
 ```yaml
 Type: String
@@ -89,7 +88,7 @@ Accept wildcard characters: False
 ```
 
 ### -CertificatePassword
-The password of the certificate file
+The password of the certificate file.
 
 ```yaml
 Type: SecureString
@@ -104,7 +103,7 @@ Accept wildcard characters: False
 ```
 
 ### -CertificateSubjectName
-The Dns name of the certificate to be created
+The Dns name of the certificate to be created.
 
 ```yaml
 Type: String
@@ -118,23 +117,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -KeyVaultName
-Azure key vault name
+Azure key vault name.
 
 ```yaml
 Type: String
@@ -149,7 +133,7 @@ Accept wildcard characters: False
 ```
 
 ### -KeyVaultResouceGroupName
-Azure key vault resource group name
+Azure key vault resource group name.
 
 ```yaml
 Type: String
@@ -164,7 +148,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specify the name of the cluster
+Specify the name of the cluster.
 
 ```yaml
 Type: String
@@ -194,7 +178,7 @@ Accept wildcard characters: False
 ```
 
 ### -SecretIdentifier
-The existing Azure key vault secret Url
+The existing Azure key vault secret Url.
 
 ```yaml
 Type: String
@@ -205,6 +189,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -239,5 +238,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Remove-AzureRmServiceFabricClusterCertificate](./Remove-AzureRmServiceFabricClusterCertificate.md)
+
 [New-AzureRmServiceFabricCluster](./New-AzureRmServiceFabricCluster.md)
+
 [Add-AzureRmServiceFabricApplicationCertificate](./Add-AzureRmServiceFabricApplicationCertificate.md)

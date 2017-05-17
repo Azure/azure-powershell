@@ -124,7 +124,7 @@
     <value>Can't change durability from {0} {1}</value>
   </data>
   <data name="CannotDeletePrimayNodeType" xml:space="preserve">
-    <value>Can not delete primay node type {0}</value>
+    <value>Can't delete primary node type {0}</value>
   </data>
   <data name="CannotFindCertificateInCluster" xml:space="preserve">
     <value>Can't find the certificate {0} in the cluster</value>
@@ -145,22 +145,22 @@
     <value>Can't find the thumbprint {0} in the cluster</value>
   </data>
   <data name="CannotFindVault" xml:space="preserve">
-    <value>Can not find key vault {0}</value>
+    <value>Can't find key vault {0}</value>
   </data>
   <data name="CannotGetReliabilityLevel" xml:space="preserve">
     <value>Can't get reliability level</value>
   </data>
   <data name="CannotParseReliabilityLevel" xml:space="preserve">
-    <value>Can not parse reliability level {0}</value>
+    <value>Can't parse reliability level {0}</value>
   </data>
   <data name="CannotUpdateBronzeNodeType" xml:space="preserve">
-    <value>Can't not update node type which durability is bronze,please update it to Silver or above first</value>
+    <value>Can't update node type which durability is bronze,please update it to Silver or above first</value>
   </data>
   <data name="CannotUpdateNodeCountLessThenReliabilityLevel" xml:space="preserve">
     <value>Can't update nodes count {0} to less than the reliability level {1}</value>
   </data>
   <data name="CannotUpdateSkuWithBronzeDurability" xml:space="preserve">
-    <value>Can not update Sku while durability is Bronze , please update durability to Silver or above first</value>
+    <value>Can't update Sku while durability is Bronze , please update durability to Silver or above first</value>
   </data>
   <data name="CheckingDeploymentStatus" xml:space="preserve">
     <value>Checking deployment status in {0} seconds</value>
@@ -199,16 +199,19 @@
     <value>Failed to create the storage account</value>
   </data>
   <data name="FailedToFindPrimaryNodeTypeError" xml:space="preserve">
-    <value>Did not find the primay node type in cluster {0}</value>
+    <value>Did not find the primary node type in cluster {0}</value>
   </data>
   <data name="FailedToParseParameterFile" xml:space="preserve">
-    <value>Failed to parse Parameter file</value>
+    <value>Failed to parse parameter file</value>
   </data>
   <data name="FailedToParseTemplateFile" xml:space="preserve">
     <value>Failed to parse template file</value>
   </data>
   <data name="FileNotExist" xml:space="preserve">
     <value>File {0} doesn't exist</value>
+  </data>
+  <data name="InvalidCertificateInformationInParameterFile" xml:space="preserve">
+    <value>The primary certificate parameters names in the parameters file should be specified with 'sourceVaultValue','certificateThumbprint','certificateUrlValue', if the secondary certificate parameters are specified in the parameters file, the parameters names should be specified with 'secSourceVaultValue','secCertificateThumbprint','secCertificateUrlValue'.</value>
   </data>
   <data name="InvalidDirectory" xml:space="preserve">
     <value>Directory {0} doesn't exist</value>
@@ -217,7 +220,7 @@
     <value>File name {0} contains invalid characters</value>
   </data>
   <data name="InvalidInput" xml:space="preserve">
-    <value>Invaild input</value>
+    <value>Invalid input</value>
   </data>
   <data name="InvalidPassword" xml:space="preserve">
     <value>The supplied password must be between 12-123 characters long and must satisfy at least 3 of password complexity requirements from the following: \r\n1) Contains an uppercase character\r\n2) Contains a lowercase character\r\n3) Contains a numeric digit\r\n4) Contains a special character</value>
@@ -232,13 +235,13 @@
     <value>Invalid existing VMSS configuration</value>
   </data>
   <data name="KeyVaultAndResourceGroupNotSameRegion" xml:space="preserve">
-    <value>The Key vault and the resource group are not in same region</value>
+    <value>The key vault and the resource group are not in same region</value>
   </data>
   <data name="NewExistingCluster" xml:space="preserve">
     <value>The cluster {0} exists , please remove the resource group, and try again.</value>
   </data>
   <data name="NoCertificateOperationReturned" xml:space="preserve">
-    <value>No CertificateOperation returned when creating self signed certificate in Azure key vault</value>
+    <value>No certificateOperation returned when creating self signed certificate in Azure key vault</value>
   </data>
   <data name="NodeTypeAlreadyExist" xml:space="preserve">
     <value>Node type {0} already exists in the cluster</value>
@@ -262,7 +265,7 @@
     <value>The capacity of the node type is null</value>
   </data>
   <data name="UseAutoToIncreaseNodesCount" xml:space="preserve">
-    <value>Primay node count is {0} which is less than the node count {1} that target reliability level requires, Please use 'AutoAddNodes' switch to automatically increase nodes count</value>
+    <value>Primary node count is {0} which is less than the node count {1} that target reliability level requires, Please use 'AutoAddNode' switch to automatically increase nodes count</value>
   </data>
   <data name="VaultCreatedWithOutAccessPolicy" xml:space="preserve">
     <value>Access policy is not set. No user or application have access permission to use this vault. Please use Set-AzureRmKeyVaultAccessPolicy to set access policies.</value>

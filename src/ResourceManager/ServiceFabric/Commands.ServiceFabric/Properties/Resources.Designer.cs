@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not delete primay node type {0}.
+        ///   Looks up a localized string similar to Can&apos;t delete primary node type {0}.
         /// </summary>
         internal static string CannotDeletePrimayNodeType {
             get {
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not find key vault {0}.
+        ///   Looks up a localized string similar to Can&apos;t find key vault {0}.
         /// </summary>
         internal static string CannotFindVault {
             get {
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not parse reliability level {0}.
+        ///   Looks up a localized string similar to Can&apos;t parse reliability level {0}.
         /// </summary>
         internal static string CannotParseReliabilityLevel {
             get {
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can&apos;t not update node type which durability is bronze,please update it to Silver or above first.
+        ///   Looks up a localized string similar to Can&apos;t update node type which durability is bronze,please update it to Silver or above first.
         /// </summary>
         internal static string CannotUpdateBronzeNodeType {
             get {
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not update Sku while durability is Bronze , please update durability to Silver or above first.
+        ///   Looks up a localized string similar to Can&apos;t update Sku while durability is Bronze , please update durability to Silver or above first.
         /// </summary>
         internal static string CannotUpdateSkuWithBronzeDurability {
             get {
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Did not find the primay node type in cluster {0}.
+        ///   Looks up a localized string similar to Did not find the primary node type in cluster {0}.
         /// </summary>
         internal static string FailedToFindPrimaryNodeTypeError {
             get {
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to parse Parameter file.
+        ///   Looks up a localized string similar to Failed to parse parameter file.
         /// </summary>
         internal static string FailedToParseParameterFile {
             get {
@@ -340,6 +340,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The primary certificate parameters names in the parameters file should be specified with &apos;sourceVaultValue&apos;,&apos;certificateThumbprint&apos;,&apos;certificateUrlValue&apos;, if the secondary certificate parameters are specified in the parameters file, the parameters names should be specified with &apos;secSourceVaultValue&apos;,&apos;secCertificateThumbprint&apos;,&apos;secCertificateUrlValue&apos;..
+        /// </summary>
+        internal static string InvalidCertificateInformationInParameterFile {
+            get {
+                return ResourceManager.GetString("InvalidCertificateInformationInParameterFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Directory {0} doesn&apos;t exist.
         /// </summary>
         internal static string InvalidDirectory {
@@ -358,7 +367,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invaild input.
+        ///   Looks up a localized string similar to Invalid input.
         /// </summary>
         internal static string InvalidInput {
             get {
@@ -403,7 +412,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Key vault and the resource group are not in same region.
+        ///   Looks up a localized string similar to The key vault and the resource group are not in same region.
         /// </summary>
         internal static string KeyVaultAndResourceGroupNotSameRegion {
             get {
@@ -421,7 +430,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No CertificateOperation returned when creating self signed certificate in Azure key vault.
+        ///   Looks up a localized string similar to No certificateOperation returned when creating self signed certificate in Azure key vault.
         /// </summary>
         internal static string NoCertificateOperationReturned {
             get {
@@ -493,7 +502,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Primay node count is {0} which is less than the node count {1} that target reliability level requires, Please use &apos;AutoAddNodes&apos; switch to automatically increase nodes count.
+        ///   Looks up a localized string similar to Primary node count is {0} which is less than the node count {1} that target reliability level requires, Please use &apos;AutoAddNode&apos; switch to automatically increase nodes count.
         /// </summary>
         internal static string UseAutoToIncreaseNodesCount {
             get {

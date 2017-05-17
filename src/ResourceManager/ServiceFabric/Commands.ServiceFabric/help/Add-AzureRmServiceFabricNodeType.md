@@ -7,7 +7,7 @@ schema: 2.0.0
 # Add-AzureRmServiceFabricNodeType
 
 ## SYNOPSIS
-Add a new node type to the existing cluster
+Add a new node type to the existing cluster.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Add-AzureRmServiceFabricNodeType [-ResourceGroupName] <String> [-Name] <String> 
 ```
 
 ## DESCRIPTION
-Add a new node type to a existing cluster 
+Add a new node type to a existing cluster.
 
 ## EXAMPLES
 
@@ -28,7 +28,7 @@ PS c:\> $pwd = ConvertTo-SecureString -String 'Password$123456' -AsPlainText -Fo
 PS C:\> Add-AzureRmServiceFabricNodeType -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NodeType 'n2' -Capacity 5 -VmUserName 'adminName' -VmPassword $pwd
 ```
 
-This command will add a new NodeType 'n2' with capacity with 5, and the vm admin or login user name is 'adminName'.
+This command will add a new NodeType 'n2' with capacity of 5, and the vm admin name is 'adminName'.
 
 ## PARAMETERS
 
@@ -47,23 +47,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
-Specify the name of the cluster
+Specify the name of the cluster.
 
 ```yaml
 Type: String
@@ -78,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -NodeType
-The node type name
+The node type name.
 
 ```yaml
 Type: String
@@ -108,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tier
-Tier
+Tier.
 
 ```yaml
 Type: String
@@ -123,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -VmPassword
-The password of login to the Vm
+The password of login to the Vm.
 
 ```yaml
 Type: SecureString
@@ -138,7 +123,9 @@ Accept wildcard characters: False
 ```
 
 ### -VmSku
-The sku name```yaml
+The sku name.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -151,7 +138,7 @@ Accept wildcard characters: False
 ```
 
 ### -VmUserName
-The user name for login to Vm
+The user name for login to Vm.
 
 ```yaml
 Type: String
@@ -162,6 +149,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -14,6 +14,7 @@
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
 {
+    using Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.Common.Authentication.Models;
     using WindowsAzure.Commands.Common;
@@ -27,7 +28,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
     {
         private NetworkClient client;
 
-        protected AzureSubscription CurrentSubscription
+        protected IAzureSubscription CurrentSubscription
         {
             get { return Profile.Context.Subscription; }
         }

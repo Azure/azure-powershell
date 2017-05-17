@@ -16,6 +16,7 @@ using Hyak.Common;
 using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.WindowsAzure.Commands.Common;
 using Newtonsoft.Json.Linq;
 using System;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
