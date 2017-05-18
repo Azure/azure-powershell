@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.Management.IotHub
 {
     using System;
+    using System.Collections.Generic;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Management.IotHub.Common;
     using Microsoft.Azure.Commands.Management.IotHub.Models;
@@ -30,6 +31,9 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         const string UpdateFileUploadPropertiesParameterSet = "UpdateFileUploadProperties";
         const string UpdateCloudToDevicePropertiesParameterSet = "UpdateCloudToDeviceProperties";
         const string UpdateOperationsMonitoringPropertiesParameterSet = "UpdateOperationsMonitoringProperties";
+        const string UpdateRoutingPropertiesParameterSet = "UpdateRoutingProperties";        
+        const string UpdateRoutePropertiesParameterSet = "UpdateRouteProperties";
+        const string UpdateFallbackRoutePropertyParameterSet = "UpdateFallbackRouteProperty";
 
         [Parameter(
             Mandatory = true,
@@ -97,7 +101,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [Parameter(
             ParameterSetName = UpdateFileUploadPropertiesParameterSet,
             Mandatory = false,
-            HelpMessage = "fileUploadNotificationMaxDeliveryCount")]
+            HelpMessage = "FileUploadNotificationMaxDeliveryCount")]
         [ValidateNotNullOrEmpty]
         public int? FileUploadNotificationMaxDeliveryCount { get; set; }
 
@@ -121,6 +125,27 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             HelpMessage = "OperationsMonitoringProperties")]
         [ValidateNotNullOrEmpty]
         public PSOperationsMonitoringProperties OperationsMonitoringProperties { get; set; }
+
+        [Parameter(
+            ParameterSetName = UpdateRoutingPropertiesParameterSet,
+            Mandatory = false,
+            HelpMessage = "RoutingProperties")]
+        [ValidateNotNullOrEmpty]
+        public PSRoutingProperties RoutingProperties { get; set; }
+
+        [Parameter(
+            ParameterSetName = UpdateRoutePropertiesParameterSet,
+            Mandatory = false,
+            HelpMessage = "Routes")]
+        [ValidateNotNullOrEmpty]
+        public List<PSRouteProperties> Routes { get; set; }
+
+        [Parameter(
+            ParameterSetName = UpdateFallbackRoutePropertyParameterSet,
+            Mandatory = false,
+            HelpMessage = "Fallback Routes")]
+        [ValidateNotNullOrEmpty]
+        public PSFallbackRouteProperties FallbackRoute { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -191,6 +216,34 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                         }
 
                         break;
+                    case UpdateRoutingPropertiesParameterSet:
+
+                        if (this.RoutingProperties != null)
+                        {
+                            iotHubDescription.Properties.Routing = IotHubUtils.ToRoutingProperties(this.RoutingProperties);
+                        }
+
+                        break;
+
+                    case UpdateRoutePropertiesParameterSet:
+
+                        if (this.Routes != null)
+                        {
+                            iotHubDescription.Properties.Routing.Routes = IotHubUtils.ToRouteProperties(this.Routes);
+                        }
+
+                        break;
+
+                    case UpdateFallbackRoutePropertyParameterSet:
+
+                        if (this.FallbackRoute != null)
+                        {
+                            iotHubDescription.Properties.Routing.FallbackRoute = IotHubUtils.ToFallbackRouteProperty(this.FallbackRoute);
+                        }
+
+                        break;
+
+
                     default:
                         throw new ArgumentException("BadParameterSetName");
                 }

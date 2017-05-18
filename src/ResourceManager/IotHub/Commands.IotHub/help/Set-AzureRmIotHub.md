@@ -13,34 +13,53 @@ Updates the properties of an IotHub.
 
 ### UpdateSku (Default)
 ```
-Set-AzureRmIotHub -ResourceGroupName <String> -Name <String> -SkuName <PSIotHubSku> [-Units <Int64>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> -SkuName <PSIotHubSku> [-Units <Int64>]
+ [-WhatIf] [-Confirm]
 ```
 
 ### UpdateEventHubEndpointProperties
 ```
-Set-AzureRmIotHub -ResourceGroupName <String> -Name <String> -EventHubRetentionTimeInDays <Int64> [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> -EventHubRetentionTimeInDays <Int64> [-WhatIf]
+ [-Confirm]
 ```
 
 ### UpdateFileUploadProperties
 ```
-Set-AzureRmIotHub -ResourceGroupName <String> -Name <String> [-FileUploadStorageConnectionString <String>]
+Set-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> [-FileUploadStorageConnectionString <String>]
  [-FileUploadContainerName <String>] [-FileUploadSasUriTtl <TimeSpan>] [-FileUploadNotificationTtl <TimeSpan>]
  [-FileUploadNotificationMaxDeliveryCount <Int32>] -EnableFileUploadNotifications <Boolean> [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Confirm]
 ```
 
 ### UpdateCloudToDeviceProperties
 ```
-Set-AzureRmIotHub -ResourceGroupName <String> -Name <String> -CloudToDevice <PSCloudToDeviceProperties>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> -CloudToDevice <PSCloudToDeviceProperties>
+ [-WhatIf] [-Confirm]
 ```
 
 ### UpdateOperationsMonitoringProperties
 ```
-Set-AzureRmIotHub -ResourceGroupName <String> -Name <String>
- -OperationsMonitoringProperties <PSOperationsMonitoringProperties> [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String>
+ -OperationsMonitoringProperties <PSOperationsMonitoringProperties> [-WhatIf] [-Confirm]
+```
+
+### UpdateRoutingProperties
+```
+Set-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> [-RoutingProperties <PSRoutingProperties>]
+ [-WhatIf] [-Confirm]
+```
+
+### UpdateRouteProperties
+```
+Set-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String>
+ [-Routes <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteProperties]>]
+ [-WhatIf] [-Confirm]
+```
+
+### UpdateFallbackRouteProperty
+```
+Set-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> [-FallbackRoute <PSFallbackRouteProperties>]
+ [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
@@ -65,7 +84,7 @@ Update the retention time in days to 4 for both the telemetry and operationsmoni
 ## PARAMETERS
 
 ### -CloudToDevice
-The properties for the cloud to device command queue.
+CloudToDevice
 
 ```yaml
 Type: PSCloudToDeviceProperties
@@ -80,7 +99,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableFileUploadNotifications
-Flag that specifies whether notifications should be enabled for file upload.
+EnableFileUploadNotifications
 
 ```yaml
 Type: Boolean
@@ -95,7 +114,7 @@ Accept wildcard characters: False
 ```
 
 ### -EventHubRetentionTimeInDays
-Retention time in days.
+EventHubRetentionTimeInDays
 
 ```yaml
 Type: Int64
@@ -109,8 +128,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FallbackRoute
+Fallback Routes
+
+```yaml
+Type: PSFallbackRouteProperties
+Parameter Sets: UpdateFallbackRouteProperty
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -FileUploadContainerName
-The name of the container to upload the files to.
+FileUploadContainerName
 
 ```yaml
 Type: String
@@ -125,7 +159,7 @@ Accept wildcard characters: False
 ```
 
 ### -FileUploadNotificationMaxDeliveryCount
-The maximum delivery count for file upload notifications. 
+fileUploadNotificationMaxDeliveryCount
 
 ```yaml
 Type: Int32
@@ -140,7 +174,7 @@ Accept wildcard characters: False
 ```
 
 ### -FileUploadNotificationTtl
-Time to live value for the messages in the file upload notification queue.
+FileUploadNotificationTtl
 
 ```yaml
 Type: TimeSpan
@@ -155,7 +189,7 @@ Accept wildcard characters: False
 ```
 
 ### -FileUploadSasUriTtl
-Time to live for the for the SAS Uri thats generated for file upload.
+FileUploadSasUriTtl
 
 ```yaml
 Type: TimeSpan
@@ -170,7 +204,7 @@ Accept wildcard characters: False
 ```
 
 ### -FileUploadStorageConnectionString
-The storage connection string to upload the files to.
+FileUploadStorageConnectionString
 
 ```yaml
 Type: String
@@ -185,7 +219,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the IoT hub.
+Name
 
 ```yaml
 Type: String
@@ -193,14 +227,14 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -OperationsMonitoringProperties
-The properties related to operations monitoring.
+OperationsMonitoringProperties
 
 ```yaml
 Type: PSOperationsMonitoringProperties
@@ -215,7 +249,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of hte resource group.
+Resource Group Name
 
 ```yaml
 Type: String
@@ -223,14 +257,44 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Routes
+Routes
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteProperties]
+Parameter Sets: UpdateRouteProperties
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RoutingProperties
+RoutingProperties
+
+```yaml
+Type: PSRoutingProperties
+Parameter Sets: UpdateRoutingProperties
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SkuName
-Name of the Sku.
+SkuName
 
 ```yaml
 Type: PSIotHubSku
@@ -246,7 +310,7 @@ Accept wildcard characters: False
 ```
 
 ### -Units
-The number of units.
+Units
 
 ```yaml
 Type: Int64
@@ -270,13 +334,14 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter
@@ -285,19 +350,15 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
-
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties
-Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties
+Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties
 
 ## OUTPUTS
 

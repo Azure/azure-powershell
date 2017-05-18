@@ -12,11 +12,12 @@ Gets an IotHub Key.
 ## SYNTAX
 
 ```
-Get-AzureRmIotHubKey [-ResourceGroupName] <String> [-Name] <String> [[-KeyName] <String>] [<CommonParameters>]
+Get-AzureRmIotHubKey [-ResourceGroupName] <String> [-Name] <String> [[-KeyName] <String>]
 ```
 
 ## DESCRIPTION
-Gets an IotHub Key. You can either list all Keys or filter the list by a specific Key Name.
+Gets an IotHub Key.
+You can either list all Keys or filter the list by a specific Key Name.
 
 ## EXAMPLES
 
@@ -37,7 +38,7 @@ Gets the information for a key named "iothubowner" for the IotHub named "myiothu
 ## PARAMETERS
 
 ### -KeyName
-Name of the key.
+Name
 
 ```yaml
 Type: String
@@ -52,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of hte IoT hub.
+Name
 
 ```yaml
 Type: String
@@ -67,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the resource group.
+Resource Group Name
 
 ```yaml
 Type: String
@@ -81,9 +82,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
-
 ## INPUTS
 
 ### System.String
@@ -91,7 +89,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule
-System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.Commands.IotHub, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+System.Collections.Generic.List\`1\[\[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.Commands.IotHub, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null\]\]
 
 ## NOTES
 

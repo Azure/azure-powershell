@@ -12,11 +12,12 @@ Gets the RegistryStatistics for an IotHub.
 ## SYNTAX
 
 ```
-Get-AzureRmIotHubRegistryStatistic [-ResourceGroupName] <String> [-Name] <String> [<CommonParameters>]
+Get-AzureRmIotHubRegistryStatistic [-ResourceGroupName] <String> [-Name] <String>
 ```
 
 ## DESCRIPTION
-Gets the RegistryStatistics for an IotHub. This provides information about the number of total, enabled and disabled devices in an IotHub.
+Gets the RegistryStatistics for an IotHub.
+This provides information about the number of total, enabled and disabled devices in an IotHub.
 
 ## EXAMPLES
 
@@ -30,7 +31,7 @@ Gets the RegistryStatictics for the IotHub named "myiothub"
 ## PARAMETERS
 
 ### -Name
-Name of the IoT hub.
+Name
 
 ```yaml
 Type: String
@@ -45,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the resource group.
+Resource Group Name
 
 ```yaml
 Type: String
@@ -58,9 +59,6 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
-
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
