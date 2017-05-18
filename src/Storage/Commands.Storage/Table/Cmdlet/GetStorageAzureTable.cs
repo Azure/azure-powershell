@@ -45,6 +45,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = NameParameterSet)]
+        [SupportsWildcards()]
         public string Name { get; set; }
 
         [Parameter(HelpMessage = "Table Prefix",

@@ -15,7 +15,7 @@ Modifies metrics properties for the Azure Storage service.
 ```
 Set-AzureStorageServiceMetricsProperty [-ServiceType] <StorageServiceType> [-MetricsType] <ServiceMetricsType>
  [-Version <Double>] [-RetentionDays <Int32>] [-MetricsLevel <MetricsLevel>] [-PassThru]
- [-Context <AzureStorageContext>] [<CommonParameters>]
+ [-Context <IStorageContext>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,7 +39,7 @@ Specifies an Azure storage context.
 To obtain a storage context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: AzureStorageContext
+Type: IStorageContext
 Parameter Sets: (All)
 Aliases: 
 

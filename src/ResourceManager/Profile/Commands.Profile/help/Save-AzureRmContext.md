@@ -13,6 +13,7 @@ Saves the current authentication information for use in other PowerShell session
 
 ```
 Save-AzureRmContext [[-Profile] <AzureRMProfile>] [-Path] <String> [-Force] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -114,15 +115,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Common.Authentication.Models.AzureRMProfile
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Profile.Models.PSAzureProfile
-
 
 ## NOTES
 

@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 3.0.0
+
 ## Version 2.8.0
 * Support for the Geographic traffic routing method
     - New value 'Geographic' for the TrafficRoutingMethod parameter of New-AzureRmTrafficManagerProfile

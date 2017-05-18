@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.DevTestLabs;
@@ -56,7 +57,7 @@ namespace Microsoft.Azure.Commands.DevTestLabs
             {
                 if (_dataServiceClient == null)
                 {
-                    _dataServiceClient = AzureSession.ClientFactory.CreateArmClient<DevTestLabsClient>(DefaultContext,
+                    _dataServiceClient = AzureSession.Instance.ClientFactory.CreateArmClient<DevTestLabsClient>(DefaultContext,
                         AzureEnvironment.Endpoint.ResourceManager);
 
                     WriteInformation(new InformationRecord($"Resource Group = {ResourceGroupName}", nameof(DevTestLabsCmdletBase)));

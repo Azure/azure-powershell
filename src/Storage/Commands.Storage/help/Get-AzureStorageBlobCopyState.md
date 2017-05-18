@@ -15,13 +15,13 @@ Gets the copy status of an Azure Storage blob.
 ### NamePipeline (Default)
 ```
 Get-AzureStorageBlobCopyState [-Blob] <String> [-Container] <String> [-WaitForComplete]
- [-Context <AzureStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ### BlobPipeline
 ```
-Get-AzureStorageBlobCopyState -CloudBlob <CloudBlob> [-WaitForComplete] [-Context <AzureStorageContext>]
+Get-AzureStorageBlobCopyState -CloudBlob <CloudBlob> [-WaitForComplete] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>]
  [<CommonParameters>]
 ```
@@ -29,7 +29,7 @@ Get-AzureStorageBlobCopyState -CloudBlob <CloudBlob> [-WaitForComplete] [-Contex
 ### ContainerPipeline
 ```
 Get-AzureStorageBlobCopyState -CloudBlobContainer <CloudBlobContainer> [-Blob] <String> [-WaitForComplete]
- [-Context <AzureStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
@@ -169,7 +169,7 @@ Specifies an Azure storage context.
 To obtain a storage context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: AzureStorageContext
+Type: IStorageContext
 Parameter Sets: (All)
 Aliases: 
 
