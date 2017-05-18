@@ -58,6 +58,9 @@ namespace Microsoft.Azure.Commands.DevTestLabs
                 {
                     _dataServiceClient = AzureSession.ClientFactory.CreateArmClient<DevTestLabsClient>(DefaultContext,
                         AzureEnvironment.Endpoint.ResourceManager);
+
+                    WriteInformation(new InformationRecord($"Resource Group = {ResourceGroupName}", nameof(DevTestLabsCmdletBase)));
+                    _dataServiceClient.ResourceGroupName = ResourceGroupName;
                 }
 
                 return _dataServiceClient;
