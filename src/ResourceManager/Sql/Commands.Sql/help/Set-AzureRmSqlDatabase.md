@@ -150,7 +150,9 @@ Accept wildcard characters: False
 ```
 
 ### -ReadScale
-The read scale option to assign to the Azure SQL Database.(Enabled/Disabled)```yaml
+The read scale option to assign to the Azure SQL Database.(Enabled/Disabled)
+
+```yaml
 Type: DatabaseReadScale
 Parameter Sets: (All)
 Aliases: 
@@ -278,6 +280,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Suspend-AzureRmSqlDatabase](./Suspend-AzureRmSqlDatabase.md)
 
-[Azure SQL Database Cmdlets](./AzureRM.Sql.md)
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 
 

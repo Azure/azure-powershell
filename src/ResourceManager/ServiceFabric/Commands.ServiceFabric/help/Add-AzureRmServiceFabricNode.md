@@ -23,7 +23,7 @@ Use **Add-AzureRmServiceFabricNode** to add nodes to the specific node type. You
 
 ### Example 1
 ```
-PS c:> Add-AzureRmServiceFabricNode -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NumberOfNodesToAdd 2 -NodeTypeName 'nt1''
+PS c:> Add-AzureRmServiceFabricNode -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NumberOfNodesToAdd 2 -NodeTypeName 'nt1'
 ```
 
 This command will add 2 nodes to the node type 'n1'.

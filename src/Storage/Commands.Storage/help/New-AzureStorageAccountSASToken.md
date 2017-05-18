@@ -15,7 +15,7 @@ Creates an account-level SAS token.
 ```
 New-AzureStorageAccountSASToken -Service <SharedAccessAccountServices>
  -ResourceType <SharedAccessAccountResourceTypes> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
- [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-Context <AzureStorageContext>]
+ [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-Context <IStorageContext>]
  [<CommonParameters>]
 ```
 
@@ -47,7 +47,7 @@ Specifies the Azure storage context.
 You can use the New-AzureStorageContext cmdlet to get an **AzureStorageContext** object.
 
 ```yaml
-Type: AzureStorageContext
+Type: IStorageContext
 Parameter Sets: (All)
 Aliases: 
 

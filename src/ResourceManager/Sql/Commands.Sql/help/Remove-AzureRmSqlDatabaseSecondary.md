@@ -155,10 +155,8 @@ This cmdlet does not generate any output.
 
 ## RELATED LINKS
 
-[Azure SQL Database Cmdlets](./AzureRM.Sql.md)
-
 [New-AzureRmSqlDatabaseSecondary](./New-AzureRmSqlDatabaseSecondary.md)
 
 [Set-AzureRmSqlDatabaseSecondary](./Set-AzureRmSqlDatabaseSecondary.md)
 
-
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
