@@ -138,9 +138,6 @@
       <Link>AzureRM.NotificationHubs.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="app.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="Microsoft.Azure.Commands.NotificationHubs.dll-help.pshproj" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
