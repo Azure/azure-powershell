@@ -13,7 +13,7 @@ Gets the stored access policy or policies for an Azure storage queue.
 ## SYNTAX
 
 ```
-Get-AzureStorageQueueStoredAccessPolicy [-Queue] <String> [[-Policy] <String>] [-Context <AzureStorageContext>]
+Get-AzureStorageQueueStoredAccessPolicy [-Queue] <String> [[-Policy] <String>] [-Context <IStorageContext>]
  [<CommonParameters>]
 ```
 
@@ -43,7 +43,7 @@ Specifies the Azure storage context.
 To obtain a storage context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: AzureStorageContext
+Type: IStorageContext
 Parameter Sets: (All)
 Aliases: 
 

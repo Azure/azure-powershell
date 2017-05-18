@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     {
 
                         if ((this.AdminClientThumbprint == null || !this.AdminClientThumbprint.Any()) &&
-                            (this.ReadonlyClientThumbprint == null) || !this.ReadonlyClientThumbprint.Any())
+                           (this.ReadonlyClientThumbprint == null || !this.ReadonlyClientThumbprint.Any()))
                         {
                             throw new PSArgumentException(
                                 "Both AdminClientThumbprints and ReadonlyClientThumbprints are empty");

@@ -13,7 +13,7 @@ Creates a storage table.
 ## SYNTAX
 
 ```
-New-AzureStorageTable [-Name] <String> [-Context <AzureStorageContext>] [<CommonParameters>]
+New-AzureStorageTable [-Name] <String> [-Context <IStorageContext>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,7 +43,7 @@ Specifies the storage context.
 To create it, you can use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: AzureStorageContext
+Type: IStorageContext
 Parameter Sets: (All)
 Aliases: 
 

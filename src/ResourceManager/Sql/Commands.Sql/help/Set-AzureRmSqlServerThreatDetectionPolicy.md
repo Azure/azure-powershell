@@ -15,7 +15,8 @@ Sets a threat detection policy on a server.
 ```
 Set-AzureRmSqlServerThreatDetectionPolicy [-PassThru] [-NotificationRecipientsEmails <String>]
  [-EmailAdmins <Boolean>] [-ExcludedDetectionType <DetectionType[]>] [-StorageAccountName <String>]
- [-RetentionInDays <UInt32>] -ServerName <String> [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
+ [-RetentionInDays <UInt32>] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -57,19 +58,58 @@ The acceptable values for this parameter are:
 - Sql_Injection
 - Sql_Injection_Vulnerability
 - Access_Anomaly
-- Usage_Anomaly
 - None
 
 ```yaml
 Type: DetectionType[]
 Parameter Sets: (All)
 Aliases: 
-Accepted values: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Usage_Anomaly, None
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -InformationAction
+Specifies how this cmdlet responds to an information event.
+
+The acceptable values for this parameter are:
+
+- Continue
+
+- Ignore
+
+- Inquire
+
+- SilentlyContinue
+
+- Stop
+
+- Suspend
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: infa
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InformationVariable
+Specifies an information variable.```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: iv
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -120,7 +160,9 @@ Accept wildcard characters: False
 ```
 
 ### -RetentionInDays
-The number of retention days for the audit logs```yaml
+The number of retention days for the audit logs
+
+```yaml
 Type: UInt32
 Parameter Sets: (All)
 Aliases: 
@@ -141,14 +183,16 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -StorageAccountName
-Specifies the name of the storage account to be used. Wildcards are not permitted. This parameter is not required. When this parameter is not provided, the cmdlet will use the storage account that was defined previously as part of the threat detection policy of the database. If this is the first time a database theat detection policy is defined and this parameter is not provided, the cmdlet will fail.```yaml
+Specifies the name of the storage account to be used. Wildcards are not permitted. This parameter is not required. When this parameter is not provided, the cmdlet will use the storage account that was defined previously as part of the threat detection policy of the database. If this is the first time a database theat detection policy is defined and this parameter is not provided, the cmdlet will fail.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -212,4 +256,4 @@ This cmdlet returns a **ServerThreatDetectionPolicyModel** object.
 
 [Remove-AzureRmSqlServerThreatDetectionPolicy](03e90cd1-6ae2-4134-bc5e-28cc080614c9)
 
-
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)

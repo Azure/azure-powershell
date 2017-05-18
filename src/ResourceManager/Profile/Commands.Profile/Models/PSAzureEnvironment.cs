@@ -12,14 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Profile.Models
 {
     /// <summary>
     /// Settings and endpoints for management of Azure or Azure Stack services.
     /// </summary>
-    public class PSAzureEnvironment
+    public class PSAzureEnvironment : IAzureEnvironment
     {
         /// <summary>
         /// Convert the PowerShell representation of environment to the internal representation.
@@ -33,35 +35,8 @@ namespace Microsoft.Azure.Commands.Profile.Models
                 return null;
             }
 
-            var newEnvironment = new AzureEnvironment
-            {
-                Name = environment.Name,
-                OnPremise = environment.EnableAdfsAuthentication
-            };
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId] =
-                environment.ActiveDirectoryServiceEndpointResourceId;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.ActiveDirectory] = environment.ActiveDirectoryAuthority;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.AdTenant] = environment.AdTenant;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.Gallery] = environment.GalleryUrl;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix] = environment.AzureDataLakeStoreFileSystemEndpointSuffix;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix] = environment.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.ManagementPortalUrl] = environment.ManagementPortalUrl;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.ServiceManagement] = environment.ServiceManagementUrl;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl] =
-                environment.PublishSettingsFileUrl;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.ResourceManager] = environment.ResourceManagerUrl;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix] = environment.SqlDatabaseDnsSuffix;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix] =
-                environment.StorageEndpointSuffix;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.Graph] = environment.GraphUrl;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.GraphEndpointResourceId] = environment.GraphEndpointResourceId;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.TrafficManagerDnsSuffix] =
-                environment.TrafficManagerDnsSuffix;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix] =
-                environment.AzureKeyVaultDnsSuffix;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId] =
-                environment.AzureKeyVaultServiceEndpointResourceId;
-
+            var newEnvironment = new AzureEnvironment();
+            newEnvironment.CopyFrom(environment);
             return newEnvironment;
         }
 
@@ -91,94 +66,9 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// Initializes a new Azure environment from the given internal representation.
         /// </summary>
         /// <param name="environment">The internal representation of the environment.</param>
-        public PSAzureEnvironment(AzureEnvironment environment)
+        public PSAzureEnvironment(IAzureEnvironment environment)
         {
-            Name = environment.Name;
-            EnableAdfsAuthentication = environment.OnPremise;
-            if (environment.IsEndpointSet(AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId))
-            {
-                ActiveDirectoryServiceEndpointResourceId =
-                    environment.Endpoints[AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId];
-            }
-            if (environment.IsEndpointSet(AzureEnvironment.Endpoint.AdTenant))
-            {
-                AdTenant = environment.Endpoints[AzureEnvironment.Endpoint.AdTenant];
-            }
-            if (environment.IsEndpointSet(AzureEnvironment.Endpoint.Gallery))
-            {
-                GalleryUrl =
-                    environment.Endpoints[AzureEnvironment.Endpoint.Gallery];
-            }
-            if (environment.IsEndpointSet(AzureEnvironment.Endpoint.ManagementPortalUrl))
-            {
-                ManagementPortalUrl =
-                    environment.Endpoints[AzureEnvironment.Endpoint.ManagementPortalUrl];
-            }
-            if (environment.IsEndpointSet(AzureEnvironment.Endpoint.ServiceManagement))
-            {
-                ServiceManagementUrl =
-                    environment.Endpoints[AzureEnvironment.Endpoint.ServiceManagement];
-            }
-            if (environment.IsEndpointSet(AzureEnvironment.Endpoint.PublishSettingsFileUrl))
-            {
-                PublishSettingsFileUrl =
-                    environment.Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl];
-            }
-            if (environment.IsEndpointSet(AzureEnvironment.Endpoint.ResourceManager))
-            {
-                ResourceManagerUrl =
-                    environment.Endpoints[AzureEnvironment.Endpoint.ResourceManager];
-            }
-            if (environment.IsEndpointSet(AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix))
-            {
-                SqlDatabaseDnsSuffix =
-                    environment.Endpoints[AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix];
-            }
-            if (environment.IsEndpointSet(AzureEnvironment.Endpoint.StorageEndpointSuffix))
-            {
-                StorageEndpointSuffix =
-                    environment.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix];
-            }
-            if (environment.IsEndpointSet(AzureEnvironment.Endpoint.ActiveDirectory))
-            {
-                ActiveDirectoryAuthority =
-                    environment.Endpoints[AzureEnvironment.Endpoint.ActiveDirectory];
-            }
-            if (environment.IsEndpointSet(AzureEnvironment.Endpoint.Graph))
-            {
-                GraphUrl =
-                    environment.Endpoints[AzureEnvironment.Endpoint.Graph];
-            }
-            if (environment.IsEndpointSet(AzureEnvironment.Endpoint.GraphEndpointResourceId))
-            {
-                GraphEndpointResourceId =
-                    environment.Endpoints[AzureEnvironment.Endpoint.GraphEndpointResourceId];
-            }
-            if (environment.IsEndpointSet(AzureEnvironment.Endpoint.TrafficManagerDnsSuffix))
-            {
-                TrafficManagerDnsSuffix =
-                    environment.Endpoints[AzureEnvironment.Endpoint.TrafficManagerDnsSuffix];
-            }
-            if (environment.IsEndpointSet(AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix))
-            {
-                AzureKeyVaultDnsSuffix =
-                    environment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix];
-            }
-            if (environment.IsEndpointSet(AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix))
-            {
-                AzureDataLakeStoreFileSystemEndpointSuffix =
-                    environment.Endpoints[AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix];
-            }
-            if (environment.IsEndpointSet(AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix))
-            {
-                AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix =
-                    environment.Endpoints[AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix];
-            }
-            if (environment.IsEndpointSet(AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId))
-            {
-                AzureKeyVaultServiceEndpointResourceId =
-                    environment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId];
-            }
+            this.CopyFrom(environment);
         }
 
         /// <summary>
@@ -191,6 +81,18 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// Generally, this is only used in Azure Stack environments.
         /// </summary>
         public bool EnableAdfsAuthentication { get; set; }
+
+        public bool OnPremise
+        {
+            get
+            {
+                return EnableAdfsAuthentication;
+            }
+            set
+            {
+                EnableAdfsAuthentication = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the expected token audience for authenticating management requests. 
@@ -277,6 +179,10 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// </summary>
         public string AzureKeyVaultServiceEndpointResourceId { get; set; }
 
+        public IList<string> VersionProfiles { get; } = new List<string>();
+
+        public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+
         /// <summary>
         /// Determine equality of two PSAzureEnvironment instances.
         /// </summary>
@@ -317,6 +223,28 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public override string ToString()
         {
             return this.Name;
+        }
+
+        static Uri UrlOrNull(string urlValue)
+        {
+            Uri result = null;
+            if (urlValue != null)
+            {
+                result = new Uri(urlValue);
+            }
+
+            return result;
+        }
+
+        static string StringOrNull(Uri urlValue)
+        {
+            string result = null;
+            if (urlValue != null)
+            {
+                result = urlValue.AbsoluteUri;
+            }
+
+            return result;
         }
     }
 }

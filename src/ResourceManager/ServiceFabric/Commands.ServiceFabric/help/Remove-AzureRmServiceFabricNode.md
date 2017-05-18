@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmServiceFabricNode
 
 ## SYNOPSIS
-Remove nodes from the specific node type from a cluster
+Remove nodes from the specific node type from a cluster.
 
 ## SYNTAX
 
@@ -26,27 +26,12 @@ Use **Remove-AzureRmServiceFabricNode** to remove nodes from a specific node typ
 PS c:> Remove-AzureRmServiceFabricNode -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NodeTypeName 'nt1' -NumberOfNodesToRemove 2
 ```
 
-This command will remove 2 nodes from the nodetype 'nt1''
+This command will remove 2 nodes from the NodeType 'nt1'.
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
-Specify the name of the cluster
+Specify the name of the cluster.
 
 ```yaml
 Type: String
@@ -61,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -NodeType
-Node type name
+Node type name.
 
 ```yaml
 Type: String
@@ -76,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -NumberOfNodesToRemove
-Number of nodes to remove
+Number of nodes to remove.
 
 ```yaml
 Type: Int32
@@ -102,6 +87,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
