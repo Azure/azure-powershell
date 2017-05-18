@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         public const string DISK_TYPE_STANDARD = "Standard";
         public const string DISK_TYPE_PREMIUM = "Premium";
-        public const string DISK_TYPE_PREMIUM_MD = "PremiumMD";
+        public const string DISK_TYPE_PREMIUM_MD = "Premium";
         public const string WadTableName = "WADPerformanceCountersTable";
         public const string AzureEndpoint = "core.windows.net";
         public const int ContentAgeInMinutes = 5;
