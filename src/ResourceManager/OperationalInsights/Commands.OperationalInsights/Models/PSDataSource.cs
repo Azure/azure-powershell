@@ -80,34 +80,34 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             this.Kind = dataSource.Kind;
             switch(this.Kind){
                 case PSDataSourceKinds.AzureActivityLog:
-                    this.Properties = JsonConvert.DeserializeObject<PSAzureActivityLogDataSourceProperties>(dataSource.Properties);
+                    this.Properties = ((JToken)dataSource.Properties).ToObject<PSAzureActivityLogDataSourceProperties>();
                     break;
                 case PSDataSourceKinds.WindowsEvent:
-                    this.Properties = JsonConvert.DeserializeObject<PSWindowsEventDataSourceProperties>(dataSource.Properties);
+                    this.Properties = ((JToken)dataSource.Properties).ToObject<PSWindowsEventDataSourceProperties>();
                     break;
                 case PSDataSourceKinds.WindowsPerformanceCounter:
-                    this.Properties = JsonConvert.DeserializeObject<PSWindowsPerformanceCounterDataSourceProperties>(dataSource.Properties);
+                    this.Properties = ((JToken)dataSource.Properties).ToObject<PSWindowsPerformanceCounterDataSourceProperties>();
                     break;
                 case PSDataSourceKinds.LinuxSyslog:
-                    this.Properties = JsonConvert.DeserializeObject<PSLinuxSyslogDataSourceProperties>(dataSource.Properties);
+                    this.Properties = ((JToken)dataSource.Properties).ToObject<PSLinuxSyslogDataSourceProperties>();
                     break;
                 case PSDataSourceKinds.LinuxSyslogCollection:
-                    this.Properties = JsonConvert.DeserializeObject<PSLinuxSyslogCollectionDataSourceProperties>(dataSource.Properties);
+                    this.Properties = ((JToken)dataSource.Properties).ToObject<PSLinuxSyslogCollectionDataSourceProperties>();
                     break;
                 case PSDataSourceKinds.LinuxPerformanceObject:
-                    this.Properties = JsonConvert.DeserializeObject<PSLinuxPerformanceObjectDataSourceProperties>(dataSource.Properties);
+                    this.Properties = ((JToken)dataSource.Properties).ToObject<PSLinuxPerformanceObjectDataSourceProperties>();
                     break;
                 case PSDataSourceKinds.LinuxPerformanceCollection:
-                    this.Properties = JsonConvert.DeserializeObject<PSLinuxPerformanceCollectionDataSourceProperties>(dataSource.Properties);
+                    this.Properties = ((JToken)dataSource.Properties).ToObject<PSLinuxPerformanceCollectionDataSourceProperties>();
                     break;
                 case PSDataSourceKinds.CustomLog:
-                    this.Properties = JsonConvert.DeserializeObject<PSCustomLogDataSourceProperties>(dataSource.Properties);
+                    this.Properties = ((JToken)dataSource.Properties).ToObject<PSCustomLogDataSourceProperties>();
                     break;
                 case PSDataSourceKinds.CustomLogCollection:
-                    this.Properties = JsonConvert.DeserializeObject<PSCustomLogCollectionDataSourceProperties>(dataSource.Properties);
+                    this.Properties = ((JToken)dataSource.Properties).ToObject<PSCustomLogCollectionDataSourceProperties>();
                     break;
                 case PSDataSourceKinds.IISLogs:
-                    this.Properties = JsonConvert.DeserializeObject<PSIISLogsDataSourceProperties>(dataSource.Properties);
+                    this.Properties = ((JToken)dataSource.Properties).ToObject<PSIISLogsDataSourceProperties>();
                     break;
             }
 

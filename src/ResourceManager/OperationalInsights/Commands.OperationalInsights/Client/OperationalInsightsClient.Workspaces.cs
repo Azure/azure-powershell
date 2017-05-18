@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
 using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Commands.OperationalInsights.Properties;
 using Microsoft.Azure.Management.OperationalInsights;
@@ -34,9 +33,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             List<PSAccount> accounts = new List<PSAccount>();
 
             var response = OperationalInsightsManagementClient.Workspaces.ListLinkTargets();
-            if (response != null && response.Accounts != null)
+            if (response != null)
             {
-                response.Accounts.ForEach(account => accounts.Add(new PSAccount(account)));
+                response.ForEach(account => accounts.Add(new PSAccount(account)));
             }
 
             return accounts;
@@ -46,7 +45,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         {
             var response = OperationalInsightsManagementClient.Workspaces.GetSharedKeys(resourceGroupName, workspaceName);
 
-            return new PSWorkspaceKeys(response.Keys);
+            return new PSWorkspaceKeys(response);
         }
 
         public virtual List<PSManagementGroup> GetWorkspaceManagementGroups(string resourceGroupName, string workspaceName)
@@ -54,9 +53,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             List<PSManagementGroup> managementGroups = new List<PSManagementGroup>();
 
             var response = OperationalInsightsManagementClient.Workspaces.ListManagementGroups(resourceGroupName, workspaceName);
-            if (response != null && response.ManagementGroups != null)
+            if (response != null)
             {
-                response.ManagementGroups.ForEach(mg => managementGroups.Add(new PSManagementGroup(mg)));
+                response.ForEach(mg => managementGroups.Add(new PSManagementGroup(mg)));
             }
 
             return managementGroups;
@@ -67,9 +66,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             List<PSUsageMetric> usageMetrics = new List<PSUsageMetric>();
 
             var response = OperationalInsightsManagementClient.Workspaces.ListUsages(resourceGroupName, workspaceName);
-            if (response != null && response.UsageMetrics != null)
+            if (response != null)
             {
-                response.UsageMetrics.ForEach(um => usageMetrics.Add(new PSUsageMetric(um)));
+                response.ForEach(um => usageMetrics.Add(new PSUsageMetric(um)));
             }
 
             return usageMetrics;
@@ -79,7 +78,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         {
             var response = OperationalInsightsManagementClient.Workspaces.Get(resourceGroupName, workspaceName);
 
-            return new PSWorkspace(response.Workspace, resourceGroupName);
+            return new PSWorkspace(response, resourceGroupName);
         }
 
         public virtual List<PSWorkspace> ListWorkspaces(string resourceGroupName)
@@ -88,12 +87,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
 
             // Support both resource group and subscription listing
             var response = string.IsNullOrWhiteSpace(resourceGroupName)
-                ? OperationalInsightsManagementClient.Workspaces.ListInSubscription()
-                : OperationalInsightsManagementClient.Workspaces.ListInResourceGroup(resourceGroupName);
+                ? OperationalInsightsManagementClient.Workspaces.List()
+                : OperationalInsightsManagementClient.Workspaces.ListByResourceGroup(resourceGroupName);
 
-            if (response != null && response.Workspaces != null)
+            if (response != null)
             {
-                foreach (Workspace workspace in response.Workspaces)
+                foreach (Workspace workspace in response)
                 {
                     // If it is a subscription list then parse the resourceGroupName from the workspace ID
                     string resourceGroup = resourceGroupName;
@@ -113,8 +112,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
 
         public virtual HttpStatusCode DeleteWorkspace(string resourceGroupName, string workspaceName)
         {
-            AzureOperationResponse response = OperationalInsightsManagementClient.Workspaces.Delete(resourceGroupName, workspaceName);
-            return response.StatusCode;
+            Rest.Azure.AzureOperationResponse result  = OperationalInsightsManagementClient.Workspaces.DeleteWithHttpMessagesAsync(resourceGroupName, workspaceName).GetAwaiter().GetResult();
+            return result.Response.StatusCode;
         }
 
         public virtual Workspace CreateOrUpdateWorkspace(
@@ -123,9 +122,14 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             string location,
             string sku,
             Guid? customerId,
-            IDictionary<string, string> tags)
+            IDictionary<string, string> tags, 
+            int? retentionInDays)
         {
-            WorkspaceProperties properties = new WorkspaceProperties();
+            Workspace properties = new Workspace()
+            {
+                Location = location,
+                Tags = tags
+            };
 
             if (!string.IsNullOrWhiteSpace(sku))
             {
@@ -134,24 +138,20 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
 
             if (customerId.HasValue)
             {
-                properties.CustomerId = customerId;
+                properties.CustomerId = customerId.Value.ToString();
+            }
+
+            if (retentionInDays.HasValue)
+            {
+                properties.RetentionInDays = retentionInDays.Value;
             }
 
             var response = OperationalInsightsManagementClient.Workspaces.CreateOrUpdate(
                 resourceGroupName,
-                new WorkspaceCreateOrUpdateParameters()
-                {
-                    Workspace =
-                        new Workspace()
-                        {
-                            Name = workspaceName,
-                            Location = location,
-                            Tags = tags,
-                            Properties = properties
-                        }
-                });
+                workspaceName,
+                properties);
 
-            return response.Workspace;
+            return response;
         }
 
         public virtual PSWorkspace UpdatePSWorkspace(UpdatePSWorkspaceParameters parameters)
@@ -166,7 +166,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 workspace.Location,
                 string.IsNullOrWhiteSpace(parameters.Sku) ? workspace.Sku : parameters.Sku,
                 workspace.CustomerId,
-                parameters.Tags == null ? workspace.Tags : ToDictionary(parameters.Tags));
+                parameters.Tags == null ? workspace.Tags : ToDictionary(parameters.Tags),
+                parameters.RetentionInDays);
 
             return new PSWorkspace(updatedWorkspace, parameters.ResourceGroupName);
         }
@@ -190,7 +191,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                             parameters.Location,
                             parameters.Sku,
                             parameters.CustomerId,
-                            tags),
+                            tags,
+                            parameters.RetentionInDays),
                         parameters.ResourceGroupName);
                 if (!string.Equals(workspace.ProvisioningState, OperationStatus.Succeeded.ToString(), StringComparison.OrdinalIgnoreCase))
                 {
@@ -249,9 +251,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             List<PSIntelligencePack> intelligencePacks = new List<PSIntelligencePack>();
 
             var listResponse = OperationalInsightsManagementClient.Workspaces.ListIntelligencePacks(resourceGroupName, workspaceName);
-            if (listResponse != null && listResponse.IntelligencePacks != null)
+            if (listResponse != null)
             {
-                listResponse.IntelligencePacks.ForEach(ip => intelligencePacks.Add(new PSIntelligencePack(ip.Name, ip.Enabled)));
+                listResponse.ForEach(ip => intelligencePacks.Add(new PSIntelligencePack(ip.Name, ip.Enabled.Value)));
             }
 
             return intelligencePacks;
@@ -277,7 +279,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 PSWorkspace workspace = GetWorkspace(resourceGroupName, workspaceName);
                 return true;
             }
-            catch (CloudException e)
+            catch (Rest.Azure.CloudException e)
             {
                 // Get throws NotFound exception if workspace does not exist
                 if (e.Response.StatusCode == HttpStatusCode.NotFound)

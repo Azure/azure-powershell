@@ -37,12 +37,13 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             this.Location = workspace.Location;
             this.Tags = workspace.Tags;
 
-            if (workspace.Properties != null)
+            if (workspace!= null)
             {
-                this.Sku = workspace.Properties.Sku != null ? workspace.Properties.Sku.Name : null;
-                this.CustomerId = workspace.Properties.CustomerId;
-                this.PortalUrl = workspace.Properties.PortalUrl;
-                this.ProvisioningState = workspace.Properties.ProvisioningState;
+                this.Sku = workspace.Sku != null ? workspace.Sku.Name : null;
+                this.retentionInDays = workspace.RetentionInDays;
+                this.CustomerId = new Guid(workspace.CustomerId);
+                this.PortalUrl = workspace.PortalUrl;
+                this.ProvisioningState = workspace.ProvisioningState;
             }
         }
 
@@ -57,6 +58,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public IDictionary<string, string> Tags { get; set; }
 
         public string Sku { get; set; }
+
+        public int? retentionInDays { get; set; }
 
         public Guid? CustomerId { get; set; }
 
