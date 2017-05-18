@@ -460,22 +460,19 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
                 objectId = user.ObjectId;
             }
-            catch (GraphErrorException e)
+            catch (GraphErrorException)
             {
-                if (e.Body != null && e.Body.Code == "Authorization_RequestDenied")
+                var user = GraphClient.ServicePrincipals.List(
+                    new Rest.Azure.OData.ODataQuery<ServicePrincipal>(
+                        string.Format("$filter=servicePrincipalNames/any(c: c eq '{0}')", DefaultContext.Account.Id))
+                    ).FirstOrDefault();
+
+                if (user == null)
                 {
-                    var user = GraphClient.ServicePrincipals.List(
-                        new Rest.Azure.OData.ODataQuery<ServicePrincipal>(
-                            string.Format("$filter=servicePrincipalNames/any(c: c eq '{0}')", DefaultContext.Account.Id))
-                        ).FirstOrDefault();
-
-                    if (user == null)
-                    {
-                        return null;
-                    }
-
-                    objectId = user.ObjectId;
+                    return null;
                 }
+
+                objectId = user.ObjectId;  
             }
 
             return objectId;
