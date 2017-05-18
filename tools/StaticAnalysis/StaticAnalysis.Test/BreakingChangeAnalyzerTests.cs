@@ -600,58 +600,6 @@ namespace StaticAnalysis.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ChangeOutputGenericTypeArgument()
-        {
-            cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { _testCmdletDirPath },
-                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
-                (cmdletName) => cmdletName.Equals("Test-ChangeOutputGenericTypeArgument", StringComparison.OrdinalIgnoreCase));
-
-            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
-
-            string output = "Test-ChangeOutputGenericTypeArgument\nProblemId Count: " + testReport.ProblemIdList.Count;
-
-            foreach (var problemId in testReport.ProblemIdList)
-            {
-                output += "\nProblemId: " + problemId;
-            }
-
-            xunitOutput.WriteLine(output);
-
-            Assert.Equal(1, testReport.ProblemIdList.Count);
-            Assert.True(testReport.ProblemIdList
-                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedGenericTypeArgument))
-                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedGenericTypeArgument));
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void DifferentOutputGenericTypeArgumentSize()
-        {
-            cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { _testCmdletDirPath },
-                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
-                (cmdletName) => cmdletName.Equals("Test-DifferentOutputGenericTypeArgumentSize", StringComparison.OrdinalIgnoreCase));
-
-            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
-
-            string output = "Test-DifferentOutputGenericTypeArgumentSize\nProblemId Count: " + testReport.ProblemIdList.Count;
-
-            foreach (var problemId in testReport.ProblemIdList)
-            {
-                output += "\nProblemId: " + problemId;
-            }
-
-            xunitOutput.WriteLine(output);
-
-            Assert.Equal(1, testReport.ProblemIdList.Count);
-            Assert.True(testReport.ProblemIdList
-                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.DifferentGenericTypeArgumentSize))
-                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.DifferentGenericTypeArgumentSize));
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ChangeParameterElementType()
         {
             cmdletBreakingChangeAnalyzer.Analyze(
