@@ -97,46 +97,12 @@ $script:LatestProfileMapPath = Get-LatestProfileMapPath
 # Make Web-Call
 function Get-AzureStorageBlob
 {
-  $retryCount = 0
-  Do
-  {
-    $retryCount = $retryCount + 1
-    try {
-      $WebResponse =  Invoke-WebRequest -uri $PSProfileMapEndpoint -ErrorVariable RestError
-      $Status = "success"
-    }
-    catch {    
-      if ($retryCount -le 3)
-      {
-        Start-Sleep -Seconds 3
-      }
-      else {
-        throw $_
-      }
-    }
-  } 
-  while ($Status -ne "success")
-  return $WebResponse
-}
+  $ScriptBlock = {
+    Invoke-WebRequest -uri $PSProfileMapEndpoint -ErrorVariable RestError
+  }
 
-# Get-Content with retry logic; to handle parallel requests
-function RetryGetContent
-{
-  param([string]$FilePath)
-  $retryCount = 0
-  Do
-  {
-    $retryCount = $retryCount + 1
-    try {
-      $ProfileMap = Get-Content -Raw -Path $FilePath -ErrorAction stop | ConvertFrom-Json 
-      $Status = "success"
-    }
-    catch {
-      Start-Sleep -Seconds 3
-    }
-  } 
-  while (($Status -ne "success") -and ($retryCount -lt 3))
-  return $ProfileMap
+  $WebResponse = Invoke-CommandWithRetry -ScriptBlock $ScriptBlock    
+  return $WebResponse
 }
 
 # Get-ProfileMap from Azure Endpoint
@@ -157,7 +123,11 @@ function Get-AzureProfileMap
     [string]$ProfileMapETag = [System.IO.Path]::GetFileNameWithoutExtension($Matches[2])
     if (($ProfileMapETag -eq $OnlineProfileMapETag) -and (Test-Path $script:LatestProfileMapPath.FullName))
     {
-      $ProfileMap = RetryGetContent -FilePath $script:LatestProfileMapPath.FullName
+      $scriptBlock = {
+        Get-Content -Raw -Path $script:LatestProfileMapPath.FullName -ErrorAction stop | ConvertFrom-Json 
+      }
+      $ProfileMap = Invoke-CommandWithRetry -ScriptBlock $scriptBlock 
+
       if ($null -ne $ProfileMap)
       {
         return $ProfileMap
@@ -186,7 +156,10 @@ function Get-AzureProfileMap
   # Remove old profile map if it exists
   if (($null -ne $oldProfileMap) -and (Test-Path $oldProfileMap.FullName))
   {
-    RemoveWithRetry -Path $oldProfileMap.FullName -Force
+    $ScriptBlock = {
+      Remove-Item -Path $oldProfileMap.FullName -Force -ErrorAction Stop
+    }
+    Invoke-CommandWithRetry -ScriptBlock $ScriptBlock
   }
   
   return $OnlineProfileMap
@@ -216,7 +189,10 @@ function Get-AzProfile
   # Check the cache
   if(($null -ne $script:LatestProfileMapPath) -and (Test-Path $script:LatestProfileMapPath.FullName))
   {
-    $ProfileMap = RetryGetContent -FilePath $script:LatestProfileMapPath.FullName
+    $scriptBlock = {
+      Get-Content -Raw -Path $script:LatestProfileMapPath.FullName -ErrorAction stop | ConvertFrom-Json 
+    }
+    $ProfileMap = Invoke-CommandWithRetry -ScriptBlock $scriptBlock 
     if ($null -ne $ProfileMap)
     {
       return $ProfileMap
@@ -225,7 +201,10 @@ function Get-AzProfile
      
   # If cache doesn't exist, Check embedded source
   $defaults = [System.IO.Path]::GetDirectoryName($PSCommandPath)
-  $ProfileMap = RetryGetContent -FilePath (Join-Path -Path $defaults -ChildPath "ProfileMap.json")
+  $scriptBlock = {
+    Get-Content -Raw -Path (Join-Path -Path $defaults -ChildPath "ProfileMap.json") -ErrorAction stop | ConvertFrom-Json 
+  }
+  $ProfileMap = Invoke-CommandWithRetry -ScriptBlock $scriptBlock 
   if($null -eq $ProfileMap)
   {
     # Cache & Embedded source empty; Return error and stop
@@ -287,38 +266,6 @@ function Get-ProfilesInstalled
     }
   }
   return $result
-}
-
-# Remove-Item command with Retry
-function RemoveWithRetry
-{
-  param ([string]$Path)
-
-  $retries = 3
-  $secondsDelay = 2
-  $retrycount = 0
-  $completedSuccessfully = $false
-
-  while (-not $completedSuccessfully) 
-  {
-    try 
-    {
-      Remove-Item @PSBoundParameters -ErrorAction Stop
-      $completedSuccessfully = $true
-    } 
-    catch 
-    {
-      if ($retrycount -ge $retries) 
-      {
-        throw
-      } 
-      else 
-      {
-        Start-Sleep $secondsDelay
-        $retrycount++
-      }
-    }
-  }
 }
 
 # Get profiles installed associated with the module version
@@ -499,7 +446,10 @@ function Get-AllProfilesInstalled
     $script:LatestProfileMapPath = Get-Item -Path (Join-Path -Path $ModulePath -ChildPath "ProfileMap.json")
   }
 
-  $ProfileMap = RetryGetContent -FilePath $script:LatestProfileMapPath.FullName 
+  $scriptBlock = {
+    Get-Content -Raw -Path $script:LatestProfileMapPath.FullName -ErrorAction stop | ConvertFrom-Json 
+  }
+  $ProfileMap = Invoke-CommandWithRetry -ScriptBlock $scriptBlock 
   $profilesInstalled = (Get-ProfilesInstalled -ProfileMap $ProfileMap)
   foreach ($Profile in $profilesInstalled.Keys)
   { 
@@ -534,7 +484,10 @@ function Update-ProfileHelper
   Write-Verbose "Attempting to clean up previous versions"
 
   # Cache was updated before calling this function, so latestprofilemap will not be null. 
-  $LatestProfileMap = RetryGetContent -FilePath $script:LatestProfileMapPath.FullName 
+  $scriptBlock = {
+    Get-Content -Raw -Path $script:LatestProfileMapPath.FullName -ErrorAction stop | ConvertFrom-Json 
+  }
+  $LatestProfileMap = Invoke-CommandWithRetry -ScriptBlock $scriptBlock 
 
   $AllProfilesInstalled = Get-AllProfilesInstalled
   Remove-PreviousVersion -LatestMap $LatestProfileMap -AllProfilesInstalled $AllProfilesInstalled @PSBoundParameters
@@ -612,60 +565,79 @@ function Invoke-InstallModule
 }
 
 # Invoke any script block with a retry logic
-function Invoke-CommandWithRetry
+function Invoke-CommandWithRetry
 {
   [CmdletBinding()]
-  [OutputType([PSObject])]
-  Param
-  (
-    # Param1 help description
-    [Parameter(Mandatory=$true,
-      ValueFromPipelineByPropertyName=$true,
-      Position=0)]
-      [System.Management.Automation.ScriptBlock]
-      $ScriptBlock,
+  [OutputType([PSObject])]
+  Param
+  (
+    [Parameter(Mandatory=$true,
+      ValueFromPipelineByPropertyName=$true,
+      Position=0)]
+      [System.Management.Automation.ScriptBlock]
+      $ScriptBlock,
 
-    # Number of retries. Default is 10.
-    [Parameter(Position=1)]
-      [ValidateNotNullOrEmpty()]
-      [int]$MaxRetries=3,
+    [Parameter(Position=1)]
+      [ValidateNotNullOrEmpty()]
+      [int]$MaxRetries=3,
 
-    # Number of seconds delay in retrying. Default is 10 seconds.
-      [Parameter(Position=2)]
-      [ValidateNotNullOrEmpty()]
-      [int]$RetryDelay=3
-  )
+    [Parameter(Position=2)]
+      [ValidateNotNullOrEmpty()]
+      [int]$RetryDelay=3
+  )
 
-  Begin
-  {
-    $currentRetry = 1
-    $Success = $False
-  }
-  Process
-  {
-    do {
+  Begin
+  {
+    $currentRetry = 1
+    $Success = $False
+  }
+
+  Process
+  {
+    do {
       try
-      {
-        # invoke the script block
-        $result = & $ScriptBlock 
-        $success = $true
-        return $result
-      }
-      catch
-      {
-        $currentRetry = $currentRetry + 1              
-        if ($currentRetry -gt $MaxRetries) {         
-          # If the current try count has exceeded maximum retries, throw a terminating error and come out. In place to avoid an infinite loop 
-          Write-Warning -Message "Could not execute -. $($ScriptBlock).`n Error: -> $($_.Exception)"
-          $PSCmdlet.ThrowTerminatingError($PSitem) # Raise the exception back for caller. This is a terminating error as the retries have exceeded MaxRetries allowed.
-        }
-        else {
-          Write-verbose -Message "Waiting $RetryDelay second(s) before attempting again"
-          Start-Sleep -seconds $RetryDelay
-        }
-      }
-    } while(-not $Success) # Do until you succeed
-  }
+      {
+        $result = . $ScriptBlock
+        $success = $true
+        return $result
+      }
+      catch
+      {
+        $currentRetry = $currentRetry + 1
+        if ($currentRetry -gt $MaxRetries) {
+          Write-Warning -Message "Unable to execute $($ScriptBlock)`n Error: $($_.Exception)"
+          $PSCmdlet.ThrowTerminatingError($PSitem)
+        }
+        else {
+          Write-verbose -Message "Waiting $RetryDelay second(s) before attempting again"
+          Start-Sleep -seconds $RetryDelay
+        }
+      }
+    } while(-not $Success)
+  }
+}
+
+# Select profile according to scope & create if it doesn't exist
+function Select-Profile
+{ 
+  param([string]$scope)
+  if($scope -eq "AllUsers" -and (-not $script:IsAdmin))
+  {
+    Write-Error "Administrator rights are required to use AllUsers scope. Log on to the computer with an account that has Administrator rights, and then try again, or retry the operation by adding `"-Scope CurrentUser`" to your command. You can also try running the Windows PowerShell session with elevated rights (Run as Administrator). " -Category InvalidArgument -ErrorAction Stop
+  }
+
+  if($scope -eq "AllUsers")
+  {
+    $profilePath = $profile.AllUsersAllHosts
+  }
+  else {
+    $profilePath = $profile.CurrentUserAllHosts
+  }
+  if (-not (Test-Path $ProfilePath))
+  {
+    new-item -path $ProfilePath -itemtype file -force | Out-Null
+  }
+  return $profilePath
 }
 
 # Add Scope parameter to the cmdlet
@@ -888,10 +860,7 @@ function Use-AzureRmProfile
   [CmdletBinding(SupportsShouldProcess=$true)] 
   [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "")]
   [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidShouldContinueWithoutForce", "")]
-  param(
-    [parameter(valuefrompipeline=$true)]
-    [psobject]$profileObject
-    )
+  param()
   DynamicParam
   {
     $params = New-Object -Type System.Management.Automation.RuntimeDefinedParameterDictionary
@@ -1134,7 +1103,9 @@ function Set-AzureRmDefaultProfile
   }
   PROCESS {
     $armProfile = $PSBoundParameters.Profile
-
+    $Scope = $PSBoundParameters.Scope
+    $Force = $PSBoundParameters.Force
+    
     $defaultProfile = $PSDefaultParameterValues["*-AzureRmProfile:Profile"]
     if ($defaultProfile -ne $armProfile)
     {
@@ -1150,16 +1121,18 @@ function Set-AzureRmDefaultProfile
       {
         if (($Force.IsPresent -or $PSCmdlet.ShouldContinue("Are you sure you would like to set $armProfile as Default Profile?", "Setting $armProfile as Default profile")))
         {
+          # Check Profile existence and choose proper profile
+          $profilePath = Select-Profile -Scope $Scope
+
           # Remove previous setting if exists
           Write-Verbose "Updating default profile value to $armProfile"
           $RemoveSettingScriptBlock = {
-            (Get-Content -Path $profile) -notmatch 'PSDefaultParameterValues' | Set-Content -path $profile
+            (Get-Content -Path $profilePath -ErrorAction Stop) -notmatch 'PSDefaultParameterValues' | Set-Content -path $profilePath -ErrorAction Stop
           }
           Invoke-CommandWithRetry -ScriptBlock $RemoveSettingScriptBlock
 
-          # Check scope $isadmin and add-content to proper profile
           $AddContentScriptBlock = {
-            Add-Content -Value $profileContent -Path $profile
+            Add-Content -Value $profileContent -Path $profilePath -ErrorAction Stop
           }  
           Invoke-CommandWithRetry -ScriptBlock $AddContentScriptBlock
         }
@@ -1178,24 +1151,45 @@ function Remove-AzureRmDefaultProfile
   DynamicParam
   {
     $params = New-Object -Type System.Management.Automation.RuntimeDefinedParameterDictionary
-    Add-ProfileParam $params
     Add-ForceParam $params
-    Add-ScopeParam $params
     return $params
   }
   PROCESS {
-    $armProfile = $PSBoundParameters.Profile
-    $PSDefaultParameterValues.Remove("*-AzureRmProfile:Profile")
-    if ($PSCmdlet.ShouldProcess("$armProfile", "Remove Default Profile")) 
+    $Force = $PSBoundParameters.Force
+
+    if ($PSCmdlet.ShouldProcess("ARM Default Profile", "Remove Default Profile")) 
     {
-      if (($Force.IsPresent -or $PSCmdlet.ShouldContinue("Are you sure you would like to remove $armProfile as Default Profile?", "Remove $armProfile as Default profile")))
+      if (($Force.IsPresent -or $PSCmdlet.ShouldContinue("Are you sure you would like to remove Default Profile?", "Remove Default profile")))
       {
-        # Remove content from $profile
-        Write-Verbose "Removing default profile value $armProfile"
-        $RemoveSettingScriptBlock = {
-          (Get-Content -Path $profile) -notmatch 'PSDefaultParameterValues' | Set-Content -path $profile
+        Write-Verbose "Removing default profile value"
+        $PSDefaultParameterValues.Remove("*-AzureRmProfile:Profile")
+        $importedModules = Get-Module "Azure*"
+        foreach ($importedModule in $importedModules) 
+        {
+          Remove-Module -Name $importedModule -Force -ErrorAction "SilentlyContinue"
         }
-        Invoke-CommandWithRetry -ScriptBlock $RemoveSettingScriptBlock
+
+        # Remove content from $profile
+        $profiles = @()
+        if ($script:IsAdmin)
+        {
+          $profiles += $profile.AllUsersAllHosts
+        }
+        
+        $profiles += $profile.CurrentUserAllHosts
+        
+        foreach ($profilePath in $profiles)
+        {
+          if (-not (Test-Path -path $profilePath))
+          {
+            continue
+          }
+
+          $RemoveSettingScriptBlock = {
+            (Get-Content -Path $profilePath -ErrorAction Stop) -notmatch 'PSDefaultParameterValues' | Set-Content -path $profilePath -ErrorAction Stop
+          }
+          Invoke-CommandWithRetry -ScriptBlock $RemoveSettingScriptBlock
+        }
       }
     }
   }

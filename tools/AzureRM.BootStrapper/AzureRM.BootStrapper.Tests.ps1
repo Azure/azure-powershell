@@ -133,7 +133,7 @@ Describe "Get-AzureStorageBlob" {
             $response = New-Object -TypeName psobject
             $response | Add-Member -MemberType NoteProperty -Name "StatusCode" -Value "200"
             $response | Add-Member -MemberType NoteProperty -Name "Content" -Value "ProfileMap json"
-            Mock Invoke-WebRequest -Verifiable { $response }
+            Mock Invoke-CommandWithRetry -Verifiable { $response }
             It "Returns proper response" {
                 $result = Get-AzureStorageBlob
                 $result.Content | Should Not Be $null
@@ -143,80 +143,10 @@ Describe "Get-AzureStorageBlob" {
         }
 
         Context "Invoke-WebRequest threw exception at all retries" {
-            Mock Invoke-WebRequest -Verifiable { throw }
-            Mock Start-Sleep -Verifiable {}
+            Mock Invoke-CommandWithRetry -Verifiable { throw }
             It "Throws exception" {
                 { Get-AzureStorageBlob } | Should throw 
                 Assert-VerifiableMocks
-            }
-        }
-
-        Context "Gets response at one of the retries" {
-            $Script:mockCalled = 0
-            $mockTestPath = {
-                $Script:mockCalled++
-                if ($Script:mockCalled -eq 1)
-                {
-                    throw
-                }
-                else {
-                    return $global:testProfileMap
-                }
-            }   
-
-            Mock -CommandName Invoke-WebRequest -MockWith $mockTestPath
-            Mock Start-Sleep -Verifiable {}
-
-            It "Should return successfully" {
-                Get-AzureStorageBlob
-                Assert-MockCalled Invoke-WebRequest -Times 2
-                Assert-VerifiableMocks
-            }
-        }
-
-    }
-}
-
-Describe "RetryGetContent" {
-    InModuleScope AzureRM.Bootstrapper {
-        Context "Gets content at first attempt" {
-            Mock Get-Content -Verifiable { $global:testProfileMap }
-            It "Should return successfully" {
-                $result = RetryGetContent -FilePath ".\MockPath"
-                $result.Profile1 | Should Not Be Empty
-                $result.Profile2 | Should Not Be Empty
-                Assert-VerifiableMocks
-            }
-        }
-
-        Context "Gets content at one of the retries" {
-            $Script:mockCalled = 0
-            $mockTestPath = {
-                $Script:mockCalled++
-                if ($Script:mockCalled -eq 1)
-                {
-                    throw
-                }
-                else {
-                    return $global:testProfileMap
-                }
-            }   
-
-            Mock -CommandName Get-Content -MockWith $mockTestPath
-            Mock Start-Sleep -Verifiable {}
-
-            It "Should return successfully" {
-                RetryGetContent -FilePath ".\MockPath"
-                Assert-MockCalled Get-Content -Times 2
-                Assert-VerifiableMocks
-            }
-        }
-
-        Context "Fails to get content during all retries" {
-            Mock Get-Content -Verifiable { throw }
-            Mock Start-Sleep -Verifiable {}
-            It "Returns null" {
-                RetryGetContent -FilePath ".\MockPath" | Should Be $null
             }
         }
     }
@@ -231,7 +161,7 @@ Describe "Get-AzureProfileMap" {
         $Header = @{"Headers" = @{"ETag" = "MockETag"}}
         $WebResponse | Add-Member $Header
         Mock Get-AzureStorageBlob -Verifiable { return $WebResponse }
-        Mock RetryGetContent -Verifiable { ($testProfileMap | ConvertFrom-Json) }
+        Mock Invoke-CommandWithRetry -Verifiable { ($testProfileMap | ConvertFrom-Json) }
 
         Context "ProfileCachePath Exists and Etags are equal" {
             Mock Test-Path -Verifiable { $true }
@@ -252,7 +182,7 @@ Describe "Get-AzureProfileMap" {
             $ProfileMapPath | Add-Member NoteProperty 'FullName' -Value '124-MockedDifferentETag.json'
             Mock Get-ChildItem -Verifiable { @($ProfileMapPath)}
             Mock Test-Path -Verifiable { $true }
-            Mock RemoveWithRetry -Verifiable {}
+            #Mock Invoke-CommandWithRetry -Verifiable {}
 
             It "Returns Correct ProfileMap and removes old profilemap" {
                 $result = Get-AzureProfileMap
@@ -309,7 +239,7 @@ Describe Get-AzProfile {
         Context "Gets Azure ProfileMap from Cache" {
             $script:LatestProfileMapPath = New-Object -TypeName PSObject
             $script:LatestProfileMapPath | Add-Member NoteProperty -Name "FullName" -Value "C:\mock\MockETag.json"
-            Mock RetryGetContent -Verifiable { $global:testProfileMap | ConvertFrom-Json }
+            Mock Invoke-CommandWithRetry -Verifiable { $global:testProfileMap | ConvertFrom-Json }
             Mock Test-Path -Verifiable { $true }
             It "Should get ProfileMap from Cache" {
                 $result = Get-AzProfile 
@@ -321,7 +251,7 @@ Describe Get-AzProfile {
 
         Context "ProfileMap is not available from cache" {
             Mock Test-Path -Verifiable { $false }
-            Mock RetryGetContent -Verifiable { return $global:testProfileMap  | ConvertFrom-Json}
+            Mock Invoke-CommandWithRetry -Verifiable { return $global:testProfileMap  | ConvertFrom-Json}
             It "Should get ProfileMap from Embedded source" {
                 $result = Get-AzProfile 
                 $result.Profile1 | Should Not Be Empty
@@ -332,7 +262,7 @@ Describe Get-AzProfile {
 
         Context "ProfileMap is not available in cache or Embedded source" {
             Mock Test-Path -Verifiable { $false }
-            Mock RetryGetContent -Verifiable {}
+            Mock Invoke-CommandWithRetry -Verifiable {}
 
             It "Should throw FileNotFound Exception" {
                 { Get-AzProfile } | Should Throw
@@ -392,49 +322,6 @@ Describe "Get-ProfilesInstalled" {
             }
         }
     }    
-}
-
-Describe "RemoveWithRetry" {
-    InModuleScope AzureRM.Bootstrapper {
-        Context "Removes item at first attempt" {
-            Mock Remove-Item -Verifiable {}
-            It "Should return successfully" {
-                RemoveWithRetry -Path ".\MockPath"
-                Assert-VerifiableMocks
-            }
-        }
-
-        Context "Removes item at one of the retries" {
-            $Script:mockCalled = 0
-            $mockTestPath = {
-                $Script:mockCalled++
-                if ($Script:mockCalled -eq 1)
-                {
-                    throw
-                }
-                else {
-                    return $null
-                }
-            }   
-
-            Mock -CommandName Remove-Item -MockWith $mockTestPath
-            Mock Start-Sleep -Verifiable {}
-
-            It "Should return successfully" {
-                RemoveWithRetry -Path ".\MockPath"
-                Assert-MockCalled Remove-Item -Times 2
-                Assert-VerifiableMocks
-            }
-        }
-
-        Context "Fails to remove item during all retries" {
-            Mock Remove-Item -Verifiable { throw }
-            Mock Start-Sleep -Verifiable {}
-            It "Should throw" {
-                { RemoveWithRetry -Path ".\MockPath" } | Should throw
-            }
-        }
-    }
 }
 
 Describe "Test-ProfilesInstalled" {
@@ -688,13 +575,13 @@ Describe "Remove-PreviousVersion" {
 
 Describe "Get-AllProfilesInstalled" {
     InModuleScope AzureRM.Bootstrapper {
-        Mock RetryGetContent { $global:testProfileMap | ConvertFrom-Json }
+        Mock Invoke-CommandWithRetry { $global:testProfileMap | ConvertFrom-Json }
         Context "Profile Maps are available from cache" {
             Mock Get-ProfilesInstalled -Verifiable { @{'Profile1'= @{'Module1'= '1.0'}}}
             $expectedResult = @{"Module21.0"=@('Profile1'); "Module11.0"=@('Profile1')}
             It "Should return Modules & Profiles Installed" {
                 (Get-AllProfilesInstalled) -like $expectedResult | Should Be $true
-                Assert-MockCalled RetryGetContent -Exactly 1
+                Assert-MockCalled Invoke-CommandWithRetry -Exactly 1
                 Assert-MockCalled Get-ProfilesInstalled -exactly 1
                 Assert-VerifiableMocks
             }
@@ -707,7 +594,7 @@ Describe "Get-AllProfilesInstalled" {
                 $AllProfilesInstalled = @()
                 $result = (Get-AllProfilesInstalled)
                 $result.Count | Should Be 0
-                Assert-MockCalled RetryGetContent -Exactly 1
+                Assert-MockCalled Invoke-CommandWithRetry -Exactly 1
                 Assert-MockCalled Get-ProfilesInstalled -exactly 1
                 Assert-VerifiableMocks
             }      
@@ -720,7 +607,7 @@ Describe "Get-AllProfilesInstalled" {
             It "Should return empty" {
                 $result = (Get-AllProfilesInstalled)
                 $result.Count | Should Be 0
-                Assert-MockCalled RetryGetContent -Exactly 1
+                Assert-MockCalled Invoke-CommandWithRetry -Exactly 1
                 Assert-MockCalled Get-ProfilesInstalled -exactly 1
                 Assert-VerifiableMocks
             }
@@ -733,7 +620,7 @@ Describe "Get-AllProfilesInstalled" {
 
 Describe "Update-ProfileHelper" {
     InModuleScope AzureRM.Bootstrapper {
-        Mock RetryGetContent -Verifiable { $global:testProfileMap } -ParameterFilter { $FilePath -eq "C:\mock\MockETag.json"}
+        Mock Invoke-CommandWithRetry -Verifiable { $global:testProfileMap } 
         $script:LatestProfileMapPath = New-Object -TypeName PSObject
         $script:LatestProfileMapPath | Add-Member NoteProperty -Name "FullName" -Value "C:\mock\MockETag.json"
         Mock Get-AllProfilesInstalled -Verifiable {}
@@ -820,8 +707,57 @@ Describe "Invoke-InstallModule" {
                 Assert-VerifiableMocks
             }
         }
-        
     }
+}
+
+Describe "Invoke-CommandWithRetry" {
+    InModuleScope AzureRM.Bootstrapper {
+        $scriptBlock = {
+           Get-ChildItem
+        }
+
+        Context "Executes script block successfully at first attempt" {
+            Mock Get-ChildItem -Verifiable { "contents" }
+            It "Should return successfully" {
+                $result = Invoke-CommandWithRetry -scriptBlock $scriptBlock
+                $result | Should Be "contents"
+                Assert-VerifiableMocks
+            }
+        }
+
+        Context "Executes script successfully at one of the retries" {
+            $Script:mockCalled = 0
+            $mockTestPath = {
+                $Script:mockCalled++
+                if ($Script:mockCalled -eq 1)
+                {
+                    throw
+                }
+                else {
+                    return "contents"
+                }
+            }   
+
+            Mock -CommandName Get-ChildItem -MockWith $mockTestPath
+            Mock Start-Sleep -Verifiable {}
+
+            It "Should return successfully" {
+                $result = Invoke-CommandWithRetry -scriptBlock $scriptBlock
+                $result | Should Be "contents"
+                Assert-MockCalled Get-ChildItem -Times 2
+                Assert-VerifiableMocks
+            }
+        }
+
+        Context "Fails to execute script during all retries" {
+            Mock Get-ChildItem -Verifiable { throw }
+            Mock Start-Sleep -Verifiable {}
+            It "Throws exception" {
+                { Invoke-CommandWithRetry -scriptBlock $scriptBlock } | Should throw
+            }
+        }
+
+    }   
 }
 
 Describe "Add-ScopeParam" {
@@ -1290,4 +1226,107 @@ Describe "Set-BootstrapRepo" {
             $script:BootStrapRepo = $currentBootstrapRepo
         }
     }
+}
+
+Describe "Set-AzureRmDefaultProfile" {
+    InModuleScope AzureRM.Bootstrapper {
+        Mock Get-AzProfile -Verifiable { ($global:testProfileMap | ConvertFrom-Json) }
+        Mock Invoke-CommandWithRetry -Verifiable {}
+        Mock Select-Profile -verifiable {}
+
+        Context "New default profile value is given" {
+            It "Setting default profile succeeds" {
+                Set-AzureRmDefaultProfile -Profile "Profile1" -Force
+                $PSDefaultParameterValues["*-AzureRmProfile:Profile"] | Should Be "Profile1"
+                Assert-VerifiableMocks
+            }
+        }
+
+        Context "User wants to update default profile value" {
+            It "Should update default profile value" {
+                Set-AzureRmDefaultProfile -Profile "Profile2" -Force
+                $PSDefaultParameterValues["*-AzureRmProfile:Profile"] | Should Be "Profile2"
+                Assert-VerifiableMocks
+            }
+        }
+
+        Context "Removing old default profile vaule throws" {
+            Mock Invoke-CommandWithRetry -Verifiable { throw }
+            It "Should throw for updating default profile" {
+                  { Set-AzureRmDefaultProfile -Profile "Profile1" -Force } | Should throw
+                  Assert-VerifiableMocks
+            }
+        }
+
+        Context "Setting default profile value failed" {
+            $Script:mockCalled = 0
+            $mockTestPath = {
+                $Script:mockCalled++
+                if ($Script:mockCalled -eq 1)
+                {
+                    return $null
+                }
+                else {
+                   throw 
+                }
+            }   
+            Mock -CommandName Invoke-CommandWithRetry -MockWith $mockTestPath
+            It "Should throw for setting default profile" {
+                { Set-AzureRmDefaultProfile -Profile "Profile2" -Force } | Should throw
+                Assert-VerifiableMocks
+            }
+        }
+
+        Context "Set Default Profile with scope as AllUsers in admin shell" {
+            $script:IsAdmin = $true
+            Mock Select-Profile -Verifiable { "AllUsersProfile"}
+            It "Should succeed setting AllUsers Profile" {
+                Set-AzureRmDefaultProfile -Profile "Profile1" -Scope "AllUsers" -Force
+                $PSDefaultParameterValues["*-AzureRmProfile:Profile"] | Should Be "Profile1"
+                Assert-VerifiableMocks
+            }
+        }
+
+        Context "Set Default Profile with scope as AllUsers in non-admin shell" {
+            $script:IsAdmin = $false
+            Mock Select-Profile -Verifiable { throw }
+            It "Should throw for AllUsers Profile" {
+                { Set-AzureRmDefaultProfile -Profile "Profile2" -Scope "AllUsers" -Force } | Should throw
+                Assert-VerifiableMocks
+            }
+        }
+    }
+}
+
+Describe "Remove-AzureRmDefaultProfile" {
+    InModuleScope AzureRM.Bootstrapper {
+        Mock Remove-Module -Verifiable {}
+        Mock Invoke-CommandWithRetry -Verifiable {}
+        Mock Test-Path -Verifiable { $true }
+        
+        Context "Default profile presents in the profile file & default variable" {
+            It "Should successfully remove default profile from shell & profile file" {
+                Remove-AzureRmDefaultProfile -Force
+                $PSDefaultParameterValues["*-AzureRmProfile:Profile"] | Should Be $null
+                Assert-VerifiableMocks
+            }
+        }
+        
+        Context "Default profile is not set previously or was removed" {
+            It "Should return null for default profile" {
+                Remove-AzureRmDefaultProfile -Force
+                $PSDefaultParameterValues["*-AzureRmProfile:Profile"] | Should Be $null
+                Assert-VerifiableMocks
+            }
+        }
+
+        Context "Profile files do not exist" {
+            Mock Invoke-CommandWithRetry {}
+            Mock Test-Path -Verifiable { $false }
+            It "Should not invoke remove script" {
+                Remove-AzureRmDefaultProfile -Force
+                Assert-MockCalled Invoke-CommandWithRetry -Exactly 0
+            }
+        }
+    }    
 }
