@@ -79,7 +79,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Session",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Created": "System.Nullable`1[System.DateTime]",
               "Etag": "System.String",
@@ -298,7 +298,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
                   "Name": "Session",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Created": "System.Nullable`1[System.DateTime]",
                     "Etag": "System.String",
@@ -481,7 +481,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Session",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Created": "System.Nullable`1[System.DateTime]",
               "Etag": "System.String",
@@ -558,7 +558,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Node",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ConnectionName": "System.String",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -587,7 +587,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Session",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Created": "System.Nullable`1[System.DateTime]",
               "Etag": "System.String",
@@ -714,7 +714,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
                   "Name": "Session",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Created": "System.Nullable`1[System.DateTime]",
                     "Etag": "System.String",
@@ -753,7 +753,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
                   "Name": "Node",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ConnectionName": "System.String",
                     "Created": "System.Nullable`1[System.DateTime]",
@@ -800,7 +800,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Session",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Created": "System.Nullable`1[System.DateTime]",
               "Etag": "System.String",
@@ -861,7 +861,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Node",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ConnectionName": "System.String",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -1021,7 +1021,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
                   "Name": "Node",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ConnectionName": "System.String",
                     "Created": "System.Nullable`1[System.DateTime]",
@@ -1212,7 +1212,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Session",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Created": "System.Nullable`1[System.DateTime]",
               "Etag": "System.String",
@@ -1339,7 +1339,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
                   "Name": "Session",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Created": "System.Nullable`1[System.DateTime]",
                     "Etag": "System.String",
@@ -1385,7 +1385,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Node",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ConnectionName": "System.String",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -1447,7 +1447,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Node",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ConnectionName": "System.String",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -1531,7 +1531,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
                   "Name": "Node",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ConnectionName": "System.String",
                     "Created": "System.Nullable`1[System.DateTime]",
@@ -1578,7 +1578,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Node",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ConnectionName": "System.String",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -1656,7 +1656,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Gateway",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ActiveMessageCount": "System.Nullable`1[System.Int32]",
               "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
@@ -1917,7 +1917,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
                   "Name": "Gateway",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ActiveMessageCount": "System.Nullable`1[System.Int32]",
                     "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
@@ -2183,7 +2183,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Node",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ConnectionName": "System.String",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -2267,7 +2267,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
                   "Name": "Node",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ConnectionName": "System.String",
                     "Created": "System.Nullable`1[System.DateTime]",
@@ -2314,7 +2314,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Gateway",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ActiveMessageCount": "System.Nullable`1[System.Int32]",
               "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
@@ -2555,7 +2555,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Gateway",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ActiveMessageCount": "System.Nullable`1[System.Int32]",
               "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
@@ -2620,7 +2620,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Gateway",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ActiveMessageCount": "System.Nullable`1[System.Int32]",
               "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
@@ -2734,7 +2734,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
                   "Name": "Gateway",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ActiveMessageCount": "System.Nullable`1[System.Int32]",
                     "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
@@ -2819,7 +2819,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Gateway",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ActiveMessageCount": "System.Nullable`1[System.Int32]",
               "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
@@ -2906,7 +2906,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
                   "Name": "Gateway",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ActiveMessageCount": "System.Nullable`1[System.Int32]",
                     "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
@@ -3050,7 +3050,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Gateway",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ActiveMessageCount": "System.Nullable`1[System.Int32]",
               "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
@@ -3137,7 +3137,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
                   "Name": "Gateway",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ActiveMessageCount": "System.Nullable`1[System.Int32]",
                     "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
@@ -3252,7 +3252,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Gateway",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ActiveMessageCount": "System.Nullable`1[System.Int32]",
               "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
@@ -3388,7 +3388,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
                   "Name": "Gateway",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ActiveMessageCount": "System.Nullable`1[System.Int32]",
                     "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
