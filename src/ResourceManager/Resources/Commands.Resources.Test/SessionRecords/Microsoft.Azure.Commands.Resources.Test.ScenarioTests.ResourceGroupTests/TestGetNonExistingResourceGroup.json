@@ -1,22 +1,25 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourcegroups/onesdk7761?api-version=2016-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmIzYTNkNmItNDRjOC00NGY1LTg4YzktYjIwOTE3YzliOTZiL3Jlc291cmNlZ3JvdXBzL29uZXNkazc3NjE/YXBpLXZlcnNpb249MjAxNi0wNy0wMQ==",
+      "RequestUri": "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/onesdk6926?api-version=2017-05-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDAwNGE5ZmQtZDU4ZS00OGRjLWFlYjItNGE0YWVjNTg2MDZmL3Jlc291cmNlZ3JvdXBzL29uZXNkazY5MjY/YXBpLXZlcnNpb249MjAxNy0wNS0xMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "040495cf-8fd5-4b7d-b0c0-dd132729fa8b"
+          "73a2aeae-3199-4ab3-bb1f-f5f40b098c28"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.1.5-preview"
+          "FxVersion/4.7.2046.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.6.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceGroupNotFound\",\r\n    \"message\": \"Resource group 'onesdk7761' could not be found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceGroupNotFound\",\r\n    \"message\": \"Resource group 'onesdk6926' could not be found.\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "102"
@@ -34,16 +37,16 @@
           "gateway"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14998"
+          "14990"
         ],
         "x-ms-request-id": [
-          "d8a616cd-bcee-4334-8165-d968cdff63eb"
+          "5cafea95-6c63-4115-8da0-9ad2e363cda6"
         ],
         "x-ms-correlation-request-id": [
-          "d8a616cd-bcee-4334-8165-d968cdff63eb"
+          "5cafea95-6c63-4115-8da0-9ad2e363cda6"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20160826T210459Z:d8a616cd-bcee-4334-8165-d968cdff63eb"
+          "WESTUS2:20170518T235535Z:5cafea95-6c63-4115-8da0-9ad2e363cda6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -52,7 +55,7 @@
           "no-cache"
         ],
         "Date": [
-          "Fri, 26 Aug 2016 21:04:59 GMT"
+          "Thu, 18 May 2017 23:55:34 GMT"
         ]
       },
       "StatusCode": 404
@@ -60,12 +63,12 @@
   ],
   "Names": {
     "Test-GetNonExistingResourceGroup": [
-      "onesdk7761"
+      "onesdk6926"
     ]
   },
   "Variables": {
-    "SubscriptionId": "fb3a3d6b-44c8-44f5-88c9-b20917c9b96b",
-    "TenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-    "Domain": "microsoft.com"
+    "SubscriptionId": "4004a9fd-d58e-48dc-aeb2-4a4aec58606f",
+    "TenantId": "1273adef-00a3-4086-a51a-dbcce1857d36",
+    "Domain": "rbacclitest.onmicrosoft.com"
   }
 }

@@ -7,15 +7,15 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "9ca403f7-1929-4b9b-a949-1f8e1e7c29e5"
+          "ba9c351f-2040-44f5-80ec-aae65eed96b8"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.1637.0",
+          "FxVersion/4.7.2046.0",
           "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.14393",
+          "OSVersion/6.3.15063",
           "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/3.4.0-preview"
         ]
       },
@@ -34,19 +34,19 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "iyH1L5ZSeWH83EP1icIOAwr148oY/OGtb+Pw+quNhWk="
+          "2MivfoQvSYk4nKQ9pVE2aMcNe+VYRx76vj3Ueo64dNk="
         ],
         "request-id": [
-          "60c2a6fd-294c-4642-bbf1-54083fd4de7d"
+          "487773fa-4ff5-4d6b-a55b-de14c9ca9eac"
         ],
         "client-request-id": [
-          "26b0043d-00f6-4700-8c65-96ff3638093d"
+          "0955dd07-c175-4748-88f1-24c291d8c99d"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6"
         ],
         "ocp-aad-session-key": [
-          "kTLQpQzkxC63Delf4J96b_eiUkPgWBL2gzmXqXx2cyghmTC1WnYM3hWfHCkgQavpeQXPzojT3JiJSjWLPJUXXHospScNxxTDke8JZgHI3U1-2VRhBHEH2pfUP4RAhH3i7Ly2vp60Bt6VuhlbtOmNgw.kt-VbnYW9dSx5OZG3_X7fYsyEO9_26DctDF9hql50hE"
+          "v7dzUpR1Emmofn4gtOAHWqV3EtoccPqqOsvxUC3LdGz07aKY84sNeB6CsY-1BzRNmaJAwEZmAR5--cVQfqGBhXsA-2SgcsjqvRIjUuP2L2RGUPatSDlCV4yZROpn9i7e-O3MDGKx_Cl6saA22cvoEw.2hG31sKoBTBRD9kC8HGETvxlULbbH406jANnKygo-GY"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -61,7 +61,7 @@
           "*"
         ],
         "Duration": [
-          "506886"
+          "519739"
         ],
         "Cache-Control": [
           "no-cache"
@@ -77,7 +77,7 @@
           "ASP.NET"
         ],
         "Date": [
-          "Thu, 27 Apr 2017 23:15:56 GMT"
+          "Thu, 18 May 2017 23:07:52 GMT"
         ]
       },
       "StatusCode": 200
