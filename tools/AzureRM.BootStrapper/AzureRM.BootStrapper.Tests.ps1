@@ -1,4 +1,5 @@
-#Requires -Modules AzureRM.BootStrapper
+Import-Module C:\github2\azure-powershell\tools\azurerm.bootstrapper\AzureRM.Bootstrapper.psm1
+###Requires -Modules AzureRM.BootStrapper
 $global:testProfileMap = "{`"Profile1`": { `"Module1`": [`"1.0`", `"0.1`"], `"Module2`": [`"1.0`", `"0.2`"] }, `"Profile2`": { `"Module1`": [`"2.0`", `"1.0`"], `"Module2`": [`"2.0`"] }}" 
 
 Describe "Get-ProfileCachePath" {
@@ -1326,6 +1327,28 @@ Describe "Remove-AzureRmDefaultProfile" {
             It "Should not invoke remove script" {
                 Remove-AzureRmDefaultProfile -Force
                 Assert-MockCalled Invoke-CommandWithRetry -Exactly 0
+            }
+        }
+
+        Context "Remove default profile in admin mode" {
+            Mock Remove-Module -verifiable {}
+            Mock Invoke-CommandWithRetry -Verifiable {}
+            $Script:IsAdmin = $true
+            It "Should remove setting in AllUsersAllHosts and CurrentUserAllHosts profiles" {
+                Remove-AzureRmDefaultProfile -Force
+                # For Admin, two profile paths are tested 
+                Assert-MockCalled Test-Path -Exactly 2
+            }
+        }
+
+        Context "Remove default profile in non-admin mode" {
+            Mock Remove-Module -verifiable {}
+            $Script:IsAdmin = $false
+            Mock Invoke-CommandWithRetry -Verifiable {}
+            It "Should remove setting in CurrentUserAllHosts profile" {
+                Remove-AzureRmDefaultProfile -Force
+                Assert-MockCalled Test-Path -Exactly 1
+               
             }
         }
     }    
