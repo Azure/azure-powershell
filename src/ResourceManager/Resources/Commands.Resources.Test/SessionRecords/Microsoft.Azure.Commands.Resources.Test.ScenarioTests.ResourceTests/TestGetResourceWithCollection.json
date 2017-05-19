@@ -1,22 +1,19 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/onesdk6479?api-version=2017-05-10",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDAwNGE5ZmQtZDU4ZS00OGRjLWFlYjItNGE0YWVjNTg2MDZmL3Jlc291cmNlZ3JvdXBzL29uZXNkazY0Nzk/YXBpLXZlcnNpb249MjAxNy0wNS0xMA==",
+      "RequestUri": "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourcegroups/onesdk5918?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmIzYTNkNmItNDRjOC00NGY1LTg4YzktYjIwOTE3YzliOTZiL3Jlc291cmNlZ3JvdXBzL29uZXNkazU5MTg/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "HEAD",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "bd5e5aba-968a-42ec-9f2e-36ac39ff1493"
+          "d51a268b-409b-47c8-a30a-f4c862685ec6"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2046.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.6.0-preview"
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.0.0.0"
         ]
       },
       "ResponseBody": "",
@@ -37,16 +34,16 @@
           "gateway"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14977"
+          "14999"
         ],
         "x-ms-request-id": [
-          "df7a8e24-e61a-43b9-adfb-b080e8959fb1"
+          "ed3c1ea8-5471-478b-8778-241489b8e149"
         ],
         "x-ms-correlation-request-id": [
-          "df7a8e24-e61a-43b9-adfb-b080e8959fb1"
+          "ed3c1ea8-5471-478b-8778-241489b8e149"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20170518T234704Z:df7a8e24-e61a-43b9-adfb-b080e8959fb1"
+          "WESTUS:20160617T050149Z:ed3c1ea8-5471-478b-8778-241489b8e149"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -55,14 +52,14 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 18 May 2017 23:47:03 GMT"
+          "Fri, 17 Jun 2016 05:01:49 GMT"
         ]
       },
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/onesdk6479?api-version=2017-05-10",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDAwNGE5ZmQtZDU4ZS00OGRjLWFlYjItNGE0YWVjNTg2MDZmL3Jlc291cmNlZ3JvdXBzL29uZXNkazY0Nzk/YXBpLXZlcnNpb249MjAxNy0wNS0xMA==",
+      "RequestUri": "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourcegroups/onesdk5918?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmIzYTNkNmItNDRjOC00NGY1LTg4YzktYjIwOTE3YzliOTZiL3Jlc291cmNlZ3JvdXBzL29uZXNkazU5MTg/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"East US\"\r\n}",
       "RequestHeaders": {
@@ -73,19 +70,16 @@
           "29"
         ],
         "x-ms-client-request-id": [
-          "3c57c3f4-dbcd-48fd-bf33-9063e50bc3cb"
+          "0393d197-248f-438d-b05d-332aa4c0d4b5"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2046.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.6.0-preview"
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/onesdk6479\",\r\n  \"name\": \"onesdk6479\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/onesdk5918\",\r\n  \"name\": \"onesdk5918\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "173"
@@ -100,16 +94,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1192"
+          "1197"
         ],
         "x-ms-request-id": [
-          "437a19a1-8c49-4471-84e2-a0179d2b3a3f"
+          "d4740e88-5310-4c20-a3f4-b670f1982c30"
         ],
         "x-ms-correlation-request-id": [
-          "437a19a1-8c49-4471-84e2-a0179d2b3a3f"
+          "d4740e88-5310-4c20-a3f4-b670f1982c30"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20170518T234705Z:437a19a1-8c49-4471-84e2-a0179d2b3a3f"
+          "WESTUS:20160617T050150Z:d4740e88-5310-4c20-a3f4-b670f1982c30"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -118,16 +112,16 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 18 May 2017 23:47:04 GMT"
+          "Fri, 17 Jun 2016 05:01:50 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/onesdk6479/providers/Microsoft.Resources/deployments/onesdk1920/validate?api-version=2017-05-10",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDAwNGE5ZmQtZDU4ZS00OGRjLWFlYjItNGE0YWVjNTg2MDZmL3Jlc291cmNlZ3JvdXBzL29uZXNkazY0NzkvcHJvdmlkZXJzL01pY3Jvc29mdC5SZXNvdXJjZXMvZGVwbG95bWVudHMvb25lc2RrMTkyMC92YWxpZGF0ZT9hcGktdmVyc2lvbj0yMDE3LTA1LTEw",
+      "RequestUri": "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourcegroups/onesdk5918/providers/Microsoft.Resources/deployments/onesdk1766/validate?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmIzYTNkNmItNDRjOC00NGY1LTg4YzktYjIwOTE3YzliOTZiL3Jlc291cmNlZ3JvdXBzL29uZXNkazU5MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5SZXNvdXJjZXMvZGVwbG95bWVudHMvb25lc2RrMTc2Ni92YWxpZGF0ZT9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"template\": {\r\n      \"$schema\": \"http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#\",\r\n      \"contentVersion\": \"1.0.0.0\",\r\n      \"parameters\": {\r\n        \"hostingPlanName\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"siteLocation\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"sku\": {\r\n          \"type\": \"string\",\r\n          \"allowedValues\": [\r\n            \"Free\",\r\n            \"Shared\",\r\n            \"Basic\",\r\n            \"Standard\"\r\n          ],\r\n          \"defaultValue\": \"Free\"\r\n        },\r\n        \"workerSize\": {\r\n          \"type\": \"int\",\r\n          \"allowedValues\": [\r\n            0,\r\n            1,\r\n            2\r\n          ],\r\n          \"defaultValue\": 0\r\n        }\r\n      },\r\n      \"resources\": [\r\n        {\r\n          \"apiVersion\": \"2014-04-01\",\r\n          \"name\": \"[parameters('hostingPlanName')]\",\r\n          \"type\": \"Microsoft.Web/serverfarms\",\r\n          \"location\": \"[parameters('siteLocation')]\",\r\n          \"properties\": {\r\n            \"name\": \"[parameters('hostingPlanName')]\",\r\n            \"sku\": \"[parameters('sku')]\",\r\n            \"workerSize\": \"[parameters('workerSize')]\",\r\n            \"numberOfWorkers\": 1\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"parameters\": {\r\n      \"sku\": {\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"siteLocation\": {\r\n        \"value\": \"East US\"\r\n      },\r\n      \"workerSize\": {\r\n        \"value\": 0\r\n      },\r\n      \"hostingPlanName\": {\r\n        \"value\": \"xDeploymentTestHost26668\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"template\": {\r\n      \"$schema\": \"http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#\",\r\n      \"contentVersion\": \"1.0.0.0\",\r\n      \"parameters\": {\r\n        \"hostingPlanName\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"siteLocation\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"sku\": {\r\n          \"type\": \"string\",\r\n          \"allowedValues\": [\r\n            \"Free\",\r\n            \"Shared\",\r\n            \"Basic\",\r\n            \"Standard\"\r\n          ],\r\n          \"defaultValue\": \"Free\"\r\n        },\r\n        \"workerSize\": {\r\n          \"type\": \"int\",\r\n          \"allowedValues\": [\r\n            0,\r\n            1,\r\n            2\r\n          ],\r\n          \"defaultValue\": 0\r\n        }\r\n      },\r\n      \"resources\": [\r\n        {\r\n          \"apiVersion\": \"2014-04-01\",\r\n          \"name\": \"[parameters('hostingPlanName')]\",\r\n          \"type\": \"Microsoft.Web/serverfarms\",\r\n          \"location\": \"[parameters('siteLocation')]\",\r\n          \"properties\": {\r\n            \"name\": \"[parameters('hostingPlanName')]\",\r\n            \"sku\": \"[parameters('sku')]\",\r\n            \"workerSize\": \"[parameters('workerSize')]\",\r\n            \"numberOfWorkers\": 1\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"parameters\": {\r\n      \"hostingPlanName\": {\r\n        \"value\": \"xDeploymentTestHost26668\"\r\n      },\r\n      \"sku\": {\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"workerSize\": {\r\n        \"value\": 0\r\n      },\r\n      \"siteLocation\": {\r\n        \"value\": \"East US\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\"\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -136,22 +130,19 @@
           "1563"
         ],
         "x-ms-client-request-id": [
-          "5c3b8348-e9be-4a7d-aa20-7a5a633c9cdc"
+          "8043ca59-5d05-4629-b761-88de94f71f00"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2046.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.6.0-preview"
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/onesdk6479/providers/Microsoft.Resources/deployments/onesdk1920\",\r\n  \"name\": \"onesdk1920\",\r\n  \"properties\": {\r\n    \"templateHash\": \"11242719532414354687\",\r\n    \"parameters\": {\r\n      \"hostingPlanName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"xDeploymentTestHost26668\"\r\n      },\r\n      \"siteLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"East US\"\r\n      },\r\n      \"sku\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"workerSize\": {\r\n        \"type\": \"Int\",\r\n        \"value\": 0\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"timestamp\": \"2017-05-18T23:47:06.4632993Z\",\r\n    \"duration\": \"PT0S\",\r\n    \"correlationId\": \"385bd438-8dbd-49b4-9b9e-95e55fa7d61d\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Web\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"serverfarms\",\r\n            \"locations\": [\r\n              \"eastus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [],\r\n    \"validatedResources\": [\r\n      {\r\n        \"apiVersion\": \"2014-04-01\",\r\n        \"id\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/onesdk6479/providers/Microsoft.Web/serverfarms/xDeploymentTestHost26668\",\r\n        \"name\": \"xDeploymentTestHost26668\",\r\n        \"type\": \"Microsoft.Web/serverfarms\",\r\n        \"location\": \"East US\",\r\n        \"properties\": {\r\n          \"name\": \"xDeploymentTestHost26668\",\r\n          \"sku\": \"Basic\",\r\n          \"workerSize\": 0,\r\n          \"numberOfWorkers\": 1\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/onesdk5918/providers/Microsoft.Resources/deployments/onesdk1766\",\r\n  \"name\": \"onesdk1766\",\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"hostingPlanName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"xDeploymentTestHost26668\"\r\n      },\r\n      \"siteLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"East US\"\r\n      },\r\n      \"sku\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"workerSize\": {\r\n        \"type\": \"Int\",\r\n        \"value\": 0\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Accepted\",\r\n    \"timestamp\": \"2016-06-17T05:01:51.3396211Z\",\r\n    \"duration\": \"PT0S\",\r\n    \"correlationId\": \"7be04094-aaf7-4e58-ab21-972281e2c991\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Web\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"serverfarms\",\r\n            \"locations\": [\r\n              \"eastus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [],\r\n    \"validatedResources\": [\r\n      {\r\n        \"apiVersion\": \"2014-04-01\",\r\n        \"id\": \"/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/onesdk5918/providers/Microsoft.Web/serverfarms/xDeploymentTestHost26668\",\r\n        \"name\": \"xDeploymentTestHost26668\",\r\n        \"type\": \"Microsoft.Web/serverfarms\",\r\n        \"location\": \"East US\",\r\n        \"properties\": {\r\n          \"name\": \"xDeploymentTestHost26668\",\r\n          \"sku\": \"Basic\",\r\n          \"workerSize\": 0,\r\n          \"numberOfWorkers\": 1\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "1115"
+          "1076"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -163,16 +154,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1191"
+          "1196"
         ],
         "x-ms-request-id": [
-          "385bd438-8dbd-49b4-9b9e-95e55fa7d61d"
+          "7be04094-aaf7-4e58-ab21-972281e2c991"
         ],
         "x-ms-correlation-request-id": [
-          "385bd438-8dbd-49b4-9b9e-95e55fa7d61d"
+          "7be04094-aaf7-4e58-ab21-972281e2c991"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20170518T234706Z:385bd438-8dbd-49b4-9b9e-95e55fa7d61d"
+          "WESTUS:20160617T050151Z:7be04094-aaf7-4e58-ab21-972281e2c991"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -181,16 +172,16 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 18 May 2017 23:47:05 GMT"
+          "Fri, 17 Jun 2016 05:01:50 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/onesdk6479/providers/Microsoft.Resources/deployments/onesdk1920?api-version=2017-05-10",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDAwNGE5ZmQtZDU4ZS00OGRjLWFlYjItNGE0YWVjNTg2MDZmL3Jlc291cmNlZ3JvdXBzL29uZXNkazY0NzkvcHJvdmlkZXJzL01pY3Jvc29mdC5SZXNvdXJjZXMvZGVwbG95bWVudHMvb25lc2RrMTkyMD9hcGktdmVyc2lvbj0yMDE3LTA1LTEw",
+      "RequestUri": "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourcegroups/onesdk5918/providers/Microsoft.Resources/deployments/onesdk1766?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmIzYTNkNmItNDRjOC00NGY1LTg4YzktYjIwOTE3YzliOTZiL3Jlc291cmNlZ3JvdXBzL29uZXNkazU5MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5SZXNvdXJjZXMvZGVwbG95bWVudHMvb25lc2RrMTc2Nj9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"template\": {\r\n      \"$schema\": \"http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#\",\r\n      \"contentVersion\": \"1.0.0.0\",\r\n      \"parameters\": {\r\n        \"hostingPlanName\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"siteLocation\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"sku\": {\r\n          \"type\": \"string\",\r\n          \"allowedValues\": [\r\n            \"Free\",\r\n            \"Shared\",\r\n            \"Basic\",\r\n            \"Standard\"\r\n          ],\r\n          \"defaultValue\": \"Free\"\r\n        },\r\n        \"workerSize\": {\r\n          \"type\": \"int\",\r\n          \"allowedValues\": [\r\n            0,\r\n            1,\r\n            2\r\n          ],\r\n          \"defaultValue\": 0\r\n        }\r\n      },\r\n      \"resources\": [\r\n        {\r\n          \"apiVersion\": \"2014-04-01\",\r\n          \"name\": \"[parameters('hostingPlanName')]\",\r\n          \"type\": \"Microsoft.Web/serverfarms\",\r\n          \"location\": \"[parameters('siteLocation')]\",\r\n          \"properties\": {\r\n            \"name\": \"[parameters('hostingPlanName')]\",\r\n            \"sku\": \"[parameters('sku')]\",\r\n            \"workerSize\": \"[parameters('workerSize')]\",\r\n            \"numberOfWorkers\": 1\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"parameters\": {\r\n      \"sku\": {\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"siteLocation\": {\r\n        \"value\": \"East US\"\r\n      },\r\n      \"workerSize\": {\r\n        \"value\": 0\r\n      },\r\n      \"hostingPlanName\": {\r\n        \"value\": \"xDeploymentTestHost26668\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"template\": {\r\n      \"$schema\": \"http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#\",\r\n      \"contentVersion\": \"1.0.0.0\",\r\n      \"parameters\": {\r\n        \"hostingPlanName\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"siteLocation\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"sku\": {\r\n          \"type\": \"string\",\r\n          \"allowedValues\": [\r\n            \"Free\",\r\n            \"Shared\",\r\n            \"Basic\",\r\n            \"Standard\"\r\n          ],\r\n          \"defaultValue\": \"Free\"\r\n        },\r\n        \"workerSize\": {\r\n          \"type\": \"int\",\r\n          \"allowedValues\": [\r\n            0,\r\n            1,\r\n            2\r\n          ],\r\n          \"defaultValue\": 0\r\n        }\r\n      },\r\n      \"resources\": [\r\n        {\r\n          \"apiVersion\": \"2014-04-01\",\r\n          \"name\": \"[parameters('hostingPlanName')]\",\r\n          \"type\": \"Microsoft.Web/serverfarms\",\r\n          \"location\": \"[parameters('siteLocation')]\",\r\n          \"properties\": {\r\n            \"name\": \"[parameters('hostingPlanName')]\",\r\n            \"sku\": \"[parameters('sku')]\",\r\n            \"workerSize\": \"[parameters('workerSize')]\",\r\n            \"numberOfWorkers\": 1\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"parameters\": {\r\n      \"hostingPlanName\": {\r\n        \"value\": \"xDeploymentTestHost26668\"\r\n      },\r\n      \"sku\": {\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"workerSize\": {\r\n        \"value\": 0\r\n      },\r\n      \"siteLocation\": {\r\n        \"value\": \"East US\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\"\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -199,22 +190,19 @@
           "1563"
         ],
         "x-ms-client-request-id": [
-          "d1398914-1d6b-432b-8607-1694c54e9af8"
+          "5014773f-5edb-4ec9-96e9-2e5c41e421bc"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2046.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.6.0-preview"
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/onesdk6479/providers/Microsoft.Resources/deployments/onesdk1920\",\r\n  \"name\": \"onesdk1920\",\r\n  \"properties\": {\r\n    \"templateHash\": \"11242719532414354687\",\r\n    \"parameters\": {\r\n      \"hostingPlanName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"xDeploymentTestHost26668\"\r\n      },\r\n      \"siteLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"East US\"\r\n      },\r\n      \"sku\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"workerSize\": {\r\n        \"type\": \"Int\",\r\n        \"value\": 0\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Accepted\",\r\n    \"timestamp\": \"2017-05-18T23:47:08.2550389Z\",\r\n    \"duration\": \"PT0.895761S\",\r\n    \"correlationId\": \"8f54ab66-ac95-4d0a-8c5c-a54096e0fca9\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Web\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"serverfarms\",\r\n            \"locations\": [\r\n              \"eastus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": []\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/onesdk5918/providers/Microsoft.Resources/deployments/onesdk1766\",\r\n  \"name\": \"onesdk1766\",\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"hostingPlanName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"xDeploymentTestHost26668\"\r\n      },\r\n      \"siteLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"East US\"\r\n      },\r\n      \"sku\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"workerSize\": {\r\n        \"type\": \"Int\",\r\n        \"value\": 0\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Accepted\",\r\n    \"timestamp\": \"2016-06-17T05:01:53.0511897Z\",\r\n    \"duration\": \"PT1.0161187S\",\r\n    \"correlationId\": \"d8f93411-a6ef-4328-8707-550ef4c04c48\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Web\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"serverfarms\",\r\n            \"locations\": [\r\n              \"eastus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": []\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "736"
+          "699"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -226,19 +214,19 @@
           "no-cache"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/onesdk6479/providers/Microsoft.Resources/deployments/onesdk1920/operationStatuses/08587064556581183372?api-version=2017-05-10"
+          "https://management.azure.com/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourcegroups/onesdk5918/providers/Microsoft.Resources/deployments/onesdk1766/operationStatuses/08587354671734425519?api-version=2016-02-01"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1190"
+          "1195"
         ],
         "x-ms-request-id": [
-          "8f54ab66-ac95-4d0a-8c5c-a54096e0fca9"
+          "d8f93411-a6ef-4328-8707-550ef4c04c48"
         ],
         "x-ms-correlation-request-id": [
-          "8f54ab66-ac95-4d0a-8c5c-a54096e0fca9"
+          "d8f93411-a6ef-4328-8707-550ef4c04c48"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20170518T234708Z:8f54ab66-ac95-4d0a-8c5c-a54096e0fca9"
+          "WESTUS:20160617T050153Z:d8f93411-a6ef-4328-8707-550ef4c04c48"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -247,28 +235,25 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 18 May 2017 23:47:07 GMT"
+          "Fri, 17 Jun 2016 05:01:52 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/onesdk6479/deployments/onesdk1920/operations?api-version=2017-05-10",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDAwNGE5ZmQtZDU4ZS00OGRjLWFlYjItNGE0YWVjNTg2MDZmL3Jlc291cmNlZ3JvdXBzL29uZXNkazY0NzkvZGVwbG95bWVudHMvb25lc2RrMTkyMC9vcGVyYXRpb25zP2FwaS12ZXJzaW9uPTIwMTctMDUtMTA=",
+      "RequestUri": "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourcegroups/onesdk5918/deployments/onesdk1766/operations?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmIzYTNkNmItNDRjOC00NGY1LTg4YzktYjIwOTE3YzliOTZiL3Jlc291cmNlZ3JvdXBzL29uZXNkazU5MTgvZGVwbG95bWVudHMvb25lc2RrMTc2Ni9vcGVyYXRpb25zP2FwaS12ZXJzaW9uPTIwMTYtMDItMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "33dc3c14-e611-4d98-8c89-8b00f64cdd74"
+          "43829e5f-5325-46af-a3d8-d0920d05ebd6"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2046.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.6.0-preview"
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.0.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"value\": []\r\n}",
@@ -286,16 +271,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14976"
+          "14998"
         ],
         "x-ms-request-id": [
-          "b635285f-a1b3-4d61-a149-aba0b7439df2"
+          "83521830-b300-4c1c-ba81-8baa25b42f1a"
         ],
         "x-ms-correlation-request-id": [
-          "b635285f-a1b3-4d61-a149-aba0b7439df2"
+          "83521830-b300-4c1c-ba81-8baa25b42f1a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20170518T234713Z:b635285f-a1b3-4d61-a149-aba0b7439df2"
+          "WESTUS:20160617T050158Z:83521830-b300-4c1c-ba81-8baa25b42f1a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -304,34 +289,31 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 18 May 2017 23:47:13 GMT"
+          "Fri, 17 Jun 2016 05:01:58 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/onesdk6479/deployments/onesdk1920/operations?api-version=2017-05-10",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDAwNGE5ZmQtZDU4ZS00OGRjLWFlYjItNGE0YWVjNTg2MDZmL3Jlc291cmNlZ3JvdXBzL29uZXNkazY0NzkvZGVwbG95bWVudHMvb25lc2RrMTkyMC9vcGVyYXRpb25zP2FwaS12ZXJzaW9uPTIwMTctMDUtMTA=",
+      "RequestUri": "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourcegroups/onesdk5918/deployments/onesdk1766/operations?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmIzYTNkNmItNDRjOC00NGY1LTg4YzktYjIwOTE3YzliOTZiL3Jlc291cmNlZ3JvdXBzL29uZXNkazU5MTgvZGVwbG95bWVudHMvb25lc2RrMTc2Ni9vcGVyYXRpb25zP2FwaS12ZXJzaW9uPTIwMTYtMDItMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "cb183b42-a352-435b-a554-edbe6f7b6853"
+          "6ef4f85e-2675-44af-a9e0-183494b3d51f"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2046.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.6.0-preview"
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/onesdk6479/providers/Microsoft.Resources/deployments/onesdk1920/operations/2F40A6A4AE2BBD81\",\r\n      \"operationId\": \"2F40A6A4AE2BBD81\",\r\n      \"properties\": {\r\n        \"provisioningOperation\": \"Create\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2017-05-18T23:47:19.2660024Z\",\r\n        \"duration\": \"PT10.4244172S\",\r\n        \"trackingId\": \"19dec25d-bc8c-42e1-9611-3a3e6323f177\",\r\n        \"serviceRequestId\": \"0de4f365-8ea3-4e42-9636-3834f5da6e64\",\r\n        \"statusCode\": \"OK\",\r\n        \"targetResource\": {\r\n          \"id\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/onesdk6479/providers/Microsoft.Web/serverfarms/xDeploymentTestHost26668\",\r\n          \"resourceType\": \"Microsoft.Web/serverfarms\",\r\n          \"resourceName\": \"xDeploymentTestHost26668\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/onesdk5918/providers/Microsoft.Resources/deployments/onesdk1766/operations/410DB66B9885198C\",\r\n      \"operationId\": \"410DB66B9885198C\",\r\n      \"properties\": {\r\n        \"provisioningOperation\": \"Create\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2016-06-17T05:02:06.0011297Z\",\r\n        \"duration\": \"PT12.127502S\",\r\n        \"trackingId\": \"d2b650a3-c7fd-4566-9689-22779ff1f7a7\",\r\n        \"serviceRequestId\": \"ddc3cd89-5d50-4e4e-b523-1277a7370264\",\r\n        \"statusCode\": \"OK\",\r\n        \"targetResource\": {\r\n          \"id\": \"/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/onesdk5918/providers/Microsoft.Web/serverfarms/xDeploymentTestHost26668\",\r\n          \"resourceType\": \"Microsoft.Web/serverfarms\",\r\n          \"resourceName\": \"xDeploymentTestHost26668\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/onesdk5918/providers/Microsoft.Resources/deployments/onesdk1766/operations/08587354671734425519\",\r\n      \"operationId\": \"08587354671734425519\",\r\n      \"properties\": {\r\n        \"provisioningOperation\": \"EvaluateDeploymentOutput\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2016-06-17T05:02:06.3163077Z\",\r\n        \"duration\": \"PT0.2249213S\",\r\n        \"trackingId\": \"2e6d8847-262e-4a23-b96d-6451bb86b355\",\r\n        \"statusCode\": \"OK\",\r\n        \"statusMessage\": null\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "740"
+          "1206"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -343,16 +325,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14974"
+          "14996"
         ],
         "x-ms-request-id": [
-          "43e365f6-edfd-481f-a59e-7a8c78bd012e"
+          "cd748130-8c73-496d-aaa9-19cd622982b6"
         ],
         "x-ms-correlation-request-id": [
-          "43e365f6-edfd-481f-a59e-7a8c78bd012e"
+          "cd748130-8c73-496d-aaa9-19cd622982b6"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20170518T234719Z:43e365f6-edfd-481f-a59e-7a8c78bd012e"
+          "WESTUS:20160617T050209Z:cd748130-8c73-496d-aaa9-19cd622982b6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -361,94 +343,31 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 18 May 2017 23:47:18 GMT"
+          "Fri, 17 Jun 2016 05:02:08 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/onesdk6479/providers/Microsoft.Resources/deployments/onesdk1920?api-version=2017-05-10",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDAwNGE5ZmQtZDU4ZS00OGRjLWFlYjItNGE0YWVjNTg2MDZmL3Jlc291cmNlZ3JvdXBzL29uZXNkazY0NzkvcHJvdmlkZXJzL01pY3Jvc29mdC5SZXNvdXJjZXMvZGVwbG95bWVudHMvb25lc2RrMTkyMD9hcGktdmVyc2lvbj0yMDE3LTA1LTEw",
+      "RequestUri": "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourcegroups/onesdk5918/providers/Microsoft.Resources/deployments/onesdk1766?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmIzYTNkNmItNDRjOC00NGY1LTg4YzktYjIwOTE3YzliOTZiL3Jlc291cmNlZ3JvdXBzL29uZXNkazU5MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5SZXNvdXJjZXMvZGVwbG95bWVudHMvb25lc2RrMTc2Nj9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "662d4700-7722-4731-b2e0-9c3b3bbb6704"
+          "fae9129c-00bc-4f6d-88af-1d51c7cd52c8"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2046.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.6.0-preview"
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/onesdk6479/providers/Microsoft.Resources/deployments/onesdk1920\",\r\n  \"name\": \"onesdk1920\",\r\n  \"properties\": {\r\n    \"templateHash\": \"11242719532414354687\",\r\n    \"parameters\": {\r\n      \"hostingPlanName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"xDeploymentTestHost26668\"\r\n      },\r\n      \"siteLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"East US\"\r\n      },\r\n      \"sku\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"workerSize\": {\r\n        \"type\": \"Int\",\r\n        \"value\": 0\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Running\",\r\n    \"timestamp\": \"2017-05-18T23:47:08.589108Z\",\r\n    \"duration\": \"PT1.2298301S\",\r\n    \"correlationId\": \"8f54ab66-ac95-4d0a-8c5c-a54096e0fca9\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Web\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"serverfarms\",\r\n            \"locations\": [\r\n              \"eastus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": []\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/onesdk5918/providers/Microsoft.Resources/deployments/onesdk1766\",\r\n  \"name\": \"onesdk1766\",\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"hostingPlanName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"xDeploymentTestHost26668\"\r\n      },\r\n      \"siteLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"East US\"\r\n      },\r\n      \"sku\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"workerSize\": {\r\n        \"type\": \"Int\",\r\n        \"value\": 0\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Running\",\r\n    \"timestamp\": \"2016-06-17T05:01:53.8029205Z\",\r\n    \"duration\": \"PT1.7678495S\",\r\n    \"correlationId\": \"d8f93411-a6ef-4328-8707-550ef4c04c48\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Web\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"serverfarms\",\r\n            \"locations\": [\r\n              \"eastus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": []\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "735"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Retry-After": [
-          "5"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14975"
-        ],
-        "x-ms-request-id": [
-          "4643c9bf-7128-494c-8eba-d20e908b8241"
-        ],
-        "x-ms-correlation-request-id": [
-          "4643c9bf-7128-494c-8eba-d20e908b8241"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20170518T234714Z:4643c9bf-7128-494c-8eba-d20e908b8241"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 18 May 2017 23:47:13 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/onesdk6479/providers/Microsoft.Resources/deployments/onesdk1920?api-version=2017-05-10",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDAwNGE5ZmQtZDU4ZS00OGRjLWFlYjItNGE0YWVjNTg2MDZmL3Jlc291cmNlZ3JvdXBzL29uZXNkazY0NzkvcHJvdmlkZXJzL01pY3Jvc29mdC5SZXNvdXJjZXMvZGVwbG95bWVudHMvb25lc2RrMTkyMD9hcGktdmVyc2lvbj0yMDE3LTA1LTEw",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "2fe72349-3b33-4622-a38f-9af39c2c8482"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.7.2046.0",
-          "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.6.0-preview"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/onesdk6479/providers/Microsoft.Resources/deployments/onesdk1920\",\r\n  \"name\": \"onesdk1920\",\r\n  \"properties\": {\r\n    \"templateHash\": \"11242719532414354687\",\r\n    \"parameters\": {\r\n      \"hostingPlanName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"xDeploymentTestHost26668\"\r\n      },\r\n      \"siteLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"East US\"\r\n      },\r\n      \"sku\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"workerSize\": {\r\n        \"type\": \"Int\",\r\n        \"value\": 0\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"timestamp\": \"2017-05-18T23:47:19.462412Z\",\r\n    \"duration\": \"PT12.1031341S\",\r\n    \"correlationId\": \"8f54ab66-ac95-4d0a-8c5c-a54096e0fca9\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Web\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"serverfarms\",\r\n            \"locations\": [\r\n              \"eastus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [],\r\n    \"outputResources\": [\r\n      {\r\n        \"id\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/onesdk6479/providers/Microsoft.Web/serverfarms/xDeploymentTestHost26668\"\r\n      }\r\n    ]\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "906"
+          "698"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -460,16 +379,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14973"
+          "14997"
         ],
         "x-ms-request-id": [
-          "b5762ddd-56da-495f-bb72-189a8b7e722b"
+          "2ef12976-8bdb-448f-af9f-2be4b8952587"
         ],
         "x-ms-correlation-request-id": [
-          "b5762ddd-56da-495f-bb72-189a8b7e722b"
+          "2ef12976-8bdb-448f-af9f-2be4b8952587"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20170518T234719Z:b5762ddd-56da-495f-bb72-189a8b7e722b"
+          "WESTUS:20160617T050158Z:2ef12976-8bdb-448f-af9f-2be4b8952587"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -478,20 +397,73 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 18 May 2017 23:47:18 GMT"
+          "Fri, 17 Jun 2016 05:01:58 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/onesdk6479/providers/Microsoft.Web/serverFarms?api-version=2015-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDAwNGE5ZmQtZDU4ZS00OGRjLWFlYjItNGE0YWVjNTg2MDZmL3Jlc291cmNlR3JvdXBzL29uZXNkazY0NzkvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvc2VydmVyRmFybXM/YXBpLXZlcnNpb249MjAxNS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourcegroups/onesdk5918/providers/Microsoft.Resources/deployments/onesdk1766?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmIzYTNkNmItNDRjOC00NGY1LTg4YzktYjIwOTE3YzliOTZiL3Jlc291cmNlZ3JvdXBzL29uZXNkazU5MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5SZXNvdXJjZXMvZGVwbG95bWVudHMvb25lc2RrMTc2Nj9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cc46b6cd-dcc9-41e9-aa17-d10f76dc9c8f"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/onesdk5918/providers/Microsoft.Resources/deployments/onesdk1766\",\r\n  \"name\": \"onesdk1766\",\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"hostingPlanName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"xDeploymentTestHost26668\"\r\n      },\r\n      \"siteLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"East US\"\r\n      },\r\n      \"sku\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"workerSize\": {\r\n        \"type\": \"Int\",\r\n        \"value\": 0\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"timestamp\": \"2016-06-17T05:02:06.3529625Z\",\r\n    \"duration\": \"PT14.3178915S\",\r\n    \"correlationId\": \"d8f93411-a6ef-4328-8707-550ef4c04c48\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Web\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"serverfarms\",\r\n            \"locations\": [\r\n              \"eastus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [],\r\n    \"outputResources\": [\r\n      {\r\n        \"id\": \"Microsoft.Web/serverfarms/xDeploymentTestHost26668\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "781"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14995"
+        ],
+        "x-ms-request-id": [
+          "72cca255-4543-496b-a303-d430fec90929"
+        ],
+        "x-ms-correlation-request-id": [
+          "72cca255-4543-496b-a303-d430fec90929"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160617T050209Z:72cca255-4543-496b-a303-d430fec90929"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 17 Jun 2016 05:02:08 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/onesdk5918/providers/Microsoft.Web/serverFarms?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmIzYTNkNmItNDRjOC00NGY1LTg4YzktYjIwOTE3YzliOTZiL3Jlc291cmNlR3JvdXBzL29uZXNkazU5MTgvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvc2VydmVyRmFybXM/YXBpLXZlcnNpb249MjAxNS0wOC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v4.0.0.0",
-          "PSVersion/v5.1.15063.296"
+          "AzurePowershell/v1.5.0.0"
         ],
         "ParameterSetName": [
           "Get resource collection"
@@ -500,10 +472,10 @@
           "Get-AzureRmResource"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/onesdk6479/providers/Microsoft.Web/serverfarms/xDeploymentTestHost26668\",\r\n      \"name\": \"xDeploymentTestHost26668\",\r\n      \"type\": \"Microsoft.Web/serverfarms\",\r\n      \"kind\": \"app\",\r\n      \"location\": \"East US\",\r\n      \"properties\": {\r\n        \"serverFarmId\": 0,\r\n        \"name\": \"xDeploymentTestHost26668\",\r\n        \"workerSize\": 0,\r\n        \"workerSizeId\": 0,\r\n        \"workerTierName\": null,\r\n        \"numberOfWorkers\": 1,\r\n        \"currentWorkerSize\": 0,\r\n        \"currentWorkerSizeId\": 0,\r\n        \"currentNumberOfWorkers\": 1,\r\n        \"status\": 0,\r\n        \"webSpace\": \"onesdk6479-EastUSwebspace\",\r\n        \"subscription\": \"4004a9fd-d58e-48dc-aeb2-4a4aec58606f\",\r\n        \"adminSiteName\": null,\r\n        \"hostingEnvironment\": null,\r\n        \"hostingEnvironmentProfile\": null,\r\n        \"maximumNumberOfWorkers\": 3,\r\n        \"planName\": \"VirtualDedicatedPlan\",\r\n        \"adminRuntimeSiteName\": null,\r\n        \"computeMode\": 0,\r\n        \"siteMode\": null,\r\n        \"geoRegion\": \"East US\",\r\n        \"perSiteScaling\": false,\r\n        \"numberOfSites\": 0,\r\n        \"hostingEnvironmentId\": null,\r\n        \"tags\": null,\r\n        \"kind\": \"app\",\r\n        \"resourceGroup\": \"onesdk6479\",\r\n        \"reserved\": false,\r\n        \"mdmId\": \"waws-prod-blu-045_12266\",\r\n        \"targetWorkerCount\": 0,\r\n        \"targetWorkerSizeId\": 0,\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"sku\": {\r\n        \"name\": \"B1\",\r\n        \"tier\": \"Basic\",\r\n        \"size\": \"B1\",\r\n        \"family\": \"B\",\r\n        \"capacity\": 1\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null,\r\n  \"id\": null\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/onesdk5918/providers/Microsoft.Web/serverfarms/xDeploymentTestHost26668\",\r\n      \"name\": \"xDeploymentTestHost26668\",\r\n      \"type\": \"Microsoft.Web/serverfarms\",\r\n      \"location\": \"East US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"serverFarmId\": 0,\r\n        \"name\": \"xDeploymentTestHost26668\",\r\n        \"workerSize\": 0,\r\n        \"workerSizeId\": 0,\r\n        \"workerTierName\": null,\r\n        \"numberOfWorkers\": 1,\r\n        \"currentWorkerSize\": 0,\r\n        \"currentWorkerSizeId\": 0,\r\n        \"currentNumberOfWorkers\": 1,\r\n        \"status\": 0,\r\n        \"webSpace\": \"onesdk5918-EastUSwebspace\",\r\n        \"subscription\": \"fb3a3d6b-44c8-44f5-88c9-b20917c9b96b\",\r\n        \"adminSiteName\": null,\r\n        \"hostingEnvironment\": null,\r\n        \"hostingEnvironmentProfile\": null,\r\n        \"maximumNumberOfWorkers\": 3,\r\n        \"planName\": \"VirtualDedicatedPlan\",\r\n        \"adminRuntimeSiteName\": null,\r\n        \"computeMode\": 0,\r\n        \"siteMode\": null,\r\n        \"geoRegion\": \"East US\",\r\n        \"perSiteScaling\": false,\r\n        \"numberOfSites\": 0,\r\n        \"hostingEnvironmentId\": null,\r\n        \"tags\": null,\r\n        \"kind\": null,\r\n        \"resourceGroup\": \"onesdk5918\"\r\n      },\r\n      \"sku\": {\r\n        \"name\": \"B1\",\r\n        \"tier\": \"Basic\",\r\n        \"size\": \"B1\",\r\n        \"family\": \"B\",\r\n        \"capacity\": 1\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "1152"
+          "1012"
         ],
         "Content-Type": [
           "application/json"
@@ -518,22 +490,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "7fc6e963-28e0-453f-b411-50a0bdfce542"
+          "c943204e-a21a-4c33-a957-870176d01378"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "06a995a7-996c-4214-b1c6-42ff4354efb6"
+          "dc71f931-8cbf-4350-af8e-54c1c960800d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20170518T234722Z:06a995a7-996c-4214-b1c6-42ff4354efb6"
+          "WESTUS:20160617T050210Z:dc71f931-8cbf-4350-af8e-54c1c960800d"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 18 May 2017 23:47:22 GMT"
+          "Fri, 17 Jun 2016 05:02:10 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -550,13 +522,13 @@
   ],
   "Names": {
     "Test-GetResourceWithCollection": [
-      "onesdk6479",
-      "onesdk1920"
+      "onesdk5918",
+      "onesdk1766"
     ]
   },
   "Variables": {
-    "SubscriptionId": "4004a9fd-d58e-48dc-aeb2-4a4aec58606f",
-    "TenantId": "1273adef-00a3-4086-a51a-dbcce1857d36",
-    "Domain": "rbacclitest.onmicrosoft.com"
+    "SubscriptionId": "fb3a3d6b-44c8-44f5-88c9-b20917c9b96b",
+    "TenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+    "Domain": "microsoft.com"
   }
 }
