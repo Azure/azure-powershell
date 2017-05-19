@@ -71,12 +71,12 @@ FormatsToProcess = '.\AzureRM.Bootstrapper.Format.ps1xml'
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Set-BootstrapRepo', 'Update-AzureRmProfile', 'Uninstall-AzureRmProfile', 
                'Install-AzureRmProfile', 'Use-AzureRmProfile', 'Get-AzureRmProfile', 
-               'Get-AzureRmModule'
+               'Get-AzureRmModule', 'Set-AzureRmDefaultProfile', 'Remove-AzureRmDefaultProfile'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Update-AzureRmProfile', 'Uninstall-AzureRmProfile', 
                'Install-AzureRmProfile', 'Use-AzureRmProfile', 'Get-AzureRmProfile', 
-               'Get-AzureRmModule'
+               'Get-AzureRmModule', 'Set-AzureRmDefaultProfile', 'Remove-AzureRmDefaultProfile'
 
 # Variables to export from this module
 # VariablesToExport = @()
