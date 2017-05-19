@@ -1106,11 +1106,11 @@ function Set-AzureRmDefaultProfile
     $Scope = $PSBoundParameters.Scope
     $Force = $PSBoundParameters.Force
     
-    $defaultProfile = $PSDefaultParameterValues["*-AzureRmProfile:Profile"]
+    $defaultProfile = $Global:PSDefaultParameterValues["*-AzureRmProfile:Profile"]
     if ($defaultProfile -ne $armProfile)
     {
       # Set DefaultProfile for this session
-      $PSDefaultParameterValues["*-AzureRmProfile:Profile"]="$armProfile"
+      $Global:PSDefaultParameterValues["*-AzureRmProfile:Profile"]="$armProfile"
 
       # Edit the profile content
       $profileContent = @"
@@ -1127,7 +1127,7 @@ function Set-AzureRmDefaultProfile
           # Remove previous setting if exists
           Write-Verbose "Updating default profile value to $armProfile"
           $RemoveSettingScriptBlock = {
-            (Get-Content -Path $profilePath -ErrorAction Stop) -notmatch 'PSDefaultParameterValues' | Set-Content -path $profilePath -ErrorAction Stop
+            (Get-Content -Path $profilePath -ErrorAction Stop) | Select-String -pattern 'PSDefaultParameterValues' -notmatch | Set-Content -path  $profilePath -ErrorAction Stop
           }
           Invoke-CommandWithRetry -ScriptBlock $RemoveSettingScriptBlock
 
@@ -1162,7 +1162,7 @@ function Remove-AzureRmDefaultProfile
       if (($Force.IsPresent -or $PSCmdlet.ShouldContinue("Are you sure you would like to remove Default Profile?", "Remove Default profile")))
       {
         Write-Verbose "Removing default profile value"
-        $PSDefaultParameterValues.Remove("*-AzureRmProfile:Profile")
+        $Global:PSDefaultParameterValues.Remove("*-AzureRmProfile:Profile")
         $importedModules = Get-Module "Azure*"
         foreach ($importedModule in $importedModules) 
         {
@@ -1186,7 +1186,7 @@ function Remove-AzureRmDefaultProfile
           }
 
           $RemoveSettingScriptBlock = {
-            (Get-Content -Path $profilePath -ErrorAction Stop) -notmatch 'PSDefaultParameterValues' | Set-Content -path $profilePath -ErrorAction Stop
+            (Get-Content -Path $profilePath -ErrorAction Stop) | Select-String -pattern 'PSDefaultParameterValues' -notmatch | Set-Content -path  $profilePath -ErrorAction Stop
           }
           Invoke-CommandWithRetry -ScriptBlock $RemoveSettingScriptBlock
         }
