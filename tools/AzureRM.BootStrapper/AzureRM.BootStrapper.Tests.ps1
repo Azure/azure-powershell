@@ -1,5 +1,4 @@
-Import-Module C:\github2\azure-powershell\tools\azurerm.bootstrapper\AzureRM.Bootstrapper.psm1
-###Requires -Modules AzureRM.BootStrapper
+#Requires -Modules AzureRM.BootStrapper
 $global:testProfileMap = "{`"Profile1`": { `"Module1`": [`"1.0`", `"0.1`"], `"Module2`": [`"1.0`", `"0.2`"] }, `"Profile2`": { `"Module1`": [`"2.0`", `"1.0`"], `"Module2`": [`"2.0`"] }}" 
 
 Describe "Get-ProfileCachePath" {
