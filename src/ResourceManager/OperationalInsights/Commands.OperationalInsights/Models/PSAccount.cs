@@ -23,16 +23,16 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         {
         }
 
-        public PSAccount(Account account)
+        public PSAccount(LinkTarget account)
         {
             if (account == null)
             {
                 throw new ArgumentNullException("account");
             }
 
-            this.AccountName = account.AccountName;
+            this.AccountName = account.DisplayName;
             this.Name = account.WorkspaceName;
-            this.CustomerId = account.CustomerId;
+            this.CustomerId = new Guid(account.CustomerId);
             this.Location = account.Location;
         }
 
