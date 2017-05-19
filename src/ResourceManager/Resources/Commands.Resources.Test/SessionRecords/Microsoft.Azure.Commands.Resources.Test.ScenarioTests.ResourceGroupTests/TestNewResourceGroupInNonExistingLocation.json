@@ -1,19 +1,22 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourcegroups/onesdk8078?api-version=2016-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmIzYTNkNmItNDRjOC00NGY1LTg4YzktYjIwOTE3YzliOTZiL3Jlc291cmNlZ3JvdXBzL29uZXNkazgwNzg/YXBpLXZlcnNpb249MjAxNi0wNy0wMQ==",
+      "RequestUri": "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/onesdk2343?api-version=2017-05-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDAwNGE5ZmQtZDU4ZS00OGRjLWFlYjItNGE0YWVjNTg2MDZmL3Jlc291cmNlZ3JvdXBzL29uZXNkazIzNDM/YXBpLXZlcnNpb249MjAxNy0wNS0xMA==",
       "RequestMethod": "HEAD",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7c5f6182-658f-4824-a625-31e1e22740e7"
+          "29ef8133-0e02-4228-932d-ca21b10d9300"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.1.5-preview"
+          "FxVersion/4.7.2046.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.6.0-preview"
         ]
       },
       "ResponseBody": "",
@@ -34,16 +37,16 @@
           "gateway"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14999"
+          "12657"
         ],
         "x-ms-request-id": [
-          "3ad39e58-5de6-40e9-ab0c-f3331eb93dd0"
+          "ab1d6cb6-ac8b-4a2f-9106-59688bc87ee8"
         ],
         "x-ms-correlation-request-id": [
-          "3ad39e58-5de6-40e9-ab0c-f3331eb93dd0"
+          "ab1d6cb6-ac8b-4a2f-9106-59688bc87ee8"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20160826T210610Z:3ad39e58-5de6-40e9-ab0c-f3331eb93dd0"
+          "WESTUS:20170519T000020Z:ab1d6cb6-ac8b-4a2f-9106-59688bc87ee8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -52,14 +55,14 @@
           "no-cache"
         ],
         "Date": [
-          "Fri, 26 Aug 2016 21:06:10 GMT"
+          "Fri, 19 May 2017 00:00:20 GMT"
         ]
       },
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourcegroups/onesdk8078?api-version=2016-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmIzYTNkNmItNDRjOC00NGY1LTg4YzktYjIwOTE3YzliOTZiL3Jlc291cmNlZ3JvdXBzL29uZXNkazgwNzg/YXBpLXZlcnNpb249MjAxNi0wNy0wMQ==",
+      "RequestUri": "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/onesdk2343?api-version=2017-05-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDAwNGE5ZmQtZDU4ZS00OGRjLWFlYjItNGE0YWVjNTg2MDZmL3Jlc291cmNlZ3JvdXBzL29uZXNkazIzNDM/YXBpLXZlcnNpb249MjAxNy0wNS0xMA==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"non-existing\"\r\n}",
       "RequestHeaders": {
@@ -70,13 +73,16 @@
           "34"
         ],
         "x-ms-client-request-id": [
-          "9c217ae7-2e84-43b8-94dd-31257314e408"
+          "af2d7591-803b-41ab-8e0c-dea8841f3bac"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.1.5-preview"
+          "FxVersion/4.7.2046.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.6.0-preview"
         ]
       },
       "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidResourceLocation\",\r\n    \"message\": \"The specified location 'non-existing' is invalid. A location must consist of characters, whitespace, digit, or following symbols '(,)'.\"\r\n  }\r\n}",
@@ -97,16 +103,16 @@
           "gateway"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1197"
         ],
         "x-ms-request-id": [
-          "c78a5b5c-9d89-462e-872f-c45824c0f5a6"
+          "344c7387-e674-47c8-a751-397ba6357077"
         ],
         "x-ms-correlation-request-id": [
-          "c78a5b5c-9d89-462e-872f-c45824c0f5a6"
+          "344c7387-e674-47c8-a751-397ba6357077"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20160826T210610Z:c78a5b5c-9d89-462e-872f-c45824c0f5a6"
+          "WESTUS:20170519T000020Z:344c7387-e674-47c8-a751-397ba6357077"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -115,7 +121,7 @@
           "no-cache"
         ],
         "Date": [
-          "Fri, 26 Aug 2016 21:06:10 GMT"
+          "Fri, 19 May 2017 00:00:20 GMT"
         ]
       },
       "StatusCode": 400
@@ -123,12 +129,12 @@
   ],
   "Names": {
     "Test-NewResourceGroupInNonExistingLocation": [
-      "onesdk8078"
+      "onesdk2343"
     ]
   },
   "Variables": {
-    "SubscriptionId": "fb3a3d6b-44c8-44f5-88c9-b20917c9b96b",
-    "TenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-    "Domain": "microsoft.com"
+    "SubscriptionId": "4004a9fd-d58e-48dc-aeb2-4a4aec58606f",
+    "TenantId": "1273adef-00a3-4086-a51a-dbcce1857d36",
+    "Domain": "rbacclitest.onmicrosoft.com"
   }
 }

@@ -251,8 +251,17 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
         public List<PSADObject> GetObjectsByObjectId(List<string> objectIds)
         {
             List<PSADObject> result = new List<PSADObject>();
-            var adObjects = GraphClient.Objects.GetObjectsByObjectIds(new GetObjectsParameters { ObjectIds = objectIds, IncludeDirectoryObjectReferences = true });
-            result.AddRange(adObjects.Select(o => o.ToPSADObject()));
+            IPage<AADObject> adObjects;
+            for(int i=0; i<objectIds.Count; i+=1000)
+            {
+                if((i+1000) > objectIds.Count){
+                    adObjects = GraphClient.Objects.GetObjectsByObjectIds(new GetObjectsParameters { ObjectIds = objectIds.GetRange(i, objectIds.Count - i), IncludeDirectoryObjectReferences = true });
+                }
+                else{
+                    adObjects = GraphClient.Objects.GetObjectsByObjectIds(new GetObjectsParameters { ObjectIds = objectIds.GetRange(i,1000), IncludeDirectoryObjectReferences = true });
+                }
+                result.AddRange(adObjects.Select(o => o.ToPSADObject()));
+            }
             return result;
         }
 
