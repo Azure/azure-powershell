@@ -50,8 +50,14 @@
     <SkipHelp Condition =" '$(SkipHelp)' == '' ">false</SkipHelp>
   </PropertyGroup>
   <ItemGroup>
-    <CmdletSolutionsToBuild Include=".\src\ResourceManager.ForRefactoringOnly.sln"
+    <CmdletSolutionsToBuild Include=".\src\Storage\Storage.sln;.\src\ResourceManager.ForRefactoringOnly.sln;.\src\ServiceManagement\ServiceManagement.sln;"
                             Condition=" '$(Scope)' == 'all' "/>
+    <CmdletSolutionsToBuild Include=".\src\ResourceManager\$(Scope)\*.sln"
+                            Condition=" '$(Scope)' != 'all' and '$(Scope)' != 'ServiceManagement' and '$(Scope)' != 'AzureStorage' "/>
+    <CmdletSolutionsToBuild Include=".\src\ServiceManagement\ServiceManagement.sln"
+                            Condition=" '$(Scope)' == 'ServiceManagement'"/>
+    <CmdletSolutionsToBuild Include=".\src\Storage\Storage.sln"
+                            Condition=" '$(Scope)' == 'AzureStorage' "/>
     <SetupSln Include=".\setup\azurepowershell.sln" />
     <StaticAnalysis Include=".\tools\StaticAnalysis\StaticAnalysis.sln" />
   </ItemGroup>
