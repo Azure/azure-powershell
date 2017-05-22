@@ -95,6 +95,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
             expectedProfile.Context.TokenCache = Encoding.ASCII.GetBytes(testToken);
 
             // Setup
+            // Clear the the current profile
+            AsAzureClientSession.Instance.Profile.Environments.Clear();
+
             var mockAuthenticationProvider = new Mock<IAsAzureAuthenticationProvider>();
             mockAuthenticationProvider.Setup(
                 authProvider => authProvider.GetAadAuthenticatedToken(
