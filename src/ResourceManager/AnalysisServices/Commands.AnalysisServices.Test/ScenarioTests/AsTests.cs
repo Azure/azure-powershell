@@ -30,7 +30,14 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
         {
             NewInstance.RunPsTest(string.Format("Test-AnalysisServicesServer -location '{0}'", AsTestsBase.resourceGroupLocation));
         }
-        
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAnalysisServicesServerScaleUpDown()
+        {
+            NewInstance.RunPsTest(string.Format("Test-AnalysisServicesServerScaleUpDown -location '{0}'", AsTestsBase.resourceGroupLocation));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNegativeAnalysisServicesServer()
