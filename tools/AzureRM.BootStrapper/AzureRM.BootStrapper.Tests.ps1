@@ -182,7 +182,6 @@ Describe "Get-AzureProfileMap" {
             $ProfileMapPath | Add-Member NoteProperty 'FullName' -Value '124-MockedDifferentETag.json'
             Mock Get-ChildItem -Verifiable { @($ProfileMapPath)}
             Mock Test-Path -Verifiable { $true }
-            #Mock Invoke-CommandWithRetry -Verifiable {}
 
             It "Returns Correct ProfileMap and removes old profilemap" {
                 $result = Get-AzureProfileMap
@@ -713,7 +712,7 @@ Describe "Invoke-InstallModule" {
 Describe "Invoke-CommandWithRetry" {
     InModuleScope AzureRM.Bootstrapper {
         $scriptBlock = {
-           Get-ChildItem
+           Get-ChildItem -ErrorAction Stop
         }
 
         Context "Executes script block successfully at first attempt" {
@@ -1237,7 +1236,7 @@ Describe "Set-AzureRmDefaultProfile" {
         Context "New default profile value is given" {
             It "Setting default profile succeeds" {
                 Set-AzureRmDefaultProfile -Profile "Profile1" -Force
-                $PSDefaultParameterValues["*-AzureRmProfile:Profile"] | Should Be "Profile1"
+                $Global:PSDefaultParameterValues["*-AzureRmProfile:Profile"] | Should Be "Profile1"
                 Assert-VerifiableMocks
             }
         }
@@ -1245,7 +1244,7 @@ Describe "Set-AzureRmDefaultProfile" {
         Context "User wants to update default profile value" {
             It "Should update default profile value" {
                 Set-AzureRmDefaultProfile -Profile "Profile2" -Force
-                $PSDefaultParameterValues["*-AzureRmProfile:Profile"] | Should Be "Profile2"
+                $Global:PSDefaultParameterValues["*-AzureRmProfile:Profile"] | Should Be "Profile2"
                 Assert-VerifiableMocks
             }
         }
@@ -1282,7 +1281,7 @@ Describe "Set-AzureRmDefaultProfile" {
             Mock Select-Profile -Verifiable { "AllUsersProfile"}
             It "Should succeed setting AllUsers Profile" {
                 Set-AzureRmDefaultProfile -Profile "Profile1" -Scope "AllUsers" -Force
-                $PSDefaultParameterValues["*-AzureRmProfile:Profile"] | Should Be "Profile1"
+                $Global:PSDefaultParameterValues["*-AzureRmProfile:Profile"] | Should Be "Profile1"
                 Assert-VerifiableMocks
             }
         }
@@ -1307,7 +1306,7 @@ Describe "Remove-AzureRmDefaultProfile" {
         Context "Default profile presents in the profile file & default variable" {
             It "Should successfully remove default profile from shell & profile file" {
                 Remove-AzureRmDefaultProfile -Force
-                $PSDefaultParameterValues["*-AzureRmProfile:Profile"] | Should Be $null
+                $Global:PSDefaultParameterValues["*-AzureRmProfile:Profile"] | Should Be $null
                 Assert-VerifiableMocks
             }
         }
@@ -1315,7 +1314,7 @@ Describe "Remove-AzureRmDefaultProfile" {
         Context "Default profile is not set previously or was removed" {
             It "Should return null for default profile" {
                 Remove-AzureRmDefaultProfile -Force
-                $PSDefaultParameterValues["*-AzureRmProfile:Profile"] | Should Be $null
+                $Global:PSDefaultParameterValues["*-AzureRmProfile:Profile"] | Should Be $null
                 Assert-VerifiableMocks
             }
         }

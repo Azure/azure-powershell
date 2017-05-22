@@ -605,7 +605,6 @@ function Invoke-CommandWithRetry
       {
         $currentRetry = $currentRetry + 1
         if ($currentRetry -gt $MaxRetries) {
-          Write-Warning -Message "Unable to execute $($ScriptBlock)`n Error: $($_.Exception)"
           $PSCmdlet.ThrowTerminatingError($PSitem)
         }
         else {
