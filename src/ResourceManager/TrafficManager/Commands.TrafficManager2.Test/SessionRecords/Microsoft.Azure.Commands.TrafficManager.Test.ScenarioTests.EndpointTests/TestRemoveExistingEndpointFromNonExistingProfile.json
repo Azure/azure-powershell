@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/e68d4145-c9ae-4667-925d-c51c8d88ad73/resourcegroups/onesdk8467?api-version=2016-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTY4ZDQxNDUtYzlhZS00NjY3LTkyNWQtYzUxYzhkODhhZDczL3Jlc291cmNlZ3JvdXBzL29uZXNkazg0Njc/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestUri": "/subscriptions/e68d4145-c9ae-4667-925d-c51c8d88ad73/resourcegroups/onesdk8295?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTY4ZDQxNDUtYzlhZS00NjY3LTkyNWQtYzUxYzhkODhhZDczL3Jlc291cmNlZ3JvdXBzL29uZXNkazgyOTU/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
       "RequestHeaders": {
@@ -16,7 +16,7 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e68d4145-c9ae-4667-925d-c51c8d88ad73/resourceGroups/onesdk8467\",\r\n  \"name\": \"onesdk8467\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e68d4145-c9ae-4667-925d-c51c8d88ad73/resourceGroups/onesdk8295\",\r\n  \"name\": \"onesdk8295\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "173"
@@ -31,16 +31,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1186"
         ],
         "x-ms-request-id": [
-          "41a97673-5038-4fc6-8046-f84ac9f71bf8"
+          "f04afe61-dd0f-4385-b8f4-9f1fdc58df8a"
         ],
         "x-ms-correlation-request-id": [
-          "41a97673-5038-4fc6-8046-f84ac9f71bf8"
+          "f04afe61-dd0f-4385-b8f4-9f1fdc58df8a"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20170424T111806Z:41a97673-5038-4fc6-8046-f84ac9f71bf8"
+          "NORTHEUROPE:20170522T075942Z:f04afe61-dd0f-4385-b8f4-9f1fdc58df8a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -49,7 +49,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 24 Apr 2017 11:18:06 GMT"
+          "Mon, 22 May 2017 07:59:42 GMT"
         ]
       },
       "StatusCode": 201
@@ -57,9 +57,9 @@
   ],
   "Names": {
     "Test-RemoveExistingEndpointFromNonExistingProfile": [
-      "onesdk7716",
-      "onesdk7306",
-      "onesdk8467"
+      "onesdk475",
+      "onesdk2169",
+      "onesdk8295"
     ]
   },
   "Variables": {

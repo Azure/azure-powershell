@@ -29,6 +29,8 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
     using System.Linq;
     using WindowsAzure.Commands.Test.Utilities.Common;
 
+    using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+
     public class TestController : RMTestBase
     {
         private CSMTestEnvironmentFactory csmTestFactory;
@@ -58,13 +60,13 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
             this.helper = new EnvironmentSetupHelper();
         }
 
-        protected void SetupManagementClients()
+        protected void SetupManagementClients(RestTestFramework.MockContext context)
         {
             this.ResourceManagementClient = this.GetResourceManagementClient();
             this.SubscriptionClient = this.GetSubscriptionClient();
             this.GalleryClient = this.GetGalleryClient();
             this.AuthorizationManagementClient = this.GetAuthorizationManagementClient();
-            this.TrafficManagerManagementClient = this.GetFeatureClient();
+            this.TrafficManagerManagementClient = this.GetFeatureClient(context);
 
             this.helper.SetupManagementClients(
                 this.ResourceManagementClient,
@@ -104,10 +106,8 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
-            using (UndoContext context = UndoContext.Current)
+            using (RestTestFramework.MockContext context = RestTestFramework.MockContext.Start(callingClassType, mockName))
             {
-                context.Start(callingClassType, mockName);
-
                 this.csmTestFactory = new CSMTestEnvironmentFactory();
 
                 if (initialize != null)
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
 
                 this.helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
-                this.SetupManagementClients();
+                this.SetupManagementClients(context);
 
                 string callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
@@ -173,9 +173,14 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
             return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
         }
 
-        private TrafficManagerManagementClient GetFeatureClient()
+        private TrafficManagerManagementClient GetFeatureClientLegacy()
         {
             return TestBase.GetServiceClient<TrafficManagerManagementClient>(this.csmTestFactory);
+        }
+
+        private TrafficManagerManagementClient GetFeatureClient(RestTestFramework.MockContext context)
+        {
+            return context.GetServiceClient<TrafficManagerManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

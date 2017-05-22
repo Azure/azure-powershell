@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 {
@@ -167,25 +166,53 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 
         public bool DeleteTrafficManagerProfile(TrafficManagerProfile profile)
         {
-            // AzureOperationResponse response = 
-            this.TrafficManagerManagementClient.Profiles.Delete(profile.ResourceGroupName, profile.Name);
+            // DeleteOperationResult response = 
+            HttpStatusCode code =
+                this.DeleteTrafficManagerProfile(profile.ResourceGroupName, profile.Name);
 
-            // return response.StatusCode.Equals(HttpStatusCode.OK);
-            return true;
+            return code == HttpStatusCode.OK;
         }
 
         public bool DeleteTrafficManagerEndpoint(TrafficManagerEndpoint trafficManagerEndpoint)
         {
-            // AzureOperationResponse response = 
-            this.TrafficManagerManagementClient.Endpoints.Delete(
+            // DeleteOperationResult response = 
+            HttpStatusCode code =
+            this.DeleteTrafficManagerEndpoint(
                 trafficManagerEndpoint.ResourceGroupName,
                 trafficManagerEndpoint.ProfileName,
                 trafficManagerEndpoint.Type,
                 trafficManagerEndpoint.Name);
 
-            // return response.StatusCode.Equals(HttpStatusCode.OK);
-            return true;
+            return code == HttpStatusCode.OK;
         }
+
+        #region BUG# Traffic Manager does not return a response body to Delete operations
+        private HttpStatusCode DeleteTrafficManagerProfile(string resourceGroupName, string profileName)
+        {
+            return this.DeleteTrafficManagerProfileAsync(resourceGroupName, profileName).GetAwaiter().GetResult();
+        }
+
+        private async System.Threading.Tasks.Task<HttpStatusCode> DeleteTrafficManagerProfileAsync(string resourceGroupName, string profileName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await this.TrafficManagerManagementClient.Profiles.DeleteWithHttpMessagesAsync(resourceGroupName, profileName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Response.StatusCode;
+            }
+        }
+
+        private HttpStatusCode DeleteTrafficManagerEndpoint(string resourceGroupName, string profileName, string endpointType, string endpointName)
+        {
+            return this.DeleteTrafficManagerEndpointAsync(resourceGroupName, profileName, endpointType, endpointName).GetAwaiter().GetResult();
+        }
+
+        private async System.Threading.Tasks.Task<HttpStatusCode> DeleteTrafficManagerEndpointAsync(string resourceGroupName, string profileName, string endpointType, string endpointName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await this.TrafficManagerManagementClient.Endpoints.DeleteWithHttpMessagesAsync(resourceGroupName, profileName, endpointType, endpointName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Response.StatusCode;
+            }
+        }
+        #endregion
 
         public bool EnableDisableTrafficManagerProfile(TrafficManagerProfile profile, bool shouldEnableProfileStatus)
         {

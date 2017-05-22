@@ -12,16 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.TrafficManager.Models;
-using Microsoft.Azure.Commands.TrafficManager.Utilities;
-using System.Management.Automation;
-using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Resources;
+
 
 namespace Microsoft.Azure.Commands.TrafficManager
 {
-    using Hyak.Common;
     using System.Collections;
     using System.Net;
+    using System.Management.Automation;
+
+    using Microsoft.Azure.Commands.TrafficManager.Models;
+    using Microsoft.Azure.Commands.TrafficManager.Utilities;
+    using Microsoft.Rest.Azure;
+    using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Resources;
 
     [Cmdlet(VerbsCommon.New, "AzureRmTrafficManagerProfile"), OutputType(typeof(TrafficManagerProfile))]
     public class NewAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
