@@ -140,6 +140,6 @@ This cmdlet returns a **DatabaseThreatDetectionPolicyModel** object.
 
 ## RELATED LINKS
 
-[Set-AzureRmSqlDatabaseThreatDetectionPolicy]()
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 
 

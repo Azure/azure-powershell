@@ -14,12 +14,12 @@ Lists the storage tables.
 
 ### TableName (Default)
 ```
-Get-AzureStorageTable [[-Name] <String>] [-Context <AzureStorageContext>] [<CommonParameters>]
+Get-AzureStorageTable [[-Name] <String>] [-Context <IStorageContext>] [<CommonParameters>]
 ```
 
 ### TablePrefix
 ```
-Get-AzureStorageTable -Prefix <String> [-Context <AzureStorageContext>] [<CommonParameters>]
+Get-AzureStorageTable -Prefix <String> [-Context <IStorageContext>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,7 +55,7 @@ Specifies the storage context.
 To create it, you can use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: AzureStorageContext
+Type: IStorageContext
 Parameter Sets: (All)
 Aliases: 
 
@@ -80,7 +80,7 @@ Required: False
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -Prefix

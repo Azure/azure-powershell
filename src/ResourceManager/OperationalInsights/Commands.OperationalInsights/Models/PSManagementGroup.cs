@@ -30,16 +30,16 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                 throw new ArgumentNullException("managementGroup");
             }
 
-            if (managementGroup.Properties != null)
+            if (managementGroup != null)
             {
-                this.CreatedDate = managementGroup.Properties.Created;
-                this.LastDataReceived = managementGroup.Properties.DataReceived;
-                this.Id = managementGroup.Properties.Id;
-                this.IsGateway = managementGroup.Properties.IsGateway;
-                this.Name = managementGroup.Properties.Name;
-                this.ServerCount = managementGroup.Properties.ServerCount;
-                this.Sku = managementGroup.Properties.Sku;
-                this.Version = managementGroup.Properties.Version;
+                this.CreatedDate = managementGroup.Created;
+                this.LastDataReceived = managementGroup.DataReceived;
+                this.Id = new Guid(managementGroup.Id);
+                this.IsGateway = managementGroup.IsGateway.Value;
+                this.Name = managementGroup.Name;
+                this.ServerCount = managementGroup.ServerCount.Value;
+                this.Sku = managementGroup.Sku;
+                this.Version = managementGroup.Version;
             }
         }
 

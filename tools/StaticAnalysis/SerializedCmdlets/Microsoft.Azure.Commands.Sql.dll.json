@@ -1,6 +1,433 @@
 {
   "Cmdlets": [
     {
+      "VerbName": "Add",
+      "NounName": "AzureRmSqlServerKeyVaultKey",
+      "Name": "Add-AzureRmSqlServerKeyVaultKey",
+      "ClassName": "Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Cmdlet.AddAzureSqlServerKeyVaultKey",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 1,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model",
+            "Name": "AzureSqlServerKeyVaultKeyModel",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model.AzureSqlServerKeyVaultKeyModel, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "CreationDate": "System.Nullable`1[System.DateTime]",
+              "ResourceGroupName": "System.String",
+              "ServerKeyName": "System.String",
+              "ServerName": "System.String",
+              "Thumbprint": "System.String",
+              "Type": "Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model.AzureSqlServerKeyVaultKeyModel+ServerKeyType",
+              "Uri": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "KeyId",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ServerName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "KeyId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ServerName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Get",
+      "NounName": "AzureRmSqlServerKeyVaultKey",
+      "Name": "Get-AzureRmSqlServerKeyVaultKey",
+      "ClassName": "Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Cmdlet.GetAzureSqlServerKeyVaultKey",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 0,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [],
+      "Parameters": [
+        {
+          "Name": "KeyId",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ServerName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "KeyId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ServerName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Remove",
+      "NounName": "AzureRmSqlServerKeyVaultKey",
+      "Name": "Remove-AzureRmSqlServerKeyVaultKey",
+      "ClassName": "Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Cmdlet.RemoveAzureSqlServerKeyVaultKey",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [],
+      "Parameters": [
+        {
+          "Name": "KeyId",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ServerName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "KeyId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ServerName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
       "VerbName": "Get",
       "NounName": "AzureRmSqlDatabaseTransparentDataEncryption",
       "Name": "Get-AzureRmSqlDatabaseTransparentDataEncryption",
@@ -287,7 +714,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model",
             "Name": "TransparentDataEncryptionStateType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.TransparentDataEncryptionStateType, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.TransparentDataEncryptionStateType, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -357,7 +784,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model",
                   "Name": "TransparentDataEncryptionStateType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.TransparentDataEncryptionStateType, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.TransparentDataEncryptionStateType, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -413,6 +840,276 @@
               },
               "Mandatory": true,
               "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Get",
+      "NounName": "AzureRmSqlServerTransparentDataEncryptionProtector",
+      "Name": "Get-AzureRmSqlServerTransparentDataEncryptionProtector",
+      "ClassName": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet.GetAzureSqlServerTransparentDataEncryptionProtector",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 0,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [],
+      "Parameters": [
+        {
+          "Name": "ServerName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ServerName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Set",
+      "NounName": "AzureRmSqlServerTransparentDataEncryptionProtector",
+      "Name": "Set-AzureRmSqlServerTransparentDataEncryptionProtector",
+      "ClassName": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet.SetAzureSqlServerTransparentDataEncryptionProtector",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 1,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [],
+      "Parameters": [
+        {
+          "Name": "Type",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model",
+            "Name": "EncryptionProtectorType",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.EncryptionProtectorType, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "KeyId",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ServerName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Type",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model",
+                  "Name": "EncryptionProtectorType",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.EncryptionProtectorType, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "KeyId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": 3,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ServerName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
             },
@@ -1070,11 +1767,11 @@
           "Name": "DatabaseCollection",
           "AliasList": [],
           "Type": {
-            "Namespace": "Microsoft.Azure.Management.Sql.Models",
+            "Namespace": "Microsoft.Azure.Management.Sql.LegacySdk.Models",
             "Name": "RecommendedDatabaseProperties[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.Models.RecommendedDatabaseProperties[], Microsoft.Azure.Management.Sql, Version=0.51.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties[], Microsoft.Azure.Management.Sql.Legacy, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
-            "ElementType": "Microsoft.Azure.Management.Sql.Models.RecommendedDatabaseProperties",
+            "ElementType": "Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties",
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1086,11 +1783,11 @@
           "Name": "ElasticPoolCollection",
           "AliasList": [],
           "Type": {
-            "Namespace": "Microsoft.Azure.Management.Sql.Models",
+            "Namespace": "Microsoft.Azure.Management.Sql.LegacySdk.Models",
             "Name": "UpgradeRecommendedElasticPoolProperties[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.Models.UpgradeRecommendedElasticPoolProperties[], Microsoft.Azure.Management.Sql, Version=0.51.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.UpgradeRecommendedElasticPoolProperties[], Microsoft.Azure.Management.Sql.Legacy, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
-            "ElementType": "Microsoft.Azure.Management.Sql.Models.UpgradeRecommendedElasticPoolProperties",
+            "ElementType": "Microsoft.Azure.Management.Sql.LegacySdk.Models.UpgradeRecommendedElasticPoolProperties",
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
@@ -1186,11 +1883,11 @@
                 "Name": "DatabaseCollection",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "Microsoft.Azure.Management.Sql.Models",
+                  "Namespace": "Microsoft.Azure.Management.Sql.LegacySdk.Models",
                   "Name": "RecommendedDatabaseProperties[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.Models.RecommendedDatabaseProperties[], Microsoft.Azure.Management.Sql, Version=0.51.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties[], Microsoft.Azure.Management.Sql.Legacy, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
-                  "ElementType": "Microsoft.Azure.Management.Sql.Models.RecommendedDatabaseProperties",
+                  "ElementType": "Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties",
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -1208,11 +1905,11 @@
                 "Name": "ElasticPoolCollection",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "Microsoft.Azure.Management.Sql.Models",
+                  "Namespace": "Microsoft.Azure.Management.Sql.LegacySdk.Models",
                   "Name": "UpgradeRecommendedElasticPoolProperties[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.Models.UpgradeRecommendedElasticPoolProperties[], Microsoft.Azure.Management.Sql, Version=0.51.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.UpgradeRecommendedElasticPoolProperties[], Microsoft.Azure.Management.Sql.Legacy, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
-                  "ElementType": "Microsoft.Azure.Management.Sql.Models.UpgradeRecommendedElasticPoolProperties",
+                  "ElementType": "Microsoft.Azure.Management.Sql.LegacySdk.Models.UpgradeRecommendedElasticPoolProperties",
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
@@ -2566,7 +3263,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model",
             "Name": "AzureSqlServerCommunicationLinkModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model.AzureSqlServerCommunicationLinkModel, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model.AzureSqlServerCommunicationLinkModel, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Location": "System.String",
               "Name": "System.String",
@@ -2722,7 +3419,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model",
             "Name": "AzureSqlServerCommunicationLinkModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model.AzureSqlServerCommunicationLinkModel, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model.AzureSqlServerCommunicationLinkModel, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Location": "System.String",
               "Name": "System.String",
@@ -2916,7 +3613,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model",
             "Name": "AzureSqlServerCommunicationLinkModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model.AzureSqlServerCommunicationLinkModel, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model.AzureSqlServerCommunicationLinkModel, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Location": "System.String",
               "Name": "System.String",
@@ -3110,7 +3807,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.SecureConnection.Model",
             "Name": "DatabaseSecureConnectionPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.SecureConnection.Model.DatabaseSecureConnectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.SecureConnection.Model.DatabaseSecureConnectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ConnectionStrings": "Microsoft.Azure.Commands.Sql.SecureConnection.Model.ConnectionStrings",
               "DatabaseName": "System.String",
@@ -4039,7 +4736,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Replication.Model",
             "Name": "AllowConnections",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Replication.Model.AllowConnections, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Replication.Model.AllowConnections, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4227,7 +4924,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Replication.Model",
                   "Name": "AllowConnections",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Replication.Model.AllowConnections, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Replication.Model.AllowConnections, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -6840,7 +7537,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
             "Name": "DatabaseEdition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -6998,7 +7695,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "DatabaseEdition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -7380,7 +8077,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
             "Name": "DatabaseEdition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -7538,7 +8235,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "DatabaseEdition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -9014,7 +9711,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.DataMasking.Model",
             "Name": "DatabaseDataMaskingPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingPolicyModel, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DatabaseName": "System.String",
               "DataMaskingState": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DataMaskingStateType",
@@ -9169,7 +9866,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "IEnumerable",
-            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingRuleModel, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingRuleModel, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -10306,7 +11003,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.DataMasking.Model",
             "Name": "DatabaseDataMaskingPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingPolicyModel, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DatabaseName": "System.String",
               "DataMaskingState": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DataMaskingStateType",
@@ -11431,7 +12128,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
             "Name": "ServerThreatDetectionPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ServerThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ServerThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EmailAdmins": "System.Boolean",
               "ExcludedDetectionTypes": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]",
@@ -11551,7 +12248,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
             "Name": "ServerThreatDetectionPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ServerThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ServerThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EmailAdmins": "System.Boolean",
               "ExcludedDetectionTypes": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]",
@@ -11709,7 +12406,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
             "Name": "ServerThreatDetectionPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ServerThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ServerThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EmailAdmins": "System.Boolean",
               "ExcludedDetectionTypes": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]",
@@ -11785,7 +12482,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
             "Name": "DetectionType[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[], Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[], Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType",
             "GenericTypeArguments": []
@@ -11941,7 +12638,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
                   "Name": "DetectionType[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[], Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[], Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType",
                   "GenericTypeArguments": []
@@ -12065,7 +12762,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
             "Name": "DatabaseThreatDetectionPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DatabaseThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DatabaseThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DatabaseName": "System.String",
               "EmailAdmins": "System.Boolean",
@@ -12224,7 +12921,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
             "Name": "DatabaseThreatDetectionPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DatabaseThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DatabaseThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DatabaseName": "System.String",
               "EmailAdmins": "System.Boolean",
@@ -12301,7 +12998,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
             "Name": "DetectionType[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[], Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[], Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType",
             "GenericTypeArguments": []
@@ -12473,7 +13170,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
                   "Name": "DetectionType[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[], Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[], Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType",
                   "GenericTypeArguments": []
@@ -12619,7 +13316,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
             "Name": "DatabaseThreatDetectionPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DatabaseThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DatabaseThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DatabaseName": "System.String",
               "EmailAdmins": "System.Boolean",
@@ -12910,7 +13607,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ImportExport.Model",
             "Name": "StorageKeyType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -12990,7 +13687,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ImportExport.Model",
             "Name": "AuthenticationType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -13072,7 +13769,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.ImportExport.Model",
                   "Name": "StorageKeyType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -13182,7 +13879,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.ImportExport.Model",
                   "Name": "AuthenticationType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -13257,7 +13954,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
             "Name": "DatabaseEdition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -13288,8 +13985,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Int32",
-            "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "Int64",
+            "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -13321,7 +14018,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ImportExport.Model",
             "Name": "StorageKeyType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -13401,7 +14098,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ImportExport.Model",
             "Name": "AuthenticationType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -13461,7 +14158,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "DatabaseEdition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -13504,8 +14201,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Int32",
-                  "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Name": "Int64",
+                  "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -13549,7 +14246,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.ImportExport.Model",
                   "Name": "StorageKeyType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -13659,7 +14356,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.ImportExport.Model",
                   "Name": "AuthenticationType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -13853,7 +14550,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Backup.Model",
             "Name": "GeoBackupPolicyState",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Backup.Model.AzureSqlDatabaseGeoBackupPolicyModel+GeoBackupPolicyState, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Backup.Model.AzureSqlDatabaseGeoBackupPolicyModel+GeoBackupPolicyState, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -13923,7 +14620,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Backup.Model",
                   "Name": "GeoBackupPolicyState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Backup.Model.AzureSqlDatabaseGeoBackupPolicyModel+GeoBackupPolicyState, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Backup.Model.AzureSqlDatabaseGeoBackupPolicyModel+GeoBackupPolicyState, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -14716,7 +15413,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
             "Name": "DatabaseEdition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -14898,7 +15595,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "DatabaseEdition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -15125,7 +15822,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "DatabaseEdition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -15308,7 +16005,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "DatabaseEdition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -15491,7 +16188,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "DatabaseEdition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -15652,7 +16349,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "DatabaseEdition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -16241,7 +16938,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "AuditingPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AuditState": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType",
               "AuditType": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType",
@@ -16398,7 +17095,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "AuditingPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AuditState": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType",
               "AuditType": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType",
@@ -16519,7 +17216,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "AuditingPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AuditState": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType",
               "AuditType": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType",
@@ -16714,7 +17411,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "AuditingPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AuditState": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType",
               "AuditType": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType",
@@ -16873,7 +17570,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "AuditingPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AuditState": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType",
               "AuditType": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType",
@@ -16898,7 +17595,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "AuditType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -16930,7 +17627,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "AuditActionGroups[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups",
             "GenericTypeArguments": []
@@ -17114,7 +17811,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
                   "Name": "AuditType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -17158,7 +17855,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
                   "Name": "AuditActionGroups[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups",
                   "GenericTypeArguments": []
@@ -17408,7 +18105,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "AuditingPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AuditState": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType",
               "AuditType": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType",
@@ -17433,7 +18130,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "AuditType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -17449,7 +18146,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "AuditActionGroups[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups",
             "GenericTypeArguments": []
@@ -17617,7 +18314,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
                   "Name": "AuditType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -17639,7 +18336,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
                   "Name": "AuditActionGroups[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups",
                   "GenericTypeArguments": []
@@ -17869,7 +18566,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "AuditingPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AuditState": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType",
               "AuditType": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType",
@@ -18680,7 +19377,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet",
             "Name": "RecommendedActionState",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -18788,7 +19485,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet",
                   "Name": "RecommendedActionState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -18929,7 +19626,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet",
             "Name": "RecommendedActionState",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -19037,7 +19734,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet",
                   "Name": "RecommendedActionState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -19178,7 +19875,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet",
             "Name": "RecommendedActionState",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -19270,7 +19967,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet",
                   "Name": "RecommendedActionState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -19328,6 +20025,1453 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Add",
+      "NounName": "AzureRmSqlDatabaseToFailoverGroup",
+      "Name": "Add-AzureRmSqlDatabaseToFailoverGroup",
+      "ClassName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet.AddAzureSqlDatabaseToFailoverGroup",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [],
+      "Parameters": [
+        {
+          "Name": "ServerName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "FailoverGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Database",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Collections.Generic",
+            "Name": "List",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel"
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ServerName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "FailoverGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Database",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Collections.Generic",
+                  "Name": "List",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel"
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Get",
+      "NounName": "AzureRmSqlDatabaseFailoverGroup",
+      "Name": "Get-AzureRmSqlDatabaseFailoverGroup",
+      "ClassName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet.GetAzureSqlFailoverGroup",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [],
+      "Parameters": [
+        {
+          "Name": "ServerName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "FailoverGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ServerName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "FailoverGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "New",
+      "NounName": "AzureRmSqlDatabaseFailoverGroup",
+      "Name": "New-AzureRmSqlDatabaseFailoverGroup",
+      "ClassName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet.NewAzureSqlFailoverGroup",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [],
+      "Parameters": [
+        {
+          "Name": "ServerName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "FailoverGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "PartnerResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "PartnerServerName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "FailoverPolicy",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model",
+            "Name": "FailoverPolicy",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.FailoverPolicy, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "GracePeriodWithDataLossHours",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "Int32",
+            "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": 0,
+          "ValidateRangeMax": 2147483647,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "AllowReadOnlyFailoverToPrimary",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model",
+            "Name": "AllowReadOnlyFailoverToPrimary",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AllowReadOnlyFailoverToPrimary, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ServerName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "FailoverGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PartnerResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PartnerServerName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "FailoverPolicy",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model",
+                  "Name": "FailoverPolicy",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.FailoverPolicy, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "GracePeriodWithDataLossHours",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "Int32",
+                  "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": 0,
+                "ValidateRangeMax": 2147483647,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AllowReadOnlyFailoverToPrimary",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model",
+                  "Name": "AllowReadOnlyFailoverToPrimary",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AllowReadOnlyFailoverToPrimary, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Remove",
+      "NounName": "AzureRmSqlDatabaseFromFailoverGroup",
+      "Name": "Remove-AzureRmSqlDatabaseFromFailoverGroup",
+      "ClassName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet.RemoveAzureSqlDatabaseFromFailoverGroup",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [],
+      "Parameters": [
+        {
+          "Name": "ServerName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "FailoverGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Database",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Collections.Generic",
+            "Name": "List",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel"
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Force",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ServerName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "FailoverGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Database",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Collections.Generic",
+                  "Name": "List",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel"
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Remove",
+      "NounName": "AzureRmSqlDatabaseFailoverGroup",
+      "Name": "Remove-AzureRmSqlDatabaseFailoverGroup",
+      "ClassName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet.RemoveAzureSqlFailoverGroup",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [],
+      "Parameters": [
+        {
+          "Name": "ServerName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "FailoverGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Force",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ServerName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "FailoverGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Set",
+      "NounName": "AzureRmSqlDatabaseFailoverGroup",
+      "Name": "Set-AzureRmSqlDatabaseFailoverGroup",
+      "ClassName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet.SetAzureSqlFailoverGroup",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [],
+      "Parameters": [
+        {
+          "Name": "ServerName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "FailoverGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "FailoverPolicy",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model",
+            "Name": "FailoverPolicy",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.FailoverPolicy, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "GracePeriodWithDataLossHours",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "Int32",
+            "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": 0,
+          "ValidateRangeMax": 2147483647,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "AllowReadOnlyFailoverToPrimary",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model",
+            "Name": "AllowReadOnlyFailoverToPrimary",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AllowReadOnlyFailoverToPrimary, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ServerName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "FailoverGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "FailoverPolicy",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model",
+                  "Name": "FailoverPolicy",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.FailoverPolicy, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "GracePeriodWithDataLossHours",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "Int32",
+                  "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": 0,
+                "ValidateRangeMax": 2147483647,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AllowReadOnlyFailoverToPrimary",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model",
+                  "Name": "AllowReadOnlyFailoverToPrimary",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AllowReadOnlyFailoverToPrimary, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Switch",
+      "NounName": "AzureRmSqlDatabaseFailoverGroup",
+      "Name": "Switch-AzureRmSqlDatabaseFailoverGroup",
+      "ClassName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet.SwitchAzureSqlFailoverGroup",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [],
+      "Parameters": [
+        {
+          "Name": "ServerName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "FailoverGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "AllowDataLoss",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ServerName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "FailoverGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AllowDataLoss",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             },
             {
               "ParameterMetadata": {
@@ -19922,7 +22066,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
             "Name": "DatabaseEdition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -19970,7 +22114,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
             "Name": "DatabaseReadScale",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -19994,6 +22138,24 @@
             "GenericTypeArguments": []
           },
           "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "SampleName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [
+            "AdventureWorksLT"
+          ],
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
@@ -20130,7 +22292,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "DatabaseEdition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -20196,7 +22358,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "DatabaseReadScale",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -20226,6 +22388,30 @@
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SampleName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [
+                  "AdventureWorksLT"
+                ],
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
@@ -20506,7 +22692,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
             "Name": "DatabaseEdition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -20554,7 +22740,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
             "Name": "DatabaseReadScale",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -20670,7 +22856,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "DatabaseEdition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -20736,7 +22922,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "DatabaseReadScale",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -21241,7 +23427,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet",
             "Name": "AdvisorAutoExecuteStatus",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -21333,7 +23519,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet",
                   "Name": "AdvisorAutoExecuteStatus",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -21452,7 +23638,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet",
             "Name": "AdvisorAutoExecuteStatus",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -21528,7 +23714,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet",
                   "Name": "AdvisorAutoExecuteStatus",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -21836,7 +24022,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet",
             "Name": "AdvisorAutoExecuteStatus",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -21928,7 +24114,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet",
                   "Name": "AdvisorAutoExecuteStatus",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -22128,6 +24314,16 @@
       "ElementType": null,
       "GenericTypeArguments": []
     },
+    "System.Nullable`1[System.DateTime]": {
+      "Namespace": "System",
+      "Name": "Nullable",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.DateTime"
+      ]
+    },
     "System.DateTime": {
       "Namespace": "System",
       "Name": "DateTime",
@@ -22136,10 +24332,18 @@
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "Microsoft.Azure.Management.Sql.Models.RecommendedDatabaseProperties": {
-      "Namespace": "Microsoft.Azure.Management.Sql.Models",
+    "Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model.AzureSqlServerKeyVaultKeyModel+ServerKeyType": {
+      "Namespace": "Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model",
+      "Name": "ServerKeyType",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model.AzureSqlServerKeyVaultKeyModel+ServerKeyType, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties": {
+      "Namespace": "Microsoft.Azure.Management.Sql.LegacySdk.Models",
       "Name": "RecommendedDatabaseProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.Models.RecommendedDatabaseProperties, Microsoft.Azure.Management.Sql, Version=0.51.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties, Microsoft.Azure.Management.Sql.Legacy, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Name": "System.String",
         "TargetEdition": "System.String",
@@ -22148,10 +24352,10 @@
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "Microsoft.Azure.Management.Sql.Models.UpgradeRecommendedElasticPoolProperties": {
-      "Namespace": "Microsoft.Azure.Management.Sql.Models",
+    "Microsoft.Azure.Management.Sql.LegacySdk.Models.UpgradeRecommendedElasticPoolProperties": {
+      "Namespace": "Microsoft.Azure.Management.Sql.LegacySdk.Models",
       "Name": "UpgradeRecommendedElasticPoolProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.Models.UpgradeRecommendedElasticPoolProperties, Microsoft.Azure.Management.Sql, Version=0.51.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.UpgradeRecommendedElasticPoolProperties, Microsoft.Azure.Management.Sql.Legacy, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "DatabaseCollection": "System.Collections.Generic.IList`1[System.String]",
         "DatabaseDtuMax": "System.Int32",
@@ -22188,7 +24392,7 @@
     "Microsoft.Azure.Commands.Sql.SecureConnection.Model.ConnectionStrings": {
       "Namespace": "Microsoft.Azure.Commands.Sql.SecureConnection.Model",
       "Name": "ConnectionStrings",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.SecureConnection.Model.ConnectionStrings, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.SecureConnection.Model.ConnectionStrings, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "AdoNetConnectionString": "System.String",
         "JdbcConnectionString": "System.String",
@@ -22201,7 +24405,7 @@
     "Microsoft.Azure.Commands.Sql.SecureConnection.Model.SecureConnectionStateType": {
       "Namespace": "Microsoft.Azure.Commands.Sql.SecureConnection.Model",
       "Name": "SecureConnectionStateType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.SecureConnection.Model.SecureConnectionStateType, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.SecureConnection.Model.SecureConnectionStateType, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -22217,7 +24421,7 @@
     "Microsoft.Azure.Commands.Sql.DataMasking.Model.DataMaskingStateType": {
       "Namespace": "Microsoft.Azure.Commands.Sql.DataMasking.Model",
       "Name": "DataMaskingStateType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DataMaskingStateType, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DataMaskingStateType, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -22225,7 +24429,7 @@
     "Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingRuleModel": {
       "Namespace": "Microsoft.Azure.Commands.Sql.DataMasking.Model",
       "Name": "DatabaseDataMaskingRuleModel",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingRuleModel, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingRuleModel, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ColumnName": "System.String",
         "DatabaseName": "System.String",
@@ -22246,7 +24450,7 @@
     "Microsoft.Azure.Commands.Sql.DataMasking.Model.MaskingFunction": {
       "Namespace": "Microsoft.Azure.Commands.Sql.DataMasking.Model",
       "Name": "MaskingFunction",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataMasking.Model.MaskingFunction, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataMasking.Model.MaskingFunction, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -22274,7 +24478,7 @@
     "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]": {
       "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
       "Name": "DetectionType[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[], Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[], Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType",
       "GenericTypeArguments": []
@@ -22282,7 +24486,7 @@
     "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType": {
       "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
       "Name": "DetectionType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -22290,7 +24494,7 @@
     "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ThreatDetectionStateType": {
       "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
       "Name": "ThreatDetectionStateType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ThreatDetectionStateType, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ThreatDetectionStateType, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -22298,7 +24502,7 @@
     "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType": {
       "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
       "Name": "AuditStateType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -22306,7 +24510,7 @@
     "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType": {
       "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
       "Name": "AuditType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -22314,7 +24518,7 @@
     "Microsoft.Azure.Commands.Sql.Auditing.Model.StorageKeyKind": {
       "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
       "Name": "StorageKeyKind",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.StorageKeyKind, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.StorageKeyKind, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -22322,10 +24526,87 @@
     "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups": {
       "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
       "Name": "AuditActionGroups",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups, Microsoft.Azure.Commands.Sql, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel": {
+      "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
+      "Name": "AzureSqlDatabaseModel",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "CatalogCollation": "System.String",
+        "CollationName": "System.String",
+        "CreateMode": "System.String",
+        "CreationDate": "System.DateTime",
+        "CurrentServiceObjectiveId": "System.Guid",
+        "CurrentServiceObjectiveName": "System.String",
+        "DatabaseId": "System.Guid",
+        "DatabaseName": "System.String",
+        "EarliestRestoreDate": "System.Nullable`1[System.DateTime]",
+        "Edition": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
+        "ElasticPoolName": "System.String",
+        "Location": "System.String",
+        "MaxSizeBytes": "System.Int64",
+        "ReadScale": "System.Nullable`1[Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale]",
+        "RequestedServiceObjectiveId": "System.Nullable`1[System.Guid]",
+        "RequestedServiceObjectiveName": "System.String",
+        "ResourceGroupName": "System.String",
+        "ResourceId": "System.String",
+        "ServerName": "System.String",
+        "Status": "System.String",
+        "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition": {
+      "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
+      "Name": "DatabaseEdition",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Nullable`1[Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale]": {
+      "Namespace": "System",
+      "Name": "Nullable",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale"
+      ]
+    },
+    "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale": {
+      "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
+      "Name": "DatabaseReadScale",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Nullable`1[System.Guid]": {
+      "Namespace": "System",
+      "Name": "Nullable",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.Guid"
+      ]
+    },
+    "System.Collections.Generic.Dictionary`2[System.String,System.String]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "Dictionary",
+      "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.String",
+        "System.String"
+      ]
     }
   }
 }
