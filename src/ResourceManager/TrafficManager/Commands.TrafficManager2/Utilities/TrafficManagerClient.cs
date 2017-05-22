@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
             return code == HttpStatusCode.OK;
         }
 
-        #region BUG# Traffic Manager does not return a response body to Delete operations
+        #region BUG#1226881 Traffic Manager does not return a response body to Delete operations
         private HttpStatusCode DeleteTrafficManagerProfile(string resourceGroupName, string profileName)
         {
             return this.DeleteTrafficManagerProfileAsync(resourceGroupName, profileName).GetAwaiter().GetResult();
