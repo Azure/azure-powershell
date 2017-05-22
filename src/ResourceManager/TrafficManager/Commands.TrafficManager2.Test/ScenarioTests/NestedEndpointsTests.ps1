@@ -112,7 +112,7 @@ function Test-ProfileWithNestedEndpointsGetPut
 	Assert-AreEqual 1 $retrievedParentProfile.Endpoints[0].MinChildEndpoints
     Assert-AreEqual 1 $retrievedParentProfile.Endpoints[0].Weight
 	Assert-AreEqual 1 $retrievedParentProfile.Endpoints[0].Priority
-	Assert-AreEqual "Microsoft.Network/trafficManagerProfiles/nestedEndpoints" $retrievedParentProfile.Endpoints[0].Type
+	Assert-AreEqual "nestedEndpoints" $retrievedParentProfile.Endpoints[0].Type
 	Assert-AreEqual "MyNestedEndpoint" $retrievedParentProfile.Endpoints[0].Name
 	Assert-AreEqual "Enabled" $retrievedParentProfile.Endpoints[0].EndpointStatus
 	Assert-AreEqual "West Europe" $retrievedParentProfile.Endpoints[0].Location

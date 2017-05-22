@@ -18,10 +18,10 @@ namespace Microsoft.Azure.Commands.TrafficManager
     using System.Management.Automation;
     using System.Net;
 
-    using Hyak.Common;
-
     using Microsoft.Azure.Commands.TrafficManager.Models;
     using Microsoft.Azure.Commands.TrafficManager.Utilities;
+    using Microsoft.Rest.Azure;
+
     using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Resources;   
 
     [Cmdlet(VerbsCommon.New, "AzureRmTrafficManagerEndpoint"), OutputType(typeof(TrafficManagerEndpoint))]

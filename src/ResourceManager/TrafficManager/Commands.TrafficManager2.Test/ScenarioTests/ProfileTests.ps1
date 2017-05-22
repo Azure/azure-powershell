@@ -408,7 +408,7 @@ function Test-ProfileMonitorProtocol
 	$profileName = getAssetName
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$relativeName = getAssetName
-	$createdProfile = New-AzureRmTrafficManagerProfile -MonitorProtocol "TCP" -MonitorPort 8080 -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -TrafficRoutingMethod "Weighted"
+	$createdProfile = New-AzureRmTrafficManagerProfile -MonitorProtocol "TCP" -MonitorPort 8080 -Ttl 50 -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -TrafficRoutingMethod "Weighted"
 
 	Assert-NotNull $createdProfile
 	Assert-AreEqual "TCP" $createdProfile.MonitorProtocol 
@@ -423,7 +423,7 @@ function Test-ProfileMonitorProtocol
 	Assert-Null $retrievedProfile.MonitorPath
 
     $retrievedProfile.MonitorPort = 81
-	$retrievedProfile.MonitorProtocol = HTTP
+	$retrievedProfile.MonitorProtocol = "HTTP"
 	$retrievedProfile.MonitorPath = "/health.htm"
 
 	$updatedProfile = Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $retrievedProfile
@@ -434,7 +434,7 @@ function Test-ProfileMonitorProtocol
 	Assert-AreEqual "/health.htm" $retrievedProfile.MonitorPath
 
     $updatedProfile.MonitorPort = 8086
-	$updatedProfile.MonitorProtocol = TCP
+	$updatedProfile.MonitorProtocol = "TCP"
 	$updatedProfile.MonitorPath = $null
 
 	$revertedProfile = Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $updatedProfile
@@ -442,7 +442,6 @@ function Test-ProfileMonitorProtocol
 	Assert-NotNull $revertedProfile
 	Assert-AreEqual "TCP" $revertedProfile.MonitorProtocol 
 	Assert-AreEqual 8086 $revertedProfile.MonitorPort 
-	Assert-Null $revertedProfile.MonitorPath
 
-	Remove-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Force
+	Assert-True { Remove-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Force }
 }
