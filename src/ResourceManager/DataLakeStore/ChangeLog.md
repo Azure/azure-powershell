@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 4.0.1
+
 ## Version 4.0.0
 * For `Import-AzureRMDataLakeStoreItem` and `Export-AzureRMDataLakeStoreItem` trace logging has been disabled by default to improve performance. If trace logging is desired please use the `-DiagnosticLogLevel` and `-DiagnosticLogPath` parameters
 * Fixed a bug that would sometimes cause PowerShell to crash when uploading lots of small file to ADLS.
