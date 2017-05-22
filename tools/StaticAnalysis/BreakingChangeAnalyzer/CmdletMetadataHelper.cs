@@ -220,9 +220,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             // Add each output in the new metadata to the dictionary
             foreach (var newOutput in newCmdlet.OutputTypes)
             {
-                if (!outputDictionary.ContainsKey(newOutput.Type.Name))
+                if (!outputDictionary.ContainsKey(newOutput.Type.AssemblyQualifiedName))
                 {
-                    outputDictionary.Add(newOutput.Type.Name, newOutput.Type);
+                    outputDictionary.Add(newOutput.Type.AssemblyQualifiedName, newOutput.Type);
                 }
             }
 
@@ -232,9 +232,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             {
                 // If the output can be found, use the TypeMetadataHelper to
                 // check the type for any breaking changes
-                if (outputDictionary.ContainsKey(oldOutput.Type.Name))
+                if (outputDictionary.ContainsKey(oldOutput.Type.AssemblyQualifiedName))
                 {
-                    var newOutputType = outputDictionary[oldOutput.Type.Name];
+                    var newOutputType = outputDictionary[oldOutput.Type.AssemblyQualifiedName];
 
                     _typeMetadataHelper.CheckOutputType(oldCmdlet, oldOutput.Type, newOutputType, issueLogger);
                 }

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzureRmVMSourceImage
 
 ## SYNOPSIS
-Specifies the platform image for a virtual machine.
+Specifies the image for a virtual machine.
 
 ## SYNTAX
 

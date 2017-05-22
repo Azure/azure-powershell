@@ -156,7 +156,11 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
 
                         foreach (var parameter in globalParameters)
                         {
-                            parameterSet.Parameters.Add(parameter);
+                            var param = parameterSet.Parameters.FirstOrDefault(p => p.ParameterMetadata.Name.Equals(parameter.ParameterMetadata.Name));
+                            if (param == null)
+                            {
+                                parameterSet.Parameters.Add(parameter);
+                            }
                         }
                     }
 

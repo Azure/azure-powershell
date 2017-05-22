@@ -284,6 +284,7 @@ function Test-AEMExtensionAdvancedWindowsMD
         Assert-AreEqual $extension.Name 'AzureCATExtensionHandler'
         $settings = $extension.PublicSettings | ConvertFrom-Json
         Assert-NotNull $settings.cfg
+		Assert-True { ($extension.PublicSettings.Contains("osdisk.caching")) }
         Write-Verbose "Test-AEMExtensionAdvancedWindowsMD: Get done"
 
         # Test command.

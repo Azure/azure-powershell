@@ -50,7 +50,12 @@ namespace Microsoft.Azure.Commands.Profile
             this.WriteQuestion(Resources.SendFeedbackEmailQuestion);
             var email = this.Host.UI.ReadLine();
 
-            var loggedIn = this.DefaultProfile != null && this.DefaultProfile.DefaultContext != null;
+            var loggedIn = this.DefaultProfile != null
+                && this.DefaultProfile.DefaultContext != null
+                && DefaultProfile.DefaultContext.Account != null
+                && DefaultProfile.DefaultContext.Tenant != null
+                && DefaultProfile.DefaultContext.Subscription != null
+                && DefaultProfile.DefaultContext.Environment != null;
 
             var feedbackPayload = new PSAzureFeedback
             {

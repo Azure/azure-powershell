@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         {
         }
 
-        public PSSavedSearchProperties(SavedSearchProperties properties)
+        public PSSavedSearchProperties(SavedSearch properties)
         {
             if (properties != null)
             {
