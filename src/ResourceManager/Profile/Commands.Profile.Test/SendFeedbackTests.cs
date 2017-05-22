@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 cmdlet.InvokeBeginProcessing();
             });
         }
-
+#if !NETSTANDARD
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanSerializeSimpleFeedbackPayloadIntoProperForm()
@@ -88,5 +88,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Equal(payload.NegativeComments, serializedPayload["negativeComments"]);
             Assert.Equal(payload.Email, serializedPayload["email"]);
         }
+#endif
     }
 }

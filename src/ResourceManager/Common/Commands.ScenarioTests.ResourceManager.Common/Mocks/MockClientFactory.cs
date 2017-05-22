@@ -67,6 +67,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public TClient CreateClient<TClient>(IAzureContextContainer profile, IAzureSubscription subscription, string endpoint) where TClient : ServiceClient<TClient>
         {
+#if !NETSTANDARD
             if (subscription == null)
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.ResourceManager.Common.Properties.Resources.InvalidDefaultSubscription);
@@ -92,6 +93,9 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
             Uri endpointUri = profile.Environments.FirstOrDefault((e) => e.Name.Equals(subscription.GetEnvironment(), StringComparison.OrdinalIgnoreCase)).GetEndpointAsUri(endpoint);
             return CreateCustomClient<TClient>(creds, endpointUri);
+#else
+            throw new NotSupportedException("AzureSMProfile is not supported in Azure PS on .Net Core.");
+#endif
         }
 
         public TClient CreateCustomClient<TClient>(params object[] parameters) where TClient : ServiceClient<TClient>

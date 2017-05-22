@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using System;
 using System.Security;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
@@ -36,18 +37,27 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
             };
         }
 
-        public IAccessToken GetAccessToken(AdalConfiguration config, string promptBehavior, string userId, SecureString password,
+        public IAccessToken GetAccessToken(
+            AdalConfiguration config,
+#if !NETSTANDARD
+            string promptBehavior,
+#else
+            Action<string> promptAction,
+#endif 
+            string userId, 
+            SecureString password,
             string credentialType)
         {
             return this.accessToken;
         }
 
+#if !NETSTANDARD
         IAccessToken ITokenProvider.GetAccessTokenWithCertificate(AdalConfiguration config, string principalId, string certificateThumbprint,
             string credentialType)
         {
             return GetAccessTokenWithCertificate(config, principalId, certificateThumbprint, credentialType);
         }
-
+#endif
         public IAccessToken GetAccessTokenWithCertificate(AdalConfiguration config, string principalId, string certificateThumbprint, string credentialType)
         {
             return this.accessToken;

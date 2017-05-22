@@ -76,7 +76,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             IAzureEnvironment environment,
             string tenant,
             SecureString password,
+#if !NETSTANDARD
             string promptBehavior,
+#else
+            Action<string> promptBehavior,
+#endif
             IAzureTokenCache tokenCache,
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
@@ -105,7 +109,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             IAzureEnvironment environment,
             string tenant,
             SecureString password,
+#if !NETSTANDARD
             string promptBehavior,
+#else
+            Action<string> promptBehavior,
+#endif
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
             return Authenticate(account, environment, tenant, password, promptBehavior, AzureSession.Instance.TokenCache, resourceId);

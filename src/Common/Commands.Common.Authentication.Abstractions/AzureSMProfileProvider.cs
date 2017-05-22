@@ -11,7 +11,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-#if !NETSTANDARD
+
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System;
 using System.Threading;
@@ -102,4 +102,3 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         }
     }
 }
-#endif

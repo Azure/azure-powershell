@@ -23,12 +23,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
     public static class CmdletExtensions
     {
-#if !NETSTANDARD
         public static string AsAbsoluteLocation(this string realtivePath)
         {
             return Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, realtivePath));
         }
-#endif
+
         public static string TryResolvePath(this PSCmdlet psCmdlet, string path)
         {
             try

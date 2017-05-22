@@ -10,8 +10,8 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// ----------------------------------------------------------------------------------
-
+// ---------------------------------------------------------------------------------
+#if !NETSTANDARD
 using Hyak.Common;
 using Microsoft.Azure;
 using Microsoft.Azure.Commands.Common.Authentication;
@@ -152,7 +152,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
         }
 
-        #region Profile management
+#region Profile management
 
         /// <summary>
         /// Initializes AzureSMProfile using passed in certificate. The certificate
@@ -302,9 +302,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
             AddOrSetSubscription(azureSubscription);
         }
-        #endregion
+#endregion
 
-        #region Account management
+#region Account management
 
         public IAzureAccount AddAccountAndLoadSubscriptions(IAzureAccount account, IAzureEnvironment environment, SecureString password)
         {
@@ -494,9 +494,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             return account;
         }
 
-        #endregion
+#endregion
 
-        #region Subscription management
+#region Subscription management
 
         public IAzureSubscription AddOrSetSubscription(IAzureSubscription subscription)
         {
@@ -988,9 +988,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             WriteDebugMessage(aadEx.Message);
         }
 
-        #endregion
+#endregion
 
-        #region Environment management
+#region Environment management
 
         public IAzureEnvironment GetEnvironmentOrDefault(string name)
         {
@@ -1116,6 +1116,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
             return Profile.EnvironmentTable[environment.Name];
         }
-        #endregion
+#endregion
     }
 }
+#endif

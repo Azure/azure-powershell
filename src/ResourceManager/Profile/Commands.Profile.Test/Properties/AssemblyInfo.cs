@@ -18,13 +18,15 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Xunit;
 
+#if !NETSTANDARD
 [assembly: AssemblyTitle("Microsoft Azure Powershell - Common ResourceManager Profile Test")]
 [assembly: AssemblyCompany(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCompany)]
 [assembly: AssemblyProduct(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyProduct)]
 [assembly: AssemblyCopyright(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCopyright)]
+[assembly: AssemblyVersion("3.0.0")]
+[assembly: AssemblyFileVersion("3.0.0")]
+#endif
 
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]
-[assembly: AssemblyVersion("3.0.0")]
-[assembly: AssemblyFileVersion("3.0.0")]
 [assembly: CollectionBehavior(DisableTestParallelization = true, MaxParallelThreads =1)]

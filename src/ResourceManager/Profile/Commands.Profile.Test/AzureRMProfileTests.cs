@@ -107,7 +107,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 DefaultTenant.ToString(),
                 DefaultSubscription.ToString(),
                 null,
-                null);
+                null
+#if NETSTANDARD
+               , null
+#endif
+                );
         }
 
         [Fact]
@@ -140,7 +144,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                null,
                DefaultSubscription.ToString(),
                null,
-               null));
+               null
+#if NETSTANDARD
+               , null
+#endif
+               ));
         }
 
         [Fact]
@@ -167,7 +175,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                DefaultTenant.ToString(),
                DefaultSubscription.ToString(),
                null,
-               null));
+               null
+#if NETSTANDARD
+               , null
+#endif
+               ));
         }
 
         [Fact]
@@ -202,7 +214,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 null,
                 subscriptionInSecondTenant,
                 null,
-                null);
+                null
+#if NETSTANDARD
+               , null
+#endif
+                );
         }
 
         [Fact]
@@ -256,7 +272,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 null,
                 null,
                 MockSubscriptionClientFactory.GetSubscriptionNameFromId(subscriptionInSecondTenant),
-                null);
+                null
+#if NETSTANDARD
+               , null
+#endif
+                );
         }
 
         [Fact]
@@ -305,7 +325,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 null,
                 secondsubscriptionInTheFirstTenant,
                 null,
-                null);
+                null
+#if NETSTANDARD
+               , null
+#endif
+                );
 
             var tenantsInAccount = azureRmProfile.DefaultContext.Account.GetPropertyAsArray(AzureAccount.Property.Tenants);
             Assert.Equal(1, tenantsInAccount.Length);
@@ -343,7 +367,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                null,
                secondsubscriptionInTheFirstTenant,
                null,
-               null));
+               null
+#if NETSTANDARD
+               , null
+#endif
+               ));
         }
 
         [Fact]

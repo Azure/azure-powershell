@@ -16,6 +16,7 @@ using Microsoft.Azure;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using System;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
 
@@ -40,7 +41,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             IAzureEnvironment environment,
             string tenant,
             SecureString password,
+#if !NETSTANDARD
             string promptBehavior,
+#else
+            Action<string> promptAction,
+#endif
             IAzureTokenCache tokenCache,
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
@@ -64,7 +69,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             IAzureEnvironment environment,
             string tenant,
             SecureString password,
+#if !NETSTANDARD
             string promptBehavior,
+#else
+            Action<string> promptBehavior,
+#endif
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
             return Authenticate(account, environment, tenant, password, promptBehavior, AzureSession.Instance.TokenCache, resourceId);
