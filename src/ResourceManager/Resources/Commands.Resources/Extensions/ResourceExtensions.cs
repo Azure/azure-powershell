@@ -114,19 +114,15 @@ namespace Microsoft.Azure.Commands.Resources.Models
             return operations.NextPageLink;
         }
 
-        public static Rest.Azure.IPage<DeploymentOperation> List(this IDeploymentOperationsOperations operations,
+        public static Rest.Azure.IPage<DeploymentOperation> List(this IDeploymentOperations operations,
             string resourceGroupName, string deploymentName, string parameters)
         {
             return operations.List(resourceGroupName, deploymentName);
         }
 
-        public static bool Exists(this bool? value)
+        public static bool Exists(this bool value)
         {
-            if(value.HasValue && value.Value)
-            {
-                return true;
-            }
-            return false;
+            return value;
         }
 #endif
     }
