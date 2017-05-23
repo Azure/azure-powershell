@@ -79,19 +79,20 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
             return Client.BorderGatewayProtocolPeerings.Get(serviceKey.ToString(), accessType).BgpPeering;
         }
 
-        public AzureBgpPeering NewAzureBGPPeering(Guid serviceKey, string advertisedPublicPrefixes, UInt32 customerAsn, UInt32 peerAsn, string primaryPeerSubnet,
-            string routingRegistryName, string secondaryPeerSubnet, UInt32 vlanId, BgpPeeringAccessType accessType, string sharedKey = null)
+        public AzureBgpPeering NewAzureBGPPeering(Guid serviceKey, string advertisedPublicPrefixes, UInt32 customerAsn, UInt32 peerAsn,string primaryPeerSubnet,
+            string routingRegistryName, string secondaryPeerSubnet, UInt32 vlanId, BgpPeeringAccessType accessType, string sharedKey = null, UInt32 legacyMode = 0)
         {
             var result = Client.BorderGatewayProtocolPeerings.New(serviceKey.ToString(), accessType, new BorderGatewayProtocolPeeringNewParameters()
            {
                AdvertisedPublicPrefixes = advertisedPublicPrefixes,
                CustomerAutonomousSystemNumber = customerAsn,
+               LegacyMode = legacyMode,
                PeerAutonomousSystemNumber = peerAsn,
                PrimaryPeerSubnet = primaryPeerSubnet,
                RoutingRegistryName = routingRegistryName,
                SecondaryPeerSubnet = secondaryPeerSubnet,
                SharedKey = sharedKey,
-               VirtualLanId = vlanId
+               VirtualLanId = vlanId,
            });
 
             if (result.HttpStatusCode.Equals(HttpStatusCode.OK))

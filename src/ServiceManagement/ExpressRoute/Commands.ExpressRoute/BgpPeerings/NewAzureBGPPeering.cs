@@ -36,6 +36,9 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
             HelpMessage = "Peer Asn")]
         public UInt32 PeerAsn { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Legacy Mode")]
+        public LegacyMode LegacyMode { get; set; }
+
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Primary Peer Subnet")]
         [ValidateNotNullOrEmpty]
         public string PrimaryPeerSubnet { get; set; }
@@ -61,8 +64,14 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         public override void ExecuteCmdlet()
         {
             var route = ExpressRouteClient.NewAzureBGPPeering(ServiceKey, AdvertisedPublicPrefixes, CustomerAsn, PeerAsn,
-                PrimaryPeerSubnet, RoutingRegistryName, SecondaryPeerSubnet, VlanId, AccessType, SharedKey);
+                PrimaryPeerSubnet, RoutingRegistryName, SecondaryPeerSubnet, VlanId, AccessType, SharedKey, Convert.ToUInt32(LegacyMode));
             WriteObject(route);
         }
+    }
+
+    public enum LegacyMode
+    {
+        False = 0,
+        True = 1
     }
 }
