@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             {
                 Properties = new RoleAssignmentProperties
                 {
-                    PrincipalId = principalId,
+                    PrincipalId = principalId.ToString(),
                     RoleDefinitionId = roleDefinitionId
                 }
             };
