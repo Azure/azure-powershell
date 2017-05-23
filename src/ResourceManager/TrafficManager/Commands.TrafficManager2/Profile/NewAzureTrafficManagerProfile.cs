@@ -69,15 +69,15 @@ namespace Microsoft.Azure.Commands.TrafficManager
 
         [Parameter(Mandatory = false, HelpMessage = "The interval (in seconds) at which Traffic Manager will check the health of each endpoint in this profile. The default is 30.")]
         [ValidateNotNullOrEmpty]
-        public uint? MonitorInterval { get; set; }
+        public int? MonitorIntervalInSeconds { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The time (in seconds) that Traffic Manager allows endpoints in this profile to respond to the health check. The default is 10.")]
         [ValidateNotNullOrEmpty]
-        public uint? MonitorTimeout { get; set; }
+        public int? MonitorTimeoutInSeconds { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The number of consecutive failed health checks that Traffic Manager tolerates before declaring an endpoint in this profile Degraded after the next consecutive failed health check. The default is 3.")]
         [ValidateNotNullOrEmpty]
-        public uint? MonitorToleratedNumberOfFailures { get; set; }
+        public int? MonitorToleratedNumberOfFailures { get; set; }
 
         [Alias("Tags")]
         [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource tags.")]
@@ -108,8 +108,8 @@ namespace Microsoft.Azure.Commands.TrafficManager
                     this.MonitorProtocol,
                     this.MonitorPort,
                     this.MonitorPath,
-                    this.MonitorInterval,
-                    this.MonitorTimeout,
+                    this.MonitorIntervalInSeconds,
+                    this.MonitorTimeoutInSeconds,
                     this.MonitorToleratedNumberOfFailures,
                     this.Tag);
 
