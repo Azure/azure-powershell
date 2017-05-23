@@ -16,8 +16,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Management.Automation;
+using System.Management.Automation.Runspaces;
 using System.Reflection;
+using System.Text;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
@@ -62,6 +65,80 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
 
             return fullPath;
+        }
+
+        /// <summary>
+        /// Execute the given cmdlet in powershell usign the given pipeline parameters.  
+        /// </summary>
+        /// <typeparam name="T">The output type for the cmdlet</typeparam>
+        /// <param name="cmdlet">The cmdlet to execute</param>
+        /// <param name="name">The name of the cmdlet</param>
+        /// <param name="cmdletParameters">The parameters to pass to the cmdlet on the pipeline</param>
+        /// <returns>The output of executing the cmdlet</returns>
+        public static List<T> ExecuteCmdletInPipeline<T>(this PSCmdlet cmdlet, string name, params object[] cmdletParameters)
+        {
+            List<T> output = new List<T>();
+            using (System.Management.Automation.PowerShell powershell = System.Management.Automation.PowerShell.Create(RunspaceMode.NewRunspace))
+            {
+                var info = new CmdletInfo(name, cmdlet.GetType());
+                Collection<T> result = powershell.AddCommand(info).Invoke<T>(cmdletParameters);
+                if (powershell.Streams.Error != null && powershell.Streams.Error.Count > 0)
+                {
+                    StringBuilder details = new StringBuilder();
+                    powershell.Streams.Error.ForEach(e => details.AppendFormat("Error: {0}\n", e.ToString()));
+                    throw new InvalidOperationException(string.Format("Errors while running cmdlet:\n {0}", details.ToString()));
+                }
+
+                if (result != null && result.Count > 0)
+                {
+                    result.ForEach(output.Add);
+                }
+            }
+
+            return output;
+        }
+
+        /// <summary>
+        /// Execute the given cmdlet in powershell with the given parameters after injecting the given exception.  It is expected that the cmdlet has a runtime that can be used for receiving output
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="cmdlet">The cmdlet to execute</param>
+        /// <param name="name">The name of the cmdlet</param>
+        /// <param name="exception">The exception to inject into the error stream</param>
+        /// <param name="cmdletParameters">The parameters to pass to the cmdlet on the pipeline</param>
+        public static void ExecuteCmdletWithExceptionInPipeline<T>(this PSCmdlet cmdlet, string name, Exception exception, params KeyValuePair<string, object>[] cmdletParameters)
+        {
+            List<T> output = new List<T>();
+            using (System.Management.Automation.PowerShell powershell = System.Management.Automation.PowerShell.Create(RunspaceMode.NewRunspace))
+            {
+                var info = new CmdletInfo(name, cmdlet.GetType());
+                powershell.AddCommand("Write-Error");
+                powershell.AddParameter("Exception", exception);
+                powershell.Invoke();
+                powershell.Commands.Clear();
+                powershell.AddCommand(info);
+                foreach (var pair in cmdletParameters)
+                {
+                    if (pair.Value == null)
+                    {
+                        powershell.AddParameter(pair.Key);
+                    }
+                    else
+                    {
+                        powershell.AddParameter(pair.Key, pair.Value);
+                    }
+                }
+                Collection<T> result = powershell.Invoke<T>();
+                powershell.Streams.Error.ForEach(cmdlet.WriteError);
+                powershell.Streams.Debug.ForEach(d => cmdlet.WriteDebug(d.Message));
+                powershell.Streams.Verbose.ForEach(v => cmdlet.WriteWarning(v.Message));
+                powershell.Streams.Warning.ForEach(w => cmdlet.WriteWarning(w.Message));
+
+                if (result != null && result.Count > 0)
+                {
+                    result.ForEach(r => cmdlet.WriteObject(r));
+                }
+            }
         }
 
         public static List<T> ExecuteScript<T>(this PSCmdlet cmdlet, string contents)
