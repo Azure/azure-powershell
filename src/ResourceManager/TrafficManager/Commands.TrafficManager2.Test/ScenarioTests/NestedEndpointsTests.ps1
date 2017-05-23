@@ -26,6 +26,8 @@ function Test-NestedEndpointsCreateUpdate
 	$parentProfileName = getAssetName
 	$parentProfileRelativeName = getAssetName
 
+	try
+	{
 	$createdChildProfile = New-AzureRmTrafficManagerProfile -Name $childProfileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $childProfileRelativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
 	Assert-NotNull $createdChildProfile.Id
 
@@ -76,6 +78,12 @@ function Test-NestedEndpointsCreateUpdate
 	Assert-AreEqual 2 $retrievedParentProfile.Endpoints.Count
 	Assert-AreEqual 4 $retrievedParentProfile.Endpoints[1].MinChildEndpoints
 	Assert-AreEqual "West US" $retrievedParentProfile.Endpoints[1].Location
+	}
+    finally
+    {
+        # Cleanup
+        TestCleanup-RemoveResourceGroup $resourceGroup.ResourceGroupName
+    }
 }
 
 <#
@@ -90,6 +98,8 @@ function Test-ProfileWithNestedEndpointsGetPut
 	$parentProfileName = getAssetName
 	$parentProfileRelativeName = getAssetName
 
+	try
+	{
 	$createdChildProfile = New-AzureRmTrafficManagerProfile -Name $childProfileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $childProfileRelativeName -Ttl 30 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testchild.asp" 
 	Assert-NotNull $createdChildProfile.Id
 
@@ -118,4 +128,10 @@ function Test-ProfileWithNestedEndpointsGetPut
 	Assert-AreEqual "West Europe" $retrievedParentProfile.Endpoints[0].Location
 	Assert-AreEqual $createdChildProfile.Id $retrievedParentProfile.Endpoints[0].TargetResourceId
 	Assert-AreEqual $retrievedParentProfile.Name $retrievedParentProfile.Endpoints[0].ProfileName
+	}
+    finally
+    {
+        # Cleanup
+        TestCleanup-RemoveResourceGroup $resourceGroup.ResourceGroupName
+    }
 }

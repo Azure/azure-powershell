@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 
         public ITrafficManagerManagementClient TrafficManagerManagementClient { get; set; }
 
-        public TrafficManagerProfile CreateTrafficManagerProfile(string resourceGroupName, string profileName, string profileStatus, string trafficRoutingMethod, string relativeDnsName, uint ttl, string monitorProtocol, uint monitorPort, string monitorPath, uint? monitorInterval, uint? monitorTimeout, uint? monitorToleratedNumberOfFailures, Hashtable tag)
+        public TrafficManagerProfile CreateTrafficManagerProfile(string resourceGroupName, string profileName, string profileStatus, string trafficRoutingMethod, string relativeDnsName, uint ttl, string monitorProtocol, uint monitorPort, string monitorPath, int? monitorInterval, int? monitorTimeout, int? monitorToleratedNumberOfFailures, Hashtable tag)
         {
             Profile response = this.TrafficManagerManagementClient.Profiles.CreateOrUpdate(
                 resourceGroupName,
@@ -260,9 +260,9 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                 MonitorProtocol = sdkProfile.MonitorConfig.Protocol,
                 MonitorPort = (uint)sdkProfile.MonitorConfig.Port,
                 MonitorPath = sdkProfile.MonitorConfig.Path,
-                MonitorInterval = (uint?)sdkProfile.MonitorConfig.IntervalInSeconds,
-                MonitorTimeout = (uint?)sdkProfile.MonitorConfig.TimeoutInSeconds,
-                MonitorToleratedNumberOfFailures = (uint?)sdkProfile.MonitorConfig.ToleratedNumberOfFailures,
+                MonitorIntervalInSeconds = (int?)sdkProfile.MonitorConfig.IntervalInSeconds,
+                MonitorTimeoutInSeconds = (int?)sdkProfile.MonitorConfig.TimeoutInSeconds,
+                MonitorToleratedNumberOfFailures = (int?)sdkProfile.MonitorConfig.ToleratedNumberOfFailures,
             };
 
             if (sdkProfile.Endpoints != null)
