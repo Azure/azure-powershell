@@ -4,14 +4,10 @@ Tests Analysis Services server lifecycle (Create, Update, Get, List, Delete).
 #>
 function Test-AnalysisServicesServer
 {
-    param
-	(
-		$location = "West US"
-	)
-	
 	try
 	{  
 		# Creating server
+		$location = Get-Location
 		$resourceGroupName = Get-ResourceGroupName
 		$serverName = Get-AnalysisServicesServerName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
@@ -129,14 +125,10 @@ Tests scale up and down of Analysis Services server (B1 -> S2 -> S1).
 #>
 function Test-AnalysisServicesServerScaleUpDown
 {
-    param
-	(
-		$location = "West US"
-	)
-	
 	try
 	{  
 		# Creating server
+		$location = Get-Location
 		$resourceGroupName = Get-ResourceGroupName
 		$serverName = Get-AnalysisServicesServerName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
@@ -188,16 +180,15 @@ Tests Analysis Services server lifecycle  Failure scenarios (Create, Update, Get
 #>
 function Test-NegativeAnalysisServicesServer
 {
-
     param
 	(
-		$location = "West US",
 		$fakeserverName = "psfakeservertest"
 	)
 	
 	try
 	{
 		# Creating Account
+		$location = Get-Location
 		$resourceGroupName = Get-ResourceGroupName
 		$serverName = Get-AnalysisServicesServerName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
@@ -246,12 +237,12 @@ function Test-AnalysisServicesServerRestart
 {
     param
 	(
-		$rolloutEnvironment = $env.ASAZURE_TEST_ROLLOUT,
-		$location = "West US"
+		$rolloutEnvironment = $env.ASAZURE_TEST_ROLLOUT
 	)
 	try
 	{
 		# Creating server
+		$location = Get-Location
 		$resourceGroupName = Get-ResourceGroupName
 		$serverName = Get-AnalysisServicesServerName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
