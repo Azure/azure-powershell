@@ -101,7 +101,5 @@ Cleans the created resource groups
 #>
 function TestCleanup-RemoveResourceGroup($rgname)
 {
-    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
-        Remove-AzureRmResourceGroup -Name $rgname -Force
-    }
+    Remove-AzureRmResourceGroup -Name $rgname -Force
 }
