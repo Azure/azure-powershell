@@ -79,9 +79,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmADAppCredential]()
+[New-AzureRmADAppCredential](./New-AzureRmADAppCredential.md)
 
-[Remove-AzureRmADAppCredential]()
+[Remove-AzureRmADAppCredential](./Remove-AzureRmADAppCredential.md)
 
-[Get-AzureRmADApplication]()
+[Get-AzureRmADApplication](./Get-AzureRmADApplication.md)
 

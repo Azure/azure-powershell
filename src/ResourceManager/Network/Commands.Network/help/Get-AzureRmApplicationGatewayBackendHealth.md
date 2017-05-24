@@ -113,5 +113,5 @@ Keywords: azure, azurerm, arm, resource, management, manager, network, networkin
 
 ## RELATED LINKS
 
-[Get-AzureRmApplicationGateway]()
+[Get-AzureRmApplicationGateway](./Get-AzureRmApplicationGateway.md)
 
