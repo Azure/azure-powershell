@@ -77,7 +77,10 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
 
                         foreach (var alias in newParameter.ParameterMetadata.AliasList)
                         {
-                            parameterDictionary.Add(alias, newParameter);
+                            if (!parameterDictionary.ContainsKey(alias))
+                            {
+                                parameterDictionary.Add(alias, newParameter);
+                            }
                         }
                     }
 
