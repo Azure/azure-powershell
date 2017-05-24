@@ -38,14 +38,14 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
             };
         }
 
-        public IAccessToken GetAccessToken(AdalConfiguration config, ShowDialog promptBehavior, string userId, SecureString password,
-            AzureAccount.AccountType credentialType)
+        public IAccessToken GetAccessToken(AdalConfiguration config, string promptBehavior, string userId, SecureString password,
+            string credentialType)
         {
             AdalConfiguration = config;
             return this.accessToken;
         }
 
-        public IAccessToken GetAccessTokenWithCertificate(AdalConfiguration config, string clientId, string certificateThumbprint, AzureAccount.AccountType credentialType)
+        public IAccessToken GetAccessTokenWithCertificate(AdalConfiguration config, string clientId, string certificateThumbprint, string credentialType)
         {
             AdalConfiguration = config;
             return this.accessToken;

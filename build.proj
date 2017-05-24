@@ -181,8 +181,9 @@
   <Target Name="Build" DependsOnTargets="RestoreNugetPackages;BuildMsBuildTask">
     <Message Importance="high" Text="Building Cmdlets..." />
 
-    <MakeDir Directories="$(PackageDirectory)\$(Configuration)"/>  
-    <Exec ContinueOnError="false" Command="$(PowerShellCommand) -NonInteractive -NoLogo -NoProfile -Command &quot; . $(LibraryToolsFolder)\CreateMappings.ps1 -RootPath $(LibrarySourceFolder) -OutputFile $(PackageDirectory)\$(Configuration)\groupMapping.json -WarningFile $(PackageDirectory)\$(Configuration)\groupMappingWarnings.json -RulesFile $(LibraryToolsFolder)\CreateMappings_rules.json &quot;"/>
+    <MakeDir Directories="$(PackageDirectory)" />
+    <Exec ContinueOnError="false" 
+      Command="$(PowerShellCommand) -NonInteractive -NoLogo -NoProfile -Command &quot; . $(LibraryToolsFolder)\CreateMappings.ps1 -RootPath $(LibrarySourceFolder) -OutputFile $(PackageDirectory)\groupMapping.json -WarningFile $(PackageDirectory)\groupMappingWarnings.json -RulesFile $(LibraryToolsFolder)\CreateMappings_rules.json &quot;" />
 	
     <MSBuild
       Projects="@(CmdletSolutionsToBuild)"
@@ -195,11 +196,11 @@
     	ContinueOnError="false"
     	Condition=" '$(SkipHelp)' == 'false' "/>
     <CallTarget Targets="BuildSetupTest"/>
-	<CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />	
-	<CallTarget Targets="BuildSetup" Condition=" '$(SkipHelp)' == 'false' "/>
-	<CallTarget Targets="CodeSignInstaller"
-                Condition=" '$(CodeSign)' == 'true' and '$(Scope)' == 'all'" />
-	<Message Importance="high" Text="Running Static Analyser" />
+    <CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />	
+	  <CallTarget Targets="BuildSetup" Condition=" '$(SkipHelp)' == 'false' "/>
+	  <CallTarget Targets="CodeSignInstaller"
+      Condition=" '$(CodeSign)' == 'true' and '$(Scope)' == 'all'" />
+	  <Message Importance="high" Text="Running Static Analyser" />
     <CallTarget targets="DependencyAnalysis" ContinueOnError="ErrorAndContinue" />
     <Exec Command="$(PowerShellCommand) -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\CleanupBuild.ps1 -BuildConfig $(Configuration) &quot;" />
   </Target>

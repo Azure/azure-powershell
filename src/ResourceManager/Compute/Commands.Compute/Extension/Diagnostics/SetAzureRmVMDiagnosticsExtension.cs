@@ -14,6 +14,7 @@
 
 using AutoMapper;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
@@ -209,8 +210,8 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (this.storageClient == null)
                 {
-                    this.storageClient = AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(
-                        DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
+                    this.storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(
+                        DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
                 }
 
                 return this.storageClient;

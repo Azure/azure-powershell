@@ -15,6 +15,7 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Utilities
 {
+    using Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.Common.Authentication.Models;
     using Microsoft.Azure.Management.Logic;
@@ -42,9 +43,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// Creates new LogicManagement client instance.
         /// </summary>
         /// <param name="context">The Azure context instance</param>
-        public LogicAppClient(AzureContext context)
+        public LogicAppClient(IAzureContext context)
         {
-            this.LogicManagementClient = AzureSession.ClientFactory.CreateArmClient<LogicManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);            
+            this.LogicManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<LogicManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);            
             this.LogicManagementClient.SubscriptionId = context.Subscription.Id.ToString();
         }
 

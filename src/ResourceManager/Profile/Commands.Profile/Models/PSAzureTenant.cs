@@ -12,15 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Profile.Models
 {
     /// <summary>
     /// Azure subscription details.
     /// </summary>
-    public class PSAzureTenant
+    public class PSAzureTenant : IAzureTenant
     {
         /// <summary>
         /// Convert between formats of AzureSubscription information.
@@ -34,11 +35,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
                 return null;
             }
 
-            return new PSAzureTenant
-            {
-                TenantId = other.Id.ToString(),
-                Domain = other.Domain
-            };
+            return new PSAzureTenant(other);
         }
 
         /// <summary>
@@ -53,37 +50,45 @@ namespace Microsoft.Azure.Commands.Profile.Models
                 return null;
             }
 
-            var result = new AzureTenant
-            {
-                Domain = other.Domain
-            };
-
-            if (other.TenantId != null)
-            {
-                Guid tenantId;
-                if (Guid.TryParse(other.TenantId, out tenantId))
-                {
-                    result.Id = tenantId;
-                }
-            }
-
+            var result = new AzureTenant();
+            result.CopyFrom(other);
             return result;
         }
 
         /// <summary>
+        /// Default Constructor
+        /// </summary>
+        public PSAzureTenant()
+        {
+        }
+
+        /// <summary>
+        /// Copy Constructor
+        /// </summary>
+        /// <param name="other">The tenanht to copy</param>
+        public PSAzureTenant(IAzureTenant other)
+        {
+            this.CopyFrom(other);
+        }
+        /// <summary>
         /// The subscription id.
         /// </summary>
-        public string TenantId { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// The name of the subscription.
         /// </summary>
-        public string Domain { get; set; }
+        public string Directory { get; set; }
+
+        /// <summary>
+        /// Extended proeprties of the tenant
+        /// </summary>
+        public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
 
         public override string ToString()
         {
-            return (this.TenantId == Guid.Empty.ToString()) ? this.Domain : this.TenantId;
+            return (this.Id == Guid.Empty.ToString()) ? this.Directory : this.Id;
         }
     }
 }

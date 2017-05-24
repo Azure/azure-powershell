@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
 
-  <?define productName="Microsoft Azure PowerShell - March 2017" ?>
+  <?define productName="Microsoft Azure PowerShell - May 2017" ?>
   <?define sourceDir="$(var.SolutionDir)..\src\Package\$(var.Configuration)" ?>
   <?define caSourceDir="$(var.SolutionDir)setup\bin\$(var.Configuration)" ?>
 
-  <?define version="3.8.0" ?>
+  <?define version="4.0.1" ?>
 
   <Product Id="*"
            Name="$(var.productName)"
@@ -47,10 +47,11 @@
       <![CDATA[Installed or (PSCOMPATIBLEVERSION >< "3.0")]]>
     </Condition>
 
-    <PropertyRef Id="NETFRAMEWORK40FULL" />
-    <PropertyRef Id="NETFRAMEWORK40CLIENT" />
-    <Condition Message="This setup requires the .NET Framework 4.0 or higher to be installed.">
-      Installed OR NETFRAMEWORK40FULL OR NETFRAMEWORK40CLIENT
+    <PropertyRef Id="NETFRAMEWORK45" />
+    <Condition Message="This setup requires the .NET Framework 4.5.2 or higher to be installed.">
+      <!-- NETFRAMEWORK45 contains a DWORD with installed version key to versions is here: -->
+      <!-- https://msdn.microsoft.com/en-us/library/ee942965(v=vs.110).aspx#detect_net -->
+      <![CDATA[Installed or (NETFRAMEWORK45 >= "#379893")]]>
     </Condition>
 
     <Directory Id="TARGETDIR" Name="SourceDir">

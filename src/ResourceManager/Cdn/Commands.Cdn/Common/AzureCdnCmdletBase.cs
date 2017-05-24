@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Cdn;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Cdn.Common
 {
@@ -42,7 +43,7 @@ namespace Microsoft.Azure.Commands.Cdn.Common
             {
                 return _cdnManagementClient ??
                        (_cdnManagementClient =
-                           AzureSession.ClientFactory.CreateArmClient<CdnManagementClient>(DefaultProfile.Context,
+                           AzureSession.Instance.ClientFactory.CreateArmClient<CdnManagementClient>(DefaultProfile.DefaultContext,
                                AzureEnvironment.Endpoint.ResourceManager));
             }
             set { _cdnManagementClient = value; }

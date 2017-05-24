@@ -17,9 +17,10 @@ using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Management.PowerBIEmbedded;
 using Microsoft.Azure.Management.PowerBIEmbedded.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollection
 {
@@ -44,7 +45,7 @@ namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollectio
             {
                 if (this.powerBIClient == null)
                 {
-                    this.powerBIClient = AzureSession.ClientFactory.CreateArmClient<PowerBIEmbeddedManagementClient>(DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
+                    this.powerBIClient = AzureSession.Instance.ClientFactory.CreateArmClient<PowerBIEmbeddedManagementClient>(DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
                 }
 
                 return this.powerBIClient;
@@ -53,7 +54,7 @@ namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollectio
 
         public string SubscriptionId
         {
-            get { return DefaultProfile.Context.Subscription.Id.ToString(); }
+            get { return DefaultProfile.DefaultContext.Subscription.Id.ToString(); }
         }
 
         protected void WriteWorkspaceCollection(Azure.Management.PowerBIEmbedded.Models.WorkspaceCollection workspaceCollection)
