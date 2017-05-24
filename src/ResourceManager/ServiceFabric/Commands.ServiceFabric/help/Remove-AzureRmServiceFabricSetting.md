@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmServiceFabricSetting
 
 ## SYNOPSIS
-Remove one or multiple ServiceFabric setting from the cluster
+Remove one or multiple Service Fabric setting from the cluster.
 
 ## SYNTAX
 
@@ -24,7 +24,7 @@ Remove-AzureRmServiceFabricSetting [-ResourceGroupName] <String> [-Name] <String
 ```
 
 ## DESCRIPTION
-Use **Remove-AzureRmServiceFabricSetting** to remove Service Fabric settings from the cluster
+Use **Remove-AzureRmServiceFabricSetting** to remove Service Fabric settings from the cluster.
 
 ## EXAMPLES
 
@@ -33,27 +33,13 @@ Use **Remove-AzureRmServiceFabricSetting** to remove Service Fabric settings fro
 PS c:> Remove-AzureRmServiceFabricSetting -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -Section 'EseStore' -Parameter 'MaxCursors'
 ```
 
-This command will remove settings 'MaxCursors' under 'EseStore' section
+This command will remove settings 'MaxCursors' under 'EseStore' section.
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
-Specify the name of the cluster
+Specify the name of the cluster.
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -67,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -Parameter
-Parameter
+Parameter.
 
 ```yaml
 Type: String
@@ -97,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -Section
-Section
+Section.
 
 ```yaml
 Type: String
@@ -112,7 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -SettingsSectionDescription
-Client authentication type
+Client authentication type.
 
 ```yaml
 Type: PSSettingsSectionDescription[]
@@ -123,6 +109,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

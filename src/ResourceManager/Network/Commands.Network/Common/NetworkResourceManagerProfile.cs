@@ -217,6 +217,17 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<MNM.FlowLogInformation, CNM.PSFlowLog>();
             Mapper.CreateMap<MNM.RetentionPolicyParameters, CNM.PSRetentionPolicyParameters>();
 
+            // CheckConnectivity
+            // CNM to MNM
+            Mapper.CreateMap<CNM.PSConnectivityInformation, MNM.ConnectivityInformation>();
+            Mapper.CreateMap<CNM.PSConnectivityHop, MNM.ConnectivityHop>();
+            Mapper.CreateMap<CNM.PSConnectivityIssue, MNM.ConnectivityIssue>();
+
+            // MNM to CNM
+            Mapper.CreateMap<MNM.ConnectivityInformation, CNM.PSConnectivityInformation>();
+            Mapper.CreateMap<MNM.ConnectivityHop, CNM.PSConnectivityHop>();
+            Mapper.CreateMap<MNM.ConnectivityIssue, CNM.PSConnectivityIssue>();
+
             // LoadBalancer
             // CNM to MNM
             Mapper.CreateMap<CNM.PSLoadBalancer, MNM.LoadBalancer>();

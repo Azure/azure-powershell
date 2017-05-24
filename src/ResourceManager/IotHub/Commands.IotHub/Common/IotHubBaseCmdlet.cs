@@ -17,9 +17,10 @@ using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Management.IotHub.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Management.IotHub;
 using Microsoft.Azure.Management.IotHub.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Management.IotHub
 {
@@ -35,7 +36,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             {
                 if (this.iothubClient == null)
                 {
-                    this.iothubClient = AzureSession.ClientFactory.CreateArmClient<IotHubClient>(DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
+                    this.iothubClient = AzureSession.Instance.ClientFactory.CreateArmClient<IotHubClient>(DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
                 }
 
                 return this.iothubClient;
@@ -44,7 +45,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
         public string SubscriptionId
         {
-            get { return DefaultProfile.Context.Subscription.Id.ToString(); }
+            get { return DefaultProfile.DefaultContext.Subscription.Id.ToString(); }
         }
     }
 }

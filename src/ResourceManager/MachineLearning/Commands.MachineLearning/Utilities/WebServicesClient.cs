@@ -22,6 +22,7 @@ using Microsoft.Azure.Management.MachineLearning.WebServices.Models;
 using APIClient = Microsoft.Azure.Management.MachineLearning.
                     WebServices.AzureMLWebServicesManagementClient;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.MachineLearning.Utilities
 {
@@ -31,9 +32,9 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
 
         private readonly APIClient apiClient;
 
-        public WebServicesClient(AzureContext context)
+        public WebServicesClient(IAzureContext context)
         {
-            this.apiClient = AzureSession.ClientFactory.
+            this.apiClient = AzureSession.Instance.ClientFactory.
                                             CreateArmClient<APIClient>(
                                                 context,
                                                 AzureEnvironment.Endpoint.ResourceManager);

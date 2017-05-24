@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
         private Mock<IResourcesOperations> resourceOperationsMock;
 
-        private Mock<IDeploymentOperationsOperations> deploymentOperationsMock;
+        private Mock<IDeploymentOperations> deploymentOperationsMock;
 
         private Mock<IProvidersOperations> providersMock;
 
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             deploymentsMock = new Mock<IDeploymentsOperations>();
             resourceGroupMock = new Mock<IResourceGroupsOperations>();
             resourceOperationsMock = new Mock<IResourcesOperations>();
-            deploymentOperationsMock = new Mock<IDeploymentOperationsOperations>();
+            deploymentOperationsMock = new Mock<IDeploymentOperations>();
             providersMock = new Mock<IProvidersOperations>();
             providersMock.Setup(f => f.ListWithHttpMessagesAsync(null, null, null, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() =>
@@ -233,9 +233,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             PSCreateResourceGroupParameters parameters = new PSCreateResourceGroupParameters() { ResourceGroupName = resourceGroupName, ConfirmAction = RejectAction };
             resourceGroupMock.Setup(f => f.CheckExistenceWithHttpMessagesAsync(parameters.ResourceGroupName, null, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() =>
-                    new AzureOperationResponse<bool?>()
+                    new AzureOperationResponse<bool>()
                     {
-                        Body = (bool?)true
+                        Body = true
                     }));
 
             resourceGroupMock.Setup(f => f.GetWithHttpMessagesAsync(
@@ -276,7 +276,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 ConfirmAction = ConfirmAction
             };
             resourceGroupMock.Setup(f => f.CheckExistenceWithHttpMessagesAsync(parameters.ResourceGroupName, null, new CancellationToken()))
-                .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse((bool?)false)));
+                .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse(false)));
 
             resourceGroupMock.Setup(f => f.CreateOrUpdateWithHttpMessagesAsync(
                 parameters.ResourceGroupName,
@@ -304,23 +304,21 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 TemplateFile = templateFile,
             };
             resourceGroupMock.Setup(f => f.CheckExistenceWithHttpMessagesAsync(parameters.ResourceGroupName, null, new CancellationToken()))
-                .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse((bool?)true)));
+                .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse(true)));
 
             deploymentsMock.Setup(f => f.ValidateWithHttpMessagesAsync(resourceGroupName, It.IsAny<string>(), It.IsAny<Deployment>(), null, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() =>
                 {
                     var result = CreateAzureOperationResponse(new DeploymentValidateResult
                     {
-                        Error = new ResourceManagementErrorWithDetails()
-                        {
-                            Code = "404",
-                            Message = "Awesome error message",
-                            Details = new List<ResourceManagementErrorWithDetails>(new[] { new ResourceManagementErrorWithDetails
-                            {
-                                Code = "SubError",
-                                Message = "Sub error message"
-                            }})
-                        }
+                        Error = new ResourceManagementErrorWithDetails(
+                            code: "404",
+                            message: "Awesome error message",
+                            details: new List<ResourceManagementErrorWithDetails>{
+                                new ResourceManagementErrorWithDetails(
+                                    code: "SubError",
+                                    message: "Sub error message")
+                            })
                     });
                     result.Response = new System.Net.Http.HttpResponseMessage();
                     result.Response.StatusCode = HttpStatusCode.NotFound;
@@ -346,7 +344,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 TemplateFile = templateFile,
             };
             resourceGroupMock.Setup(f => f.CheckExistenceWithHttpMessagesAsync(parameters.ResourceGroupName, null, new CancellationToken()))
-                .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse((bool?)true)));
+                .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse(true)));
 
             deploymentsMock.Setup(f => f.ValidateWithHttpMessagesAsync(resourceGroupName, It.IsAny<string>(), It.IsAny<Deployment>(), null, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() =>
@@ -435,7 +433,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                         It.IsAny<string>(),
                         null,
                         new CancellationToken()))
-                        .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<bool?>()
+                        .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<bool>()
                         {
                             Body = true
                         }));
@@ -448,50 +446,38 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                     var operationId = Guid.NewGuid().ToString();
                     var operationQueue = new Queue<DeploymentOperation>();
                     operationQueue.Enqueue(
-                        new DeploymentOperation()
-                        {
-                            OperationId = operationId,
-                            Properties = new DeploymentOperationProperties()
-                            {
-                                ProvisioningState = "Accepted",
-                                TargetResource = new TargetResource()
+                        new DeploymentOperation(
+                            operationId: operationId,
+                            properties: new DeploymentOperationProperties(
+                                provisioningState: "Accepted",
+                                targetResource: new TargetResource()
                                 {
                                     ResourceType = "Microsoft.Website",
                                     ResourceName = resourceName
-                                }
-                            }
-                        }
-                        );
+                                })));
+
                     operationQueue.Enqueue(
-                        new DeploymentOperation()
-                        {
-                            OperationId = operationId,
-                            Properties = new DeploymentOperationProperties()
-                            {
-                                ProvisioningState = "Running",
-                                TargetResource = new TargetResource()
+                        new DeploymentOperation(
+                            operationId: operationId,
+                            properties: new DeploymentOperationProperties(
+                                provisioningState: "Running",
+                                targetResource: new TargetResource()
                                 {
                                     ResourceType = "Microsoft.Website",
                                     ResourceName = resourceName
-                                }
-                            }
-                        }
-                        );
+                                })));
+
                     operationQueue.Enqueue(
-                        new DeploymentOperation()
-                        {
-                            OperationId = operationId,
-                            Properties = new DeploymentOperationProperties()
-                            {
-                                ProvisioningState = "Succeeded",
-                                TargetResource = new TargetResource()
+                        new DeploymentOperation(
+                            operationId: operationId,
+                            properties: new DeploymentOperationProperties(
+                                provisioningState: "Succeeded",
+                                targetResource: new TargetResource()
                                 {
                                     ResourceType = "Microsoft.Website",
                                     ResourceName = resourceName
-                                }
-                            }
-                        }
-                        );
+                                })));
+
                     deploymentOperationsMock.SetupSequence(
                         f =>
                             f.ListWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), null, null,
@@ -526,32 +512,26 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                     deploymentQueue.Enqueue(new DeploymentExtended()
                     {
                         Name = deploymentName,
-                        Properties = new DeploymentPropertiesExtended()
-                        {
-                            Mode = DeploymentMode.Incremental,
-                            CorrelationId = "123",
-                            ProvisioningState = "Accepted"
-                        }
+                        Properties = new DeploymentPropertiesExtended(
+                            mode: DeploymentMode.Incremental,
+                            correlationId: "123",
+                            provisioningState: "Accepted")
                     });
                     deploymentQueue.Enqueue(new DeploymentExtended
                     {
                         Name = deploymentName,
-                        Properties = new DeploymentPropertiesExtended()
-                        {
-                            Mode = DeploymentMode.Incremental,
-                            CorrelationId = "123",
-                            ProvisioningState = "Running"
-                        }
+                        Properties = new DeploymentPropertiesExtended(
+                            mode: DeploymentMode.Incremental,
+                            correlationId: "123",
+                            provisioningState: "Running")
                     });
                     deploymentQueue.Enqueue(new DeploymentExtended
                     {
                         Name = deploymentName,
-                        Properties = new DeploymentPropertiesExtended()
-                        {
-                            Mode = DeploymentMode.Incremental,
-                            CorrelationId = "123",
-                            ProvisioningState = "Succeeded"
-                        }
+                        Properties = new DeploymentPropertiesExtended(
+                            mode: DeploymentMode.Incremental,
+                            correlationId: "123",
+                            provisioningState: "Succeeded")
                     });
                     deploymentsMock.SetupSequence(
                         f =>
@@ -639,12 +619,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                                 {
                                     Name = getDeploymentName,
                                     Id = requestId,
-                                    Properties = new DeploymentPropertiesExtended()
-                                    {
-                                        Mode = DeploymentMode.Incremental,
-                                        CorrelationId = "123",
-                                        ProvisioningState = "Succeeded"
-                                    },
+                                    Properties = new DeploymentPropertiesExtended(
+                                        mode: DeploymentMode.Incremental,
+                                        correlationId: "123",
+                                        provisioningState: "Succeeded"),
                                 }
                             };
                         }
@@ -701,7 +679,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 parameters.DeploymentName,
                 null,
                 new CancellationToken()))
-                .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<bool?>()
+                .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<bool>()
                 {
                     Body = true
                 }));
@@ -714,20 +692,16 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             var operationId = Guid.NewGuid().ToString();
             var operationQueue = new Queue<DeploymentOperation>();
             operationQueue.Enqueue(
-                new DeploymentOperation()
-                {
-                    OperationId = operationId,
-                    Properties = new DeploymentOperationProperties()
-                    {
-                        ProvisioningState = "Succeeded",
-                        TargetResource = new TargetResource()
+                new DeploymentOperation(
+                    operationId: operationId,
+                    properties: new DeploymentOperationProperties(
+                        provisioningState: "Succeeded",
+                        targetResource: new TargetResource()
                         {
                             ResourceType = "Microsoft.Website",
                             ResourceName = resourceName
-                        }
-                    }
-                }
-            );
+                        })));
+
             deploymentOperationsMock.Setup(f => f.ListWithHttpMessagesAsync(
                 parameters.ResourceGroupName,
                 parameters.DeploymentName,
@@ -778,7 +752,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 ConfirmAction = ConfirmAction
             };
             resourceGroupMock.Setup(f => f.CheckExistenceWithHttpMessagesAsync(parameters.ResourceGroupName, null, new CancellationToken()))
-                .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<bool?>() { Body = (bool?)false }));
+                .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<bool>() { Body = false }));
 
             resourceGroupMock.Setup(f => f.CreateOrUpdateWithHttpMessagesAsync(
                 parameters.ResourceGroupName,
@@ -814,15 +788,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                     Body = new DeploymentExtended()
                     {
                         Name = deploymentName,
-                        Properties = new DeploymentPropertiesExtended()
-                        {
-                            Mode = DeploymentMode.Incremental,
-                            CorrelationId = "123",
-                            ProvisioningState = "Succeeded"
-                        },
+                        Properties = new DeploymentPropertiesExtended(
+                            mode: DeploymentMode.Incremental,
+                            correlationId: "123",
+                            provisioningState: "Succeeded"),
                     }
-                }
-                ));
+                }));
 
             deploymentsMock.Setup(f => f.ValidateWithHttpMessagesAsync(resourceGroupName, It.IsAny<string>(), It.IsAny<Deployment>(), null, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse(new DeploymentValidateResult
@@ -834,7 +805,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 It.IsAny<string>(),
                 null,
                 new CancellationToken()))
-                .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<bool?>()
+                .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<bool>()
                 {
                     Body = true
                 }));
@@ -843,19 +814,15 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             deploymentOperationsMock.Setup(f => f.ListWithHttpMessagesAsync(resourceGroupName, deploymentName, null, null, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse(GetPagableType(new List<DeploymentOperation>()
                     {
-                        new DeploymentOperation()
-                        {
-                            OperationId = Guid.NewGuid().ToString(),
-                            Properties = new DeploymentOperationProperties()
-                            {
-                                ProvisioningState = "Succeeded",
-                                TargetResource = new TargetResource()
+                        new DeploymentOperation(
+                            operationId: Guid.NewGuid().ToString(),
+                            properties: new DeploymentOperationProperties(
+                                provisioningState: "Succeeded",
+                                targetResource: new TargetResource()
                                 {
                                     ResourceType = "Microsoft.Website",
                                     ResourceName = resourceName
-                                }
-                            }
-                        }
+                                }))
                     }))));
 
             PSResourceGroup result = resourcesClient.CreatePSResourceGroup(parameters);
@@ -891,7 +858,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 ConfirmAction = ConfirmAction
             };
             resourceGroupMock.Setup(f => f.CheckExistenceWithHttpMessagesAsync(parameters.ResourceGroupName, null, new CancellationToken()))
-                .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse((bool?)false)));
+                .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse(false)));
 
             resourceGroupMock.Setup(f => f.CreateOrUpdateWithHttpMessagesAsync(
                 parameters.ResourceGroupName,
@@ -914,11 +881,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse(new DeploymentExtended()
                 {
                     Name = deploymentName,
-                    Properties = new DeploymentPropertiesExtended()
-                    {
-                        Mode = DeploymentMode.Incremental,
-                        ProvisioningState = "Succeeded"
-                    },
+                    Properties = new DeploymentPropertiesExtended(
+                        mode: DeploymentMode.Incremental,
+                        provisioningState: "Succeeded"),
                 })
                 ));
             deploymentsMock.Setup(f => f.ValidateWithHttpMessagesAsync(resourceGroupName, It.IsAny<string>(), It.IsAny<Deployment>(), null, new CancellationToken()))
@@ -930,20 +895,16 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             SetupListForResourceGroupAsync(parameters.ResourceGroupName, new List<GenericResource>() {
                 CreateGenericResource(null, null, "website") });
             var listOperations = new List<DeploymentOperation>() {
-                new DeploymentOperation()
-                {
-                    OperationId = Guid.NewGuid().ToString(),
-                    Properties = new DeploymentOperationProperties()
-                    {
-                        ProvisioningState = "Failed",
-                        StatusMessage = "{\"Code\":\"Conflict\"}",
-                        TargetResource = new TargetResource()
+                new DeploymentOperation(
+                    operationId: Guid.NewGuid().ToString(),
+                    properties: new DeploymentOperationProperties(
+                        provisioningState: "Failed",
+                        statusMessage: "{\"Code\":\"Conflict\"}",
+                        targetResource: new TargetResource()
                         {
                             ResourceType = "Microsoft.Website",
                             ResourceName = resourceName
-                        }
-                    }
-                }
+                        }))
             };
             var pageableOperations = new Page<DeploymentOperation>();
             pageableOperations.SetItemValue(listOperations);
@@ -984,9 +945,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 ConfirmAction = ConfirmAction
             };
             resourceGroupMock.Setup(f => f.CheckExistenceWithHttpMessagesAsync(parameters.ResourceGroupName, null, new CancellationToken()))
-            .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<bool?>()
+            .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<bool>()
             {
-                Body = (bool?)false
+                Body = false
             }));
 
             resourceGroupMock.Setup(f => f.CreateOrUpdateWithHttpMessagesAsync(
@@ -1027,11 +988,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                     Body = new DeploymentExtended()
                     {
                         Name = deploymentName,
-                        Properties = new DeploymentPropertiesExtended()
-                        {
-                            Mode = DeploymentMode.Incremental,
-                            ProvisioningState = "Succeeded"
-                        }
+                        Properties = new DeploymentPropertiesExtended(
+                            mode: DeploymentMode.Incremental,
+                            provisioningState: "Succeeded")
                     }
                 }
             ));
@@ -1058,23 +1017,18 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 CreateGenericResource(location: null, id: null, name: "website", type: null)});
 
             var listOperations = new List<DeploymentOperation>() {
-                new DeploymentOperation()
-                {
-                    OperationId = Guid.NewGuid().ToString(),
-                    Properties = new DeploymentOperationProperties()
-                    {
-                        ProvisioningState = "Failed",
-                        StatusMessage = JsonConvert.SerializeObject(new ResourceManagementErrorWithDetails()
-                        {
-                            Message = "A really bad error occured"
-                        }),
-                        TargetResource = new TargetResource()
+                new DeploymentOperation(
+                    operationId: Guid.NewGuid().ToString(),
+                    properties: new DeploymentOperationProperties(
+                        provisioningState: "Failed",
+                        statusMessage: JsonConvert.SerializeObject(
+                            value: new ResourceManagementErrorWithDetails(
+                                message: "A really bad error occured")),
+                        targetResource: new TargetResource()
                         {
                             ResourceType = "Microsoft.Website",
                             ResourceName = resourceName
-                        }
-                    }
-                }
+                        }))
             };
 
             deploymentOperationsMock.Setup(f => f.ListWithHttpMessagesAsync(
@@ -1313,9 +1267,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
         {
             resourceGroupMock.Setup(f => f.CheckExistenceWithHttpMessagesAsync(resourceGroupName, null, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() =>
-                    new AzureOperationResponse<bool?>()
+                    new AzureOperationResponse<bool>()
                     {
-                        Body = (bool?)true
+                        Body = true
                     }));
 
             resourcesClient.DeleteResourceGroup(resourceGroupName);
@@ -1338,15 +1292,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 Body = new DeploymentExtended()
                 {
                     Name = deploymentName,
-                    Properties = new DeploymentPropertiesExtended()
-                    {
-                        Mode = DeploymentMode.Incremental,
-                        CorrelationId = "123",
-                        TemplateLink = new TemplateLink()
+                    Properties = new DeploymentPropertiesExtended(
+                        mode: DeploymentMode.Incremental,
+                        correlationId: "123",
+                        templateLink: new TemplateLink()
                         {
                             Uri = "http://microsoft.com/"
-                        }
-                    }
+                        })
                 }
             }));
 
@@ -1370,41 +1322,35 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 new DeploymentExtended()
                 {
                     Name = deploymentName + 1,
-                    Properties = new DeploymentPropertiesExtended()
-                    {
-                        Mode = DeploymentMode.Incremental,
-                        TemplateLink = new TemplateLink()
+                    Properties = new DeploymentPropertiesExtended(
+                        mode: DeploymentMode.Incremental,
+                        templateLink: new TemplateLink()
                         {
                             Uri = "http://microsoft1.com"
                         },
-                        ProvisioningState = "Succeeded"
-                    }
+                        provisioningState: "Succeeded")
                 },
                 new DeploymentExtended()
                 {
                     Name = deploymentName + 2,
-                    Properties = new DeploymentPropertiesExtended()
-                    {
-                        Mode = DeploymentMode.Incremental,
-                        TemplateLink = new TemplateLink()
+                    Properties = new DeploymentPropertiesExtended(
+                        mode: DeploymentMode.Incremental,
+                        templateLink: new TemplateLink()
                         {
                             Uri = "http://microsoft1.com"
                         },
-                        ProvisioningState = "Failed"
-                    }
+                        provisioningState: "Failed")
                 },
                 new DeploymentExtended()
                 {
                     Name = deploymentName + 3,
-                    Properties = new DeploymentPropertiesExtended()
-                    {
-                        Mode = DeploymentMode.Incremental,
-                        TemplateLink = new TemplateLink()
+                    Properties = new DeploymentPropertiesExtended(
+                        mode: DeploymentMode.Incremental,
+                        templateLink: new TemplateLink()
                         {
                             Uri = "http://microsoft1.com"
                         },
-                        ProvisioningState = "Running"
-                    }
+                        provisioningState: "Running")
                 }
             };
             var pagableResult = new Page<DeploymentExtended>();
@@ -1413,7 +1359,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             {
                 Body = pagableResult
             };
-            deploymentsMock.Setup(f => f.ListWithHttpMessagesAsync(
+            deploymentsMock.Setup(f => f.ListByResourceGroupWithHttpMessagesAsync(
                 resourceGroupName,
                 null,
                 null,

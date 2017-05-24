@@ -1,4 +1,5 @@
-﻿using Microsoft.Azure.Commands.Management.Storage;
+﻿using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Management.Storage;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Storage.Auth;
@@ -16,7 +17,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         {
             if (_storageClientWrapper == null)
             {
-                _storageClientWrapper = new StorageManagementClientWrapper(AzureRmProfileProvider.Instance.Profile.Context);
+                _storageClientWrapper = new StorageManagementClientWrapper(AzureRmProfileProvider.Instance.Profile.DefaultContext);
             }
 
             return _storageClientWrapper.StorageManagementClient;
