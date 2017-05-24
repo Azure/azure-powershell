@@ -15,8 +15,9 @@ Creates a Traffic Manager profile.
 ```
 New-AzureRmTrafficManagerProfile -Name <String> -ResourceGroupName <String> [-ProfileStatus <String>]
  -RelativeDnsName <String> -Ttl <UInt32> -TrafficRoutingMethod <String> -MonitorProtocol <String>
- -MonitorPort <UInt32> [-MonitorPath <String>] [-MonitorInterval <UInt32>] [-MonitorTimeout <UInt32>]
- [-MonitorToleratedNumberOfFailures <UInt32>] [-Tag <Hashtable>] [<CommonParameters>]
+ -MonitorPort <UInt32> [-MonitorPath <String>] [-MonitorIntervalInSeconds <Int32>]
+ [-MonitorTimeoutInSeconds <Int32>] [-MonitorToleratedNumberOfFailures <Int32>] [-Tag <Hashtable>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,11 +42,11 @@ The DNS FQDN is contosoapp.trafficmanager.net.
 
 ## PARAMETERS
 
-### -MonitorInterval
+### -MonitorIntervalInSeconds
 The interval (in seconds) at which Traffic Manager will check the health of each endpoint in this profile. The default is 30.```yaml
-Type: UInt32
+Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases: IntervalInSecondsForMonitor
 
 Required: False
 Position: Named
@@ -62,7 +63,7 @@ This value must begin with a slash (/).
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: PathForMonitor
 
 Required: False
 Position: Named
@@ -78,7 +79,7 @@ Valid values are integers from 1 through 65535.
 ```yaml
 Type: UInt32
 Parameter Sets: (All)
-Aliases: 
+Aliases: PortForMonitor
 
 Required: True
 Position: Named
@@ -97,7 +98,7 @@ Valid values are:
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: ProtocolForMonitor
 Accepted values: HTTP, HTTPS, TCP
 
 Required: True
@@ -107,11 +108,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MonitorTimeout
+### -MonitorTimeoutInSeconds
 The time (in seconds) that Traffic Manager allows endpoints in this profile to respond to the health check. The default is 10.```yaml
-Type: UInt32
+Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases: TimeoutInSecondsForMonitor
 
 Required: False
 Position: Named
@@ -122,9 +123,9 @@ Accept wildcard characters: False
 
 ### -MonitorToleratedNumberOfFailures
 The number of consecutive failed health checks that Traffic Manager tolerates before declaring an endpoint in this profile Degraded after the next consecutive failed health check. The default is 3.```yaml
-Type: UInt32
+Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases: ToleratedNumberOfFailuresForMonitor
 
 Required: False
 Position: Named
