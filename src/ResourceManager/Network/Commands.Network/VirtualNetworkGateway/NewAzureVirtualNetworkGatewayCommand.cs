@@ -91,12 +91,15 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The type of the Vpn:PolicyBased/RouteBased")]
+            HelpMessage = "The Gateway Sku Tier")]
         [ValidateSet(
         MNM.VirtualNetworkGatewaySkuTier.Basic,
         MNM.VirtualNetworkGatewaySkuTier.Standard,
         MNM.VirtualNetworkGatewaySkuTier.HighPerformance,
         MNM.VirtualNetworkGatewaySkuTier.UltraPerformance,
+        MNM.VirtualNetworkGatewaySkuTier.VpnGw1,
+        MNM.VirtualNetworkGatewaySkuTier.VpnGw2,
+        MNM.VirtualNetworkGatewaySkuTier.VpnGw3,
         IgnoreCase = true)]
         public string GatewaySku { get; set; }
 
@@ -201,12 +204,12 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                // If gateway sku param value is not passed, set gateway sku to Standard if VpnType is RouteBased and Basic if VpnType is PolicyBased
+                // If gateway sku param value is not passed, set gateway sku to VpnGw1 if VpnType is RouteBased and Basic if VpnType is PolicyBased
                 if (this.VpnType != null && this.VpnType.Equals(MNM.VpnType.RouteBased))
                 {
                     vnetGateway.Sku = new PSVirtualNetworkGatewaySku();
-                    vnetGateway.Sku.Tier = MNM.VirtualNetworkGatewaySkuTier.Standard;
-                    vnetGateway.Sku.Name = MNM.VirtualNetworkGatewaySkuTier.Standard;
+                    vnetGateway.Sku.Tier = MNM.VirtualNetworkGatewaySkuTier.VpnGw1;
+                    vnetGateway.Sku.Name = MNM.VirtualNetworkGatewaySkuTier.VpnGw1;
                 }
                 else
                 {
@@ -216,9 +219,25 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
-            if (this.EnableActiveActiveFeature.IsPresent && !vnetGateway.Sku.Tier.Equals(MNM.VirtualNetworkGatewaySkuTier.HighPerformance))
+            if (this.EnableActiveActiveFeature.IsPresent 
+                && !vnetGateway.Sku.Tier.Equals(MNM.VirtualNetworkGatewaySkuTier.HighPerformance)
+                && !vnetGateway.Sku.Tier.Equals(MNM.VirtualNetworkGatewaySkuTier.VpnGw1)
+                && !vnetGateway.Sku.Tier.Equals(MNM.VirtualNetworkGatewaySkuTier.VpnGw2)
+                && !vnetGateway.Sku.Tier.Equals(MNM.VirtualNetworkGatewaySkuTier.VpnGw3))
             {
-                throw new ArgumentException("Virtual Network Gateway Sku should be " + MNM.VirtualNetworkGatewaySkuTier.HighPerformance + " when Active-Active feature flag is set to True.");
+                string errorMessage = string.Format(
+                    "Virtual Network Gateway Sku should be one of {0}/{1}/{2}/{3} when Active-Active feature flag is set to True.",
+                    MNM.VirtualNetworkGatewaySkuTier.HighPerformance,
+                    MNM.VirtualNetworkGatewaySkuTier.VpnGw1,
+                    MNM.VirtualNetworkGatewaySkuTier.VpnGw2,
+                    MNM.VirtualNetworkGatewaySkuTier.VpnGw3);
+
+                throw new ArgumentException(errorMessage);
+            }
+
+            if (this.VpnType.Equals(MNM.VpnType.PolicyBased) && !vnetGateway.Sku.Tier.Equals(MNM.VirtualNetworkGatewaySkuTier.Basic))
+            {
+                throw new ArgumentException("Virtual Network Gateway Sku should be " + MNM.VirtualNetworkGatewaySkuTier.Basic + " when VpnType is PolicyBased.");
             }
 
             if (this.EnableActiveActiveFeature.IsPresent && !this.VpnType.Equals(MNM.VpnType.RouteBased))

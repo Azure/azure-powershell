@@ -35,12 +35,15 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The gatway Sku:- Basic/Standard/HighPerformance")]
+            HelpMessage = "The gatway Sku:- Basic/Standard/HighPerformance/VpnGw1/VpnGw2/VpnGw3")]
         [ValidateSet(
         MNM.VirtualNetworkGatewaySkuTier.Basic,
         MNM.VirtualNetworkGatewaySkuTier.Standard,
         MNM.VirtualNetworkGatewaySkuTier.HighPerformance,
         MNM.VirtualNetworkGatewaySkuTier.UltraPerformance,
+        MNM.VirtualNetworkGatewaySkuTier.VpnGw1,
+        MNM.VirtualNetworkGatewaySkuTier.VpnGw2,
+        MNM.VirtualNetworkGatewaySkuTier.VpnGw3,
         IgnoreCase = true)]
         public string GatewaySku { get; set; }
 
@@ -58,9 +61,25 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("Current Gateway SKU is same as Resize SKU size:"+ this.GatewaySku + " requested. No need to resize!");
             }
 
-            if (this.VirtualNetworkGateway.ActiveActive && !GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.HighPerformance))
+            if (IsV2Sku(getvirtualnetGateway.Sku.Tier) != IsV2Sku(this.GatewaySku))
             {
-                throw new ArgumentException("Virtual Network Gateway Sku should be " + MNM.VirtualNetworkGatewaySkuTier.HighPerformance + " when Active-Active feature is already enabled on gateway.");
+                throw new ArgumentException("Cannot resize gateway from V1 gateway sizes (Default/Standard/HighPerformance) to V2 gateway sizes (VpnGw1/VpnGw2/VpnGw3)");
+            }
+
+            if (this.VirtualNetworkGateway.ActiveActive 
+                && !GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.HighPerformance)
+                && !GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.VpnGw1)
+                && !GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.VpnGw2)
+                && !GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.VpnGw3))
+            {
+                string errorMessage = string.Format(
+                    "Virtual Network Gateway Sku should be one of {0}/{1}/{2}/{3} when Active-Active feature flag is set to True.",
+                    MNM.VirtualNetworkGatewaySkuTier.HighPerformance,
+                    MNM.VirtualNetworkGatewaySkuTier.VpnGw1,
+                    MNM.VirtualNetworkGatewaySkuTier.VpnGw2,
+                    MNM.VirtualNetworkGatewaySkuTier.VpnGw3);
+
+                throw new ArgumentException(errorMessage);
             }
 
             this.VirtualNetworkGateway.Sku = new PSVirtualNetworkGatewaySku();
@@ -76,6 +95,18 @@ namespace Microsoft.Azure.Commands.Network
             getvirtualnetGateway = this.GetVirtualNetworkGateway(this.VirtualNetworkGateway.ResourceGroupName, this.VirtualNetworkGateway.Name);
 
             WriteObject(getvirtualnetGateway);
+        }
+
+        private bool IsV2Sku(string gatewaySkuTier)
+        {
+            if (gatewaySkuTier.Equals(MNM.VirtualNetworkGatewaySkuTier.VpnGw1, StringComparison.OrdinalIgnoreCase) ||
+                gatewaySkuTier.Equals(MNM.VirtualNetworkGatewaySkuTier.VpnGw2, StringComparison.OrdinalIgnoreCase) ||
+                gatewaySkuTier.Equals(MNM.VirtualNetworkGatewaySkuTier.VpnGw3, StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
