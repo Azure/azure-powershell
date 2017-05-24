@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             if (currentDurabilityLevel == oldDurabilityLevel && !isMismatched)
             {
-                WriteObject(cluster, true);
+                WriteObject(new PSCluster(cluster), true);
                 return;
             }
 

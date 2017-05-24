@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.ServiceManagemenet.Common.Models
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common.Models
     {
         public string Id { get; set; }
 
-        public AzureAccount.AccountType Type { get; set; }
+        public string Type { get; set; }
 
         public string Subscriptions { get; set; }
 

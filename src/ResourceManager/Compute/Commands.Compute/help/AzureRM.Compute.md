@@ -200,6 +200,15 @@ Creates a virtual machine.
 ### [New-AzureRmVMConfig](New-AzureRmVMConfig.md)
 Creates a configurable virtual machine object.
 
+### [New-AzureRmVMSqlServerAutoBackupConfig](New-AzureRmVMSqlServerAutoBackupConfig.md)
+Creates a configuration object for SQL Server automatic backup.
+
+### [New-AzureRmVMSqlServerAutoPatchingConfig](New-AzureRmVMSqlServerAutoPatchingConfig.md)
+Creates a configuration object for automatic patching on a virtual machine.
+
+### [New-AzureRmVMSqlServerKeyVaultCredentialConfig](New-AzureRmVMSqlServerKeyVaultCredentialConfig.md)
+Creates a configuration object for SQL server key vault credential on a virtual machine.
+
 ### [New-AzureRmVmss](New-AzureRmVmss.md)
 Creates a VMSS.
 
@@ -211,15 +220,6 @@ Creates an IP configuration for a network interface of a VMSS.
 
 ### [New-AzureRmVmssVaultCertificateConfig](New-AzureRmVmssVaultCertificateConfig.md)
 Creates a Key Vault certificate configuration.
-
-### [New-AzureVMSqlServerAutoBackupConfig](New-AzureVMSqlServerAutoBackupConfig.md)
-Creates a configuration object for SQL Server automatic backup.
-
-### [New-AzureVMSqlServerAutoPatchingConfig](New-AzureVMSqlServerAutoPatchingConfig.md)
-Creates a configuration object for automatic patching on a virtual machine.
-
-### [New-AzureVMSqlServerKeyVaultCredentialConfig](New-AzureVMSqlServerKeyVaultCredentialConfig.md)
-Creates a configuration object for SQL server key vault credential on a virtual machine.
 
 ### [Publish-AzureRmVMDscConfiguration](Publish-AzureRmVMDscConfiguration.md)
 Uploads a DSC script to Azure blob storage.

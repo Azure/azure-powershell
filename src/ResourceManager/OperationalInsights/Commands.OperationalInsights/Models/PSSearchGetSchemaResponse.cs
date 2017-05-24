@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             {
                 this.Metadata = new PSSearchMetadata(response.Metadata);
                 this.Value = new List<PSSchemaValue>();
-                foreach (SchemaValue v in response.Value)
+                foreach (SearchSchemaValue v in response.Value)
                 {
                     this.Value.Add(new PSSchemaValue(v));
                 }

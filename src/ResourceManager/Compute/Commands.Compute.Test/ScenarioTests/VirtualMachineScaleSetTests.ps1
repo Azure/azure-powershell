@@ -527,9 +527,10 @@ function Test-VirtualMachineScaleSetLB
 
         # List All
         Write-Verbose ('Running Command : ' + 'Get-AzureRmVmss ListAll');
-        $vmssList = Get-AzureRmVmss;
+        $vmssList = Get-AzureRmVmss | ? Name -like 'vmsscrptestps*';
         Assert-True { ($vmssList | select -ExpandProperty Name) -contains $vmssName };
         $output = $vmssList | Out-String;
+        Assert-AreEqual 1 $vmssList.Count
         Write-Verbose ($output);
         Assert-False { $output.Contains("VirtualMachineProfile") };
 
@@ -624,7 +625,7 @@ function Test-VirtualMachineScaleSetNextLink
 
         $result = New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
 
-        $vmssVmResult = Get-AzureRmVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        $vmssVmResult = Get-AzureRmVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName | ? Name -like 'vmsscrptestps*';
         Assert-AreEqual $vmss_number $vmssVmResult.Count
     }
     finally

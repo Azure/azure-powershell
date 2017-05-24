@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmServiceFabricCluster
 
 ## SYNOPSIS
-This command uses certificates that you provide or system generated self signed certificates to set up a new service fabric cluster. It can use a default template or a custom template that you provide. You have the option of specifying a folder to export the self signed certificates to or fetching them later from the key vault. 
+This command uses certificates that you provide or system generated self-signed certificates to set up a new service fabric cluster. It can use a default template or a custom template that you provide. You have the option of specifying a folder to export the self-signed certificates to or fetching them later from the key vault. 
 
 ## SYNTAX
 
@@ -23,14 +23,14 @@ New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> [-CertificateOutpu
 ### ByExistingKeyVault
 ```
 New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> -ParameterFile <String>
- [-VmUserName <String>] -SecretIdentifier <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+-SecretIdentifier <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByNewPfxAndVaultName
 ```
 New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> -ParameterFile <String>
  [-CertificateOutputFolder <String>] [-CertificatePassword <SecureString>] [-KeyVaultResouceGroupName <String>]
- [-KeyVaultName <String>] [-VmUserName <String>] [-CertificateSubjectName <String>] [-WhatIf] [-Confirm]
+ [-KeyVaultName <String>] [-CertificateSubjectName <String>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -39,11 +39,11 @@ New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <Str
 New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> -ParameterFile <String>
  -CertificateFile <String> [-CertificatePassword <SecureString>] [-SecondaryCertificateFile <String>]
  [-SecondaryCertificatePassword <SecureString>] [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>]
- [-VmUserName <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmServiceFabricCluster** command uses certificates that you provide or system generated self signed certificates to set up a new service fabric cluster. The template used can be a default template or a custom template that you provide. You have the option of specifying a folder to export the self signed certificates or fetching them later from the key vault.
+The **New-AzureRmServiceFabricCluster** command uses certificates that you provide or system generated self-signed certificates to set up a new service fabric cluster. The template used can be a default template or a custom template that you provide. You have the option of specifying a folder to export the self-signed certificates or fetching them later from the key vault.
 
 If you are specifying a custom template and parameter file, you don't need to provide the certificate information in the parameter file, the system will populate these parameters.
 
@@ -51,7 +51,7 @@ The four options are detailed below. Scroll down for explanations of each of the
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Specify only the cluster size, the cert subject name, and the OS to deploy a cluster.
 ```
 $pwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force
 $RGname="chacko09"
@@ -61,12 +61,12 @@ $pfxfolder="c:\Mycertificates\"
 
 Write-Output "create cluster in " $clusterloc "subject name for cert " $subname "and output the cert into " $pfxfolder
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -Location $clusterloc -ClusterSize 3 -VmPassword $pwd -CertificateSubjectName $subname -PfxOutputFolder $pfxfolder -CertificatePassword $pwd
+New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -Location $clusterloc -ClusterSize 3 -VmPassword $pwd -CertificateSubjectName $subname -CertificateOutputFolder $pfxfolder -CertificatePassword $pwd
 ```
 
-This command specifies only the cluster size, the cert subject name and the OS to deploy a cluster.
+This command specifies only the cluster size, the cert subject name, and the OS to deploy a cluster.
 
-### Example 2
+### Example 2: Specify an existing Certificate resource in a key vault and a custom template to deploy a cluster
 ```
 $RGname="chacko20"
 $templateParmfile="C:\service-fabric-secure-nsg-cluster-65-node-3-nodetype\azuredeploytest.parameters.json"
@@ -76,9 +76,9 @@ $secertId="https://chackokv1.vault.azure.net:443/secrets/chackdantestcertificate
 New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -TemplateFile $templateFile -ParameterFile $templateParmfile -SecretIdentifier $secertId
 ```
 
-This command specifies an existing Certificate resource in a key vault and a custom template to deploy a cluster 
+This command specifies an existing Certificate resource in a key vault and a custom template to deploy a cluster.
 
-### Example 3
+### Example 3: Create a new cluster using a custom template. Specify the different RG name for the key vault and have the system upload the certificate to it
 ```
 $pwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force
 $RGname="chacko20"
@@ -95,9 +95,9 @@ $thumprint="C2D7E11DD35153A702A51D10A424A3014B9B6E8B"
 New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -TemplateFile $templateFile -ParameterFile $templateParmfile -CertificateOutputFolder $pfxfolder -CertificatePassword $pwd -KeyVaultResouceGroupName $keyVaultRG  -KeyVaultName $keyVault -CertificateSubjectName $subname
 ```
 
-This command creates a new cluster using a custom template, Specify the different RG name for the key vault and have the system upload the certificate to it 
+This command creates a new cluster using a custom template. Specify the different RG name for the key vault and have the system upload the certificate to it.
 
-### Example 4
+### Example 4: Bring your own Certificate and custom template and create a new cluster
 ```
 $certPwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force
 $RGname="chacko20"
@@ -111,12 +111,12 @@ $templateFile="C:\Users\chackdan\Documents\GitHub\azure-quickstart-templates\ser
 New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -TemplateFile $templateFile -ParameterFile $templateParmfile -CertificateSourceFile $pfxsourcefile -CertificatePassword $certpwd -KeyVaultResouceGroupName $keyVaultRG -KeyVaultName $keyVault
 ```
 
-This command will let you bring your own Certificate and custom template and create a new cluster
+This command will let you bring your own Certificate and custom template and create a new cluster.
 
 ## PARAMETERS
 
 ### -CertificateFile
-The existing certificate file path for the primary cluster certificate
+The existing certificate file path for the primary cluster certificate.
 
 ```yaml
 Type: String
@@ -131,7 +131,7 @@ Accept wildcard characters: False
 ```
 
 ### -CertificateOutputFolder
-The folder of the new certificate file to be created
+The folder of the new certificate file to be created.
 
 ```yaml
 Type: String
@@ -146,7 +146,7 @@ Accept wildcard characters: False
 ```
 
 ### -CertificatePassword
-The password of the certificate file
+The password of the certificate file.
 
 ```yaml
 Type: SecureString
@@ -161,7 +161,7 @@ Accept wildcard characters: False
 ```
 
 ### -CertificateSubjectName
-The subject name of the certificate to be created
+The subject name of the certificate to be created.
 
 ```yaml
 Type: String
@@ -176,8 +176,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterSize
-The number of nodes in the cluster.
-Default are 5 nodes
+The number of nodes in the cluster. Default are 5 nodes.
 
 ```yaml
 Type: Int32
@@ -191,23 +190,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -KeyVaultName
-Azure key vault name, it not given it will be defaulted to the resource group name
+Azure key vault name. If not given, it will be defaulted to the resource group name.
 
 ```yaml
 Type: String
@@ -222,7 +206,7 @@ Accept wildcard characters: False
 ```
 
 ### -KeyVaultResouceGroupName
-Azure key vault resource group name, it not given it will be defaulted to resource group name
+Azure key vault resource group name. If not given, it will be defaulted to resource group name.
 
 ```yaml
 Type: String
@@ -237,7 +221,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The resource group location
+The resource group location.
 
 ```yaml
 Type: String
@@ -252,7 +236,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specify the name of the cluster, if not given it will be same as resource group name
+Specify the name of the cluster. If not given, it will be same as resource group name.
 
 ```yaml
 Type: String
@@ -313,7 +297,7 @@ Accept wildcard characters: False
 ```
 
 ### -SecondaryCertificateFile
-The existing certificate file path for the secondary cluster certificate
+The existing certificate file path for the secondary cluster certificate.
 
 ```yaml
 Type: String
@@ -328,7 +312,7 @@ Accept wildcard characters: False
 ```
 
 ### -SecondaryCertificatePassword
-The password of the certificate file
+The password of the certificate file.
 
 ```yaml
 Type: SecureString
@@ -343,7 +327,7 @@ Accept wildcard characters: False
 ```
 
 ### -SecretIdentifier
-The existing Azure key vault secret URL, for example 'https://mykv.vault.azure.net:443/secrets/mysecrets/55ec7c4dc61a462bbc645ffc9b4b225f'
+The existing Azure key vault secret URL, for example: 'https://mykv.vault.azure.net:443/secrets/mysecrets/55ec7c4dc61a462bbc645ffc9b4b225f'.
 
 ```yaml
 Type: String
@@ -373,7 +357,7 @@ Accept wildcard characters: False
 ```
 
 ### -VmPassword
-The password of the Vm
+The password of the Vm.
 
 ```yaml
 Type: SecureString
@@ -388,7 +372,7 @@ Accept wildcard characters: False
 ```
 
 ### -VmSku
-The Vm Sku
+The Vm Sku.
 
 ```yaml
 Type: String
@@ -403,11 +387,11 @@ Accept wildcard characters: False
 ```
 
 ### -VmUserName
-The user name for logging to Vm
+The user name for logging to Vm.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByDefaultArmTemplate
 Aliases: 
 
 Required: False
@@ -417,9 +401,23 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter

@@ -17,6 +17,7 @@ using System.Security.Permissions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Profile;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
 {
@@ -46,7 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            AzureEnvironment environment = ProfileClient.GetEnvironmentOrDefault(Environment);
+            IAzureEnvironment environment = ProfileClient.GetEnvironmentOrDefault(Environment);
             string url = environment.GetPublishSettingsFileUrlWithRealm(Realm);
             ProcessHelper.Start(url);
 

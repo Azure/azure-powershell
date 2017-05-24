@@ -73,18 +73,9 @@ function NamespaceAuthTests
     
 	Write-Debug " Get the created namespace within the resource group"
     $createdNamespace = Get-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
-    Assert-True {$createdNamespace.Count -eq 1}
-
-    $found = 0
     
-        if ($createdNamespace.Name -eq $namespaceName)
-        {
-            $found = 1
-            Assert-AreEqual $location $createdNamespace.Location    
-            break
-        }
-
-    Assert-True {$found -eq 0} "Namespace created earlier is not found."
+	#Assert
+    Assert-True {$createdNamespace.Name -eq $namespaceName} "Namespace created earlier is not found."
 
     Write-Debug "Create a Namespace Authorization Rule"    
     Write-Debug "Auth Rule name : $authRuleName"
@@ -227,16 +218,7 @@ function NamespaceTests
     $createdNamespace = Get-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
     Assert-True {$createdNamespace.Count -eq 1}
 
-    $found = 0
-    
-        if ($createdNamespace.Name -eq $namespaceName)
-        {
-            $found = 1
-            Assert-AreEqual $location $createdNamespace.Location
-            break
-        }
-
-    Assert-True {$found -eq 0} "Namespace created earlier is not found."    
+    Assert-True {$createdNamespace.Name -eq $namespaceName} "Namespace created earlier is not found."    
 	  
     
     Write-Debug "Namespace name : $namespaceName2" 
@@ -245,40 +227,14 @@ function NamespaceTests
 
     Write-Debug "Get all the namespaces created in the resourceGroup"
     $allCreatedNamespace = Get-AzureRmEventHubNamespace -ResourceGroup $secondResourceGroup 
-
-    $found = 0
-    for ($i = 0; $i -lt $allCreatedNamespace.Count; $i++)
-    {
-        if ($allCreatedNamespace[$i].Name -eq $namespaceName2)
-        {
-            $found = 1
-            Assert-AreEqual $location $allCreatedNamespace[$i].Location
-            break
-        }
-    }
-
-    Assert-True {$found -eq 0} "Namespace created earlier is not found."
+	
+	#Assert
+    Assert-True {$allCreatedNamespace.Count -ge 0 } "Namespace created earlier is not found. in list"
     
     Write-Debug "Get all the namespaces created in the subscription"
     $allCreatedNamespace = Get-AzureRmEventHubNamespace 
-
-    $found = 0
-    for ($i = 0; $i -lt $allCreatedNamespace.Count; $i++)
-    {
-        if ($allCreatedNamespace[$i].Name -eq $namespaceName)
-        {
-            $found = $found + 1
-            Assert-AreEqual $location $allCreatedNamespace[$i].Location
-        }
-
-       if ($allCreatedNamespace[$i].Name -eq $namespaceName2)
-        {
-            $found = $found + 1
-            Assert-AreEqual $location $allCreatedNamespace[$i].Location
-        }
-    }
-
-    Assert-True {$found -eq 0} "Namespaces created earlier is not found."    
+	
+    Assert-True {$allCreatedNamespace.Count -ge 0} "Namespaces created earlier is not found."    
 
     Write-Debug " Delete namespaces"
     Remove-AzureRmEventHubNamespace -ResourceGroup $secondResourceGroup -NamespaceName $namespaceName2
