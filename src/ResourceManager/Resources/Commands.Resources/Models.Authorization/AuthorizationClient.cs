@@ -161,12 +161,13 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public List<PSRoleDefinition> GetAllRoleDefinitionsAtScopeAndBelow(string scope)
         {
             List<PSRoleDefinition> result = new List<PSRoleDefinition>();
-            result.AddRange(AuthorizationManagementClient.RoleDefinitions.List(scope,
 #if !NETSTANDARD
+            result.AddRange(AuthorizationManagementClient.RoleDefinitions.List(scope,
                 new ListDefinitionFilterParameters { AtScopeAndBelow = true })
                 .RoleDefinitions
 #else
-                new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>(filter => filter.AtScopeAndBelow()))
+            result.AddRange(AuthorizationManagementClient.RoleDefinitions.List(scope??"",
+            new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>(filter => filter.AtScopeAndBelow()))
 #endif
                 .Select(r => r.ToPSRoleDefinition()));
             return result;
