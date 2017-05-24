@@ -173,11 +173,6 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
             return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
         }
 
-        private TrafficManagerManagementClient GetFeatureClientLegacy()
-        {
-            return TestBase.GetServiceClient<TrafficManagerManagementClient>(this.csmTestFactory);
-        }
-
         private TrafficManagerManagementClient GetFeatureClient(RestTestFramework.MockContext context)
         {
             return context.GetServiceClient<TrafficManagerManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
