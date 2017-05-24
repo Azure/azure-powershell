@@ -25,6 +25,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     /// 
     /// </summary>
     [Cmdlet(VerbsCommon.Set, Nouns.AdminFarm, SupportsShouldProcess = true)]
+    [Alias("Set-ACSFarm")]
     public sealed class SetAdminFarm : AdminCmdletDefaultFarm
     {
         /// <summary>

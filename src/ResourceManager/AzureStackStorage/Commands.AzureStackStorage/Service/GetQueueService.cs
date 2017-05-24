@@ -27,6 +27,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     /// 
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminQueueService)]
+    [Alias("Get-ACSQueueService")]
     public sealed class GetQueueService : AdminCmdletDefaultFarm
     {
         protected override void Execute()

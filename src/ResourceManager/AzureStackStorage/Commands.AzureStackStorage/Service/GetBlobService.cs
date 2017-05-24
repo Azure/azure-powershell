@@ -26,6 +26,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     /// 
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminBlobService)]
+    [Alias("Get-ACSBlobService")]
     public sealed class GetBlobService : AdminCmdletDefaultFarm
     {
         protected override void Execute()

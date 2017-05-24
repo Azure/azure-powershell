@@ -28,6 +28,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     /// 
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, Nouns.AdminQuota, SupportsShouldProcess = true)]
+    [Alias("Remove-ACSQuota")]
     public sealed class RemoveQuota : AdminCmdlet
     {
         /// <summary>

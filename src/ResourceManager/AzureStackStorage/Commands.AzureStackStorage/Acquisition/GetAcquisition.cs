@@ -26,6 +26,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     /// Get an acquisition by ID or list acquisitions
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminAcquisition)]
+    [Alias("Get-ACSAcquisition")]
     public sealed class GetAdminAcquisition : AdminCmdletDefaultFarm
     {
         /// <summary>

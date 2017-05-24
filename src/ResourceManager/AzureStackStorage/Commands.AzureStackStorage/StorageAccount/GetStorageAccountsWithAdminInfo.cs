@@ -30,6 +30,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     /// 
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminStorageAccount, DefaultParameterSetName = ListAccountsParamSet)]
+    [Alias("Get-ACSStorageAccount")]
     public sealed class GetStorageAccountsWithAdminInfo : AdminCmdletDefaultFarm
     {
         const string ListAccountsParamSet = "ListMultipleAccounts";

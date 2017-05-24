@@ -28,6 +28,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     /// 
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminQueueServiceMetric)]
+    [Alias("Get-ACSQueueServiceMetric")]
     public sealed class GetQueueServiceMetrics : AdminMetricCmdlet
     {
         protected override MetricsResult GetMetricsResult(string filter)

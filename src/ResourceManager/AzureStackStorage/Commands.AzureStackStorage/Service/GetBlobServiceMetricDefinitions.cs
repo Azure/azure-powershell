@@ -22,6 +22,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     ///
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminBlobServiceMetricDefinition)]
+    [Alias("Get-ACSBlobServiceMetricDefinition")]
     public sealed class GetBlobServiceMetricDefinitions : AdminMetricDefinitionCmdlet
     {
         /// <summary>

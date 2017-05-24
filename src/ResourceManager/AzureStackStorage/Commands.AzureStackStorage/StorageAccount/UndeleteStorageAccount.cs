@@ -27,6 +27,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     /// 
     /// </summary>
     [Cmdlet(VerbsCommon.Undo, Nouns.AdminStorageAccountDeletion, SupportsShouldProcess = true)]
+    [Alias("Undo-ACSStorageAccountDeletion")]
     public sealed class UndeleteStorageAccount : AdminCmdletDefaultFarm
     {
         /// <summary>

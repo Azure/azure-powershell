@@ -25,6 +25,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     /// 
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminFarm)]
+    [Alias("Get-ACSFarm")]
     public sealed class GetAdminFarm : AdminCmdletDefaultFarm
     {
         /// <summary>

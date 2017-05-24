@@ -28,6 +28,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     /// 
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminQuota)]
+    [Alias("Get-ACSQuota")]
     public sealed class GetQuota : AdminCmdlet
     {
         /// <summary>

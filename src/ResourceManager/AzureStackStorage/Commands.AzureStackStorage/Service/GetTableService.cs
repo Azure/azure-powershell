@@ -26,6 +26,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     /// 
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminTableService)]
+    [Alias("Get-ACSTableService")]
     public sealed class GetTableService : AdminCmdletDefaultFarm
     {
         protected override void Execute()

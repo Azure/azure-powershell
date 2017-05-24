@@ -22,6 +22,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     ///
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminTableServiceMetricDefinition)]
+    [Alias("Get-ACSTableServiceMetricDefinition")]
     public sealed class GetTableServiceMetricDefinitions : AdminMetricDefinitionCmdlet
     {
         /// <summary>

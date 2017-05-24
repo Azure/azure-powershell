@@ -27,6 +27,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     ///                  [-FarmName] {string} [-ShareName] {string} -Jobid {string} [{CommonParameters}] 
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminContainerMigrationStatus)]
+    [Alias("Get-ACSContainerMigrationStatus")]
     public sealed class GetContainerMigrationStatus : AdminCmdletDefaultFarm
     {
         /// <summary>

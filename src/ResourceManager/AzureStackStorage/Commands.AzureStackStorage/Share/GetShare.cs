@@ -28,6 +28,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     /// 
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminShare, DefaultParameterSetName = ListTenantSharesParamSet)]
+    [Alias("Get-ACSShare")]
     public sealed class GetAdminShare : AdminCmdletDefaultFarm
     {
         const string ListTenantSharesParamSet = "ListTenant";

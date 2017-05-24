@@ -25,6 +25,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     /// 
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminShareMetricDefinition)]
+    [Alias("Get-ACSShareMetricDefinition")]
     public sealed class GetShareMetricDefinitions : AdminMetricDefinitionCmdlet
     {
         /// <summary>

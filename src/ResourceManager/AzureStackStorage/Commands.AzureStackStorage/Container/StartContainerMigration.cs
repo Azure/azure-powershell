@@ -29,6 +29,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     ///                  [-FarmName] {string} [-ShareName] {string} [-Container] {container} [-DestinationShareName] {string} [{CommonParameters}] 
     /// </summary>
     [Cmdlet(VerbsLifecycle.Start, Nouns.AdminContainerMigration)]
+    [Alias("Start-ACSContainerMigration")]
     public sealed class StartContainerMigration : AdminCmdletDefaultFarm
     {
         /// <summary>

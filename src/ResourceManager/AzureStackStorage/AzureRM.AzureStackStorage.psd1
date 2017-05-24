@@ -74,7 +74,36 @@ CmdletsToExport = '*'
 VariablesToExport = '*'  
   
 # Aliases to export from this module  
-AliasesToExport = @()
+AliasesToExport = @(
+    'Clear-ACSStorageAccount',
+    'Get-ACSAcquisition',
+    'Get-ACSBlobService',
+    'Get-ACSBlobServiceMetric',
+    'Get-ACSBlobServiceMetricDefinition',
+    'Get-ACSContainer',
+    'Get-ACSContainerMigrationStatus',
+    'Get-ACSFarm',
+    'Get-ACSFarmMetric',
+    'Get-ACSFarmMetricDefinition',
+    'Get-ACSQueueService',
+    'Get-ACSQueueServiceMetric',
+    'Get-ACSQueueServiceMetricDefinition',
+    'Get-ACSQuota',
+    'Get-ACSShare',
+    'Get-ACSShareMetric',
+    'Get-ACSShareMetricDefinition',
+    'Get-ACSStorageAccount',
+    'Get-ACSTableService',
+    'Get-ACSTableServiceMetric',
+    'Get-ACSTableServiceMetricDefinition',
+    'New-ACSQuota',
+    'Remove-ACSQuota',
+    'Set-ACSFarm',
+    'Set-ACSQuota',
+    'Start-ACSContainerMigration',
+    'Stop-ACSContainerMigration',
+    'Undo-ACSStorageAccountDeletion'
+)
   
 # List of all modules packaged with this module  
 ModuleList = @()  

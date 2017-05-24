@@ -27,6 +27,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     ///                  [-FarmName] {string} [-ShareName] {string} [[-Intent] {Migration}] [-Count {MaxCount}] [{CommonParameters}] 
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminContainer)]
+    [Alias("Get-ACSContainer")]
     public sealed class GetContainer : AdminCmdletDefaultFarm
     {
         /// <summary>

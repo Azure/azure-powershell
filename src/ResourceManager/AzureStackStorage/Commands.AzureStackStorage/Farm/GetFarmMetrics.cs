@@ -24,6 +24,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     /// 
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminFarmMetric)]
+    [Alias("Get-ACSFarmMetric")]
     public sealed class GetFarmMetric : AdminMetricCmdlet
     {
         /// <summary>

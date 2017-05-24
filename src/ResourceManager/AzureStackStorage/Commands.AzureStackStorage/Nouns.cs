@@ -16,7 +16,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     class Nouns
     {
-        public const string Prefix = "ACS";
+        public const string Prefix = "AzS";
 
         public const string Metric = "Metric";
 

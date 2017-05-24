@@ -27,6 +27,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     ///                  [-FarmName] {string} [-ShareName] {string} -Jobid {string} [{CommonParameters}] 
     /// </summary>
     [Cmdlet(VerbsLifecycle.Stop, Nouns.AdminContainerMigration)]
+    [Alias("Stop-ACSContainerMigration")]
     public sealed class StopContainerMigration : AdminCmdletDefaultFarm
     {
         /// <summary>

@@ -27,6 +27,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     /// 
     /// </summary>
     [Cmdlet(VerbsCommon.Set, Nouns.AdminQuota, SupportsShouldProcess = true)]
+    [Alias("Set-ACSQuota")]
     public sealed class SetAdminQuota : AdminCmdlet
     {
         const string ShouldProcessTargetFormat = "quota {0} ";

@@ -26,6 +26,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     /// 
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminQueueServiceMetricDefinition)]
+    [Alias("Get-ACSQueueServiceMetricDefinition")]
     public sealed class GetQueueServiceMetricDefinitions : AdminMetricDefinitionCmdlet
     {
         /// <summary>

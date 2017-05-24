@@ -22,6 +22,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     ///             [-SkipCertificateValidation] [-FarmName] {string} [ {CommonParameters}] 
     /// </summary>
     [Cmdlet(VerbsCommon.Clear, Nouns.AdminStorageAccount, SupportsShouldProcess = true)]
+    [Alias("Clear-ACSStorageAccount")]
     public sealed class ClearDeletedAccounts : AdminCmdletDefaultFarm
     {
         protected override void Execute()
