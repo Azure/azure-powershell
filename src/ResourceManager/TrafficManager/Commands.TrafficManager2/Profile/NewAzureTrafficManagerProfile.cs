@@ -54,27 +54,33 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateNotNullOrEmpty]
         public string TrafficRoutingMethod { get; set; }
 
+        [Alias("ProtocolForMonitor")]
         [Parameter(Mandatory = true, HelpMessage = "The protocol of the monitor.")]
         [ValidateSet(Constants.HTTP, Constants.HTTPS, Constants.TCP, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
         public string MonitorProtocol { get; set; }
 
+        [Alias("PortForMonitor")]
         [Parameter(Mandatory = true, HelpMessage = "The port of the monitor.")]
         [ValidateNotNullOrEmpty]
         public uint MonitorPort { get; set; }
 
+        [Alias("PathForMonitor")]
         [Parameter(Mandatory = false, HelpMessage = "The path of the monitor.")]
         [ValidateNotNullOrEmpty]
         public string MonitorPath { get; set; }
 
+        [Alias("IntervalInSecondsForMonitor")]
         [Parameter(Mandatory = false, HelpMessage = "The interval (in seconds) at which Traffic Manager will check the health of each endpoint in this profile. The default is 30.")]
         [ValidateNotNullOrEmpty]
         public int? MonitorIntervalInSeconds { get; set; }
 
+        [Alias("TimeoutInSecondsForMonitor")]
         [Parameter(Mandatory = false, HelpMessage = "The time (in seconds) that Traffic Manager allows endpoints in this profile to respond to the health check. The default is 10.")]
         [ValidateNotNullOrEmpty]
         public int? MonitorTimeoutInSeconds { get; set; }
 
+        [Alias("ToleratedNumberOfFailuresForMonitor")]
         [Parameter(Mandatory = false, HelpMessage = "The number of consecutive failed health checks that Traffic Manager tolerates before declaring an endpoint in this profile Degraded after the next consecutive failed health check. The default is 3.")]
         [ValidateNotNullOrEmpty]
         public int? MonitorToleratedNumberOfFailures { get; set; }

@@ -150,12 +150,19 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest("Test-ProfileMonitorCustom");
         }
-
+        
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileMonitorProtocol()
         {
             TestController.NewInstance.RunPowerShellTest("Test-ProfileMonitorProtocol");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProfileMonitorParameterAliases()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-ProfileMonitorParameterAliases");
         }
     }
 }
