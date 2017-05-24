@@ -15,13 +15,14 @@ Returns connectivity information for a specified source VM and a destination.
 ```
 Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher <PSNetworkWatcher> -SourceId <String>
  [-SourcePort <Int32>] [-DestinationId <String>] [-DestinationAddress <String>] [-DestinationPort <Int32>]
+ [<CommonParameters>]
 ```
 
 ### SetByName
 ```
 Test-AzureRmNetworkWatcherConnectivity -NetworkWatcherName <String> -ResourceGroupName <String>
  -SourceId <String> [-SourcePort <Int32>] [-DestinationId <String>] [-DestinationAddress <String>]
- [-DestinationPort <Int32>]
+ [-DestinationPort <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +32,8 @@ The Test-AzureRmNetworkWatcherConnectivity cmdlet returns connectivity informati
 
 ### ---------------  Example 1: Test Network Watcher Connectivity from a VM to a website  ---------------
 @{paragraph=PS C:\\\>}
+
+
 ```
 Test-AzureRmNetworkWatcherConnectivity -NetworkWatcherName NetworkWatcher -ResourceGroupName NetworkWatcherRG -SourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoRG/providers/Microsoft.Compute/virtualMachines/MultiTierApp0" -DestinationAddress "bing.com" -DestinationPort 80
 
@@ -138,7 +141,7 @@ Aliases: Name
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -187,22 +190,24 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
 System.String
 System.Int32
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSConnectivityInformation
-
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, connectivity, management, manager, network, networking, network watcher
 
 ## RELATED LINKS
+
 [New-AzureRmNetworkWatcher](./New-AzureRmNetworkWatcher.md)
 [Get-AzureRmNetworkWatcher](./Get-AzureRmNetworkWatcher.md)
 [Remove-AzureRmNetworkWatcher](./Remove-AzureRmNetworkWatcher.md)

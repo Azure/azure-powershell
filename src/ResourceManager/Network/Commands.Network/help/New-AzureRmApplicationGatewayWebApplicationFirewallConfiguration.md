@@ -97,6 +97,7 @@ The acceptable values for this parameter are:
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: OWASP
 
 Required: False
 Position: Named
@@ -116,6 +117,7 @@ The acceptable values for this parameter are:
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: 3.0, 2.2.9
 
 Required: False
 Position: Named
