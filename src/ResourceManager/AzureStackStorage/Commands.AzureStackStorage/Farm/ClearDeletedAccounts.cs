@@ -22,23 +22,8 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     ///             [-SkipCertificateValidation] [-FarmName] {string} [ {CommonParameters}] 
     /// </summary>
     [Cmdlet(VerbsCommon.Clear, Nouns.AdminStorageAccount, SupportsShouldProcess = true)]
-    public sealed class ClearDeletedAccounts : AdminCmdlet
+    public sealed class ClearDeletedAccounts : AdminCmdletDefaultFarm
     {
-        /// <summary>
-        /// Resource group name
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string ResourceGroupName { get; set; }
-
-        /// <summary>
-        /// farm identifier
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string FarmName { get; set; }
-        
-        
         protected override void Execute()
         {
             if (ShouldProcess(

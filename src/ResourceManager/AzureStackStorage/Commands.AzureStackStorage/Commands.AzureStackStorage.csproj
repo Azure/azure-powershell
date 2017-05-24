@@ -119,6 +119,7 @@
   <ItemGroup>
     <Compile Include="Acquisition\GetAcquisition.cs" />
     <Compile Include="AdminCmdlet.cs" />
+    <Compile Include="AdminCmdletWithFarm.cs" />
     <Compile Include="AdminException.cs" />
     <Compile Include="AdminMetricCmdLet.cs" />
     <Compile Include="AdminMetricDefinitionCmdlet.cs" />
@@ -209,6 +210,10 @@
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
       <Name>Commands.ResourceManager.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Resources\Commands.Resources\Commands.Resources.csproj">
+      <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
+      <Name>Commands.Resources</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

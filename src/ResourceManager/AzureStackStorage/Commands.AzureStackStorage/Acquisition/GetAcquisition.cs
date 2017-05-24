@@ -26,57 +26,31 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     /// Get an acquisition by ID or list acquisitions
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminAcquisition)]
-    public sealed class GetAdminAcquisition : AdminCmdlet
+    public sealed class GetAdminAcquisition : AdminCmdletDefaultFarm
     {
-        const string ListAcquisitionSet = "ListAcquisitionSet";
-
-        /// <summary>
-        /// Resource group name
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string ResourceGroupName { get; set; }
-
-        /// <summary>
-        ///     Farm Identifier
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string FarmName { get; set; }
-
         /// <summary>
         ///     AcquisitionId
         /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = ListAcquisitionSet)]
+        [Parameter(Mandatory = false)]
         public string TenantSubscriptionId { get; set; }
 
         /// <summary>
         ///     AcquisitionId
         /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = ListAcquisitionSet)]
+        [Parameter(Mandatory = false)]
         public string StorageAccountName { get; set; }
 
         /// <summary>
         ///     AcquisitionId
         /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = ListAcquisitionSet)]
+        [Parameter(Mandatory = false)]
         public string Container { get; set; }
 
         protected override void Execute()
         {
-            switch (ParameterSetName)
-            {
-                case ListAcquisitionSet:
-                {
-                    string filter = Tools.GenerateAcquisitionQueryFilterString(TenantSubscriptionId, StorageAccountName,
-                        Container);
-                    var result = Client.Acquisitions.List(ResourceGroupName, FarmName, filter);
-                    WriteObject(result.Acquisitions.Select(_=> new AcquisitionResponse(_)), true);
-                    break;
-                }
-                default:
-                    throw new ArgumentException("Bad parameter set");
-            }
+            string filter = Tools.GenerateAcquisitionQueryFilterString(TenantSubscriptionId, StorageAccountName, Container);
+            var result = Client.Acquisitions.List(ResourceGroupName, FarmName, filter);
+            WriteObject(result.Acquisitions.Select(_ => new AcquisitionResponse(_)), true);
         }
-        }
+    }
 }

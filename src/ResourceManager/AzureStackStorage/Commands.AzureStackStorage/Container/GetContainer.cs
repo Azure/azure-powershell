@@ -27,25 +27,12 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     ///                  [-FarmName] {string} [-ShareName] {string} [[-Intent] {Migration}] [-Count {MaxCount}] [{CommonParameters}] 
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminContainer)]
-    public sealed class GetContainer : AdminCmdlet
+    public sealed class GetContainer : AdminCmdletDefaultFarm
     {
         /// <summary>
         /// Default value of records to be returned when count is not specified
         /// </summary>
         internal const uint DefaultMaxCountOfRecords = 10;
-        /// <summary>
-        /// Resource group name
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string ResourceGroupName { get; set; }
-
-        /// <summary>
-        /// Farm Identifier
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string FarmName { get; set; }
 
         /// <summary>
         /// </summary>

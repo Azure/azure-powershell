@@ -29,17 +29,6 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     public sealed class GetQueueServiceMetricDefinitions : AdminMetricDefinitionCmdlet
     {
         /// <summary>
-        /// Resource group name
-        /// </summary>
-
-        /// <summary>
-        ///     Farm Identifier
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string FarmName { get; set; }
-
-        /// <summary>
         /// Array of metric names
         /// </summary>
         /// <param name="filter"></param>

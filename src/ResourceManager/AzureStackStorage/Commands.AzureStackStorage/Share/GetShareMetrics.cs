@@ -25,13 +25,6 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     public sealed class GetShareMetric : AdminMetricCmdlet
     {
         /// <summary>
-        ///     Farm Identifier
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string FarmName { get; set; }
-
-        /// <summary>
         ///     share name
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]

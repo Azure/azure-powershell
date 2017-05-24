@@ -32,17 +32,6 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
-        public string FarmName
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// Farm Identifier
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
         public string ShareName
         {
             get;

@@ -23,15 +23,8 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     /// <summary>
     /// 
     /// </summary>
-    public abstract class AdminMetricCmdlet: AdminCmdlet
+    public abstract class AdminMetricCmdlet : AdminCmdletDefaultFarm
     {
-        /// <summary>
-        /// Resource group name
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string ResourceGroupName { get; set; }
-
         /// <summary>
         /// Gets or sets the timegrain parameter of the cmdlet
         /// </summary>
@@ -78,12 +71,12 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         protected override void Execute()
         {
             // Set the default start time and end time to last 24hours
-            if (EndTimeInUtc == null) 
+            if (EndTimeInUtc == DateTime.MinValue) 
             {
                 EndTimeInUtc = DateTime.UtcNow;
             }
 
-            if (StartTimeInUtc == null )
+            if (StartTimeInUtc == DateTime.MinValue)
             {
                 StartTimeInUtc = EndTimeInUtc.AddDays(-1);
             }

@@ -30,13 +30,6 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     [Cmdlet(VerbsCommon.Get, Nouns.AdminQueueServiceMetric)]
     public sealed class GetQueueServiceMetrics : AdminMetricCmdlet
     {
-        /// <summary>
-        ///     Farm Identifier
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string FarmName { get; set; }
-             
         protected override MetricsResult GetMetricsResult(string filter)
         {
             return Client.QueueService.GetMetrics(ResourceGroupName, FarmName, filter);

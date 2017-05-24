@@ -31,11 +31,10 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
             // Id is in the following format:
             // /subscriptions/{subid}/resourceGroups/{resourceGroupName}/providers/{providerName}/farms/{farmId}/nodes/{nodeId}
             string[] ids = resource.Id.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-            ResourceGroupName = ids[3];
+            // ResourceGroupName = ids[3];
             FarmName = ids[7];
         }
-
-        public string ResourceGroupName { get; set; }
+        // public string ResourceGroupName { get; set; }
         public string FarmName { get; set; }
     }
 }

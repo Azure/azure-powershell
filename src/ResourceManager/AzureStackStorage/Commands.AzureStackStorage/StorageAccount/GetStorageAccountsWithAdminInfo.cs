@@ -30,24 +30,10 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     /// 
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminStorageAccount, DefaultParameterSetName = ListAccountsParamSet)]
-    public sealed class GetStorageAccountsWithAdminInfo : AdminCmdlet
+    public sealed class GetStorageAccountsWithAdminInfo : AdminCmdletDefaultFarm
     {
         const string ListAccountsParamSet = "ListMultipleAccounts";
         const string GetSingleAccountParamSet = "GetSingleAccount";
-
-        /// <summary>
-        /// Resource group name
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string ResourceGroupName { get; set; }
-
-        /// <summary>
-        /// Farm Identifier
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string FarmName { get; set; }
 
         /// <summary>
         /// Tenant Subscription Id

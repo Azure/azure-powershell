@@ -25,13 +25,6 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     public sealed class GetTableServiceMetricDefinitions : AdminMetricDefinitionCmdlet
     {
         /// <summary>
-        ///     Farm Identifier
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string FarmName { get; set; }
-
-        /// <summary>
         /// 
         /// </summary>
         /// <param name="filter"></param>

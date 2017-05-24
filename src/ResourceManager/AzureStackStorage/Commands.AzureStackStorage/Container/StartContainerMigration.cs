@@ -29,22 +29,8 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     ///                  [-FarmName] {string} [-ShareName] {string} [-Container] {container} [-DestinationShareName] {string} [{CommonParameters}] 
     /// </summary>
     [Cmdlet(VerbsLifecycle.Start, Nouns.AdminContainerMigration)]
-    public sealed class StartContainerMigration : AdminCmdlet
+    public sealed class StartContainerMigration : AdminCmdletDefaultFarm
     {
-        /// <summary>
-        /// Resource group name
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string ResourceGroupName { get; set; }
-
-        /// <summary>
-        /// Farm Identifier
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string FarmName { get; set; }
-
         /// <summary>
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipeline = true)]

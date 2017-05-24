@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.AzureStack.AzureConsistentStorage.Models;
 
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
@@ -69,8 +70,6 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
             {
                 ServicePointManager.ServerCertificateValidationCallback = unCheckCertificateValidation;
             }
-
-            // ValidateParameters();
 
             Client = GetClient();
         }
@@ -155,7 +154,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 
             return AzureSession.ClientFactory.CreateCustomClient<StorageAdminManagementClient>(credentials, armUri);
         }
-		
+
         protected string ParseNameForQuota(string name)
         {
             // the quota is a nested resource with its resourceName being location/name as presented to ARM

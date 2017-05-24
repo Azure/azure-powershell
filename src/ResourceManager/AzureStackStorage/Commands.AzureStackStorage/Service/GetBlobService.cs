@@ -26,25 +26,11 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     /// 
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminBlobService)]
-    public sealed class GetBlobService : AdminCmdlet
+    public sealed class GetBlobService : AdminCmdletDefaultFarm
     {
-        /// <summary>
-        /// Resource group name
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string ResourceGroupName { get; set; }
-
-        /// <summary>
-        ///     Farm Identifier
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string FarmName { get; set; }
-
-
         protected override void Execute()
         {
+            WriteVerbose("Fetching BlobService");
             BlobServiceGetResponse result = Client.BlobService.Get(ResourceGroupName, FarmName);
             WriteObject(new BlobServiceResponse(result.Resource));
         }

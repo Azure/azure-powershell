@@ -26,23 +26,8 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     /// 
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminTableService)]
-    public sealed class GetTableService : AdminCmdlet
+    public sealed class GetTableService : AdminCmdletDefaultFarm
     {
-        /// <summary>
-        /// Resource group name
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string ResourceGroupName { get; set; }
-
-        /// <summary>
-        ///     Farm Identifier
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string FarmName { get; set; }
-
-
         protected override void Execute()
         {
             TableServiceGetResponse result = Client.TableService.Get(ResourceGroupName, FarmName);

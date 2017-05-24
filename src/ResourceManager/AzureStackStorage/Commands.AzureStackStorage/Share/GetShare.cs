@@ -28,28 +28,10 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     /// 
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminShare, DefaultParameterSetName = ListTenantSharesParamSet)]
-    public sealed class GetAdminShare : AdminCmdlet
+    public sealed class GetAdminShare : AdminCmdletDefaultFarm
     {
         const string ListTenantSharesParamSet = "ListTenant";
         const string ListSharesForMigrationParamSet = "GetSharesForMigration";
-
-        /// <summary>
-        /// Resource group name
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string ResourceGroupName { get; set; }
-
-        /// <summary>
-        /// Farm Identifier
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public string FarmName
-        {
-            get;
-            set;
-        }
 
         /// <summary>
         /// Get details for a given share
@@ -74,7 +56,6 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ListSharesForMigrationParamSet)]
         public FileShareGetIntent? Intent { get; set; }
-
 
         protected override void Execute()
         {
