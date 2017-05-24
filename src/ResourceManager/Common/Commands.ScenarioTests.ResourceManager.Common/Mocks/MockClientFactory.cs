@@ -15,10 +15,13 @@
 using Hyak.Common;
 using Microsoft.Azure;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -47,22 +50,22 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             throwWhenNotAvailable = throwIfClientNotSpecified;
         }
 
-        public TClient CreateClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
+        public TClient CreateClient<TClient>(IAzureContext context, string endpoint) where TClient : ServiceClient<TClient>
         {
             Debug.Assert(context != null);
 
-            SubscriptionCloudCredentials creds = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context);
+            SubscriptionCloudCredentials creds = AzureSession.Instance.AuthenticationFactory.GetSubscriptionCloudCredentials(context);
             TClient client = CreateCustomClient<TClient>(creds, context.Environment.GetEndpointAsUri(endpoint));
 
             return client;
         }
 
-        public TClient CreateClient<TClient>(AzureSMProfile profile, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
+        public TClient CreateClient<TClient>(IAzureContextContainer profile, string endpoint) where TClient : ServiceClient<TClient>
         {
-            return CreateClient<TClient>(profile, profile.Context.Subscription, endpoint);
+            return CreateClient<TClient>(profile, profile.DefaultContext.Subscription, endpoint);
         }
 
-        public TClient CreateClient<TClient>(AzureSMProfile profile, AzureSubscription subscription, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
+        public TClient CreateClient<TClient>(IAzureContextContainer profile, IAzureSubscription subscription, string endpoint) where TClient : ServiceClient<TClient>
         {
             if (subscription == null)
             {
@@ -71,23 +74,23 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
             if (profile == null)
             {
-                profile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+                profile = new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
             }
 
             SubscriptionCloudCredentials creds = new TokenCloudCredentials(subscription.Id.ToString(), "fake_token");
             if (HttpMockServer.GetCurrentMode() != HttpRecorderMode.Playback)
             {
-                ProfileClient profileClient = new ProfileClient(profile);
+                ProfileClient profileClient = new ProfileClient(profile as AzureSMProfile);
                 AzureContext context = new AzureContext(
                     subscription,
-                    profileClient.GetAccount(subscription.Account),
-                    profileClient.GetEnvironmentOrDefault(subscription.Environment)
+                    profileClient.GetAccount(subscription.GetAccount()),
+                    profileClient.GetEnvironmentOrDefault(subscription.GetEnvironment())
                 );
 
-                creds = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context);
+                creds = AzureSession.Instance.AuthenticationFactory.GetSubscriptionCloudCredentials(context);
             }
 
-            Uri endpointUri = profile.Environments[subscription.Environment].GetEndpointAsUri(endpoint);
+            Uri endpointUri = profile.Environments.FirstOrDefault((e) => e.Name.Equals(subscription.GetEnvironment(), StringComparison.OrdinalIgnoreCase)).GetEndpointAsUri(endpoint);
             return CreateCustomClient<TClient>(creds, endpointUri);
         }
 
@@ -205,10 +208,10 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             }
         }
 
-        public TClient CreateArmClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint) where TClient : Rest.ServiceClient<TClient>
+        public TClient CreateArmClient<TClient>(IAzureContext context, string endpoint) where TClient : Rest.ServiceClient<TClient>
         {
             Debug.Assert(context != null);
-            var credentials = AzureSession.AuthenticationFactory.GetServiceClientCredentials(context);
+            var credentials = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context);
             var client = CreateCustomArmClient<TClient>(credentials, context.Environment.GetEndpointAsUri(endpoint),
                 context.Subscription.Id);
             return client;
@@ -235,6 +238,12 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                     var realClient = realClientFactory.CreateCustomArmClient<TClient>(newParameters);
                     return realClient;
                 }
+            }
+
+            IAzureClient azureClient = client as IAzureClient;
+            if (azureClient != null)
+            {
+                azureClient.LongRunningOperationRetryTimeout = 0;
             }
 
             return client;

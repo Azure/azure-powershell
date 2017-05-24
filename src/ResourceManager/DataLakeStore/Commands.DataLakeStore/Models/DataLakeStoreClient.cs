@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.DataLake.Store;
 using Microsoft.Azure.Management.DataLake.Store.Models;
@@ -32,14 +32,14 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         private readonly DataLakeStoreAccountManagementClient _client;
         private readonly Guid _subscriptionId;
 
-        public DataLakeStoreClient(AzureContext context)
+        public DataLakeStoreClient(IAzureContext context)
         {
             if (context == null)
             {
                 throw new ApplicationException(Resources.InvalidDefaultSubscription);
             }
 
-            _subscriptionId = context.Subscription.Id;
+            _subscriptionId = context.Subscription.GetId();
             _client = DataLakeStoreCmdletBase.CreateAdlsClient<DataLakeStoreAccountManagementClient>(context,
                 AzureEnvironment.Endpoint.ResourceManager);
         }

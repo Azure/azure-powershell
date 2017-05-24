@@ -14,9 +14,9 @@ Deletes a directory.
 
 ### ShareName (Default)
 ```
-Remove-AzureStorageDirectory [-ShareName] <String> [-Path] <String> [-PassThru]
- [-Context <AzureStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureStorageDirectory [-ShareName] <String> [-Path] <String> [-PassThru] [-Context <IStorageContext>]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### Share
@@ -88,7 +88,7 @@ Specifies an Azure storage context.
 To obtain a storage context, use the [New-AzureStorageContext](./New-AzureStorageContext.md) cmdlet.
 
 ```yaml
-Type: AzureStorageContext
+Type: IStorageContext
 Parameter Sets: ShareName
 Aliases: 
 

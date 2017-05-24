@@ -14,8 +14,8 @@ Sets a stored access policy for an Azure storage queue.
 
 ```
 Set-AzureStorageQueueStoredAccessPolicy [-Queue] <String> [-Policy] <String> [-Permission <String>]
- [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-NoStartTime] [-NoExpiryTime]
- [-Context <AzureStorageContext>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-NoStartTime] [-NoExpiryTime] [-Context <IStorageContext>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +37,7 @@ Specifies an Azure storage context.
 To obtain a storage context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: AzureStorageContext
+Type: IStorageContext
 Parameter Sets: (All)
 Aliases: 
 

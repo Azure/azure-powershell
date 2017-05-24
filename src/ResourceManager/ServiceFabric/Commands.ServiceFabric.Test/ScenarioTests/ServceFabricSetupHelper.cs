@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
@@ -38,34 +39,26 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
                 var user = GetUser(csmEnvironment);
                 var tenantId = GetTenantId(csmEnvironment);
 
+                var context = AzureRmProfileProvider.Instance.Profile.DefaultContext;
                 var testSubscription = new AzureSubscription()
                 {
-                    Id = new Guid(csmEnvironment.SubscriptionId),
-                    Name = AzureRmProfileProvider.Instance.Profile.Context.Subscription.Name,
-                    Environment = AzureRmProfileProvider.Instance.Profile.Context.Environment.Name,
-                    Account = user,
-                    Properties = new Dictionary<AzureSubscription.Property, string>
-                    {
-                        {AzureSubscription.Property.Default, "True"},
-                        {
-                            AzureSubscription.Property.StorageAccount,
-                            Environment.GetEnvironmentVariable("AZURE_STORAGE_ACCOUNT")
-                        },
-                        {AzureSubscription.Property.Tenants, tenantId},
-                    }
+                    Id = csmEnvironment.SubscriptionId,
+                    Name = context.Subscription.Name
                 };
+                testSubscription.SetEnvironment(context.Environment.Name);
+                testSubscription.SetAccount(user);
+                testSubscription.SetDefault();
+                testSubscription.SetStorageAccount(Environment.GetEnvironmentVariable("AZURE_STORAGE_ACCOUNT"));
+                testSubscription.SetTenant(tenantId);
 
                 var testAccount = new AzureAccount()
                 {
                     Id = user,
-                    Type = AzureAccount.AccountType.User,
-                    Properties = new Dictionary<AzureAccount.Property, string>
-                    {
-                        {AzureAccount.Property.Subscriptions, csmEnvironment.SubscriptionId},
-                    }
+                    Type = AzureAccount.AccountType.User
                 };
+                testAccount.SetSubscriptions(csmEnvironment.SubscriptionId);
 
-                AzureRmProfileProvider.Instance.Profile.Context = new AzureContext(testSubscription, testAccount, AzureRmProfileProvider.Instance.Profile.Context.Environment, new AzureTenant { Id = new Guid(tenantId) });
+                AzureRmProfileProvider.Instance.Profile.DefaultContext = new AzureContext(testSubscription, testAccount, context.Environment, new AzureTenant { Id = tenantId });
             }
         }
 

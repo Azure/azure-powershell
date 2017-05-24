@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             if (this.ReliabilityLevel == oldReliabilityLevel)
             {
-                WriteObject(cluster, true);
+                WriteObject(new PSCluster(cluster), true);
                 return;
             }
 
@@ -113,9 +113,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     }
                 }
 
+                var primayNodeType = cluster.NodeTypes.Single(n => n.IsPrimary);
+                primayNodeType.VmInstanceCount = Convert.ToInt32(primaryVmss.Sku.Capacity);
                 var request = new ClusterUpdateParameters
                 {
-                    ReliabilityLevel = this.ReliabilityLevel.ToString()
+                    ReliabilityLevel = this.ReliabilityLevel.ToString(),
+                    NodeTypes = cluster.NodeTypes
                 };
 
                 var psCluster = SendPatchRequest(request);

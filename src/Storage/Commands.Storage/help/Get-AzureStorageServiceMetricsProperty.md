@@ -14,7 +14,7 @@ Gets metrics properties for the Azure Storage service.
 
 ```
 Get-AzureStorageServiceMetricsProperty [-ServiceType] <StorageServiceType> [-MetricsType] <ServiceMetricsType>
- [-Context <AzureStorageContext>] [<CommonParameters>]
+ [-Context <IStorageContext>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,7 +36,7 @@ Specifies an Azure storage context.
 To obtain a storage context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: AzureStorageContext
+Type: IStorageContext
 Parameter Sets: (All)
 Aliases: 
 

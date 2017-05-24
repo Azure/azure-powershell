@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStoreTrustedIdProvider",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreTrustedIdProvider, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreTrustedIdProvider, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IdProvider": "System.String",
               "Name": "System.String"
@@ -30,7 +30,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "IList",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreTrustedIdProvider, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreTrustedIdProvider, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -573,9 +573,10 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStoreItem",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItem, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItem, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AccessTime": "System.Nullable`1[System.Int64]",
+              "AclBit": "System.Nullable`1[System.Boolean]",
               "BlockSize": "System.Nullable`1[System.Int64]",
               "ChildrenNum": "System.Nullable`1[System.Int64]",
               "Expiration": "System.Nullable`1[System.DateTimeOffset]",
@@ -624,7 +625,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStorePathInstance",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "OriginalPath": "System.String",
               "TransformedPath": "System.String"
@@ -691,7 +692,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "DataLakeStorePathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "OriginalPath": "System.String",
                     "TransformedPath": "System.String"
@@ -754,7 +755,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStoreTrustedIdProvider",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreTrustedIdProvider, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreTrustedIdProvider, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IdProvider": "System.String",
               "Name": "System.String"
@@ -950,7 +951,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStoreTrustedIdProvider",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreTrustedIdProvider, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreTrustedIdProvider, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IdProvider": "System.String",
               "Name": "System.String"
@@ -1146,7 +1147,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStoreFirewallRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreFirewallRule, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreFirewallRule, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EndIpAddress": "System.String",
               "Name": "System.String",
@@ -1163,7 +1164,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "IList",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreFirewallRule, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreFirewallRule, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -1320,7 +1321,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStoreFirewallRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreFirewallRule, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreFirewallRule, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EndIpAddress": "System.String",
               "Name": "System.String",
@@ -1555,7 +1556,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStoreFirewallRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreFirewallRule, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreFirewallRule, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EndIpAddress": "System.String",
               "Name": "System.String",
@@ -1825,7 +1826,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStorePathInstance",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "OriginalPath": "System.String",
               "TransformedPath": "System.String"
@@ -1906,7 +1907,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "DataLakeStorePathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "OriginalPath": "System.String",
                     "TransformedPath": "System.String"
@@ -2024,7 +2025,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStorePathInstance",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "OriginalPath": "System.String",
               "TransformedPath": "System.String"
@@ -2139,7 +2140,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "LogLevel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.LogLevel, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.LogLevel, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2201,7 +2202,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "DataLakeStorePathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "OriginalPath": "System.String",
                     "TransformedPath": "System.String"
@@ -2387,7 +2388,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "DataLakeStorePathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "OriginalPath": "System.String",
                     "TransformedPath": "System.String"
@@ -2544,7 +2545,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "LogLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.LogLevel, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.LogLevel, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2602,7 +2603,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "IEnumerable",
-            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItem, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItem, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -2639,7 +2640,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStorePathInstance",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "OriginalPath": "System.String",
               "TransformedPath": "System.String"
@@ -2688,7 +2689,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "DataLakeStorePathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "OriginalPath": "System.String",
                     "TransformedPath": "System.String"
@@ -2727,9 +2728,10 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStoreItem",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItem, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItem, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AccessTime": "System.Nullable`1[System.Int64]",
+              "AclBit": "System.Nullable`1[System.Boolean]",
               "BlockSize": "System.Nullable`1[System.Int64]",
               "ChildrenNum": "System.Nullable`1[System.Int64]",
               "Expiration": "System.Nullable`1[System.DateTimeOffset]",
@@ -2778,7 +2780,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStorePathInstance",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "OriginalPath": "System.String",
               "TransformedPath": "System.String"
@@ -2827,7 +2829,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "DataLakeStorePathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "OriginalPath": "System.String",
                     "TransformedPath": "System.String"
@@ -2866,7 +2868,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "IEnumerable",
-            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -2903,7 +2905,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStorePathInstance",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "OriginalPath": "System.String",
               "TransformedPath": "System.String"
@@ -2952,7 +2954,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "DataLakeStorePathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "OriginalPath": "System.String",
                     "TransformedPath": "System.String"
@@ -2985,7 +2987,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "__AllParameterSets",
+      "DefaultParameterSetName": "Preview file content",
       "OutputTypes": [
         {
           "Type": {
@@ -3039,7 +3041,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStorePathInstance",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "OriginalPath": "System.String",
               "TransformedPath": "System.String"
@@ -3050,6 +3052,38 @@
           "ValidateSet": [],
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Head",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "Int32",
+            "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": 1,
+          "ValidateRangeMax": 2147483647,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Tail",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "Int32",
+            "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": 1,
+          "ValidateRangeMax": 2147483647,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -3119,7 +3153,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "__AllParameterSets",
+          "Name": "Preview file content",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -3152,7 +3186,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "DataLakeStorePathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "OriginalPath": "System.String",
                     "TransformedPath": "System.String"
@@ -3259,6 +3293,202 @@
               "ValueFromPipelineByPropertyName": true
             }
           ]
+        },
+        {
+          "Name": "Preview file rows from the head of the file",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Account",
+                "AliasList": [
+                  "AccountName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Path",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
+                  "Name": "DataLakeStorePathInstance",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "OriginalPath": "System.String",
+                    "TransformedPath": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Head",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "Int32",
+                  "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": 1,
+                "ValidateRangeMax": 2147483647,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Encoding",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.PowerShell.Commands",
+                  "Name": "FileSystemCmdletProviderEncoding",
+                  "AssemblyQualifiedName": "Microsoft.PowerShell.Commands.FileSystemCmdletProviderEncoding, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": 3,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        },
+        {
+          "Name": "Preview file rows from the tail of the file",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Account",
+                "AliasList": [
+                  "AccountName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Path",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
+                  "Name": "DataLakeStorePathInstance",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "OriginalPath": "System.String",
+                    "TransformedPath": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Tail",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "Int32",
+                  "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": 1,
+                "ValidateRangeMax": 2147483647,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Encoding",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.PowerShell.Commands",
+                  "Name": "FileSystemCmdletProviderEncoding",
+                  "AssemblyQualifiedName": "Microsoft.PowerShell.Commands.FileSystemCmdletProviderEncoding, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": 3,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
         }
       ],
       "AliasList": [
@@ -3314,7 +3544,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStorePathInstance",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "OriginalPath": "System.String",
               "TransformedPath": "System.String"
@@ -3333,7 +3563,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "Owner",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+Owner, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+Owner, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3379,7 +3609,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "DataLakeStorePathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "OriginalPath": "System.String",
                     "TransformedPath": "System.String"
@@ -3404,7 +3634,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "Owner",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+Owner, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+Owner, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3475,7 +3705,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStorePathInstance",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "OriginalPath": "System.String",
               "TransformedPath": "System.String"
@@ -3524,7 +3754,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "DataLakeStorePathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "OriginalPath": "System.String",
                     "TransformedPath": "System.String"
@@ -3614,7 +3844,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStorePathInstance",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "OriginalPath": "System.String",
               "TransformedPath": "System.String"
@@ -3729,7 +3959,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "LogLevel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.LogLevel, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.LogLevel, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3813,7 +4043,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "DataLakeStorePathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "OriginalPath": "System.String",
                     "TransformedPath": "System.String"
@@ -4021,7 +4251,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "DataLakeStorePathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "OriginalPath": "System.String",
                     "TransformedPath": "System.String"
@@ -4178,7 +4408,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "LogLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.LogLevel, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.LogLevel, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -4236,7 +4466,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.DataLakeStore.Models.PSDataLakeStoreAccount, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.DataLakeStore.Models.PSDataLakeStoreAccount, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -4251,7 +4481,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "PSDataLakeStoreAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.PSDataLakeStoreAccount, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.PSDataLakeStoreAccount, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CreationTime": "System.Nullable`1[System.DateTime]",
               "CurrentTier": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.TierType]",
@@ -4260,6 +4490,7 @@
               "EncryptionProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.EncryptionProvisioningState]",
               "EncryptionState": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.EncryptionState]",
               "Endpoint": "System.String",
+              "FirewallAllowAzureIps": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.FirewallAllowAzureIpsState]",
               "FirewallRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataLake.Store.Models.FirewallRule]",
               "FirewallState": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.FirewallState]",
               "Id": "System.String",
@@ -4451,7 +4682,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStorePathInstance[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance[], Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance[], Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance",
             "GenericTypeArguments": []
@@ -4467,7 +4698,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStorePathInstance",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "OriginalPath": "System.String",
               "TransformedPath": "System.String"
@@ -4534,7 +4765,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "DataLakeStorePathInstance[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance[], Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance[], Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance",
                   "GenericTypeArguments": []
@@ -4556,7 +4787,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "DataLakeStorePathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "OriginalPath": "System.String",
                     "TransformedPath": "System.String"
@@ -4652,7 +4883,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStorePathInstance",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "OriginalPath": "System.String",
               "TransformedPath": "System.String"
@@ -4671,7 +4902,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStorePathInstance",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "OriginalPath": "System.String",
               "TransformedPath": "System.String"
@@ -4736,7 +4967,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "DataLakeStorePathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "OriginalPath": "System.String",
                     "TransformedPath": "System.String"
@@ -4761,7 +4992,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "DataLakeStorePathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "OriginalPath": "System.String",
                     "TransformedPath": "System.String"
@@ -4822,7 +5053,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "PSDataLakeStoreAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.PSDataLakeStoreAccount, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.PSDataLakeStoreAccount, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CreationTime": "System.Nullable`1[System.DateTime]",
               "CurrentTier": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.TierType]",
@@ -4831,6 +5062,7 @@
               "EncryptionProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.EncryptionProvisioningState]",
               "EncryptionState": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.EncryptionState]",
               "Endpoint": "System.String",
+              "FirewallAllowAzureIps": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.FirewallAllowAzureIpsState]",
               "FirewallRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataLake.Store.Models.FirewallRule]",
               "FirewallState": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.FirewallState]",
               "Id": "System.String",
@@ -4899,23 +5131,7 @@
             "ElementType": null,
             "GenericTypeArguments": []
           },
-          "ValidateSet": [
-            "North Central US",
-            "South Central US",
-            "Central US",
-            "West Europe",
-            "North Europe",
-            "West US",
-            "East US",
-            "East US 2",
-            "Japan East",
-            "Japan West",
-            "Brazil South",
-            "Southeast Asia",
-            "East Asia",
-            "Australia East",
-            "Australia Southeast"
-          ],
+          "ValidateSet": [],
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
@@ -4958,7 +5174,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "Nullable",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.EncryptionConfigType, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.EncryptionConfigType, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -5040,7 +5256,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "Nullable",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.TierType, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.TierType, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -5113,23 +5329,7 @@
                   "ElementType": null,
                   "GenericTypeArguments": []
                 },
-                "ValidateSet": [
-                  "North Central US",
-                  "South Central US",
-                  "Central US",
-                  "West Europe",
-                  "North Europe",
-                  "West US",
-                  "East US",
-                  "East US 2",
-                  "Japan East",
-                  "Japan West",
-                  "Brazil South",
-                  "Southeast Asia",
-                  "East Asia",
-                  "Australia East",
-                  "Australia Southeast"
-                ],
+                "ValidateSet": [],
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
@@ -5190,7 +5390,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "Nullable",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.EncryptionConfigType, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.EncryptionConfigType, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -5280,7 +5480,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "Nullable",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.TierType, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.TierType, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -5358,23 +5558,7 @@
                   "ElementType": null,
                   "GenericTypeArguments": []
                 },
-                "ValidateSet": [
-                  "North Central US",
-                  "South Central US",
-                  "Central US",
-                  "West Europe",
-                  "North Europe",
-                  "West US",
-                  "East US",
-                  "East US 2",
-                  "Japan East",
-                  "Japan West",
-                  "Brazil South",
-                  "Southeast Asia",
-                  "East Asia",
-                  "Australia East",
-                  "Australia Southeast"
-                ],
+                "ValidateSet": [],
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
@@ -5457,7 +5641,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "Nullable",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.TierType, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.TierType, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -5530,7 +5714,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStorePathInstance",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "OriginalPath": "System.String",
               "TransformedPath": "System.String"
@@ -5643,7 +5827,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "DataLakeStorePathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "OriginalPath": "System.String",
                     "TransformedPath": "System.String"
@@ -5994,7 +6178,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStorePathInstance[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance[], Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance[], Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance",
             "GenericTypeArguments": []
@@ -6104,7 +6288,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "DataLakeStorePathInstance[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance[], Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance[], Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance",
                   "GenericTypeArguments": []
@@ -6263,7 +6447,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStorePathInstance",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "OriginalPath": "System.String",
               "TransformedPath": "System.String"
@@ -6360,7 +6544,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "DataLakeStorePathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "OriginalPath": "System.String",
                     "TransformedPath": "System.String"
@@ -6500,7 +6684,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStorePathInstance",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "OriginalPath": "System.String",
               "TransformedPath": "System.String"
@@ -6519,7 +6703,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStoreItemAce[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce[], Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce[], Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce",
             "GenericTypeArguments": []
@@ -6535,7 +6719,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "AceType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+AceType, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+AceType, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -6629,7 +6813,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "DataLakeStorePathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "OriginalPath": "System.String",
                     "TransformedPath": "System.String"
@@ -6654,7 +6838,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "DataLakeStoreItemAce[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce[], Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce[], Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce",
                   "GenericTypeArguments": []
@@ -6727,7 +6911,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "DataLakeStorePathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "OriginalPath": "System.String",
                     "TransformedPath": "System.String"
@@ -6752,7 +6936,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "AceType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+AceType, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+AceType, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -6916,7 +7100,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStorePathInstance",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "OriginalPath": "System.String",
               "TransformedPath": "System.String"
@@ -6935,7 +7119,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStoreItemAce[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce[], Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce[], Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce",
             "GenericTypeArguments": []
@@ -6951,7 +7135,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "AceType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+AceType, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+AceType, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -6983,7 +7167,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "Permission",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+Permission, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+Permission, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -7061,7 +7245,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "DataLakeStorePathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "OriginalPath": "System.String",
                     "TransformedPath": "System.String"
@@ -7086,7 +7270,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "DataLakeStoreItemAce[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce[], Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce[], Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce",
                   "GenericTypeArguments": []
@@ -7159,7 +7343,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "DataLakeStorePathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "OriginalPath": "System.String",
                     "TransformedPath": "System.String"
@@ -7184,7 +7368,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "AceType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+AceType, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+AceType, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -7228,7 +7412,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "Permission",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+Permission, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+Permission, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -7335,7 +7519,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "PSDataLakeStoreAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.PSDataLakeStoreAccount, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.PSDataLakeStoreAccount, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CreationTime": "System.Nullable`1[System.DateTime]",
               "CurrentTier": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.TierType]",
@@ -7344,6 +7528,7 @@
               "EncryptionProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.EncryptionProvisioningState]",
               "EncryptionState": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.EncryptionState]",
               "Endpoint": "System.String",
+              "FirewallAllowAzureIps": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.FirewallAllowAzureIpsState]",
               "FirewallRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataLake.Store.Models.FirewallRule]",
               "FirewallState": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.FirewallState]",
               "Id": "System.String",
@@ -7423,7 +7608,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "Nullable",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.TrustedIdProviderState, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.TrustedIdProviderState, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -7441,7 +7626,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "Nullable",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.FirewallState, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.FirewallState, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -7475,11 +7660,29 @@
           "Type": {
             "Namespace": "System",
             "Name": "Nullable",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.TierType, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.TierType, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
               "Microsoft.Azure.Management.DataLake.Store.Models.TierType"
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AllowAzureIpState",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "Nullable",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.FirewallAllowAzureIpsState, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "Microsoft.Azure.Management.DataLake.Store.Models.FirewallAllowAzureIpsState"
             ]
           },
           "ValidateSet": [],
@@ -7565,7 +7768,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "Nullable",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.TrustedIdProviderState, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.TrustedIdProviderState, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -7589,7 +7792,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "Nullable",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.FirewallState, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.FirewallState, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -7635,11 +7838,35 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "Nullable",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.TierType, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.TierType, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Management.DataLake.Store.Models.TierType"
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AllowAzureIpState",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "Nullable",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.FirewallAllowAzureIpsState, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "Microsoft.Azure.Management.DataLake.Store.Models.FirewallAllowAzureIpsState"
                   ]
                 },
                 "ValidateSet": [],
@@ -7708,7 +7935,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStorePathInstance",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "OriginalPath": "System.String",
               "TransformedPath": "System.String"
@@ -7727,7 +7954,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStoreItemAce[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce[], Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce[], Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce",
             "GenericTypeArguments": []
@@ -7789,7 +8016,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "DataLakeStorePathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "OriginalPath": "System.String",
                     "TransformedPath": "System.String"
@@ -7814,7 +8041,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "DataLakeStoreItemAce[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce[], Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce[], Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce",
                   "GenericTypeArguments": []
@@ -7907,7 +8134,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStorePathInstance",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "OriginalPath": "System.String",
               "TransformedPath": "System.String"
@@ -7926,7 +8153,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "Owner",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+Owner, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+Owner, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -8004,7 +8231,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "DataLakeStorePathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "OriginalPath": "System.String",
                     "TransformedPath": "System.String"
@@ -8029,7 +8256,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "Owner",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+Owner, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+Owner, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -8144,7 +8371,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStorePathInstance",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "OriginalPath": "System.String",
               "TransformedPath": "System.String"
@@ -8209,7 +8436,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "DataLakeStorePathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "OriginalPath": "System.String",
                     "TransformedPath": "System.String"
@@ -8418,7 +8645,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "DataLakeStorePathInstance",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "OriginalPath": "System.String",
               "TransformedPath": "System.String"
@@ -8437,7 +8664,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
             "Name": "PathType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+PathType, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+PathType, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -8483,7 +8710,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "DataLakeStorePathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "OriginalPath": "System.String",
                     "TransformedPath": "System.String"
@@ -8508,7 +8735,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
                   "Name": "PathType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+PathType, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+PathType, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -8647,7 +8874,7 @@
     "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreTrustedIdProvider": {
       "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
       "Name": "DataLakeStoreTrustedIdProvider",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreTrustedIdProvider, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreTrustedIdProvider, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "IdProvider": "System.String",
         "Name": "System.String"
@@ -8663,6 +8890,16 @@
       "ElementType": null,
       "GenericTypeArguments": [
         "System.Int64"
+      ]
+    },
+    "System.Nullable`1[System.Boolean]": {
+      "Namespace": "System",
+      "Name": "Nullable",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.Boolean"
       ]
     },
     "System.Nullable`1[System.DateTimeOffset]": {
@@ -8686,7 +8923,7 @@
     "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.FileType]": {
       "Namespace": "System",
       "Name": "Nullable",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.FileType, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.FileType, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -8696,7 +8933,7 @@
     "Microsoft.Azure.Management.DataLake.Store.Models.FileType": {
       "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
       "Name": "FileType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.FileType, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.FileType, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8704,7 +8941,7 @@
     "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreFirewallRule": {
       "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
       "Name": "DataLakeStoreFirewallRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreFirewallRule, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreFirewallRule, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "EndIpAddress": "System.String",
         "Name": "System.String",
@@ -8716,9 +8953,10 @@
     "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItem": {
       "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
       "Name": "DataLakeStoreItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItem, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItem, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "AccessTime": "System.Nullable`1[System.Int64]",
+        "AclBit": "System.Nullable`1[System.Boolean]",
         "BlockSize": "System.Nullable`1[System.Int64]",
         "ChildrenNum": "System.Nullable`1[System.Int64]",
         "Expiration": "System.Nullable`1[System.DateTimeOffset]",
@@ -8740,7 +8978,7 @@
     "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce": {
       "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
       "Name": "DataLakeStoreItemAce",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Entry": "System.String",
         "Id": "System.String",
@@ -8754,7 +8992,7 @@
     "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+ScopeType": {
       "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
       "Name": "ScopeType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+ScopeType, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+ScopeType, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8762,7 +9000,7 @@
     "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+AceType": {
       "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
       "Name": "AceType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+AceType, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+AceType, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8770,7 +9008,7 @@
     "Microsoft.Azure.Commands.DataLakeStore.Models.PSDataLakeStoreAccount": {
       "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
       "Name": "PSDataLakeStoreAccount",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.PSDataLakeStoreAccount, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.PSDataLakeStoreAccount, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "CreationTime": "System.Nullable`1[System.DateTime]",
         "CurrentTier": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.TierType]",
@@ -8779,6 +9017,7 @@
         "EncryptionProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.EncryptionProvisioningState]",
         "EncryptionState": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.EncryptionState]",
         "Endpoint": "System.String",
+        "FirewallAllowAzureIps": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.FirewallAllowAzureIpsState]",
         "FirewallRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataLake.Store.Models.FirewallRule]",
         "FirewallState": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.FirewallState]",
         "Id": "System.String",
@@ -8819,7 +9058,7 @@
     "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.TierType]": {
       "Namespace": "System",
       "Name": "Nullable",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.TierType, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.TierType, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -8829,7 +9068,7 @@
     "Microsoft.Azure.Management.DataLake.Store.Models.TierType": {
       "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
       "Name": "TierType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.TierType, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.TierType, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8837,7 +9076,7 @@
     "Microsoft.Azure.Management.DataLake.Store.Models.EncryptionConfig": {
       "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
       "Name": "EncryptionConfig",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.EncryptionConfig, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.EncryptionConfig, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "KeyVaultMetaInfo": "Microsoft.Azure.Management.DataLake.Store.Models.KeyVaultMetaInfo",
         "Type": "Microsoft.Azure.Management.DataLake.Store.Models.EncryptionConfigType"
@@ -8848,7 +9087,7 @@
     "Microsoft.Azure.Management.DataLake.Store.Models.KeyVaultMetaInfo": {
       "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
       "Name": "KeyVaultMetaInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.KeyVaultMetaInfo, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.KeyVaultMetaInfo, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "EncryptionKeyName": "System.String",
         "EncryptionKeyVersion": "System.String",
@@ -8860,7 +9099,7 @@
     "Microsoft.Azure.Management.DataLake.Store.Models.EncryptionConfigType": {
       "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
       "Name": "EncryptionConfigType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.EncryptionConfigType, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.EncryptionConfigType, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8868,7 +9107,7 @@
     "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.EncryptionProvisioningState]": {
       "Namespace": "System",
       "Name": "Nullable",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.EncryptionProvisioningState, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.EncryptionProvisioningState, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -8878,7 +9117,7 @@
     "Microsoft.Azure.Management.DataLake.Store.Models.EncryptionProvisioningState": {
       "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
       "Name": "EncryptionProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.EncryptionProvisioningState, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.EncryptionProvisioningState, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8886,7 +9125,7 @@
     "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.EncryptionState]": {
       "Namespace": "System",
       "Name": "Nullable",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.EncryptionState, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.EncryptionState, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -8896,7 +9135,25 @@
     "Microsoft.Azure.Management.DataLake.Store.Models.EncryptionState": {
       "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
       "Name": "EncryptionState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.EncryptionState, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.EncryptionState, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.FirewallAllowAzureIpsState]": {
+      "Namespace": "System",
+      "Name": "Nullable",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.FirewallAllowAzureIpsState, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.DataLake.Store.Models.FirewallAllowAzureIpsState"
+      ]
+    },
+    "Microsoft.Azure.Management.DataLake.Store.Models.FirewallAllowAzureIpsState": {
+      "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
+      "Name": "FirewallAllowAzureIpsState",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.FirewallAllowAzureIpsState, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8904,7 +9161,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataLake.Store.Models.FirewallRule]": {
       "Namespace": "System.Collections.Generic",
       "Name": "IList",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.DataLake.Store.Models.FirewallRule, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.DataLake.Store.Models.FirewallRule, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -8914,7 +9171,7 @@
     "Microsoft.Azure.Management.DataLake.Store.Models.FirewallRule": {
       "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
       "Name": "FirewallRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.FirewallRule, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.FirewallRule, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "EndIpAddress": "System.String",
         "Id": "System.String",
@@ -8928,7 +9185,7 @@
     "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.FirewallState]": {
       "Namespace": "System",
       "Name": "Nullable",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.FirewallState, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.FirewallState, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -8938,7 +9195,7 @@
     "Microsoft.Azure.Management.DataLake.Store.Models.FirewallState": {
       "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
       "Name": "FirewallState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.FirewallState, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.FirewallState, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8946,7 +9203,7 @@
     "Microsoft.Azure.Management.DataLake.Store.Models.EncryptionIdentity": {
       "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
       "Name": "EncryptionIdentity",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.EncryptionIdentity, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.EncryptionIdentity, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PrincipalId": "System.Nullable`1[System.Guid]",
         "TenantId": "System.Nullable`1[System.Guid]",
@@ -8976,7 +9233,7 @@
     "Microsoft.Azure.Commands.DataLakeStore.Models.PSDataLakeStoreAccountProperties": {
       "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
       "Name": "PSDataLakeStoreAccountProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.PSDataLakeStoreAccountProperties, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.PSDataLakeStoreAccountProperties, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "CreationTime": "System.Nullable`1[System.DateTime]",
         "DefaultGroup": "System.String",
@@ -8998,7 +9255,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreFirewallRule]": {
       "Namespace": "System.Collections.Generic",
       "Name": "IList",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreFirewallRule, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreFirewallRule, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -9008,7 +9265,7 @@
     "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.DataLakeStoreAccountStatus]": {
       "Namespace": "System",
       "Name": "Nullable",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.DataLakeStoreAccountStatus, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.DataLakeStoreAccountStatus, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -9018,7 +9275,7 @@
     "Microsoft.Azure.Management.DataLake.Store.Models.DataLakeStoreAccountStatus": {
       "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
       "Name": "DataLakeStoreAccountStatus",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.DataLakeStoreAccountStatus, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.DataLakeStoreAccountStatus, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -9026,7 +9283,7 @@
     "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.DataLakeStoreAccountState]": {
       "Namespace": "System",
       "Name": "Nullable",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.DataLakeStoreAccountState, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.DataLakeStoreAccountState, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -9036,7 +9293,7 @@
     "Microsoft.Azure.Management.DataLake.Store.Models.DataLakeStoreAccountState": {
       "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
       "Name": "DataLakeStoreAccountState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.DataLakeStoreAccountState, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.DataLakeStoreAccountState, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -9044,7 +9301,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreTrustedIdProvider]": {
       "Namespace": "System.Collections.Generic",
       "Name": "IList",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreTrustedIdProvider, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreTrustedIdProvider, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -9054,7 +9311,7 @@
     "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.TrustedIdProviderState]": {
       "Namespace": "System",
       "Name": "Nullable",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.TrustedIdProviderState, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.TrustedIdProviderState, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -9064,7 +9321,7 @@
     "Microsoft.Azure.Management.DataLake.Store.Models.TrustedIdProviderState": {
       "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
       "Name": "TrustedIdProviderState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.TrustedIdProviderState, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.TrustedIdProviderState, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -9083,7 +9340,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataLake.Store.Models.TrustedIdProvider]": {
       "Namespace": "System.Collections.Generic",
       "Name": "IList",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.DataLake.Store.Models.TrustedIdProvider, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.DataLake.Store.Models.TrustedIdProvider, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -9093,7 +9350,7 @@
     "Microsoft.Azure.Management.DataLake.Store.Models.TrustedIdProvider": {
       "Namespace": "Microsoft.Azure.Management.DataLake.Store.Models",
       "Name": "TrustedIdProvider",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.TrustedIdProvider, Microsoft.Azure.Management.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Store.Models.TrustedIdProvider, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Id": "System.String",
         "IdProvider": "System.String",
@@ -9106,7 +9363,7 @@
     "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance": {
       "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
       "Name": "DataLakeStorePathInstance",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=3.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance, Microsoft.Azure.Commands.DataLakeStore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "OriginalPath": "System.String",
         "TransformedPath": "System.String"

@@ -90,7 +90,7 @@ Param($rgName, $location, $tagName, $tagValue)
     Assert-AreEqual $false $actual.EnabledForDeployment
 
     # Default Access Policy
-    $upn = [Microsoft.WindowsAzure.Commands.Common.AzureRMProfileProvider]::Instance.Profile.Context.Account.Id
+    $upn = [Microsoft.WindowsAzure.Commands.Common.AzureRMProfileProvider]::Instance.Profile.DefaultContext.Account.Id
     $objectId = $global:objectId
     $expectedPermsToKeys = @("get",
             "create",
@@ -408,7 +408,7 @@ function Test-SetRemoveAccessPolicyByUPN
     Param($existingVaultName, $rgName, $upn)
 
     $PermToKeys = @("encrypt", "decrypt", "unwrapKey", "wrapKey", "verify", "sign", "get", "list", "update", "create", "import", "delete", "backup", "restore")
-    $PermToSecrets = @("get", "list", "set", "delete")
+    $PermToSecrets = @("get", "list", "set", "delete", "backup", "restore")
     $PermToCertificates = @("get", "list", "create", "delete")
     
     $vault = Set-AzureRmKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn -PermissionsToKeys $PermToKeys -PermissionsToSecrets $PermToSecrets -PermissionsToCertificates $PermToCertificates -PassThru
@@ -566,7 +566,7 @@ function Test-ModifyAccessPolicy
 
     # Add some perms now
     $PermToKeys = @("encrypt", "decrypt", "unwrapKey", "wrapKey", "verify", "sign", "get", "list", "update", "create", "import", "delete", "backup", "restore")
-    $PermToSecrets = @("get", "list", "set", "delete")
+    $PermToSecrets = @("get", "list", "set", "delete", "backup", "restore")
     $PermToCertificates = @("list", "delete")
     $vault = Set-AzureRmKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PermissionsToKeys $PermToKeys -PermissionsToSecrets $PermToSecrets -PermissionsToCertificates $PermToCertificates -PassThru
 

@@ -12,8 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Azure.Commands.AnalysisServices.Properties;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Analysis;
 using Microsoft.Azure.Management.Analysis.Models;
@@ -22,7 +23,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
-using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Models
 {
@@ -32,15 +32,15 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
         private readonly Guid _subscriptionId;
         private readonly string _currentUser;
 
-        public AnalysisServicesClient(AzureContext context)
+        public AnalysisServicesClient(IAzureContext context)
         {
             if (context == null)
             {
                 throw new ApplicationException(Resources.InvalidDefaultSubscription);
             }
 
-            _subscriptionId = context.Subscription.Id;
-            _client = AzureSession.ClientFactory.CreateArmClient<AnalysisServicesManagementClient>(
+            _subscriptionId = context.Subscription.GetId();
+            _client = AzureSession.Instance.ClientFactory.CreateArmClient<AnalysisServicesManagementClient>(
                 context, 
                 AzureEnvironment.Endpoint.ResourceManager);
             _currentUser = context.Account.Id;

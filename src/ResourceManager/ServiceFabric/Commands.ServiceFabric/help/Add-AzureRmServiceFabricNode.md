@@ -7,46 +7,31 @@ schema: 2.0.0
 # Add-AzureRmServiceFabricNode
 
 ## SYNOPSIS
-Add nodes to the specific node type in the cluster
+Add nodes to the specific node type in the cluster.
 
 ## SYNTAX
 
 ```
-Add-AzureRmServiceFabricNode [-ResourceGroupName] <String> [-Name] <String> -NodeType <String> -Number <Int32>
+Add-AzureRmServiceFabricNode [-ResourceGroupName] <String> [-Name] <String> -NodeType <String> -NumberOfNodesToAdd <Int32>
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-User **Add-AzureRmServiceFabricNode** to add nodes to the specific node type. You just need to specify the number of nodes you want to add to a Node Type.
+Use **Add-AzureRmServiceFabricNode** to add nodes to the specific node type. You just need to specify the number of nodes you want to add to a node type.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS c:> Add-AzureRmServiceFabricNode -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -Number 2 -NodeTypeName 'nt1''
+PS c:> Add-AzureRmServiceFabricNode -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NumberOfNodesToAdd 2 -NodeTypeName 'nt1'
 ```
 
-This command will add 2 nodes to the node type n1
+This command will add 2 nodes to the node type 'n1'.
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
-Specify the name of the cluster
+Specify the name of the cluster.
 
 ```yaml
 Type: String
@@ -61,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -NodeType
-Node type name
+Node type name.
 
 ```yaml
 Type: String
@@ -75,13 +60,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Number
-VM instance number
+### -NumberOfNodesToAdd
+VM instance number.
 
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: NumberOfNodesToAdd
+Aliases: Number
 
 Required: True
 Position: Named
@@ -102,6 +87,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -134,4 +134,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
+[Remove-AzureRmServiceFabricNode](./Remove-AzureRmServiceFabricNode.md)

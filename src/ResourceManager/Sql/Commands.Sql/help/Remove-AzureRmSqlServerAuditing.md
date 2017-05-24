@@ -131,6 +131,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Set-AzureRmSqlDatabaseAuditingPolicy](./Set-AzureRmSqlDatabaseAuditingPolicy.md)
 
-[Azure SQL Database Cmdlets](./AzureRM.Sql.md)
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 
 

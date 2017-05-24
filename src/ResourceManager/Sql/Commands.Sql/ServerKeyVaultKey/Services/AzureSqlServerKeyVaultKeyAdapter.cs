@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model;
 using Microsoft.Azure.Commands.Sql.Services;
@@ -35,13 +36,13 @@ namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Services
         /// <summary>
         /// Gets or sets the Azure context
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Constructs a Server Key adapter
         /// </summary>
         /// <param name="context">The current AzureContext</param>
-        public AzureSqlServerKeyVaultKeyAdapter(AzureContext context)
+        public AzureSqlServerKeyVaultKeyAdapter(IAzureContext context)
         {
             Context = context;
             Communicator = new AzureSqlServerKeyVaultKeyCommunicator(Context);

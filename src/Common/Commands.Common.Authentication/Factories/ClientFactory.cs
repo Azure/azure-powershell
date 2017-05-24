@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using System;
@@ -45,14 +46,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             _handlersLock = new ReaderWriterLockSlim();
         }
 
-        public virtual TClient CreateArmClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint) where TClient : Microsoft.Rest.ServiceClient<TClient>
+        public virtual TClient CreateArmClient<TClient>(IAzureContext context, string endpoint) where TClient : Microsoft.Rest.ServiceClient<TClient>
         {
             if (context == null)
             {
                 throw new ApplicationException(Resources.NoSubscriptionInContext);
             }
 
-            var creds = AzureSession.AuthenticationFactory.GetServiceClientCredentials(context, endpoint);
+            var creds = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, endpoint);
             var newHandlers = GetCustomHandlers();
             TClient client = (newHandlers == null || newHandlers.Length == 0)
                 ? CreateCustomArmClient<TClient>(context.Environment.GetEndpointAsUri(endpoint), creds)
@@ -92,7 +93,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             return client;
         }
 
-        public virtual TClient CreateClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
+        public virtual TClient CreateClient<TClient>(IAzureContext context, string endpoint) where TClient : ServiceClient<TClient>
         {
             if (context == null)
             {
@@ -102,7 +103,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 throw new ApplicationException(exceptionMessage);
             }
 
-            SubscriptionCloudCredentials creds = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context, endpoint);
+            SubscriptionCloudCredentials creds = AzureSession.Instance.AuthenticationFactory.GetSubscriptionCloudCredentials(context, endpoint);
             TClient client = CreateCustomClient<TClient>(creds, context.Environment.GetEndpointAsUri(endpoint));
             foreach (DelegatingHandler handler in GetCustomHandlers())
             {
@@ -112,12 +113,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             return client;
         }
 
-        public virtual TClient CreateClient<TClient>(AzureSMProfile profile, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
+        public virtual TClient CreateClient<TClient>(IAzureContextContainer container, string endpoint) where TClient : ServiceClient<TClient>
         {
-            TClient client = CreateClient<TClient>(profile.Context, endpoint);
+            TClient client = CreateClient<TClient>(container.DefaultContext, endpoint);
             foreach (IClientAction action in GetActions())
             {
-                action.Apply<TClient>(client, profile, endpoint);
+                action.Apply<TClient>(client, container, endpoint);
             }
 
             return client;
@@ -137,26 +138,28 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         /// or
         /// environment
         /// </exception>
-        public virtual TClient CreateClient<TClient>(AzureSMProfile profile, AzureSubscription subscription, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
+        public virtual TClient CreateClient<TClient>(IAzureContextContainer profile, IAzureSubscription subscription, string endpoint) where TClient : ServiceClient<TClient>
         {
             if (subscription == null)
             {
                 throw new ApplicationException(Resources.InvalidDefaultSubscription);
             }
 
-            if (!profile.Accounts.ContainsKey(subscription.Account))
+            var account = profile.Accounts.FirstOrDefault((a) => string.Equals(a.Id, (subscription.GetAccount()), StringComparison.OrdinalIgnoreCase));
+
+            if (null == account)
             {
-                throw new ArgumentException(string.Format("Account with name '{0}' does not exist.", subscription.Account), "accountName");
+                throw new ArgumentException(string.Format("Account with name '{0}' does not exist.", subscription.GetAccount()), "accountName");
             }
 
-            if (!profile.Environments.ContainsKey(subscription.Environment))
+            var environment = profile.Environments.FirstOrDefault((e) => string.Equals(e.Name, subscription.GetEnvironment(), StringComparison.OrdinalIgnoreCase));
+
+            if (null == environment)
             {
-                throw new ArgumentException(string.Format(Resources.EnvironmentNotFound, subscription.Environment));
+                throw new ArgumentException(string.Format(Resources.EnvironmentNotFound, subscription.GetEnvironment()));
             }
 
-            AzureContext context = new AzureContext(subscription,
-                profile.Accounts[subscription.Account],
-                profile.Environments[subscription.Environment]);
+            AzureContext context = new AzureContext(subscription, account, environment);
 
             TClient client = CreateClient<TClient>(context, endpoint);
 
