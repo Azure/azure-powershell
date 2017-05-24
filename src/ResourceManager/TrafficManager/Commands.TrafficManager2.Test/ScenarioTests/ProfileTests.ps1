@@ -615,3 +615,44 @@ function Test-ProfileMonitorProtocol
         TestCleanup-RemoveResourceGroup $resourceGroup.ResourceGroupName
     }
 }
+
+<#
+.SYNOPSIS
+Create profile specifying optional Monitor settings
+#>
+function Test-ProfileMonitorParameterAliases
+{
+	$profileName = getAssetName
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$relativeName = getAssetName
+	
+	try
+	{
+		$createdProfile = New-AzureRmTrafficManagerProfile -ProtocolForMonitor "HTTPS" -PortForMonitor 85 -PathForMonitor "/test" -IntervalInSecondsForMonitor 10 -TimeoutInSecondsForMonitor 9 -ToleratedNumberOfFailuresForMonitor 5 -Ttl 1 -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -TrafficRoutingMethod "Weighted"  
+
+		Assert-NotNull $createdProfile
+		Assert-AreEqual "HTTPS" $createdProfile.MonitorProtocol
+		Assert-AreEqual "85" $createdProfile.MonitorPort
+		Assert-AreEqual "/test" $createdProfile.MonitorPath
+		Assert-AreEqual 10 $createdProfile.MonitorIntervalInSeconds 
+		Assert-AreEqual 9 $createdProfile.MonitorTimeoutInSeconds 
+		Assert-AreEqual 5 $createdProfile.MonitorToleratedNumberOfFailures
+		Assert-AreEqual 1 $createdProfile.Ttl
+
+		$retrievedProfile = Get-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+
+		Assert-NotNull $retrievedProfile
+		Assert-AreEqual "HTTPS" $retrievedProfile.MonitorProtocol
+		Assert-AreEqual "85" $retrievedProfile.MonitorPort
+		Assert-AreEqual "/test" $retrievedProfile.MonitorPath
+		Assert-AreEqual 10 $retrievedProfile.MonitorIntervalInSeconds 
+		Assert-AreEqual 9 $retrievedProfile.MonitorTimeoutInSeconds 
+		Assert-AreEqual 5 $retrievedProfile.MonitorToleratedNumberOfFailures
+		Assert-AreEqual 1 $retrievedProfile.Ttl
+	}
+    finally
+    {
+        # Cleanup
+        TestCleanup-RemoveResourceGroup $resourceGroup.ResourceGroupName
+    }
+}
