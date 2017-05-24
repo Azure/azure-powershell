@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.IotHub;
 
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             {
                 if (this.iothubClient == null)
                 {
-                    this.iothubClient = AzureSession.ClientFactory.CreateArmClient<IotHubClient>(DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+                    this.iothubClient = AzureSession.Instance.ClientFactory.CreateArmClient<IotHubClient>(DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
                 }
 
                 return this.iothubClient;
