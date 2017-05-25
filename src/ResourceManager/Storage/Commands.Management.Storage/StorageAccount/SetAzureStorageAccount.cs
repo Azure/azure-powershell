@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using StorageModels = Microsoft.Azure.Management.Storage.Models;
+using Microsoft.Azure.Commands.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
@@ -123,6 +124,39 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         private bool? enableHttpsTrafficOnly = null;
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipeline = true,
+            HelpMessage = "Storage Account Encryption KeySource.")]
+        public PSKeySource KeySource
+        {
+            get {
+                //The get function will be call in pipeline KeySource Parameter, so should not throw exception when keySource is null
+                return (keySource == null? new PSKeySource() : keySource.Value);
+            }
+            set {
+                keySource = value;
+            }
+        }
+        private PSKeySource? keySource = null;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Storage Account Identity Type.")]
+        public IdentityType IdentityType
+        {
+            get
+            {
+                return identityType.Value;
+            }
+            set
+            {
+                identityType = value;
+            }
+        }
+       
+        private IdentityType? identityType = null;
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -156,9 +190,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         throw new System.ArgumentException(string.Format("UseSubDomain must be set together with CustomDomainName."));
                     }
 
-                    if (this.EnableEncryptionService != null || this.DisableEncryptionService != null)
+                    if (this.EnableEncryptionService != null || this.DisableEncryptionService != null || keySource != null)
                     {
-                        updateParameters.Encryption = ParseEncryption(EnableEncryptionService, DisableEncryptionService);
+                        updateParameters.Encryption = ParseEncryption(EnableEncryptionService, DisableEncryptionService, keySource);
                     }
 
                     if (this.AccessTier != null)
@@ -168,6 +202,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     if(enableHttpsTrafficOnly != null)
                     {
                         updateParameters.EnableHttpsTrafficOnly = enableHttpsTrafficOnly;
+                    }
+
+                    if (identityType != null)
+                    {
+                        updateParameters.Identity = new Identity(type: identityType);
                     }
 
                     var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(

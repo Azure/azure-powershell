@@ -78,7 +78,8 @@ CmdletsToExport = 'Get-AzureRmStorageAccount', 'Get-AzureRmStorageAccountKey',
                'Remove-AzureRmStorageAccount', 'Set-AzureRmCurrentStorageAccount', 
                'Set-AzureRmStorageAccount', 
                'Get-AzureRmStorageAccountNameAvailability', 
-               'Get-AzureRmStorageUsage'
+               'Get-AzureRmStorageUsage',
+               'New-AzureRmStorageAccountEncryptionKeySource'
 
 # Variables to export from this module
 # VariablesToExport = @()

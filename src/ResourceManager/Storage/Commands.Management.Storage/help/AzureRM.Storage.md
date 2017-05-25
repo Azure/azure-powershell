@@ -26,6 +26,9 @@ Gets the Storage resource usage of the current subscription.
 ### [New-AzureRmStorageAccount](New-AzureRmStorageAccount.md)
 Creates a Storage account.
 
+### [New-AzureRmStorageAccountEncryptionKeySource](New-AzureRmStorageAccountEncryptionKeySource.md)
+Create PSKeySource Object which will be used in Set-AzureRmStorageAccount as Encryption KeySource
+
 ### [New-AzureRmStorageAccountKey](New-AzureRmStorageAccountKey.md)
 Regenerates a storage key for an Azure Storage account.
 
