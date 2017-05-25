@@ -43,10 +43,4 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
             WriteObject(peer);
         }
     }
-
-    private enum LegacyMode
-    {
-        False = 0,
-        True = 1
-    }
 }

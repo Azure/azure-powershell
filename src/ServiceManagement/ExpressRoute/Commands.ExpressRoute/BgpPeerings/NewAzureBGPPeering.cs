@@ -32,8 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Customer AS number")]
         public UInt32 CustomerAsn { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Peer Asn")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Peer Asn")]
         public UInt32 PeerAsn { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Legacy Mode")]
