@@ -60,5 +60,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzureRmADServicePrincipal]()
 
-[Get-AzureRmADGroupMemberMember]()
-

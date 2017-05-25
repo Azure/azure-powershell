@@ -14,8 +14,8 @@ Modifies logging for Azure Storage services.
 
 ```
 Set-AzureStorageServiceLoggingProperty [-ServiceType] <StorageServiceType> [-Version <Double>]
- [-RetentionDays <Int32>] [-LoggingOperations <LoggingOperations[]>] [-PassThru]
- [-Context <AzureStorageContext>] [<CommonParameters>]
+ [-RetentionDays <Int32>] [-LoggingOperations <LoggingOperations[]>] [-PassThru] [-Context <IStorageContext>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,7 +39,7 @@ Specifies an Azure storage context.
 To obtain a storage context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: AzureStorageContext
+Type: IStorageContext
 Parameter Sets: (All)
 Aliases: 
 
