@@ -54,7 +54,10 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
         {
             Debug.Assert(context != null);
 
-            SubscriptionCloudCredentials creds = AzureSession.Instance.AuthenticationFactory.GetSubscriptionCloudCredentials(context);
+            SubscriptionCloudCredentials creds = AzureSession.Instance.AuthenticationFactory
+                        .GetSubscriptionCloudCredentials(
+                            context,
+                            AzureEnvironment.Endpoint.ResourceManager);
             TClient client = CreateCustomClient<TClient>(creds, context.Environment.GetEndpointAsUri(endpoint));
 
             return client;

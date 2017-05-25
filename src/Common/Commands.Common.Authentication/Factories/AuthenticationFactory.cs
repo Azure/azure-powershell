@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 #if !NETSTANDARD
                                 ShowDialog.Never,
 #else
-                                (s) => { },
+                                null,
 #endif
                                 tokenCache,
                                 context.Environment.GetTokenAudience(targetEndpoint));
