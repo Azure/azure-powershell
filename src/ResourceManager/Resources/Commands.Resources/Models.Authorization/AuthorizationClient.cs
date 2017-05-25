@@ -203,11 +203,11 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                         throw new InvalidOperationException(ProjectResources.ExpandGroupsNotSupported);
                     }
 
-                    parameters.AssignedToPrincipalId = Guid.Parse(adObject.Id);
+                    parameters.AssignedToPrincipalId = adObject.Id;
                 }
                 else
                 {
-                    parameters.PrincipalId = string.IsNullOrEmpty(options.ADObjectFilter.Id) ? Guid.Parse(adObject.Id) : Guid.Parse(options.ADObjectFilter.Id);
+                    parameters.PrincipalId = string.IsNullOrEmpty(options.ADObjectFilter.Id) ? adObject.Id : options.ADObjectFilter.Id;
                 }
 
                 var tempResult = AuthorizationManagementClient.RoleAssignments.List(parameters);
