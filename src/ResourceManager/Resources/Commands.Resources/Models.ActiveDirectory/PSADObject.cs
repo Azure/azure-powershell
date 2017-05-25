@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
     {
         public string DisplayName { get; set; }
 
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         public string Type { get; set; }
     }

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
 
         public Guid ApplicationId { get; set; }
 
-        public Guid ApplicationObjectId { get; set; }
+        public string ApplicationObjectId { get; set; }
 
         public bool AvailableToOtherTenants { get; set; }
 
