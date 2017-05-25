@@ -1,0 +1,2212 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Azure.Management.Authorization</name>
+    </assembly>
+    <members>
+        <member name="P:Microsoft.Azure.Management.Authorization.AuthorizationManagementClient.ApiVersion">
+            <summary>
+            Gets the API version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.AuthorizationManagementClient.BaseUri">
+            <summary>
+            Gets the URI used as the base for all cloud service requests.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.AuthorizationManagementClient.Credentials">
+            <summary>
+            Gets subscription credentials which uniquely identify Microsoft
+            Azure subscription. The subscription ID forms part of the URI for
+            every service call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.AuthorizationManagementClient.LongRunningOperationInitialTimeout">
+            <summary>
+            Gets or sets the initial timeout for Long Running Operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.AuthorizationManagementClient.LongRunningOperationRetryTimeout">
+            <summary>
+            Gets or sets the retry timeout for Long Running Operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.AuthorizationManagementClient.ClassicAdministrators">
+            <summary>
+            Get classic administrator details  (see http://TBD for more
+            information)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.AuthorizationManagementClient.Permissions">
+            <summary>
+            Get resource or resource group permissions  (see http://TBD for
+            more information)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.AuthorizationManagementClient.RoleAssignments">
+            <summary>
+            TBD  (see http://TBD for more information)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.AuthorizationManagementClient.RoleDefinitions">
+            <summary>
+            TBD  (see http://TBD for more information)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.AuthorizationManagementClient.#ctor">
+            <summary>
+            Initializes a new instance of the AuthorizationManagementClient
+            class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.AuthorizationManagementClient.#ctor(Microsoft.Azure.SubscriptionCloudCredentials,System.Uri)">
+            <summary>
+            Initializes a new instance of the AuthorizationManagementClient
+            class.
+            </summary>
+            <param name='credentials'>
+            Required. Gets subscription credentials which uniquely identify
+            Microsoft Azure subscription. The subscription ID forms part of
+            the URI for every service call.
+            </param>
+            <param name='baseUri'>
+            Optional. Gets the URI used as the base for all cloud service
+            requests.
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.AuthorizationManagementClient.#ctor(Microsoft.Azure.SubscriptionCloudCredentials)">
+            <summary>
+            Initializes a new instance of the AuthorizationManagementClient
+            class.
+            </summary>
+            <param name='credentials'>
+            Required. Gets subscription credentials which uniquely identify
+            Microsoft Azure subscription. The subscription ID forms part of
+            the URI for every service call.
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.AuthorizationManagementClient.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the AuthorizationManagementClient
+            class.
+            </summary>
+            <param name='httpClient'>
+            The Http client
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.AuthorizationManagementClient.#ctor(Microsoft.Azure.SubscriptionCloudCredentials,System.Uri,System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the AuthorizationManagementClient
+            class.
+            </summary>
+            <param name='credentials'>
+            Required. Gets subscription credentials which uniquely identify
+            Microsoft Azure subscription. The subscription ID forms part of
+            the URI for every service call.
+            </param>
+            <param name='baseUri'>
+            Optional. Gets the URI used as the base for all cloud service
+            requests.
+            </param>
+            <param name='httpClient'>
+            The Http client
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.AuthorizationManagementClient.#ctor(Microsoft.Azure.SubscriptionCloudCredentials,System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the AuthorizationManagementClient
+            class.
+            </summary>
+            <param name='credentials'>
+            Required. Gets subscription credentials which uniquely identify
+            Microsoft Azure subscription. The subscription ID forms part of
+            the URI for every service call.
+            </param>
+            <param name='httpClient'>
+            The Http client
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.AuthorizationManagementClient.Clone(Hyak.Common.ServiceClient{Microsoft.Azure.Management.Authorization.AuthorizationManagementClient})">
+            <summary>
+            Clones properties from current instance to another
+            AuthorizationManagementClient instance
+            </summary>
+            <param name='client'>
+            Instance of AuthorizationManagementClient to clone to
+            </param>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Authorization.ClassicAdministratorOperations">
+            <summary>
+            Get classic administrator details  (see http://TBD for more information)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.ClassicAdministratorOperations.#ctor(Microsoft.Azure.Management.Authorization.AuthorizationManagementClient)">
+            <summary>
+            Initializes a new instance of the ClassicAdministratorOperations
+            class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.ClassicAdministratorOperations.Client">
+            <summary>
+            Gets a reference to the
+            Microsoft.Azure.Management.Authorization.AuthorizationManagementClient.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.ClassicAdministratorOperations.ListAsync(System.Threading.CancellationToken)">
+            <summary>
+            Gets a list of classic administrators for the subscription.
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            ClassicAdministrator list result information.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.ClassicAdministratorOperationsExtensions.List(Microsoft.Azure.Management.Authorization.IClassicAdministratorOperations)">
+            <summary>
+            Gets a list of classic administrators for the subscription.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IClassicAdministratorOperations.
+            </param>
+            <returns>
+            ClassicAdministrator list result information.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.ClassicAdministratorOperationsExtensions.ListAsync(Microsoft.Azure.Management.Authorization.IClassicAdministratorOperations)">
+            <summary>
+            Gets a list of classic administrators for the subscription.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IClassicAdministratorOperations.
+            </param>
+            <returns>
+            ClassicAdministrator list result information.
+            </returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.IAuthorizationManagementClient.ApiVersion">
+            <summary>
+            Gets the API version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.IAuthorizationManagementClient.BaseUri">
+            <summary>
+            Gets the URI used as the base for all cloud service requests.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.IAuthorizationManagementClient.Credentials">
+            <summary>
+            Gets subscription credentials which uniquely identify Microsoft
+            Azure subscription. The subscription ID forms part of the URI for
+            every service call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.IAuthorizationManagementClient.LongRunningOperationInitialTimeout">
+            <summary>
+            Gets or sets the initial timeout for Long Running Operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.IAuthorizationManagementClient.LongRunningOperationRetryTimeout">
+            <summary>
+            Gets or sets the retry timeout for Long Running Operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.IAuthorizationManagementClient.ClassicAdministrators">
+            <summary>
+            Get classic administrator details  (see http://TBD for more
+            information)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.IAuthorizationManagementClient.Permissions">
+            <summary>
+            Get resource or resource group permissions  (see http://TBD for
+            more information)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.IAuthorizationManagementClient.RoleAssignments">
+            <summary>
+            TBD  (see http://TBD for more information)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.IAuthorizationManagementClient.RoleDefinitions">
+            <summary>
+            TBD  (see http://TBD for more information)
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Authorization.IClassicAdministratorOperations">
+            <summary>
+            Get classic administrator details  (see http://TBD for more information)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.IClassicAdministratorOperations.ListAsync(System.Threading.CancellationToken)">
+            <summary>
+            Gets a list of classic administrators for the subscription.
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            ClassicAdministrator list result information.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Authorization.IPermissionOperations">
+            <summary>
+            Get resource or resource group permissions  (see http://TBD for more
+            information)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.IPermissionOperations.ListForResourceAsync(System.String,Microsoft.Azure.ResourceIdentity,System.Threading.CancellationToken)">
+            <summary>
+            Gets a resource permissions.
+            </summary>
+            <param name='resourceGroupName'>
+            The name of the resource group. The name is case insensitive.
+            </param>
+            <param name='identity'>
+            Resource
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Permissions information.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.IPermissionOperations.ListForResourceGroupAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets a resource group permissions.
+            </summary>
+            <param name='resourceGroupName'>
+            Name of the resource group to get the permissions for.The name is
+            case insensitive.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Permissions information.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations">
+            <summary>
+            TBD  (see http://TBD for more information)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.CreateAsync(System.String,System.Guid,Microsoft.Azure.Management.Authorization.Models.RoleAssignmentCreateParameters,System.Threading.CancellationToken)">
+            <summary>
+            Create role assignment.
+            </summary>
+            <param name='scope'>
+            Scope.
+            </param>
+            <param name='roleAssignmentName'>
+            Role assignment name.
+            </param>
+            <param name='parameters'>
+            Role assignment.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role assignments creation results
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.CreateByIdAsync(System.String,Microsoft.Azure.Management.Authorization.Models.RoleAssignmentCreateParameters,System.Threading.CancellationToken)">
+            <summary>
+            Create role assignment by Id.
+            </summary>
+            <param name='roleAssignmentId'>
+            Role assignment Id
+            </param>
+            <param name='parameters'>
+            Role assignment.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role assignments creation results
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.DeleteAsync(System.String,System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Delete role assignment.
+            </summary>
+            <param name='scope'>
+            Scope.
+            </param>
+            <param name='roleAssignmentName'>
+            Role assignment name.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role assignments delete result
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.DeleteByIdAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Delete role assignment.
+            </summary>
+            <param name='roleAssignmentId'>
+            Role assignment Id
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role assignments delete result
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.GetAsync(System.String,System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Get single role assignment.
+            </summary>
+            <param name='scope'>
+            Scope.
+            </param>
+            <param name='roleAssignmentName'>
+            Role assignment name.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role assignment get operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.GetByIdAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get single role assignment.
+            </summary>
+            <param name='roleAssignmentId'>
+            Role assignment Id
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role assignment get operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.ListAsync(Microsoft.Azure.Management.Authorization.ListAssignmentsFilterParameters,System.Threading.CancellationToken)">
+            <summary>
+            Gets role assignments of the subscription.
+            </summary>
+            <param name='parameters'>
+            List operation filters. If null will return all role assignments
+            at, above or below the subscription.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role assignment list operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.ListForResourceAsync(System.String,Microsoft.Azure.ResourceIdentity,Microsoft.Azure.Management.Authorization.ListAssignmentsFilterParameters,System.Threading.CancellationToken)">
+            <summary>
+            Gets role assignments of the resource.
+            </summary>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='identity'>
+            Resource identity.
+            </param>
+            <param name='parameters'>
+            List operation filters. If null will return all role assignments
+            at, above or below the resource.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role assignment list operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.ListForResourceGroupAsync(System.String,Microsoft.Azure.Management.Authorization.ListAssignmentsFilterParameters,System.Threading.CancellationToken)">
+            <summary>
+            Gets role assignments of the resource group.
+            </summary>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='parameters'>
+            List operation filters. If null will return all role assignments
+            at, above or below the resource group.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role assignment list operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.ListForResourceGroupNextAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets role assignments of the resource group.
+            </summary>
+            <param name='nextLink'>
+            NextLink from the previous successful call to List operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role assignment list operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.ListForResourceNextAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets role assignments of the resource.
+            </summary>
+            <param name='nextLink'>
+            NextLink from the previous successful call to List operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role assignment list operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.ListForScopeAsync(System.String,Microsoft.Azure.Management.Authorization.ListAssignmentsFilterParameters,System.Threading.CancellationToken)">
+            <summary>
+            Gets role assignments of the scope.
+            </summary>
+            <param name='scope'>
+            Scope.
+            </param>
+            <param name='parameters'>
+            List operation filters. If null will return all role assignments
+            at, above or below the subscription.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role assignment list operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.ListForScopeNextAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets role assignments of the scope.
+            </summary>
+            <param name='nextLink'>
+            NextLink from the previous successful call to List operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role assignment list operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.ListNextAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets role assignments of the subscription.
+            </summary>
+            <param name='nextLink'>
+            NextLink from the previous successful call to List operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role assignment list operation result.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Authorization.IRoleDefinitionOperations">
+            <summary>
+            TBD  (see http://TBD for more information)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.IRoleDefinitionOperations.CreateOrUpdateAsync(System.Guid,System.String,Microsoft.Azure.Management.Authorization.Models.RoleDefinitionCreateOrUpdateParameters,System.Threading.CancellationToken)">
+            <summary>
+            Creates or updates a role definition.
+            </summary>
+            <param name='roleDefinitionId'>
+            Role definition id.
+            </param>
+            <param name='scope'>
+            Scope
+            </param>
+            <param name='parameters'>
+            Role definition.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role definition create or update operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.IRoleDefinitionOperations.DeleteAsync(System.Guid,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Deletes the role definition.
+            </summary>
+            <param name='roleDefinitionId'>
+            Role definition id.
+            </param>
+            <param name='scope'>
+            Scope
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role definition delete operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.IRoleDefinitionOperations.GetAsync(System.Guid,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get role definition by name (GUID).
+            </summary>
+            <param name='roleDefinitionId'>
+            Role definition Id
+            </param>
+            <param name='scope'>
+            Scope
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role definition get operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.IRoleDefinitionOperations.GetByIdAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get role definition by name (GUID).
+            </summary>
+            <param name='roleDefinitionId'>
+            Fully qualified role definition Id
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role definition get operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.IRoleDefinitionOperations.ListAsync(System.String,Microsoft.Azure.Management.Authorization.Models.ListDefinitionFilterParameters,System.Threading.CancellationToken)">
+            <summary>
+            Get all role definitions that are applicable at scope and above.
+            Use atScopeAndBelow filter to search below the given scope as well
+            </summary>
+            <param name='scope'>
+            Scope
+            </param>
+            <param name='parameters'>
+            List role definitions filters.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role definition list operation result.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Authorization.ListAssignmentsFilterParameters">
+            <summary>
+            List role assignments filter.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.ListAssignmentsFilterParameters.AssignedToPrincipalId">
+            <summary>
+            Optional. Returns role assignments directly assigned to the
+            principal as well as assignments to the principal's groups
+            (transitive). Currenly supported only for User Principals
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.ListAssignmentsFilterParameters.AtScope">
+            <summary>
+            Optional. This returns all role assignments at or above.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.ListAssignmentsFilterParameters.PrincipalId">
+            <summary>
+            Optional. Returns role assignment of the specific principal.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.ListAssignmentsFilterParameters.#ctor">
+            <summary>
+            Initializes a new instance of the ListAssignmentsFilterParameters
+            class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Authorization.Models.ClassicAdministrator">
+            <summary>
+            Classic Administrators
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.ClassicAdministrator.Id">
+            <summary>
+            Optional. Gets or sets the classic administrator id.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.ClassicAdministrator.Name">
+            <summary>
+            Optional. Gets or sets the classic administrator name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.ClassicAdministrator.Properties">
+            <summary>
+            Optional. Gets or sets the classic administrator properties.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.ClassicAdministrator.Type">
+            <summary>
+            Optional. Gets or sets the classic administrator type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.Models.ClassicAdministrator.#ctor">
+            <summary>
+            Initializes a new instance of the ClassicAdministrator class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Authorization.Models.ClassicAdministratorListResult">
+            <summary>
+            ClassicAdministrator list result information.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.ClassicAdministratorListResult.ClassicAdministrators">
+            <summary>
+            Optional. Gets or sets ClassicAdministrators.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.Models.ClassicAdministratorListResult.#ctor">
+            <summary>
+            Initializes a new instance of the ClassicAdministratorListResult
+            class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Authorization.Models.ClassicAdministratorProperties">
+            <summary>
+            Classic Administrator properties.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.ClassicAdministratorProperties.EmailAddress">
+            <summary>
+            Optional. Gets or sets the email address
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.ClassicAdministratorProperties.Role">
+            <summary>
+            Optional. Gets or sets the role
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.Models.ClassicAdministratorProperties.#ctor">
+            <summary>
+            Initializes a new instance of the ClassicAdministratorProperties
+            class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Authorization.Models.ListDefinitionFilterParameters">
+            <summary>
+            List role definitions filter.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.ListDefinitionFilterParameters.AtScopeAndBelow">
+            <summary>
+            Optional. If specified, also returns all role definition at scope
+            and below.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.ListDefinitionFilterParameters.RoleName">
+            <summary>
+            Optional. Returns role definitions with this name.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.Models.ListDefinitionFilterParameters.#ctor">
+            <summary>
+            Initializes a new instance of the ListDefinitionFilterParameters
+            class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Authorization.Models.Permission">
+            <summary>
+            Role definition permissions.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.Permission.Actions">
+            <summary>
+            Optional. Role definition allowed actions.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.Permission.NotActions">
+            <summary>
+            Optional. Role definition denied actions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.Models.Permission.#ctor">
+            <summary>
+            Initializes a new instance of the Permission class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Authorization.Models.PermissionGetResult">
+            <summary>
+            Permissions information.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.PermissionGetResult.Permissions">
+            <summary>
+            Optional. Gets or sets permissions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.Models.PermissionGetResult.#ctor">
+            <summary>
+            Initializes a new instance of the PermissionGetResult class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Authorization.Models.RoleAssignment">
+            <summary>
+            Role Assignments
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.RoleAssignment.Id">
+            <summary>
+            Optional. Gets or sets role assignment id.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.RoleAssignment.Name">
+            <summary>
+            Optional. Gets or sets role assignment name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.RoleAssignment.Properties">
+            <summary>
+            Optional. Gets or sets role assignment properties.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.RoleAssignment.Type">
+            <summary>
+            Optional. Gets or sets role assignment type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.Models.RoleAssignment.#ctor">
+            <summary>
+            Initializes a new instance of the RoleAssignment class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Authorization.Models.RoleAssignmentCreateParameters">
+            <summary>
+            Role assignment create parameters.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.RoleAssignmentCreateParameters.Properties">
+            <summary>
+            Optional. Gets or sets role assignment properties.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.Models.RoleAssignmentCreateParameters.#ctor">
+            <summary>
+            Initializes a new instance of the RoleAssignmentCreateParameters
+            class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Authorization.Models.RoleAssignmentCreateResult">
+            <summary>
+            Role assignments creation results
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.RoleAssignmentCreateResult.RoleAssignment">
+            <summary>
+            Optional. Role assignment
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.Models.RoleAssignmentCreateResult.#ctor">
+            <summary>
+            Initializes a new instance of the RoleAssignmentCreateResult class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Authorization.Models.RoleAssignmentDeleteResult">
+            <summary>
+            Role assignments delete result
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.RoleAssignmentDeleteResult.RoleAssignment">
+            <summary>
+            Optional. Role assignment
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.Models.RoleAssignmentDeleteResult.#ctor">
+            <summary>
+            Initializes a new instance of the RoleAssignmentDeleteResult class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Authorization.Models.RoleAssignmentGetResult">
+            <summary>
+            Role assignment get operation result.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.RoleAssignmentGetResult.RoleAssignment">
+            <summary>
+            Optional. Role assignment.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.Models.RoleAssignmentGetResult.#ctor">
+            <summary>
+            Initializes a new instance of the RoleAssignmentGetResult class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Authorization.Models.RoleAssignmentListResult">
+            <summary>
+            Role assignment list operation result.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.RoleAssignmentListResult.NextLink">
+            <summary>
+            Optional. Gets or sets the URL to get the next set of role
+            assignment results.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.RoleAssignmentListResult.RoleAssignments">
+            <summary>
+            Optional. Role assignment list.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.Models.RoleAssignmentListResult.#ctor">
+            <summary>
+            Initializes a new instance of the RoleAssignmentListResult class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Authorization.Models.RoleAssignmentProperties">
+            <summary>
+            Role assignment properties.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.RoleAssignmentProperties.PrincipalId">
+            <summary>
+            Optional. Gets or sets principal Id, change from GUID to string for the PAS Azure Stack.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.RoleAssignmentProperties.RoleDefinitionId">
+            <summary>
+            Optional. Gets or sets role definition id.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.Models.RoleAssignmentProperties.#ctor">
+            <summary>
+            Initializes a new instance of the RoleAssignmentProperties class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Authorization.Models.RoleAssignmentPropertiesWithScope">
+            <summary>
+            Role assignment properties with scope.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.RoleAssignmentPropertiesWithScope.Scope">
+            <summary>
+            Optional. Gets or sets role assignment scope.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.Models.RoleAssignmentPropertiesWithScope.#ctor">
+            <summary>
+            Initializes a new instance of the RoleAssignmentPropertiesWithScope
+            class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Authorization.Models.RoleDefinition">
+            <summary>
+            Role definition.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.RoleDefinition.Id">
+            <summary>
+            Optional. Gets or sets role definition id.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.RoleDefinition.Name">
+            <summary>
+            Optional. Gets or sets role definition name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.RoleDefinition.Properties">
+            <summary>
+            Optional. Gets or sets role definition properties.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.RoleDefinition.Type">
+            <summary>
+            Optional. Gets or sets role definition type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.Models.RoleDefinition.#ctor">
+            <summary>
+            Initializes a new instance of the RoleDefinition class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Authorization.Models.RoleDefinitionCreateOrUpdateParameters">
+            <summary>
+            Role definition create or update parameters.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.RoleDefinitionCreateOrUpdateParameters.RoleDefinition">
+            <summary>
+            Optional. Gets or sets role definition properties.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.Models.RoleDefinitionCreateOrUpdateParameters.#ctor">
+            <summary>
+            Initializes a new instance of the
+            RoleDefinitionCreateOrUpdateParameters class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Authorization.Models.RoleDefinitionCreateOrUpdateResult">
+            <summary>
+            Role definition create or update operation result.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.RoleDefinitionCreateOrUpdateResult.RoleDefinition">
+            <summary>
+            Optional. Gets or sets the role definition.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.Models.RoleDefinitionCreateOrUpdateResult.#ctor">
+            <summary>
+            Initializes a new instance of the
+            RoleDefinitionCreateOrUpdateResult class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Authorization.Models.RoleDefinitionDeleteResult">
+            <summary>
+            Role definition delete operation result.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.RoleDefinitionDeleteResult.RoleDefinition">
+            <summary>
+            Optional. Gets or sets the role definition.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.Models.RoleDefinitionDeleteResult.#ctor">
+            <summary>
+            Initializes a new instance of the RoleDefinitionDeleteResult class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Authorization.Models.RoleDefinitionGetResult">
+            <summary>
+            Role definition get operation result.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.RoleDefinitionGetResult.RoleDefinition">
+            <summary>
+            Optional. Role definition.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.Models.RoleDefinitionGetResult.#ctor">
+            <summary>
+            Initializes a new instance of the RoleDefinitionGetResult class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Authorization.Models.RoleDefinitionListResult">
+            <summary>
+            Role definition list operation result.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.RoleDefinitionListResult.RoleDefinitions">
+            <summary>
+            Optional. Role definition list.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.Models.RoleDefinitionListResult.#ctor">
+            <summary>
+            Initializes a new instance of the RoleDefinitionListResult class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Authorization.Models.RoleDefinitionProperties">
+            <summary>
+            Role definition properties.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.RoleDefinitionProperties.AssignableScopes">
+            <summary>
+            Optional. Gets or sets role definition assignable scopes.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.RoleDefinitionProperties.Description">
+            <summary>
+            Optional. Gets or sets role definition description.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.RoleDefinitionProperties.Permissions">
+            <summary>
+            Optional. Gets or sets role definition permissions.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.RoleDefinitionProperties.RoleName">
+            <summary>
+            Optional. Gets or sets role name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.Models.RoleDefinitionProperties.Type">
+            <summary>
+            Optional. Gets or sets role type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.Models.RoleDefinitionProperties.#ctor">
+            <summary>
+            Initializes a new instance of the RoleDefinitionProperties class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Authorization.PermissionOperations">
+            <summary>
+            Get resource or resource group permissions  (see http://TBD for more
+            information)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.PermissionOperations.#ctor(Microsoft.Azure.Management.Authorization.AuthorizationManagementClient)">
+            <summary>
+            Initializes a new instance of the PermissionOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.PermissionOperations.Client">
+            <summary>
+            Gets a reference to the
+            Microsoft.Azure.Management.Authorization.AuthorizationManagementClient.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.PermissionOperations.ListForResourceAsync(System.String,Microsoft.Azure.ResourceIdentity,System.Threading.CancellationToken)">
+            <summary>
+            Gets a resource permissions.
+            </summary>
+            <param name='resourceGroupName'>
+            Required. The name of the resource group. The name is case
+            insensitive.
+            </param>
+            <param name='identity'>
+            Required. Resource
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Permissions information.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.PermissionOperations.ListForResourceGroupAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets a resource group permissions.
+            </summary>
+            <param name='resourceGroupName'>
+            Required. Name of the resource group to get the permissions for.The
+            name is case insensitive.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Permissions information.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.PermissionOperationsExtensions.ListForResource(Microsoft.Azure.Management.Authorization.IPermissionOperations,System.String,Microsoft.Azure.ResourceIdentity)">
+            <summary>
+            Gets a resource permissions.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IPermissionOperations.
+            </param>
+            <param name='resourceGroupName'>
+            Required. The name of the resource group. The name is case
+            insensitive.
+            </param>
+            <param name='identity'>
+            Required. Resource
+            </param>
+            <returns>
+            Permissions information.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.PermissionOperationsExtensions.ListForResourceAsync(Microsoft.Azure.Management.Authorization.IPermissionOperations,System.String,Microsoft.Azure.ResourceIdentity)">
+            <summary>
+            Gets a resource permissions.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IPermissionOperations.
+            </param>
+            <param name='resourceGroupName'>
+            Required. The name of the resource group. The name is case
+            insensitive.
+            </param>
+            <param name='identity'>
+            Required. Resource
+            </param>
+            <returns>
+            Permissions information.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.PermissionOperationsExtensions.ListForResourceGroup(Microsoft.Azure.Management.Authorization.IPermissionOperations,System.String)">
+            <summary>
+            Gets a resource group permissions.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IPermissionOperations.
+            </param>
+            <param name='resourceGroupName'>
+            Required. Name of the resource group to get the permissions for.The
+            name is case insensitive.
+            </param>
+            <returns>
+            Permissions information.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.PermissionOperationsExtensions.ListForResourceGroupAsync(Microsoft.Azure.Management.Authorization.IPermissionOperations,System.String)">
+            <summary>
+            Gets a resource group permissions.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IPermissionOperations.
+            </param>
+            <param name='resourceGroupName'>
+            Required. Name of the resource group to get the permissions for.The
+            name is case insensitive.
+            </param>
+            <returns>
+            Permissions information.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Authorization.RoleAssignmentOperations">
+            <summary>
+            TBD  (see http://TBD for more information)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperations.#ctor(Microsoft.Azure.Management.Authorization.AuthorizationManagementClient)">
+            <summary>
+            Initializes a new instance of the RoleAssignmentOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.RoleAssignmentOperations.Client">
+            <summary>
+            Gets a reference to the
+            Microsoft.Azure.Management.Authorization.AuthorizationManagementClient.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperations.CreateAsync(System.String,System.Guid,Microsoft.Azure.Management.Authorization.Models.RoleAssignmentCreateParameters,System.Threading.CancellationToken)">
+            <summary>
+            Create role assignment.
+            </summary>
+            <param name='scope'>
+            Required. Scope.
+            </param>
+            <param name='roleAssignmentName'>
+            Required. Role assignment name.
+            </param>
+            <param name='parameters'>
+            Required. Role assignment.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role assignments creation results
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperations.CreateByIdAsync(System.String,Microsoft.Azure.Management.Authorization.Models.RoleAssignmentCreateParameters,System.Threading.CancellationToken)">
+            <summary>
+            Create role assignment by Id.
+            </summary>
+            <param name='roleAssignmentId'>
+            Required. Role assignment Id
+            </param>
+            <param name='parameters'>
+            Required. Role assignment.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role assignments creation results
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperations.DeleteAsync(System.String,System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Delete role assignment.
+            </summary>
+            <param name='scope'>
+            Required. Scope.
+            </param>
+            <param name='roleAssignmentName'>
+            Required. Role assignment name.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role assignments delete result
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperations.DeleteByIdAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Delete role assignment.
+            </summary>
+            <param name='roleAssignmentId'>
+            Required. Role assignment Id
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role assignments delete result
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperations.GetAsync(System.String,System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Get single role assignment.
+            </summary>
+            <param name='scope'>
+            Required. Scope.
+            </param>
+            <param name='roleAssignmentName'>
+            Required. Role assignment name.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role assignment get operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperations.GetByIdAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get single role assignment.
+            </summary>
+            <param name='roleAssignmentId'>
+            Required. Role assignment Id
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role assignment get operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperations.ListAsync(Microsoft.Azure.Management.Authorization.ListAssignmentsFilterParameters,System.Threading.CancellationToken)">
+            <summary>
+            Gets role assignments of the subscription.
+            </summary>
+            <param name='parameters'>
+            Optional. List operation filters. If null will return all role
+            assignments at, above or below the subscription.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role assignment list operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperations.ListForResourceAsync(System.String,Microsoft.Azure.ResourceIdentity,Microsoft.Azure.Management.Authorization.ListAssignmentsFilterParameters,System.Threading.CancellationToken)">
+            <summary>
+            Gets role assignments of the resource.
+            </summary>
+            <param name='resourceGroupName'>
+            Required. The name of the resource group.
+            </param>
+            <param name='identity'>
+            Required. Resource identity.
+            </param>
+            <param name='parameters'>
+            Optional. List operation filters. If null will return all role
+            assignments at, above or below the resource.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role assignment list operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperations.ListForResourceGroupAsync(System.String,Microsoft.Azure.Management.Authorization.ListAssignmentsFilterParameters,System.Threading.CancellationToken)">
+            <summary>
+            Gets role assignments of the resource group.
+            </summary>
+            <param name='resourceGroupName'>
+            Optional. Resource group name.
+            </param>
+            <param name='parameters'>
+            Optional. List operation filters. If null will return all role
+            assignments at, above or below the resource group.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role assignment list operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperations.ListForResourceGroupNextAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets role assignments of the resource group.
+            </summary>
+            <param name='nextLink'>
+            Required. NextLink from the previous successful call to List
+            operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role assignment list operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperations.ListForResourceNextAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets role assignments of the resource.
+            </summary>
+            <param name='nextLink'>
+            Required. NextLink from the previous successful call to List
+            operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role assignment list operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperations.ListForScopeAsync(System.String,Microsoft.Azure.Management.Authorization.ListAssignmentsFilterParameters,System.Threading.CancellationToken)">
+            <summary>
+            Gets role assignments of the scope.
+            </summary>
+            <param name='scope'>
+            Required. Scope.
+            </param>
+            <param name='parameters'>
+            Optional. List operation filters. If null will return all role
+            assignments at, above or below the subscription.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role assignment list operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperations.ListForScopeNextAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets role assignments of the scope.
+            </summary>
+            <param name='nextLink'>
+            Required. NextLink from the previous successful call to List
+            operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role assignment list operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperations.ListNextAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets role assignments of the subscription.
+            </summary>
+            <param name='nextLink'>
+            Required. NextLink from the previous successful call to List
+            operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role assignment list operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperationsExtensions.Create(Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations,System.String,System.Guid,Microsoft.Azure.Management.Authorization.Models.RoleAssignmentCreateParameters)">
+            <summary>
+            Create role assignment.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.
+            </param>
+            <param name='scope'>
+            Required. Scope.
+            </param>
+            <param name='roleAssignmentName'>
+            Required. Role assignment name.
+            </param>
+            <param name='parameters'>
+            Required. Role assignment.
+            </param>
+            <returns>
+            Role assignments creation results
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperationsExtensions.CreateAsync(Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations,System.String,System.Guid,Microsoft.Azure.Management.Authorization.Models.RoleAssignmentCreateParameters)">
+            <summary>
+            Create role assignment.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.
+            </param>
+            <param name='scope'>
+            Required. Scope.
+            </param>
+            <param name='roleAssignmentName'>
+            Required. Role assignment name.
+            </param>
+            <param name='parameters'>
+            Required. Role assignment.
+            </param>
+            <returns>
+            Role assignments creation results
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperationsExtensions.CreateById(Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations,System.String,Microsoft.Azure.Management.Authorization.Models.RoleAssignmentCreateParameters)">
+            <summary>
+            Create role assignment by Id.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.
+            </param>
+            <param name='roleAssignmentId'>
+            Required. Role assignment Id
+            </param>
+            <param name='parameters'>
+            Required. Role assignment.
+            </param>
+            <returns>
+            Role assignments creation results
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperationsExtensions.CreateByIdAsync(Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations,System.String,Microsoft.Azure.Management.Authorization.Models.RoleAssignmentCreateParameters)">
+            <summary>
+            Create role assignment by Id.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.
+            </param>
+            <param name='roleAssignmentId'>
+            Required. Role assignment Id
+            </param>
+            <param name='parameters'>
+            Required. Role assignment.
+            </param>
+            <returns>
+            Role assignments creation results
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperationsExtensions.Delete(Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations,System.String,System.Guid)">
+            <summary>
+            Delete role assignment.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.
+            </param>
+            <param name='scope'>
+            Required. Scope.
+            </param>
+            <param name='roleAssignmentName'>
+            Required. Role assignment name.
+            </param>
+            <returns>
+            Role assignments delete result
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperationsExtensions.DeleteAsync(Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations,System.String,System.Guid)">
+            <summary>
+            Delete role assignment.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.
+            </param>
+            <param name='scope'>
+            Required. Scope.
+            </param>
+            <param name='roleAssignmentName'>
+            Required. Role assignment name.
+            </param>
+            <returns>
+            Role assignments delete result
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperationsExtensions.DeleteById(Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations,System.String)">
+            <summary>
+            Delete role assignment.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.
+            </param>
+            <param name='roleAssignmentId'>
+            Required. Role assignment Id
+            </param>
+            <returns>
+            Role assignments delete result
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperationsExtensions.DeleteByIdAsync(Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations,System.String)">
+            <summary>
+            Delete role assignment.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.
+            </param>
+            <param name='roleAssignmentId'>
+            Required. Role assignment Id
+            </param>
+            <returns>
+            Role assignments delete result
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperationsExtensions.Get(Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations,System.String,System.Guid)">
+            <summary>
+            Get single role assignment.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.
+            </param>
+            <param name='scope'>
+            Required. Scope.
+            </param>
+            <param name='roleAssignmentName'>
+            Required. Role assignment name.
+            </param>
+            <returns>
+            Role assignment get operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperationsExtensions.GetAsync(Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations,System.String,System.Guid)">
+            <summary>
+            Get single role assignment.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.
+            </param>
+            <param name='scope'>
+            Required. Scope.
+            </param>
+            <param name='roleAssignmentName'>
+            Required. Role assignment name.
+            </param>
+            <returns>
+            Role assignment get operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperationsExtensions.GetById(Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations,System.String)">
+            <summary>
+            Get single role assignment.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.
+            </param>
+            <param name='roleAssignmentId'>
+            Required. Role assignment Id
+            </param>
+            <returns>
+            Role assignment get operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperationsExtensions.GetByIdAsync(Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations,System.String)">
+            <summary>
+            Get single role assignment.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.
+            </param>
+            <param name='roleAssignmentId'>
+            Required. Role assignment Id
+            </param>
+            <returns>
+            Role assignment get operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperationsExtensions.List(Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations,Microsoft.Azure.Management.Authorization.ListAssignmentsFilterParameters)">
+            <summary>
+            Gets role assignments of the subscription.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.
+            </param>
+            <param name='parameters'>
+            Optional. List operation filters. If null will return all role
+            assignments at, above or below the subscription.
+            </param>
+            <returns>
+            Role assignment list operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperationsExtensions.ListAsync(Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations,Microsoft.Azure.Management.Authorization.ListAssignmentsFilterParameters)">
+            <summary>
+            Gets role assignments of the subscription.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.
+            </param>
+            <param name='parameters'>
+            Optional. List operation filters. If null will return all role
+            assignments at, above or below the subscription.
+            </param>
+            <returns>
+            Role assignment list operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperationsExtensions.ListForResource(Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations,System.String,Microsoft.Azure.ResourceIdentity,Microsoft.Azure.Management.Authorization.ListAssignmentsFilterParameters)">
+            <summary>
+            Gets role assignments of the resource.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.
+            </param>
+            <param name='resourceGroupName'>
+            Required. The name of the resource group.
+            </param>
+            <param name='identity'>
+            Required. Resource identity.
+            </param>
+            <param name='parameters'>
+            Optional. List operation filters. If null will return all role
+            assignments at, above or below the resource.
+            </param>
+            <returns>
+            Role assignment list operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperationsExtensions.ListForResourceAsync(Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations,System.String,Microsoft.Azure.ResourceIdentity,Microsoft.Azure.Management.Authorization.ListAssignmentsFilterParameters)">
+            <summary>
+            Gets role assignments of the resource.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.
+            </param>
+            <param name='resourceGroupName'>
+            Required. The name of the resource group.
+            </param>
+            <param name='identity'>
+            Required. Resource identity.
+            </param>
+            <param name='parameters'>
+            Optional. List operation filters. If null will return all role
+            assignments at, above or below the resource.
+            </param>
+            <returns>
+            Role assignment list operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperationsExtensions.ListForResourceGroup(Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations,System.String,Microsoft.Azure.Management.Authorization.ListAssignmentsFilterParameters)">
+            <summary>
+            Gets role assignments of the resource group.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.
+            </param>
+            <param name='resourceGroupName'>
+            Optional. Resource group name.
+            </param>
+            <param name='parameters'>
+            Optional. List operation filters. If null will return all role
+            assignments at, above or below the resource group.
+            </param>
+            <returns>
+            Role assignment list operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperationsExtensions.ListForResourceGroupAsync(Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations,System.String,Microsoft.Azure.Management.Authorization.ListAssignmentsFilterParameters)">
+            <summary>
+            Gets role assignments of the resource group.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.
+            </param>
+            <param name='resourceGroupName'>
+            Optional. Resource group name.
+            </param>
+            <param name='parameters'>
+            Optional. List operation filters. If null will return all role
+            assignments at, above or below the resource group.
+            </param>
+            <returns>
+            Role assignment list operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperationsExtensions.ListForResourceGroupNext(Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations,System.String)">
+            <summary>
+            Gets role assignments of the resource group.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.
+            </param>
+            <param name='nextLink'>
+            Required. NextLink from the previous successful call to List
+            operation.
+            </param>
+            <returns>
+            Role assignment list operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperationsExtensions.ListForResourceGroupNextAsync(Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations,System.String)">
+            <summary>
+            Gets role assignments of the resource group.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.
+            </param>
+            <param name='nextLink'>
+            Required. NextLink from the previous successful call to List
+            operation.
+            </param>
+            <returns>
+            Role assignment list operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperationsExtensions.ListForResourceNext(Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations,System.String)">
+            <summary>
+            Gets role assignments of the resource.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.
+            </param>
+            <param name='nextLink'>
+            Required. NextLink from the previous successful call to List
+            operation.
+            </param>
+            <returns>
+            Role assignment list operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperationsExtensions.ListForResourceNextAsync(Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations,System.String)">
+            <summary>
+            Gets role assignments of the resource.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.
+            </param>
+            <param name='nextLink'>
+            Required. NextLink from the previous successful call to List
+            operation.
+            </param>
+            <returns>
+            Role assignment list operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperationsExtensions.ListForScope(Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations,System.String,Microsoft.Azure.Management.Authorization.ListAssignmentsFilterParameters)">
+            <summary>
+            Gets role assignments of the scope.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.
+            </param>
+            <param name='scope'>
+            Required. Scope.
+            </param>
+            <param name='parameters'>
+            Optional. List operation filters. If null will return all role
+            assignments at, above or below the subscription.
+            </param>
+            <returns>
+            Role assignment list operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperationsExtensions.ListForScopeAsync(Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations,System.String,Microsoft.Azure.Management.Authorization.ListAssignmentsFilterParameters)">
+            <summary>
+            Gets role assignments of the scope.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.
+            </param>
+            <param name='scope'>
+            Required. Scope.
+            </param>
+            <param name='parameters'>
+            Optional. List operation filters. If null will return all role
+            assignments at, above or below the subscription.
+            </param>
+            <returns>
+            Role assignment list operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperationsExtensions.ListForScopeNext(Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations,System.String)">
+            <summary>
+            Gets role assignments of the scope.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.
+            </param>
+            <param name='nextLink'>
+            Required. NextLink from the previous successful call to List
+            operation.
+            </param>
+            <returns>
+            Role assignment list operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperationsExtensions.ListForScopeNextAsync(Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations,System.String)">
+            <summary>
+            Gets role assignments of the scope.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.
+            </param>
+            <param name='nextLink'>
+            Required. NextLink from the previous successful call to List
+            operation.
+            </param>
+            <returns>
+            Role assignment list operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperationsExtensions.ListNext(Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations,System.String)">
+            <summary>
+            Gets role assignments of the subscription.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.
+            </param>
+            <param name='nextLink'>
+            Required. NextLink from the previous successful call to List
+            operation.
+            </param>
+            <returns>
+            Role assignment list operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleAssignmentOperationsExtensions.ListNextAsync(Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations,System.String)">
+            <summary>
+            Gets role assignments of the subscription.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleAssignmentOperations.
+            </param>
+            <param name='nextLink'>
+            Required. NextLink from the previous successful call to List
+            operation.
+            </param>
+            <returns>
+            Role assignment list operation result.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Authorization.RoleDefinitionOperations">
+            <summary>
+            TBD  (see http://TBD for more information)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleDefinitionOperations.#ctor(Microsoft.Azure.Management.Authorization.AuthorizationManagementClient)">
+            <summary>
+            Initializes a new instance of the RoleDefinitionOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Authorization.RoleDefinitionOperations.Client">
+            <summary>
+            Gets a reference to the
+            Microsoft.Azure.Management.Authorization.AuthorizationManagementClient.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleDefinitionOperations.CreateOrUpdateAsync(System.Guid,System.String,Microsoft.Azure.Management.Authorization.Models.RoleDefinitionCreateOrUpdateParameters,System.Threading.CancellationToken)">
+            <summary>
+            Creates or updates a role definition.
+            </summary>
+            <param name='roleDefinitionId'>
+            Required. Role definition id.
+            </param>
+            <param name='scope'>
+            Required. Scope
+            </param>
+            <param name='parameters'>
+            Required. Role definition.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role definition create or update operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleDefinitionOperations.DeleteAsync(System.Guid,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Deletes the role definition.
+            </summary>
+            <param name='roleDefinitionId'>
+            Required. Role definition id.
+            </param>
+            <param name='scope'>
+            Required. Scope
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role definition delete operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleDefinitionOperations.GetAsync(System.Guid,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get role definition by name (GUID).
+            </summary>
+            <param name='roleDefinitionId'>
+            Required. Role definition Id
+            </param>
+            <param name='scope'>
+            Required. Scope
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role definition get operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleDefinitionOperations.GetByIdAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get role definition by name (GUID).
+            </summary>
+            <param name='roleDefinitionId'>
+            Required. Fully qualified role definition Id
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role definition get operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleDefinitionOperations.ListAsync(System.String,Microsoft.Azure.Management.Authorization.Models.ListDefinitionFilterParameters,System.Threading.CancellationToken)">
+            <summary>
+            Get all role definitions that are applicable at scope and above.
+            Use atScopeAndBelow filter to search below the given scope as well
+            </summary>
+            <param name='scope'>
+            Required. Scope
+            </param>
+            <param name='parameters'>
+            Optional. List role definitions filters.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Role definition list operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleDefinitionOperationsExtensions.CreateOrUpdate(Microsoft.Azure.Management.Authorization.IRoleDefinitionOperations,System.Guid,System.String,Microsoft.Azure.Management.Authorization.Models.RoleDefinitionCreateOrUpdateParameters)">
+            <summary>
+            Creates or updates a role definition.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleDefinitionOperations.
+            </param>
+            <param name='roleDefinitionId'>
+            Required. Role definition id.
+            </param>
+            <param name='scope'>
+            Required. Scope
+            </param>
+            <param name='parameters'>
+            Required. Role definition.
+            </param>
+            <returns>
+            Role definition create or update operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleDefinitionOperationsExtensions.CreateOrUpdateAsync(Microsoft.Azure.Management.Authorization.IRoleDefinitionOperations,System.Guid,System.String,Microsoft.Azure.Management.Authorization.Models.RoleDefinitionCreateOrUpdateParameters)">
+            <summary>
+            Creates or updates a role definition.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleDefinitionOperations.
+            </param>
+            <param name='roleDefinitionId'>
+            Required. Role definition id.
+            </param>
+            <param name='scope'>
+            Required. Scope
+            </param>
+            <param name='parameters'>
+            Required. Role definition.
+            </param>
+            <returns>
+            Role definition create or update operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleDefinitionOperationsExtensions.Delete(Microsoft.Azure.Management.Authorization.IRoleDefinitionOperations,System.Guid,System.String)">
+            <summary>
+            Deletes the role definition.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleDefinitionOperations.
+            </param>
+            <param name='roleDefinitionId'>
+            Required. Role definition id.
+            </param>
+            <param name='scope'>
+            Required. Scope
+            </param>
+            <returns>
+            Role definition delete operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleDefinitionOperationsExtensions.DeleteAsync(Microsoft.Azure.Management.Authorization.IRoleDefinitionOperations,System.Guid,System.String)">
+            <summary>
+            Deletes the role definition.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleDefinitionOperations.
+            </param>
+            <param name='roleDefinitionId'>
+            Required. Role definition id.
+            </param>
+            <param name='scope'>
+            Required. Scope
+            </param>
+            <returns>
+            Role definition delete operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleDefinitionOperationsExtensions.Get(Microsoft.Azure.Management.Authorization.IRoleDefinitionOperations,System.Guid,System.String)">
+            <summary>
+            Get role definition by name (GUID).
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleDefinitionOperations.
+            </param>
+            <param name='roleDefinitionId'>
+            Required. Role definition Id
+            </param>
+            <param name='scope'>
+            Required. Scope
+            </param>
+            <returns>
+            Role definition get operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleDefinitionOperationsExtensions.GetAsync(Microsoft.Azure.Management.Authorization.IRoleDefinitionOperations,System.Guid,System.String)">
+            <summary>
+            Get role definition by name (GUID).
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleDefinitionOperations.
+            </param>
+            <param name='roleDefinitionId'>
+            Required. Role definition Id
+            </param>
+            <param name='scope'>
+            Required. Scope
+            </param>
+            <returns>
+            Role definition get operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleDefinitionOperationsExtensions.GetById(Microsoft.Azure.Management.Authorization.IRoleDefinitionOperations,System.String)">
+            <summary>
+            Get role definition by name (GUID).
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleDefinitionOperations.
+            </param>
+            <param name='roleDefinitionId'>
+            Required. Fully qualified role definition Id
+            </param>
+            <returns>
+            Role definition get operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleDefinitionOperationsExtensions.GetByIdAsync(Microsoft.Azure.Management.Authorization.IRoleDefinitionOperations,System.String)">
+            <summary>
+            Get role definition by name (GUID).
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleDefinitionOperations.
+            </param>
+            <param name='roleDefinitionId'>
+            Required. Fully qualified role definition Id
+            </param>
+            <returns>
+            Role definition get operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleDefinitionOperationsExtensions.List(Microsoft.Azure.Management.Authorization.IRoleDefinitionOperations,System.String,Microsoft.Azure.Management.Authorization.Models.ListDefinitionFilterParameters)">
+            <summary>
+            Get all role definitions that are applicable at scope and above.
+            Use atScopeAndBelow filter to search below the given scope as well
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleDefinitionOperations.
+            </param>
+            <param name='scope'>
+            Required. Scope
+            </param>
+            <param name='parameters'>
+            Optional. List role definitions filters.
+            </param>
+            <returns>
+            Role definition list operation result.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Authorization.RoleDefinitionOperationsExtensions.ListAsync(Microsoft.Azure.Management.Authorization.IRoleDefinitionOperations,System.String,Microsoft.Azure.Management.Authorization.Models.ListDefinitionFilterParameters)">
+            <summary>
+            Get all role definitions that are applicable at scope and above.
+            Use atScopeAndBelow filter to search below the given scope as well
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Management.Authorization.IRoleDefinitionOperations.
+            </param>
+            <param name='scope'>
+            Required. Scope
+            </param>
+            <param name='parameters'>
+            Optional. List role definitions filters.
+            </param>
+            <returns>
+            Role definition list operation result.
+            </returns>
+        </member>
+    </members>
+</doc>
