@@ -118,8 +118,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 enableHttpsTrafficOnly = value;
             }
         }
-
         private bool? enableHttpsTrafficOnly = null;
+
+        [Parameter(
+        Mandatory = false,
+        HelpMessage = "Storage Account Identity Type.")]
+        [ValidateSet("SystemAssigned", IgnoreCase = true)]
+        public string IdentityType { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -159,6 +164,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (this.EnableEncryptionService != null)
             {
                 createParameters.Encryption = ParseEncryption(EnableEncryptionService);
+                createParameters.Encryption.KeySource = "Microsoft.Storage";
             }
 
             if (this.AccessTier != null)
@@ -168,6 +174,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (enableHttpsTrafficOnly != null)
             {
                 createParameters.EnableHttpsTrafficOnly = enableHttpsTrafficOnly;
+            }
+
+            if (IdentityType != null)
+            {
+                createParameters.Identity = new Identity();
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(
