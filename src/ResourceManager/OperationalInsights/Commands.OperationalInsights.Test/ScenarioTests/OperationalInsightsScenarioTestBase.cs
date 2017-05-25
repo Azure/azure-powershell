@@ -22,7 +22,10 @@ using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using System;
 using System.Collections.Generic;
+using System.IO;
+using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Test
 {
@@ -35,9 +38,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
             helper = new EnvironmentSetupHelper();
         }
 
-        protected void SetupManagementClients()
+        protected void SetupManagementClients(RestTestFramework.MockContext context)
         {
-            var operationalInsightsManagementClient = GetOperationalInsightsManagementClient();
+            var operationalInsightsManagementClient = GetOperationalInsightsManagementClient(context);
             var resourceManagementClient = GetResourceManagementClient();
             var subscriptionsClient = GetSubscriptionClient();
             var galleryClient = GetGalleryClient();
@@ -60,12 +63,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
-            using (UndoContext context = UndoContext.Current)
+            using (RestTestFramework.MockContext context = RestTestFramework.MockContext.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2)))
             {
-                context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
-
-                SetupManagementClients();
+                SetupManagementClients(context);
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 helper.SetupModules(AzureModule.AzureResourceManager,
@@ -80,9 +82,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
             }
         }
 
-        protected OperationalInsightsManagementClient GetOperationalInsightsManagementClient()
+        protected OperationalInsightsManagementClient GetOperationalInsightsManagementClient(RestTestFramework.MockContext context)
         {
-            return TestBase.GetServiceClient<OperationalInsightsManagementClient>(new CSMTestEnvironmentFactory());
+            return context.GetServiceClient<OperationalInsightsManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
         protected ResourceManagementClient GetResourceManagementClient()

@@ -99,10 +99,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EndpointMonitorStatus": "System.String",
               "EndpointStatus": "System.String",
+              "GeoMapping": "System.Collections.Generic.List`1[System.String]",
               "Id": "System.String",
               "Location": "System.String",
               "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
@@ -270,10 +271,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "TrafficManagerEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "EndpointMonitorStatus": "System.String",
                     "EndpointStatus": "System.String",
+                    "GeoMapping": "System.Collections.Generic.List`1[System.String]",
                     "Id": "System.String",
                     "Location": "System.String",
                     "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
@@ -452,10 +454,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EndpointMonitorStatus": "System.String",
               "EndpointStatus": "System.String",
+              "GeoMapping": "System.Collections.Generic.List`1[System.String]",
               "Id": "System.String",
               "Location": "System.String",
               "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
@@ -585,10 +588,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "TrafficManagerEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "EndpointMonitorStatus": "System.String",
                     "EndpointStatus": "System.String",
+                    "GeoMapping": "System.Collections.Generic.List`1[System.String]",
                     "Id": "System.String",
                     "Location": "System.String",
                     "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
@@ -633,10 +637,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EndpointMonitorStatus": "System.String",
               "EndpointStatus": "System.String",
+              "GeoMapping": "System.Collections.Generic.List`1[System.String]",
               "Id": "System.String",
               "Location": "System.String",
               "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
@@ -664,10 +669,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EndpointMonitorStatus": "System.String",
               "EndpointStatus": "System.String",
+              "GeoMapping": "System.Collections.Generic.List`1[System.String]",
               "Id": "System.String",
               "Location": "System.String",
               "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
@@ -700,10 +706,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "TrafficManagerEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "EndpointMonitorStatus": "System.String",
                     "EndpointStatus": "System.String",
+                    "GeoMapping": "System.Collections.Generic.List`1[System.String]",
                     "Id": "System.String",
                     "Location": "System.String",
                     "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
@@ -748,10 +755,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EndpointMonitorStatus": "System.String",
               "EndpointStatus": "System.String",
+              "GeoMapping": "System.Collections.Generic.List`1[System.String]",
               "Id": "System.String",
               "Location": "System.String",
               "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
@@ -847,10 +855,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EndpointMonitorStatus": "System.String",
               "EndpointStatus": "System.String",
+              "GeoMapping": "System.Collections.Generic.List`1[System.String]",
               "Id": "System.String",
               "Location": "System.String",
               "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
@@ -980,10 +989,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "TrafficManagerEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "EndpointMonitorStatus": "System.String",
                     "EndpointStatus": "System.String",
+                    "GeoMapping": "System.Collections.Generic.List`1[System.String]",
                     "Id": "System.String",
                     "Location": "System.String",
                     "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
@@ -1113,10 +1123,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EndpointMonitorStatus": "System.String",
               "EndpointStatus": "System.String",
+              "GeoMapping": "System.Collections.Generic.List`1[System.String]",
               "Id": "System.String",
               "Location": "System.String",
               "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
@@ -1284,10 +1295,11 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "TrafficManagerEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "EndpointMonitorStatus": "System.String",
                     "EndpointStatus": "System.String",
+                    "GeoMapping": "System.Collections.Generic.List`1[System.String]",
                     "Id": "System.String",
                     "Location": "System.String",
                     "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
@@ -1381,10 +1393,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EndpointMonitorStatus": "System.String",
               "EndpointStatus": "System.String",
+              "GeoMapping": "System.Collections.Generic.List`1[System.String]",
               "Id": "System.String",
               "Location": "System.String",
               "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
@@ -1594,6 +1607,24 @@
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "GeoMapping",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Collections.Generic",
+            "Name": "List",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "System.String"
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
         }
       ],
       "ParameterSets": [
@@ -1854,6 +1885,30 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "GeoMapping",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Collections.Generic",
+                  "Name": "List",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "System.String"
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             }
           ]
         }
@@ -1874,7 +1929,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
               "Id": "System.String",
@@ -1919,7 +1974,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
               "Id": "System.String",
@@ -1975,7 +2030,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "TrafficManagerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
                     "Id": "System.String",
@@ -2021,7 +2076,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
               "Id": "System.String",
@@ -2066,7 +2121,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
               "Id": "System.String",
@@ -2228,6 +2283,24 @@
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "GeoMapping",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Collections.Generic",
+            "Name": "List",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "System.String"
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
         }
       ],
       "ParameterSets": [
@@ -2263,7 +2336,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "TrafficManagerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
                     "Id": "System.String",
@@ -2478,6 +2551,30 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "GeoMapping",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Collections.Generic",
+                  "Name": "List",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "System.String"
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             }
           ]
         }
@@ -2547,7 +2644,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
               "Id": "System.String",
@@ -2668,7 +2765,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "TrafficManagerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
                     "Id": "System.String",
@@ -2812,7 +2909,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
               "Id": "System.String",
@@ -2895,7 +2992,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "TrafficManagerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
                     "Id": "System.String",
@@ -2990,7 +3087,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
               "Id": "System.String",
@@ -3111,7 +3208,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "TrafficManagerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
                     "Id": "System.String",
@@ -3206,7 +3303,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
               "Id": "System.String",
@@ -3235,7 +3332,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
               "Id": "System.String",
@@ -3269,7 +3366,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "TrafficManagerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
                     "Id": "System.String",
@@ -3315,7 +3412,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
               "Id": "System.String",
@@ -3438,7 +3535,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
               "Id": "System.String",
@@ -3558,7 +3655,8 @@
           "ValidateSet": [
             "Performance",
             "Weighted",
-            "Priority"
+            "Priority",
+            "Geographic"
           ],
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
@@ -3766,7 +3864,8 @@
                 "ValidateSet": [
                   "Performance",
                   "Weighted",
-                  "Priority"
+                  "Priority",
+                  "Geographic"
                 ],
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
@@ -3989,6 +4088,16 @@
       "ElementType": null,
       "GenericTypeArguments": []
     },
+    "System.Collections.Generic.List`1[System.String]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "List",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.String"
+      ]
+    },
     "System.Nullable`1[System.UInt32]": {
       "Namespace": "System",
       "Name": "Nullable",
@@ -4002,7 +4111,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]": {
       "Namespace": "System.Collections.Generic",
       "Name": "List",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -4012,10 +4121,11 @@
     "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint": {
       "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
       "Name": "TrafficManagerEndpoint",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "EndpointMonitorStatus": "System.String",
         "EndpointStatus": "System.String",
+        "GeoMapping": "System.Collections.Generic.List`1[System.String]",
         "Id": "System.String",
         "Location": "System.String",
         "MinChildEndpoints": "System.Nullable`1[System.UInt32]",

@@ -8,7 +8,7 @@ Locale: en-US
 
 # AzureRM.Sql Module
 ## Description
-This topic displays help topics for the Azure SQL Database Cmdlets.
+This topic displays help topics for the [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) Cmdlets.
 
 ## AzureRM.Sql Cmdlets
 ### [Add-AzureRmSqlDatabaseToFailoverGroup](Add-AzureRmSqlDatabaseToFailoverGroup.md)

@@ -13,7 +13,7 @@ Removes a storage table.
 ## SYNTAX
 
 ```
-Remove-AzureStorageTable [-Name] <String> [-Force] [-PassThru] [-Context <AzureStorageContext>] [-WhatIf]
+Remove-AzureStorageTable [-Name] <String> [-Force] [-PassThru] [-Context <IStorageContext>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -43,7 +43,7 @@ Specifies the Azure storage context.
 You can create it by using the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: AzureStorageContext
+Type: IStorageContext
 Parameter Sets: (All)
 Aliases: 
 

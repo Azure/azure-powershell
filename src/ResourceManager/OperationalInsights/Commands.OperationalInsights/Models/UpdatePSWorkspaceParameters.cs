@@ -21,5 +21,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         public string Sku { get; set; }
 
         public Hashtable Tags { get; set; }
+
+        public int? RetentionInDays { get; set; }
     }
 }

@@ -7,6 +7,7 @@ This document serves as both a breaking change notification and migration guide 
 - [Breaking changes to Compute cmdlets](#breaking-changes-to-compute-cmdlets)
 - [Breaking changes to EventHub cmdlets](#breaking-changes-to-eventhub-cmdlets)
 - [Breaking changes to Insights cmdlets](#breaking-changes-to-insights-cmdlets)
+- [Breaking changes to Network cmdlets](#breaking-changes-to-network-cmdlets)
 - [Breaking changes to ServiceBus cmdlets](#breaking-changes-to-servicebus-cmdlets)
 - [Breaking changes to Sql cmdlets](#breaking-changes-to-sql-cmdlets)
 - [Breaking changes to Storage cmdlets](#breaking-changes-to-storage-cmdlets)
@@ -169,6 +170,21 @@ Set-AzureRmDiagnosticSettings
 
 # New
 Update-AzureRmDiagnosticSettings
+```
+
+## Breaking changes to Network cmdlets
+
+The following cmdlets were affected this release:
+
+### New-AzureRmVirtualNetworkGatewayConnection
+- `EnableBgp` parameter has been changed to take a `boolean` instead of a `string`
+
+```powershell
+# Old
+New-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName "RG" -name "conn1" -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -SharedKey "key" -EnableBgp "true"
+
+# New
+New-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName "RG" -name "conn1" -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -SharedKey "key" -EnableBgp $true
 ```
 
 ## Breaking changes to ServiceBus cmdlets
