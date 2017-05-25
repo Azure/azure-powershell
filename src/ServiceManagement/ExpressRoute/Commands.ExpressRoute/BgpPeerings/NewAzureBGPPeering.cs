@@ -36,6 +36,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         public UInt32 PeerAsn { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Legacy Mode")]
+        [DefaultValue(LegacyMode.False)]
         public LegacyMode LegacyMode { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Primary Peer Subnet")]
