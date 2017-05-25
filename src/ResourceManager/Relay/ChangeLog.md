@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 0.1.1
+
 ## Version 0.1.0
 * Adds cmdlets for the Azure Relay which allows users to create and manage all Azure Relay resources.
     - `New-AzureRmRelayNamespace`

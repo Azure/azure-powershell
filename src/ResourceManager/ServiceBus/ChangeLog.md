@@ -20,6 +20,8 @@
 -->
 ## Current Release
 
+## Version 0.3.1
+
 ## Version 0.3.0
 
 * Bug Fix: ServiceBus Queue object property values were set to null, the object is used as input parameter in Set-AzureRmServiceBusQueue cmdlet to update Queue. 
