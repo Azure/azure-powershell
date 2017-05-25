@@ -153,7 +153,6 @@ namespace Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests
             helper.SetupManagementClients(ResourceManagementClient,
                 SubscriptionClient,
                 DevTestLabsClient,
-                //AuthorizationManagementClient,
                 GalleryClient,
                 armStorageManagementClient
                 );
