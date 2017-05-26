@@ -33,8 +33,14 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 
         public override void ExecuteCmdlet()
         {
-            var route = ExpressRouteClient.GetAzureBGPPeering(ServiceKey, AccessType);
-            WriteObject(route);
+            var peer = ExpressRouteClient.GetAzureBGPPeering(ServiceKey, AccessType);
+
+            if (AccessType != BgpPeeringAccessType.Microsoft)
+            {
+                peer.LegacyMode = 1;
+            }
+
+            WriteObject(peer);
         }
     }
 }
