@@ -27,6 +27,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Reserve
     using Microsoft.WindowsAzure.Management.Network.Models;
     using Microsoft.WindowsAzure.Management.Storage;
     using Moq;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
     using Xunit;
@@ -400,6 +402,92 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Reserve
 
             Assert.Equal(1, mockCommandRuntime.OutputPipeline.Count);
             Assert.Equal("Succeeded", ((ManagementOperationContext)mockCommandRuntime.OutputPipeline[0]).OperationStatus);
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewAzureReservedIPWithIPTags()
+        {
+            IPTag iptag = new IPTag();
+            iptag.IPTagType = "FirstPartyUsage";
+            iptag.Value = "InfrastructureTenants";
+            List<IPTag> iptags = new List<IPTag>();
+            iptags.Add(iptag);
+
+            NewAzureReservedIPCmdlet cmdlet = new NewAzureReservedIPCmdlet(testClientProvider)
+            {
+                ReservedIPName = ReservedIPName,
+                Location = "WestUS",
+                Label = ReservedIPLabel,
+                CommandRuntime = mockCommandRuntime,
+                IPTags = iptags
+            };
+
+            cmdlet.SetParameterSet(NewAzureReservedIPCmdlet.ReserveNewIPParamSet);
+
+            // Action
+            cmdlet.ExecuteCmdlet();
+
+            networkingClientMock.Verify(
+                c => c.ReservedIPs.CreateAsync(
+                    It.Is<NetworkReservedIPCreateParameters>(
+                        p =>
+                            string.Equals(p.Name, ReservedIPName) && string.IsNullOrEmpty(p.ServiceName) &&
+                            string.IsNullOrEmpty(p.VirtualIPName) && string.IsNullOrEmpty(p.DeploymentName)
+                            && p.IPTags == iptags),
+                    It.IsAny<CancellationToken>()),
+                Times.Once());
+
+            Assert.Equal("Succeeded", ((ManagementOperationContext)mockCommandRuntime.OutputPipeline[0]).OperationStatus);
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewAzureIPTagTestSimple()
+        {
+            string ipTagType = "FirstPartyUsage";
+            string value = "InfrastructureTenants";
+
+            NewAzureIPTagCommand cmdlet = new NewAzureIPTagCommand()
+            {
+                CommandRuntime = mockCommandRuntime,
+                IPTagType = ipTagType,
+                Value = value
+            };
+
+            // Execute Cmdlet
+            IEnumerable objs = cmdlet.Invoke();
+            foreach (var x in objs) ;
+
+            Assert.Equal(1, mockCommandRuntime.OutputPipeline.Count);
+
+            IPTag iptag = (IPTag)mockCommandRuntime.OutputPipeline[0];
+            Assert.Equal(ipTagType, iptag.IPTagType);
+            Assert.Equal(value, iptag.Value);
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewAzureIPTagTestNegative()
+        {
+            string ipTagType = "MyOwnTagType";
+            string value = "MyOwnValue";
+
+            NewAzureIPTagCommand cmdlet = new NewAzureIPTagCommand()
+            {
+                CommandRuntime = mockCommandRuntime,
+                IPTagType = ipTagType,
+                Value = value
+            };
+
+            // Execute Cmdlet
+            IEnumerable objs = cmdlet.Invoke();
+            foreach (var x in objs) ;
+
+            Assert.Equal(0, mockCommandRuntime.OutputPipeline.Count);
         }
     }
 }
