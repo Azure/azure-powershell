@@ -1,0 +1,120 @@
+---
+external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+online version: 
+schema: 2.0.0
+---
+
+# Start-AzureRmSqlSyncGroupSynchronization
+
+## SYNOPSIS
+Starts a sync group synchronization.
+
+## SYNTAX
+
+```
+Start-AzureRmSqlSyncGroupSynchronization -SyncGroupName <String> [-PassThru] [-ServerName] <String>
+ [-DatabaseName] <String> [-ResourceGroupName] <String>
+```
+
+## DESCRIPTION
+The **Start-AzureRmSqlSyncGroupSynchronization** cmdlet starts a sync group synchronization.
+
+## EXAMPLES
+
+### Example 1
+```
+PS C:\> Start-AzureRmSqlSyncGroupSynchronization -SyncGroupName mysg [-ServerName] mysrv [-DatabaseName] mydb [-ResourceGroupName] myrg
+```
+
+This command starts a round of synchronization for the sync group mysg.
+
+## PARAMETERS
+
+### -DatabaseName
+SQL Database name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PassThru
+Defines Whether return the sync group
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServerName
+SQL Database server name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SyncGroupName
+The sync group name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+## INPUTS
+
+### System.String
+
+
+## OUTPUTS
+
+### System.Object
+
+## NOTES
+
+## RELATED LINKS
+
