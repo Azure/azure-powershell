@@ -20,14 +20,11 @@ using System.Runtime.Serialization;
 using System.Xml;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.RecoveryServices;
 using Microsoft.WindowsAzure.Management.SiteRecovery;
+using Microsoft.WindowsAzure.Management.RecoveryServicesVaultUpgrade;
 using Microsoft.Azure.Test;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
@@ -37,21 +34,35 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
         private RDFETestEnvironmentFactory rdfeTestFactory;
         private EnvironmentSetupHelper helper;
         protected string vaultSettingsFilePath;
+        protected string vaultName;
+        protected string location;
+        protected string resourceType;
+        protected string resourceNamespace;
+        protected string targetRgName;
+        protected string cloudServiceName;
         private ASRVaultCreds asrVaultCreds = null;
 
         public SiteRecoveryManagementClient SiteRecoveryMgmtClient { get; private set; }
         public RecoveryServicesManagementClient RecoveryServicesMgmtClient { get; private set; }
+        public RecoveryServicesVaultUpgradeManagementClient VaultUpgradeMgmtClient { get; private set; }
 
         protected RecoveryServicesTestsBase()
         {
             if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable("VAULT_SETTINGS_FILE_PATH")))
             {
                 Environment.SetEnvironmentVariable(
-                    "VAULT_SETTINGS_FILE_PATH", 
+                    "VAULT_SETTINGS_FILE_PATH",
                     Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ScenarioTests\\vaultSettings.vaultcredentials"));
             }
 
             this.vaultSettingsFilePath = Environment.GetEnvironmentVariable("VAULT_SETTINGS_FILE_PATH");
+            this.vaultName = "VaultUpgrade";
+            this.location = "South India";
+            this.resourceType = "HyperVRecoveryManagerVault";
+            this.targetRgName = "test-rg";
+            this.resourceNamespace = "WAHyperVRecoveryManager";
+            this.cloudServiceName = "CS-South-India-RecoveryServices";
+
             if (string.IsNullOrEmpty(vaultSettingsFilePath))
             {
                 throw new Exception("Please set VAULT_SETTINGS_FILE_PATH environment variable before running the tests");
@@ -95,8 +106,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
         {
             RecoveryServicesMgmtClient = GetRecoveryServicesManagementClient();
             SiteRecoveryMgmtClient = GetSiteRecoveryManagementClient();
+            VaultUpgradeMgmtClient = GetVaultUpgradeManagementClient();
 
-            helper.SetupManagementClients(RecoveryServicesMgmtClient, SiteRecoveryMgmtClient);
+            helper.SetupManagementClients(RecoveryServicesMgmtClient, SiteRecoveryMgmtClient, VaultUpgradeMgmtClient);
         }
 
         protected void RunPowerShellTest(params string[] scripts)
@@ -135,6 +147,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
             return new SiteRecoveryManagementClient(
                 asrVaultCreds.CloudServiceName,
                 asrVaultCreds.ResourceName,
+                RecoveryServicesMgmtClient.Credentials,
+                RecoveryServicesMgmtClient.BaseUri).WithHandler(HttpMockServer.CreateInstance());
+        }
+
+        private RecoveryServicesVaultUpgradeManagementClient GetVaultUpgradeManagementClient()
+        {
+            return new RecoveryServicesVaultUpgradeManagementClient(
+                cloudServiceName,
+                resourceNamespace,
+                resourceType,
+                vaultName,
                 RecoveryServicesMgmtClient.Credentials,
                 RecoveryServicesMgmtClient.BaseUri).WithHandler(HttpMockServer.CreateInstance());
         }

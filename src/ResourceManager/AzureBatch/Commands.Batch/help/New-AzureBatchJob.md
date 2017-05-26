@@ -195,6 +195,7 @@ Specifies an action the Batch service takes if all tasks in the job are in the c
 Type: OnAllTasksComplete
 Parameter Sets: (All)
 Aliases: 
+Accepted values: NoAction, TerminateJob
 
 Required: False
 Position: Named
@@ -210,6 +211,7 @@ Specifies an action the Batch service takes if any task in the job fails.
 Type: OnTaskFailure
 Parameter Sets: (All)
 Aliases: 
+Accepted values: NoAction, PerformExitOptionsJobAction
 
 Required: False
 Position: Named

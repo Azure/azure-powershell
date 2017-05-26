@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,11 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using Microsoft.WindowsAzure.Management.Storage;
 using System;
 using System.Collections.Generic;
@@ -37,19 +38,19 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// <summary>
         /// Gets or set the Azure subscription
         /// </summary>
-        private static AzureSubscription Subscription { get; set; }
+        private static IAzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Creates a communicator for Azure SQL Database Failover Group
         /// </summary>
         /// <param name="profile"></param>
         /// <param name="subscription"></param>
-        public AzureSqlFailoverGroupCommunicator(AzureContext context)
+        public AzureSqlFailoverGroupCommunicator(IAzureContext context)
         {
             Context = context;
             if (context.Subscription != Subscription)
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// <summary>
         /// Gets the Azure Sql Database Failover Group
         /// </summary>
-        public Management.Sql.Models.FailoverGroup Get(string resourceGroupName, string serverName, string FailoverGroupName, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.FailoverGroup Get(string resourceGroupName, string serverName, string FailoverGroupName, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).FailoverGroups.Get(resourceGroupName, serverName, FailoverGroupName).FailoverGroup;
         }
@@ -70,7 +71,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// <summary>
         /// Lists Azure Sql Database Failover Groups
         /// </summary>
-        public IList<Management.Sql.Models.FailoverGroup> List(string resourceGroupName, string serverName, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.FailoverGroup> List(string resourceGroupName, string serverName, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).FailoverGroups.List(resourceGroupName, serverName).FailoverGroups;
         }
@@ -78,7 +79,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// <summary>
         /// Creates or updates an Failover Group
         /// </summary>
-        public Management.Sql.Models.FailoverGroup CreateOrUpdate(string resourceGroupName, string serverName, string FailoverGroupName, string clientRequestId, FailoverGroupCreateOrUpdateParameters parameters)
+        public Management.Sql.LegacySdk.Models.FailoverGroup CreateOrUpdate(string resourceGroupName, string serverName, string FailoverGroupName, string clientRequestId, FailoverGroupCreateOrUpdateParameters parameters)
         {
             var resp = GetCurrentSqlClient(clientRequestId).FailoverGroups.CreateOrUpdate(resourceGroupName, serverName, FailoverGroupName, parameters);
             return resp.FailoverGroup;
@@ -111,7 +112,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// <summary>
         /// Patch-updates an Failover Group
         /// </summary>
-        public Management.Sql.Models.FailoverGroup PatchUpdate(string resourceGroupName, string serverName, string FailoverGroupName, string clientRequestId, FailoverGroupPatchUpdateParameters parameters)
+        public Management.Sql.LegacySdk.Models.FailoverGroup PatchUpdate(string resourceGroupName, string serverName, string FailoverGroupName, string clientRequestId, FailoverGroupPatchUpdateParameters parameters)
         {
             var resp = GetCurrentSqlClient(clientRequestId).FailoverGroups.PatchUpdate(resourceGroupName, serverName, FailoverGroupName, parameters);
             return resp.FailoverGroup;
@@ -121,7 +122,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// <summary>
         /// Lists Azure Sql Databases on the Server
         /// </summary>
-        public IList<Management.Sql.Models.Database> ListDatabasesOnServer(string resourceGroupName, string serverName, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.Database> ListDatabasesOnServer(string resourceGroupName, string serverName, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).Databases.List(resourceGroupName, serverName).Databases;
         }
@@ -136,7 +137,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
-                SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+                SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
             SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
             SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);

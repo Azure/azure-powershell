@@ -223,6 +223,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Current context.
+        /// </summary>
+        internal static string ImportContextTarget {
+            get {
+                return ResourceManager.GetString("ImportContextTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The provided subscription ID &quot;{0}&quot; is not a valid Guid..
         /// </summary>
         internal static string InvalidSubscriptionId {
@@ -255,6 +264,24 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string NoValidTenant {
             get {
                 return ResourceManager.GetString("NoValidTenant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set the target account, tenant, and subscription of cmdlets executed in this session to the context stored in {0}.
+        /// </summary>
+        internal static string ProcessImportContextFromFile {
+            get {
+                return ResourceManager.GetString("ProcessImportContextFromFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set the target account, tenant, and subscription of cmdlets executed in this session to the provided context.
+        /// </summary>
+        internal static string ProcessImportContextFromObject {
+            get {
+                return ResourceManager.GetString("ProcessImportContextFromObject", resourceCulture);
             }
         }
         
@@ -304,11 +331,74 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Resource Manager context was not properly initialized.  Please load the module again..
+        /// </summary>
+        internal static string RmProfileNull {
+            get {
+                return ResourceManager.GetString("RmProfileNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Selected subscription is in &apos;{0}&apos; state. .
         /// </summary>
         internal static string SelectedSubscriptionNotActive {
             get {
                 return ResourceManager.GetString("SelectedSubscriptionNotActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter your email if you are interested in providing follow up information:.
+        /// </summary>
+        internal static string SendFeedbackEmailQuestion {
+            get {
+                return ResourceManager.GetString("SendFeedbackEmailQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upon what could Azure PowerShell improve? .
+        /// </summary>
+        internal static string SendFeedbackNegativeCommentsQuestion {
+            get {
+                return ResourceManager.GetString("SendFeedbackNegativeCommentsQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} must be issued in interactive mode..
+        /// </summary>
+        internal static string SendFeedbackNonInteractiveMessage {
+            get {
+                return ResourceManager.GetString("SendFeedbackNonInteractiveMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The value entered was either not convertible to an integer or out of range [0, 10]..
+        /// </summary>
+        internal static string SendFeedbackOutOfRangeMessage {
+            get {
+                return ResourceManager.GetString("SendFeedbackOutOfRangeMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to What does Azure PowerShell do well?.
+        /// </summary>
+        internal static string SendFeedbackPositiveCommentsQuestion {
+            get {
+                return ResourceManager.GetString("SendFeedbackPositiveCommentsQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to With zero (0) being the least and ten (10) being the most, how likely are you to recommend Azure PowerShell to a friend or colleague?.
+        /// </summary>
+        internal static string SendFeedbackRecommendationQuestion {
+            get {
+                return ResourceManager.GetString("SendFeedbackRecommendationQuestion", resourceCulture);
             }
         }
         

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.Advisor.Service
@@ -29,14 +29,14 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Service
         /// <summary>
         /// Creates a communicator for Azure Sql Database Advisors
         /// </summary>
-        public AzureSqlDatabaseAdvisorCommunicator(AzureContext context) : base(context)
+        public AzureSqlDatabaseAdvisorCommunicator(IAzureContext context) : base(context)
         {
         }
 
         /// <summary>
         /// Gets the Azure Sql Database Advisor
         /// </summary>
-        public Management.Sql.Models.Advisor Get(string resourceGroupName, string serverName, string databaseName, string advisorName, bool expandRecommendedActions, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.Advisor Get(string resourceGroupName, string serverName, string databaseName, string advisorName, bool expandRecommendedActions, string clientRequestId)
         {
             string expand = expandRecommendedActions ? ExpandKey : null;
             return GetCurrentSqlClient(clientRequestId).DatabaseAdvisors.Get(resourceGroupName, serverName, databaseName, advisorName, expand).Advisor;
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Service
         /// <summary>
         /// Lists Azure Sql Database Advisors
         /// </summary>
-        public IList<Management.Sql.Models.Advisor> List(string resourceGroupName, string serverName, string databaseName, bool expandRecommendedActions, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.Advisor> List(string resourceGroupName, string serverName, string databaseName, bool expandRecommendedActions, string clientRequestId)
         {
             string expand = expandRecommendedActions ? ExpandKey : null;
             return GetCurrentSqlClient(clientRequestId).DatabaseAdvisors.List(resourceGroupName, serverName, databaseName, expand).Advisors;
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Service
         /// <summary>
         /// Update Advisor Auto Execute Status
         /// </summary>
-        public Management.Sql.Models.Advisor UpdateAutoExecuteStatus(string resourceGroupName, string serverName, string databaseName, string advisorName, string autoExecuteStatus, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.Advisor UpdateAutoExecuteStatus(string resourceGroupName, string serverName, string databaseName, string advisorName, string autoExecuteStatus, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).DatabaseAdvisors.Update(resourceGroupName, serverName, databaseName, advisorName,
                     new AdvisorUpdateParameters

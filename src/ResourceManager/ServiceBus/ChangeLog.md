@@ -20,6 +20,15 @@
 -->
 ## Current Release
 
+## Version 0.3.0
+
+* Bug Fix: ServiceBus Queue object property values were set to null, the object is used as input parameter in Set-AzureRmServiceBusQueue cmdlet to update Queue. 
+  - Properties affected are LockDuration, EntityAvailabilityStatus, DuplicateDetectionHistoryTimeWindow, MaxDeliveryCount and MessageCount 
+
+## Version 0.2.0
+
+## Version 0.1.0
+
 ## Version 0.0.3
 
 ## Version 0.0.2

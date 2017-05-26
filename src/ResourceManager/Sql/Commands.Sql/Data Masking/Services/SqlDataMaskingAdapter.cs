@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,11 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.DataMasking.Model;
 using Microsoft.Azure.Commands.Sql.Server.Services;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +33,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// <summary>
         /// Gets or sets the Azure subscription
         /// </summary>
-        private AzureSubscription Subscription { get; set; }
+        private IAzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// The communicator that this adapter uses
@@ -42,9 +43,9 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
-        public SqlDataMaskingAdapter(AzureContext context)
+        public SqlDataMaskingAdapter(IAzureContext context)
         {
             Context = context;
             Subscription = context.Subscription;
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         {
             AzureSqlServerCommunicator dbCommunicator = new AzureSqlServerCommunicator(Context);
             Management.Sql.Models.Server server = dbCommunicator.Get(resourceGroupName, serverName, clientId);
-            return server.Properties.Version == "12.0";
+            return server.Version == "12.0";
         }
 
         /// <summary>

@@ -19,6 +19,36 @@
 -->
 ## Current Release
 
+## Version 3.0.0
+* Add-AzureRm*AlertRule
+    - Returns a single object: newResource, statusCode, requestId
+* Get-AzureRmAlertRule
+    - The output is now enumerated instead of considered a single object. Its type did not change, it is still a list.
+* Remove-AzureRmAlertRule
+    - The statusCode follows the status code returned by the request, before it was Ok always.
+* Add-AzureRmAutoscaleSetting
+    - Returns now a single object (not a list as before) containing statusCode, requestId, and the newly created/updated resource.
+    - The status code follows the status returned by the request, before it was always Ok.
+* New-AzureRmAutoscaleRule
+    - The parameter ScaleActionType has been extended, it receives the following values now: ChangeCount, PercentChangeCount, ExactCount.
+* Remove-AzureRmAutoscaleSetting
+    - The statusCode in the output follows the statusCode returned by the request. Before it was always Ok. 
+* Get-AzureRMLogProfile
+    - The output is now enumerated. Before it was considered a single object. The type of the output remains a list as before.
+* Remove-AzureRmLogProfile
+    - The PassThru parameter has been implemented.
+* Metrics API
+    - The SDK now retrieves metrics from MDM.
+* Get-AzureRmMetricDefinition
+    - The output is still a list, but the structure of the list changed.
+* Get-AzureRmMetric
+    - The call has changed. This is the new syntax: Get-AzureRmMetric ResourceId [MetricNames [TimeGrain] [AggregationType] [StartTime] [EndTime]] [DetailedOutput]
+    - The output is a list, and the structure of its elements has changed.
+
+## Version 2.8.0
+
+## Version 2.7.0
+
 ## Version 2.6.0
 * Allow users to unselect data sinks for Set-AzureRmDiagnosticSettings
 

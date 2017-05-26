@@ -20,7 +20,7 @@ Set-AzureRmNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkI
  [-LoadBalancerBackendAddressPool <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool]>]
  [-LoadBalancerInboundNatRule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundNatRule]>]
  [-ApplicationGatewayBackendAddressPool <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool]>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### SetByResourceId
@@ -31,7 +31,7 @@ Set-AzureRmNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkI
  [-LoadBalancerBackendAddressPoolId <System.Collections.Generic.List`1[System.String]>]
  [-LoadBalancerInboundNatRuleId <System.Collections.Generic.List`1[System.String]>]
  [-ApplicationGatewayBackendAddressPoolId <System.Collections.Generic.List`1[System.String]>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,15 +50,106 @@ $nic | Set-AzureRmNetworkInterfaceIpConfig -Name ipconfig1 -PrivateIpAddress 10.
     -Primary
 
 $nic | Set-AzureRmNetworkInterface
-
 ```
+
 The first two commands get a virtual network called myvnet and a subnet called mysubnet and store it in the
     variables $vnet and $subnet respectively. The third command gets the network interface nic1 associated with the IP
     configuration that needs to be updated. The third command sets the private IP address of the primary IP
     configuration ipconfig1 to 10.0.0.11. Finally, the last command updates the network interface ensuring the changes
     have been made successfully.
     
+
 ## PARAMETERS
+
+### -ApplicationGatewayBackendAddressPool
+Specifies a collection of application gateway backend address pool references to which this network interface IP configuration belongs.
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool]
+Parameter Sets: SetByResource
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ApplicationGatewayBackendAddressPoolId
+Specifies a collection of application gateway backend address pool references to which this network interface IP configuration belongs.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: SetByResourceId
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -LoadBalancerBackendAddressPool
+Specifies a collection of load balancer backend address pool references to which this network interface IP configuration belongs.
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool]
+Parameter Sets: SetByResource
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -LoadBalancerBackendAddressPoolId
+Specifies a collection of load balancer backend address pool references to which this network interface IP configuration belongs.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: SetByResourceId
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -LoadBalancerInboundNatRule
+Specifies a collection of load balancer inbound network address translation (NAT) rule references to which this network interface IP configuration belongs.
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundNatRule]
+Parameter Sets: SetByResource
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -LoadBalancerInboundNatRuleId
+Specifies a collection of load balancer inbound NAT rule references to which this network interface IP configuration belongs.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: SetByResourceId
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of the network IP configuration for which this cmdlet sets.
@@ -91,15 +182,9 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PrivateIpAddressVersion
-Specifies the IP address version of a network interface IP configuration.
-The acceptable values for this parameter are:
-
-- IPv4
-- IPv6
-
+### -Primary
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 
@@ -125,10 +210,48 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Primary
+### -PrivateIpAddressVersion
+Specifies the IP address version of a network interface IP configuration.
+The acceptable values for this parameter are:
+
+- IPv4
+- IPv6
+
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
+Aliases: 
+Accepted values: IPv4, IPv6
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicIpAddress
+Specifies a **PublicIPAddress** object.
+This cmdlet creates a reference to a public IP Address to associate with this network interface IP configuration.
+
+```yaml
+Type: PSPublicIpAddress
+Parameter Sets: SetByResource
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicIpAddressId
+This cmdlet creates a reference to a public IP Address to associate with this network interface IP configuration.
+
+```yaml
+Type: String
+Parameter Sets: SetByResourceId
 Aliases: 
 
 Required: False
@@ -154,106 +277,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicIpAddress
-Specifies a **PublicIPAddress** object.
-This cmdlet creates a reference to a public IP Address to associate with this network interface IP configuration.
-
-```yaml
-Type: PSPublicIpAddress
-Parameter Sets: SetByResource
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LoadBalancerBackendAddressPool
-Specifies a collection of load balancer backend address pool references to which this network interface IP configuration belongs.
-
-```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool]
-Parameter Sets: SetByResource
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -LoadBalancerInboundNatRule
-Specifies a collection of load balancer inbound network address translation (NAT) rule references to which this network interface IP configuration belongs.
-
-```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundNatRule]
-Parameter Sets: SetByResource
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ApplicationGatewayBackendAddressPool
-Specifies a collection of application gateway backend address pool references to which this network interface IP configuration belongs.
-
-```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool]
-Parameter Sets: SetByResource
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubnetId
 This cmdlet creates a reference to a subnet in which this network interface IP configuration is created.
 
@@ -266,66 +289,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PublicIpAddressId
-This cmdlet creates a reference to a public IP Address to associate with this network interface IP configuration.
-
-```yaml
-Type: String
-Parameter Sets: SetByResourceId
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LoadBalancerBackendAddressPoolId
-Specifies a collection of load balancer backend address pool references to which this network interface IP configuration belongs.
-
-```yaml
-Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: SetByResourceId
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -LoadBalancerInboundNatRuleId
-Specifies a collection of load balancer inbound NAT rule references to which this network interface IP configuration belongs.
-
-```yaml
-Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: SetByResourceId
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ApplicationGatewayBackendAddressPoolId
-Specifies a collection of application gateway backend address pool references to which this network interface IP configuration belongs.
-
-```yaml
-Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: SetByResourceId
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

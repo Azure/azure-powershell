@@ -23,7 +23,7 @@ using System.Reflection;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup;
-using Microsoft.Azure.Test;
+using LegacyTest = Microsoft.Azure.Test;
 using Microsoft.Azure.Test.Authentication;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -31,18 +31,18 @@ using HyakRmNS = Microsoft.Azure.Management.Internal.Resources;
 using RecoveryServicesNS = Microsoft.Azure.Management.RecoveryServices;
 using ResourceManagementNS = Microsoft.Azure.Management.Resources;
 using ResourceManagementRestNS = Microsoft.Azure.Management.ResourceManager;
-using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
     public class TestController
     {
-        CSMTestEnvironmentFactory csmTestFactory;
+        LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
         EnvironmentSetupHelper helper;
 
         public RecoveryServicesBackupClient RsBackupClient { get; private set; }
 
-        public RecoveryServicesNS.RecoveryServicesManagementClient RsClient { get; private set; }
+        public RecoveryServicesNS.RecoveryServicesClient RsClient { get; private set; }
 
         public ResourceManagementNS.ResourceManagementClient RmClient { get; private set; }
 
@@ -71,13 +71,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             ResourceNamespace = resourceNamespace;
         }
 
-        protected void SetupManagementClients(RestTestFramework.MockContext context)
+        protected void SetupManagementClients(MockContext context)
         {
             RsBackupClient = GetRsBackupClient(context);
-            RsClient = GetRsClient();
+            RsClient = GetRsClient(context);
             RmClient = GetRmClient();
             RmRestClient = GetRmRestClient(context);
-            HyakRmClient = GetHyakRmClient();
+            HyakRmClient = GetHyakRmClient(context);
 
             helper.SetupManagementClients(
                 RsBackupClient,
@@ -89,21 +89,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 
         private ResourceManagementNS.ResourceManagementClient GetRmClient()
         {
-            return TestBase.GetServiceClient<ResourceManagementNS.ResourceManagementClient>(
+            return LegacyTest.TestBase.GetServiceClient<ResourceManagementNS.ResourceManagementClient>(
                 this.csmTestFactory);
         }
 
-        private ResourceManagementRestNS.ResourceManagementClient GetRmRestClient(
-            RestTestFramework.MockContext context)
+        private ResourceManagementRestNS.ResourceManagementClient GetRmRestClient(MockContext context)
         {
             return context.GetServiceClient<ResourceManagementRestNS.ResourceManagementClient>(
-                RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+                TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private HyakRmNS.ResourceManagementClient GetHyakRmClient()
+        private HyakRmNS.ResourceManagementClient GetHyakRmClient(MockContext context)
         {
-            return TestBase.GetServiceClient<HyakRmNS.ResourceManagementClient>(
-                this.csmTestFactory);
+            return context.GetServiceClient<HyakRmNS.ResourceManagementClient>(
+                TestEnvironmentFactory.GetTestEnvironment());
         }
 
         public void RunPsTest(PsBackupProviderTypes providerType, params string[] scripts)
@@ -125,7 +124,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void RunPsTestWorkflow(
             PsBackupProviderTypes providerType,
             Func<string[]> scriptBuilder,
-            Action<CSMTestEnvironmentFactory> initialize,
+            Action<LegacyTest.CSMTestEnvironmentFactory> initialize,
             Action cleanup,
             string callingClassType,
             string mockName)
@@ -142,10 +141,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             HttpMockServer.RecordsDirectory =
                 Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
-            using (RestTestFramework.MockContext context =
-                RestTestFramework.MockContext.Start(callingClassType, mockName))
+            using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
-                csmTestFactory = new CSMTestEnvironmentFactory();
+                csmTestFactory = new LegacyTest.CSMTestEnvironmentFactory();
 
                 if (initialize != null)
                 {
@@ -204,79 +202,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             }
         }
 
-        private RecoveryServicesNS.RecoveryServicesManagementClient GetRsClient()
+        private RecoveryServicesNS.RecoveryServicesClient GetRsClient(MockContext context)
         {
-            return GetServiceClient<RecoveryServicesNS.RecoveryServicesManagementClient>();
-        }
-
-        public static T GetServiceClient<T>() where T : class
-        {
-            var factory = (TestEnvironmentFactory)new CSMTestEnvironmentFactory();
-            var testEnvironment = factory.GetTestEnvironment();
-
-            ServicePointManager.ServerCertificateValidationCallback = IgnoreCertificateErrorHandler;
-
-            RecoveryServicesNS.RecoveryServicesManagementClient client;
-            var credentials = new SubscriptionCredentialsAdapter(
-                testEnvironment.AuthorizationContext.TokenCredentials[TokenAudience.Management],
-                testEnvironment.SubscriptionId);
-
-            if (testEnvironment.UsesCustomUri())
-            {
-                client = new RecoveryServicesNS.RecoveryServicesManagementClient(
-                    "Microsoft.RecoveryServices",
-                    credentials,
-                    testEnvironment.BaseUri);
-            }
-            else
-            {
-                client = new RecoveryServicesNS.RecoveryServicesManagementClient(
-                    "Microsoft.RecoveryServices",
-                    credentials);
-            }
-            return GetServiceClient<T>(factory, client);
-        }
-
-        public static T GetServiceClient<T>(
-            TestEnvironmentFactory factory,
-            RecoveryServicesNS.RecoveryServicesManagementClient client) where T : class
-        {
-            TestEnvironment testEnvironment = factory.GetTestEnvironment();
-
-            HttpMockServer instance;
-            try
-            {
-                instance = HttpMockServer.CreateInstance();
-            }
-            catch (ApplicationException)
-            {
-                HttpMockServer.Initialize("TestEnvironment", "InitialCreation");
-                instance = HttpMockServer.CreateInstance();
-            }
-            T obj2 = typeof(T).GetMethod("WithHandler", new Type[1]
-            {
-                typeof (DelegatingHandler)
-            }).Invoke((object)client, new object[1]
-            {
-                (object) instance
-            }) as T;
-
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
-            {
-                HttpMockServer.Variables[TestEnvironment.SubscriptionIdKey] = testEnvironment.SubscriptionId;
-            }
-
-            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
-            {
-                PropertyInfo property1 = typeof(T).GetProperty("LongRunningOperationInitialTimeout", typeof(int));
-                PropertyInfo property2 = typeof(T).GetProperty("LongRunningOperationRetryTimeout", typeof(int));
-                if (property1 != (PropertyInfo)null && property2 != (PropertyInfo)null)
-                {
-                    property1.SetValue((object)obj2, (object)0);
-                    property2.SetValue((object)obj2, (object)0);
-                }
-            }
-            return obj2;
+            return context.GetServiceClient<RecoveryServicesNS.RecoveryServicesClient>(
+                TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private static bool IgnoreCertificateErrorHandler
@@ -288,11 +217,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             return true;
         }
 
-        private RecoveryServicesBackupClient GetRsBackupClient(
-            RestTestFramework.MockContext context)
+        private RecoveryServicesBackupClient GetRsBackupClient(MockContext context)
         {
             return context.GetServiceClient<RecoveryServicesBackupClient>(
-                RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+                TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

@@ -1,4 +1,5 @@
 <meta name="google-site-verification" content="tZgbB2s-hTI0IePQQRCjHqL_Vf0j_XJmehXAHJerrn4" />
+
 # Microsoft Azure PowerShell
 
 This repository contains a set of PowerShell cmdlets for developers and administrators to develop, deploy and manage Microsoft Azure applications.
@@ -6,6 +7,7 @@ This repository contains a set of PowerShell cmdlets for developers and administ
 * For documentation on how to build and deploy applications to Microsoft Azure please see the [Microsoft Azure Documentation Center](https://azure.microsoft.com/en-us/documentation/).
 * For comprehensive documentation on the developer cmdlets see [How to install and configure Azure PowerShell](https://azure.microsoft.com/en-us/documentation/articles/install-configure-powershell/).
 * For comprehensive documentation on the full set of Microsoft Azure cmdlets see [Microsoft Azure Management Center](http://go.microsoft.com/fwlink/?linkID=254459&clcid=0x409).
+* For suggesting improvements, join our improvement discussion ([#3692](https://github.com/Azure/azure-powershell/issues/3692)).
 
 ## Features
 
@@ -193,6 +195,8 @@ Be sure to check out the [Microsoft Azure Developer Forums on Stack Overflow](ht
 ## Contribute Code or Provide Feedback
 
 If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](https://azure.github.io/guidelines/).
+
+More information about contributing to this repo can be found in [CONTRIBUTING md](https://github.com/Azure/azure-powershell/blob/preview/CONTRIBUTING.md) and the [Documentation](https://github.com/Azure/azure-powershell/tree/preview/documentation) folder.
 
 If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/Azure/azure-powershell/issues) section of the project.
 

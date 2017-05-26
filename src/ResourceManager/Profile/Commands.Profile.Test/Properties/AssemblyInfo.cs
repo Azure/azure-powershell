@@ -25,6 +25,6 @@ using Xunit;
 
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]
-[assembly: AssemblyVersion("2.7.0")]
-[assembly: AssemblyFileVersion("2.7.0")]
-[assembly: CollectionBehavior(DisableTestParallelization = true)]
+[assembly: AssemblyVersion("3.0.0")]
+[assembly: AssemblyFileVersion("3.0.0")]
+[assembly: CollectionBehavior(DisableTestParallelization = true, MaxParallelThreads =1)]

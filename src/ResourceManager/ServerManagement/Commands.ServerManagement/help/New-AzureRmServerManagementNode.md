@@ -16,14 +16,13 @@ Creates a Server Management node.
 ```
 New-AzureRmServerManagementNode [-ResourceGroupName] <String> [-GatewayName] <String> [-Location] <String>
  -NodeName <String> [-ComputerName <String>] -Credential <PSCredential> [-Tags <Hashtable>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ByObject
 ```
 New-AzureRmServerManagementNode [-Gateway] <Gateway> -NodeName <String> [-ComputerName <String>]
- -Credential <PSCredential> [-Tags <Hashtable>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ -Credential <PSCredential> [-Tags <Hashtable>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,18 +37,52 @@ The **New-AzureRmServerManagementNode** cmdlet creates an Azure Server Managemen
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the name of the resource group in which this cmdlet creates the node.
+### -ComputerName
+Specifies the computer name of the computer that is being managed.
 
 ```yaml
 Type: String
-Parameter Sets: ByName
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Credential
+Specifies a **PSCredential** object for the connection to the Server Management Node.
+To obtain a credential object, use the Get-Credential cmdlet.
+For more information, type `Get-Help Get-Credential`.
+
+```yaml
+Type: PSCredential
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Gateway
+Specifies the gateway that manages the node.
+
+This parameter can be used instead of the *ResourceGroupName*, *GatewayName*, and *Location* parameters.
+
+```yaml
+Type: Gateway
+Parameter Sets: ByObject
 Aliases: 
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -98,35 +131,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ComputerName
-Specifies the computer name of the computer that is being managed.
+### -ResourceGroupName
+Specifies the name of the resource group in which this cmdlet creates the node.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Credential
-Specifies a **PSCredential** object for the connection to the Server Management Node.
-To obtain a credential object, use the Get-Credential cmdlet.
-For more information, type `Get-Help Get-Credential`.
-
-```yaml
-Type: PSCredential
-Parameter Sets: (All)
+Parameter Sets: ByName
 Aliases: 
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -142,62 +158,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Gateway
-Specifies the gateway that manages the node.
-
-This parameter can be used instead of the *ResourceGroupName*, *GatewayName*, and *Location* parameters.
-
-```yaml
-Type: Gateway
-Parameter Sets: ByObject
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using Microsoft.Azure.Management.DataLake.Store;
 using Microsoft.Azure.Management.DataLake.Store.Models;
 using Microsoft.Rest;
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         #region Constructors
 
-        public DataLakeStoreFileSystemClient(AzureContext context)
+        public DataLakeStoreFileSystemClient(IAzureContext context)
         {
             if (context == null)
             {
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public AclStatus GetAclStatus(string filePath, string accountName)
         {
-            return _client.FileSystem.GetAclStatus(accountName, filePath).AclStatus;
+            return GetFullAcl(_client.FileSystem.GetAclStatus(accountName, filePath)).AclStatus;
         }
 
         public bool CheckAccess(string path, string accountName, string permissionsToCheck)
@@ -191,6 +191,119 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         {
             var boolean = _client.FileSystem.Rename(accountName, sourcePath, destinationPath).OperationResult;
             return boolean != null && boolean.Value;
+        }
+
+        public IEnumerable<string> GetStreamRows(string streamPath, string accountName, int numRows, Encoding encoding, bool reverse=false)
+        {
+            // read data 4MB at a time
+            // when reading backwards, this may change to ensure that we don't re-read data as we approach the beginning of the file.
+            var dataPerRead = 4 * 1024 * 1024;
+            var fileLength = _client.FileSystem.GetFileStatus(accountName, streamPath).FileStatus.Length.GetValueOrDefault();
+            bool doneAfterRead = false;
+            var toReturn = new List<string>();
+            long initialOffset = 0;
+            if (fileLength <= dataPerRead)
+            {
+                doneAfterRead = true;
+            }
+
+            if (reverse)
+            {
+                initialOffset = fileLength - dataPerRead;
+            }
+
+            // while we haven't finished loading all the rows, keep grabbing content
+            var readRows = 0;
+            while (readRows < numRows)
+            {
+                if (initialOffset < 0)
+                {
+                    initialOffset = 0;
+                    doneAfterRead = true;
+                }
+
+                if (!reverse && initialOffset + dataPerRead >= fileLength)
+                {
+                    doneAfterRead = true;
+                }
+
+                using (var streamReader = new StreamReader(_client.FileSystem.Open(accountName, streamPath, dataPerRead, initialOffset), encoding))
+                {
+                    // convert the entire stream into a string
+                    var streamAsString = streamReader.ReadToEnd();
+                    if (!streamAsString.Contains("\r") && !streamAsString.Contains("\n"))
+                    {
+                        // if there are any rows that we have already found, return those. Otherwise, return the full string
+                        if (toReturn.Count > 0)
+                        {
+                            return toReturn;
+                        }
+
+                        toReturn.Add(streamAsString);
+                        return toReturn;
+                    }
+
+                    StringReader reader = new StringReader(streamAsString);
+                    
+                    while(reader.Peek() >= 0)
+                    {
+                        toReturn.Add(reader.ReadLine());
+                        readRows++;
+                    }
+
+                    var streamAsBytes = encoding.GetBytes(streamAsString);
+                    // now find either the last (for head) or first (for tail) index of a new line in the stream.
+                    // set the offset to the character immediately after (for head) or before (for tail)
+                    // Then, for tail, subtract the amount of data that we want to read from that location (so read up to where the new line would be).
+                    var newOffset = StringExtensions.FindNewline(
+                        streamAsBytes,
+                        !reverse ? streamAsBytes.Length - 1 : 0,  // depending on if we are searching from the back or the front, the start index is either the front or back of the array
+                        streamAsBytes.Length,
+                        !reverse,
+                        encoding);
+
+                    if (reverse)
+                    {
+                        // subtract one from the new offset since we are not going to include the new lines
+                        // TODO:change to support multi-byte encodings
+                        newOffset -= 1;
+
+                        // if the new line was \r\n then we need to go back one more
+                        if ((char)streamAsBytes[newOffset] == '\r')
+                        {
+                            newOffset -= 1;
+                        }
+
+                        initialOffset += newOffset;
+                        initialOffset -= dataPerRead;
+
+                        if (initialOffset < 0)
+                        {
+                            dataPerRead = newOffset;
+                        }
+                    }
+                    else
+                    {
+                        // because we are searching from the back of the buffer for the last index, we can start the new offset
+                        // one character passed that new line character without fear.
+                        initialOffset += newOffset + 1;
+                    }
+                }
+
+                // this denotes that we did not get as many rows as desired but we ran out of file.
+                if (doneAfterRead)
+                {
+                    break;
+                }
+            }
+            if (toReturn.LongCount() > numRows)
+            {
+                // we could end up with, at most, ~4mb of extra data worth of rows.
+                // this ensures that we only return either the top or tail number of
+                // rows the caller wants.
+                return toReturn.GetRange((int)(reverse ? toReturn.LongCount() - numRows : 0), numRows);
+            }
+            return toReturn;
         }
 
         public Stream PreviewFile(string filePath, string accountName, long bytesToPreview, long offset,
@@ -755,6 +868,39 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             return (long)(date.UtcDateTime - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds;
         }
 
+        private AclStatusResult GetFullAcl(AclStatusResult acl)
+        {
+            if (acl.AclStatus.Entries != null && acl.AclStatus.Permission.HasValue && acl.AclStatus.Permission.Value.ToString().Length >= 3)
+            {
+                var permissionString = acl.AclStatus.Permission.Value.ToString();
+                var permissionLength = permissionString.Length;
+                var ownerOctal = permissionString.ElementAt(permissionLength - 3).ToString();
+                var groupOctal = permissionString.ElementAt(permissionLength - 2).ToString();
+                var otherOctal = permissionString.ElementAt(permissionLength - 1).ToString();
+
+                acl.AclStatus.Entries.Add(string.Format("user::{0}", octalToPermission(int.Parse(ownerOctal))));
+                acl.AclStatus.Entries.Add(string.Format("other::{0}", octalToPermission(int.Parse(otherOctal))));
+
+                if (!string.IsNullOrEmpty(acl.AclStatus.Entries.FirstOrDefault(e => e.StartsWith("group::"))))
+                {
+                    acl.AclStatus.Entries.Add(string.Format("mask::{0}", octalToPermission(int.Parse(groupOctal))));
+                }
+                else
+                {
+                    acl.AclStatus.Entries.Add(string.Format("group::{0}", octalToPermission(int.Parse(groupOctal))));
+                }
+            }
+
+            return acl;
+        }
+
+        private string octalToPermission(int octal)
+        {
+            return string.Format("{0}{1}{2}",
+                (octal & 4) > 0 ? "r" : "-",
+                (octal & 2) > 0 ? "w" : "-",
+                (octal & 1) > 0 ? "x" : "-");
+        }
         #endregion
     }
 }

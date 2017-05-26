@@ -73,19 +73,8 @@ function ConsumerGroupsTests
     
     Write-Debug " Get the created namespace within the resource group"
     $createdNamespace = Get-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
-    Assert-True {$createdNamespace.Count -eq 1}
-
-    $found = 0
     
-        if ($createdNamespace.Name -eq $namespaceName)
-        {
-            $found = 1
-            Assert-AreEqual $location $createdNamespace.Location            
-            break
-        }
-    
-
-    Assert-True {$found -eq 0} "Namespace created earlier is not found."
+    Assert-True {$createdNamespace.Name -eq $namespaceName} "Namespace created earlier is not found."
 
     Write-Debug " Create new eventHub "
 	$msgRetentionInDays = 3
@@ -96,8 +85,7 @@ function ConsumerGroupsTests
     $createdEventHub = Get-AzureRmEventHub -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $result.Name 
 	
 	$createdEventHub = Get-AzureRmEventHub -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $eventHubName
-    Assert-True {$createdEventHub.Count -eq 1}
-	
+    Assert-True {$createdEventHub.Name -eq $eventHubName} "Namespace created earlier is not found."	
 	
 	Write-Debug " Create a new ConsumerGroup "
 	$result_ConsumerGroup = New-AzureRmEventHubConsumerGroup -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $eventHubName -ConsumerGroupName $consumerGroupName

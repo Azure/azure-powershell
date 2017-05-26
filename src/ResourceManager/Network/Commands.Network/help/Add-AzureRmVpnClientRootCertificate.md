@@ -14,8 +14,7 @@ Adds a VPN client root certificate.
 
 ```
 Add-AzureRmVpnClientRootCertificate -VpnClientRootCertificateName <String> -VirtualNetworkGatewayName <String>
- -ResourceGroupName <String> -PublicCertData <String> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ -ResourceGroupName <String> -PublicCertData <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,23 +49,18 @@ The third command then uses the text stored in $CertificateText with the **Add-A
 
 ## PARAMETERS
 
-### -VpnClientRootCertificateName
-Specifies the name of the client root certificate that this cmdlet adds.
+### -PublicCertData
+Specifies the text representation of the root certificate to be added.
+To obtain the text representation, export your certificate in .cer format (using Base64 encoding), then open the resulting file in a text editor.
+When you do that, you will see output similar to the following (note that the actual output will contain many more lines of text than the abbreviated sample shown here):
 
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: ResourceName
+----- BEGIN CERTIFICATE -----
+MIIC13FAAXC3671Auij9HHgUNEW8343NMJklo09982CVVFAw8w
+----- END CERTIFICATE -----
 
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -VirtualNetworkGatewayName
-Specifies the name of the virtual network gateway where the certificate is added.
+The PublicCertData is made up of all the lines between the first line (----- BEGIN CERTIFICATE -----) and the last line (----- END CERTIFICATE -----) in the file.
+You can retrieve this data  by using Windows PowerShell commands similar to this: `$Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertficate.cer"`
+`$CertificateText = for ($i=1; $i -lt $Text.Length -1 ; $i++){$Text\[$i\]}`
 
 ```yaml
 Type: String
@@ -97,18 +91,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PublicCertData
-Specifies the text representation of the root certificate to be added.
-To obtain the text representation, export your certificate in .cer format (using Base64 encoding), then open the resulting file in a text editor.
-When you do that, you will see output similar to the following (note that the actual output will contain many more lines of text than the abbreviated sample shown here):
-
------ BEGIN CERTIFICATE -----
-MIIC13FAAXC3671Auij9HHgUNEW8343NMJklo09982CVVFAw8w
------ END CERTIFICATE -----
-
-The PublicCertData is made up of all the lines between the first line (----- BEGIN CERTIFICATE -----) and the last line (----- END CERTIFICATE -----) in the file.
-You can retrieve this data  by using Windows PowerShell commands similar to this: `$Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertficate.cer"`
-`$CertificateText = for ($i=1; $i -lt $Text.Length -1 ; $i++){$Text\[$i\]}`
+### -VirtualNetworkGatewayName
+Specifies the name of the virtual network gateway where the certificate is added.
 
 ```yaml
 Type: String
@@ -122,42 +106,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -VpnClientRootCertificateName
+Specifies the name of the client root certificate that this cmdlet adds.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
+Aliases: ResourceName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

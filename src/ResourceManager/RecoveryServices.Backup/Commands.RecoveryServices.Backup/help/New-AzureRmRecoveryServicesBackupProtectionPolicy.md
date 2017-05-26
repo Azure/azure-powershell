@@ -15,8 +15,7 @@ Creates a Backup protection policy.
 ```
 New-AzureRmRecoveryServicesBackupProtectionPolicy [-Name] <String> [-WorkloadType] <WorkloadType>
  [[-BackupManagementType] <BackupManagementType>] [[-RetentionPolicy] <RetentionPolicyBase>]
- [[-SchedulePolicy] <SchedulePolicyBase>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ [[-SchedulePolicy] <SchedulePolicyBase>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,40 +58,6 @@ The final command creates a **BackupProtectionPolicy** object based on the sched
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the policy.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WorkloadType
-Specifies the workload type.
-The acceptable values for this parameter are:
-
-- AzureVM 
-- AzureSQLDatabase
-
-```yaml
-Type: WorkloadType
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -BackupManagementType
 Specifies the Backup management type.
 The acceptable values for this parameter are:
@@ -104,6 +69,7 @@ The acceptable values for this parameter are:
 Type: BackupManagementType
 Parameter Sets: (All)
 Aliases: 
+Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL
 
 Required: False
 Position: 3
@@ -112,40 +78,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -Name
+Specifies the name of the policy.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
 
-Required: False
-Position: Named
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -178,6 +120,26 @@ Aliases:
 
 Required: False
 Position: 5
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -WorkloadType
+Specifies the workload type.
+The acceptable values for this parameter are:
+
+- AzureVM 
+- AzureSQLDatabase
+
+```yaml
+Type: WorkloadType
+Parameter Sets: (All)
+Aliases: 
+Accepted values: AzureVM, AzureSQLDatabase
+
+Required: True
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

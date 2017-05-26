@@ -13,7 +13,7 @@ Creates a new Analysis Services server
 
 ```
 New-AzureRmAnalysisServicesServer [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [-Sku] <String> [[-Tag] <Hashtable>] [[-Administrator] <String>] [-WhatIf] [-Confirm]
+ [-Sku] <String> [[-Tag] <Hashtable>] [[-Administrator] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,6 +52,7 @@ The Azure region where the Analysis Services server is hosted
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: North Central US, South Central US, Central US, West Europe, North Europe, West US, East US, East US 2, Japan East, Japan West, Brazil South, Southeast Asia, East Asia, Australia East, Australia Southeast
 
 Required: True
 Position: 2
@@ -92,12 +93,13 @@ Accept wildcard characters: False
 
 ### -Sku
 The name of the Sku for the server.
-The supported values are 'S1', 'S2', 'S4' for the Standard tier and 'D1' for Development.
+The supported values are 'S0', 'S1', 'S2', 'S4' for the Standard tier; 'B1', 'B2' for the Basic tier and 'D1' for Development tier.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: S1, S2, S4, D1
 
 Required: True
 Position: 3
@@ -150,6 +152,9 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

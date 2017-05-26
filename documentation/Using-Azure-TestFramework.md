@@ -4,17 +4,17 @@
 2. Accquring TestFramework
 3. Setup prior to Record/Playback tests
 	1. Environment Variables
-	2. Connection string
-	3. Defaults
+	2. Playback Test
+	3. Record Test with Interactive login using OrgId
+	4. Record Test with ServicePrincipal
 4. Record/Playback tests
-	1. Playback Tests
-	2. Record tests using interactive login (using orgId)
-	3. Record tests using Service Principal
 5. Change Test Environment settings at run-time
-
+6. Troubleshooting
+7. Supported Key=Value pairs in ConnectionString
+8. Environment Variable Reference
 
 ## 1. Getting Started
-1. Launch .\tools\PS-VSPrompt shortcut
+1. Double click .\tools\PS-VSPrompt shortcut
 	1. This starts VS Dev command prompt in PowerShell
 2. Import module that helps in performing basic repository tasks
 	1. Import-Module Repo-Tasks.psd1
@@ -28,6 +28,7 @@ TestFramework is available on NuGet at https://www.nuget.org/packages/Microsoft.
 Instructions to manually download it are available on NuGet. However TestFramework will be downloaded automatically as part of the build process, so manually downloading it should generally be unnecessary.
 
 ## 3. Setup prior to Record/Playback of tests
+
 In order to Record/Playback a test, you need to setup a connection string that consists various key/value pairs that provides information to the test environment.
 
 #### 3.1 Environment Variables
@@ -40,7 +41,78 @@ This is the connection string that determined how to connect to Azure. This incl
 
 This specifies whether test framework will `Record` test sessions or `Playback` previously recorded test sessions.
 
-#### 3.2.  Supported Keys in connection string
+#### 3.2 Playback Test
+
+The default mode is Playback mode, so no setting up of connection string is required. You can optionally set environment variables:
+
+	TEST_CSM_ORGID_AUTHENTICATION=
+	AZURE_TEST_MODE=Playback
+
+#### 3.3 Record Test with Interactive login using OrgId
+
+This is no longer the preferred option because it only works when running on .NET Framework. When running on .NET Core you may get an error like `Interactive Login is supported only in NET45 projects`.
+
+To use this option, set the following environment variables before starting Visual Studio:
+
+	TEST_CSM_ORGID_AUTHENTICATION=SubscriptionId={SubId};UserId={orgId};AADTenant={tenantId};Environment={env};HttpRecorderMode=Record;
+	AZURE_TEST_MODE=Record
+
+#### 3.4 Record Test with ServicePrincipal
+
+This is the preferred option for record because it works with both .NET Framework and .NET Core.
+
+To create a service principal, follow the [Azure AD guide to create a Application Service Principal](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#create-an-active-directory-application). The application type should be `Web app / API` and the sign-on URL value is irrelevant (you can set any value).
+
+After the service principal is created, you will need to give it access to Azure resources. This can be done with the following PowerShell command, with the [Service Principal Application ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key) (this is a guid, not the display name of the service principal) substituted in for `{clientId}`.
+
+	New-AzureRmRoleAssignment -ServicePrincipalName {clientId} -RoleDefinitionName Contributor
+
+To use this option, set the following environment variable before starting Visual Studio. The following values are substituted into the below connection string:
+
+`clientId`: The [Service Principal Application ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key)
+
+`clientSecret`: A [Service Principal Authentication Key](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key)
+
+`tenantId`: The [AAD Tenant ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id)
+
+
+	TEST_CSM_ORGID_AUTHENTICATION=SubscriptionId={SubId};ServicePrincipal={clientId};ServicePrincipalSecret={clientSecret};AADTenant={tenantId};Environment={env};HttpRecorderMode=Record;
+	AZURE_TEST_MODE=Record
+
+## 4. Record/Playback Tests
+
+1. Run the test and make sure that you got a generated .json file that matches the test name in the bin folder under *SessionRecords folder
+2. Copy SessionRecords folder inside the test project and add all *.json files in Visual Studio setting "Copy to Output Directory" property to "Copy if newer"
+3. To assure that the records work fine, delete the connection string (default mode is Playback mode) OR change HttpRecorderMode within the connection string to "Playback"
+
+## 5. Change Test Environment settings at run-time
+#### 1. Once you set your connection string, you can add or update key/value settings
+
+	Add new key/value pair
+ 	TestEnvironment.ConnectionString.KeyValuePairs.Add("Foo", "FooValue");
+
+	Update Existing key/value pair
+	TestEnvironment.ConnectionString.KeyValuePairs["keyName"]="new value"
+
+	Accessing/Updating TestEndpoints
+	TestEnvironment.Endpoints.GraphUri = new Uri("https://newGraphUri.windows.net");
+
+###Note:###
+Changing the above properties at run-time has the potential to hard code few things in your tests. Best practice would be to use these properties to change values at run-time from immediate window at run-time and avoid hard-coding certain values.
+
+## 6. Troubleshooting
+
+#### Issue: exceptions in Microsoft.Azure.Test.HttpRecorder
+
+Ensure that the `HttpRecorderMode` in the `TEST_CSM_ORGID_AUTHENTICATION` environment variable is consistent with the value in `AZURE_TEST_MODE` environment variable.
+
+##7. Connection string
+Connection string is provided to Test Framework using following environment variables.
+In order to debug test set the following environment variables before starting Visual Studio:
+
+	TEST_CSM_ORGID_AUTHENTICATION=SubscriptionId={SubId};UserId={orgId};AADTenant={tenantId};Environment={env};HttpRecorderMode=Record;
+
+#### 7.1 Supported Key=Value pairs in Connectionstring
 	* ManagementCertificate
 	* SubscriptionId
 	* AADTenant
@@ -48,7 +120,7 @@ This specifies whether test framework will `Record` test sessions or `Playback` 
 	* Password
 	* ServicePrincipal
 	* ServicePrincipalSecret
-	* Environment={Prod | DogFood | Next | Current}
+	* Environment={Prod | Dogfood | Next | Current | Custom}
 	* RawToken
 	* RawGraphToken
 	* HttpRecorderMode={Record | Playback}
@@ -62,9 +134,9 @@ This specifies whether test framework will `Record` test sessions or `Playback` 
 	* AADAuthEndpoint
 	* GraphTokenAudienceUri
 
-#### 3.3. Environment Defaults
+## 8. Supported Environment in Test framework (Azure environments)
 
-Setting `Environment` in the connection string will result in the following default values:
+#### 8.1 Default Environments and associated Uri
 
 ##### Environment = Prod
 
@@ -122,57 +194,10 @@ Setting `Environment` in the connection string will result in the following defa
         DataLakeStoreServiceUri = "https://caboaccountdogfood.net"
         DataLakeAnalyticsJoAbndCatalogServiceUri = "https://konaaccountdogfood.net"
 
-## 4. Record/Playback Test
+##### Environment = Custom
+When specified, test framework expect all Uri's to be provided by the user as part of the connection string.
 
-#### Playback Test
+What is also supported is as below (connections string example)
+>SubscriptionId=subId;Environment=Prod;AADAuthUri=customAuthUri;ResourceManagementUri=CustomR>esourceMgmtUri
 
-The default mode is Playback mode, so no setting up of connection string is required.
-
-#### Record Test with Interactive login using OrgId
-
-This is no longer the preferred option because it only works when running on .NET Framework. When running on .NET Core you may get an error like `Interactive Login is supported only in NET45 projects`.
-
-To use this option, set the following environment variable before starting Visual Studio:
-
-	TEST_CSM_ORGID_AUTHENTICATION=SubscriptionId={SubId};UserId={orgId};AADTenant={tenantId};Environment={env};HttpRecorderMode=Record;
-
-#### Record Test with ServicePrincipal
-
-This is the preferred option because it works with both .NET Framework and .NET Core.
-
-To create a service principal, follow the [Azure AD guide to create a Application Service Principal](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#create-an-active-directory-application). The application type should be `Web app / API` and the sign-on URL value is irrelevant (you can set any value).
-
-After the service principal is created, you will need to give it access to Azure resources. This can be done with the following PowerShell command, with the [Service Principal Application ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key) (this is a guid, not the display name of the service principal) substituted in for `{clientId}`.
-
-	New-AzureRmRoleAssignment -ServicePrincipalName {clientId} -RoleDefinitionName Contributor
-
-To use this option, set the following environment variable before starting Visual Studio. The following values are substituted into the below connection string:
-
-`clientId`: The [Service Principal Application ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key)
-
-`clientSecret`: A [Service Principal Authentication Key](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key)
-
-`tenantId`: The [AAD Tenant ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id)
-
-
-	TEST_CSM_ORGID_AUTHENTICATION=SubscriptionId={SubId};ServicePrincipal={clientId};ServicePrincipalSecret={clientSecret};AADTenant={tenantId};Environment={env};HttpRecorderMode=Record;
-
-
-2. Run the test and make sure that you got a generated .json file that matches the test name in the bin folder under *SessionRecords folder
-3. Copy SessionRecords folder inside the test project and add all *.json files in Visual Studio setting "Copy to Output Directory" property to "Copy if newer"
-4. To assure that the records work fine, delete the connection string (default mode is Playback mode) OR change HttpRecorderMode within the connection string to "Playback"
-
-## 5. Change Test Environment settings at run-time
-#### 1. Once you set your connection string, you can add or update key/value settings
-
-	Add new key/value pair
- 	TestEnvironment.ConnectionString.KeyValuePairs.Add("Foo", "FooValue");
-
-	Update Existing key/value pair
-	TestEnvironment.ConnectionString.KeyValuePairs["keyName"]="new value"
-
-	Accessing/Updating TestEndpoints
-	TestEnvironment.Endpoints.GraphUri = new Uri("https://newGraphUri.windows.net");
-
-###Note:###
-Changing the above properties at run-time has the potential to hard code few things in your tests. Best practice would be to use these properties to change values at run-time from immediate window at run-time and avoid hard-coding certain values.
+Which translates to, all Uri from pre-defined Prod environment will be used, but AADAuthUri and ResourceManagementUri will be overridden by the one provided in the connection string

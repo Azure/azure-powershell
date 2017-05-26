@@ -1472,11 +1472,11 @@ The file needs to be a PowerShell script (.ps1 or .psm1).</value>
     <value>Microsoft Azure PowerShell collects data about how users use PowerShell cmdlets and some problems they encounter.  Microsoft uses this information to improve our PowerShell cmdlets.  Participation is voluntary and when you choose to participate your device automatically sends information to Microsoft about how you use Azure PowerShell. 
  
 If you choose to participate, you can stop at any time by using Azure PowerShell as follows:
-1.	Use the Disable-AzureDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the AzureResourceManager module
+1.	Use the Disable-AzureDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the AzureRM.Profile module
 To disable data collection: PS &gt; Disable-AzureDataCollection
 
 If you choose to not participate, you can enable at any time by using Azure PowerShell as follows:
-1.	Use the Enable-AzureDataCollection cmdlet to turn the feature On. The cmdlet can be found in the AzureResourceManager module
+1.	Use the Enable-AzureDataCollection cmdlet to turn the feature On. The cmdlet can be found in the AzureRM.Profile module
 To enable data collection: PS &gt; Enable-AzureDataCollection
  
 Select Y to enable data collection [Y/N]:</value>
@@ -1546,5 +1546,44 @@ Select Y to enable data collection [Y/N]:</value>
   </data>
   <data name="NoSubscriptionFoundForTenant" xml:space="preserve">
     <value>No subscriptions are associated with the logged in account in Azure Service Management (RDFE). This means that the logged in user is not an administrator or co-administrator for any account.\r\nDid you mean to execute Login-AzureRmAccount?</value>
+  </data>
+  <data name="CertificateNotFoundInStore" xml:space="preserve">
+    <value>No certificate was found in the certificate store with thumbprint {0}</value>
+  </data>
+  <data name="IllegalPath" xml:space="preserve">
+    <value>Illegal characters in path.</value>
+  </data>
+  <data name="InvalidCertificate" xml:space="preserve">
+    <value>Invalid certificate format. Publish settings may be corrupted. Use Get-AzurePublishSettingsFile to download updated settings</value>
+  </data>
+  <data name="InvalidDnsName" xml:space="preserve">
+    <value>"{0}" is an invalid DNS name for {1}</value>
+  </data>
+  <data name="InvalidFileExtension" xml:space="preserve">
+    <value>The provided file in {0} must be have {1} extension</value>
+  </data>
+  <data name="InvalidOrEmptyArgumentMessage" xml:space="preserve">
+    <value>{0} is invalid or empty</value>
+  </data>
+  <data name="NoInternetConnection" xml:space="preserve">
+    <value>Please connect to internet before executing this cmdlet</value>
+  </data>
+  <data name="PathDoesNotExist" xml:space="preserve">
+    <value>Path {0} doesn't exist.</value>
+  </data>
+  <data name="PathDoesNotExistForElement" xml:space="preserve">
+    <value>Path for {0} doesn't exist in {1}.</value>
+  </data>
+  <data name="PublishSettingsFileRealmFormat" xml:space="preserve">
+    <value>&amp;whr={0}</value>
+  </data>
+  <data name="ServiceNameExists" xml:space="preserve">
+    <value>The provided service name {0} already exists, please pick another name</value>
+  </data>
+  <data name="UnableToPatchJson" xml:space="preserve">
+    <value>Unable to update mismatching Json structured: {0} {1}.</value>
+  </data>
+  <data name="x86InProgramFiles" xml:space="preserve">
+    <value>(x86)</value>
   </data>
 </root>

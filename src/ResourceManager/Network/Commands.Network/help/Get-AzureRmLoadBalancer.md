@@ -12,16 +12,15 @@ Gets a load balancer.
 
 ## SYNTAX
 
+### NoExpand
+```
+Get-AzureRmLoadBalancer [-Name <String>] [-ResourceGroupName <String>] [<CommonParameters>]
+```
+
 ### Expand
 ```
 Get-AzureRmLoadBalancer -Name <String> -ResourceGroupName <String> -ExpandResource <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
-```
-
-### NoExpand
-```
-Get-AzureRmLoadBalancer [-Name <String>] [-ResourceGroupName <String>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,11 +38,11 @@ A load balancer must exist before you can run this cmdlet.
 
 ## PARAMETERS
 
-### -Name
+### -ExpandResource
 ```yaml
 Type: String
 Parameter Sets: Expand
-Aliases: ResourceName
+Aliases: 
 
 Required: True
 Position: Named
@@ -52,12 +51,25 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Name
 ```yaml
 Type: String
 Parameter Sets: NoExpand
 Aliases: ResourceName
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: Expand
+Aliases: ResourceName
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -67,18 +79,6 @@ Accept wildcard characters: False
 ### -ResourceGroupName
 ```yaml
 Type: String
-Parameter Sets: Expand
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
 Parameter Sets: NoExpand
 Aliases: 
 
@@ -89,46 +89,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ExpandResource
 ```yaml
 Type: String
 Parameter Sets: Expand

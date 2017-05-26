@@ -83,50 +83,27 @@ function EventHubsTests
     Write-Debug " Get the created namespace within the resource group"
     $createdNamespace = Get-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
     
-	# Assert 
-	Assert-True {$createdNamespace.Count -eq 1}
-
-    $found = 0
-    
-        if ($createdNamespace.Name -eq $namespaceName)
-        {
-            $found = 1
-            Assert-AreEqual $location $createdNamespace.Location
-            break
-        }
-
-    Assert-True {$found -eq 0} "Namespace created earlier is not found."
+    Assert-True {$createdNamespace.Name -eq $namespaceName} "Namespace created earlier is not found."
 	
 	# Create a EventHub
     Write-Debug " Create new eventHub "    
 	$msgRetentionInDays = 3
 	$partionCount = 2
     $result = New-AzureRmEventHub -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -Location $location -EventHubName $eventHubName -MessageRetentionInDays $msgRetentionInDays -PartitionCount $partionCount
-
 	
 		
     Write-Debug " Get the created Eventhub "
     $createdEventHub = Get-AzureRmEventHub -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $result.Name
 
     # Assert
-	Assert-True {$createdEventHub.Count -eq 1}    
+	Assert-True {$createdEventHub.Name -eq $eventHubName} "EventHub created earlier is not found."	    
 
 	# Get the Created Eventhub
     Write-Debug " Get all the created EventHub "
     $createdEventHubList = Get-AzureRmEventHub -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
 
 	# Assert
-    $found = 0
-    for ($i = 0; $i -lt $createdEventHubList.Count; $i++)
-    {
-        if ($createdEventHubList[$i].Name -eq $createdEventHub.Name)
-        {
-            $found = $found + 1
-        }
-    }
-
-	# Assert
-    Assert-True {$found -eq 0} "EventHub created earlier is not found."
+    Assert-True {$createdEventHub.Count -eq 1} "EventHub created earlier is not found in list"
 
 	# Update the Created EventHub
     Write-Debug " Update the first EventHub "    
@@ -184,18 +161,7 @@ function EventHubsAuthTests
     $createdNamespace = Get-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
     
 	# Assert
-	Assert-True {$createdNamespace.Count -eq 1}
-    $found = 0
-    
-        if ($createdNamespace.Name -eq $namespaceName)
-        {
-            $found = 1
-            Assert-AreEqual $location $createdNamespace.Location
-            break
-        }
-
-	# Assert
-    Assert-True {$found -eq 0} "Namespace created earlier is not found."
+    Assert-True {$createdNamespace.Name -eq $namespaceName} "Namespace created earlier is not found."
 
 	# Create New EventHub
     Write-Debug " Create new eventHub "    
@@ -207,7 +173,7 @@ function EventHubsAuthTests
     $createdEventHub = Get-AzureRmEventHub -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $result_eventHub.Name
 
 	# Assert
-    Assert-True {$createdEventHub.Count -eq 1}
+    Assert-True {$createdEventHub.Name -eq $eventHubName} "EventHub created earlier is not found."
 
 	# Create Eventhub Authorization Rule
     Write-Debug "Create a EventHub Authorization Rule"

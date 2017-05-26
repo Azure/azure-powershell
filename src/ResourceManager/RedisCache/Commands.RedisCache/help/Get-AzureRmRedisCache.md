@@ -17,14 +17,14 @@ Gets a Redis Cache.
 Get-AzureRmRedisCache [<CommonParameters>]
 ```
 
-### Specific Redis Cache
-```
-Get-AzureRmRedisCache -ResourceGroupName <String> -Name <String> [<CommonParameters>]
-```
-
 ### All In Resource Group
 ```
 Get-AzureRmRedisCache -ResourceGroupName <String> [<CommonParameters>]
+```
+
+### Specific Redis Cache
+```
+Get-AzureRmRedisCache -ResourceGroupName <String> -Name <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -178,7 +178,7 @@ If you specify only the *ResourceGroupName* parameter, this operation gets every
 
 ```yaml
 Type: String
-Parameter Sets: Specific Redis Cache, All In Resource Group
+Parameter Sets: All In Resource Group, Specific Redis Cache
 Aliases: 
 
 Required: True

@@ -54,12 +54,16 @@ function Test-DataLakeAnalyticsFirewall
 
 		# Test to enable the firewall as well as allowing azure IPs
 		Assert-AreEqual "Disabled" $accountCreated.FirewallState 
-		Assert-AreEqual "Disabled" $accountCreated.FirewallAllowAzureIps 
+		
+		# TODO: Re-enable this when this property is re-introduced by the service
+		# Assert-AreEqual "Disabled" $accountCreated.FirewallAllowAzureIps 
 
 		$accountSet = Set-AdlAnalyticsAccount -Name $accountName -FirewallState "Enabled" -AllowAzureIpState "Enabled"
 
 		Assert-AreEqual "Enabled" $accountSet.FirewallState 
-		Assert-AreEqual "Enabled" $accountSet.FirewallAllowAzureIps
+		
+		# TODO: Re-enable this when this property is re-introduced by the service
+		# Assert-AreEqual "Enabled" $accountSet.FirewallAllowAzureIps
 
 		$firewallRuleName = getAssetName
 		$startIp = "127.0.0.1"
@@ -354,9 +358,6 @@ function Test-DataLakeAnalyticsJob
 			Assert-False {$i -eq 60} "dataLakeAnalytics accounts not in succeeded state even after 30 min."
 		}
 
-		# For now, all Job related tests just ensure that they have a valid response and do not throw.
-		# Wait for two minutes and 30 seconds prior to attempting to submit the job in the freshly created account.
-		[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(150000)
 		# submit a job
 		$guidForJob = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::GenerateGuid("jobTest02")
 		[Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsClient]::JobIdQueue.Enqueue($guidForJob)
@@ -599,10 +600,6 @@ function Test-DataLakeAnalyticsCatalog
 			Assert-False {$i -eq 60} "dataLakeAnalytics accounts not in succeeded state even after 30 min."
 		}
 	
-		# For now, all Job related tests just ensure that they have a valid response and do not throw.
-		# Wait for two minutes prior to attempting to submit the job in the freshly created account.
-		[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(120000)
-	
 		# Run a job to create the catalog items (except secret and credential)
 		$scriptTemplate = @"
 	DROP DATABASE IF EXISTS {0}; CREATE DATABASE {0};
@@ -618,7 +615,7 @@ function Test-DataLakeAnalyticsCatalog
 			ClickedUrls     string,
 		INDEX idx1 //Name of index
 		CLUSTERED (Region ASC) //Column to cluster by
-		PARTITIONED BY BUCKETS (UserId) HASH (Region) //Column to partition by
+		PARTITIONED BY (UserId) HASH (Region) //Column to partition by
 	);
 	ALTER TABLE {0}.dbo.{1} ADD IF NOT EXISTS PARTITION (1);
 	DROP FUNCTION IF EXISTS {0}.dbo.{2};
@@ -743,7 +740,24 @@ function Test-DataLakeAnalyticsCatalog
 		}
 
 		Assert-True {$found} "Could not find the table $tableName in the table list"
-	
+		# retrieve the list in the database (no schema)
+		$itemList = Get-AdlCatalogItem -AccountName $accountName -ItemType Table -Path "$databaseName"
+
+		Assert-NotNull $itemList "The table list is null"
+
+		Assert-True {$itemList.count -gt 0} "The table list is empty"
+		$found = $false
+		foreach($item in $itemList)
+		{
+			if($item.Name -eq $tableName)
+			{
+				$found = $true
+				break
+			}
+		}
+
+		Assert-True {$found} "Could not find the table $tableName in the table list"
+
 		# retrieve the specific table
 		$specificItem = Get-AdlCatalogItem -AccountName $accountName -ItemType Table -Path "$databaseName.dbo.$tableName"
 		Assert-NotNull $specificItem "Could not retrieve the table by name"
@@ -781,6 +795,24 @@ function Test-DataLakeAnalyticsCatalog
 
 		Assert-True {$found} "Could not find the TVF $tvfName in the TVF list"
 	
+		# get the items from just the database (no schema)
+		$itemList = Get-AdlCatalogItem -AccountName $accountName -ItemType TableValuedFunction -Path "$databaseName"
+
+		Assert-NotNull $itemList "The TVF list is null"
+
+		Assert-True {$itemList.count -gt 0} "The TVF list is empty"
+		$found = $false
+		foreach($item in $itemList)
+		{
+			if($item.Name -eq $tvfName)
+			{
+				$found = $true
+				break
+			}
+		}
+
+		Assert-True {$found} "Could not find the TVF $tvfName in the TVF list"
+
 		# retrieve the specific TVF
 		$specificItem = Get-AdlCatalogItem -AccountName $accountName -ItemType TableValuedFunction -Path "$databaseName.dbo.$tvfName"
 		Assert-NotNull $specificItem "Could not retrieve the TVF by name"
@@ -827,6 +859,25 @@ function Test-DataLakeAnalyticsCatalog
 	
 		Assert-True {$found} "Could not find the view $viewName in the view list"
 
+		# get views in database only (no schema)
+		$itemList = Get-AdlCatalogItem -AccountName $accountName -ItemType View -Path "$databaseName"
+
+		Assert-NotNull $itemList "The view list is null"
+
+		Assert-True {$itemList.count -gt 0} "The view list is empty"
+		$found = $false
+		foreach($item in $itemList)
+		{
+			if($item.Name -eq $viewName)
+			{
+				$found = $true
+				break
+			}
+		}
+	
+		Assert-True {$found} "Could not find the view $viewName in the view list"
+
+
 		# retrieve the specific view
 		$specificItem = Get-AdlCatalogItem -AccountName $accountName -ItemType View -Path "$databaseName.dbo.$viewName"
 		Assert-NotNull $specificItem "Could not retrieve the view by name"
@@ -841,59 +892,11 @@ function Test-DataLakeAnalyticsCatalog
 		New-AdlCatalogSecret -AccountName $accountName -secret $secret -DatabaseName $databaseName -Uri "https://pstest.contoso.com:443"
 		New-AdlCatalogSecret -AccountName $accountName -secret $secret2 -DatabaseName $databaseName -Uri "https://pstest.contoso.com:443"
 
-		# verify that the credential can be retrieved
+		# verify that the secret can be retrieved
+		# NOTE: Secret CRUD is deprecated and will be removed soon.
+		# Credential creation through jobs has already been completely removed, so secret CRUD will be removed soon.
 		$getSecret = Get-AdlCatalogItem -AccountName $accountName -ItemType Secret -Path "$databaseName.$secretName"
 		Assert-NotNull $getSecret "Could not retrieve the secret"
-
-		# verify that attmepting to create the secret again throws
-		# TODO: enable once we actually do throw when re-creating a secret.
-		# Assert-Throws {New-AdlCatalogSecret -AccountName $accountName -secret $secret -DatabaseName $databaseName -Uri "https://pstest.contoso.com:8080"}
-
-		# credential job template
-		$credentialJobTemplate = @"
-	USE {0};
-	CREATE CREDENTIAL {1} WITH USER_NAME = "scope@rkm4grspxa", IDENTITY = "{2}";
-"@
-		$credentialJob = [string]::Format($credentialJobTemplate, $databaseName, $credentialName, $secretName)
-	
-		$guidForJob = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::GenerateGuid("credentialCreateJob01")
-		[Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsClient]::JobIdQueue.Enqueue($guidForJob)
-		$jobInfo = Submit-AdlJob -AccountName $accountName -Name "TestJobCredential" -Script $credentialJob
-		$result = Wait-AdlJob -AccountName $accountName -JobId $jobInfo.JobId
-		Assert-AreEqual "Succeeded" $result.Result
-
-		# retrieve the list of credentials and ensure the created credential is in it
-		$itemList = Get-AdlCatalogItem -AccountName $accountName -ItemType Credential -Path $databaseName
-
-		Assert-NotNull $itemList "The credential list is null"
-
-		Assert-True {$itemList.count -gt 0} "The credential list is empty"
-		$found = $false
-		foreach($item in $itemList)
-		{
-			if($item.Name -eq $credentialName)
-			{
-				$found = $true
-				break
-			}
-		}
-	
-		# retrieve the specific credential
-		$specificItem = Get-AdlCatalogItem -AccountName $accountName -ItemType Credential -Path "$databaseName.$credentialName"
-		Assert-NotNull $specificItem "Could not retrieve the credential by name"
-		Assert-AreEqual $credentialName $specificItem.Name
-
-		# credential job template
-		$credentialJobTemplate = @"
-	USE {0};
-	DROP CREDENTIAL {1};
-"@
-		$credentialJob = [string]::Format($credentialJobTemplate, $databaseName, $credentialName)
-		$guidForJob = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::GenerateGuid("credentialDropJob01")
-		[Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsClient]::JobIdQueue.Enqueue($guidForJob)
-		$jobInfo = Submit-AdlJob -AccountName $accountName -Name "TestJobCredential" -Script $credentialJob
-		$result = Wait-AdlJob -AccountName $accountName -JobId $jobInfo.JobId
-		Assert-AreEqual "Succeeded" $result.Result
     
 		# Create the credential using the new create credential cmdlet
 		New-AdlCatalogCredential -AccountName $accountName -DatabaseName $databaseName -CredentialName $credentialName -Credential $secret -Uri "https://fakedb.contoso.com:443"

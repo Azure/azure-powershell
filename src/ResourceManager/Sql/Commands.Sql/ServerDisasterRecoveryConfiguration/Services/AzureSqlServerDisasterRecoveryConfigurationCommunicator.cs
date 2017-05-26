@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,10 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
 using System.Collections.Generic;
 
@@ -35,18 +36,18 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Servi
         /// <summary>
         /// Gets or set the Azure subscription
         /// </summary>
-        private static AzureSubscription Subscription { get; set; }
+        private static IAzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Creates a communicator for Azure Sql Server Disaster Recovery Configuration
         /// </summary>
         /// <param name="context"></param>
-        public AzureSqlServerDisasterRecoveryConfigurationCommunicator(AzureContext context)
+        public AzureSqlServerDisasterRecoveryConfigurationCommunicator(IAzureContext context)
         {
             Context = context;
             if (context.Subscription != Subscription)
@@ -59,7 +60,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Servi
         /// <summary>
         /// Gets the Azure Sql Server Disaster Recovery Configuration
         /// </summary>
-        public Management.Sql.Models.ServerDisasterRecoveryConfiguration Get(string resourceGroupName, string serverName, string serverDisasterRecoveryConfigurationName, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.ServerDisasterRecoveryConfiguration Get(string resourceGroupName, string serverName, string serverDisasterRecoveryConfigurationName, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).ServerDisasterRecoveryConfigurations.Get(resourceGroupName, serverName, serverDisasterRecoveryConfigurationName).ServerDisasterRecoveryConfiguration;
         }
@@ -67,7 +68,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Servi
         /// <summary>
         /// Lists Azure Sql Server Disaster Recovery Configurations
         /// </summary>
-        public IList<Management.Sql.Models.ServerDisasterRecoveryConfiguration> List(string resourceGroupName, string serverName, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.ServerDisasterRecoveryConfiguration> List(string resourceGroupName, string serverName, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).ServerDisasterRecoveryConfigurations.List(resourceGroupName, serverName).ServerDisasterRecoveryConfigurations;
         }
@@ -75,7 +76,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Servi
         /// <summary>
         /// Creates a Disaster Recovery Configuration
         /// </summary>
-        public Management.Sql.Models.ServerDisasterRecoveryConfiguration Create(string resourceGroupName, string serverName, string serverDisasterRecoveryConfigurationName, string clientRequestId, ServerDisasterRecoveryConfigurationCreateOrUpdateParameters parameters)
+        public Management.Sql.LegacySdk.Models.ServerDisasterRecoveryConfiguration Create(string resourceGroupName, string serverName, string serverDisasterRecoveryConfigurationName, string clientRequestId, ServerDisasterRecoveryConfigurationCreateOrUpdateParameters parameters)
         {
             return GetCurrentSqlClient(clientRequestId).ServerDisasterRecoveryConfigurations.CreateOrUpdate(resourceGroupName, serverName, serverDisasterRecoveryConfigurationName, parameters).ServerDisasterRecoveryConfiguration;
         }
@@ -113,7 +114,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Servi
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
-                SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+                SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
             SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
             SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);

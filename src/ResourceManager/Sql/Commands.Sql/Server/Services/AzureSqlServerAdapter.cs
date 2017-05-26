@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Server.Model;
 using Microsoft.Azure.Commands.Sql.Server.Services;
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +23,7 @@ using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Server.Adapter
 {
@@ -40,13 +40,13 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Constructs a server adapter
         /// </summary>
         /// <param name="context">The current azure profile</param>
-        public AzureSqlServerAdapter(AzureContext context)
+        public AzureSqlServerAdapter(IAzureContext context)
         {
             Context = context;
             Communicator = new AzureSqlServerCommunicator(Context);
@@ -85,16 +85,13 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         /// <returns>The updated server model</returns>
         public AzureSqlServerModel UpsertServer(AzureSqlServerModel model)
         {
-            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, Util.GenerateTracingId(), new ServerCreateOrUpdateParameters()
+            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, Util.GenerateTracingId(), new Management.Sql.Models.Server()
             {
                 Location = model.Location,
                 Tags = model.Tags,
-                Properties = new ServerCreateOrUpdateProperties()
-                {
-                    AdministratorLogin = model.SqlAdministratorLogin,
-                    AdministratorLoginPassword = model.SqlAdministratorPassword != null ? Decrypt(model.SqlAdministratorPassword) : null,
-                    Version = model.ServerVersion,
-                }
+                AdministratorLogin = model.SqlAdministratorLogin,
+                AdministratorLoginPassword = model.SqlAdministratorPassword != null ? Decrypt(model.SqlAdministratorPassword) : null,
+                Version = model.ServerVersion,
             });
 
             return CreateServerModelFromResponse(model.ResourceGroupName, resp);
@@ -111,7 +108,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         }
 
         /// <summary>
-        /// Convert a Management.Sql.Models.Server to AzureSqlDatabaseServerModel
+        /// Convert a Management.Sql.LegacySdk.Models.Server to AzureSqlDatabaseServerModel
         /// </summary>
         /// <param name="resourceGroupName">The resource group the server is in</param>
         /// <param name="resp">The management client server response to convert</param>
@@ -122,8 +119,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
 
             server.ResourceGroupName = resourceGroupName;
             server.ServerName = resp.Name;
-            server.ServerVersion = resp.Properties.Version;
-            server.SqlAdministratorLogin = resp.Properties.AdministratorLogin;
+            server.ServerVersion = resp.Version;
+            server.SqlAdministratorLogin = resp.AdministratorLogin;
             server.Location = resp.Location;
             server.Tags = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(resp.Tags), false);
 

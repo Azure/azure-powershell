@@ -66,6 +66,7 @@ The acceptable values for this parameter are:
 Type: FileSystemCmdletProviderEncoding
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Unknown, String, Unicode, Byte, BigEndianUnicode, UTF8, UTF7, UTF32, Ascii, Default, Oem, BigEndianUTF32
 
 Required: False
 Position: 3

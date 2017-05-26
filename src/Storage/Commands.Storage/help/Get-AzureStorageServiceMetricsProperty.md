@@ -14,8 +14,7 @@ Gets metrics properties for the Azure Storage service.
 
 ```
 Get-AzureStorageServiceMetricsProperty [-ServiceType] <StorageServiceType> [-MetricsType] <ServiceMetricsType>
- [-Context <AzureStorageContext>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [-PipelineVariable <String>] [<CommonParameters>]
+ [-Context <IStorageContext>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +30,40 @@ C:\PS>Get-AzureStorageServiceMetricsProperty -ServiceType Blob -MetricsType Hour
 This command gets metrics properties for blob storage for the Hour metrics type.
 
 ## PARAMETERS
+
+### -Context
+Specifies an Azure storage context.
+To obtain a storage context, use the New-AzureStorageContext cmdlet.
+
+```yaml
+Type: IStorageContext
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -MetricsType
+Specifies a metrics type.
+This cmdlet gets the Azure Storage service metrics properties for the metrics type that this parameter specifies.
+The acceptable values for this parameter are: Hour and Minute.
+
+```yaml
+Type: ServiceMetricsType
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Hour, Minute
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ServiceType
 Specifies the storage service type.
@@ -48,96 +81,10 @@ The value of File is not currently supported.
 Type: StorageServiceType
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Blob, Table, Queue, File
 
 Required: True
 Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MetricsType
-Specifies a metrics type.
-This cmdlet gets the Azure Storage service metrics properties for the metrics type that this parameter specifies.
-The acceptable values for this parameter are: Hour and Minute.
-
-```yaml
-Type: ServiceMetricsType
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Context
-Specifies an Azure storage context.
-To obtain a storage context, use the New-AzureStorageContext cmdlet.
-
-```yaml
-Type: AzureStorageContext
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PipelineVariable
-Stores the value of the current pipeline element as a variable, for any named command as it flows through the pipeline.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: pv
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

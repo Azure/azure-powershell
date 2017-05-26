@@ -19,6 +19,20 @@
 -->
 ## Current Release
 
+## Version 3.0.0
+* Adding backup/restore support for KeyVault secrets
+    - Secrets can be backed up and restored, matching the functionality currently supported for Keys
+
+* Backup cmdlets for Keys and Secrets now accept a corresponding object as an input parameter
+    - The caller may chain retrieval and backup operations: Get-AzureKeyVaultKey -VaultName myVault -Name myKey | Backup-AzureKeyVaultKey
+    
+* Backup cmdlets now support a -Force switch to overwrite an existing file
+    - Note that attempting to overwrite an existing file will no longer throw, and will instead prompt the user for a choice on how to proceed.
+      
+## Version 2.8.0
+
+## Version 2.7.0
+
 ## Version 2.6.0
 
 ## Version 2.5.0

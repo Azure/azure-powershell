@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,9 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Management.Sql;
+using Microsoft.Azure.Management.Sql.LegacySdk;
 
 namespace Microsoft.Azure.Commands.Sql.Advisor.Service
 {
@@ -37,17 +38,17 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Service
         /// <summary>
         /// Gets or set the Azure subscription
         /// </summary>
-        protected static AzureSubscription Subscription { get; set; }
+        protected static IAzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Base class contructor for Advisor REST API Communicators.
         /// </summary>
-        public AzureSqlAdvisorCommunicatorBase(AzureContext context)
+        public AzureSqlAdvisorCommunicatorBase(IAzureContext context)
         {
             Context = context;
             if (context.Subscription != Subscription)
@@ -67,7 +68,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Service
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
-                SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+                SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
 
             SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);

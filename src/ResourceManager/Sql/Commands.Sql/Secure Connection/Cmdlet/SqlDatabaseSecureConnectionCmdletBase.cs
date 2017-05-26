@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.SecureConnection.Model;
@@ -38,9 +39,9 @@ namespace Microsoft.Azure.Commands.Sql.SecureConnection.Cmdlet
         /// </summary>
         /// <param name="subscription">The AzureSubscription in which the current execution is performed</param>
         /// <returns>An initialized and ready to use ModelAdapter object</returns>
-        protected override SqlSecureConnectionAdapter InitModelAdapter(AzureSubscription subscription)
+        protected override SqlSecureConnectionAdapter InitModelAdapter(IAzureSubscription subscription)
         {
-            return new SqlSecureConnectionAdapter(DefaultProfile.Context);
+            return new SqlSecureConnectionAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

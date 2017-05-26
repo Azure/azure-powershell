@@ -18,7 +18,7 @@ Add-AzureRmApplicationGatewayBackendHttpSettings -ApplicationGateway <PSApplicat
  [-ConnectionDraining <PSApplicationGatewayConnectionDraining>] [-ProbeId <String>]
  [-Probe <PSApplicationGatewayProbe>]
  [-AuthenticationCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate]>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,6 +53,51 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -AuthenticationCertificates
+Specifies authentication certificates for the application gateway.
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectionDraining
+Connection draining of the backend http settings resource.```yaml
+Type: PSApplicationGatewayConnectionDraining
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CookieBasedAffinity
+Specifies whether cookie-based affinity should be enabled or disabled for the backend server pool.
+The acceptable values for this parameter are: Disabled, Enabled.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Enabled, Disabled
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the back-end HTTP settings which this cmdlet adds.
 
@@ -83,43 +128,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Protocol
-Specifies the protocol for communication between application gateway and back-end servers.
-The acceptable values for this parameter are: Http and Https.
+### -Probe
+Specifies a probe to associate with a back-end server.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CookieBasedAffinity
-Specifies whether cookie-based affinity should be enabled or disabled for the backend server pool.
-The acceptable values for this parameter are: Disabled, Enabled.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RequestTimeout
-Specifies the request time-out value.
-
-```yaml
-Type: UInt32
+Type: PSApplicationGatewayProbe
 Parameter Sets: (All)
 Aliases: 
 
@@ -145,78 +158,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Probe
-Specifies a probe to associate with a back-end server.
-
-```yaml
-Type: PSApplicationGatewayProbe
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AuthenticationCertificates
-Specifies authentication certificates for the application gateway.
-
-```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate]
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -Protocol
+Specifies the protocol for communication between application gateway and back-end servers.
+The acceptable values for this parameter are: Http and Https.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
+Accepted values: Http, Https
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ConnectionDraining
-Connection draining of the backend http settings resource.```yaml
-Type: PSApplicationGatewayConnectionDraining
+### -RequestTimeout
+Specifies the request time-out value.
+
+```yaml
+Type: UInt32
 Parameter Sets: (All)
 Aliases: 
 

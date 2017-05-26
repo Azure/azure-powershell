@@ -13,7 +13,7 @@ Adds a Key Vault key to a SQL server.
 
 ```
 Add-AzureRmSqlServerKeyVaultKey [-KeyId] <String> [-ServerName] <String> [-ResourceGroupName] <String>
- [-WhatIf] [-Confirm]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,8 +23,6 @@ The server must have 'get, wrapKey, unwrapKey' permissions to the vault.
 ## EXAMPLES
 
 ### --------------------------  Example 1: Add Key Vault key  --------------------------
-@{paragraph=PS C:\\\>}
-
 ```
 PS C:\> Add-AzureRmSqlServerKeyVaultKey -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' -ServerName 'ContosoServer' -ResourceGroupName 'ContosoResourceGroup'
 ```
@@ -117,6 +115,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
@@ -129,3 +130,4 @@ Accept wildcard characters: False
 
 ## RELATED LINKS
 
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)

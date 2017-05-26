@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Newtonsoft.Json.Linq;
     using System.IO;
     using System.Management.Automation;
+    using WindowsAzure.Commands.Common;
 
     /// <summary>
     /// Creates the policy definition.

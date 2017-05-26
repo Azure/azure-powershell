@@ -561,4 +561,39 @@ function Test-FlowLog
     }
 }
 
+<#
+.SYNOPSIS
+Test ConnectivityCheck NetworkWatcher API.
+#>
+function Test-ConnectivityCheck
+{
+    # Setup
+    $nwName = Get-ResourceName
+    $location = "West US"
+    $resourceTypeParent = "Microsoft.Network/networkWatchers"
+    $nwLocation = Get-ProviderLocation $resourceTypeParent
+	$nwRgName = Get-ResourceGroupName
+    
+    try 
+    {
+        # Create Resource group for Network Watcher
+        New-AzureRmResourceGroup -Name $nwRgName -Location "$location"
+        
+        # Create Network Watcher
+        $nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $nwRgName -Location $location
+		
+		#Connectivity check
+		$check = Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $nw -SourceId "/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/NwRgStage1/providers/Microsoft.Compute/virtualMachines/MultiTierApp0" -DestinationAddress "204.79.197.200" -DestinationPort 80
+    
+        #Verification
+        #Assert-AreEqual $check.ConnectionStatus "Reachable"
+        #Assert-AreEqual $check.ProbesFailed 0
+    }
+    finally
+    {
+        # Cleanup
+        #Clean-ResourceGroup $nwRgName
+    }
+}
+
 

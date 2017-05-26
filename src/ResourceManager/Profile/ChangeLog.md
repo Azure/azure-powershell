@@ -19,6 +19,21 @@
 -->
 ## Current Release
 
+## Version 3.0.0
+* Added `Send-Feedback` cmdlet: allows a user to initiate a set of prompts which sends feedback to the Azure PowerShell team.
+* The following aliases have been removed as they conflicted with existing cmdlet names in the Azure module:
+    - `Enable-AzureDataCollection` (supported by `Enable-AzureRmDataCollection`)
+    - `Disable-AzureDataCollection` (supported by `Disable-AzureRmDataCollection`)
+
+## Version 2.8.0
+* *Obsolete*: Save-AzureRmProfile is renamed to Save-AzureRmContext, there is an alias to the old cmdlet name, the alias will be removed in the next release.
+* *Obsolete*: Select-AzureRmProfile is renamed to Import-AzureRmContext, there is an alias to the old cmdlet name, the alias will be removed in the next release.
+* The PSAzureContext and PSAzureProfile output types of profile cmdlets will be changed in the next release.
+* The Save-AzureRmContext cmdlet will have no OutputType in the next release.
+* Fix bug in cmdlet common code to use FIPS-compliant algorithm for data hashes: https://github.com/Azure/azure-powershell/issues/3651 
+
+## Version 2.7.0
+
 ## Version 2.6.0
 
 ## Version 2.5.0

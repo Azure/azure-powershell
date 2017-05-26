@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.Sql.Advisor.Model;
 using Microsoft.Azure.Commands.Sql.Services;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Advisor.Service
 {
@@ -33,12 +34,12 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Service
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Constructs adapter
         /// </summary>
-        public AzureSqlElasticPoolAdvisorAdapter(AzureContext context)
+        public AzureSqlElasticPoolAdvisorAdapter(IAzureContext context)
         {
             Context = context;
             Communicator = new AzureSqlElasticPoolAdvisorCommunicator(Context);

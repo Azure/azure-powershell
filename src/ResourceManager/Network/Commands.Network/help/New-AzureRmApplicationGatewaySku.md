@@ -13,8 +13,7 @@ Creates a SKU for an application gateway.
 ## SYNTAX
 
 ```
-New-AzureRmApplicationGatewaySku -Name <String> -Tier <String> -Capacity <Int32>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+New-AzureRmApplicationGatewaySku -Name <String> -Tier <String> -Capacity <Int32> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +30,21 @@ This command creates a SKU named Standard_Small for an Azure application gateway
 
 ## PARAMETERS
 
+### -Capacity
+Specifies the number of instances of an application gateway.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the SKU.
 
@@ -46,6 +60,7 @@ The acceptable values for this parameter are:
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Standard_Small, Standard_Medium, Standard_Large, WAF_Medium, WAF_Large
 
 Required: True
 Position: Named
@@ -65,62 +80,9 @@ The acceptable values for this parameter are:
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Standard, WAF
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Capacity
-Specifies the number of instances of an application gateway.
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

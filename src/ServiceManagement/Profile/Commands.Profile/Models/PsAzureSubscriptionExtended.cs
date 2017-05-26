@@ -14,6 +14,7 @@
 
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Profile.Models
 {
@@ -36,7 +37,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile.Models
 
         public string ActiveDirectoryUserId { get; set; }
 
-        public AzureAccount Account { get; set; }
+        public IAzureAccount Account { get; set; }
         
         public X509Certificate2 Certificate { get; set; }
         
