@@ -54,5 +54,5 @@ This cmdlet returns the account, tenant, and subscription used by Azure Resource
 
 ## RELATED LINKS
 
-[Set-AzureRMContext]()
+[Set-AzureRMContext](./Set-AzureRMContext.md)
 

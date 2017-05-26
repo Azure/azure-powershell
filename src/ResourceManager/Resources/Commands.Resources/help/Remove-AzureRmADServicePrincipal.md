@@ -116,12 +116,12 @@ Keywords: azure, azurerm, arm, resource, management, manager, resource, group, t
 
 ## RELATED LINKS
 
-[New-AzureRmADServicePrincipal]()
+[New-AzureRmADServicePrincipal](./New-AzureRmADServicePrincipal.md)
 
-[Get-AzureRmADServicePrincipal]()
+[Get-AzureRmADServicePrincipal](./Get-AzureRmADServicePrincipal.md)
 
-[Set-AzureRmADServicePrincipal]()
+[Set-AzureRmADServicePrincipal](./Set-AzureRmADServicePrincipal.md)
 
-[Remove-AzureRmADApplication]()
+[Remove-AzureRmADApplication](./Remove-AzureRmADApplication.md)
 
-[Remove-AzureRmADAppCredential]()
+[Remove-AzureRmADAppCredential](./Remove-AzureRmADAppCredential.md)
