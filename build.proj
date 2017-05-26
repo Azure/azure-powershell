@@ -24,6 +24,9 @@
       'AzureStorage': storage data plane cmdlets
       'Subfolder under src\ResourceManager': An individual cmdlet module
       By default, it builds all
+
+    /p:SkipHelp=True
+      Skips help generation and installer creation, mainly for local builds to save time.
   -->
 
   <!-- Define build properties -->
@@ -44,6 +47,7 @@
     <BuildInParallel Condition="'$(BuildInParallel)' == ''">true</BuildInParallel>
     <NuGetPublishingSource Condition=" '$(NuGetPublishingSource)' == '' ">http://psget/PSGallery/api/v2/</NuGetPublishingSource>
     <Scope Condition=" $(Scope) == '' " >all</Scope>
+    <SkipHelp Condition =" '$(SkipHelp)' == '' ">false</SkipHelp>
   </PropertyGroup>
   <ItemGroup>
     <CmdletSolutionsToBuild Include=".\src\Storage\Storage.sln;.\src\ResourceManager\**\*.sln;.\src\ServiceManagement\ServiceManagement.sln;"
@@ -176,22 +180,29 @@
   <!-- Build all flavors of the Cmdlets -->
   <Target Name="Build" DependsOnTargets="RestoreNugetPackages;BuildMsBuildTask">
     <Message Importance="high" Text="Building Cmdlets..." />
+
+    <MakeDir Directories="$(PackageDirectory)" />
+    <Exec ContinueOnError="false" 
+      Command="$(PowerShellCommand) -NonInteractive -NoLogo -NoProfile -Command &quot; . $(LibraryToolsFolder)\CreateMappings.ps1 -RootPath $(LibrarySourceFolder) -OutputFile $(PackageDirectory)\groupMapping.json -WarningFile $(PackageDirectory)\groupMappingWarnings.json -RulesFile $(LibraryToolsFolder)\CreateMappings_rules.json &quot;" />
 	
     <MSBuild
       Projects="@(CmdletSolutionsToBuild)"
       Targets="Build"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
       BuildInParallel="$(BuildInParallel)"
-      ContinueOnError="false" />
-	
+      ContinueOnError="false" />   	
+
+    <Exec Command="$(PowerShellCommand) -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration) &quot;"
+    	ContinueOnError="false"
+    	Condition=" '$(SkipHelp)' == 'false' "/>
     <CallTarget Targets="BuildSetupTest"/>
-	<CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />	
-	<CallTarget Targets="BuildSetup"/>
-	<CallTarget Targets="CodeSignInstaller"
-                Condition=" '$(CodeSign)' == 'true' and '$(Scope)' == 'all'" />
-	
-	<Message Importance="high" Text="Running Static Analyser" />
-    <CallTarget targets="DependencyAnalysis" />
+    <CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />	
+	  <CallTarget Targets="BuildSetup" Condition=" '$(SkipHelp)' == 'false' "/>
+	  <CallTarget Targets="CodeSignInstaller"
+      Condition=" '$(CodeSign)' == 'true' and '$(Scope)' == 'all'" />
+	  <Message Importance="high" Text="Running Static Analyser" />
+    <CallTarget targets="DependencyAnalysis" ContinueOnError="ErrorAndContinue" />
+    <Exec Command="$(PowerShellCommand) -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\CleanupBuild.ps1 -BuildConfig $(Configuration) &quot;" />
   </Target>
   
   <!-- Do everything possible -->
@@ -248,6 +259,7 @@
     <ItemGroup>
       <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\Microsoft*Azure*Commands*.dll" />
       <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\Microsoft.Azure.Common.Extensions.dll" />
+	  <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\Microsoft.Azure.Management.Sql.Legacy.dll" />
 	  <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\PowerShellSetup.Test.dll" />
       <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.ps1" />
       <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.psm1" />

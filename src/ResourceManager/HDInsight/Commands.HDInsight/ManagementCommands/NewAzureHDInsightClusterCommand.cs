@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
@@ -127,6 +128,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                     DefaultStorageAccountKey = _defaultStorageAccountKey,
                     WorkerNodeSize = parameters.WorkerNodeSize,
                     HeadNodeSize = parameters.HeadNodeSize,
+                    EdgeNodeSize = parameters.EdgeNodeSize,
                     ZookeeperNodeSize = parameters.ZookeeperNodeSize,
                     HiveMetastore = HiveMetastore,
                     OozieMetastore = OozieMetastore,
@@ -176,6 +178,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 }
                 parameters.WorkerNodeSize = value.WorkerNodeSize;
                 parameters.HeadNodeSize = value.HeadNodeSize;
+                parameters.EdgeNodeSize = value.EdgeNodeSize;
                 parameters.ZookeeperNodeSize = value.ZookeeperNodeSize;
                 HiveMetastore = value.HiveMetastore;
                 OozieMetastore = value.OozieMetastore;
@@ -252,6 +255,13 @@ namespace Microsoft.Azure.Commands.HDInsight
         {
             get { return parameters.WorkerNodeSize; }
             set { parameters.WorkerNodeSize = value; }
+        }
+
+        [Parameter(HelpMessage = "Gets or sets the size of the Edge Node if available for the cluster type.")]
+        public string EdgeNodeSize
+        {
+            get { return parameters.EdgeNodeSize; }
+            set { parameters.EdgeNodeSize = value; }
         }
 
         [Parameter(HelpMessage = "Gets or sets the size of the Zookeeper Node.")]
@@ -476,17 +486,17 @@ namespace Microsoft.Azure.Commands.HDInsight
                 return tenantId;
             }
 
-            var tenantIdStr = DefaultProfile.Context.Subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants).FirstOrDefault();
+            var tenantIdStr = DefaultProfile.DefaultContext.Subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants).FirstOrDefault();
             return new Guid(tenantIdStr);
         }
 
         //Get ApplicationId for the given ObjectId.
         private Guid GetApplicationId()
         {
-            GraphRbacManagementClient graphClient = AzureSession.ClientFactory.CreateArmClient<GraphRbacManagementClient>(
-                DefaultProfile.Context, AzureEnvironment.Endpoint.Graph);
+            GraphRbacManagementClient graphClient = AzureSession.Instance.ClientFactory.CreateArmClient<GraphRbacManagementClient>(
+                DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.Graph);
 
-            graphClient.TenantID = DefaultProfile.Context.Tenant.Id.ToString();
+            graphClient.TenantID = DefaultProfile.DefaultContext.Tenant.Id.ToString();
 
             Microsoft.Azure.Graph.RBAC.Models.ServicePrincipal sp = graphClient.ServicePrincipals.Get(ObjectId.ToString());
 

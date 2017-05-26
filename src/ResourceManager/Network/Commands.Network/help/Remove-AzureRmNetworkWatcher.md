@@ -13,6 +13,7 @@ Removes a Network Watcher.
 
 ```
 Remove-AzureRmNetworkWatcher -Name <String> -ResourceGroupName <String> [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,6 +109,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
@@ -120,6 +124,7 @@ Accept wildcard characters: False
 Keywords: azure, azurerm, arm, resource, management, manager, network, networking, network watcher
 
 ## RELATED LINKS
+
 [New-AzureRmNetworkWatcher]()
 [Get-AzureRmNetworkWatcher]()
 

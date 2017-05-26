@@ -15,25 +15,22 @@ Gets the copy status of an Azure Storage blob.
 ### NamePipeline (Default)
 ```
 Get-AzureStorageBlobCopyState [-Blob] <String> [-Container] <String> [-WaitForComplete]
- [-Context <AzureStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-ConcurrentTaskCount <Int32>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [-PipelineVariable <String>] [<CommonParameters>]
+ [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ### BlobPipeline
 ```
-Get-AzureStorageBlobCopyState -CloudBlob <CloudBlob> [-WaitForComplete] [-Context <AzureStorageContext>]
+Get-AzureStorageBlobCopyState -CloudBlob <CloudBlob> [-WaitForComplete] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-PipelineVariable <String>]
  [<CommonParameters>]
 ```
 
 ### ContainerPipeline
 ```
 Get-AzureStorageBlobCopyState -CloudBlobContainer <CloudBlobContainer> [-Blob] <String> [-WaitForComplete]
- [-Context <AzureStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-ConcurrentTaskCount <Int32>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [-PipelineVariable <String>] [<CommonParameters>]
+ [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,70 +79,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Container
-Specifies the name of a container.
-This cmdlet gets the copy status for a blob in the container that this parameter specifies.
-
-```yaml
-Type: String
-Parameter Sets: NamePipeline
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WaitForComplete
-Indicates that this cmdlet waits for the copy to finish.
-If you do not specify this parameter, this cmdlet returns a result immediately.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Context
-Specifies an Azure storage context.
-To obtain a storage context, use the New-AzureStorageContext cmdlet.
-
-```yaml
-Type: AzureStorageContext
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -ServerTimeoutPerRequest
-Specifies the service side time-out interval, in seconds, for a request.
-If the specified interval elapses before the service processes the request, the storage service returns an error.
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ClientTimeoutPerRequest
 Specifies the client-side time-out interval, in seconds, for one service request.
 If the previous call fails in the specified interval, this cmdlet retries the request.
@@ -155,64 +88,6 @@ If this cmdlet does not receive a successful response before the interval elapse
 Type: Int32
 Parameter Sets: (All)
 Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConcurrentTaskCount
-Specifies the maximum concurrent network calls.
-You can use this parameter to limit the concurrency to throttle local CPU and bandwidth usage by specifying the maximum number of concurrent network calls.
-The specified value is an absolute count and is not multiplied by the core count.
-This parameter can help reduce network connection problems in low bandwidth environments, such as 100 kilobits per second.
-The default value is 10.
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
 
 Required: False
 Position: Named
@@ -254,13 +129,81 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PipelineVariable
-Stores the value of the current pipeline element as a variable, for any named command as it flows through the pipeline.
+### -ConcurrentTaskCount
+Specifies the maximum concurrent network calls.
+You can use this parameter to limit the concurrency to throttle local CPU and bandwidth usage by specifying the maximum number of concurrent network calls.
+The specified value is an absolute count and is not multiplied by the core count.
+This parameter can help reduce network connection problems in low bandwidth environments, such as 100 kilobits per second.
+The default value is 10.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Container
+Specifies the name of a container.
+This cmdlet gets the copy status for a blob in the container that this parameter specifies.
 
 ```yaml
 Type: String
+Parameter Sets: NamePipeline
+Aliases: 
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Context
+Specifies an Azure storage context.
+To obtain a storage context, use the New-AzureStorageContext cmdlet.
+
+```yaml
+Type: IStorageContext
 Parameter Sets: (All)
-Aliases: pv
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -ServerTimeoutPerRequest
+Specifies the service side time-out interval, in seconds, for a request.
+If the specified interval elapses before the service processes the request, the storage service returns an error.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WaitForComplete
+Indicates that this cmdlet waits for the copy to finish.
+If you do not specify this parameter, this cmdlet returns a result immediately.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
 Position: Named

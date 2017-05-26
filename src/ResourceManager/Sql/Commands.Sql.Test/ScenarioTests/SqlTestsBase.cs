@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,6 @@ using Microsoft.Azure.Commands.ScenarioTest.Mocks;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -27,10 +26,14 @@ using Microsoft.WindowsAzure.Management.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Xunit.Abstractions;
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
+    using Common.Authentication.Abstractions;
+    using ResourceManager.Common;
     using System.IO;
 
     public class SqlTestsBase : RMTestBase
@@ -42,23 +45,29 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
         public string UserDomain { get; private set; }
 
-        protected SqlTestsBase()
+        protected SqlTestsBase(ITestOutputHelper output)
         {
             helper = new SqlEvnSetupHelper();
+
+            XunitTracingInterceptor tracer = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(tracer);
+            helper.TracingInterceptor = tracer;
         }
 
         protected virtual void SetupManagementClients(RestTestFramework.MockContext context)
         {
-            var sqlCSMClient = GetSqlClient();
+            var sqlClient = GetSqlClient(context);
+            var sqlLegacyClient = GetLegacySqlClient();
             var storageClient = GetStorageClient();
             //TODO, Remove the MockDeploymentFactory call when the test is re-recorded
             var resourcesClient = MockDeploymentClientFactory.GetResourceClient(GetResourcesClient());
             var authorizationClient = GetAuthorizationManagementClient();
-            helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, resourcesClient, authorizationClient);
+            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, storageClient, resourcesClient, authorizationClient);
         }
         
         protected void RunPowerShellTest(params string[] scripts)
         {
+            TestExecutionHelpers.SetUpSessionAndProfile();
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
 
@@ -93,9 +102,23 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             }
         }
 
-        protected SqlManagementClient GetSqlClient()
+        protected Management.Sql.SqlManagementClient GetSqlClient(RestTestFramework.MockContext context)
         {
-            SqlManagementClient client = TestBase.GetServiceClient<SqlManagementClient>(new CSMTestEnvironmentFactory());
+            Management.Sql.SqlManagementClient client =
+                context.GetServiceClient<Management.Sql.SqlManagementClient>(
+                    RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                client.LongRunningOperationRetryTimeout = 0;
+            }
+            return client;
+        }
+
+        protected Management.Sql.LegacySdk.SqlManagementClient GetLegacySqlClient()
+        {
+            Management.Sql.LegacySdk.SqlManagementClient client = 
+                TestBase.GetServiceClient<Management.Sql.LegacySdk.SqlManagementClient>(
+                    new CSMTestEnvironmentFactory());
             if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
                 client.LongRunningOperationInitialTimeout = 0;
@@ -155,12 +178,12 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                 if (HttpMockServer.Variables.ContainsKey(TenantIdKey))
                 {
                     tenantId = HttpMockServer.Variables[TenantIdKey];
-                    AzureRmProfileProvider.Instance.Profile.Context.Tenant.Id = new Guid(tenantId);
+                    AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id = tenantId;
                 }
                 if (HttpMockServer.Variables.ContainsKey(DomainKey))
                 {
                     UserDomain = HttpMockServer.Variables[DomainKey];
-                    AzureRmProfileProvider.Instance.Profile.Context.Tenant.Domain = UserDomain;
+                    AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Directory = UserDomain;
                 }
             }
 

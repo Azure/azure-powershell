@@ -27,6 +27,8 @@ using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.MockServer;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.Utilities;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cmdlet
 {
@@ -47,13 +49,13 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
             var account = new AzureAccount {Id = "mockAccount", Type = AzureAccount.AccountType.User};
             var subscription = new AzureSubscription
             {
-                Account = "mockAccount",
-                Environment = EnvironmentName.AzureCloud,
-                Id = Guid.NewGuid(),
+                Id = Guid.NewGuid().ToString(),
                 Name = "mockSubscription"
             };
-            profile.Accounts.Add(account.Id, account);
-            profile.Subscriptions.Add(subscription.Id, subscription);
+            subscription.SetAccount("mockAccount");
+            subscription.SetEnvironment(EnvironmentName.AzureCloud);
+            profile.AccountTable.Add(account.Id, account);
+            profile.SubscriptionTable.Add(subscription.GetId(), subscription);
             profile.DefaultSubscription = subscription;
             contextCmdlet.Profile = profile;
 

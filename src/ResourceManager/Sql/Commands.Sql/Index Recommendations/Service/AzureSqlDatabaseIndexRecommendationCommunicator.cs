@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,11 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Model;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
 using System.Collections.Generic;
 
@@ -41,19 +42,19 @@ namespace Microsoft.Azure.Commands.Sql.Service
         /// <summary>
         /// Gets or set the Azure subscription
         /// </summary>
-        private static AzureSubscription Subscription { get; set; }
+        private static IAzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Creates a communicator for Azure Sql Databases
         /// </summary>
         /// <param name="profile"></param>
         /// <param name="subscription"></param>
-        public AzureSqlDatabaseIndexRecommendationCommunicator(AzureContext context)
+        public AzureSqlDatabaseIndexRecommendationCommunicator(IAzureContext context)
         {
             Context = context;
             if (context.Subscription != Subscription)
@@ -73,7 +74,7 @@ namespace Microsoft.Azure.Commands.Sql.Service
         /// <returns>List of all recommended indexes for specified server</returns>
         public List<IndexRecommendation> ListRecommendedIndexes(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
         {
-            var databases = new List<Management.Sql.Models.Database>();
+            var databases = new List<Management.Sql.LegacySdk.Models.Database>();
 
             var recommendedIndexes = new List<IndexRecommendation>();
             if (string.IsNullOrEmpty(databaseName))
@@ -139,7 +140,7 @@ namespace Microsoft.Azure.Commands.Sql.Service
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
-                SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+                SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
             SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
             SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);

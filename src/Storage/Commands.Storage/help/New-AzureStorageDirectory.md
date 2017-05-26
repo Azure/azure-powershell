@@ -14,24 +14,21 @@ Creates a directory.
 
 ### ShareName (Default)
 ```
-New-AzureStorageDirectory [-ShareName] <String> [-Path] <String> [-Context <AzureStorageContext>]
+New-AzureStorageDirectory [-ShareName] <String> [-Path] <String> [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-PipelineVariable <String>]
  [<CommonParameters>]
 ```
 
 ### Share
 ```
 New-AzureStorageDirectory [-Share] <CloudFileShare> [-Path] <String> [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [-PipelineVariable <String>] [<CommonParameters>]
+ [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ### Directory
 ```
 New-AzureStorageDirectory [-Directory] <CloudFileDirectory> [-Path] <String> [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [-PipelineVariable <String>] [<CommonParameters>]
+ [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,69 +53,6 @@ This command uses the **Get-AzureStorageShare** cmdlet to get the file share nam
 The current cmdlet creates the folder named ContosoWorkingFolder in ContosoShare06.
 
 ## PARAMETERS
-
-### -ShareName
-Specifies the name of the file share.
-This cmdlet creates a folder in the file share that this parameter specifies.
-
-```yaml
-Type: String
-Parameter Sets: ShareName
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Path
-Specifies the path of a folder.
-This cmdlet creates a folder for the path that this cmdlet specifies.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -Context
-Specifies an Azure storage context.
-To obtain a storage context, use the [New-AzureStorageContext](./New-AzureStorageContext.md) cmdlet.
-
-```yaml
-Type: AzureStorageContext
-Parameter Sets: ShareName
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -ServerTimeoutPerRequest
-Specifies the length of the time-out period for the server part of a request.
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ClientTimeoutPerRequest
 Specifies the client-side time-out interval, in seconds, for one service request.
@@ -156,37 +90,63 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -Context
+Specifies an Azure storage context.
+To obtain a storage context, use the [New-AzureStorageContext](./New-AzureStorageContext.md) cmdlet.
 
 ```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
+Type: IStorageContext
+Parameter Sets: ShareName
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
+### -Directory
+Specifies a folder as a **CloudFileDirectory** object.
+This cmdlet creates the folder in the location that this parameter specifies.
+To obtain a directory, use the New-AzureStorageDirectory cmdlet.
+You can also use the Get-AzureStorageFile cmdlet to obtain a directory.
+
+```yaml
+Type: CloudFileDirectory
+Parameter Sets: Directory
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Path
+Specifies the path of a folder.
+This cmdlet creates a folder for the path that this cmdlet specifies.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -ServerTimeoutPerRequest
+Specifies the length of the time-out period for the server part of a request.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
 Position: Named
@@ -214,34 +174,17 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Directory
-Specifies a folder as a **CloudFileDirectory** object.
-This cmdlet creates the folder in the location that this parameter specifies.
-To obtain a directory, use the New-AzureStorageDirectory cmdlet.
-You can also use the Get-AzureStorageFile cmdlet to obtain a directory.
+### -ShareName
+Specifies the name of the file share.
+This cmdlet creates a folder in the file share that this parameter specifies.
 
 ```yaml
-Type: CloudFileDirectory
-Parameter Sets: Directory
+Type: String
+Parameter Sets: ShareName
 Aliases: 
 
 Required: True
 Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -PipelineVariable
-Stores the value of the current pipeline element as a variable, for any named command as it flows through the pipeline.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: pv
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

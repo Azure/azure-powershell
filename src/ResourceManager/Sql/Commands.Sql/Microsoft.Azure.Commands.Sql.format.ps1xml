@@ -37,5 +37,67 @@
         </ListEntries>
       </ListControl>
     </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AzureSqlFailoverGroupModel</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AzureSqlFailoverGroupModel</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>FailoverGroupName</Label>
+                <PropertyName>FailoverGroupName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ResourceGroupName</Label>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ServerName</Label>
+                <PropertyName>ServerName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PartnerLocation</Label>
+                <PropertyName>PartnerLocation</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PartnerResourceGroupName</Label>
+                <PropertyName>PartnerResourceGroupName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PartnerServerName</Label>
+                <PropertyName>PartnerServerName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ReplicationRole</Label>
+                <PropertyName>ReplicationRole</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ReplicationState</Label>
+                <PropertyName>ReplicationState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ReadWriteFailoverPolicy</Label>
+                <PropertyName>ReadWriteFailoverPolicy</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>FailoverWithDataLossGracePeriodHours</Label>
+                <PropertyName>FailoverWithDataLossGracePeriodHours</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>DatabaseNames</Label>
+                <PropertyName>DatabaseNames</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
   </ViewDefinitions>
 </Configuration>

@@ -14,7 +14,7 @@ Regenerates a storage key for an Azure Storage account.
 
 ```
 New-AzureRmStorageAccountKey [-ResourceGroupName] <String> [-Name] <String> [-KeyName] <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,16 +31,21 @@ This command regenerates a storage key for the specified Storage account.
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the name of the resource group that contains the Storage account.
+### -KeyName
+Specifies which key to regenerate.
+The acceptable values for this parameter are:
+
+- key1 
+- key2
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: key1, key2
 
 Required: True
-Position: 0
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -61,12 +66,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -KeyName
-Specifies which key to regenerate.
-The acceptable values for this parameter are:
-
-- key1 
-- key2
+### -ResourceGroupName
+Specifies the name of the resource group that contains the Storage account.
 
 ```yaml
 Type: String
@@ -74,48 +75,9 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 2
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -90,12 +90,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             else if (!string.IsNullOrEmpty(resourceGroupName))
             {
                 var result = AvailabilitySetsClient.List(resourceGroupName);
+                var resultList = result.ToList();
                 var psObject = new List<PSAvailabilitySetList>();
-                foreach (var r in result)
+                foreach (var r in resultList)
                 {
                     psObject.Add(Mapper.Map<AvailabilitySet, PSAvailabilitySetList>(r));
                 }
-                WriteObject(psObject);
+                WriteObject(psObject, true);
             }
         }
 

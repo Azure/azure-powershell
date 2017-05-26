@@ -15,15 +15,13 @@ Adds a front-end IP configuration to an application gateway.
 ### SetByResourceId
 ```
 Add-AzureRmApplicationGatewayFrontendIPConfig -ApplicationGateway <PSApplicationGateway> -Name <String>
- [-PrivateIPAddress <String>] [-SubnetId <String>] [-PublicIPAddressId <String>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-PrivateIPAddress <String>] [-SubnetId <String>] [-PublicIPAddressId <String>] [<CommonParameters>]
 ```
 
 ### SetByResource
 ```
 Add-AzureRmApplicationGatewayFrontendIPConfig -ApplicationGateway <PSApplicationGateway> -Name <String>
- [-PrivateIPAddress <String>] [-Subnet <PSSubnet>] [-PublicIPAddress <PSPublicIpAddress>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-PrivateIPAddress <String>] [-Subnet <PSSubnet>] [-PublicIPAddress <PSPublicIpAddress>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -123,15 +121,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubnetId
-Specifies the subnet ID which this cmdlet adds as the front-end IP configuration.
-Passing subnet implies private IP.
-If the *PrivateIPAddresss* parameter is specified, it should belong to this subnet.
-Otherwise, one of the IP from this subnet is dynamically picked up as the front-end IP of the application gateway.
+### -PublicIPAddress
+Specifies the public IP address which this cmdlet adds as a front-end IP address for the application gateway.
 
 ```yaml
-Type: String
-Parameter Sets: SetByResourceId
+Type: PSPublicIpAddress
+Parameter Sets: SetByResource
 Aliases: 
 
 Required: False
@@ -148,45 +143,6 @@ Specifies the ID of the public IP address which this cmdlet adds as a front-end 
 Type: String
 Parameter Sets: SetByResourceId
 Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
 
 Required: False
 Position: Named
@@ -213,12 +169,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicIPAddress
-Specifies the public IP address which this cmdlet adds as a front-end IP address for the application gateway.
+### -SubnetId
+Specifies the subnet ID which this cmdlet adds as the front-end IP configuration.
+Passing subnet implies private IP.
+If the *PrivateIPAddresss* parameter is specified, it should belong to this subnet.
+Otherwise, one of the IP from this subnet is dynamically picked up as the front-end IP of the application gateway.
 
 ```yaml
-Type: PSPublicIpAddress
-Parameter Sets: SetByResource
+Type: String
+Parameter Sets: SetByResourceId
 Aliases: 
 
 Required: False

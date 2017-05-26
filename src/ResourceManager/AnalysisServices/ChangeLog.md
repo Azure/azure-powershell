@@ -19,6 +19,15 @@
 -->
 ## Current Release
 
+* New SKUs added: B1, B2, S0
+* Scale up/down support added
+
+## Version 0.3.0
+
+## Version 0.2.0
+
+## Version 0.1.0
+
 ## Version 0.0.4
 * Added State property in additional to ProvisioningState
     - All the cmdlet returning AnalysisService would have a new property 'State' used outside of provisioing.

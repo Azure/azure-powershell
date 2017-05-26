@@ -19,6 +19,19 @@
 -->
 ## Current Release
 
+## Version 3.0.0
+* Add support for catalog package get and list
+* Add support for listing the following catalog items from deeper ancestors:
+  * Table
+  * TVF
+  * View
+  * Statistics
+
+## Version 2.8.0
+* Fix help for some commands to have the proper verbage and examples.
+
+## Version 2.7.0
+
 ## Version 2.6.0
 * Add Firewall Rule support to Data Lake Analytics:
     - Add-AzureRMDataLakeAnalyticsFirewallRule

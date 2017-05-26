@@ -15,16 +15,14 @@ Adds an IP configuration to a virtual network gateway.
 ### SetByResourceId
 ```
 Add-AzureRmVirtualNetworkGatewayIpConfig -VirtualNetworkGateway <PSVirtualNetworkGateway> -Name <String>
- [-PrivateIpAddress <String>] [-SubnetId <String>] [-PublicIpAddressId <String>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
+ [-PrivateIpAddress <String>] [-SubnetId <String>] [-PublicIpAddressId <String>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### SetByResource
 ```
 Add-AzureRmVirtualNetworkGatewayIpConfig -VirtualNetworkGateway <PSVirtualNetworkGateway> -Name <String>
- [-PrivateIpAddress <String>] [-Subnet <PSSubnet>] [-PublicIpAddress <PSPublicIpAddress>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
+ [-PrivateIpAddress <String>] [-Subnet <PSSubnet>] [-PublicIpAddress <PSPublicIpAddress>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -39,23 +37,6 @@ The **Add-AzureRmVirtualNetworkGatewayIpConfig** cmdlet adds an IP configuration
 ```
 
 ## PARAMETERS
-
-### -VirtualNetworkGateway
-Specifies a **PSVirtualNetworkGateway** object.
-This cmdlet modifies the **PSVirtualNetworkGateway** object that you specify.
-You can use the Get-AzureRmVirtualNetworkGateway cmdlet to retrieve a **PSVirtualNetworkGateway** object.
-
-```yaml
-Type: PSVirtualNetworkGateway
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -Name
 Specifies the name of the gateway IP configuration to add.
@@ -87,12 +68,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubnetId
-Specifies the ID of the subnet.
+### -PublicIpAddress
+Specifies the public IP address.
 
 ```yaml
-Type: String
-Parameter Sets: SetByResourceId
+Type: PSPublicIpAddress
+Parameter Sets: SetByResource
 Aliases: 
 
 Required: False
@@ -117,22 +98,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -Subnet
+Specifies a **PSSubnet** object.
 
 ```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
+Type: PSSubnet
+Parameter Sets: SetByResource
+Aliases: 
 
 Required: False
 Position: Named
@@ -141,13 +113,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
+### -SubnetId
+Specifies the ID of the subnet.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: iv
+Parameter Sets: SetByResourceId
+Aliases: 
 
 Required: False
 Position: Named
@@ -156,19 +128,20 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+### -VirtualNetworkGateway
+Specifies a **PSVirtualNetworkGateway** object.
+This cmdlet modifies the **PSVirtualNetworkGateway** object that you specify.
+You can use the Get-AzureRmVirtualNetworkGateway cmdlet to retrieve a **PSVirtualNetworkGateway** object.
 
 ```yaml
-Type: SwitchParameter
+Type: PSVirtualNetworkGateway
 Parameter Sets: (All)
-Aliases: wi
+Aliases: 
 
-Required: False
+Required: True
 Position: Named
-Default value: False
-Accept pipeline input: False
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -187,32 +160,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Subnet
-Specifies a **PSSubnet** object.
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
-Type: PSSubnet
-Parameter Sets: SetByResource
-Aliases: 
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PublicIpAddress
-Specifies the public IP address.
-
-```yaml
-Type: PSPublicIpAddress
-Parameter Sets: SetByResource
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

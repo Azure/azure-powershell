@@ -14,28 +14,25 @@ Gets a network interface.
 
 ### NoExpandStandAloneNic (Default)
 ```
-Get-AzureRmNetworkInterface [-Name <String>] [-ResourceGroupName <String>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
-```
-
-### NoExpandScaleSetNic
-```
-Get-AzureRmNetworkInterface [-Name <String>] -ResourceGroupName <String> [-VirtualMachineScaleSetName <String>]
- [-VirtualMachineIndex <String>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+Get-AzureRmNetworkInterface [-Name <String>] [-ResourceGroupName <String>] [<CommonParameters>]
 ```
 
 ### ExpandStandAloneNic
 ```
 Get-AzureRmNetworkInterface -Name <String> -ResourceGroupName <String> -ExpandResource <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [<CommonParameters>]
+```
+
+### NoExpandScaleSetNic
+```
+Get-AzureRmNetworkInterface [-Name <String>] -ResourceGroupName <String> [-VirtualMachineScaleSetName <String>]
+ [-VirtualMachineIndex <String>] [<CommonParameters>]
 ```
 
 ### ExpandScaleSetNic
 ```
 Get-AzureRmNetworkInterface -Name <String> -ResourceGroupName <String> -VirtualMachineScaleSetName <String>
- -VirtualMachineIndex <String> -ExpandResource <String> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ -VirtualMachineIndex <String> -ExpandResource <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,6 +55,19 @@ PS C:\>Get-AzureRmNetworkInterface -ResourceGroupName "ResourceGroup1" | Where-O
 This command gets all network interfaces in the resource group named ResourceGroup1 that has a provisioning state of succeeded.
 
 ## PARAMETERS
+
+### -ExpandResource
+```yaml
+Type: String
+Parameter Sets: ExpandStandAloneNic, ExpandScaleSetNic
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of the network interface that this cmdlet gets.
@@ -103,7 +113,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: NoExpandScaleSetNic, ExpandStandAloneNic, ExpandScaleSetNic
+Parameter Sets: ExpandStandAloneNic, NoExpandScaleSetNic, ExpandScaleSetNic
 Aliases: 
 
 Required: True
@@ -113,60 +123,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ExpandResource
-```yaml
-Type: String
-Parameter Sets: ExpandStandAloneNic, ExpandScaleSetNic
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -VirtualMachineScaleSetName
-Specifies the name of the virtual machine scale set from which this cmdlet gets network interfaces.
+### -VirtualMachineIndex
+Specifies the virtual machine index of the virtual machine scale set from which this cmdlet gets network interfaces.
 
 ```yaml
 Type: String
@@ -192,8 +150,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -VirtualMachineIndex
-Specifies the virtual machine index of the virtual machine scale set from which this cmdlet gets network interfaces.
+### -VirtualMachineScaleSetName
+Specifies the name of the virtual machine scale set from which this cmdlet gets network interfaces.
 
 ```yaml
 Type: String

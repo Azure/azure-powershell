@@ -12,16 +12,15 @@ Gets a virtual network in a resource group.
 
 ## SYNTAX
 
+### NoExpand
+```
+Get-AzureRmVirtualNetwork [-Name <String>] [-ResourceGroupName <String>] [<CommonParameters>]
+```
+
 ### Expand
 ```
 Get-AzureRmVirtualNetwork -Name <String> -ResourceGroupName <String> -ExpandResource <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
-```
-
-### NoExpand
-```
-Get-AzureRmVirtualNetwork [-Name <String>] [-ResourceGroupName <String>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,17 +32,16 @@ The **Get-AzureRmVirtualNetwork** cmdlet gets one or more virtual networks n a r
 ```
 Get-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup
 ```
+
 This command gets the virtual network named MyVirtualNetwork in the resource group TestResourceGroup
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the virtual network that this cmdlet gets.
-
+### -ExpandResource
 ```yaml
 Type: String
 Parameter Sets: Expand
-Aliases: ResourceName
+Aliases: 
 
 Required: True
 Position: Named
@@ -52,12 +50,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Name
+Specifies the name of the virtual network that this cmdlet gets.
+
 ```yaml
 Type: String
 Parameter Sets: NoExpand
 Aliases: ResourceName
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: Expand
+Aliases: ResourceName
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -69,18 +82,6 @@ Specifies the name of the resource group that virtual network belongs to.
 
 ```yaml
 Type: String
-Parameter Sets: Expand
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
 Parameter Sets: NoExpand
 Aliases: 
 
@@ -91,46 +92,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ExpandResource
 ```yaml
 Type: String
 Parameter Sets: Expand

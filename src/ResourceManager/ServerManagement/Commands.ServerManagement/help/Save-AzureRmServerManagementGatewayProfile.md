@@ -15,14 +15,12 @@ Downloads the profile for a Server Management gateway and saves it to a local fi
 ### ByName
 ```
 Save-AzureRmServerManagementGatewayProfile [-OutputFile] <FileInfo> [-ResourceGroupName] <String>
- [-GatewayName] <String> [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ [-GatewayName] <String> [<CommonParameters>]
 ```
 
 ### ByObject
 ```
-Save-AzureRmServerManagementGatewayProfile [-OutputFile] <FileInfo> [-Gateway] <Gateway>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+Save-AzureRmServerManagementGatewayProfile [-OutputFile] <FileInfo> [-Gateway] <Gateway> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,6 +34,38 @@ The **Save-AzureRmServerManagementGatewayProfile** cmdlet downloads the profile 
 ```
 
 ## PARAMETERS
+
+### -Gateway
+Specifies the gateway that this cmdlet gets the profile for.
+
+May be used instead of specifying ResourceGroupName and GatewayName
+
+```yaml
+Type: Gateway
+Parameter Sets: ByObject
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -GatewayName
+Specifies the name of the gateway that this cmdlet gets the profile for.
+
+```yaml
+Type: String
+Parameter Sets: ByName
+Aliases: 
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -OutputFile
 Specifies the local file in which to save the profile data.
@@ -64,77 +94,6 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -GatewayName
-Specifies the name of the gateway that this cmdlet gets the profile for.
-
-```yaml
-Type: String
-Parameter Sets: ByName
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Gateway
-Specifies the gateway that this cmdlet gets the profile for.
-
-May be used instead of specifying ResourceGroupName and GatewayName
-
-```yaml
-Type: Gateway
-Parameter Sets: ByObject
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

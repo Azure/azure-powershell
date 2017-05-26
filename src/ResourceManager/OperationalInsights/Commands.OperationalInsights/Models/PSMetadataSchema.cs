@@ -22,12 +22,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         {
         }
 
-        public PSMetadataSchema(MetadataSchema schema)
+        public PSMetadataSchema(SearchMetadataSchema schema)
         {
             if (schema != null)
             {
                 this.Name = schema.Name;
-                this.Version = schema.Version;
+                this.Version = schema.Version.Value;
             }
         }
 

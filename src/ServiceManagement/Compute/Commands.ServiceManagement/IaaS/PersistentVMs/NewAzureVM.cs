@@ -28,6 +28,11 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Storage;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Storage.Adapters;
+using Microsoft.Azure.Commands.Management.Storage.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.WindowsAzure.Management.Storage;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
 {
@@ -160,11 +165,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
 
         public void NewAzureVMProcess()
         {
-            AzureSubscription currentSubscription = Profile.Context.Subscription;
+            IAzureSubscription currentSubscription = Profile.Context.Subscription;
             CloudStorageAccount currentStorage = null;
             try
             {
-                currentStorage = currentSubscription.GetCloudStorageAccount(Profile);
+                currentStorage = Profile.Context.GetCurrentStorageAccount(
+                    new RDFEStorageProvider(AzureSession.Instance.ClientFactory.CreateClient<StorageManagementClient>(
+                        Profile.Context, AzureEnvironment.Endpoint.ServiceManagement), Profile.Context.Environment));
             }
             catch (Exception ex) // couldn't access
             {

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -31,16 +32,12 @@ namespace Microsoft.Azure.Commands.Compute
     /// </summary>
     [Cmdlet(
         VerbsCommon.New,
-        AzureVMSqlServerAutoBackupConfigNoun,
+        ProfileNouns.VirtualMachineSqlServerAutoBackupConfig,
         DefaultParameterSetName = StorageUriParamSetName),
-    Alias(
-        VerbsCommon.New + "-" + ProfileNouns.VirtualMachineSqlServerAutoBackupConfig),
     OutputType(
         typeof(AutoBackupSettings))]
     public class NewAzureVMSqlServerAutoBackupConfigCommand : AzureRMCmdlet
     {
-        protected const string AzureVMSqlServerAutoBackupConfigNoun = "AzureVMSqlServerAutoBackupConfig";
-
         protected const string StorageContextParamSetName = "StorageContextSqlServerAutoBackup";
         protected const string StorageUriParamSetName = "StorageUriSqlServerAutoBackup";
 
@@ -243,7 +240,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (!string.IsNullOrEmpty(storageName))
             {
-                var storageClient = AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.Context,
+                var storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.DefaultContext,
                         AzureEnvironment.Endpoint.ResourceManager);
 
                 var storageAccount = storageClient.StorageAccounts.GetProperties(this.ResourceGroupName, storageName);

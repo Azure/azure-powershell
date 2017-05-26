@@ -21,7 +21,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
     using System.Management.Automation;
     using Microsoft.Azure.Management.Logic;
     using Microsoft.Azure.Management.Logic.Models;
-    using Microsoft.Rest.Azure;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -74,7 +73,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         {
             return IntegrationAccountClient.SessionContentToIntegrationAccountControlNumber(
                 sessionContent: this.LogicManagementClient.Sessions
-                    .GetOrThrow(
+                    .Get(
                         resourceGroupName: resourceGroupName,
                         integrationAccountName: integrationAccountName,
                         sessionName: IntegrationAccountClient.SessionNameForGeneratedIcn(integrationAccountAgreementName))
@@ -96,16 +95,16 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
             {
                 return IntegrationAccountClient.SessionContentToIntegrationAccountControlNumber(
                     sessionContent: this.LogicManagementClient.Sessions
-                        .GetOrThrow(
+                        .Get(
                             resourceGroupName: resourceGroupName,
                             integrationAccountName: integrationAccountName,
                             sessionName: IntegrationAccountClient.SessionNameForGeneratedIcn(integrationAccountAgreementName))
                          .Content,
                     integrationAccountAgreementName: integrationAccountAgreementName);
             }
-            catch (CloudException ex)
+            catch (ErrorResponseException ex)
             {
-                if (ex.Body.Code == "SessionNotFound")
+                if (ex.Body.Error.Code == "SessionNotFound")
                 {
                     return new IntegrationAccountControlNumber { ControlNumber = Properties.Resource.GeneratedControlNumberNotFound, ControlNumberChangedTime = DateTime.MinValue };
                 }
@@ -119,14 +118,15 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// </summary>
         /// <param name="resourceGroupName">The integration account agreement resource group name.</param>
         /// <param name="integrationAccountName">The integration account name.</param>
+        /// <param name="agreementType">The agreement type.</param>
         /// <returns>List of integration account agreements.</returns>
-        public IList<QualifiedIntegrationAccountControlNumber> ListIntegrationAccountGeneratedIcns(string resourceGroupName, string integrationAccountName)
+        public IList<QualifiedIntegrationAccountControlNumber> ListIntegrationAccountGeneratedIcns(string resourceGroupName, string integrationAccountName, AgreementType agreementType)
         {
             return this
                 .ListIntegrationAccountAgreements(
                     resourceGroupName: resourceGroupName,
                     integrationAccountName: integrationAccountName)
-                .Where(agreement => agreement.AgreementType == AgreementType.X12)
+                .Where(agreement => agreement.AgreementType == agreementType)
                 .Select(agreement => new QualifiedIntegrationAccountControlNumber(
                     icn: this.TryGetIntegrationAccountGeneratedIcn(
                         resourceGroupName: resourceGroupName,

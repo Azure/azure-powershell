@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {

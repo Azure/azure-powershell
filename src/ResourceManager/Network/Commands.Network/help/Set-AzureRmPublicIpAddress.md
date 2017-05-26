@@ -13,8 +13,7 @@ Sets the goal state for a public IP address.
 ## SYNTAX
 
 ```
-Set-AzureRmPublicIpAddress -PublicIpAddress <PSPublicIpAddress> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+Set-AzureRmPublicIpAddress -PublicIpAddress <PSPublicIpAddress> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +31,7 @@ PS C:\> Set-AzureRmPublicIpAddress -PublicIpAddress $publicIp
 
 PS C:\> $publicIp = Get-AzureRmPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
 ```
+
  First command gets the public IP address resource with name $publicIPName in the resource 
     group $rgName.
     Second command sets the allocation method of the public IP address object to "Static".
@@ -49,6 +49,7 @@ PS C:\> Set-AzureRmPublicIpAddress -PublicIpAddress $publicIp
 
 PS C:\> $publicIp = Get-AzureRmPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
 ```
+
 First command gets the public IP address resource with name $publicIPName in the resource 
     group $rgName.
     Second command sets the DomainNameLabel property to the required dns prefix.
@@ -69,45 +70,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

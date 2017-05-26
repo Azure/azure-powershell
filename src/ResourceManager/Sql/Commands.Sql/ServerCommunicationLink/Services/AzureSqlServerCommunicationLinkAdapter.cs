@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,11 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model;
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -35,19 +36,19 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure Subscription
         /// </summary>
-        private AzureSubscription _subscription { get; set; }
+        private IAzureSubscription _subscription { get; set; }
 
         /// <summary>
         /// Constructs an adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlServerCommunicationLinkAdapter(AzureContext context)
+        public AzureSqlServerCommunicationLinkAdapter(IAzureContext context)
         {
             _subscription = context.Subscription;
             Context = context;
@@ -135,7 +136,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Services
         /// <param name="serverName">The name of the Azure Sql Database Server</param>
         /// <param name="link">The service response</param>
         /// <returns>The converted model</returns>
-        private AzureSqlServerCommunicationLinkModel CreateServerCommunicationLinkModelFromResponse(string resourceGroup, string serverName, Management.Sql.Models.ServerCommunicationLink link)
+        private AzureSqlServerCommunicationLinkModel CreateServerCommunicationLinkModelFromResponse(string resourceGroup, string serverName, Management.Sql.LegacySdk.Models.ServerCommunicationLink link)
         {
             AzureSqlServerCommunicationLinkModel model = new AzureSqlServerCommunicationLinkModel();
 

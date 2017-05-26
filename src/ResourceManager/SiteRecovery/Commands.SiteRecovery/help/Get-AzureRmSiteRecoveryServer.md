@@ -34,12 +34,12 @@ The **Get-AzureRmSiteRecoveryServer** cmdlet gets information about Azure Site R
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the server.
+### -FriendlyName
+Specifies the friendly name of the server.
 
 ```yaml
 Type: String
-Parameter Sets: ByName
+Parameter Sets: ByFriendlyName
 Aliases: 
 
 Required: True
@@ -49,12 +49,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FriendlyName
-Specifies the friendly name of the server.
+### -Name
+Specifies the name of the server.
 
 ```yaml
 Type: String
-Parameter Sets: ByFriendlyName
+Parameter Sets: ByName
 Aliases: 
 
 Required: True

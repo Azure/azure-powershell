@@ -16,16 +16,14 @@ Generates an SAS token for an Azure storage container.
 ```
 New-AzureStorageContainerSASToken [-Name] <String> -Policy <String> [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <AzureStorageContext>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [-PipelineVariable <String>] [<CommonParameters>]
+ [-Context <IStorageContext>] [<CommonParameters>]
 ```
 
 ### SasPermission
 ```
 New-AzureStorageContainerSASToken [-Name] <String> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <AzureStorageContext>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [-PipelineVariable <String>] [<CommonParameters>]
+ [-Context <IStorageContext>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,84 +54,19 @@ This example generates a container SAS token with shared access policy.
 
 ## PARAMETERS
 
-### -Name
-Specifies an Azure storage container name.
+### -Context
+Specifies an Azure storage context.
+You can create it by using the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: String
+Type: IStorageContext
 Parameter Sets: (All)
-Aliases: N, Container
+Aliases: 
 
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -Policy
-Specifies an Azure Stored Access Policy.
-
-```yaml
-Type: String
-Parameter Sets: SasPolicy
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Protocol
-Specifies the protocol permitted for a request.
-The acceptable values for this parameter are:
-* HttpsOnly
-* HttpsOrHttp
-
-The default value is HttpsOrHttp.
-
-```yaml
-Type: SharedAccessProtocol
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IPAddressOrRange
-Specifies the IP address or range of IP addresses from which to accept requests, such as 168.1.5.65 or 168.1.5.60-168.1.5.70.
-The range is inclusive.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StartTime
-Specifies the time at which the shared access signature becomes valid.
-
-```yaml
-Type: DateTime
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -170,58 +103,34 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Context
-Specifies an Azure storage context.
-You can create it by using the New-AzureStorageContext cmdlet.
+### -IPAddressOrRange
+Specifies the IP address or range of IP addresses from which to accept requests, such as 168.1.5.65 or 168.1.5.60-168.1.5.70.
+The range is inclusive.
 
 ```yaml
-Type: AzureStorageContext
+Type: String
 Parameter Sets: (All)
 Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
+### -Name
+Specifies an Azure storage container name.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
+Aliases: N, Container
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -240,13 +149,49 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PipelineVariable
-Stores the value of the current pipeline element as a variable, for any named command as it flows through the pipeline.
+### -Policy
+Specifies an Azure Stored Access Policy.
 
 ```yaml
 Type: String
+Parameter Sets: SasPolicy
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Protocol
+Specifies the protocol permitted for a request.
+The acceptable values for this parameter are:
+* HttpsOnly
+* HttpsOrHttp
+
+The default value is HttpsOrHttp.
+
+```yaml
+Type: SharedAccessProtocol
 Parameter Sets: (All)
-Aliases: pv
+Aliases: 
+Accepted values: HttpsOnly, HttpsOrHttp
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StartTime
+Specifies the time at which the shared access signature becomes valid.
+
+```yaml
+Type: DateTime
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
 Position: Named

@@ -13,7 +13,7 @@ Sets the Transparent Data Encryption (TDE) protector for a SQL server.
 
 ```
 Set-AzureRmSqlServerTransparentDataEncryptionProtector [-Type] <EncryptionProtectorType> [[-KeyId] <String>]
- [-ServerName] <String> [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
+ [-ServerName] <String> [-ResourceGroupName] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -138,6 +138,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.EncryptionProtectorType
@@ -151,3 +154,4 @@ System.String
 
 ## RELATED LINKS
 
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)

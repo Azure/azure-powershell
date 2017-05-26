@@ -23,8 +23,8 @@ The **Get-AzureRmSiteRecoveryVault** cmdlet gets a list of Azure Site Recovery v
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Specifies the name of the Azure resource group from which to get the recovery services object.
+### -Name
+Specifies the name of the vault.
 
 ```yaml
 Type: String
@@ -38,8 +38,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Specifies the name of the vault.
+### -ResourceGroupName
+Specifies the name of the Azure resource group from which to get the recovery services object.
 
 ```yaml
 Type: String

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         {
         }
 
-        public PSSearchListSavedSearchResponse(SearchListSavedSearchResponse searchResponse)
+        public PSSearchListSavedSearchResponse(SavedSearchesListResult searchResponse)
         {
             if (searchResponse == null)
             {
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             SearchMetadata m = searchResponse.Metadata;
             this.Metadata = new PSSearchMetadata(searchResponse.Metadata);
             this.Value = new List<PSSavedSearchValue>();
-            foreach (SavedSearchValue v in searchResponse.Value)
+            foreach (SavedSearch v in searchResponse.Value)
             {
                 this.Value.Add(new PSSavedSearchValue(v));
             }

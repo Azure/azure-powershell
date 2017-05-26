@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-ms.assetid: 128E983F-5820-484A-BBD0-F03B7E48DB9B
+ms.assetid: A4A8D996-72A2-4154-98DA-5F84CAA010B9
 online version: 
 schema: 2.0.0
 ---
@@ -14,8 +14,7 @@ Removes an existing operation.
 
 ```
 Remove-AzureRmApiManagementOperation -Context <PsApiManagementContext> -ApiId <String> -OperationId <String>
- [-PassThru] [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,11 +31,11 @@ This command removes an existing API Operation.
 
 ## PARAMETERS
 
-### -Context
-Specifies an instance of **PsApiManagementContext**.
+### -ApiId
+Specifies the identifier of the API.
 
 ```yaml
-Type: PsApiManagementContext
+Type: String
 Parameter Sets: (All)
 Aliases: 
 
@@ -47,11 +46,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ApiId
-Specifies the identifier of the API.
+### -Context
+Specifies an instance of **PsApiManagementContext**.
 
 ```yaml
-Type: String
+Type: PsApiManagementContext
 Parameter Sets: (All)
 Aliases: 
 
@@ -92,41 +91,17 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: ActionPreference
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: infa
+Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -139,21 +114,6 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named

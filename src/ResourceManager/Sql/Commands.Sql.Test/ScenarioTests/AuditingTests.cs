@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,17 +25,17 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     {
         protected override void SetupManagementClients(RestTestFramework.MockContext context)
         {
-            var sqlCSMClient = GetSqlClient();
+            var sqlClient = GetSqlClient(context);
+            var sqlLegacyClient = GetLegacySqlClient();
             var storageClient = GetStorageClient();
             var storageV2Client = GetStorageV2Client();
             var resourcesClient = GetResourcesClient();
             var authorizationClient = GetAuthorizationManagementClient();
-            helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, storageV2Client, resourcesClient, authorizationClient);
+            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, storageClient, storageV2Client, resourcesClient, authorizationClient);
         }
 
-        public AuditingTests(ITestOutputHelper output)
+        public AuditingTests(ITestOutputHelper output) : base(output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
      
         [Fact]

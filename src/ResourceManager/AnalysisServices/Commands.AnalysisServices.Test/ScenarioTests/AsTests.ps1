@@ -4,14 +4,10 @@ Tests Analysis Services server lifecycle (Create, Update, Get, List, Delete).
 #>
 function Test-AnalysisServicesServer
 {
-    param
-	(
-		$location = "West US"
-	)
-	
 	try
 	{  
 		# Creating server
+		$location = Get-Location
 		$resourceGroupName = Get-ResourceGroupName
 		$serverName = Get-AnalysisServicesServerName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
@@ -123,6 +119,60 @@ function Test-AnalysisServicesServer
 	}
 }
 
+<#
+.SYNOPSIS
+Tests scale up and down of Analysis Services server (B1 -> S2 -> S1).
+#>
+function Test-AnalysisServicesServerScaleUpDown
+{
+	try
+	{  
+		# Creating server
+		$location = Get-Location
+		$resourceGroupName = Get-ResourceGroupName
+		$serverName = Get-AnalysisServicesServerName
+		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+
+		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'B1' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'
+    
+		Assert-AreEqual $serverName $serverCreated.Name
+		Assert-AreEqual $location $serverCreated.Location
+		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverCreated.Type
+		Assert-AreEqual B1 $serverCreated.Sku.Name
+		Assert-True {$serverCreated.Id -like "*$resourceGroupName*"}
+		Assert-True {$serverCreated.ServerFullName -ne $null -and $serverCreated.ServerFullName.Contains("$serverName")}
+	
+		# Check server was created successfully
+		[array]$serverGet = Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
+		$serverGetItem = $serverGet[0]
+
+		Assert-True {$serverGetItem.ProvisioningState -like "Succeeded"}
+		Assert-True {$serverGetItem.State -like "Succeeded"}
+		
+		Assert-AreEqual $serverName $serverGetItem.Name
+		Assert-AreEqual $location $serverGetItem.Location
+		Assert-AreEqual B1 $serverGetItem.Sku.Name
+		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverGetItem.Type
+		Assert-True {$serverGetItem.Id -like "*$resourceGroupName*"}
+		
+		# Scale up B1 -> S2
+		$serverUpdated = Set-AzureRmAnalysisServicesServer -Name $serverName -Sku S2 -PassThru
+		Assert-AreEqual S2 $serverUpdated.Sku.Name
+
+		# Scale down S2 -> S1
+		$serverUpdated = Set-AzureRmAnalysisServicesServer -Name $serverName -Sku S1 -PassThru
+		Assert-AreEqual S1 $serverUpdated.Sku.Name
+		
+		# Delete Analysis Servicesserver
+		Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -PassThru
+	}
+	finally
+	{
+		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
+		Invoke-HandledCmdlet -Command {Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue} -IgnoreFailures
+	}
+}
 
 <#
 .SYNOPSIS
@@ -130,16 +180,15 @@ Tests Analysis Services server lifecycle  Failure scenarios (Create, Update, Get
 #>
 function Test-NegativeAnalysisServicesServer
 {
-
     param
 	(
-		$location = "West US",
 		$fakeserverName = "psfakeservertest"
 	)
 	
 	try
 	{
 		# Creating Account
+		$location = Get-Location
 		$resourceGroupName = Get-ResourceGroupName
 		$serverName = Get-AnalysisServicesServerName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
@@ -188,12 +237,12 @@ function Test-AnalysisServicesServerRestart
 {
     param
 	(
-		$rolloutEnvironment = $env.ASAZURE_TEST_ROLLOUT,
-		$location = "West US"
+		$rolloutEnvironment = $env.ASAZURE_TEST_ROLLOUT
 	)
 	try
 	{
 		# Creating server
+		$location = Get-Location
 		$resourceGroupName = Get-ResourceGroupName
 		$serverName = Get-AnalysisServicesServerName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location

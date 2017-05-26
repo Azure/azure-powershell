@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,12 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model;
 using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using Microsoft.WindowsAzure.Management.Storage;
 using System;
 using System.Collections.Generic;
@@ -38,18 +39,18 @@ namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Services
         /// <summary>
         /// Gets or set the Azure subscription
         /// </summary>
-        private static AzureSubscription Subscription { get; set; }
+        private static IAzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure context
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Creates a communicator for Azure Sql Server Key
         /// </summary>
         /// <param name="context">The context</param>
-        public AzureSqlServerKeyVaultKeyCommunicator(AzureContext context)
+        public AzureSqlServerKeyVaultKeyCommunicator(IAzureContext context)
         {
             Context = context;
             if (context.Subscription != Subscription)
@@ -67,7 +68,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Services
         /// <param name="keyName">Server Key Vault Key name</param>
         /// <param name="clientRequestId">Client request Id</param>
         /// <returns>ServerKey with name keyName</returns>
-        public Microsoft.Azure.Management.Sql.Models.ServerKey Get(string resourceGroupName, string serverName, string keyName, string clientRequestId)
+        public Microsoft.Azure.Management.Sql.LegacySdk.Models.ServerKey Get(string resourceGroupName, string serverName, string keyName, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).ServerKey.Get(resourceGroupName, serverName, keyName).ServerKey;
         }
@@ -79,7 +80,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Services
         /// <param name="serverName">Sql Server name</param>
         /// <param name="clientRequestId">Client request Id</param>
         /// <returns>List of ServerKeys on the server</returns>
-        public IList<Microsoft.Azure.Management.Sql.Models.ServerKey> List(string resourceGroupName, string serverName, string clientRequestId)
+        public IList<Microsoft.Azure.Management.Sql.LegacySdk.Models.ServerKey> List(string resourceGroupName, string serverName, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).ServerKey.List(resourceGroupName, serverName).ServerKeys;
         }
@@ -93,7 +94,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Services
         /// <param name="clientRequestId">Client request Id</param>
         /// <param name="parameters">CreateOrUpdateParameters for ServerKey</param>
         /// <returns>Created ServerKey</returns>
-        public Microsoft.Azure.Management.Sql.Models.ServerKey CreateOrUpdate(string resourceGroupName, string serverName, string keyName, string clientRequestId, ServerKeyCreateOrUpdateParameters parameters)
+        public Microsoft.Azure.Management.Sql.LegacySdk.Models.ServerKey CreateOrUpdate(string resourceGroupName, string serverName, string keyName, string clientRequestId, ServerKeyCreateOrUpdateParameters parameters)
         {
             return GetCurrentSqlClient(clientRequestId).ServerKey.CreateOrUpdate(resourceGroupName, serverName, keyName, parameters).ServerKey;
         }
@@ -121,7 +122,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Services
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
-                SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+                SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
             SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
             SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);

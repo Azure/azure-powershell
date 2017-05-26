@@ -12,14 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Utilities;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -32,7 +33,6 @@ using System.Linq;
 using System.Management.Automation;
 using System.Net.Http;
 using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
@@ -58,19 +58,21 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public EnvironmentSetupHelper()
         {
+            TestExecutionHelpers.SetUpSessionAndProfile();
+            ServiceManagementProfileProvider.InitializeServiceManagementProfile();
             var datastore = new MemoryDataStore();
-            AzureSession.DataStore = datastore;
-            var profile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-            var rmprofile = new AzureRMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-            rmprofile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
-            rmprofile.Context = new AzureContext(new AzureSubscription(), new AzureAccount(), rmprofile.Environments["foo"], new AzureTenant());
-            rmprofile.Context.Subscription.Environment = "foo";
+            AzureSession.Instance.DataStore = datastore;
+            var profile = new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
+            var rmprofile = new AzureRmProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
+            rmprofile.EnvironmentTable.Add("foo", new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault()));
+            rmprofile.DefaultContext = new AzureContext(new AzureSubscription(), new AzureAccount(), rmprofile.EnvironmentTable["foo"], new AzureTenant());
+            rmprofile.DefaultContext.Subscription.SetEnvironment("foo");
             if (AzureRmProfileProvider.Instance.Profile == null)
             {
                 AzureRmProfileProvider.Instance.Profile = rmprofile;
             }
 
-            AzureSession.DataStore = datastore;
+            AzureSession.Instance.DataStore = datastore;
             ProfileClient = new ProfileClient(profile);
 
             // Ignore SSL errors
@@ -150,7 +152,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         /// <param name="initializedManagementClients"></param>
         public void SetupManagementClients(params object[] initializedManagementClients)
         {
-            AzureSession.ClientFactory = new MockClientFactory(initializedManagementClients);
+            AzureSession.Instance.ClientFactory = new MockClientFactory(initializedManagementClients);
         }
 
         /// <summary>
@@ -159,7 +161,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         /// <param name="initializedManagementClients"></param>
         public void SetupSomeOfManagementClients(params object[] initializedManagementClients)
         {
-            AzureSession.ClientFactory = new MockClientFactory(initializedManagementClients, false);
+            AzureSession.Instance.ClientFactory = new MockClientFactory(initializedManagementClients, false);
         }
 
         public void SetupEnvironment(AzureModule mode)
@@ -191,66 +193,59 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             AzureEnvironment environment = new AzureEnvironment { Name = testEnvironmentName };
 
             Debug.Assert(currentEnvironment != null);
-            environment.Endpoints[AzureEnvironment.Endpoint.ActiveDirectory] = currentEnvironment.Endpoints.AADAuthUri.AbsoluteUri;
-            environment.Endpoints[AzureEnvironment.Endpoint.Gallery] = currentEnvironment.Endpoints.GalleryUri.AbsoluteUri;
-            environment.Endpoints[AzureEnvironment.Endpoint.ServiceManagement] = currentEnvironment.BaseUri.AbsoluteUri;
-            environment.Endpoints[AzureEnvironment.Endpoint.ResourceManager] = currentEnvironment.Endpoints.ResourceManagementUri.AbsoluteUri;
-            environment.Endpoints[AzureEnvironment.Endpoint.Graph] = currentEnvironment.Endpoints.GraphUri.AbsoluteUri;
-            environment.Endpoints[AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix] = currentEnvironment.Endpoints.DataLakeAnalyticsJobAndCatalogServiceUri.OriginalString.Replace("https://", ""); // because it is just a sufix
-            environment.Endpoints[AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix] = currentEnvironment.Endpoints.DataLakeStoreServiceUri.OriginalString.Replace("https://", ""); // because it is just a sufix
+            environment.ActiveDirectoryAuthority = currentEnvironment.Endpoints.AADAuthUri.AbsoluteUri;
+            environment.GalleryUrl = currentEnvironment.Endpoints.GalleryUri.AbsoluteUri;
+            environment.ServiceManagementUrl = currentEnvironment.BaseUri.AbsoluteUri;
+            environment.ResourceManagerUrl = currentEnvironment.Endpoints.ResourceManagementUri.AbsoluteUri;
+            environment.GraphUrl = currentEnvironment.Endpoints.GraphUri.AbsoluteUri;
+            environment.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = currentEnvironment.Endpoints.DataLakeAnalyticsJobAndCatalogServiceUri.OriginalString.Replace("https://", ""); // because it is just a sufix
+            environment.AzureDataLakeStoreFileSystemEndpointSuffix = currentEnvironment.Endpoints.DataLakeStoreServiceUri.OriginalString.Replace("https://", ""); // because it is just a sufix
 
-            if (!ProfileClient.Profile.Environments.ContainsKey(testEnvironmentName))
+            if (!ProfileClient.Profile.EnvironmentTable.ContainsKey(testEnvironmentName))
             {
                 ProfileClient.AddOrSetEnvironment(environment);
             }
 
-            if (!AzureRmProfileProvider.Instance.Profile.Environments.ContainsKey(testEnvironmentName))
+            if (!AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().EnvironmentTable.ContainsKey(testEnvironmentName))
             {
-                AzureRmProfileProvider.Instance.Profile.Environments[testEnvironmentName] = environment;
+                AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().EnvironmentTable[testEnvironmentName] = environment;
             }
 
             if (currentEnvironment.SubscriptionId != null)
             {
                 testSubscription = new AzureSubscription()
                 {
-                    Id = new Guid(currentEnvironment.SubscriptionId),
+                    Id = currentEnvironment.SubscriptionId,
                     Name = testSubscriptionName,
-                    Environment = testEnvironmentName,
-                    Account = currentEnvironment.UserName,
-                    Properties = new Dictionary<AzureSubscription.Property, string>
-                    {
-                        {AzureSubscription.Property.Default, "True"},
-                        {
-                            AzureSubscription.Property.StorageAccount,
-                            Environment.GetEnvironmentVariable("AZURE_STORAGE_ACCOUNT")
-                        },
-                    }
                 };
+
+                testSubscription.SetEnvironment(testEnvironmentName);
+                testSubscription.SetAccount(currentEnvironment.UserName);
+                testSubscription.SetDefault();
+                testSubscription.SetStorageAccount(Environment.GetEnvironmentVariable("AZURE_STORAGE_ACCOUNT"));
 
                 testAccount = new AzureAccount()
                 {
                     Id = currentEnvironment.UserName,
                     Type = AzureAccount.AccountType.User,
-                    Properties = new Dictionary<AzureAccount.Property, string>
-                    {
-                        {AzureAccount.Property.Subscriptions, currentEnvironment.SubscriptionId},
-                    }
                 };
 
-                ProfileClient.Profile.Subscriptions[testSubscription.Id] = testSubscription;
-                ProfileClient.Profile.Accounts[testAccount.Id] = testAccount;
-                ProfileClient.SetSubscriptionAsDefault(testSubscription.Name, testSubscription.Account);
+                testAccount.SetSubscriptions(currentEnvironment.SubscriptionId);
 
-                var testTenant = new AzureTenant() { Id = Guid.NewGuid() };
+                ProfileClient.Profile.SubscriptionTable[testSubscription.GetId()] = testSubscription;
+                ProfileClient.Profile.AccountTable[testAccount.Id] = testAccount;
+                ProfileClient.SetSubscriptionAsDefault(testSubscription.Name, testSubscription.GetAccount());
+
+                var testTenant = new AzureTenant() { Id = Guid.NewGuid().ToString() };
                 if (!string.IsNullOrEmpty(currentEnvironment.Tenant))
                 {
                     Guid tenant;
                     if (Guid.TryParse(currentEnvironment.Tenant, out tenant))
                     {
-                        testTenant.Id = tenant;
+                        testTenant.Id = currentEnvironment.Tenant;
                     }
                 }
-                AzureRmProfileProvider.Instance.Profile.Context = new AzureContext(testSubscription, testAccount, environment, testTenant);
+                AzureRmProfileProvider.Instance.Profile.DefaultContext = new AzureContext(testSubscription, testAccount, environment, testTenant);
             }
         }
 
@@ -258,7 +253,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         {
             if(environment.AuthorizationContext.Certificate != null)
             {
-                AzureSession.AuthenticationFactory = new MockCertificateAuthenticationFactory(environment.UserName,
+                AzureSession.Instance.AuthenticationFactory = new MockCertificateAuthenticationFactory(environment.UserName,
                     environment.AuthorizationContext.Certificate);
             }
             else if(environment.AuthorizationContext.TokenCredentials.ContainsKey(TokenAudience.Management))
@@ -270,7 +265,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                     .GetAwaiter()
                     .GetResult();
 
-                AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory(
+                AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory(
                     environment.UserName,
                     httpMessage.Headers.Authorization.Parameter);
             }
@@ -369,7 +364,12 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                     if (powershell.Streams.Error.Count > 0)
                     {
                         throw new RuntimeException(
-                            "Test failed due to a non-empty error stream, check the error stream in the test log for more details.");
+                            string.Format(
+                                "Test failed due to a non-empty error stream. First error: {0}{1}",
+                                PowerShellExtensions.FormatErrorRecord(powershell.Streams.Error[0]),
+                                powershell.Streams.Error.Count > 0
+                                    ? "Check the error stream in the test log for additional errors."
+                                    : ""));
                     }
 
                     return output;

@@ -14,8 +14,7 @@ Gets an authentication certificate for an application gateway.
 
 ```
 Get-AzureRmApplicationGatewayAuthenticationCertificate [-Name <String>]
- -ApplicationGateway <PSApplicationGateway> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ -ApplicationGateway <PSApplicationGateway> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,21 +28,6 @@ The **Get-AzureRmApplicationGatewayAuthenticationCertificate** cmdlet gets an au
 ```
 
 ## PARAMETERS
-
-### -Name
-Specifies the name of the authentication certificate that this cmdlet gets.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ApplicationGateway
 Specifies the name of application gateway for which this cmdlet gets an authentication certificate.
@@ -60,37 +44,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -Name
+Specifies the name of the authentication certificate that this cmdlet gets.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
 
 Required: False
 Position: Named

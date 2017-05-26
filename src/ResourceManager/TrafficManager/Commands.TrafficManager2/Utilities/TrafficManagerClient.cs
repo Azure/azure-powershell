@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 {
+    using Common.Authentication.Abstractions;
     using Management.TrafficManager;
     using Management.TrafficManager.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
@@ -35,8 +36,8 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 
         public Action<string> ErrorLogger { get; set; }
 
-        public TrafficManagerClient(AzureContext context)
-            : this(AzureSession.ClientFactory.CreateClient<TrafficManagerManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+        public TrafficManagerClient(IAzureContext context)
+            : this(AzureSession.Instance.ClientFactory.CreateClient<TrafficManagerManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
         }
 
@@ -81,7 +82,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
             return TrafficManagerClient.GetPowershellTrafficManagerProfile(resourceGroupName, profileName, response.Profile);
         }
 
-        public TrafficManagerEndpoint CreateTrafficManagerEndpoint(string resourceGroupName, string profileName, string endpointType, string endpointName, string targetResourceId, string target, string endpointStatus, uint? weight, uint? priority, string endpointLocation, uint? minChildEndpoints)
+        public TrafficManagerEndpoint CreateTrafficManagerEndpoint(string resourceGroupName, string profileName, string endpointType, string endpointName, string targetResourceId, string target, string endpointStatus, uint? weight, uint? priority, string endpointLocation, uint? minChildEndpoints, IList<string> geoMapping)
         {
             EndpointCreateOrUpdateResponse response = this.TrafficManagerManagementClient.Endpoints.CreateOrUpdate(
                 resourceGroupName,
@@ -96,13 +97,14 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                         Type = TrafficManagerEndpoint.ToSDKEndpointType(endpointType),
                         Properties = new EndpointProperties
                         {
-                            TargetResourceId = targetResourceId,
-                            Target = target,
-                            EndpointStatus = endpointStatus,
-                            Weight = weight,
-                            Priority = priority,
                             EndpointLocation = endpointLocation,
+                            EndpointStatus = endpointStatus,
+                            GeoMapping = geoMapping,
                             MinChildEndpoints = minChildEndpoints,
+                            Priority = priority,
+                            Target = target,
+                            TargetResourceId = targetResourceId,
+                            Weight = weight,
                         }
                     }
                 });
@@ -224,13 +226,8 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
         {
             endpoint.EndpointStatus = shouldEnableEndpointStatus ? Constants.StatusEnabled : Constants.StatusDisabled;
 
-            Endpoint sdkEndpoint = endpoint.ToSDKEndpoint();
-            sdkEndpoint.Properties.EndpointLocation = null;
-            sdkEndpoint.Properties.EndpointMonitorStatus = null;
-            sdkEndpoint.Properties.Priority = null;
-            sdkEndpoint.Properties.Weight = null;
-            sdkEndpoint.Properties.Target = null;
-            sdkEndpoint.Properties.TargetResourceId = null;
+            Endpoint sdkEndpoint = endpoint.ToSDKEndpointForPatch();
+            sdkEndpoint.Properties.EndpointStatus = endpoint.EndpointStatus;
 
             var parameters = new EndpointUpdateParameters
             {
@@ -269,22 +266,14 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 
                 foreach (Endpoint endpoint in mamlProfile.Properties.Endpoints)
                 {
-                    profile.Endpoints.Add(new TrafficManagerEndpoint
-                    {
-                        Id = endpoint.Id,
-                        ResourceGroupName = resourceGroupName,
-                        ProfileName = profileName,
-                        Name = endpoint.Name,
-                        Type = endpoint.Type,
-                        TargetResourceId = endpoint.Properties.TargetResourceId,
-                        Target = endpoint.Properties.Target,
-                        EndpointStatus = endpoint.Properties.EndpointStatus,
-                        Location = endpoint.Properties.EndpointLocation,
-                        Priority = endpoint.Properties.Priority,
-                        Weight = endpoint.Properties.Weight,
-                        EndpointMonitorStatus = endpoint.Properties.EndpointMonitorStatus,
-                        MinChildEndpoints = endpoint.Properties.MinChildEndpoints,
-                    });
+                    profile.Endpoints.Add(
+                        GetPowershellTrafficManagerEndpoint(
+                            endpoint.Id,
+                            resourceGroupName,
+                            profileName,
+                            endpoint.Type,
+                            endpoint.Name, 
+                            endpoint.Properties));
                 }
             }
 
@@ -305,14 +294,16 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                 ProfileName = profileName,
                 Name = endpointName,
                 Type = endpointType,
-                TargetResourceId = mamlEndpointProperties.TargetResourceId,
-                Target = mamlEndpointProperties.Target,
+
                 EndpointStatus = mamlEndpointProperties.EndpointStatus,
-                Location = mamlEndpointProperties.EndpointLocation,
-                Priority = mamlEndpointProperties.Priority,
-                Weight = mamlEndpointProperties.Weight,
                 EndpointMonitorStatus = mamlEndpointProperties.EndpointMonitorStatus,
+                GeoMapping = mamlEndpointProperties.GeoMapping != null ? mamlEndpointProperties.GeoMapping.ToList() : null,
+                Location = mamlEndpointProperties.EndpointLocation,
                 MinChildEndpoints = mamlEndpointProperties.MinChildEndpoints,
+                Priority = mamlEndpointProperties.Priority,
+                Target = mamlEndpointProperties.Target,
+                TargetResourceId = mamlEndpointProperties.TargetResourceId,
+                Weight = mamlEndpointProperties.Weight,
             };
         }
     }

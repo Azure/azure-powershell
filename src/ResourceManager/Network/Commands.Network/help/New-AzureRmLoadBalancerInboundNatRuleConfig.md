@@ -16,16 +16,14 @@ Creates an inbound NAT rule configuration for a load balancer.
 ```
 New-AzureRmLoadBalancerInboundNatRuleConfig -Name <String> [-FrontendIpConfigurationId <String>]
  [-Protocol <String>] [-FrontendPort <Int32>] [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>]
- [-EnableFloatingIP] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ [-EnableFloatingIP] [<CommonParameters>]
 ```
 
 ### SetByResource
 ```
 New-AzureRmLoadBalancerInboundNatRuleConfig -Name <String>
  [-FrontendIpConfiguration <PSFrontendIPConfiguration>] [-Protocol <String>] [-FrontendPort <Int32>]
- [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>] [-EnableFloatingIP]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>] [-EnableFloatingIP] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,87 +48,8 @@ The *FrontendIpConfiguration*, *Procotol*, *FrontendPort*, and *BackendPort* par
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the rule configuration that this cmdlet creates.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FrontendIpConfigurationId
-Specifies the ID for a front-end IP address configuration.
-
-```yaml
-Type: String
-Parameter Sets: SetByResourceId
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Protocol
-Specifies a protocol.
-The acceptable values for this parameter are:
-
-- Tcp
-- Udp
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FrontendPort
-Specifies the front-end port that is matched by a load balancer rule configuration.
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -BackendPort
 Specifies the backend port for traffic that is matched by this rule configuration.
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdleTimeoutInMinutes
-Specifies the length of time, in minutes, for which the state of conversations is maintained in a load balancer.
 
 ```yaml
 Type: Int32
@@ -159,45 +78,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -FrontendIpConfiguration
 Specifies a list of front-end IP addresses to associate with a load balancer rule configuration.
 
@@ -205,6 +85,86 @@ Specifies a list of front-end IP addresses to associate with a load balancer rul
 Type: PSFrontendIPConfiguration
 Parameter Sets: SetByResource
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FrontendIpConfigurationId
+Specifies the ID for a front-end IP address configuration.
+
+```yaml
+Type: String
+Parameter Sets: SetByResourceId
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FrontendPort
+Specifies the front-end port that is matched by a load balancer rule configuration.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdleTimeoutInMinutes
+Specifies the length of time, in minutes, for which the state of conversations is maintained in a load balancer.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the name of the rule configuration that this cmdlet creates.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Protocol
+Specifies a protocol.
+The acceptable values for this parameter are:
+
+- Tcp
+- Udp
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Tcp, Udp
 
 Required: False
 Position: Named

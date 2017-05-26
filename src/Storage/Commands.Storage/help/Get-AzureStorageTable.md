@@ -14,15 +14,12 @@ Lists the storage tables.
 
 ### TableName (Default)
 ```
-Get-AzureStorageTable [[-Name] <String>] [-Context <AzureStorageContext>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-PipelineVariable <String>]
- [<CommonParameters>]
+Get-AzureStorageTable [[-Name] <String>] [-Context <IStorageContext>] [<CommonParameters>]
 ```
 
 ### TablePrefix
 ```
-Get-AzureStorageTable -Prefix <String> [-Context <AzureStorageContext>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [-PipelineVariable <String>] [<CommonParameters>]
+Get-AzureStorageTable -Prefix <String> [-Context <IStorageContext>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,6 +50,22 @@ This command uses the *Prefix* parameter to get storage tables whose name starts
 
 ## PARAMETERS
 
+### -Context
+Specifies the storage context.
+To create it, you can use the New-AzureStorageContext cmdlet.
+
+```yaml
+Type: IStorageContext
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the table name.
 If the table name is empty, the cmdlet lists all the tables.
@@ -67,62 +80,7 @@ Required: False
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -Context
-Specifies the storage context.
-To create it, you can use the New-AzureStorageContext cmdlet.
-
-```yaml
-Type: AzureStorageContext
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -Prefix
@@ -135,21 +93,6 @@ Parameter Sets: TablePrefix
 Aliases: 
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PipelineVariable
-Stores the value of the current pipeline element as a variable, for any named command as it flows through the pipeline.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: pv
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

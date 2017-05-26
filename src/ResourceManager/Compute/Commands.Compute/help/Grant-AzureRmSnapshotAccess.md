@@ -13,7 +13,7 @@ Grants an access to a snapshot.
 
 ```
 Grant-AzureRmSnapshotAccess [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-SnapshotName] <String>
- [-Access <AccessLevel>] [-DurationInSecond <Int32>] [<CommonParameters>]
+ [[-Access] <AccessLevel>] [[-DurationInSecond] <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,9 +37,10 @@ Specifies Access level.
 Type: AccessLevel
 Parameter Sets: (All)
 Aliases: 
+Accepted values: None, Read
 
 Required: False
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -54,7 +55,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
