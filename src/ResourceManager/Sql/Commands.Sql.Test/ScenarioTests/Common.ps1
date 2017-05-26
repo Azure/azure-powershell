@@ -356,14 +356,24 @@ function Remove-ResourceGroupForTest ($rg)
 
 <#
 	.SYNOPSIS
+	Gets the server credential
+#>
+function Get-ServerCredential
+{
+	$serverLogin = "testusername"
+	$serverPassword = "t357ingP@s5w0rd!"
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
+	return $credentials
+}
+
+<#
+	.SYNOPSIS
 	Creates the test environment needed to perform the Sql server CRUD tests
 #>
 function Create-ServerForTest ($resourceGroup, $serverVersion = "12.0", $location = "Japan East")
 {
 	$serverName = Get-ServerName
-	$serverLogin = "testusername"
-	$serverPassword = "t357ingP@s5w0rd!"
-	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
+	$credentials = Get-ServerCredential
 	
 	$server = New-AzureRmSqlServer -ResourceGroupName  $resourceGroup.ResourceGroupName -ServerName $serverName -Location $location -ServerVersion $serverVersion -SqlAdministratorCredentials $credentials
 	return $server
@@ -456,4 +466,55 @@ function Get-SqlDatabaseImportExportTestEnvironmentParameters ($testSuffix)
               databaseMaxSizeBytes = "5000000";
               authType = "Sql";
              }
+}
+
+<#
+.SYNOPSIS
+Gets valid sync group name
+#>
+function Get-SyncGroupName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid sync member name
+#>
+function Get-SyncMemberName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid sync agent name
+#>
+function Get-SyncAgentName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets the values of the parameters used by the sync group tests
+#>
+function Get-SqlSyncGroupTestEnvironmentParameters ($testSuffix)
+{
+	return @{ 
+			  intervalInSeconds = 300;
+	          conflictResolutionPolicy = "HubWin";
+			  }
+}
+
+<#
+.SYNOPSIS
+Gets the values of the parameters used by the sync member tests
+#>
+function Get-SqlSyncMemberTestEnvironmentParameters ($testSuffix)
+{
+	return @{ 
+	          syncDirection = "Bidirectional";
+			  databaseType = "AzureSqlDatabase";
+			  }
 }
