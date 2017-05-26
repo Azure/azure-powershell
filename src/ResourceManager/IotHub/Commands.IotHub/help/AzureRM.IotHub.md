@@ -12,53 +12,53 @@ Locale: en-US
 
 ## AzureRM.IotHub Cmdlets
 ### [Add-AzureRmIotHubEventHubConsumerGroup](Add-AzureRmIotHubEventHubConsumerGroup.md)
-{{Manually Enter Add-AzureRmIotHubEventHubConsumerGroup Description Here}}
+Creates an eventhub consumer group.
 
 ### [Add-AzureRmIotHubKey](Add-AzureRmIotHubKey.md)
-{{Manually Enter Add-AzureRmIotHubKey Description Here}}
+Creates an IotHub Key.
 
 ### [Get-AzureRmIotHub](Get-AzureRmIotHub.md)
-{{Manually Enter Get-AzureRmIotHub Description Here}}
+Gets information about the IotHubs in a subscription.
 
 ### [Get-AzureRmIotHubConnectionString](Get-AzureRmIotHubConnectionString.md)
-{{Manually Enter Get-AzureRmIotHubConnectionString Description Here}}
+Gets the IotHub connectionstrings.
 
 ### [Get-AzureRmIotHubEventHubConsumerGroup](Get-AzureRmIotHubEventHubConsumerGroup.md)
-{{Manually Enter Get-AzureRmIotHubEventHubConsumerGroup Description Here}}
+Gets all the eventhub consumergroups.
 
 ### [Get-AzureRmIotHubJob](Get-AzureRmIotHubJob.md)
-{{Manually Enter Get-AzureRmIotHubJob Description Here}}
+Gets the information about an IotHub job.
 
 ### [Get-AzureRmIotHubKey](Get-AzureRmIotHubKey.md)
-{{Manually Enter Get-AzureRmIotHubKey Description Here}}
+Gets an IotHub Key.
 
 ### [Get-AzureRmIotHubQuotaMetric](Get-AzureRmIotHubQuotaMetric.md)
-{{Manually Enter Get-AzureRmIotHubQuotaMetric Description Here}}
+Gets the Quota Metrics for an IotHub.
 
 ### [Get-AzureRmIotHubRegistryStatistic](Get-AzureRmIotHubRegistryStatistic.md)
-{{Manually Enter Get-AzureRmIotHubRegistryStatistic Description Here}}
+Gets the RegistryStatistics for an IotHub.
 
 ### [Get-AzureRmIotHubValidSku](Get-AzureRmIotHubValidSku.md)
-{{Manually Enter Get-AzureRmIotHubValidSku Description Here}}
+Gets all valid skus that this IotHub can transition to.
 
 ### [New-AzureRmIotHub](New-AzureRmIotHub.md)
-{{Manually Enter New-AzureRmIotHub Description Here}}
+Creates a new IotHub.
 
 ### [New-AzureRmIotHubExportDevices](New-AzureRmIotHubExportDevices.md)
-{{Manually Enter New-AzureRmIotHubExportDevices Description Here}}
+Creates a new export devices job.
 
 ### [New-AzureRmIotHubImportDevices](New-AzureRmIotHubImportDevices.md)
-{{Manually Enter New-AzureRmIotHubImportDevices Description Here}}
+Creates a new import devices job.
 
 ### [Remove-AzureRmIotHub](Remove-AzureRmIotHub.md)
-{{Manually Enter Remove-AzureRmIotHub Description Here}}
+Deletes an IotHub.
 
 ### [Remove-AzureRmIotHubEventHubConsumerGroup](Remove-AzureRmIotHubEventHubConsumerGroup.md)
-{{Manually Enter Remove-AzureRmIotHubEventHubConsumerGroup Description Here}}
+Deletes an eventhub consumergroup.
 
 ### [Remove-AzureRmIotHubKey](Remove-AzureRmIotHubKey.md)
-{{Manually Enter Remove-AzureRmIotHubKey Description Here}}
+Removes an IotHub Key.
 
 ### [Set-AzureRmIotHub](Set-AzureRmIotHub.md)
-{{Manually Enter Set-AzureRmIotHub Description Here}}
+Updates the properties of an IotHub.
 

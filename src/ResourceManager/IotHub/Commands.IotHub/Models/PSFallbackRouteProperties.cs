@@ -26,17 +26,17 @@ namespace Microsoft.Azure.Management.IotHub.Models
     /// The properties related to the fallback route based on which the IoT
     /// hub routes messages to the fallback endpoint.
     /// </summary>
-    public partial class PSFallbackRouteProperties
+    public partial class PSFallbackRouteMetadata
     {
         /// <summary>
         /// Initializes a new instance of the FallbackRouteProperties class.
         /// </summary>
-        public PSFallbackRouteProperties() { }
+        public PSFallbackRouteMetadata() { }
 
         /// <summary>
         /// Initializes a new instance of the FallbackRouteProperties class.
         /// </summary>
-        public PSFallbackRouteProperties(IList<string> endpointNames, bool isEnabled, string condition = default(string))
+        public PSFallbackRouteMetadata(IList<string> endpointNames, bool isEnabled, string condition = default(string))
         {
             Condition = condition;
             EndpointNames = endpointNames;
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.IotHub.Models
         /// <summary>
         /// Static constructor for FallbackRouteProperties class.
         /// </summary>
-        static PSFallbackRouteProperties()
+        static PSFallbackRouteMetadata()
         {
             Source = "DeviceMessages";
         }

@@ -14,13 +14,13 @@ Updates the properties of an IotHub.
 ### UpdateSku (Default)
 ```
 Set-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> -SkuName <PSIotHubSku> [-Units <Int64>]
- [-WhatIf] [-Confirm]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateEventHubEndpointProperties
 ```
 Set-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> -EventHubRetentionTimeInDays <Int64> [-WhatIf]
- [-Confirm]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateFileUploadProperties
@@ -28,38 +28,38 @@ Set-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> -EventHubRetent
 Set-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> [-FileUploadStorageConnectionString <String>]
  [-FileUploadContainerName <String>] [-FileUploadSasUriTtl <TimeSpan>] [-FileUploadNotificationTtl <TimeSpan>]
  [-FileUploadNotificationMaxDeliveryCount <Int32>] -EnableFileUploadNotifications <Boolean> [-WhatIf]
- [-Confirm]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateCloudToDeviceProperties
 ```
 Set-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> -CloudToDevice <PSCloudToDeviceProperties>
- [-WhatIf] [-Confirm]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateOperationsMonitoringProperties
 ```
 Set-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String>
- -OperationsMonitoringProperties <PSOperationsMonitoringProperties> [-WhatIf] [-Confirm]
+ -OperationsMonitoringProperties <PSOperationsMonitoringProperties> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateRoutingProperties
 ```
 Set-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> [-RoutingProperties <PSRoutingProperties>]
- [-WhatIf] [-Confirm]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateRouteProperties
 ```
 Set-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String>
- [-Routes <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteProperties]>]
- [-WhatIf] [-Confirm]
+ [-Routes <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata]>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateFallbackRouteProperty
 ```
-Set-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> [-FallbackRoute <PSFallbackRouteProperties>]
- [-WhatIf] [-Confirm]
+Set-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> [-FallbackRoute <PSFallbackRouteMetadata>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -132,7 +132,7 @@ Accept wildcard characters: False
 Fallback Routes
 
 ```yaml
-Type: PSFallbackRouteProperties
+Type: PSFallbackRouteMetadata
 Parameter Sets: UpdateFallbackRouteProperty
 Aliases: 
 
@@ -267,7 +267,7 @@ Accept wildcard characters: False
 Routes
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteProperties]
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata]
 Parameter Sets: UpdateRouteProperties
 Aliases: 
 
@@ -354,6 +354,9 @@ Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

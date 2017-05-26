@@ -138,14 +138,14 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Mandatory = false,
             HelpMessage = "Routes")]
         [ValidateNotNullOrEmpty]
-        public List<PSRouteProperties> Routes { get; set; }
+        public List<PSRouteMetadata> Routes { get; set; }
 
         [Parameter(
             ParameterSetName = UpdateFallbackRoutePropertyParameterSet,
             Mandatory = false,
             HelpMessage = "Fallback Routes")]
         [ValidateNotNullOrEmpty]
-        public PSFallbackRouteProperties FallbackRoute { get; set; }
+        public PSFallbackRouteMetadata FallbackRoute { get; set; }
 
         public override void ExecuteCmdlet()
         {

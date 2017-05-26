@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
     using Newtonsoft.Json;
     using System.Collections.Generic;
 
-    public class PSRouteProperties
+    public class PSRouteMetadata
     {
         /// <summary>
         /// The name of the route. name can only include alphanumeric
