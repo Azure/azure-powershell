@@ -16494,14 +16494,19 @@ PS C:\&gt; Restore-AzureRmSqlDatabase -FromPointInTimeBackup -PointInTime UTCDat
 </command:example>
 <command:example><maml:title>Example 3: Restore a deleted database</maml:title>
 <dev:code>PS C:\&gt;$DeletedDatabase = Get-AzureRmSqlDeletedDatabaseBackup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
-PS C:\&gt; Restore-AzureRmSqlDatabase -FromDeletedDatabaseBackup -DeletionDate $DeletedDatabase.DeletionDate -ResourceGroupName $DeletedDatabase.ResourceGroupName -ServerName $DeletedDatabase.ServerName -TargetDatabaseName "RestoredDatabase" -ResourceId $DeletedDatabase.ResourceID -Edition "Standard" -ServiceObjectiveName "S2"</dev:code>
-<dev:remarks><maml:para>The first command gets the backup for the deleted SQL database named database01, and then stores it in the $DeletedDatabase variable.
-</maml:para>
-<maml:para>The second command restores the backup for $DeletedDatabase to the target SQL database named RestoredDatabase.
+PS C:\&gt; Restore-AzureRmSqlDatabase -FromDeletedDatabaseBackup -DeletionDate $DeletedDatabase.DeletionDate -ResourceGroupName $DeletedDatabase.ResourceGroupName -ServerName $DeletedDatabase.ServerName -TargetDatabaseName "RestoredDatabase" -ResourceId $DeletedDatabase.ResourceID -Edition "Standard" -ServiceObjectiveName "S2" -PointInTime UTCDateTime</dev:code>
+<dev:remarks><maml:para>The first command gets the deleted database backup that you want to restore by using Get-AzureRmSqlDeletedDatabaseBackup (./Get-AzureRMSqlDeletedDatabaseBackup.md). The second command starts the restore from the deleted database backup by using the Restore-AzureRmSqlDatabase (./Restore-AzureRmSqlDatabase.md)cmdlet. If the -PointInTime parameter is not specified, the database will be restored to the deletion time.
 </maml:para>
 </dev:remarks>
 </command:example>
-<command:example><maml:title>Example 4: Geo-Restore a database</maml:title>
+<command:example><maml:title>Example 4: Restore a deleted database into an elastic pool</maml:title>
+<dev:code>PS C:\&gt;$DeletedDatabase = Get-AzureRmSqlDeletedDatabaseBackup -ResourceGroupName $resourceGroupName -ServerName $sqlServerName -DatabaseName 'DatabaseToRestore'
+PS C:\&gt; Restore-AzureRmSqlDatabase -FromDeletedDatabaseBackup -DeletionDate $DeletedDatabase.DeletionDate -ResourceGroupName $DeletedDatabase.ResourceGroupName -ServerName $DeletedDatabase.ServerName -TargetDatabaseName "RestoredDatabase" -ResourceId $DeletedDatabase.ResourceID -ElasticPoolName "elasticpool01" -PointInTime UTCDateTime</dev:code>
+<dev:remarks><maml:para>The first command gets the deleted database backup that you want to restore by using Get-AzureRmSqlDeletedDatabaseBackup (./Get-AzureRMSqlDeletedDatabaseBackup.md). The second command starts the restore from the deleted database backup by using Restore-AzureRmSqlDatabase (./Restore-AzureRmSqlDatabase.md). If the -PointInTime parameter is not specified, the database will be restored to the deletion time.
+</maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>Example 5: Geo-Restore a database</maml:title>
 <dev:code>PS C:\&gt;$GeoBackup = Get-AzureRmSqlDatabaseGeoBackup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
 PS C:\&gt; Restore-AzureRmSqlDatabase -FromGeoBackup -ResourceGroupName "TargetResourceGroup" -ServerName "TargetServer" -TargetDatabaseName "RestoredDatabase" -ResourceId $GeoBackup.ResourceID -Edition "Standard" -RequestedServiceObjectiveName "S2"</dev:code>
 <dev:remarks><maml:para>The first command gets the geo-redundant backup for the database named Database01, and then stores it in the $GeoBackup variable.
@@ -22832,24 +22837,6 @@ Schema                      :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>MemberDatabaseName</maml:name>
-<maml:Description><maml:para>The Azure SQL database name of the member database.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>MemberServerName</maml:name>
-<maml:Description><maml:para>The Azure SQL Server Name of the member database.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SyncGroupName</maml:name>
 <maml:Description><maml:para>The sync group name.
 </maml:para>
@@ -22890,24 +22877,6 @@ Schema                      :</dev:code>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>DatabaseType</maml:name>
 <maml:Description><maml:para>The database type.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>MemberDatabaseName</maml:name>
-<maml:Description><maml:para>The Azure SQL database name of the member database.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>MemberServerName</maml:name>
-<maml:Description><maml:para>The Azure SQL Server Name of the member database.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -22973,7 +22942,7 @@ Schema                      :</dev:code>
 <command:examples><command:example><maml:title>Example 1</maml:title>
 <dev:code>PS C:\&gt; $credential = Get-Credential
 PS C:\&gt; Set-AzureRmSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -SyncMemberName "SyncMember01"
--DatabaseType "AzureSqlDatabase" -MemberServerName "memberServer01" -MemberDatabaseName "memberDatabase01" -Credential $credential
+-DatabaseType "AzureSqlDatabase" -Credential $credential
 ResourceId                  : subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}/syncMembers/{SyncMember01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01

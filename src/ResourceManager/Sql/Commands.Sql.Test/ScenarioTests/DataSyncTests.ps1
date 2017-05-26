@@ -63,7 +63,6 @@ function Test-CrudSyncAgent
     }
     finally
     {
-	    Remove-ServerForTest $server
         Remove-ResourceGroupForTest $rg
     }
 }
@@ -92,7 +91,6 @@ function Test-CreateSyncAgent
     }
     finally
     {
-	    Remove-ServerForTest $server
         Remove-ResourceGroupForTest $rg
     }
 }
@@ -128,7 +126,6 @@ function Test-GetAndListSyncAgents
     }
     finally
     {
-	    Remove-ServerForTest $server
         Remove-ResourceGroupForTest $rg
     }
 }
@@ -160,7 +157,6 @@ function Test-RemoveSyncAgent
     }
     finally
     {
-	    Remove-ServerForTest $server
         Remove-ResourceGroupForTest $rg
     }
 }
@@ -192,7 +188,6 @@ function Test-CreateSyncAgentKey
     }
     finally
     {
-	    Remove-ServerForTest $server
         Remove-ResourceGroupForTest $rg
     }
 }
@@ -221,7 +216,6 @@ function Test-ListSyncAgentLinkedDatabase
     }
     finally
     {
-	    Remove-ServerForTest $server
         Remove-ResourceGroupForTest $rg
     }
 }
@@ -296,7 +290,6 @@ function Test-CrudSyncGroup
     }
     finally
     {
-		Remove-ServerForTest $server
         Remove-ResourceGroupForTest $rg
     }
 }
@@ -331,7 +324,6 @@ function Test-CreateSyncGroup
     }
     finally
     {
-		Remove-ServerForTest $server
         Remove-ResourceGroupForTest $rg
     }
 }
@@ -368,7 +360,6 @@ function Test-UpdateSyncGroup
     }
     finally
     {
-		Remove-ServerForTest $server
         Remove-ResourceGroupForTest $rg
     }
 }
@@ -412,7 +403,6 @@ function Test-GetAndListSyncGroups
     }
     finally
     {
-		Remove-ServerForTest $server
         Remove-ResourceGroupForTest $rg
     }
 }
@@ -452,7 +442,6 @@ function Test-RefreshAndGetSyncGroupHubSchema
     }
     finally
     {
-		Remove-ServerForTest $server
         Remove-ResourceGroupForTest $rg
     }
 }
@@ -529,7 +518,6 @@ function Test-RemoveSyncGroup
     }
     finally
     {
-		Remove-ServerForTest $server
         Remove-ResourceGroupForTest $rg
     }
 }
@@ -625,7 +613,6 @@ function Test-CrudSyncMember
     }
     finally
     {
-	    Remove-ServerForTest $server
         Remove-ResourceGroupForTest $rg
     }
 }
@@ -675,7 +662,6 @@ function Test-CreateSyncMember
     }
     finally
     {
-	    Remove-ServerForTest $server
         Remove-ResourceGroupForTest $rg
     }
 }
@@ -734,7 +720,6 @@ function Test-GetAndListSyncMembers
     }
     finally
     {
-	    Remove-ServerForTest $server
         Remove-ResourceGroupForTest $rg
     }
 }
@@ -786,7 +771,6 @@ function Test-UpdateSyncMember
     }
     finally
     {
-	    Remove-ServerForTest $server
         Remove-ResourceGroupForTest $rg
     }
 }
@@ -835,8 +819,7 @@ function Test-RefreshAndGetSyncMemberSchema
 		Assert-NotNull $schema
     }
     finally
-    {
-	    Remove-ServerForTest $server	    
+    {    
         Remove-ResourceGroupForTest $rg
     }
 }
@@ -885,7 +868,6 @@ function Test-RemoveSyncMember
     }
     finally
     {
-	    Remove-ServerForTest $server
         Remove-ResourceGroupForTest $rg
     }
 }
