@@ -32,12 +32,13 @@ using CNM = Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network.Automation
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmNetworkUsage")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmNetworkUsage"), OutputType(typeof(PSUsage))]
     public partial class GetAzureRmNetworkUsage : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Location.")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

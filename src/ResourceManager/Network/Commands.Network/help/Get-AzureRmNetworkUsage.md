@@ -7,30 +7,30 @@ schema: 2.0.0
 # Get-AzureRmNetworkUsage
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Lists network usages for a subscription
 
 ## SYNTAX
 
 ```
-Get-AzureRmNetworkUsage -Location <String>
+Get-AzureRmNetworkUsage -Location <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The Get-AzureRmNetworkUsage cmdlet gets limits and current usage for Network resources.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmNetworkUsage -Location westcentralus
 ```
 
-{{ Add example description here }}
+Gets resources usage data in westcentralus region
 
 ## PARAMETERS
 
 ### -Location
-{{Fill Location Description}}
+The location where resource usage is queried.
 
 ```yaml
 Type: String
@@ -44,14 +44,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 
-
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Network.Models.PSUsage
 
 ## NOTES
 
