@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The Data Lake Store account to enable the Key Vault for")]
         [ValidateNotNullOrEmpty]
-        [Alias("AccountName")]
+        [Alias("AccountName","Name")]
         public string Account { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
