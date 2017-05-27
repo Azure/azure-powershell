@@ -432,6 +432,8 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
                 }
             });
 
+            // Workaround for Rest API return response value incorrect issue. Remove this line after backend fix is deployed
+            resp = Communicator.GetSyncAgent(model.ResourceGroupName, model.ServerName, model.SyncAgentName, Util.GenerateTracingId());
             return CreateSyncAgentModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
         }
 
