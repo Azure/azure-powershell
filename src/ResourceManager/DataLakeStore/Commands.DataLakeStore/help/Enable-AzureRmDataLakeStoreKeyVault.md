@@ -12,7 +12,7 @@ Attempts to enable a user managed Key Vault for encryption of the specified Data
 ## SYNTAX
 
 ```
-Enable-AzureRmDataLakeStoreKeyVault [-Account] <String> [-ResourceGroupName <String>]
+Enable-AzureRmDataLakeStoreKeyVault [-Account] <String> [-ResourceGroupName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +35,7 @@ The Data Lake Store account to enable the user managed Key Vault for
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: AccountName
+Aliases: AccountName, Name
 
 Required: True
 Position: 0
