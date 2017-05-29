@@ -272,6 +272,7 @@
     <Compile Include="IaaS\Network\GetAzureInternalLoadBalancer.cs" />
     <Compile Include="IaaS\Network\GetAzureNetworkInterfaceConfig.cs" />
     <Compile Include="IaaS\Network\NewAzureInternalLoadBalancerConfig.cs" />
+    <Compile Include="IaaS\Network\NewAzureIPTag.cs" />
     <Compile Include="IaaS\Network\RemoveAzureDns.cs" />
     <Compile Include="IaaS\Network\RemoveAzureInternalLoadBalancer.cs" />
     <Compile Include="IaaS\Network\AddAzureInternalLoadBalancer.cs" />
