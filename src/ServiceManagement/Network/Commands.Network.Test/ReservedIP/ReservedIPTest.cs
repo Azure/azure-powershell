@@ -450,7 +450,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Reserve
             string ipTagType = "FirstPartyUsage";
             string value = "InfrastructureTenants";
 
-            NewAzureIPTagCommand cmdlet = new NewAzureIPTagCommand()
+            var cmdlet = new NewAzureIPTagCommand()
             {
                 CommandRuntime = mockCommandRuntime,
                 IPTagType = ipTagType,
@@ -460,9 +460,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Reserve
             // Execute Cmdlet
             IEnumerable objs = cmdlet.Invoke();
             foreach (var x in objs) ;
-
             Assert.Equal(1, mockCommandRuntime.OutputPipeline.Count);
-
             IPTag iptag = (IPTag)mockCommandRuntime.OutputPipeline[0];
             Assert.Equal(ipTagType, iptag.IPTagType);
             Assert.Equal(value, iptag.Value);
