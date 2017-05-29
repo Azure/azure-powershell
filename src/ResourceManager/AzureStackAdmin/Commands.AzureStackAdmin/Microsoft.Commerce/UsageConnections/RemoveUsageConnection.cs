@@ -25,6 +25,7 @@ namespace Microsoft.AzureStack.Commands
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, Nouns.UsageConnection)]
     [OutputType(typeof(AzureOperationResponse))]
+    [Alias("Remove-AzureRMUsageConnection")]
     public class RemoveUsageConnection : AdminApiCmdlet
     {
         /// <summary>
@@ -40,19 +41,24 @@ namespace Microsoft.AzureStack.Commands
         [Parameter(ValueFromPipelineByPropertyName = true)]
         [ValidateLength(1, 90)]
         [ValidateNotNull]
-        public string ResourceGroup { get; set; }
-
+        [Alias("ResourceGroup")]
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
         protected override object ExecuteCore()
         {
+            if (this.MyInvocation.InvocationName.Equals("Remove-AzureRMUsageConnection", StringComparison.OrdinalIgnoreCase))
+            {
+                this.WriteWarning("Alias Remove-AzureRMUsageConnection will be deprecated in a future release. Please use the cmdlet name Get-AzSUsageConection instead");
+            }
+
             this.ApiVersion = UsageApiVersion;
             using (var client = this.GetAzureStackClient())
             {
                 this.WriteVerbose(Resources.RemovingUsageConnection.FormatArgs(this.Name));
-                return client.UsageConnections.Delete(this.ResourceGroup, this.Name);
+                return client.UsageConnections.Delete(this.ResourceGroupName, this.Name);
             }
         }
     }

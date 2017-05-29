@@ -26,6 +26,7 @@ namespace Microsoft.AzureStack.Commands
     /// </summary>
     [Cmdlet(VerbsCommon.New, Nouns.Plan, DefaultParameterSetName = CommonPSConst.ParameterSet.ByProperty)]
     [OutputType(typeof(AdminPlanModel))]
+    [Alias("New-AzureRMPlan")]
     public class NewPlan : AdminApiCmdlet
     {
         /// <summary>
@@ -57,7 +58,8 @@ namespace Microsoft.AzureStack.Commands
         [Parameter(Mandatory = true)]
         [ValidateLength(1, 90)]
         [ValidateNotNull]
-        public string ResourceGroup { get; set; }
+        [Alias("ResourceGroup")]
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the quota ids.
@@ -78,7 +80,12 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         protected override object ExecuteCore()
         {
-            this.WriteVerbose(Resources.CreatingNewPlan.FormatArgs(this.Name, this.ResourceGroup));
+            if (this.MyInvocation.InvocationName.Equals("New-AzureRMPlan", StringComparison.OrdinalIgnoreCase))
+            {
+                this.WriteWarning("Alias New-AzureRMPlan will be deprecated in a future release. Please use the cmdlet name New-AzSPlan instead");
+            }
+
+            this.WriteVerbose(Resources.CreatingNewPlan.FormatArgs(this.Name, this.ResourceGroupName));
             using (var client = this.GetAzureStackClient())
             {
                 // Ensure the resource group is created
@@ -87,7 +94,7 @@ namespace Microsoft.AzureStack.Commands
                     ResourceGroup = new ResourceGroupDefinition()
                     {
                         Location = this.ArmLocation,
-                        Name = this.ResourceGroup,
+                        Name = this.ResourceGroupName,
                     }
                 });
 
@@ -113,13 +120,13 @@ namespace Microsoft.AzureStack.Commands
                     throw new PSInvalidOperationException(Resources.QuotaIdOrSkuIdRequired);
                 }
 
-                if (client.ManagedPlans.List(this.ResourceGroup, includeDetails: false).Plans
+                if (client.ManagedPlans.List(this.ResourceGroupName, includeDetails: false).Plans
                     .Any(p => string.Equals(p.Properties.Name, parameters.Plan.Properties.Name, StringComparison.OrdinalIgnoreCase)))
                 {
-                    throw new PSInvalidOperationException(Resources.ManagedPlanAlreadyExists.FormatArgs(parameters.Plan.Properties.Name, this.ResourceGroup));
+                    throw new PSInvalidOperationException(Resources.ManagedPlanAlreadyExists.FormatArgs(parameters.Plan.Properties.Name, this.ResourceGroupName));
                 }
 
-                return client.ManagedPlans.CreateOrUpdate(this.ResourceGroup, parameters).Plan;
+                return client.ManagedPlans.CreateOrUpdate(this.ResourceGroupName, parameters).Plan;
             }
         }
     }

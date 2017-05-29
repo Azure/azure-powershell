@@ -25,6 +25,7 @@ namespace Microsoft.AzureStack.Commands
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.GalleryItem)]
     [OutputType(typeof(GalleryItemModel))]
+    [Alias("Get-AzureRMGalleryItem")]
     public class GetGalleryItem : AdminApiCmdlet
     {
         /// <summary>
@@ -39,6 +40,11 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         protected override object ExecuteCore()
         {
+            if (this.MyInvocation.InvocationName.Equals("Get-AzureRMGalleryItem", StringComparison.OrdinalIgnoreCase))
+            {
+                this.WriteWarning("Alias Get-AzureRMGalleryItem will be deprecated in a future release. Please use the cmdlet name Get-AzSGalleryItem instead");
+            }
+
             this.ApiVersion = GalleryAdminApiVersion;
             using (var client = this.GetAzureStackClient())
             {

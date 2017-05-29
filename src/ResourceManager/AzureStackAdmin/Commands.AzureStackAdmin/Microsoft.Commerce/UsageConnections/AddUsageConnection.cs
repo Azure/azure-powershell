@@ -25,6 +25,7 @@ namespace Microsoft.AzureStack.Commands
     /// </summary>
     [Cmdlet(VerbsCommon.Add, Nouns.UsageConnection)]
     [OutputType(typeof(UsageConnectionModel))]
+    [Alias("Add-AzureRMUsageConnection")]
     public class AddUsageConnection : AdminApiCmdlet
     {
         /// <summary>
@@ -40,7 +41,8 @@ namespace Microsoft.AzureStack.Commands
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true)]
         [ValidateLength(1, 90)]
         [ValidateNotNull]
-        public string ResourceGroup { get; set; }
+        [Alias("ResourceGroup")]
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the resource manager location.
@@ -103,6 +105,11 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         protected override object ExecuteCore()
         {
+            if (this.MyInvocation.InvocationName.Equals("Add-AzureRMUsageConnection", StringComparison.OrdinalIgnoreCase))
+            {
+                this.WriteWarning("Alias Add-AzureRMUsageConnection will be deprecated in a future release. Please use the cmdlet name Add-AzSUsageConnection instead");
+            }
+
             this.ApiVersion = UsageApiVersion;
             this.WriteVerbose(Resources.AddingUsageConnection.FormatArgs(this.Name));
             using (var client = this.GetAzureStackClient())
@@ -124,7 +131,7 @@ namespace Microsoft.AzureStack.Commands
                 };
 
                 var usageConnectionParameters = new UsageConnectionsCreateOrUpdateParameters() { UsageConnections = usageConnectionModel };
-                return client.UsageConnections.CreateOrUpdate(this.ResourceGroup, this.Name, usageConnectionParameters).UsageConnection;
+                return client.UsageConnections.CreateOrUpdate(this.ResourceGroupName, this.Name, usageConnectionParameters).UsageConnection;
             }
         }
     }

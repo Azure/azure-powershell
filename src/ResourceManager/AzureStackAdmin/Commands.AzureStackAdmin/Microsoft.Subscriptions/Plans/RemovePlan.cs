@@ -25,6 +25,7 @@ namespace Microsoft.AzureStack.Commands
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, Nouns.Plan)]
     [OutputType(typeof(AzureOperationResponse))]
+    [Alias("Remove-AzureRMPlan")]
     public class RemovePlan : AdminApiCmdlet
     {
         /// <summary>
@@ -41,17 +42,23 @@ namespace Microsoft.AzureStack.Commands
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true)]
         [ValidateLength(1, 128)]
         [ValidateNotNull]
-        public string ResourceGroup { get; set; }
+        [Alias("ResourceGroup")]
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
         protected override object ExecuteCore()
         {
+            if (this.MyInvocation.InvocationName.Equals("Remove-AzureRMPlan", StringComparison.OrdinalIgnoreCase))
+            {
+                this.WriteWarning("Alias Remove-AzureRMPlan will be deprecated in a future release. Please use the cmdlet name Remove-AzSPlan instead");
+            }
+
             using (var client = this.GetAzureStackClient())
             {
-                this.WriteVerbose(Resources.RemovingManagedPlan.FormatArgs(this.Name, this.ResourceGroup));
-                return client.ManagedPlans.Delete(this.ResourceGroup, this.Name);
+                this.WriteVerbose(Resources.RemovingManagedPlan.FormatArgs(this.Name, this.ResourceGroupName));
+                return client.ManagedPlans.Delete(this.ResourceGroupName, this.Name);
             }
         }
     }

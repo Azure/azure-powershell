@@ -22,11 +22,12 @@ namespace Microsoft.AzureStack.Commands
     using Microsoft.AzureStack.Management;
 
     /// <summary>
-    /// Remove Resource Provider Registration Cmdlet
+    /// Remove Resource Provider Manifest Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, Nouns.ResourceProviderRegistration)]
+    [Cmdlet(VerbsCommon.Remove, Nouns.ResourceProviderManifest)]
     [OutputType(typeof(AzureOperationResponse))]
-    public class RemoveResourceProviderRegistration : AdminApiCmdlet
+    [Alias("Remove-AzureRMResourceProviderRegistration")]
+    public class RemoveResourceProviderManifest : AdminApiCmdlet
     {
         /// <summary>
         /// Gets or sets the resource provider registration name.
@@ -41,17 +42,23 @@ namespace Microsoft.AzureStack.Commands
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true)]
         [ValidateNotNull]
         [ValidateLength(1,90)]
-        public string ResourceGroup { get; set; }
+        [Alias("ResourceGroup")]
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
         protected override object ExecuteCore()
         {
+            if (this.MyInvocation.InvocationName.Equals("Remove-AzureRMResourceProviderRegistration", StringComparison.OrdinalIgnoreCase))
+            {
+                this.WriteWarning("Alias Remove-AzureRMResourceProviderRegistration will be deprecated in a future release. Please use the cmdlet Remove-AzSResourceProviderManifest instead");
+            }
+
             using (var client = this.GetAzureStackClient())
             {
                 this.WriteVerbose(Resources.RemovingResourceProviderRegistration.FormatArgs(this.Name));
-                return client.ProviderRegistrations.Delete(this.ResourceGroup, this.Name);
+                return client.ProviderRegistrations.Delete(this.ResourceGroupName, this.Name);
             }
         }
     }

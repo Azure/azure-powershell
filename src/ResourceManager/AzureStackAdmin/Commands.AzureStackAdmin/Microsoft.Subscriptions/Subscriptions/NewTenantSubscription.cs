@@ -17,21 +17,31 @@ namespace Microsoft.AzureStack.Commands
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
+    using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.AzureStack.Management;
     using Microsoft.AzureStack.Management.Models;
 
     /// <summary>
-    /// New Tenant Subscription Cmdlet
+    /// New Managed Subscription Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.New, Nouns.TenantSubscription)]
     [OutputType(typeof(SubscriptionDefinition))]
+    [Alias("New-AzureRMManagedSubscription")]
     public class NewTenantSubscription : AdminApiCmdlet
     {
+        /// <summary>
+        /// Gets or sets the subscription owner.
+        /// </summary>
+        [Parameter(Mandatory = true)]
+        [ValidateLength(1, 128)]
+        [ValidateNotNull]
+        public string Owner { get; set; }
+
         /// <summary>
         /// Gets or sets the identifier of the offer.
         /// </summary>
         [Parameter(Mandatory = true)]
-        [ValidateLength(1, 128)]
+        [ValidateLength(1, 512)]
         [ValidateNotNull]
         public string OfferId { get; set; }
 
@@ -57,32 +67,37 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// Gets the subscription definition.
         /// </summary>
-        protected SubscriptionDefinition GetSubscriptionDefinition()
+        protected AdminSubscriptionDefinition GetSubscriptionDefinition()
         {
-            // TODO: determine any extra properties which could / should be set
-            return new SubscriptionDefinition()
-            {
-                SubscriptionId = (NewTenantSubscription.SubscriptionIds.Count == 0
-                    ? Guid.NewGuid()
-                    : NewTenantSubscription.SubscriptionIds.Dequeue()).ToString(),
-                DisplayName = this.DisplayName,
-                OfferId = this.OfferId,
-                State = SubscriptionState.Enabled,
-            };
+            return new AdminSubscriptionDefinition()
+                   {
+                       // ToDo: Make the SubscriptionId as an optional parameter 
+                       SubscriptionId = (NewTenantSubscription.SubscriptionIds.Count == 0
+                           ? Guid.NewGuid()
+                           : NewTenantSubscription.SubscriptionIds.Dequeue()).ToString(),
+                       DisplayName = this.DisplayName,
+                       OfferId = this.OfferId,
+                       Owner = this.Owner,
+                       State = SubscriptionState.Enabled,
+                   };
         }
 
         /// <summary>
-        /// Performs the API operation(s) against tenant subscriptions.
+        /// Performs the API operation(s) against subscriptions as administrator.
         /// </summary>
         protected override object ExecuteCore()
         {
+            if (this.MyInvocation.InvocationName.Equals("New-AzureRmManagedSubscription", StringComparison.OrdinalIgnoreCase))
+            {
+                this.WriteWarning("Alias New-AzureRmManagedSubscription will be deprecated in a future release. Please use the cmdlet name New-AzSTenantSubscription instead");
+            }
+
             using (var client = this.GetAzureStackClient())
             {
                 this.WriteVerbose(Resources.CreatingNewSubscription.FormatArgs(this.OfferId, this.DisplayName));
-                var parameters = new SubscriptionCreateOrUpdateParameters(this.GetSubscriptionDefinition());
-                return client.Subscriptions.CreateOrUpdate(parameters).Subscription;
+                var parameters = new ManagedSubscriptionCreateOrUpdateParameters(this.GetSubscriptionDefinition());
+                return client.ManagedSubscriptions.CreateOrUpdate(parameters).Subscription;
             }
         }
-
     }
 }

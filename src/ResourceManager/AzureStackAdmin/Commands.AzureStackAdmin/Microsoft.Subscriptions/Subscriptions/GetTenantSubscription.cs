@@ -23,31 +23,38 @@ namespace Microsoft.AzureStack.Commands
     /// <summary>
     /// Get Subscription Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, Nouns.TenantSubscription)]
+    [Cmdlet(VerbsCommon.Get, Nouns.Subscription)]
     [OutputType(typeof(SubscriptionDefinition))]
-    public class GetTenantSubscription : AdminApiCmdlet
+    [Alias("Get-AzureRMManagedSubscription")]
+    public class GetTenantSubscription : AdminApiCmdlet 
     {
         /// <summary>
         /// Gets or sets the subscription id.
         /// </summary>
-        public Guid SubscriptionId { get; set; } // Allow for empty GUID for list scenario
+        [Parameter(ValueFromPipelineByPropertyName = true)]
+        public Guid TargetSubscriptionId { get; set; } // Allow for empty GUID for list scenario
 
         /// <summary>
-        /// Performs the API operation(s) against tenant subscriptions.
+        /// Performs the API operation(s) against subscriptions as administrator.
         /// </summary>
         protected override object ExecuteCore()
         {
+            if (this.MyInvocation.InvocationName.Equals("Get-AzureRmManagedSubscription", StringComparison.OrdinalIgnoreCase))
+            {
+                this.WriteWarning("Alias Get-AzureRmManagedSubscription will be deprecated in a future release. Please use the cmdlet name Get-AzSTenantSubscription instead");
+            }
+
             using (var client = this.GetAzureStackClient())
             {
-                if (this.SubscriptionId == Guid.Empty)
+                if (this.TargetSubscriptionId == Guid.Empty)
                 {
-                    this.WriteVerbose(Resources.ListingSubscriptions);
-                    return client.Subscriptions.List(true).Subscriptions;
+                    this.WriteVerbose(Resources.ListingManagedSubscriptions);
+                    return client.ManagedSubscriptions.List(includeDetails: true).Subscriptions;
                 }
                 else
                 {
-                    this.WriteVerbose(Resources.GettingSubscriptionByID.FormatArgs(this.SubscriptionId));
-                    return client.Subscriptions.Get(this.SubscriptionId.ToString()).Subscription;
+                    this.WriteVerbose(Resources.GettingSubscriptionByID.FormatArgs(this.TargetSubscriptionId));
+                    return client.ManagedSubscriptions.Get(this.TargetSubscriptionId.ToString()).Subscription;
                 }
             }
         }

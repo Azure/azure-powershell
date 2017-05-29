@@ -26,6 +26,7 @@ namespace Microsoft.AzureStack.Commands
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, Nouns.Location)]
     [OutputType(typeof(AzureOperationResponse))]
+    [Alias("Remove-AzureRMManagedLocation")]
     public class RemoveManagedLocation : AdminApiCmdlet
     {
         /// <summary>
@@ -42,6 +43,11 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         protected override object ExecuteCore()
         {
+            if (this.MyInvocation.InvocationName.Equals("Remove-AzureRMManagedLocation", StringComparison.OrdinalIgnoreCase))
+            {
+                this.WriteWarning("Alias Remove-AzureRMManagedLocation will be deprecated in a future release. Please use the cmdlet name Remove-AzSLocation instead");
+            }
+
             using (var client = this.GetAzureStackClient())
             {
                 this.WriteVerbose(Resources.RemovingManagedLocation.FormatArgs(this.Name));

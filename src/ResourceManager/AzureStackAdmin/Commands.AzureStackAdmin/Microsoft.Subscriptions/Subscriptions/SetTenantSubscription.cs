@@ -21,10 +21,11 @@ namespace Microsoft.AzureStack.Commands
     using Microsoft.AzureStack.Management.Models;
 
     /// <summary>
-    /// Subscription Cmdlet
+    /// Set Managed Subscription Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Set, Nouns.TenantSubscription)]
     [OutputType(typeof(SubscriptionDefinition))]
+    [Alias("Set-AzureRMManagedSubscription")]
     public class SetTenantSubscription : AdminApiCmdlet
     {
         /// <summary>
@@ -32,18 +33,26 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         [Parameter(Mandatory = true)]
         [ValidateNotNull]
-        public SubscriptionDefinition Subscription { get; set; }
+        public AdminSubscriptionDefinition Subscription { get; set; }
 
         /// <summary>
-        /// Performs the API operation(s) against tenant subscriptions.
+        /// Performs the API operation(s) against subscriptions as administrator.
         /// </summary>
         protected override object ExecuteCore()
         {
+            if (this.MyInvocation.InvocationName.Equals("Set-AzureRMManagedSubscription", StringComparison.OrdinalIgnoreCase))
+            {
+                this.WriteWarning("Alias Set-AzureRMManagedSubscription will be deprecated in a future release. Please use the cmdlet name Set-AzSTenantSubscription instead");
+            }
+
             using (var client = this.GetAzureStackClient())
             {
-                this.WriteVerbose(Resources.UpdatingSubscription.FormatArgs(this.Subscription.SubscriptionId));
-                var parameters = new SubscriptionCreateOrUpdateParameters(this.Subscription);
-                return client.Subscriptions.CreateOrUpdate(parameters).Subscription;
+                this.WriteVerbose(
+                    Resources.UpdatingManagedSubscription.FormatArgs(
+                        this.Subscription.SubscriptionId));
+
+                var parameters = new ManagedSubscriptionCreateOrUpdateParameters(this.Subscription);
+                return client.ManagedSubscriptions.CreateOrUpdate(parameters).Subscription;
             }
         }
     }

@@ -14,39 +14,50 @@
 
 namespace Microsoft.AzureStack.Commands
 {
-    using System;
     using System.Management.Automation;
-    using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.AzureStack.Management;
     using Microsoft.AzureStack.Management.Models;
 
     /// <summary>
-    /// Set Managed Subscription Cmdlet
+    /// Get Offer cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, Nouns.ManagedSubscription)]
-    [OutputType(typeof(SubscriptionDefinition))]
-    public class SetManagedSubscription : AdminApiCmdlet
+    [Cmdlet(VerbsCommon.Get, Nouns.ManagedOffer)]
+    [OutputType(typeof(AdminOfferModel))]
+    public class GetManagedOffer : AdminApiCmdlet
     {
         /// <summary>
-        /// Gets or sets the subscription to be updated.
+        /// Gets or sets the Offer name used in the Admin get flow.
         /// </summary>
-        [Parameter(Mandatory = true)]
+        [ValidateLength(1, 128)]
         [ValidateNotNull]
-        public AdminSubscriptionDefinition Subscription { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
-        /// Performs the API operation(s) against managed subscriptions.
+        /// Gets or sets the resource group.
+        /// </summary>
+        [Parameter(Mandatory = true)]
+        [ValidateLength(1, 90)]
+        [ValidateNotNull]
+        [Alias("ResourceGroup")]
+        public string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
         protected override object ExecuteCore()
         {
             using (var client = this.GetAzureStackClient())
             {
-                this.WriteVerbose(
-                    Resources.UpdatingManagedSubscription.FormatArgs(
-                        this.Subscription.SubscriptionId));
-
-                var parameters = new ManagedSubscriptionCreateOrUpdateParameters(this.Subscription);
-                return client.ManagedSubscriptions.CreateOrUpdate(parameters).Subscription;
+                if (string.IsNullOrEmpty(this.Name))
+                {
+                    this.WriteVerbose(Resources.ListingManagedOffers.FormatArgs(this.ResourceGroupName));
+                    return client.ManagedOffers.List(this.ResourceGroupName, includeDetails: true).Offers;
+                }
+                else
+                {
+                    this.WriteVerbose(Resources.GettingManagedOffer.FormatArgs(this.Name, this.ResourceGroupName));
+                    return client.ManagedOffers.Get(this.ResourceGroupName, this.Name).Offer;
+                }
             }
         }
     }

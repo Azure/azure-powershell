@@ -26,6 +26,7 @@ namespace Microsoft.AzureStack.Commands
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, Nouns.TenantSubscription)]
     [OutputType(typeof(AzureOperationResponse))]
+    [Alias("Remove-AzureRMManagedSubscription")]
     public class RemoveTenantSubscription : AdminApiCmdlet
     {
         /// <summary>
@@ -36,14 +37,19 @@ namespace Microsoft.AzureStack.Commands
         public Guid TargetSubscriptionId { get; set; }
 
         /// <summary>
-        /// Performs the API operation(s) against tenant subscriptions.
+        /// Performs the API operation(s) against subscriptions as administrator.
         /// </summary>
         protected override object ExecuteCore()
         {
+            if (this.MyInvocation.InvocationName.Equals("Remove-AzureRMManagedSubscription", StringComparison.OrdinalIgnoreCase))
+            {
+                this.WriteWarning("Alias Remove-AzureRMManagedSubscription will be deprecated in a future release. Please use the cmdlet name Remove-AzSTenantSubscription instead");
+            }
+
             using (var client = this.GetAzureStackClient())
             {
                 this.WriteVerbose(Resources.DeletingSubscription.FormatArgs(this.TargetSubscriptionId));
-                return client.Subscriptions.Delete(this.TargetSubscriptionId.ToString());
+                return client.ManagedSubscriptions.Delete(this.TargetSubscriptionId.ToString());
             }
         }
     }

@@ -15,51 +15,41 @@
 namespace Microsoft.AzureStack.Commands
 {
     using System;
-    using System.Linq;
     using System.Management.Automation;
     using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.AzureStack.Management;
     using Microsoft.AzureStack.Management.Models;
 
     /// <summary>
-    /// Set Plan cmdlet
+    /// Subscription Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, Nouns.Plan)]
-    [OutputType(typeof(AdminPlanModel))]
-    [Alias("Set-AzureRMPlan")]
-    public class SetPlan : AdminApiCmdlet
+    [Cmdlet(VerbsCommon.Set, Nouns.Subscription)]
+    [OutputType(typeof(SubscriptionDefinition))]
+    [Alias("Set-AzureRMTenantSubscription")]
+    public class SetSubscription : AdminApiCmdlet
     {
         /// <summary>
-        /// Gets or sets the plan.
-        /// </summary>
-        [Parameter(ValueFromPipeline = true, Mandatory = true)]
-        [ValidateNotNull]
-        public AdminPlanModel Plan { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resource group.
+        /// Gets or sets the subscription to be updated.
         /// </summary>
         [Parameter(Mandatory = true)]
         [ValidateNotNull]
-        [ValidateLength(1,90)]
-        [Alias("ResourceGroup")]
-        public string ResourceGroupName { get; set; }
+        public SubscriptionDefinition Subscription { get; set; }
 
         /// <summary>
-        /// Executes the API call(s) against Azure Resource Management API(s).
+        /// Performs the API operation(s) against subscriptions as tenant.
         /// </summary>
         protected override object ExecuteCore()
         {
-            if (this.MyInvocation.InvocationName.Equals("Set-AzureRMPlan", StringComparison.OrdinalIgnoreCase))
+            if (this.MyInvocation.InvocationName.Equals("Set-AzureRmTenantSubscription", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteWarning("Alias Set-AzureRMPlan will be deprecated in a future release. Please use the cmdlet name Set-AzSPlan instead");
+                this.WriteWarning("Alias Set-AzureRmTenantSubscription will be deprecated in a future release. Please use the cmdlet name Set-AzSSubscription instead");
             }
 
             using (var client = this.GetAzureStackClient())
             {
-                this.WriteVerbose(Resources.UpdatingPlan.FormatArgs(this.Plan.Name, this.ResourceGroupName));
-                var parameters = new ManagedPlanCreateOrUpdateParameters(this.Plan);
-                return client.ManagedPlans.CreateOrUpdate(this.ResourceGroupName, parameters).Plan;
+                this.WriteVerbose(Resources.UpdatingSubscription.FormatArgs(this.Subscription.SubscriptionId));
+                var parameters = new SubscriptionCreateOrUpdateParameters(this.Subscription);
+                return client.Subscriptions.CreateOrUpdate(parameters).Subscription;
             }
         }
     }

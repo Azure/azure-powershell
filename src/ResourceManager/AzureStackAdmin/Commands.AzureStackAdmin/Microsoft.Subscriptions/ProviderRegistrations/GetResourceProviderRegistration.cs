@@ -16,16 +16,16 @@ namespace Microsoft.AzureStack.Commands
 {
     using System;
     using System.Management.Automation;
-    using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.AzureStack.Management;
     using Microsoft.AzureStack.Management.Models;
 
     /// <summary>
-    /// Get Resource Provider Registration Cmdlet
+    /// Get Resource Provider Manifest Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, Nouns.ResourceProviderRegistration)]
+    [Cmdlet(VerbsCommon.Get, Nouns.ResourceProviderManifest)]
     [OutputType(typeof(ProviderRegistrationModel))]
-    public class GetResourceProviderRegistration : AdminApiCmdlet
+    [Alias("Get-AzureRMResourceProviderRegistration")]
+    public class GetResourceProviderManifest : AdminApiCmdlet
     {
         /// <summary>
         /// Gets or sets the resource provider registration name.
@@ -40,24 +40,30 @@ namespace Microsoft.AzureStack.Commands
         [Parameter(Mandatory = true)]
         [ValidateLength(1, 90)]
         [ValidateNotNull]
-        public string ResourceGroup { get; set; }
+        [Alias("ResourceGroup")]
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
         protected override object ExecuteCore()
         {
+            if (this.MyInvocation.InvocationName.Equals("Get-AzureRMResourceProviderRegistration", StringComparison.OrdinalIgnoreCase))
+            {
+                this.WriteWarning("Alias Get-AzureRMResourceProviderRegistration will be deprecated in a future release. Please use the cmdlet Get-AzSResourceProviderManifest instead");
+            }
+
             using (var client = this.GetAzureStackClient())
             {
                 if (string.IsNullOrEmpty(this.Name))
                 {
                     this.WriteVerbose(Resources.ListingResourceProviderRegistration);
-                    return client.ProviderRegistrations.List(this.ResourceGroup).ProviderRegistrations;
+                    return client.ProviderRegistrations.List(this.ResourceGroupName).ProviderRegistrations;
                 }
                 else
                 {
                     this.WriteVerbose(Resources.GettingResourceProviderRegistration.FormatArgs(this.Name));
-                    return client.ProviderRegistrations.Get(this.ResourceGroup, this.Name).ProviderRegistration;
+                    return client.ProviderRegistrations.Get(this.ResourceGroupName, this.Name).ProviderRegistration;
                 }
             }
         }

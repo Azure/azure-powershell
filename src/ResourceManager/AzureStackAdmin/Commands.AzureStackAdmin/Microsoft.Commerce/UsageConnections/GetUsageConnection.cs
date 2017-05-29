@@ -25,6 +25,7 @@ namespace Microsoft.AzureStack.Commands
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.UsageConnection)]
     [OutputType(typeof(UsageConnectionModel))]
+    [Alias("Get-AzureRMUsageConnection")]
     public class GetUsageConnection : AdminApiCmdlet
     {
         /// <summary>
@@ -40,29 +41,35 @@ namespace Microsoft.AzureStack.Commands
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true)]
         [ValidateLength(1, 90)]
         [ValidateNotNull]
-        public string ResourceGroup { get; set; }
+        [Alias("ResourceGroup")]
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
         protected override object ExecuteCore()
         {
+            if (this.MyInvocation.InvocationName.Equals("Get-AzureRMUsageConnection", StringComparison.OrdinalIgnoreCase))
+            {
+                this.WriteWarning("Alias Get-AzureRMUsageConnection will be deprecated in a future release. Please use the cmdlet name Get-AzSUsageConection instead");
+            }
+
             this.ApiVersion = UsageApiVersion;
             using (var client = this.GetAzureStackClient())
             {
                 if (string.IsNullOrEmpty(this.Name))
                 {
                     this.WriteVerbose(Resources.ListingUsageConnections);
-                    return client.UsageConnections.List(this.ResourceGroup).UsageConnections;
+                    return client.UsageConnections.List(this.ResourceGroupName).UsageConnections;
                 }
-                else if (string.IsNullOrEmpty(this.ResourceGroup))
+                else if (string.IsNullOrEmpty(this.ResourceGroupName))
                 {
                     throw new ValidationMetadataException(Resources.ResourceGroupCannotBeEmpty);
                 }
                 else
                 {
                     this.WriteVerbose(Resources.GettingUsageConnection.FormatArgs(this.Name));
-                    return client.UsageConnections.Get(this.ResourceGroup, this.Name).UsageConnections;
+                    return client.UsageConnections.Get(this.ResourceGroupName, this.Name).UsageConnections;
                 }
             }
         }

@@ -25,6 +25,7 @@ namespace Microsoft.AzureStack.Commands
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, Nouns.Offer)]
     [OutputType(typeof(AzureOperationResponse))]
+    [Alias("Remove-AzureRMOffer")]
     public class RemoveOffer : AdminApiCmdlet
     {
         /// <summary>
@@ -41,7 +42,8 @@ namespace Microsoft.AzureStack.Commands
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true)]
         [ValidateLength(1, 90)]
         [ValidateNotNull]
-        public string ResourceGroup { get; set; }
+        [Alias("ResourceGroup")]
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
@@ -50,8 +52,8 @@ namespace Microsoft.AzureStack.Commands
         {
             using (var client = this.GetAzureStackClient())
             {
-                this.WriteVerbose(Resources.RemovingManagedOffer.FormatArgs(this.Name, this.ResourceGroup));
-                return client.ManagedOffers.Delete(this.ResourceGroup, this.Name);
+                this.WriteVerbose(Resources.RemovingManagedOffer.FormatArgs(this.Name, this.ResourceGroupName));
+                return client.ManagedOffers.Delete(this.ResourceGroupName, this.Name);
             }
         }
     }

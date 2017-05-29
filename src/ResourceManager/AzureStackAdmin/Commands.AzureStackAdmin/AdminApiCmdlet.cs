@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Linq;
+
 namespace Microsoft.AzureStack.Commands
 {
     using System;
@@ -74,6 +76,11 @@ namespace Microsoft.AzureStack.Commands
         {
             var originalValidateCallback = ServicePointManager.ServerCertificateValidationCallback;
             object result;
+
+            if (this.MyInvocation.BoundParameters.Keys.Contains("ResourceGroup", StringComparer.OrdinalIgnoreCase))
+            {
+                this.WriteWarning("The parameter alias ResourceGroup will be deprecated in a future release. Please use the paramter ResourceGroupName instead");
+            }
 
             // Execute the API call(s) for the current cmdlet
             result = this.ExecuteCore();

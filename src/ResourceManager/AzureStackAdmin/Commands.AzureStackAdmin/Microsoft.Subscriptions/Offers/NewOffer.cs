@@ -15,10 +15,8 @@
 namespace Microsoft.AzureStack.Commands
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
-    using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.AzureStack.Management;
     using Microsoft.AzureStack.Management.Models;
 
@@ -27,6 +25,7 @@ namespace Microsoft.AzureStack.Commands
     /// </summary>
     [Cmdlet(VerbsCommon.New, Nouns.Offer)]
     [OutputType(typeof(AdminOfferModel))]
+    [Alias("New-AzureRMOffer")]
     public class NewOffer : AdminApiCmdlet
     {
         /// <summary>
@@ -70,7 +69,7 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         [Parameter(Mandatory = true)]
         [ValidateNotNull]
-        public string ArmLocation { get; set; } // TODO - use API to get CSM location?
+        public string ArmLocation { get; set; } // TODO - use API to get ARM location?
 
         /// <summary>
         /// Gets or sets the resource group.
@@ -78,14 +77,15 @@ namespace Microsoft.AzureStack.Commands
         [Parameter(Mandatory = true)]
         [ValidateLength(1, 90)]
         [ValidateNotNull]
-        public string ResourceGroup { get; set; }
+        [Alias("ResourceGroup")]
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
         protected override object ExecuteCore()
         {
-            this.WriteVerbose(Resources.CreatingNewOffer.FormatArgs(this.Name, this.ResourceGroup));
+            this.WriteVerbose(Resources.CreatingNewOffer.FormatArgs(this.Name, this.ResourceGroupName));
             using (var client = this.GetAzureStackClient())
             {
                 // Ensure the resource group is created
@@ -94,7 +94,7 @@ namespace Microsoft.AzureStack.Commands
                     ResourceGroup = new ResourceGroupDefinition()
                     {
                         Location = this.ArmLocation,
-                        Name = this.ResourceGroup,
+                        Name = this.ResourceGroupName,
                     }
                 });
 
@@ -123,13 +123,13 @@ namespace Microsoft.AzureStack.Commands
                     parameters.Offer.Properties.AddonPlans = this.AddOnPlans.ToList();
                 }
 
-                if (client.ManagedOffers.List(this.ResourceGroup, includeDetails: false).Offers
+                if (client.ManagedOffers.List(this.ResourceGroupName, includeDetails: false).Offers
                     .Any(offer => string.Equals(offer.Properties.Name, parameters.Offer.Properties.Name, StringComparison.OrdinalIgnoreCase)))
                 {
-                    throw new PSInvalidOperationException(Resources.ManagedOfferAlreadyExists.FormatArgs(parameters.Offer.Properties.Name, this.ResourceGroup));
+                    throw new PSInvalidOperationException(Resources.ManagedOfferAlreadyExists.FormatArgs(parameters.Offer.Properties.Name, this.ResourceGroupName));
                 }
 
-                return client.ManagedOffers.CreateOrUpdate(this.ResourceGroup, parameters).Offer;
+                return client.ManagedOffers.CreateOrUpdate(this.ResourceGroupName, parameters).Offer;
             }
         }
     }

@@ -15,8 +15,6 @@
 namespace Microsoft.AzureStack.Commands
 {
     using System;
-    using System.Collections.Generic;
-    using System.IO;
     using System.Management.Automation;
     using Microsoft.Azure;
     using Microsoft.WindowsAzure.Commands.Common;
@@ -28,6 +26,7 @@ namespace Microsoft.AzureStack.Commands
     /// </summary>
     [Cmdlet(VerbsCommon.Add, Nouns.GalleryItem)]
     [OutputType(typeof(AzureOperationResponse))]
+    [Alias("Add-AzureRMGalleryItem")]
     public class AddGalleryItem : AdminApiCmdlet
     {
         /// <summary>
@@ -46,6 +45,11 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         protected override object ExecuteCore()
         {
+            if (this.MyInvocation.InvocationName.Equals("Add-AzureRMGalleryItem", StringComparison.OrdinalIgnoreCase))
+            {
+                this.WriteWarning("Alias Add-AzureRMGalleryItem will be deprecated in a future release. Please use the cmdlet name Add-AzSGalleryItem instead");
+            }
+
             this.ApiVersion = GalleryAdminApiVersion;
             using (var client = this.GetAzureStackClient())
             {

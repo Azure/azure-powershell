@@ -17,30 +17,22 @@ namespace Microsoft.AzureStack.Commands
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
-    using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.AzureStack.Management;
     using Microsoft.AzureStack.Management.Models;
 
     /// <summary>
-    /// New Managed Subscription Cmdlet
+    /// New Tenant Subscription Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.New, Nouns.ManagedSubscription)]
+    [Cmdlet(VerbsCommon.New, Nouns.Subscription)]
     [OutputType(typeof(SubscriptionDefinition))]
-    public class NewManagedSubscription : AdminApiCmdlet
+    [Alias("New-AzureRMTenantSubscription")]
+    public class NewSubscription : AdminApiCmdlet
     {
-        /// <summary>
-        /// Gets or sets the subscription owner.
-        /// </summary>
-        [Parameter(Mandatory = true)]
-        [ValidateLength(1, 128)]
-        [ValidateNotNull]
-        public string Owner { get; set; }
-
         /// <summary>
         /// Gets or sets the identifier of the offer.
         /// </summary>
         [Parameter(Mandatory = true)]
-        [ValidateLength(1, 512)]
+        [ValidateLength(1, 128)]
         [ValidateNotNull]
         public string OfferId { get; set; }
 
@@ -58,7 +50,7 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         public static Queue<Guid> SubscriptionIds { get; set; }
 
-        static NewManagedSubscription()
+        static NewSubscription()
         {
             SubscriptionIds = new Queue<Guid>();
         }
@@ -66,32 +58,37 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// Gets the subscription definition.
         /// </summary>
-        protected AdminSubscriptionDefinition GetSubscriptionDefinition()
+        protected SubscriptionDefinition GetSubscriptionDefinition()
         {
-            return new AdminSubscriptionDefinition()
-                   {
-                       // ToDo: Make the SubscriptionId as an optional parameter 
-                       SubscriptionId = (NewManagedSubscription.SubscriptionIds.Count == 0
-                           ? Guid.NewGuid()
-                           : NewManagedSubscription.SubscriptionIds.Dequeue()).ToString(),
-                       DisplayName = this.DisplayName,
-                       OfferId = this.OfferId,
-                       Owner = this.Owner,
-                       State = SubscriptionState.Enabled,
-                   };
+            // TODO: determine any extra properties which could / should be set
+            return new SubscriptionDefinition()
+            {
+                SubscriptionId = (NewSubscription.SubscriptionIds.Count == 0
+                    ? Guid.NewGuid()
+                    : NewSubscription.SubscriptionIds.Dequeue()).ToString(),
+                DisplayName = this.DisplayName,
+                OfferId = this.OfferId,
+                State = SubscriptionState.Enabled,
+            };
         }
 
         /// <summary>
-        /// Performs the API operation(s) against managed subscriptions.
+        /// Performs the API operation(s) against subscriptions as tenant.
         /// </summary>
         protected override object ExecuteCore()
         {
+            if (this.MyInvocation.InvocationName.Equals("New-AzureRmTenantSubscription", StringComparison.OrdinalIgnoreCase))
+            {
+                this.WriteWarning("Alias New-AzureRmTenantSubscription will be deprecated in a future release. Please use the cmdlet name New-AzSSubscription instead");
+            }
+
             using (var client = this.GetAzureStackClient())
             {
                 this.WriteVerbose(Resources.CreatingNewSubscription.FormatArgs(this.OfferId, this.DisplayName));
-                var parameters = new ManagedSubscriptionCreateOrUpdateParameters(this.GetSubscriptionDefinition());
-                return client.ManagedSubscriptions.CreateOrUpdate(parameters).Subscription;
+                var parameters = new SubscriptionCreateOrUpdateParameters(this.GetSubscriptionDefinition());
+                return client.Subscriptions.CreateOrUpdate(parameters).Subscription;
             }
         }
+
     }
 }

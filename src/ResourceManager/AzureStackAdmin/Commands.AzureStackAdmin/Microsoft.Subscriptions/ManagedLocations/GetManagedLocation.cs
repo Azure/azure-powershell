@@ -25,6 +25,7 @@ namespace Microsoft.AzureStack.Commands
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.Location)]
     [OutputType(typeof(Location))]
+    [Alias("Get-AzureRMManagedLocation")]
     public class GetManagedLocation : AdminApiCmdlet
     {
         /// <summary>
@@ -41,6 +42,11 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         protected override object ExecuteCore()
         {
+            if (this.MyInvocation.InvocationName.Equals("Get-AzureRMManagedLocation", StringComparison.OrdinalIgnoreCase))
+            {
+                this.WriteWarning("Alias Get-AzureRMManagedLocation will be deprecated in a future release. Please use the cmdlet name Get-AzSLocation instead");
+            }
+
             using (var client = this.GetAzureStackClient())
             {
                 if (string.IsNullOrEmpty(this.Name))

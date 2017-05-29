@@ -14,9 +14,7 @@
 
 namespace Microsoft.AzureStack.Commands
 {
-    using System;
     using System.Management.Automation;
-    using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.AzureStack.Management;
     using Microsoft.AzureStack.Management.Models;
 
@@ -57,7 +55,8 @@ namespace Microsoft.AzureStack.Commands
         [Parameter(ParameterSetName = "Admin", Mandatory = true)]
         [ValidateLength(1, 90)]
         [ValidateNotNull]
-        public string ResourceGroup { get; set; }
+        [Alias("ResourceGroup")]
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets a switch indicating whether to return managed offers.
@@ -72,17 +71,19 @@ namespace Microsoft.AzureStack.Commands
         {
             if (this.Managed.IsPresent)
             {
+                 this.WriteWarning("The switch parameter Managed will be deprecated in a future release. Please use the cmdlet Get-AzSManagedOffer instead");
+
                 using (var client = this.GetAzureStackClient())
                 {
                     if (string.IsNullOrEmpty(this.Name))
                     {
-                        this.WriteVerbose(Resources.ListingManagedOffers.FormatArgs(this.ResourceGroup));
-                        return client.ManagedOffers.List(this.ResourceGroup, includeDetails: true).Offers;
+                        this.WriteVerbose(Resources.ListingManagedOffers.FormatArgs(this.ResourceGroupName));
+                        return client.ManagedOffers.List(this.ResourceGroupName, includeDetails: true).Offers;
                     }
                     else
                     {
-                        this.WriteVerbose(Resources.GettingManagedOffer.FormatArgs(this.Name, this.ResourceGroup));
-                        return client.ManagedOffers.Get(this.ResourceGroup, this.Name).Offer;
+                        this.WriteVerbose(Resources.GettingManagedOffer.FormatArgs(this.Name, this.ResourceGroupName));
+                        return client.ManagedOffers.Get(this.ResourceGroupName, this.Name).Offer;
                     }
                 }
             }

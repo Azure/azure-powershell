@@ -22,11 +22,12 @@ namespace Microsoft.AzureStack.Commands
     using Microsoft.AzureStack.Management.Models;
 
     /// <summary>
-    /// Set Resource Provider Registration Cmdlet
+    /// Set Resource Provider Manifest Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, Nouns.ResourceProviderRegistration)]
+    [Cmdlet(VerbsCommon.Set, Nouns.ResourceProviderManifest)]
     [OutputType(typeof(ProviderRegistrationModel))]
-    public class SetResourceProviderRegistration : AdminApiCmdlet
+    [Alias("Set-AzureRMResourceProviderRegistration")]
+    public class SetResourceProviderManifest : AdminApiCmdlet
     {
         /// <summary>
         /// Gets or sets the provider registration.
@@ -41,7 +42,8 @@ namespace Microsoft.AzureStack.Commands
         [Parameter(Mandatory = true)]
         [ValidateLength(1, 90)]
         [ValidateNotNull]
-        public string ResourceGroup { get; set; }
+        [Alias("ResourceGroup")]
+        public string ResourceGroupName { get; set; }
 
 
         /// <summary>
@@ -49,6 +51,11 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         protected override object ExecuteCore()
         {
+            if (this.MyInvocation.InvocationName.Equals("Set-AzureRMResourceProviderRegistration", StringComparison.OrdinalIgnoreCase))
+            {
+                this.WriteWarning("Alias Set-AzureRMResourceProviderRegistration will be deprecated in a future release. Please use the cmdlet Set-AzSResourceProviderManifest instead");
+            }
+
             using (var client = this.GetAzureStackClient())
             {
                 var parameters = new ProviderRegistrationCreateOrUpdateParameters()
@@ -61,7 +68,7 @@ namespace Microsoft.AzureStack.Commands
                 this.ValidatePrerequisites(client, parameters);
 
                 return client.ProviderRegistrations
-                    .CreateOrUpdate(this.ResourceGroup, parameters)
+                    .CreateOrUpdate(this.ResourceGroupName, parameters)
                     .ProviderRegistration;
             }
         }
@@ -76,15 +83,15 @@ namespace Microsoft.AzureStack.Commands
             ArgumentValidator.ValidateNotNull("client", client);
             ArgumentValidator.ValidateNotNull("parameters", parameters);
 
-            if (!client.ResourceGroups.List().ResourceGroups.Any(r => string.Equals(r.Name, this.ResourceGroup, StringComparison.OrdinalIgnoreCase)))
+            if (!client.ResourceGroups.List().ResourceGroups.Any(r => string.Equals(r.Name, this.ResourceGroupName, StringComparison.OrdinalIgnoreCase)))
             {
-                throw new PSInvalidOperationException(Resources.ResourceGroupDoesNotExist.FormatArgs(this.ResourceGroup));
+                throw new PSInvalidOperationException(Resources.ResourceGroupDoesNotExist.FormatArgs(this.ResourceGroupName));
             }
 
             var providerNamespace = parameters.ProviderRegistration.Properties.Namespace;
             var location = parameters.ProviderRegistration.Properties.ProviderLocation;
 
-            if (!client.ProviderRegistrations.List(this.ResourceGroup).ProviderRegistrations
+            if (!client.ProviderRegistrations.List(this.ResourceGroupName).ProviderRegistrations
                 .Any(p =>
                     string.Equals(p.Properties.Namespace, providerNamespace, StringComparison.OrdinalIgnoreCase)
                     && string.Equals(p.Properties.ProviderLocation, location, StringComparison.OrdinalIgnoreCase)))

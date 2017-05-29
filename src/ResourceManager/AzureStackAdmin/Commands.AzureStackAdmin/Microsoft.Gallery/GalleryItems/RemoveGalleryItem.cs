@@ -25,6 +25,7 @@ namespace Microsoft.AzureStack.Commands
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, Nouns.GalleryItem)]
     [OutputType(typeof(AzureOperationResponse))]
+    [Alias("Remove-AzureRMGalleryItem")]
     public class RemoveGalleryItem : AdminApiCmdlet
     {
         /// <summary>
@@ -39,6 +40,11 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         protected override object ExecuteCore()
         {
+            if (this.MyInvocation.InvocationName.Equals("Remove-AzureRMGalleryItem", StringComparison.OrdinalIgnoreCase))
+            {
+                this.WriteWarning("Alias Remove-AzureRMGalleryItem will be deprecated in a future release. Please use the cmdlet name Remove-AzSGalleryItem instead");
+            }
+
             this.ApiVersion = GalleryAdminApiVersion;
             using (var client = this.GetAzureStackClient())
             {

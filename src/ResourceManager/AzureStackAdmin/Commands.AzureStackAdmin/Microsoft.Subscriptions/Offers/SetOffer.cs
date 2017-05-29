@@ -25,6 +25,7 @@ namespace Microsoft.AzureStack.Commands
     /// </summary>
     [Cmdlet(VerbsCommon.Set, Nouns.Offer)]
     [OutputType(typeof(AdminOfferModel))]
+    [Alias("Set-AzureRMOffer")]
     public class SetOffer : AdminApiCmdlet
     {
         /// <summary>
@@ -40,7 +41,8 @@ namespace Microsoft.AzureStack.Commands
         [Parameter(Mandatory = true)]
         [ValidateLength(1, 90)]
         [ValidateNotNull]
-        public string ResourceGroup { get; set; }
+        [Alias("ResourceGroup")]
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the subscription id.
@@ -56,9 +58,9 @@ namespace Microsoft.AzureStack.Commands
         {
             using (var client = this.GetAzureStackClient())
             {
-                this.WriteVerbose(Resources.UpdatingOffer.FormatArgs(this.Offer.Name, this.ResourceGroup));
+                this.WriteVerbose(Resources.UpdatingOffer.FormatArgs(this.Offer.Name, this.ResourceGroupName));
                 var parameters = new ManagedOfferCreateOrUpdateParameters(this.Offer);
-                return client.ManagedOffers.CreateOrUpdate(this.ResourceGroup, parameters).Offer;
+                return client.ManagedOffers.CreateOrUpdate(this.ResourceGroupName, parameters).Offer;
             }
         }
     }
