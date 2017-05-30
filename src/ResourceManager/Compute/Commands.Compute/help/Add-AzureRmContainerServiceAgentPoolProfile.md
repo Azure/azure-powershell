@@ -24,7 +24,7 @@ The **Add-AzureRmContainerServiceAgentPoolProfile** cmdlet adds a container serv
 
 ### Example 1: Add a profile
 ```
-PS C:\>Add-AzureRmContainerServiceAgentPoolProfile -Name "AgentPool01" -VmSize "Standard_A1" -DnsPrefix "APResourceGroup17"
+PS C:\> Add-AzureRmContainerServiceAgentPoolProfile -Name "AgentPool01" -VmSize "Standard_A1" -DnsPrefix "APResourceGroup17"
 ```
 
 This command adds a container service agent pool profile to the local container service object.

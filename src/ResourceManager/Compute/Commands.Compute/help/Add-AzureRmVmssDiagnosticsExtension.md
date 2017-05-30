@@ -26,7 +26,7 @@ The **Add-AzureRmVmssDiagnosticsExtension** cmdlet adds a diagnostics extension 
 
 ### Example 1: Add a diagnostics extension to the VMSS
 ```
-PS C:\>Add-AzureRmVmssDiagnosticsExtension -VirtualMachineScaleSet $VMSS -SettingFilePath $publicConfigPath -ProtectedSettingFilePath $privateConfigPath -Name $extName -TypeHandlerVersion $typeVersion -AutoUpgradeMinorVersion $True -Force
+PS C:\> Add-AzureRmVmssDiagnosticsExtension -VirtualMachineScaleSet $VMSS -SettingFilePath $publicConfigPath -ProtectedSettingFilePath $privateConfigPath -Name $extName -TypeHandlerVersion $typeVersion -AutoUpgradeMinorVersion $True -Force
 ```
 
 This command adds a diagnostics extension to the VMSS.

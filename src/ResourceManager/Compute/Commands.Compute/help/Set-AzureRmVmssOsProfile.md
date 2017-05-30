@@ -28,7 +28,7 @@ The **Set-AzureRmVmssOsProfile** cmdlet sets the Virtual Machine Scale Set opera
 
 ### Example 1: Set the operating system profile properties for a VMSS
 ```
-PS C:\>Set-AzureRmVmssOSProfile -VirtualMachineScaleSet "ContosoVMSS" -ComputerNamePrefix "Test" -AdminUsername $AdminUsername -AdminPassword $AdminPassword
+PS C:\> Set-AzureRmVmssOSProfile -VirtualMachineScaleSet "ContosoVMSS" -ComputerNamePrefix "Test" -AdminUsername $AdminUsername -AdminPassword $AdminPassword
 ```
 
 This command sets operating system profile properties for the virtual machines that belong to the VMSS named ContosoVMSS.

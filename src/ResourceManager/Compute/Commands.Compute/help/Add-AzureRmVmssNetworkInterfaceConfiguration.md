@@ -25,7 +25,7 @@ The **Add-AzureRmVmssNetworkInterfaceConfiguration** cmdlet adds a network inter
 
 ### Example 1: Add a network interface configuration to the VMSS
 ```
-PS C:\>Add-AzureRmVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $VMSS -Name "Test" -Primary $True -IPConfiguration $IPCfg
+PS C:\> Add-AzureRmVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $VMSS -Name "Test" -Primary $True -IPConfiguration $IPCfg
 ```
 
 This command adds a network interface configuration to the VMSS.
