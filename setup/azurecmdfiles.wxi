@@ -1142,9 +1142,6 @@
                         <Component Id="cmp18559E426D9575F9741C6BB896E36096" Guid="*">
                             <File Id="fil3FDE0768954463E11C3F755477EA3F82" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.DevTestLabs\Microsoft.Azure.Graph.RBAC.dll" />
                         </Component>
-                        <Component Id="cmp06CD6BDE473F792012CE7024813F220A" Guid="*">
-                            <File Id="fil34B0A4BF46121307742C9608A85B8003" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.DevTestLabs\Microsoft.Azure.Management.Authorization.dll" />
-                        </Component>
                         <Component Id="cmp95F2278E8024575B268B5ADB26BF55E3" Guid="*">
                             <File Id="filE5725D3B7BFD6FFF3EF8DCC5B4A91494" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.DevTestLabs\Microsoft.Azure.Management.DevTestLabs.dll" />
                         </Component>
@@ -5698,7 +5695,6 @@
             <ComponentRef Id="cmp3F1C1F7F308468B14973DE21B2862307" />
             <ComponentRef Id="cmpE037063BF3683AE4D6206BBB51BC3393" />
             <ComponentRef Id="cmp18559E426D9575F9741C6BB896E36096" />
-            <ComponentRef Id="cmp06CD6BDE473F792012CE7024813F220A" />
             <ComponentRef Id="cmp95F2278E8024575B268B5ADB26BF55E3" />
             <ComponentRef Id="cmp01C0D7F5A138E257E63C9A88A6E77FB5" />
             <ComponentRef Id="cmp6A0A2D259AAD3356C7AFB688CDA4A47C" />
