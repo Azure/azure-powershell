@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 4.0.1
+
 ## Version 4.0.0
 * Added Test-AzureRmNetworkWatcherConnectivity cmdlet
     - Returns connectivity information for a specified source VM and a destination

@@ -20,6 +20,8 @@
 ## Current Release
 * Updated Set-AzureRmVMAEMExtension: Add caching information for Premium managed disks
 
+## Version 3.0.1
+
 ## Version 3.0.0
 * Updated Set-AzureRmVMAEMExtension and Test-AzureRmVMAEMExtension cmdlets to support Premium managed disks
 * Backup encryption settings for IaaS VMs and restore on failure
