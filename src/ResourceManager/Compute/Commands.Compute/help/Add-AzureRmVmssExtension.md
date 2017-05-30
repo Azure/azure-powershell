@@ -26,7 +26,7 @@ The **Add-AzureRmVmssExtension** cmdlet adds an extension to the Virtual Machine
 
 ### Example 1: Add an extension to the VMSS
 ```
-PS C:\>Add-AzureRmVmssExtension -VirtualMachineScaleSet $VMSS -Name $ExtName -Publisher $Publisher -Type $ExtType -TypeHandlerVersion $ExtVer -AutoUpgradeMinorVersion $True
+PS C:\> Add-AzureRmVmssExtension -VirtualMachineScaleSet $VMSS -Name $ExtName -Publisher $Publisher -Type $ExtType -TypeHandlerVersion $ExtVer -AutoUpgradeMinorVersion $True
 ```
 
 This command adds an extension to the VMMS.

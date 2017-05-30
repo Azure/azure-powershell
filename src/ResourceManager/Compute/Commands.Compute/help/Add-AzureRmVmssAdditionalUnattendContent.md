@@ -25,7 +25,7 @@ The **Add-AzureRmVmssAdditionalUnattendContent** cmdlet adds information to the 
 
 ### Example 1: Add information to the unattended Windows Setup answer file
 ```
-PS C:\>Add-AzureRmVmssAdditionalUnattendContent -VirtualMachineScaleSet $VMSS -ComponentName  $AUCComponentName -Content  $AUCContent -PassName $AUCPassName -SettingName  $AUCSetting
+PS C:\> Add-AzureRmVmssAdditionalUnattendContent -VirtualMachineScaleSet $VMSS -ComponentName  $AUCComponentName -Content  $AUCContent -PassName $AUCPassName -SettingName  $AUCSetting
 ```
 
 This command adds information to the unattended Windows Setup answer file.

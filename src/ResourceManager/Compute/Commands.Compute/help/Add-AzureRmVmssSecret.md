@@ -27,7 +27,7 @@ For more information about the cmdlets, see Azure Key Vault Cmdletshttps://msdn.
 
 ### Example 1: Add a secret to the VMSS
 ```
-PS C:\>$Vault = Get-AzureRmKeyVault -VaultName "ContosoVault"
+PS C:\> $Vault = Get-AzureRmKeyVault -VaultName "ContosoVault"
 PS C:\> $CertConfig = New-AzureRmVmssVaultCertificateConfig -CertificateUrl "http://keyVaultName.vault.contoso.net/secrets/secretName/secretVersion" -CertificateStore "Certificates"
 PS C:\> $VMSS = New-AzureRmVmssConfig
 PS C:\> Add-AzureRmVmssSecret -VirtualMachineScaleSet $VMSS -SourceVaultId $Vault.ResourceId -VaultCertificate $CertConfig
