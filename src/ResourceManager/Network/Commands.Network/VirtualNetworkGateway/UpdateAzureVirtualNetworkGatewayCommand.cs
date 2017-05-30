@@ -118,31 +118,6 @@ namespace Microsoft.Azure.Commands.Network
                 this.VirtualNetworkGateway.ActiveActive = false;
             }
 
-            if (this.VirtualNetworkGateway.ActiveActive)
-            {
-                bool activeActiveSkuCriteria = 
-                    !string.IsNullOrEmpty(this.GatewaySku) ? 
-                    (!this.GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.HighPerformance) 
-                    && !this.GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.VpnGw1)
-                    && !this.GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.VpnGw2)
-                    && !this.GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.VpnGw3)) : 
-                    (!this.VirtualNetworkGateway.Sku.Tier.Equals(MNM.VirtualNetworkGatewaySkuTier.HighPerformance)
-                    && !this.VirtualNetworkGateway.Sku.Tier.Equals(MNM.VirtualNetworkGatewaySkuTier.VpnGw1)
-                    && !this.VirtualNetworkGateway.Sku.Tier.Equals(MNM.VirtualNetworkGatewaySkuTier.VpnGw2)
-                    && !this.VirtualNetworkGateway.Sku.Tier.Equals(MNM.VirtualNetworkGatewaySkuTier.VpnGw3));
-
-                if (activeActiveSkuCriteria)
-                {
-                    string errorMessage = string.Format(
-                    "Virtual Network Gateway Sku should be one of {0}/{1}/{2}/{3} when Active-Active feature flag is set to True.",
-                    MNM.VirtualNetworkGatewaySkuTier.HighPerformance,
-                    MNM.VirtualNetworkGatewaySkuTier.VpnGw1,
-                    MNM.VirtualNetworkGatewaySkuTier.VpnGw2,
-                    MNM.VirtualNetworkGatewaySkuTier.VpnGw3);
-
-                    throw new ArgumentException(errorMessage);
-                }
-            }
 
             if (!string.IsNullOrEmpty(GatewaySku))
             {
