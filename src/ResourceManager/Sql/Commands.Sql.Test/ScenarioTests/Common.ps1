@@ -501,10 +501,10 @@ Gets the values of the parameters used by the sync group tests
 #>
 function Get-SqlSyncGroupTestEnvironmentParameters ($testSuffix)
 {
-	return @{ 
-			  intervalInSeconds = 300;
-	          conflictResolutionPolicy = "HubWin";
-			  }
+    return @{
+              intervalInSeconds = 300;
+              conflictResolutionPolicy = "HubWin";
+              }
 }
 
 <#
@@ -513,8 +513,8 @@ Gets the values of the parameters used by the sync member tests
 #>
 function Get-SqlSyncMemberTestEnvironmentParameters ($testSuffix)
 {
-	return @{ 
-	          syncDirection = "Bidirectional";
-			  databaseType = "AzureSqlDatabase";
-			  }
+    return @{
+              syncDirection = "Bidirectional";
+              databaseType = "AzureSqlDatabase";
+              }
 }
