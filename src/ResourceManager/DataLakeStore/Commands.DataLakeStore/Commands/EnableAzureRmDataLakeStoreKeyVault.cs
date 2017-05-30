@@ -13,11 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.DataLakeStore.Models;
+using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsLifecycle.Enable, "AzureRmDataLakeStoreKeyVault")]
+    [Cmdlet(VerbsLifecycle.Enable, "AzureRmDataLakeStoreKeyVault", SupportsShouldProcess = true)]
     [Alias("Enable-AdlStoreKeyVault")]
     public class EnableAzureDataLakeStoreKeyVault : DataLakeStoreCmdletBase
     {
@@ -34,7 +35,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            DataLakeStoreClient.EnableKeyVault(ResourceGroupName, Account);
+            ConfirmAction(
+                string.Format(Resources.EnableKeyVault, Account),
+                Account,
+                () => DataLakeStoreClient.EnableKeyVault(ResourceGroupName, Account));
         }
     }
 }
