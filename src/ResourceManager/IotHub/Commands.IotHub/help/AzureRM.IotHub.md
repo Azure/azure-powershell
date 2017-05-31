@@ -8,7 +8,7 @@ Locale: en-US
 
 # AzureRM.IotHub Module
 ## Description
-{{Manually Enter Description Here}}
+Commands for Managing Azure IotHubs
 
 ## AzureRM.IotHub Cmdlets
 ### [Add-AzureRmIotHubEventHubConsumerGroup](Add-AzureRmIotHubEventHubConsumerGroup.md)

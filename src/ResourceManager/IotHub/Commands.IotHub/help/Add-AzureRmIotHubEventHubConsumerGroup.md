@@ -39,7 +39,7 @@ Adds a new consumergroup named "myconsumergroup" to the eventhub for operations 
 ## PARAMETERS
 
 ### -EventHubConsumerGroupName
-EventHubConsumerGroupName.
+Name of the EventHub ConsumerGroup that you want to add.
 
 ```yaml
 Type: String
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 ```
 
 ### -EventHubEndpointName
-EventHubEndpointName.
+Name of the EventHub Endpoint that you want to add.
 Possible values events, operationsMonitoringEvents
 
 ```yaml
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Name of the Resource Group that you want to add.
 
 ```yaml
 Type: String

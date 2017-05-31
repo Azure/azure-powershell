@@ -73,42 +73,42 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [Parameter(
             ParameterSetName = UpdateFileUploadPropertiesParameterSet,
             Mandatory = false,
-            HelpMessage = "FileUploadStorageConnectionString")]
+            HelpMessage = "Provide File upload storage connectionstring")]
         [ValidateNotNullOrEmpty]
         public string FileUploadStorageConnectionString { get; set; }
 
         [Parameter(
             ParameterSetName = UpdateFileUploadPropertiesParameterSet,
             Mandatory = false,
-            HelpMessage = "FileUploadContainerName")]
+            HelpMessage = "Provide the containerName for FileUpload")]
         [ValidateNotNullOrEmpty]
         public string FileUploadContainerName { get; set; }
 
         [Parameter(
             ParameterSetName = UpdateFileUploadPropertiesParameterSet,
             Mandatory = false,
-            HelpMessage = "FileUploadSasUriTtl")]
+            HelpMessage = "Provide sas uri ttl for FileUpload")]
         [ValidateNotNullOrEmpty]
         public TimeSpan FileUploadSasUriTtl { get; set; }
 
         [Parameter(
             ParameterSetName = UpdateFileUploadPropertiesParameterSet,
             Mandatory = false,
-            HelpMessage = "FileUploadNotificationTtl")]
+            HelpMessage = "Provide notificationTtl for FileUpload")]
         [ValidateNotNullOrEmpty]
         public TimeSpan FileUploadNotificationTtl { get; set; }
 
         [Parameter(
             ParameterSetName = UpdateFileUploadPropertiesParameterSet,
             Mandatory = false,
-            HelpMessage = "FileUploadNotificationMaxDeliveryCount")]
+            HelpMessage = "Provide notificationMaxDeliveryCount for FileUpload")]
         [ValidateNotNullOrEmpty]
         public int? FileUploadNotificationMaxDeliveryCount { get; set; }
 
         [Parameter(
             ParameterSetName = UpdateFileUploadPropertiesParameterSet,
             Mandatory = true,
-            HelpMessage = "EnableFileUploadNotifications")]
+            HelpMessage = "Set notifications for FileUpload")]
         [ValidateNotNullOrEmpty]
         public bool EnableFileUploadNotifications { get; set; }
 
@@ -122,28 +122,28 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [Parameter(
             ParameterSetName = UpdateOperationsMonitoringPropertiesParameterSet,
             Mandatory = true,
-            HelpMessage = "OperationsMonitoringProperties")]
+            HelpMessage = "Set Operations Monitoring Properties")]
         [ValidateNotNullOrEmpty]
         public PSOperationsMonitoringProperties OperationsMonitoringProperties { get; set; }
 
         [Parameter(
             ParameterSetName = UpdateRoutingPropertiesParameterSet,
             Mandatory = false,
-            HelpMessage = "RoutingProperties")]
+            HelpMessage = "Set Routing Properties")]
         [ValidateNotNullOrEmpty]
         public PSRoutingProperties RoutingProperties { get; set; }
 
         [Parameter(
             ParameterSetName = UpdateRoutePropertiesParameterSet,
             Mandatory = false,
-            HelpMessage = "Routes")]
+            HelpMessage = "Add Routes")]
         [ValidateNotNullOrEmpty]
         public List<PSRouteMetadata> Routes { get; set; }
 
         [Parameter(
             ParameterSetName = UpdateFallbackRoutePropertyParameterSet,
             Mandatory = false,
-            HelpMessage = "Fallback Routes")]
+            HelpMessage = "Set Fallback Route")]
         [ValidateNotNullOrEmpty]
         public PSFallbackRouteMetadata FallbackRoute { get; set; }
 
