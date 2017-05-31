@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
     using ServiceManagemenet.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
-    public class EndpointTests
+    public class EndpointTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         public EndpointTests(ITestOutputHelper output)
         {
