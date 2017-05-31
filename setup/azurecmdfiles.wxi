@@ -8,6 +8,12 @@
             <Directory Id="dirB60B5B1F56FA5598EFFC960CA393FDCE" Name="ResourceManager">
                 <Directory Id="dir9E409EB63EF03736275B51044C819FD8" Name="AzureResourceManager">
                     <Directory Id="dir887149D384FA060718922AB0DA37F700" Name="AzureRM.AnalysisServices">
+                        <Component Id="cmp0F32571B5CDE7F450E02A5E1BDD23A68" Guid="*">
+                            <File Id="fil5D9B2FF26A199885F49F963D827BF839" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AnalysisServices\AnalysisServicesDataplaneStartup.ps1" />
+                        </Component>
+                        <Component Id="cmp29C79282641167200374B1CE3EA9BA66" Guid="*">
+                            <File Id="fil6F81BCCD3DB3B57015EA51F97047B0CD" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AnalysisServices\Azure.AnalysisServices.psd1" />
+                        </Component>
                         <Component Id="cmpE1934F4197E90691F3F4FD7D0D17559F" Guid="*">
                             <File Id="filDF0DDEF57A08314CBF3061F3513F605F" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AnalysisServices\AzureRM.AnalysisServices.psd1" />
                         </Component>
@@ -16,6 +22,9 @@
                         </Component>
                         <Component Id="cmpB5FFAB492F5FC283B45A8B0FC8B85B23" Guid="*">
                             <File Id="fil662A002742D1A6B36540F70969B80A9D" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AnalysisServices\Microsoft.ApplicationInsights.dll" />
+                        </Component>
+                        <Component Id="cmp024CDE0D6160A73F1941C61BF4F00266" Guid="*">
+                            <File Id="filC8A4836F6396C9842E52A48B83C46E68" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AnalysisServices\Microsoft.Azure.Commands.AnalysisServices.Dataplane.dll" />
                         </Component>
                         <Component Id="cmp6108BA66E02AF03106520F7A2C289BC7" Guid="*">
                             <File Id="fil5BB6CCFE42A464236D5EB72623754357" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AnalysisServices\Microsoft.Azure.Commands.AnalysisServices.dll" />
@@ -52,6 +61,9 @@
                         </Component>
                         <Component Id="cmpB36CF33BC2D97DD90831B716158B7955" Guid="*">
                             <File Id="filE71754779898CE9B86BA1342BE78051B" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AnalysisServices\Microsoft.WindowsAzure.Commands.Common.dll" />
+                        </Component>
+                        <Component Id="cmpDFBD439255A05B66C27D9F543F2E9CE5" Guid="*">
+                            <File Id="filFE5B7FF7E4987E65E4F07305D23FF1F9" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AnalysisServices\Microsoft.WindowsAzure.Management.dll" />
                         </Component>
                         <Component Id="cmp15DB7B41839B518C871AB1C7F1008B91" Guid="*">
                             <File Id="fil63BCF3AE45360F4F78693DDB1E7C1054" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AnalysisServices\Newtonsoft.Json.dll" />
@@ -5560,9 +5572,12 @@
     <Fragment>
         <ComponentGroup Id="azurecmdfiles">
             <ComponentRef Id="cmpDC507D3B034FD0F9887EC67302B6F5A0" />
+            <ComponentRef Id="cmp0F32571B5CDE7F450E02A5E1BDD23A68" />
+            <ComponentRef Id="cmp29C79282641167200374B1CE3EA9BA66" />
             <ComponentRef Id="cmpE1934F4197E90691F3F4FD7D0D17559F" />
             <ComponentRef Id="cmpF0D8E7A18EC397D4F297FB010BB719FF" />
             <ComponentRef Id="cmpB5FFAB492F5FC283B45A8B0FC8B85B23" />
+            <ComponentRef Id="cmp024CDE0D6160A73F1941C61BF4F00266" />
             <ComponentRef Id="cmp6108BA66E02AF03106520F7A2C289BC7" />
             <ComponentRef Id="cmp496D3A9A2F03DAA3A8C169EE80782706" />
             <ComponentRef Id="cmp17B3EEF1EB68DF671E8C76C92B20E756" />
@@ -5575,6 +5590,7 @@
             <ComponentRef Id="cmp6E9F75BCAD634F076A3F4B2B95FE007D" />
             <ComponentRef Id="cmp3A50F1319D78804190DB48C294EEEE59" />
             <ComponentRef Id="cmpB36CF33BC2D97DD90831B716158B7955" />
+            <ComponentRef Id="cmpDFBD439255A05B66C27D9F543F2E9CE5" />
             <ComponentRef Id="cmp15DB7B41839B518C871AB1C7F1008B91" />
             <ComponentRef Id="cmp4239E298007039D73447BCF1C811AFFF" />
             <ComponentRef Id="cmp52FA0519C93110702BAA6D4D39EED5A4" />
