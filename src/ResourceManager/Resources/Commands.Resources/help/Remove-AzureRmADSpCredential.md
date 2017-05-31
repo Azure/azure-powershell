@@ -176,9 +176,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmADSpCredential]()
+[Get-AzureRmADSpCredential](./Get-AzureRmADSpCredential.md)
 
-[New-AzureRmADSpCredential]()
+[New-AzureRmADSpCredential](./New-AzureRmADSpCredential.md)
 
-[Get-AzureRmADServicePrincipal]()
+[Get-AzureRmADServicePrincipal](./Get-AzureRmADServicePrincipal.md)
 
