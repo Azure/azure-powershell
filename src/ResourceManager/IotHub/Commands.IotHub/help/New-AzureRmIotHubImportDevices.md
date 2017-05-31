@@ -34,7 +34,7 @@ Creates a new import device request for the IotHub "myiothub".
 ## PARAMETERS
 
 ### -InputBlobContainerUri
-InputBlobContainerUri
+Input Blob Container Uri for FileUpload
 
 ```yaml
 Type: String
@@ -49,7 +49,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name
+Name of the IotHub
 
 ```yaml
 Type: String

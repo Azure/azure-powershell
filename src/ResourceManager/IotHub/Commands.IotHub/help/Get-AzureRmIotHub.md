@@ -51,7 +51,7 @@ Gets information about the IotHub named "myiothub".
 ## PARAMETERS
 
 ### -Name
-Name
+Name of the IotHub
 
 ```yaml
 Type: String
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Name of the ResourceGroup
 
 ```yaml
 Type: String

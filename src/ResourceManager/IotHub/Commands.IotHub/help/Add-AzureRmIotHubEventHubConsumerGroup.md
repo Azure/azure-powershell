@@ -54,7 +54,7 @@ Accept wildcard characters: False
 ```
 
 ### -EventHubEndpointName
-Name of the EventHub Endpoint that you want to add.
+Name of the EventHub Endpoint.
 Possible values events, operationsMonitoringEvents
 
 ```yaml
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name
+Name of the Iot Hub
 
 ```yaml
 Type: String
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the Resource Group that you want to add.
+Name of the Resource Group.
 
 ```yaml
 Type: String

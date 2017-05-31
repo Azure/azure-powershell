@@ -39,7 +39,7 @@ Gets information about the job with the identifier "3630fc31-4caa-43e8-a232-ea05
 ## PARAMETERS
 
 ### -JobId
-JobId
+The Job Identifier. 
 
 ```yaml
 Type: String
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name
+Name of the IoT hub. 
 
 ```yaml
 Type: String

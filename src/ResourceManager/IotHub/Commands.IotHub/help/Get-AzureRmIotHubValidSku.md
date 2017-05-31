@@ -32,7 +32,7 @@ Gets a list of all skus for the IotHub named "myiothub"
 ## PARAMETERS
 
 ### -Name
-Name
+Name of the IoT hub. 
 
 ```yaml
 Type: String

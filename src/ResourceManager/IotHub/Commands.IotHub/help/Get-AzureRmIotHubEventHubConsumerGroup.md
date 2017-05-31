@@ -38,7 +38,7 @@ Gets all the eventhub consumergroups for the operationsMonitoringEvents eventhub
 ## PARAMETERS
 
 ### -EventHubEndpointName
-EventHubEndpointName.
+Name of the Event Hub endpoint.
 Possible values events, operationsMonitoringEvents
 
 ```yaml
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name
+Name of the IotHub
 
 ```yaml
 Type: String

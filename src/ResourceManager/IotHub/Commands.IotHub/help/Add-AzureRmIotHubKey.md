@@ -33,7 +33,7 @@ Creates a key named "mykey" for the iothub "myiothub" with RegistryRead permissi
 ## PARAMETERS
 
 ### -KeyName
-Name
+Name of the Key
 
 ```yaml
 Type: String
@@ -48,7 +48,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name
+Name of the IotHub
 
 ```yaml
 Type: String
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 ```
 
 ### -SecondaryKey
-SecondaryKey
+The SecondaryKey
 
 ```yaml
 Type: String
