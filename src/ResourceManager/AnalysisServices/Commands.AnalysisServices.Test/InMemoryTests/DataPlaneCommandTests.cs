@@ -170,8 +170,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
             // Set up AsAzureHttpClient mock
             var mockAsAzureHttpClient = new Mock<IAsAzureHttpClient>();
             mockAsAzureHttpClient
-                .Setup(obj => obj.CallPostAsync(It.IsAny<Uri>(), It.IsAny<string>(), It.IsAny<string>()))
-                .Returns( Task<HttpResponseMessage>.FromResult(new HttpResponseMessage(HttpStatusCode.OK)));
+                .Setup(obj => obj.CallPostAsync(It.IsAny<Uri>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<HttpContent>()))
+                .Returns(Task<HttpResponseMessage>.FromResult(new HttpResponseMessage(HttpStatusCode.OK)));
 
             var mockTokenCacheItemProvider = new Mock<ITokenCacheItemProvider>();
             mockTokenCacheItemProvider
