@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
 
     using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
-    public class TestController
+    public class TestController : RMTestBase
     {
         private CSMTestEnvironmentFactory csmTestFactory;
 
