@@ -51,7 +51,7 @@ namespace Microsoft.AzureStack.Commands
         {
             if (this.MyInvocation.InvocationName.Equals("Remove-AzureRMUsageConnection", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteWarning("Alias Remove-AzureRMUsageConnection will be deprecated in a future release. Please use the cmdlet name Get-AzSUsageConection instead");
+                this.WriteWarning("Alias Remove-AzureRMUsageConnection will be deprecated in a future release. Please use the cmdlet name Remove-AzSUsageConection instead");
             }
 
             this.ApiVersion = UsageApiVersion;

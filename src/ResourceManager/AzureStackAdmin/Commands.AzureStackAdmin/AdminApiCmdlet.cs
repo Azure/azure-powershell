@@ -12,12 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
-
 namespace Microsoft.AzureStack.Commands
 {
     using System;
-    using System.Management.Automation;
+    using System.Linq;
     using System.Net;
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Commands.Common.Authentication;
@@ -79,7 +77,7 @@ namespace Microsoft.AzureStack.Commands
 
             if (this.MyInvocation.BoundParameters.Keys.Contains("ResourceGroup", StringComparer.OrdinalIgnoreCase))
             {
-                this.WriteWarning("The parameter alias ResourceGroup will be deprecated in a future release. Please use the paramter ResourceGroupName instead");
+                this.WriteWarning("The parameter alias ResourceGroup will be deprecated in a future release. Please use the parameter ResourceGroupName instead");
             }
 
             // Execute the API call(s) for the current cmdlet

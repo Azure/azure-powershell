@@ -41,7 +41,7 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true)]
         [ValidateNotNull]
-        [ValidateLength(1,90)]
+        [ValidateLength(1, 90)]
         [Alias("ResourceGroup")]
         public string ResourceGroupName { get; set; }
 
