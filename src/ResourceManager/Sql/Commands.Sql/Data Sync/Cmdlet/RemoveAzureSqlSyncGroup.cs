@@ -22,8 +22,8 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// <summary>
     /// Cmdlet to delete a sync group
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlSyncGroup",
-        SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlSyncGroup", SupportsShouldProcess = true,
+        ConfirmImpact = ConfirmImpact.High)]
     public class RemoveAzureSqlSyncGroup : AzureSqlSyncGroupCmdletBase
     {
         /// <summary>
@@ -32,12 +32,6 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The sync group name.")]
         [ValidateNotNullOrEmpty]
         public string SyncGroupName { get; set; }
-
-        /// <summary>
-        /// Defines whether it is ok to skip the removal confirmation
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Skip confirmation message for performing the action")]
-        public SwitchParameter Force { get; set; }
 
         /// <summary>
         ///  Defines whether the cmdlets will output the model object at the end of its execution
@@ -74,18 +68,22 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         }
 
         /// <summary>
-        /// Entry point for the cmdlet
+        /// Get the confirmation message when users want to remove a sync group
         /// </summary>
-        public override void ExecuteCmdlet()
+        /// <returns>The confirmation message</returns>
+        protected override string GetConfirmActionProcessMessage()
         {
-            if (!Force.IsPresent && !ShouldProcess(
-               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlSyncGroupDescription, this.SyncGroupName, this.DatabaseName),
-               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlSyncGroupWarning, this.SyncGroupName, this.DatabaseName),
-               Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
-            {
-                return;
-            }
-            base.ExecuteCmdlet();
+            return string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlSyncGroupDescription, this.SyncGroupName);
+        }
+
+        /// <summary>
+        /// Get resource id for confirmation message
+        /// </summary>
+        /// <param name="model">The sync group that this cmdlet operates on</param>
+        /// <returns>The resource id</returns>
+        protected override string GetResourceId(IEnumerable<AzureSqlSyncGroupModel> model)
+        {
+            return string.Format("{0}.{1}", this.ServerName, this.DatabaseName);  
         }
     }
 }

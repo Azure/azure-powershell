@@ -22,8 +22,8 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// <summary>
     /// Cmdlet to delete a sync agent
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlSyncAgent",
-        SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlSyncAgent", SupportsShouldProcess = true,
+        ConfirmImpact = ConfirmImpact.High)]
     public class RemoveAzureSqlSyncAgent : AzureSqlSyncAgentCmdletBase
     {
         /// <summary>
@@ -32,12 +32,6 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The sync agent name.")]
         [ValidateNotNullOrEmpty]
         public string SyncAgentName { get; set; }
-
-        /// <summary>
-        /// Defines whether it is ok to skip the removal confirmation
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Skip confirmation message for performing the action")]
-        public SwitchParameter Force { get; set; }
 
         /// <summary>
         ///  Defines whether the cmdlets will output the model object at the end of its execution
@@ -74,18 +68,22 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         }
 
         /// <summary>
-        /// Entry point for the cmdlet
+        /// Get the confirmation message when users want to remove a sync agent
         /// </summary>
-        public override void ExecuteCmdlet()
+        /// <returns>The confirmation message</returns>
+        protected override string GetConfirmActionProcessMessage()
         {
-            if (!Force.IsPresent && !ShouldProcess(
-               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlSyncAgentDescription, this.SyncAgentName, this.ResourceGroupName),
-               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlSyncAgentWarning, this.SyncAgentName, this.ResourceGroupName),
-               Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
-            {
-                return;
-            }
-            base.ExecuteCmdlet();
+            return string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlSyncAgentDescription, this.SyncAgentName);
+        }
+
+        /// <summary>
+        /// Get resource id for confirmation message
+        /// </summary>
+        /// <param name="model">The sync agent that this cmdlet operates on</param>
+        /// <returns>The resource id</returns>
+        protected override string GetResourceId(IEnumerable<AzureSqlSyncAgentModel> model)
+        {
+            return this.ServerName;
         }
     }
 }

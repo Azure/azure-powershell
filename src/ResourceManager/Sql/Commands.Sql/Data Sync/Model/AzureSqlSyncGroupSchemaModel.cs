@@ -73,6 +73,5 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
                 Tables = syncGroupSchemaTable
             };
         }
-
     }
 }

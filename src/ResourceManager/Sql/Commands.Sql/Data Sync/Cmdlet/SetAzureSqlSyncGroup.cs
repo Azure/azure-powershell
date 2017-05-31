@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// Gets or sets the frequency (in seconds) of doing data synchronization
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The frequency (in seconds) of doing data synchronization. Default is -1, which means the auto synchronization is not enabled.")]
-        public int? IntervalInSeconds { get; set; }
+        public int IntervalInSeconds { get; set; }
 
         /// <summary>
         /// Gets or sets the hub database credential of the sync group

@@ -159,7 +159,7 @@ Parameter Sets: (All)
 Aliases: 
 Accepted values: Error, Warning, Success, All
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

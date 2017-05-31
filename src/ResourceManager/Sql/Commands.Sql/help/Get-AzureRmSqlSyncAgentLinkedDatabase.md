@@ -53,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-The name of the Azure SQL Database Server the sync agent is in.
+The name of the Azure SQL Server the sync agent is in.
 
 ```yaml
 Type: String

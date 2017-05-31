@@ -340,10 +340,7 @@
     <value>A value of {0} is not yet supported for the 'GracePeriodWithDataLossHours' parameter. Using the smallest supported value, {1}.</value>
   </data>
   <data name="RemoveAzureSqlSyncGroupDescription" xml:space="preserve">
-    <value>Permanently removing Azure Sql Sync Group '{0}' on database '{1}'.</value>
-  </data>
-  <data name="RemoveAzureSqlSyncGroupWarning" xml:space="preserve">
-    <value>Are you sure you want to remove the Sync Group '{0}' for database '{1}'?</value>
+    <value>Permanently removing Azure Sql Sync Group '{0}'.</value>
   </data>
   <data name="SyncGroupNameExists" xml:space="preserve">
     <value>Sync Group with name: ‘{0}' already exists in database '{1}'.</value>
@@ -351,17 +348,11 @@
   <data name="RemoveAzureSqlSyncMemberDescription" xml:space="preserve">
     <value>Permanently removing Azure Sql Sync Member '{0}' on Sync Group '{1}'.</value>
   </data>
-  <data name="RemoveAzureSqlSyncMemberWarning" xml:space="preserve">
-    <value>Are you sure you want to remove the Sync Member '{0}' for Sync Group'{1}'?</value>
-  </data>
   <data name="SyncMemberNameExists" xml:space="preserve">
     <value>Sync Member with name: ‘{0}' already exists in Sync Group '{1}'.</value>
   </data>
   <data name="RemoveAzureSqlSyncAgentDescription" xml:space="preserve">
-    <value>Permanently removing Azure Sql Sync Agent '{0}' on Resource Group '{1}'.</value>
-  </data>
-  <data name="RemoveAzureSqlSyncAgentWarning" xml:space="preserve">
-    <value>Are you sure you want to remove the Sync Agent '{0}' for Resource Group'{1}'?</value>
+    <value>Permanently removing Azure Sql Sync Agent '{0}'.</value>
   </data>
   <data name="SyncAgentNameExists" xml:space="preserve">
     <value>Sync Agent with name: ‘{0}' already exists in Resource Group '{1}'.</value>

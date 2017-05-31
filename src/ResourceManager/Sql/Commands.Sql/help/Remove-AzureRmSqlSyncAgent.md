@@ -12,7 +12,7 @@ Removes an Azure SQL Sync Agent.
 ## SYNTAX
 
 ```
-Remove-AzureRmSqlSyncAgent -SyncAgentName <String> [-Force] [-PassThru] [-ServerName] <String>
+Remove-AzureRmSqlSyncAgent -SyncAgentName <String> [-PassThru] [-ServerName] <String>
  [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
 ```
 
@@ -37,21 +37,6 @@ Prompts you for confirmation before running the cmdlet.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Force
-Skip confirmation message for performing the action
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
 
 Required: False
 Position: Named

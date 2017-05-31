@@ -12,7 +12,7 @@ Updates an Azure SQL Database Sync Member.
 ## SYNTAX
 
 ```
-Set-AzureRmSqlSyncMember -SyncMemberName <String> -DatabaseType <String> -Credential <PSCredential>
+Set-AzureRmSqlSyncMember -SyncMemberName <String> -Credential <PSCredential>
  -SyncGroupName <String> [-ServerName] <String>
  [-DatabaseName] <String> [-ResourceGroupName] <String>
 ```
@@ -26,7 +26,7 @@ The **Set-AzureRmSqlSyncGroup** cmdlet modifies properties of an Azure SQL Datab
 ```
 PS C:\> $credential = Get-Credential
 PS C:\> Set-AzureRmSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -SyncMemberName "SyncMember01"
--DatabaseType "AzureSqlDatabase" -Credential $credential
+-Credential $credential
 ResourceId                  : subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}/syncMembers/{SyncMember01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
@@ -73,22 +73,6 @@ Aliases:
 
 Required: True
 Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DatabaseType
-The database type.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-Accepted values: AzureSqlDatabase
-
-Required: True
-Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

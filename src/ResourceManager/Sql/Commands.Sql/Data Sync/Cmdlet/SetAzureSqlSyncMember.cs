@@ -39,14 +39,6 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         public string SyncMemberName { get; set; }
 
         /// <summary>
-        /// Gets or sets the database type of the member database. Only AzureSqlDatabase's credential can be updated. So we make DatabaseType required.
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The database type.")]
-        [ValidateSet("AzureSqlDatabase", IgnoreCase = true)]
-        public string DatabaseType { get; set; }
-
-        /// <summary>
         /// Gets or sets the credential (username and password) of Azure SQL database. 
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "The credential (username and password) of Azure SQL database.")]

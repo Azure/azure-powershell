@@ -648,9 +648,6 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.DataSyncTests\TestSyncAgentCreate.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.DataSyncTests\TestSyncAgentCrud.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.DataSyncTests\TestSyncAgentKeyCreate.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -666,9 +663,6 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.DataSyncTests\TestSyncGroupCreate.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.DataSyncTests\TestSyncGroupCrud.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.DataSyncTests\TestSyncGroupsGetAndList.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -682,9 +676,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.DataSyncTests\TestSyncMemberCreate.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.DataSyncTests\TestSyncMemberCrud.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.DataSyncTests\TestSyncMembersGetAndList.json">
