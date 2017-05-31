@@ -24,6 +24,9 @@
 ## Version 0.4.0
 * New SKUs added: B1, B2, S0
 * Scale up/down support added
+* Add new dataplane API
+    - Introduced API to fetch AS server log, we don't want this API to be documented, we want it to be just accessible and downloadable.
+* Move Azure.AnalysisServices.psd1 functionality from separate module
 
 ## Version 0.3.1
 
