@@ -38,10 +38,34 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         public string SyncGroupName { get; set; }
 
         /// <summary>
+        /// Gets or sets the name of the database used to store sync related metadata
+        /// </summary>
+        [Parameter(Mandatory = true,
+           HelpMessage = "The database used to store sync related metadata.")]
+        [ValidateNotNullOrEmpty]
+        public string SyncDatabaseName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the server on which sync metadata database is hosted
+        /// </summary>
+        [Parameter(Mandatory = true,
+           HelpMessage = "The server on which sync metadata database is hosted.")]
+        [ValidateNotNullOrEmpty]
+        public string SyncDatabaseServerName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the resource group the sync metadata database belongs to
+        /// </summary>
+        [Parameter(Mandatory = true,
+           HelpMessage = "The resource group sync metadata database belongs to.")]
+        [ValidateNotNullOrEmpty]
+        public string SyncDatabaseResourceGroupName { get; set; }
+
+        /// <summary>
         /// Gets or sets the frequency (in seconds) of doing data synchronization.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The frequency (in seconds) of doing data synchronization. Default is -1, which means the auto synchronization is not enabled.")]
-        public int? IntervalInSeconds { get; set; }
+        public int IntervalInSeconds { get; set; }
 
         /// <summary>
         /// Gets or sets the hub database credential of the sync group
@@ -57,30 +81,6 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
            HelpMessage = "The policy of resolving confliction between hub and member database in the sync group.")]
         [ValidateSet("HubWin", "MemberWin", IgnoreCase = true)]
         public string ConflictResolutionPolicy { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the database used to store sync related metadata
-        /// </summary>
-        [Parameter(Mandatory = true,
-           HelpMessage = "The database used to store sync related metadata.")]
-        [ValidateNotNullOrEmpty]
-        public string SyncDatabaseName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the server on which syncDB is hosted
-        /// </summary>
-        [Parameter(Mandatory = true,
-           HelpMessage = "The server on which syncDB is hosted.")]
-        [ValidateNotNullOrEmpty]
-        public string SyncDatabaseServerName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the resource group the syncDB belongs to
-        /// </summary>
-        [Parameter(Mandatory = true,
-           HelpMessage = "The resource group syncDB belongs to.")]
-        [ValidateNotNullOrEmpty]
-        public string SyncDatabaseResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the path of the schema file
@@ -137,11 +137,15 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
                 ServerName = this.ServerName,
                 DatabaseName = this.DatabaseName,
                 SyncGroupName = this.SyncGroupName,
-                IntervalInSeconds = this.IntervalInSeconds,
                 ConflictResolutionPolicy = this.ConflictResolutionPolicy != null ? this.ConflictResolutionPolicy.ToString() : null,
                 HubDatabaseUserName = this.HubDatabaseCredential != null ? this.HubDatabaseCredential.UserName : null,
                 HubDatabasePassword = this.HubDatabaseCredential != null ? this.HubDatabaseCredential.Password : null
             };
+
+            if (MyInvocation.BoundParameters.ContainsKey("IntervalInSeconds"))
+            {
+                newModel.IntervalInSeconds = this.IntervalInSeconds;
+            }
 
             if (MyInvocation.BoundParameters.ContainsKey("SyncDatabaseResourceGroupName") 
                 && MyInvocation.BoundParameters.ContainsKey("SyncDatabaseServerName") 

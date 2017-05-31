@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = "The name of the Azure SQL Database Server the sync agent is in.")]
+            HelpMessage = "The name of the Azure SQL Server the sync agent is in.")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
 

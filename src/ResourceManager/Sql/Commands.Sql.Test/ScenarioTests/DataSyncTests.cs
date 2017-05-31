@@ -29,13 +29,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSyncAgentCrud()
-        {
-            RunPowerShellTest("Test-CrudSyncAgent");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSyncAgentCreate()
         {
             RunPowerShellTest("Test-CreateSyncAgent");
@@ -71,13 +64,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSyncGroupCrud()
-        {
-            RunPowerShellTest("Test-CrudSyncGroup");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSyncGroupCreate()
         {
             RunPowerShellTest("Test-CreateSyncGroup");
@@ -109,13 +95,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestSyncGroupRemove()
         {
             RunPowerShellTest("Test-RemoveSyncGroup");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSyncMemberCrud()
-        {
-            RunPowerShellTest("Test-CrudSyncMember");
         }
 
         [Fact]

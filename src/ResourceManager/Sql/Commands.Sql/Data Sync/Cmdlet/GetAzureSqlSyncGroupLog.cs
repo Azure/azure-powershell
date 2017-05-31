@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// <summary>
         /// Gets or sets the type of logs to query
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The type of the logs to query. Valid values are: " 
+        [Parameter(Mandatory = false, HelpMessage = "The type of the logs to query. Valid values are: " 
             + "'Error', 'Warning', 'Success' and 'All'.")]
         [ValidateSet("Error", "Warning", "Success", "All", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
                 SyncGroupName = this.SyncGroupName,
                 StartTime = this.StartTime.ToString(),
                 EndTime = MyInvocation.BoundParameters.ContainsKey("EndTime") ? this.EndTime.ToString() : DateTime.Now.ToString(),
-                Type = this.Type
+                Type = MyInvocation.BoundParameters.ContainsKey("Type") ? this.Type : LogType.All.ToString()
             });
         }
 

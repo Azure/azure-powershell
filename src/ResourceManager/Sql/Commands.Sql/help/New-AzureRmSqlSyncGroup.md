@@ -165,7 +165,7 @@ Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -173,14 +173,14 @@ Accept wildcard characters: False
 ```
 
 ### -SyncDatabaseResourceGroupName
-The resource group syncDB belongs to.
+The resource group sync metadata database belongs to.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -188,14 +188,14 @@ Accept wildcard characters: False
 ```
 
 ### -SyncDatabaseServerName
-The server on which syncDB is hosted.
+The server on which sync metadata database is hosted.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

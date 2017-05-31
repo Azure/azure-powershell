@@ -59,13 +59,6 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         public string DatabaseType { get; set; }
 
         /// <summary>
-        /// Gets or sets the sync direction of this sync member
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The sync direction of this sync member.")]
-        [ValidateSet("Bidirectional", "OneWayMemberToHub", "OneWayHubToMember", IgnoreCase = true)]
-        public string SyncDirection { get; set; }
-
-        /// <summary>
         /// Gets or sets the Azure SQL Server Name of the member database. 
         /// </summary>
         [Parameter(Mandatory = true,
@@ -124,6 +117,13 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
             HelpMessage = "The id of the SQL server database which is connected by the sync agent.")]
         [ValidateNotNullOrEmpty]
         public string SqlServerDatabaseId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the sync direction of this sync member
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The sync direction of this sync member.")]
+        [ValidateSet("Bidirectional", "OneWayMemberToHub", "OneWayHubToMember", IgnoreCase = true)]
+        public string SyncDirection { get; set; }
 
         /// <summary>
         /// The id of the sync agent which is connected by the on-premises SQL server.

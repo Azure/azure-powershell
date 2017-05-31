@@ -7645,7 +7645,7 @@ State                       : Good</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>ServerName</maml:name>
-<maml:Description><maml:para>The name of the Azure SQL Database Server the sync agent is in.
+<maml:Description><maml:para>The name of the Azure SQL Server the sync agent is in.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -7674,7 +7674,7 @@ State                       : Good</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>ServerName</maml:name>
-<maml:Description><maml:para>The name of the Azure SQL Database Server the sync agent is in.
+<maml:Description><maml:para>The name of the Azure SQL Server the sync agent is in.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -7959,7 +7959,7 @@ Schema                      :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Type</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Type</maml:name>
 <maml:Description><maml:para>The type of the logs to query. Valid values are: 'Error', 'Warning', 'Success' and 'All'.
 </maml:para>
 </maml:Description>
@@ -8046,7 +8046,7 @@ Schema                      :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Type</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Type</maml:name>
 <maml:Description><maml:para>The type of the logs to query. Valid values are: 'Error', 'Warning', 'Success' and 'All'.
 </maml:para>
 </maml:Description>
@@ -11900,7 +11900,7 @@ FirewallRuleName  : Rule01</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SyncDatabaseName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SyncDatabaseName</maml:name>
 <maml:Description><maml:para>The database used to store sync related metadata.
 </maml:para>
 </maml:Description>
@@ -11910,7 +11910,7 @@ FirewallRuleName  : Rule01</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SyncDatabaseResourceGroupName</maml:name>
-<maml:Description><maml:para>The resource group syncDB belongs to.
+<maml:Description><maml:para>The resource group sync metadata database belongs to.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -11919,7 +11919,7 @@ FirewallRuleName  : Rule01</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SyncDatabaseServerName</maml:name>
-<maml:Description><maml:para>The server on which syncDB is hosted.
+<maml:Description><maml:para>The server on which sync metadata database is hosted.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -11956,7 +11956,7 @@ FirewallRuleName  : Rule01</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SyncDatabaseName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SyncDatabaseName</maml:name>
 <maml:Description><maml:para>The database used to store sync related metadata.
 </maml:para>
 </maml:Description>
@@ -11966,7 +11966,7 @@ FirewallRuleName  : Rule01</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SyncDatabaseResourceGroupName</maml:name>
-<maml:Description><maml:para>The resource group syncDB belongs to.
+<maml:Description><maml:para>The resource group sync metadata database belongs to.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -11975,7 +11975,7 @@ FirewallRuleName  : Rule01</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SyncDatabaseServerName</maml:name>
-<maml:Description><maml:para>The server on which syncDB is hosted.
+<maml:Description><maml:para>The server on which sync metadata database is hosted.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -12197,7 +12197,7 @@ SyncAgentKey                  : "Key"</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SyncDatabaseName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SyncDatabaseName</maml:name>
 <maml:Description><maml:para>The database used to store sync related metadata.
 </maml:para>
 </maml:Description>
@@ -12206,8 +12206,8 @@ SyncAgentKey                  : "Key"</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SyncDatabaseResourceGroupName</maml:name>
-<maml:Description><maml:para>The resource group syncDB belongs to.
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SyncDatabaseResourceGroupName</maml:name>
+<maml:Description><maml:para>The resource group sync metadata database belongs to.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -12215,8 +12215,8 @@ SyncAgentKey                  : "Key"</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SyncDatabaseServerName</maml:name>
-<maml:Description><maml:para>The server on which syncDB is hosted.
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SyncDatabaseServerName</maml:name>
+<maml:Description><maml:para>The server on which sync metadata database is hosted.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -12298,7 +12298,7 @@ SyncAgentKey                  : "Key"</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SyncDatabaseName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SyncDatabaseName</maml:name>
 <maml:Description><maml:para>The database used to store sync related metadata.
 </maml:para>
 </maml:Description>
@@ -12307,8 +12307,8 @@ SyncAgentKey                  : "Key"</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SyncDatabaseResourceGroupName</maml:name>
-<maml:Description><maml:para>The resource group syncDB belongs to.
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SyncDatabaseResourceGroupName</maml:name>
+<maml:Description><maml:para>The resource group sync metadata database belongs to.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -12316,8 +12316,8 @@ SyncAgentKey                  : "Key"</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SyncDatabaseServerName</maml:name>
-<maml:Description><maml:para>The server on which syncDB is hosted.
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SyncDatabaseServerName</maml:name>
+<maml:Description><maml:para>The server on which sync metadata database is hosted.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -15401,14 +15401,6 @@ ResourceGroup01   Server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</d
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
-<maml:Description><maml:para>Skip confirmation message for performing the action
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PassThru</maml:name>
 <maml:Description><maml:para>Defines Whether return the removed sync agent
 </maml:para>
@@ -15438,15 +15430,6 @@ ResourceGroup01   Server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</d
 </command:syntax>
 <command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
 <maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
-<maml:Description><maml:para>Skip confirmation message for performing the action
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -15574,14 +15557,6 @@ ResourceGroup01   Server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</d
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
-<maml:Description><maml:para>Skip confirmation message for performing the action
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PassThru</maml:name>
 <maml:Description><maml:para>Defines Whether return the removed sync group
 </maml:para>
@@ -15626,15 +15601,6 @@ ResourceGroup01   Server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</d
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
-<maml:Description><maml:para>Skip confirmation message for performing the action
-</maml:para>
-</maml:Description>
-<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PassThru</maml:name>
 <maml:Description><maml:para>Defines Whether return the removed sync group
@@ -15756,14 +15722,6 @@ ResourceGroup01   Server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</d
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
-<maml:Description><maml:para>Skip confirmation message for performing the action
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PassThru</maml:name>
 <maml:Description><maml:para>Defines Whether return the removed sync member
 </maml:para>
@@ -15817,15 +15775,6 @@ ResourceGroup01   Server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</d
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
-<maml:Description><maml:para>Skip confirmation message for performing the action
-</maml:para>
-</maml:Description>
-<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PassThru</maml:name>
 <maml:Description><maml:para>Defines Whether return the removed sync member
@@ -22826,17 +22775,6 @@ Schema                      :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>DatabaseType</maml:name>
-<maml:Description><maml:para>The database type.
-</maml:para>
-</maml:Description>
-<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">AzureSqlDatabase</command:parameterValue>
-</command:parameterValueGroup>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SyncGroupName</maml:name>
 <maml:Description><maml:para>The sync group name.
 </maml:para>
@@ -22868,15 +22806,6 @@ Schema                      :</dev:code>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>DatabaseName</maml:name>
 <maml:Description><maml:para>SQL Database name.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>DatabaseType</maml:name>
-<maml:Description><maml:para>The database type.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -22942,7 +22871,7 @@ Schema                      :</dev:code>
 <command:examples><command:example><maml:title>Example 1</maml:title>
 <dev:code>PS C:\&gt; $credential = Get-Credential
 PS C:\&gt; Set-AzureRmSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -SyncMemberName "SyncMember01"
--DatabaseType "AzureSqlDatabase" -Credential $credential
+-Credential $credential
 ResourceId                  : subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}/syncMembers/{SyncMember01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
