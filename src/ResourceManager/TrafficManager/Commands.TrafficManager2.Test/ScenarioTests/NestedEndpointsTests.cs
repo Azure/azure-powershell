@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
     using ServiceManagemenet.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
-    public class NestedEndpointsTests
+    public class NestedEndpointsTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         public NestedEndpointsTests(ITestOutputHelper output)
         {
