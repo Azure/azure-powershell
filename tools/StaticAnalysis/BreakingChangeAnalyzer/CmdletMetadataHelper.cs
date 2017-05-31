@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace StaticAnalysis.BreakingChangeAnalyzer
@@ -215,7 +216,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             ReportLogger<BreakingChangeIssue> issueLogger)
         {
             // This dictionary will map an output type name to the corresponding type metadata
-            Dictionary<string, TypeMetadata> outputDictionary = new Dictionary<string, TypeMetadata>();
+            Dictionary<string, TypeMetadata> outputDictionary = new Dictionary<string, TypeMetadata>(new TypeNameComparer());
 
             // Add each output in the new metadata to the dictionary
             foreach (var newOutput in newCmdlet.OutputTypes)
@@ -310,6 +311,26 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         remediation: string.Format(Properties.Resources.ChangeDefaultParameterRemediation,
                             oldCmdlet.Name, oldCmdlet.DefaultParameterSetName));
                 }
+            }
+        }
+
+        /// <summary>
+        /// Comparer for assebly qualified names.  Parses of the PublicKeyToken, so that types from signed and unsigned assemblies match 
+        /// </summary>
+        class TypeNameComparer : IEqualityComparer<string>
+        {
+            Regex keyToken = new Regex(@", PublicKeyToken=\w+");
+            public bool Equals(string x, string y)
+            {
+                var newX = keyToken.Replace(x, "");
+                var newY = keyToken.Replace(y, "");
+                return StringComparer.OrdinalIgnoreCase.Equals(newX, newY);
+            }
+
+            public int GetHashCode(string obj)
+            {
+                var newObj = keyToken.Replace(obj, "");
+                return StringComparer.OrdinalIgnoreCase.GetHashCode(newObj);
             }
         }
     }
