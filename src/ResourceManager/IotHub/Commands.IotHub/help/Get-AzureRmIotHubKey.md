@@ -38,7 +38,7 @@ Gets the information for a key named "iothubowner" for the IotHub named "myiothu
 ## PARAMETERS
 
 ### -KeyName
-Name
+Name of the Key
 
 ```yaml
 Type: String
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name
+Name of the IoT hub. 
 
 ```yaml
 Type: String

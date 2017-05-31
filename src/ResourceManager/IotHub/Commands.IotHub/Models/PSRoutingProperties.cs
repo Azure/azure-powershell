@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         /// The list of routing rules that users can provide.
         /// </summary>
         [JsonProperty(PropertyName = "routes")]
-        public PSRouteMetadata[] Routes { get; set; }
+        public List<PSRouteMetadata> Routes { get; set; }
 
         /// <summary>
         /// The properties of the route that will be used as a fallback route        

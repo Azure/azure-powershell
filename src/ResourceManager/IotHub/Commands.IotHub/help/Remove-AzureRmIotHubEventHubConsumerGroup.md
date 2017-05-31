@@ -32,7 +32,7 @@ Removes the consumergroup named myconsumergroup from the IotHub named "myiothub"
 ## PARAMETERS
 
 ### -EventHubConsumerGroupName
-EventHubConsumerGroupName.
+EventHub ConsumerGroup Name.
 
 ```yaml
 Type: String
@@ -47,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -EventHubEndpointName
-EventHubEndpointName.
+EventHub Endpoint Name.
 Possible values events, operationsMonitoringEvents
 
 ```yaml
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name
+Name of the IotHub
 
 ```yaml
 Type: String

@@ -31,7 +31,7 @@ Gets the RegistryStatictics for the IotHub named "myiothub"
 ## PARAMETERS
 
 ### -Name
-Name
+Name of the IoT hub. 
 
 ```yaml
 Type: String

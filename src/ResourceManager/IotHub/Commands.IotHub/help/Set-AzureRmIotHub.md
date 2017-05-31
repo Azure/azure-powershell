@@ -84,7 +84,7 @@ Update the retention time in days to 4 for both the telemetry and operationsmoni
 ## PARAMETERS
 
 ### -CloudToDevice
-CloudToDevice
+The properties for the cloud to device command queue. 
 
 ```yaml
 Type: PSCloudToDeviceProperties
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableFileUploadNotifications
-EnableFileUploadNotifications
+Flag that specifies whether notifications should be enabled for file upload. 
 
 ```yaml
 Type: Boolean
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 ```
 
 ### -EventHubRetentionTimeInDays
-EventHubRetentionTimeInDays
+Retention time in days. 
 
 ```yaml
 Type: Int64
@@ -129,7 +129,7 @@ Accept wildcard characters: False
 ```
 
 ### -FallbackRoute
-Fallback Routes
+Fallback Route for Routing
 
 ```yaml
 Type: PSFallbackRouteMetadata
@@ -144,7 +144,7 @@ Accept wildcard characters: False
 ```
 
 ### -FileUploadContainerName
-FileUploadContainerName
+The name of the container to upload the files to.
 
 ```yaml
 Type: String
@@ -159,7 +159,7 @@ Accept wildcard characters: False
 ```
 
 ### -FileUploadNotificationMaxDeliveryCount
-fileUploadNotificationMaxDeliveryCount
+The maximum delivery count for file upload notifications.  
 
 ```yaml
 Type: Int32
@@ -174,7 +174,7 @@ Accept wildcard characters: False
 ```
 
 ### -FileUploadNotificationTtl
-FileUploadNotificationTtl
+Time to live value for the messages in the file upload notification queue. 
 
 ```yaml
 Type: TimeSpan
@@ -189,7 +189,7 @@ Accept wildcard characters: False
 ```
 
 ### -FileUploadSasUriTtl
-FileUploadSasUriTtl
+Time to live for the for the SAS Uri thats generated for file upload. 
 
 ```yaml
 Type: TimeSpan
@@ -204,7 +204,7 @@ Accept wildcard characters: False
 ```
 
 ### -FileUploadStorageConnectionString
-FileUploadStorageConnectionString
+The storage connection string to upload the files to. 
 
 ```yaml
 Type: String
@@ -219,7 +219,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name
+Name of the IotHub
 
 ```yaml
 Type: String
@@ -234,7 +234,7 @@ Accept wildcard characters: False
 ```
 
 ### -OperationsMonitoringProperties
-OperationsMonitoringProperties
+The properties related to operations monitoring. 
 
 ```yaml
 Type: PSOperationsMonitoringProperties
@@ -264,7 +264,7 @@ Accept wildcard characters: False
 ```
 
 ### -Routes
-Routes
+Routes to be added for Routing
 
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata]
@@ -279,7 +279,7 @@ Accept wildcard characters: False
 ```
 
 ### -RoutingProperties
-RoutingProperties
+The Routing properties for routing messages to external endpoints 
 
 ```yaml
 Type: PSRoutingProperties
@@ -294,7 +294,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuName
-SkuName
+Name of the Sku.
 
 ```yaml
 Type: PSIotHubSku
@@ -310,7 +310,7 @@ Accept wildcard characters: False
 ```
 
 ### -Units
-Units
+Number of Units
 
 ```yaml
 Type: Int64

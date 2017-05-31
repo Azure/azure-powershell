@@ -30,7 +30,7 @@ Removes an IotHub named "myiothub"
 ## PARAMETERS
 
 ### -Name
-Name
+Name of the IotHub
 
 ```yaml
 Type: String

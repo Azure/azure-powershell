@@ -39,7 +39,7 @@ Gets the connectionstrings for the key named "mykey" for the iothub named "myiot
 ## PARAMETERS
 
 ### -KeyName
-KeyName
+Name of the Key
 
 ```yaml
 Type: String
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name
+Name of the IotHub
 
 ```yaml
 Type: String

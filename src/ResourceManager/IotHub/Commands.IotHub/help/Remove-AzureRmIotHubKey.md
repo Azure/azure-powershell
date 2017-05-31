@@ -32,7 +32,7 @@ Removes the key named iothubowner1 from the IotHub named "myiothub"
 ## PARAMETERS
 
 ### -KeyName
-KeyName
+Name of the Key
 
 ```yaml
 Type: String
@@ -47,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name
+Name of the IotHub
 
 ```yaml
 Type: String

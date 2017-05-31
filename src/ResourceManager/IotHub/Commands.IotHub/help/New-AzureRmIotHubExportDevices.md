@@ -34,7 +34,7 @@ Creates a new export device request for the IotHub "myiothub" excluding the keys
 ## PARAMETERS
 
 ### -ExportBlobContainerUri
-ExportBlobContainerUri
+The Uri to export the blob to. 
 
 ```yaml
 Type: String
@@ -49,7 +49,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name
+Name of the IotHub
 
 ```yaml
 Type: String

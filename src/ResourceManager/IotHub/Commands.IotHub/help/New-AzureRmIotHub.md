@@ -41,7 +41,7 @@ $psCloudToDeviceProperties = New-Object Microsoft.Azure.Commands.Management.IotH
 ## PARAMETERS
 
 ### -Location
-Location
+Location where the IoT hub needs to be created. 
 
 ```yaml
 Type: String
@@ -56,7 +56,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name
+Name of the IotHub
 
 ```yaml
 Type: String
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -Properties
-Properties
+Properties of the IoT hub. 
 
 ```yaml
 Type: PSIotHubInputProperties
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuName
-SkuName
+Name of the sku
 
 ```yaml
 Type: PSIotHubSku
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 ```
 
 ### -Units
-Units
+Number of units
 
 ```yaml
 Type: Int64
