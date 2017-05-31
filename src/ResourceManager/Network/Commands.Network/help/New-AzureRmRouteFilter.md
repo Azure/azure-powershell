@@ -163,10 +163,10 @@ Keywords: azure, azurerm, arm, resource, management, manager, network, networkin
 
 ## RELATED LINKS
 
-[Get-AzureRmRouteFilter]()
+[Get-AzureRmRouteFilter](./Get-AzureRmRouteFilter.md)
 
-[New-AzureRmRouteFilterRuleConfig]()
+[New-AzureRmRouteFilterRuleConfig](./New-AzureRmRouteFilterRuleConfig.md)
 
-[Remove-AzureRmRouteFilter]()
+[Remove-AzureRmRouteFilter](./Remove-AzureRmRouteFilter.md)
 
-[Set-AzureRmRouteFilter]()
+[Set-AzureRmRouteFilter](./Set-AzureRmRouteFilter.md)

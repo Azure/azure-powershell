@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.DevTestLabs;
 using System.Management.Automation;
@@ -59,6 +58,7 @@ namespace Microsoft.Azure.Commands.DevTestLabs
                 {
                     _dataServiceClient = AzureSession.Instance.ClientFactory.CreateArmClient<DevTestLabsClient>(DefaultContext,
                         AzureEnvironment.Endpoint.ResourceManager);
+                    _dataServiceClient.ResourceGroupName = ResourceGroupName;
                 }
 
                 return _dataServiceClient;
