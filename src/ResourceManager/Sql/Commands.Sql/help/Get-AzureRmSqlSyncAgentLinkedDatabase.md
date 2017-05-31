@@ -21,7 +21,7 @@ The **Get-AzureRmSqlSyncAgentLinkedDatabases** cmdlet returns information about 
 
 ## EXAMPLES
 
-### Example 1: Get the linked SQL Server databases for a SQL Azure sync agent.
+### Example 1: Get the linked SQL Server databases for an Azure SQL sync agent.
 ```
 PS C:\> Get-AzureRmSqlSyncAgentLinkedDatabases -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -SyncAgentName "SyncAgent01"
 SeverName                 : "sever01"
@@ -32,7 +32,7 @@ Description               : ""
 UserName                  : ""
 ```
 
-This command returns the linked SQL Server databases linked by an Azure Sync Agent.
+This command returns the linked SQL Server databases linked by an Azure SQL sync agent.
 
 
 ## PARAMETERS

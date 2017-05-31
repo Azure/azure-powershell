@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmSqlSyncMember
 
 ## SYNOPSIS
-Returns information about SQL Database Sync Members.
+Returns information about Azure SQL Database Sync Members.
 
 ## SYNTAX
 
@@ -22,7 +22,7 @@ Specify the name of a sync member to see information for only that sync member.
 
 ## EXAMPLES
 
-### Example 1: Get all instances of SQL Sync Member assigned to a sync group
+### Example 1: Get all instances of Azure SQL Sync Member assigned to a sync group
 ```
 PS C:\>Get-AzureRmSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01"
 ResourceId                  : subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}/syncMembers/{SyncMember01}
@@ -85,7 +85,7 @@ This command gets information about the Azure SQL Database Sync Member with name
 ## PARAMETERS
 
 ### -DatabaseName
-SQL Database name.
+The name of the Azure SQL Database.
 
 ```yaml
 Type: String
@@ -115,7 +115,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-SQL Database server name.
+The name of the Azure SQL server.
 
 ```yaml
 Type: String

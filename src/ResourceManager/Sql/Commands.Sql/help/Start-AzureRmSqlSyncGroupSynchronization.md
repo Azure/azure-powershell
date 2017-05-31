@@ -31,7 +31,7 @@ This command starts a round of synchronization for the sync group mysg.
 ## PARAMETERS
 
 ### -DatabaseName
-SQL Database name.
+The name of the Azure SQL Database.
 
 ```yaml
 Type: String
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-SQL Database server name.
+The name of the Azure SQL server.
 
 ```yaml
 Type: String

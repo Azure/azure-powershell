@@ -42,7 +42,7 @@ Tables {
 }]
 ```
 
-This command gets the sync schema schema for the hub database in the sync group syncGroup01.
+This command gets the sync schema for the hub database in the sync group syncGroup01.
 
 
 ### Example 2: Get the sync schema for a member database
@@ -50,13 +50,13 @@ This command gets the sync schema schema for the hub database in the sync group 
 PS C:\>Get-AzureRmSqlSyncSchema -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -SyncGroupName "syncGroup01" -SyncMemberName "syncMember01"
 The schema payload is the same as Example 1.
 ```
-This command gets the sync schema schema for the member database in the sync member syncMember01.
+This command gets the sync schema for the member database in the sync member syncMember01.
 
 
 ## PARAMETERS
 
 ### -DatabaseName
-SQL Database name.
+The name of the Azure SQL Database.
 
 ```yaml
 Type: String
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-SQL Database server name.
+The name of the Azure SQL server.
 
 ```yaml
 Type: String

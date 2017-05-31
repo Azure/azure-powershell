@@ -39,7 +39,7 @@ This command invokes the sync schema refresh for the member database in the sync
 ## PARAMETERS
 
 ### -DatabaseName
-SQL Database name.
+The name of the Azure SQL Database.
 
 ```yaml
 Type: String
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-SQL Database server name.
+The name of the Azure SQL server.
 
 ```yaml
 Type: String

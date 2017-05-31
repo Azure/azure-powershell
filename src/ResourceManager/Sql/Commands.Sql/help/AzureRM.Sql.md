@@ -345,7 +345,7 @@ Creates an Azure SQL Database Sync Group.
 Updates an Azure SQL Database Sync Group.
 
 ### [Get-AzureRmSqlSyncGroup](Get-AzureRmSqlSyncGroup.md)
-Returns information about SQL Database Sync Groups.
+Returns information about Azure SQL Database Sync Groups.
 
 ### [Remove-AzureRmSqlSyncGroup](Remove-AzureRmSqlSyncGroup.md)
 Removes an Azure SQL Database Sync Group.
@@ -363,10 +363,10 @@ Returns the logs of an Azure SQL Database Sync Group.
 Creates an Azure SQL Database Sync Member.
 
 ### [Set-AzureRmSqlSyncMember](Set-AzureRmSqlSyncMember.md)
-Updates an Azure SQL Database Sync Member
+Updates an Azure SQL Database Sync Member.
 
 ### [Get-AzureRmSqlSyncMember](Get-AzureRmSqlSyncMember.md)
-Returns information about SQL Database Sync Members.
+Returns information about Azure SQL Database Sync Members.
 
 ### [Remove-AzureRmSqlSyncMember](Remove-AzureRmSqlSyncMember.md)
 Removes an Azure SQL Database Sync Member.
@@ -378,7 +378,7 @@ Creates an Azure SQL Sync Agent.
 Creates an Azure SQL Sync Agent Key.
 
 ### [Get-AzureRmSqlSyncAgent](Get-AzureRmSqlSyncAgent.md)
-Returns information about SQL Database Sync Agents.
+Returns information about Azure SQL Sync Agents.
 
 ### [Remove-AzureRmSqlSyncAgent](Remove-AzureRmSqlSyncAgent.md)
 Removes an Azure SQL Sync Agent.

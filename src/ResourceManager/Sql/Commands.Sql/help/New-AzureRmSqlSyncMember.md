@@ -32,7 +32,7 @@ The **New-AzureRmSqlSyncMember** cmdlet creates an Azure SQL Database Sync Membe
 
 ## EXAMPLES
 
-### Example 1: Create a sync member for a SQL Azure database.
+### Example 1: Create a sync member for an Azure SQL database.
 ```
 PS C:\> $credential = Get-Credential
 PS C:\> New-AzureRmSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -SyncMemberName "SyncMember01" -SyncDirection "OneWayMemberToHub"
@@ -54,7 +54,7 @@ Password                    :
 SyncState                   : Good 
 ```
 
-This command creates a sync member for a SQL Azure database.
+This command creates a sync member for an Azure SQL database.
 
 ### Example 2: Create a sync member for an on-premises SQL Server database
 ```
@@ -83,7 +83,7 @@ This command creates a sync member for an on-premises SQL database.
 ## PARAMETERS
 
 ### -Credential
-The credential (username and password) of Azure SQL database.
+The credential (username and password) of the Azure SQL database.
 
 ```yaml
 Type: PSCredential
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseName
-SQL Database name.
+The name of the Azure SQL Database.
 
 ```yaml
 Type: String
@@ -129,7 +129,7 @@ Accept wildcard characters: False
 ```
 
 ### -MemberDatabaseName
-The Azure SQL database name of the member database.
+The Azure SQL Database name of the member database.
 
 ```yaml
 Type: String
@@ -174,7 +174,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-SQL Database server name.
+The name of the Azure SQL server.
 
 ```yaml
 Type: String
@@ -234,7 +234,7 @@ Accept wildcard characters: False
 ```
 
 ### -SyncAgentServerName
-The name of server where the sync agent is under.
+The name of Azure SQL server where the sync agent is under.
 
 ```yaml
 Type: String

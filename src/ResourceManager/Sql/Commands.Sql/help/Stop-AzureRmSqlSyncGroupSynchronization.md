@@ -26,12 +26,12 @@ The **Stop-AzureRmSqlSyncGroupSynchronization** cmdlet stops a sync group synchr
 PS C:\> Stop-AzureRmSqlSyncGroupSynchronization -SyncGroupName mysg [-ServerName] mysrv [-DatabaseName] mydb [-ResourceGroupName] myrg
 ```
 
-This command stops the synchronization which is on going for the sync group mysg.
+This command stops the synchronization which is ongoing for the sync group mysg.
 
 ## PARAMETERS
 
 ### -DatabaseName
-SQL Database name.
+The name of the Azure SQL Database.
 
 ```yaml
 Type: String
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-SQL Database server name.
+The name of the Azure SQL server.
 
 ```yaml
 Type: String

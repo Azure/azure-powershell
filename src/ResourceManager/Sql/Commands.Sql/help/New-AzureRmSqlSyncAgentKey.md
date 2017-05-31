@@ -20,13 +20,13 @@ The **New-AzureRmSqlSyncAgentKey** cmdlet creates an Azure SQL Sync Agent key.
 
 ## EXAMPLES
 
-### Example 1: Create a sync agent key for a SQL Azure sync agent.
+### Example 1: Create a sync agent key for an Azure SQL sync agent.
 ```
 PS C:\> New-AzureRmSqlSyncAgentKey -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -SyncAgentName "SyncAgent01"
 SyncAgentKey                  : "Key"
 ```
 
-This command creates a sync agent key for a SQL Azure Sync Agent.
+This command creates a sync agent key for an Azure SQL Sync Agent.
 
 ## PARAMETERS
 
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-The name of the Azure SQL Database Server the sync agent is in.
+The name of the Azure SQL Server the sync agent is in.
 
 ```yaml
 Type: String

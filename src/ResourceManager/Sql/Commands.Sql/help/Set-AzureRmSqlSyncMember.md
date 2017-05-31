@@ -49,7 +49,7 @@ This command resets the administrator password for the member database.
 ## PARAMETERS
 
 ### -Credential
-The credential (username and password) of Azure SQL database.
+The credential (username and password) of the Azure SQL database.
 
 ```yaml
 Type: PSCredential
@@ -64,7 +64,7 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseName
-SQL Database name.
+The name of the Azure SQL Database.
 
 ```yaml
 Type: String
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-SQL Database server name.
+The name of the Azure SQL server.
 
 ```yaml
 Type: String
