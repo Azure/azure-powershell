@@ -23,6 +23,50 @@ The Get-AzureRmNetworkUsage cmdlet gets limits and current usage for Network res
 ### Example 1
 ```
 PS C:\> Get-AzureRmNetworkUsage -Location westcentralus
+
+ResourceType : Virtual Networks
+CurrentValue : 6
+Limit        : 50
+
+ResourceType : Static Public IP Addresses
+CurrentValue : 1
+Limit        : 20
+
+ResourceType : Network Security Groups
+CurrentValue : 2
+Limit        : 100
+
+ResourceType : Public IP Addresses
+CurrentValue : 6
+Limit        : 60
+
+ResourceType : Network Interfaces
+CurrentValue : 1
+Limit        : 300
+
+ResourceType : Load Balancers
+CurrentValue : 1
+Limit        : 100
+
+ResourceType : Application Gateways
+CurrentValue : 1
+Limit        : 50
+
+ResourceType : Route Tables
+CurrentValue : 0
+Limit        : 100
+
+ResourceType : Route Filters
+CurrentValue : 0
+Limit        : 1000
+
+ResourceType : Network Watchers
+CurrentValue : 1
+Limit        : 1
+
+ResourceType : Packet Captures
+CurrentValue : 0
+Limit        : 10
 ```
 
 Gets resources usage data in westcentralus region
