@@ -21,44 +21,35 @@ namespace Microsoft.AzureStack.Commands
     using Microsoft.AzureStack.Management.Models;
 
     /// <summary>
-    /// Remove managed location cmdlet
+    /// Set managed location cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, Nouns.Location)]
+    [Cmdlet(VerbsCommon.Set, Nouns.Location)]
     [OutputType(typeof(Location))]
-    [Alias("Get-AzureRMManagedLocation")]
-    public class GetManagedLocation : AdminApiCmdlet
+    [Alias("Set-AzureRMManagedLocation")]
+    public class SetLocation : AdminApiCmdlet
     {
         /// <summary>
-        /// Gets or sets the name.
+        /// Gets or sets the managed location.
         /// </summary>
-        [Parameter]
-        [ValidateLength(1, 128)]
+        [Parameter(ValueFromPipeline = true, Mandatory = true)]
         [ValidateNotNull]
-        [ValidatePattern("^[0-9a-z]+$")]
-        public string Name { get; set; }
+        public Location Location { get; set; }
 
         /// <summary>
-        /// Gets the managed location 
+        /// Updates the managed location with new values
         /// </summary>
         protected override object ExecuteCore()
         {
-            if (this.MyInvocation.InvocationName.Equals("Get-AzureRMManagedLocation", StringComparison.OrdinalIgnoreCase))
+            if (this.MyInvocation.InvocationName.Equals("Set-AzureRMManagedLocation", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteWarning("Alias Get-AzureRMManagedLocation will be deprecated in a future release. Please use the cmdlet name Get-AzSLocation instead");
+                this.WriteWarning("Alias Set-AzureRMManagedLocation will be deprecated in a future release. Please use the cmdlet name Set-AzSLocation instead");
             }
 
             using (var client = this.GetAzureStackClient())
             {
-                if (string.IsNullOrEmpty(this.Name))
-                {
-                    this.WriteVerbose(Resources.ListingManagedLocations);
-                    return client.ManagedLocations.List().Locations;
-                }
-                else
-                {
-                    this.WriteVerbose(Resources.GettingManagedLocation.FormatArgs(this.Name));
-                    return client.ManagedLocations.Get(this.Name).Location;
-                }
+                this.WriteVerbose(Resources.UpdatingManagedLocation.FormatArgs(this.Location.Name));
+                var parameters = new ManagedLocationCreateOrUpdateParameters(this.Location);
+                return client.ManagedLocations.CreateOrUpdate(parameters).Location;
             }
         }
     }

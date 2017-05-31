@@ -34,7 +34,8 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true)]
         [ValidateGuidNotEmpty]
-        public Guid TargetSubscriptionId { get; set; }
+        [Alias("TargetSubscriptionId")]
+        public Guid SubscriptionId { get; set; }
 
         /// <summary>
         /// Performs the API operation(s) against subscriptions as tenant.
@@ -48,8 +49,8 @@ namespace Microsoft.AzureStack.Commands
 
             using (var client = this.GetAzureStackClient())
             {
-                this.WriteVerbose(Resources.DeletingSubscription.FormatArgs(this.TargetSubscriptionId));
-                return client.Subscriptions.Delete(this.TargetSubscriptionId.ToString());
+                this.WriteVerbose(Resources.DeletingSubscription.FormatArgs(this.SubscriptionId));
+                return client.Subscriptions.Delete(this.SubscriptionId.ToString());
             }
         }
     }

@@ -27,12 +27,12 @@ namespace Microsoft.AzureStack.Commands
     [Cmdlet(VerbsCommon.Remove, Nouns.Location)]
     [OutputType(typeof(AzureOperationResponse))]
     [Alias("Remove-AzureRMManagedLocation")]
-    public class RemoveManagedLocation : AdminApiCmdlet
+    public class RemoveLocation : AdminApiCmdlet
     {
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateLength(1, 128)]
         [ValidateNotNull]
         [ValidatePattern("^[0-9a-z]+$")]

@@ -32,7 +32,8 @@ namespace Microsoft.AzureStack.Commands
         /// Gets or sets the subscription id.
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true)]
-        public Guid TargetSubscriptionId { get; set; } // Allow for empty GUID for list scenario
+        [Alias("TargetSubscriptionId")]
+        public Guid SubscriptionId { get; set; } // Allow for empty GUID for list scenario
 
         /// <summary>
         /// Performs the API operation(s) against subscriptions as administrator.
@@ -46,15 +47,15 @@ namespace Microsoft.AzureStack.Commands
 
             using (var client = this.GetAzureStackClient())
             {
-                if (this.TargetSubscriptionId == Guid.Empty)
+                if (this.SubscriptionId == Guid.Empty)
                 {
                     this.WriteVerbose(Resources.ListingManagedSubscriptions);
                     return client.ManagedSubscriptions.List(includeDetails: true).Subscriptions;
                 }
                 else
                 {
-                    this.WriteVerbose(Resources.GettingSubscriptionByID.FormatArgs(this.TargetSubscriptionId));
-                    return client.ManagedSubscriptions.Get(this.TargetSubscriptionId.ToString()).Subscription;
+                    this.WriteVerbose(Resources.GettingSubscriptionByID.FormatArgs(this.SubscriptionId));
+                    return client.ManagedSubscriptions.Get(this.SubscriptionId.ToString()).Subscription;
                 }
             }
         }
