@@ -12,7 +12,7 @@ Returns the logs of an Azure SQL Database Sync Group.
 ## SYNTAX
 
 ```
-Get-AzureRmSqlSyncGroupLog -SyncGroupName <String> -StartTime <String> [-EndTime <String>] -Type <String>
+Get-AzureRmSqlSyncGroupLog -SyncGroupName <String> -StartTime <String> [-EndTime <String>] [-Type <String>]
  [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
 ```
 
@@ -21,7 +21,7 @@ The **Get-AzureRmSqlSyncGroupLog** cmdlet returns the logs of an Azure SQL Datab
 
 ## EXAMPLES
 
-### Example 1: Get the logs of a SQL Azure Sync Group
+### Example 1: Get the logs of an Azure SQL Sync Group
 ```
 PS C:\>Get-AzureRmSqlSyncGroupLog -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -StartTime "9/16/2016 11:31:12" -EndTime "9/16/2016 12:31:00" -Type "All"
 [{
@@ -40,7 +40,7 @@ Source                     : SyncMemberLogs
 ]
 ```
 
-This command gets the logs of a SQL Azure Sync Group.
+This command gets the logs of an Azure SQL Sync Group.
 
 ## PARAMETERS
 
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseName
-SQL Database name.
+The name of the Azure SQL Database.
 
 ```yaml
 Type: String
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-SQL Database server name.
+The name of the Azure SQL server.
 
 ```yaml
 Type: String

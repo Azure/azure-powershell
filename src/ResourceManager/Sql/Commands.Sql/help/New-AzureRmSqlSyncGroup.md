@@ -13,8 +13,8 @@ Creates an Azure SQL Database Sync Group.
 
 ```
 New-AzureRmSqlSyncGroup -SyncGroupName <String> [-IntervalInSeconds <Int32>] [-HubDatabaseCredential <PSCredential>]
- [-ConflictResolutionPolicy <String>] [-SyncDatabaseName <String>] [-SyncDatabaseServerName <String>]
- [-SyncDatabaseResourceGroupName <String>] [-SchemaFile <String>] [-ServerName] <String>
+ [-ConflictResolutionPolicy <String>] -SyncDatabaseName <String> -SyncDatabaseServerName <String>
+ -SyncDatabaseResourceGroupName <String> [-SchemaFile <String>] [-ServerName] <String>
  [-DatabaseName] <String> [-ResourceGroupName] <String>
 ```
 
@@ -23,7 +23,7 @@ The **New-AzureRmSqlSyncGroup** cmdlet creates an Azure SQL Database Sync Group.
 
 ## EXAMPLES
 
-### Example 1: Create a sync group for a SQL Azure database.
+### Example 1: Create a sync group for an Azure SQL Database.
 ```
 PS C:\> $credential = Get-Credential
 PS C:\> New-AzureRmSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -ConflictResolutionPolicy "HubWin"
@@ -43,7 +43,7 @@ LastSyncTime                :
 Schema                      :  
 ```
 
-This command creates a sync group for a SQL Azure database. "schema.json" is a file in the local disk. It contains the shema payload in json format. An example of the schema json is:
+This command creates a sync group for an Azure SQL Database. "schema.json" is a file in the local disk. It contains the shema payload in json format. An example of the schema json is:
 {"Tables":  [{"Columns":  [{"QuotedName":  "b3ee3a7f-7614-4644-ad07-afa832620b4bManualTestsm4column1"}, {"QuotedName":  "b3ee3a7f-7614-4644-ad07-afa832620b4bManualTestsm4column2"}], "QuotedName":  "MayQuotedTable1"},
 {"Columns":  [{"QuotedName":  "b3ee3a7f-7614-4644-ad07-afa832620b4bManualTestsm4column1"}, {"QuotedName":  "b3ee3a7f-7614-4644-ad07-afa832620b4bManualTestsm4column2"}], "QuotedName":  "MayQuotedTable2"}],
 "MasterSyncMemberName":  null
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseName
-SQL Database name.
+The name of the Azure SQL Database.
 
 ```yaml
 Type: String
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -HubDatabaseCredential
-The SQL authentication credetial of hub database.
+The SQL authentication credential of the hub database.
 
 ```yaml
 Type: PSCredential
@@ -143,7 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-SQL Database server name.
+The name of the Azure SQL server.
 
 ```yaml
 Type: String
@@ -173,7 +173,7 @@ Accept wildcard characters: False
 ```
 
 ### -SyncDatabaseResourceGroupName
-The resource group sync metadata database belongs to.
+The resource group the sync metadata database belongs to.
 
 ```yaml
 Type: String
@@ -188,7 +188,7 @@ Accept wildcard characters: False
 ```
 
 ### -SyncDatabaseServerName
-The server on which sync metadata database is hosted.
+The server on which the sync metadata database is hosted.
 
 ```yaml
 Type: String

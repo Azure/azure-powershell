@@ -12,7 +12,7 @@ Creates an Azure SQL Sync Agent.
 ## SYNTAX
 
 ```
-New-AzureRmSqlSyncAgent -SyncAgentName <String> [-SyncDatabaseName <String>] [-SyncDatabaseServerName <String>]
+New-AzureRmSqlSyncAgent -SyncAgentName <String> -SyncDatabaseName <String> [-SyncDatabaseServerName <String>]
  [-SyncDatabaseResourceGroupName <String>] [-ServerName] <String> [-ResourceGroupName] <String>
 ```
 
@@ -21,7 +21,7 @@ The **New-AzureRmSqlSyncAgent** cmdlet creates an Azure SQL Sync Agent.
 
 ## EXAMPLES
 
-### Example 1: Create a sync agent for a SQL Azure database server.
+### Example 1: Create a sync agent for an Azure SQL server.
 ```
 PS C:\> New-AzureRmSqlSyncAgent -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -SyncAgentName "SyncAgent01" -SyncDatabaseServerName "syncDatabaseServer01" -SyncDatabaseName "syncDatabaseName01" -SyncDatabaseResourceGroupName "syncDatabaseResourceGroup01" 
 ResourceId                  : subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/syncAgents/{SyncAgent01}
@@ -37,7 +37,7 @@ ExpiryTime                  :
 State                       : Good
 ```
 
-This command creates a sync agent for a SQL Azure database server.
+This command creates a sync agent for an Azure SQL server.
 
 ## PARAMETERS
 
@@ -57,7 +57,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-The name of the Azure SQL Database Server the sync agent is in.
+The name of the Azure SQL Server the sync agent is in.
 
 ```yaml
 Type: String
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -SyncDatabaseResourceGroupName
-The resource group sync metadata database belongs to.
+The resource group the sync metadata database belongs to.
 
 ```yaml
 Type: String
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 ```
 
 ### -SyncDatabaseServerName
-The server on which sync metadata database is hosted.
+The server on which the sync metadata database is hosted.
 
 ```yaml
 Type: String

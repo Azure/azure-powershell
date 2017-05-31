@@ -11,13 +11,6 @@ Updates an Azure SQL Database Sync Group.
 
 ## SYNTAX
 
-### Default (Default)
-```
-Set-AzureRmSqlSyncGroup -SyncGroupName <String> [-IntervalInSeconds <Int32>] [-HubDatabaseCredential <PSCredential>]
- [-SchemaFile <String>] [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String>
-```
-
-### SyncDB
 ```
 Set-AzureRmSqlSyncGroup -SyncGroupName <String> [-IntervalInSeconds <Int32>] [-HubDatabaseCredential <PSCredential>]
  [-SchemaFile <String>] [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String>
@@ -29,7 +22,7 @@ The **Set-AzureRmSqlSyncGroup** cmdlet modifies properties of an Azure SQL Datab
 
 ## EXAMPLES
 
-### Example 1: Update a sync group for a SQL Azure database.
+### Example 1: Update a sync group for an Azure SQL Database.
 ```
 PS C:\> $credential = Get-Credential
 PS C:\> New-AzureRmSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01"
@@ -49,7 +42,7 @@ LastSyncTime                :
 Schema                      :  
 ```
 
-This command updates a sync group for a SQL Azure database. "schema.json" is a file in the local disk. It contains the shema payload in json format. An example of the schema json is:
+This command updates a sync group for an Azure SQL Database. "schema.json" is a file in the local disk. It contains the shema payload in json format. An example of the schema json is:
 {"Tables":  [{"Columns":  [{"QuotedName":  "b3ee3a7f-7614-4644-ad07-afa832620b4bManualTestsm4column1"}, {"QuotedName":  "b3ee3a7f-7614-4644-ad07-afa832620b4bManualTestsm4column2"}], "QuotedName":  "MayQuotedTable1"},
 {"Columns":  [{"QuotedName":  "b3ee3a7f-7614-4644-ad07-afa832620b4bManualTestsm4column1"}, {"QuotedName":  "b3ee3a7f-7614-4644-ad07-afa832620b4bManualTestsm4column2"}], "QuotedName":  "MayQuotedTable2"}],
 "MasterSyncMemberName":  null
@@ -58,7 +51,7 @@ This command updates a sync group for a SQL Azure database. "schema.json" is a f
 ## PARAMETERS
 
 ### -DatabaseName
-SQL Database name.
+The name of the Azure SQL Database.
 
 ```yaml
 Type: String
@@ -73,7 +66,7 @@ Accept wildcard characters: False
 ```
 
 ### -HubDatabaseCredential
-The SQL authentication credetial of hub database.
+The SQL authentication credential of the hub database.
 
 ```yaml
 Type: PSCredential
@@ -133,7 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-SQL Database server name.
+The name of the Azure SQL server.
 
 ```yaml
 Type: String

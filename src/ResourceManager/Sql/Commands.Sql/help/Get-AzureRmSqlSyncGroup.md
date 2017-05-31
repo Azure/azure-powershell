@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmSqlSyncGroup
 
 ## SYNOPSIS
-Returns information about SQL Database Sync Groups.
+Returns information about Azure SQL Database Sync Groups.
 
 ## SYNTAX
 
@@ -23,7 +23,7 @@ Specify the name of a sync group to see information for only that sync group.
 ## EXAMPLES
 
 
-### Example 1: Get all instances of SQL Sync Group assigned to a SQL Azure database
+### Example 1: Get all instances of Azure SQL Sync Group assigned to an Azure SQL Database
 ```
 PS C:\>Get-AzureRmSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
 ResourceId                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}
@@ -55,7 +55,7 @@ LastSyncTime                :
 Schema                      :  
 ```
 
-This command gets information about all the Azure SQL Database Sync Group assigned to an SQL Azure database.
+This command gets information about all the Azure SQL Database Sync Groups assigned to an Azure SQL Database.
 
 ### Example 2: Get information about an Azure SQL Database Sync Group
 ```
@@ -80,7 +80,7 @@ This command gets information about the Azure SQL Database Sync Group with name 
 ## PARAMETERS
 
 ### -DatabaseName
-SQL Database name.
+The name of the Azure SQL Database.
 
 ```yaml
 Type: String
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-SQL Database server name.
+The name of the Azure SQL server.
 
 ```yaml
 Type: String

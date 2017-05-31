@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmSqlSyncAgent
 
 ## SYNOPSIS
-Returns information about SQL Database Sync Agents.
+Returns information about Azure SQL Sync Agents.
 
 ## SYNTAX
 ```
@@ -16,11 +16,11 @@ Get-AzureRmSqlSyncAgent [-SyncAgentName <String>] [-ServerName] <String> [-Resou
 
 ## DESCRIPTION
 The **Get-AzureRmSqlSyncAgent** cmdlet returns information about one or more Azure SQL Sync Agents.
-Specify the name of a sync agent to see information for only that sync sync agent.
+Specify the name of a sync agent to see information for only that sync agent.
 
 ## EXAMPLES
 
-### Example 1: Get all instances of SQL Sync Agent assigned to a SQL Azure Server
+### Example 1: Get all instances of Azure SQL Sync Agent assigned to an Azure SQL Server
 ```
 PS C:\>Get-AzureRmSqlSyncAgent -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
 ResourceId                  : subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/syncAgents/{SyncAgent01}
@@ -48,7 +48,7 @@ ExpiryTime                  :
 State                       : Good
 ```
 
-This command gets information about all the Azure SQL Database Sync Agents assigned to an SQL Azure Server.
+This command gets information about all the Azure SQL Sync Agents assigned to an Azure SQL Server.
 
 ### Example 2: Get information about an Azure SQL Sync Agent
 ```
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-The name of the Azure SQL Database Server the sync agent is in.
+The name of the Azure SQL Server the sync agent is in.
 
 ```yaml
 Type: String
