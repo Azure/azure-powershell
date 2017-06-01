@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 0.1.1
+
 ## Version 0.1.0
 * Add PowerShell cmdlets for Azure Container Registry
     - New-AzureRmContainerRegistry

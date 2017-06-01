@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 3.0.1
+
 ## Version 3.0.0
 * Add-AzureRm*AlertRule
     - Returns a single object: newResource, statusCode, requestId
