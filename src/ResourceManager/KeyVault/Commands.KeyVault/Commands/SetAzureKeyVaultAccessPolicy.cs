@@ -91,6 +91,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         private const string ByObjectId = "ByObjectId";
         private const string ByServicePrincipalName = "ByServicePrincipalName";
         private const string ByUserPrincipalName = "ByUserPrincipalName";
+        private const string ByEmail = "ByEmail";
         private const string ForVault = "ForVault";
 
         #endregion
@@ -150,6 +151,16 @@ namespace Microsoft.Azure.Commands.KeyVault
         public string ObjectId { get; set; }
 
         /// <summary>
+        /// Email address
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = ByEmail,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the email address of the user in Azure Active Directory for which to grant permissions.")]
+        [ValidateNotNullOrEmpty()]
+        public string Mail { get; set; }
+
+        /// <summary>
         /// Id of the application to which a user delegate to
         /// </summary>
         [Parameter(Mandatory = false,
@@ -173,6 +184,10 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = ByUserPrincipalName,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies key operation permissions to grant to a user or service principal.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ByEmail,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies key operation permissions to grant to a user or service principal.")]
         [ValidateSet("decrypt", "encrypt", "unwrapKey", "wrapKey", "verify", "sign", "get", "list", "update", "create", "import", "delete", "backup", "restore", "recover", "purge", "all")]
         public string[] PermissionsToKeys { get; set; }
 
@@ -191,6 +206,10 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = ByUserPrincipalName,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies secret operation permissions to grant to a user or service principal.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ByEmail,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies key operation permissions to grant to a user or service principal.")]
         [ValidateSet("get", "list", "set", "delete", "backup", "restore", "recover", "purge", "all")]
         public string[] PermissionsToSecrets { get; set; }
 
@@ -209,6 +228,10 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = ByUserPrincipalName,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies certificate operation permissions to grant to a user or service principal.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ByEmail,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies key operation permissions to grant to a user or service principal.")]
         [ValidateSet("get", "list", "delete", "create", "import", "update", "managecontacts", "getissuers", "listissuers", "setissuers", "deleteissuers", "manageissuers", "all")]
         public string[] PermissionsToCertificates { get; set; }
 
@@ -293,12 +316,15 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                 // Update vault policies
                 PSKeyVaultModels.PSVaultAccessPolicy[] updatedListOfAccessPolicies = vault.AccessPolicies;
-                if (!string.IsNullOrEmpty(UserPrincipalName) || !string.IsNullOrEmpty(ServicePrincipalName) || !string.IsNullOrWhiteSpace(this.ObjectId))
+                if (!string.IsNullOrEmpty(UserPrincipalName)
+                    || !string.IsNullOrEmpty(ServicePrincipalName)
+                    || !string.IsNullOrWhiteSpace(this.ObjectId)
+                    || !string.IsNullOrWhiteSpace(this.Mail))
                 {
                     var objId = this.ObjectId;
                     if (!this.BypassObjectIdValidation.IsPresent)
                     {
-                        objId = GetObjectId(this.ObjectId, this.UserPrincipalName, this.ServicePrincipalName);
+                        objId = GetObjectId(this.ObjectId, this.UserPrincipalName, this.Mail, this.ServicePrincipalName);
                     }
 
                     if (ApplicationId.HasValue && ApplicationId.Value == Guid.Empty)

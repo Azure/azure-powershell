@@ -440,6 +440,25 @@ function Test-SetRemoveAccessPolicyByUPN
     Assert-AreEqual 0 $vault.AccessPolicies.Count
 }
 
+function Test-SetRemoveAccessPolicyByEmail
+{
+    Param($existingVaultName, $rgName, $email, $upn)
+
+    $PermToKeys = @("encrypt", "decrypt", "unwrapKey", "wrapKey", "verify", "sign", "get", "list", "update", "create", "import", "delete", "backup", "restore")
+    $PermToSecrets = @("get", "list", "set", "delete")
+    $PermToCertificates = @("get", "list", "create", "delete")
+
+    $vault = Set-AzureRmKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -Mail $email -PermissionsToKeys $PermToKeys -PermissionsToSecrets $PermToSecrets -PermissionsToCertificates $PermToCertificates -PassThru
+
+    CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets $PermToCertificates
+    if (-not $global:noADCmdLetMode) {
+        Assert-AreEqual  $vault.AccessPolicies[0].ObjectId (Get-AzureRmADUser -Mail $upn).Id
+    }
+
+    $vault = Remove-AzureRmKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -Mail $email -PassThru
+    Assert-AreEqual 0 $vault.AccessPolicies.Count
+}
+
 function Test-SetRemoveAccessPolicyBySPN
 {
     Param($existingVaultName, $rgName, $spn)

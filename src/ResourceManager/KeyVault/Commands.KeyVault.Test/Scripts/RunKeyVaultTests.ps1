@@ -211,6 +211,12 @@ function Run-AllControlPlaneTests
 
     # Set-AzureRmKeyVaultAccessPolicy & Remove-AzureRmKeyVaultAccessPolicy tests.
     Run-TestProtected { Run-VaultTest { Test_SetRemoveAccessPolicyByUPN } "Test_SetRemoveAccessPolicyByUPN" } "Test_SetRemoveAccessPolicyByUPN"
+
+    <#
+    This test is disabled because it requires a user with an email address that matches their UPN.
+    Run-TestProtected { Run-VaultTest { Test_SetRemoveAccessPolicyByEmail } "Test_SetRemoveAccessPolicyByEmail" } "Test_SetRemoveAccessPolicyByEmail"
+    #>
+
     Run-TestProtected { Run-VaultTest { Test_SetRemoveAccessPolicyBySPN } "Test_SetRemoveAccessPolicyBySPN" } "Test_SetRemoveAccessPolicyBySPN"
     Run-TestProtected { Run-VaultTest { Test_SetRemoveAccessPolicyByObjectId } "Test_SetRemoveAccessPolicyByObjectId" } "Test_SetRemoveAccessPolicyByObjectId"
     Run-TestProtected { Run-VaultTest { Test_SetRemoveAccessPolicyByBypassObjectIdValidation } "Test_SetRemoveAccessPolicyByBypassObjectIdValidation" } "Test_SetRemoveAccessPolicyByBypassObjectIdValidation"

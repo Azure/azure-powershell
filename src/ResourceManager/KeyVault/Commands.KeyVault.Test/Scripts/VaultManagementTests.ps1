@@ -126,6 +126,14 @@ function Test_SetRemoveAccessPolicyByUPN
     Test-SetRemoveAccessPolicyByUPN $global:testVault $global:resourceGroupName $user
 }
 
+function Test_SetRemoveAccessPolicyByEmail
+{
+    # ASSUMPTION: The logged in users UPN is the same as their email address.
+    $user = (Get-AzureRmContext).Account.Id
+    Reset-PreCreatedVault
+    Test-SetRemoveAccessPolicyByEmail $global:testVault $global:resourceGroupName $user $user
+}
+
 function Test_SetRemoveAccessPolicyBySPN
 {
     Reset-PreCreatedVault
@@ -330,7 +338,7 @@ function Initialize-TemporaryState
     {
         Write-Host "Skipping resource group creation since the resource group $global:resourceGroupName is already provided."
     }
-    
+
     if ($global:testVault -ne "" -and $global:testVault -ne $null)
     {
         Write-Host "Skipping vault creation since the vault $global:testVault is already provided."
@@ -339,7 +347,7 @@ function Initialize-TemporaryState
 
     # Create a vault using ARM.
     $vaultName = Get-VaultName $suffix
-    $tenantId = (Get-AzureRmContext).Tenant.TenantId
+    $tenantId = (Get-AzureRmContext).Tenant.Id
     $sku = "premium"
     if ($global:standardVaultOnly)
     {
