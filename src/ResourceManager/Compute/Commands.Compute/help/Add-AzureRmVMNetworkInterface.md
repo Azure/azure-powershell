@@ -59,7 +59,7 @@ The final command updates the state of the virtual machine stored in $VirtualMac
 
 ### -Id
 Specifies the ID of a network interface to add to a virtual machine.
-You can use the Get-AzureRmNetworkInterface cmdlet to obtain a network interface.
+You can use the [Get-AzureRmNetworkInterface](./Get-AzureRmNetworkInterface.md) cmdlet to obtain a network interface.
 
 ```yaml
 Type: String
@@ -105,8 +105,8 @@ Accept wildcard characters: False
 
 ### -VM
 Specifies a local virtual machine object to which to add a network interface.
-To create a virtual machine, use the New-AzureRmVMConfig cmdlet.
-To obtain an existing virtual machine, use the Get-AzureRmVM cmdlet.
+To create a virtual machine, use the **New-AzureRmVMConfig** cmdlet.
+To obtain an existing virtual machine, use the **Get-AzureRmVM** cmdlet.
 
 ```yaml
 Type: PSVirtualMachine
@@ -136,5 +136,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzureRmVM](./Get-AzureRmVM.md)
 
 [Get-AzureRmAvailabilitySet](./Get-AzureRmAvailabilitySet.md)
-
-

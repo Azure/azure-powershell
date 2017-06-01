@@ -110,7 +110,7 @@ Accept wildcard characters: False
 
 ### -TypeHandlerVersion
 Specifies the version of the extension to use for this VMSS.
-To obtain the version, run the Get-AzureRmVMExtensionImage cmdlet with a value of Microsoft.Azure.Diagnostics for the *PublisherName* parameter and IaaSDiagnostics for the *Type* parameter.
+To obtain the version, run the [Get-AzureRmVMExtensionImage](./Get-AzureRmVMExtensionImage.md) cmdlet with a value of Microsoft.Azure.Diagnostics for the *PublisherName* parameter and IaaSDiagnostics for the *Type* parameter.
 
 ```yaml
 Type: String
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 
 ### -VirtualMachineScaleSet
 Specify the VMSS object.
-You can use the New-AzureRmVmssConfig cmdlet to create the object.
+You can use the [New-AzureRmVmssConfig](./New-AzureRmVmssConfig.md) cmdlet to create the object.
 
 ```yaml
 Type: VirtualMachineScaleSet
@@ -157,7 +157,6 @@ Accept wildcard characters: False
 
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
-
 The cmdlet is not run.
 
 ```yaml
