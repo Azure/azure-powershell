@@ -36,7 +36,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
         /// Attempts to get the user's credentials from the given Storage Context or the current subscription, if the former is null. 
         /// Throws a terminating error if the credentials cannot be determined.
         /// </summary>
-        internal static StorageCredentials GetStorageCredentials(this AzureSMCmdlet cmdlet, AzureStorageContext storageContext)
+        internal static StorageCredentials GetStorageCredentials(this AzureSMCmdlet cmdlet, IStorageContext storageContext)
         {
             StorageCredentials credentials = null;
 
