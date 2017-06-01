@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Fix Test-AzureRmVMAEMExtension for Managed Disks
+* Fix Test-AzureRmVMAEMExtension for virtual machines with multiple managed disks
 * Updated Set-AzureRmVMAEMExtension: Add caching information for Premium managed disks
 
 ## Version 3.0.0
