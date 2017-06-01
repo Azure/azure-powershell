@@ -29794,6 +29794,36 @@ $backupConfig=New-AzureVMSqlServerAutoBackupConfig -Enable -ResourceGroupName cr
 <command:relatedLinks></command:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<command:details><command:name>New-AzureIPTag</command:name>
+<command:verb>New</command:verb>
+<command:noun>AzureIPTag</command:noun>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:details>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+<command:syntax><command:syntaxItem><maml:name>New-AzureIPTag</maml:name>
+</command:syntaxItem>
+</command:syntax>
+<command:parameters></command:parameters>
+<command:inputTypes></command:inputTypes>
+<command:returnValues></command:returnValues>
+<maml:alertSet><maml:alert><maml:para>
+</maml:para>
+</maml:alert>
+</maml:alertSet>
+<command:examples><command:example><maml:title>Example 1</maml:title>
+<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
+<dev:remarks><maml:para>{{ Add example description here }}
+</maml:para>
+</dev:remarks>
+</command:example>
+</command:examples>
+<command:relatedLinks></command:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <command:details><command:name>Remove-AzureSBAuthorizationRule</command:name>
 <command:verb>Remove</command:verb>
 <command:noun>AzureSBAuthorizationRule</command:noun>
