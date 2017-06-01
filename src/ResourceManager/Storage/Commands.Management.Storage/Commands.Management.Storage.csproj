@@ -62,7 +62,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.6.3.0-preview\lib\net452\Microsoft.Azure.Management.Storage.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.6.3.0.1-preview\lib\net452\Microsoft.Azure.Management.Storage.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Data.Edm, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -141,6 +141,7 @@
     <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\LazyAzureStorageContext.cs">
       <Link>Common\LazyAzureStorageContext.cs</Link>
     </Compile>
+    <Compile Include="Models\PSKeySource.cs" />
     <Compile Include="Models\PSStorageAccount.cs" />
     <Compile Include="Models\PSUsage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -149,6 +150,7 @@
     <Compile Include="StorageAccount\GetAzureStorageAccountNameAvailability.cs" />
     <Compile Include="StorageAccount\GetAzureStorageUsage.cs" />
     <Compile Include="StorageAccount\NewAzureStorageAccount.cs" />
+    <Compile Include="StorageAccount\NewAzureStorageAccountEncryptionKeySource.cs" />
     <Compile Include="StorageAccount\NewAzureStorageAccountKey.cs" />
     <Compile Include="StorageAccount\RemoveAzureStorageAccount.cs" />
     <Compile Include="StorageAccount\SetAzureRmCurrentStorageAccount.cs" />

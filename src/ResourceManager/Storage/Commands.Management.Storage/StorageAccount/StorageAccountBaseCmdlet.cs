@@ -37,6 +37,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
         protected const string AccountTypeAlias = "AccountType";
         protected const string Account_TypeAlias = "Type";
 
+        protected const string StorageAccountKeySourceStr = StorageAccountNounStr + "EncryptionKeySource";
+
         protected const string TagsAlias = "Tags";
 
         protected const string StorageAccountNameAvailabilityStr = "AzureRmStorageAccountNameAvailability";
@@ -126,11 +128,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
             return returnAccessTier;
         }
 
-        protected static Encryption ParseEncryption(EncryptionSupportServiceEnum? EnableService, EncryptionSupportServiceEnum? DisableService = null)
+        protected static Encryption ParseEncryption(EncryptionSupportServiceEnum? EnableService, EncryptionSupportServiceEnum? DisableService = null, PSKeySource? keySource = null)
         {
             //When EnableService and DisableService both don't have value, return null
             if ((EnableService == EncryptionSupportServiceEnum.None || EnableService == null) &&
-                (DisableService == EncryptionSupportServiceEnum.None || DisableService == null))
+                (DisableService == EncryptionSupportServiceEnum.None || DisableService == null) &&
+                (keySource == null))
             {
                 return null;
             }
@@ -164,7 +167,20 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 accountEncryption.Services.File = new EncryptionService();
                 accountEncryption.Services.File.Enabled = false;
             }
-
+            if (keySource != null)
+            {
+                if (keySource.Value.KeySource == PsKeySourceTypeEnum.MicrosoftStorage)
+                {
+                    accountEncryption.KeySource = "Microsoft.Storage";
+                }
+                else //keySource.Value.KeySource == PsKeySourceTypeEnum.MicrosoftKeyVault)
+                {
+                    accountEncryption.KeySource = "Microsoft.Keyvault";
+                    accountEncryption.KeyVaultProperties = new KeyVaultProperties(keySource.Value.Keyvaultproperties.Keyname,
+                        keySource.Value.Keyvaultproperties.KeyVersion,
+                        keySource.Value.Keyvaultproperties.KeyVaultUri);
+                }
+            }
             return accountEncryption;
         }
 
