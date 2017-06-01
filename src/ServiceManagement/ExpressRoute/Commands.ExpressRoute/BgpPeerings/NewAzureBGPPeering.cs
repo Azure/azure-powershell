@@ -29,6 +29,10 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         [ValidateNotNullOrEmpty]
         public string AdvertisedPublicPrefixes { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Advertised Public Prefixes for Ipv6")]
+        [ValidateNotNullOrEmpty]
+        public string AdvertisedPublicPrefixesIpv6 { get; set; }
+
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Customer AS number")]
         public UInt32 CustomerAsn { get; set; }
 
@@ -39,16 +43,30 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         [DefaultValue(LegacyMode.False)]
         public LegacyMode LegacyMode { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Primary Peer Subnet")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Customer AS number for Ipv6")]
+        public UInt32 CustomerAsnIpv6 { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Primary Peer Subnet")]
         [ValidateNotNullOrEmpty]
         public string PrimaryPeerSubnet { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Primary Peer Subnet for Ipv6")]
+        [ValidateNotNullOrEmpty]
+        public string PrimaryPeerSubnetIpv6 { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Routing Registry Name for Prefix Validation")]
         public string RoutingRegistryName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Secondary Peer Subnet")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Routing Registry Name for Prefix Validation for Ipv6")]
+        public string RoutingRegistryNameIpv6 { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Secondary Peer Subnet")]
         [ValidateNotNullOrEmpty]
         public string SecondaryPeerSubnet { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Secondary Peer Subnet for Ipv6")]
+        [ValidateNotNullOrEmpty]
+        public string SecondaryPeerSubnetIpv6 { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Shared Key")]
         [ValidateNotNullOrEmpty]
@@ -63,8 +81,8 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 
         public override void ExecuteCmdlet()
         {
-            var route = ExpressRouteClient.NewAzureBGPPeering(ServiceKey, AdvertisedPublicPrefixes, CustomerAsn, PeerAsn,
-                PrimaryPeerSubnet, RoutingRegistryName, SecondaryPeerSubnet, VlanId, AccessType, SharedKey, Convert.ToUInt32(LegacyMode));
+            var route = ExpressRouteClient.NewAzureBGPPeering(ServiceKey, AdvertisedPublicPrefixes, AdvertisedPublicPrefixesIpv6, CustomerAsn, CustomerAsnIpv6, PeerAsn,
+                PrimaryPeerSubnet, PrimaryPeerSubnetIpv6, RoutingRegistryName, RoutingRegistryNameIpv6, SecondaryPeerSubnet, SecondaryPeerSubnetIpv6, VlanId, AccessType, SharedKey, Convert.ToUInt32(LegacyMode));
             WriteObject(route);
         }
     }

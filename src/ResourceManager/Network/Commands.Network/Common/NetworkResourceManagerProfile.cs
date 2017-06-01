@@ -71,6 +71,10 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<CNM.PSResourceId, MNM.SubResource>();
             Mapper.CreateMap<MNM.SubResource, CNM.PSResourceId>();
 
+            // IPv6 Peering Config
+            Mapper.CreateMap<CNM.PSIpv6PeeringConfig, MNM.Ipv6ExpressRouteCircuitPeeringConfig>();
+            Mapper.CreateMap<MNM.Ipv6ExpressRouteCircuitPeeringConfig, CNM.PSIpv6PeeringConfig>();
+
             // Route Filter 
             Mapper.CreateMap<CNM.PSRouteFilter, MNM.RouteFilter>();
             Mapper.CreateMap<MNM.RouteFilter, CNM.PSRouteFilter>();

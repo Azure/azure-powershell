@@ -52,6 +52,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
             UInt32 peerAsn = 64496;
             string primaryPeerSubnet = "aaa";
             string secondayPeerSubnet = "bbb";
+            string primaryPeerSubnetIpv6 = "ccc";
+            string secondayPeerSubnetIpv6 = "ddd";
             UInt32 azureAsn = 64494;
             string primaryAzurePort = "8081";
             string secondaryAzurePort = "8082";
@@ -71,9 +73,11 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
                         AzureAsn = azureAsn,
                         PeerAsn = peerAsn,
                         PrimaryAzurePort = primaryAzurePort,
-                        PrimaryPeerSubnet = primaryPeerSubnet,   
+                        PrimaryPeerSubnet = primaryPeerSubnet,
+                        PrimaryPeerSubnetIpv6 = primaryPeerSubnetIpv6,
                         SecondaryAzurePort = secondaryAzurePort,
                         SecondaryPeerSubnet = secondayPeerSubnet,
+                        SecondaryPeerSubnetIpv6 = secondayPeerSubnetIpv6,
                         State = state,         
                         VlanId = vlanId
                     },
@@ -99,8 +103,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
                             y => y == accessType),
                         It.Is<BorderGatewayProtocolPeeringNewParameters>(
                             z =>
-                                z.PeerAutonomousSystemNumber == peerAsn && z.PrimaryPeerSubnet == primaryPeerSubnet &&
-                                z.SecondaryPeerSubnet == secondayPeerSubnet && z.VirtualLanId == vlanId),
+                                z.PeerAutonomousSystemNumber == peerAsn &&
+                                z.PrimaryPeerSubnet == primaryPeerSubnet && z.PrimaryPeerSubnetIpv6 == primaryPeerSubnetIpv6 &&
+                                z.SecondaryPeerSubnet == secondayPeerSubnet && z.SecondaryPeerSubnetIpv6 == secondayPeerSubnetIpv6 &&
+                                z.VirtualLanId == vlanId),
                         It.IsAny<CancellationToken>()))
                 .Returns((string sKey, BgpPeeringAccessType atype, BorderGatewayProtocolPeeringNewParameters param, CancellationToken cancellation) => tNew);
             client.SetupGet(f => f.BorderGatewayProtocolPeerings).Returns(bgpMock.Object);
@@ -120,7 +126,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
                 AccessType = accessType,
                 PeerAsn = peerAsn,
                 PrimaryPeerSubnet = primaryPeerSubnet,
+                PrimaryPeerSubnetIpv6 = primaryPeerSubnetIpv6,
                 SecondaryPeerSubnet = secondayPeerSubnet,
+                SecondaryPeerSubnetIpv6 = secondayPeerSubnetIpv6,
                 SharedKey = null,
                 VlanId = vlanId,
                 CommandRuntime = mockCommandRuntime,
@@ -241,6 +249,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
             UInt32 peerAsn = 64496;
             string primaryPeerSubnet = "aaa";
             string secondayPeerSubnet = "bbb";
+            string primaryPeerSubnetIpv6 = "ccc";
+            string secondayPeerSubnetIpv6 = "ddd";
             UInt32 azureAsn = 64494;
             string primaryAzurePort = "8081";
             string secondaryAzurePort = "8082";
@@ -261,8 +271,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
                         PeerAsn = peerAsn,
                         PrimaryAzurePort = primaryAzurePort,
                         PrimaryPeerSubnet = primaryPeerSubnet,
+                        PrimaryPeerSubnetIpv6 = primaryPeerSubnetIpv6,
                         SecondaryAzurePort = secondaryAzurePort,
                         SecondaryPeerSubnet = secondayPeerSubnet,
+                        SecondaryPeerSubnetIpv6 = secondayPeerSubnetIpv6,
                         State = state,
                         VlanId = vlanId
                     },
@@ -305,6 +317,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
 
             string serviceKey = "aa28cd19-b10a-41ff-981b-53c6bbf15ead";
             BgpPeeringAccessType accessType = BgpPeeringAccessType.Private;
+            BgpPeerAdddressType peerAddressType = BgpPeerAdddressType.IPv4;
 
             MockCommandRuntime mockCommandRuntime = new MockCommandRuntime();
             Mock<ExpressRouteManagementClient> client = InitExpressRouteManagementClient();
@@ -321,7 +334,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
             t.Start();
 
             bgpMock.Setup(f => f.RemoveAsync(It.Is<string>(sKey => sKey == serviceKey), It.Is<BgpPeeringAccessType>(
-                y => y == accessType),
+                y => y == accessType), It.Is<BgpPeerAdddressType>(y => y == peerAddressType),
                 It.IsAny<CancellationToken>()))
                 .Returns((string sKey, BgpPeeringAccessType aType, CancellationToken cancellation) => t);
             client.SetupGet(f => f.BorderGatewayProtocolPeerings).Returns(bgpMock.Object);
