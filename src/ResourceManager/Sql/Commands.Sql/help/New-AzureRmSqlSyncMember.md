@@ -36,7 +36,7 @@ The **New-AzureRmSqlSyncMember** cmdlet creates an Azure SQL Database Sync Membe
 ```
 PS C:\> $credential = Get-Credential
 PS C:\> New-AzureRmSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -SyncMemberName "SyncMember01" -SyncDirection "OneWayMemberToHub"
--DatabaseType "AzureSqlDatabase" -MemberServerName "memberServer01" -MemberDatabaseName "memberDatabase01" -Credential $credential
+-DatabaseType "AzureSqlDatabase" -MemberServerName "memberServer01.full.dns.name" -MemberDatabaseName "memberDatabase01" -Credential $credential
 ResourceId                  : subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}/syncMembers/{SyncMember01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
@@ -47,11 +47,11 @@ SyncDirection               : OneWayMemberToHub
 DatabaseType:               : AzureSqlDatabase
 SyncAgentId                 : 
 SqlServerDatabaseId         : 
-MemberServerName            : memberServer01
+MemberServerName            : memberServer01.full.dns.name
 MemberDatabaseName          : memberDatabase01
-UserName                    : 
+UserName                    : myAccount
 Password                    : 
-SyncState                   : Good 
+SyncState                   : UnProvisioned 
 ```
 
 This command creates a sync member for an Azure SQL database.
@@ -75,7 +75,7 @@ MemberServerName            :
 MemberDatabaseName          : 
 UserName                    : 
 Password                    : 
-SyncState                   : Good 
+SyncState                   : UnProvisioned 
 ```
 
 This command creates a sync member for an on-premises SQL database.

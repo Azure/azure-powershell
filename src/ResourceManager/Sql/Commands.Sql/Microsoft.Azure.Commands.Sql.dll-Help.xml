@@ -7582,11 +7582,11 @@ ServerName                  : Server01
 DatabaseName                : Database01
 SyncAgentName               : SyncAgent01
 SyncDatabaseId              : subscriptions/{subscriptionId}/resourceGroups/{syncDatabaseResourceGroup01}/servers/{syncDatabaseServer01}/databases/{syncDatabaseName01}
-LastAliveTime:              : 
-Version                     : 
-IsUpToDate                  : 
+LastAliveTime:              : 6/1/2017 5:08:48 AM
+Version                     : 4.3.6348.1
+IsUpToDate                  : False
 ExpiryTime                  : 
-State                       : Good
+State                       : Online
 
 ResourceId                  : subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/syncAgents/{SyncAgent02}
 ResourceGroupName           : ResourceGroup01
@@ -7594,11 +7594,11 @@ ServerName                  : Server01
 DatabaseName                : Database01
 SyncAgentName               : SyncAgent02
 SyncDatabaseId              : subscriptions/{subscriptionId}/resourceGroups/{syncDatabaseResourceGroup01}/servers/{syncDatabaseServer01}/databases/{syncDatabaseName01}
-LastAliveTime:              : 
-Version                     : 
-IsUpToDate                  : 
+LastAliveTime:              : 6/1/2017 5:08:48 AM
+Version                     : 4.3.6348.1
+IsUpToDate                  : False
 ExpiryTime                  : 
-State                       : Good</dev:code>
+State                       : Online</dev:code>
 <dev:remarks><maml:para>This command gets information about all the Azure SQL Sync Agents assigned to an Azure SQL Server.
 </maml:para>
 </dev:remarks>
@@ -7611,11 +7611,11 @@ ServerName                  : Server01
 DatabaseName                : Database01
 SyncAgentName               : SyncAgent01
 SyncDatabaseId              : subscriptions/{subscriptionId}/resourceGroups/{syncDatabaseResourceGroup01}/servers/{syncDatabaseServer01}/databases/{syncDatabaseName01}
-LastAliveTime:              : 
-Version                     : 
-IsUpToDate                  : 
+LastAliveTime:              : 6/1/2017 5:08:48 AM
+Version                     : 4.3.6348.1
+IsUpToDate                  : False
 ExpiryTime                  : 
-State                       : Good</dev:code>
+State                       : Online</dev:code>
 <dev:remarks><maml:para>This command gets information about the Azure SQL Database Sync Agent with name "SyncAgent01"
 </maml:para>
 </dev:remarks>
@@ -7712,12 +7712,12 @@ State                       : Good</dev:code>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1: Get the linked SQL Server databases for an Azure SQL sync agent.</maml:title>
 <dev:code>PS C:\&gt; Get-AzureRmSqlSyncAgentLinkedDatabases -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -SyncAgentName "SyncAgent01"
-SeverName                 : "sever01"
-DatabaseId                : "databaseId"
-DatabaseName              : "database01"
-DatabaseType              : "SQLServerDatabase"
-Description               : ""
-UserName                  : ""</dev:code>
+SeverName                 : sever01
+DatabaseId                : databaseId
+DatabaseName              : database01
+DatabaseType              : SQLServerDatabase
+Description               : 
+UserName                  : myAccount</dev:code>
 <dev:remarks><maml:para>This command returns the linked SQL Server databases linked by an Azure SQL sync agent.
 </maml:para>
 </dev:remarks>
@@ -7839,11 +7839,11 @@ DatabaseName                : Database01
 SyncGroupName               : SyncGroup01
 SyncDatabaseId              : subscriptions/{subscriptionId}/resourceGroups/{syncDatabaseResourceGroup01}/servers/{syncDatabaseServer01}/databases/{syncDatabaseName01}
 IntervalInSeconds           : 100
-ConflictResolutionPolicy:   : "HubWin"
-HubDatabaseUserName         : 
+ConflictResolutionPolicy:   : HubWin
+HubDatabaseUserName         : myAccount
 HubDatabasePassword         : 
-SyncState                   : "Good"
-LastSyncTime                : 
+SyncState                   : NotReady
+LastSyncTime                : 1/1/0001 12:00:00 AM
 Schema                      :  
 
 ResourceId                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup02}
@@ -7853,11 +7853,11 @@ DatabaseName                : Database01
 SyncGroupName               : SyncGroup02
 SyncDatabaseId              : subscriptions/{subscriptionId}/resourceGroups/{syncDatabaseResourceGroup01}/servers/{syncDatabaseServer01}/databases/{syncDatabaseName01}
 IntervalInSeconds           : 100
-ConflictResolutionPolicy:   : "HubWin"
-HubDatabaseUserName         : 
+ConflictResolutionPolicy:   : HubWin
+HubDatabaseUserName         : myAccount
 HubDatabasePassword         : 
-SyncState                   : "Good"
-LastSyncTime                : 
+SyncState                   : NotReady
+LastSyncTime                : 1/1/0001 12:00:00 AM
 Schema                      :</dev:code>
 <dev:remarks><maml:para>This command gets information about all the Azure SQL Database Sync Groups assigned to an Azure SQL Database.
 </maml:para>
@@ -7872,11 +7872,11 @@ DatabaseName                : Database01
 SyncGroupName               : SyncGroup02
 SyncDatabaseId              : subscriptions/{subscriptionId}/resourceGroups/{syncDatabaseResourceGroup01}/servers/{syncDatabaseServer01}/databases/{syncDatabaseName01}
 IntervalInSeconds           : 100
-ConflictResolutionPolicy:   : "HubWin"
-HubDatabaseUserName         : 
+ConflictResolutionPolicy:   : HubWin
+HubDatabaseUserName         : myAccount
 HubDatabasePassword         : 
-SyncState                   : "Good"
-LastSyncTime                : 
+SyncState                   : NotReady
+LastSyncTime                : 1/1/0001 12:00:00 AM
 Schema                      :</dev:code>
 <dev:remarks><maml:para>This command gets information about the Azure SQL Database Sync Group with name "SyncGroup01"
 </maml:para>
@@ -8241,9 +8241,9 @@ SyncDirection               : OneWayMemberToHub
 DatabaseType:               : AzureSqlDatabase
 SyncAgentId                 : 
 SqlServerDatabaseId         : 
-MemberServerName            : memberServer01
+MemberServerName            : memberServer01.full.dns.name
 MemberDatabaseName          : memberDatabase01
-UserName                    : 
+UserName                    : myAccount
 Password                    : 
 SyncState                   : Good 
 
@@ -8257,9 +8257,9 @@ SyncDirection               : OneWayMemberToHub
 DatabaseType:               : AzureSqlDatabase
 SyncAgentId                 : 
 SqlServerDatabaseId         : 
-MemberServerName            : memberServer01
+MemberServerName            : memberServer01.full.dns.name
 MemberDatabaseName          : memberDatabase01
-UserName                    : 
+UserName                    : myAccount
 Password                    : 
 SyncState                   : Good</dev:code>
 <dev:remarks><maml:para>This command gets information about all the Azure SQL Database Sync Member assigned to the sync group SyncGroup01.
@@ -8278,9 +8278,9 @@ SyncDirection               : OneWayMemberToHub
 DatabaseType:               : AzureSqlDatabase
 SyncAgentId                 : 
 SqlServerDatabaseId         : 
-MemberServerName            : memberServer01
+MemberServerName            : memberServer01.full.dns.name
 MemberDatabaseName          : memberDatabase01
-UserName                    : 
+UserName                    : myAccount
 Password                    : 
 SyncState                   : Good</dev:code>
 <dev:remarks><maml:para>This command gets information about the Azure SQL Database Sync Member with name "SyncMember01"
@@ -12011,10 +12011,10 @@ DatabaseName                : Database01
 SyncAgentName               : SyncAgent01
 SyncDatabaseId              : subscriptions/{subscriptionId}/resourceGroups/{syncDatabaseResourceGroup01}/servers/{syncDatabaseServer01}/databases/{syncDatabaseName01}
 LastAliveTime:              : 
-Version                     : 
-IsUpToDate                  : 
-ExpiryTime                  : 
-State                       : Good</dev:code>
+Version                     : 4.2.0.0
+IsUpToDate                  : True
+ExpiryTime                  : 12/31/9999 11:59:59 PM
+State                       : NeverConnected</dev:code>
 <dev:remarks><maml:para>This command creates a sync agent for an Azure SQL server.
 </maml:para>
 </dev:remarks>
@@ -12111,7 +12111,7 @@ State                       : Good</dev:code>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1: Create a sync agent key for an Azure SQL sync agent.</maml:title>
 <dev:code>PS C:\&gt; New-AzureRmSqlSyncAgentKey -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -SyncAgentName "SyncAgent01"
-SyncAgentKey                  : "Key"</dev:code>
+SyncAgentKey                  : Key</dev:code>
 <dev:remarks><maml:para>This command creates a sync agent key for an Azure SQL Sync Agent.
 </maml:para>
 </dev:remarks>
@@ -12364,11 +12364,11 @@ DatabaseName                : Database01
 SyncGroupName               : SyncGroup01
 SyncDatabaseId              : subscriptions/{subscriptionId}/resourceGroups/{syncDatabaseResourceGroup01}/servers/{syncDatabaseServer01}/databases/{syncDatabaseName01}
 IntervalInSeconds           : 100
-ConflictResolutionPolicy:   : "HubWin"
-HubDatabaseUserName         : 
+ConflictResolutionPolicy:   : HubWin
+HubDatabaseUserName         : myAccount
 HubDatabasePassword         : 
-SyncState                   : "Good"
-LastSyncTime                : 
+SyncState                   : NotReady
+LastSyncTime                : 1/1/0001 12:00:00 AM
 Schema                      :</dev:code>
 <dev:remarks><maml:para>This command creates a sync group for an Azure SQL Database. "schema.json" is a file in the local disk. It contains the shema payload in json format. An example of the schema json is: {"Tables":  [{"Columns":  [{"QuotedName":  "b3ee3a7f-7614-4644-ad07-afa832620b4bManualTestsm4column1"}, {"QuotedName":  "b3ee3a7f-7614-4644-ad07-afa832620b4bManualTestsm4column2"}], "QuotedName":  "MayQuotedTable1"}, {"Columns":  [{"QuotedName":  "b3ee3a7f-7614-4644-ad07-afa832620b4bManualTestsm4column1"}, {"QuotedName":  "b3ee3a7f-7614-4644-ad07-afa832620b4bManualTestsm4column2"}], "QuotedName":  "MayQuotedTable2"}], "MasterSyncMemberName":  null }
 </maml:para>
@@ -12744,7 +12744,7 @@ Schema                      :</dev:code>
 <command:examples><command:example><maml:title>Example 1: Create a sync member for an Azure SQL database.</maml:title>
 <dev:code>PS C:\&gt; $credential = Get-Credential
 PS C:\&gt; New-AzureRmSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -SyncMemberName "SyncMember01" -SyncDirection "OneWayMemberToHub"
--DatabaseType "AzureSqlDatabase" -MemberServerName "memberServer01" -MemberDatabaseName "memberDatabase01" -Credential $credential
+-DatabaseType "AzureSqlDatabase" -MemberServerName "memberServer01.full.dns.name" -MemberDatabaseName "memberDatabase01" -Credential $credential
 ResourceId                  : subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}/syncMembers/{SyncMember01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
@@ -12755,11 +12755,11 @@ SyncDirection               : OneWayMemberToHub
 DatabaseType:               : AzureSqlDatabase
 SyncAgentId                 : 
 SqlServerDatabaseId         : 
-MemberServerName            : memberServer01
+MemberServerName            : memberServer01.full.dns.name
 MemberDatabaseName          : memberDatabase01
-UserName                    : 
+UserName                    : myAccount
 Password                    : 
-SyncState                   : Good</dev:code>
+SyncState                   : UnProvisioned</dev:code>
 <dev:remarks><maml:para>This command creates a sync member for an Azure SQL database.
 </maml:para>
 </dev:remarks>
@@ -12782,7 +12782,7 @@ MemberServerName            :
 MemberDatabaseName          : 
 UserName                    : 
 Password                    : 
-SyncState                   : Good</dev:code>
+SyncState                   : UnProvisioned</dev:code>
 <dev:remarks><maml:para>This command creates a sync member for an on-premises SQL database.
 </maml:para>
 </dev:remarks>
@@ -22714,11 +22714,11 @@ DatabaseName                : Database01
 SyncGroupName               : SyncGroup01
 SyncDatabaseId              : subscriptions/{subscriptionId}/resourceGroups/{syncDatabaseResourceGroup01}/servers/{syncDatabaseServer01}/databases/{syncDatabaseName01}
 IntervalInSeconds           : 100
-ConflictResolutionPolicy:   : "HubWin"
-HubDatabaseUserName         : 
+ConflictResolutionPolicy:   : HubWin
+HubDatabaseUserName         : myAccount
 HubDatabasePassword         : 
-SyncState                   : "Good"
-LastSyncTime                : 
+SyncState                   : NotReady
+LastSyncTime                : 1/1/0001 12:00:00 AM
 Schema                      :</dev:code>
 <dev:remarks><maml:para>This command updates a sync group for an Azure SQL Database. "schema.json" is a file in the local disk. It contains the shema payload in json format. An example of the schema json is: {"Tables":  [{"Columns":  [{"QuotedName":  "b3ee3a7f-7614-4644-ad07-afa832620b4bManualTestsm4column1"}, {"QuotedName":  "b3ee3a7f-7614-4644-ad07-afa832620b4bManualTestsm4column2"}], "QuotedName":  "MayQuotedTable1"}, {"Columns":  [{"QuotedName":  "b3ee3a7f-7614-4644-ad07-afa832620b4bManualTestsm4column1"}, {"QuotedName":  "b3ee3a7f-7614-4644-ad07-afa832620b4bManualTestsm4column2"}], "QuotedName":  "MayQuotedTable2"}], "MasterSyncMemberName":  null }
 </maml:para>
@@ -22882,9 +22882,9 @@ SyncDirection               : OneWayMemberToHub
 DatabaseType:               : AzureSqlDatabase
 SyncAgentId                 : 
 SqlServerDatabaseId         : 
-MemberServerName            : memberServer01
+MemberServerName            : memberServer01.full.dns.name
 MemberDatabaseName          : memberDatabase01
-UserName                    : 
+UserName                    : myAccount-new
 Password                    : 
 SyncState                   : Good</dev:code>
 <dev:remarks><maml:para>This command resets the administrator password for the member database.

@@ -35,11 +35,11 @@ DatabaseName                : Database01
 SyncGroupName               : SyncGroup01
 SyncDatabaseId              : subscriptions/{subscriptionId}/resourceGroups/{syncDatabaseResourceGroup01}/servers/{syncDatabaseServer01}/databases/{syncDatabaseName01}
 IntervalInSeconds           : 100
-ConflictResolutionPolicy:   : "HubWin"
-HubDatabaseUserName         : 
+ConflictResolutionPolicy:   : HubWin
+HubDatabaseUserName         : myAccount
 HubDatabasePassword         : 
-SyncState                   : "Good"
-LastSyncTime                : 
+SyncState                   : NotReady
+LastSyncTime                : 1/1/0001 12:00:00 AM
 Schema                      :  
 ```
 

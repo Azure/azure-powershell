@@ -29,11 +29,11 @@ ServerName                  : Server01
 DatabaseName                : Database01
 SyncAgentName               : SyncAgent01
 SyncDatabaseId              : subscriptions/{subscriptionId}/resourceGroups/{syncDatabaseResourceGroup01}/servers/{syncDatabaseServer01}/databases/{syncDatabaseName01}
-LastAliveTime:              : 
-Version                     : 
-IsUpToDate                  : 
+LastAliveTime:              : 6/1/2017 5:08:48 AM
+Version                     : 4.3.6348.1
+IsUpToDate                  : False
 ExpiryTime                  : 
-State                       : Good
+State                       : Online
 
 ResourceId                  : subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/syncAgents/{SyncAgent02}
 ResourceGroupName           : ResourceGroup01
@@ -41,11 +41,11 @@ ServerName                  : Server01
 DatabaseName                : Database01
 SyncAgentName               : SyncAgent02
 SyncDatabaseId              : subscriptions/{subscriptionId}/resourceGroups/{syncDatabaseResourceGroup01}/servers/{syncDatabaseServer01}/databases/{syncDatabaseName01}
-LastAliveTime:              : 
-Version                     : 
-IsUpToDate                  : 
+LastAliveTime:              : 6/1/2017 5:08:48 AM
+Version                     : 4.3.6348.1
+IsUpToDate                  : False
 ExpiryTime                  : 
-State                       : Good
+State                       : Online
 ```
 
 This command gets information about all the Azure SQL Sync Agents assigned to an Azure SQL Server.
@@ -59,11 +59,11 @@ ServerName                  : Server01
 DatabaseName                : Database01
 SyncAgentName               : SyncAgent01
 SyncDatabaseId              : subscriptions/{subscriptionId}/resourceGroups/{syncDatabaseResourceGroup01}/servers/{syncDatabaseServer01}/databases/{syncDatabaseName01}
-LastAliveTime:              : 
-Version                     : 
-IsUpToDate                  : 
+LastAliveTime:              : 6/1/2017 5:08:48 AM
+Version                     : 4.3.6348.1
+IsUpToDate                  : False
 ExpiryTime                  : 
-State                       : Good
+State                       : Online
 ```
 
 This command gets information about the Azure SQL Database Sync Agent with name "SyncAgent01"
