@@ -336,6 +336,11 @@ function Test-DataLakeStoreAccount
 		$accountCreated = New-AdlStore -ResourceGroupName $resourceGroupName -Name $secondAccountName -Location $location
 		Assert-True {$accountCreated.EncryptionConfig -ne $null}
 		Assert-AreEqual "ServiceManaged" $accountCreated.EncryptionConfig.Type
+		Assert-AreEqual "Enabled" $accountCreated.EncryptionState
+
+		# attempt to enable the key vault, which should throw since it is already enabled
+		Assert-Throws {Enable-AdlStoreKeyVault -ResourceGroupName $resourceGroupName -Account $secondAccountName}
+		
 
 		# Create an account with no encryption explicitly.
 		$thirdAccountName = Get-DataLakeStoreAccountName

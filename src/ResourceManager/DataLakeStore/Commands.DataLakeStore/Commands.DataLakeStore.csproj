@@ -106,6 +106,7 @@
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\EnableAzureRmDataLakeStoreKeyVault.cs" />
     <Compile Include="Commands\GetAzureRmDataLakeStoreTrustedIdProvider.cs" />
     <Compile Include="Commands\RemoveAzureRmDataLakeStoreTrustedIdProvider.cs" />
     <Compile Include="Commands\RemoveAzureRmDataLakeStoreFirewallRule.cs" />
