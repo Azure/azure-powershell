@@ -82,7 +82,7 @@ Accept wildcard characters: False
 ### -Publisher
 Specifies the name of the extension publisher.
 The publisher provides a name when the publisher registers an extension.
-This can use the Get-AzureRmVMImagePublisher cmdlet to get the publisher.
+This can use the [Get-AzureRmVMImagePublisher](./Get-AzureRmVMImagePublisher.md) cmdlet to get the publisher.
 
 ```yaml
 Type: String
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 
 ### -Type
 Specifies the extension type.
-You can use the Get-AzureRmVMExtensionImageType cmdlet to get the extension type.
+You can use the [Get-AzureRmVMExtensionImageType](./Get-AzureRmVMExtensionImageType.md) cmdlet to get the extension type.
 
 ```yaml
 Type: String
@@ -130,7 +130,7 @@ Accept wildcard characters: False
 
 ### -TypeHandlerVersion
 Specifies the version of the extension to use for this virtual machine.
-You can use the Get-AzureRmVMExtensionImage cmdlet to get the version of the extension.
+You can use the [Get-AzureRmVMExtensionImage](./Get-AzureRmVMExtensionImage.md) cmdlet to get the version of the extension.
 
 ```yaml
 Type: String
@@ -146,7 +146,7 @@ Accept wildcard characters: False
 
 ### -VirtualMachineScaleSet
 Specify the VMSS object.
-You can use the New-AzureRmVmssConfig to create the object.
+You can use the [New-AzureRmVmssConfig](./New-AzureRmVmssConfig.md) to create the object.
 
 ```yaml
 Type: VirtualMachineScaleSet
@@ -213,5 +213,3 @@ This cmdlet does not generate any output.
 [Get-AzureRmVMExtensionImage](./Get-AzureRmVMExtensionImage.md)
 
 [New-AzureRmVmssConfig](./New-AzureRmVmssConfig.md)
-
-

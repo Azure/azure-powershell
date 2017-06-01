@@ -53,7 +53,7 @@ PS C:\> Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "disk1" -VhdUri "https:/
 PS C:\> Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachine
 ```
 
-The first command gets the virtual machine named VirtualMachine07 by using the **Get-AzureRmVM** cmdlet.
+The first command gets the virtual machine named VirtualMachine07 by using the [Get-AzureRmVM](./Get-AzureRmVM.md) cmdlet.
 The command stores the virtual machine in the $VirtualMachine variable.
 
 The second command adds a data disk to the virtual machine stored in $VirtualMachine.
@@ -259,8 +259,8 @@ Accept wildcard characters: False
 
 ### -VM
 Specifies the local virtual machine object to which to add a data disk.
-You can use the Get-AzureRmVM cmdlet to obtain a virtual machine object.
-You can use the New-AzureRmVMConfig cmdlet to create a virtual machine object.
+You can use the **Get-AzureRmVM** cmdlet to obtain a virtual machine object.
+You can use the **New-AzureRmVMConfig** cmdlet to create a virtual machine object.
 
 ```yaml
 Type: PSVirtualMachine

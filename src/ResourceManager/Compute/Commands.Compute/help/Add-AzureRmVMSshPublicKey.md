@@ -69,8 +69,8 @@ Accept wildcard characters: False
 
 ### -VM
 Specifies the virtual machine object that this cmdlet modifies.
-To obtain a virtual machine object, use the Get-AzureRmVM cmdlet.
-You can use the New-AzureRmVMConfig cmdlet to create a virtual machine object.
+To obtain a virtual machine object, use the [Get-AzureRmVM](./Get-AzureRmVM.md) cmdlet.
+You can use the [New-AzureRmVMConfig](./New-AzureRmVMConfig.md) cmdlet to create a virtual machine object.
 
 ```yaml
 Type: PSVirtualMachine
@@ -98,5 +98,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzureRmVM](./Get-AzureRmVM.md)
 
 [New-AzureRmVMConfig](./New-AzureRmVMConfig.md)
-
-
