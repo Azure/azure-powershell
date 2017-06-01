@@ -79,18 +79,24 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
             return Client.BorderGatewayProtocolPeerings.Get(serviceKey.ToString(), accessType).BgpPeering;
         }
 
-        public AzureBgpPeering NewAzureBGPPeering(Guid serviceKey, string advertisedPublicPrefixes, UInt32 customerAsn, UInt32 peerAsn,string primaryPeerSubnet,
-            string routingRegistryName, string secondaryPeerSubnet, UInt32 vlanId, BgpPeeringAccessType accessType, string sharedKey = null, UInt32 legacyMode = 0)
+        public AzureBgpPeering NewAzureBGPPeering(Guid serviceKey, string advertisedPublicPrefixes, string advertisedPublicPrefixesIpv6, UInt32 customerAsn, UInt32 customerAsnIpv6,
+            UInt32 peerAsn, string primaryPeerSubnet, string primaryPeerSubnetIpv6, string routingRegistryName, string routingRegistryNameIpv6, string secondaryPeerSubnet,
+            string secondaryPeerSubnetIpv6, UInt32 vlanId, BgpPeeringAccessType accessType, string sharedKey = null, UInt32 legacyMode = 0)
         {
             var result = Client.BorderGatewayProtocolPeerings.New(serviceKey.ToString(), accessType, new BorderGatewayProtocolPeeringNewParameters()
            {
                AdvertisedPublicPrefixes = advertisedPublicPrefixes,
-               CustomerAutonomousSystemNumber = customerAsn,
+               AdvertisedPublicPrefixesIpv6 = advertisedPublicPrefixesIpv6,
                LegacyMode = legacyMode,
+               CustomerAutonomousSystemNumber = customerAsn,
+               CustomerAutonomousSystemNumberIpv6 = customerAsnIpv6,
                PeerAutonomousSystemNumber = peerAsn,
                PrimaryPeerSubnet = primaryPeerSubnet,
+               PrimaryPeerSubnetIpv6 = primaryPeerSubnetIpv6,
                RoutingRegistryName = routingRegistryName,
+               RoutingRegistryNameIpv6 = routingRegistryNameIpv6,
                SecondaryPeerSubnet = secondaryPeerSubnet,
+               SecondaryPeerSubnetIpv6 = secondaryPeerSubnetIpv6,
                SharedKey = sharedKey,
                VirtualLanId = vlanId,
            });
@@ -105,26 +111,30 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
             }
         }
 
-        public bool RemoveAzureBGPPeering(Guid serviceKey, BgpPeeringAccessType accessType)
+        public bool RemoveAzureBGPPeering(Guid serviceKey, BgpPeeringAccessType accessType, BgpPeerAdddressType peerAddressType)
         {
-            var result = Client.BorderGatewayProtocolPeerings.Remove(serviceKey.ToString(), accessType);
+            var result = Client.BorderGatewayProtocolPeerings.Remove(serviceKey.ToString(), accessType, peerAddressType);
             return result.HttpStatusCode.Equals(HttpStatusCode.OK);
         }
 
         public AzureBgpPeering UpdateAzureBGPPeering(Guid serviceKey,
-            BgpPeeringAccessType accessType, UInt32 customerAsn, UInt32 peerAsn, string primaryPeerSubnet,
-            string routingRegistryName, string secondaryPeerSubnet, UInt32 vlanId, string sharedKey)
+            BgpPeeringAccessType accessType, UInt32 customerAsn, UInt32 customerAsnIpv6, UInt32 peerAsn, string primaryPeerSubnet, string primaryPeerSubnetIpv6,
+            string routingRegistryName, string routingRegistryNameIpv6, string secondaryPeerSubnet, string secondaryPeerSubnetIpv6, UInt32 vlanId, string sharedKey)
         {
             var result = Client.BorderGatewayProtocolPeerings.Update(serviceKey.ToString(), accessType, new BorderGatewayProtocolPeeringUpdateParameters()
-                {
-                    CustomerAutonomousSystemNumber = customerAsn,
-                    PeerAutonomousSystemNumber = peerAsn,
-                    PrimaryPeerSubnet = primaryPeerSubnet,
-                    RoutingRegistryName = routingRegistryName,
-                    SecondaryPeerSubnet = secondaryPeerSubnet,
-                    SharedKey = sharedKey,
-                    VirtualLanId = vlanId,
-                });
+            {
+                CustomerAutonomousSystemNumber = customerAsn,
+                CustomerAutonomousSystemNumberIpv6 = customerAsnIpv6,
+                PeerAutonomousSystemNumber = peerAsn,
+                PrimaryPeerSubnet = primaryPeerSubnet,
+                PrimaryPeerSubnetIpv6 = primaryPeerSubnetIpv6,
+                RoutingRegistryName = routingRegistryName,
+                RoutingRegistryNameIpv6 = routingRegistryNameIpv6,
+                SecondaryPeerSubnet = secondaryPeerSubnet,
+                SecondaryPeerSubnetIpv6 = secondaryPeerSubnetIpv6,
+                SharedKey = sharedKey,
+                VirtualLanId = vlanId,
+            });
             if (result.HttpStatusCode.Equals(HttpStatusCode.OK))
             {
                 return GetAzureBGPPeering(serviceKey, accessType);

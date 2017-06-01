@@ -21,7 +21,7 @@
     <OutputPath>..\..\..\Package\Debug\ServiceManagement\Azure\ExpressRoute\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>0</WarningLevel>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <Prefer32Bit>false</Prefer32Bit>
@@ -87,8 +87,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.ExpressRoute">
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.ExpressRoute.0.21.0-preview\lib\net40\Microsoft.WindowsAzure.Management.ExpressRoute.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Management.ExpressRoute, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.ExpressRoute.0.26.0-preview\lib\net40\Microsoft.WindowsAzure.Management.ExpressRoute.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">

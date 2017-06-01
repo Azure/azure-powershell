@@ -31,6 +31,9 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         [DefaultValue("Private")]
         public BgpPeeringAccessType AccessType { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Bgp Peer Address Type: IPv4 or IPv6")]
+        public BgpPeerAdddressType? PeerAddressType { get; set; }
+
         [Parameter(HelpMessage = "Do not confirm Azure BGP Peering deletion")]
         public SwitchParameter Force { get; set; }
         
@@ -46,18 +49,35 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
                 ServiceKey.ToString(),
                 () =>
                 {
-                   
-                    if(!ExpressRouteClient.RemoveAzureBGPPeering(ServiceKey, AccessType))
+                    if (!PeerAddressType.HasValue || PeerAddressType == BgpPeerAdddressType.All || AccessType != BgpPeeringAccessType.Microsoft)
                     {
-                        throw new Exception(Resources.RemoveAzureBGPPeeringFailed);
+                        if (!ExpressRouteClient.RemoveAzureBGPPeering(ServiceKey, AccessType, BgpPeerAdddressType.All))
+                        {
+                            throw new Exception(Resources.RemoveAzureBGPPeeringFailed);
+                        }
+                        else
+                        {
+                            WriteVerboseWithTimestamp(Resources.RemoveAzureBGPPeeringSucceeded, ServiceKey);
+                            if (PassThru.IsPresent)
+                            {
+                                WriteObject(true);
+                            }
+                        }
                     }
                     else
                     {
-                        WriteVerboseWithTimestamp(Resources.RemoveAzureBGPPeeringSucceeded, ServiceKey);
-                        if (PassThru.IsPresent)
-                        {
-                            WriteObject(true);
-                        }
+                            if (!ExpressRouteClient.RemoveAzureBGPPeering(ServiceKey, AccessType, (BgpPeerAdddressType)PeerAddressType))
+                            {
+                                throw new Exception(Resources.RemoveAzureBGPPeeringFailed);
+                            }
+                            else
+                            {
+                                WriteVerboseWithTimestamp(Resources.RemoveAzureBGPPeeringFailed, ServiceKey);
+                                if (PassThru.IsPresent)
+                                {
+                                    WriteObject(true);
+                                }
+                            }
                     }
                 });
         }
