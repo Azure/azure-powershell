@@ -31,10 +31,10 @@ DatabaseName                : Database01
 SyncAgentName               : SyncAgent01
 SyncDatabaseId              : subscriptions/{subscriptionId}/resourceGroups/{syncDatabaseResourceGroup01}/servers/{syncDatabaseServer01}/databases/{syncDatabaseName01}
 LastAliveTime:              : 
-Version                     : 
-IsUpToDate                  : 
-ExpiryTime                  : 
-State                       : Good
+Version                     : 4.2.0.0
+IsUpToDate                  : True
+ExpiryTime                  : 12/31/9999 11:59:59 PM
+State                       : NeverConnected
 ```
 
 This command creates a sync agent for an Azure SQL server.

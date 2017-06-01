@@ -37,9 +37,9 @@ SyncDirection               : OneWayMemberToHub
 DatabaseType:               : AzureSqlDatabase
 SyncAgentId                 : 
 SqlServerDatabaseId         : 
-MemberServerName            : memberServer01
+MemberServerName            : memberServer01.full.dns.name
 MemberDatabaseName          : memberDatabase01
-UserName                    : 
+UserName                    : myAccount-new
 Password                    : 
 SyncState                   : Good 
 ```
