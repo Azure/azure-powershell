@@ -13,14 +13,12 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commerce.UsageAggregates.Models",
-            "Name": "UsageAggregationGetResponse",
+            "Name": "Microsoft.Azure.Commerce.UsageAggregates.Models.UsageAggregationGetResponse",
             "AssemblyQualifiedName": "Microsoft.Azure.Commerce.UsageAggregates.Models.UsageAggregationGetResponse, Microsoft.Azure.Commerce.UsageAggregates, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "ContinuationToken": "System.String",
-              "NextLink": "System.String",
-              "RequestId": "System.String",
-              "StatusCode": "System.Net.HttpStatusCode",
-              "UsageAggregations": "System.Collections.Generic.IList`1[Microsoft.Azure.Commerce.UsageAggregates.Models.UsageAggregation]"
+              "System.Collections.Generic.IList`1[Microsoft.Azure.Commerce.UsageAggregates.Models.UsageAggregation]": "System.Collections.Generic.IList`1[Microsoft.Azure.Commerce.UsageAggregates.Models.UsageAggregation]",
+              "System.Net.HttpStatusCode": "System.Net.HttpStatusCode",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -36,7 +34,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "DateTime",
+            "Name": "System.DateTime",
             "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -52,7 +50,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "DateTime",
+            "Name": "System.DateTime",
             "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -68,7 +66,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commerce.UsageAggregates.Models",
-            "Name": "AggregationGranularity",
+            "Name": "Microsoft.Azure.Commerce.UsageAggregates.Models.AggregationGranularity",
             "AssemblyQualifiedName": "Microsoft.Azure.Commerce.UsageAggregates.Models.AggregationGranularity, Microsoft.Azure.Commerce.UsageAggregates, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -84,7 +82,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Boolean",
+            "Name": "System.Boolean",
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -100,7 +98,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -122,7 +120,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "DateTime",
+                  "Name": "System.DateTime",
                   "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -144,7 +142,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "DateTime",
+                  "Name": "System.DateTime",
                   "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -166,7 +164,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commerce.UsageAggregates.Models",
-                  "Name": "AggregationGranularity",
+                  "Name": "Microsoft.Azure.Commerce.UsageAggregates.Models.AggregationGranularity",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commerce.UsageAggregates.Models.AggregationGranularity, Microsoft.Azure.Commerce.UsageAggregates, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -188,7 +186,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Boolean",
+                  "Name": "System.Boolean",
                   "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -210,7 +208,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -345,17 +343,9 @@
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "System.Net.HttpStatusCode": {
-      "Namespace": "System.Net",
-      "Name": "HttpStatusCode",
-      "AssemblyQualifiedName": "System.Net.HttpStatusCode, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commerce.UsageAggregates.Models.UsageAggregation]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "IList",
+      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commerce.UsageAggregates.Models.UsageAggregation]",
       "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commerce.UsageAggregates.Models.UsageAggregation, Microsoft.Azure.Commerce.UsageAggregates, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
@@ -365,51 +355,50 @@
     },
     "Microsoft.Azure.Commerce.UsageAggregates.Models.UsageAggregation": {
       "Namespace": "Microsoft.Azure.Commerce.UsageAggregates.Models",
-      "Name": "UsageAggregation",
+      "Name": "Microsoft.Azure.Commerce.UsageAggregates.Models.UsageAggregation",
       "AssemblyQualifiedName": "Microsoft.Azure.Commerce.UsageAggregates.Models.UsageAggregation, Microsoft.Azure.Commerce.UsageAggregates, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Id": "System.String",
-        "Name": "System.String",
-        "Properties": "Microsoft.Azure.Commerce.UsageAggregates.Models.UsageSample",
-        "Type": "System.String"
+        "Microsoft.Azure.Commerce.UsageAggregates.Models.UsageSample": "Microsoft.Azure.Commerce.UsageAggregates.Models.UsageSample",
+        "System.String": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commerce.UsageAggregates.Models.UsageSample": {
       "Namespace": "Microsoft.Azure.Commerce.UsageAggregates.Models",
-      "Name": "UsageSample",
+      "Name": "Microsoft.Azure.Commerce.UsageAggregates.Models.UsageSample",
       "AssemblyQualifiedName": "Microsoft.Azure.Commerce.UsageAggregates.Models.UsageSample, Microsoft.Azure.Commerce.UsageAggregates, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "InfoFields": "Microsoft.Azure.Commerce.UsageAggregates.Models.InfoField",
-        "InstanceData": "System.String",
-        "MeterCategory": "System.String",
-        "MeterId": "System.String",
-        "MeterName": "System.String",
-        "MeterRegion": "System.String",
-        "MeterSubCategory": "System.String",
-        "Quantity": "System.Decimal",
-        "Unit": "System.String",
-        "UsageEndTime": "System.DateTime",
-        "UsageStartTime": "System.DateTime"
+        "Microsoft.Azure.Commerce.UsageAggregates.Models.InfoField": "Microsoft.Azure.Commerce.UsageAggregates.Models.InfoField",
+        "System.DateTime": "System.DateTime",
+        "System.Decimal": "System.Decimal",
+        "System.String": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commerce.UsageAggregates.Models.InfoField": {
       "Namespace": "Microsoft.Azure.Commerce.UsageAggregates.Models",
-      "Name": "InfoField",
+      "Name": "Microsoft.Azure.Commerce.UsageAggregates.Models.InfoField",
       "AssemblyQualifiedName": "Microsoft.Azure.Commerce.UsageAggregates.Models.InfoField, Microsoft.Azure.Commerce.UsageAggregates, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Project": "System.String"
+        "System.String": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "System.DateTime": {
       "Namespace": "System",
-      "Name": "DateTime",
+      "Name": "System.DateTime",
       "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Net.HttpStatusCode": {
+      "Namespace": "System.Net",
+      "Name": "System.Net.HttpStatusCode",
+      "AssemblyQualifiedName": "System.Net.HttpStatusCode, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []

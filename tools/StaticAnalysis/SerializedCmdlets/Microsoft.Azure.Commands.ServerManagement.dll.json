@@ -13,7 +13,7 @@
         {
           "Type": {
             "Namespace": "System",
-            "Name": "Object",
+            "Name": "System.Object",
             "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -30,7 +30,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -46,7 +46,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -62,7 +62,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -78,20 +78,12 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
-            "Name": "Session",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Session",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Created": "System.Nullable`1[System.DateTime]",
-              "Etag": "System.String",
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "NodeName": "System.String",
-              "ResourceGroupName": "System.String",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Type": "System.String",
-              "Updated": "System.Nullable`1[System.DateTime]",
-              "UserName": "System.String"
+              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -106,7 +98,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "ScriptBlock",
+            "Name": "System.Management.Automation.ScriptBlock",
             "AssemblyQualifiedName": "System.Management.Automation.ScriptBlock, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -122,7 +114,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -138,7 +130,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -160,7 +152,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -182,7 +174,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -204,7 +196,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -226,7 +218,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "ScriptBlock",
+                  "Name": "System.Management.Automation.ScriptBlock",
                   "AssemblyQualifiedName": "System.Management.Automation.ScriptBlock, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -248,7 +240,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -270,7 +262,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -297,20 +289,12 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
-                  "Name": "Session",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Session",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Created": "System.Nullable`1[System.DateTime]",
-                    "Etag": "System.String",
-                    "Id": "System.String",
-                    "Location": "System.String",
-                    "Name": "System.String",
-                    "NodeName": "System.String",
-                    "ResourceGroupName": "System.String",
-                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "Type": "System.String",
-                    "Updated": "System.Nullable`1[System.DateTime]",
-                    "UserName": "System.String"
+                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+                    "System.String": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -331,7 +315,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "ScriptBlock",
+                  "Name": "System.Management.Automation.ScriptBlock",
                   "AssemblyQualifiedName": "System.Management.Automation.ScriptBlock, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -353,7 +337,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -375,7 +359,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -402,7 +386,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "ScriptBlock",
+                  "Name": "System.Management.Automation.ScriptBlock",
                   "AssemblyQualifiedName": "System.Management.Automation.ScriptBlock, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -424,7 +408,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -446,7 +430,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -480,20 +464,12 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
-            "Name": "Session",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Session",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Created": "System.Nullable`1[System.DateTime]",
-              "Etag": "System.String",
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "NodeName": "System.String",
-              "ResourceGroupName": "System.String",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Type": "System.String",
-              "Updated": "System.Nullable`1[System.DateTime]",
-              "UserName": "System.String"
+              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -509,7 +485,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -525,7 +501,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -541,7 +517,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -557,21 +533,12 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
-            "Name": "Node",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Node",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "ConnectionName": "System.String",
-              "Created": "System.Nullable`1[System.DateTime]",
-              "Etag": "System.String",
-              "GatewayId": "System.String",
-              "GatewayName": "System.String",
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "ResourceGroupName": "System.String",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Type": "System.String",
-              "Updated": "System.Nullable`1[System.DateTime]"
+              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -586,20 +553,12 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
-            "Name": "Session",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Session",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Created": "System.Nullable`1[System.DateTime]",
-              "Etag": "System.String",
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "NodeName": "System.String",
-              "ResourceGroupName": "System.String",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Type": "System.String",
-              "Updated": "System.Nullable`1[System.DateTime]",
-              "UserName": "System.String"
+              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -620,7 +579,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -642,7 +601,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -664,7 +623,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -691,7 +650,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -713,20 +672,12 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
-                  "Name": "Session",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Session",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Created": "System.Nullable`1[System.DateTime]",
-                    "Etag": "System.String",
-                    "Id": "System.String",
-                    "Location": "System.String",
-                    "Name": "System.String",
-                    "NodeName": "System.String",
-                    "ResourceGroupName": "System.String",
-                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "Type": "System.String",
-                    "Updated": "System.Nullable`1[System.DateTime]",
-                    "UserName": "System.String"
+                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+                    "System.String": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -752,21 +703,12 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
-                  "Name": "Node",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Node",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "ConnectionName": "System.String",
-                    "Created": "System.Nullable`1[System.DateTime]",
-                    "Etag": "System.String",
-                    "GatewayId": "System.String",
-                    "GatewayName": "System.String",
-                    "Id": "System.String",
-                    "Location": "System.String",
-                    "Name": "System.String",
-                    "ResourceGroupName": "System.String",
-                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "Type": "System.String",
-                    "Updated": "System.Nullable`1[System.DateTime]"
+                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+                    "System.String": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -799,20 +741,12 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
-            "Name": "Session",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Session",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Created": "System.Nullable`1[System.DateTime]",
-              "Etag": "System.String",
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "NodeName": "System.String",
-              "ResourceGroupName": "System.String",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Type": "System.String",
-              "Updated": "System.Nullable`1[System.DateTime]",
-              "UserName": "System.String"
+              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -828,7 +762,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -844,7 +778,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -860,21 +794,12 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
-            "Name": "Node",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Node",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "ConnectionName": "System.String",
-              "Created": "System.Nullable`1[System.DateTime]",
-              "Etag": "System.String",
-              "GatewayId": "System.String",
-              "GatewayName": "System.String",
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "ResourceGroupName": "System.String",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Type": "System.String",
-              "Updated": "System.Nullable`1[System.DateTime]"
+              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -889,7 +814,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -905,7 +830,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "PSCredential",
+            "Name": "System.Management.Automation.PSCredential",
             "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -927,7 +852,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -949,7 +874,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -971,7 +896,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -993,7 +918,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "PSCredential",
+                  "Name": "System.Management.Automation.PSCredential",
                   "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1020,21 +945,12 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
-                  "Name": "Node",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Node",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "ConnectionName": "System.String",
-                    "Created": "System.Nullable`1[System.DateTime]",
-                    "Etag": "System.String",
-                    "GatewayId": "System.String",
-                    "GatewayName": "System.String",
-                    "Id": "System.String",
-                    "Location": "System.String",
-                    "Name": "System.String",
-                    "ResourceGroupName": "System.String",
-                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "Type": "System.String",
-                    "Updated": "System.Nullable`1[System.DateTime]"
+                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+                    "System.String": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1055,7 +971,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1077,7 +993,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "PSCredential",
+                  "Name": "System.Management.Automation.PSCredential",
                   "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1104,7 +1020,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1126,7 +1042,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "PSCredential",
+                  "Name": "System.Management.Automation.PSCredential",
                   "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1163,7 +1079,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1179,7 +1095,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1195,7 +1111,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1211,20 +1127,12 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
-            "Name": "Session",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Session",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Created": "System.Nullable`1[System.DateTime]",
-              "Etag": "System.String",
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "NodeName": "System.String",
-              "ResourceGroupName": "System.String",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Type": "System.String",
-              "Updated": "System.Nullable`1[System.DateTime]",
-              "UserName": "System.String"
+              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1245,7 +1153,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1267,7 +1175,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1289,7 +1197,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1316,7 +1224,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1338,20 +1246,12 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
-                  "Name": "Session",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Session",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Created": "System.Nullable`1[System.DateTime]",
-                    "Etag": "System.String",
-                    "Id": "System.String",
-                    "Location": "System.String",
-                    "Name": "System.String",
-                    "NodeName": "System.String",
-                    "ResourceGroupName": "System.String",
-                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "Type": "System.String",
-                    "Updated": "System.Nullable`1[System.DateTime]",
-                    "UserName": "System.String"
+                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+                    "System.String": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1384,21 +1284,12 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
-            "Name": "Node",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Node",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "ConnectionName": "System.String",
-              "Created": "System.Nullable`1[System.DateTime]",
-              "Etag": "System.String",
-              "GatewayId": "System.String",
-              "GatewayName": "System.String",
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "ResourceGroupName": "System.String",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Type": "System.String",
-              "Updated": "System.Nullable`1[System.DateTime]"
+              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1414,7 +1305,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1430,7 +1321,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1446,21 +1337,12 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
-            "Name": "Node",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Node",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "ConnectionName": "System.String",
-              "Created": "System.Nullable`1[System.DateTime]",
-              "Etag": "System.String",
-              "GatewayId": "System.String",
-              "GatewayName": "System.String",
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "ResourceGroupName": "System.String",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Type": "System.String",
-              "Updated": "System.Nullable`1[System.DateTime]"
+              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1481,7 +1363,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1503,7 +1385,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1530,21 +1412,12 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
-                  "Name": "Node",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Node",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "ConnectionName": "System.String",
-                    "Created": "System.Nullable`1[System.DateTime]",
-                    "Etag": "System.String",
-                    "GatewayId": "System.String",
-                    "GatewayName": "System.String",
-                    "Id": "System.String",
-                    "Location": "System.String",
-                    "Name": "System.String",
-                    "ResourceGroupName": "System.String",
-                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "Type": "System.String",
-                    "Updated": "System.Nullable`1[System.DateTime]"
+                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+                    "System.String": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1577,21 +1450,12 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
-            "Name": "Node",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Node",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "ConnectionName": "System.String",
-              "Created": "System.Nullable`1[System.DateTime]",
-              "Etag": "System.String",
-              "GatewayId": "System.String",
-              "GatewayName": "System.String",
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "ResourceGroupName": "System.String",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Type": "System.String",
-              "Updated": "System.Nullable`1[System.DateTime]"
+              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1607,7 +1471,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1623,7 +1487,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1639,7 +1503,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1655,24 +1519,15 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
-            "Name": "Gateway",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "ActiveMessageCount": "System.Nullable`1[System.Int32]",
-              "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
-              "Created": "System.Nullable`1[System.DateTime]",
-              "DesiredVersion": "System.String",
-              "Etag": "System.String",
-              "Id": "System.String",
-              "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
-              "LatestPublishedMsiVersion": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "PublishedTimeUtc": "System.Nullable`1[System.DateTime]",
-              "ResourceGroupName": "System.String",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Type": "System.String",
-              "Updated": "System.Nullable`1[System.DateTime]"
+              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
+              "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1687,7 +1542,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1703,7 +1558,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1719,7 +1574,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "PSCredential",
+            "Name": "System.Management.Automation.PSCredential",
             "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -1735,7 +1590,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Collections",
-            "Name": "Hashtable",
+            "Name": "System.Collections.Hashtable",
             "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1757,7 +1612,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1779,7 +1634,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1801,7 +1656,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1823,7 +1678,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1845,7 +1700,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1867,7 +1722,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "PSCredential",
+                  "Name": "System.Management.Automation.PSCredential",
                   "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1889,7 +1744,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections",
-                  "Name": "Hashtable",
+                  "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1916,24 +1771,15 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
-                  "Name": "Gateway",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "ActiveMessageCount": "System.Nullable`1[System.Int32]",
-                    "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
-                    "Created": "System.Nullable`1[System.DateTime]",
-                    "DesiredVersion": "System.String",
-                    "Etag": "System.String",
-                    "Id": "System.String",
-                    "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
-                    "LatestPublishedMsiVersion": "System.String",
-                    "Location": "System.String",
-                    "Name": "System.String",
-                    "PublishedTimeUtc": "System.Nullable`1[System.DateTime]",
-                    "ResourceGroupName": "System.String",
-                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "Type": "System.String",
-                    "Updated": "System.Nullable`1[System.DateTime]"
+                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
+                    "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
+                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+                    "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
+                    "System.String": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1954,7 +1800,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1976,7 +1822,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1998,7 +1844,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "PSCredential",
+                  "Name": "System.Management.Automation.PSCredential",
                   "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2020,7 +1866,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections",
-                  "Name": "Hashtable",
+                  "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2047,7 +1893,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2069,7 +1915,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2091,7 +1937,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "PSCredential",
+                  "Name": "System.Management.Automation.PSCredential",
                   "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2113,7 +1959,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections",
-                  "Name": "Hashtable",
+                  "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2150,7 +1996,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2166,7 +2012,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2182,21 +2028,12 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
-            "Name": "Node",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Node",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "ConnectionName": "System.String",
-              "Created": "System.Nullable`1[System.DateTime]",
-              "Etag": "System.String",
-              "GatewayId": "System.String",
-              "GatewayName": "System.String",
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "ResourceGroupName": "System.String",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Type": "System.String",
-              "Updated": "System.Nullable`1[System.DateTime]"
+              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2217,7 +2054,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2239,7 +2076,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2266,21 +2103,12 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
-                  "Name": "Node",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Node",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "ConnectionName": "System.String",
-                    "Created": "System.Nullable`1[System.DateTime]",
-                    "Etag": "System.String",
-                    "GatewayId": "System.String",
-                    "GatewayName": "System.String",
-                    "Id": "System.String",
-                    "Location": "System.String",
-                    "Name": "System.String",
-                    "ResourceGroupName": "System.String",
-                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "Type": "System.String",
-                    "Updated": "System.Nullable`1[System.DateTime]"
+                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+                    "System.String": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2313,24 +2141,15 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
-            "Name": "Gateway",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "ActiveMessageCount": "System.Nullable`1[System.Int32]",
-              "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
-              "Created": "System.Nullable`1[System.DateTime]",
-              "DesiredVersion": "System.String",
-              "Etag": "System.String",
-              "Id": "System.String",
-              "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
-              "LatestPublishedMsiVersion": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "PublishedTimeUtc": "System.Nullable`1[System.DateTime]",
-              "ResourceGroupName": "System.String",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Type": "System.String",
-              "Updated": "System.Nullable`1[System.DateTime]"
+              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
+              "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2346,7 +2165,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2362,7 +2181,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2378,7 +2197,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2394,7 +2213,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -2410,7 +2229,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Collections",
-            "Name": "Hashtable",
+            "Name": "System.Collections.Hashtable",
             "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2432,7 +2251,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2454,7 +2273,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2476,7 +2295,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2498,7 +2317,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2520,7 +2339,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections",
-                  "Name": "Hashtable",
+                  "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2554,24 +2373,15 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
-            "Name": "Gateway",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "ActiveMessageCount": "System.Nullable`1[System.Int32]",
-              "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
-              "Created": "System.Nullable`1[System.DateTime]",
-              "DesiredVersion": "System.String",
-              "Etag": "System.String",
-              "Id": "System.String",
-              "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
-              "LatestPublishedMsiVersion": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "PublishedTimeUtc": "System.Nullable`1[System.DateTime]",
-              "ResourceGroupName": "System.String",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Type": "System.String",
-              "Updated": "System.Nullable`1[System.DateTime]"
+              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
+              "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2587,7 +2397,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2603,7 +2413,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2619,24 +2429,15 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
-            "Name": "Gateway",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "ActiveMessageCount": "System.Nullable`1[System.Int32]",
-              "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
-              "Created": "System.Nullable`1[System.DateTime]",
-              "DesiredVersion": "System.String",
-              "Etag": "System.String",
-              "Id": "System.String",
-              "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
-              "LatestPublishedMsiVersion": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "PublishedTimeUtc": "System.Nullable`1[System.DateTime]",
-              "ResourceGroupName": "System.String",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Type": "System.String",
-              "Updated": "System.Nullable`1[System.DateTime]"
+              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
+              "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2657,7 +2458,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2684,7 +2485,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2706,7 +2507,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2733,24 +2534,15 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
-                  "Name": "Gateway",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "ActiveMessageCount": "System.Nullable`1[System.Int32]",
-                    "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
-                    "Created": "System.Nullable`1[System.DateTime]",
-                    "DesiredVersion": "System.String",
-                    "Etag": "System.String",
-                    "Id": "System.String",
-                    "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
-                    "LatestPublishedMsiVersion": "System.String",
-                    "Location": "System.String",
-                    "Name": "System.String",
-                    "PublishedTimeUtc": "System.Nullable`1[System.DateTime]",
-                    "ResourceGroupName": "System.String",
-                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "Type": "System.String",
-                    "Updated": "System.Nullable`1[System.DateTime]"
+                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
+                    "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
+                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+                    "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
+                    "System.String": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2786,7 +2578,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2802,7 +2594,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2818,24 +2610,15 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
-            "Name": "Gateway",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "ActiveMessageCount": "System.Nullable`1[System.Int32]",
-              "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
-              "Created": "System.Nullable`1[System.DateTime]",
-              "DesiredVersion": "System.String",
-              "Etag": "System.String",
-              "Id": "System.String",
-              "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
-              "LatestPublishedMsiVersion": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "PublishedTimeUtc": "System.Nullable`1[System.DateTime]",
-              "ResourceGroupName": "System.String",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Type": "System.String",
-              "Updated": "System.Nullable`1[System.DateTime]"
+              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
+              "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2856,7 +2639,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2878,7 +2661,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2905,24 +2688,15 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
-                  "Name": "Gateway",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "ActiveMessageCount": "System.Nullable`1[System.Int32]",
-                    "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
-                    "Created": "System.Nullable`1[System.DateTime]",
-                    "DesiredVersion": "System.String",
-                    "Etag": "System.String",
-                    "Id": "System.String",
-                    "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
-                    "LatestPublishedMsiVersion": "System.String",
-                    "Location": "System.String",
-                    "Name": "System.String",
-                    "PublishedTimeUtc": "System.Nullable`1[System.DateTime]",
-                    "ResourceGroupName": "System.String",
-                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "Type": "System.String",
-                    "Updated": "System.Nullable`1[System.DateTime]"
+                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
+                    "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
+                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+                    "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
+                    "System.String": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2958,7 +2732,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.IO",
-            "Name": "FileInfo",
+            "Name": "System.IO.FileInfo",
             "AssemblyQualifiedName": "System.IO.FileInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2980,7 +2754,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.IO",
-                  "Name": "FileInfo",
+                  "Name": "System.IO.FileInfo",
                   "AssemblyQualifiedName": "System.IO.FileInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3017,7 +2791,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3033,7 +2807,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3049,24 +2823,15 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
-            "Name": "Gateway",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "ActiveMessageCount": "System.Nullable`1[System.Int32]",
-              "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
-              "Created": "System.Nullable`1[System.DateTime]",
-              "DesiredVersion": "System.String",
-              "Etag": "System.String",
-              "Id": "System.String",
-              "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
-              "LatestPublishedMsiVersion": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "PublishedTimeUtc": "System.Nullable`1[System.DateTime]",
-              "ResourceGroupName": "System.String",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Type": "System.String",
-              "Updated": "System.Nullable`1[System.DateTime]"
+              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
+              "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3087,7 +2852,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3109,7 +2874,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3136,24 +2901,15 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
-                  "Name": "Gateway",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "ActiveMessageCount": "System.Nullable`1[System.Int32]",
-                    "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
-                    "Created": "System.Nullable`1[System.DateTime]",
-                    "DesiredVersion": "System.String",
-                    "Etag": "System.String",
-                    "Id": "System.String",
-                    "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
-                    "LatestPublishedMsiVersion": "System.String",
-                    "Location": "System.String",
-                    "Name": "System.String",
-                    "PublishedTimeUtc": "System.Nullable`1[System.DateTime]",
-                    "ResourceGroupName": "System.String",
-                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "Type": "System.String",
-                    "Updated": "System.Nullable`1[System.DateTime]"
+                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
+                    "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
+                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+                    "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
+                    "System.String": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3186,7 +2942,7 @@
         {
           "Type": {
             "Namespace": "System.IO",
-            "Name": "FileInfo",
+            "Name": "System.IO.FileInfo",
             "AssemblyQualifiedName": "System.IO.FileInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3203,7 +2959,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.IO",
-            "Name": "FileInfo",
+            "Name": "System.IO.FileInfo",
             "AssemblyQualifiedName": "System.IO.FileInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3219,7 +2975,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3235,7 +2991,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3251,24 +3007,15 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
-            "Name": "Gateway",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "ActiveMessageCount": "System.Nullable`1[System.Int32]",
-              "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
-              "Created": "System.Nullable`1[System.DateTime]",
-              "DesiredVersion": "System.String",
-              "Etag": "System.String",
-              "Id": "System.String",
-              "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
-              "LatestPublishedMsiVersion": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "PublishedTimeUtc": "System.Nullable`1[System.DateTime]",
-              "ResourceGroupName": "System.String",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Type": "System.String",
-              "Updated": "System.Nullable`1[System.DateTime]"
+              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
+              "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3289,7 +3036,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.IO",
-                  "Name": "FileInfo",
+                  "Name": "System.IO.FileInfo",
                   "AssemblyQualifiedName": "System.IO.FileInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3316,7 +3063,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3338,7 +3085,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3360,7 +3107,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.IO",
-                  "Name": "FileInfo",
+                  "Name": "System.IO.FileInfo",
                   "AssemblyQualifiedName": "System.IO.FileInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3387,24 +3134,15 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
-                  "Name": "Gateway",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "ActiveMessageCount": "System.Nullable`1[System.Int32]",
-                    "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
-                    "Created": "System.Nullable`1[System.DateTime]",
-                    "DesiredVersion": "System.String",
-                    "Etag": "System.String",
-                    "Id": "System.String",
-                    "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
-                    "LatestPublishedMsiVersion": "System.String",
-                    "Location": "System.String",
-                    "Name": "System.String",
-                    "PublishedTimeUtc": "System.Nullable`1[System.DateTime]",
-                    "ResourceGroupName": "System.String",
-                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "Type": "System.String",
-                    "Updated": "System.Nullable`1[System.DateTime]"
+                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
+                    "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
+                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+                    "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
+                    "System.String": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3425,7 +3163,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.IO",
-                  "Name": "FileInfo",
+                  "Name": "System.IO.FileInfo",
                   "AssemblyQualifiedName": "System.IO.FileInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3560,9 +3298,20 @@
       "ElementType": null,
       "GenericTypeArguments": []
     },
+    "System.Collections.Generic.IDictionary`2[System.String,System.String]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.String",
+        "System.String"
+      ]
+    },
     "System.Nullable`1[System.DateTime]": {
       "Namespace": "System",
-      "Name": "Nullable",
+      "Name": "System.Nullable`1[System.DateTime]",
       "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
@@ -3572,54 +3321,15 @@
     },
     "System.DateTime": {
       "Namespace": "System",
-      "Name": "DateTime",
+      "Name": "System.DateTime",
       "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "System.Collections.Generic.IDictionary`2[System.String,System.String]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "IDictionary",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "System.String",
-        "System.String"
-      ]
-    },
-    "System.Nullable`1[System.Int32]": {
-      "Namespace": "System",
-      "Name": "Nullable",
-      "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "System.Int32"
-      ]
-    },
-    "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]": {
-      "Namespace": "System",
-      "Name": "Nullable",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade, Microsoft.Azure.Management.ServerManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade"
-      ]
-    },
-    "Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade": {
-      "Namespace": "Microsoft.Azure.Management.ServerManagement.Models",
-      "Name": "AutoUpgrade",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade, Microsoft.Azure.Management.ServerManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "IList",
+      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
       "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus, Microsoft.Azure.Management.ServerManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
@@ -3629,33 +3339,54 @@
     },
     "Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus": {
       "Namespace": "Microsoft.Azure.Management.ServerManagement.Models",
-      "Name": "GatewayStatus",
+      "Name": "Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus, Microsoft.Azure.Management.ServerManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "AvailableMemoryMByte": "System.Nullable`1[System.Double]",
-        "FriendlyOsName": "System.String",
-        "GatewayCpuUtilizationPercent": "System.Nullable`1[System.Double]",
-        "GatewayId": "System.String",
-        "GatewayVersion": "System.String",
-        "GatewayWorkingSetMByte": "System.Nullable`1[System.Double]",
-        "InstalledDate": "System.Nullable`1[System.DateTime]",
-        "LogicalProcessorCount": "System.Nullable`1[System.Int32]",
-        "Name": "System.String",
-        "StatusUpdated": "System.Nullable`1[System.DateTime]",
-        "TotalCpuUtilizationPercent": "System.Nullable`1[System.Double]"
+        "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+        "System.Nullable`1[System.Double]": "System.Nullable`1[System.Double]",
+        "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
+        "System.String": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "System.Nullable`1[System.Double]": {
       "Namespace": "System",
-      "Name": "Nullable",
+      "Name": "System.Nullable`1[System.Double]",
       "AssemblyQualifiedName": "System.Nullable`1[[System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
         "System.Double"
       ]
+    },
+    "System.Nullable`1[System.Int32]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[System.Int32]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.Int32"
+      ]
+    },
+    "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade, Microsoft.Azure.Management.ServerManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade"
+      ]
+    },
+    "Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade": {
+      "Namespace": "Microsoft.Azure.Management.ServerManagement.Models",
+      "Name": "Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade, Microsoft.Azure.Management.ServerManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
     }
   }
 }
