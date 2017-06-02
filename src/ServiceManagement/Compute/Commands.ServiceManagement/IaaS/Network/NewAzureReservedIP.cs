@@ -94,7 +94,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
             set;
         }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ReserveNewIPParamSet, HelpMessage = "List of IPTags.")]
+        [Parameter(Mandatory = false, Position= 6, ValueFromPipelineByPropertyName = true, ParameterSetName = ReserveNewIPParamSet, HelpMessage = "List of IPTags.")]
         [ValidateNotNullOrEmpty]
         public List<IPTag> IPTags
         {
