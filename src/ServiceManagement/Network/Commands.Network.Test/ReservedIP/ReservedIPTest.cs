@@ -421,7 +421,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Reserve
                 Location = "WestUS",
                 Label = ReservedIPLabel,
                 CommandRuntime = mockCommandRuntime,
-                IPTags = iptags
+                IPTagList = iptags
             };
 
             cmdlet.SetParameterSet(NewAzureReservedIPCmdlet.ReserveNewIPParamSet);

@@ -923,7 +923,7 @@ function Test-AzureReservedIPWithIPTags
     $location = "West Central US"
 	$iptag  = New-AzureIPTag -IPTagType "FirstPartyUsage" -Value "/tagTypes/SystemService/operators/Microsoft/platforms/Azure/services/Microsoft.AzureAD"
     # Test Create Reserved IP
-    New-AzureReservedIP -ReservedIPName $name -Location $location -IPTags $iptag
+    New-AzureReservedIP -ReservedIPName $name -Location $location -IPTagList $iptag
     $reservedIP = Get-AzureReservedIP -ReservedIPName $name 
 	#-IPTags $iptag
     # Assert
