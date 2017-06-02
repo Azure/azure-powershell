@@ -200,6 +200,15 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         [Trait(Category.Service, Category.ServiceManagement)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestAzureReservedIPTags()
+        {
+            this.RunPowerShellTest("Test-AzureReservedIPWithTags");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestMigrationRouteTable()
         {
             this.RunPowerShellTest("Test-MigrationRouteTable");

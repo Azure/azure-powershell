@@ -162,7 +162,7 @@ CmdletsToExport = 'Get-AzureAutomationCertificate', 'Get-AzureAutomationConnecti
                'Remove-AzureVirtualIP', 'Set-AzureInternalLoadBalancer', 
                'Set-AzureNetworkSecurityGroupConfig', 'Set-AzurePublicIP', 
                'Set-AzureReservedIPAssociation', 'Set-AzureVMBootDiagnostics', 
-               'Get-AzureReservedIP', 'New-AzureReservedIP', 
+               'Get-AzureReservedIP', 'New-AzureReservedIP', 'New-AzureIPTag',
                'Remove-AzureReservedIP', 'Remove-AzureStaticVNetIP', 
                'Set-AzureStaticVNetIP', 'Test-AzureStaticVNetIP', 
                'New-AzureCertificateSetting', 'New-AzureSSHKey', 'Add-AzureDisk', 
