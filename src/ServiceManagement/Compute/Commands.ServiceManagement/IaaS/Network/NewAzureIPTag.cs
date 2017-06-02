@@ -23,7 +23,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
     public class NewAzureIPTagCommand : Cmdlet
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "IP Tag Type of desired IP address")]
-        [ValidateSet(Management.Network.Models.IPTagType.IPAddressClassification, Management.Network.Models.IPTagType.FirstPartyUsage, Management.Network.Models.IPTagType.AvailabilityZone, IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string IPTagType
         {
@@ -41,17 +40,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 
         public void ExecuteCommand()
         {
-            if(string.Equals(Management.Network.Models.IPTagType.IPAddressClassification, IPTagType, StringComparison.OrdinalIgnoreCase))
+            if (string.Equals(this.IPTagType, Management.Network.Models.IPTagType.IPAddressClassification) ||
+                string.Equals(this.IPTagType, Management.Network.Models.IPTagType.FirstPartyUsage) ||
+                string.Equals(this.IPTagType, Management.Network.Models.IPTagType.AvailabilityZone))
             {
-                WriteObject(new IPTag { IPTagType = Management.Network.Models.IPTagType.IPAddressClassification, Value = Value }, true);
-            }
-            else if (string.Equals(Management.Network.Models.IPTagType.FirstPartyUsage, IPTagType, StringComparison.OrdinalIgnoreCase))
-            {
-                WriteObject(new IPTag { IPTagType = Management.Network.Models.IPTagType.FirstPartyUsage, Value = Value }, true);
-            }
-            else if (string.Equals(Management.Network.Models.IPTagType.AvailabilityZone, IPTagType, StringComparison.OrdinalIgnoreCase))
-            {
-                WriteObject(new IPTag { IPTagType = Management.Network.Models.IPTagType.AvailabilityZone, Value = Value }, true);
+                WriteObject(new IPTag { IPTagType = this.IPTagType, Value = Value });
             }
             else
             {
