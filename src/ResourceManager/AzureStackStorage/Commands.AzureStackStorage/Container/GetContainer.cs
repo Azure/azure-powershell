@@ -53,6 +53,13 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         [Parameter(Mandatory = false)]
         public uint? Count { get; set; }
 
+        /// <summary>
+        /// Start index of the 
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public uint? StartIndex { get; set; }
+
+
         protected override void Execute()
         {
             if (null == this.Intent)
@@ -64,8 +71,13 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
             {
                 this.Count = DefaultMaxCountOfRecords;
             }
+            
+            if(null == StartIndex)
+            {
+                this.StartIndex = 0;
+            }
 
-            ContainerListResponse response = this.Client.Shares.GetContainers(this.ResourceGroupName, this.FarmName, this.ShareName, this.Intent.ToString(), this.Count.ToString());
+            ContainerListResponse response = this.Client.Shares.GetContainers(this.ResourceGroupName, this.FarmName, this.ShareName, this.Intent.ToString(), this.Count.ToString(), this.StartIndex.ToString() );
             this.WriteObject(response, true);
         }
     }

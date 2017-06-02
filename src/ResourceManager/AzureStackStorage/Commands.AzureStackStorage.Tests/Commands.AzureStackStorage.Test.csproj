@@ -70,9 +70,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Test.HttpRecorder.1.0.6068.31305-prerelease\lib\net45\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AzureStack.AzureConsistentStorage, Version=0.10.6.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.AzureStack.AzureConsistentStorage, Version=0.10.7.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.AzureStack.AzureConsistentStorage.0.10.6\lib\net45\Microsoft.AzureStack.AzureConsistentStorage.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.AzureStack.AzureConsistentStorage.0.10.7\lib\net45\Microsoft.AzureStack.AzureConsistentStorage.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.Edm, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

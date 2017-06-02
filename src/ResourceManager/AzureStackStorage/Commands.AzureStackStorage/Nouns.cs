@@ -17,6 +17,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     class Nouns
     {
         public const string Prefix = "AzS";
+        public const string StoragePrefix = "Storage";
 
         public const string Metric = "Metric";
 
@@ -93,20 +94,21 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 
         // storage account
         public const string AdminStorageAccount = Prefix + "StorageAccount";
+        public const string AdminOnDemandGc = Prefix + "ReclaimStorageCapacity";
 
         // acquisition
         public const string AdminAcquisition = Prefix + "Acquisition";
 
         // storage account deletion operation
-        public const string AdminStorageAccountDeletion = Prefix + "StorageAccountDeletion";
+        public const string AdminStorageAccountDeletion = Prefix + "DeletedStorageAccount";
 
         // quota
-        public const string AdminQuota = Prefix + "Quota";
+        public const string AdminQuota = Prefix + StoragePrefix + "Quota";
 
         // Container Migration
-        public const string AdminContainer                      = Prefix + "Container";
-        public const string AdminContainerMigration             = Prefix + "ContainerMigration";
-        public const string AdminContainerMigrationStatus       = Prefix + "ContainerMigrationStatus";
+        public const string AdminContainer                      = Prefix + StoragePrefix + "Container";
+        public const string AdminContainerMigration             = Prefix + StoragePrefix + "ContainerMigration";
+        public const string AdminContainerMigrationStatus       = Prefix + StoragePrefix + "ContainerMigrationStatus";
         public const string AdminDestinationShareForContainer   = Prefix + "SharesForMigration";
     }
 }

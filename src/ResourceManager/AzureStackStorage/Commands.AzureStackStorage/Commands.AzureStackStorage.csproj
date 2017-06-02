@@ -55,7 +55,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AzureStack.AzureConsistentStorage">
-      <HintPath>..\..\..\packages\Microsoft.AzureStack.AzureConsistentStorage.0.10.6\lib\net45\Microsoft.AzureStack.AzureConsistentStorage.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.AzureStack.AzureConsistentStorage.0.10.7\lib\net45\Microsoft.AzureStack.AzureConsistentStorage.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Storage, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
