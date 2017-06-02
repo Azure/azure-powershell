@@ -23,6 +23,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
     public class NewAzureIPTagCommand : Cmdlet
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "IP Tag Type of desired IP address")]
+        [ValidateSet(Management.Network.Models.IPTagType.IPAddressClassification, 
+        Management.Network.Models.IPTagType.FirstPartyUsage, 
+        Management.Network.Models.IPTagType.AvailabilityZone, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
         public string IPTagType
         {
@@ -45,10 +48,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                 string.Equals(this.IPTagType, Management.Network.Models.IPTagType.AvailabilityZone))
             {
                 WriteObject(new IPTag { IPTagType = this.IPTagType, Value = Value });
-            }
-            else
-            {
-                throw new Exception(string.Format(Resources.InvalidIPTagTypeException, IPTagType));
             }
         }
 
