@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.AzureStack.AzureConsistentStorage;
@@ -60,6 +61,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 
         protected override void Execute()
         {
+            WriteVerbose(String.Format("Get Shares ParamSet {0}", ParameterSetName));
             switch (ParameterSetName)
             {
                 case ListTenantSharesParamSet:
@@ -81,6 +83,8 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
                     {
                         this.Intent = FileShareGetIntent.ContainerMigration;
                     }
+
+                    WriteVerbose(String.Format("Source Share name {0}", this.SourceShareName));
 
                     switch (this.Intent)
                     {

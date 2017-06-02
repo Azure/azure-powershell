@@ -11,34 +11,37 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+
 using System;
+using System.Linq;
+using System.Threading;
 using System.Management.Automation;
+using Microsoft.AzureStack.AzureConsistentStorage;
 using Microsoft.AzureStack.AzureConsistentStorage.Models;
 
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    /// Clear-ACSStorageAccount [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
-    ///             [-SkipCertificateValidation] [-FarmName] {string} [ {CommonParameters}] 
+    /// SYNTAX
+    /// Get-AzSReclaimStorageCapacityStatus -Jobid {string} [{CommonParameters}] 
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, Nouns.AdminOnDemandGc, SupportsShouldProcess = true)]
-    [Alias("Clear-ACSStorageAccount")]
-    public sealed class ClearDeletedAccounts : AdminCmdletDefaultFarm
+    [Cmdlet(VerbsCommon.Get, Nouns.AdminOnDemandGcStatus)]
+    public sealed class GetOnDemandGcStatus : AdminCmdletDefaultFarm
     {
+        /// <summary>
+        /// Operation Id
+        /// </summary>
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        public string JobId { get; set; }
+
         protected override void Execute()
         {
-            if (ShouldProcess(
-                Resources.OnDemandGcDescription.FormatInvariantCulture(FarmName),
-                Resources.OnDemandGcWarning.FormatInvariantCulture(FarmName),
-                Resources.ShouldProcessCaption))
-            {
-                OnDemandGcResponse response = Client.Farms.OnDemandGc(ResourceGroupName, FarmName);
+            OnDemandGcResponse response = Client.Farms.GetOnDemandGcStatus(ResourceGroupName, FarmName, JobId);
 
-                WriteVerbose(String.Format("response {0}", response.ToString()));
-                string jobId;
-                ExtractOperationIdFromLocationUri(response.Location, out jobId);
-                this.WriteObject(jobId, true);
-            }
+            this.WriteVerbose(String.Format("Reclaim Space Job result returned {0}", response.StatusCode));
+            String GcStatus = (response.StatusCode == System.Net.HttpStatusCode.Accepted) ? "Reclaim Space Job InProgress": "Reclaim Space Job Completed";
+
+            this.WriteObject(GcStatus, true);
         }
     }
 }

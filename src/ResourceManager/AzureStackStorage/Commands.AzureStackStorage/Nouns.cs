@@ -95,6 +95,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         // storage account
         public const string AdminStorageAccount = Prefix + "StorageAccount";
         public const string AdminOnDemandGc = Prefix + "ReclaimStorageCapacity";
+        public const string AdminOnDemandGcStatus = Prefix + "ReclaimStorageCapacityStatus";
 
         // acquisition
         public const string AdminAcquisition = Prefix + "Acquisition";

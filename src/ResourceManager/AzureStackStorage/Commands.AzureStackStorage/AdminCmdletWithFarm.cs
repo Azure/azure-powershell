@@ -86,5 +86,16 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
                 WriteVerbose(String.Format("Obtained Default Farm {0}", this.FarmName));
             }
         }
+        protected void ExtractOperationIdFromLocationUri(string operationUri, out string operationId)
+        {
+            WriteVerbose(String.Format("Operation URI = {0}", operationUri));
+            
+            const string operationresults = "operationresults/";
+            const int operationResultLength = 36; // Guid lenght
+            int indexOfOperationResultStart = operationUri.IndexOf(operationresults, StringComparison.InvariantCultureIgnoreCase);
+
+            operationId = operationUri.Substring(indexOfOperationResultStart + operationresults.Length, operationResultLength);
+            WriteVerbose(String.Format("Operation Result Id = {0}", operationId));
+        }
     }
 }

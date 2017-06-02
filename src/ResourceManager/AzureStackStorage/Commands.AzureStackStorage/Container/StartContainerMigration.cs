@@ -21,8 +21,6 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
-    using System.Collections;
-
     /// <summary>
     /// SYNTAX
     /// Start-ACSContainerMigration  [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
@@ -66,26 +64,15 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
                 this.WriteVerbose(String.Format("Container Source share name After Replacing = {0}", sourceShare));
             }
 
-            var response = this.Client.Shares.MigrateContainer(this.ResourceGroupName, this.FarmName, sourceShare, migrationParameters);
+            MigrateContainerResponse response = this.Client.Shares.MigrateContainer(this.ResourceGroupName, this.FarmName, sourceShare, migrationParameters);
 
             //This should display the jobid from http header
             // use following way to return a hash table. if u want to include any other strings.
             // this.WriteObject(new Hashtable() { { "JobId", jobId }}, true);
             string jobId;
-            ExtractShareAndOperationFromLocation(response.Location, out jobId);
+            ExtractOperationIdFromLocationUri(response.Location, out jobId);
             this.WriteObject(jobId, true);
         }
-
-        private void ExtractShareAndOperationFromLocation(string operationUri, out string operationId)
-        {
-            const string operationresults = "operationresults/";
-            const int operationResultLength = 36; // Guid lenght
-            int indexOfOperationResultStart = operationUri.IndexOf(operationresults, StringComparison.InvariantCultureIgnoreCase);
-            
-            operationId = operationUri.Substring(indexOfOperationResultStart + operationresults.Length, operationResultLength);
-            this.WriteVerbose(String.Format("Operation Result Id = {0}", operationId));
-        }
-
     }
 }
  

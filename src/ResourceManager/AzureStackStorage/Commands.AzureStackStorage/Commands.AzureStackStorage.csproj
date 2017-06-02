@@ -133,6 +133,7 @@
     <Compile Include="Farm\GetFarm.cs" />
     <Compile Include="Farm\GetFarmMetricDefinitions.cs" />
     <Compile Include="Farm\GetFarmMetrics.cs" />
+    <Compile Include="Farm\GetOnDemandGcStatus.cs" />
     <Compile Include="Farm\SetFarm.cs" />
     <Compile Include="Model\AcquisitionResponse.cs" />
     <Compile Include="Model\BasicResponseBase.cs" />
