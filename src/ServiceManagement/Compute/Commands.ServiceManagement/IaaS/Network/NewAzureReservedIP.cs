@@ -96,7 +96,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 
         [Parameter(Mandatory = false, Position= 6, ValueFromPipelineByPropertyName = true, ParameterSetName = ReserveNewIPParamSet, HelpMessage = "List of IPTags.")]
         [ValidateNotNullOrEmpty]
-        public List<IPTag> IPTags
+        public List<IPTag> IPTagList
         {
             get;
             set;
@@ -132,7 +132,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                         ServiceName    = this.ServiceName,
                         DeploymentName = deploymentName,
                         VirtualIPName = this.VirtualIPName,
-                        IPTags = this.IPTags
+                        IPTags = this.IPTagList
                     };
 
                     return this.NetworkClient.ReservedIPs.Create(parameters);

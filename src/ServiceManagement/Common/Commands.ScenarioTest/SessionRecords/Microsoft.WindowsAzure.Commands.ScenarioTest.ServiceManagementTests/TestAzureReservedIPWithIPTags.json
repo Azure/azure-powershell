@@ -4,7 +4,7 @@
       "RequestUri": "/119560de-0077-4c77-bfd0-b739e5b6aae2/services/networking/reservedips",
       "EncodedRequestUri": "LzExOTU2MGRlLTAwNzctNGM3Ny1iZmQwLWI3MzllNWI2YWFlMi9zZXJ2aWNlcy9uZXR3b3JraW5nL3Jlc2VydmVkaXBz",
       "RequestMethod": "POST",
-      "RequestBody": "<ReservedIP xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <Name>onesdk9482</Name>\r\n  <DeploymentName></DeploymentName>\r\n  <Location>West Central US</Location>\r\n  <IPTags>\r\n    <IPTag>\r\n      <IPTagType>FirstPartyUsage</IPTagType>\r\n      <Value>/tagTypes/SystemService/operators/Microsoft/platforms/Azure/services/Microsoft.AzureAD</Value>\r\n    </IPTag>\r\n  </IPTags>\r\n</ReservedIP>",
+      "RequestBody": "<ReservedIP xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <Name>onesdk9482</Name>\r\n  <DeploymentName></DeploymentName>\r\n  <Location>West Central US</Location>\r\n  <IPTagList>\r\n    <IPTag>\r\n      <IPTagType>FirstPartyUsage</IPTagType>\r\n      <Value>/tagTypes/SystemService/operators/Microsoft/platforms/Azure/services/Microsoft.AzureAD</Value>\r\n    </IPTag>\r\n  </IPTagList>\r\n</ReservedIP>",
       "RequestHeaders": {
         "Content-Type": [
           "application/xml"
@@ -148,7 +148,7 @@
           "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/8.2.0.0"
         ]
       },
-      "ResponseBody": "<ReservedIP xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>onesdk9482</Name>\r\n  <Address>13.71.201.120</Address>\r\n  <Id>3fbeeb35-68a6-42b8-aceb-e3dfdadf7843</Id>\r\n  <State>Created</State>\r\n  <Location>West Central US</Location>\r\n  <IPTags>\r\n    <IPTag>\r\n      <IPTagType>FirstPartyUsage</IPTagType>\r\n      <Value>/tagTypes/SystemService/operators/Microsoft/platforms/Azure/services/Microsoft.AzureAD</Value>\r\n    </IPTag>\r\n  </IPTags>\r\n</ReservedIP>",
+      "ResponseBody": "<ReservedIP xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>onesdk9482</Name>\r\n  <Address>13.71.201.120</Address>\r\n  <Id>3fbeeb35-68a6-42b8-aceb-e3dfdadf7843</Id>\r\n  <State>Created</State>\r\n  <Location>West Central US</Location>\r\n  <IPTagList>\r\n    <IPTag>\r\n      <IPTagType>FirstPartyUsage</IPTagType>\r\n      <Value>/tagTypes/SystemService/operators/Microsoft/platforms/Azure/services/Microsoft.AzureAD</Value>\r\n    </IPTag>\r\n  </IPTagList>\r\n</ReservedIP>",
       "ResponseHeaders": {
         "Content-Length": [
           "456"
