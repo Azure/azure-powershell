@@ -333,6 +333,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ThrowsForInvalidUrl()
+        {
+            var commandRuntimeMock = new Mock<ICommandRuntime>();
+            var cmdlet = new AddAzureRMEnvironmentCommand()
+            {
+                CommandRuntime = commandRuntimeMock.Object,
+                Name = "katal",
+                ResourceManagerEndpoint = "foobar.com"
+            };
+
+            // Mock the should process to return true
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess("Katal", It.IsAny<string>())).Returns(true);
+
+            cmdlet.SetParameterSet("ResourceManagerEndpoint");
+
+            Assert.Throws<AggregateException>(() => cmdlet.ExecuteCmdlet());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateEnvironmentWithTrailingSlashInActiveDirectory()
         {
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
@@ -488,7 +508,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());
             }
         }
-
 
         public void Dispose()
         {

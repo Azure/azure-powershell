@@ -27,37 +27,14 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
     internal static class EnvironmentHelper
     {
         /// <summary>
-        /// Gets the valid endpoint.
-        /// </summary>
-        /// <param name="armEndpoint">The arm endpoint.</param>
-        /// <returns></returns>
-        internal static string GetValidEndpoint(string armEndpoint)
-        {
-            if (!armEndpoint.Contains("https://"))
-            {
-                if (armEndpoint.Contains("http://"))
-                {
-                    armEndpoint = armEndpoint.Substring(7);
-                    armEndpoint = "https://" + armEndpoint;
-                }
-                else
-                {
-                    armEndpoint = "https://" + armEndpoint;
-                }
-            }
-
-            armEndpoint = armEndpoint.TrimEnd('/');
-
-            return armEndpoint;
-        }
-
-        /// <summary>
         /// Retrieves the domain.
         /// </summary>
         /// <param name="portalEndpoint">The portal endpoint.</param>
         /// <returns>Domain</returns>
         internal static string RetrieveDomain(string portalEndpoint)
         {
+            // Todo: Revisit this when azure metadata endpoint supports keyvault suffix and storage endpoints
+            // Example format:: portal endpoint: "management.azure.com"; returns: "azure.com"
             return portalEndpoint.Replace(portalEndpoint.Split('.')[0], "").TrimEnd('/').TrimStart('.');
         }
 
@@ -68,48 +45,16 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
         /// <returns></returns>
         internal static async Task<MetadataResponse> RetrieveMetaDataEndpoints(string url)
         {
-            string validUrl = GetValidEndpoint(url);
-            validUrl = String.Concat(validUrl.ToLower(), "/metadata/endpoints?api-version=1.0");
+            if (!Uri.IsWellFormedUriString(url, UriKind.Absolute))
+            {
+                throw new ArgumentException("The ResourceManagement Endpoint provided was invalid.");
+            }
+            url = String.Concat(url.ToLower(), "/metadata/endpoints?api-version=1.0");
             MetadataResponse response = null;
             using (HttpClient client = new HttpClient())
             {
-                // Create HTTP transport objects
-                HttpRequestMessage httpRequest = null;
-                try
-                {
-                    httpRequest = new HttpRequestMessage
-                                  {
-                                      Method = HttpMethod.Get,
-                                      RequestUri = new Uri(validUrl)
-                                  };
-
-                    // Send Request
-                    HttpResponseMessage httpResponse = null;
-                    try
-                    {
-                        httpResponse = await client.SendAsync(httpRequest).ConfigureAwait(false);
-                        HttpStatusCode statusCode = httpResponse.StatusCode;
-                        if (statusCode != HttpStatusCode.OK)
-                        {
-                            CloudException ex = CloudException.Create(httpRequest, null, httpResponse, await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false));
-                            throw ex;
-                        }
-
-                        if (statusCode == HttpStatusCode.OK)
-                        {
-                            string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            response = JsonConvert.DeserializeObject<MetadataResponse>(responseContent);
-                        }
-                    }
-                    finally
-                    {
-                        httpResponse?.Dispose();
-                    }
-                }
-                finally
-                {
-                    httpRequest?.Dispose();
-                }
+                string responseJson = await client.GetStringAsync(url).ConfigureAwait(false);
+                response = JsonConvert.DeserializeObject<MetadataResponse>(responseJson);
             }
             return response;
         }

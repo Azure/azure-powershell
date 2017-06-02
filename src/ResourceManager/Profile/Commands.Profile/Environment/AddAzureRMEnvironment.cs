@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Profile
         private const string EnvironmentNameParameterSet = "Name";
 
         [Parameter(ParameterSetName = EnvironmentNameParameterSet, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [Parameter(ParameterSetName = ArmParameterSet, Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = ArmParameterSet, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true)]
         public string Name { get; set; }
 
         [Parameter(ParameterSetName = EnvironmentNameParameterSet, Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true)]
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Profile
         public string ActiveDirectoryEndpoint { get; set; }
 
         [Parameter(ParameterSetName = EnvironmentNameParameterSet, Position = 6, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The cloud service endpoint")]
-        [Parameter(ParameterSetName = ArmParameterSet, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The cloud service endpoint")]
+        [Parameter(ParameterSetName = ArmParameterSet, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Azure Resource Manager endpoint")]
         [Alias("ResourceManager", "ResourceManagerUrl")]
         public string ResourceManagerEndpoint { get; set; }
 
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.Profile
 
             if (this.ParameterSetName.Equals(ArmParameterSet, StringComparison.Ordinal))
             {
-                MetadataResponse metadataEndpoints = new MetadataResponse();
+                MetadataResponse metadataEndpoints = null;
                 metadataEndpoints = EnvironmentHelper.RetrieveMetaDataEndpoints(ResourceManagerEndpoint).Result;
                 string domain = EnvironmentHelper.RetrieveDomain(metadataEndpoints.PortalEndpoint);
                 ActiveDirectoryEndpoint = metadataEndpoints.authentication.LoginEndpoint.TrimEnd('/') + '/';
