@@ -1,4 +1,9 @@
-﻿## 2017.05.12 - Version 4.0.1
+﻿## 2017.05.23 - Version 4.0.2
+* Profile
+    * Add-AzureRmAccount
+      * Added `-EnvironmentName` parameter alis for backward compatibility with 2.x versions of AzureRM.profile
+
+## 2017.05.12 - Version 4.0.1
  * Fix issue with New-AzureStorageContext in offline scenarios: https://github.com/Azure/azure-powershell/issues/3939
  
  ## 2017.05.10 - Version 4.0.0

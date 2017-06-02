@@ -18,8 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
-
 * Add-AzureVhd: The size limit on vhd is increased to 4TB.
+
+## Version 4.0.2
 
 ## Version 4.0.0
 
