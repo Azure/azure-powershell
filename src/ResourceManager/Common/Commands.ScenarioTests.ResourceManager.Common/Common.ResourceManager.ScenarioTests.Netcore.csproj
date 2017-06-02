@@ -25,11 +25,11 @@
     <PackageReference Include="Microsoft.Azure.Test.HttpRecorder" Version="[1.8.1,2.0.0)" />
     <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework" Version="[1.6.0,2.0.0)" />
     <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.7" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.3.6" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.3.8" />
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.6.0-preview" />
     <PackageReference Include="Moq" Version="4.7.10" />
     <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.1" />
     <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.0.0-beta.1" />
     
     <!-- This is needed for discovering tests in test explorer -->
