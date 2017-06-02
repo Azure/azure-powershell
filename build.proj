@@ -50,8 +50,7 @@
     <SkipHelp Condition =" '$(SkipHelp)' == '' ">false</SkipHelp>
   </PropertyGroup>
   <ItemGroup>
-    <CmdletSolutionsToBuild Include=".\src\Storage\Storage.sln;.\src\ResourceManager\**\*.sln;.\src\ServiceManagement\ServiceManagement.sln;"
-                            Exclude=".\src\ResourceManager\Intune\*.sln"
+    <CmdletSolutionsToBuild Include=".\src\Storage\Storage.sln;.\src\ResourceManager.ForRefactoringOnly.sln;.\src\ServiceManagement\ServiceManagement.sln;"
                             Condition=" '$(Scope)' == 'all' "/>
     <CmdletSolutionsToBuild Include=".\src\ResourceManager\$(Scope)\*.sln"
                             Condition=" '$(Scope)' != 'all' and '$(Scope)' != 'ServiceManagement' and '$(Scope)' != 'AzureStorage' "/>
