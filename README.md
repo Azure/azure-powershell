@@ -13,7 +13,7 @@ This repository contains a set of PowerShell cmdlets for developers and administ
 
 * Account management
   * Login with Microsoft account, Organizational account, or Service Principal through Microsoft Azure Active Directory
-  * Save Credentials to disk with Save-AzureRmProfile and load saved credentials using Select-AzureRmProfile
+  * Save Credentials to disk with Save-AzureRmContext and load saved credentials using Load-AzureRmContext
 * Environment
   * Get the different out-of-box Microsoft Azure environments
   * Add/Set/Remove customized environments (like your Azure Stack or Windows Azure Pack environments)
