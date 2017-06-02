@@ -1,0 +1,94 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnM=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2013-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Subscriptions.SubscriptionClient/4.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Subscriptions xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Subscription>\r\n    <SubscriptionID>119560de-0077-4c77-bfd0-b739e5b6aae2</SubscriptionID>\r\n    <SubscriptionName>RNMTEST3</SubscriptionName>\r\n    <SubscriptionStatus>Active</SubscriptionStatus>\r\n    <AccountAdminLiveEmailId>nsrivast@microsoft.com</AccountAdminLiveEmailId>\r\n    <ServiceAdminLiveEmailId>abhisht@microsoft.com</ServiceAdminLiveEmailId>\r\n    <MaxCoreCount>350</MaxCoreCount>\r\n    <MaxStorageAccounts>100</MaxStorageAccounts>\r\n    <MaxHostedServices>20</MaxHostedServices>\r\n    <CurrentCoreCount>0</CurrentCoreCount>\r\n    <CurrentHostedServices>1</CurrentHostedServices>\r\n    <CurrentStorageAccounts>38</CurrentStorageAccounts>\r\n    <MaxVirtualNetworkSites>50</MaxVirtualNetworkSites>\r\n    <MaxLocalNetworkSites>20</MaxLocalNetworkSites>\r\n    <MaxDnsServers>20</MaxDnsServers>\r\n    <OfferCategories>Azure_Platform_All;Azure_Paid;Azure_Consumption;Azure_Internal;Azure_MS-AZR-0015P;Individual</OfferCategories>\r\n    <MaxExtraVIPCount>-1</MaxExtraVIPCount>\r\n    <AADTenantID>72f988bf-86f1-41af-91ab-2d7cd011db47</AADTenantID>\r\n    <CreatedTime>2014-01-29T20:36:36Z</CreatedTime>\r\n  </Subscription>\r\n</Subscriptions>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1129"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "x-ms-request-id": [
+          "c2c2ee06eb55af85b3bd2d2478fca335"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 01 Jun 2017 22:46:42 GMT"
+        ],
+        "Server": [
+          "1.0.6198.503",
+          "(rd_rdfe_stable.170522-1914)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnM=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2013-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Subscriptions.SubscriptionClient/4.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Subscriptions xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Subscription>\r\n    <SubscriptionID>119560de-0077-4c77-bfd0-b739e5b6aae2</SubscriptionID>\r\n    <SubscriptionName>RNMTEST3</SubscriptionName>\r\n    <SubscriptionStatus>Active</SubscriptionStatus>\r\n    <AccountAdminLiveEmailId>nsrivast@microsoft.com</AccountAdminLiveEmailId>\r\n    <ServiceAdminLiveEmailId>abhisht@microsoft.com</ServiceAdminLiveEmailId>\r\n    <MaxCoreCount>350</MaxCoreCount>\r\n    <MaxStorageAccounts>100</MaxStorageAccounts>\r\n    <MaxHostedServices>20</MaxHostedServices>\r\n    <CurrentCoreCount>0</CurrentCoreCount>\r\n    <CurrentHostedServices>1</CurrentHostedServices>\r\n    <CurrentStorageAccounts>38</CurrentStorageAccounts>\r\n    <MaxVirtualNetworkSites>50</MaxVirtualNetworkSites>\r\n    <MaxLocalNetworkSites>20</MaxLocalNetworkSites>\r\n    <MaxDnsServers>20</MaxDnsServers>\r\n    <OfferCategories>Azure_Platform_All;Azure_Paid;Azure_Consumption;Azure_Internal;Azure_MS-AZR-0015P;Individual</OfferCategories>\r\n    <MaxExtraVIPCount>-1</MaxExtraVIPCount>\r\n    <AADTenantID>72f988bf-86f1-41af-91ab-2d7cd011db47</AADTenantID>\r\n    <CreatedTime>2014-01-29T20:36:36Z</CreatedTime>\r\n  </Subscription>\r\n</Subscriptions>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1129"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "x-ms-request-id": [
+          "0cf0d404b40ca936a63fc147ea5108b7"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 01 Jun 2017 22:46:43 GMT"
+        ],
+        "Server": [
+          "1.0.6198.503",
+          "(rd_rdfe_stable.170522-1914)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-AzureReservedIPWithTags": [
+      "onesdk2769"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "24fb23e3-6ba3-41f0-9b6e-e41131d5d61e"
+  }
+}
