@@ -13,19 +13,13 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
-            "Name": "AzureAnalysisServicesServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "AsAdministrators": "System.Collections.Generic.List`1[System.String]",
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "ProvisioningState": "System.String",
-              "ServerFullName": "System.String",
-              "Sku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
-              "State": "System.String",
-              "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Type": "System.String"
+              "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
+              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -41,7 +35,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -57,7 +51,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -73,7 +67,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -95,7 +89,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -117,7 +111,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -139,7 +133,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -175,19 +169,13 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
-            "Name": "AzureAnalysisServicesServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "AsAdministrators": "System.Collections.Generic.List`1[System.String]",
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "ProvisioningState": "System.String",
-              "ServerFullName": "System.String",
-              "Sku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
-              "State": "System.String",
-              "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Type": "System.String"
+              "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
+              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -203,7 +191,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -219,7 +207,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -235,7 +223,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -257,7 +245,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -279,7 +267,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -301,7 +289,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -337,8 +325,8 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer]",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -356,7 +344,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -372,7 +360,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -394,7 +382,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -416,7 +404,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -452,19 +440,13 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
-            "Name": "AzureAnalysisServicesServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "AsAdministrators": "System.Collections.Generic.List`1[System.String]",
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "ProvisioningState": "System.String",
-              "ServerFullName": "System.String",
-              "Sku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
-              "State": "System.String",
-              "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Type": "System.String"
+              "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
+              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -480,7 +462,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -496,7 +478,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -512,7 +494,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -534,7 +516,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -556,7 +538,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -578,7 +560,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -614,19 +596,13 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
-            "Name": "AzureAnalysisServicesServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "AsAdministrators": "System.Collections.Generic.List`1[System.String]",
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "ProvisioningState": "System.String",
-              "ServerFullName": "System.String",
-              "Sku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
-              "State": "System.String",
-              "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Type": "System.String"
+              "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
+              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -642,7 +618,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -658,7 +634,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -674,13 +650,16 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [
+            "B1",
+            "B2",
+            "S0",
             "S1",
             "S2",
             "S4"
@@ -694,7 +673,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Collections",
-            "Name": "Hashtable",
+            "Name": "System.Collections.Hashtable",
             "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -710,7 +689,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -726,7 +705,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -748,7 +727,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -770,7 +749,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -792,13 +771,16 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [
+                  "B1",
+                  "B2",
+                  "S0",
                   "S1",
                   "S2",
                   "S4"
@@ -818,7 +800,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections",
-                  "Name": "Hashtable",
+                  "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -840,7 +822,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -862,7 +844,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -898,7 +880,7 @@
         {
           "Type": {
             "Namespace": "System",
-            "Name": "Boolean",
+            "Name": "System.Boolean",
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -915,7 +897,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -931,7 +913,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -953,7 +935,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -975,7 +957,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1011,19 +993,13 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
-            "Name": "AzureAnalysisServicesServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "AsAdministrators": "System.Collections.Generic.List`1[System.String]",
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
-              "ProvisioningState": "System.String",
-              "ServerFullName": "System.String",
-              "Sku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
-              "State": "System.String",
-              "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Type": "System.String"
+              "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
+              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1039,7 +1015,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1055,7 +1031,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1071,7 +1047,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1103,13 +1079,16 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
           },
           "ValidateSet": [
+            "B1",
+            "B2",
+            "S0",
             "S1",
             "S2",
             "S4",
@@ -1124,7 +1103,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Collections",
-            "Name": "Hashtable",
+            "Name": "System.Collections.Hashtable",
             "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1140,7 +1119,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1162,7 +1141,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1184,7 +1163,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1206,7 +1185,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1244,13 +1223,16 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
                 },
                 "ValidateSet": [
+                  "B1",
+                  "B2",
+                  "S0",
                   "S1",
                   "S2",
                   "S4",
@@ -1271,7 +1253,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections",
-                  "Name": "Hashtable",
+                  "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1293,7 +1275,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1430,30 +1412,19 @@
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "System.Collections.Generic.List`1[System.String]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "List",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "System.String"
-      ]
-    },
     "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku": {
       "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
-      "Name": "ServerSku",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku, Microsoft.Azure.Commands.AnalysisServices, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku, Microsoft.Azure.Commands.AnalysisServices, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Name": "System.String",
-        "Tier": "System.String"
+        "System.String": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "System.Collections.Generic.IDictionary`2[System.String,System.String]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "IDictionary",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
       "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
@@ -1462,21 +1433,25 @@
         "System.String"
       ]
     },
+    "System.Collections.Generic.List`1[System.String]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.List`1[System.String]",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.String"
+      ]
+    },
     "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer": {
       "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
-      "Name": "AzureAnalysisServicesServer",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "AsAdministrators": "System.Collections.Generic.List`1[System.String]",
-        "Id": "System.String",
-        "Location": "System.String",
-        "Name": "System.String",
-        "ProvisioningState": "System.String",
-        "ServerFullName": "System.String",
-        "Sku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
-        "State": "System.String",
-        "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "Type": "System.String"
+        "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
+        "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
+        "System.String": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []

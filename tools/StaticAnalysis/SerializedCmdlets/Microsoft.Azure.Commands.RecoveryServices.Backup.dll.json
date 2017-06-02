@@ -13,18 +13,14 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "JobBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "ActivityId": "System.String",
-              "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-              "Duration": "System.TimeSpan",
-              "EndTime": "System.Nullable`1[System.DateTime]",
-              "JobId": "System.String",
-              "Operation": "System.String",
-              "StartTime": "System.DateTime",
-              "Status": "System.String",
-              "WorkloadName": "System.String"
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+              "System.DateTime": "System.DateTime",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.String": "System.String",
+              "System.TimeSpan": "System.TimeSpan"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -40,17 +36,14 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "ItemBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-              "ContainerName": "System.String",
-              "ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
-              "Id": "System.String",
-              "LatestRecoveryPoint": "System.Nullable`1[System.DateTime]",
-              "Name": "System.String",
-              "SourceResourceId": "System.String",
-              "WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType"
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -65,7 +58,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable",
+            "Name": "System.Nullable`1[System.DateTime]",
             "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -89,17 +82,14 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "ItemBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-                    "ContainerName": "System.String",
-                    "ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
-                    "Id": "System.String",
-                    "LatestRecoveryPoint": "System.Nullable`1[System.DateTime]",
-                    "Name": "System.String",
-                    "SourceResourceId": "System.String",
-                    "WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType"
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+                    "System.String": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -120,7 +110,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
+                  "Name": "System.Nullable`1[System.DateTime]",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -156,12 +146,11 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "BackupEngineBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupEngineBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupEngineBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupEngineBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "BackupEngineType": "System.String",
-              "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-              "Name": "System.String"
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -173,8 +162,8 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "IList",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupEngineBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupEngineBase]",
+            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupEngineBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -192,7 +181,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -214,7 +203,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -248,12 +237,12 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "ContainerBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-              "ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
-              "Name": "System.String"
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -265,8 +254,8 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "IList",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase]",
+            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -284,8 +273,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "ContainerType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -300,7 +289,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -320,7 +309,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -336,7 +325,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -352,7 +341,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -368,8 +357,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "ContainerRegistrationStatus",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerRegistrationStatus, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerRegistrationStatus",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerRegistrationStatus, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -390,8 +379,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "ContainerType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -412,7 +401,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -438,7 +427,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -460,7 +449,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -482,7 +471,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -504,8 +493,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "ContainerRegistrationStatus",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerRegistrationStatus, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerRegistrationStatus",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerRegistrationStatus, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -541,12 +530,12 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "ContainerBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-              "ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
-              "Name": "System.String"
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -567,12 +556,12 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "ContainerBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-                    "ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
-                    "Name": "System.String"
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
+                    "System.String": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -605,18 +594,14 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "JobBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "ActivityId": "System.String",
-              "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-              "Duration": "System.TimeSpan",
-              "EndTime": "System.Nullable`1[System.DateTime]",
-              "JobId": "System.String",
-              "Operation": "System.String",
-              "StartTime": "System.DateTime",
-              "Status": "System.String",
-              "WorkloadName": "System.String"
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+              "System.DateTime": "System.DateTime",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.String": "System.String",
+              "System.TimeSpan": "System.TimeSpan"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -632,17 +617,14 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "ItemBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-              "ContainerName": "System.String",
-              "ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
-              "Id": "System.String",
-              "LatestRecoveryPoint": "System.Nullable`1[System.DateTime]",
-              "Name": "System.String",
-              "SourceResourceId": "System.String",
-              "WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType"
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -657,7 +639,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -673,7 +655,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -695,17 +677,14 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "ItemBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-                    "ContainerName": "System.String",
-                    "ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
-                    "Id": "System.String",
-                    "LatestRecoveryPoint": "System.Nullable`1[System.DateTime]",
-                    "Name": "System.String",
-                    "SourceResourceId": "System.String",
-                    "WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType"
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+                    "System.String": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -726,7 +705,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -748,7 +727,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -782,18 +761,14 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "JobBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "ActivityId": "System.String",
-              "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-              "Duration": "System.TimeSpan",
-              "EndTime": "System.Nullable`1[System.DateTime]",
-              "JobId": "System.String",
-              "Operation": "System.String",
-              "StartTime": "System.DateTime",
-              "Status": "System.String",
-              "WorkloadName": "System.String"
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+              "System.DateTime": "System.DateTime",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.String": "System.String",
+              "System.TimeSpan": "System.TimeSpan"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -809,13 +784,12 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "PolicyBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-              "Id": "System.String",
-              "Name": "System.String",
-              "WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType"
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -830,7 +804,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -846,7 +820,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -862,7 +836,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -878,17 +852,14 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "ItemBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-              "ContainerName": "System.String",
-              "ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
-              "Id": "System.String",
-              "LatestRecoveryPoint": "System.Nullable`1[System.DateTime]",
-              "Name": "System.String",
-              "SourceResourceId": "System.String",
-              "WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType"
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -909,13 +880,12 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "PolicyBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-                    "Id": "System.String",
-                    "Name": "System.String",
-                    "WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType"
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+                    "System.String": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -941,7 +911,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -963,7 +933,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -985,13 +955,12 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "PolicyBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-                    "Id": "System.String",
-                    "Name": "System.String",
-                    "WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType"
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+                    "System.String": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1017,7 +986,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1039,7 +1008,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1061,13 +1030,12 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "PolicyBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-                    "Id": "System.String",
-                    "Name": "System.String",
-                    "WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType"
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+                    "System.String": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1093,17 +1061,14 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "ItemBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-                    "ContainerName": "System.String",
-                    "ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
-                    "Id": "System.String",
-                    "LatestRecoveryPoint": "System.Nullable`1[System.DateTime]",
-                    "Name": "System.String",
-                    "SourceResourceId": "System.String",
-                    "WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType"
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+                    "System.String": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1124,13 +1089,12 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "PolicyBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-                    "Id": "System.String",
-                    "Name": "System.String",
-                    "WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType"
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+                    "System.String": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1163,17 +1127,14 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "ItemBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-              "ContainerName": "System.String",
-              "ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
-              "Id": "System.String",
-              "LatestRecoveryPoint": "System.Nullable`1[System.DateTime]",
-              "Name": "System.String",
-              "SourceResourceId": "System.String",
-              "WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType"
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1185,8 +1146,8 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "IList",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase]",
+            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -1204,12 +1165,12 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "ContainerBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-              "ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
-              "Name": "System.String"
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1224,8 +1185,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "BackupManagementType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1240,7 +1201,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1256,8 +1217,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "ItemProtectionStatus",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemProtectionStatus, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemProtectionStatus",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemProtectionStatus, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1272,8 +1233,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "ItemProtectionState",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemProtectionState, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemProtectionState",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemProtectionState, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1288,8 +1249,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "WorkloadType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1310,12 +1271,12 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "ContainerBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-                    "ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
-                    "Name": "System.String"
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
+                    "System.String": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1336,7 +1297,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1358,8 +1319,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "ItemProtectionStatus",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemProtectionStatus, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemProtectionStatus",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemProtectionStatus, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1380,8 +1341,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "ItemProtectionState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemProtectionState, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemProtectionState",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemProtectionState, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1402,8 +1363,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "WorkloadType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1429,8 +1390,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "BackupManagementType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1451,7 +1412,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1473,8 +1434,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "ItemProtectionStatus",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemProtectionStatus, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemProtectionStatus",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemProtectionStatus, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1495,8 +1456,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "ItemProtectionState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemProtectionState, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemProtectionState",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemProtectionState, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1517,8 +1478,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "WorkloadType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1544,7 +1505,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1566,8 +1527,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "ItemProtectionStatus",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemProtectionStatus, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemProtectionStatus",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemProtectionStatus, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1588,8 +1549,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "ItemProtectionState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemProtectionState, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemProtectionState",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemProtectionState, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1610,8 +1571,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "WorkloadType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1644,18 +1605,14 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "JobBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "ActivityId": "System.String",
-              "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-              "Duration": "System.TimeSpan",
-              "EndTime": "System.Nullable`1[System.DateTime]",
-              "JobId": "System.String",
-              "Operation": "System.String",
-              "StartTime": "System.DateTime",
-              "Status": "System.String",
-              "WorkloadName": "System.String"
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+              "System.DateTime": "System.DateTime",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.String": "System.String",
+              "System.TimeSpan": "System.TimeSpan"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1667,8 +1624,8 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "IList",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase]",
+            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -1686,8 +1643,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobStatus, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobStatus]",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobStatus, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -1704,8 +1661,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobOperation, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobOperation]",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobOperation, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -1722,7 +1679,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable",
+            "Name": "System.Nullable`1[System.DateTime]",
             "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1740,7 +1697,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable",
+            "Name": "System.Nullable`1[System.DateTime]",
             "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1758,7 +1715,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1774,18 +1731,14 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "JobBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "ActivityId": "System.String",
-              "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-              "Duration": "System.TimeSpan",
-              "EndTime": "System.Nullable`1[System.DateTime]",
-              "JobId": "System.String",
-              "Operation": "System.String",
-              "StartTime": "System.DateTime",
-              "Status": "System.String",
-              "WorkloadName": "System.String"
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+              "System.DateTime": "System.DateTime",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.String": "System.String",
+              "System.TimeSpan": "System.TimeSpan"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1800,8 +1753,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -1824,8 +1777,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobStatus, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Name": "System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobStatus]",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobStatus, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -1848,8 +1801,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobOperation, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Name": "System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobOperation]",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobOperation, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -1872,7 +1825,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
+                  "Name": "System.Nullable`1[System.DateTime]",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1896,7 +1849,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
+                  "Name": "System.Nullable`1[System.DateTime]",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1920,7 +1873,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1942,18 +1895,14 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "JobBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "ActivityId": "System.String",
-                    "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-                    "Duration": "System.TimeSpan",
-                    "EndTime": "System.Nullable`1[System.DateTime]",
-                    "JobId": "System.String",
-                    "Operation": "System.String",
-                    "StartTime": "System.DateTime",
-                    "Status": "System.String",
-                    "WorkloadName": "System.String"
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+                    "System.DateTime": "System.DateTime",
+                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+                    "System.String": "System.String",
+                    "System.TimeSpan": "System.TimeSpan"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1974,8 +1923,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Name": "System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -2010,18 +1959,14 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "JobBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "ActivityId": "System.String",
-              "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-              "Duration": "System.TimeSpan",
-              "EndTime": "System.Nullable`1[System.DateTime]",
-              "JobId": "System.String",
-              "Operation": "System.String",
-              "StartTime": "System.DateTime",
-              "Status": "System.String",
-              "WorkloadName": "System.String"
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+              "System.DateTime": "System.DateTime",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.String": "System.String",
+              "System.TimeSpan": "System.TimeSpan"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2037,18 +1982,14 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "JobBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "ActivityId": "System.String",
-              "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-              "Duration": "System.TimeSpan",
-              "EndTime": "System.Nullable`1[System.DateTime]",
-              "JobId": "System.String",
-              "Operation": "System.String",
-              "StartTime": "System.DateTime",
-              "Status": "System.String",
-              "WorkloadName": "System.String"
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+              "System.DateTime": "System.DateTime",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.String": "System.String",
+              "System.TimeSpan": "System.TimeSpan"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2063,7 +2004,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2085,18 +2026,14 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "JobBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "ActivityId": "System.String",
-                    "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-                    "Duration": "System.TimeSpan",
-                    "EndTime": "System.Nullable`1[System.DateTime]",
-                    "JobId": "System.String",
-                    "Operation": "System.String",
-                    "StartTime": "System.DateTime",
-                    "Status": "System.String",
-                    "WorkloadName": "System.String"
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+                    "System.DateTime": "System.DateTime",
+                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+                    "System.String": "System.String",
+                    "System.TimeSpan": "System.TimeSpan"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2122,7 +2059,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2156,18 +2093,14 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "JobBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "ActivityId": "System.String",
-              "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-              "Duration": "System.TimeSpan",
-              "EndTime": "System.Nullable`1[System.DateTime]",
-              "JobId": "System.String",
-              "Operation": "System.String",
-              "StartTime": "System.DateTime",
-              "Status": "System.String",
-              "WorkloadName": "System.String"
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+              "System.DateTime": "System.DateTime",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.String": "System.String",
+              "System.TimeSpan": "System.TimeSpan"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2183,18 +2116,14 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "JobBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "ActivityId": "System.String",
-              "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-              "Duration": "System.TimeSpan",
-              "EndTime": "System.Nullable`1[System.DateTime]",
-              "JobId": "System.String",
-              "Operation": "System.String",
-              "StartTime": "System.DateTime",
-              "Status": "System.String",
-              "WorkloadName": "System.String"
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+              "System.DateTime": "System.DateTime",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.String": "System.String",
+              "System.TimeSpan": "System.TimeSpan"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2209,7 +2138,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2231,18 +2160,14 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "JobBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "ActivityId": "System.String",
-                    "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-                    "Duration": "System.TimeSpan",
-                    "EndTime": "System.Nullable`1[System.DateTime]",
-                    "JobId": "System.String",
-                    "Operation": "System.String",
-                    "StartTime": "System.DateTime",
-                    "Status": "System.String",
-                    "WorkloadName": "System.String"
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+                    "System.DateTime": "System.DateTime",
+                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+                    "System.String": "System.String",
+                    "System.TimeSpan": "System.TimeSpan"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2268,7 +2193,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2302,18 +2227,14 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "JobBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "ActivityId": "System.String",
-              "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-              "Duration": "System.TimeSpan",
-              "EndTime": "System.Nullable`1[System.DateTime]",
-              "JobId": "System.String",
-              "Operation": "System.String",
-              "StartTime": "System.DateTime",
-              "Status": "System.String",
-              "WorkloadName": "System.String"
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+              "System.DateTime": "System.DateTime",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.String": "System.String",
+              "System.TimeSpan": "System.TimeSpan"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2325,8 +2246,8 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "IList",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase]",
+            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -2344,7 +2265,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Object",
+            "Name": "System.Object",
             "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2360,7 +2281,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable",
+            "Name": "System.Nullable`1[System.Int64]",
             "AssemblyQualifiedName": "System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2384,7 +2305,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Object",
+                  "Name": "System.Object",
                   "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2406,7 +2327,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
+                  "Name": "System.Nullable`1[System.Int64]",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2442,13 +2363,12 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "PolicyBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-              "Id": "System.String",
-              "Name": "System.String",
-              "WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType"
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2460,8 +2380,8 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "IList",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase]",
+            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -2479,7 +2399,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2495,8 +2415,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType]",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -2513,8 +2433,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -2537,7 +2457,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2564,8 +2484,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Name": "System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType]",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -2593,8 +2513,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Name": "System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType]",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -2617,8 +2537,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Name": "System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -2653,8 +2573,8 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "RetentionPolicyBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RetentionPolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RetentionPolicyBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RetentionPolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2670,8 +2590,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "WorkloadType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2686,8 +2606,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -2710,8 +2630,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "WorkloadType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2732,8 +2652,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Name": "System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -2768,8 +2688,8 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "SchedulePolicyBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.SchedulePolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.SchedulePolicyBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.SchedulePolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2785,8 +2705,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "WorkloadType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2801,8 +2721,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -2825,8 +2745,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "WorkloadType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2847,8 +2767,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Name": "System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -2883,13 +2803,12 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "PolicyBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-              "Id": "System.String",
-              "Name": "System.String",
-              "WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType"
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2905,7 +2824,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2921,8 +2840,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "WorkloadType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2937,8 +2856,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -2955,8 +2874,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "RetentionPolicyBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RetentionPolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RetentionPolicyBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RetentionPolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2971,8 +2890,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "SchedulePolicyBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.SchedulePolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.SchedulePolicyBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.SchedulePolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2993,7 +2912,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3015,8 +2934,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "WorkloadType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3037,8 +2956,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Name": "System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -3061,8 +2980,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "RetentionPolicyBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RetentionPolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RetentionPolicyBase",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RetentionPolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3083,8 +3002,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "SchedulePolicyBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.SchedulePolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.SchedulePolicyBase",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.SchedulePolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3120,7 +3039,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3136,13 +3055,12 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "PolicyBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-              "Id": "System.String",
-              "Name": "System.String",
-              "WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType"
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3157,7 +3075,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -3179,7 +3097,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3201,7 +3119,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -3228,13 +3146,12 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "PolicyBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-                    "Id": "System.String",
-                    "Name": "System.String",
-                    "WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType"
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+                    "System.String": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3255,7 +3172,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -3282,7 +3199,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -3316,8 +3233,8 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase]",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -3335,13 +3252,12 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "PolicyBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-              "Id": "System.String",
-              "Name": "System.String",
-              "WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType"
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3356,8 +3272,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "RetentionPolicyBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RetentionPolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RetentionPolicyBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RetentionPolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3372,8 +3288,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "SchedulePolicyBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.SchedulePolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.SchedulePolicyBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.SchedulePolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3394,13 +3310,12 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "PolicyBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-                    "Id": "System.String",
-                    "Name": "System.String",
-                    "WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType"
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+                    "System.String": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3421,8 +3336,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "RetentionPolicyBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RetentionPolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RetentionPolicyBase",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RetentionPolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3443,8 +3358,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "SchedulePolicyBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.SchedulePolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.SchedulePolicyBase",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.SchedulePolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3477,16 +3392,13 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "RecoveryPointBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RecoveryPointBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RecoveryPointBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RecoveryPointBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-              "ContainerName": "System.String",
-              "ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
-              "Id": "System.String",
-              "ItemName": "System.String",
-              "RecoveryPointId": "System.String",
-              "WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType"
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3498,8 +3410,8 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "IList",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RecoveryPointBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RecoveryPointBase]",
+            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RecoveryPointBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -3517,7 +3429,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable",
+            "Name": "System.Nullable`1[System.DateTime]",
             "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3535,7 +3447,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable",
+            "Name": "System.Nullable`1[System.DateTime]",
             "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3553,17 +3465,14 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "ItemBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-              "ContainerName": "System.String",
-              "ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
-              "Id": "System.String",
-              "LatestRecoveryPoint": "System.Nullable`1[System.DateTime]",
-              "Name": "System.String",
-              "SourceResourceId": "System.String",
-              "WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType"
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3578,7 +3487,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3594,7 +3503,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3616,7 +3525,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
+                  "Name": "System.Nullable`1[System.DateTime]",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3640,7 +3549,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
+                  "Name": "System.Nullable`1[System.DateTime]",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3664,17 +3573,14 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "ItemBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-                    "ContainerName": "System.String",
-                    "ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
-                    "Id": "System.String",
-                    "LatestRecoveryPoint": "System.Nullable`1[System.DateTime]",
-                    "Name": "System.String",
-                    "SourceResourceId": "System.String",
-                    "WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType"
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+                    "System.String": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3700,17 +3606,14 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "ItemBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-                    "ContainerName": "System.String",
-                    "ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
-                    "Id": "System.String",
-                    "LatestRecoveryPoint": "System.Nullable`1[System.DateTime]",
-                    "Name": "System.String",
-                    "SourceResourceId": "System.String",
-                    "WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType"
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+                    "System.String": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3731,7 +3634,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3753,7 +3656,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3780,17 +3683,14 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "ItemBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-                    "ContainerName": "System.String",
-                    "ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
-                    "Id": "System.String",
-                    "LatestRecoveryPoint": "System.Nullable`1[System.DateTime]",
-                    "Name": "System.String",
-                    "SourceResourceId": "System.String",
-                    "WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType"
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+                    "System.String": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3823,18 +3723,14 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "JobBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "ActivityId": "System.String",
-              "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-              "Duration": "System.TimeSpan",
-              "EndTime": "System.Nullable`1[System.DateTime]",
-              "JobId": "System.String",
-              "Operation": "System.String",
-              "StartTime": "System.DateTime",
-              "Status": "System.String",
-              "WorkloadName": "System.String"
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+              "System.DateTime": "System.DateTime",
+              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+              "System.String": "System.String",
+              "System.TimeSpan": "System.TimeSpan"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3850,16 +3746,13 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "RecoveryPointBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RecoveryPointBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RecoveryPointBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RecoveryPointBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-              "ContainerName": "System.String",
-              "ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
-              "Id": "System.String",
-              "ItemName": "System.String",
-              "RecoveryPointId": "System.String",
-              "WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType"
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3874,7 +3767,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3890,7 +3783,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3912,16 +3805,13 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "RecoveryPointBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RecoveryPointBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RecoveryPointBase",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RecoveryPointBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-                    "ContainerName": "System.String",
-                    "ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
-                    "Id": "System.String",
-                    "ItemName": "System.String",
-                    "RecoveryPointId": "System.String",
-                    "WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType"
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+                    "System.String": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3942,7 +3832,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3964,7 +3854,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -4001,12 +3891,11 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-            "Name": "BackupEngineBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupEngineBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupEngineBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupEngineBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "BackupEngineType": "System.String",
-              "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-              "Name": "System.String"
+              "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+              "System.String": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4027,12 +3916,11 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-                  "Name": "BackupEngineBase",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupEngineBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupEngineBase",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupEngineBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "BackupEngineType": "System.String",
-                    "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-                    "Name": "System.String"
+                    "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+                    "System.String": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -4168,23 +4056,23 @@
     },
     "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": {
       "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-      "Name": "BackupManagementType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "System.TimeSpan": {
+    "System.DateTime": {
       "Namespace": "System",
-      "Name": "TimeSpan",
-      "AssemblyQualifiedName": "System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Name": "System.DateTime",
+      "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "System.Nullable`1[System.DateTime]": {
       "Namespace": "System",
-      "Name": "Nullable",
+      "Name": "System.Nullable`1[System.DateTime]",
       "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
@@ -4192,130 +4080,118 @@
         "System.DateTime"
       ]
     },
-    "System.DateTime": {
+    "System.TimeSpan": {
       "Namespace": "System",
-      "Name": "DateTime",
-      "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Name": "System.TimeSpan",
+      "AssemblyQualifiedName": "System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType": {
       "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-      "Name": "ContainerType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType": {
       "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-      "Name": "WorkloadType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupEngineBase": {
       "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-      "Name": "BackupEngineBase",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupEngineBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupEngineBase",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupEngineBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "BackupEngineType": "System.String",
-        "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-        "Name": "System.String"
+        "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+        "System.String": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase": {
       "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-      "Name": "ContainerBase",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-        "ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
-        "Name": "System.String"
+        "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+        "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
+        "System.String": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase": {
       "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-      "Name": "ItemBase",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-        "ContainerName": "System.String",
-        "ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
-        "Id": "System.String",
-        "LatestRecoveryPoint": "System.Nullable`1[System.DateTime]",
-        "Name": "System.String",
-        "SourceResourceId": "System.String",
-        "WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType"
+        "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+        "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
+        "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+        "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+        "System.String": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase": {
       "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-      "Name": "JobBase",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "ActivityId": "System.String",
-        "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-        "Duration": "System.TimeSpan",
-        "EndTime": "System.Nullable`1[System.DateTime]",
-        "JobId": "System.String",
-        "Operation": "System.String",
-        "StartTime": "System.DateTime",
-        "Status": "System.String",
-        "WorkloadName": "System.String"
+        "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+        "System.DateTime": "System.DateTime",
+        "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
+        "System.String": "System.String",
+        "System.TimeSpan": "System.TimeSpan"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobStatus": {
       "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-      "Name": "JobStatus",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobStatus, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobStatus",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobStatus, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobOperation": {
       "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-      "Name": "JobOperation",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobOperation, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobOperation",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobOperation, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase": {
       "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-      "Name": "PolicyBase",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-        "Id": "System.String",
-        "Name": "System.String",
-        "WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType"
+        "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+        "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+        "System.String": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RecoveryPointBase": {
       "Namespace": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models",
-      "Name": "RecoveryPointBase",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RecoveryPointBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RecoveryPointBase",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RecoveryPointBase, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
-        "ContainerName": "System.String",
-        "ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
-        "Id": "System.String",
-        "ItemName": "System.String",
-        "RecoveryPointId": "System.String",
-        "WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType"
+        "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType",
+        "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType",
+        "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType",
+        "System.String": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
