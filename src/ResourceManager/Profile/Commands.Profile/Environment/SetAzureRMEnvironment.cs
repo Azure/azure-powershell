@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Profile
         private const string EnvironmentNameParameterSet = "Name";
 		
         [Parameter(ParameterSetName = EnvironmentNameParameterSet, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [Parameter(ParameterSetName = ArmParameterSet, Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = ArmParameterSet, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true)]
         public string Name { get; set; }
 
         [Parameter(ParameterSetName = EnvironmentNameParameterSet, Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true)]
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Profile
         public string ActiveDirectoryEndpoint { get; set; }
 
         [Parameter(ParameterSetName = EnvironmentNameParameterSet, Position = 6, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The cloud service endpoint")]
-        [Parameter(ParameterSetName = ArmParameterSet, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The cloud service endpoint")]
+        [Parameter(ParameterSetName = ArmParameterSet, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Azure Resource Manager endpoint")]
         [Alias("ResourceManager", "ResourceManagerUrl")]
         public string ResourceManagerEndpoint { get; set; }
 
@@ -131,13 +131,6 @@ namespace Microsoft.Azure.Commands.Profile
                 }
             }
 
-            var newEnvironment = new AzureEnvironment { Name = Name, OnPremise = EnableAdfsAuthentication };
-            if (AzureRmProfileProvider.Instance.Profile.Environments.ContainsKey(Name))
-            {
-                newEnvironment = AzureRmProfileProvider.Instance.Profile.Environments[Name];
-                newEnvironment.OnPremise = EnableAdfsAuthentication;
-            }
-
 			if (this.ParameterSetName.Equals(ArmParameterSet, StringComparison.Ordinal))
             {
                 MetadataResponse metadataEndpoints = new MetadataResponse();
@@ -150,8 +143,16 @@ namespace Microsoft.Azure.Commands.Profile
                 AzureKeyVaultDnsSuffix = $"vault.{domain}".ToLowerInvariant();
                 AzureKeyVaultServiceEndpointResourceId = ($"https://vault.{domain}".ToLowerInvariant());
                 StorageEndpoint = domain;
+                EnableAdfsAuthentication = metadataEndpoints.authentication.LoginEndpoint.TrimEnd('/').EndsWith("/adfs", System.StringComparison.OrdinalIgnoreCase);
             }
-			
+
+            var newEnvironment = new AzureEnvironment { Name = Name, OnPremise = EnableAdfsAuthentication };
+            if (AzureRmProfileProvider.Instance.Profile.Environments.ContainsKey(Name))
+            {
+                newEnvironment = AzureRmProfileProvider.Instance.Profile.Environments[Name];
+                newEnvironment.OnPremise = EnableAdfsAuthentication;
+            }
+
             SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.PublishSettingsFileUrl, PublishSettingsFileUrl);
             SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.ServiceManagement, ServiceEndpoint);
             SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.ResourceManager, ResourceManagerEndpoint);
