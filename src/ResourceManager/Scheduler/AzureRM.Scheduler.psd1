@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.14.1'
+ModuleVersion = '0.14.2'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
