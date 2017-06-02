@@ -200,9 +200,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         [Trait(Category.Service, Category.ServiceManagement)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
-        public void TestAzureReservedIPTags()
+        public void TestAzureReservedIPWithIPTags()
         {
-            this.RunPowerShellTest("Test-AzureReservedIPWithTags");
+            this.RunPowerShellTest("Test-AzureReservedIPWithIPTags");
         }
 
         [Fact]
