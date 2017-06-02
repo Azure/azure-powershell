@@ -55,7 +55,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
             }
             else
             {
-                throw new Exception(IPTagType + Resources.InvalidIPTagTypeException);
+                throw new Exception(string.Format(Resources.InvalidIPTagTypeException, IPTagType));
             }
         }
 
