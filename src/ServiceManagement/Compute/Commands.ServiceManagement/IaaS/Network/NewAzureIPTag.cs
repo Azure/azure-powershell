@@ -43,12 +43,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 
         public void ExecuteCommand()
         {
-            if (string.Equals(this.IPTagType, Management.Network.Models.IPTagType.IPAddressClassification) ||
-                string.Equals(this.IPTagType, Management.Network.Models.IPTagType.FirstPartyUsage) ||
-                string.Equals(this.IPTagType, Management.Network.Models.IPTagType.AvailabilityZone))
-            {
-                WriteObject(new IPTag { IPTagType = this.IPTagType, Value = Value });
-            }
+           WriteObject(new IPTag { IPTagType = this.IPTagType, Value = Value });
         }
 
         protected override void ProcessRecord()
