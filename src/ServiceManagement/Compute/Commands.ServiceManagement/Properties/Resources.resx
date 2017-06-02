@@ -804,6 +804,6 @@
 {0}</value>
   </data>
   <data name="InvalidIPTagTypeException" xml:space="preserve">
-    <value>Desired IP Tag is an invalided IP Tag Type</value>
+    <value>Desired IP Tag is an invalid IP Tag Type</value>
   </data>
 </root>

@@ -9,9 +9,6 @@
 //------------------------------------------------------------------------------
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
-    using System;
-    
-    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -838,7 +835,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Desired IP Tag is an invalided IP Tag Type.
+        ///   Looks up a localized string similar to Desired IP Tag is an invalid IP Tag Type.
         /// </summary>
         public static string InvalidIPTagTypeException {
             get {
