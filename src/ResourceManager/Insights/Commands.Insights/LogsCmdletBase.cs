@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Insights
         private static readonly TimeSpan MaximumDateDifferenceAllowedInDays = TimeSpan.FromDays(15);
         private static readonly TimeSpan DefaultQueryTimeRange = TimeSpan.FromDays(7);
         private const int MaxNumberOfReturnedRecords = 1000;
-        private int MaxEvents = 0;
+        private int MaxRecords = 0;
 
         internal const string SubscriptionLevelName = "Query at subscription level";
         internal const string ResourceProviderName = "Query on ResourceProvider";
@@ -105,11 +105,11 @@ namespace Microsoft.Azure.Commands.Insights
         /// <summary>
         /// Sets the max number of records to fetch
         /// </summary>
-        protected virtual void SetMaxEventsIfPresent(string currentQueryFilter, string name, int value)
+        protected virtual void SetMaxEventsIfPresent(string currentQueryFilter, int value)
         {
             if (value > 0 && value <= 100000)
             {
-                this.MaxEvents = value;
+                this.MaxRecords = value;
             }
         }
 
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.Insights
         /// Validates that the range of dates (start / end) makes sense, it is not to great (less 15 days), and adds the defaul values if needed
         /// </summary>
         /// <returns>A query filter string with the time conditions</returns>
-        private string ValidateDateTimeRangeAndAdddefaults()
+        private string ValidateDateTimeRangeAndAddDefaults()
         {
             // EndTime is optional
             DateTime endTime = this.EndTime.HasValue ? this.EndTime.Value : DateTime.Now;
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Commands.Insights
         /// <returns>The query filter with the conditions for general parameters (i.e. defined by this class) added</returns>
         private string ProcessGeneralParameters()
         {
-            string queryFilter = this.ValidateDateTimeRangeAndAdddefaults();
+            string queryFilter = this.ValidateDateTimeRangeAndAddDefaults();
 
             // Include the status if present
             queryFilter = this.AddConditionIfPResent(queryFilter, "status", this.Status);
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Commands.Insights
             var fullDetails = this.DetailedOutput.IsPresent;
 
             //Number of records to retrieve
-            int maxNumberOfRecords = this.MaxEvents > 0 ? this.MaxEvents : MaxNumberOfReturnedRecords;
+            int maxNumberOfRecords = this.MaxRecords > 0 ? this.MaxRecords : MaxNumberOfReturnedRecords;
 
             // Call the proper API methods to return a list of raw records. In the future this pattern can be extended to include DigestRecords
             // If fullDetails is present do not select fields, if not present fetch only the SelectedFieldsForQuery
@@ -225,6 +225,7 @@ namespace Microsoft.Azure.Commands.Insights
             while (!string.IsNullOrWhiteSpace(nextLink) && records.Count < maxNumberOfRecords)
             {
                 response = this.MonitorClient.ActivityLogs.ListNextAsync(nextPageLink: nextLink, cancellationToken: CancellationToken.None).Result;
+                enumerator = response.GetEnumerator();
                 enumerator.ExtractCollectionFromResult(fullDetails: fullDetails, records: records, keepTheRecord: this.KeepTheRecord);
                 nextLink = response.NextPageLink;
             }
