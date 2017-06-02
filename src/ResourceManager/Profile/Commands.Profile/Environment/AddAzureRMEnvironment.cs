@@ -127,12 +127,6 @@ namespace Microsoft.Azure.Commands.Profile
                 throw new InvalidOperationException("The specified environment already exists. Use a different name to create a new environment.");
             }
 
-            var newEnvironment = new AzureEnvironment
-                                 {
-                                     Name = Name,
-                                     OnPremise = EnableAdfsAuthentication
-                                 };
-
             if (this.ParameterSetName.Equals(ArmParameterSet, StringComparison.Ordinal))
             {
                 MetadataResponse metadataEndpoints = null;
@@ -145,7 +139,14 @@ namespace Microsoft.Azure.Commands.Profile
                 AzureKeyVaultDnsSuffix = $"vault.{domain}".ToLowerInvariant();
                 AzureKeyVaultServiceEndpointResourceId = ($"https://vault.{domain}".ToLowerInvariant());
                 StorageEndpoint = domain;
+                EnableAdfsAuthentication = metadataEndpoints.authentication.LoginEndpoint.TrimEnd('/').EndsWith("/adfs", System.StringComparison.OrdinalIgnoreCase);
             }
+
+            var newEnvironment = new AzureEnvironment
+            {
+                Name = Name,
+                OnPremise = EnableAdfsAuthentication
+            };
 
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl] = PublishSettingsFileUrl;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.ServiceManagement] = ServiceEndpoint;
