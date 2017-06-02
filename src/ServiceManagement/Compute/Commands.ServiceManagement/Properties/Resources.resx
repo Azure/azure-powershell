@@ -803,7 +803,4 @@
     <value>Cannot deserialize sql configuration substatus message from Sql Server extension. Updating your Azure PowerShell SDK to the latest version may solve this problem. Settings string:
 {0}</value>
   </data>
-  <data name="InvalidIPTagTypeException" xml:space="preserve">
-    <value>Desired IP Tag is an invalid IP Tag Type</value>
-  </data>
 </root>
