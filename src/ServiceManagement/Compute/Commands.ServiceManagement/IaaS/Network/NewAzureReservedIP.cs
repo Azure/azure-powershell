@@ -132,7 +132,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                         ServiceName    = this.ServiceName,
                         DeploymentName = deploymentName,
                         VirtualIPName = this.VirtualIPName,
-                        IPTags = this.IPTagList
+                        IPTags = this.IPTagList,
                     };
 
                     return this.NetworkClient.ReservedIPs.Create(parameters);

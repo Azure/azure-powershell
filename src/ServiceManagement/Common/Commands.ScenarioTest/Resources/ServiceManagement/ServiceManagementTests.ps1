@@ -921,15 +921,15 @@ function Test-AzureReservedIPWithIPTags
     # Setu
     $name = getAssetName
     $location = "West Central US"
-	$iptag  = New-AzureIPTag -IPTagType "FirstPartyUsage" -Value "/tagTypes/SystemService/operators/Microsoft/platforms/Azure/services/Microsoft.AzureAD"
+    $iptag  = New-AzureIPTag -IPTagType "FirstPartyUsage" -Value "/tagTypes/SystemService/operators/Microsoft/platforms/Azure/services/Microsoft.AzureAD"
     # Test Create Reserved IP
     New-AzureReservedIP -ReservedIPName $name -Location $location -IPTagList $iptag
     $reservedIP = Get-AzureReservedIP -ReservedIPName $name 
-	#-IPTags $iptag
+    #-IPTags $iptag
     # Assert
     Assert-NotNull($reservedIP)
     Assert-AreEqual $reservedIP.Location $location
-	Assert-NotNull($reservedIP.IPTags)
+    Assert-NotNull($reservedIP.IPTags)
    
     #Test Remove reserved IP
     $removeReservedIP = Remove-AzureReservedIP -ReservedIPName $name -Force
