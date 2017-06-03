@@ -19,15 +19,27 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using StorageModels = Microsoft.Azure.Management.Storage.Models;
+using Microsoft.Azure.Commands.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
     /// <summary>
     /// Lists all storage services underneath the subscription.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, StorageAccountNounStr, SupportsShouldProcess = true), OutputType(typeof(StorageModels.StorageAccount))]
+    [Cmdlet(VerbsCommon.Set, StorageAccountNounStr, SupportsShouldProcess = true, DefaultParameterSetName = StorageEncryptionParameterSet), OutputType(typeof(StorageModels.StorageAccount))]
     public class SetAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {
+
+        /// <summary>
+        /// Storage Encryption parameter set name
+        /// </summary>
+        private const string StorageEncryptionParameterSet = "StorageEncryption";
+
+        /// <summary>
+        /// Keyvault Encryption parameter set name
+        /// </summary>
+        private const string KeyvaultEncryptionParameterSet = "KeyvaultEncryption";
+
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -120,8 +132,52 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 enableHttpsTrafficOnly = value;
             }
         }
-
         private bool? enableHttpsTrafficOnly = null;
+
+        [Parameter(HelpMessage = "Whether to set Storage Account Encryption KeySource to Microsoft.Storage or not.", Mandatory = false, ParameterSetName = StorageEncryptionParameterSet)]
+        public SwitchParameter StorageEncryption
+        {
+            get { return storageEncryption; }
+            set { storageEncryption = value; }
+        }
+        private bool storageEncryption = false;
+
+        [Parameter(HelpMessage = "Whether to set Storage Account encryption keySource to Microsoft.Keyvault or not. " +
+            "If you specify KeyName, KeyVersion and KeyvaultUri, Storage Account Encryption KeySource will also be set to Microsoft.Keyvault weather this parameter is set or not.", 
+            Mandatory = false, ParameterSetName = KeyvaultEncryptionParameterSet)]
+        public SwitchParameter KeyvaultEncryption
+        {
+            get { return keyvaultEncryption; }
+            set { keyvaultEncryption = value; }
+        }
+        private bool keyvaultEncryption = false;
+
+        [Parameter(HelpMessage = "Storage Account encryption keySource KeyVault KeyName",
+                    Mandatory = true,
+                    ParameterSetName = KeyvaultEncryptionParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string KeyName { get; set; }
+
+        [Parameter(HelpMessage = "Storage Account encryption keySource KeyVault KeyVersion",
+        Mandatory = true,
+        ParameterSetName = KeyvaultEncryptionParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string KeyVersion { get; set; }
+
+        [Parameter(HelpMessage = "Storage Account encryption keySource KeyVault KeyVaultUri",
+        Mandatory = true,
+        ParameterSetName = KeyvaultEncryptionParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string KeyVaultUri
+        {
+            get; set;
+        }
+
+        [Parameter(
+        Mandatory = false,
+        HelpMessage = "Storage Account Identity Type.")]
+        [ValidateSet("SystemAssigned",IgnoreCase = true)]
+        public string IdentityType { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -156,18 +212,27 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         throw new System.ArgumentException(string.Format("UseSubDomain must be set together with CustomDomainName."));
                     }
 
-                    if (this.EnableEncryptionService != null || this.DisableEncryptionService != null)
-                    {
-                        updateParameters.Encryption = ParseEncryption(EnableEncryptionService, DisableEncryptionService);
-                    }
-
                     if (this.AccessTier != null)
                     {
                         updateParameters.AccessTier = ParseAccessTier(AccessTier);
                     }
-                    if(enableHttpsTrafficOnly != null)
+                    if (enableHttpsTrafficOnly != null)
                     {
                         updateParameters.EnableHttpsTrafficOnly = enableHttpsTrafficOnly;
+                    }
+
+                    if (IdentityType != null)
+                    {
+                        updateParameters.Identity = new Identity();
+                    }
+
+                    if (this.EnableEncryptionService != null || this.DisableEncryptionService != null || StorageEncryption || (ParameterSetName == KeyvaultEncryptionParameterSet))
+                    {
+                        if (ParameterSetName == KeyvaultEncryptionParameterSet)
+                        {
+                            keyvaultEncryption = true;
+                        }
+                        updateParameters.Encryption = ParseEncryption(EnableEncryptionService, DisableEncryptionService, StorageEncryption, keyvaultEncryption, KeyName, KeyVersion, KeyVaultUri);
                     }
 
                     var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(
