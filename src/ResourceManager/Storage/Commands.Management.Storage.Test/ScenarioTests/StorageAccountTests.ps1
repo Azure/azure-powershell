@@ -310,7 +310,7 @@ function Test-SetAzureRmStorageAccountKeySource
         Assert-AreEqual $sto.Encryption.Keyvaultproperties.KeyVersion $null;
         Assert-AreEqual $sto.Encryption.Keyvaultproperties.KeyVaultUri $null;
 		
-		$sto = Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableEncryptionService File -IdentityType SystemAssigned
+		$sto = Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableEncryptionService File -AssignIdentity
         Assert-AreEqual $sto.StorageAccountName $stoname;
         Assert-AreEqual $sto.Sku.Name $stotype;
         Assert-AreEqual $sto.Location $loc;

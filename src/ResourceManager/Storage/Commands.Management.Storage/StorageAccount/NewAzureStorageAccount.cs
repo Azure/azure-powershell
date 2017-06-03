@@ -122,9 +122,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
         Mandatory = false,
-        HelpMessage = "Storage Account Identity Type.")]
-        [ValidateSet("SystemAssigned", IgnoreCase = true)]
-        public string IdentityType { get; set; }
+        HelpMessage = "Generate and assign a new Storage Account Identity for this storage account for use with key management services like Azure KeyVault.")]
+        public SwitchParameter AssignIdentity { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -176,7 +175,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 createParameters.EnableHttpsTrafficOnly = enableHttpsTrafficOnly;
             }
 
-            if (IdentityType != null)
+            if (AssignIdentity.IsPresent)
             {
                 createParameters.Identity = new Identity();
             }

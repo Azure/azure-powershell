@@ -16,7 +16,7 @@ Creates a Storage account.
 New-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <String>
  [-Location] <String> [[-Kind] <String>] [[-AccessTier] <String>] [[-CustomDomainName] <String>]
  [[-UseSubDomain] <Boolean>] [[-EnableEncryptionService] <EncryptionSupportServiceEnum>] [[-Tag] <Hashtable>]
- [-EnableHttpsTrafficOnly <Boolean>] [-IdentityType <String>] [-InformationAction <ActionPreference>]
+ [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-InformationAction <ActionPreference>]
  [-InformationVariable <String>] [<CommonParameters>]
 ```
 
@@ -25,14 +25,14 @@ The **New-AzureRmStorageAccount** cmdlet creates an Azure Storage account.
 
 ## EXAMPLES
 
-### Example 1: Create a Storage account
+### Example 1: Create a Storage Account
 ```
 PS C:\>New-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -Location "US West" -Type "Standard_GRS"
 ```
 
 This command creates a Storage account for the resource group name MyResourceGroup.
 
-### Example 2: Create a bBlob Storage account that uses Storage Service encryptionB
+### Example 2: Create a Blob Storage account that uses Storage Service Encryption
 ```
 PS C:\>New-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -Location "US West" -SkuName "Standard_GRS" -EnableEncryptionService Blob -Kind "BlobStorage" -AccessTier Hot
 ```
@@ -40,12 +40,13 @@ PS C:\>New-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountNa
 This command creates a Blob Storage account that uses the hot access type.
 The account has enabled Storage Service encryption on Blob Service.
 
-### Example 3: Create a Storage account that Enable Storage Service encryption on Blob and File Services, and set IdentityType to SystemAssigned.
+### Example 3: Create a Storage Account that Enables Storage Service Encryption on Blob and File Services, and Generate and Assign an Identity for Azure KeyVault.
 ```
-PS C:\>New-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -Location "US West" -SkuName "Standard_GRS" -EnableEncryptionService "Blob,File" -IdentityType SystemAssigned
+PS C:\>New-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -Location "US West" -SkuName "Standard_GRS" -EnableEncryptionService "Blob,File" -AssignIdentity
 ```
 
-This command creates a Storage account that enabled Storage Service encryption on Blob and File Services, IdentityType as SystemAssigned.
+This command creates a Storage account that enabled Storage Service encryption on Blob and File Services.  It also generates and assigns an identity that can be sued to manage 
+account keys through Azure KeyVault.
 
 ## PARAMETERS
 
@@ -64,6 +65,19 @@ Aliases:
 
 Required: False
 Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AssignIdentity
+Generate and assign a new Storage Account Identity for this storage account for use with key management services like Azure KeyVault.```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -111,19 +125,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -IdentityType
-Specifies Storage Account Identity Type. ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
