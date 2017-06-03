@@ -45,7 +45,7 @@ The account has enabled Storage Service encryption on Blob Service.
 PS C:\>New-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -Location "US West" -SkuName "Standard_GRS" -EnableEncryptionService "Blob,File" -AssignIdentity
 ```
 
-This command creates a Storage account that enabled Storage Service encryption on Blob and File Services.  It also generates and assigns an identity that can be sued to manage 
+This command creates a Storage account that enabled Storage Service encryption on Blob and File Services.  It also generates and assigns an identity that can be used to manage 
 account keys through Azure KeyVault.
 
 ## PARAMETERS
