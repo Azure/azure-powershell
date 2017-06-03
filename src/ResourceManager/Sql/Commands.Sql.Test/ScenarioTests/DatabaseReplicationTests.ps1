@@ -25,15 +25,6 @@ function Test-CreateDatabaseCopy
 	.SYNOPSIS
 	Tests creating a database copy
 #>
-function Test-CreateDatabaseCopyV2
-{
-	Test-CreateCopyInternal "2.0" "North Central US"
-}
-
-<#
-	.SYNOPSIS
-	Tests creating a database copy
-#>
 function Test-CreateCopyInternal ($serverVersion, $location = "North Europe")
 {
 	# Setup
@@ -81,15 +72,6 @@ function Test-CreateCopyInternal ($serverVersion, $location = "North Europe")
 function Test-CreateSecondaryDatabase
 {
 	Test-CreateSecondaryDatabaseInternal "12.0" "North Europe"
-}
-
-<#
-	.SYNOPSIS
-	Tests creating a secondary database
-#>
-function Test-CreateSecondaryDatabaseV2
-{
-	Test-CreateSecondaryDatabaseInternal "2.0" "North Central US"
 }
 
 <#
@@ -145,15 +127,6 @@ function Test-GetReplicationLink
 	.SYNOPSIS
 	Tests getting a secondary database
 #>
-function Test-GetReplicationLinkV2
-{
-	Test-GetReplicationLinkInternal "2.0" "North Central US"
-}
-
-<#
-	.SYNOPSIS
-	Tests getting a secondary database
-#>
 function Test-GetReplicationLinkInternal ($serverVersion, $location = "North Europe")
 {
 	# Setup
@@ -200,15 +173,6 @@ function Test-GetReplicationLinkInternal ($serverVersion, $location = "North Eur
 function Test-RemoveSecondaryDatabase
 {
 	Test-RemoveSecondaryDatabaseInternal "12.0" "North Europe"
-}
-
-<#
-	.SYNOPSIS
-	Tests removing a secondary database
-#>
-function Test-RemoveSecondaryDatabaseV2
-{
-	Test-RemoveSecondaryDatabaseInternal "2.0" "North Central US"
 }
 
 <#

@@ -25,15 +25,6 @@ function Test-CreateDatabase
 	.SYNOPSIS
 	Tests creating a database
 #>
-function Test-CreateDatabaseV2
-{
-	Test-CreateDatabaseInternal "2.0" "North Central US"
-}
-
-<#
-	.SYNOPSIS
-	Tests creating a database
-#>
 function Test-CreateDatabaseInternal ($serverVersion, $location = "Japan East")
 {
 	# Setup
@@ -42,38 +33,35 @@ function Test-CreateDatabaseInternal ($serverVersion, $location = "Japan East")
 
 	try
 	{
-		if ($serverVersion -ne "2.0")
-		{
-			# Create with default values
-			$databaseName = Get-DatabaseName
-			$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
-			Assert-AreEqual $db.DatabaseName $databaseName
-			Assert-NotNull $db.MaxSizeBytes
-			Assert-NotNull $db.Edition
-			Assert-NotNull $db.CurrentServiceObjectiveName
-			Assert-NotNull $db.CollationName
+		# Create with default values
+		$databaseName = Get-DatabaseName
+		$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+		Assert-AreEqual $db.DatabaseName $databaseName
+		Assert-NotNull $db.MaxSizeBytes
+		Assert-NotNull $db.Edition
+		Assert-NotNull $db.CurrentServiceObjectiveName
+		Assert-NotNull $db.CollationName
 
-			# Create with default values via piping
-			$databaseName = Get-DatabaseName
-			$db = $server | New-AzureRmSqlDatabase -DatabaseName $databaseName
-			Assert-AreEqual $db.DatabaseName $databaseName
-			Assert-NotNull $db.MaxSizeBytes
-			Assert-NotNull $db.Edition
-			Assert-NotNull $db.CurrentServiceObjectiveName
-			Assert-NotNull $db.CollationName
+		# Create with default values via piping
+		$databaseName = Get-DatabaseName
+		$db = $server | New-AzureRmSqlDatabase -DatabaseName $databaseName
+		Assert-AreEqual $db.DatabaseName $databaseName
+		Assert-NotNull $db.MaxSizeBytes
+		Assert-NotNull $db.Edition
+		Assert-NotNull $db.CurrentServiceObjectiveName
+		Assert-NotNull $db.CollationName
 
-			# Create data warehouse database with all parameters.
-			$databaseName = Get-DatabaseName
-			$collationName = "SQL_Latin1_General_CP1_CI_AS"
-			$maxSizeBytes = 250GB
-			$dwdb = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-					-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition DataWarehouse -RequestedServiceObjectiveName DW100
-			Assert-AreEqual $dwdb.DatabaseName $databaseName
-			Assert-AreEqual $dwdb.MaxSizeBytes $maxSizeBytes
-			Assert-AreEqual $dwdb.Edition DataWarehouse
-			Assert-AreEqual $dwdb.CurrentServiceObjectiveName DW100
-			Assert-AreEqual $dwdb.CollationName $collationName
-		}
+		# Create data warehouse database with all parameters.
+		$databaseName = Get-DatabaseName
+		$collationName = "SQL_Latin1_General_CP1_CI_AS"
+		$maxSizeBytes = 250GB
+		$dwdb = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+				-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition DataWarehouse -RequestedServiceObjectiveName DW100
+		Assert-AreEqual $dwdb.DatabaseName $databaseName
+		Assert-AreEqual $dwdb.MaxSizeBytes $maxSizeBytes
+		Assert-AreEqual $dwdb.Edition DataWarehouse
+		Assert-AreEqual $dwdb.CurrentServiceObjectiveName DW100
+		Assert-AreEqual $dwdb.CollationName $collationName
 		
 		# Create with all parameters
 		$databaseName = Get-DatabaseName
@@ -147,15 +135,6 @@ function Test-CreateDatabaseWithSampleName
 function Test-UpdateDatabase
 {
 	Test-UpdateDatabaseInternal "12.0" "Southeast Asia"
-}
-
-<#
-	.SYNOPSIS
-	Tests updating a database
-#>
-function Test-UpdateDatabaseV2
-{
-	Test-UpdateDatabaseInternal "2.0" "North Central US"
 }
 
 <#
@@ -263,15 +242,6 @@ function Test-GetDatabase
 	.SYNOPSIS
 	Tests Getting a database
 #>
-function Test-GetDatabaseV2
-{
-	Test-GetDatabaseInternal "2.0" "North Central US"
-}
-
-<#
-	.SYNOPSIS
-	Tests Getting a database
-#>
 function Test-GetDatabaseInternal  ($serverVersion, $location = "Japan East")
 {
 	# Setup
@@ -343,15 +313,6 @@ function Test-GetDatabaseInternal  ($serverVersion, $location = "Japan East")
 function Test-RemoveDatabase
 {
 	Test-RemoveDatabaseInternal "12.0" "Southeast Asia"
-}
-
-<#
-	.SYNOPSIS
-	Tests Deleting a database
-#>
-function Test-RemoveDatabaseV2
-{
-	Test-RemoveDatabaseInternal "2.0" "North Central US"
 }
 
 <#
