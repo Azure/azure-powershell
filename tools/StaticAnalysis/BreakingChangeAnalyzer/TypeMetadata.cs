@@ -126,9 +126,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 }
 
                 // Add the property to the dictionary
-                if (!_properties.ContainsKey(property.PropertyType.ToString()))
+                if (!_properties.ContainsKey(property.Name.ToString()))
                 {
-                    _properties.Add(property.PropertyType.ToString(), propertyType.ToString());
+                    _properties.Add(property.Name, propertyType.ToString());
                 }
             }
         }
