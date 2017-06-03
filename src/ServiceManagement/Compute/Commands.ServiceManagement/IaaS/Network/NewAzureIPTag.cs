@@ -25,7 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "IP Tag Type of desired IP address")]
         [ValidateSet(Management.Network.Models.IPTagType.IPAddressClassification, 
         Management.Network.Models.IPTagType.FirstPartyUsage, 
-        Management.Network.Models.IPTagType.AvailabilityZone, IgnoreCase = false)]
+        Management.Network.Models.IPTagType.AvailabilityZone, IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string IPTagType
         {
