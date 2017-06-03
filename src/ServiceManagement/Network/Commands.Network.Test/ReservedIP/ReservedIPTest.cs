@@ -465,27 +465,5 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Reserve
             Assert.Equal(ipTagType, iptag.IPTagType);
             Assert.Equal(value, iptag.Value);
         }
-
-        [Fact]
-        [Trait(Category.Service, Category.Network)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NewAzureIPTagTestNegative()
-        {
-            string ipTagType = "MyOwnTagType";
-            string value = "MyOwnValue";
-
-            NewAzureIPTagCommand cmdlet = new NewAzureIPTagCommand()
-            {
-                CommandRuntime = mockCommandRuntime,
-                IPTagType = ipTagType,
-                Value = value
-            };
-
-            // Execute Cmdlet
-            IEnumerable objs = cmdlet.Invoke();
-            foreach (var x in objs) ;
-
-            Assert.Equal(0, mockCommandRuntime.OutputPipeline.Count);
-        }
     }
 }
