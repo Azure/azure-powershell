@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
             return new PSADObject()
             {
                 DisplayName = user.DisplayName,
-                Id = new Guid(user.ObjectId)
+                Id = user.ObjectId
             };
         }
 
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
             return new PSADObject()
             {
                 DisplayName = group.DisplayName,
-                Id = new Guid(group.ObjectId)
+                Id = group.ObjectId
             };
         }
 
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                 return new PSADUser()
                 {
                     DisplayName = obj.DisplayName,
-                    Id = new Guid(obj.ObjectId),
+                    Id = obj.ObjectId,
                     Type = obj.ObjectType,
                     UserPrincipalName = obj.UserPrincipalName,
                     Mail = obj.Mail
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                 {
                     DisplayName = obj.DisplayName,
                     Type = obj.ObjectType,
-                    Id = new Guid(obj.ObjectId),
+                    Id = obj.ObjectId,
                     SecurityEnabled = obj.SecurityEnabled/*,
                     Mail = group.Mail*/
                 };
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                 return new PSADServicePrincipal()
                 {
                     DisplayName = obj.DisplayName,
-                    Id = new Guid(obj.ObjectId),
+                    Id = obj.ObjectId,
                     Type = obj.ObjectType,
                     ServicePrincipalName = obj.ServicePrincipalNames.FirstOrDefault()
                 };
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                 return new PSADObject()
                 {
                     DisplayName = obj.DisplayName,
-                    Id = new Guid(obj.ObjectId),
+                    Id = obj.ObjectId,
                     Type = obj.ObjectType
                 };
             }
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
             return new PSADObject()
             {
                 DisplayName = obj.DisplayName,
-                Id = new Guid(obj.ObjectId)
+                Id = obj.ObjectId
             };
         }
 
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
             return new PSADUser()
             {
                 DisplayName = user.DisplayName,
-                Id = new Guid(user.ObjectId),
+                Id = user.ObjectId,
                 UserPrincipalName = user.UserPrincipalName,
                 Mail = user.Mail 
             };
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
             return new PSADGroup()
             {
                 DisplayName = group.DisplayName,
-                Id = new Guid(group.ObjectId),
+                Id = group.ObjectId,
                 SecurityEnabled = group.SecurityEnabled/*,
                 Mail = group.Mail*/
             };
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
             return new PSADServicePrincipal()
             {
                 DisplayName = servicePrincipal.DisplayName,
-                Id = new Guid(servicePrincipal.ObjectId),
+                Id = servicePrincipal.ObjectId,
                 ApplicationId = Guid.Parse(servicePrincipal.AppId),
                 ServicePrincipalName = servicePrincipal.ServicePrincipalNames.FirstOrDefault()
             };
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
             {
                 return new PSADApplication()
                 {
-                    ApplicationObjectId = Guid.Parse(application.ObjectId),
+                    ApplicationObjectId = application.ObjectId,
                     Type = application.ObjectType,
                     ApplicationId = Guid.Parse(application.AppId),
                     IdentifierUris = application.IdentifierUris,

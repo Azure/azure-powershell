@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
         public string RoleDefinitionId { get; set; }
 
-        public Guid ObjectId { get; set; }
+        public string ObjectId { get; set; }
 
         public string ObjectType { get; set; }
     }
