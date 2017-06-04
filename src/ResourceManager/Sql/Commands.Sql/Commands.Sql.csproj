@@ -52,6 +52,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Advisor\Cmdlet\AdvisorAutoExecuteStatus.cs" />
+    <Compile Include="Auditing\Cmdlet\BlobAuditing\GetAzureSqlDatabaseBlobAuditingPolicy.cs" />
+    <Compile Include="Auditing\Cmdlet\BlobAuditing\GetAzureSqlServerBlobAuditingPolicy.cs" />
+    <Compile Include="Auditing\Cmdlet\BlobAuditing\RemoveSqlDatabaseBlobAuditing.cs" />
+    <Compile Include="Auditing\Cmdlet\BlobAuditing\RemoveSqlServerBlobAuditing.cs" />
+    <Compile Include="Auditing\Cmdlet\BlobAuditing\SetAzureSqlDatabaseBlobAuditingPolicy.cs" />
+    <Compile Include="Auditing\Cmdlet\BlobAuditing\SetAzureSqlServerBlobAuditingPolicy.cs" />
+    <Compile Include="Auditing\Cmdlet\BlobAuditing\SqlDatabaseBlobAuditingCmdletBase.cs" />
+    <Compile Include="Auditing\Cmdlet\BlobAuditing\SqlServerBlobAuditingCmdletBase.cs" />
+    <Compile Include="Auditing\Model\DatabaseBlobAuditingPolicyModelV2.cs" />
+    <Compile Include="Auditing\Model\ServerBlobAuditingPolicyModelV2.cs" />
     <Compile Include="Database\Model\DatabaseReadScale.cs" />
     <Compile Include="Database\Model\AzureSqlDatabaseCreateOrUpdateModel.cs" />
     <Compile Include="Failover Group\Cmdlet\AddAzureSqlDatabaseToFailoverGroup.cs" />

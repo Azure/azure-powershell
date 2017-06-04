@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             var otherAuditingTypePolicyModel = GetEntity();
             if (otherAuditingTypePolicyModel != null)
             {
-                if (otherAuditingTypePolicyModel.AuditType == AuditType.Table)
+                if (AuditType == AuditType.Table)
                 {
                     ApplyUserInputToTableAuditingModel(otherAuditingTypePolicyModel as DatabaseAuditingPolicyModel);
                 }
