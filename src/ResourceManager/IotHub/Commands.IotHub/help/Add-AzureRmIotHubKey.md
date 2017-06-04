@@ -63,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrimaryKey
-PrimaryKey
+The primary key
 
 ```yaml
 Type: String
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -Rights
-Rights
+The permissions for this IOTHub
 
 ```yaml
 Type: PSAccessRights
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 ```
 
 ### -SecondaryKey
-The SecondaryKey
+The Secondary Key
 
 ```yaml
 Type: String
