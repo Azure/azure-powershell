@@ -21,6 +21,8 @@
 * Added new GatewaySku options for VirtualNetworkGateways
     - VpnGw1, VpnGw2, VpnGw3 are the new Skus added for Vpn gateways
 
+## Version 4.0.1
+
 ## Version 4.0.0
 * Added Test-AzureRmNetworkWatcherConnectivity cmdlet
     - Returns connectivity information for a specified source VM and a destination
