@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Commands.Sql.Auditing.Services;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
@@ -86,6 +87,14 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             return null;
         }
 
+        /// <summary>
+        /// Execute the cmdlet
+        /// </summary>
+        protected override void ProcessRecord()
+        {
+            SqlDatabaseServerAuditingCmdletBase.PrintDeprecationMessageForAuditingCmdlets(this);
+            base.ProcessRecord();
+        }
 
         private AuditingPolicyModel GetEntityHelper()
         {

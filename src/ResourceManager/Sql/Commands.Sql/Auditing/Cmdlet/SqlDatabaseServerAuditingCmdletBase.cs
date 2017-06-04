@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Commands.Sql.Auditing.Services;
 using Microsoft.Azure.Commands.Sql.Common;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
@@ -91,6 +92,33 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                     DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
             }
             return null;
+        }
+
+        /// <summary>
+        /// Execute the cmdlet
+        /// </summary>
+        protected override void ProcessRecord()
+        {
+            PrintDeprecationMessageForAuditingCmdlets(this);
+            base.ProcessRecord();
+        }
+
+        /// <summary>
+        /// Print deprecation message for auditing cmdlets
+        /// </summary>
+        /// <param name="cmdlet">The cmdlet</param>
+        public static void PrintDeprecationMessageForAuditingCmdlets(AzureSqlCmdletBase<AuditingPolicyModel, SqlAuditAdapter> cmdlet)
+        {
+            // Get instance of the cmdlet attribute, in order to include it in the deprecation message.
+            CmdletAttribute cmdletAttribute =
+            (CmdletAttribute)Attribute.GetCustomAttribute(cmdlet.GetType(), typeof(CmdletAttribute));
+
+            if (cmdletAttribute != null)
+            {
+                string cmdletName = string.Format("{0}-{1}", cmdletAttribute.VerbName, cmdletAttribute.NounName);
+                // Deprecation message
+                cmdlet.WriteWarning(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.DeprecatedCmdletUsageWarning, cmdletName));
+            }
         }
 
         private AuditingPolicyModel GetEntityHelper()

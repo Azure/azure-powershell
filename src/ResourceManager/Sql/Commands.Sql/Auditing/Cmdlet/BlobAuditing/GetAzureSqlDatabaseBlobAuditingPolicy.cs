@@ -12,16 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Sql.Auditing.Model
+using Microsoft.Azure.Commands.Sql.Auditing.Model;
+using System.Management.Automation;
+
+namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
     /// <summary>
-    /// The class that defines the model of database blob auditing policy
+    /// Returns the blob auditing policy of a specific database.
     /// </summary>
-    public class DatabaseBlobAuditingPolicyModel : DatabaseBlobAuditingPolicyModelV2
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseBlobAuditingPolicy", SupportsShouldProcess = true), OutputType(typeof (DatabaseBlobAuditingPolicyModelV2))]
+    public class GetAzureSqlDatabaseBlobAuditingPolicy : SqlDatabaseBlobAuditingCmdletBase
     {
         /// <summary>
-        /// Gets or sets the audit type
+        /// No sending is needed as this is a Get cmdlet
         /// </summary>
-        public AuditType AuditType { get; set; }
+        /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
+        protected override DatabaseBlobAuditingPolicyModelV2 PersistChanges(DatabaseBlobAuditingPolicyModelV2 model)
+        {
+            return null;
+        }
     }
 }
