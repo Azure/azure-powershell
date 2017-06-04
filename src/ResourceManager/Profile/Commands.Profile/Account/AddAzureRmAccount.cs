@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.Profile
         protected IAzureEnvironment _environment =AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
 
         [Parameter(Mandatory = false, HelpMessage = "Name of the environment containing the account to log into")]
+        [Alias("EnvironmentName")]
         [ValidateNotNullOrEmpty]
         public string Environment { get; set; }
 
