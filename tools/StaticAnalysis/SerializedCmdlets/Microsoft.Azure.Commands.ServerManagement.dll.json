@@ -81,9 +81,17 @@
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Session",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Created": "System.Nullable`1[System.DateTime]",
+              "Updated": "System.Nullable`1[System.DateTime]",
+              "ResourceGroupName": "System.String",
+              "NodeName": "System.String",
+              "UserName": "System.String",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -292,9 +300,17 @@
                   "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Session",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-                    "System.String": "System.String"
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Created": "System.Nullable`1[System.DateTime]",
+                    "Updated": "System.Nullable`1[System.DateTime]",
+                    "ResourceGroupName": "System.String",
+                    "NodeName": "System.String",
+                    "UserName": "System.String",
+                    "Id": "System.String",
+                    "Type": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String",
+                    "Etag": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -467,9 +483,17 @@
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Session",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Created": "System.Nullable`1[System.DateTime]",
+              "Updated": "System.Nullable`1[System.DateTime]",
+              "ResourceGroupName": "System.String",
+              "NodeName": "System.String",
+              "UserName": "System.String",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -536,9 +560,18 @@
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Node",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Created": "System.Nullable`1[System.DateTime]",
+              "Updated": "System.Nullable`1[System.DateTime]",
+              "ResourceGroupName": "System.String",
+              "GatewayName": "System.String",
+              "GatewayId": "System.String",
+              "ConnectionName": "System.String",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -556,9 +589,17 @@
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Session",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Created": "System.Nullable`1[System.DateTime]",
+              "Updated": "System.Nullable`1[System.DateTime]",
+              "ResourceGroupName": "System.String",
+              "NodeName": "System.String",
+              "UserName": "System.String",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -675,9 +716,17 @@
                   "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Session",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-                    "System.String": "System.String"
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Created": "System.Nullable`1[System.DateTime]",
+                    "Updated": "System.Nullable`1[System.DateTime]",
+                    "ResourceGroupName": "System.String",
+                    "NodeName": "System.String",
+                    "UserName": "System.String",
+                    "Id": "System.String",
+                    "Type": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String",
+                    "Etag": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -706,9 +755,18 @@
                   "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Node",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-                    "System.String": "System.String"
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Created": "System.Nullable`1[System.DateTime]",
+                    "Updated": "System.Nullable`1[System.DateTime]",
+                    "ResourceGroupName": "System.String",
+                    "GatewayName": "System.String",
+                    "GatewayId": "System.String",
+                    "ConnectionName": "System.String",
+                    "Id": "System.String",
+                    "Type": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String",
+                    "Etag": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -744,9 +802,17 @@
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Session",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Created": "System.Nullable`1[System.DateTime]",
+              "Updated": "System.Nullable`1[System.DateTime]",
+              "ResourceGroupName": "System.String",
+              "NodeName": "System.String",
+              "UserName": "System.String",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -797,9 +863,18 @@
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Node",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Created": "System.Nullable`1[System.DateTime]",
+              "Updated": "System.Nullable`1[System.DateTime]",
+              "ResourceGroupName": "System.String",
+              "GatewayName": "System.String",
+              "GatewayId": "System.String",
+              "ConnectionName": "System.String",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -948,9 +1023,18 @@
                   "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Node",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-                    "System.String": "System.String"
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Created": "System.Nullable`1[System.DateTime]",
+                    "Updated": "System.Nullable`1[System.DateTime]",
+                    "ResourceGroupName": "System.String",
+                    "GatewayName": "System.String",
+                    "GatewayId": "System.String",
+                    "ConnectionName": "System.String",
+                    "Id": "System.String",
+                    "Type": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String",
+                    "Etag": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1130,9 +1214,17 @@
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Session",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Created": "System.Nullable`1[System.DateTime]",
+              "Updated": "System.Nullable`1[System.DateTime]",
+              "ResourceGroupName": "System.String",
+              "NodeName": "System.String",
+              "UserName": "System.String",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1249,9 +1341,17 @@
                   "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Session",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-                    "System.String": "System.String"
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Created": "System.Nullable`1[System.DateTime]",
+                    "Updated": "System.Nullable`1[System.DateTime]",
+                    "ResourceGroupName": "System.String",
+                    "NodeName": "System.String",
+                    "UserName": "System.String",
+                    "Id": "System.String",
+                    "Type": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String",
+                    "Etag": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1287,9 +1387,18 @@
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Node",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Created": "System.Nullable`1[System.DateTime]",
+              "Updated": "System.Nullable`1[System.DateTime]",
+              "ResourceGroupName": "System.String",
+              "GatewayName": "System.String",
+              "GatewayId": "System.String",
+              "ConnectionName": "System.String",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1340,9 +1449,18 @@
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Node",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Created": "System.Nullable`1[System.DateTime]",
+              "Updated": "System.Nullable`1[System.DateTime]",
+              "ResourceGroupName": "System.String",
+              "GatewayName": "System.String",
+              "GatewayId": "System.String",
+              "ConnectionName": "System.String",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1415,9 +1533,18 @@
                   "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Node",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-                    "System.String": "System.String"
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Created": "System.Nullable`1[System.DateTime]",
+                    "Updated": "System.Nullable`1[System.DateTime]",
+                    "ResourceGroupName": "System.String",
+                    "GatewayName": "System.String",
+                    "GatewayId": "System.String",
+                    "ConnectionName": "System.String",
+                    "Id": "System.String",
+                    "Type": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String",
+                    "Etag": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1453,9 +1580,18 @@
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Node",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Created": "System.Nullable`1[System.DateTime]",
+              "Updated": "System.Nullable`1[System.DateTime]",
+              "ResourceGroupName": "System.String",
+              "GatewayName": "System.String",
+              "GatewayId": "System.String",
+              "ConnectionName": "System.String",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1522,12 +1658,21 @@
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
-              "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
+              "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
+              "Created": "System.Nullable`1[System.DateTime]",
+              "Updated": "System.Nullable`1[System.DateTime]",
+              "PublishedTimeUtc": "System.Nullable`1[System.DateTime]",
+              "ActiveMessageCount": "System.Nullable`1[System.Int32]",
+              "ResourceGroupName": "System.String",
+              "DesiredVersion": "System.String",
+              "LatestPublishedMsiVersion": "System.String",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1774,12 +1919,21 @@
                   "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
-                    "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
-                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-                    "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-                    "System.String": "System.String"
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
+                    "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
+                    "Created": "System.Nullable`1[System.DateTime]",
+                    "Updated": "System.Nullable`1[System.DateTime]",
+                    "PublishedTimeUtc": "System.Nullable`1[System.DateTime]",
+                    "ActiveMessageCount": "System.Nullable`1[System.Int32]",
+                    "ResourceGroupName": "System.String",
+                    "DesiredVersion": "System.String",
+                    "LatestPublishedMsiVersion": "System.String",
+                    "Id": "System.String",
+                    "Type": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String",
+                    "Etag": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2031,9 +2185,18 @@
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Node",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Created": "System.Nullable`1[System.DateTime]",
+              "Updated": "System.Nullable`1[System.DateTime]",
+              "ResourceGroupName": "System.String",
+              "GatewayName": "System.String",
+              "GatewayId": "System.String",
+              "ConnectionName": "System.String",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2106,9 +2269,18 @@
                   "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Node",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-                    "System.String": "System.String"
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Created": "System.Nullable`1[System.DateTime]",
+                    "Updated": "System.Nullable`1[System.DateTime]",
+                    "ResourceGroupName": "System.String",
+                    "GatewayName": "System.String",
+                    "GatewayId": "System.String",
+                    "ConnectionName": "System.String",
+                    "Id": "System.String",
+                    "Type": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String",
+                    "Etag": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2144,12 +2316,21 @@
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
-              "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
+              "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
+              "Created": "System.Nullable`1[System.DateTime]",
+              "Updated": "System.Nullable`1[System.DateTime]",
+              "PublishedTimeUtc": "System.Nullable`1[System.DateTime]",
+              "ActiveMessageCount": "System.Nullable`1[System.Int32]",
+              "ResourceGroupName": "System.String",
+              "DesiredVersion": "System.String",
+              "LatestPublishedMsiVersion": "System.String",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2376,12 +2557,21 @@
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
-              "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
+              "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
+              "Created": "System.Nullable`1[System.DateTime]",
+              "Updated": "System.Nullable`1[System.DateTime]",
+              "PublishedTimeUtc": "System.Nullable`1[System.DateTime]",
+              "ActiveMessageCount": "System.Nullable`1[System.Int32]",
+              "ResourceGroupName": "System.String",
+              "DesiredVersion": "System.String",
+              "LatestPublishedMsiVersion": "System.String",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2432,12 +2622,21 @@
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
-              "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
+              "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
+              "Created": "System.Nullable`1[System.DateTime]",
+              "Updated": "System.Nullable`1[System.DateTime]",
+              "PublishedTimeUtc": "System.Nullable`1[System.DateTime]",
+              "ActiveMessageCount": "System.Nullable`1[System.Int32]",
+              "ResourceGroupName": "System.String",
+              "DesiredVersion": "System.String",
+              "LatestPublishedMsiVersion": "System.String",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2537,12 +2736,21 @@
                   "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
-                    "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
-                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-                    "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-                    "System.String": "System.String"
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
+                    "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
+                    "Created": "System.Nullable`1[System.DateTime]",
+                    "Updated": "System.Nullable`1[System.DateTime]",
+                    "PublishedTimeUtc": "System.Nullable`1[System.DateTime]",
+                    "ActiveMessageCount": "System.Nullable`1[System.Int32]",
+                    "ResourceGroupName": "System.String",
+                    "DesiredVersion": "System.String",
+                    "LatestPublishedMsiVersion": "System.String",
+                    "Id": "System.String",
+                    "Type": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String",
+                    "Etag": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2613,12 +2821,21 @@
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
-              "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
+              "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
+              "Created": "System.Nullable`1[System.DateTime]",
+              "Updated": "System.Nullable`1[System.DateTime]",
+              "PublishedTimeUtc": "System.Nullable`1[System.DateTime]",
+              "ActiveMessageCount": "System.Nullable`1[System.Int32]",
+              "ResourceGroupName": "System.String",
+              "DesiredVersion": "System.String",
+              "LatestPublishedMsiVersion": "System.String",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2691,12 +2908,21 @@
                   "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
-                    "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
-                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-                    "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-                    "System.String": "System.String"
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
+                    "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
+                    "Created": "System.Nullable`1[System.DateTime]",
+                    "Updated": "System.Nullable`1[System.DateTime]",
+                    "PublishedTimeUtc": "System.Nullable`1[System.DateTime]",
+                    "ActiveMessageCount": "System.Nullable`1[System.Int32]",
+                    "ResourceGroupName": "System.String",
+                    "DesiredVersion": "System.String",
+                    "LatestPublishedMsiVersion": "System.String",
+                    "Id": "System.String",
+                    "Type": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String",
+                    "Etag": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2826,12 +3052,21 @@
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
-              "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
+              "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
+              "Created": "System.Nullable`1[System.DateTime]",
+              "Updated": "System.Nullable`1[System.DateTime]",
+              "PublishedTimeUtc": "System.Nullable`1[System.DateTime]",
+              "ActiveMessageCount": "System.Nullable`1[System.Int32]",
+              "ResourceGroupName": "System.String",
+              "DesiredVersion": "System.String",
+              "LatestPublishedMsiVersion": "System.String",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2904,12 +3139,21 @@
                   "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
-                    "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
-                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-                    "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-                    "System.String": "System.String"
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
+                    "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
+                    "Created": "System.Nullable`1[System.DateTime]",
+                    "Updated": "System.Nullable`1[System.DateTime]",
+                    "PublishedTimeUtc": "System.Nullable`1[System.DateTime]",
+                    "ActiveMessageCount": "System.Nullable`1[System.Int32]",
+                    "ResourceGroupName": "System.String",
+                    "DesiredVersion": "System.String",
+                    "LatestPublishedMsiVersion": "System.String",
+                    "Id": "System.String",
+                    "Type": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String",
+                    "Etag": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3010,12 +3254,21 @@
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
-              "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
+              "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
+              "Created": "System.Nullable`1[System.DateTime]",
+              "Updated": "System.Nullable`1[System.DateTime]",
+              "PublishedTimeUtc": "System.Nullable`1[System.DateTime]",
+              "ActiveMessageCount": "System.Nullable`1[System.Int32]",
+              "ResourceGroupName": "System.String",
+              "DesiredVersion": "System.String",
+              "LatestPublishedMsiVersion": "System.String",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3137,12 +3390,21 @@
                   "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
-                    "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
-                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-                    "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-                    "System.String": "System.String"
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
+                    "AutoUpgrade": "System.Nullable`1[Microsoft.Azure.Management.ServerManagement.Models.AutoUpgrade]",
+                    "Created": "System.Nullable`1[System.DateTime]",
+                    "Updated": "System.Nullable`1[System.DateTime]",
+                    "PublishedTimeUtc": "System.Nullable`1[System.DateTime]",
+                    "ActiveMessageCount": "System.Nullable`1[System.Int32]",
+                    "ResourceGroupName": "System.String",
+                    "DesiredVersion": "System.String",
+                    "LatestPublishedMsiVersion": "System.String",
+                    "Id": "System.String",
+                    "Type": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String",
+                    "Etag": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3342,10 +3604,17 @@
       "Name": "Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus, Microsoft.Azure.Management.ServerManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-        "System.Nullable`1[System.Double]": "System.Nullable`1[System.Double]",
-        "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-        "System.String": "System.String"
+        "InstalledDate": "System.Nullable`1[System.DateTime]",
+        "StatusUpdated": "System.Nullable`1[System.DateTime]",
+        "AvailableMemoryMByte": "System.Nullable`1[System.Double]",
+        "GatewayCpuUtilizationPercent": "System.Nullable`1[System.Double]",
+        "TotalCpuUtilizationPercent": "System.Nullable`1[System.Double]",
+        "GatewayWorkingSetMByte": "System.Nullable`1[System.Double]",
+        "LogicalProcessorCount": "System.Nullable`1[System.Int32]",
+        "GatewayVersion": "System.String",
+        "FriendlyOsName": "System.String",
+        "Name": "System.String",
+        "GatewayId": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []

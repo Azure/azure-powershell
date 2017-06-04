@@ -16,13 +16,20 @@
             "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountAgreement",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountAgreement, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.Logic.Models.AgreementContent": "Microsoft.Azure.Management.Logic.Models.AgreementContent",
-              "Microsoft.Azure.Management.Logic.Models.AgreementType": "Microsoft.Azure.Management.Logic.Models.AgreementType",
-              "Microsoft.Azure.Management.Logic.Models.BusinessIdentity": "Microsoft.Azure.Management.Logic.Models.BusinessIdentity",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Object": "System.Object",
-              "System.String": "System.String"
+              "Content": "Microsoft.Azure.Management.Logic.Models.AgreementContent",
+              "AgreementType": "Microsoft.Azure.Management.Logic.Models.AgreementType",
+              "HostIdentity": "Microsoft.Azure.Management.Logic.Models.BusinessIdentity",
+              "GuestIdentity": "Microsoft.Azure.Management.Logic.Models.BusinessIdentity",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "CreatedTime": "System.Nullable`1[System.DateTime]",
+              "ChangedTime": "System.Nullable`1[System.DateTime]",
+              "Metadata": "System.Object",
+              "HostPartner": "System.String",
+              "GuestPartner": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -194,7 +201,7 @@
             "Name": "Microsoft.Azure.Management.Logic.Models.CallbackUrl",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.CallbackUrl, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "System.String": "System.String"
+              "Value": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -355,11 +362,16 @@
             "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountCertificate",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountCertificate, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.Logic.Models.KeyVaultKeyReference": "Microsoft.Azure.Management.Logic.Models.KeyVaultKeyReference",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Object": "System.Object",
-              "System.String": "System.String"
+              "Key": "Microsoft.Azure.Management.Logic.Models.KeyVaultKeyReference",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "CreatedTime": "System.Nullable`1[System.DateTime]",
+              "ChangedTime": "System.Nullable`1[System.DateTime]",
+              "Metadata": "System.Object",
+              "PublicCertificate": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -531,10 +543,13 @@
             "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccount",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.IntegrationAccount, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.Logic.Models.IntegrationAccountSku": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountSku",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Object": "System.Object",
-              "System.String": "System.String"
+              "Sku": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountSku",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Properties": "System.Object",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -668,10 +683,10 @@
             "Name": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber, Microsoft.Azure.Commands.LogicApp, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.DateTime": "System.DateTime",
-              "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]": "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]",
-              "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-              "System.String": "System.String"
+              "ControlNumberChangedTime": "System.DateTime",
+              "MessageType": "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]",
+              "IsMessageProcessingFailed": "System.Nullable`1[System.Boolean]",
+              "ControlNumber": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -889,13 +904,19 @@
             "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountMap",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountMap, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.Logic.Models.ContentLink": "Microsoft.Azure.Management.Logic.Models.ContentLink",
-              "Microsoft.Azure.Management.Logic.Models.IntegrationAccountMapPropertiesParametersSchema": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountMapPropertiesParametersSchema",
-              "Microsoft.Azure.Management.Logic.Models.MapType": "Microsoft.Azure.Management.Logic.Models.MapType",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Object": "System.Object",
-              "System.String": "System.String"
+              "ContentLink": "Microsoft.Azure.Management.Logic.Models.ContentLink",
+              "ParametersSchema": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountMapPropertiesParametersSchema",
+              "MapType": "Microsoft.Azure.Management.Logic.Models.MapType",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "CreatedTime": "System.Nullable`1[System.DateTime]",
+              "ChangedTime": "System.Nullable`1[System.DateTime]",
+              "Content": "System.Object",
+              "Metadata": "System.Object",
+              "ContentType": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1067,12 +1088,16 @@
             "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountPartner",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountPartner, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.Logic.Models.PartnerContent": "Microsoft.Azure.Management.Logic.Models.PartnerContent",
-              "Microsoft.Azure.Management.Logic.Models.PartnerType": "Microsoft.Azure.Management.Logic.Models.PartnerType",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Object": "System.Object",
-              "System.String": "System.String"
+              "Content": "Microsoft.Azure.Management.Logic.Models.PartnerContent",
+              "PartnerType": "Microsoft.Azure.Management.Logic.Models.PartnerType",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "CreatedTime": "System.Nullable`1[System.DateTime]",
+              "ChangedTime": "System.Nullable`1[System.DateTime]",
+              "Metadata": "System.Object",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1244,10 +1269,10 @@
             "Name": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber, Microsoft.Azure.Commands.LogicApp, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.DateTime": "System.DateTime",
-              "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]": "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]",
-              "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-              "System.String": "System.String"
+              "ControlNumberChangedTime": "System.DateTime",
+              "MessageType": "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]",
+              "IsMessageProcessingFailed": "System.Nullable`1[System.Boolean]",
+              "ControlNumber": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1488,12 +1513,21 @@
             "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountSchema",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountSchema, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.Logic.Models.ContentLink": "Microsoft.Azure.Management.Logic.Models.ContentLink",
-              "Microsoft.Azure.Management.Logic.Models.SchemaType": "Microsoft.Azure.Management.Logic.Models.SchemaType",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Object": "System.Object",
-              "System.String": "System.String"
+              "ContentLink": "Microsoft.Azure.Management.Logic.Models.ContentLink",
+              "SchemaType": "Microsoft.Azure.Management.Logic.Models.SchemaType",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "CreatedTime": "System.Nullable`1[System.DateTime]",
+              "ChangedTime": "System.Nullable`1[System.DateTime]",
+              "Metadata": "System.Object",
+              "Content": "System.Object",
+              "TargetNamespace": "System.String",
+              "DocumentName": "System.String",
+              "FileName": "System.String",
+              "ContentType": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1665,13 +1699,20 @@
             "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountAgreement",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountAgreement, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.Logic.Models.AgreementContent": "Microsoft.Azure.Management.Logic.Models.AgreementContent",
-              "Microsoft.Azure.Management.Logic.Models.AgreementType": "Microsoft.Azure.Management.Logic.Models.AgreementType",
-              "Microsoft.Azure.Management.Logic.Models.BusinessIdentity": "Microsoft.Azure.Management.Logic.Models.BusinessIdentity",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Object": "System.Object",
-              "System.String": "System.String"
+              "Content": "Microsoft.Azure.Management.Logic.Models.AgreementContent",
+              "AgreementType": "Microsoft.Azure.Management.Logic.Models.AgreementType",
+              "HostIdentity": "Microsoft.Azure.Management.Logic.Models.BusinessIdentity",
+              "GuestIdentity": "Microsoft.Azure.Management.Logic.Models.BusinessIdentity",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "CreatedTime": "System.Nullable`1[System.DateTime]",
+              "ChangedTime": "System.Nullable`1[System.DateTime]",
+              "Metadata": "System.Object",
+              "HostPartner": "System.String",
+              "GuestPartner": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2216,11 +2257,16 @@
             "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountCertificate",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountCertificate, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.Logic.Models.KeyVaultKeyReference": "Microsoft.Azure.Management.Logic.Models.KeyVaultKeyReference",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Object": "System.Object",
-              "System.String": "System.String"
+              "Key": "Microsoft.Azure.Management.Logic.Models.KeyVaultKeyReference",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "CreatedTime": "System.Nullable`1[System.DateTime]",
+              "ChangedTime": "System.Nullable`1[System.DateTime]",
+              "Metadata": "System.Object",
+              "PublicCertificate": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3119,10 +3165,13 @@
             "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccount",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.IntegrationAccount, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.Logic.Models.IntegrationAccountSku": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountSku",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Object": "System.Object",
-              "System.String": "System.String"
+              "Sku": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountSku",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Properties": "System.Object",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3317,13 +3366,19 @@
             "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountMap",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountMap, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.Logic.Models.ContentLink": "Microsoft.Azure.Management.Logic.Models.ContentLink",
-              "Microsoft.Azure.Management.Logic.Models.IntegrationAccountMapPropertiesParametersSchema": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountMapPropertiesParametersSchema",
-              "Microsoft.Azure.Management.Logic.Models.MapType": "Microsoft.Azure.Management.Logic.Models.MapType",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Object": "System.Object",
-              "System.String": "System.String"
+              "ContentLink": "Microsoft.Azure.Management.Logic.Models.ContentLink",
+              "ParametersSchema": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountMapPropertiesParametersSchema",
+              "MapType": "Microsoft.Azure.Management.Logic.Models.MapType",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "CreatedTime": "System.Nullable`1[System.DateTime]",
+              "ChangedTime": "System.Nullable`1[System.DateTime]",
+              "Content": "System.Object",
+              "Metadata": "System.Object",
+              "ContentType": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3674,12 +3729,16 @@
             "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountPartner",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountPartner, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.Logic.Models.PartnerContent": "Microsoft.Azure.Management.Logic.Models.PartnerContent",
-              "Microsoft.Azure.Management.Logic.Models.PartnerType": "Microsoft.Azure.Management.Logic.Models.PartnerType",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Object": "System.Object",
-              "System.String": "System.String"
+              "Content": "Microsoft.Azure.Management.Logic.Models.PartnerContent",
+              "PartnerType": "Microsoft.Azure.Management.Logic.Models.PartnerType",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "CreatedTime": "System.Nullable`1[System.DateTime]",
+              "ChangedTime": "System.Nullable`1[System.DateTime]",
+              "Metadata": "System.Object",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3954,12 +4013,21 @@
             "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountSchema",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountSchema, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.Logic.Models.ContentLink": "Microsoft.Azure.Management.Logic.Models.ContentLink",
-              "Microsoft.Azure.Management.Logic.Models.SchemaType": "Microsoft.Azure.Management.Logic.Models.SchemaType",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Object": "System.Object",
-              "System.String": "System.String"
+              "ContentLink": "Microsoft.Azure.Management.Logic.Models.ContentLink",
+              "SchemaType": "Microsoft.Azure.Management.Logic.Models.SchemaType",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "CreatedTime": "System.Nullable`1[System.DateTime]",
+              "ChangedTime": "System.Nullable`1[System.DateTime]",
+              "Metadata": "System.Object",
+              "Content": "System.Object",
+              "TargetNamespace": "System.String",
+              "DocumentName": "System.String",
+              "FileName": "System.String",
+              "ContentType": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -5573,13 +5641,20 @@
             "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountAgreement",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountAgreement, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.Logic.Models.AgreementContent": "Microsoft.Azure.Management.Logic.Models.AgreementContent",
-              "Microsoft.Azure.Management.Logic.Models.AgreementType": "Microsoft.Azure.Management.Logic.Models.AgreementType",
-              "Microsoft.Azure.Management.Logic.Models.BusinessIdentity": "Microsoft.Azure.Management.Logic.Models.BusinessIdentity",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Object": "System.Object",
-              "System.String": "System.String"
+              "Content": "Microsoft.Azure.Management.Logic.Models.AgreementContent",
+              "AgreementType": "Microsoft.Azure.Management.Logic.Models.AgreementType",
+              "HostIdentity": "Microsoft.Azure.Management.Logic.Models.BusinessIdentity",
+              "GuestIdentity": "Microsoft.Azure.Management.Logic.Models.BusinessIdentity",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "CreatedTime": "System.Nullable`1[System.DateTime]",
+              "ChangedTime": "System.Nullable`1[System.DateTime]",
+              "Metadata": "System.Object",
+              "HostPartner": "System.String",
+              "GuestPartner": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -6162,11 +6237,16 @@
             "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountCertificate",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountCertificate, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.Logic.Models.KeyVaultKeyReference": "Microsoft.Azure.Management.Logic.Models.KeyVaultKeyReference",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Object": "System.Object",
-              "System.String": "System.String"
+              "Key": "Microsoft.Azure.Management.Logic.Models.KeyVaultKeyReference",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "CreatedTime": "System.Nullable`1[System.DateTime]",
+              "ChangedTime": "System.Nullable`1[System.DateTime]",
+              "Metadata": "System.Object",
+              "PublicCertificate": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -6551,10 +6631,13 @@
             "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccount",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.IntegrationAccount, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.Logic.Models.IntegrationAccountSku": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountSku",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Object": "System.Object",
-              "System.String": "System.String"
+              "Sku": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountSku",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Properties": "System.Object",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -6787,10 +6870,10 @@
             "Name": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber, Microsoft.Azure.Commands.LogicApp, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.DateTime": "System.DateTime",
-              "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]": "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]",
-              "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-              "System.String": "System.String"
+              "ControlNumberChangedTime": "System.DateTime",
+              "MessageType": "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]",
+              "IsMessageProcessingFailed": "System.Nullable`1[System.Boolean]",
+              "ControlNumber": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -7031,13 +7114,19 @@
             "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountMap",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountMap, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.Logic.Models.ContentLink": "Microsoft.Azure.Management.Logic.Models.ContentLink",
-              "Microsoft.Azure.Management.Logic.Models.IntegrationAccountMapPropertiesParametersSchema": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountMapPropertiesParametersSchema",
-              "Microsoft.Azure.Management.Logic.Models.MapType": "Microsoft.Azure.Management.Logic.Models.MapType",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Object": "System.Object",
-              "System.String": "System.String"
+              "ContentLink": "Microsoft.Azure.Management.Logic.Models.ContentLink",
+              "ParametersSchema": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountMapPropertiesParametersSchema",
+              "MapType": "Microsoft.Azure.Management.Logic.Models.MapType",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "CreatedTime": "System.Nullable`1[System.DateTime]",
+              "ChangedTime": "System.Nullable`1[System.DateTime]",
+              "Content": "System.Object",
+              "Metadata": "System.Object",
+              "ContentType": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -7426,12 +7515,16 @@
             "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountPartner",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountPartner, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.Logic.Models.PartnerContent": "Microsoft.Azure.Management.Logic.Models.PartnerContent",
-              "Microsoft.Azure.Management.Logic.Models.PartnerType": "Microsoft.Azure.Management.Logic.Models.PartnerType",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Object": "System.Object",
-              "System.String": "System.String"
+              "Content": "Microsoft.Azure.Management.Logic.Models.PartnerContent",
+              "PartnerType": "Microsoft.Azure.Management.Logic.Models.PartnerType",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "CreatedTime": "System.Nullable`1[System.DateTime]",
+              "ChangedTime": "System.Nullable`1[System.DateTime]",
+              "Metadata": "System.Object",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -7744,10 +7837,10 @@
             "Name": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber, Microsoft.Azure.Commands.LogicApp, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.DateTime": "System.DateTime",
-              "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]": "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]",
-              "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-              "System.String": "System.String"
+              "ControlNumberChangedTime": "System.DateTime",
+              "MessageType": "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]",
+              "IsMessageProcessingFailed": "System.Nullable`1[System.Boolean]",
+              "ControlNumber": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -8026,12 +8119,21 @@
             "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountSchema",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountSchema, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.Logic.Models.ContentLink": "Microsoft.Azure.Management.Logic.Models.ContentLink",
-              "Microsoft.Azure.Management.Logic.Models.SchemaType": "Microsoft.Azure.Management.Logic.Models.SchemaType",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Object": "System.Object",
-              "System.String": "System.String"
+              "ContentLink": "Microsoft.Azure.Management.Logic.Models.ContentLink",
+              "SchemaType": "Microsoft.Azure.Management.Logic.Models.SchemaType",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "CreatedTime": "System.Nullable`1[System.DateTime]",
+              "ChangedTime": "System.Nullable`1[System.DateTime]",
+              "Metadata": "System.Object",
+              "Content": "System.Object",
+              "TargetNamespace": "System.String",
+              "DocumentName": "System.String",
+              "FileName": "System.String",
+              "ContentType": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -12514,9 +12616,9 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.AgreementContent",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.AgreementContent, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.AS2AgreementContent": "Microsoft.Azure.Management.Logic.Models.AS2AgreementContent",
-        "Microsoft.Azure.Management.Logic.Models.EdifactAgreementContent": "Microsoft.Azure.Management.Logic.Models.EdifactAgreementContent",
-        "Microsoft.Azure.Management.Logic.Models.X12AgreementContent": "Microsoft.Azure.Management.Logic.Models.X12AgreementContent"
+        "AS2": "Microsoft.Azure.Management.Logic.Models.AS2AgreementContent",
+        "Edifact": "Microsoft.Azure.Management.Logic.Models.EdifactAgreementContent",
+        "X12": "Microsoft.Azure.Management.Logic.Models.X12AgreementContent"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12526,7 +12628,8 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.AS2AgreementContent",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.AS2AgreementContent, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.AS2OneWayAgreement": "Microsoft.Azure.Management.Logic.Models.AS2OneWayAgreement"
+        "ReceiveAgreement": "Microsoft.Azure.Management.Logic.Models.AS2OneWayAgreement",
+        "SendAgreement": "Microsoft.Azure.Management.Logic.Models.AS2OneWayAgreement"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12536,8 +12639,9 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.AS2OneWayAgreement",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.AS2OneWayAgreement, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.AS2ProtocolSettings": "Microsoft.Azure.Management.Logic.Models.AS2ProtocolSettings",
-        "Microsoft.Azure.Management.Logic.Models.BusinessIdentity": "Microsoft.Azure.Management.Logic.Models.BusinessIdentity"
+        "ProtocolSettings": "Microsoft.Azure.Management.Logic.Models.AS2ProtocolSettings",
+        "ReceiverBusinessIdentity": "Microsoft.Azure.Management.Logic.Models.BusinessIdentity",
+        "SenderBusinessIdentity": "Microsoft.Azure.Management.Logic.Models.BusinessIdentity"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12547,13 +12651,13 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.AS2ProtocolSettings",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.AS2ProtocolSettings, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.AS2AcknowledgementConnectionSettings": "Microsoft.Azure.Management.Logic.Models.AS2AcknowledgementConnectionSettings",
-        "Microsoft.Azure.Management.Logic.Models.AS2EnvelopeSettings": "Microsoft.Azure.Management.Logic.Models.AS2EnvelopeSettings",
-        "Microsoft.Azure.Management.Logic.Models.AS2ErrorSettings": "Microsoft.Azure.Management.Logic.Models.AS2ErrorSettings",
-        "Microsoft.Azure.Management.Logic.Models.AS2MdnSettings": "Microsoft.Azure.Management.Logic.Models.AS2MdnSettings",
-        "Microsoft.Azure.Management.Logic.Models.AS2MessageConnectionSettings": "Microsoft.Azure.Management.Logic.Models.AS2MessageConnectionSettings",
-        "Microsoft.Azure.Management.Logic.Models.AS2SecuritySettings": "Microsoft.Azure.Management.Logic.Models.AS2SecuritySettings",
-        "Microsoft.Azure.Management.Logic.Models.AS2ValidationSettings": "Microsoft.Azure.Management.Logic.Models.AS2ValidationSettings"
+        "AcknowledgementConnectionSettings": "Microsoft.Azure.Management.Logic.Models.AS2AcknowledgementConnectionSettings",
+        "EnvelopeSettings": "Microsoft.Azure.Management.Logic.Models.AS2EnvelopeSettings",
+        "ErrorSettings": "Microsoft.Azure.Management.Logic.Models.AS2ErrorSettings",
+        "MdnSettings": "Microsoft.Azure.Management.Logic.Models.AS2MdnSettings",
+        "MessageConnectionSettings": "Microsoft.Azure.Management.Logic.Models.AS2MessageConnectionSettings",
+        "SecuritySettings": "Microsoft.Azure.Management.Logic.Models.AS2SecuritySettings",
+        "ValidationSettings": "Microsoft.Azure.Management.Logic.Models.AS2ValidationSettings"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12563,7 +12667,10 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.AS2AcknowledgementConnectionSettings",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.AS2AcknowledgementConnectionSettings, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Boolean": "System.Boolean"
+        "IgnoreCertificateNameMismatch": "System.Boolean",
+        "SupportHttpStatusCodeContinue": "System.Boolean",
+        "KeepHttpConnectionAlive": "System.Boolean",
+        "UnfoldHttpHeaders": "System.Boolean"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12573,8 +12680,11 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.AS2EnvelopeSettings",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.AS2EnvelopeSettings, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Boolean": "System.Boolean",
-        "System.String": "System.String"
+        "TransmitFileNameInMimeHeader": "System.Boolean",
+        "SuspendMessageOnFileNameGenerationError": "System.Boolean",
+        "AutogenerateFileName": "System.Boolean",
+        "MessageContentType": "System.String",
+        "FileNameTemplate": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12584,7 +12694,8 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.AS2ErrorSettings",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.AS2ErrorSettings, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Boolean": "System.Boolean"
+        "SuspendDuplicateMessage": "System.Boolean",
+        "ResendIfMdnNotReceived": "System.Boolean"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12594,9 +12705,15 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.AS2MdnSettings",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.AS2MdnSettings, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.HashingAlgorithm": "Microsoft.Azure.Management.Logic.Models.HashingAlgorithm",
-        "System.Boolean": "System.Boolean",
-        "System.String": "System.String"
+        "MicHashingAlgorithm": "Microsoft.Azure.Management.Logic.Models.HashingAlgorithm",
+        "NeedMdn": "System.Boolean",
+        "SignMdn": "System.Boolean",
+        "SendMdnAsynchronously": "System.Boolean",
+        "SignOutboundMdnIfOptional": "System.Boolean",
+        "SendInboundMdnToMessageBox": "System.Boolean",
+        "ReceiptDeliveryUrl": "System.String",
+        "DispositionNotificationTo": "System.String",
+        "MdnText": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12614,7 +12731,10 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.AS2MessageConnectionSettings",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.AS2MessageConnectionSettings, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Boolean": "System.Boolean"
+        "IgnoreCertificateNameMismatch": "System.Boolean",
+        "SupportHttpStatusCodeContinue": "System.Boolean",
+        "KeepHttpConnectionAlive": "System.Boolean",
+        "UnfoldHttpHeaders": "System.Boolean"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12624,8 +12744,15 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.AS2SecuritySettings",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.AS2SecuritySettings, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Boolean": "System.Boolean",
-        "System.String": "System.String"
+        "OverrideGroupSigningCertificate": "System.Boolean",
+        "EnableNrrForInboundEncodedMessages": "System.Boolean",
+        "EnableNrrForInboundDecodedMessages": "System.Boolean",
+        "EnableNrrForOutboundMdn": "System.Boolean",
+        "EnableNrrForOutboundEncodedMessages": "System.Boolean",
+        "EnableNrrForOutboundDecodedMessages": "System.Boolean",
+        "EnableNrrForInboundMdn": "System.Boolean",
+        "SigningCertificateName": "System.String",
+        "EncryptionCertificateName": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12635,9 +12762,15 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.AS2ValidationSettings",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.AS2ValidationSettings, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.EncryptionAlgorithm": "Microsoft.Azure.Management.Logic.Models.EncryptionAlgorithm",
-        "System.Boolean": "System.Boolean",
-        "System.Int32": "System.Int32"
+        "EncryptionAlgorithm": "Microsoft.Azure.Management.Logic.Models.EncryptionAlgorithm",
+        "OverrideMessageProperties": "System.Boolean",
+        "EncryptMessage": "System.Boolean",
+        "SignMessage": "System.Boolean",
+        "CompressMessage": "System.Boolean",
+        "CheckDuplicateMessage": "System.Boolean",
+        "CheckCertificateRevocationListOnSend": "System.Boolean",
+        "CheckCertificateRevocationListOnReceive": "System.Boolean",
+        "InterchangeDuplicatesValidityDays": "System.Int32"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12655,7 +12788,8 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.BusinessIdentity",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.BusinessIdentity, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.String": "System.String"
+        "Qualifier": "System.String",
+        "Value": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12665,7 +12799,8 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.EdifactAgreementContent",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.EdifactAgreementContent, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.EdifactOneWayAgreement": "Microsoft.Azure.Management.Logic.Models.EdifactOneWayAgreement"
+        "ReceiveAgreement": "Microsoft.Azure.Management.Logic.Models.EdifactOneWayAgreement",
+        "SendAgreement": "Microsoft.Azure.Management.Logic.Models.EdifactOneWayAgreement"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12675,8 +12810,9 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.EdifactOneWayAgreement",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.EdifactOneWayAgreement, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.BusinessIdentity": "Microsoft.Azure.Management.Logic.Models.BusinessIdentity",
-        "Microsoft.Azure.Management.Logic.Models.EdifactProtocolSettings": "Microsoft.Azure.Management.Logic.Models.EdifactProtocolSettings"
+        "SenderBusinessIdentity": "Microsoft.Azure.Management.Logic.Models.BusinessIdentity",
+        "ReceiverBusinessIdentity": "Microsoft.Azure.Management.Logic.Models.BusinessIdentity",
+        "ProtocolSettings": "Microsoft.Azure.Management.Logic.Models.EdifactProtocolSettings"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12686,17 +12822,17 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.EdifactProtocolSettings",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.EdifactProtocolSettings, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.EdifactAcknowledgementSettings": "Microsoft.Azure.Management.Logic.Models.EdifactAcknowledgementSettings",
-        "Microsoft.Azure.Management.Logic.Models.EdifactEnvelopeSettings": "Microsoft.Azure.Management.Logic.Models.EdifactEnvelopeSettings",
-        "Microsoft.Azure.Management.Logic.Models.EdifactFramingSettings": "Microsoft.Azure.Management.Logic.Models.EdifactFramingSettings",
-        "Microsoft.Azure.Management.Logic.Models.EdifactMessageFilter": "Microsoft.Azure.Management.Logic.Models.EdifactMessageFilter",
-        "Microsoft.Azure.Management.Logic.Models.EdifactProcessingSettings": "Microsoft.Azure.Management.Logic.Models.EdifactProcessingSettings",
-        "Microsoft.Azure.Management.Logic.Models.EdifactValidationSettings": "Microsoft.Azure.Management.Logic.Models.EdifactValidationSettings",
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.EdifactDelimiterOverride]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.EdifactDelimiterOverride]",
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.EdifactEnvelopeOverride]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.EdifactEnvelopeOverride]",
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.EdifactMessageIdentifier]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.EdifactMessageIdentifier]",
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.EdifactSchemaReference]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.EdifactSchemaReference]",
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.EdifactValidationOverride]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.EdifactValidationOverride]"
+        "AcknowledgementSettings": "Microsoft.Azure.Management.Logic.Models.EdifactAcknowledgementSettings",
+        "EnvelopeSettings": "Microsoft.Azure.Management.Logic.Models.EdifactEnvelopeSettings",
+        "FramingSettings": "Microsoft.Azure.Management.Logic.Models.EdifactFramingSettings",
+        "MessageFilter": "Microsoft.Azure.Management.Logic.Models.EdifactMessageFilter",
+        "ProcessingSettings": "Microsoft.Azure.Management.Logic.Models.EdifactProcessingSettings",
+        "ValidationSettings": "Microsoft.Azure.Management.Logic.Models.EdifactValidationSettings",
+        "EdifactDelimiterOverrides": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.EdifactDelimiterOverride]",
+        "EnvelopeOverrides": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.EdifactEnvelopeOverride]",
+        "MessageFilterList": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.EdifactMessageIdentifier]",
+        "SchemaReferences": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.EdifactSchemaReference]",
+        "ValidationOverrides": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.EdifactValidationOverride]"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12706,9 +12842,17 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.EdifactAcknowledgementSettings",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.EdifactAcknowledgementSettings, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Boolean": "System.Boolean",
-        "System.Int32": "System.Int32",
-        "System.String": "System.String"
+        "NeedTechnicalAcknowledgement": "System.Boolean",
+        "BatchTechnicalAcknowledgements": "System.Boolean",
+        "NeedFunctionalAcknowledgement": "System.Boolean",
+        "BatchFunctionalAcknowledgements": "System.Boolean",
+        "NeedLoopForValidMessages": "System.Boolean",
+        "SendSynchronousAcknowledgement": "System.Boolean",
+        "RolloverAcknowledgementControlNumber": "System.Boolean",
+        "AcknowledgementControlNumberLowerBound": "System.Int32",
+        "AcknowledgementControlNumberUpperBound": "System.Int32",
+        "AcknowledgementControlNumberPrefix": "System.String",
+        "AcknowledgementControlNumberSuffix": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12718,9 +12862,47 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.EdifactEnvelopeSettings",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.EdifactEnvelopeSettings, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Boolean": "System.Boolean",
-        "System.Int64": "System.Int64",
-        "System.String": "System.String"
+        "RolloverInterchangeControlNumber": "System.Boolean",
+        "ApplyDelimiterStringAdvice": "System.Boolean",
+        "CreateGroupingSegments": "System.Boolean",
+        "EnableDefaultGroupHeaders": "System.Boolean",
+        "OverwriteExistingTransactionSetControlNumber": "System.Boolean",
+        "IsTestInterchange": "System.Boolean",
+        "RolloverTransactionSetControlNumber": "System.Boolean",
+        "RolloverGroupControlNumber": "System.Boolean",
+        "GroupControlNumberUpperBound": "System.Int64",
+        "TransactionSetControlNumberLowerBound": "System.Int64",
+        "GroupControlNumberLowerBound": "System.Int64",
+        "InterchangeControlNumberLowerBound": "System.Int64",
+        "TransactionSetControlNumberUpperBound": "System.Int64",
+        "InterchangeControlNumberUpperBound": "System.Int64",
+        "TransactionSetControlNumberSuffix": "System.String",
+        "TransactionSetControlNumberPrefix": "System.String",
+        "SenderInternalIdentification": "System.String",
+        "GroupApplicationPassword": "System.String",
+        "GroupApplicationSenderId": "System.String",
+        "GroupApplicationSenderQualifier": "System.String",
+        "GroupApplicationReceiverId": "System.String",
+        "GroupApplicationReceiverQualifier": "System.String",
+        "SenderInternalSubIdentification": "System.String",
+        "GroupControlNumberSuffix": "System.String",
+        "GroupAssociationAssignedCode": "System.String",
+        "ReceiverInternalIdentification": "System.String",
+        "GroupMessageRelease": "System.String",
+        "GroupMessageVersion": "System.String",
+        "GroupControllingAgencyCode": "System.String",
+        "FunctionalGroupId": "System.String",
+        "ReceiverReverseRoutingAddress": "System.String",
+        "SenderReverseRoutingAddress": "System.String",
+        "InterchangeControlNumberSuffix": "System.String",
+        "InterchangeControlNumberPrefix": "System.String",
+        "ProcessingPriorityCode": "System.String",
+        "ApplicationReferenceId": "System.String",
+        "RecipientReferencePasswordQualifier": "System.String",
+        "RecipientReferencePasswordValue": "System.String",
+        "CommunicationAgreementId": "System.String",
+        "GroupControlNumberPrefix": "System.String",
+        "ReceiverInternalSubIdentification": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12730,11 +12912,17 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.EdifactFramingSettings",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.EdifactFramingSettings, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.EdifactCharacterSet": "Microsoft.Azure.Management.Logic.Models.EdifactCharacterSet",
-        "Microsoft.Azure.Management.Logic.Models.EdifactDecimalIndicator": "Microsoft.Azure.Management.Logic.Models.EdifactDecimalIndicator",
-        "Microsoft.Azure.Management.Logic.Models.SegmentTerminatorSuffix": "Microsoft.Azure.Management.Logic.Models.SegmentTerminatorSuffix",
-        "System.Int32": "System.Int32",
-        "System.String": "System.String"
+        "CharacterSet": "Microsoft.Azure.Management.Logic.Models.EdifactCharacterSet",
+        "DecimalPointIndicator": "Microsoft.Azure.Management.Logic.Models.EdifactDecimalIndicator",
+        "SegmentTerminatorSuffix": "Microsoft.Azure.Management.Logic.Models.SegmentTerminatorSuffix",
+        "ProtocolVersion": "System.Int32",
+        "DataElementSeparator": "System.Int32",
+        "ComponentSeparator": "System.Int32",
+        "SegmentTerminator": "System.Int32",
+        "ReleaseIndicator": "System.Int32",
+        "RepetitionSeparator": "System.Int32",
+        "ServiceCodeListDirectoryVersion": "System.String",
+        "CharacterEncoding": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12768,7 +12956,7 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.EdifactMessageFilter",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.EdifactMessageFilter, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.MessageFilterType": "Microsoft.Azure.Management.Logic.Models.MessageFilterType"
+        "MessageFilterType": "Microsoft.Azure.Management.Logic.Models.MessageFilterType"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12786,7 +12974,11 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.EdifactProcessingSettings",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.EdifactProcessingSettings, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Boolean": "System.Boolean"
+        "MaskSecurityInfo": "System.Boolean",
+        "PreserveInterchange": "System.Boolean",
+        "SuspendInterchangeOnError": "System.Boolean",
+        "CreateEmptyXmlTagsForTrailingSeparators": "System.Boolean",
+        "UseDotAsDecimalSeparator": "System.Boolean"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12796,9 +12988,16 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.EdifactValidationSettings",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.EdifactValidationSettings, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.TrailingSeparatorPolicy": "Microsoft.Azure.Management.Logic.Models.TrailingSeparatorPolicy",
-        "System.Boolean": "System.Boolean",
-        "System.Int32": "System.Int32"
+        "TrailingSeparatorPolicy": "Microsoft.Azure.Management.Logic.Models.TrailingSeparatorPolicy",
+        "ValidateCharacterSet": "System.Boolean",
+        "CheckDuplicateInterchangeControlNumber": "System.Boolean",
+        "CheckDuplicateGroupControlNumber": "System.Boolean",
+        "CheckDuplicateTransactionSetControlNumber": "System.Boolean",
+        "ValidateEdiTypes": "System.Boolean",
+        "ValidateXsdTypes": "System.Boolean",
+        "AllowLeadingAndTrailingSpacesAndZeroes": "System.Boolean",
+        "TrimLeadingAndTrailingSpacesAndZeroes": "System.Boolean",
+        "InterchangeControlNumberValidityDays": "System.Int32"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12826,10 +13025,18 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.EdifactDelimiterOverride",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.EdifactDelimiterOverride, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.EdifactDecimalIndicator": "Microsoft.Azure.Management.Logic.Models.EdifactDecimalIndicator",
-        "Microsoft.Azure.Management.Logic.Models.SegmentTerminatorSuffix": "Microsoft.Azure.Management.Logic.Models.SegmentTerminatorSuffix",
-        "System.Int32": "System.Int32",
-        "System.String": "System.String"
+        "DecimalPointIndicator": "Microsoft.Azure.Management.Logic.Models.EdifactDecimalIndicator",
+        "SegmentTerminatorSuffix": "Microsoft.Azure.Management.Logic.Models.SegmentTerminatorSuffix",
+        "DataElementSeparator": "System.Int32",
+        "ComponentSeparator": "System.Int32",
+        "SegmentTerminator": "System.Int32",
+        "RepetitionSeparator": "System.Int32",
+        "ReleaseIndicator": "System.Int32",
+        "MessageId": "System.String",
+        "MessageVersion": "System.String",
+        "MessageRelease": "System.String",
+        "MessageAssociationAssignedCode": "System.String",
+        "TargetNamespace": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12849,7 +13056,21 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.EdifactEnvelopeOverride",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.EdifactEnvelopeOverride, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.String": "System.String"
+        "MessageId": "System.String",
+        "MessageVersion": "System.String",
+        "MessageRelease": "System.String",
+        "MessageAssociationAssignedCode": "System.String",
+        "TargetNamespace": "System.String",
+        "FunctionalGroupId": "System.String",
+        "SenderApplicationQualifier": "System.String",
+        "SenderApplicationId": "System.String",
+        "ReceiverApplicationQualifier": "System.String",
+        "ReceiverApplicationId": "System.String",
+        "ControllingAgencyCode": "System.String",
+        "GroupHeaderMessageVersion": "System.String",
+        "GroupHeaderMessageRelease": "System.String",
+        "AssociationAssignedCode": "System.String",
+        "ApplicationPassword": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12869,7 +13090,7 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.EdifactMessageIdentifier",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.EdifactMessageIdentifier, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.String": "System.String"
+        "MessageId": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12889,7 +13110,13 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.EdifactSchemaReference",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.EdifactSchemaReference, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.String": "System.String"
+        "MessageId": "System.String",
+        "MessageVersion": "System.String",
+        "MessageRelease": "System.String",
+        "SenderApplicationId": "System.String",
+        "SenderApplicationQualifier": "System.String",
+        "AssociationAssignedCode": "System.String",
+        "SchemaName": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12909,9 +13136,13 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.EdifactValidationOverride",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.EdifactValidationOverride, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.TrailingSeparatorPolicy": "Microsoft.Azure.Management.Logic.Models.TrailingSeparatorPolicy",
-        "System.Boolean": "System.Boolean",
-        "System.String": "System.String"
+        "TrailingSeparatorPolicy": "Microsoft.Azure.Management.Logic.Models.TrailingSeparatorPolicy",
+        "EnforceCharacterSet": "System.Boolean",
+        "ValidateEdiTypes": "System.Boolean",
+        "ValidateXsdTypes": "System.Boolean",
+        "AllowLeadingAndTrailingSpacesAndZeroes": "System.Boolean",
+        "TrimLeadingAndTrailingSpacesAndZeroes": "System.Boolean",
+        "MessageId": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12921,7 +13152,8 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.X12AgreementContent",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.X12AgreementContent, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.X12OneWayAgreement": "Microsoft.Azure.Management.Logic.Models.X12OneWayAgreement"
+        "ReceiveAgreement": "Microsoft.Azure.Management.Logic.Models.X12OneWayAgreement",
+        "SendAgreement": "Microsoft.Azure.Management.Logic.Models.X12OneWayAgreement"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12931,8 +13163,9 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.X12OneWayAgreement",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.X12OneWayAgreement, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.BusinessIdentity": "Microsoft.Azure.Management.Logic.Models.BusinessIdentity",
-        "Microsoft.Azure.Management.Logic.Models.X12ProtocolSettings": "Microsoft.Azure.Management.Logic.Models.X12ProtocolSettings"
+        "SenderBusinessIdentity": "Microsoft.Azure.Management.Logic.Models.BusinessIdentity",
+        "ReceiverBusinessIdentity": "Microsoft.Azure.Management.Logic.Models.BusinessIdentity",
+        "ProtocolSettings": "Microsoft.Azure.Management.Logic.Models.X12ProtocolSettings"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12942,18 +13175,18 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.X12ProtocolSettings",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.X12ProtocolSettings, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.X12AcknowledgementSettings": "Microsoft.Azure.Management.Logic.Models.X12AcknowledgementSettings",
-        "Microsoft.Azure.Management.Logic.Models.X12EnvelopeSettings": "Microsoft.Azure.Management.Logic.Models.X12EnvelopeSettings",
-        "Microsoft.Azure.Management.Logic.Models.X12FramingSettings": "Microsoft.Azure.Management.Logic.Models.X12FramingSettings",
-        "Microsoft.Azure.Management.Logic.Models.X12MessageFilter": "Microsoft.Azure.Management.Logic.Models.X12MessageFilter",
-        "Microsoft.Azure.Management.Logic.Models.X12ProcessingSettings": "Microsoft.Azure.Management.Logic.Models.X12ProcessingSettings",
-        "Microsoft.Azure.Management.Logic.Models.X12SecuritySettings": "Microsoft.Azure.Management.Logic.Models.X12SecuritySettings",
-        "Microsoft.Azure.Management.Logic.Models.X12ValidationSettings": "Microsoft.Azure.Management.Logic.Models.X12ValidationSettings",
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.X12DelimiterOverrides]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.X12DelimiterOverrides]",
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.X12EnvelopeOverride]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.X12EnvelopeOverride]",
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.X12MessageIdentifier]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.X12MessageIdentifier]",
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.X12SchemaReference]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.X12SchemaReference]",
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.X12ValidationOverride]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.X12ValidationOverride]"
+        "AcknowledgementSettings": "Microsoft.Azure.Management.Logic.Models.X12AcknowledgementSettings",
+        "EnvelopeSettings": "Microsoft.Azure.Management.Logic.Models.X12EnvelopeSettings",
+        "FramingSettings": "Microsoft.Azure.Management.Logic.Models.X12FramingSettings",
+        "MessageFilter": "Microsoft.Azure.Management.Logic.Models.X12MessageFilter",
+        "ProcessingSettings": "Microsoft.Azure.Management.Logic.Models.X12ProcessingSettings",
+        "SecuritySettings": "Microsoft.Azure.Management.Logic.Models.X12SecuritySettings",
+        "ValidationSettings": "Microsoft.Azure.Management.Logic.Models.X12ValidationSettings",
+        "X12DelimiterOverrides": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.X12DelimiterOverrides]",
+        "EnvelopeOverrides": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.X12EnvelopeOverride]",
+        "MessageFilterList": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.X12MessageIdentifier]",
+        "SchemaReferences": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.X12SchemaReference]",
+        "ValidationOverrides": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.X12ValidationOverride]"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12963,9 +13196,21 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.X12AcknowledgementSettings",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.X12AcknowledgementSettings, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Boolean": "System.Boolean",
-        "System.Int32": "System.Int32",
-        "System.String": "System.String"
+        "NeedTechnicalAcknowledgement": "System.Boolean",
+        "BatchTechnicalAcknowledgements": "System.Boolean",
+        "NeedFunctionalAcknowledgement": "System.Boolean",
+        "BatchFunctionalAcknowledgements": "System.Boolean",
+        "NeedImplementationAcknowledgement": "System.Boolean",
+        "BatchImplementationAcknowledgements": "System.Boolean",
+        "NeedLoopForValidMessages": "System.Boolean",
+        "SendSynchronousAcknowledgement": "System.Boolean",
+        "RolloverAcknowledgementControlNumber": "System.Boolean",
+        "AcknowledgementControlNumberLowerBound": "System.Int32",
+        "AcknowledgementControlNumberUpperBound": "System.Int32",
+        "FunctionalAcknowledgementVersion": "System.String",
+        "ImplementationAcknowledgementVersion": "System.String",
+        "AcknowledgementControlNumberPrefix": "System.String",
+        "AcknowledgementControlNumberSuffix": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12975,12 +13220,30 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.X12EnvelopeSettings",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.X12EnvelopeSettings, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.UsageIndicator": "Microsoft.Azure.Management.Logic.Models.UsageIndicator",
-        "Microsoft.Azure.Management.Logic.Models.X12DateFormat": "Microsoft.Azure.Management.Logic.Models.X12DateFormat",
-        "Microsoft.Azure.Management.Logic.Models.X12TimeFormat": "Microsoft.Azure.Management.Logic.Models.X12TimeFormat",
-        "System.Boolean": "System.Boolean",
-        "System.Int32": "System.Int32",
-        "System.String": "System.String"
+        "UsageIndicator": "Microsoft.Azure.Management.Logic.Models.UsageIndicator",
+        "GroupHeaderDateFormat": "Microsoft.Azure.Management.Logic.Models.X12DateFormat",
+        "GroupHeaderTimeFormat": "Microsoft.Azure.Management.Logic.Models.X12TimeFormat",
+        "UseControlStandardsIdAsRepetitionCharacter": "System.Boolean",
+        "OverwriteExistingTransactionSetControlNumber": "System.Boolean",
+        "RolloverTransactionSetControlNumber": "System.Boolean",
+        "RolloverInterchangeControlNumber": "System.Boolean",
+        "EnableDefaultGroupHeaders": "System.Boolean",
+        "RolloverGroupControlNumber": "System.Boolean",
+        "TransactionSetControlNumberUpperBound": "System.Int32",
+        "TransactionSetControlNumberLowerBound": "System.Int32",
+        "GroupControlNumberUpperBound": "System.Int32",
+        "InterchangeControlNumberUpperBound": "System.Int32",
+        "InterchangeControlNumberLowerBound": "System.Int32",
+        "GroupControlNumberLowerBound": "System.Int32",
+        "ControlStandardsId": "System.Int32",
+        "FunctionalGroupId": "System.String",
+        "GroupHeaderAgencyCode": "System.String",
+        "GroupHeaderVersion": "System.String",
+        "ControlVersionNumber": "System.String",
+        "TransactionSetControlNumberPrefix": "System.String",
+        "TransactionSetControlNumberSuffix": "System.String",
+        "ReceiverApplicationId": "System.String",
+        "SenderApplicationId": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -13014,10 +13277,13 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.X12FramingSettings",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.X12FramingSettings, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.SegmentTerminatorSuffix": "Microsoft.Azure.Management.Logic.Models.SegmentTerminatorSuffix",
-        "Microsoft.Azure.Management.Logic.Models.X12CharacterSet": "Microsoft.Azure.Management.Logic.Models.X12CharacterSet",
-        "System.Boolean": "System.Boolean",
-        "System.Int32": "System.Int32"
+        "SegmentTerminatorSuffix": "Microsoft.Azure.Management.Logic.Models.SegmentTerminatorSuffix",
+        "CharacterSet": "Microsoft.Azure.Management.Logic.Models.X12CharacterSet",
+        "ReplaceSeparatorsInPayload": "System.Boolean",
+        "DataElementSeparator": "System.Int32",
+        "ComponentSeparator": "System.Int32",
+        "ReplaceCharacter": "System.Int32",
+        "SegmentTerminator": "System.Int32"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -13035,7 +13301,7 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.X12MessageFilter",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.X12MessageFilter, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.MessageFilterType": "Microsoft.Azure.Management.Logic.Models.MessageFilterType"
+        "MessageFilterType": "Microsoft.Azure.Management.Logic.Models.MessageFilterType"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -13045,7 +13311,12 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.X12ProcessingSettings",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.X12ProcessingSettings, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Boolean": "System.Boolean"
+        "MaskSecurityInfo": "System.Boolean",
+        "ConvertImpliedDecimal": "System.Boolean",
+        "PreserveInterchange": "System.Boolean",
+        "SuspendInterchangeOnError": "System.Boolean",
+        "CreateEmptyXmlTagsForTrailingSeparators": "System.Boolean",
+        "UseDotAsDecimalSeparator": "System.Boolean"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -13055,7 +13326,10 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.X12SecuritySettings",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.X12SecuritySettings, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.String": "System.String"
+        "AuthorizationQualifier": "System.String",
+        "AuthorizationValue": "System.String",
+        "SecurityQualifier": "System.String",
+        "PasswordValue": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -13065,9 +13339,16 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.X12ValidationSettings",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.X12ValidationSettings, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.TrailingSeparatorPolicy": "Microsoft.Azure.Management.Logic.Models.TrailingSeparatorPolicy",
-        "System.Boolean": "System.Boolean",
-        "System.Int32": "System.Int32"
+        "TrailingSeparatorPolicy": "Microsoft.Azure.Management.Logic.Models.TrailingSeparatorPolicy",
+        "ValidateCharacterSet": "System.Boolean",
+        "CheckDuplicateInterchangeControlNumber": "System.Boolean",
+        "CheckDuplicateGroupControlNumber": "System.Boolean",
+        "CheckDuplicateTransactionSetControlNumber": "System.Boolean",
+        "ValidateEdiTypes": "System.Boolean",
+        "ValidateXsdTypes": "System.Boolean",
+        "AllowLeadingAndTrailingSpacesAndZeroes": "System.Boolean",
+        "TrimLeadingAndTrailingSpacesAndZeroes": "System.Boolean",
+        "InterchangeControlNumberValidityDays": "System.Int32"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -13087,10 +13368,15 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.X12DelimiterOverrides",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.X12DelimiterOverrides, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.SegmentTerminatorSuffix": "Microsoft.Azure.Management.Logic.Models.SegmentTerminatorSuffix",
-        "System.Boolean": "System.Boolean",
-        "System.Int32": "System.Int32",
-        "System.String": "System.String"
+        "SegmentTerminatorSuffix": "Microsoft.Azure.Management.Logic.Models.SegmentTerminatorSuffix",
+        "ReplaceSeparatorsInPayload": "System.Boolean",
+        "DataElementSeparator": "System.Int32",
+        "ComponentSeparator": "System.Int32",
+        "SegmentTerminator": "System.Int32",
+        "ReplaceCharacter": "System.Int32",
+        "ProtocolVersion": "System.String",
+        "MessageId": "System.String",
+        "TargetNamespace": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -13110,9 +13396,16 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.X12EnvelopeOverride",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.X12EnvelopeOverride, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.X12DateFormat": "Microsoft.Azure.Management.Logic.Models.X12DateFormat",
-        "Microsoft.Azure.Management.Logic.Models.X12TimeFormat": "Microsoft.Azure.Management.Logic.Models.X12TimeFormat",
-        "System.String": "System.String"
+        "DateFormat": "Microsoft.Azure.Management.Logic.Models.X12DateFormat",
+        "TimeFormat": "Microsoft.Azure.Management.Logic.Models.X12TimeFormat",
+        "TargetNamespace": "System.String",
+        "ProtocolVersion": "System.String",
+        "MessageId": "System.String",
+        "ResponsibleAgencyCode": "System.String",
+        "HeaderVersion": "System.String",
+        "SenderApplicationId": "System.String",
+        "ReceiverApplicationId": "System.String",
+        "FunctionalIdentifierCode": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -13132,7 +13425,7 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.X12MessageIdentifier",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.X12MessageIdentifier, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.String": "System.String"
+        "MessageId": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -13152,7 +13445,10 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.X12SchemaReference",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.X12SchemaReference, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.String": "System.String"
+        "MessageId": "System.String",
+        "SenderApplicationId": "System.String",
+        "SchemaVersion": "System.String",
+        "SchemaName": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -13172,9 +13468,13 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.X12ValidationOverride",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.X12ValidationOverride, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.TrailingSeparatorPolicy": "Microsoft.Azure.Management.Logic.Models.TrailingSeparatorPolicy",
-        "System.Boolean": "System.Boolean",
-        "System.String": "System.String"
+        "TrailingSeparatorPolicy": "Microsoft.Azure.Management.Logic.Models.TrailingSeparatorPolicy",
+        "ValidateEdiTypes": "System.Boolean",
+        "ValidateXsdTypes": "System.Boolean",
+        "AllowLeadingAndTrailingSpacesAndZeroes": "System.Boolean",
+        "ValidateCharacterSet": "System.Boolean",
+        "TrimLeadingAndTrailingSpacesAndZeroes": "System.Boolean",
+        "MessageId": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -13229,13 +13529,20 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountAgreement",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountAgreement, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.AgreementContent": "Microsoft.Azure.Management.Logic.Models.AgreementContent",
-        "Microsoft.Azure.Management.Logic.Models.AgreementType": "Microsoft.Azure.Management.Logic.Models.AgreementType",
-        "Microsoft.Azure.Management.Logic.Models.BusinessIdentity": "Microsoft.Azure.Management.Logic.Models.BusinessIdentity",
-        "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-        "System.Object": "System.Object",
-        "System.String": "System.String"
+        "Content": "Microsoft.Azure.Management.Logic.Models.AgreementContent",
+        "AgreementType": "Microsoft.Azure.Management.Logic.Models.AgreementType",
+        "HostIdentity": "Microsoft.Azure.Management.Logic.Models.BusinessIdentity",
+        "GuestIdentity": "Microsoft.Azure.Management.Logic.Models.BusinessIdentity",
+        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "CreatedTime": "System.Nullable`1[System.DateTime]",
+        "ChangedTime": "System.Nullable`1[System.DateTime]",
+        "Metadata": "System.Object",
+        "HostPartner": "System.String",
+        "GuestPartner": "System.String",
+        "Id": "System.String",
+        "Name": "System.String",
+        "Type": "System.String",
+        "Location": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -13245,8 +13552,9 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.KeyVaultKeyReference",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.KeyVaultKeyReference, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.KeyVaultKeyReferenceKeyVault": "Microsoft.Azure.Management.Logic.Models.KeyVaultKeyReferenceKeyVault",
-        "System.String": "System.String"
+        "KeyVault": "Microsoft.Azure.Management.Logic.Models.KeyVaultKeyReferenceKeyVault",
+        "KeyName": "System.String",
+        "KeyVersion": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -13256,7 +13564,9 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.KeyVaultKeyReferenceKeyVault",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.KeyVaultKeyReferenceKeyVault, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.String": "System.String"
+        "Id": "System.String",
+        "Name": "System.String",
+        "Type": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -13266,11 +13576,16 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountCertificate",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountCertificate, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.KeyVaultKeyReference": "Microsoft.Azure.Management.Logic.Models.KeyVaultKeyReference",
-        "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-        "System.Object": "System.Object",
-        "System.String": "System.String"
+        "Key": "Microsoft.Azure.Management.Logic.Models.KeyVaultKeyReference",
+        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "CreatedTime": "System.Nullable`1[System.DateTime]",
+        "ChangedTime": "System.Nullable`1[System.DateTime]",
+        "Metadata": "System.Object",
+        "PublicCertificate": "System.String",
+        "Id": "System.String",
+        "Name": "System.String",
+        "Type": "System.String",
+        "Location": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -13280,7 +13595,7 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountSku",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountSku, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.IntegrationAccountSkuName": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountSkuName"
+        "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountSkuName"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -13298,10 +13613,13 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccount",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.IntegrationAccount, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.IntegrationAccountSku": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountSku",
-        "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "System.Object": "System.Object",
-        "System.String": "System.String"
+        "Sku": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountSku",
+        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "Properties": "System.Object",
+        "Id": "System.String",
+        "Name": "System.String",
+        "Type": "System.String",
+        "Location": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -13339,10 +13657,11 @@
       "Name": "Microsoft.Azure.Commands.LogicApp.Utilities.QualifiedIntegrationAccountControlNumber",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.LogicApp.Utilities.QualifiedIntegrationAccountControlNumber, Microsoft.Azure.Commands.LogicApp, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.DateTime": "System.DateTime",
-        "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]": "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]",
-        "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-        "System.String": "System.String"
+        "ControlNumberChangedTime": "System.DateTime",
+        "MessageType": "System.Nullable`1[Microsoft.Azure.Commands.LogicApp.Utilities.MessageType]",
+        "IsMessageProcessingFailed": "System.Nullable`1[System.Boolean]",
+        "AgreementName": "System.String",
+        "ControlNumber": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -13352,10 +13671,11 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.ContentLink",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.ContentLink, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.ContentHash": "Microsoft.Azure.Management.Logic.Models.ContentHash",
-        "System.Nullable`1[System.Int64]": "System.Nullable`1[System.Int64]",
-        "System.Object": "System.Object",
-        "System.String": "System.String"
+        "ContentHash": "Microsoft.Azure.Management.Logic.Models.ContentHash",
+        "ContentSize": "System.Nullable`1[System.Int64]",
+        "Metadata": "System.Object",
+        "Uri": "System.String",
+        "ContentVersion": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -13365,7 +13685,8 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.ContentHash",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.ContentHash, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.String": "System.String"
+        "Algorithm": "System.String",
+        "Value": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -13385,7 +13706,7 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountMapPropertiesParametersSchema",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountMapPropertiesParametersSchema, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.String": "System.String"
+        "RefProperty": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -13403,13 +13724,19 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountMap",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountMap, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.ContentLink": "Microsoft.Azure.Management.Logic.Models.ContentLink",
-        "Microsoft.Azure.Management.Logic.Models.IntegrationAccountMapPropertiesParametersSchema": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountMapPropertiesParametersSchema",
-        "Microsoft.Azure.Management.Logic.Models.MapType": "Microsoft.Azure.Management.Logic.Models.MapType",
-        "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-        "System.Object": "System.Object",
-        "System.String": "System.String"
+        "ContentLink": "Microsoft.Azure.Management.Logic.Models.ContentLink",
+        "ParametersSchema": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountMapPropertiesParametersSchema",
+        "MapType": "Microsoft.Azure.Management.Logic.Models.MapType",
+        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "CreatedTime": "System.Nullable`1[System.DateTime]",
+        "ChangedTime": "System.Nullable`1[System.DateTime]",
+        "Content": "System.Object",
+        "Metadata": "System.Object",
+        "ContentType": "System.String",
+        "Id": "System.String",
+        "Name": "System.String",
+        "Type": "System.String",
+        "Location": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -13419,7 +13746,7 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.PartnerContent",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.PartnerContent, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.B2BPartnerContent": "Microsoft.Azure.Management.Logic.Models.B2BPartnerContent"
+        "B2b": "Microsoft.Azure.Management.Logic.Models.B2BPartnerContent"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -13429,7 +13756,7 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.B2BPartnerContent",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.B2BPartnerContent, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.BusinessIdentity]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.BusinessIdentity]"
+        "BusinessIdentities": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Logic.Models.BusinessIdentity]"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -13457,12 +13784,16 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountPartner",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountPartner, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.PartnerContent": "Microsoft.Azure.Management.Logic.Models.PartnerContent",
-        "Microsoft.Azure.Management.Logic.Models.PartnerType": "Microsoft.Azure.Management.Logic.Models.PartnerType",
-        "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-        "System.Object": "System.Object",
-        "System.String": "System.String"
+        "Content": "Microsoft.Azure.Management.Logic.Models.PartnerContent",
+        "PartnerType": "Microsoft.Azure.Management.Logic.Models.PartnerType",
+        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "CreatedTime": "System.Nullable`1[System.DateTime]",
+        "ChangedTime": "System.Nullable`1[System.DateTime]",
+        "Metadata": "System.Object",
+        "Id": "System.String",
+        "Name": "System.String",
+        "Type": "System.String",
+        "Location": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -13480,12 +13811,21 @@
       "Name": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountSchema",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Logic.Models.IntegrationAccountSchema, Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Logic.Models.ContentLink": "Microsoft.Azure.Management.Logic.Models.ContentLink",
-        "Microsoft.Azure.Management.Logic.Models.SchemaType": "Microsoft.Azure.Management.Logic.Models.SchemaType",
-        "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-        "System.Object": "System.Object",
-        "System.String": "System.String"
+        "ContentLink": "Microsoft.Azure.Management.Logic.Models.ContentLink",
+        "SchemaType": "Microsoft.Azure.Management.Logic.Models.SchemaType",
+        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "CreatedTime": "System.Nullable`1[System.DateTime]",
+        "ChangedTime": "System.Nullable`1[System.DateTime]",
+        "Metadata": "System.Object",
+        "Content": "System.Object",
+        "TargetNamespace": "System.String",
+        "DocumentName": "System.String",
+        "FileName": "System.String",
+        "ContentType": "System.String",
+        "Id": "System.String",
+        "Name": "System.String",
+        "Type": "System.String",
+        "Location": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []

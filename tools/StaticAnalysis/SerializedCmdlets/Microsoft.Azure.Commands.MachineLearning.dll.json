@@ -16,10 +16,14 @@
             "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties",
-              "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties",
+              "Sku": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Etag": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -221,10 +225,14 @@
             "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties",
-              "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties",
+              "Sku": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Etag": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -548,10 +556,14 @@
             "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties",
-              "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties",
+              "Sku": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Etag": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -662,10 +674,14 @@
                   "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan",
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties",
-                    "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties",
+                    "Sku": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Etag": "System.String",
+                    "Id": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String",
+                    "Type": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -750,10 +766,14 @@
             "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties",
-              "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties",
+              "Sku": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Etag": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1056,10 +1076,14 @@
             "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties",
-              "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties",
+              "Sku": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Etag": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1234,9 +1258,12 @@
             "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1347,9 +1374,12 @@
                   "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Id": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String",
+                    "Type": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1434,9 +1464,12 @@
             "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1600,9 +1633,12 @@
             "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1701,7 +1737,8 @@
             "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceKeys",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceKeys, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "System.String": "System.String"
+              "Primary": "System.String",
+              "Secondary": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1735,8 +1772,8 @@
             "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.DiagnosticsConfiguration",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.DiagnosticsConfiguration, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String"
+              "Expiry": "System.Nullable`1[System.DateTime]",
+              "Level": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1754,7 +1791,7 @@
             "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.RealtimeConfiguration",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.RealtimeConfiguration, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]"
+              "MaxConcurrentCalls": "System.Nullable`1[System.Int32]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1788,8 +1825,10 @@
             "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.TableSpecification]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.TableSpecification]",
-              "System.String": "System.String"
+              "Properties": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.TableSpecification]",
+              "Title": "System.String",
+              "Description": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1807,8 +1846,10 @@
             "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.TableSpecification]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.TableSpecification]",
-              "System.String": "System.String"
+              "Properties": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.TableSpecification]",
+              "Title": "System.String",
+              "Description": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1842,9 +1883,9 @@
             "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphPackage",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphPackage, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphNode]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphNode]",
-              "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameter]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameter]",
-              "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphEdge]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphEdge]"
+              "Nodes": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphNode]",
+              "GraphParameters": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameter]",
+              "Edges": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphEdge]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1862,9 +1903,12 @@
             "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2041,7 +2085,8 @@
                   "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceKeys",
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceKeys, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "System.String": "System.String"
+                    "Primary": "System.String",
+                    "Secondary": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2087,8 +2132,8 @@
                   "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.DiagnosticsConfiguration",
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.DiagnosticsConfiguration, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-                    "System.String": "System.String"
+                    "Expiry": "System.Nullable`1[System.DateTime]",
+                    "Level": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2112,7 +2157,7 @@
                   "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.RealtimeConfiguration",
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.RealtimeConfiguration, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]"
+                    "MaxConcurrentCalls": "System.Nullable`1[System.Int32]"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2158,8 +2203,10 @@
                   "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification",
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.TableSpecification]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.TableSpecification]",
-                    "System.String": "System.String"
+                    "Properties": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.TableSpecification]",
+                    "Title": "System.String",
+                    "Description": "System.String",
+                    "Type": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2183,8 +2230,10 @@
                   "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification",
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.TableSpecification]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.TableSpecification]",
-                    "System.String": "System.String"
+                    "Properties": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.TableSpecification]",
+                    "Title": "System.String",
+                    "Description": "System.String",
+                    "Type": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2230,9 +2279,9 @@
                   "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphPackage",
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphPackage, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphNode]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphNode]",
-                    "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameter]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameter]",
-                    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphEdge]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphEdge]"
+                    "Nodes": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphNode]",
+                    "GraphParameters": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameter]",
+                    "Edges": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphEdge]"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2327,9 +2376,12 @@
                   "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Id": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String",
+                    "Type": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2448,9 +2500,12 @@
             "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2522,9 +2577,12 @@
                   "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Id": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String",
+                    "Type": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2597,9 +2655,12 @@
                   "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Id": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String",
+                    "Type": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2672,9 +2733,12 @@
                   "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Id": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String",
+                    "Type": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2732,7 +2796,8 @@
             "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceKeys",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceKeys, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "System.String": "System.String"
+              "Primary": "System.String",
+              "Secondary": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2783,9 +2848,12 @@
             "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2858,9 +2926,12 @@
                   "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Id": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String",
+                    "Type": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2896,9 +2967,12 @@
             "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3016,10 +3090,14 @@
             "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties",
-              "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties",
+              "Sku": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Etag": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3322,9 +3400,12 @@
             "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3513,9 +3594,12 @@
             "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3598,9 +3682,12 @@
             "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3848,9 +3935,12 @@
                   "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Id": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String",
+                    "Type": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -4077,11 +4167,16 @@
       "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanQuantity]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanQuantity]",
-        "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-        "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-        "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-        "System.String": "System.String"
+        "IncludedQuantities": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanQuantity]",
+        "ChargeForOverage": "System.Nullable`1[System.Boolean]",
+        "ChargeForPlan": "System.Nullable`1[System.Boolean]",
+        "SuspendPlanOnOverage": "System.Nullable`1[System.Boolean]",
+        "CreationDate": "System.Nullable`1[System.DateTime]",
+        "MaxAssociationLimit": "System.Nullable`1[System.Int32]",
+        "MaxCapacityLimit": "System.Nullable`1[System.Int32]",
+        "MinCapacityLimit": "System.Nullable`1[System.Int32]",
+        "RefillFrequencyInDays": "System.Nullable`1[System.Int32]",
+        "PlanMeter": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4102,8 +4197,10 @@
       "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanQuantity",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanQuantity, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Nullable`1[System.Double]": "System.Nullable`1[System.Double]",
-        "System.String": "System.String"
+        "Allowance": "System.Nullable`1[System.Double]",
+        "Amount": "System.Nullable`1[System.Double]",
+        "IncludedQuantityMeter": "System.String",
+        "OverageMeter": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4161,8 +4258,9 @@
       "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-        "System.String": "System.String"
+        "Capacity": "System.Nullable`1[System.Int32]",
+        "Name": "System.String",
+        "Tier": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4183,10 +4281,14 @@
       "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties",
-        "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku",
-        "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "System.String": "System.String"
+        "Properties": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties",
+        "Sku": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku",
+        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "Etag": "System.String",
+        "Id": "System.String",
+        "Name": "System.String",
+        "Location": "System.String",
+        "Type": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4196,8 +4298,13 @@
       "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanUsageHistory",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanUsageHistory, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Collections.Generic.IDictionary`2[System.String,System.Nullable`1[System.Double]]": "System.Collections.Generic.IDictionary`2[System.String,System.Nullable`1[System.Double]]",
-        "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]"
+        "PlanDeletionOverage": "System.Collections.Generic.IDictionary`2[System.String,System.Nullable`1[System.Double]]",
+        "PlanMigrationOverage": "System.Collections.Generic.IDictionary`2[System.String,System.Nullable`1[System.Double]]",
+        "PlanQuantitiesAfterUsage": "System.Collections.Generic.IDictionary`2[System.String,System.Nullable`1[System.Double]]",
+        "PlanQuantitiesBeforeUsage": "System.Collections.Generic.IDictionary`2[System.String,System.Nullable`1[System.Double]]",
+        "PlanUsageOverage": "System.Collections.Generic.IDictionary`2[System.String,System.Nullable`1[System.Double]]",
+        "Usage": "System.Collections.Generic.IDictionary`2[System.String,System.Nullable`1[System.Double]]",
+        "UsageDate": "System.Nullable`1[System.DateTime]"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4218,20 +4325,27 @@
       "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.MachineLearning.WebServices.Models.BlobLocation": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.BlobLocation",
-        "Microsoft.Azure.Management.MachineLearning.WebServices.Models.CommitmentPlan": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.CommitmentPlan",
-        "Microsoft.Azure.Management.MachineLearning.WebServices.Models.DiagnosticsConfiguration": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.DiagnosticsConfiguration",
-        "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ExampleRequest": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ExampleRequest",
-        "Microsoft.Azure.Management.MachineLearning.WebServices.Models.MachineLearningWorkspace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.MachineLearningWorkspace",
-        "Microsoft.Azure.Management.MachineLearning.WebServices.Models.RealtimeConfiguration": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.RealtimeConfiguration",
-        "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification",
-        "Microsoft.Azure.Management.MachineLearning.WebServices.Models.StorageAccount": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.StorageAccount",
-        "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceKeys": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceKeys",
-        "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.AssetItem]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.AssetItem]",
-        "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceParameter]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceParameter]",
-        "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-        "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-        "System.String": "System.String"
+        "PayloadsLocation": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.BlobLocation",
+        "CommitmentPlan": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.CommitmentPlan",
+        "Diagnostics": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.DiagnosticsConfiguration",
+        "ExampleRequest": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ExampleRequest",
+        "MachineLearningWorkspace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.MachineLearningWorkspace",
+        "RealtimeConfiguration": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.RealtimeConfiguration",
+        "Output": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification",
+        "Input": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification",
+        "StorageAccount": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.StorageAccount",
+        "Keys": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceKeys",
+        "Assets": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.AssetItem]",
+        "Parameters": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceParameter]",
+        "ReadOnlyProperty": "System.Nullable`1[System.Boolean]",
+        "ExposeSampleData": "System.Nullable`1[System.Boolean]",
+        "PayloadsInBlobStorage": "System.Nullable`1[System.Boolean]",
+        "ModifiedOn": "System.Nullable`1[System.DateTime]",
+        "CreatedOn": "System.Nullable`1[System.DateTime]",
+        "SwaggerLocation": "System.String",
+        "ProvisioningState": "System.String",
+        "Description": "System.String",
+        "Title": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4241,7 +4355,8 @@
       "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.BlobLocation",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.BlobLocation, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.String": "System.String"
+        "Uri": "System.String",
+        "Credentials": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4251,7 +4366,7 @@
       "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.CommitmentPlan",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.CommitmentPlan, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.String": "System.String"
+        "Id": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4261,8 +4376,8 @@
       "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.DiagnosticsConfiguration",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.DiagnosticsConfiguration, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-        "System.String": "System.String"
+        "Expiry": "System.Nullable`1[System.DateTime]",
+        "Level": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4272,8 +4387,8 @@
       "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ExampleRequest",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ExampleRequest, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Collections.Generic.IDictionary`2[System.String,System.Collections.Generic.IList`1[System.Collections.Generic.IList`1[System.Object]]]": "System.Collections.Generic.IDictionary`2[System.String,System.Collections.Generic.IList`1[System.Collections.Generic.IList`1[System.Object]]]",
-        "System.Collections.Generic.IDictionary`2[System.String,System.Object]": "System.Collections.Generic.IDictionary`2[System.String,System.Object]"
+        "Inputs": "System.Collections.Generic.IDictionary`2[System.String,System.Collections.Generic.IList`1[System.Collections.Generic.IList`1[System.Object]]]",
+        "GlobalParameters": "System.Collections.Generic.IDictionary`2[System.String,System.Object]"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4333,7 +4448,7 @@
       "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.MachineLearningWorkspace",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.MachineLearningWorkspace, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.String": "System.String"
+        "Id": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4343,7 +4458,7 @@
       "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.RealtimeConfiguration",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.RealtimeConfiguration, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]"
+        "MaxConcurrentCalls": "System.Nullable`1[System.Int32]"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4353,8 +4468,10 @@
       "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.TableSpecification]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.TableSpecification]",
-        "System.String": "System.String"
+        "Properties": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.TableSpecification]",
+        "Title": "System.String",
+        "Description": "System.String",
+        "Type": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4375,8 +4492,11 @@
       "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.TableSpecification",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.TableSpecification, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.ColumnSpecification]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.ColumnSpecification]",
-        "System.String": "System.String"
+        "Properties": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.ColumnSpecification]",
+        "Title": "System.String",
+        "Description": "System.String",
+        "Type": "System.String",
+        "Format": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4397,9 +4517,11 @@
       "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ColumnSpecification",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ColumnSpecification, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Collections.Generic.IList`1[System.Object]": "System.Collections.Generic.IList`1[System.Object]",
-        "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-        "System.String": "System.String"
+        "EnumProperty": "System.Collections.Generic.IList`1[System.Object]",
+        "XMsIsnullable": "System.Nullable`1[System.Boolean]",
+        "XMsIsordered": "System.Nullable`1[System.Boolean]",
+        "Type": "System.String",
+        "Format": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4409,7 +4531,8 @@
       "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.StorageAccount",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.StorageAccount, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.String": "System.String"
+        "Name": "System.String",
+        "Key": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4419,7 +4542,8 @@
       "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceKeys",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceKeys, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.String": "System.String"
+        "Primary": "System.String",
+        "Secondary": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4440,12 +4564,14 @@
       "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.AssetItem",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.AssetItem, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.MachineLearning.WebServices.Models.BlobLocation": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.BlobLocation",
-        "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.InputPort]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.InputPort]",
-        "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.OutputPort]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.OutputPort]",
-        "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModuleAssetParameter]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModuleAssetParameter]",
-        "System.String": "System.String"
+        "LocationInfo": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.BlobLocation",
+        "InputPorts": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.InputPort]",
+        "OutputPorts": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.OutputPort]",
+        "Metadata": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "Parameters": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModuleAssetParameter]",
+        "Name": "System.String",
+        "Id": "System.String",
+        "Type": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4466,7 +4592,7 @@
       "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.InputPort",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.InputPort, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.String": "System.String"
+        "Type": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4487,7 +4613,7 @@
       "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.OutputPort",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.OutputPort, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.String": "System.String"
+        "Type": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4507,8 +4633,9 @@
       "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModuleAssetParameter",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModuleAssetParameter, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModeValueInfo]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModeValueInfo]",
-        "System.String": "System.String"
+        "ModeValuesInfo": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModeValueInfo]",
+        "ParameterType": "System.String",
+        "Name": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4529,8 +4656,8 @@
       "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModeValueInfo",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModeValueInfo, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModuleAssetParameter]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModuleAssetParameter]",
-        "System.String": "System.String"
+        "Parameters": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModuleAssetParameter]",
+        "InterfaceString": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4551,8 +4678,8 @@
       "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceParameter",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceParameter, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Object": "System.Object",
-        "System.String": "System.String"
+        "Value": "System.Object",
+        "CertificateThumbprint": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4562,9 +4689,12 @@
       "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
-        "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "System.String": "System.String"
+        "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
+        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "Id": "System.String",
+        "Name": "System.String",
+        "Location": "System.String",
+        "Type": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4585,8 +4715,10 @@
       "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphNode",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphNode, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceParameter]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceParameter]",
-        "System.String": "System.String"
+        "Parameters": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceParameter]",
+        "AssetId": "System.String",
+        "InputId": "System.String",
+        "OutputId": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4607,8 +4739,9 @@
       "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameter",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameter, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameterLink]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameterLink]",
-        "System.String": "System.String"
+        "Links": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameterLink]",
+        "Type": "System.String",
+        "Description": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4628,7 +4761,8 @@
       "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameterLink",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameterLink, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.String": "System.String"
+        "NodeId": "System.String",
+        "ParameterKey": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4648,7 +4782,10 @@
       "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphEdge",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphEdge, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.String": "System.String"
+        "SourceNodeId": "System.String",
+        "SourcePortId": "System.String",
+        "TargetNodeId": "System.String",
+        "TargetPortId": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []

@@ -16,11 +16,14 @@
             "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.Dns.Models.RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
-              "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.String": "System.String",
-              "System.UInt32": "System.UInt32"
+              "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+              "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
+              "Metadata": "System.Collections.Hashtable",
+              "Name": "System.String",
+              "ZoneName": "System.String",
+              "ResourceGroupName": "System.String",
+              "Etag": "System.String",
+              "Ttl": "System.UInt32"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -87,10 +90,13 @@
             "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.Nullable`1[System.Int64]": "System.Nullable`1[System.Int64]",
-              "System.String": "System.String"
+              "NameServers": "System.Collections.Generic.List`1[System.String]",
+              "Tags": "System.Collections.Hashtable",
+              "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
+              "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
+              "Name": "System.String",
+              "ResourceGroupName": "System.String",
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -249,10 +255,13 @@
                   "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-                    "System.Collections.Hashtable": "System.Collections.Hashtable",
-                    "System.Nullable`1[System.Int64]": "System.Nullable`1[System.Int64]",
-                    "System.String": "System.String"
+                    "NameServers": "System.Collections.Generic.List`1[System.String]",
+                    "Tags": "System.Collections.Hashtable",
+                    "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
+                    "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
+                    "Name": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Etag": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -948,10 +957,13 @@
             "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.Nullable`1[System.Int64]": "System.Nullable`1[System.Int64]",
-              "System.String": "System.String"
+              "NameServers": "System.Collections.Generic.List`1[System.String]",
+              "Tags": "System.Collections.Hashtable",
+              "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
+              "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
+              "Name": "System.String",
+              "ResourceGroupName": "System.String",
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -969,11 +981,14 @@
             "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.Dns.Models.RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
-              "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.String": "System.String",
-              "System.UInt32": "System.UInt32"
+              "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+              "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
+              "Metadata": "System.Collections.Hashtable",
+              "Name": "System.String",
+              "ZoneName": "System.String",
+              "ResourceGroupName": "System.String",
+              "Etag": "System.String",
+              "Ttl": "System.UInt32"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1226,10 +1241,13 @@
                   "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-                    "System.Collections.Hashtable": "System.Collections.Hashtable",
-                    "System.Nullable`1[System.Int64]": "System.Nullable`1[System.Int64]",
-                    "System.String": "System.String"
+                    "NameServers": "System.Collections.Generic.List`1[System.String]",
+                    "Tags": "System.Collections.Hashtable",
+                    "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
+                    "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
+                    "Name": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Etag": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1302,11 +1320,14 @@
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.Dns.Models.RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
-                    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "System.Collections.Hashtable": "System.Collections.Hashtable",
-                    "System.String": "System.String",
-                    "System.UInt32": "System.UInt32"
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
+                    "Metadata": "System.Collections.Hashtable",
+                    "Name": "System.String",
+                    "ZoneName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1457,11 +1478,14 @@
             "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.Dns.Models.RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
-              "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.String": "System.String",
-              "System.UInt32": "System.UInt32"
+              "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+              "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
+              "Metadata": "System.Collections.Hashtable",
+              "Name": "System.String",
+              "ZoneName": "System.String",
+              "ResourceGroupName": "System.String",
+              "Etag": "System.String",
+              "Ttl": "System.UInt32"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1480,11 +1504,14 @@
             "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.Dns.Models.RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
-              "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.String": "System.String",
-              "System.UInt32": "System.UInt32"
+              "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+              "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
+              "Metadata": "System.Collections.Hashtable",
+              "Name": "System.String",
+              "ZoneName": "System.String",
+              "ResourceGroupName": "System.String",
+              "Etag": "System.String",
+              "Ttl": "System.UInt32"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1524,11 +1551,14 @@
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.Dns.Models.RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
-                    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "System.Collections.Hashtable": "System.Collections.Hashtable",
-                    "System.String": "System.String",
-                    "System.UInt32": "System.UInt32"
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
+                    "Metadata": "System.Collections.Hashtable",
+                    "Name": "System.String",
+                    "ZoneName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1579,11 +1609,14 @@
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.Dns.Models.RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
-                    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "System.Collections.Hashtable": "System.Collections.Hashtable",
-                    "System.String": "System.String",
-                    "System.UInt32": "System.UInt32"
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
+                    "Metadata": "System.Collections.Hashtable",
+                    "Name": "System.String",
+                    "ZoneName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1619,11 +1652,14 @@
             "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.Dns.Models.RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
-              "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.String": "System.String",
-              "System.UInt32": "System.UInt32"
+              "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+              "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
+              "Metadata": "System.Collections.Hashtable",
+              "Name": "System.String",
+              "ZoneName": "System.String",
+              "ResourceGroupName": "System.String",
+              "Etag": "System.String",
+              "Ttl": "System.UInt32"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1642,11 +1678,14 @@
             "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.Dns.Models.RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
-              "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.String": "System.String",
-              "System.UInt32": "System.UInt32"
+              "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+              "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
+              "Metadata": "System.Collections.Hashtable",
+              "Name": "System.String",
+              "ZoneName": "System.String",
+              "ResourceGroupName": "System.String",
+              "Etag": "System.String",
+              "Ttl": "System.UInt32"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1862,11 +1901,14 @@
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.Dns.Models.RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
-                    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "System.Collections.Hashtable": "System.Collections.Hashtable",
-                    "System.String": "System.String",
-                    "System.UInt32": "System.UInt32"
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
+                    "Metadata": "System.Collections.Hashtable",
+                    "Name": "System.String",
+                    "ZoneName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1917,11 +1959,14 @@
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.Dns.Models.RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
-                    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "System.Collections.Hashtable": "System.Collections.Hashtable",
-                    "System.String": "System.String",
-                    "System.UInt32": "System.UInt32"
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
+                    "Metadata": "System.Collections.Hashtable",
+                    "Name": "System.String",
+                    "ZoneName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1972,11 +2017,14 @@
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.Dns.Models.RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
-                    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "System.Collections.Hashtable": "System.Collections.Hashtable",
-                    "System.String": "System.String",
-                    "System.UInt32": "System.UInt32"
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
+                    "Metadata": "System.Collections.Hashtable",
+                    "Name": "System.String",
+                    "ZoneName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2027,11 +2075,14 @@
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.Dns.Models.RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
-                    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "System.Collections.Hashtable": "System.Collections.Hashtable",
-                    "System.String": "System.String",
-                    "System.UInt32": "System.UInt32"
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
+                    "Metadata": "System.Collections.Hashtable",
+                    "Name": "System.String",
+                    "ZoneName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2104,11 +2155,14 @@
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.Dns.Models.RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
-                    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "System.Collections.Hashtable": "System.Collections.Hashtable",
-                    "System.String": "System.String",
-                    "System.UInt32": "System.UInt32"
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
+                    "Metadata": "System.Collections.Hashtable",
+                    "Name": "System.String",
+                    "ZoneName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2159,11 +2213,14 @@
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.Dns.Models.RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
-                    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "System.Collections.Hashtable": "System.Collections.Hashtable",
-                    "System.String": "System.String",
-                    "System.UInt32": "System.UInt32"
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
+                    "Metadata": "System.Collections.Hashtable",
+                    "Name": "System.String",
+                    "ZoneName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2214,11 +2271,14 @@
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.Dns.Models.RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
-                    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "System.Collections.Hashtable": "System.Collections.Hashtable",
-                    "System.String": "System.String",
-                    "System.UInt32": "System.UInt32"
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
+                    "Metadata": "System.Collections.Hashtable",
+                    "Name": "System.String",
+                    "ZoneName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2335,11 +2395,14 @@
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.Dns.Models.RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
-                    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "System.Collections.Hashtable": "System.Collections.Hashtable",
-                    "System.String": "System.String",
-                    "System.UInt32": "System.UInt32"
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
+                    "Metadata": "System.Collections.Hashtable",
+                    "Name": "System.String",
+                    "ZoneName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2390,11 +2453,14 @@
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.Dns.Models.RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
-                    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "System.Collections.Hashtable": "System.Collections.Hashtable",
-                    "System.String": "System.String",
-                    "System.UInt32": "System.UInt32"
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
+                    "Metadata": "System.Collections.Hashtable",
+                    "Name": "System.String",
+                    "ZoneName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2430,11 +2496,14 @@
             "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.Dns.Models.RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
-              "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.String": "System.String",
-              "System.UInt32": "System.UInt32"
+              "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+              "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
+              "Metadata": "System.Collections.Hashtable",
+              "Name": "System.String",
+              "ZoneName": "System.String",
+              "ResourceGroupName": "System.String",
+              "Etag": "System.String",
+              "Ttl": "System.UInt32"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2453,11 +2522,14 @@
             "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.Dns.Models.RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
-              "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.String": "System.String",
-              "System.UInt32": "System.UInt32"
+              "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+              "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
+              "Metadata": "System.Collections.Hashtable",
+              "Name": "System.String",
+              "ZoneName": "System.String",
+              "ResourceGroupName": "System.String",
+              "Etag": "System.String",
+              "Ttl": "System.UInt32"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2673,11 +2745,14 @@
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.Dns.Models.RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
-                    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "System.Collections.Hashtable": "System.Collections.Hashtable",
-                    "System.String": "System.String",
-                    "System.UInt32": "System.UInt32"
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
+                    "Metadata": "System.Collections.Hashtable",
+                    "Name": "System.String",
+                    "ZoneName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2728,11 +2803,14 @@
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.Dns.Models.RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
-                    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "System.Collections.Hashtable": "System.Collections.Hashtable",
-                    "System.String": "System.String",
-                    "System.UInt32": "System.UInt32"
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
+                    "Metadata": "System.Collections.Hashtable",
+                    "Name": "System.String",
+                    "ZoneName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2783,11 +2861,14 @@
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.Dns.Models.RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
-                    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "System.Collections.Hashtable": "System.Collections.Hashtable",
-                    "System.String": "System.String",
-                    "System.UInt32": "System.UInt32"
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
+                    "Metadata": "System.Collections.Hashtable",
+                    "Name": "System.String",
+                    "ZoneName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2838,11 +2919,14 @@
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.Dns.Models.RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
-                    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "System.Collections.Hashtable": "System.Collections.Hashtable",
-                    "System.String": "System.String",
-                    "System.UInt32": "System.UInt32"
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
+                    "Metadata": "System.Collections.Hashtable",
+                    "Name": "System.String",
+                    "ZoneName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2915,11 +2999,14 @@
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.Dns.Models.RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
-                    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "System.Collections.Hashtable": "System.Collections.Hashtable",
-                    "System.String": "System.String",
-                    "System.UInt32": "System.UInt32"
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
+                    "Metadata": "System.Collections.Hashtable",
+                    "Name": "System.String",
+                    "ZoneName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2970,11 +3057,14 @@
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.Dns.Models.RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
-                    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "System.Collections.Hashtable": "System.Collections.Hashtable",
-                    "System.String": "System.String",
-                    "System.UInt32": "System.UInt32"
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
+                    "Metadata": "System.Collections.Hashtable",
+                    "Name": "System.String",
+                    "ZoneName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3025,11 +3115,14 @@
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.Dns.Models.RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
-                    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "System.Collections.Hashtable": "System.Collections.Hashtable",
-                    "System.String": "System.String",
-                    "System.UInt32": "System.UInt32"
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
+                    "Metadata": "System.Collections.Hashtable",
+                    "Name": "System.String",
+                    "ZoneName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3146,11 +3239,14 @@
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.Dns.Models.RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
-                    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "System.Collections.Hashtable": "System.Collections.Hashtable",
-                    "System.String": "System.String",
-                    "System.UInt32": "System.UInt32"
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
+                    "Metadata": "System.Collections.Hashtable",
+                    "Name": "System.String",
+                    "ZoneName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3201,11 +3297,14 @@
                   "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.Dns.Models.RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
-                    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "System.Collections.Hashtable": "System.Collections.Hashtable",
-                    "System.String": "System.String",
-                    "System.UInt32": "System.UInt32"
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
+                    "Metadata": "System.Collections.Hashtable",
+                    "Name": "System.String",
+                    "ZoneName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3241,11 +3340,14 @@
             "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.Dns.Models.RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
-              "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.String": "System.String",
-              "System.UInt32": "System.UInt32"
+              "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+              "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
+              "Metadata": "System.Collections.Hashtable",
+              "Name": "System.String",
+              "ZoneName": "System.String",
+              "ResourceGroupName": "System.String",
+              "Etag": "System.String",
+              "Ttl": "System.UInt32"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3312,10 +3414,13 @@
             "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.Nullable`1[System.Int64]": "System.Nullable`1[System.Int64]",
-              "System.String": "System.String"
+              "NameServers": "System.Collections.Generic.List`1[System.String]",
+              "Tags": "System.Collections.Hashtable",
+              "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
+              "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
+              "Name": "System.String",
+              "ResourceGroupName": "System.String",
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3797,10 +3902,13 @@
                   "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-                    "System.Collections.Hashtable": "System.Collections.Hashtable",
-                    "System.Nullable`1[System.Int64]": "System.Nullable`1[System.Int64]",
-                    "System.String": "System.String"
+                    "NameServers": "System.Collections.Generic.List`1[System.String]",
+                    "Tags": "System.Collections.Hashtable",
+                    "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
+                    "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
+                    "Name": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Etag": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3990,10 +4098,13 @@
             "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.Nullable`1[System.Int64]": "System.Nullable`1[System.Int64]",
-              "System.String": "System.String"
+              "NameServers": "System.Collections.Generic.List`1[System.String]",
+              "Tags": "System.Collections.Hashtable",
+              "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
+              "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
+              "Name": "System.String",
+              "ResourceGroupName": "System.String",
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4155,10 +4266,13 @@
             "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.Nullable`1[System.Int64]": "System.Nullable`1[System.Int64]",
-              "System.String": "System.String"
+              "NameServers": "System.Collections.Generic.List`1[System.String]",
+              "Tags": "System.Collections.Hashtable",
+              "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
+              "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
+              "Name": "System.String",
+              "ResourceGroupName": "System.String",
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4323,10 +4437,13 @@
                   "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-                    "System.Collections.Hashtable": "System.Collections.Hashtable",
-                    "System.Nullable`1[System.Int64]": "System.Nullable`1[System.Int64]",
-                    "System.String": "System.String"
+                    "NameServers": "System.Collections.Generic.List`1[System.String]",
+                    "Tags": "System.Collections.Hashtable",
+                    "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
+                    "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
+                    "Name": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Etag": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -4477,10 +4594,13 @@
             "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.Nullable`1[System.Int64]": "System.Nullable`1[System.Int64]",
-              "System.String": "System.String"
+              "NameServers": "System.Collections.Generic.List`1[System.String]",
+              "Tags": "System.Collections.Hashtable",
+              "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
+              "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
+              "Name": "System.String",
+              "ResourceGroupName": "System.String",
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4549,10 +4669,13 @@
             "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.Nullable`1[System.Int64]": "System.Nullable`1[System.Int64]",
-              "System.String": "System.String"
+              "NameServers": "System.Collections.Generic.List`1[System.String]",
+              "Tags": "System.Collections.Hashtable",
+              "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
+              "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
+              "Name": "System.String",
+              "ResourceGroupName": "System.String",
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4665,10 +4788,13 @@
                   "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-                    "System.Collections.Hashtable": "System.Collections.Hashtable",
-                    "System.Nullable`1[System.Int64]": "System.Nullable`1[System.Int64]",
-                    "System.String": "System.String"
+                    "NameServers": "System.Collections.Generic.List`1[System.String]",
+                    "Tags": "System.Collections.Hashtable",
+                    "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
+                    "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
+                    "Name": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Etag": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -4726,10 +4852,13 @@
             "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.Nullable`1[System.Int64]": "System.Nullable`1[System.Int64]",
-              "System.String": "System.String"
+              "NameServers": "System.Collections.Generic.List`1[System.String]",
+              "Tags": "System.Collections.Hashtable",
+              "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
+              "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
+              "Name": "System.String",
+              "ResourceGroupName": "System.String",
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []

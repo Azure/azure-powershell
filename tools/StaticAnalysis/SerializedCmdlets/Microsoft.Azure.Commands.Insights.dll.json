@@ -904,8 +904,9 @@
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfileCollection",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfileCollection, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile",
-              "System.Int32": "System.Int32"
+              "Item": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile",
+              "Count": "System.Int32",
+              "Capacity": "System.Int32"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -980,10 +981,16 @@
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.Monitor.Management.Models.RetentionPolicy": "Microsoft.Azure.Management.Monitor.Management.Models.RetentionPolicy",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Collections.Generic.IList`1[System.String]": "System.Collections.Generic.IList`1[System.String]",
-              "System.String": "System.String"
+              "RetentionPolicy": "Microsoft.Azure.Management.Monitor.Management.Models.RetentionPolicy",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Locations": "System.Collections.Generic.IList`1[System.String]",
+              "Categories": "System.Collections.Generic.IList`1[System.String]",
+              "StorageAccountId": "System.String",
+              "ServiceBusRuleId": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2366,10 +2373,17 @@
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSServiceDiagnosticSettings",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSServiceDiagnosticSettings, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.LogSettings]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.LogSettings]",
-              "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.MetricSettings]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.MetricSettings]",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Logs": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.LogSettings]",
+              "Metrics": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.MetricSettings]",
+              "StorageAccountId": "System.String",
+              "ServiceBusRuleId": "System.String",
+              "EventHubAuthorizationRuleId": "System.String",
+              "WorkspaceId": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2802,10 +2816,17 @@
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSServiceDiagnosticSettings",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSServiceDiagnosticSettings, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.LogSettings]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.LogSettings]",
-              "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.MetricSettings]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.MetricSettings]",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Logs": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.LogSettings]",
+              "Metrics": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.MetricSettings]",
+              "StorageAccountId": "System.String",
+              "ServiceBusRuleId": "System.String",
+              "EventHubAuthorizationRuleId": "System.String",
+              "WorkspaceId": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2880,9 +2901,9 @@
             "Name": "Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleNotification",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleNotification, Microsoft.Azure.Management.Monitor, Version=0.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.Monitor.Management.Models.EmailNotification": "Microsoft.Azure.Management.Monitor.Management.Models.EmailNotification",
-              "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.WebhookNotification]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.WebhookNotification]",
-              "System.String": "System.String"
+              "Email": "Microsoft.Azure.Management.Monitor.Management.Models.EmailNotification",
+              "Webhooks": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.WebhookNotification]",
+              "Operation": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3071,11 +3092,11 @@
             "Name": "Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile, Microsoft.Azure.Management.Monitor, Version=0.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.Monitor.Management.Models.Recurrence": "Microsoft.Azure.Management.Monitor.Management.Models.Recurrence",
-              "Microsoft.Azure.Management.Monitor.Management.Models.ScaleCapacity": "Microsoft.Azure.Management.Monitor.Management.Models.ScaleCapacity",
-              "Microsoft.Azure.Management.Monitor.Management.Models.TimeWindow": "Microsoft.Azure.Management.Monitor.Management.Models.TimeWindow",
-              "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.ScaleRule]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.ScaleRule]",
-              "System.String": "System.String"
+              "Recurrence": "Microsoft.Azure.Management.Monitor.Management.Models.Recurrence",
+              "Capacity": "Microsoft.Azure.Management.Monitor.Management.Models.ScaleCapacity",
+              "FixedDate": "Microsoft.Azure.Management.Monitor.Management.Models.TimeWindow",
+              "Rules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.ScaleRule]",
+              "Name": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3856,8 +3877,8 @@
             "Name": "Microsoft.Azure.Management.Monitor.Management.Models.ScaleRule",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.ScaleRule, Microsoft.Azure.Management.Monitor, Version=0.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Microsoft.Azure.Management.Monitor.Management.Models.MetricTrigger": "Microsoft.Azure.Management.Monitor.Management.Models.MetricTrigger",
-              "Microsoft.Azure.Management.Monitor.Management.Models.ScaleAction": "Microsoft.Azure.Management.Monitor.Management.Models.ScaleAction"
+              "MetricTrigger": "Microsoft.Azure.Management.Monitor.Management.Models.MetricTrigger",
+              "ScaleAction": "Microsoft.Azure.Management.Monitor.Management.Models.ScaleAction"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4350,9 +4371,9 @@
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAutoscaleSettingOperationResponse",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAutoscaleSettingOperationResponse, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleSettingResource": "Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleSettingResource",
-              "System.Net.HttpStatusCode": "System.Net.HttpStatusCode",
-              "System.String": "System.String"
+              "SettingSpec": "Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleSettingResource",
+              "StatusCode": "System.Net.HttpStatusCode",
+              "RequestId": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4371,13 +4392,16 @@
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleSetting",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleSetting, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleProfilesList": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleProfilesList",
-              "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement": "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleNotification]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleNotification]",
-              "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile]",
-              "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-              "System.String": "System.String"
+              "Profiles": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleProfilesList",
+              "Tags": "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement",
+              "Notifications": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleNotification]",
+              "Enabled": "System.Nullable`1[System.Boolean]",
+              "AutoscaleSettingResourceName": "System.String",
+              "TargetResourceUri": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4517,13 +4541,16 @@
                   "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleSetting",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleSetting, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleProfilesList": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleProfilesList",
-                    "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement": "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleNotification]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleNotification]",
-                    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile]",
-                    "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-                    "System.String": "System.String"
+                    "Profiles": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleProfilesList",
+                    "Tags": "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement",
+                    "Notifications": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleNotification]",
+                    "Enabled": "System.Nullable`1[System.Boolean]",
+                    "AutoscaleSettingResourceName": "System.String",
+                    "TargetResourceUri": "System.String",
+                    "Id": "System.String",
+                    "Name": "System.String",
+                    "Type": "System.String",
+                    "Location": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -5238,8 +5265,8 @@
             "Name": "Microsoft.Azure.Management.Monitor.Management.Models.WebhookNotification",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.WebhookNotification, Microsoft.Azure.Management.Monitor, Version=0.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "ServiceUri": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -5352,8 +5379,8 @@
             "Name": "Microsoft.Azure.AzureOperationResponse",
             "AssemblyQualifiedName": "Microsoft.Azure.AzureOperationResponse, Microsoft.Azure.Common, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "System.Net.HttpStatusCode": "System.Net.HttpStatusCode",
-              "System.String": "System.String"
+              "StatusCode": "System.Net.HttpStatusCode",
+              "RequestId": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -5466,9 +5493,9 @@
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAlertRuleOperationResponse",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAlertRuleOperationResponse, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.Monitor.Management.Models.AlertRuleResource": "Microsoft.Azure.Management.Monitor.Management.Models.AlertRuleResource",
-              "System.Net.HttpStatusCode": "System.Net.HttpStatusCode",
-              "System.String": "System.String"
+              "AlertRule": "Microsoft.Azure.Management.Monitor.Management.Models.AlertRuleResource",
+              "StatusCode": "System.Net.HttpStatusCode",
+              "RequestId": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -5969,9 +5996,9 @@
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAlertRuleOperationResponse",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAlertRuleOperationResponse, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.Monitor.Management.Models.AlertRuleResource": "Microsoft.Azure.Management.Monitor.Management.Models.AlertRuleResource",
-              "System.Net.HttpStatusCode": "System.Net.HttpStatusCode",
-              "System.String": "System.String"
+              "AlertRule": "Microsoft.Azure.Management.Monitor.Management.Models.AlertRuleResource",
+              "StatusCode": "System.Net.HttpStatusCode",
+              "RequestId": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -6506,9 +6533,9 @@
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAlertRuleOperationResponse",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAlertRuleOperationResponse, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.Monitor.Management.Models.AlertRuleResource": "Microsoft.Azure.Management.Monitor.Management.Models.AlertRuleResource",
-              "System.Net.HttpStatusCode": "System.Net.HttpStatusCode",
-              "System.String": "System.String"
+              "AlertRule": "Microsoft.Azure.Management.Monitor.Management.Models.AlertRuleResource",
+              "StatusCode": "System.Net.HttpStatusCode",
+              "RequestId": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -7527,8 +7554,8 @@
             "Name": "Microsoft.Azure.Management.Monitor.Management.Models.RuleEmailAction",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.RuleEmailAction, Microsoft.Azure.Management.Monitor, Version=0.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "System.Collections.Generic.IList`1[System.String]": "System.Collections.Generic.IList`1[System.String]",
-              "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]"
+              "CustomEmails": "System.Collections.Generic.IList`1[System.String]",
+              "SendToServiceOwners": "System.Nullable`1[System.Boolean]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -7641,8 +7668,8 @@
             "Name": "Microsoft.Azure.Management.Monitor.Management.Models.RuleWebhookAction",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.RuleWebhookAction, Microsoft.Azure.Management.Monitor, Version=0.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "ServiceUri": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -7971,11 +7998,13 @@
       "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSUsageMetric",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSUsageMetric, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Microsoft.Azure.Management.Monitor.Models.LocalizableString": "Microsoft.Azure.Management.Monitor.Models.LocalizableString",
-        "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-        "System.Nullable`1[System.Double]": "System.Nullable`1[System.Double]",
-        "System.Nullable`1[System.TimeSpan]": "System.Nullable`1[System.TimeSpan]",
-        "System.String": "System.String"
+        "Name": "Microsoft.Azure.Management.Monitor.Models.LocalizableString",
+        "NextResetTime": "System.Nullable`1[System.DateTime]",
+        "CurrentValue": "System.Nullable`1[System.Double]",
+        "Limit": "System.Nullable`1[System.Double]",
+        "QuotaPeriod": "System.Nullable`1[System.TimeSpan]",
+        "Id": "System.String",
+        "Unit": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -7985,7 +8014,8 @@
       "Name": "Microsoft.Azure.Management.Monitor.Models.LocalizableString",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Models.LocalizableString, Microsoft.Azure.Management.Monitor, Version=0.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.String": "System.String"
+        "Value": "System.String",
+        "LocalizedValue": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8041,11 +8071,12 @@
       "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDefinition",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDefinition, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Microsoft.Azure.Management.Monitor.Models.LocalizableString": "Microsoft.Azure.Management.Monitor.Models.LocalizableString",
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Models.MetricAvailability]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Models.MetricAvailability]",
-        "System.Nullable`1[Microsoft.Azure.Management.Monitor.Models.AggregationType]": "System.Nullable`1[Microsoft.Azure.Management.Monitor.Models.AggregationType]",
-        "System.Nullable`1[Microsoft.Azure.Management.Monitor.Models.Unit]": "System.Nullable`1[Microsoft.Azure.Management.Monitor.Models.Unit]",
-        "System.String": "System.String"
+        "Name": "Microsoft.Azure.Management.Monitor.Models.LocalizableString",
+        "MetricAvailabilities": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Models.MetricAvailability]",
+        "PrimaryAggregationType": "System.Nullable`1[Microsoft.Azure.Management.Monitor.Models.AggregationType]",
+        "Unit": "System.Nullable`1[Microsoft.Azure.Management.Monitor.Models.Unit]",
+        "ResourceId": "System.String",
+        "Id": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8065,7 +8096,8 @@
       "Name": "Microsoft.Azure.Management.Monitor.Models.MetricAvailability",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Models.MetricAvailability, Microsoft.Azure.Management.Monitor, Version=0.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Nullable`1[System.TimeSpan]": "System.Nullable`1[System.TimeSpan]"
+        "TimeGrain": "System.Nullable`1[System.TimeSpan]",
+        "Retention": "System.Nullable`1[System.TimeSpan]"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8111,10 +8143,11 @@
       "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetric",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetric, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Microsoft.Azure.Management.Monitor.Models.LocalizableString": "Microsoft.Azure.Management.Monitor.Models.LocalizableString",
-        "Microsoft.Azure.Management.Monitor.Models.Unit": "Microsoft.Azure.Management.Monitor.Models.Unit",
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Models.MetricValue]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Models.MetricValue]",
-        "System.String": "System.String"
+        "Name": "Microsoft.Azure.Management.Monitor.Models.LocalizableString",
+        "Unit": "Microsoft.Azure.Management.Monitor.Models.Unit",
+        "Data": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Models.MetricValue]",
+        "Id": "System.String",
+        "Type": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8134,9 +8167,12 @@
       "Name": "Microsoft.Azure.Management.Monitor.Models.MetricValue",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Models.MetricValue, Microsoft.Azure.Management.Monitor, Version=0.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.DateTime": "System.DateTime",
-        "System.Nullable`1[System.Double]": "System.Nullable`1[System.Double]",
-        "System.Nullable`1[System.Int64]": "System.Nullable`1[System.Int64]"
+        "TimeStamp": "System.DateTime",
+        "Average": "System.Nullable`1[System.Double]",
+        "Minimum": "System.Nullable`1[System.Double]",
+        "Maximum": "System.Nullable`1[System.Double]",
+        "Total": "System.Nullable`1[System.Double]",
+        "Count": "System.Nullable`1[System.Int64]"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8156,10 +8192,16 @@
       "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Microsoft.Azure.Management.Monitor.Management.Models.RetentionPolicy": "Microsoft.Azure.Management.Monitor.Management.Models.RetentionPolicy",
-        "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "System.Collections.Generic.IList`1[System.String]": "System.Collections.Generic.IList`1[System.String]",
-        "System.String": "System.String"
+        "RetentionPolicy": "Microsoft.Azure.Management.Monitor.Management.Models.RetentionPolicy",
+        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "Locations": "System.Collections.Generic.IList`1[System.String]",
+        "Categories": "System.Collections.Generic.IList`1[System.String]",
+        "StorageAccountId": "System.String",
+        "ServiceBusRuleId": "System.String",
+        "Id": "System.String",
+        "Name": "System.String",
+        "Type": "System.String",
+        "Location": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8169,8 +8211,8 @@
       "Name": "Microsoft.Azure.Management.Monitor.Management.Models.RetentionPolicy",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.RetentionPolicy, Microsoft.Azure.Management.Monitor, Version=0.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Boolean": "System.Boolean",
-        "System.Int32": "System.Int32"
+        "Enabled": "System.Boolean",
+        "Days": "System.Int32"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8219,9 +8261,9 @@
       "Name": "Microsoft.Azure.Management.Monitor.Management.Models.LogSettings",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.LogSettings, Microsoft.Azure.Management.Monitor, Version=0.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Monitor.Management.Models.RetentionPolicy": "Microsoft.Azure.Management.Monitor.Management.Models.RetentionPolicy",
-        "System.Boolean": "System.Boolean",
-        "System.String": "System.String"
+        "RetentionPolicy": "Microsoft.Azure.Management.Monitor.Management.Models.RetentionPolicy",
+        "Enabled": "System.Boolean",
+        "Category": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8241,9 +8283,9 @@
       "Name": "Microsoft.Azure.Management.Monitor.Management.Models.MetricSettings",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.MetricSettings, Microsoft.Azure.Management.Monitor, Version=0.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Monitor.Management.Models.RetentionPolicy": "Microsoft.Azure.Management.Monitor.Management.Models.RetentionPolicy",
-        "System.Boolean": "System.Boolean",
-        "System.TimeSpan": "System.TimeSpan"
+        "RetentionPolicy": "Microsoft.Azure.Management.Monitor.Management.Models.RetentionPolicy",
+        "Enabled": "System.Boolean",
+        "TimeGrain": "System.TimeSpan"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8253,8 +8295,9 @@
       "Name": "Microsoft.Azure.Management.Monitor.Management.Models.EmailNotification",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.EmailNotification, Microsoft.Azure.Management.Monitor, Version=0.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Collections.Generic.IList`1[System.String]": "System.Collections.Generic.IList`1[System.String]",
-        "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]"
+        "CustomEmails": "System.Collections.Generic.IList`1[System.String]",
+        "SendToSubscriptionCoAdministrators": "System.Nullable`1[System.Boolean]",
+        "SendToSubscriptionAdministrator": "System.Nullable`1[System.Boolean]"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8284,8 +8327,8 @@
       "Name": "Microsoft.Azure.Management.Monitor.Management.Models.WebhookNotification",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.WebhookNotification, Microsoft.Azure.Management.Monitor, Version=0.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "System.String": "System.String"
+        "Properties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "ServiceUri": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8295,8 +8338,8 @@
       "Name": "Microsoft.Azure.Management.Monitor.Management.Models.Recurrence",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.Recurrence, Microsoft.Azure.Management.Monitor, Version=0.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Monitor.Management.Models.RecurrenceFrequency": "Microsoft.Azure.Management.Monitor.Management.Models.RecurrenceFrequency",
-        "Microsoft.Azure.Management.Monitor.Management.Models.RecurrentSchedule": "Microsoft.Azure.Management.Monitor.Management.Models.RecurrentSchedule"
+        "Frequency": "Microsoft.Azure.Management.Monitor.Management.Models.RecurrenceFrequency",
+        "Schedule": "Microsoft.Azure.Management.Monitor.Management.Models.RecurrentSchedule"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8314,9 +8357,10 @@
       "Name": "Microsoft.Azure.Management.Monitor.Management.Models.RecurrentSchedule",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.RecurrentSchedule, Microsoft.Azure.Management.Monitor, Version=0.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Collections.Generic.IList`1[System.Nullable`1[System.Int32]]": "System.Collections.Generic.IList`1[System.Nullable`1[System.Int32]]",
-        "System.Collections.Generic.IList`1[System.String]": "System.Collections.Generic.IList`1[System.String]",
-        "System.String": "System.String"
+        "Hours": "System.Collections.Generic.IList`1[System.Nullable`1[System.Int32]]",
+        "Minutes": "System.Collections.Generic.IList`1[System.Nullable`1[System.Int32]]",
+        "Days": "System.Collections.Generic.IList`1[System.String]",
+        "TimeZone": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8346,7 +8390,9 @@
       "Name": "Microsoft.Azure.Management.Monitor.Management.Models.ScaleCapacity",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.ScaleCapacity, Microsoft.Azure.Management.Monitor, Version=0.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.String": "System.String"
+        "Minimum": "System.String",
+        "Maximum": "System.String",
+        "DefaultProperty": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8356,8 +8402,9 @@
       "Name": "Microsoft.Azure.Management.Monitor.Management.Models.TimeWindow",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.TimeWindow, Microsoft.Azure.Management.Monitor, Version=0.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.DateTime": "System.DateTime",
-        "System.String": "System.String"
+        "Start": "System.DateTime",
+        "End": "System.DateTime",
+        "TimeZone": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8377,8 +8424,8 @@
       "Name": "Microsoft.Azure.Management.Monitor.Management.Models.ScaleRule",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.ScaleRule, Microsoft.Azure.Management.Monitor, Version=0.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Monitor.Management.Models.MetricTrigger": "Microsoft.Azure.Management.Monitor.Management.Models.MetricTrigger",
-        "Microsoft.Azure.Management.Monitor.Management.Models.ScaleAction": "Microsoft.Azure.Management.Monitor.Management.Models.ScaleAction"
+        "MetricTrigger": "Microsoft.Azure.Management.Monitor.Management.Models.MetricTrigger",
+        "ScaleAction": "Microsoft.Azure.Management.Monitor.Management.Models.ScaleAction"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8388,12 +8435,14 @@
       "Name": "Microsoft.Azure.Management.Monitor.Management.Models.MetricTrigger",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.MetricTrigger, Microsoft.Azure.Management.Monitor, Version=0.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Monitor.Management.Models.ComparisonOperationType": "Microsoft.Azure.Management.Monitor.Management.Models.ComparisonOperationType",
-        "Microsoft.Azure.Management.Monitor.Management.Models.MetricStatisticType": "Microsoft.Azure.Management.Monitor.Management.Models.MetricStatisticType",
-        "Microsoft.Azure.Management.Monitor.Management.Models.TimeAggregationType": "Microsoft.Azure.Management.Monitor.Management.Models.TimeAggregationType",
-        "System.Double": "System.Double",
-        "System.String": "System.String",
-        "System.TimeSpan": "System.TimeSpan"
+        "OperatorProperty": "Microsoft.Azure.Management.Monitor.Management.Models.ComparisonOperationType",
+        "Statistic": "Microsoft.Azure.Management.Monitor.Management.Models.MetricStatisticType",
+        "TimeAggregation": "Microsoft.Azure.Management.Monitor.Management.Models.TimeAggregationType",
+        "Threshold": "System.Double",
+        "MetricName": "System.String",
+        "MetricResourceUri": "System.String",
+        "TimeGrain": "System.TimeSpan",
+        "TimeWindow": "System.TimeSpan"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8427,10 +8476,10 @@
       "Name": "Microsoft.Azure.Management.Monitor.Management.Models.ScaleAction",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.ScaleAction, Microsoft.Azure.Management.Monitor, Version=0.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Monitor.Management.Models.ScaleDirection": "Microsoft.Azure.Management.Monitor.Management.Models.ScaleDirection",
-        "Microsoft.Azure.Management.Monitor.Management.Models.ScaleType": "Microsoft.Azure.Management.Monitor.Management.Models.ScaleType",
-        "System.String": "System.String",
-        "System.TimeSpan": "System.TimeSpan"
+        "Direction": "Microsoft.Azure.Management.Monitor.Management.Models.ScaleDirection",
+        "Type": "Microsoft.Azure.Management.Monitor.Management.Models.ScaleType",
+        "Value": "System.String",
+        "Cooldown": "System.TimeSpan"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8456,11 +8505,16 @@
       "Name": "Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleSettingResource",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleSettingResource, Microsoft.Azure.Management.Monitor, Version=0.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleNotification]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleNotification]",
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile]",
-        "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-        "System.String": "System.String"
+        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "Notifications": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleNotification]",
+        "Profiles": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile]",
+        "Enabled": "System.Nullable`1[System.Boolean]",
+        "AutoscaleSettingResourceName": "System.String",
+        "TargetResourceUri": "System.String",
+        "Id": "System.String",
+        "Name": "System.String",
+        "Type": "System.String",
+        "Location": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8480,9 +8534,9 @@
       "Name": "Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleNotification",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleNotification, Microsoft.Azure.Management.Monitor, Version=0.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Monitor.Management.Models.EmailNotification": "Microsoft.Azure.Management.Monitor.Management.Models.EmailNotification",
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.WebhookNotification]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.WebhookNotification]",
-        "System.String": "System.String"
+        "Email": "Microsoft.Azure.Management.Monitor.Management.Models.EmailNotification",
+        "Webhooks": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.WebhookNotification]",
+        "Operation": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8502,11 +8556,11 @@
       "Name": "Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile, Microsoft.Azure.Management.Monitor, Version=0.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Monitor.Management.Models.Recurrence": "Microsoft.Azure.Management.Monitor.Management.Models.Recurrence",
-        "Microsoft.Azure.Management.Monitor.Management.Models.ScaleCapacity": "Microsoft.Azure.Management.Monitor.Management.Models.ScaleCapacity",
-        "Microsoft.Azure.Management.Monitor.Management.Models.TimeWindow": "Microsoft.Azure.Management.Monitor.Management.Models.TimeWindow",
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.ScaleRule]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.ScaleRule]",
-        "System.String": "System.String"
+        "Recurrence": "Microsoft.Azure.Management.Monitor.Management.Models.Recurrence",
+        "Capacity": "Microsoft.Azure.Management.Monitor.Management.Models.ScaleCapacity",
+        "FixedDate": "Microsoft.Azure.Management.Monitor.Management.Models.TimeWindow",
+        "Rules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.ScaleRule]",
+        "Name": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8524,8 +8578,9 @@
       "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleProfilesList",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleProfilesList, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile": "Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile",
-        "System.Int32": "System.Int32"
+        "Item": "Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile",
+        "Count": "System.Int32",
+        "Capacity": "System.Int32"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8535,7 +8590,7 @@
       "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]"
+        "Content": "System.Collections.Generic.IDictionary`2[System.String,System.String]"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8545,12 +8600,17 @@
       "Name": "Microsoft.Azure.Management.Monitor.Management.Models.AlertRuleResource",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.AlertRuleResource, Microsoft.Azure.Management.Monitor, Version=0.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Monitor.Management.Models.RuleCondition": "Microsoft.Azure.Management.Monitor.Management.Models.RuleCondition",
-        "System.Boolean": "System.Boolean",
-        "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction]",
-        "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-        "System.String": "System.String"
+        "Condition": "Microsoft.Azure.Management.Monitor.Management.Models.RuleCondition",
+        "IsEnabled": "System.Boolean",
+        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "Actions": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction]",
+        "LastUpdatedTime": "System.Nullable`1[System.DateTime]",
+        "AlertRuleResourceName": "System.String",
+        "Description": "System.String",
+        "Id": "System.String",
+        "Name": "System.String",
+        "Type": "System.String",
+        "Location": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8560,7 +8620,7 @@
       "Name": "Microsoft.Azure.Management.Monitor.Management.Models.RuleCondition",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.RuleCondition, Microsoft.Azure.Management.Monitor, Version=0.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.Monitor.Management.Models.RuleDataSource": "Microsoft.Azure.Management.Monitor.Management.Models.RuleDataSource"
+        "DataSource": "Microsoft.Azure.Management.Monitor.Management.Models.RuleDataSource"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8570,7 +8630,7 @@
       "Name": "Microsoft.Azure.Management.Monitor.Management.Models.RuleDataSource",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.RuleDataSource, Microsoft.Azure.Management.Monitor, Version=0.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.String": "System.String"
+        "ResourceUri": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8606,7 +8666,9 @@
       "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSManagementItemDescriptor",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSManagementItemDescriptor, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.String": "System.String"
+        "Id": "System.String",
+        "Location": "System.String",
+        "Name": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8616,8 +8678,8 @@
       "Name": "Microsoft.Azure.AzureOperationResponse",
       "AssemblyQualifiedName": "Microsoft.Azure.AzureOperationResponse, Microsoft.Azure.Common, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Net.HttpStatusCode": "System.Net.HttpStatusCode",
-        "System.String": "System.String"
+        "StatusCode": "System.Net.HttpStatusCode",
+        "RequestId": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []

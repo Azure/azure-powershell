@@ -16,12 +16,20 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]",
-              "System.DateTime": "System.DateTime",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String",
-              "System.TimeSpan": "System.TimeSpan"
+              "IsCancellable": "System.Boolean",
+              "IsRetriable": "System.Boolean",
+              "ErrorDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]",
+              "StartTime": "System.DateTime",
+              "EndTime": "System.Nullable`1[System.DateTime]",
+              "InstanceId": "System.String",
+              "WorkloadType": "System.String",
+              "Operation": "System.String",
+              "Status": "System.String",
+              "WorkloadName": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceName": "System.String",
+              "Location": "System.String",
+              "Duration": "System.TimeSpan"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -40,8 +48,19 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Int32": "System.Int32",
-              "System.String": "System.String"
+              "RecoveryPointsCount": "System.Int32",
+              "Name": "System.String",
+              "DataSourceStatus": "System.String",
+              "ProtectionStatus": "System.String",
+              "Type": "System.String",
+              "ProtectionPolicyName": "System.String",
+              "ProtectionPolicyId": "System.String",
+              "ItemName": "System.String",
+              "ContainerType": "System.String",
+              "ContainerUniqueName": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceName": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -65,8 +84,19 @@
                   "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Int32": "System.Int32",
-                    "System.String": "System.String"
+                    "RecoveryPointsCount": "System.Int32",
+                    "Name": "System.String",
+                    "DataSourceStatus": "System.String",
+                    "ProtectionStatus": "System.String",
+                    "Type": "System.String",
+                    "ProtectionPolicyName": "System.String",
+                    "ProtectionPolicyId": "System.String",
+                    "ItemName": "System.String",
+                    "ContainerType": "System.String",
+                    "ContainerUniqueName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "ResourceName": "System.String",
+                    "Location": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -105,8 +135,14 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Int64": "System.Int64",
-              "System.String": "System.String"
+              "Id": "System.Int64",
+              "Name": "System.String",
+              "Status": "System.String",
+              "ContainerType": "System.String",
+              "ContainerUniqueName": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceName": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -130,8 +166,14 @@
                   "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Int64": "System.Int64",
-                    "System.String": "System.String"
+                    "Id": "System.Int64",
+                    "Name": "System.String",
+                    "Status": "System.String",
+                    "ContainerType": "System.String",
+                    "ContainerUniqueName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "ResourceName": "System.String",
+                    "Location": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -250,7 +292,11 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "ResourceId": "System.String",
+              "Name": "System.String",
+              "ResourceGroupName": "System.String",
+              "Region": "System.String",
+              "Storage": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -362,7 +408,11 @@
                   "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.String": "System.String"
+                    "ResourceId": "System.String",
+                    "Name": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Region": "System.String",
+                    "Storage": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -398,12 +448,20 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]",
-              "System.DateTime": "System.DateTime",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String",
-              "System.TimeSpan": "System.TimeSpan"
+              "IsCancellable": "System.Boolean",
+              "IsRetriable": "System.Boolean",
+              "ErrorDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]",
+              "StartTime": "System.DateTime",
+              "EndTime": "System.Nullable`1[System.DateTime]",
+              "InstanceId": "System.String",
+              "WorkloadType": "System.String",
+              "Operation": "System.String",
+              "Status": "System.String",
+              "WorkloadName": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceName": "System.String",
+              "Location": "System.String",
+              "Duration": "System.TimeSpan"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -470,7 +528,11 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "ResourceId": "System.String",
+              "Name": "System.String",
+              "ResourceGroupName": "System.String",
+              "Region": "System.String",
+              "Storage": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -538,7 +600,11 @@
                   "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.String": "System.String"
+                    "ResourceId": "System.String",
+                    "Name": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Region": "System.String",
+                    "Storage": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -611,7 +677,11 @@
                   "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.String": "System.String"
+                    "ResourceId": "System.String",
+                    "Name": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Region": "System.String",
+                    "Storage": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -640,7 +710,11 @@
                   "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.String": "System.String"
+                    "ResourceId": "System.String",
+                    "Name": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Region": "System.String",
+                    "Storage": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -695,8 +769,14 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Int64": "System.Int64",
-              "System.String": "System.String"
+              "Id": "System.Int64",
+              "Name": "System.String",
+              "Status": "System.String",
+              "ContainerType": "System.String",
+              "ContainerUniqueName": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceName": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -742,8 +822,14 @@
                   "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Int64": "System.Int64",
-                    "System.String": "System.String"
+                    "Id": "System.Int64",
+                    "Name": "System.String",
+                    "Status": "System.String",
+                    "ContainerType": "System.String",
+                    "ContainerUniqueName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "ResourceName": "System.String",
+                    "Location": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -779,12 +865,20 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]",
-              "System.DateTime": "System.DateTime",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String",
-              "System.TimeSpan": "System.TimeSpan"
+              "IsCancellable": "System.Boolean",
+              "IsRetriable": "System.Boolean",
+              "ErrorDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]",
+              "StartTime": "System.DateTime",
+              "EndTime": "System.Nullable`1[System.DateTime]",
+              "InstanceId": "System.String",
+              "WorkloadType": "System.String",
+              "Operation": "System.String",
+              "Status": "System.String",
+              "WorkloadName": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceName": "System.String",
+              "Location": "System.String",
+              "Duration": "System.TimeSpan"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -803,10 +897,16 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]",
-              "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-              "System.DateTime": "System.DateTime",
-              "System.String": "System.String"
+              "RetentionPolicy": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]",
+              "DaysOfWeek": "System.Collections.Generic.List`1[System.String]",
+              "BackupTime": "System.DateTime",
+              "PolicyId": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "ScheduleType": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceName": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -824,7 +924,11 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainerContextObject",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainerContextObject, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "ContainerType": "System.String",
+              "ContainerUniqueName": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceName": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -848,10 +952,16 @@
                   "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]",
-                    "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-                    "System.DateTime": "System.DateTime",
-                    "System.String": "System.String"
+                    "RetentionPolicy": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]",
+                    "DaysOfWeek": "System.Collections.Generic.List`1[System.String]",
+                    "BackupTime": "System.DateTime",
+                    "PolicyId": "System.String",
+                    "Name": "System.String",
+                    "Type": "System.String",
+                    "ScheduleType": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "ResourceName": "System.String",
+                    "Location": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -875,7 +985,11 @@
                   "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainerContextObject",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainerContextObject, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.String": "System.String"
+                    "ContainerType": "System.String",
+                    "ContainerUniqueName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "ResourceName": "System.String",
+                    "Location": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -911,8 +1025,19 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Int32": "System.Int32",
-              "System.String": "System.String"
+              "RecoveryPointsCount": "System.Int32",
+              "Name": "System.String",
+              "DataSourceStatus": "System.String",
+              "ProtectionStatus": "System.String",
+              "Type": "System.String",
+              "ProtectionPolicyName": "System.String",
+              "ProtectionPolicyId": "System.String",
+              "ItemName": "System.String",
+              "ContainerType": "System.String",
+              "ContainerUniqueName": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceName": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1005,8 +1130,14 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Int64": "System.Int64",
-              "System.String": "System.String"
+              "Id": "System.Int64",
+              "Name": "System.String",
+              "Status": "System.String",
+              "ContainerType": "System.String",
+              "ContainerUniqueName": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceName": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1107,8 +1238,14 @@
                   "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Int64": "System.Int64",
-                    "System.String": "System.String"
+                    "Id": "System.Int64",
+                    "Name": "System.String",
+                    "Status": "System.String",
+                    "ContainerType": "System.String",
+                    "ContainerUniqueName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "ResourceName": "System.String",
+                    "Location": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1159,12 +1296,20 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]",
-              "System.DateTime": "System.DateTime",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String",
-              "System.TimeSpan": "System.TimeSpan"
+              "IsCancellable": "System.Boolean",
+              "IsRetriable": "System.Boolean",
+              "ErrorDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]",
+              "StartTime": "System.DateTime",
+              "EndTime": "System.Nullable`1[System.DateTime]",
+              "InstanceId": "System.String",
+              "WorkloadType": "System.String",
+              "Operation": "System.String",
+              "Status": "System.String",
+              "WorkloadName": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceName": "System.String",
+              "Location": "System.String",
+              "Duration": "System.TimeSpan"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1183,7 +1328,11 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "ResourceId": "System.String",
+              "Name": "System.String",
+              "ResourceGroupName": "System.String",
+              "Region": "System.String",
+              "Storage": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1217,12 +1366,20 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]",
-              "System.DateTime": "System.DateTime",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String",
-              "System.TimeSpan": "System.TimeSpan"
+              "IsCancellable": "System.Boolean",
+              "IsRetriable": "System.Boolean",
+              "ErrorDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]",
+              "StartTime": "System.DateTime",
+              "EndTime": "System.Nullable`1[System.DateTime]",
+              "InstanceId": "System.String",
+              "WorkloadType": "System.String",
+              "Operation": "System.String",
+              "Status": "System.String",
+              "WorkloadName": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceName": "System.String",
+              "Location": "System.String",
+              "Duration": "System.TimeSpan"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1347,7 +1504,11 @@
                   "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.String": "System.String"
+                    "ResourceId": "System.String",
+                    "Name": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Region": "System.String",
+                    "Storage": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1529,12 +1690,20 @@
                   "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Boolean": "System.Boolean",
-                    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]",
-                    "System.DateTime": "System.DateTime",
-                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-                    "System.String": "System.String",
-                    "System.TimeSpan": "System.TimeSpan"
+                    "IsCancellable": "System.Boolean",
+                    "IsRetriable": "System.Boolean",
+                    "ErrorDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]",
+                    "StartTime": "System.DateTime",
+                    "EndTime": "System.Nullable`1[System.DateTime]",
+                    "InstanceId": "System.String",
+                    "WorkloadType": "System.String",
+                    "Operation": "System.String",
+                    "Status": "System.String",
+                    "WorkloadName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "ResourceName": "System.String",
+                    "Location": "System.String",
+                    "Duration": "System.TimeSpan"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1570,14 +1739,22 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJobDetails",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJobDetails, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.Collections.Generic.Dictionary`2[System.String,System.String]": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
-              "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupJobSubTask]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupJobSubTask]",
-              "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]",
-              "System.DateTime": "System.DateTime",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String",
-              "System.TimeSpan": "System.TimeSpan"
+              "IsCancellable": "System.Boolean",
+              "IsRetriable": "System.Boolean",
+              "Properties": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
+              "SubTasks": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupJobSubTask]",
+              "ErrorDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]",
+              "StartTime": "System.DateTime",
+              "EndTime": "System.Nullable`1[System.DateTime]",
+              "InstanceId": "System.String",
+              "WorkloadType": "System.String",
+              "Operation": "System.String",
+              "Status": "System.String",
+              "WorkloadName": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceName": "System.String",
+              "Location": "System.String",
+              "Duration": "System.TimeSpan"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1596,7 +1773,11 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "ResourceId": "System.String",
+              "Name": "System.String",
+              "ResourceGroupName": "System.String",
+              "Region": "System.String",
+              "Storage": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1630,12 +1811,20 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]",
-              "System.DateTime": "System.DateTime",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String",
-              "System.TimeSpan": "System.TimeSpan"
+              "IsCancellable": "System.Boolean",
+              "IsRetriable": "System.Boolean",
+              "ErrorDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]",
+              "StartTime": "System.DateTime",
+              "EndTime": "System.Nullable`1[System.DateTime]",
+              "InstanceId": "System.String",
+              "WorkloadType": "System.String",
+              "Operation": "System.String",
+              "Status": "System.String",
+              "WorkloadName": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceName": "System.String",
+              "Location": "System.String",
+              "Duration": "System.TimeSpan"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1659,7 +1848,11 @@
                   "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.String": "System.String"
+                    "ResourceId": "System.String",
+                    "Name": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Region": "System.String",
+                    "Storage": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1710,12 +1903,20 @@
                   "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Boolean": "System.Boolean",
-                    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]",
-                    "System.DateTime": "System.DateTime",
-                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-                    "System.String": "System.String",
-                    "System.TimeSpan": "System.TimeSpan"
+                    "IsCancellable": "System.Boolean",
+                    "IsRetriable": "System.Boolean",
+                    "ErrorDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]",
+                    "StartTime": "System.DateTime",
+                    "EndTime": "System.Nullable`1[System.DateTime]",
+                    "InstanceId": "System.String",
+                    "WorkloadType": "System.String",
+                    "Operation": "System.String",
+                    "Status": "System.String",
+                    "WorkloadName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "ResourceName": "System.String",
+                    "Location": "System.String",
+                    "Duration": "System.TimeSpan"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1754,7 +1955,11 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "ResourceId": "System.String",
+              "Name": "System.String",
+              "ResourceGroupName": "System.String",
+              "Region": "System.String",
+              "Storage": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1788,12 +1993,20 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]",
-              "System.DateTime": "System.DateTime",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String",
-              "System.TimeSpan": "System.TimeSpan"
+              "IsCancellable": "System.Boolean",
+              "IsRetriable": "System.Boolean",
+              "ErrorDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]",
+              "StartTime": "System.DateTime",
+              "EndTime": "System.Nullable`1[System.DateTime]",
+              "InstanceId": "System.String",
+              "WorkloadType": "System.String",
+              "Operation": "System.String",
+              "Status": "System.String",
+              "WorkloadName": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceName": "System.String",
+              "Location": "System.String",
+              "Duration": "System.TimeSpan"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1817,7 +2030,11 @@
                   "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.String": "System.String"
+                    "ResourceId": "System.String",
+                    "Name": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Region": "System.String",
+                    "Storage": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1868,12 +2085,20 @@
                   "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Boolean": "System.Boolean",
-                    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]",
-                    "System.DateTime": "System.DateTime",
-                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-                    "System.String": "System.String",
-                    "System.TimeSpan": "System.TimeSpan"
+                    "IsCancellable": "System.Boolean",
+                    "IsRetriable": "System.Boolean",
+                    "ErrorDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]",
+                    "StartTime": "System.DateTime",
+                    "EndTime": "System.Nullable`1[System.DateTime]",
+                    "InstanceId": "System.String",
+                    "WorkloadType": "System.String",
+                    "Operation": "System.String",
+                    "Status": "System.String",
+                    "WorkloadName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "ResourceName": "System.String",
+                    "Location": "System.String",
+                    "Duration": "System.TimeSpan"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1924,12 +2149,20 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]",
-              "System.DateTime": "System.DateTime",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String",
-              "System.TimeSpan": "System.TimeSpan"
+              "IsCancellable": "System.Boolean",
+              "IsRetriable": "System.Boolean",
+              "ErrorDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]",
+              "StartTime": "System.DateTime",
+              "EndTime": "System.Nullable`1[System.DateTime]",
+              "InstanceId": "System.String",
+              "WorkloadType": "System.String",
+              "Operation": "System.String",
+              "Status": "System.String",
+              "WorkloadName": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceName": "System.String",
+              "Location": "System.String",
+              "Duration": "System.TimeSpan"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2046,10 +2279,16 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]",
-              "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-              "System.DateTime": "System.DateTime",
-              "System.String": "System.String"
+              "RetentionPolicy": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]",
+              "DaysOfWeek": "System.Collections.Generic.List`1[System.String]",
+              "BackupTime": "System.DateTime",
+              "PolicyId": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "ScheduleType": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceName": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2099,7 +2338,11 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "ResourceId": "System.String",
+              "Name": "System.String",
+              "ResourceGroupName": "System.String",
+              "Region": "System.String",
+              "Storage": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2145,7 +2388,11 @@
                   "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.String": "System.String"
+                    "ResourceId": "System.String",
+                    "Name": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Region": "System.String",
+                    "Storage": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2181,10 +2428,16 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]",
-              "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-              "System.DateTime": "System.DateTime",
-              "System.String": "System.String"
+              "RetentionPolicy": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]",
+              "DaysOfWeek": "System.Collections.Generic.List`1[System.String]",
+              "BackupTime": "System.DateTime",
+              "PolicyId": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "ScheduleType": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceName": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2325,7 +2578,11 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "ResourceId": "System.String",
+              "Name": "System.String",
+              "ResourceGroupName": "System.String",
+              "Region": "System.String",
+              "Storage": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2439,7 +2696,11 @@
                   "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.String": "System.String"
+                    "ResourceId": "System.String",
+                    "Name": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Region": "System.String",
+                    "Storage": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2580,7 +2841,11 @@
                   "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.String": "System.String"
+                    "ResourceId": "System.String",
+                    "Name": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Region": "System.String",
+                    "Storage": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2751,7 +3016,11 @@
                   "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.String": "System.String"
+                    "ResourceId": "System.String",
+                    "Name": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Region": "System.String",
+                    "Storage": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2900,7 +3169,11 @@
                   "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.String": "System.String"
+                    "ResourceId": "System.String",
+                    "Name": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Region": "System.String",
+                    "Storage": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2936,9 +3209,9 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IList`1[System.DateTime]": "System.Collections.Generic.IList`1[System.DateTime]",
-              "System.Int32": "System.Int32",
-              "System.String": "System.String"
+              "RetentionTimes": "System.Collections.Generic.IList`1[System.DateTime]",
+              "Retention": "System.Int32",
+              "RetentionType": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3884,10 +4157,16 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]",
-              "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-              "System.DateTime": "System.DateTime",
-              "System.String": "System.String"
+              "RetentionPolicy": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]",
+              "DaysOfWeek": "System.Collections.Generic.List`1[System.String]",
+              "BackupTime": "System.DateTime",
+              "PolicyId": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "ScheduleType": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceName": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3933,10 +4212,16 @@
                   "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]",
-                    "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-                    "System.DateTime": "System.DateTime",
-                    "System.String": "System.String"
+                    "RetentionPolicy": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]",
+                    "DaysOfWeek": "System.Collections.Generic.List`1[System.String]",
+                    "BackupTime": "System.DateTime",
+                    "PolicyId": "System.String",
+                    "Name": "System.String",
+                    "Type": "System.String",
+                    "ScheduleType": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "ResourceName": "System.String",
+                    "Location": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3972,12 +4257,20 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]",
-              "System.DateTime": "System.DateTime",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String",
-              "System.TimeSpan": "System.TimeSpan"
+              "IsCancellable": "System.Boolean",
+              "IsRetriable": "System.Boolean",
+              "ErrorDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]",
+              "StartTime": "System.DateTime",
+              "EndTime": "System.Nullable`1[System.DateTime]",
+              "InstanceId": "System.String",
+              "WorkloadType": "System.String",
+              "Operation": "System.String",
+              "Status": "System.String",
+              "WorkloadName": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceName": "System.String",
+              "Location": "System.String",
+              "Duration": "System.TimeSpan"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4115,10 +4408,16 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]",
-              "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-              "System.DateTime": "System.DateTime",
-              "System.String": "System.String"
+              "RetentionPolicy": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]",
+              "DaysOfWeek": "System.Collections.Generic.List`1[System.String]",
+              "BackupTime": "System.DateTime",
+              "PolicyId": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "ScheduleType": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceName": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4208,10 +4507,16 @@
                   "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]",
-                    "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-                    "System.DateTime": "System.DateTime",
-                    "System.String": "System.String"
+                    "RetentionPolicy": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]",
+                    "DaysOfWeek": "System.Collections.Generic.List`1[System.String]",
+                    "BackupTime": "System.DateTime",
+                    "PolicyId": "System.String",
+                    "Name": "System.String",
+                    "Type": "System.String",
+                    "ScheduleType": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "ResourceName": "System.String",
+                    "Location": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -4328,10 +4633,16 @@
                   "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]",
-                    "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-                    "System.DateTime": "System.DateTime",
-                    "System.String": "System.String"
+                    "RetentionPolicy": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]",
+                    "DaysOfWeek": "System.Collections.Generic.List`1[System.String]",
+                    "BackupTime": "System.DateTime",
+                    "PolicyId": "System.String",
+                    "Name": "System.String",
+                    "Type": "System.String",
+                    "ScheduleType": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "ResourceName": "System.String",
+                    "Location": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -4478,10 +4789,16 @@
                   "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]",
-                    "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-                    "System.DateTime": "System.DateTime",
-                    "System.String": "System.String"
+                    "RetentionPolicy": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]",
+                    "DaysOfWeek": "System.Collections.Generic.List`1[System.String]",
+                    "BackupTime": "System.DateTime",
+                    "PolicyId": "System.String",
+                    "Name": "System.String",
+                    "Type": "System.String",
+                    "ScheduleType": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "ResourceName": "System.String",
+                    "Location": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -4517,8 +4834,15 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRecoveryPoint",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRecoveryPoint, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.DateTime": "System.DateTime",
-              "System.String": "System.String"
+              "RecoveryPointTime": "System.DateTime",
+              "RecoveryPointType": "System.String",
+              "RecoveryPointName": "System.String",
+              "ItemName": "System.String",
+              "ContainerType": "System.String",
+              "ContainerUniqueName": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceName": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4568,8 +4892,19 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Int32": "System.Int32",
-              "System.String": "System.String"
+              "RecoveryPointsCount": "System.Int32",
+              "Name": "System.String",
+              "DataSourceStatus": "System.String",
+              "ProtectionStatus": "System.String",
+              "Type": "System.String",
+              "ProtectionPolicyName": "System.String",
+              "ProtectionPolicyId": "System.String",
+              "ItemName": "System.String",
+              "ContainerType": "System.String",
+              "ContainerUniqueName": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceName": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4615,8 +4950,19 @@
                   "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Int32": "System.Int32",
-                    "System.String": "System.String"
+                    "RecoveryPointsCount": "System.Int32",
+                    "Name": "System.String",
+                    "DataSourceStatus": "System.String",
+                    "ProtectionStatus": "System.String",
+                    "Type": "System.String",
+                    "ProtectionPolicyName": "System.String",
+                    "ProtectionPolicyId": "System.String",
+                    "ItemName": "System.String",
+                    "ContainerType": "System.String",
+                    "ContainerUniqueName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "ResourceName": "System.String",
+                    "Location": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -4652,12 +4998,20 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]",
-              "System.DateTime": "System.DateTime",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String",
-              "System.TimeSpan": "System.TimeSpan"
+              "IsCancellable": "System.Boolean",
+              "IsRetriable": "System.Boolean",
+              "ErrorDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]",
+              "StartTime": "System.DateTime",
+              "EndTime": "System.Nullable`1[System.DateTime]",
+              "InstanceId": "System.String",
+              "WorkloadType": "System.String",
+              "Operation": "System.String",
+              "Status": "System.String",
+              "WorkloadName": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceName": "System.String",
+              "Location": "System.String",
+              "Duration": "System.TimeSpan"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4692,8 +5046,15 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRecoveryPoint",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRecoveryPoint, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.DateTime": "System.DateTime",
-              "System.String": "System.String"
+              "RecoveryPointTime": "System.DateTime",
+              "RecoveryPointType": "System.String",
+              "RecoveryPointName": "System.String",
+              "ItemName": "System.String",
+              "ContainerType": "System.String",
+              "ContainerUniqueName": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceName": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4739,8 +5100,15 @@
                   "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRecoveryPoint",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRecoveryPoint, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.DateTime": "System.DateTime",
-                    "System.String": "System.String"
+                    "RecoveryPointTime": "System.DateTime",
+                    "RecoveryPointType": "System.String",
+                    "RecoveryPointName": "System.String",
+                    "ItemName": "System.String",
+                    "ContainerType": "System.String",
+                    "ContainerUniqueName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "ResourceName": "System.String",
+                    "Location": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -4809,7 +5177,11 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "ResourceId": "System.String",
+              "Name": "System.String",
+              "ResourceGroupName": "System.String",
+              "Region": "System.String",
+              "Storage": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4855,7 +5227,11 @@
                   "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.String": "System.String"
+                    "ResourceId": "System.String",
+                    "Name": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Region": "System.String",
+                    "Storage": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -4891,7 +5267,11 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "ResourceId": "System.String",
+              "Name": "System.String",
+              "ResourceGroupName": "System.String",
+              "Region": "System.String",
+              "Storage": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -5019,7 +5399,11 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "ResourceId": "System.String",
+              "Name": "System.String",
+              "ResourceGroupName": "System.String",
+              "Region": "System.String",
+              "Storage": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -5227,7 +5611,11 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "ResourceId": "System.String",
+              "Name": "System.String",
+              "ResourceGroupName": "System.String",
+              "Region": "System.String",
+              "Storage": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -5273,7 +5661,11 @@
                   "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.String": "System.String"
+                    "ResourceId": "System.String",
+                    "Name": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Region": "System.String",
+                    "Storage": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -5309,7 +5701,11 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "ResourceId": "System.String",
+              "Name": "System.String",
+              "ResourceGroupName": "System.String",
+              "Region": "System.String",
+              "Storage": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -5344,7 +5740,11 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "ResourceId": "System.String",
+              "Name": "System.String",
+              "ResourceGroupName": "System.String",
+              "Region": "System.String",
+              "Storage": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -5390,7 +5790,11 @@
                   "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.String": "System.String"
+                    "ResourceId": "System.String",
+                    "Name": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Region": "System.String",
+                    "Storage": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -5426,12 +5830,20 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]",
-              "System.DateTime": "System.DateTime",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String",
-              "System.TimeSpan": "System.TimeSpan"
+              "IsCancellable": "System.Boolean",
+              "IsRetriable": "System.Boolean",
+              "ErrorDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]",
+              "StartTime": "System.DateTime",
+              "EndTime": "System.Nullable`1[System.DateTime]",
+              "InstanceId": "System.String",
+              "WorkloadType": "System.String",
+              "Operation": "System.String",
+              "Status": "System.String",
+              "WorkloadName": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceName": "System.String",
+              "Location": "System.String",
+              "Duration": "System.TimeSpan"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -5482,8 +5894,19 @@
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Int32": "System.Int32",
-              "System.String": "System.String"
+              "RecoveryPointsCount": "System.Int32",
+              "Name": "System.String",
+              "DataSourceStatus": "System.String",
+              "ProtectionStatus": "System.String",
+              "Type": "System.String",
+              "ProtectionPolicyName": "System.String",
+              "ProtectionPolicyId": "System.String",
+              "ItemName": "System.String",
+              "ContainerType": "System.String",
+              "ContainerUniqueName": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceName": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -5551,8 +5974,19 @@
                   "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Int32": "System.Int32",
-                    "System.String": "System.String"
+                    "RecoveryPointsCount": "System.Int32",
+                    "Name": "System.String",
+                    "DataSourceStatus": "System.String",
+                    "ProtectionStatus": "System.String",
+                    "Type": "System.String",
+                    "ProtectionPolicyName": "System.String",
+                    "ProtectionPolicyId": "System.String",
+                    "ItemName": "System.String",
+                    "ContainerType": "System.String",
+                    "ContainerUniqueName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "ResourceName": "System.String",
+                    "Location": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -5701,9 +6135,9 @@
       "Name": "Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-        "System.Int32": "System.Int32",
-        "System.String": "System.String"
+        "Recommendations": "System.Collections.Generic.List`1[System.String]",
+        "ErrorCode": "System.Int32",
+        "ErrorMessage": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -5749,8 +6183,14 @@
       "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Int64": "System.Int64",
-        "System.String": "System.String"
+        "Id": "System.Int64",
+        "Name": "System.String",
+        "Status": "System.String",
+        "ContainerType": "System.String",
+        "ContainerUniqueName": "System.String",
+        "ResourceGroupName": "System.String",
+        "ResourceName": "System.String",
+        "Location": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -5770,9 +6210,9 @@
       "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Collections.Generic.IList`1[System.DateTime]": "System.Collections.Generic.IList`1[System.DateTime]",
-        "System.Int32": "System.Int32",
-        "System.String": "System.String"
+        "RetentionTimes": "System.Collections.Generic.IList`1[System.DateTime]",
+        "Retention": "System.Int32",
+        "RetentionType": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -5792,8 +6232,19 @@
       "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Int32": "System.Int32",
-        "System.String": "System.String"
+        "RecoveryPointsCount": "System.Int32",
+        "Name": "System.String",
+        "DataSourceStatus": "System.String",
+        "ProtectionStatus": "System.String",
+        "Type": "System.String",
+        "ProtectionPolicyName": "System.String",
+        "ProtectionPolicyId": "System.String",
+        "ItemName": "System.String",
+        "ContainerType": "System.String",
+        "ContainerUniqueName": "System.String",
+        "ResourceGroupName": "System.String",
+        "ResourceName": "System.String",
+        "Location": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -5803,12 +6254,20 @@
       "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Boolean": "System.Boolean",
-        "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]",
-        "System.DateTime": "System.DateTime",
-        "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-        "System.String": "System.String",
-        "System.TimeSpan": "System.TimeSpan"
+        "IsCancellable": "System.Boolean",
+        "IsRetriable": "System.Boolean",
+        "ErrorDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]",
+        "StartTime": "System.DateTime",
+        "EndTime": "System.Nullable`1[System.DateTime]",
+        "InstanceId": "System.String",
+        "WorkloadType": "System.String",
+        "Operation": "System.String",
+        "Status": "System.String",
+        "WorkloadName": "System.String",
+        "ResourceGroupName": "System.String",
+        "ResourceName": "System.String",
+        "Location": "System.String",
+        "Duration": "System.TimeSpan"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -5839,7 +6298,8 @@
       "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupJobSubTask",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupJobSubTask, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.String": "System.String"
+        "Name": "System.String",
+        "Status": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -5849,10 +6309,16 @@
       "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]",
-        "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-        "System.DateTime": "System.DateTime",
-        "System.String": "System.String"
+        "RetentionPolicy": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]",
+        "DaysOfWeek": "System.Collections.Generic.List`1[System.String]",
+        "BackupTime": "System.DateTime",
+        "PolicyId": "System.String",
+        "Name": "System.String",
+        "Type": "System.String",
+        "ScheduleType": "System.String",
+        "ResourceGroupName": "System.String",
+        "ResourceName": "System.String",
+        "Location": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -5862,8 +6328,15 @@
       "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRecoveryPoint",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRecoveryPoint, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.DateTime": "System.DateTime",
-        "System.String": "System.String"
+        "RecoveryPointTime": "System.DateTime",
+        "RecoveryPointType": "System.String",
+        "RecoveryPointName": "System.String",
+        "ItemName": "System.String",
+        "ContainerType": "System.String",
+        "ContainerUniqueName": "System.String",
+        "ResourceGroupName": "System.String",
+        "ResourceName": "System.String",
+        "Location": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -5873,7 +6346,11 @@
       "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.String": "System.String"
+        "ResourceId": "System.String",
+        "Name": "System.String",
+        "ResourceGroupName": "System.String",
+        "Region": "System.String",
+        "Storage": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []

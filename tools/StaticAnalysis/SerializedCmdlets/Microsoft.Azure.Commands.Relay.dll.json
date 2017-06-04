@@ -434,7 +434,11 @@
             "Name": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleKeysAttributes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleKeysAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "PrimaryConnectionString": "System.String",
+              "SecondaryConnectionString": "System.String",
+              "PrimaryKey": "System.String",
+              "SecondaryKey": "System.String",
+              "KeyName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -852,8 +856,10 @@
             "Name": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IList`1[System.String]": "System.Collections.Generic.IList`1[System.String]",
-              "System.String": "System.String"
+              "Rights": "System.Collections.Generic.IList`1[System.String]",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Id": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1395,7 +1401,11 @@
             "Name": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleKeysAttributes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleKeysAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "PrimaryConnectionString": "System.String",
+              "SecondaryConnectionString": "System.String",
+              "PrimaryKey": "System.String",
+              "SecondaryKey": "System.String",
+              "KeyName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2556,8 +2566,10 @@
             "Name": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IList`1[System.String]": "System.Collections.Generic.IList`1[System.String]",
-              "System.String": "System.String"
+              "Rights": "System.Collections.Generic.IList`1[System.String]",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Id": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2656,8 +2668,10 @@
             "Name": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IList`1[System.String]": "System.Collections.Generic.IList`1[System.String]",
-              "System.String": "System.String"
+              "Rights": "System.Collections.Generic.IList`1[System.String]",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Id": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2768,8 +2782,10 @@
                   "Name": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Collections.Generic.IList`1[System.String]": "System.Collections.Generic.IList`1[System.String]",
-                    "System.String": "System.String"
+                    "Rights": "System.Collections.Generic.IList`1[System.String]",
+                    "Name": "System.String",
+                    "Type": "System.String",
+                    "Id": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2908,8 +2924,10 @@
                   "Name": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Collections.Generic.IList`1[System.String]": "System.Collections.Generic.IList`1[System.String]",
-                    "System.String": "System.String"
+                    "Rights": "System.Collections.Generic.IList`1[System.String]",
+                    "Name": "System.String",
+                    "Type": "System.String",
+                    "Id": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3048,8 +3066,10 @@
                   "Name": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Collections.Generic.IList`1[System.String]": "System.Collections.Generic.IList`1[System.String]",
-                    "System.String": "System.String"
+                    "Rights": "System.Collections.Generic.IList`1[System.String]",
+                    "Name": "System.String",
+                    "Type": "System.String",
+                    "Id": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3144,8 +3164,10 @@
                   "Name": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Collections.Generic.IList`1[System.String]": "System.Collections.Generic.IList`1[System.String]",
-                    "System.String": "System.String"
+                    "Rights": "System.Collections.Generic.IList`1[System.String]",
+                    "Name": "System.String",
+                    "Type": "System.String",
+                    "Id": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3447,10 +3469,17 @@
             "Name": "Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-              "System.String": "System.String"
+              "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
+              "RequiresTransportSecurity": "System.Nullable`1[System.Boolean]",
+              "IsDynamic": "System.Nullable`1[System.Boolean]",
+              "CreatedAt": "System.Nullable`1[System.DateTime]",
+              "UpdatedAt": "System.Nullable`1[System.DateTime]",
+              "ListenerCount": "System.Nullable`1[System.Int32]",
+              "RelayType": "System.String",
+              "UserMetadata": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3517,10 +3546,17 @@
             "Name": "Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-              "System.String": "System.String"
+              "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
+              "RequiresTransportSecurity": "System.Nullable`1[System.Boolean]",
+              "IsDynamic": "System.Nullable`1[System.Boolean]",
+              "CreatedAt": "System.Nullable`1[System.DateTime]",
+              "UpdatedAt": "System.Nullable`1[System.DateTime]",
+              "ListenerCount": "System.Nullable`1[System.Int32]",
+              "RelayType": "System.String",
+              "UserMetadata": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3686,10 +3722,17 @@
                   "Name": "Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-                    "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-                    "System.String": "System.String"
+                    "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
+                    "RequiresTransportSecurity": "System.Nullable`1[System.Boolean]",
+                    "IsDynamic": "System.Nullable`1[System.Boolean]",
+                    "CreatedAt": "System.Nullable`1[System.DateTime]",
+                    "UpdatedAt": "System.Nullable`1[System.DateTime]",
+                    "ListenerCount": "System.Nullable`1[System.Int32]",
+                    "RelayType": "System.String",
+                    "UserMetadata": "System.String",
+                    "Id": "System.String",
+                    "Name": "System.String",
+                    "Type": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -4106,10 +4149,17 @@
             "Name": "Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-              "System.String": "System.String"
+              "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
+              "RequiresTransportSecurity": "System.Nullable`1[System.Boolean]",
+              "IsDynamic": "System.Nullable`1[System.Boolean]",
+              "CreatedAt": "System.Nullable`1[System.DateTime]",
+              "UpdatedAt": "System.Nullable`1[System.DateTime]",
+              "ListenerCount": "System.Nullable`1[System.Int32]",
+              "RelayType": "System.String",
+              "UserMetadata": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4176,10 +4226,17 @@
             "Name": "Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-              "System.String": "System.String"
+              "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
+              "RequiresTransportSecurity": "System.Nullable`1[System.Boolean]",
+              "IsDynamic": "System.Nullable`1[System.Boolean]",
+              "CreatedAt": "System.Nullable`1[System.DateTime]",
+              "UpdatedAt": "System.Nullable`1[System.DateTime]",
+              "ListenerCount": "System.Nullable`1[System.Int32]",
+              "RelayType": "System.String",
+              "UserMetadata": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4290,10 +4347,17 @@
                   "Name": "Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-                    "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-                    "System.String": "System.String"
+                    "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
+                    "RequiresTransportSecurity": "System.Nullable`1[System.Boolean]",
+                    "IsDynamic": "System.Nullable`1[System.Boolean]",
+                    "CreatedAt": "System.Nullable`1[System.DateTime]",
+                    "UpdatedAt": "System.Nullable`1[System.DateTime]",
+                    "ListenerCount": "System.Nullable`1[System.Int32]",
+                    "RelayType": "System.String",
+                    "UserMetadata": "System.String",
+                    "Id": "System.String",
+                    "Name": "System.String",
+                    "Type": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -4488,10 +4552,14 @@
             "Name": "Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes, Microsoft.Azure.Commands.Relay, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-              "System.String": "System.String"
+              "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
+              "CreatedAt": "System.Nullable`1[System.DateTime]",
+              "UpdatedAt": "System.Nullable`1[System.DateTime]",
+              "ListenerCount": "System.Nullable`1[System.Int32]",
+              "UserMetadata": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4558,10 +4626,14 @@
             "Name": "Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes, Microsoft.Azure.Commands.Relay, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-              "System.String": "System.String"
+              "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
+              "CreatedAt": "System.Nullable`1[System.DateTime]",
+              "UpdatedAt": "System.Nullable`1[System.DateTime]",
+              "ListenerCount": "System.Nullable`1[System.Int32]",
+              "UserMetadata": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4690,10 +4762,14 @@
                   "Name": "Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes, Microsoft.Azure.Commands.Relay, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-                    "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-                    "System.String": "System.String"
+                    "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
+                    "CreatedAt": "System.Nullable`1[System.DateTime]",
+                    "UpdatedAt": "System.Nullable`1[System.DateTime]",
+                    "ListenerCount": "System.Nullable`1[System.Int32]",
+                    "UserMetadata": "System.String",
+                    "Id": "System.String",
+                    "Name": "System.String",
+                    "Type": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -5212,10 +5288,14 @@
             "Name": "Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes, Microsoft.Azure.Commands.Relay, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-              "System.String": "System.String"
+              "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
+              "CreatedAt": "System.Nullable`1[System.DateTime]",
+              "UpdatedAt": "System.Nullable`1[System.DateTime]",
+              "ListenerCount": "System.Nullable`1[System.Int32]",
+              "UserMetadata": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -5282,10 +5362,14 @@
             "Name": "Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes, Microsoft.Azure.Commands.Relay, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-              "System.String": "System.String"
+              "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
+              "CreatedAt": "System.Nullable`1[System.DateTime]",
+              "UpdatedAt": "System.Nullable`1[System.DateTime]",
+              "ListenerCount": "System.Nullable`1[System.Int32]",
+              "UserMetadata": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -5396,10 +5480,14 @@
                   "Name": "Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes, Microsoft.Azure.Commands.Relay, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-                    "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-                    "System.String": "System.String"
+                    "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
+                    "CreatedAt": "System.Nullable`1[System.DateTime]",
+                    "UpdatedAt": "System.Nullable`1[System.DateTime]",
+                    "ListenerCount": "System.Nullable`1[System.Int32]",
+                    "UserMetadata": "System.String",
+                    "Id": "System.String",
+                    "Name": "System.String",
+                    "Type": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -5782,10 +5870,17 @@
             "Name": "Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttributes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Relay.Models.SkuAttributes": "Microsoft.Azure.Commands.Relay.Models.SkuAttributes",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String"
+              "Sku": "Microsoft.Azure.Commands.Relay.Models.SkuAttributes",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "CreatedAt": "System.Nullable`1[System.DateTime]",
+              "UpdatedAt": "System.Nullable`1[System.DateTime]",
+              "ProvisioningState": "System.String",
+              "ServiceBusEndpoint": "System.String",
+              "MetricId": "System.String",
+              "Location": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -6085,10 +6180,17 @@
             "Name": "Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttributes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Relay.Models.SkuAttributes": "Microsoft.Azure.Commands.Relay.Models.SkuAttributes",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String"
+              "Sku": "Microsoft.Azure.Commands.Relay.Models.SkuAttributes",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "CreatedAt": "System.Nullable`1[System.DateTime]",
+              "UpdatedAt": "System.Nullable`1[System.DateTime]",
+              "ProvisioningState": "System.String",
+              "ServiceBusEndpoint": "System.String",
+              "MetricId": "System.String",
+              "Location": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -6155,8 +6257,8 @@
             "Name": "Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttirbutesUpdateParameter",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttirbutesUpdateParameter, Microsoft.Azure.Commands.Relay, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Relay.Models.SkuAttributes": "Microsoft.Azure.Commands.Relay.Models.SkuAttributes",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]"
+              "Sku": "Microsoft.Azure.Commands.Relay.Models.SkuAttributes",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -6246,8 +6348,8 @@
                   "Name": "Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttirbutesUpdateParameter",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttirbutesUpdateParameter, Microsoft.Azure.Commands.Relay, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Commands.Relay.Models.SkuAttributes": "Microsoft.Azure.Commands.Relay.Models.SkuAttributes",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]"
+                    "Sku": "Microsoft.Azure.Commands.Relay.Models.SkuAttributes",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -6416,8 +6518,10 @@
       "Name": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Collections.Generic.IList`1[System.String]": "System.Collections.Generic.IList`1[System.String]",
-        "System.String": "System.String"
+        "Rights": "System.Collections.Generic.IList`1[System.String]",
+        "Name": "System.String",
+        "Type": "System.String",
+        "Id": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -6437,10 +6541,17 @@
       "Name": "Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-        "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-        "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-        "System.String": "System.String"
+        "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
+        "RequiresTransportSecurity": "System.Nullable`1[System.Boolean]",
+        "IsDynamic": "System.Nullable`1[System.Boolean]",
+        "CreatedAt": "System.Nullable`1[System.DateTime]",
+        "UpdatedAt": "System.Nullable`1[System.DateTime]",
+        "ListenerCount": "System.Nullable`1[System.Int32]",
+        "RelayType": "System.String",
+        "UserMetadata": "System.String",
+        "Id": "System.String",
+        "Name": "System.String",
+        "Type": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -6488,10 +6599,14 @@
       "Name": "Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes, Microsoft.Azure.Commands.Relay, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-        "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-        "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-        "System.String": "System.String"
+        "RequiresClientAuthorization": "System.Nullable`1[System.Boolean]",
+        "CreatedAt": "System.Nullable`1[System.DateTime]",
+        "UpdatedAt": "System.Nullable`1[System.DateTime]",
+        "ListenerCount": "System.Nullable`1[System.Int32]",
+        "UserMetadata": "System.String",
+        "Id": "System.String",
+        "Name": "System.String",
+        "Type": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -6501,9 +6616,9 @@
       "Name": "Microsoft.Azure.Commands.Relay.Models.CheckNameAvailabilityResultAttributes",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.CheckNameAvailabilityResultAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Nullable`1[Microsoft.Azure.Commands.Relay.Models.UnavailableReasonAttributes]": "System.Nullable`1[Microsoft.Azure.Commands.Relay.Models.UnavailableReasonAttributes]",
-        "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-        "System.String": "System.String"
+        "Reason": "System.Nullable`1[Microsoft.Azure.Commands.Relay.Models.UnavailableReasonAttributes]",
+        "NameAvailable": "System.Nullable`1[System.Boolean]",
+        "Message": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -6531,10 +6646,17 @@
       "Name": "Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttributes",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Microsoft.Azure.Commands.Relay.Models.SkuAttributes": "Microsoft.Azure.Commands.Relay.Models.SkuAttributes",
-        "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-        "System.String": "System.String"
+        "Sku": "Microsoft.Azure.Commands.Relay.Models.SkuAttributes",
+        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "CreatedAt": "System.Nullable`1[System.DateTime]",
+        "UpdatedAt": "System.Nullable`1[System.DateTime]",
+        "ProvisioningState": "System.String",
+        "ServiceBusEndpoint": "System.String",
+        "MetricId": "System.String",
+        "Location": "System.String",
+        "Id": "System.String",
+        "Name": "System.String",
+        "Type": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -6544,7 +6666,8 @@
       "Name": "Microsoft.Azure.Commands.Relay.Models.SkuAttributes",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.SkuAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.String": "System.String"
+        "Name": "System.String",
+        "Tier": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -6565,8 +6688,8 @@
       "Name": "Microsoft.Azure.Commands.Relay.Models.OperationAttributes",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.OperationAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Microsoft.Azure.Commands.Relay.Models.OperationDisplayAttributes": "Microsoft.Azure.Commands.Relay.Models.OperationDisplayAttributes",
-        "System.String": "System.String"
+        "Display": "Microsoft.Azure.Commands.Relay.Models.OperationDisplayAttributes",
+        "Name": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -6576,7 +6699,9 @@
       "Name": "Microsoft.Azure.Commands.Relay.Models.OperationDisplayAttributes",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Relay.Models.OperationDisplayAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.String": "System.String"
+        "Provider": "System.String",
+        "Resource": "System.String",
+        "Operation": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []

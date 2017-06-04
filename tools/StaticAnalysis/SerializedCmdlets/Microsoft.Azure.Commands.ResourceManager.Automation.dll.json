@@ -16,8 +16,10 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorkerGroup",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorkerGroup, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorker]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorker]",
-              "System.String": "System.String"
+              "RunbookWorker": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorker]",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Name": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -221,10 +223,14 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.JobStreamRecord",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.JobStreamRecord, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.Guid": "System.Guid",
-              "System.String": "System.String"
+              "Value": "System.Collections.Hashtable",
+              "Time": "System.DateTimeOffset",
+              "JobId": "System.Guid",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "StreamRecordId": "System.String",
+              "Summary": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -417,8 +423,13 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.NodeConfiguration",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.NodeConfiguration, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.String": "System.String"
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Name": "System.String",
+              "ConfigurationName": "System.String",
+              "RollupStatus": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1278,9 +1289,15 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.CertificateInfo",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CertificateInfo, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.String": "System.String"
+              "Exportable": "System.Boolean",
+              "ExpiryTime": "System.DateTimeOffset",
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "Thumbprint": "System.String",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Name": "System.String",
+              "Description": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1480,9 +1497,14 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.Connection",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Connection, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.String": "System.String"
+              "FieldDefinitionValues": "System.Collections.Hashtable",
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "ConnectionTypeName": "System.String",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Name": "System.String",
+              "Description": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1769,8 +1791,13 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.CredentialInfo",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CredentialInfo, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.String": "System.String"
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "UserName": "System.String",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Name": "System.String",
+              "Description": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1970,11 +1997,19 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.CompilationJob",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CompilationJob, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.Guid": "System.Guid",
-              "System.Nullable`1[System.DateTimeOffset]": "System.Nullable`1[System.DateTimeOffset]",
-              "System.String": "System.String"
+              "JobParameters": "System.Collections.Hashtable",
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "LastStatusModifiedTime": "System.DateTimeOffset",
+              "Id": "System.Guid",
+              "StartTime": "System.Nullable`1[System.DateTimeOffset]",
+              "EndTime": "System.Nullable`1[System.DateTimeOffset]",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Status": "System.String",
+              "StatusDetails": "System.String",
+              "Exception": "System.String",
+              "ConfigurationName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2546,9 +2581,13 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.JobStream",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.JobStream, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.Guid": "System.Guid",
-              "System.String": "System.String"
+              "Time": "System.DateTimeOffset",
+              "JobId": "System.Guid",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "StreamRecordId": "System.String",
+              "Summary": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2793,11 +2832,19 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.CompilationJob",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CompilationJob, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.Guid": "System.Guid",
-              "System.Nullable`1[System.DateTimeOffset]": "System.Nullable`1[System.DateTimeOffset]",
-              "System.String": "System.String"
+              "JobParameters": "System.Collections.Hashtable",
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "LastStatusModifiedTime": "System.DateTimeOffset",
+              "Id": "System.Guid",
+              "StartTime": "System.Nullable`1[System.DateTimeOffset]",
+              "EndTime": "System.Nullable`1[System.DateTimeOffset]",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Status": "System.String",
+              "StatusDetails": "System.String",
+              "Exception": "System.String",
+              "ConfigurationName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3206,8 +3253,15 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.DscNode",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscNode, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.String": "System.String"
+              "RegistrationTime": "System.DateTimeOffset",
+              "LastSeen": "System.DateTimeOffset",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Name": "System.String",
+              "IpAddress": "System.String",
+              "Id": "System.String",
+              "NodeConfigurationName": "System.String",
+              "Status": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3713,11 +3767,21 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.Job",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Job, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.Guid": "System.Guid",
-              "System.Nullable`1[System.DateTimeOffset]": "System.Nullable`1[System.DateTimeOffset]",
-              "System.String": "System.String"
+              "JobParameters": "System.Collections.Hashtable",
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "LastStatusModifiedTime": "System.DateTimeOffset",
+              "JobId": "System.Guid",
+              "StartTime": "System.Nullable`1[System.DateTimeOffset]",
+              "EndTime": "System.Nullable`1[System.DateTimeOffset]",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Status": "System.String",
+              "StatusDetails": "System.String",
+              "Exception": "System.String",
+              "RunbookName": "System.String",
+              "HybridWorker": "System.String",
+              "StartedBy": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4289,9 +4353,13 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.JobStream",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.JobStream, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.Guid": "System.Guid",
-              "System.String": "System.String"
+              "Time": "System.DateTimeOffset",
+              "JobId": "System.Guid",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "StreamRecordId": "System.String",
+              "Summary": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4526,11 +4594,16 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.Module",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Module, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.Int32": "System.Int32",
-              "System.Int64": "System.Int64",
-              "System.String": "System.String"
+              "IsGlobal": "System.Boolean",
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "ActivityCount": "System.Int32",
+              "SizeInBytes": "System.Int64",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Name": "System.String",
+              "Version": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4730,11 +4803,21 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.Runbook",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Runbook, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.Int32": "System.Int32",
-              "System.String": "System.String"
+              "LogVerbose": "System.Boolean",
+              "LogProgress": "System.Boolean",
+              "Tags": "System.Collections.Hashtable",
+              "Parameters": "System.Collections.Hashtable",
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "JobCount": "System.Int32",
+              "Location": "System.String",
+              "RunbookType": "System.String",
+              "LastModifiedBy": "System.String",
+              "State": "System.String",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Name": "System.String",
+              "Description": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -5329,14 +5412,21 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.Schedule",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Schedule, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions": "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions",
-              "Microsoft.Azure.Commands.Automation.Model.ScheduleFrequency": "Microsoft.Azure.Commands.Automation.Model.ScheduleFrequency",
-              "Microsoft.Azure.Commands.Automation.Model.WeeklyScheduleOptions": "Microsoft.Azure.Commands.Automation.Model.WeeklyScheduleOptions",
-              "System.Boolean": "System.Boolean",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.Nullable`1[System.Byte]": "System.Nullable`1[System.Byte]",
-              "System.Nullable`1[System.DateTimeOffset]": "System.Nullable`1[System.DateTimeOffset]",
-              "System.String": "System.String"
+              "MonthlyScheduleOptions": "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions",
+              "Frequency": "Microsoft.Azure.Commands.Automation.Model.ScheduleFrequency",
+              "WeeklyScheduleOptions": "Microsoft.Azure.Commands.Automation.Model.WeeklyScheduleOptions",
+              "IsEnabled": "System.Boolean",
+              "StartTime": "System.DateTimeOffset",
+              "ExpiryTime": "System.DateTimeOffset",
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "Interval": "System.Nullable`1[System.Byte]",
+              "NextRun": "System.Nullable`1[System.DateTimeOffset]",
+              "TimeZone": "System.String",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Name": "System.String",
+              "Description": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -5540,8 +5630,13 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.JobSchedule",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.JobSchedule, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.String": "System.String"
+              "Parameters": "System.Collections.Hashtable",
+              "ResourceGroupName": "System.String",
+              "RunOn": "System.String",
+              "AutomationAccountName": "System.String",
+              "JobScheduleId": "System.String",
+              "RunbookName": "System.String",
+              "ScheduleName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -6018,10 +6113,14 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.Variable",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Variable, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.Object": "System.Object",
-              "System.String": "System.String"
+              "Encrypted": "System.Boolean",
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "Value": "System.Object",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Name": "System.String",
+              "Description": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -6221,10 +6320,18 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.Webhook",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Webhook, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-              "System.String": "System.String"
+              "Parameters": "System.Collections.Hashtable",
+              "CreationTime": "System.DateTimeOffset",
+              "ExpiryTime": "System.DateTimeOffset",
+              "LastInvokedTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "IsEnabled": "System.Nullable`1[System.Boolean]",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Name": "System.String",
+              "Description": "System.String",
+              "RunbookName": "System.String",
+              "WebhookURI": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -6515,9 +6622,15 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.CertificateInfo",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CertificateInfo, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.String": "System.String"
+              "Exportable": "System.Boolean",
+              "ExpiryTime": "System.DateTimeOffset",
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "Thumbprint": "System.String",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Name": "System.String",
+              "Description": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -6891,9 +7004,14 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.Connection",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Connection, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.String": "System.String"
+              "FieldDefinitionValues": "System.Collections.Hashtable",
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "ConnectionTypeName": "System.String",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Name": "System.String",
+              "Description": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -7207,8 +7325,13 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.CredentialInfo",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CredentialInfo, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.String": "System.String"
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "UserName": "System.String",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Name": "System.String",
+              "Description": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -7484,11 +7607,16 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.Module",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Module, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.Int32": "System.Int32",
-              "System.Int64": "System.Int64",
-              "System.String": "System.String"
+              "IsGlobal": "System.Boolean",
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "ActivityCount": "System.Int32",
+              "SizeInBytes": "System.Int64",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Name": "System.String",
+              "Version": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -7677,11 +7805,21 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.Runbook",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Runbook, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.Int32": "System.Int32",
-              "System.String": "System.String"
+              "LogVerbose": "System.Boolean",
+              "LogProgress": "System.Boolean",
+              "Tags": "System.Collections.Hashtable",
+              "Parameters": "System.Collections.Hashtable",
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "JobCount": "System.Int32",
+              "Location": "System.String",
+              "RunbookType": "System.String",
+              "LastModifiedBy": "System.String",
+              "State": "System.String",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Name": "System.String",
+              "Description": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -8221,14 +8359,21 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.Schedule",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Schedule, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions": "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions",
-              "Microsoft.Azure.Commands.Automation.Model.ScheduleFrequency": "Microsoft.Azure.Commands.Automation.Model.ScheduleFrequency",
-              "Microsoft.Azure.Commands.Automation.Model.WeeklyScheduleOptions": "Microsoft.Azure.Commands.Automation.Model.WeeklyScheduleOptions",
-              "System.Boolean": "System.Boolean",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.Nullable`1[System.Byte]": "System.Nullable`1[System.Byte]",
-              "System.Nullable`1[System.DateTimeOffset]": "System.Nullable`1[System.DateTimeOffset]",
-              "System.String": "System.String"
+              "MonthlyScheduleOptions": "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions",
+              "Frequency": "Microsoft.Azure.Commands.Automation.Model.ScheduleFrequency",
+              "WeeklyScheduleOptions": "Microsoft.Azure.Commands.Automation.Model.WeeklyScheduleOptions",
+              "IsEnabled": "System.Boolean",
+              "StartTime": "System.DateTimeOffset",
+              "ExpiryTime": "System.DateTimeOffset",
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "Interval": "System.Nullable`1[System.Byte]",
+              "NextRun": "System.Nullable`1[System.DateTimeOffset]",
+              "TimeZone": "System.String",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Name": "System.String",
+              "Description": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -9809,10 +9954,14 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.Variable",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Variable, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.Object": "System.Object",
-              "System.String": "System.String"
+              "Encrypted": "System.Boolean",
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "Value": "System.Object",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Name": "System.String",
+              "Description": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -10126,10 +10275,18 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.Webhook",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Webhook, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-              "System.String": "System.String"
+              "Parameters": "System.Collections.Hashtable",
+              "CreationTime": "System.DateTimeOffset",
+              "ExpiryTime": "System.DateTimeOffset",
+              "LastInvokedTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "IsEnabled": "System.Nullable`1[System.Boolean]",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Name": "System.String",
+              "Description": "System.String",
+              "RunbookName": "System.String",
+              "WebhookURI": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -10470,11 +10627,21 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.Runbook",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Runbook, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.Int32": "System.Int32",
-              "System.String": "System.String"
+              "LogVerbose": "System.Boolean",
+              "LogProgress": "System.Boolean",
+              "Tags": "System.Collections.Hashtable",
+              "Parameters": "System.Collections.Hashtable",
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "JobCount": "System.Int32",
+              "Location": "System.String",
+              "RunbookType": "System.String",
+              "LastModifiedBy": "System.String",
+              "State": "System.String",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Name": "System.String",
+              "Description": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -11169,8 +11336,13 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.JobSchedule",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.JobSchedule, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.String": "System.String"
+              "Parameters": "System.Collections.Hashtable",
+              "ResourceGroupName": "System.String",
+              "RunOn": "System.String",
+              "AutomationAccountName": "System.String",
+              "JobScheduleId": "System.String",
+              "RunbookName": "System.String",
+              "ScheduleName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -13233,10 +13405,14 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.Variable",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Variable, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.Object": "System.Object",
-              "System.String": "System.String"
+              "Encrypted": "System.Boolean",
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "Value": "System.Object",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Name": "System.String",
+              "Description": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -13838,9 +14014,15 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.CertificateInfo",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CertificateInfo, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.String": "System.String"
+              "Exportable": "System.Boolean",
+              "ExpiryTime": "System.DateTimeOffset",
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "Thumbprint": "System.String",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Name": "System.String",
+              "Description": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -14220,9 +14402,14 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.Connection",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Connection, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.String": "System.String"
+              "FieldDefinitionValues": "System.Collections.Hashtable",
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "ConnectionTypeName": "System.String",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Name": "System.String",
+              "Description": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -14498,8 +14685,13 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.CredentialInfo",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CredentialInfo, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.String": "System.String"
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "UserName": "System.String",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Name": "System.String",
+              "Description": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -14775,11 +14967,16 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.Module",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Module, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.Int32": "System.Int32",
-              "System.Int64": "System.Int64",
-              "System.String": "System.String"
+              "IsGlobal": "System.Boolean",
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "ActivityCount": "System.Int32",
+              "SizeInBytes": "System.Int64",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Name": "System.String",
+              "Version": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -15099,11 +15296,21 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.Runbook",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Runbook, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.Int32": "System.Int32",
-              "System.String": "System.String"
+              "LogVerbose": "System.Boolean",
+              "LogProgress": "System.Boolean",
+              "Tags": "System.Collections.Hashtable",
+              "Parameters": "System.Collections.Hashtable",
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "JobCount": "System.Int32",
+              "Location": "System.String",
+              "RunbookType": "System.String",
+              "LastModifiedBy": "System.String",
+              "State": "System.String",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Name": "System.String",
+              "Description": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -15559,11 +15766,21 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.Runbook",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Runbook, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.Int32": "System.Int32",
-              "System.String": "System.String"
+              "LogVerbose": "System.Boolean",
+              "LogProgress": "System.Boolean",
+              "Tags": "System.Collections.Hashtable",
+              "Parameters": "System.Collections.Hashtable",
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "JobCount": "System.Int32",
+              "Location": "System.String",
+              "RunbookType": "System.String",
+              "LastModifiedBy": "System.String",
+              "State": "System.String",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Name": "System.String",
+              "Description": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -16050,14 +16267,21 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.Schedule",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Schedule, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions": "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions",
-              "Microsoft.Azure.Commands.Automation.Model.ScheduleFrequency": "Microsoft.Azure.Commands.Automation.Model.ScheduleFrequency",
-              "Microsoft.Azure.Commands.Automation.Model.WeeklyScheduleOptions": "Microsoft.Azure.Commands.Automation.Model.WeeklyScheduleOptions",
-              "System.Boolean": "System.Boolean",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.Nullable`1[System.Byte]": "System.Nullable`1[System.Byte]",
-              "System.Nullable`1[System.DateTimeOffset]": "System.Nullable`1[System.DateTimeOffset]",
-              "System.String": "System.String"
+              "MonthlyScheduleOptions": "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions",
+              "Frequency": "Microsoft.Azure.Commands.Automation.Model.ScheduleFrequency",
+              "WeeklyScheduleOptions": "Microsoft.Azure.Commands.Automation.Model.WeeklyScheduleOptions",
+              "IsEnabled": "System.Boolean",
+              "StartTime": "System.DateTimeOffset",
+              "ExpiryTime": "System.DateTimeOffset",
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "Interval": "System.Nullable`1[System.Byte]",
+              "NextRun": "System.Nullable`1[System.DateTimeOffset]",
+              "TimeZone": "System.String",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Name": "System.String",
+              "Description": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -16383,10 +16607,14 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.Variable",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Variable, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.Object": "System.Object",
-              "System.String": "System.String"
+              "Encrypted": "System.Boolean",
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "Value": "System.Object",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Name": "System.String",
+              "Description": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -16771,10 +16999,18 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.Webhook",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Webhook, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-              "System.String": "System.String"
+              "Parameters": "System.Collections.Hashtable",
+              "CreationTime": "System.DateTimeOffset",
+              "ExpiryTime": "System.DateTimeOffset",
+              "LastInvokedTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "IsEnabled": "System.Nullable`1[System.Boolean]",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Name": "System.String",
+              "Description": "System.String",
+              "RunbookName": "System.String",
+              "WebhookURI": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -17005,11 +17241,19 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.CompilationJob",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CompilationJob, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.Guid": "System.Guid",
-              "System.Nullable`1[System.DateTimeOffset]": "System.Nullable`1[System.DateTimeOffset]",
-              "System.String": "System.String"
+              "JobParameters": "System.Collections.Hashtable",
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "LastStatusModifiedTime": "System.DateTimeOffset",
+              "Id": "System.Guid",
+              "StartTime": "System.Nullable`1[System.DateTimeOffset]",
+              "EndTime": "System.Nullable`1[System.DateTimeOffset]",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Status": "System.String",
+              "StatusDetails": "System.String",
+              "Exception": "System.String",
+              "ConfigurationName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -17240,7 +17484,11 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.AgentRegistration",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.AgentRegistration, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "PrimaryKey": "System.String",
+              "SecondaryKey": "System.String",
+              "Endpoint": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -17353,10 +17601,17 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.DscConfiguration",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscConfiguration, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.String": "System.String"
+              "LogVerbose": "System.Boolean",
+              "Tags": "System.Collections.Hashtable",
+              "Parameters": "System.Collections.Hashtable",
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Location": "System.String",
+              "State": "System.String",
+              "Name": "System.String",
+              "Description": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -17560,8 +17815,15 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.DscNode",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscNode, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.String": "System.String"
+              "RegistrationTime": "System.DateTimeOffset",
+              "LastSeen": "System.DateTimeOffset",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Name": "System.String",
+              "IpAddress": "System.String",
+              "Id": "System.String",
+              "NodeConfigurationName": "System.String",
+              "Status": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -18189,7 +18451,9 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.DscOnboardingMetaconfig",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscOnboardingMetaconfig, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "DscMetaConfiguration": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -18416,10 +18680,17 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.DscConfiguration",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscConfiguration, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.String": "System.String"
+              "LogVerbose": "System.Boolean",
+              "Tags": "System.Collections.Hashtable",
+              "Parameters": "System.Collections.Hashtable",
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Location": "System.String",
+              "State": "System.String",
+              "Name": "System.String",
+              "Description": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -18772,7 +19043,11 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.AgentRegistration",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.AgentRegistration, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "PrimaryKey": "System.String",
+              "SecondaryKey": "System.String",
+              "Endpoint": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -18929,11 +19204,21 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.Job",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Job, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.Guid": "System.Guid",
-              "System.Nullable`1[System.DateTimeOffset]": "System.Nullable`1[System.DateTimeOffset]",
-              "System.String": "System.String"
+              "JobParameters": "System.Collections.Hashtable",
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "LastStatusModifiedTime": "System.DateTimeOffset",
+              "JobId": "System.Guid",
+              "StartTime": "System.Nullable`1[System.DateTimeOffset]",
+              "EndTime": "System.Nullable`1[System.DateTimeOffset]",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Status": "System.String",
+              "StatusDetails": "System.String",
+              "Exception": "System.String",
+              "RunbookName": "System.String",
+              "HybridWorker": "System.String",
+              "StartedBy": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -19703,8 +19988,15 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.DscNode",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscNode, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.String": "System.String"
+              "RegistrationTime": "System.DateTimeOffset",
+              "LastSeen": "System.DateTimeOffset",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Name": "System.String",
+              "IpAddress": "System.String",
+              "Id": "System.String",
+              "NodeConfigurationName": "System.String",
+              "Status": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -19968,9 +20260,16 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.AutomationAccount",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.AutomationAccount, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Hashtable",
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "SubscriptionId": "System.String",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Location": "System.String",
+              "State": "System.String",
+              "Plan": "System.String",
+              "LastModifiedBy": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -20173,9 +20472,16 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.AutomationAccount",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.AutomationAccount, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Hashtable",
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "SubscriptionId": "System.String",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Location": "System.String",
+              "State": "System.String",
+              "Plan": "System.String",
+              "LastModifiedBy": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -20330,9 +20636,16 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.AutomationAccount",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.AutomationAccount, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Hashtable",
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "SubscriptionId": "System.String",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Location": "System.String",
+              "State": "System.String",
+              "Plan": "System.String",
+              "LastModifiedBy": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -20573,9 +20886,16 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.AutomationAccount",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.AutomationAccount, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Hashtable",
+              "CreationTime": "System.DateTimeOffset",
+              "LastModifiedTime": "System.DateTimeOffset",
+              "SubscriptionId": "System.String",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Location": "System.String",
+              "State": "System.String",
+              "Plan": "System.String",
+              "LastModifiedBy": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -20719,8 +21039,15 @@
             "Name": "Microsoft.Azure.Commands.Automation.Model.DscNode",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscNode, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.DateTimeOffset": "System.DateTimeOffset",
-              "System.String": "System.String"
+              "RegistrationTime": "System.DateTimeOffset",
+              "LastSeen": "System.DateTimeOffset",
+              "ResourceGroupName": "System.String",
+              "AutomationAccountName": "System.String",
+              "Name": "System.String",
+              "IpAddress": "System.String",
+              "Id": "System.String",
+              "NodeConfigurationName": "System.String",
+              "Status": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -21556,8 +21883,9 @@
       "Name": "Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorker",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorker, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.DateTimeOffset": "System.DateTimeOffset",
-        "System.String": "System.String"
+        "RegistrationTime": "System.DateTimeOffset",
+        "Name": "System.String",
+        "IpAddress": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -21601,8 +21929,8 @@
       "Name": "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Microsoft.Azure.Commands.Automation.Model.DayOfWeek": "Microsoft.Azure.Commands.Automation.Model.DayOfWeek",
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth]": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth]"
+        "DayOfWeek": "Microsoft.Azure.Commands.Automation.Model.DayOfWeek",
+        "DaysOfMonth": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth]"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -21612,7 +21940,8 @@
       "Name": "Microsoft.Azure.Commands.Automation.Model.DayOfWeek",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DayOfWeek, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.String": "System.String"
+        "Occurrence": "System.String",
+        "Day": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -21648,7 +21977,7 @@
       "Name": "Microsoft.Azure.Commands.Automation.Model.WeeklyScheduleOptions",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.WeeklyScheduleOptions, Microsoft.Azure.Commands.ResourceManager.Automation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Collections.Generic.IList`1[System.String]": "System.Collections.Generic.IList`1[System.String]"
+        "DaysOfWeek": "System.Collections.Generic.IList`1[System.String]"
       },
       "ElementType": null,
       "GenericTypeArguments": []

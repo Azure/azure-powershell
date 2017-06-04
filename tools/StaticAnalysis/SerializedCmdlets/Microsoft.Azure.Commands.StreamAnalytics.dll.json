@@ -31,8 +31,11 @@
             "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.StreamAnalytics.Models.FunctionProperties": "Microsoft.Azure.Management.StreamAnalytics.Models.FunctionProperties",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.FunctionProperties",
+              "Name": "System.String",
+              "JobName": "System.String",
+              "ResourceGroupName": "System.String",
+              "PropertiesInJson": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -183,8 +186,11 @@
             "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.StreamAnalytics.Models.FunctionProperties": "Microsoft.Azure.Management.StreamAnalytics.Models.FunctionProperties",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.FunctionProperties",
+              "Name": "System.String",
+              "JobName": "System.String",
+              "ResourceGroupName": "System.String",
+              "PropertiesInJson": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -373,8 +379,11 @@
             "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.StreamAnalytics.Models.FunctionProperties": "Microsoft.Azure.Management.StreamAnalytics.Models.FunctionProperties",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.FunctionProperties",
+              "Name": "System.String",
+              "JobName": "System.String",
+              "ResourceGroupName": "System.String",
+              "PropertiesInJson": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -886,8 +895,11 @@
             "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.StreamAnalytics.Models.InputProperties": "Microsoft.Azure.Management.StreamAnalytics.Models.InputProperties",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.InputProperties",
+              "Name": "System.String",
+              "JobName": "System.String",
+              "ResourceGroupName": "System.String",
+              "PropertiesInJson": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1038,8 +1050,11 @@
             "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.StreamAnalytics.Models.InputProperties": "Microsoft.Azure.Management.StreamAnalytics.Models.InputProperties",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.InputProperties",
+              "Name": "System.String",
+              "JobName": "System.String",
+              "ResourceGroupName": "System.String",
+              "PropertiesInJson": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1551,10 +1566,16 @@
             "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.StreamAnalytics.Models.JobProperties": "Microsoft.Azure.Management.StreamAnalytics.Models.JobProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.JobProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "CreatedDate": "System.Nullable`1[System.DateTime]",
+              "JobName": "System.String",
+              "ResourceGroupName": "System.String",
+              "JobId": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String",
+              "JobState": "System.String",
+              "PropertiesInJson": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1732,10 +1753,16 @@
             "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.StreamAnalytics.Models.JobProperties": "Microsoft.Azure.Management.StreamAnalytics.Models.JobProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.JobProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "CreatedDate": "System.Nullable`1[System.DateTime]",
+              "JobName": "System.String",
+              "ResourceGroupName": "System.String",
+              "JobId": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String",
+              "JobState": "System.String",
+              "PropertiesInJson": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2310,8 +2337,11 @@
             "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.StreamAnalytics.Models.OutputProperties": "Microsoft.Azure.Management.StreamAnalytics.Models.OutputProperties",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.OutputProperties",
+              "Name": "System.String",
+              "JobName": "System.String",
+              "ResourceGroupName": "System.String",
+              "PropertiesInJson": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2462,8 +2492,11 @@
             "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.StreamAnalytics.Models.OutputProperties": "Microsoft.Azure.Management.StreamAnalytics.Models.OutputProperties",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.OutputProperties",
+              "Name": "System.String",
+              "JobName": "System.String",
+              "ResourceGroupName": "System.String",
+              "PropertiesInJson": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2975,9 +3008,11 @@
             "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.StreamAnalytics.Models.SubscriptionQuotasProperties": "Microsoft.Azure.Management.StreamAnalytics.Models.SubscriptionQuotasProperties",
-              "System.Int32": "System.Int32",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.SubscriptionQuotasProperties",
+              "CurrentCount": "System.Int32",
+              "MaxCount": "System.Int32",
+              "Name": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3067,8 +3102,11 @@
             "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.StreamAnalytics.Models.TransformationProperties": "Microsoft.Azure.Management.StreamAnalytics.Models.TransformationProperties",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.TransformationProperties",
+              "Name": "System.String",
+              "JobName": "System.String",
+              "ResourceGroupName": "System.String",
+              "PropertiesInJson": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3219,8 +3257,11 @@
             "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.StreamAnalytics.Models.TransformationProperties": "Microsoft.Azure.Management.StreamAnalytics.Models.TransformationProperties",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.TransformationProperties",
+              "Name": "System.String",
+              "JobName": "System.String",
+              "ResourceGroupName": "System.String",
+              "PropertiesInJson": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3550,8 +3591,11 @@
       "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Microsoft.Azure.Management.StreamAnalytics.Models.FunctionProperties": "Microsoft.Azure.Management.StreamAnalytics.Models.FunctionProperties",
-        "System.String": "System.String"
+        "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.FunctionProperties",
+        "Name": "System.String",
+        "JobName": "System.String",
+        "ResourceGroupName": "System.String",
+        "PropertiesInJson": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3561,7 +3605,8 @@
       "Name": "Microsoft.Azure.Management.StreamAnalytics.Models.FunctionProperties",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.StreamAnalytics.Models.FunctionProperties, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.String": "System.String"
+        "Etag": "System.String",
+        "Type": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3571,8 +3616,11 @@
       "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Microsoft.Azure.Management.StreamAnalytics.Models.InputProperties": "Microsoft.Azure.Management.StreamAnalytics.Models.InputProperties",
-        "System.String": "System.String"
+        "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.InputProperties",
+        "Name": "System.String",
+        "JobName": "System.String",
+        "ResourceGroupName": "System.String",
+        "PropertiesInJson": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3582,9 +3630,10 @@
       "Name": "Microsoft.Azure.Management.StreamAnalytics.Models.InputProperties",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.StreamAnalytics.Models.InputProperties, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.StreamAnalytics.Models.Diagnostics": "Microsoft.Azure.Management.StreamAnalytics.Models.Diagnostics",
-        "Microsoft.Azure.Management.StreamAnalytics.Models.Serialization": "Microsoft.Azure.Management.StreamAnalytics.Models.Serialization",
-        "System.String": "System.String"
+        "Diagnostics": "Microsoft.Azure.Management.StreamAnalytics.Models.Diagnostics",
+        "Serialization": "Microsoft.Azure.Management.StreamAnalytics.Models.Serialization",
+        "Etag": "System.String",
+        "Type": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3594,7 +3643,7 @@
       "Name": "Microsoft.Azure.Management.StreamAnalytics.Models.Diagnostics",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.StreamAnalytics.Models.Diagnostics, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Management.StreamAnalytics.Models.DiagnosticCondition]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.StreamAnalytics.Models.DiagnosticCondition]"
+        "Conditions": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.StreamAnalytics.Models.DiagnosticCondition]"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3614,8 +3663,9 @@
       "Name": "Microsoft.Azure.Management.StreamAnalytics.Models.DiagnosticCondition",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.StreamAnalytics.Models.DiagnosticCondition, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-        "System.String": "System.String"
+        "Since": "System.Nullable`1[System.DateTime]",
+        "Message": "System.String",
+        "Code": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3643,7 +3693,7 @@
       "Name": "Microsoft.Azure.Management.StreamAnalytics.Models.Serialization",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.StreamAnalytics.Models.Serialization, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.String": "System.String"
+        "Type": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3653,10 +3703,16 @@
       "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Microsoft.Azure.Management.StreamAnalytics.Models.JobProperties": "Microsoft.Azure.Management.StreamAnalytics.Models.JobProperties",
-        "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-        "System.String": "System.String"
+        "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.JobProperties",
+        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "CreatedDate": "System.Nullable`1[System.DateTime]",
+        "JobName": "System.String",
+        "ResourceGroupName": "System.String",
+        "JobId": "System.String",
+        "Location": "System.String",
+        "ProvisioningState": "System.String",
+        "JobState": "System.String",
+        "PropertiesInJson": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3666,14 +3722,23 @@
       "Name": "Microsoft.Azure.Management.StreamAnalytics.Models.JobProperties",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.StreamAnalytics.Models.JobProperties, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.StreamAnalytics.Models.Sku": "Microsoft.Azure.Management.StreamAnalytics.Models.Sku",
-        "Microsoft.Azure.Management.StreamAnalytics.Models.Transformation": "Microsoft.Azure.Management.StreamAnalytics.Models.Transformation",
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Management.StreamAnalytics.Models.Function]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.StreamAnalytics.Models.Function]",
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Management.StreamAnalytics.Models.Input]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.StreamAnalytics.Models.Input]",
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Management.StreamAnalytics.Models.Output]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.StreamAnalytics.Models.Output]",
-        "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-        "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-        "System.String": "System.String"
+        "Sku": "Microsoft.Azure.Management.StreamAnalytics.Models.Sku",
+        "Transformation": "Microsoft.Azure.Management.StreamAnalytics.Models.Transformation",
+        "Functions": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.StreamAnalytics.Models.Function]",
+        "Inputs": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.StreamAnalytics.Models.Input]",
+        "Outputs": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.StreamAnalytics.Models.Output]",
+        "OutputStartTime": "System.Nullable`1[System.DateTime]",
+        "LastOutputEventTime": "System.Nullable`1[System.DateTime]",
+        "CreatedDate": "System.Nullable`1[System.DateTime]",
+        "EventsOutOfOrderMaxDelayInSeconds": "System.Nullable`1[System.Int32]",
+        "EventsLateArrivalMaxDelayInSeconds": "System.Nullable`1[System.Int32]",
+        "JobState": "System.String",
+        "Etag": "System.String",
+        "OutputStartMode": "System.String",
+        "DataLocale": "System.String",
+        "ProvisioningState": "System.String",
+        "EventsOutOfOrderPolicy": "System.String",
+        "JobId": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3683,7 +3748,7 @@
       "Name": "Microsoft.Azure.Management.StreamAnalytics.Models.Sku",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.StreamAnalytics.Models.Sku, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.String": "System.String"
+        "Name": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3693,8 +3758,8 @@
       "Name": "Microsoft.Azure.Management.StreamAnalytics.Models.Transformation",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.StreamAnalytics.Models.Transformation, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.StreamAnalytics.Models.TransformationProperties": "Microsoft.Azure.Management.StreamAnalytics.Models.TransformationProperties",
-        "System.String": "System.String"
+        "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.TransformationProperties",
+        "Name": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3704,8 +3769,9 @@
       "Name": "Microsoft.Azure.Management.StreamAnalytics.Models.TransformationProperties",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.StreamAnalytics.Models.TransformationProperties, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-        "System.String": "System.String"
+        "StreamingUnits": "System.Nullable`1[System.Int32]",
+        "Query": "System.String",
+        "Etag": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3735,8 +3801,8 @@
       "Name": "Microsoft.Azure.Management.StreamAnalytics.Models.Function",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.StreamAnalytics.Models.Function, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.StreamAnalytics.Models.FunctionProperties": "Microsoft.Azure.Management.StreamAnalytics.Models.FunctionProperties",
-        "System.String": "System.String"
+        "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.FunctionProperties",
+        "Name": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3756,8 +3822,8 @@
       "Name": "Microsoft.Azure.Management.StreamAnalytics.Models.Input",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.StreamAnalytics.Models.Input, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.StreamAnalytics.Models.InputProperties": "Microsoft.Azure.Management.StreamAnalytics.Models.InputProperties",
-        "System.String": "System.String"
+        "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.InputProperties",
+        "Name": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3777,8 +3843,8 @@
       "Name": "Microsoft.Azure.Management.StreamAnalytics.Models.Output",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.StreamAnalytics.Models.Output, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.StreamAnalytics.Models.OutputProperties": "Microsoft.Azure.Management.StreamAnalytics.Models.OutputProperties",
-        "System.String": "System.String"
+        "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.OutputProperties",
+        "Name": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3788,10 +3854,10 @@
       "Name": "Microsoft.Azure.Management.StreamAnalytics.Models.OutputProperties",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.StreamAnalytics.Models.OutputProperties, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.StreamAnalytics.Models.Diagnostics": "Microsoft.Azure.Management.StreamAnalytics.Models.Diagnostics",
-        "Microsoft.Azure.Management.StreamAnalytics.Models.OutputDataSource": "Microsoft.Azure.Management.StreamAnalytics.Models.OutputDataSource",
-        "Microsoft.Azure.Management.StreamAnalytics.Models.Serialization": "Microsoft.Azure.Management.StreamAnalytics.Models.Serialization",
-        "System.String": "System.String"
+        "Diagnostics": "Microsoft.Azure.Management.StreamAnalytics.Models.Diagnostics",
+        "DataSource": "Microsoft.Azure.Management.StreamAnalytics.Models.OutputDataSource",
+        "Serialization": "Microsoft.Azure.Management.StreamAnalytics.Models.Serialization",
+        "Etag": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3801,7 +3867,7 @@
       "Name": "Microsoft.Azure.Management.StreamAnalytics.Models.OutputDataSource",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.StreamAnalytics.Models.OutputDataSource, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.String": "System.String"
+        "Type": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3822,8 +3888,11 @@
       "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Microsoft.Azure.Management.StreamAnalytics.Models.OutputProperties": "Microsoft.Azure.Management.StreamAnalytics.Models.OutputProperties",
-        "System.String": "System.String"
+        "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.OutputProperties",
+        "Name": "System.String",
+        "JobName": "System.String",
+        "ResourceGroupName": "System.String",
+        "PropertiesInJson": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3833,9 +3902,11 @@
       "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Microsoft.Azure.Management.StreamAnalytics.Models.SubscriptionQuotasProperties": "Microsoft.Azure.Management.StreamAnalytics.Models.SubscriptionQuotasProperties",
-        "System.Int32": "System.Int32",
-        "System.String": "System.String"
+        "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.SubscriptionQuotasProperties",
+        "CurrentCount": "System.Int32",
+        "MaxCount": "System.Int32",
+        "Name": "System.String",
+        "Location": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3845,7 +3916,8 @@
       "Name": "Microsoft.Azure.Management.StreamAnalytics.Models.SubscriptionQuotasProperties",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.StreamAnalytics.Models.SubscriptionQuotasProperties, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Int32": "System.Int32"
+        "CurrentCount": "System.Int32",
+        "MaxCount": "System.Int32"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3855,8 +3927,11 @@
       "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Microsoft.Azure.Management.StreamAnalytics.Models.TransformationProperties": "Microsoft.Azure.Management.StreamAnalytics.Models.TransformationProperties",
-        "System.String": "System.String"
+        "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.TransformationProperties",
+        "Name": "System.String",
+        "JobName": "System.String",
+        "ResourceGroupName": "System.String",
+        "PropertiesInJson": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []

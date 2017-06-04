@@ -1251,10 +1251,11 @@
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType[]": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType[]",
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.String": "System.String",
-              "System.String[]": "System.String[]"
+              "ResourceTypes": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType[]",
+              "ZoneMappings": "System.Collections.Hashtable",
+              "ProviderNamespace": "System.String",
+              "RegistrationState": "System.String",
+              "Locations": "System.String[]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1623,10 +1624,11 @@
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType[]": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType[]",
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.String": "System.String",
-              "System.String[]": "System.String[]"
+              "ResourceTypes": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType[]",
+              "ZoneMappings": "System.Collections.Hashtable",
+              "ProviderNamespace": "System.String",
+              "RegistrationState": "System.String",
+              "Locations": "System.String[]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2263,11 +2265,19 @@
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
-              "Microsoft.Azure.Management.ResourceManager.Models.TemplateLink": "Microsoft.Azure.Management.ResourceManager.Models.TemplateLink",
-              "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable]": "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable]",
-              "System.DateTime": "System.DateTime",
-              "System.String": "System.String"
+              "Mode": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
+              "TemplateLink": "Microsoft.Azure.Management.ResourceManager.Models.TemplateLink",
+              "Parameters": "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable]",
+              "Outputs": "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable]",
+              "Timestamp": "System.DateTime",
+              "DeploymentName": "System.String",
+              "CorrelationId": "System.String",
+              "ResourceGroupName": "System.String",
+              "ProvisioningState": "System.String",
+              "TemplateLinkString": "System.String",
+              "DeploymentDebugLogLevel": "System.String",
+              "ParametersString": "System.String",
+              "OutputsString": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -6287,8 +6297,12 @@
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Hashtable",
+              "ResourceGroupName": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String",
+              "TagsTable": "System.String",
+              "ResourceId": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -25168,7 +25182,9 @@
       "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSProviderFeature",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSProviderFeature, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.String": "System.String"
+        "FeatureName": "System.String",
+        "ProviderName": "System.String",
+        "RegistrationState": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -25178,8 +25194,9 @@
       "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderLocation",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderLocation, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-        "System.String": "System.String"
+        "Providers": "System.Collections.Generic.List`1[System.String]",
+        "DisplayName": "System.String",
+        "Location": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -25207,9 +25224,10 @@
       "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Collections.Hashtable": "System.Collections.Hashtable",
-        "System.String": "System.String",
-        "System.String[]": "System.String[]"
+        "ZoneMappings": "System.Collections.Hashtable",
+        "ResourceTypeName": "System.String",
+        "Locations": "System.String[]",
+        "ApiVersions": "System.String[]"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -25235,10 +25253,11 @@
       "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType[]": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType[]",
-        "System.Collections.Hashtable": "System.Collections.Hashtable",
-        "System.String": "System.String",
-        "System.String[]": "System.String[]"
+        "ResourceTypes": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType[]",
+        "ZoneMappings": "System.Collections.Hashtable",
+        "ProviderNamespace": "System.String",
+        "RegistrationState": "System.String",
+        "Locations": "System.String[]"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -25248,11 +25267,19 @@
       "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
-        "Microsoft.Azure.Management.ResourceManager.Models.TemplateLink": "Microsoft.Azure.Management.ResourceManager.Models.TemplateLink",
-        "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable]": "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable]",
-        "System.DateTime": "System.DateTime",
-        "System.String": "System.String"
+        "Mode": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
+        "TemplateLink": "Microsoft.Azure.Management.ResourceManager.Models.TemplateLink",
+        "Parameters": "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable]",
+        "Outputs": "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable]",
+        "Timestamp": "System.DateTime",
+        "DeploymentName": "System.String",
+        "CorrelationId": "System.String",
+        "ResourceGroupName": "System.String",
+        "ProvisioningState": "System.String",
+        "TemplateLinkString": "System.String",
+        "DeploymentDebugLogLevel": "System.String",
+        "ParametersString": "System.String",
+        "OutputsString": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -25270,7 +25297,8 @@
       "Name": "Microsoft.Azure.Management.ResourceManager.Models.TemplateLink",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.ResourceManager.Models.TemplateLink, Microsoft.Azure.Management.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.String": "System.String"
+        "Uri": "System.String",
+        "ContentVersion": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -25291,8 +25319,8 @@
       "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Object": "System.Object",
-        "System.String": "System.String"
+        "Value": "System.Object",
+        "Type": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -25318,8 +25346,10 @@
       "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError]",
-        "System.String": "System.String"
+        "Details": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError]",
+        "Code": "System.String",
+        "Message": "System.String",
+        "Target": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -25339,8 +25369,12 @@
       "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Collections.Hashtable": "System.Collections.Hashtable",
-        "System.String": "System.String"
+        "Tags": "System.Collections.Hashtable",
+        "ResourceGroupName": "System.String",
+        "Location": "System.String",
+        "ProvisioningState": "System.String",
+        "TagsTable": "System.String",
+        "ResourceId": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []

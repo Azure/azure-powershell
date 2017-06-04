@@ -16,7 +16,11 @@
             "Name": "Microsoft.Azure.Commands.EventHub.Models.ListKeysAttributes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.ListKeysAttributes, Microsoft.Azure.Commands.EventHub, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "PrimaryConnectionString": "System.String",
+              "SecondaryConnectionString": "System.String",
+              "PrimaryKey": "System.String",
+              "SecondaryKey": "System.String",
+              "KeyName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -513,7 +517,11 @@
             "Name": "Microsoft.Azure.Commands.EventHub.Models.ListKeysAttributes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.ListKeysAttributes, Microsoft.Azure.Commands.EventHub, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "PrimaryConnectionString": "System.String",
+              "SecondaryConnectionString": "System.String",
+              "PrimaryKey": "System.String",
+              "SecondaryKey": "System.String",
+              "KeyName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -664,11 +672,16 @@
             "Name": "Microsoft.Azure.Commands.EventHub.Models.NamespaceAttributes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.NamespaceAttributes, Microsoft.Azure.Commands.EventHub, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.EventHub.Models.Sku": "Microsoft.Azure.Management.EventHub.Models.Sku",
-              "System.Nullable`1[Microsoft.Azure.Commands.EventHub.Models.NamespaceState]": "System.Nullable`1[Microsoft.Azure.Commands.EventHub.Models.NamespaceState]",
-              "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String"
+              "Sku": "Microsoft.Azure.Management.EventHub.Models.Sku",
+              "Status": "System.Nullable`1[Microsoft.Azure.Commands.EventHub.Models.NamespaceState]",
+              "Enabled": "System.Nullable`1[System.Boolean]",
+              "CreatedAt": "System.Nullable`1[System.DateTime]",
+              "UpdatedAt": "System.Nullable`1[System.DateTime]",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String",
+              "ServiceBusEndpoint": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -945,9 +958,12 @@
             "Name": "Microsoft.Azure.Commands.EventHub.Models.SharedAccessAuthorizationRuleAttributes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.EventHub, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.Dictionary`2[System.String,System.String]": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
-              "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.AccessRights]]": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.AccessRights]]",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
+              "Rights": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.AccessRights]]",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1382,11 +1398,16 @@
             "Name": "Microsoft.Azure.Commands.EventHub.Models.NamespaceAttributes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.NamespaceAttributes, Microsoft.Azure.Commands.EventHub, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.EventHub.Models.Sku": "Microsoft.Azure.Management.EventHub.Models.Sku",
-              "System.Nullable`1[Microsoft.Azure.Commands.EventHub.Models.NamespaceState]": "System.Nullable`1[Microsoft.Azure.Commands.EventHub.Models.NamespaceState]",
-              "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String"
+              "Sku": "Microsoft.Azure.Management.EventHub.Models.Sku",
+              "Status": "System.Nullable`1[Microsoft.Azure.Commands.EventHub.Models.NamespaceState]",
+              "Enabled": "System.Nullable`1[System.Boolean]",
+              "CreatedAt": "System.Nullable`1[System.DateTime]",
+              "UpdatedAt": "System.Nullable`1[System.DateTime]",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String",
+              "ServiceBusEndpoint": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1705,9 +1726,12 @@
             "Name": "Microsoft.Azure.Commands.EventHub.Models.SharedAccessAuthorizationRuleAttributes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.EventHub, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.Dictionary`2[System.String,System.String]": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
-              "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.AccessRights]]": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.AccessRights]]",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
+              "Rights": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.AccessRights]]",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1758,9 +1782,12 @@
             "Name": "Microsoft.Azure.Commands.EventHub.Models.SharedAccessAuthorizationRuleAttributes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.EventHub, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.Dictionary`2[System.String,System.String]": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
-              "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.AccessRights]]": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.AccessRights]]",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
+              "Rights": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.AccessRights]]",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1860,9 +1887,12 @@
                   "Name": "Microsoft.Azure.Commands.EventHub.Models.SharedAccessAuthorizationRuleAttributes",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.EventHub, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Collections.Generic.Dictionary`2[System.String,System.String]": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
-                    "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.AccessRights]]": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.AccessRights]]",
-                    "System.String": "System.String"
+                    "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
+                    "Rights": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.AccessRights]]",
+                    "Id": "System.String",
+                    "Type": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1942,7 +1972,11 @@
             "Name": "Microsoft.Azure.Commands.EventHub.Models.ListKeysAttributes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.ListKeysAttributes, Microsoft.Azure.Commands.EventHub, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "PrimaryConnectionString": "System.String",
+              "SecondaryConnectionString": "System.String",
+              "PrimaryKey": "System.String",
+              "SecondaryKey": "System.String",
+              "KeyName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2326,7 +2360,11 @@
             "Name": "Microsoft.Azure.Commands.EventHub.Models.ListKeysAttributes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.ListKeysAttributes, Microsoft.Azure.Commands.EventHub, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "PrimaryConnectionString": "System.String",
+              "SecondaryConnectionString": "System.String",
+              "PrimaryKey": "System.String",
+              "SecondaryKey": "System.String",
+              "KeyName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2666,11 +2704,14 @@
             "Name": "Microsoft.Azure.Commands.EventHub.Models.EventHubAttributes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.EventHubAttributes, Microsoft.Azure.Commands.EventHub, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IList`1[System.String]": "System.Collections.Generic.IList`1[System.String]",
-              "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.EntityStatus]": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.EntityStatus]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Nullable`1[System.Int64]": "System.Nullable`1[System.Int64]",
-              "System.String": "System.String"
+              "PartitionIds": "System.Collections.Generic.IList`1[System.String]",
+              "Status": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.EntityStatus]",
+              "CreatedAt": "System.Nullable`1[System.DateTime]",
+              "UpdatedAt": "System.Nullable`1[System.DateTime]",
+              "MessageRetentionInDays": "System.Nullable`1[System.Int64]",
+              "PartitionCount": "System.Nullable`1[System.Int64]",
+              "Location": "System.String",
+              "Name": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2753,11 +2794,14 @@
             "Name": "Microsoft.Azure.Commands.EventHub.Models.EventHubAttributes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.EventHubAttributes, Microsoft.Azure.Commands.EventHub, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IList`1[System.String]": "System.Collections.Generic.IList`1[System.String]",
-              "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.EntityStatus]": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.EntityStatus]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Nullable`1[System.Int64]": "System.Nullable`1[System.Int64]",
-              "System.String": "System.String"
+              "PartitionIds": "System.Collections.Generic.IList`1[System.String]",
+              "Status": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.EntityStatus]",
+              "CreatedAt": "System.Nullable`1[System.DateTime]",
+              "UpdatedAt": "System.Nullable`1[System.DateTime]",
+              "MessageRetentionInDays": "System.Nullable`1[System.Int64]",
+              "PartitionCount": "System.Nullable`1[System.Int64]",
+              "Location": "System.String",
+              "Name": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2905,11 +2949,14 @@
                   "Name": "Microsoft.Azure.Commands.EventHub.Models.EventHubAttributes",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.EventHubAttributes, Microsoft.Azure.Commands.EventHub, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Collections.Generic.IList`1[System.String]": "System.Collections.Generic.IList`1[System.String]",
-                    "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.EntityStatus]": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.EntityStatus]",
-                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-                    "System.Nullable`1[System.Int64]": "System.Nullable`1[System.Int64]",
-                    "System.String": "System.String"
+                    "PartitionIds": "System.Collections.Generic.IList`1[System.String]",
+                    "Status": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.EntityStatus]",
+                    "CreatedAt": "System.Nullable`1[System.DateTime]",
+                    "UpdatedAt": "System.Nullable`1[System.DateTime]",
+                    "MessageRetentionInDays": "System.Nullable`1[System.Int64]",
+                    "PartitionCount": "System.Nullable`1[System.Int64]",
+                    "Location": "System.String",
+                    "Name": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2993,9 +3040,12 @@
             "Name": "Microsoft.Azure.Commands.EventHub.Models.SharedAccessAuthorizationRuleAttributes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.EventHub, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.Dictionary`2[System.String,System.String]": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
-              "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.AccessRights]]": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.AccessRights]]",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
+              "Rights": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.AccessRights]]",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3544,11 +3594,14 @@
             "Name": "Microsoft.Azure.Commands.EventHub.Models.EventHubAttributes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.EventHubAttributes, Microsoft.Azure.Commands.EventHub, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IList`1[System.String]": "System.Collections.Generic.IList`1[System.String]",
-              "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.EntityStatus]": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.EntityStatus]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Nullable`1[System.Int64]": "System.Nullable`1[System.Int64]",
-              "System.String": "System.String"
+              "PartitionIds": "System.Collections.Generic.IList`1[System.String]",
+              "Status": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.EntityStatus]",
+              "CreatedAt": "System.Nullable`1[System.DateTime]",
+              "UpdatedAt": "System.Nullable`1[System.DateTime]",
+              "MessageRetentionInDays": "System.Nullable`1[System.Int64]",
+              "PartitionCount": "System.Nullable`1[System.Int64]",
+              "Location": "System.String",
+              "Name": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3615,11 +3668,14 @@
             "Name": "Microsoft.Azure.Commands.EventHub.Models.EventHubAttributes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.EventHubAttributes, Microsoft.Azure.Commands.EventHub, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IList`1[System.String]": "System.Collections.Generic.IList`1[System.String]",
-              "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.EntityStatus]": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.EntityStatus]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Nullable`1[System.Int64]": "System.Nullable`1[System.Int64]",
-              "System.String": "System.String"
+              "PartitionIds": "System.Collections.Generic.IList`1[System.String]",
+              "Status": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.EntityStatus]",
+              "CreatedAt": "System.Nullable`1[System.DateTime]",
+              "UpdatedAt": "System.Nullable`1[System.DateTime]",
+              "MessageRetentionInDays": "System.Nullable`1[System.Int64]",
+              "PartitionCount": "System.Nullable`1[System.Int64]",
+              "Location": "System.String",
+              "Name": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3745,11 +3801,14 @@
                   "Name": "Microsoft.Azure.Commands.EventHub.Models.EventHubAttributes",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.EventHubAttributes, Microsoft.Azure.Commands.EventHub, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Collections.Generic.IList`1[System.String]": "System.Collections.Generic.IList`1[System.String]",
-                    "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.EntityStatus]": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.EntityStatus]",
-                    "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-                    "System.Nullable`1[System.Int64]": "System.Nullable`1[System.Int64]",
-                    "System.String": "System.String"
+                    "PartitionIds": "System.Collections.Generic.IList`1[System.String]",
+                    "Status": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.EntityStatus]",
+                    "CreatedAt": "System.Nullable`1[System.DateTime]",
+                    "UpdatedAt": "System.Nullable`1[System.DateTime]",
+                    "MessageRetentionInDays": "System.Nullable`1[System.Int64]",
+                    "PartitionCount": "System.Nullable`1[System.Int64]",
+                    "Location": "System.String",
+                    "Name": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3833,9 +3892,12 @@
             "Name": "Microsoft.Azure.Commands.EventHub.Models.SharedAccessAuthorizationRuleAttributes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.EventHub, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.Dictionary`2[System.String,System.String]": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
-              "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.AccessRights]]": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.AccessRights]]",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
+              "Rights": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.AccessRights]]",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3902,9 +3964,12 @@
             "Name": "Microsoft.Azure.Commands.EventHub.Models.SharedAccessAuthorizationRuleAttributes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.EventHub, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.Dictionary`2[System.String,System.String]": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
-              "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.AccessRights]]": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.AccessRights]]",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
+              "Rights": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.AccessRights]]",
+              "Id": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4026,9 +4091,12 @@
                   "Name": "Microsoft.Azure.Commands.EventHub.Models.SharedAccessAuthorizationRuleAttributes",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.EventHub, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Collections.Generic.Dictionary`2[System.String,System.String]": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
-                    "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.AccessRights]]": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.AccessRights]]",
-                    "System.String": "System.String"
+                    "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
+                    "Rights": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.AccessRights]]",
+                    "Id": "System.String",
+                    "Type": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -4297,8 +4365,12 @@
             "Name": "Microsoft.Azure.Commands.EventHub.Models.ConsumerGroupAttributes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.ConsumerGroupAttributes, Microsoft.Azure.Commands.EventHub, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String"
+              "CreatedAt": "System.Nullable`1[System.DateTime]",
+              "UpdatedAt": "System.Nullable`1[System.DateTime]",
+              "Name": "System.String",
+              "Location": "System.String",
+              "EventHubPath": "System.String",
+              "UserMetadata": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4698,8 +4770,12 @@
             "Name": "Microsoft.Azure.Commands.EventHub.Models.ConsumerGroupAttributes",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.ConsumerGroupAttributes, Microsoft.Azure.Commands.EventHub, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String"
+              "CreatedAt": "System.Nullable`1[System.DateTime]",
+              "UpdatedAt": "System.Nullable`1[System.DateTime]",
+              "Name": "System.String",
+              "Location": "System.String",
+              "EventHubPath": "System.String",
+              "UserMetadata": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -5029,11 +5105,16 @@
       "Name": "Microsoft.Azure.Commands.EventHub.Models.NamespaceAttributes",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.NamespaceAttributes, Microsoft.Azure.Commands.EventHub, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Microsoft.Azure.Management.EventHub.Models.Sku": "Microsoft.Azure.Management.EventHub.Models.Sku",
-        "System.Nullable`1[Microsoft.Azure.Commands.EventHub.Models.NamespaceState]": "System.Nullable`1[Microsoft.Azure.Commands.EventHub.Models.NamespaceState]",
-        "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-        "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-        "System.String": "System.String"
+        "Sku": "Microsoft.Azure.Management.EventHub.Models.Sku",
+        "Status": "System.Nullable`1[Microsoft.Azure.Commands.EventHub.Models.NamespaceState]",
+        "Enabled": "System.Nullable`1[System.Boolean]",
+        "CreatedAt": "System.Nullable`1[System.DateTime]",
+        "UpdatedAt": "System.Nullable`1[System.DateTime]",
+        "Id": "System.String",
+        "Name": "System.String",
+        "Location": "System.String",
+        "ProvisioningState": "System.String",
+        "ServiceBusEndpoint": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -5043,8 +5124,9 @@
       "Name": "Microsoft.Azure.Management.EventHub.Models.Sku",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.EventHub.Models.Sku, Microsoft.Azure.Management.EventHub, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-        "System.String": "System.String"
+        "Capacity": "System.Nullable`1[System.Int32]",
+        "Tier": "System.String",
+        "Name": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -5110,9 +5192,12 @@
       "Name": "Microsoft.Azure.Commands.EventHub.Models.SharedAccessAuthorizationRuleAttributes",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.SharedAccessAuthorizationRuleAttributes, Microsoft.Azure.Commands.EventHub, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Collections.Generic.Dictionary`2[System.String,System.String]": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
-        "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.AccessRights]]": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.AccessRights]]",
-        "System.String": "System.String"
+        "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
+        "Rights": "System.Collections.Generic.IList`1[System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.AccessRights]]",
+        "Id": "System.String",
+        "Type": "System.String",
+        "Name": "System.String",
+        "Location": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -5169,11 +5254,14 @@
       "Name": "Microsoft.Azure.Commands.EventHub.Models.EventHubAttributes",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.EventHubAttributes, Microsoft.Azure.Commands.EventHub, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Collections.Generic.IList`1[System.String]": "System.Collections.Generic.IList`1[System.String]",
-        "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.EntityStatus]": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.EntityStatus]",
-        "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-        "System.Nullable`1[System.Int64]": "System.Nullable`1[System.Int64]",
-        "System.String": "System.String"
+        "PartitionIds": "System.Collections.Generic.IList`1[System.String]",
+        "Status": "System.Nullable`1[Microsoft.Azure.Management.EventHub.Models.EntityStatus]",
+        "CreatedAt": "System.Nullable`1[System.DateTime]",
+        "UpdatedAt": "System.Nullable`1[System.DateTime]",
+        "MessageRetentionInDays": "System.Nullable`1[System.Int64]",
+        "PartitionCount": "System.Nullable`1[System.Int64]",
+        "Location": "System.String",
+        "Name": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -5221,8 +5309,12 @@
       "Name": "Microsoft.Azure.Commands.EventHub.Models.ConsumerGroupAttributes",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.EventHub.Models.ConsumerGroupAttributes, Microsoft.Azure.Commands.EventHub, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-        "System.String": "System.String"
+        "CreatedAt": "System.Nullable`1[System.DateTime]",
+        "UpdatedAt": "System.Nullable`1[System.DateTime]",
+        "Name": "System.String",
+        "Location": "System.String",
+        "EventHubPath": "System.String",
+        "UserMetadata": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
