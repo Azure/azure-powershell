@@ -218,6 +218,9 @@ Gets a network security group.
 ### [Get-AzureRmNetworkSecurityRuleConfig](Get-AzureRmNetworkSecurityRuleConfig.md)
 Get a network security rule configuration for a network security group.
 
+### [Get-AzureRmNetworkUsage](Get-AzureRmNetworkUsage.md)
+Lists network usages for a subscription
+
 ### [Get-AzureRmNetworkWatcher](Get-AzureRmNetworkWatcher.md)
 Gets the properties of a Network Watcher
 

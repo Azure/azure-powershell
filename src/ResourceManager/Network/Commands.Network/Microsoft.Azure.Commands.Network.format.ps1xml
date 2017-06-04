@@ -2,6 +2,32 @@
 <Configuration>
   <ViewDefinitions>
     <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSUsage</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSUsage</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>ResourceType</Label>
+                <PropertyName>ResourceType</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>CurrentValue</Label>
+                <PropertyName>CurrentValue</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Limit</Label>
+                <PropertyName>Limit</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork</TypeName>

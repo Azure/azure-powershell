@@ -186,6 +186,7 @@
     <Compile Include="ScenarioTests\RouteTableTests.cs" />
     <Compile Include="ScenarioTests\NetworkSecurityGroupTests.cs" />
     <Compile Include="ScenarioTests\TestDnsAvailabilityTest.cs" />
+    <Compile Include="ScenarioTests\UsageTests.cs" />
     <Compile Include="ScenarioTests\VirtualNetworkTests.cs" />
     <Compile Include="ScenarioTests\PublicIpAddressTests.cs" />
     <Compile Include="ScenarioTests\VirtualNetworkGatewayTests.cs" />
@@ -236,6 +237,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\TestDnsAvailabilityTest.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\UsageTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\VirtualNetworkTests.ps1">
@@ -457,6 +461,9 @@
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LocalNetworkGatewayTests\TestLocalNetworkGatewayCRUD.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.UsageTests\TestNetworkUsage.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>  
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayConnectionTests\TestVirtualNetworkGatewayConnectionCRUD.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
