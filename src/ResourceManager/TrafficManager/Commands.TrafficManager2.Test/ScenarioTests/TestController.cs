@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
     using Microsoft.Azure.Test;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using System;
+    using System.IO;
     using System.Linq;
     using WindowsAzure.Commands.Test.Utilities.Common;
 
@@ -106,6 +107,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
             using (RestTestFramework.MockContext context = RestTestFramework.MockContext.Start(callingClassType, mockName))
             {
                 this.csmTestFactory = new CSMTestEnvironmentFactory();
